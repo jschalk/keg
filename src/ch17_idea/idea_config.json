@@ -10,28 +10,28 @@
       "person_name": {}, 
       "spark_num": {}
     }, 
-    "jvalues": {"celldepth": {}, "quota": {}}
+    "jvalues": {"celldepth": {}, "knot": {}, "quota": {}}
   }, 
   "moment_epoch_hour": {
     "allowed_crud": "insert_one_time", 
     "build_order": 6, 
     "idea_category": "moment", 
     "jkeys": {"cumulative_minute": {}, "face_name": {}, "moment_rope": {}, "spark_num": {}}, 
-    "jvalues": {"hour_label": {}}
+    "jvalues": {"hour_label": {}, "knot": {}}
   }, 
   "moment_epoch_month": {
     "allowed_crud": "insert_one_time", 
     "build_order": 7, 
     "idea_category": "moment", 
     "jkeys": {"cumulative_day": {}, "face_name": {}, "moment_rope": {}, "spark_num": {}}, 
-    "jvalues": {"month_label": {}}
+    "jvalues": {"knot": {}, "month_label": {}}
   }, 
   "moment_epoch_weekday": {
     "allowed_crud": "insert_one_time", 
     "build_order": 8, 
     "idea_category": "moment", 
     "jkeys": {"face_name": {}, "moment_rope": {}, "spark_num": {}, "weekday_order": {}}, 
-    "jvalues": {"weekday_label": {}}
+    "jvalues": {"knot": {}, "weekday_label": {}}
   }, 
   "moment_paybook": {
     "allowed_crud": "insert_multiple", 
@@ -45,14 +45,14 @@
       "spark_num": {}, 
       "tran_time": {}
     }, 
-    "jvalues": {"amount": {}}
+    "jvalues": {"amount": {}, "knot": {}}
   }, 
   "moment_timeoffi": {
     "allowed_crud": "insert_multiple", 
     "build_order": 22, 
     "idea_category": "moment", 
     "jkeys": {"face_name": {}, "moment_rope": {}, "offi_time": {}, "spark_num": {}}, 
-    "jvalues": {}
+    "jvalues": {"knot": {}}
   }, 
   "momentunit": {
     "allowed_crud": "insert_one_time", 
@@ -90,7 +90,7 @@
       "person_name": {}, 
       "spark_num": {}
     }, 
-    "jvalues": {"group_cred_lumen": {}, "group_debt_lumen": {}}
+    "jvalues": {"group_cred_lumen": {}, "group_debt_lumen": {}, "knot": {}}
   }, 
   "person_partnerunit": {
     "allowed_crud": "delete_insert_update", 
@@ -103,7 +103,7 @@
       "person_name": {}, 
       "spark_num": {}
     }, 
-    "jvalues": {"partner_cred_lumen": {}, "partner_debt_lumen": {}}
+    "jvalues": {"knot": {}, "partner_cred_lumen": {}, "partner_debt_lumen": {}}
   }, 
   "person_plan_awardunit": {
     "allowed_crud": "delete_insert_update", 
@@ -116,7 +116,7 @@
       "plan_rope": {}, 
       "spark_num": {}
     }, 
-    "jvalues": {"give_force": {}, "take_force": {}}
+    "jvalues": {"give_force": {}, "knot": {}, "take_force": {}}
   }, 
   "person_plan_factunit": {
     "allowed_crud": "delete_insert_update", 
@@ -129,7 +129,7 @@
       "plan_rope": {}, 
       "spark_num": {}
     }, 
-    "jvalues": {"fact_lower": {}, "fact_state": {}, "fact_upper": {}}
+    "jvalues": {"fact_lower": {}, "fact_state": {}, "fact_upper": {}, "knot": {}}
   }, 
   "person_plan_healerunit": {
     "allowed_crud": "delete_insert", 
@@ -142,7 +142,7 @@
       "plan_rope": {}, 
       "spark_num": {}
     }, 
-    "jvalues": {}
+    "jvalues": {"knot": {}}
   }, 
   "person_plan_partyunit": {
     "allowed_crud": "delete_insert", 
@@ -155,7 +155,7 @@
       "plan_rope": {}, 
       "spark_num": {}
     }, 
-    "jvalues": {"solo": {}}
+    "jvalues": {"knot": {}, "solo": {}}
   }, 
   "person_plan_reason_caseunit": {
     "allowed_crud": "delete_insert_update", 
@@ -169,7 +169,7 @@
       "reason_state": {}, 
       "spark_num": {}
     }, 
-    "jvalues": {"reason_divisor": {}, "reason_lower": {}, "reason_upper": {}}
+    "jvalues": {"knot": {}, "reason_divisor": {}, "reason_lower": {}, "reason_upper": {}}
   }, 
   "person_plan_reasonunit": {
     "allowed_crud": "delete_insert_update", 
@@ -182,7 +182,7 @@
       "reason_context": {}, 
       "spark_num": {}
     }, 
-    "jvalues": {"active_requisite": {}}
+    "jvalues": {"active_requisite": {}, "knot": {}}
   }, 
   "person_planunit": {
     "allowed_crud": "delete_insert_update", 
@@ -195,6 +195,7 @@
       "close": {}, 
       "denom": {}, 
       "gogo_want": {}, 
+      "knot": {}, 
       "morph": {}, 
       "numor": {}, 
       "pledge": {}, 
@@ -213,6 +214,7 @@
       "debtor_respect": {}, 
       "fund_grain": {}, 
       "fund_pool": {}, 
+      "knot": {}, 
       "mana_grain": {}, 
       "max_tree_traverse": {}, 
       "respect_grain": {}

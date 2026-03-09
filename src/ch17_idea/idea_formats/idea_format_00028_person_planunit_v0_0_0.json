@@ -6,6 +6,7 @@
     "denom"       : { "otx_key": false }, 
     "face_name"   : { "otx_key": true  }, 
     "gogo_want"   : { "otx_key": false }, 
+    "knot"        : { "otx_key": false }, 
     "morph"       : { "otx_key": false }, 
     "numor"       : { "otx_key": false }, 
     "person_name" : { "otx_key": true  }, 

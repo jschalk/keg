@@ -216,10 +216,10 @@ def test_save_idea_csv_Arg_idea_format_00021_person_partnerunit_v0_0_0_SaveToCSV
 
     # THEN
     assert os_path_exists(csv_example_path)
-    sue1_name_example_csv = """spark_num,face_name,moment_rope,person_name,partner_name,partner_cred_lumen,partner_debt_lumen
-,,;amy56;,Sue,Bob,13,29
-,,;amy56;,Sue,Sue,11,23
-,,;amy56;,Sue,Yao,41,37
+    sue1_name_example_csv = """spark_num,face_name,moment_rope,person_name,partner_name,partner_cred_lumen,partner_debt_lumen,knot
+,,;amy56;,Sue,Bob,13,29,
+,,;amy56;,Sue,Sue,11,23,
+,,;amy56;,Sue,Yao,41,37,
 """
     idea_file_str = open_file(idea_moments_dir(), name_filename)
     print(f"      {idea_file_str=}")
@@ -232,11 +232,11 @@ def test_save_idea_csv_Arg_idea_format_00021_person_partnerunit_v0_0_0_SaveToCSV
 
     # THEN
     assert os_path_exists(csv_example_path)
-    sue2_partner_example_csv = """spark_num,face_name,moment_rope,person_name,partner_name,partner_cred_lumen,partner_debt_lumen
-,,;amy56;,Sue,Bob,13,29
-,,;amy56;,Sue,Sue,11,23
-,,;amy56;,Sue,Yao,41,37
-,,;amy56;,Sue,Zia,1,1
+    sue2_partner_example_csv = """spark_num,face_name,moment_rope,person_name,partner_name,partner_cred_lumen,partner_debt_lumen,knot
+,,;amy56;,Sue,Bob,13,29,
+,,;amy56;,Sue,Sue,11,23,
+,,;amy56;,Sue,Yao,41,37,
+,,;amy56;,Sue,Zia,1,1,
 """
     assert open_file(idea_moments_dir(), name_filename) == sue2_partner_example_csv
 

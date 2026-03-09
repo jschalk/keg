@@ -139,7 +139,7 @@ def test_get_all_person_calc_args_ReturnsObj():
         kw.person_partnerunit,
     }
 
-    assert len(all_person_calc_args) == 78
+    assert len(all_person_calc_args) == 79
 
 
 def test_get_person_config_dict_ReturnsObj_CheckArgDataTypesKeysExist():
@@ -240,6 +240,7 @@ def test_get_person_calc_dimen_args_ReturnsObj():
         kw.problem_bool,
         kw.gogo_want,
         kw.plan_rope,
+        kw.knot,
         kw.begin,
     }
     print(f"{person_groupunit_args=}")

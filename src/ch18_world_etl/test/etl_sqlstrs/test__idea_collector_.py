@@ -87,9 +87,10 @@ def test_get_all_idea_dataframes_ReturnsObj_Scenario0_TranslateSheetNames(
         kw.cumulative_minute,
         kw.moment_rope,
         kw.hour_label,
+        kw.knot,
     ]
-    row1 = [spark1, exx.sue, minute_360, exx.a23, hour6am]
-    row2 = [spark1, exx.sue, minute_420, exx.a23, hour7am]
+    row1 = [spark1, exx.sue, minute_360, exx.a23, hour6am, ";"]
+    row2 = [spark1, exx.sue, minute_420, exx.a23, hour7am, ";"]
 
     df1 = DataFrame([row1, row2], columns=idea_columns)
     br00003_str = "example_br00003"
@@ -124,9 +125,10 @@ def test_get_all_idea_dataframes_ReturnsObj_Scenario1(temp_dir_setup):
         kw.cumulative_minute,
         kw.moment_rope,
         kw.hour_label,
+        kw.knot,
     ]
-    row1 = [spark1, exx.sue, minute_360, exx.a23, hour6am]
-    row2 = [spark1, exx.sue, minute_420, exx.a23, hour7am]
+    row1 = [spark1, exx.sue, minute_360, exx.a23, hour6am, ";"]
+    row2 = [spark1, exx.sue, minute_420, exx.a23, hour7am, ";"]
     incomplete_idea_columns = [
         kw.spark_num,
         kw.face_name,

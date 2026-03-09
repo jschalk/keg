@@ -91,8 +91,9 @@ def _set_moment_dict_momentbud(cursor: sqlite3_Cursor, moment_dict: dict):
         row_moment_rope = mmtpayy_row[0]
         row_person_name = mmtpayy_row[1]
         row_bud_time = mmtpayy_row[2]
-        row_quota = mmtpayy_row[3]
-        row_celldepth = mmtpayy_row[4]
+        row_knot = mmtpayy_row[3]
+        row_quota = mmtpayy_row[4]
+        row_celldepth = mmtpayy_row[5]
         person_keylist = [row_person_name, "person_name"]
         set_in_nested_dict(personbudhistorys_dict, person_keylist, row_person_name)
         keylist = [row_person_name, "buds", row_bud_time]

@@ -194,17 +194,91 @@ def test_get_atom_config_dict_EveryCrudOperationHasPersonDeltaOrderGroup():
     assert 25 == q_order(kw.UPDATE, kw.personunit)
 
 
-def _get_atom_config_jkeys_len(x_dimen: str) -> int:
+def person_config_jkeys(person_config: dict[str, dict], dimen: str) -> set[str]:
+    """Return expected atom_config jkeys from person_config"""
+    jkeys = set(person_config.get(dimen).get(kw.jkeys).keys())
+    jkeys.remove(kw.person_name)
+    return jkeys
+
+
+def person_config_jvalues(person_config: dict[str, dict], dimen: str) -> set[str]:
+    """Return expected atom_config jvalues from person_config"""
+    expected_jvalues = set()
+    for jvalue_arg, jvalue_dict in person_config.get(dimen).get(kw.jvalues).items():
+        if jvalue_dict.get("calc_by_conpute") == False:
+            expected_jvalues.add(jvalue_arg)
+    if kw.knot in expected_jvalues:
+        expected_jvalues.remove(kw.knot)
+    return expected_jvalues
+
+
+def test_get_atom_config_dict_CheckPersonConfigArgs():
+    # ESTABLISH
+    p_config = get_person_config_dict()
+
+    # WHEN / THEN
+    # print(person_config.get(kw.personunit).get(kw.jkeys).keys())
+    # print(person_config.get(kw.person_partner_membership).get(kw.jkeys).keys())
+    # print(person_config.get(kw.person_plan_reasonunit).get(kw.jvalues).keys())
+    prnmemb_k_args = person_config_jkeys(p_config, kw.person_partner_membership)
+    prnptnr_k_args = person_config_jkeys(p_config, kw.person_partnerunit)
+    prnawar_k_args = person_config_jkeys(p_config, kw.person_plan_awardunit)
+    prnfact_k_args = person_config_jkeys(p_config, kw.person_plan_factunit)
+    prnheal_k_args = person_config_jkeys(p_config, kw.person_plan_healerunit)
+    prncase_k_args = person_config_jkeys(p_config, kw.person_plan_reason_caseunit)
+    prnreas_k_args = person_config_jkeys(p_config, kw.person_plan_reasonunit)
+    prnplan_k_args = person_config_jkeys(p_config, kw.person_planunit)
+    prnunit_k_args = person_config_jkeys(p_config, kw.personunit)
+    prnmemb_v_args = person_config_jvalues(p_config, kw.person_partner_membership)
+    prnptnr_v_args = person_config_jvalues(p_config, kw.person_partnerunit)
+    prnawar_v_args = person_config_jvalues(p_config, kw.person_plan_awardunit)
+    prnfact_v_args = person_config_jvalues(p_config, kw.person_plan_factunit)
+    prnheal_v_args = person_config_jvalues(p_config, kw.person_plan_healerunit)
+    prncase_v_args = person_config_jvalues(p_config, kw.person_plan_reason_caseunit)
+    prnreas_v_args = person_config_jvalues(p_config, kw.person_plan_reasonunit)
+    prnplan_v_args = person_config_jvalues(p_config, kw.person_planunit)
+    prnunit_v_args = person_config_jvalues(p_config, kw.personunit)
+
+    assert prnmemb_k_args == atom_config_k_args(kw.person_partner_membership)
+    assert prnptnr_k_args == atom_config_k_args(kw.person_partnerunit)
+    assert prnawar_k_args == atom_config_k_args(kw.person_plan_awardunit)
+    assert prnfact_k_args == atom_config_k_args(kw.person_plan_factunit)
+    assert prnheal_k_args == atom_config_k_args(kw.person_plan_healerunit)
+    assert prncase_k_args == atom_config_k_args(kw.person_plan_reason_caseunit)
+    assert prnreas_k_args == atom_config_k_args(kw.person_plan_reasonunit)
+    assert prnplan_k_args == atom_config_k_args(kw.person_planunit)
+    assert prnunit_k_args == atom_config_k_args(kw.personunit)
+
+    assert prnmemb_v_args == atom_config_v_args(kw.person_partner_membership)
+    assert prnptnr_v_args == atom_config_v_args(kw.person_partnerunit)
+    assert prnawar_v_args == atom_config_v_args(kw.person_plan_awardunit)
+    assert prnfact_v_args == atom_config_v_args(kw.person_plan_factunit)
+    assert prnheal_v_args == atom_config_v_args(kw.person_plan_healerunit)
+    assert prncase_v_args == atom_config_v_args(kw.person_plan_reason_caseunit)
+    assert prnreas_v_args == atom_config_v_args(kw.person_plan_reasonunit)
+    assert prnplan_v_args == atom_config_v_args(kw.person_planunit)
+    assert prnunit_v_args == atom_config_v_args(kw.personunit)
+
+
+def atom_config_k_args(x_dimen: str) -> set[str]:
     jkeys_key_list = [x_dimen, kw.jkeys]
-    return len(get_from_nested_dict(get_atom_config_dict(), jkeys_key_list))
+    return set(get_from_nested_dict(get_atom_config_dict(), jkeys_key_list).keys())
+
+
+def atom_config_v_args(x_dimen: str) -> set[int]:
+    jvalues_key_list = [x_dimen, kw.jvalues]
+    return set(get_from_nested_dict(get_atom_config_dict(), jvalues_key_list).keys())
+
+
+def _get_atom_config_jkeys_len(x_dimen: str) -> int:
+    return len(atom_config_k_args(x_dimen))
 
 
 def _get_atom_config_jvalues_len(x_dimen: str) -> int:
-    jvalues_key_list = [x_dimen, kw.jvalues]
-    return len(get_from_nested_dict(get_atom_config_dict(), jvalues_key_list))
+    return len(atom_config_v_args(x_dimen))
 
 
-def test_get_atom_config_dict_CheckEachDimenHasCorrectArgCount():
+def test_get_atom_config_dict_CheckEachDimenArgCount():
     # ESTABLISH / WHEN / THEN
     assert _get_atom_config_jkeys_len(kw.personunit) == 0
     assert _get_atom_config_jkeys_len(kw.person_partnerunit) == 1
@@ -553,6 +627,7 @@ def test_get_allowed_class_types_ReturnsObj():
         kw.TitleTerm,
         kw.LabelTerm,
         kw.RopeTerm,
+        kw.KnotTerm,
         "float",
         "bool",
     }

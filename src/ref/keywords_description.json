@@ -186,7 +186,7 @@
   "keeps_buildable": ", Person conpute", 
   "keeps_justified": ", Person conpute", 
   "kids": "TODO", 
-  "knot": ", Moment arg", 
+  "knot": ", Moment arg, Person seed, Plan seed, Reason seed, Case seed, Fact seed, Award seed, Labor seed, Healer seed", 
   "KnotTerm": "str first used in ch04. A string to used as a delimiter in RopeTerms.", 
   "labelmap": "TODO", 
   "LabelTerm": "str first used in ch01. A string representation of a tree node. Nodes cannot contain RopeTerm knot", 

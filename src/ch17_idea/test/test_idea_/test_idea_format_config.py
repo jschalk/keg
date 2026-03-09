@@ -58,7 +58,7 @@ def test_get_idearef_obj_ReturnsObj():
         kw.momentunit,
     }
     assert x_idearef.attributes != {}
-    assert len(x_idearef.attributes) == 7
+    assert len(x_idearef.attributes) == 8
 
 
 def test_get_headers_list_ReturnsObj():
@@ -77,6 +77,7 @@ def test_get_headers_list_ReturnsObj():
         kw.partner_name,
         kw.partner_cred_lumen,
         kw.partner_debt_lumen,
+        kw.knot,
     ]
 
 
@@ -102,7 +103,7 @@ def test_get_sorted_headers_str_ReturnsObj_Scenario0_SingleExample():
     br00021_headers = get_sorted_headers_str(filebasename)
 
     # THEN
-    expected_br00021_headers_str = f"{kw.moment_rope},{kw.person_name},{kw.partner_name},{kw.partner_cred_lumen},{kw.partner_debt_lumen}"
+    expected_br00021_headers_str = f"{kw.moment_rope},{kw.person_name},{kw.partner_name},{kw.partner_cred_lumen},{kw.partner_debt_lumen},{kw.knot}"
     assert br00021_headers == expected_br00021_headers_str
 
 
@@ -189,7 +190,7 @@ def test_get_idearef_obj_HasAttrs_idea_format_00021_person_partnerunit_v0_0_0():
     format_00001_idearef = get_idearef_obj(idea_name)
 
     # THEN
-    assert len(format_00001_idearef.attributes) == 7
+    assert len(format_00001_idearef.attributes) == 8
     assert format_00001_idearef.attributes == {
         kw.partner_name: {kw.otx_key: True},
         kw.partner_cred_lumen: {kw.otx_key: False},
@@ -198,6 +199,7 @@ def test_get_idearef_obj_HasAttrs_idea_format_00021_person_partnerunit_v0_0_0():
         kw.face_name: {kw.otx_key: True},
         kw.moment_rope: {kw.otx_key: True},
         kw.person_name: {kw.otx_key: True},
+        kw.knot: {kw.otx_key: False},
     }
     headers_list = format_00001_idearef.get_headers_list()
     assert headers_list[0] == kw.spark_num
@@ -214,11 +216,11 @@ def test_get_idearef_obj_HasAttrs_idea_format_00020_person_partner_membership_v0
     idea_name = idea_format_00020_person_partner_membership_v0_0_0()
 
     # WHEN
-    format_00021_idearef = get_idearef_obj(idea_name)
+    format_00020_idearef = get_idearef_obj(idea_name)
 
     # THEN
-    assert len(format_00021_idearef.attributes) == 8
-    headers_list = format_00021_idearef.get_headers_list()
+    assert len(format_00020_idearef.attributes) == 9
+    headers_list = format_00020_idearef.get_headers_list()
     assert headers_list[0] == kw.spark_num
     assert headers_list[1] == kw.face_name
     assert headers_list[2] == kw.moment_rope
@@ -227,6 +229,7 @@ def test_get_idearef_obj_HasAttrs_idea_format_00020_person_partner_membership_v0
     assert headers_list[5] == kw.group_title
     assert headers_list[6] == kw.group_cred_lumen
     assert headers_list[7] == kw.group_debt_lumen
+    assert headers_list[8] == kw.knot
 
 
 def test_get_idearef_obj_HasAttrs_idea_format_00013_planunit_v0_0_0():

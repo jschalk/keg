@@ -88,9 +88,10 @@ def test_moment_build_from_df_ReturnsObj_Scenario0_OneMomentRope(
     assert gen_momentunit.moment_rope == exx.a23
     assert gen_momentunit.moment_mstr_dir == x_moments_dir
     assert gen_momentunit.epoch == expected_amy23_momentunit.epoch
-    assert (
-        gen_momentunit.personbudhistorys == expected_amy23_momentunit.personbudhistorys
-    )
+    expected_personbudhistorys = expected_amy23_momentunit.personbudhistorys
+    print(expected_personbudhistorys)
+    print(gen_momentunit.personbudhistorys)
+    assert gen_momentunit.personbudhistorys == expected_personbudhistorys
     a23_tranunits = expected_amy23_momentunit.paybook.tranunits
     assert gen_momentunit.paybook.tranunits == a23_tranunits
     # print(f"{gen_momentunit.personbudhistorys=}")
@@ -147,16 +148,16 @@ def test_moment_build_from_df_ReturnsObj_Scenario1_TwoMomentRopes(
         fund_grain=x_fund_grain,
         mana_grain=x_mana_grain,
         respect_grain=x_respect_grain,
-        knot=default_knot_if_None(),
+        knot=exx.slash,
         epoch=five_epochunit,
     )
     assert x_momentunits
-    assert x_momentunits.get(exx.a23) != None
-    creg_momentunit = x_momentunits.get(exx.a23)
+    assert x_momentunits.get(exx.a23_slash) != None
+    creg_momentunit = x_momentunits.get(exx.a23_slash)
     assert creg_momentunit.fund_grain == x_fund_grain
     assert creg_momentunit.respect_grain == x_respect_grain
     assert creg_momentunit.mana_grain == x_mana_grain
-    assert creg_momentunit.moment_rope == exx.a23
+    assert creg_momentunit.moment_rope == exx.a23_slash
     assert creg_momentunit.moment_mstr_dir == x_moments_dir
     assert creg_momentunit.epoch == amy23_momentunit.epoch
     assert len(creg_momentunit.personbudhistorys) == 3

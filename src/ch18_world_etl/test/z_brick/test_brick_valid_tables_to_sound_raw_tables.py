@@ -34,6 +34,7 @@ def test_etl_brick_valid_tables_to_sound_raw_tables_PopulatesValidTable_Scenario
         kw.partner_name,
         kw.otx_rope,
         kw.inx_rope,
+        kw.knot,
     ]
     create_idea_sorted_table(cursor0, br00117_valid_tablename, set(br00117_columns))
     insert_into_clause = f"""INSERT INTO {br00117_valid_tablename} (
@@ -44,11 +45,12 @@ def test_etl_brick_valid_tables_to_sound_raw_tables_PopulatesValidTable_Scenario
 , {kw.partner_name}
 , {kw.otx_rope}
 , {kw.inx_rope}
+, {kw.knot}
 )"""
     values_clause = f"""
 VALUES
-  ({spark1}, '{exx.sue}', '{exx.a23}', '{exx.bob}', '{exx.yao}', '{exx.yao}', '{yao_inx}')
-, ({spark1}, '{exx.sue}', '{exx.a23}', '{exx.bob}', '{exx.bob}', '{exx.bob}', '{bob_inx}')
+  ({spark1}, '{exx.sue}', '{exx.a23}', '{exx.bob}', '{exx.yao}', '{exx.yao}', '{yao_inx}', ';')
+, ({spark1}, '{exx.sue}', '{exx.a23}', '{exx.bob}', '{exx.bob}', '{exx.bob}', '{bob_inx}', ';')
 ;
 """
     cursor0.execute(f"{insert_into_clause} {values_clause}")
@@ -61,6 +63,7 @@ VALUES
         kw.inx_rope,
         kw.otx_knot,
         kw.inx_knot,
+        kw.knot,
         kw.unknown_str,
     ]
     create_idea_sorted_table(cursor0, br00045_valid_tablename, br00045_columns)
@@ -71,13 +74,14 @@ VALUES
 , {kw.inx_rope}
 , {kw.otx_knot}
 , {kw.inx_knot}
+, {kw.knot}
 , {kw.unknown_str}
 )"""
     values_clause = f"""
 VALUES
-  ({spark2}, '{exx.sue}', '{exx.sue}', '{exx.sue}', '{rdx}', '{rdx}', '{ukx}')
-, ({spark5}, '{exx.sue}', '{exx.bob}', '{bob_inx}', '{rdx}', '{rdx}', '{ukx}')
-, ({spark7}, '{exx.yao}', '{exx.yao}', '{yao_inx}', '{rdx}', '{rdx}', '{ukx}')
+  ({spark2}, '{exx.sue}', '{exx.sue}', '{exx.sue}', '{rdx}', '{rdx}', ';', '{ukx}')
+, ({spark5}, '{exx.sue}', '{exx.bob}', '{bob_inx}', '{rdx}', '{rdx}', ';', '{ukx}')
+, ({spark7}, '{exx.yao}', '{exx.yao}', '{yao_inx}', '{rdx}', '{rdx}', ';', '{ukx}')
 ;
 """
     cursor0.execute(f"{insert_into_clause} {values_clause}")
@@ -96,28 +100,31 @@ VALUES
     assert get_row_count(cursor0, prnptnr_s_put_raw_tblname) == 2
     b117 = "br00117"
     b045 = "br00045"
-    ex_rope0 = (b117, spark1, exx.sue, exx.yao, yao_inx, None, None, None, None)
-    ex_rope1 = (b117, spark1, exx.sue, exx.bob, bob_inx, None, None, None, None)
-    ex_rope2 = (b045, spark2, exx.sue, exx.sue, exx.sue, rdx, rdx, ukx, None)
-    ex_rope3 = (b045, spark5, exx.sue, exx.bob, bob_inx, rdx, rdx, ukx, None)
-    ex_rope4 = (b045, spark7, exx.yao, exx.yao, yao_inx, rdx, rdx, ukx, None)
+    ex_row0 = (b117, spark1, exx.sue, exx.yao, yao_inx, None, None, None, None)
+    ex_row1 = (b117, spark1, exx.sue, exx.bob, bob_inx, None, None, None, None)
+    ex_row2 = (b045, spark2, exx.sue, exx.sue, exx.sue, rdx, rdx, ukx, None)
+    ex_row3 = (b045, spark5, exx.sue, exx.bob, bob_inx, rdx, rdx, ukx, None)
+    ex_row4 = (b045, spark7, exx.yao, exx.yao, yao_inx, rdx, rdx, ukx, None)
     select_agg_sqlstr = f"""SELECT * FROM {trlrope_s_raw_tablename};"""
     cursor0.execute(select_agg_sqlstr)
 
     rows = cursor0.fetchall()
     assert len(rows) == 5
-    assert rows[0] == ex_rope2
-    assert rows[1] == ex_rope3
-    assert rows[2] == ex_rope4
-    assert rows[3] == ex_rope0
-    assert rows[4] == ex_rope1
+    # print(f"{ex_rope2=}")
+    # print(f"{rows[0]=}")
+    assert rows[0] == ex_row2
+    assert rows[1] == ex_row3
+    assert rows[2] == ex_row4
+    assert rows[3] == ex_row0
+    assert rows[4] == ex_row1
 
     select_agg_sqlstr = f"""SELECT * FROM {prnptnr_s_put_raw_tblname};"""
     cursor0.execute(select_agg_sqlstr)
     rows = cursor0.fetchall()
-    print(rows)
+    # print(rows)
+    print(f"{rows[0]=}")
     assert len(rows) == 2
-    assert rows == [
-        (b117, 1, exx.sue, exx.a23, exx.bob, exx.yao, None, None, None),
-        (b117, 1, exx.sue, exx.a23, exx.bob, exx.bob, None, None, None),
-    ]
+    ex_row_b0 = (b117, 1, exx.sue, exx.a23, exx.bob, exx.yao, None, None, ";", None)
+    ex_row_b1 = (b117, 1, exx.sue, exx.a23, exx.bob, exx.bob, None, None, ";", None)
+    assert rows[0] == ex_row_b0
+    assert rows == [ex_row_b0, ex_row_b1]

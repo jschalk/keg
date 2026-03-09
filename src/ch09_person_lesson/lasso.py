@@ -18,8 +18,7 @@ class LassoUnit:
     knot: KnotTerm = None
 
     def make_path(self) -> str:
-        # rope_labels = get_all_rope_labels(self.rope, self.knot)
-        rope_labels = get_all_rope_labels(self.moment_rope)
+        rope_labels = get_all_rope_labels(self.moment_rope, self.knot)
         return create_directory_path(x_list=[*rope_labels])
 
 

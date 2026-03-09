@@ -26,7 +26,8 @@ from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
 def test_create_prnunit_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     # ESTABLISH
-    x_moment_rope = exx.a23
+    x_moment_rope = exx.a23_dash
+    x_knot = exx.dash
     x_person_name = "Sue"
     x_credor_respect = 88.2
     x_debtor_respect = 88.4
@@ -47,11 +48,12 @@ def test_create_prnunit_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
         kw.max_tree_traverse: x_max_tree_traverse,
         kw.mana_grain: x_mana_grain,
         kw.respect_grain: x_respect_grain,
+        kw.knot: x_knot,
     }
     etl_config = get_etl_config()
     prnunit = kw.personunit
     dst_columns = get_prime_columns(prnunit, ["h", "agg", "put"], etl_config)
-    print(f"{dst_columns=}")
+    # print(f"{dst_columns=}")
     # all args included in values dict
     assert dst_columns == set(values_dict.keys())
 
@@ -63,8 +65,8 @@ def test_create_prnunit_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     create_sound_and_heard_tables(cursor0)
     table_name = "personunit_h_put_agg"
     expected_sqlstr = create_insert_query(cursor0, table_name, values_dict)
-    # print(expected_sqlstr)
-    # print("")
+    print(expected_sqlstr)
+    print("")
     print(insert_sqlstr)
     assert insert_sqlstr == expected_sqlstr
 
@@ -72,20 +74,6 @@ def test_create_prnunit_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 def test_create_prnplan_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     # ESTABLISH
     x_person_name = "Sue"
-    x_active = 1
-    x_all_partner_cred = 2
-    x_all_partner_debt = 3
-    x_descendant_pledge_count = 4
-    x_fund_cease = 5
-    x_fund_grain = 6
-    x_fund_onset = 7
-    x_fund_ratio = 8
-    x_gogo_calc = 9
-    x_healerunit_ratio = 10
-    x_tree_level = 11
-    x_range_evaluated = 12
-    x_stop_calc = 13
-    x_case_task = 14
     x_addin = 15
     x_begin = 16
     x_close = 17
@@ -98,6 +86,7 @@ def test_create_prnplan_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     x_pledge = 25
     x_problem_bool = 26
     x_stop_want = 27
+    x_knot = exx.dash
     values_dict = {
         kw.spark_num: 77,
         kw.face_name: exx.yao,
@@ -111,6 +100,7 @@ def test_create_prnplan_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
         kw.morph: x_morph,
         kw.numor: x_numor,
         kw.plan_rope: x_rope,
+        kw.knot: x_knot,
         kw.pledge: x_pledge,
         kw.problem_bool: x_problem_bool,
         kw.stop_want: x_stop_want,
@@ -130,9 +120,9 @@ def test_create_prnplan_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     create_sound_and_heard_tables(cursor0)
     table_name = "person_planunit_h_put_agg"
     expected_sqlstr = create_insert_query(cursor0, table_name, values_dict)
-    # print(expected_sqlstr)
+    print(expected_sqlstr)
     # print("")
-    print(insert_sqlstr)
+    # print(insert_sqlstr)
     assert insert_sqlstr == expected_sqlstr
 
 
@@ -140,6 +130,7 @@ def test_create_prnreas_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     # ESTABLISH
     x_person_name = "Sue"
     x_rope = 1
+    x_knot = exx.dash
     x_reason_context = 2
     x_active_requisite = 3
     values_dict = {
@@ -149,6 +140,7 @@ def test_create_prnreas_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
         kw.plan_rope: x_rope,
         kw.reason_context: x_reason_context,
         kw.active_requisite: x_active_requisite,
+        kw.knot: x_knot,
     }
     # all args included in values dict
     etl_config = get_etl_config()
@@ -175,6 +167,7 @@ def test_create_prncase_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     # ESTABLISH
     x_person_name = "Sue"
     x_rope = 1
+    x_knot = exx.dash
     x_reason_context = 2
     x_reason_state = 3
     x_reason_lower = 4
@@ -190,6 +183,7 @@ def test_create_prncase_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
         f"{kw.reason_lower}_otx": x_reason_lower,
         f"{kw.reason_upper}_otx": x_reason_upper,
         kw.reason_divisor: x_reason_divisor,
+        kw.knot: x_knot,
     }
     # all args included in values dict
     etl_config = get_etl_config()
@@ -216,7 +210,7 @@ def test_create_prncase_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 
 # def test_create_prnawar_h_put_agg_insert_sqlstr_ReturnsObj():
 #     # ESTABLISH
-#     x_moment_rope = exx.a23
+#     x_moment_rope = exx.a23_dash
 #     x_person_name = "Sue"
 #     x_rope = 1
 #     x_awardee_title = 2
@@ -262,6 +256,7 @@ def test_create_prnfact_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     # ESTABLISH
     x_person_name = "Sue"
     x_rope = 1
+    x_knot = exx.dash
     x_fact_context = 2
     x_fact_state = 3
     x_fact_lower_otx = 4
@@ -271,6 +266,7 @@ def test_create_prnfact_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
         kw.face_name: exx.yao,
         kw.person_name: x_person_name,
         kw.plan_rope: x_rope,
+        kw.knot: x_knot,
         kw.fact_context: x_fact_context,
         kw.fact_state: x_fact_state,
         f"{kw.fact_lower}_otx": x_fact_lower_otx,
@@ -301,7 +297,7 @@ def test_create_prnfact_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 
 # def test_create_prnheal_h_put_agg_insert_sqlstr_ReturnsObj():
 #     # ESTABLISH
-#     x_moment_rope = exx.a23
+#     x_moment_rope = exx.a23_dash
 #     x_person_name = "Sue"
 #     x_rope = 1
 #     x_healer_name = 2
@@ -337,12 +333,12 @@ def test_create_prnfact_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 
 # def test_create_prnlabo_h_put_agg_insert_sqlstr_ReturnsObj():
 #     # ESTABLISH
-#     x_moment_rope = exx.a23
+#     x_moment_rope = exx.a23_dash
 #     x_person_name = "Sue"
 #     x_rope = 1
 #     x_party_title = 2
 #     x_solo = 4
-#     x__person_name_is_labor = 3
+#     x_person_name_is_labor = 3
 #     values_dict = {
 #     kw.spark_num: 77,
 #     kw.face_name: exx.yao,
@@ -351,7 +347,7 @@ def test_create_prnfact_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     kw.plan_rope: x_rope,
 #     kw.party_title: x_party_title,
 #     kw.solo: x_solo,
-#     kw.person_name_is_labor: x__person_name_is_labor,
+#     kw.person_name_is_labor: x_person_name_is_labor,
 #     }
 #     all args included in values dict
 #     etl_config = get_etl_config()
@@ -378,7 +374,7 @@ def test_create_prnfact_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 
 # def test_create_prnptnr_h_put_agg_insert_sqlstr_ReturnsObj():
 #     # ESTABLISH
-#     x_moment_rope = exx.a23
+#     x_moment_rope = exx.a23_dash
 #     x_person_name = "Sue"
 #     x_partner_name = 1
 #     x_partner_cred_lumen = 2
@@ -438,7 +434,7 @@ def test_create_prnfact_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 
 # def test_create_prnmemb_h_put_agg_insert_sqlstr_ReturnsObj():
 #     # ESTABLISH
-#     x_moment_rope = exx.a23
+#     x_moment_rope = exx.a23_dash
 #     x_person_name = "Sue"
 #     x_partner_name = 1
 #     x_group_title = 2
@@ -494,7 +490,7 @@ def test_create_prnfact_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 
 # def test_create_prngrou_h_put_agg_insert_sqlstr_ReturnsObj():
 #     # ESTABLISH
-#     x_moment_rope = exx.a23
+#     x_moment_rope = exx.a23_dash
 #     x_person_name = "Sue"
 #     x_group_title = 1
 #     x_credor_pool = 2

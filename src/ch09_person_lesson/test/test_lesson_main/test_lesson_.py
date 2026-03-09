@@ -48,12 +48,24 @@ def test_LessonUnit_Exists():
     assert not x_lessonunit.face_name
     assert not x_lessonunit.moment_rope
     assert not x_lessonunit.person_name
+    # TODO get rid of underscore Attributes
     assert not x_lessonunit._lesson_id
     assert not x_lessonunit._persondelta
     assert not x_lessonunit._delta_start
     assert not x_lessonunit.lessons_dir
     assert not x_lessonunit.atoms_dir
     assert not x_lessonunit.spark_num
+    assert x_lessonunit.__dict__.keys() == {
+        kw.face_name,
+        kw.moment_rope,
+        kw.person_name,
+        "_lesson_id",
+        "_persondelta",
+        "_delta_start",
+        "lessons_dir",
+        "atoms_dir",
+        kw.spark_num,
+    }
 
 
 def test_lessonunit_shop_ReturnsObjEstablishWithEmptyArgs():

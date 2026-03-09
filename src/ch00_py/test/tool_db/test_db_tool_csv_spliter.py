@@ -207,7 +207,9 @@ def test_save_to_split_csvs_CreatesFiles_Scenario3_trim_col(
     temp_dir_setup, cursor0: Cursor
 ):
     # ESTABLISH
-    # TODO get rid of trim_col option. It's a temporary solution
+    # TODO get rid of trim_col option. It's a temporary solution that assumes the input
+    # is a single element pointer instead of a multiple element pointer seperated by
+    # delimiter.
     x_tablename = "test_table568"
     key_columns = ["hair", "user"]
     create_sql = f"""CREATE TABLE {x_tablename} (hair INTEGER,user TEXT,y_int INTEGER, "run" TEXT);"""

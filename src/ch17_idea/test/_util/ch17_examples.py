@@ -2,7 +2,7 @@ from pandas import DataFrame
 from src.ch04_rope.rope import create_rope
 from src.ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
 
-J45_ROPE = create_rope("jeffy45")
+J45_ROPE = create_rope("jeffy45", knot=exx.slash)
 
 
 def get_ex1_br00000_df() -> DataFrame:
@@ -29,17 +29,18 @@ def get_ex1_br00000_df() -> DataFrame:
 
 def get_ex1_br00001_df() -> DataFrame:
     """idea_format_00001_moment_budunit_v0_0_0
-    moment_rope,person_name,quota,bud_time,celldepth"""
+    moment_rope,person_name,bud_time,knot,quota,celldepth"""
     x_df = DataFrame(
         columns=[
             kw.moment_rope,
             kw.person_name,
-            kw.quota,
             kw.bud_time,
+            kw.knot,
+            kw.quota,
             kw.celldepth,
         ]
     )
-    x_df.loc[0] = [exx.a23, "Sue", 445, 777, 5]
+    x_df.loc[0] = [exx.a23, "Sue", 777, ";", 445, 5]
     return x_df
 
 
@@ -135,14 +136,14 @@ def get_ex2_br00000_df() -> DataFrame:
             kw.job_listen_rotations,
         ]
     )
-    x_df.loc[0] = [7, exx.a23, 1, 1, 1, 1, ";", "creg", 440640, 4]
-    x_df.loc[1] = [25, J45_ROPE, 1, 0, 1, 1, ";", "five", 1683478080, 4]
+    x_df.loc[0] = [7, exx.a23_slash, 1, 1, 1, 1, exx.slash, "creg", 440640, 4]
+    x_df.loc[1] = [25, J45_ROPE, 1, 0, 1, 1, exx.slash, "five", 1683478080, 4]
     return x_df
 
 
 def get_ex2_br00001_df() -> DataFrame:
     """idea_format_00001_moment_budunit_v0_0_0
-    moment_rope,person_name,quota,bud_time"""
+    moment_rope,person_name,quota,bud_time,knot"""
     x_df = DataFrame(
         columns=[
             kw.moment_rope,
@@ -150,19 +151,20 @@ def get_ex2_br00001_df() -> DataFrame:
             kw.quota,
             kw.bud_time,
             kw.celldepth,
+            kw.knot,
         ]
     )
-    x_df.loc[0] = [exx.a23, "Bob", 332, 999, 3]
-    x_df.loc[1] = [exx.a23, "Sue", 445, 777, 3]
-    x_df.loc[2] = [exx.a23, "Yao", 700, 222, 3]
-    x_df.loc[3] = [J45_ROPE, "Xio", 332, 999, 3]
-    x_df.loc[4] = [J45_ROPE, "Zia", 700, 222, 3]
+    x_df.loc[0] = [exx.a23_slash, "Bob", 332, 999, 3, exx.slash]
+    x_df.loc[1] = [exx.a23_slash, "Sue", 445, 777, 3, exx.slash]
+    x_df.loc[2] = [exx.a23_slash, "Yao", 700, 222, 3, exx.slash]
+    x_df.loc[3] = [J45_ROPE, "Xio", 332, 999, 3, exx.slash]
+    x_df.loc[4] = [J45_ROPE, "Zia", 700, 222, 3, exx.slash]
     return x_df
 
 
 def get_ex2_br00002_df() -> DataFrame:
     """idea_format_00002_moment_paybook_v0_0_0
-    partner_name,amount,moment_rope,person_name,tran_time"""
+    partner_name,amount,moment_rope,person_name,tran_time,knot"""
     x_df = DataFrame(
         columns=[
             kw.partner_name,
@@ -170,107 +172,114 @@ def get_ex2_br00002_df() -> DataFrame:
             kw.moment_rope,
             kw.person_name,
             kw.tran_time,
+            kw.knot,
         ]
     )
-    x_df.loc[0] = ["Zia", 888, exx.a23, "Bob", 777]
-    x_df.loc[1] = ["Zia", 234, exx.a23, "Sue", 999]
-    x_df.loc[2] = ["Zia", 234, exx.a23, "Yao", 999]
-    x_df.loc[3] = ["Zia", 234, J45_ROPE, "Yao", 999]
-    x_df.loc[4] = ["Bob", 888, exx.a23, "Zia", 777]
+    x_df.loc[0] = ["Zia", 888, exx.a23_slash, "Bob", 777, exx.slash]
+    x_df.loc[1] = ["Zia", 234, exx.a23_slash, "Sue", 999, exx.slash]
+    x_df.loc[2] = ["Zia", 234, exx.a23_slash, "Yao", 999, exx.slash]
+    x_df.loc[3] = ["Zia", 234, J45_ROPE, "Yao", 999, exx.slash]
+    x_df.loc[4] = ["Bob", 888, exx.a23_slash, "Zia", 777, exx.slash]
     return x_df
 
 
 def get_ex2_br00003_df() -> DataFrame:
     """idea_format_00003_moment_epoch_hour_v0_0_0
-    cumulative_minute,moment_rope,hour_label"""
-    x_df = DataFrame(columns=[kw.moment_rope, "hour_label", "cumulative_minute"])
-    x_df.loc[0] = [exx.a23, "12am", 60]
-    x_df.loc[1] = [exx.a23, "1am", 120]
-    x_df.loc[2] = [exx.a23, "2am", 180]
-    x_df.loc[3] = [exx.a23, "3am", 240]
-    x_df.loc[4] = [exx.a23, "4am", 300]
-    x_df.loc[5] = [exx.a23, "5am", 360]
-    x_df.loc[6] = [exx.a23, "6am", 420]
-    x_df.loc[7] = [exx.a23, "7am", 480]
-    x_df.loc[8] = [exx.a23, "8am", 540]
-    x_df.loc[9] = [exx.a23, "9am", 600]
-    x_df.loc[10] = [exx.a23, "10am", 660]
-    x_df.loc[11] = [exx.a23, "11am", 720]
-    x_df.loc[12] = [exx.a23, "12pm", 780]
-    x_df.loc[13] = [exx.a23, "1pm", 840]
-    x_df.loc[14] = [exx.a23, "2pm", 900]
-    x_df.loc[15] = [exx.a23, "3pm", 960]
-    x_df.loc[16] = [exx.a23, "4pm", 1020]
-    x_df.loc[17] = [exx.a23, "5pm", 1080]
-    x_df.loc[18] = [exx.a23, "6pm", 1140]
-    x_df.loc[19] = [exx.a23, "7pm", 1200]
-    x_df.loc[20] = [exx.a23, "8pm", 1260]
-    x_df.loc[21] = [exx.a23, "9pm", 1320]
-    x_df.loc[22] = [exx.a23, "10pm", 1380]
-    x_df.loc[23] = [exx.a23, "11pm", 1440]
-    x_df.loc[24] = [J45_ROPE, "0hr", 144]
-    x_df.loc[25] = [J45_ROPE, "1hr", 288]
-    x_df.loc[26] = [J45_ROPE, "2hr", 432]
-    x_df.loc[27] = [J45_ROPE, "3hr", 576]
-    x_df.loc[28] = [J45_ROPE, "4hr", 720]
-    x_df.loc[29] = [J45_ROPE, "5hr", 864]
-    x_df.loc[30] = [J45_ROPE, "6hr", 1008]
-    x_df.loc[31] = [J45_ROPE, "7hr", 1152]
-    x_df.loc[32] = [J45_ROPE, "8hr", 1296]
-    x_df.loc[33] = [J45_ROPE, "9hr", 1440]
+    cumulative_minute,moment_rope,hour_label,knot"""
+    x_df = DataFrame(
+        columns=[kw.moment_rope, kw.hour_label, kw.cumulative_minute, kw.knot]
+    )
+    x_df.loc[0] = [exx.a23_slash, "12am", 60, exx.slash]
+    x_df.loc[1] = [exx.a23_slash, "1am", 120, exx.slash]
+    x_df.loc[2] = [exx.a23_slash, "2am", 180, exx.slash]
+    x_df.loc[3] = [exx.a23_slash, "3am", 240, exx.slash]
+    x_df.loc[4] = [exx.a23_slash, "4am", 300, exx.slash]
+    x_df.loc[5] = [exx.a23_slash, "5am", 360, exx.slash]
+    x_df.loc[6] = [exx.a23_slash, "6am", 420, exx.slash]
+    x_df.loc[7] = [exx.a23_slash, "7am", 480, exx.slash]
+    x_df.loc[8] = [exx.a23_slash, "8am", 540, exx.slash]
+    x_df.loc[9] = [exx.a23_slash, "9am", 600, exx.slash]
+    x_df.loc[10] = [exx.a23_slash, "10am", 660, exx.slash]
+    x_df.loc[11] = [exx.a23_slash, "11am", 720, exx.slash]
+    x_df.loc[12] = [exx.a23_slash, "12pm", 780, exx.slash]
+    x_df.loc[13] = [exx.a23_slash, "1pm", 840, exx.slash]
+    x_df.loc[14] = [exx.a23_slash, "2pm", 900, exx.slash]
+    x_df.loc[15] = [exx.a23_slash, "3pm", 960, exx.slash]
+    x_df.loc[16] = [exx.a23_slash, "4pm", 1020, exx.slash]
+    x_df.loc[17] = [exx.a23_slash, "5pm", 1080, exx.slash]
+    x_df.loc[18] = [exx.a23_slash, "6pm", 1140, exx.slash]
+    x_df.loc[19] = [exx.a23_slash, "7pm", 1200, exx.slash]
+    x_df.loc[20] = [exx.a23_slash, "8pm", 1260, exx.slash]
+    x_df.loc[21] = [exx.a23_slash, "9pm", 1320, exx.slash]
+    x_df.loc[22] = [exx.a23_slash, "10pm", 1380, exx.slash]
+    x_df.loc[23] = [exx.a23_slash, "11pm", 1440, exx.slash]
+    x_df.loc[24] = [J45_ROPE, "0hr", 144, exx.slash]
+    x_df.loc[25] = [J45_ROPE, "1hr", 288, exx.slash]
+    x_df.loc[26] = [J45_ROPE, "2hr", 432, exx.slash]
+    x_df.loc[27] = [J45_ROPE, "3hr", 576, exx.slash]
+    x_df.loc[28] = [J45_ROPE, "4hr", 720, exx.slash]
+    x_df.loc[29] = [J45_ROPE, "5hr", 864, exx.slash]
+    x_df.loc[30] = [J45_ROPE, "6hr", 1008, exx.slash]
+    x_df.loc[31] = [J45_ROPE, "7hr", 1152, exx.slash]
+    x_df.loc[32] = [J45_ROPE, "8hr", 1296, exx.slash]
+    x_df.loc[33] = [J45_ROPE, "9hr", 1440, exx.slash]
     return x_df
 
 
 def get_ex2_br00004_df() -> DataFrame:
     """idea_format_00004_moment_epoch_month_v0_0_0
-    cumulative_day,moment_rope,month_label"""
-    x_df = DataFrame(columns=[kw.moment_rope, kw.month_label, kw.cumulative_day])
-    x_df.loc[0] = [exx.a23, "March", 31]
-    x_df.loc[1] = [exx.a23, "April", 61]
-    x_df.loc[2] = [exx.a23, "May", 92]
-    x_df.loc[3] = [exx.a23, "June", 122]
-    x_df.loc[4] = [exx.a23, "July", 153]
-    x_df.loc[5] = [exx.a23, "August", 184]
-    x_df.loc[6] = [exx.a23, "September", 214]
-    x_df.loc[7] = [exx.a23, "October", 245]
-    x_df.loc[8] = [exx.a23, "November", 275]
-    x_df.loc[9] = [exx.a23, "December", 306]
-    x_df.loc[10] = [exx.a23, "January", 337]
-    x_df.loc[11] = [exx.a23, "February", 365]
-    x_df.loc[12] = (J45_ROPE, "Fredrick", 25)
-    x_df.loc[13] = (J45_ROPE, "Geo", 50)
-    x_df.loc[14] = (J45_ROPE, "Holocene", 75)
-    x_df.loc[15] = (J45_ROPE, "Iguana", 100)
-    x_df.loc[16] = (J45_ROPE, "Jesus", 125)
-    x_df.loc[17] = (J45_ROPE, "Keel", 150)
-    x_df.loc[18] = (J45_ROPE, "LeBron", 175)
-    x_df.loc[19] = (J45_ROPE, "Mikayla", 200)
-    x_df.loc[20] = (J45_ROPE, "Ninon", 225)
-    x_df.loc[21] = (J45_ROPE, "Obama", 250)
-    x_df.loc[22] = (J45_ROPE, "Preston", 275)
-    x_df.loc[23] = (J45_ROPE, "Quorum", 300)
-    x_df.loc[24] = (J45_ROPE, "RioGrande", 325)
-    x_df.loc[25] = (J45_ROPE, "Simon", 350)
-    x_df.loc[26] = [J45_ROPE, "Trump", 365]
+    cumulative_day,moment_rope,month_label, knot"""
+    x_df = DataFrame(
+        columns=[kw.moment_rope, kw.month_label, kw.cumulative_day, kw.knot]
+    )
+    x_df.loc[0] = [exx.a23_slash, "March", 31, exx.slash]
+    x_df.loc[1] = [exx.a23_slash, "April", 61, exx.slash]
+    x_df.loc[2] = [exx.a23_slash, "May", 92, exx.slash]
+    x_df.loc[3] = [exx.a23_slash, "June", 122, exx.slash]
+    x_df.loc[4] = [exx.a23_slash, "July", 153, exx.slash]
+    x_df.loc[5] = [exx.a23_slash, "August", 184, exx.slash]
+    x_df.loc[6] = [exx.a23_slash, "September", 214, exx.slash]
+    x_df.loc[7] = [exx.a23_slash, "October", 245, exx.slash]
+    x_df.loc[8] = [exx.a23_slash, "November", 275, exx.slash]
+    x_df.loc[9] = [exx.a23_slash, "December", 306, exx.slash]
+    x_df.loc[10] = [exx.a23_slash, "January", 337, exx.slash]
+    x_df.loc[11] = [exx.a23_slash, "February", 365, exx.slash]
+    x_df.loc[12] = (J45_ROPE, "Fredrick", 25, exx.slash)
+    x_df.loc[13] = (J45_ROPE, "Geo", 50, exx.slash)
+    x_df.loc[14] = (J45_ROPE, "Holocene", 75, exx.slash)
+    x_df.loc[15] = (J45_ROPE, "Iguana", 100, exx.slash)
+    x_df.loc[16] = (J45_ROPE, "Jesus", 125, exx.slash)
+    x_df.loc[17] = (J45_ROPE, "Keel", 150, exx.slash)
+    x_df.loc[18] = (J45_ROPE, "LeBron", 175, exx.slash)
+    x_df.loc[19] = (J45_ROPE, "Mikayla", 200, exx.slash)
+    x_df.loc[20] = (J45_ROPE, "Ninon", 225, exx.slash)
+    x_df.loc[21] = (J45_ROPE, "Obama", 250, exx.slash)
+    x_df.loc[22] = (J45_ROPE, "Preston", 275, exx.slash)
+    x_df.loc[23] = (J45_ROPE, "Quorum", 300, exx.slash)
+    x_df.loc[24] = (J45_ROPE, "RioGrande", 325, exx.slash)
+    x_df.loc[25] = (J45_ROPE, "Simon", 350, exx.slash)
+    x_df.loc[26] = [J45_ROPE, "Trump", 365, exx.slash]
     return x_df
 
 
 def get_ex2_br00005_df() -> DataFrame:
     """idea_format_00005_moment_epoch_weekday_v0_0_0
     moment_rope,weekday_label,weekday_order"""
-    x_df = DataFrame(columns=[kw.moment_rope, "weekday_label", "weekday_order"])
-    x_df.loc[0] = [exx.a23, exx.Wednesday, 0]
-    x_df.loc[1] = [exx.a23, exx.Thursday, 1]
-    x_df.loc[2] = [exx.a23, exx.Friday, 2]
-    x_df.loc[3] = [exx.a23, exx.Saturday, 3]
-    x_df.loc[4] = [exx.a23, exx.Sunday, 4]
-    x_df.loc[5] = [exx.a23, exx.Monday, 5]
-    x_df.loc[6] = [exx.a23, exx.Tuesday, 6]
-    x_df.loc[7] = [J45_ROPE, kw.Anaday, 0]
-    x_df.loc[8] = [J45_ROPE, kw.Baileyday, 1]
-    x_df.loc[9] = [J45_ROPE, kw.Chiday, 2]
-    x_df.loc[10] = [J45_ROPE, kw.Danceday, 3]
-    x_df.loc[11] = [J45_ROPE, kw.Eastday, 4]
+    x_df = DataFrame(
+        columns=[kw.moment_rope, kw.weekday_label, kw.weekday_order, kw.knot]
+    )
+    x_df.loc[0] = [exx.a23_slash, exx.Wednesday, 0, exx.slash]
+    x_df.loc[1] = [exx.a23_slash, exx.Thursday, 1, exx.slash]
+    x_df.loc[2] = [exx.a23_slash, exx.Friday, 2, exx.slash]
+    x_df.loc[3] = [exx.a23_slash, exx.Saturday, 3, exx.slash]
+    x_df.loc[4] = [exx.a23_slash, exx.Sunday, 4, exx.slash]
+    x_df.loc[5] = [exx.a23_slash, exx.Monday, 5, exx.slash]
+    x_df.loc[6] = [exx.a23_slash, exx.Tuesday, 6, exx.slash]
+    x_df.loc[7] = [J45_ROPE, kw.Anaday, 0, exx.slash]
+    x_df.loc[8] = [J45_ROPE, kw.Baileyday, 1, exx.slash]
+    x_df.loc[9] = [J45_ROPE, kw.Chiday, 2, exx.slash]
+    x_df.loc[10] = [J45_ROPE, kw.Danceday, 3, exx.slash]
+    x_df.loc[11] = [J45_ROPE, kw.Eastday, 4, exx.slash]
     return x_df
 
 
@@ -278,11 +287,11 @@ def get_ex2_br00005_df() -> DataFrame:
 #     """idea_format_00006_moment_timeoffi_v0_0_0
 #     moment_rope,offi_time,_offi_time_maxt"""
 #     x_df = DataFrame(columns=[kw.moment_rope, "offi_time", "offi_time_max"])
-#     x_df.loc[0] = [exx.a23, 100, 300]
-#     x_df.loc[1] = [exx.a23, 110, 320]
-#     x_df.loc[2] = [exx.a23, 120, 330]
-#     x_df.loc[3] = [exx.a23, 130, 340]
-#     x_df.loc[4] = [exx.a23, 140, 350]
+#     x_df.loc[0] = [exx.a23_slash, 100, 300]
+#     x_df.loc[1] = [exx.a23_slash, 110, 320]
+#     x_df.loc[2] = [exx.a23_slash, 120, 330]
+#     x_df.loc[3] = [exx.a23_slash, 130, 340]
+#     x_df.loc[4] = [exx.a23_slash, 140, 350]
 #     return x_df
 
 

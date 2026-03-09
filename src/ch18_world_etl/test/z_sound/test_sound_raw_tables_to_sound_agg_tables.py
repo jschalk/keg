@@ -272,8 +272,8 @@ VALUES
     print(rows)
     assert len(rows) == 2
     assert rows == [
-        (spark1, exx.sue, exx.a23, exx.bob, exx.bob, None, None, None),
-        (spark1, exx.sue, exx.a23, exx.yao, exx.yao, None, None, None),
+        (spark1, exx.sue, exx.a23, exx.bob, exx.bob, None, None, None, None),
+        (spark1, exx.sue, exx.a23, exx.yao, exx.yao, None, None, None, None),
     ]
 
 
@@ -410,20 +410,21 @@ VALUES
     select_agg_sqlstr = f"""SELECT * FROM {trlrope_s_agg_tablename};"""
     cursor0.execute(select_agg_sqlstr)
     rows = cursor0.fetchall()
-    print(rows)
-    assert rows == [
-        (spark1, exx.sue, exx.bob, bob_inx, None, None, None, None),
-        (spark2, exx.sue, exx.sue, exx.sue, rdx, rdx, ukx, None),
-        (spark5, exx.sue, exx.bob, bob_inx, rdx, rdx, ukx, None),
-        (spark7, exx.yao, exx.bob, yao_inx, rdx, rdx, ukx, None),
-    ]
+    ex_row0 = (spark1, exx.sue, exx.bob, bob_inx, None, None, None, None)
+    ex_row1 = (spark2, exx.sue, exx.sue, exx.sue, rdx, rdx, ukx, None)
+    ex_row2 = (spark5, exx.sue, exx.bob, bob_inx, rdx, rdx, ukx, None)
+    ex_row3 = (spark7, exx.yao, exx.bob, yao_inx, rdx, rdx, ukx, None)
+    print(f"{rows[0]=}")
+    print(f"{ex_row0=}")
+    assert rows[0] == ex_row0
+    assert rows == [ex_row0, ex_row1, ex_row2, ex_row3]
 
     select_agg_sqlstr = f"""SELECT * FROM {prnptnr_s_put_agg_tblname};"""
     cursor0.execute(select_agg_sqlstr)
     rows = cursor0.fetchall()
     print(rows)
     assert rows == [
-        (spark1, exx.sue, exx.a23, exx.bob, exx.bob, None, None, None),
-        (spark1, exx.sue, exx.a23, exx.bob, exx.yao, None, None, None),
-        (spark1, exx.sue, exx.a23, exx.yao, exx.yao, None, None, None),
+        (spark1, exx.sue, exx.a23, exx.bob, exx.bob, None, None, None, None),
+        (spark1, exx.sue, exx.a23, exx.bob, exx.yao, None, None, None, None),
+        (spark1, exx.sue, exx.a23, exx.yao, exx.yao, None, None, None, None),
     ]

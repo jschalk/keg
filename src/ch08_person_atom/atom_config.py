@@ -54,6 +54,7 @@ def get_allowed_class_types() -> set[str]:
         "int",
         "LabelTerm",
         "RopeTerm",
+        "KnotTerm",
         "ReasonNum",
         "FactNum",
     }

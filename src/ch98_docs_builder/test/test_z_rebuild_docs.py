@@ -14,6 +14,7 @@ def test_SpecialTestThatBuildsDocs(rebuild_bool):
     Intended to be the last test before the style checker (linter) tests.
     Should only create documentation and/or sort json files
     """
+    print(f"{rebuild_bool=}")
     # sourcery skip: no-conditionals-in-tests
     # ESTABLISH / WHEN / THEN
     destination_dir = "docs"
@@ -27,4 +28,3 @@ def test_SpecialTestThatBuildsDocs(rebuild_bool):
     # 4% of instances resave all json files so that they are ordered alphabetically
     if random_random() < 0.04 or rebuild_bool:
         resave_chapter_and_keyword_json_files()
-    # assert 1 == 2

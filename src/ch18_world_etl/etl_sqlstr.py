@@ -8,173 +8,173 @@ from src.ch17_idea.idea_db_tool import create_idea_sorted_table, get_default_sor
 from src.ch18_world_etl._ref.ch18_semantic_types import KnotTerm
 from src.ch18_world_etl.etl_config import create_prime_tablename
 
-CREATE_PRNAWAR_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_h_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title_ERASE TEXT)"""
-CREATE_PRNAWAR_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, awardee_title_ERASE_otx TEXT, awardee_title_ERASE_inx TEXT)"""
-CREATE_PRNAWAR_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_h_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title_ERASE TEXT)"""
-CREATE_PRNAWAR_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_h_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title TEXT, give_force REAL, take_force REAL)"""
-CREATE_PRNAWAR_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, awardee_title_otx TEXT, awardee_title_inx TEXT, give_force REAL, take_force REAL)"""
-CREATE_PRNAWAR_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_h_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title TEXT, give_force REAL, take_force REAL)"""
-CREATE_PRNAWAR_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_s_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title_ERASE TEXT, error_message TEXT)"""
-CREATE_PRNAWAR_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title_ERASE TEXT)"""
-CREATE_PRNAWAR_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_s_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title_ERASE TEXT)"""
-CREATE_PRNAWAR_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_s_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title TEXT, give_force REAL, take_force REAL, error_message TEXT)"""
-CREATE_PRNAWAR_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title TEXT, give_force REAL, take_force REAL, error_message TEXT)"""
-CREATE_PRNAWAR_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_s_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title TEXT, give_force REAL, take_force REAL)"""
-CREATE_PRNCASE_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_h_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state_ERASE TEXT)"""
-CREATE_PRNCASE_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, reason_context_otx TEXT, reason_context_inx TEXT, reason_state_ERASE_otx TEXT, reason_state_ERASE_inx TEXT)"""
-CREATE_PRNCASE_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_h_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state_ERASE TEXT)"""
-CREATE_PRNCASE_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_h_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower_otx REAL, reason_lower_inx REAL, reason_upper_otx REAL, reason_upper_inx REAL, reason_divisor INTEGER, context_plan_close TEXT, context_plan_denom TEXT, context_plan_morph TEXT, inx_epoch_diff INTEGER)"""
-CREATE_PRNCASE_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, reason_context_otx TEXT, reason_context_inx TEXT, reason_state_otx TEXT, reason_state_inx TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER)"""
-CREATE_PRNCASE_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_h_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER)"""
-CREATE_PRNCASE_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_s_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state_ERASE TEXT, error_message TEXT)"""
-CREATE_PRNCASE_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state_ERASE TEXT)"""
-CREATE_PRNCASE_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_s_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state_ERASE TEXT)"""
-CREATE_PRNCASE_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_s_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, error_message TEXT)"""
-CREATE_PRNCASE_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, error_message TEXT)"""
-CREATE_PRNCASE_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_s_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER)"""
-CREATE_PRNFACT_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_h_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context_ERASE TEXT)"""
-CREATE_PRNFACT_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, fact_context_ERASE_otx TEXT, fact_context_ERASE_inx TEXT)"""
-CREATE_PRNFACT_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_h_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context_ERASE TEXT)"""
-CREATE_PRNFACT_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_h_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower_otx REAL, fact_lower_inx REAL, fact_upper_otx REAL, fact_upper_inx REAL, context_plan_close TEXT, context_plan_denom TEXT, context_plan_morph TEXT, inx_epoch_diff INTEGER)"""
-CREATE_PRNFACT_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, fact_context_otx TEXT, fact_context_inx TEXT, fact_state_otx TEXT, fact_state_inx TEXT, fact_lower REAL, fact_upper REAL)"""
-CREATE_PRNFACT_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_h_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower REAL, fact_upper REAL)"""
-CREATE_PRNFACT_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_s_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context_ERASE TEXT, error_message TEXT)"""
-CREATE_PRNFACT_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context_ERASE TEXT)"""
-CREATE_PRNFACT_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_s_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context_ERASE TEXT)"""
-CREATE_PRNFACT_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_s_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower REAL, fact_upper REAL, error_message TEXT)"""
-CREATE_PRNFACT_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower REAL, fact_upper REAL, error_message TEXT)"""
-CREATE_PRNFACT_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_s_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower REAL, fact_upper REAL)"""
-CREATE_PRNHEAL_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_h_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name_ERASE TEXT)"""
-CREATE_PRNHEAL_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, healer_name_ERASE_otx TEXT, healer_name_ERASE_inx TEXT)"""
-CREATE_PRNHEAL_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_h_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name_ERASE TEXT)"""
-CREATE_PRNHEAL_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_h_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT)"""
-CREATE_PRNHEAL_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, healer_name_otx TEXT, healer_name_inx TEXT)"""
-CREATE_PRNHEAL_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_h_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT)"""
-CREATE_PRNHEAL_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_s_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name_ERASE TEXT, error_message TEXT)"""
-CREATE_PRNHEAL_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name_ERASE TEXT)"""
-CREATE_PRNHEAL_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_s_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name_ERASE TEXT)"""
-CREATE_PRNHEAL_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_s_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT, error_message TEXT)"""
-CREATE_PRNHEAL_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT, error_message TEXT)"""
-CREATE_PRNHEAL_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_s_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT)"""
-CREATE_PRNLABO_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_h_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title_ERASE TEXT)"""
-CREATE_PRNLABO_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, party_title_ERASE_otx TEXT, party_title_ERASE_inx TEXT)"""
-CREATE_PRNLABO_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_h_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title_ERASE TEXT)"""
-CREATE_PRNLABO_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_h_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title TEXT, solo INTEGER)"""
-CREATE_PRNLABO_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, party_title_otx TEXT, party_title_inx TEXT, solo INTEGER)"""
-CREATE_PRNLABO_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_h_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title TEXT, solo INTEGER)"""
-CREATE_PRNLABO_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_s_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title_ERASE TEXT, error_message TEXT)"""
-CREATE_PRNLABO_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title_ERASE TEXT)"""
-CREATE_PRNLABO_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_s_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title_ERASE TEXT)"""
-CREATE_PRNLABO_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_s_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title TEXT, solo INTEGER, error_message TEXT)"""
-CREATE_PRNLABO_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title TEXT, solo INTEGER, error_message TEXT)"""
-CREATE_PRNLABO_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_s_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title TEXT, solo INTEGER)"""
-CREATE_PRNMEMB_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_h_del_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title_ERASE TEXT)"""
-CREATE_PRNMEMB_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, partner_name_otx TEXT, partner_name_inx TEXT, group_title_ERASE_otx TEXT, group_title_ERASE_inx TEXT)"""
-CREATE_PRNMEMB_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_h_del_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title_ERASE TEXT)"""
-CREATE_PRNMEMB_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_h_put_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title TEXT, group_cred_lumen REAL, group_debt_lumen REAL)"""
-CREATE_PRNMEMB_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, partner_name_otx TEXT, partner_name_inx TEXT, group_title_otx TEXT, group_title_inx TEXT, group_cred_lumen REAL, group_debt_lumen REAL)"""
-CREATE_PRNMEMB_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_h_put_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title TEXT, group_cred_lumen REAL, group_debt_lumen REAL)"""
-CREATE_PRNMEMB_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_s_del_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title_ERASE TEXT, error_message TEXT)"""
-CREATE_PRNMEMB_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title_ERASE TEXT)"""
-CREATE_PRNMEMB_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_s_del_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title_ERASE TEXT)"""
-CREATE_PRNMEMB_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_s_put_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title TEXT, group_cred_lumen REAL, group_debt_lumen REAL, error_message TEXT)"""
-CREATE_PRNMEMB_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title TEXT, group_cred_lumen REAL, group_debt_lumen REAL, error_message TEXT)"""
-CREATE_PRNMEMB_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_s_put_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title TEXT, group_cred_lumen REAL, group_debt_lumen REAL)"""
-CREATE_PRNPLAN_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_h_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope_ERASE TEXT)"""
-CREATE_PRNPLAN_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_ERASE_otx TEXT, plan_rope_ERASE_inx TEXT)"""
-CREATE_PRNPLAN_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_h_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope_ERASE TEXT)"""
-CREATE_PRNPLAN_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_h_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, star INTEGER, pledge INTEGER, problem_bool INTEGER)"""
-CREATE_PRNPLAN_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, star INTEGER, pledge INTEGER, problem_bool INTEGER)"""
-CREATE_PRNPLAN_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_h_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, star INTEGER, pledge INTEGER, problem_bool INTEGER)"""
-CREATE_PRNPLAN_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_s_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope_ERASE TEXT, error_message TEXT)"""
-CREATE_PRNPLAN_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope_ERASE TEXT)"""
-CREATE_PRNPLAN_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_s_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope_ERASE TEXT)"""
-CREATE_PRNPLAN_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_s_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, star INTEGER, pledge INTEGER, problem_bool INTEGER, error_message TEXT)"""
-CREATE_PRNPLAN_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, star INTEGER, pledge INTEGER, problem_bool INTEGER, error_message TEXT)"""
-CREATE_PRNPLAN_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_s_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, star INTEGER, pledge INTEGER, problem_bool INTEGER)"""
-CREATE_PRNPTNR_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_h_del_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name_ERASE TEXT)"""
-CREATE_PRNPTNR_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, partner_name_ERASE_otx TEXT, partner_name_ERASE_inx TEXT)"""
-CREATE_PRNPTNR_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_h_del_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name_ERASE TEXT)"""
-CREATE_PRNPTNR_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_h_put_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, partner_cred_lumen REAL, partner_debt_lumen REAL)"""
-CREATE_PRNPTNR_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, partner_name_otx TEXT, partner_name_inx TEXT, partner_cred_lumen REAL, partner_debt_lumen REAL)"""
-CREATE_PRNPTNR_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_h_put_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, partner_cred_lumen REAL, partner_debt_lumen REAL)"""
-CREATE_PRNPTNR_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_s_del_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name_ERASE TEXT, error_message TEXT)"""
-CREATE_PRNPTNR_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name_ERASE TEXT)"""
-CREATE_PRNPTNR_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_s_del_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name_ERASE TEXT)"""
-CREATE_PRNPTNR_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_s_put_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, partner_cred_lumen REAL, partner_debt_lumen REAL, error_message TEXT)"""
-CREATE_PRNPTNR_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, partner_cred_lumen REAL, partner_debt_lumen REAL, error_message TEXT)"""
-CREATE_PRNPTNR_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_s_put_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, partner_cred_lumen REAL, partner_debt_lumen REAL)"""
-CREATE_PRNREAS_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_h_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context_ERASE TEXT)"""
-CREATE_PRNREAS_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, reason_context_ERASE_otx TEXT, reason_context_ERASE_inx TEXT)"""
-CREATE_PRNREAS_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_h_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context_ERASE TEXT)"""
-CREATE_PRNREAS_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_h_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, active_requisite INTEGER)"""
-CREATE_PRNREAS_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, reason_context_otx TEXT, reason_context_inx TEXT, active_requisite INTEGER)"""
-CREATE_PRNREAS_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_h_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, active_requisite INTEGER)"""
-CREATE_PRNREAS_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_s_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context_ERASE TEXT, error_message TEXT)"""
-CREATE_PRNREAS_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context_ERASE TEXT)"""
-CREATE_PRNREAS_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_s_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context_ERASE TEXT)"""
-CREATE_PRNREAS_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_s_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, active_requisite INTEGER, error_message TEXT)"""
-CREATE_PRNREAS_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, active_requisite INTEGER, error_message TEXT)"""
-CREATE_PRNREAS_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_s_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, active_requisite INTEGER)"""
-CREATE_PRNUNIT_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_h_del_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name_ERASE TEXT)"""
-CREATE_PRNUNIT_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_ERASE_otx TEXT, person_name_ERASE_inx TEXT)"""
-CREATE_PRNUNIT_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_h_del_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name_ERASE TEXT)"""
-CREATE_PRNUNIT_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_h_put_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL)"""
-CREATE_PRNUNIT_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL)"""
-CREATE_PRNUNIT_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_h_put_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL)"""
-CREATE_PRNUNIT_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_s_del_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name_ERASE TEXT, error_message TEXT)"""
-CREATE_PRNUNIT_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name_ERASE TEXT)"""
-CREATE_PRNUNIT_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_s_del_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name_ERASE TEXT)"""
-CREATE_PRNUNIT_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_s_put_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, error_message TEXT)"""
-CREATE_PRNUNIT_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, error_message TEXT)"""
-CREATE_PRNUNIT_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_s_put_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL)"""
-CREATE_MMTBUDD_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_budunit_h_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, bud_time_otx INTEGER, bud_time_inx INTEGER, quota REAL, celldepth INTEGER)"""
-CREATE_MMTBUDD_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_budunit_h_raw (spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, bud_time INTEGER, quota REAL, celldepth INTEGER, error_message TEXT)"""
-CREATE_MMTBUDD_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_budunit_h_vld (moment_rope TEXT, person_name TEXT, bud_time INTEGER, quota REAL, celldepth INTEGER)"""
-CREATE_MMTBUDD_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_budunit_s_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, bud_time INTEGER, quota REAL, celldepth INTEGER, error_message TEXT)"""
-CREATE_MMTBUDD_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_budunit_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, bud_time INTEGER, quota REAL, celldepth INTEGER, error_message TEXT)"""
-CREATE_MMTBUDD_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_budunit_s_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, bud_time INTEGER, quota REAL, celldepth INTEGER)"""
-CREATE_MMTHOUR_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_hour_h_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, cumulative_minute INTEGER, hour_label TEXT)"""
-CREATE_MMTHOUR_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_hour_h_raw (spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, cumulative_minute INTEGER, hour_label_otx TEXT, hour_label_inx TEXT, error_message TEXT)"""
-CREATE_MMTHOUR_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_hour_h_vld (moment_rope TEXT, cumulative_minute INTEGER, hour_label TEXT)"""
-CREATE_MMTHOUR_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_hour_s_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, cumulative_minute INTEGER, hour_label TEXT, error_message TEXT)"""
-CREATE_MMTHOUR_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_hour_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, cumulative_minute INTEGER, hour_label TEXT, error_message TEXT)"""
-CREATE_MMTHOUR_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_hour_s_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, cumulative_minute INTEGER, hour_label TEXT)"""
-CREATE_MMTMONT_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_month_h_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, cumulative_day INTEGER, month_label TEXT)"""
-CREATE_MMTMONT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_month_h_raw (spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, cumulative_day INTEGER, month_label_otx TEXT, month_label_inx TEXT, error_message TEXT)"""
-CREATE_MMTMONT_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_month_h_vld (moment_rope TEXT, cumulative_day INTEGER, month_label TEXT)"""
-CREATE_MMTMONT_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_month_s_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, cumulative_day INTEGER, month_label TEXT, error_message TEXT)"""
-CREATE_MMTMONT_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_month_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, cumulative_day INTEGER, month_label TEXT, error_message TEXT)"""
-CREATE_MMTMONT_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_month_s_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, cumulative_day INTEGER, month_label TEXT)"""
-CREATE_MMTOFFI_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_timeoffi_h_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, offi_time_otx INTEGER, offi_time_inx INTEGER)"""
-CREATE_MMTOFFI_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_timeoffi_h_raw (spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, offi_time INTEGER, error_message TEXT)"""
-CREATE_MMTOFFI_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_timeoffi_h_vld (moment_rope TEXT, offi_time INTEGER)"""
-CREATE_MMTOFFI_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_timeoffi_s_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, offi_time INTEGER, error_message TEXT)"""
-CREATE_MMTOFFI_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_timeoffi_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, offi_time INTEGER, error_message TEXT)"""
-CREATE_MMTOFFI_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_timeoffi_s_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, offi_time INTEGER)"""
-CREATE_MMTPAYY_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_paybook_h_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, tran_time_otx INTEGER, tran_time_inx INTEGER, amount REAL)"""
-CREATE_MMTPAYY_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_paybook_h_raw (spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, partner_name_otx TEXT, partner_name_inx TEXT, tran_time INTEGER, amount REAL, error_message TEXT)"""
-CREATE_MMTPAYY_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_paybook_h_vld (moment_rope TEXT, person_name TEXT, partner_name TEXT, tran_time INTEGER, amount REAL)"""
-CREATE_MMTPAYY_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_paybook_s_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, tran_time INTEGER, amount REAL, error_message TEXT)"""
-CREATE_MMTPAYY_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_paybook_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, tran_time INTEGER, amount REAL, error_message TEXT)"""
-CREATE_MMTPAYY_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_paybook_s_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, tran_time INTEGER, amount REAL)"""
+CREATE_MMTBUDD_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_budunit_h_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, bud_time_otx INTEGER, bud_time_inx INTEGER, knot TEXT, quota REAL, celldepth INTEGER)"""
+CREATE_MMTBUDD_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_budunit_h_raw (spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, bud_time INTEGER, knot TEXT, quota REAL, celldepth INTEGER, error_message TEXT)"""
+CREATE_MMTBUDD_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_budunit_h_vld (moment_rope TEXT, person_name TEXT, bud_time INTEGER, knot TEXT, quota REAL, celldepth INTEGER)"""
+CREATE_MMTBUDD_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_budunit_s_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, bud_time INTEGER, knot TEXT, quota REAL, celldepth INTEGER, error_message TEXT)"""
+CREATE_MMTBUDD_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_budunit_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, bud_time INTEGER, knot TEXT, quota REAL, celldepth INTEGER, error_message TEXT)"""
+CREATE_MMTBUDD_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_budunit_s_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, bud_time INTEGER, knot TEXT, quota REAL, celldepth INTEGER)"""
+CREATE_MMTHOUR_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_hour_h_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, cumulative_minute INTEGER, hour_label TEXT, knot TEXT)"""
+CREATE_MMTHOUR_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_hour_h_raw (spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, cumulative_minute INTEGER, hour_label_otx TEXT, hour_label_inx TEXT, knot TEXT, error_message TEXT)"""
+CREATE_MMTHOUR_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_hour_h_vld (moment_rope TEXT, cumulative_minute INTEGER, hour_label TEXT, knot TEXT)"""
+CREATE_MMTHOUR_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_hour_s_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, cumulative_minute INTEGER, hour_label TEXT, knot TEXT, error_message TEXT)"""
+CREATE_MMTHOUR_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_hour_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, cumulative_minute INTEGER, hour_label TEXT, knot TEXT, error_message TEXT)"""
+CREATE_MMTHOUR_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_hour_s_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, cumulative_minute INTEGER, hour_label TEXT, knot TEXT)"""
+CREATE_MMTMONT_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_month_h_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, cumulative_day INTEGER, month_label TEXT, knot TEXT)"""
+CREATE_MMTMONT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_month_h_raw (spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, cumulative_day INTEGER, month_label_otx TEXT, month_label_inx TEXT, knot TEXT, error_message TEXT)"""
+CREATE_MMTMONT_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_month_h_vld (moment_rope TEXT, cumulative_day INTEGER, month_label TEXT, knot TEXT)"""
+CREATE_MMTMONT_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_month_s_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, cumulative_day INTEGER, month_label TEXT, knot TEXT, error_message TEXT)"""
+CREATE_MMTMONT_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_month_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, cumulative_day INTEGER, month_label TEXT, knot TEXT, error_message TEXT)"""
+CREATE_MMTMONT_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_month_s_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, cumulative_day INTEGER, month_label TEXT, knot TEXT)"""
+CREATE_MMTOFFI_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_timeoffi_h_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, offi_time_otx INTEGER, offi_time_inx INTEGER, knot TEXT)"""
+CREATE_MMTOFFI_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_timeoffi_h_raw (spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, offi_time INTEGER, knot TEXT, error_message TEXT)"""
+CREATE_MMTOFFI_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_timeoffi_h_vld (moment_rope TEXT, offi_time INTEGER, knot TEXT)"""
+CREATE_MMTOFFI_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_timeoffi_s_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, offi_time INTEGER, knot TEXT, error_message TEXT)"""
+CREATE_MMTOFFI_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_timeoffi_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, offi_time INTEGER, knot TEXT, error_message TEXT)"""
+CREATE_MMTOFFI_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_timeoffi_s_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, offi_time INTEGER, knot TEXT)"""
+CREATE_MMTPAYY_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_paybook_h_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, tran_time_otx INTEGER, tran_time_inx INTEGER, amount REAL, knot TEXT)"""
+CREATE_MMTPAYY_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_paybook_h_raw (spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, partner_name_otx TEXT, partner_name_inx TEXT, tran_time INTEGER, amount REAL, knot TEXT, error_message TEXT)"""
+CREATE_MMTPAYY_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_paybook_h_vld (moment_rope TEXT, person_name TEXT, partner_name TEXT, tran_time INTEGER, amount REAL, knot TEXT)"""
+CREATE_MMTPAYY_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_paybook_s_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, tran_time INTEGER, amount REAL, knot TEXT, error_message TEXT)"""
+CREATE_MMTPAYY_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_paybook_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, tran_time INTEGER, amount REAL, knot TEXT, error_message TEXT)"""
+CREATE_MMTPAYY_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_paybook_s_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, tran_time INTEGER, amount REAL, knot TEXT)"""
 CREATE_MMTUNIT_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS momentunit_h_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, epoch_label TEXT, c400_number INTEGER, yr1_jan1_offset INTEGER, monthday_index INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT, job_listen_rotations INTEGER)"""
 CREATE_MMTUNIT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS momentunit_h_raw (spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, epoch_label_otx TEXT, epoch_label_inx TEXT, c400_number INTEGER, yr1_jan1_offset INTEGER, monthday_index INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT, job_listen_rotations INTEGER, error_message TEXT)"""
 CREATE_MMTUNIT_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS momentunit_h_vld (moment_rope TEXT, epoch_label TEXT, c400_number INTEGER, yr1_jan1_offset INTEGER, monthday_index INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT, job_listen_rotations INTEGER)"""
 CREATE_MMTUNIT_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS momentunit_s_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, epoch_label TEXT, c400_number INTEGER, yr1_jan1_offset INTEGER, monthday_index INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT, job_listen_rotations INTEGER, error_message TEXT)"""
 CREATE_MMTUNIT_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS momentunit_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, epoch_label TEXT, c400_number INTEGER, yr1_jan1_offset INTEGER, monthday_index INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT, job_listen_rotations INTEGER, error_message TEXT)"""
 CREATE_MMTUNIT_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS momentunit_s_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, epoch_label TEXT, c400_number INTEGER, yr1_jan1_offset INTEGER, monthday_index INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT, job_listen_rotations INTEGER)"""
-CREATE_MMTWEEK_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_weekday_h_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, weekday_order INTEGER, weekday_label TEXT)"""
-CREATE_MMTWEEK_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_weekday_h_raw (spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, weekday_order INTEGER, weekday_label_otx TEXT, weekday_label_inx TEXT, error_message TEXT)"""
-CREATE_MMTWEEK_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_weekday_h_vld (moment_rope TEXT, weekday_order INTEGER, weekday_label TEXT)"""
-CREATE_MMTWEEK_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_weekday_s_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, weekday_order INTEGER, weekday_label TEXT, error_message TEXT)"""
-CREATE_MMTWEEK_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_weekday_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, weekday_order INTEGER, weekday_label TEXT, error_message TEXT)"""
-CREATE_MMTWEEK_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_weekday_s_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, weekday_order INTEGER, weekday_label TEXT)"""
+CREATE_MMTWEEK_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_weekday_h_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, weekday_order INTEGER, weekday_label TEXT, knot TEXT)"""
+CREATE_MMTWEEK_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_weekday_h_raw (spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, weekday_order INTEGER, weekday_label_otx TEXT, weekday_label_inx TEXT, knot TEXT, error_message TEXT)"""
+CREATE_MMTWEEK_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_weekday_h_vld (moment_rope TEXT, weekday_order INTEGER, weekday_label TEXT, knot TEXT)"""
+CREATE_MMTWEEK_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_weekday_s_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, weekday_order INTEGER, weekday_label TEXT, knot TEXT, error_message TEXT)"""
+CREATE_MMTWEEK_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_weekday_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, weekday_order INTEGER, weekday_label TEXT, knot TEXT, error_message TEXT)"""
+CREATE_MMTWEEK_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_weekday_s_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, weekday_order INTEGER, weekday_label TEXT, knot TEXT)"""
 CREATE_NABTIME_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS nabu_timenum_h_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, otx_time INTEGER, inx_time INTEGER)"""
 CREATE_NABTIME_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS nabu_timenum_h_raw (spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, otx_time INTEGER, inx_time INTEGER, error_message TEXT)"""
 CREATE_NABTIME_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS nabu_timenum_s_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, otx_time INTEGER, inx_time INTEGER, error_message TEXT)"""
 CREATE_NABTIME_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS nabu_timenum_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, otx_time INTEGER, inx_time INTEGER, error_message TEXT)"""
 CREATE_NABTIME_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS nabu_timenum_s_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, otx_time INTEGER, inx_time INTEGER)"""
+CREATE_PRNAWAR_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_h_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title_ERASE TEXT)"""
+CREATE_PRNAWAR_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, awardee_title_ERASE_otx TEXT, awardee_title_ERASE_inx TEXT)"""
+CREATE_PRNAWAR_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_h_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title_ERASE TEXT)"""
+CREATE_PRNAWAR_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_h_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title TEXT, give_force REAL, take_force REAL, knot TEXT)"""
+CREATE_PRNAWAR_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, awardee_title_otx TEXT, awardee_title_inx TEXT, give_force REAL, take_force REAL, knot TEXT)"""
+CREATE_PRNAWAR_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_h_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title TEXT, give_force REAL, take_force REAL, knot TEXT)"""
+CREATE_PRNAWAR_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_s_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title_ERASE TEXT, error_message TEXT)"""
+CREATE_PRNAWAR_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title_ERASE TEXT)"""
+CREATE_PRNAWAR_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_s_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title_ERASE TEXT)"""
+CREATE_PRNAWAR_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_s_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title TEXT, give_force REAL, take_force REAL, knot TEXT, error_message TEXT)"""
+CREATE_PRNAWAR_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title TEXT, give_force REAL, take_force REAL, knot TEXT, error_message TEXT)"""
+CREATE_PRNAWAR_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_s_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, awardee_title TEXT, give_force REAL, take_force REAL, knot TEXT)"""
+CREATE_PRNCASE_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_h_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state_ERASE TEXT)"""
+CREATE_PRNCASE_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, reason_context_otx TEXT, reason_context_inx TEXT, reason_state_ERASE_otx TEXT, reason_state_ERASE_inx TEXT)"""
+CREATE_PRNCASE_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_h_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state_ERASE TEXT)"""
+CREATE_PRNCASE_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_h_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower_otx REAL, reason_lower_inx REAL, reason_upper_otx REAL, reason_upper_inx REAL, reason_divisor INTEGER, knot TEXT, context_plan_close TEXT, context_plan_denom TEXT, context_plan_morph TEXT, inx_epoch_diff INTEGER)"""
+CREATE_PRNCASE_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, reason_context_otx TEXT, reason_context_inx TEXT, reason_state_otx TEXT, reason_state_inx TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, knot TEXT)"""
+CREATE_PRNCASE_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_h_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, knot TEXT)"""
+CREATE_PRNCASE_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_s_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state_ERASE TEXT, error_message TEXT)"""
+CREATE_PRNCASE_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state_ERASE TEXT)"""
+CREATE_PRNCASE_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_s_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state_ERASE TEXT)"""
+CREATE_PRNCASE_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_s_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, knot TEXT, error_message TEXT)"""
+CREATE_PRNCASE_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, knot TEXT, error_message TEXT)"""
+CREATE_PRNCASE_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_s_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, knot TEXT)"""
+CREATE_PRNFACT_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_h_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context_ERASE TEXT)"""
+CREATE_PRNFACT_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, fact_context_ERASE_otx TEXT, fact_context_ERASE_inx TEXT)"""
+CREATE_PRNFACT_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_h_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context_ERASE TEXT)"""
+CREATE_PRNFACT_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_h_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower_otx REAL, fact_lower_inx REAL, fact_upper_otx REAL, fact_upper_inx REAL, knot TEXT, context_plan_close TEXT, context_plan_denom TEXT, context_plan_morph TEXT, inx_epoch_diff INTEGER)"""
+CREATE_PRNFACT_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, fact_context_otx TEXT, fact_context_inx TEXT, fact_state_otx TEXT, fact_state_inx TEXT, fact_lower REAL, fact_upper REAL, knot TEXT)"""
+CREATE_PRNFACT_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_h_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower REAL, fact_upper REAL, knot TEXT)"""
+CREATE_PRNFACT_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_s_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context_ERASE TEXT, error_message TEXT)"""
+CREATE_PRNFACT_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context_ERASE TEXT)"""
+CREATE_PRNFACT_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_s_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context_ERASE TEXT)"""
+CREATE_PRNFACT_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_s_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower REAL, fact_upper REAL, knot TEXT, error_message TEXT)"""
+CREATE_PRNFACT_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower REAL, fact_upper REAL, knot TEXT, error_message TEXT)"""
+CREATE_PRNFACT_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_s_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower REAL, fact_upper REAL, knot TEXT)"""
+CREATE_PRNHEAL_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_h_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name_ERASE TEXT)"""
+CREATE_PRNHEAL_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, healer_name_ERASE_otx TEXT, healer_name_ERASE_inx TEXT)"""
+CREATE_PRNHEAL_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_h_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name_ERASE TEXT)"""
+CREATE_PRNHEAL_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_h_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT, knot TEXT)"""
+CREATE_PRNHEAL_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, healer_name_otx TEXT, healer_name_inx TEXT, knot TEXT)"""
+CREATE_PRNHEAL_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_h_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT, knot TEXT)"""
+CREATE_PRNHEAL_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_s_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name_ERASE TEXT, error_message TEXT)"""
+CREATE_PRNHEAL_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name_ERASE TEXT)"""
+CREATE_PRNHEAL_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_s_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name_ERASE TEXT)"""
+CREATE_PRNHEAL_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_s_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT, knot TEXT, error_message TEXT)"""
+CREATE_PRNHEAL_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT, knot TEXT, error_message TEXT)"""
+CREATE_PRNHEAL_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_s_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT, knot TEXT)"""
+CREATE_PRNLABO_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_h_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title_ERASE TEXT)"""
+CREATE_PRNLABO_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, party_title_ERASE_otx TEXT, party_title_ERASE_inx TEXT)"""
+CREATE_PRNLABO_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_h_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title_ERASE TEXT)"""
+CREATE_PRNLABO_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_h_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title TEXT, solo INTEGER, knot TEXT)"""
+CREATE_PRNLABO_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, party_title_otx TEXT, party_title_inx TEXT, solo INTEGER, knot TEXT)"""
+CREATE_PRNLABO_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_h_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title TEXT, solo INTEGER, knot TEXT)"""
+CREATE_PRNLABO_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_s_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title_ERASE TEXT, error_message TEXT)"""
+CREATE_PRNLABO_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title_ERASE TEXT)"""
+CREATE_PRNLABO_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_s_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title_ERASE TEXT)"""
+CREATE_PRNLABO_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_s_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title TEXT, solo INTEGER, knot TEXT, error_message TEXT)"""
+CREATE_PRNLABO_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title TEXT, solo INTEGER, knot TEXT, error_message TEXT)"""
+CREATE_PRNLABO_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_s_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title TEXT, solo INTEGER, knot TEXT)"""
+CREATE_PRNMEMB_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_h_del_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title_ERASE TEXT)"""
+CREATE_PRNMEMB_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, partner_name_otx TEXT, partner_name_inx TEXT, group_title_ERASE_otx TEXT, group_title_ERASE_inx TEXT)"""
+CREATE_PRNMEMB_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_h_del_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title_ERASE TEXT)"""
+CREATE_PRNMEMB_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_h_put_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title TEXT, group_cred_lumen REAL, group_debt_lumen REAL, knot TEXT)"""
+CREATE_PRNMEMB_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, partner_name_otx TEXT, partner_name_inx TEXT, group_title_otx TEXT, group_title_inx TEXT, group_cred_lumen REAL, group_debt_lumen REAL, knot TEXT)"""
+CREATE_PRNMEMB_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_h_put_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title TEXT, group_cred_lumen REAL, group_debt_lumen REAL, knot TEXT)"""
+CREATE_PRNMEMB_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_s_del_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title_ERASE TEXT, error_message TEXT)"""
+CREATE_PRNMEMB_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title_ERASE TEXT)"""
+CREATE_PRNMEMB_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_s_del_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title_ERASE TEXT)"""
+CREATE_PRNMEMB_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_s_put_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title TEXT, group_cred_lumen REAL, group_debt_lumen REAL, knot TEXT, error_message TEXT)"""
+CREATE_PRNMEMB_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title TEXT, group_cred_lumen REAL, group_debt_lumen REAL, knot TEXT, error_message TEXT)"""
+CREATE_PRNMEMB_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_s_put_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title TEXT, group_cred_lumen REAL, group_debt_lumen REAL, knot TEXT)"""
+CREATE_PRNPLAN_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_h_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope_ERASE TEXT)"""
+CREATE_PRNPLAN_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_ERASE_otx TEXT, plan_rope_ERASE_inx TEXT)"""
+CREATE_PRNPLAN_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_h_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope_ERASE TEXT)"""
+CREATE_PRNPLAN_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_h_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, star INTEGER, pledge INTEGER, problem_bool INTEGER, knot TEXT)"""
+CREATE_PRNPLAN_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, star INTEGER, pledge INTEGER, problem_bool INTEGER, knot TEXT)"""
+CREATE_PRNPLAN_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_h_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, star INTEGER, pledge INTEGER, problem_bool INTEGER, knot TEXT)"""
+CREATE_PRNPLAN_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_s_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope_ERASE TEXT, error_message TEXT)"""
+CREATE_PRNPLAN_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope_ERASE TEXT)"""
+CREATE_PRNPLAN_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_s_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope_ERASE TEXT)"""
+CREATE_PRNPLAN_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_s_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, star INTEGER, pledge INTEGER, problem_bool INTEGER, knot TEXT, error_message TEXT)"""
+CREATE_PRNPLAN_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, star INTEGER, pledge INTEGER, problem_bool INTEGER, knot TEXT, error_message TEXT)"""
+CREATE_PRNPLAN_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_s_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, star INTEGER, pledge INTEGER, problem_bool INTEGER, knot TEXT)"""
+CREATE_PRNPTNR_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_h_del_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name_ERASE TEXT)"""
+CREATE_PRNPTNR_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, partner_name_ERASE_otx TEXT, partner_name_ERASE_inx TEXT)"""
+CREATE_PRNPTNR_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_h_del_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name_ERASE TEXT)"""
+CREATE_PRNPTNR_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_h_put_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, partner_cred_lumen REAL, partner_debt_lumen REAL, knot TEXT)"""
+CREATE_PRNPTNR_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, partner_name_otx TEXT, partner_name_inx TEXT, partner_cred_lumen REAL, partner_debt_lumen REAL, knot TEXT)"""
+CREATE_PRNPTNR_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_h_put_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, partner_cred_lumen REAL, partner_debt_lumen REAL, knot TEXT)"""
+CREATE_PRNPTNR_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_s_del_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name_ERASE TEXT, error_message TEXT)"""
+CREATE_PRNPTNR_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name_ERASE TEXT)"""
+CREATE_PRNPTNR_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_s_del_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name_ERASE TEXT)"""
+CREATE_PRNPTNR_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_s_put_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, partner_cred_lumen REAL, partner_debt_lumen REAL, knot TEXT, error_message TEXT)"""
+CREATE_PRNPTNR_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, partner_cred_lumen REAL, partner_debt_lumen REAL, knot TEXT, error_message TEXT)"""
+CREATE_PRNPTNR_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_s_put_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, partner_cred_lumen REAL, partner_debt_lumen REAL, knot TEXT)"""
+CREATE_PRNREAS_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_h_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context_ERASE TEXT)"""
+CREATE_PRNREAS_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, reason_context_ERASE_otx TEXT, reason_context_ERASE_inx TEXT)"""
+CREATE_PRNREAS_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_h_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context_ERASE TEXT)"""
+CREATE_PRNREAS_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_h_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, active_requisite INTEGER, knot TEXT)"""
+CREATE_PRNREAS_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, reason_context_otx TEXT, reason_context_inx TEXT, active_requisite INTEGER, knot TEXT)"""
+CREATE_PRNREAS_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_h_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, active_requisite INTEGER, knot TEXT)"""
+CREATE_PRNREAS_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_s_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context_ERASE TEXT, error_message TEXT)"""
+CREATE_PRNREAS_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context_ERASE TEXT)"""
+CREATE_PRNREAS_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_s_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context_ERASE TEXT)"""
+CREATE_PRNREAS_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_s_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, active_requisite INTEGER, knot TEXT, error_message TEXT)"""
+CREATE_PRNREAS_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, active_requisite INTEGER, knot TEXT, error_message TEXT)"""
+CREATE_PRNREAS_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_s_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, active_requisite INTEGER, knot TEXT)"""
+CREATE_PRNUNIT_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_h_del_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name_ERASE TEXT)"""
+CREATE_PRNUNIT_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_ERASE_otx TEXT, person_name_ERASE_inx TEXT)"""
+CREATE_PRNUNIT_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_h_del_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name_ERASE TEXT)"""
+CREATE_PRNUNIT_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_h_put_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT)"""
+CREATE_PRNUNIT_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT)"""
+CREATE_PRNUNIT_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_h_put_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT)"""
+CREATE_PRNUNIT_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_s_del_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name_ERASE TEXT, error_message TEXT)"""
+CREATE_PRNUNIT_SOUND_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_s_del_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name_ERASE TEXT)"""
+CREATE_PRNUNIT_SOUND_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_s_del_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name_ERASE TEXT)"""
+CREATE_PRNUNIT_SOUND_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_s_put_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT, error_message TEXT)"""
+CREATE_PRNUNIT_SOUND_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT, error_message TEXT)"""
+CREATE_PRNUNIT_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_s_put_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT)"""
 CREATE_TRLCORE_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS translate_core_s_agg (face_name TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT)"""
 CREATE_TRLCORE_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS translate_core_s_raw (source_dimen TEXT, face_name TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT, error_message TEXT)"""
 CREATE_TRLCORE_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS translate_core_s_vld (face_name TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT)"""
@@ -682,33 +682,33 @@ WHERE rowid IN (
 """
 
 
-INSERT_PRNMEMB_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_partner_membership_s_put_vld (spark_num, face_name, moment_rope, person_name, partner_name, group_title, group_cred_lumen, group_debt_lumen) SELECT spark_num, face_name, moment_rope, person_name, partner_name, group_title, group_cred_lumen, group_debt_lumen FROM person_partner_membership_s_put_agg WHERE error_message IS NULL"
+INSERT_PRNMEMB_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_partner_membership_s_put_vld (spark_num, face_name, moment_rope, person_name, partner_name, group_title, group_cred_lumen, group_debt_lumen, knot) SELECT spark_num, face_name, moment_rope, person_name, partner_name, group_title, group_cred_lumen, group_debt_lumen, knot FROM person_partner_membership_s_put_agg WHERE error_message IS NULL"
 INSERT_PRNMEMB_SOUND_VLD_DEL_SQLSTR = "INSERT INTO person_partner_membership_s_del_vld (spark_num, face_name, moment_rope, person_name, partner_name, group_title_ERASE) SELECT spark_num, face_name, moment_rope, person_name, partner_name, group_title_ERASE FROM person_partner_membership_s_del_agg WHERE error_message IS NULL"
-INSERT_PRNPTNR_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_partnerunit_s_put_vld (spark_num, face_name, moment_rope, person_name, partner_name, partner_cred_lumen, partner_debt_lumen) SELECT spark_num, face_name, moment_rope, person_name, partner_name, partner_cred_lumen, partner_debt_lumen FROM person_partnerunit_s_put_agg WHERE error_message IS NULL"
+INSERT_PRNPTNR_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_partnerunit_s_put_vld (spark_num, face_name, moment_rope, person_name, partner_name, partner_cred_lumen, partner_debt_lumen, knot) SELECT spark_num, face_name, moment_rope, person_name, partner_name, partner_cred_lumen, partner_debt_lumen, knot FROM person_partnerunit_s_put_agg WHERE error_message IS NULL"
 INSERT_PRNPTNR_SOUND_VLD_DEL_SQLSTR = "INSERT INTO person_partnerunit_s_del_vld (spark_num, face_name, moment_rope, person_name, partner_name_ERASE) SELECT spark_num, face_name, moment_rope, person_name, partner_name_ERASE FROM person_partnerunit_s_del_agg WHERE error_message IS NULL"
-INSERT_PRNAWAR_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_plan_awardunit_s_put_vld (spark_num, face_name, person_name, plan_rope, awardee_title, give_force, take_force) SELECT spark_num, face_name, person_name, plan_rope, awardee_title, give_force, take_force FROM person_plan_awardunit_s_put_agg WHERE error_message IS NULL"
+INSERT_PRNAWAR_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_plan_awardunit_s_put_vld (spark_num, face_name, person_name, plan_rope, awardee_title, give_force, take_force, knot) SELECT spark_num, face_name, person_name, plan_rope, awardee_title, give_force, take_force, knot FROM person_plan_awardunit_s_put_agg WHERE error_message IS NULL"
 INSERT_PRNAWAR_SOUND_VLD_DEL_SQLSTR = "INSERT INTO person_plan_awardunit_s_del_vld (spark_num, face_name, person_name, plan_rope, awardee_title_ERASE) SELECT spark_num, face_name, person_name, plan_rope, awardee_title_ERASE FROM person_plan_awardunit_s_del_agg WHERE error_message IS NULL"
-INSERT_PRNFACT_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_plan_factunit_s_put_vld (spark_num, face_name, person_name, plan_rope, fact_context, fact_state, fact_lower, fact_upper) SELECT spark_num, face_name, person_name, plan_rope, fact_context, fact_state, fact_lower, fact_upper FROM person_plan_factunit_s_put_agg WHERE error_message IS NULL"
+INSERT_PRNFACT_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_plan_factunit_s_put_vld (spark_num, face_name, person_name, plan_rope, fact_context, fact_state, fact_lower, fact_upper, knot) SELECT spark_num, face_name, person_name, plan_rope, fact_context, fact_state, fact_lower, fact_upper, knot FROM person_plan_factunit_s_put_agg WHERE error_message IS NULL"
 INSERT_PRNFACT_SOUND_VLD_DEL_SQLSTR = "INSERT INTO person_plan_factunit_s_del_vld (spark_num, face_name, person_name, plan_rope, fact_context_ERASE) SELECT spark_num, face_name, person_name, plan_rope, fact_context_ERASE FROM person_plan_factunit_s_del_agg WHERE error_message IS NULL"
-INSERT_PRNHEAL_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_plan_healerunit_s_put_vld (spark_num, face_name, person_name, plan_rope, healer_name) SELECT spark_num, face_name, person_name, plan_rope, healer_name FROM person_plan_healerunit_s_put_agg WHERE error_message IS NULL"
+INSERT_PRNHEAL_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_plan_healerunit_s_put_vld (spark_num, face_name, person_name, plan_rope, healer_name, knot) SELECT spark_num, face_name, person_name, plan_rope, healer_name, knot FROM person_plan_healerunit_s_put_agg WHERE error_message IS NULL"
 INSERT_PRNHEAL_SOUND_VLD_DEL_SQLSTR = "INSERT INTO person_plan_healerunit_s_del_vld (spark_num, face_name, person_name, plan_rope, healer_name_ERASE) SELECT spark_num, face_name, person_name, plan_rope, healer_name_ERASE FROM person_plan_healerunit_s_del_agg WHERE error_message IS NULL"
-INSERT_PRNLABO_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_plan_partyunit_s_put_vld (spark_num, face_name, person_name, plan_rope, party_title, solo) SELECT spark_num, face_name, person_name, plan_rope, party_title, solo FROM person_plan_partyunit_s_put_agg WHERE error_message IS NULL"
+INSERT_PRNLABO_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_plan_partyunit_s_put_vld (spark_num, face_name, person_name, plan_rope, party_title, solo, knot) SELECT spark_num, face_name, person_name, plan_rope, party_title, solo, knot FROM person_plan_partyunit_s_put_agg WHERE error_message IS NULL"
 INSERT_PRNLABO_SOUND_VLD_DEL_SQLSTR = "INSERT INTO person_plan_partyunit_s_del_vld (spark_num, face_name, person_name, plan_rope, party_title_ERASE) SELECT spark_num, face_name, person_name, plan_rope, party_title_ERASE FROM person_plan_partyunit_s_del_agg WHERE error_message IS NULL"
-INSERT_PRNCASE_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_plan_reason_caseunit_s_put_vld (spark_num, face_name, person_name, plan_rope, reason_context, reason_state, reason_lower, reason_upper, reason_divisor) SELECT spark_num, face_name, person_name, plan_rope, reason_context, reason_state, reason_lower, reason_upper, reason_divisor FROM person_plan_reason_caseunit_s_put_agg WHERE error_message IS NULL"
+INSERT_PRNCASE_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_plan_reason_caseunit_s_put_vld (spark_num, face_name, person_name, plan_rope, reason_context, reason_state, reason_lower, reason_upper, reason_divisor, knot) SELECT spark_num, face_name, person_name, plan_rope, reason_context, reason_state, reason_lower, reason_upper, reason_divisor, knot FROM person_plan_reason_caseunit_s_put_agg WHERE error_message IS NULL"
 INSERT_PRNCASE_SOUND_VLD_DEL_SQLSTR = "INSERT INTO person_plan_reason_caseunit_s_del_vld (spark_num, face_name, person_name, plan_rope, reason_context, reason_state_ERASE) SELECT spark_num, face_name, person_name, plan_rope, reason_context, reason_state_ERASE FROM person_plan_reason_caseunit_s_del_agg WHERE error_message IS NULL"
-INSERT_PRNREAS_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_plan_reasonunit_s_put_vld (spark_num, face_name, person_name, plan_rope, reason_context, active_requisite) SELECT spark_num, face_name, person_name, plan_rope, reason_context, active_requisite FROM person_plan_reasonunit_s_put_agg WHERE error_message IS NULL"
+INSERT_PRNREAS_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_plan_reasonunit_s_put_vld (spark_num, face_name, person_name, plan_rope, reason_context, active_requisite, knot) SELECT spark_num, face_name, person_name, plan_rope, reason_context, active_requisite, knot FROM person_plan_reasonunit_s_put_agg WHERE error_message IS NULL"
 INSERT_PRNREAS_SOUND_VLD_DEL_SQLSTR = "INSERT INTO person_plan_reasonunit_s_del_vld (spark_num, face_name, person_name, plan_rope, reason_context_ERASE) SELECT spark_num, face_name, person_name, plan_rope, reason_context_ERASE FROM person_plan_reasonunit_s_del_agg WHERE error_message IS NULL"
-INSERT_PRNPLAN_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_planunit_s_put_vld (spark_num, face_name, person_name, plan_rope, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool) SELECT spark_num, face_name, person_name, plan_rope, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool FROM person_planunit_s_put_agg WHERE error_message IS NULL"
+INSERT_PRNPLAN_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_planunit_s_put_vld (spark_num, face_name, person_name, plan_rope, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool, knot) SELECT spark_num, face_name, person_name, plan_rope, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool, knot FROM person_planunit_s_put_agg WHERE error_message IS NULL"
 INSERT_PRNPLAN_SOUND_VLD_DEL_SQLSTR = "INSERT INTO person_planunit_s_del_vld (spark_num, face_name, person_name, plan_rope_ERASE) SELECT spark_num, face_name, person_name, plan_rope_ERASE FROM person_planunit_s_del_agg WHERE error_message IS NULL"
-INSERT_PRNUNIT_SOUND_VLD_PUT_SQLSTR = "INSERT INTO personunit_s_put_vld (spark_num, face_name, moment_rope, person_name, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain) SELECT spark_num, face_name, moment_rope, person_name, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain FROM personunit_s_put_agg WHERE error_message IS NULL"
+INSERT_PRNUNIT_SOUND_VLD_PUT_SQLSTR = "INSERT INTO personunit_s_put_vld (spark_num, face_name, moment_rope, person_name, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain, knot) SELECT spark_num, face_name, moment_rope, person_name, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain, knot FROM personunit_s_put_agg WHERE error_message IS NULL"
 INSERT_PRNUNIT_SOUND_VLD_DEL_SQLSTR = "INSERT INTO personunit_s_del_vld (spark_num, face_name, moment_rope, person_name_ERASE) SELECT spark_num, face_name, moment_rope, person_name_ERASE FROM personunit_s_del_agg WHERE error_message IS NULL"
 
-INSERT_MMTPAYY_SOUND_VLD_SQLSTR = "INSERT INTO moment_paybook_s_vld (spark_num, face_name, moment_rope, person_name, partner_name, tran_time, amount) SELECT spark_num, face_name, moment_rope, person_name, partner_name, tran_time, amount FROM moment_paybook_s_agg WHERE error_message IS NULL"
-INSERT_MMTBUDD_SOUND_VLD_SQLSTR = "INSERT INTO moment_budunit_s_vld (spark_num, face_name, moment_rope, person_name, bud_time, quota, celldepth) SELECT spark_num, face_name, moment_rope, person_name, bud_time, quota, celldepth FROM moment_budunit_s_agg WHERE error_message IS NULL"
-INSERT_MMTHOUR_SOUND_VLD_SQLSTR = "INSERT INTO moment_epoch_hour_s_vld (spark_num, face_name, moment_rope, cumulative_minute, hour_label) SELECT spark_num, face_name, moment_rope, cumulative_minute, hour_label FROM moment_epoch_hour_s_agg WHERE error_message IS NULL"
-INSERT_MMTMONT_SOUND_VLD_SQLSTR = "INSERT INTO moment_epoch_month_s_vld (spark_num, face_name, moment_rope, cumulative_day, month_label) SELECT spark_num, face_name, moment_rope, cumulative_day, month_label FROM moment_epoch_month_s_agg WHERE error_message IS NULL"
-INSERT_MMTWEEK_SOUND_VLD_SQLSTR = "INSERT INTO moment_epoch_weekday_s_vld (spark_num, face_name, moment_rope, weekday_order, weekday_label) SELECT spark_num, face_name, moment_rope, weekday_order, weekday_label FROM moment_epoch_weekday_s_agg WHERE error_message IS NULL"
-INSERT_MMTOFFI_SOUND_VLD_SQLSTR = "INSERT INTO moment_timeoffi_s_vld (spark_num, face_name, moment_rope, offi_time) SELECT spark_num, face_name, moment_rope, offi_time FROM moment_timeoffi_s_agg WHERE error_message IS NULL"
+INSERT_MMTBUDD_SOUND_VLD_SQLSTR = "INSERT INTO moment_budunit_s_vld (spark_num, face_name, moment_rope, person_name, bud_time, knot, quota, celldepth) SELECT spark_num, face_name, moment_rope, person_name, bud_time, knot, quota, celldepth FROM moment_budunit_s_agg WHERE error_message IS NULL"
+INSERT_MMTHOUR_SOUND_VLD_SQLSTR = "INSERT INTO moment_epoch_hour_s_vld (spark_num, face_name, moment_rope, cumulative_minute, hour_label, knot) SELECT spark_num, face_name, moment_rope, cumulative_minute, hour_label, knot FROM moment_epoch_hour_s_agg WHERE error_message IS NULL"
+INSERT_MMTMONT_SOUND_VLD_SQLSTR = "INSERT INTO moment_epoch_month_s_vld (spark_num, face_name, moment_rope, cumulative_day, month_label, knot) SELECT spark_num, face_name, moment_rope, cumulative_day, month_label, knot FROM moment_epoch_month_s_agg WHERE error_message IS NULL"
+INSERT_MMTWEEK_SOUND_VLD_SQLSTR = "INSERT INTO moment_epoch_weekday_s_vld (spark_num, face_name, moment_rope, weekday_order, weekday_label, knot) SELECT spark_num, face_name, moment_rope, weekday_order, weekday_label, knot FROM moment_epoch_weekday_s_agg WHERE error_message IS NULL"
+INSERT_MMTPAYY_SOUND_VLD_SQLSTR = "INSERT INTO moment_paybook_s_vld (spark_num, face_name, moment_rope, person_name, partner_name, tran_time, amount, knot) SELECT spark_num, face_name, moment_rope, person_name, partner_name, tran_time, amount, knot FROM moment_paybook_s_agg WHERE error_message IS NULL"
+INSERT_MMTOFFI_SOUND_VLD_SQLSTR = "INSERT INTO moment_timeoffi_s_vld (spark_num, face_name, moment_rope, offi_time, knot) SELECT spark_num, face_name, moment_rope, offi_time, knot FROM moment_timeoffi_s_agg WHERE error_message IS NULL"
 INSERT_MMTUNIT_SOUND_VLD_SQLSTR = "INSERT INTO momentunit_s_vld (spark_num, face_name, moment_rope, epoch_label, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations) SELECT spark_num, face_name, moment_rope, epoch_label, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations FROM momentunit_s_agg WHERE error_message IS NULL"
 
 INSERT_NABTIME_SOUND_VLD_SQLSTR = "INSERT INTO nabu_timenum_s_vld (spark_num, face_name, moment_rope, otx_time, inx_time) SELECT spark_num, face_name, moment_rope, otx_time, inx_time FROM nabu_timenum_s_agg WHERE error_message IS NULL"
@@ -747,33 +747,34 @@ def get_insert_into_sound_vld_sqlstrs() -> dict[str, str]:
     }
 
 
-INSERT_MMTPAYY_HEARD_RAW_SQLSTR = "INSERT INTO moment_paybook_h_raw (spark_num, face_name_otx, moment_rope_otx, person_name_otx, partner_name_otx, tran_time, amount) SELECT spark_num, face_name, moment_rope, person_name, partner_name, tran_time, amount FROM moment_paybook_s_vld "
-INSERT_MMTBUDD_HEARD_RAW_SQLSTR = "INSERT INTO moment_budunit_h_raw (spark_num, face_name_otx, moment_rope_otx, person_name_otx, bud_time, quota, celldepth) SELECT spark_num, face_name, moment_rope, person_name, bud_time, quota, celldepth FROM moment_budunit_s_vld "
-INSERT_MMTHOUR_HEARD_RAW_SQLSTR = "INSERT INTO moment_epoch_hour_h_raw (spark_num, face_name_otx, moment_rope_otx, cumulative_minute, hour_label_otx) SELECT spark_num, face_name, moment_rope, cumulative_minute, hour_label FROM moment_epoch_hour_s_vld "
-INSERT_MMTMONT_HEARD_RAW_SQLSTR = "INSERT INTO moment_epoch_month_h_raw (spark_num, face_name_otx, moment_rope_otx, cumulative_day, month_label_otx) SELECT spark_num, face_name, moment_rope, cumulative_day, month_label FROM moment_epoch_month_s_vld "
-INSERT_MMTWEEK_HEARD_RAW_SQLSTR = "INSERT INTO moment_epoch_weekday_h_raw (spark_num, face_name_otx, moment_rope_otx, weekday_order, weekday_label_otx) SELECT spark_num, face_name, moment_rope, weekday_order, weekday_label FROM moment_epoch_weekday_s_vld "
-INSERT_MMTOFFI_HEARD_RAW_SQLSTR = "INSERT INTO moment_timeoffi_h_raw (spark_num, face_name_otx, moment_rope_otx, offi_time) SELECT spark_num, face_name, moment_rope, offi_time FROM moment_timeoffi_s_vld "
+INSERT_MMTBUDD_HEARD_RAW_SQLSTR = "INSERT INTO moment_budunit_h_raw (spark_num, face_name_otx, moment_rope_otx, person_name_otx, bud_time, knot, quota, celldepth) SELECT spark_num, face_name, moment_rope, person_name, bud_time, knot, quota, celldepth FROM moment_budunit_s_vld "
+INSERT_MMTHOUR_HEARD_RAW_SQLSTR = "INSERT INTO moment_epoch_hour_h_raw (spark_num, face_name_otx, moment_rope_otx, cumulative_minute, hour_label_otx, knot) SELECT spark_num, face_name, moment_rope, cumulative_minute, hour_label, knot FROM moment_epoch_hour_s_vld "
+INSERT_MMTMONT_HEARD_RAW_SQLSTR = "INSERT INTO moment_epoch_month_h_raw (spark_num, face_name_otx, moment_rope_otx, cumulative_day, month_label_otx, knot) SELECT spark_num, face_name, moment_rope, cumulative_day, month_label, knot FROM moment_epoch_month_s_vld "
+INSERT_MMTWEEK_HEARD_RAW_SQLSTR = "INSERT INTO moment_epoch_weekday_h_raw (spark_num, face_name_otx, moment_rope_otx, weekday_order, weekday_label_otx, knot) SELECT spark_num, face_name, moment_rope, weekday_order, weekday_label, knot FROM moment_epoch_weekday_s_vld "
+INSERT_MMTPAYY_HEARD_RAW_SQLSTR = "INSERT INTO moment_paybook_h_raw (spark_num, face_name_otx, moment_rope_otx, person_name_otx, partner_name_otx, tran_time, amount, knot) SELECT spark_num, face_name, moment_rope, person_name, partner_name, tran_time, amount, knot FROM moment_paybook_s_vld "
+INSERT_MMTOFFI_HEARD_RAW_SQLSTR = "INSERT INTO moment_timeoffi_h_raw (spark_num, face_name_otx, moment_rope_otx, offi_time, knot) SELECT spark_num, face_name, moment_rope, offi_time, knot FROM moment_timeoffi_s_vld "
 INSERT_MMTUNIT_HEARD_RAW_SQLSTR = "INSERT INTO momentunit_h_raw (spark_num, face_name_otx, moment_rope_otx, epoch_label_otx, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations) SELECT spark_num, face_name, moment_rope, epoch_label, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations FROM momentunit_s_vld "
+INSERT_NABTIME_HEARD_RAW_SQLSTR = "INSERT INTO nabu_timenum_h_raw (spark_num, face_name_otx, moment_rope_otx, otx_time, inx_time) SELECT spark_num, face_name, moment_rope, otx_time, inx_time FROM nabu_timenum_s_vld "
 
-INSERT_PRNMEMB_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_partner_membership_h_put_raw (spark_num, face_name_otx, moment_rope_otx, person_name_otx, partner_name_otx, group_title_otx, group_cred_lumen, group_debt_lumen) SELECT spark_num, face_name, moment_rope, person_name, partner_name, group_title, group_cred_lumen, group_debt_lumen FROM person_partner_membership_s_put_vld "
+INSERT_PRNMEMB_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_partner_membership_h_put_raw (spark_num, face_name_otx, moment_rope_otx, person_name_otx, partner_name_otx, group_title_otx, group_cred_lumen, group_debt_lumen, knot) SELECT spark_num, face_name, moment_rope, person_name, partner_name, group_title, group_cred_lumen, group_debt_lumen, knot FROM person_partner_membership_s_put_vld "
 INSERT_PRNMEMB_HEARD_RAW_DEL_SQLSTR = "INSERT INTO person_partner_membership_h_del_raw (spark_num, face_name_otx, moment_rope_otx, person_name_otx, partner_name_otx, group_title_ERASE_otx) SELECT spark_num, face_name, moment_rope, person_name, partner_name, group_title_ERASE FROM person_partner_membership_s_del_vld "
-INSERT_PRNPTNR_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_partnerunit_h_put_raw (spark_num, face_name_otx, moment_rope_otx, person_name_otx, partner_name_otx, partner_cred_lumen, partner_debt_lumen) SELECT spark_num, face_name, moment_rope, person_name, partner_name, partner_cred_lumen, partner_debt_lumen FROM person_partnerunit_s_put_vld "
+INSERT_PRNPTNR_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_partnerunit_h_put_raw (spark_num, face_name_otx, moment_rope_otx, person_name_otx, partner_name_otx, partner_cred_lumen, partner_debt_lumen, knot) SELECT spark_num, face_name, moment_rope, person_name, partner_name, partner_cred_lumen, partner_debt_lumen, knot FROM person_partnerunit_s_put_vld "
 INSERT_PRNPTNR_HEARD_RAW_DEL_SQLSTR = "INSERT INTO person_partnerunit_h_del_raw (spark_num, face_name_otx, moment_rope_otx, person_name_otx, partner_name_ERASE_otx) SELECT spark_num, face_name, moment_rope, person_name, partner_name_ERASE FROM person_partnerunit_s_del_vld "
-INSERT_PRNAWAR_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_plan_awardunit_h_put_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, awardee_title_otx, give_force, take_force) SELECT spark_num, face_name, person_name, plan_rope, awardee_title, give_force, take_force FROM person_plan_awardunit_s_put_vld "
+INSERT_PRNAWAR_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_plan_awardunit_h_put_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, awardee_title_otx, give_force, take_force, knot) SELECT spark_num, face_name, person_name, plan_rope, awardee_title, give_force, take_force, knot FROM person_plan_awardunit_s_put_vld "
 INSERT_PRNAWAR_HEARD_RAW_DEL_SQLSTR = "INSERT INTO person_plan_awardunit_h_del_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, awardee_title_ERASE_otx) SELECT spark_num, face_name, person_name, plan_rope, awardee_title_ERASE FROM person_plan_awardunit_s_del_vld "
-INSERT_PRNFACT_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_plan_factunit_h_put_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, fact_context_otx, fact_state_otx, fact_lower, fact_upper) SELECT spark_num, face_name, person_name, plan_rope, fact_context, fact_state, fact_lower, fact_upper FROM person_plan_factunit_s_put_vld "
+INSERT_PRNFACT_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_plan_factunit_h_put_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, fact_context_otx, fact_state_otx, fact_lower, fact_upper, knot) SELECT spark_num, face_name, person_name, plan_rope, fact_context, fact_state, fact_lower, fact_upper, knot FROM person_plan_factunit_s_put_vld "
 INSERT_PRNFACT_HEARD_RAW_DEL_SQLSTR = "INSERT INTO person_plan_factunit_h_del_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, fact_context_ERASE_otx) SELECT spark_num, face_name, person_name, plan_rope, fact_context_ERASE FROM person_plan_factunit_s_del_vld "
-INSERT_PRNHEAL_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_plan_healerunit_h_put_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, healer_name_otx) SELECT spark_num, face_name, person_name, plan_rope, healer_name FROM person_plan_healerunit_s_put_vld "
+INSERT_PRNHEAL_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_plan_healerunit_h_put_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, healer_name_otx, knot) SELECT spark_num, face_name, person_name, plan_rope, healer_name, knot FROM person_plan_healerunit_s_put_vld "
 INSERT_PRNHEAL_HEARD_RAW_DEL_SQLSTR = "INSERT INTO person_plan_healerunit_h_del_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, healer_name_ERASE_otx) SELECT spark_num, face_name, person_name, plan_rope, healer_name_ERASE FROM person_plan_healerunit_s_del_vld "
-INSERT_PRNCASE_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_plan_reason_caseunit_h_put_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, reason_context_otx, reason_state_otx, reason_lower, reason_upper, reason_divisor) SELECT spark_num, face_name, person_name, plan_rope, reason_context, reason_state, reason_lower, reason_upper, reason_divisor FROM person_plan_reason_caseunit_s_put_vld "
-INSERT_PRNCASE_HEARD_RAW_DEL_SQLSTR = "INSERT INTO person_plan_reason_caseunit_h_del_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, reason_context_otx, reason_state_ERASE_otx) SELECT spark_num, face_name, person_name, plan_rope, reason_context, reason_state_ERASE FROM person_plan_reason_caseunit_s_del_vld "
-INSERT_PRNREAS_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_plan_reasonunit_h_put_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, reason_context_otx, active_requisite) SELECT spark_num, face_name, person_name, plan_rope, reason_context, active_requisite FROM person_plan_reasonunit_s_put_vld "
-INSERT_PRNREAS_HEARD_RAW_DEL_SQLSTR = "INSERT INTO person_plan_reasonunit_h_del_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, reason_context_ERASE_otx) SELECT spark_num, face_name, person_name, plan_rope, reason_context_ERASE FROM person_plan_reasonunit_s_del_vld "
-INSERT_PRNLABO_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_plan_partyunit_h_put_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, party_title_otx, solo) SELECT spark_num, face_name, person_name, plan_rope, party_title, solo FROM person_plan_partyunit_s_put_vld "
+INSERT_PRNLABO_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_plan_partyunit_h_put_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, party_title_otx, solo, knot) SELECT spark_num, face_name, person_name, plan_rope, party_title, solo, knot FROM person_plan_partyunit_s_put_vld "
 INSERT_PRNLABO_HEARD_RAW_DEL_SQLSTR = "INSERT INTO person_plan_partyunit_h_del_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, party_title_ERASE_otx) SELECT spark_num, face_name, person_name, plan_rope, party_title_ERASE FROM person_plan_partyunit_s_del_vld "
-INSERT_PRNPLAN_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_planunit_h_put_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool) SELECT spark_num, face_name, person_name, plan_rope, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool FROM person_planunit_s_put_vld "
+INSERT_PRNCASE_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_plan_reason_caseunit_h_put_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, reason_context_otx, reason_state_otx, reason_lower, reason_upper, reason_divisor, knot) SELECT spark_num, face_name, person_name, plan_rope, reason_context, reason_state, reason_lower, reason_upper, reason_divisor, knot FROM person_plan_reason_caseunit_s_put_vld "
+INSERT_PRNCASE_HEARD_RAW_DEL_SQLSTR = "INSERT INTO person_plan_reason_caseunit_h_del_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, reason_context_otx, reason_state_ERASE_otx) SELECT spark_num, face_name, person_name, plan_rope, reason_context, reason_state_ERASE FROM person_plan_reason_caseunit_s_del_vld "
+INSERT_PRNREAS_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_plan_reasonunit_h_put_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, reason_context_otx, active_requisite, knot) SELECT spark_num, face_name, person_name, plan_rope, reason_context, active_requisite, knot FROM person_plan_reasonunit_s_put_vld "
+INSERT_PRNREAS_HEARD_RAW_DEL_SQLSTR = "INSERT INTO person_plan_reasonunit_h_del_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, reason_context_ERASE_otx) SELECT spark_num, face_name, person_name, plan_rope, reason_context_ERASE FROM person_plan_reasonunit_s_del_vld "
+INSERT_PRNPLAN_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_planunit_h_put_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool, knot) SELECT spark_num, face_name, person_name, plan_rope, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool, knot FROM person_planunit_s_put_vld "
 INSERT_PRNPLAN_HEARD_RAW_DEL_SQLSTR = "INSERT INTO person_planunit_h_del_raw (spark_num, face_name_otx, person_name_otx, plan_rope_ERASE_otx) SELECT spark_num, face_name, person_name, plan_rope_ERASE FROM person_planunit_s_del_vld "
-INSERT_PRNUNIT_HEARD_RAW_PUT_SQLSTR = "INSERT INTO personunit_h_put_raw (spark_num, face_name_otx, moment_rope_otx, person_name_otx, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain) SELECT spark_num, face_name, moment_rope, person_name, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain FROM personunit_s_put_vld "
+INSERT_PRNUNIT_HEARD_RAW_PUT_SQLSTR = "INSERT INTO personunit_h_put_raw (spark_num, face_name_otx, moment_rope_otx, person_name_otx, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain, knot) SELECT spark_num, face_name, moment_rope, person_name, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain, knot FROM personunit_s_put_vld "
 INSERT_PRNUNIT_HEARD_RAW_DEL_SQLSTR = "INSERT INTO personunit_h_del_raw (spark_num, face_name_otx, moment_rope_otx, person_name_ERASE_otx) SELECT spark_num, face_name, moment_rope, person_name_ERASE FROM personunit_s_del_vld "
 
 INSERT_NABTIME_HEARD_RAW_SQLSTR = "INSERT INTO nabu_timenum_h_raw (spark_num, face_name_otx, moment_rope_otx, otx_time, inx_time) SELECT spark_num, face_name, moment_rope, otx_time, inx_time FROM nabu_timenum_s_vld "
@@ -861,6 +862,18 @@ WHERE {column_prefix}_inx IS NULL
 """
 
 
+PRNMEMB_HEARD_AGG_DEL_INSERT_SQLSTR = """
+INSERT INTO person_partner_membership_h_del_agg (spark_num, face_name, moment_rope, person_name, partner_name, group_title_ERASE)
+SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, group_title_ERASE_inx
+FROM person_partner_membership_h_del_raw
+GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, group_title_ERASE_inx
+"""
+PRNPTNR_HEARD_AGG_DEL_INSERT_SQLSTR = """
+INSERT INTO person_partnerunit_h_del_agg (spark_num, face_name, moment_rope, person_name, partner_name_ERASE)
+SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_ERASE_inx
+FROM person_partnerunit_h_del_raw
+GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_ERASE_inx
+"""
 PRNAWAR_HEARD_AGG_DEL_INSERT_SQLSTR = """
 INSERT INTO person_plan_awardunit_h_del_agg (spark_num, face_name, person_name, plan_rope, awardee_title_ERASE)
 SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, awardee_title_ERASE_inx
@@ -903,119 +916,107 @@ SELECT spark_num, face_name_inx, person_name_inx, plan_rope_ERASE_inx
 FROM person_planunit_h_del_raw
 GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_ERASE_inx
 """
-PRNMEMB_HEARD_AGG_DEL_INSERT_SQLSTR = """
-INSERT INTO person_partner_membership_h_del_agg (spark_num, face_name, moment_rope, person_name, partner_name, group_title_ERASE)
-SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, group_title_ERASE_inx
-FROM person_partner_membership_h_del_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, group_title_ERASE_inx
-"""
-PRNPTNR_HEARD_AGG_DEL_INSERT_SQLSTR = """
-INSERT INTO person_partnerunit_h_del_agg (spark_num, face_name, moment_rope, person_name, partner_name_ERASE)
-SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_ERASE_inx
-FROM person_partnerunit_h_del_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_ERASE_inx
-"""
 PRNUNIT_HEARD_AGG_DEL_INSERT_SQLSTR = """
 INSERT INTO personunit_h_del_agg (spark_num, face_name, moment_rope, person_name_ERASE)
 SELECT spark_num, face_name_inx, moment_rope_inx, person_name_ERASE_inx
 FROM personunit_h_del_raw
 GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_ERASE_inx
 """
-PRNAWAR_HEARD_AGG_PUT_INSERT_SQLSTR = """
-INSERT INTO person_plan_awardunit_h_put_agg (spark_num, face_name, person_name, plan_rope, awardee_title, give_force, take_force)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, awardee_title_inx, give_force, take_force
-FROM person_plan_awardunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, awardee_title_inx, give_force, take_force
-"""
-PRNFACT_HEARD_AGG_PUT_INSERT_SQLSTR = """
-INSERT INTO person_plan_factunit_h_put_agg (spark_num, face_name, person_name, plan_rope, fact_context, fact_state, fact_lower_otx, fact_upper_otx)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, fact_context_inx, fact_state_inx, fact_lower, fact_upper
-FROM person_plan_factunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, fact_context_inx, fact_state_inx, fact_lower, fact_upper
-"""
-PRNHEAL_HEARD_AGG_PUT_INSERT_SQLSTR = """
-INSERT INTO person_plan_healerunit_h_put_agg (spark_num, face_name, person_name, plan_rope, healer_name)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, healer_name_inx
-FROM person_plan_healerunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, healer_name_inx
-"""
-PRNLABO_HEARD_AGG_PUT_INSERT_SQLSTR = """
-INSERT INTO person_plan_partyunit_h_put_agg (spark_num, face_name, person_name, plan_rope, party_title, solo)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_inx, solo
-FROM person_plan_partyunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_inx, solo
-"""
-PRNCASE_HEARD_AGG_PUT_INSERT_SQLSTR = """
-INSERT INTO person_plan_reason_caseunit_h_put_agg (spark_num, face_name, person_name, plan_rope, reason_context, reason_state, reason_lower_otx, reason_upper_otx, reason_divisor)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, reason_state_inx, reason_lower, reason_upper, reason_divisor
-FROM person_plan_reason_caseunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, reason_state_inx, reason_lower, reason_upper, reason_divisor
-"""
-PRNREAS_HEARD_AGG_PUT_INSERT_SQLSTR = """
-INSERT INTO person_plan_reasonunit_h_put_agg (spark_num, face_name, person_name, plan_rope, reason_context, active_requisite)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, active_requisite
-FROM person_plan_reasonunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, active_requisite
-"""
-PRNPLAN_HEARD_AGG_PUT_INSERT_SQLSTR = """
-INSERT INTO person_planunit_h_put_agg (spark_num, face_name, person_name, plan_rope, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool
-FROM person_planunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool
-"""
 PRNMEMB_HEARD_AGG_PUT_INSERT_SQLSTR = """
-INSERT INTO person_partner_membership_h_put_agg (spark_num, face_name, moment_rope, person_name, partner_name, group_title, group_cred_lumen, group_debt_lumen)
-SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, group_title_inx, group_cred_lumen, group_debt_lumen
+INSERT INTO person_partner_membership_h_put_agg (spark_num, face_name, moment_rope, person_name, partner_name, group_title, group_cred_lumen, group_debt_lumen, knot)
+SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, group_title_inx, group_cred_lumen, group_debt_lumen, knot
 FROM person_partner_membership_h_put_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, group_title_inx, group_cred_lumen, group_debt_lumen
+GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, group_title_inx, group_cred_lumen, group_debt_lumen, knot
 """
 PRNPTNR_HEARD_AGG_PUT_INSERT_SQLSTR = """
-INSERT INTO person_partnerunit_h_put_agg (spark_num, face_name, moment_rope, person_name, partner_name, partner_cred_lumen, partner_debt_lumen)
-SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, partner_cred_lumen, partner_debt_lumen
+INSERT INTO person_partnerunit_h_put_agg (spark_num, face_name, moment_rope, person_name, partner_name, partner_cred_lumen, partner_debt_lumen, knot)
+SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, partner_cred_lumen, partner_debt_lumen, knot
 FROM person_partnerunit_h_put_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, partner_cred_lumen, partner_debt_lumen
+GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, partner_cred_lumen, partner_debt_lumen, knot
+"""
+PRNAWAR_HEARD_AGG_PUT_INSERT_SQLSTR = """
+INSERT INTO person_plan_awardunit_h_put_agg (spark_num, face_name, person_name, plan_rope, awardee_title, give_force, take_force, knot)
+SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, awardee_title_inx, give_force, take_force, knot
+FROM person_plan_awardunit_h_put_raw
+GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, awardee_title_inx, give_force, take_force, knot
+"""
+PRNFACT_HEARD_AGG_PUT_INSERT_SQLSTR = """
+INSERT INTO person_plan_factunit_h_put_agg (spark_num, face_name, person_name, plan_rope, fact_context, fact_state, fact_lower_otx, fact_upper_otx, knot)
+SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, fact_context_inx, fact_state_inx, fact_lower, fact_upper, knot
+FROM person_plan_factunit_h_put_raw
+GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, fact_context_inx, fact_state_inx, fact_lower, fact_upper, knot
+"""
+PRNHEAL_HEARD_AGG_PUT_INSERT_SQLSTR = """
+INSERT INTO person_plan_healerunit_h_put_agg (spark_num, face_name, person_name, plan_rope, healer_name, knot)
+SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, healer_name_inx, knot
+FROM person_plan_healerunit_h_put_raw
+GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, healer_name_inx, knot
+"""
+PRNLABO_HEARD_AGG_PUT_INSERT_SQLSTR = """
+INSERT INTO person_plan_partyunit_h_put_agg (spark_num, face_name, person_name, plan_rope, party_title, solo, knot)
+SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_inx, solo, knot
+FROM person_plan_partyunit_h_put_raw
+GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_inx, solo, knot
+"""
+PRNCASE_HEARD_AGG_PUT_INSERT_SQLSTR = """
+INSERT INTO person_plan_reason_caseunit_h_put_agg (spark_num, face_name, person_name, plan_rope, reason_context, reason_state, reason_lower_otx, reason_upper_otx, reason_divisor, knot)
+SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, reason_state_inx, reason_lower, reason_upper, reason_divisor, knot
+FROM person_plan_reason_caseunit_h_put_raw
+GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, reason_state_inx, reason_lower, reason_upper, reason_divisor, knot
+"""
+PRNREAS_HEARD_AGG_PUT_INSERT_SQLSTR = """
+INSERT INTO person_plan_reasonunit_h_put_agg (spark_num, face_name, person_name, plan_rope, reason_context, active_requisite, knot)
+SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, active_requisite, knot
+FROM person_plan_reasonunit_h_put_raw
+GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, active_requisite, knot
+"""
+PRNPLAN_HEARD_AGG_PUT_INSERT_SQLSTR = """
+INSERT INTO person_planunit_h_put_agg (spark_num, face_name, person_name, plan_rope, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool, knot)
+SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool, knot
+FROM person_planunit_h_put_raw
+GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool, knot
 """
 PRNUNIT_HEARD_AGG_PUT_INSERT_SQLSTR = """
-INSERT INTO personunit_h_put_agg (spark_num, face_name, moment_rope, person_name, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain)
-SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain
+INSERT INTO personunit_h_put_agg (spark_num, face_name, moment_rope, person_name, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain, knot)
+SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain, knot
 FROM personunit_h_put_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain
+GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain, knot
 """
 MMTBUDD_HEARD_AGG_INSERT_SQLSTR = """
-INSERT INTO moment_budunit_h_agg (spark_num, face_name, moment_rope, person_name, bud_time_otx, quota, celldepth)
-SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, bud_time, quota, celldepth
+INSERT INTO moment_budunit_h_agg (spark_num, face_name, moment_rope, person_name, bud_time_otx, knot, quota, celldepth)
+SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, bud_time, knot, quota, celldepth
 FROM moment_budunit_h_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, bud_time, quota, celldepth
+GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, bud_time, knot, quota, celldepth
 """
 MMTHOUR_HEARD_AGG_INSERT_SQLSTR = """
-INSERT INTO moment_epoch_hour_h_agg (spark_num, face_name, moment_rope, cumulative_minute, hour_label)
-SELECT spark_num, face_name_inx, moment_rope_inx, cumulative_minute, hour_label_inx
+INSERT INTO moment_epoch_hour_h_agg (spark_num, face_name, moment_rope, cumulative_minute, hour_label, knot)
+SELECT spark_num, face_name_inx, moment_rope_inx, cumulative_minute, hour_label_inx, knot
 FROM moment_epoch_hour_h_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, cumulative_minute, hour_label_inx
+GROUP BY spark_num, face_name_inx, moment_rope_inx, cumulative_minute, hour_label_inx, knot
 """
 MMTMONT_HEARD_AGG_INSERT_SQLSTR = """
-INSERT INTO moment_epoch_month_h_agg (spark_num, face_name, moment_rope, cumulative_day, month_label)
-SELECT spark_num, face_name_inx, moment_rope_inx, cumulative_day, month_label_inx
+INSERT INTO moment_epoch_month_h_agg (spark_num, face_name, moment_rope, cumulative_day, month_label, knot)
+SELECT spark_num, face_name_inx, moment_rope_inx, cumulative_day, month_label_inx, knot
 FROM moment_epoch_month_h_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, cumulative_day, month_label_inx
+GROUP BY spark_num, face_name_inx, moment_rope_inx, cumulative_day, month_label_inx, knot
 """
 MMTWEEK_HEARD_AGG_INSERT_SQLSTR = """
-INSERT INTO moment_epoch_weekday_h_agg (spark_num, face_name, moment_rope, weekday_order, weekday_label)
-SELECT spark_num, face_name_inx, moment_rope_inx, weekday_order, weekday_label_inx
+INSERT INTO moment_epoch_weekday_h_agg (spark_num, face_name, moment_rope, weekday_order, weekday_label, knot)
+SELECT spark_num, face_name_inx, moment_rope_inx, weekday_order, weekday_label_inx, knot
 FROM moment_epoch_weekday_h_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, weekday_order, weekday_label_inx
+GROUP BY spark_num, face_name_inx, moment_rope_inx, weekday_order, weekday_label_inx, knot
 """
 MMTPAYY_HEARD_AGG_INSERT_SQLSTR = """
-INSERT INTO moment_paybook_h_agg (spark_num, face_name, moment_rope, person_name, partner_name, tran_time_otx, amount)
-SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, tran_time, amount
+INSERT INTO moment_paybook_h_agg (spark_num, face_name, moment_rope, person_name, partner_name, tran_time_otx, amount, knot)
+SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, tran_time, amount, knot
 FROM moment_paybook_h_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, tran_time, amount
+GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, tran_time, amount, knot
 """
 MMTOFFI_HEARD_AGG_INSERT_SQLSTR = """
-INSERT INTO moment_timeoffi_h_agg (spark_num, face_name, moment_rope, offi_time_otx)
-SELECT spark_num, face_name_inx, moment_rope_inx, offi_time
+INSERT INTO moment_timeoffi_h_agg (spark_num, face_name, moment_rope, offi_time_otx, knot)
+SELECT spark_num, face_name_inx, moment_rope_inx, offi_time, knot
 FROM moment_timeoffi_h_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, offi_time
+GROUP BY spark_num, face_name_inx, moment_rope_inx, offi_time, knot
 """
 MMTUNIT_HEARD_AGG_INSERT_SQLSTR = """
 INSERT INTO momentunit_h_agg (spark_num, face_name, moment_rope, epoch_label, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations)
@@ -1241,41 +1242,41 @@ def update_heard_agg_timenum_columns(cursor: sqlite3_Connection):
         cursor.execute(update_sqlstr)
 
 
-MMTPAYY_HEARD_VLD_INSERT_SQLSTR = """
-INSERT INTO moment_paybook_h_vld (moment_rope, person_name, partner_name, tran_time, amount)
-SELECT moment_rope_inx, person_name_inx, partner_name_inx, tran_time, amount
-FROM moment_paybook_h_raw
-GROUP BY moment_rope_inx, person_name_inx, partner_name_inx, tran_time, amount
-"""
 MMTBUDD_HEARD_VLD_INSERT_SQLSTR = """
-INSERT INTO moment_budunit_h_vld (moment_rope, person_name, bud_time, quota, celldepth)
-SELECT moment_rope_inx, person_name_inx, bud_time, quota, celldepth
+INSERT INTO moment_budunit_h_vld (moment_rope, person_name, bud_time, knot, quota, celldepth)
+SELECT moment_rope_inx, person_name_inx, bud_time, knot, quota, celldepth
 FROM moment_budunit_h_raw
-GROUP BY moment_rope_inx, person_name_inx, bud_time, quota, celldepth
+GROUP BY moment_rope_inx, person_name_inx, bud_time, knot, quota, celldepth
 """
 MMTHOUR_HEARD_VLD_INSERT_SQLSTR = """
-INSERT INTO moment_epoch_hour_h_vld (moment_rope, cumulative_minute, hour_label)
-SELECT moment_rope_inx, cumulative_minute, hour_label_inx
+INSERT INTO moment_epoch_hour_h_vld (moment_rope, cumulative_minute, hour_label, knot)
+SELECT moment_rope_inx, cumulative_minute, hour_label_inx, knot
 FROM moment_epoch_hour_h_raw
-GROUP BY moment_rope_inx, cumulative_minute, hour_label_inx
+GROUP BY moment_rope_inx, cumulative_minute, hour_label_inx, knot
 """
 MMTMONT_HEARD_VLD_INSERT_SQLSTR = """
-INSERT INTO moment_epoch_month_h_vld (moment_rope, cumulative_day, month_label)
-SELECT moment_rope_inx, cumulative_day, month_label_inx
+INSERT INTO moment_epoch_month_h_vld (moment_rope, cumulative_day, month_label, knot)
+SELECT moment_rope_inx, cumulative_day, month_label_inx, knot
 FROM moment_epoch_month_h_raw
-GROUP BY moment_rope_inx, cumulative_day, month_label_inx
+GROUP BY moment_rope_inx, cumulative_day, month_label_inx, knot
 """
 MMTWEEK_HEARD_VLD_INSERT_SQLSTR = """
-INSERT INTO moment_epoch_weekday_h_vld (moment_rope, weekday_order, weekday_label)
-SELECT moment_rope_inx, weekday_order, weekday_label_inx
+INSERT INTO moment_epoch_weekday_h_vld (moment_rope, weekday_order, weekday_label, knot)
+SELECT moment_rope_inx, weekday_order, weekday_label_inx, knot
 FROM moment_epoch_weekday_h_raw
-GROUP BY moment_rope_inx, weekday_order, weekday_label_inx
+GROUP BY moment_rope_inx, weekday_order, weekday_label_inx, knot
+"""
+MMTPAYY_HEARD_VLD_INSERT_SQLSTR = """
+INSERT INTO moment_paybook_h_vld (moment_rope, person_name, partner_name, tran_time, amount, knot)
+SELECT moment_rope_inx, person_name_inx, partner_name_inx, tran_time, amount, knot
+FROM moment_paybook_h_raw
+GROUP BY moment_rope_inx, person_name_inx, partner_name_inx, tran_time, amount, knot
 """
 MMTOFFI_HEARD_VLD_INSERT_SQLSTR = """
-INSERT INTO moment_timeoffi_h_vld (moment_rope, offi_time)
-SELECT moment_rope_inx, offi_time
+INSERT INTO moment_timeoffi_h_vld (moment_rope, offi_time, knot)
+SELECT moment_rope_inx, offi_time, knot
 FROM moment_timeoffi_h_raw
-GROUP BY moment_rope_inx, offi_time
+GROUP BY moment_rope_inx, offi_time, knot
 """
 MMTUNIT_HEARD_VLD_INSERT_SQLSTR = """
 INSERT INTO momentunit_h_vld (moment_rope, epoch_label, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations)
@@ -1283,12 +1284,11 @@ SELECT moment_rope_inx, epoch_label_inx, c400_number, yr1_jan1_offset, monthday_
 FROM momentunit_h_raw
 GROUP BY moment_rope_inx, epoch_label_inx, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations
 """
-
 INSERT_PRNMEMB_HEARD_VLD_PUT_SQLSTR = """
-INSERT INTO person_partner_membership_h_put_vld (spark_num, face_name, moment_rope, person_name, partner_name, group_title, group_cred_lumen, group_debt_lumen)
-SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, group_title_inx, group_cred_lumen, group_debt_lumen
+INSERT INTO person_partner_membership_h_put_vld (spark_num, face_name, moment_rope, person_name, partner_name, group_title, group_cred_lumen, group_debt_lumen, knot)
+SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, group_title_inx, group_cred_lumen, group_debt_lumen, knot
 FROM person_partner_membership_h_put_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, group_title_inx, group_cred_lumen, group_debt_lumen
+GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, group_title_inx, group_cred_lumen, group_debt_lumen, knot
 """
 INSERT_PRNMEMB_HEARD_VLD_DEL_SQLSTR = """
 INSERT INTO person_partner_membership_h_del_vld (spark_num, face_name, moment_rope, person_name, partner_name, group_title_ERASE)
@@ -1297,10 +1297,10 @@ FROM person_partner_membership_h_del_raw
 GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, group_title_ERASE_inx
 """
 INSERT_PRNPTNR_HEARD_VLD_PUT_SQLSTR = """
-INSERT INTO person_partnerunit_h_put_vld (spark_num, face_name, moment_rope, person_name, partner_name, partner_cred_lumen, partner_debt_lumen)
-SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, partner_cred_lumen, partner_debt_lumen
+INSERT INTO person_partnerunit_h_put_vld (spark_num, face_name, moment_rope, person_name, partner_name, partner_cred_lumen, partner_debt_lumen, knot)
+SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, partner_cred_lumen, partner_debt_lumen, knot
 FROM person_partnerunit_h_put_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, partner_cred_lumen, partner_debt_lumen
+GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, partner_cred_lumen, partner_debt_lumen, knot
 """
 INSERT_PRNPTNR_HEARD_VLD_DEL_SQLSTR = """
 INSERT INTO person_partnerunit_h_del_vld (spark_num, face_name, moment_rope, person_name, partner_name_ERASE)
@@ -1309,10 +1309,10 @@ FROM person_partnerunit_h_del_raw
 GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_ERASE_inx
 """
 INSERT_PRNAWAR_HEARD_VLD_PUT_SQLSTR = """
-INSERT INTO person_plan_awardunit_h_put_vld (spark_num, face_name, person_name, plan_rope, awardee_title, give_force, take_force)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, awardee_title_inx, give_force, take_force
+INSERT INTO person_plan_awardunit_h_put_vld (spark_num, face_name, person_name, plan_rope, awardee_title, give_force, take_force, knot)
+SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, awardee_title_inx, give_force, take_force, knot
 FROM person_plan_awardunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, awardee_title_inx, give_force, take_force
+GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, awardee_title_inx, give_force, take_force, knot
 """
 INSERT_PRNAWAR_HEARD_VLD_DEL_SQLSTR = """
 INSERT INTO person_plan_awardunit_h_del_vld (spark_num, face_name, person_name, plan_rope, awardee_title_ERASE)
@@ -1321,10 +1321,10 @@ FROM person_plan_awardunit_h_del_raw
 GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, awardee_title_ERASE_inx
 """
 INSERT_PRNFACT_HEARD_VLD_PUT_SQLSTR = """
-INSERT INTO person_plan_factunit_h_put_vld (spark_num, face_name, person_name, plan_rope, fact_context, fact_state, fact_lower, fact_upper)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, fact_context_inx, fact_state_inx, fact_lower, fact_upper
+INSERT INTO person_plan_factunit_h_put_vld (spark_num, face_name, person_name, plan_rope, fact_context, fact_state, fact_lower, fact_upper, knot)
+SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, fact_context_inx, fact_state_inx, fact_lower, fact_upper, knot
 FROM person_plan_factunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, fact_context_inx, fact_state_inx, fact_lower, fact_upper
+GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, fact_context_inx, fact_state_inx, fact_lower, fact_upper, knot
 """
 INSERT_PRNFACT_HEARD_VLD_DEL_SQLSTR = """
 INSERT INTO person_plan_factunit_h_del_vld (spark_num, face_name, person_name, plan_rope, fact_context_ERASE)
@@ -1333,10 +1333,10 @@ FROM person_plan_factunit_h_del_raw
 GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, fact_context_ERASE_inx
 """
 INSERT_PRNHEAL_HEARD_VLD_PUT_SQLSTR = """
-INSERT INTO person_plan_healerunit_h_put_vld (spark_num, face_name, person_name, plan_rope, healer_name)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, healer_name_inx
+INSERT INTO person_plan_healerunit_h_put_vld (spark_num, face_name, person_name, plan_rope, healer_name, knot)
+SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, healer_name_inx, knot
 FROM person_plan_healerunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, healer_name_inx
+GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, healer_name_inx, knot
 """
 INSERT_PRNHEAL_HEARD_VLD_DEL_SQLSTR = """
 INSERT INTO person_plan_healerunit_h_del_vld (spark_num, face_name, person_name, plan_rope, healer_name_ERASE)
@@ -1344,11 +1344,23 @@ SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, healer_name_ERA
 FROM person_plan_healerunit_h_del_raw
 GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, healer_name_ERASE_inx
 """
+INSERT_PRNLABO_HEARD_VLD_PUT_SQLSTR = """
+INSERT INTO person_plan_partyunit_h_put_vld (spark_num, face_name, person_name, plan_rope, party_title, solo, knot)
+SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_inx, solo, knot
+FROM person_plan_partyunit_h_put_raw
+GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_inx, solo, knot
+"""
+INSERT_PRNLABO_HEARD_VLD_DEL_SQLSTR = """
+INSERT INTO person_plan_partyunit_h_del_vld (spark_num, face_name, person_name, plan_rope, party_title_ERASE)
+SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_ERASE_inx
+FROM person_plan_partyunit_h_del_raw
+GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_ERASE_inx
+"""
 INSERT_PRNCASE_HEARD_VLD_PUT_SQLSTR = """
-INSERT INTO person_plan_reason_caseunit_h_put_vld (spark_num, face_name, person_name, plan_rope, reason_context, reason_state, reason_lower, reason_upper, reason_divisor)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, reason_state_inx, reason_lower, reason_upper, reason_divisor
+INSERT INTO person_plan_reason_caseunit_h_put_vld (spark_num, face_name, person_name, plan_rope, reason_context, reason_state, reason_lower, reason_upper, reason_divisor, knot)
+SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, reason_state_inx, reason_lower, reason_upper, reason_divisor, knot
 FROM person_plan_reason_caseunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, reason_state_inx, reason_lower, reason_upper, reason_divisor
+GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, reason_state_inx, reason_lower, reason_upper, reason_divisor, knot
 """
 INSERT_PRNCASE_HEARD_VLD_DEL_SQLSTR = """
 INSERT INTO person_plan_reason_caseunit_h_del_vld (spark_num, face_name, person_name, plan_rope, reason_context, reason_state_ERASE)
@@ -1357,10 +1369,10 @@ FROM person_plan_reason_caseunit_h_del_raw
 GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, reason_state_ERASE_inx
 """
 INSERT_PRNREAS_HEARD_VLD_PUT_SQLSTR = """
-INSERT INTO person_plan_reasonunit_h_put_vld (spark_num, face_name, person_name, plan_rope, reason_context, active_requisite)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, active_requisite
+INSERT INTO person_plan_reasonunit_h_put_vld (spark_num, face_name, person_name, plan_rope, reason_context, active_requisite, knot)
+SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, active_requisite, knot
 FROM person_plan_reasonunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, active_requisite
+GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, active_requisite, knot
 """
 INSERT_PRNREAS_HEARD_VLD_DEL_SQLSTR = """
 INSERT INTO person_plan_reasonunit_h_del_vld (spark_num, face_name, person_name, plan_rope, reason_context_ERASE)
@@ -1368,23 +1380,11 @@ SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_
 FROM person_plan_reasonunit_h_del_raw
 GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_ERASE_inx
 """
-INSERT_PRNLABO_HEARD_VLD_PUT_SQLSTR = """
-INSERT INTO person_plan_partyunit_h_put_vld (spark_num, face_name, person_name, plan_rope, party_title, solo)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_inx, solo
-FROM person_plan_partyunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_inx, solo
-"""
-INSERT_PRNLABO_HEARD_VLD_DEL_SQLSTR = """
-INSERT INTO person_plan_partyunit_h_del_vld (spark_num, face_name, person_name, plan_rope, party_title_ERASE)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_ERASE_inx
-FROM person_plan_partyunit_h_del_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_ERASE_inx
-"""
 INSERT_PRNPLAN_HEARD_VLD_PUT_SQLSTR = """
-INSERT INTO person_planunit_h_put_vld (spark_num, face_name, person_name, plan_rope, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool
+INSERT INTO person_planunit_h_put_vld (spark_num, face_name, person_name, plan_rope, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool, knot)
+SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool, knot
 FROM person_planunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool
+GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool, knot
 """
 INSERT_PRNPLAN_HEARD_VLD_DEL_SQLSTR = """
 INSERT INTO person_planunit_h_del_vld (spark_num, face_name, person_name, plan_rope_ERASE)
@@ -1393,10 +1393,10 @@ FROM person_planunit_h_del_raw
 GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_ERASE_inx
 """
 INSERT_PRNUNIT_HEARD_VLD_PUT_SQLSTR = """
-INSERT INTO personunit_h_put_vld (spark_num, face_name, moment_rope, person_name, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain)
-SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain
+INSERT INTO personunit_h_put_vld (spark_num, face_name, moment_rope, person_name, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain, knot)
+SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain, knot
 FROM personunit_h_put_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain
+GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain, knot
 """
 INSERT_PRNUNIT_HEARD_VLD_DEL_SQLSTR = """
 INSERT INTO personunit_h_del_vld (spark_num, face_name, moment_rope, person_name_ERASE)
@@ -1438,14 +1438,12 @@ def get_insert_heard_vld_sqlstrs() -> dict[str, str]:
     }
 
 
-MMTPAYY_FU2_SELECT_SQLSTR = "SELECT moment_rope, person_name, partner_name, tran_time, amount FROM moment_paybook_h_vld WHERE moment_rope = "
-MMTBUDD_FU2_SELECT_SQLSTR = "SELECT moment_rope, person_name, bud_time, quota, celldepth FROM moment_budunit_h_vld WHERE moment_rope = "
-MMTHOUR_FU2_SELECT_SQLSTR = "SELECT moment_rope, cumulative_minute, hour_label FROM moment_epoch_hour_h_vld WHERE moment_rope = "
-MMTMONT_FU2_SELECT_SQLSTR = "SELECT moment_rope, cumulative_day, month_label FROM moment_epoch_month_h_vld WHERE moment_rope = "
-MMTWEEK_FU2_SELECT_SQLSTR = "SELECT moment_rope, weekday_order, weekday_label FROM moment_epoch_weekday_h_vld WHERE moment_rope = "
-MMTOFFI_FU2_SELECT_SQLSTR = (
-    "SELECT moment_rope, offi_time FROM moment_timeoffi_h_vld WHERE moment_rope = "
-)
+MMTPAYY_FU2_SELECT_SQLSTR = "SELECT moment_rope, person_name, partner_name, tran_time, amount, knot FROM moment_paybook_h_vld WHERE moment_rope = "
+MMTBUDD_FU2_SELECT_SQLSTR = "SELECT moment_rope, person_name, bud_time, knot, quota, celldepth FROM moment_budunit_h_vld WHERE moment_rope = "
+MMTHOUR_FU2_SELECT_SQLSTR = "SELECT moment_rope, cumulative_minute, hour_label, knot FROM moment_epoch_hour_h_vld WHERE moment_rope = "
+MMTMONT_FU2_SELECT_SQLSTR = "SELECT moment_rope, cumulative_day, month_label, knot FROM moment_epoch_month_h_vld WHERE moment_rope = "
+MMTWEEK_FU2_SELECT_SQLSTR = "SELECT moment_rope, weekday_order, weekday_label, knot FROM moment_epoch_weekday_h_vld WHERE moment_rope = "
+MMTOFFI_FU2_SELECT_SQLSTR = "SELECT moment_rope, offi_time, knot FROM moment_timeoffi_h_vld WHERE moment_rope = "
 MMTUNIT_FU2_SELECT_SQLSTR = "SELECT moment_rope, epoch_label, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations FROM momentunit_h_vld WHERE moment_rope = "
 
 
@@ -1599,17 +1597,17 @@ ORDER BY moment_rope, person_name, spark_num, bud_time
 """
 
 
+CREATE_JOB_PRNGROU_SQLSTR = """CREATE TABLE IF NOT EXISTS person_groupunit_job (moment_rope TEXT, person_name TEXT, group_title TEXT, fund_grain REAL, credor_pool REAL, debtor_pool REAL, fund_give REAL, fund_take REAL, fund_agenda_give REAL, fund_agenda_take REAL)"""
 CREATE_JOB_PRNMEMB_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_job (moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title TEXT, group_cred_lumen REAL, group_debt_lumen REAL, credor_pool REAL, debtor_pool REAL, fund_give REAL, fund_take REAL, fund_agenda_give REAL, fund_agenda_take REAL, fund_agenda_ratio_give REAL, fund_agenda_ratio_take REAL)"""
 CREATE_JOB_PRNPTNR_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_job (moment_rope TEXT, person_name TEXT, partner_name TEXT, partner_cred_lumen REAL, partner_debt_lumen REAL, groupmark TEXT, credor_pool REAL, debtor_pool REAL, fund_give REAL, fund_take REAL, fund_agenda_give REAL, fund_agenda_take REAL, fund_agenda_ratio_give REAL, fund_agenda_ratio_take REAL, inallocable_partner_debt_lumen REAL, irrational_partner_debt_lumen REAL)"""
-CREATE_JOB_PRNGROU_SQLSTR = """CREATE TABLE IF NOT EXISTS person_groupunit_job (moment_rope TEXT, person_name TEXT, group_title TEXT, fund_grain REAL, credor_pool REAL, debtor_pool REAL, fund_give REAL, fund_take REAL, fund_agenda_give REAL, fund_agenda_take REAL)"""
-CREATE_JOB_PRNAWAR_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, awardee_title TEXT, give_force REAL, take_force REAL, fund_give REAL, fund_take REAL)"""
-CREATE_JOB_PRNFACT_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower REAL, fact_upper REAL)"""
-CREATE_JOB_PRNHEAL_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT)"""
-CREATE_JOB_PRNCASE_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, case_task INTEGER, case_active INTEGER)"""
-CREATE_JOB_PRNREAS_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, active_requisite INTEGER, reason_active INTEGER, reason_task INTEGER, parent_heir_active INTEGER)"""
-CREATE_JOB_PRNLABO_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, party_title TEXT, solo INTEGER, person_name_is_labor INTEGER)"""
-CREATE_JOB_PRNPLAN_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, star INTEGER, pledge INTEGER, problem_bool INTEGER, fund_grain REAL, plan_active INTEGER, plan_task INTEGER, fund_onset REAL, fund_cease REAL, fund_ratio REAL, gogo_calc REAL, stop_calc REAL, tree_level INTEGER, range_evaluated INTEGER, descendant_pledge_count INTEGER, healerunit_ratio REAL, all_partner_cred INTEGER, all_partner_debt INTEGER)"""
-CREATE_JOB_PRNUNIT_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_job (moment_rope TEXT, person_name TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, rational INTEGER, keeps_justified INTEGER, offtrack_fund REAL, sum_healerunit_plans_fund_total REAL, keeps_buildable INTEGER, tree_traverse_count INTEGER)"""
+CREATE_JOB_PRNAWAR_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, awardee_title TEXT, give_force REAL, take_force REAL, knot TEXT, fund_give REAL, fund_take REAL)"""
+CREATE_JOB_PRNFACT_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower REAL, fact_upper REAL, knot TEXT)"""
+CREATE_JOB_PRNHEAL_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT, knot TEXT)"""
+CREATE_JOB_PRNLABO_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, party_title TEXT, solo INTEGER, knot TEXT, person_name_is_labor INTEGER)"""
+CREATE_JOB_PRNCASE_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, knot TEXT, case_task INTEGER, case_active INTEGER)"""
+CREATE_JOB_PRNREAS_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, active_requisite INTEGER, knot TEXT, reason_active INTEGER, reason_task INTEGER, parent_heir_active INTEGER)"""
+CREATE_JOB_PRNPLAN_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, star INTEGER, pledge INTEGER, problem_bool INTEGER, fund_grain REAL, knot TEXT, plan_active INTEGER, plan_task INTEGER, fund_onset REAL, fund_cease REAL, fund_ratio REAL, gogo_calc REAL, stop_calc REAL, tree_level INTEGER, range_evaluated INTEGER, descendant_pledge_count INTEGER, healerunit_ratio REAL, all_partner_cred INTEGER, all_partner_debt INTEGER)"""
+CREATE_JOB_PRNUNIT_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_job (moment_rope TEXT, person_name TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT, rational INTEGER, keeps_justified INTEGER, offtrack_fund REAL, sum_healerunit_plans_fund_total REAL, keeps_buildable INTEGER, tree_traverse_count INTEGER)"""
 
 
 def get_job_create_table_sqlstrs() -> dict[str, str]:

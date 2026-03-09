@@ -37,12 +37,13 @@ class LessonUnit:
     face_name: FaceName = None
     moment_rope: MomentRope = None
     person_name: PersonName = None
-    _lesson_id: int = None
-    _persondelta: PersonDelta = None
-    _delta_start: int = None
     lessons_dir: str = None
     atoms_dir: str = None
     spark_num: int = None
+    # calculated fields (not confident)
+    _lesson_id: int = None
+    _persondelta: PersonDelta = None
+    _delta_start: int = None
     """Represents a per moment_rope/spark_num PersonDelta for a person_name"""
 
     def set_face(self, x_face_name: FaceName):

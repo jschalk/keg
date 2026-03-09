@@ -79,7 +79,7 @@ def test_get_moment_heard_select1_sqlstrs_ReturnsObj(cursor0: Cursor):
     mmtweek_sqlstr_ref = f"{mmtweek_abbv7.upper()}_FU2_SELECT_SQLSTR"
     mmtoffi_sqlstr_ref = f"{mmtoffi_abbv7.upper()}_FU2_SELECT_SQLSTR"
     momentunit_sqlstr_ref = f"{momentunit_abbv7.upper()}_FU2_SELECT_SQLSTR"
-    qa23_str = "'amy23'"
+    qa23_str = f"'{exx.a23}'"
     blank = ""
     print(f"""{mmtpayy_sqlstr_ref} = "{mmtpayy_sql.replace(qa23_str, blank)}" """)
     print(f"""{momentbud_sqlstr_ref} = "{momentbud_sql.replace(qa23_str, blank)}" """)

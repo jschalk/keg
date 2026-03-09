@@ -27,6 +27,7 @@ def test_create_personunit_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     #     print(f"{x_arg=}")
 
     x_moment_rope = exx.a23
+    x_knot = exx.slash
     x_person_name = "Sue"
     x_keeps_buildable = True
     x_keeps_justified = False
@@ -43,6 +44,7 @@ def test_create_personunit_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     x_respect_grain = 0.2
     values_dict = {
         kw.moment_rope: x_moment_rope,
+        kw.knot: x_knot,
         kw.person_name: x_person_name,
         kw.keeps_buildable: x_keeps_buildable,
         kw.keeps_justified: x_keeps_justified,
@@ -90,6 +92,7 @@ def test_create_prnplan_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     #     # print(f""", {b0_str}sqlite_obj_str({x_arg}, real_str){b1_str}""")
 
     x_moment_rope = exx.a23
+    x_knot = exx.slash
     x_person_name = "Sue"
     x_active = 1
     x_all_partner_cred = 2
@@ -119,6 +122,7 @@ def test_create_prnplan_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     x_stop_want = 27
     values_dict = {
         kw.moment_rope: x_moment_rope,
+        kw.knot: x_knot,
         kw.person_name: x_person_name,
         kw.plan_active: x_active,
         kw.all_partner_cred: x_all_partner_cred,
@@ -188,22 +192,24 @@ def test_create_prnreas_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     #     print(f""", {b0_str}sqlite_obj_str({x_arg}, real_str){b1_str}""")
 
     x_moment_rope = exx.a23
+    x_knot = exx.slash
     x_person_name = "Sue"
     x_rope = 1
     x_reason_context = 2
     x_active_requisite = 3
     x_reason_active = 4
     x_reason_task = 5
-    x__heir_active = 6
+    x_heir_active = 6
     values_dict = {
         kw.moment_rope: x_moment_rope,
         kw.person_name: x_person_name,
         kw.plan_rope: x_rope,
+        kw.knot: x_knot,
         kw.reason_context: x_reason_context,
         kw.active_requisite: x_active_requisite,
         kw.reason_active: x_reason_active,
         kw.reason_task: x_reason_task,
-        kw.parent_heir_active: x__heir_active,
+        kw.parent_heir_active: x_heir_active,
     }
     # all args included in values dict
     assert x_args == set(values_dict.keys())
@@ -249,6 +255,7 @@ def test_create_prncase_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     # print(";")
 
     x_moment_rope = exx.a23
+    x_knot = exx.slash
     x_person_name = "Sue"
     x_rope = 1
     x_reason_context = 2
@@ -260,6 +267,7 @@ def test_create_prncase_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     x_case_active = 8
     values_dict = {
         kw.moment_rope: x_moment_rope,
+        kw.knot: x_knot,
         kw.person_name: x_person_name,
         kw.plan_rope: x_rope,
         kw.reason_context: x_reason_context,
@@ -281,9 +289,9 @@ def test_create_prncase_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     create_job_tables(cursor0)
     table_name = "person_plan_reason_caseunit_job"
     expected_sqlstr = create_insert_query(cursor0, table_name, values_dict)
-    # print(expected_sqlstr)
-    print("")
-    print(insert_sqlstr)
+    print(expected_sqlstr)
+    # print("")
+    # print(insert_sqlstr)
     assert insert_sqlstr == expected_sqlstr
 
 
@@ -314,6 +322,7 @@ def test_create_prnawar_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     # print(";")
 
     x_moment_rope = exx.a23
+    x_knot = exx.slash
     x_person_name = "Sue"
     x_rope = 1
     x_awardee_title = 2
@@ -324,6 +333,7 @@ def test_create_prnawar_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     values_dict = {
         kw.moment_rope: x_moment_rope,
         kw.person_name: x_person_name,
+        kw.knot: x_knot,
         kw.plan_rope: x_rope,
         kw.awardee_title: x_awardee_title,
         kw.give_force: x_give_force,
@@ -375,6 +385,7 @@ def test_create_prnfact_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     # print(";")
 
     x_moment_rope = exx.a23
+    x_slash = exx.slash
     x_person_name = "Sue"
     x_rope = 1
     x_fact_context = 2
@@ -383,6 +394,7 @@ def test_create_prnfact_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     x_fact_upper = 5
     values_dict = {
         kw.moment_rope: x_moment_rope,
+        kw.knot: x_slash,
         kw.person_name: x_person_name,
         kw.plan_rope: x_rope,
         kw.fact_context: x_fact_context,
@@ -434,11 +446,13 @@ def test_create_prnheal_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     # print(";")
 
     x_moment_rope = exx.a23
+    x_knot = exx.slash
     x_person_name = "Sue"
     x_rope = 1
     x_healer_name = 2
     values_dict = {
         kw.moment_rope: x_moment_rope,
+        kw.knot: x_knot,
         kw.person_name: x_person_name,
         kw.plan_rope: x_rope,
         kw.healer_name: x_healer_name,
@@ -487,18 +501,20 @@ def test_create_prnlabo_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     # print(";")
 
     x_moment_rope = exx.a23
+    x_knot = exx.slash
     x_person_name = "Sue"
     x_rope = 1
     x_party_title = 2
     x_solo = 4
-    x__person_name_is_labor = 3
+    x_person_name_is_labor = 3
     values_dict = {
         kw.moment_rope: x_moment_rope,
+        kw.knot: x_knot,
         kw.person_name: x_person_name,
         kw.plan_rope: x_rope,
         kw.party_title: x_party_title,
         kw.solo: x_solo,
-        kw.person_name_is_labor: x__person_name_is_labor,
+        kw.person_name_is_labor: x_person_name_is_labor,
     }
     # all args included in values dict
     assert x_args == set(values_dict.keys())
