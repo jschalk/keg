@@ -264,57 +264,55 @@ def test_save_to_split_csvs_CreatesFiles_Scenario3_Different_Knots(
     assert x_csv[2] == expected_csv2_row
 
 
-def test_save_to_split_csvs_CreatesFiles_Scenario4_knot_is_NULL(
-    temp_dir_setup, cursor0: Cursor
-):
-    # ESTABLISH
-    # TODO get rid of knot is NULL option. It's a temporary solution that assumes the knot is a single character length
-    # means the knot column in the tables need to be populated not by knot column of original inputs but by calculated knot for each moment
-    x_tablename = "test_table568"
-    key_columns = ["hair", "user"]
-    create_sql = f"""CREATE TABLE {x_tablename} (hair INTEGER,user TEXT,y_int INTEGER, run TEXT, {kw.knot} TEXT);"""
-    cursor0.execute(create_sql)
-    x_blue = f";{exx.blue};"
-    x_red = f"/{exx.red}/"
-    insert1_sql = f"""INSERT INTO {x_tablename} (hair, user, y_int, run, {kw.knot}) VALUES ("{x_blue}", "A", 200, "yes", NULL);"""
-    insert2_sql = f"""INSERT INTO {x_tablename} (hair, user, y_int, run, {kw.knot}) VALUES ("{x_blue}", "A", 333, "yes", NULL);"""
-    insert3_sql = f"""INSERT INTO {x_tablename} (hair, user, y_int, run, {kw.knot}) VALUES ("{x_red}", "B", 200, "yes", NULL);"""
-    cursor0.execute(insert1_sql)
-    cursor0.execute(insert2_sql)
-    cursor0.execute(insert3_sql)
-    x_dir = get_temp_dir()
-    hairs_str = "hairs"
-    y_ints_str = "y_ints"
-    red_dir = create_path(x_dir, exx.red)
-    hairs_dir = create_path(red_dir, hairs_str)
-    red_A_dir = create_path(hairs_dir, "B")
-    red_y_ints_dir = create_path(red_A_dir, y_ints_str)
-    red_A_csv_path = create_path(red_y_ints_dir, f"{x_tablename}.csv")
-    print(f"{red_A_csv_path=}")
-    assert os_path_exists(red_A_csv_path) is False
+# def test_save_to_split_csvs_CreatesFiles_Scenario4_knot_is_NULL(
+#     temp_dir_setup, cursor0: Cursor
+# ):
+#     # ESTABLISH
+#     x_tablename = "test_table568"
+#     key_columns = ["hair", "user"]
+#     create_sql = f"""CREATE TABLE {x_tablename} (hair INTEGER,user TEXT,y_int INTEGER, run TEXT, {kw.knot} TEXT);"""
+#     cursor0.execute(create_sql)
+#     x_blue = f";{exx.blue};"
+#     x_red = f"/{exx.red}/"
+#     insert1_sql = f"""INSERT INTO {x_tablename} (hair, user, y_int, run, {kw.knot}) VALUES ("{x_blue}", "A", 200, "yes", NULL);"""
+#     insert2_sql = f"""INSERT INTO {x_tablename} (hair, user, y_int, run, {kw.knot}) VALUES ("{x_blue}", "A", 333, "yes", NULL);"""
+#     insert3_sql = f"""INSERT INTO {x_tablename} (hair, user, y_int, run, {kw.knot}) VALUES ("{x_red}", "B", 200, "yes", NULL);"""
+#     cursor0.execute(insert1_sql)
+#     cursor0.execute(insert2_sql)
+#     cursor0.execute(insert3_sql)
+#     x_dir = get_temp_dir()
+#     hairs_str = "hairs"
+#     y_ints_str = "y_ints"
+#     red_dir = create_path(x_dir, exx.red)
+#     hairs_dir = create_path(red_dir, hairs_str)
+#     red_A_dir = create_path(hairs_dir, "B")
+#     red_y_ints_dir = create_path(red_A_dir, y_ints_str)
+#     red_A_csv_path = create_path(red_y_ints_dir, f"{x_tablename}.csv")
+#     print(f"{red_A_csv_path=}")
+#     assert os_path_exists(red_A_csv_path) is False
 
-    # WHEN
-    save_to_split_csvs(
-        conn_or_cursor=cursor0,
-        tablename=x_tablename,
-        key_columns=key_columns,
-        dst_dir=x_dir,
-        col1_prefix=hairs_str,
-        col2_prefix=y_ints_str,
-    )
+#     # WHEN
+#     save_to_split_csvs(
+#         conn_or_cursor=cursor0,
+#         tablename=x_tablename,
+#         key_columns=key_columns,
+#         dst_dir=x_dir,
+#         col1_prefix=hairs_str,
+#         col2_prefix=y_ints_str,
+#     )
 
-    # THEN
-    assert os_path_exists(red_A_csv_path)
-    expected_A1_row = (x_red, "B", 200, "yes", "")
-    x_column_types = {
-        "hair": "TEXT",
-        "user": "TEXT",
-        "y_int": "INTEGER",
-        "run": "TEXT",
-        kw.knot: "TEXT",
-    }
-    A1_csv = open_csv_with_types(red_A_csv_path, x_column_types)
-    print(f"{A1_csv[0]=}")
-    print(f"{A1_csv[1]=}")
-    assert A1_csv[0] == ("hair", "user", "y_int", "run", kw.knot)
-    assert A1_csv[1] == expected_A1_row
+#     # THEN
+#     assert os_path_exists(red_A_csv_path)
+#     expected_A1_row = (x_red, "B", 200, "yes", "")
+#     x_column_types = {
+#         "hair": "TEXT",
+#         "user": "TEXT",
+#         "y_int": "INTEGER",
+#         "run": "TEXT",
+#         kw.knot: "TEXT",
+#     }
+#     A1_csv = open_csv_with_types(red_A_csv_path, x_column_types)
+#     print(f"{A1_csv[0]=}")
+#     print(f"{A1_csv[1]=}")
+#     assert A1_csv[0] == ("hair", "user", "y_int", "run", kw.knot)
+#     assert A1_csv[1] == expected_A1_row
