@@ -62,3 +62,17 @@ def test_LassoUnit_make_path_ReturnsObj_Scenario0_SimpleRope():
     assert casa_path
     expected_casa_path = create_path(exx.sue, exx.casa)
     assert casa_path == expected_casa_path
+
+
+def test_LassoUnit_make_path_ReturnsObj_Scenario1_DifferentKnot():
+    # ESTABLISH
+    casa_rope = create_rope(exx.sue, exx.casa, exx.dash)
+    casa_lasso = lassounit_shop(casa_rope, knot=exx.dash)
+
+    # WHEN
+    casa_path = casa_lasso.make_path()
+
+    # THEN
+    assert casa_path
+    expected_casa_path = create_path(exx.sue, exx.casa)
+    assert casa_path == expected_casa_path

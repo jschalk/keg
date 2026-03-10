@@ -61,8 +61,8 @@ VALUES
     cursor0.execute(select_core_raw_sqlstr)
     name_knot_str = f"Knot cannot exist in NameTerm column {kw.partner_name}"
     assert cursor0.fetchall() == [
-        (spark1, exx.sue, exx.a23, exx.yao, exx.yao, None, None, None),
-        (spark1, exx.sue, exx.a23, exx.yao, bob_str, None, None, name_knot_str),
+        (spark1, exx.sue, exx.a23, exx.yao, exx.yao, None, None, None, None),
+        (spark1, exx.sue, exx.a23, exx.yao, bob_str, None, None, None, name_knot_str),
     ]
 
 
@@ -116,8 +116,8 @@ VALUES
     rows = cursor0.fetchall()
     print(rows)
     assert rows == [
-        (spark1, exx.sue, exx.a23, 101, exx.June, None),
-        (spark1, exx.sue, exx.a23, 101, bad_june_str, label_knot_str),
+        (spark1, exx.sue, exx.a23, 101, exx.June, None, None),
+        (spark1, exx.sue, exx.a23, 101, bad_june_str, None, label_knot_str),
     ]
 
 
@@ -131,7 +131,6 @@ def test_set_moment_person_sound_agg_knot_errors_PopulatesTable_Scenario0(
     comma = ","
     ukx = "Unknown"
     spark1 = 1
-    spark7 = 7
 
     cursor0.execute(CREATE_PRNPTNR_SOUND_PUT_AGG_SQLSTR)
     prnptnr_dimen = kw.person_partnerunit
@@ -172,7 +171,7 @@ VALUES
     rows = cursor0.fetchall()
     print(f"{rows=}")
     assert rows == [
-        (spark1, exx.sue, a45_str, exx.yao, exx.yao, None, None, None),
-        (spark1, exx.sue, exx.a23, exx.yao, bob_str, None, None, name_knot_str),
-        (spark1, exx.sue, exx.a23, exx.yao, exx.yao, None, None, None),
+        (spark1, exx.sue, a45_str, exx.yao, exx.yao, None, None, None, None),
+        (spark1, exx.sue, exx.a23, exx.yao, bob_str, None, None, None, name_knot_str),
+        (spark1, exx.sue, exx.a23, exx.yao, exx.yao, None, None, None, None),
     ]

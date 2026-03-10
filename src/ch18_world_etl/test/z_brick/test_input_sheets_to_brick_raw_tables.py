@@ -28,12 +28,13 @@ def test_etl_input_dfs_to_brick_raw_tables_PopulatesTables_Scenario0(
         kw.cumulative_minute,
         kw.moment_rope,
         kw.hour_label,
+        kw.knot,
     ]
-    row0 = [spark1, exx.sue, minute_360, exx.a23, hour6am]
-    row1 = [spark1, exx.sue, minute_420, exx.a23, hour7am]
-    row2 = [spark2, exx.sue, minute_420, exx.a23, hour7am]
-    row3 = [spark3, exx.sue, "num55", exx.a23, hour7am]
-    row4 = ["spark3", exx.sue, "num55", exx.a23, hour7am]
+    row0 = [spark1, exx.sue, minute_360, exx.a23_dash, hour6am, exx.dash]
+    row1 = [spark1, exx.sue, minute_420, exx.a23_dash, hour7am, exx.dash]
+    row2 = [spark2, exx.sue, minute_420, exx.a23_dash, hour7am, exx.dash]
+    row3 = [spark3, exx.sue, "num55", exx.a23_dash, hour7am, exx.dash]
+    row4 = ["spark3", exx.sue, "num55", exx.a23_dash, hour7am, exx.dash]
 
     df1 = DataFrame([row0, row1, row2, row3, row4], columns=br3_columns)
     br00003_ex1_str = "example1_br00003"
@@ -70,16 +71,16 @@ ORDER BY sheet_name, {kw.spark_num}, {kw.cumulative_minute};"""
     s_dir = create_path(input_dir, ".")
     m_360 = minute_360
     m_420 = minute_420
-    br3_ex1_str = br00003_ex1_str
+    br3_str = br00003_ex1_str
     err4 = f"Conversion errors: {kw.cumulative_minute}: num55"
     err0 = f"Conversion errors: {kw.spark_num}: spark3, {kw.cumulative_minute}: num55"
-    row0 = (s_dir, file, br3_ex1_str, None, exx.sue, exx.a23, None, hour7am, err0)
-    row1 = (s_dir, file, br3_ex1_str, e1, exx.sue, exx.a23, m_360, hour6am, None)
-    row2 = (s_dir, file, br3_ex1_str, e1, exx.sue, exx.a23, m_420, hour7am, None)
-    row3 = (s_dir, file, br3_ex1_str, e2, exx.sue, exx.a23, m_420, hour7am, None)
-    row4 = (s_dir, file, br3_ex1_str, e3, exx.sue, exx.a23, None, hour7am, err4)
-    print(f"{rows[2]=}")
-    print(f"   {row2=}")
+    row0 = (s_dir, file, br3_str, None, exx.sue, exx.a23_dash, None, hour7am, "-", err0)
+    row1 = (s_dir, file, br3_str, e1, exx.sue, exx.a23_dash, m_360, hour6am, "-", None)
+    row2 = (s_dir, file, br3_str, e1, exx.sue, exx.a23_dash, m_420, hour7am, "-", None)
+    row3 = (s_dir, file, br3_str, e2, exx.sue, exx.a23_dash, m_420, hour7am, "-", None)
+    row4 = (s_dir, file, br3_str, e3, exx.sue, exx.a23_dash, None, hour7am, "-", err4)
+    print(f"{rows[0]=}")
+    print(f"   {row0=}")
     assert rows[0] == row0
     assert rows[1] == row1
     assert rows[2] == row2
@@ -106,18 +107,20 @@ def test_etl_input_dfs_to_brick_raw_tables_PopulatesTables_Scenario1(
         kw.cumulative_minute,
         kw.moment_rope,
         kw.hour_label,
+        kw.knot,
     ]
-    row1 = [spark1, exx.sue, minute_360, exx.a23, hour6am]
-    row2 = [spark1, exx.sue, minute_420, exx.a23, hour7am]
-    row3 = [spark2, exx.sue, minute_420, exx.a23, hour7am]
+    row1 = [spark1, exx.sue, minute_360, exx.a23_dash, hour6am, exx.dash]
+    row2 = [spark1, exx.sue, minute_420, exx.a23_dash, hour7am, exx.dash]
+    row3 = [spark2, exx.sue, minute_420, exx.a23_dash, hour7am, exx.dash]
     incomplete_idea_columns = [
         kw.spark_num,
         kw.face_name,
         kw.cumulative_minute,
         kw.moment_rope,
+        kw.knot,
     ]
-    incom_row1 = [spark1, exx.sue, minute_360, exx.a23]
-    incom_row2 = [spark1, exx.sue, minute_420, exx.a23]
+    incom_row1 = [spark1, exx.sue, minute_360, exx.a23_dash, exx.dash]
+    incom_row2 = [spark1, exx.sue, minute_420, exx.a23_dash, exx.dash]
 
     df1 = DataFrame([row1, row2], columns=idea_columns)
     df2 = DataFrame([incom_row1, incom_row2], columns=incomplete_idea_columns)
@@ -159,13 +162,13 @@ ORDER BY sheet_name, {kw.spark_num}, {kw.cumulative_minute};"""
     s_dir = create_path(input_dir, ".")
     m_360 = minute_360
     m_420 = minute_420
-    br3_ex1_str = br00003_ex1_str
-    br3_ex3_str = br00003_ex3_str
-    row0 = (s_dir, file, br3_ex1_str, e1, exx.sue, exx.a23, m_360, hour6am, None)
-    row1 = (s_dir, file, br3_ex1_str, e1, exx.sue, exx.a23, m_420, hour7am, None)
-    row2 = (s_dir, file, br3_ex3_str, e1, exx.sue, exx.a23, m_360, hour6am, None)
-    row3 = (s_dir, file, br3_ex3_str, e1, exx.sue, exx.a23, m_420, hour7am, None)
-    row4 = (s_dir, file, br3_ex3_str, e2, exx.sue, exx.a23, m_420, hour7am, None)
+    b1_str = br00003_ex1_str
+    b3_str = br00003_ex3_str
+    row0 = (s_dir, file, b1_str, e1, exx.sue, exx.a23_dash, m_360, hour6am, "-", None)
+    row1 = (s_dir, file, b1_str, e1, exx.sue, exx.a23_dash, m_420, hour7am, "-", None)
+    row2 = (s_dir, file, b3_str, e1, exx.sue, exx.a23_dash, m_360, hour6am, "-", None)
+    row3 = (s_dir, file, b3_str, e1, exx.sue, exx.a23_dash, m_420, hour7am, "-", None)
+    row4 = (s_dir, file, b3_str, e2, exx.sue, exx.a23_dash, m_420, hour7am, "-", None)
     print(f"{rows[0]=}")
     print(f"   {row0=}")
     assert rows[0] == row0
@@ -195,10 +198,10 @@ ORDER BY sheet_name, {kw.spark_num}, {kw.cumulative_minute};"""
 #     kw.moment_rope,
 #     kw.hour_label,
 #     ]
-#     exx.a23 = exx.a23
-#     df_row0 = [spark1, exx.sue, minute_360, exx.a23, hour6am]
-#     df_row1 = [spark1, exx.sue, minute_420, exx.a23, hour7am]
-#     df_row2 = [spark2, exx.sue, minute_420, exx.a23, hour7am]
+#     exx.a23_dash = exx.a23_dash
+#     df_row0 = [spark1, exx.sue, minute_360, exx.a23_dash, hour6am]
+#     df_row1 = [spark1, exx.sue, minute_420, exx.a23_dash, hour7am]
+#     df_row2 = [spark2, exx.sue, minute_420, exx.a23_dash, hour7am]
 
 #     df1 = DataFrame([df_row0, df_row1, df_row2], columns=idea_columns)
 #     br00003_ex1_str = "example1_br00003"
@@ -236,9 +239,9 @@ ORDER BY sheet_name, {kw.spark_num}, {kw.cumulative_minute};"""
 #     m_360 = minute_360
 #     m_420 = minute_420
 #     br3_ex1_str = br00003_ex1_str
-#     br3row0 = (s_dir, file, br3_ex1_str, e1, exx.sue, exx.a23, m_360, hour6am)
-#     br3row1 = (s_dir, file, br3_ex1_str, e1, exx.sue, exx.a23, m_420, hour7am)
-#     br3row2 = (s_dir, file, br3_ex1_str, e1, exx.sue, exx.a23, m_360, hour6am)
+#     br3row0 = (s_dir, file, br3_ex1_str, e1, exx.sue, exx.a23_dash, m_360, hour6am)
+#     br3row1 = (s_dir, file, br3_ex1_str, e1, exx.sue, exx.a23_dash, m_420, hour7am)
+#     br3row2 = (s_dir, file, br3_ex1_str, e1, exx.sue, exx.a23_dash, m_360, hour6am)
 #     print(f"{rows[0]=}")
 #     print(f"   {row0=}")
 #     assert rows[0] == row0

@@ -233,13 +233,14 @@ def test_WorldUnit_sheets_input_to_clarity_with_cursor_Scenario1_PopulateBudPayR
         kw.moment_rope,
         kw.person_name,
         kw.bud_time,
+        kw.knot,
         kw.quota,
         kw.celldepth,
     ]
     tp37 = 37
     sue_quota = 235
     sue_celldepth = 3
-    br1row0 = [e3, exx.sue, exx.a23, exx.sue, tp37, sue_quota, sue_celldepth]
+    br1row0 = [e3, exx.sue, exx.a23, exx.sue, tp37, ";", sue_quota, sue_celldepth]
     br00001_1df = DataFrame([br1row0], columns=br00001_columns)
     br00001_ex0_str = "example0_br00001"
     upsert_sheet(input_file_path, br00001_ex0_str, br00001_1df)
@@ -376,11 +377,12 @@ def test_WorldUnit_sheets_input_to_clarity_with_cursor_Scenario2_PopulateMomentT
         kw.partner_name,
         kw.tran_time,
         kw.amount,
+        kw.knot,
     ]
     br00002_str = "br00002"
     tp37 = 37
     sue_to_bob_amount = 200
-    br00002row0 = [e3, exx.sue, exx.a23, exx.sue, exx.bob, tp37, sue_to_bob_amount]
+    br00002row0 = [e3, exx.sue, exx.a23, exx.sue, exx.bob, tp37, sue_to_bob_amount, ";"]
     br00002_df = DataFrame([br00002row0], columns=br00002_columns)
     br00002_ex0_str = f"example0_{br00002_str}"
     upsert_sheet(input_file_path, br00002_ex0_str, br00002_df)
@@ -473,6 +475,7 @@ def test_WorldUnit_sheets_input_to_clarity_with_cursor_Scenario5_CreatesFiles(
         kw.cumulative_minute,
         kw.moment_rope,
         kw.hour_label,
+        kw.knot,
     ]
     br00001_columns = [
         kw.spark_num,
@@ -480,20 +483,21 @@ def test_WorldUnit_sheets_input_to_clarity_with_cursor_Scenario5_CreatesFiles(
         kw.moment_rope,
         kw.person_name,
         kw.bud_time,
+        kw.knot,
         kw.quota,
         kw.celldepth,
     ]
     tp37 = 37
     sue_quota = 235
     sue_celldepth = 3
-    br1row0 = [spark2, exx.sue, exx.a23, exx.sue, tp37, sue_quota, sue_celldepth]
+    br1row0 = [spark2, exx.sue, exx.a23, exx.sue, tp37, ";", sue_quota, sue_celldepth]
     br00001_1df = DataFrame([br1row0], columns=br00001_columns)
     br00001_ex0_str = "example0_br00001"
     upsert_sheet(input_file_path, br00001_ex0_str, br00001_1df)
 
-    br3row0 = [spark1, exx.sue, minute_360, exx.a23, hour6am]
-    br3row1 = [spark1, exx.sue, minute_420, exx.a23, hour7am]
-    br3row2 = [spark2, exx.sue, minute_420, exx.a23, hour7am]
+    br3row0 = [spark1, exx.sue, minute_360, exx.a23, hour6am, ";"]
+    br3row1 = [spark1, exx.sue, minute_420, exx.a23, hour7am, ";"]
+    br3row2 = [spark2, exx.sue, minute_420, exx.a23, hour7am, ";"]
     br00003_1df = DataFrame([br3row0, br3row1], columns=br00003_columns)
     br00003_3df = DataFrame([br3row1, br3row0, br3row2], columns=br00003_columns)
     br00003_ex1_str = "example1_br00003"
@@ -571,13 +575,14 @@ def test_WorldUnit_sheets_input_to_clarity_mstr_Scenario0_CreatesDatabaseFile(
         kw.moment_rope,
         kw.person_name,
         kw.bud_time,
+        kw.knot,
         kw.quota,
         kw.celldepth,
     ]
     tp37 = 37
     sue_quota = 235
     sue_celldepth = 3
-    br1row0 = [e3, exx.sue, exx.a23, exx.sue, tp37, sue_quota, sue_celldepth]
+    br1row0 = [e3, exx.sue, exx.a23, exx.sue, tp37, ";", sue_quota, sue_celldepth]
     br00001_1df = DataFrame([br1row0], columns=br00001_columns)
     br00001_ex0_str = "example0_br00001"
     upsert_sheet(input_file_path, br00001_ex0_str, br00001_1df)

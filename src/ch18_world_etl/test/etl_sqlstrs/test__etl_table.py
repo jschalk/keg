@@ -244,6 +244,7 @@ def test_get_prime_columns_ReturnsObj_Scenario2_moment_epoch_month():
         kw.month_label,
         kw.face_name,
         kw.cumulative_day,
+        kw.knot,
     }
 
 
@@ -268,6 +269,7 @@ def test_get_prime_columns_ReturnsObj_Scenario3_h_raw_set_translateable_otx_inx_
         f"{kw.face_name}_inx",
         kw.cumulative_day,
         kw.error_message,
+        kw.knot,
     }
 
 
@@ -288,6 +290,7 @@ def test_get_prime_columns_ReturnsObj_Scenario4_h_agg_set_nabuable_otx_inx_args(
         f"{kw.offi_time}_otx",
         f"{kw.offi_time}_inx",
         kw.spark_num,
+        kw.knot,
     }
 
 
@@ -326,6 +329,7 @@ def test_get_prime_columns_ReturnsObj_Scenario5_h_agg_set_nabuable_otx_inx_args_
         f"{kw.reason_upper}_otx",
         f"{kw.reason_upper}_inx",
         kw.spark_num,
+        kw.knot,
     }
 
 
@@ -353,5 +357,5 @@ def test_create_prime_table_sqlstr_ReturnsObj_Scenario0_CaseUnit():
     # THEN
     assert table_sqlstr
     print(table_sqlstr)
-    expected_sqlstr = "CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, error_message TEXT)"
+    expected_sqlstr = "CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_s_put_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, knot TEXT, error_message TEXT)"
     assert table_sqlstr == expected_sqlstr

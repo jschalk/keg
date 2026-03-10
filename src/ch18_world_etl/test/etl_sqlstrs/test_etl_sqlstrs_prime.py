@@ -363,6 +363,7 @@ SELECT moment_rope, cumulative_minute
 FROM moment_epoch_hour_s_raw
 GROUP BY moment_rope, cumulative_minute
 HAVING MIN(hour_label) != MAX(hour_label)
+    OR MIN(knot) != MAX(knot)
 )
 UPDATE moment_epoch_hour_s_raw
 SET error_message = 'Inconsistent data'
@@ -459,6 +460,7 @@ FROM person_plan_awardunit_s_put_raw
 GROUP BY spark_num, face_name, person_name, plan_rope, awardee_title
 HAVING MIN(give_force) != MAX(give_force)
     OR MIN(take_force) != MAX(take_force)
+    OR MIN(knot) != MAX(knot)
 )
 UPDATE person_plan_awardunit_s_put_raw
 SET error_message = 'Inconsistent data'
@@ -541,8 +543,8 @@ def test_create_sound_agg_insert_sqlstrs_ReturnsObj_Scenario1_MomentDimen(
     print(expected_insert_sqlstr)
     assert update_sqlstrs[0] == expected_insert_sqlstr
 
-    static_example_sqlstr = """INSERT INTO moment_epoch_hour_s_agg (spark_num, face_name, moment_rope, cumulative_minute, hour_label)
-SELECT spark_num, face_name, moment_rope, cumulative_minute, MAX(hour_label)
+    static_example_sqlstr = """INSERT INTO moment_epoch_hour_s_agg (spark_num, face_name, moment_rope, cumulative_minute, hour_label, knot)
+SELECT spark_num, face_name, moment_rope, cumulative_minute, MAX(hour_label), MAX(knot)
 FROM moment_epoch_hour_s_raw
 WHERE error_message IS NULL
 GROUP BY spark_num, face_name, moment_rope, cumulative_minute
@@ -619,8 +621,8 @@ def test_create_sound_agg_insert_sqlstrs_ReturnsObj_Scenario3_PersonDimen(
     print(put_expected_insert_sqlstr)
     assert update_sqlstrs[0] == put_expected_insert_sqlstr
 
-    static_example_put_sqlstr = """INSERT INTO person_plan_awardunit_s_put_agg (spark_num, face_name, person_name, plan_rope, awardee_title, give_force, take_force)
-SELECT spark_num, face_name, person_name, plan_rope, awardee_title, MAX(give_force), MAX(take_force)
+    static_example_put_sqlstr = """INSERT INTO person_plan_awardunit_s_put_agg (spark_num, face_name, person_name, plan_rope, awardee_title, give_force, take_force, knot)
+SELECT spark_num, face_name, person_name, plan_rope, awardee_title, MAX(give_force), MAX(take_force), MAX(knot)
 FROM person_plan_awardunit_s_put_raw
 WHERE error_message IS NULL
 GROUP BY spark_num, face_name, person_name, plan_rope, awardee_title
@@ -822,8 +824,8 @@ def test_get_insert_into_sound_vld_sqlstrs_ReturnsObj_PersonDimens(cursor0: Curs
         abbv7 = get_dimen_abbv7(person_dimen)
         put_sqlstr_ref = f"INSERT_{abbv7.upper()}_SOUND_VLD_PUT_SQLSTR"
         del_sqlstr_ref = f"INSERT_{abbv7.upper()}_SOUND_VLD_DEL_SQLSTR"
-        print(f'{put_sqlstr_ref}= "{s_put_vld_insert_select}"')
-        print(f'{del_sqlstr_ref}= "{s_del_vld_insert_select}"')
+        # print(f'{put_sqlstr_ref}= "{s_put_vld_insert_select}"')
+        # print(f'{del_sqlstr_ref}= "{s_del_vld_insert_select}"')
         # print(f"""'{s_put_vld_tablename}': {put_sqlstr_ref},""")
         # print(f"""'{s_del_vld_tablename}': {del_sqlstr_ref},""")
         assert insert_s_vld_sqlstrs.get(s_put_vld_tbl) == s_put_vld_insert_select
@@ -864,8 +866,8 @@ def test_get_insert_into_sound_vld_sqlstrs_ReturnsObj_Moment_Nabu_Dimens(
         # create_select_query(cursor=)
         abbv7 = get_dimen_abbv7(moment_dimen)
         sqlstr_ref = f"INSERT_{abbv7.upper()}_SOUND_VLD_SQLSTR"
-        # print(f'{sqlstr_ref}= "{s_vld_insert_select}"')
-        print(f""""{s_vld_tablename}": {sqlstr_ref},""")
+        print(f'{sqlstr_ref}= "{s_vld_insert_select}"')
+        # print(f""""{s_vld_tablename}": {sqlstr_ref},""")
         assert insert_s_vld_sqlstrs.get(s_vld_tbl) == s_vld_insert_select
 
 
@@ -916,8 +918,8 @@ def test_get_insert_into_heard_raw_sqlstrs_ReturnsObj_PersonDimens(cursor0: Curs
         abbv7 = get_dimen_abbv7(person_dimen)
         put_sqlstr_ref = f"INSERT_{abbv7.upper()}_HEARD_RAW_PUT_SQLSTR"
         del_sqlstr_ref = f"INSERT_{abbv7.upper()}_HEARD_RAW_DEL_SQLSTR"
-        print(f'{put_sqlstr_ref}= "{h_put_raw_insert_select}"')
-        print(f'{del_sqlstr_ref}= "{h_del_raw_insert_select}"')
+        # print(f'{put_sqlstr_ref}= "{h_put_raw_insert_select}"')
+        # print(f'{del_sqlstr_ref}= "{h_del_raw_insert_select}"')
         # print(f"""'{h_put_raw_tablename}': {put_sqlstr_ref},""")
         # print(f"""'{h_del_raw_tablename}': {del_sqlstr_ref},""")
         assert insert_h_raw_sqlstrs.get(h_put_raw_tbl) == h_put_raw_insert_select
@@ -954,6 +956,6 @@ def test_get_insert_into_heard_raw_sqlstrs_ReturnsObj_Moment_Nabu_Dimens(
         # create_select_query(cursor=)
         abbv7 = get_dimen_abbv7(moment_dimen)
         sqlstr_ref = f"INSERT_{abbv7.upper()}_HEARD_RAW_SQLSTR"
-        # print(f'{sqlstr_ref}= "{h_raw_insert_select}"')
-        print(f""""{h_raw_tablename}": {sqlstr_ref},""")
+        print(f'{sqlstr_ref}= "{h_raw_insert_select}"')
+        # print(f""""{h_raw_tablename}": {sqlstr_ref},""")
         assert insert_h_raw_sqlstrs.get(h_raw_tbl) == h_raw_insert_select

@@ -565,7 +565,7 @@ def _validate_idea_config(x_idea_config: dict):
             assert kw.moment_rope not in idea_jkeys_keys, idea_dimen
         elif idea_dict.get(kw.idea_category) in {kw.moment, kw.person}:
             assert kw.moment_rope in idea_jkeys_keys
-            print(f"2{idea_dimen=}")
+            # print(f"2{idea_dimen=}")
             if idea_dict.get(kw.idea_category) in {kw.person}:
                 idea_jkeys_keys.remove(kw.moment_rope)
         if idea_dict.get(kw.idea_category) in {kw.person}:
@@ -575,16 +575,19 @@ def _validate_idea_config(x_idea_config: dict):
         assertion_failure_str = f"{idea_dimen=} {sub_jkeys_keys=} {idea_jkeys_keys=}"
         assert sub_jkeys_keys == idea_jkeys_keys, assertion_failure_str
 
-        sub_jvalues_keys = set(sub_dimen.get(kw.jvalues).keys())
+        expected_jvalues_keys = set(sub_dimen.get(kw.jvalues).keys())
+        # all moment and plan dimen must have knot jvalue because they all have rope keys
+        if idea_dict.get(kw.idea_category) in {kw.moment, kw.person}:
+            expected_jvalues_keys.add(kw.knot)
         # print(f"{idea_dimen=}")
-        # if kw.moment_rope in sub_jvalues_keys:
-        #     sub_jvalues_keys.remove(kw.moment_rope)
+        # if kw.moment_rope in expected_jvalues_keys:
+        #     expected_jvalues_keys.remove(kw.moment_rope)
 
         idea_jvalues_dict = idea_dict.get(kw.jvalues)
         idea_jvalues_keys = set(idea_jvalues_dict.keys())
-        # print(f" {sub_jvalues_keys=}")
+        # print(f" {expected_jvalues_keys=}")
         # print(f"{idea_jvalues_keys=}")
-        assert sub_jvalues_keys == idea_jvalues_keys
+        assert expected_jvalues_keys == idea_jvalues_keys
 
         # sort_list = get_idea_elements_sort_order()
         # x_count = 0

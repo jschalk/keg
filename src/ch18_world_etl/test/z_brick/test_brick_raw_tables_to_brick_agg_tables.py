@@ -26,6 +26,7 @@ def test_etl_brick_raw_tables_to_brick_agg_tables_PopulatesAggTable_Scenario0_Gr
         kw.moment_rope,
         kw.cumulative_minute,
         kw.hour_label,
+        kw.knot,
         kw.error_message,
     ]
     create_idea_sorted_table(cursor0, raw_br00003_tablename, raw_br00003_columns)
@@ -35,13 +36,14 @@ def test_etl_brick_raw_tables_to_brick_agg_tables_PopulatesAggTable_Scenario0_Gr
 , {kw.moment_rope}
 , {kw.cumulative_minute}
 , {kw.hour_label}
+, {kw.knot}
 , {kw.error_message}
 )"""
     values_clause = f"""
 VALUES     
-  ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_360}', '{hour6am}', NULL)
-, ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_420}', '{hour7am}', NULL)
-, ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_420}', '{hour7am}', NULL)
+  ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_360}', '{hour6am}', ';', NULL)
+, ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_420}', '{hour7am}', ';', NULL)
+, ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_420}', '{hour7am}', ';', NULL)
 ;
 """
     insert_sqlstr = f"{insert_into_clause} {values_clause}"
@@ -75,8 +77,8 @@ ORDER BY {kw.spark_num}, {kw.cumulative_minute};"""
     e1 = spark1
     m_360 = minute_360
     m_420 = minute_420
-    row0 = (e1, exx.sue, exx.a23, m_360, hour6am)
-    row1 = (e1, exx.sue, exx.a23, m_420, hour7am)
+    row0 = (e1, exx.sue, exx.a23, m_360, hour6am, ";")
+    row1 = (e1, exx.sue, exx.a23, m_420, hour7am, ";")
     print(f"{rows[0]=}")
     print(f"   {row0=}")
     assert rows[0] == row0
@@ -101,6 +103,7 @@ def test_etl_brick_raw_tables_to_brick_agg_tables_PopulatesAggTable_Scenario1_Gr
         kw.moment_rope,
         kw.cumulative_minute,
         kw.hour_label,
+        kw.knot,
         kw.error_message,
     ]
     create_idea_sorted_table(cursor0, raw_br00003_tablename, raw_br00003_columns)
@@ -110,13 +113,14 @@ def test_etl_brick_raw_tables_to_brick_agg_tables_PopulatesAggTable_Scenario1_Gr
 , {kw.moment_rope}
 , {kw.cumulative_minute}
 , {kw.hour_label}
+, {kw.knot}
 , {kw.error_message}
 )"""
     values_clause = f"""
 VALUES     
-  ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_360}', '{hour6am}', NULL)
-, ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_420}', '{hour7am}', NULL)
-, ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_420}', '{hour8am}', NULL)
+  ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_360}', '{hour6am}', '/', NULL)
+, ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_420}', '{hour7am}', '/', NULL)
+, ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_420}', '{hour8am}', '/', NULL)
 ;
 """
     insert_sqlstr = f"{insert_into_clause} {values_clause}"
@@ -146,7 +150,7 @@ VALUES
     assert len(rows) == 1
     e1 = spark1
     m_360 = minute_360
-    row0 = (e1, exx.sue, exx.a23, m_360, hour6am)
+    row0 = (e1, exx.sue, exx.a23, m_360, hour6am, "/")
     print(f"{rows[0]=}")
     print(f"   {row0=}")
     assert rows[0] == row0
@@ -170,6 +174,7 @@ def test_etl_brick_raw_tables_to_brick_agg_tables_PopulatesAggTable_Scenario2_Gr
         kw.moment_rope,
         kw.cumulative_minute,
         kw.hour_label,
+        kw.knot,
         kw.error_message,
     ]
     create_idea_sorted_table(cursor0, raw_br00003_tablename, raw_br00003_columns)
@@ -179,14 +184,15 @@ def test_etl_brick_raw_tables_to_brick_agg_tables_PopulatesAggTable_Scenario2_Gr
 , {kw.moment_rope}
 , {kw.cumulative_minute}
 , {kw.hour_label}
+, {kw.knot}
 , {kw.error_message}
 )"""
     values_clause = f"""
 VALUES     
-  ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_360}', '{hour6am}', 'some_error')
-, ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_420}', '{hour7am}', NULL)
-, ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_420}', '{hour7am}', 'some_error')
-, ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_480}', '{hour8am}', NULL)
+  ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_360}', '{hour6am}', ';', 'some_error')
+, ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_420}', '{hour7am}', ';', NULL)
+, ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_420}', '{hour7am}', ';', 'some_error')
+, ('{spark1}', '{exx.sue}', '{exx.a23}', '{minute_480}', '{hour8am}', ';', NULL)
 ;
 """
     insert_sqlstr = f"{insert_into_clause} {values_clause}"
@@ -207,8 +213,8 @@ ORDER BY {kw.spark_num}, {kw.cumulative_minute};"""
 
     rows = cursor0.fetchall()
     assert len(rows) == 2
-    row0 = (spark1, exx.sue, exx.a23, minute_420, hour7am)
-    row1 = (spark1, exx.sue, exx.a23, minute_480, hour8am)
+    row0 = (spark1, exx.sue, exx.a23, minute_420, hour7am, ";")
+    row1 = (spark1, exx.sue, exx.a23, minute_480, hour8am, ";")
     print(f"{rows[0]=}")
     print(f"   {row0=}")
     assert rows[0] == row0

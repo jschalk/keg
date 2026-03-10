@@ -187,8 +187,8 @@ def test_get_moment_dict_from_heard_tables_ReturnsObj_With_momentbud_Attrs_Scena
         f"INSERT INTO {momentunit_h_vld_tablename} (moment_rope) VALUES ('{exx.a23}');"
     )
     cursor0.execute(momentunit_insert_sqlstr)
-    mmtpayy_insert_sqlstr = f"""INSERT INTO {momentbud_h_vld_tablename} (moment_rope, person_name, bud_time, quota, celldepth)
-VALUES ('{exx.a23}', '{exx.bob}', {tp55}, {bob_tp55_quota}, {bob_tp55_celldepth})
+    mmtpayy_insert_sqlstr = f"""INSERT INTO {momentbud_h_vld_tablename} (moment_rope, person_name, bud_time, knot, quota, celldepth)
+VALUES ('{exx.a23}', '{exx.bob}', {tp55}, '{exx.dash}', {bob_tp55_quota}, {bob_tp55_celldepth})
 ;
 """
     cursor0.execute(mmtpayy_insert_sqlstr)
@@ -206,15 +206,12 @@ VALUES ('{exx.a23}', '{exx.bob}', {tp55}, {bob_tp55_quota}, {bob_tp55_celldepth}
     assert a23_bob_buds_dict
     a23_personbudhistory_bob_tp55_dict = a23_bob_buds_dict.get(tp55)
     assert a23_personbudhistory_bob_tp55_dict
-    expected_a23_personbudhistory_bob_tp55_dict = {
-        "bud_time": 55,
-        "quota": bob_tp55_quota,
-        "celldepth": bob_tp55_celldepth,
+    expected_bob_tp55_dict = {
+        kw.bud_time: 55,
+        kw.quota: bob_tp55_quota,
+        kw.celldepth: bob_tp55_celldepth,
     }
-    assert (
-        a23_personbudhistory_bob_tp55_dict
-        == expected_a23_personbudhistory_bob_tp55_dict
-    )
+    assert a23_personbudhistory_bob_tp55_dict == expected_bob_tp55_dict
 
 
 def test_get_moment_dict_from_heard_tables_ReturnsObj_With_mmthour_Attrs_Scenario0(

@@ -37,12 +37,13 @@ class LessonUnit:
     face_name: FaceName = None
     moment_rope: MomentRope = None
     person_name: PersonName = None
-    _lesson_id: int = None
-    _persondelta: PersonDelta = None
-    _delta_start: int = None
     lessons_dir: str = None
     atoms_dir: str = None
     spark_num: int = None
+    # calculated fields (not confident)
+    lesson_id: int = None
+    persondelta: PersonDelta = None
+    delta_start: int = None
     """Represents a per moment_rope/spark_num PersonDelta for a person_name"""
 
     def set_face(self, x_face_name: FaceName):
@@ -52,16 +53,16 @@ class LessonUnit:
         self.face_name = None
 
     def set_persondelta(self, x_persondelta: PersonDelta):
-        self._persondelta = x_persondelta
+        self.persondelta = x_persondelta
 
     def del_persondelta(self):
-        self._persondelta = persondelta_shop()
+        self.persondelta = persondelta_shop()
 
     def set_delta_start(self, x_delta_start: int):
-        self._delta_start = get_init_lesson_id_if_None(x_delta_start)
+        self.delta_start = get_init_lesson_id_if_None(x_delta_start)
 
     def personatom_exists(self, x_personatom: PersonAtom):
-        return self._persondelta.c_personatom_exists(x_personatom)
+        return self.persondelta.c_personatom_exists(x_personatom)
 
     def get_step_dict(self) -> dict[str, any]:
         return {
@@ -69,12 +70,12 @@ class LessonUnit:
             "moment_rope": self.moment_rope,
             "person_name": self.person_name,
             "spark_num": self.spark_num,
-            "delta": self._persondelta.get_ordered_personatoms(self._delta_start),
+            "delta": self.persondelta.get_ordered_personatoms(self.delta_start),
         }
 
     def get_serializable_step_dict(self) -> dict[str, dict]:
         total_dict = self.get_step_dict()
-        total_dict["delta"] = self._persondelta.get_ordered_dict()
+        total_dict["delta"] = self.persondelta.get_ordered_dict()
         return total_dict
 
     def get_delta_atom_numbers(self, lessonunit_dict: list[str]) -> int:
@@ -106,11 +107,11 @@ class LessonUnit:
         return get_personatom_from_dict(x_dict)
 
     def _save_lesson_file(self):
-        x_filename = self._get_num_filename(self._lesson_id)
+        x_filename = self._get_num_filename(self.lesson_id)
         save_json(self.lessons_dir, x_filename, self.get_deltametric_dict())
 
     def lesson_file_exists(self) -> bool:
-        x_filename = self._get_num_filename(self._lesson_id)
+        x_filename = self._get_num_filename(self.lesson_id)
         return os_path_exists(create_path(self.lessons_dir, x_filename))
 
     def _save_atom_files(self):
@@ -130,7 +131,7 @@ class LessonUnit:
         for atom_number in atom_number_list:
             x_personatom = self._open_atom_file(atom_number)
             x_persondelta.set_personatom(x_personatom)
-        self._persondelta = x_persondelta
+        self.persondelta = x_persondelta
 
     def add_p_personatom(
         self,
@@ -139,7 +140,7 @@ class LessonUnit:
         jkeys: dict[str, str] = None,
         jvalues: dict[str, str] = None,
     ):
-        self._persondelta.add_personatom(dimen, crud_str, jkeys=jkeys, jvalues=jvalues)
+        self.persondelta.add_personatom(dimen, crud_str, jkeys=jkeys, jvalues=jvalues)
 
     def get_lesson_edited_person(self, before_person: PersonUnit) -> PersonUnit:
         if (
@@ -149,36 +150,36 @@ class LessonUnit:
             raise lesson_person_conflict_Exception(
                 f"lesson person conflict {self.moment_rope} != {before_person.planroot.get_plan_rope()} or {self.person_name} != {before_person.person_name}"
             )
-        return self._persondelta.get_atom_edited_person(before_person)
+        return self.persondelta.get_atom_edited_person(before_person)
 
     def is_empty(self) -> bool:
-        return self._persondelta.atoms_empty()
+        return self.persondelta.atoms_empty()
 
 
 def lessonunit_shop(
     person_name: PersonName,
     face_name: FaceName = None,
     moment_rope: MomentRope = None,
-    _lesson_id: int = None,
-    _persondelta: PersonDelta = None,
-    _delta_start: int = None,
+    lesson_id: int = None,
+    persondelta: PersonDelta = None,
+    delta_start: int = None,
     lessons_dir: str = None,
     atoms_dir: str = None,
     spark_num: int = None,
 ) -> LessonUnit:
-    _persondelta = persondelta_shop() if _persondelta is None else _persondelta
+    persondelta = persondelta_shop() if persondelta is None else persondelta
     moment_rope = get_default_rope() if moment_rope is None else moment_rope
     x_lessonunit = LessonUnit(
         face_name=face_name,
         person_name=person_name,
         moment_rope=moment_rope,
-        _lesson_id=get_init_lesson_id_if_None(_lesson_id),
-        _persondelta=_persondelta,
+        lesson_id=get_init_lesson_id_if_None(lesson_id),
+        persondelta=persondelta,
         lessons_dir=lessons_dir,
         atoms_dir=atoms_dir,
         spark_num=spark_num,
     )
-    x_lessonunit.set_delta_start(_delta_start)
+    x_lessonunit.set_delta_start(delta_start)
     return x_lessonunit
 
 
@@ -197,7 +198,7 @@ def create_lessonunit_from_files(
         face_name=x_face_name,
         person_name=x_person_name,
         moment_rope=x_moment_rope,
-        _lesson_id=lesson_id,
+        lesson_id=lesson_id,
         atoms_dir=atoms_dir,
     )
     x_lessonunit._create_persondelta_from_atom_files(delta_atom_numbers_list)
@@ -213,7 +214,7 @@ def get_lessonunit_from_dict(lesson_dict: dict) -> LessonUnit:
         face_name=lesson_dict.get("face_name"),
         person_name=lesson_dict.get("person_name"),
         moment_rope=lesson_dict.get("moment_rope"),
-        _lesson_id=lesson_dict.get("lesson_id"),
+        lesson_id=lesson_dict.get("lesson_id"),
         atoms_dir=lesson_dict.get("atoms_dir"),
         spark_num=x_spark_num,
     )

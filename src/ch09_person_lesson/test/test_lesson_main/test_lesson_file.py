@@ -177,8 +177,8 @@ def test_LessonUnit_save_files_SavesFiles(temp_dir_setup):
     int5 = 5
     sports_atom = get_atom_example_planunit_sports()
     knee_atom = get_atom_example_planunit_knee()
-    sue_lessonunit._persondelta.set_personatom(sports_atom)
-    sue_lessonunit._persondelta.set_personatom(knee_atom)
+    sue_lessonunit.persondelta.set_personatom(sports_atom)
+    sue_lessonunit.persondelta.set_personatom(knee_atom)
     assert sue_lessonunit.lesson_file_exists() is False
     assert sue_lessonunit.atom_file_exists(int4) is False
     assert sue_lessonunit.atom_file_exists(int5) is False
@@ -209,7 +209,7 @@ def test_LessonUnit_create_persondelta_from_atom_files_SetsAttr(temp_dir_setup):
     sue_lessonunit._save_atom_file(int4, spor_atom)
     sue_lessonunit._save_atom_file(int5, knee_atom)
     sue_lessonunit._save_atom_file(int9, ball_atom)
-    assert sue_lessonunit._persondelta == persondelta_shop()
+    assert sue_lessonunit.persondelta == persondelta_shop()
 
     # WHEN
     atoms_list = [int4, int5, int9]
@@ -220,8 +220,8 @@ def test_LessonUnit_create_persondelta_from_atom_files_SetsAttr(temp_dir_setup):
     static_persondelta.set_personatom(spor_atom)
     static_persondelta.set_personatom(knee_atom)
     static_persondelta.set_personatom(ball_atom)
-    assert sue_lessonunit._persondelta != persondelta_shop()
-    assert sue_lessonunit._persondelta == static_persondelta
+    assert sue_lessonunit.persondelta != persondelta_shop()
+    assert sue_lessonunit.persondelta == static_persondelta
 
 
 def test_create_lessonunit_from_files_ReturnsObj(temp_dir_setup):
@@ -241,19 +241,19 @@ def test_create_lessonunit_from_files_ReturnsObj(temp_dir_setup):
     sports_atom = get_atom_example_planunit_sports()
     knee_atom = get_atom_example_planunit_knee()
     ball_atom = get_atom_example_planunit_ball()
-    src_sue_lessonunit._persondelta.set_personatom(sports_atom)
-    src_sue_lessonunit._persondelta.set_personatom(knee_atom)
-    src_sue_lessonunit._persondelta.set_personatom(ball_atom)
+    src_sue_lessonunit.persondelta.set_personatom(sports_atom)
+    src_sue_lessonunit.persondelta.set_personatom(knee_atom)
+    src_sue_lessonunit.persondelta.set_personatom(ball_atom)
     src_sue_lessonunit.save_files()
 
     # WHEN
     new_sue_lessonunit = create_lessonunit_from_files(
         lessons_dir=sue_lessons_dir,
-        lesson_id=src_sue_lessonunit._lesson_id,
+        lesson_id=src_sue_lessonunit.lesson_id,
         atoms_dir=sue_atoms_dir,
     )
 
     # THEN
     assert src_sue_lessonunit.person_name == new_sue_lessonunit.person_name
     assert src_sue_lessonunit.face_name == new_sue_lessonunit.face_name
-    assert src_sue_lessonunit._persondelta == new_sue_lessonunit._persondelta
+    assert src_sue_lessonunit.persondelta == new_sue_lessonunit.persondelta

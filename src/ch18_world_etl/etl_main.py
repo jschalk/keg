@@ -17,7 +17,6 @@ from src.ch00_py.db_toolbox import (
     get_nonconvertible_columns,
     get_row_count,
     get_table_columns,
-    save_to_split_csvs,
 )
 from src.ch00_py.file_toolbox import (
     create_path,
@@ -91,6 +90,7 @@ from src.ch18_world_etl._ref.ch18_path import (
     create_moment_ote1_json_path,
 )
 from src.ch18_world_etl._ref.ch18_semantic_types import FaceName, SparkInt
+from src.ch18_world_etl.etl_csv import save_to_split_csvs
 from src.ch18_world_etl.etl_sqlstr import (
     CREATE_MOMENT_OTE1_AGG_SQLSTR,
     CREATE_MOMENT_PARTNER_NETS_SQLSTR,
@@ -700,9 +700,7 @@ def etl_moment_ote1_agg_table_to_moment_ote1_agg_csvs(
         ote1_csv_path = create_moment_ote1_csv_path(moment_mstr_dir, person_lasso)
         save_file(ote1_csv_path, None, empty_ote1_csv_str)
 
-    save_to_split_csvs(
-        conn_or_cursor, "moment_ote1_agg", ["moment_rope"], moments_dir, trim_col=True
-    )
+    save_to_split_csvs(conn_or_cursor, "moment_ote1_agg", ["moment_rope"], moments_dir)
 
 
 def etl_moment_ote1_agg_csvs_to_jsons(moment_mstr_dir: str):
@@ -786,7 +784,6 @@ def etl_heard_vld_to_spark_person_csvs(
                 dst_dir=moments_dir,
                 col1_prefix="persons",
                 col2_prefix="sparks",
-                trim_col=True,
             )
 
 
@@ -846,7 +843,7 @@ def add_personatoms_from_csv(spark_lesson: LessonUnit, spark_dir: str):
                         "person_name",
                     }:
                         x_atom.set_arg(col_name, row_value)
-                spark_lesson._persondelta.set_personatom(x_atom)
+                spark_lesson.persondelta.set_personatom(x_atom)
 
         if os_path_exists(del_path):
             del_rows = open_csv_with_types(del_path, idea_sqlite_types)
@@ -861,7 +858,7 @@ def add_personatoms_from_csv(spark_lesson: LessonUnit, spark_dir: str):
                         "person_name",
                     }:
                         x_atom.set_arg(col_name, row_value)
-                spark_lesson._persondelta.set_personatom(x_atom)
+                spark_lesson.persondelta.set_personatom(x_atom)
 
 
 def etl_spark_lesson_json_to_spark_inherited_personunits(moment_mstr_dir: str):
@@ -902,7 +899,7 @@ def create_lesson_json_and_get_spark_num(
         moment_mstr_dir, person_lasso, person_name, spark_num
     )
     spark_lesson = get_lessonunit_from_dict(open_json(spark_all_lesson_path))
-    sift_delta = get_minimal_persondelta(spark_lesson._persondelta, prev_person)
+    sift_delta = get_minimal_persondelta(spark_lesson.persondelta, prev_person)
     curr_person = spark_lesson.get_lesson_edited_person(prev_person)
     save_json(personspark_path, None, curr_person.to_dict())
     expressed_lesson = copy_deepcopy(spark_lesson)

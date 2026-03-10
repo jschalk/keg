@@ -3,6 +3,7 @@
     "awardee_title": { "otx_key": true  }, 
     "face_name"    : { "otx_key": true  }, 
     "give_force"   : { "otx_key": false }, 
+    "knot"         : { "otx_key": false }, 
     "person_name"  : { "otx_key": true  }, 
     "plan_rope"    : { "otx_key": true  }, 
     "spark_num"    : { "otx_key": true  }, 

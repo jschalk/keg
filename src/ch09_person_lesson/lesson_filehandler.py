@@ -192,12 +192,12 @@ class LessonFileHandler:
             x_lessonunit.atoms_dir = self.atoms_dir
         if x_lessonunit.lessons_dir != self.lessons_dir:
             x_lessonunit.lessons_dir = self.lessons_dir
-        if x_lessonunit._lesson_id != self._get_next_lesson_file_number():
-            x_lessonunit._lesson_id = self._get_next_lesson_file_number()
+        if x_lessonunit.lesson_id != self._get_next_lesson_file_number():
+            x_lessonunit.lesson_id = self._get_next_lesson_file_number()
         if x_lessonunit.person_name != self.person_name:
             x_lessonunit.person_name = self.person_name
-        if x_lessonunit._delta_start != self._get_next_atom_file_number():
-            x_lessonunit._delta_start = self._get_next_atom_file_number()
+        if x_lessonunit.delta_start != self._get_next_atom_file_number():
+            x_lessonunit.delta_start = self._get_next_atom_file_number()
         return x_lessonunit
 
     def save_lesson_file(
@@ -221,8 +221,8 @@ class LessonFileHandler:
             raise SaveLessonFileException(
                 f"LessonUnit file cannot be saved because lessonunit.person_name is incorrect: {x_lesson.person_name}. It must be {self.person_name}."
             )
-        lesson_filename = self.lesson_filename(x_lesson._lesson_id)
-        if not replace and self.hub_lesson_file_exists(x_lesson._lesson_id):
+        lesson_filename = self.lesson_filename(x_lesson.lesson_id)
+        if not replace and self.hub_lesson_file_exists(x_lesson.lesson_id):
             raise SaveLessonFileException(
                 f"LessonUnit file {lesson_filename} exists and cannot be saved over."
             )
@@ -235,7 +235,7 @@ class LessonFileHandler:
     def _default_lessonunit(self) -> LessonUnit:
         return lessonunit_shop(
             person_name=self.person_name,
-            _lesson_id=self._get_next_lesson_file_number(),
+            lesson_id=self._get_next_lesson_file_number(),
             atoms_dir=self.atoms_dir,
             lessons_dir=self.lessons_dir,
         )
@@ -244,7 +244,7 @@ class LessonFileHandler:
         self, before_person: PersonUnit, after_person: PersonUnit
     ):
         new_lessonunit = self._default_lessonunit()
-        new_persondelta = new_lessonunit._persondelta
+        new_persondelta = new_lessonunit.persondelta
         new_persondelta.add_all_different_personatoms(before_person, after_person)
         self.save_lesson_file(new_lessonunit)
 
@@ -265,17 +265,17 @@ class LessonFileHandler:
 
         for lesson_int in lesson_ints:
             x_lesson = self.get_lessonunit(lesson_int)
-            new_person = x_lesson._persondelta.get_atom_edited_person(x_person)
+            new_person = x_lesson.persondelta.get_atom_edited_person(x_person)
         return new_person
 
     def _create_initial_lesson_files_from_default(self):
         x_lessonunit = lessonunit_shop(
             person_name=self.person_name,
-            _lesson_id=get_init_lesson_id_if_None(),
+            lesson_id=get_init_lesson_id_if_None(),
             lessons_dir=self.lessons_dir,
             atoms_dir=self.atoms_dir,
         )
-        x_lessonunit._persondelta.add_all_different_personatoms(
+        x_lessonunit.persondelta.add_all_different_personatoms(
             before_person=self.default_gut_person(),
             after_person=self.default_gut_person(),
         )
@@ -291,7 +291,7 @@ class LessonFileHandler:
 
     def _create_initial_lesson_files_from_gut(self):
         x_lessonunit = self._default_lessonunit()
-        x_lessonunit._persondelta.add_all_different_personatoms(
+        x_lessonunit.persondelta.add_all_different_personatoms(
             before_person=self.default_gut_person(),
             after_person=open_gut_file(
                 self.moment_mstr_dir, self.person_lasso, self.person_name

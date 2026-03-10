@@ -32,7 +32,7 @@ def check_insert_sqlstr_exists(
     raw_tablename = prime_tbl(dimen, "h", "raw", put_del)
     agg_tablename = prime_tbl(dimen, "h", "agg", put_del)
 
-    # print(f"{raw_tablename=} {agg_tablename=}")
+    print(f"{raw_tablename=} {agg_tablename=}")
     # print(f"{stage_dict=}")
     config_dict = etl_idea_category_config_dict()
     raw_keylist = ["h", "raw", put_del] if put_del else ["h", "raw"]
@@ -66,7 +66,7 @@ GROUP BY {raw_columns_str}
         variable_name = f"{dimen_abbv7.upper()}_HEARD_AGG_INSERT_SQLSTR"
 
     # print(f'"{agg_tablename}": {variable_name},')
-    print(f'{variable_name} = """{expected_table2table_agg_insert_sqlstr}"""')
+    # print(f'{variable_name} = """{expected_table2table_agg_insert_sqlstr}"""')
     gen_sqlstr = insert_heard_agg_sqlstrs.get(agg_tablename)
     # print(f"{expected_table2table_agg_insert_sqlstr=}")
     # print(f"                            {gen_sqlstr=}")

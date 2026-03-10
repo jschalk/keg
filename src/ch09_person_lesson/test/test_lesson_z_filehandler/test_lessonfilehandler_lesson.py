@@ -93,7 +93,7 @@ def test_LessonFileHandler_save_lesson_file_SaveCorrectObj(temp_dir_setup):
     print(f"{sue_lesson6_path=}")
     sue_lessonunit = lessonunit_shop(
         person_name=exx.sue,
-        _lesson_id=two_int,
+        lesson_id=two_int,
         atoms_dir=sue_lessonfilehandler.atoms_dir,
         lessons_dir=sue_lessonfilehandler.lessons_dir,
     )
@@ -122,7 +122,7 @@ def test_LessonFileHandler_save_lesson_file_RaisesErrorIfLessonUnit_atoms_dir_Is
     print(f"{sue_lesson0_path=}")
     sue_lessonunit = lessonunit_shop(
         person_name=exx.sue,
-        _lesson_id=x_lesson_id,
+        lesson_id=x_lesson_id,
         atoms_dir="src\\incorrect_directory",
         lessons_dir=sue_lessonfilehandler.lessons_dir,
     )
@@ -148,7 +148,7 @@ def test_LessonFileHandler_save_lesson_file_RaisesErrorIfLessonUnit_lessons_dir_
     print(f"{sue_lesson0_path=}")
     sue_lessonunit = lessonunit_shop(
         person_name=exx.sue,
-        _lesson_id=x_lesson_id,
+        lesson_id=x_lesson_id,
         atoms_dir=sue_lessonfilehandler.atoms_dir,
         lessons_dir="src\\incorrect_directory",
     )
@@ -174,7 +174,7 @@ def test_LessonFileHandler_save_lesson_file_RaisesErrorIfLessonUnit_person_name_
     print(f"{sue_lesson0_path=}")
     sue_lessonunit = lessonunit_shop(
         person_name=exx.bob,
-        _lesson_id=x_lesson_id,
+        lesson_id=x_lesson_id,
         atoms_dir=sue_lessonfilehandler.atoms_dir,
         lessons_dir=sue_lessonfilehandler.lessons_dir,
     )
@@ -198,7 +198,7 @@ def test_LessonFileHandler_save_lesson_file_RaisesErrorIf_replace_IsFalse(
     six_filename = get_json_filename(x_lesson_id)
     sue_lessonunit = lessonunit_shop(
         person_name=exx.sue,
-        _lesson_id=x_lesson_id,
+        lesson_id=x_lesson_id,
         atoms_dir=sue_lessonfilehandler.atoms_dir,
         lessons_dir=sue_lessonfilehandler.lessons_dir,
     )
@@ -232,7 +232,7 @@ def test_LessonFileHandler_validate_lessonunit_ReturnsObjWithAttributesFixed(
     # WHEN
     invalid_sue_lessonunit = lessonunit_shop(
         person_name="Bob",
-        _lesson_id=sue_lessonfilehandler._get_next_lesson_file_number() - 5,
+        lesson_id=sue_lessonfilehandler._get_next_lesson_file_number() - 5,
         atoms_dir=create_path(sue_lessonfilehandler.atoms_dir, "swimming"),
         lessons_dir=create_path(sue_lessonfilehandler.atoms_dir, "swimming"),
     )
@@ -242,12 +242,12 @@ def test_LessonFileHandler_validate_lessonunit_ReturnsObjWithAttributesFixed(
     assert valid_lessonunit.atoms_dir == sue_lessonfilehandler.atoms_dir
     assert valid_lessonunit.lessons_dir == sue_lessonfilehandler.lessons_dir
     assert (
-        valid_lessonunit._lesson_id
+        valid_lessonunit.lesson_id
         == sue_lessonfilehandler._get_next_lesson_file_number()
     )
     correct_sue_lessonunit = lessonunit_shop(
         person_name=exx.sue,
-        _lesson_id=sue_lessonfilehandler._get_next_lesson_file_number(),
+        lesson_id=sue_lessonfilehandler._get_next_lesson_file_number(),
         atoms_dir=sue_lessonfilehandler.atoms_dir,
         lessons_dir=sue_lessonfilehandler.lessons_dir,
     )
@@ -269,7 +269,7 @@ def test_LessonFileHandler_save_lesson_file_SaveCorrectObj_correct_invalid_attrs
     # WHEN
     invalid_sue_lessonunit = lessonunit_shop(
         person_name="Bob",
-        _lesson_id=sue_lessonfilehandler._get_next_lesson_file_number() - 5,
+        lesson_id=sue_lessonfilehandler._get_next_lesson_file_number() - 5,
         atoms_dir=create_path(sue_lessonfilehandler.atoms_dir, "swimming"),
         lessons_dir=create_path(sue_lessonfilehandler.atoms_dir, "swimming"),
     )
@@ -293,11 +293,10 @@ def test_LessonFileHandler_default_lessonunit_ReturnsObjWithCorrect_lesson_id_Wh
 
     # THEN
     assert sue_lessonunit.person_name == exx.sue
-    assert sue_lessonunit._lesson_id == init_lesson_id()
-    assert sue_lessonunit._lesson_id == 0
+    assert sue_lessonunit.lesson_id == init_lesson_id()
+    assert sue_lessonunit.lesson_id == 0
     assert (
-        sue_lessonunit._lesson_id
-        == sue_lessonfilehandler._get_next_lesson_file_number()
+        sue_lessonunit.lesson_id == sue_lessonfilehandler._get_next_lesson_file_number()
     )
     assert sue_lessonunit.face_name is None
     assert sue_lessonunit.atoms_dir == sue_lessonfilehandler.atoms_dir
@@ -313,7 +312,7 @@ def test_LessonFileHandler_default_lessonunit_ReturnsObjWithCorrect_lesson_id_Wh
     delete_dir(sue_lessonfilehandler.lessons_dir)
 
     zero_lessonunit = get_sue_lessonunit()
-    zero_lessonunit._lesson_id = sue_lessonfilehandler._get_next_lesson_file_number()
+    zero_lessonunit.lesson_id = sue_lessonfilehandler._get_next_lesson_file_number()
     zero_lessonunit.atoms_dir = sue_lessonfilehandler.atoms_dir
     zero_lessonunit.lessons_dir = sue_lessonfilehandler.lessons_dir
     sue_lessonfilehandler.save_lesson_file(zero_lessonunit)
@@ -323,11 +322,10 @@ def test_LessonFileHandler_default_lessonunit_ReturnsObjWithCorrect_lesson_id_Wh
 
     # THEN
     assert sue_lessonunit.person_name == exx.sue
-    assert sue_lessonunit._lesson_id == init_lesson_id() + 1
-    assert sue_lessonunit._lesson_id == 1
+    assert sue_lessonunit.lesson_id == init_lesson_id() + 1
+    assert sue_lessonunit.lesson_id == 1
     assert (
-        sue_lessonunit._lesson_id
-        == sue_lessonfilehandler._get_next_lesson_file_number()
+        sue_lessonunit.lesson_id == sue_lessonfilehandler._get_next_lesson_file_number()
     )
     assert sue_lessonunit.face_name is None
     assert sue_lessonunit.atoms_dir == sue_lessonfilehandler.atoms_dir
@@ -348,8 +346,8 @@ def test_LessonFileHandler_get_lessonunit_ReturnsObjWhenFilesDoesExist(
     sue_lessonfilehandler.save_lesson_file(x1_lessonunit)
 
     # WHEN
-    y0_lessonunit = sue_lessonfilehandler.get_lessonunit(x0_lessonunit._lesson_id)
-    y1_lessonunit = sue_lessonfilehandler.get_lessonunit(x1_lessonunit._lesson_id)
+    y0_lessonunit = sue_lessonfilehandler.get_lessonunit(x0_lessonunit.lesson_id)
+    y1_lessonunit = sue_lessonfilehandler.get_lessonunit(x1_lessonunit.lesson_id)
 
     # THEN
     assert y0_lessonunit is not None
@@ -390,11 +388,11 @@ def test_LessonFileHandler_del_lesson_file_DeleteslessonjsonAndNotPersonAtomjson
     six_int = 6
     sue_lessonunit = lessonunit_shop(
         person_name=exx.sue,
-        _lesson_id=six_int,
+        lesson_id=six_int,
         atoms_dir=sue_lessonfilehandler.atoms_dir,
         lessons_dir=sue_lessonfilehandler.lessons_dir,
     )
-    sue_lessonunit._persondelta.set_personatom(get_atom_example_planunit_knee())
+    sue_lessonunit.persondelta.set_personatom(get_atom_example_planunit_knee())
     zero_int = 0
     assert sue_lessonfilehandler.hub_lesson_file_exists(six_int) is False
     assert sue_lessonfilehandler.h_atom_file_exists(zero_int) is False
@@ -408,7 +406,7 @@ def test_LessonFileHandler_del_lesson_file_DeleteslessonjsonAndNotPersonAtomjson
     assert sue_lessonfilehandler.h_atom_file_exists(zero_int)
 
     # WHEN
-    sue_lessonfilehandler._del_lesson_file(sue_lessonunit._lesson_id)
+    sue_lessonfilehandler._del_lesson_file(sue_lessonunit.lesson_id)
 
     # THEN
     assert sue_lessonfilehandler.hub_lesson_file_exists(six_int) is False
@@ -448,9 +446,7 @@ def test_LessonFileHandler_save_lesson_file_ReturnsValidObj(temp_dir_setup):
         sue_lessonfilehandler.atoms_dir, "swimming"
     )
     sue2_lessonunit.person_name = "Bob"
-    sue2_lessonunit._lesson_id = (
-        sue_lessonfilehandler._get_next_lesson_file_number() - 5
-    )
+    sue2_lessonunit.lesson_id = sue_lessonfilehandler._get_next_lesson_file_number() - 5
     prev_sue2_lessonunit = copy_deepcopy(sue2_lessonunit)
 
     # WHEN
@@ -460,7 +456,7 @@ def test_LessonFileHandler_save_lesson_file_ReturnsValidObj(temp_dir_setup):
     assert valid_lessonunit.lessons_dir != prev_sue2_lessonunit.lessons_dir
     assert valid_lessonunit.lessons_dir == sue_lessonfilehandler.lessons_dir
     assert valid_lessonunit.atoms_dir == sue_lessonfilehandler.atoms_dir
-    assert valid_lessonunit._lesson_id != prev_sue2_lessonunit._lesson_id
+    assert valid_lessonunit.lesson_id != prev_sue2_lessonunit.lesson_id
 
 
 def test_LessonFileHandler_create_save_lesson_file_SaveCorrectObj(
@@ -475,7 +471,7 @@ def test_LessonFileHandler_create_save_lesson_file_SaveCorrectObj(
     print(f"{sue_lessonfilehandler.lesson_file_path(three_int)=}")
     sue_lessonunit = lessonunit_shop(
         person_name=exx.sue,
-        _lesson_id=two_int,
+        lesson_id=two_int,
         atoms_dir=sue_lessonfilehandler.atoms_dir,
         lessons_dir=sue_lessonfilehandler.lessons_dir,
     )

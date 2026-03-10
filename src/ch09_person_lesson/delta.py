@@ -28,7 +28,7 @@ from src.ch09_person_lesson._ref.ch09_semantic_types import RopeTerm, TitleTerm
 @dataclass
 class PersonDelta:
     personatoms: dict[CRUD_command : dict[str, PersonAtom]] = None
-    _person_build_validated: bool = None
+    person_build_validated: bool = None
 
     def _get_crud_personatoms_list(self) -> dict[CRUD_command, list[PersonAtom]]:
         return get_all_nondictionary_objs(self.personatoms)
@@ -873,7 +873,7 @@ class PersonDelta:
 def persondelta_shop(personatoms: dict[str, PersonAtom] = None) -> PersonDelta:
     return PersonDelta(
         personatoms=get_empty_dict_if_None(personatoms),
-        _person_build_validated=False,
+        person_build_validated=False,
     )
 
 

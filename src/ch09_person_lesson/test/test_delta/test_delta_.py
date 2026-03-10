@@ -19,7 +19,7 @@ def test_PersonDelta_Exists():
 
     # THEN
     assert x_persondelta.personatoms is None
-    assert x_persondelta._person_build_validated is None
+    assert x_persondelta.person_build_validated is None
 
 
 def test_persondelta_shop_ReturnsObj():
@@ -28,7 +28,7 @@ def test_persondelta_shop_ReturnsObj():
 
     # THEN
     assert ex1_persondelta.personatoms == {}
-    assert ex1_persondelta._person_build_validated is False
+    assert ex1_persondelta.person_build_validated is False
 
 
 def test_PersonDelta_set_personatom_Sets_PersonUnitSimpleAttrs():

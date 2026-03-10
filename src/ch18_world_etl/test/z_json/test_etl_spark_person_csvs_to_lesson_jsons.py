@@ -42,10 +42,10 @@ def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario0_IgnoresCSV_
     expected_e3_lesson = lessonunit_shop(bob_inx, None, exx.a23, spark_num=spark3)
     e3_lessonunit = get_lessonunit_from_dict(open_json(e3_all_lesson_path))
     assert e3_lessonunit.spark_num == expected_e3_lesson.spark_num
-    expected_persondelta = expected_e3_lesson._persondelta
-    generated_e3_persondelta = e3_lessonunit._persondelta
+    expected_persondelta = expected_e3_lesson.persondelta
+    generated_e3_persondelta = e3_lessonunit.persondelta
     assert generated_e3_persondelta.personatoms == expected_persondelta.personatoms
-    assert e3_lessonunit._persondelta == expected_e3_lesson._persondelta
+    assert e3_lessonunit.persondelta == expected_e3_lesson.persondelta
     assert e3_lessonunit == expected_e3_lesson
 
 
@@ -103,19 +103,19 @@ def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario1(
     expected_e3_lesson = lessonunit_shop(bob_inx, None, exx.a23, spark_num=spark3)
     expected_e7_lesson = lessonunit_shop(bob_inx, None, exx.a23, spark_num=spark7)
     prnptnr_dimen = kw.person_partnerunit
-    expected_e3_lesson._persondelta.add_personatom(
+    expected_e3_lesson.persondelta.add_personatom(
         prnptnr_dimen,
         kw.INSERT,
         jkeys={kw.partner_name: bob_inx},
         jvalues={kw.partner_cred_lumen: credit77, kw.partner_debt_lumen: None},
     )
-    expected_e7_lesson._persondelta.add_personatom(
+    expected_e7_lesson.persondelta.add_personatom(
         prnptnr_dimen,
         kw.INSERT,
         jkeys={kw.partner_name: bob_inx},
         jvalues={kw.partner_cred_lumen: credit77, kw.partner_debt_lumen: None},
     )
-    expected_e7_lesson._persondelta.add_personatom(
+    expected_e7_lesson.persondelta.add_personatom(
         prnptnr_dimen,
         kw.INSERT,
         jkeys={kw.partner_name: sue_inx},
@@ -125,13 +125,13 @@ def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario1(
     e7_lessonunit = get_lessonunit_from_dict(open_json(e7_all_lesson_path))
     # print(f"{e7_lessonunit=}")
     assert e3_lessonunit.spark_num == expected_e3_lesson.spark_num
-    expected_persondelta = expected_e3_lesson._persondelta
-    generated_e3_persondelta = e3_lessonunit._persondelta
+    expected_persondelta = expected_e3_lesson.persondelta
+    generated_e3_persondelta = e3_lessonunit.persondelta
     assert generated_e3_persondelta.personatoms == expected_persondelta.personatoms
-    assert e3_lessonunit._persondelta == expected_e3_lesson._persondelta
+    assert e3_lessonunit.persondelta == expected_e3_lesson.persondelta
     assert e3_lessonunit == expected_e3_lesson
-    e7_insert = e7_lessonunit._persondelta.personatoms.get("INSERT")
-    expected_e7_insert = expected_e7_lesson._persondelta.personatoms.get("INSERT")
+    e7_insert = e7_lessonunit.persondelta.personatoms.get("INSERT")
+    expected_e7_insert = expected_e7_lesson.persondelta.personatoms.get("INSERT")
     # print(e7_insert.get("person_partnerunit").keys())
     # print(expected_e7_insert.get("person_partnerunit").keys())
     e7_prnptnr = e7_insert.get("person_partnerunit")
@@ -139,5 +139,5 @@ def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario1(
     assert e7_prnptnr.keys() == expected_e7_prnptnr.keys()
     # print(f"{expected_e7_insert.keys()=}")
     assert e7_insert == expected_e7_insert
-    assert e7_lessonunit._persondelta == expected_e7_lesson._persondelta
+    assert e7_lessonunit.persondelta == expected_e7_lesson.persondelta
     assert e7_lessonunit == expected_e7_lesson

@@ -68,6 +68,7 @@
       "fund_give" : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
       "fund_take" : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
       "give_force": { "calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "knot"      : { "calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "TEXT" }, 
       "take_force": { "calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL" }
     }
   }, 
@@ -81,7 +82,8 @@
     "jvalues": {
       "fact_lower": {"calc_by_conpute": false, "class_type": "FactNum", "sqlite_datatype": "REAL"}, 
       "fact_state": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}, 
-      "fact_upper": {"calc_by_conpute": false, "class_type": "FactNum", "sqlite_datatype": "REAL"}
+      "fact_upper": {"calc_by_conpute": false, "class_type": "FactNum", "sqlite_datatype": "REAL"}, 
+      "knot": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "TEXT"}
     }
   }, 
   "person_plan_healerunit": {
@@ -91,7 +93,9 @@
       "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
       "plan_rope": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
     }, 
-    "jvalues": {}
+    "jvalues": {
+      "knot": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "TEXT"}
+    }
   }, 
   "person_plan_partyunit": {
     "abbreviation": "prnlabo", 
@@ -101,8 +105,9 @@
       "plan_rope": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
     }, 
     "jvalues": {
-      "person_name_is_labor": { "calc_by_conpute": true , "class_type": "int", "sqlite_datatype": "INTEGER" }, 
-      "solo"                : { "calc_by_conpute": false, "class_type": "int", "sqlite_datatype": "INTEGER" }
+      "knot": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "TEXT"}, 
+      "person_name_is_labor": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "solo": {"calc_by_conpute": false, "class_type": "int", "sqlite_datatype": "INTEGER"}
     }
   }, 
   "person_plan_reason_caseunit": {
@@ -116,6 +121,7 @@
     "jvalues": {
       "case_active": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
       "case_task": {"calc_by_conpute": true, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
+      "knot": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "TEXT"}, 
       "reason_divisor": {"calc_by_conpute": false, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
       "reason_lower": {"calc_by_conpute": false, "class_type": "ReasonNum", "sqlite_datatype": "REAL"}, 
       "reason_upper": {"calc_by_conpute": false, "class_type": "ReasonNum", "sqlite_datatype": "REAL"}
@@ -129,10 +135,11 @@
       "reason_context": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
     }, 
     "jvalues": {
-      "active_requisite"  : { "calc_by_conpute": false, "class_type": "bool", "sqlite_datatype": "INTEGER" }, 
-      "parent_heir_active": { "calc_by_conpute": true , "class_type": "int" , "sqlite_datatype": "INTEGER" }, 
-      "reason_active"     : { "calc_by_conpute": true , "class_type": "int" , "sqlite_datatype": "INTEGER" }, 
-      "reason_task"       : { "calc_by_conpute": true , "class_type": "bool", "sqlite_datatype": "INTEGER" }
+      "active_requisite": {"calc_by_conpute": false, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
+      "knot": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "TEXT"}, 
+      "parent_heir_active": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "reason_active": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "reason_task": {"calc_by_conpute": true, "class_type": "bool", "sqlite_datatype": "INTEGER"}
     }
   }, 
   "person_planunit": {
@@ -156,6 +163,7 @@
       "gogo_calc": {"calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
       "gogo_want": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
       "healerunit_ratio": {"calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "knot": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "TEXT"}, 
       "morph": {"calc_by_conpute": false, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
       "numor": {"calc_by_conpute": false, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
       "plan_active": {"calc_by_conpute": true, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
@@ -181,6 +189,7 @@
       "fund_pool": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
       "keeps_buildable": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
       "keeps_justified": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "knot": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "TEXT"}, 
       "mana_grain": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
       "max_tree_traverse": {"calc_by_conpute": false, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
       "offtrack_fund": {"calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL"}, 

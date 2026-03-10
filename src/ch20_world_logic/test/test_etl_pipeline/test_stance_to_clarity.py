@@ -45,13 +45,14 @@ def test_WorldUnit_stance_sheets_to_clarity_mstr_Scenario0_CreatesDatabaseFile(
         kw.moment_rope,
         kw.person_name,
         kw.bud_time,
+        kw.knot,
         kw.quota,
         kw.celldepth,
     ]
     tp37 = 37
     sue_quota = 235
     sue_celldepth = 3
-    br1row0 = [exx.sue, exx.a23, exx.sue, tp37, sue_quota, sue_celldepth]
+    br1row0 = [exx.sue, exx.a23, exx.sue, tp37, ";", sue_quota, sue_celldepth]
     br00001_1df = DataFrame([br1row0], columns=br00001_columns)
     br00001_ex0_str = "example0_br00001"
     upsert_sheet(input_file_path, br00001_ex0_str, br00001_1df)

@@ -157,7 +157,7 @@ def test_etl_spark_lesson_json_to_spark_inherited_personunits_SetsFiles_expresse
         prnptnr_dimen, kw.INSERT, sue_jkeys, sue_jvalues
     )
     assert expected_e3_bob_lesson == a23_bob_e3_lesson
-    assert expected_e7_bob_lesson._persondelta != a23_bob_e7_lesson._persondelta
+    assert expected_e7_bob_lesson.persondelta != a23_bob_e7_lesson.persondelta
     assert expected_e7_bob_lesson != a23_bob_e7_lesson
     # expected_e3_bob_lesson.add_p_personatom()
     # expected_e3_bob_lesson.add_p_personatom()
@@ -165,8 +165,8 @@ def test_etl_spark_lesson_json_to_spark_inherited_personunits_SetsFiles_expresse
     # expected_e7_bob_lesson.add_p_personatom()
     # expected_e7_bob_lesson.add_p_personatom()
     assert gen_e3_express_lesson == expected_e3_bob_lesson
-    gen_e7_express_delta = gen_e7_express_lesson._persondelta
-    expected_e7_delta = expected_e7_bob_lesson._persondelta
+    gen_e7_express_delta = gen_e7_express_lesson.persondelta
+    expected_e7_delta = expected_e7_bob_lesson.persondelta
     assert gen_e7_express_delta.personatoms == expected_e7_delta.personatoms
-    assert gen_e7_express_lesson._persondelta == expected_e7_bob_lesson._persondelta
+    assert gen_e7_express_lesson.persondelta == expected_e7_bob_lesson.persondelta
     assert gen_e7_express_lesson == expected_e7_bob_lesson

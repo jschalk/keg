@@ -1,4 +1,4 @@
-from sqlite3 import Cursor, connect as sqlite3_connect
+from sqlite3 import Cursor
 from src.ch00_py.db_toolbox import get_row_count
 from src.ch02_partner.group import (
     awardheir_shop,
@@ -51,6 +51,7 @@ def test_ObjKeysHolder_Exists():
 def test_insert_job_prnunit_CreatesTableRowsFor_personunit_job(cursor0: Cursor):
     # ESTABLISH
     x_moment_rope = exx.a23
+    x_knot = exx.slash
     x_person_name = "Sue"
     x_keeps_buildable = 99
     x_keeps_justified = 77
@@ -79,6 +80,7 @@ def test_insert_job_prnunit_CreatesTableRowsFor_personunit_job(cursor0: Cursor):
     sue_person.tree_traverse_count = x_tree_traverse_count
     sue_person.credor_respect = x_credor_respect
     sue_person.debtor_respect = x_debtor_respect
+    sue_person.knot = x_knot
 
     create_job_tables(cursor0)
     x_table_name = "personunit_job"
@@ -91,9 +93,10 @@ def test_insert_job_prnunit_CreatesTableRowsFor_personunit_job(cursor0: Cursor):
     # THEN
     assert get_row_count(cursor0, x_table_name) == 1
     select_sqlstr = f"SELECT * FROM {x_table_name};"
+    print(f"{select_sqlstr=}")
     cursor0.execute(select_sqlstr)
     rows = cursor0.fetchall()
-    expected_row1 = (
+    expected_row0 = (
         x_moment_rope,
         x_person_name,
         x_credor_respect,
@@ -103,6 +106,7 @@ def test_insert_job_prnunit_CreatesTableRowsFor_personunit_job(cursor0: Cursor):
         x_fund_grain,
         x_mana_grain,
         x_respect_grain,
+        x_knot,
         x_rational,
         x_keeps_justified,
         x_offtrack_fund,
@@ -110,7 +114,7 @@ def test_insert_job_prnunit_CreatesTableRowsFor_personunit_job(cursor0: Cursor):
         x_keeps_buildable,
         x_tree_traverse_count,
     )
-    expected_data = [expected_row1]
+    expected_data = [expected_row0]
     assert rows == expected_data
 
 
@@ -128,9 +132,10 @@ def test_insert_job_prnplan_CreatesTableRowsFor_prnplan_job(cursor0: Cursor):
     # for x_arg in get_default_sorted_list(x_args):
     #     print(f"""        x_{x_arg},""")
     # print("")
-    x_moment_rope = exx.a23
+    x_moment_rope = exx.a23_slash
+    x_knot = exx.slash
     x_person_name = 2
-    casa_rope = create_rope(x_moment_rope, "casa")
+    casa_rope = create_rope(x_moment_rope, "casa", x_knot)
     x_parent_rope = casa_rope
     x_plan_label = "clean"
     x_begin = 5.0
@@ -160,6 +165,7 @@ def test_insert_job_prnplan_CreatesTableRowsFor_prnplan_job(cursor0: Cursor):
     x_all_partner_debt = 29
     x_plan = planunit_shop(exx.casa)
     x_plan.parent_rope = x_parent_rope
+    x_plan.knot = x_knot
     x_plan.plan_label = x_plan_label
     x_plan.begin = x_begin
     x_plan.close = x_close
@@ -223,12 +229,12 @@ def test_insert_job_prnplan_CreatesTableRowsFor_prnplan_job(cursor0: Cursor):
     insert_job_prnplan(cursor0, x_objkeysholder, x_plan)
 
     # THEN
-    clean_rope = create_rope(casa_rope, "clean")
+    clean_rope = create_rope(casa_rope, "clean", x_knot)
     assert get_row_count(cursor0, x_table_name) == 1
     select_sqlstr = f"SELECT * FROM {x_table_name};"
     cursor0.execute(select_sqlstr)
     rows = cursor0.fetchall()
-    expected_row1 = (
+    expected_row0 = (
         None,
         str(x_person_name),
         clean_rope,
@@ -244,6 +250,7 @@ def test_insert_job_prnplan_CreatesTableRowsFor_prnplan_job(cursor0: Cursor):
         x_pledge,
         x_problem_bool,
         x_fund_grain,
+        x_knot,
         x_active,
         x_plan_task,
         x_fund_onset,
@@ -258,8 +265,7 @@ def test_insert_job_prnplan_CreatesTableRowsFor_prnplan_job(cursor0: Cursor):
         x_all_partner_cred,
         x_all_partner_debt,
     )
-    expected_data = [expected_row1]
-    assert rows == expected_data
+    assert rows[0] == expected_row0
 
 
 def test_insert_job_prnreas_CreatesTableRowsFor_prnreas_job(cursor0: Cursor):
@@ -278,19 +284,21 @@ def test_insert_job_prnreas_CreatesTableRowsFor_prnreas_job(cursor0: Cursor):
     # print("")
 
     x_moment_rope = 1
+    x_knot = exx.slash
     x_person_name = 2
     x_rope = 3
     x_reason_context = 4
     x_active_requisite = 5
     x_reason_active = 6
     x_reason_task = 7
-    x__heir_active = 8
+    x_heir_active = 8
     x_reasonheir = reasonheir_shop(reason_context=x_reason_context)
     x_reasonheir.reason_context = x_reason_context
     x_reasonheir.active_requisite = x_active_requisite
     x_reasonheir.reason_task = x_reason_task
     x_reasonheir.reason_active = x_reason_active
-    x_reasonheir.parent_heir_active = x__heir_active
+    x_reasonheir.parent_heir_active = x_heir_active
+    x_reasonheir.knot = x_knot
 
     create_job_tables(cursor0)
     x_table_name = "person_plan_reasonunit_job"
@@ -307,17 +315,18 @@ def test_insert_job_prnreas_CreatesTableRowsFor_prnreas_job(cursor0: Cursor):
     select_sqlstr = f"SELECT * FROM {x_table_name};"
     cursor0.execute(select_sqlstr)
     rows = cursor0.fetchall()
-    expected_row1 = (
+    expected_row0 = (
         str(x_moment_rope),
         str(x_person_name),
         str(x_rope),
         str(x_reason_context),
         x_active_requisite,
+        x_knot,
         x_reason_active,
         x_reason_task,
-        x__heir_active,
+        x_heir_active,
     )
-    expected_data = [expected_row1]
+    expected_data = [expected_row0]
     assert rows == expected_data
 
 
@@ -336,6 +345,7 @@ def test_insert_job_prncase_CreatesTableRowsFor_prncase_job(cursor0: Cursor):
     #     print(f"""        x_{x_arg},""")
 
     x_moment_rope = 1
+    x_knot = exx.slash
     x_person_name = 2
     x_rope = 3
     x_reason_context = 4
@@ -352,6 +362,7 @@ def test_insert_job_prncase_CreatesTableRowsFor_prncase_job(cursor0: Cursor):
     x_caseunit.reason_divisor = x_reason_divisor
     x_caseunit.case_task = x_case_task
     x_caseunit.case_active = x_case_active
+    x_caseunit.knot = x_knot
 
     create_job_tables(cursor0)
     x_table_name = "person_plan_reason_caseunit_job"
@@ -371,7 +382,7 @@ def test_insert_job_prncase_CreatesTableRowsFor_prncase_job(cursor0: Cursor):
     select_sqlstr = f"SELECT * FROM {x_table_name};"
     cursor0.execute(select_sqlstr)
     rows = cursor0.fetchall()
-    expected_row1 = (
+    expected_row0 = (
         str(x_moment_rope),
         str(x_person_name),
         str(x_rope),
@@ -380,11 +391,11 @@ def test_insert_job_prncase_CreatesTableRowsFor_prncase_job(cursor0: Cursor):
         x_reason_lower,
         x_reason_upper,
         x_reason_divisor,
+        x_knot,
         x_case_task,
         x_case_active,
     )
-    expected_data = [expected_row1]
-    assert rows == expected_data
+    assert rows[0] == expected_row0
 
 
 def test_insert_job_prnmemb_CreatesTableRowsFor_prnmemb_job(cursor0: Cursor):
@@ -443,7 +454,7 @@ def test_insert_job_prnmemb_CreatesTableRowsFor_prnmemb_job(cursor0: Cursor):
     select_sqlstr = f"SELECT * FROM {x_table_name};"
     cursor0.execute(select_sqlstr)
     rows = cursor0.fetchall()
-    expected_row1 = (
+    expected_row0 = (
         str(x_moment_rope),
         str(x_person_name),
         str(x_partner_name),
@@ -459,7 +470,7 @@ def test_insert_job_prnmemb_CreatesTableRowsFor_prnmemb_job(cursor0: Cursor):
         x_fund_agenda_ratio_give,
         x_fund_agenda_ratio_take,
     )
-    expected_data = [expected_row1]
+    expected_data = [expected_row0]
     assert rows == expected_data
 
 
@@ -524,7 +535,7 @@ def test_insert_job_prnptnr_CreatesTableRowsFor_prnptnr_job(cursor0: Cursor):
     select_sqlstr = f"SELECT * FROM {x_table_name};"
     cursor0.execute(select_sqlstr)
     rows = cursor0.fetchall()
-    expected_row1 = (
+    expected_row0 = (
         str(x_moment_rope),
         str(x_person_name),
         str(x_partner_name),
@@ -542,7 +553,7 @@ def test_insert_job_prnptnr_CreatesTableRowsFor_prnptnr_job(cursor0: Cursor):
         x_inallocable_partner_debt_lumen,
         x_irrational_partner_debt_lumen,
     )
-    expected_data = [expected_row1]
+    expected_data = [expected_row0]
     assert rows == expected_data
 
 
@@ -595,7 +606,7 @@ def test_insert_job_prngrou_CreatesTableRowsFor_prngrou_job(cursor0: Cursor):
     select_sqlstr = f"SELECT * FROM {x_table_name};"
     cursor0.execute(select_sqlstr)
     rows = cursor0.fetchall()
-    expected_row1 = (
+    expected_row0 = (
         str(x_moment_rope),
         str(x_person_name),
         str(x_group_title),
@@ -607,7 +618,7 @@ def test_insert_job_prngrou_CreatesTableRowsFor_prngrou_job(cursor0: Cursor):
         x_fund_agenda_give,
         x_fund_agenda_take,
     )
-    expected_data = [expected_row1]
+    expected_data = [expected_row0]
     assert rows == expected_data
 
 
@@ -626,6 +637,7 @@ def test_insert_job_prnawar_CreatesTableRowsFor_prnawar_job(cursor0: Cursor):
     #     print(f"""        x_{x_arg},""")
 
     x_moment_rope = 1
+    x_knot = exx.slash
     x_person_name = 2
     x_rope = 3
     x_awardee_title = 4
@@ -644,7 +656,7 @@ def test_insert_job_prnawar_CreatesTableRowsFor_prnawar_job(cursor0: Cursor):
     x_table_name = "person_plan_awardunit_job"
     assert get_row_count(cursor0, x_table_name) == 0
     x_objkeysholder = ObjKeysHolder(
-        moment_rope=x_moment_rope, person_name=x_person_name, rope=x_rope
+        moment_rope=x_moment_rope, person_name=x_person_name, rope=x_rope, knot=x_knot
     )
 
     # WHEN
@@ -655,18 +667,18 @@ def test_insert_job_prnawar_CreatesTableRowsFor_prnawar_job(cursor0: Cursor):
     select_sqlstr = f"SELECT * FROM {x_table_name};"
     cursor0.execute(select_sqlstr)
     rows = cursor0.fetchall()
-    expected_row1 = (
+    expected_row0 = (
         str(x_moment_rope),
         str(x_person_name),
         str(x_rope),
         str(x_awardee_title),
         x_give_force,
         x_take_force,
+        x_knot,
         x_fund_give,
         x_fund_take,
     )
-    expected_data = [expected_row1]
-    assert rows == expected_data
+    assert rows[0] == expected_row0
 
 
 def test_insert_job_prnfact_CreatesTableRowsFor_prnfact_job(cursor0: Cursor):
@@ -684,6 +696,7 @@ def test_insert_job_prnfact_CreatesTableRowsFor_prnfact_job(cursor0: Cursor):
     #     print(f"""        x_{x_arg},""")
 
     x_moment_rope = 1
+    x_knot = exx.slash
     x_person_name = 2
     x_rope = 3
     x_reason_context = 4
@@ -700,7 +713,7 @@ def test_insert_job_prnfact_CreatesTableRowsFor_prnfact_job(cursor0: Cursor):
     x_table_name = "person_plan_factunit_job"
     assert get_row_count(cursor0, x_table_name) == 0
     x_objkeysholder = ObjKeysHolder(
-        moment_rope=x_moment_rope, person_name=x_person_name, rope=x_rope
+        moment_rope=x_moment_rope, person_name=x_person_name, rope=x_rope, knot=x_knot
     )
 
     # WHEN
@@ -711,7 +724,7 @@ def test_insert_job_prnfact_CreatesTableRowsFor_prnfact_job(cursor0: Cursor):
     select_sqlstr = f"SELECT * FROM {x_table_name};"
     cursor0.execute(select_sqlstr)
     rows = cursor0.fetchall()
-    expected_row1 = (
+    expected_row0 = (
         str(x_moment_rope),
         str(x_person_name),
         str(x_rope),
@@ -719,9 +732,9 @@ def test_insert_job_prnfact_CreatesTableRowsFor_prnfact_job(cursor0: Cursor):
         str(x_fact_state),
         x_fact_lower,
         x_fact_upper,
+        x_knot,
     )
-    expected_data = [expected_row1]
-    assert rows == expected_data
+    assert rows[0] == expected_row0
 
 
 def test_insert_job_prnheal_CreatesTableRowsFor_prnheal_job(cursor0: Cursor):
@@ -739,6 +752,7 @@ def test_insert_job_prnheal_CreatesTableRowsFor_prnheal_job(cursor0: Cursor):
     #     print(f"""        x_{x_arg},""")
 
     x_moment_rope = 1
+    x_knot = exx.slash
     x_person_name = 2
     x_rope = 3
     x_healerunit = healerunit_shop()
@@ -749,7 +763,7 @@ def test_insert_job_prnheal_CreatesTableRowsFor_prnheal_job(cursor0: Cursor):
     x_table_name = "person_plan_healerunit_job"
     assert get_row_count(cursor0, x_table_name) == 0
     x_objkeysholder = ObjKeysHolder(
-        moment_rope=x_moment_rope, person_name=x_person_name, rope=x_rope
+        moment_rope=x_moment_rope, person_name=x_person_name, rope=x_rope, knot=x_knot
     )
 
     # WHEN
@@ -760,19 +774,21 @@ def test_insert_job_prnheal_CreatesTableRowsFor_prnheal_job(cursor0: Cursor):
     select_sqlstr = f"SELECT * FROM {x_table_name};"
     cursor0.execute(select_sqlstr)
     rows = cursor0.fetchall()
-    expected_row1 = (
+    expected_row0 = (
         str(x_moment_rope),
         str(x_person_name),
         str(x_rope),
         exx.bob,
+        x_knot,
     )
-    expected_row2 = (
+    expected_row1 = (
         str(x_moment_rope),
         str(x_person_name),
         str(x_rope),
         exx.sue,
+        x_knot,
     )
-    expected_data = [expected_row1, expected_row2]
+    expected_data = [expected_row0, expected_row1]
     assert rows == expected_data
 
 
@@ -791,11 +807,12 @@ def test_insert_job_prnlabo_CreatesTableRowsFor_prnlabo_job(cursor0: Cursor):
     #     print(f"""        x_{x_arg},""")
 
     x_moment_rope = 1
+    x_knot = exx.slash
     x_person_name = 2
     x_rope = 3
-    x__person_name_is_labor = 5
+    x_person_name_is_labor = 5
     x_laborheir = laborheir_shop()
-    x_laborheir.person_name_is_labor = x__person_name_is_labor
+    x_laborheir.person_name_is_labor = x_person_name_is_labor
     bob_solo_bool = 6
     sue_solo_bool = 7
     bob_partyheir = partyheir_shop(exx.bob, bob_solo_bool)
@@ -806,7 +823,7 @@ def test_insert_job_prnlabo_CreatesTableRowsFor_prnlabo_job(cursor0: Cursor):
     x_table_name = "person_plan_partyunit_job"
     assert get_row_count(cursor0, x_table_name) == 0
     x_objkeysholder = ObjKeysHolder(
-        moment_rope=x_moment_rope, person_name=x_person_name, rope=x_rope
+        moment_rope=x_moment_rope, person_name=x_person_name, rope=x_rope, knot=x_knot
     )
 
     # WHEN
@@ -817,23 +834,25 @@ def test_insert_job_prnlabo_CreatesTableRowsFor_prnlabo_job(cursor0: Cursor):
     select_sqlstr = f"SELECT * FROM {x_table_name};"
     cursor0.execute(select_sqlstr)
     rows = cursor0.fetchall()
-    expected_row1 = (
+    expected_row0 = (
         str(x_moment_rope),
         str(x_person_name),
         str(x_rope),
         exx.bob,
         bob_solo_bool,
-        x__person_name_is_labor,
+        x_knot,
+        x_person_name_is_labor,
     )
-    expected_row2 = (
+    expected_row1 = (
         str(x_moment_rope),
         str(x_person_name),
         str(x_rope),
         exx.sue,
         sue_solo_bool,
-        x__person_name_is_labor,
+        x_knot,
+        x_person_name_is_labor,
     )
-    expected_data = [expected_row1, expected_row2]
+    expected_data = [expected_row0, expected_row1]
     assert rows == expected_data
 
 
