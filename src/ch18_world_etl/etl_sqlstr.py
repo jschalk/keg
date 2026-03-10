@@ -1576,23 +1576,25 @@ CREATE TABLE IF NOT EXISTS moment_ote1_agg (
 , person_name TEXT
 , spark_num INTEGER
 , bud_time INTEGER
+, knot TEXT
 , error_message TEXT
 )
 ;
 """
 INSERT_MOMENT_OTE1_AGG_FROM_HEARD_SQLSTR = """
-INSERT INTO moment_ote1_agg (moment_rope, person_name, spark_num, bud_time)
-SELECT moment_rope, person_name, spark_num, bud_time
+INSERT INTO moment_ote1_agg (moment_rope, person_name, spark_num, bud_time, knot)
+SELECT moment_rope, person_name, spark_num, bud_time, knot
 FROM (
     SELECT 
       moment_rope_inx moment_rope
     , person_name_inx person_name
     , spark_num
     , bud_time
+    , knot
     FROM moment_budunit_h_raw
-    GROUP BY moment_rope_inx, person_name_inx, spark_num, bud_time
+    GROUP BY moment_rope_inx, person_name_inx, spark_num, bud_time, knot
 )
-ORDER BY moment_rope, person_name, spark_num, bud_time
+ORDER BY moment_rope, person_name, spark_num, bud_time, knot
 ;
 """
 

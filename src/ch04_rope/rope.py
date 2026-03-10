@@ -1,7 +1,6 @@
 from collections import Counter
-from dataclasses import dataclass
 from pathlib import Path as pathlib_Path
-from src.ch00_py.file_toolbox import create_directory_path, is_path_valid
+from src.ch00_py.file_toolbox import is_path_valid
 from src.ch04_rope._ref.ch04_semantic_types import (
     FirstLabel,
     KnotTerm,
@@ -112,7 +111,9 @@ def find_replace_rope_key_dict(
 
 
 def get_all_rope_labels(rope: RopeTerm, knot: KnotTerm = None) -> list[LabelTerm]:
-    return rope.split(default_knot_if_None(knot))[1:-1]
+    rope_labels = rope.split(default_knot_if_None(knot))
+    # remove first and last empty strings
+    return rope_labels[1:-1]
 
 
 def get_tail_label(rope: RopeTerm, knot: KnotTerm = None) -> LabelTerm:

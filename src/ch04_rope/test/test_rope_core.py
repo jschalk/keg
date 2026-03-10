@@ -208,7 +208,7 @@ def test_rope_rebuild_rope_ReturnsRopeTerm():
     assert rebuild_rope(old_tulips_rope, "random_str", greenery_rope) == old_tulips_rope
 
 
-def test_rope_get_all_rope_labels_ReturnsLabelTerms():
+def test_rope_get_all_rope_labels_ReturnsObj_Scenario0_KnotIsSingleCharacter():
     # ESTABLISH
     x_s = default_knot_if_None()
     casa_rope = f"{root_rope()}{exx.casa}{x_s}"
@@ -226,6 +226,22 @@ def test_rope_get_all_rope_labels_ReturnsLabelTerms():
     assert get_all_rope_labels(rope=bloomers_rope) == bloomers_list
     tulips_list = ["YY", exx.casa, bloomers_str, tulips_str]
     assert get_all_rope_labels(rope=tulips_rope) == tulips_list
+
+
+def test_rope_get_all_rope_labels_ReturnsObj_Scenario1_KnotIsLongerThanSingleCharacter():
+    # ESTABLISH
+    knot = "&&%"
+    assert len(knot) > 1
+    bloomers_str = "bloomers"
+    tulips_str = "tulips"
+
+    # WHEN / THENs
+    s1_rope = f"{knot}{exx.casa}{knot}"
+    assert get_all_rope_labels(s1_rope, knot) == [exx.casa]
+    s2_rope = f"{knot}{exx.casa}{knot}{bloomers_str}{knot}"
+    assert get_all_rope_labels(s2_rope, knot) == [exx.casa, bloomers_str]
+    s3_rope = f"{knot}{exx.casa}{knot}{bloomers_str}{knot}{tulips_str}{knot}"
+    assert get_all_rope_labels(s3_rope, knot) == [exx.casa, bloomers_str, tulips_str]
 
 
 def test_rope_get_tail_label_ReturnsLabelTerm():

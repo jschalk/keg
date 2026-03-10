@@ -17,7 +17,6 @@ from src.ch00_py.db_toolbox import (
     get_nonconvertible_columns,
     get_row_count,
     get_table_columns,
-    save_to_split_csvs,
 )
 from src.ch00_py.file_toolbox import (
     create_path,
@@ -91,6 +90,7 @@ from src.ch18_world_etl._ref.ch18_path import (
     create_moment_ote1_json_path,
 )
 from src.ch18_world_etl._ref.ch18_semantic_types import FaceName, SparkInt
+from src.ch18_world_etl.etl_csv import save_to_split_csvs
 from src.ch18_world_etl.etl_sqlstr import (
     CREATE_MOMENT_OTE1_AGG_SQLSTR,
     CREATE_MOMENT_PARTNER_NETS_SQLSTR,
@@ -700,9 +700,7 @@ def etl_moment_ote1_agg_table_to_moment_ote1_agg_csvs(
         ote1_csv_path = create_moment_ote1_csv_path(moment_mstr_dir, person_lasso)
         save_file(ote1_csv_path, None, empty_ote1_csv_str)
 
-    save_to_split_csvs(
-        conn_or_cursor, "moment_ote1_agg", ["moment_rope"], moments_dir, trim_col=True
-    )
+    save_to_split_csvs(conn_or_cursor, "moment_ote1_agg", ["moment_rope"], moments_dir)
 
 
 def etl_moment_ote1_agg_csvs_to_jsons(moment_mstr_dir: str):
@@ -786,7 +784,6 @@ def etl_heard_vld_to_spark_person_csvs(
                 dst_dir=moments_dir,
                 col1_prefix="persons",
                 col2_prefix="sparks",
-                trim_col=True,
             )
 
 

@@ -48,7 +48,6 @@ def test_LessonUnit_Exists():
     assert not x_lessonunit.face_name
     assert not x_lessonunit.moment_rope
     assert not x_lessonunit.person_name
-    # TODO get rid of underscore Attributes
     assert not x_lessonunit.lesson_id
     assert not x_lessonunit.persondelta
     assert not x_lessonunit.delta_start
