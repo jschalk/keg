@@ -197,6 +197,7 @@ WHERE {kw.spark_num} = {x_spark_num}
     AND {kw.reason_state} = '{x_reason_state}'
 ;
 """
+    print(select_sqlstr)
     cursor.execute(select_sqlstr)
     prncase_heard_aggs = []
     for row in cursor.fetchall():

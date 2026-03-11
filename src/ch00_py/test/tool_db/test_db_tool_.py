@@ -51,7 +51,7 @@ def test_sqlite_obj_str_ReturnsObj():
     assert sqlite_obj_str(None, sqlite_datatype="REAL") == "NULL"
 
 
-def test_sqlite_create_type_reference_insert_sqlstr_ReturnsObj_Scenario0_WithoutNones():
+def test_create_type_reference_insert_sqlstr_ReturnsObj_Scenario0_WithoutNones():
     # ESTABLISH
     x_table = "kubo_casas"
     eagle_id_str = "eagle_id"
@@ -61,7 +61,7 @@ def test_sqlite_create_type_reference_insert_sqlstr_ReturnsObj_Scenario0_Without
     eagle_id_value = 47
     casa_id_value = "TR34"
     casa_color_value = "red"
-    x_values = [eagle_id_value, casa_id_value, casa_color_value]
+    x_values = [[eagle_id_value, casa_id_value, casa_color_value]]
 
     # WHEN
     gen_sqlstr = create_type_reference_insert_sqlstr(x_table, x_columns, x_values)
@@ -73,17 +73,15 @@ INSERT INTO {x_table} (
 , {casa_id_str}
 , {casa_color_str}
 )
-VALUES (
-  {eagle_id_value}
-, '{casa_id_value}'
-, '{casa_color_value}'
-)
-;"""
-    print(example_sqlstr)
+VALUES
+  ({eagle_id_value}, '{casa_id_value}', '{casa_color_value}')
+;
+"""
+    print(gen_sqlstr)
     assert example_sqlstr == gen_sqlstr
 
 
-def test_sqlite_create_type_reference_insert_sqlstr_ReturnsObj_Scenario1_WithNones():
+def test_create_type_reference_insert_sqlstr_ReturnsObj_Scenario1_WithNones():
     # ESTABLISH
     x_table = "kubo_casas"
     eagle_id_str = "eagle_id"
@@ -92,7 +90,7 @@ def test_sqlite_create_type_reference_insert_sqlstr_ReturnsObj_Scenario1_WithNon
     x_columns = [eagle_id_str, casa_id_str, casa_color_str]
     eagle_id_value = 47.0
     casa_id_value = 34
-    x_values = [eagle_id_value, casa_id_value, None]
+    x_values = [[eagle_id_value, casa_id_value, None]]
 
     # WHEN
     gen_sqlstr = create_type_reference_insert_sqlstr(x_table, x_columns, x_values)
@@ -104,14 +102,73 @@ INSERT INTO {x_table} (
 , {casa_id_str}
 , {casa_color_str}
 )
-VALUES (
-  {eagle_id_value}
-, {casa_id_value}
-, NULL
-)
-;"""
+VALUES
+  ({eagle_id_value}, {casa_id_value}, NULL)
+;
+"""
     print(example_sqlstr)
     assert example_sqlstr == gen_sqlstr
+
+
+def test_create_type_reference_insert_sqlstr_ReturnsObj_Scenario2_WithNones():
+    # ESTABLISH
+    x_table = "kubo_casas"
+    eagle_id_str = "eagle_id"
+    casa_id_str = "casa_id"
+    casa_color_str = "casa_color"
+    x_columns = [eagle_id_str, casa_id_str, casa_color_str]
+    eagle_id_value = 47.0
+    casa_id_value = 34
+    x_values = [
+        [eagle_id_value, casa_id_value, None],
+        [eagle_id_value + 1, casa_id_value + 1, "huh"],
+    ]
+
+    # WHEN
+    gen_sqlstr = create_type_reference_insert_sqlstr(x_table, x_columns, x_values)
+
+    # THEN
+    example_sqlstr = f"""
+INSERT INTO {x_table} (
+  {eagle_id_str}
+, {casa_id_str}
+, {casa_color_str}
+)
+VALUES
+  ({eagle_id_value}, {casa_id_value}, NULL)
+, ({eagle_id_value+1}, {casa_id_value+1}, 'huh')
+;
+"""
+    print(example_sqlstr)
+    assert example_sqlstr == gen_sqlstr
+
+
+def test_create_type_reference_insert_sqlstr_InsertsRows_Scenario0(cursor0: Cursor):
+    # ESTABLISH
+    x_table = "kubo_casas"
+    eagle_id_str = "eagle_id"
+    casa_id_str = "casa_id"
+    casa_color_str = "casa_color"
+    x_columns = [eagle_id_str, casa_id_str, casa_color_str]
+    cursor0.execute(
+        "CREATE TABLE kubo_casas (eagle_id TEXT, casa_id TEXT, casa_color TEXT)"
+    )
+    eagle_id_value = 47.0
+    casa_id_value = 34
+    x_values = [
+        [eagle_id_value, casa_id_value, None],
+        [eagle_id_value + 1, casa_id_value + 1, "huh"],
+    ]
+
+    # WHEN
+    gen_sqlstr = create_type_reference_insert_sqlstr(x_table, x_columns, x_values)
+    print(f"{gen_sqlstr}")
+    cursor0.execute(gen_sqlstr)
+
+    # THEN
+    rows = cursor0.execute(f"SELECT * FROM {x_table}").fetchall()
+    print(f"{rows=}")
+    assert rows == [("47.0", "34", None), ("48.0", "35", "huh")]
 
 
 def test_RowData_Exists():

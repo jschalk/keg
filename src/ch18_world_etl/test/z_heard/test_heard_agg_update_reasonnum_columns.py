@@ -1,4 +1,9 @@
 from sqlite3 import Cursor
+from src.ch00_py.db_toolbox import (
+    create_type_reference_insert_sqlstr,
+    get_row_count,
+    get_table_columns,
+)
 from src.ch06_plan.test._util.ch06_examples import get_range_attrs
 from src.ch07_person_logic.person_tool import (
     PersonUnit,
@@ -22,6 +27,7 @@ from src.ch13_time.test._util.ch13_examples import (
 )
 from src.ch15_nabu.nabu_config import get_nabu_config_dict
 from src.ch17_idea.idea_config import get_dimens_with_idea_element
+from src.ch18_world_etl.etl_config import create_prime_tablename
 from src.ch18_world_etl.etl_nabu import (
     add_epoch_frame_to_db_personunit,
     add_frame_to_db_caseunit,
@@ -30,11 +36,14 @@ from src.ch18_world_etl.etl_nabu import (
     add_frame_to_db_reasonunit,
 )
 from src.ch18_world_etl.etl_sqlstr import (
+    create_prime_db_table,
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
     get_update_heard_agg_timenum_sqlstr,
     get_update_heard_agg_timenum_sqlstrs,
+    get_update_prncase_context_plan_sqlstr,
     get_update_prncase_inx_epoch_diff_sqlstr,
+    get_update_prnfact_context_plan_sqlstr,
     get_update_prnfact_inx_epoch_diff_sqlstr,
     update_heard_agg_timenum_columns,
 )
@@ -48,50 +57,24 @@ from src.ch18_world_etl.test._util.ch18_examples import (
     insert_prncase_special_h_agg as insert_prncase,
     insert_prnfact_special_h_agg as insert_prnfact,
     select_mmtoffi_special_offi_time_inx as select_offi_time_inx,
-    select_prncase_special_h_agg as select_prncase,
+    select_prncase_special_h_agg as pchap1_select_prncase,
     select_prnfact_special_h_agg as select_prnfact,
 )
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
-# TODO create function that updates all nabuable otx fields.
+# TODO TODO create function that updates all nabuable otx fields.
 # restart a little bit
 # 0. identify all fields that are nabuable
+#   "reason_lower", "reason_upper"
+#   "fact_lower", "fact_upper"
+#   "bud_time"
+#   "offi_time"
+#   "tran_time"
 # 1. on each of their h_agg tables make sure there is inx_epoch_diff
 # 2. create update queries to set inx_epoch_diff for all of them
 # 3. create update queries to set the nabuable fields using inx_epoch_diff column
 # 4. create test for function that both updates inx_epoch_diff and nabuable fields
 # 5. create a heard_agg test that confirms heard_vld pulls from nabuable_inx fields (probably not case now)
-
-
-# update semantic_type: ReasonNum person_plan_reason_caseunit_h_agg_put inx_epoch_diff
-def test_get_update_prncase_inx_epoch_diff_sqlstr_SetsColumnValues(cursor0: Cursor):
-    # ESTABLISH
-    spark7 = 7
-    bob_person = get_bob_five_with_mop_dayly()
-    create_sound_and_heard_tables(cursor0)
-    otx_time = 199
-    inx_time = 13
-    m_label = bob_person.planroot.get_plan_rope()
-    insert_otx_inx_time(cursor0, spark7, exx.yao, m_label, otx_time, inx_time)
-    insert_h_agg_obj(cursor0, bob_person, spark7, exx.yao)
-    # TODO create SQL query that selects only the fields of interest (ok that it cannot be reused in other tests)
-    prncase_old_objs = select_prncase(
-        cursor0, spark7, exx.bob, wx.mop_rope, wx.day_rope, wx.day_rope
-    )
-    prncase_old_obj0 = prncase_old_objs[0]
-    assert prncase_old_obj0.inx_epoch_diff is None
-
-    # WHEN
-    update_sql = get_update_prncase_inx_epoch_diff_sqlstr()
-    cursor0.execute(update_sql)
-
-    # THEN
-    prncase_new_objs = select_prncase(
-        cursor0, spark7, exx.bob, wx.mop_rope, wx.day_rope, wx.day_rope
-    )
-    prncase_new_obj0 = prncase_new_objs[0]
-    assert prncase_new_obj0.inx_epoch_diff == otx_time - inx_time
-    assert prncase_new_obj0.inx_epoch_diff == 186
 
 
 # identify the change
@@ -156,7 +139,7 @@ def test_get_update_prncase_inx_epoch_diff_sqlstr_SetsColumnValues(cursor0: Curs
 #         inx_time = 0
 #         insert_otx_inx_time(cursor, spark7, exx.yao, m_label, otx_time, inx_time)
 #         insert_h_agg_obj(cursor, bob_person, spark7, exx.yao)
-#         prncase_objs = select_prncase(
+#         prncase_objs = pchap1_select_prncase(
 #             cursor, spark7, "YY", exx.bob, wx.mop_rope, wx.day_rope, wx.day_rope
 #         )
 #         print(f"{prncase_objs=}")
@@ -173,7 +156,7 @@ def test_get_update_prncase_inx_epoch_diff_sqlstr_SetsColumnValues(cursor0: Curs
 #         add_frame_to_db_caseunit(cursor, day_plan.close, day_plan.denom, day_plan.morph)
 
 #         # THEN
-#         after_prncase_obj0 = select_prncase(
+#         after_prncase_obj0 = pchap1_select_prncase(
 #             cursor, spark7, "YY", exx.bob, wx.mop_rope, wx.day_rope, wx.day_rope
 #         )[0]
 #         expected_lower_inx = prncase_obj0.reason_lower_otx + otx_time - inx_time

@@ -70,7 +70,7 @@ CREATE_PRNAWAR_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_
 CREATE_PRNCASE_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_h_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state_ERASE TEXT)"""
 CREATE_PRNCASE_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, reason_context_otx TEXT, reason_context_inx TEXT, reason_state_ERASE_otx TEXT, reason_state_ERASE_inx TEXT)"""
 CREATE_PRNCASE_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_h_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state_ERASE TEXT)"""
-CREATE_PRNCASE_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_h_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower_otx REAL, reason_lower_inx REAL, reason_upper_otx REAL, reason_upper_inx REAL, reason_divisor INTEGER, knot TEXT, context_plan_close TEXT, context_plan_denom TEXT, context_plan_morph TEXT, inx_epoch_diff INTEGER)"""
+CREATE_PRNCASE_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_h_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower_otx REAL, reason_lower_inx REAL, reason_upper_otx REAL, reason_upper_inx REAL, reason_divisor INTEGER, knot TEXT, context_plan_close REAL, context_plan_denom REAL, context_plan_morph REAL, inx_epoch_diff INTEGER)"""
 CREATE_PRNCASE_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, reason_context_otx TEXT, reason_context_inx TEXT, reason_state_otx TEXT, reason_state_inx TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, knot TEXT)"""
 CREATE_PRNCASE_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_h_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, knot TEXT)"""
 CREATE_PRNCASE_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_s_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state_ERASE TEXT, error_message TEXT)"""
@@ -82,7 +82,7 @@ CREATE_PRNCASE_SOUND_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_
 CREATE_PRNFACT_HEARD_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_h_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context_ERASE TEXT)"""
 CREATE_PRNFACT_HEARD_DEL_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_h_del_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, fact_context_ERASE_otx TEXT, fact_context_ERASE_inx TEXT)"""
 CREATE_PRNFACT_HEARD_DEL_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_h_del_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context_ERASE TEXT)"""
-CREATE_PRNFACT_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_h_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower_otx REAL, fact_lower_inx REAL, fact_upper_otx REAL, fact_upper_inx REAL, knot TEXT, context_plan_close TEXT, context_plan_denom TEXT, context_plan_morph TEXT, inx_epoch_diff INTEGER)"""
+CREATE_PRNFACT_HEARD_PUT_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_h_put_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower_otx REAL, fact_lower_inx REAL, fact_upper_otx REAL, fact_upper_inx REAL, knot TEXT, context_plan_close REAL, context_plan_denom REAL, context_plan_morph REAL, inx_epoch_diff INTEGER)"""
 CREATE_PRNFACT_HEARD_PUT_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_h_put_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, fact_context_otx TEXT, fact_context_inx TEXT, fact_state_otx TEXT, fact_state_inx TEXT, fact_lower REAL, fact_upper REAL, knot TEXT)"""
 CREATE_PRNFACT_HEARD_PUT_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_h_put_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower REAL, fact_upper REAL, knot TEXT)"""
 CREATE_PRNFACT_SOUND_DEL_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_s_del_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, fact_context_ERASE TEXT, error_message TEXT)"""
@@ -430,6 +430,21 @@ def get_person_heard_vld_tablenames() -> set[str]:
 def create_sound_and_heard_tables(conn_or_cursor: sqlite3_Connection):
     for create_table_sqlstr in get_prime_create_table_sqlstrs().values():
         conn_or_cursor.execute(create_table_sqlstr)
+
+
+def create_prime_db_table(
+    cursor: sqlite3_Connection,
+    idea_dimen_or_abbv7: str,
+    stage0: str,
+    stage1: str,
+    put_del: str = None,
+) -> str:
+    """Creates table in database and returns tablename"""
+    tablename = create_prime_tablename(idea_dimen_or_abbv7, stage0, stage1, put_del)
+    prime_create_table_sqlstrs = get_prime_create_table_sqlstrs()
+    x_create_table_sqlstr = prime_create_table_sqlstrs.get(tablename)
+    cursor.execute(x_create_table_sqlstr)
+    return tablename
 
 
 def create_all_idea_tables(conn_or_cursor: sqlite3_Connection):
@@ -1117,6 +1132,10 @@ def get_update_heard_agg_timenum_sqlstrs() -> dict[str]:
 # Create "_otx" and "_inx" columns for
 # reason_lower, reason_upper, fact_lower, fact_upper, tran_time, bud_time,
 def get_update_prncase_inx_epoch_diff_sqlstr() -> str:
+    """Returns update statement that sets h_put_agg.inx_epoch_diff column from nabtime values
+    reference key: pchap0
+    """
+
     nabtime_tablename = create_prime_tablename("nabu_timenum", "h", "agg")
     prncase_abbv = "person_plan_reason_caseunit"
     prncase_tablename = create_prime_tablename(prncase_abbv, "h", "agg", "put")
@@ -1137,6 +1156,9 @@ WHERE {prncase_tablename}.spark_num IN (SELECT spark_num FROM spark_inx_epoch_di
 
 
 def get_update_prnfact_inx_epoch_diff_sqlstr() -> str:
+    """Returns update statement that sets h_put_agg.inx_epoch_diff column from nabtime values
+    reference key: pfhap0
+    """
     nabtime_tablename = create_prime_tablename("nabu_timenum", "h", "agg")
     prnfact_tablename = create_prime_tablename("prnfact", "h", "agg", "put")
     return f"""
@@ -1156,41 +1178,42 @@ WHERE {prnfact_tablename}.spark_num IN (SELECT spark_num FROM spark_inx_epoch_di
 
 
 def get_update_prncase_context_plan_sqlstr() -> str:
-    prncase_tablename = create_prime_tablename("prncase", "h", "agg", "put")
-    prnplan_tablename = create_prime_tablename("prnplan", "h", "agg", "put")
-    return f"""
-WITH spark_prnplan AS (
-    SELECT spark_num, close, denom, morph
-    FROM {prnplan_tablename}
-    GROUP BY spark_num, close, denom, morph
-)
-UPDATE {prncase_tablename}
+    """Returns update statement that sets prncase_h_put_agg columns from prnplan columns
+    context_plan_close = spark_prnplan.close
+    context_plan_denom = spark_prnplan.denom
+    context_plan_morph = spark_prnplan.morph
+    reference key: pchap1
+    """
+    return """
+UPDATE person_plan_reason_caseunit_h_put_agg as prncase
 SET 
-  context_plan_close = spark_prnplan.close
-, context_plan_denom = spark_prnplan.denom
-, context_plan_morph = spark_prnplan.morph
-FROM spark_prnplan
-WHERE {prncase_tablename}.spark_num IN (SELECT spark_num FROM spark_prnplan)
+  context_plan_close = prnplan.close
+, context_plan_denom = prnplan.denom
+, context_plan_morph = prnplan.morph
+FROM person_planunit_h_put_agg prnplan
+WHERE prncase.spark_num = prnplan.spark_num
+    AND prncase.person_name = prnplan.person_name
+    AND prncase.reason_context = prnplan.plan_rope
 ;
 """
 
 
 def get_update_prnfact_context_plan_sqlstr() -> str:
-    prnfact_tablename = create_prime_tablename("prnfact", "h", "agg", "put")
-    prnplan_tablename = create_prime_tablename("prnplan", "h", "agg", "put")
+    """Returns update statement that sets prnfact_h_put_agg columns from prnplan columns
+    context_plan_close = spark_prnplan.close
+    context_plan_denom = spark_prnplan.denom
+    context_plan_morph = spark_prnplan.morph
+    """
     return f"""
-WITH spark_prnplan AS (
-    SELECT spark_num, close, denom, morph
-    FROM {prnplan_tablename}
-    GROUP BY spark_num, close, denom, morph
-)
-UPDATE {prnfact_tablename}
+UPDATE person_plan_factunit_h_put_agg as prnfact
 SET 
-  context_plan_close = spark_prnplan.close
-, context_plan_denom = spark_prnplan.denom
-, context_plan_morph = spark_prnplan.morph
-FROM spark_prnplan
-WHERE {prnfact_tablename}.spark_num IN (SELECT spark_num FROM spark_prnplan)
+  context_plan_close = prnplan.close
+, context_plan_denom = prnplan.denom
+, context_plan_morph = prnplan.morph
+FROM person_planunit_h_put_agg prnplan
+WHERE prnfact.spark_num = prnplan.spark_num
+    AND prnfact.person_name = prnplan.person_name
+    AND prnfact.fact_context = prnplan.plan_rope
 ;
 """
 

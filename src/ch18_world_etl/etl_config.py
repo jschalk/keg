@@ -38,6 +38,32 @@ ALL_DIMEN_ABBV7 = {
     "TRLNAME",
     "TRLROPE",
     "TRLLABE",
+    "TRLCORE",
+}
+ALL_DIMEN_ABBV2 = {
+    "MP",
+    "MB",
+    "MH",
+    "MM",
+    "MW",
+    "MO",
+    "MU",
+    "PM",
+    "PT",
+    "PA",
+    "PF",
+    "PH",
+    "PC",
+    "PR",
+    "PL",
+    "PP",
+    "PU",
+    "NT",
+    "TT",
+    "TN",
+    "TR",
+    "TL",
+    "TC",
 }
 
 
@@ -66,6 +92,34 @@ def get_dimen_abbv7(dimen: str) -> str:
         "translate_rope": "TRLROPE",
         "translate_label": "TRLLABE",
         "translate_core": "TRLCORE",
+    }.get(dimen)
+
+
+def get_dimen_abbv2(dimen: str) -> str:
+    return {
+        "moment_paybook": "MP",
+        "moment_budunit": "MB",
+        "moment_epoch_hour": "MH",
+        "moment_epoch_month": "MM",
+        "moment_epoch_weekday": "MW",
+        "moment_timeoffi": "MO",
+        "momentunit": "MU",
+        "person_partner_membership": "PM",
+        "person_partnerunit": "PT",
+        "person_plan_awardunit": "PA",
+        "person_plan_factunit": "PF",
+        "person_plan_healerunit": "PH",
+        "person_plan_reason_caseunit": "PC",
+        "person_plan_reasonunit": "PR",
+        "person_plan_partyunit": "PL",
+        "person_planunit": "PP",
+        "personunit": "PU",
+        "nabu_timenum": "NT",
+        "translate_title": "TT",
+        "translate_name": "TN",
+        "translate_rope": "TR",
+        "translate_label": "TL",
+        "translate_core": "TC",
     }.get(dimen)
 
 

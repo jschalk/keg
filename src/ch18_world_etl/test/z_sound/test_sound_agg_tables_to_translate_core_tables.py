@@ -825,7 +825,6 @@ def test_create_update_trltitl_sound_agg_knot_error_sqlstr_PopulatesTable_Scenar
 , {kw.otx_title}
 , {kw.inx_title}
 )"""
-    # TODO create values where errors will appear: groups should map to groups,
     values_clause = f"""
 VALUES
   ({spark1}, '{exx.bob}', '{sue_otx}', '{sue_inx}')

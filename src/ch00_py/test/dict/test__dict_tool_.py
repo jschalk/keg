@@ -53,6 +53,7 @@ def test_uppercase_in_str_ReturnsObj():
     assert uppercase_in_str("") == False
     assert uppercase_in_str(" ") == False
     assert uppercase_in_str("mixed123Case")
+    assert uppercase_in_str("mixed123case") == False
 
 
 def test_uppercase_is_first_ReturnsObj():

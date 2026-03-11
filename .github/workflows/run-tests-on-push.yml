@@ -59,7 +59,3 @@ jobs:
             status -        `${{ job.status }}`
             Log -           `${{ steps.pytest.outputs.FAILURE_LOG }}`
           assignees: jschalk
-      #TODO:
-        #clip portion of test results with failure messages [DONE]
-        #open new issue [DONE]
-        #dump failure text into issue, add some other details

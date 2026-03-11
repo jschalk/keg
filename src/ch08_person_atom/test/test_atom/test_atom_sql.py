@@ -40,10 +40,10 @@ def test_PersonAtom_get_insert_sqlstr_ReturnsObj_PersonUnitSimpleAttrs():
 INSERT INTO {x_table} (
   {dimen}_{kw.UPDATE}_{opt_arg2}
 )
-VALUES (
-  {new2_value}
-)
-;"""
+VALUES
+  ({new2_value})
+;
+"""
 
     # WHEN / THEN
     assert x_personatom.get_insert_sqlstr() == example_sqlstr
@@ -74,12 +74,10 @@ INSERT INTO {kw.atom_hx} (
 , {x_dimen}_{kw.INSERT}_{kw.fact_context}
 , {x_dimen}_{kw.INSERT}_{kw.fact_lower}
 )
-VALUES (
-  '{ball_rope}'
-, '{knee_rope}'
-, {knee_reason_lower}
-)
-;"""
+VALUES
+  ('{ball_rope}', '{knee_rope}', {knee_reason_lower})
+;
+"""
     print(f"{generated_sqlstr=}")
     assert generated_sqlstr == example_sqlstr
 

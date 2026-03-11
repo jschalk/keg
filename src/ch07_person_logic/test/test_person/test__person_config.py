@@ -777,7 +777,6 @@ def test_get_person_config_dict_ReturnsObj_EachArgHasOne_sqlite_datatype():
         assert list(arg_types)[0] == sqlite_datatype_dict.get(x_arg), assert_failure_str
     all_args_set = set(all_args.keys())
     sqlite_args_set = set(sqlite_datatype_dict.keys())
-    # TODO figure out how to add knot to person_config
     all_args_set.add(kw.knot)
     print(sqlite_args_set.difference(all_args))
     assert all_args_set == sqlite_args_set

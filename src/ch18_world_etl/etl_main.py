@@ -168,7 +168,7 @@ def etl_input_dfs_to_brick_raw_tables(cursor: sqlite3_Cursor, input_dir: str):
                 if nonconvertible_columns.get(col):
                     row_values[x_index] = None
             insert_sqlstr = create_type_reference_insert_sqlstr(
-                x_tablename, column_names, row_values
+                x_tablename, column_names, [row_values]
             )
             cursor.execute(insert_sqlstr)
 

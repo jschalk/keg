@@ -1,5 +1,5 @@
 {
-  "active_requisite": ", Reason seed", 
+  "active_requisite": "Represents the expected boolean of the PlanUnit with address reason_context. If None, no check. If False expected Active bool of reason_context PlanUnit is false. If True expected contest_plan.active is True, Reason seed", 
   "addin": "float that describes addition to parent range calculations, Plan seed", 
   "all_partner_cred": ", Plan conpute", 
   "all_partner_debt": ", Plan conpute", 
@@ -221,7 +221,7 @@
   "moment_kpi001_partner_nets": "TODO", 
   "moment_kpi002_person_pledges": "TODO", 
   "moment_mstr_dir": "TODO", 
-  "moment_ote1_agg": "TODO", 
+  "moment_ote1_agg": "Create Database Table that holds all spark_num to bud_time pairs. Include moment_rope and person_name", 
   "moment_partner_nets": "TODO", 
   "moment_paybook": "TODO", 
   "moment_rope": ", Moment arg, offi_time arg, paybook arg, mmtweek arg, mmtmont arg, mmthour arg, bud arg, Person seed, Plan seed, Reason seed, Case seed, Fact seed, Award seed, Labor seed, Healer seed, Partner seed, Member seed, nabu arg.", 

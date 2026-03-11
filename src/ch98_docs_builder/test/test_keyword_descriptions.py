@@ -5,6 +5,7 @@ from src.ch13_time.epoch_main import get_c400_constants, get_default_epoch_confi
 from src.ch14_moment.moment_config import get_moment_config_args
 from src.ch15_nabu.nabu_config import get_nabu_args, get_nabuable_args
 from src.ch16_translate.translate_config import get_translate_config_args
+from src.ch18_world_etl.etl_main import etl_heard_raw_tables_to_moment_ote1_agg
 from src.ch98_docs_builder._ref.ch98_semantic_types import (
     BreakTerm,
     CRUD_command,
@@ -153,8 +154,11 @@ def test_get_keywords_description_ReturnsObj_CheckDescriptions():
             assert keyword in doc_str_semantic_types
     for semantic_class, class_doc_str in all_semantic_types_with_doc_strs.items():
         semantic_description = keywords_description.get(semantic_class)
-        print(f"{semantic_class=} {class_doc_str=}")
+        # print(f"{semantic_class=} {class_doc_str=}")
         assert class_doc_str in semantic_description
+
+    moment_ote1_agg_desc = inspect_getdoc(etl_heard_raw_tables_to_moment_ote1_agg)
+    assert moment_ote1_agg_desc in keywords_description.get("moment_ote1_agg")
 
 
 def get_all_semantic_types_with_doc_strs() -> dict[str, str]:

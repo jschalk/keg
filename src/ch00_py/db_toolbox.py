@@ -87,10 +87,12 @@ def get_nonconvertible_columns(
 
 
 def create_type_reference_insert_sqlstr(
-    x_table: str, x_columns: list[str], x_values: list[str]
+    x_table: str, x_columns: list[str], x_values: list[list]
 ) -> str:
     x_str = f"""
 INSERT INTO {x_table} ("""
+
+    # Build column list
     columns_str = ""
     for x_column in x_columns:
         if columns_str == "":
@@ -99,28 +101,36 @@ INSERT INTO {x_table} ("""
         else:
             columns_str = f"""{columns_str}
 , {x_column}"""
-    values_str = ""
-    for x_value in x_values:
-        if x_value is None:
-            x_value = "NULL"
-        else:
-            try:
-                float(x_value)
-            except (ValueError, TypeError):
-                x_value = f"'{x_value}'"
 
-        if values_str == "":
-            values_str = f"""{values_str}
-  {x_value}"""
+    # Build values for multiple rows
+    rows_str = ""
+    for row in x_values:
+        values_str = ""
+        for x_value in row:
+            if x_value is None:
+                x_value = "NULL"
+            else:
+                try:
+                    float(x_value)
+                except (ValueError, TypeError):
+                    x_value = f"'{x_value}'"
+
+            if values_str == "":
+                values_str = f"""{values_str}{x_value}"""
+            else:
+                values_str = f"""{values_str}, {x_value}"""
+        if rows_str == "":
+            rows_str = f"""{rows_str}
+  ({values_str})"""
         else:
-            values_str = f"""{values_str}
-, {x_value}"""
+            rows_str = f"""{rows_str}
+, ({values_str})"""
 
     return f"""{x_str}{columns_str}
 )
-VALUES ({values_str}
-)
-;"""
+VALUES{rows_str}
+;
+"""
 
 
 def dict_factory(cursor, row):

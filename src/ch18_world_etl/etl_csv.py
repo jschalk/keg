@@ -55,8 +55,6 @@ def save_to_split_csvs(
         knot_index = column_names.index("knot")
         knot_str = collection[0][knot_index]
         x_rope = key_values[0]
-        if not knot_str:
-            knot_str = x_rope[:1]
 
         path_dirs = get_all_rope_labels(x_rope, knot_str)
         path_dirs.extend(key_values[1:])

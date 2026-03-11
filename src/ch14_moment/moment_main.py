@@ -86,7 +86,6 @@ class MomentUnit:
     pipeline7: lessons->job (could be 5 of 6)
     """
 
-    # TODO add prefect flow decorator for each pipeline
     moment_rope: MomentRope = None
     moment_mstr_dir: str = None
     epoch: EpochUnit = None

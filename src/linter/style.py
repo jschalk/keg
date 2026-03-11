@@ -39,16 +39,24 @@ def function_name_style_is_correct(function_name: str):
     if not function_name.startswith("test") and "None" not in function_name:
         return uppercase_in_str(function_name) is False
     elif "scenario" in function_name:
+        print(f"{function_name} has scenario")
         return False
     else:
         func_lower = function_name.lower()
         if func_lower.endswith("exists") and not function_name.endswith("Exists"):
+            print(f"{function_name} and Exists")
             return False
         elif "returnsobj" in func_lower and "ReturnsObj" not in function_name:
+            print(f"rtr{func_lower=}")
             return False
         elif "returnobj" in func_lower:
+            print(f"sdfas{func_lower=}")
             return False
-        return uppercase_in_str(function_name)
+        uppercase_in_str_bool = uppercase_in_str(function_name)
+        if not uppercase_in_str_bool:
+            print(f"{function_name=}")
+            print(f"{uppercase_in_str(function_name)=}")
+        return uppercase_in_str_bool
 
 
 def get_imports_from_file(file_path):

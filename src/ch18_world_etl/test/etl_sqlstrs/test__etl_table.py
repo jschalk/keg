@@ -2,6 +2,7 @@ from os import getcwd as os_getcwd
 from src.ch00_py.file_toolbox import create_path
 from src.ch17_idea.idea_config import get_idea_config_dict
 from src.ch18_world_etl.etl_config import (
+    ALL_DIMEN_ABBV2,
     ALL_DIMEN_ABBV7,
     create_prime_table_sqlstr,
     create_prime_tablename,
@@ -9,6 +10,8 @@ from src.ch18_world_etl.etl_config import (
     etl_idea_category_config_path,
     get_all_dimen_columns_set,
     get_del_dimen_columns_set,
+    get_dimen_abbv2,
+    get_dimen_abbv7,
     get_etl_category_stages_dict,
     get_prime_columns,
     remove_inx_columns,
@@ -40,10 +43,37 @@ def test_remove_staging_columns_ReturnsObj():
 
 
 def test_ALL_DIMEN_ABBV7_has_all_dimens():
+    # ESTABLISH
+    idea_config_keys = set(get_idea_config_dict().keys())
+    idea_config_keys.add("translate_core")
+
+    # WHEN / THEN
+    assert len(ALL_DIMEN_ABBV7) == len(idea_config_keys)
+
+
+def test_get_dimen_abbv7_HasAll_dimens():
     # ESTABLISH / WHEN / THEN
-    assert len(ALL_DIMEN_ABBV7) == len(get_idea_config_dict())
-    x_set = {len(dimen) for dimen in ALL_DIMEN_ABBV7}
-    assert x_set == {7}
+    for idea_dimen in get_idea_config_dict().keys():
+        assert get_dimen_abbv7(idea_dimen) in ALL_DIMEN_ABBV7
+
+
+def test_get_dimen_abbv2_HasAll_dimens():
+    # ESTABLISH / WHEN
+    gen_abbv2_set = ALL_DIMEN_ABBV2
+
+    # THEN
+    expected_abbv2_set = set()
+    idea_config_keys = set(get_idea_config_dict().keys())
+    idea_config_keys.add("translate_core")
+    for idea_dimen in idea_config_keys:
+        abbv2 = get_dimen_abbv2(idea_dimen)
+        print(f"{abbv2=}")
+        assert abbv2
+        expected_abbv2_set.add(abbv2)
+        assert abbv2 in gen_abbv2_set
+
+    assert gen_abbv2_set == expected_abbv2_set
+    assert len(gen_abbv2_set) == len(ALL_DIMEN_ABBV7)
 
 
 def test_create_prime_tablename_ReturnsObj_Scenario0_ExpectedReturns():

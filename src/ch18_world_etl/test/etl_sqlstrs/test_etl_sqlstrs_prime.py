@@ -27,6 +27,7 @@ from src.ch18_world_etl.etl_sqlstr import (
     create_insert_missing_face_name_into_translate_core_vld_sqlstr,
     create_insert_translate_core_agg_into_vld_sqlstr,
     create_insert_translate_sound_vld_table_sqlstr,
+    create_prime_db_table,
     create_prime_tablename as prime_tbl,
     create_sound_agg_insert_sqlstrs,
     create_sound_and_heard_tables,
@@ -94,7 +95,7 @@ def test_get_prime_create_table_sqlstrs_ReturnsObj():
         if gen_sqlstr != expected_sqlstr:
             print(f"{expected_sql_ref=}")
             print(expected_sqlstr)
-        print(f"{expected_sql_ref=}")
+        # print(f"{expected_sql_ref=}")
         assert gen_sqlstr == expected_sqlstr
     assert create_table_sqlstrs == expected_sqlstrs_dict
 
@@ -220,20 +221,20 @@ def test_create_sound_and_heard_tables_CreatesMomentRawTables(cursor0: Cursor):
     vld_str = "vld"
     put_str = "put"
     del_str = "del"
-    prnunit_s_put_agg_table = prime_tbl("personunit", "s", agg_str, put_str)
-    prnptnr_s_put_agg_table = prime_tbl("prnptnr", "s", agg_str, put_str)
-    prnmemb_s_put_agg_table = prime_tbl("prnmemb", "s", agg_str, put_str)
-    prnfact_s_del_agg_table = prime_tbl("prnfact", "s", agg_str, del_str)
-    prnfact_s_del_vld_table = prime_tbl("prnfact", "s", vld_str, del_str)
+    prnunit_s_put_agg_table = prime_tbl(kw.personunit, "s", agg_str, put_str)
+    prnptnr_s_put_agg_table = prime_tbl(kw.prnptnr, "s", agg_str, put_str)
+    prnmemb_s_put_agg_table = prime_tbl(kw.prnmemb, "s", agg_str, put_str)
+    prnfact_s_del_agg_table = prime_tbl(kw.prnfact, "s", agg_str, del_str)
+    prnfact_s_del_vld_table = prime_tbl(kw.prnfact, "s", vld_str, del_str)
     momentunit_s_agg_table = prime_tbl(kw.momentunit, "s", agg_str)
     momentunit_s_vld_table = prime_tbl(kw.momentunit, "s", vld_str)
-    trltitl_s_agg_table = prime_tbl("trltitl", "s", agg_str)
-    mmthour_h_vld_table = prime_tbl("mmthour", "h", vld_str)
-    nabtime_s_raw_table = prime_tbl("nabtime", "s", raw_str)
-    trltitl_s_raw_table = prime_tbl("trltitl", "s", raw_str)
-    trlcore_s_raw_table = prime_tbl("trlcore", "s", raw_str)
-    trlcore_s_agg_table = prime_tbl("trlcore", "s", agg_str)
-    trlcore_s_vld_table = prime_tbl("trlcore", "s", vld_str)
+    trltitl_s_agg_table = prime_tbl(kw.trltitl, "s", agg_str)
+    mmthour_h_vld_table = prime_tbl(kw.mmthour, "h", vld_str)
+    nabtime_s_raw_table = prime_tbl(kw.nabtime, "s", raw_str)
+    trltitl_s_raw_table = prime_tbl(kw.trltitl, "s", raw_str)
+    trlcore_s_raw_table = prime_tbl(kw.trlcore, "s", raw_str)
+    trlcore_s_agg_table = prime_tbl(kw.trlcore, "s", agg_str)
+    trlcore_s_vld_table = prime_tbl(kw.trlcore, "s", vld_str)
 
     assert not db_table_exists(cursor0, prnunit_s_put_agg_table)
     assert not db_table_exists(cursor0, prnptnr_s_put_agg_table)
@@ -275,6 +276,25 @@ def test_create_sound_and_heard_tables_CreatesMomentRawTables(cursor0: Cursor):
     assert db_table_exists(cursor0, trlcore_s_agg_table)
     assert db_table_exists(cursor0, trlcore_s_vld_table)
     assert len(get_db_tables(cursor0)) == 182
+
+
+def test_create_prime_db_table_CreatesSingleTable(cursor0: Cursor):
+    # ESTABLISH
+    assert len(get_db_tables(cursor0)) == 0
+    agg_str = "agg"
+    put_str = "put"
+    prnunit_s_put_agg_table = prime_tbl(kw.personunit, "s", agg_str, put_str)
+
+    assert not db_table_exists(cursor0, prnunit_s_put_agg_table)
+    assert len(get_db_tables(cursor0)) == 0
+
+    # WHEN
+    gen_tablename = create_prime_db_table(cursor0, kw.personunit, "s", agg_str, put_str)
+
+    # THEN
+    assert db_table_exists(cursor0, prnunit_s_put_agg_table)
+    assert len(get_db_tables(cursor0)) == 1
+    assert gen_tablename == prnunit_s_put_agg_table
 
 
 def test_create_sound_raw_update_inconsist_error_message_sqlstr_ReturnsObj_Scenario0_TranslateDimen(

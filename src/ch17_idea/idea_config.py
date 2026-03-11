@@ -461,9 +461,9 @@ def get_idea_sqlite_types() -> dict[str, str]:
         "net_funds": "REAL",
         "fund_rank": "INTEGER",
         "pledges_count": "INTEGER",
-        "context_plan_close": "TEXT",
-        "context_plan_denom": "TEXT",
-        "context_plan_morph": "TEXT",
+        "context_plan_close": "REAL",
+        "context_plan_denom": "REAL",
+        "context_plan_morph": "REAL",
         "inx_epoch_diff": "INTEGER",
     }
 

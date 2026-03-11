@@ -1227,6 +1227,7 @@ def insert_h_agg_obj(
     spark_num: SparkInt,
     face_name: FaceName,
 ):
+    """Given database cursor and PersonUnit obj insert obj attributes into h_agg tables"""
     job_person.conpute()
     x_objkeysholder = ObjKeysHolder(
         spark_num=spark_num,
