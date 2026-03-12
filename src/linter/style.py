@@ -39,7 +39,6 @@ def function_name_style_is_correct(function_name: str):
     if not function_name.startswith("test") and "None" not in function_name:
         return uppercase_in_str(function_name) is False
     elif "scenario" in function_name:
-        print(f"{function_name} has scenario")
         return False
     else:
         func_lower = function_name.lower()

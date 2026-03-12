@@ -24,7 +24,7 @@ def test_personatom_shop_ReturnsObj():
     )
     cw_str = "_partner_cred_lumen"
     dw_str = "_partner_debt_lumen"
-    bob_required_dict = {kw.partner_name: "huh"}
+    bob_required_dict = {kw.partner_name: exx.sue}
     bob_optional_dict = {cw_str: bob_partnerunit.to_dict().get(cw_str)}
     bob_optional_dict[dw_str] = bob_partnerunit.to_dict().get(dw_str)
     partnerunit_str = kw.person_partnerunit

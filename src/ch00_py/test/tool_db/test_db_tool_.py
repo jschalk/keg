@@ -143,7 +143,7 @@ VALUES
     assert example_sqlstr == gen_sqlstr
 
 
-def test_create_type_reference_insert_sqlstr_InsertsRows_Scenario0(cursor0: Cursor):
+def test_create_type_reference_insert_sqlstr_InsertsRows_Scenario3(cursor0: Cursor):
     # ESTABLISH
     x_table = "kubo_casas"
     eagle_id_str = "eagle_id"

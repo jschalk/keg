@@ -267,7 +267,7 @@ def test_rename_files_and_dirs_ChangesWhenNeeded_delete_old_directorys(
     lopster_file_text = "look there"
     save_file(dolphin_dir, dolphin_filename, file_str=dolphin_file_text)
     save_file(dolphin_dir, lopster_filename, file_str=lopster_file_text)
-    save_file(dolphin_dir, "penguin.txt", file_str="huh")
+    save_file(dolphin_dir, "penguin.txt", file_str="example_text")
     dolphin_files_dict = get_dir_file_strs(dolphin_dir)
     assert len(dolphin_files_dict) == 3
     assert dolphin_files_dict.get(dolphin_filename) == dolphin_file_text

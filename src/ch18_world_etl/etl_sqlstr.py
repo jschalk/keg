@@ -1136,21 +1136,12 @@ def get_update_prncase_inx_epoch_diff_sqlstr() -> str:
     reference key: pchap0
     """
 
-    nabtime_tablename = create_prime_tablename("nabu_timenum", "h", "agg")
-    prncase_abbv = "person_plan_reason_caseunit"
-    prncase_tablename = create_prime_tablename(prncase_abbv, "h", "agg", "put")
-    return f"""
-WITH spark_inx_epoch_diff AS (
-    SELECT 
-      spark_num
-    , otx_time - inx_time AS inx_epoch_diff
-    FROM {nabtime_tablename}
-    GROUP BY spark_num, otx_time, inx_time
-)
-UPDATE {prncase_tablename}
-SET inx_epoch_diff = spark_inx_epoch_diff.inx_epoch_diff
-FROM spark_inx_epoch_diff
-WHERE {prncase_tablename}.spark_num IN (SELECT spark_num FROM spark_inx_epoch_diff)
+    return """
+UPDATE person_plan_reason_caseunit_h_put_agg as prncase
+SET inx_epoch_diff = otx_time - inx_time
+FROM nabu_timenum_h_agg as nabtime
+WHERE prncase.spark_num = nabtime.spark_num
+    AND prncase.plan_rope LIKE nabtime.moment_rope || '%'
 ;
 """
 
@@ -1159,20 +1150,13 @@ def get_update_prnfact_inx_epoch_diff_sqlstr() -> str:
     """Returns update statement that sets h_put_agg.inx_epoch_diff column from nabtime values
     reference key: pfhap0
     """
-    nabtime_tablename = create_prime_tablename("nabu_timenum", "h", "agg")
-    prnfact_tablename = create_prime_tablename("prnfact", "h", "agg", "put")
-    return f"""
-WITH spark_inx_epoch_diff AS (
-    SELECT 
-      spark_num
-    , otx_time - inx_time AS inx_epoch_diff
-    FROM {nabtime_tablename}
-    GROUP BY spark_num, otx_time, inx_time
-)
-UPDATE {prnfact_tablename}
-SET inx_epoch_diff = spark_inx_epoch_diff.inx_epoch_diff
-FROM spark_inx_epoch_diff
-WHERE {prnfact_tablename}.spark_num IN (SELECT spark_num FROM spark_inx_epoch_diff)
+
+    return """
+UPDATE person_plan_factunit_h_put_agg as prnfact
+SET inx_epoch_diff = otx_time - inx_time
+FROM nabu_timenum_h_agg as nabtime
+WHERE prnfact.spark_num = nabtime.spark_num
+    AND prnfact.plan_rope LIKE nabtime.moment_rope || '%'
 ;
 """
 
@@ -1204,7 +1188,7 @@ def get_update_prnfact_context_plan_sqlstr() -> str:
     context_plan_denom = spark_prnplan.denom
     context_plan_morph = spark_prnplan.morph
     """
-    return f"""
+    return """
 UPDATE person_plan_factunit_h_put_agg as prnfact
 SET 
   context_plan_close = prnplan.close
@@ -1219,22 +1203,63 @@ WHERE prnfact.spark_num = prnplan.spark_num
 
 
 def get_update_prncase_range_sqlstr() -> str:
-    prncase_tablename = create_prime_tablename("prncase", "h", "agg", "put")
-    return f"""
-WITH spark_prncase AS (
-    SELECT 
-      spark_num
-    , IFNULL(reason_divisor, IFNULL(context_plan_close, context_plan_denom)) modulus
-    , CASE WHEN morph = 1 THEN inx_epoch_diff / IFNULL(context_plan_denom, 1) ELSE inx_epoch_diff END calc_epoch_diff
-    FROM {prncase_tablename}
-    GROUP BY spark_num, reason_divisor, context_plan_close, context_plan_denom, context_plan_morph
-)
-UPDATE {prncase_tablename}
-SET 
-  reason_lower_inx = (reason_lower_otx + spark_prncase.calc_epoch_diff) % spark_prncase.modulus
-, reason_upper_inx = (reason_upper_otx + spark_prncase.calc_epoch_diff) % spark_prncase.modulus
-FROM spark_prncase
-WHERE {prncase_tablename}.spark_num IN (SELECT spark_num FROM spark_prncase)
+    """Given any case append number to caseunit reason_lower and reason_upper
+
+        Step 0: calculate modulus:
+            If it exists set to the caseunit's reason_divisor
+            Else if it exists set to the context plan's close
+            Elfe if it exists set to the context plan's denom
+        Step 1: morph x_frame
+            If context plan's morph is True then divide frame by context_plan_denom
+        Step 2: define CaseUnit attrs
+            Change CaseUnit's reason_lower and reason_upper range attrs by adding frame
+            to each and use modulus to make result is not negative or more then modulus.
+
+      (reason_lower_otx + spark_prncase.calc_epoch_diff) % spark_prncase.modulus
+    , reason_upper_inx = (reason_upper_otx + spark_prncase.calc_epoch_diff) % spark_prncase.modulus
+    FROM spark_prncase
+    WHERE person_plan_reason_caseunit_h_put_agg.spark_num IN (SELECT spark_num FROM spark_prncase)
+
+    """
+
+    return """
+UPDATE person_plan_reason_caseunit_h_put_agg as prncase
+SET
+ reason_lower_inx =
+  CASE 
+   WHEN reason_divisor IS NOT NULL THEN 
+    CASE
+     WHEN context_plan_morph = 1
+     THEN (reason_lower_otx + inx_epoch_diff) % reason_divisor
+     WHEN context_plan_morph IS NULL
+     THEN reason_lower_otx + CAST(inx_epoch_diff / IFNULL(context_plan_denom, 1) AS INTEGER) % reason_divisor
+    END
+   WHEN context_plan_denom IS NOT NULL THEN
+    CASE
+     WHEN context_plan_morph = 1
+     THEN (reason_lower_otx + inx_epoch_diff) % context_plan_denom
+     WHEN context_plan_morph IS NULL
+     THEN reason_lower_otx + CAST(inx_epoch_diff / IFNULL(context_plan_denom, 1) AS INTEGER) % context_plan_denom
+    END
+    
+  END,
+ reason_upper_inx =
+  CASE 
+   WHEN reason_divisor IS NOT NULL THEN 
+    CASE
+     WHEN context_plan_morph = 1
+     THEN (reason_upper_otx + inx_epoch_diff) % reason_divisor
+     WHEN context_plan_morph IS NULL
+     THEN reason_upper_otx + CAST(inx_epoch_diff / IFNULL(context_plan_denom, 1) AS INTEGER) % reason_divisor
+    END
+   WHEN context_plan_denom IS NOT NULL THEN
+    CASE
+     WHEN context_plan_morph = 1
+     THEN (reason_upper_otx + inx_epoch_diff) % context_plan_denom
+     WHEN context_plan_morph IS NULL
+     THEN reason_upper_otx + CAST(inx_epoch_diff / IFNULL(context_plan_denom, 1) AS INTEGER) % context_plan_denom
+    END
+  END
 ;
 """
 

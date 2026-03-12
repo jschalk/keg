@@ -4,10 +4,37 @@ from src.ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
 from src.ch18_world_etl.etl_config import create_prime_tablename
 from src.ch18_world_etl.etl_sqlstr import (
     create_prime_db_table,
+    create_prime_tablename as prime_tbl,
     get_update_prnfact_context_plan_sqlstr,
 )
 from src.ch18_world_etl.test._util.ch18_env import cursor0
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
+
+
+def test_get_update_prnfact_context_plan_sqlstr_ReturnsObj():
+    # ESTABLISH
+    prnfact_tablename = prime_tbl(kw.prnfact, "h", "agg", "put")
+    prnplan_tablename = prime_tbl(kw.person_planunit, "h", "agg", "put")
+
+    # WHEN
+    update_sqlstr = get_update_prnfact_context_plan_sqlstr()
+
+    # THEN
+    assert update_sqlstr
+    expected_update_sqlstr = f"""
+UPDATE {prnfact_tablename} as prnfact
+SET 
+  context_plan_close = prnplan.{kw.close}
+, context_plan_denom = prnplan.{kw.denom}
+, context_plan_morph = prnplan.{kw.morph}
+FROM {prnplan_tablename} prnplan
+WHERE prnfact.{kw.spark_num} = prnplan.{kw.spark_num}
+    AND prnfact.{kw.person_name} = prnplan.{kw.person_name}
+    AND prnfact.{kw.fact_context} = prnplan.{kw.plan_rope}
+;
+"""
+    print(expected_update_sqlstr)
+    assert update_sqlstr == expected_update_sqlstr
 
 
 def pfhap1_insert_prnfact(cursor0: Cursor, x_values: list[list]) -> str:

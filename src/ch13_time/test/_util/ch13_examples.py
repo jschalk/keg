@@ -48,6 +48,7 @@ class Ch13ExampleStrs(str, Enum):
     mop_str = exx.mop
     wk_str = WK_STR
     wed_str = WED_STR
+    root_rope = BOB_PERSON.planroot.get_plan_rope()
     mop_rope = MOP_ROPE
     clean_rope = CLEAN_ROPE
     dirtyness_rope = DIRTYNESS_ROPE

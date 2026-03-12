@@ -4,10 +4,37 @@ from src.ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
 from src.ch18_world_etl.etl_config import create_prime_tablename
 from src.ch18_world_etl.etl_sqlstr import (
     create_prime_db_table,
+    create_prime_tablename as prime_tbl,
     get_update_prncase_context_plan_sqlstr,
 )
 from src.ch18_world_etl.test._util.ch18_env import cursor0
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
+
+
+def test_get_update_prncase_context_plan_sqlstr_ReturnsObj():
+    # ESTABLISH
+    prncase_tablename = prime_tbl(kw.person_plan_reason_caseunit, "h", "agg", "put")
+    prnplan_tablename = prime_tbl(kw.person_planunit, "h", "agg", "put")
+
+    # WHEN
+    update_sqlstr = get_update_prncase_context_plan_sqlstr()
+
+    # THEN
+    assert update_sqlstr
+    expected_update_sqlstr = f"""
+UPDATE {prncase_tablename} as prncase
+SET 
+  context_plan_close = prnplan.{kw.close}
+, context_plan_denom = prnplan.{kw.denom}
+, context_plan_morph = prnplan.{kw.morph}
+FROM {prnplan_tablename} prnplan
+WHERE prncase.{kw.spark_num} = prnplan.{kw.spark_num}
+    AND prncase.{kw.person_name} = prnplan.{kw.person_name}
+    AND prncase.{kw.reason_context} = prnplan.{kw.plan_rope}
+;
+"""
+    print(expected_update_sqlstr)
+    assert update_sqlstr == expected_update_sqlstr
 
 
 def pchap1_insert_prncase(cursor0: Cursor, x_values: list[list]) -> str:
@@ -52,6 +79,8 @@ def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario0_1row(
     prncase_insert_sql = pchap1_insert_prncase(cursor0, prncase_vals)
     prnplan_in_vals = [[spark7, exx.sue, wx.clean_rope, x0_close, x0_denom, x0_morph]]
     prnplan_insert_sql = pchap1_insert_prnplan(cursor0, prnplan_in_vals)
+
+    # BEFORE
     assert pchap1_select_prncase(cursor0, True) == [
         (spark7, exx.sue, wx.clean_rope, None, None, None)
     ]

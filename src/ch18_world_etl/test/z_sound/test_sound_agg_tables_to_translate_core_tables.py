@@ -329,7 +329,7 @@ def test_insert_translate_core_agg_to_translate_core_vld_table_PopulatesTable_Sc
     slash_knot = "/"
     other_knot = "="
     unknown_str = "Unknown"
-    huh_str = "Huh"
+    ex_uknown_str = "ex_uknown_str"
     default_knot = default_knot_if_None()
     default_unknown = default_unknown_str_if_None()
 
@@ -346,8 +346,8 @@ def test_insert_translate_core_agg_to_translate_core_vld_table_PopulatesTable_Sc
 VALUES
   ("{exx.bob}", "{colon_knot}", "{slash_knot}", "{unknown_str}")
 , ("{exx.sue}", NULL, NULL, NULL)
-, ("{exx.yao}", NULL, '{colon_knot}', '{huh_str}')
-, ("{exx.zia}", "{colon_knot}", "{colon_knot}", "{huh_str}")
+, ("{exx.yao}", NULL, '{colon_knot}', '{ex_uknown_str}')
+, ("{exx.zia}", "{colon_knot}", "{colon_knot}", "{ex_uknown_str}")
 ;
 """
     cursor0.execute(f"{insert_into_clause} {values_clause}")
@@ -367,8 +367,8 @@ VALUES
     assert rows == [
         (exx.bob, colon_knot, slash_knot, unknown_str),
         (exx.sue, default_knot, default_knot, default_unknown),
-        (exx.yao, default_knot, colon_knot, huh_str),
-        (exx.zia, colon_knot, colon_knot, huh_str),
+        (exx.yao, default_knot, colon_knot, ex_uknown_str),
+        (exx.zia, colon_knot, colon_knot, ex_uknown_str),
     ]
 
 

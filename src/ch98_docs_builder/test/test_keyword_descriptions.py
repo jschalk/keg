@@ -48,6 +48,10 @@ from src.ch98_docs_builder.keyword_description_builder import (
 from src.ref.keywords import Ch98Keywords as kw
 
 
+def python_keywords() -> set:
+    return {"self", "class", "assert", "import", "global", "yield", "break", "match"}
+
+
 def test_get_keywords_description_ReturnsObj_HasAllkeywords():
     # ESTABLISH / WHEN
     keywords_description = get_keywords_description()
@@ -58,9 +62,10 @@ def test_get_keywords_description_ReturnsObj_HasAllkeywords():
 
     description_keywords = set(keywords_description.keys())
     config_keywords = set(keywords_config.keys())
+    config_keywords.update(python_keywords())
     print(f"{config_keywords.difference(description_keywords)=}")
     print(f"{description_keywords.difference(config_keywords)=}")
-    assert keywords_description.keys() == keywords_config.keys()
+    assert set(keywords_description.keys()) == config_keywords
     for keyword, description in keywords_description.items():
         assert description, keyword
 
@@ -96,6 +101,7 @@ def test_get_keywords_description_ReturnsObj_CheckDescriptions():
     nabuable_args = get_nabuable_args()
 
     all_person_calc_args = get_all_person_calc_args()
+    python_keyword_args = python_keywords()
     # print(f"{person_config_args.keys()=}")
 
     # WHEN
@@ -159,6 +165,13 @@ def test_get_keywords_description_ReturnsObj_CheckDescriptions():
 
     moment_ote1_agg_desc = inspect_getdoc(etl_heard_raw_tables_to_moment_ote1_agg)
     assert moment_ote1_agg_desc in keywords_description.get("moment_ote1_agg")
+
+    for python_keyword in python_keyword_args:
+        py_key_description = keywords_description.get(python_keyword)
+        py_used_often_str = (
+            "Used so often in Python that it cannot be given any kegolgy meaning."
+        )
+        assert py_used_often_str in py_key_description, python_keyword
 
 
 def get_all_semantic_types_with_doc_strs() -> dict[str, str]:
