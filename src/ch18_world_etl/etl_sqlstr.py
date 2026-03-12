@@ -1136,7 +1136,7 @@ def get_update_prncase_inx_epoch_diff_sqlstr() -> str:
     reference key: pchap0
     """
 
-    return f"""
+    return """
 UPDATE person_plan_reason_caseunit_h_put_agg as prncase
 SET inx_epoch_diff = otx_time - inx_time
 FROM nabu_timenum_h_agg as nabtime
@@ -1151,7 +1151,7 @@ def get_update_prnfact_inx_epoch_diff_sqlstr() -> str:
     reference key: pfhap0
     """
 
-    return f"""
+    return """
 UPDATE person_plan_factunit_h_put_agg as prnfact
 SET inx_epoch_diff = otx_time - inx_time
 FROM nabu_timenum_h_agg as nabtime
@@ -1188,7 +1188,7 @@ def get_update_prnfact_context_plan_sqlstr() -> str:
     context_plan_denom = spark_prnplan.denom
     context_plan_morph = spark_prnplan.morph
     """
-    return f"""
+    return """
 UPDATE person_plan_factunit_h_put_agg as prnfact
 SET 
   context_plan_close = prnplan.close
@@ -1222,17 +1222,23 @@ def get_update_prncase_range_sqlstr() -> str:
 
     """
 
-    return f"""
+    return """
 UPDATE person_plan_reason_caseunit_h_put_agg as prncase
 SET
  reason_lower_inx =
   CASE 
-   WHEN prncase.reason_divisor IS NOT NULL THEN (reason_lower_otx + inx_epoch_diff) % prncase.reason_divisor
+   WHEN prncase.reason_divisor IS NOT NULL AND prncase.context_plan_morph = 1
+   THEN (reason_lower_otx + inx_epoch_diff) % prncase.reason_divisor
+   WHEN prncase.reason_divisor IS NOT NULL AND prncase.context_plan_morph IS NULL
+   THEN reason_lower_otx + CAST(inx_epoch_diff / prncase.context_plan_denom AS INTEGER) % prncase.reason_divisor
    ELSE NULL
   END,
  reason_upper_inx =
   CASE 
-   WHEN prncase.reason_divisor IS NOT NULL THEN (reason_upper_otx + inx_epoch_diff) % prncase.reason_divisor
+   WHEN prncase.reason_divisor IS NOT NULL AND prncase.context_plan_morph = 1 
+   THEN (reason_upper_otx + inx_epoch_diff) % prncase.reason_divisor
+   WHEN prncase.reason_divisor IS NOT NULL AND prncase.context_plan_morph IS NULL 
+   THEN reason_upper_otx + CAST(inx_epoch_diff / prncase.context_plan_denom AS INTEGER) % prncase.reason_divisor
    ELSE NULL
   END
 ;

@@ -149,8 +149,82 @@ def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario0_Wrap_dayl
     assert pchap2_select_prncase(cursor0, True) == [(spark7, 600, 160, 690, 250)]
 
 
+def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario0_NoWarp_xdays(
+    cursor0,
+):
+    # ESTABLISH modeled after test_add_frame_to_caseunit_SetsAttr_Scenario0_NoWrap_dayly
+    spark7 = 7
+    reason_lower_otx, reason_upper_otx, reason_divisor = (3, 4, 13)
+    context_plan_close, context_plan_denom, context_plan_morph = (None, 1440, None)
+    inx_epoch_diff = 3000
+    prncase_val = [
+        spark7,
+        reason_lower_otx,
+        reason_upper_otx,
+        reason_divisor,
+        context_plan_close,
+        context_plan_denom,
+        context_plan_morph,
+        inx_epoch_diff,
+    ]
+    prncase_insert_sql = pchap2_insert_prncase(cursor0, [prncase_val])
+
+    # BEFORE
+    assert pchap2_select_prncase(cursor0) == [
+        (spark7, reason_lower_otx, None, reason_upper_otx, None)
+    ]
+
+    # WHEN
+    cursor0.execute(get_update_prncase_range_sqlstr())
+
+    # THEN
+    days_change = inx_epoch_diff // context_plan_denom
+    reason_lower_inx = reason_lower_otx + days_change
+    reason_upper_inx = reason_upper_otx + days_change
+    assert pchap2_select_prncase(cursor0, True) == [
+        (spark7, reason_lower_otx, reason_lower_inx, reason_upper_otx, reason_upper_inx)
+    ]
+    assert pchap2_select_prncase(cursor0, True) == [(spark7, 3, 5, 4, 6)]
+
+
+def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario0_Warp_xdays(
+    cursor0,
+):
+    # ESTABLISH modeled after test_add_frame_to_caseunit_SetsAttr_Scenario0_NoWrap_dayly
+    spark7 = 7
+    reason_lower_otx, reason_upper_otx, reason_divisor = (3, 4, 13)
+    context_plan_close, context_plan_denom, context_plan_morph = (None, 1440, None)
+    inx_epoch_diff = 30000
+    prncase_val = [
+        spark7,
+        reason_lower_otx,
+        reason_upper_otx,
+        reason_divisor,
+        context_plan_close,
+        context_plan_denom,
+        context_plan_morph,
+        inx_epoch_diff,
+    ]
+    prncase_insert_sql = pchap2_insert_prncase(cursor0, [prncase_val])
+
+    # BEFORE
+    assert pchap2_select_prncase(cursor0) == [
+        (spark7, reason_lower_otx, None, reason_upper_otx, None)
+    ]
+
+    # WHEN
+    cursor0.execute(get_update_prncase_range_sqlstr())
+
+    # THEN
+    days_change = (inx_epoch_diff // context_plan_denom) % reason_divisor
+    reason_lower_inx = reason_lower_otx + days_change
+    reason_upper_inx = reason_upper_otx + days_change
+    assert pchap2_select_prncase(cursor0, True) == [
+        (spark7, reason_lower_otx, reason_lower_inx, reason_upper_otx, reason_upper_inx)
+    ]
+    assert pchap2_select_prncase(cursor0, True) == [(spark7, 3, 10, 4, 11)]
+
+
 # TODO
-# test_add_frame_to_caseunit_SetsAttr_Scenario3_adds_epoch_frame_NoWarp_xdays
-# test_add_frame_to_caseunit_SetsAttr_Scenario4_adds_epoch_frame_Wrap_xdays
 # test_add_frame_to_caseunit_SetsAttr_Scenario5_adds_epoch_frame_NoWrap_weekly
 # test_add_frame_to_caseunit_SetsAttr_Scenario6_adds_epoch_frame_Wrap_weekly
