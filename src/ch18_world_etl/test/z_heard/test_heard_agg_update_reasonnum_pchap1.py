@@ -79,6 +79,8 @@ def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario0_1row(
     prncase_insert_sql = pchap1_insert_prncase(cursor0, prncase_vals)
     prnplan_in_vals = [[spark7, exx.sue, wx.clean_rope, x0_close, x0_denom, x0_morph]]
     prnplan_insert_sql = pchap1_insert_prnplan(cursor0, prnplan_in_vals)
+
+    # BEFORE
     assert pchap1_select_prncase(cursor0, True) == [
         (spark7, exx.sue, wx.clean_rope, None, None, None)
     ]
