@@ -378,7 +378,7 @@ def add_frame_to_caseunit(
 
 
     """
-    modulus = x_case.reason_divisor or context_plan_close or context_plan_denom
+    modulus = x_case.reason_divisor or context_plan_denom
     if not context_plan_morph:
         x_frame //= get_1_if_None(context_plan_denom)
     x_case.reason_lower = modular_addition(x_case.reason_lower, x_frame, modulus)
