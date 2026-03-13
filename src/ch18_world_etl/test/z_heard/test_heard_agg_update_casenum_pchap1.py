@@ -24,8 +24,7 @@ def test_get_update_prncase_context_plan_sqlstr_ReturnsObj():
     expected_update_sqlstr = f"""
 UPDATE {prncase_tablename} as prncase
 SET 
-  context_plan_close = prnplan.{kw.close}
-, context_plan_denom = prnplan.{kw.denom}
+  context_plan_denom = prnplan.{kw.denom}
 , context_plan_morph = prnplan.{kw.morph}
 FROM {prnplan_tablename} prnplan
 WHERE prncase.{kw.spark_num} = prnplan.{kw.spark_num}
@@ -47,8 +46,8 @@ def pchap1_insert_prncase(cursor0: Cursor, x_values: list[list]) -> str:
 
 
 def pchap1_insert_prnplan(cursor0: Cursor, x_values: list[list]) -> str:
-    """x_cols = [kw.spark_num, kw.person_name, kw.plan_rope, kw.close, kw.denom, kw.morph]"""
-    x_cols = [kw.spark_num, kw.person_name, kw.plan_rope, kw.close, kw.denom, kw.morph]
+    """x_cols = [kw.spark_num, kw.person_name, kw.plan_rope, kw.denom, kw.morph]"""
+    x_cols = [kw.spark_num, kw.person_name, kw.plan_rope, kw.denom, kw.morph]
     tablename = create_prime_db_table(cursor0, kw.prnplan, "h", "agg", "put")
     insert_sql = create_type_reference_insert_sqlstr(tablename, x_cols, x_values)
     cursor0.execute(insert_sql)
@@ -56,12 +55,12 @@ def pchap1_insert_prnplan(cursor0: Cursor, x_values: list[list]) -> str:
 
 
 def pchap1_select_prncase(cursor0: Cursor, print_rows: bool = False) -> list[tuple]:
-    """SELECT spark_num, person_name, reason_context, context_plan_close, context_plan_denom, context_plan_morph"""
+    """SELECT spark_num, person_name, reason_context, context_plan_denom, context_plan_morph"""
     prncase_h_agg_table = create_prime_tablename(kw.prncase, "h", "agg", "put")
     sel_prncase_str = f"""
-SELECT spark_num, person_name, reason_context, context_plan_close, context_plan_denom, context_plan_morph 
+SELECT spark_num, person_name, reason_context, context_plan_denom, context_plan_morph 
 FROM {prncase_h_agg_table}
-ORDER BY spark_num, person_name, reason_context, context_plan_close, context_plan_denom, context_plan_morph
+ORDER BY spark_num, person_name, reason_context, context_plan_denom, context_plan_morph
 ;"""
     x_rows = cursor0.execute(sel_prncase_str).fetchall()
     if print_rows:
@@ -75,14 +74,14 @@ def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario0_1row(
     # ESTABLISH
     spark7 = 7
     prncase_vals = [[spark7, exx.sue, wx.clean_rope]]
-    x0_close, x0_denom, x0_morph = (44, 55, 66)
+    x0_denom, x0_morph = (55, 66)
     prncase_insert_sql = pchap1_insert_prncase(cursor0, prncase_vals)
-    prnplan_in_vals = [[spark7, exx.sue, wx.clean_rope, x0_close, x0_denom, x0_morph]]
+    prnplan_in_vals = [[spark7, exx.sue, wx.clean_rope, x0_denom, x0_morph]]
     prnplan_insert_sql = pchap1_insert_prnplan(cursor0, prnplan_in_vals)
 
     # BEFORE
     assert pchap1_select_prncase(cursor0, True) == [
-        (spark7, exx.sue, wx.clean_rope, None, None, None)
+        (spark7, exx.sue, wx.clean_rope, None, None)
     ]
 
     # WHEN
@@ -90,7 +89,7 @@ def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario0_1row(
 
     # THEN
     assert pchap1_select_prncase(cursor0) == [
-        (spark7, exx.sue, wx.clean_rope, x0_close, x0_denom, x0_morph)
+        (spark7, exx.sue, wx.clean_rope, x0_denom, x0_morph)
     ]
 
 
@@ -99,11 +98,11 @@ def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario1_2rows(
 ):
     # ESTABLISH
     spark7, spark9 = (7, 9)
-    x0_close, x0_denom, x0_morph = (44, 55, 66)
-    x1_close, x1_denom, x1_morph = (77, 88, 99)
+    x0_denom, x0_morph = (55, 66)
+    x1_denom, x1_morph = (88, 99)
     prnplan_in_vals = [
-        [spark7, exx.sue, wx.clean_rope, x0_close, x0_denom, x0_morph],
-        [spark9, exx.sue, wx.clean_rope, x1_close, x1_denom, x1_morph],
+        [spark7, exx.sue, wx.clean_rope, x0_denom, x0_morph],
+        [spark9, exx.sue, wx.clean_rope, x1_denom, x1_morph],
     ]
     prnplan_insert_sql = pchap1_insert_prnplan(cursor0, prnplan_in_vals)
     prncase_vals = [[spark7, exx.sue, wx.clean_rope], [spark9, exx.sue, wx.clean_rope]]
@@ -111,8 +110,8 @@ def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario1_2rows(
 
     # BEFORE
     assert pchap1_select_prncase(cursor0) == [
-        (spark7, exx.sue, wx.clean_rope, None, None, None),
-        (spark9, exx.sue, wx.clean_rope, None, None, None),
+        (spark7, exx.sue, wx.clean_rope, None, None),
+        (spark9, exx.sue, wx.clean_rope, None, None),
     ]
 
     # WHEN
@@ -121,8 +120,8 @@ def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario1_2rows(
 
     # THEN
     assert pchap1_select_prncase(cursor0, True) == [
-        (spark7, exx.sue, wx.clean_rope, x0_close, x0_denom, x0_morph),
-        (spark9, exx.sue, wx.clean_rope, x1_close, x1_denom, x1_morph),
+        (spark7, exx.sue, wx.clean_rope, x0_denom, x0_morph),
+        (spark9, exx.sue, wx.clean_rope, x1_denom, x1_morph),
     ]
 
 
@@ -131,11 +130,11 @@ def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario3_DifferentPerso
 ):
     # ESTABLISH
     spark7 = 7
-    x0_close, x0_denom, x0_morph = (44, 55, 66)
-    x1_close, x1_denom, x1_morph = (77, 88, 99)
+    x0_denom, x0_morph = (55, 66)
+    x1_denom, x1_morph = (88, 99)
     prnplan_in_vals = [
-        [spark7, exx.sue, wx.clean_rope, x0_close, x0_denom, x0_morph],
-        [spark7, exx.zia, wx.clean_rope, x1_close, x1_denom, x1_morph],
+        [spark7, exx.sue, wx.clean_rope, x0_denom, x0_morph],
+        [spark7, exx.zia, wx.clean_rope, x1_denom, x1_morph],
     ]
     prnplan_insert_sql = pchap1_insert_prnplan(cursor0, prnplan_in_vals)
     prncase_vals = [[spark7, exx.sue, wx.clean_rope], [spark7, exx.zia, wx.clean_rope]]
@@ -143,8 +142,8 @@ def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario3_DifferentPerso
 
     # BEFORE
     assert pchap1_select_prncase(cursor0) == [
-        (spark7, exx.sue, wx.clean_rope, None, None, None),
-        (spark7, exx.zia, wx.clean_rope, None, None, None),
+        (spark7, exx.sue, wx.clean_rope, None, None),
+        (spark7, exx.zia, wx.clean_rope, None, None),
     ]
 
     # WHEN
@@ -153,8 +152,8 @@ def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario3_DifferentPerso
 
     # THEN
     assert pchap1_select_prncase(cursor0, True) == [
-        (spark7, exx.sue, wx.clean_rope, x0_close, x0_denom, x0_morph),
-        (spark7, exx.zia, wx.clean_rope, x1_close, x1_denom, x1_morph),
+        (spark7, exx.sue, wx.clean_rope, x0_denom, x0_morph),
+        (spark7, exx.zia, wx.clean_rope, x1_denom, x1_morph),
     ]
 
 
@@ -163,11 +162,11 @@ def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario4_Different_plan
 ):
     # ESTABLISH
     spark7 = 7
-    x0_close, x0_denom, x0_morph = (44, 55, 66)
-    x1_close, x1_denom, x1_morph = (77, 88, 99)
+    x0_denom, x0_morph = (55, 66)
+    x1_denom, x1_morph = (88, 99)
     prnplan_in_vals = [
-        [spark7, exx.sue, wx.clean_rope, x0_close, x0_denom, x0_morph],
-        [spark7, exx.sue, wx.mop_rope, x1_close, x1_denom, x1_morph],
+        [spark7, exx.sue, wx.clean_rope, x0_denom, x0_morph],
+        [spark7, exx.sue, wx.mop_rope, x1_denom, x1_morph],
     ]
     prnplan_insert_sql = pchap1_insert_prnplan(cursor0, prnplan_in_vals)
     prncase_vals = [[spark7, exx.sue, wx.clean_rope], [spark7, exx.sue, wx.mop_rope]]
@@ -175,8 +174,8 @@ def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario4_Different_plan
 
     # BEFORE
     assert pchap1_select_prncase(cursor0) == [
-        (spark7, exx.sue, wx.clean_rope, None, None, None),
-        (spark7, exx.sue, wx.mop_rope, None, None, None),
+        (spark7, exx.sue, wx.clean_rope, None, None),
+        (spark7, exx.sue, wx.mop_rope, None, None),
     ]
 
     # WHEN
@@ -185,6 +184,6 @@ def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario4_Different_plan
 
     # THEN
     assert pchap1_select_prncase(cursor0, True) == [
-        (spark7, exx.sue, wx.clean_rope, x0_close, x0_denom, x0_morph),
-        (spark7, exx.sue, wx.mop_rope, x1_close, x1_denom, x1_morph),
+        (spark7, exx.sue, wx.clean_rope, x0_denom, x0_morph),
+        (spark7, exx.sue, wx.mop_rope, x1_denom, x1_morph),
     ]

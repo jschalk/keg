@@ -1167,7 +1167,6 @@ WHERE prnfact.spark_num = nabtime.spark_num
 
 def get_update_prncase_context_plan_sqlstr() -> str:
     """Returns update statement that sets prncase_h_put_agg columns from prnplan columns
-    context_plan_close = spark_prnplan.close
     context_plan_denom = spark_prnplan.denom
     context_plan_morph = spark_prnplan.morph
     reference key: pchap1
@@ -1175,8 +1174,7 @@ def get_update_prncase_context_plan_sqlstr() -> str:
     return """
 UPDATE person_plan_reason_caseunit_h_put_agg as prncase
 SET 
-  context_plan_close = prnplan.close
-, context_plan_denom = prnplan.denom
+  context_plan_denom = prnplan.denom
 , context_plan_morph = prnplan.morph
 FROM person_planunit_h_put_agg prnplan
 WHERE prncase.spark_num = prnplan.spark_num
@@ -1194,10 +1192,7 @@ def get_update_prnfact_context_plan_sqlstr() -> str:
     """
     return """
 UPDATE person_plan_factunit_h_put_agg as prnfact
-SET 
-  context_plan_close = prnplan.close
-, context_plan_denom = prnplan.denom
-, context_plan_morph = prnplan.morph
+SET context_plan_close = prnplan.close
 FROM person_planunit_h_put_agg prnplan
 WHERE prnfact.spark_num = prnplan.spark_num
     AND prnfact.person_name = prnplan.person_name
@@ -1285,18 +1280,15 @@ SET
 
 # TODO build test for this
 def update_caseunit_heard_agg_timenum_columns(cursor: sqlite3_Connection):
-    # cursor.execute(get_update_prncase_inx_epoch_diff_sqlstr())
-    # cursor.execute(get_update_prncase_context_plan_sqlstr())
-    # cursor.execute(get_update_prncase_range_sqlstr())
-    pass
+    cursor.execute(get_update_prncase_inx_epoch_diff_sqlstr())
+    cursor.execute(get_update_prncase_context_plan_sqlstr())
+    cursor.execute(get_update_prncase_range_sqlstr())
 
 
-# TODO build test for this
 def update_factunit_heard_agg_timenum_columns(cursor: sqlite3_Connection):
-    # cursor.execute(get_update_prnfact_inx_epoch_diff_sqlstr())
-    # cursor.execute(get_update_prnfact_context_plan_sqlstr())
-    # cursor.execute(get_update_prnfact_range_sqlstr())
-    pass
+    cursor.execute(get_update_prnfact_inx_epoch_diff_sqlstr())
+    cursor.execute(get_update_prnfact_context_plan_sqlstr())
+    cursor.execute(get_update_prnfact_range_sqlstr())
 
 
 # TODO build test for this
