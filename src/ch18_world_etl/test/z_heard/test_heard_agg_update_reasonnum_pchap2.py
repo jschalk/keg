@@ -95,7 +95,7 @@ ORDER BY reason_lower_otx, reason_lower_inx, reason_upper_otx, reason_upper_inx
     return x_rows
 
 
-def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario0_NoWrap_dayly(
+def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario0_NoWrap_dayly(
     cursor0,
 ):
     # ESTABLISH modeled after test_add_frame_to_caseunit_SetsAttr_Scenario0_NoWrap_dayly
@@ -129,7 +129,7 @@ def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario0_NoWrap_da
     assert pchap2_select_prncase(cursor0) == [(600, 700, 690, 790)]
 
 
-def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario1_Wrap_dayly(
+def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario1_Wrap_dayly(
     cursor0,
 ):
     # ESTABLISH modeled after test_add_frame_to_caseunit_SetsAttr_Scenario1_Wrap_dayly
@@ -163,7 +163,7 @@ def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario1_Wrap_dayl
     assert pchap2_select_prncase(cursor0, True) == [(600, 160, 690, 250)]
 
 
-def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario3_NoWarp_xdays(
+def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario3_NoWarp_xdays(
     cursor0,
 ):
     # ESTABLISH modeled after test_add_frame_to_caseunit_SetsAttr_Scenario3_adds_epoch_frame_NoWarp_xdays
@@ -198,7 +198,7 @@ def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario3_NoWarp_xd
     assert pchap2_select_prncase(cursor0, True) == [(3, 5, 4, 6)]
 
 
-def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario4_Warp_xdays(
+def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario4_Warp_xdays(
     cursor0,
 ):
     # ESTABLISH modeled after test_add_frame_to_caseunit_SetsAttr_Scenario4_adds_epoch_frame_Wrap_xdays
@@ -233,7 +233,7 @@ def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario4_Warp_xday
     assert pchap2_select_prncase(cursor0, True) == [(3, 10, 4, 11)]
 
 
-def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario5_NoWarp_weekly(
+def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario5_NoWarp_weekly(
     cursor0,
 ):
     # ESTABLISH modeled after test_add_frame_to_caseunit_SetsAttr_Scenario5_adds_epoch_frame_NoWrap_weekly
@@ -268,7 +268,7 @@ def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario5_NoWarp_we
     assert pchap2_select_prncase(cursor0) == [(600, 700, 690, 790)]
 
 
-def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario6_Wrap_weekly(
+def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario6_Wrap_weekly(
     cursor0,
 ):
     # ESTABLISH modeled after test_add_frame_to_caseunit_SetsAttr_Scenario6_adds_epoch_frame_Wrap_weekly
@@ -303,7 +303,7 @@ def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario6_Wrap_week
     assert pchap2_select_prncase(cursor0, True) == [(600, 3400, 690, 3490)]
 
 
-def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario7_NoWrap_xweeks(
+def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario7_NoWrap_xweeks(
     cursor0,
 ):
     # ESTABLISH modeled after test_add_frame_to_caseunit_SetsAttr_Scenario7_adds_epoch_frame_NoWrap_xweeks
@@ -338,7 +338,7 @@ def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario7_NoWrap_xw
     assert pchap2_select_prncase(cursor0) == [(3, 6, 4, 7)]
 
 
-def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario8_Wrap_xweeks(
+def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario8_Wrap_xweeks(
     cursor0,
 ):
     # ESTABLISH modeled after test_add_frame_to_caseunit_SetsAttr_Scenario8_adds_epoch_frame_Wraps_every_xweeks
@@ -373,7 +373,7 @@ def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario8_Wrap_xwee
     assert pchap2_select_prncase(cursor0, True) == [(3, 9, 4, 10)]
 
 
-def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario9_NoWrap_monthday(
+def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario9_NoWrap_monthday(
     cursor0,
 ):
     # ESTABLISH modeled after test_add_frame_to_caseunit_SetsAttr_Scenario9_adds_epoch_frame_NoWrap_monthday
@@ -407,7 +407,7 @@ def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario9_NoWrap_mo
     assert pchap2_select_prncase(cursor0) == [(43200, 43700, 47520, 48020)]
 
 
-def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario10_Wraps_monthday(
+def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario10_Wraps_monthday(
     cursor0,
 ):
     # ESTABLISH modeled after test_add_frame_to_caseunit_SetsAttr_Scenario10_adds_epoch_frame_Wraps_monthday
@@ -441,7 +441,7 @@ def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario10_Wraps_mo
     assert pchap2_select_prncase(cursor0) == [(43200, 312800, 47520, 317120)]
 
 
-def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario11_NoWrap_monthly(
+def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario11_NoWrap_monthly(
     cursor0,
 ):
     # ESTABLISH modeled after test_add_frame_to_caseunit_SetsAttr_Scenario9_adds_epoch_frame_NoWrap_monthday
@@ -475,7 +475,7 @@ def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario11_NoWrap_m
     assert pchap2_select_prncase(cursor0) == [(43200, 43700, 47520, 48020)]
 
 
-def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario12_Wraps_monthly(
+def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario12_Wraps_monthly(
     cursor0,
 ):
     # ESTABLISH modeled after test_add_frame_to_caseunit_SetsAttr_Scenario12_adds_epoch_frame_Wraps_monthly
@@ -509,7 +509,7 @@ def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario12_Wraps_mo
     assert pchap2_select_prncase(cursor0) == [(43200, 312800, 47520, 317120)]
 
 
-def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario13_NoWarp_range(
+def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario13_NoWarp_range(
     cursor0,
 ):
     # ESTABLISH modeled after test_add_frame_to_caseunit_SetsAttr_Scenario13_adds_epoch_frame_NoWrap_range
@@ -545,7 +545,7 @@ def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario13_NoWarp_r
     assert pchap2_select_prncase(cursor0) == [(7777, 7877, 9777, 9877)]
 
 
-def test_test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario14_Wraps_range(
+def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario14_Wraps_range(
     cursor0,
 ):
     # ESTABLISH modeled after test_add_frame_to_caseunit_SetsAttr_Scenario14_adds_epoch_frame_Wraps_range

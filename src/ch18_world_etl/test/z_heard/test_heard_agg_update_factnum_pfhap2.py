@@ -69,7 +69,7 @@ ORDER BY fact_lower_otx, fact_lower_inx, fact_upper_otx, fact_upper_inx
     return x_rows
 
 
-def test_test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario0_NoWrap_dayly(
+def test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario0_NoWrap_dayly(
     cursor0,
 ):
     # ESTABLISH modeled after # def test_add_frame_to_factunit_SetsAttr_epoch_Scenario0_NoWrap
@@ -97,7 +97,7 @@ def test_test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario0_NoWrap_da
     assert pfhap2_select_prnfact(cursor0) == [(7777, 7877, 8000, 8100)]
 
 
-def test_test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario1_Wrap_dayly(
+def test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario1_Wrap_dayly(
     cursor0,
 ):
     # ESTABLISH modeled after test_add_frame_to_factunit_SetsAttr_Scenario1_Wrap_dayly

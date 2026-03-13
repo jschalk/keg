@@ -69,7 +69,7 @@ ORDER BY spark_num, person_name, fact_context, context_plan_close, context_plan_
     return x_rows
 
 
-def test_test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario0_1row(
+def test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario0_1row(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -92,7 +92,7 @@ def test_test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario0_1row(
     ]
 
 
-def test_test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario1_2rows(
+def test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario1_2rows(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -125,7 +125,7 @@ def test_test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario1_2rows(
     ]
 
 
-def test_test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario3_DifferentPersons(
+def test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario3_DifferentPersons(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -157,7 +157,7 @@ def test_test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario3_Different
     ]
 
 
-def test_test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario4_Different_plan_rope(
+def test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario4_Different_plan_rope(
     cursor0: Cursor,
 ):
     # ESTABLISH
