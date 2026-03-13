@@ -44,9 +44,7 @@ def test_add_frame_to_caseunit_SetsAttr_Scenario0_NoWrap_dayly():
     assert day_case.reason_upper == 690
 
     # WHEN
-    add_frame_to_caseunit(
-        day_case, x_epoch_frame_min, day_plan.close, day_plan.denom, day_plan.morph
-    )
+    add_frame_to_caseunit(day_case, x_epoch_frame_min, day_plan.denom, day_plan.morph)
 
     # THEN
     assert day_case.reason_lower != 600
@@ -75,9 +73,7 @@ def test_add_frame_to_caseunit_SetsAttr_Scenario1_Wrap_dayly():
     assert day_case.reason_upper == 690
 
     # WHEN
-    add_frame_to_caseunit(
-        day_case, x_epoch_frame_min, day_plan.close, day_plan.denom, day_plan.morph
-    )
+    add_frame_to_caseunit(day_case, x_epoch_frame_min, day_plan.denom, day_plan.morph)
 
     # THEN
     assert day_case.reason_lower != 600
@@ -111,7 +107,7 @@ def test_add_frame_to_caseunit_SetsAttr_Scenario3_adds_epoch_frame_NoWarp_xdays(
 
     # WHEN
     add_frame_to_caseunit(
-        days_case, x_epoch_frame_min, days_plan.close, days_plan.denom, days_plan.morph
+        days_case, x_epoch_frame_min, days_plan.denom, days_plan.morph
     )
 
     # THEN
@@ -146,7 +142,7 @@ def test_add_frame_to_caseunit_SetsAttr_Scenario4_adds_epoch_frame_Wrap_xdays():
 
     # WHEN
     add_frame_to_caseunit(
-        days_case, x_epoch_frame_min, days_plan.close, days_plan.denom, days_plan.morph
+        days_case, x_epoch_frame_min, days_plan.denom, days_plan.morph
     )
 
     # THEN
@@ -181,7 +177,7 @@ def test_add_frame_to_caseunit_SetsAttr_Scenario5_adds_epoch_frame_NoWrap_weekly
 
     # WHEN
     add_frame_to_caseunit(
-        week_case, x_epoch_frame_min, week_plan.close, week_plan.denom, week_plan.morph
+        week_case, x_epoch_frame_min, week_plan.denom, week_plan.morph
     )
 
     # THEN
@@ -212,7 +208,7 @@ def test_add_frame_to_caseunit_SetsAttr_Scenario6_adds_epoch_frame_Wrap_weekly()
 
     # WHEN
     add_frame_to_caseunit(
-        week_case, x_epoch_frame_min, week_plan.close, week_plan.denom, week_plan.morph
+        week_case, x_epoch_frame_min, week_plan.denom, week_plan.morph
     )
 
     # THEN
@@ -251,11 +247,7 @@ def test_add_frame_to_caseunit_SetsAttr_Scenario7_adds_epoch_frame_NoWrap_xweeks
 
     # WHEN
     add_frame_to_caseunit(
-        xweeks_case,
-        x_epoch_frame_min,
-        weeks_plan.close,
-        weeks_plan.denom,
-        weeks_plan.morph,
+        xweeks_case, x_epoch_frame_min, weeks_plan.denom, weeks_plan.morph
     )
 
     # THEN
@@ -292,7 +284,6 @@ def test_add_frame_to_caseunit_SetsAttr_Scenario8_adds_epoch_frame_Wraps_every_x
     add_frame_to_caseunit(
         xweeks_case,
         x_epoch_frame_min,
-        weeks_plan.close,
         weeks_plan.denom,
         weeks_plan.morph,
     )
@@ -335,11 +326,7 @@ def test_add_frame_to_caseunit_SetsAttr_Scenario9_adds_epoch_frame_NoWrap_monthd
 
     # WHEN
     add_frame_to_caseunit(
-        monthday_case,
-        x_epoch_frame_min,
-        year_plan.close,
-        year_plan.denom,
-        year_plan.morph,
+        monthday_case, x_epoch_frame_min, year_plan.denom, year_plan.morph
     )
 
     # THEN
@@ -374,11 +361,7 @@ def test_add_frame_to_caseunit_SetsAttr_Scenario10_adds_epoch_frame_Wraps_monthd
 
     # WHEN
     add_frame_to_caseunit(
-        monthday_case,
-        x_epoch_frame_min,
-        year_plan.close,
-        year_plan.denom,
-        year_plan.morph,
+        monthday_case, x_epoch_frame_min, year_plan.denom, year_plan.morph
     )
 
     # THEN
@@ -419,9 +402,7 @@ def test_add_frame_to_caseunit_SetsAttr_Scenario11_adds_epoch_frame_NoWrap_month
     assert geo_case.reason_upper == geo_8_TimeNum
 
     # WHEN
-    add_frame_to_caseunit(
-        geo_case, x_epoch_frame_min, year_plan.close, year_plan.denom, year_plan.morph
-    )
+    add_frame_to_caseunit(geo_case, x_epoch_frame_min, year_plan.denom, year_plan.morph)
 
     # THEN
     assert geo_case.reason_lower != geo_5_TimeNum
@@ -457,9 +438,7 @@ def test_add_frame_to_caseunit_SetsAttr_Scenario12_adds_epoch_frame_Wraps_monthl
     assert geo_case.reason_upper == geo_8_TimeNum
 
     # WHEN
-    add_frame_to_caseunit(
-        geo_case, x_epoch_frame_min, year_plan.close, year_plan.denom, year_plan.morph
-    )
+    add_frame_to_caseunit(geo_case, x_epoch_frame_min, year_plan.denom, year_plan.morph)
 
     # THEN
     assert geo_case.reason_lower != geo_5_TimeNum
@@ -497,11 +476,7 @@ def test_add_frame_to_caseunit_SetsAttr_Scenario13_adds_epoch_frame_NoWrap_range
 
     # WHEN
     add_frame_to_caseunit(
-        epoch_case,
-        x_epoch_frame_min,
-        epoch_plan.close,
-        epoch_plan.denom,
-        epoch_plan.morph,
+        epoch_case, x_epoch_frame_min, epoch_plan.denom, epoch_plan.morph
     )
 
     # THEN
@@ -531,28 +506,24 @@ def test_add_frame_to_caseunit_SetsAttr_Scenario14_adds_epoch_frame_Wraps_range(
     print(f"{get_range_attrs(epoch_plan)=}")
     epoch_case = person_plan_reason_caseunit_get_obj(bob_person, mop_range_args)
 
-    x_epoch_frame_min = epoch_plan.close + 10005
+    x_epoch_frame_min = epoch_case.reason_divisor + 10005
     x_range_upper_min = x_range_lower_min + x_range_duration
     assert epoch_case.reason_lower == x_range_lower_min
     assert epoch_case.reason_upper == x_range_upper_min
 
     # WHEN
     add_frame_to_caseunit(
-        epoch_case,
-        x_epoch_frame_min,
-        epoch_plan.close,
-        epoch_plan.denom,
-        epoch_plan.morph,
+        epoch_case, x_epoch_frame_min, epoch_plan.denom, epoch_plan.morph
     )
 
     # THEN
     assert epoch_case.reason_lower != x_range_lower_min
     assert epoch_case.reason_upper != x_range_duration
     print(
-        f"{x_range_lower_min + x_epoch_frame_min=} vs {epoch_plan.close} (epoch_length)"
+        f"{x_range_lower_min + x_epoch_frame_min=} vs {epoch_case.reason_divisor} (epoch_length)"
     )
-    expected_lower = (x_range_lower_min + x_epoch_frame_min) % epoch_plan.close
-    expected_upper = (x_range_upper_min + x_epoch_frame_min) % epoch_plan.close
+    expected_lower = (x_range_lower_min + x_epoch_frame_min) % epoch_case.reason_divisor
+    expected_upper = (x_range_upper_min + x_epoch_frame_min) % epoch_case.reason_divisor
     assert epoch_case.reason_lower == expected_lower
     assert epoch_case.reason_upper == expected_upper
 
@@ -576,8 +547,8 @@ def test_add_frame_to_reasonunit_SetsAttr_Scenario0_AllCaseUnitsAre_epoch():
     five_reason = person_plan_reasonunit_get_obj(bob_person, mop_range_args)
     epoch_plan = person_planunit_get_obj(bob_person, epoch_args)
     print(f"{get_range_attrs(epoch_plan)=}")
-    epoch_length = epoch_plan.close
     epoch_case = person_plan_reason_caseunit_get_obj(bob_person, mop_range_args)
+    epoch_length = epoch_case.reason_divisor
 
     x_epoch_frame_min = epoch_length + 10005
     x_range_upper_min = x_range_lower_min + x_range_duration
@@ -586,11 +557,7 @@ def test_add_frame_to_reasonunit_SetsAttr_Scenario0_AllCaseUnitsAre_epoch():
 
     # WHEN
     add_frame_to_reasonunit(
-        five_reason,
-        x_epoch_frame_min,
-        epoch_plan.close,
-        epoch_plan.denom,
-        epoch_plan.morph,
+        five_reason, x_epoch_frame_min, epoch_plan.denom, epoch_plan.morph
     )
 
     # THEN

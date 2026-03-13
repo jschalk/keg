@@ -360,7 +360,6 @@ def get_person_unique_short_ropes(person: PersonUnit) -> dict[RopeTerm, RopeTerm
 def add_frame_to_caseunit(
     x_case: CaseUnit,
     x_frame: int,
-    context_plan_close: int,
     context_plan_denom: int,
     context_plan_morph: bool,
 ):
@@ -368,8 +367,7 @@ def add_frame_to_caseunit(
 
     Step 0: calculate modulus:
         If it exists set to the caseunit's reason_divisor
-        Else if it exists set to the context plan's close
-        Elfe if it exists set to the context plan's denom
+        Else if it exists set to the context plan's denom
     Step 1: morph x_frame
         If context plan's morph is True then divide frame by context_plan_denom
     Step 2: define CaseUnit attrs
@@ -388,19 +386,12 @@ def add_frame_to_caseunit(
 def add_frame_to_reasonunit(
     x_reason: ReasonUnit,
     x_int: int,
-    context_plan_close: int,
     context_plan_denom: int,
     context_plan_morph: bool,
 ):
     for x_case in x_reason.cases.values():
         if x_case.reason_lower and x_case.reason_upper:
-            add_frame_to_caseunit(
-                x_case,
-                x_int,
-                context_plan_close,
-                context_plan_denom,
-                context_plan_morph,
-            )
+            add_frame_to_caseunit(x_case, x_int, context_plan_denom, context_plan_morph)
 
 
 def add_frame_to_factunit(x_factunit: FactUnit, x_int: int, context_plan_close: int):
@@ -419,10 +410,9 @@ def add_frame_to_personunit(
         for x_reason in x_plan.reasonunits.values():
             if is_sub_rope(x_reason.reason_context, required_context_subrope):
                 reason_context_plan = x_person.get_plan_obj(x_reason.reason_context)
-                close = reason_context_plan.close
                 denom = reason_context_plan.denom
                 morph = reason_context_plan.morph
-                add_frame_to_reasonunit(x_reason, x_int, close, denom, morph)
+                add_frame_to_reasonunit(x_reason, x_int, denom, morph)
         for x_fact in x_plan.factunits.values():
             if is_sub_rope(x_fact.fact_context, required_context_subrope):
                 fact_context_plan = x_person.get_plan_obj(x_fact.fact_context)
