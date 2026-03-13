@@ -10,57 +10,33 @@ from src.ch18_world_etl.etl_sqlstr import (
 from src.ch18_world_etl.test._util.ch18_env import cursor0
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
-# # TODO reactivate
-# def test_get_update_prnfact_range_sqlstr_ReturnsObj():
-#     # ESTABLISH
-#     prnfact_tablename = prime_tbl(kw.person_plan_fact_factunit, "h", "agg", "put")
 
-#     # WHEN
-#     update_sqlstr = get_update_prnfact_range_sqlstr()
+def test_get_update_prnfact_range_sqlstr_ReturnsObj():
+    # ESTABLISH
+    prnfact_tablename = prime_tbl(kw.person_plan_factunit, "h", "agg", "put")
 
-#     # THEN
-#     assert update_sqlstr
-#     expected_update_sqlstr = f"""
-# UPDATE {prnfact_tablename} as prnfact
-# SET
-#  {kw.fact_lower}_inx =
-#   fact
-#    WHEN {kw.fact_divisor} IS NOT NULL THEN
-#     fact
-#      WHEN context_plan_morph = 1
-#      THEN ({kw.fact_lower}_otx + {kw.inx_epoch_diff}) % {kw.fact_divisor}
-#      WHEN context_plan_morph IS NULL
-#      THEN ({kw.fact_lower}_otx + CAST({kw.inx_epoch_diff} / IFNULL(context_plan_close, 1) AS INTEGER)) % {kw.fact_divisor}
-#     END
-#    WHEN context_plan_close IS NOT NULL THEN
-#     fact
-#      WHEN context_plan_morph = 1
-#      THEN ({kw.fact_lower}_otx + {kw.inx_epoch_diff}) % context_plan_close
-#      WHEN context_plan_morph IS NULL
-#      THEN ({kw.fact_lower}_otx + CAST({kw.inx_epoch_diff} / IFNULL(context_plan_close, 1) AS INTEGER)) % context_plan_close
-#     END
-#   END,
-#  {kw.fact_upper}_inx =
-#   fact
-#    WHEN {kw.fact_divisor} IS NOT NULL THEN
-#     fact
-#      WHEN context_plan_morph = 1
-#      THEN ({kw.fact_upper}_otx + {kw.inx_epoch_diff}) % {kw.fact_divisor}
-#      WHEN context_plan_morph IS NULL
-#      THEN ({kw.fact_upper}_otx + CAST({kw.inx_epoch_diff} / IFNULL(context_plan_close, 1) AS INTEGER)) % {kw.fact_divisor}
-#     END
-#    WHEN context_plan_close IS NOT NULL THEN
-#     fact
-#      WHEN context_plan_morph = 1
-#      THEN ({kw.fact_upper}_otx + {kw.inx_epoch_diff}) % context_plan_close
-#      WHEN context_plan_morph IS NULL
-#      THEN ({kw.fact_upper}_otx + CAST({kw.inx_epoch_diff} / IFNULL(context_plan_close, 1) AS INTEGER)) % context_plan_close
-#     END
-#   END
-# ;
-# """
-#     print(update_sqlstr)
-#     assert update_sqlstr == expected_update_sqlstr
+    # WHEN
+    update_sqlstr = get_update_prnfact_range_sqlstr()
+
+    # THEN
+    assert update_sqlstr
+    expected_update_sqlstr = f"""
+UPDATE {prnfact_tablename}
+SET
+ {kw.fact_lower}_inx =
+  CASE
+   WHEN context_plan_{kw.close} IS NOT NULL
+   THEN ({kw.fact_lower}_otx + {kw.inx_epoch_diff}) % context_plan_{kw.close}
+  END,
+ {kw.fact_upper}_inx =
+  CASE
+   WHEN context_plan_{kw.close} IS NOT NULL
+   THEN ({kw.fact_upper}_otx + {kw.inx_epoch_diff}) % context_plan_{kw.close}
+  END
+;
+"""
+    print(update_sqlstr)
+    assert update_sqlstr == expected_update_sqlstr
 
 
 def pfhap2_insert_prnfact(cursor0: Cursor, x_values: list[list]) -> str:

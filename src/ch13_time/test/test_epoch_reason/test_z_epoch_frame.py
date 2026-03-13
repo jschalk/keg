@@ -587,8 +587,6 @@ def test_add_frame_to_factunit_SetsAttr_epoch_Scenario0_NoWrap():
     x_epoch_frame_min = 10005
     assert root_five_fact.fact_lower == x_lower_min
     assert root_five_fact.fact_upper == x_upper_min
-    print(f"{epoch_plan.close=}")
-    assert 1 == 2
 
     # WHEN
     add_frame_to_factunit(root_five_fact, x_epoch_frame_min, epoch_plan.close)

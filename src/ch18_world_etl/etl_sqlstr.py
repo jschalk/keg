@@ -1081,6 +1081,10 @@ def get_insert_heard_agg_sqlstrs() -> dict[str, str]:
 
 
 def get_update_heard_agg_timenum_sqlstr(dst_tablename: str, focus_column: str) -> str:
+    """Given: destionation table and focus column (Must be "offitime" or "tran_time" or "bud_time")
+    Return Update statement that will set the timenum inx column
+    reference key: mxhap0"""
+
     #   spark_num, mod(otx_time - inx_time, IFNULL(x_moment.c400_number, 1472657760)) AS inx_epoch_diff
     mmtunit_h_agg_tablename = create_prime_tablename("momentunit", "h", "agg")
     nabtime_h_agg_tablename = create_prime_tablename("nabu_timenum", "h", "agg")
@@ -1263,7 +1267,7 @@ def get_update_prnfact_range_sqlstr() -> str:
     """
 
     return """
-UPDATE person_plan_factunit_h_put_agg as prncase
+UPDATE person_plan_factunit_h_put_agg
 SET
  fact_lower_inx =
   CASE
@@ -1279,10 +1283,34 @@ SET
 """
 
 
+# TODO build test for this
+def update_caseunit_heard_agg_timenum_columns(cursor: sqlite3_Connection):
+    # cursor.execute(get_update_prncase_inx_epoch_diff_sqlstr())
+    # cursor.execute(get_update_prncase_context_plan_sqlstr())
+    # cursor.execute(get_update_prncase_range_sqlstr())
+    pass
+
+
+# TODO build test for this
+def update_factunit_heard_agg_timenum_columns(cursor: sqlite3_Connection):
+    # cursor.execute(get_update_prnfact_inx_epoch_diff_sqlstr())
+    # cursor.execute(get_update_prnfact_context_plan_sqlstr())
+    # cursor.execute(get_update_prnfact_range_sqlstr())
+    pass
+
+
+# TODO build test for this
 def update_heard_agg_timenum_columns(cursor: sqlite3_Connection):
+    # for bud_time, tran_time, offi_time
     for update_sqlstr in get_update_heard_agg_timenum_sqlstrs().values():
         cursor.execute(update_sqlstr)
+    # # for reason_lower, reason_upper
+    # update_caseunit_heard_agg_timenum_columns(cursor)
+    # # for fact_lower, fact_upper
+    # update_factunit_heard_agg_timenum_columns(cursor)
 
+
+# TODO integrate timenum_inx in agg to valid insert
 
 MMTBUDD_HEARD_VLD_INSERT_SQLSTR = """
 INSERT INTO moment_budunit_h_vld (moment_rope, person_name, bud_time, knot, quota, celldepth)
