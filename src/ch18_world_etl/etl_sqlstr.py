@@ -1222,6 +1222,8 @@ SET
   CASE
    WHEN reason_divisor IS NOT NULL THEN
     CASE
+     WHEN inx_epoch_diff IS NULL
+     THEN reason_lower_otx
      WHEN context_plan_morph = 1
      THEN (reason_lower_otx + inx_epoch_diff) % reason_divisor
      WHEN context_plan_morph IS NULL
@@ -1229,6 +1231,8 @@ SET
     END
    WHEN context_plan_denom IS NOT NULL THEN
     CASE
+     WHEN inx_epoch_diff IS NULL
+     THEN reason_lower_otx
      WHEN context_plan_morph = 1
      THEN (reason_lower_otx + inx_epoch_diff) % context_plan_denom
      WHEN context_plan_morph IS NULL
@@ -1239,6 +1243,8 @@ SET
   CASE
    WHEN reason_divisor IS NOT NULL THEN
     CASE
+     WHEN inx_epoch_diff IS NULL
+     THEN reason_upper_otx
      WHEN context_plan_morph = 1
      THEN (reason_upper_otx + inx_epoch_diff) % reason_divisor
      WHEN context_plan_morph IS NULL
@@ -1246,6 +1252,8 @@ SET
     END
    WHEN context_plan_denom IS NOT NULL THEN
     CASE
+     WHEN inx_epoch_diff IS NULL
+     THEN reason_upper_otx
      WHEN context_plan_morph = 1
      THEN (reason_upper_otx + inx_epoch_diff) % context_plan_denom
      WHEN context_plan_morph IS NULL
@@ -1266,11 +1274,15 @@ UPDATE person_plan_factunit_h_put_agg
 SET
  fact_lower_inx =
   CASE
+   WHEN inx_epoch_diff IS NULL
+   THEN fact_lower_otx
    WHEN context_plan_close IS NOT NULL
    THEN (fact_lower_otx + inx_epoch_diff) % context_plan_close
   END,
  fact_upper_inx =
   CASE
+   WHEN inx_epoch_diff IS NULL
+   THEN fact_upper_otx
    WHEN context_plan_close IS NOT NULL
    THEN (fact_upper_otx + inx_epoch_diff) % context_plan_close
   END

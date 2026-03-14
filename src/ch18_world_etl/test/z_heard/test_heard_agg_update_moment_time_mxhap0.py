@@ -1,4 +1,4 @@
-from sqlite3 import Cursor, connect as sqlite3_connect
+from sqlite3 import Cursor
 from src.ch13_time.epoch_main import DEFAULT_EPOCH_LENGTH, get_c400_constants
 from src.ch15_nabu.nabu_config import get_nabu_config_dict
 from src.ch17_idea.idea_config import get_dimens_with_idea_element
@@ -7,7 +7,6 @@ from src.ch18_world_etl.etl_sqlstr import (
     create_sound_and_heard_tables,
     get_update_heard_agg_moment_timenum_sqlstrs,
     get_update_heard_agg_timenum_sqlstr,
-    update_heard_agg_timenum_columns,
 )
 from src.ch18_world_etl.test._util.ch18_env import cursor0
 from src.ch18_world_etl.test._util.ch18_examples import (
@@ -19,90 +18,8 @@ from src.ch18_world_etl.test._util.ch18_examples import (
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
 
-def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario0_MMTOFFI():
-    # ESTABLISH
-    mmtunit_h_agg_tablename = prime_tbl(kw.momentunit, "h", "agg")
-    nabtime_h_agg_tablename = prime_tbl(kw.nabu_timenum, "h", "agg")
-    mmtoffi_h_agg_tablename = prime_tbl(kw.moment_timeoffi, "h", "agg")
-    c400_leap_length = get_c400_constants().c400_leap_length
-    cte_tablename = f"spark_{kw.inx_epoch_diff}"
-
-    # WHEN
-    generated_update_heard_agg_timenum_sqlstr = get_update_heard_agg_timenum_sqlstr(
-        mmtoffi_h_agg_tablename, kw.offi_time
-    )
-
-    # THEN
-    expected_sqlstr = f"""WITH {cte_tablename} AS (
-SELECT 
-  {kw.spark_num}
-, {kw.otx_time} - {kw.inx_time} AS {kw.inx_epoch_diff}
-, IFNULL({kw.c400_number} * {c400_leap_length}, {DEFAULT_EPOCH_LENGTH}) as {kw.epoch_length}
-FROM {nabtime_h_agg_tablename}
-LEFT JOIN (
-    SELECT {kw.moment_rope}, {kw.c400_number} 
-    FROM {mmtunit_h_agg_tablename} 
-    GROUP BY {kw.moment_rope}, {kw.c400_number}
-    ) x_moment ON x_moment.{kw.moment_rope} = {nabtime_h_agg_tablename}.{kw.moment_rope}
-)
-UPDATE {mmtoffi_h_agg_tablename}
-SET {kw.offi_time}_inx = mod({kw.offi_time}_otx + (
-    SELECT {kw.inx_epoch_diff}
-    FROM {cte_tablename}
-    WHERE {cte_tablename}.{kw.spark_num} = {mmtoffi_h_agg_tablename}.{kw.spark_num}
-), (SELECT {kw.epoch_length}
-    FROM {cte_tablename}
-    WHERE {cte_tablename}.{kw.spark_num} = {mmtoffi_h_agg_tablename}.{kw.spark_num}
-))
-FROM {cte_tablename}
-WHERE {mmtoffi_h_agg_tablename}.{kw.spark_num} IN (SELECT {kw.spark_num} FROM {cte_tablename})
-;
-"""
-    assert generated_update_heard_agg_timenum_sqlstr == expected_sqlstr
-
-
-def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario1_MMTPAYY():
-    # ESTABLISH
-    mmtunit_h_agg_tablename = prime_tbl(kw.momentunit, "h", "agg")
-    nabtime_h_agg_tablename = prime_tbl(kw.nabu_timenum, "h", "agg")
-    mmtpayy_h_agg_tablename = prime_tbl(kw.moment_paybook, "h", "agg")
-    c400_leap_length = get_c400_constants().c400_leap_length
-    cte_tablename = f"spark_{kw.inx_epoch_diff}"
-
-    # WHEN
-    generated_update_heard_agg_timenum_sqlstr = get_update_heard_agg_timenum_sqlstr(
-        mmtpayy_h_agg_tablename, kw.tran_time
-    )
-
-    # THEN
-    expected_sqlstr = f"""WITH {cte_tablename} AS (
-SELECT 
-  {kw.spark_num}
-, {kw.otx_time} - {kw.inx_time} AS {kw.inx_epoch_diff}
-, IFNULL({kw.c400_number} * {c400_leap_length}, {DEFAULT_EPOCH_LENGTH}) as {kw.epoch_length}
-FROM {nabtime_h_agg_tablename}
-LEFT JOIN (
-    SELECT {kw.moment_rope}, {kw.c400_number} 
-    FROM {mmtunit_h_agg_tablename} 
-    GROUP BY {kw.moment_rope}, {kw.c400_number}
-    ) x_moment ON x_moment.{kw.moment_rope} = {nabtime_h_agg_tablename}.{kw.moment_rope}
-)
-UPDATE {mmtpayy_h_agg_tablename}
-SET {kw.tran_time}_inx = mod({kw.tran_time}_otx + (
-    SELECT {kw.inx_epoch_diff}
-    FROM {cte_tablename}
-    WHERE {cte_tablename}.{kw.spark_num} = {mmtpayy_h_agg_tablename}.{kw.spark_num}
-), (SELECT {kw.epoch_length}
-    FROM {cte_tablename}
-    WHERE {cte_tablename}.{kw.spark_num} = {mmtpayy_h_agg_tablename}.{kw.spark_num}
-))
-FROM {cte_tablename}
-WHERE {mmtpayy_h_agg_tablename}.{kw.spark_num} IN (SELECT {kw.spark_num} FROM {cte_tablename})
-;
-"""
-    assert generated_update_heard_agg_timenum_sqlstr == expected_sqlstr
-
-
+# TODO change tests to mxhap0 format
+# TODO add test where inx_epoch_diff is None
 def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario2_PopulatesTableWithSingleRecord(
     cursor0: Cursor,
 ):
@@ -237,3 +154,87 @@ def test_get_update_heard_agg_moment_timenum_sqlstrs_ReturnsObj():
         (kw.moment_budunit, kw.bud_time),
     }
     assert gen_update_sqlstrs == expected_update_sqlstrs
+
+
+def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario1_MMTPAYY():
+    # ESTABLISH
+    mmtunit_h_agg_tablename = prime_tbl(kw.momentunit, "h", "agg")
+    nabtime_h_agg_tablename = prime_tbl(kw.nabu_timenum, "h", "agg")
+    mmtpayy_h_agg_tablename = prime_tbl(kw.moment_paybook, "h", "agg")
+    c400_leap_length = get_c400_constants().c400_leap_length
+    cte_tablename = f"spark_{kw.inx_epoch_diff}"
+
+    # WHEN
+    generated_update_heard_agg_timenum_sqlstr = get_update_heard_agg_timenum_sqlstr(
+        mmtpayy_h_agg_tablename, kw.tran_time
+    )
+
+    # THEN
+    expected_sqlstr = f"""WITH {cte_tablename} AS (
+SELECT 
+  {kw.spark_num}
+, {kw.otx_time} - {kw.inx_time} AS {kw.inx_epoch_diff}
+, IFNULL({kw.c400_number} * {c400_leap_length}, {DEFAULT_EPOCH_LENGTH}) as {kw.epoch_length}
+FROM {nabtime_h_agg_tablename}
+LEFT JOIN (
+    SELECT {kw.moment_rope}, {kw.c400_number} 
+    FROM {mmtunit_h_agg_tablename} 
+    GROUP BY {kw.moment_rope}, {kw.c400_number}
+    ) x_moment ON x_moment.{kw.moment_rope} = {nabtime_h_agg_tablename}.{kw.moment_rope}
+)
+UPDATE {mmtpayy_h_agg_tablename}
+SET {kw.tran_time}_inx = mod({kw.tran_time}_otx + (
+    SELECT {kw.inx_epoch_diff}
+    FROM {cte_tablename}
+    WHERE {cte_tablename}.{kw.spark_num} = {mmtpayy_h_agg_tablename}.{kw.spark_num}
+), (SELECT {kw.epoch_length}
+    FROM {cte_tablename}
+    WHERE {cte_tablename}.{kw.spark_num} = {mmtpayy_h_agg_tablename}.{kw.spark_num}
+))
+FROM {cte_tablename}
+WHERE {mmtpayy_h_agg_tablename}.{kw.spark_num} IN (SELECT {kw.spark_num} FROM {cte_tablename})
+;
+"""
+    assert generated_update_heard_agg_timenum_sqlstr == expected_sqlstr
+
+
+def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario0_MMTOFFI():
+    # ESTABLISH
+    mmtunit_h_agg_tablename = prime_tbl(kw.momentunit, "h", "agg")
+    nabtime_h_agg_tablename = prime_tbl(kw.nabu_timenum, "h", "agg")
+    mmtoffi_h_agg_tablename = prime_tbl(kw.moment_timeoffi, "h", "agg")
+    c400_leap_length = get_c400_constants().c400_leap_length
+    cte_tablename = f"spark_{kw.inx_epoch_diff}"
+
+    # WHEN
+    generated_update_heard_agg_timenum_sqlstr = get_update_heard_agg_timenum_sqlstr(
+        mmtoffi_h_agg_tablename, kw.offi_time
+    )
+
+    # THEN
+    expected_sqlstr = f"""WITH {cte_tablename} AS (
+SELECT 
+  {kw.spark_num}
+, {kw.otx_time} - {kw.inx_time} AS {kw.inx_epoch_diff}
+, IFNULL({kw.c400_number} * {c400_leap_length}, {DEFAULT_EPOCH_LENGTH}) as {kw.epoch_length}
+FROM {nabtime_h_agg_tablename}
+LEFT JOIN (
+    SELECT {kw.moment_rope}, {kw.c400_number} 
+    FROM {mmtunit_h_agg_tablename} 
+    GROUP BY {kw.moment_rope}, {kw.c400_number}
+    ) x_moment ON x_moment.{kw.moment_rope} = {nabtime_h_agg_tablename}.{kw.moment_rope}
+)
+UPDATE {mmtoffi_h_agg_tablename}
+SET {kw.offi_time}_inx = mod({kw.offi_time}_otx + (
+    SELECT {kw.inx_epoch_diff}
+    FROM {cte_tablename}
+    WHERE {cte_tablename}.{kw.spark_num} = {mmtoffi_h_agg_tablename}.{kw.spark_num}
+), (SELECT {kw.epoch_length}
+    FROM {cte_tablename}
+    WHERE {cte_tablename}.{kw.spark_num} = {mmtoffi_h_agg_tablename}.{kw.spark_num}
+))
+FROM {cte_tablename}
+WHERE {mmtoffi_h_agg_tablename}.{kw.spark_num} IN (SELECT {kw.spark_num} FROM {cte_tablename})
+;
+"""
+    assert generated_update_heard_agg_timenum_sqlstr == expected_sqlstr
