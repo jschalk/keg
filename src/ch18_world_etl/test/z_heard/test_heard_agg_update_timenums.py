@@ -28,6 +28,7 @@ from src.ch18_world_etl.test.z_heard.test_heard_agg_update_factnum_pfhapx import
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
 
+# TODO convert to bubba testing method once mxhap0 tests are complete
 def test_update_heard_agg_timenum_columns_UpdatesDB_Scenario0_TwoRecordsAndDoesModularMath(
     cursor0: Cursor,
 ):
