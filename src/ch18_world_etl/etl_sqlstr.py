@@ -1086,20 +1086,53 @@ def get_update_heard_agg_timenum_sqlstr(dst_tablename: str, focus_column: str) -
     Return Update statement that will set the timenum inx column
     reference key: mxhap0"""
 
+    #     return f"""
+    # UPDATE {dst_tablename} as dst_table
+    # SET {focus_column}_inx = mod(
+    #     dst_table.{focus_column}_otx + IFNULL(nabtime.otx_time - nabtime.inx_time, 0)
+    #     , IFNULL(c400_number * {get_c400_constants().c400_leap_length}, {DEFAULT_EPOCH_LENGTH})
+    #     )
+    # FROM {dst_tablename} as dst2_table
+    # LEFT JOIN nabu_timenum_h_agg as nabtime ON dst2_table.spark_num = nabtime.spark_num
+    # LEFT JOIN (
+    #     SELECT moment_rope, c400_number
+    #     FROM momentunit_h_agg
+    #     GROUP BY moment_rope, c400_number
+    #     ) mmtunit ON mmtunit.moment_rope = nabtime.moment_rope
+    # WHERE dst2_table.spark_num = dst_table.spark_num
+    # ;
+    # """
     return f"""
-UPDATE {dst_tablename} as dst_table
-SET {focus_column}_inx = mod(
-    dst_table.{focus_column}_otx + IFNULL(nabtime.otx_time - nabtime.inx_time, 0)
-    , IFNULL(c400_number * {get_c400_constants().c400_leap_length}, {DEFAULT_EPOCH_LENGTH})
-    )
-FROM {dst_tablename} as dst2_table
-LEFT JOIN nabu_timenum_h_agg as nabtime ON dst2_table.spark_num = nabtime.spark_num
-LEFT JOIN (
+WITH mmtunit AS (
     SELECT moment_rope, c400_number
     FROM momentunit_h_agg
     GROUP BY moment_rope, c400_number
-    ) mmtunit ON mmtunit.moment_rope = nabtime.moment_rope
-WHERE dst2_table.spark_num = dst_table.spark_num
+),
+enriched AS (
+    SELECT
+        dst2_table.spark_num,
+        dst2_table.moment_rope,
+        nabtime.otx_time - nabtime.inx_time AS inx_epoch_diff,
+        mmtunit.c400_number
+    FROM {dst_tablename} as dst2_table
+    LEFT JOIN nabu_timenum_h_agg as nabtime
+        ON nabtime.spark_num = (
+            SELECT MAX(n2.spark_num)
+            FROM nabu_timenum_h_agg as n2
+            WHERE n2.spark_num <= dst2_table.spark_num
+                AND dst2_table.moment_rope LIKE n2.moment_rope || '%'
+        )
+    LEFT JOIN mmtunit
+        ON mmtunit.moment_rope = nabtime.moment_rope
+)
+UPDATE {dst_tablename} as dst_table
+SET {focus_column}_inx = mod(
+    dst_table.{focus_column}_otx + IFNULL(enriched.inx_epoch_diff, 0)
+    , IFNULL(enriched.c400_number * 210379680, 1472657760)
+    )
+FROM enriched
+WHERE enriched.spark_num = dst_table.spark_num
+    AND enriched.moment_rope = dst_table.moment_rope
 ;
 """
 

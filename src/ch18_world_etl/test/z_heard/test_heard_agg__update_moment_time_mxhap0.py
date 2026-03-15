@@ -226,6 +226,40 @@ def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario4_PopulatesTableWit
     ]
 
 
+# TODO reactivate and pass this test
+def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario5_CanDstTableCanJoinOnPreviousSparkNum(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    spark3 = 3
+    s7_otx_time, s7_inx_time = (44, 55)
+    nabtime_vals = [[spark3, exx.a23, s7_otx_time, s7_inx_time]]
+    mxhap0_insert_nabtime(cursor0, nabtime_vals)
+    spark7 = 7
+    s7_offi_time_otx = 200
+    mmtoffi_vals = [[spark7, exx.a23, s7_offi_time_otx]]
+    mxhap0_insert_mmtoffi(cursor0, mmtoffi_vals)
+    a23_c400_number = 8
+    mmtunit_vals = [[spark7, exx.a23, a23_c400_number]]
+    mxhap0_insert_mmtunit(cursor0, mmtunit_vals)
+
+    # BEFORE
+    assert mxhap0_select_mmtoffi(cursor0) == [(spark7, exx.a23, s7_offi_time_otx, None)]
+
+    # WHEN
+    mxhap0_table = create_prime_tablename(kw.mmtoffi, "h", "agg")
+    update_mmtoffi_sql = get_update_heard_agg_timenum_sqlstr(mxhap0_table, kw.offi_time)
+    print(update_mmtoffi_sql)
+    cursor0.execute(update_mmtoffi_sql)
+
+    # THEN
+    s7_offi_time_inx = s7_offi_time_otx + (s7_otx_time - s7_inx_time)
+    assert mxhap0_select_mmtoffi(cursor0, True) == [
+        (spark7, exx.a23, s7_offi_time_otx, s7_offi_time_inx)
+    ]
+    assert mxhap0_select_mmtoffi(cursor0) == [(7, exx.a23, 200, 189)]
+
+
 def test_get_update_heard_agg_moment_timenum_sqlstrs_ReturnsObj():
     # ESTABLISH / WHEN
     gen_update_sqlstrs = get_update_heard_agg_moment_timenum_sqlstrs()
@@ -267,19 +301,36 @@ def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario1_MMTPAYY():
 
     # THEN
     expected_sqlstr = f"""
-UPDATE {mmtpayy_h_agg_tablename} as dst_table
-SET {kw.tran_time}_inx = mod(
-    dst_table.{kw.tran_time}_otx + IFNULL({kw.nabtime}.{kw.otx_time} - {kw.nabtime}.{kw.inx_time}, 0)
-    , IFNULL({kw.c400_number} * {c400_leap_length}, 1472657760)
-    )
-FROM {mmtpayy_h_agg_tablename} as dst2_table
-LEFT JOIN {nabtime_h_agg_tablename} as {kw.nabtime} ON dst2_table.{kw.spark_num} = {kw.nabtime}.spark_num
-LEFT JOIN (
+WITH {kw.mmtunit} AS (
     SELECT {kw.moment_rope}, {kw.c400_number}
     FROM {mmtunit_h_agg_tablename}
     GROUP BY {kw.moment_rope}, {kw.c400_number}
-    ) {kw.mmtunit} ON {kw.mmtunit}.{kw.moment_rope} = {kw.nabtime}.{kw.moment_rope}
-WHERE dst2_table.{kw.spark_num} = dst_table.{kw.spark_num}
+),
+enriched AS (
+    SELECT
+        dst2_table.{kw.spark_num},
+        dst2_table.{kw.moment_rope},
+        {kw.nabtime}.{kw.otx_time} - {kw.nabtime}.{kw.inx_time} AS {kw.inx_epoch_diff},
+        {kw.mmtunit}.{kw.c400_number}
+    FROM {mmtpayy_h_agg_tablename} as dst2_table
+    LEFT JOIN {nabtime_h_agg_tablename} as {kw.nabtime}
+        ON {kw.nabtime}.{kw.spark_num} = (
+            SELECT MAX(n2.{kw.spark_num})
+            FROM {nabtime_h_agg_tablename} as n2
+            WHERE n2.{kw.spark_num} <= dst2_table.{kw.spark_num}
+                AND dst2_table.{kw.moment_rope} LIKE n2.{kw.moment_rope} || '%'
+        )
+    LEFT JOIN {kw.mmtunit}
+        ON {kw.mmtunit}.{kw.moment_rope} = {kw.nabtime}.{kw.moment_rope}
+)
+UPDATE {mmtpayy_h_agg_tablename} as dst_table
+SET {kw.tran_time}_inx = mod(
+    dst_table.{kw.tran_time}_otx + IFNULL(enriched.{kw.inx_epoch_diff}, 0)
+    , IFNULL(enriched.{kw.c400_number} * {c400_leap_length}, {DEFAULT_EPOCH_LENGTH})
+    )
+FROM enriched
+WHERE enriched.{kw.spark_num} = dst_table.{kw.spark_num}
+    AND enriched.{kw.moment_rope} = dst_table.{kw.moment_rope}
 ;
 """
     assert generated_update_heard_agg_timenum_sqlstr == expected_sqlstr
@@ -299,20 +350,36 @@ def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario0_MMTOFFI():
 
     # THEN
     expected_sqlstr = f"""
-UPDATE {mmtoffi_h_agg_tablename} as dst_table
-SET {kw.offi_time}_inx = mod(
-    dst_table.offi_time_otx + IFNULL({kw.nabtime}.{kw.otx_time} - {kw.nabtime}.{kw.inx_time}, 0)
-    , IFNULL({kw.c400_number} * {c400_leap_length}, 1472657760)
-    )
-FROM {mmtoffi_h_agg_tablename} as dst2_table
-LEFT JOIN {nabtime_h_agg_tablename} as {kw.nabtime} ON dst2_table.{kw.spark_num} = {kw.nabtime}.{kw.spark_num}
-LEFT JOIN (
+WITH {kw.mmtunit} AS (
     SELECT {kw.moment_rope}, {kw.c400_number}
     FROM {mmtunit_h_agg_tablename}
     GROUP BY {kw.moment_rope}, {kw.c400_number}
-    ) {kw.mmtunit} ON {kw.mmtunit}.{kw.moment_rope} = {kw.nabtime}.{kw.moment_rope}
-WHERE dst2_table.{kw.spark_num} = dst_table.{kw.spark_num}
+),
+enriched AS (
+    SELECT
+        dst2_table.{kw.spark_num},
+        dst2_table.{kw.moment_rope},
+        {kw.nabtime}.{kw.otx_time} - {kw.nabtime}.{kw.inx_time} AS {kw.inx_epoch_diff},
+        {kw.mmtunit}.{kw.c400_number}
+    FROM {mmtoffi_h_agg_tablename} as dst2_table
+    LEFT JOIN {nabtime_h_agg_tablename} as {kw.nabtime}
+        ON {kw.nabtime}.{kw.spark_num} = (
+            SELECT MAX(n2.{kw.spark_num})
+            FROM {nabtime_h_agg_tablename} as n2
+            WHERE n2.{kw.spark_num} <= dst2_table.{kw.spark_num}
+                AND dst2_table.{kw.moment_rope} LIKE n2.{kw.moment_rope} || '%'
+        )
+    LEFT JOIN {kw.mmtunit}
+        ON {kw.mmtunit}.{kw.moment_rope} = {kw.nabtime}.{kw.moment_rope}
+)
+UPDATE {mmtoffi_h_agg_tablename} as dst_table
+SET {kw.offi_time}_inx = mod(
+    dst_table.{kw.offi_time}_otx + IFNULL(enriched.{kw.inx_epoch_diff}, 0)
+    , IFNULL(enriched.{kw.c400_number} * {c400_leap_length}, {DEFAULT_EPOCH_LENGTH})
+    )
+FROM enriched
+WHERE enriched.{kw.spark_num} = dst_table.{kw.spark_num}
+    AND enriched.{kw.moment_rope} = dst_table.{kw.moment_rope}
 ;
 """
-    print(generated_update_heard_agg_timenum_sqlstr)
     assert generated_update_heard_agg_timenum_sqlstr == expected_sqlstr
