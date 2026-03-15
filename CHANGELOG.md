@@ -1,3 +1,10 @@
+## [0.81.102](https://github.com/jschalk/keg/compare/v0.81.101...v0.81.102) (2026-03-15)
+
+
+### Bug Fixes
+
+* convert test to SQLTEST standards [#1079](https://github.com/jschalk/keg/issues/1079) ([9d37869](https://github.com/jschalk/keg/commit/9d37869c772c8d015f3a036545639b97e728bee7))
+
 ## [0.81.101](https://github.com/jschalk/keg/compare/v0.81.100...v0.81.101) (2026-03-15)
 
 
