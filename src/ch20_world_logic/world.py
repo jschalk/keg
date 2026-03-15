@@ -1,10 +1,7 @@
 from dataclasses import dataclass
 from os.path import exists as os_path_exists
 from sqlite3 import Cursor as sqlite3_Cursor, connect as sqlite3_connect
-from src.ch00_py.dict_toolbox import get_0_if_None, get_empty_set_if_None
 from src.ch00_py.file_toolbox import create_path, delete_dir, set_dir
-from src.ch11_bud.bud_main import TimeNum
-from src.ch14_moment.moment_main import MomentUnit
 from src.ch17_idea.idea_db_tool import update_spark_num_in_excel_files
 from src.ch18_world_etl._ref.ch18_path import (
     create_moment_mstr_path,
@@ -50,12 +47,7 @@ from src.ch19_world_kpi.kpi_mstr import (
     create_kpi_csvs,
     populate_kpi_bundle,
 )
-from src.ch20_world_logic._ref.ch20_semantic_types import (
-    FaceName,
-    MomentRope,
-    SparkInt,
-    WorldName,
-)
+from src.ch20_world_logic._ref.ch20_semantic_types import WorldName
 
 
 @dataclass
@@ -63,14 +55,10 @@ class WorldUnit:
     world_name: WorldName = None
     worlds_dir: str = None
     output_dir: str = None
-    world_time_reason_upper: TimeNum = None
     _world_dir: str = None
     _input_dir: str = None
     _brick_dir: str = None
     _moment_mstr_dir: str = None
-    _momentunits: set[MomentRope] = None
-    _sparks: dict[SparkInt, FaceName] = None
-    _translate_sparks: dict[FaceName, set[SparkInt]] = None
 
     def get_world_db_path(self) -> str:
         "Returns path: world_dir/world.db"
@@ -78,15 +66,6 @@ class WorldUnit:
 
     def delete_world_db(self):
         delete_dir(self.get_world_db_path())
-
-    def set_spark(self, spark_num: SparkInt, face_name: FaceName):
-        self._sparks[spark_num] = face_name
-
-    def spark_exists(self, spark_num: SparkInt) -> bool:
-        return self._sparks.get(spark_num) != None
-
-    def get_spark(self, spark_num: SparkInt) -> FaceName:
-        return self._sparks.get(spark_num)
 
     def set_input_dir(self, x_dir: str):
         self._input_dir = x_dir
@@ -132,7 +111,6 @@ class WorldUnit:
         mstr_dir = self._moment_mstr_dir
         delete_dir(mstr_dir)
         set_dir(mstr_dir)
-        moments_dir = create_path(mstr_dir, "moments")
 
         # collect excel file data into central location
         etl_input_dfs_to_brick_raw_tables(cursor, self._input_dir)
@@ -166,11 +144,6 @@ class WorldUnit:
         populate_kpi_bundle(cursor)
         create_last_run_metrics_json(cursor, mstr_dir)
 
-        # # create all moment_job and mandate reports
-        # self.calc_moment_bud_partner_mandate_net_ledgers()
-
-        # if store_tracing_files:
-
     def create_stances(self, prettify_excel_bool=True):
         # TODO why is create_stance0001_file not drawing from world db instead of files?
         # it should be the database because that's the end of the core pipeline so it should
@@ -183,38 +156,20 @@ class WorldUnit:
     def create_world_kpi_csvs(self):
         create_kpi_csvs(self.get_world_db_path(), self.output_dir)
 
-    def to_dict(self) -> dict:
-        """Returns dict that is serializable to JSON."""
-
-        return {
-            "world_name": self.world_name,
-            "world_time_reason_upper": self.world_time_reason_upper,
-        }
-
 
 def worldunit_shop(
     world_name: WorldName,
     worlds_dir: str,
     output_dir: str = None,
     input_dir: str = None,
-    world_time_reason_upper: TimeNum = None,
-    _momentunits: set[MomentRope] = None,
 ) -> WorldUnit:
     x_worldunit = WorldUnit(
         world_name=world_name,
         worlds_dir=worlds_dir,
         output_dir=output_dir,
-        world_time_reason_upper=get_0_if_None(world_time_reason_upper),
-        _sparks={},
-        _momentunits=get_empty_set_if_None(_momentunits),
         _input_dir=input_dir,
-        _translate_sparks={},
     )
     x_worldunit._set_world_dirs()
     if not x_worldunit._input_dir:
         x_worldunit.set_input_dir(create_path(x_worldunit._world_dir, "input"))
     return x_worldunit
-
-
-def init_momentunits_from_dirs(x_dirs: list[str]) -> list[MomentUnit]:
-    return []

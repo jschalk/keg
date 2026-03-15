@@ -4,12 +4,7 @@ from src.ch20_world_logic.test._util.ch20_env import (
     get_temp_dir as worlds_dir,
     temp_dir_setup,
 )
-from src.ch20_world_logic.world import (
-    WorldName,
-    WorldUnit,
-    init_momentunits_from_dirs,
-    worldunit_shop,
-)
+from src.ch20_world_logic.world import WorldName, WorldUnit, worldunit_shop
 from src.ref.keywords import ExampleStrs as exx
 
 
@@ -27,14 +22,10 @@ def test_WorldUnit_Exists():
     assert not x_world.world_name
     assert not x_world.worlds_dir
     assert not x_world.output_dir
-    assert not x_world.world_time_reason_upper
-    assert not x_world._sparks
     assert not x_world._world_dir
     assert not x_world._input_dir
     assert not x_world._brick_dir
     assert not x_world._moment_mstr_dir
-    assert not x_world._momentunits
-    assert not x_world._translate_sparks
 
 
 def test_WorldUnit_set_input_dir_SetsDirsAndFiles(temp_dir_setup):
@@ -97,8 +88,6 @@ def test_worldunit_shop_ReturnsObj_Scenario0_WithParameters(temp_dir_setup):
     example_input_dir = create_path(worlds_dir(), "example_input")
     output_dir = create_path(worlds_dir(), "output")
     five_world_name = "five"
-    world2_time_reason_upper = 55
-    world2_momentunits = {"amy45"}
 
     # WHEN
     x_world = worldunit_shop(
@@ -106,20 +95,13 @@ def test_worldunit_shop_ReturnsObj_Scenario0_WithParameters(temp_dir_setup):
         worlds_dir=worlds2_dir,
         output_dir=output_dir,
         input_dir=example_input_dir,
-        world_time_reason_upper=world2_time_reason_upper,
-        _momentunits=world2_momentunits,
     )
 
     # THEN
-    world_dir = create_path(worlds2_dir, x_world.world_name)
     assert x_world.world_name == five_world_name
     assert x_world.worlds_dir == worlds2_dir
     assert x_world.output_dir == output_dir
     assert x_world._input_dir == example_input_dir
-    assert x_world.world_time_reason_upper == world2_time_reason_upper
-    assert x_world._sparks == {}
-    assert x_world._momentunits == world2_momentunits
-    assert x_world._translate_sparks == {}
 
 
 def test_worldunit_shop_ReturnsObj_Scenario1_WithoutParameters(temp_dir_setup):
@@ -129,14 +111,10 @@ def test_worldunit_shop_ReturnsObj_Scenario1_WithoutParameters(temp_dir_setup):
     x_world = worldunit_shop(exx.a23, worlds_dir())
 
     # THEN
-    world_dir = create_path(worlds_dir(), x_world.world_name)
     assert x_world.world_name == exx.a23
     assert x_world.worlds_dir == worlds_dir()
     assert not x_world.output_dir
-    assert x_world.world_time_reason_upper == 0
-    assert x_world._sparks == {}
     assert x_world._input_dir == create_path(x_world._world_dir, "input")
-    assert x_world._momentunits == set()
 
 
 def test_worldunit_shop_ReturnsObj_Scenario2_ThirdParameterIs_output_dir(
@@ -152,60 +130,6 @@ def test_worldunit_shop_ReturnsObj_Scenario2_ThirdParameterIs_output_dir(
     assert x_world.world_name == exx.a23
     assert x_world.worlds_dir == worlds_dir()
     assert x_world.output_dir == output_dir
-
-
-def test_init_momentunits_from_dirs_ReturnsObj_Scenario0(temp_dir_setup):
-    # ESTABLISH
-    x_dir = worlds_dir()
-
-    # WHEN
-    x_momentunits = init_momentunits_from_dirs([])
-
-    # THEN
-    assert x_momentunits == []
-
-
-def test_WorldUnit_set_spark_SetsAttr_Scenario0(temp_dir_setup):
-    # ESTABLISH
-    x_world = worldunit_shop(exx.a23, worlds_dir())
-    assert x_world._sparks == {}
-
-    # WHEN
-    e5_spark_num = 5
-    e5_face_name = "Sue"
-    x_world.set_spark(e5_spark_num, e5_face_name)
-
-    # THEN
-    assert x_world._sparks != {}
-    assert x_world._sparks == {e5_spark_num: e5_face_name}
-
-
-def test_WorldUnit_spark_exists_ReturnsObj(temp_dir_setup):
-    # ESTABLISH
-    x_world = worldunit_shop(exx.a23, worlds_dir())
-    e5_spark_num = 5
-    e5_face_name = "Sue"
-    assert x_world.spark_exists(e5_spark_num) is False
-
-    # WHEN
-    x_world.set_spark(e5_spark_num, e5_face_name)
-
-    # THEN
-    assert x_world.spark_exists(e5_spark_num)
-
-
-def test_WorldUnit_get_spark_ReturnsObj(temp_dir_setup):
-    # ESTABLISH
-    x_world = worldunit_shop(exx.a23, worlds_dir())
-    e5_spark_num = 5
-    e5_face_name = "Sue"
-    assert x_world.get_spark(e5_spark_num) is None
-
-    # WHEN
-    x_world.set_spark(e5_spark_num, e5_face_name)
-
-    # THEN
-    assert x_world.get_spark(e5_spark_num) == e5_face_name
 
 
 def test_WorldUnit_get_world_db_path_ReturnsObj(temp_dir_setup):
