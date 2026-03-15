@@ -6,7 +6,7 @@ from typing import Any, Generator
 
 
 def get_temp_dir() -> str:
-    return "src\\ch20_world_logic\\test\\_util\\worlds"
+    return "src\\ch20_world_apex\\test\\_util\\worlds"
 
 
 @pytest_fixture()

@@ -14,6 +14,8 @@ class Lasso_init_knot_not_presentException(Exception):
 
 @dataclass
 class LassoUnit:
+    """Paths config class that creates moment path from moment_rope and knot"""
+
     moment_rope: MomentRope = None
     knot: KnotTerm = None
 

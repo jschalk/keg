@@ -27,6 +27,6 @@ from src.ch13_time._ref.ch13_semantic_types import EpochLabel
 
 
 class WorldName(str):
-    """Name of WorldUnit"""
+    """Name of WorldDir"""
 
     pass
