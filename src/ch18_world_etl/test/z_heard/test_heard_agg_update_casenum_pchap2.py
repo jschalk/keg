@@ -11,58 +11,6 @@ from src.ch18_world_etl.test._util.ch18_env import cursor0
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
 
-def test_get_update_prncase_range_sqlstr_ReturnsObj():
-    # ESTABLISH
-    prncase_tablename = prime_tbl(kw.person_plan_reason_caseunit, "h", "agg", "put")
-
-    # WHEN
-    update_sqlstr = get_update_prncase_range_sqlstr()
-
-    # THEN
-    assert update_sqlstr
-    expected_update_sqlstr = f"""
-UPDATE {prncase_tablename} as prncase
-SET
- {kw.reason_lower}_inx =
-  CASE
-   WHEN {kw.reason_divisor} IS NOT NULL THEN
-    CASE
-     WHEN context_plan_morph = 1
-     THEN ({kw.reason_lower}_otx + {kw.inx_epoch_diff}) % {kw.reason_divisor}
-     WHEN context_plan_morph IS NULL
-     THEN ({kw.reason_lower}_otx + CAST({kw.inx_epoch_diff} / IFNULL(context_plan_denom, 1) AS INTEGER)) % {kw.reason_divisor}
-    END
-   WHEN context_plan_denom IS NOT NULL THEN
-    CASE
-     WHEN context_plan_morph = 1
-     THEN ({kw.reason_lower}_otx + {kw.inx_epoch_diff}) % context_plan_denom
-     WHEN context_plan_morph IS NULL
-     THEN ({kw.reason_lower}_otx + CAST({kw.inx_epoch_diff} / IFNULL(context_plan_denom, 1) AS INTEGER)) % context_plan_denom
-    END
-  END,
- {kw.reason_upper}_inx =
-  CASE
-   WHEN {kw.reason_divisor} IS NOT NULL THEN
-    CASE
-     WHEN context_plan_morph = 1
-     THEN ({kw.reason_upper}_otx + {kw.inx_epoch_diff}) % {kw.reason_divisor}
-     WHEN context_plan_morph IS NULL
-     THEN ({kw.reason_upper}_otx + CAST({kw.inx_epoch_diff} / IFNULL(context_plan_denom, 1) AS INTEGER)) % {kw.reason_divisor}
-    END
-   WHEN context_plan_denom IS NOT NULL THEN
-    CASE
-     WHEN context_plan_morph = 1
-     THEN ({kw.reason_upper}_otx + {kw.inx_epoch_diff}) % context_plan_denom
-     WHEN context_plan_morph IS NULL
-     THEN ({kw.reason_upper}_otx + CAST({kw.inx_epoch_diff} / IFNULL(context_plan_denom, 1) AS INTEGER)) % context_plan_denom
-    END
-  END
-;
-"""
-    print(update_sqlstr)
-    assert update_sqlstr == expected_update_sqlstr
-
-
 def pchap2_insert_prncase(cursor0: Cursor, x_values: list[list]) -> str:
     """x_cols = "reason_lower_otx", "reason_upper_otx", kw.reason_divisor, "context_plan_denom", "context_plan_morph", kw.inx_epoch_diff"""
 
@@ -582,3 +530,98 @@ def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario14_Wraps_range(
 
     # TODO
     # remove context_plan_close from entire codebase if not needed
+
+
+def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario15_inx_epoch_diff_IsNull(
+    cursor0,
+):
+    # ESTABLISH modeled after test_add_frame_to_caseunit_SetsAttr_Scenario14_adds_epoch_frame_Wraps_range
+    epoch_len = 5259492000  # minutes in entire epoch range
+    reason_lower_otx, reason_upper_otx, reason_divisor = (7777, 9777, epoch_len)
+    context_plan_close, context_plan_denom, context_plan_morph = (epoch_len, None, None)
+    inx_epoch_diff = None
+    prncase_val = [
+        reason_lower_otx,
+        reason_upper_otx,
+        reason_divisor,
+        context_plan_denom,
+        context_plan_morph,
+        inx_epoch_diff,
+    ]
+    prncase_insert_sql = pchap2_insert_prncase(cursor0, [prncase_val])
+
+    # BEFORE
+    assert pchap2_select_prncase(cursor0) == [
+        (reason_lower_otx, None, reason_upper_otx, None)
+    ]
+
+    # WHEN
+    cursor0.execute(get_update_prncase_range_sqlstr())
+
+    # THEN
+    reason_lower_inx = reason_lower_otx
+    reason_upper_inx = reason_upper_otx
+    assert pchap2_select_prncase(cursor0, True) == [
+        (reason_lower_otx, reason_lower_inx, reason_upper_otx, reason_upper_inx)
+    ]
+    assert pchap2_select_prncase(cursor0, True) == [(7777, 7777, 9777, 9777)]
+
+
+def test_get_update_prncase_range_sqlstr_ReturnsObj():
+    # ESTABLISH
+    prncase_tablename = prime_tbl(kw.person_plan_reason_caseunit, "h", "agg", "put")
+
+    # WHEN
+    update_sqlstr = get_update_prncase_range_sqlstr()
+
+    # THEN
+    assert update_sqlstr
+    expected_update_sqlstr = f"""
+UPDATE {prncase_tablename} as prncase
+SET
+ {kw.reason_lower}_inx =
+  CASE
+   WHEN {kw.reason_divisor} IS NOT NULL THEN
+    CASE
+     WHEN {kw.inx_epoch_diff} IS NULL
+     THEN {kw.reason_lower}_otx
+     WHEN context_plan_morph = 1
+     THEN ({kw.reason_lower}_otx + {kw.inx_epoch_diff}) % {kw.reason_divisor}
+     WHEN context_plan_morph IS NULL
+     THEN ({kw.reason_lower}_otx + CAST({kw.inx_epoch_diff} / IFNULL(context_plan_denom, 1) AS INTEGER)) % {kw.reason_divisor}
+    END
+   WHEN context_plan_denom IS NOT NULL THEN
+    CASE
+     WHEN {kw.inx_epoch_diff} IS NULL
+     THEN {kw.reason_lower}_otx
+     WHEN context_plan_morph = 1
+     THEN ({kw.reason_lower}_otx + {kw.inx_epoch_diff}) % context_plan_denom
+     WHEN context_plan_morph IS NULL
+     THEN ({kw.reason_lower}_otx + CAST({kw.inx_epoch_diff} / IFNULL(context_plan_denom, 1) AS INTEGER)) % context_plan_denom
+    END
+  END,
+ {kw.reason_upper}_inx =
+  CASE
+   WHEN {kw.reason_divisor} IS NOT NULL THEN
+    CASE
+     WHEN {kw.inx_epoch_diff} IS NULL
+     THEN {kw.reason_upper}_otx
+     WHEN context_plan_morph = 1
+     THEN ({kw.reason_upper}_otx + {kw.inx_epoch_diff}) % {kw.reason_divisor}
+     WHEN context_plan_morph IS NULL
+     THEN ({kw.reason_upper}_otx + CAST({kw.inx_epoch_diff} / IFNULL(context_plan_denom, 1) AS INTEGER)) % {kw.reason_divisor}
+    END
+   WHEN context_plan_denom IS NOT NULL THEN
+    CASE
+     WHEN {kw.inx_epoch_diff} IS NULL
+     THEN {kw.reason_upper}_otx
+     WHEN context_plan_morph = 1
+     THEN ({kw.reason_upper}_otx + {kw.inx_epoch_diff}) % context_plan_denom
+     WHEN context_plan_morph IS NULL
+     THEN ({kw.reason_upper}_otx + CAST({kw.inx_epoch_diff} / IFNULL(context_plan_denom, 1) AS INTEGER)) % context_plan_denom
+    END
+  END
+;
+"""
+    print(update_sqlstr)
+    assert update_sqlstr == expected_update_sqlstr

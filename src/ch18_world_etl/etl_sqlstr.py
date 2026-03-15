@@ -1086,36 +1086,25 @@ def get_update_heard_agg_timenum_sqlstr(dst_tablename: str, focus_column: str) -
     reference key: mxhap0"""
 
     #   spark_num, mod(otx_time - inx_time, IFNULL(x_moment.c400_number, 1472657760)) AS inx_epoch_diff
-    mmtunit_h_agg_tablename = create_prime_tablename("momentunit", "h", "agg")
-    nabtime_h_agg_tablename = create_prime_tablename("nabu_timenum", "h", "agg")
-    return f"""WITH spark_inx_epoch_diff AS (
-SELECT 
-  spark_num
-, otx_time - inx_time AS inx_epoch_diff
-, IFNULL(c400_number * 210379680, 1472657760) as epoch_length
-FROM {nabtime_h_agg_tablename}
+    return f"""
+UPDATE {dst_tablename} as dst_table
+SET {focus_column}_inx = mod(
+    dst_table.{focus_column}_otx + IFNULL(nabtime.otx_time - nabtime.inx_time, 0)
+    , IFNULL(c400_number * 210379680, 1472657760)
+    )
+FROM {dst_tablename} as dst2_table
+LEFT JOIN nabu_timenum_h_agg as nabtime ON dst2_table.spark_num = nabtime.spark_num
 LEFT JOIN (
-    SELECT moment_rope, c400_number 
-    FROM {mmtunit_h_agg_tablename} 
+    SELECT moment_rope, c400_number
+    FROM momentunit_h_agg
     GROUP BY moment_rope, c400_number
-    ) x_moment ON x_moment.moment_rope = {nabtime_h_agg_tablename}.moment_rope
-)
-UPDATE {dst_tablename}
-SET {focus_column}_inx = mod({focus_column}_otx + (
-    SELECT inx_epoch_diff
-    FROM spark_inx_epoch_diff
-    WHERE spark_inx_epoch_diff.spark_num = {dst_tablename}.spark_num
-), (SELECT epoch_length
-    FROM spark_inx_epoch_diff
-    WHERE spark_inx_epoch_diff.spark_num = {dst_tablename}.spark_num
-))
-FROM spark_inx_epoch_diff
-WHERE {dst_tablename}.spark_num IN (SELECT spark_num FROM spark_inx_epoch_diff)
+    ) mmtunit ON mmtunit.moment_rope = nabtime.moment_rope
+WHERE dst2_table.spark_num = dst_table.spark_num
 ;
 """
 
 
-def get_update_heard_agg_timenum_sqlstrs() -> dict[str]:
+def get_update_heard_agg_moment_timenum_sqlstrs() -> dict[str]:
     mmtoffi_tbl = create_prime_tablename("moment_timeoffi", "h", "agg")
     mmtoffi_key = ("moment_timeoffi", "offi_time")
     mmtpayy_tbl = create_prime_tablename("moment_paybook", "h", "agg")
@@ -1222,6 +1211,8 @@ SET
   CASE
    WHEN reason_divisor IS NOT NULL THEN
     CASE
+     WHEN inx_epoch_diff IS NULL
+     THEN reason_lower_otx
      WHEN context_plan_morph = 1
      THEN (reason_lower_otx + inx_epoch_diff) % reason_divisor
      WHEN context_plan_morph IS NULL
@@ -1229,6 +1220,8 @@ SET
     END
    WHEN context_plan_denom IS NOT NULL THEN
     CASE
+     WHEN inx_epoch_diff IS NULL
+     THEN reason_lower_otx
      WHEN context_plan_morph = 1
      THEN (reason_lower_otx + inx_epoch_diff) % context_plan_denom
      WHEN context_plan_morph IS NULL
@@ -1239,6 +1232,8 @@ SET
   CASE
    WHEN reason_divisor IS NOT NULL THEN
     CASE
+     WHEN inx_epoch_diff IS NULL
+     THEN reason_upper_otx
      WHEN context_plan_morph = 1
      THEN (reason_upper_otx + inx_epoch_diff) % reason_divisor
      WHEN context_plan_morph IS NULL
@@ -1246,6 +1241,8 @@ SET
     END
    WHEN context_plan_denom IS NOT NULL THEN
     CASE
+     WHEN inx_epoch_diff IS NULL
+     THEN reason_upper_otx
      WHEN context_plan_morph = 1
      THEN (reason_upper_otx + inx_epoch_diff) % context_plan_denom
      WHEN context_plan_morph IS NULL
@@ -1266,11 +1263,15 @@ UPDATE person_plan_factunit_h_put_agg
 SET
  fact_lower_inx =
   CASE
+   WHEN inx_epoch_diff IS NULL
+   THEN fact_lower_otx
    WHEN context_plan_close IS NOT NULL
    THEN (fact_lower_otx + inx_epoch_diff) % context_plan_close
   END,
  fact_upper_inx =
   CASE
+   WHEN inx_epoch_diff IS NULL
+   THEN fact_upper_otx
    WHEN context_plan_close IS NOT NULL
    THEN (fact_upper_otx + inx_epoch_diff) % context_plan_close
   END
@@ -1278,7 +1279,6 @@ SET
 """
 
 
-# TODO build test for this
 def update_caseunit_heard_agg_timenum_columns(cursor: sqlite3_Connection):
     cursor.execute(get_update_prncase_inx_epoch_diff_sqlstr())
     cursor.execute(get_update_prncase_context_plan_sqlstr())
@@ -1291,180 +1291,177 @@ def update_factunit_heard_agg_timenum_columns(cursor: sqlite3_Connection):
     cursor.execute(get_update_prnfact_range_sqlstr())
 
 
-# TODO build test for this
 def update_heard_agg_timenum_columns(cursor: sqlite3_Connection):
     # for bud_time, tran_time, offi_time
-    for update_sqlstr in get_update_heard_agg_timenum_sqlstrs().values():
+    for update_sqlstr in get_update_heard_agg_moment_timenum_sqlstrs().values():
         cursor.execute(update_sqlstr)
-    # # for reason_lower, reason_upper
-    # update_caseunit_heard_agg_timenum_columns(cursor)
-    # # for fact_lower, fact_upper
-    # update_factunit_heard_agg_timenum_columns(cursor)
+    # for reason_lower, reason_upper
+    update_caseunit_heard_agg_timenum_columns(cursor)
+    # for fact_lower, fact_upper
+    update_factunit_heard_agg_timenum_columns(cursor)
 
-
-# TODO integrate timenum_inx in agg to valid insert
 
 MMTBUDD_HEARD_VLD_INSERT_SQLSTR = """
 INSERT INTO moment_budunit_h_vld (moment_rope, person_name, bud_time, knot, quota, celldepth)
-SELECT moment_rope_inx, person_name_inx, bud_time, knot, quota, celldepth
-FROM moment_budunit_h_raw
-GROUP BY moment_rope_inx, person_name_inx, bud_time, knot, quota, celldepth
+SELECT moment_rope, person_name, bud_time_inx, knot, quota, celldepth
+FROM moment_budunit_h_agg
+GROUP BY moment_rope, person_name, bud_time_inx, knot, quota, celldepth
 """
 MMTHOUR_HEARD_VLD_INSERT_SQLSTR = """
 INSERT INTO moment_epoch_hour_h_vld (moment_rope, cumulative_minute, hour_label, knot)
-SELECT moment_rope_inx, cumulative_minute, hour_label_inx, knot
-FROM moment_epoch_hour_h_raw
-GROUP BY moment_rope_inx, cumulative_minute, hour_label_inx, knot
+SELECT moment_rope, cumulative_minute, hour_label, knot
+FROM moment_epoch_hour_h_agg
+GROUP BY moment_rope, cumulative_minute, hour_label, knot
 """
 MMTMONT_HEARD_VLD_INSERT_SQLSTR = """
 INSERT INTO moment_epoch_month_h_vld (moment_rope, cumulative_day, month_label, knot)
-SELECT moment_rope_inx, cumulative_day, month_label_inx, knot
-FROM moment_epoch_month_h_raw
-GROUP BY moment_rope_inx, cumulative_day, month_label_inx, knot
+SELECT moment_rope, cumulative_day, month_label, knot
+FROM moment_epoch_month_h_agg
+GROUP BY moment_rope, cumulative_day, month_label, knot
 """
 MMTWEEK_HEARD_VLD_INSERT_SQLSTR = """
 INSERT INTO moment_epoch_weekday_h_vld (moment_rope, weekday_order, weekday_label, knot)
-SELECT moment_rope_inx, weekday_order, weekday_label_inx, knot
-FROM moment_epoch_weekday_h_raw
-GROUP BY moment_rope_inx, weekday_order, weekday_label_inx, knot
+SELECT moment_rope, weekday_order, weekday_label, knot
+FROM moment_epoch_weekday_h_agg
+GROUP BY moment_rope, weekday_order, weekday_label, knot
 """
 MMTPAYY_HEARD_VLD_INSERT_SQLSTR = """
 INSERT INTO moment_paybook_h_vld (moment_rope, person_name, partner_name, tran_time, amount, knot)
-SELECT moment_rope_inx, person_name_inx, partner_name_inx, tran_time, amount, knot
-FROM moment_paybook_h_raw
-GROUP BY moment_rope_inx, person_name_inx, partner_name_inx, tran_time, amount, knot
+SELECT moment_rope, person_name, partner_name, tran_time_inx, amount, knot
+FROM moment_paybook_h_agg
+GROUP BY moment_rope, person_name, partner_name, tran_time_inx, amount, knot
 """
 MMTOFFI_HEARD_VLD_INSERT_SQLSTR = """
 INSERT INTO moment_timeoffi_h_vld (moment_rope, offi_time, knot)
-SELECT moment_rope_inx, offi_time, knot
-FROM moment_timeoffi_h_raw
-GROUP BY moment_rope_inx, offi_time, knot
+SELECT moment_rope, offi_time_inx, knot
+FROM moment_timeoffi_h_agg
+GROUP BY moment_rope, offi_time_inx, knot
 """
 MMTUNIT_HEARD_VLD_INSERT_SQLSTR = """
 INSERT INTO momentunit_h_vld (moment_rope, epoch_label, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations)
-SELECT moment_rope_inx, epoch_label_inx, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations
-FROM momentunit_h_raw
-GROUP BY moment_rope_inx, epoch_label_inx, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations
+SELECT moment_rope, epoch_label, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations
+FROM momentunit_h_agg
+GROUP BY moment_rope, epoch_label, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations
 """
 INSERT_PRNMEMB_HEARD_VLD_PUT_SQLSTR = """
 INSERT INTO person_partner_membership_h_put_vld (spark_num, face_name, moment_rope, person_name, partner_name, group_title, group_cred_lumen, group_debt_lumen, knot)
-SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, group_title_inx, group_cred_lumen, group_debt_lumen, knot
-FROM person_partner_membership_h_put_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, group_title_inx, group_cred_lumen, group_debt_lumen, knot
+SELECT spark_num, face_name, moment_rope, person_name, partner_name, group_title, group_cred_lumen, group_debt_lumen, knot
+FROM person_partner_membership_h_put_agg
+GROUP BY spark_num, face_name, moment_rope, person_name, partner_name, group_title, group_cred_lumen, group_debt_lumen, knot
 """
 INSERT_PRNMEMB_HEARD_VLD_DEL_SQLSTR = """
 INSERT INTO person_partner_membership_h_del_vld (spark_num, face_name, moment_rope, person_name, partner_name, group_title_ERASE)
-SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, group_title_ERASE_inx
-FROM person_partner_membership_h_del_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, group_title_ERASE_inx
+SELECT spark_num, face_name, moment_rope, person_name, partner_name, group_title_ERASE
+FROM person_partner_membership_h_del_agg
+GROUP BY spark_num, face_name, moment_rope, person_name, partner_name, group_title_ERASE
 """
 INSERT_PRNPTNR_HEARD_VLD_PUT_SQLSTR = """
 INSERT INTO person_partnerunit_h_put_vld (spark_num, face_name, moment_rope, person_name, partner_name, partner_cred_lumen, partner_debt_lumen, knot)
-SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, partner_cred_lumen, partner_debt_lumen, knot
-FROM person_partnerunit_h_put_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_inx, partner_cred_lumen, partner_debt_lumen, knot
+SELECT spark_num, face_name, moment_rope, person_name, partner_name, partner_cred_lumen, partner_debt_lumen, knot
+FROM person_partnerunit_h_put_agg
+GROUP BY spark_num, face_name, moment_rope, person_name, partner_name, partner_cred_lumen, partner_debt_lumen, knot
 """
 INSERT_PRNPTNR_HEARD_VLD_DEL_SQLSTR = """
 INSERT INTO person_partnerunit_h_del_vld (spark_num, face_name, moment_rope, person_name, partner_name_ERASE)
-SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_ERASE_inx
-FROM person_partnerunit_h_del_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, partner_name_ERASE_inx
+SELECT spark_num, face_name, moment_rope, person_name, partner_name_ERASE
+FROM person_partnerunit_h_del_agg
+GROUP BY spark_num, face_name, moment_rope, person_name, partner_name_ERASE
 """
 INSERT_PRNAWAR_HEARD_VLD_PUT_SQLSTR = """
 INSERT INTO person_plan_awardunit_h_put_vld (spark_num, face_name, person_name, plan_rope, awardee_title, give_force, take_force, knot)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, awardee_title_inx, give_force, take_force, knot
-FROM person_plan_awardunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, awardee_title_inx, give_force, take_force, knot
+SELECT spark_num, face_name, person_name, plan_rope, awardee_title, give_force, take_force, knot
+FROM person_plan_awardunit_h_put_agg
+GROUP BY spark_num, face_name, person_name, plan_rope, awardee_title, give_force, take_force, knot
 """
 INSERT_PRNAWAR_HEARD_VLD_DEL_SQLSTR = """
 INSERT INTO person_plan_awardunit_h_del_vld (spark_num, face_name, person_name, plan_rope, awardee_title_ERASE)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, awardee_title_ERASE_inx
-FROM person_plan_awardunit_h_del_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, awardee_title_ERASE_inx
+SELECT spark_num, face_name, person_name, plan_rope, awardee_title_ERASE
+FROM person_plan_awardunit_h_del_agg
+GROUP BY spark_num, face_name, person_name, plan_rope, awardee_title_ERASE
 """
 INSERT_PRNFACT_HEARD_VLD_PUT_SQLSTR = """
 INSERT INTO person_plan_factunit_h_put_vld (spark_num, face_name, person_name, plan_rope, fact_context, fact_state, fact_lower, fact_upper, knot)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, fact_context_inx, fact_state_inx, fact_lower, fact_upper, knot
-FROM person_plan_factunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, fact_context_inx, fact_state_inx, fact_lower, fact_upper, knot
+SELECT spark_num, face_name, person_name, plan_rope, fact_context, fact_state, fact_lower_inx, fact_upper_inx, knot
+FROM person_plan_factunit_h_put_agg
+GROUP BY spark_num, face_name, person_name, plan_rope, fact_context, fact_state, fact_lower_inx, fact_upper_inx, knot
 """
 INSERT_PRNFACT_HEARD_VLD_DEL_SQLSTR = """
 INSERT INTO person_plan_factunit_h_del_vld (spark_num, face_name, person_name, plan_rope, fact_context_ERASE)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, fact_context_ERASE_inx
-FROM person_plan_factunit_h_del_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, fact_context_ERASE_inx
+SELECT spark_num, face_name, person_name, plan_rope, fact_context_ERASE
+FROM person_plan_factunit_h_del_agg
+GROUP BY spark_num, face_name, person_name, plan_rope, fact_context_ERASE
 """
 INSERT_PRNHEAL_HEARD_VLD_PUT_SQLSTR = """
 INSERT INTO person_plan_healerunit_h_put_vld (spark_num, face_name, person_name, plan_rope, healer_name, knot)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, healer_name_inx, knot
-FROM person_plan_healerunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, healer_name_inx, knot
+SELECT spark_num, face_name, person_name, plan_rope, healer_name, knot
+FROM person_plan_healerunit_h_put_agg
+GROUP BY spark_num, face_name, person_name, plan_rope, healer_name, knot
 """
 INSERT_PRNHEAL_HEARD_VLD_DEL_SQLSTR = """
 INSERT INTO person_plan_healerunit_h_del_vld (spark_num, face_name, person_name, plan_rope, healer_name_ERASE)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, healer_name_ERASE_inx
-FROM person_plan_healerunit_h_del_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, healer_name_ERASE_inx
+SELECT spark_num, face_name, person_name, plan_rope, healer_name_ERASE
+FROM person_plan_healerunit_h_del_agg
+GROUP BY spark_num, face_name, person_name, plan_rope, healer_name_ERASE
 """
 INSERT_PRNLABO_HEARD_VLD_PUT_SQLSTR = """
 INSERT INTO person_plan_partyunit_h_put_vld (spark_num, face_name, person_name, plan_rope, party_title, solo, knot)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_inx, solo, knot
-FROM person_plan_partyunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_inx, solo, knot
+SELECT spark_num, face_name, person_name, plan_rope, party_title, solo, knot
+FROM person_plan_partyunit_h_put_agg
+GROUP BY spark_num, face_name, person_name, plan_rope, party_title, solo, knot
 """
 INSERT_PRNLABO_HEARD_VLD_DEL_SQLSTR = """
 INSERT INTO person_plan_partyunit_h_del_vld (spark_num, face_name, person_name, plan_rope, party_title_ERASE)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_ERASE_inx
-FROM person_plan_partyunit_h_del_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_ERASE_inx
+SELECT spark_num, face_name, person_name, plan_rope, party_title_ERASE
+FROM person_plan_partyunit_h_del_agg
+GROUP BY spark_num, face_name, person_name, plan_rope, party_title_ERASE
 """
 INSERT_PRNCASE_HEARD_VLD_PUT_SQLSTR = """
 INSERT INTO person_plan_reason_caseunit_h_put_vld (spark_num, face_name, person_name, plan_rope, reason_context, reason_state, reason_lower, reason_upper, reason_divisor, knot)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, reason_state_inx, reason_lower, reason_upper, reason_divisor, knot
-FROM person_plan_reason_caseunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, reason_state_inx, reason_lower, reason_upper, reason_divisor, knot
+SELECT spark_num, face_name, person_name, plan_rope, reason_context, reason_state, reason_lower_inx, reason_upper_inx, reason_divisor, knot
+FROM person_plan_reason_caseunit_h_put_agg
+GROUP BY spark_num, face_name, person_name, plan_rope, reason_context, reason_state, reason_lower_inx, reason_upper_inx, reason_divisor, knot
 """
 INSERT_PRNCASE_HEARD_VLD_DEL_SQLSTR = """
 INSERT INTO person_plan_reason_caseunit_h_del_vld (spark_num, face_name, person_name, plan_rope, reason_context, reason_state_ERASE)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, reason_state_ERASE_inx
-FROM person_plan_reason_caseunit_h_del_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, reason_state_ERASE_inx
+SELECT spark_num, face_name, person_name, plan_rope, reason_context, reason_state_ERASE
+FROM person_plan_reason_caseunit_h_del_agg
+GROUP BY spark_num, face_name, person_name, plan_rope, reason_context, reason_state_ERASE
 """
 INSERT_PRNREAS_HEARD_VLD_PUT_SQLSTR = """
 INSERT INTO person_plan_reasonunit_h_put_vld (spark_num, face_name, person_name, plan_rope, reason_context, active_requisite, knot)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, active_requisite, knot
-FROM person_plan_reasonunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_inx, active_requisite, knot
+SELECT spark_num, face_name, person_name, plan_rope, reason_context, active_requisite, knot
+FROM person_plan_reasonunit_h_put_agg
+GROUP BY spark_num, face_name, person_name, plan_rope, reason_context, active_requisite, knot
 """
 INSERT_PRNREAS_HEARD_VLD_DEL_SQLSTR = """
 INSERT INTO person_plan_reasonunit_h_del_vld (spark_num, face_name, person_name, plan_rope, reason_context_ERASE)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_ERASE_inx
-FROM person_plan_reasonunit_h_del_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, reason_context_ERASE_inx
+SELECT spark_num, face_name, person_name, plan_rope, reason_context_ERASE
+FROM person_plan_reasonunit_h_del_agg
+GROUP BY spark_num, face_name, person_name, plan_rope, reason_context_ERASE
 """
 INSERT_PRNPLAN_HEARD_VLD_PUT_SQLSTR = """
 INSERT INTO person_planunit_h_put_vld (spark_num, face_name, person_name, plan_rope, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool, knot)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool, knot
-FROM person_planunit_h_put_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool, knot
+SELECT spark_num, face_name, person_name, plan_rope, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool, knot
+FROM person_planunit_h_put_agg
+GROUP BY spark_num, face_name, person_name, plan_rope, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool, knot
 """
 INSERT_PRNPLAN_HEARD_VLD_DEL_SQLSTR = """
 INSERT INTO person_planunit_h_del_vld (spark_num, face_name, person_name, plan_rope_ERASE)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_ERASE_inx
-FROM person_planunit_h_del_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_ERASE_inx
+SELECT spark_num, face_name, person_name, plan_rope_ERASE
+FROM person_planunit_h_del_agg
+GROUP BY spark_num, face_name, person_name, plan_rope_ERASE
 """
 INSERT_PRNUNIT_HEARD_VLD_PUT_SQLSTR = """
 INSERT INTO personunit_h_put_vld (spark_num, face_name, moment_rope, person_name, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain, knot)
-SELECT spark_num, face_name_inx, moment_rope_inx, person_name_inx, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain, knot
-FROM personunit_h_put_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_inx, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain, knot
+SELECT spark_num, face_name, moment_rope, person_name, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain, knot
+FROM personunit_h_put_agg
+GROUP BY spark_num, face_name, moment_rope, person_name, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain, knot
 """
 INSERT_PRNUNIT_HEARD_VLD_DEL_SQLSTR = """
 INSERT INTO personunit_h_del_vld (spark_num, face_name, moment_rope, person_name_ERASE)
-SELECT spark_num, face_name_inx, moment_rope_inx, person_name_ERASE_inx
-FROM personunit_h_del_raw
-GROUP BY spark_num, face_name_inx, moment_rope_inx, person_name_ERASE_inx
+SELECT spark_num, face_name, moment_rope, person_name_ERASE
+FROM personunit_h_del_agg
+GROUP BY spark_num, face_name, moment_rope, person_name_ERASE
 """
 
 

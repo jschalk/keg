@@ -11,29 +11,6 @@ from src.ch18_world_etl.test._util.ch18_env import cursor0
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
 
-def test_get_update_prnfact_context_plan_sqlstr_ReturnsObj():
-    # ESTABLISH
-    prnfact_tablename = prime_tbl(kw.prnfact, "h", "agg", "put")
-    prnplan_tablename = prime_tbl(kw.person_planunit, "h", "agg", "put")
-
-    # WHEN
-    update_sqlstr = get_update_prnfact_context_plan_sqlstr()
-
-    # THEN
-    assert update_sqlstr
-    expected_update_sqlstr = f"""
-UPDATE {prnfact_tablename} as prnfact
-SET context_plan_close = prnplan.{kw.close}
-FROM {prnplan_tablename} prnplan
-WHERE prnfact.{kw.spark_num} = prnplan.{kw.spark_num}
-    AND prnfact.{kw.person_name} = prnplan.{kw.person_name}
-    AND prnfact.{kw.fact_context} = prnplan.{kw.plan_rope}
-;
-"""
-    print(expected_update_sqlstr)
-    assert update_sqlstr == expected_update_sqlstr
-
-
 def pfhap1_insert_prnfact(cursor0: Cursor, x_values: list[list]) -> str:
     """x_cols = [kw.spark_num, kw.person_name, kw.fact_context]"""
     x_cols = [kw.spark_num, kw.person_name, kw.fact_context]
@@ -76,6 +53,7 @@ def test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario0_1row(
     prnfact_insert_sql = pfhap1_insert_prnfact(cursor0, prnfact_vals)
     prnplan_in_vals = [[spark7, exx.sue, wx.clean_rope, x0_close]]
     prnplan_insert_sql = pfhap1_insert_prnplan(cursor0, prnplan_in_vals)
+    # BEFORE
     assert pfhap1_select_prnfact(cursor0, True) == [
         (spark7, exx.sue, wx.clean_rope, None)
     ]
@@ -184,3 +162,26 @@ def test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario4_Different_plan
         (spark7, exx.sue, wx.clean_rope, x0_close),
         (spark7, exx.sue, wx.mop_rope, x1_close),
     ]
+
+
+def test_get_update_prnfact_context_plan_sqlstr_ReturnsObj():
+    # ESTABLISH
+    prnfact_tablename = prime_tbl(kw.prnfact, "h", "agg", "put")
+    prnplan_tablename = prime_tbl(kw.person_planunit, "h", "agg", "put")
+
+    # WHEN
+    update_sqlstr = get_update_prnfact_context_plan_sqlstr()
+
+    # THEN
+    assert update_sqlstr
+    expected_update_sqlstr = f"""
+UPDATE {prnfact_tablename} as prnfact
+SET context_plan_close = prnplan.{kw.close}
+FROM {prnplan_tablename} prnplan
+WHERE prnfact.{kw.spark_num} = prnplan.{kw.spark_num}
+    AND prnfact.{kw.person_name} = prnplan.{kw.person_name}
+    AND prnfact.{kw.fact_context} = prnplan.{kw.plan_rope}
+;
+"""
+    print(expected_update_sqlstr)
+    assert update_sqlstr == expected_update_sqlstr

@@ -1,6 +1,7 @@
 from sqlite3 import Cursor
 from src.ch00_py.db_toolbox import get_row_count, get_table_columns
 from src.ch00_py.dict_toolbox import get_empty_set_if_None
+from src.ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
 from src.ch14_moment.moment_config import get_moment_dimens
 from src.ch15_nabu.nabu_config import get_nabu_dimens
 from src.ch17_idea.idea_config import get_default_sorted_list, get_idea_config_dict
@@ -20,6 +21,12 @@ from src.ch18_world_etl.etl_sqlstr import (
     get_insert_heard_agg_sqlstrs,
 )
 from src.ch18_world_etl.test._util.ch18_env import cursor0
+from src.ch18_world_etl.test.z_heard.test_heard_agg_update_factnum_pfhapx import (
+    pfhapx_insert_nabtime,
+    pfhapx_insert_prnfact,
+    pfhapx_insert_prnplan,
+    pfhapx_select_prnfact,
+)
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
 
@@ -232,3 +239,46 @@ FROM {prnptnr_h_agg_put_tablename}
         (spark5, exx.sue, exx.a23, exx.bob, exx.bob, 55.0, 22.0),
         (spark7, exx.bob, exx.a23, exx.bob, exx.bob, 55.0, 66.0),
     ]
+
+
+def test_etl_heard_raw_tables_to_heard_agg_tables_SQLTEST_Scenario1_FactUnit_TimeNums(
+    cursor0,
+):
+    # ESTABLISH modeled after # def test_update_heard_agg_timenum_columns_SQLTEST_Scenario2_FactUnit_TimeNums
+
+    create_sound_and_heard_tables(cursor0)
+    spark7 = 7
+    time_otx, time_inx = (300, 200)
+    fact_lower_otx, fact_upper_otx = (7777, 8000)
+    plan_close = 5259492000
+    nabtime_val = [spark7, wx.root_rope, time_otx, time_inx]
+    prnplan_val = [spark7, wx.Bob, wx.mop_rope, plan_close]
+    prnfact_val = [
+        spark7,
+        wx.Bob,
+        wx.clean_rope,
+        wx.mop_rope,
+        fact_lower_otx,
+        fact_upper_otx,
+    ]
+
+    insert_nabtime_sql = pfhapx_insert_nabtime(cursor0, [nabtime_val])
+    insert_prnplan_sql = pfhapx_insert_prnplan(cursor0, [prnplan_val])
+    insert_prnfact_sql = pfhapx_insert_prnfact(cursor0, [prnfact_val])
+
+    # BEFORE
+    assert pfhapx_select_prnfact(cursor0) == [
+        (fact_lower_otx, None, fact_upper_otx, None)
+    ]
+
+    # WHEN
+    etl_heard_raw_tables_to_heard_agg_tables(cursor0)
+
+    # THEN
+    inx_epoch_diff = time_otx - time_inx
+    fact_lower_inx = fact_lower_otx + inx_epoch_diff
+    fact_upper_inx = fact_upper_otx + inx_epoch_diff
+    assert pfhapx_select_prnfact(cursor0, True) == [
+        (fact_lower_otx, fact_lower_inx, fact_upper_otx, fact_upper_inx)
+    ]
+    assert pfhapx_select_prnfact(cursor0) == [(7777, 7877, 8000, 8100)]

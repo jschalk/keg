@@ -1,160 +1,161 @@
-from sqlite3 import Cursor, connect as sqlite3_connect
+from sqlite3 import Cursor
+from src.ch00_py.db_toolbox import create_type_reference_insert_sqlstr, get_row_count
 from src.ch13_time.epoch_main import DEFAULT_EPOCH_LENGTH, get_c400_constants
+from src.ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
 from src.ch15_nabu.nabu_config import get_nabu_config_dict
 from src.ch17_idea.idea_config import get_dimens_with_idea_element
+from src.ch18_world_etl.etl_config import create_prime_tablename
 from src.ch18_world_etl.etl_sqlstr import (
+    create_prime_db_table,
     create_prime_tablename as prime_tbl,
-    create_sound_and_heard_tables,
+    get_update_heard_agg_moment_timenum_sqlstrs,
     get_update_heard_agg_timenum_sqlstr,
-    get_update_heard_agg_timenum_sqlstrs,
-    update_heard_agg_timenum_columns,
 )
 from src.ch18_world_etl.test._util.ch18_env import cursor0
-from src.ch18_world_etl.test._util.ch18_examples import (
-    insert_mmtoffi_special_offi_time_otx as insert_offi_time_otx,
-    insert_mmtunit_special_c400_number as insert_c400_number,
-    insert_nabtime_h_agg_otx_inx_time as insert_otx_inx_time,
-    select_mmtoffi_special_offi_time_inx as select_offi_time_inx,
-)
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
 
-def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario0_MMTOFFI():
-    # ESTABLISH
-    mmtunit_h_agg_tablename = prime_tbl(kw.momentunit, "h", "agg")
-    nabtime_h_agg_tablename = prime_tbl(kw.nabu_timenum, "h", "agg")
-    mmtoffi_h_agg_tablename = prime_tbl(kw.moment_timeoffi, "h", "agg")
-    c400_leap_length = get_c400_constants().c400_leap_length
-    cte_tablename = f"spark_{kw.inx_epoch_diff}"
+def mxhap0_insert_mmtunit(cursor0: Cursor, x_values: list[list]) -> str:
+    """x_cols = [kw.spark_num, kw.moment_rope, kw.c400_number]"""
 
-    # WHEN
-    generated_update_heard_agg_timenum_sqlstr = get_update_heard_agg_timenum_sqlstr(
-        mmtoffi_h_agg_tablename, kw.offi_time
-    )
-
-    # THEN
-    expected_sqlstr = f"""WITH {cte_tablename} AS (
-SELECT 
-  {kw.spark_num}
-, {kw.otx_time} - {kw.inx_time} AS {kw.inx_epoch_diff}
-, IFNULL({kw.c400_number} * {c400_leap_length}, {DEFAULT_EPOCH_LENGTH}) as {kw.epoch_length}
-FROM {nabtime_h_agg_tablename}
-LEFT JOIN (
-    SELECT {kw.moment_rope}, {kw.c400_number} 
-    FROM {mmtunit_h_agg_tablename} 
-    GROUP BY {kw.moment_rope}, {kw.c400_number}
-    ) x_moment ON x_moment.{kw.moment_rope} = {nabtime_h_agg_tablename}.{kw.moment_rope}
-)
-UPDATE {mmtoffi_h_agg_tablename}
-SET {kw.offi_time}_inx = mod({kw.offi_time}_otx + (
-    SELECT {kw.inx_epoch_diff}
-    FROM {cte_tablename}
-    WHERE {cte_tablename}.{kw.spark_num} = {mmtoffi_h_agg_tablename}.{kw.spark_num}
-), (SELECT {kw.epoch_length}
-    FROM {cte_tablename}
-    WHERE {cte_tablename}.{kw.spark_num} = {mmtoffi_h_agg_tablename}.{kw.spark_num}
-))
-FROM {cte_tablename}
-WHERE {mmtoffi_h_agg_tablename}.{kw.spark_num} IN (SELECT {kw.spark_num} FROM {cte_tablename})
-;
-"""
-    assert generated_update_heard_agg_timenum_sqlstr == expected_sqlstr
+    x_cols = [kw.spark_num, kw.moment_rope, kw.c400_number]
+    tablename = create_prime_db_table(cursor0, kw.mmtunit, "h", "agg")
+    insert_sql = create_type_reference_insert_sqlstr(tablename, x_cols, x_values)
+    cursor0.execute(insert_sql)
+    return insert_sql
 
 
-def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario1_MMTPAYY():
-    # ESTABLISH
-    mmtunit_h_agg_tablename = prime_tbl(kw.momentunit, "h", "agg")
-    nabtime_h_agg_tablename = prime_tbl(kw.nabu_timenum, "h", "agg")
-    mmtpayy_h_agg_tablename = prime_tbl(kw.moment_paybook, "h", "agg")
-    c400_leap_length = get_c400_constants().c400_leap_length
-    cte_tablename = f"spark_{kw.inx_epoch_diff}"
+def mxhap0_insert_nabtime(cursor0: Cursor, x_values: list[list]) -> str:
+    """x_cols = [kw.spark_num, kw.moment_rope, kw.otx_time, kw.inx_time]"""
 
-    # WHEN
-    generated_update_heard_agg_timenum_sqlstr = get_update_heard_agg_timenum_sqlstr(
-        mmtpayy_h_agg_tablename, kw.tran_time
-    )
-
-    # THEN
-    expected_sqlstr = f"""WITH {cte_tablename} AS (
-SELECT 
-  {kw.spark_num}
-, {kw.otx_time} - {kw.inx_time} AS {kw.inx_epoch_diff}
-, IFNULL({kw.c400_number} * {c400_leap_length}, {DEFAULT_EPOCH_LENGTH}) as {kw.epoch_length}
-FROM {nabtime_h_agg_tablename}
-LEFT JOIN (
-    SELECT {kw.moment_rope}, {kw.c400_number} 
-    FROM {mmtunit_h_agg_tablename} 
-    GROUP BY {kw.moment_rope}, {kw.c400_number}
-    ) x_moment ON x_moment.{kw.moment_rope} = {nabtime_h_agg_tablename}.{kw.moment_rope}
-)
-UPDATE {mmtpayy_h_agg_tablename}
-SET {kw.tran_time}_inx = mod({kw.tran_time}_otx + (
-    SELECT {kw.inx_epoch_diff}
-    FROM {cte_tablename}
-    WHERE {cte_tablename}.{kw.spark_num} = {mmtpayy_h_agg_tablename}.{kw.spark_num}
-), (SELECT {kw.epoch_length}
-    FROM {cte_tablename}
-    WHERE {cte_tablename}.{kw.spark_num} = {mmtpayy_h_agg_tablename}.{kw.spark_num}
-))
-FROM {cte_tablename}
-WHERE {mmtpayy_h_agg_tablename}.{kw.spark_num} IN (SELECT {kw.spark_num} FROM {cte_tablename})
-;
-"""
-    assert generated_update_heard_agg_timenum_sqlstr == expected_sqlstr
+    x_cols = [kw.spark_num, kw.moment_rope, kw.otx_time, kw.inx_time]
+    tablename = create_prime_db_table(cursor0, kw.nabtime, "h", "agg")
+    insert_sql = create_type_reference_insert_sqlstr(tablename, x_cols, x_values)
+    cursor0.execute(insert_sql)
+    return insert_sql
 
 
-def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario2_PopulatesTableWithSingleRecord(
+def mxhap0_insert_mmtoffi(cursor0: Cursor, x_values: list[list]) -> str:
+    """x_cols = [kw.spark_num, kw.moment_rope, "offi_time_otx"]"""
+
+    x_cols = [kw.spark_num, kw.moment_rope, f"{kw.offi_time}_otx"]
+    tablename = create_prime_db_table(cursor0, kw.mmtoffi, "h", "agg")
+    insert_sql = create_type_reference_insert_sqlstr(tablename, x_cols, x_values)
+    cursor0.execute(insert_sql)
+    return insert_sql
+
+
+def mxhap0_select_mmtoffi(cursor0: Cursor, print_rows: bool = False) -> list[tuple]:
+    """SELECT spark_num, moment_rope, offi_time_otx, offi_time_inx"""
+
+    prnfact_h_agg_table = create_prime_tablename(kw.mmtoffi, "h", "agg")
+    sel_prnfact_str = f"""
+SELECT {kw.spark_num}, {kw.moment_rope}, offi_time_otx, offi_time_inx
+FROM {prnfact_h_agg_table}
+ORDER BY {kw.spark_num}, {kw.moment_rope}, offi_time_otx, offi_time_inx
+;"""
+    x_rows = cursor0.execute(sel_prnfact_str).fetchall()
+    if print_rows:
+        print(x_rows)
+    return x_rows
+
+
+def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario0_PopulatesTableWithSingleRecord(
     cursor0: Cursor,
 ):
     # ESTABLISH
-    spark1 = 1
-    s1_otx_time = 44
-    s1_inx_time = 55
-    x200_offi_time = 200
+    spark7 = 7
+    a23_c400_number = 8
+    mmtunit_vals = [[spark7, exx.a23, a23_c400_number]]
+    mxhap0_insert_mmtunit(cursor0, mmtunit_vals)
+    s7_otx_time = 44
+    s7_inx_time = 55
+    s7_offi_time_otx = 200
+    nabtime_vals = [[spark7, exx.a23, s7_otx_time, s7_inx_time]]
+    mxhap0_insert_nabtime(cursor0, nabtime_vals)
+    mmtoffi_vals = [[spark7, exx.a23, s7_offi_time_otx]]
+    mxhap0_insert_mmtoffi(cursor0, mmtoffi_vals)
 
-    create_sound_and_heard_tables(cursor0)
-    insert_otx_inx_time(cursor0, spark1, exx.sue, exx.a23, s1_otx_time, s1_inx_time)
-    insert_offi_time_otx(cursor0, spark1, exx.sue, exx.a23, x200_offi_time)
-    mmtoffi_h_agg_tablename = prime_tbl(kw.moment_timeoffi, "h", "agg")
-    assert not select_offi_time_inx(cursor0, spark1, exx.a23)[0][3]
+    # BEFORE
+    assert mxhap0_select_mmtoffi(cursor0, True) == [
+        (spark7, exx.a23, s7_offi_time_otx, None)
+    ]
 
     # WHEN
-    update_mmtoffi_sql = get_update_heard_agg_timenum_sqlstr(
-        mmtoffi_h_agg_tablename, kw.offi_time
-    )
+    mxhap0_table = create_prime_tablename(kw.mmtoffi, "h", "agg")
+    update_mmtoffi_sql = get_update_heard_agg_timenum_sqlstr(mxhap0_table, kw.offi_time)
+    print(update_mmtoffi_sql)
     cursor0.execute(update_mmtoffi_sql)
 
     # THEN
-    x211_offi_time = x200_offi_time + s1_otx_time - s1_inx_time
-    assert select_offi_time_inx(cursor0, spark1, exx.a23)[0][3] == x211_offi_time
+    s7_offi_time_inx = s7_offi_time_otx + (s7_otx_time - s7_inx_time)
+    assert mxhap0_select_mmtoffi(cursor0, True) == [
+        (spark7, exx.a23, s7_offi_time_otx, s7_offi_time_inx)
+    ]
+    assert mxhap0_select_mmtoffi(cursor0, True) == [(7, exx.a23, 200, 189)]
 
 
-def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario3_PopulatesTableWithTwoRecords(
+def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario1_PopulatesTableWhen_nabtime_RowDoesNotExist(
     cursor0: Cursor,
 ):
     # ESTABLISH
-    spark1 = 1
-    spark3 = 3
-    s1_otx_time = 44
-    s1_inx_time = 55
-    s1_offi_time_otx = 200
-    s3_otx_time = 400
-    s3_inx_time = 550
-    s3_offi_time_otx = 2000
+    spark7 = 7
+    a23_c400_number = 8
+    mmtunit_vals = [[spark7, exx.a23, a23_c400_number]]
+    mxhap0_insert_mmtunit(cursor0, mmtunit_vals)
+    s7_offi_time_otx = 200
+    mmtoffi_vals = [[spark7, exx.a23, s7_offi_time_otx]]
+    create_prime_db_table(cursor0, kw.nabtime, "h", "agg")
+    mxhap0_insert_mmtoffi(cursor0, mmtoffi_vals)
 
-    create_sound_and_heard_tables(cursor0)
-    insert_otx_inx_time(cursor0, spark1, exx.sue, exx.a23, s1_otx_time, s1_inx_time)
-    insert_otx_inx_time(cursor0, spark3, exx.sue, exx.a23, s3_otx_time, s3_inx_time)
-    insert_offi_time_otx(cursor0, spark1, exx.sue, exx.a23, s1_offi_time_otx)
-    insert_offi_time_otx(cursor0, spark3, exx.sue, exx.a23, s3_offi_time_otx)
-    mmtoffi_h_agg_tablename = prime_tbl(kw.moment_timeoffi, "h", "agg")
-    assert select_offi_time_inx(cursor0, spark1, exx.a23)[0][3] is None
-    assert select_offi_time_inx(cursor0, spark3, exx.a23)[0][3] is None
+    # BEFORE
+    assert mxhap0_select_mmtoffi(cursor0) == [(spark7, exx.a23, s7_offi_time_otx, None)]
 
     # WHEN
-    update_mmtoffi_sql = get_update_heard_agg_timenum_sqlstr(
-        mmtoffi_h_agg_tablename, kw.offi_time
-    )
+    mxhap0_table = create_prime_tablename(kw.mmtoffi, "h", "agg")
+    update_mmtoffi_sql = get_update_heard_agg_timenum_sqlstr(mxhap0_table, kw.offi_time)
+    print(update_mmtoffi_sql)
+    cursor0.execute(update_mmtoffi_sql)
+
+    # THEN
+    s7_offi_time_inx = s7_offi_time_otx
+    assert mxhap0_select_mmtoffi(cursor0, True) == [
+        (spark7, exx.a23, s7_offi_time_otx, s7_offi_time_inx)
+    ]
+    assert mxhap0_select_mmtoffi(cursor0, True) == [(7, exx.a23, 200, 200)]
+
+
+def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario3_PopulatesTableWithTwoRecords(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    spark1, spark3 = (1, 3)
+    s1_otx_time, s1_inx_time = (44, 55)
+    s3_otx_time, s3_inx_time = (400, 550)
+    s1_offi_time_otx = 200
+    s3_offi_time_otx = 2000
+
+    nabtime_vals = [
+        [spark1, exx.a23, s1_otx_time, s1_inx_time],
+        [spark3, exx.a23, s3_otx_time, s3_inx_time],
+    ]
+    mxhap0_insert_nabtime(cursor0, nabtime_vals)
+    mmtoffi_vals = [
+        [spark1, exx.a23, s1_offi_time_otx],
+        [spark3, exx.a23, s3_offi_time_otx],
+    ]
+    mxhap0_insert_mmtoffi(cursor0, mmtoffi_vals)
+    create_prime_db_table(cursor0, kw.mmtunit, "h", "agg")
+
+    # BEFORE
+    assert mxhap0_select_mmtoffi(cursor0, True) == [
+        (spark1, exx.a23, s1_offi_time_otx, None),
+        (spark3, exx.a23, s3_offi_time_otx, None),
+    ]
+
+    # WHEN
+    mmtoffi_tbl = prime_tbl(kw.mmtoffi, "h", "agg")
+    update_mmtoffi_sql = get_update_heard_agg_timenum_sqlstr(mmtoffi_tbl, kw.offi_time)
     cursor0.execute(update_mmtoffi_sql)
 
     # THEN
@@ -162,40 +163,51 @@ def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario3_PopulatesTable
     s3_inx_epoch_diff = s3_otx_time - s3_inx_time
     s1_offi_time_inx = s1_offi_time_otx + s1_inx_epoch_diff
     s3_offi_time_inx = s3_offi_time_otx + s3_inx_epoch_diff
-    assert select_offi_time_inx(cursor0, spark1, exx.a23)[0][3] == s1_offi_time_inx
-    assert select_offi_time_inx(cursor0, spark3, exx.a23)[0][3] == s3_offi_time_inx
-    assert select_offi_time_inx(cursor0, spark1, exx.a23)[0][3] == 189
-    assert select_offi_time_inx(cursor0, spark3, exx.a23)[0][3] == 1850
+    assert mxhap0_select_mmtoffi(cursor0) == [
+        (spark1, exx.a23, s1_offi_time_otx, s1_offi_time_inx),
+        (spark3, exx.a23, s3_offi_time_otx, s3_offi_time_inx),
+    ]
+    assert mxhap0_select_mmtoffi(cursor0) == [
+        (1, exx.a23, 200, 189),
+        (3, exx.a23, 2000, 1850),
+    ]
 
 
-def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario4_PopulatesTableWithTwoRecordsAndDoesModularMath(
+def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario4_PopulatesTableWithTwoRecordsAndDoesModularMath(
     cursor0: Cursor,
 ):
     # ESTABLISH
-    spark1 = 1
-    spark3 = 3
+    spark1, spark3 = (1, 3)
+    s1_otx_time, s1_inx_time = (44, 55)
+    s3_otx_time, s3_inx_time = (400, 550)
+    s1_offi_time_otx, s3_offi_time_otx = (200, 2000)
     a23_c400_number = 5
     a23_epoch_length = get_c400_constants().c400_leap_length * a23_c400_number
     print(f"{a23_epoch_length=}")
     print(f"{DEFAULT_EPOCH_LENGTH=}")
-    s1_otx_time = 44
-    s1_inx_time = 55
-    s1_offi_time_otx = 200
-    s3_otx_time = 400 + a23_epoch_length
-    s3_inx_time = 550
-    s3_offi_time_otx = 2000
+    s3_otx_time, s3_inx_time = (400 + a23_epoch_length, 550)
 
-    create_sound_and_heard_tables(cursor0)
-    insert_c400_number(cursor0, spark1, exx.sue, exx.a23, a23_c400_number)
-    insert_otx_inx_time(cursor0, spark1, exx.sue, exx.a23, s1_otx_time, s1_inx_time)
-    insert_otx_inx_time(cursor0, spark3, exx.sue, exx.a23, s3_otx_time, s3_inx_time)
-    insert_offi_time_otx(cursor0, spark1, exx.sue, exx.a23, s1_offi_time_otx)
-    insert_offi_time_otx(cursor0, spark3, exx.sue, exx.a23, s3_offi_time_otx)
-    mmtoffi_h_agg_tablename = prime_tbl(kw.moment_timeoffi, "h", "agg")
-    assert select_offi_time_inx(cursor0, spark1, exx.a23)[0][3] is None
-    assert select_offi_time_inx(cursor0, spark3, exx.a23)[0][3] is None
+    mmtunit_vals = [[spark1, exx.a23, a23_c400_number]]
+    mxhap0_insert_mmtunit(cursor0, mmtunit_vals)
+    nabtime_vals = [
+        [spark1, exx.a23, s1_otx_time, s1_inx_time],
+        [spark3, exx.a23, s3_otx_time, s3_inx_time],
+    ]
+    mxhap0_insert_nabtime(cursor0, nabtime_vals)
+    mmtoffi_vals = [
+        [spark1, exx.a23, s1_offi_time_otx],
+        [spark3, exx.a23, s3_offi_time_otx],
+    ]
+    mxhap0_insert_mmtoffi(cursor0, mmtoffi_vals)
+
+    # BEFORE
+    assert mxhap0_select_mmtoffi(cursor0, True) == [
+        (1, exx.a23, 200, None),
+        (3, exx.a23, 2000, None),
+    ]
 
     # WHEN
+    mmtoffi_h_agg_tablename = prime_tbl(kw.moment_timeoffi, "h", "agg")
     update_mmtoffi_sql = get_update_heard_agg_timenum_sqlstr(
         mmtoffi_h_agg_tablename, kw.offi_time
     )
@@ -206,15 +218,19 @@ def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario4_PopulatesTable
     s3_inx_epoch_diff = s3_otx_time - s3_inx_time
     s1_offi_time_inx = s1_offi_time_otx + s1_inx_epoch_diff
     s3_offi_time_inx = (s3_offi_time_otx + s3_inx_epoch_diff) % a23_epoch_length
-    assert select_offi_time_inx(cursor0, spark1, exx.a23)[0][3] == s1_offi_time_inx
-    assert select_offi_time_inx(cursor0, spark3, exx.a23)[0][3] == s3_offi_time_inx
-    assert select_offi_time_inx(cursor0, spark1, exx.a23)[0][3] == 189
-    assert select_offi_time_inx(cursor0, spark3, exx.a23)[0][3] == 1850
+    assert mxhap0_select_mmtoffi(cursor0, True) == [
+        (1, exx.a23, 200, s1_offi_time_inx),
+        (3, exx.a23, 2000, s3_offi_time_inx),
+    ]
+    assert mxhap0_select_mmtoffi(cursor0, True) == [
+        (1, exx.a23, 200, 189),
+        (3, exx.a23, 2000, 1850),
+    ]
 
 
-def test_get_update_heard_agg_timenum_sqlstrs_ReturnsObj():
+def test_get_update_heard_agg_moment_timenum_sqlstrs_ReturnsObj():
     # ESTABLISH / WHEN
-    gen_update_sqlstrs = get_update_heard_agg_timenum_sqlstrs()
+    gen_update_sqlstrs = get_update_heard_agg_moment_timenum_sqlstrs()
 
     # THEN
     assert gen_update_sqlstrs
@@ -239,42 +255,66 @@ def test_get_update_heard_agg_timenum_sqlstrs_ReturnsObj():
     assert gen_update_sqlstrs == expected_update_sqlstrs
 
 
-def test_update_heard_agg_timenum_columns_UpdatesDB_Scenario0_TwoRecordsAndDoesModularMath(
-    cursor0: Cursor,
-):
+def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario1_MMTPAYY():
     # ESTABLISH
-    spark1 = 1
-    spark3 = 3
-    a23_c400_number = 5
-    a23_epoch_length = get_c400_constants().c400_leap_length * a23_c400_number
-    print(f"{a23_epoch_length=}")
-    print(f"{DEFAULT_EPOCH_LENGTH=}")
-    s1_otx_time = 44
-    s1_inx_time = 55
-    s1_offi_time_otx = 200
-    s3_otx_time = 400 + a23_epoch_length
-    s3_inx_time = 550
-    s3_offi_time_otx = 2000
-
-    create_sound_and_heard_tables(cursor0)
-    insert_c400_number(cursor0, spark1, exx.sue, exx.a23, a23_c400_number)
-    insert_otx_inx_time(cursor0, spark1, exx.sue, exx.a23, s1_otx_time, s1_inx_time)
-    insert_otx_inx_time(cursor0, spark3, exx.sue, exx.a23, s3_otx_time, s3_inx_time)
-    insert_offi_time_otx(cursor0, spark1, exx.sue, exx.a23, s1_offi_time_otx)
-    insert_offi_time_otx(cursor0, spark3, exx.sue, exx.a23, s3_offi_time_otx)
-    mmtoffi_h_agg_tablename = prime_tbl(kw.moment_timeoffi, "h", "agg")
-    assert select_offi_time_inx(cursor0, spark1, exx.a23)[0][3] is None
-    assert select_offi_time_inx(cursor0, spark3, exx.a23)[0][3] is None
+    mmtunit_h_agg_tablename = prime_tbl(kw.momentunit, "h", "agg")
+    nabtime_h_agg_tablename = prime_tbl(kw.nabu_timenum, "h", "agg")
+    mmtpayy_h_agg_tablename = prime_tbl(kw.moment_paybook, "h", "agg")
+    c400_leap_length = get_c400_constants().c400_leap_length
 
     # WHEN
-    update_heard_agg_timenum_columns(cursor0)
+    generated_update_heard_agg_timenum_sqlstr = get_update_heard_agg_timenum_sqlstr(
+        mmtpayy_h_agg_tablename, kw.tran_time
+    )
 
     # THEN
-    s1_inx_epoch_diff = s1_otx_time - s1_inx_time
-    s3_inx_epoch_diff = s3_otx_time - s3_inx_time
-    s1_offi_time_inx = s1_offi_time_otx + s1_inx_epoch_diff
-    s3_offi_time_inx = (s3_offi_time_otx + s3_inx_epoch_diff) % a23_epoch_length
-    assert select_offi_time_inx(cursor0, spark1, exx.a23)[0][3] == s1_offi_time_inx
-    assert select_offi_time_inx(cursor0, spark3, exx.a23)[0][3] == s3_offi_time_inx
-    assert select_offi_time_inx(cursor0, spark1, exx.a23)[0][3] == 189
-    assert select_offi_time_inx(cursor0, spark3, exx.a23)[0][3] == 1850
+    expected_sqlstr = f"""
+UPDATE {mmtpayy_h_agg_tablename} as dst_table
+SET {kw.tran_time}_inx = mod(
+    dst_table.{kw.tran_time}_otx + IFNULL({kw.nabtime}.{kw.otx_time} - {kw.nabtime}.{kw.inx_time}, 0)
+    , IFNULL({kw.c400_number} * {c400_leap_length}, 1472657760)
+    )
+FROM {mmtpayy_h_agg_tablename} as dst2_table
+LEFT JOIN {nabtime_h_agg_tablename} as {kw.nabtime} ON dst2_table.{kw.spark_num} = {kw.nabtime}.spark_num
+LEFT JOIN (
+    SELECT {kw.moment_rope}, {kw.c400_number}
+    FROM {mmtunit_h_agg_tablename}
+    GROUP BY {kw.moment_rope}, {kw.c400_number}
+    ) {kw.mmtunit} ON {kw.mmtunit}.{kw.moment_rope} = {kw.nabtime}.{kw.moment_rope}
+WHERE dst2_table.{kw.spark_num} = dst_table.{kw.spark_num}
+;
+"""
+    assert generated_update_heard_agg_timenum_sqlstr == expected_sqlstr
+
+
+def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario0_MMTOFFI():
+    # ESTABLISH
+    mmtunit_h_agg_tablename = prime_tbl(kw.momentunit, "h", "agg")
+    nabtime_h_agg_tablename = prime_tbl(kw.nabu_timenum, "h", "agg")
+    mmtoffi_h_agg_tablename = prime_tbl(kw.moment_timeoffi, "h", "agg")
+    c400_leap_length = get_c400_constants().c400_leap_length
+
+    # WHEN
+    generated_update_heard_agg_timenum_sqlstr = get_update_heard_agg_timenum_sqlstr(
+        mmtoffi_h_agg_tablename, kw.offi_time
+    )
+
+    # THEN
+    expected_sqlstr = f"""
+UPDATE {mmtoffi_h_agg_tablename} as dst_table
+SET {kw.offi_time}_inx = mod(
+    dst_table.offi_time_otx + IFNULL({kw.nabtime}.{kw.otx_time} - {kw.nabtime}.{kw.inx_time}, 0)
+    , IFNULL({kw.c400_number} * {c400_leap_length}, 1472657760)
+    )
+FROM {mmtoffi_h_agg_tablename} as dst2_table
+LEFT JOIN {nabtime_h_agg_tablename} as {kw.nabtime} ON dst2_table.{kw.spark_num} = {kw.nabtime}.{kw.spark_num}
+LEFT JOIN (
+    SELECT {kw.moment_rope}, {kw.c400_number}
+    FROM {mmtunit_h_agg_tablename}
+    GROUP BY {kw.moment_rope}, {kw.c400_number}
+    ) {kw.mmtunit} ON {kw.mmtunit}.{kw.moment_rope} = {kw.nabtime}.{kw.moment_rope}
+WHERE dst2_table.{kw.spark_num} = dst_table.{kw.spark_num}
+;
+"""
+    print(generated_update_heard_agg_timenum_sqlstr)
+    assert generated_update_heard_agg_timenum_sqlstr == expected_sqlstr

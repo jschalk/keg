@@ -20,8 +20,8 @@ from src.ch18_world_etl.etl_main import (
     etl_create_bud_mandate_ledgers,
     etl_create_buds_root_cells,
     etl_create_moment_cell_trees,
+    etl_heard_agg_tables_to_heard_vld_tables,
     etl_heard_raw_tables_to_heard_agg_tables,
-    etl_heard_raw_tables_to_heard_vld_tables,
     etl_heard_raw_tables_to_moment_ote1_agg,
     etl_heard_vld_tables_to_moment_jsons,
     etl_heard_vld_to_spark_person_csvs,
@@ -149,10 +149,7 @@ class WorldUnit:
         etl_sound_vld_tables_to_heard_raw_tables(cursor)
         # heard raw to moment/person jsons
         etl_heard_raw_tables_to_heard_agg_tables(cursor)
-        # TODO add step to convert TimeNum and ReasonNum in heard_agg_tables, use rules defined in Nabu chapter
-        # TODO change "etl_heard_raw_tables_to_heard_vld_tables" to "etl_heard_agg_tables_to_heard_vld_tables"
-        etl_heard_raw_tables_to_heard_vld_tables(cursor)
-        # etl_heard_vld_nabu_updates
+        etl_heard_agg_tables_to_heard_vld_tables(cursor)
         etl_heard_vld_tables_to_moment_jsons(cursor, mstr_dir)
         etl_heard_vld_to_spark_person_csvs(cursor, mstr_dir)
         etl_spark_person_csvs_to_lesson_json(mstr_dir)

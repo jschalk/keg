@@ -357,6 +357,19 @@ def check_path_funcs_HasDocString_TestsExist(
         # print(f"{chapter_desc} {test_func_exists} {path_func}")
 
 
+def necessary_comments_exist(function_name: str, test_function_str: str) -> bool:
+    establish_exists = test_function_str.find("ESTABLISH") > -1
+    when_exists = test_function_str.find("WHEN") > -1
+    then_exists = test_function_str.find("THEN") > -1
+    establish_when_then_exist = establish_exists and when_exists and then_exists
+    if function_name.find("SQLTEST") > -1:
+        before_str_exists = test_function_str.find("BEFORE") > -1
+        if not before_str_exists:
+            print(f"SQLTEST {function_name} requires BEFORE comment")
+        return before_str_exists and establish_when_then_exist
+    return establish_when_then_exist
+
+
 def check_all_test_functions_are_formatted(all_test_functions: dict[str, str]):
     example_strs = get_example_strs_config()
     func_total_count = len(all_test_functions)
@@ -365,11 +378,8 @@ def check_all_test_functions_are_formatted(all_test_functions: dict[str, str]):
     print(f"check all {func_total_count} functions...")
     for function_count, function_name in enumerate(sorted_test_functions_names):
         test_function_str = all_test_functions.get(function_name)
-        establish_str_exists = test_function_str.find("ESTABLISH") > -1
-        when_str_exists = test_function_str.find("WHEN") > -1
-        then_str_exists = test_function_str.find("THEN") > -1
-        fail_str = f"'ESTABLISH'/'WHEN'/'THEN' missing in '{function_name}'"
-        assert establish_str_exists and when_str_exists and then_str_exists, fail_str
+        fail_str = f"Necessary comments like 'ESTABLISH', 'WHEN', 'THEN' are missing in test function '{function_name}'"
+        assert necessary_comments_exist(function_name, test_function_str), fail_str
         # check that no test creates it's own cursor in memory
         memory_cursor_fail_str = f"{function_name} init memory cursor"
         if "create_marimo_notebook_from_test_str" not in function_name:

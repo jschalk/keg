@@ -609,9 +609,10 @@ def set_heard_raw_inx_column(
 def etl_heard_raw_tables_to_heard_agg_tables(cursor: sqlite3_Cursor):
     for insert_heard_agg_sqlstr in get_insert_heard_agg_sqlstrs().values():
         cursor.execute(insert_heard_agg_sqlstr)
+    update_heard_agg_timenum_columns(cursor)
 
 
-def etl_heard_raw_tables_to_heard_vld_tables(cursor: sqlite3_Cursor):
+def etl_heard_agg_tables_to_heard_vld_tables(cursor: sqlite3_Cursor):
     for insert_heard_vld_sqlstr in get_insert_heard_vld_sqlstrs().values():
         cursor.execute(insert_heard_vld_sqlstr)
 

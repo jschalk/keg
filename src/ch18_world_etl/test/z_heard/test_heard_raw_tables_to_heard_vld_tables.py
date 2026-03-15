@@ -4,7 +4,7 @@ from src.ch14_moment.moment_config import get_moment_dimens
 from src.ch15_nabu.nabu_config import get_nabu_dimens
 from src.ch17_idea.idea_config import get_default_sorted_list, get_idea_config_dict
 from src.ch18_world_etl.etl_config import get_dimen_abbv7
-from src.ch18_world_etl.etl_main import etl_heard_raw_tables_to_heard_vld_tables
+from src.ch18_world_etl.etl_main import etl_heard_agg_tables_to_heard_vld_tables
 from src.ch18_world_etl.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
@@ -14,6 +14,7 @@ from src.ch18_world_etl.test._util.ch18_env import cursor0
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
 
+# TODO change file name to test_heard_agg_z_to_heard_vld_tables.py
 def test_get_insert_heard_vld_sqlstrs_ReturnsObj_CheckMomentDimen(cursor0: Cursor):
     # sourcery skip: no-loop-in-tests
     # ESTABLISH / WHEN
@@ -31,25 +32,24 @@ def test_get_insert_heard_vld_sqlstrs_ReturnsObj_CheckMomentDimen(cursor0: Curso
 
     for x_dimen in idea_config:
         # print(f"{x_dimen} checking...")
-        raw_tablename = prime_tbl(x_dimen, "h", "raw")
+        agg_tablename = prime_tbl(x_dimen, "h", "agg")
         vld_tablename = prime_tbl(x_dimen, "h", "vld")
-        raw_columns = get_table_columns(cursor0, raw_tablename)
+        agg_columns = get_table_columns(cursor0, agg_tablename)
         vld_columns = get_table_columns(cursor0, vld_tablename)
-        raw_columns = {raw_col for raw_col in raw_columns if raw_col[-3:] != "otx"}
-        raw_columns.remove(f"{kw.face_name}_inx")
-        raw_columns.remove(kw.spark_num)
-        raw_columns.remove(kw.error_message)
-        raw_columns = get_default_sorted_list(raw_columns)
+        agg_columns = {agg_col for agg_col in agg_columns if agg_col[-3:] != "otx"}
+        agg_columns.remove(kw.face_name)
+        agg_columns.remove(kw.spark_num)
+        agg_columns = get_default_sorted_list(agg_columns)
 
-        raw_columns_str = ", ".join(raw_columns)
+        agg_columns_str = ", ".join(agg_columns)
         vld_columns_str = ", ".join(vld_columns)
-        # print(f"{raw_columns_str=}")
+        # print(f"{agg_columns_str=}")
         # print(f"{vld_columns_str=}")
         expected_table2table_vld_insert_sqlstr = f"""
 INSERT INTO {vld_tablename} ({vld_columns_str})
-SELECT {raw_columns_str}
-FROM {raw_tablename}
-GROUP BY {raw_columns_str}
+SELECT {agg_columns_str}
+FROM {agg_tablename}
+GROUP BY {agg_columns_str}
 """
         dimen_abbv7 = get_dimen_abbv7(x_dimen)
         # print(f'"{x_dimen}": {dimen_abbv7.upper()}_HEARD_VLD_INSERT_SQLSTR,')
@@ -58,6 +58,16 @@ GROUP BY {raw_columns_str}
         )
         gen_sqlstr = insert_heard_vld_sqlstrs.get(vld_tablename)
         assert gen_sqlstr == expected_table2table_vld_insert_sqlstr
+
+
+def remove_otx_and_excluded_cols(cols: set) -> set:
+    excluded_cols = {
+        "context_plan_close",
+        "context_plan_denom",
+        "context_plan_morph",
+        "inx_epoch_diff",
+    }
+    return {col for col in cols if col[-3:] != "otx" and col not in excluded_cols}
 
 
 def test_get_insert_heard_vld_sqlstrs_ReturnsObj_PersonDimensRequired(cursor0: Cursor):
@@ -73,36 +83,34 @@ def test_get_insert_heard_vld_sqlstrs_ReturnsObj_PersonDimensRequired(cursor0: C
 
     for person_dimen in person_dimens_config:
         # print(f"{person_dimen=}")
-        h_raw_put_tablename = prime_tbl(person_dimen, "h", "raw", "put")
-        h_raw_del_tablename = prime_tbl(person_dimen, "h", "raw", "del")
+        h_agg_put_tablename = prime_tbl(person_dimen, "h", "agg", "put")
+        h_agg_del_tablename = prime_tbl(person_dimen, "h", "agg", "del")
         h_vld_put_tablename = prime_tbl(person_dimen, "h", "vld", "put")
         h_vld_del_tablename = prime_tbl(person_dimen, "h", "vld", "del")
-        h_raw_put_cols = get_table_columns(cursor0, h_raw_put_tablename)
-        h_raw_del_cols = get_table_columns(cursor0, h_raw_del_tablename)
+        h_agg_put_cols = get_table_columns(cursor0, h_agg_put_tablename)
+        h_agg_del_cols = get_table_columns(cursor0, h_agg_del_tablename)
         h_vld_put_cols = get_table_columns(cursor0, h_vld_put_tablename)
         h_vld_del_cols = get_table_columns(cursor0, h_vld_del_tablename)
-        h_raw_put_cols = {col for col in h_raw_put_cols if col[-3:] != "otx"}
-        h_raw_del_cols = {col for col in h_raw_del_cols if col[-3:] != "otx"}
-        h_raw_put_cols = get_default_sorted_list(h_raw_put_cols)
-        h_raw_del_cols = get_default_sorted_list(h_raw_del_cols)
-        h_raw_put_columns_str = ", ".join(h_raw_put_cols)
-        h_raw_put_cols.remove(kw.translate_spark_num)
-        h_raw_del_cols.remove(kw.translate_spark_num)
-        h_raw_put_columns_str = ", ".join(h_raw_put_cols)
-        h_raw_del_columns_str = ", ".join(h_raw_del_cols)
+        h_agg_put_cols = remove_otx_and_excluded_cols(h_agg_put_cols)
+        h_agg_del_cols = remove_otx_and_excluded_cols(h_agg_del_cols)
+        h_agg_put_cols = get_default_sorted_list(h_agg_put_cols)
+        h_agg_del_cols = get_default_sorted_list(h_agg_del_cols)
+        h_agg_put_columns_str = ", ".join(h_agg_put_cols)
+        h_agg_put_columns_str = ", ".join(h_agg_put_cols)
+        h_agg_del_columns_str = ", ".join(h_agg_del_cols)
         h_vld_put_columns_str = ", ".join(h_vld_put_cols)
         h_vld_del_columns_str = ", ".join(h_vld_del_cols)
         expected_vld_put_insert_sqlstr = f"""
 INSERT INTO {h_vld_put_tablename} ({h_vld_put_columns_str})
-SELECT {h_raw_put_columns_str}
-FROM {h_raw_put_tablename}
-GROUP BY {h_raw_put_columns_str}
+SELECT {h_agg_put_columns_str}
+FROM {h_agg_put_tablename}
+GROUP BY {h_agg_put_columns_str}
 """
         expected_vld_del_insert_sqlstr = f"""
 INSERT INTO {h_vld_del_tablename} ({h_vld_del_columns_str})
-SELECT {h_raw_del_columns_str}
-FROM {h_raw_del_tablename}
-GROUP BY {h_raw_del_columns_str}
+SELECT {h_agg_del_columns_str}
+FROM {h_agg_del_tablename}
+GROUP BY {h_agg_del_columns_str}
 """
         abbv7 = get_dimen_abbv7(person_dimen)
         put_sqlstr_ref = f"INSERT_{abbv7.upper()}_HEARD_VLD_PUT_SQLSTR"
@@ -132,14 +140,14 @@ def test_get_insert_heard_vld_sqlstrs_ReturnsObj_PopulatesTable_Scenario0(
     x66_debt = 66
 
     create_sound_and_heard_tables(cursor0)
-    prnptnr_h_raw_put_tablename = prime_tbl(kw.person_partnerunit, "h", "raw", "put")
-    print(f"{get_table_columns(cursor0, prnptnr_h_raw_put_tablename)=}")
-    insert_into_clause = f"""INSERT INTO {prnptnr_h_raw_put_tablename} (
+    prnptnr_h_agg_put_tablename = prime_tbl(kw.person_partnerunit, "h", "agg", "put")
+    print(f"{get_table_columns(cursor0, prnptnr_h_agg_put_tablename)=}")
+    insert_into_clause = f"""INSERT INTO {prnptnr_h_agg_put_tablename} (
 {kw.spark_num}
-, {kw.face_name}_inx
-, {kw.moment_rope}_inx
-, {kw.person_name}_inx
-, {kw.partner_name}_inx
+, {kw.face_name}
+, {kw.moment_rope}
+, {kw.person_name}
+, {kw.partner_name}
 , {kw.partner_cred_lumen}
 , {kw.partner_debt_lumen}
 )
@@ -152,7 +160,7 @@ VALUES
 ;
 """
     cursor0.execute(insert_into_clause)
-    assert get_row_count(cursor0, prnptnr_h_raw_put_tablename) == 5
+    assert get_row_count(cursor0, prnptnr_h_agg_put_tablename) == 5
     prnptnr_h_vld_put_tablename = prime_tbl(kw.person_partnerunit, "h", "vld", "put")
     assert get_row_count(cursor0, prnptnr_h_vld_put_tablename) == 0
 
@@ -183,7 +191,7 @@ FROM {prnptnr_h_vld_put_tablename}
     ]
 
 
-def test_etl_heard_raw_tables_to_heard_vld_tables_PopulatesTable_Scenario0(
+def test_etl_heard_agg_tables_to_heard_vld_tables_PopulatesTable_Scenario0(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -198,14 +206,14 @@ def test_etl_heard_raw_tables_to_heard_vld_tables_PopulatesTable_Scenario0(
     x66_debt = 66
 
     create_sound_and_heard_tables(cursor0)
-    prnptnr_h_raw_put_tablename = prime_tbl(kw.person_partnerunit, "h", "raw", "put")
-    print(f"{get_table_columns(cursor0, prnptnr_h_raw_put_tablename)=}")
-    insert_into_clause = f"""INSERT INTO {prnptnr_h_raw_put_tablename} (
+    prnptnr_h_agg_put_tablename = prime_tbl(kw.person_partnerunit, "h", "agg", "put")
+    print(f"{get_table_columns(cursor0, prnptnr_h_agg_put_tablename)=}")
+    insert_into_clause = f"""INSERT INTO {prnptnr_h_agg_put_tablename} (
 {kw.spark_num}
-, {kw.face_name}_inx
-, {kw.moment_rope}_inx
-, {kw.person_name}_inx
-, {kw.partner_name}_inx
+, {kw.face_name}
+, {kw.moment_rope}
+, {kw.person_name}
+, {kw.partner_name}
 , {kw.partner_cred_lumen}
 , {kw.partner_debt_lumen}
 )
@@ -218,12 +226,12 @@ VALUES
 ;
 """
     cursor0.execute(insert_into_clause)
-    assert get_row_count(cursor0, prnptnr_h_raw_put_tablename) == 5
+    assert get_row_count(cursor0, prnptnr_h_agg_put_tablename) == 5
     prnptnr_h_vld_put_tablename = prime_tbl(kw.person_partnerunit, "h", "vld", "put")
     assert get_row_count(cursor0, prnptnr_h_vld_put_tablename) == 0
 
     # WHEN
-    etl_heard_raw_tables_to_heard_vld_tables(cursor0)
+    etl_heard_agg_tables_to_heard_vld_tables(cursor0)
 
     # THEN
     assert get_row_count(cursor0, prnptnr_h_vld_put_tablename) == 4
