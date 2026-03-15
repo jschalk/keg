@@ -24,5 +24,5 @@ from src.ch09_person_lesson._ref.ch09_semantic_types import FaceName, MomentRope
 from src.ch11_bud._ref.ch11_semantic_types import SparkInt, TimeNum
 from src.ch12_keep._ref.ch12_semantic_types import ManaNum
 from src.ch13_time._ref.ch13_semantic_types import EpochLabel
-from src.ch20_world_logic._ref.ch20_semantic_types import WorldName
+from src.ch20_world_apex._ref.ch20_semantic_types import WorldName
 from src.ch21_lobby._ref.ch21_semantic_types import LobbyID

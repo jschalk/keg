@@ -47,7 +47,7 @@ from src.ch19_world_kpi.kpi_mstr import (
     create_kpi_csvs,
     populate_kpi_bundle,
 )
-from src.ch20_world_logic._ref.ch20_semantic_types import WorldName
+from src.ch20_world_apex._ref.ch20_semantic_types import WorldName
 
 
 # TODO move moment_mstr_dir to ch18
@@ -143,7 +143,7 @@ def stance_sheets_to_clarity_mstr(
 
 
 @dataclass
-class WorldUnit:
+class WorldDir:
     world_name: WorldName = None
     worlds_dir: str = None
     output_dir: str = None
@@ -172,19 +172,19 @@ class WorldUnit:
         set_dir(self._moment_mstr_dir)
 
 
-def worldunit_shop(
+def worlddir_shop(
     world_name: WorldName,
     worlds_dir: str,
     output_dir: str = None,
     input_dir: str = None,
-) -> WorldUnit:
-    x_worldunit = WorldUnit(
+) -> WorldDir:
+    x_worlddir = WorldDir(
         world_name=world_name,
         worlds_dir=worlds_dir,
         output_dir=output_dir,
         _input_dir=input_dir,
     )
-    x_worldunit._set_world_dirs()
-    if not x_worldunit._input_dir:
-        x_worldunit.set_input_dir(create_path(x_worldunit._world_dir, "input"))
-    return x_worldunit
+    x_worlddir._set_world_dirs()
+    if not x_worlddir._input_dir:
+        x_worlddir.set_input_dir(create_path(x_worlddir._world_dir, "input"))
+    return x_worlddir

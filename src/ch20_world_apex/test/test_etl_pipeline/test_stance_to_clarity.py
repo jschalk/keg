@@ -7,14 +7,14 @@ from src.ch04_rope.rope import create_rope
 from src.ch17_idea.idea_db_tool import create_idea_sorted_table, upsert_sheet
 from src.ch18_world_etl.etl_main import get_max_brick_agg_spark_num
 from src.ch18_world_etl.etl_sqlstr import create_prime_tablename
-from src.ch20_world_logic.test._util.ch20_env import (
+from src.ch20_world_apex.test._util.ch20_env import (
     get_temp_dir as worlds_dir,
     temp_dir_setup,
 )
-from src.ch20_world_logic.world import (
-    WorldUnit,
+from src.ch20_world_apex.world import (
+    WorldDir,
     stance_sheets_to_clarity_mstr,
-    worldunit_shop,
+    worlddir_shop,
 )
 from src.ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
 
@@ -24,11 +24,11 @@ def test_stance_sheets_to_clarity_mstr_Scenario0_CreatesDatabaseFile(
 ):  # sourcery skip: extract-method
     # ESTABLISH:
     fay_str = "Fay34"
-    fay_world = worldunit_shop(fay_str, worlds_dir())
-    # delete_dir(fay_world.worlds_dir)
+    fay_wdir = worlddir_shop(fay_str, worlds_dir())
+    # delete_dir(fay_wdir.worlds_dir)
     sue_inx = "Suzy"
     ex_filename = "stance_Faybob.xlsx"
-    input_file_path = create_path(fay_world._input_dir, ex_filename)
+    input_file_path = create_path(fay_wdir._input_dir, ex_filename)
     br00113_columns = [
         kw.face_name,
         kw.moment_rope,
@@ -60,14 +60,14 @@ def test_stance_sheets_to_clarity_mstr_Scenario0_CreatesDatabaseFile(
     br00001_1df = DataFrame([br1row0], columns=br00001_columns)
     br00001_ex0_str = "example0_br00001"
     upsert_sheet(input_file_path, br00001_ex0_str, br00001_1df)
-    fay_db_path = fay_world.get_world_db_path()
+    fay_db_path = fay_wdir.get_world_db_path()
     assert not os_path_exists(fay_db_path)
 
     # WHEN
     stance_sheets_to_clarity_mstr(
-        world_db_path=fay_world.get_world_db_path(),
-        input_dir=fay_world._input_dir,
-        moment_mstr_dir=fay_world._moment_mstr_dir,
+        world_db_path=fay_wdir.get_world_db_path(),
+        input_dir=fay_wdir._input_dir,
+        moment_mstr_dir=fay_wdir._moment_mstr_dir,
     )
 
     # THEN
@@ -124,7 +124,7 @@ def test_stance_sheets_to_clarity_mstr_Scenario0_CreatesDatabaseFile(
     db_conn.close()
 
 
-def create_brick_agg_record(world: WorldUnit, spark_num: int):
+def create_brick_agg_record(wdir: WorldDir, spark_num: int):
     minute_360 = 360
     hour6am = "6am"
     agg_br00003_tablename = f"br00003_{kw.brick_agg}"
@@ -135,7 +135,7 @@ def create_brick_agg_record(world: WorldUnit, spark_num: int):
         kw.cumulative_minute,
         kw.hour_label,
     ]
-    with sqlite3_connect(world.get_world_db_path()) as db_conn:
+    with sqlite3_connect(wdir.get_world_db_path()) as db_conn:
         cursor = db_conn.cursor()
         create_idea_sorted_table(cursor, agg_br00003_tablename, agg_br00003_columns)
         insert_into_clause = f"""INSERT INTO {agg_br00003_tablename} (
@@ -145,7 +145,7 @@ def create_brick_agg_record(world: WorldUnit, spark_num: int):
 , {kw.cumulative_minute}
 , {kw.hour_label}
 )"""
-        values_clause = f"""VALUES ('{spark_num}', '{exx.sue}', '{world.world_name}', '{minute_360}', '{hour6am}');"""
+        values_clause = f"""VALUES ('{spark_num}', '{exx.sue}', '{wdir.world_name}', '{minute_360}', '{hour6am}');"""
         insert_sqlstr = f"{insert_into_clause} {values_clause}"
         cursor.execute(insert_sqlstr)
     db_conn.close()
@@ -156,13 +156,13 @@ def test_stance_sheets_to_clarity_mstr_Scenario1_DatabaseFileExists(
 ):  # sourcery skip: extract-method
     # ESTABLISH:
     fay_rope = create_rope("Fay34")
-    fay_world = worldunit_shop(fay_rope, worlds_dir())
+    fay_wdir = worlddir_shop(fay_rope, worlds_dir())
     spark5 = 5
-    create_brick_agg_record(fay_world, spark5)
-    # delete_dir(fay_world.worlds_dir)
+    create_brick_agg_record(fay_wdir, spark5)
+    # delete_dir(fay_wdir.worlds_dir)
     sue_inx = "Suzy"
     ex_filename = "stance_Faybob.xlsx"
-    input_file_path = create_path(fay_world._input_dir, ex_filename)
+    input_file_path = create_path(fay_wdir._input_dir, ex_filename)
     br00113_columns = [
         kw.face_name,
         kw.moment_rope,
@@ -177,7 +177,7 @@ def test_stance_sheets_to_clarity_mstr_Scenario1_DatabaseFileExists(
     br00113_df = DataFrame([br00113row0], columns=br00113_columns)
     br00113_ex0_str = f"example0_{br00113_str}"
     upsert_sheet(input_file_path, br00113_ex0_str, br00113_df)
-    fay_db_path = fay_world.get_world_db_path()
+    fay_db_path = fay_wdir.get_world_db_path()
     assert os_path_exists(fay_db_path)
     with sqlite3_connect(fay_db_path) as db_conn0:
         cursor0 = db_conn0.cursor()
@@ -187,9 +187,9 @@ def test_stance_sheets_to_clarity_mstr_Scenario1_DatabaseFileExists(
 
     # WHEN
     stance_sheets_to_clarity_mstr(
-        world_db_path=fay_world.get_world_db_path(),
-        input_dir=fay_world._input_dir,
-        moment_mstr_dir=fay_world._moment_mstr_dir,
+        world_db_path=fay_wdir.get_world_db_path(),
+        input_dir=fay_wdir._input_dir,
+        moment_mstr_dir=fay_wdir._moment_mstr_dir,
     )
 
     # THEN

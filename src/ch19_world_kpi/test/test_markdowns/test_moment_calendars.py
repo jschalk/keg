@@ -68,10 +68,10 @@ def test_create_calendar_markdown_files_Senario1_CreatesFileFromMomentUnitJSON(
 #     # ESTABLISH
 #     fay_str = "Fay"
 #     output_dir = create_path(worlds_dir(), "output")
-#     fay_world = shop(fay_str, worlds_dir(), output_dir)
+#     fay_wdir = shop(fay_str, worlds_dir(), output_dir)
 #     spark2 = 2
 #     ex_filename = "Faybob.xlsx"
-#     input_file_path = create_path(fay_world._input_dir, ex_filename)
+#     input_file_path = create_path(fay_wdir._input_dir, ex_filename)
 #     exx.a23 = exx.a23
 #     br00011_columns = [
 #         kw.spark_num,
@@ -83,14 +83,14 @@ def test_create_calendar_markdown_files_Senario1_CreatesFileFromMomentUnitJSON(
 #     br00011_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
 #     br00011_df = DataFrame(br00011_rows, columns=br00011_columns)
 #     upsert_sheet(input_file_path, "br00011_ex3", br00011_df)
-#     fay_world.sheets_input_to_clarity_mstr()
+#     fay_wdir.sheets_input_to_clarity_mstr()
 
 #     a23_calendar_md_path = create_path(output_dir, f"{exx.a23}_calendar.md")
 #     print(f"      {a23_calendar_md_path=}")
 #     assert not os_path_exists(a23_calendar_md_path)
 
 #     # WHEN
-#     fay_world.create_calendar_markdown_files()
+#     fay_wdir.create_calendar_markdown_files()
 
 #     # THEN
 #     assert os_path_exists(a23_calendar_md_path)

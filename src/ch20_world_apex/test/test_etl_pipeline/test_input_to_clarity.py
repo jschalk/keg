@@ -28,15 +28,15 @@ from src.ch18_world_etl._ref.ch18_path import (
     create_moment_ote1_csv_path,
 )
 from src.ch18_world_etl.etl_sqlstr import create_prime_tablename as prime_tbl
-from src.ch20_world_logic.test._util.ch20_env import (
+from src.ch20_world_apex.test._util.ch20_env import (
     cursor0,
     get_temp_dir as worlds_dir,
     temp_dir_setup,
 )
-from src.ch20_world_logic.world import (
+from src.ch20_world_apex.world import (
     sheets_input_to_clarity_mstr,
     sheets_input_to_clarity_with_cursor,
-    worldunit_shop,
+    worlddir_shop,
 )
 from src.ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
 
@@ -46,12 +46,12 @@ def test_sheets_input_to_clarity_with_cursor_Scenario0_br000113PopulatesTables(
 ):
     # ESTABLISH:
     fay_str = "Fay"
-    fay_world = worldunit_shop(fay_str, worlds_dir())
-    # delete_dir(fay_world.worlds_dir)
+    fay_wdir = worlddir_shop(fay_str, worlds_dir())
+    # delete_dir(fay_wdir.worlds_dir)
     sue_inx = "Suzy"
     e3 = 3
     ex_filename = "Faybob.xlsx"
-    input_file_path = create_path(fay_world._input_dir, ex_filename)
+    input_file_path = create_path(fay_wdir._input_dir, ex_filename)
     br00113_columns = [
         kw.face_name,
         kw.spark_num,
@@ -92,7 +92,7 @@ def test_sheets_input_to_clarity_with_cursor_Scenario0_br000113PopulatesTables(
     prnunit_heard_put_agg = prime_tbl(kw.personunit, "h", "vld", "put")
     prnptnr_heard_put_raw = prime_tbl(kw.prnptnr, "h", "raw", "put")
     prnptnr_heard_put_agg = prime_tbl(kw.prnptnr, "h", "vld", "put")
-    mstr_dir = fay_world._moment_mstr_dir
+    mstr_dir = fay_wdir._moment_mstr_dir
     a23_lasso = lassounit_shop(exx.a23)
     a23_json_path = create_moment_json_path(mstr_dir, a23_lasso)
     a23_e1_all_lesson_path = create_spark_all_lesson_path(
@@ -147,7 +147,7 @@ def test_sheets_input_to_clarity_with_cursor_Scenario0_br000113PopulatesTables(
 
     # WHEN
     sheets_input_to_clarity_with_cursor(
-        cursor0, fay_world._input_dir, fay_world._moment_mstr_dir
+        cursor0, fay_wdir._input_dir, fay_wdir._moment_mstr_dir
     )
 
     # THEN
@@ -211,12 +211,12 @@ def test_sheets_input_to_clarity_with_cursor_Scenario1_PopulateBudPayRows(
 ):
     # ESTABLISH:
     fay_str = "Fay"
-    fay_world = worldunit_shop(fay_str, worlds_dir())
-    # delete_dir(fay_world.worlds_dir)
+    fay_wdir = worlddir_shop(fay_str, worlds_dir())
+    # delete_dir(fay_wdir.worlds_dir)
     sue_inx = "Suzy"
     e3 = 3
     ex_filename = "Faybob.xlsx"
-    input_file_path = create_path(fay_world._input_dir, ex_filename)
+    input_file_path = create_path(fay_wdir._input_dir, ex_filename)
     br00113_columns = [
         kw.face_name,
         kw.spark_num,
@@ -274,7 +274,7 @@ def test_sheets_input_to_clarity_with_cursor_Scenario1_PopulateBudPayRows(
     prnunit_heard_put_agg = prime_tbl(kw.personunit, "h", "vld", "put")
     prnptnr_heard_put_raw = prime_tbl(kw.prnptnr, "h", "raw", "put")
     prnptnr_heard_put_agg = prime_tbl(kw.prnptnr, "h", "vld", "put")
-    mstr_dir = fay_world._moment_mstr_dir
+    mstr_dir = fay_wdir._moment_mstr_dir
     a23_lasso = lassounit_shop(exx.a23)
     a23_json_path = create_moment_json_path(mstr_dir, a23_lasso)
     a23_e1_all_lesson_path = create_spark_all_lesson_path(
@@ -327,7 +327,7 @@ def test_sheets_input_to_clarity_with_cursor_Scenario1_PopulateBudPayRows(
 
     # WHEN
     sheets_input_to_clarity_with_cursor(
-        cursor0, fay_world._input_dir, fay_world._moment_mstr_dir
+        cursor0, fay_wdir._input_dir, fay_wdir._moment_mstr_dir
     )
 
     # THEN
@@ -372,11 +372,11 @@ def test_sheets_input_to_clarity_with_cursor_Scenario2_PopulateMomentTranBook(
 ):
     # ESTABLISH:
     fay_str = "Fay"
-    fay_world = worldunit_shop(fay_str, worlds_dir())
-    # delete_dir(fay_world.worlds_dir)
+    fay_wdir = worlddir_shop(fay_str, worlds_dir())
+    # delete_dir(fay_wdir.worlds_dir)
     e3 = 3
     ex_filename = "Faybob.xlsx"
-    input_file_path = create_path(fay_world._input_dir, ex_filename)
+    input_file_path = create_path(fay_wdir._input_dir, ex_filename)
     br00002_columns = [
         kw.spark_num,
         kw.face_name,
@@ -399,7 +399,7 @@ def test_sheets_input_to_clarity_with_cursor_Scenario2_PopulateMomentTranBook(
 
     # WHEN
     sheets_input_to_clarity_with_cursor(
-        cursor0, fay_world._input_dir, fay_world._moment_mstr_dir
+        cursor0, fay_wdir._input_dir, fay_wdir._moment_mstr_dir
     )
 
     # THEN
@@ -411,10 +411,10 @@ def test_sheets_input_to_clarity_with_cursor_Scenario3_WhenNoMomentIdeas_ote1_Is
 ):
     # ESTABLISH
     fay_str = "Fay"
-    fay_world = worldunit_shop(fay_str, worlds_dir())
+    fay_wdir = worlddir_shop(fay_str, worlds_dir())
     spark2 = 2
     ex_filename = "Faybob.xlsx"
-    input_file_path = create_path(fay_world._input_dir, ex_filename)
+    input_file_path = create_path(fay_wdir._input_dir, ex_filename)
     br00011_columns = [
         kw.spark_num,
         kw.face_name,
@@ -425,14 +425,14 @@ def test_sheets_input_to_clarity_with_cursor_Scenario3_WhenNoMomentIdeas_ote1_Is
     br00011_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
     br00011_df = DataFrame(br00011_rows, columns=br00011_columns)
     upsert_sheet(input_file_path, "br00011_ex3", br00011_df)
-    moment_mstr = fay_world._moment_mstr_dir
+    moment_mstr = fay_wdir._moment_mstr_dir
     a23_lasso = lassounit_shop(exx.a23)
     a23_ote1_csv_path = create_moment_ote1_csv_path(moment_mstr, a23_lasso)
     assert os_path_exists(a23_ote1_csv_path) is False
 
     # WHEN
     sheets_input_to_clarity_with_cursor(
-        cursor0, fay_world._input_dir, fay_world._moment_mstr_dir
+        cursor0, fay_wdir._input_dir, fay_wdir._moment_mstr_dir
     )
 
     # THEN
@@ -444,15 +444,15 @@ def test_sheets_input_to_clarity_with_cursor_Scenario4_DeletesPreviousFiles(
 ):
     # ESTABLISH
     fay_str = "Fay"
-    fay_world = worldunit_shop(fay_str, worlds_dir())
-    print(f"{fay_world.worlds_dir=}")
-    mstr_dir = fay_world._moment_mstr_dir
+    fay_wdir = worlddir_shop(fay_str, worlds_dir())
+    print(f"{fay_wdir.worlds_dir=}")
+    mstr_dir = fay_wdir._moment_mstr_dir
     moments_dir = create_path(mstr_dir, "moments")
     testing2_filename = "testing2.txt"
     testing3_filename = "testing3.txt"
-    save_file(fay_world.worlds_dir, testing2_filename, "")
+    save_file(fay_wdir.worlds_dir, testing2_filename, "")
     save_file(moments_dir, testing3_filename, "")
-    testing2_path = create_path(fay_world.worlds_dir, testing2_filename)
+    testing2_path = create_path(fay_wdir.worlds_dir, testing2_filename)
     testing3_path = create_path(moments_dir, testing3_filename)
     assert os_path_exists(testing2_path)
     assert os_path_exists(testing3_path)
@@ -460,7 +460,7 @@ def test_sheets_input_to_clarity_with_cursor_Scenario4_DeletesPreviousFiles(
 
     # WHEN
     sheets_input_to_clarity_with_cursor(
-        cursor0, fay_world._input_dir, fay_world._moment_mstr_dir
+        cursor0, fay_wdir._input_dir, fay_wdir._moment_mstr_dir
     )
 
     # THEN
@@ -473,8 +473,8 @@ def test_sheets_input_to_clarity_with_cursor_Scenario5_CreatesFiles(
 ):
     # ESTABLISH
     fay_str = "Fay"
-    fay_world = worldunit_shop(fay_str, worlds_dir())
-    # delete_dir(fay_world.worlds_dir)
+    fay_wdir = worlddir_shop(fay_str, worlds_dir())
+    # delete_dir(fay_wdir.worlds_dir)
     spark1 = 1
     spark2 = 2
     minute_360 = 360
@@ -482,7 +482,7 @@ def test_sheets_input_to_clarity_with_cursor_Scenario5_CreatesFiles(
     hour6am = "6am"
     hour7am = "7am"
     ex_filename = "Faybob.xlsx"
-    input_file_path = create_path(fay_world._input_dir, ex_filename)
+    input_file_path = create_path(fay_wdir._input_dir, ex_filename)
     br00003_columns = [
         kw.spark_num,
         kw.face_name,
@@ -528,7 +528,7 @@ def test_sheets_input_to_clarity_with_cursor_Scenario5_CreatesFiles(
     br00011_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
     br00011_df = DataFrame(br00011_rows, columns=br00011_columns)
     upsert_sheet(input_file_path, "br00011_ex3", br00011_df)
-    mstr_dir = fay_world._moment_mstr_dir
+    mstr_dir = fay_wdir._moment_mstr_dir
     wrong_a23_moment_dir = create_path(mstr_dir, exx.a23)
     assert os_path_exists(wrong_a23_moment_dir) is False
     a23_lasso = lassounit_shop(exx.a23)
@@ -541,11 +541,11 @@ def test_sheets_input_to_clarity_with_cursor_Scenario5_CreatesFiles(
     assert not os_path_exists(a23_sue_gut_path)
     assert not os_path_exists(a23_sue_job_path)
     assert not os_path_exists(sue37_mandate_path)
-    assert count_dirs_files(fay_world.worlds_dir) == 5
+    assert count_dirs_files(fay_wdir.worlds_dir) == 5
 
     # WHEN
     sheets_input_to_clarity_with_cursor(
-        cursor0, fay_world._input_dir, fay_world._moment_mstr_dir
+        cursor0, fay_wdir._input_dir, fay_wdir._moment_mstr_dir
     )
 
     # THEN
@@ -555,7 +555,7 @@ def test_sheets_input_to_clarity_with_cursor_Scenario5_CreatesFiles(
     assert os_path_exists(a23_sue_gut_path)
     assert os_path_exists(a23_sue_job_path)
     assert os_path_exists(sue37_mandate_path)
-    assert count_dirs_files(fay_world.worlds_dir) == 42
+    assert count_dirs_files(fay_wdir.worlds_dir) == 42
 
 
 def test_sheets_input_to_clarity_mstr_Scenario0_CreatesDatabaseFile(
@@ -563,12 +563,12 @@ def test_sheets_input_to_clarity_mstr_Scenario0_CreatesDatabaseFile(
 ):
     # ESTABLISH:
     fay_str = "Fay"
-    fay_world = worldunit_shop(fay_str, worlds_dir())
-    # delete_dir(fay_world.worlds_dir)
+    fay_wdir = worlddir_shop(fay_str, worlds_dir())
+    # delete_dir(fay_wdir.worlds_dir)
     sue_inx = "Suzy"
     e3 = 3
     ex_filename = "Faybob.xlsx"
-    input_file_path = create_path(fay_world._input_dir, ex_filename)
+    input_file_path = create_path(fay_wdir._input_dir, ex_filename)
     br00113_columns = [
         kw.face_name,
         kw.spark_num,
@@ -602,14 +602,14 @@ def test_sheets_input_to_clarity_mstr_Scenario0_CreatesDatabaseFile(
     br00001_1df = DataFrame([br1row0], columns=br00001_columns)
     br00001_ex0_str = "example0_br00001"
     upsert_sheet(input_file_path, br00001_ex0_str, br00001_1df)
-    fay_db_path = fay_world.get_world_db_path()
+    fay_db_path = fay_wdir.get_world_db_path()
     assert not os_path_exists(fay_db_path)
 
     # WHEN
     sheets_input_to_clarity_mstr(
-        world_db_path=fay_world.get_world_db_path(),
-        input_dir=fay_world._input_dir,
-        moment_mstr_dir=fay_world._moment_mstr_dir,
+        world_db_path=fay_wdir.get_world_db_path(),
+        input_dir=fay_wdir._input_dir,
+        moment_mstr_dir=fay_wdir._moment_mstr_dir,
     )
 
     # THEN
