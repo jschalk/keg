@@ -1133,7 +1133,13 @@ def get_update_prncase_inx_epoch_diff_sqlstr() -> str:
 UPDATE person_plan_reason_caseunit_h_put_agg as prncase
 SET inx_epoch_diff = otx_time - inx_time
 FROM nabu_timenum_h_agg as nabtime
-WHERE prncase.spark_num = nabtime.spark_num
+WHERE 
+    nabtime.spark_num = (
+        SELECT MAX(n2.spark_num)
+        FROM nabu_timenum_h_agg as n2
+        WHERE n2.spark_num <= prncase.spark_num
+            AND prncase.plan_rope LIKE n2.moment_rope || '%'
+        )
     AND prncase.plan_rope LIKE nabtime.moment_rope || '%'
 ;
 """

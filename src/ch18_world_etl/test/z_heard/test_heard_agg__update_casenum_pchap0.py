@@ -11,28 +11,6 @@ from src.ch18_world_etl.test._util.ch18_env import cursor0
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
 
-def test_get_update_prncase_inx_epoch_diff_sqlstr_ReturnsObj():
-    # ESTABLISH
-    prncase_tablename = prime_tbl(kw.prncase, "h", "agg", "put")
-    nabtime_tablename = prime_tbl(kw.nabtime, "h", "agg")
-
-    # WHEN
-    update_sqlstr = get_update_prncase_inx_epoch_diff_sqlstr()
-
-    # THEN
-    assert update_sqlstr
-    expected_update_sqlstr = f"""
-UPDATE {prncase_tablename} as {kw.prncase}
-SET {kw.inx_epoch_diff} = {kw.otx_time} - {kw.inx_time}
-FROM {nabtime_tablename} as {kw.nabtime}
-WHERE {kw.prncase}.{kw.spark_num} = {kw.nabtime}.{kw.spark_num}
-    AND {kw.prncase}.{kw.plan_rope} LIKE {kw.nabtime}.{kw.moment_rope} || '%'
-;
-"""
-    print(expected_update_sqlstr)
-    assert update_sqlstr == expected_update_sqlstr
-
-
 def pchap0_insert_nabtime(cursor0: Cursor, x_values: list[list]) -> str:
     """x_cols = [kw.spark_num, kw.moment_rope, kw.otx_time, kw.inx_time]"""
 
@@ -177,3 +155,57 @@ def test_get_update_prncase_inx_epoch_diff_sqlstr_SQLTEST_Three_rows_Two_person_
         (9, exx.a23_dash, -6),
         (9, wx.clean_rope, 998),
     ]
+
+
+def test_get_update_prncase_inx_epoch_diff_sqlstr_SQLTEST_One_row(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    spark3 = 3
+    otx_time, inx_time = (199, 13)
+    nabtime_vals = [[spark3, wx.root_rope, otx_time, inx_time]]
+    pchap0_insert_nabtime(cursor0, nabtime_vals)
+    spark7 = 7
+    prncase_vals = [[spark7, wx.clean_rope]]
+    prncase_insert_sql = pchap0_insert_prncase(cursor0, prncase_vals)
+
+    # BEFORE
+    assert pchap0_select_prncase(cursor0) == [(spark7, wx.clean_rope, None)]
+
+    # WHEN
+    cursor0.execute(get_update_prncase_inx_epoch_diff_sqlstr())
+
+    # THEN
+    expected_inx_epoch_diff = otx_time - inx_time
+    assert pchap0_select_prncase(cursor0, True) == [
+        (spark7, wx.clean_rope, expected_inx_epoch_diff)
+    ]
+    assert pchap0_select_prncase(cursor0) == [(7, wx.clean_rope, 186)]
+
+
+def test_get_update_prncase_inx_epoch_diff_sqlstr_ReturnsObj():
+    # ESTABLISH
+    prncase_tablename = prime_tbl(kw.prncase, "h", "agg", "put")
+    nabtime_tablename = prime_tbl(kw.nabtime, "h", "agg")
+
+    # WHEN
+    update_sqlstr = get_update_prncase_inx_epoch_diff_sqlstr()
+
+    # THEN
+    assert update_sqlstr
+    expected_update_sqlstr = f"""
+UPDATE {prncase_tablename} as {kw.prncase}
+SET {kw.inx_epoch_diff} = {kw.otx_time} - {kw.inx_time}
+FROM {nabtime_tablename} as {kw.nabtime}
+WHERE 
+    {kw.nabtime}.{kw.spark_num} = (
+        SELECT MAX(n2.{kw.spark_num})
+        FROM {nabtime_tablename} as n2
+        WHERE n2.{kw.spark_num} <= {kw.prncase}.{kw.spark_num}
+            AND {kw.prncase}.{kw.plan_rope} LIKE n2.{kw.moment_rope} || '%'
+        )
+    AND {kw.prncase}.{kw.plan_rope} LIKE {kw.nabtime}.{kw.moment_rope} || '%'
+;
+"""
+    print(expected_update_sqlstr)
+    assert update_sqlstr == expected_update_sqlstr
