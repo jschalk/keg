@@ -51,14 +51,15 @@ def create_gcalendar_events_list(x_person: PersonUnit, day: datetime) -> list[di
             end_date = day + timedelta(minutes=day_case.reason_upper)
             event_dict = {
                 "Subject": event_subject,
-                "Start Date": start_date.isoformat(),
-                "End Date": end_date.isoformat(),
+                "Start Date": start_date.strftime("%m/%d/%Y"),
+                "Start Time": start_date.strftime("%I:%M %p"),
+                "End Date": end_date.strftime("%m/%d/%Y"),
+                "End Time": end_date.strftime("%I:%M %p"),
                 "All Day Event": "False",
                 "Description": agenda_item.get_plan_rope(),
             }
             day_events.append(event_dict)
-        else:
-            gcal_tobe_description += f"{event_subject}\n"
+        gcal_tobe_description += f"{event_subject}\n"
     all_day_events = {
         "Subject": "Pledges",
         "Start Date": day.strftime("%m/%d/%Y"),
@@ -92,6 +93,8 @@ def create_gcalendar_csv_from_list(events: list[dict]) -> str:
     return output.getvalue()
 
 
-def create_gcalendar_csv_from_person(x_person: PersonUnit, day: datetime) -> str:
+def create_gcalendar_csv_from_person(x_person: PersonUnit, day: datetime = None) -> str:
+    if day is None:
+        day = datetime.combine(datetime.now().date(), datetime.min.time())
     events_list = create_gcalendar_events_list(x_person, day)
     return create_gcalendar_csv_from_list(events_list)
