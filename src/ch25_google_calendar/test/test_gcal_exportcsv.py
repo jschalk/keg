@@ -3,7 +3,10 @@ from datetime import datetime, timedelta
 from io import StringIO as io_StringIO
 from src.ch07_person_logic.person_main import personunit_shop
 from src.ch13_time.epoch_main import add_epoch_planunit, get_default_epoch_config_dict
-from src.ch13_time.epoch_reason import set_epoch_base_case_dayly
+from src.ch13_time.epoch_reason import (
+    set_epoch_base_case_dayly,
+    set_epoch_base_case_weekly,
+)
 from src.ch24_person_viewer.test._util.ch24_examples import ExampleValuesRef as wx
 from src.ch25_google_calendar.gcalendar import (
     create_gcalendar_csv_from_list,
@@ -339,6 +342,42 @@ def test_create_gcalendar_csv_from_person_ReturnsObj_Scenario2_TodayEvents():
     pledges_row = next((r for r in rows if r["Subject"] == "Pledges"), None)
     assert pledges_row is not None, "Expected a Pledges row"
     assert pledges_row["Start Date"] == today_str
+    assert pledges_row["All Day Event"] == "True"
+    assert "1. mop (66.67%)" in pledges_row["Description"]
+    assert "2. sweep (33.33%)" in pledges_row["Description"]
+
+
+def test_create_gcalendar_csv_from_person_ReturnsObj_Scenario3_WeeklyEventDisplayed():
+    # ESTABLISH
+    sue_person = personunit_shop(wx.sue, wx.a23)
+    sue_person.add_plan(wx.sweep_rope, pledge=True, star=1)
+
+    # add mop task but only at a point during the day
+    sue_person.add_plan(wx.mop_rope, pledge=True, star=2)
+    default_epoch_config = get_default_epoch_config_dict()
+    default_epoch_label = default_epoch_config.get(kw.epoch_label)
+    add_epoch_planunit(sue_person, default_epoch_config)
+    set_epoch_base_case_weekly(sue_person, wx.mop_rope, default_epoch_label, 3700, 90)
+    apr7 = datetime(2010, 5, 7)
+    print(f"{apr7=}")
+
+    # WHEN
+    sue_gcal_csv = create_gcalendar_csv_from_person(sue_person, apr7)
+
+    # THEN
+    reader = csv_DictReader(io_StringIO(sue_gcal_csv))
+    rows = list(reader)
+
+    chore_row = next((r for r in rows if r["Subject"].startswith("1. mop")), None)
+    assert chore_row is not None, "Expected a chore row starting with '1. mop'"
+    assert chore_row["Start Date"] == "05/07/2010"
+    assert chore_row["Start Time"] == "01:40 PM"
+    assert chore_row["End Date"] == "05/07/2010"
+    assert chore_row["End Time"] == "03:10 PM"
+
+    pledges_row = next((r for r in rows if r["Subject"] == "Pledges"), None)
+    assert pledges_row is not None, "Expected a Pledges row"
+    assert pledges_row["Start Date"] == "05/07/2010"
     assert pledges_row["All Day Event"] == "True"
     assert "1. mop (66.67%)" in pledges_row["Description"]
     assert "2. sweep (33.33%)" in pledges_row["Description"]
