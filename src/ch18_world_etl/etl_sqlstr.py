@@ -1086,22 +1086,6 @@ def get_update_heard_agg_timenum_sqlstr(dst_tablename: str, focus_column: str) -
     Return Update statement that will set the timenum inx column
     reference key: mxhap0"""
 
-    #     return f"""
-    # UPDATE {dst_tablename} as dst_table
-    # SET {focus_column}_inx = mod(
-    #     dst_table.{focus_column}_otx + IFNULL(nabtime.otx_time - nabtime.inx_time, 0)
-    #     , IFNULL(c400_number * {get_c400_constants().c400_leap_length}, {DEFAULT_EPOCH_LENGTH})
-    #     )
-    # FROM {dst_tablename} as dst2_table
-    # LEFT JOIN nabu_timenum_h_agg as nabtime ON dst2_table.spark_num = nabtime.spark_num
-    # LEFT JOIN (
-    #     SELECT moment_rope, c400_number
-    #     FROM momentunit_h_agg
-    #     GROUP BY moment_rope, c400_number
-    #     ) mmtunit ON mmtunit.moment_rope = nabtime.moment_rope
-    # WHERE dst2_table.spark_num = dst_table.spark_num
-    # ;
-    # """
     return f"""
 WITH mmtunit AS (
     SELECT moment_rope, c400_number

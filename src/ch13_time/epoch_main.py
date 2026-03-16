@@ -164,8 +164,11 @@ def get_epoch_length(epoch_config: dict) -> int:
     return c400_number * get_c400_constants().c400_leap_length
 
 
-def add_epoch_planunit(x_personunit: PersonUnit, epoch_config: dict):
-    """ "Add epoch to PersonUnit given epoch_config"""
+def add_epoch_planunit(x_personunit: PersonUnit, epoch_config: dict = None):
+    """Add epoch plan to PersonUnit from epoch_config. epoch_config defaults to creg epoch_config"""
+    if not epoch_config:
+        epoch_config = get_default_epoch_config_dict()
+
     x_plan_label = epoch_config.get("epoch_label")
     x_c400_number = epoch_config.get("c400_number")
     x_months = epoch_config.get("months_config")
@@ -193,6 +196,8 @@ def add_epoch_planunit(x_personunit: PersonUnit, epoch_config: dict):
     add_planunits(x_personunit, year_rope, create_month_planunits(x_months, x_mday))
     offset_plan = planunit_shop("yr1_jan1_offset", addin=x_yr1_jan1_offset)
     x_personunit.set_plan_obj(offset_plan, epoch_rope)
+    time_rope = x_personunit.make_l1_rope("time")
+    x_personunit.edit_plan_attr(time_rope, star=0)
 
 
 def add_planunits(
@@ -424,8 +429,10 @@ def get_min_from_dt_offset(dt: datetime, yr1_jan1_offset: int) -> int:
 
 
 def get_epoch_min_from_dt(
-    x_person: PersonUnit, epoch_rope: RopeTerm, x_datetime: datetime
+    x_person: PersonUnit, epoch_label: LabelTerm, x_datetime: datetime
 ) -> int:
+    time_rope = x_person.make_l1_rope("time")
+    epoch_rope = x_person.make_rope(time_rope, epoch_label)
     offset_rope = x_person.make_rope(epoch_rope, "yr1_jan1_offset")
     offset_plan = x_person.get_plan_obj(offset_rope)
     offset_addin = offset_plan.addin

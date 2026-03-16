@@ -499,7 +499,6 @@ def test_add_time_creg_planunit_ReturnsObjWith_offset_PlanUnits():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     sue_person = add_time_creg_planunit(sue_person)
-    sue_person.conpute()
     time_rope = sue_person.make_l1_rope(kw.time)
     creg_rope = sue_person.make_rope(time_rope, kw.creg)
     five_rope = sue_person.make_rope(time_rope, kw.five)
@@ -524,7 +523,6 @@ def test_add_time_creg_planunit_ReturnsObjWith_offset_PlanUnits():
 def test_add_epoch_planunit_SetsAttr_Scenario0():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
-    sue_person.conpute()
     time_rope = sue_person.make_l1_rope(kw.time)
     creg_rope = sue_person.make_rope(time_rope, kw.creg)
     creg_yr1_jan1_offset_rope = sue_person.make_rope(creg_rope, kw.yr1_jan1_offset)
@@ -544,6 +542,44 @@ def test_add_epoch_planunit_SetsAttr_Scenario0():
     assert sue_person.plan_exists(creg_yr1_jan1_offset_rope)
     creg_offset_plan = sue_person.get_plan_obj(creg_yr1_jan1_offset_rope)
     assert creg_offset_plan.addin == creg_config.get(kw.yr1_jan1_offset)
+
+
+def test_add_epoch_planunit_SetsAttr_Scenario1_config_IsNone():
+    # ESTABLISH
+    sue_person = personunit_shop("Sue")
+    time_rope = sue_person.make_l1_rope(kw.time)
+    creg_rope = sue_person.make_rope(time_rope, kw.creg)
+    creg_yr1_jan1_offset_rope = sue_person.make_rope(creg_rope, kw.yr1_jan1_offset)
+    creg_year_rope = get_year_rope(sue_person, kw.creg)
+    print(f"{creg_year_rope=}")
+    # print(f"{sue_person._plan_dict.keys()=}")
+    creg_config = get_creg_config()
+
+    assert not sue_person.plan_exists(creg_year_rope)
+    assert not sue_person.plan_exists(creg_yr1_jan1_offset_rope)
+
+    # WHEN
+    add_epoch_planunit(sue_person)
+
+    # THEN
+    assert sue_person.plan_exists(creg_year_rope)
+    assert sue_person.plan_exists(creg_yr1_jan1_offset_rope)
+    creg_offset_plan = sue_person.get_plan_obj(creg_yr1_jan1_offset_rope)
+    assert creg_offset_plan.addin == creg_config.get(kw.yr1_jan1_offset)
+
+
+def test_add_epoch_planunit_SetsAttr_Scenario2_time_PlanUnitHasZero_star():
+    # ESTABLISH
+    sue_person = personunit_shop("Sue")
+    time_rope = sue_person.make_l1_rope(kw.time)
+
+    assert not sue_person.plan_exists(time_rope)
+
+    # WHEN
+    add_epoch_planunit(sue_person)
+
+    # THEN
+    assert sue_person.get_plan_obj(time_rope).star == 0
 
 
 # def test_PersonUnit_get_plan_ranged_kids_ReturnsSomeChildrenScenario2():
@@ -788,7 +824,6 @@ def test_add_time_five_planunit_SetsAttr_Scenario0_AddsMultiple_epochs():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     sue_person = add_time_creg_planunit(sue_person)
-    sue_person.conpute()
     time_rope = sue_person.make_l1_rope(kw.time)
     creg_rope = sue_person.make_rope(time_rope, kw.creg)
     five_rope = sue_person.make_rope(time_rope, kw.five)
@@ -843,13 +878,10 @@ def test_get_epoch_min_from_dt_ReturnsObj():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     sue_person = add_time_creg_planunit(sue_person)
-    sue_person.conpute()
     x_datetime = datetime(2022, 10, 30, 0, 0)
-    time_rope = sue_person.make_l1_rope(kw.time)
-    creg_rope = sue_person.make_rope(time_rope, kw.creg)
 
     # WHEN
-    creg_min = get_epoch_min_from_dt(sue_person, creg_rope, x_datetime)
+    creg_min = get_epoch_min_from_dt(sue_person, kw.creg, x_datetime)
 
     # THEN
     print(f"                        {creg_min=}")

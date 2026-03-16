@@ -428,3 +428,13 @@ def add_epoch_frame_to_personunit(
     root_plan_label = x_person.planroot.plan_label
     epoch_rope = get_epoch_rope(root_plan_label, epoch_label, x_person.knot)
     add_frame_to_personunit(x_person, epoch_frame_min, epoch_rope)
+
+
+# TODO create tests for set_epoch_fact
+def set_epoch_fact(
+    person: PersonUnit, epoch_label: LabelTerm, timeline_lower: int, timeline_upper: int
+):
+    """assumes epoch_planunit exists"""
+    time_rope = person.make_l1_rope("time")
+    creg_rope = person.make_rope(time_rope, epoch_label)
+    person.add_fact(creg_rope, creg_rope, timeline_lower, timeline_upper)
