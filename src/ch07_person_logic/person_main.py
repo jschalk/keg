@@ -1615,9 +1615,11 @@ def get_dict_of_person_from_dict(x_dict: dict[str, dict]) -> dict[str, PersonUni
 def get_sorted_plan_list(
     x_dict: dict[RopeTerm, PlanUnit], sorting_key: str = None
 ) -> list[PlanUnit]:
+    """Returns sorted list of PlanUnits. Default sort is by plan_rope.
+    "fund_ratio" is passable key"""
     x_list = list(x_dict.values())
     if sorting_key in {"fund_ratio"}:
-        x_list.sort(key=lambda x: x.fund_ratio, reverse=True)
+        x_list.sort(key=lambda x: (-x.fund_ratio, x.get_plan_rope()))
     else:
         x_list.sort(key=lambda x: x.get_plan_rope(), reverse=False)
     return x_list

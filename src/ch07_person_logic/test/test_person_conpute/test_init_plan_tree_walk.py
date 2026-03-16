@@ -250,3 +250,26 @@ def test_get_sorted_plan_list_ReturnsObj_Scenario1_SortBy_fund_ratio():
     assert x_sorted_plan_list[4] == wed_plan
     assert x_sorted_plan_list[5] == fri_plan
     assert x_sorted_plan_list[6] == sat_plan
+
+
+def test_get_sorted_plan_list_ReturnsObj_Scenario2_2ndSortBy_plan_rope():
+    # ESTABLISH
+    sue_person = personunit_shop("Sue", exx.a23)
+    sem_jours_rope = sue_person.make_l1_rope("sem_jours")
+    sun_plan = planunit_shop("Sun", parent_rope=sem_jours_rope)
+    mon_plan = planunit_shop("Mon", parent_rope=sem_jours_rope)
+    sun_plan.fund_ratio = 0.25
+    mon_plan.fund_ratio = 0.25
+    example_dict = {
+        sun_plan.get_plan_rope(): sun_plan,
+        mon_plan.get_plan_rope(): mon_plan,
+    }
+
+    # WHEN
+    x_sorted_plan_list = get_sorted_plan_list(example_dict, sorting_key=kw.fund_ratio)
+
+    # THEN
+    assert x_sorted_plan_list is not None
+    assert len(x_sorted_plan_list) == 2
+    assert x_sorted_plan_list[0] == mon_plan
+    assert x_sorted_plan_list[1] == sun_plan

@@ -27,4 +27,5 @@ What does each one do?
 - **ch21_lobby**: Defines Lobby Tools for gifts, World Scenarios.
 - **ch22_finance**: Defines Finance Tools for 
 - **ch24_person_viewer**: Tools for Visualizing PersonUnits
+- **ch25_google_calendar**: Tools for creating events csvs for Google Calendar
 - **ch98_docs_builder**: Defines Tools that create documentation.

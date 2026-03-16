@@ -25,4 +25,5 @@
 - ch21_lobby: LobbyID, lobby_id, lobby_mstr_dir, lobbys
 - ch22_finance: finance, financial
 - ch24_person_viewer: Event, gcal
+- ch25_google_calendar: 
 - ch98_docs_builder: 
