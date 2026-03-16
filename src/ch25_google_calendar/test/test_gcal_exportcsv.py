@@ -9,33 +9,35 @@ from src.ch25_google_calendar.gcalendar import (
     create_gcalendar_csv_from_list,
     create_gcalendar_csv_from_person,
     create_gcalendar_events_list,
-    gcal_readble_percent,
+    gcal_readable_percent,
 )
 from src.ref.keywords import Ch25Keywords as kw
 
 
-def test_gcal_readble_percent_ReturnsObj():
+def test_gcal_readable_percent_ReturnsObj():
     # ESTABLISH / WHEN / THEN
-    assert gcal_readble_percent(1.0) == "100%"
+    assert gcal_readable_percent(1.0) == "100%"
     """Ensure trailing zeros and decimal points are removed properly."""
-    assert gcal_readble_percent(0.5) == "50%"
-    assert gcal_readble_percent(0.505) == "50.5%"
-    assert gcal_readble_percent(0.5001) == "50.01%"
+    assert gcal_readable_percent(0.5) == "50%"
+    assert gcal_readable_percent(0.505) == "50.5%"
+    assert gcal_readable_percent(0.5001) == "50.01%"
     """Ensure extremely small numbers use scientific notation."""
-    result = gcal_readble_percent(1e-10)
+    result = gcal_readable_percent(1e-10)
     assert "e" in result
     assert result.endswith("%")
     """Ensure custom precision works correctly."""
-    assert gcal_readble_percent(0.123456, precision=1) == "12.3%"
-    assert gcal_readble_percent(0.123456, precision=4) == "12.3456%"
-    assert gcal_readble_percent(0.00123456, precision=4) == "0.1235%"
-    assert gcal_readble_percent(0.0000123456, precision=4) == "1.23e-03%"
-    assert gcal_readble_percent(0.000123456) == "0.01%"
+    assert gcal_readable_percent(0.123456, precision=1) == "12.3%"
+    assert gcal_readable_percent(0.123456, precision=4) == "12.3456%"
+    assert gcal_readable_percent(0.00123456, precision=4) == "0.1235%"
+    assert gcal_readable_percent(0.0000123456, precision=4) == "1.23e-03%"
+    assert gcal_readable_percent(0.000123456) == "0.01%"
 
 
 def test_create_gcalendar_events_list_ReturnsObj_Scenario0_Empty():
     # ESTABLISH
     sue_person = personunit_shop(wx.sue, wx.a23)
+    default_epoch_config = get_default_epoch_config_dict()
+    add_epoch_planunit(sue_person, default_epoch_config)
     apr7 = datetime(2010, 5, 7, 9)
     print(f"{apr7=}")
 
@@ -74,6 +76,8 @@ def test_PersonUnit_conpute_SetsAttr_ScenarioX_SingleBranch_fund_ratio():
 def test_create_gcalendar_events_list_ReturnsObj_Scenario1_1AllDayPledge():
     # ESTABLISH
     sue_person = personunit_shop(wx.sue, wx.a23)
+    default_epoch_config = get_default_epoch_config_dict()
+    add_epoch_planunit(sue_person, default_epoch_config)
     sue_person.add_plan(wx.mop_rope, pledge=True, star=1)
     apr7 = datetime(2010, 5, 7, 9)
     print(f"{apr7=}")
@@ -103,6 +107,8 @@ def test_create_gcalendar_events_list_ReturnsObj_Scenario1_1AllDayPledge():
 def test_create_gcalendar_events_list_ReturnsObj_Scenario2_3AllDayPledge():
     # ESTABLISH
     sue_person = personunit_shop(wx.sue, wx.a23)
+    default_epoch_config = get_default_epoch_config_dict()
+    add_epoch_planunit(sue_person, default_epoch_config)
     sue_person.add_plan(wx.mop_rope, pledge=True, star=2)
     sue_person.add_plan(wx.sweep_rope, pledge=True, star=1)
     sue_person.add_plan(wx.scrub_rope, pledge=True, star=1)
@@ -239,6 +245,36 @@ def test_create_gcalendar_csv_from_person_ReturnsObj_Scenario0_OneEpoch_pledge()
     add_epoch_planunit(sue_person, default_epoch_config)
     set_epoch_base_case_dayly(sue_person, wx.mop_rope, default_epoch_label, 600, 90)
     apr7 = datetime(2010, 5, 7)
+
+    # WHEN
+    sue_gcal_csv = create_gcalendar_csv_from_person(sue_person, apr7)
+
+    # THEN
+    print(sue_gcal_csv)
+    expected_csv_line1 = (
+        "Subject,Start Date,Start Time,End Date,End Time,All Day Event,Description"
+    )
+    expected_csv_line2 = "1. mop (66.67%),2010-05-07T10:00:00,,2010-05-07T11:30:00,,False,;Amy23;casa;clean;mop;"
+    expected_csv_line3 = """Pledges,05/07/2010,,05/07/2010,,True,"2. sweep (33.33%)"""
+    assert expected_csv_line1 in sue_gcal_csv
+    assert expected_csv_line2 in sue_gcal_csv
+    assert expected_csv_line3 in sue_gcal_csv
+
+
+def test_create_gcalendar_csv_from_person_ReturnsObj_Scenario0_OneEpoch_pledge():
+    # ESTABLISH
+    # ESTABLISH
+    sue_person = personunit_shop(wx.sue, wx.a23)
+    sue_person.add_plan(wx.sweep_rope, pledge=True, star=1)
+
+    # add mop task but only at a point during the day
+    sue_person.add_plan(wx.mop_rope, pledge=True, star=2)
+    default_epoch_config = get_default_epoch_config_dict()
+    default_epoch_label = default_epoch_config.get(kw.epoch_label)
+    add_epoch_planunit(sue_person, default_epoch_config)
+    set_epoch_base_case_dayly(sue_person, wx.mop_rope, default_epoch_label, 600, 90)
+    apr7 = datetime(2010, 5, 7)
+    print(f"{apr7=}")
 
     # WHEN
     sue_gcal_csv = create_gcalendar_csv_from_person(sue_person, apr7)

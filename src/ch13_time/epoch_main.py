@@ -166,7 +166,7 @@ def get_epoch_length(epoch_config: dict) -> int:
 
 def add_epoch_planunit(x_personunit: PersonUnit, epoch_config: dict = None):
     """Add epoch plan to PersonUnit from epoch_config. epoch_config defaults to creg epoch_config"""
-    if not epoch_config:
+    if epoch_config is None:
         epoch_config = get_default_epoch_config_dict()
 
     x_plan_label = epoch_config.get("epoch_label")

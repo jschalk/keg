@@ -11,7 +11,7 @@ from src.ch13_time.epoch_main import (
 from src.ch13_time.epoch_reason import set_epoch_base_case_dayly, set_epoch_fact
 
 
-def gcal_readble_percent(value: float, precision=2):
+def gcal_readable_percent(value: float, precision=2):
     """
     Convert a float into a readable percentage string.
     Handles very small and large values gracefully.
@@ -30,7 +30,6 @@ def gcal_readble_percent(value: float, precision=2):
 
 def create_gcalendar_events_list(x_person: PersonUnit, day: datetime) -> list[dict]:
     default_epoch_config = get_default_epoch_config_dict()
-    add_epoch_planunit(x_person, default_epoch_config)
     default_epoch_label = default_epoch_config.get("epoch_label")
     epoch_min_lower = get_epoch_min_from_dt(x_person, default_epoch_label, day)
     next_day = day + timedelta(days=1)
@@ -43,7 +42,7 @@ def create_gcalendar_events_list(x_person: PersonUnit, day: datetime) -> list[di
     gcal_tobe_description = ""
     day_events = []
     for item_rank, agenda_item in enumerate(agenda_list, start=1):
-        item_fund_ratio_str = gcal_readble_percent(agenda_item.fund_ratio)
+        item_fund_ratio_str = gcal_readable_percent(agenda_item.fund_ratio)
         event_subject = f"{item_rank}. {agenda_item.plan_label} ({item_fund_ratio_str})"
         day_reasonheir = agenda_item.get_reasonheir(epoch_day_rope)
         if day_reasonheir:
