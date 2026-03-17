@@ -1,3 +1,10 @@
+## [0.81.105](https://github.com/jschalk/keg/compare/v0.81.104...v0.81.105) (2026-03-17)
+
+
+### Bug Fixes
+
+* [#1069](https://github.com/jschalk/keg/issues/1069) create_gcalendar_events_list displays start time, end time for agenda items with non-dayly recurance, like weekly ([88746a0](https://github.com/jschalk/keg/commit/88746a030902e7d84b1a886520fbcdf63114fe03))
+
 ## [0.81.104](https://github.com/jschalk/keg/compare/v0.81.103...v0.81.104) (2026-03-15)
 
 
