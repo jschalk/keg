@@ -22,13 +22,11 @@ def test_DayEvents_Exists():
     # THEN
     assert not x_dayevent.plan
     assert not x_dayevent.item_rank
-    assert not x_dayevent.readable_fund_ratio
     assert not x_dayevent.day_min_lower
     assert not x_dayevent.day_min_upper
     assert set(x_dayevent.__dict__.keys()) == {
         "plan",
         "item_rank",
-        "readable_fund_ratio",
         "day_min_lower",
         "day_min_upper",
     }
@@ -73,7 +71,6 @@ def test_get_dayevents_ReturnsObj_Scenario1_OneElementList():
     mop_dayevent = bob_dayevents[0]
     assert mop_dayevent.plan == mop_plan
     assert mop_dayevent.item_rank == 1
-    assert mop_dayevent.readable_fund_ratio == "66.67%"
     assert mop_dayevent.day_min_lower == 600
     assert mop_dayevent.day_min_upper == 690
 

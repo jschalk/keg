@@ -1,74 +1,116 @@
 from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import PersonUnit, get_sorted_plan_list
-from src.ch13_time.epoch_main import (
-    get_day_rope,
-    get_default_epoch_config_dict,
-    get_epoch_min_from_dt,
-    get_epoch_rope,
+from src.ch19_world_kpi.gcalendar import (
+    DayEvent,
+    gcal_readable_percent,
+    get_inflection_points_dict,
+    get_inflection_points_str,
 )
-from src.ch13_time.epoch_reason import set_epoch_fact
-from src.ch19_world_kpi._ref.ch19_semantic_types import LabelTerm, RopeTerm
-from src.ch19_world_kpi.gcalendar import DayEvent, get_inflection_points
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 
-def test_no_events_returns_empty():
+def test_get_inflection_points_dict_ReturnsObj_Scenario0_EmptyList():
     # ESTABLISH / WHEN / THEN
-    assert get_inflection_points([]) == []
+    assert get_inflection_points_dict([]) == {}
 
 
-def test_get_inflection_points_ReturnsObj_Scenario0_single_event():
+def test_get_inflection_points_dict_ReturnsObj_Scenario0_One_dayevent():
     # ESTABLISH
     x1_plan = planunit_shop(exx.mop, fund_ratio=0.1)
-    dayevent = DayEvent(x1_plan, 1, "100%", 0, day_min_upper=60)
+    dayevent = DayEvent(x1_plan, 1, 0, day_min_upper=60)
 
     # WHEN
-    points = get_inflection_points([dayevent])
+    points = get_inflection_points_dict([dayevent])
 
     # THEN
-    assert points == [(0, dayevent), (60, None)]
+    assert points == {0: dayevent, 60: None}
 
 
-def test_get_inflection_points_ReturnsObj_Scenario1_two_sequential_events_no_overlap():
+def test_get_inflection_points_dict_ReturnsObj_Scenario1_TwoSequential_dayevents_NoOverlap():
     # ESTABLISH
-    x1_plan = planunit_shop(exx.mop, fund_ratio=0.1)
-    y2_dayevent = DayEvent(x1_plan, 1, "100%", 0, day_min_upper=30)
-    y3_dayevent = DayEvent(x1_plan, 1, "100%", 60, day_min_upper=90)
+    x_fund_ratio = 0.1
+    x_plan = planunit_shop(exx.mop, fund_ratio=x_fund_ratio)
+    y0_dayevent = DayEvent(x_plan, 1, 0, day_min_upper=30)
+    y1_dayevent = DayEvent(x_plan, 2, 60, day_min_upper=90)
 
     # WHEN
-    points = get_inflection_points([y2_dayevent, y3_dayevent])
+    inflection_points = get_inflection_points_dict([y0_dayevent, y1_dayevent])
 
     # THEN
-    assert points == [(0, y2_dayevent), (30, None), (60, y3_dayevent), (90, None)]
+    print(inflection_points)
+    assert inflection_points == {0: y0_dayevent, 30: None, 60: y1_dayevent, 90: None}
 
 
-# TODO add more tests
-# def test_higher_importance_event_interrupts():
-#     low = CalendarEvent(importance_weight=1.0, start_time=0, end_time=60)
-#     high = CalendarEvent(importance_weight=3.0, start_time=30, end_time=90)
-#     points = get_inflection_points([low, high], timeline_end=90)
-#     assert points == [(0, low), (30, high), (90, None)]
+def test_get_inflection_points_dict_ReturnsObj_Scenario2_Higher_fund_ratio_dayevent_Interrupts():
+    # ESTABLISH
+    x1_fund_ratio = 0.1
+    x1_plan = planunit_shop(exx.mop, fund_ratio=x1_fund_ratio)
+    x2_fund_ratio = 0.2
+    x2_plan = planunit_shop(exx.mop, fund_ratio=x2_fund_ratio)
+    y60_dayevent = DayEvent(x1_plan, 1, 0, day_min_upper=60)
+    y90_dayevent = DayEvent(x2_plan, 2, 30, day_min_upper=90)
+
+    # WHEN
+    inflection_points = get_inflection_points_dict([y60_dayevent, y90_dayevent])
+
+    # THEN
+    print(inflection_points)
+    assert inflection_points == {0: y60_dayevent, 30: y90_dayevent, 90: None}
 
 
-# def test_lower_importance_event_does_not_interrupt():
-#     high = CalendarEvent(importance_weight=3.0, start_time=0, end_time=60)
-#     low = CalendarEvent(importance_weight=1.0, start_time=30, end_time=90)
-#     points = get_inflection_points([high, low], timeline_end=90)
-#     assert points == [(0, high), (60, low), (90, None)]
+def test_get_inflection_points_dict_ReturnsObj_Scenario3_Lower_fund_ratio_dayevent_DoesNotInterrupt():
+    # ESTABLISH
+    x1_fund_ratio = 0.1
+    x1_plan = planunit_shop(exx.mop, fund_ratio=x1_fund_ratio)
+    x2_fund_ratio = 0.01
+    x2_plan = planunit_shop(exx.mop, fund_ratio=x2_fund_ratio)
+    y60_dayevent = DayEvent(x1_plan, 1, 0, day_min_upper=60)
+    y90_dayevent = DayEvent(x2_plan, 2, 30, day_min_upper=90)
+
+    # WHEN
+    inflection_points = get_inflection_points_dict([y60_dayevent, y90_dayevent])
+
+    # THEN
+    print(inflection_points)
+    assert inflection_points == {0: y60_dayevent, 60: y90_dayevent, 90: None}
 
 
-# def test_gap_between_events_produces_none_inflection():
-#     e1 = CalendarEvent(importance_weight=1.0, start_time=0, end_time=30)
-#     e2 = CalendarEvent(importance_weight=1.0, start_time=60, end_time=90)
-#     points = get_inflection_points([e1, e2], timeline_end=90)
-#     gap_point = next(t for t, e in points if e is None and t == 30)
-#     assert gap_point == 30
+def test_get_inflection_points_dict_ReturnsObj_Scenario4_Same_fund_ratio_dayevent_DoesNotInterrupt():
+    # ESTABLISH
+    x1_fund_ratio = 0.1
+    x1_plan = planunit_shop(exx.mop, fund_ratio=x1_fund_ratio)
+    x2_fund_ratio = 0.1
+    assert x1_fund_ratio == x2_fund_ratio
+    x2_plan = planunit_shop(exx.mop, fund_ratio=x2_fund_ratio)
+    y60_dayevent = DayEvent(x1_plan, 1, 0, day_min_upper=60)
+    y90_dayevent = DayEvent(x2_plan, 2, 30, day_min_upper=90)
+
+    # WHEN
+    inflection_points = get_inflection_points_dict([y60_dayevent, y90_dayevent])
+
+    # THEN
+    print(inflection_points)
+    assert inflection_points == {0: y60_dayevent, 60: y90_dayevent, 90: None}
 
 
-# def test_overlapping_same_importance_no_extra_inflection():
-#     e1 = CalendarEvent(importance_weight=2.0, start_time=0, end_time=60)
-#     e2 = CalendarEvent(importance_weight=2.0, start_time=30, end_time=90)
-#     points = get_inflection_points([e1, e2], timeline_end=90)
-#     times = [t for t, _ in points]
-#     # should not produce an inflection at t=30 since importance didn't change
-#     assert 30 not in times
+def test_get_inflection_points_str_ReturnsObj_Scenario1_Same_fund_ratio_DayEvent():
+    # ESTABLISH
+    x1_fund_ratio = 0.1
+    x1_plan = planunit_shop(exx.mop, fund_ratio=x1_fund_ratio)
+    x2_fund_ratio = 0.1
+    assert x1_fund_ratio == x2_fund_ratio
+    x2_plan = planunit_shop(exx.casa, fund_ratio=x2_fund_ratio)
+    y60_dayevent = DayEvent(x1_plan, 1, 0, day_min_upper=60)
+    y90_dayevent = DayEvent(x2_plan, 2, 30, day_min_upper=90)
+
+    # WHEN
+    inflection_points_str = get_inflection_points_str([y60_dayevent, y90_dayevent])
+
+    # THEN
+    print(inflection_points_str)
+    y60_readable_fund_ratio = gcal_readable_percent(y60_dayevent.plan.fund_ratio)
+    y90_readable_fund_ratio = gcal_readable_percent(y90_dayevent.plan.fund_ratio)
+    expected_str = f"""Schedule Inflections
+12:00 AM 1. {exx.mop} {y60_readable_fund_ratio}
+1:00 AM 2. {exx.casa} {y90_readable_fund_ratio}
+1:30 AM Nothing scheduled."""
+    assert inflection_points_str == expected_str

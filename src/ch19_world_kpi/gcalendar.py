@@ -7,7 +7,6 @@ from src.ch04_rope.rope import is_sub_rope
 from src.ch06_plan.plan import PlanUnit
 from src.ch07_person_logic.person_main import PersonUnit, get_sorted_plan_list
 from src.ch13_time.epoch_main import (
-    get_day_rope,
     get_default_epoch_config_dict,
     get_epoch_min_from_dt,
     get_epoch_rope,
@@ -16,11 +15,27 @@ from src.ch13_time.epoch_reason import set_epoch_fact
 from src.ch19_world_kpi._ref.ch19_semantic_types import LabelTerm, RopeTerm
 
 
+def gcal_readable_percent(value: float, precision=2):
+    """
+    Convert a float into a readable percentage string.
+    Handles very small and large values gracefully.
+    """
+    if value is None:
+        return "0%"
+
+    percent = value * 100
+
+    if 0 < abs(percent) < 0.01:
+        return f"{percent:.2e}%"
+
+    formatted = f"{percent:.{precision}f}".rstrip("0").rstrip(".")
+    return f"{formatted}%"
+
+
 @dataclass
 class DayEvent:
     plan: PlanUnit = None
     item_rank: int = None
-    readable_fund_ratio: str = None
     day_min_lower: int = None
     day_min_upper: int = None
 
@@ -39,7 +54,6 @@ def get_dayevents(
     agenda_list = get_sorted_plan_list(agenda_plans_dict, "fund_ratio")
     dayevents = []
     for item_rank, agenda_item in enumerate(agenda_list, start=1):
-        item_fund_ratio_str = gcal_readable_percent(agenda_item.fund_ratio)
         for reason_context, reasonheir in agenda_item.reasonheirs.items():
             epoch_case = reasonheir.get_case(reason_context)
             divisor_remainder = epoch_case.reason_divisor % 1440
@@ -52,7 +66,6 @@ def get_dayevents(
                     x_dayevent = DayEvent(
                         agenda_item,
                         item_rank,
-                        item_fund_ratio_str,
                         day_min_lower=day_reason_lower,
                         day_min_upper=day_reason_upper,
                     )
@@ -60,7 +73,7 @@ def get_dayevents(
     return dayevents
 
 
-def get_inflection_points(dayevents: list[DayEvent]) -> list[tuple, PlanUnit]:
+def get_inflection_points_dict(dayevents: list[DayEvent]) -> dict[int, PlanUnit]:
     """
     Returns a list of (time, event) tuples representing inflection points �
     moments where the "most important active event" changes.
@@ -77,35 +90,44 @@ def get_inflection_points(dayevents: list[DayEvent]) -> list[tuple, PlanUnit]:
         )
     )
 
-    inflection_points = []
-    last_top_event = None
+    inflection_points = {}
+    last_top_dayevent = None
 
     for t in timestamps:
         active = [e for e in dayevents if e.day_min_lower <= t < e.day_min_upper]
-        top_event = max(active, key=lambda e: e.plan.fund_ratio) if active else None
+        top_dayevent = max(active, key=lambda e: e.plan.fund_ratio) if active else None
 
-        if top_event != last_top_event:
-            inflection_points.append((t, top_event))
-            last_top_event = top_event
+        if top_dayevent != last_top_dayevent:
+            inflection_points[t] = top_dayevent
+            last_top_dayevent = top_dayevent
 
     return inflection_points
 
 
-def gcal_readable_percent(value: float, precision=2):
+def minute_to_clock_time(minute: int) -> str:
     """
-    Convert a float into a readable percentage string.
-    Handles very small and large values gracefully.
+    Converts a minute of the day (0-1439) to a clock time string.
+    e.g. 0 -> "12:00 AM", 120 -> "2:00 AM", 780 -> "1:00 PM"
     """
-    if value is None:
-        return "0%"
+    minute = minute % 1440  # wrap around if > 1 day
+    hours, mins = divmod(minute, 60)
+    period = "AM" if hours < 12 else "PM"
+    hours_12 = hours % 12 or 12  # convert 0 -> 12
+    return f"{hours_12}:{mins:02d} {period}"
 
-    percent = value * 100
 
-    if 0 < abs(percent) < 0.01:
-        return f"{percent:.2e}%"
-
-    formatted = f"{percent:.{precision}f}".rstrip("0").rstrip(".")
-    return f"{formatted}%"
+def get_inflection_points_str(dayevents: list[DayEvent]) -> str:
+    inflections_dict = get_inflection_points_dict(dayevents)
+    x_str = "Schedule Inflections"
+    for inflection_minute in sorted(list(inflections_dict.keys())):
+        dayevent = inflections_dict.get(inflection_minute)
+        clock_time = minute_to_clock_time(inflection_minute)
+        if dayevent:
+            precent_str = gcal_readable_percent(dayevent.plan.fund_ratio)
+            x_str += f"\n{clock_time} {dayevent.item_rank}. {dayevent.plan.plan_label} {precent_str}"
+        else:
+            x_str += f"\n{clock_time} Nothing scheduled."
+    return x_str
 
 
 # TODO create test for this
