@@ -1,6 +1,6 @@
 from src.ch00_py.file_toolbox import create_path
 from src.ch20_world_apex.world import WorldName
-from src.ch21_lobby._ref.ch21_semantic_types import LobbyID
+from src.ch22_lobby._ref.ch22_semantic_types import LobbyID
 
 
 def create_lobby_dir_path(lobby_mstr_dir: str, lobby_id: LobbyID) -> str:

@@ -13,7 +13,7 @@ from src.linter.chapter_migration_tools import (
 
 # HOW TO USE:
 # Open up CMD, change directory to repo
-# Enter this: python -m src.linter.ch_move -x
+# Enter this: python -m src.linter.ch_move
 
 
 def main():

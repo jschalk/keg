@@ -22,7 +22,7 @@
 - ch18_world_etl: brick_agg, brick_raw, brick_valid, ch18, heard_raw, heard_vld, mmtbudd, mmthour, mmtmont, mmtoffi, mmtpayy, mmtunit, mmtweek, moment_ote1_agg, moment_partner_nets, nabtime, person_net_amount, sound_agg, sound_raw, sparks_brick_agg, sparks_brick_valid, trlcore, trllabe, trlname, trlrope, trltitl
 - ch19_world_kpi: Event, ch19, default_kpi_bundle, gcal, moment_kpi001_partner_nets, moment_kpi002_person_pledges
 - ch20_world_apex: WorldName, ch20
-- ch21_lobby: LobbyID, lobby_id, lobby_mstr_dir, lobbys
-- ch22_finance: finance, financial
+- ch22_lobby: LobbyID, lobby_id, lobby_mstr_dir, lobbys
+- ch23_finance: finance, financial
 - ch24_person_viewer: 
 - ch98_docs_builder: 

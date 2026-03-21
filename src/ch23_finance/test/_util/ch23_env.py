@@ -4,7 +4,7 @@ from src.ch00_py.file_toolbox import delete_dir
 
 
 def get_temp_dir():
-    return "src\\ch21_lobby\\test\\_util\\lobbys"
+    return "src\\ch23_finance\\test\\_util\\"
 
 
 @pytest_fixture()

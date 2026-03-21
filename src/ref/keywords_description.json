@@ -202,7 +202,7 @@
   "last_lesson_id": "TODO", 
   "lobby_id": "TODO", 
   "lobby_mstr_dir": "TODO", 
-  "LobbyID": "str first used in ch21. str used to name LobbyUnit", 
+  "LobbyID": "str first used in ch22. str used to name LobbyUnit", 
   "lobbys": "TODO", 
   "magnitude": "TODO", 
   "mana_grain": ", Moment arg, Person seed.", 
