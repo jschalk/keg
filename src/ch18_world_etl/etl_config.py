@@ -136,34 +136,34 @@ def create_prime_tablename(
     """
 
     abbv_references = {
-        "MMTPAYY": "moment_paybook",
-        "MMTBUDD": "moment_budunit",
-        "MMTHOUR": "moment_epoch_hour",
-        "MMTMONT": "moment_epoch_month",
-        "MMTWEEK": "moment_epoch_weekday",
-        "MMTOFFI": "moment_timeoffi",
-        "MMTUNIT": "momentunit",
-        "PRNMEMB": "person_partner_membership",
-        "PRNPTNR": "person_partnerunit",
-        "PRNAWAR": "person_plan_awardunit",
-        "PRNFACT": "person_plan_factunit",
-        "PRNGROU": "person_groupunit",
-        "PRNHEAL": "person_plan_healerunit",
-        "PRNCASE": "person_plan_reason_caseunit",
-        "PRNREAS": "person_plan_reasonunit",
-        "PRNLABO": "person_plan_partyunit",
-        "PRNPLAN": "person_planunit",
-        "PRNUNIT": "personunit",
-        "NABTIME": "nabu_timenum",
-        "TRLTITL": "translate_title",
-        "TRLNAME": "translate_name",
-        "TRLROPE": "translate_rope",
-        "TRLLABE": "translate_label",
-        "TRLCORE": "translate_core",
+        "mmtpayy": "moment_paybook",
+        "mmtbudd": "moment_budunit",
+        "mmthour": "moment_epoch_hour",
+        "mmtmont": "moment_epoch_month",
+        "mmtweek": "moment_epoch_weekday",
+        "mmtoffi": "moment_timeoffi",
+        "mmtunit": "momentunit",
+        "prnmemb": "person_partner_membership",
+        "prnptnr": "person_partnerunit",
+        "prnawar": "person_plan_awardunit",
+        "prnfact": "person_plan_factunit",
+        "prngrou": "person_groupunit",
+        "prnheal": "person_plan_healerunit",
+        "prncase": "person_plan_reason_caseunit",
+        "prnreas": "person_plan_reasonunit",
+        "prnlabo": "person_plan_partyunit",
+        "prnplan": "person_planunit",
+        "prnunit": "personunit",
+        "nabtime": "nabu_timenum",
+        "trltitl": "translate_title",
+        "trlname": "translate_name",
+        "trlrope": "translate_rope",
+        "trllabe": "translate_label",
+        "trlcore": "translate_core",
     }
     tablename = idea_dimen_or_abbv7
-    if abbv_references.get(idea_dimen_or_abbv7.upper()):
-        tablename = abbv_references.get(idea_dimen_or_abbv7.upper())
+    if abbv_references.get(idea_dimen_or_abbv7.lower()):
+        tablename = abbv_references.get(idea_dimen_or_abbv7.lower())
     if stage0 in {"s", "h", "job"}:
         tablename = f"{tablename}_{stage0}"
     if stage1 is None:

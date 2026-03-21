@@ -138,6 +138,6 @@ cython_debug/
 *.xlsx#
 src/ch20_world_apex/test/test_world_examples/output
 src/ch20_world_apex/test/test_world_examples/worlds
-# src/ch18_world_etl/test/zz_notebooks
-src/ch18_world_etl/test/zz_notebooks/__marimo__
+# src/ch19_etl_main/test/z_notebooks
+src/ch19_etl_main/test/z_notebooks/__marimo__
 

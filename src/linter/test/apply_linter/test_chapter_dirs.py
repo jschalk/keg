@@ -145,7 +145,7 @@ def test_Chapters_DoNotHaveEmptyDirectories():
     # ESTABLISH
     excluded_dirs = {
         "src/ch21_world_apex/test/test_world_examples/worlds",
-        "src/ch18_world_etl/test/zz_notebooks",
+        "src/ch19_etl_main/test/z_notebooks",
     }
 
     # WHEN / THEN

@@ -7,7 +7,8 @@ from src.ch18_world_etl._ref.ch18_path import (
     create_moment_mstr_path,
     create_world_db_path,
 )
-from src.ch18_world_etl.etl_main import (
+from src.ch18_world_etl.stance_tool import create_stance0001_file
+from src.ch19_etl_main.etl_main import (
     add_moment_epoch_to_guts,
     create_last_run_metrics_json,
     etl_brick_agg_tables_to_brick_valid_tables,
@@ -41,7 +42,6 @@ from src.ch18_world_etl.etl_main import (
     etl_translate_sound_agg_tables_to_translate_sound_vld_tables,
     get_max_brick_agg_spark_num,
 )
-from src.ch18_world_etl.stance_tool import create_stance0001_file
 from src.ch20_world_kpi.kpi_mstr import (
     create_calendar_markdown_files,
     create_kpi_csvs,

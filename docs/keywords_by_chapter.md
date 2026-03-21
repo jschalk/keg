@@ -19,7 +19,8 @@
 - ch15_nabu: Nabu, NabuTime, ch15, inx_epoch_diff, inx_time, nabu, nabu_timenum, otx2inx, otx_epoch_length, otx_time, timenabu
 - ch16_translate: ch16, inx_knot, inx_label, inx_name, inx_rope, inx_title, labelmap, namemap, otx_knot, otx_label, otx_name, otx_rope, otx_title, ropemap, titlemap, translate, translate_core, translate_label, translate_name, translate_rope, translate_title, translateunit, unknown_str
 - ch17_idea: allowed_crud, attributes, build_order, ch17, delete_insert, delete_insert_update, delete_update, error_message, fund_rank, idea_category, idea_number, insert_multiple, insert_one_time, insert_update, net_funds, otx_key, pledges_count, source_dimen, translate_spark_num, world_name
-- ch18_world_etl: brick_agg, brick_raw, brick_valid, ch18, heard_raw, heard_vld, mmtbudd, mmthour, mmtmont, mmtoffi, mmtpayy, mmtunit, mmtweek, moment_ote1_agg, moment_partner_nets, nabtime, person_net_amount, sound_agg, sound_raw, sparks_brick_agg, sparks_brick_valid, trlcore, trllabe, trlname, trlrope, trltitl
+- ch18_world_etl: brick_agg, brick_raw, brick_valid, ch18, heard_raw, heard_vld, mmtbudd, mmthour, mmtmont, mmtoffi, mmtpayy, mmtunit, mmtweek, moment_ote1_agg, nabtime, person_net_amount, sound_agg, sound_raw, sparks_brick_agg, sparks_brick_valid, trlcore, trllabe, trlname, trlrope, trltitl
+- ch19_etl_main: moment_partner_nets
 - ch20_world_kpi: Event, ch20, default_kpi_bundle, gcal, moment_kpi001_partner_nets, moment_kpi002_person_pledges
 - ch21_world_apex: WorldName, ch21
 - ch22_lobby: LobbyID, lobby_id, lobby_mstr_dir, lobbys

@@ -3,9 +3,9 @@ from src.ch00_py.db_toolbox import db_table_exists, get_row_count, get_table_col
 from src.ch04_rope.rope import create_rope
 from src.ch18_world_etl.etl_sqlstr import (
     CREATE_JOB_PRNPLAN_SQLSTR,
-    CREATE_MOMENT_PARTNER_NETS_SQLSTR,
     create_prime_tablename,
 )
+from src.ch19_etl_main.etl_main import CREATE_MOMENT_PARTNER_NETS_SQLSTR
 from src.ch20_world_kpi.kpi_mstr import create_populate_kpi001_table
 from src.ch20_world_kpi.test._util.ch20_env import cursor0
 from src.ref.keywords import Ch20Keywords as kw, ExampleStrs as exx

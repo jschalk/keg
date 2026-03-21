@@ -1713,6 +1713,3 @@ def get_job_create_table_sqlstrs() -> dict[str, str]:
 def create_job_tables(conn_or_cursor: sqlite3_Connection):
     for create_table_sqlstr in get_job_create_table_sqlstrs().values():
         conn_or_cursor.execute(create_table_sqlstr)
-
-
-CREATE_MOMENT_PARTNER_NETS_SQLSTR = "CREATE TABLE IF NOT EXISTS moment_partner_nets (moment_rope TEXT, person_name TEXT, person_net_amount REAL)"
