@@ -13,7 +13,7 @@ from src.ch05_reason.reason_main import caseunit_shop, factheir_shop, reasonheir
 from src.ch06_plan.healer import healerunit_shop
 from src.ch06_plan.plan import planunit_shop
 from src.ch07_person_logic.person_main import personunit_shop
-from src.ch18_world_etl.etl_sqlstr import create_sound_and_heard_tables
+from src.ch18_etl_config.etl_sqlstr import create_sound_and_heard_tables
 from src.ch19_etl_main.obj2db_person import (
     ObjKeysHolder,
     insert_h_agg_obj,

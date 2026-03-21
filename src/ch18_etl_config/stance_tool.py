@@ -15,12 +15,12 @@ from src.ch17_idea.idea_csv_tool import (
     create_init_stance_idea_csv_strs,
 )
 from src.ch17_idea.idea_db_tool import csv_dict_to_excel, prettify_excel
-from src.ch18_world_etl._ref.ch18_path import (
+from src.ch18_etl_config._ref.ch18_path import (
     create_moment_mstr_path,
     create_stance0001_path,
     create_world_db_path,
 )
-from src.ch18_world_etl.etl_sqlstr import (
+from src.ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
 )

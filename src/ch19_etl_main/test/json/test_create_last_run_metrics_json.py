@@ -2,8 +2,8 @@ from os.path import exists as os_path_exists
 from sqlite3 import Cursor
 from src.ch00_py.file_toolbox import open_json
 from src.ch17_idea.idea_db_tool import create_idea_sorted_table
-from src.ch18_world_etl._ref.ch18_path import create_last_run_metrics_path
-from src.ch18_world_etl.etl_sqlstr import create_sound_and_heard_tables
+from src.ch18_etl_config._ref.ch18_path import create_last_run_metrics_path
+from src.ch18_etl_config.etl_sqlstr import create_sound_and_heard_tables
 from src.ch19_etl_main.etl_main import create_last_run_metrics_json
 from src.ch19_etl_main.test._util.ch19_env import cursor0, get_temp_dir
 from src.ref.keywords import Ch19Keywords as kw

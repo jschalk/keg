@@ -1,6 +1,6 @@
 from sqlite3 import Cursor
 from src.ch00_py.db_toolbox import db_table_exists, get_row_count
-from src.ch18_world_etl.etl_sqlstr import create_prime_tablename
+from src.ch18_etl_config.etl_sqlstr import create_prime_tablename
 from src.ch19_etl_main.etl_main import (
     create_sound_and_heard_tables,
     etl_heard_raw_tables_to_moment_ote1_agg,

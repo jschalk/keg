@@ -175,9 +175,9 @@ def create_prime_tablename(
 
 
 def etl_idea_category_config_path() -> str:
-    "Returns path: ch18_world_etl/etl_idea_category_config.json"
+    "Returns path: ch18_etl_config/etl_idea_category_config.json"
     src_dir = create_path(os_getcwd(), "src")
-    chapter_dir = create_path(src_dir, "ch18_world_etl")
+    chapter_dir = create_path(src_dir, "ch18_etl_config")
     return create_path(chapter_dir, "etl_idea_category_config.json")
 
 

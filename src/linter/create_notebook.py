@@ -1,4 +1,4 @@
-# test_file_path = "src\ch18_world_etl\test\z_heard\test_heard_agg_update_reasonnum_columns.py"
+# test_file_path = "src\ch18_etl_config\test\z_heard\test_heard_agg_update_reasonnum_columns.py"
 # test_name = "test_get_update_prncase_inx_epoch_diff_sqlstr_SetsColumnValues"
 
 # dest_dir = "src/ch19_etl_main/test/z_notebooks"

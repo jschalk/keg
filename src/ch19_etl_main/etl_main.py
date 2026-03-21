@@ -84,13 +84,13 @@ from src.ch17_idea.idea_db_tool import (
     split_excel_into_dirs,
 )
 from src.ch17_idea.idea_main import get_idearef_obj
-from src.ch18_world_etl._ref.ch18_path import (
+from src.ch18_etl_config._ref.ch18_path import (
     create_last_run_metrics_path,
     create_moment_ote1_csv_path,
     create_moment_ote1_json_path,
 )
-from src.ch18_world_etl.etl_csv import save_to_split_csvs
-from src.ch18_world_etl.etl_sqlstr import (
+from src.ch18_etl_config.etl_csv import save_to_split_csvs
+from src.ch18_etl_config.etl_sqlstr import (
     CREATE_MOMENT_OTE1_AGG_SQLSTR,
     INSERT_MOMENT_OTE1_AGG_FROM_HEARD_SQLSTR,
     create_insert_into_translate_core_raw_sqlstr,
@@ -119,7 +119,7 @@ from src.ch18_world_etl.etl_sqlstr import (
     get_person_heard_vld_tablenames,
     update_heard_agg_timenum_columns,
 )
-from src.ch18_world_etl.idea_collector import IdeaFileRef, get_all_idea_dataframes
+from src.ch18_etl_config.idea_collector import IdeaFileRef, get_all_idea_dataframes
 from src.ch19_etl_main._ref.ch19_semantic_types import FaceName, SparkInt
 from src.ch19_etl_main.obj2db_moment import get_moment_dict_from_heard_tables
 from src.ch19_etl_main.obj2db_person import insert_job_obj

@@ -7,8 +7,8 @@ from src.ch09_person_lesson._ref.ch09_path import create_moment_json_path
 from src.ch09_person_lesson.lasso import lassounit_shop
 from src.ch14_moment.moment_config import get_moment_dimens
 from src.ch14_moment.moment_main import get_momentunit_from_dict
-from src.ch18_world_etl.etl_config import get_dimen_abbv7
-from src.ch18_world_etl.etl_sqlstr import (
+from src.ch18_etl_config.etl_config import get_dimen_abbv7
+from src.ch18_etl_config.etl_sqlstr import (
     create_prime_tablename,
     get_moment_heard_select1_sqlstrs,
 )

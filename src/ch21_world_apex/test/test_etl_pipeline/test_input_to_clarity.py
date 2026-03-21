@@ -23,11 +23,11 @@ from src.ch14_moment._ref.ch14_path import (
     create_bud_partner_mandate_ledger_path as bud_mandate,
 )
 from src.ch17_idea.idea_db_tool import upsert_sheet
-from src.ch18_world_etl._ref.ch18_path import (
+from src.ch18_etl_config._ref.ch18_path import (
     create_last_run_metrics_path,
     create_moment_ote1_csv_path,
 )
-from src.ch18_world_etl.etl_sqlstr import create_prime_tablename as prime_tbl
+from src.ch18_etl_config.etl_sqlstr import create_prime_tablename as prime_tbl
 from src.ch21_world_apex.test._util.ch21_env import (
     cursor0,
     get_temp_dir as worlds_dir,

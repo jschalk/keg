@@ -3,7 +3,7 @@ from sqlite3 import Cursor
 from src.ch00_py.file_toolbox import create_path, open_file
 from src.ch09_person_lesson.lasso import lassounit_shop
 from src.ch11_bud._ref.ch11_path import create_person_spark_dir_path
-from src.ch18_world_etl.etl_sqlstr import (
+from src.ch18_etl_config.etl_sqlstr import (
     create_prime_tablename,
     create_sound_and_heard_tables,
 )

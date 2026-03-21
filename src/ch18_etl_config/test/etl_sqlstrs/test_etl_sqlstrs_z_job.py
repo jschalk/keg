@@ -7,12 +7,12 @@ from src.ch00_py.db_toolbox import (
 from src.ch07_person_logic.person_config import get_person_config_dict
 from src.ch17_idea.idea_config import get_idea_sqlite_types
 from src.ch17_idea.idea_db_tool import get_default_sorted_list
-from src.ch18_world_etl.etl_sqlstr import (
+from src.ch18_etl_config.etl_sqlstr import (
     create_job_tables,
     create_prime_tablename as prime_table,
     get_job_create_table_sqlstrs,
 )
-from src.ch18_world_etl.test._util.ch18_env import cursor0
+from src.ch18_etl_config.test._util.ch18_env import cursor0
 from src.ref.keywords import Ch18Keywords as kw
 
 

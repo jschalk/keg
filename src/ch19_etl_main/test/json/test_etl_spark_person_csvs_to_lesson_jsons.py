@@ -6,7 +6,7 @@ from src.ch11_bud._ref.ch11_path import (
     create_person_spark_dir_path as person_spark_dir,
     create_spark_all_lesson_path as all_lesson_path,
 )
-from src.ch18_world_etl.etl_sqlstr import create_prime_tablename
+from src.ch18_etl_config.etl_sqlstr import create_prime_tablename
 from src.ch19_etl_main.etl_main import etl_spark_person_csvs_to_lesson_json
 from src.ch19_etl_main.test._util.ch19_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx

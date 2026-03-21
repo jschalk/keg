@@ -1,7 +1,7 @@
 from sqlite3 import Cursor as sqlite3_Cursor
 from src.ch00_py.dict_toolbox import set_in_nested_dict
 from src.ch11_bud.bud_main import MomentRope
-from src.ch18_world_etl.etl_sqlstr import get_moment_heard_select1_sqlstrs
+from src.ch18_etl_config.etl_sqlstr import get_moment_heard_select1_sqlstrs
 
 
 def get_moment_dict_from_heard_tables(

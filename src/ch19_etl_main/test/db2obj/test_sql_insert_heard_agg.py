@@ -1,12 +1,12 @@
 from sqlite3 import Cursor, connect as sqlite3_connect
 from src.ch00_py.db_toolbox import create_insert_query
-from src.ch18_world_etl.etl_config import (
+from src.ch18_etl_config.etl_config import (
     etl_idea_category_config_dict as get_etl_config,
     get_prime_columns,
     remove_inx_columns,
     remove_staging_columns,
 )
-from src.ch18_world_etl.etl_sqlstr import create_sound_and_heard_tables
+from src.ch18_etl_config.etl_sqlstr import create_sound_and_heard_tables
 from src.ch19_etl_main.obj2db_person import (
     create_prnawar_h_put_agg_insert_sqlstr,
     create_prncase_h_put_agg_insert_sqlstr,

@@ -1,7 +1,7 @@
 from sqlite3 import Cursor, connect as sqlite3_connect
 from src.ch00_py.db_toolbox import create_insert_query
 from src.ch07_person_logic.person_config import get_person_calc_dimen_args
-from src.ch18_world_etl.etl_sqlstr import create_job_tables
+from src.ch18_etl_config.etl_sqlstr import create_job_tables
 from src.ch19_etl_main.obj2db_person import (
     create_personunit_metrics_insert_sqlstr,
     create_prnawar_metrics_insert_sqlstr,

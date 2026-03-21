@@ -1,12 +1,12 @@
 from pandas import DataFrame
 from src.ch00_py.file_toolbox import create_path
 from src.ch17_idea.idea_db_tool import upsert_sheet
-from src.ch18_world_etl.idea_collector import (
+from src.ch18_etl_config.idea_collector import (
     IdeaFileRef,
     get_all_excel_ideasheets,
     get_all_idea_dataframes,
 )
-from src.ch18_world_etl.test._util.ch18_env import get_temp_dir, temp_dir_setup
+from src.ch18_etl_config.test._util.ch18_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
 

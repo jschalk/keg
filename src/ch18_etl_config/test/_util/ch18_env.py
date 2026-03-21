@@ -6,7 +6,7 @@ from typing import Any, Generator
 
 
 def get_temp_dir():
-    return "src\\ch18_world_etl\\test\\_util\\etls"
+    return "src\\ch18_etl_config\\test\\_util\\etls"
 
 
 @pytest_fixture()

@@ -5,7 +5,7 @@ from src.ch00_py.db_toolbox import get_row_count
 from src.ch00_py.file_toolbox import create_path
 from src.ch04_rope.rope import create_rope
 from src.ch17_idea.idea_db_tool import create_idea_sorted_table, upsert_sheet
-from src.ch18_world_etl.etl_sqlstr import create_prime_tablename
+from src.ch18_etl_config.etl_sqlstr import create_prime_tablename
 from src.ch19_etl_main.etl_main import get_max_brick_agg_spark_num
 from src.ch21_world_apex.test._util.ch21_env import (
     get_temp_dir as worlds_dir,

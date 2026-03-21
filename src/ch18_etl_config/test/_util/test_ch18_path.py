@@ -3,7 +3,7 @@ from platform import system as platform_system
 from src.ch00_py.file_toolbox import create_path
 from src.ch04_rope.rope import create_rope
 from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch18_world_etl._ref.ch18_path import (
+from src.ch18_etl_config._ref.ch18_path import (
     create_last_run_metrics_path,
     create_moment_mstr_path,
     create_moment_ote1_csv_path,
@@ -13,7 +13,7 @@ from src.ch18_world_etl._ref.ch18_path import (
     create_stances_person_dir_path,
     create_world_db_path,
 )
-from src.ch18_world_etl.test._util.ch18_env import get_temp_dir, temp_dir_setup
+from src.ch18_etl_config.test._util.ch18_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
 STANCE0001_FILENAME = "stance0001.xlsx"

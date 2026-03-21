@@ -1,7 +1,7 @@
 from os import getcwd as os_getcwd
 from src.ch00_py.file_toolbox import create_path
 from src.ch17_idea.idea_config import get_idea_config_dict
-from src.ch18_world_etl.etl_config import (
+from src.ch18_etl_config.etl_config import (
     ALL_DIMEN_ABBV2,
     ALL_DIMEN_ABBV7,
     create_prime_table_sqlstr,
@@ -176,7 +176,7 @@ def test_get_all_dimen_columns_set_ReturnsObj_Scenario1_translate_core_Dimens():
 def test_etl_idea_category_config_path_ReturnsObj():
     # ESTABLISH / WHEN / THEN
     src_dir = create_path(os_getcwd(), "src")
-    chapter_dir = create_path(src_dir, "ch18_world_etl")
+    chapter_dir = create_path(src_dir, "ch18_etl_config")
     assert etl_idea_category_config_path() == create_path(
         chapter_dir, "etl_idea_category_config.json"
     )

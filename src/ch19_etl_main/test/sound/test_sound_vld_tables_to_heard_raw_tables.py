@@ -1,6 +1,6 @@
 from sqlite3 import Cursor, connect as sqlite3_connect
 from src.ch00_py.db_toolbox import get_row_count, get_table_columns
-from src.ch18_world_etl.etl_sqlstr import (
+from src.ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
     get_insert_into_heard_raw_sqlstrs,

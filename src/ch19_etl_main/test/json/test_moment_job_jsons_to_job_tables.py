@@ -13,7 +13,7 @@ from src.ch09_person_lesson._ref.ch09_path import (
 from src.ch09_person_lesson.lasso import lassounit_shop
 from src.ch10_person_listen.keep_tool import save_job_file
 from src.ch14_moment.moment_main import momentunit_shop
-from src.ch18_world_etl.etl_sqlstr import create_prime_tablename as prime_table
+from src.ch18_etl_config.etl_sqlstr import create_prime_tablename as prime_table
 from src.ch19_etl_main.etl_main import etl_moment_job_jsons_to_job_tables
 from src.ch19_etl_main.test._util.ch19_env import cursor0, get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx

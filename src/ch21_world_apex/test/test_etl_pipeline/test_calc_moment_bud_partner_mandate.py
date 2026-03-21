@@ -12,7 +12,7 @@ from src.ch14_moment._ref.ch14_path import (
 )
 from src.ch14_moment.moment_main import get_momentunit_from_dict, momentunit_shop
 from src.ch14_moment.test._util.ch14_examples import example_casa_floor_clean_factunit
-from src.ch18_world_etl._ref.ch18_path import create_moment_ote1_json_path
+from src.ch18_etl_config._ref.ch18_path import create_moment_ote1_json_path
 from src.ch21_world_apex.test._util.ch21_env import (
     get_temp_dir as worlds_dir,
     temp_dir_setup,

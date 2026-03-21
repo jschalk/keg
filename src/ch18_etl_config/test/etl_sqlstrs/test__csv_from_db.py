@@ -2,8 +2,12 @@ from os.path import exists as os_path_exists
 from sqlite3 import Cursor
 from src.ch00_py.csv_toolbox import open_csv_with_types
 from src.ch00_py.file_toolbox import create_path
-from src.ch18_world_etl.etl_csv import save_to_split_csvs
-from src.ch18_world_etl.test._util.ch18_env import cursor0, get_temp_dir, temp_dir_setup
+from src.ch18_etl_config.etl_csv import save_to_split_csvs
+from src.ch18_etl_config.test._util.ch18_env import (
+    cursor0,
+    get_temp_dir,
+    temp_dir_setup,
+)
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
 

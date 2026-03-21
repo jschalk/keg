@@ -1,7 +1,7 @@
 from sqlite3 import Cursor
 from src.ch13_time.epoch_main import DEFAULT_EPOCH_LENGTH, get_c400_constants
 from src.ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
-from src.ch18_world_etl.etl_sqlstr import (
+from src.ch18_etl_config.etl_sqlstr import (
     create_sound_and_heard_tables,
     update_heard_agg_timenum_columns,
 )
