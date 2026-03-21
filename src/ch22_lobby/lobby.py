@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from src.ch09_person_lesson.lesson_main import LessonUnit
-from src.ch21_world_apex.world import WorldName
+from src.ch21_world.world import WorldName
 
 
 @dataclass

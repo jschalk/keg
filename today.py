@@ -1,7 +1,7 @@
 from os import getcwd as os_getcwd
 from os.path import isdir as os_path_isdir
 from src.ch00_py.file_toolbox import create_path, open_json, save_file
-from src.ch20_world_kpi.gcalendar import get_gcal_day_report_from_personunit
+from src.ch20_kpi.gcalendar import get_gcal_day_report_from_personunit
 
 # HOW TO USE:
 # Open up CMD, change directory to repo

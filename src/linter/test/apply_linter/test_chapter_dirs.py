@@ -144,7 +144,7 @@ def test_Chapters_DoNotHaveEmptyDirectories():
     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
     # ESTABLISH
     excluded_dirs = {
-        "src/ch21_world_apex/test/test_world_examples/worlds",
+        "src/ch21_world/test/test_world_examples/worlds",
         "src/ch19_etl_main/test/z_notebooks",
     }
 

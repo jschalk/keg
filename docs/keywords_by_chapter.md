@@ -21,8 +21,8 @@
 - ch17_idea: allowed_crud, attributes, build_order, ch17, delete_insert, delete_insert_update, delete_update, error_message, fund_rank, idea_category, idea_number, insert_multiple, insert_one_time, insert_update, net_funds, otx_key, pledges_count, source_dimen, translate_spark_num, world_name
 - ch18_etl_config: brick_agg, brick_raw, brick_valid, ch18, heard_raw, heard_vld, mmtbudd, mmthour, mmtmont, mmtoffi, mmtpayy, mmtunit, mmtweek, moment_ote1_agg, nabtime, person_net_amount, sound_agg, sound_raw, sparks_brick_agg, sparks_brick_valid, trlcore, trllabe, trlname, trlrope, trltitl
 - ch19_etl_main: moment_partner_nets
-- ch20_world_kpi: Event, ch20, default_kpi_bundle, gcal, moment_kpi001_partner_nets, moment_kpi002_person_pledges
-- ch21_world_apex: WorldName, ch21
+- ch20_kpi: Event, ch20, default_kpi_bundle, gcal, moment_kpi001_partner_nets, moment_kpi002_person_pledges
+- ch21_world: WorldName, ch21
 - ch22_lobby: LobbyID, lobby_id, lobby_mstr_dir, lobbys
 - ch23_finance: finance, financial
 - ch24_person_viewer: 

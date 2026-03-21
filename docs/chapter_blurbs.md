@@ -23,8 +23,8 @@ What does each one do?
 - **ch17_idea**: Defines Idea Bricks: Spreadsheet data formats of any MomentUnit data.
 - **ch18_etl_config**: Defines the tools that use Idea Bricks to build MomentUnits.
 - **ch19_etl_main**: Defines the tools that use Idea Bricks to build MomentUnits.
-- **ch20_world_kpi**: Defines the analytics outcomes of completed MomentUnits.
-- **ch21_world_apex**: Defines WorldDirs that admin MomentUnits input data and outcomes
+- **ch20_kpi**: Defines the analytics outcomes of completed MomentUnits.
+- **ch21_world**: Defines WorldDirs that admin MomentUnits input data and outcomes
 - **ch22_lobby**: Defines Lobby Tools for gifts, World Scenarios.
 - **ch23_finance**: Defines Finance Tools for 
 - **ch24_person_viewer**: Tools for Visualizing PersonUnits
