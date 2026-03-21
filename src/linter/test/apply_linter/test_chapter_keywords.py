@@ -74,7 +74,10 @@ def test_Chapters_CheckStringMetricsFromEveryFile():
     unnecessarily_excluded_funcs = (
         chapters_func_class_metrics.unnecessarily_excluded_funcs
     )
-    check_custom_exception_classes_style(chapters_func_class_metrics.all_classes)
+    all_classes = chapters_func_class_metrics.all_classes
+    exception_check_result = check_custom_exception_classes_style(all_classes)
+    assert exception_check_result[0], exception_check_result[1]
+
     semantic_types = chapters_func_class_metrics.semantic_types
     all_functions = chapters_func_class_metrics.all_functions
 

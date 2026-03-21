@@ -2,9 +2,11 @@ from collections import deque
 from compact_json import Formatter as compact_json_Formatter
 from copy import deepcopy as copy_deepcopy
 from csv import reader as csv_reader, writer as csv_writer
+from enum import Enum
 from io import StringIO as io_StringIO
 from json import dumps as json_dumps, loads as json_loads
 from re import fullmatch as re_fullmatch
+from typing import Any, List, Union
 
 
 def uppercase_in_str(x_str: str) -> bool:
@@ -87,10 +89,6 @@ class NestedValueError(Exception):
 
 class Is2dWithUniqueKeysError(Exception):
     pass
-
-
-from enum import Enum
-from typing import Any, List, Union
 
 
 def convert_enum_keys_to_strings(keys: List[Any]) -> List[str]:
