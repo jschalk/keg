@@ -107,7 +107,7 @@ VALUES
 #     cursor0.execute(CREATE_TRLEPOC_SOUND_AGG_SQLSTR)
 #     trlepoc_dimen = kw.translate_epoch
 #     translate_epoc_s_agg_tablename = create_prime_tablename(
-#         trlepoc_dimen, "s", "agg"
+#         trlepoc_dimen, "s_agg"
 #     )
 #     insert_into_clause = f"""INSERT INTO {translate_epoc_s_agg_tablename} (
 #   {kw.spark_num}

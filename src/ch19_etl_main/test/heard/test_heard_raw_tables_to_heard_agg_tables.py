@@ -41,7 +41,7 @@ def check_insert_sqlstr_exists(
     # print(f"{stage_dict=}")
     config_dict = etl_idea_category_config_dict()
     raw_keylist = ["h", "raw", put_del] if put_del else ["h", "raw"]
-    agg_keylist = ["h", "agg", put_del] if put_del else ["h", "agg"]
+    agg_keylist = ["h_agg", put_del] if put_del else ["h_agg"]
     p_agg_columns = get_prime_columns(dimen, agg_keylist, config_dict)
     p_raw_columns = get_prime_columns(dimen, raw_keylist, config_dict)
     if stage_dict.get("exclude_otx_from_insert"):

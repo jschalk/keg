@@ -1,78 +1,66 @@
 {
   "moment": {
     "stages": {
-      "h": {
-        "agg": {
-          "exclude_from_insert": ["error_message"], 
-          "exclude_otx_from_insert": true, 
-          "set_nabuable_otx_inx_args": true
-        }, 
-        "raw": { "add": ["error_message"], "set_translateable_otx_inx_args": true }, 
-        "vld": { "remove": ["spark_num", "face_name"] }
+      "h_agg": {
+        "exclude_from_insert": ["error_message"], 
+        "exclude_otx_from_insert": true, 
+        "set_nabuable_otx_inx_args": true
       }, 
-      "s": {
-        "agg": { "add": ["error_message"] }, 
-        "raw": { "add": ["idea_number", "error_message"] }, 
-        "vld": {}
-      }
+      "h_raw": { "add": ["error_message"], "set_translateable_otx_inx_args": true }, 
+      "h_vld": { "remove": ["spark_num", "face_name"] }, 
+      "s_agg": { "add": ["error_message"] }, 
+      "s_raw": { "add": ["idea_number", "error_message"] }, 
+      "s_vld": {}
     }
   }, 
   "nabu": {
     "stages": {
-      "h": {
-        "agg": { "exclude_from_insert": ["error_message"], "exclude_otx_from_insert": true }, 
-        "raw": { "add": ["error_message"], "set_translateable_otx_inx_args": true }
-      }, 
-      "s": {
-        "agg": { "add": ["error_message"] }, 
-        "raw": { "add": ["idea_number", "error_message"] }, 
-        "vld": {}
-      }
+      "h_agg": { "exclude_from_insert": ["error_message"], "exclude_otx_from_insert": true }, 
+      "h_raw": { "add": ["error_message"], "set_translateable_otx_inx_args": true }, 
+      "s_agg": { "add": ["error_message"] }, 
+      "s_raw": { "add": ["idea_number", "error_message"] }, 
+      "s_vld": {}
     }
   }, 
   "person": {
     "stages": {
-      "h": {
-        "agg": {
-          "del": {
-            "exclude_from_insert": ["translate_spark_num", "error_message"], 
-            "exclude_otx_from_insert": true
-          }, 
-          "put": {
-            "exclude_from_insert": ["translate_spark_num", "error_message"], 
-            "exclude_otx_from_insert": true, 
-            "set_nabuable_otx_inx_args": true
-          }
+      "h_agg": {
+        "del": {
+          "exclude_from_insert": ["translate_spark_num", "error_message"], 
+          "exclude_otx_from_insert": true
         }, 
-        "raw": {
-          "del": { "add": ["translate_spark_num"], "set_translateable_otx_inx_args": true }, 
-          "put": { "add": ["translate_spark_num"], "set_translateable_otx_inx_args": true }
-        }, 
-        "vld": {"del": {}, "put": {}}
+        "put": {
+          "exclude_from_insert": ["translate_spark_num", "error_message"], 
+          "exclude_otx_from_insert": true, 
+          "set_nabuable_otx_inx_args": true
+        }
       }, 
-      "s": {
-        "agg": { "del": { "add": ["error_message"] }, "put": { "add": ["error_message"] } }, 
-        "raw": {
-          "del": { "add": ["idea_number"]                  }, 
-          "put": { "add": ["idea_number", "error_message"] }
-        }, 
-        "vld": {"del": {}, "put": {}}
-      }
+      "h_raw": {
+        "del": { "add": ["translate_spark_num"], "set_translateable_otx_inx_args": true }, 
+        "put": { "add": ["translate_spark_num"], "set_translateable_otx_inx_args": true }
+      }, 
+      "h_vld": {"del": {}, "put": {}}, 
+      "s_agg": { "del": { "add": ["error_message"] }, "put": { "add": ["error_message"] } }, 
+      "s_raw": {
+        "del": { "add": ["idea_number"]                  }, 
+        "put": { "add": ["idea_number", "error_message"] }
+      }, 
+      "s_vld": {"del": {}, "put": {}}
     }
   }, 
   "translate": {
     "stages": {
-      "s": {
-        "agg": { "add": ["error_message"] }, 
-        "raw": { "add": ["idea_number", "error_message"] }, 
-        "vld": { "remove": ["otx_knot", "inx_knot", "unknown_str"] }
-      }
+      "s_agg": { "add": ["error_message"] }, 
+      "s_raw": { "add": ["idea_number", "error_message"] }, 
+      "s_vld": { "remove": ["otx_knot", "inx_knot", "unknown_str"] }
     }
   }, 
   "translate_core": {
     "override_columns": ["face_name", "otx_knot", "inx_knot", "unknown_str"], 
     "stages": {
-      "s": { "agg": {}, "raw": { "add": ["source_dimen", "error_message"] }, "vld": {} }
+      "s_agg": {}, 
+      "s_raw": { "add": ["source_dimen", "error_message"] }, 
+      "s_vld": {}
     }
   }
 }

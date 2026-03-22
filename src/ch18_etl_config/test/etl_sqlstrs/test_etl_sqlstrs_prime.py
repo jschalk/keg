@@ -57,9 +57,7 @@ def test_get_prime_create_table_sqlstrs_ReturnsObj():
     for stage_name in sorted(etl_category_stages_dict.keys(), reverse=True):
         stage_dict = etl_category_stages_dict.get(stage_name)
         x_idea_category = stage_dict.get("idea_category")
-        x_stage0 = stage_dict.get("stage0")
-        x_stage1 = stage_dict.get("stage1")
-        stage_desc = f"{x_stage0}_{x_stage1}"
+        stage_desc = stage_dict.get("stage_desc")
         x_put_del = stage_dict.get("put_del")
         # if x_idea_category == kw.moment:
         # print(f"{x_idea_category=}")

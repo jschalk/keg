@@ -236,35 +236,31 @@ def test_get_etl_category_stages_dict_ReturnsObj():
     expected_count = 0
     etl_idea_category_config = etl_idea_category_config_dict()
     for idea_category, dimen_dict in etl_idea_category_config.items():
-        for stage0_key, stage0_dict in dimen_dict.get("stages").items():
-            for stage1_key, stage1_dict in stage0_dict.items():
+        for stage_desc, stages_dict in dimen_dict.get("stages").items():
+            expected_count += 1
+            if set(stages_dict.keys()) == {"del", "put"}:
+                stage_key_put = f"{idea_category}_{stage_desc}_put"
+                stage_key_del = f"{idea_category}_{stage_desc}_del"
+                # print(f"{expected_count} {stage_key_put=}")
                 expected_count += 1
-                if set(stage1_dict.keys()) == {"del", "put"}:
-                    stage_key_put = f"{idea_category}_{stage0_key}_{stage1_key}_put"
-                    stage_key_del = f"{idea_category}_{stage0_key}_{stage1_key}_del"
-                    # print(f"{expected_count} {stage_key_put=}")
-                    expected_count += 1
-                    expected_dict[stage_key_put] = {
-                        kw.idea_category: idea_category,
-                        "stage0": stage0_key,
-                        "stage1": stage1_key,
-                        "put_del": "put",
-                    }
-                    expected_dict[stage_key_del] = {
-                        kw.idea_category: idea_category,
-                        "stage0": stage0_key,
-                        "stage1": stage1_key,
-                        "put_del": "del",
-                    }
-                    # print(f"{expected_count} {stage_key_del=}")
-                else:
-                    stage_key = f"{idea_category}_{stage0_key}_{stage1_key}"
-                    expected_dict[stage_key] = {
-                        kw.idea_category: idea_category,
-                        "stage0": stage0_key,
-                        "stage1": stage1_key,
-                    }
-                    # print(f"{expected_count} {stage_key=} ")
+                expected_dict[stage_key_put] = {
+                    kw.idea_category: idea_category,
+                    "stage_desc": stage_desc,
+                    "put_del": "put",
+                }
+                expected_dict[stage_key_del] = {
+                    kw.idea_category: idea_category,
+                    "stage_desc": stage_desc,
+                    "put_del": "del",
+                }
+                # print(f"{expected_count} {stage_key_del=}")
+            else:
+                stage_key = f"{idea_category}_{stage_desc}"
+                expected_dict[stage_key] = {
+                    kw.idea_category: idea_category,
+                    "stage_desc": stage_desc,
+                }
+                # print(f"{expected_count} {stage_key=} ")
     # print(expected_dict)
     assert etl_category_stages_dict == expected_dict
 
@@ -280,7 +276,7 @@ def test_get_prime_columns_ReturnsObj_Scenario0_EmptyKeylist():
 def test_get_prime_columns_ReturnsObj_Scenario1_EmptyConfig():
     # ESTABLISH
     x_dimen = kw.momentunit
-    table_keylist = ["h", "agg"]
+    table_keylist = ["h_agg"]
 
     # WHEN / THEN
     assert get_prime_columns(x_dimen, table_keylist, {}) == set()
@@ -289,7 +285,7 @@ def test_get_prime_columns_ReturnsObj_Scenario1_EmptyConfig():
 def test_get_prime_columns_ReturnsObj_Scenario2_moment_epoch_month():
     # ESTABLISH
     x_dimen = kw.moment_epoch_month
-    table_keylist = ["h", "agg"]
+    table_keylist = ["h_agg"]
     config_dict = get_idea_config_dict()
 
     # WHEN
@@ -310,7 +306,7 @@ def test_get_prime_columns_ReturnsObj_Scenario2_moment_epoch_month():
 def test_get_prime_columns_ReturnsObj_Scenario3_h_raw_set_translateable_otx_inx_args():
     # ESTABLISH
     x_dimen = kw.moment_epoch_month
-    table_keylist = ["h", "raw"]
+    table_keylist = ["h_raw"]
     config_dict = etl_idea_category_config_dict()
 
     # WHEN
@@ -335,7 +331,7 @@ def test_get_prime_columns_ReturnsObj_Scenario3_h_raw_set_translateable_otx_inx_
 def test_get_prime_columns_ReturnsObj_Scenario4_h_agg_set_nabuable_otx_inx_args():
     # ESTABLISH
     x_dimen = kw.moment_timeoffi
-    table_keylist = ["h", "agg"]
+    table_keylist = ["h_agg"]
     config_dict = etl_idea_category_config_dict()
 
     # WHEN
@@ -356,7 +352,7 @@ def test_get_prime_columns_ReturnsObj_Scenario4_h_agg_set_nabuable_otx_inx_args(
 def test_get_prime_columns_ReturnsObj_Scenario5_h_agg_set_nabuable_otx_inx_args_ContextNabuableArgs():
     # ESTABLISH
     x_dimen = kw.person_plan_reason_caseunit
-    table_keylist = ["h", "agg", "put"]
+    table_keylist = ["h_agg", "put"]
     config_dict = etl_idea_category_config_dict()
 
     # WHEN

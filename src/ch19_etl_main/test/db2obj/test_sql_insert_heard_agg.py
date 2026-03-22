@@ -52,7 +52,7 @@ def test_create_prnunit_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     }
     etl_config = get_etl_config()
     prnunit = kw.personunit
-    dst_columns = get_prime_columns(prnunit, ["h", "agg", "put"], etl_config)
+    dst_columns = get_prime_columns(prnunit, ["h_agg", "put"], etl_config)
     # print(f"{dst_columns=}")
     # all args included in values dict
     assert dst_columns == set(values_dict.keys())
@@ -108,7 +108,7 @@ def test_create_prnplan_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     # all args included in values dict
     etl_config = get_etl_config()
     dimen = kw.person_planunit
-    dst_columns = get_prime_columns(dimen, ["h", "agg", "put"], etl_config)
+    dst_columns = get_prime_columns(dimen, ["h_agg", "put"], etl_config)
     print(f"{dst_columns=}")
     assert dst_columns == set(values_dict.keys())
 
@@ -145,7 +145,7 @@ def test_create_prnreas_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     # all args included in values dict
     etl_config = get_etl_config()
     dimen = kw.person_plan_reasonunit
-    dst_columns = get_prime_columns(dimen, ["h", "agg", "put"], etl_config)
+    dst_columns = get_prime_columns(dimen, ["h_agg", "put"], etl_config)
     print(f"{dst_columns=}")
     assert dst_columns == set(values_dict.keys())
 
@@ -188,7 +188,7 @@ def test_create_prncase_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     # all args included in values dict
     etl_config = get_etl_config()
     dimen = kw.person_plan_reason_caseunit
-    dst_columns = get_prime_columns(dimen, ["h", "agg", "put"], etl_config)
+    dst_columns = get_prime_columns(dimen, ["h_agg", "put"], etl_config)
     dst_columns = remove_inx_columns(dst_columns)
     dst_columns = remove_staging_columns(dst_columns)
     print(f"{dst_columns=}")
@@ -233,7 +233,7 @@ def test_create_prncase_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     all args included in values dict
 #     etl_config = get_etl_config()
 #     dimen = kw.personunit
-#     dst_columns = get_prime_columns(dimen, ["h", "agg", "put"], etl_config)
+#     dst_columns = get_prime_columns(dimen, ["h_agg", "put"], etl_config)
 #     print(f"{dst_columns=}")
 #     assert dst_columns == set(values_dict.keys())
 
@@ -275,7 +275,7 @@ def test_create_prnfact_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     # all args included in values dict
     etl_config = get_etl_config()
     dimen = kw.person_plan_factunit
-    dst_columns = get_prime_columns(dimen, ["h", "agg", "put"], etl_config)
+    dst_columns = get_prime_columns(dimen, ["h_agg", "put"], etl_config)
     dst_columns = remove_inx_columns(dst_columns)
     dst_columns = remove_staging_columns(dst_columns)
     print(f"{dst_columns=}")
@@ -312,7 +312,7 @@ def test_create_prnfact_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     all args included in values dict
 #     etl_config = get_etl_config()
 #     dimen = kw.personunit
-#     dst_columns = get_prime_columns(dimen, ["h", "agg", "put"], etl_config)
+#     dst_columns = get_prime_columns(dimen, ["h_agg", "put"], etl_config)
 #     print(f"{dst_columns=}")
 #     assert dst_columns == set(values_dict.keys())
 
@@ -352,7 +352,7 @@ def test_create_prnfact_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     all args included in values dict
 #     etl_config = get_etl_config()
 #     dimen = kw.personunit
-#     dst_columns = get_prime_columns(dimen, ["h", "agg", "put"], etl_config)
+#     dst_columns = get_prime_columns(dimen, ["h_agg", "put"], etl_config)
 #     print(f"{dst_columns=}")
 #     assert dst_columns == set(values_dict.keys())
 
@@ -413,7 +413,7 @@ def test_create_prnfact_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     all args included in values dict
 #     etl_config = get_etl_config()
 #     dimen = kw.personunit
-#     dst_columns = get_prime_columns(dimen, ["h", "agg", "put"], etl_config)
+#     dst_columns = get_prime_columns(dimen, ["h_agg", "put"], etl_config)
 #     print(f"{dst_columns=}")
 #     assert dst_columns == set(values_dict.keys())
 
@@ -469,7 +469,7 @@ def test_create_prnfact_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     all args included in values dict
 #     etl_config = get_etl_config()
 #     dimen = kw.personunit
-#     dst_columns = get_prime_columns(dimen, ["h", "agg", "put"], etl_config)
+#     dst_columns = get_prime_columns(dimen, ["h_agg", "put"], etl_config)
 #     print(f"{dst_columns=}")
 #     assert dst_columns == set(values_dict.keys())
 
@@ -517,7 +517,7 @@ def test_create_prnfact_h_put_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     all args included in values dict
 #     etl_config = get_etl_config()
 #     dimen = kw.personunit
-#     dst_columns = get_prime_columns(dimen, ["h", "agg", "put"], etl_config)
+#     dst_columns = get_prime_columns(dimen, ["h_agg", "put"], etl_config)
 #     print(f"{dst_columns=}")
 #     assert dst_columns == set(values_dict.keys())
 

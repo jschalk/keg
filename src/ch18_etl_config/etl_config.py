@@ -199,116 +199,98 @@ def get_etl_category_stages_dict() -> dict:
     return {
         "person_h_agg_put": {
             "idea_category": "person",
-            "stage0": "h",
-            "stage1": "agg",
+            "stage_desc": "h_agg",
             "put_del": "put",
         },
         "person_h_agg_del": {
             "idea_category": "person",
-            "stage0": "h",
-            "stage1": "agg",
+            "stage_desc": "h_agg",
             "put_del": "del",
         },
         "person_h_raw_put": {
             "idea_category": "person",
-            "stage0": "h",
-            "stage1": "raw",
+            "stage_desc": "h_raw",
             "put_del": "put",
         },
         "person_h_raw_del": {
             "idea_category": "person",
-            "stage0": "h",
-            "stage1": "raw",
+            "stage_desc": "h_raw",
             "put_del": "del",
         },
         "person_h_vld_put": {
             "idea_category": "person",
-            "stage0": "h",
-            "stage1": "vld",
+            "stage_desc": "h_vld",
             "put_del": "put",
         },
         "person_h_vld_del": {
             "idea_category": "person",
-            "stage0": "h",
-            "stage1": "vld",
+            "stage_desc": "h_vld",
             "put_del": "del",
         },
         "person_s_agg_put": {
             "idea_category": "person",
-            "stage0": "s",
-            "stage1": "agg",
+            "stage_desc": "s_agg",
             "put_del": "put",
         },
         "person_s_agg_del": {
             "idea_category": "person",
-            "stage0": "s",
-            "stage1": "agg",
+            "stage_desc": "s_agg",
             "put_del": "del",
         },
         "person_s_raw_put": {
             "idea_category": "person",
-            "stage0": "s",
-            "stage1": "raw",
+            "stage_desc": "s_raw",
             "put_del": "put",
         },
         "person_s_raw_del": {
             "idea_category": "person",
-            "stage0": "s",
-            "stage1": "raw",
+            "stage_desc": "s_raw",
             "put_del": "del",
         },
         "person_s_vld_put": {
             "idea_category": "person",
-            "stage0": "s",
-            "stage1": "vld",
+            "stage_desc": "s_vld",
             "put_del": "put",
         },
         "person_s_vld_del": {
             "idea_category": "person",
-            "stage0": "s",
-            "stage1": "vld",
+            "stage_desc": "s_vld",
             "put_del": "del",
         },
-        "moment_h_agg": {"idea_category": "moment", "stage0": "h", "stage1": "agg"},
-        "moment_h_raw": {"idea_category": "moment", "stage0": "h", "stage1": "raw"},
-        "moment_h_vld": {"idea_category": "moment", "stage0": "h", "stage1": "vld"},
-        "moment_s_agg": {"idea_category": "moment", "stage0": "s", "stage1": "agg"},
-        "moment_s_raw": {"idea_category": "moment", "stage0": "s", "stage1": "raw"},
-        "moment_s_vld": {"idea_category": "moment", "stage0": "s", "stage1": "vld"},
-        "nabu_h_agg": {"idea_category": "nabu", "stage0": "h", "stage1": "agg"},
-        "nabu_h_raw": {"idea_category": "nabu", "stage0": "h", "stage1": "raw"},
-        "nabu_s_agg": {"idea_category": "nabu", "stage0": "s", "stage1": "agg"},
-        "nabu_s_raw": {"idea_category": "nabu", "stage0": "s", "stage1": "raw"},
-        "nabu_s_vld": {"idea_category": "nabu", "stage0": "s", "stage1": "vld"},
+        "moment_h_agg": {"idea_category": "moment", "stage_desc": "h_agg"},
+        "moment_h_raw": {"idea_category": "moment", "stage_desc": "h_raw"},
+        "moment_h_vld": {"idea_category": "moment", "stage_desc": "h_vld"},
+        "moment_s_agg": {"idea_category": "moment", "stage_desc": "s_agg"},
+        "moment_s_raw": {"idea_category": "moment", "stage_desc": "s_raw"},
+        "moment_s_vld": {"idea_category": "moment", "stage_desc": "s_vld"},
+        "nabu_h_agg": {"idea_category": "nabu", "stage_desc": "h_agg"},
+        "nabu_h_raw": {"idea_category": "nabu", "stage_desc": "h_raw"},
+        "nabu_s_agg": {"idea_category": "nabu", "stage_desc": "s_agg"},
+        "nabu_s_raw": {"idea_category": "nabu", "stage_desc": "s_raw"},
+        "nabu_s_vld": {"idea_category": "nabu", "stage_desc": "s_vld"},
         "translate_s_agg": {
             "idea_category": "translate",
-            "stage0": "s",
-            "stage1": "agg",
+            "stage_desc": "s_agg",
         },
         "translate_s_raw": {
             "idea_category": "translate",
-            "stage0": "s",
-            "stage1": "raw",
+            "stage_desc": "s_raw",
         },
         "translate_s_vld": {
             "idea_category": "translate",
-            "stage0": "s",
-            "stage1": "vld",
+            "stage_desc": "s_vld",
         },
         "translate_core_s_agg": {
             "idea_category": "translate_core",
-            "stage0": "s",
-            "stage1": "agg",
+            "stage_desc": "s_agg",
         },
         "translate_core_s_raw": {
             "idea_category": "translate_core",
-            "stage0": "s",
-            "stage1": "raw",
+            "stage_desc": "s_raw",
         },
         "translate_core_s_vld": {
             "idea_category": "translate_core",
-            "stage0": "s",
-            "stage1": "vld",
+            "stage_desc": "s_vld",
         },
     }
 
@@ -384,10 +366,30 @@ def get_stage_abbv5(stage_name: str) -> str:
 def get_prime_columns(
     x_dimen: str, table_keylist: list[str], etl_idea_category_config: dict
 ) -> set[str]:
-    """Given dimen and config_keylist (ala ["s", "agg", put_del] )
+    """Given dimen and config_keylist (ala ["s_agg", put_del] )
     Return list of columns for that prime table"""
+
     if not table_keylist or not etl_idea_category_config:
         return set()
+
+    # TODO get rid stage_first and stage_second through codebase
+    stage_desc = table_keylist[0]
+    if len(table_keylist) == 3:
+        put_del = table_keylist[2]
+        if put_del not in {None, "put", "del"}:
+            raise PrimeTablenameError(
+                f"'{stage_desc}' '{put_del}' is not a valid put_del"
+            )
+    stage_first_term = stage_desc.split("_")[0]
+    if stage_first_term not in {"s", "h", "job"}:
+        raise PrimeTablenameError(f"'{stage_desc}' is not a valid stage")
+    if stage_first_term == stage_desc:
+        stage_second_term = None
+    else:
+        stage_second_term = stage_desc.split("_")[1]
+    if stage_second_term not in {None, "raw", "agg", "vld"}:
+        raise PrimeTablenameError(f"'{stage_desc}' is not a valid stage")
+
     columns = get_all_dimen_columns_set(x_dimen)
     if table_keylist[-1] == "del":
         columns = get_del_dimen_columns_set(x_dimen)
@@ -453,11 +455,7 @@ def create_prime_table_sqlstr(
     if stage_second_term not in {None, "raw", "agg", "vld"}:
         raise PrimeTablenameError(f"'{stage_desc}' is not a valid stage")
 
-    table_keylist = (
-        [stage_first_term, stage_second_term, put_del]
-        if put_del
-        else [stage_first_term, stage_second_term]
-    )
+    table_keylist = [stage_desc, put_del] if put_del else [stage_desc]
     etl_idea_category_config = etl_idea_category_config_dict()
     columns_set = get_prime_columns(x_dimen, table_keylist, etl_idea_category_config)
     columns_list = get_default_sorted_list(columns_set)
