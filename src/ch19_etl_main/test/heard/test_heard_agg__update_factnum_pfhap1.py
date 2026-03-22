@@ -14,7 +14,7 @@ from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 def pfhap1_insert_prnfact(cursor0: Cursor, x_values: list[list]) -> str:
     """x_cols = [kw.spark_num, kw.person_name, kw.fact_context]"""
     x_cols = [kw.spark_num, kw.person_name, kw.fact_context]
-    tablename = create_prime_db_table(cursor0, kw.prnfact, "h", "agg", "put")
+    tablename = create_prime_db_table(cursor0, kw.prnfact, "h_agg", "put")
     insert_sql = create_type_reference_insert_sqlstr(tablename, x_cols, x_values)
     cursor0.execute(insert_sql)
     return insert_sql
@@ -23,7 +23,7 @@ def pfhap1_insert_prnfact(cursor0: Cursor, x_values: list[list]) -> str:
 def pfhap1_insert_prnplan(cursor0: Cursor, x_values: list[list]) -> str:
     """x_cols = [kw.spark_num, kw.person_name, kw.plan_rope, kw.close]"""
     x_cols = [kw.spark_num, kw.person_name, kw.plan_rope, kw.close]
-    tablename = create_prime_db_table(cursor0, kw.prnplan, "h", "agg", "put")
+    tablename = create_prime_db_table(cursor0, kw.prnplan, "h_agg", "put")
     insert_sql = create_type_reference_insert_sqlstr(tablename, x_cols, x_values)
     cursor0.execute(insert_sql)
     return insert_sql

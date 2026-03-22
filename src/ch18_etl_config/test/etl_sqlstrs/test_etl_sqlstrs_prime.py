@@ -289,7 +289,7 @@ def test_create_prime_db_table_CreatesSingleTable(cursor0: Cursor):
     assert len(get_db_tables(cursor0)) == 0
 
     # WHEN
-    gen_tablename = create_prime_db_table(cursor0, kw.personunit, "s", "agg", put_str)
+    gen_tablename = create_prime_db_table(cursor0, kw.personunit, "s_agg", put_str)
 
     # THEN
     assert db_table_exists(cursor0, prnunit_s_put_agg_table)

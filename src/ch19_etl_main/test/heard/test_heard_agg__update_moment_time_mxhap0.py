@@ -19,7 +19,7 @@ def mxhap0_insert_mmtunit(cursor0: Cursor, x_values: list[list]) -> str:
     """x_cols = [kw.spark_num, kw.moment_rope, kw.c400_number]"""
 
     x_cols = [kw.spark_num, kw.moment_rope, kw.c400_number]
-    tablename = create_prime_db_table(cursor0, kw.mmtunit, "h", "agg")
+    tablename = create_prime_db_table(cursor0, kw.mmtunit, "h_agg")
     insert_sql = create_type_reference_insert_sqlstr(tablename, x_cols, x_values)
     cursor0.execute(insert_sql)
     return insert_sql
@@ -29,7 +29,7 @@ def mxhap0_insert_nabtime(cursor0: Cursor, x_values: list[list]) -> str:
     """x_cols = [kw.spark_num, kw.moment_rope, kw.otx_time, kw.inx_time]"""
 
     x_cols = [kw.spark_num, kw.moment_rope, kw.otx_time, kw.inx_time]
-    tablename = create_prime_db_table(cursor0, kw.nabtime, "h", "agg")
+    tablename = create_prime_db_table(cursor0, kw.nabtime, "h_agg")
     insert_sql = create_type_reference_insert_sqlstr(tablename, x_cols, x_values)
     cursor0.execute(insert_sql)
     return insert_sql
@@ -39,7 +39,7 @@ def mxhap0_insert_mmtoffi(cursor0: Cursor, x_values: list[list]) -> str:
     """x_cols = [kw.spark_num, kw.moment_rope, "offi_time_otx"]"""
 
     x_cols = [kw.spark_num, kw.moment_rope, f"{kw.offi_time}_otx"]
-    tablename = create_prime_db_table(cursor0, kw.mmtoffi, "h", "agg")
+    tablename = create_prime_db_table(cursor0, kw.mmtoffi, "h_agg")
     insert_sql = create_type_reference_insert_sqlstr(tablename, x_cols, x_values)
     cursor0.execute(insert_sql)
     return insert_sql
@@ -104,7 +104,7 @@ def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario1_PopulatesTableWhe
     mxhap0_insert_mmtunit(cursor0, mmtunit_vals)
     s7_offi_time_otx = 200
     mmtoffi_vals = [[spark7, exx.a23, s7_offi_time_otx]]
-    create_prime_db_table(cursor0, kw.nabtime, "h", "agg")
+    create_prime_db_table(cursor0, kw.nabtime, "h_agg")
     mxhap0_insert_mmtoffi(cursor0, mmtoffi_vals)
 
     # BEFORE
@@ -143,7 +143,7 @@ def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario3_PopulatesTableWit
         [spark3, exx.a23, s3_offi_time_otx],
     ]
     mxhap0_insert_mmtoffi(cursor0, mmtoffi_vals)
-    create_prime_db_table(cursor0, kw.mmtunit, "h", "agg")
+    create_prime_db_table(cursor0, kw.mmtunit, "h_agg")
 
     # BEFORE
     assert mxhap0_select_mmtoffi(cursor0, True) == [

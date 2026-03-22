@@ -15,7 +15,7 @@ def pchap0_insert_nabtime(cursor0: Cursor, x_values: list[list]) -> str:
     """x_cols = [kw.spark_num, kw.moment_rope, kw.otx_time, kw.inx_time]"""
 
     x_cols = [kw.spark_num, kw.moment_rope, kw.otx_time, kw.inx_time]
-    tablename = create_prime_db_table(cursor0, kw.nabu_timenum, "h", "agg")
+    tablename = create_prime_db_table(cursor0, kw.nabu_timenum, "h_agg")
     insert_sql = create_type_reference_insert_sqlstr(tablename, x_cols, x_values)
     cursor0.execute(insert_sql)
     return insert_sql
@@ -25,7 +25,7 @@ def pchap0_insert_prncase(cursor0: Cursor, x_values: list[list]) -> str:
     """x_cols = [kw.spark_num, kw.plan_rope]"""
 
     x_cols = [kw.spark_num, kw.plan_rope]
-    tablename = create_prime_db_table(cursor0, kw.prncase, "h", "agg", "put")
+    tablename = create_prime_db_table(cursor0, kw.prncase, "h_agg", "put")
     insert_sql = create_type_reference_insert_sqlstr(tablename, x_cols, x_values)
     cursor0.execute(insert_sql)
     return insert_sql

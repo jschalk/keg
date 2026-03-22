@@ -39,7 +39,7 @@ WHERE prncase.{kw.spark_num} = prnplan.{kw.spark_num}
 def pchap1_insert_prncase(cursor0: Cursor, x_values: list[list]) -> str:
     """x_cols = [kw.spark_num, kw.person_name, kw.reason_context]"""
     x_cols = [kw.spark_num, kw.person_name, kw.reason_context]
-    tablename = create_prime_db_table(cursor0, kw.prncase, "h", "agg", "put")
+    tablename = create_prime_db_table(cursor0, kw.prncase, "h_agg", "put")
     insert_sql = create_type_reference_insert_sqlstr(tablename, x_cols, x_values)
     cursor0.execute(insert_sql)
     return insert_sql
@@ -48,7 +48,7 @@ def pchap1_insert_prncase(cursor0: Cursor, x_values: list[list]) -> str:
 def pchap1_insert_prnplan(cursor0: Cursor, x_values: list[list]) -> str:
     """x_cols = [kw.spark_num, kw.person_name, kw.plan_rope, kw.denom, kw.morph]"""
     x_cols = [kw.spark_num, kw.person_name, kw.plan_rope, kw.denom, kw.morph]
-    tablename = create_prime_db_table(cursor0, kw.prnplan, "h", "agg", "put")
+    tablename = create_prime_db_table(cursor0, kw.prnplan, "h_agg", "put")
     insert_sql = create_type_reference_insert_sqlstr(tablename, x_cols, x_values)
     cursor0.execute(insert_sql)
     return insert_sql

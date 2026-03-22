@@ -20,7 +20,7 @@ def pfhap2_insert_prnfact(cursor0: Cursor, x_values: list[list]) -> str:
         "context_plan_close",
         kw.inx_epoch_diff,
     ]
-    tablename = create_prime_db_table(cursor0, kw.prnfact, "h", "agg", "put")
+    tablename = create_prime_db_table(cursor0, kw.prnfact, "h_agg", "put")
     insert_sql = create_type_reference_insert_sqlstr(tablename, x_cols, x_values)
     cursor0.execute(insert_sql)
     return insert_sql
