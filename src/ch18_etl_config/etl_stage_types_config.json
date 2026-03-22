@@ -1,0 +1,11 @@
+{
+  "h_raw": {"description": "", "abbv9": "heard_raw", "stage_type_order": 7}
+, "h_agg": {"description": "", "abbv9": "heard_agg", "stage_type_order": 8}
+, "h_vld": {"description": "", "abbv9": "heard_vld", "stage_type_order": 9}
+, "s_agg": {"description": "", "abbv9": "sound_agg", "stage_type_order": 5}
+, "s_raw": {"description": "", "abbv9": "sound_raw", "stage_type_order": 4}
+, "s_vld": {"description": "", "abbv9": "sound_vld", "stage_type_order": 6}
+, "b_agg": {"description": "", "abbv9": "brick_agg", "stage_type_order": 2}
+, "b_raw": {"description": "", "abbv9": "brick_raw", "stage_type_order": 1}
+, "b_vld": {"description": "", "abbv9": "brick_valid", "stage_type_order": 3}
+}

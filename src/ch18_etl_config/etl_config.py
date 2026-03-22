@@ -174,6 +174,18 @@ def create_prime_tablename(
     )
 
 
+def etl_stage_types_config_path() -> str:
+    "Returns path: ch18_etl_config/etl_stage_types_config.json"
+    src_dir = create_path(os_getcwd(), "src")
+    chapter_dir = create_path(src_dir, "ch18_etl_config")
+    return create_path(chapter_dir, "etl_stage_types_config.json")
+
+
+def etl_stage_types_config_dict() -> dict:
+    """Config data for etl dimenensions (translate, moment, person...) including required columns per stage"""
+    return open_json(etl_stage_types_config_path())
+
+
 def etl_idea_category_config_path() -> str:
     "Returns path: ch18_etl_config/etl_idea_category_config.json"
     src_dir = create_path(os_getcwd(), "src")

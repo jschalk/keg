@@ -8,6 +8,8 @@ from src.ch18_etl_config.etl_config import (
     create_prime_tablename,
     etl_idea_category_config_dict,
     etl_idea_category_config_path,
+    etl_stage_types_config_dict,
+    etl_stage_types_config_path,
     get_all_dimen_columns_set,
     get_del_dimen_columns_set,
     get_dimen_abbv2,
@@ -199,6 +201,59 @@ def test_get_all_dimen_columns_set_ReturnsObj_Scenario1_translate_core_Dimens():
     assert translate_core_columns == expected_columns
 
 
+def test_etl_stage_types_config_path_ReturnsObj():
+    # ESTABLISH
+    src_dir = create_path(os_getcwd(), "src")
+    chapter_dir = create_path(src_dir, "ch18_etl_config")
+    # WHEN / THEN
+    assert etl_stage_types_config_path() == create_path(
+        chapter_dir, "etl_stage_types_config.json"
+    )
+
+
+def test_etl_stage_types_config_dict_ReturnsObj_Scenario0_IsFullyPopulated():
+    # ESTABLISH / WHEN
+    etl_stage_types_config = etl_stage_types_config_dict()
+
+    # THEN
+    assert etl_stage_types_config
+    etl_stage_types = set(etl_stage_types_config.keys())
+    assert etl_stage_types == {
+        "h_agg",
+        "h_raw",
+        "h_vld",
+        "s_agg",
+        "s_raw",
+        "s_vld",
+        "b_agg",
+        "b_raw",
+        "b_vld",
+    }
+    expected_abbv9_stage_types = {
+        kw.heard_agg,
+        kw.heard_raw,
+        kw.heard_vld,
+        kw.sound_agg,
+        kw.sound_raw,
+        kw.sound_vld,
+        kw.brick_agg,
+        kw.brick_raw,
+        kw.brick_valid,
+    }
+    for stage_type, stage_type_dict in etl_stage_types_config.items():
+        type_dict_keys = set(stage_type_dict.keys())
+        assert "description" in type_dict_keys
+        assert "abbv9" in type_dict_keys
+        assert "stage_type_order" in type_dict_keys
+        abbv9_str = stage_type_dict.get("abbv9")
+        general_order_int = stage_type_dict.get("stage_type_order")
+        assert abbv9_str in expected_abbv9_stage_types
+        assert abbv9_str[5:6] == "_"
+        assert general_order_int > 0, stage_type
+
+        print(f"{stage_type=} {type_dict_keys=}")
+
+
 def test_etl_idea_category_config_path_ReturnsObj():
     # ESTABLISH / WHEN / THEN
     src_dir = create_path(os_getcwd(), "src")
@@ -221,6 +276,12 @@ def test_get_etl_idea_category_config_dict_ReturnsObj_Scenario0_IsFullyPopulated
     assert kw.person in etl_idea_category_config_dimens
     assert kw.nabu in etl_idea_category_config_dimens
     assert len(etl_idea_category_config_dimens) == 5
+
+    etl_stage_types = set(etl_stage_types_config_dict().keys())
+    for idea_category, cat_dict in etl_idea_category_config.items():
+        for stage_type, stage_dict in cat_dict.get("stages").items():
+            assert stage_type in etl_stage_types
+            print(f"{stage_type=}")
 
 
 def test_get_etl_category_stages_dict_ReturnsObj():
