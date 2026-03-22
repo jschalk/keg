@@ -34,8 +34,8 @@ def check_insert_sqlstr_exists(
     stage_dict: dict,
     put_del: str = None,
 ):
-    raw_tablename = prime_tbl(dimen, "h", "raw", put_del)
-    agg_tablename = prime_tbl(dimen, "h", "agg", put_del)
+    raw_tablename = prime_tbl(dimen, "h_raw", put_del)
+    agg_tablename = prime_tbl(dimen, "h_agg", put_del)
 
     print(f"{raw_tablename=} {agg_tablename=}")
     # print(f"{stage_dict=}")
@@ -124,7 +124,7 @@ def test_get_insert_heard_agg_sqlstrs_ReturnsObj_PopulatesTable_Scenario0(
     x66_debt = 66
 
     create_sound_and_heard_tables(cursor0)
-    prnptnr_h_raw_put_tablename = prime_tbl(kw.person_partnerunit, "h", "raw", "put")
+    prnptnr_h_raw_put_tablename = prime_tbl(kw.person_partnerunit, "h_raw", "put")
     print(f"{get_table_columns(cursor0, prnptnr_h_raw_put_tablename)=}")
     insert_into_clause = f"""INSERT INTO {prnptnr_h_raw_put_tablename} (
   {kw.spark_num}
@@ -145,7 +145,7 @@ VALUES
 """
     cursor0.execute(insert_into_clause)
     assert get_row_count(cursor0, prnptnr_h_raw_put_tablename) == 5
-    prnptnr_h_agg_put_tablename = prime_tbl(kw.person_partnerunit, "h", "agg", "put")
+    prnptnr_h_agg_put_tablename = prime_tbl(kw.person_partnerunit, "h_agg", "put")
     assert get_row_count(cursor0, prnptnr_h_agg_put_tablename) == 0
 
     # WHEN
@@ -190,7 +190,7 @@ def test_etl_heard_raw_tables_to_heard_agg_tables_PopulatesTable_Scenario0(
     x66_debt = 66
 
     create_sound_and_heard_tables(cursor0)
-    prnptnr_h_raw_put_tablename = prime_tbl(kw.person_partnerunit, "h", "raw", "put")
+    prnptnr_h_raw_put_tablename = prime_tbl(kw.person_partnerunit, "h_raw", "put")
     print(f"{get_table_columns(cursor0, prnptnr_h_raw_put_tablename)=}")
     insert_into_clause = f"""INSERT INTO {prnptnr_h_raw_put_tablename} (
   {kw.spark_num}
@@ -211,7 +211,7 @@ VALUES
 """
     cursor0.execute(insert_into_clause)
     assert get_row_count(cursor0, prnptnr_h_raw_put_tablename) == 5
-    prnptnr_h_agg_put_tablename = prime_tbl(kw.person_partnerunit, "h", "agg", "put")
+    prnptnr_h_agg_put_tablename = prime_tbl(kw.person_partnerunit, "h_agg", "put")
     assert get_row_count(cursor0, prnptnr_h_agg_put_tablename) == 0
 
     # WHEN

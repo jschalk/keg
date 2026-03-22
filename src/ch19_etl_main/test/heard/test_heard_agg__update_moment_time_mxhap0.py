@@ -48,7 +48,7 @@ def mxhap0_insert_mmtoffi(cursor0: Cursor, x_values: list[list]) -> str:
 def mxhap0_select_mmtoffi(cursor0: Cursor, print_rows: bool = False) -> list[tuple]:
     """SELECT spark_num, moment_rope, offi_time_otx, offi_time_inx"""
 
-    prnfact_h_agg_table = create_prime_tablename(kw.mmtoffi, "h", "agg")
+    prnfact_h_agg_table = create_prime_tablename(kw.mmtoffi, "h_agg")
     sel_prnfact_str = f"""
 SELECT {kw.spark_num}, {kw.moment_rope}, offi_time_otx, offi_time_inx
 FROM {prnfact_h_agg_table}
@@ -82,7 +82,7 @@ def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario0_PopulatesTableWit
     ]
 
     # WHEN
-    mxhap0_table = create_prime_tablename(kw.mmtoffi, "h", "agg")
+    mxhap0_table = create_prime_tablename(kw.mmtoffi, "h_agg")
     update_mmtoffi_sql = get_update_heard_agg_timenum_sqlstr(mxhap0_table, kw.offi_time)
     cursor0.execute(update_mmtoffi_sql)
 
@@ -111,7 +111,7 @@ def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario1_PopulatesTableWhe
     assert mxhap0_select_mmtoffi(cursor0) == [(spark7, exx.a23, s7_offi_time_otx, None)]
 
     # WHEN
-    mxhap0_table = create_prime_tablename(kw.mmtoffi, "h", "agg")
+    mxhap0_table = create_prime_tablename(kw.mmtoffi, "h_agg")
     update_mmtoffi_sql = get_update_heard_agg_timenum_sqlstr(mxhap0_table, kw.offi_time)
     cursor0.execute(update_mmtoffi_sql)
 
@@ -152,7 +152,7 @@ def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario3_PopulatesTableWit
     ]
 
     # WHEN
-    mmtoffi_tbl = prime_tbl(kw.mmtoffi, "h", "agg")
+    mmtoffi_tbl = prime_tbl(kw.mmtoffi, "h_agg")
     update_mmtoffi_sql = get_update_heard_agg_timenum_sqlstr(mmtoffi_tbl, kw.offi_time)
     cursor0.execute(update_mmtoffi_sql)
 
@@ -205,7 +205,7 @@ def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario4_PopulatesTableWit
     ]
 
     # WHEN
-    mmtoffi_h_agg_tablename = prime_tbl(kw.moment_timeoffi, "h", "agg")
+    mmtoffi_h_agg_tablename = prime_tbl(kw.moment_timeoffi, "h_agg")
     update_mmtoffi_sql = get_update_heard_agg_timenum_sqlstr(
         mmtoffi_h_agg_tablename, kw.offi_time
     )
@@ -246,7 +246,7 @@ def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario5_CanDstTableCanJoi
     assert mxhap0_select_mmtoffi(cursor0) == [(spark7, exx.a23, s7_offi_time_otx, None)]
 
     # WHEN
-    mxhap0_table = create_prime_tablename(kw.mmtoffi, "h", "agg")
+    mxhap0_table = create_prime_tablename(kw.mmtoffi, "h_agg")
     update_mmtoffi_sql = get_update_heard_agg_timenum_sqlstr(mxhap0_table, kw.offi_time)
     print(update_mmtoffi_sql)
     cursor0.execute(update_mmtoffi_sql)
@@ -273,7 +273,7 @@ def test_get_update_heard_agg_moment_timenum_sqlstrs_ReturnsObj():
         arg_dimens = get_dimens_with_idea_element(timenum_arg)
         print(f"{timenum_arg=} {arg_dimens=}")
         for arg_dimen in arg_dimens:
-            prime_tablename = prime_tbl(arg_dimen, "h", "agg")
+            prime_tablename = prime_tbl(arg_dimen, "h_agg")
             update_sqlstr = get_update_heard_agg_timenum_sqlstr(
                 prime_tablename, timenum_arg
             )
@@ -288,9 +288,9 @@ def test_get_update_heard_agg_moment_timenum_sqlstrs_ReturnsObj():
 
 def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario1_MMTPAYY():
     # ESTABLISH
-    mmtunit_h_agg_tablename = prime_tbl(kw.momentunit, "h", "agg")
-    nabtime_h_agg_tablename = prime_tbl(kw.nabu_timenum, "h", "agg")
-    mmtpayy_h_agg_tablename = prime_tbl(kw.moment_paybook, "h", "agg")
+    mmtunit_h_agg_tablename = prime_tbl(kw.momentunit, "h_agg")
+    nabtime_h_agg_tablename = prime_tbl(kw.nabu_timenum, "h_agg")
+    mmtpayy_h_agg_tablename = prime_tbl(kw.moment_paybook, "h_agg")
     c400_leap_length = get_c400_constants().c400_leap_length
 
     # WHEN
@@ -337,9 +337,9 @@ WHERE enriched.{kw.spark_num} = dst_table.{kw.spark_num}
 
 def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario0_MMTOFFI():
     # ESTABLISH
-    mmtunit_h_agg_tablename = prime_tbl(kw.momentunit, "h", "agg")
-    nabtime_h_agg_tablename = prime_tbl(kw.nabu_timenum, "h", "agg")
-    mmtoffi_h_agg_tablename = prime_tbl(kw.moment_timeoffi, "h", "agg")
+    mmtunit_h_agg_tablename = prime_tbl(kw.momentunit, "h_agg")
+    nabtime_h_agg_tablename = prime_tbl(kw.nabu_timenum, "h_agg")
+    mmtoffi_h_agg_tablename = prime_tbl(kw.moment_timeoffi, "h_agg")
     c400_leap_length = get_c400_constants().c400_leap_length
 
     # WHEN

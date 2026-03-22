@@ -13,8 +13,8 @@ from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 def test_get_update_prncase_context_plan_sqlstr_ReturnsObj():
     # ESTABLISH
-    prncase_tablename = prime_tbl(kw.person_plan_reason_caseunit, "h", "agg", "put")
-    prnplan_tablename = prime_tbl(kw.person_planunit, "h", "agg", "put")
+    prncase_tablename = prime_tbl(kw.person_plan_reason_caseunit, "h_agg", "put")
+    prnplan_tablename = prime_tbl(kw.person_planunit, "h_agg", "put")
 
     # WHEN
     update_sqlstr = get_update_prncase_context_plan_sqlstr()
@@ -56,7 +56,7 @@ def pchap1_insert_prnplan(cursor0: Cursor, x_values: list[list]) -> str:
 
 def pchap1_select_prncase(cursor0: Cursor, print_rows: bool = False) -> list[tuple]:
     """SELECT spark_num, person_name, reason_context, context_plan_denom, context_plan_morph"""
-    prncase_h_agg_table = create_prime_tablename(kw.prncase, "h", "agg", "put")
+    prncase_h_agg_table = create_prime_tablename(kw.prncase, "h_agg", "put")
     sel_prncase_str = f"""
 SELECT spark_num, person_name, reason_context, context_plan_denom, context_plan_morph 
 FROM {prncase_h_agg_table}

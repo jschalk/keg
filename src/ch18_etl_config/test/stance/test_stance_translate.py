@@ -34,7 +34,7 @@ def test_add_to_br00042_csv_ReturnsObj(cursor0: Cursor):
     # Create database with manually entered translate data in the validated tables
     create_sound_and_heard_tables(cursor0)
     trltitl_dimen = kw.translate_title
-    trltitl_s_vld_tablename = prime_tbl(trltitl_dimen, "s", "vld")
+    trltitl_s_vld_tablename = prime_tbl(trltitl_dimen, "s_vld")
     insert_trltitl_sqlstr = f"""INSERT INTO {trltitl_s_vld_tablename}
     ({kw.spark_num}, {kw.face_name}, {kw.otx_title}, {kw.inx_title})
     VALUES
@@ -44,7 +44,7 @@ def test_add_to_br00042_csv_ReturnsObj(cursor0: Cursor):
     """
     cursor0.execute(insert_trltitl_sqlstr)
 
-    trlcore_s_vld_tablename = prime_tbl("trlcore", "s", "vld")
+    trlcore_s_vld_tablename = prime_tbl("TRLCORE", "s_vld")
     insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename}
     ({kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
     VALUES
@@ -92,7 +92,7 @@ def test_add_to_br00043_csv_ReturnsObj(cursor0: Cursor):
     # Create database with manually entered translate data in the validated tables
     create_sound_and_heard_tables(cursor0)
     trlname_dimen = kw.translate_name
-    trlname_s_vld_tablename = prime_tbl(trlname_dimen, "s", "vld")
+    trlname_s_vld_tablename = prime_tbl(trlname_dimen, "s_vld")
     insert_trlname_sqlstr = f"""
 INSERT INTO {trlname_s_vld_tablename}
 ({kw.spark_num}, {kw.face_name}, {kw.otx_name}, {kw.inx_name})
@@ -103,7 +103,7 @@ VALUES
 """
     cursor0.execute(insert_trlname_sqlstr)
 
-    trlcore_s_vld_tablename = prime_tbl("trlcore", "s", "vld")
+    trlcore_s_vld_tablename = prime_tbl("TRLCORE", "s_vld")
     insert_trlcore_sqlstr = f"""
 INSERT INTO {trlcore_s_vld_tablename}
 ({kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
@@ -152,7 +152,7 @@ def test_add_to_br00044_csv_ReturnsObj(cursor0: Cursor):
     # Create database with manually entered translate data in the validated tables
     create_sound_and_heard_tables(cursor0)
     trllabe_dimen = kw.translate_label
-    trllabe_s_vld_tablename = prime_tbl(trllabe_dimen, "s", "vld")
+    trllabe_s_vld_tablename = prime_tbl(trllabe_dimen, "s_vld")
     insert_trllabe_sqlstr = f"""
 INSERT INTO {trllabe_s_vld_tablename}
 ({kw.spark_num}, {kw.face_name}, {kw.otx_label}, {kw.inx_label})
@@ -163,7 +163,7 @@ VALUES
 """
     cursor0.execute(insert_trllabe_sqlstr)
 
-    trlcore_s_vld_tablename = prime_tbl("trlcore", "s", "vld")
+    trlcore_s_vld_tablename = prime_tbl("TRLCORE", "s_vld")
     insert_trlcore_sqlstr = f"""
 INSERT INTO {trlcore_s_vld_tablename}
 ({kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
@@ -212,7 +212,7 @@ def test_add_to_br00045_csv_ReturnsObj(cursor0: Cursor):
     # Create database with manually entered translate data in the validated tables
     create_sound_and_heard_tables(cursor0)
     trlrope_dimen = kw.translate_rope
-    trlrope_s_vld_tablename = prime_tbl(trlrope_dimen, "s", "vld")
+    trlrope_s_vld_tablename = prime_tbl(trlrope_dimen, "s_vld")
     insert_trlrope_sqlstr = f"""
 INSERT INTO {trlrope_s_vld_tablename}
 ({kw.spark_num}, {kw.face_name}, {kw.otx_rope}, {kw.inx_rope})
@@ -223,7 +223,7 @@ VALUES
 """
     cursor0.execute(insert_trlrope_sqlstr)
 
-    trlcore_s_vld_tablename = prime_tbl("trlcore", "s", "vld")
+    trlcore_s_vld_tablename = prime_tbl("TRLCORE", "s_vld")
     insert_trlcore_sqlstr = f"""
 INSERT INTO {trlcore_s_vld_tablename}
 ({kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
@@ -274,7 +274,7 @@ def test_add_translate_rows_to_stance_csv_strs_ReturnsObj(cursor0: Cursor):
 
     # insert translate_title records
     trltitl_dimen = kw.translate_title
-    trltitl_s_vld_tablename = prime_tbl(trltitl_dimen, "s", "vld")
+    trltitl_s_vld_tablename = prime_tbl(trltitl_dimen, "s_vld")
     insert_trltitl_sqlstr = f"""INSERT INTO {trltitl_s_vld_tablename}
     ({kw.spark_num}, {kw.face_name}, {kw.otx_title}, {kw.inx_title})
     VALUES
@@ -286,7 +286,7 @@ def test_add_translate_rows_to_stance_csv_strs_ReturnsObj(cursor0: Cursor):
 
     # insert translate_name records
     trlname_dimen = kw.translate_name
-    trlname_s_vld_tablename = prime_tbl(trlname_dimen, "s", "vld")
+    trlname_s_vld_tablename = prime_tbl(trlname_dimen, "s_vld")
     insert_trlname_sqlstr = f"""
 INSERT INTO {trlname_s_vld_tablename}
 ({kw.spark_num}, {kw.face_name}, {kw.otx_name}, {kw.inx_name})
@@ -303,7 +303,7 @@ VALUES
     bob_clean_otx = "very clean"
     bob_clean_inx = "very limpia"
     trllabe_dimen = kw.translate_label
-    trllabe_s_vld_tablename = prime_tbl(trllabe_dimen, "s", "vld")
+    trllabe_s_vld_tablename = prime_tbl(trllabe_dimen, "s_vld")
     insert_trllabe_sqlstr = f"""
 INSERT INTO {trllabe_s_vld_tablename}
 ({kw.spark_num}, {kw.face_name}, {kw.otx_label}, {kw.inx_label})
@@ -320,7 +320,7 @@ VALUES
     bob_clean_otx = ";casa;very clean;"
     bob_clean_inx = "/casa/very limpia/"
     trlrope_dimen = kw.translate_rope
-    trlrope_s_vld_tablename = prime_tbl(trlrope_dimen, "s", "vld")
+    trlrope_s_vld_tablename = prime_tbl(trlrope_dimen, "s_vld")
     insert_trlrope_sqlstr = f"""
 INSERT INTO {trlrope_s_vld_tablename}
 ({kw.spark_num}, {kw.face_name}, {kw.otx_rope}, {kw.inx_rope})
@@ -332,7 +332,7 @@ VALUES
     cursor0.execute(insert_trlrope_sqlstr)
 
     # insert translate_core records
-    trlcore_s_vld_tablename = prime_tbl("trlcore", "s", "vld")
+    trlcore_s_vld_tablename = prime_tbl("TRLCORE", "s_vld")
     insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename}
     ({kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
     VALUES

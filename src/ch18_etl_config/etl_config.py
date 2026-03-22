@@ -128,12 +128,14 @@ class PrimeTablenameError(Exception):
 
 
 def create_prime_tablename(
-    idea_dimen_or_abbv7: str, stage0: str, stage1: str, put_del: str = None
+    idea_dimen_or_abbv7: str, stage_desc: str, put_del: str = None
 ) -> str:
     """
-    stage0 must be one: 's', 'h', 'job'
-    stage1 must be one: 'raw', 'agg', 'vld'
+    stage examples 's_raw', 'h_agg', 'job'
     """
+
+    if put_del not in {None, "put", "del"}:
+        raise PrimeTablenameError(f"'{stage_desc}' '{put_del}' is not a valid put_del")
 
     abbv_references = {
         "mmtpayy": "moment_paybook",
@@ -164,14 +166,21 @@ def create_prime_tablename(
     tablename = idea_dimen_or_abbv7
     if abbv_references.get(idea_dimen_or_abbv7.lower()):
         tablename = abbv_references.get(idea_dimen_or_abbv7.lower())
-    if stage0 in {"s", "h", "job"}:
-        tablename = f"{tablename}_{stage0}"
-    if stage1 is None:
-        return tablename
-    if stage1 not in {"raw", "agg", "vld"}:
-        raise PrimeTablenameError(f"'{stage1}' is not a valid stage")
+    stage_first_term = stage_desc.split("_")[0]
+    if stage_first_term not in {"s", "h", "job"}:
+        raise PrimeTablenameError(f"'{stage_desc}' is not a valid stage")
+    if stage_first_term == stage_desc:
+        stage_second_term = None
+    else:
+        stage_second_term = stage_desc.split("_")[1]
+    if stage_second_term not in {None, "raw", "agg", "vld"}:
+        raise PrimeTablenameError(f"'{stage_desc}' is not a valid stage")
 
-    return f"{tablename}_{put_del}_{stage1}" if put_del else f"{tablename}_{stage1}"
+    return (
+        f"{tablename}_{stage_first_term}_{put_del}_{stage_second_term}"
+        if put_del
+        else f"{tablename}_{stage_desc}"
+    )
 
 
 def etl_idea_category_config_path() -> str:
@@ -430,7 +439,8 @@ def create_prime_table_sqlstr(
     stage0 must be one: 's', 'h', 'job'
     stage1 must be one: 'raw', 'agg', 'vld'
     """
-    tablename = create_prime_tablename(x_dimen, stage0, stage1, put_del)
+    stage_desc = f"{stage0}_{stage1}"
+    tablename = create_prime_tablename(x_dimen, stage_desc, put_del)
     table_keylist = [stage0, stage1, put_del] if put_del else [stage0, stage1]
     etl_idea_category_config = etl_idea_category_config_dict()
     columns_set = get_prime_columns(x_dimen, table_keylist, etl_idea_category_config)

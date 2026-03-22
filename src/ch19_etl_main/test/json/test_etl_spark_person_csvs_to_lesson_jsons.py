@@ -19,7 +19,7 @@ def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario0_IgnoresCSV_
     sue_inx = "Suzy"
     bob_inx = "Bobby"
     spark3 = 3
-    put_agg_tablename = create_prime_tablename(kw.personunit, "h", "vld", "put")
+    put_agg_tablename = create_prime_tablename(kw.personunit, "h_vld", "put")
     put_agg_csv_filename = f"{put_agg_tablename}.csv"
     moment_mstr_dir = get_temp_dir()
     a23_lasso = lassounit_shop(exx.a23)
@@ -61,7 +61,7 @@ def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario1(
     credit88 = 88
     debt_empty = ""
     prnptnr_str = kw.person_partnerunit
-    put_agg_tablename = create_prime_tablename(prnptnr_str, "h", "vld", "put")
+    put_agg_tablename = create_prime_tablename(prnptnr_str, "h_vld", "put")
     put_agg_csv_filename = f"{put_agg_tablename}.csv"
     moment_mstr_dir = get_temp_dir()
     a23_lasso = lassounit_shop(exx.a23)

@@ -29,7 +29,7 @@ def pfhap2_insert_prnfact(cursor0: Cursor, x_values: list[list]) -> str:
 def pfhap2_select_prnfact(cursor0: Cursor, print_rows: bool = False) -> list[tuple]:
     """SELECT fact_lower_otx, fact_lower_inx, fact_upper_otx, fact_upper_inx"""
 
-    prnfact_h_agg_table = create_prime_tablename(kw.prnfact, "h", "agg", "put")
+    prnfact_h_agg_table = create_prime_tablename(kw.prnfact, "h_agg", "put")
     sel_prnfact_str = f"""
 SELECT fact_lower_otx, fact_lower_inx, fact_upper_otx, fact_upper_inx
 FROM {prnfact_h_agg_table}
@@ -125,7 +125,7 @@ def test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario2_inx_epoch_diff
 
 def test_get_update_prnfact_range_sqlstr_ReturnsObj():
     # ESTABLISH
-    prnfact_tablename = prime_tbl(kw.person_plan_factunit, "h", "agg", "put")
+    prnfact_tablename = prime_tbl(kw.person_plan_factunit, "h_agg", "put")
 
     # WHEN
     update_sqlstr = get_update_prnfact_range_sqlstr()

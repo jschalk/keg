@@ -50,7 +50,7 @@ def pchapx_insert_prncase(cursor0: Cursor, x_values: list[list]) -> str:
 def pchapx_select_prncase(cursor0: Cursor, print_rows: bool = False) -> list[tuple]:
     """SELECT reason_lower_otx, reason_lower_inx, reason_upper_otx, reason_upper_inx"""
 
-    prncase_h_agg_table = create_prime_tablename(kw.prncase, "h", "agg", "put")
+    prncase_h_agg_table = create_prime_tablename(kw.prncase, "h_agg", "put")
     sel_prncase_str = f"""
 SELECT reason_lower_otx, reason_lower_inx, reason_upper_otx, reason_upper_inx
 FROM {prncase_h_agg_table}

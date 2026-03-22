@@ -116,36 +116,35 @@ def test_create_prime_tablename_ReturnsObj_Scenario0_ExpectedReturns():
     del_str = "del"
 
     # WHEN
-    prnunit_s_agg_table = create_prime_tablename(kw.prnunit, "s", agg_str, put_str)
-    prnptnr_s_agg_table = create_prime_tablename(kw.prnptnr, "s", agg_str, put_str)
-    prnmemb_s_agg_table = create_prime_tablename(kw.prnmemb, "s", agg_str, put_str)
-    prnplan_s_agg_table = create_prime_tablename(kw.prnplan, "s", agg_str, put_str)
-    prnawar_s_agg_table = create_prime_tablename(kw.prnawar, "s", agg_str, put_str)
-    prnreas_s_agg_table = create_prime_tablename(kw.prnreas, "s", agg_str, put_str)
-    prncase_s_agg_table = create_prime_tablename(kw.prncase, "s", agg_str, put_str)
-    prnlabo_s_agg_table = create_prime_tablename(kw.prnlabo, "s", agg_str, put_str)
-    prnheal_s_agg_table = create_prime_tablename(kw.prnheal, "s", agg_str, put_str)
-    prnfact_s_agg_table = create_prime_tablename(kw.prnfact, "s", agg_str, put_str)
-    prnfact_s_del_table = create_prime_tablename(kw.prnfact, "s", agg_str, del_str)
-    mmtunit_s_agg_table = create_prime_tablename(kw.mmtunit, "s", agg_str)
-    mmtpayy_s_agg_table = create_prime_tablename(kw.mmtpayy, "s", agg_str)
-    mmtbudd_s_agg_table = create_prime_tablename(kw.mmtbudd, "s", agg_str)
-    mmthour_s_agg_table = create_prime_tablename(kw.mmthour, "s", agg_str)
-    mmtmont_s_agg_table = create_prime_tablename(kw.mmtmont, "s", agg_str)
-    mmtweek_s_agg_table = create_prime_tablename(kw.mmtweek, "s", agg_str)
-    mmtoffi_s_agg_table = create_prime_tablename(kw.mmtoffi, "s", agg_str)
-    nabtime_s_agg_table = create_prime_tablename(kw.nabtime, "s", agg_str)
-    trlname_s_agg_table = create_prime_tablename(kw.trlname, "s", agg_str)
-    trllabe_s_agg_table = create_prime_tablename(kw.trllabe, "s", agg_str)
-    trlrope_s_agg_table = create_prime_tablename(kw.trlrope, "s", agg_str)
-    trltitl_s_agg_table = create_prime_tablename(kw.trltitl, "s", agg_str)
-    trltitl_h_vld_table = create_prime_tablename(kw.trltitl, "h", vld_str)
-    trltitl_s_raw_table = create_prime_tablename(kw.trltitl, "s", raw_str)
-    trltitl_s_val_table = create_prime_tablename(kw.trltitl, "s", vld_str)
-    trlcore_s_raw_table = create_prime_tablename(kw.trlcore, "s", raw_str)
-    trlcore_s_agg_table = create_prime_tablename(kw.trlcore, "s", agg_str)
+    prnunit_s_agg_table = create_prime_tablename(kw.prnunit, "s_agg", put_str)
+    prnptnr_s_agg_table = create_prime_tablename(kw.prnptnr, "s_agg", put_str)
+    prnmemb_s_agg_table = create_prime_tablename(kw.prnmemb, "s_agg", put_str)
+    prnplan_s_agg_table = create_prime_tablename(kw.prnplan, "s_agg", put_str)
+    prnawar_s_agg_table = create_prime_tablename(kw.prnawar, "s_agg", put_str)
+    prnreas_s_agg_table = create_prime_tablename(kw.prnreas, "s_agg", put_str)
+    prncase_s_agg_table = create_prime_tablename(kw.prncase, "s_agg", put_str)
+    prnlabo_s_agg_table = create_prime_tablename(kw.prnlabo, "s_agg", put_str)
+    prnheal_s_agg_table = create_prime_tablename(kw.prnheal, "s_agg", put_str)
+    prnfact_s_agg_table = create_prime_tablename(kw.prnfact, "s_agg", put_str)
+    prnfact_s_del_table = create_prime_tablename(kw.prnfact, "s_agg", del_str)
+    mmtunit_s_agg_table = create_prime_tablename(kw.mmtunit, "s_agg")
+    mmtpayy_s_agg_table = create_prime_tablename(kw.mmtpayy, "s_agg")
+    mmtbudd_s_agg_table = create_prime_tablename(kw.mmtbudd, "s_agg")
+    mmthour_s_agg_table = create_prime_tablename(kw.mmthour, "s_agg")
+    mmtmont_s_agg_table = create_prime_tablename(kw.mmtmont, "s_agg")
+    mmtweek_s_agg_table = create_prime_tablename(kw.mmtweek, "s_agg")
+    mmtoffi_s_agg_table = create_prime_tablename(kw.mmtoffi, "s_agg")
+    nabtime_s_agg_table = create_prime_tablename(kw.nabtime, "s_agg")
+    trlname_s_agg_table = create_prime_tablename(kw.trlname, "s_agg")
+    trllabe_s_agg_table = create_prime_tablename(kw.trllabe, "s_agg")
+    trlrope_s_agg_table = create_prime_tablename(kw.trlrope, "s_agg")
+    trltitl_s_agg_table = create_prime_tablename(kw.trltitl, "s_agg")
+    trltitl_h_vld_table = create_prime_tablename(kw.trltitl, f"h_{vld_str}")
+    trltitl_s_raw_table = create_prime_tablename(kw.trltitl, f"s_{raw_str}")
+    trltitl_s_val_table = create_prime_tablename(kw.trltitl, f"s_{vld_str}")
+    trlcore_s_raw_table = create_prime_tablename(kw.trlcore, f"s_{raw_str}")
+    trlcore_s_agg_table = create_prime_tablename(kw.trlcore, "s_agg")
     prnptnr_job_table = create_prime_tablename(kw.prnptnr, kw.job, None)
-    x_prnptnr_raw = create_prime_tablename(kw.prnptnr, "k", raw_str)
     prngrou_job_table = create_prime_tablename(kw.prngrou, kw.job, None)
 
     # THEN
@@ -179,7 +178,6 @@ def test_create_prime_tablename_ReturnsObj_Scenario0_ExpectedReturns():
     assert trlcore_s_agg_table == f"{kw.translate_core}_s_agg"
     assert prnptnr_job_table == f"{kw.person_partnerunit}_job"
     assert prngrou_job_table == f"{kw.person_groupunit}_job"
-    assert x_prnptnr_raw == f"{kw.person_partnerunit}_raw"
 
 
 def test_get_all_dimen_columns_set_ReturnsObj_Scenario0_idea_config_Dimens():

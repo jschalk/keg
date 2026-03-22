@@ -34,7 +34,7 @@ def pchap0_insert_prncase(cursor0: Cursor, x_values: list[list]) -> str:
 def pchap0_select_prncase(cursor0: Cursor, print_rows: bool = False) -> list[tuple]:
     """SELECT spark_num, plan_rope, {kw.inx_epoch_diff}"""
 
-    prncase_h_agg_table = create_prime_tablename(kw.prncase, "h", "agg", "put")
+    prncase_h_agg_table = create_prime_tablename(kw.prncase, "h_agg", "put")
     sel_prncase_str = f"""
 SELECT {kw.spark_num}, {kw.plan_rope}, {kw.inx_epoch_diff} 
 FROM {prncase_h_agg_table}
@@ -185,8 +185,8 @@ def test_get_update_prncase_inx_epoch_diff_sqlstr_SQLTEST_Populates_inx_epoch_di
 
 def test_get_update_prncase_inx_epoch_diff_sqlstr_ReturnsObj():
     # ESTABLISH
-    prncase_tablename = prime_tbl(kw.prncase, "h", "agg", "put")
-    nabtime_tablename = prime_tbl(kw.nabtime, "h", "agg")
+    prncase_tablename = prime_tbl(kw.prncase, "h_agg", "put")
+    nabtime_tablename = prime_tbl(kw.nabtime, "h_agg")
 
     # WHEN
     update_sqlstr = get_update_prncase_inx_epoch_diff_sqlstr()

@@ -27,7 +27,7 @@ def test_create_update_heard_raw_existing_inx_col_sqlstr_UpdatesTable_Scenario0_
 
     create_sound_and_heard_tables(cursor0)
     prnawar_dimen = kw.person_plan_awardunit
-    prnawar_h_raw_put_tablename = prime_tbl(prnawar_dimen, "h", "raw", "put")
+    prnawar_h_raw_put_tablename = prime_tbl(prnawar_dimen, "h_raw", "put")
     # print(f"{get_table_columns(cursor0, prnawar_h_raw_put_tablename)=}")
     insert_face_name_only_sqlstr = f"""INSERT INTO {prnawar_h_raw_put_tablename} 
     ({kw.spark_num}, {kw.face_name}_otx, {kw.face_name}_inx)
@@ -41,7 +41,7 @@ def test_create_update_heard_raw_existing_inx_col_sqlstr_UpdatesTable_Scenario0_
     cursor0.execute(insert_face_name_only_sqlstr)
 
     trlname_dimen = kw.translate_name
-    trlname_s_vld_tablename = prime_tbl(trlname_dimen, "s", "vld")
+    trlname_s_vld_tablename = prime_tbl(trlname_dimen, "s_vld")
     print(f"{trlname_s_vld_tablename=}")
     insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename} 
     ({kw.spark_num}, {kw.face_name}, {kw.otx_name}, {kw.inx_name})
@@ -92,7 +92,7 @@ def test_create_update_heard_raw_existing_inx_col_sqlstr_UpdatesTable_Scenario1_
 
     create_sound_and_heard_tables(cursor0)
     prnawar_dimen = kw.person_plan_awardunit
-    prnawar_h_raw_put_tablename = prime_tbl(prnawar_dimen, "h", "raw", "put")
+    prnawar_h_raw_put_tablename = prime_tbl(prnawar_dimen, "h_raw", "put")
     insert_face_name_only_sqlstr = f"""INSERT INTO {prnawar_h_raw_put_tablename}
     ({kw.spark_num}, {kw.face_name}_otx, {kw.face_name}_inx)
     VALUES
@@ -103,7 +103,7 @@ def test_create_update_heard_raw_existing_inx_col_sqlstr_UpdatesTable_Scenario1_
     """
     cursor0.execute(insert_face_name_only_sqlstr)
     trlname_dimen = kw.translate_name
-    trlname_s_vld_tablename = prime_tbl(trlname_dimen, "s", "vld")
+    trlname_s_vld_tablename = prime_tbl(trlname_dimen, "s_vld")
     print(f"{trlname_s_vld_tablename=}")
     insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename}
     ({kw.spark_num}, {kw.face_name}, {kw.otx_name}, {kw.inx_name})
@@ -159,7 +159,7 @@ def test_create_update_heard_raw_existing_inx_col_sqlstr_UpdatesTable_Scenario2_
 
     create_sound_and_heard_tables(cursor0)
     prnawar_dimen = kw.person_plan_awardunit
-    prnawar_h_raw_put_tablename = prime_tbl(prnawar_dimen, "h", "raw", "put")
+    prnawar_h_raw_put_tablename = prime_tbl(prnawar_dimen, "h_raw", "put")
     print(f"{get_table_columns(cursor0, prnawar_h_raw_put_tablename)=}")
     insert_face_name_only_sqlstr = f"""INSERT INTO {prnawar_h_raw_put_tablename}
     ({kw.spark_num}, {kw.face_name}_otx, {kw.face_name}_inx)
@@ -175,7 +175,7 @@ def test_create_update_heard_raw_existing_inx_col_sqlstr_UpdatesTable_Scenario2_
     cursor0.execute(insert_face_name_only_sqlstr)
 
     trlname_dimen = kw.translate_name
-    trlname_s_vld_tablename = prime_tbl(trlname_dimen, "s", "vld")
+    trlname_s_vld_tablename = prime_tbl(trlname_dimen, "s_vld")
     print(f"{trlname_s_vld_tablename=}")
     insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename}
     ({kw.spark_num}, {kw.face_name}, {kw.otx_name}, {kw.inx_name})
@@ -230,12 +230,12 @@ def test_create_update_heard_raw_empty_inx_col_sqlstr_UpdatesTable_Scenario0_Emp
     spark7 = 7
 
     create_sound_and_heard_tables(cursor0)
-    trlname_s_vld_tablename = prime_tbl(kw.translate_name, "s", "vld")
+    trlname_s_vld_tablename = prime_tbl(kw.translate_name, "s_vld")
     print(f"{trlname_s_vld_tablename=}")
     print(f"{get_table_columns(cursor0, trlname_s_vld_tablename)=}")
 
     prnawar_dimen = kw.person_plan_awardunit
-    prnawar_h_raw_put_tablename = prime_tbl(prnawar_dimen, "h", "raw", "put")
+    prnawar_h_raw_put_tablename = prime_tbl(prnawar_dimen, "h_raw", "put")
     print(f"{get_table_columns(cursor0, prnawar_h_raw_put_tablename)=}")
     insert_face_name_only_sqlstr = f"""INSERT INTO {prnawar_h_raw_put_tablename} ({kw.spark_num}, {kw.face_name}_otx, {kw.face_name}_inx)
 VALUES
@@ -290,7 +290,7 @@ def test_set_all_heard_raw_inx_columns_Scenario0_empty_tables(cursor0: Cursor):
 
     create_sound_and_heard_tables(cursor0)
     prnawar_dimen = kw.person_plan_awardunit
-    prnawar_h_raw_put_tablename = prime_tbl(prnawar_dimen, "h", "raw", "put")
+    prnawar_h_raw_put_tablename = prime_tbl(prnawar_dimen, "h_raw", "put")
     print(f"{get_table_columns(cursor0, prnawar_h_raw_put_tablename)=}")
     insert_face_name_only_sqlstr = f"""INSERT INTO {prnawar_h_raw_put_tablename}
     ({kw.spark_num}, {kw.face_name}_otx, {kw.face_name}_inx)
@@ -306,7 +306,7 @@ def test_set_all_heard_raw_inx_columns_Scenario0_empty_tables(cursor0: Cursor):
     cursor0.execute(insert_face_name_only_sqlstr)
 
     trlname_dimen = kw.translate_name
-    trlname_s_vld_tablename = prime_tbl(trlname_dimen, "s", "vld")
+    trlname_s_vld_tablename = prime_tbl(trlname_dimen, "s_vld")
     print(f"{trlname_s_vld_tablename=}")
     insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename}
     ({kw.spark_num}, {kw.face_name}, {kw.otx_name}, {kw.inx_name})

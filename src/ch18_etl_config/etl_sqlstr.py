@@ -441,7 +441,8 @@ def create_prime_db_table(
     put_del: str = None,
 ) -> str:
     """Creates table in database and returns tablename"""
-    tablename = create_prime_tablename(idea_dimen_or_abbv7, stage0, stage1, put_del)
+    table_desc = f"{stage0}_{stage1}"
+    tablename = create_prime_tablename(idea_dimen_or_abbv7, table_desc, put_del)
     prime_create_table_sqlstrs = get_prime_create_table_sqlstrs()
     x_create_table_sqlstr = prime_create_table_sqlstrs.get(tablename)
     cursor.execute(x_create_table_sqlstr)
@@ -463,9 +464,9 @@ def create_sound_raw_update_inconsist_error_message_sqlstr(
     else:
         exclude_cols = {"idea_number", "error_message"}
     if dimen.lower().startswith("person"):
-        x_tablename = create_prime_tablename(dimen, "s", "raw", "put")
+        x_tablename = create_prime_tablename(dimen, "s_raw", "put")
     else:
-        x_tablename = create_prime_tablename(dimen, "s", "raw")
+        x_tablename = create_prime_tablename(dimen, "s_raw")
     dimen_config = get_idea_config_dict().get(dimen)
     dimen_focus_columns = set(dimen_config.get("jkeys").keys())
     return create_update_inconsistency_error_query(
@@ -489,11 +490,11 @@ def create_sound_agg_insert_sqlstrs(
         dimen_focus_columns = get_default_sorted_list(dimen_focus_columns)
     exclude_cols = {"idea_number", "error_message"}
     if dimen.lower().startswith("person"):
-        agg_tablename = create_prime_tablename(dimen, "s", "agg", "put")
-        raw_tablename = create_prime_tablename(dimen, "s", "raw", "put")
+        agg_tablename = create_prime_tablename(dimen, "s_agg", "put")
+        raw_tablename = create_prime_tablename(dimen, "s_raw", "put")
     else:
-        raw_tablename = create_prime_tablename(dimen, "s", "raw")
-        agg_tablename = create_prime_tablename(dimen, "s", "agg")
+        raw_tablename = create_prime_tablename(dimen, "s_raw")
+        agg_tablename = create_prime_tablename(dimen, "s_agg")
 
     translate_moment_person_put_sqlstr = create_table2table_agg_insert_query(
         conn_or_cursor,
@@ -505,8 +506,8 @@ def create_sound_agg_insert_sqlstrs(
     )
     sqlstrs = [translate_moment_person_put_sqlstr]
     if dimen.lower().startswith("person"):
-        del_raw_tablename = create_prime_tablename(dimen, "s", "raw", "del")
-        del_agg_tablename = create_prime_tablename(dimen, "s", "agg", "del")
+        del_raw_tablename = create_prime_tablename(dimen, "s_raw", "del")
+        del_agg_tablename = create_prime_tablename(dimen, "s_agg", "del")
         dimen_focus_columns = get_default_sorted_list(set(dimen_focus_columns))
         last_element = dimen_focus_columns.pop(-1)
         dimen_focus_columns.append(f"{last_element}_ERASE")
@@ -524,8 +525,8 @@ def create_sound_agg_insert_sqlstrs(
 
 
 def create_insert_into_translate_core_raw_sqlstr(dimen: str) -> str:
-    translate_core_s_raw_tablename = create_prime_tablename("trlcore", "s", "raw")
-    translate_s_agg_tablename = create_prime_tablename(dimen, "s", "agg")
+    translate_core_s_raw_tablename = create_prime_tablename("trlcore", "s_raw")
+    translate_s_agg_tablename = create_prime_tablename(dimen, "s_agg")
     return f"""INSERT INTO {translate_core_s_raw_tablename} (source_dimen, face_name, otx_knot, inx_knot, unknown_str)
 SELECT '{translate_s_agg_tablename}', face_name, otx_knot, inx_knot, unknown_str
 FROM {translate_s_agg_tablename}
@@ -566,8 +567,8 @@ GROUP BY {moment_person_sound_agg_tablename}.face_name
 
 
 def create_update_translate_sound_agg_inconsist_sqlstr(dimen: str) -> str:
-    translate_core_s_vld_tablename = create_prime_tablename("trlcore", "s", "vld")
-    translate_s_agg_tablename = create_prime_tablename(dimen, "s", "agg")
+    translate_core_s_vld_tablename = create_prime_tablename("trlcore", "s_vld")
+    translate_s_agg_tablename = create_prime_tablename(dimen, "s_agg")
     return f"""UPDATE {translate_s_agg_tablename}
 SET error_message = 'Inconsistent translate core data'
 WHERE face_name IN (
@@ -581,8 +582,8 @@ WHERE face_name IN (
 
 
 def create_update_trllabe_sound_agg_knot_error_sqlstr() -> str:
-    trlcore_s_vld_tablename = create_prime_tablename("trlcore", "s", "vld")
-    trllabe_s_agg_tablename = create_prime_tablename("trllabe", "s", "agg")
+    trlcore_s_vld_tablename = create_prime_tablename("trlcore", "s_vld")
+    trllabe_s_agg_tablename = create_prime_tablename("trllabe", "s_agg")
     return f"""UPDATE {trllabe_s_agg_tablename}
 SET error_message = 'Knot cannot exist in LabelTerm'
 WHERE rowid IN (
@@ -597,8 +598,8 @@ WHERE rowid IN (
 
 
 def create_update_trlrope_sound_agg_knot_error_sqlstr() -> str:
-    trlcore_s_vld_tablename = create_prime_tablename("trlcore", "s", "vld")
-    trlrope_s_agg_tablename = create_prime_tablename("trlrope", "s", "agg")
+    trlcore_s_vld_tablename = create_prime_tablename("trlcore", "s_vld")
+    trlrope_s_agg_tablename = create_prime_tablename("trlrope", "s_agg")
     return f"""UPDATE {trlrope_s_agg_tablename}
 SET error_message = 'Knot must exist in RopeTerm'
 WHERE rowid IN (
@@ -613,8 +614,8 @@ WHERE rowid IN (
 
 
 def create_update_trlname_sound_agg_knot_error_sqlstr() -> str:
-    trlcore_s_vld_tablename = create_prime_tablename("trlcore", "s", "vld")
-    trlname_s_agg_tablename = create_prime_tablename("trlname", "s", "agg")
+    trlcore_s_vld_tablename = create_prime_tablename("trlcore", "s_vld")
+    trlname_s_agg_tablename = create_prime_tablename("trlname", "s_agg")
     return f"""UPDATE {trlname_s_agg_tablename}
 SET error_message = 'Knot cannot exist in NameTerm'
 WHERE rowid IN (
@@ -629,8 +630,8 @@ WHERE rowid IN (
 
 
 def create_update_trltitl_sound_agg_knot_error_sqlstr() -> str:
-    trlcore_s_vld_tablename = create_prime_tablename("trlcore", "s", "vld")
-    trltitl_s_agg_tablename = create_prime_tablename("trltitl", "s", "agg")
+    trlcore_s_vld_tablename = create_prime_tablename("trlcore", "s_vld")
+    trltitl_s_agg_tablename = create_prime_tablename("trltitl", "s_agg")
     return f"""UPDATE {trltitl_s_agg_tablename}
 SET error_message = 'Otx and inx titles must match knot.'
 WHERE rowid IN (
@@ -650,8 +651,8 @@ WHERE rowid IN (
 
 
 def create_insert_translate_sound_vld_table_sqlstr(dimen: str) -> str:
-    translate_s_agg_tablename = create_prime_tablename(dimen, "s", "agg")
-    translate_s_vld_tablename = create_prime_tablename(dimen, "s", "vld")
+    translate_s_agg_tablename = create_prime_tablename(dimen, "s_agg")
+    translate_s_vld_tablename = create_prime_tablename(dimen, "s_vld")
     dimen_otx_inx_obj_names = {
         "translate_name": "name",
         "translate_title": "title",
@@ -671,7 +672,7 @@ GROUP BY spark_num, face_name
 
 
 def create_knot_exists_in_name_error_update_sqlstr(table: str, column: str) -> str:
-    trlcore_s_vld_tablename = create_prime_tablename("trlcore", "s", "vld")
+    trlcore_s_vld_tablename = create_prime_tablename("trlcore", "s_vld")
     return f"""UPDATE {table}
 SET error_message = 'Knot cannot exist in NameTerm column {column}'
 WHERE rowid IN (
@@ -685,7 +686,7 @@ WHERE rowid IN (
 
 
 def create_knot_exists_in_label_error_update_sqlstr(table: str, column: str) -> str:
-    trlcore_s_vld_tablename = create_prime_tablename("trlcore", "s", "vld")
+    trlcore_s_vld_tablename = create_prime_tablename("trlcore", "s_vld")
     return f"""UPDATE {table}
 SET error_message = 'Knot cannot exist in LabelTerm column {column}'
 WHERE rowid IN (
@@ -1122,11 +1123,11 @@ WHERE enriched.spark_num = dst_table.spark_num
 
 
 def get_update_heard_agg_moment_timenum_sqlstrs() -> dict[str]:
-    mmtoffi_tbl = create_prime_tablename("moment_timeoffi", "h", "agg")
+    mmtoffi_tbl = create_prime_tablename("moment_timeoffi", "h_agg")
     mmtoffi_key = ("moment_timeoffi", "offi_time")
-    mmtpayy_tbl = create_prime_tablename("moment_paybook", "h", "agg")
+    mmtpayy_tbl = create_prime_tablename("moment_paybook", "h_agg")
     mmtpayy_key = ("moment_paybook", "tran_time")
-    mmtbudd_tbl = create_prime_tablename("moment_budunit", "h", "agg")
+    mmtbudd_tbl = create_prime_tablename("moment_budunit", "h_agg")
     mmtbudd_key = ("moment_budunit", "bud_time")
     return {
         mmtpayy_key: get_update_heard_agg_timenum_sqlstr(mmtpayy_tbl, "tran_time"),

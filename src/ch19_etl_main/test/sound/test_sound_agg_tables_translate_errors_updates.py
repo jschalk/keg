@@ -24,7 +24,7 @@ def test_create_knot_exists_in_name_error_update_sqlstr_ReturnsObj_PopulatesTabl
 
     cursor0.execute(CREATE_PRNPTNR_SOUND_PUT_AGG_SQLSTR)
     prnptnr_dimen = kw.person_partnerunit
-    prnptnr_s_agg_put = create_prime_tablename(prnptnr_dimen, "s", "agg", "put")
+    prnptnr_s_agg_put = create_prime_tablename(prnptnr_dimen, "s_agg", "put")
     insert_prnptnr_sqlstr = f"""INSERT INTO {prnptnr_s_agg_put} (
   {kw.spark_num}, {kw.face_name}, {kw.moment_rope}, {kw.person_name}, {kw.partner_name})
 VALUES
@@ -34,7 +34,7 @@ VALUES
 """
     cursor0.execute(insert_prnptnr_sqlstr)
     cursor0.execute(CREATE_TRLCORE_SOUND_VLD_SQLSTR)
-    trlcore_s_vld_tablename = create_prime_tablename("trlcore", "s", "vld")
+    trlcore_s_vld_tablename = create_prime_tablename("trlcore", "s_vld")
     insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename} (
   {kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
 VALUES
@@ -77,7 +77,7 @@ def test_create_knot_exists_in_label_error_update_sqlstr_ReturnsObj_PopulatesTab
     spark1 = 1
 
     cursor0.execute(CREATE_MMTMONT_SOUND_AGG_SQLSTR)
-    mmtmont_s_agg_put = create_prime_tablename(kw.mmtmont, "s", "agg")
+    mmtmont_s_agg_put = create_prime_tablename(kw.mmtmont, "s_agg")
     insert_mmtmont_sqlstr = f"""INSERT INTO {mmtmont_s_agg_put} (
   {kw.spark_num}, {kw.face_name}, {kw.moment_rope}, {kw.month_label}, {kw.cumulative_day})
 VALUES
@@ -87,7 +87,7 @@ VALUES
 """
     cursor0.execute(insert_mmtmont_sqlstr)
     cursor0.execute(CREATE_TRLCORE_SOUND_VLD_SQLSTR)
-    trlcore_s_vld_tablename = create_prime_tablename(kw.trlcore, "s", "vld")
+    trlcore_s_vld_tablename = create_prime_tablename(kw.trlcore, "s_vld")
     insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename} (
   {kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
 VALUES
@@ -134,7 +134,7 @@ def test_set_moment_person_sound_agg_knot_errors_PopulatesTable_Scenario0(
 
     cursor0.execute(CREATE_PRNPTNR_SOUND_PUT_AGG_SQLSTR)
     prnptnr_dimen = kw.person_partnerunit
-    prnptnr_s_agg_put = create_prime_tablename(prnptnr_dimen, "s", "agg", "put")
+    prnptnr_s_agg_put = create_prime_tablename(prnptnr_dimen, "s_agg", "put")
     insert_prnptnr_sqlstr = f"""INSERT INTO {prnptnr_s_agg_put} (
   {kw.spark_num}, {kw.face_name}, {kw.moment_rope}, {kw.person_name}, {kw.partner_name})
 VALUES
@@ -145,7 +145,7 @@ VALUES
 """
     cursor0.execute(insert_prnptnr_sqlstr)
     cursor0.execute(CREATE_TRLCORE_SOUND_VLD_SQLSTR)
-    trlcore_s_vld_tablename = create_prime_tablename("trlcore", "s", "vld")
+    trlcore_s_vld_tablename = create_prime_tablename("trlcore", "s_vld")
     insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename} (
   {kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
 VALUES

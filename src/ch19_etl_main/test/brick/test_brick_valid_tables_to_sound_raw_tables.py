@@ -87,8 +87,8 @@ VALUES
     cursor0.execute(f"{insert_into_clause} {values_clause}")
     assert get_row_count(cursor0, br00117_valid_tablename) == 2
     assert get_row_count(cursor0, br00045_valid_tablename) == 3
-    trlrope_s_raw_tablename = create_prime_tablename("TRLROPE", "s", "raw")
-    prnptnr_s_put_raw_tblname = create_prime_tablename("PRNPTNR", "s", "raw", "put")
+    trlrope_s_raw_tablename = create_prime_tablename("TRLROPE", "s_raw")
+    prnptnr_s_put_raw_tblname = create_prime_tablename("PRNPTNR", "s_raw", "put")
     assert not db_table_exists(cursor0, trlrope_s_raw_tablename)
     assert not db_table_exists(cursor0, prnptnr_s_put_raw_tblname)
 

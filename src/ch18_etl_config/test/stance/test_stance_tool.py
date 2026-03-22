@@ -120,7 +120,7 @@ def test_collect_stance_csv_strs_ReturnsObj_Scenario2_TranslateRowsInDB(
         cursor = db_conn.cursor()
         create_sound_and_heard_tables(cursor)
         trlname_dimen = kw.translate_name
-        trlname_s_vld_tablename = prime_tbl(trlname_dimen, "s", "vld")
+        trlname_s_vld_tablename = prime_tbl(trlname_dimen, "s_vld")
         print(f"{trlname_s_vld_tablename=}")
         insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename}
         ({kw.spark_num}, {kw.face_name}, {kw.otx_name}, {kw.inx_name})
@@ -131,7 +131,7 @@ def test_collect_stance_csv_strs_ReturnsObj_Scenario2_TranslateRowsInDB(
         """
         cursor.execute(insert_trlname_sqlstr)
 
-        trlcore_s_vld_tablename = prime_tbl("trlcore", "s", "vld")
+        trlcore_s_vld_tablename = prime_tbl("TRLCORE", "s_vld")
         insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename}
         ({kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
         VALUES
@@ -221,7 +221,7 @@ def test_create_stance0001_file_CreatesFile_Scenario1_TranslateRowsInDB(
         cursor = db_conn.cursor()
         create_sound_and_heard_tables(cursor)
         trlname_dimen = kw.translate_name
-        trlname_s_vld_tablename = prime_tbl(trlname_dimen, "s", "vld")
+        trlname_s_vld_tablename = prime_tbl(trlname_dimen, "s_vld")
         print(f"{trlname_s_vld_tablename=}")
         insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename}
         ({kw.spark_num}, {kw.face_name}, {kw.otx_name}, {kw.inx_name})
@@ -232,7 +232,7 @@ def test_create_stance0001_file_CreatesFile_Scenario1_TranslateRowsInDB(
         """
         cursor.execute(insert_trlname_sqlstr)
 
-        trlcore_s_vld_tablename = prime_tbl("trlcore", "s", "vld")
+        trlcore_s_vld_tablename = prime_tbl("TRLCORE", "s_vld")
         insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename}
         ({kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
         VALUES

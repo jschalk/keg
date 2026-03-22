@@ -34,7 +34,7 @@ def pfhap0_insert_prnfact(cursor0: Cursor, x_values: list[list]) -> str:
 def pfhap0_select_prnfact(cursor0: Cursor, print_rows: bool = False) -> list[tuple]:
     """SELECT spark_num, plan_rope, {kw.inx_epoch_diff}"""
 
-    prnfact_h_agg_table = create_prime_tablename(kw.prnfact, "h", "agg", "put")
+    prnfact_h_agg_table = create_prime_tablename(kw.prnfact, "h_agg", "put")
     sel_prnfact_str = f"""
 SELECT {kw.spark_num}, {kw.plan_rope}, {kw.inx_epoch_diff} 
 FROM {prnfact_h_agg_table}
@@ -181,8 +181,8 @@ def test_get_update_prnfact_inx_epoch_diff_sqlstr_SQLTEST_One_row_Previous_spark
 
 def test_get_update_prnfact_inx_epoch_diff_sqlstr_ReturnsObj():
     # ESTABLISH
-    prnfact_tablename = prime_tbl(kw.prnfact, "h", "agg", "put")
-    nabtime_tablename = prime_tbl(kw.nabtime, "h", "agg")
+    prnfact_tablename = prime_tbl(kw.prnfact, "h_agg", "put")
+    nabtime_tablename = prime_tbl(kw.nabtime, "h_agg")
 
     # WHEN
     update_sqlstr = get_update_prnfact_inx_epoch_diff_sqlstr()

@@ -31,7 +31,7 @@ def pchap2_insert_prncase(cursor0: Cursor, x_values: list[list]) -> str:
 def pchap2_select_prncase(cursor0: Cursor, print_rows: bool = False) -> list[tuple]:
     """SELECT reason_lower_otx, reason_lower_inx, reason_upper_otx, reason_upper_inx"""
 
-    prncase_h_agg_table = create_prime_tablename(kw.prncase, "h", "agg", "put")
+    prncase_h_agg_table = create_prime_tablename(kw.prncase, "h_agg", "put")
     sel_prncase_str = f"""
 SELECT reason_lower_otx, reason_lower_inx, reason_upper_otx, reason_upper_inx
 FROM {prncase_h_agg_table}
@@ -566,7 +566,7 @@ def test_get_update_prncase_context_plan_sqlstr_SQLTEST_Scenario15_inx_epoch_dif
 
 def test_get_update_prncase_range_sqlstr_ReturnsObj():
     # ESTABLISH
-    prncase_tablename = prime_tbl(kw.person_plan_reason_caseunit, "h", "agg", "put")
+    prncase_tablename = prime_tbl(kw.person_plan_reason_caseunit, "h_agg", "put")
 
     # WHEN
     update_sqlstr = get_update_prncase_range_sqlstr()

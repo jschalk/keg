@@ -22,7 +22,7 @@ def test_get_insert_heard_vld_sqlstrs_ReturnsObj_CheckMomentDimen(cursor0: Curso
     # THEN
     gen_heard_vld_tablenames = set(insert_heard_vld_sqlstrs.keys())
     moment_dimes = get_moment_dimens()
-    moment_vld_tablenames = {prime_tbl(dimen, "h", "vld") for dimen in moment_dimes}
+    moment_vld_tablenames = {prime_tbl(dimen, "h_vld") for dimen in moment_dimes}
     # print(f"{gen_heard_vld_tablenames=}")
     # print(f"     {get_moment_dimens()=}")
     assert moment_vld_tablenames.issubset(gen_heard_vld_tablenames)
@@ -31,8 +31,8 @@ def test_get_insert_heard_vld_sqlstrs_ReturnsObj_CheckMomentDimen(cursor0: Curso
 
     for x_dimen in idea_config:
         # print(f"{x_dimen} checking...")
-        agg_tablename = prime_tbl(x_dimen, "h", "agg")
-        vld_tablename = prime_tbl(x_dimen, "h", "vld")
+        agg_tablename = prime_tbl(x_dimen, "h_agg")
+        vld_tablename = prime_tbl(x_dimen, "h_vld")
         agg_columns = get_table_columns(cursor0, agg_tablename)
         vld_columns = get_table_columns(cursor0, vld_tablename)
         agg_columns = {agg_col for agg_col in agg_columns if agg_col[-3:] != "otx"}
@@ -82,10 +82,10 @@ def test_get_insert_heard_vld_sqlstrs_ReturnsObj_PersonDimensRequired(cursor0: C
 
     for person_dimen in person_dimens_config:
         # print(f"{person_dimen=}")
-        h_agg_put_tablename = prime_tbl(person_dimen, "h", "agg", "put")
-        h_agg_del_tablename = prime_tbl(person_dimen, "h", "agg", "del")
-        h_vld_put_tablename = prime_tbl(person_dimen, "h", "vld", "put")
-        h_vld_del_tablename = prime_tbl(person_dimen, "h", "vld", "del")
+        h_agg_put_tablename = prime_tbl(person_dimen, "h_agg", "put")
+        h_agg_del_tablename = prime_tbl(person_dimen, "h_agg", "del")
+        h_vld_put_tablename = prime_tbl(person_dimen, "h_vld", "put")
+        h_vld_del_tablename = prime_tbl(person_dimen, "h_vld", "del")
         h_agg_put_cols = get_table_columns(cursor0, h_agg_put_tablename)
         h_agg_del_cols = get_table_columns(cursor0, h_agg_del_tablename)
         h_vld_put_cols = get_table_columns(cursor0, h_vld_put_tablename)
@@ -139,7 +139,7 @@ def test_get_insert_heard_vld_sqlstrs_ReturnsObj_PopulatesTable_Scenario0(
     x66_debt = 66
 
     create_sound_and_heard_tables(cursor0)
-    prnptnr_h_agg_put_tablename = prime_tbl(kw.person_partnerunit, "h", "agg", "put")
+    prnptnr_h_agg_put_tablename = prime_tbl(kw.person_partnerunit, "h_agg", "put")
     print(f"{get_table_columns(cursor0, prnptnr_h_agg_put_tablename)=}")
     insert_into_clause = f"""INSERT INTO {prnptnr_h_agg_put_tablename} (
 {kw.spark_num}
@@ -160,7 +160,7 @@ VALUES
 """
     cursor0.execute(insert_into_clause)
     assert get_row_count(cursor0, prnptnr_h_agg_put_tablename) == 5
-    prnptnr_h_vld_put_tablename = prime_tbl(kw.person_partnerunit, "h", "vld", "put")
+    prnptnr_h_vld_put_tablename = prime_tbl(kw.person_partnerunit, "h_vld", "put")
     assert get_row_count(cursor0, prnptnr_h_vld_put_tablename) == 0
 
     # WHEN
@@ -205,7 +205,7 @@ def test_etl_heard_agg_tables_to_heard_vld_tables_PopulatesTable_Scenario0(
     x66_debt = 66
 
     create_sound_and_heard_tables(cursor0)
-    prnptnr_h_agg_put_tablename = prime_tbl(kw.person_partnerunit, "h", "agg", "put")
+    prnptnr_h_agg_put_tablename = prime_tbl(kw.person_partnerunit, "h_agg", "put")
     print(f"{get_table_columns(cursor0, prnptnr_h_agg_put_tablename)=}")
     insert_into_clause = f"""INSERT INTO {prnptnr_h_agg_put_tablename} (
 {kw.spark_num}
@@ -226,7 +226,7 @@ VALUES
 """
     cursor0.execute(insert_into_clause)
     assert get_row_count(cursor0, prnptnr_h_agg_put_tablename) == 5
-    prnptnr_h_vld_put_tablename = prime_tbl(kw.person_partnerunit, "h", "vld", "put")
+    prnptnr_h_vld_put_tablename = prime_tbl(kw.person_partnerunit, "h_vld", "put")
     assert get_row_count(cursor0, prnptnr_h_vld_put_tablename) == 0
 
     # WHEN

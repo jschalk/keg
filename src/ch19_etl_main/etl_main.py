@@ -375,15 +375,15 @@ def get_sound_raw_tablenames(
     s_raw_tables = set()
     for dimen in dimens:
         if dimen.lower().startswith("person"):
-            person_del_tablename = create_prime_tablename(dimen, "s", "raw", "del")
+            person_del_tablename = create_prime_tablename(dimen, "s_raw", "del")
             person_del_columns = get_table_columns(cursor, person_del_tablename)
             delete_key = person_del_columns[-1]
             if delete_key in valid_columns:
                 s_raw_tables.add(person_del_tablename)
             else:
-                s_raw_tables.add(create_prime_tablename(dimen, "s", "raw", "put"))
+                s_raw_tables.add(create_prime_tablename(dimen, "s_raw", "put"))
         else:
-            s_raw_tables.add(create_prime_tablename(dimen, "s", "raw"))
+            s_raw_tables.add(create_prime_tablename(dimen, "s_raw"))
     return s_raw_tables
 
 
@@ -434,7 +434,7 @@ def insert_translate_core_agg_to_translate_core_vld_table(cursor: sqlite3_Cursor
 
 
 def update_inconsistency_translate_core_raw_table(cursor: sqlite3_Cursor):
-    translate_core_s_raw_tablename = create_prime_tablename("trlcore", "s", "raw")
+    translate_core_s_raw_tablename = create_prime_tablename("trlcore", "s_raw")
     sqlstr = create_update_inconsistency_error_query(
         cursor,
         x_tablename=translate_core_s_raw_tablename,
@@ -448,8 +448,8 @@ def update_inconsistency_translate_core_raw_table(cursor: sqlite3_Cursor):
 
 
 def insert_translate_core_raw_to_translate_core_agg_table(cursor: sqlite3_Cursor):
-    translate_core_s_raw_tablename = create_prime_tablename("trlcore", "s", "raw")
-    translate_core_s_agg_tablename = create_prime_tablename("trlcore", "s", "agg")
+    translate_core_s_raw_tablename = create_prime_tablename("trlcore", "s_raw")
+    translate_core_s_agg_tablename = create_prime_tablename("trlcore", "s_agg")
     sqlstr = f"""
 INSERT INTO {translate_core_s_agg_tablename} (face_name, otx_knot, inx_knot, unknown_str)
 SELECT face_name, MAX(otx_knot), MAX(inx_knot), MAX(unknown_str)
@@ -819,10 +819,10 @@ def add_personatoms_from_csv(spark_lesson: LessonUnit, spark_dir: str):
     person_dimens.remove("personunit")
     for person_dimen in person_dimens:
         person_dimen_put_tablename = create_prime_tablename(
-            person_dimen, "h", "vld", "put"
+            person_dimen, "h_vld", "put"
         )
         person_dimen_del_tablename = create_prime_tablename(
-            person_dimen, "h", "vld", "del"
+            person_dimen, "h_vld", "del"
         )
         person_dimen_put_csv = f"{person_dimen_put_tablename}.csv"
         person_dimen_del_csv = f"{person_dimen_del_tablename}.csv"

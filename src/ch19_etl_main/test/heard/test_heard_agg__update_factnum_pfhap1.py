@@ -31,7 +31,7 @@ def pfhap1_insert_prnplan(cursor0: Cursor, x_values: list[list]) -> str:
 
 def pfhap1_select_prnfact(cursor0: Cursor, print_rows: bool = False) -> list[tuple]:
     """SELECT spark_num, person_name, fact_context, context_plan_close"""
-    prnfact_h_agg_table = create_prime_tablename(kw.prnfact, "h", "agg", "put")
+    prnfact_h_agg_table = create_prime_tablename(kw.prnfact, "h_agg", "put")
     sel_prnfact_str = f"""
 SELECT spark_num, person_name, fact_context, context_plan_close 
 FROM {prnfact_h_agg_table}
@@ -166,8 +166,8 @@ def test_get_update_prnfact_context_plan_sqlstr_SQLTEST_Scenario4_Different_plan
 
 def test_get_update_prnfact_context_plan_sqlstr_ReturnsObj():
     # ESTABLISH
-    prnfact_tablename = prime_tbl(kw.prnfact, "h", "agg", "put")
-    prnplan_tablename = prime_tbl(kw.person_planunit, "h", "agg", "put")
+    prnfact_tablename = prime_tbl(kw.prnfact, "h_agg", "put")
+    prnplan_tablename = prime_tbl(kw.person_planunit, "h_agg", "put")
 
     # WHEN
     update_sqlstr = get_update_prnfact_context_plan_sqlstr()

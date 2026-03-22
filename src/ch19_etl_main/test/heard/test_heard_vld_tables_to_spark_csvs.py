@@ -23,7 +23,7 @@ def test_etl_heard_vld_to_spark_person_csvs_PopulatesPersonPulabelTables(
     spark7 = 7
     yao_partner_cred_lumen5 = 5
     sue_partner_cred_lumen7 = 7
-    put_agg_tablename = create_prime_tablename(kw.person_partnerunit, "h", "vld", "put")
+    put_agg_tablename = create_prime_tablename(kw.person_partnerunit, "h_vld", "put")
     put_agg_csv = f"{put_agg_tablename}.csv"
     x_dir = get_temp_dir()
     a23_lasso = lassounit_shop(exx.a23_dash, exx.dash)

@@ -27,8 +27,8 @@ from src.ch18_etl_config.etl_sqlstr import (
 
 
 def add_to_br00042_csv(x_csv: str, cursor: sqlite3_Cursor, csv_delimiter: str) -> str:
-    trltitl_s_vld_tablename = prime_tbl("TRLTITL", "s", "vld")
-    trlcore_s_vld_tablename = prime_tbl("TRLCORE", "s", "vld")
+    trltitl_s_vld_tablename = prime_tbl("TRLTITL", "s_vld")
+    trlcore_s_vld_tablename = prime_tbl("TRLCORE", "s_vld")
 
     select_sqlstr = f"""
 SELECT
@@ -59,8 +59,8 @@ ORDER BY
 
 
 def add_to_br00043_csv(x_csv: str, cursor: sqlite3_Cursor, csv_delimiter: str) -> str:
-    trlname_s_vld_tablename = prime_tbl("TRLNAME", "s", "vld")
-    trlcore_s_vld_tablename = prime_tbl("TRLCORE", "s", "vld")
+    trlname_s_vld_tablename = prime_tbl("TRLNAME", "s_vld")
+    trlcore_s_vld_tablename = prime_tbl("TRLCORE", "s_vld")
     select_sqlstr = f"""
 SELECT
   "" spark_num
@@ -89,8 +89,8 @@ ORDER BY
 
 
 def add_to_br00044_csv(x_csv: str, cursor: sqlite3_Cursor, csv_delimiter: str) -> str:
-    trllabe_s_vld_tablename = prime_tbl("TRLLABE", "s", "vld")
-    trlcore_s_vld_tablename = prime_tbl("TRLCORE", "s", "vld")
+    trllabe_s_vld_tablename = prime_tbl("TRLLABE", "s_vld")
+    trlcore_s_vld_tablename = prime_tbl("TRLCORE", "s_vld")
 
     select_sqlstr = f"""
 SELECT
@@ -120,8 +120,8 @@ ORDER BY
 
 
 def add_to_br00045_csv(x_csv: str, cursor: sqlite3_Cursor, csv_delimiter: str) -> str:
-    trlrope_s_vld_tablename = prime_tbl("TRLROPE", "s", "vld")
-    trlcore_s_vld_tablename = prime_tbl("TRLCORE", "s", "vld")
+    trlrope_s_vld_tablename = prime_tbl("TRLROPE", "s_vld")
+    trlcore_s_vld_tablename = prime_tbl("TRLCORE", "s_vld")
 
     select_sqlstr = f"""
 SELECT
