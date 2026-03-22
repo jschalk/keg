@@ -31,22 +31,22 @@ from src.ch10_person_listen._ref.ch10_semantic_types import (
 
 
 def job_file_exists(
-    moment_mstr_dir: str, person_lasso: LassoUnit, person_name: PersonName
+    moment_mstr_dir: str, moment_lasso: LassoUnit, person_name: PersonName
 ) -> bool:
-    job_path = create_job_path(moment_mstr_dir, person_lasso, person_name)
+    job_path = create_job_path(moment_mstr_dir, moment_lasso, person_name)
     return os_path_exists(job_path)
 
 
 def save_job_file(moment_mstr_dir: str, personunit: PersonUnit):
-    person_lasso = lassounit_shop(personunit.planroot.get_plan_rope(), personunit.knot)
-    job_path = create_job_path(moment_mstr_dir, person_lasso, personunit.person_name)
+    moment_lasso = lassounit_shop(personunit.planroot.get_plan_rope(), personunit.knot)
+    job_path = create_job_path(moment_mstr_dir, moment_lasso, personunit.person_name)
     save_person_file(job_path, None, personunit)
 
 
 def open_job_file(
-    moment_mstr_dir: str, person_lasso: LassoUnit, person_name: PersonName
+    moment_mstr_dir: str, moment_lasso: LassoUnit, person_name: PersonName
 ) -> PersonUnit:
-    job_path = create_job_path(moment_mstr_dir, person_lasso, person_name)
+    job_path = create_job_path(moment_mstr_dir, moment_lasso, person_name)
     return open_person_file(job_path)
 
 
@@ -158,8 +158,8 @@ def save_all_gut_dutys(
     keep_ropes: set[RopeTerm],
     knot: KnotTerm,
 ):
-    person_lasso = lassounit_shop(moment_rope)
-    gut = open_gut_file(moment_mstr_dir, person_lasso, person_name)
+    moment_lasso = lassounit_shop(moment_rope)
+    gut = open_gut_file(moment_mstr_dir, moment_lasso, person_name)
     for x_keep_rope in keep_ropes:
         save_duty_person(
             moment_mstr_dir=moment_mstr_dir,
@@ -176,9 +176,9 @@ class GetKeepRopesError(Exception):
 
 
 def get_keep_ropes(
-    moment_mstr_dir, person_lasso: LassoUnit, person_name
+    moment_mstr_dir, moment_lasso: LassoUnit, person_name
 ) -> set[RopeTerm]:
-    x_gut_person = open_gut_file(moment_mstr_dir, person_lasso, person_name)
+    x_gut_person = open_gut_file(moment_mstr_dir, moment_lasso, person_name)
     x_gut_person.conpute()
     if x_gut_person.keeps_justified is False:
         x_str = f"Cannot get_keep_ropes from '{person_name}' gut person because 'PersonUnit.keeps_justified' is False."
@@ -246,8 +246,8 @@ def get_dw_perspective_person(
     speaker_id: PersonName,
     prespective_id: PersonName,
 ) -> PersonUnit:
-    person_lasso = lassounit_shop(moment_rope)
-    speaker_job = open_job_file(moment_mstr_dir, person_lasso, speaker_id)
+    moment_lasso = lassounit_shop(moment_rope)
+    speaker_job = open_job_file(moment_mstr_dir, moment_lasso, speaker_id)
     return get_perspective_person(speaker_job, prespective_id)
 
 

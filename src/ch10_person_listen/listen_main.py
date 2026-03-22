@@ -195,10 +195,10 @@ def listen_to_agendas_create_init_job_from_guts(
 ):
     for x_partnerunit in get_ordered_debtors_roll(listener_job):
         speaker_id = x_partnerunit.partner_name
-        person_lasso = lassounit_shop(
+        moment_lasso = lassounit_shop(
             listener_job.planroot.get_plan_rope(), listener_job.knot
         )
-        speaker_gut = open_gut_file(moment_mstr_dir, person_lasso, speaker_id)
+        speaker_gut = open_gut_file(moment_mstr_dir, moment_lasso, speaker_id)
         if speaker_gut is None:
             speaker_gut = create_empty_person_from_person(listener_job, speaker_id)
         if speaker_gut:
@@ -206,12 +206,12 @@ def listen_to_agendas_create_init_job_from_guts(
 
 
 def listen_to_agendas_jobs_into_job(moment_mstr_dir: str, listener_job: PersonUnit):
-    person_lasso = lassounit_shop(
+    moment_lasso = lassounit_shop(
         listener_job.planroot.get_plan_rope(), listener_job.knot
     )
     for x_partnerunit in get_ordered_debtors_roll(listener_job):
         speaker_id = x_partnerunit.partner_name
-        speaker_job = open_job_file(moment_mstr_dir, person_lasso, speaker_id)
+        speaker_job = open_job_file(moment_mstr_dir, moment_lasso, speaker_id)
         if speaker_job is None:
             speaker_job = create_empty_person_from_person(listener_job, speaker_id)
         listen_to_speaker_agenda(listener_job, speaker_job)
@@ -228,9 +228,9 @@ def listen_to_agendas_duty_vision(
             listener_duty = get_duty_person(
                 moment_mstr_dir=healer_lessonfilehandler.moment_mstr_dir,
                 person_name=healer_lessonfilehandler.person_name,
-                moment_rope=healer_lessonfilehandler.person_lasso.moment_rope,
+                moment_rope=healer_lessonfilehandler.moment_lasso.moment_rope,
                 keep_rope=healer_keep_rope,
-                knot=healer_lessonfilehandler.person_lasso.knot,
+                knot=healer_lessonfilehandler.moment_lasso.knot,
                 duty_person_name=listener_id,
             )
             listen_to_speaker_agenda(listener_vision, listener_duty)
@@ -239,9 +239,9 @@ def listen_to_agendas_duty_vision(
             healer_name = healer_lessonfilehandler.person_name
             speaker_vision = rj_speaker_person(
                 healer_lessonfilehandler.moment_mstr_dir,
-                healer_lessonfilehandler.person_lasso.moment_rope,
+                healer_lessonfilehandler.moment_lasso.moment_rope,
                 healer_keep_rope,
-                healer_lessonfilehandler.person_lasso.knot,
+                healer_lessonfilehandler.moment_lasso.knot,
                 healer_name,
                 speaker_id,
             )
@@ -260,9 +260,9 @@ def listen_to_facts_duty_vision(
     duty = get_duty_person(
         moment_mstr_dir=healer_lessonfilehandler.moment_mstr_dir,
         person_name=healer_lessonfilehandler.person_name,
-        moment_rope=healer_lessonfilehandler.person_lasso.moment_rope,
+        moment_rope=healer_lessonfilehandler.moment_lasso.moment_rope,
         keep_rope=healer_keep_rope,
-        knot=healer_lessonfilehandler.person_lasso.knot,
+        knot=healer_lessonfilehandler.moment_lasso.knot,
         duty_person_name=new_vision.person_name,
     )
     migrate_all_facts(duty, new_vision)
@@ -271,9 +271,9 @@ def listen_to_facts_duty_vision(
             speaker_vision = get_vision_person(
                 healer_lessonfilehandler.moment_mstr_dir,
                 healer_lessonfilehandler.person_name,
-                healer_lessonfilehandler.person_lasso.moment_rope,
+                healer_lessonfilehandler.moment_lasso.moment_rope,
                 healer_keep_rope,
-                healer_lessonfilehandler.person_lasso.knot,
+                healer_lessonfilehandler.moment_lasso.knot,
                 x_partnerunit.partner_name,
             )
             if speaker_vision is not None:
@@ -281,19 +281,19 @@ def listen_to_facts_duty_vision(
 
 
 def listen_to_facts_gut_job(moment_mstr_dir: str, new_job: PersonUnit):
-    person_lasso = lassounit_shop(new_job.planroot.get_plan_rope(), new_job.knot)
-    old_job = open_job_file(moment_mstr_dir, person_lasso, new_job.person_name)
+    moment_lasso = lassounit_shop(new_job.planroot.get_plan_rope(), new_job.knot)
+    old_job = open_job_file(moment_mstr_dir, moment_lasso, new_job.person_name)
     for x_partnerunit in get_ordered_debtors_roll(old_job):
         speaker_id = x_partnerunit.partner_name
-        speaker_job = open_job_file(moment_mstr_dir, person_lasso, speaker_id)
+        speaker_job = open_job_file(moment_mstr_dir, moment_lasso, speaker_id)
         if speaker_job is not None:
             listen_to_speaker_fact(new_job, speaker_job)
 
 
 def listen_to_debtors_roll_jobs_into_job(
-    moment_mstr_dir: str, person_lasso: LassoUnit, person_name: PersonName
+    moment_mstr_dir: str, moment_lasso: LassoUnit, person_name: PersonName
 ) -> PersonUnit:
-    old_job = open_job_file(moment_mstr_dir, person_lasso, person_name)
+    old_job = open_job_file(moment_mstr_dir, moment_lasso, person_name)
     new_job = create_listen_basis(old_job)
     if old_job.debtor_respect is None:
         return new_job
@@ -310,9 +310,9 @@ def listen_to_debtors_roll_duty_vision(
     duty = get_duty_person(
         moment_mstr_dir=healer_lessonfilehandler.moment_mstr_dir,
         person_name=healer_lessonfilehandler.person_name,
-        moment_rope=healer_lessonfilehandler.person_lasso.moment_rope,
+        moment_rope=healer_lessonfilehandler.moment_lasso.moment_rope,
         keep_rope=healer_keep_rope,
-        knot=healer_lessonfilehandler.person_lasso.knot,
+        knot=healer_lessonfilehandler.moment_lasso.knot,
         duty_person_name=listener_id,
     )
     new_duty = create_listen_basis(duty)
@@ -326,10 +326,10 @@ def listen_to_debtors_roll_duty_vision(
 def listen_to_person_visions(
     listener_lessonfilehandler: LessonFileHandler, healer_keep_rope: RopeTerm
 ) -> None:
-    person_lasso = lassounit_shop(listener_lessonfilehandler.person_lasso.moment_rope)
+    moment_lasso = lassounit_shop(listener_lessonfilehandler.moment_lasso.moment_rope)
     gut = open_gut_file(
         listener_lessonfilehandler.moment_mstr_dir,
-        person_lasso,
+        moment_lasso,
         listener_lessonfilehandler.person_name,
     )
     new_job = create_listen_basis(gut)
@@ -381,17 +381,17 @@ def fact_state_keep_vision_and_listen(
     if vision_file_exists(
         healer_lessonfilehandler.moment_mstr_dir,
         healer_lessonfilehandler.person_name,
-        healer_lessonfilehandler.person_lasso.moment_rope,
+        healer_lessonfilehandler.moment_lasso.moment_rope,
         healer_keep_rope,
-        healer_lessonfilehandler.person_lasso.knot,
+        healer_lessonfilehandler.moment_lasso.knot,
         listener_id,
     ):
         keep_vision = get_vision_person(
             healer_lessonfilehandler.moment_mstr_dir,
             healer_lessonfilehandler.person_name,
-            healer_lessonfilehandler.person_lasso.moment_rope,
+            healer_lessonfilehandler.moment_lasso.moment_rope,
             healer_keep_rope,
-            healer_lessonfilehandler.person_lasso.knot,
+            healer_lessonfilehandler.moment_lasso.knot,
             listener_id,
         )
     else:
@@ -423,8 +423,8 @@ def create_vision_file_from_duty_file(
     save_vision_person(
         healer_lessonfilehandler.moment_mstr_dir,
         healer_lessonfilehandler.person_name,
-        healer_lessonfilehandler.person_lasso.moment_rope,
+        healer_lessonfilehandler.moment_lasso.moment_rope,
         healer_keep_rope,
-        healer_lessonfilehandler.person_lasso.knot,
+        healer_lessonfilehandler.moment_lasso.knot,
         x_vision,
     )

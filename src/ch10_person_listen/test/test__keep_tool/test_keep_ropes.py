@@ -42,7 +42,7 @@ def test_get_keep_ropes_RaisesErrorWhen_keeps_justified_IsFalse(
 
     # WHEN / THEN
     with pytest_raises(Exception) as excinfo:
-        get_keep_ropes(env_dir(), person_lasso=a23_lasso, person_name=exx.sue)
+        get_keep_ropes(env_dir(), moment_lasso=a23_lasso, person_name=exx.sue)
     exception_str = f"Cannot get_keep_ropes from '{exx.sue}' gut person because 'PersonUnit.keeps_justified' is False."
     assert str(excinfo.value) == exception_str
 
@@ -152,7 +152,7 @@ def test_save_all_gut_dutys_Setsdutys(temp_dir_setup, graphics_bool):
         moment_rope=exx.a23,
         person_name=exx.sue,
         keep_ropes=sue_keep_ropes,
-        knot=sue_lessonfilehandler.person_lasso.knot,
+        knot=sue_lessonfilehandler.moment_lasso.knot,
     )
 
     # THEN

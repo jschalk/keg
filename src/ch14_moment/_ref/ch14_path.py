@@ -8,12 +8,12 @@ BUD_MANDATE_FILENAME = "bud_partner_mandate_ledger.json"
 
 def create_bud_partner_mandate_ledger_path(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
     bud_time: int,
 ) -> str:
     """Returns path: moment_mstr_dir\\moments\\moment_rope\\persons\\person_name\\buds\n\\bud_time\\bud_partner_mandate_ledger.json"""
     timenum_dir = create_bud_dir_path(
-        moment_mstr_dir, person_lasso, person_name, bud_time
+        moment_mstr_dir, moment_lasso, person_name, bud_time
     )
     return create_path(timenum_dir, "bud_partner_mandate_ledger.json")

@@ -16,8 +16,8 @@ def get_moment_guts_partners_dataframe(x_moment: MomentUnit) -> DataFrame:
     # for all persons get gut
     gut_dfs = []
     for person_name in moment_person_names:
-        person_lasso = lassounit_shop(x_moment.moment_rope)
-        gut_person = open_gut_file(x_moment.moment_mstr_dir, person_lasso, person_name)
+        moment_lasso = lassounit_shop(x_moment.moment_rope)
+        gut_person = open_gut_file(x_moment.moment_mstr_dir, moment_lasso, person_name)
         gut_person.conpute()
         df = get_person_partnerunits_dataframe(gut_person)
         df.insert(0, "person_name", gut_person.person_name)
@@ -71,8 +71,8 @@ def get_moment_jobs_partners_dataframe(x_moment: MomentUnit) -> DataFrame:
     # for all persons get gut
     job_dfs = []
     for person_name in moment_person_names:
-        person_lasso = lassounit_shop(x_moment.moment_rope, x_moment.knot)
-        job = open_job_file(x_moment.moment_mstr_dir, person_lasso, person_name)
+        moment_lasso = lassounit_shop(x_moment.moment_rope, x_moment.knot)
+        job = open_job_file(x_moment.moment_mstr_dir, moment_lasso, person_name)
         job.conpute()
         job_df = get_person_partnerunits_dataframe(job)
         job_df.insert(0, "person_name", job.person_name)
@@ -125,8 +125,8 @@ def get_moment_guts_agenda_dataframe(x_moment: MomentUnit) -> DataFrame:
     # for all persons get gut
     gut_dfs = []
     for person_name in moment_person_names:
-        person_lasso = lassounit_shop(x_moment.moment_rope, x_moment.knot)
-        gut_person = open_gut_file(x_moment.moment_mstr_dir, person_lasso, person_name)
+        moment_lasso = lassounit_shop(x_moment.moment_rope, x_moment.knot)
+        gut_person = open_gut_file(x_moment.moment_mstr_dir, moment_lasso, person_name)
         gut_person.conpute()
         df = get_person_agenda_dataframe(gut_person)
         gut_dfs.append(df)
@@ -180,8 +180,8 @@ def get_moment_jobs_agenda_dataframe(x_moment: MomentUnit) -> DataFrame:
     # get list of all person paths
     job_dfs = []
     for x_person_name in x_moment._get_person_dir_names():
-        person_lasso = lassounit_shop(x_moment.moment_rope, x_moment.knot)
-        job = open_job_file(x_moment.moment_mstr_dir, person_lasso, x_person_name)
+        moment_lasso = lassounit_shop(x_moment.moment_rope, x_moment.knot)
+        job = open_job_file(x_moment.moment_mstr_dir, moment_lasso, x_person_name)
         job.conpute()
         job_df = get_person_agenda_dataframe(job)
         job_dfs.append(job_df)

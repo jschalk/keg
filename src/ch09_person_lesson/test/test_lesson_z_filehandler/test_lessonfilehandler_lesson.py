@@ -520,7 +520,7 @@ def test_LessonFileHandler_merge_any_lessons_ReturnsObj_WithSinglelessonModifies
     a23_lasso = lassounit_shop(exx.a23)
     gut_person = open_gut_file(env_dir(), a23_lasso, exx.sue)
     print(f"{gut_person.planroot.get_plan_rope()=}")
-    print(f"{sue_lessonfilehandler.person_lasso.moment_rope=}")
+    print(f"{sue_lessonfilehandler.moment_lasso.moment_rope=}")
     sports_str = "sports"
     sports_rope = gut_person.make_l1_rope(sports_str)
     knee_str = "knee"

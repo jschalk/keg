@@ -14,61 +14,61 @@ SPARK_EXPRESSED_LESSON_FILENAME = "expressed_lesson.json"
 
 
 def create_buds_dir_path(
-    moment_mstr_dir: str, person_lasso: LassoUnit, person_name: PersonName
+    moment_mstr_dir: str, moment_lasso: LassoUnit, person_name: PersonName
 ) -> str:
     """Returns path: moment_mstr_dir\\moments\\moment_rope\\persons\\person_name\\buds"""
-    persons_dir = create_moment_persons_dir_path(moment_mstr_dir, person_lasso)
+    persons_dir = create_moment_persons_dir_path(moment_mstr_dir, moment_lasso)
     person_dir = create_path(persons_dir, person_name)
     return create_path(person_dir, "buds")
 
 
 def create_bud_dir_path(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
     bud_time: int,
 ) -> str:
     """Returns path: moment_mstr_dir\\moments\\moment_rope\\persons\\person_name\\buds\n\\bud_time"""
-    buds_dir = create_buds_dir_path(moment_mstr_dir, person_lasso, person_name)
+    buds_dir = create_buds_dir_path(moment_mstr_dir, moment_lasso, person_name)
     return create_path(buds_dir, bud_time)
 
 
 def create_budunit_json_path(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
     bud_time: int,
 ) -> str:
     """Returns path: moment_mstr_dir\\moments\\moment_rope\\persons\\person_name\\buds\n\\bud_time\\budunit.json"""
     timenum_dir = create_bud_dir_path(
-        moment_mstr_dir, person_lasso, person_name, bud_time
+        moment_mstr_dir, moment_lasso, person_name, bud_time
     )
     return create_path(timenum_dir, "budunit.json")
 
 
 def create_persontime_path(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
     bud_time: int,
 ) -> str:
     """Returns path: moment_mstr_dir\\moments\\moment_rope\\persons\\person_name\\buds\n\\bud_time\\persontime.json"""
     timenum_dir = create_bud_dir_path(
-        moment_mstr_dir, person_lasso, person_name, bud_time
+        moment_mstr_dir, moment_lasso, person_name, bud_time
     )
     return create_path(timenum_dir, "persontime.json")
 
 
 def create_cell_dir_path(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
     bud_time: int,
     bud_ancestors: list[PersonName],
 ) -> str:
     """Returns path: moment_mstr_dir\\moments\\moment_rope\\persons\\person_name\\buds\n\\bud_time\\ledger_person1\\ledger_person2\\ledger_person3"""
     bud_celldepth_dir = create_bud_dir_path(
-        moment_mstr_dir, person_lasso, person_name, bud_time
+        moment_mstr_dir, moment_lasso, person_name, bud_time
     )
     if bud_ancestors is None:
         bud_ancestors = []
@@ -79,40 +79,40 @@ def create_cell_dir_path(
 
 def create_cell_json_path(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
     bud_time: int,
     bud_ancestors: list[PersonName] = None,
 ) -> str:
     """Returns path: moment_mstr_dir\\moments\\moment_rope\\persons\\person_name\\buds\n\\bud_time\\ledger_person1\\ledger_person2\\ledger_person3\\cell.json"""
     cell_dir = create_cell_dir_path(
-        moment_mstr_dir, person_lasso, person_name, bud_time, bud_ancestors
+        moment_mstr_dir, moment_lasso, person_name, bud_time, bud_ancestors
     )
     return create_path(cell_dir, "cell.json")
 
 
 def create_cell_partner_mandate_ledger_path(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
     bud_time: int,
     bud_ancestors: list[PersonName] = None,
 ) -> str:
     """Returns path: moment_mstr_dir\\moments\\moment_rope\\persons\\person_name\\buds\n\\bud_time\\ledger_person1\\ledger_person2\\ledger_person3\\cell_partner_mandate_ledger.json"""
     cell_dir = create_cell_dir_path(
-        moment_mstr_dir, person_lasso, person_name, bud_time, bud_ancestors
+        moment_mstr_dir, moment_lasso, person_name, bud_time, bud_ancestors
     )
     return create_path(cell_dir, "cell_partner_mandate_ledger.json")
 
 
 def create_person_spark_dir_path(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
     spark_num: int,
 ) -> str:
     """Returns path: moment_mstr_dir\\moments\\moment_rope\\persons\\person_name\\sparks\\spark_num"""
-    persons_dir = create_moment_persons_dir_path(moment_mstr_dir, person_lasso)
+    persons_dir = create_moment_persons_dir_path(moment_mstr_dir, moment_lasso)
     moment_person_dir = create_path(persons_dir, person_name)
     moment_sparks_dir = create_path(moment_person_dir, "sparks")
     return create_path(moment_sparks_dir, spark_num)
@@ -120,27 +120,27 @@ def create_person_spark_dir_path(
 
 def create_person_spark_csv_path(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
     spark_num: int,
     filename: str,
 ) -> str:
     """Returns path: moment_mstr_dir\\moments\\moment_rope\\persons\\person_name\\sparks\\spark_num\\filename.csv"""
     spark_dir = create_person_spark_dir_path(
-        moment_mstr_dir, person_lasso, person_name, spark_num
+        moment_mstr_dir, moment_lasso, person_name, spark_num
     )
     return create_path(spark_dir, f"{filename}.csv")
 
 
 def create_personspark_path(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
     spark_num: int,
 ) -> str:
     """Returns path: moment_mstr_dir\\moments\\moment_rope\\persons\\person_name\\sparks\\spark_num\\person.json"""
     person_spark_dir_path = create_person_spark_dir_path(
-        moment_mstr_dir, person_lasso, person_name, spark_num
+        moment_mstr_dir, moment_lasso, person_name, spark_num
     )
     person_filename = "person.json"
     return create_path(person_spark_dir_path, person_filename)
@@ -148,13 +148,13 @@ def create_personspark_path(
 
 def create_spark_all_lesson_path(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
     spark_num: int,
 ) -> str:
     """Returns path: moment_mstr_dir\\moments\\moment_rope\\persons\\person_name\\sparks\\spark_num\\all_lesson.json"""
     person_spark_dir_path = create_person_spark_dir_path(
-        moment_mstr_dir, person_lasso, person_name, spark_num
+        moment_mstr_dir, moment_lasso, person_name, spark_num
     )
     all_lesson_filename = "all_lesson.json"
     return create_path(person_spark_dir_path, all_lesson_filename)
@@ -162,13 +162,13 @@ def create_spark_all_lesson_path(
 
 def create_spark_expressed_lesson_path(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
     spark_num: int,
 ) -> str:
     """Returns path: moment_mstr_dir\\moments\\moment_rope\\persons\\person_name\\sparks\\spark_num\\expressed_lesson.json"""
     person_spark_dir_path = create_person_spark_dir_path(
-        moment_mstr_dir, person_lasso, person_name, spark_num
+        moment_mstr_dir, moment_lasso, person_name, spark_num
     )
     expressed_lesson_filename = "expressed_lesson.json"
     return create_path(person_spark_dir_path, expressed_lesson_filename)

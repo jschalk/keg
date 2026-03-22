@@ -11,7 +11,7 @@ def get_ch09_example_moment_rope() -> str:
     return ";FizzBuzz2;"
 
 
-def get_ch09_example_person_lasso() -> LassoUnit:
+def get_ch09_example_moment_lasso() -> LassoUnit:
     return lassounit_shop(get_ch09_example_moment_rope())
 
 

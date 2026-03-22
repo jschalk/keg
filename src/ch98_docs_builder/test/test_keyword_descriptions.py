@@ -5,7 +5,7 @@ from src.ch13_time.epoch_main import get_c400_constants, get_default_epoch_confi
 from src.ch14_moment.moment_config import get_moment_config_args
 from src.ch15_nabu.nabu_config import get_nabu_args, get_nabuable_args
 from src.ch16_translate.translate_config import get_translate_config_args
-from src.ch18_world_etl.etl_main import etl_heard_raw_tables_to_moment_ote1_agg
+from src.ch19_etl_main.etl_main import etl_heard_raw_tables_to_moment_ote1_agg
 from src.ch98_docs_builder._ref.ch98_semantic_types import (
     BreakTerm,
     CRUD_command,

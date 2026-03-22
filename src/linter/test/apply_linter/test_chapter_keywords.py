@@ -74,7 +74,10 @@ def test_Chapters_CheckStringMetricsFromEveryFile():
     unnecessarily_excluded_funcs = (
         chapters_func_class_metrics.unnecessarily_excluded_funcs
     )
-    check_custom_exception_classes_style(chapters_func_class_metrics.all_classes)
+    all_classes = chapters_func_class_metrics.all_classes
+    exception_check_result = check_custom_exception_classes_style(all_classes)
+    assert exception_check_result[0], exception_check_result[1]
+
     semantic_types = chapters_func_class_metrics.semantic_types
     all_functions = chapters_func_class_metrics.all_functions
 
@@ -214,9 +217,10 @@ def test_Chapters_KeywordsAppearWhereTheyShould():
         assert chapters_dict.keys(), never_used_assertion_fail_str
         min_chapter_prefix = min(chapters_dict.keys())
         min_chapter_count = chapters_dict.get(min_chapter_prefix)
-        if min_chapter_count <= 2:
-            print(f"{keyword=} {min_chapter_prefix} {min_chapter_count=}")
-        assert min_chapter_count != 1
+        ch_count_fail_str = f"{keyword=} {min_chapter_prefix} {min_chapter_count=}"
+        # if min_chapter_count <= 2:
+        #     print()
+        assert min_chapter_count != 1, ch_count_fail_str
 
 
 def add_ch_keyword_count(keywords_ch_counts: dict, keyword: str, chapter_prefix: str):

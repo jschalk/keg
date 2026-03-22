@@ -52,30 +52,30 @@ def open_person_file(dest_dir: str, filename: str = None) -> PersonUnit:
 
 
 def save_gut_file(moment_mstr_dir: str, personunit: PersonUnit):
-    person_lasso = lassounit_shop(personunit.planroot.get_plan_rope(), personunit.knot)
-    gut_path = create_gut_path(moment_mstr_dir, person_lasso, personunit.person_name)
+    moment_lasso = lassounit_shop(personunit.planroot.get_plan_rope(), personunit.knot)
+    gut_path = create_gut_path(moment_mstr_dir, moment_lasso, personunit.person_name)
     save_person_file(gut_path, None, personunit)
 
 
 def open_gut_file(
-    moment_mstr_dir: str, person_lasso: LassoUnit, person_name: PersonName
+    moment_mstr_dir: str, moment_lasso: LassoUnit, person_name: PersonName
 ) -> PersonUnit:
-    gut_path = create_gut_path(moment_mstr_dir, person_lasso, person_name)
+    gut_path = create_gut_path(moment_mstr_dir, moment_lasso, person_name)
     gut_person = open_person_file(gut_path)
     if gut_person:
         gut_person.planroot.plan_label = get_tail_label(
-            person_lasso.moment_rope, person_lasso.knot
+            moment_lasso.moment_rope, moment_lasso.knot
         )
         gut_person.planroot.parent_rope = get_parent_rope(
-            person_lasso.moment_rope, person_lasso.knot
+            moment_lasso.moment_rope, moment_lasso.knot
         )
     return gut_person
 
 
 def gut_file_exists(
-    moment_mstr_dir: str, person_lasso: LassoUnit, person_name: PersonName
+    moment_mstr_dir: str, moment_lasso: LassoUnit, person_name: PersonName
 ) -> bool:
-    gut_path = create_gut_path(moment_mstr_dir, person_lasso, person_name)
+    gut_path = create_gut_path(moment_mstr_dir, moment_lasso, person_name)
     return os_path_exists(gut_path)
 
 
@@ -91,7 +91,7 @@ class LessonFileMissingError(Exception):
 class LessonFileHandler:
     person_name: PersonName = None
     moment_mstr_dir: str = None
-    person_lasso: LassoUnit = None
+    moment_lasso: LassoUnit = None
     fund_pool: float = None
     fund_grain: float = None
     respect_grain: float = None
@@ -102,16 +102,16 @@ class LessonFileHandler:
     def set_dir_attrs(self):
         mstr_dir = self.moment_mstr_dir
         person_name = self.person_name
-        self.atoms_dir = create_atoms_dir_path(mstr_dir, self.person_lasso, person_name)
+        self.atoms_dir = create_atoms_dir_path(mstr_dir, self.moment_lasso, person_name)
         self.lessons_dir = create_lessons_dir_path(
-            mstr_dir, self.person_lasso, person_name
+            mstr_dir, self.moment_lasso, person_name
         )
 
     def default_gut_person(self) -> PersonUnit:
         x_personunit = personunit_shop(
             person_name=self.person_name,
-            planroot_rope=self.person_lasso.moment_rope,
-            knot=self.person_lasso.knot,
+            planroot_rope=self.moment_lasso.moment_rope,
+            knot=self.moment_lasso.knot,
             fund_pool=self.fund_pool,
             fund_grain=self.fund_grain,
             respect_grain=self.respect_grain,
@@ -155,7 +155,7 @@ class LessonFileHandler:
         delete_dir(self.atom_file_path(atom_number))
 
     def _get_person_from_atom_files(self) -> PersonUnit:
-        x_person = personunit_shop(self.person_name, self.person_lasso.moment_rope)
+        x_person = personunit_shop(self.person_name, self.moment_lasso.moment_rope)
         if self.h_atom_file_exists(self.get_max_atom_file_number()):
             x_atom_files = get_dir_file_strs(self.atoms_dir, delete_extensions=True)
             sorted_atom_filenames = sorted(list(x_atom_files.keys()))
@@ -294,14 +294,14 @@ class LessonFileHandler:
         x_lessonunit.persondelta.add_all_different_personatoms(
             before_person=self.default_gut_person(),
             after_person=open_gut_file(
-                self.moment_mstr_dir, self.person_lasso, self.person_name
+                self.moment_mstr_dir, self.moment_lasso, self.person_name
             ),
         )
         x_lessonunit.save_files()
 
     def initialize_lesson_gut_files(self):
         x_gut_file_exists = gut_file_exists(
-            self.moment_mstr_dir, self.person_lasso, self.person_name
+            self.moment_mstr_dir, self.moment_lasso, self.person_name
         )
         lesson_file_exists = self.hub_lesson_file_exists(init_lesson_id())
         if x_gut_file_exists is False and lesson_file_exists is False:
@@ -313,7 +313,7 @@ class LessonFileHandler:
 
     def append_lessons_to_gut_file(self) -> PersonUnit:
         gut_person = open_gut_file(
-            self.moment_mstr_dir, self.person_lasso, self.person_name
+            self.moment_mstr_dir, self.moment_lasso, self.person_name
         )
         gut_person = self._merge_any_lessons(gut_person)
         save_gut_file(self.moment_mstr_dir, gut_person)
@@ -322,19 +322,19 @@ class LessonFileHandler:
 
 def lessonfilehandler_shop(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName = None,
     fund_pool: float = None,
     fund_grain: float = None,
     respect_grain: float = None,
     mana_grain: float = None,
 ) -> LessonFileHandler:
-    if not person_lasso:
-        person_lasso = lassounit_shop(None, None)
+    if not moment_lasso:
+        moment_lasso = lassounit_shop(None, None)
     x_lessonfilehandler = LessonFileHandler(
         moment_mstr_dir=moment_mstr_dir,
-        person_lasso=person_lasso,
-        person_name=validate_labelterm(person_name, person_lasso.knot),
+        moment_lasso=moment_lasso,
+        person_name=validate_labelterm(person_name, moment_lasso.knot),
         fund_pool=validate_pool_num(fund_pool),
         fund_grain=default_grain_num_if_None(fund_grain),
         respect_grain=default_grain_num_if_None(respect_grain),

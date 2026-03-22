@@ -1,7 +1,7 @@
 from os import getcwd as os_getcwd
 from os.path import isdir as os_path_isdir
 from src.ch00_py.file_toolbox import create_path, open_json, save_file
-from src.ch19_world_kpi.gcalendar import get_gcal_day_report
+from src.ch20_kpi.gcalendar import get_gcal_day_report_from_personunit
 
 # HOW TO USE:
 # Open up CMD, change directory to repo
@@ -14,7 +14,7 @@ def main():
     test_name = input("test_name: ").strip()
     dest_dir = input("dest_dir (default ch18): ").strip()
     if dest_dir in {None, ""}:
-        dest_dir = "src/ch18_world_etl/test/zz_notebooks"
+        dest_dir = "src/ch19_etl_main/test/z_notebooks"
     dest_filename = input("dest_filename (default test_name): ").strip()
     if dest_filename in {None, ""}:
         dest_filename = f"{test_name[5:]}.py"

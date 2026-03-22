@@ -206,7 +206,7 @@ def get_yao_ohio_lessonfilehandler() -> LessonFileHandler:
     yao_person = get_example_yao_person()
     return lessonfilehandler_shop(
         moment_mstr_dir=env_dir(),
-        person_lasso=lassounit_shop(yao_person.planroot.get_plan_rope()),
+        moment_lasso=lassounit_shop(yao_person.planroot.get_plan_rope()),
         person_name=yao_person.person_name,
     )
 
@@ -215,7 +215,7 @@ def get_yao_iowa_lessonfilehandler() -> LessonFileHandler:
     yao_person = get_example_yao_person()
     return lessonfilehandler_shop(
         moment_mstr_dir=env_dir(),
-        person_lasso=lassounit_shop(yao_person.planroot.get_plan_rope()),
+        moment_lasso=lassounit_shop(yao_person.planroot.get_plan_rope()),
         person_name=yao_person.person_name,
     )
 
@@ -224,7 +224,7 @@ def get_zia_utah_lessonfilehandler() -> LessonFileHandler:
     yao_person = get_example_yao_person()
     return lessonfilehandler_shop(
         moment_mstr_dir=env_dir(),
-        person_lasso=lassounit_shop(yao_person.planroot.get_plan_rope()),
+        moment_lasso=lassounit_shop(yao_person.planroot.get_plan_rope()),
         person_name="Zia",
     )
 
@@ -278,16 +278,16 @@ def test_listen_to_person_visions_Pipeline_Scenario1_yao_gut_CanOnlyReferenceIts
     yao_ohio_lessonfilehandler = get_yao_ohio_lessonfilehandler()
     zia_utah_lessonfilehandler = get_zia_utah_lessonfilehandler()
     # delete_dir(yao_iowa_lessonfilehandler.persons_dir())
-    person_lasso = lassounit_shop(moment_rope)
-    assert gut_file_exists(moment_mstr_dir, person_lasso, exx.yao) is False
-    assert job_file_exists(moment_mstr_dir, person_lasso, exx.yao) is False
+    moment_lasso = lassounit_shop(moment_rope)
+    assert gut_file_exists(moment_mstr_dir, moment_lasso, exx.yao) is False
+    assert job_file_exists(moment_mstr_dir, moment_lasso, exx.yao) is False
     assert (
         vision_file_exists(
             yao_iowa_lessonfilehandler.moment_mstr_dir,
             yao_iowa_lessonfilehandler.person_name,
-            yao_iowa_lessonfilehandler.person_lasso.moment_rope,
+            yao_iowa_lessonfilehandler.moment_lasso.moment_rope,
             get_iowa_rope(),
-            yao_iowa_lessonfilehandler.person_lasso.knot,
+            yao_iowa_lessonfilehandler.moment_lasso.knot,
             exx.yao,
         )
         is False
@@ -296,9 +296,9 @@ def test_listen_to_person_visions_Pipeline_Scenario1_yao_gut_CanOnlyReferenceIts
         vision_file_exists(
             yao_ohio_lessonfilehandler.moment_mstr_dir,
             yao_ohio_lessonfilehandler.person_name,
-            yao_ohio_lessonfilehandler.person_lasso.moment_rope,
+            yao_ohio_lessonfilehandler.moment_lasso.moment_rope,
             get_ohio_rope(),
-            yao_ohio_lessonfilehandler.person_lasso.knot,
+            yao_ohio_lessonfilehandler.moment_lasso.knot,
             exx.yao,
         )
         is False
@@ -307,9 +307,9 @@ def test_listen_to_person_visions_Pipeline_Scenario1_yao_gut_CanOnlyReferenceIts
         vision_file_exists(
             zia_utah_lessonfilehandler.moment_mstr_dir,
             zia_utah_lessonfilehandler.person_name,
-            zia_utah_lessonfilehandler.person_lasso.moment_rope,
+            zia_utah_lessonfilehandler.moment_lasso.moment_rope,
             get_utah_rope(),
-            zia_utah_lessonfilehandler.person_lasso.knot,
+            zia_utah_lessonfilehandler.moment_lasso.knot,
             exx.yao,
         )
         is False
@@ -317,14 +317,14 @@ def test_listen_to_person_visions_Pipeline_Scenario1_yao_gut_CanOnlyReferenceIts
 
     print(f"{yao_gut0.get_fact(get_location_rope())=}")
     save_gut_file(env_dir(), yao_gut0)
-    assert gut_file_exists(moment_mstr_dir, person_lasso, exx.yao)
+    assert gut_file_exists(moment_mstr_dir, moment_lasso, exx.yao)
     assert (
         vision_file_exists(
             yao_iowa_lessonfilehandler.moment_mstr_dir,
             yao_iowa_lessonfilehandler.person_name,
-            yao_iowa_lessonfilehandler.person_lasso.moment_rope,
+            yao_iowa_lessonfilehandler.moment_lasso.moment_rope,
             get_iowa_rope(),
-            yao_iowa_lessonfilehandler.person_lasso.knot,
+            yao_iowa_lessonfilehandler.moment_lasso.knot,
             exx.yao,
         )
         is False
@@ -333,9 +333,9 @@ def test_listen_to_person_visions_Pipeline_Scenario1_yao_gut_CanOnlyReferenceIts
         vision_file_exists(
             yao_ohio_lessonfilehandler.moment_mstr_dir,
             yao_ohio_lessonfilehandler.person_name,
-            yao_ohio_lessonfilehandler.person_lasso.moment_rope,
+            yao_ohio_lessonfilehandler.moment_lasso.moment_rope,
             get_ohio_rope(),
-            yao_ohio_lessonfilehandler.person_lasso.knot,
+            yao_ohio_lessonfilehandler.moment_lasso.knot,
             exx.yao,
         )
         is False
@@ -344,19 +344,19 @@ def test_listen_to_person_visions_Pipeline_Scenario1_yao_gut_CanOnlyReferenceIts
         vision_file_exists(
             zia_utah_lessonfilehandler.moment_mstr_dir,
             zia_utah_lessonfilehandler.person_name,
-            zia_utah_lessonfilehandler.person_lasso.moment_rope,
+            zia_utah_lessonfilehandler.moment_lasso.moment_rope,
             get_utah_rope(),
-            zia_utah_lessonfilehandler.person_lasso.knot,
+            zia_utah_lessonfilehandler.moment_lasso.knot,
             exx.yao,
         )
         is False
     )
     # WHEN / THEN
-    assert job_file_exists(moment_mstr_dir, person_lasso, exx.yao) is False
+    assert job_file_exists(moment_mstr_dir, moment_lasso, exx.yao) is False
     listen_to_person_visions(yao_iowa_lessonfilehandler, get_iowa_rope())
-    assert job_file_exists(moment_mstr_dir, person_lasso, exx.yao)
+    assert job_file_exists(moment_mstr_dir, moment_lasso, exx.yao)
 
-    yao_job = open_job_file(moment_mstr_dir, person_lasso, exx.yao)
+    yao_job = open_job_file(moment_mstr_dir, moment_lasso, exx.yao)
     yao_job.conpute()
     assert yao_job.partners.keys() == yao_gut0.partners.keys()
     assert yao_job.get_partner(exx.yao).irrational_partner_debt_lumen == 0
@@ -393,7 +393,7 @@ def test_create_vision_file_from_duty_file_CreatesEmptyvision(temp_dir_setup):
     save_duty_person(
         moment_mstr_dir=sue_texas_lessonfilehandler.moment_mstr_dir,
         person_name=sue_texas_lessonfilehandler.person_name,
-        moment_rope=sue_texas_lessonfilehandler.person_lasso.moment_rope,
+        moment_rope=sue_texas_lessonfilehandler.moment_lasso.moment_rope,
         keep_rope=get_texas_rope(),
         knot=None,
         duty_person=yao_duty,
@@ -403,15 +403,15 @@ def test_create_vision_file_from_duty_file_CreatesEmptyvision(temp_dir_setup):
         vision_file_exists(
             sue_texas_lessonfilehandler.moment_mstr_dir,
             sue_texas_lessonfilehandler.person_name,
-            sue_texas_lessonfilehandler.person_lasso.moment_rope,
+            sue_texas_lessonfilehandler.moment_lasso.moment_rope,
             get_texas_rope(),
-            sue_texas_lessonfilehandler.person_lasso.knot,
+            sue_texas_lessonfilehandler.moment_lasso.knot,
             exx.yao,
         )
     )
 
     # WHEN
-    print(f"{sue_texas_lessonfilehandler.person_lasso.moment_rope=}")
+    print(f"{sue_texas_lessonfilehandler.moment_lasso.moment_rope=}")
     create_vision_file_from_duty_file(
         sue_texas_lessonfilehandler, exx.yao, get_texas_rope()
     )
@@ -420,17 +420,17 @@ def test_create_vision_file_from_duty_file_CreatesEmptyvision(temp_dir_setup):
     assert vision_file_exists(
         sue_texas_lessonfilehandler.moment_mstr_dir,
         sue_texas_lessonfilehandler.person_name,
-        sue_texas_lessonfilehandler.person_lasso.moment_rope,
+        sue_texas_lessonfilehandler.moment_lasso.moment_rope,
         get_texas_rope(),
-        sue_texas_lessonfilehandler.person_lasso.knot,
+        sue_texas_lessonfilehandler.moment_lasso.knot,
         exx.yao,
     )
     yao_vision = get_vision_person(
         sue_texas_lessonfilehandler.moment_mstr_dir,
         sue_texas_lessonfilehandler.person_name,
-        sue_texas_lessonfilehandler.person_lasso.moment_rope,
+        sue_texas_lessonfilehandler.moment_lasso.moment_rope,
         get_texas_rope(),
-        sue_texas_lessonfilehandler.person_lasso.knot,
+        sue_texas_lessonfilehandler.moment_lasso.knot,
         exx.yao,
     )
     assert yao_vision.person_name is not None

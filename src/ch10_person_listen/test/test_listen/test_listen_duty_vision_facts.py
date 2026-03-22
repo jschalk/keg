@@ -34,7 +34,7 @@ def test_listen_to_facts_duty_vision_SetsSingleFactUnit_v1(temp_dir_setup):
     save_duty_person(
         moment_mstr_dir=sue_texas_lessonfilehandler.moment_mstr_dir,
         person_name=sue_texas_lessonfilehandler.person_name,
-        moment_rope=sue_texas_lessonfilehandler.person_lasso.moment_rope,
+        moment_rope=sue_texas_lessonfilehandler.moment_lasso.moment_rope,
         keep_rope=get_texas_rope(),
         knot=None,
         duty_person=yao_duty,
@@ -44,9 +44,9 @@ def test_listen_to_facts_duty_vision_SetsSingleFactUnit_v1(temp_dir_setup):
     save_vision_person(
         sue_texas_lessonfilehandler.moment_mstr_dir,
         sue_texas_lessonfilehandler.person_name,
-        sue_texas_lessonfilehandler.person_lasso.moment_rope,
+        sue_texas_lessonfilehandler.moment_lasso.moment_rope,
         get_texas_rope(),
-        sue_texas_lessonfilehandler.person_lasso.knot,
+        sue_texas_lessonfilehandler.moment_lasso.knot,
         zia_vision,
     )
 
@@ -83,7 +83,7 @@ def test_listen_to_facts_duty_vision_SetsSingleFactUnitWithDifferentcase_task(
     save_duty_person(
         moment_mstr_dir=sue_texas_lessonfilehandler.moment_mstr_dir,
         person_name=sue_texas_lessonfilehandler.person_name,
-        moment_rope=sue_texas_lessonfilehandler.person_lasso.moment_rope,
+        moment_rope=sue_texas_lessonfilehandler.moment_lasso.moment_rope,
         keep_rope=get_texas_rope(),
         knot=None,
         duty_person=yao_duty,
@@ -96,9 +96,9 @@ def test_listen_to_facts_duty_vision_SetsSingleFactUnitWithDifferentcase_task(
     save_vision_person(
         sue_texas_lessonfilehandler.moment_mstr_dir,
         sue_texas_lessonfilehandler.person_name,
-        sue_texas_lessonfilehandler.person_lasso.moment_rope,
+        sue_texas_lessonfilehandler.moment_lasso.moment_rope,
         get_texas_rope(),
-        sue_texas_lessonfilehandler.person_lasso.knot,
+        sue_texas_lessonfilehandler.moment_lasso.knot,
         zia_vision,
     )
 
@@ -135,7 +135,7 @@ def test_listen_to_facts_duty_vision_GetsFactsFromSrcPersonSelfNotSpeakerSelf(
     save_duty_person(
         moment_mstr_dir=sue_texas_lessonfilehandler.moment_mstr_dir,
         person_name=sue_texas_lessonfilehandler.person_name,
-        moment_rope=sue_texas_lessonfilehandler.person_lasso.moment_rope,
+        moment_rope=sue_texas_lessonfilehandler.moment_lasso.moment_rope,
         keep_rope=get_texas_rope(),
         knot=None,
         duty_person=yao_duty,
@@ -148,9 +148,9 @@ def test_listen_to_facts_duty_vision_GetsFactsFromSrcPersonSelfNotSpeakerSelf(
     save_vision_person(
         sue_texas_lessonfilehandler.moment_mstr_dir,
         sue_texas_lessonfilehandler.person_name,
-        sue_texas_lessonfilehandler.person_lasso.moment_rope,
+        sue_texas_lessonfilehandler.moment_lasso.moment_rope,
         get_texas_rope(),
-        sue_texas_lessonfilehandler.person_lasso.knot,
+        sue_texas_lessonfilehandler.moment_lasso.knot,
         old_yao_vision,
     )
 
@@ -186,7 +186,7 @@ def test_listen_to_facts_duty_vision_ConfirmNoFactfact_stateedFromPersonsSpeaker
     save_duty_person(
         moment_mstr_dir=sue_texas_lessonfilehandler.moment_mstr_dir,
         person_name=sue_texas_lessonfilehandler.person_name,
-        moment_rope=sue_texas_lessonfilehandler.person_lasso.moment_rope,
+        moment_rope=sue_texas_lessonfilehandler.moment_lasso.moment_rope,
         keep_rope=get_texas_rope(),
         knot=None,
         duty_person=yao_duty,
@@ -198,9 +198,9 @@ def test_listen_to_facts_duty_vision_ConfirmNoFactfact_stateedFromPersonsSpeaker
     save_vision_person(
         sue_texas_lessonfilehandler.moment_mstr_dir,
         sue_texas_lessonfilehandler.person_name,
-        sue_texas_lessonfilehandler.person_lasso.moment_rope,
+        sue_texas_lessonfilehandler.moment_lasso.moment_rope,
         get_texas_rope(),
-        sue_texas_lessonfilehandler.person_lasso.knot,
+        sue_texas_lessonfilehandler.moment_lasso.knot,
         zia_vision,
     )
 
@@ -209,9 +209,9 @@ def test_listen_to_facts_duty_vision_ConfirmNoFactfact_stateedFromPersonsSpeaker
     save_vision_person(
         sue_texas_lessonfilehandler.moment_mstr_dir,
         sue_texas_lessonfilehandler.person_name,
-        sue_texas_lessonfilehandler.person_lasso.moment_rope,
+        sue_texas_lessonfilehandler.moment_lasso.moment_rope,
         get_texas_rope(),
-        sue_texas_lessonfilehandler.person_lasso.knot,
+        sue_texas_lessonfilehandler.moment_lasso.knot,
         old_yao_vision,
     )
 
@@ -251,7 +251,7 @@ def test_listen_to_facts_duty_vision_SetsPrioritizesSelfFactsOverSpeakers(
     save_duty_person(
         moment_mstr_dir=sue_texas_lessonfilehandler.moment_mstr_dir,
         person_name=sue_texas_lessonfilehandler.person_name,
-        moment_rope=sue_texas_lessonfilehandler.person_lasso.moment_rope,
+        moment_rope=sue_texas_lessonfilehandler.moment_lasso.moment_rope,
         keep_rope=get_texas_rope(),
         knot=None,
         duty_person=yao_duty,
@@ -263,9 +263,9 @@ def test_listen_to_facts_duty_vision_SetsPrioritizesSelfFactsOverSpeakers(
     save_vision_person(
         sue_texas_lessonfilehandler.moment_mstr_dir,
         sue_texas_lessonfilehandler.person_name,
-        sue_texas_lessonfilehandler.person_lasso.moment_rope,
+        sue_texas_lessonfilehandler.moment_lasso.moment_rope,
         get_texas_rope(),
-        sue_texas_lessonfilehandler.person_lasso.knot,
+        sue_texas_lessonfilehandler.moment_lasso.knot,
         zia_vision,
     )
 
@@ -301,9 +301,9 @@ def test_listen_to_facts_duty_vision_ConfirmNoFactfact_stateedFromPersonsSpeaker
     save_vision_person(
         sue_texas_lessonfilehandler.moment_mstr_dir,
         sue_texas_lessonfilehandler.person_name,
-        sue_texas_lessonfilehandler.person_lasso.moment_rope,
+        sue_texas_lessonfilehandler.moment_lasso.moment_rope,
         get_texas_rope(),
-        sue_texas_lessonfilehandler.person_lasso.knot,
+        sue_texas_lessonfilehandler.moment_lasso.knot,
         zia_vision,
     )
 
@@ -313,9 +313,9 @@ def test_listen_to_facts_duty_vision_ConfirmNoFactfact_stateedFromPersonsSpeaker
     save_vision_person(
         sue_texas_lessonfilehandler.moment_mstr_dir,
         sue_texas_lessonfilehandler.person_name,
-        sue_texas_lessonfilehandler.person_lasso.moment_rope,
+        sue_texas_lessonfilehandler.moment_lasso.moment_rope,
         get_texas_rope(),
-        sue_texas_lessonfilehandler.person_lasso.knot,
+        sue_texas_lessonfilehandler.moment_lasso.knot,
         bob_vision,
     )
 
@@ -325,7 +325,7 @@ def test_listen_to_facts_duty_vision_ConfirmNoFactfact_stateedFromPersonsSpeaker
     save_duty_person(
         moment_mstr_dir=sue_texas_lessonfilehandler.moment_mstr_dir,
         person_name=sue_texas_lessonfilehandler.person_name,
-        moment_rope=sue_texas_lessonfilehandler.person_lasso.moment_rope,
+        moment_rope=sue_texas_lessonfilehandler.moment_lasso.moment_rope,
         keep_rope=get_texas_rope(),
         knot=None,
         duty_person=yao_duty,

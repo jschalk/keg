@@ -38,10 +38,10 @@ def test_LessonFileHandler_default_gut_person_ReturnsObj():
     # THEN
     assert (
         sue_default_gut.planroot.get_plan_rope()
-        == sue_lessonfilehandler.person_lasso.moment_rope
+        == sue_lessonfilehandler.moment_lasso.moment_rope
     )
     assert sue_default_gut.person_name == sue_lessonfilehandler.person_name
-    assert sue_default_gut.knot == sue_lessonfilehandler.person_lasso.knot
+    assert sue_default_gut.knot == sue_lessonfilehandler.moment_lasso.knot
     assert sue_default_gut.fund_pool == sue_lessonfilehandler.fund_pool
     assert sue_default_gut.fund_grain == sue_lessonfilehandler.fund_grain
     assert sue_default_gut.respect_grain == sue_lessonfilehandler.respect_grain

@@ -153,8 +153,8 @@ LINUX_OS = platform_system() == "Linux"
 
 def test_create_moment_dir_path_HasDocString():
     # ESTABLISH
-    x_person_lasso = lassounit_shop(create_rope(kw.moment_rope))
-    doc_str = create_moment_dir_path("moment_mstr_dir", x_person_lasso)
+    x_moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    doc_str = create_moment_dir_path("moment_mstr_dir", x_moment_lasso)
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
     assert LINUX_OS or inspect_getdoc(create_moment_dir_path) == doc_str
@@ -162,10 +162,10 @@ def test_create_moment_dir_path_HasDocString():
 
 def test_create_moment_json_path_HasDocString():
     # ESTABLISH
-    x_person_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    x_moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     doc_str = create_moment_json_path(
         "moment_mstr_dir",
-        person_lasso=x_person_lasso,
+        moment_lasso=x_moment_lasso,
     )
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
@@ -174,10 +174,10 @@ def test_create_moment_json_path_HasDocString():
 
 def test_create_moment_persons_dir_path_HasDocString():
     # ESTABLISH
-    x_person_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    x_moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     doc_str = create_moment_persons_dir_path(
         "moment_mstr_dir",
-        person_lasso=x_person_lasso,
+        moment_lasso=x_moment_lasso,
     )
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
@@ -186,10 +186,10 @@ def test_create_moment_persons_dir_path_HasDocString():
 
 def test_create_person_dir_path_HasDocString():
     # ESTABLISH
-    x_person_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    x_moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     doc_str = create_person_dir_path(
         moment_mstr_dir="moment_mstr_dir",
-        person_lasso=x_person_lasso,
+        moment_lasso=x_moment_lasso,
         person_name=kw.person_name,
     )
     doc_str = f"Returns path: {doc_str}"
@@ -199,10 +199,10 @@ def test_create_person_dir_path_HasDocString():
 
 def test_create_atoms_dir_path_HasDocString():
     # ESTABLISH
-    x_person_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    x_moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     doc_str = create_atoms_dir_path(
         moment_mstr_dir="moment_mstr_dir",
-        person_lasso=x_person_lasso,
+        moment_lasso=x_moment_lasso,
         person_name=kw.person_name,
     )
     doc_str = f"Returns path: {doc_str}"
@@ -212,10 +212,10 @@ def test_create_atoms_dir_path_HasDocString():
 
 def test_create_lessons_dir_path_HasDocString():
     # ESTABLISH
-    x_person_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    x_moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     doc_str = create_lessons_dir_path(
         moment_mstr_dir="moment_mstr_dir",
-        person_lasso=x_person_lasso,
+        moment_lasso=x_moment_lasso,
         person_name=kw.person_name,
     )
     doc_str = f"Returns path: {doc_str}"
@@ -225,10 +225,10 @@ def test_create_lessons_dir_path_HasDocString():
 
 def test_create_gut_path_HasDocString():
     # ESTABLISH
-    x_person_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    x_moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     doc_str = create_gut_path(
         moment_mstr_dir="moment_mstr_dir",
-        person_lasso=x_person_lasso,
+        moment_lasso=x_moment_lasso,
         person_name=kw.person_name,
     )
     doc_str = f"Returns path: {doc_str}"
@@ -241,10 +241,10 @@ def test_create_gut_path_HasDocString():
 
 def test_create_job_path_HasDocString():
     # ESTABLISH
-    x_person_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    x_moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     doc_str = create_job_path(
         moment_mstr_dir="moment_mstr_dir",
-        person_lasso=x_person_lasso,
+        moment_lasso=x_moment_lasso,
         person_name=kw.person_name,
     )
     doc_str = f"Returns path: {doc_str}"

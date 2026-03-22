@@ -359,7 +359,7 @@ def test_cellunit_add_json_file_SetsFile_Scenario0(temp_dir_setup):
     # WHEN
     cellunit_add_json_file(
         moment_mstr_dir=moment_mstr_dir,
-        person_lasso=lassounit_shop(exx.a23),
+        moment_lasso=lassounit_shop(exx.a23),
         time_person_name=exx.sue,
         bud_time=time7,
         quota=quota500,

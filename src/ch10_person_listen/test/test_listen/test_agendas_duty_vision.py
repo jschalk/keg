@@ -48,9 +48,9 @@ def test_listen_to_agenda_duty_vision_agenda_Addscase_tasksTovision_PersonWhenNo
     save_vision_person(
         yao_dakota_lessonfilehandler.moment_mstr_dir,
         yao_dakota_lessonfilehandler.person_name,
-        yao_dakota_lessonfilehandler.person_lasso.moment_rope,
+        yao_dakota_lessonfilehandler.moment_lasso.moment_rope,
         get_dakota_rope(),
-        yao_dakota_lessonfilehandler.person_lasso.knot,
+        yao_dakota_lessonfilehandler.moment_lasso.knot,
         zia_vision,
     )
     new_yao_vision = create_listen_basis(yao_duty)
@@ -90,9 +90,9 @@ def test_listen_to_agenda_duty_vision_agenda_Addscase_tasksTovision_Person(
     save_vision_person(
         yao_dakota_lessonfilehandler.moment_mstr_dir,
         yao_dakota_lessonfilehandler.person_name,
-        yao_dakota_lessonfilehandler.person_lasso.moment_rope,
+        yao_dakota_lessonfilehandler.moment_lasso.moment_rope,
         get_dakota_rope(),
-        yao_dakota_lessonfilehandler.person_lasso.knot,
+        yao_dakota_lessonfilehandler.moment_lasso.knot,
         zia_vision,
     )
 
@@ -131,17 +131,17 @@ def test_listen_to_agenda_duty_vision_agenda_Addscase_tasksTovisionPersonWithDet
     save_vision_person(
         sue_dakota_lessonfilehandler.moment_mstr_dir,
         sue_dakota_lessonfilehandler.person_name,
-        sue_dakota_lessonfilehandler.person_lasso.moment_rope,
+        sue_dakota_lessonfilehandler.moment_lasso.moment_rope,
         get_dakota_rope(),
-        sue_dakota_lessonfilehandler.person_lasso.knot,
+        sue_dakota_lessonfilehandler.moment_lasso.knot,
         zia_vision,
     )
     save_vision_person(
         sue_dakota_lessonfilehandler.moment_mstr_dir,
         sue_dakota_lessonfilehandler.person_name,
-        sue_dakota_lessonfilehandler.person_lasso.moment_rope,
+        sue_dakota_lessonfilehandler.moment_lasso.moment_rope,
         get_dakota_rope(),
-        sue_dakota_lessonfilehandler.person_lasso.knot,
+        sue_dakota_lessonfilehandler.moment_lasso.knot,
         bob_vision,
     )
 
@@ -149,7 +149,7 @@ def test_listen_to_agenda_duty_vision_agenda_Addscase_tasksTovisionPersonWithDet
     save_duty_person(
         moment_mstr_dir=sue_dakota_lessonfilehandler.moment_mstr_dir,
         person_name=sue_dakota_lessonfilehandler.person_name,
-        moment_rope=sue_dakota_lessonfilehandler.person_lasso.moment_rope,
+        moment_rope=sue_dakota_lessonfilehandler.moment_lasso.moment_rope,
         keep_rope=get_dakota_rope(),
         knot=None,
         duty_person=yao_duty,
@@ -211,7 +211,7 @@ def test_listen_to_agenda_duty_vision_agenda_ProcessesIrrationalPerson(
     save_duty_person(
         moment_mstr_dir=yao_dakota_lessonfilehandler.moment_mstr_dir,
         person_name=yao_dakota_lessonfilehandler.person_name,
-        moment_rope=yao_dakota_lessonfilehandler.person_lasso.moment_rope,
+        moment_rope=yao_dakota_lessonfilehandler.moment_lasso.moment_rope,
         keep_rope=get_dakota_rope(),
         knot=None,
         duty_person=yao_duty,
@@ -228,9 +228,9 @@ def test_listen_to_agenda_duty_vision_agenda_ProcessesIrrationalPerson(
     save_vision_person(
         yao_dakota_lessonfilehandler.moment_mstr_dir,
         yao_dakota_lessonfilehandler.person_name,
-        yao_dakota_lessonfilehandler.person_lasso.moment_rope,
+        yao_dakota_lessonfilehandler.moment_lasso.moment_rope,
         get_dakota_rope(),
-        yao_dakota_lessonfilehandler.person_lasso.knot,
+        yao_dakota_lessonfilehandler.moment_lasso.knot,
         zia_vision,
     )
 
@@ -266,9 +266,9 @@ def test_listen_to_agenda_duty_vision_agenda_ProcessesIrrationalPerson(
     save_vision_person(
         yao_dakota_lessonfilehandler.moment_mstr_dir,
         yao_dakota_lessonfilehandler.person_name,
-        yao_dakota_lessonfilehandler.person_lasso.moment_rope,
+        yao_dakota_lessonfilehandler.moment_lasso.moment_rope,
         get_dakota_rope(),
-        yao_dakota_lessonfilehandler.person_lasso.knot,
+        yao_dakota_lessonfilehandler.moment_lasso.knot,
         sue_vision,
     )
 
@@ -307,7 +307,7 @@ def test_listen_to_agenda_duty_vision_agenda_ProcessesMissingDebtorvisionPerson(
     save_duty_person(
         moment_mstr_dir=yao_dakota_lessonfilehandler.moment_mstr_dir,
         person_name=yao_dakota_lessonfilehandler.person_name,
-        moment_rope=yao_dakota_lessonfilehandler.person_lasso.moment_rope,
+        moment_rope=yao_dakota_lessonfilehandler.moment_lasso.moment_rope,
         keep_rope=get_dakota_rope(),
         knot=None,
         duty_person=yao_duty,
@@ -325,9 +325,9 @@ def test_listen_to_agenda_duty_vision_agenda_ProcessesMissingDebtorvisionPerson(
     save_vision_person(
         yao_dakota_lessonfilehandler.moment_mstr_dir,
         yao_dakota_lessonfilehandler.person_name,
-        yao_dakota_lessonfilehandler.person_lasso.moment_rope,
+        yao_dakota_lessonfilehandler.moment_lasso.moment_rope,
         get_dakota_rope(),
-        yao_dakota_lessonfilehandler.person_lasso.knot,
+        yao_dakota_lessonfilehandler.moment_lasso.knot,
         zia_vision,
     )
 
@@ -367,7 +367,7 @@ def test_listen_to_agenda_duty_vision_agenda_ListensToPerson_duty_AndNotPerson_v
     save_duty_person(
         moment_mstr_dir=yao_dakota_lessonfilehandler.moment_mstr_dir,
         person_name=yao_dakota_lessonfilehandler.person_name,
-        moment_rope=yao_dakota_lessonfilehandler.person_lasso.moment_rope,
+        moment_rope=yao_dakota_lessonfilehandler.moment_lasso.moment_rope,
         keep_rope=get_dakota_rope(),
         knot=None,
         duty_person=yao_duty,
@@ -385,9 +385,9 @@ def test_listen_to_agenda_duty_vision_agenda_ListensToPerson_duty_AndNotPerson_v
     save_vision_person(
         yao_dakota_lessonfilehandler.moment_mstr_dir,
         yao_dakota_lessonfilehandler.person_name,
-        yao_dakota_lessonfilehandler.person_lasso.moment_rope,
+        yao_dakota_lessonfilehandler.moment_lasso.moment_rope,
         get_dakota_rope(),
-        yao_dakota_lessonfilehandler.person_lasso.knot,
+        yao_dakota_lessonfilehandler.moment_lasso.knot,
         zia_vision,
     )
 
@@ -401,9 +401,9 @@ def test_listen_to_agenda_duty_vision_agenda_ListensToPerson_duty_AndNotPerson_v
     save_vision_person(
         yao_dakota_lessonfilehandler.moment_mstr_dir,
         yao_dakota_lessonfilehandler.person_name,
-        yao_dakota_lessonfilehandler.person_lasso.moment_rope,
+        yao_dakota_lessonfilehandler.moment_lasso.moment_rope,
         get_dakota_rope(),
-        yao_dakota_lessonfilehandler.person_lasso.knot,
+        yao_dakota_lessonfilehandler.moment_lasso.knot,
         yao_old_vision,
     )
 
@@ -433,7 +433,7 @@ def test_listen_to_agenda_duty_vision_agenda_GetsAgendaFromSrcPersonNotSpeakerSe
     save_duty_person(
         moment_mstr_dir=sue_dakota_lessonfilehandler.moment_mstr_dir,
         person_name=sue_dakota_lessonfilehandler.person_name,
-        moment_rope=sue_dakota_lessonfilehandler.person_lasso.moment_rope,
+        moment_rope=sue_dakota_lessonfilehandler.moment_lasso.moment_rope,
         keep_rope=get_dakota_rope(),
         knot=None,
         duty_person=yao_duty,
@@ -445,9 +445,9 @@ def test_listen_to_agenda_duty_vision_agenda_GetsAgendaFromSrcPersonNotSpeakerSe
     save_vision_person(
         sue_dakota_lessonfilehandler.moment_mstr_dir,
         sue_dakota_lessonfilehandler.person_name,
-        sue_dakota_lessonfilehandler.person_lasso.moment_rope,
+        sue_dakota_lessonfilehandler.moment_lasso.moment_rope,
         get_dakota_rope(),
-        sue_dakota_lessonfilehandler.person_lasso.knot,
+        sue_dakota_lessonfilehandler.moment_lasso.knot,
         yao_old_vision,
     )
 

@@ -340,11 +340,11 @@ LINUX_OS = platform_system() == "Linux"
 
 
 def test_create_buds_dir_path_HasDocString():
-    person_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     # ESTABLISH
     doc_str = create_buds_dir_path(
         moment_mstr_dir="moment_mstr_dir",
-        person_lasso=person_lasso,
+        moment_lasso=moment_lasso,
         person_name=kw.person_name,
     )
     doc_str = f"Returns path: {doc_str}"
@@ -354,10 +354,10 @@ def test_create_buds_dir_path_HasDocString():
 
 def test_create_bud_dir_path_HasDocString():
     # ESTABLISH
-    person_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     doc_str = create_bud_dir_path(
         moment_mstr_dir="moment_mstr_dir",
-        person_lasso=person_lasso,
+        moment_lasso=moment_lasso,
         person_name=kw.person_name,
         bud_time=kw.bud_time,
     )
@@ -369,10 +369,10 @@ def test_create_bud_dir_path_HasDocString():
 
 def test_create_cell_dir_path_HasDocString():
     # ESTABLISH
-    person_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     doc_str = create_cell_dir_path(
         moment_mstr_dir="moment_mstr_dir",
-        person_lasso=person_lasso,
+        moment_lasso=moment_lasso,
         person_name=kw.person_name,
         bud_time=kw.bud_time,
         bud_ancestors=["ledger_person1", "ledger_person2", "ledger_person3"],
@@ -386,10 +386,10 @@ def test_create_cell_dir_path_HasDocString():
 
 def test_create_cell_json_path_HasDocString():
     # ESTABLISH
-    person_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     doc_str = create_cell_json_path(
         moment_mstr_dir="moment_mstr_dir",
-        person_lasso=person_lasso,
+        moment_lasso=moment_lasso,
         person_name=kw.person_name,
         bud_time=kw.bud_time,
         bud_ancestors=["ledger_person1", "ledger_person2", "ledger_person3"],
@@ -403,10 +403,10 @@ def test_create_cell_json_path_HasDocString():
 
 def test_create_cell_partner_mandate_ledger_path_HasDocString():
     # ESTABLISH
-    person_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     doc_str = create_cell_partner_mandate_ledger_path(
         moment_mstr_dir="moment_mstr_dir",
-        person_lasso=person_lasso,
+        moment_lasso=moment_lasso,
         person_name=kw.person_name,
         bud_time=kw.bud_time,
         bud_ancestors=["ledger_person1", "ledger_person2", "ledger_person3"],
@@ -422,10 +422,10 @@ def test_create_cell_partner_mandate_ledger_path_HasDocString():
 
 def test_create_budunit_json_path_HasDocString():
     # ESTABLISH
-    person_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     doc_str = create_budunit_json_path(
         moment_mstr_dir="moment_mstr_dir",
-        person_lasso=person_lasso,
+        moment_lasso=moment_lasso,
         person_name=kw.person_name,
         bud_time=kw.bud_time,
     )
@@ -437,10 +437,10 @@ def test_create_budunit_json_path_HasDocString():
 
 def test_create_persontime_path_HasDocString():
     # ESTABLISH
-    person_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     doc_str = create_persontime_path(
         moment_mstr_dir="moment_mstr_dir",
-        person_lasso=person_lasso,
+        moment_lasso=moment_lasso,
         person_name=kw.person_name,
         bud_time=kw.bud_time,
     )
@@ -452,10 +452,10 @@ def test_create_persontime_path_HasDocString():
 
 def test_create_person_spark_dir_path_HasDocString():
     # ESTABLISH
-    person_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     doc_str = create_person_spark_dir_path(
         moment_mstr_dir="moment_mstr_dir",
-        person_lasso=person_lasso,
+        moment_lasso=moment_lasso,
         person_name=kw.person_name,
         spark_num=kw.spark_num,
     )
@@ -466,10 +466,10 @@ def test_create_person_spark_dir_path_HasDocString():
 
 def test_create_person_spark_csv_path_HasDocString():
     # ESTABLISH
-    person_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     doc_str = create_person_spark_csv_path(
         moment_mstr_dir="moment_mstr_dir",
-        person_lasso=person_lasso,
+        moment_lasso=moment_lasso,
         person_name=kw.person_name,
         spark_num=kw.spark_num,
         filename="filename",
@@ -481,10 +481,10 @@ def test_create_person_spark_csv_path_HasDocString():
 
 def test_create_personspark_path_HasDocString():
     # ESTABLISH
-    person_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     doc_str = create_personspark_path(
         moment_mstr_dir="moment_mstr_dir",
-        person_lasso=person_lasso,
+        moment_lasso=moment_lasso,
         person_name=kw.person_name,
         spark_num=kw.spark_num,
     )
@@ -495,10 +495,10 @@ def test_create_personspark_path_HasDocString():
 
 def test_create_spark_all_lesson_path_HasDocString():
     # ESTABLISH
-    person_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     doc_str = create_spark_all_lesson_path(
         moment_mstr_dir="moment_mstr_dir",
-        person_lasso=person_lasso,
+        moment_lasso=moment_lasso,
         person_name=kw.person_name,
         spark_num=kw.spark_num,
     )
@@ -509,10 +509,10 @@ def test_create_spark_all_lesson_path_HasDocString():
 
 def test_create_spark_expressed_lesson_path_HasDocString():
     # ESTABLISH
-    person_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     doc_str = create_spark_expressed_lesson_path(
         moment_mstr_dir="moment_mstr_dir",
-        person_lasso=person_lasso,
+        moment_lasso=moment_lasso,
         person_name=kw.person_name,
         spark_num=kw.spark_num,
     )

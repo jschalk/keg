@@ -35,46 +35,46 @@ from src.ch14_moment._ref.ch14_semantic_types import FundNum, PersonName, RopeTe
 from src.ch14_moment.moment_main import get_momentunit_from_dict
 
 
-def create_moment_persons_cell_trees(moment_mstr_dir, person_lasso: LassoUnit):
-    persons_dir = create_moment_persons_dir_path(moment_mstr_dir, person_lasso)
+def create_moment_persons_cell_trees(moment_mstr_dir, moment_lasso: LassoUnit):
+    persons_dir = create_moment_persons_dir_path(moment_mstr_dir, moment_lasso)
     for person_name in get_level1_dirs(persons_dir):
         person_dir = create_path(persons_dir, person_name)
         buds_dir = create_path(person_dir, "buds")
         for bud_time in get_level1_dirs(buds_dir):
-            create_cell_tree(moment_mstr_dir, person_lasso, person_name, bud_time)
+            create_cell_tree(moment_mstr_dir, moment_lasso, person_name, bud_time)
 
 
 def create_cell_tree(
-    moment_mstr_dir, person_lasso: LassoUnit, bud_person_name, bud_time
+    moment_mstr_dir, moment_lasso: LassoUnit, bud_person_name, bud_time
 ):
     root_cell_json_path = create_cell_json_path(
-        moment_mstr_dir, person_lasso, bud_person_name, bud_time
+        moment_mstr_dir, moment_lasso, bud_person_name, bud_time
     )
     if os_path_exists(root_cell_json_path):
         _exists_create_cell_tree(
-            moment_mstr_dir, person_lasso, bud_person_name, bud_time
+            moment_mstr_dir, moment_lasso, bud_person_name, bud_time
         )
 
 
 def _exists_create_cell_tree(
-    moment_mstr_dir, person_lasso: LassoUnit, bud_person_name, bud_time
+    moment_mstr_dir, moment_lasso: LassoUnit, bud_person_name, bud_time
 ):
     root_cell_dir = create_cell_dir_path(
-        moment_mstr_dir, person_lasso, bud_person_name, bud_time, []
+        moment_mstr_dir, moment_lasso, bud_person_name, bud_time, []
     )
     cells_to_evaluate = [cellunit_get_from_dir(root_cell_dir)]
-    person_sparks_sets = collect_person_spark_dir_sets(moment_mstr_dir, person_lasso)
+    person_sparks_sets = collect_person_spark_dir_sets(moment_mstr_dir, moment_lasso)
     while cells_to_evaluate != []:
         parent_cell = cells_to_evaluate.pop()
         cell_person_name = parent_cell.get_cell_person_name()
         e_int = parent_cell.spark_num
         personspark = get_personspark_obj(
-            moment_mstr_dir, person_lasso, cell_person_name, e_int
+            moment_mstr_dir, moment_lasso, cell_person_name, e_int
         )
         parent_cell.eval_personspark(personspark)
         parent_cell_dir = create_cell_dir_path(
             moment_mstr_dir,
-            person_lasso,
+            moment_lasso,
             bud_person_name,
             bud_time,
             parent_cell.ancestors,
@@ -103,8 +103,8 @@ def _exists_create_cell_tree(
                         cells_to_evaluate.append(child_cellunit)
 
 
-def load_cells_personspark(moment_mstr_dir: str, person_lasso: LassoUnit):
-    persons_dir = create_moment_persons_dir_path(moment_mstr_dir, person_lasso)
+def load_cells_personspark(moment_mstr_dir: str, moment_lasso: LassoUnit):
+    persons_dir = create_moment_persons_dir_path(moment_mstr_dir, moment_lasso)
     for person_name in get_level1_dirs(persons_dir):
         person_dir = create_path(persons_dir, person_name)
         buds_dir = create_path(person_dir, "buds")
@@ -112,22 +112,22 @@ def load_cells_personspark(moment_mstr_dir: str, person_lasso: LassoUnit):
             bud_time_dir = create_path(buds_dir, bud_time)
             for dirpath, dirnames, filenames in os_walk(bud_time_dir):
                 if CELLNODE_FILENAME in set(filenames):
-                    _load_cell_personspark(moment_mstr_dir, person_lasso, dirpath)
+                    _load_cell_personspark(moment_mstr_dir, moment_lasso, dirpath)
 
 
-def _load_cell_personspark(moment_mstr_dir, person_lasso: LassoUnit, dirpath):
+def _load_cell_personspark(moment_mstr_dir, moment_lasso: LassoUnit, dirpath):
     x_cellunit = cellunit_get_from_dir(dirpath)
     cell_person_name = x_cellunit.get_cell_person_name()
     spark_num = x_cellunit.spark_num
     personspark = get_personspark_obj(
-        moment_mstr_dir, person_lasso, cell_person_name, spark_num
+        moment_mstr_dir, moment_lasso, cell_person_name, spark_num
     )
     x_cellunit.eval_personspark(personspark)
     cellunit_save_to_dir(dirpath, x_cellunit)
 
 
-def set_cell_trees_found_facts(moment_mstr_dir: str, person_lasso: LassoUnit):
-    persons_dir = create_moment_persons_dir_path(moment_mstr_dir, person_lasso)
+def set_cell_trees_found_facts(moment_mstr_dir: str, moment_lasso: LassoUnit):
+    persons_dir = create_moment_persons_dir_path(moment_mstr_dir, moment_lasso)
     for person_name in get_level1_dirs(persons_dir):
         person_dir = create_path(persons_dir, person_name)
         buds_dir = create_path(person_dir, "buds")
@@ -162,15 +162,15 @@ def _set_cell_found_facts(bud_time_dir: str, cell_dirs: list[str]):
         cellunit_save_to_dir(dst_dir, dst_cell)
 
 
-def set_cell_trees_decrees(moment_mstr_dir: str, person_lasso: LassoUnit):
-    persons_dir = create_moment_persons_dir_path(moment_mstr_dir, person_lasso)
+def set_cell_trees_decrees(moment_mstr_dir: str, moment_lasso: LassoUnit):
+    persons_dir = create_moment_persons_dir_path(moment_mstr_dir, moment_lasso)
     for person_name in get_level1_dirs(persons_dir):
         person_dir = create_path(persons_dir, person_name)
         buds_dir = create_path(person_dir, "buds")
         for bud_time in get_level1_dirs(buds_dir):
             bud_time_dir = create_path(buds_dir, bud_time)
             set_cell_tree_decrees(
-                moment_mstr_dir, person_lasso, person_name, bud_time, bud_time_dir
+                moment_mstr_dir, moment_lasso, person_name, bud_time, bud_time_dir
             )
 
 
@@ -193,7 +193,7 @@ class DecreeUnit:
 
 def set_cell_tree_decrees(
     mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
     bud_time: TimeNum,
     bud_time_dir: str,
@@ -210,7 +210,7 @@ def set_cell_tree_decrees(
     # add nodes to to_evalute_cellnodes based on partner_agenda_fund_give persons
     root_cell = cellunit_get_from_dir(bud_time_dir)
     root_cell_dir = create_cell_dir_path(
-        mstr_dir, person_lasso, person_name, bud_time, []
+        mstr_dir, moment_lasso, person_name, bud_time, []
     )
     root_decree = DecreeUnit(
         parent_cell_dir=None,
@@ -227,7 +227,7 @@ def set_cell_tree_decrees(
         x_decree = to_evaluate_decreeunits.pop()
         if x_cell := cellunit_get_from_dir(
             x_decree.cell_dir
-        ) or generate_cell_from_decree(x_decree, mstr_dir, person_lasso, person_name):
+        ) or generate_cell_from_decree(x_decree, mstr_dir, moment_lasso, person_name):
             x_cell.mandate = x_decree.cell_mandate
             parent_cell_dir = x_decree.parent_cell_dir
             _set_cell_boss_facts(x_cell, parent_cell_dir, x_decree.root_cell_bool)
@@ -239,7 +239,7 @@ def set_cell_tree_decrees(
                     x_cell=x_cell,
                     x_decree=x_decree,
                     mstr_dir=mstr_dir,
-                    person_lasso=person_lasso,
+                    moment_lasso=moment_lasso,
                     person_name=person_name,
                     bud_time=bud_time,
                 )
@@ -250,14 +250,14 @@ def _add_child_decrees(
     x_cell: CellUnit,
     x_decree: DecreeUnit,
     mstr_dir,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: str,
     bud_time: int,
 ):
     for child_person_name, child_mandate in x_cell._partner_mandate_ledger.items():
         child_cell_ancestors = x_decree.get_child_cell_ancestors(child_person_name)
         child_dir = create_cell_dir_path(
-            mstr_dir, person_lasso, person_name, bud_time, child_cell_ancestors
+            mstr_dir, moment_lasso, person_name, bud_time, child_cell_ancestors
         )
         child_decreeunit = DecreeUnit(
             parent_cell_dir=x_decree.cell_dir,
@@ -282,18 +282,18 @@ def _set_cell_boss_facts(cell: CellUnit, parent_cell_dir: str, root_cell_bool: b
 def generate_cell_from_decree(
     x_decree: DecreeUnit,
     mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
 ) -> CellUnit:
     cell_person_name = x_decree.cell_person_name
     persons_downhill_sparks_ints = get_persons_downhill_spark_nums(
-        person_sparks_sets=collect_person_spark_dir_sets(mstr_dir, person_lasso),
+        person_sparks_sets=collect_person_spark_dir_sets(mstr_dir, moment_lasso),
         downhill_persons={cell_person_name},
         ref_spark_num=x_decree.spark_num,
     )
     if downhill_spark_num := persons_downhill_sparks_ints.get(cell_person_name):
         personspark_path = create_personspark_path(
-            mstr_dir, person_lasso, cell_person_name, downhill_spark_num
+            mstr_dir, moment_lasso, cell_person_name, downhill_spark_num
         )
         personspark = open_person_file(personspark_path)
         x_cell = cellunit_shop(
@@ -309,8 +309,8 @@ def generate_cell_from_decree(
         return x_cell
 
 
-def set_cell_tree_cell_mandates(moment_mstr_dir: str, person_lasso: LassoUnit):
-    persons_dir = create_moment_persons_dir_path(moment_mstr_dir, person_lasso)
+def set_cell_tree_cell_mandates(moment_mstr_dir: str, moment_lasso: LassoUnit):
+    persons_dir = create_moment_persons_dir_path(moment_mstr_dir, moment_lasso)
     for person_name in get_level1_dirs(persons_dir):
         person_dir = create_path(persons_dir, person_name)
         buds_dir = create_path(person_dir, "buds")
@@ -321,14 +321,14 @@ def set_cell_tree_cell_mandates(moment_mstr_dir: str, person_lasso: LassoUnit):
                     create_cell_partner_mandate_ledger_json(dirpath)
 
 
-def create_bud_mandate_ledgers(moment_mstr_dir: str, person_lasso: LassoUnit):
-    moment_json_path = create_moment_json_path(moment_mstr_dir, person_lasso)
+def create_bud_mandate_ledgers(moment_mstr_dir: str, moment_lasso: LassoUnit):
+    moment_json_path = create_moment_json_path(moment_mstr_dir, moment_lasso)
     momentunit = get_momentunit_from_dict(open_json(moment_json_path))
     for personbudhistory in momentunit.personbudhistorys.values():
         for budunit in personbudhistory.buds.values():
             bud_root_dir = create_bud_dir_path(
                 moment_mstr_dir,
-                person_lasso,
+                moment_lasso,
                 person_name=personbudhistory.person_name,
                 bud_time=budunit.bud_time,
             )

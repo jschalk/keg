@@ -109,8 +109,8 @@ def get_example_yao_speaker() -> PersonUnit:
 
 
 def get_texas_lessonfilehandler() -> LessonFileHandler:
-    person_lasso = lassounit_shop(ch10_example_moment_rope())
-    return lessonfilehandler_shop(get_temp_dir(), person_lasso, person_name="Sue")
+    moment_lasso = lassounit_shop(ch10_example_moment_rope())
+    return lessonfilehandler_shop(get_temp_dir(), moment_lasso, person_name="Sue")
 
 
 def get_dakota_rope() -> RopeTerm:
@@ -122,8 +122,8 @@ def get_dakota_rope() -> RopeTerm:
 
 
 def get_dakota_lessonfilehandler() -> LessonFileHandler:
-    person_lasso = lassounit_shop(ch10_example_moment_rope())
-    return lessonfilehandler_shop(get_temp_dir(), person_lasso, person_name="Sue")
+    moment_lasso = lassounit_shop(ch10_example_moment_rope())
+    return lessonfilehandler_shop(get_temp_dir(), moment_lasso, person_name="Sue")
 
 
 def get_fund_breakdown_person() -> PersonUnit:

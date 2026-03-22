@@ -40,7 +40,7 @@ def test_create_bud_partner_mandate_ledger_path_HasDocString():
     # ESTABLISH
     doc_str = create_bud_partner_mandate_ledger_path(
         moment_mstr_dir="moment_mstr_dir",
-        person_lasso=lassounit_shop(create_rope(kw.moment_rope)),
+        moment_lasso=lassounit_shop(create_rope(kw.moment_rope)),
         person_name=kw.person_name,
         bud_time=kw.bud_time,
     )

@@ -18,7 +18,7 @@ def test_LessonFileHandler_Exists():
 
     # THEN
     assert not x_lessonfilehandler.moment_mstr_dir
-    assert not x_lessonfilehandler.person_lasso
+    assert not x_lessonfilehandler.moment_lasso
     assert not x_lessonfilehandler.person_name
     assert not x_lessonfilehandler.fund_pool
     assert not x_lessonfilehandler.fund_grain
@@ -42,7 +42,7 @@ def test_lessonfilehandler_shop_ReturnsObj():
     # WHEN
     x_lessonfilehandler = lessonfilehandler_shop(
         moment_mstr_dir=x_moment_mstr_dir,
-        person_lasso=a45_lasso,
+        moment_lasso=a45_lasso,
         person_name=exx.sue,
         fund_pool=x_fund_pool,
         fund_grain=x_fund_grain,
@@ -52,7 +52,7 @@ def test_lessonfilehandler_shop_ReturnsObj():
 
     # THEN
     assert x_lessonfilehandler.moment_mstr_dir == x_moment_mstr_dir
-    assert x_lessonfilehandler.person_lasso == a45_lasso
+    assert x_lessonfilehandler.moment_lasso == a45_lasso
     assert x_lessonfilehandler.person_name == exx.sue
     assert x_lessonfilehandler.fund_pool == x_fund_pool
     assert x_lessonfilehandler.fund_grain == x_fund_grain
@@ -74,7 +74,7 @@ def test_lessonfilehandler_shop_ReturnsObjWhenEmpty():
 
     # THEN
     assert sue_lessonfilehandler.moment_mstr_dir == moment_mstr_dir
-    assert sue_lessonfilehandler.person_lasso == a23_lasso
+    assert sue_lessonfilehandler.moment_lasso == a23_lasso
     assert sue_lessonfilehandler.person_name == exx.sue
     assert sue_lessonfilehandler.fund_pool == validate_pool_num()
     assert sue_lessonfilehandler.fund_grain == default_grain_num_if_None()

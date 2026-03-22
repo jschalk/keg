@@ -234,11 +234,16 @@ def check_custom_exception_classes_style(all_classes: dict[str, str]):
             if not os_path_exists(file_path):
                 raise AssertionError("File does not exist")
             file_str = open_file(file_path)
-            exception_assert_fail_str = f"{x_count}. {x_class} {class_str}"
-            assert file_str.count(x_class) > 1, exception_assert_fail_str
-            assert "Exception" not in x_class, x_class
-            assert x_class.endswith("Error"), x_class
-            assert is_camel_case(x_class), x_class
+            exception_assert_fail_str = f"Exception #{x_count}: {x_class} {class_str}"
+            if file_str.count(x_class) < 2:
+                return False, exception_assert_fail_str
+            if "Exception" in x_class:
+                return False, f"{x_class} should not have Exception in it."
+            if not x_class.endswith("Error"):
+                return False, f"{x_class} does not end in 'Error'."
+            if not is_camel_case(x_class):
+                return False, f"{x_class} is not CamelCase."
+    return (True, "All Exception classes satisfy style requirements")
 
 
 def env_file_has_required_elements(env_filepath: str):

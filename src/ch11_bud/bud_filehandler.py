@@ -32,21 +32,21 @@ from src.ch11_bud.cell_main import CellUnit, cellunit_get_from_dict, cellunit_sh
 
 def get_personspark_obj(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
     spark_num: int,
 ) -> PersonUnit:
     personspark_json_path = create_personspark_path(
-        moment_mstr_dir, person_lasso, person_name, spark_num
+        moment_mstr_dir, moment_lasso, person_name, spark_num
     )
     return open_person_file(personspark_json_path)
 
 
 def collect_person_spark_dir_sets(
-    moment_mstr_dir: str, person_lasso: RopeTerm
+    moment_mstr_dir: str, moment_lasso: RopeTerm
 ) -> dict[PersonName, set[SparkInt]]:
     x_dict = {}
-    persons_dir = create_moment_persons_dir_path(moment_mstr_dir, person_lasso)
+    persons_dir = create_moment_persons_dir_path(moment_mstr_dir, moment_lasso)
     set_dir(persons_dir)
     for person_name in os_listdir(persons_dir):
         person_dir = create_path(persons_dir, person_name)
@@ -93,7 +93,7 @@ def _add_downhill_spark_num(
 
 def save_arbitrary_personspark(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: str,
     spark_num: int,
     partners: list[list] = None,
@@ -101,7 +101,7 @@ def save_arbitrary_personspark(
 ) -> str:
     partners = get_empty_list_if_None(partners)
     facts = get_empty_list_if_None(facts)
-    x_personunit = personunit_shop(person_name, person_lasso.moment_rope)
+    x_personunit = personunit_shop(person_name, moment_lasso.moment_rope)
     for partner_list in partners:
         try:
             partner_cred_lumen = partner_list[1]
@@ -117,7 +117,7 @@ def save_arbitrary_personspark(
             x_reason_context, x_fact_state, x_fact_lower, x_fact_upper, True
         )
     x_personspark_path = create_personspark_path(
-        moment_mstr_dir, person_lasso, person_name, spark_num
+        moment_mstr_dir, moment_lasso, person_name, spark_num
     )
     save_json(x_personspark_path, None, x_personunit.to_dict())
     return x_personspark_path
@@ -125,7 +125,7 @@ def save_arbitrary_personspark(
 
 def cellunit_add_json_file(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     time_person_name: str,
     bud_time: int,
     spark_num: int,
@@ -135,7 +135,7 @@ def cellunit_add_json_file(
     mana_grain: int = None,
 ):
     cell_dir = create_cell_dir_path(
-        moment_mstr_dir, person_lasso, time_person_name, bud_time, bud_ancestors
+        moment_mstr_dir, moment_lasso, time_person_name, bud_time, bud_ancestors
     )
     x_cell = cellunit_shop(
         time_person_name, bud_ancestors, spark_num, celldepth, mana_grain, quota
@@ -163,39 +163,39 @@ def create_cell_partner_mandate_ledger_json(dirpath: str):
 
 def save_bud_file(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
     x_bud: BudUnit = None,
 ):
     x_bud.calc_magnitude()
     bud_json_path = create_budunit_json_path(
-        moment_mstr_dir, person_lasso, person_name, x_bud.bud_time
+        moment_mstr_dir, moment_lasso, person_name, x_bud.bud_time
     )
     save_json(bud_json_path, None, x_bud.to_dict(), replace=True)
 
 
 def bud_file_exists(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
     x_bud_time: TimeNum = None,
 ) -> bool:
     bud_json_path = create_budunit_json_path(
-        moment_mstr_dir, person_lasso, person_name, x_bud_time
+        moment_mstr_dir, moment_lasso, person_name, x_bud_time
     )
     return os_path_exists(bud_json_path)
 
 
 def open_bud_file(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
     x_bud_time: TimeNum = None,
 ) -> BudUnit:
     bud_json_path = create_budunit_json_path(
-        moment_mstr_dir, person_lasso, person_name, x_bud_time
+        moment_mstr_dir, moment_lasso, person_name, x_bud_time
     )
-    if bud_file_exists(moment_mstr_dir, person_lasso, person_name, x_bud_time):
+    if bud_file_exists(moment_mstr_dir, moment_lasso, person_name, x_bud_time):
         return get_budunit_from_dict(open_json(bud_json_path))
 
 
@@ -224,32 +224,32 @@ def save_persontime_file(
 
 def persontime_file_exists(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
     x_bud_time: TimeNum = None,
 ) -> bool:
     persontime_json_path = create_persontime_path(
-        moment_mstr_dir, person_lasso, person_name, x_bud_time
+        moment_mstr_dir, moment_lasso, person_name, x_bud_time
     )
     return os_path_exists(persontime_json_path)
 
 
 def open_persontime_file(
     moment_mstr_dir: str,
-    person_lasso: LassoUnit,
+    moment_lasso: LassoUnit,
     person_name: PersonName,
     x_bud_time: TimeNum = None,
 ) -> bool:
     persontime_json_path = create_persontime_path(
-        moment_mstr_dir, person_lasso, person_name, x_bud_time
+        moment_mstr_dir, moment_lasso, person_name, x_bud_time
     )
     # if self.persontime_file_exists(x_bud_time):
     return open_person_file(persontime_json_path)
 
 
 def get_timenum_dirs(
-    moment_mstr_dir: str, person_lasso: LassoUnit, person_name: PersonName
+    moment_mstr_dir: str, moment_lasso: LassoUnit, person_name: PersonName
 ) -> list[TimeNum]:
-    buds_dir = create_buds_dir_path(moment_mstr_dir, person_lasso, person_name)
+    buds_dir = create_buds_dir_path(moment_mstr_dir, moment_lasso, person_name)
     x_dict = get_dir_file_strs(buds_dir, include_dirs=True, include_files=False)
     return [int(x_timenum) for x_timenum in sorted(list(x_dict.keys()))]

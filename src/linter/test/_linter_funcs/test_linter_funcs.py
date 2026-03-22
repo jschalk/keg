@@ -15,6 +15,7 @@ def test_filename_style_is_correct_ReturnsObj():
     assert not filename_style_is_correct("get_labels.py")
     assert filename_style_is_correct("get_labels.md")
     assert filename_style_is_correct("get_labelN.md")
+    assert not filename_style_is_correct("fidels_MOM_IS_WHAT.py")
 
 
 def test_filenames_style_arg_correct_ReturnsObj():
