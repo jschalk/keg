@@ -150,15 +150,11 @@ def check_if_function_name_repeats(
     excluded_functions: dict,
     file_path: str,
     duplicate_func_names: set,
-    x_count: int,
 ):
     for function_name in file_functions:
         add_or_count_function_name_occurance(all_functions, function_name)
-        x_count += 1
         if function_name in non_excluded_functions:
-            print(
-                f"Function #{x_count}: Duplicate function {function_name} in {file_path}"
-            )
+            print(f"Duplicate function {function_name} in {file_path}")
             duplicate_func_names.add(function_name)
         if function_name not in excluded_functions:
             non_excluded_functions.add(function_name)
@@ -175,7 +171,6 @@ class ChaptersObjMetrics:
 
 def get_chapters_obj_metrics(excluded_functions) -> ChaptersObjMetrics:
     """Reads every python file to track all functions and classes."""
-    x_count = 0
     duplicate_func_names = set()
     non_excluded_functions = set()
     all_functions = {}
@@ -204,7 +199,6 @@ def get_chapters_obj_metrics(excluded_functions) -> ChaptersObjMetrics:
                 excluded_functions,
                 file_path,
                 duplicate_func_names,
-                x_count,
             )
 
     print(f"{duplicate_func_names=}")

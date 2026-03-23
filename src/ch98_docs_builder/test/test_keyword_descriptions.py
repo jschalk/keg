@@ -5,6 +5,7 @@ from src.ch13_time.epoch_main import get_c400_constants, get_default_epoch_confi
 from src.ch14_moment.moment_config import get_moment_config_args
 from src.ch15_nabu.nabu_config import get_nabu_args, get_nabuable_args
 from src.ch16_translate.translate_config import get_translate_config_args
+from src.ch18_etl_config.etl_config import get_etl_stage_types_config_dict
 from src.ch19_etl_main.etl_main import etl_heard_raw_tables_to_moment_ote1_agg
 from src.ch98_docs_builder._ref.ch98_semantic_types import (
     BreakTerm,
@@ -172,6 +173,23 @@ def test_get_keywords_description_ReturnsObj_CheckDescriptions():
             "Used so often in Python that it cannot be given any kegolgy meaning."
         )
         assert py_used_often_str in py_key_description, python_keyword
+
+    stage_types_config = get_etl_stage_types_config_dict()
+    for stage_type_abbv5, type_dict in stage_types_config.items():
+        abbv5_keyword_description = keywords_description.get(stage_type_abbv5)
+        abbv9_str = type_dict.get("abbv9")
+        type_description_str = type_dict.get("description")
+        stage_type_order = type_dict.get("stage_type_order")
+        expected_abbv5_description = f"5 character abbreviation of {abbv9_str}. {stage_type_order=} {type_description_str}"
+        abbv5_fail_str = expected_abbv5_description
+        print(f"{stage_type_abbv5=}")
+        assert expected_abbv5_description == abbv5_keyword_description, abbv5_fail_str
+
+        print(f"{abbv9_str=}")
+        expected_abbv9_description = f"{stage_type_order=} {type_description_str}"
+        gen_abbv9_description = keywords_description.get(abbv9_str)
+        abbv9_fail_str = expected_abbv9_description
+        assert expected_abbv9_description == gen_abbv9_description, abbv9_fail_str
 
 
 def get_all_semantic_types_with_doc_strs() -> dict[str, str]:

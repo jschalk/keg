@@ -8,13 +8,14 @@ from src.ch18_etl_config.etl_config import (
     create_prime_tablename,
     etl_idea_category_config_dict,
     etl_idea_category_config_path,
-    etl_stage_types_config_dict,
     etl_stage_types_config_path,
     get_all_dimen_columns_set,
     get_del_dimen_columns_set,
     get_dimen_abbv2,
     get_dimen_abbv7,
     get_etl_category_stages_dict,
+    get_etl_stage_types_config_dict,
+    get_ordered_stage_types,
     get_prime_columns,
     get_stage_abbv5,
     get_stages_order_general,
@@ -211,9 +212,9 @@ def test_etl_stage_types_config_path_ReturnsObj():
     )
 
 
-def test_etl_stage_types_config_dict_ReturnsObj_Scenario0_IsFullyPopulated():
+def test_get_etl_stage_types_config_dict_ReturnsObj_Scenario0_IsFullyPopulated():
     # ESTABLISH / WHEN
-    etl_stage_types_config = etl_stage_types_config_dict()
+    etl_stage_types_config = get_etl_stage_types_config_dict()
 
     # THEN
     assert etl_stage_types_config
@@ -240,9 +241,13 @@ def test_etl_stage_types_config_dict_ReturnsObj_Scenario0_IsFullyPopulated():
         kw.brick_raw,
         kw.brick_valid,
     }
+    track_stage_type_orders = {}
     for stage_type, stage_type_dict in etl_stage_types_config.items():
         type_dict_keys = set(stage_type_dict.keys())
         assert "description" in type_dict_keys
+        description_str = stage_type_dict.get("description")
+        assert description_str, stage_type
+
         assert "abbv9" in type_dict_keys
         assert "stage_type_order" in type_dict_keys
         abbv9_str = stage_type_dict.get("abbv9")
@@ -250,8 +255,30 @@ def test_etl_stage_types_config_dict_ReturnsObj_Scenario0_IsFullyPopulated():
         assert abbv9_str in expected_abbv9_stage_types
         assert abbv9_str[5:6] == "_"
         assert general_order_int > 0, stage_type
-
+        track_stage_type_orders[general_order_int] = stage_type
         print(f"{stage_type=} {type_dict_keys=}")
+
+    assert len(track_stage_type_orders) == len(etl_stage_types_config)
+
+
+def test_get_ordered_stage_types_ReturnsObj():
+    # ESTABLISH / WHEN
+    ordered_stage_types = get_ordered_stage_types()
+    # THEN
+    assert ordered_stage_types
+    print(ordered_stage_types)
+    expected_ordered_stage_types = [
+        "b_raw",
+        "b_agg",
+        "b_vld",
+        "s_raw",
+        "s_agg",
+        "s_vld",
+        "h_raw",
+        "h_agg",
+        "h_vld",
+    ]
+    assert ordered_stage_types == expected_ordered_stage_types
 
 
 def test_etl_idea_category_config_path_ReturnsObj():
@@ -277,7 +304,7 @@ def test_get_etl_idea_category_config_dict_ReturnsObj_Scenario0_IsFullyPopulated
     assert kw.nabu in etl_idea_category_config_dimens
     assert len(etl_idea_category_config_dimens) == 5
 
-    etl_stage_types = set(etl_stage_types_config_dict().keys())
+    etl_stage_types = set(get_etl_stage_types_config_dict().keys())
     for idea_category, cat_dict in etl_idea_category_config.items():
         for stage_type, stage_dict in cat_dict.get("stages").items():
             assert stage_type in etl_stage_types

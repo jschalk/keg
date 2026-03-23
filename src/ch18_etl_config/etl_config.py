@@ -181,9 +181,18 @@ def etl_stage_types_config_path() -> str:
     return create_path(chapter_dir, "etl_stage_types_config.json")
 
 
-def etl_stage_types_config_dict() -> dict:
+def get_etl_stage_types_config_dict() -> dict:
     """Config data for etl dimenensions (translate, moment, person...) including required columns per stage"""
     return open_json(etl_stage_types_config_path())
+
+
+def get_ordered_stage_types() -> list[str]:
+    order_dict = {}
+    for stage_type, type_dict in get_etl_stage_types_config_dict().items():
+        general_order_int = type_dict.get("stage_type_order")
+        order_dict[general_order_int] = stage_type
+
+    return [order_dict[key] for key in sorted(order_dict)]
 
 
 def etl_idea_category_config_path() -> str:

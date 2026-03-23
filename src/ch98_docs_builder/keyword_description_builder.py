@@ -5,6 +5,7 @@ from src.ch07_person_logic.person_config import (
     get_person_calc_dimen_args,
     get_person_config_dict,
 )
+from src.ch18_etl_config.etl_config import get_etl_stage_types_config_dict
 from src.ch98_docs_builder._ref.ch98_path import (
     create_chapter_ref_path,
     create_src_keywords_description_path,

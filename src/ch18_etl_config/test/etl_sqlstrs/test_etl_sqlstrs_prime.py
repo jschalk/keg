@@ -20,6 +20,7 @@ from src.ch18_etl_config.etl_config import (
     create_prime_table_sqlstr,
     get_dimen_abbv7,
     get_etl_category_stages_dict,
+    get_etl_stage_types_config_dict,
 )
 from src.ch18_etl_config.etl_sqlstr import (
     create_insert_into_translate_core_raw_sqlstr,
@@ -119,12 +120,15 @@ def add_dimen_to_agg_variables(
     abbv7 = get_dimen_abbv7(x_dimen)
     tablename = prime_tbl(abbv7, stage_type, x_put_del)
     table_sql = create_prime_table_sqlstr(x_dimen, stage_type, x_put_del)
+    stage_types_config = get_etl_stage_types_config_dict()
 
     if x_put_del:
-        if stage_type.startswith("h"):
-            stage_type = stage_type.replace("h", "HEARD")
-        elif stage_type.startswith("s"):
-            stage_type = stage_type.replace("s", "SOUND")
+        abbv5_stages = set(stage_types_config.keys())
+        for abbv5_stage in abbv5_stages:
+            if stage_type.startswith(abbv5_stage):
+                abbv5_dict = stage_types_config.get(abbv5_stage)
+                abbv9_stage = abbv5_dict.get("abbv9")
+                stage_type = stage_type.replace(abbv5_stage, abbv9_stage)
 
     if x_put_del == "put":
         global_variable_ref = f"CREATE_{abbv7.upper()}_PUT_{stage_type.upper()}_SQLSTR"
