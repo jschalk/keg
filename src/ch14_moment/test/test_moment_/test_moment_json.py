@@ -1,4 +1,5 @@
 from os.path import exists as os_path_exists
+from pytest import raises as pytest_raises
 from src.ch00_py.file_toolbox import create_path, save_json
 from src.ch01_allot.allot import default_grain_num_if_None
 from src.ch04_rope.rope import create_rope, default_knot_if_None
@@ -254,7 +255,7 @@ def test_open_moment_file_ReturnsObj_MomentUnit(temp_dir_setup):
     assert generated_a45_moment.moment_dir == expected_a45_moment_dir
 
 
-def test_save_moment_file_ReturnsObj_MomentUnit(temp_dir_setup):
+def test_save_moment_file_ReturnsObj_Scenario0_MomentUnit(temp_dir_setup):
     # ESTABLISH
     x_moment_mstr_dir = create_path(get_temp_dir(), "Fay_bob")
     amy45_str = "Amy"
@@ -272,3 +273,18 @@ def test_save_moment_file_ReturnsObj_MomentUnit(temp_dir_setup):
     # THEN
     assert os_path_exists(amy45_json_path)
     assert open_moment_file(x_moment_mstr_dir, amy45_lasso) == amy45_moment
+
+
+def test_save_moment_file_RaisesException_WhenMomentUnitMomentMstrDirIsNone(
+    temp_dir_setup,
+):
+    # ESTABLISH
+    amy45_str = "Amy"
+    amy45_rope = create_rope(amy45_str)
+    amy45_moment = momentunit_shop(amy45_rope, None)
+    amy45_lasso = lassounit_shop(amy45_rope)
+
+    # WHEN / THEN
+    with pytest_raises(Exception) as excinfo:
+        save_moment_file(amy45_moment, amy45_lasso)
+    assert str(excinfo.value) == "moment_mstr_dir is None"

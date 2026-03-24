@@ -479,7 +479,13 @@ def open_moment_file(moment_mstr_dir: str, moment_lasso: LassoUnit) -> MomentUni
     return x_momentunit
 
 
+class MomentUnitDirIsMissingError(Exception):
+    pass
+
+
 def save_moment_file(momentunit: MomentUnit, moment_lasso: LassoUnit):
     moment_mstr_dir = momentunit.moment_mstr_dir
+    if not moment_mstr_dir:
+        raise MomentUnitDirIsMissingError("moment_mstr_dir is None")
     moment_json_path = create_moment_json_path(moment_mstr_dir, moment_lasso)
     save_json(moment_json_path, None, momentunit.to_dict())
