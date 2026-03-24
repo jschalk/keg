@@ -5,7 +5,10 @@ from src.ch00_py.file_toolbox import (
     get_level1_dirs,
     save_json,
 )
-from src.ch09_person_lesson._ref.ch09_path import create_moment_json_path
+from src.ch09_person_lesson._ref.ch09_path import (
+    create_moment_json_path,
+    create_moments_dir_path,
+)
 from src.ch09_person_lesson.lasso import lassounit_shop
 from src.ch13_time.epoch_main import epochunit_shop
 from src.ch13_time.test._util.ch13_examples import (
@@ -49,7 +52,7 @@ def test_create_calendar_markdown_files_Senario1_CreatesFileFromMomentUnitJSON(
     save_json(a23_moment_path, None, a23_momentunit.to_dict())
     a23_calendar_md_path = create_path(output_dir, "Amy23_calendar.md")
     print(f"{a23_calendar_md_path=}")
-    moments_dir = create_path(moment_mstr_dir, "moments")
+    moments_dir = create_moments_dir_path(moment_mstr_dir)
     print(f"{get_level1_dirs(moments_dir)=}")
     assert not os_path_exists(a23_calendar_md_path)
 

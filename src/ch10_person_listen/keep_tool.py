@@ -46,6 +46,8 @@ def save_job_file(moment_mstr_dir: str, personunit: PersonUnit):
 def open_job_file(
     moment_mstr_dir: str, moment_lasso: LassoUnit, person_name: PersonName
 ) -> PersonUnit:
+    """moment_mstr_dir\\moments\\moment_rope\\persons\\person_name\\job\\person_name.json"""
+    # TODO create test that doc string copies create_job_path doc string
     job_path = create_job_path(moment_mstr_dir, moment_lasso, person_name)
     return open_person_file(job_path)
 

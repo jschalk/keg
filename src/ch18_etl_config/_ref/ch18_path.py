@@ -1,4 +1,5 @@
 from src.ch00_py.file_toolbox import create_path
+from src.ch09_person_lesson._ref.ch09_path import create_moments_dir_path
 from src.ch09_person_lesson.lasso import LassoUnit
 from src.ch18_etl_config._ref.ch18_semantic_types import PersonName
 
@@ -10,14 +11,14 @@ def create_moment_mstr_path(world_dir: str) -> str:
 
 def create_moment_ote1_csv_path(moment_mstr_dir: str, moment_lasso: LassoUnit) -> str:
     """Returns path: moment_mstr_dir\\moments\\moment_rope\\moment_ote1_agg.csv"""
-    moments_dir = create_path(moment_mstr_dir, "moments")
+    moments_dir = create_moments_dir_path(moment_mstr_dir)
     moment_path = create_path(moments_dir, moment_lasso.make_path())
     return create_path(moment_path, "moment_ote1_agg.csv")
 
 
 def create_moment_ote1_json_path(moment_mstr_dir: str, moment_lasso: LassoUnit) -> str:
     """Returns path: moment_mstr_dir\\moments\\moment_rope\\moment_ote1_agg.json"""
-    moments_dir = create_path(moment_mstr_dir, "moments")
+    moments_dir = create_moments_dir_path(moment_mstr_dir)
     moment_path = create_path(moments_dir, moment_lasso.make_path())
     return create_path(moment_path, "moment_ote1_agg.json")
 
