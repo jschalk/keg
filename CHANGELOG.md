@@ -1,3 +1,10 @@
+## [0.81.106](https://github.com/jschalk/keg/compare/v0.81.105...v0.81.106) (2026-03-24)
+
+
+### Bug Fixes
+
+* [#1097](https://github.com/jschalk/keg/issues/1097), get_gcal note from job json works [#1069](https://github.com/jschalk/keg/issues/1069) ([5992a8b](https://github.com/jschalk/keg/commit/5992a8b25c964f77e74cc2c9546eacf435c6181e))
+
 ## [0.81.105](https://github.com/jschalk/keg/compare/v0.81.104...v0.81.105) (2026-03-17)
 
 
