@@ -1,17 +1,21 @@
 {
   "translate_label": {
+    "description": "'translate_label' is a translation dimen where otx_label is translated by inx_knot, inx_label, otx_knot, unknown_str", 
     "jkeys": {"otx_label": {}}, 
     "jvalues": {"inx_knot": {}, "inx_label": {}, "otx_knot": {}, "unknown_str": {}}
   }, 
   "translate_name": {
+    "description": "'translate_name' is a translation dimen where otx_name is translated by inx_knot, inx_name, otx_knot, unknown_str", 
     "jkeys": {"otx_name": {}}, 
     "jvalues": {"inx_knot": {}, "inx_name": {}, "otx_knot": {}, "unknown_str": {}}
   }, 
   "translate_rope": {
+    "description": "'translate_rope' is a translation dimen where otx_rope is translated by inx_knot, inx_rope, otx_knot, unknown_str", 
     "jkeys": {"otx_rope": {}}, 
     "jvalues": {"inx_knot": {}, "inx_rope": {}, "otx_knot": {}, "unknown_str": {}}
   }, 
   "translate_title": {
+    "description": "'translate_title' is a translation dimen where otx_title is translated by inx_knot, inx_title, otx_knot, unknown_str", 
     "jkeys": {"otx_title": {}}, 
     "jvalues": {"inx_knot": {}, "inx_title": {}, "otx_knot": {}, "unknown_str": {}}
   }

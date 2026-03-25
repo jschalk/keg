@@ -7,7 +7,6 @@ from src.ch16_translate.test._util.ch16_examples import (  # get_casa_maison_tra
     get_casa_maison_translateunit_set_by_otx2inx,
     get_slash_namemap,
     get_sue_translateunit,
-    get_translate_core_attrs_are_none_namemap,
 )
 from src.ch16_translate.translate_main import translateunit_shop
 from src.ch17_idea.idea_db_tool import (

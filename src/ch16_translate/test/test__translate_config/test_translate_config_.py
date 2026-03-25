@@ -63,24 +63,33 @@ def _validate_translate_config(translate_config: dict):
     }
 
     # for every translate_format file there exists a unique translate_number with leading zeros to make 5 digits
-    for translate_dimens, dimen_dict in translate_config.items():
-        print(f"_validate_translate_config {translate_dimens=}")
+    for translate_dimen, dimen_dict in translate_config.items():
+        # print(f"_validate_translate_config {translate_dimen=}")
         assert dimen_dict.get(kw.jkeys)
         assert dimen_dict.get(kw.jvalues)
+        assert dimen_dict.get("description")
         assert dimen_dict.get(kw.UPDATE) is None
         assert dimen_dict.get(kw.INSERT) is None
         assert dimen_dict.get(kw.DELETE) is None
         assert dimen_dict.get(kw.normal_specs) is None
-        assert len(dimen_dict) == 2
+        assert len(dimen_dict) == 3
 
         translate_jkeys_keys = set(dimen_dict.get(kw.jkeys).keys())
+        expected_description_str = f"'{translate_dimen}' is a translation dimen where"
         for jkey_key in translate_jkeys_keys:
-            print(f"_validate_translate_config {translate_dimens=} {jkey_key=} ")
+            # print(f"_validate_translate_config {translate_dimen=} {jkey_key=} ")
+            expected_description_str += f" {jkey_key}"
             assert jkey_key in x_possible_args
-        translate_jvalues_keys = set(dimen_dict.get(kw.jvalues).keys())
+        expected_description_str += " is translated by"
+        translate_jvalues_keys = sorted(list(dimen_dict.get(kw.jvalues).keys()))
         for jvalue_key in translate_jvalues_keys:
-            print(f"_validate_translate_config {translate_dimens=} {jvalue_key=} ")
+            # print(f"_validate_translate_config {translate_dimen=} {jvalue_key=} ")
+            expected_description_str += f" {jvalue_key},"
             assert jvalue_key in x_possible_args
+
+        expected_description_str = expected_description_str[:-1]
+        print(expected_description_str)
+        assert dimen_dict.get("description") == expected_description_str
 
 
 def test_get_translate_dimens_ReturnsObj():

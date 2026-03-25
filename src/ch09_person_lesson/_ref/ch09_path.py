@@ -5,15 +5,20 @@ from src.ch09_person_lesson.lasso import LassoUnit
 MOMENT_FILENAME = "moment.json"
 
 
+def create_moments_dir_path(moment_mstr_dir: str) -> str:
+    """Returns path: moment_mstr_dir\\moments"""
+    return create_path(moment_mstr_dir, "moments")
+
+
 def create_moment_dir_path(moment_mstr_dir: str, moment_lasso: LassoUnit) -> str:
     """Returns path: moment_mstr_dir\\moments\\moment_rope"""
-    moments_dir = create_path(moment_mstr_dir, "moments")
+    moments_dir = create_moments_dir_path(moment_mstr_dir)
     return create_path(moments_dir, moment_lasso.make_path())
 
 
 def create_moment_json_path(moment_mstr_dir: str, moment_lasso: LassoUnit) -> str:
     """Returns path: moment_mstr_dir\\moments\\moment_rope\\moment.json"""
-    moments_dir = create_path(moment_mstr_dir, "moments")
+    moments_dir = create_moments_dir_path(moment_mstr_dir)
     moment_path = create_path(moments_dir, moment_lasso.make_path())
     return create_path(moment_path, "moment.json")
 
@@ -22,7 +27,7 @@ def create_moment_persons_dir_path(
     moment_mstr_dir: str, moment_lasso: LassoUnit
 ) -> str:
     """Returns path: moment_mstr_dir\\moments\\moment_rope\\persons"""
-    moments_dir = create_path(moment_mstr_dir, "moments")
+    moments_dir = create_moments_dir_path(moment_mstr_dir)
     moment_dir = create_path(moments_dir, moment_lasso.make_path())
     return create_path(moment_dir, "persons")
 

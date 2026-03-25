@@ -2,6 +2,7 @@ from sqlite3 import Cursor as sqlite3_Cursor, connect as sqlite3_connect
 from src.ch00_py.db_toolbox import get_db_tables
 from src.ch00_py.file_toolbox import create_path, get_level1_dirs, save_file, set_dir
 from src.ch04_rope.rope import create_rope
+from src.ch09_person_lesson._ref.ch09_path import create_moments_dir_path
 from src.ch09_person_lesson.lasso import lassounit_shop
 from src.ch13_time.calendar_markdown import get_calendarmarkdown_str
 from src.ch14_moment.moment_frame import get_moment_epochholder
@@ -75,7 +76,7 @@ def create_kpi_csvs(db_path: str, dst_dir: str):
 
 def create_calendar_markdown_files(moment_mstr_dir: str, output_dir: str):
     set_dir(output_dir)
-    moments_dir = create_path(moment_mstr_dir, "moments")
+    moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):
         moment_calendar_md_path = create_path(output_dir, f"{moment_label}_calendar.md")
         moment_lasso = lassounit_shop(create_rope(moment_label))

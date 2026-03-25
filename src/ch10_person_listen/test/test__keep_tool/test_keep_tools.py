@@ -1,7 +1,9 @@
+from inspect import getdoc as inspect_getdoc
 from os.path import exists as os_path_exists
 from src.ch00_py.file_toolbox import delete_dir, open_file, save_file
 from src.ch04_rope.rope import create_rope
 from src.ch07_person_logic.test._util.ch07_examples import get_personunit_with_4_levels
+from src.ch09_person_lesson._ref.ch09_path import create_job_path
 from src.ch10_person_listen._ref.ch10_path import (
     create_keep_duty_path,
     create_keep_rope_path,
@@ -11,6 +13,7 @@ from src.ch10_person_listen.keep_tool import (
     create_keep_path_dir_if_missing,
     create_treasury_db_file,
     get_duty_person,
+    open_job_file,
     save_duty_person,
     treasury_db_file_exists,
 )
@@ -217,3 +220,10 @@ def test_get_duty_person_reason_lowersFile(temp_dir_setup):
 
     # THEN
     assert gen_bob_duty.to_dict() == bob_person.to_dict()
+
+
+def test_open_job_file_HasDocString():
+    # ESTABLISH
+    create_job_path_doc_str = inspect_getdoc(create_job_path)
+    # WHEN / THEN
+    assert inspect_getdoc(open_job_file) in create_job_path_doc_str

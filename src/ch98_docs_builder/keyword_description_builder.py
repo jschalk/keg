@@ -45,9 +45,9 @@ def rebuild_keywords_description_contents():
             if keyword_config.get("calc_by_conpute"):
                 # rebuilt_kw_desc[keyword] = f"Person conpute"
                 pass
-            else:
-                # rebuilt_kw_desc[keyword] = f"Set by seed part of the Person bluep"
-                pass
+            # else:
+            #     # rebuilt_kw_desc[keyword] = f"Set by seed part of the Person bluep"
+            #     pass
         # if keyword in plan_config_args:
         #     keyword_config = plan_config_args.get(keyword)
         #     if keyword_config.get("calc_by_conpute"):

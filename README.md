@@ -20,7 +20,7 @@ So how do I listen? keg has an engine for converting the declarations (as data) 
 # 0.0.1 "Moments" The foundation of keg
 For Levinas all of reality is born from the face to face encounter. The same (me) welcomes the Other through the Face. The Face of the other tells me it's suffering and it's suffering becomes me. I then MOMENT to change who I am to ease that suffering. The suffering is infinitely deep and beyond my complete understanding so when I moment to respond to that suffering I am acting with confidence that I understand what the suffering is and that I know how to respond. That confidence stops the listening process, the Moment cuts the infinite into the finite and is the foundation for a world. When that Moment is created it can create a world. Worlds can hold a infinite amount of human experience. A small subset of that is logical systems. keg is uses programming to build that logic.
 
-A Moment can create a world or change a current world. Each person can only make one moment at a time so a world that has been built by multiple moments implies each moment is from a different time. Keg indexs time by *spark_nums* with the assumption that *spark_num* is always an integer. A disrete undividible unit of time. 
+A Moment can create a world or change a current world. Each person can only make one moment at a time so a world that has been built by multiple moments implies each moment is from a different time. Keg indexs time by *spark_nums* with the assumption that *spark_num* is always an integer. A discrete indivisible unit of time. 
 
 For keg all data must have *spark_num*, *face_name*, and a rope, either *moment_rope* or *plan_rope*. These are the required keys.
 

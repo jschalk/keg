@@ -4,6 +4,7 @@ from src.ch00_py.file_toolbox import (
     get_json_filename,
 )
 from src.ch04_rope.rope import get_all_rope_labels, rebuild_rope
+from src.ch09_person_lesson._ref.ch09_path import create_moments_dir_path
 from src.ch10_person_listen._ref.ch10_semantic_types import (
     KnotTerm,
     MomentRope,
@@ -21,7 +22,7 @@ def create_keeps_dir_path(
 ) -> str:
     """Returns path: moment_mstr_dir\\moments\\moment_rope\\persons\\person_name\\keeps"""
     moment_labels = get_all_rope_labels(moment_rope)
-    moments_dir = create_path(moment_mstr_dir, "moments")
+    moments_dir = create_moments_dir_path(moment_mstr_dir)
     moment_dir = create_path(moments_dir, moment_labels[0])
     persons_dir = create_path(moment_dir, "persons")
     person_dir = create_path(persons_dir, person_name)

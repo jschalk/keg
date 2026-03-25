@@ -60,13 +60,19 @@ def test_get_person_config_dict_ReturnsObj_CheckLevel1Keys():
 
     # THEN
     # sourcery skip: no-loop-in-tests
-    for level1_key, attribute_dict in person_config.items():
+    for person_dimen, attribute_dict in person_config.items():
         attribute_keys = set(attribute_dict.keys())
-        print(f"{level1_key=} {attribute_keys=}")
+        # print(f"{person_dimen=} {attribute_keys=}")
         assert "abbreviation" in attribute_keys
+        assert "description" in attribute_keys
         assert kw.jkeys in attribute_keys
         assert kw.jvalues in attribute_keys
-        assert len(attribute_keys) == 3
+        assert len(attribute_keys) == 4
+        dimen_description = attribute_dict.get("description")
+        print(f"{dimen_description=}")
+        assert "A person dimen representing" in dimen_description
+        for jkey in attribute_dict.get(kw.jkeys):
+            assert jkey in dimen_description
 
 
 def test_get_person_config_dict_ReturnsObj_Check_calc_by_conpute():
@@ -76,9 +82,10 @@ def test_get_person_config_dict_ReturnsObj_Check_calc_by_conpute():
     # THEN
     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
     abbr_str = "abbreviation"
+    description_str = "description"
     for level1_key, attribute_dict in person_config.items():
         for level2_key, fm_attribute_dict in attribute_dict.items():
-            if level2_key != abbr_str:
+            if level2_key not in {abbr_str, description_str}:
                 for fm_attr_key, fm_attr_value in fm_attribute_dict.items():
                     calc_by_conpute_value = fm_attr_value.get("calc_by_conpute")
                     assertion_fail_str = (

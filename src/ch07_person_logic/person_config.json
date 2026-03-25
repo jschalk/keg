@@ -1,6 +1,7 @@
 {
   "person_groupunit": {
     "abbreviation": "prngrou", 
+    "description": "A person dimen representing GroupUnit data. Keys: person_name, group_title. person conpute.", 
     "jkeys": {
       "group_title": {"calc_by_conpute": true, "class_type": "TitleTerm", "sqlite_datatype": "TEXT"}, 
       "person_name": {"calc_by_conpute": true, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}
@@ -17,6 +18,7 @@
   }, 
   "person_partner_membership": {
     "abbreviation": "prnmemb", 
+    "description": "A person dimen representing Membership data. Keys: person_name, partner_name, group_title. person seed.", 
     "jkeys": {
       "group_title": {"calc_by_conpute": false, "class_type": "TitleTerm", "sqlite_datatype": "TEXT"}, 
       "partner_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
@@ -37,6 +39,7 @@
   }, 
   "person_partnerunit": {
     "abbreviation": "prnptnr", 
+    "description": "A person dimen representing ParterUnit data. Keys: person_name, partner_name. person seed.", 
     "jkeys": {
       "partner_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
       "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}
@@ -59,6 +62,7 @@
   }, 
   "person_plan_awardunit": {
     "abbreviation": "prnawar", 
+    "description": "A person dimen representing AwardUnit data. Keys: person_name, plan_rope, awardee_title. person seed.", 
     "jkeys": {
       "awardee_title": {"calc_by_conpute": false, "class_type": "TitleTerm", "sqlite_datatype": "TEXT"}, 
       "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
@@ -74,6 +78,7 @@
   }, 
   "person_plan_factunit": {
     "abbreviation": "prnfact", 
+    "description": "A person dimen representing FactUnit data. Keys: person_name, plan_rope, fact_context. person seed.", 
     "jkeys": {
       "fact_context": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}, 
       "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
@@ -88,6 +93,7 @@
   }, 
   "person_plan_healerunit": {
     "abbreviation": "prnheal", 
+    "description": "A person dimen representing HealerUnit data. Keys: person_name, plan_rope, healer_name. person seed.", 
     "jkeys": {
       "healer_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
       "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
@@ -99,6 +105,7 @@
   }, 
   "person_plan_partyunit": {
     "abbreviation": "prnlabo", 
+    "description": "A person dimen representing HealerUnit data. Keys: person_name, plan_rope, party_title. person seed.", 
     "jkeys": {
       "party_title": {"calc_by_conpute": false, "class_type": "TitleTerm", "sqlite_datatype": "TEXT"}, 
       "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
@@ -112,6 +119,7 @@
   }, 
   "person_plan_reason_caseunit": {
     "abbreviation": "prncase", 
+    "description": "A person dimen representing CaseUnit data. Keys: person_name, plan_rope, reason_context, reason_state. person seed.", 
     "jkeys": {
       "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
       "plan_rope": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}, 
@@ -129,6 +137,7 @@
   }, 
   "person_plan_reasonunit": {
     "abbreviation": "prnreas", 
+    "description": "A person dimen representing ReasonUnit data. Keys: person_name, plan_rope, reason_context. person seed.", 
     "jkeys": {
       "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
       "plan_rope": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}, 
@@ -144,6 +153,7 @@
   }, 
   "person_planunit": {
     "abbreviation": "prnplan", 
+    "description": "A person dimen representing PlanUnit data. Keys: person_name, plan_rope. person seed.", 
     "jkeys": {
       "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
       "plan_rope": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
@@ -179,6 +189,7 @@
   }, 
   "personunit": {
     "abbreviation": "prnunit", 
+    "description": "A person dimen representing PersonUnit data. Keys: person_name. person seed.", 
     "jkeys": {
       "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}
     }, 

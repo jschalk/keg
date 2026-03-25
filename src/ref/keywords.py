@@ -31,6 +31,7 @@ class ExampleStrs(str, Enum):
     cuisine = "cuisine"
     dash = "-"
     dirtyness = "dirtyness"
+    ep8 = ";ep8;"
     mop = "mop"
     red = "red"
     run = ";runners"

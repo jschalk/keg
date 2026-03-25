@@ -190,7 +190,7 @@ def test_create_stances_CreatesFile_Senario3_Create_calendar_markdown(
         moment_mstr_dir=fay_wdir._moment_mstr_dir,
     )
 
-    a23_calendar_md_path = create_path(output_dir, f"Amy23_calendar.md")
+    a23_calendar_md_path = create_path(output_dir, "Amy23_calendar.md")
     print(f"      {a23_calendar_md_path=}")
     assert not os_path_exists(a23_calendar_md_path)
 

@@ -3,12 +3,18 @@ from csv import DictWriter as csv_DictWriter
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from io import StringIO as io_StringIO
+from os.path import exists as os_path_exists
+from src.ch00_py.file_toolbox import create_path, get_level1_dirs, save_file
 from src.ch02_partner.partner import PartnerUnit
-from src.ch04_rope.rope import is_sub_rope
+from src.ch04_rope.rope import create_rope, is_sub_rope
 from src.ch05_reason.reason_main import ReasonHeir
 from src.ch06_plan.plan import PlanUnit
 from src.ch07_person_logic.person_main import PersonUnit, get_sorted_plan_list
-from src.ch09_person_lesson.lasso import LassoUnit
+from src.ch09_person_lesson._ref.ch09_path import (
+    create_job_path,
+    create_moments_dir_path,
+)
+from src.ch09_person_lesson.lasso import LassoUnit, lassounit_shop
 from src.ch10_person_listen.keep_tool import open_job_file
 from src.ch13_time.epoch_main import (
     get_default_epoch_config_dict,
@@ -17,6 +23,7 @@ from src.ch13_time.epoch_main import (
 )
 from src.ch13_time.epoch_reason import set_epoch_fact
 from src.ch14_moment.moment_main import open_moment_file
+from src.ch20_kpi._ref.ch20_path import create_day_report_txt_path
 from src.ch20_kpi._ref.ch20_semantic_types import (
     GroupTitle,
     KnotTerm,
@@ -55,9 +62,9 @@ class DayEvent:
 def planunit_is_scheduled_in_day(reasonheir: ReasonHeir, epoch_rope) -> bool:
     case = reasonheir.get_case(reasonheir.reason_context)
     divisor_remainder = case.reason_divisor % 1440
-    if is_sub_rope(reasonheir.reason_context, epoch_rope) and divisor_remainder == 0:
-        return True
-    return False
+    return bool(
+        is_sub_rope(reasonheir.reason_context, epoch_rope) and divisor_remainder == 0
+    )
 
 
 def set_day_epoch_fact(person: PersonUnit, epoch_label: LabelTerm, day: datetime):
@@ -80,8 +87,7 @@ def get_dayevents(
     for item_rank, agenda_item in enumerate(agenda_list, start=1):
         for reason_context, reasonheir in agenda_item.reasonheirs.items():
             if planunit_is_scheduled_in_day(reasonheir, epoch_rope):
-                epoch_reasonheir = agenda_item.get_reasonheir(reason_context)
-                if epoch_reasonheir:
+                if epoch_reasonheir := agenda_item.get_reasonheir(reason_context):
                     epoch_case = epoch_reasonheir.get_case(reason_context)
                     day_reason_lower = epoch_case.reason_lower % 1440
                     day_reason_upper = epoch_case.reason_upper % 1440
@@ -107,9 +113,7 @@ def get_inflection_points_dict(dayevents: list[DayEvent]) -> dict[int, DayEvent 
     """
     # Collect all relevant timestamps
     timestamps = sorted(
-        set(
-            t for event in dayevents for t in (event.day_min_lower, event.day_min_upper)
-        )
+        {t for event in dayevents for t in (event.day_min_lower, event.day_min_upper)}
     )
 
     inflection_points = {}
@@ -131,7 +135,7 @@ def minute_to_clock_time(minute: int) -> str:
     Converts a minute of the day (0-1439) to a clock time string.
     e.g. 0 -> "12:00 AM", 120 -> "2:00 AM", 780 -> "1:00 PM"
     """
-    minute = minute % 1440  # wrap around if > 1 day
+    minute %= 1440
     hours, mins = divmod(minute, 60)
     period = "AM" if hours < 12 else "PM"
     hours_12 = hours % 12 or 12  # convert 0 -> 12
@@ -208,11 +212,12 @@ def get_gcal_memberships_str(x_person: PersonUnit, group_title: GroupTitle) -> s
     if not groupunit or len(groupunit.memberships) == 0:
         x_str += "\nNo memberships"
     else:
-        for partner_name in groupunit.memberships.keys():
-            group_partner_names.append(partner_name)
+        group_partner_names.extend(iter(groupunit.memberships.keys()))
     partners_list = []
-    for group_partner_name in group_partner_names:
-        partners_list.append(x_person.get_partner(group_partner_name))
+    partners_list.extend(
+        x_person.get_partner(group_partner_name)
+        for group_partner_name in group_partner_names
+    )
     return create_partners_only_list_str(partners_list, x_str)
 
 
@@ -223,7 +228,8 @@ def get_gcal_day_report_from_personunit(
     group_title: GroupTitle = None,
 ) -> str:
     """parameter x_person is assumed to have already conputed."""
-    x_str = f"Day Report for {x_person.person_name}\n"
+    moment_rope = x_person.planroot.get_plan_rope()
+    x_str = f"Day Report for {x_person.person_name} in the {moment_rope} Moment\n"
     if not epoch_label:
         epoch_label = get_default_epoch_config_dict().get("epoch_label")
     x_dayevents = get_dayevents(x_person, epoch_label, day)
@@ -310,3 +316,65 @@ def get_gcal_day_report_from_job_file(
     epoch_label = momentunit.epoch.epoch_label
     job = open_job_file(moment_mstr_dir, moment_lasso, person_name)
     return get_gcal_day_report_from_personunit(job, day, epoch_label, focus_group_title)
+
+
+def add_gcal_day_report_to_dict(
+    day_reports: dict,
+    moment_mstr_dir: str,
+    moment_lasso: LassoUnit,
+    person_name: PersonName,
+    day: datetime,
+    focus_group_title: GroupTitle,
+):
+    mmt_job_path = create_job_path(moment_mstr_dir, moment_lasso, person_name)
+    if os_path_exists(mmt_job_path):
+        day_report_str = get_gcal_day_report_from_job_file(
+            moment_mstr_dir, moment_lasso, person_name, day, focus_group_title
+        )
+        report_path = create_day_report_txt_path(
+            moment_mstr_dir, moment_lasso, person_name
+        )
+        day_reports[moment_lasso.moment_rope] = {
+            "day_report": day_report_str,
+            "file_path": report_path,
+        }
+
+
+def get_person_gcal_day_reports(
+    moment_mstr_dir: str,
+    person_name: PersonName,
+    day: datetime,
+    focus_group_title: GroupTitle = None,
+) -> dict[PersonName, dict["day_report":str, "file_path":str]]:
+    day_reports = {}
+    moments_dir = create_moments_dir_path(moment_mstr_dir)
+    for moment_label in get_level1_dirs(moments_dir):
+        moment_lasso = lassounit_shop(create_rope(moment_label))
+        moment_path = create_path(moments_dir, moment_lasso.make_path())
+        persons_path = create_path(moment_path, "persons")
+        for dir_person in get_level1_dirs(persons_path):
+            if dir_person == person_name:
+                add_gcal_day_report_to_dict(
+                    day_reports,
+                    moment_mstr_dir,
+                    moment_lasso,
+                    person_name,
+                    day,
+                    focus_group_title,
+                )
+    return day_reports
+
+
+def save_person_gcal_day_reports(
+    moment_mstr_dir: str,
+    person_name: PersonName,
+    day: datetime,
+    focus_group_title: GroupTitle = None,
+):
+    day_reports = get_person_gcal_day_reports(
+        moment_mstr_dir, person_name, day, focus_group_title
+    )
+    for person_name, report_dict in day_reports.items():
+        file_path = report_dict.get("file_path")
+        day_report = report_dict.get("day_report")
+        save_file(file_path, None, day_report)

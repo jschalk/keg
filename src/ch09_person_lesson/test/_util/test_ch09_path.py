@@ -11,6 +11,7 @@ from src.ch09_person_lesson._ref.ch09_path import (
     create_moment_dir_path,
     create_moment_json_path,
     create_moment_persons_dir_path,
+    create_moments_dir_path,
     create_person_dir_path,
 )
 from src.ch09_person_lesson.lasso import lassounit_shop
@@ -18,6 +19,18 @@ from src.ch09_person_lesson.test._util.ch09_env import get_temp_dir
 from src.ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
 
 A23_LASSO = lassounit_shop(exx.a23)
+
+
+def test_create_moments_dir_path_ReturnsObj():
+    # ESTABLISH
+    x_moment_mstr_dir = get_temp_dir()
+
+    # WHEN
+    gen_dir_path = create_moments_dir_path(x_moment_mstr_dir)
+
+    # THEN
+    expected_moments_dir = create_path(x_moment_mstr_dir, "moments")
+    assert gen_dir_path == expected_moments_dir
 
 
 def test_create_moment_dir_path_ReturnsObj():
@@ -149,6 +162,15 @@ def test_create_job_path_ReturnsObj():
 
 
 LINUX_OS = platform_system() == "Linux"
+
+
+def test_create_moments_dir_path_HasDocString():
+    # ESTABLISH
+    doc_str = create_moments_dir_path("moment_mstr_dir")
+    doc_str = f"Returns path: {doc_str}"
+    # WHEN / THEN
+    # TODO see if all "LINUX_OS or inspect_getdoc" can be gotten rid of
+    assert LINUX_OS or inspect_getdoc(create_moments_dir_path) == doc_str
 
 
 def test_create_moment_dir_path_HasDocString():
