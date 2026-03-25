@@ -41,6 +41,20 @@ from src.ch20_kpi.kpi_mstr import create_calendar_markdown_files, populate_kpi_b
 from src.ch21_world._ref.ch21_semantic_types import WorldName
 
 
+def create_stances(
+    world_dir: str,
+    output_dir: str,
+    world_name: str,
+    moment_mstr_dir: str,
+    prettify_excel_bool=True,
+):
+    # TODO why is create_stance0001_file not drawing from world db instead of files?
+    # it should be the database because that's the end of the core pipeline so it should
+    # be the source of truth.
+    create_stance0001_file(world_dir, output_dir, world_name, prettify_excel_bool)
+    create_calendar_markdown_files(moment_mstr_dir, output_dir)
+
+
 def sheets_input_to_lynx_with_cursor(
     cursor: sqlite3_Cursor, input_dir: str, moment_mstr_dir: str
 ):
@@ -79,20 +93,6 @@ def sheets_input_to_lynx_with_cursor(
     etl_moment_json_partner_nets_to_moment_partner_nets_table(cursor, moment_mstr_dir)
     populate_kpi_bundle(cursor)
     create_last_run_metrics_json(cursor, moment_mstr_dir)
-
-
-def create_stances(
-    world_dir: str,
-    output_dir: str,
-    world_name: str,
-    moment_mstr_dir: str,
-    prettify_excel_bool=True,
-):
-    # TODO why is create_stance0001_file not drawing from world db instead of files?
-    # it should be the database because that's the end of the core pipeline so it should
-    # be the source of truth.
-    create_stance0001_file(world_dir, output_dir, world_name, prettify_excel_bool)
-    create_calendar_markdown_files(moment_mstr_dir, output_dir)
 
 
 def sheets_input_to_lynx_mstr(world_db_path: str, input_dir: str, moment_mstr_dir: str):
@@ -168,3 +168,7 @@ def worlddir_shop(
     if not x_worlddir._input_dir:
         x_worlddir.set_input_dir(create_path(x_worlddir._world_dir, "input"))
     return x_worlddir
+
+
+def sheets_to_gcal_day_reports():
+    pass
