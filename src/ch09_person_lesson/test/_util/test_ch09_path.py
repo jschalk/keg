@@ -169,6 +169,7 @@ def test_create_moments_dir_path_HasDocString():
     doc_str = create_moments_dir_path("moment_mstr_dir")
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
+    # TODO see if all "LINUX_OS or inspect_getdoc" can be gotten rid of
     assert LINUX_OS or inspect_getdoc(create_moments_dir_path) == doc_str
 
 

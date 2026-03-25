@@ -1,14 +1,18 @@
 from datetime import datetime
+from os.path import exists as os_path_exists
+from src.ch00_py.file_toolbox import open_file
 from src.ch07_person_logic.person_main import personunit_shop
 from src.ch09_person_lesson.lasso import lassounit_shop
 from src.ch10_person_listen.keep_tool import save_job_file
 from src.ch13_time.epoch_main import add_epoch_planunit, get_default_epoch_config_dict
 from src.ch14_moment.moment_main import momentunit_shop, save_moment_file
+from src.ch20_kpi._ref.ch20_path import create_day_report_txt_path as day_report_path
 from src.ch20_kpi.gcalendar import (
     gcal_readable_percent,
     get_gcal_day_report_from_job_file,
     get_gcal_day_report_from_personunit,
     get_person_gcal_day_reports,
+    save_person_gcal_day_reports,
 )
 from src.ch20_kpi.test._util.ch20_env import get_temp_dir, temp_dir_setup
 from src.ch20_kpi.test._util.ch20_examples import (
@@ -89,6 +93,25 @@ def test_get_gcal_day_report_from_job_file_ReturnsObj_Scenario1_NonEmptyPerson()
     assert "Schedule Priorities" in sue_day_report_str
 
 
+def test_get_person_gcal_day_reports_ReturnsObj_Scenario0_NoData(
+    temp_dir_setup,
+):
+    # ESTABLISH
+    mmt_mstr_dir = get_temp_dir()
+    apr7 = datetime(2010, 4, 7)
+
+    # WHEN
+    sue_day_reports = get_person_gcal_day_reports(
+        moment_mstr_dir=mmt_mstr_dir,
+        person_name=exx.sue,
+        day=apr7,
+        focus_group_title=exx.run,
+    )
+
+    # THEN
+    assert sue_day_reports == {}
+
+
 def test_get_person_gcal_day_reports_ReturnsObj_Scenario1_Two_day_reports(
     temp_dir_setup,
 ):
@@ -119,7 +142,6 @@ def test_get_person_gcal_day_reports_ReturnsObj_Scenario1_Two_day_reports(
     # WHEN
     sue_day_reports = get_person_gcal_day_reports(
         moment_mstr_dir=mmt_mstr_dir,
-        moment_lasso=a23_lasso,
         person_name=exx.sue,
         day=apr7,
         focus_group_title=exx.run,
@@ -128,7 +150,8 @@ def test_get_person_gcal_day_reports_ReturnsObj_Scenario1_Two_day_reports(
     # THEN
     assert sue_day_reports
     assert set(sue_day_reports.keys()) == {exx.a23, exx.ep8}
-    assert "Schedule Priorities" in sue_day_reports.get(exx.a23)
+    sue_a23_dict = sue_day_reports.get(exx.a23)
+    assert "Schedule Priorities" in sue_a23_dict.get("day_report")
 
 
 def test_get_person_gcal_day_reports_ReturnsObj_Scenario2_OnlySueReports(
@@ -165,7 +188,6 @@ def test_get_person_gcal_day_reports_ReturnsObj_Scenario2_OnlySueReports(
     # WHEN
     sue_day_reports = get_person_gcal_day_reports(
         moment_mstr_dir=mmt_mstr_dir,
-        moment_lasso=a23_lasso,
         person_name=exx.sue,
         day=apr7,
         focus_group_title=exx.run,
@@ -174,6 +196,66 @@ def test_get_person_gcal_day_reports_ReturnsObj_Scenario2_OnlySueReports(
     # THEN
     assert sue_day_reports
     assert set(sue_day_reports.keys()) == {exx.a23, exx.ep8}
-    assert "Schedule Priorities" in sue_day_reports.get(exx.a23)
-    assert f"Day Report for {exx.sue}" in sue_day_reports.get(exx.a23)
-    assert f"Day Report for {exx.sue}" in sue_day_reports.get(exx.ep8)
+    sue_a23_dict = sue_day_reports.get(exx.a23)
+    sue_ep8_dict = sue_day_reports.get(exx.ep8)
+    assert "Schedule Priorities" in sue_a23_dict.get("day_report")
+    assert "Schedule Priorities" in sue_ep8_dict.get("day_report")
+    assert f"Day Report for {exx.sue}" in sue_a23_dict.get("day_report")
+    assert f"Day Report for {exx.sue}" in sue_ep8_dict.get("day_report")
+    sue_a23_day_report_path = day_report_path(mmt_mstr_dir, a23_lasso, exx.sue)
+    sue_ep8_day_report_path = day_report_path(mmt_mstr_dir, ep8_lasso, exx.sue)
+    assert sue_a23_day_report_path == sue_a23_dict.get("file_path")
+    assert sue_ep8_day_report_path == sue_ep8_dict.get("file_path")
+
+
+def test_save_person_gcal_day_reports_SavesFiles_Scenario0_TwoSueReports(
+    temp_dir_setup,
+):
+    # ESTABLISH
+    sue_a23_person = get_a23_sue_clean_example()
+    sue_ep8_person = get_ep8_sue_clean_example()
+    yao_ep8_person = get_ep8_yao_clean_example()
+    epoch_config = get_default_epoch_config_dict()
+    x_epoch_label = epoch_config.get("epoch_label")
+    add_epoch_planunit(sue_a23_person, epoch_config)
+    add_epoch_planunit(sue_ep8_person, epoch_config)
+    add_epoch_planunit(yao_ep8_person, epoch_config)
+    sue_a23_person.conpute()
+    sue_ep8_person.conpute()
+    yao_ep8_person.conpute()
+    apr7 = datetime(2010, 4, 7)
+    # save momentunit json
+    mmt_mstr_dir = get_temp_dir()
+    a23_moment = momentunit_shop(exx.a23, mmt_mstr_dir)
+    ep8_moment = momentunit_shop(exx.ep8, mmt_mstr_dir)
+    a23_lasso = lassounit_shop(a23_moment.moment_rope, a23_moment.knot)
+    ep8_lasso = lassounit_shop(ep8_moment.moment_rope, ep8_moment.knot)
+    assert a23_moment.epoch.epoch_label == x_epoch_label
+    assert ep8_moment.epoch.epoch_label == x_epoch_label
+    save_moment_file(a23_moment, a23_lasso)
+    save_moment_file(ep8_moment, ep8_lasso)
+    # save personunit json as job file
+    save_job_file(mmt_mstr_dir, sue_a23_person)
+    save_job_file(mmt_mstr_dir, sue_ep8_person)
+    save_job_file(mmt_mstr_dir, yao_ep8_person)
+    sue_a23_day_report_path = day_report_path(mmt_mstr_dir, a23_lasso, exx.sue)
+    sue_ep8_day_report_path = day_report_path(mmt_mstr_dir, ep8_lasso, exx.sue)
+    assert not os_path_exists(sue_a23_day_report_path)
+    assert not os_path_exists(sue_ep8_day_report_path)
+
+    # WHEN
+    save_person_gcal_day_reports(
+        moment_mstr_dir=mmt_mstr_dir,
+        person_name=exx.sue,
+        day=apr7,
+        focus_group_title=exx.run,
+    )
+
+    # THEN
+    assert os_path_exists(sue_a23_day_report_path)
+    assert os_path_exists(sue_ep8_day_report_path)
+    sue_a23_day_report_str = open_file(sue_a23_day_report_path)
+    sue_ep8_day_report_str = open_file(sue_ep8_day_report_path)
+    assert "Schedule Priorities" in sue_ep8_day_report_str
+    assert f"Day Report for {exx.sue}" in sue_a23_day_report_str
+    assert f"Day Report for {exx.sue}" in sue_ep8_day_report_str

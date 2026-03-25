@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta
 from io import StringIO as io_StringIO
 from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import create_path, get_level1_dirs
+from src.ch00_py.file_toolbox import create_path, get_level1_dirs, save_file
 from src.ch02_partner.partner import PartnerUnit
 from src.ch04_rope.rope import create_rope, is_sub_rope
 from src.ch05_reason.reason_main import ReasonHeir
@@ -23,6 +23,7 @@ from src.ch13_time.epoch_main import (
 )
 from src.ch13_time.epoch_reason import set_epoch_fact
 from src.ch14_moment.moment_main import open_moment_file
+from src.ch20_kpi._ref.ch20_path import create_day_report_txt_path
 from src.ch20_kpi._ref.ch20_semantic_types import (
     GroupTitle,
     KnotTerm,
@@ -327,19 +328,24 @@ def add_gcal_day_report_to_dict(
 ):
     mmt_job_path = create_job_path(moment_mstr_dir, moment_lasso, person_name)
     if os_path_exists(mmt_job_path):
-        day_report = get_gcal_day_report_from_job_file(
+        day_report_str = get_gcal_day_report_from_job_file(
             moment_mstr_dir, moment_lasso, person_name, day, focus_group_title
         )
-        day_reports[moment_lasso.moment_rope] = day_report
+        report_path = create_day_report_txt_path(
+            moment_mstr_dir, moment_lasso, person_name
+        )
+        day_reports[moment_lasso.moment_rope] = {
+            "day_report": day_report_str,
+            "file_path": report_path,
+        }
 
 
 def get_person_gcal_day_reports(
     moment_mstr_dir: str,
-    moment_lasso: LassoUnit,
     person_name: PersonName,
     day: datetime,
     focus_group_title: GroupTitle = None,
-) -> dict[MomentRope, str]:
+) -> dict[PersonName, dict["day_report":str, "file_path":str]]:
     day_reports = {}
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):
@@ -357,3 +363,18 @@ def get_person_gcal_day_reports(
                     focus_group_title,
                 )
     return day_reports
+
+
+def save_person_gcal_day_reports(
+    moment_mstr_dir: str,
+    person_name: PersonName,
+    day: datetime,
+    focus_group_title: GroupTitle = None,
+):
+    day_reports = get_person_gcal_day_reports(
+        moment_mstr_dir, person_name, day, focus_group_title
+    )
+    for person_name, report_dict in day_reports.items():
+        file_path = report_dict.get("file_path")
+        day_report = report_dict.get("day_report")
+        save_file(file_path, None, day_report)
