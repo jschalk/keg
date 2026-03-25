@@ -1,5 +1,6 @@
 from inspect import getdoc as inspect_getdoc
 from platform import system as platform_system
+from pytest import mark as pytest_mark
 from src.ch00_py.file_toolbox import create_path
 from src.ch04_rope.rope import create_rope
 from src.ch09_person_lesson.lasso import lassounit_shop
@@ -33,9 +34,7 @@ def test_create_bud_partner_mandate_ledger_path_ReturnsObj():
     assert gen_bud_path == expected_bud_path_dir
 
 
-LINUX_OS = platform_system() == "Linux"
-
-
+@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
 def test_create_bud_partner_mandate_ledger_path_HasDocString():
     # ESTABLISH
     doc_str = create_bud_partner_mandate_ledger_path(
@@ -47,4 +46,4 @@ def test_create_bud_partner_mandate_ledger_path_HasDocString():
     doc_str = doc_str.replace("buds\\bud_time", "buds\n\\bud_time")
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    assert LINUX_OS or inspect_getdoc(create_bud_partner_mandate_ledger_path) == doc_str
+    assert inspect_getdoc(create_bud_partner_mandate_ledger_path) == doc_str

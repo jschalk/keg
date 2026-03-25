@@ -1,5 +1,6 @@
 from inspect import getdoc as inspect_getdoc
 from platform import system as platform_system
+from pytest import mark as pytest_mark
 from src.ch00_py.file_toolbox import create_path
 from src.ch04_rope.rope import create_rope
 from src.ch09_person_lesson.lasso import lassounit_shop
@@ -336,9 +337,7 @@ def test_create_spark_expressed_lesson_path_ReturnsObj():
     assert gen_a23_e3_person_path == expected_a23_bob_e3_expressed_lesson_path
 
 
-LINUX_OS = platform_system() == "Linux"
-
-
+@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
 def test_create_buds_dir_path_HasDocString():
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     # ESTABLISH
@@ -349,9 +348,10 @@ def test_create_buds_dir_path_HasDocString():
     )
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    assert LINUX_OS or inspect_getdoc(create_buds_dir_path) == doc_str
+    assert inspect_getdoc(create_buds_dir_path) == doc_str
 
 
+@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
 def test_create_bud_dir_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -364,9 +364,10 @@ def test_create_bud_dir_path_HasDocString():
     doc_str = doc_str.replace("buds\\bud_time", "buds\n\\bud_time")
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    assert LINUX_OS or inspect_getdoc(create_bud_dir_path) == doc_str
+    assert inspect_getdoc(create_bud_dir_path) == doc_str
 
 
+@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
 def test_create_cell_dir_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -381,9 +382,10 @@ def test_create_cell_dir_path_HasDocString():
     doc_str = f"Returns path: {doc_str}"
     print(f"{doc_str=}")
     # WHEN / THEN
-    assert LINUX_OS or inspect_getdoc(create_cell_dir_path) == doc_str
+    assert inspect_getdoc(create_cell_dir_path) == doc_str
 
 
+@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
 def test_create_cell_json_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -398,9 +400,10 @@ def test_create_cell_json_path_HasDocString():
     doc_str = f"Returns path: {doc_str}"
     print(f"{doc_str=}")
     # WHEN / THEN
-    assert LINUX_OS or inspect_getdoc(create_cell_json_path) == doc_str
+    assert inspect_getdoc(create_cell_json_path) == doc_str
 
 
+@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
 def test_create_cell_partner_mandate_ledger_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -415,11 +418,10 @@ def test_create_cell_partner_mandate_ledger_path_HasDocString():
     doc_str = f"Returns path: {doc_str}"
     print(f"{doc_str=}")
     # WHEN / THEN
-    assert (
-        LINUX_OS or inspect_getdoc(create_cell_partner_mandate_ledger_path) == doc_str
-    )
+    assert inspect_getdoc(create_cell_partner_mandate_ledger_path) == doc_str
 
 
+@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
 def test_create_budunit_json_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -432,9 +434,10 @@ def test_create_budunit_json_path_HasDocString():
     doc_str = doc_str.replace("buds\\bud_time", "buds\n\\bud_time")
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    assert LINUX_OS or inspect_getdoc(create_budunit_json_path) == doc_str
+    assert inspect_getdoc(create_budunit_json_path) == doc_str
 
 
+@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
 def test_create_persontime_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -447,9 +450,10 @@ def test_create_persontime_path_HasDocString():
     doc_str = doc_str.replace("buds\\bud_time", "buds\n\\bud_time")
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    assert LINUX_OS or inspect_getdoc(create_persontime_path) == doc_str
+    assert inspect_getdoc(create_persontime_path) == doc_str
 
 
+@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
 def test_create_person_spark_dir_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -461,9 +465,10 @@ def test_create_person_spark_dir_path_HasDocString():
     )
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    assert LINUX_OS or inspect_getdoc(create_person_spark_dir_path) == doc_str
+    assert inspect_getdoc(create_person_spark_dir_path) == doc_str
 
 
+@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
 def test_create_person_spark_csv_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -476,9 +481,10 @@ def test_create_person_spark_csv_path_HasDocString():
     )
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    assert LINUX_OS or inspect_getdoc(create_person_spark_csv_path) == doc_str
+    assert inspect_getdoc(create_person_spark_csv_path) == doc_str
 
 
+@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
 def test_create_personspark_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -490,9 +496,10 @@ def test_create_personspark_path_HasDocString():
     )
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    assert LINUX_OS or inspect_getdoc(create_personspark_path) == doc_str
+    assert inspect_getdoc(create_personspark_path) == doc_str
 
 
+@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
 def test_create_spark_all_lesson_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -504,9 +511,10 @@ def test_create_spark_all_lesson_path_HasDocString():
     )
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    assert LINUX_OS or inspect_getdoc(create_spark_all_lesson_path) == doc_str
+    assert inspect_getdoc(create_spark_all_lesson_path) == doc_str
 
 
+@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
 def test_create_spark_expressed_lesson_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -518,4 +526,4 @@ def test_create_spark_expressed_lesson_path_HasDocString():
     )
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    assert LINUX_OS or inspect_getdoc(create_spark_expressed_lesson_path) == doc_str
+    assert inspect_getdoc(create_spark_expressed_lesson_path) == doc_str

@@ -1,5 +1,6 @@
 from inspect import getdoc as inspect_getdoc
 from platform import system as platform_system
+from pytest import mark as pytest_mark
 from src.ch00_py.file_toolbox import create_path
 from src.ch22_lobby._ref.ch22_path import (
     LobbyID,
@@ -65,28 +66,28 @@ def test_create_moment_mstr_dir_path_ReturnsObj():
     assert gen_m23_dir_path == expected_m23_path
 
 
-LINUX_OS = platform_system() == "Linux"
-
-
+@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
 def test_create_lobby_dir_path_HasDocString():
     # ESTABLISH
     doc_str = create_lobby_dir_path(kw.lobby_mstr_dir, kw.lobby_id)
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    assert LINUX_OS or inspect_getdoc(create_lobby_dir_path) == doc_str
+    assert inspect_getdoc(create_lobby_dir_path) == doc_str
 
 
+@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
 def test_create_world_dir_path_HasDocString():
     # ESTABLISH
     doc_str = create_world_dir_path(kw.lobby_mstr_dir, kw.lobby_id, kw.world_name)
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    assert LINUX_OS or inspect_getdoc(create_world_dir_path) == doc_str
+    assert inspect_getdoc(create_world_dir_path) == doc_str
 
 
+@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
 def test_create_moment_mstr_dir_path_HasDocString():
     # ESTABLISH
     doc_str = create_moment_mstr_dir_path(kw.lobby_mstr_dir, kw.lobby_id, kw.world_name)
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    assert LINUX_OS or inspect_getdoc(create_moment_mstr_dir_path) == doc_str
+    assert inspect_getdoc(create_moment_mstr_dir_path) == doc_str

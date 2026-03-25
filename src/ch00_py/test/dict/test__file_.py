@@ -1,7 +1,7 @@
 from os.path import exists as os_path_exist, join as os_path_join
 from pathlib import Path as pathlib_Path
 from platform import system as platform_system
-from pytest import raises as pytest_raises
+from pytest import mark as pytest_mark, raises as pytest_raises
 from src.ch00_py.dict_toolbox import get_dict_from_json
 from src.ch00_py.file_toolbox import (
     can_usser_edit_paths,
@@ -526,17 +526,14 @@ def test_create_directory_path_ReturnsObj():
     assert kern_path == create_path(elpaso_path, kern_str)
 
 
+@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
 def test_is_path_valid_ReturnsObj():
     # ESTABLISH / WHEN / THEN
     assert is_path_valid("run")
     assert is_path_valid("run/trail")
     assert is_path_valid("run/,trail")
-    assert (
-        platform_system() == "Windows" and is_path_valid("trail?") is False
-    ) or platform_system() == "Linux"
-    assert (
-        platform_system() == "Windows" and is_path_valid("run/trail?") is False
-    ) or platform_system() == "Linux"
+    assert is_path_valid("trail?") is False
+    assert is_path_valid("run/trail?") is False
     assert is_path_valid("run//trail////")
 
 
@@ -546,14 +543,12 @@ def test_can_usser_edit_paths_ReturnsObj():
     assert can_usser_edit_paths()
 
 
+@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
 def test_is_path_existent_or_creatable_ReturnsObj():
     # ESTABLISH / WHEN / THEN
     """I am not able to test. For now make sure it runs."""
     assert is_path_existent_or_creatable("run")
-    assert (
-        platform_system() == "Windows"
-        and is_path_existent_or_creatable("run/trail?") is False
-    ) or platform_system() == "Linux"
+    assert is_path_existent_or_creatable("run/trail?") is False
     assert is_path_existent_or_creatable("run///trail")
 
 
