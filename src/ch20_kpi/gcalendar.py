@@ -345,7 +345,7 @@ def get_person_gcal_day_reports(
     person_name: PersonName,
     day: datetime,
     focus_group_title: GroupTitle = None,
-) -> dict[PersonName, dict["day_report":str, "file_path":str]]:
+) -> dict[PersonName, dict[str, str]]:
     day_reports = {}
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):

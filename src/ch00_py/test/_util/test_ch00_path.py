@@ -1,5 +1,6 @@
 from inspect import getdoc as inspect_getdoc
 from platform import system as platform_system
+from pytest import mark as pytest_mark
 from src.ch00_py._ref.ch00_path import (
     create_keywords_classes_file_path,
     create_src_example_strs_path,
@@ -7,8 +8,6 @@ from src.ch00_py._ref.ch00_path import (
 )
 from src.ch00_py.file_toolbox import create_path, get_json_filename
 from src.ch00_py.test._util.ch00_env import get_temp_dir
-
-LINUX_OS = platform_system() == "Linux"
 
 
 def test_create_src_example_strs_path_ReturnsObj():
@@ -26,6 +25,7 @@ def test_create_src_example_strs_path_ReturnsObj():
     assert keywords_class_file_path == expected_file_path
 
 
+@pytest_mark.skipif(platform_system() == "Linux", reason="Skipped on Linux")
 def test_create_src_example_strs_path_HasDocString():
     # ESTABLISH
     src_dir = "src"
@@ -34,7 +34,7 @@ def test_create_src_example_strs_path_HasDocString():
     doc_str = f"Returns path: {doc_str}"
     print(f"{doc_str=}")
     # WHEN / THEN
-    assert LINUX_OS or inspect_getdoc(create_src_example_strs_path) == doc_str
+    assert inspect_getdoc(create_src_example_strs_path) == doc_str
 
 
 def test_create_src_keywords_main_path_ReturnsObj():
@@ -52,6 +52,7 @@ def test_create_src_keywords_main_path_ReturnsObj():
     assert keywords_class_file_path == expected_file_path
 
 
+@pytest_mark.skipif(platform_system() == "Linux", reason="Skipped on Linux")
 def test_create_src_keywords_main_path_HasDocString():
     # ESTABLISH
     src_dir = "src"
@@ -60,7 +61,7 @@ def test_create_src_keywords_main_path_HasDocString():
     doc_str = f"Returns path: {doc_str}"
     print(f"{doc_str=}")
     # WHEN / THEN
-    assert LINUX_OS or inspect_getdoc(create_src_keywords_main_path) == doc_str
+    assert inspect_getdoc(create_src_keywords_main_path) == doc_str
 
 
 def test_create_keywords_classes_file_path_ReturnsObj():
@@ -78,10 +79,11 @@ def test_create_keywords_classes_file_path_ReturnsObj():
     assert keywords_class_file_path == expected_keywords_file_path
 
 
+@pytest_mark.skipif(platform_system() == "Linux", reason="Skipped on Linux")
 def test_create_keywords_classes_file_path_HasDocString():
     # ESTABLISH
     doc_str = create_keywords_classes_file_path("src")
     doc_str = f"Returns path: {doc_str}"
     print(f"{doc_str=}")
     # WHEN / THEN
-    assert LINUX_OS or inspect_getdoc(create_keywords_classes_file_path) == doc_str
+    assert inspect_getdoc(create_keywords_classes_file_path) == doc_str
