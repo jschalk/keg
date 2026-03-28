@@ -1,7 +1,7 @@
 # Keywords by Chapter
 
 ## Keywords by Chapter
-- ch00_py: INSERT, UPDATE, ch00, filename, init_chapter, semantic_type, sqlite_datatype
+- ch00_py: INSERT, Keyword, UPDATE, ch00, filename, init_chapter, keyword, semantic_type, sqlite_datatype
 - ch01_allot: BreakTerm, FirstLabel, GrainNum, LabelTerm, PoolNum, RopeTerm, WeightNum, ch01, parent_rope
 - ch02_partner: FundGrain, FundNum, GroupMark, GroupTitle, HealerName, NameTerm, PartnerName, RespectGrain, RespectNum, TitleTerm, awardee_title, awardunits, ch02, conpute, credor_pool, debtor_pool, fund_agenda_give, fund_agenda_ratio_give, fund_agenda_ratio_take, fund_agenda_take, fund_give, fund_grain, fund_take, give_force, group_cred_lumen, group_debt_lumen, group_title, groupmark, groupunits, inallocable_partner_debt_lumen, irrational_partner_debt_lumen, laborheir, laborunit, memberships, parent_solo, partner_cred_lumen, partner_debt_lumen, partner_name, party_title, partys, rational, respect_grain, solo, take_force
 - ch03_labor: person, person_name, person_name_is_labor
