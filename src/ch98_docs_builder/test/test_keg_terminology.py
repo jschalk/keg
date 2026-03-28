@@ -47,10 +47,10 @@ from src.ch98_docs_builder._ref.ch98_semantic_types import (
     WeightNum,
     WorldName,
 )
-from src.ch98_docs_builder.keyword_description_builder import (
+from src.ch98_docs_builder.keg_terminology_builder import (
     get_chxx_prefix_path_dict,
     get_chxx_ref_blurb,
-    get_keywords_description,
+    get_keg_terminology,
     get_person_dimen_config,
 )
 from src.ref.keywords import Ch98Keywords as kw
@@ -60,79 +60,79 @@ def python_keywords() -> set:
     return {"self", "class", "assert", "import", "global", "yield", "break", "match"}
 
 
-def test_get_keywords_description_ReturnsObj_HasAllkeywords():
+def test_get_keg_terminology_ReturnsObj_HasAllkeywords():
     # ESTABLISH / WHEN
-    keywords_description = get_keywords_description()
+    keg_terminology = get_keg_terminology()
 
     # THEN
-    assert keywords_description
+    assert keg_terminology
     keywords_config = get_keywords_src_config()
 
-    description_keywords = set(keywords_description.keys())
+    description_keywords = set(keg_terminology.keys())
     config_keywords = set(keywords_config.keys())
     config_keywords.update(python_keywords())
     print(f"{config_keywords.difference(description_keywords)=}")
     print(f"{description_keywords.difference(config_keywords)=}")
-    assert set(keywords_description.keys()) == config_keywords
-    for keyword, description in keywords_description.items():
+    assert set(keg_terminology.keys()) == config_keywords
+    for keyword, description in keg_terminology.items():
         assert description, keyword
 
 
-def test_get_keywords_description_ReturnsObj_Check_python_keywords():
+def test_get_keg_terminology_ReturnsObj_Check_python_keywords():
     # ESTABLISH
     python_keyword_args = python_keywords()
     # print(f"{person_config_args.keys()=}")
 
     # WHEN
-    keywords_description = get_keywords_description()
+    keg_terminology = get_keg_terminology()
 
     # THEN
     py_used_often_str = (
         "Used so often in Python that it cannot be given any kegolgy meaning."
     )
     for python_keyword in python_keyword_args:
-        py_key_description = keywords_description.get(python_keyword)
+        py_key_description = keg_terminology.get(python_keyword)
         assert py_used_often_str in py_key_description, python_keyword
 
 
-def test_get_keywords_description_ReturnsObj_Check_moment_ote1_agg():
+def test_get_keg_terminology_ReturnsObj_Check_moment_ote1_agg():
     # ESTABLISH / WHEN
-    keywords_description = get_keywords_description()
+    keg_terminology = get_keg_terminology()
 
     # THEN
     moment_ote1_agg_desc = inspect_getdoc(etl_heard_raw_tables_to_moment_ote1_agg)
-    assert moment_ote1_agg_desc in keywords_description.get(kw.moment_ote1_agg)
+    assert moment_ote1_agg_desc in keg_terminology.get(kw.moment_ote1_agg)
 
 
-def test_get_keywords_description_ReturnsObj_CheckNoChapter_keywords():
+def test_get_keg_terminology_ReturnsObj_CheckNoChapter_keywords():
     # sourcery skip: no-conditionals-in-tests
     # ESTABLISH / WHEN
-    keywords_description = get_keywords_description()
+    keg_terminology = get_keg_terminology()
     # THEN
     for keyword, kw_config in get_keywords_src_config().items():
         x_init_chapter = kw_config.get("init_chapter")
         if not bool(re_fullmatch(r"ch\d{2}", x_init_chapter)):
-            config_description = keywords_description.get(keyword)
+            config_description = keg_terminology.get(keyword)
             assert "Not used in codebase." in config_description, keyword
 
 
-def test_get_keywords_description_ReturnsObj_Check_person_dimen():
+def test_get_keg_terminology_ReturnsObj_Check_person_dimen():
     # ESTABLISH / WHEN
-    keywords_description = get_keywords_description()
+    keg_terminology = get_keg_terminology()
     # THEN
     for person_dimen, attribute_dict in get_person_config_dict().items():
         dimen_description = attribute_dict.get("description")
         print(dimen_description)
-        assert keywords_description.get(person_dimen) == dimen_description
+        assert keg_terminology.get(person_dimen) == dimen_description
 
 
-def test_get_keywords_description_ReturnsObj_Check_stages_types():
+def test_get_keg_terminology_ReturnsObj_Check_stages_types():
     # ESTABLISH / WHEN
-    keywords_description = get_keywords_description()
+    keg_terminology = get_keg_terminology()
     # THEN
     stage_types_config = get_etl_stage_types_config_dict()
     for stage_type_abbv5, type_dict in stage_types_config.items():
-        abbv5_keyword_description = keywords_description.get(stage_type_abbv5)
+        abbv5_keyword_description = keg_terminology.get(stage_type_abbv5)
         abbv9_str = type_dict.get("abbv9")
         type_description_str = type_dict.get("description")
         stage_type_order = type_dict.get("stage_type_order")
@@ -143,28 +143,28 @@ def test_get_keywords_description_ReturnsObj_Check_stages_types():
 
         print(f"{abbv9_str=}")
         expected_abbv9_description = f"{stage_type_order=} {type_description_str}"
-        gen_abbv9_description = keywords_description.get(abbv9_str)
+        gen_abbv9_description = keg_terminology.get(abbv9_str)
         abbv9_fail_str = f"assert failed: {expected_abbv9_description}"
         assert expected_abbv9_description == gen_abbv9_description, abbv9_fail_str
 
 
-def test_get_keywords_description_ReturnsObj_Check_semantic_types():
+def test_get_keg_terminology_ReturnsObj_Check_semantic_types():
     # sourcery skip: no-conditionals-in-tests
     # ESTABLISH / WHEN
-    keywords_description = get_keywords_description()
+    keg_terminology = get_keg_terminology()
 
     # THEN
     all_semantic_types = get_all_semantic_types_with_doc_strs()
     for semantic_class, class_doc_str in all_semantic_types.items():
-        semantic_description = keywords_description.get(semantic_class)
+        semantic_description = keg_terminology.get(semantic_class)
         # print(f"{semantic_class=} {class_doc_str=}")
         assert class_doc_str in semantic_description
 
 
-def test_get_keywords_description_ReturnsObj_Check_src_config_keywords():
+def test_get_keg_terminology_ReturnsObj_Check_src_config_keywords():
     # sourcery skip: no-conditionals-in-tests
     # ESTABLISH / WHEN
-    keywords_description = get_keywords_description()
+    keg_terminology = get_keg_terminology()
 
     # THEN
     all_semantic_types = get_all_semantic_types_with_doc_strs()
@@ -174,37 +174,37 @@ def test_get_keywords_description_ReturnsObj_Check_src_config_keywords():
             # print(f"{keyword} {kw_config=}")
             x_init_chapter = kw_config.get("init_chapter")
             kw_desc = f"{semantic_type} first used in {x_init_chapter}"
-            config_description = keywords_description.get(keyword)
+            config_description = keg_terminology.get(keyword)
             assert kw_desc in config_description, keyword
             assert keyword in doc_str_semantic_types
 
 
-def test_get_keywords_description_ReturnsObj_Check_epoch_config():
+def test_get_keg_terminology_ReturnsObj_Check_epoch_config():
     # ESTABLISH / WHEN
-    keywords_description = get_keywords_description()
+    keg_terminology = get_keg_terminology()
     # THEN
     for config_key, config_obj in get_default_epoch_config_dict().items():
-        config_description = keywords_description.get(config_key)
+        config_description = keg_terminology.get(config_key)
         # print(f"{config_key=} {config_description=}")
         assert f"Epoch config" in config_description
 
 
-def test_get_keywords_description_ReturnsObj_Check_c400_constants():
+def test_get_keg_terminology_ReturnsObj_Check_c400_constants():
     # ESTABLISH / WHEN
-    keywords_description = get_keywords_description()
+    keg_terminology = get_keg_terminology()
     # THEN
     for constant_name, constant_int in get_c400_constants().__dict__.items():
         formated_constant = f"{constant_int:,}"
-        constant_description = keywords_description.get(constant_name)
+        constant_description = keg_terminology.get(constant_name)
         # print(f"{constant_name} {formated_constant} {constant_description=}")
         assert formated_constant in constant_description
         assert "C400Constant for building Epochs" in constant_description
 
 
-def test_get_keywords_description_ReturnsObj_CheckConfigArgs():
+def test_get_keg_terminology_ReturnsObj_CheckConfigArgs():
     # sourcery skip: no-conditionals-in-tests
     # ESTABLISH / WHEN
-    keywords_description = get_keywords_description()
+    keg_terminology = get_keg_terminology()
     # THEN
     ch_dict = get_chxx_prefix_path_dict()
     person_args = get_person_dimen_config(kw.personunit)
@@ -234,7 +234,7 @@ def test_get_keywords_description_ReturnsObj_CheckConfigArgs():
     nabuable_args = get_nabuable_args()
 
     all_person_calc_args = get_all_person_calc_args()
-    for keyword, desc in keywords_description.items():
+    for keyword, desc in keg_terminology.items():
         if keyword in ch_dict:
             assert desc == get_chxx_ref_blurb(ch_dict, keyword)
         # print(f"{keyword=} {desc=}")
@@ -264,15 +264,15 @@ def test_get_keywords_description_ReturnsObj_CheckConfigArgs():
         check_mmtunit_desc_str(nabuable_args, keyword, desc, "Nabuable")
 
 
-def test_get_keywords_description_ReturnsObj_CheckTranslate_dimen():
+def test_get_keg_terminology_ReturnsObj_CheckTranslate_dimen():
     # sourcery skip: no-conditionals-in-tests
     # ESTABLISH / WHEN
-    keywords_description = get_keywords_description()
+    keg_terminology = get_keg_terminology()
     # THEN
     for translate_dimen, translate_dict in get_translate_config_dict().items():
         translate_description = translate_dict.get("description")
         print(translate_description)
-        assert keywords_description.get(translate_dimen) == translate_description
+        assert keg_terminology.get(translate_dimen) == translate_description
 
 
 def get_all_semantic_types_with_doc_strs() -> dict[str, str]:

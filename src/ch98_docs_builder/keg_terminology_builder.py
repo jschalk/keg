@@ -8,16 +8,16 @@ from src.ch07_person_logic.person_config import (
 from src.ch18_etl_config.etl_config import get_etl_stage_types_config_dict
 from src.ch98_docs_builder._ref.ch98_path import (
     create_chapter_ref_path,
-    create_src_keywords_description_path,
+    create_src_keg_terminology_path,
 )
 
 
-def get_keywords_description() -> dict[str, dict]:
-    return open_json(create_src_keywords_description_path("src"))
+def get_keg_terminology() -> dict[str, dict]:
+    return open_json(create_src_keg_terminology_path("src"))
 
 
 def save_keywords_descrition_json(src_dir: str, x_dict: dict[str, dict]):
-    file_path = create_src_keywords_description_path(src_dir)
+    file_path = create_src_keg_terminology_path(src_dir)
     save_json(file_path, None, x_dict, keys_case_insensitive=True)
 
 
@@ -29,14 +29,14 @@ def get_person_dimen_config(dimen: str) -> dict:
     return x_config_args
 
 
-def rebuild_keywords_description_contents():
+def rebuild_keg_terminology_contents():
     ch_dict = get_chxx_prefix_path_dict()
     person_config_args = get_person_dimen_config("personunit")
     plan_config_args = get_person_dimen_config("person_planunit")
     all_person_calc_args = get_all_person_calc_args()
 
     rebuilt_kw_desc = {}
-    for keyword, description in get_keywords_description().items():
+    for keyword, description in get_keg_terminology().items():
         rebuilt_kw_desc[keyword] = description
         if keyword in ch_dict:
             rebuilt_kw_desc[keyword] = get_chxx_ref_blurb(ch_dict, keyword)

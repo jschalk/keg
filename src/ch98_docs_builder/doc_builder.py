@@ -20,8 +20,8 @@ from src.ch00_py.keyword_class_builder import (
 from src.ch04_rope._ref.ch04_doc_builder import get_ropeterm_description_md
 from src.ch17_idea._ref.ch17_doc_builder import get_brick_formats_md, get_idea_brick_mds
 from src.ch98_docs_builder._ref.ch98_path import create_chapter_ref_path
-from src.ch98_docs_builder.keyword_description_builder import (
-    rebuild_keywords_description_contents,
+from src.ch98_docs_builder.keg_terminology_builder import (
+    rebuild_keg_terminology_contents,
 )
 
 
@@ -95,4 +95,4 @@ def resave_chapter_and_keyword_json_files():
     ex_strs_json_path = create_src_example_strs_path("src")
     save_json(keywords_main_json_path, None, open_json(keywords_main_json_path))
     save_json(ex_strs_json_path, None, open_json(ex_strs_json_path))
-    rebuild_keywords_description_contents()
+    rebuild_keg_terminology_contents()
