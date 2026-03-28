@@ -78,8 +78,7 @@ def test_get_keywords_description_ReturnsObj_HasAllkeywords():
         assert description, keyword
 
 
-def test_get_keywords_description_ReturnsObj_CheckDescriptions():
-    # sourcery skip: no-conditionals-in-tests
+def test_get_keywords_description_ReturnsObj_Check_python_keywords():
     # ESTABLISH
     python_keyword_args = python_keywords()
     # print(f"{person_config_args.keys()=}")
@@ -88,17 +87,6 @@ def test_get_keywords_description_ReturnsObj_CheckDescriptions():
     keywords_description = get_keywords_description()
 
     # THEN
-    # consider turing each of these into their own test. It's not good to have asserts in called functions for tests
-    check_general_keywords_descriptions(keywords_description)
-    check_translate_dimen_keywords_description(keywords_description)
-    check_c400_constants_keywords_description(keywords_description)
-    check_epoch_config_keywords_description(keywords_description)
-    all_semantic_types = get_all_semantic_types_with_doc_strs()
-    check_src_config_keywords_description(keywords_description, all_semantic_types)
-    check_semantic_types_keywords_description(keywords_description, all_semantic_types)
-    moment_ote1_agg_desc = inspect_getdoc(etl_heard_raw_tables_to_moment_ote1_agg)
-    assert moment_ote1_agg_desc in keywords_description.get("moment_ote1_agg")
-
     py_used_often_str = (
         "Used so often in Python that it cannot be given any kegolgy meaning."
     )
@@ -106,12 +94,21 @@ def test_get_keywords_description_ReturnsObj_CheckDescriptions():
         py_key_description = keywords_description.get(python_keyword)
         assert py_used_often_str in py_key_description, python_keyword
 
-    check_stages_types_keywords_description(keywords_description)
-    check_person_dimen_keywords_description(keywords_description)
-    check_no_chapter_keywords_description(keywords_description)
+
+def test_get_keywords_description_ReturnsObj_Check_moment_ote1_agg():
+    # ESTABLISH / WHEN
+    keywords_description = get_keywords_description()
+
+    # THEN
+    moment_ote1_agg_desc = inspect_getdoc(etl_heard_raw_tables_to_moment_ote1_agg)
+    assert moment_ote1_agg_desc in keywords_description.get(kw.moment_ote1_agg)
 
 
-def check_no_chapter_keywords_description(keywords_description: dict[str, str]):
+def test_get_keywords_description_ReturnsObj_CheckNoChapter_keywords():
+    # sourcery skip: no-conditionals-in-tests
+    # ESTABLISH / WHEN
+    keywords_description = get_keywords_description()
+    # THEN
     for keyword, kw_config in get_keywords_src_config().items():
         x_init_chapter = kw_config.get("init_chapter")
         if not bool(re_fullmatch(r"ch\d{2}", x_init_chapter)):
@@ -119,14 +116,20 @@ def check_no_chapter_keywords_description(keywords_description: dict[str, str]):
             assert "Not used in codebase." in config_description, keyword
 
 
-def check_person_dimen_keywords_description(keywords_description: dict[str, str]):
+def test_get_keywords_description_ReturnsObj_Check_person_dimen():
+    # ESTABLISH / WHEN
+    keywords_description = get_keywords_description()
+    # THEN
     for person_dimen, attribute_dict in get_person_config_dict().items():
         dimen_description = attribute_dict.get("description")
         print(dimen_description)
         assert keywords_description.get(person_dimen) == dimen_description
 
 
-def check_stages_types_keywords_description(keywords_description: dict[str, str]):
+def test_get_keywords_description_ReturnsObj_Check_stages_types():
+    # ESTABLISH / WHEN
+    keywords_description = get_keywords_description()
+    # THEN
     stage_types_config = get_etl_stage_types_config_dict()
     for stage_type_abbv5, type_dict in stage_types_config.items():
         abbv5_keyword_description = keywords_description.get(stage_type_abbv5)
@@ -145,19 +148,27 @@ def check_stages_types_keywords_description(keywords_description: dict[str, str]
         assert expected_abbv9_description == gen_abbv9_description, abbv9_fail_str
 
 
-def check_semantic_types_keywords_description(
-    keywords_description: dict[str, str], all_semantic_types: dict
-):
+def test_get_keywords_description_ReturnsObj_Check_semantic_types():
+    # sourcery skip: no-conditionals-in-tests
+    # ESTABLISH / WHEN
+    keywords_description = get_keywords_description()
+
+    # THEN
+    all_semantic_types = get_all_semantic_types_with_doc_strs()
     for semantic_class, class_doc_str in all_semantic_types.items():
         semantic_description = keywords_description.get(semantic_class)
         # print(f"{semantic_class=} {class_doc_str=}")
         assert class_doc_str in semantic_description
 
 
-def check_src_config_keywords_description(
-    keywords_description: dict[str, str], all_semantic_types_with_doc_strs: dict
-):
-    doc_str_semantic_types = set(all_semantic_types_with_doc_strs.keys())
+def test_get_keywords_description_ReturnsObj_Check_src_config_keywords():
+    # sourcery skip: no-conditionals-in-tests
+    # ESTABLISH / WHEN
+    keywords_description = get_keywords_description()
+
+    # THEN
+    all_semantic_types = get_all_semantic_types_with_doc_strs()
+    doc_str_semantic_types = set(all_semantic_types.keys())
     for keyword, kw_config in get_keywords_src_config().items():
         if semantic_type := kw_config.get("semantic_type"):
             # print(f"{keyword} {kw_config=}")
@@ -168,14 +179,20 @@ def check_src_config_keywords_description(
             assert keyword in doc_str_semantic_types
 
 
-def check_epoch_config_keywords_description(keywords_description: dict[str, str]):
+def test_get_keywords_description_ReturnsObj_Check_epoch_config():
+    # ESTABLISH / WHEN
+    keywords_description = get_keywords_description()
+    # THEN
     for config_key, config_obj in get_default_epoch_config_dict().items():
         config_description = keywords_description.get(config_key)
         # print(f"{config_key=} {config_description=}")
         assert f"Epoch config" in config_description
 
 
-def check_c400_constants_keywords_description(keywords_description: dict[str, str]):
+def test_get_keywords_description_ReturnsObj_Check_c400_constants():
+    # ESTABLISH / WHEN
+    keywords_description = get_keywords_description()
+    # THEN
     for constant_name, constant_int in get_c400_constants().__dict__.items():
         formated_constant = f"{constant_int:,}"
         constant_description = keywords_description.get(constant_name)
@@ -184,7 +201,11 @@ def check_c400_constants_keywords_description(keywords_description: dict[str, st
         assert "C400Constant for building Epochs" in constant_description
 
 
-def check_general_keywords_descriptions(keywords_description: dict[str, str]):
+def test_get_keywords_description_ReturnsObj_CheckConfigArgs():
+    # sourcery skip: no-conditionals-in-tests
+    # ESTABLISH / WHEN
+    keywords_description = get_keywords_description()
+    # THEN
     ch_dict = get_chxx_prefix_path_dict()
     person_args = get_person_dimen_config(kw.personunit)
     plan_args = get_person_dimen_config(kw.person_planunit)
@@ -243,7 +264,11 @@ def check_general_keywords_descriptions(keywords_description: dict[str, str]):
         check_mmtunit_desc_str(nabuable_args, keyword, desc, "Nabuable")
 
 
-def check_translate_dimen_keywords_description(keywords_description: dict[str, str]):
+def test_get_keywords_description_ReturnsObj_CheckTranslate_dimen():
+    # sourcery skip: no-conditionals-in-tests
+    # ESTABLISH / WHEN
+    keywords_description = get_keywords_description()
+    # THEN
     for translate_dimen, translate_dict in get_translate_config_dict().items():
         translate_description = translate_dict.get("description")
         print(translate_description)

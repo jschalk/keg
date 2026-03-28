@@ -3,10 +3,10 @@ from src.ch00_py.file_toolbox import open_json, save_json
 from src.ch07_person_logic.person_main import get_personunit_from_dict, personunit_shop
 from src.ch09_person_lesson._ref.ch09_path import (
     create_gut_path,
-    create_job_path,
     create_moment_json_path,
 )
 from src.ch09_person_lesson.lasso import lassounit_shop
+from src.ch10_person_listen._ref.ch10_path import create_job_path
 from src.ch14_moment.moment_main import momentunit_shop
 from src.ch19_etl_main.etl_main import etl_moment_guts_to_moment_jobs
 from src.ch19_etl_main.test._util.ch19_env import get_temp_dir, temp_dir_setup

@@ -589,48 +589,15 @@ def _validate_idea_config(x_idea_config: dict):
         # print(f"{idea_jvalues_keys=}")
         assert expected_jvalues_keys == idea_jvalues_keys
 
-        # sort_list = get_idea_elements_sort_order()
-        # x_count = 0
-        # sort_dict1 = {}
-        # sort_dict2 = {}
-        # for idea_arg in sort_list:
-        #     sort_dict1[x_count] = idea_arg
-        #     sort_dict1[idea_arg] = x_count
 
-        # for jvalue in idea_jvalues_keys:
-        #     print(f"{jvalue=} {idea_jvalues_dict=}")
-        #     jvalue_dict = idea_jvalues_dict.get(jvalue)
-        #     jvalue_column_order = jvalue_dict.get(kw.column_order)
-        #     assert jvalue_column_order != None
-        #     list_ref_arg = sort_list[jvalue_column_order]
-        #     assert list_ref_arg != None
-        #     assert jvalue == list_ref_arg
-
-        # # for jkey in idea_jkeys_keys:
-        #     print(f"{jkey=} {idea_jkeys_dict=}")
-        #     jkey_dict = idea_jkeys_dict.get(jkey)
-        #     jkey_column_order = jkey_dict.get(kw.column_order)
-        #     assert jkey_column_order != None
-        #     list_ref_arg = sort_list[jkey_column_order]
-        #     assert list_ref_arg != None
-        #     assert jkey == list_ref_arg
-
-
-def test_get_idea_format_filenames_ReturnsObj():
+def test_get_idea_format_filenames_ReturnsObj_CheckSome_idea_format_filesnames_Exist():
     # ESTABLISH
     idea_filenames_set = get_idea_format_filenames()
-    idea_filenames_sorted = list(idea_filenames_set)
-    idea_filenames_sorted.sort(key=lambda x: x)
-    print(f"{len(idea_filenames_sorted)=}")
 
-    # THEN
+    # WHEN / THEN
     assert idea_format_00021_person_partnerunit_v0_0_0() in idea_filenames_set
     assert idea_format_00020_person_partner_membership_v0_0_0() in idea_filenames_set
     assert idea_format_00013_planunit_v0_0_0() in idea_filenames_set
-
-    # WHEN / THEN
-    print("validate")
-    assert _validate_idea_format_files(idea_filenames_sorted)
 
 
 def change_erase_attrs(idea_attrs: set):
@@ -642,7 +609,15 @@ def change_erase_attrs(idea_attrs: set):
         idea_attrs.add(delete_attr_without_erase)
 
 
-def _validate_idea_format_files(idea_filenames: set[str]):
+def test_get_idea_format_filenames_ReturnsObj_Validate_idea_format_files():
+    # sourcery skip:  no-conditionals-in-tests
+    # ESTABLISH / WHEN
+    idea_filenames_sorted = list(get_idea_format_filenames())
+
+    # THEN
+    idea_filenames_sorted.sort(key=lambda x: x)
+    print(f"{len(idea_filenames_sorted)=}")
+
     all_dimen_keys_dict = {
         dimen: set(dict.get(kw.jkeys).keys())
         for dimen, dict in get_idea_config_dict().items()
@@ -658,7 +633,7 @@ def _validate_idea_format_files(idea_filenames: set[str]):
 
     # for every idea_format file there exists a unique idea_number with leading zeros to make 5 digits
     idea_numbers_set = set()
-    for idea_filename in idea_filenames:
+    for idea_filename in idea_filenames_sorted:
         ref_dict = get_idearef_from_file(idea_filename)
         # print(f"{idea_filename=} {ref_dict.get(kw.idea_number)=}")
         idea_number_value = ref_dict.get(kw.idea_number)
@@ -720,10 +695,8 @@ def _validate_idea_format_files(idea_filenames: set[str]):
     # assert kw.spark_num in idea_format_attributes
 
     # confirm every ideanumber is unique
-    assert len(idea_numbers_set) == len(idea_filenames)
+    assert len(idea_numbers_set) == len(idea_filenames_sorted)
     assert idea_numbers_set == get_idea_numbers()
-
-    return True
 
 
 def test_get_idea_format_filename_ReturnsObj():
@@ -898,7 +871,7 @@ def print_sorted(obj, indent=0):
     if isinstance(obj, dict):
         print(space + "{")
         for key in sorted(obj):
-            print(space + f"  {repr(key)}: ", end="")
+            print(f"{space}  {repr(key)}: ", end="")
             print_sorted(obj[key], indent + 4)
         print(space + "}")
 

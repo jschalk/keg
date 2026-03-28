@@ -3,8 +3,8 @@ from os.path import exists as os_path_exists
 from src.ch00_py.file_toolbox import delete_dir, open_file, save_file
 from src.ch04_rope.rope import create_rope
 from src.ch07_person_logic.test._util.ch07_examples import get_personunit_with_4_levels
-from src.ch09_person_lesson._ref.ch09_path import create_job_path
 from src.ch10_person_listen._ref.ch10_path import (
+    create_job_path,
     create_keep_duty_path,
     create_keep_rope_path,
     create_treasury_db_path,

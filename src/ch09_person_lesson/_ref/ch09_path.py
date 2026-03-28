@@ -66,13 +66,3 @@ def create_gut_path(
     person_dir = create_path(persons_dir, person_name)
     gut_dir = create_path(person_dir, "gut")
     return create_path(gut_dir, f"{person_name}.json")
-
-
-def create_job_path(
-    moment_mstr_dir: str, moment_lasso: LassoUnit, person_name: PersonName
-) -> str:
-    """Returns path: moment_mstr_dir\\moments\\moment_rope\\persons\\person_name\\job\\person_name.json"""
-    persons_dir = create_moment_persons_dir_path(moment_mstr_dir, moment_lasso)
-    person_dir = create_path(persons_dir, person_name)
-    job_dir = create_path(person_dir, "job")
-    return create_path(job_dir, f"{person_name}.json")

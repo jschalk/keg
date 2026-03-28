@@ -6,7 +6,6 @@ from src.ch09_person_lesson._ref.ch09_path import (
     MOMENT_FILENAME,
     create_atoms_dir_path,
     create_gut_path,
-    create_job_path,
     create_lessons_dir_path,
     create_moment_dir_path,
     create_moment_json_path,
@@ -142,32 +141,12 @@ def test_create_gut_path_ReturnsObj():
     assert gen_a23_e3_person_path == expected_a23_bob_gut_json_path
 
 
-def test_create_job_path_ReturnsObj():
-    # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
-
-    # WHEN
-    gen_a23_e3_person_path = create_job_path(x_moment_mstr_dir, A23_LASSO, exx.bob)
-
-    # THEN
-    x_moments_dir = create_path(x_moment_mstr_dir, "moments")
-    a23_dir = create_path(x_moments_dir, "Amy23")
-    a23_persons_dir = create_path(a23_dir, "persons")
-    a23_bob_dir = create_path(a23_persons_dir, exx.bob)
-    a23_bob_job_dir = create_path(a23_bob_dir, kw.job)
-    expected_a23_bob_job_json_path = create_path(a23_bob_job_dir, f"{exx.bob}.json")
-    # person_filename = "person.json"
-    # expected_a23_e3_person_path = create_path(a23_bob_e3_dir, person_filename)
-    assert gen_a23_e3_person_path == expected_a23_bob_job_json_path
-
-
 @pytest_mark.skip_on_linux
 def test_create_moments_dir_path_HasDocString():
     # ESTABLISH
     doc_str = create_moments_dir_path("moment_mstr_dir")
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    # TODO see if all " inspect_getdoc" can be gotten rid of
     assert inspect_getdoc(create_moments_dir_path) == doc_str
 
 
@@ -264,17 +243,3 @@ def test_create_gut_path_HasDocString():
     print(f"{inspect_getdoc(create_gut_path)=}")
     print(inspect_getdoc(create_gut_path))
     assert inspect_getdoc(create_gut_path) == doc_str
-
-
-@pytest_mark.skip_on_linux
-def test_create_job_path_HasDocString():
-    # ESTABLISH
-    x_moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
-    doc_str = create_job_path(
-        moment_mstr_dir="moment_mstr_dir",
-        moment_lasso=x_moment_lasso,
-        person_name=kw.person_name,
-    )
-    doc_str = f"Returns path: {doc_str}"
-    # WHEN / THEN
-    assert inspect_getdoc(create_job_path) == doc_str

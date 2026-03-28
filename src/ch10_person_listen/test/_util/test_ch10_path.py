@@ -2,7 +2,9 @@ from inspect import getdoc as inspect_getdoc
 from pytest import mark as pytest_mark, raises as pytest_raises
 from src.ch00_py.file_toolbox import create_path, get_json_filename
 from src.ch04_rope.rope import create_rope, create_rope_from_labels
+from src.ch09_person_lesson.lasso import lassounit_shop
 from src.ch10_person_listen._ref.ch10_path import (
+    create_job_path,
     create_keep_duty_path,
     create_keep_dutys_path,
     create_keep_grade_path,
@@ -15,6 +17,41 @@ from src.ch10_person_listen._ref.ch10_path import (
 )
 from src.ch10_person_listen.test._util.ch10_env import get_temp_dir
 from src.ref.keywords import Ch10Keywords as kw, ExampleStrs as exx
+
+A23_LASSO = lassounit_shop(exx.a23)
+
+
+def test_create_job_path_ReturnsObj():
+    # ESTABLISH
+    x_moment_mstr_dir = get_temp_dir()
+
+    # WHEN
+    gen_a23_e3_person_path = create_job_path(x_moment_mstr_dir, A23_LASSO, exx.bob)
+
+    # THEN
+    x_moments_dir = create_path(x_moment_mstr_dir, "moments")
+    a23_dir = create_path(x_moments_dir, "Amy23")
+    a23_persons_dir = create_path(a23_dir, "persons")
+    a23_bob_dir = create_path(a23_persons_dir, exx.bob)
+    a23_bob_job_dir = create_path(a23_bob_dir, kw.job)
+    expected_a23_bob_job_json_path = create_path(a23_bob_job_dir, f"{exx.bob}.json")
+    # person_filename = "person.json"
+    # expected_a23_e3_person_path = create_path(a23_bob_e3_dir, person_filename)
+    assert gen_a23_e3_person_path == expected_a23_bob_job_json_path
+
+
+@pytest_mark.skip_on_linux
+def test_create_job_path_HasDocString():
+    # ESTABLISH
+    x_moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    doc_str = create_job_path(
+        moment_mstr_dir="moment_mstr_dir",
+        moment_lasso=x_moment_lasso,
+        person_name=kw.person_name,
+    )
+    doc_str = f"Returns path: {doc_str}"
+    # WHEN / THEN
+    assert inspect_getdoc(create_job_path) == doc_str
 
 
 def test_treasury_filename_ReturnsObj():

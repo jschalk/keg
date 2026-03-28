@@ -109,7 +109,7 @@
   "ch21": {"init_chapter": "ch21"}, 
   "class_type": {"init_chapter": "ch07"}, 
   "close": {"init_chapter": "ch06"}, 
-  "column_order": {"init_chapter": "ch08"}, 
+  "column_ordinal": {"init_chapter": "ch08"}, 
   "conpute": {"init_chapter": "ch02"}, 
   "credor_pool": {"init_chapter": "ch02"}, 
   "credor_respect": {"init_chapter": "ch07"}, 
