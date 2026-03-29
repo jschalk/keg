@@ -7,7 +7,6 @@ def get_nodes_with_weighted_facts(
     nodes_facts_dict: dict[tuple[PersonName], dict[RopeTerm, FactUnit]],
     nodes_quota_ledger_dict: dict[tuple[PersonName], dict[PersonName, float]],
 ) -> dict[tuple[PersonName], dict[RopeTerm, FactUnit]]:
-
     sorted_node_addrs = sorted(nodes_facts_dict.keys(), key=len)
     while sorted_node_addrs != []:
         # grab one of the longest length node_addr tuples

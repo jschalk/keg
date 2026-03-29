@@ -260,9 +260,9 @@ def evaluate_and_add_classes(
     x_bases, filename, all_classes: dict, x_class, semantic_type_candidates: dict
 ):
     if len(x_bases) > 1:
-        all_classes[x_class] = (
-            f"A class with more than one inheritance. {filename} {x_bases}"
-        )
+        all_classes[
+            x_class
+        ] = f"A class with more than one inheritance. {filename} {x_bases}"
     elif len(x_bases) == 0:
         no_bases_str = f"A class with no inheritance. {filename}"
         all_classes[x_class] = no_bases_str

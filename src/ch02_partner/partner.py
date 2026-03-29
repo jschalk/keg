@@ -239,9 +239,9 @@ class PartnerUnit:
         if self.irrational_partner_debt_lumen not in [None, 0]:
             x_dict["irrational_partner_debt_lumen"] = self.irrational_partner_debt_lumen
         if self.inallocable_partner_debt_lumen not in [None, 0]:
-            x_dict["inallocable_partner_debt_lumen"] = (
-                self.inallocable_partner_debt_lumen
-            )
+            x_dict[
+                "inallocable_partner_debt_lumen"
+            ] = self.inallocable_partner_debt_lumen
 
         if all_attrs:
             self.all_attrs_necessary_in_dict(x_dict)
