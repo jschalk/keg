@@ -28,10 +28,10 @@ from src.ch00_py.test._util.ch00_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch00Keywords as kw, ExampleStrs as exx
 
 
-def test_create_path_ReturnsObj(temp_dir_setup):
+def test_create_path_ReturnsObj(temp3_dir):
     # ESTABLISH
     obj_filename = "obj.json"
-    x_dir = os_path_join(get_temp_dir(), "_instrument")
+    x_dir = os_path_join(temp3_dir, "_instrument")
     x_filename = "examples"
 
     # WHEN / THEN
@@ -43,9 +43,9 @@ def test_create_path_ReturnsObj(temp_dir_setup):
     assert create_path(x_dir, 1) == os_path_join(x_dir, str(1))
 
 
-def test_is_subdirectory_ReturnsObj(temp_dir_setup):
+def test_is_subdirectory_ReturnsObj(temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     sub = os_path_join(env_dir, "subdir")
 
     # WHEN / THEN
