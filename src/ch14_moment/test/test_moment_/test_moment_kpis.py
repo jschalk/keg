@@ -9,7 +9,6 @@ from src.ch14_moment.moment_report import (
     get_moment_jobs_partners_dataframe,
     get_moment_jobs_partners_plotly_fig,
 )
-from src.ch14_moment.test._util.ch14_env import temp_dir_setup
 from src.ch14_moment.test._util.ch14_examples import (
     create_example_moment2,
     create_example_moment3,
@@ -18,9 +17,9 @@ from src.ch14_moment.test._util.ch14_examples import (
 from src.ref.keywords import Ch14Keywords as kw, ExampleStrs as exx
 
 
-def test_get_moment_guts_partners_dataframe_ReturnsObj(temp_dir_setup, graphics_bool):
+def test_get_moment_guts_partners_dataframe_ReturnsObj(temp3_fs, graphics_bool):
     # ESTABLISH
-    amy_moment = create_example_moment2()
+    amy_moment = create_example_moment2(str(temp3_fs))
 
     # WHEN
     x_df = get_moment_guts_partners_dataframe(amy_moment)
@@ -46,11 +45,9 @@ def test_get_moment_guts_partners_dataframe_ReturnsObj(temp_dir_setup, graphics_
     assert x_df.shape[0] == 8
 
 
-def test_get_moment_guts_partners_plotly_fig_DisplaysInfo(
-    temp_dir_setup, graphics_bool
-):
+def test_get_moment_guts_partners_plotly_fig_DisplaysInfo(temp3_fs, graphics_bool):
     # ESTABLISH
-    amy_moment = create_example_moment2()
+    amy_moment = create_example_moment2(str(temp3_fs))
 
     # WHEN
     x_fig = get_moment_guts_partners_plotly_fig(amy_moment)
@@ -59,9 +56,9 @@ def test_get_moment_guts_partners_plotly_fig_DisplaysInfo(
     conditional_fig_show(x_fig, graphics_bool)
 
 
-def test_get_moment_jobs_partners_dataframe_ReturnsObj(temp_dir_setup, graphics_bool):
+def test_get_moment_jobs_partners_dataframe_ReturnsObj(temp3_fs, graphics_bool):
     # ESTABLISH
-    amy_moment = create_example_moment2()
+    amy_moment = create_example_moment2(str(temp3_fs))
     amy_moment.generate_all_jobs()
 
     # WHEN
@@ -89,11 +86,9 @@ def test_get_moment_jobs_partners_dataframe_ReturnsObj(temp_dir_setup, graphics_
     assert set(x_df.columns) == partnerunit_colums
 
 
-def test_get_moment_jobs_partners_plotly_fig_DisplaysInfo(
-    temp_dir_setup, graphics_bool
-):
+def test_get_moment_jobs_partners_plotly_fig_DisplaysInfo(temp3_fs, graphics_bool):
     # ESTABLISH
-    amy_moment = create_example_moment2()
+    amy_moment = create_example_moment2(str(temp3_fs))
     amy_moment.generate_all_jobs()
 
     # WHEN
@@ -103,9 +98,9 @@ def test_get_moment_jobs_partners_plotly_fig_DisplaysInfo(
     conditional_fig_show(x_fig, graphics_bool)
 
 
-def test_get_moment_guts_agenda_dataframe_ReturnsObj(temp_dir_setup, graphics_bool):
+def test_get_moment_guts_agenda_dataframe_ReturnsObj(temp3_fs, graphics_bool):
     # ESTABLISH
-    amy_moment = create_example_moment3()
+    amy_moment = create_example_moment3(str(temp3_fs))
 
     # WHEN
     x_df = get_moment_guts_agenda_dataframe(amy_moment)
@@ -130,9 +125,9 @@ def test_get_moment_guts_agenda_dataframe_ReturnsObj(temp_dir_setup, graphics_bo
     assert x_df.shape[0] == 8
 
 
-def test_get_moment_guts_agenda_plotly_fig_DisplaysInfo(temp_dir_setup, graphics_bool):
+def test_get_moment_guts_agenda_plotly_fig_DisplaysInfo(temp3_fs, graphics_bool):
     # ESTABLISH
-    amy_moment = create_example_moment3()
+    amy_moment = create_example_moment3(str(temp3_fs))
 
     # WHEN
     x_fig = get_moment_guts_agenda_plotly_fig(amy_moment)
@@ -141,9 +136,9 @@ def test_get_moment_guts_agenda_plotly_fig_DisplaysInfo(temp_dir_setup, graphics
     conditional_fig_show(x_fig, graphics_bool)
 
 
-def test_get_moment_jobs_agenda_dataframe_ReturnsObj(temp_dir_setup):
+def test_get_moment_jobs_agenda_dataframe_ReturnsObj(temp3_fs):
     # ESTABLISH
-    amy_moment = create_example_moment4()
+    amy_moment = create_example_moment4(str(temp3_fs))
     amy_moment.generate_all_jobs()
 
     # WHEN
@@ -169,9 +164,9 @@ def test_get_moment_jobs_agenda_dataframe_ReturnsObj(temp_dir_setup):
     assert x_df.shape[0] in [8, 9]
 
 
-def test_get_moment_jobs_agenda_plotly_fig_DisplaysInfo(temp_dir_setup, graphics_bool):
+def test_get_moment_jobs_agenda_plotly_fig_DisplaysInfo(temp3_fs, graphics_bool):
     # ESTABLISH
-    amy_moment = create_example_moment4()
+    amy_moment = create_example_moment4(str(temp3_fs))
     amy_moment.generate_all_jobs()
 
     # WHEN

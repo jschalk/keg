@@ -11,7 +11,6 @@ from src.ch11_bud.bud_filehandler import (
 )
 from src.ch11_bud.cell_main import cellunit_shop
 from src.ch14_moment.moment_cell import DecreeUnit, set_cell_trees_decrees
-from src.ch14_moment.test._util.ch14_env import get_temp_dir, temp_dir_setup
 from src.ch14_moment.test._util.ch14_examples import (
     example_casa_floor_clean_factunit,
     example_casa_floor_dirty_factunit,
@@ -52,10 +51,10 @@ def test_DecreeUnit_get_child_cell_ancestors_ReturnsObj_Scenario0():
 # for every found_fact change personspark to that fact
 # create agenda (different than if found_fact was not applied)
 def test_set_cell_trees_decrees_SetsRootAttr_Scenario0_Depth0NoFacts(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     tp5 = 5
     das = []
@@ -76,10 +75,10 @@ def test_set_cell_trees_decrees_SetsRootAttr_Scenario0_Depth0NoFacts(
 
 
 def test_set_cell_trees_decrees_SetsRootAttr_Scenario1_Depth0AndOne_personspark_fact(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     tp5 = 5
     das = []
@@ -108,10 +107,10 @@ def test_set_cell_trees_decrees_SetsRootAttr_Scenario1_Depth0AndOne_personspark_
 
 
 def test_set_cell_trees_decrees_SetsRootAttr_Scenario2_Depth0AndOne_found_fact(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     tp5 = 5
     das = []
@@ -140,10 +139,10 @@ def test_set_cell_trees_decrees_SetsRootAttr_Scenario2_Depth0AndOne_found_fact(
 
 
 def test_set_cell_trees_decrees_SetsChildCells_Scenario3_Depth1AndZero_boss_facts(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     tp5 = 5
     bob_ancs = []
@@ -179,10 +178,10 @@ def test_set_cell_trees_decrees_SetsChildCells_Scenario3_Depth1AndZero_boss_fact
 
 
 def test_set_cell_trees_decrees_SetsChildCells_Scenario3_Depth1And_boss_facts(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     tp5 = 5
     bob_ancs = []
@@ -226,10 +225,10 @@ def test_set_cell_trees_decrees_SetsChildCells_Scenario3_Depth1And_boss_facts(
 
 
 def test_set_cell_trees_decrees_SetsChildCells_Scenario4_Depth3And_boss_facts(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     tp5 = 5
     bob_ancs = []
@@ -285,10 +284,10 @@ def test_set_cell_trees_decrees_SetsChildCells_Scenario4_Depth3And_boss_facts(
 
 
 def test_set_cell_trees_decrees_SetsChildCells_Scenario5_Depth2And_boss_facts(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     tp5 = 5
     bob_ancs = []
@@ -344,10 +343,10 @@ def test_set_cell_trees_decrees_SetsChildCells_Scenario5_Depth2And_boss_facts(
 
 
 def test_set_cell_trees_decrees_SetsChildCells_Scenario6_boss_facts_ResetAtEachCell(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     tp5 = 5
     bob_ancs = []
@@ -407,10 +406,10 @@ def test_set_cell_trees_decrees_SetsChildCells_Scenario6_boss_facts_ResetAtEachC
 
 
 def test_set_cell_trees_decrees_SetsChildCells_Scenario7_NoCell_GetPersonSpark(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     tp5 = 5
     bob_ancs = []

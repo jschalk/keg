@@ -25,7 +25,6 @@ from src.ch14_moment.moment_main import (
     get_default_job_listen_count,
     momentunit_shop,
 )
-from src.ch14_moment.test._util.ch14_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch14Keywords as kw, ExampleStrs as exx
 
 
@@ -74,11 +73,11 @@ def test_MomentUnit_Exists():
     }
 
 
-def test_momentunit_shop_ReturnsMomentUnit():
+def test_momentunit_shop_ReturnsMomentUnit(temp3_dir):
     # ESTABLISH
 
     # WHEN
-    a23_moment = momentunit_shop(exx.a23, get_temp_dir())
+    a23_moment = momentunit_shop(exx.a23, temp3_dir)
 
     # THEN
     assert a23_moment.moment_rope == exx.a23
@@ -90,7 +89,7 @@ def test_momentunit_shop_ReturnsMomentUnit():
     assert a23_moment.fund_grain == default_grain_num_if_None()
     assert a23_moment.respect_grain == default_grain_num_if_None()
     assert a23_moment.mana_grain == default_grain_num_if_None()
-    assert a23_moment.moment_mstr_dir == get_temp_dir()
+    assert a23_moment.moment_mstr_dir == temp3_dir
     assert a23_moment.job_listen_rotations == get_default_job_listen_count()
     # Calculated fields
     assert a23_moment.persons_dir != None
@@ -98,20 +97,20 @@ def test_momentunit_shop_ReturnsMomentUnit():
     assert a23_moment.all_tranbook == tranbook_shop(exx.a23)
 
 
-def test_momentunit_shop_ReturnsMomentUnitWith_moments_dir(temp_dir_setup):
+def test_momentunit_shop_ReturnsMomentUnitWith_moments_dir(temp3_dir):
     # ESTABLISH
 
     # WHEN
-    a23_moment = momentunit_shop(exx.a23, moment_mstr_dir=get_temp_dir())
+    a23_moment = momentunit_shop(exx.a23, moment_mstr_dir=temp3_dir)
 
     # THEN
     assert a23_moment.moment_rope == exx.a23
-    assert a23_moment.moment_mstr_dir == get_temp_dir()
+    assert a23_moment.moment_mstr_dir == temp3_dir
     assert a23_moment.persons_dir is not None
     assert a23_moment.lessons_dir is not None
 
 
-def test_momentunit_shop_ReturnsMomentUnitWith_knot(temp_dir_setup):
+def test_momentunit_shop_ReturnsMomentUnitWith_knot(temp3_dir):
     # ESTABLISH
     x_fund_grain = 7.0
     x_respect_grain = 9
@@ -122,7 +121,7 @@ def test_momentunit_shop_ReturnsMomentUnitWith_knot(temp_dir_setup):
     # WHEN
     a23_moment = momentunit_shop(
         moment_rope=exx.a23_slash,
-        moment_mstr_dir=get_temp_dir(),
+        moment_mstr_dir=temp3_dir,
         offi_times=a45_offi_times,
         knot=exx.slash,
         fund_grain=x_fund_grain,
@@ -140,10 +139,10 @@ def test_momentunit_shop_ReturnsMomentUnitWith_knot(temp_dir_setup):
     assert a23_moment.job_listen_rotations == x_job_listen_rotations
 
 
-def test_MomentUnit_set_moment_dirs_SetsDirsAndFiles(temp_dir_setup):
+def test_MomentUnit_set_moment_dirs_SetsDirsAndFiles(temp3_dir):
     # ESTABLISH
-    amy_moment = MomentUnit(exx.a23, get_temp_dir())
-    x_moments_dir = create_path(get_temp_dir(), "moments")
+    amy_moment = MomentUnit(exx.a23, temp3_dir)
+    x_moments_dir = create_path(temp3_dir, "moments")
     x_moment_dir = create_path(x_moments_dir, "Amy23")
     x_persons_dir = create_path(x_moment_dir, "persons")
     x_lessons_dir = create_path(x_moment_dir, "lessons")
@@ -171,24 +170,24 @@ def test_MomentUnit_set_moment_dirs_SetsDirsAndFiles(temp_dir_setup):
     assert os_path_exists(x_lessons_dir)
 
 
-def test_momentunit_shop_SetsmomentsDirs(temp_dir_setup):
+def test_momentunit_shop_SetsmomentsDirs(temp3_dir):
     # ESTABLISH
 
     # WHEN
-    a23_moment = momentunit_shop(exx.a23, get_temp_dir())
+    a23_moment = momentunit_shop(exx.a23, temp3_dir)
 
     # THEN
     assert a23_moment.moment_rope == exx.a23
-    x_moments_dir = create_path(get_temp_dir(), "moments")
+    x_moments_dir = create_path(temp3_dir, "moments")
     assert a23_moment.moment_dir == create_path(x_moments_dir, "Amy23")
     assert a23_moment.persons_dir == create_path(a23_moment.moment_dir, "persons")
 
 
 def test_MomentUnit_create_empty_person_from_moment_ReturnsObj_Scenario0(
-    temp_dir_setup,
+    temp3_dir,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = temp3_dir
     x_fund_grain = 4
     x_respect_grain = 5
     x_mana_grain = 6
@@ -212,10 +211,10 @@ def test_MomentUnit_create_empty_person_from_moment_ReturnsObj_Scenario0(
 
 
 def test_MomentUnit_create_gut_file_if_none_SetsDirAndFiles_Scenario1_person_dir_ExistsNoFile(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     a23_moment = momentunit_shop(exx.a23, moment_mstr_dir)
     a23_lasso = lassounit_shop(exx.a23)
     sue_person_dir = create_person_dir_path(moment_mstr_dir, a23_lasso, exx.sue)
@@ -233,10 +232,10 @@ def test_MomentUnit_create_gut_file_if_none_SetsDirAndFiles_Scenario1_person_dir
 
 
 def test_MomentUnit_create_gut_file_if_none_SetsDirAndFiles_Scenario2_person_dir_ExistsNoFile_Create_gut_AndConfirmMomentAttributesPassed(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     x_fund_grain = 4
     x_respect_grain = 5
     x_mana_grain = 6
@@ -268,10 +267,10 @@ def test_MomentUnit_create_gut_file_if_none_SetsDirAndFiles_Scenario2_person_dir
 
 
 def test_MomentUnit_create_gut_file_if_none_SetsDirAndFiles_Scenario3_FileExistsIsNotReplaced(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     a23_moment = momentunit_shop(exx.a23, moment_mstr_dir)
     sue_gut = personunit_shop(exx.sue, exx.a23)
     sue_gut.add_partnerunit(exx.bob)
@@ -291,10 +290,10 @@ def test_MomentUnit_create_gut_file_if_none_SetsDirAndFiles_Scenario3_FileExists
 
 
 def test_MomentUnit_create_init_job_from_guts_Scenario0_CreatesFile(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     x_fund_grain = 4
     x_respect_grain = 5
     a23_moment = momentunit_shop(
@@ -316,10 +315,10 @@ def test_MomentUnit_create_init_job_from_guts_Scenario0_CreatesFile(
 
 
 def test_MomentUnit_create_init_job_from_guts_Scenario1_ReplacesFile(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     x_fund_grain = 4
     x_respect_grain = 5
     a23_moment = momentunit_shop(
@@ -343,10 +342,10 @@ def test_MomentUnit_create_init_job_from_guts_Scenario1_ReplacesFile(
 
 
 def test_MomentUnit_create_init_job_from_guts_Scenario2_job_Has_gut_Partners(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     x_fund_grain = 4
     x_respect_grain = 5
     a23_moment = momentunit_shop(
@@ -371,10 +370,10 @@ def test_MomentUnit_create_init_job_from_guts_Scenario2_job_Has_gut_Partners(
 
 
 def test_MomentUnit_create_init_job_from_guts_Scenario3_gut_FilesAreListenedTo(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     x_fund_grain = 4
     x_respect_grain = 5
     a23_moment = momentunit_shop(
@@ -412,10 +411,10 @@ def test_MomentUnit_create_init_job_from_guts_Scenario3_gut_FilesAreListenedTo(
 
 
 def test_MomentUnit__set_all_healer_dutys_Setsdutys(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = str(temp3_fs)
     a23_moment = momentunit_shop(exx.a23, x_moment_mstr_dir)
     a23_moment.create_init_job_from_guts(exx.sue)
     a23_moment.create_init_job_from_guts(exx.yao)
@@ -487,7 +486,7 @@ def test_MomentUnit__set_all_healer_dutys_Setsdutys(
 
 # def test_MomentUnit_set_offi_time_Scenario0_SetsAttr():
 #     # ESTABLISH
-#     moment_mstr_dir = get_temp_dir()
+#     moment_mstr_dir = str(temp3_fs)
 #     time56 = 56
 #     a23_moment = momentunit_shop(exx.a23, moment_mstr_dir, offi_time_max=time56)
 #     assert a23_moment.offi_time == 0
@@ -504,7 +503,7 @@ def test_MomentUnit__set_all_healer_dutys_Setsdutys(
 
 # def test_MomentUnit_set_offi_time_Scenario1_SetsAttr():
 #     # ESTABLISH
-#     a23_moment = momentunit_shop(exx.a23, get_temp_dir())
+#     a23_moment = momentunit_shop(exx.a23, str(temp3_fs))
 #     assert a23_moment.offi_time == 0
 #     assert a23_moment.offi_time_max == 0
 
@@ -517,9 +516,9 @@ def test_MomentUnit__set_all_healer_dutys_Setsdutys(
 #     assert a23_moment.offi_time_max == time23
 
 
-def test_MomentUnit_set_offi_time_max_Scenario0_SetsAttr():
+def test_MomentUnit_set_offi_time_max_Scenario0_SetsAttr(temp3_dir):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = temp3_dir
     time7 = 7
     a23_moment = momentunit_shop(exx.a23, moment_mstr_dir)
     a23_moment.offi_time_max = time7
@@ -537,7 +536,7 @@ def test_MomentUnit_set_offi_time_max_Scenario0_SetsAttr():
 
 # def test_MomentUnit_set_offi_time_max_Scenario1_SetsAttr():
 #     # ESTABLISH
-#     moment_mstr_dir = get_temp_dir()
+#     moment_mstr_dir = str(temp3_fs)
 #     time21 = 21
 #     time77 = 77
 #     a23_moment = momentunit_shop(
@@ -556,7 +555,7 @@ def test_MomentUnit_set_offi_time_max_Scenario0_SetsAttr():
 
 # def test_MomentUnit_set_offi_time_Scenario0_SetsAttr():
 #     # ESTABLISH
-#     a23_moment = momentunit_shop(exx.a23, get_temp_dir())
+#     a23_moment = momentunit_shop(exx.a23, str(temp3_fs))
 #     assert a23_moment.offi_time == 0
 #     assert a23_moment.offi_time_max == 0
 

@@ -9,21 +9,17 @@ from src.ch09_person_lesson.lesson_filehandler import (
     save_gut_file,
 )
 from src.ch09_person_lesson.lesson_main import init_lesson_id
-from src.ch09_person_lesson.test._util.ch09_env import (
-    get_temp_dir as env_dir,
-    temp_dir_setup,
-)
 from src.ch09_person_lesson.test._util.ch09_examples import sue_2personatoms_lessonunit
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_LessonFileHandler_default_gut_person_ReturnsObj():
+def test_LessonFileHandler_default_gut_person_ReturnsObj(temp3_fs):
     # ESTABLISH
     x_fund_pool = 9000000
     pnine_float = 0.9
     pfour_float = 0.4
     sue_lessonfilehandler = lessonfilehandler_shop(
-        env_dir(),
+        str(temp3_fs),
         lassounit_shop(exx.a23_slash, knot=exx.slash),
         exx.sue,
         fund_pool=x_fund_pool,
@@ -50,89 +46,89 @@ def test_LessonFileHandler_default_gut_person_ReturnsObj():
 
 
 def test_LessonFileHandler_create_initial_lesson_files_from_default_SavesLessonUnitFiles(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     a23_lasso = lassounit_shop(exx.a23)
-    sue_lessonfilehandler = lessonfilehandler_shop(env_dir(), a23_lasso, exx.sue)
+    sue_lessonfilehandler = lessonfilehandler_shop(str(temp3_fs), a23_lasso, exx.sue)
     init_lesson_filename = sue_lessonfilehandler.lesson_filename(init_lesson_id())
     init_lesson_file_path = create_path(
         sue_lessonfilehandler.lessons_dir, init_lesson_filename
     )
     assert os_path_exists(init_lesson_file_path) is False
-    assert gut_file_exists(env_dir(), a23_lasso, exx.sue) is False
+    assert gut_file_exists(str(temp3_fs), a23_lasso, exx.sue) is False
 
     # WHEN
     sue_lessonfilehandler._create_initial_lesson_files_from_default()
 
     # THEN
     assert os_path_exists(init_lesson_file_path)
-    assert gut_file_exists(env_dir(), a23_lasso, exx.sue) is False
+    assert gut_file_exists(str(temp3_fs), a23_lasso, exx.sue) is False
 
 
 def test_LessonFileHandler_create_gut_from_lessons_CreatesgutFileFromLessonFiles(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     a23_lasso = lassounit_shop(exx.a23)
-    sue_lessonfilehandler = lessonfilehandler_shop(env_dir(), a23_lasso, exx.sue)
+    sue_lessonfilehandler = lessonfilehandler_shop(str(temp3_fs), a23_lasso, exx.sue)
     init_lesson_filename = sue_lessonfilehandler.lesson_filename(init_lesson_id())
     init_lesson_file_path = create_path(
         sue_lessonfilehandler.lessons_dir, init_lesson_filename
     )
     sue_lessonfilehandler._create_initial_lesson_files_from_default()
     assert os_path_exists(init_lesson_file_path)
-    assert gut_file_exists(env_dir(), a23_lasso, exx.sue) is False
+    assert gut_file_exists(str(temp3_fs), a23_lasso, exx.sue) is False
 
     # WHEN
     sue_lessonfilehandler._create_gut_from_lessons()
 
     # THEN
-    assert gut_file_exists(env_dir(), a23_lasso, exx.sue)
+    assert gut_file_exists(str(temp3_fs), a23_lasso, exx.sue)
     static_sue_gut = sue_lessonfilehandler._merge_any_lessons(
         sue_lessonfilehandler.default_gut_person()
     )
-    gut_person = open_gut_file(env_dir(), a23_lasso, exx.sue)
+    gut_person = open_gut_file(str(temp3_fs), a23_lasso, exx.sue)
     assert gut_person.to_dict() == static_sue_gut.to_dict()
 
 
 def test_LessonFileHandler_create_initial_lesson_and_gut_files_CreatesLessonFilesAndgutFile(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     a23_lasso = lassounit_shop(exx.a23)
-    sue_lessonfilehandler = lessonfilehandler_shop(env_dir(), a23_lasso, exx.sue)
+    sue_lessonfilehandler = lessonfilehandler_shop(str(temp3_fs), a23_lasso, exx.sue)
     init_lesson_filename = sue_lessonfilehandler.lesson_filename(init_lesson_id())
     init_lesson_file_path = create_path(
         sue_lessonfilehandler.lessons_dir, init_lesson_filename
     )
     assert os_path_exists(init_lesson_file_path) is False
-    assert gut_file_exists(env_dir(), a23_lasso, exx.sue) is False
+    assert gut_file_exists(str(temp3_fs), a23_lasso, exx.sue) is False
 
     # WHEN
     sue_lessonfilehandler._create_initial_lesson_and_gut_files()
 
     # THEN
     assert os_path_exists(init_lesson_file_path)
-    assert gut_file_exists(env_dir(), a23_lasso, exx.sue)
+    assert gut_file_exists(str(temp3_fs), a23_lasso, exx.sue)
     static_sue_gut = sue_lessonfilehandler._merge_any_lessons(
         sue_lessonfilehandler.default_gut_person()
     )
-    gut_person = open_gut_file(env_dir(), a23_lasso, exx.sue)
+    gut_person = open_gut_file(str(temp3_fs), a23_lasso, exx.sue)
     assert gut_person.to_dict() == static_sue_gut.to_dict()
 
 
 def test_LessonFileHandler_create_initial_lesson_files_from_gut_SavesOnlyLessonFiles(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     a23_lasso = lassounit_shop(exx.a23)
-    sue_lessonfilehandler = lessonfilehandler_shop(env_dir(), a23_lasso, exx.sue)
+    sue_lessonfilehandler = lessonfilehandler_shop(str(temp3_fs), a23_lasso, exx.sue)
     sue_gut_person = sue_lessonfilehandler.default_gut_person()
     sue_gut_person.add_partnerunit(exx.bob)
-    assert gut_file_exists(env_dir(), a23_lasso, exx.sue) is False
-    save_gut_file(env_dir(), sue_gut_person)
-    assert gut_file_exists(env_dir(), a23_lasso, exx.sue)
+    assert gut_file_exists(str(temp3_fs), a23_lasso, exx.sue) is False
+    save_gut_file(str(temp3_fs), sue_gut_person)
+    assert gut_file_exists(str(temp3_fs), a23_lasso, exx.sue)
     init_lesson_file_path = create_path(
         sue_lessonfilehandler.lessons_dir, f"{init_lesson_id()}.json"
     )
@@ -146,15 +142,15 @@ def test_LessonFileHandler_create_initial_lesson_files_from_gut_SavesOnlyLessonF
 
 
 def test_LessonFileHandler_initialize_lesson_gut_files_SavesgutFileAndLessonFile(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     seven_int = 25
     a23_lasso = lassounit_shop(exx.a23)
     sue_lessonfilehandler = lessonfilehandler_shop(
-        env_dir(), a23_lasso, exx.sue, respect_grain=seven_int
+        str(temp3_fs), a23_lasso, exx.sue, respect_grain=seven_int
     )
-    assert gut_file_exists(env_dir(), a23_lasso, exx.sue) is False
+    assert gut_file_exists(str(temp3_fs), a23_lasso, exx.sue) is False
     init_lesson_file_path = create_path(
         sue_lessonfilehandler.lessons_dir, f"{init_lesson_id()}.json"
     )
@@ -165,7 +161,7 @@ def test_LessonFileHandler_initialize_lesson_gut_files_SavesgutFileAndLessonFile
     sue_lessonfilehandler.initialize_lesson_gut_files()
 
     # THEN
-    gut_person = open_gut_file(env_dir(), a23_lasso, exx.sue)
+    gut_person = open_gut_file(str(temp3_fs), a23_lasso, exx.sue)
     assert gut_person.planroot.get_plan_rope() == exx.a23
     assert gut_person.person_name == exx.sue
     assert gut_person.respect_grain == seven_int
@@ -173,19 +169,19 @@ def test_LessonFileHandler_initialize_lesson_gut_files_SavesgutFileAndLessonFile
 
 
 def test_LessonFileHandler_initialize_lesson_gut_files_SavesOnlygutFile(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     seven_int = 25
     a23_lasso = lassounit_shop(exx.a23)
     sue_lessonfilehandler = lessonfilehandler_shop(
-        env_dir(), a23_lasso, exx.sue, respect_grain=seven_int
+        str(temp3_fs), a23_lasso, exx.sue, respect_grain=seven_int
     )
     sue_lessonfilehandler.initialize_lesson_gut_files()
-    assert gut_file_exists(env_dir(), a23_lasso, exx.sue)
-    gut_path = create_gut_path(env_dir(), a23_lasso, exx.sue)
+    assert gut_file_exists(str(temp3_fs), a23_lasso, exx.sue)
+    gut_path = create_gut_path(str(temp3_fs), a23_lasso, exx.sue)
     delete_dir(gut_path)
-    assert gut_file_exists(env_dir(), a23_lasso, exx.sue) is False
+    assert gut_file_exists(str(temp3_fs), a23_lasso, exx.sue) is False
     init_lesson_file_path = create_path(
         sue_lessonfilehandler.lessons_dir, f"{init_lesson_id()}.json"
     )
@@ -195,7 +191,7 @@ def test_LessonFileHandler_initialize_lesson_gut_files_SavesOnlygutFile(
     sue_lessonfilehandler.initialize_lesson_gut_files()
 
     # THEN
-    gut_person = open_gut_file(env_dir(), a23_lasso, exx.sue)
+    gut_person = open_gut_file(str(temp3_fs), a23_lasso, exx.sue)
     assert gut_person.planroot.get_plan_rope() == exx.a23
     assert gut_person.person_name == exx.sue
     assert gut_person.respect_grain == seven_int
@@ -203,19 +199,19 @@ def test_LessonFileHandler_initialize_lesson_gut_files_SavesOnlygutFile(
 
 
 def test_LessonFileHandler_initialize_lesson_gut_files_SavesOnlyLessonFile(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     seven_int = 25
     a23_lasso = lassounit_shop(exx.a23)
     sue_lessonfilehandler = lessonfilehandler_shop(
-        env_dir(), a23_lasso, exx.sue, respect_grain=seven_int
+        str(temp3_fs), a23_lasso, exx.sue, respect_grain=seven_int
     )
     sue_lessonfilehandler.initialize_lesson_gut_files()
-    sue_gut_person = open_gut_file(env_dir(), a23_lasso, exx.sue)
+    sue_gut_person = open_gut_file(str(temp3_fs), a23_lasso, exx.sue)
     sue_gut_person.add_partnerunit(exx.bob)
-    save_gut_file(env_dir(), sue_gut_person)
-    assert gut_file_exists(env_dir(), a23_lasso, exx.sue)
+    save_gut_file(str(temp3_fs), sue_gut_person)
+    assert gut_file_exists(str(temp3_fs), a23_lasso, exx.sue)
     init_lesson_file_path = create_path(
         sue_lessonfilehandler.lessons_dir, f"{init_lesson_id()}.json"
     )
@@ -234,14 +230,14 @@ def test_LessonFileHandler_initialize_lesson_gut_files_SavesOnlyLessonFile(
 
 
 def test_LessonFileHandler_append_lessons_to_gut_file_AddsLessonsTogutFile(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     a23_lasso = lassounit_shop(exx.a23)
-    sue_lessonfilehandler = lessonfilehandler_shop(env_dir(), a23_lasso, exx.sue)
+    sue_lessonfilehandler = lessonfilehandler_shop(str(temp3_fs), a23_lasso, exx.sue)
     sue_lessonfilehandler.initialize_lesson_gut_files()
     sue_lessonfilehandler.save_lesson_file(sue_2personatoms_lessonunit())
-    gut_person = open_gut_file(env_dir(), a23_lasso, exx.sue)
+    gut_person = open_gut_file(str(temp3_fs), a23_lasso, exx.sue)
     # gut_person.add_plan(gut_person.make_l1_rope("sports"))
     sports_str = "sports"
     sports_rope = gut_person.make_l1_rope(sports_str)

@@ -10,13 +10,12 @@ from src.ch14_moment.moment_frame import (
     get_moment_epochholder,
 )
 from src.ch14_moment.moment_main import momentunit_shop
-from src.ch14_moment.test._util.ch14_env import get_temp_dir
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_get_moment_epochholder_ReturnsObj_Scenario0_Empty_offi_time():
+def test_get_moment_epochholder_ReturnsObj_Scenario0_Empty_offi_time(temp3_dir):
     # ESTABLISH
-    a23_momentunit = momentunit_shop(exx.a23, get_temp_dir())
+    a23_momentunit = momentunit_shop(exx.a23, temp3_dir)
     assert a23_momentunit.epoch == epochunit_shop(get_creg_config())
     assert not a23_momentunit.offi_time_max
 
@@ -36,14 +35,16 @@ def test_get_moment_epochholder_ReturnsObj_Scenario0_Empty_offi_time():
     assert a23_epochholder._year_num == 0
 
 
-def test_get_moment_epochholder_ReturnsObj_Scenario1_MomentUnit_NonDefaultAttrs():
+def test_get_moment_epochholder_ReturnsObj_Scenario1_MomentUnit_NonDefaultAttrs(
+    temp3_dir,
+):
     # ESTABLISH
     a23_fund_grain = 5
     a23_respect_grain = 4
     a23_mana_grain = 7
     a23_momentunit = momentunit_shop(
         exx.a23_slash,
-        get_temp_dir(),
+        temp3_dir,
         knot=exx.slash,
         fund_grain=a23_fund_grain,
         respect_grain=a23_respect_grain,
@@ -78,9 +79,9 @@ def test_get_moment_epochholder_ReturnsObj_Scenario1_MomentUnit_NonDefaultAttrs(
     #  epochholder_shop()
 
 
-def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario0_tran_time():
+def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario0_tran_time(temp3_dir):
     # ESTABLISH
-    a23_momentunit = momentunit_shop(exx.a23, get_temp_dir())
+    a23_momentunit = momentunit_shop(exx.a23, temp3_dir)
     t55 = 55
     a23_momentunit.paybook.add_tranunit(exx.a23, exx.yao, t55, 3)
     epoch_frame_min = 6
@@ -95,9 +96,11 @@ def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario0_tran_time():
     assert a23_momentunit.paybook.tranunit_exists(exx.a23, exx.yao, expected_time)
 
 
-def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario1_tran_time_ModularAddition():
+def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario1_tran_time_ModularAddition(
+    temp3_dir,
+):
     # ESTABLISH
-    a23_momentunit = momentunit_shop(exx.a23, get_temp_dir())
+    a23_momentunit = momentunit_shop(exx.a23, temp3_dir)
     t55 = 55
     a23_momentunit.paybook.add_tranunit(exx.a23, exx.yao, t55, 3)
     frame_min = DEFAULT_EPOCH_LENGTH + 300
@@ -112,10 +115,12 @@ def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario1_tran_time_ModularAddit
     assert a23_momentunit.paybook.tranunit_exists(exx.a23, exx.yao, expected_time)
 
 
-def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario2_tran_time_DifferentEpochUnit():
+def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario2_tran_time_DifferentEpochUnit(
+    temp3_dir,
+):
     # ESTABLISH
     creg_epochunit = epochunit_shop(get_creg_config())
-    a23_momentunit = momentunit_shop(exx.a23, get_temp_dir(), creg_epochunit)
+    a23_momentunit = momentunit_shop(exx.a23, temp3_dir, creg_epochunit)
     t55 = 55
     a23_momentunit.paybook.add_tranunit(exx.a23, exx.yao, t55, 3)
     epoch_length = get_epoch_length(get_creg_config())
@@ -131,9 +136,11 @@ def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario2_tran_time_DifferentEpo
     assert a23_momentunit.paybook.tranunit_exists(exx.a23, exx.yao, expected_time)
 
 
-def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario3_tran_time_NoErrorWhenUsingSameTIme():
+def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario3_tran_time_NoErrorWhenUsingSameTIme(
+    temp3_dir,
+):
     # ESTABLISH
-    a23_momentunit = momentunit_shop(exx.a23, get_temp_dir())
+    a23_momentunit = momentunit_shop(exx.a23, temp3_dir)
     t55 = 55
     t65 = 65
     t75 = 75
@@ -152,9 +159,9 @@ def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario3_tran_time_NoErrorWhenU
     assert a23_momentunit.paybook.tranunit_exists(exx.a23, exx.yao, t75)
 
 
-def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario4_bud_time():
+def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario4_bud_time(temp3_dir):
     # ESTABLISH
-    a23_momentunit = momentunit_shop(exx.a23, get_temp_dir())
+    a23_momentunit = momentunit_shop(exx.a23, temp3_dir)
     t55_quota = 4
     t55_time = 55
     epoch_frame_min = 10
@@ -173,10 +180,12 @@ def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario4_bud_time():
     assert a23_momentunit.bud_quota_exists(exx.a23, t65_time, t55_quota)
 
 
-def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario5_bud_time_ModularAddition():
+def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario5_bud_time_ModularAddition(
+    temp3_dir,
+):
     # ESTABLISH
     creg_epochunit = epochunit_shop(get_creg_config())
-    a23_momentunit = momentunit_shop(exx.a23, get_temp_dir(), creg_epochunit)
+    a23_momentunit = momentunit_shop(exx.a23, temp3_dir, creg_epochunit)
     t55_quota = 4
     t55_time = 55
     epoch_frame_min = 10
@@ -198,9 +207,9 @@ def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario5_bud_time_ModularAdditi
     assert a23_momentunit.bud_quota_exists(exx.a23, expected_time, t55_quota)
 
 
-def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario6_offi_time():
+def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario6_offi_time(temp3_dir):
     # ESTABLISH
-    a23_momentunit = momentunit_shop(exx.a23, get_temp_dir())
+    a23_momentunit = momentunit_shop(exx.a23, temp3_dir)
     epoch_frame_min = 10
     t55_offi_time = 55
     t65_offi_time = t55_offi_time + epoch_frame_min
@@ -216,10 +225,10 @@ def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario6_offi_time():
     assert t65_offi_time in a23_momentunit.offi_times
 
 
-def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario7_offi_time_Set():
+def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario7_offi_time_Set(temp3_dir):
     # ESTABLISH
     creg_epochunit = epochunit_shop(get_creg_config())
-    a23_momentunit = momentunit_shop(exx.a23, get_temp_dir(), creg_epochunit)
+    a23_momentunit = momentunit_shop(exx.a23, temp3_dir, creg_epochunit)
     epoch_length = get_epoch_length(get_creg_config())
     epoch_frame_min = 10 + epoch_length
     t55_offi_time = 55

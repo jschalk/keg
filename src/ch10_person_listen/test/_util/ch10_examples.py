@@ -6,7 +6,6 @@ from src.ch09_person_lesson.lesson_filehandler import (
     lessonfilehandler_shop,
 )
 from src.ch09_person_lesson.test._util.ch09_examples import get_texas_rope
-from src.ch10_person_listen.test._util.ch10_env import get_temp_dir
 from src.ref.keywords import Ch10Keywords as kw, ExampleStrs as exx
 
 
@@ -108,9 +107,9 @@ def get_example_yao_speaker() -> PersonUnit:
     return yao_speaker
 
 
-def get_texas_lessonfilehandler() -> LessonFileHandler:
+def get_texas_lessonfilehandler(x_dir: str) -> LessonFileHandler:
     moment_lasso = lassounit_shop(ch10_example_moment_rope())
-    return lessonfilehandler_shop(get_temp_dir(), moment_lasso, person_name="Sue")
+    return lessonfilehandler_shop(x_dir, moment_lasso, person_name="Sue")
 
 
 def get_dakota_rope() -> RopeTerm:
@@ -121,9 +120,9 @@ def get_dakota_rope() -> RopeTerm:
     return create_rope_from_labels([moment_rope, nation_str, usa_str, dakota_str])
 
 
-def get_dakota_lessonfilehandler() -> LessonFileHandler:
+def get_dakota_lessonfilehandler(x_dir: str) -> LessonFileHandler:
     moment_lasso = lassounit_shop(ch10_example_moment_rope())
-    return lessonfilehandler_shop(get_temp_dir(), moment_lasso, person_name="Sue")
+    return lessonfilehandler_shop(x_dir, moment_lasso, person_name="Sue")
 
 
 def get_fund_breakdown_person() -> PersonUnit:

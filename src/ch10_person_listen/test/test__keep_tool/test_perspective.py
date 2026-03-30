@@ -9,10 +9,6 @@ from src.ch10_person_listen.keep_tool import (
     save_job_file,
     save_vision_person,
 )
-from src.ch10_person_listen.test._util.ch10_env import (
-    get_temp_dir as env_dir,
-    temp_dir_setup,
-)
 from src.ref.keywords import ExampleStrs as exx
 
 
@@ -32,18 +28,18 @@ def test_get_perspective_person_ReturnsPersonWith_person_nameSetToLessonFileHand
 
 
 def test_get_dw_perspective_person_ReturnsPersonWith_person_nameSetToLessonFileHandler_person_name(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     bob_personunit = get_personunit_with_4_levels()
     bob_personunit.set_person_name(exx.bob)
     a23_lasso = lassounit_shop(exx.a23)
-    bob_lessonfilehandler = lessonfilehandler_shop(env_dir(), a23_lasso, exx.bob)
+    bob_lessonfilehandler = lessonfilehandler_shop(str(temp3_fs), a23_lasso, exx.bob)
     save_job_file(bob_lessonfilehandler.moment_mstr_dir, bob_personunit)
 
     # WHEN
     perspective_personunit = get_dw_perspective_person(
-        env_dir(), exx.a23, exx.bob, exx.sue
+        str(temp3_fs), exx.a23, exx.bob, exx.sue
     )
 
     # THEN
@@ -54,7 +50,7 @@ def test_get_dw_perspective_person_ReturnsPersonWith_person_nameSetToLessonFileH
 
 
 def test_rj_perspective_person_ReturnsPersonWith_person_nameSetToLessonFileHandler_person_name(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     nation_str = "nation"
@@ -65,7 +61,7 @@ def test_rj_perspective_person_ReturnsPersonWith_person_nameSetToLessonFileHandl
     yao_personunit.set_person_name(exx.yao)
 
     save_vision_person(
-        moment_mstr_dir=env_dir(),
+        moment_mstr_dir=str(temp3_fs),
         moment_rope=exx.a23,
         healer_name=exx.bob,
         keep_rope=iowa_rope,
@@ -75,7 +71,7 @@ def test_rj_perspective_person_ReturnsPersonWith_person_nameSetToLessonFileHandl
 
     # WHEN
     perspective_personunit = rj_perspective_person(
-        moment_mstr_dir=env_dir(),
+        moment_mstr_dir=str(temp3_fs),
         moment_rope=exx.a23,
         keep_rope=iowa_rope,
         knot=default_knot_if_None(),

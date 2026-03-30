@@ -5,10 +5,6 @@ from src.ch09_person_lesson.lesson_main import (
     create_lessonunit_from_files,
     lessonunit_shop,
 )
-from src.ch09_person_lesson.test._util.ch09_env import (
-    get_temp_dir as moments_dir,
-    temp_dir_setup,
-)
 from src.ch09_person_lesson.test._util.ch09_examples import (
     get_atom_example_planunit_ball,
     get_atom_example_planunit_knee,
@@ -17,9 +13,9 @@ from src.ch09_person_lesson.test._util.ch09_examples import (
 from src.ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
 
 
-def test_LessonUnit_save_atom_file_SavesCorrectFile(temp_dir_setup):
+def test_LessonUnit_save_atom_file_SavesCorrectFile(temp3_fs):
     # ESTABLISH
-    x_moment_dir = create_path(moments_dir(), exx.a23)
+    x_moment_dir = create_path(str(temp3_fs), exx.a23)
     x_persons_dir = create_path(x_moment_dir, "persons")
     sue_person_dir = create_path(x_persons_dir, exx.sue)
     sue_atoms_dir = create_path(sue_person_dir, "atoms")
@@ -46,9 +42,9 @@ def test_LessonUnit_save_atom_file_SavesCorrectFile(temp_dir_setup):
     assert two_file_dict == sports_atom.to_dict()
 
 
-def test_LessonUnit_atom_file_exists_ReturnsObj(temp_dir_setup):
+def test_LessonUnit_atom_file_exists_ReturnsObj(temp3_fs):
     # ESTABLISH
-    x_moment_dir = create_path(moments_dir(), exx.a23)
+    x_moment_dir = create_path(str(temp3_fs), exx.a23)
     x_persons_dir = create_path(x_moment_dir, "persons")
     sue_person_dir = create_path(x_persons_dir, exx.sue)
     sue_atoms_dir = create_path(sue_person_dir, "atoms")
@@ -72,9 +68,9 @@ def test_LessonUnit_atom_file_exists_ReturnsObj(temp_dir_setup):
     assert sue_lessonunit.atom_file_exists(two_int)
 
 
-def test_LessonUnit_open_atom_file_ReturnsObj(temp_dir_setup):
+def test_LessonUnit_open_atom_file_ReturnsObj(temp3_fs):
     # ESTABLISH
-    x_moment_dir = create_path(moments_dir(), exx.a23)
+    x_moment_dir = create_path(str(temp3_fs), exx.a23)
     x_persons_dir = create_path(x_moment_dir, "persons")
     sue_person_dir = create_path(x_persons_dir, exx.sue)
     sue_atoms_dir = create_path(sue_person_dir, "atoms")
@@ -98,9 +94,9 @@ def test_LessonUnit_open_atom_file_ReturnsObj(temp_dir_setup):
     assert file_atom == sports_atom
 
 
-def test_LessonUnit_save_lesson_file_SavesCorrectFile(temp_dir_setup):
+def test_LessonUnit_save_lesson_file_SavesCorrectFile(temp3_fs):
     # ESTABLISH
-    x_moment_dir = create_path(moments_dir(), exx.a23)
+    x_moment_dir = create_path(str(temp3_fs), exx.a23)
     x_persons_dir = create_path(x_moment_dir, "persons")
     sue_lesson_id = 2
     sue_person_dir = create_path(x_persons_dir, exx.sue)
@@ -133,9 +129,9 @@ def test_LessonUnit_save_lesson_file_SavesCorrectFile(temp_dir_setup):
     print(f"{lesson_file_dict.keys()=}")
 
 
-def test_LessonUnit_lesson_file_exists_ReturnsObj(temp_dir_setup):
+def test_LessonUnit_lesson_file_exists_ReturnsObj(temp3_fs):
     # ESTABLISH
-    x_moment_dir = create_path(moments_dir(), exx.a23)
+    x_moment_dir = create_path(str(temp3_fs), exx.a23)
     x_persons_dir = create_path(x_moment_dir, "persons")
     sue_person_dir = create_path(x_persons_dir, exx.sue)
     sue_lessons_dir = create_path(sue_person_dir, "lessons")
@@ -158,9 +154,9 @@ def test_LessonUnit_lesson_file_exists_ReturnsObj(temp_dir_setup):
     assert sue_lessonunit.lesson_file_exists()
 
 
-def test_LessonUnit_save_files_SavesFiles(temp_dir_setup):
+def test_LessonUnit_save_files_SavesFiles(temp3_fs):
     # ESTABLISH
-    x_moment_dir = create_path(moments_dir(), exx.a23)
+    x_moment_dir = create_path(str(temp3_fs), exx.a23)
     x_persons_dir = create_path(x_moment_dir, "persons")
     sue_person_dir = create_path(x_persons_dir, exx.sue)
     sue_atoms_dir = create_path(sue_person_dir, "atoms")
@@ -192,9 +188,9 @@ def test_LessonUnit_save_files_SavesFiles(temp_dir_setup):
     assert sue_lessonunit.atom_file_exists(int5)
 
 
-def test_LessonUnit_create_persondelta_from_atom_files_SetsAttr(temp_dir_setup):
+def test_LessonUnit_create_persondelta_from_atom_files_SetsAttr(temp3_fs):
     # ESTABLISH
-    x_moment_dir = create_path(moments_dir(), exx.a23)
+    x_moment_dir = create_path(str(temp3_fs), exx.a23)
     x_persons_dir = create_path(x_moment_dir, "persons")
     sue_person_dir = create_path(x_persons_dir, exx.sue)
     sue_atoms_dir = create_path(sue_person_dir, "atoms")
@@ -224,9 +220,9 @@ def test_LessonUnit_create_persondelta_from_atom_files_SetsAttr(temp_dir_setup):
     assert sue_lessonunit.persondelta == static_persondelta
 
 
-def test_create_lessonunit_from_files_ReturnsObj(temp_dir_setup):
+def test_create_lessonunit_from_files_ReturnsObj(temp3_fs):
     # ESTABLISH
-    x_moment_dir = create_path(moments_dir(), exx.a23)
+    x_moment_dir = create_path(str(temp3_fs), exx.a23)
     x_persons_dir = create_path(x_moment_dir, "persons")
     sue_person_dir = create_path(x_persons_dir, exx.sue)
     sue_atoms_dir = create_path(sue_person_dir, "atoms")

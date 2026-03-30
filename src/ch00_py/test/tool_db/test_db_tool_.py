@@ -415,7 +415,7 @@ def test_get_grouping_with_all_values_equal_sql_query_ReturnsObj_Scenario1_Inclu
 
 
 def get_example_test_database11_path_literal(x_dir) -> str:
-    """get_temp_dir/test_database11.db"""
+    """x_dir/test_database11.db"""
     return create_path(x_dir, "test_database11.db")
 
 

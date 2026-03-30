@@ -15,15 +15,14 @@ from src.ch10_person_listen._ref.ch10_path import (
     create_treasury_db_path,
     treasury_filename,
 )
-from src.ch10_person_listen.test._util.ch10_env import get_temp_dir
 from src.ref.keywords import Ch10Keywords as kw, ExampleStrs as exx
 
 A23_LASSO = lassounit_shop(exx.a23)
 
 
-def test_create_job_path_ReturnsObj():
+def test_create_job_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
 
     # WHEN
     gen_a23_e3_person_path = create_job_path(x_moment_mstr_dir, A23_LASSO, exx.bob)
@@ -59,9 +58,9 @@ def test_treasury_filename_ReturnsObj():
     assert treasury_filename() == "treasury.db"
 
 
-def test_create_keeps_dir_path_ReturnsObj():
+def test_create_keeps_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
 
     # WHEN
     keeps_dir = create_keeps_dir_path(x_moment_mstr_dir, exx.a23, exx.sue)
@@ -75,9 +74,9 @@ def test_create_keeps_dir_path_ReturnsObj():
     assert keeps_dir == expected_keeps_dir
 
 
-def test_create_keep_rope_path_ReturnsObj_Scenario0_SimpleRope():
+def test_create_keep_rope_path_ReturnsObj_Scenario0_SimpleRope(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     casa_rope = create_rope(exx.a23, exx.casa)
 
     # WHEN
@@ -94,11 +93,13 @@ def test_create_keep_rope_path_ReturnsObj_Scenario0_SimpleRope():
     assert keep_casa_path == expected_keep_casa_dir
 
 
-def test_create_keep_rope_path_ReturnsObj_Scenario1_MoreTestsForRopePathCreation():
+def test_create_keep_rope_path_ReturnsObj_Scenario1_MoreTestsForRopePathCreation(
+    temp3_dir,
+):
     # ESTABLISH
     peru_str = "peru"
     peru_rope = create_rope(peru_str)
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = temp3_dir
     texas_str = "texas"
     dallas_str = "dallas"
     elpaso_str = "el paso"
@@ -191,9 +192,9 @@ def test_create_keep_rope_path_RaisesError_Scenarion2_keep_rope_DoesNotExist():
     assert str(excinfo.value) == assertion_fail_str
 
 
-def test_create_keep_dutys_path_ReturnsObj() -> None:
+def test_create_keep_dutys_path_ReturnsObj(temp3_dir) -> None:
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     casa_rope = create_rope(exx.a23, exx.casa)
 
     # WHEN
@@ -213,9 +214,9 @@ def test_create_keep_dutys_path_ReturnsObj() -> None:
     assert gen_keep_dutys_path == expected_keep_dutys_path
 
 
-def test_create_keep_duty_path_ReturnsObj() -> None:
+def test_create_keep_duty_path_ReturnsObj(temp3_dir) -> None:
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     casa_rope = create_rope(exx.a23, exx.casa)
 
     # WHEN
@@ -237,9 +238,9 @@ def test_create_keep_duty_path_ReturnsObj() -> None:
     assert gen_keep_duty_path == expected_keep_duty_path
 
 
-def test_create_keep_grades_path_ReturnsObj() -> None:
+def test_create_keep_grades_path_ReturnsObj(temp3_dir) -> None:
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     casa_rope = create_rope(exx.a23, exx.casa)
 
     # WHEN
@@ -259,9 +260,9 @@ def test_create_keep_grades_path_ReturnsObj() -> None:
     assert gen_keep_dutys_path == expected_keep_dutys_path
 
 
-def test_create_keep_grade_path_ReturnsObj() -> None:
+def test_create_keep_grade_path_ReturnsObj(temp3_dir) -> None:
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     casa_rope = create_rope(exx.a23, exx.casa)
 
     # WHEN
@@ -282,9 +283,9 @@ def test_create_keep_grade_path_ReturnsObj() -> None:
     assert gen_keep_grade_path == expected_grade_path
 
 
-def test_create_keep_visions_path_ReturnsObj() -> None:
+def test_create_keep_visions_path_ReturnsObj(temp3_dir) -> None:
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     casa_rope = create_rope(exx.a23, exx.casa)
 
     # WHEN
@@ -304,9 +305,9 @@ def test_create_keep_visions_path_ReturnsObj() -> None:
     assert gen_keep_dutys_path == expected_keep_dutys_path
 
 
-def test_create_treasury_db_path_ReturnsObj() -> None:
+def test_create_treasury_db_path_ReturnsObj(temp3_dir) -> None:
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     casa_rope = create_rope(exx.a23, exx.casa)
 
     # WHEN

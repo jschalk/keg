@@ -18,10 +18,6 @@ from src.ch10_person_listen.listen_main import (
     create_vision_file_from_duty_file,
     listen_to_person_visions,
 )
-from src.ch10_person_listen.test._util.ch10_env import (
-    get_temp_dir as env_dir,
-    temp_dir_setup,
-)
 from src.ch10_person_listen.test._util.ch10_examples import (
     ch10_example_moment_rope,
     eat_str,
@@ -202,41 +198,42 @@ def get_on_land_rope() -> RopeTerm:
     return create_rope(get_location_rope(), get_on_land_str())
 
 
-def get_yao_ohio_lessonfilehandler() -> LessonFileHandler:
+def get_yao_ohio_lessonfilehandler(moment_mstr_dir) -> LessonFileHandler:
     yao_person = get_example_yao_person()
     return lessonfilehandler_shop(
-        moment_mstr_dir=env_dir(),
+        moment_mstr_dir=moment_mstr_dir,
         moment_lasso=lassounit_shop(yao_person.planroot.get_plan_rope()),
         person_name=yao_person.person_name,
     )
 
 
-def get_yao_iowa_lessonfilehandler() -> LessonFileHandler:
+def get_yao_iowa_lessonfilehandler(moment_mstr_dir) -> LessonFileHandler:
     yao_person = get_example_yao_person()
     return lessonfilehandler_shop(
-        moment_mstr_dir=env_dir(),
+        moment_mstr_dir=moment_mstr_dir,
         moment_lasso=lassounit_shop(yao_person.planroot.get_plan_rope()),
         person_name=yao_person.person_name,
     )
 
 
-def get_zia_utah_lessonfilehandler() -> LessonFileHandler:
+def get_zia_utah_lessonfilehandler(moment_mstr_dir) -> LessonFileHandler:
     yao_person = get_example_yao_person()
     return lessonfilehandler_shop(
-        moment_mstr_dir=env_dir(),
+        moment_mstr_dir=moment_mstr_dir,
         moment_lasso=lassounit_shop(yao_person.planroot.get_plan_rope()),
         person_name="Zia",
     )
 
 
-def get_example_yao_gut_with_3_healers():
+def get_example_yao_gut_with_3_healers(moment_mstr_dir) -> PersonUnit:
+    d = moment_mstr_dir
     yao_gut = get_example_yao_person()
     iowa_plan = planunit_shop(get_iowa_str(), problem_bool=True)
     ohio_plan = planunit_shop(get_ohio_str(), problem_bool=True)
     utah_plan = planunit_shop(get_utah_str(), problem_bool=True)
-    iowa_plan.healerunit.set_healer_name(get_yao_iowa_lessonfilehandler().person_name)
-    ohio_plan.healerunit.set_healer_name(get_yao_ohio_lessonfilehandler().person_name)
-    utah_plan.healerunit.set_healer_name(get_zia_utah_lessonfilehandler().person_name)
+    iowa_plan.healerunit.set_healer_name(get_yao_iowa_lessonfilehandler(d).person_name)
+    ohio_plan.healerunit.set_healer_name(get_yao_ohio_lessonfilehandler(d).person_name)
+    utah_plan.healerunit.set_healer_name(get_zia_utah_lessonfilehandler(d).person_name)
     yao_gut.set_plan_obj(iowa_plan, get_usa_rope())
     yao_gut.set_plan_obj(ohio_plan, get_usa_rope())
     yao_gut.set_plan_obj(utah_plan, get_usa_rope())
@@ -245,7 +242,7 @@ def get_example_yao_gut_with_3_healers():
 
 
 def test_listen_to_person_visions_Pipeline_Scenario1_yao_gut_CanOnlyReferenceItself(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
@@ -253,9 +250,9 @@ def test_listen_to_person_visions_Pipeline_Scenario1_yao_gut_CanOnlyReferenceIts
     # yao_vision1 with 1 case_task, fact that doesn't make that case_task active
     # yao_vision2 with 2 case_tasks, one is equal fact that makes case_task active
     # yao_vision3 with 1 new case_task, fact stays with it
-    moment_mstr_dir = env_dir()
+    moment_mstr_dir = str(temp3_fs)
     moment_rope = ch10_example_moment_rope()
-    yao_gut0 = get_example_yao_gut_with_3_healers()
+    yao_gut0 = get_example_yao_gut_with_3_healers(moment_mstr_dir)
     yao_gut0.set_l1_plan(planunit_shop(get_location_str()))
     yao_gut0.set_plan_obj(planunit_shop(get_in_mer_str()), get_location_rope())
     yao_gut0.set_plan_obj(planunit_shop(get_on_land_str()), get_location_rope())
@@ -274,9 +271,9 @@ def test_listen_to_person_visions_Pipeline_Scenario1_yao_gut_CanOnlyReferenceIts
     yao_vision1 = get_example_yao_vision1_speaker()
     yao_vision2 = get_example_yao_vision2_speaker()
     yao_vision3 = get_example_yao_vision3_speaker()
-    yao_iowa_lessonfilehandler = get_yao_iowa_lessonfilehandler()
-    yao_ohio_lessonfilehandler = get_yao_ohio_lessonfilehandler()
-    zia_utah_lessonfilehandler = get_zia_utah_lessonfilehandler()
+    yao_iowa_lessonfilehandler = get_yao_iowa_lessonfilehandler(str(temp3_fs))
+    yao_ohio_lessonfilehandler = get_yao_ohio_lessonfilehandler(str(temp3_fs))
+    zia_utah_lessonfilehandler = get_zia_utah_lessonfilehandler(str(temp3_fs))
     # delete_dir(yao_iowa_lessonfilehandler.persons_dir())
     moment_lasso = lassounit_shop(moment_rope)
     assert gut_file_exists(moment_mstr_dir, moment_lasso, exx.yao) is False
@@ -316,7 +313,7 @@ def test_listen_to_person_visions_Pipeline_Scenario1_yao_gut_CanOnlyReferenceIts
     )
 
     print(f"{yao_gut0.get_fact(get_location_rope())=}")
-    save_gut_file(env_dir(), yao_gut0)
+    save_gut_file(str(temp3_fs), yao_gut0)
     assert gut_file_exists(moment_mstr_dir, moment_lasso, exx.yao)
     assert (
         vision_file_exists(
@@ -386,10 +383,10 @@ def test_listen_to_person_visions_Pipeline_Scenario1_yao_gut_CanOnlyReferenceIts
     assert yao_job != yao_gut0
 
 
-def test_create_vision_file_from_duty_file_CreatesEmptyvision(temp_dir_setup):
+def test_create_vision_file_from_duty_file_CreatesEmptyvision(temp3_fs):
     # ESTABLISH
     yao_duty = personunit_shop(exx.yao)
-    sue_texas_lessonfilehandler = get_texas_lessonfilehandler()
+    sue_texas_lessonfilehandler = get_texas_lessonfilehandler(str(temp3_fs))
     save_duty_person(
         moment_mstr_dir=sue_texas_lessonfilehandler.moment_mstr_dir,
         person_name=sue_texas_lessonfilehandler.person_name,

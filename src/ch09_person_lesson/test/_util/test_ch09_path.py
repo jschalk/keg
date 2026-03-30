@@ -14,15 +14,14 @@ from src.ch09_person_lesson._ref.ch09_path import (
     create_person_dir_path,
 )
 from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch09_person_lesson.test._util.ch09_env import get_temp_dir
 from src.ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
 
 A23_LASSO = lassounit_shop(exx.a23)
 
 
-def test_create_moments_dir_path_ReturnsObj():
+def test_create_moments_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
 
     # WHEN
     gen_dir_path = create_moments_dir_path(x_moment_mstr_dir)
@@ -32,9 +31,9 @@ def test_create_moments_dir_path_ReturnsObj():
     assert gen_dir_path == expected_moments_dir
 
 
-def test_create_moment_dir_path_ReturnsObj():
+def test_create_moment_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
 
     # WHEN
     gen_a23_dir_path = create_moment_dir_path(x_moment_mstr_dir, A23_LASSO)
@@ -45,9 +44,9 @@ def test_create_moment_dir_path_ReturnsObj():
     assert gen_a23_dir_path == expected_a23_path
 
 
-def test_create_moment_json_path_ReturnsObj():
+def test_create_moment_json_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
 
     # WHEN
     gen_a23_json_path = create_moment_json_path(x_moment_mstr_dir, A23_LASSO)
@@ -59,9 +58,9 @@ def test_create_moment_json_path_ReturnsObj():
     assert gen_a23_json_path == expected_a23_json_path
 
 
-def test_create_moment_persons_dir_path_ReturnsObj():
+def test_create_moment_persons_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
 
     # WHEN
     gen_persons_dir = create_moment_persons_dir_path(x_moment_mstr_dir, A23_LASSO)
@@ -73,9 +72,9 @@ def test_create_moment_persons_dir_path_ReturnsObj():
     assert gen_persons_dir == expected_persons_dir
 
 
-def test_create_person_dir_path_ReturnsObj():
+def test_create_person_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
 
     # WHEN
     sue_dir = create_person_dir_path(x_moment_mstr_dir, A23_LASSO, exx.sue)
@@ -90,9 +89,9 @@ def test_create_person_dir_path_ReturnsObj():
     assert sue_dir == expected_sue_dir
 
 
-def test_create_atoms_dir_path_ReturnsObj():
+def test_create_atoms_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
 
     # WHEN
     atoms_dir = create_atoms_dir_path(x_moment_mstr_dir, A23_LASSO, exx.sue)
@@ -106,9 +105,9 @@ def test_create_atoms_dir_path_ReturnsObj():
     assert atoms_dir == expected_atoms_dir
 
 
-def test_create_lessons_dir_path_ReturnsObj():
+def test_create_lessons_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
 
     # WHEN
     lessons_dir = create_lessons_dir_path(x_moment_mstr_dir, A23_LASSO, exx.sue)
@@ -122,9 +121,9 @@ def test_create_lessons_dir_path_ReturnsObj():
     assert lessons_dir == expected_lessons_dir
 
 
-def test_create_gut_path_ReturnsObj():
+def test_create_gut_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
 
     # WHEN
     gen_a23_e3_person_path = create_gut_path(x_moment_mstr_dir, A23_LASSO, exx.bob)

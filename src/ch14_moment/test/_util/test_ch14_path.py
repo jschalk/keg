@@ -7,14 +7,13 @@ from src.ch14_moment._ref.ch14_path import (
     BUD_MANDATE_FILENAME,
     create_bud_partner_mandate_ledger_path,
 )
-from src.ch14_moment.test._util.ch14_env import get_temp_dir
 from src.ref.keywords import Ch14Keywords as kw, ExampleStrs as exx
 
 
-def test_create_bud_partner_mandate_ledger_path_ReturnsObj():
+def test_create_bud_partner_mandate_ledger_path_ReturnsObj(temp3_dir):
     # sourcery skip: extract-duplicate-method, inline-immediately-returned-variable
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     timenum7 = 7
     a23_lasso = lassounit_shop(exx.a23)
 

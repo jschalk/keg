@@ -5,15 +5,11 @@ from src.ch10_person_listen.keep_tool import (
     save_vision_person,
     vision_file_exists,
 )
-from src.ch10_person_listen.test._util.ch10_env import (
-    get_temp_dir as env_dir,
-    temp_dir_setup,
-)
 from src.ch10_person_listen.test._util.ch10_examples import ch10_example_moment_rope
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_save_vision_person_SavesFile(temp_dir_setup):
+def test_save_vision_person_SavesFile(temp3_fs):
     # ESTABLISH
     nation_str = "nation"
     nation_rope = create_rope(ch10_example_moment_rope(), nation_str)
@@ -26,17 +22,19 @@ def test_save_vision_person_SavesFile(temp_dir_setup):
     bob_person.set_person_name(exx.bob)
     x_knot = default_knot_if_None()
     assert not vision_file_exists(
-        env_dir(), exx.sue, exx.a23, texas_rope, x_knot, exx.bob
+        str(temp3_fs), exx.sue, exx.a23, texas_rope, x_knot, exx.bob
     )
 
     # WHEN
-    save_vision_person(env_dir(), exx.sue, exx.a23, texas_rope, x_knot, bob_person)
+    save_vision_person(str(temp3_fs), exx.sue, exx.a23, texas_rope, x_knot, bob_person)
 
     # THEN
-    assert vision_file_exists(env_dir(), exx.sue, exx.a23, texas_rope, x_knot, exx.bob)
+    assert vision_file_exists(
+        str(temp3_fs), exx.sue, exx.a23, texas_rope, x_knot, exx.bob
+    )
 
 
-def test_vision_file_exists_ReturnsBool(temp_dir_setup):
+def test_vision_file_exists_ReturnsBool(temp3_fs):
     # ESTABLISH
     nation_str = "nation"
     nation_rope = create_rope(ch10_example_moment_rope(), nation_str)
@@ -49,17 +47,19 @@ def test_vision_file_exists_ReturnsBool(temp_dir_setup):
     bob_person.set_person_name(exx.bob)
     x_knot = default_knot_if_None()
     assert not (
-        vision_file_exists(env_dir(), exx.sue, exx.a23, texas_rope, x_knot, exx.bob)
+        vision_file_exists(str(temp3_fs), exx.sue, exx.a23, texas_rope, x_knot, exx.bob)
     )
 
     # WHEN
-    save_vision_person(env_dir(), exx.sue, exx.a23, texas_rope, x_knot, bob_person)
+    save_vision_person(str(temp3_fs), exx.sue, exx.a23, texas_rope, x_knot, bob_person)
 
     # THEN
-    assert vision_file_exists(env_dir(), exx.sue, exx.a23, texas_rope, x_knot, exx.bob)
+    assert vision_file_exists(
+        str(temp3_fs), exx.sue, exx.a23, texas_rope, x_knot, exx.bob
+    )
 
 
-def test_get_vision_person_reason_lowersFile(temp_dir_setup):
+def test_get_vision_person_reason_lowersFile(temp3_fs):
     # ESTABLISH
     nation_str = "nation"
     nation_rope = create_rope(ch10_example_moment_rope(), nation_str)
@@ -71,11 +71,11 @@ def test_get_vision_person_reason_lowersFile(temp_dir_setup):
     bob_person = get_personunit_with_4_levels()
     bob_person.set_person_name(exx.bob)
     x_knot = default_knot_if_None()
-    save_vision_person(env_dir(), exx.sue, exx.a23, texas_rope, x_knot, bob_person)
+    save_vision_person(str(temp3_fs), exx.sue, exx.a23, texas_rope, x_knot, bob_person)
 
     # WHEN
     bob_vision = get_vision_person(
-        env_dir(), exx.sue, exx.a23, texas_rope, x_knot, exx.bob
+        str(temp3_fs), exx.sue, exx.a23, texas_rope, x_knot, exx.bob
     )
 
     # THEN
@@ -83,7 +83,7 @@ def test_get_vision_person_reason_lowersFile(temp_dir_setup):
 
 
 def test_get_vision_person_ReturnsNoneIfFileDoesNotExist(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     nation_str = "nation"
@@ -96,7 +96,7 @@ def test_get_vision_person_ReturnsNoneIfFileDoesNotExist(
 
     # WHEN
     bob_vision = get_vision_person(
-        env_dir(), exx.sue, exx.a23, texas_rope, x_knot, exx.bob
+        str(temp3_fs), exx.sue, exx.a23, texas_rope, x_knot, exx.bob
     )
 
     # THEN

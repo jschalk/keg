@@ -8,7 +8,6 @@ from src.ch09_person_lesson.lesson_filehandler import (
     LessonFileHandler,
     lessonfilehandler_shop,
 )
-from src.ch09_person_lesson.test._util.ch09_env import get_temp_dir
 from src.ref.keywords import ExampleStrs as exx
 
 
@@ -28,9 +27,9 @@ def test_LessonFileHandler_Exists():
     assert not x_lessonfilehandler.lessons_dir
 
 
-def test_lessonfilehandler_shop_ReturnsObj():
+def test_lessonfilehandler_shop_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     a45_str = "amy45"
     a45_rope = create_rope(a45_str, None, exx.slash)
     a45_lasso = lassounit_shop(a45_rope, exx.slash)
@@ -63,9 +62,9 @@ def test_lessonfilehandler_shop_ReturnsObj():
     assert x_lessonfilehandler.lessons_dir == create_path(sue_dir, "lessons")
 
 
-def test_lessonfilehandler_shop_ReturnsObjWhenEmpty():
+def test_lessonfilehandler_shop_ReturnsObjWhenEmpty(temp3_dir):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = temp3_dir
     a23_rope = create_rope("Amy23", None, exx.slash)
     a23_lasso = lassounit_shop(a23_rope, exx.slash)
 

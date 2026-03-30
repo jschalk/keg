@@ -17,14 +17,11 @@ from src.ch10_person_listen.keep_tool import (
     save_duty_person,
     treasury_db_file_exists,
 )
-from src.ch10_person_listen.test._util.ch10_env import get_temp_dir, temp_dir_setup
 from src.ch10_person_listen.test._util.ch10_examples import ch10_example_moment_rope
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_create_keep_path_dir_if_missing_CreatesDirectory(
-    temp_dir_setup,
-):
+def test_create_keep_path_dir_if_missing_CreatesDirectory(temp3_fs):
     # ESTABLISH
     nation_str = "nation"
     nation_rope = create_rope(ch10_example_moment_rope(), nation_str)
@@ -32,7 +29,7 @@ def test_create_keep_path_dir_if_missing_CreatesDirectory(
     usa_rope = create_rope(nation_rope, usa_str)
     texas_str = "Texas"
     texas_rope = create_rope(usa_rope, texas_str)
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     keep_path = create_keep_rope_path(
         moment_mstr_dir, exx.sue, exx.a23, texas_rope, None
     )
@@ -45,9 +42,9 @@ def test_create_keep_path_dir_if_missing_CreatesDirectory(
     assert os_path_exists(keep_path)
 
 
-def test_treasury_db_file_exists_ReturnsObj(temp_dir_setup):
+def test_treasury_db_file_exists_ReturnsObj(temp3_fs):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     texas_rope = create_rope(ch10_example_moment_rope(), "Texas")
     treasury_db_path = create_treasury_db_path(
         moment_mstr_dir,
@@ -81,10 +78,10 @@ def test_treasury_db_file_exists_ReturnsObj(temp_dir_setup):
 
 
 def test_create_treasury_db_file_CreatesDatabase(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     texas_rope = create_rope(exx.a23, "Texas")
     treasury_db_path = create_treasury_db_path(
         moment_mstr_dir=moment_mstr_dir,
@@ -109,10 +106,10 @@ def test_create_treasury_db_file_CreatesDatabase(
 
 
 def test_create_treasury_db_DoesNotOverWriteDBIfExists(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH create keep
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     texas_rope = create_rope(exx.a23, "Texas")
     treasury_db_path = create_treasury_db_path(
         moment_mstr_dir=moment_mstr_dir,
@@ -153,7 +150,7 @@ def test_create_treasury_db_DoesNotOverWriteDBIfExists(
     assert open_file(treasury_db_path) == x_file_str
 
 
-def test_save_duty_person_SavesFile(temp_dir_setup):
+def test_save_duty_person_SavesFile(temp3_fs):
     # ESTABLISH
     nation_str = "nation"
     nation_rope = create_rope(ch10_example_moment_rope(), nation_str)
@@ -161,7 +158,7 @@ def test_save_duty_person_SavesFile(temp_dir_setup):
     usa_rope = create_rope(nation_rope, usa_str)
     texas_str = "Texas"
     texas_rope = create_rope(usa_rope, texas_str)
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     bob_person = get_personunit_with_4_levels()
     bob_person.set_person_name(exx.bob)
     keep_duty_path = create_keep_duty_path(
@@ -188,7 +185,7 @@ def test_save_duty_person_SavesFile(temp_dir_setup):
     assert os_path_exists(keep_duty_path)
 
 
-def test_get_duty_person_reason_lowersFile(temp_dir_setup):
+def test_get_duty_person_reason_lowersFile(temp3_fs):
     # ESTABLISH
     nation_str = "nation"
     nation_rope = create_rope(ch10_example_moment_rope(), nation_str)
@@ -196,7 +193,7 @@ def test_get_duty_person_reason_lowersFile(temp_dir_setup):
     usa_rope = create_rope(nation_rope, usa_str)
     texas_str = "Texas"
     texas_rope = create_rope(usa_rope, texas_str)
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     bob_person = get_personunit_with_4_levels()
     bob_person.set_person_name(exx.bob)
     save_duty_person(

@@ -11,13 +11,12 @@ from src.ch14_moment._ref.ch14_path import (
 )
 from src.ch14_moment.moment_cell import create_bud_mandate_ledgers
 from src.ch14_moment.moment_main import get_momentunit_from_dict, momentunit_shop
-from src.ch14_moment.test._util.ch14_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_create_bud_mandate_ledgers_Scenaro0_BudEmpty(temp_dir_setup):
+def test_create_bud_mandate_ledgers_Scenaro0_BudEmpty(temp3_fs):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     amy23_moment = momentunit_shop(exx.a23, mstr_dir)
     a23_lasso = lassounit_shop(exx.a23)
     a23_json_path = create_moment_json_path(mstr_dir, a23_lasso)
@@ -33,9 +32,9 @@ def test_create_bud_mandate_ledgers_Scenaro0_BudEmpty(temp_dir_setup):
     assert os_path_exists(bob9_bud_mandate_path) is False
 
 
-def test_create_bud_mandate_ledgers_Scenaro1_BudExists(temp_dir_setup):
+def test_create_bud_mandate_ledgers_Scenaro1_BudExists(temp3_fs):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     amy23_moment = momentunit_shop(exx.a23, mstr_dir)
     tp37 = 37
     bud1_quota = 450
@@ -69,10 +68,10 @@ def test_create_bud_mandate_ledgers_Scenaro1_BudExists(temp_dir_setup):
 
 
 def test_create_bud_mandate_ledgers_Scenaro2_Mutliple_cell_partner_mandate_ledgers(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     amy23_moment = momentunit_shop(exx.a23, mstr_dir)
     tp37 = 37
     bud1_quota = 450

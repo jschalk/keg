@@ -9,13 +9,12 @@ from src.ch10_person_listen.keep_tool import (
     save_job_file,
 )
 from src.ch14_moment.moment_main import momentunit_shop
-from src.ch14_moment.test._util.ch14_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_MomentUnit_rotate_job_ReturnsObj_Scenario1(temp_dir_setup):
+def test_MomentUnit_rotate_job_ReturnsObj_Scenario1(temp3_fs):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     a23_moment = momentunit_shop(exx.a23, moment_mstr_dir)
     a23_lasso = lassounit_shop(exx.a23)
     assert not job_file_exists(moment_mstr_dir, a23_lasso, exx.sue)
@@ -32,10 +31,10 @@ def test_MomentUnit_rotate_job_ReturnsObj_Scenario1(temp_dir_setup):
 
 
 def test_MomentUnit_rotate_job_ReturnsObj_Scenario2_EmptyPartnersCause_inallocable_partner_debt_lumen(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     a23_moment = momentunit_shop(exx.a23, moment_mstr_dir)
     init_sue_job = personunit_shop(exx.sue, exx.a23)
     init_sue_job.add_partnerunit(exx.yao)
@@ -58,17 +57,16 @@ def test_MomentUnit_rotate_job_ReturnsObj_Scenario2_EmptyPartnersCause_inallocab
     assert rotated_sue_job.get_partner(exx.bob).inallocable_partner_debt_lumen == 1
 
 
-def a23_job(person_name: str) -> PersonUnit:
-    moment_mstr_dir = get_temp_dir()
+def a23_job(person_name: str, moment_mstr_dir: str) -> PersonUnit:
     a23_lasso = lassounit_shop(exx.a23)
     return open_job_file(moment_mstr_dir, a23_lasso, person_name)
 
 
 def test_MomentUnit_rotate_job_ReturnsObj_Scenario3_job_ChangesFromRotation(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     a23_moment = momentunit_shop(exx.a23, moment_mstr_dir)
     init_sue_job = personunit_shop(exx.sue, exx.a23)
     init_sue_job.add_partnerunit(exx.yao)
@@ -81,9 +79,9 @@ def test_MomentUnit_rotate_job_ReturnsObj_Scenario3_job_ChangesFromRotation(
     save_job_file(moment_mstr_dir, init_sue_job)
     save_job_file(moment_mstr_dir, init_yao_job)
     save_job_file(moment_mstr_dir, init_bob_job)
-    assert len(a23_job(exx.sue).get_agenda_dict()) == 0
-    assert len(a23_job(exx.yao).get_agenda_dict()) == 0
-    assert len(a23_job(exx.bob).get_agenda_dict()) == 1
+    assert len(a23_job(exx.sue, moment_mstr_dir).get_agenda_dict()) == 0
+    assert len(a23_job(exx.yao, moment_mstr_dir).get_agenda_dict()) == 0
+    assert len(a23_job(exx.bob, moment_mstr_dir).get_agenda_dict()) == 1
 
     # WHEN / THEN
     assert len(a23_moment.rotate_job(exx.sue).get_agenda_dict()) == 0
@@ -92,10 +90,10 @@ def test_MomentUnit_rotate_job_ReturnsObj_Scenario3_job_ChangesFromRotation(
 
 
 def test_MomentUnit_rotate_job_ReturnsObj_Scenario4_job_SelfReferenceWorks(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     a23_moment = momentunit_shop(exx.a23, moment_mstr_dir)
     init_bob_job = personunit_shop(exx.bob, exx.a23)
     init_bob_job.add_partnerunit(exx.bob)
@@ -109,9 +107,9 @@ def test_MomentUnit_rotate_job_ReturnsObj_Scenario4_job_SelfReferenceWorks(
     save_job_file(moment_mstr_dir, init_sue_job)
     save_job_file(moment_mstr_dir, init_yao_job)
     save_job_file(moment_mstr_dir, init_bob_job)
-    assert len(a23_job(exx.bob).get_agenda_dict()) == 1
-    assert len(a23_job(exx.sue).get_agenda_dict()) == 0
-    assert len(a23_job(exx.yao).get_agenda_dict()) == 0
+    assert len(a23_job(exx.bob, moment_mstr_dir).get_agenda_dict()) == 1
+    assert len(a23_job(exx.sue, moment_mstr_dir).get_agenda_dict()) == 0
+    assert len(a23_job(exx.yao, moment_mstr_dir).get_agenda_dict()) == 0
 
     # WHEN / THEN
     assert len(a23_moment.rotate_job(exx.bob).get_agenda_dict()) == 1
@@ -120,10 +118,10 @@ def test_MomentUnit_rotate_job_ReturnsObj_Scenario4_job_SelfReferenceWorks(
 
 
 def test_MomentUnit_generate_all_jobs_Scenario0_init_job_IsCreated(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     a23_moment = momentunit_shop(exx.a23, moment_mstr_dir)
     bob_gut = personunit_shop(exx.bob, exx.a23)
     save_gut_file(moment_mstr_dir, bob_gut)
@@ -146,10 +144,10 @@ def test_MomentUnit_generate_all_jobs_Scenario0_init_job_IsCreated(
 
 
 def test_MomentUnit_generate_all_jobs_Scenario1_jobs_rotated(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     a23_moment = momentunit_shop(exx.a23, moment_mstr_dir, job_listen_rotations=1)
     bob_gut = personunit_shop(exx.bob, exx.a23)
     bob_gut.add_partnerunit(exx.bob)
@@ -175,16 +173,16 @@ def test_MomentUnit_generate_all_jobs_Scenario1_jobs_rotated(
     a23_moment.generate_all_jobs()
 
     # THEN
-    assert len(a23_job(exx.bob).get_agenda_dict()) == 1
-    assert len(a23_job(exx.sue).get_agenda_dict()) == 1
-    assert len(a23_job(exx.yao).get_agenda_dict()) == 1
+    assert len(a23_job(exx.bob, moment_mstr_dir).get_agenda_dict()) == 1
+    assert len(a23_job(exx.sue, moment_mstr_dir).get_agenda_dict()) == 1
+    assert len(a23_job(exx.yao, moment_mstr_dir).get_agenda_dict()) == 1
 
 
 def test_MomentUnit_generate_all_jobs_Scenario2_jobs_rotated_InSortedOrder(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     a23_moment = momentunit_shop(exx.a23, moment_mstr_dir, job_listen_rotations=1)
     bob_gut = personunit_shop(exx.bob, exx.a23)
     bob_gut.add_partnerunit(exx.bob)
@@ -219,17 +217,17 @@ def test_MomentUnit_generate_all_jobs_Scenario2_jobs_rotated_InSortedOrder(
     a23_moment.generate_all_jobs()
 
     # THEN
-    assert len(a23_job(exx.bob).get_agenda_dict()) == 0
-    assert len(a23_job(exx.sue).get_agenda_dict()) == 1
-    assert len(a23_job(exx.yao).get_agenda_dict()) == 1
-    assert len(a23_job(exx.zia).get_agenda_dict()) == 1
+    assert len(a23_job(exx.bob, moment_mstr_dir).get_agenda_dict()) == 0
+    assert len(a23_job(exx.sue, moment_mstr_dir).get_agenda_dict()) == 1
+    assert len(a23_job(exx.yao, moment_mstr_dir).get_agenda_dict()) == 1
+    assert len(a23_job(exx.zia, moment_mstr_dir).get_agenda_dict()) == 1
 
 
 def test_MomentUnit_generate_all_jobs_Scenario3_job_listen_rotation_AffectsJobs(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     a23_moment = momentunit_shop(exx.a23, moment_mstr_dir, job_listen_rotations=1)
     bob_gut = personunit_shop(exx.bob, exx.a23)
     bob_gut.add_partnerunit(exx.bob)
@@ -265,17 +263,17 @@ def test_MomentUnit_generate_all_jobs_Scenario3_job_listen_rotation_AffectsJobs(
     a23_moment.generate_all_jobs()
 
     # THEN
-    assert len(a23_job(exx.bob).get_agenda_dict()) == 0
-    assert len(a23_job(exx.sue).get_agenda_dict()) == 1
-    assert len(a23_job(exx.yao).get_agenda_dict()) == 1
-    assert len(a23_job(exx.zia).get_agenda_dict()) == 1
+    assert len(a23_job(exx.bob, moment_mstr_dir).get_agenda_dict()) == 0
+    assert len(a23_job(exx.sue, moment_mstr_dir).get_agenda_dict()) == 1
+    assert len(a23_job(exx.yao, moment_mstr_dir).get_agenda_dict()) == 1
+    assert len(a23_job(exx.zia, moment_mstr_dir).get_agenda_dict()) == 1
 
     # WHEN
     a23_moment.job_listen_rotations = 2
     a23_moment.generate_all_jobs()
 
     # THEN
-    assert len(a23_job(exx.bob).get_agenda_dict()) == 1
-    assert len(a23_job(exx.sue).get_agenda_dict()) == 1
-    assert len(a23_job(exx.yao).get_agenda_dict()) == 1
-    assert len(a23_job(exx.zia).get_agenda_dict()) == 1
+    assert len(a23_job(exx.bob, moment_mstr_dir).get_agenda_dict()) == 1
+    assert len(a23_job(exx.sue, moment_mstr_dir).get_agenda_dict()) == 1
+    assert len(a23_job(exx.yao, moment_mstr_dir).get_agenda_dict()) == 1
+    assert len(a23_job(exx.zia, moment_mstr_dir).get_agenda_dict()) == 1

@@ -7,10 +7,6 @@ from src.ch10_person_listen.listen_main import (
     create_listen_basis,
     listen_to_agendas_duty_vision,
 )
-from src.ch10_person_listen.test._util.ch10_env import (
-    get_temp_dir as env_dir,
-    temp_dir_setup,
-)
 from src.ch10_person_listen.test._util.ch10_examples import (
     a23_casa_rope,
     a23_clean_rope,
@@ -29,7 +25,7 @@ from src.ref.keywords import ExampleStrs as exx
 
 
 def test_listen_to_agenda_duty_vision_agenda_Addscase_tasksTovision_PersonWhenNo_partyunitIsSet(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     yao_duty = personunit_shop(exx.yao, exx.a23)
@@ -44,7 +40,9 @@ def test_listen_to_agenda_duty_vision_agenda_Addscase_tasksTovision_PersonWhenNo
     zia_vision.set_plan_obj(planunit_shop(exx.cuisine, pledge=True), a23_casa_rope())
     zia_vision.add_partnerunit(exx.yao, partner_debt_lumen=12)
     a23_lasso = lassounit_shop(exx.a23)
-    yao_dakota_lessonfilehandler = lessonfilehandler_shop(env_dir(), a23_lasso, exx.yao)
+    yao_dakota_lessonfilehandler = lessonfilehandler_shop(
+        str(temp3_fs), a23_lasso, exx.yao
+    )
     save_vision_person(
         yao_dakota_lessonfilehandler.moment_mstr_dir,
         yao_dakota_lessonfilehandler.person_name,
@@ -67,7 +65,7 @@ def test_listen_to_agenda_duty_vision_agenda_Addscase_tasksTovision_PersonWhenNo
 
 
 def test_listen_to_agenda_duty_vision_agenda_Addscase_tasksTovision_Person(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     yao_duty = personunit_shop(exx.yao, exx.a23)
@@ -86,7 +84,9 @@ def test_listen_to_agenda_duty_vision_agenda_Addscase_tasksTovision_Person(
     clean_planunit.laborunit.add_party(exx.yao)
     cuisine_planunit.laborunit.add_party(exx.yao)
     a23_lasso = lassounit_shop(exx.a23)
-    yao_dakota_lessonfilehandler = lessonfilehandler_shop(env_dir(), a23_lasso, exx.yao)
+    yao_dakota_lessonfilehandler = lessonfilehandler_shop(
+        str(temp3_fs), a23_lasso, exx.yao
+    )
     save_vision_person(
         yao_dakota_lessonfilehandler.moment_mstr_dir,
         yao_dakota_lessonfilehandler.person_name,
@@ -112,7 +112,7 @@ def test_listen_to_agenda_duty_vision_agenda_Addscase_tasksTovision_Person(
 
 
 def test_listen_to_agenda_duty_vision_agenda_Addscase_tasksTovisionPersonWithDetailsDecidedBy_partner_debt_lumen(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     zia_vision = get_example_zia_speaker()
@@ -127,7 +127,7 @@ def test_listen_to_agenda_duty_vision_agenda_Addscase_tasksTovisionPersonWithDet
     assert bob_cuisine_planunit != zia_cuisine_planunit
     assert len(zia_cuisine_planunit.reasonunits) == 1
     assert len(bob_cuisine_planunit.reasonunits) == 0
-    sue_dakota_lessonfilehandler = get_dakota_lessonfilehandler()
+    sue_dakota_lessonfilehandler = get_dakota_lessonfilehandler(str(temp3_fs))
     save_vision_person(
         sue_dakota_lessonfilehandler.moment_mstr_dir,
         sue_dakota_lessonfilehandler.person_name,
@@ -194,7 +194,7 @@ def test_listen_to_agenda_duty_vision_agenda_Addscase_tasksTovisionPersonWithDet
 
 
 def test_listen_to_agenda_duty_vision_agenda_ProcessesIrrationalPerson(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     yao_duty = personunit_shop(exx.yao, exx.a23)
@@ -207,7 +207,9 @@ def test_listen_to_agenda_duty_vision_agenda_ProcessesIrrationalPerson(
     yao_pool = 92
     yao_duty.set_partner_respect(yao_pool)
     a23_lasso = lassounit_shop(exx.a23)
-    yao_dakota_lessonfilehandler = lessonfilehandler_shop(env_dir(), a23_lasso, exx.yao)
+    yao_dakota_lessonfilehandler = lessonfilehandler_shop(
+        str(temp3_fs), a23_lasso, exx.yao
+    )
     save_duty_person(
         moment_mstr_dir=yao_dakota_lessonfilehandler.moment_mstr_dir,
         person_name=yao_dakota_lessonfilehandler.person_name,
@@ -290,7 +292,7 @@ def test_listen_to_agenda_duty_vision_agenda_ProcessesIrrationalPerson(
 
 
 def test_listen_to_agenda_duty_vision_agenda_ProcessesMissingDebtorvisionPerson(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     yao_duty = personunit_shop(exx.yao, exx.a23)
@@ -303,7 +305,9 @@ def test_listen_to_agenda_duty_vision_agenda_ProcessesMissingDebtorvisionPerson(
     yao_pool = 92
     yao_duty.set_partner_respect(yao_pool)
     a23_lasso = lassounit_shop(exx.a23)
-    yao_dakota_lessonfilehandler = lessonfilehandler_shop(env_dir(), a23_lasso, exx.yao)
+    yao_dakota_lessonfilehandler = lessonfilehandler_shop(
+        str(temp3_fs), a23_lasso, exx.yao
+    )
     save_duty_person(
         moment_mstr_dir=yao_dakota_lessonfilehandler.moment_mstr_dir,
         person_name=yao_dakota_lessonfilehandler.person_name,
@@ -321,7 +325,9 @@ def test_listen_to_agenda_duty_vision_agenda_ProcessesMissingDebtorvisionPerson(
     cuisine_planunit = zia_vision.get_plan_obj(a23_cuisine_rope())
     clean_planunit.laborunit.add_party(exx.yao)
     cuisine_planunit.laborunit.add_party(exx.yao)
-    yao_dakota_lessonfilehandler = lessonfilehandler_shop(env_dir(), a23_lasso, exx.yao)
+    yao_dakota_lessonfilehandler = lessonfilehandler_shop(
+        str(temp3_fs), a23_lasso, exx.yao
+    )
     save_vision_person(
         yao_dakota_lessonfilehandler.moment_mstr_dir,
         yao_dakota_lessonfilehandler.person_name,
@@ -349,7 +355,7 @@ def test_listen_to_agenda_duty_vision_agenda_ProcessesMissingDebtorvisionPerson(
 
 
 def test_listen_to_agenda_duty_vision_agenda_ListensToPerson_duty_AndNotPerson_vision(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     yao_duty = personunit_shop(exx.yao, exx.a23)
@@ -363,7 +369,9 @@ def test_listen_to_agenda_duty_vision_agenda_ListensToPerson_duty_AndNotPerson_v
     yao_duty.set_partner_respect(yao_pool)
     # save yao without case_task to dutys
     a23_lasso = lassounit_shop(exx.a23)
-    yao_dakota_lessonfilehandler = lessonfilehandler_shop(env_dir(), a23_lasso, exx.yao)
+    yao_dakota_lessonfilehandler = lessonfilehandler_shop(
+        str(temp3_fs), a23_lasso, exx.yao
+    )
     save_duty_person(
         moment_mstr_dir=yao_dakota_lessonfilehandler.moment_mstr_dir,
         person_name=yao_dakota_lessonfilehandler.person_name,
@@ -419,7 +427,7 @@ def test_listen_to_agenda_duty_vision_agenda_ListensToPerson_duty_AndNotPerson_v
 
 
 def test_listen_to_agenda_duty_vision_agenda_GetsAgendaFromSrcPersonNotSpeakerSelf(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     # yao_duty has case_task run_rope
@@ -429,7 +437,7 @@ def test_listen_to_agenda_duty_vision_agenda_GetsAgendaFromSrcPersonNotSpeakerSe
     assert yao_duty.plan_exists(a23_run_rope()) is False
     assert yao_duty.plan_exists(a23_clean_rope()) is False
     yao_duty.set_plan_obj(planunit_shop(run_str(), pledge=True), a23_casa_rope())
-    sue_dakota_lessonfilehandler = get_dakota_lessonfilehandler()
+    sue_dakota_lessonfilehandler = get_dakota_lessonfilehandler(str(temp3_fs))
     save_duty_person(
         moment_mstr_dir=sue_dakota_lessonfilehandler.moment_mstr_dir,
         person_name=sue_dakota_lessonfilehandler.person_name,
