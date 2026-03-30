@@ -3,10 +3,8 @@ from os.path import basename as os_path_basename, exists as os_path_exists
 from pathlib import Path as pathlib_Path
 from src.ch00_py.chapter_desc_main import get_chapter_desc_str_number
 from src.ch00_py.file_toolbox import create_path, get_level1_dirs, open_json
-from src.ch98_docs_builder._ref.ch98_path import create_chapter_ref_path
 from src.ch98_docs_builder.doc_builder import get_chapter_desc_prefix
 from src.linter.style import (
-    env_file_has_required_elements,
     get_chapter_descs,
     get_python_files_with_flag,
     get_semantic_types_filename,
@@ -123,23 +121,6 @@ def test_Chapters_ChapterReferenceDir_ref_ExistsForEveryChapter_Scenario0():
         assert chapter_ref_ch_int == chapter_desc_ch_int, assertion_fail_str
 
 
-def test_Chapters_ChapterReferenceDir_ref_ExistsForEveryChapter_Scenario1():
-    """
-    Test that all chapter temp_dir librarys are uniform and meet requirements.
-    """
-    # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
-    # ESTABLISH / WHEN / THEN
-    for chapter_desc, chapter_dir in get_chapter_descs().items():
-        # check chapter env file
-        chapter_desc_prefix = get_chapter_desc_prefix(chapter_desc)
-        test_dir = create_path(chapter_dir, "test")
-        util_dir = create_path(test_dir, "_util")
-        chapter_env_path = create_path(util_dir, f"{chapter_desc_prefix}_env.py")
-        if os_path_exists(chapter_env_path):
-            print(f"{chapter_env_path=}")
-            assert env_file_has_required_elements(chapter_env_path)
-
-
 def test_Chapters_DoNotHaveEmptyDirectories():
     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
     # ESTABLISH
@@ -162,7 +143,6 @@ def test_Chapters_DoNotHaveEmptyDirectories():
 
 
 def is_excluded_subpath(dirpath: str, excluded_dirs: set[str]) -> bool:
-    for exclude_dir in excluded_dirs:
-        if path_contains_subpath(dirpath, exclude_dir):
-            return True
-    return False
+    return any(
+        path_contains_subpath(dirpath, exclude_dir) for exclude_dir in excluded_dirs
+    )

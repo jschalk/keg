@@ -13,10 +13,6 @@ from src.ch17_idea.idea_db_tool import (
     get_idea_elements_sort_order as sorting_columns,
     get_ordered_csv,
 )
-from src.ch17_idea.test._util.ch17_env import (
-    idea_moments_dir as get_example_face_dir,
-    temp_dir_setup,
-)
 from src.ch17_idea.translate_toolbox import (
     _load_labelmap_from_csv,
     _load_namemap_from_csv,
@@ -148,10 +144,10 @@ def test_create_translate_label_dt_ReturnsObj():
     assert casa_csv == ex_label_csv
 
 
-def test_save_all_csvs_from_translateunit_SavesFiles(temp_dir_setup):
+def test_save_all_csvs_from_translateunit_SavesFiles(temp3_fs):
     # ESTABLISH
     sue_translateunit = get_sue_translateunit()
-    map_dir = get_example_face_dir()
+    map_dir = str(temp3_fs)
     name_filename = "name.csv"
     title_filename = "title.csv"
     label_filename = "label.csv"
@@ -177,10 +173,10 @@ def test_save_all_csvs_from_translateunit_SavesFiles(temp_dir_setup):
     assert len(get_dir_file_strs(map_dir)) == 4
 
 
-def test_load_namemap_from_csv_SetsAttrWhenFileExists(temp_dir_setup):
+def test_load_namemap_from_csv_SetsAttrWhenFileExists(temp3_fs):
     # ESTABLISH
     sue_translateunit = get_sue_translateunit()
-    map_dir = get_example_face_dir()
+    map_dir = str(temp3_fs)
     name_filename = "name.csv"
     name_csv_path = create_path(map_dir, name_filename)
     save_all_csvs_from_translateunit(map_dir, sue_translateunit)
@@ -200,9 +196,9 @@ def test_load_namemap_from_csv_SetsAttrWhenFileExists(temp_dir_setup):
     assert ex_namemap == sue_namemap
 
 
-def test_load_namemap_from_csv_DoesNotChangeWhenFileDoesNotExist(temp_dir_setup):
+def test_load_namemap_from_csv_DoesNotChangeWhenFileDoesNotExist(temp3_fs):
     # ESTABLISH
-    map_dir = get_example_face_dir()
+    map_dir = str(temp3_fs)
     name_filename = "name.csv"
     name_csv_path = create_path(map_dir, name_filename)
     assert os_path_exists(name_csv_path) is False
@@ -219,10 +215,10 @@ def test_load_namemap_from_csv_DoesNotChangeWhenFileDoesNotExist(temp_dir_setup)
     assert len(sue_namemap.otx2inx) == 0
 
 
-def test_load_titlemap_from_csv_SetsAttrWhenFileExists(temp_dir_setup):
+def test_load_titlemap_from_csv_SetsAttrWhenFileExists(temp3_fs):
     # ESTABLISH
     sue_translateunit = get_sue_translateunit()
-    map_dir = get_example_face_dir()
+    map_dir = str(temp3_fs)
     title_filename = "title.csv"
     group_csv_path = create_path(map_dir, title_filename)
     save_all_csvs_from_translateunit(map_dir, sue_translateunit)
@@ -243,10 +239,10 @@ def test_load_titlemap_from_csv_SetsAttrWhenFileExists(temp_dir_setup):
 
 
 def test_load_titlemap_from_csv_DoesNotChangeWhenFileDoesNotExist(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    map_dir = get_example_face_dir()
+    map_dir = str(temp3_fs)
     title_filename = "title.csv"
     group_csv_path = create_path(map_dir, title_filename)
     assert os_path_exists(group_csv_path) is False
@@ -263,10 +259,10 @@ def test_load_titlemap_from_csv_DoesNotChangeWhenFileDoesNotExist(
     assert len(sue_titlemap.otx2inx) == 0
 
 
-def test_load_labelmap_from_csv_SetsAttrWhenFileExists(temp_dir_setup):
+def test_load_labelmap_from_csv_SetsAttrWhenFileExists(temp3_fs):
     # ESTABLISH
     sue_translateunit = get_sue_translateunit()
-    map_dir = get_example_face_dir()
+    map_dir = str(temp3_fs)
     label_filename = "label.csv"
     label_csv_path = create_path(map_dir, label_filename)
     save_all_csvs_from_translateunit(map_dir, sue_translateunit)
@@ -287,10 +283,10 @@ def test_load_labelmap_from_csv_SetsAttrWhenFileExists(temp_dir_setup):
 
 
 def test_load_labelmap_from_csv_DoesNotChangeWhenFileDoesNotExist(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    map_dir = get_example_face_dir()
+    map_dir = str(temp3_fs)
     label_filename = "label.csv"
     label_csv_path = create_path(map_dir, label_filename)
     assert os_path_exists(label_csv_path) is False
@@ -307,10 +303,10 @@ def test_load_labelmap_from_csv_DoesNotChangeWhenFileDoesNotExist(
     assert len(sue_labelmap.otx2inx) == 0
 
 
-def test_load_ropemap_from_csv_SetsAttrWhenFileExists(temp_dir_setup):
+def test_load_ropemap_from_csv_SetsAttrWhenFileExists(temp3_fs):
     # ESTABLISH
     sue_translateunit = get_sue_translateunit()
-    map_dir = get_example_face_dir()
+    map_dir = str(temp3_fs)
     rope_filename = "rope.csv"
     rope_csv_path = create_path(map_dir, rope_filename)
     save_all_csvs_from_translateunit(map_dir, sue_translateunit)
@@ -334,10 +330,10 @@ def test_load_ropemap_from_csv_SetsAttrWhenFileExists(temp_dir_setup):
 
 
 def test_load_ropemap_from_csv_DoesNotChangeWhenFileDoesNotExist(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    map_dir = get_example_face_dir()
+    map_dir = str(temp3_fs)
     rope_filename = "rope.csv"
     rope_csv_path = create_path(map_dir, rope_filename)
     assert os_path_exists(rope_csv_path) is False
@@ -355,7 +351,7 @@ def test_load_ropemap_from_csv_DoesNotChangeWhenFileDoesNotExist(
 
 
 def test_create_dir_valid_empty_translateunit_Sets_otx_knot_inx_knot(
-    temp_dir_setup,
+    temp3_fs,
 ):  # sourcery skip: extract-duplicate-method
     # ESTABLISH
     x_unknown_str = "UnknownTerm"
@@ -368,7 +364,7 @@ def test_create_dir_valid_empty_translateunit_Sets_otx_knot_inx_knot(
         unknown_str=x_unknown_str,
     )
     sue_translateunit.set_namemap(get_slash_namemap())
-    map_dir = get_example_face_dir()
+    map_dir = str(temp3_fs)
     save_all_csvs_from_translateunit(map_dir, sue_translateunit)
 
     # WHEN
@@ -385,7 +381,7 @@ def test_create_dir_valid_empty_translateunit_Sets_otx_knot_inx_knot(
 
 
 def test_create_dir_valid_empty_translateunit_Returns_spark_num(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     x_unknown_str = "UnknownTerm"
@@ -400,7 +396,7 @@ def test_create_dir_valid_empty_translateunit_Returns_spark_num(
         unknown_str=x_unknown_str,
     )
     sue_translateunit.set_namemap(get_slash_namemap())
-    map_dir = get_example_face_dir()
+    map_dir = str(temp3_fs)
     save_all_csvs_from_translateunit(map_dir, sue_translateunit)
 
     # WHEN
@@ -418,10 +414,10 @@ def test_create_dir_valid_empty_translateunit_Returns_spark_num(
     assert gen_mapunit.inx_knot == colon_inx_knot
 
 
-def test_init_translateunit_from_dir_ReturnsObj(temp_dir_setup):
+def test_init_translateunit_from_dir_ReturnsObj(temp3_fs):
     # ESTABLISH
     sue_translateunit = get_sue_translateunit()
-    map_dir = get_example_face_dir()
+    map_dir = str(temp3_fs)
     save_all_csvs_from_translateunit(map_dir, sue_translateunit)
 
     # WHEN

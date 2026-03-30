@@ -6,7 +6,6 @@ from src.ch17_idea.idea_db_tool import (
     get_relevant_columns_dataframe,
     save_dataframe_to_csv,
 )
-from src.ch17_idea.test._util.ch17_env import get_temp_dir, temp_dir_setup
 from src.ch17_idea.test._util.ch17_examples import (
     get_empty_dataframe,
     get_ex01_dataframe,
@@ -55,10 +54,10 @@ def test_get_ordered_csv_ReturnsObj():
 
 
 def test_save_dataframe_to_csv_SavesFile_Scenario0_SmallDataFrame(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = str(temp3_fs)
     small_dt = get_small_example01_dataframe()
     ex_filename = "Faybob.csv"
     ex_file_path = create_path(env_dir, ex_filename)
@@ -75,10 +74,10 @@ def test_save_dataframe_to_csv_SavesFile_Scenario0_SmallDataFrame(
 
 
 def test_save_dataframe_to_csv_SavesFile_Scenario1_OrdersColumns(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = str(temp3_fs)
     atom_example_dt = get_ex02_atom_dataframe()
     ex_filename = "atom_example.csv"
 

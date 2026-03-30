@@ -18,15 +18,11 @@ from src.ch17_idea.idea_db_tool import (
     open_csv,
     save_dataframe_to_csv,
 )
-from src.ch17_idea.test._util.ch17_env import (
-    idea_moments_dir as get_example_face_dir,
-    temp_dir_setup,
-)
 from src.ref.keywords import Ch17Keywords as kw
 
 
 def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario0_SingleFile(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     bob_otx = "Bob"
@@ -38,7 +34,7 @@ def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario0_Single
     xio_inx = "Xioita"
     sue_translateunit = translateunit_shop(sue_otx)
     sue_translateunit.set_namemap(get_suita_namemap())
-    sue_dir = create_path(get_example_face_dir(), sue_otx)
+    sue_dir = create_path(str(temp3_fs), sue_otx)
     translateunit_file_path = create_path(sue_dir, get_translate_filename())
     print(f"{sue_dir=}")
     save_json(sue_dir, get_translate_filename(), sue_translateunit.to_dict())
@@ -84,7 +80,7 @@ def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario0_Single
 
 # save two dataframes to be translateed: two files in otx, two files in inx
 def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario1_SingleFile_RopeTerm(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     otx_amy45_str = "amy45"
@@ -104,7 +100,7 @@ def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario1_Single
     sweep_inx_rope = create_rope(clean_inx_rope, sweep_str)
 
     sue_translateunit = get_casa_maison_translateunit_set_by_label()
-    sue_dir = create_path(get_example_face_dir(), sue_translateunit.face_name)
+    sue_dir = create_path(str(temp3_fs), sue_translateunit.face_name)
     save_json(sue_dir, get_translate_filename(), sue_translateunit.to_dict())
     sue_otx_dt = get_casa_maison_rope_otx_dt()
     sue_inx_dt = get_casa_maison_rope_inx_dt()
@@ -151,12 +147,12 @@ def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario1_Single
 
 # save two dataframes to be translateed: two files in otx, two files in inx
 def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario2_TwoFile(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     sue_translateunit = get_casa_maison_translateunit_set_by_label()
     sue_translateunit.set_namemap(get_suita_namemap())
-    sue_dir = create_path(get_example_face_dir(), sue_translateunit.face_name)
+    sue_dir = create_path(str(temp3_fs), sue_translateunit.face_name)
     translateunit_file_path = create_path(sue_dir, get_translate_filename())
     print(f"{sue_dir=}")
     save_json(sue_dir, get_translate_filename(), sue_translateunit.to_dict())

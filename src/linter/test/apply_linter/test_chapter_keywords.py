@@ -54,9 +54,7 @@ def test_Chapters_CheckStringMetricsFromEveryFile():
         "_is_otx_knot_inclusion_correct",  # used in Nabu/Translate
         "unknown_str_in_otx2inx",  # RopeMap method overrides MapCore method
         "del_otx2inx",  # used in Nabu/Translate
-        "temp_dir_setup",  # used in pytests for file environment setup
         "find_replace_rope",  # used by ReasonUnit, CaseUnit, FactUnit classes
-        "get_temp_dir",  # used in pytests for file environment dir
         "get_obj_key",
         "is_valid",
         "otx_exists",  # used in Nabu/Translate
@@ -189,13 +187,13 @@ def test_Chapters_KeywordsAppearWhereTheyShould():
                 assert _semantic_types_import_count == 1, semantic_types_failure_str
                 assert chXX_semantic_types_str in file_str, semantic_types_failure_str
 
-            # check if temp_dir and examples import is from current chapter
-            temp_dir_import_count = file_str.count("_env import ")
-            if temp_dir_import_count > 0:
-                chXX_temp_dir_import_str = f"{chapter_prefix}_env import "
-                temp_dir_failure_str = f"{file_path=} {chXX_temp_dir_import_str=}"
-                assert temp_dir_import_count == 1, temp_dir_failure_str
-                assert chXX_temp_dir_import_str in file_str, temp_dir_failure_str
+            # check if examples import is from current chapter
+            dir_import_count = file_str.count("_env import ")
+            if dir_import_count > 0:
+                chXX_dir_import_str = f"{chapter_prefix}_env import "
+                dir_failure_str = f"{file_path=} {chXX_dir_import_str=}"
+                assert dir_import_count == 1, dir_failure_str
+                assert chXX_dir_import_str in file_str, dir_failure_str
 
             is_ref_keywords_file = f"\\{chapter_prefix}_keywords.py" in file_path
             if is_ref_keywords_file:

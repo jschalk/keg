@@ -7,7 +7,6 @@ from src.ch22_lobby._ref.ch22_path import (
     create_moment_mstr_dir_path,
     create_world_dir_path,
 )
-from src.ch22_lobby.test._util.ch22_env import get_temp_dir
 from src.ref.keywords import Ch22Keywords as kw
 
 
@@ -16,9 +15,9 @@ def test_LobbyID_Exists():
     assert LobbyID("chat23") == "chat23"
 
 
-def test_create_lobby_dir_path_ReturnsObj():
+def test_create_lobby_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_lobby_mstr_dir = get_temp_dir()
+    x_lobby_mstr_dir = temp3_dir
     c23_str = "chat23"
 
     # WHEN
@@ -30,9 +29,9 @@ def test_create_lobby_dir_path_ReturnsObj():
     assert gen_c23_dir_path == expected_c23_path
 
 
-def test_create_world_dir_path_ReturnsObj():
+def test_create_world_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_lobby_mstr_dir = get_temp_dir()
+    x_lobby_mstr_dir = temp3_dir
     c23_str = "chat23"
     m23_str = "music23"
 
@@ -47,9 +46,9 @@ def test_create_world_dir_path_ReturnsObj():
     assert gen_m23_dir_path == expected_m23_path
 
 
-def test_create_moment_mstr_dir_path_ReturnsObj():
+def test_create_moment_mstr_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_lobby_mstr_dir = get_temp_dir()
+    x_lobby_mstr_dir = temp3_dir
     c23_str = "chat23"
     m23_str = "music23"
 

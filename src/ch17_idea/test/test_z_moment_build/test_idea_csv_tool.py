@@ -23,7 +23,6 @@ from src.ch17_idea.idea_csv_tool import (
 )
 from src.ch17_idea.idea_db_tool import get_ordered_csv
 from src.ch17_idea.idea_main import moment_build_from_df
-from src.ch17_idea.test._util.ch17_env import idea_moments_dir, temp_dir_setup
 from src.ch17_idea.test._util.ch17_examples import (  # get_ex2_br00006_df,
     J45_ROPE,
     get_ex2_br00000_df,
@@ -37,7 +36,7 @@ from src.ref.keywords import ExampleStrs as exx
 
 
 def test_create_init_stance_idea_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     csv_delimiter = ","
@@ -120,7 +119,7 @@ def test_create_init_stance_idea_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
 
 
 def test_add_momentunit_to_stance_csv_strs_ReturnsObj_Scenario0_OneMomentUnit(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     br00000_df = get_ex2_br00000_df()
@@ -134,7 +133,7 @@ def test_add_momentunit_to_stance_csv_strs_ReturnsObj_Scenario0_OneMomentUnit(
     x_fund_grain = 1
     x_respect_grain = 1
     x_mana_grain = 1
-    x_moments_dir = create_path(idea_moments_dir(), "Fay")
+    x_moments_dir = create_path(str(temp3_fs), "Fay")
     x_momentunits = moment_build_from_df(
         br00000_df,
         br00001_df,
@@ -192,7 +191,7 @@ def test_add_momentunit_to_stance_csv_strs_ReturnsObj_Scenario0_OneMomentUnit(
 
 
 def test_add_momentunits_to_stance_csv_strs_ReturnsObj_Scenario1_TwoMomentUnits(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     br00000_df = get_ex2_br00000_df()
@@ -204,7 +203,7 @@ def test_add_momentunits_to_stance_csv_strs_ReturnsObj_Scenario1_TwoMomentUnits(
     x_fund_grain = 1
     x_respect_grain = 1
     x_mana_grain = 1
-    x_moments_dir = create_path(idea_moments_dir(), "Fay")
+    x_moments_dir = create_path(str(temp3_fs), "Fay")
     x_momentunits = moment_build_from_df(
         br00000_df,
         br00001_df,

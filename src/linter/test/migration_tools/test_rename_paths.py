@@ -114,11 +114,10 @@ def test_rename_files_and_dirs_NotChangesWhenNoneNeeded(temp3_fs):
 
 def test_rename_files_and_dirs_NoChangeTo_dot_git_Dirs(temp3_fs):
     # GIVEN
-    temp_dir = str(temp3_fs)
-    dot_git_dir = create_path(temp_dir, ".git")
+    dot_git_dir = create_path(str(temp3_fs), ".git")
     dolphin_filename = "dolphin.txt"
     dot_git_file_path = create_path(dot_git_dir, dolphin_filename)
-    temp_dolphin_path = create_path(temp_dir, dolphin_filename)
+    temp_dolphin_path = create_path(str(temp3_fs), dolphin_filename)
     dolphin_file_text = "trying this"
     save_file(dot_git_file_path, None, dolphin_file_text)
     save_file(temp_dolphin_path, None, dolphin_file_text)
@@ -126,11 +125,11 @@ def test_rename_files_and_dirs_NoChangeTo_dot_git_Dirs(temp3_fs):
     assert os_path_exists(dot_git_file_path)
 
     # WHEN
-    rename_files_and_dirs(temp_dir, "dol", "bob")
+    rename_files_and_dirs(str(temp3_fs), "dol", "bob")
 
     # THEN
     assert not os_path_exists(temp_dolphin_path)
-    temp_bobphin_path = create_path(temp_dir, "bobphin.txt")
+    temp_bobphin_path = create_path(str(temp3_fs), "bobphin.txt")
     assert os_path_exists(temp_bobphin_path)
     assert os_path_exists(dot_git_file_path)
 
