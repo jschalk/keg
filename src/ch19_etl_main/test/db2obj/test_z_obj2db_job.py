@@ -23,13 +23,13 @@ from src.ch19_etl_main.obj2db_person import (
     insert_job_obj,
     insert_job_prnawar,
     insert_job_prncase,
+    insert_job_prncont,
     insert_job_prnfact,
     insert_job_prngrou,
     insert_job_prnheal,
     insert_job_prnlabo,
     insert_job_prnmemb,
     insert_job_prnplan,
-    insert_job_prnptnr,
     insert_job_prnreas,
     insert_job_prnunit,
 )
@@ -477,7 +477,7 @@ def test_insert_job_prnmemb_CreatesTableRowsFor_prnmemb_job(cursor0: Cursor):
     assert rows == expected_data
 
 
-def test_insert_job_prnptnr_CreatesTableRowsFor_prnptnr_job(cursor0: Cursor):
+def test_insert_job_prncont_CreatesTableRowsFor_prncont_job(cursor0: Cursor):
     # ESTABLISH
     # x_args = get_person_calc_dimen_args("person_contactunit")
     # x_count = 0
@@ -531,7 +531,7 @@ def test_insert_job_prnptnr_CreatesTableRowsFor_prnptnr_job(cursor0: Cursor):
     )
 
     # WHEN
-    insert_job_prnptnr(cursor0, x_objkeysholder, x_contact)
+    insert_job_prncont(cursor0, x_objkeysholder, x_contact)
 
     # THEN
     assert get_row_count(cursor0, x_table_name) == 1
@@ -884,7 +884,7 @@ def test_insert_job_obj_CreatesTableRows_Scenario0(cursor0: Cursor):
 
     create_job_tables(cursor0)
     prnmemb_job_table = f"{kw.person_contact_membership}_job"
-    prnptnr_job_table = f"{kw.person_contactunit}_job"
+    prncont_job_table = f"{kw.person_contactunit}_job"
     prngrou_job_table = f"{kw.person_groupunit}_job"
     prnawar_job_table = f"{kw.person_plan_awardunit}_job"
     prnfact_job_table = f"{kw.person_plan_factunit}_job"
@@ -896,7 +896,7 @@ def test_insert_job_obj_CreatesTableRows_Scenario0(cursor0: Cursor):
     prnunit_job_table = f"{kw.personunit}_job"
     assert get_row_count(cursor0, prnunit_job_table) == 0
     assert get_row_count(cursor0, prnplan_job_table) == 0
-    assert get_row_count(cursor0, prnptnr_job_table) == 0
+    assert get_row_count(cursor0, prncont_job_table) == 0
     assert get_row_count(cursor0, prnmemb_job_table) == 0
     assert get_row_count(cursor0, prngrou_job_table) == 0
     assert get_row_count(cursor0, prnawar_job_table) == 0
@@ -912,7 +912,7 @@ def test_insert_job_obj_CreatesTableRows_Scenario0(cursor0: Cursor):
     # THEN
     assert get_row_count(cursor0, prnunit_job_table) == 1
     assert get_row_count(cursor0, prnplan_job_table) == 5
-    assert get_row_count(cursor0, prnptnr_job_table) == 2
+    assert get_row_count(cursor0, prncont_job_table) == 2
     assert get_row_count(cursor0, prnmemb_job_table) == 3
     assert get_row_count(cursor0, prngrou_job_table) == 3
     assert get_row_count(cursor0, prnawar_job_table) == 1

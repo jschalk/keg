@@ -59,8 +59,8 @@ def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario1(
     credit77 = 77
     credit88 = 88
     debt_empty = ""
-    prnptnr_str = kw.person_contactunit
-    put_agg_tablename = create_prime_tablename(prnptnr_str, kw.h_vld, "put")
+    prncont_str = kw.person_contactunit
+    put_agg_tablename = create_prime_tablename(prncont_str, kw.h_vld, "put")
     put_agg_csv_filename = f"{put_agg_tablename}.csv"
     moment_mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
@@ -101,21 +101,21 @@ def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario1(
     # e7_lesson = lessonunit_shop(bob_inx, sue_inx, exx.a23, lessons_dir, atoms_dir, spark7)
     expected_e3_lesson = lessonunit_shop(bob_inx, None, exx.a23, spark_num=spark3)
     expected_e7_lesson = lessonunit_shop(bob_inx, None, exx.a23, spark_num=spark7)
-    prnptnr_dimen = kw.person_contactunit
+    prncont_dimen = kw.person_contactunit
     expected_e3_lesson.persondelta.add_personatom(
-        prnptnr_dimen,
+        prncont_dimen,
         kw.INSERT,
         jkeys={kw.contact_name: bob_inx},
         jvalues={kw.contact_cred_lumen: credit77, kw.contact_debt_lumen: None},
     )
     expected_e7_lesson.persondelta.add_personatom(
-        prnptnr_dimen,
+        prncont_dimen,
         kw.INSERT,
         jkeys={kw.contact_name: bob_inx},
         jvalues={kw.contact_cred_lumen: credit77, kw.contact_debt_lumen: None},
     )
     expected_e7_lesson.persondelta.add_personatom(
-        prnptnr_dimen,
+        prncont_dimen,
         kw.INSERT,
         jkeys={kw.contact_name: sue_inx},
         jvalues={kw.contact_cred_lumen: credit88, kw.contact_debt_lumen: None},
@@ -133,9 +133,9 @@ def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario1(
     expected_e7_insert = expected_e7_lesson.persondelta.personatoms.get("INSERT")
     # print(e7_insert.get("person_contactunit").keys())
     # print(expected_e7_insert.get("person_contactunit").keys())
-    e7_prnptnr = e7_insert.get("person_contactunit")
-    expected_e7_prnptnr = expected_e7_insert.get("person_contactunit")
-    assert e7_prnptnr.keys() == expected_e7_prnptnr.keys()
+    e7_prncont = e7_insert.get("person_contactunit")
+    expected_e7_prncont = expected_e7_insert.get("person_contactunit")
+    assert e7_prncont.keys() == expected_e7_prncont.keys()
     # print(f"{expected_e7_insert.keys()=}")
     assert e7_insert == expected_e7_insert
     assert e7_lessonunit.persondelta == expected_e7_lesson.persondelta

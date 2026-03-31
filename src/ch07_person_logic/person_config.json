@@ -38,7 +38,7 @@
     }
   }, 
   "person_contactunit": {
-    "abbreviation": "prnptnr", 
+    "abbreviation": "prncont", 
     "description": "A person dimen representing ParterUnit data. Keys: person_name, contact_name. person seed.", 
     "jkeys": {
       "contact_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 

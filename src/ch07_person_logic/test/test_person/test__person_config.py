@@ -103,7 +103,7 @@ def test_get_person_config_dict_ReturnsObj_CheckAbbreviations():
 
     # THEN
     prnunit_attribute = person_config.get(kw.personunit)
-    prnptnr_attribute = person_config.get(kw.person_contactunit)
+    prncont_attribute = person_config.get(kw.person_contactunit)
     prnmemb_attribute = person_config.get(kw.person_contact_membership)
     prnplan_attribute = person_config.get(kw.person_planunit)
     prnawar_attribute = person_config.get(kw.person_plan_awardunit)
@@ -115,7 +115,7 @@ def test_get_person_config_dict_ReturnsObj_CheckAbbreviations():
     prngrou_attribute = person_config.get(kw.person_groupunit)
     abbr_str = "abbreviation"
     assert prnunit_attribute.get(abbr_str) == kw.prnunit
-    assert prnptnr_attribute.get(abbr_str) == kw.prnptnr
+    assert prncont_attribute.get(abbr_str) == kw.prncont
     assert prnmemb_attribute.get(abbr_str) == kw.prnmemb
     assert prnplan_attribute.get(abbr_str) == kw.prnplan
     assert prnawar_attribute.get(abbr_str) == kw.prnawar
@@ -314,7 +314,7 @@ def test_get_person_config_dict_ReturnsObj_CheckArgDataTypesCorrect():
     jk = kw.jkeys
     jv = kw.jvalues
     prnunit = kw.personunit
-    prnptnr = kw.person_contactunit
+    prncont = kw.person_contactunit
     prnmemb = kw.person_contact_membership
     prnplan = kw.person_planunit
     prnawar = kw.person_plan_awardunit
@@ -372,57 +372,57 @@ def test_get_person_config_dict_ReturnsObj_CheckArgDataTypesCorrect():
     assert g_sqlitetype(cfig, prnmemb, jv, kw.group_debt_lumen) == "REAL"
     assert g_popconpute(cfig, prnmemb, jv, kw.group_debt_lumen) == False
 
-    assert g_class_type(cfig, prnptnr, jk, kw.contact_name) == kw.NameTerm
-    assert g_sqlitetype(cfig, prnptnr, jk, kw.contact_name) == "TEXT"
-    assert g_popconpute(cfig, prnptnr, jk, kw.contact_name) == False
+    assert g_class_type(cfig, prncont, jk, kw.contact_name) == kw.NameTerm
+    assert g_sqlitetype(cfig, prncont, jk, kw.contact_name) == "TEXT"
+    assert g_popconpute(cfig, prncont, jk, kw.contact_name) == False
 
-    assert g_class_type(cfig, prnptnr, jv, kw.credor_pool) == "float"
-    assert g_sqlitetype(cfig, prnptnr, jv, kw.credor_pool) == "REAL"
-    assert g_popconpute(cfig, prnptnr, jv, kw.credor_pool) == True
+    assert g_class_type(cfig, prncont, jv, kw.credor_pool) == "float"
+    assert g_sqlitetype(cfig, prncont, jv, kw.credor_pool) == "REAL"
+    assert g_popconpute(cfig, prncont, jv, kw.credor_pool) == True
 
-    assert g_class_type(cfig, prnptnr, jv, kw.debtor_pool) == "float"
-    assert g_sqlitetype(cfig, prnptnr, jv, kw.debtor_pool) == "REAL"
-    assert g_popconpute(cfig, prnptnr, jv, kw.debtor_pool) == True
+    assert g_class_type(cfig, prncont, jv, kw.debtor_pool) == "float"
+    assert g_sqlitetype(cfig, prncont, jv, kw.debtor_pool) == "REAL"
+    assert g_popconpute(cfig, prncont, jv, kw.debtor_pool) == True
 
-    assert g_class_type(cfig, prnptnr, jv, kw.fund_agenda_give) == "float"
-    assert g_sqlitetype(cfig, prnptnr, jv, kw.fund_agenda_give) == "REAL"
-    assert g_popconpute(cfig, prnptnr, jv, kw.fund_agenda_give) == True
+    assert g_class_type(cfig, prncont, jv, kw.fund_agenda_give) == "float"
+    assert g_sqlitetype(cfig, prncont, jv, kw.fund_agenda_give) == "REAL"
+    assert g_popconpute(cfig, prncont, jv, kw.fund_agenda_give) == True
 
-    assert g_class_type(cfig, prnptnr, jv, kw.fund_agenda_ratio_give) == "float"
-    assert g_sqlitetype(cfig, prnptnr, jv, kw.fund_agenda_ratio_give) == "REAL"
-    assert g_popconpute(cfig, prnptnr, jv, kw.fund_agenda_ratio_give) == True
+    assert g_class_type(cfig, prncont, jv, kw.fund_agenda_ratio_give) == "float"
+    assert g_sqlitetype(cfig, prncont, jv, kw.fund_agenda_ratio_give) == "REAL"
+    assert g_popconpute(cfig, prncont, jv, kw.fund_agenda_ratio_give) == True
 
-    assert g_class_type(cfig, prnptnr, jv, kw.fund_agenda_ratio_take) == "float"
-    assert g_sqlitetype(cfig, prnptnr, jv, kw.fund_agenda_ratio_take) == "REAL"
-    assert g_popconpute(cfig, prnptnr, jv, kw.fund_agenda_ratio_take) == True
+    assert g_class_type(cfig, prncont, jv, kw.fund_agenda_ratio_take) == "float"
+    assert g_sqlitetype(cfig, prncont, jv, kw.fund_agenda_ratio_take) == "REAL"
+    assert g_popconpute(cfig, prncont, jv, kw.fund_agenda_ratio_take) == True
 
-    assert g_class_type(cfig, prnptnr, jv, kw.fund_agenda_take) == "float"
-    assert g_sqlitetype(cfig, prnptnr, jv, kw.fund_agenda_take) == "REAL"
-    assert g_popconpute(cfig, prnptnr, jv, kw.fund_agenda_take) == True
+    assert g_class_type(cfig, prncont, jv, kw.fund_agenda_take) == "float"
+    assert g_sqlitetype(cfig, prncont, jv, kw.fund_agenda_take) == "REAL"
+    assert g_popconpute(cfig, prncont, jv, kw.fund_agenda_take) == True
 
-    assert g_class_type(cfig, prnptnr, jv, kw.fund_give) == "float"
-    assert g_sqlitetype(cfig, prnptnr, jv, kw.fund_give) == "REAL"
-    assert g_popconpute(cfig, prnptnr, jv, kw.fund_give) == True
+    assert g_class_type(cfig, prncont, jv, kw.fund_give) == "float"
+    assert g_sqlitetype(cfig, prncont, jv, kw.fund_give) == "REAL"
+    assert g_popconpute(cfig, prncont, jv, kw.fund_give) == True
 
-    assert g_class_type(cfig, prnptnr, jv, kw.fund_take) == "float"
-    assert g_sqlitetype(cfig, prnptnr, jv, kw.fund_take) == "REAL"
-    assert g_popconpute(cfig, prnptnr, jv, kw.fund_take) == True
+    assert g_class_type(cfig, prncont, jv, kw.fund_take) == "float"
+    assert g_sqlitetype(cfig, prncont, jv, kw.fund_take) == "REAL"
+    assert g_popconpute(cfig, prncont, jv, kw.fund_take) == True
 
-    assert g_class_type(cfig, prnptnr, jv, kw.inallocable_contact_debt_lumen) == "float"
-    assert g_sqlitetype(cfig, prnptnr, jv, kw.inallocable_contact_debt_lumen) == "REAL"
-    assert g_popconpute(cfig, prnptnr, jv, kw.inallocable_contact_debt_lumen) == True
+    assert g_class_type(cfig, prncont, jv, kw.inallocable_contact_debt_lumen) == "float"
+    assert g_sqlitetype(cfig, prncont, jv, kw.inallocable_contact_debt_lumen) == "REAL"
+    assert g_popconpute(cfig, prncont, jv, kw.inallocable_contact_debt_lumen) == True
 
-    assert g_class_type(cfig, prnptnr, jv, kw.irrational_contact_debt_lumen) == "float"
-    assert g_sqlitetype(cfig, prnptnr, jv, kw.irrational_contact_debt_lumen) == "REAL"
-    assert g_popconpute(cfig, prnptnr, jv, kw.irrational_contact_debt_lumen) == True
+    assert g_class_type(cfig, prncont, jv, kw.irrational_contact_debt_lumen) == "float"
+    assert g_sqlitetype(cfig, prncont, jv, kw.irrational_contact_debt_lumen) == "REAL"
+    assert g_popconpute(cfig, prncont, jv, kw.irrational_contact_debt_lumen) == True
 
-    assert g_class_type(cfig, prnptnr, jv, kw.contact_cred_lumen) == "float"
-    assert g_sqlitetype(cfig, prnptnr, jv, kw.contact_cred_lumen) == "REAL"
-    assert g_popconpute(cfig, prnptnr, jv, kw.contact_cred_lumen) == False
+    assert g_class_type(cfig, prncont, jv, kw.contact_cred_lumen) == "float"
+    assert g_sqlitetype(cfig, prncont, jv, kw.contact_cred_lumen) == "REAL"
+    assert g_popconpute(cfig, prncont, jv, kw.contact_cred_lumen) == False
 
-    assert g_class_type(cfig, prnptnr, jv, kw.contact_debt_lumen) == "float"
-    assert g_sqlitetype(cfig, prnptnr, jv, kw.contact_debt_lumen) == "REAL"
-    assert g_popconpute(cfig, prnptnr, jv, kw.contact_debt_lumen) == False
+    assert g_class_type(cfig, prncont, jv, kw.contact_debt_lumen) == "float"
+    assert g_sqlitetype(cfig, prncont, jv, kw.contact_debt_lumen) == "REAL"
+    assert g_popconpute(cfig, prncont, jv, kw.contact_debt_lumen) == False
 
     assert g_class_type(cfig, prngrou, jk, kw.group_title) == "TitleTerm"
     assert g_sqlitetype(cfig, prngrou, jk, kw.group_title) == "TEXT"

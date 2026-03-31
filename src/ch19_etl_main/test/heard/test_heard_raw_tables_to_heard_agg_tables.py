@@ -120,9 +120,9 @@ def test_get_insert_heard_agg_sqlstrs_ReturnsObj_PopulatesTable_Scenario0(
     x66_debt = 66
 
     create_sound_and_heard_tables(cursor0)
-    prnptnr_h_raw_put_tablename = prime_tbl(kw.person_contactunit, kw.h_raw, "put")
-    print(f"{get_table_columns(cursor0, prnptnr_h_raw_put_tablename)=}")
-    insert_into_clause = f"""INSERT INTO {prnptnr_h_raw_put_tablename} (
+    prncont_h_raw_put_tablename = prime_tbl(kw.person_contactunit, kw.h_raw, "put")
+    print(f"{get_table_columns(cursor0, prncont_h_raw_put_tablename)=}")
+    insert_into_clause = f"""INSERT INTO {prncont_h_raw_put_tablename} (
   {kw.spark_num}
 , {kw.face_name}_inx
 , {kw.moment_rope}_inx
@@ -140,17 +140,17 @@ VALUES
 ;
 """
     cursor0.execute(insert_into_clause)
-    assert get_row_count(cursor0, prnptnr_h_raw_put_tablename) == 5
-    prnptnr_h_agg_put_tablename = prime_tbl(kw.person_contactunit, kw.h_agg, "put")
-    assert get_row_count(cursor0, prnptnr_h_agg_put_tablename) == 0
+    assert get_row_count(cursor0, prncont_h_raw_put_tablename) == 5
+    prncont_h_agg_put_tablename = prime_tbl(kw.person_contactunit, kw.h_agg, "put")
+    assert get_row_count(cursor0, prncont_h_agg_put_tablename) == 0
 
     # WHEN
-    sqlstr = get_insert_heard_agg_sqlstrs().get(prnptnr_h_agg_put_tablename)
+    sqlstr = get_insert_heard_agg_sqlstrs().get(prncont_h_agg_put_tablename)
     print(sqlstr)
     cursor0.execute(sqlstr)
 
     # THEN
-    assert get_row_count(cursor0, prnptnr_h_agg_put_tablename) == 4
+    assert get_row_count(cursor0, prncont_h_agg_put_tablename) == 4
     select_sqlstr = f"""SELECT {kw.spark_num}
 , {kw.face_name}
 , {kw.moment_rope}
@@ -158,7 +158,7 @@ VALUES
 , {kw.contact_name}
 , {kw.contact_cred_lumen}
 , {kw.contact_debt_lumen}
-FROM {prnptnr_h_agg_put_tablename}
+FROM {prncont_h_agg_put_tablename}
 """
     cursor0.execute(select_sqlstr)
     rows = cursor0.fetchall()
@@ -186,9 +186,9 @@ def test_etl_heard_raw_tables_to_heard_agg_tables_PopulatesTable_Scenario0(
     x66_debt = 66
 
     create_sound_and_heard_tables(cursor0)
-    prnptnr_h_raw_put_tablename = prime_tbl(kw.person_contactunit, kw.h_raw, "put")
-    print(f"{get_table_columns(cursor0, prnptnr_h_raw_put_tablename)=}")
-    insert_into_clause = f"""INSERT INTO {prnptnr_h_raw_put_tablename} (
+    prncont_h_raw_put_tablename = prime_tbl(kw.person_contactunit, kw.h_raw, "put")
+    print(f"{get_table_columns(cursor0, prncont_h_raw_put_tablename)=}")
+    insert_into_clause = f"""INSERT INTO {prncont_h_raw_put_tablename} (
   {kw.spark_num}
 , {kw.face_name}_inx
 , {kw.moment_rope}_inx
@@ -206,15 +206,15 @@ VALUES
 ;
 """
     cursor0.execute(insert_into_clause)
-    assert get_row_count(cursor0, prnptnr_h_raw_put_tablename) == 5
-    prnptnr_h_agg_put_tablename = prime_tbl(kw.person_contactunit, kw.h_agg, "put")
-    assert get_row_count(cursor0, prnptnr_h_agg_put_tablename) == 0
+    assert get_row_count(cursor0, prncont_h_raw_put_tablename) == 5
+    prncont_h_agg_put_tablename = prime_tbl(kw.person_contactunit, kw.h_agg, "put")
+    assert get_row_count(cursor0, prncont_h_agg_put_tablename) == 0
 
     # WHEN
     etl_heard_raw_tables_to_heard_agg_tables(cursor0)
 
     # THEN
-    assert get_row_count(cursor0, prnptnr_h_agg_put_tablename) == 4
+    assert get_row_count(cursor0, prncont_h_agg_put_tablename) == 4
     select_sqlstr = f"""SELECT {kw.spark_num}
 , {kw.face_name}
 , {kw.moment_rope}
@@ -222,7 +222,7 @@ VALUES
 , {kw.contact_name}
 , {kw.contact_cred_lumen}
 , {kw.contact_debt_lumen}
-FROM {prnptnr_h_agg_put_tablename}
+FROM {prncont_h_agg_put_tablename}
 """
     cursor0.execute(select_sqlstr)
     rows = cursor0.fetchall()

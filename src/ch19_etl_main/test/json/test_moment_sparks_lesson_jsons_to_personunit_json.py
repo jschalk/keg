@@ -32,17 +32,17 @@ def test_etl_spark_lesson_json_to_spark_inherited_personunits_SetsFiles_person_j
     a23_bob_e7_dir = create_person_spark_dir_path(x_dir, a23_lasso, bob_inx, spark7)
     a23_bob_e3_lesson = lessonunit_shop(bob_inx, None, exx.a23, spark_num=spark3)
     a23_bob_e7_lesson = lessonunit_shop(bob_inx, None, exx.a23, spark_num=spark7)
-    prnptnr_dimen = kw.person_contactunit
+    prncont_dimen = kw.person_contactunit
     bob_jkeys = {kw.contact_name: bob_inx}
     bob_jvalues = {kw.contact_cred_lumen: credit77, kw.contact_debt_lumen: None}
     yao_jkeys = {kw.contact_name: yao_inx}
     yao_jvalues = {kw.contact_cred_lumen: credit44, kw.contact_debt_lumen: None}
-    a23_bob_e3_lesson.add_p_personatom(prnptnr_dimen, kw.INSERT, bob_jkeys, bob_jvalues)
-    a23_bob_e3_lesson.add_p_personatom(prnptnr_dimen, kw.INSERT, yao_jkeys, yao_jvalues)
+    a23_bob_e3_lesson.add_p_personatom(prncont_dimen, kw.INSERT, bob_jkeys, bob_jvalues)
+    a23_bob_e3_lesson.add_p_personatom(prncont_dimen, kw.INSERT, yao_jkeys, yao_jvalues)
     sue_jkeys = {kw.contact_name: sue_inx}
     sue_jvalues = {kw.contact_cred_lumen: credit88, kw.contact_debt_lumen: None}
-    a23_bob_e7_lesson.add_p_personatom(prnptnr_dimen, kw.INSERT, bob_jkeys, bob_jvalues)
-    a23_bob_e7_lesson.add_p_personatom(prnptnr_dimen, kw.INSERT, sue_jkeys, sue_jvalues)
+    a23_bob_e7_lesson.add_p_personatom(prncont_dimen, kw.INSERT, bob_jkeys, bob_jvalues)
+    a23_bob_e7_lesson.add_p_personatom(prncont_dimen, kw.INSERT, sue_jkeys, sue_jvalues)
     e3_all_lesson_path = create_spark_all_lesson_path(x_dir, a23_lasso, bob_inx, spark3)
     e7_all_lesson_path = create_spark_all_lesson_path(x_dir, a23_lasso, bob_inx, spark7)
     save_json(e3_all_lesson_path, None, a23_bob_e3_lesson.get_serializable_step_dict())
@@ -94,17 +94,17 @@ def test_etl_spark_lesson_json_to_spark_inherited_personunits_SetsFiles_expresse
     mstr_dir = str(temp3_fs)
     a23_bob_e3_lesson = lessonunit_shop(bob_inx, xia_inx, exx.a23, spark_num=spark3)
     a23_bob_e7_lesson = lessonunit_shop(bob_inx, xia_inx, exx.a23, spark_num=spark7)
-    prnptnr_dimen = kw.person_contactunit
+    prncont_dimen = kw.person_contactunit
     bob_jkeys = {kw.contact_name: bob_inx}
     bob_jvalues = {kw.contact_cred_lumen: credit77}
     yao_jkeys = {kw.contact_name: yao_inx}
     yao_jvalues = {kw.contact_cred_lumen: credit44}
-    a23_bob_e3_lesson.add_p_personatom(prnptnr_dimen, kw.INSERT, bob_jkeys, bob_jvalues)
-    a23_bob_e3_lesson.add_p_personatom(prnptnr_dimen, kw.INSERT, yao_jkeys, yao_jvalues)
+    a23_bob_e3_lesson.add_p_personatom(prncont_dimen, kw.INSERT, bob_jkeys, bob_jvalues)
+    a23_bob_e3_lesson.add_p_personatom(prncont_dimen, kw.INSERT, yao_jkeys, yao_jvalues)
     sue_jkeys = {kw.contact_name: sue_inx}
     sue_jvalues = {kw.contact_cred_lumen: credit88}
-    a23_bob_e7_lesson.add_p_personatom(prnptnr_dimen, kw.INSERT, bob_jkeys, bob_jvalues)
-    a23_bob_e7_lesson.add_p_personatom(prnptnr_dimen, kw.INSERT, sue_jkeys, sue_jvalues)
+    a23_bob_e7_lesson.add_p_personatom(prncont_dimen, kw.INSERT, bob_jkeys, bob_jvalues)
+    a23_bob_e7_lesson.add_p_personatom(prncont_dimen, kw.INSERT, sue_jkeys, sue_jvalues)
     a23_bob_e3_all_lesson_path = create_spark_all_lesson_path(
         mstr_dir, a23_lasso, bob_inx, spark3
     )
@@ -147,13 +147,13 @@ def test_etl_spark_lesson_json_to_spark_inherited_personunits_SetsFiles_expresse
         bob_inx, xia_inx, exx.a23, spark_num=spark7
     )
     expected_e3_bob_lesson.add_p_personatom(
-        prnptnr_dimen, kw.INSERT, bob_jkeys, bob_jvalues
+        prncont_dimen, kw.INSERT, bob_jkeys, bob_jvalues
     )
     expected_e3_bob_lesson.add_p_personatom(
-        prnptnr_dimen, kw.INSERT, yao_jkeys, yao_jvalues
+        prncont_dimen, kw.INSERT, yao_jkeys, yao_jvalues
     )
     expected_e7_bob_lesson.add_p_personatom(
-        prnptnr_dimen, kw.INSERT, sue_jkeys, sue_jvalues
+        prncont_dimen, kw.INSERT, sue_jkeys, sue_jvalues
     )
     assert expected_e3_bob_lesson == a23_bob_e3_lesson
     assert expected_e7_bob_lesson.persondelta != a23_bob_e7_lesson.persondelta

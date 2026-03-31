@@ -348,7 +348,7 @@
   "prnlabo": {"init_chapter": "ch07"}, 
   "prnmemb": {"init_chapter": "ch07"}, 
   "prnplan": {"init_chapter": "ch07"}, 
-  "prnptnr": {"init_chapter": "ch07"}, 
+  "prncont": {"init_chapter": "ch07"}, 
   "prnreas": {"init_chapter": "ch07"}, 
   "prnunit": {"init_chapter": "ch07"}, 
   "problem_bool": {"init_chapter": "ch06"}, 

@@ -1231,12 +1231,12 @@ def test_populate_translate_core_vld_with_missing_face_names_Scenario0_Populates
     spark1 = 1
 
     create_sound_and_heard_tables(cursor0)
-    prnptnr_str = kw.person_contactunit
-    prnptnr_s_agg_tablename = create_prime_tablename(prnptnr_str, "s_agg", "put")
-    insert_prnptnr_sqlstr = f"""
-INSERT INTO {prnptnr_s_agg_tablename} ({kw.spark_num}, {kw.face_name}, {kw.person_name}, {kw.contact_name})
+    prncont_str = kw.person_contactunit
+    prncont_s_agg_tablename = create_prime_tablename(prncont_str, "s_agg", "put")
+    insert_prncont_sqlstr = f"""
+INSERT INTO {prncont_s_agg_tablename} ({kw.spark_num}, {kw.face_name}, {kw.person_name}, {kw.contact_name})
 VALUES ({spark1}, '{exx.bob}', '{exx.bob}', '{exx.bob}');"""
-    cursor0.execute(insert_prnptnr_sqlstr)
+    cursor0.execute(insert_prncont_sqlstr)
 
     trlcore_s_vld_tablename = create_prime_tablename("trlcore", kw.s_vld)
     assert get_row_count(cursor0, trlcore_s_vld_tablename) == 0
@@ -1264,12 +1264,12 @@ def test_populate_translate_core_vld_with_missing_face_names_Scenario1_Populates
     spark1 = 1
 
     create_sound_and_heard_tables(cursor0)
-    prnptnr_str = kw.person_contactunit
-    prnptnr_s_agg_tablename = create_prime_tablename(prnptnr_str, "s_agg", "put")
-    insert_prnptnr_sqlstr = f"""
-INSERT INTO {prnptnr_s_agg_tablename} ({kw.spark_num}, {kw.face_name}, {kw.person_name}, {kw.contact_name})
+    prncont_str = kw.person_contactunit
+    prncont_s_agg_tablename = create_prime_tablename(prncont_str, "s_agg", "put")
+    insert_prncont_sqlstr = f"""
+INSERT INTO {prncont_s_agg_tablename} ({kw.spark_num}, {kw.face_name}, {kw.person_name}, {kw.contact_name})
 VALUES ({spark1}, '{exx.bob}', '{exx.bob}', '{exx.bob}'), ({spark1}, '{exx.yao}', '{exx.yao}', '{exx.yao}');"""
-    cursor0.execute(insert_prnptnr_sqlstr)
+    cursor0.execute(insert_prncont_sqlstr)
 
     trlcore_s_vld_tablename = create_prime_tablename("trlcore", kw.s_vld)
     insert_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename} (
@@ -1305,12 +1305,12 @@ def test_etl_translate_sound_agg_tables_to_translate_sound_vld_tables_Scenario2_
     spark1 = 1
 
     create_sound_and_heard_tables(cursor0)
-    prnptnr_str = kw.person_contactunit
-    prnptnr_s_agg_tablename = create_prime_tablename(prnptnr_str, "s_agg", "put")
-    insert_prnptnr_sqlstr = f"""
-INSERT INTO {prnptnr_s_agg_tablename} ({kw.spark_num}, {kw.face_name}, {kw.person_name}, {kw.contact_name})
+    prncont_str = kw.person_contactunit
+    prncont_s_agg_tablename = create_prime_tablename(prncont_str, "s_agg", "put")
+    insert_prncont_sqlstr = f"""
+INSERT INTO {prncont_s_agg_tablename} ({kw.spark_num}, {kw.face_name}, {kw.person_name}, {kw.contact_name})
 VALUES ({spark1}, '{exx.bob}', '{exx.bob}', '{exx.bob}');"""
-    cursor0.execute(insert_prnptnr_sqlstr)
+    cursor0.execute(insert_prncont_sqlstr)
 
     trlcore_s_vld_tablename = create_prime_tablename("trlcore", kw.s_vld)
     assert get_row_count(cursor0, trlcore_s_vld_tablename) == 0
@@ -1338,12 +1338,12 @@ def test_etl_translate_sound_agg_tables_to_translate_sound_vld_tables_Scenario3_
     spark1 = 1
 
     create_sound_and_heard_tables(cursor0)
-    prnptnr_str = kw.person_contactunit
-    prnptnr_s_agg_tablename = create_prime_tablename(prnptnr_str, "s_agg", "put")
-    insert_prnptnr_sqlstr = f"""
-INSERT INTO {prnptnr_s_agg_tablename} ({kw.spark_num}, {kw.face_name}, {kw.person_name}, {kw.contact_name})
+    prncont_str = kw.person_contactunit
+    prncont_s_agg_tablename = create_prime_tablename(prncont_str, "s_agg", "put")
+    insert_prncont_sqlstr = f"""
+INSERT INTO {prncont_s_agg_tablename} ({kw.spark_num}, {kw.face_name}, {kw.person_name}, {kw.contact_name})
 VALUES ({spark1}, '{exx.bob}', '{exx.bob}', '{exx.bob}'), ({spark1}, '{exx.yao}', '{exx.yao}', '{exx.yao}');"""
-    cursor0.execute(insert_prnptnr_sqlstr)
+    cursor0.execute(insert_prncont_sqlstr)
 
     trlcore_s_vld_tablename = create_prime_tablename("trlcore", kw.s_vld)
     insert_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename} (

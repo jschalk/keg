@@ -23,13 +23,13 @@ from src.ch19_etl_main.obj2db_person import (
     insert_h_agg_obj,
     insert_h_agg_prnawar,
     insert_h_agg_prncase,
+    insert_h_agg_prncont,
     insert_h_agg_prnfact,
     insert_h_agg_prngrou,
     insert_h_agg_prnheal,
     insert_h_agg_prnlabo,
     insert_h_agg_prnmemb,
     insert_h_agg_prnplan,
-    insert_h_agg_prnptnr,
     insert_h_agg_prnreas,
     insert_h_agg_prnunit,
 )
@@ -371,7 +371,7 @@ def test_insert_h_agg_prncase_CreatesTableRowsFor_prncase_h_agg(cursor0: Cursor)
 #     assert rows == expected_data
 
 
-# def test_insert_h_agg_prnptnr_CreatesTableRowsFor_prnptnr_h_agg():
+# def test_insert_h_agg_prncont_CreatesTableRowsFor_prncont_h_agg():
 # #     # ESTABLISH
 #     # x_args = get_person_calc_dimen_args("person_contactunit")
 #     # x_count = 0
@@ -426,7 +426,7 @@ def test_insert_h_agg_prncase_CreatesTableRowsFor_prncase_h_agg(cursor0: Cursor)
 #     x_objkeysholder = ObjKeysHolder(spark_num=x_spark_num, face_name=x_face_name, moment_rope=exx.a23_dash, person_name=x_person_name)
 
 #     # WHEN
-#     insert_h_agg_prnptnr(cursor0, x_objkeysholder, x_contact)
+#     insert_h_agg_prncont(cursor0, x_objkeysholder, x_contact)
 
 #     # THEN
 #     assert get_row_count(cursor0, x_table_name) == 1
@@ -847,7 +847,7 @@ def test_insert_h_agg_obj_CreatesTableRows_Scenario0_ReasonNumRelevantTables(
 #     cursor = conn.cursor()
 #     create_sound_and_heard_tables(cursor0)
 #     prnmemb_h_agg_table = f"{kw.person_contact_membership}_put_h_agg"
-#     prnptnr_h_agg_table = f"{kw.person_contactunit}_put_h_agg"
+#     prncont_h_agg_table = f"{kw.person_contactunit}_put_h_agg"
 #     prngrou_h_agg_table = f"{kw.person_groupunit}_put_h_agg"
 #     prnawar_h_agg_table = f"{kw.person_plan_awardunit}_put_h_agg"
 #     prnfact_h_agg_table = f"{kw.person_plan_factunit}_put_h_agg"
@@ -859,7 +859,7 @@ def test_insert_h_agg_obj_CreatesTableRows_Scenario0_ReasonNumRelevantTables(
 #     prnunit_h_agg_table = f"{kw.personunit}_put_h_agg"
 #     assert get_row_count(cursor0, prnunit_h_agg_table) == 0
 #     assert get_row_count(cursor0, prnplan_h_agg_table) == 0
-#     assert get_row_count(cursor0, prnptnr_h_agg_table) == 0
+#     assert get_row_count(cursor0, prncont_h_agg_table) == 0
 #     assert get_row_count(cursor0, prnmemb_h_agg_table) == 0
 #     assert get_row_count(cursor0, prngrou_h_agg_table) == 0
 #     assert get_row_count(cursor0, prnawar_h_agg_table) == 0
@@ -875,7 +875,7 @@ def test_insert_h_agg_obj_CreatesTableRows_Scenario0_ReasonNumRelevantTables(
 #     # THEN
 #     assert get_row_count(cursor0, prnunit_h_agg_table) == 1
 #     assert get_row_count(cursor0, prnplan_h_agg_table) == 5
-#     assert get_row_count(cursor0, prnptnr_h_agg_table) == 2
+#     assert get_row_count(cursor0, prncont_h_agg_table) == 2
 #     assert get_row_count(cursor0, prnmemb_h_agg_table) == 3
 #     assert get_row_count(cursor0, prngrou_h_agg_table) == 3
 #     assert get_row_count(cursor0, prnawar_h_agg_table) == 1

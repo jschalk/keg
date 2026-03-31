@@ -344,7 +344,7 @@
   "prnlabo": "abbv for person_plan_laborunit", 
   "prnmemb": "abbv for person_contact_membership", 
   "prnplan": "abbv for person_planunit", 
-  "prnptnr": "abbv for person_contactunit", 
+  "prncont": "abbv for person_contactunit", 
   "prnreas": "abbv for person_plan_reasonunit", 
   "prnunit": "abbv for personunit", 
   "problem_bool": ", Plan seed", 

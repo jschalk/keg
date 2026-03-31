@@ -57,7 +57,7 @@ VALUES (
 """
 
 
-def create_prnptnr_metrics_insert_sqlstr(values_dict: dict[str,]):
+def create_prncont_metrics_insert_sqlstr(values_dict: dict[str,]):
     moment_rope = values_dict.get("moment_rope")
     person_name = values_dict.get("person_name")
     contact_name = values_dict.get("contact_name")
@@ -412,7 +412,7 @@ def insert_job_prnmemb(
     cursor.execute(insert_sqlstr)
 
 
-def insert_job_prnptnr(
+def insert_job_prncont(
     cursor: sqlite3_Cursor,
     x_objkeysholder: ObjKeysHolder,
     x_contact: ContactUnit,
@@ -420,7 +420,7 @@ def insert_job_prnptnr(
     x_dict = copy_deepcopy(x_contact.__dict__)
     x_dict["moment_rope"] = x_objkeysholder.moment_rope
     x_dict["person_name"] = x_objkeysholder.person_name
-    insert_sqlstr = create_prnptnr_metrics_insert_sqlstr(x_dict)
+    insert_sqlstr = create_prncont_metrics_insert_sqlstr(x_dict)
     cursor.execute(insert_sqlstr)
 
 
@@ -568,7 +568,7 @@ def insert_job_obj(cursor: sqlite3_Cursor, job_person: PersonUnit):
                 insert_job_prncase(cursor, x_objkeysholder, prem)
 
     for x_contact in job_person.contacts.values():
-        insert_job_prnptnr(cursor, x_objkeysholder, x_contact)
+        insert_job_prncont(cursor, x_objkeysholder, x_contact)
         for x_membership in x_contact.memberships.values():
             insert_job_prnmemb(cursor, x_objkeysholder, x_membership)
 
@@ -754,7 +754,7 @@ VALUES (
 """
 
 
-def create_prnptnr_put_h_agg_insert_sqlstr(values_dict: dict[str,]) -> str:
+def create_prncont_put_h_agg_insert_sqlstr(values_dict: dict[str,]) -> str:
     pass
 
 
@@ -797,7 +797,7 @@ def create_prnptnr_put_h_agg_insert_sqlstr(values_dict: dict[str,]) -> str:
 # """
 
 
-# def create_prnptnr_metrics_insert_sqlstr(values_dict: dict[str,]):
+# def create_prncont_metrics_insert_sqlstr(values_dict: dict[str,]):
 #     moment_rope = values_dict.get("moment_rope")
 #     person_name = values_dict.get("person_name")
 #     contact_name = values_dict.get("contact_name")
@@ -1070,7 +1070,7 @@ def insert_h_agg_prnmemb(
     cursor.execute(insert_sqlstr)
 
 
-def insert_h_agg_prnptnr(
+def insert_h_agg_prncont(
     cursor: sqlite3_Cursor,
     x_objkeysholder: ObjKeysHolder,
     x_contact: ContactUnit,
@@ -1080,7 +1080,7 @@ def insert_h_agg_prnptnr(
     x_dict["face_name"] = x_objkeysholder.face_name
     x_dict["moment_rope"] = x_objkeysholder.moment_rope
     x_dict["person_name"] = x_objkeysholder.person_name
-    insert_sqlstr = create_prnptnr_metrics_insert_sqlstr(x_dict)
+    insert_sqlstr = create_prncont_metrics_insert_sqlstr(x_dict)
     cursor.execute(insert_sqlstr)
 
 
@@ -1252,7 +1252,7 @@ def insert_h_agg_obj(
                 insert_h_agg_prncase(cursor, x_objkeysholder, prem)
 
     # for x_contact in job_person.contacts.values():
-    #     insert_h_agg_prnptnr(cursor, x_objkeysholder, x_contact)
+    #     insert_h_agg_prncont(cursor, x_objkeysholder, x_contact)
     #     for x_membership in x_contact.memberships.values():
     #         insert_h_agg_prnmemb(cursor, x_objkeysholder, x_membership)
 

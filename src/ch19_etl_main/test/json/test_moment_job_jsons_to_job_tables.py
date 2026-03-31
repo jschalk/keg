@@ -46,7 +46,7 @@ def test_etl_moment_job_jsons_to_job_tables_PopulatesTables_Scenario0(
     save_job_file(moment_mstr_dir, sue_person)
 
     prnmemb_job_table = prime_table(kw.prnmemb, kw.job, None)
-    prnptnr_job_table = prime_table(kw.prnptnr, kw.job, None)
+    prncont_job_table = prime_table(kw.prncont, kw.job, None)
     prngrou_job_table = prime_table(kw.prngrou, kw.job, None)
     prnawar_job_table = prime_table(kw.prnawar, kw.job, None)
     prnfact_job_table = prime_table(kw.prnfact, kw.job, None)
@@ -58,7 +58,7 @@ def test_etl_moment_job_jsons_to_job_tables_PopulatesTables_Scenario0(
     prnunit_job_table = prime_table(kw.prnunit, kw.job, None)
     assert not db_table_exists(cursor0, prnunit_job_table)
     assert not db_table_exists(cursor0, prnplan_job_table)
-    assert not db_table_exists(cursor0, prnptnr_job_table)
+    assert not db_table_exists(cursor0, prncont_job_table)
     assert not db_table_exists(cursor0, prnmemb_job_table)
     assert not db_table_exists(cursor0, prngrou_job_table)
     assert not db_table_exists(cursor0, prnawar_job_table)
@@ -74,7 +74,7 @@ def test_etl_moment_job_jsons_to_job_tables_PopulatesTables_Scenario0(
     # THEN
     assert get_row_count(cursor0, prnunit_job_table) == 1
     assert get_row_count(cursor0, prnplan_job_table) == 5
-    assert get_row_count(cursor0, prnptnr_job_table) == 2
+    assert get_row_count(cursor0, prncont_job_table) == 2
     assert get_row_count(cursor0, prnmemb_job_table) == 3
     assert get_row_count(cursor0, prngrou_job_table) == 3
     assert get_row_count(cursor0, prnawar_job_table) == 1
@@ -110,15 +110,15 @@ def test_etl_moment_job_jsons_to_job_tables_PopulatesTables_Scenario1(
     a23_bob_job_path = create_job_path(moment_mstr_dir, a23_lasso, bob_inx)
     assert os_path_exists(moment_json_path)
     assert os_path_exists(a23_bob_job_path)
-    prnptnr_job_tablename = prime_table("prnptnr", kw.job, None)
-    assert not db_table_exists(cursor0, prnptnr_job_tablename)
+    prncont_job_tablename = prime_table("prncont", kw.job, None)
+    assert not db_table_exists(cursor0, prncont_job_tablename)
 
     # WHEN
     etl_moment_job_jsons_to_job_tables(cursor0, moment_mstr_dir)
 
     # THEN
-    assert get_row_count(cursor0, prnptnr_job_tablename) == 3
-    rows = cursor0.execute(f"SELECT * FROM {prnptnr_job_tablename}").fetchall()
+    assert get_row_count(cursor0, prncont_job_tablename) == 3
+    rows = cursor0.execute(f"SELECT * FROM {prncont_job_tablename}").fetchall()
     print(rows)
     assert rows == [
         (

@@ -24,7 +24,7 @@ ALL_DIMEN_ABBV7 = {
     "MMTOFFI",
     "MMTUNIT",
     "PRNMEMB",
-    "PRNPTNR",
+    "PRNCONT",
     "PRNAWAR",
     "PRNFACT",
     "PRNHEAL",
@@ -77,7 +77,7 @@ def get_dimen_abbv7(dimen: str) -> str:
         "moment_timeoffi": "MMTOFFI",
         "momentunit": "MMTUNIT",
         "person_contact_membership": "PRNMEMB",
-        "person_contactunit": "PRNPTNR",
+        "person_contactunit": "PRNCONT",
         "person_plan_awardunit": "PRNAWAR",
         "person_plan_factunit": "PRNFACT",
         "person_plan_healerunit": "PRNHEAL",
@@ -146,7 +146,7 @@ def create_prime_tablename(
         "mmtoffi": "moment_timeoffi",
         "mmtunit": "momentunit",
         "prnmemb": "person_contact_membership",
-        "prnptnr": "person_contactunit",
+        "prncont": "person_contactunit",
         "prnawar": "person_plan_awardunit",
         "prnfact": "person_plan_factunit",
         "prngrou": "person_groupunit",
@@ -370,9 +370,7 @@ def get_stage_abbv5(stage_name: str) -> str:
         "heard_vld": "h_vld",
     }
     abb5_str = stage_abbv5.get(stage_name)
-    if abb5_str:
-        return abb5_str
-    return stage_name
+    return abb5_str if abb5_str else stage_name
 
 
 def get_prime_columns(

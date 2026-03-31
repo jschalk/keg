@@ -6,13 +6,13 @@ from src.ch19_etl_main.obj2db_person import (
     create_personunit_metrics_insert_sqlstr,
     create_prnawar_metrics_insert_sqlstr,
     create_prncase_metrics_insert_sqlstr,
+    create_prncont_metrics_insert_sqlstr,
     create_prnfact_metrics_insert_sqlstr,
     create_prngrou_metrics_insert_sqlstr,
     create_prnheal_metrics_insert_sqlstr,
     create_prnlabo_metrics_insert_sqlstr,
     create_prnmemb_metrics_insert_sqlstr,
     create_prnplan_metrics_insert_sqlstr,
-    create_prnptnr_metrics_insert_sqlstr,
     create_prnreas_metrics_insert_sqlstr,
 )
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
@@ -533,7 +533,7 @@ def test_create_prnlabo_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     assert insert_sqlstr == expected_sqlstr
 
 
-def test_create_prnptnr_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
+def test_create_prncont_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     # ESTABLISH
     x_args = get_person_calc_dimen_args("person_contactunit")
     x_args.add("moment_rope")
@@ -597,7 +597,7 @@ def test_create_prnptnr_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     assert x_args == set(values_dict.keys())
 
     # WHEN
-    insert_sqlstr = create_prnptnr_metrics_insert_sqlstr(values_dict)
+    insert_sqlstr = create_prncont_metrics_insert_sqlstr(values_dict)
 
     # THEN
     assert insert_sqlstr

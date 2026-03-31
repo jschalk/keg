@@ -76,20 +76,20 @@ def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario1_person_contactunit(
         kw.amount,
     ]
     src_table = f"{idea_number}_raw"
-    prnptnr_table = f"{kw.person_contactunit}_raw"
+    prncont_table = f"{kw.person_contactunit}_raw"
     idea_config = get_idea_config_dict()
-    prnptnr_config = idea_config.get(kw.person_contactunit)
-    prnptnr_jkeys = prnptnr_config.get(kw.jkeys)
-    prnptnr_jvals = prnptnr_config.get(kw.jvalues)
-    prnptnr_args = set(prnptnr_jkeys.keys()).union(set(prnptnr_jvals.keys()))
-    print(f"{prnptnr_jkeys=}")
-    print(f"{prnptnr_jvals=}")
+    prncont_config = idea_config.get(kw.person_contactunit)
+    prncont_jkeys = prncont_config.get(kw.jkeys)
+    prncont_jvals = prncont_config.get(kw.jvalues)
+    prncont_args = set(prncont_jkeys.keys()).union(set(prncont_jvals.keys()))
+    print(f"{prncont_jkeys=}")
+    print(f"{prncont_jvals=}")
     create_idea_sorted_table(cursor0, src_table, idea_cols)
-    create_idea_sorted_table(cursor0, prnptnr_table, list(prnptnr_args))
+    create_idea_sorted_table(cursor0, prncont_table, list(prncont_args))
 
     # WHEN
     gen_sqlstr = get_idea_into_dimen_raw_query(
-        cursor0, idea_number, kw.person_contactunit, prnptnr_jkeys
+        cursor0, idea_number, kw.person_contactunit, prncont_jkeys
     )
 
     # THEN
@@ -124,20 +124,20 @@ def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario2_person_contactunit(
         kw.amount,
     ]
     src_table = f"{idea_number}_raw"
-    prnptnr_table = f"{kw.person_contactunit}_raw"
+    prncont_table = f"{kw.person_contactunit}_raw"
     idea_config = get_idea_config_dict()
-    prnptnr_config = idea_config.get(kw.person_contactunit)
-    prnptnr_jkeys = prnptnr_config.get(kw.jkeys)
-    prnptnr_jvals = prnptnr_config.get(kw.jvalues)
-    prnptnr_args = set(prnptnr_jkeys.keys()).union(set(prnptnr_jvals.keys()))
-    print(f"{prnptnr_jkeys=}")
-    print(f"{prnptnr_jvals=}")
+    prncont_config = idea_config.get(kw.person_contactunit)
+    prncont_jkeys = prncont_config.get(kw.jkeys)
+    prncont_jvals = prncont_config.get(kw.jvalues)
+    prncont_args = set(prncont_jkeys.keys()).union(set(prncont_jvals.keys()))
+    print(f"{prncont_jkeys=}")
+    print(f"{prncont_jvals=}")
     create_idea_sorted_table(cursor0, src_table, idea_cols)
-    create_idea_sorted_table(cursor0, prnptnr_table, list(prnptnr_args))
+    create_idea_sorted_table(cursor0, prncont_table, list(prncont_args))
 
     # WHEN
     gen_sqlstr = get_idea_into_dimen_raw_query(
-        cursor0, idea_number, kw.person_contactunit, prnptnr_jkeys
+        cursor0, idea_number, kw.person_contactunit, prncont_jkeys
     )
 
     # THEN

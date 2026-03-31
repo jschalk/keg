@@ -10,13 +10,13 @@ from src.ch18_etl_config.etl_sqlstr import create_sound_and_heard_tables
 from src.ch19_etl_main.obj2db_person import (
     create_prnawar_put_h_agg_insert_sqlstr,
     create_prncase_put_h_agg_insert_sqlstr,
+    create_prncont_put_h_agg_insert_sqlstr,
     create_prnfact_put_h_agg_insert_sqlstr,
     create_prngrou_put_h_agg_insert_sqlstr,
     create_prnheal_put_h_agg_insert_sqlstr,
     create_prnlabo_put_h_agg_insert_sqlstr,
     create_prnmemb_put_h_agg_insert_sqlstr,
     create_prnplan_put_h_agg_insert_sqlstr,
-    create_prnptnr_put_h_agg_insert_sqlstr,
     create_prnreas_put_h_agg_insert_sqlstr,
     create_prnunit_put_h_agg_insert_sqlstr,
 )
@@ -371,7 +371,7 @@ def test_create_prnfact_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     assert insert_sqlstr == expected_sqlstr
 
 
-# def test_create_prnptnr_put_h_agg_insert_sqlstr_ReturnsObj():
+# def test_create_prncont_put_h_agg_insert_sqlstr_ReturnsObj():
 #     # ESTABLISH
 #     x_moment_rope = exx.a23_dash
 #     x_person_name = "Sue"
@@ -417,7 +417,7 @@ def test_create_prnfact_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     assert dst_columns == set(values_dict.keys())
 
 #     # WHEN
-#     insert_sqlstr = create_prnptnr_put_h_agg_insert_sqlstr(values_dict)
+#     insert_sqlstr = create_prncont_put_h_agg_insert_sqlstr(values_dict)
 
 #     # THEN
 #     assert insert_sqlstr

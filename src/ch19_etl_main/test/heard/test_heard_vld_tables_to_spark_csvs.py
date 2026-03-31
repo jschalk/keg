@@ -30,8 +30,8 @@ def test_etl_heard_vld_to_spark_person_csvs_CreatesCSVs_Scenario0_person_contact
     a23_lasso = lassounit_shop(exx.a23_dash, exx.dash)
     a23_bob_e3_dir = create_person_spark_dir_path(x_dir, a23_lasso, bob_inx, spark3)
     a23_bob_e7_dir = create_person_spark_dir_path(x_dir, a23_lasso, bob_inx, spark7)
-    a23_e3_prnptnr_put_path = create_path(a23_bob_e3_dir, put_agg_csv)
-    a23_e7_prnptnr_put_path = create_path(a23_bob_e7_dir, put_agg_csv)
+    a23_e3_prncont_put_path = create_path(a23_bob_e3_dir, put_agg_csv)
+    a23_e7_prncont_put_path = create_path(a23_bob_e7_dir, put_agg_csv)
 
     create_sound_and_heard_tables(cursor0)
     insert_raw_sqlstr = f"""
@@ -44,19 +44,19 @@ VALUES
 """
     print(insert_raw_sqlstr)
     cursor0.execute(insert_raw_sqlstr)
-    print(f"{a23_e3_prnptnr_put_path=}")
-    print(f"{a23_e7_prnptnr_put_path=}")
-    assert os_path_exists(a23_e3_prnptnr_put_path) is False
-    assert os_path_exists(a23_e7_prnptnr_put_path) is False
+    print(f"{a23_e3_prncont_put_path=}")
+    print(f"{a23_e7_prncont_put_path=}")
+    assert os_path_exists(a23_e3_prncont_put_path) is False
+    assert os_path_exists(a23_e7_prncont_put_path) is False
 
     # WHEN
     etl_heard_vld_to_spark_person_csvs(cursor0, x_dir)
 
     # THEN
-    assert os_path_exists(a23_e3_prnptnr_put_path)
-    assert os_path_exists(a23_e7_prnptnr_put_path)
-    e3_put_csv = open_file(a23_e3_prnptnr_put_path)
-    e7_put_csv = open_file(a23_e7_prnptnr_put_path)
+    assert os_path_exists(a23_e3_prncont_put_path)
+    assert os_path_exists(a23_e7_prncont_put_path)
+    e3_put_csv = open_file(a23_e3_prncont_put_path)
+    e7_put_csv = open_file(a23_e7_prncont_put_path)
     print(f"{e3_put_csv=}")
     print(f"{e7_put_csv=}")
     expected_e3_put_csv = f"""spark_num,face_name,moment_rope,person_name,contact_name,contact_cred_lumen,contact_debt_lumen,knot
@@ -85,8 +85,8 @@ def test_etl_heard_vld_to_spark_person_csvs_CreatesCSVs_Scenario1_person_plan_re
     a23_lasso = lassounit_shop(exx.a23)
     a23_bob_e3_dir = create_person_spark_dir_path(x_dir, a23_lasso, bob_inx, spark3)
     a23_bob_e7_dir = create_person_spark_dir_path(x_dir, a23_lasso, bob_inx, spark7)
-    a23_e3_prnptnr_put_path = create_path(a23_bob_e3_dir, put_agg_csv)
-    a23_e7_prnptnr_put_path = create_path(a23_bob_e7_dir, put_agg_csv)
+    a23_e3_prncont_put_path = create_path(a23_bob_e3_dir, put_agg_csv)
+    a23_e7_prncont_put_path = create_path(a23_bob_e7_dir, put_agg_csv)
 
     create_sound_and_heard_tables(cursor0)
     # print(f"{get_table_columns(cursor0, put_agg_tablename)=}")
@@ -106,19 +106,19 @@ VALUES
 """
     # print(insert_raw_sqlstr)
     cursor0.execute(insert_raw_sqlstr)
-    # print(f"{a23_e3_prnptnr_put_path=}")
-    # print(f"{a23_e7_prnptnr_put_path=}")
-    assert os_path_exists(a23_e3_prnptnr_put_path) is False
-    assert os_path_exists(a23_e7_prnptnr_put_path) is False
+    # print(f"{a23_e3_prncont_put_path=}")
+    # print(f"{a23_e7_prncont_put_path=}")
+    assert os_path_exists(a23_e3_prncont_put_path) is False
+    assert os_path_exists(a23_e7_prncont_put_path) is False
 
     # WHEN
     etl_heard_vld_to_spark_person_csvs(cursor0, x_dir)
 
     # THEN
-    assert os_path_exists(a23_e3_prnptnr_put_path)
-    assert os_path_exists(a23_e7_prnptnr_put_path)
-    e3_put_csv = open_file(a23_e3_prnptnr_put_path)
-    e7_put_csv = open_file(a23_e7_prnptnr_put_path)
+    assert os_path_exists(a23_e3_prncont_put_path)
+    assert os_path_exists(a23_e7_prncont_put_path)
+    e3_put_csv = open_file(a23_e3_prncont_put_path)
+    e7_put_csv = open_file(a23_e7_prncont_put_path)
     # print(f"{e3_put_csv=}")
     print(f"{e7_put_csv=}")
     expected_e3_put_csv = f"""{kw.spark_num},{kw.face_name},{kw.person_name},{kw.plan_rope},{kw.reason_context},{kw.active_requisite},{kw.knot}

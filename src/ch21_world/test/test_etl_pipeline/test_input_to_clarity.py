@@ -79,16 +79,16 @@ def test_sheets_input_to_lynx_with_cursor_Scenario0_br000113PopulatesTables(
     prnunit_put_sound_raw = prime_tbl(kw.personunit, kw.s_raw, "put")
     prnunit_put_sound_agg = prime_tbl(kw.personunit, "s_agg", "put")
     prnunit_put_sound_vld = prime_tbl(kw.personunit, kw.s_vld, "put")
-    prnptnr_put_sound_raw = prime_tbl(kw.prnptnr, kw.s_raw, "put")
-    prnptnr_put_sound_agg = prime_tbl(kw.prnptnr, "s_agg", "put")
-    prnptnr_put_sound_vld = prime_tbl(kw.prnptnr, kw.s_vld, "put")
+    prncont_put_sound_raw = prime_tbl(kw.prncont, kw.s_raw, "put")
+    prncont_put_sound_agg = prime_tbl(kw.prncont, "s_agg", "put")
+    prncont_put_sound_vld = prime_tbl(kw.prncont, kw.s_vld, "put")
     momentunit_heard_raw = prime_tbl(kw.momentunit, kw.h_raw)
     momentunit_heard_agg = prime_tbl(kw.momentunit, kw.h_agg)
     momentunit_heard_vld = prime_tbl(kw.momentunit, kw.h_vld)
     prnunit_put_heard_raw = prime_tbl(kw.personunit, kw.h_raw, "put")
     prnunit_put_heard_agg = prime_tbl(kw.personunit, kw.h_vld, "put")
-    prnptnr_put_heard_raw = prime_tbl(kw.prnptnr, kw.h_raw, "put")
-    prnptnr_put_heard_agg = prime_tbl(kw.prnptnr, kw.h_vld, "put")
+    prncont_put_heard_raw = prime_tbl(kw.prncont, kw.h_raw, "put")
+    prncont_put_heard_agg = prime_tbl(kw.prncont, kw.h_vld, "put")
     mstr_dir = fay_wdir.moment_mstr_dir
     a23_lasso = lassounit_shop(exx.a23)
     a23_json_path = create_moment_json_path(mstr_dir, a23_lasso)
@@ -98,7 +98,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario0_br000113PopulatesTables(
     a23_e1_expressed_lesson_path = expressed_path(mstr_dir, a23_lasso, sue_inx, e3)
     a23_sue_gut_path = create_gut_path(mstr_dir, a23_lasso, sue_inx)
     a23_sue_job_path = create_job_path(mstr_dir, a23_lasso, sue_inx)
-    prnptnr_job = prime_tbl(kw.prnptnr, "job", None)
+    prncont_job = prime_tbl(kw.prncont, "job", None)
     last_run_metrics_path = create_last_run_metrics_path(mstr_dir)
 
     assert not db_table_exists(cursor0, br00113_raw)
@@ -123,15 +123,15 @@ def test_sheets_input_to_lynx_with_cursor_Scenario0_br000113PopulatesTables(
     assert not db_table_exists(cursor0, momentunit_heard_vld)
     assert not db_table_exists(cursor0, prnunit_put_heard_raw)
     assert not db_table_exists(cursor0, prnunit_put_heard_agg)
-    assert not db_table_exists(cursor0, prnptnr_put_heard_raw)
-    assert not db_table_exists(cursor0, prnptnr_put_heard_agg)
+    assert not db_table_exists(cursor0, prncont_put_heard_raw)
+    assert not db_table_exists(cursor0, prncont_put_heard_agg)
     assert not os_path_exists(a23_json_path)
     assert not os_path_exists(a23_e1_all_lesson_path)
     assert not os_path_exists(a23_e1_expressed_lesson_path)
     assert not os_path_exists(a23_sue_gut_path)
     assert not os_path_exists(a23_sue_job_path)
     assert not db_table_exists(cursor0, kw.moment_ote1_agg)
-    assert not db_table_exists(cursor0, prnptnr_job)
+    assert not db_table_exists(cursor0, prncont_job)
     assert not db_table_exists(cursor0, kw.moment_contact_nets)
     assert not db_table_exists(cursor0, kw.moment_kpi001_contact_nets)
     assert not os_path_exists(last_run_metrics_path)
@@ -150,12 +150,12 @@ def test_sheets_input_to_lynx_with_cursor_Scenario0_br000113PopulatesTables(
     # THEN
     # select_translate_core = f"SELECT * FROM {trlcore_sound_vld}"
     # select_personunit_put = f"SELECT * FROM {prnunit_put_sound_agg}"
-    # select_prnptnr_put = f"SELECT * FROM {prnptnr_put_sound_agg}"
+    # select_prncont_put = f"SELECT * FROM {prncont_put_sound_agg}"
     # select_momentunit_put_raw = f"SELECT * FROM {momentunit_sound_raw}"
     # select_momentunit_put_agg = f"SELECT * FROM {momentunit_sound_agg}"
     # print(f"{cursor.execute(select_translate_core).fetchall()=}")
     # print(f"{cursor.execute(select_personunit_put).fetchall()=}")
-    # print(f"{cursor.execute(select_prnptnr_put).fetchall()=}")
+    # print(f"{cursor.execute(select_prncont_put).fetchall()=}")
     # print(f"{cursor.execute(select_momentunit_put_raw).fetchall()=}")
     # print(f"{cursor.execute(select_momentunit_put_agg).fetchall()=}")
 
@@ -167,25 +167,25 @@ def test_sheets_input_to_lynx_with_cursor_Scenario0_br000113PopulatesTables(
     assert get_row_count(cursor0, trlname_sound_raw) == 1
     assert get_row_count(cursor0, momentunit_sound_raw) == 1
     assert get_row_count(cursor0, prnunit_put_sound_raw) == 1
-    assert get_row_count(cursor0, prnptnr_put_sound_raw) == 1
+    assert get_row_count(cursor0, prncont_put_sound_raw) == 1
     assert get_row_count(cursor0, trlname_sound_agg) == 1
     assert get_row_count(cursor0, momentunit_sound_agg) == 1
     assert get_row_count(cursor0, prnunit_put_sound_agg) == 1
-    assert get_row_count(cursor0, prnptnr_put_sound_agg) == 1
+    assert get_row_count(cursor0, prncont_put_sound_agg) == 1
     assert get_row_count(cursor0, trlcore_sound_raw) == 1
     assert get_row_count(cursor0, trlcore_sound_agg) == 1
     assert get_row_count(cursor0, trlcore_sound_vld) == 1
     assert get_row_count(cursor0, trlname_sound_vld) == 1
     assert get_row_count(cursor0, momentunit_sound_vld) == 1
     assert get_row_count(cursor0, prnunit_put_sound_vld) == 1
-    assert get_row_count(cursor0, prnptnr_put_sound_vld) == 1
+    assert get_row_count(cursor0, prncont_put_sound_vld) == 1
     assert get_row_count(cursor0, momentunit_heard_raw) == 1
     assert get_row_count(cursor0, momentunit_heard_agg) == 1
     assert get_row_count(cursor0, prnunit_put_heard_raw) == 1
-    assert get_row_count(cursor0, prnptnr_put_heard_raw) == 1
+    assert get_row_count(cursor0, prncont_put_heard_raw) == 1
     assert get_row_count(cursor0, momentunit_heard_vld) == 1
     assert get_row_count(cursor0, prnunit_put_heard_agg) == 1
-    assert get_row_count(cursor0, prnptnr_put_heard_agg) == 1
+    assert get_row_count(cursor0, prncont_put_heard_agg) == 1
     assert os_path_exists(a23_json_path)
     print(f"{a23_e1_all_lesson_path=}")
     assert os_path_exists(a23_e1_all_lesson_path)
@@ -196,7 +196,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario0_br000113PopulatesTables(
     creg_rope = sue_gut.make_rope(time_rope, kw.creg)
     assert sue_gut.plan_exists(creg_rope)
     assert os_path_exists(a23_sue_job_path)
-    assert get_row_count(cursor0, prnptnr_job) == 1
+    assert get_row_count(cursor0, prncont_job) == 1
     assert get_row_count(cursor0, kw.moment_contact_nets) == 0
     # assert get_row_count(cursor, moment_ote1_agg_tablename) == 0
     assert get_row_count(cursor0, kw.moment_kpi001_contact_nets) == 0
@@ -263,14 +263,14 @@ def test_sheets_input_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     momentunit_sound_agg = prime_tbl(kw.momentunit, "s_agg")
     prnunit_put_sound_raw = prime_tbl(kw.personunit, kw.s_raw, "put")
     prnunit_put_sound_agg = prime_tbl(kw.personunit, "s_agg", "put")
-    prnptnr_put_sound_raw = prime_tbl(kw.prnptnr, kw.s_raw, "put")
-    prnptnr_put_sound_agg = prime_tbl(kw.prnptnr, "s_agg", "put")
+    prncont_put_sound_raw = prime_tbl(kw.prncont, kw.s_raw, "put")
+    prncont_put_sound_agg = prime_tbl(kw.prncont, "s_agg", "put")
     momentunit_heard_raw = prime_tbl(kw.momentunit, kw.h_raw)
     momentunit_heard_vld = prime_tbl(kw.momentunit, kw.h_vld)
     prnunit_put_heard_raw = prime_tbl(kw.personunit, kw.h_raw, "put")
     prnunit_put_heard_agg = prime_tbl(kw.personunit, kw.h_vld, "put")
-    prnptnr_put_heard_raw = prime_tbl(kw.prnptnr, kw.h_raw, "put")
-    prnptnr_put_heard_agg = prime_tbl(kw.prnptnr, kw.h_vld, "put")
+    prncont_put_heard_raw = prime_tbl(kw.prncont, kw.h_raw, "put")
+    prncont_put_heard_agg = prime_tbl(kw.prncont, kw.h_vld, "put")
     mstr_dir = fay_wdir.moment_mstr_dir
     a23_lasso = lassounit_shop(exx.a23)
     a23_json_path = create_moment_json_path(mstr_dir, a23_lasso)
@@ -301,8 +301,8 @@ def test_sheets_input_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     assert not db_table_exists(cursor0, momentunit_heard_vld)
     assert not db_table_exists(cursor0, prnunit_put_heard_raw)
     assert not db_table_exists(cursor0, prnunit_put_heard_agg)
-    assert not db_table_exists(cursor0, prnptnr_put_heard_raw)
-    assert not db_table_exists(cursor0, prnptnr_put_heard_agg)
+    assert not db_table_exists(cursor0, prncont_put_heard_raw)
+    assert not db_table_exists(cursor0, prncont_put_heard_agg)
     assert not os_path_exists(a23_json_path)
     assert not os_path_exists(a23_e1_all_lesson_path)
     assert not os_path_exists(a23_e1_expressed_lesson_path)
@@ -337,21 +337,21 @@ def test_sheets_input_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     assert get_row_count(cursor0, trlname_sound_raw) == 2
     assert get_row_count(cursor0, momentunit_sound_raw) == 4
     assert get_row_count(cursor0, prnunit_put_sound_raw) == 4
-    assert get_row_count(cursor0, prnptnr_put_sound_raw) == 2
+    assert get_row_count(cursor0, prncont_put_sound_raw) == 2
     assert get_row_count(cursor0, trlname_sound_agg) == 1
     assert get_row_count(cursor0, momentunit_sound_agg) == 1
     assert get_row_count(cursor0, prnunit_put_sound_agg) == 1
-    assert get_row_count(cursor0, prnptnr_put_sound_agg) == 1
+    assert get_row_count(cursor0, prncont_put_sound_agg) == 1
     assert get_row_count(cursor0, trlcore_sound_raw) == 1
     assert get_row_count(cursor0, trlcore_sound_agg) == 1
     assert get_row_count(cursor0, trlcore_sound_vld) == 1
     assert get_row_count(cursor0, trlname_sound_vld) == 1
     assert get_row_count(cursor0, momentunit_heard_raw) == 1
     assert get_row_count(cursor0, prnunit_put_heard_raw) == 1
-    assert get_row_count(cursor0, prnptnr_put_heard_raw) == 1
+    assert get_row_count(cursor0, prncont_put_heard_raw) == 1
     assert get_row_count(cursor0, momentunit_heard_vld) == 1
     assert get_row_count(cursor0, prnunit_put_heard_agg) == 1
-    assert get_row_count(cursor0, prnptnr_put_heard_agg) == 1
+    assert get_row_count(cursor0, prncont_put_heard_agg) == 1
     assert os_path_exists(a23_json_path)
     assert os_path_exists(a23_e1_all_lesson_path)
     assert os_path_exists(a23_e1_expressed_lesson_path)
@@ -626,14 +626,14 @@ def test_sheets_input_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
         momentunit_sound_agg = prime_tbl("momentunit", "s_agg")
         prnunit_put_sound_raw = prime_tbl("personunit", kw.s_raw, "put")
         prnunit_put_sound_agg = prime_tbl("personunit", "s_agg", "put")
-        prnptnr_put_sound_raw = prime_tbl("prnptnr", kw.s_raw, "put")
-        prnptnr_put_sound_agg = prime_tbl("prnptnr", "s_agg", "put")
+        prncont_put_sound_raw = prime_tbl("prncont", kw.s_raw, "put")
+        prncont_put_sound_agg = prime_tbl("prncont", "s_agg", "put")
         momentunit_heard_raw = prime_tbl("momentunit", kw.h_raw)
         momentunit_heard_vld = prime_tbl("momentunit", kw.h_vld)
         prnunit_put_heard_raw = prime_tbl("personunit", kw.h_raw, "put")
         prnunit_put_heard_agg = prime_tbl("personunit", kw.h_vld, "put")
-        prnptnr_put_heard_raw = prime_tbl("prnptnr", kw.h_raw, "put")
-        prnptnr_put_heard_agg = prime_tbl("prnptnr", kw.h_vld, "put")
+        prncont_put_heard_raw = prime_tbl("prncont", kw.h_raw, "put")
+        prncont_put_heard_agg = prime_tbl("prncont", kw.h_vld, "put")
 
         cursor = db_conn.cursor()
         assert get_row_count(cursor, br00113_raw) == 1
@@ -644,33 +644,30 @@ def test_sheets_input_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
         assert get_row_count(cursor, trlname_sound_raw) == 2
         assert get_row_count(cursor, momentunit_sound_raw) == 4
         assert get_row_count(cursor, prnunit_put_sound_raw) == 4
-        assert get_row_count(cursor, prnptnr_put_sound_raw) == 2
+        assert get_row_count(cursor, prncont_put_sound_raw) == 2
         assert get_row_count(cursor, trlname_sound_agg) == 1
         assert get_row_count(cursor, momentunit_sound_agg) == 1
         assert get_row_count(cursor, prnunit_put_sound_agg) == 1
-        assert get_row_count(cursor, prnptnr_put_sound_agg) == 1
+        assert get_row_count(cursor, prncont_put_sound_agg) == 1
         assert get_row_count(cursor, trlcore_sound_raw) == 1
         assert get_row_count(cursor, trlcore_sound_agg) == 1
         assert get_row_count(cursor, trlcore_sound_vld) == 1
         assert get_row_count(cursor, trlname_sound_vld) == 1
         assert get_row_count(cursor, momentunit_heard_raw) == 1
         assert get_row_count(cursor, prnunit_put_heard_raw) == 1
-        assert get_row_count(cursor, prnptnr_put_heard_raw) == 1
+        assert get_row_count(cursor, prncont_put_heard_raw) == 1
         assert get_row_count(cursor, momentunit_heard_vld) == 1
         assert get_row_count(cursor, prnunit_put_heard_agg) == 1
-        assert get_row_count(cursor, prnptnr_put_heard_agg) == 1
+        assert get_row_count(cursor, prncont_put_heard_agg) == 1
         assert get_row_count(cursor, kw.moment_ote1_agg) == 1
     db_conn.close()
 
 
-# TODO reactivate test
+# # TODO reactivate test
 # def test_sheets_input_to_lynx_mstr_Scenario1_Creates_job_Files(temp3_fs):
 #     # ESTABLISH
 #     h1_mop = init_rope(["herenow1", "family", exx.casa, exx.clean, exx.mop])
 #     h1_tools = init_rope(["herenow1", "family", exx.casa, exx.clean, exx.scrub])
-#     h7_mop = init_rope(["herenow7", "family", exx.casa, exx.clean, exx.mop])
-#     h7_grocery = init_rope(["herenow7", "family", exx.casa, exx.clean, "grocery"])
-#     h7_brush = init_rope(["herenow7", "family", exx.casa, exx.clean, "brush"])
 
 #     data = [
 #         (0, exx.sue, exx.zia, exx.hn1, h1_mop, 1.0, True),
@@ -708,6 +705,8 @@ def test_sheets_input_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
 #     )
 
 #     # THEN
+# world_test_ex_dir = "src\ch21_world\test\test_world_examples"
+#     export_db_to_excel(here_wdir.get_world_db_path(), here_wdir.worlds_dir, "export.xlsx")
 #     assert os_path_exists(hn1_mmt_json_path)
 #     assert os_path_exists(hn1_yao_job_path)
 #     assert os_path_exists(hn1_zia_job_path)
