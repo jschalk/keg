@@ -1,3 +1,10 @@
+## [0.81.110](https://github.com/jschalk/keg/compare/v0.81.109...v0.81.110) (2026-03-31)
+
+
+### Bug Fixes
+
+* [#1114](https://github.com/jschalk/keg/issues/1114) replace "partner" with "contact" ([609200a](https://github.com/jschalk/keg/commit/609200ab348f61b1dfd954ea1065787da6e89afa))
+
 ## [0.81.109](https://github.com/jschalk/keg/compare/v0.81.108...v0.81.109) (2026-03-31)
 
 
