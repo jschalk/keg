@@ -1,3 +1,10 @@
+## [0.81.109](https://github.com/jschalk/keg/compare/v0.81.108...v0.81.109) (2026-03-31)
+
+
+### Bug Fixes
+
+* [#1113](https://github.com/jschalk/keg/issues/1113) replace "Labor" with "Workforce", "party" with "labor" ([b1cc75d](https://github.com/jschalk/keg/commit/b1cc75d956b0e1e49879230401fff8f4f6d19113))
+
 ## [0.81.108](https://github.com/jschalk/keg/compare/v0.81.107...v0.81.108) (2026-03-31)
 
 
