@@ -81,12 +81,12 @@ def person_plan_reason_caseunit_exists(
     )
 
 
-def person_plan_partyunit_exists(x_person: PersonUnit, jkeys: dict[str, any]) -> bool:
-    x_party_title = jkeys.get("party_title")
+def person_plan_laborunit_exists(x_person: PersonUnit, jkeys: dict[str, any]) -> bool:
+    x_labor_title = jkeys.get("labor_title")
     x_rope = jkeys.get("plan_rope")
     return bool(
         person_planunit_exists(x_person, jkeys)
-        and x_person.get_plan_obj(x_rope).laborunit.partyunit_exists(x_party_title)
+        and x_person.get_plan_obj(x_rope).workforceunit.laborunit_exists(x_labor_title)
     )
 
 
@@ -125,8 +125,8 @@ def person_attr_exists(
         return person_plan_reason_caseunit_exists(x_person, jkeys)
     elif x_dimen == "person_plan_reasonunit":
         return person_plan_reasonunit_exists(x_person, jkeys)
-    elif x_dimen == "person_plan_partyunit":
-        return person_plan_partyunit_exists(x_person, jkeys)
+    elif x_dimen == "person_plan_laborunit":
+        return person_plan_laborunit_exists(x_person, jkeys)
     elif x_dimen == "person_planunit":
         return person_planunit_exists(x_person, jkeys)
     elif x_dimen == "personunit":

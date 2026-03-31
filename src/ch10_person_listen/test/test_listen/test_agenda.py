@@ -44,7 +44,7 @@ def test_listen_to_speaker_agenda_ReturnsSinglecase_taskPerson():
     yao_partner_partner_debt_lumen = 77
     before_yao_personunit.set_partner_respect(yao_partner_partner_debt_lumen)
     zia_clean_planunit = planunit_shop(exx.clean, pledge=True)
-    zia_clean_planunit.laborunit.add_party(exx.yao)
+    zia_clean_planunit.workforceunit.add_labor(exx.yao)
     zia_personunit = personunit_shop(exx.zia)
     zia_personunit.add_partnerunit(exx.yao)
     zia_personunit.set_l1_plan(zia_clean_planunit)
@@ -78,7 +78,7 @@ def test_listen_to_speaker_agenda_ReturnsLevel2case_taskPerson():
     zia_personunit = personunit_shop(exx.zia)
     zia_personunit.add_partnerunit(exx.yao)
     zia_clean_planunit = planunit_shop(exx.clean, pledge=True)
-    zia_clean_planunit.laborunit.add_party(exx.yao)
+    zia_clean_planunit.workforceunit.add_labor(exx.yao)
     casa_rope = zia_personunit.make_l1_rope("casa")
     zia_personunit.set_plan_obj(zia_clean_planunit, casa_rope)
     assert len(zia_personunit.get_agenda_dict()) == 0
@@ -117,11 +117,11 @@ def test_listen_to_speaker_agenda_Returns2AgendaPlansLevel2case_taskPerson():
     zia_personunit.add_partnerunit(exx.yao)
     fly_str = "fly"
     yao_clean_planunit = planunit_shop(exx.clean, pledge=True)
-    yao_clean_planunit.laborunit.add_party(exx.yao)
+    yao_clean_planunit.workforceunit.add_labor(exx.yao)
     yao_cuisine_planunit = planunit_shop(exx.cuisine, pledge=True)
-    yao_cuisine_planunit.laborunit.add_party(exx.yao)
+    yao_cuisine_planunit.workforceunit.add_labor(exx.yao)
     yao_fly_planunit = planunit_shop(fly_str, pledge=True)
-    yao_fly_planunit.laborunit.add_party(exx.yao)
+    yao_fly_planunit.workforceunit.add_labor(exx.yao)
     casa_rope = zia_personunit.make_l1_rope("casa")
     fly_rope = zia_personunit.make_l1_rope(fly_str)
     zia_personunit.set_plan_obj(yao_clean_planunit, casa_rope)
@@ -170,16 +170,16 @@ def test_listen_to_speaker_agenda_Returns2AgendaPlansLevel2case_taskPersonWhereA
     dish_str = "dish"
     fly_str = "fly"
     yao_dish_planunit = planunit_shop(dish_str, pledge=True)
-    yao_dish_planunit.laborunit.add_party(exx.yao)
+    yao_dish_planunit.workforceunit.add_labor(exx.yao)
     yao_cuisine_planunit = planunit_shop(exx.cuisine, pledge=True)
-    yao_cuisine_planunit.laborunit.add_party(exx.yao)
+    yao_cuisine_planunit.workforceunit.add_labor(exx.yao)
     yao_fly_planunit = planunit_shop(fly_str, pledge=True)
-    yao_fly_planunit.laborunit.add_party(exx.yao)
+    yao_fly_planunit.workforceunit.add_labor(exx.yao)
     casa_rope = zia_personunit.make_l1_rope("casa")
     dish_rope = zia_personunit.make_rope(casa_rope, dish_str)
     fly_rope = zia_personunit.make_l1_rope(fly_str)
     before_yao_dish_planunit = planunit_shop(dish_str, pledge=True)
-    before_yao_dish_planunit.laborunit.add_party(exx.yao)
+    before_yao_dish_planunit.workforceunit.add_labor(exx.yao)
     before_yao_personunit.set_plan_obj(before_yao_dish_planunit, casa_rope)
     before_yao_personunit.edit_plan_attr(dish_rope, star=1000)
     zia_personunit.set_plan_obj(yao_dish_planunit, casa_rope)
@@ -234,7 +234,7 @@ def test_listen_to_speaker_agenda_ProcessesIrrationalPerson():
     vacuum_rope = sue_personunit.make_l1_rope(vacuum_str)
     sue_personunit.set_l1_plan(planunit_shop(vacuum_str, pledge=True))
     vacuum_planunit = sue_personunit.get_plan_obj(vacuum_rope)
-    vacuum_planunit.laborunit.add_party(exx.yao)
+    vacuum_planunit.workforceunit.add_labor(exx.yao)
 
     egg_str = "egg first"
     egg_rope = sue_personunit.make_l1_rope(egg_str)

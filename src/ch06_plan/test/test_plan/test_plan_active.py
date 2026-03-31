@@ -1,5 +1,5 @@
 from src.ch02_partner.group import awardheir_shop, awardunit_shop
-from src.ch03_labor.labor import laborheir_shop, laborunit_shop
+from src.ch03_workforce.workforce import workforceheir_shop, workforceunit_shop
 from src.ch04_rope.rope import create_rope
 from src.ch05_reason.reason_main import (
     caseunit_shop,
@@ -459,38 +459,38 @@ def test_PlanUnit_record_plan_active_hx_SetsAttr_plan_active_hx():
     assert clean_plan.plan_active_hx == {0: False}
 
 
-def test_PlanUnit_set_laborunit_empty_if_None_SetsAttr():
+def test_PlanUnit_set_workforceunit_empty_if_None_SetsAttr():
     # ESTABLISH
     run_str = "run"
     run_plan = planunit_shop(run_str)
-    run_plan.laborunit = None
-    assert run_plan.laborunit is None
+    run_plan.workforceunit = None
+    assert run_plan.workforceunit is None
 
     # WHEN
-    run_plan.set_laborunit_empty_if_None()
+    run_plan.set_workforceunit_empty_if_None()
 
     # THEN
-    assert run_plan.laborunit is not None
-    assert run_plan.laborunit == laborunit_shop()
+    assert run_plan.workforceunit is not None
+    assert run_plan.workforceunit == workforceunit_shop()
 
 
-def test_PlanUnit_set_laborheir_SetsAttr():
+def test_PlanUnit_set_workforceheir_SetsAttr():
     # ESTABLISH
     swim_str = "swimmers"
     sport_str = "sports"
     sport_plan = planunit_shop(sport_str)
-    sport_plan.laborunit.add_party(party_title=swim_str)
-    # assert sport_plan.laborheir is None
+    sport_plan.workforceunit.add_labor(labor_title=swim_str)
+    # assert sport_plan.workforceheir is None
 
     # WHEN
-    sport_plan.set_laborheir(parent_laborheir=None, groupunits=None)
+    sport_plan.set_workforceheir(parent_workforceheir=None, groupunits=None)
 
     # THEN
-    assert sport_plan.laborheir is not None
-    swim_laborunit = laborunit_shop()
-    swim_laborunit.add_party(party_title=swim_str)
-    swim_laborheir = laborheir_shop()
-    swim_laborheir.set_partys(
-        laborunit=swim_laborunit, parent_laborheir=None, groupunits=None
+    assert sport_plan.workforceheir is not None
+    swim_workforceunit = workforceunit_shop()
+    swim_workforceunit.add_labor(labor_title=swim_str)
+    swim_workforceheir = workforceheir_shop()
+    swim_workforceheir.set_labors(
+        workforceunit=swim_workforceunit, parent_workforceheir=None, groupunits=None
     )
-    assert sport_plan.laborheir == swim_laborheir
+    assert sport_plan.workforceheir == swim_workforceheir

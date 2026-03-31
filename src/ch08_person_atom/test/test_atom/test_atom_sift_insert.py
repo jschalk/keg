@@ -200,33 +200,33 @@ def test_sift_atom_ReturnsObj_PersonAtom_INSERT_person_plan_reason_caseunit_Exis
     assert not sift_personatom(sue_person, clean_wk_atom)
 
 
-def test_sift_atom_ReturnsObj_PersonAtom_INSERT_person_plan_partyunit():
+def test_sift_atom_ReturnsObj_PersonAtom_INSERT_person_plan_laborunit():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     casa_rope = sue_person.make_l1_rope(exx.casa)
     clean_rope = sue_person.make_rope(casa_rope, exx.clean)
     swim_str = "Swim"
 
-    casa_swim_atom = personatom_shop(kw.person_plan_partyunit, kw.INSERT)
+    casa_swim_atom = personatom_shop(kw.person_plan_laborunit, kw.INSERT)
     casa_swim_atom.set_arg(kw.plan_rope, casa_rope)
-    casa_swim_atom.set_arg(kw.party_title, swim_str)
-    clean_swim_atom = personatom_shop(kw.person_plan_partyunit, kw.INSERT)
+    casa_swim_atom.set_arg(kw.labor_title, swim_str)
+    clean_swim_atom = personatom_shop(kw.person_plan_laborunit, kw.INSERT)
     clean_swim_atom.set_arg(kw.plan_rope, clean_rope)
-    clean_swim_atom.set_arg(kw.party_title, swim_str)
+    clean_swim_atom.set_arg(kw.labor_title, swim_str)
     sue_person.add_plan(casa_rope)
     sue_person.add_plan(clean_rope)
     assert sift_personatom(sue_person, casa_swim_atom)
     assert sift_personatom(sue_person, clean_swim_atom)
 
     # WHEN
-    sue_person.get_plan_obj(casa_rope).laborunit.add_party(swim_str)
+    sue_person.get_plan_obj(casa_rope).workforceunit.add_labor(swim_str)
 
     # THEN
     assert not sift_personatom(sue_person, casa_swim_atom)
     assert sift_personatom(sue_person, clean_swim_atom)
 
     # WHEN
-    sue_person.get_plan_obj(clean_rope).laborunit.add_party(swim_str)
+    sue_person.get_plan_obj(clean_rope).workforceunit.add_labor(swim_str)
     # THEN
     assert not sift_personatom(sue_person, casa_swim_atom)
     assert not sift_personatom(sue_person, clean_swim_atom)

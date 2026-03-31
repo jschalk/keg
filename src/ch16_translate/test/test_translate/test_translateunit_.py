@@ -82,7 +82,7 @@ def test_get_translate_args_class_types_ReturnsObj():
     assert translate_args_class_types.get(kw.celldepth) == "int"
     assert translate_args_class_types.get(kw.stop_want) == "float"
     assert translate_args_class_types.get(kw.take_force) == "float"
-    assert translate_args_class_types.get(kw.party_title) == kw.TitleTerm
+    assert translate_args_class_types.get(kw.labor_title) == kw.TitleTerm
     assert translate_args_class_types.get(kw.bud_time) == kw.TimeNum
     assert translate_args_class_types.get(kw.tran_time) == kw.TimeNum
     assert translate_args_class_types.get(kw.epoch_label) == kw.LabelTerm
@@ -177,7 +177,7 @@ def test_get_translateable_args_ReturnsObj():
         kw.moment_rope,
         kw.month_label,
         kw.plan_rope,
-        kw.party_title,
+        kw.labor_title,
         kw.reason_context,
         kw.reason_state,
         kw.partner_name,
@@ -286,7 +286,7 @@ def test_get_translate_titleterm_args_ReturnsObj():
     assert translate_TitleTerm_args == {
         kw.awardee_title,
         kw.group_title,
-        kw.party_title,
+        kw.labor_title,
     }
     expected_args = {
         x_arg

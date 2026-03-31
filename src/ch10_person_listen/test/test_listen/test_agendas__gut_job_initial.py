@@ -25,7 +25,7 @@ from src.ch10_person_listen.test._util.ch10_examples import (
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_listen_to_agendas_create_init_job_from_guts_Addscase_tasksToPersonWhenNo_partyunitIsSet(
+def test_listen_to_agendas_create_init_job_from_guts_Addscase_tasksToPersonWhenNo_laborunitIsSet(
     temp3_fs,
 ):
     # ESTABLISH
@@ -73,8 +73,8 @@ def test_listen_to_agendas_create_init_job_from_guts_Addscase_tasksToPerson(
     zia_gut.add_partnerunit(exx.yao, partner_debt_lumen=12)
     clean_planunit = zia_gut.get_plan_obj(a23_clean_rope())
     cuisine_planunit = zia_gut.get_plan_obj(a23_cuisine_rope())
-    clean_planunit.laborunit.add_party(exx.yao)
-    cuisine_planunit.laborunit.add_party(exx.yao)
+    clean_planunit.workforceunit.add_labor(exx.yao)
+    cuisine_planunit.workforceunit.add_labor(exx.yao)
     save_gut_file(moment_mstr_dir, zia_gut)
     new_yao_job = create_listen_basis(yao_gut)
     assert len(new_yao_job.get_agenda_dict()) == 0
@@ -169,8 +169,8 @@ def test_listen_to_agendas_create_init_job_from_guts_ProcessesIrrationalPerson(
     zia_gut.add_partnerunit(exx.yao, partner_debt_lumen=12)
     clean_planunit = zia_gut.get_plan_obj(a23_clean_rope())
     cuisine_planunit = zia_gut.get_plan_obj(a23_cuisine_rope())
-    clean_planunit.laborunit.add_party(exx.yao)
-    cuisine_planunit.laborunit.add_party(exx.yao)
+    clean_planunit.workforceunit.add_labor(exx.yao)
+    cuisine_planunit.workforceunit.add_labor(exx.yao)
     save_gut_file(moment_mstr_dir, zia_gut)
 
     sue_gut = personunit_shop(exx.sue, exx.a23)
@@ -180,7 +180,7 @@ def test_listen_to_agendas_create_init_job_from_guts_ProcessesIrrationalPerson(
     vacuum_rope = sue_gut.make_l1_rope(vacuum_str)
     sue_gut.set_l1_plan(planunit_shop(vacuum_str, pledge=True))
     vacuum_planunit = sue_gut.get_plan_obj(vacuum_rope)
-    vacuum_planunit.laborunit.add_party(exx.yao)
+    vacuum_planunit.workforceunit.add_labor(exx.yao)
 
     egg_str = "egg first"
     egg_rope = sue_gut.make_l1_rope(egg_str)
@@ -245,8 +245,8 @@ def test_listen_to_agendas_create_init_job_from_guts_ProcessesMissingDebtorPerso
     zia_gut.add_partnerunit(exx.yao, partner_debt_lumen=12)
     clean_planunit = zia_gut.get_plan_obj(a23_clean_rope())
     cuisine_planunit = zia_gut.get_plan_obj(a23_cuisine_rope())
-    clean_planunit.laborunit.add_party(exx.yao)
-    cuisine_planunit.laborunit.add_party(exx.yao)
+    clean_planunit.workforceunit.add_labor(exx.yao)
+    cuisine_planunit.workforceunit.add_labor(exx.yao)
     save_gut_file(moment_mstr_dir, zia_gut)
 
     # WHEN

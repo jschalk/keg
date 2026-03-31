@@ -1,4 +1,4 @@
-from src.ch03_labor.labor import laborunit_shop
+from src.ch03_workforce.workforce import workforceunit_shop
 from src.ch04_rope.rope import RopeTerm
 from src.ch06_plan.plan import PlanUnit, planunit_shop
 from src.ch07_person_logic.person_main import get_personunit_from_dict, personunit_shop
@@ -454,7 +454,7 @@ def test_PersonUnit_set_fact_Isue116Resolved_Setscase_taskAsTrue():
     assert get_case_tasks_count(pledge_plan_list) == 64
 
 
-def test_PersonUnit_agenda_IsSetByLaborUnit_1PartnerGroup():
+def test_PersonUnit_agenda_IsSetByWorkforceUnit_1PartnerGroup():
     # ESTABLISH
     yao_person = personunit_shop(exx.yao)
     casa_rope = yao_person.make_l1_rope(exx.casa)
@@ -462,23 +462,23 @@ def test_PersonUnit_agenda_IsSetByLaborUnit_1PartnerGroup():
     assert len(yao_person.get_agenda_dict()) == 1
 
     yao_person.add_partnerunit(exx.sue)
-    laborunit_sue = laborunit_shop()
-    laborunit_sue.add_party(party_title=exx.sue)
+    workforceunit_sue = workforceunit_shop()
+    workforceunit_sue.add_labor(labor_title=exx.sue)
     assert len(yao_person.get_agenda_dict()) == 1
 
     # WHEN
-    yao_person.edit_plan_attr(casa_rope, laborunit=laborunit_sue)
+    yao_person.edit_plan_attr(casa_rope, workforceunit=workforceunit_sue)
 
     # THEN
     assert len(yao_person.get_agenda_dict()) == 0
 
     # WHEN
     yao_person.add_partnerunit(exx.yao)
-    laborunit_yao = laborunit_shop()
-    laborunit_yao.add_party(party_title=exx.yao)
+    workforceunit_yao = workforceunit_shop()
+    workforceunit_yao.add_labor(labor_title=exx.yao)
 
     # WHEN
-    yao_person.edit_plan_attr(casa_rope, laborunit=laborunit_yao)
+    yao_person.edit_plan_attr(casa_rope, workforceunit=workforceunit_yao)
 
     # THEN
     assert len(yao_person.get_agenda_dict()) == 1
@@ -487,7 +487,7 @@ def test_PersonUnit_agenda_IsSetByLaborUnit_1PartnerGroup():
     # print(f"{agenda_dict[0].plan_label=}")
 
 
-def test_PersonUnit_get_agenda_dict_IsSetByLaborUnit_2PartnerGroup():
+def test_PersonUnit_get_agenda_dict_IsSetByWorkforceUnit_2PartnerGroup():
     # ESTABLISH
     yao_person = personunit_shop(exx.yao)
     yao_person.add_partnerunit(exx.yao)
@@ -498,12 +498,12 @@ def test_PersonUnit_get_agenda_dict_IsSetByLaborUnit_2PartnerGroup():
     sue_partnerunit = yao_person.get_partner(exx.sue)
     sue_partnerunit.add_membership(exx.run)
 
-    run_laborunit = laborunit_shop()
-    run_laborunit.add_party(party_title=exx.run)
+    run_workforceunit = workforceunit_shop()
+    run_workforceunit.add_labor(labor_title=exx.run)
     assert len(yao_person.get_agenda_dict()) == 1
 
     # WHEN
-    yao_person.edit_plan_attr(casa_rope, laborunit=run_laborunit)
+    yao_person.edit_plan_attr(casa_rope, workforceunit=run_workforceunit)
 
     # THEN
     assert len(yao_person.get_agenda_dict()) == 0
@@ -530,7 +530,7 @@ def test_PersonUnit_get_all_pledges_ReturnsObj():
     zia_person.set_plan_obj(planunit_shop(exx.sweep, pledge=True), clean_rope)
     sweep_plan = zia_person.get_plan_obj(sweep_rope)
     zia_person.add_partnerunit(exx.yao)
-    sweep_plan.laborunit.add_party(exx.yao)
+    sweep_plan.workforceunit.add_labor(exx.yao)
     print(f"{sweep_plan}")
     agenda_dict = zia_person.get_agenda_dict()
     assert agenda_dict.get(clean_rope) is not None

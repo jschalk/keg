@@ -1,6 +1,6 @@
 from src.ch01_allot.allot import default_grain_num_if_None
 from src.ch02_partner.group import awardunit_shop
-from src.ch03_labor.labor import laborunit_shop
+from src.ch03_workforce.workforce import workforceunit_shop
 from src.ch04_rope.rope import create_rope, default_knot_if_None
 from src.ch06_plan.healer import healerunit_shop
 from src.ch06_plan.plan import PlanUnit, planunit_shop
@@ -19,8 +19,8 @@ def test_PlanUnit_Exists():
     assert x_planunit.plan_uid is None
     assert x_planunit.reasonunits is None
     assert x_planunit.reasonheirs is None  # calculated field
-    assert x_planunit.laborunit is None
-    assert x_planunit.laborheir is None  # calculated field
+    assert x_planunit.workforceunit is None
+    assert x_planunit.workforceheir is None  # calculated field
     assert x_planunit.factunits is None
     assert x_planunit.factheirs is None  # calculated field
     assert x_planunit.awardunits is None
@@ -71,7 +71,7 @@ def test_PlanUnit_Exists():
         kw.healerunit_ratio,
         kw.is_expanded,
         kw.kids,
-        kw.laborheir,
+        kw.workforceheir,
         kw.tree_level,
         kw.range_evaluated,
         kw.reasonheirs,
@@ -89,7 +89,7 @@ def test_PlanUnit_Exists():
         kw.fund_grain,
         kw.gogo_want,
         kw.healerunit,
-        kw.laborunit,
+        kw.workforceunit,
         kw.star,
         kw.morph,
         kw.numor,
@@ -167,8 +167,8 @@ def test_planunit_shop_ReturnsObj_Scenario0_WithOneParameter():
     assert x_planunit.fund_cease is None
     assert x_planunit.reasonunits == {}
     assert x_planunit.reasonheirs == {}
-    assert x_planunit.laborunit == laborunit_shop()
-    assert x_planunit.laborheir is None
+    assert x_planunit.workforceunit == workforceunit_shop()
+    assert x_planunit.workforceheir is None
     assert x_planunit.knot == default_knot_if_None()
     assert x_planunit.all_partner_cred is None
     assert x_planunit.all_partner_debt is None

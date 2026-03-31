@@ -42,7 +42,7 @@ def test_get_plan_view_dict_ReturnsObj_Scenario0_EmptyPlan():
         kw.plan_uid,
         kw.awardunits,
         kw.reasonunits,
-        kw.laborunit,
+        kw.workforceunit,
         kw.factunits,
         kw.healerunit,
         kw.begin,
@@ -74,7 +74,7 @@ def test_get_plan_view_dict_ReturnsObj_Scenario0_EmptyPlan():
         kw.range_evaluated,
         kw.reasonheirs,
         kw.plan_task,
-        kw.laborheir,
+        kw.workforceheir,
         kw.gogo_calc,
         kw.stop_calc,
         kw.plan_fund_total,
@@ -82,7 +82,7 @@ def test_get_plan_view_dict_ReturnsObj_Scenario0_EmptyPlan():
     assert casa_dict.get(kw.healerunit) == {"healer_names": []}
 
 
-def test_get_plan_view_dict_ReturnsObj_Scenario1_laborunit():
+def test_get_plan_view_dict_ReturnsObj_Scenario1_workforceunit():
     # ESTABLISH
     sue_person = get_sue_person_with_facts_and_reasons()
     casa_rope = sue_person.make_l1_rope("casa")
@@ -94,33 +94,37 @@ def test_get_plan_view_dict_ReturnsObj_Scenario1_laborunit():
     mop_dict = get_plan_view_dict(mop_plan)
 
     # THEN
-    # laborunit
-    mop_labor_dict = mop_dict.get(kw.laborunit)
-    mop_partys_dict = mop_labor_dict.get(kw.partys)
-    mop_sue_dict = mop_partys_dict.get(exx.sue)
-    mop_bob_dict = mop_partys_dict.get(exx.bob)
+    # workforceunit
+    mop_workforce_dict = mop_dict.get(kw.workforceunit)
+    mop_labors_dict = mop_workforce_dict.get(kw.labors)
+    mop_sue_dict = mop_labors_dict.get(exx.sue)
+    mop_bob_dict = mop_labors_dict.get(exx.bob)
     mop_sue_unit_readable = mop_sue_dict.get(kw.readable)
     mop_bob_unit_readable = mop_bob_dict.get(kw.readable)
-    expected_mop_sue_unit_readable = add_small_dot(f"LaborUnit: {exx.sue}")
-    expected_mop_bob_unit_readable = add_small_dot(f"LaborUnit: {exx.bob} Solo: True")
+    expected_mop_sue_unit_readable = add_small_dot(f"WorkforceUnit: {exx.sue}")
+    expected_mop_bob_unit_readable = add_small_dot(
+        f"WorkforceUnit: {exx.bob} Solo: True"
+    )
     assert mop_sue_unit_readable == expected_mop_sue_unit_readable
     assert mop_bob_unit_readable == expected_mop_bob_unit_readable
-    print(f"{mop_labor_dict=}")
+    print(f"{mop_workforce_dict=}")
     print(f"{mop_sue_dict=}")
     print(f"{mop_bob_dict=}")
 
-    # laborheir
-    mop_labor_dict = mop_dict.get(kw.laborheir)
-    mop_partys_dict = mop_labor_dict.get(kw.partys)
-    mop_sue_dict = mop_partys_dict.get(exx.sue)
-    mop_bob_dict = mop_partys_dict.get(exx.bob)
+    # workforceheir
+    mop_workforce_dict = mop_dict.get(kw.workforceheir)
+    mop_labors_dict = mop_workforce_dict.get(kw.labors)
+    mop_sue_dict = mop_labors_dict.get(exx.sue)
+    mop_bob_dict = mop_labors_dict.get(exx.bob)
     mop_sue_heir_readable = mop_sue_dict.get(kw.readable)
     mop_bob_heir_readable = mop_bob_dict.get(kw.readable)
-    expected_mop_sue_heir_readable = add_small_dot(f"LaborHeir: {exx.sue}")
-    expected_mop_bob_heir_readable = add_small_dot(f"LaborHeir: {exx.bob} Solo: True")
+    expected_mop_sue_heir_readable = add_small_dot(f"WorkforceHeir: {exx.sue}")
+    expected_mop_bob_heir_readable = add_small_dot(
+        f"WorkforceHeir: {exx.bob} Solo: True"
+    )
     assert mop_sue_heir_readable == expected_mop_sue_heir_readable
     assert mop_bob_heir_readable == expected_mop_bob_heir_readable
-    print(f"{mop_labor_dict=}")
+    print(f"{mop_workforce_dict=}")
     print(f"{mop_sue_dict=}")
     print(f"{mop_bob_dict=}")
 
@@ -135,8 +139,8 @@ def test_get_plan_view_dict_ReturnsObj_Scenario2_RootPlanUnit_attrs():
     # THEN
     # for dict_key, value in casa_dict.items():
     #     print(f"{dict_key=} \t\t {value=}")
-    # expected_laborunit_dict = {
-    #     kw.partys: {exx.sue: {kw.party_title: exx.sue, "solo": False}}
+    # expected_workforceunit_dict = {
+    #     kw.labors: {exx.sue: {kw.labor_title: exx.sue, "solo": False}}
     # }
     expected_parent_rope = add_small_dot("Root Plan parent_rope is empty str")
     assert root_plan_view_dict.get(kw.parent_rope) == expected_parent_rope

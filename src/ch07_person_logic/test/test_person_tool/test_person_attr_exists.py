@@ -9,7 +9,7 @@ from src.ch07_person_logic.person_tool import (
     person_plan_awardunit_exists,
     person_plan_factunit_exists,
     person_plan_healerunit_exists,
-    person_plan_partyunit_exists,
+    person_plan_laborunit_exists,
     person_plan_reason_caseunit_exists as caseunit_exists,
     person_plan_reasonunit_exists,
     person_planunit_exists,
@@ -217,31 +217,31 @@ def test_person_plan_reason_caseunit_exists_ReturnsObj():
     assert not caseunit_exists(sue_person, clean_jkeys)
 
 
-def test_person_plan_partyunit_exists_ReturnsObj():
+def test_person_plan_laborunit_exists_ReturnsObj():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     casa_rope = sue_person.make_l1_rope(exx.casa)
     clean_rope = sue_person.make_rope(casa_rope, exx.clean)
     root_rope = sue_person.planroot.get_plan_rope()
-    root_jkeys = {kw.plan_rope: root_rope, kw.party_title: exx.swim}
-    casa_jkeys = {kw.plan_rope: casa_rope, kw.party_title: exx.swim}
-    clean_jkeys = {kw.plan_rope: clean_rope, kw.party_title: exx.swim}
+    root_jkeys = {kw.plan_rope: root_rope, kw.labor_title: exx.swim}
+    casa_jkeys = {kw.plan_rope: casa_rope, kw.labor_title: exx.swim}
+    clean_jkeys = {kw.plan_rope: clean_rope, kw.labor_title: exx.swim}
 
     # WHEN / THEN
-    assert not person_plan_partyunit_exists(None, {})
-    assert not person_plan_partyunit_exists(sue_person, {})
-    assert not person_plan_partyunit_exists(sue_person, root_jkeys)
-    assert not person_plan_partyunit_exists(sue_person, casa_jkeys)
-    assert not person_plan_partyunit_exists(sue_person, clean_jkeys)
+    assert not person_plan_laborunit_exists(None, {})
+    assert not person_plan_laborunit_exists(sue_person, {})
+    assert not person_plan_laborunit_exists(sue_person, root_jkeys)
+    assert not person_plan_laborunit_exists(sue_person, casa_jkeys)
+    assert not person_plan_laborunit_exists(sue_person, clean_jkeys)
 
     # WHEN
-    sue_person.planroot.laborunit.add_party(exx.swim)
+    sue_person.planroot.workforceunit.add_labor(exx.swim)
 
     # THEN
-    assert not person_plan_partyunit_exists(sue_person, {})
-    assert person_plan_partyunit_exists(sue_person, root_jkeys)
-    assert not person_plan_partyunit_exists(sue_person, casa_jkeys)
-    assert not person_plan_partyunit_exists(sue_person, clean_jkeys)
+    assert not person_plan_laborunit_exists(sue_person, {})
+    assert person_plan_laborunit_exists(sue_person, root_jkeys)
+    assert not person_plan_laborunit_exists(sue_person, casa_jkeys)
+    assert not person_plan_laborunit_exists(sue_person, clean_jkeys)
 
 
 def test_person_plan_healerunit_exists_ReturnsObj():
@@ -499,16 +499,16 @@ def test_person_attr_exists_ReturnsObj_person_plan_reason_caseunit():
     assert not person_attr_exists(x_dimen, sue_person, clean_jkeys)
 
 
-def test_person_attr_exists_ReturnsObj_person_plan_partyunit():
+def test_person_attr_exists_ReturnsObj_person_plan_laborunit():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     casa_rope = sue_person.make_l1_rope(exx.casa)
     clean_rope = sue_person.make_rope(casa_rope, exx.clean)
     root_rope = sue_person.planroot.get_plan_rope()
-    x_dimen = kw.person_plan_partyunit
-    root_jkeys = {kw.plan_rope: root_rope, kw.party_title: exx.swim}
-    casa_jkeys = {kw.plan_rope: casa_rope, kw.party_title: exx.swim}
-    clean_jkeys = {kw.plan_rope: clean_rope, kw.party_title: exx.swim}
+    x_dimen = kw.person_plan_laborunit
+    root_jkeys = {kw.plan_rope: root_rope, kw.labor_title: exx.swim}
+    casa_jkeys = {kw.plan_rope: casa_rope, kw.labor_title: exx.swim}
+    clean_jkeys = {kw.plan_rope: clean_rope, kw.labor_title: exx.swim}
 
     # WHEN / THEN
     assert not person_attr_exists(x_dimen, None, {})
@@ -518,7 +518,7 @@ def test_person_attr_exists_ReturnsObj_person_plan_partyunit():
     assert not person_attr_exists(x_dimen, sue_person, clean_jkeys)
 
     # WHEN
-    sue_person.planroot.laborunit.add_party(exx.swim)
+    sue_person.planroot.workforceunit.add_labor(exx.swim)
 
     # THEN
     assert not person_attr_exists(x_dimen, sue_person, {})

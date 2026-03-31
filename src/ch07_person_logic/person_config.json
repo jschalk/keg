@@ -103,17 +103,17 @@
       "knot": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "TEXT"}
     }
   }, 
-  "person_plan_partyunit": {
+  "person_plan_laborunit": {
     "abbreviation": "prnlabo", 
-    "description": "A person dimen representing HealerUnit data. Keys: person_name, plan_rope, party_title. person seed.", 
+    "description": "A person dimen representing HealerUnit data. Keys: person_name, plan_rope, labor_title. person seed.", 
     "jkeys": {
-      "party_title": {"calc_by_conpute": false, "class_type": "TitleTerm", "sqlite_datatype": "TEXT"}, 
+      "labor_title": {"calc_by_conpute": false, "class_type": "TitleTerm", "sqlite_datatype": "TEXT"}, 
       "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
       "plan_rope": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
     }, 
     "jvalues": {
       "knot": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "TEXT"}, 
-      "person_name_is_labor": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "person_name_is_workforce": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
       "solo": {"calc_by_conpute": false, "class_type": "int", "sqlite_datatype": "INTEGER"}
     }
   }, 

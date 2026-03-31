@@ -4,7 +4,7 @@ from sqlite3 import Cursor as sqlite3_Cursor
 from src.ch00_py.db_toolbox import sqlite_obj_str
 from src.ch02_partner.group import AwardHeir, GroupUnit, MemberShip
 from src.ch02_partner.partner import PartnerUnit
-from src.ch03_labor.labor import LaborHeir
+from src.ch03_workforce.workforce import WorkforceHeir
 from src.ch05_reason.reason_main import CaseUnit, FactHeir, ReasonHeir
 from src.ch06_plan.plan import HealerUnit, PlanUnit
 from src.ch07_person_logic.person_main import PersonUnit
@@ -256,18 +256,18 @@ def create_prnlabo_metrics_insert_sqlstr(values_dict: dict[str,]):
     knot = values_dict.get("knot")
     person_name = values_dict.get("person_name")
     rope = values_dict.get("plan_rope")
-    party_title = values_dict.get("party_title")
+    labor_title = values_dict.get("labor_title")
     solo = values_dict.get("solo")
-    person_name_is_labor = values_dict.get("person_name_is_labor")
-    return f"""INSERT INTO person_plan_partyunit_job (moment_rope, person_name, plan_rope, party_title, solo, knot, person_name_is_labor)
+    person_name_is_workforce = values_dict.get("person_name_is_workforce")
+    return f"""INSERT INTO person_plan_laborunit_job (moment_rope, person_name, plan_rope, labor_title, solo, knot, person_name_is_workforce)
 VALUES (
   {sqlite_obj_str(moment_rope, "TEXT")}
 , {sqlite_obj_str(person_name, "TEXT")}
 , {sqlite_obj_str(rope, "TEXT")}
-, {sqlite_obj_str(party_title, "TEXT")}
+, {sqlite_obj_str(labor_title, "TEXT")}
 , {sqlite_obj_str(solo, "INTEGER")}
 , {sqlite_obj_str(knot, "TEXT")}
-, {sqlite_obj_str(person_name_is_labor, "INTEGER")}
+, {sqlite_obj_str(person_name_is_workforce, "INTEGER")}
 )
 ;
 """
@@ -511,17 +511,17 @@ def insert_job_prnreas(
 def insert_job_prnlabo(
     cursor: sqlite3_Cursor,
     x_objkeysholder: ObjKeysHolder,
-    x_laborheir: LaborHeir,
+    x_workforceheir: WorkforceHeir,
 ):
-    x_dict = copy_deepcopy(x_laborheir.__dict__)
+    x_dict = copy_deepcopy(x_workforceheir.__dict__)
     x_dict["moment_rope"] = x_objkeysholder.moment_rope
     x_dict["person_name"] = x_objkeysholder.person_name
     x_dict["plan_rope"] = x_objkeysholder.rope
     x_dict["knot"] = x_objkeysholder.knot
-    for party_title in sorted(x_laborheir.partys):
-        partyheir = x_laborheir.partys.get(party_title)
-        x_dict["party_title"] = partyheir.party_title
-        x_dict["solo"] = partyheir.solo
+    for labor_title in sorted(x_workforceheir.labors):
+        laborheir = x_workforceheir.labors.get(labor_title)
+        x_dict["labor_title"] = laborheir.labor_title
+        x_dict["solo"] = laborheir.solo
         insert_sqlstr = create_prnlabo_metrics_insert_sqlstr(x_dict)
         cursor.execute(insert_sqlstr)
 
@@ -555,10 +555,10 @@ def insert_job_obj(cursor: sqlite3_Cursor, job_person: PersonUnit):
     for x_plan in job_person.get_plan_dict().values():
         x_objkeysholder.rope = x_plan.get_plan_rope()
         healerunit = x_plan.healerunit
-        laborheir = x_plan.laborheir
+        workforceheir = x_plan.workforceheir
         insert_job_prnplan(cursor, x_objkeysholder, x_plan)
         insert_job_prnheal(cursor, x_objkeysholder, healerunit)
-        insert_job_prnlabo(cursor, x_objkeysholder, laborheir)
+        insert_job_prnlabo(cursor, x_objkeysholder, workforceheir)
         for x_awardheir in x_plan.awardheirs.values():
             insert_job_prnawar(cursor, x_objkeysholder, x_awardheir)
         for reason_context, reasonheir in x_plan.reasonheirs.items():
@@ -969,19 +969,19 @@ def create_prnptnr_put_h_agg_insert_sqlstr(values_dict: dict[str,]) -> str:
 #     moment_rope = values_dict.get("moment_rope")
 #     person_name = values_dict.get("person_name")
 #     rope = values_dict.get("plan_rope")
-#     party_title = values_dict.get("party_title")
+#     labor_title = values_dict.get("labor_title")
 #     solo = values_dict.get("solo")
-#     person_name_is_labor = values_dict.get("person_name_is_labor")
-#     return f"""INSERT INTO person_plan_partyunit_put_h_agg (spark_num, face_name, moment_rope, person_name, plan_rope, party_title, solo, person_name_is_labor)
+#     person_name_is_workforce = values_dict.get("person_name_is_workforce")
+#     return f"""INSERT INTO person_plan_laborunit_put_h_agg (spark_num, face_name, moment_rope, person_name, plan_rope, labor_title, solo, person_name_is_workforce)
 # VALUES (
 #   {sqlite_obj_str(spark_num, "INTEGER")}
 # , {sqlite_obj_str(face_name, "TEXT")}
 # , {sqlite_obj_str(moment_rope, "TEXT")}
 # , {sqlite_obj_str(person_name, "TEXT")}
 # , {sqlite_obj_str(rope, "TEXT")}
-# , {sqlite_obj_str(party_title, "TEXT")}
+# , {sqlite_obj_str(labor_title, "TEXT")}
 # , {sqlite_obj_str(solo, "INTEGER")}
-# , {sqlite_obj_str(person_name_is_labor, "INTEGER")}
+# , {sqlite_obj_str(person_name_is_workforce, "INTEGER")}
 # )
 # ;
 # """
@@ -1182,18 +1182,18 @@ def insert_h_agg_prnreas(
 def insert_h_agg_prnlabo(
     cursor: sqlite3_Cursor,
     x_objkeysholder: ObjKeysHolder,
-    x_laborheir: LaborHeir,
+    x_workforceheir: WorkforceHeir,
 ):
-    x_dict = copy_deepcopy(x_laborheir.__dict__)
+    x_dict = copy_deepcopy(x_workforceheir.__dict__)
     x_dict["spark_num"] = x_objkeysholder.spark_num
     x_dict["face_name"] = x_objkeysholder.face_name
     x_dict["moment_rope"] = x_objkeysholder.moment_rope
     x_dict["person_name"] = x_objkeysholder.person_name
     x_dict["plan_rope"] = x_objkeysholder.rope
-    for party_title in sorted(x_laborheir.partys):
-        partyheir = x_laborheir.partys.get(party_title)
-        x_dict["party_title"] = partyheir.party_title
-        x_dict["solo"] = partyheir.solo
+    for labor_title in sorted(x_workforceheir.labors):
+        laborheir = x_workforceheir.labors.get(labor_title)
+        x_dict["labor_title"] = laborheir.labor_title
+        x_dict["solo"] = laborheir.solo
         insert_sqlstr = create_prnlabo_put_h_agg_insert_sqlstr(x_dict)
         cursor.execute(insert_sqlstr)
 
@@ -1240,9 +1240,9 @@ def insert_h_agg_obj(
         x_objkeysholder.rope = x_plan.get_plan_rope()
         insert_h_agg_prnplan(cursor, x_objkeysholder, x_plan)
         # healerunit = x_plan.healerunit
-        # laborheir = x_plan.laborheir
+        # workforceheir = x_plan.workforceheir
         # insert_h_agg_prnheal(cursor, x_objkeysholder, healerunit)
-        # insert_h_agg_prnlabo(cursor, x_objkeysholder, laborheir)
+        # insert_h_agg_prnlabo(cursor, x_objkeysholder, workforceheir)
         # for x_awardheir in x_plan.awardheirs.values():
         #     insert_h_agg_prnawar(cursor, x_objkeysholder, x_awardheir)
         for reason_context, reasonheir in x_plan.reasonheirs.items():

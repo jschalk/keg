@@ -1,5 +1,5 @@
 from src.ch02_partner.group import awardunit_shop
-from src.ch03_labor.labor import laborunit_shop
+from src.ch03_workforce.workforce import workforceunit_shop
 from src.ch04_rope.rope import create_rope
 from src.ch05_reason.reason_main import (
     caseunit_shop,
@@ -115,9 +115,9 @@ def test_PlanUnit_to_dict_ReturnsCompleteDict():
         biker_awardee_title: biker_get_dict,
         flyer_awardee_title: flyer_get_dict,
     }
-    sue_laborunit = laborunit_shop()
-    sue_laborunit.add_party(exx.sue)
-    sue_laborunit.add_party(exx.yao)
+    sue_workforceunit = workforceunit_shop()
+    sue_workforceunit.add_labor(exx.sue)
+    sue_workforceunit.add_labor(exx.yao)
     yao_healerunit = healerunit_shop({exx.yao})
     casa_rope = create_rope(exx.a23, exx.casa)
     x_problem_bool = True
@@ -130,7 +130,7 @@ def test_PlanUnit_to_dict_ReturnsCompleteDict():
         tree_level=1,
         reasonunits=x1_reasonunits,
         reasonheirs=x1_reasonheirs,
-        laborunit=sue_laborunit,
+        workforceunit=sue_workforceunit,
         healerunit=yao_healerunit,
         plan_active=True,
         pledge=True,
@@ -169,7 +169,7 @@ def test_PlanUnit_to_dict_ReturnsCompleteDict():
     assert casa_dict[kw.reasonunits] == casa_plan.get_reasonunits_dict()
     assert casa_dict[kw.awardunits] == casa_plan.get_awardunits_dict()
     assert casa_dict[kw.awardunits] == x1_awardunits
-    assert casa_dict[kw.laborunit] == sue_laborunit.to_dict()
+    assert casa_dict[kw.workforceunit] == sue_workforceunit.to_dict()
     assert casa_dict[kw.healerunit] == yao_healerunit.to_dict()
     assert casa_dict[kw.star] == casa_plan.star
     assert casa_dict[kw.plan_label] == casa_plan.plan_label
@@ -214,8 +214,8 @@ def test_PlanUnit_to_dict_ReturnsObj_DictWith_attrs_SetToTrue():
 
     casa_plan.set_awardunit(awardunit_shop(exx.yao))
 
-    x_laborunit = casa_plan.laborunit
-    x_laborunit.add_party(party_title=exx.yao)
+    x_workforceunit = casa_plan.workforceunit
+    x_workforceunit.add_labor(labor_title=exx.yao)
 
     casa_plan.add_kid(planunit_shop(exx.clean))
 
@@ -223,7 +223,7 @@ def test_PlanUnit_to_dict_ReturnsObj_DictWith_attrs_SetToTrue():
     assert casa_plan.pledge
     assert casa_plan.factunits is not None
     assert casa_plan.awardunits is not None
-    assert casa_plan.laborunit is not None
+    assert casa_plan.workforceunit is not None
     assert casa_plan.kids != {}
 
     # WHEN
@@ -234,7 +234,7 @@ def test_PlanUnit_to_dict_ReturnsObj_DictWith_attrs_SetToTrue():
     assert casa_dict.get(kw.pledge)
     assert casa_dict.get(kw.factunits) is not None
     assert casa_dict.get(kw.awardunits) is not None
-    assert casa_dict.get(kw.laborunit) is not None
+    assert casa_dict.get(kw.workforceunit) is not None
     assert casa_dict.get(kw.kids) is not None
 
 
@@ -245,7 +245,7 @@ def test_PlanUnit_to_dict_ReturnsDictWithAttrsEmpty():
     assert casa_plan.pledge is False
     assert casa_plan.factunits == {}
     assert casa_plan.awardunits == {}
-    assert casa_plan.laborunit == laborunit_shop()
+    assert casa_plan.workforceunit == workforceunit_shop()
     assert casa_plan.healerunit == healerunit_shop()
     assert casa_plan.kids == {}
 
@@ -257,6 +257,6 @@ def test_PlanUnit_to_dict_ReturnsDictWithAttrsEmpty():
     assert casa_dict.get(kw.pledge) is None
     assert casa_dict.get(kw.factunits) is None
     assert casa_dict.get(kw.awardunits) is None
-    assert casa_dict.get(kw.laborunit) is None
+    assert casa_dict.get(kw.workforceunit) is None
     assert casa_dict.get(kw.healerunit) is None
     assert casa_dict.get(kw.kids) is None

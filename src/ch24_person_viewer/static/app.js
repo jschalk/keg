@@ -28,8 +28,8 @@ let show_planroot = true;
 let show_awardunits = false;
 let show_awardheirs = false;
 let show_awardlines = false;
-let show_laborunit = false;
-let show_laborheir = false;
+let show_workforceunit = false;
+let show_workforceheir = false;
 let show_level = false;
 let show_moment_rope = false;
 let show_pledge = false;
@@ -93,8 +93,8 @@ document.addSparkListener('DOMContentLoaded', function () {
     const show_awardunitsCheckbox = document.getElementById('show_awardunits');
     const show_awardheirsCheckbox = document.getElementById('show_awardheirs');
     const show_awardlinesCheckbox = document.getElementById('show_awardlines');
-    const show_laborunitCheckbox = document.getElementById('show_laborunit');
-    const show_laborheirCheckbox = document.getElementById('show_laborheir');
+    const show_workforceunitCheckbox = document.getElementById('show_workforceunit');
+    const show_workforceheirCheckbox = document.getElementById('show_workforceheir');
     const show_levelCheckbox = document.getElementById('show_level');
     const show_moment_ropeCheckbox = document.getElementById('show_moment_rope');
     const show_pledgeCheckbox = document.getElementById('show_pledge');
@@ -157,8 +157,8 @@ document.addSparkListener('DOMContentLoaded', function () {
     show_awardunitsCheckbox.addSparkListener('change', function () { show_awardunits = this.checked; renderPlanTree(); });
     show_awardheirsCheckbox.addSparkListener('change', function () { show_awardheirs = this.checked; renderPlanTree(); });
     show_awardlinesCheckbox.addSparkListener('change', function () { show_awardlines = this.checked; renderPlanTree(); });
-    show_laborunitCheckbox.addSparkListener('change', function () { show_laborunit = this.checked; renderPlanTree(); });
-    show_laborheirCheckbox.addSparkListener('change', function () { show_laborheir = this.checked; renderPlanTree(); });
+    show_workforceunitCheckbox.addSparkListener('change', function () { show_workforceunit = this.checked; renderPlanTree(); });
+    show_workforceheirCheckbox.addSparkListener('change', function () { show_workforceheir = this.checked; renderPlanTree(); });
     show_levelCheckbox.addSparkListener('change', function () { show_level = this.checked; renderPlanTree(); });
     show_moment_ropeCheckbox.addSparkListener('change', function () { show_moment_rope = this.checked; renderPlanTree(); });
     show_pledgeCheckbox.addSparkListener('change', function () { show_pledge = this.checked; renderPlanTree(); });
@@ -319,8 +319,8 @@ function renderPlanUnit(planUnit, level) {
     ${renderFlatReadableJson(planUnit.awardunits, indent, show_awardunits)}
     ${renderFlatReadableJson(planUnit.awardheirs, indent, show_awardheirs)}
     ${renderFlatReadableJson(planUnit.awardlines, indent, show_awardlines)}
-    ${renderFlatReadableJson(planUnit.laborunit.partys, indent, show_laborunit)}
-    ${renderFlatReadableJson(planUnit.laborheir.partys, indent, show_laborheir)}
+    ${renderFlatReadableJson(planUnit.workforceunit.labors, indent, show_workforceunit)}
+    ${renderFlatReadableJson(planUnit.workforceheir.labors, indent, show_workforceheir)}
     ${renderReasonReadableJson(planUnit.reasonunits, indent, show_reasonunits)}
     ${renderReasonReadableJson(planUnit.reasonheirs, indent, show_reasonheirs)}
     ${renderFlatReadableJson(planUnit.factunits, indent, show_factunits)}

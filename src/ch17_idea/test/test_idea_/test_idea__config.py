@@ -170,12 +170,12 @@ def test_get_idea_elements_sort_order_ReturnsObj():
     assert table_sorting_priority[74] == kw.fact_state
     assert table_sorting_priority[75] == f"{kw.fact_state}_otx"
     assert table_sorting_priority[76] == f"{kw.fact_state}_inx"
-    assert table_sorting_priority[77] == kw.party_title
-    assert table_sorting_priority[78] == f"{kw.party_title}_otx"
-    assert table_sorting_priority[79] == f"{kw.party_title}_inx"
-    assert table_sorting_priority[80] == f"{kw.party_title}_ERASE"
-    assert table_sorting_priority[81] == f"{kw.party_title}_ERASE_otx"
-    assert table_sorting_priority[82] == f"{kw.party_title}_ERASE_inx"
+    assert table_sorting_priority[77] == kw.labor_title
+    assert table_sorting_priority[78] == f"{kw.labor_title}_otx"
+    assert table_sorting_priority[79] == f"{kw.labor_title}_inx"
+    assert table_sorting_priority[80] == f"{kw.labor_title}_ERASE"
+    assert table_sorting_priority[81] == f"{kw.labor_title}_ERASE_otx"
+    assert table_sorting_priority[82] == f"{kw.labor_title}_ERASE_inx"
     assert table_sorting_priority[83] == kw.solo
     assert table_sorting_priority[84] == kw.awardee_title
     assert table_sorting_priority[85] == f"{kw.awardee_title}_otx"
@@ -253,7 +253,7 @@ def test_get_idea_elements_sort_order_ReturnsObj():
     assert table_sorting_priority[157] == kw.celldepth
     assert table_sorting_priority[158] == kw.job_listen_rotations
     assert table_sorting_priority[159] == kw.error_message
-    assert table_sorting_priority[160] == kw.person_name_is_labor
+    assert table_sorting_priority[160] == kw.person_name_is_workforce
     assert table_sorting_priority[161] == kw.plan_active
     assert table_sorting_priority[162] == kw.plan_task
     assert table_sorting_priority[163] == kw.case_task
@@ -355,7 +355,7 @@ def test_get_idea_sqlite_types_ReturnsObj():
     assert sqlite_types.get(kw.reason_context) == "TEXT"
     assert sqlite_types.get(kw.reason_state) == "TEXT"
     assert sqlite_types.get(kw.fact_state) == "TEXT"
-    assert sqlite_types.get(kw.party_title) == "TEXT"
+    assert sqlite_types.get(kw.labor_title) == "TEXT"
     assert sqlite_types.get(kw.awardee_title) == "TEXT"
     assert sqlite_types.get(kw.healer_name) == "TEXT"
     assert sqlite_types.get(kw.offi_time) == "INTEGER"
@@ -460,7 +460,7 @@ def test_get_idea_config_dict_ReturnsObj_Scenario0_IsFullyPopulated():
     assert kw.person_partnerunit in idea_config_dimens
     assert kw.person_plan_awardunit in idea_config_dimens
     assert kw.person_plan_factunit in idea_config_dimens
-    assert kw.person_plan_partyunit in idea_config_dimens
+    assert kw.person_plan_laborunit in idea_config_dimens
     assert kw.person_plan_healerunit in idea_config_dimens
     assert kw.person_plan_reason_caseunit in idea_config_dimens
     assert kw.person_plan_reasonunit in idea_config_dimens
@@ -742,7 +742,7 @@ def test_get_idea_config_dict_ReturnsObj_Scenario1_Check_build_order():
     # set_idea_config_json(kw.person_partnerunit, 10)
     # set_idea_config_json(kw.person_plan_awardunit, 11)
     # set_idea_config_json(kw.person_plan_factunit, 12)
-    # set_idea_config_json(kw.person_plan_partyunit, 14)
+    # set_idea_config_json(kw.person_plan_laborunit, 14)
     # set_idea_config_json(kw.person_plan_healerunit, 15)
     # set_idea_config_json(kw.person_plan_reason_caseunit, 16)
     # set_idea_config_json(kw.person_plan_reasonunit, 17)
@@ -767,7 +767,7 @@ def test_get_idea_config_dict_ReturnsObj_Scenario1_Check_build_order():
     assert x_idea_config.get(kw.person_partnerunit).get(bo) == 10
     assert x_idea_config.get(kw.person_plan_awardunit).get(bo) == 11
     assert x_idea_config.get(kw.person_plan_factunit).get(bo) == 12
-    assert x_idea_config.get(kw.person_plan_partyunit).get(bo) == 14
+    assert x_idea_config.get(kw.person_plan_laborunit).get(bo) == 14
     assert x_idea_config.get(kw.person_plan_healerunit).get(bo) == 15
     assert x_idea_config.get(kw.person_plan_reason_caseunit).get(bo) == 16
     assert x_idea_config.get(kw.person_plan_reasonunit).get(bo) == 17
@@ -806,7 +806,7 @@ def test_get_idea_config_dict_ReturnsObj_Scenario0_Person():
     assert person_idea_config.get(kw.person_partnerunit)
     assert person_idea_config.get(kw.person_plan_awardunit)
     assert person_idea_config.get(kw.person_plan_factunit)
-    assert person_idea_config.get(kw.person_plan_partyunit)
+    assert person_idea_config.get(kw.person_plan_laborunit)
     assert person_idea_config.get(kw.person_plan_healerunit)
     assert person_idea_config.get(kw.person_plan_reason_caseunit)
     assert person_idea_config.get(kw.person_plan_reasonunit)

@@ -891,7 +891,7 @@ def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_delete_plan_reasonu
     assert after_ball_plan.get_reasonunit(knee_rope) is None
 
 
-def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_insert_plan_partyunit():
+def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_insert_plan_laborunit():
     # ESTABLISH
     before_sue_au = personunit_shop(exx.sue)
     before_sue_au.add_partnerunit(exx.yao)
@@ -901,23 +901,23 @@ def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_insert_plan_partyun
     ball_rope = before_sue_au.make_rope(sports_rope, ball_str)
     before_sue_au.set_plan_obj(planunit_shop(ball_str), sports_rope)
     before_ball_planunit = before_sue_au.get_plan_obj(ball_rope)
-    assert before_ball_planunit.laborunit.partys == {}
+    assert before_ball_planunit.workforceunit.labors == {}
 
     # WHEN
-    update_disc_personatom = personatom_shop(kw.person_plan_partyunit, kw.INSERT)
+    update_disc_personatom = personatom_shop(kw.person_plan_laborunit, kw.INSERT)
     update_disc_personatom.set_jkey(kw.plan_rope, ball_rope)
-    update_disc_personatom.set_jkey(kw.party_title, exx.yao)
+    update_disc_personatom.set_jkey(kw.labor_title, exx.yao)
     sue_persondelta = persondelta_shop()
     sue_persondelta.set_personatom(update_disc_personatom)
     after_sue_au = sue_persondelta.get_atom_edited_person(before_sue_au)
 
     # THEN
     after_ball_planunit = after_sue_au.get_plan_obj(ball_rope)
-    assert after_ball_planunit.laborunit.partys != set()
-    assert after_ball_planunit.laborunit.get_partyunit(exx.yao) is not None
+    assert after_ball_planunit.workforceunit.labors != set()
+    assert after_ball_planunit.workforceunit.get_laborunit(exx.yao) is not None
 
 
-def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_delete_plan_partyunit():
+def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_delete_plan_laborunit():
     # ESTABLISH
     before_sue_au = personunit_shop(exx.sue)
     before_sue_au.add_partnerunit(exx.yao)
@@ -927,22 +927,22 @@ def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_delete_plan_partyun
     ball_rope = before_sue_au.make_rope(sports_rope, ball_str)
     before_sue_au.set_plan_obj(planunit_shop(ball_str), sports_rope)
     before_ball_planunit = before_sue_au.get_plan_obj(ball_rope)
-    before_ball_planunit.laborunit.add_party(exx.yao)
-    assert before_ball_planunit.laborunit.partys != set()
-    assert before_ball_planunit.laborunit.get_partyunit(exx.yao) is not None
+    before_ball_planunit.workforceunit.add_labor(exx.yao)
+    assert before_ball_planunit.workforceunit.labors != set()
+    assert before_ball_planunit.workforceunit.get_laborunit(exx.yao) is not None
 
     # WHEN
-    update_disc_personatom = personatom_shop(kw.person_plan_partyunit, kw.DELETE)
+    update_disc_personatom = personatom_shop(kw.person_plan_laborunit, kw.DELETE)
     update_disc_personatom.set_jkey(kw.plan_rope, ball_rope)
-    update_disc_personatom.set_jkey(kw.party_title, exx.yao)
+    update_disc_personatom.set_jkey(kw.labor_title, exx.yao)
     sue_persondelta = persondelta_shop()
     sue_persondelta.set_personatom(update_disc_personatom)
-    print(f"{before_sue_au.get_plan_obj(ball_rope).laborunit=}")
+    print(f"{before_sue_au.get_plan_obj(ball_rope).workforceunit=}")
     after_sue_au = sue_persondelta.get_atom_edited_person(before_sue_au)
 
     # THEN
     after_ball_planunit = after_sue_au.get_plan_obj(ball_rope)
-    assert after_ball_planunit.laborunit.partys == {}
+    assert after_ball_planunit.workforceunit.labors == {}
 
 
 def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_insert_plan_healerunit():
@@ -993,7 +993,7 @@ def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_delete_plan_healeru
     x_personatom.set_jkey(kw.healer_name, exx.yao)
     sue_persondelta = persondelta_shop()
     sue_persondelta.set_personatom(x_personatom)
-    print(f"{before_sue_au.get_plan_obj(ball_rope).laborunit=}")
+    print(f"{before_sue_au.get_plan_obj(ball_rope).workforceunit=}")
     after_sue_au = sue_persondelta.get_atom_edited_person(before_sue_au)
 
     # THEN

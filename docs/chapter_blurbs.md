@@ -6,10 +6,10 @@ What does each one do?
 - **ch00_py**: Creates helper tools for OS and python data manipulation.
 - **ch01_allot**: Defines how to allot a pool number to a weighted ledger.
 - **ch02_partner**: Defines debt and cred to Partners and Memberships to Groups.
-- **ch03_labor**: Introduces Labor concept: How tasks are assigned.
+- **ch03_workforce**: Introduces Workforce concept: How tasks are assigned.
 - **ch04_rope**: Defines Term Classes: Knots, Labels, RopeTerms, FirstLabels
 - **ch05_reason**: Defines ReasonUnits, FactUnits, and Facts decide if a Reason is Active
-- **ch06_plan**: Defines PlanUnits with sub-plans, Awardees, Labor, Reasons, Facts, etc.
+- **ch06_plan**: Defines PlanUnits with sub-plans, Awardees, Workforce, Reasons, Facts, etc.
 - **ch07_person_logic**: Defines a PersonUnit as a PlanUnit and PartnerUnits capable of producing an agenda.
 - **ch08_person_atom**: Defines PersonAtoms: Irreducible units of change for a PersonUnit.
 - **ch09_person_lesson**: Defines lessons which are collections of PersonAtoms by FaceName

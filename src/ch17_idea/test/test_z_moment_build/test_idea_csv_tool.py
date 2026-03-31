@@ -57,7 +57,7 @@ def test_create_init_stance_idea_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
         "br00021": "moment_rope,person_name,partner_name,partner_cred_lumen,partner_debt_lumen,knot\n",
         "br00022": "person_name,plan_rope,awardee_title,give_force,take_force,knot\n",
         "br00023": "person_name,plan_rope,fact_context,fact_state,fact_lower,fact_upper,knot\n",
-        "br00024": "person_name,plan_rope,party_title,solo,knot\n",
+        "br00024": "person_name,plan_rope,labor_title,solo,knot\n",
         "br00025": "person_name,plan_rope,healer_name,knot\n",
         "br00026": "person_name,plan_rope,reason_context,reason_state,reason_lower,reason_upper,reason_divisor,knot\n",
         "br00027": "person_name,plan_rope,reason_context,active_requisite,knot\n",
@@ -364,7 +364,7 @@ def test_add_person_to_br00024_csv_ReturnsObj():
     bob_person.add_plan(casa_rope)
     casa_plan = bob_person.get_plan_obj(casa_rope)
     cleaners_str = "cleaners"
-    casa_plan.laborunit.add_party(cleaners_str)
+    casa_plan.workforceunit.add_labor(cleaners_str)
     csv_header = x_ideas.get("br00024")
     print(f"{csv_header=}")
 

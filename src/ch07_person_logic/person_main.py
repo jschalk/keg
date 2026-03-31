@@ -16,7 +16,7 @@ from src.ch02_partner.partner import (
     partnerunit_shop,
     partnerunits_get_from_dict,
 )
-from src.ch03_labor.labor import LaborUnit
+from src.ch03_workforce.workforce import WorkforceUnit
 from src.ch04_rope.rope import (
     all_ropes_between,
     create_rope,
@@ -650,15 +650,15 @@ class PersonUnit:
         ]
         for awardunit_awardee_title in awardunits_to_delete:
             x_plan.awardunits.pop(awardunit_awardee_title)
-        if x_plan.laborunit is not None:
-            partys_to_delete = [
-                _partyunit_party_title
-                for _partyunit_party_title in x_plan.laborunit.partys
-                if self.get_partnerunit_group_titles_dict().get(_partyunit_party_title)
+        if x_plan.workforceunit is not None:
+            labors_to_delete = [
+                _laborunit_labor_title
+                for _laborunit_labor_title in x_plan.workforceunit.labors
+                if self.get_partnerunit_group_titles_dict().get(_laborunit_labor_title)
                 is None
             ]
-            for _partyunit_party_title in partys_to_delete:
-                x_plan.laborunit.del_partyunit(_partyunit_party_title)
+            for _laborunit_labor_title in labors_to_delete:
+                x_plan.workforceunit.del_laborunit(_laborunit_labor_title)
         return x_plan
 
     def _create_missing_plans(self, rope):
@@ -782,7 +782,7 @@ class PersonUnit:
         reason_del_case_reason_context: RopeTerm = None,
         reason_del_case_reason_state: RopeTerm = None,
         reason_requisite_active: str = None,
-        laborunit: LaborUnit = None,
+        workforceunit: WorkforceUnit = None,
         healerunit: HealerUnit = None,
         begin: float = None,
         close: float = None,
@@ -828,7 +828,7 @@ reason_case:    {reason_case}"""
             reason_del_case_reason_context=reason_del_case_reason_context,
             reason_del_case_reason_state=reason_del_case_reason_state,
             reason_requisite_active=reason_requisite_active,
-            laborunit=laborunit,
+            workforceunit=workforceunit,
             healerunit=healerunit,
             begin=begin,
             close=close,
@@ -1220,17 +1220,17 @@ reason_case:    {reason_case}"""
         self._keep_dict = {}
         self._healers_dict = {}
 
-    def _set_plantree_factheirs_laborheir_awardheirs(self):
+    def _set_plantree_factheirs_workforceheir_awardheirs(self):
         for x_plan in get_sorted_plan_list(self._plan_dict):
             if x_plan == self.planroot:
                 x_plan.set_factheirs(x_plan.factunits)
                 x_plan.set_root_plan_reasonheirs()
-                x_plan.set_laborheir(None, self.groupunits)
+                x_plan.set_workforceheir(None, self.groupunits)
                 x_plan.inherit_awardheirs()
             else:
                 parent_plan = self.get_plan_obj(x_plan.parent_rope)
                 x_plan.set_factheirs(parent_plan.factheirs)
-                x_plan.set_laborheir(parent_plan.laborheir, self.groupunits)
+                x_plan.set_workforceheir(parent_plan.workforceheir, self.groupunits)
                 x_plan.inherit_awardheirs(parent_plan.awardheirs)
             x_plan.set_awardheirs_fund_give_fund_take()
 
@@ -1241,7 +1241,7 @@ reason_case:    {reason_case}"""
         self._set_partnerunit_groupunit_respect_ledgers()
         self._clear_partnerunit_fund_attrs()
         self._clear_plantree_fund_and_plan_active()
-        self._set_plantree_factheirs_laborheir_awardheirs()
+        self._set_plantree_factheirs_workforceheir_awardheirs()
 
         max_count = self.max_tree_traverse
         while not self.rational and self.tree_traverse_count < max_count:
@@ -1526,7 +1526,7 @@ def create_planroot_from_person_dict(x_person: PersonUnit, person_dict: dict):
         stop_want=get_obj_from_plan_dict(planroot_dict, "stop_want"),
         problem_bool=get_obj_from_plan_dict(planroot_dict, "problem_bool"),
         reasonunits=get_obj_from_plan_dict(planroot_dict, "reasonunits"),
-        laborunit=get_obj_from_plan_dict(planroot_dict, "laborunit"),
+        workforceunit=get_obj_from_plan_dict(planroot_dict, "workforceunit"),
         healerunit=get_obj_from_plan_dict(planroot_dict, "healerunit"),
         factunits=get_obj_from_plan_dict(planroot_dict, "factunits"),
         awardunits=get_obj_from_plan_dict(planroot_dict, "awardunits"),
@@ -1568,7 +1568,7 @@ def create_planroot_kids_from_dict(x_person: PersonUnit, planroot_dict: dict):
             pledge=get_obj_from_plan_dict(plan_dict, "pledge"),
             problem_bool=get_obj_from_plan_dict(plan_dict, "problem_bool"),
             reasonunits=get_obj_from_plan_dict(plan_dict, "reasonunits"),
-            laborunit=get_obj_from_plan_dict(plan_dict, "laborunit"),
+            workforceunit=get_obj_from_plan_dict(plan_dict, "workforceunit"),
             healerunit=get_obj_from_plan_dict(plan_dict, "healerunit"),
             awardunits=get_obj_from_plan_dict(plan_dict, "awardunits"),
             factunits=get_obj_from_plan_dict(plan_dict, "factunits"),

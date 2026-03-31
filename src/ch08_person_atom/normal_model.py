@@ -81,10 +81,10 @@ class CaseTable(Base):
     reason_lower = Column(Float)
 
 
-class LaborLinkTable(Base):
-    __tablename__ = "partyunit"
+class WorkforceLinkTable(Base):
+    __tablename__ = "laborunit"
     plan_uid = Column(Integer, primary_key=True)
-    party_title = Column(String)
+    labor_title = Column(String)
     plan_rope = Column(String)
     solo = Column(Integer)
 

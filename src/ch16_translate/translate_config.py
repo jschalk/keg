@@ -108,7 +108,7 @@ def get_translate_args_class_types() -> dict[str, str]:
         "numor": "int",
         "offi_time": "TimeNum",
         "quota": "int",
-        "party_title": "TitleTerm",
+        "labor_title": "TitleTerm",
         "plan_rope": "RopeTerm",
         "pledge": "bool",
         "problem_bool": "bool",
@@ -183,7 +183,7 @@ def get_translateable_args() -> set:
         "hour_label",
         "moment_rope",
         "month_label",
-        "party_title",
+        "labor_title",
         "plan_rope",
         "reason_context",
         "reason_state",
@@ -219,7 +219,7 @@ def get_translate_titleterm_args() -> set[str]:
     return {
         "awardee_title",
         "group_title",
-        "party_title",
+        "labor_title",
     }
 
 

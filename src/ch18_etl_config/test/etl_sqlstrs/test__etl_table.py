@@ -155,7 +155,7 @@ def test_create_prime_tablename_ReturnsObj_Scenario0_ExpectedReturns():
     assert prnawar_s_agg_table == f"{kw.person_plan_awardunit}_put_{kw.s_agg}"
     assert prnreas_s_agg_table == f"{kw.person_plan_reasonunit}_put_{kw.s_agg}"
     assert prncase_s_agg_table == f"{kw.person_plan_reason_caseunit}_put_{kw.s_agg}"
-    assert prnlabo_s_agg_table == f"{kw.person_plan_partyunit}_put_{kw.s_agg}"
+    assert prnlabo_s_agg_table == f"{kw.person_plan_laborunit}_put_{kw.s_agg}"
     assert prnheal_s_agg_table == f"{kw.person_plan_healerunit}_put_{kw.s_agg}"
     assert prnfact_s_agg_table == f"{kw.person_plan_factunit}_put_{kw.s_agg}"
     assert prnfact_s_del_table == f"{kw.person_plan_factunit}_del_{kw.s_agg}"
@@ -475,7 +475,7 @@ def test_get_prime_columns_ReturnsObj_Scenario5_h_agg_set_nabuable_otx_inx_args_
 
 def test_get_del_dimen_columns_set_ReturnsObj_Scenario0() -> list[str]:
     # ESTABLISH / WHEN
-    del_dimen_columns_set = get_del_dimen_columns_set(kw.person_plan_partyunit)
+    del_dimen_columns_set = get_del_dimen_columns_set(kw.person_plan_laborunit)
 
     # THEN
     assert del_dimen_columns_set
@@ -484,7 +484,7 @@ def test_get_del_dimen_columns_set_ReturnsObj_Scenario0() -> list[str]:
         kw.spark_num,
         kw.person_name,
         kw.face_name,
-        f"{kw.party_title}_ERASE",
+        f"{kw.labor_title}_ERASE",
     }
 
 

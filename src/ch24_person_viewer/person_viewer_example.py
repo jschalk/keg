@@ -1,5 +1,5 @@
 from src.ch02_partner.group import awardunit_shop
-from src.ch03_labor.labor import laborunit_shop
+from src.ch03_workforce.workforce import workforceunit_shop
 from src.ch07_person_logic.person_main import PersonUnit, personunit_shop
 from src.ch07_person_logic.person_tool import person_plan_reason_caseunit_set_obj
 from src.ch07_person_logic.test._util.ch07_examples import (
@@ -131,10 +131,10 @@ def get_sue_person_with_facts_and_reasons() -> PersonUnit:
     play_run_rope = sue_person.make_rope(play_rope, play_run_str())
     sue_person.add_fact(tidi_rope, dirty_rope, 4, 8)
     sue_person.add_fact(best_rope, best_soccer_rope, 1, 7)
-    mop_laborunit = laborunit_shop()
-    mop_laborunit.add_party(sue2_str())
-    mop_laborunit.add_party(bob2_str(), True)
-    sue_person.edit_plan_attr(mop_rope, laborunit=mop_laborunit)
+    mop_workforceunit = workforceunit_shop()
+    mop_workforceunit.add_labor(sue2_str())
+    mop_workforceunit.add_labor(bob2_str(), True)
+    sue_person.edit_plan_attr(mop_rope, workforceunit=mop_workforceunit)
     # add reasons to mop_plan, sweep_plan, play_soccer_plan, plan_swim_plan, play_run_plan
     x_plan = "plan_rope"
     x_context = "reason_context"

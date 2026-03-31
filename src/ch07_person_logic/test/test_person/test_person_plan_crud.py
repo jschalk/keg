@@ -1,6 +1,6 @@
 from pytest import raises as pytest_raises
 from src.ch02_partner.group import awardunit_shop
-from src.ch03_labor.labor import laborunit_shop
+from src.ch03_workforce.workforce import workforceunit_shop
 from src.ch04_rope.rope import create_rope, default_knot_if_None, is_sub_rope, to_rope
 from src.ch05_reason.reason_main import caseunit_shop, factunit_shop, reasonunit_shop
 from src.ch06_plan.healer import healerunit_shop
@@ -504,22 +504,22 @@ def test_PersonUnit_edit_plan_attr_SetNestedPlanUnitAttr_Scenario09_problem_bool
     assert sue_person.planroot.kids[exx.casa].problem_bool == x_problem_bool
 
 
-def test_PersonUnit_edit_plan_attr_SetNestedPlanUnitAttr_Scenario10_laborunit():
+def test_PersonUnit_edit_plan_attr_SetNestedPlanUnitAttr_Scenario10_workforceunit():
     # ESTABLISH
     xio_person = personunit_shop("Xio")
     run_str = "run"
     run_rope = xio_person.make_l1_rope(run_str)
     xio_person.set_l1_plan(planunit_shop(run_str))
     run_plan = xio_person.get_plan_obj(run_rope)
-    sue_laborunit = laborunit_shop()
-    sue_laborunit.add_party(exx.sue)
-    assert run_plan.laborunit == laborunit_shop()
+    sue_workforceunit = workforceunit_shop()
+    sue_workforceunit.add_labor(exx.sue)
+    assert run_plan.workforceunit == workforceunit_shop()
 
     # WHEN
-    xio_person.edit_plan_attr(run_rope, laborunit=sue_laborunit)
+    xio_person.edit_plan_attr(run_rope, workforceunit=sue_workforceunit)
 
     # THEN
-    assert run_plan.laborunit == sue_laborunit
+    assert run_plan.workforceunit == sue_workforceunit
 
 
 def test_PersonUnit_edit_plan_attr_SetNestedPlanUnitAttr_Scenario11_reasonunit():

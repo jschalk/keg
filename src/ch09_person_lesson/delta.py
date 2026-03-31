@@ -387,9 +387,9 @@ class PersonDelta:
                     insert_planunit.reasonunits.keys()
                 ),
             )
-            self.add_personatom_plan_partyunit_insert(
+            self.add_personatom_plan_laborunit_insert(
                 plan_rope=insert_plan_rope,
-                insert_partyunit_party_titles=insert_planunit.laborunit.partys,
+                insert_laborunit_labor_titles=insert_planunit.workforceunit.labors,
             )
             self.add_personatom_plan_healerunit_insert(
                 plan_rope=insert_plan_rope,
@@ -496,19 +496,19 @@ class PersonDelta:
             # update reasonunits_permises update_case
             # update reasonunits_permises delete_case
 
-            # insert / update / delete partyunits
-            before_partys_party_titles = set(before_planunit.laborunit.partys)
-            after_partys_party_titles = set(after_planunit.laborunit.partys)
-            self.add_personatom_plan_partyunit_insert(
+            # insert / update / delete laborunits
+            before_labors_labor_titles = set(before_planunit.workforceunit.labors)
+            after_labors_labor_titles = set(after_planunit.workforceunit.labors)
+            self.add_personatom_plan_laborunit_insert(
                 plan_rope=plan_rope,
-                insert_partyunit_party_titles=after_partys_party_titles.difference(
-                    before_partys_party_titles
+                insert_laborunit_labor_titles=after_labors_labor_titles.difference(
+                    before_labors_labor_titles
                 ),
             )
-            self.add_personatom_plan_partyunit_deletes(
+            self.add_personatom_plan_laborunit_deletes(
                 plan_rope=plan_rope,
-                delete_partyunit_party_titles=before_partys_party_titles.difference(
-                    after_partys_party_titles
+                delete_laborunit_labor_titles=before_labors_labor_titles.difference(
+                    after_labors_labor_titles
                 ),
             )
 
@@ -554,9 +554,9 @@ class PersonDelta:
                     delete_planunit.reasonunits.keys()
                 ),
             )
-            self.add_personatom_plan_partyunit_deletes(
+            self.add_personatom_plan_laborunit_deletes(
                 plan_rope=delete_plan_rope,
-                delete_partyunit_party_titles=delete_planunit.laborunit.partys,
+                delete_laborunit_labor_titles=delete_planunit.workforceunit.labors,
             )
             self.add_personatom_plan_healerunit_deletes(
                 plan_rope=delete_plan_rope,
@@ -721,22 +721,22 @@ class PersonDelta:
             x_personatom.set_jkey("reason_state", delete_case_reason_state)
             self.set_personatom(x_personatom)
 
-    def add_personatom_plan_partyunit_insert(
-        self, plan_rope: RopeTerm, insert_partyunit_party_titles: set
+    def add_personatom_plan_laborunit_insert(
+        self, plan_rope: RopeTerm, insert_laborunit_labor_titles: set
     ):
-        for insert_partyunit_party_title in insert_partyunit_party_titles:
-            x_personatom = personatom_shop("person_plan_partyunit", "INSERT")
+        for insert_laborunit_labor_title in insert_laborunit_labor_titles:
+            x_personatom = personatom_shop("person_plan_laborunit", "INSERT")
             x_personatom.set_jkey("plan_rope", plan_rope)
-            x_personatom.set_jkey("party_title", insert_partyunit_party_title)
+            x_personatom.set_jkey("labor_title", insert_laborunit_labor_title)
             self.set_personatom(x_personatom)
 
-    def add_personatom_plan_partyunit_deletes(
-        self, plan_rope: RopeTerm, delete_partyunit_party_titles: set
+    def add_personatom_plan_laborunit_deletes(
+        self, plan_rope: RopeTerm, delete_laborunit_labor_titles: set
     ):
-        for delete_partyunit_party_title in delete_partyunit_party_titles:
-            x_personatom = personatom_shop("person_plan_partyunit", "DELETE")
+        for delete_laborunit_labor_title in delete_laborunit_labor_titles:
+            x_personatom = personatom_shop("person_plan_laborunit", "DELETE")
             x_personatom.set_jkey("plan_rope", plan_rope)
-            x_personatom.set_jkey("party_title", delete_partyunit_party_title)
+            x_personatom.set_jkey("labor_title", delete_laborunit_labor_title)
             self.set_personatom(x_personatom)
 
     def add_personatom_plan_healerunit_insert(

@@ -75,8 +75,8 @@ def get_person_viewer_template() -> str:
             <input type="checkbox" id="show_awardunits"><label for="show_awardunits">awardunits</label>
             <input type="checkbox" id="show_awardheirs"><label for="show_awardheirs">awardheirs</label>
             <input type="checkbox" id="show_awardlines"><label for="show_awardlines">awardlines</label>
-            <input type="checkbox" id="show_laborunit"><label for="show_laborunit">laborunit</label>
-            <input type="checkbox" id="show_laborheir"><label for="show_laborheir">laborheir</label>
+            <input type="checkbox" id="show_workforceunit"><label for="show_workforceunit">workforceunit</label>
+            <input type="checkbox" id="show_workforceheir"><label for="show_workforceheir">workforceheir</label>
             <input type="checkbox" id="show_all_partner_cred"><label for="show_all_partner_cred">_all_partner_cred</label>
             <input type="checkbox" id="show_all_partner_debt"><label for="show_all_partner_debt">_all_partner_debt</label>
             <input type="checkbox" id="show_gogo_want"><label for="show_gogo_want">gogo_want</label>

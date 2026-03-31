@@ -25,7 +25,7 @@ def test_PlanAttrHolder_Exists():
     assert new_obj.reason_del_case_reason_context is None
     assert new_obj.reason_del_case_reason_state is None
     assert new_obj.reason_requisite_active is None
-    assert new_obj.laborunit is None
+    assert new_obj.workforceunit is None
     assert new_obj.healerunit is None
     assert new_obj.begin is None
     assert new_obj.close is None
@@ -50,7 +50,7 @@ def test_PlanAttrHolder_Exists():
         "reason_del_case_reason_context",
         "reason_del_case_reason_state",
         "reason_requisite_active",
-        kw.laborunit,
+        kw.workforceunit,
         kw.healerunit,
         kw.begin,
         kw.close,

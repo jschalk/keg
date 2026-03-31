@@ -3,7 +3,7 @@ from sqlite3 import Cursor
 from src.ch00_py.db_toolbox import db_table_exists, get_row_count
 from src.ch00_py.file_toolbox import save_json
 from src.ch02_partner.group import awardunit_shop
-from src.ch03_labor.labor import laborunit_shop
+from src.ch03_workforce.workforce import workforceunit_shop
 from src.ch06_plan.healer import healerunit_shop
 from src.ch07_person_logic.person_main import personunit_shop
 from src.ch09_person_lesson._ref.ch09_path import create_moment_json_path
@@ -37,11 +37,11 @@ def test_etl_moment_job_jsons_to_job_tables_PopulatesTables_Scenario0(
     )
     sue_person.edit_plan_attr(casa_rope, awardunit=awardunit_shop(exx.run))
     sue_person.edit_plan_attr(casa_rope, healerunit=healerunit_shop({exx.bob}))
-    sue_laborunit = laborunit_shop()
-    sue_laborunit.add_party(exx.sue)
-    sue_person.edit_plan_attr(casa_rope, laborunit=sue_laborunit)
+    sue_workforceunit = workforceunit_shop()
+    sue_workforceunit.add_labor(exx.sue)
+    sue_person.edit_plan_attr(casa_rope, workforceunit=sue_workforceunit)
     sue_person.add_fact(situation_rope, clean_rope)
-    # print(f"{sue_person.get_plan_obj(casa_rope).laborunit=}")
+    # print(f"{sue_person.get_plan_obj(casa_rope).workforceunit=}")
     # print(f"{sue_person.get_plan_obj(casa_rope).to_dict()=}")
     save_job_file(moment_mstr_dir, sue_person)
 

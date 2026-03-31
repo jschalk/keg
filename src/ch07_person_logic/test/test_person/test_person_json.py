@@ -1,5 +1,5 @@
 from pytest import raises as pytest_raises
-from src.ch03_labor.labor import laborunit_shop, partyunit_shop
+from src.ch03_workforce.workforce import laborunit_shop, workforceunit_shop
 from src.ch04_rope.rope import default_knot_if_None
 from src.ch05_reason.reason_main import factunit_shop
 from src.ch06_plan.healer import healerunit_shop
@@ -52,14 +52,14 @@ def test_PersonUnit_to_dict_ReturnsObj_Scenario0():
     assert len(planroot_dict[kw.kids]) == len(x_planroot.kids)
 
 
-def test_PersonUnit_to_dict_ReturnsObj_Scenario1_planroot_laborunit():
+def test_PersonUnit_to_dict_ReturnsObj_Scenario1_planroot_workforceunit():
     # ESTABLISH
     run_str = "runners"
     sue_person = personunit_shop("Sue")
-    x_laborunit = laborunit_shop()
-    x_laborunit.add_party(party_title=run_str)
+    x_workforceunit = workforceunit_shop()
+    x_workforceunit.add_labor(labor_title=run_str)
     root_rope = sue_person.planroot.get_plan_rope()
-    sue_person.edit_plan_attr(root_rope, laborunit=x_laborunit)
+    sue_person.edit_plan_attr(root_rope, workforceunit=x_workforceunit)
     root_plan = sue_person.get_plan_obj(root_rope)
     x_gogo_want = 5
     x_stop_want = 11
@@ -71,10 +71,10 @@ def test_PersonUnit_to_dict_ReturnsObj_Scenario1_planroot_laborunit():
     planroot_dict = person_dict.get(kw.planroot)
 
     # THEN
-    assert planroot_dict[kw.laborunit] == x_laborunit.to_dict()
-    run_partyunit = partyunit_shop(run_str)
-    assert planroot_dict[kw.laborunit] == {
-        kw.partys: {run_str: run_partyunit.to_dict()}
+    assert planroot_dict[kw.workforceunit] == x_workforceunit.to_dict()
+    run_laborunit = laborunit_shop(run_str)
+    assert planroot_dict[kw.workforceunit] == {
+        kw.labors: {run_str: run_laborunit.to_dict()}
     }
     assert planroot_dict.get(kw.gogo_want) == x_gogo_want
     assert planroot_dict.get(kw.stop_want) == x_stop_want
@@ -99,7 +99,7 @@ def test_PersonUnit_to_dict_ReturnsObj_Scenario2_With_planroot_healerunit():
     assert planroot_dict[kw.healerunit] == run_healerunit.to_dict()
 
 
-def test_PersonUnit_to_dict_ReturnsObj_Scenario3_plankid_LaborUnit():
+def test_PersonUnit_to_dict_ReturnsObj_Scenario3_plankid_WorkforceUnit():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     sue_person.add_partnerunit(exx.yao)
@@ -109,19 +109,19 @@ def test_PersonUnit_to_dict_ReturnsObj_Scenario3_plankid_LaborUnit():
     morn_str = "morning"
     morn_rope = sue_person.make_l1_rope(morn_str)
     sue_person.set_l1_plan(planunit_shop(morn_str))
-    x_laborunit = laborunit_shop()
-    x_laborunit.add_party(party_title=exx.run)
-    sue_person.edit_plan_attr(morn_rope, laborunit=x_laborunit)
+    x_workforceunit = workforceunit_shop()
+    x_workforceunit.add_labor(labor_title=exx.run)
+    sue_person.edit_plan_attr(morn_rope, workforceunit=x_workforceunit)
 
     # WHEN
     person_dict = sue_person.to_dict()
     planroot_dict = person_dict.get(kw.planroot)
 
     # THEN
-    labor_dict_x = planroot_dict[kw.kids][morn_str][kw.laborunit]
-    assert labor_dict_x == x_laborunit.to_dict()
-    run_partyunit = partyunit_shop(exx.run)
-    assert labor_dict_x == {kw.partys: {exx.run: run_partyunit.to_dict()}}
+    workforce_dict_x = planroot_dict[kw.kids][morn_str][kw.workforceunit]
+    assert workforce_dict_x == x_workforceunit.to_dict()
+    run_laborunit = laborunit_shop(exx.run)
+    assert workforce_dict_x == {kw.labors: {exx.run: run_laborunit.to_dict()}}
 
 
 def test_PersonUnit_to_dict_ReturnsObj_Scenario4_planunit_WithLevels():

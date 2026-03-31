@@ -104,18 +104,18 @@ CREATE_PRNHEAL_DEL_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_
 CREATE_PRNHEAL_PUT_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_put_s_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT, knot TEXT, error_message TEXT)"""
 CREATE_PRNHEAL_PUT_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_put_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT, knot TEXT, error_message TEXT)"""
 CREATE_PRNHEAL_PUT_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_put_s_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT, knot TEXT)"""
-CREATE_PRNLABO_DEL_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_del_h_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title_ERASE TEXT)"""
-CREATE_PRNLABO_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_del_h_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, party_title_ERASE_otx TEXT, party_title_ERASE_inx TEXT)"""
-CREATE_PRNLABO_DEL_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_del_h_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title_ERASE TEXT)"""
-CREATE_PRNLABO_PUT_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_put_h_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title TEXT, solo INTEGER, knot TEXT)"""
-CREATE_PRNLABO_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_put_h_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, party_title_otx TEXT, party_title_inx TEXT, solo INTEGER, knot TEXT)"""
-CREATE_PRNLABO_PUT_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_put_h_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title TEXT, solo INTEGER, knot TEXT)"""
-CREATE_PRNLABO_DEL_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_del_s_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title_ERASE TEXT, error_message TEXT)"""
-CREATE_PRNLABO_DEL_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_del_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title_ERASE TEXT)"""
-CREATE_PRNLABO_DEL_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_del_s_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title_ERASE TEXT)"""
-CREATE_PRNLABO_PUT_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_put_s_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title TEXT, solo INTEGER, knot TEXT, error_message TEXT)"""
-CREATE_PRNLABO_PUT_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_put_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title TEXT, solo INTEGER, knot TEXT, error_message TEXT)"""
-CREATE_PRNLABO_PUT_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_put_s_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, party_title TEXT, solo INTEGER, knot TEXT)"""
+CREATE_PRNLABO_DEL_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_del_h_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, labor_title_ERASE TEXT)"""
+CREATE_PRNLABO_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_del_h_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, labor_title_ERASE_otx TEXT, labor_title_ERASE_inx TEXT)"""
+CREATE_PRNLABO_DEL_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_del_h_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, labor_title_ERASE TEXT)"""
+CREATE_PRNLABO_PUT_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_put_h_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, labor_title TEXT, solo INTEGER, knot TEXT)"""
+CREATE_PRNLABO_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_put_h_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, labor_title_otx TEXT, labor_title_inx TEXT, solo INTEGER, knot TEXT)"""
+CREATE_PRNLABO_PUT_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_put_h_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, labor_title TEXT, solo INTEGER, knot TEXT)"""
+CREATE_PRNLABO_DEL_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_del_s_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, labor_title_ERASE TEXT, error_message TEXT)"""
+CREATE_PRNLABO_DEL_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_del_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, labor_title_ERASE TEXT)"""
+CREATE_PRNLABO_DEL_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_del_s_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, labor_title_ERASE TEXT)"""
+CREATE_PRNLABO_PUT_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_put_s_agg (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, labor_title TEXT, solo INTEGER, knot TEXT, error_message TEXT)"""
+CREATE_PRNLABO_PUT_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_put_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, labor_title TEXT, solo INTEGER, knot TEXT, error_message TEXT)"""
+CREATE_PRNLABO_PUT_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_put_s_vld (spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, labor_title TEXT, solo INTEGER, knot TEXT)"""
 CREATE_PRNMEMB_DEL_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_del_h_agg (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title_ERASE TEXT)"""
 CREATE_PRNMEMB_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_del_h_raw (translate_spark_num INTEGER, spark_num INTEGER, face_name_otx TEXT, face_name_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, partner_name_otx TEXT, partner_name_inx TEXT, group_title_ERASE_otx TEXT, group_title_ERASE_inx TEXT)"""
 CREATE_PRNMEMB_DEL_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partner_membership_del_h_vld (spark_num INTEGER, face_name TEXT, moment_rope TEXT, person_name TEXT, partner_name TEXT, group_title_ERASE TEXT)"""
@@ -231,18 +231,18 @@ def get_prime_create_table_sqlstrs() -> dict[str, str]:
         "person_plan_healerunit_put_s_agg": CREATE_PRNHEAL_PUT_SOUND_AGG_SQLSTR,
         "person_plan_healerunit_put_s_raw": CREATE_PRNHEAL_PUT_SOUND_RAW_SQLSTR,
         "person_plan_healerunit_put_s_vld": CREATE_PRNHEAL_PUT_SOUND_VLD_SQLSTR,
-        "person_plan_partyunit_del_h_agg": CREATE_PRNLABO_DEL_HEARD_AGG_SQLSTR,
-        "person_plan_partyunit_del_h_raw": CREATE_PRNLABO_DEL_HEARD_RAW_SQLSTR,
-        "person_plan_partyunit_del_h_vld": CREATE_PRNLABO_DEL_HEARD_VLD_SQLSTR,
-        "person_plan_partyunit_put_h_agg": CREATE_PRNLABO_PUT_HEARD_AGG_SQLSTR,
-        "person_plan_partyunit_put_h_raw": CREATE_PRNLABO_PUT_HEARD_RAW_SQLSTR,
-        "person_plan_partyunit_put_h_vld": CREATE_PRNLABO_PUT_HEARD_VLD_SQLSTR,
-        "person_plan_partyunit_del_s_agg": CREATE_PRNLABO_DEL_SOUND_AGG_SQLSTR,
-        "person_plan_partyunit_del_s_raw": CREATE_PRNLABO_DEL_SOUND_RAW_SQLSTR,
-        "person_plan_partyunit_del_s_vld": CREATE_PRNLABO_DEL_SOUND_VLD_SQLSTR,
-        "person_plan_partyunit_put_s_agg": CREATE_PRNLABO_PUT_SOUND_AGG_SQLSTR,
-        "person_plan_partyunit_put_s_raw": CREATE_PRNLABO_PUT_SOUND_RAW_SQLSTR,
-        "person_plan_partyunit_put_s_vld": CREATE_PRNLABO_PUT_SOUND_VLD_SQLSTR,
+        "person_plan_laborunit_del_h_agg": CREATE_PRNLABO_DEL_HEARD_AGG_SQLSTR,
+        "person_plan_laborunit_del_h_raw": CREATE_PRNLABO_DEL_HEARD_RAW_SQLSTR,
+        "person_plan_laborunit_del_h_vld": CREATE_PRNLABO_DEL_HEARD_VLD_SQLSTR,
+        "person_plan_laborunit_put_h_agg": CREATE_PRNLABO_PUT_HEARD_AGG_SQLSTR,
+        "person_plan_laborunit_put_h_raw": CREATE_PRNLABO_PUT_HEARD_RAW_SQLSTR,
+        "person_plan_laborunit_put_h_vld": CREATE_PRNLABO_PUT_HEARD_VLD_SQLSTR,
+        "person_plan_laborunit_del_s_agg": CREATE_PRNLABO_DEL_SOUND_AGG_SQLSTR,
+        "person_plan_laborunit_del_s_raw": CREATE_PRNLABO_DEL_SOUND_RAW_SQLSTR,
+        "person_plan_laborunit_del_s_vld": CREATE_PRNLABO_DEL_SOUND_VLD_SQLSTR,
+        "person_plan_laborunit_put_s_agg": CREATE_PRNLABO_PUT_SOUND_AGG_SQLSTR,
+        "person_plan_laborunit_put_s_raw": CREATE_PRNLABO_PUT_SOUND_RAW_SQLSTR,
+        "person_plan_laborunit_put_s_vld": CREATE_PRNLABO_PUT_SOUND_VLD_SQLSTR,
         "person_plan_reason_caseunit_del_h_agg": CREATE_PRNCASE_DEL_HEARD_AGG_SQLSTR,
         "person_plan_reason_caseunit_del_h_raw": CREATE_PRNCASE_DEL_HEARD_RAW_SQLSTR,
         "person_plan_reason_caseunit_del_h_vld": CREATE_PRNCASE_DEL_HEARD_VLD_SQLSTR,
@@ -392,8 +392,8 @@ def get_moment_person_sound_agg_tablenames():
         "person_plan_factunit_put_s_agg",
         "person_plan_healerunit_del_s_agg",
         "person_plan_healerunit_put_s_agg",
-        "person_plan_partyunit_del_s_agg",
-        "person_plan_partyunit_put_s_agg",
+        "person_plan_laborunit_del_s_agg",
+        "person_plan_laborunit_put_s_agg",
         "person_plan_reason_caseunit_del_s_agg",
         "person_plan_reason_caseunit_put_s_agg",
         "person_plan_reasonunit_del_s_agg",
@@ -419,7 +419,7 @@ def get_person_heard_vld_tablenames() -> set[str]:
         "person_plan_healerunit_put_h_vld",
         "person_partnerunit_put_h_vld",
         "person_plan_reason_caseunit_put_h_vld",
-        "person_plan_partyunit_put_h_vld",
+        "person_plan_laborunit_put_h_vld",
         "person_plan_reasonunit_put_h_vld",
         "person_plan_factunit_put_h_vld",
         "person_partner_membership_put_h_vld",
@@ -707,8 +707,8 @@ INSERT_PRNFACT_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_plan_factunit_put_s_vl
 INSERT_PRNFACT_SOUND_VLD_DEL_SQLSTR = "INSERT INTO person_plan_factunit_del_s_vld (spark_num, face_name, person_name, plan_rope, fact_context_ERASE) SELECT spark_num, face_name, person_name, plan_rope, fact_context_ERASE FROM person_plan_factunit_del_s_agg WHERE error_message IS NULL"
 INSERT_PRNHEAL_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_plan_healerunit_put_s_vld (spark_num, face_name, person_name, plan_rope, healer_name, knot) SELECT spark_num, face_name, person_name, plan_rope, healer_name, knot FROM person_plan_healerunit_put_s_agg WHERE error_message IS NULL"
 INSERT_PRNHEAL_SOUND_VLD_DEL_SQLSTR = "INSERT INTO person_plan_healerunit_del_s_vld (spark_num, face_name, person_name, plan_rope, healer_name_ERASE) SELECT spark_num, face_name, person_name, plan_rope, healer_name_ERASE FROM person_plan_healerunit_del_s_agg WHERE error_message IS NULL"
-INSERT_PRNLABO_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_plan_partyunit_put_s_vld (spark_num, face_name, person_name, plan_rope, party_title, solo, knot) SELECT spark_num, face_name, person_name, plan_rope, party_title, solo, knot FROM person_plan_partyunit_put_s_agg WHERE error_message IS NULL"
-INSERT_PRNLABO_SOUND_VLD_DEL_SQLSTR = "INSERT INTO person_plan_partyunit_del_s_vld (spark_num, face_name, person_name, plan_rope, party_title_ERASE) SELECT spark_num, face_name, person_name, plan_rope, party_title_ERASE FROM person_plan_partyunit_del_s_agg WHERE error_message IS NULL"
+INSERT_PRNLABO_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_plan_laborunit_put_s_vld (spark_num, face_name, person_name, plan_rope, labor_title, solo, knot) SELECT spark_num, face_name, person_name, plan_rope, labor_title, solo, knot FROM person_plan_laborunit_put_s_agg WHERE error_message IS NULL"
+INSERT_PRNLABO_SOUND_VLD_DEL_SQLSTR = "INSERT INTO person_plan_laborunit_del_s_vld (spark_num, face_name, person_name, plan_rope, labor_title_ERASE) SELECT spark_num, face_name, person_name, plan_rope, labor_title_ERASE FROM person_plan_laborunit_del_s_agg WHERE error_message IS NULL"
 INSERT_PRNCASE_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_plan_reason_caseunit_put_s_vld (spark_num, face_name, person_name, plan_rope, reason_context, reason_state, reason_lower, reason_upper, reason_divisor, knot) SELECT spark_num, face_name, person_name, plan_rope, reason_context, reason_state, reason_lower, reason_upper, reason_divisor, knot FROM person_plan_reason_caseunit_put_s_agg WHERE error_message IS NULL"
 INSERT_PRNCASE_SOUND_VLD_DEL_SQLSTR = "INSERT INTO person_plan_reason_caseunit_del_s_vld (spark_num, face_name, person_name, plan_rope, reason_context, reason_state_ERASE) SELECT spark_num, face_name, person_name, plan_rope, reason_context, reason_state_ERASE FROM person_plan_reason_caseunit_del_s_agg WHERE error_message IS NULL"
 INSERT_PRNREAS_SOUND_VLD_PUT_SQLSTR = "INSERT INTO person_plan_reasonunit_put_s_vld (spark_num, face_name, person_name, plan_rope, reason_context, active_requisite, knot) SELECT spark_num, face_name, person_name, plan_rope, reason_context, active_requisite, knot FROM person_plan_reasonunit_put_s_agg WHERE error_message IS NULL"
@@ -745,8 +745,8 @@ def get_insert_into_sound_vld_sqlstrs() -> dict[str, str]:
         "person_plan_reason_caseunit_del_s_vld": INSERT_PRNCASE_SOUND_VLD_DEL_SQLSTR,
         "person_plan_reasonunit_put_s_vld": INSERT_PRNREAS_SOUND_VLD_PUT_SQLSTR,
         "person_plan_reasonunit_del_s_vld": INSERT_PRNREAS_SOUND_VLD_DEL_SQLSTR,
-        "person_plan_partyunit_put_s_vld": INSERT_PRNLABO_SOUND_VLD_PUT_SQLSTR,
-        "person_plan_partyunit_del_s_vld": INSERT_PRNLABO_SOUND_VLD_DEL_SQLSTR,
+        "person_plan_laborunit_put_s_vld": INSERT_PRNLABO_SOUND_VLD_PUT_SQLSTR,
+        "person_plan_laborunit_del_s_vld": INSERT_PRNLABO_SOUND_VLD_DEL_SQLSTR,
         "person_planunit_put_s_vld": INSERT_PRNPLAN_SOUND_VLD_PUT_SQLSTR,
         "person_planunit_del_s_vld": INSERT_PRNPLAN_SOUND_VLD_DEL_SQLSTR,
         "personunit_put_s_vld": INSERT_PRNUNIT_SOUND_VLD_PUT_SQLSTR,
@@ -781,8 +781,8 @@ INSERT_PRNFACT_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_plan_factunit_put_h_ra
 INSERT_PRNFACT_HEARD_RAW_DEL_SQLSTR = "INSERT INTO person_plan_factunit_del_h_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, fact_context_ERASE_otx) SELECT spark_num, face_name, person_name, plan_rope, fact_context_ERASE FROM person_plan_factunit_del_s_vld "
 INSERT_PRNHEAL_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_plan_healerunit_put_h_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, healer_name_otx, knot) SELECT spark_num, face_name, person_name, plan_rope, healer_name, knot FROM person_plan_healerunit_put_s_vld "
 INSERT_PRNHEAL_HEARD_RAW_DEL_SQLSTR = "INSERT INTO person_plan_healerunit_del_h_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, healer_name_ERASE_otx) SELECT spark_num, face_name, person_name, plan_rope, healer_name_ERASE FROM person_plan_healerunit_del_s_vld "
-INSERT_PRNLABO_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_plan_partyunit_put_h_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, party_title_otx, solo, knot) SELECT spark_num, face_name, person_name, plan_rope, party_title, solo, knot FROM person_plan_partyunit_put_s_vld "
-INSERT_PRNLABO_HEARD_RAW_DEL_SQLSTR = "INSERT INTO person_plan_partyunit_del_h_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, party_title_ERASE_otx) SELECT spark_num, face_name, person_name, plan_rope, party_title_ERASE FROM person_plan_partyunit_del_s_vld "
+INSERT_PRNLABO_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_plan_laborunit_put_h_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, labor_title_otx, solo, knot) SELECT spark_num, face_name, person_name, plan_rope, labor_title, solo, knot FROM person_plan_laborunit_put_s_vld "
+INSERT_PRNLABO_HEARD_RAW_DEL_SQLSTR = "INSERT INTO person_plan_laborunit_del_h_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, labor_title_ERASE_otx) SELECT spark_num, face_name, person_name, plan_rope, labor_title_ERASE FROM person_plan_laborunit_del_s_vld "
 INSERT_PRNCASE_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_plan_reason_caseunit_put_h_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, reason_context_otx, reason_state_otx, reason_lower, reason_upper, reason_divisor, knot) SELECT spark_num, face_name, person_name, plan_rope, reason_context, reason_state, reason_lower, reason_upper, reason_divisor, knot FROM person_plan_reason_caseunit_put_s_vld "
 INSERT_PRNCASE_HEARD_RAW_DEL_SQLSTR = "INSERT INTO person_plan_reason_caseunit_del_h_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, reason_context_otx, reason_state_ERASE_otx) SELECT spark_num, face_name, person_name, plan_rope, reason_context, reason_state_ERASE FROM person_plan_reason_caseunit_del_s_vld "
 INSERT_PRNREAS_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_plan_reasonunit_put_h_raw (spark_num, face_name_otx, person_name_otx, plan_rope_otx, reason_context_otx, active_requisite, knot) SELECT spark_num, face_name, person_name, plan_rope, reason_context, active_requisite, knot FROM person_plan_reasonunit_put_s_vld "
@@ -819,8 +819,8 @@ def get_insert_into_heard_raw_sqlstrs() -> dict[str, str]:
         "person_plan_reason_caseunit_del_h_raw": INSERT_PRNCASE_HEARD_RAW_DEL_SQLSTR,
         "person_plan_reasonunit_put_h_raw": INSERT_PRNREAS_HEARD_RAW_PUT_SQLSTR,
         "person_plan_reasonunit_del_h_raw": INSERT_PRNREAS_HEARD_RAW_DEL_SQLSTR,
-        "person_plan_partyunit_put_h_raw": INSERT_PRNLABO_HEARD_RAW_PUT_SQLSTR,
-        "person_plan_partyunit_del_h_raw": INSERT_PRNLABO_HEARD_RAW_DEL_SQLSTR,
+        "person_plan_laborunit_put_h_raw": INSERT_PRNLABO_HEARD_RAW_PUT_SQLSTR,
+        "person_plan_laborunit_del_h_raw": INSERT_PRNLABO_HEARD_RAW_DEL_SQLSTR,
         "person_planunit_put_h_raw": INSERT_PRNPLAN_HEARD_RAW_PUT_SQLSTR,
         "person_planunit_del_h_raw": INSERT_PRNPLAN_HEARD_RAW_DEL_SQLSTR,
         "personunit_put_h_raw": INSERT_PRNUNIT_HEARD_RAW_PUT_SQLSTR,
@@ -908,10 +908,10 @@ FROM person_plan_healerunit_del_h_raw
 GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, healer_name_ERASE_inx
 """
 PRNLABO_HEARD_AGG_DEL_INSERT_SQLSTR = """
-INSERT INTO person_plan_partyunit_del_h_agg (spark_num, face_name, person_name, plan_rope, party_title_ERASE)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_ERASE_inx
-FROM person_plan_partyunit_del_h_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_ERASE_inx
+INSERT INTO person_plan_laborunit_del_h_agg (spark_num, face_name, person_name, plan_rope, labor_title_ERASE)
+SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, labor_title_ERASE_inx
+FROM person_plan_laborunit_del_h_raw
+GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, labor_title_ERASE_inx
 """
 PRNCASE_HEARD_AGG_DEL_INSERT_SQLSTR = """
 INSERT INTO person_plan_reason_caseunit_del_h_agg (spark_num, face_name, person_name, plan_rope, reason_context, reason_state_ERASE)
@@ -968,10 +968,10 @@ FROM person_plan_healerunit_put_h_raw
 GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, healer_name_inx, knot
 """
 PRNLABO_HEARD_AGG_PUT_INSERT_SQLSTR = """
-INSERT INTO person_plan_partyunit_put_h_agg (spark_num, face_name, person_name, plan_rope, party_title, solo, knot)
-SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_inx, solo, knot
-FROM person_plan_partyunit_put_h_raw
-GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, party_title_inx, solo, knot
+INSERT INTO person_plan_laborunit_put_h_agg (spark_num, face_name, person_name, plan_rope, labor_title, solo, knot)
+SELECT spark_num, face_name_inx, person_name_inx, plan_rope_inx, labor_title_inx, solo, knot
+FROM person_plan_laborunit_put_h_raw
+GROUP BY spark_num, face_name_inx, person_name_inx, plan_rope_inx, labor_title_inx, solo, knot
 """
 PRNCASE_HEARD_AGG_PUT_INSERT_SQLSTR = """
 INSERT INTO person_plan_reason_caseunit_put_h_agg (spark_num, face_name, person_name, plan_rope, reason_context, reason_state, reason_lower_otx, reason_upper_otx, reason_divisor, knot)
@@ -1052,7 +1052,7 @@ def get_insert_heard_agg_sqlstrs() -> dict[str, str]:
         "person_plan_awardunit_del_h_agg": PRNAWAR_HEARD_AGG_DEL_INSERT_SQLSTR,
         "person_plan_factunit_del_h_agg": PRNFACT_HEARD_AGG_DEL_INSERT_SQLSTR,
         "person_plan_healerunit_del_h_agg": PRNHEAL_HEARD_AGG_DEL_INSERT_SQLSTR,
-        "person_plan_partyunit_del_h_agg": PRNLABO_HEARD_AGG_DEL_INSERT_SQLSTR,
+        "person_plan_laborunit_del_h_agg": PRNLABO_HEARD_AGG_DEL_INSERT_SQLSTR,
         "person_plan_reason_caseunit_del_h_agg": PRNCASE_HEARD_AGG_DEL_INSERT_SQLSTR,
         "person_plan_reasonunit_del_h_agg": PRNREAS_HEARD_AGG_DEL_INSERT_SQLSTR,
         "person_planunit_del_h_agg": PRNPLAN_HEARD_AGG_DEL_INSERT_SQLSTR,
@@ -1062,7 +1062,7 @@ def get_insert_heard_agg_sqlstrs() -> dict[str, str]:
         "person_plan_awardunit_put_h_agg": PRNAWAR_HEARD_AGG_PUT_INSERT_SQLSTR,
         "person_plan_factunit_put_h_agg": PRNFACT_HEARD_AGG_PUT_INSERT_SQLSTR,
         "person_plan_healerunit_put_h_agg": PRNHEAL_HEARD_AGG_PUT_INSERT_SQLSTR,
-        "person_plan_partyunit_put_h_agg": PRNLABO_HEARD_AGG_PUT_INSERT_SQLSTR,
+        "person_plan_laborunit_put_h_agg": PRNLABO_HEARD_AGG_PUT_INSERT_SQLSTR,
         "person_plan_reason_caseunit_put_h_agg": PRNCASE_HEARD_AGG_PUT_INSERT_SQLSTR,
         "person_plan_reasonunit_put_h_agg": PRNREAS_HEARD_AGG_PUT_INSERT_SQLSTR,
         "person_planunit_put_h_agg": PRNPLAN_HEARD_AGG_PUT_INSERT_SQLSTR,
@@ -1426,16 +1426,16 @@ FROM person_plan_healerunit_del_h_agg
 GROUP BY spark_num, face_name, person_name, plan_rope, healer_name_ERASE
 """
 INSERT_PRNLABO_HEARD_VLD_PUT_SQLSTR = """
-INSERT INTO person_plan_partyunit_put_h_vld (spark_num, face_name, person_name, plan_rope, party_title, solo, knot)
-SELECT spark_num, face_name, person_name, plan_rope, party_title, solo, knot
-FROM person_plan_partyunit_put_h_agg
-GROUP BY spark_num, face_name, person_name, plan_rope, party_title, solo, knot
+INSERT INTO person_plan_laborunit_put_h_vld (spark_num, face_name, person_name, plan_rope, labor_title, solo, knot)
+SELECT spark_num, face_name, person_name, plan_rope, labor_title, solo, knot
+FROM person_plan_laborunit_put_h_agg
+GROUP BY spark_num, face_name, person_name, plan_rope, labor_title, solo, knot
 """
 INSERT_PRNLABO_HEARD_VLD_DEL_SQLSTR = """
-INSERT INTO person_plan_partyunit_del_h_vld (spark_num, face_name, person_name, plan_rope, party_title_ERASE)
-SELECT spark_num, face_name, person_name, plan_rope, party_title_ERASE
-FROM person_plan_partyunit_del_h_agg
-GROUP BY spark_num, face_name, person_name, plan_rope, party_title_ERASE
+INSERT INTO person_plan_laborunit_del_h_vld (spark_num, face_name, person_name, plan_rope, labor_title_ERASE)
+SELECT spark_num, face_name, person_name, plan_rope, labor_title_ERASE
+FROM person_plan_laborunit_del_h_agg
+GROUP BY spark_num, face_name, person_name, plan_rope, labor_title_ERASE
 """
 INSERT_PRNCASE_HEARD_VLD_PUT_SQLSTR = """
 INSERT INTO person_plan_reason_caseunit_put_h_vld (spark_num, face_name, person_name, plan_rope, reason_context, reason_state, reason_lower, reason_upper, reason_divisor, knot)
@@ -1510,8 +1510,8 @@ def get_insert_heard_vld_sqlstrs() -> dict[str, str]:
         "person_plan_reason_caseunit_del_h_vld": INSERT_PRNCASE_HEARD_VLD_DEL_SQLSTR,
         "person_plan_reasonunit_put_h_vld": INSERT_PRNREAS_HEARD_VLD_PUT_SQLSTR,
         "person_plan_reasonunit_del_h_vld": INSERT_PRNREAS_HEARD_VLD_DEL_SQLSTR,
-        "person_plan_partyunit_put_h_vld": INSERT_PRNLABO_HEARD_VLD_PUT_SQLSTR,
-        "person_plan_partyunit_del_h_vld": INSERT_PRNLABO_HEARD_VLD_DEL_SQLSTR,
+        "person_plan_laborunit_put_h_vld": INSERT_PRNLABO_HEARD_VLD_PUT_SQLSTR,
+        "person_plan_laborunit_del_h_vld": INSERT_PRNLABO_HEARD_VLD_DEL_SQLSTR,
         "person_planunit_put_h_vld": INSERT_PRNPLAN_HEARD_VLD_PUT_SQLSTR,
         "person_planunit_del_h_vld": INSERT_PRNPLAN_HEARD_VLD_DEL_SQLSTR,
         "personunit_put_h_vld": INSERT_PRNUNIT_HEARD_VLD_PUT_SQLSTR,
@@ -1578,7 +1578,7 @@ def get_idea_stageble_put_dimens() -> dict[str, list[str]]:
             "momentunit",
         ],
         "br00024": [
-            "person_plan_partyunit",
+            "person_plan_laborunit",
             "person_planunit",
             "personunit",
             "momentunit",
@@ -1642,7 +1642,7 @@ IDEA_STAGEBLE_DEL_DIMENS = {
     "br00051": ["person_partnerunit"],
     "br00052": ["person_plan_awardunit"],
     "br00053": ["person_plan_factunit"],
-    "br00054": ["person_plan_partyunit"],
+    "br00054": ["person_plan_laborunit"],
     "br00055": ["person_plan_healerunit"],
     "br00056": ["person_plan_reason_caseunit"],
     "br00057": ["person_plan_reasonunit"],
@@ -1686,7 +1686,7 @@ CREATE_JOB_PRNPTNR_SQLSTR = """CREATE TABLE IF NOT EXISTS person_partnerunit_job
 CREATE_JOB_PRNAWAR_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, awardee_title TEXT, give_force REAL, take_force REAL, knot TEXT, fund_give REAL, fund_take REAL)"""
 CREATE_JOB_PRNFACT_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower REAL, fact_upper REAL, knot TEXT)"""
 CREATE_JOB_PRNHEAL_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT, knot TEXT)"""
-CREATE_JOB_PRNLABO_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_partyunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, party_title TEXT, solo INTEGER, knot TEXT, person_name_is_labor INTEGER)"""
+CREATE_JOB_PRNLABO_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, labor_title TEXT, solo INTEGER, knot TEXT, person_name_is_workforce INTEGER)"""
 CREATE_JOB_PRNCASE_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, knot TEXT, case_task INTEGER, case_active INTEGER)"""
 CREATE_JOB_PRNREAS_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, active_requisite INTEGER, knot TEXT, reason_active INTEGER, reason_task INTEGER, parent_heir_active INTEGER)"""
 CREATE_JOB_PRNPLAN_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_job (moment_rope TEXT, person_name TEXT, plan_rope TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, star INTEGER, pledge INTEGER, problem_bool INTEGER, fund_grain REAL, knot TEXT, plan_active INTEGER, plan_task INTEGER, fund_onset REAL, fund_cease REAL, fund_ratio REAL, gogo_calc REAL, stop_calc REAL, tree_level INTEGER, range_evaluated INTEGER, descendant_pledge_count INTEGER, healerunit_ratio REAL, all_partner_cred INTEGER, all_partner_debt INTEGER)"""
@@ -1703,7 +1703,7 @@ def get_job_create_table_sqlstrs() -> dict[str, str]:
         "person_plan_healerunit_job": CREATE_JOB_PRNHEAL_SQLSTR,
         "person_plan_reason_caseunit_job": CREATE_JOB_PRNCASE_SQLSTR,
         "person_plan_reasonunit_job": CREATE_JOB_PRNREAS_SQLSTR,
-        "person_plan_partyunit_job": CREATE_JOB_PRNLABO_SQLSTR,
+        "person_plan_laborunit_job": CREATE_JOB_PRNLABO_SQLSTR,
         "person_planunit_job": CREATE_JOB_PRNPLAN_SQLSTR,
         "personunit_job": CREATE_JOB_PRNUNIT_SQLSTR,
     }

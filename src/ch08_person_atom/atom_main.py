@@ -379,14 +379,14 @@ def _modify_person_plan_reason_caseunit_insert(
     )
 
 
-def _modify_person_plan_partyunit_delete(x_person: PersonUnit, x_atom: PersonAtom):
+def _modify_person_plan_laborunit_delete(x_person: PersonUnit, x_atom: PersonAtom):
     x_planunit = x_person.get_plan_obj(x_atom.get_value("plan_rope"))
-    x_planunit.laborunit.del_partyunit(party_title=x_atom.get_value("party_title"))
+    x_planunit.workforceunit.del_laborunit(labor_title=x_atom.get_value("labor_title"))
 
 
-def _modify_person_plan_partyunit_insert(x_person: PersonUnit, x_atom: PersonAtom):
+def _modify_person_plan_laborunit_insert(x_person: PersonUnit, x_atom: PersonAtom):
     x_planunit = x_person.get_plan_obj(x_atom.get_value("plan_rope"))
-    x_planunit.laborunit.add_party(party_title=x_atom.get_value("party_title"))
+    x_planunit.workforceunit.add_labor(labor_title=x_atom.get_value("labor_title"))
 
 
 def _modify_person_plan_healerunit_delete(x_person: PersonUnit, x_atom: PersonAtom):
@@ -480,11 +480,11 @@ def _modify_person_plan_reason_caseunit(x_person: PersonUnit, x_atom: PersonAtom
         _modify_person_plan_reason_caseunit_insert(x_person, x_atom)
 
 
-def _modify_person_plan_partyunit(x_person: PersonUnit, x_atom: PersonAtom):
+def _modify_person_plan_laborunit(x_person: PersonUnit, x_atom: PersonAtom):
     if x_atom.crud_str == "DELETE":
-        _modify_person_plan_partyunit_delete(x_person, x_atom)
+        _modify_person_plan_laborunit_delete(x_person, x_atom)
     elif x_atom.crud_str == "INSERT":
-        _modify_person_plan_partyunit_insert(x_person, x_atom)
+        _modify_person_plan_laborunit_insert(x_person, x_atom)
 
 
 def _modify_person_plan_healerunit(x_person: PersonUnit, x_atom: PersonAtom):
@@ -520,8 +520,8 @@ def modify_person_with_personatom(x_person: PersonUnit, x_atom: PersonAtom):
         _modify_person_plan_reason_caseunit(x_person, x_atom)
     elif x_atom.dimen == "person_plan_healerunit":
         _modify_person_plan_healerunit(x_person, x_atom)
-    elif x_atom.dimen == "person_plan_partyunit":
-        _modify_person_plan_partyunit(x_person, x_atom)
+    elif x_atom.dimen == "person_plan_laborunit":
+        _modify_person_plan_laborunit(x_person, x_atom)
     elif x_atom.dimen == "person_partnerunit":
         _modify_person_partnerunit(x_person, x_atom)
 
@@ -629,7 +629,7 @@ class AtomRow:
     solo: int = None
     stop_want: float = None
     take_force: float = None
-    party_title: int = None
+    labor_title: int = None
 
     def set_atom_dimen(self, atom_dimen: str):
         self._atom_dimens.add(atom_dimen)

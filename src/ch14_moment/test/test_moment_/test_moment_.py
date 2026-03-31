@@ -395,7 +395,7 @@ def test_MomentUnit_create_init_job_from_guts_Scenario3_gut_FilesAreListenedTo(
     casa_rope = bob_gut.make_l1_rope("casa")
     clean_rope = bob_gut.make_rope(casa_rope, "clean")
     bob_gut.add_plan(clean_rope, pledge=True)
-    bob_gut.get_plan_obj(clean_rope).laborunit.add_party(exx.sue)
+    bob_gut.get_plan_obj(clean_rope).workforceunit.add_labor(exx.sue)
     save_gut_file(moment_mstr_dir, bob_gut)
     a23_lasso = lassounit_shop(exx.a23_slash, exx.slash)
     assert not open_job_file(moment_mstr_dir, a23_lasso, exx.sue).get_agenda_dict()

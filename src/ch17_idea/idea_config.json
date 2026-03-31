@@ -144,13 +144,13 @@
     }, 
     "jvalues": {"knot": {}}
   }, 
-  "person_plan_partyunit": {
+  "person_plan_laborunit": {
     "allowed_crud": "delete_insert", 
     "build_order": 14, 
     "idea_category": "person", 
     "jkeys": {
       "face_name": {}, 
-      "party_title": {}, 
+      "labor_title": {}, 
       "person_name": {}, 
       "plan_rope": {}, 
       "spark_num": {}

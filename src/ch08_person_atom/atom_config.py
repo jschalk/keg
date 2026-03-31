@@ -102,7 +102,7 @@ def get_atom_args_class_types() -> dict[str, str]:
         "stop_want": "float",
         "solo": "int",
         "take_force": "float",
-        "party_title": "TitleTerm",
+        "labor_title": "TitleTerm",
     }
 
 
@@ -234,7 +234,7 @@ def get_person_dimens() -> set:
         "person_plan_awardunit",
         "person_plan_reasonunit",
         "person_plan_reason_caseunit",
-        "person_plan_partyunit",
+        "person_plan_laborunit",
         "person_plan_healerunit",
         "person_plan_factunit",
     }
@@ -251,7 +251,7 @@ def get_all_person_dimen_keys() -> set:
         "reason_state",
         "person_name",
         "plan_rope",
-        "party_title",
+        "labor_title",
     }
 
 
@@ -270,7 +270,7 @@ def get_all_person_dimen_delete_keys() -> set:
         "reason_state_ERASE",
         "person_name_ERASE",
         "plan_rope_ERASE",
-        "party_title_ERASE",
+        "labor_title_ERASE",
     }
 
 

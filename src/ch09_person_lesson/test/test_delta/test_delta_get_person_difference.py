@@ -1048,7 +1048,7 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_reaso
     assert get_personatom_total_count(sue_persondelta) == 1
 
 
-def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_partyunit_insert():
+def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_laborunit_insert():
     # ESTABLISH
     before_sue_person = personunit_shop(exx.sue)
     before_sue_person.add_partnerunit(exx.xio)
@@ -1060,7 +1060,7 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_party
 
     after_sue_person = copy_deepcopy(before_sue_person)
     after_ball_planunit = after_sue_person.get_plan_obj(ball_rope)
-    after_ball_planunit.laborunit.add_party(exx.xio)
+    after_ball_planunit.workforceunit.add_labor(exx.xio)
 
     # WHEN
     sue_persondelta = persondelta_shop()
@@ -1070,17 +1070,17 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_party
     print(f"{print_personatom_keys(sue_persondelta)=}")
     x_keylist = [
         kw.INSERT,
-        kw.person_plan_partyunit,
+        kw.person_plan_laborunit,
         ball_rope,
         exx.xio,
     ]
     ball_personatom = get_from_nested_dict(sue_persondelta.personatoms, x_keylist)
     assert ball_personatom.get_value(kw.plan_rope) == ball_rope
-    assert ball_personatom.get_value(kw.party_title) == exx.xio
+    assert ball_personatom.get_value(kw.labor_title) == exx.xio
     assert get_personatom_total_count(sue_persondelta) == 1
 
 
-def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_partyunit_delete():
+def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_laborunit_delete():
     # ESTABLISH
     before_sue_person = personunit_shop(exx.sue)
     before_sue_person.add_partnerunit(exx.xio)
@@ -1090,11 +1090,11 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_party
     ball_rope = before_sue_person.make_rope(sports_rope, ball_str)
     before_sue_person.set_plan_obj(planunit_shop(ball_str), sports_rope)
     before_ball_planunit = before_sue_person.get_plan_obj(ball_rope)
-    before_ball_planunit.laborunit.add_party(exx.xio)
+    before_ball_planunit.workforceunit.add_labor(exx.xio)
 
     after_sue_person = copy_deepcopy(before_sue_person)
     after_ball_planunit = after_sue_person.get_plan_obj(ball_rope)
-    after_ball_planunit.laborunit.del_partyunit(exx.xio)
+    after_ball_planunit.workforceunit.del_laborunit(exx.xio)
 
     # WHEN
     sue_persondelta = persondelta_shop()
@@ -1104,13 +1104,13 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_party
     print(f"{print_personatom_keys(sue_persondelta)=}")
     x_keylist = [
         kw.DELETE,
-        kw.person_plan_partyunit,
+        kw.person_plan_laborunit,
         ball_rope,
         exx.xio,
     ]
     ball_personatom = get_from_nested_dict(sue_persondelta.personatoms, x_keylist)
     assert ball_personatom.get_value(kw.plan_rope) == ball_rope
-    assert ball_personatom.get_value(kw.party_title) == exx.xio
+    assert ball_personatom.get_value(kw.labor_title) == exx.xio
     assert get_personatom_total_count(sue_persondelta) == 1
 
 
@@ -1264,7 +1264,7 @@ def test_PersonDelta_add_all_personatoms_Creates_PersonAtoms():
     ball_rope = after_sue_person.make_rope(sports_rope, ball_str)
     after_sue_person.set_plan_obj(planunit_shop(ball_str), sports_rope)
     after_ball_planunit = after_sue_person.get_plan_obj(ball_rope)
-    after_ball_planunit.laborunit.add_party(exx.xio)
+    after_ball_planunit.workforceunit.add_labor(exx.xio)
 
     before_sue_person = personunit_shop(exx.sue)
     sue1_persondelta = persondelta_shop()

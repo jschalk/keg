@@ -96,7 +96,7 @@ def get_example_yao_vision1_speaker() -> PersonUnit:
     yao_speaker.set_plan_obj(planunit_shop(hungry_str()), eat_rope())
     yao_speaker.set_plan_obj(planunit_shop(full_str()), eat_rope())
     cuisine_planunit = yao_speaker.get_plan_obj(cuisine_rope())
-    cuisine_planunit.laborunit.add_party(exx.yao)
+    cuisine_planunit.workforceunit.add_labor(exx.yao)
     yao_speaker.edit_reason(cuisine_rope(), eat_rope(), hungry_rope())
     yao_speaker.add_fact(eat_rope(), hungry_rope())
     return yao_speaker
@@ -110,7 +110,7 @@ def get_example_yao_vision2_speaker() -> PersonUnit:
     yao_speaker.set_plan_obj(planunit_shop(hungry_str()), eat_rope())
     yao_speaker.set_plan_obj(planunit_shop(full_str()), eat_rope())
     cuisine_planunit = yao_speaker.get_plan_obj(cuisine_rope())
-    cuisine_planunit.laborunit.add_party(exx.yao)
+    cuisine_planunit.workforceunit.add_labor(exx.yao)
     yao_speaker.edit_reason(cuisine_rope(), eat_rope(), hungry_rope())
     yao_speaker.add_fact(eat_rope(), hungry_rope())
 

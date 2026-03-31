@@ -1,6 +1,6 @@
 from enum import Enum
 from src.ch00_py.file_toolbox import open_json
-from src.ch03_labor.labor import laborunit_shop
+from src.ch03_workforce.workforce import workforceunit_shop
 from src.ch04_rope.rope import RopeTerm, create_rope
 from src.ch05_reason.reason_main import factunit_shop, reasonunit_shop
 from src.ch06_plan.plan import planunit_shop
@@ -368,9 +368,9 @@ def get_personunit_laundry_example1() -> PersonUnit:
     yao_person.edit_plan_attr(
         laundry_plan_task_rope, reason_context=basket_rope, reason_case=b_smel_rope
     )
-    cali_laborunit = laborunit_shop()
-    cali_laborunit.add_party(cali_str)
-    yao_person.edit_plan_attr(laundry_plan_task_rope, laborunit=cali_laborunit)
+    cali_workforceunit = workforceunit_shop()
+    cali_workforceunit.add_labor(cali_str)
+    yao_person.edit_plan_attr(laundry_plan_task_rope, workforceunit=cali_workforceunit)
     yao_person.add_fact(fact_context=basket_rope, fact_state=b_full_rope)
 
     return yao_person

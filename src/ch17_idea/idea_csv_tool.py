@@ -337,7 +337,7 @@ def add_person_to_br00024_csv(
 ) -> str:
     x_knot = get_csv_compatible_knot(x_person.knot, csv_delimiter)
     for planunit in x_person._plan_dict.values():
-        for group_title in planunit.laborunit.partys:
+        for group_title in planunit.workforceunit.labors:
             x_row = [
                 if_none_str(face_name),
                 if_none_str(spark_num),

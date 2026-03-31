@@ -122,12 +122,12 @@ def get_idea_elements_sort_order() -> list[str]:
         "fact_state",
         "fact_state_otx",
         "fact_state_inx",
-        "party_title",
-        "party_title_otx",
-        "party_title_inx",
-        "party_title_ERASE",
-        "party_title_ERASE_otx",
-        "party_title_ERASE_inx",
+        "labor_title",
+        "labor_title_otx",
+        "labor_title_inx",
+        "labor_title_ERASE",
+        "labor_title_ERASE_otx",
+        "labor_title_ERASE_inx",
         "solo",
         "awardee_title",
         "awardee_title_otx",
@@ -205,7 +205,7 @@ def get_idea_elements_sort_order() -> list[str]:
         "celldepth",
         "job_listen_rotations",
         "error_message",
-        "person_name_is_labor",
+        "person_name_is_workforce",
         "plan_active",
         "plan_task",
         "case_task",
@@ -318,12 +318,12 @@ def get_idea_sqlite_types() -> dict[str, str]:
         "fact_state": "TEXT",
         "fact_state_otx": "TEXT",
         "fact_state_inx": "TEXT",
-        "party_title": "TEXT",
-        "party_title_otx": "TEXT",
-        "party_title_inx": "TEXT",
-        "party_title_ERASE": "TEXT",
-        "party_title_ERASE_otx": "TEXT",
-        "party_title_ERASE_inx": "TEXT",
+        "labor_title": "TEXT",
+        "labor_title_otx": "TEXT",
+        "labor_title_inx": "TEXT",
+        "labor_title_ERASE": "TEXT",
+        "labor_title_ERASE_otx": "TEXT",
+        "labor_title_ERASE_inx": "TEXT",
         "solo": "INTEGER",
         "awardee_title": "TEXT",
         "awardee_title_otx": "TEXT",
@@ -443,7 +443,7 @@ def get_idea_sqlite_types() -> dict[str, str]:
         "reason_active": "INTEGER",
         "case_task": "INTEGER",
         "case_active": "INTEGER",
-        "person_name_is_labor": "INTEGER",
+        "person_name_is_workforce": "INTEGER",
         "plan_active": "INTEGER",
         "plan_task": "INTEGER",
         "case_task": "INTEGER",
@@ -524,7 +524,7 @@ def idea_format_00019_planunit_v0_0_0() -> str:
 # def idea_format_00021_person_partnerunit_v0_0_0()-> str: return "idea_format_00021_person_partnerunit_v0_0_0"
 # def idea_format_00022_person_plan_awardunit_v0_0_0()-> str: return "idea_format_00022_person_plan_awardunit_v0_0_0"
 # def idea_format_00023_person_plan_factunit_v0_0_0()-> str: return "idea_format_00023_person_plan_factunit_v0_0_0"
-# def idea_format_00024_person_plan_partyunit_v0_0_0()-> str: return "idea_format_00024_person_plan_partyunit_v0_0_0"
+# def idea_format_00024_person_plan_laborunit_v0_0_0()-> str: return "idea_format_00024_person_plan_laborunit_v0_0_0"
 # def idea_format_00025_person_plan_healerunit_v0_0_0()-> str: return "idea_format_00025_person_plan_healerunit_v0_0_0"
 # def idea_format_00026_person_plan_reason_caseunit_v0_0_0()-> str: return "idea_format_00026_person_plan_reason_caseunit_v0_0_0"
 # def idea_format_00027_person_plan_reasonunit_v0_0_0()-> str: return "idea_format_00027_person_plan_reasonunit_v0_0_0"
@@ -548,8 +548,8 @@ def idea_format_00023_person_plan_factunit_v0_0_0() -> str:
     return "idea_format_00023_person_plan_factunit_v0_0_0"
 
 
-def idea_format_00024_person_plan_partyunit_v0_0_0() -> str:
-    return "idea_format_00024_person_plan_partyunit_v0_0_0"
+def idea_format_00024_person_plan_laborunit_v0_0_0() -> str:
+    return "idea_format_00024_person_plan_laborunit_v0_0_0"
 
 
 def idea_format_00025_person_plan_healerunit_v0_0_0() -> str:
@@ -612,8 +612,8 @@ def idea_format_00053_delete_person_plan_factunit_v0_0_0() -> str:
     return "idea_format_00053_delete_person_plan_factunit_v0_0_0"
 
 
-def idea_format_00054_delete_person_plan_partyunit_v0_0_0() -> str:
-    return "idea_format_00054_delete_person_plan_partyunit_v0_0_0"
+def idea_format_00054_delete_person_plan_laborunit_v0_0_0() -> str:
+    return "idea_format_00054_delete_person_plan_laborunit_v0_0_0"
 
 
 def idea_format_00055_delete_person_plan_healerunit_v0_0_0() -> str:
@@ -673,7 +673,7 @@ def get_idea_format_filenames() -> set[str]:
         idea_format_00021_person_partnerunit_v0_0_0(),
         idea_format_00022_person_plan_awardunit_v0_0_0(),
         idea_format_00023_person_plan_factunit_v0_0_0(),
-        idea_format_00024_person_plan_partyunit_v0_0_0(),
+        idea_format_00024_person_plan_laborunit_v0_0_0(),
         idea_format_00025_person_plan_healerunit_v0_0_0(),
         idea_format_00026_person_plan_reason_caseunit_v0_0_0(),
         idea_format_00027_person_plan_reasonunit_v0_0_0(),
@@ -688,7 +688,7 @@ def get_idea_format_filenames() -> set[str]:
         idea_format_00051_delete_person_partnerunit_v0_0_0(),
         idea_format_00052_delete_person_plan_awardunit_v0_0_0(),
         idea_format_00053_delete_person_plan_factunit_v0_0_0(),
-        idea_format_00054_delete_person_plan_partyunit_v0_0_0(),
+        idea_format_00054_delete_person_plan_laborunit_v0_0_0(),
         idea_format_00055_delete_person_plan_healerunit_v0_0_0(),
         idea_format_00056_delete_person_plan_reason_caseunit_v0_0_0(),
         idea_format_00057_delete_person_plan_reasonunit_v0_0_0(),
@@ -772,7 +772,7 @@ def get_idea_format_headers() -> dict[str, list[str]]:
         "moment_rope,person_name,partner_name,partner_cred_lumen,partner_debt_lumen,knot": idea_format_00021_person_partnerunit_v0_0_0(),
         "person_name,plan_rope,awardee_title,give_force,take_force,knot": idea_format_00022_person_plan_awardunit_v0_0_0(),
         "person_name,plan_rope,fact_context,fact_state,fact_lower,fact_upper,knot": idea_format_00023_person_plan_factunit_v0_0_0(),
-        "person_name,plan_rope,party_title,solo,knot": idea_format_00024_person_plan_partyunit_v0_0_0(),
+        "person_name,plan_rope,labor_title,solo,knot": idea_format_00024_person_plan_laborunit_v0_0_0(),
         "person_name,plan_rope,healer_name,knot": idea_format_00025_person_plan_healerunit_v0_0_0(),
         "person_name,plan_rope,reason_context,reason_state,reason_lower,reason_upper,reason_divisor,knot": idea_format_00026_person_plan_reason_caseunit_v0_0_0(),
         "person_name,plan_rope,reason_context,active_requisite,knot": idea_format_00027_person_plan_reasonunit_v0_0_0(),
@@ -787,7 +787,7 @@ def get_idea_format_headers() -> dict[str, list[str]]:
         "moment_rope,person_name,partner_name_ERASE": idea_format_00051_delete_person_partnerunit_v0_0_0(),
         "person_name,plan_rope,awardee_title_ERASE": idea_format_00052_delete_person_plan_awardunit_v0_0_0(),
         "person_name,plan_rope,fact_context_ERASE": idea_format_00053_delete_person_plan_factunit_v0_0_0(),
-        "person_name,plan_rope,party_title_ERASE": idea_format_00054_delete_person_plan_partyunit_v0_0_0(),
+        "person_name,plan_rope,labor_title_ERASE": idea_format_00054_delete_person_plan_laborunit_v0_0_0(),
         "person_name,plan_rope,healer_name_ERASE": idea_format_00055_delete_person_plan_healerunit_v0_0_0(),
         "person_name,plan_rope,reason_context,reason_state_ERASE": idea_format_00056_delete_person_plan_reason_caseunit_v0_0_0(),
         "person_name,plan_rope,reason_context_ERASE": idea_format_00057_delete_person_plan_reasonunit_v0_0_0(),
@@ -867,7 +867,7 @@ def get_idea_dimen_ref() -> dict[str, set[str]]:
         "person_plan_awardunit": {"br00022", "br00052"},
         "person_plan_factunit": {"br00023", "br00053"},
         "person_plan_healerunit": {"br00025", "br00036", "br00055"},
-        "person_plan_partyunit": {"br00024", "br00054"},
+        "person_plan_laborunit": {"br00024", "br00054"},
         "person_plan_reason_caseunit": {"br00026", "br00056"},
         "person_plan_reasonunit": {"br00026", "br00027", "br00056", "br00057"},
         "person_planunit": {
@@ -942,7 +942,7 @@ def get_dimen_minimum_put_idea_names() -> dict[str, str]:
         "person_plan_awardunit": idea_format_00022_person_plan_awardunit_v0_0_0(),
         "person_plan_factunit": idea_format_00023_person_plan_factunit_v0_0_0(),
         "person_plan_healerunit": idea_format_00025_person_plan_healerunit_v0_0_0(),
-        "person_plan_partyunit": idea_format_00024_person_plan_partyunit_v0_0_0(),
+        "person_plan_laborunit": idea_format_00024_person_plan_laborunit_v0_0_0(),
         "person_plan_reason_caseunit": idea_format_00026_person_plan_reason_caseunit_v0_0_0(),
         "person_plan_reasonunit": idea_format_00027_person_plan_reasonunit_v0_0_0(),
         "person_planunit": idea_format_00028_person_planunit_v0_0_0(),
@@ -963,7 +963,7 @@ def get_dimen_minimum_del_idea_names() -> dict[str, str]:
         "person_plan_awardunit": idea_format_00052_delete_person_plan_awardunit_v0_0_0(),
         "person_plan_factunit": idea_format_00053_delete_person_plan_factunit_v0_0_0(),
         "person_plan_healerunit": idea_format_00055_delete_person_plan_healerunit_v0_0_0(),
-        "person_plan_partyunit": idea_format_00054_delete_person_plan_partyunit_v0_0_0(),
+        "person_plan_laborunit": idea_format_00054_delete_person_plan_laborunit_v0_0_0(),
         "person_plan_reason_caseunit": idea_format_00056_delete_person_plan_reason_caseunit_v0_0_0(),
         "person_plan_reasonunit": idea_format_00057_delete_person_plan_reasonunit_v0_0_0(),
         "person_planunit": idea_format_00058_delete_person_planunit_v0_0_0(),

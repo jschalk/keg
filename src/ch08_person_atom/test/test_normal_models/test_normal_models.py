@@ -5,12 +5,12 @@ from src.ch08_person_atom.normal_model import (
     CaseTable,
     FactTable,
     HealerUnitTable,
-    LaborLinkTable,
     MemberShipTable,
     PartnerUnitTable,
     PersonTable,
     PlanTable,
     ReasonTable,
+    WorkforceLinkTable,
 )
 from src.ref.keywords import Ch08Keywords as kw
 
@@ -147,16 +147,16 @@ def test_normalized_table_CaseTable_case_Exists():
     all_columns_are_as_config_requires(mapper, config_dimen)
 
 
-def test_normalized_table_LaborLinkTable_partyunit_Exists():
+def test_normalized_table_WorkforceLinkTable_laborunit_Exists():
     # ESTABLISH
-    config_dimen = get_normalized_person_table_build().get(kw.person_plan_partyunit)
-    mapper = inspect(LaborLinkTable)
+    config_dimen = get_normalized_person_table_build().get(kw.person_plan_laborunit)
+    mapper = inspect(WorkforceLinkTable)
     print_out_expected_class_attribute_declarations(config_dimen)
 
     # WHEN / THEN
     config_table_name = get_config_table_name(config_dimen)
-    assert config_table_name == "partyunit"
-    assert config_table_name == LaborLinkTable.__tablename__
+    assert config_table_name == "laborunit"
+    assert config_table_name == WorkforceLinkTable.__tablename__
     all_columns_are_as_config_requires(mapper, config_dimen)
 
 

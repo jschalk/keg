@@ -47,7 +47,7 @@ def test_get_person_config_dict_ReturnsObj_CheckLevel0Keys():
     assert kw.person_plan_awardunit in person_config_keys
     assert kw.person_plan_reasonunit in person_config_keys
     assert kw.person_plan_reason_caseunit in person_config_keys
-    assert kw.person_plan_partyunit in person_config_keys
+    assert kw.person_plan_laborunit in person_config_keys
     assert kw.person_plan_healerunit in person_config_keys
     assert kw.person_plan_factunit in person_config_keys
     assert kw.person_groupunit in person_config_keys
@@ -109,7 +109,7 @@ def test_get_person_config_dict_ReturnsObj_CheckAbbreviations():
     prnawar_attribute = person_config.get(kw.person_plan_awardunit)
     prnreas_attribute = person_config.get(kw.person_plan_reasonunit)
     prncase_attribute = person_config.get(kw.person_plan_reason_caseunit)
-    prnlabo_attribute = person_config.get(kw.person_plan_partyunit)
+    prnlabo_attribute = person_config.get(kw.person_plan_laborunit)
     prnheal_attribute = person_config.get(kw.person_plan_healerunit)
     prnfact_attribute = person_config.get(kw.person_plan_factunit)
     prngrou_attribute = person_config.get(kw.person_groupunit)
@@ -182,7 +182,7 @@ def test_get_person_calc_dimens_ReturnsObj():
         kw.person_plan_awardunit,
         kw.person_plan_reasonunit,
         kw.person_plan_reason_caseunit,
-        kw.person_plan_partyunit,
+        kw.person_plan_laborunit,
         kw.person_plan_healerunit,
         kw.person_plan_factunit,
         kw.person_groupunit,
@@ -320,7 +320,7 @@ def test_get_person_config_dict_ReturnsObj_CheckArgDataTypesCorrect():
     prnawar = kw.person_plan_awardunit
     prnreas = kw.person_plan_reasonunit
     prncase = kw.person_plan_reason_caseunit
-    prnlabo = kw.person_plan_partyunit
+    prnlabo = kw.person_plan_laborunit
     prnheal = kw.person_plan_healerunit
     prnfact = kw.person_plan_factunit
     prngrou = kw.person_groupunit
@@ -568,13 +568,13 @@ def test_get_person_config_dict_ReturnsObj_CheckArgDataTypesCorrect():
     assert g_sqlitetype(cfig, prnlabo, jk, kw.plan_rope) == "TEXT"
     assert g_popconpute(cfig, prnlabo, jk, kw.plan_rope) == False
 
-    assert g_class_type(cfig, prnlabo, jk, kw.party_title) == kw.TitleTerm
-    assert g_sqlitetype(cfig, prnlabo, jk, kw.party_title) == "TEXT"
-    assert g_popconpute(cfig, prnlabo, jk, kw.party_title) == False
+    assert g_class_type(cfig, prnlabo, jk, kw.labor_title) == kw.TitleTerm
+    assert g_sqlitetype(cfig, prnlabo, jk, kw.labor_title) == "TEXT"
+    assert g_popconpute(cfig, prnlabo, jk, kw.labor_title) == False
 
-    assert g_class_type(cfig, prnlabo, jv, kw.person_name_is_labor) == "int"
-    assert g_sqlitetype(cfig, prnlabo, jv, kw.person_name_is_labor) == "INTEGER"
-    assert g_popconpute(cfig, prnlabo, jv, kw.person_name_is_labor) == True
+    assert g_class_type(cfig, prnlabo, jv, kw.person_name_is_workforce) == "int"
+    assert g_sqlitetype(cfig, prnlabo, jv, kw.person_name_is_workforce) == "INTEGER"
+    assert g_popconpute(cfig, prnlabo, jv, kw.person_name_is_workforce) == True
 
     assert g_class_type(cfig, prnplan, jv, kw.plan_active) == "bool"
     assert g_sqlitetype(cfig, prnplan, jv, kw.plan_active) == "INTEGER"
@@ -854,8 +854,8 @@ def test_get_person_calc_args_type_dict_ReturnsObj():
     assert person_calc_args_type_dict.get(kw.reason_lower) == kw.ReasonNum
     assert person_calc_args_type_dict.get(kw.parent_heir_active) == "int"
     assert person_calc_args_type_dict.get(kw.active_requisite) == "bool"
-    assert person_calc_args_type_dict.get(kw.party_title) == kw.TitleTerm
-    assert person_calc_args_type_dict.get(kw.person_name_is_labor) == "int"
+    assert person_calc_args_type_dict.get(kw.labor_title) == kw.TitleTerm
+    assert person_calc_args_type_dict.get(kw.person_name_is_workforce) == "int"
     assert person_calc_args_type_dict.get(kw.plan_active) == "bool"
     assert person_calc_args_type_dict.get(kw.all_partner_cred) == "int"
     assert person_calc_args_type_dict.get(kw.all_partner_debt) == "int"

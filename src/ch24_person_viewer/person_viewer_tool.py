@@ -1,7 +1,7 @@
 import dataclasses
 from src.ch00_py.dict_toolbox import get_serializable_dict
 from src.ch02_partner.group import AwardHeir, AwardLine, AwardUnit
-from src.ch03_labor.labor import PartyHeir, PartyUnit
+from src.ch03_workforce.workforce import LaborHeir, LaborUnit
 from src.ch05_reason.reason_main import (
     CaseUnit,
     FactHeir,
@@ -69,13 +69,13 @@ def person_objs_asdict(
         elif isinstance(obj, (FactUnit, FactHeir)):
             obj_readable_str = get_fact_state_readable_str(obj, None, current_person)
             result["readable"] = add_small_dot(obj_readable_str)
-        elif isinstance(obj, PartyUnit):
+        elif isinstance(obj, LaborUnit):
             solo_str = " Solo: True" if obj.solo else ""
-            obj_readable_str = f"LaborUnit: {obj.party_title}{solo_str}"
+            obj_readable_str = f"WorkforceUnit: {obj.labor_title}{solo_str}"
             result["readable"] = add_small_dot(obj_readable_str)
-        elif isinstance(obj, PartyHeir):
+        elif isinstance(obj, LaborHeir):
             solo_str = " Solo: True" if obj.solo else ""
-            obj_readable_str = f"LaborHeir: {obj.party_title}{solo_str}"
+            obj_readable_str = f"WorkforceHeir: {obj.labor_title}{solo_str}"
             result["readable"] = add_small_dot(obj_readable_str)
         elif isinstance(obj, ReasonUnit):
             reason_case_readable_str = f"ReasonUnit: context is {obj.reason_context}"

@@ -91,7 +91,7 @@ def test_listen_to_facts_duty_vision_SetsSingleFactUnitWithDifferentcase_task(
     zia_vision = get_example_zia_speaker()
     zia_vision.set_plan_obj(planunit_shop(exx.clean, pledge=True), a23_casa_rope())
     clean_planunit = zia_vision.get_plan_obj(a23_clean_rope())
-    clean_planunit.laborunit.add_party(exx.yao)
+    clean_planunit.workforceunit.add_labor(exx.yao)
     save_vision_person(
         sue_texas_lessonfilehandler.moment_mstr_dir,
         sue_texas_lessonfilehandler.person_name,
@@ -404,7 +404,7 @@ def test_listen_to_facts_duty_vision_ConfirmNoFactfact_stateedFromPersonsSpeaker
 #         sweep_rope, reason_context=situation_rope, reason_case=dirty_rope
 #     )
 #     sweep_plan = sue_speaker.get_plan_obj(sweep_rope)
-#     sweep_plan.laborunit.add_party(exx.yao)
+#     sweep_plan.workforceunit.add_labor(exx.yao)
 
 #     sue_texas_lessonfilehandler = get_texas_lessonfilehandler(str(temp3_fs))
 #     save_vision_person(sue_texas_lessonfilehandler, exx.sue, sue_speaker.get_json(), True)

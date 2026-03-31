@@ -475,7 +475,7 @@ def test_create_prnheal_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 
 def test_create_prnlabo_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     # ESTABLISH
-    x_args = get_person_calc_dimen_args("person_plan_partyunit")
+    x_args = get_person_calc_dimen_args("person_plan_laborunit")
     x_args.add("moment_rope")
     # x_count = 0
     # for x_arg in get_default_sorted_list(x_args):
@@ -503,17 +503,17 @@ def test_create_prnlabo_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     x_knot = exx.slash
     x_person_name = "Sue"
     x_rope = 1
-    x_party_title = 2
+    x_labor_title = 2
     x_solo = 4
-    x_person_name_is_labor = 3
+    x_person_name_is_workforce = 3
     values_dict = {
         kw.moment_rope: x_moment_rope,
         kw.knot: x_knot,
         kw.person_name: x_person_name,
         kw.plan_rope: x_rope,
-        kw.party_title: x_party_title,
+        kw.labor_title: x_labor_title,
         kw.solo: x_solo,
-        kw.person_name_is_labor: x_person_name_is_labor,
+        kw.person_name_is_workforce: x_person_name_is_workforce,
     }
     # all args included in values dict
     assert x_args == set(values_dict.keys())
@@ -524,7 +524,7 @@ def test_create_prnlabo_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     # THEN
     assert insert_sqlstr
     create_job_tables(cursor0)
-    table_name = "person_plan_partyunit_job"
+    table_name = "person_plan_laborunit_job"
     expected_sqlstr = create_insert_query(cursor0, table_name, values_dict)
     print("")
     print(expected_sqlstr)

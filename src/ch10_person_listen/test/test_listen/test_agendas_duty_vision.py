@@ -24,7 +24,7 @@ from src.ch10_person_listen.test._util.ch10_examples import (
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_listen_to_agenda_duty_vision_agenda_Addscase_tasksTovision_PersonWhenNo_partyunitIsSet(
+def test_listen_to_agenda_duty_vision_agenda_Addscase_tasksTovision_PersonWhenNo_laborunitIsSet(
     temp3_fs,
 ):
     # ESTABLISH
@@ -81,8 +81,8 @@ def test_listen_to_agenda_duty_vision_agenda_Addscase_tasksTovision_Person(
     zia_vision.add_partnerunit(exx.yao, partner_debt_lumen=12)
     clean_planunit = zia_vision.get_plan_obj(a23_clean_rope())
     cuisine_planunit = zia_vision.get_plan_obj(a23_cuisine_rope())
-    clean_planunit.laborunit.add_party(exx.yao)
-    cuisine_planunit.laborunit.add_party(exx.yao)
+    clean_planunit.workforceunit.add_labor(exx.yao)
+    cuisine_planunit.workforceunit.add_labor(exx.yao)
     a23_lasso = lassounit_shop(exx.a23)
     yao_dakota_lessonfilehandler = lessonfilehandler_shop(
         str(temp3_fs), a23_lasso, exx.yao
@@ -225,8 +225,8 @@ def test_listen_to_agenda_duty_vision_agenda_ProcessesIrrationalPerson(
     zia_vision.add_partnerunit(exx.yao, partner_debt_lumen=12)
     clean_planunit = zia_vision.get_plan_obj(a23_clean_rope())
     cuisine_planunit = zia_vision.get_plan_obj(a23_cuisine_rope())
-    clean_planunit.laborunit.add_party(exx.yao)
-    cuisine_planunit.laborunit.add_party(exx.yao)
+    clean_planunit.workforceunit.add_labor(exx.yao)
+    cuisine_planunit.workforceunit.add_labor(exx.yao)
     save_vision_person(
         yao_dakota_lessonfilehandler.moment_mstr_dir,
         yao_dakota_lessonfilehandler.person_name,
@@ -243,7 +243,7 @@ def test_listen_to_agenda_duty_vision_agenda_ProcessesIrrationalPerson(
     vacuum_rope = sue_vision.make_l1_rope(vacuum_str)
     sue_vision.set_l1_plan(planunit_shop(vacuum_str, pledge=True))
     vacuum_planunit = sue_vision.get_plan_obj(vacuum_rope)
-    vacuum_planunit.laborunit.add_party(exx.yao)
+    vacuum_planunit.workforceunit.add_labor(exx.yao)
 
     egg_str = "egg first"
     egg_rope = sue_vision.make_l1_rope(egg_str)
@@ -323,8 +323,8 @@ def test_listen_to_agenda_duty_vision_agenda_ProcessesMissingDebtorvisionPerson(
     zia_vision.add_partnerunit(exx.yao, partner_debt_lumen=12)
     clean_planunit = zia_vision.get_plan_obj(a23_clean_rope())
     cuisine_planunit = zia_vision.get_plan_obj(a23_cuisine_rope())
-    clean_planunit.laborunit.add_party(exx.yao)
-    cuisine_planunit.laborunit.add_party(exx.yao)
+    clean_planunit.workforceunit.add_labor(exx.yao)
+    cuisine_planunit.workforceunit.add_labor(exx.yao)
     yao_dakota_lessonfilehandler = lessonfilehandler_shop(
         str(temp3_fs), a23_lasso, exx.yao
     )
@@ -388,8 +388,8 @@ def test_listen_to_agenda_duty_vision_agenda_ListensToPerson_duty_AndNotPerson_v
     zia_vision.add_partnerunit(exx.yao, partner_debt_lumen=12)
     clean_planunit = zia_vision.get_plan_obj(a23_clean_rope())
     cuisine_planunit = zia_vision.get_plan_obj(a23_cuisine_rope())
-    clean_planunit.laborunit.add_party(exx.yao)
-    cuisine_planunit.laborunit.add_party(exx.yao)
+    clean_planunit.workforceunit.add_labor(exx.yao)
+    cuisine_planunit.workforceunit.add_labor(exx.yao)
     save_vision_person(
         yao_dakota_lessonfilehandler.moment_mstr_dir,
         yao_dakota_lessonfilehandler.person_name,
@@ -405,7 +405,7 @@ def test_listen_to_agenda_duty_vision_agenda_ListensToPerson_duty_AndNotPerson_v
     vacuum_rope = yao_old_vision.make_l1_rope(vacuum_str)
     yao_old_vision.set_l1_plan(planunit_shop(vacuum_str, pledge=True))
     vacuum_planunit = yao_old_vision.get_plan_obj(vacuum_rope)
-    vacuum_planunit.laborunit.add_party(exx.yao)
+    vacuum_planunit.workforceunit.add_labor(exx.yao)
     save_vision_person(
         yao_dakota_lessonfilehandler.moment_mstr_dir,
         yao_dakota_lessonfilehandler.person_name,

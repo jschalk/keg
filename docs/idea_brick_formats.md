@@ -15,7 +15,7 @@
 - [`br00021`](ideas\br00021.md): spark_num, face_name, moment_rope, person_name, partner_name, partner_cred_lumen, partner_debt_lumen, knot
 - [`br00022`](ideas\br00022.md): spark_num, face_name, person_name, plan_rope, awardee_title, give_force, take_force, knot
 - [`br00023`](ideas\br00023.md): spark_num, face_name, person_name, plan_rope, fact_context, fact_state, fact_lower, fact_upper, knot
-- [`br00024`](ideas\br00024.md): spark_num, face_name, person_name, plan_rope, party_title, solo, knot
+- [`br00024`](ideas\br00024.md): spark_num, face_name, person_name, plan_rope, labor_title, solo, knot
 - [`br00025`](ideas\br00025.md): spark_num, face_name, person_name, plan_rope, healer_name, knot
 - [`br00026`](ideas\br00026.md): spark_num, face_name, person_name, plan_rope, reason_context, reason_state, reason_lower, reason_upper, reason_divisor, knot
 - [`br00027`](ideas\br00027.md): spark_num, face_name, person_name, plan_rope, reason_context, active_requisite, knot
@@ -30,7 +30,7 @@
 - [`br00051`](ideas\br00051.md): spark_num, face_name, moment_rope, person_name, partner_name_ERASE
 - [`br00052`](ideas\br00052.md): spark_num, face_name, person_name, plan_rope, awardee_title_ERASE
 - [`br00053`](ideas\br00053.md): spark_num, face_name, person_name, plan_rope, fact_context_ERASE
-- [`br00054`](ideas\br00054.md): spark_num, face_name, person_name, plan_rope, party_title_ERASE
+- [`br00054`](ideas\br00054.md): spark_num, face_name, person_name, plan_rope, labor_title_ERASE
 - [`br00055`](ideas\br00055.md): spark_num, face_name, person_name, plan_rope, healer_name_ERASE
 - [`br00056`](ideas\br00056.md): spark_num, face_name, person_name, plan_rope, reason_context, reason_state_ERASE
 - [`br00057`](ideas\br00057.md): spark_num, face_name, person_name, plan_rope, reason_context_ERASE

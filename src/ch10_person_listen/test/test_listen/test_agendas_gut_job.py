@@ -26,7 +26,7 @@ from src.ch10_person_listen.test._util.ch10_examples import (
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_listen_to_agendas_jobs_into_job_Addscase_tasksToPersonWhenNo_partyunitIsSet(
+def test_listen_to_agendas_jobs_into_job_Addscase_tasksToPersonWhenNo_laborunitIsSet(
     temp3_fs,
 ):
     # ESTABLISH
@@ -73,8 +73,8 @@ def test_listen_to_agendas_jobs_into_job_Addscase_tasksToPerson(temp3_fs):
     zia_job.add_partnerunit(exx.yao, partner_debt_lumen=12)
     clean_planunit = zia_job.get_plan_obj(a23_clean_rope())
     cuisine_planunit = zia_job.get_plan_obj(a23_cuisine_rope())
-    clean_planunit.laborunit.add_party(exx.yao)
-    cuisine_planunit.laborunit.add_party(exx.yao)
+    clean_planunit.workforceunit.add_labor(exx.yao)
+    cuisine_planunit.workforceunit.add_labor(exx.yao)
     save_job_file(moment_mstr_dir, zia_job)
     new_yao_job = create_listen_basis(yao_gut)
     assert len(new_yao_job.get_agenda_dict()) == 0
@@ -169,8 +169,8 @@ def test_listen_to_agendas_jobs_into_job_ProcessesIrrationalPerson(
     zia_job.add_partnerunit(exx.yao, partner_debt_lumen=12)
     clean_planunit = zia_job.get_plan_obj(a23_clean_rope())
     cuisine_planunit = zia_job.get_plan_obj(a23_cuisine_rope())
-    clean_planunit.laborunit.add_party(exx.yao)
-    cuisine_planunit.laborunit.add_party(exx.yao)
+    clean_planunit.workforceunit.add_labor(exx.yao)
+    cuisine_planunit.workforceunit.add_labor(exx.yao)
     save_job_file(moment_mstr_dir, zia_job)
 
     sue_job = personunit_shop(exx.sue, exx.a23)
@@ -180,7 +180,7 @@ def test_listen_to_agendas_jobs_into_job_ProcessesIrrationalPerson(
     vacuum_rope = sue_job.make_l1_rope(vacuum_str)
     sue_job.set_l1_plan(planunit_shop(vacuum_str, pledge=True))
     vacuum_planunit = sue_job.get_plan_obj(vacuum_rope)
-    vacuum_planunit.laborunit.add_party(exx.yao)
+    vacuum_planunit.workforceunit.add_labor(exx.yao)
 
     egg_str = "egg first"
     egg_rope = sue_job.make_l1_rope(egg_str)
@@ -245,8 +245,8 @@ def test_listen_to_agendas_jobs_into_job_ProcessesMissingDebtorPerson(
     zia_job.add_partnerunit(exx.yao, partner_debt_lumen=12)
     clean_planunit = zia_job.get_plan_obj(a23_clean_rope())
     cuisine_planunit = zia_job.get_plan_obj(a23_cuisine_rope())
-    clean_planunit.laborunit.add_party(exx.yao)
-    cuisine_planunit.laborunit.add_party(exx.yao)
+    clean_planunit.workforceunit.add_labor(exx.yao)
+    cuisine_planunit.workforceunit.add_labor(exx.yao)
     save_job_file(moment_mstr_dir, zia_job)
 
     # WHEN
@@ -288,8 +288,8 @@ def test_listen_to_agendas_jobs_into_job_ListensToPerson_gut_AndNotPerson_job(
     zia_job.add_partnerunit(exx.yao, partner_debt_lumen=12)
     clean_planunit = zia_job.get_plan_obj(a23_clean_rope())
     cuisine_planunit = zia_job.get_plan_obj(a23_cuisine_rope())
-    clean_planunit.laborunit.add_party(exx.yao)
-    cuisine_planunit.laborunit.add_party(exx.yao)
+    clean_planunit.workforceunit.add_labor(exx.yao)
+    cuisine_planunit.workforceunit.add_labor(exx.yao)
     save_job_file(moment_mstr_dir, zia_job)
 
     # save yao with case_task to dutys
@@ -298,7 +298,7 @@ def test_listen_to_agendas_jobs_into_job_ListensToPerson_gut_AndNotPerson_job(
     vacuum_rope = yao_old_job.make_l1_rope(vacuum_str)
     yao_old_job.set_l1_plan(planunit_shop(vacuum_str, pledge=True))
     vacuum_planunit = yao_old_job.get_plan_obj(vacuum_rope)
-    vacuum_planunit.laborunit.add_party(exx.yao)
+    vacuum_planunit.workforceunit.add_labor(exx.yao)
     save_job_file(moment_mstr_dir, yao_old_job)
 
     # WHEN

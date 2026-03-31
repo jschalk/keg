@@ -53,7 +53,7 @@ def test_create_job_tables_CreatesTables(cursor0: Cursor):
     prnheal_job_table = prime_table(kw.person_plan_healerunit, kw.job, None)
     prncase_job_table = prime_table(kw.person_plan_reason_caseunit, kw.job, None)
     personares_job_table = prime_table(kw.person_plan_reasonunit, kw.job, None)
-    prnlabo_job_table = prime_table(kw.person_plan_partyunit, kw.job, None)
+    prnlabo_job_table = prime_table(kw.person_plan_laborunit, kw.job, None)
     prnplan_job_table = prime_table(kw.person_planunit, kw.job, None)
     prnunit_job_table = prime_table(kw.personunit, kw.job, None)
     # prnmemb_job_table = f"{kw.person_partner_membership}_job"
@@ -64,7 +64,7 @@ def test_create_job_tables_CreatesTables(cursor0: Cursor):
     # prnheal_job_table = f"{kw.person_plan_healerunit}_job"
     # prncase_job_table = f"{kw.person_plan_reason_caseunit}_job"
     # personares_job_table = f"{kw.person_plan_reasonunit}_job"
-    # prnlabo_job_table = f"{kw.person_plan_partyunit}_job"
+    # prnlabo_job_table = f"{kw.person_plan_laborunit}_job"
     # prnplan_job_table = f"{kw.person_planunit}_job"
     # prnunit_job_table = f"{kw.personunit}_job"
 

@@ -143,7 +143,7 @@ def test_get_atom_config_dict_EveryCrudOperationHasPersonDeltaOrderGroup():
     # set_mog(kw.INSERT, kw.person_partner_membership, 1)
     # set_mog(kw.INSERT, kw.person_planunit, 2)
     # set_mog(kw.INSERT, kw.person_plan_awardunit, 3)
-    # set_mog(kw.INSERT, kw.person_plan_partyunit, 4)
+    # set_mog(kw.INSERT, kw.person_plan_laborunit, 4)
     # set_mog(kw.INSERT, kw.person_plan_healerunit, 5)
     # set_mog(kw.INSERT, kw.person_plan_factunit, 6)
     # set_mog(kw.INSERT, kw.person_plan_reasonunit, 7)
@@ -158,7 +158,7 @@ def test_get_atom_config_dict_EveryCrudOperationHasPersonDeltaOrderGroup():
     # set_mog(kw.DELETE, kw.person_plan_reason_caseunit, 16)
     # set_mog(kw.DELETE, kw.person_plan_reasonunit, 17)
     # set_mog(kw.DELETE, kw.person_plan_factunit, 18)
-    # set_mog(kw.DELETE, kw.person_plan_partyunit, 19)
+    # set_mog(kw.DELETE, kw.person_plan_laborunit, 19)
     # set_mog(kw.DELETE, kw.person_plan_healerunit, 20)
     # set_mog(kw.DELETE, kw.person_plan_awardunit, 21)
     # set_mog(kw.DELETE, kw.person_planunit, 22)
@@ -170,7 +170,7 @@ def test_get_atom_config_dict_EveryCrudOperationHasPersonDeltaOrderGroup():
     assert 1 == q_order(kw.INSERT, kw.person_partner_membership)
     assert 2 == q_order(kw.INSERT, kw.person_planunit)
     assert 3 == q_order(kw.INSERT, kw.person_plan_awardunit)
-    assert 4 == q_order(kw.INSERT, kw.person_plan_partyunit)
+    assert 4 == q_order(kw.INSERT, kw.person_plan_laborunit)
     assert 5 == q_order(kw.INSERT, kw.person_plan_healerunit)
     assert 6 == q_order(kw.INSERT, kw.person_plan_factunit)
     assert 7 == q_order(kw.INSERT, kw.person_plan_reasonunit)
@@ -185,7 +185,7 @@ def test_get_atom_config_dict_EveryCrudOperationHasPersonDeltaOrderGroup():
     assert 16 == q_order(kw.DELETE, kw.person_plan_reason_caseunit)
     assert 17 == q_order(kw.DELETE, kw.person_plan_reasonunit)
     assert 18 == q_order(kw.DELETE, kw.person_plan_factunit)
-    assert 19 == q_order(kw.DELETE, kw.person_plan_partyunit)
+    assert 19 == q_order(kw.DELETE, kw.person_plan_laborunit)
     assert 20 == q_order(kw.DELETE, kw.person_plan_healerunit)
     assert 21 == q_order(kw.DELETE, kw.person_plan_awardunit)
     assert 22 == q_order(kw.DELETE, kw.person_planunit)
@@ -287,7 +287,7 @@ def test_get_atom_config_dict_CheckEachDimenArgCount():
     assert _get_atom_config_jkeys_len(kw.person_plan_awardunit) == 2
     assert _get_atom_config_jkeys_len(kw.person_plan_reasonunit) == 2
     assert _get_atom_config_jkeys_len(kw.person_plan_reason_caseunit) == 3
-    assert _get_atom_config_jkeys_len(kw.person_plan_partyunit) == 2
+    assert _get_atom_config_jkeys_len(kw.person_plan_laborunit) == 2
     assert _get_atom_config_jkeys_len(kw.person_plan_healerunit) == 2
     assert _get_atom_config_jkeys_len(kw.person_plan_factunit) == 2
 
@@ -298,7 +298,7 @@ def test_get_atom_config_dict_CheckEachDimenArgCount():
     assert _get_atom_config_jvalues_len(kw.person_plan_awardunit) == 2
     assert _get_atom_config_jvalues_len(kw.person_plan_reasonunit) == 1
     assert _get_atom_config_jvalues_len(kw.person_plan_reason_caseunit) == 3
-    assert _get_atom_config_jvalues_len(kw.person_plan_partyunit) == 1
+    assert _get_atom_config_jvalues_len(kw.person_plan_laborunit) == 1
     assert _get_atom_config_jvalues_len(kw.person_plan_healerunit) == 0
     assert _get_atom_config_jvalues_len(kw.person_plan_factunit) == 3
 
@@ -471,7 +471,7 @@ def test_get_normalized_person_table_build_ReturnsObj():
     cat_awardunit = nx.get(kw.person_plan_awardunit)
     cat_reason = nx.get(kw.person_plan_reasonunit)
     cat_case = nx.get(kw.person_plan_reason_caseunit)
-    cat_partyunit = nx.get(kw.person_plan_partyunit)
+    cat_laborunit = nx.get(kw.person_plan_laborunit)
     cat_healerunit = nx.get(kw.person_plan_healerunit)
     cat_fact = nx.get(kw.person_plan_factunit)
 
@@ -482,7 +482,7 @@ def test_get_normalized_person_table_build_ReturnsObj():
     assert cat_awardunit is not None
     assert cat_reason is not None
     assert cat_case is not None
-    assert cat_partyunit is not None
+    assert cat_laborunit is not None
     assert cat_healerunit is not None
     assert cat_fact is not None
 
@@ -493,7 +493,7 @@ def test_get_normalized_person_table_build_ReturnsObj():
     normal_specs_awardunit = cat_awardunit.get(kw.normal_specs)
     normal_specs_reason = cat_reason.get(kw.normal_specs)
     normal_specs_case = cat_case.get(kw.normal_specs)
-    normal_specs_partyunit = cat_partyunit.get(kw.normal_specs)
+    normal_specs_laborunit = cat_laborunit.get(kw.normal_specs)
     normal_specs_healerunit = cat_healerunit.get(kw.normal_specs)
     normal_specs_fact = cat_fact.get(kw.normal_specs)
 
@@ -507,7 +507,7 @@ def test_get_normalized_person_table_build_ReturnsObj():
     assert normal_specs_awardunit is not None
     assert normal_specs_reason is not None
     assert normal_specs_case is not None
-    assert normal_specs_partyunit is not None
+    assert normal_specs_laborunit is not None
     assert normal_specs_healerunit is not None
     assert normal_specs_fact is not None
 
@@ -518,7 +518,7 @@ def test_get_normalized_person_table_build_ReturnsObj():
     table_name_awardunit = normal_specs_awardunit.get(kw.normal_table_name)
     table_name_reason = normal_specs_reason.get(kw.normal_table_name)
     table_name_case = normal_specs_case.get(kw.normal_table_name)
-    table_name_partyunit = normal_specs_partyunit.get(kw.normal_table_name)
+    table_name_laborunit = normal_specs_laborunit.get(kw.normal_table_name)
     table_name_healerunit = normal_specs_healerunit.get(kw.normal_table_name)
     table_name_fact = normal_specs_fact.get(kw.normal_table_name)
 
@@ -529,7 +529,7 @@ def test_get_normalized_person_table_build_ReturnsObj():
     assert table_name_awardunit == "awardunit"
     assert table_name_reason == "reason"
     assert table_name_case == "case"
-    assert table_name_partyunit == "partyunit"
+    assert table_name_laborunit == "laborunit"
     assert table_name_healerunit == kw.healerunit
     assert table_name_fact == "fact"
 
@@ -593,7 +593,7 @@ def test_get_atom_args_dimen_mapping_ReturnsObj():
     assert x_atom_args_dimen_mapping.get(kw.plan_rope)
     rope_dimens = x_atom_args_dimen_mapping.get(kw.plan_rope)
     assert kw.person_plan_factunit in rope_dimens
-    assert kw.person_plan_partyunit in rope_dimens
+    assert kw.person_plan_laborunit in rope_dimens
     assert len(rope_dimens) == 7
     assert len(x_atom_args_dimen_mapping) == 41
 
@@ -723,6 +723,6 @@ def test_get_atom_args_class_types_ReturnsObj():
     assert x_class_types.get(kw.solo) == "int"
     assert x_class_types.get(kw.stop_want) == "float"
     assert x_class_types.get(kw.take_force) == "float"
-    assert x_class_types.get(kw.party_title) == kw.TitleTerm
+    assert x_class_types.get(kw.labor_title) == kw.TitleTerm
     assert x_class_types.keys() == get_atom_args_dimen_mapping().keys()
     assert all_atom_args_class_types_are_correct(x_class_types)

@@ -267,14 +267,14 @@ def fund_graph13(
     d_sue1_p2 = "Regular Fund: Green arrows, all fund_grains end up at PartnerUnits"
     d_sue1_p3 = "Agenda Fund: Blue arrows, fund_grains from active case_tasks"
     d_sue1_p4 = f"Mana = {default_pool_num()} "
-    laborunit_str = "      AwardUnits"
-    add_simp_rect(fig, 2, -0.3, 3, 0.3, laborunit_str)
+    workforceunit_str = "      AwardUnits"
+    add_simp_rect(fig, 2, -0.3, 3, 0.3, workforceunit_str)
     add_rect_arrow(fig, 2, 0.1, 1.2, 0.1, green_str)
     add_rect_arrow(fig, 2, -0.1, 1.2, -0.1, exx.blue)
-    add_simp_rect(fig, 4, -1.2, 5, -0.8, laborunit_str)
+    add_simp_rect(fig, 4, -1.2, 5, -0.8, workforceunit_str)
     add_rect_arrow(fig, 4, -0.9, 3.1, -0.9, green_str)
     add_rect_arrow(fig, 4, -1.1, 3.1, -1.1, exx.blue)
-    add_simp_rect(fig, 4, -3.2, 5, -2.8, laborunit_str)
+    add_simp_rect(fig, 4, -3.2, 5, -2.8, workforceunit_str)
     add_rect_arrow(fig, 4, -2.9, 3.1, -2.9, green_str)
     add_keep__rect(fig, -0.5, -4.5, 10, 2.3, d_sue1_p1, d_sue1_p2, d_sue1_p3, d_sue1_p4)
     groupunit_str = "GroupUnit"

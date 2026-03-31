@@ -105,11 +105,11 @@
     "jvalues": {}, 
     "normal_specs": {"normal_table_name": "healerunit"}
   }, 
-  "person_plan_partyunit": {
+  "person_plan_laborunit": {
     "DELETE": {"atom_order": 19}, 
     "INSERT": {"atom_order": 4}, 
     "jkeys": {
-      "party_title": {
+      "labor_title": {
         "class_type": "TitleTerm", 
         "column_ordinal": 1, 
         "nesting_order": 1, 
@@ -130,7 +130,7 @@
         "sqlite_datatype": "INTEGER"
       }
     }, 
-    "normal_specs": {"normal_table_name": "partyunit"}
+    "normal_specs": {"normal_table_name": "laborunit"}
   }, 
   "person_plan_reason_caseunit": {
     "DELETE": {"atom_order": 16}, 

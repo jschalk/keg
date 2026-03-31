@@ -1,6 +1,6 @@
 {
-  "chapter_blurb": "Defines PlanUnits with sub-plans, Awardees, Labor, Reasons, Facts, etc.", 
-  "chapter_content": "Defines PlanUnits. Plans are complicated. A plan can have sub plans, define itself as a pledge, define Awardees, assigned Labor, required Reasons, etc.", 
+  "chapter_blurb": "Defines PlanUnits with sub-plans, Awardees, Workforce, Reasons, Facts, etc.", 
+  "chapter_content": "Defines PlanUnits. Plans are complicated. A plan can have sub plans, define itself as a pledge, define Awardees, assigned Workforce, required Reasons, etc.", 
   "chapter_description": "ch06_plan", 
   "chapter_number": 6
 }

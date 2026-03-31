@@ -17,12 +17,12 @@ from src.ch02_partner.group import (
     awardline_shop,
     get_awardunits_from_dict,
 )
-from src.ch03_labor.labor import (
-    LaborHeir,
-    LaborUnit,
-    get_laborunit_from_dict,
-    laborheir_shop,
-    laborunit_shop,
+from src.ch03_workforce.workforce import (
+    WorkforceHeir,
+    WorkforceUnit,
+    get_workforceunit_from_dict,
+    workforceheir_shop,
+    workforceunit_shop,
 )
 from src.ch04_rope.rope import (
     all_ropes_between,
@@ -92,7 +92,7 @@ class PlanAttrHolder:
     reason_del_case_reason_context: RopeTerm = None
     reason_del_case_reason_state: RopeTerm = None
     reason_requisite_active: str = None
-    laborunit: LaborUnit = None
+    workforceunit: WorkforceUnit = None
     healerunit: HealerUnit = None
     begin: float = None
     close: float = None
@@ -136,7 +136,7 @@ def planattrholder_shop(
     reason_del_case_reason_context: RopeTerm = None,
     reason_del_case_reason_state: RopeTerm = None,
     reason_requisite_active: str = None,
-    laborunit: LaborUnit = None,
+    workforceunit: WorkforceUnit = None,
     healerunit: HealerUnit = None,
     begin: float = None,
     close: float = None,
@@ -165,7 +165,7 @@ def planattrholder_shop(
         reason_del_case_reason_context=reason_del_case_reason_context,
         reason_del_case_reason_state=reason_del_case_reason_state,
         reason_requisite_active=reason_requisite_active,
-        laborunit=laborunit,
+        workforceunit=workforceunit,
         healerunit=healerunit,
         begin=begin,
         close=close,
@@ -209,7 +209,7 @@ class PlanUnit:
     plan_uid : int Unique identifier, forgot how I use this.
     awardunits : dict[GroupTitle, AwardUnit] that describe who funds and who is funded
     reasonunits : dict[RopeTerm, ReasonUnit] that stores all reasons
-    laborunit : LaborUnit that describes whom this pledge is for. LaborUnit.partys: dict[GroupTitle, PartyUnit]
+    workforceunit : WorkforceUnit that describes whom this pledge is for. WorkforceUnit.labors: dict[GroupTitle, LaborUnit]
     factunits : dict[RopeTerm, FactUnit] that stores all facts
     healerunit : HealerUnit, if a ancestor plan is a problem, this can donote a healing plan.
     begin : float that describes the begin of a numerical range if it exists
@@ -241,7 +241,7 @@ class PlanUnit:
     range_evaluated : bool Flag indicating whether range has been evaluated.
     reasonheirs : dict[RopeTerm, ReasonHeir] parent plan provided reasoning branches.
     plan_task : bool describes if a unit can be changed to inactive with fact range change.
-    laborheir : LaborHeir parent plan provided labor relationships
+    workforceheir : WorkforceHeir parent plan provided workforce relationships
     gogo_calc : float
     stop_calc : float
     """
@@ -254,7 +254,7 @@ class PlanUnit:
     plan_uid: int = None  # Calculated field?
     awardunits: dict[GroupTitle, AwardUnit] = None
     reasonunits: dict[RopeTerm, ReasonUnit] = None
-    laborunit: LaborUnit = None
+    workforceunit: WorkforceUnit = None
     factunits: dict[RopeTerm, FactUnit] = None
     healerunit: HealerUnit = None
     begin: float = None
@@ -286,7 +286,7 @@ class PlanUnit:
     range_evaluated: bool = None
     reasonheirs: dict[RopeTerm, ReasonHeir] = None
     plan_task: bool = None
-    laborheir: LaborHeir = None
+    workforceheir: WorkforceHeir = None
     gogo_calc: float = None
     stop_calc: float = None
 
@@ -600,8 +600,8 @@ class PlanUnit:
                 reason_context=plan_attr.reason_context,
                 active_requisite=plan_attr.reason_requisite_active,
             )
-        if plan_attr.laborunit is not None:
-            self.laborunit = plan_attr.laborunit
+        if plan_attr.workforceunit is not None:
+            self.workforceunit = plan_attr.workforceunit
         if plan_attr.healerunit is not None:
             self.healerunit = plan_attr.healerunit
         if plan_attr.begin is not None:
@@ -822,8 +822,8 @@ class PlanUnit:
         self.set_reasonheirs_reason_active()
         active_bool = self.all_reasonheirs_are_active()
         if active_bool and groupunits != {} and person_name is not None:
-            self.laborheir.set_person_name_is_labor(groupunits, person_name)
-            if self.laborheir.person_name_is_labor is False:
+            self.workforceheir.set_person_name_is_workforce(groupunits, person_name)
+            if self.workforceheir.person_name_is_workforce is False:
                 active_bool = False
         return active_bool
 
@@ -943,8 +943,8 @@ class PlanUnit:
             x_dict["kids"] = self.get_kids_dict()
         if self.reasonunits not in [{}, None]:
             x_dict["reasonunits"] = self.get_reasonunits_dict()
-        if self.laborunit not in [None, laborunit_shop()]:
-            x_dict["laborunit"] = self.get_laborunit_dict()
+        if self.workforceunit not in [None, workforceunit_shop()]:
+            x_dict["workforceunit"] = self.get_workforceunit_dict()
         if self.healerunit not in [None, healerunit_shop()]:
             x_dict["healerunit"] = self.healerunit.to_dict()
         if self.awardunits not in [{}, None]:
@@ -988,24 +988,24 @@ class PlanUnit:
             dict_x=self.factunits, old_rope=old_rope, new_rope=new_rope
         )
 
-    def set_laborunit_empty_if_None(self):
-        if self.laborunit is None:
-            self.laborunit = laborunit_shop()
+    def set_workforceunit_empty_if_None(self):
+        if self.workforceunit is None:
+            self.workforceunit = workforceunit_shop()
 
-    def set_laborheir(
+    def set_workforceheir(
         self,
-        parent_laborheir: LaborHeir,
+        parent_workforceheir: WorkforceHeir,
         groupunits: dict[GroupTitle, GroupUnit],
     ):
-        self.laborheir = laborheir_shop()
-        self.laborheir.set_partys(
-            parent_laborheir=parent_laborheir,
-            laborunit=self.laborunit,
+        self.workforceheir = workforceheir_shop()
+        self.workforceheir.set_labors(
+            parent_workforceheir=parent_workforceheir,
+            workforceunit=self.workforceunit,
             groupunits=groupunits,
         )
 
-    def get_laborunit_dict(self) -> dict:
-        return self.laborunit.to_dict()
+    def get_workforceunit_dict(self) -> dict:
+        return self.workforceunit.to_dict()
 
 
 def planunit_shop(
@@ -1019,8 +1019,8 @@ def planunit_shop(
     awardlines: dict[GroupTitle, AwardUnit] = None,  # Calculated field
     reasonunits: dict[RopeTerm, ReasonUnit] = None,
     reasonheirs: dict[RopeTerm, ReasonHeir] = None,  # Calculated field
-    laborunit: LaborUnit = None,
-    laborheir: LaborHeir = None,  # Calculated field
+    workforceunit: WorkforceUnit = None,
+    workforceheir: WorkforceHeir = None,  # Calculated field
     factunits: dict[FactUnit] = None,
     factheirs: dict[FactHeir] = None,  # Calculated field
     healerunit: HealerUnit = None,
@@ -1063,8 +1063,8 @@ def planunit_shop(
         awardlines=get_empty_dict_if_None(awardlines),
         reasonunits=get_empty_dict_if_None(reasonunits),
         reasonheirs=get_empty_dict_if_None(reasonheirs),
-        laborunit=laborunit,
-        laborheir=laborheir,
+        workforceunit=workforceunit,
+        workforceheir=workforceheir,
         factunits=get_empty_dict_if_None(factunits),
         factheirs=get_empty_dict_if_None(factheirs),
         healerunit=x_healerunit,
@@ -1095,7 +1095,7 @@ def planunit_shop(
         healerunit_ratio=get_0_if_None(healerunit_ratio),
     )
     x_plankid.set_plan_label(plan_label=plan_label)
-    x_plankid.set_laborunit_empty_if_None()
+    x_plankid.set_workforceunit_empty_if_None()
     return x_plankid
 
 
@@ -1106,11 +1106,11 @@ def get_obj_from_plan_dict(x_dict: dict[str, dict], dict_key: str) -> any:
             if x_dict.get(dict_key) is not None
             else None
         )
-    elif dict_key == "laborunit":
+    elif dict_key == "workforceunit":
         return (
-            get_laborunit_from_dict(x_dict[dict_key])
+            get_workforceunit_from_dict(x_dict[dict_key])
             if x_dict.get(dict_key) is not None
-            else laborunit_shop()
+            else workforceunit_shop()
         )
     elif dict_key == "healerunit":
         return (

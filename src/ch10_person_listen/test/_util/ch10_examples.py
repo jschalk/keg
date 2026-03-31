@@ -64,7 +64,7 @@ def get_example_zia_speaker() -> PersonUnit:
     zia_speaker.set_plan_obj(planunit_shop(full_str()), a23_eat_rope())
     zia_speaker.add_partnerunit(exx.yao, partner_debt_lumen=12)
     cuisine_planunit = zia_speaker.get_plan_obj(a23_cuisine_rope())
-    cuisine_planunit.laborunit.add_party(exx.yao)
+    cuisine_planunit.workforceunit.add_labor(exx.yao)
     zia_speaker.edit_plan_attr(
         a23_cuisine_rope(), reason_context=a23_eat_rope(), reason_case=a23_hungry_rope()
     )
@@ -80,7 +80,7 @@ def get_example_bob_speaker() -> PersonUnit:
     bob_speaker.set_plan_obj(planunit_shop(full_str()), a23_eat_rope())
     bob_speaker.add_partnerunit(exx.yao, partner_debt_lumen=12)
     cuisine_planunit = bob_speaker.get_plan_obj(a23_cuisine_rope())
-    cuisine_planunit.laborunit.add_party(exx.yao)
+    cuisine_planunit.workforceunit.add_labor(exx.yao)
     bob_speaker.edit_plan_attr(
         a23_cuisine_rope(), reason_context=a23_eat_rope(), reason_case=a23_hungry_rope()
     )
@@ -99,7 +99,7 @@ def get_example_yao_speaker() -> PersonUnit:
     yao_speaker.set_plan_obj(planunit_shop(hungry_str()), a23_eat_rope())
     yao_speaker.set_plan_obj(planunit_shop(full_str()), a23_eat_rope())
     cuisine_planunit = yao_speaker.get_plan_obj(a23_cuisine_rope())
-    cuisine_planunit.laborunit.add_party(exx.yao)
+    cuisine_planunit.workforceunit.add_labor(exx.yao)
     yao_speaker.edit_plan_attr(
         a23_cuisine_rope(), reason_context=a23_eat_rope(), reason_case=a23_hungry_rope()
     )

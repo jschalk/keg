@@ -7,7 +7,11 @@ from src.ch02_partner.group import (
     membership_shop,
 )
 from src.ch02_partner.partner import partnerunit_shop
-from src.ch03_labor.labor import laborheir_shop, laborunit_shop, partyheir_shop
+from src.ch03_workforce.workforce import (
+    laborheir_shop,
+    workforceheir_shop,
+    workforceunit_shop,
+)
 from src.ch04_rope.rope import create_rope
 from src.ch05_reason.reason_main import caseunit_shop, factheir_shop, reasonheir_shop
 from src.ch06_plan.healer import healerunit_shop
@@ -793,14 +797,14 @@ def test_insert_job_prnheal_CreatesTableRowsFor_prnheal_job(cursor0: Cursor):
 
 def test_insert_job_prnlabo_CreatesTableRowsFor_prnlabo_job(cursor0: Cursor):
     # ESTABLISH
-    # x_args = get_person_calc_dimen_args("person_plan_partyunit")
+    # x_args = get_person_calc_dimen_args("person_plan_laborunit")
     # x_count = 0
     # for x_arg in get_default_sorted_list(x_args):
     #     x_count += 1
     #     print(f"    x_{x_arg} = {x_count}")
     # print("")
     # for x_arg in get_default_sorted_list(x_args):
-    #     print(f"""    x_laborheir.{x_arg} = x_{x_arg}""")
+    #     print(f"""    x_workforceheir.{x_arg} = x_{x_arg}""")
     # print("")
     # for x_arg in get_default_sorted_list(x_args):
     #     print(f"""        x_{x_arg},""")
@@ -809,24 +813,24 @@ def test_insert_job_prnlabo_CreatesTableRowsFor_prnlabo_job(cursor0: Cursor):
     x_knot = exx.slash
     x_person_name = 2
     x_rope = 3
-    x_person_name_is_labor = 5
-    x_laborheir = laborheir_shop()
-    x_laborheir.person_name_is_labor = x_person_name_is_labor
+    x_person_name_is_workforce = 5
+    x_workforceheir = workforceheir_shop()
+    x_workforceheir.person_name_is_workforce = x_person_name_is_workforce
     bob_solo_bool = 6
     sue_solo_bool = 7
-    bob_partyheir = partyheir_shop(exx.bob, bob_solo_bool)
-    sue_partyheir = partyheir_shop(exx.sue, sue_solo_bool)
-    x_laborheir.partys = {exx.bob: bob_partyheir, exx.sue: sue_partyheir}
+    bob_laborheir = laborheir_shop(exx.bob, bob_solo_bool)
+    sue_laborheir = laborheir_shop(exx.sue, sue_solo_bool)
+    x_workforceheir.labors = {exx.bob: bob_laborheir, exx.sue: sue_laborheir}
 
     create_job_tables(cursor0)
-    x_table_name = "person_plan_partyunit_job"
+    x_table_name = "person_plan_laborunit_job"
     assert get_row_count(cursor0, x_table_name) == 0
     x_objkeysholder = ObjKeysHolder(
         moment_rope=x_moment_rope, person_name=x_person_name, rope=x_rope, knot=x_knot
     )
 
     # WHEN
-    insert_job_prnlabo(cursor0, x_objkeysholder, x_laborheir)
+    insert_job_prnlabo(cursor0, x_objkeysholder, x_workforceheir)
 
     # THEN
     assert get_row_count(cursor0, x_table_name) == 2
@@ -840,7 +844,7 @@ def test_insert_job_prnlabo_CreatesTableRowsFor_prnlabo_job(cursor0: Cursor):
         exx.bob,
         bob_solo_bool,
         x_knot,
-        x_person_name_is_labor,
+        x_person_name_is_workforce,
     )
     expected_row1 = (
         str(x_moment_rope),
@@ -849,7 +853,7 @@ def test_insert_job_prnlabo_CreatesTableRowsFor_prnlabo_job(cursor0: Cursor):
         exx.sue,
         sue_solo_bool,
         x_knot,
-        x_person_name_is_labor,
+        x_person_name_is_workforce,
     )
     expected_data = [expected_row0, expected_row1]
     assert rows == expected_data
@@ -873,9 +877,9 @@ def test_insert_job_obj_CreatesTableRows_Scenario0(cursor0: Cursor):
     )
     sue_person.edit_plan_attr(casa_rope, awardunit=awardunit_shop(exx.run))
     sue_person.edit_plan_attr(casa_rope, healerunit=healerunit_shop({exx.bob}))
-    casa_laborunit = laborunit_shop()
-    casa_laborunit.add_party(exx.sue, True)
-    sue_person.edit_plan_attr(casa_rope, laborunit=casa_laborunit)
+    casa_workforceunit = workforceunit_shop()
+    casa_workforceunit.add_labor(exx.sue, True)
+    sue_person.edit_plan_attr(casa_rope, workforceunit=casa_workforceunit)
     sue_person.add_fact(situation_rope, clean_rope)
 
     create_job_tables(cursor0)
@@ -887,7 +891,7 @@ def test_insert_job_obj_CreatesTableRows_Scenario0(cursor0: Cursor):
     prnheal_job_table = f"{kw.person_plan_healerunit}_job"
     prncase_job_table = f"{kw.person_plan_reason_caseunit}_job"
     prnreas_job_table = f"{kw.person_plan_reasonunit}_job"
-    prnlabo_job_table = f"{kw.person_plan_partyunit}_job"
+    prnlabo_job_table = f"{kw.person_plan_laborunit}_job"
     prnplan_job_table = f"{kw.person_planunit}_job"
     prnunit_job_table = f"{kw.personunit}_job"
     assert get_row_count(cursor0, prnunit_job_table) == 0
