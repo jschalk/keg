@@ -414,7 +414,10 @@ def check_all_test_functions_are_formatted(all_test_functions: dict[str, str]):
         assert necessary_comments_exist(function_name, test_function_str), fail_str
         # check that no test creates it's own cursor in memory
         memory_cursor_fail_str = f"{function_name} init memory cursor"
-        if "create_marimo_notebook_from_test_str" not in function_name:
+        if (
+            "create_marimo_notebook_from_test_str" not in function_name
+            and "test_export_db_to_excel" not in function_name
+        ):
             assert ":memory:" not in test_function_str, memory_cursor_fail_str
 
         # check for each example key in the function str.

@@ -13,7 +13,6 @@ from src.ch16_translate.test._util.ch16_examples import (
 from src.ch16_translate.translate_config import get_translate_filename
 from src.ch16_translate.translate_main import translateunit_shop
 from src.ch17_idea.idea_db_tool import (
-    _get_translate_idea_format_filenames,
     move_otx_csvs_to_translate_inx,
     open_csv,
     save_dataframe_to_csv,
@@ -192,22 +191,3 @@ def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario2_TwoFil
     gen_rope1_inx_dt = open_csv(inx_dir, rope1_filename)
     rope1_inx_dt = get_casa_maison_rope_inx_dt()
     assert gen_rope1_inx_dt.to_csv() == rope1_inx_dt.to_csv()
-
-
-def test_get_translate_idea_format_filenames_ReturnsObj():
-    # ESTABLISH
-    br00003_filename = "br00003.xlsx"
-    br00042_filename = "br00042.xlsx"
-    br00043_filename = "br00043.xlsx"
-    br00044_filename = "br00044.xlsx"
-
-    # WHEN
-    x_translate_idea_filenames = _get_translate_idea_format_filenames()
-
-    # THEN
-    print(f"{x_translate_idea_filenames=}")
-    assert br00003_filename not in x_translate_idea_filenames
-    assert br00042_filename in x_translate_idea_filenames
-    assert br00043_filename in x_translate_idea_filenames
-    assert br00044_filename in x_translate_idea_filenames
-    assert len(x_translate_idea_filenames) == 8

@@ -1,6 +1,8 @@
 from io import StringIO as io_StringIO
 from numpy import float64
-from openpyxl import load_workbook as openpyxl_load_workbook
+from openpyxl import Workbook, load_workbook as openpyxl_load_workbook
+from openpyxl.styles import Alignment, Font, PatternFill
+from openpyxl.utils import get_column_letter
 from os import listdir as os_listdir
 from os.path import (
     dirname as os_path_dirname,
@@ -14,7 +16,7 @@ from pandas import (
     read_excel as pandas_read_excel,
 )
 from pandas.api.types import is_numeric_dtype as pandas_api_types_is_numeric_dtype
-from sqlite3 import Connection as sqlite3_Connection
+from sqlite3 import Connection as sqlite3_Connection, Cursor as sqlite3_Cursor
 from src.ch00_py.db_toolbox import (
     create_table_from_columns,
     create_table_from_csv,
@@ -145,15 +147,6 @@ def move_otx_csvs_to_translate_inx(face_dir: str):
         x_df = open_csv(otx_dir, x_filename)
         translate_all_columns_dataframe(x_df, face_translateunit)
         save_dataframe_to_csv(x_df, inx_dir, x_filename)
-
-
-# TODO consider getting rid of this
-def _get_translate_idea_format_filenames() -> set[str]:
-    idea_numbers = set(get_idea_dimen_ref().get("translate_name"))
-    idea_numbers.update(set(get_idea_dimen_ref().get("translate_title")))
-    idea_numbers.update(set(get_idea_dimen_ref().get("translate_label")))
-    idea_numbers.update(set(get_idea_dimen_ref().get("translate_rope")))
-    return {f"{idea_number}.xlsx" for idea_number in idea_numbers}
 
 
 def append_df_to_excel(file_path: str, sheet_name: str, dataframe: DataFrame):
@@ -577,3 +570,59 @@ def update_spark_num_in_excel_files(directory: str, value) -> None:
             with ExcelWriter(filepath, engine="xlsxwriter") as writer:
                 for sheet_name, df in updated_sheets.items():
                     df.to_excel(writer, sheet_name=sheet_name, index=False)
+
+
+def export_db_to_excel(cursor: sqlite3_Cursor, dest_path: str) -> None:
+    """
+    Export every table in a SQLite database to a separate sheet in an Excel file.
+
+    Args:
+        cursor: An active sqlite3_Cursor connected to the database.
+        dest_path: File path for the output .xlsx file (e.g. "output.xlsx").
+    """
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;")
+    tables = [row[0] for row in cursor.fetchall()]
+
+    if not tables:
+        raise ValueError("No tables found in the SQLite database.")
+
+    wb = Workbook()
+    wb.remove(wb.active)  # Remove default empty sheet
+
+    header_font = Font(name="Arial", bold=True, color="FFFFFF")
+    header_fill = PatternFill("solid", start_color="4472C4")
+    header_align = Alignment(horizontal="center", vertical="center")
+
+    for table in tables:
+        cursor.execute(f"SELECT * FROM [{table}]")
+        rows = cursor.fetchall()
+        col_names = [desc[0] for desc in cursor.description]
+
+        ws = wb.create_sheet(title=table[:31])  # Sheet names max 31 chars
+
+        # Write and style header row
+        for col_idx, col_name in enumerate(col_names, start=1):
+            cell = ws.cell(row=1, column=col_idx, value=col_name)
+            cell.font = header_font
+            cell.fill = header_fill
+            cell.alignment = header_align
+
+        # Write data rows
+        for row_idx, row in enumerate(rows, start=2):
+            for col_idx, value in enumerate(row, start=1):
+                ws.cell(row=row_idx, column=col_idx, value=value)
+
+        # Auto-fit column widths
+        for col_idx, col_name in enumerate(col_names, start=1):
+            col_values = [str(col_name)] + [
+                str(r[col_idx - 1]) for r in rows if r[col_idx - 1] is not None
+            ]
+            max_width = max((len(v) for v in col_values), default=10)
+            ws.column_dimensions[get_column_letter(col_idx)].width = min(
+                max_width + 2, 50
+            )
+
+        # Freeze the header row
+        ws.freeze_panes = "A2"
+
+    wb.save(dest_path)
