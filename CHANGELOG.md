@@ -1,3 +1,10 @@
+## [0.81.108](https://github.com/jschalk/keg/compare/v0.81.107...v0.81.108) (2026-03-31)
+
+
+### Bug Fixes
+
+* change keywords_description.json to keg_terminology.json ([d206d59](https://github.com/jschalk/keg/commit/d206d59b5f1cee86e5ac0d9172fa1144018befa1))
+
 ## [0.81.107](https://github.com/jschalk/keg/compare/v0.81.106...v0.81.107) (2026-03-25)
 
 
