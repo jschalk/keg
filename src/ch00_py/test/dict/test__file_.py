@@ -40,6 +40,7 @@ def test_create_path_ReturnsObj(temp3_dir):
     assert create_path(x_dir, None) == x_dir
     assert create_path(x_dir, x_filename) == os_path_join(x_dir, x_filename)
     assert create_path(x_dir, 1) == os_path_join(x_dir, str(1))
+    assert create_path(x_dir, 0) == os_path_join(x_dir, str(0))
 
 
 def test_is_subdirectory_ReturnsObj(temp3_dir):

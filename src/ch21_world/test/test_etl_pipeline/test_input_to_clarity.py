@@ -1,5 +1,5 @@
 from os.path import exists as os_path_exists
-from pandas import DataFrame
+from pandas import DataFrame, DataFrame as pandas_DataFrame
 from sqlite3 import Cursor, connect as sqlite3_connect
 from src.ch00_py.db_toolbox import db_table_exists, get_row_count
 from src.ch00_py.file_toolbox import (
@@ -8,6 +8,7 @@ from src.ch00_py.file_toolbox import (
     get_level1_dirs,
     save_file,
 )
+from src.ch04_rope.rope import create_rope_from_labels as init_rope
 from src.ch09_person_lesson._ref.ch09_path import (
     create_gut_path,
     create_moment_json_path,
@@ -662,42 +663,42 @@ def test_sheets_input_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     db_conn.close()
 
 
-# TODO reactiavte this test and convert to using cursor
+# TODO reactivate test
 # def test_sheets_input_to_lynx_mstr_Scenario1_Creates_job_Files(temp3_fs):
 #     # ESTABLISH
+#     h1_mop = init_rope(["herenow1", "family", exx.casa, exx.clean, exx.mop])
+#     h1_tools = init_rope(["herenow1", "family", exx.casa, exx.clean, exx.scrub])
+#     h7_mop = init_rope(["herenow7", "family", exx.casa, exx.clean, exx.mop])
+#     h7_grocery = init_rope(["herenow7", "family", exx.casa, exx.clean, "grocery"])
+#     h7_brush = init_rope(["herenow7", "family", exx.casa, exx.clean, "brush"])
+
+#     data = [
+#         (0, exx.sue, exx.zia, exx.hn1, h1_mop, 1.0, True),
+#         (0, exx.sue, exx.yao, exx.hn1, h1_tools, 2.5, True),
+#     ]
+#     cols = [
+#         kw.spark_num,
+#         kw.face_name,
+#         kw.person_name,
+#         kw.moment_rope,
+#         kw.plan_rope,
+#         kw.star,
+#         kw.pledge,
+#     ]
+#     br00013_example = pandas_DataFrame(data, columns=cols)
+
 #     here_wdir = worlddir_shop("HereNow", str(temp3_fs))
 #     br00013_example_path = create_path(here_wdir.input_dir, "example.xlsx")
-#     save_sheet(br00013_example_path, "br00013_ex1", br00013_example())
-#     print(br00013_example())
-
-#     #     # TODO convert this to dataframe
-#     #     # sue_a23_person = get_a23_sue_clean_example()
-#     #     # sue_ep8_person = get_ep8_sue_clean_example()
-#     #     # yao_ep8_person = get_ep8_yao_clean_example()
-#     #     # TODO save dataframes as sheets
-#     #     epoch_config = get_default_epoch_config_dict()
-#     #     x_epoch_label = epoch_config.get("epoch_label")
-#     #     # add_epoch_planunit(sue_a23_person, epoch_config)
-#     #     # add_epoch_planunit(sue_ep8_person, epoch_config)
-#     #     # add_epoch_planunit(yao_ep8_person, epoch_config)
-#     #     apr7 = datetime(2010, 4, 7)
-#     #     # save momentunit json
-#     #     mmt_mstr_dir = str(temp3_fs)
+#     save_sheet(br00013_example_path, "br00013_ex1", br00013_example)
+#     # print(br00013_example().to_dict())
 #     mmt_dir = here_wdir.moment_mstr_dir
 #     hn1_lasso = lassounit_shop(exx.hn1)
-#     hn7_lasso = lassounit_shop(exx.hn7)
 #     hn1_mmt_json_path = create_moment_json_path(mmt_dir, hn1_lasso)
-#     hn7_mmt_json_path = create_moment_json_path(mmt_dir, hn7_lasso)
-#     hn7_zia_job_path = create_job_path(mmt_dir, hn7_lasso, exx.zia)
-#     hn7_yao_job_path = create_job_path(mmt_dir, hn7_lasso, exx.yao)
-#     hn7_sue_job_path = create_job_path(mmt_dir, hn7_lasso, exx.sue)
-#     hn7_xio_job_path = create_job_path(mmt_dir, hn7_lasso, exx.xio)
+#     hn1_yao_job_path = create_job_path(mmt_dir, hn1_lasso, exx.yao)
+#     hn1_zia_job_path = create_job_path(mmt_dir, hn1_lasso, exx.zia)
 #     assert not os_path_exists(hn1_mmt_json_path)
-#     assert not os_path_exists(hn7_mmt_json_path)
-#     assert not os_path_exists(hn7_zia_job_path)
-#     assert not os_path_exists(hn7_yao_job_path)
-#     assert not os_path_exists(hn7_sue_job_path)
-#     assert not os_path_exists(hn7_xio_job_path)
+#     assert not os_path_exists(hn1_yao_job_path)
+#     assert not os_path_exists(hn1_zia_job_path)
 
 #     # WHEN
 #     sheets_input_to_lynx_mstr(
@@ -708,9 +709,6 @@ def test_sheets_input_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
 
 #     # THEN
 #     assert os_path_exists(hn1_mmt_json_path)
-#     assert os_path_exists(hn7_mmt_json_path)
-#     assert os_path_exists(hn7_zia_job_path)
-#     assert os_path_exists(hn7_yao_job_path)
-#     assert os_path_exists(hn7_sue_job_path)
-#     assert os_path_exists(hn7_xio_job_path)
+#     assert os_path_exists(hn1_yao_job_path)
+#     assert os_path_exists(hn1_zia_job_path)
 #     assert 1 == 2

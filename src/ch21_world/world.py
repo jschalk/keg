@@ -79,7 +79,6 @@ def sheets_input_to_lynx_with_cursor(
     etl_heard_vld_tables_to_moment_jsons(cursor, moment_mstr_dir)
     etl_heard_vld_to_spark_person_csvs(cursor, moment_mstr_dir)
     etl_spark_person_csvs_to_lesson_json(moment_mstr_dir)
-    # TODO fix etl_spark_lesson_json_to_spark_inherited_personunits
     etl_spark_lesson_json_to_spark_inherited_personunits(moment_mstr_dir)
     # Sparkized files to Lynx stage
     etl_spark_inherited_personunits_to_moment_gut(moment_mstr_dir)

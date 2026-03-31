@@ -147,6 +147,7 @@ def move_otx_csvs_to_translate_inx(face_dir: str):
         save_dataframe_to_csv(x_df, inx_dir, x_filename)
 
 
+# TODO consider getting rid of this
 def _get_translate_idea_format_filenames() -> set[str]:
     idea_numbers = set(get_idea_dimen_ref().get("translate_name"))
     idea_numbers.update(set(get_idea_dimen_ref().get("translate_title")))

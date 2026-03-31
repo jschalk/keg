@@ -800,22 +800,27 @@ def etl_spark_person_csvs_to_lesson_json(moment_mstr_dir: str):
             person_path = create_path(persons_path, person_name)
             sparks_path = create_path(person_path, "sparks")
             for spark_num in get_level1_dirs(sparks_path):
-                spark_lesson = lessonunit_shop(
-                    person_name=person_name,
-                    face_name=None,
-                    moment_rope=moment_lasso.moment_rope,
-                    spark_num=spark_num,
+                save_spark_lesson_json(
+                    moment_mstr_dir, moment_lasso, person_name, spark_num, sparks_path
                 )
-                spark_dir = create_path(sparks_path, spark_num)
-                add_personatoms_from_csv(spark_lesson, spark_dir)
-                spark_all_lesson_path = create_spark_all_lesson_path(
-                    moment_mstr_dir, moment_lasso, person_name, spark_num
-                )
-                save_json(
-                    spark_all_lesson_path,
-                    None,
-                    spark_lesson.get_serializable_step_dict(),
-                )
+
+
+def save_spark_lesson_json(
+    moment_mstr_dir, moment_lasso, person_name, spark_num, sparks_path
+):
+    spark_lesson = lessonunit_shop(
+        person_name=person_name,
+        face_name=None,
+        moment_rope=moment_lasso.moment_rope,
+        spark_num=spark_num,
+    )
+    spark_dir = create_path(sparks_path, spark_num)
+    add_personatoms_from_csv(spark_lesson, spark_dir)
+    spark_all_lesson_path = create_spark_all_lesson_path(
+        moment_mstr_dir, moment_lasso, person_name, spark_num
+    )
+    spark_lesson_json = spark_lesson.get_serializable_step_dict()
+    save_json(spark_all_lesson_path, None, spark_lesson_json)
 
 
 def add_personatoms_from_csv(spark_lesson: LessonUnit, spark_dir: str):
@@ -888,30 +893,23 @@ def etl_spark_lesson_json_to_spark_inherited_personunits(moment_mstr_dir: str):
 def create_lesson_json_and_get_spark_num(
     moment_mstr_dir, moment_lasso, person_name, prev_spark_num, spark_num
 ):
-    prev_person = _get_prev_spark_num_personunit(
-        moment_mstr_dir, moment_lasso, person_name, prev_spark_num
-    )
-    personspark_path = create_personspark_path(
-        moment_mstr_dir, moment_lasso, person_name, spark_num
-    )
-    spark_dir = create_person_spark_dir_path(
-        moment_mstr_dir, moment_lasso, person_name, spark_num
-    )
+    m_dir = moment_mstr_dir
+    m_lasso = moment_lasso
+    p_name = person_name
+    prev_spark = prev_spark_num
 
-    spark_all_lesson_path = create_spark_all_lesson_path(
-        moment_mstr_dir, moment_lasso, person_name, spark_num
-    )
-    spark_lesson = get_lessonunit_from_dict(open_json(spark_all_lesson_path))
+    prev_person = _get_prev_spark_num_personunit(m_dir, m_lasso, p_name, prev_spark)
+    personspark_path = create_personspark_path(m_dir, m_lasso, p_name, spark_num)
+    spark_dir = create_person_spark_dir_path(m_dir, m_lasso, p_name, spark_num)
+    all_lesson_path = create_spark_all_lesson_path(m_dir, m_lasso, p_name, spark_num)
+    spark_lesson = get_lessonunit_from_dict(open_json(all_lesson_path))
     sift_delta = get_minimal_persondelta(spark_lesson.persondelta, prev_person)
     curr_person = spark_lesson.get_lesson_edited_person(prev_person)
     save_json(personspark_path, None, curr_person.to_dict())
     expressed_lesson = copy_deepcopy(spark_lesson)
     expressed_lesson.set_persondelta(sift_delta)
-    save_json(
-        spark_dir,
-        "expressed_lesson.json",
-        expressed_lesson.get_serializable_step_dict(),
-    )
+    expressed_lesson_json = expressed_lesson.get_serializable_step_dict()
+    save_json(spark_dir, "expressed_lesson.json", expressed_lesson_json)
     return spark_num
 
 

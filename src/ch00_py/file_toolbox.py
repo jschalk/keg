@@ -37,7 +37,7 @@ def create_path(x_dir: any, filename: any) -> str:
         return f"{filename}" if filename else ""
     x_dir = str(x_dir)
     x_dir.replace("\\", "/")
-    return os_path_join(x_dir, str(filename)) if filename else x_dir
+    return os_path_join(x_dir, str(filename)) if filename is not None else x_dir
 
 
 def is_subdirectory(sub_path: str, focus_path: str) -> bool:
