@@ -2,7 +2,7 @@ from os.path import exists as os_path_exists
 from sqlite3 import Cursor
 from src.ch00_py.db_toolbox import db_table_exists, get_row_count
 from src.ch00_py.file_toolbox import save_json
-from src.ch02_partner.group import awardunit_shop
+from src.ch02_contact.group import awardunit_shop
 from src.ch03_workforce.workforce import workforceunit_shop
 from src.ch06_plan.healer import healerunit_shop
 from src.ch07_person_logic.person_main import personunit_shop
@@ -22,9 +22,9 @@ def test_etl_moment_job_jsons_to_job_tables_PopulatesTables_Scenario0(
     # ESTABLISH
     moment_mstr_dir = str(temp3_fs)
     sue_person = personunit_shop(exx.sue, exx.a23)
-    sue_person.add_partnerunit(exx.sue)
-    sue_person.add_partnerunit(exx.bob)
-    sue_person.get_partner(exx.bob).add_membership(exx.run)
+    sue_person.add_contactunit(exx.sue)
+    sue_person.add_contactunit(exx.bob)
+    sue_person.get_contact(exx.bob).add_membership(exx.run)
     casa_rope = sue_person.make_l1_rope(exx.casa)
     situation_rope = sue_person.make_l1_rope(kw.reason_active)
     clean_rope = sue_person.make_rope(situation_rope, exx.clean)
@@ -97,11 +97,11 @@ def test_etl_moment_job_jsons_to_job_tables_PopulatesTables_Scenario1(
     credit88 = 88
     moment_mstr_dir = str(temp3_fs)
     bob_job = personunit_shop(bob_inx, exx.a23)
-    bob_job.add_partnerunit(bob_inx, credit77)
-    bob_job.add_partnerunit(yao_inx, credit44)
-    bob_job.add_partnerunit(bob_inx, credit77)
-    bob_job.add_partnerunit(sue_inx, credit88)
-    bob_job.add_partnerunit(yao_inx, credit44)
+    bob_job.add_contactunit(bob_inx, credit77)
+    bob_job.add_contactunit(yao_inx, credit44)
+    bob_job.add_contactunit(bob_inx, credit77)
+    bob_job.add_contactunit(sue_inx, credit88)
+    bob_job.add_contactunit(yao_inx, credit44)
     save_job_file(moment_mstr_dir, bob_job)
     a23_lasso = lassounit_shop(exx.a23)
     moment_json_path = create_moment_json_path(moment_mstr_dir, a23_lasso)

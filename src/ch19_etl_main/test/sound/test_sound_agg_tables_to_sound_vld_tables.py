@@ -24,18 +24,18 @@ def test_get_insert_into_sound_vld_sqlstrs_ReturnsObj_PopulatesTable_Scenario0(
     x66_debt = 66
 
     create_sound_and_heard_tables(cursor0)
-    personapartner_s_agg_put_tablename = prime_tbl(
-        kw.person_partnerunit, "s_agg", "put"
+    personacontact_s_agg_put_tablename = prime_tbl(
+        kw.person_contactunit, "s_agg", "put"
     )
-    print(f"{get_table_columns(cursor0, personapartner_s_agg_put_tablename)=}")
-    insert_into_clause = f"""INSERT INTO {personapartner_s_agg_put_tablename} (
+    print(f"{get_table_columns(cursor0, personacontact_s_agg_put_tablename)=}")
+    insert_into_clause = f"""INSERT INTO {personacontact_s_agg_put_tablename} (
   {kw.spark_num}
 , {kw.face_name}
 , {kw.moment_rope}
 , {kw.person_name}
-, {kw.partner_name}
-, {kw.partner_cred_lumen}
-, {kw.partner_debt_lumen}
+, {kw.contact_name}
+, {kw.contact_cred_lumen}
+, {kw.contact_debt_lumen}
 )"""
     values_clause = f"""
 VALUES
@@ -46,8 +46,8 @@ VALUES
 ;
 """
     cursor0.execute(f"{insert_into_clause} {values_clause}")
-    assert get_row_count(cursor0, personapartner_s_agg_put_tablename) == 4
-    prnawar_h_vld_put_tablename = prime_tbl(kw.person_partnerunit, kw.s_vld, "put")
+    assert get_row_count(cursor0, personacontact_s_agg_put_tablename) == 4
+    prnawar_h_vld_put_tablename = prime_tbl(kw.person_contactunit, kw.s_vld, "put")
     assert get_row_count(cursor0, prnawar_h_vld_put_tablename) == 0
 
     # WHEN
@@ -61,9 +61,9 @@ VALUES
 , {kw.face_name}
 , {kw.moment_rope}
 , {kw.person_name}
-, {kw.partner_name}
-, {kw.partner_cred_lumen}
-, {kw.partner_debt_lumen}
+, {kw.contact_name}
+, {kw.contact_cred_lumen}
+, {kw.contact_debt_lumen}
 FROM {prnawar_h_vld_put_tablename}
 """
     cursor0.execute(select_sqlstr)
@@ -92,16 +92,16 @@ def test_etl_sound_agg_tables_to_sound_vld_tables_Scenario0_AddRowsToTable(
     x66_debt = 66
 
     create_sound_and_heard_tables(cursor0)
-    prnptnr_s_agg_put_tablename = prime_tbl(kw.person_partnerunit, "s_agg", "put")
+    prnptnr_s_agg_put_tablename = prime_tbl(kw.person_contactunit, "s_agg", "put")
     print(f"{get_table_columns(cursor0, prnptnr_s_agg_put_tablename)=}")
     insert_into_clause = f"""INSERT INTO {prnptnr_s_agg_put_tablename} (
   {kw.spark_num}
 , {kw.face_name}
 , {kw.moment_rope}
 , {kw.person_name}
-, {kw.partner_name}
-, {kw.partner_cred_lumen}
-, {kw.partner_debt_lumen}
+, {kw.contact_name}
+, {kw.contact_cred_lumen}
+, {kw.contact_debt_lumen}
 )"""
     values_clause = f"""
 VALUES
@@ -113,7 +113,7 @@ VALUES
 """
     cursor0.execute(f"{insert_into_clause} {values_clause}")
     assert get_row_count(cursor0, prnptnr_s_agg_put_tablename) == 4
-    prnptnr_h_vld_put_tablename = prime_tbl(kw.person_partnerunit, kw.s_vld, "put")
+    prnptnr_h_vld_put_tablename = prime_tbl(kw.person_contactunit, kw.s_vld, "put")
     assert get_row_count(cursor0, prnptnr_h_vld_put_tablename) == 0
 
     # WHEN
@@ -125,9 +125,9 @@ VALUES
 , {kw.face_name}
 , {kw.moment_rope}
 , {kw.person_name}
-, {kw.partner_name}
-, {kw.partner_cred_lumen}
-, {kw.partner_debt_lumen}
+, {kw.contact_name}
+, {kw.contact_cred_lumen}
+, {kw.contact_debt_lumen}
 FROM {prnptnr_h_vld_put_tablename}
 """
     cursor0.execute(select_sqlstr)
@@ -155,16 +155,16 @@ def test_etl_sound_agg_tables_to_sound_vld_tables_Scenario1_Populates_Columns(
     x66_debt = 66
 
     create_sound_and_heard_tables(cursor0)
-    prnptnr_s_agg_put_tablename = prime_tbl(kw.person_partnerunit, "s_agg", "put")
+    prnptnr_s_agg_put_tablename = prime_tbl(kw.person_contactunit, "s_agg", "put")
     print(f"{get_table_columns(cursor0, prnptnr_s_agg_put_tablename)=}")
     insert_into_clause = f"""INSERT INTO {prnptnr_s_agg_put_tablename} (
   {kw.spark_num}
 , {kw.face_name}
 , {kw.moment_rope}
 , {kw.person_name}
-, {kw.partner_name}
-, {kw.partner_cred_lumen}
-, {kw.partner_debt_lumen}
+, {kw.contact_name}
+, {kw.contact_cred_lumen}
+, {kw.contact_debt_lumen}
 )"""
     values_clause = f"""
 VALUES
@@ -176,7 +176,7 @@ VALUES
 """
     cursor0.execute(f"{insert_into_clause} {values_clause}")
     assert get_row_count(cursor0, prnptnr_s_agg_put_tablename) == 4
-    prnptnr_h_vld_put_tablename = prime_tbl(kw.person_partnerunit, kw.s_vld, "put")
+    prnptnr_h_vld_put_tablename = prime_tbl(kw.person_contactunit, kw.s_vld, "put")
     assert get_row_count(cursor0, prnptnr_h_vld_put_tablename) == 0
 
     # WHEN
@@ -188,9 +188,9 @@ VALUES
 , {kw.face_name}
 , {kw.moment_rope}
 , {kw.person_name}
-, {kw.partner_name}
-, {kw.partner_cred_lumen}
-, {kw.partner_debt_lumen}
+, {kw.contact_name}
+, {kw.contact_cred_lumen}
+, {kw.contact_debt_lumen}
 FROM {prnptnr_h_vld_put_tablename}
 """
     cursor0.execute(select_sqlstr)
@@ -218,16 +218,16 @@ def test_etl_sound_agg_tables_to_sound_vld_tables_Scenario2_DoesNotSelectWhere_e
     x66_debt = 66
 
     create_sound_and_heard_tables(cursor0)
-    prnptnr_s_agg_put_tablename = prime_tbl(kw.person_partnerunit, "s_agg", "put")
+    prnptnr_s_agg_put_tablename = prime_tbl(kw.person_contactunit, "s_agg", "put")
     print(f"{get_table_columns(cursor0, prnptnr_s_agg_put_tablename)=}")
     insert_into_clause = f"""INSERT INTO {prnptnr_s_agg_put_tablename} (
   {kw.spark_num}
 , {kw.face_name}
 , {kw.moment_rope}
 , {kw.person_name}
-, {kw.partner_name}
-, {kw.partner_cred_lumen}
-, {kw.partner_debt_lumen}
+, {kw.contact_name}
+, {kw.contact_cred_lumen}
+, {kw.contact_debt_lumen}
 , {kw.error_message}
 )"""
     values_clause = f"""
@@ -240,7 +240,7 @@ VALUES
 """
     cursor0.execute(f"{insert_into_clause} {values_clause}")
     assert get_row_count(cursor0, prnptnr_s_agg_put_tablename) == 4
-    prnptnr_h_vld_put_tablename = prime_tbl(kw.person_partnerunit, kw.s_vld, "put")
+    prnptnr_h_vld_put_tablename = prime_tbl(kw.person_contactunit, kw.s_vld, "put")
     assert get_row_count(cursor0, prnptnr_h_vld_put_tablename) == 0
 
     # WHEN
@@ -252,9 +252,9 @@ VALUES
 , {kw.face_name}
 , {kw.moment_rope}
 , {kw.person_name}
-, {kw.partner_name}
-, {kw.partner_cred_lumen}
-, {kw.partner_debt_lumen}
+, {kw.contact_name}
+, {kw.contact_cred_lumen}
+, {kw.contact_debt_lumen}
 FROM {prnptnr_h_vld_put_tablename}
 """
     cursor0.execute(select_sqlstr)

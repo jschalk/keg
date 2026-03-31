@@ -17,7 +17,7 @@ def test_get_person_view_dict_ReturnsObj_Scenario0_Empty():
     # THEN
     assert set(sue_person_view_dict.keys()) == {
         # kw.groupunits,
-        kw.partners,
+        kw.contacts,
         kw.planroot,
     }
     sue_plan_view_dict = sue_person_view_dict.get(kw.planroot)

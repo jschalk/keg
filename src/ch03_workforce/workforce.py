@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from src.ch00_py.dict_toolbox import get_empty_dict_if_None, get_False_if_None
-from src.ch02_partner.group import GroupTitle, GroupUnit
-from src.ch02_partner.partner import PartnerName
+from src.ch02_contact.contact import ContactName
+from src.ch02_contact.group import GroupTitle, GroupUnit
 
 
 @dataclass
@@ -89,7 +89,7 @@ class WorkforceHeir:
     def set_person_name_is_workforce(
         self,
         groupunits: dict[GroupTitle, GroupUnit],
-        person_name: PartnerName,
+        person_name: ContactName,
     ):
         self.person_name_is_workforce = self.get_person_name_is_workforce_bool(
             groupunits=groupunits, person_name=person_name
@@ -98,15 +98,15 @@ class WorkforceHeir:
     def get_person_name_is_workforce_bool(
         self,
         groupunits: dict[GroupTitle, GroupUnit],
-        person_name: PartnerName,
+        person_name: ContactName,
     ) -> bool:
         if self.labors == {}:
             return True
 
         for x_labor_title, x_groupunit in groupunits.items():
             if x_labor_title in self.labors:
-                for x_partner_name in x_groupunit.memberships.keys():
-                    if x_partner_name == person_name:
+                for x_contact_name in x_groupunit.memberships.keys():
+                    if x_contact_name == person_name:
                         return True
         return False
 

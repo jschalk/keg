@@ -19,38 +19,38 @@ def get_person_viewer_template() -> str:
         <link rel="stylesheet" href="/static/style.css">
     </head>
     <body>
-        <h1>Person Partners and Plan Tree</h1>
+        <h1>Person Contacts and Plan Tree</h1>
         <h5>Each node has a plan_label</h5>
         
-        <div class="partners_controls">
-            <input type="checkbox" id="show_partners"><label for="show_partners">partners</label>
-            <input type="checkbox" id="show_partner_cred_lumen"><label for="show_partner_cred_lumen">cred_lumen</label>
-            <input type="checkbox" id="show_partner_debt_lumen"><label for="show_partner_debt_lumen">debt_lumen</label>
-            <input type="checkbox" id="show_partner_credor_pool"><label for="show_partner_credor_pool">credor_pool</label>
-            <input type="checkbox" id="show_partner_debtor_pool"><label for="show_partner_debtor_pool">debtor_pool</label>
-            <input type="checkbox" id="show_partner_irrational_partner_debt_lumen"><label for="show_partner_irrational_partner_debt_lumen">irrational_partner_debt_lumen</label>
-            <input type="checkbox" id="show_partner_inallocable_partner_debt_lumen"><label for="show_partner_inallocable_partner_debt_lumen">inallocable_partner_debt_lumen</label>
-            <input type="checkbox" id="show_partner_fund_give"><label for="show_partner_fund_give">fund_give</label>
-            <input type="checkbox" id="show_partner_fund_take"><label for="show_partner_fund_take">fund_take</label>
-            <input type="checkbox" id="show_partner_fund_agenda_give"><label for="show_partner_fund_agenda_give">fund_agenda_give</label>
-            <input type="checkbox" id="show_partner_fund_agenda_take"><label for="show_partner_fund_agenda_take">fund_agenda_take</label>
-            <input type="checkbox" id="show_partner_fund_agenda_ratio_give"><label for="show_partner_fund_agenda_ratio_give">fund_agenda_ratio_give</label>
-            <input type="checkbox" id="show_partner_fund_agenda_ratio_take"><label for="show_partner_fund_agenda_ratio_take">fund_agenda_ratio_take</label>
+        <div class="contacts_controls">
+            <input type="checkbox" id="show_contacts"><label for="show_contacts">contacts</label>
+            <input type="checkbox" id="show_contact_cred_lumen"><label for="show_contact_cred_lumen">cred_lumen</label>
+            <input type="checkbox" id="show_contact_debt_lumen"><label for="show_contact_debt_lumen">debt_lumen</label>
+            <input type="checkbox" id="show_contact_credor_pool"><label for="show_contact_credor_pool">credor_pool</label>
+            <input type="checkbox" id="show_contact_debtor_pool"><label for="show_contact_debtor_pool">debtor_pool</label>
+            <input type="checkbox" id="show_contact_irrational_contact_debt_lumen"><label for="show_contact_irrational_contact_debt_lumen">irrational_contact_debt_lumen</label>
+            <input type="checkbox" id="show_contact_inallocable_contact_debt_lumen"><label for="show_contact_inallocable_contact_debt_lumen">inallocable_contact_debt_lumen</label>
+            <input type="checkbox" id="show_contact_fund_give"><label for="show_contact_fund_give">fund_give</label>
+            <input type="checkbox" id="show_contact_fund_take"><label for="show_contact_fund_take">fund_take</label>
+            <input type="checkbox" id="show_contact_fund_agenda_give"><label for="show_contact_fund_agenda_give">fund_agenda_give</label>
+            <input type="checkbox" id="show_contact_fund_agenda_take"><label for="show_contact_fund_agenda_take">fund_agenda_take</label>
+            <input type="checkbox" id="show_contact_fund_agenda_ratio_give"><label for="show_contact_fund_agenda_ratio_give">fund_agenda_ratio_give</label>
+            <input type="checkbox" id="show_contact_fund_agenda_ratio_take"><label for="show_contact_fund_agenda_ratio_take">fund_agenda_ratio_take</label>
             <br>
-            <input type="checkbox" id="show_partner_membership_group_title"><label for="show_partner_membership_group_title">membership_group_title</label>
-            <input type="checkbox" id="show_partner_membership_group_cred_lumen"><label for="show_partner_membership_group_cred_lumen">membership_group_cred_lumen</label>
-            <input type="checkbox" id="show_partner_membership_group_debt_lumen"><label for="show_partner_membership_group_debt_lumen">membership_group_debt_lumen</label>
-            <input type="checkbox" id="show_partner_membership_credor_pool"><label for="show_partner_membership_credor_pool">membership_credor_pool</label>
-            <input type="checkbox" id="show_partner_membership_debtor_pool"><label for="show_partner_membership_debtor_pool">membership_debtor_pool</label>
-            <input type="checkbox" id="show_partner_membership_fund_agenda_give"><label for="show_partner_membership_fund_agenda_give">membership_fund_agenda_give</label>
-            <input type="checkbox" id="show_partner_membership_fund_agenda_ratio_give"><label for="show_partner_membership_fund_agenda_ratio_give">membership_fund_agenda_ratio_give</label>
-            <input type="checkbox" id="show_partner_membership_fund_agenda_ratio_take"><label for="show_partner_membership_fund_agenda_ratio_take">membership_fund_agenda_ratio_take</label>
-            <input type="checkbox" id="show_partner_membership_fund_agenda_take"><label for="show_partner_membership_fund_agenda_take">membership_fund_agenda_take</label>
-            <input type="checkbox" id="show_partner_membership_fund_give"><label for="show_partner_membership_fund_give">membership_fund_give</label>
-            <input type="checkbox" id="show_partner_membership_fund_take"><label for="show_partner_membership_fund_take">membership_fund_take</label>
+            <input type="checkbox" id="show_contact_membership_group_title"><label for="show_contact_membership_group_title">membership_group_title</label>
+            <input type="checkbox" id="show_contact_membership_group_cred_lumen"><label for="show_contact_membership_group_cred_lumen">membership_group_cred_lumen</label>
+            <input type="checkbox" id="show_contact_membership_group_debt_lumen"><label for="show_contact_membership_group_debt_lumen">membership_group_debt_lumen</label>
+            <input type="checkbox" id="show_contact_membership_credor_pool"><label for="show_contact_membership_credor_pool">membership_credor_pool</label>
+            <input type="checkbox" id="show_contact_membership_debtor_pool"><label for="show_contact_membership_debtor_pool">membership_debtor_pool</label>
+            <input type="checkbox" id="show_contact_membership_fund_agenda_give"><label for="show_contact_membership_fund_agenda_give">membership_fund_agenda_give</label>
+            <input type="checkbox" id="show_contact_membership_fund_agenda_ratio_give"><label for="show_contact_membership_fund_agenda_ratio_give">membership_fund_agenda_ratio_give</label>
+            <input type="checkbox" id="show_contact_membership_fund_agenda_ratio_take"><label for="show_contact_membership_fund_agenda_ratio_take">membership_fund_agenda_ratio_take</label>
+            <input type="checkbox" id="show_contact_membership_fund_agenda_take"><label for="show_contact_membership_fund_agenda_take">membership_fund_agenda_take</label>
+            <input type="checkbox" id="show_contact_membership_fund_give"><label for="show_contact_membership_fund_give">membership_fund_give</label>
+            <input type="checkbox" id="show_contact_membership_fund_take"><label for="show_contact_membership_fund_take">membership_fund_take</label>
             
         </div>
-        <div id="partnersContainer" class="plan_tree_display"></div>
+        <div id="contactsContainer" class="plan_tree_display"></div>
         <div class="plan_controls">
             <input type="checkbox" id="show_planroot"><label for="show_planroot">planroot</label>
             <input type="checkbox" id="show_level"><label for="show_level">level</label>
@@ -77,8 +77,8 @@ def get_person_viewer_template() -> str:
             <input type="checkbox" id="show_awardlines"><label for="show_awardlines">awardlines</label>
             <input type="checkbox" id="show_workforceunit"><label for="show_workforceunit">workforceunit</label>
             <input type="checkbox" id="show_workforceheir"><label for="show_workforceheir">workforceheir</label>
-            <input type="checkbox" id="show_all_partner_cred"><label for="show_all_partner_cred">_all_partner_cred</label>
-            <input type="checkbox" id="show_all_partner_debt"><label for="show_all_partner_debt">_all_partner_debt</label>
+            <input type="checkbox" id="show_all_contact_cred"><label for="show_all_contact_cred">_all_contact_cred</label>
+            <input type="checkbox" id="show_all_contact_debt"><label for="show_all_contact_debt">_all_contact_debt</label>
             <input type="checkbox" id="show_gogo_want"><label for="show_gogo_want">gogo_want</label>
             <input type="checkbox" id="show_stop_want"><label for="show_stop_want">stop_want</label>
             <input type="checkbox" id="show_gogo_calc"><label for="show_gogo_calc">_gogo_calc</label>

@@ -5,71 +5,71 @@ from src.ch07_person_logic.test._util.ch07_examples import personunit_v001
 from src.ch08_person_atom.atom_main import personatom_shop
 from src.ch17_idea.idea_config import (
     idea_format_00013_planunit_v0_0_0,
-    idea_format_00021_person_partnerunit_v0_0_0,
+    idea_format_00021_person_contactunit_v0_0_0,
 )
 from src.ch17_idea.idea_main import create_idea_df, get_idearef_obj, make_persondelta
 from src.ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
 
 
-def test_make_persondelta_Arg_idea_format_00021_person_partnerunit_v0_0_0():
+def test_make_persondelta_Arg_idea_format_00021_person_contactunit_v0_0_0():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
-    sue_partner_cred_lumen = 11
-    bob_partner_cred_lumen = 13
-    yao_partner_cred_lumen = 41
-    sue_partner_debt_lumen = 23
-    bob_partner_debt_lumen = 29
-    yao_partner_debt_lumen = 37
+    sue_contact_cred_lumen = 11
+    bob_contact_cred_lumen = 13
+    yao_contact_cred_lumen = 41
+    sue_contact_debt_lumen = 23
+    bob_contact_debt_lumen = 29
+    yao_contact_debt_lumen = 37
     amy_moment_rope = create_rope("amy56")
     sue_personunit = personunit_shop(exx.sue, amy_moment_rope)
-    sue_personunit.add_partnerunit(
-        exx.sue, sue_partner_cred_lumen, sue_partner_debt_lumen
+    sue_personunit.add_contactunit(
+        exx.sue, sue_contact_cred_lumen, sue_contact_debt_lumen
     )
-    sue_personunit.add_partnerunit(
-        exx.bob, bob_partner_cred_lumen, bob_partner_debt_lumen
+    sue_personunit.add_contactunit(
+        exx.bob, bob_contact_cred_lumen, bob_contact_debt_lumen
     )
-    sue_personunit.add_partnerunit(
-        exx.yao, yao_partner_cred_lumen, yao_partner_debt_lumen
+    sue_personunit.add_contactunit(
+        exx.yao, yao_contact_cred_lumen, yao_contact_debt_lumen
     )
-    x_idea_name = idea_format_00021_person_partnerunit_v0_0_0()
-    partner_dataframe = create_idea_df(sue_personunit, x_idea_name)
-    print(f"{partner_dataframe.columns=}")
-    partner_csv = partner_dataframe.to_csv(index=False)
+    x_idea_name = idea_format_00021_person_contactunit_v0_0_0()
+    contact_dataframe = create_idea_df(sue_personunit, x_idea_name)
+    print(f"{contact_dataframe.columns=}")
+    contact_csv = contact_dataframe.to_csv(index=False)
 
     # WHEN
-    sue_partner_persondelta = make_persondelta(partner_csv)
+    sue_contact_persondelta = make_persondelta(contact_csv)
 
     # THEN
-    assert sue_partner_persondelta
-    sue_personatom = personatom_shop(kw.person_partnerunit, kw.INSERT)
-    sue_personatom.set_arg(kw.partner_name, exx.sue)
-    sue_personatom.set_arg(kw.partner_cred_lumen, sue_partner_cred_lumen)
-    sue_personatom.set_arg(kw.partner_debt_lumen, sue_partner_debt_lumen)
+    assert sue_contact_persondelta
+    sue_personatom = personatom_shop(kw.person_contactunit, kw.INSERT)
+    sue_personatom.set_arg(kw.contact_name, exx.sue)
+    sue_personatom.set_arg(kw.contact_cred_lumen, sue_contact_cred_lumen)
+    sue_personatom.set_arg(kw.contact_debt_lumen, sue_contact_debt_lumen)
     sue_personatom.set_atom_order()
-    bob_personatom = personatom_shop(kw.person_partnerunit, kw.INSERT)
-    bob_personatom.set_arg(kw.partner_name, exx.bob)
-    bob_personatom.set_arg(kw.partner_cred_lumen, bob_partner_cred_lumen)
-    bob_personatom.set_arg(kw.partner_debt_lumen, bob_partner_debt_lumen)
+    bob_personatom = personatom_shop(kw.person_contactunit, kw.INSERT)
+    bob_personatom.set_arg(kw.contact_name, exx.bob)
+    bob_personatom.set_arg(kw.contact_cred_lumen, bob_contact_cred_lumen)
+    bob_personatom.set_arg(kw.contact_debt_lumen, bob_contact_debt_lumen)
     bob_personatom.set_atom_order()
-    # print(f"{sue_partner_persondelta.get_ordered_dict()=}")
+    # print(f"{sue_contact_persondelta.get_ordered_dict()=}")
     # print(
-    #     f"{sue_partner_persondelta.personatoms.get(kw.INSERT).get(kw.person_partnerunit).get(exx.sue)=}"
+    #     f"{sue_contact_persondelta.personatoms.get(kw.INSERT).get(kw.person_contactunit).get(exx.sue)=}"
     # )
     print(f"{sue_personatom=}")
-    assert sue_partner_persondelta.c_personatom_exists(sue_personatom)
-    assert sue_partner_persondelta.c_personatom_exists(bob_personatom)
-    assert len(sue_partner_persondelta.get_ordered_personatoms()) == 3
+    assert sue_contact_persondelta.c_personatom_exists(sue_personatom)
+    assert sue_contact_persondelta.c_personatom_exists(bob_personatom)
+    assert len(sue_contact_persondelta.get_ordered_personatoms()) == 3
 
 
-# def test_make_persondelta_Arg_idea_format_00020_person_partner_membership_v0_0_0():
+# def test_make_persondelta_Arg_idea_format_00020_person_contact_membership_v0_0_0():
 #     # ESTABLISH
 #     exx.bob = "Bob"
 #     exx.yao = "Yao"
 #     amy_moment_rope = create_rope("amy56")
 #     sue_personunit = personunit_shop(exx.sue, amy_moment_rope)
-#     sue_personunit.add_partnerunit(exx.sue)
-#     sue_personunit.add_partnerunit(exx.bob)
-#     sue_personunit.add_partnerunit(exx.yao)
+#     sue_personunit.add_contactunit(exx.sue)
+#     sue_personunit.add_contactunit(exx.bob)
+#     sue_personunit.add_contactunit(exx.yao)
 #     iowa_str = ";Iowa"
 #     sue_iowa_group_cred_lumen = 37
 #     bob_iowa_group_cred_lumen = 43
@@ -80,14 +80,14 @@ def test_make_persondelta_Arg_idea_format_00021_person_partnerunit_v0_0_0():
 #     ohio_str = ";Ohio"
 #     yao_ohio_group_cred_lumen = 73
 #     yao_ohio_group_debt_lumen = 67
-#     sue_partnerunit = sue_personunit.get_partner(exx.sue)
-#     bob_partnerunit = sue_personunit.get_partner(exx.bob)
-#     yao_partnerunit = sue_personunit.get_partner(exx.yao)
-#     sue_partnerunit.add_membership(iowa_str, sue_iowa_group_cred_lumen, sue_iowa_group_debt_lumen)
-#     bob_partnerunit.add_membership(iowa_str, bob_iowa_group_cred_lumen, bob_iowa_group_debt_lumen)
-#     yao_partnerunit.add_membership(iowa_str, yao_iowa_group_cred_lumen, yao_iowa_group_debt_lumen)
-#     yao_partnerunit.add_membership(ohio_str, yao_ohio_group_cred_lumen, yao_ohio_group_debt_lumen)
-#     x_idea_name = idea_format_00020_person_partner_membership_v0_0_0()
+#     sue_contactunit = sue_personunit.get_contact(exx.sue)
+#     bob_contactunit = sue_personunit.get_contact(exx.bob)
+#     yao_contactunit = sue_personunit.get_contact(exx.yao)
+#     sue_contactunit.add_membership(iowa_str, sue_iowa_group_cred_lumen, sue_iowa_group_debt_lumen)
+#     bob_contactunit.add_membership(iowa_str, bob_iowa_group_cred_lumen, bob_iowa_group_debt_lumen)
+#     yao_contactunit.add_membership(iowa_str, yao_iowa_group_cred_lumen, yao_iowa_group_debt_lumen)
+#     yao_contactunit.add_membership(ohio_str, yao_ohio_group_cred_lumen, yao_ohio_group_debt_lumen)
+#     x_idea_name = idea_format_00020_person_contact_membership_v0_0_0()
 #     membership_dataframe = create_idea_df(sue_personunit, x_idea_name)
 #     assert len(membership_dataframe) == 10
 #     print(membership_dataframe)
@@ -99,18 +99,18 @@ def test_make_persondelta_Arg_idea_format_00021_person_partnerunit_v0_0_0():
 
 #     # THEN
 #     assert membership_changunit
-#     sue_iowa_personatom = personatom_shop(kw.person_partner_membership, kw.INSERT)
-#     bob_iowa_personatom = personatom_shop(kw.person_partner_membership, kw.INSERT)
-#     yao_iowa_personatom = personatom_shop(kw.person_partner_membership, kw.INSERT)
-#     yao_ohio_personatom = personatom_shop(kw.person_partner_membership, kw.INSERT)
+#     sue_iowa_personatom = personatom_shop(kw.person_contact_membership, kw.INSERT)
+#     bob_iowa_personatom = personatom_shop(kw.person_contact_membership, kw.INSERT)
+#     yao_iowa_personatom = personatom_shop(kw.person_contact_membership, kw.INSERT)
+#     yao_ohio_personatom = personatom_shop(kw.person_contact_membership, kw.INSERT)
 #     sue_iowa_personatom.set_arg(kw.group_title, iowa_str)
 #     bob_iowa_personatom.set_arg(kw.group_title, iowa_str)
 #     yao_iowa_personatom.set_arg(kw.group_title, iowa_str)
 #     yao_ohio_personatom.set_arg(kw.group_title, ohio_str)
-#     sue_iowa_personatom.set_arg(kw.partner_name, exx.sue)
-#     bob_iowa_personatom.set_arg(kw.partner_name, exx.bob)
-#     yao_iowa_personatom.set_arg(kw.partner_name, exx.yao)
-#     yao_ohio_personatom.set_arg(kw.partner_name, exx.yao)
+#     sue_iowa_personatom.set_arg(kw.contact_name, exx.sue)
+#     bob_iowa_personatom.set_arg(kw.contact_name, exx.bob)
+#     yao_iowa_personatom.set_arg(kw.contact_name, exx.yao)
+#     yao_ohio_personatom.set_arg(kw.contact_name, exx.yao)
 #     sue_iowa_personatom.set_arg(kw.group_cred_lumen, sue_iowa_group_cred_lumen)
 #     bob_iowa_personatom.set_arg(kw.group_cred_lumen, bob_iowa_group_cred_lumen)
 #     yao_iowa_personatom.set_arg(kw.group_cred_lumen, yao_iowa_group_cred_lumen)

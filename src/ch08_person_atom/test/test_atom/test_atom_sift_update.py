@@ -1,4 +1,4 @@
-from src.ch02_partner.group import awardunit_shop
+from src.ch02_contact.group import awardunit_shop
 from src.ch05_reason.reason_main import factunit_shop, reasonunit_shop
 from src.ch07_person_logic.person_main import personunit_shop
 from src.ch07_person_logic.person_tool import (
@@ -65,15 +65,15 @@ def test_sift_atom_ReturnsObj_PersonAtom_UPDATE_personunit():
     }
 
 
-def test_sift_atom_ReturnsObj_PersonAtom_UPDATE_person_partnerunit():
+def test_sift_atom_ReturnsObj_PersonAtom_UPDATE_person_contactunit():
     # ESTABLISH
-    zia_partner_debt_lumen = 51
+    zia_contact_debt_lumen = 51
     sue_person = personunit_shop("Sue")
-    sue_person.add_partnerunit(exx.zia)
+    sue_person.add_contactunit(exx.zia)
 
-    zia_atom = personatom_shop(kw.person_partnerunit, kw.INSERT)
-    zia_atom.set_arg(kw.partner_name, exx.zia)
-    zia_atom.set_arg(kw.partner_debt_lumen, zia_partner_debt_lumen)
+    zia_atom = personatom_shop(kw.person_contactunit, kw.INSERT)
+    zia_atom.set_arg(kw.contact_name, exx.zia)
+    zia_atom.set_arg(kw.contact_debt_lumen, zia_contact_debt_lumen)
 
     # WHEN
     new_zia_personatom = sift_personatom(sue_person, zia_atom)
@@ -83,18 +83,18 @@ def test_sift_atom_ReturnsObj_PersonAtom_UPDATE_person_partnerunit():
     assert new_zia_personatom.crud_str == kw.UPDATE
     assert new_zia_personatom.get_jvalues_dict() != {}
     zia_jvalues = new_zia_personatom.get_jvalues_dict()
-    assert zia_jvalues == {kw.partner_debt_lumen: 51}
+    assert zia_jvalues == {kw.contact_debt_lumen: 51}
 
 
-def test_sift_atom_ReturnsObj_PersonAtom_UPDATE_person_partner_membership():
+def test_sift_atom_ReturnsObj_PersonAtom_UPDATE_person_contact_membership():
     # ESTABLISH
     zia_run_group_debt_lumen = 76
     sue_person = personunit_shop("Sue")
-    sue_person.add_partnerunit(exx.zia)
-    sue_person.get_partner(exx.zia).add_membership(exx.run)
+    sue_person.add_contactunit(exx.zia)
+    sue_person.get_contact(exx.zia).add_membership(exx.run)
 
-    zia_atom = personatom_shop(kw.person_partner_membership, kw.INSERT)
-    zia_atom.set_arg(kw.partner_name, exx.zia)
+    zia_atom = personatom_shop(kw.person_contact_membership, kw.INSERT)
+    zia_atom.set_arg(kw.contact_name, exx.zia)
     zia_atom.set_arg(kw.group_title, exx.run)
     zia_atom.set_arg(kw.group_debt_lumen, zia_run_group_debt_lumen)
 

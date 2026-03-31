@@ -32,7 +32,7 @@ def test_PersonUnit_conpute_Set_child_plan_workforceheir_FromParent_workforceuni
     bob_person = personunit_shop(exx.bob)
     run_str = "run"
     run_rope = bob_person.make_l1_rope(run_str)
-    bob_person.add_partnerunit(exx.bob)
+    bob_person.add_contactunit(exx.bob)
     bob_person.set_l1_plan(planunit_shop(run_str))
     bob_person.edit_plan_attr(run_rope, workforceunit=x_workforceunit)
     run_plan = bob_person.get_plan_obj(run_rope)
@@ -75,9 +75,9 @@ def test_PersonUnit_conpute_Set_grandchild_plan_workforceheir_From_plankid_workf
     swimmers_str = ";swimmers"
     x_workforceunit.add_labor(labor_title=swimmers_str)
 
-    sue_person.add_partnerunit(exx.yao)
-    yao_partnerunit = sue_person.get_partner(exx.yao)
-    yao_partnerunit.add_membership(swimmers_str)
+    sue_person.add_contactunit(exx.yao)
+    yao_contactunit = sue_person.get_contact(exx.yao)
+    yao_contactunit.add_membership(swimmers_str)
 
     sue_person.set_l1_plan(planunit_shop(exx.swim))
     sue_person.set_plan_obj(planunit_shop(morn_str), parent_rope=swim_rope)
@@ -115,9 +115,9 @@ def test_PersonUnit_conpute_Set_grandchild_plan_workforceheir_From_plankid_workf
     swimmers_solo_bool = True
     swimmers_workforceunit.add_labor(swimmers_str, solo=swimmers_solo_bool)
 
-    sue_person.add_partnerunit(exx.yao)
-    yao_partnerunit = sue_person.get_partner(exx.yao)
-    yao_partnerunit.add_membership(swimmers_str)
+    sue_person.add_contactunit(exx.yao)
+    yao_contactunit = sue_person.get_contact(exx.yao)
+    yao_contactunit.add_membership(swimmers_str)
 
     sue_person.set_l1_plan(planunit_shop(exx.swim))
     sue_person.set_plan_obj(planunit_shop(morn_str), parent_rope=swim_rope)
@@ -147,8 +147,8 @@ def test_PersonUnit_conpute_Set_grandchild_plan_workforceheir_From_plankid_workf
 def test_PersonUnit__get_filtered_awardunits_plan_CleansPlan_Workforceunit():
     # ESTABLISH
     sue1_person = personunit_shop(exx.sue)
-    sue1_person.add_partnerunit(exx.xio)
-    sue1_person.add_partnerunit(exx.zia)
+    sue1_person.add_contactunit(exx.xio)
+    sue1_person.add_contactunit(exx.zia)
 
     casa_rope = sue1_person.make_l1_rope(exx.casa)
     swim_rope = sue1_person.make_l1_rope(exx.swim)
@@ -165,7 +165,7 @@ def test_PersonUnit__get_filtered_awardunits_plan_CleansPlan_Workforceunit():
 
     # WHEN
     sue2_person = personunit_shop(exx.sue)
-    sue2_person.add_partnerunit(exx.xio)
+    sue2_person.add_contactunit(exx.xio)
     cleaned_plan = sue2_person._get_filtered_awardunits_plan(sue1_person_swim_plan)
 
     # THEN
@@ -177,8 +177,8 @@ def test_PersonUnit__get_filtered_awardunits_plan_CleansPlan_Workforceunit():
 def test_PersonUnit_set_plan_CleansPlan_awardunits():
     # ESTABLISH
     sue1_person = personunit_shop("Sue")
-    sue1_person.add_partnerunit(exx.xio)
-    sue1_person.add_partnerunit(exx.zia)
+    sue1_person.add_contactunit(exx.xio)
+    sue1_person.add_contactunit(exx.zia)
 
     casa_rope = sue1_person.make_l1_rope(exx.casa)
     swim_rope = sue1_person.make_l1_rope(exx.swim)
@@ -198,7 +198,7 @@ def test_PersonUnit_set_plan_CleansPlan_awardunits():
 
     # WHEN
     sue2_person = personunit_shop("Sue")
-    sue2_person.add_partnerunit(exx.xio)
+    sue2_person.add_contactunit(exx.xio)
     sue2_person.set_l1_plan(
         sue1_person_swim_plan, get_rid_of_missing_awardunits_awardee_titles=False
     )

@@ -1,12 +1,12 @@
 from src.ch01_allot._ref.ch01_semantic_types import GrainNum, PoolNum, WeightNum
-from src.ch02_partner._ref.ch02_semantic_types import (
+from src.ch02_contact._ref.ch02_semantic_types import (
+    ContactName,
     FundGrain,
     FundNum,
     GroupMark,
     GroupTitle,
     HealerName,
     NameTerm,
-    PartnerName,
     RespectGrain,
     RespectNum,
     TitleTerm,

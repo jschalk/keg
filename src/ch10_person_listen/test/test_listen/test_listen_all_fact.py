@@ -12,97 +12,97 @@ from src.ref.keywords import ExampleStrs as exx
 def test_get_debtors_roll_ReturnsObj():
     # ESTABLISH
     yao_duty = personunit_shop(exx.yao)
-    zia_partner_cred_lumen = 47
-    zia_partner_debt_lumen = 41
-    yao_duty.add_partnerunit(exx.zia, zia_partner_cred_lumen, zia_partner_debt_lumen)
+    zia_contact_cred_lumen = 47
+    zia_contact_debt_lumen = 41
+    yao_duty.add_contactunit(exx.zia, zia_contact_cred_lumen, zia_contact_debt_lumen)
     yao_duty.conpute()
 
     # WHEN
     yao_roll = get_debtors_roll(yao_duty)
 
     # THEN
-    zia_partnerunit = yao_duty.get_partner(exx.zia)
-    assert yao_roll == [zia_partnerunit]
+    zia_contactunit = yao_duty.get_contact(exx.zia)
+    assert yao_roll == [zia_contactunit]
 
 
-def test_get_debtors_roll_ReturnsObjIgnoresZero_partner_debt_lumen():
+def test_get_debtors_roll_ReturnsObjIgnoresZero_contact_debt_lumen():
     # ESTABLISH
     yao_duty = personunit_shop(exx.yao)
-    zia_partner_cred_lumen = 47
-    zia_partner_debt_lumen = 41
+    zia_contact_cred_lumen = 47
+    zia_contact_debt_lumen = 41
     wei_str = "Wei"
-    wei_partner_cred_lumen = 67
-    wei_partner_debt_lumen = 0
-    yao_duty.add_partnerunit(exx.zia, zia_partner_cred_lumen, zia_partner_debt_lumen)
-    yao_duty.add_partnerunit(wei_str, wei_partner_cred_lumen, wei_partner_debt_lumen)
+    wei_contact_cred_lumen = 67
+    wei_contact_debt_lumen = 0
+    yao_duty.add_contactunit(exx.zia, zia_contact_cred_lumen, zia_contact_debt_lumen)
+    yao_duty.add_contactunit(wei_str, wei_contact_cred_lumen, wei_contact_debt_lumen)
     yao_duty.conpute()
 
     # WHEN
     yao_roll = get_debtors_roll(yao_duty)
 
     # THEN
-    zia_partnerunit = yao_duty.get_partner(exx.zia)
-    assert yao_roll == [zia_partnerunit]
+    zia_contactunit = yao_duty.get_contact(exx.zia)
+    assert yao_roll == [zia_contactunit]
 
 
 def test_get_ordered_debtors_roll_ReturnsObj_InOrder():
     # ESTABLISH
     yao_person = personunit_shop(exx.yao)
-    zia_partner_cred_lumen = 47
-    zia_partner_debt_lumen = 41
-    sue_partner_cred_lumen = 57
-    sue_partner_debt_lumen = 51
-    yao_person.add_partnerunit(exx.zia, zia_partner_cred_lumen, zia_partner_debt_lumen)
-    yao_person.add_partnerunit(exx.sue, sue_partner_cred_lumen, sue_partner_debt_lumen)
+    zia_contact_cred_lumen = 47
+    zia_contact_debt_lumen = 41
+    sue_contact_cred_lumen = 57
+    sue_contact_debt_lumen = 51
+    yao_person.add_contactunit(exx.zia, zia_contact_cred_lumen, zia_contact_debt_lumen)
+    yao_person.add_contactunit(exx.sue, sue_contact_cred_lumen, sue_contact_debt_lumen)
     yao_pool = 92
-    yao_person.set_partner_respect(yao_pool)
+    yao_person.set_contact_respect(yao_pool)
 
     # WHEN
-    ordered_partners1 = get_ordered_debtors_roll(yao_person)
+    ordered_contacts1 = get_ordered_debtors_roll(yao_person)
 
     # THEN
-    zia_partner = yao_person.get_partner(exx.zia)
-    sue_partner = yao_person.get_partner(exx.sue)
-    assert ordered_partners1[0].to_dict() == sue_partner.to_dict()
-    assert ordered_partners1 == [sue_partner, zia_partner]
+    zia_contact = yao_person.get_contact(exx.zia)
+    sue_contact = yao_person.get_contact(exx.sue)
+    assert ordered_contacts1[0].to_dict() == sue_contact.to_dict()
+    assert ordered_contacts1 == [sue_contact, zia_contact]
 
     # ESTABLISH
-    bob_partner_debt_lumen = 75
-    yao_person.add_partnerunit(exx.bob, 0, bob_partner_debt_lumen)
-    bob_partner = yao_person.get_partner(exx.bob)
+    bob_contact_debt_lumen = 75
+    yao_person.add_contactunit(exx.bob, 0, bob_contact_debt_lumen)
+    bob_contact = yao_person.get_contact(exx.bob)
 
     # WHEN
-    ordered_partners2 = get_ordered_debtors_roll(yao_person)
+    ordered_contacts2 = get_ordered_debtors_roll(yao_person)
 
     # THEN
-    assert ordered_partners2[0].to_dict() == bob_partner.to_dict()
-    assert ordered_partners2 == [bob_partner, sue_partner, zia_partner]
+    assert ordered_contacts2[0].to_dict() == bob_contact.to_dict()
+    assert ordered_contacts2 == [bob_contact, sue_contact, zia_contact]
 
 
-def test_get_ordered_debtors_roll_DoesNotReturnZero_partner_debt_lumen():
+def test_get_ordered_debtors_roll_DoesNotReturnZero_contact_debt_lumen():
     # ESTABLISH
     yao_person = personunit_shop(exx.yao)
-    zia_partner_debt_lumen = 41
-    sue_partner_debt_lumen = 51
+    zia_contact_debt_lumen = 41
+    sue_contact_debt_lumen = 51
     yao_pool = 92
-    yao_person.set_partner_respect(yao_pool)
-    bob_partner_debt_lumen = 75
-    yao_person.add_partnerunit(exx.zia, 0, zia_partner_debt_lumen)
-    yao_person.add_partnerunit(exx.sue, 0, sue_partner_debt_lumen)
-    yao_person.add_partnerunit(exx.bob, 0, bob_partner_debt_lumen)
-    yao_person.add_partnerunit(exx.yao, 0, 0)
-    yao_person.add_partnerunit(exx.xio, 0, 0)
+    yao_person.set_contact_respect(yao_pool)
+    bob_contact_debt_lumen = 75
+    yao_person.add_contactunit(exx.zia, 0, zia_contact_debt_lumen)
+    yao_person.add_contactunit(exx.sue, 0, sue_contact_debt_lumen)
+    yao_person.add_contactunit(exx.bob, 0, bob_contact_debt_lumen)
+    yao_person.add_contactunit(exx.yao, 0, 0)
+    yao_person.add_contactunit(exx.xio, 0, 0)
 
     # WHEN
-    ordered_partners2 = get_ordered_debtors_roll(yao_person)
+    ordered_contacts2 = get_ordered_debtors_roll(yao_person)
 
     # THEN
-    assert len(ordered_partners2) == 3
-    zia_partner = yao_person.get_partner(exx.zia)
-    sue_partner = yao_person.get_partner(exx.sue)
-    bob_partner = yao_person.get_partner(exx.bob)
-    assert ordered_partners2[0].to_dict() == bob_partner.to_dict()
-    assert ordered_partners2 == [bob_partner, sue_partner, zia_partner]
+    assert len(ordered_contacts2) == 3
+    zia_contact = yao_person.get_contact(exx.zia)
+    sue_contact = yao_person.get_contact(exx.sue)
+    bob_contact = yao_person.get_contact(exx.bob)
+    assert ordered_contacts2[0].to_dict() == bob_contact.to_dict()
+    assert ordered_contacts2 == [bob_contact, sue_contact, zia_contact]
 
 
 def test_set_listen_to_speaker_fact_SetsFact():
@@ -117,8 +117,8 @@ def test_set_listen_to_speaker_fact_SetsFact():
 
     sweep_rope = yao_listener.make_rope(casa_rope, exx.sweep)
 
-    yao_listener.add_partnerunit(exx.yao)
-    yao_listener.set_partner_respect(20)
+    yao_listener.add_contactunit(exx.yao)
+    yao_listener.set_contact_respect(20)
     yao_listener.set_plan_obj(planunit_shop(exx.clean), situation_rope)
     yao_listener.set_plan_obj(planunit_shop(dirty_str), situation_rope)
     yao_listener.set_plan_obj(planunit_shop(exx.sweep, pledge=True), casa_rope)
@@ -143,8 +143,8 @@ def test_set_listen_to_speaker_fact_SetsFact():
 def test_set_listen_to_speaker_fact_DoesNotOverrideFact():
     # ESTABLISH
     yao_listener = personunit_shop(exx.yao)
-    yao_listener.add_partnerunit(exx.yao)
-    yao_listener.set_partner_respect(20)
+    yao_listener.add_contactunit(exx.yao)
+    yao_listener.set_contact_respect(20)
     casa_rope = yao_listener.make_l1_rope(exx.casa)
     situation_str = "situation"
     situation_rope = yao_listener.make_rope(casa_rope, situation_str)
@@ -208,8 +208,8 @@ def test_migrate_all_facts_AddsPlanUnitsAndSetsFactUnits():
     snow_str = "snow"
     snow_rope = yao_src.make_rope(weather_rope, snow_str)
 
-    yao_src.add_partnerunit(exx.yao)
-    yao_src.set_partner_respect(20)
+    yao_src.add_contactunit(exx.yao)
+    yao_src.set_contact_respect(20)
     yao_src.set_plan_obj(planunit_shop(exx.clean), situation_rope)
     yao_src.set_plan_obj(planunit_shop(dirty_str), situation_rope)
     yao_src.set_plan_obj(planunit_shop(exx.sweep, pledge=True), casa_rope)

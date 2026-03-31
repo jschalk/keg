@@ -46,7 +46,7 @@ def test_PersonUnit_conpute_Sets_keeps_justified_WhenSinglePlanUnit_healerunit_a
 def test_PersonUnit_conpute_Sets_keeps_justified_WhenSingleProblemAndKeep():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
-    sue_person.add_partnerunit(exx.yao)
+    sue_person.add_contactunit(exx.yao)
     yao_healerunit = healerunit_shop({exx.yao})
     sue_person.set_l1_plan(
         planunit_shop("Texas", healerunit=yao_healerunit, problem_bool=True)
@@ -63,7 +63,7 @@ def test_PersonUnit_conpute_Sets_keeps_justified_WhenSingleProblemAndKeep():
 def test_PersonUnit_conpute_Sets_keeps_justified_WhenKeepIsLevelAboveProblem():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
-    sue_person.add_partnerunit(exx.yao)
+    sue_person.add_contactunit(exx.yao)
     yao_healerunit = healerunit_shop({exx.yao})
 
     texas_str = "Texas"

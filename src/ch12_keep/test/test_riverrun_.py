@@ -163,20 +163,20 @@ def test_riverrun_shop_ReturnsObj_Scenario1_WithoutArgs(temp3_dir):
 def test_RiverRun_set_keep_patientledger_SetsAttr(temp3_dir):
     # ESTABLISH
     mstr_dir = temp3_dir
-    yao_partner_cred_lumen = 500
+    yao_contact_cred_lumen = 500
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
     assert x_riverrun.keep_patientledgers == {}
 
     # WHEN
     x_riverrun.set_keep_patientledger(
         person_name=exx.yao,
-        partner_name=exx.yao,
-        mana_ledger=yao_partner_cred_lumen,
+        contact_name=exx.yao,
+        mana_ledger=yao_contact_cred_lumen,
     )
 
     # THEN
     assert x_riverrun.keep_patientledgers == {
-        exx.yao: {exx.yao: yao_partner_cred_lumen}
+        exx.yao: {exx.yao: yao_contact_cred_lumen}
     }
 
 
@@ -199,31 +199,31 @@ def test_RiverRun_delete_keep_patientledgers_person_SetsAttr(temp3_dir):
     assert x_riverrun.keep_patientledgers == {exx.yao: {exx.yao: 1}}
 
 
-def test_RiverRun_get_all_keep_patientledger_partner_names_ReturnsObj(temp3_dir):
+def test_RiverRun_get_all_keep_patientledger_contact_names_ReturnsObj(temp3_dir):
     # ESTABLISH
     mstr_dir = temp3_dir
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
 
     # WHEN
-    all_partners_ids = x_riverrun.get_all_keep_patientledger_partner_names()
+    all_contacts_ids = x_riverrun.get_all_keep_patientledger_contact_names()
     # THEN
-    assert all_partners_ids == set()
+    assert all_contacts_ids == set()
 
     # WHEN
     x_riverrun.set_keep_patientledger(exx.yao, exx.yao, 1)
     x_riverrun.set_keep_patientledger(exx.yao, exx.bob, 1)
-    all_partners_ids = x_riverrun.get_all_keep_patientledger_partner_names()
+    all_contacts_ids = x_riverrun.get_all_keep_patientledger_contact_names()
     # THEN
-    assert all_partners_ids == {exx.yao, exx.bob}
+    assert all_contacts_ids == {exx.yao, exx.bob}
 
     # WHEN
     x_riverrun.set_keep_patientledger(exx.zia, exx.bob, 1)
-    all_partners_ids = x_riverrun.get_all_keep_patientledger_partner_names()
+    all_contacts_ids = x_riverrun.get_all_keep_patientledger_contact_names()
     # THEN
-    assert all_partners_ids == {exx.yao, exx.bob, exx.zia}
+    assert all_contacts_ids == {exx.yao, exx.bob, exx.zia}
 
     # WHEN
     x_riverrun.set_keep_patientledger(exx.xio, exx.sue, 1)
-    all_partners_ids = x_riverrun.get_all_keep_patientledger_partner_names()
+    all_contacts_ids = x_riverrun.get_all_keep_patientledger_contact_names()
     # THEN
-    assert all_partners_ids == {exx.yao, exx.bob, exx.zia, exx.xio, exx.sue}
+    assert all_contacts_ids == {exx.yao, exx.bob, exx.zia, exx.xio, exx.sue}

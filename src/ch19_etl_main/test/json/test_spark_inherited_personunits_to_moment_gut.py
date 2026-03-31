@@ -31,11 +31,11 @@ def test_etl_spark_inherited_personunits_to_moment_gut_SetsFiles_Scenario0(
     person_filename = "person.json"
     e3_bob_person = personunit_shop(bob_inx, exx.a23)
     e7_bob_person = personunit_shop(bob_inx, exx.a23)
-    e3_bob_person.add_partnerunit(bob_inx, credit77)
-    e3_bob_person.add_partnerunit(yao_inx, credit44)
-    e7_bob_person.add_partnerunit(bob_inx, credit77)
-    e7_bob_person.add_partnerunit(sue_inx, credit88)
-    e7_bob_person.add_partnerunit(yao_inx, credit44)
+    e3_bob_person.add_contactunit(bob_inx, credit77)
+    e3_bob_person.add_contactunit(yao_inx, credit44)
+    e7_bob_person.add_contactunit(bob_inx, credit77)
+    e7_bob_person.add_contactunit(sue_inx, credit88)
+    e7_bob_person.add_contactunit(yao_inx, credit44)
     save_json(a23_bob_e3_dir, person_filename, e3_bob_person.to_dict())
     save_json(a23_bob_e7_dir, person_filename, e7_bob_person.to_dict())
     e3_person_path = create_path(a23_bob_e3_dir, person_filename)
@@ -53,6 +53,6 @@ def test_etl_spark_inherited_personunits_to_moment_gut_SetsFiles_Scenario0(
     # THEN
     assert os_path_exists(a23_bob_gut_path)
     generated_gut_person = get_personunit_from_dict(open_json(a23_bob_gut_path))
-    assert generated_gut_person.partners == e7_bob_person.partners
+    assert generated_gut_person.contacts == e7_bob_person.contacts
     assert generated_gut_person == e7_bob_person
     assert generated_gut_person.to_dict() == e7_bob_person.to_dict()

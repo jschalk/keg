@@ -30,7 +30,7 @@ def test_etl_brick_valid_tables_to_sound_raw_tables_PopulatesValidTable_Scenario
         kw.face_name,
         kw.moment_rope,
         kw.person_name,
-        kw.partner_name,
+        kw.contact_name,
         kw.otx_rope,
         kw.inx_rope,
         kw.knot,
@@ -41,7 +41,7 @@ def test_etl_brick_valid_tables_to_sound_raw_tables_PopulatesValidTable_Scenario
 , {kw.face_name}
 , {kw.moment_rope}
 , {kw.person_name}
-, {kw.partner_name}
+, {kw.contact_name}
 , {kw.otx_rope}
 , {kw.inx_rope}
 , {kw.knot}

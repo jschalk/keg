@@ -8,7 +8,7 @@ from src.ch00_py.dict_toolbox import (
     get_positive_int,
 )
 from src.ch01_allot.allot import allot_scale, default_grain_num_if_None
-from src.ch02_partner.group import (
+from src.ch02_contact.group import (
     AwardHeir,
     AwardLine,
     AwardUnit,
@@ -49,12 +49,12 @@ from src.ch05_reason.reason_main import (
     reasonunit_shop,
 )
 from src.ch06_plan._ref.ch06_semantic_types import (
+    ContactName,
     FundGrain,
     FundNum,
     GroupTitle,
     KnotTerm,
     LabelTerm,
-    PartnerName,
     ReasonNum,
     RopeTerm,
     default_knot_if_None,
@@ -226,8 +226,8 @@ class PlanUnit:
 
     active : bool that describes if the plan pledge is plan_active, conpute.
     active_hx : dict[int, bool] Historical record of active state, used to calcualte if changes have occured
-    all_partner_cred : bool Flag indicating there are not explicitley defined awardunits
-    all_partner_debt : bool Flag indicating there are not explicitley defined awardunits
+    all_contact_cred : bool Flag indicating there are not explicitley defined awardunits
+    all_contact_debt : bool Flag indicating there are not explicitley defined awardunits
     awardheirs : dict[GroupTitle, AwardHeir] parent plan provided awards.
     awardlines : dict[GroupTitle, AwardLine] child plan provided awards.
     descendant_pledge_count : int Count of descendant plans marked as pledges.
@@ -271,8 +271,8 @@ class PlanUnit:
     # Calculated fields
     plan_active: bool = None
     plan_active_hx: dict[int, bool] = None
-    all_partner_cred: bool = None
-    all_partner_debt: bool = None
+    all_contact_cred: bool = None
+    all_contact_debt: bool = None
     awardheirs: dict[GroupTitle, AwardHeir] = None
     awardlines: dict[GroupTitle, AwardLine] = None
     descendant_pledge_count: int = None
@@ -459,9 +459,9 @@ class PlanUnit:
 
         return descendant_ropes
 
-    def clear_all_partner_cred_debt(self):
-        self.all_partner_cred = None
-        self.all_partner_debt = None
+    def clear_all_contact_cred_debt(self):
+        self.all_contact_cred = None
+        self.all_contact_debt = None
 
     def set_tree_level(self, parent_tree_level):
         self.tree_level = parent_tree_level + 1
@@ -792,7 +792,7 @@ class PlanUnit:
         self,
         tree_traverse_count: int,
         groupunits: dict[GroupTitle, GroupUnit] = None,
-        person_name: PartnerName = None,
+        person_name: ContactName = None,
     ):
         prev_to_now_active = deepcopy(self.plan_active)
         self.plan_active = self._create_active_bool(groupunits, person_name)
@@ -817,7 +817,7 @@ class PlanUnit:
     def _create_active_bool(
         self,
         groupunits: dict[GroupTitle, GroupUnit],
-        person_name: PartnerName,
+        person_name: ContactName,
     ) -> bool:
         self.set_reasonheirs_reason_active()
         active_bool = self.all_reasonheirs_are_active()
@@ -1043,8 +1043,8 @@ def planunit_shop(
     plan_task: bool = None,
     plan_active: bool = None,
     descendant_pledge_count: int = None,
-    all_partner_cred: bool = None,
-    all_partner_debt: bool = None,
+    all_contact_cred: bool = None,
+    all_contact_debt: bool = None,
     is_expanded: bool = True,
     plan_active_hx: dict[int, bool] = None,
     knot: KnotTerm = None,
@@ -1087,8 +1087,8 @@ def planunit_shop(
         plan_task=plan_task,
         plan_active=plan_active,
         descendant_pledge_count=descendant_pledge_count,
-        all_partner_cred=all_partner_cred,
-        all_partner_debt=all_partner_debt,
+        all_contact_cred=all_contact_cred,
+        all_contact_debt=all_contact_debt,
         is_expanded=is_expanded,
         plan_active_hx=get_empty_dict_if_None(plan_active_hx),
         knot=default_knot_if_None(knot),

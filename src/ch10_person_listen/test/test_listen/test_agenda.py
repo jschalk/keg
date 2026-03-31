@@ -19,15 +19,15 @@ def test_listen_to_speaker_agenda_RaisesErrorIfPoolIsNotSet():
         listen_to_speaker_agenda(yao_personunit, zia_personunit)
 
     # THEN
-    assertion_fail_str = f"listener '{exx.yao}' person is assumed to have {zia_personunit.person_name} partnerunit."
+    assertion_fail_str = f"listener '{exx.yao}' person is assumed to have {zia_personunit.person_name} contactunit."
     assert str(excinfo.value) == assertion_fail_str
 
 
 def test_listen_to_speaker_agenda_ReturnsEqualPerson():
     # ESTABLISH
     yao_personunit = personunit_shop(exx.yao)
-    yao_personunit.add_partnerunit(exx.zia)
-    yao_personunit.set_partner_respect(100)
+    yao_personunit.add_contactunit(exx.zia)
+    yao_personunit.set_contact_respect(100)
     zia_personunit = personunit_shop(exx.zia)
 
     # WHEN
@@ -40,13 +40,13 @@ def test_listen_to_speaker_agenda_ReturnsEqualPerson():
 def test_listen_to_speaker_agenda_ReturnsSinglecase_taskPerson():
     # ESTABLISH
     before_yao_personunit = personunit_shop(exx.yao)
-    before_yao_personunit.add_partnerunit(exx.zia)
-    yao_partner_partner_debt_lumen = 77
-    before_yao_personunit.set_partner_respect(yao_partner_partner_debt_lumen)
+    before_yao_personunit.add_contactunit(exx.zia)
+    yao_contact_contact_debt_lumen = 77
+    before_yao_personunit.set_contact_respect(yao_contact_contact_debt_lumen)
     zia_clean_planunit = planunit_shop(exx.clean, pledge=True)
     zia_clean_planunit.workforceunit.add_labor(exx.yao)
     zia_personunit = personunit_shop(exx.zia)
-    zia_personunit.add_partnerunit(exx.yao)
+    zia_personunit.add_contactunit(exx.yao)
     zia_personunit.set_l1_plan(zia_clean_planunit)
     assert len(zia_personunit.get_agenda_dict()) == 0
     zia_yao_personunit = copy_deepcopy(zia_personunit)
@@ -64,7 +64,7 @@ def test_listen_to_speaker_agenda_ReturnsSinglecase_taskPerson():
     yao_clean_planunit = after_yao_personunit.get_plan_obj(clean_rope)
     print(f"{yao_clean_planunit.star=}")
     assert yao_clean_planunit.star != zia_clean_planunit.star
-    assert yao_clean_planunit.star == yao_partner_partner_debt_lumen
+    assert yao_clean_planunit.star == yao_contact_contact_debt_lumen
     assert after_yao_personunit == before_yao_personunit
     assert len(after_yao_personunit.get_agenda_dict()) == 1
 
@@ -72,11 +72,11 @@ def test_listen_to_speaker_agenda_ReturnsSinglecase_taskPerson():
 def test_listen_to_speaker_agenda_ReturnsLevel2case_taskPerson():
     # ESTABLISH
     before_yao_personunit = personunit_shop(exx.yao)
-    before_yao_personunit.add_partnerunit(exx.zia)
-    yao_partner_debt_lumen = 77
-    before_yao_personunit.set_partner_respect(yao_partner_debt_lumen)
+    before_yao_personunit.add_contactunit(exx.zia)
+    yao_contact_debt_lumen = 77
+    before_yao_personunit.set_contact_respect(yao_contact_debt_lumen)
     zia_personunit = personunit_shop(exx.zia)
-    zia_personunit.add_partnerunit(exx.yao)
+    zia_personunit.add_contactunit(exx.yao)
     zia_clean_planunit = planunit_shop(exx.clean, pledge=True)
     zia_clean_planunit.workforceunit.add_labor(exx.yao)
     casa_rope = zia_personunit.make_l1_rope("casa")
@@ -97,11 +97,11 @@ def test_listen_to_speaker_agenda_ReturnsLevel2case_taskPerson():
     yao_clean_planunit = after_yao_personunit.get_plan_obj(clean_rope)
     print(f"{yao_clean_planunit.star=}")
     assert yao_clean_planunit.star != zia_clean_planunit.star
-    assert yao_clean_planunit.star == yao_partner_debt_lumen
+    assert yao_clean_planunit.star == yao_contact_debt_lumen
     after_casa_planunit = after_yao_personunit.get_plan_obj(casa_rope)
     print(f"{after_casa_planunit.star=}")
     assert after_casa_planunit.star != 1
-    assert after_casa_planunit.star == yao_partner_debt_lumen
+    assert after_casa_planunit.star == yao_contact_debt_lumen
     assert after_yao_personunit == before_yao_personunit
     assert len(after_yao_personunit.get_agenda_dict()) == 1
 
@@ -109,12 +109,12 @@ def test_listen_to_speaker_agenda_ReturnsLevel2case_taskPerson():
 def test_listen_to_speaker_agenda_Returns2AgendaPlansLevel2case_taskPerson():
     # ESTABLISH
     before_yao_personunit = personunit_shop(exx.yao)
-    before_yao_personunit.add_partnerunit(exx.zia)
-    yao_partner_debt_lumen = 55
-    before_yao_personunit.set_partner_respect(yao_partner_debt_lumen)
+    before_yao_personunit.add_contactunit(exx.zia)
+    yao_contact_debt_lumen = 55
+    before_yao_personunit.set_contact_respect(yao_contact_debt_lumen)
 
     zia_personunit = personunit_shop(exx.zia)
-    zia_personunit.add_partnerunit(exx.yao)
+    zia_personunit.add_contactunit(exx.yao)
     fly_str = "fly"
     yao_clean_planunit = planunit_shop(exx.clean, pledge=True)
     yao_clean_planunit.workforceunit.add_labor(exx.yao)
@@ -162,11 +162,11 @@ def test_listen_to_speaker_agenda_Returns2AgendaPlansLevel2case_taskPerson():
 def test_listen_to_speaker_agenda_Returns2AgendaPlansLevel2case_taskPersonWhereAnPlanUnitExistsInAdvance():
     # ESTABLISH
     before_yao_personunit = personunit_shop(exx.yao)
-    before_yao_personunit.add_partnerunit(exx.zia)
-    yao_partner_debt_lumen = 55
-    before_yao_personunit.set_partner_respect(yao_partner_debt_lumen)
+    before_yao_personunit.add_contactunit(exx.zia)
+    yao_contact_debt_lumen = 55
+    before_yao_personunit.set_contact_respect(yao_contact_debt_lumen)
     zia_personunit = personunit_shop(exx.zia)
-    zia_personunit.add_partnerunit(exx.yao)
+    zia_personunit.add_contactunit(exx.yao)
     dish_str = "dish"
     fly_str = "fly"
     yao_dish_planunit = planunit_shop(dish_str, pledge=True)
@@ -219,14 +219,14 @@ def test_listen_to_speaker_agenda_Returns2AgendaPlansLevel2case_taskPersonWhereA
 def test_listen_to_speaker_agenda_ProcessesIrrationalPerson():
     # ESTABLISH
     yao_duty = personunit_shop(exx.yao)
-    zia_partner_cred_lumen = 47
-    zia_partner_debt_lumen = 41
-    sue_partner_cred_lumen = 57
-    sue_partner_debt_lumen = 51
-    yao_duty.add_partnerunit(exx.zia, zia_partner_cred_lumen, zia_partner_debt_lumen)
-    yao_duty.add_partnerunit(exx.sue, sue_partner_cred_lumen, sue_partner_debt_lumen)
+    zia_contact_cred_lumen = 47
+    zia_contact_debt_lumen = 41
+    sue_contact_cred_lumen = 57
+    sue_contact_debt_lumen = 51
+    yao_duty.add_contactunit(exx.zia, zia_contact_cred_lumen, zia_contact_debt_lumen)
+    yao_duty.add_contactunit(exx.sue, sue_contact_cred_lumen, sue_contact_debt_lumen)
     yao_pool = 92
-    yao_duty.set_partner_respect(yao_pool)
+    yao_duty.set_contact_respect(yao_pool)
 
     sue_personunit = personunit_shop(exx.sue)
     sue_personunit.set_max_tree_traverse(6)
@@ -262,51 +262,51 @@ def test_listen_to_speaker_agenda_ProcessesIrrationalPerson():
 
     # WHEN
     yao_vision = create_empty_person_from_person(yao_duty, exx.yao)
-    yao_vision.add_partnerunit(exx.zia, zia_partner_cred_lumen, zia_partner_debt_lumen)
-    yao_vision.add_partnerunit(exx.sue, sue_partner_cred_lumen, sue_partner_debt_lumen)
-    yao_vision.set_partner_respect(yao_pool)
+    yao_vision.add_contactunit(exx.zia, zia_contact_cred_lumen, zia_contact_debt_lumen)
+    yao_vision.add_contactunit(exx.sue, sue_contact_cred_lumen, sue_contact_debt_lumen)
+    yao_vision.set_contact_respect(yao_pool)
     yao_vision = listen_to_speaker_agenda(yao_vision, sue_personunit)
     yao_vision.conpute()
 
     # THEN irrational person is ignored
     assert len(yao_vision.get_agenda_dict()) != 3
     assert len(yao_vision.get_agenda_dict()) == 0
-    zia_partnerunit = yao_vision.get_partner(exx.zia)
-    sue_partnerunit = yao_vision.get_partner(exx.sue)
-    print(f"{sue_partnerunit.partner_debt_lumen=}")
-    print(f"{sue_partnerunit.irrational_partner_debt_lumen=}")
-    assert zia_partnerunit.irrational_partner_debt_lumen == 0
-    assert sue_partnerunit.irrational_partner_debt_lumen == 51
+    zia_contactunit = yao_vision.get_contact(exx.zia)
+    sue_contactunit = yao_vision.get_contact(exx.sue)
+    print(f"{sue_contactunit.contact_debt_lumen=}")
+    print(f"{sue_contactunit.irrational_contact_debt_lumen=}")
+    assert zia_contactunit.irrational_contact_debt_lumen == 0
+    assert sue_contactunit.irrational_contact_debt_lumen == 51
 
 
 def test_listen_to_speaker_agenda_ProcessesBarrenPerson():
     # ESTABLISH
     yao_duty = personunit_shop(exx.yao)
-    zia_partner_cred_lumen = 47
-    zia_partner_debt_lumen = 41
-    sue_partner_cred_lumen = 57
-    sue_partner_debt_lumen = 51
-    yao_duty.add_partnerunit(exx.zia, zia_partner_cred_lumen, zia_partner_debt_lumen)
-    yao_duty.add_partnerunit(exx.sue, sue_partner_cred_lumen, sue_partner_debt_lumen)
+    zia_contact_cred_lumen = 47
+    zia_contact_debt_lumen = 41
+    sue_contact_cred_lumen = 57
+    sue_contact_debt_lumen = 51
+    yao_duty.add_contactunit(exx.zia, zia_contact_cred_lumen, zia_contact_debt_lumen)
+    yao_duty.add_contactunit(exx.sue, sue_contact_cred_lumen, sue_contact_debt_lumen)
     yao_pool = 92
-    yao_duty.set_partner_respect(yao_pool)
+    yao_duty.set_contact_respect(yao_pool)
 
     # WHEN
     sue_vision = create_empty_person_from_person(yao_duty, exx.sue)
     yao_vision = create_empty_person_from_person(yao_duty, exx.yao)
-    yao_vision.add_partnerunit(exx.zia, zia_partner_cred_lumen, zia_partner_debt_lumen)
-    yao_vision.add_partnerunit(exx.sue, sue_partner_cred_lumen, sue_partner_debt_lumen)
-    yao_vision.set_partner_respect(yao_pool)
+    yao_vision.add_contactunit(exx.zia, zia_contact_cred_lumen, zia_contact_debt_lumen)
+    yao_vision.add_contactunit(exx.sue, sue_contact_cred_lumen, sue_contact_debt_lumen)
+    yao_vision.set_contact_respect(yao_pool)
     yao_vision = listen_to_speaker_agenda(yao_vision, speaker=sue_vision)
 
     # THEN irrational person is ignored
     assert len(yao_vision.get_agenda_dict()) != 3
     assert len(yao_vision.get_agenda_dict()) == 0
-    zia_partnerunit = yao_vision.get_partner(exx.zia)
-    sue_partnerunit = yao_vision.get_partner(exx.sue)
-    print(f"{sue_partnerunit.partner_debt_lumen=}")
-    print(f"{sue_partnerunit.irrational_partner_debt_lumen=}")
-    assert zia_partnerunit.irrational_partner_debt_lumen == 0
-    assert zia_partnerunit.inallocable_partner_debt_lumen == 0
-    assert sue_partnerunit.irrational_partner_debt_lumen == 0
-    assert sue_partnerunit.inallocable_partner_debt_lumen == 51
+    zia_contactunit = yao_vision.get_contact(exx.zia)
+    sue_contactunit = yao_vision.get_contact(exx.sue)
+    print(f"{sue_contactunit.contact_debt_lumen=}")
+    print(f"{sue_contactunit.irrational_contact_debt_lumen=}")
+    assert zia_contactunit.irrational_contact_debt_lumen == 0
+    assert zia_contactunit.inallocable_contact_debt_lumen == 0
+    assert sue_contactunit.irrational_contact_debt_lumen == 0
+    assert sue_contactunit.inallocable_contact_debt_lumen == 51

@@ -275,7 +275,7 @@ from src.ref.keywords import Ch15Keywords as kw, ExampleStrs as exx
 #     assert not sue_timenabu.otx2inx_exists(x0_epoch_length, x0_epoch_diff)
 
 
-# def test_NabuTime_reveal_inx_ReturnsObjAndSetsAttr_partner_name():
+# def test_NabuTime_reveal_inx_ReturnsObjAndSetsAttr_contact_name():
 #     # ESTABLISH
 #     sue_timenabu = timenabu_shop(exx.sue)
 #     x0_epoch_length = 660

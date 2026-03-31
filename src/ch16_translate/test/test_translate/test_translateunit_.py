@@ -30,7 +30,7 @@ def test_get_translate_args_class_types_ReturnsObj():
     translate_args_class_types = get_translate_args_class_types()
 
     # THEN
-    assert translate_args_class_types.get(kw.partner_name) == kw.NameTerm
+    assert translate_args_class_types.get(kw.contact_name) == kw.NameTerm
     assert translate_args_class_types.get(kw.addin) == "float"
     assert translate_args_class_types.get(kw.amount) == "float"
     assert translate_args_class_types.get(kw.awardee_title) == kw.TitleTerm
@@ -39,12 +39,12 @@ def test_get_translate_args_class_types_ReturnsObj():
     assert translate_args_class_types.get(kw.begin) == "float"
     assert translate_args_class_types.get(kw.c400_number) == "int"
     assert translate_args_class_types.get(kw.close) == "float"
-    assert translate_args_class_types.get(kw.partner_cred_lumen) == "float"
+    assert translate_args_class_types.get(kw.contact_cred_lumen) == "float"
     assert translate_args_class_types.get(kw.group_cred_lumen) == "float"
     assert translate_args_class_types.get(kw.credor_respect) == "float"
     assert translate_args_class_types.get(kw.cumulative_day) == "int"
     assert translate_args_class_types.get(kw.cumulative_minute) == "int"
-    assert translate_args_class_types.get(kw.partner_debt_lumen) == "float"
+    assert translate_args_class_types.get(kw.contact_debt_lumen) == "float"
     assert translate_args_class_types.get(kw.group_debt_lumen) == "float"
     assert translate_args_class_types.get(kw.debtor_respect) == "float"
     assert translate_args_class_types.get(kw.denom) == "int"
@@ -99,7 +99,7 @@ def test_get_translate_args_class_types_ReturnsObj():
     assert atom_args.issubset(translate_args)
     assert moment_args.issubset(translate_args)
     assert atom_args & (moment_args) == {
-        kw.partner_name,
+        kw.contact_name,
         kw.fund_grain,
         kw.mana_grain,
         kw.respect_grain,
@@ -180,7 +180,7 @@ def test_get_translateable_args_ReturnsObj():
         kw.labor_title,
         kw.reason_context,
         kw.reason_state,
-        kw.partner_name,
+        kw.contact_name,
         kw.weekday_label,
     }
 
@@ -265,7 +265,7 @@ def test_get_translate_nameterm_args_ReturnsObj():
 
     # THEN
     assert translate_NameTerm_args == {
-        kw.partner_name,
+        kw.contact_name,
         kw.face_name,
         kw.healer_name,
         kw.person_name,

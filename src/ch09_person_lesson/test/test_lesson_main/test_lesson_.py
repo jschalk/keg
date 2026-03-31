@@ -1,6 +1,6 @@
 from pytest import raises as pytest_raises
 from src.ch00_py.dict_toolbox import get_json_from_dict
-from src.ch02_partner.partner import partnerunit_shop
+from src.ch02_contact.contact import contactunit_shop
 from src.ch07_person_logic.person_main import get_default_rope, personunit_shop
 from src.ch08_person_atom.atom_main import personatom_shop
 from src.ch09_person_lesson._ref.ch09_semantic_types import (
@@ -351,8 +351,8 @@ def test_LessonUnit_get_serializable_step_dict_ReturnsObj_Scenario1_WithPersonDe
   "delta": {
     "0": {
       "crud": "DELETE", 
-      "dimen": "person_partnerunit", 
-      "jkeys": {"partner_name": "Sue"}, 
+      "dimen": "person_contactunit", 
+      "jkeys": {"contact_name": "Sue"}, 
       "jvalues": {}
     }, 
     "1": {
@@ -439,28 +439,28 @@ def test_LessonUnit_get_deltametric_dict_ReturnsObj():
     assert x_dict.get(delta_max_str) is None
 
 
-def test_LessonUnit_add_p_personatom_Sets_PersonUnit_partnerunits():
+def test_LessonUnit_add_p_personatom_Sets_PersonUnit_contactunits():
     # ESTABLISH
     bob_lessonunit = lessonunit_shop(exx.bob)
-    bob_partner_cred_lumen = 55
-    bob_partner_debt_lumen = 66
-    bob_partnerunit = partnerunit_shop(
-        exx.bob, bob_partner_cred_lumen, bob_partner_debt_lumen
+    bob_contact_cred_lumen = 55
+    bob_contact_debt_lumen = 66
+    bob_contactunit = contactunit_shop(
+        exx.bob, bob_contact_cred_lumen, bob_contact_debt_lumen
     )
-    cw_str = kw.partner_cred_lumen
-    dw_str = kw.partner_debt_lumen
-    print(f"{bob_partnerunit.to_dict()=}")
+    cw_str = kw.contact_cred_lumen
+    dw_str = kw.contact_debt_lumen
+    print(f"{bob_contactunit.to_dict()=}")
     bob_required_dict = {
-        kw.partner_name: bob_partnerunit.to_dict().get(kw.partner_name)
+        kw.contact_name: bob_contactunit.to_dict().get(kw.contact_name)
     }
-    bob_optional_dict = {cw_str: bob_partnerunit.to_dict().get(cw_str)}
-    bob_optional_dict[dw_str] = bob_partnerunit.to_dict().get(dw_str)
+    bob_optional_dict = {cw_str: bob_contactunit.to_dict().get(cw_str)}
+    bob_optional_dict[dw_str] = bob_contactunit.to_dict().get(dw_str)
     print(f"{bob_required_dict=}")
     assert bob_lessonunit.persondelta.personatoms == {}
 
     # WHEN
     bob_lessonunit.add_p_personatom(
-        dimen=kw.person_partnerunit,
+        dimen=kw.person_contactunit,
         crud_str=kw.INSERT,
         jkeys=bob_required_dict,
         jvalues=bob_optional_dict,
@@ -470,27 +470,27 @@ def test_LessonUnit_add_p_personatom_Sets_PersonUnit_partnerunits():
     assert len(bob_lessonunit.persondelta.personatoms) == 1
     assert (
         bob_lessonunit.persondelta.personatoms.get(kw.INSERT)
-        .get(kw.person_partnerunit)
+        .get(kw.person_contactunit)
         .get(exx.bob)
         is not None
     )
 
 
-def test_LessonUnit_get_edited_person_ReturnsObj_PersonUnit_insert_partner():
+def test_LessonUnit_get_edited_person_ReturnsObj_PersonUnit_insert_contact():
     # ESTABLISH
     sue_lessonunit = lessonunit_shop(exx.sue)
 
     before_sue_personunit = personunit_shop(exx.sue)
-    before_sue_personunit.add_partnerunit(exx.yao)
-    assert before_sue_personunit.partner_exists(exx.yao)
-    assert before_sue_personunit.partner_exists(exx.zia) is False
-    dimen = kw.person_partnerunit
+    before_sue_personunit.add_contactunit(exx.yao)
+    assert before_sue_personunit.contact_exists(exx.yao)
+    assert before_sue_personunit.contact_exists(exx.zia) is False
+    dimen = kw.person_contactunit
     x_personatom = personatom_shop(dimen, kw.INSERT)
-    x_personatom.set_jkey(kw.partner_name, exx.zia)
-    x_partner_cred_lumen = 55
-    x_partner_debt_lumen = 66
-    x_personatom.set_jvalue("partner_cred_lumen", x_partner_cred_lumen)
-    x_personatom.set_jvalue("partner_debt_lumen", x_partner_debt_lumen)
+    x_personatom.set_jkey(kw.contact_name, exx.zia)
+    x_contact_cred_lumen = 55
+    x_contact_debt_lumen = 66
+    x_personatom.set_jvalue("contact_cred_lumen", x_contact_cred_lumen)
+    x_personatom.set_jvalue("contact_debt_lumen", x_contact_debt_lumen)
     sue_lessonunit.persondelta.set_personatom(x_personatom)
     print(f"{sue_lessonunit.persondelta.personatoms.keys()=}")
 
@@ -500,12 +500,12 @@ def test_LessonUnit_get_edited_person_ReturnsObj_PersonUnit_insert_partner():
     )
 
     # THEN
-    yao_partnerunit = after_sue_personunit.get_partner(exx.yao)
-    zia_partnerunit = after_sue_personunit.get_partner(exx.zia)
-    assert yao_partnerunit is not None
-    assert zia_partnerunit is not None
-    assert zia_partnerunit.partner_cred_lumen == x_partner_cred_lumen
-    assert zia_partnerunit.partner_debt_lumen == x_partner_debt_lumen
+    yao_contactunit = after_sue_personunit.get_contact(exx.yao)
+    zia_contactunit = after_sue_personunit.get_contact(exx.zia)
+    assert yao_contactunit is not None
+    assert zia_contactunit is not None
+    assert zia_contactunit.contact_cred_lumen == x_contact_cred_lumen
+    assert zia_contactunit.contact_debt_lumen == x_contact_debt_lumen
 
 
 def test_LessonUnit_get_edited_person_RaisesErrorWhenlessonAttrsAndPersonAttrsAreNotTheSame():
@@ -526,26 +526,26 @@ def test_LessonUnit_get_edited_person_RaisesErrorWhenlessonAttrsAndPersonAttrsAr
 def test_LessonUnit_is_empty_ReturnsObj():
     # ESTABLISH
     bob_lessonunit = lessonunit_shop(exx.bob)
-    bob_partner_cred_lumen = 55
-    bob_partner_debt_lumen = 66
-    bob_partnerunit = partnerunit_shop(
-        exx.bob, bob_partner_cred_lumen, bob_partner_debt_lumen
+    bob_contact_cred_lumen = 55
+    bob_contact_debt_lumen = 66
+    bob_contactunit = contactunit_shop(
+        exx.bob, bob_contact_cred_lumen, bob_contact_debt_lumen
     )
-    cw_str = kw.partner_cred_lumen
-    dw_str = kw.partner_debt_lumen
-    print(f"{bob_partnerunit.to_dict()=}")
+    cw_str = kw.contact_cred_lumen
+    dw_str = kw.contact_debt_lumen
+    print(f"{bob_contactunit.to_dict()=}")
     bob_required_dict = {
-        kw.partner_name: bob_partnerunit.to_dict().get(kw.partner_name)
+        kw.contact_name: bob_contactunit.to_dict().get(kw.contact_name)
     }
-    bob_optional_dict = {cw_str: bob_partnerunit.to_dict().get(cw_str)}
-    bob_optional_dict[dw_str] = bob_partnerunit.to_dict().get(dw_str)
+    bob_optional_dict = {cw_str: bob_contactunit.to_dict().get(cw_str)}
+    bob_optional_dict[dw_str] = bob_contactunit.to_dict().get(dw_str)
     print(f"{bob_required_dict=}")
     assert bob_lessonunit.persondelta.personatoms == {}
     assert bob_lessonunit.is_empty()
 
     # WHEN
     bob_lessonunit.add_p_personatom(
-        dimen=kw.person_partnerunit,
+        dimen=kw.person_contactunit,
         crud_str=kw.INSERT,
         jkeys=bob_required_dict,
         jvalues=bob_optional_dict,
@@ -564,7 +564,7 @@ def test_LessonUnit_is_empty_ReturnsObj():
     # Test for UPDATE_str operation
     bob_lessonunit_update = lessonunit_shop(exx.bob)
     bob_lessonunit_update.add_p_personatom(
-        dimen=kw.person_partnerunit,
+        dimen=kw.person_contactunit,
         crud_str=kw.UPDATE,
         jkeys=bob_required_dict,
         jvalues=bob_optional_dict,
@@ -575,7 +575,7 @@ def test_LessonUnit_is_empty_ReturnsObj():
     # Test for DELETE_str operation
     bob_lessonunit_delete = lessonunit_shop(exx.bob)
     bob_lessonunit_delete.add_p_personatom(
-        dimen=kw.person_partnerunit,
+        dimen=kw.person_contactunit,
         crud_str=kw.DELETE,
         jkeys=bob_required_dict,
         jvalues={},

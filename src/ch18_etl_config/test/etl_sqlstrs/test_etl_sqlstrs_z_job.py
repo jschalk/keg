@@ -45,8 +45,8 @@ def test_create_job_tables_CreatesTables(cursor0: Cursor):
     # ESTABLISH
     assert len(get_db_tables(cursor0)) == 0
 
-    prnmemb_job_table = prime_table(kw.person_partner_membership, kw.job, None)
-    prnptnr_job_table = prime_table(kw.person_partnerunit, kw.job, None)
+    prnmemb_job_table = prime_table(kw.person_contact_membership, kw.job, None)
+    prnptnr_job_table = prime_table(kw.person_contactunit, kw.job, None)
     prngrou_job_table = prime_table(kw.person_groupunit, kw.job, None)
     prnawar_job_table = prime_table(kw.person_plan_awardunit, kw.job, None)
     prnfact_job_table = prime_table(kw.person_plan_factunit, kw.job, None)
@@ -56,8 +56,8 @@ def test_create_job_tables_CreatesTables(cursor0: Cursor):
     prnlabo_job_table = prime_table(kw.person_plan_laborunit, kw.job, None)
     prnplan_job_table = prime_table(kw.person_planunit, kw.job, None)
     prnunit_job_table = prime_table(kw.personunit, kw.job, None)
-    # prnmemb_job_table = f"{kw.person_partner_membership}_job"
-    # prnptnr_job_table = f"{kw.person_partnerunit}_job"
+    # prnmemb_job_table = f"{kw.person_contact_membership}_job"
+    # prnptnr_job_table = f"{kw.person_contactunit}_job"
     # prngrou_job_table = f"{kw.person_groupunit}_job"
     # prnawar_job_table = f"{kw.person_plan_awardunit}_job"
     # prnfact_job_table = f"{kw.person_plan_factunit}_job"

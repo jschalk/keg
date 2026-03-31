@@ -1,4 +1,4 @@
-from src.ch02_partner.group import awardunit_shop
+from src.ch02_contact.group import awardunit_shop
 from src.ch03_workforce.workforce import workforceunit_shop
 from src.ch04_rope.rope import create_rope
 from src.ch05_reason.reason_main import (

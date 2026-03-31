@@ -13,7 +13,7 @@ def test_PersonUnit_Exists():
     # THEN
     assert x_person
     assert x_person.person_name is None
-    assert x_person.partners is None
+    assert x_person.contacts is None
     assert x_person.planroot is None
     assert x_person.credor_respect is None
     assert x_person.debtor_respect is None
@@ -53,7 +53,7 @@ def test_PersonUnit_Exists():
         kw.reason_contexts,
         kw.sum_healerunit_plans_fund_total,
         kw.tree_traverse_count,
-        kw.partners,
+        kw.contacts,
         kw.knot,
         kw.planroot,
         kw.credor_respect,
@@ -105,7 +105,7 @@ def test_personunit_shop_ReturnsObj_Scenario1_WithParameters():
     # THEN
     assert x_person
     assert x_person.person_name == exx.sue
-    assert x_person.partners == {}
+    assert x_person.contacts == {}
     assert x_person.planroot is not None
     assert x_person.planroot.get_plan_rope() == iowa_rope
     assert x_person.max_tree_traverse == 3

@@ -646,7 +646,7 @@ def test_PersonUnit_conpute_SetsEmpty_sum_healerunit_plans_fund_total():
 def test_PersonUnit_conpute_Sets_sum_healerunit_plans_fund_total(graphics_bool):
     # ESTABLISH
     sue_personunit = get_personunit_with_4_levels_and_2reasons()
-    sue_personunit.add_partnerunit("Sue")
+    sue_personunit.add_contactunit("Sue")
     sue_personunit.conpute()
     nation_rope = sue_personunit.make_l1_rope("nation")
     usa_rope = sue_personunit.make_rope(nation_rope, "USA")
@@ -728,7 +728,7 @@ def test_PersonUnit_conpute_Sets_sum_healerunit_plans_fund_total(graphics_bool):
 def test_PersonUnit_conpute_Sets_keep_dict_v1(graphics_bool):
     # ESTABLISH
     sue_personunit = get_personunit_with_4_levels_and_2reasons()
-    sue_personunit.add_partnerunit("Sue")
+    sue_personunit.add_contactunit("Sue")
     sue_personunit.conpute()
     nation_rope = sue_personunit.make_l1_rope("nation")
     usa_rope = sue_personunit.make_rope(nation_rope, "USA")
@@ -789,8 +789,8 @@ def test_PersonUnit_conpute_Sets_keep_dict_v1(graphics_bool):
 def test_PersonUnit_conpute_Sets_healers_dict():
     # ESTABLISH
     sue_personunit = get_personunit_with_4_levels_and_2reasons()
-    sue_personunit.add_partnerunit(exx.sue)
-    sue_personunit.add_partnerunit(exx.bob)
+    sue_personunit.add_contactunit(exx.sue)
+    sue_personunit.add_contactunit(exx.bob)
     assert sue_personunit._healers_dict == {}
 
     # WHEN
@@ -826,8 +826,8 @@ def test_PersonUnit_conpute_Sets_healers_dict():
 def test_PersonUnit_conpute_Sets_keeps_buildable_True():
     # ESTABLISH
     sue_personunit = get_personunit_with_4_levels_and_2reasons()
-    sue_personunit.add_partnerunit(exx.sue)
-    sue_personunit.add_partnerunit(exx.bob)
+    sue_personunit.add_contactunit(exx.sue)
+    sue_personunit.add_contactunit(exx.bob)
     assert sue_personunit.keeps_buildable is False
 
     # WHEN
@@ -857,8 +857,8 @@ def test_PersonUnit_conpute_Sets_keeps_buildable_True():
 def test_PersonUnit_conpute_Sets_keeps_buildable_False():
     # ESTABLISH
     sue_personunit = get_personunit_with_4_levels_and_2reasons()
-    sue_personunit.add_partnerunit(exx.sue)
-    sue_personunit.add_partnerunit(exx.bob)
+    sue_personunit.add_contactunit(exx.sue)
+    sue_personunit.add_contactunit(exx.bob)
     assert sue_personunit.keeps_buildable is False
 
     # WHEN

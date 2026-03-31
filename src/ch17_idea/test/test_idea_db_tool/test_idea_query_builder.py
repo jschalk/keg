@@ -19,7 +19,7 @@ def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario0_person_plan_laboruni
         kw.plan_rope,
         kw.labor_title,
         kw.person_name,
-        kw.partner_name,
+        kw.contact_name,
         kw.amount,
     ]
     prnlabo_cat = "person_plan_laborunit"
@@ -58,7 +58,7 @@ GROUP BY {columns_str}
     assert gen_sqlstr == expected_sqlstr
 
 
-def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario1_person_partnerunit(
+def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario1_person_contactunit(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -70,15 +70,15 @@ def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario1_person_partnerunit(
         kw.plan_rope,
         kw.labor_title,
         kw.person_name,
-        kw.partner_name,
-        kw.partner_cred_lumen,
-        kw.partner_debt_lumen,
+        kw.contact_name,
+        kw.contact_cred_lumen,
+        kw.contact_debt_lumen,
         kw.amount,
     ]
     src_table = f"{idea_number}_raw"
-    prnptnr_table = f"{kw.person_partnerunit}_raw"
+    prnptnr_table = f"{kw.person_contactunit}_raw"
     idea_config = get_idea_config_dict()
-    prnptnr_config = idea_config.get(kw.person_partnerunit)
+    prnptnr_config = idea_config.get(kw.person_contactunit)
     prnptnr_jkeys = prnptnr_config.get(kw.jkeys)
     prnptnr_jvals = prnptnr_config.get(kw.jvalues)
     prnptnr_args = set(prnptnr_jkeys.keys()).union(set(prnptnr_jvals.keys()))
@@ -89,15 +89,15 @@ def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario1_person_partnerunit(
 
     # WHEN
     gen_sqlstr = get_idea_into_dimen_raw_query(
-        cursor0, idea_number, kw.person_partnerunit, prnptnr_jkeys
+        cursor0, idea_number, kw.person_contactunit, prnptnr_jkeys
     )
 
     # THEN
-    columns_str = "spark_num, face_name, moment_rope, person_name, partner_name, partner_cred_lumen, partner_debt_lumen"
-    expected_sqlstr = f"""INSERT INTO {kw.person_partnerunit}_raw (idea_number, {columns_str})
+    columns_str = "spark_num, face_name, moment_rope, person_name, contact_name, contact_cred_lumen, contact_debt_lumen"
+    expected_sqlstr = f"""INSERT INTO {kw.person_contactunit}_raw (idea_number, {columns_str})
 SELECT '{idea_number}' as idea_number, {columns_str}
 FROM {idea_number}_raw
-WHERE spark_num IS NOT NULL AND face_name IS NOT NULL AND moment_rope IS NOT NULL AND person_name IS NOT NULL AND partner_name IS NOT NULL
+WHERE spark_num IS NOT NULL AND face_name IS NOT NULL AND moment_rope IS NOT NULL AND person_name IS NOT NULL AND contact_name IS NOT NULL
 GROUP BY {columns_str}
 ;
 """
@@ -108,7 +108,7 @@ GROUP BY {columns_str}
     assert gen_sqlstr == expected_sqlstr
 
 
-def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario2_person_partnerunit(
+def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario2_person_contactunit(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -119,14 +119,14 @@ def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario2_person_partnerunit(
         kw.plan_rope,
         kw.labor_title,
         kw.person_name,
-        kw.partner_name,
-        kw.partner_cred_lumen,
+        kw.contact_name,
+        kw.contact_cred_lumen,
         kw.amount,
     ]
     src_table = f"{idea_number}_raw"
-    prnptnr_table = f"{kw.person_partnerunit}_raw"
+    prnptnr_table = f"{kw.person_contactunit}_raw"
     idea_config = get_idea_config_dict()
-    prnptnr_config = idea_config.get(kw.person_partnerunit)
+    prnptnr_config = idea_config.get(kw.person_contactunit)
     prnptnr_jkeys = prnptnr_config.get(kw.jkeys)
     prnptnr_jvals = prnptnr_config.get(kw.jvalues)
     prnptnr_args = set(prnptnr_jkeys.keys()).union(set(prnptnr_jvals.keys()))
@@ -137,15 +137,15 @@ def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario2_person_partnerunit(
 
     # WHEN
     gen_sqlstr = get_idea_into_dimen_raw_query(
-        cursor0, idea_number, kw.person_partnerunit, prnptnr_jkeys
+        cursor0, idea_number, kw.person_contactunit, prnptnr_jkeys
     )
 
     # THEN
-    columns_str = "spark_num, face_name, person_name, partner_name, partner_cred_lumen"
-    expected_sqlstr = f"""INSERT INTO {kw.person_partnerunit}_raw (idea_number, {columns_str})
+    columns_str = "spark_num, face_name, person_name, contact_name, contact_cred_lumen"
+    expected_sqlstr = f"""INSERT INTO {kw.person_contactunit}_raw (idea_number, {columns_str})
 SELECT '{idea_number}' as idea_number, {columns_str}
 FROM {idea_number}_raw
-WHERE spark_num IS NOT NULL AND face_name IS NOT NULL AND moment_rope IS NOT NULL AND person_name IS NOT NULL AND partner_name IS NOT NULL
+WHERE spark_num IS NOT NULL AND face_name IS NOT NULL AND moment_rope IS NOT NULL AND person_name IS NOT NULL AND contact_name IS NOT NULL
 GROUP BY {columns_str}
 ;
 """

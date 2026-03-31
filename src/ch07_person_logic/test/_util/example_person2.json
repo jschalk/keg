@@ -2,16 +2,16 @@
   "knot": ";", 
   "mana_grain": 1, 
   "max_tree_traverse": 20, 
-  "partners": {
+  "contacts": {
     "A a ron Jones": {
       "memberships": {
         ";Everyone"    : { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": ";Everyone"     }, 
         ";MerVista Apt": { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": ";MerVista Apt" }, 
         "A a ron Jones": { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "A a ron Jones" }
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "A a ron Jones"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "A a ron Jones"
     }, 
     "America": {
       "memberships": {
@@ -20,9 +20,9 @@
         ";Friends" : { "group_cred_lumen": 6.10, "group_debt_lumen": 1, "group_title": ";Friends"  }, 
         "America"  : { "group_cred_lumen": 1.00, "group_debt_lumen": 1, "group_title": "America"   }
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "America"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "America"
     }, 
     "Anna": {
       "memberships": {
@@ -30,9 +30,9 @@
         ";Family"  : { "group_cred_lumen": 6.2, "group_debt_lumen": 1, "group_title": ";Family"   }, 
         "Anna"     : { "group_cred_lumen": 1.0, "group_debt_lumen": 1, "group_title": "Anna"      }
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "Anna"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "Anna"
     }, 
     "Benjamin Stoddert": {
       "memberships": {
@@ -45,9 +45,9 @@
           "group_title": "Benjamin Stoddert"
         }
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "Benjamin Stoddert"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "Benjamin Stoddert"
     }, 
     "Bob302": {
       "memberships": {
@@ -60,9 +60,9 @@
         }, 
         "Bob302": {"group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "Bob302"}
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "Bob302"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "Bob302"
     }, 
     "Chuck Lee": {
       "memberships": {
@@ -71,9 +71,9 @@
         ";Everyone"    : { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": ";Everyone"     }, 
         "Chuck Lee"    : { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "Chuck Lee"     }
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "Chuck Lee"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "Chuck Lee"
     }, 
     "Ernesto Chavez": {
       "memberships": {
@@ -81,9 +81,9 @@
         ";Philosophy": {"group_cred_lumen": 6.5, "group_debt_lumen": 1, "group_title": ";Philosophy"}, 
         "Ernesto Chavez": {"group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "Ernesto Chavez"}
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "Ernesto Chavez"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "Ernesto Chavez"
     }, 
     "Jacque Chirac": {
       "memberships": {
@@ -91,9 +91,9 @@
         ";MerVista Apt": { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": ";MerVista Apt" }, 
         "Jacque Chirac": { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "Jacque Chirac" }
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "Jacque Chirac"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "Jacque Chirac"
     }, 
     "Jane Randolph": {
       "memberships": {
@@ -101,9 +101,9 @@
         ";Everyone"    : { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": ";Everyone"     }, 
         "Jane Randolph": { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "Jane Randolph" }
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "Jane Randolph"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "Jane Randolph"
     }, 
     "Maria Reynolds": {
       "memberships": {
@@ -111,9 +111,9 @@
         ";Everyone": {"group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": ";Everyone"}, 
         "Maria Reynolds": {"group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "Maria Reynolds"}
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "Maria Reynolds"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "Maria Reynolds"
     }, 
     "Martha Doubs": {
       "memberships": {
@@ -122,9 +122,9 @@
         ";Everyone"    : { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": ";Everyone"     }, 
         "Martha Doubs" : { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "Martha Doubs"  }
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "Martha Doubs"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "Martha Doubs"
     }, 
     "Mikayla": {
       "memberships": {
@@ -133,9 +133,9 @@
         ";Philosophy" : { "group_cred_lumen":  1, "group_debt_lumen": 1, "group_title": ";Philosophy"  }, 
         "Mikayla"     : { "group_cred_lumen":  1, "group_debt_lumen": 1, "group_title": "Mikayla"      }
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "Mikayla"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "Mikayla"
     }, 
     "Norberto": {
       "memberships": {
@@ -143,9 +143,9 @@
         ";MerVista Apt": { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": ";MerVista Apt" }, 
         "Norberto"     : { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "Norberto"      }
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "Norberto"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "Norberto"
     }, 
     "Perrison": {
       "memberships": {
@@ -158,9 +158,9 @@
         }, 
         "Perrison": {"group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "Perrison"}
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "Perrison"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "Perrison"
     }, 
     "Philipa": {
       "memberships": {
@@ -169,9 +169,9 @@
         ";Philosophy": {"group_cred_lumen": 52, "group_debt_lumen": 1, "group_title": ";Philosophy"}, 
         "Philipa": {"group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "Philipa"}
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "Philipa"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "Philipa"
     }, 
     "Prashant": {
       "memberships": {
@@ -183,9 +183,9 @@
         }, 
         "Prashant": {"group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "Prashant"}
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "Prashant"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "Prashant"
     }, 
     "Renee Elise Goldsberry": {
       "memberships": {
@@ -215,9 +215,9 @@
           "group_title": "Renee Elise Goldsberry"
         }
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "Renee Elise Goldsberry"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "Renee Elise Goldsberry"
     }, 
     "Sam zamora": {
       "memberships": {
@@ -226,9 +226,9 @@
         ";Everyone"    : { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": ";Everyone"     }, 
         "Sam zamora"   : { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "Sam zamora"    }
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "Sam zamora"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "Sam zamora"
     }, 
     "Shadwell Harris": {
       "memberships": {
@@ -236,9 +236,9 @@
         ";Everyone": {"group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": ";Everyone"}, 
         "Shadwell Harris": {"group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "Shadwell Harris"}
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "Shadwell Harris"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "Shadwell Harris"
     }, 
     "Thomas OSU": {
       "memberships": {
@@ -246,9 +246,9 @@
         ";Everyone": {"group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": ";Everyone"}, 
         "Thomas OSU": {"group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "Thomas OSU"}
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "Thomas OSU"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "Thomas OSU"
     }, 
     "Travis Fox": {
       "memberships": {
@@ -256,9 +256,9 @@
         ";Family"   : { "group_cred_lumen": 6.35, "group_debt_lumen": 1, "group_title": ";Family"    }, 
         "Travis Fox": { "group_cred_lumen": 1.00, "group_debt_lumen": 1, "group_title": "Travis Fox" }
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "Travis Fox"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "Travis Fox"
     }, 
     "WIlliam Wellace": {
       "memberships": {
@@ -266,9 +266,9 @@
         ";Everyone": {"group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": ";Everyone"}, 
         "WIlliam Wellace": {"group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "WIlliam Wellace"}
       }, 
-      "partner_cred_lumen": 1, 
-      "partner_debt_lumen": 1, 
-      "partner_name": "WIlliam Wellace"
+      "contact_cred_lumen": 1, 
+      "contact_debt_lumen": 1, 
+      "contact_name": "WIlliam Wellace"
     }
   }, 
   "person_name": "Bob", 

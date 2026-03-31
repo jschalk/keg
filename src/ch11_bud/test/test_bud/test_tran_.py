@@ -45,7 +45,7 @@ def test_TranBook_Exists():
     assert x_tranbook
     assert not x_tranbook.moment_rope
     assert not x_tranbook.tranunits
-    assert not x_tranbook._partners_net
+    assert not x_tranbook._contacts_net
 
 
 def test_tranbook_shop_WithParametersReturnsObj():
@@ -61,7 +61,7 @@ def test_tranbook_shop_WithParametersReturnsObj():
     assert x_tranbook
     assert x_tranbook.moment_rope == exx.a23
     assert x_tranbook.tranunits == x_tranunits
-    assert x_tranbook._partners_net == {}
+    assert x_tranbook._contacts_net == {}
 
 
 def test_tranbook_shop_WithoutParametersReturnsObj():
@@ -74,7 +74,7 @@ def test_tranbook_shop_WithoutParametersReturnsObj():
     assert x_tranbook
     assert x_tranbook.moment_rope == exx.a23
     assert x_tranbook.tranunits == {}
-    assert x_tranbook._partners_net == {}
+    assert x_tranbook._contacts_net == {}
 
 
 def test_TranBook_set_tranunit_SetsAttr():
@@ -360,7 +360,7 @@ def test_TranBook_get_tran_times_ReturnsObj():
     assert amy23_tran_times == {t55_tran_time, t66_tran_time, t77_tran_time}
 
 
-def test_TranBook_get_persons_partners_net_ReturnsObj_Scenario0():
+def test_TranBook_get_persons_contacts_net_ReturnsObj_Scenario0():
     # ESTABLISH
     amy23_tranbook = tranbook_shop(exx.a23)
     t55_tran_time = 5505
@@ -371,14 +371,14 @@ def test_TranBook_get_persons_partners_net_ReturnsObj_Scenario0():
     }
 
     # WHEN
-    amy23_partners_net_dict = amy23_tranbook.get_persons_partners_net()
+    amy23_contacts_net_dict = amy23_tranbook.get_persons_contacts_net()
 
     # THEN
-    assert amy23_partners_net_dict
-    assert amy23_partners_net_dict == {exx.sue: {exx.bob: t55_bob_amount}}
+    assert amy23_contacts_net_dict
+    assert amy23_contacts_net_dict == {exx.sue: {exx.bob: t55_bob_amount}}
 
 
-def test_TranBook_get_persons_partners_net_ReturnsObj_Scenario1():
+def test_TranBook_get_persons_contacts_net_ReturnsObj_Scenario1():
     # ESTABLISH
     amy23_tranbook = tranbook_shop(exx.a23)
     t55_tran_time = 5505
@@ -397,16 +397,16 @@ def test_TranBook_get_persons_partners_net_ReturnsObj_Scenario1():
     }
 
     # WHEN
-    amy23_partners_net_dict = amy23_tranbook.get_persons_partners_net()
+    amy23_contacts_net_dict = amy23_tranbook.get_persons_contacts_net()
 
     # THEN
-    assert amy23_partners_net_dict
-    assert amy23_partners_net_dict == {
+    assert amy23_contacts_net_dict
+    assert amy23_contacts_net_dict == {
         exx.sue: {exx.yao: t55_yao_amount + t66_yao_amount, exx.bob: t55_bob_amount}
     }
 
 
-def test_TranBook_get_partners_net_dict_ReturnsObj_Scenario0():
+def test_TranBook_get_contacts_net_dict_ReturnsObj_Scenario0():
     # ESTABLISH
     amy23_tranbook = tranbook_shop(exx.a23)
     t55_tran_time = 5505
@@ -417,14 +417,14 @@ def test_TranBook_get_partners_net_dict_ReturnsObj_Scenario0():
     }
 
     # WHEN
-    amy23_partners_net_dict = amy23_tranbook.get_partners_net_dict()
+    amy23_contacts_net_dict = amy23_tranbook.get_contacts_net_dict()
 
     # THEN
-    assert amy23_partners_net_dict
-    assert amy23_partners_net_dict == {exx.bob: t55_bob_amount}
+    assert amy23_contacts_net_dict
+    assert amy23_contacts_net_dict == {exx.bob: t55_bob_amount}
 
 
-def test_TranBook_get_partners_net_dict_ReturnsObj_Scenario1():
+def test_TranBook_get_contacts_net_dict_ReturnsObj_Scenario1():
     # ESTABLISH
     amy23_tranbook = tranbook_shop(exx.a23)
     t55_tran_time = 5505
@@ -448,17 +448,17 @@ def test_TranBook_get_partners_net_dict_ReturnsObj_Scenario1():
     }
 
     # WHEN
-    amy23_partners_net_dict = amy23_tranbook.get_partners_net_dict()
+    amy23_contacts_net_dict = amy23_tranbook.get_contacts_net_dict()
 
     # THEN
-    assert amy23_partners_net_dict
-    assert amy23_partners_net_dict == {
+    assert amy23_contacts_net_dict
+    assert amy23_contacts_net_dict == {
         exx.yao: t55_yao_amount + t66_yao_amount + t77_yao_amount,
         exx.bob: t55_bob_amount,
     }
 
 
-def test_TranBook_get_partners_net_array_ReturnsObj():
+def test_TranBook_get_contacts_net_array_ReturnsObj():
     # ESTABLISH
     amy23_tranbook = tranbook_shop(exx.a23)
     t55_tran_time = 5505
@@ -482,25 +482,25 @@ def test_TranBook_get_partners_net_array_ReturnsObj():
     }
 
     # WHEN
-    amy23_partners_net_array = amy23_tranbook._get_partners_net_array()
+    amy23_contacts_net_array = amy23_tranbook._get_contacts_net_array()
 
     # THEN
-    assert amy23_partners_net_array
-    assert amy23_partners_net_array == [
+    assert amy23_contacts_net_array
+    assert amy23_contacts_net_array == [
         [exx.bob, t55_bob_amount],
         [exx.yao, t55_yao_amount + t66_yao_amount + t77_yao_amount],
     ]
 
 
-def test_TranBook_get_partners_headers_ReturnsObj():
+def test_TranBook_get_contacts_headers_ReturnsObj():
     # ESTABLISH
     amy23_tranbook = tranbook_shop(exx.a23)
 
     # WHEN / THEN
-    assert amy23_tranbook._get_partners_headers() == [kw.partner_name, "net_amount"]
+    assert amy23_tranbook._get_contacts_headers() == [kw.contact_name, "net_amount"]
 
 
-def test_TranBook_get_partners_csv_ReturnsObj():
+def test_TranBook_get_contacts_csv_ReturnsObj():
     # ESTABLISH
     amy23_tranbook = tranbook_shop(exx.a23)
     t55_tran_time = 5505
@@ -524,15 +524,15 @@ def test_TranBook_get_partners_csv_ReturnsObj():
     }
 
     # WHEN
-    amy23_partners_net_csv = amy23_tranbook.get_partners_net_csv()
+    amy23_contacts_net_csv = amy23_tranbook.get_contacts_net_csv()
 
     # THEN
-    assert amy23_partners_net_csv
-    example_csv = f"""partner_name,net_amount
+    assert amy23_contacts_net_csv
+    example_csv = f"""contact_name,net_amount
 {exx.bob},{t55_bob_amount}
 {exx.yao},{t55_yao_amount + t66_yao_amount + t77_yao_amount}
 """
-    assert amy23_partners_net_csv == example_csv
+    assert amy23_contacts_net_csv == example_csv
 
 
 def test_TranBook_to_dict_ReturnsObj():

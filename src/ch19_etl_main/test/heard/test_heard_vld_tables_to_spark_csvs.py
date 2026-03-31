@@ -13,7 +13,7 @@ from src.ch19_etl_main.etl_main import etl_heard_vld_to_spark_person_csvs
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 
-def test_etl_heard_vld_to_spark_person_csvs_CreatesCSVs_Scenario0_person_partnerunit(
+def test_etl_heard_vld_to_spark_person_csvs_CreatesCSVs_Scenario0_person_contactunit(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -22,9 +22,9 @@ def test_etl_heard_vld_to_spark_person_csvs_CreatesCSVs_Scenario0_person_partner
     yao_inx = "Bobby"
     spark3 = 3
     spark7 = 7
-    yao_partner_cred_lumen5 = 5
-    sue_partner_cred_lumen7 = 7
-    put_agg_tablename = create_prime_tablename(kw.person_partnerunit, kw.h_vld, "put")
+    yao_contact_cred_lumen5 = 5
+    sue_contact_cred_lumen7 = 7
+    put_agg_tablename = create_prime_tablename(kw.person_contactunit, kw.h_vld, "put")
     put_agg_csv = f"{put_agg_tablename}.csv"
     x_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23_dash, exx.dash)
@@ -35,11 +35,11 @@ def test_etl_heard_vld_to_spark_person_csvs_CreatesCSVs_Scenario0_person_partner
 
     create_sound_and_heard_tables(cursor0)
     insert_raw_sqlstr = f"""
-INSERT INTO {put_agg_tablename} ({kw.spark_num},{kw.face_name},{kw.moment_rope},{kw.person_name},{kw.partner_name},{kw.partner_cred_lumen},{kw.knot})
+INSERT INTO {put_agg_tablename} ({kw.spark_num},{kw.face_name},{kw.moment_rope},{kw.person_name},{kw.contact_name},{kw.contact_cred_lumen},{kw.knot})
 VALUES
-  ({spark3},'{sue_inx}','{exx.a23_dash}','{bob_inx}','{yao_inx}',{yao_partner_cred_lumen5},'{exx.dash}')
-, ({spark7},'{sue_inx}','{exx.a23_dash}','{bob_inx}','{yao_inx}',{yao_partner_cred_lumen5},'{exx.dash}')
-, ({spark7},'{sue_inx}','{exx.a23_dash}','{bob_inx}','{sue_inx}',{sue_partner_cred_lumen7},'{exx.dash}')
+  ({spark3},'{sue_inx}','{exx.a23_dash}','{bob_inx}','{yao_inx}',{yao_contact_cred_lumen5},'{exx.dash}')
+, ({spark7},'{sue_inx}','{exx.a23_dash}','{bob_inx}','{yao_inx}',{yao_contact_cred_lumen5},'{exx.dash}')
+, ({spark7},'{sue_inx}','{exx.a23_dash}','{bob_inx}','{sue_inx}',{sue_contact_cred_lumen7},'{exx.dash}')
 ;
 """
     print(insert_raw_sqlstr)
@@ -59,10 +59,10 @@ VALUES
     e7_put_csv = open_file(a23_e7_prnptnr_put_path)
     print(f"{e3_put_csv=}")
     print(f"{e7_put_csv=}")
-    expected_e3_put_csv = f"""spark_num,face_name,moment_rope,person_name,partner_name,partner_cred_lumen,partner_debt_lumen,knot
+    expected_e3_put_csv = f"""spark_num,face_name,moment_rope,person_name,contact_name,contact_cred_lumen,contact_debt_lumen,knot
 3,Suzy,{exx.a23_dash},Bobby,Bobby,5.0,,{exx.dash}
 """
-    expected_e7_put_csv = f"""spark_num,face_name,moment_rope,person_name,partner_name,partner_cred_lumen,partner_debt_lumen,knot
+    expected_e7_put_csv = f"""spark_num,face_name,moment_rope,person_name,contact_name,contact_cred_lumen,contact_debt_lumen,knot
 7,Suzy,{exx.a23_dash},Bobby,Bobby,5.0,,{exx.dash}
 7,Suzy,{exx.a23_dash},Bobby,Suzy,7.0,,{exx.dash}
 """

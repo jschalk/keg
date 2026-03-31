@@ -91,9 +91,9 @@ def get_persondelta_sue_example() -> PersonDelta:
     pool_personatom.set_jvalue(pool_attribute, 77)
     sue_persondelta.set_personatom(pool_personatom)
 
-    dimen = kw.person_partnerunit
+    dimen = kw.person_contactunit
     sue_personatom = personatom_shop(dimen, kw.DELETE)
-    sue_personatom.set_jkey(kw.partner_name, exx.sue)
+    sue_personatom.set_jkey(kw.contact_name, exx.sue)
     sue_persondelta.set_personatom(sue_personatom)
     return sue_persondelta
 
@@ -107,8 +107,8 @@ def get_persondelta_example1() -> PersonDelta:
     x_personatom.set_jvalue(kw.debtor_respect, 88)
     sue_persondelta.set_personatom(x_personatom)
 
-    x_personatom = personatom_shop(dimen=kw.person_partnerunit, crud_str=kw.DELETE)
-    x_personatom.set_jkey(kw.partner_name, exx.zia)
+    x_personatom = personatom_shop(dimen=kw.person_contactunit, crud_str=kw.DELETE)
+    x_personatom.set_jkey(kw.contact_name, exx.zia)
     sue_persondelta.set_personatom(x_personatom)
     return sue_persondelta
 

@@ -4,10 +4,10 @@
     "inx_title"   : { "otx_key": false }, 
     "moment_rope" : { "otx_key": true  }, 
     "otx_title"   : { "otx_key": true  }, 
-    "partner_name": { "otx_key": true  }, 
+    "contact_name": { "otx_key": true  }, 
     "person_name" : { "otx_key": true  }, 
     "spark_num"   : { "otx_key": true  }
   }, 
-  "dimens": ["translate_title", "person_partnerunit", "personunit", "momentunit"], 
+  "dimens": ["translate_title", "person_contactunit", "personunit", "momentunit"], 
   "idea_number": "br00115"
 }

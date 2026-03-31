@@ -1,11 +1,11 @@
-from src.ch02_partner.group import awardunit_shop
+from src.ch02_contact.group import awardunit_shop
 from src.ch04_rope.rope import to_rope
 from src.ch05_reason.reason_main import factunit_shop, reasonunit_shop
 from src.ch07_person_logic.person_main import personunit_shop
 from src.ch07_person_logic.person_tool import (
     person_attr_exists,
-    person_partner_membership_exists,
-    person_partnerunit_exists,
+    person_contact_membership_exists,
+    person_contactunit_exists,
     person_plan_awardunit_exists,
     person_plan_factunit_exists,
     person_plan_healerunit_exists,
@@ -24,49 +24,49 @@ def test_personunit_exists_ReturnsObj():
     assert personunit_exists(personunit_shop("Sue"))
 
 
-def test_person_partnerunit_exists_ReturnsObj():
+def test_person_contactunit_exists_ReturnsObj():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
-    jkeys = {kw.partner_name: exx.yao}
+    jkeys = {kw.contact_name: exx.yao}
 
     # WHEN / THEN
-    assert not person_partnerunit_exists(None, {})
-    assert not person_partnerunit_exists(sue_person, jkeys)
+    assert not person_contactunit_exists(None, {})
+    assert not person_contactunit_exists(sue_person, jkeys)
 
     # WHEN
-    sue_person.add_partnerunit(exx.yao)
+    sue_person.add_contactunit(exx.yao)
 
     # THEN
-    assert person_partnerunit_exists(sue_person, jkeys)
+    assert person_contactunit_exists(sue_person, jkeys)
 
 
-def test_person_partner_membership_exists_ReturnsObj():
+def test_person_contact_membership_exists_ReturnsObj():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     swim_str = ";swim"
     sue_person = personunit_shop("Sue")
-    jkeys = {kw.partner_name: exx.yao, kw.group_title: swim_str}
+    jkeys = {kw.contact_name: exx.yao, kw.group_title: swim_str}
 
     # WHEN / THEN
-    assert not person_partner_membership_exists(None, {})
-    assert not person_partner_membership_exists(sue_person, jkeys)
+    assert not person_contact_membership_exists(None, {})
+    assert not person_contact_membership_exists(sue_person, jkeys)
 
     # WHEN
-    sue_person.add_partnerunit(exx.yao)
+    sue_person.add_contactunit(exx.yao)
     # THEN
-    assert not person_partner_membership_exists(sue_person, jkeys)
+    assert not person_contact_membership_exists(sue_person, jkeys)
 
     # WHEN
-    yao_plan = sue_person.get_partner(exx.yao)
+    yao_plan = sue_person.get_contact(exx.yao)
     yao_plan.add_membership(";run")
     # THEN
-    assert not person_partner_membership_exists(sue_person, jkeys)
+    assert not person_contact_membership_exists(sue_person, jkeys)
 
     # WHEN
-    yao_plan = sue_person.get_partner(exx.yao)
+    yao_plan = sue_person.get_contact(exx.yao)
     yao_plan.add_membership(swim_str)
     # THEN
-    assert person_partner_membership_exists(sue_person, jkeys)
+    assert person_contact_membership_exists(sue_person, jkeys)
 
 
 def test_person_planunit_exists_ReturnsObj():
@@ -306,46 +306,46 @@ def test_person_attr_exists_ReturnsObj_personunit():
     assert person_attr_exists(kw.personunit, personunit_shop("Sue"), {})
 
 
-def test_person_attr_exists_ReturnsObj_person_partnerunit():
+def test_person_attr_exists_ReturnsObj_person_contactunit():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
-    x_jkeys = {kw.partner_name: exx.yao}
+    x_jkeys = {kw.contact_name: exx.yao}
 
     # WHEN / THEN
-    assert not person_attr_exists(kw.person_partnerunit, None, {})
-    assert not person_attr_exists(kw.person_partnerunit, sue_person, x_jkeys)
+    assert not person_attr_exists(kw.person_contactunit, None, {})
+    assert not person_attr_exists(kw.person_contactunit, sue_person, x_jkeys)
 
     # WHEN
-    sue_person.add_partnerunit(exx.yao)
+    sue_person.add_contactunit(exx.yao)
 
     # THEN
-    assert person_attr_exists(kw.person_partnerunit, sue_person, x_jkeys)
+    assert person_attr_exists(kw.person_contactunit, sue_person, x_jkeys)
 
 
-def test_person_attr_exists_ReturnsObj_person_partner_membership():
+def test_person_attr_exists_ReturnsObj_person_contact_membership():
     # ESTABLISH
     swim_str = ";swim"
     sue_person = personunit_shop("Sue")
-    x_jkeys = {kw.partner_name: exx.yao, kw.group_title: swim_str}
-    x_dimen = kw.person_partner_membership
+    x_jkeys = {kw.contact_name: exx.yao, kw.group_title: swim_str}
+    x_dimen = kw.person_contact_membership
 
     # WHEN / THEN
     assert not person_attr_exists(x_dimen, None, {})
     assert not person_attr_exists(x_dimen, sue_person, x_jkeys)
 
     # WHEN
-    sue_person.add_partnerunit(exx.yao)
+    sue_person.add_contactunit(exx.yao)
     # THEN
     assert not person_attr_exists(x_dimen, sue_person, x_jkeys)
 
     # WHEN
-    yao_plan = sue_person.get_partner(exx.yao)
+    yao_plan = sue_person.get_contact(exx.yao)
     yao_plan.add_membership(";run")
     # THEN
     assert not person_attr_exists(x_dimen, sue_person, x_jkeys)
 
     # WHEN
-    yao_plan = sue_person.get_partner(exx.yao)
+    yao_plan = sue_person.get_contact(exx.yao)
     yao_plan.add_membership(swim_str)
     # THEN
     assert person_attr_exists(x_dimen, sue_person, x_jkeys)

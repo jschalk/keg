@@ -375,9 +375,9 @@ def test_create_prnfact_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     # ESTABLISH
 #     x_moment_rope = exx.a23_dash
 #     x_person_name = "Sue"
-#     x_partner_name = 1
-#     x_partner_cred_lumen = 2
-#     x_partner_debt_lumen = 3
+#     x_contact_name = 1
+#     x_contact_cred_lumen = 2
+#     x_contact_debt_lumen = 3
 #     x_credor_pool = 4
 #     x_debtor_pool = 5
 #     x_fund_give = 6
@@ -386,17 +386,17 @@ def test_create_prnfact_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     x_fund_agenda_take = 9
 #     x_fund_agenda_ratio_give = 10
 #     x_fund_agenda_ratio_take = 11
-#     x_inallocable_partner_debt_lumen = 12
-#     x_irrational_partner_debt_lumen = 13
+#     x_inallocable_contact_debt_lumen = 12
+#     x_irrational_contact_debt_lumen = 13
 #     x_groupmark = 13
 #     values_dict = {
 #     kw.spark_num: 77,
 #     kw.face_name: exx.yao,
 #     kw.moment_rope: x_moment_rope,
 #     kw.person_name: x_person_name,
-#     kw.partner_name: x_partner_name,
-#     kw.partner_cred_lumen: x_partner_cred_lumen,
-#     kw.partner_debt_lumen: x_partner_debt_lumen,
+#     kw.contact_name: x_contact_name,
+#     kw.contact_cred_lumen: x_contact_cred_lumen,
+#     kw.contact_debt_lumen: x_contact_debt_lumen,
 #     kw.credor_pool: x_credor_pool,
 #     kw.debtor_pool: x_debtor_pool,
 #     kw.fund_give: x_fund_give,
@@ -405,8 +405,8 @@ def test_create_prnfact_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     kw.fund_agenda_take: x_fund_agenda_take,
 #     kw.fund_agenda_ratio_give: x_fund_agenda_ratio_give,
 #     kw.fund_agenda_ratio_take: x_fund_agenda_ratio_take,
-#     kw.inallocable_partner_debt_lumen: x_inallocable_partner_debt_lumen,
-#     kw.irrational_partner_debt_lumen: x_irrational_partner_debt_lumen,
+#     kw.inallocable_contact_debt_lumen: x_inallocable_contact_debt_lumen,
+#     kw.irrational_contact_debt_lumen: x_irrational_contact_debt_lumen,
 #     kw.groupmark: x_groupmark,
 #     }
 #     all args included in values dict
@@ -423,7 +423,7 @@ def test_create_prnfact_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     assert insert_sqlstr
 #     cursor = conn.cursor()
 #     create_sound_and_heard_tables(cursor0)
-#     table_name = "person_partnerunit_put_h_agg"
+#     table_name = "person_contactunit_put_h_agg"
 #     expected_sqlstr = create_insert_query(cursor0, table_name, values_dict)
 #     print("")
 #     print(expected_sqlstr)
@@ -435,7 +435,7 @@ def test_create_prnfact_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     # ESTABLISH
 #     x_moment_rope = exx.a23_dash
 #     x_person_name = "Sue"
-#     x_partner_name = 1
+#     x_contact_name = 1
 #     x_group_title = 2
 #     x_group_cred_lumen = 3
 #     x_group_debt_lumen = 4
@@ -452,7 +452,7 @@ def test_create_prnfact_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     kw.face_name: exx.yao,
 #     kw.moment_rope: x_moment_rope,
 #     kw.person_name: x_person_name,
-#     kw.partner_name: x_partner_name,
+#     kw.contact_name: x_contact_name,
 #     kw.group_title: x_group_title,
 #     kw.group_cred_lumen: x_group_cred_lumen,
 #     kw.group_debt_lumen: x_group_debt_lumen,
@@ -479,7 +479,7 @@ def test_create_prnfact_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     assert insert_sqlstr
 #     cursor = conn.cursor()
 #     create_sound_and_heard_tables(cursor0)
-#     table_name = "person_partner_membership_put_h_agg"
+#     table_name = "person_contact_membership_put_h_agg"
 #     expected_sqlstr = create_insert_query(cursor0, table_name, values_dict)
 #     print("")
 #     print(expected_sqlstr)

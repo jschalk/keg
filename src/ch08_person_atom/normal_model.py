@@ -19,19 +19,19 @@ class PersonTable(Base):
     mana_grain = Column(Float)
 
 
-class PartnerUnitTable(Base):
-    __tablename__ = "partnerunit"
+class ContactUnitTable(Base):
+    __tablename__ = "contactunit"
     plan_uid = Column(Integer, primary_key=True)
-    partner_name = Column(String)
-    partner_cred_lumen = Column(Float)
-    partner_debt_lumen = Column(Float)
+    contact_name = Column(String)
+    contact_cred_lumen = Column(Float)
+    contact_debt_lumen = Column(Float)
 
 
 class MemberShipTable(Base):
     __tablename__ = "membership"
     plan_uid = Column(Integer, primary_key=True)
     group_title = Column(String)
-    partner_name = Column(String)
+    contact_name = Column(String)
     group_cred_lumen = Column(Float)
     group_debt_lumen = Column(Float)
 

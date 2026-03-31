@@ -1,5 +1,5 @@
 from pytest import raises as pytest_raises
-from src.ch02_partner.group import awardunit_shop
+from src.ch02_contact.group import awardunit_shop
 from src.ch04_rope.rope import to_rope
 from src.ch05_reason.reason_main import factheir_shop
 from src.ch06_plan.plan import planunit_shop
@@ -88,34 +88,34 @@ def test_PersonUnit_conpute_ClearsDescendantAttributes():
     mon_rope = sue_person.make_rope(wk_rope, mon_str)
     mon_plan = sue_person.get_plan_obj(mon_rope)
     assert sue_person.planroot.descendant_pledge_count is None
-    assert sue_person.planroot.all_partner_cred is None
-    assert sue_person.planroot.all_partner_debt is None
+    assert sue_person.planroot.all_contact_cred is None
+    assert sue_person.planroot.all_contact_debt is None
     assert casa_plan.descendant_pledge_count is None
-    assert casa_plan.all_partner_cred is None
-    assert casa_plan.all_partner_debt is None
+    assert casa_plan.all_contact_cred is None
+    assert casa_plan.all_contact_debt is None
     assert mon_plan.descendant_pledge_count is None
-    assert mon_plan.all_partner_cred is None
-    assert mon_plan.all_partner_debt is None
+    assert mon_plan.all_contact_cred is None
+    assert mon_plan.all_contact_debt is None
 
     sue_person.planroot.descendant_pledge_count = -2
-    sue_person.planroot.all_partner_cred = -2
-    sue_person.planroot.all_partner_debt = -2
+    sue_person.planroot.all_contact_cred = -2
+    sue_person.planroot.all_contact_debt = -2
     casa_plan.descendant_pledge_count = -2
-    casa_plan.all_partner_cred = -2
-    casa_plan.all_partner_debt = -2
+    casa_plan.all_contact_cred = -2
+    casa_plan.all_contact_debt = -2
     mon_plan.descendant_pledge_count = -2
-    mon_plan.all_partner_cred = -2
-    mon_plan.all_partner_debt = -2
+    mon_plan.all_contact_cred = -2
+    mon_plan.all_contact_debt = -2
 
     assert sue_person.planroot.descendant_pledge_count == -2
-    assert sue_person.planroot.all_partner_cred == -2
-    assert sue_person.planroot.all_partner_debt == -2
+    assert sue_person.planroot.all_contact_cred == -2
+    assert sue_person.planroot.all_contact_debt == -2
     assert casa_plan.descendant_pledge_count == -2
-    assert casa_plan.all_partner_cred == -2
-    assert casa_plan.all_partner_debt == -2
+    assert casa_plan.all_contact_cred == -2
+    assert casa_plan.all_contact_debt == -2
     assert mon_plan.descendant_pledge_count == -2
-    assert mon_plan.all_partner_cred == -2
-    assert mon_plan.all_partner_debt == -2
+    assert mon_plan.all_contact_cred == -2
+    assert mon_plan.all_contact_debt == -2
 
     # WHEN
     sue_person.conpute()
@@ -125,28 +125,28 @@ def test_PersonUnit_conpute_ClearsDescendantAttributes():
     assert casa_plan.descendant_pledge_count == 0
     assert mon_plan.descendant_pledge_count == 0
 
-    assert mon_plan.all_partner_cred is True
-    assert mon_plan.all_partner_debt is True
-    assert casa_plan.all_partner_cred is True
-    assert casa_plan.all_partner_debt is True
-    assert sue_person.planroot.all_partner_cred is True
-    assert sue_person.planroot.all_partner_debt is True
+    assert mon_plan.all_contact_cred is True
+    assert mon_plan.all_contact_debt is True
+    assert casa_plan.all_contact_cred is True
+    assert casa_plan.all_contact_debt is True
+    assert sue_person.planroot.all_contact_cred is True
+    assert sue_person.planroot.all_contact_debt is True
 
 
 def test_PersonUnit_conpute_RootOnlySetsDescendantAttributes():
     # ESTABLISH
     yao_person = personunit_shop(person_name="Yao")
     assert yao_person.planroot.descendant_pledge_count is None
-    assert yao_person.planroot.all_partner_cred is None
-    assert yao_person.planroot.all_partner_debt is None
+    assert yao_person.planroot.all_contact_cred is None
+    assert yao_person.planroot.all_contact_debt is None
 
     # WHEN
     yao_person.conpute()
 
     # THEN
     assert yao_person.planroot.descendant_pledge_count == 0
-    assert yao_person.planroot.all_partner_cred is True
-    assert yao_person.planroot.all_partner_debt is True
+    assert yao_person.planroot.all_contact_cred is True
+    assert yao_person.planroot.all_contact_debt is True
 
 
 def test_PersonUnit_conpute_NLevelSetsDescendantAttributes_1():
@@ -168,14 +168,14 @@ def test_PersonUnit_conpute_NLevelSetsDescendantAttributes_1():
     root_rope = sue_person.planroot.get_plan_rope()
     x_planroot = sue_person.get_plan_obj(root_rope)
     assert x_planroot.descendant_pledge_count is None
-    assert x_planroot.all_partner_cred is None
-    assert x_planroot.all_partner_debt is None
+    assert x_planroot.all_contact_cred is None
+    assert x_planroot.all_contact_debt is None
     assert casa_plan.descendant_pledge_count is None
-    assert casa_plan.all_partner_cred is None
-    assert casa_plan.all_partner_debt is None
+    assert casa_plan.all_contact_cred is None
+    assert casa_plan.all_contact_debt is None
     assert mon_plan.descendant_pledge_count is None
-    assert mon_plan.all_partner_cred is None
-    assert mon_plan.all_partner_debt is None
+    assert mon_plan.all_contact_cred is None
+    assert mon_plan.all_contact_debt is None
 
     # WHEN
     sue_person.conpute()
@@ -185,12 +185,12 @@ def test_PersonUnit_conpute_NLevelSetsDescendantAttributes_1():
     assert casa_plan.descendant_pledge_count == 1
     assert casa_plan.kids[email_str].descendant_pledge_count == 0
     assert mon_plan.descendant_pledge_count == 0
-    assert x_planroot.all_partner_cred is True
-    assert x_planroot.all_partner_debt is True
-    assert casa_plan.all_partner_cred is True
-    assert casa_plan.all_partner_debt is True
-    assert mon_plan.all_partner_cred is True
-    assert mon_plan.all_partner_debt is True
+    assert x_planroot.all_contact_cred is True
+    assert x_planroot.all_contact_debt is True
+    assert casa_plan.all_contact_cred is True
+    assert casa_plan.all_contact_debt is True
+    assert mon_plan.all_contact_cred is True
+    assert mon_plan.all_contact_debt is True
 
 
 def test_PersonUnit_conpute_NLevelSetsDescendantAttributes_2():
@@ -209,7 +209,7 @@ def test_PersonUnit_conpute_NLevelSetsDescendantAttributes_2():
     vacuum_plan = planunit_shop(vacuum_str, pledge=True)
     sue_person.set_plan_obj(vacuum_plan, parent_rope=casa_rope)
 
-    sue_person.add_partnerunit(partner_name=exx.sue)
+    sue_person.add_contactunit(contact_name=exx.sue)
     x_awardunit = awardunit_shop(awardee_title=exx.sue)
 
     sue_person.planroot.kids[exx.casa].kids[email_str].set_awardunit(
@@ -224,33 +224,33 @@ def test_PersonUnit_conpute_NLevelSetsDescendantAttributes_2():
     # print(sue_person.kids[exx.casa].kids[email_str].awardunit)
 
     # THEN
-    assert sue_person.planroot.all_partner_cred is False
-    assert sue_person.planroot.all_partner_debt is False
+    assert sue_person.planroot.all_contact_cred is False
+    assert sue_person.planroot.all_contact_debt is False
     casa_plan = sue_person.planroot.kids[exx.casa]
-    assert casa_plan.all_partner_cred is False
-    assert casa_plan.all_partner_debt is False
-    assert casa_plan.kids[email_str].all_partner_cred is False
-    assert casa_plan.kids[email_str].all_partner_debt is False
-    assert casa_plan.kids[vacuum_str].all_partner_cred is True
-    assert casa_plan.kids[vacuum_str].all_partner_debt is True
+    assert casa_plan.all_contact_cred is False
+    assert casa_plan.all_contact_debt is False
+    assert casa_plan.kids[email_str].all_contact_cred is False
+    assert casa_plan.kids[email_str].all_contact_debt is False
+    assert casa_plan.kids[vacuum_str].all_contact_cred is True
+    assert casa_plan.kids[vacuum_str].all_contact_debt is True
     wk_plan = sue_person.planroot.kids[wk_str]
-    assert wk_plan.all_partner_cred is True
-    assert wk_plan.all_partner_debt is True
-    assert wk_plan.kids[mon_str].all_partner_cred is True
-    assert wk_plan.kids[mon_str].all_partner_debt is True
-    assert wk_plan.kids[tue_str].all_partner_cred is True
-    assert wk_plan.kids[tue_str].all_partner_debt is True
+    assert wk_plan.all_contact_cred is True
+    assert wk_plan.all_contact_debt is True
+    assert wk_plan.kids[mon_str].all_contact_cred is True
+    assert wk_plan.kids[mon_str].all_contact_debt is True
+    assert wk_plan.kids[tue_str].all_contact_cred is True
+    assert wk_plan.kids[tue_str].all_contact_debt is True
 
 
 def test_PersonUnit_conpute_SetsPlanUnitAttr_awardunits():
     # ESTABLISH
     sue_person = personunit_shop(exx.sue)
-    sue_person.add_partnerunit(exx.yao)
-    sue_person.add_partnerunit(exx.zia)
-    sue_person.add_partnerunit(exx.xio)
+    sue_person.add_contactunit(exx.yao)
+    sue_person.add_contactunit(exx.zia)
+    sue_person.add_contactunit(exx.xio)
 
-    assert len(sue_person.partners) == 3
-    assert len(sue_person.get_partnerunit_group_titles_dict()) == 3
+    assert len(sue_person.contacts) == 3
+    assert len(sue_person.get_contactunit_group_titles_dict()) == 3
     sue_person.set_l1_plan(planunit_shop(exx.swim))
     awardunit_yao = awardunit_shop(exx.yao, give_force=10)
     awardunit_zia = awardunit_shop(exx.zia, give_force=10)
@@ -315,9 +315,9 @@ def test_PersonUnit_conpute_DoesNotKeepNonRequired_awardheirs():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     yao_person = personunit_shop(exx.yao)
-    yao_person.add_partnerunit(exx.yao)
-    yao_person.add_partnerunit(exx.zia)
-    yao_person.add_partnerunit(exx.xio)
+    yao_person.add_contactunit(exx.yao)
+    yao_person.add_contactunit(exx.zia)
+    yao_person.add_contactunit(exx.xio)
 
     swim_rope = yao_person.make_l1_rope(exx.swim)
 
@@ -504,18 +504,18 @@ def test_PersonUnit_conpute_WhenPlanUnitHas_starButAll_kidsHaveZero_starAddTo_of
 def test_PersonUnit_conpute_CreatesNewGroupUnits_Scenario0():
     # ESTABLISH
     yao_person = personunit_shop(exx.yao)
-    yao_partner_cred_lumen = 3
-    yao_partner_debt_lumen = 2
-    zia_partner_cred_lumen = 4
-    zia_partner_debt_lumen = 5
-    yao_person.add_partnerunit(exx.yao, yao_partner_cred_lumen, yao_partner_debt_lumen)
-    yao_person.add_partnerunit(exx.zia, zia_partner_cred_lumen, zia_partner_debt_lumen)
+    yao_contact_cred_lumen = 3
+    yao_contact_debt_lumen = 2
+    zia_contact_cred_lumen = 4
+    zia_contact_debt_lumen = 5
+    yao_person.add_contactunit(exx.yao, yao_contact_cred_lumen, yao_contact_debt_lumen)
+    yao_person.add_contactunit(exx.zia, zia_contact_cred_lumen, zia_contact_debt_lumen)
     root_rope = yao_person.planroot.get_plan_rope()
     x_planroot = yao_person.get_plan_obj(root_rope)
     x_planroot.set_awardunit(awardunit_shop(exx.yao))
     x_planroot.set_awardunit(awardunit_shop(exx.zia))
     x_planroot.set_awardunit(awardunit_shop(exx.xio))
-    assert len(yao_person.get_partnerunit_group_titles_dict()) == 2
+    assert len(yao_person.get_contactunit_group_titles_dict()) == 2
     assert not yao_person.groupunit_exists(exx.yao)
     assert not yao_person.groupunit_exists(exx.zia)
     assert not yao_person.groupunit_exists(exx.xio)
@@ -527,8 +527,8 @@ def test_PersonUnit_conpute_CreatesNewGroupUnits_Scenario0():
     assert yao_person.groupunit_exists(exx.yao)
     assert yao_person.groupunit_exists(exx.zia)
     assert yao_person.groupunit_exists(exx.xio)
-    assert len(yao_person.get_partnerunit_group_titles_dict()) == 2
-    assert len(yao_person.get_partnerunit_group_titles_dict()) != len(
+    assert len(yao_person.get_contactunit_group_titles_dict()) == 2
+    assert len(yao_person.get_contactunit_group_titles_dict()) != len(
         yao_person.groupunits
     )
     assert len(yao_person.groupunits) == 3
@@ -538,12 +538,12 @@ def test_PersonUnit_conpute_CreatesNewGroupUnits_Scenario0():
     assert xio_groupunit.group_membership_exists(exx.yao)
     assert xio_groupunit.group_membership_exists(exx.zia)
     assert not xio_groupunit.group_membership_exists(exx.xio)
-    yao_membership = xio_groupunit.get_partner_membership(exx.yao)
-    zia_membership = xio_groupunit.get_partner_membership(exx.zia)
-    assert yao_membership.group_cred_lumen == yao_partner_cred_lumen
-    assert zia_membership.group_cred_lumen == zia_partner_cred_lumen
-    assert yao_membership.group_debt_lumen == yao_partner_debt_lumen
-    assert zia_membership.group_debt_lumen == zia_partner_debt_lumen
+    yao_membership = xio_groupunit.get_contact_membership(exx.yao)
+    zia_membership = xio_groupunit.get_contact_membership(exx.zia)
+    assert yao_membership.group_cred_lumen == yao_contact_cred_lumen
+    assert zia_membership.group_cred_lumen == zia_contact_cred_lumen
+    assert yao_membership.group_debt_lumen == yao_contact_debt_lumen
+    assert zia_membership.group_debt_lumen == zia_contact_debt_lumen
 
 
 def test_PersonUnit_conpute_CreatesNewGroupUnits_Scenario1():
@@ -551,13 +551,13 @@ def test_PersonUnit_conpute_CreatesNewGroupUnits_Scenario1():
     yao_person = personunit_shop(exx.yao)
     swim_rope = yao_person.make_l1_rope(exx.swim)
     yao_person.set_l1_plan(planunit_shop(exx.swim))
-    yao_person.add_partnerunit(exx.yao)
-    yao_person.add_partnerunit(exx.zia)
+    yao_person.add_contactunit(exx.yao)
+    yao_person.add_contactunit(exx.zia)
     swim_plan = yao_person.get_plan_obj(swim_rope)
     swim_plan.set_awardunit(awardunit_shop(exx.yao))
     swim_plan.set_awardunit(awardunit_shop(exx.zia))
     swim_plan.set_awardunit(awardunit_shop(exx.xio))
-    assert len(yao_person.get_partnerunit_group_titles_dict()) == 2
+    assert len(yao_person.get_contactunit_group_titles_dict()) == 2
     assert not yao_person.groupunit_exists(exx.yao)
     assert not yao_person.groupunit_exists(exx.zia)
     assert not yao_person.groupunit_exists(exx.xio)
@@ -569,8 +569,8 @@ def test_PersonUnit_conpute_CreatesNewGroupUnits_Scenario1():
     assert yao_person.groupunit_exists(exx.yao)
     assert yao_person.groupunit_exists(exx.zia)
     assert yao_person.groupunit_exists(exx.xio)
-    assert len(yao_person.get_partnerunit_group_titles_dict()) == 2
-    assert len(yao_person.get_partnerunit_group_titles_dict()) != len(
+    assert len(yao_person.get_contactunit_group_titles_dict()) == 2
+    assert len(yao_person.get_contactunit_group_titles_dict()) != len(
         yao_person.groupunits
     )
     assert len(yao_person.groupunits) == 3
@@ -587,8 +587,8 @@ def test_PersonUnit_get_tree_traverse_generated_groupunits_ReturnsObj():
     yao_person = personunit_shop(exx.yao)
     swim_rope = yao_person.make_l1_rope(exx.swim)
     yao_person.set_l1_plan(planunit_shop(exx.swim))
-    yao_person.add_partnerunit(exx.yao)
-    yao_person.add_partnerunit(exx.zia)
+    yao_person.add_contactunit(exx.yao)
+    yao_person.add_contactunit(exx.zia)
     swim_plan = yao_person.get_plan_obj(swim_rope)
     swim_plan.set_awardunit(awardunit_shop(exx.yao))
     swim_plan.set_awardunit(awardunit_shop(exx.zia))
@@ -597,8 +597,8 @@ def test_PersonUnit_get_tree_traverse_generated_groupunits_ReturnsObj():
     assert yao_person.groupunit_exists(exx.yao)
     assert yao_person.groupunit_exists(exx.zia)
     assert yao_person.groupunit_exists(exx.xio)
-    assert len(yao_person.get_partnerunit_group_titles_dict()) == 2
-    assert len(yao_person.get_partnerunit_group_titles_dict()) != len(
+    assert len(yao_person.get_contactunit_group_titles_dict()) == 2
+    assert len(yao_person.get_contactunit_group_titles_dict()) != len(
         yao_person.groupunits
     )
 

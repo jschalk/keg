@@ -142,7 +142,7 @@ def _add_paybook_to_br00002_csv(
 ) -> str:
     x_knot = get_csv_compatible_knot(x_moment.knot, csv_delimiter)
     for person_name, tranunit in x_moment.paybook.tranunits.items():
-        for partner_name, time_dict in tranunit.items():
+        for contact_name, time_dict in tranunit.items():
             for tran_time, amount in time_dict.items():
                 moment_rope = x_moment.moment_rope
                 x_row = [
@@ -150,7 +150,7 @@ def _add_paybook_to_br00002_csv(
                     if_none_str(spark_num),
                     moment_rope,
                     person_name,
-                    partner_name,
+                    contact_name,
                     str(tran_time),
                     str(amount),
                     x_knot,
@@ -234,14 +234,14 @@ def add_person_to_br00020_csv(
     spark_num: int = None,
 ) -> str:
     x_knot = get_csv_compatible_knot(x_person.knot, csv_delimiter)
-    for partnerunit in x_person.partners.values():
-        for membership in partnerunit.memberships.values():
+    for contactunit in x_person.contacts.values():
+        for membership in contactunit.memberships.values():
             x_row = [
                 if_none_str(face_name),
                 if_none_str(spark_num),
                 x_person.planroot.get_plan_rope(),
                 x_person.person_name,
-                partnerunit.partner_name,
+                contactunit.contact_name,
                 membership.group_title,
                 if_none_str(membership.group_cred_lumen),
                 if_none_str(membership.group_debt_lumen),
@@ -260,15 +260,15 @@ def add_person_to_br00021_csv(
     spark_num: int = None,
 ) -> str:
     x_knot = get_csv_compatible_knot(x_person.knot, csv_delimiter)
-    for partnerunit in x_person.partners.values():
+    for contactunit in x_person.contacts.values():
         x_row = [
             if_none_str(face_name),
             if_none_str(spark_num),
             x_person.planroot.get_plan_rope(),
             x_person.person_name,
-            partnerunit.partner_name,
-            if_none_str(partnerunit.partner_cred_lumen),
-            if_none_str(partnerunit.partner_debt_lumen),
+            contactunit.contact_name,
+            if_none_str(contactunit.contact_cred_lumen),
+            if_none_str(contactunit.contact_debt_lumen),
             x_knot,
         ]
         x_csv += csv_delimiter.join(x_row)

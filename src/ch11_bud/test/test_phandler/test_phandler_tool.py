@@ -15,9 +15,9 @@ from src.ch10_person_listen.keep_tool import (
 )
 from src.ch11_bud._ref.ch11_path import (
     create_budunit_json_path,
+    create_cell_contact_mandate_ledger_path,
     create_cell_dir_path,
     create_cell_json_path as node_path,
-    create_cell_partner_mandate_ledger_path,
     create_person_spark_dir_path,
     create_personspark_path,
     create_persontime_path,
@@ -28,7 +28,7 @@ from src.ch11_bud.bud_filehandler import (
     cellunit_get_from_dir,
     cellunit_save_to_dir,
     collect_person_spark_dir_sets,
-    create_cell_partner_mandate_ledger_json,
+    create_cell_contact_mandate_ledger_json,
     get_persons_downhill_spark_nums,
     get_personspark_obj,
     get_timenum_dirs,
@@ -469,7 +469,7 @@ def test_cellunit_save_to_dir_ReturnsObj_Scenario0(temp3_fs):
     assert cellunit_get_from_dir(cell_dir) == sue_cell
 
 
-def test_create_cell_partner_mandate_ledger_json_CreatesFile_Scenario0_NoCellFile(
+def test_create_cell_contact_mandate_ledger_json_CreatesFile_Scenario0_NoCellFile(
     temp3_fs,
 ):
     # ESTABLISH
@@ -477,22 +477,22 @@ def test_create_cell_partner_mandate_ledger_json_CreatesFile_Scenario0_NoCellFil
     sue_ancestors = [exx.sue]
     tp6 = 6
     a23_lasso = lassounit_shop(exx.a23)
-    sue_partner_mandate_ledger_path = create_cell_partner_mandate_ledger_path(
+    sue_contact_mandate_ledger_path = create_cell_contact_mandate_ledger_path(
         mstr_dir, a23_lasso, exx.bob, tp6, sue_ancestors
     )
     sue_cell_dir = create_cell_dir_path(
         mstr_dir, a23_lasso, exx.bob, tp6, sue_ancestors
     )
-    assert os_path_exists(sue_partner_mandate_ledger_path) is False
+    assert os_path_exists(sue_contact_mandate_ledger_path) is False
 
     # WHEN
-    create_cell_partner_mandate_ledger_json(sue_cell_dir)
+    create_cell_contact_mandate_ledger_json(sue_cell_dir)
 
     # THEN
-    assert os_path_exists(sue_partner_mandate_ledger_path) is False
+    assert os_path_exists(sue_contact_mandate_ledger_path) is False
 
 
-def test_create_cell_partner_mandate_ledger_json_CreatesFile_Scenario1(
+def test_create_cell_contact_mandate_ledger_json_CreatesFile_Scenario1(
     temp3_fs,
 ):
     # ESTABLISH
@@ -504,8 +504,8 @@ def test_create_cell_partner_mandate_ledger_json_CreatesFile_Scenario1(
     sue_quota300 = 300
     sue_mandate = 444
     sue_person = personunit_shop(exx.sue, exx.a23)
-    sue_person.add_partnerunit(exx.sue, 3, 5)
-    sue_person.add_partnerunit(exx.yao, 7, 2)
+    sue_person.add_contactunit(exx.sue, 3, 5)
+    sue_person.add_contactunit(exx.yao, 7, 2)
     clean_fact = clean_factunit()
     dirty_fact = dirty_factunit()
     sue_person.add_plan(clean_fact.fact_state)
@@ -537,21 +537,21 @@ def test_create_cell_partner_mandate_ledger_json_CreatesFile_Scenario1(
     sue_cell.reason_contexts = set()
     tp6 = 6
     a23_lasso = lassounit_shop(exx.a23)
-    sue_partner_mandate_ledger_path = create_cell_partner_mandate_ledger_path(
+    sue_contact_mandate_ledger_path = create_cell_contact_mandate_ledger_path(
         mstr_dir, a23_lasso, exx.bob, tp6, sue_ancestors
     )
     sue_cell_dir = create_cell_dir_path(
         mstr_dir, a23_lasso, exx.bob, tp6, sue_ancestors
     )
     cellunit_save_to_dir(sue_cell_dir, sue_cell)
-    assert os_path_exists(sue_partner_mandate_ledger_path) is False
+    assert os_path_exists(sue_contact_mandate_ledger_path) is False
 
     # WHEN
-    create_cell_partner_mandate_ledger_json(sue_cell_dir)
+    create_cell_contact_mandate_ledger_json(sue_cell_dir)
 
     # THEN
-    assert os_path_exists(sue_partner_mandate_ledger_path)
-    assert open_json(sue_partner_mandate_ledger_path) == {exx.yao: 311, exx.sue: 133}
+    assert os_path_exists(sue_contact_mandate_ledger_path)
+    assert open_json(sue_contact_mandate_ledger_path) == {exx.yao: 311, exx.sue: 133}
 
 
 def test_save_valid_bud_file_Scenario0_SavesFile(temp3_fs):
@@ -579,7 +579,7 @@ def test_save_valid_bud_file_Scenario1_RaisesError(temp3_fs):
     # WHEN / THEN
     with pytest_raises(Exception) as excinfo:
         save_bud_file(mstr_dir, a23_lasso, exx.yao, invalid_bud)
-    exception_str = "magnitude cannot be calculated: debt_bud_partner_net=-5, cred_bud_partner_net=3"
+    exception_str = "magnitude cannot be calculated: debt_bud_contact_net=-5, cred_bud_contact_net=3"
     assert str(excinfo.value) == exception_str
 
 

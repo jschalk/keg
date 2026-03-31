@@ -1,6 +1,6 @@
 {
-  "chapter_blurb": "Defines MomentUnits: common time tech, ledger, PartnerNames, history of PersonUnits.", 
-  "chapter_content": "A MomentUnit is a Moment system with the basic requirements: common system of time, partner tranactions ledger, etc. Importantly a Moment system must know the state of a person's personunit at any time in the past.", 
+  "chapter_blurb": "Defines MomentUnits: common time tech, ledger, ContactNames, history of PersonUnits.", 
+  "chapter_content": "A MomentUnit is a Moment system with the basic requirements: common system of time, contact tranactions ledger, etc. Importantly a Moment system must know the state of a person's personunit at any time in the past.", 
   "chapter_description": "ch14_moment", 
   "chapter_number": 14
 }

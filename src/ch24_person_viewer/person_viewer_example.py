@@ -1,4 +1,4 @@
-from src.ch02_partner.group import awardunit_shop
+from src.ch02_contact.group import awardunit_shop
 from src.ch03_workforce.workforce import workforceunit_shop
 from src.ch07_person_logic.person_main import PersonUnit, personunit_shop
 from src.ch07_person_logic.person_tool import person_plan_reason_caseunit_set_obj
@@ -53,15 +53,15 @@ def get_sue_personunit() -> PersonUnit:
     sue_debt_lumen = 13
     bob_cred_lumen = 23
     bob_debt_lumen = 29
-    sue_person.add_partnerunit(sue2_str(), sue_cred_lumen, sue_debt_lumen)
-    sue_person.add_partnerunit(bob2_str(), bob_cred_lumen, bob_debt_lumen)
-    sue_partner = sue_person.get_partner(sue2_str())
+    sue_person.add_contactunit(sue2_str(), sue_cred_lumen, sue_debt_lumen)
+    sue_person.add_contactunit(bob2_str(), bob_cred_lumen, bob_debt_lumen)
+    sue_contact = sue_person.get_contact(sue2_str())
     swim_str = ";swimmers"
     team_str = ";Team Administrator"
-    sue_partner.add_membership(swim_str, 77, 51)
-    bob_partner = sue_person.get_partner(bob2_str())
-    bob_partner.add_membership(swim_str, 12, 37)
-    bob_partner.add_membership(team_str, 51, 91)
+    sue_contact.add_membership(swim_str, 77, 51)
+    bob_contact = sue_person.get_contact(bob2_str())
+    bob_contact.add_membership(swim_str, 12, 37)
+    bob_contact.add_membership(team_str, 51, 91)
 
     casa_rope = sue_person.make_l1_rope("casa")
     clean_rope = sue_person.make_rope(casa_rope, "clean")

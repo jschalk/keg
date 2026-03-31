@@ -273,7 +273,7 @@ def test_MomentUnit_create_gut_file_if_none_SetsDirAndFiles_Scenario3_FileExists
     moment_mstr_dir = str(temp3_fs)
     a23_moment = momentunit_shop(exx.a23, moment_mstr_dir)
     sue_gut = personunit_shop(exx.sue, exx.a23)
-    sue_gut.add_partnerunit(exx.bob)
+    sue_gut.add_contactunit(exx.bob)
     save_gut_file(moment_mstr_dir, sue_gut)
     a23_lasso = lassounit_shop(exx.a23)
     sue_person_dir = create_person_dir_path(moment_mstr_dir, a23_lasso, exx.sue)
@@ -329,19 +329,19 @@ def test_MomentUnit_create_init_job_from_guts_Scenario1_ReplacesFile(
         respect_grain=x_respect_grain,
     )
     x0_sue_job = personunit_shop(exx.sue, exx.a23_slash, exx.slash)
-    x0_sue_job.add_partnerunit(exx.bob)
+    x0_sue_job.add_contactunit(exx.bob)
     save_job_file(moment_mstr_dir, x0_sue_job)
     a23_lasso = lassounit_shop(exx.a23_slash, exx.slash)
-    assert open_job_file(moment_mstr_dir, a23_lasso, exx.sue).get_partner(exx.bob)
+    assert open_job_file(moment_mstr_dir, a23_lasso, exx.sue).get_contact(exx.bob)
 
     # WHEN
     a23_moment.create_init_job_from_guts(exx.sue)
 
     # THEN
-    assert not open_job_file(moment_mstr_dir, a23_lasso, exx.sue).get_partner(exx.bob)
+    assert not open_job_file(moment_mstr_dir, a23_lasso, exx.sue).get_contact(exx.bob)
 
 
-def test_MomentUnit_create_init_job_from_guts_Scenario2_job_Has_gut_Partners(
+def test_MomentUnit_create_init_job_from_guts_Scenario2_job_Has_gut_Contacts(
     temp3_fs,
 ):
     # ESTABLISH
@@ -357,16 +357,16 @@ def test_MomentUnit_create_init_job_from_guts_Scenario2_job_Has_gut_Partners(
     )
     a23_moment.create_init_job_from_guts(exx.sue)
     sue_gut = personunit_shop(exx.sue, exx.a23_slash, exx.slash)
-    sue_gut.add_partnerunit(exx.bob)
+    sue_gut.add_contactunit(exx.bob)
     save_gut_file(moment_mstr_dir, sue_gut)
     a23_lasso = lassounit_shop(exx.a23_slash, exx.slash)
-    assert not open_job_file(moment_mstr_dir, a23_lasso, exx.sue).get_partner(exx.bob)
+    assert not open_job_file(moment_mstr_dir, a23_lasso, exx.sue).get_contact(exx.bob)
 
     # WHEN
     a23_moment.create_init_job_from_guts(exx.sue)
 
     # THEN
-    assert open_job_file(moment_mstr_dir, a23_lasso, exx.sue).get_partner(exx.bob)
+    assert open_job_file(moment_mstr_dir, a23_lasso, exx.sue).get_contact(exx.bob)
 
 
 def test_MomentUnit_create_init_job_from_guts_Scenario3_gut_FilesAreListenedTo(
@@ -387,11 +387,11 @@ def test_MomentUnit_create_init_job_from_guts_Scenario3_gut_FilesAreListenedTo(
 
     # create Sue gut
     sue_gut = personunit_shop(exx.sue, exx.a23_slash, knot=exx.slash)
-    sue_gut.add_partnerunit(exx.bob)
+    sue_gut.add_contactunit(exx.bob)
     save_gut_file(moment_mstr_dir, sue_gut)
     # create Bob gut with agenda plan for Sue
     bob_gut = personunit_shop(exx.bob, exx.a23_slash, knot=exx.slash)
-    bob_gut.add_partnerunit(exx.sue)
+    bob_gut.add_contactunit(exx.sue)
     casa_rope = bob_gut.make_l1_rope("casa")
     clean_rope = bob_gut.make_rope(casa_rope, "clean")
     bob_gut.add_plan(clean_rope, pledge=True)
@@ -422,10 +422,10 @@ def test_MomentUnit__set_all_healer_dutys_Setsdutys(
     sue_gut_person = open_gut_file(x_moment_mstr_dir, a23_lasso, exx.sue)
     yao_gut_person = open_gut_file(x_moment_mstr_dir, a23_lasso, exx.yao)
 
-    sue_gut_person.add_partnerunit(exx.sue)
-    sue_gut_person.add_partnerunit(exx.yao)
-    yao_gut_person.add_partnerunit(exx.sue)
-    yao_gut_person.add_partnerunit(exx.yao)
+    sue_gut_person.add_contactunit(exx.sue)
+    sue_gut_person.add_contactunit(exx.yao)
+    yao_gut_person.add_contactunit(exx.sue)
+    yao_gut_person.add_contactunit(exx.yao)
     texas_str = "Texas"
     texas_rope = sue_gut_person.make_l1_rope(texas_str)
     sue_gut_person.set_l1_plan(planunit_shop(texas_str, problem_bool=True))

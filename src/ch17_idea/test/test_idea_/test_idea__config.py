@@ -43,8 +43,8 @@ from src.ch17_idea.idea_config import (
     get_quick_ideas_column_ref,
     idea_config_path,
     idea_format_00013_planunit_v0_0_0,
-    idea_format_00020_person_partner_membership_v0_0_0,
-    idea_format_00021_person_partnerunit_v0_0_0,
+    idea_format_00020_person_contact_membership_v0_0_0,
+    idea_format_00021_person_contactunit_v0_0_0,
 )
 from src.ref.keywords import Ch17Keywords as kw
 
@@ -131,12 +131,12 @@ def test_get_idea_elements_sort_order_ReturnsObj():
     assert table_sorting_priority[35] == f"{kw.person_name}_ERASE"
     assert table_sorting_priority[36] == f"{kw.person_name}_ERASE_otx"
     assert table_sorting_priority[37] == f"{kw.person_name}_ERASE_inx"
-    assert table_sorting_priority[38] == kw.partner_name
-    assert table_sorting_priority[39] == f"{kw.partner_name}_otx"
-    assert table_sorting_priority[40] == f"{kw.partner_name}_inx"
-    assert table_sorting_priority[41] == f"{kw.partner_name}_ERASE"
-    assert table_sorting_priority[42] == f"{kw.partner_name}_ERASE_otx"
-    assert table_sorting_priority[43] == f"{kw.partner_name}_ERASE_inx"
+    assert table_sorting_priority[38] == kw.contact_name
+    assert table_sorting_priority[39] == f"{kw.contact_name}_otx"
+    assert table_sorting_priority[40] == f"{kw.contact_name}_inx"
+    assert table_sorting_priority[41] == f"{kw.contact_name}_ERASE"
+    assert table_sorting_priority[42] == f"{kw.contact_name}_ERASE_otx"
+    assert table_sorting_priority[43] == f"{kw.contact_name}_ERASE_inx"
     assert table_sorting_priority[44] == kw.group_title
     assert table_sorting_priority[45] == f"{kw.group_title}_otx"
     assert table_sorting_priority[46] == f"{kw.group_title}_inx"
@@ -204,8 +204,8 @@ def test_get_idea_elements_sort_order_ReturnsObj():
     assert table_sorting_priority[108] == kw.gogo_want
     assert table_sorting_priority[109] == kw.stop_want
     assert table_sorting_priority[110] == kw.active_requisite
-    assert table_sorting_priority[111] == kw.partner_cred_lumen
-    assert table_sorting_priority[112] == kw.partner_debt_lumen
+    assert table_sorting_priority[111] == kw.contact_cred_lumen
+    assert table_sorting_priority[112] == kw.contact_debt_lumen
     assert table_sorting_priority[113] == kw.group_cred_lumen
     assert table_sorting_priority[114] == kw.group_debt_lumen
     assert table_sorting_priority[115] == kw.credor_respect
@@ -272,21 +272,21 @@ def test_get_idea_elements_sort_order_ReturnsObj():
     assert table_sorting_priority[176] == kw.fund_agenda_take
     assert table_sorting_priority[177] == kw.fund_agenda_ratio_give
     assert table_sorting_priority[178] == kw.fund_agenda_ratio_take
-    assert table_sorting_priority[179] == kw.inallocable_partner_debt_lumen
+    assert table_sorting_priority[179] == kw.inallocable_contact_debt_lumen
     assert table_sorting_priority[180] == kw.gogo_calc
     assert table_sorting_priority[181] == kw.stop_calc
     assert table_sorting_priority[182] == kw.tree_level
     assert table_sorting_priority[183] == kw.range_evaluated
     assert table_sorting_priority[184] == kw.descendant_pledge_count
     assert table_sorting_priority[185] == kw.healerunit_ratio
-    assert table_sorting_priority[186] == kw.all_partner_cred
+    assert table_sorting_priority[186] == kw.all_contact_cred
     assert table_sorting_priority[187] == kw.keeps_justified
     assert table_sorting_priority[188] == kw.offtrack_fund
     assert table_sorting_priority[189] == kw.parent_heir_active
-    assert table_sorting_priority[190] == kw.irrational_partner_debt_lumen
+    assert table_sorting_priority[190] == kw.irrational_contact_debt_lumen
     assert table_sorting_priority[191] == kw.sum_healerunit_plans_fund_total
     assert table_sorting_priority[192] == kw.keeps_buildable
-    assert table_sorting_priority[193] == kw.all_partner_debt
+    assert table_sorting_priority[193] == kw.all_contact_debt
     assert table_sorting_priority[194] == kw.tree_traverse_count
     assert table_sorting_priority[195] == kw.net_funds
     assert table_sorting_priority[196] == kw.fund_rank
@@ -349,7 +349,7 @@ def test_get_idea_sqlite_types_ReturnsObj():
     assert sqlite_types.get(kw.spark_num) == "INTEGER"
     assert sqlite_types.get(kw.moment_rope) == "TEXT"
     assert sqlite_types.get(kw.person_name) == "TEXT"
-    assert sqlite_types.get(kw.partner_name) == "TEXT"
+    assert sqlite_types.get(kw.contact_name) == "TEXT"
     assert sqlite_types.get(kw.group_title) == "TEXT"
     assert sqlite_types.get(kw.plan_rope) == "TEXT"
     assert sqlite_types.get(kw.reason_context) == "TEXT"
@@ -370,8 +370,8 @@ def test_get_idea_sqlite_types_ReturnsObj():
     assert sqlite_types.get(kw.gogo_want) == "REAL"
     assert sqlite_types.get(kw.stop_want) == "REAL"
     assert sqlite_types.get(kw.active_requisite) == "INTEGER"
-    assert sqlite_types.get(kw.partner_cred_lumen) == "REAL"
-    assert sqlite_types.get(kw.partner_debt_lumen) == "REAL"
+    assert sqlite_types.get(kw.contact_cred_lumen) == "REAL"
+    assert sqlite_types.get(kw.contact_debt_lumen) == "REAL"
     assert sqlite_types.get(kw.group_cred_lumen) == "REAL"
     assert sqlite_types.get(kw.group_debt_lumen) == "REAL"
     assert sqlite_types.get(kw.credor_respect) == "REAL"
@@ -456,8 +456,8 @@ def test_get_idea_config_dict_ReturnsObj_Scenario0_IsFullyPopulated():
     assert kw.moment_epoch_month in idea_config_dimens
     assert kw.moment_epoch_weekday in idea_config_dimens
     assert kw.moment_timeoffi in idea_config_dimens
-    assert kw.person_partner_membership in idea_config_dimens
-    assert kw.person_partnerunit in idea_config_dimens
+    assert kw.person_contact_membership in idea_config_dimens
+    assert kw.person_contactunit in idea_config_dimens
     assert kw.person_plan_awardunit in idea_config_dimens
     assert kw.person_plan_factunit in idea_config_dimens
     assert kw.person_plan_laborunit in idea_config_dimens
@@ -595,8 +595,8 @@ def test_get_idea_format_filenames_ReturnsObj_CheckSome_idea_format_filesnames_E
     idea_filenames_set = get_idea_format_filenames()
 
     # WHEN / THEN
-    assert idea_format_00021_person_partnerunit_v0_0_0() in idea_filenames_set
-    assert idea_format_00020_person_partner_membership_v0_0_0() in idea_filenames_set
+    assert idea_format_00021_person_contactunit_v0_0_0() in idea_filenames_set
+    assert idea_format_00020_person_contact_membership_v0_0_0() in idea_filenames_set
     assert idea_format_00013_planunit_v0_0_0() in idea_filenames_set
 
 
@@ -711,8 +711,8 @@ def test_get_idea_format_filename_ReturnsObj():
     br00013_filename = get_idea_format_filename(br00013_str)
 
     # THEN
-    assert br00021_filename == idea_format_00021_person_partnerunit_v0_0_0()
-    assert br00020_filename == idea_format_00020_person_partner_membership_v0_0_0()
+    assert br00021_filename == idea_format_00021_person_contactunit_v0_0_0()
+    assert br00020_filename == idea_format_00020_person_contact_membership_v0_0_0()
     assert br00013_filename == idea_format_00013_planunit_v0_0_0()
 
     all_set = {get_idea_format_filename(br) for br in get_idea_numbers()}
@@ -738,8 +738,8 @@ def test_get_idea_config_dict_ReturnsObj_Scenario1_Check_build_order():
     # set_idea_config_json(kw.moment_epoch_hour, 6)
     # set_idea_config_json(kw.moment_epoch_month, 7)
     # set_idea_config_json(kw.moment_epoch_weekday, 8)
-    # set_idea_config_json(kw.person_partner_membership, 9)
-    # set_idea_config_json(kw.person_partnerunit, 10)
+    # set_idea_config_json(kw.person_contact_membership, 9)
+    # set_idea_config_json(kw.person_contactunit, 10)
     # set_idea_config_json(kw.person_plan_awardunit, 11)
     # set_idea_config_json(kw.person_plan_factunit, 12)
     # set_idea_config_json(kw.person_plan_laborunit, 14)
@@ -763,8 +763,8 @@ def test_get_idea_config_dict_ReturnsObj_Scenario1_Check_build_order():
     assert x_idea_config.get(kw.moment_epoch_hour).get(bo) == 6
     assert x_idea_config.get(kw.moment_epoch_month).get(bo) == 7
     assert x_idea_config.get(kw.moment_epoch_weekday).get(bo) == 8
-    assert x_idea_config.get(kw.person_partner_membership).get(bo) == 9
-    assert x_idea_config.get(kw.person_partnerunit).get(bo) == 10
+    assert x_idea_config.get(kw.person_contact_membership).get(bo) == 9
+    assert x_idea_config.get(kw.person_contactunit).get(bo) == 10
     assert x_idea_config.get(kw.person_plan_awardunit).get(bo) == 11
     assert x_idea_config.get(kw.person_plan_factunit).get(bo) == 12
     assert x_idea_config.get(kw.person_plan_laborunit).get(bo) == 14
@@ -802,8 +802,8 @@ def test_get_idea_config_dict_ReturnsObj_Scenario0_Person():
     assert not person_idea_config.get(kw.moment_epoch_hour)
     assert not person_idea_config.get(kw.moment_epoch_month)
     assert not person_idea_config.get(kw.moment_epoch_weekday)
-    assert person_idea_config.get(kw.person_partner_membership)
-    assert person_idea_config.get(kw.person_partnerunit)
+    assert person_idea_config.get(kw.person_contact_membership)
+    assert person_idea_config.get(kw.person_contactunit)
     assert person_idea_config.get(kw.person_plan_awardunit)
     assert person_idea_config.get(kw.person_plan_factunit)
     assert person_idea_config.get(kw.person_plan_laborunit)

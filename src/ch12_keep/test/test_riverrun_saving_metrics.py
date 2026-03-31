@@ -10,9 +10,9 @@ def test_RiverRun_save_rivergrade_file_SavesFile(temp3_fs):
     # ESTABLISH / WHEN
     mstr_dir = str(temp3_fs)
     texas_rope = get_nation_texas_rope()
-    yao_partner_cred_lumen = 500
+    yao_contact_cred_lumen = 500
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao, texas_rope)
-    x_riverrun.set_keep_patientledger(exx.yao, exx.yao, yao_partner_cred_lumen)
+    x_riverrun.set_keep_patientledger(exx.yao, exx.yao, yao_contact_cred_lumen)
     x_riverrun.set_need_dues({exx.yao: 1})
     x_riverrun.calc_metrics()
     yao_keep_grade_path = create_keep_grade_path(
@@ -40,7 +40,7 @@ def test_RiverRun_save_rivergrade_files_SavesFile(temp3_fs):
     assert os_path_exists(github_error_path1) is False
     mstr_dir = str(temp3_fs)
     texas_rope = get_nation_texas_rope()
-    yao_partner_cred_lumen = 500
+    yao_contact_cred_lumen = 500
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao, texas_rope)
     yao_keep_grade_path = create_keep_grade_path(
         moment_mstr_dir=x_riverrun.moment_mstr_dir,
@@ -66,7 +66,7 @@ def test_RiverRun_save_rivergrade_files_SavesFile(temp3_fs):
         knot=x_riverrun.knot,
         grade_person_name=exx.sue,
     )
-    x_riverrun.set_keep_patientledger(exx.yao, exx.yao, yao_partner_cred_lumen)
+    x_riverrun.set_keep_patientledger(exx.yao, exx.yao, yao_contact_cred_lumen)
     x_riverrun.set_keep_patientledger(exx.yao, exx.bob, 1)
     x_riverrun.set_need_dues({exx.yao: 1, exx.sue: 1})
     x_riverrun.calc_metrics()

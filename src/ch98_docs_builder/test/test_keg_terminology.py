@@ -16,6 +16,7 @@ from src.ch18_etl_config.etl_config import get_etl_stage_types_config_dict
 from src.ch19_etl_main.etl_main import etl_heard_raw_tables_to_moment_ote1_agg
 from src.ch98_docs_builder._ref.ch98_semantic_types import (
     BreakTerm,
+    ContactName,
     CRUD_command,
     EpochLabel,
     FaceName,
@@ -34,7 +35,6 @@ from src.ch98_docs_builder._ref.ch98_semantic_types import (
     ManaNum,
     MomentRope,
     NameTerm,
-    PartnerName,
     PersonName,
     PoolNum,
     ReasonNum,
@@ -215,8 +215,8 @@ def test_get_keg_terminology_ReturnsObj_CheckConfigArgs():
     award_args = get_person_dimen_config(kw.person_plan_awardunit)
     labor_args = get_person_dimen_config(kw.person_plan_laborunit)
     healer_args = get_person_dimen_config(kw.person_plan_healerunit)
-    partner_args = get_person_dimen_config(kw.person_partnerunit)
-    member_args = get_person_dimen_config(kw.person_partner_membership)
+    contact_args = get_person_dimen_config(kw.person_contactunit)
+    member_args = get_person_dimen_config(kw.person_contact_membership)
 
     trllabe_args = get_translate_config_args(kw.translate_label)
     trlname_args = get_translate_config_args(kw.translate_name)
@@ -247,7 +247,7 @@ def test_get_keg_terminology_ReturnsObj_CheckConfigArgs():
         check_person_desc_str(award_args, keyword, desc, "Award")
         check_person_desc_str(labor_args, keyword, desc, "Workforce")
         check_person_desc_str(healer_args, keyword, desc, "Healer")
-        check_person_desc_str(partner_args, keyword, desc, "Partner")
+        check_person_desc_str(contact_args, keyword, desc, "Contact")
         check_person_desc_str(member_args, keyword, desc, "Member")
         check_translate_desc_str(trllabe_args, keyword, desc, kw.translate_label)
         check_translate_desc_str(trlname_args, keyword, desc, kw.translate_name)
@@ -296,7 +296,7 @@ def get_all_semantic_types_with_doc_strs() -> dict[str, str]:
         ManaNum.__name__: inspect_getdoc(ManaNum(0)),
         MomentRope.__name__: inspect_getdoc(MomentRope("")),
         NameTerm.__name__: inspect_getdoc(NameTerm("")),
-        PartnerName.__name__: inspect_getdoc(PartnerName("")),
+        ContactName.__name__: inspect_getdoc(ContactName("")),
         PersonName.__name__: inspect_getdoc(PersonName("")),
         PoolNum.__name__: inspect_getdoc(PoolNum(0)),
         ReasonNum.__name__: inspect_getdoc(ReasonNum(0)),

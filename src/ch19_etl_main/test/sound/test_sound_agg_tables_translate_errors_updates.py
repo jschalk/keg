@@ -22,10 +22,10 @@ def test_create_knot_exists_in_name_error_update_sqlstr_ReturnsObj_PopulatesTabl
     spark1 = 1
 
     cursor0.execute(CREATE_PRNPTNR_PUT_SOUND_AGG_SQLSTR)
-    prnptnr_dimen = kw.person_partnerunit
+    prnptnr_dimen = kw.person_contactunit
     prnptnr_s_agg_put = create_prime_tablename(prnptnr_dimen, "s_agg", "put")
     insert_prnptnr_sqlstr = f"""INSERT INTO {prnptnr_s_agg_put} (
-  {kw.spark_num}, {kw.face_name}, {kw.moment_rope}, {kw.person_name}, {kw.partner_name})
+  {kw.spark_num}, {kw.face_name}, {kw.moment_rope}, {kw.person_name}, {kw.contact_name})
 VALUES
   ({spark1}, '{exx.sue}', '{exx.a23}', '{exx.yao}', '{exx.yao}')
 , ({spark1}, '{exx.sue}', '{exx.a23}', '{exx.yao}', '{bob_str}')
@@ -49,7 +49,7 @@ VALUES
 
     # WHEN
     sqlstr = create_knot_exists_in_name_error_update_sqlstr(
-        prnptnr_s_agg_put, kw.partner_name
+        prnptnr_s_agg_put, kw.contact_name
     )
     print(f"{sqlstr=}")
     cursor0.execute(sqlstr)
@@ -58,7 +58,7 @@ VALUES
     assert cursor0.execute(error_count_sqlstr).fetchone()[0] == 1
     select_core_raw_sqlstr = f"SELECT * FROM {prnptnr_s_agg_put}"
     cursor0.execute(select_core_raw_sqlstr)
-    name_knot_str = f"Knot cannot exist in NameTerm column {kw.partner_name}"
+    name_knot_str = f"Knot cannot exist in NameTerm column {kw.contact_name}"
     assert cursor0.fetchall() == [
         (spark1, exx.sue, exx.a23, exx.yao, exx.yao, None, None, None, None),
         (spark1, exx.sue, exx.a23, exx.yao, bob_str, None, None, None, name_knot_str),
@@ -132,10 +132,10 @@ def test_set_moment_person_sound_agg_knot_errors_PopulatesTable_Scenario0(
     spark1 = 1
 
     cursor0.execute(CREATE_PRNPTNR_PUT_SOUND_AGG_SQLSTR)
-    prnptnr_dimen = kw.person_partnerunit
+    prnptnr_dimen = kw.person_contactunit
     prnptnr_s_agg_put = create_prime_tablename(prnptnr_dimen, "s_agg", "put")
     insert_prnptnr_sqlstr = f"""INSERT INTO {prnptnr_s_agg_put} (
-  {kw.spark_num}, {kw.face_name}, {kw.moment_rope}, {kw.person_name}, {kw.partner_name})
+  {kw.spark_num}, {kw.face_name}, {kw.moment_rope}, {kw.person_name}, {kw.contact_name})
 VALUES
   ({spark1}, '{exx.sue}', '{exx.a23}', '{exx.yao}', '{exx.yao}')
 , ({spark1}, '{exx.sue}', '{exx.a23}', '{exx.yao}', '{bob_str}')
@@ -163,9 +163,9 @@ VALUES
 
     # THEN
     assert cursor0.execute(error_count_sqlstr).fetchone()[0] == 1
-    select_core_raw_sqlstr = f"SELECT * FROM {prnptnr_s_agg_put} ORDER BY {kw.moment_rope}, {kw.person_name}, {kw.partner_name}"
+    select_core_raw_sqlstr = f"SELECT * FROM {prnptnr_s_agg_put} ORDER BY {kw.moment_rope}, {kw.person_name}, {kw.contact_name}"
     cursor0.execute(select_core_raw_sqlstr)
-    name_knot_str = f"Knot cannot exist in NameTerm column {kw.partner_name}"
+    name_knot_str = f"Knot cannot exist in NameTerm column {kw.contact_name}"
     rope_knot_str = f"Trailing knot must exist in RopeTerm column {kw.moment_rope}"
     rows = cursor0.fetchall()
     print(f"{rows=}")

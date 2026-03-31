@@ -7,18 +7,18 @@ def test_RiverRun_levy_need_dues_Molds_cycleledger_Scenario01(temp3_dir):
     mstr_dir = temp3_dir
     yao_need_due = 222
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
-    x_riverrun.set_partner_need_due(exx.yao, yao_need_due)
+    x_riverrun.set_contact_need_due(exx.yao, yao_need_due)
 
     yao_paid = 500
     x_cycleledger = {exx.yao: yao_paid}
-    assert x_riverrun.get_partner_need_due(exx.yao) == yao_need_due
+    assert x_riverrun.get_contact_need_due(exx.yao) == yao_need_due
     assert x_cycleledger.get(exx.yao) == yao_paid
 
     # WHEN
     y_cycleledger, need_got = x_riverrun.levy_need_dues(x_cycleledger)
 
     # THEN
-    assert x_riverrun.get_partner_need_due(exx.yao) == 0
+    assert x_riverrun.get_contact_need_due(exx.yao) == 0
     assert need_got == 222
     assert y_cycleledger.get(exx.yao) == yao_paid - yao_need_due
 
@@ -29,14 +29,14 @@ def test_RiverRun_levy_need_dues_Molds_cycleledger_Scenario02(temp3_dir):
     yao_need_due = 222
     bob_need_due = 127
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
-    x_riverrun.set_partner_need_due(exx.yao, yao_need_due)
-    x_riverrun.set_partner_need_due(exx.bob, bob_need_due)
+    x_riverrun.set_contact_need_due(exx.yao, yao_need_due)
+    x_riverrun.set_contact_need_due(exx.bob, bob_need_due)
 
     yao_paid = 500
     bob_paid = 100
     x_cycleledger = {exx.yao: yao_paid, exx.bob: bob_paid}
-    assert x_riverrun.get_partner_need_due(exx.yao) == yao_need_due
-    assert x_riverrun.get_partner_need_due(exx.bob) == bob_need_due
+    assert x_riverrun.get_contact_need_due(exx.yao) == yao_need_due
+    assert x_riverrun.get_contact_need_due(exx.bob) == bob_need_due
     assert x_cycleledger.get(exx.yao) == yao_paid
     assert x_cycleledger.get(exx.bob) == bob_paid
 
@@ -44,8 +44,8 @@ def test_RiverRun_levy_need_dues_Molds_cycleledger_Scenario02(temp3_dir):
     y_cycleledger, need_got = x_riverrun.levy_need_dues(x_cycleledger)
 
     # THEN
-    assert x_riverrun.get_partner_need_due(exx.yao) == 0
-    assert x_riverrun.get_partner_need_due(exx.bob) == 27
+    assert x_riverrun.get_contact_need_due(exx.yao) == 0
+    assert x_riverrun.get_contact_need_due(exx.bob) == 27
     assert y_cycleledger.get(exx.yao) == yao_paid - yao_need_due
     assert y_cycleledger.get(exx.bob) is None
     assert need_got == 322

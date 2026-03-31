@@ -59,8 +59,8 @@ def test_get_plan_view_dict_ReturnsObj_Scenario0_EmptyPlan():
         kw.is_expanded,
         kw.plan_active,
         kw.plan_active_hx,
-        kw.all_partner_cred,
-        kw.all_partner_debt,
+        kw.all_contact_cred,
+        kw.all_contact_debt,
         kw.awardheirs,
         kw.awardlines,
         kw.descendant_pledge_count,
@@ -159,12 +159,12 @@ def test_get_plan_view_dict_ReturnsObj_Scenario3_PlanUnit_base_attrs():
     assert casa_dict.get(kw.plan_fund_total) > 0
     expected_parent_rope = add_small_dot(casa_plan.parent_rope)
     assert casa_dict.get(kw.parent_rope) == expected_parent_rope
-    expected_all_partner_cred = f"all_partner_cred = {casa_plan.all_partner_cred}"
-    expected_all_partner_debt = f"all_partner_debt = {casa_plan.all_partner_debt}"
-    expected_all_partner_cred = add_small_dot(expected_all_partner_cred)
-    expected_all_partner_debt = add_small_dot(expected_all_partner_debt)
-    assert casa_dict.get(kw.all_partner_cred) == expected_all_partner_cred
-    assert casa_dict.get(kw.all_partner_debt) == expected_all_partner_debt
+    expected_all_contact_cred = f"all_contact_cred = {casa_plan.all_contact_cred}"
+    expected_all_contact_debt = f"all_contact_debt = {casa_plan.all_contact_debt}"
+    expected_all_contact_cred = add_small_dot(expected_all_contact_cred)
+    expected_all_contact_debt = add_small_dot(expected_all_contact_debt)
+    assert casa_dict.get(kw.all_contact_cred) == expected_all_contact_cred
+    assert casa_dict.get(kw.all_contact_debt) == expected_all_contact_debt
     assert casa_dict.get(kw.fund_ratio) == "38%"
 
 

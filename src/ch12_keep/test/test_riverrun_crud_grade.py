@@ -76,8 +76,8 @@ def test_RiverRun_set_all_initial_rivergrades_SetsAttr(temp3_dir):
     x_riverrun.set_keep_patientledger(exx.yao, exx.bob, 1)
     x_riverrun.set_keep_patientledger(exx.zia, exx.bob, 1)
     x_riverrun.set_keep_patientledger(exx.xio, exx.sue, 1)
-    all_partners_ids = x_riverrun.get_all_keep_patientledger_partner_names()
-    assert all_partners_ids == {exx.yao, exx.bob, exx.zia, exx.xio, exx.sue}
+    all_contacts_ids = x_riverrun.get_all_keep_patientledger_contact_names()
+    assert all_contacts_ids == {exx.yao, exx.bob, exx.zia, exx.xio, exx.sue}
     assert x_riverrun.rivergrades_is_empty()
     assert x_riverrun.rivergrade_exists(exx.yao) is False
     assert x_riverrun.rivergrade_exists(exx.bob) is False

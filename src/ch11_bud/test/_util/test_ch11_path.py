@@ -14,9 +14,9 @@ from src.ch11_bud._ref.ch11_path import (
     create_bud_dir_path,
     create_buds_dir_path,
     create_budunit_json_path,
+    create_cell_contact_mandate_ledger_path,
     create_cell_dir_path,
     create_cell_json_path,
-    create_cell_partner_mandate_ledger_path,
     create_person_spark_csv_path,
     create_person_spark_dir_path,
     create_personspark_path,
@@ -203,7 +203,7 @@ def test_create_cell_json_path_ReturnsObj_Scenario1_Three_bud_ancestors(temp3_di
     assert gen_cell_json_path == expected_cell_json_path
 
 
-def test_create_cell_partner_mandate_ledger_path_ReturnsObj_Scenario1_Three_bud_ancestors(
+def test_create_cell_contact_mandate_ledger_path_ReturnsObj_Scenario1_Three_bud_ancestors(
     temp3_dir,
 ):
     # ESTABLISH
@@ -213,7 +213,7 @@ def test_create_cell_partner_mandate_ledger_path_ReturnsObj_Scenario1_Three_bud_
     bud_ancestors = [exx.yao, exx.bob]
 
     # WHEN
-    gen_cell_json_path = create_cell_partner_mandate_ledger_path(
+    gen_cell_json_path = create_cell_contact_mandate_ledger_path(
         x_moment_mstr_dir, a23_lasso, exx.sue, tp7, bud_ancestors=bud_ancestors
     )
 
@@ -404,10 +404,10 @@ def test_create_cell_json_path_HasDocString():
 
 
 @pytest_mark.skip_on_linux
-def test_create_cell_partner_mandate_ledger_path_HasDocString():
+def test_create_cell_contact_mandate_ledger_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
-    doc_str = create_cell_partner_mandate_ledger_path(
+    doc_str = create_cell_contact_mandate_ledger_path(
         moment_mstr_dir="moment_mstr_dir",
         moment_lasso=moment_lasso,
         person_name=kw.person_name,
@@ -418,7 +418,7 @@ def test_create_cell_partner_mandate_ledger_path_HasDocString():
     doc_str = f"Returns path: {doc_str}"
     print(f"{doc_str=}")
     # WHEN / THEN
-    assert inspect_getdoc(create_cell_partner_mandate_ledger_path) == doc_str
+    assert inspect_getdoc(create_cell_contact_mandate_ledger_path) == doc_str
 
 
 @pytest_mark.skip_on_linux

@@ -40,7 +40,7 @@
     "jkeys": {
       "face_name": {}, 
       "moment_rope": {}, 
-      "partner_name": {}, 
+      "contact_name": {}, 
       "person_name": {}, 
       "spark_num": {}, 
       "tran_time": {}
@@ -78,7 +78,7 @@
     "jkeys": {"face_name": {}, "moment_rope": {}, "otx_time": {}, "spark_num": {}}, 
     "jvalues": {"inx_time": {}}
   }, 
-  "person_partner_membership": {
+  "person_contact_membership": {
     "allowed_crud": "delete_insert_update", 
     "build_order": 9, 
     "idea_category": "person", 
@@ -86,24 +86,24 @@
       "face_name": {}, 
       "group_title": {}, 
       "moment_rope": {}, 
-      "partner_name": {}, 
+      "contact_name": {}, 
       "person_name": {}, 
       "spark_num": {}
     }, 
     "jvalues": {"group_cred_lumen": {}, "group_debt_lumen": {}, "knot": {}}
   }, 
-  "person_partnerunit": {
+  "person_contactunit": {
     "allowed_crud": "delete_insert_update", 
     "build_order": 10, 
     "idea_category": "person", 
     "jkeys": {
       "face_name": {}, 
       "moment_rope": {}, 
-      "partner_name": {}, 
+      "contact_name": {}, 
       "person_name": {}, 
       "spark_num": {}
     }, 
-    "jvalues": {"knot": {}, "partner_cred_lumen": {}, "partner_debt_lumen": {}}
+    "jvalues": {"knot": {}, "contact_cred_lumen": {}, "contact_debt_lumen": {}}
   }, 
   "person_plan_awardunit": {
     "allowed_crud": "delete_insert_update", 

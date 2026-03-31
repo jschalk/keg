@@ -336,8 +336,8 @@ def get_mop_with_reason_personunit_example1():
 def get_personunit_laundry_example1() -> PersonUnit:
     yao_person = personunit_shop(exx.yao)
     cali_str = "Cali"
-    yao_person.add_partnerunit(exx.yao)
-    yao_person.add_partnerunit(cali_str)
+    yao_person.add_contactunit(exx.yao)
+    yao_person.add_contactunit(cali_str)
 
     basket_str = "laundry basket situation"
     b_full_str = "full"

@@ -1,5 +1,5 @@
 from src.ch01_allot.allot import default_grain_num_if_None
-from src.ch02_partner.group import awardunit_shop
+from src.ch02_contact.group import awardunit_shop
 from src.ch03_workforce.workforce import workforceunit_shop
 from src.ch04_rope.rope import create_rope, default_knot_if_None
 from src.ch06_plan.healer import healerunit_shop
@@ -44,8 +44,8 @@ def test_PlanUnit_Exists():
     assert x_planunit.stop_calc is None
     assert x_planunit.descendant_pledge_count is None
     assert x_planunit.is_expanded is None
-    assert x_planunit.all_partner_cred is None
-    assert x_planunit.all_partner_debt is None
+    assert x_planunit.all_contact_cred is None
+    assert x_planunit.all_contact_debt is None
     assert x_planunit.tree_level is None
     assert x_planunit.plan_active_hx is None
     assert x_planunit.fund_ratio is None
@@ -58,8 +58,8 @@ def test_PlanUnit_Exists():
     assert obj_attrs == {
         kw.plan_active,
         kw.plan_active_hx,
-        kw.all_partner_cred,
-        kw.all_partner_debt,
+        kw.all_contact_cred,
+        kw.all_contact_debt,
         kw.awardheirs,
         kw.awardlines,
         kw.descendant_pledge_count,
@@ -170,8 +170,8 @@ def test_planunit_shop_ReturnsObj_Scenario0_WithOneParameter():
     assert x_planunit.workforceunit == workforceunit_shop()
     assert x_planunit.workforceheir is None
     assert x_planunit.knot == default_knot_if_None()
-    assert x_planunit.all_partner_cred is None
-    assert x_planunit.all_partner_debt is None
+    assert x_planunit.all_contact_cred is None
+    assert x_planunit.all_contact_debt is None
     assert x_planunit.healerunit_ratio == 0
 
 

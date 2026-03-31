@@ -1,4 +1,4 @@
-from src.ch02_partner.group import awardunit_shop
+from src.ch02_contact.group import awardunit_shop
 from src.ch04_rope.rope import to_rope
 from src.ch05_reason.reason_main import factunit_shop, reasonunit_shop
 from src.ch07_person_logic.person_main import personunit_shop
@@ -6,15 +6,15 @@ from src.ch08_person_atom.atom_main import personatom_shop, sift_personatom
 from src.ref.keywords import Ch08Keywords as kw, ExampleStrs as exx
 
 
-def test_sift_atom_ReturnsObj_PersonAtom_INSERT_person_partnerunit():
+def test_sift_atom_ReturnsObj_PersonAtom_INSERT_person_contactunit():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
-    sue_person.add_partnerunit(exx.zia)
+    sue_person.add_contactunit(exx.zia)
 
-    bob_atom = personatom_shop(kw.person_partnerunit, kw.INSERT)
-    bob_atom.set_arg(kw.partner_name, exx.bob)
-    zia_atom = personatom_shop(kw.person_partnerunit, kw.INSERT)
-    zia_atom.set_arg(kw.partner_name, exx.zia)
+    bob_atom = personatom_shop(kw.person_contactunit, kw.INSERT)
+    bob_atom.set_arg(kw.contact_name, exx.bob)
+    zia_atom = personatom_shop(kw.person_contactunit, kw.INSERT)
+    zia_atom.set_arg(kw.contact_name, exx.zia)
 
     # WHEN
     new_bob_personatom = sift_personatom(sue_person, bob_atom)
@@ -26,20 +26,20 @@ def test_sift_atom_ReturnsObj_PersonAtom_INSERT_person_partnerunit():
     assert not new_zia_personatom
 
 
-def test_sift_atom_ReturnsObj_PersonAtom_INSERT_person_partner_membership():
+def test_sift_atom_ReturnsObj_PersonAtom_INSERT_person_contact_membership():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
-    sue_person.add_partnerunit(exx.yao)
-    sue_person.add_partnerunit(exx.bob)
-    yao_partnerunit = sue_person.get_partner(exx.yao)
-    yao_partnerunit.add_membership(exx.run)
-    print(f"{yao_partnerunit.memberships.keys()=}")
+    sue_person.add_contactunit(exx.yao)
+    sue_person.add_contactunit(exx.bob)
+    yao_contactunit = sue_person.get_contact(exx.yao)
+    yao_contactunit.add_membership(exx.run)
+    print(f"{yao_contactunit.memberships.keys()=}")
 
-    bob_run_atom = personatom_shop(kw.person_partner_membership, kw.INSERT)
-    bob_run_atom.set_arg(kw.partner_name, exx.bob)
+    bob_run_atom = personatom_shop(kw.person_contact_membership, kw.INSERT)
+    bob_run_atom.set_arg(kw.contact_name, exx.bob)
     bob_run_atom.set_arg(kw.group_title, exx.run)
-    yao_run_atom = personatom_shop(kw.person_partner_membership, kw.INSERT)
-    yao_run_atom.set_arg(kw.partner_name, exx.yao)
+    yao_run_atom = personatom_shop(kw.person_contact_membership, kw.INSERT)
+    yao_run_atom.set_arg(kw.contact_name, exx.yao)
     yao_run_atom.set_arg(kw.group_title, exx.run)
 
     # WHEN

@@ -11,7 +11,7 @@ from src.ch18_etl_config._ref.ch18_path import (
 from src.ch18_etl_config.stance_tool import create_stance0001_file
 from src.ch19_etl_main.etl_main import (
     add_moment_epoch_to_guts,
-    calc_moment_bud_partner_mandate_net_ledgers,
+    calc_moment_bud_contact_mandate_net_ledgers,
     create_last_run_metrics_json,
     etl_brick_agg_tables_to_brick_valid_tables,
     etl_brick_agg_tables_to_sparks_brick_agg_table,
@@ -25,7 +25,7 @@ from src.ch19_etl_main.etl_main import (
     etl_input_dfs_to_brick_raw_tables,
     etl_moment_guts_to_moment_jobs,
     etl_moment_job_jsons_to_job_tables,
-    etl_moment_json_partner_nets_to_moment_partner_nets_table,
+    etl_moment_json_contact_nets_to_moment_contact_nets_table,
     etl_moment_ote1_agg_csvs_to_jsons,
     etl_moment_ote1_agg_table_to_moment_ote1_agg_csvs,
     etl_sound_agg_tables_to_sound_vld_tables,
@@ -88,9 +88,9 @@ def sheets_input_to_lynx_with_cursor(
     etl_heard_raw_tables_to_moment_ote1_agg(cursor)
     etl_moment_ote1_agg_table_to_moment_ote1_agg_csvs(cursor, moment_mstr_dir)
     etl_moment_ote1_agg_csvs_to_jsons(moment_mstr_dir)
-    calc_moment_bud_partner_mandate_net_ledgers(moment_mstr_dir)
+    calc_moment_bud_contact_mandate_net_ledgers(moment_mstr_dir)
     etl_moment_job_jsons_to_job_tables(cursor, moment_mstr_dir)
-    etl_moment_json_partner_nets_to_moment_partner_nets_table(cursor, moment_mstr_dir)
+    etl_moment_json_contact_nets_to_moment_contact_nets_table(cursor, moment_mstr_dir)
     populate_kpi_bundle(cursor)
     create_last_run_metrics_json(cursor, moment_mstr_dir)
 

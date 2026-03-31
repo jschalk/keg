@@ -149,8 +149,8 @@ def test_create_prime_tablename_ReturnsObj_Scenario0_ExpectedReturns():
 
     # THEN
     assert prnunit_s_agg_table == f"{kw.personunit}_put_{kw.s_agg}"
-    assert prnptnr_s_agg_table == f"{kw.person_partnerunit}_put_{kw.s_agg}"
-    assert prnmemb_s_agg_table == f"{kw.person_partner_membership}_put_{kw.s_agg}"
+    assert prnptnr_s_agg_table == f"{kw.person_contactunit}_put_{kw.s_agg}"
+    assert prnmemb_s_agg_table == f"{kw.person_contact_membership}_put_{kw.s_agg}"
     assert prnplan_s_agg_table == f"{kw.person_planunit}_put_{kw.s_agg}"
     assert prnawar_s_agg_table == f"{kw.person_plan_awardunit}_put_{kw.s_agg}"
     assert prnreas_s_agg_table == f"{kw.person_plan_reasonunit}_put_{kw.s_agg}"
@@ -176,7 +176,7 @@ def test_create_prime_tablename_ReturnsObj_Scenario0_ExpectedReturns():
     assert trltitl_s_val_table == f"{kw.translate_title}_{kw.s_vld}"
     assert trlcore_s_raw_table == f"{kw.translate_core}_{kw.s_raw}"
     assert trlcore_s_agg_table == f"{kw.translate_core}_{kw.s_agg}"
-    assert prnptnr_job_table == f"{kw.person_partnerunit}_job"
+    assert prnptnr_job_table == f"{kw.person_contactunit}_job"
     assert prngrou_job_table == f"{kw.person_groupunit}_job"
 
 

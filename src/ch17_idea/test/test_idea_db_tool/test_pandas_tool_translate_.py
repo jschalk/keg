@@ -22,36 +22,36 @@ def test_get_dataframe_translateable_columns_ReturnsObj():
     # ESTABLISH / WHEN / THEN
     x_dt = DataFrame()
     assert get_dataframe_translateable_columns(x_dt) == set()
-    x_dt = DataFrame(columns=[kw.partner_name])
-    assert get_dataframe_translateable_columns(x_dt) == {kw.partner_name}
-    x_dt = DataFrame(columns=[kw.partner_name, kw.partner_cred_lumen])
-    assert get_dataframe_translateable_columns(x_dt) == {kw.partner_name}
+    x_dt = DataFrame(columns=[kw.contact_name])
+    assert get_dataframe_translateable_columns(x_dt) == {kw.contact_name}
+    x_dt = DataFrame(columns=[kw.contact_name, kw.contact_cred_lumen])
+    assert get_dataframe_translateable_columns(x_dt) == {kw.contact_name}
     x_dt = DataFrame(
-        columns=[kw.reason_context, kw.partner_name, kw.partner_cred_lumen]
+        columns=[kw.reason_context, kw.contact_name, kw.contact_cred_lumen]
     )
     assert get_dataframe_translateable_columns(x_dt) == {
-        kw.partner_name,
+        kw.contact_name,
         kw.reason_context,
     }
-    x_dt = DataFrame(columns=["calc_swim", kw.partner_name, kw.partner_cred_lumen])
-    assert get_dataframe_translateable_columns(x_dt) == {kw.partner_name}
+    x_dt = DataFrame(columns=["calc_swim", kw.contact_name, kw.contact_cred_lumen])
+    assert get_dataframe_translateable_columns(x_dt) == {kw.contact_name}
 
 
-def test_translate_single_column_dataframe_ReturnsObj_Scenario0_PartnerName_EmptyDataFrame():
+def test_translate_single_column_dataframe_ReturnsObj_Scenario0_ContactName_EmptyDataFrame():
     # ESTABLISH
-    partner_name_mapunit = namemap_shop()
-    empty_dt = DataFrame(columns=[kw.partner_name])
+    contact_name_mapunit = namemap_shop()
+    empty_dt = DataFrame(columns=[kw.contact_name])
 
     # WHEN
     gen_dt = translate_single_column_dataframe(
-        empty_dt, partner_name_mapunit, kw.partner_name
+        empty_dt, contact_name_mapunit, kw.contact_name
     )
 
     # THEN
     pandas_assert_frame_equal(gen_dt, empty_dt)
 
 
-def test_translate_single_column_dataframe_SetsParameterAttrs_Scenario0_PartnerName_5rows():
+def test_translate_single_column_dataframe_SetsParameterAttrs_Scenario0_ContactName_5rows():
     # ESTABLISH
     xio_otx = "Xio"
     sue_otx = "Sue"
@@ -60,11 +60,11 @@ def test_translate_single_column_dataframe_SetsParameterAttrs_Scenario0_PartnerN
     xio_inx = "Xioita"
     sue_inx = "Suita"
     bob_inx = "Bobita"
-    partner_name_mapunit = namemap_shop()
-    partner_name_mapunit.set_otx2inx(xio_otx, xio_inx)
-    partner_name_mapunit.set_otx2inx(sue_otx, sue_inx)
-    partner_name_mapunit.set_otx2inx(bob_otx, bob_inx)
-    otx_dt = DataFrame(columns=[kw.partner_name])
+    contact_name_mapunit = namemap_shop()
+    contact_name_mapunit.set_otx2inx(xio_otx, xio_inx)
+    contact_name_mapunit.set_otx2inx(sue_otx, sue_inx)
+    contact_name_mapunit.set_otx2inx(bob_otx, bob_inx)
+    otx_dt = DataFrame(columns=[kw.contact_name])
     otx_dt.loc[0] = [zia_otx]
     otx_dt.loc[1] = [sue_otx]
     otx_dt.loc[2] = [bob_otx]
@@ -74,13 +74,13 @@ def test_translate_single_column_dataframe_SetsParameterAttrs_Scenario0_PartnerN
     print(f"{otx_dt=}")
 
     # WHEN
-    translate_single_column_dataframe(otx_dt, partner_name_mapunit, kw.partner_name)
+    translate_single_column_dataframe(otx_dt, contact_name_mapunit, kw.contact_name)
 
     # THEN
-    assert otx_dt.iloc[0][kw.partner_name] == zia_otx
-    assert otx_dt.iloc[1][kw.partner_name] == sue_inx
+    assert otx_dt.iloc[0][kw.contact_name] == zia_otx
+    assert otx_dt.iloc[1][kw.contact_name] == sue_inx
     assert otx_dt.to_csv() != old_otx_dt.to_csv()
-    inx_dt = DataFrame(columns=[kw.partner_name])
+    inx_dt = DataFrame(columns=[kw.contact_name])
     inx_dt.loc[0] = zia_otx
     inx_dt.loc[1] = sue_inx
     inx_dt.loc[2] = bob_inx
@@ -91,7 +91,7 @@ def test_translate_single_column_dataframe_SetsParameterAttrs_Scenario0_PartnerN
     assert otx_dt.to_csv() == inx_dt.to_csv()
 
 
-def test_translate_single_column_dataframe_SetsParameterAttrs_Scenario1_PartnerName_5rowsMultipleColumns():
+def test_translate_single_column_dataframe_SetsParameterAttrs_Scenario1_ContactName_5rowsMultipleColumns():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     xio_otx = "Xio"
@@ -101,11 +101,11 @@ def test_translate_single_column_dataframe_SetsParameterAttrs_Scenario1_PartnerN
     xio_inx = "Xioita"
     sue_inx = "Suita"
     bob_inx = "Bobita"
-    partner_name_mapunit = namemap_shop()
-    partner_name_mapunit.set_otx2inx(xio_otx, xio_inx)
-    partner_name_mapunit.set_otx2inx(sue_otx, sue_inx)
-    partner_name_mapunit.set_otx2inx(bob_otx, bob_inx)
-    otx_dt = DataFrame(columns=[kw.moment_rope, kw.partner_name, kw.partner_cred_lumen])
+    contact_name_mapunit = namemap_shop()
+    contact_name_mapunit.set_otx2inx(xio_otx, xio_inx)
+    contact_name_mapunit.set_otx2inx(sue_otx, sue_inx)
+    contact_name_mapunit.set_otx2inx(bob_otx, bob_inx)
+    otx_dt = DataFrame(columns=[kw.moment_rope, kw.contact_name, kw.contact_cred_lumen])
     otx_dt.loc[0] = [exx.a23, zia_otx, 12]
     otx_dt.loc[1] = [exx.a23, sue_otx, 12]
     otx_dt.loc[2] = [exx.a23, bob_otx, 12]
@@ -115,13 +115,13 @@ def test_translate_single_column_dataframe_SetsParameterAttrs_Scenario1_PartnerN
     print(f"{otx_dt=}")
 
     # WHEN
-    translate_single_column_dataframe(otx_dt, partner_name_mapunit, kw.partner_name)
+    translate_single_column_dataframe(otx_dt, contact_name_mapunit, kw.contact_name)
 
     # THEN
-    assert otx_dt.iloc[0][kw.partner_name] == zia_otx
-    assert otx_dt.iloc[1][kw.partner_name] == sue_inx
+    assert otx_dt.iloc[0][kw.contact_name] == zia_otx
+    assert otx_dt.iloc[1][kw.contact_name] == sue_inx
     assert otx_dt.to_csv() != old_otx_dt.to_csv()
-    inx_dt = DataFrame(columns=[kw.moment_rope, kw.partner_name, kw.partner_cred_lumen])
+    inx_dt = DataFrame(columns=[kw.moment_rope, kw.contact_name, kw.contact_cred_lumen])
     inx_dt.loc[0] = [exx.a23, zia_otx, 12]
     inx_dt.loc[1] = [exx.a23, sue_inx, 12]
     inx_dt.loc[2] = [exx.a23, bob_inx, 12]
@@ -132,14 +132,14 @@ def test_translate_single_column_dataframe_SetsParameterAttrs_Scenario1_PartnerN
     pandas_assert_frame_equal(otx_dt, inx_dt)
 
 
-def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario0_PartnerName():
+def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario0_ContactName():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     xio_otx = "Xio"
     sue_otx = "Sue"
     bob_otx = "Bob"
     zia_otx = "Zia"
-    otx_dt = DataFrame(columns=[kw.moment_rope, kw.partner_name, kw.partner_cred_lumen])
+    otx_dt = DataFrame(columns=[kw.moment_rope, kw.contact_name, kw.contact_cred_lumen])
     otx_dt.loc[0] = [exx.a23, zia_otx, 12]
     otx_dt.loc[1] = [exx.a23, sue_otx, 12]
     otx_dt.loc[2] = [exx.a23, bob_otx, 12]
@@ -152,10 +152,10 @@ def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario0_PartnerNam
     translate_all_columns_dataframe(otx_dt, None)
 
     # THEN
-    assert otx_dt.iloc[0][kw.partner_name] == zia_otx
-    assert otx_dt.iloc[1][kw.partner_name] == sue_otx
+    assert otx_dt.iloc[0][kw.contact_name] == zia_otx
+    assert otx_dt.iloc[1][kw.contact_name] == sue_otx
     pandas_assert_frame_equal(otx_dt, old_otx_dt)
-    inx_dt = DataFrame(columns=[kw.moment_rope, kw.partner_name, kw.partner_cred_lumen])
+    inx_dt = DataFrame(columns=[kw.moment_rope, kw.contact_name, kw.contact_cred_lumen])
     inx_dt.loc[0] = [exx.a23, zia_otx, 12]
     inx_dt.loc[1] = [exx.a23, sue_otx, 12]
     inx_dt.loc[2] = [exx.a23, bob_otx, 12]
@@ -166,7 +166,7 @@ def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario0_PartnerNam
     pandas_assert_frame_equal(otx_dt, inx_dt)
 
 
-def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario1_PartnerName():
+def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario1_ContactName():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     xio_otx = "Xio"
@@ -180,7 +180,7 @@ def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario1_PartnerNam
     yao_translateunit.set_otx2inx(kw.NameTerm, xio_otx, xio_inx)
     yao_translateunit.set_otx2inx(kw.NameTerm, sue_otx, sue_inx)
     yao_translateunit.set_otx2inx(kw.NameTerm, bob_otx, bob_inx)
-    otx_dt = DataFrame(columns=[kw.moment_rope, kw.partner_name, kw.partner_cred_lumen])
+    otx_dt = DataFrame(columns=[kw.moment_rope, kw.contact_name, kw.contact_cred_lumen])
     otx_dt.loc[0] = [exx.a23, zia_otx, 12]
     otx_dt.loc[1] = [exx.a23, sue_otx, 12]
     otx_dt.loc[2] = [exx.a23, bob_otx, 12]
@@ -193,10 +193,10 @@ def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario1_PartnerNam
     translate_all_columns_dataframe(otx_dt, yao_translateunit)
 
     # THEN
-    assert otx_dt.iloc[0][kw.partner_name] == zia_otx
-    assert otx_dt.iloc[1][kw.partner_name] == sue_inx
+    assert otx_dt.iloc[0][kw.contact_name] == zia_otx
+    assert otx_dt.iloc[1][kw.contact_name] == sue_inx
     assert otx_dt.to_csv() != old_otx_dt.to_csv()
-    inx_dt = DataFrame(columns=[kw.moment_rope, kw.partner_name, kw.partner_cred_lumen])
+    inx_dt = DataFrame(columns=[kw.moment_rope, kw.contact_name, kw.contact_cred_lumen])
     inx_dt.loc[0] = [exx.a23, zia_otx, 12]
     inx_dt.loc[1] = [exx.a23, sue_inx, 12]
     inx_dt.loc[2] = [exx.a23, bob_inx, 12]

@@ -1,7 +1,7 @@
 from copy import deepcopy as copy_deepcopy
 from src.ch00_py.dict_toolbox import get_empty_list_if_None, get_from_nested_dict
-from src.ch02_partner.group import awardunit_shop
-from src.ch02_partner.partner import partnerunit_shop
+from src.ch02_contact.contact import contactunit_shop
+from src.ch02_contact.group import awardunit_shop
 from src.ch05_reason.reason_main import factunit_shop
 from src.ch06_plan.plan import planunit_shop
 from src.ch07_person_logic.person_main import personunit_shop
@@ -59,16 +59,16 @@ def test_PersonDelta_create_personatoms_EmptyPersons():
     assert sue_persondelta.personatoms == {}
 
 
-def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_partnerunit_insert():
+def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_contactunit_insert():
     # ESTABLISH
     before_sue_person = personunit_shop(exx.sue)
     after_sue_person = copy_deepcopy(before_sue_person)
-    xio_partner_cred_lumen = 33
-    xio_partner_debt_lumen = 44
-    xio_partnerunit = partnerunit_shop(
-        exx.xio, xio_partner_cred_lumen, xio_partner_debt_lumen
+    xio_contact_cred_lumen = 33
+    xio_contact_debt_lumen = 44
+    xio_contactunit = contactunit_shop(
+        exx.xio, xio_contact_cred_lumen, xio_contact_debt_lumen
     )
-    after_sue_person.set_partnerunit(xio_partnerunit, auto_set_membership=False)
+    after_sue_person.set_contactunit(xio_contactunit, auto_set_membership=False)
 
     # WHEN
     sue_persondelta = persondelta_shop()
@@ -76,28 +76,28 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_partneruni
 
     # THEN
     assert (
-        len(sue_persondelta.personatoms.get(kw.INSERT).get(kw.person_partnerunit)) == 1
+        len(sue_persondelta.personatoms.get(kw.INSERT).get(kw.person_contactunit)) == 1
     )
     sue_insert_dict = sue_persondelta.personatoms.get(kw.INSERT)
-    sue_partnerunit_dict = sue_insert_dict.get(kw.person_partnerunit)
-    xio_personatom = sue_partnerunit_dict.get(exx.xio)
-    assert xio_personatom.get_value(kw.partner_name) == exx.xio
-    assert xio_personatom.get_value("partner_cred_lumen") == xio_partner_cred_lumen
-    assert xio_personatom.get_value("partner_debt_lumen") == xio_partner_debt_lumen
+    sue_contactunit_dict = sue_insert_dict.get(kw.person_contactunit)
+    xio_personatom = sue_contactunit_dict.get(exx.xio)
+    assert xio_personatom.get_value(kw.contact_name) == exx.xio
+    assert xio_personatom.get_value("contact_cred_lumen") == xio_contact_cred_lumen
+    assert xio_personatom.get_value("contact_debt_lumen") == xio_contact_debt_lumen
 
     print(f"{get_personatom_total_count(sue_persondelta)=}")
     assert get_personatom_total_count(sue_persondelta) == 1
 
 
-def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_partnerunit_delete():
+def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_contactunit_delete():
     # ESTABLISH
     before_sue_person = personunit_shop(exx.sue)
-    before_sue_person.add_partnerunit("Yao")
-    before_sue_person.add_partnerunit("Zia")
+    before_sue_person.add_contactunit("Yao")
+    before_sue_person.add_contactunit("Zia")
 
     after_sue_person = copy_deepcopy(before_sue_person)
 
-    before_sue_person.add_partnerunit(exx.xio)
+    before_sue_person.add_contactunit(exx.xio)
 
     # WHEN
     sue_persondelta = persondelta_shop()
@@ -106,24 +106,24 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_partneruni
     # THEN
     xio_personatom = get_from_nested_dict(
         sue_persondelta.personatoms,
-        [kw.DELETE, kw.person_partnerunit, exx.xio],
+        [kw.DELETE, kw.person_contactunit, exx.xio],
     )
-    assert xio_personatom.get_value(kw.partner_name) == exx.xio
+    assert xio_personatom.get_value(kw.contact_name) == exx.xio
 
     print(f"{get_personatom_total_count(sue_persondelta)=}")
     print_personatom_keys(sue_persondelta)
     assert get_personatom_total_count(sue_persondelta) == 1
 
 
-def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_partnerunit_update():
+def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_contactunit_update():
     # ESTABLISH
     before_sue_person = personunit_shop(exx.sue)
     after_sue_person = copy_deepcopy(before_sue_person)
-    before_sue_person.add_partnerunit(exx.xio)
-    xio_partner_cred_lumen = 33
-    xio_partner_debt_lumen = 44
-    after_sue_person.add_partnerunit(
-        exx.xio, xio_partner_cred_lumen, xio_partner_debt_lumen
+    before_sue_person.add_contactunit(exx.xio)
+    xio_contact_cred_lumen = 33
+    xio_contact_debt_lumen = 44
+    after_sue_person.add_contactunit(
+        exx.xio, xio_contact_cred_lumen, xio_contact_debt_lumen
     )
 
     # WHEN
@@ -131,11 +131,11 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_partneruni
     sue_persondelta.add_all_different_personatoms(before_sue_person, after_sue_person)
 
     # THEN
-    x_keylist = [kw.UPDATE, kw.person_partnerunit, exx.xio]
+    x_keylist = [kw.UPDATE, kw.person_contactunit, exx.xio]
     xio_personatom = get_from_nested_dict(sue_persondelta.personatoms, x_keylist)
-    assert xio_personatom.get_value(kw.partner_name) == exx.xio
-    assert xio_personatom.get_value("partner_cred_lumen") == xio_partner_cred_lumen
-    assert xio_personatom.get_value("partner_debt_lumen") == xio_partner_debt_lumen
+    assert xio_personatom.get_value(kw.contact_name) == exx.xio
+    assert xio_personatom.get_value("contact_cred_lumen") == xio_contact_cred_lumen
+    assert xio_personatom.get_value("contact_debt_lumen") == xio_contact_debt_lumen
 
     print(f"{get_personatom_total_count(sue_persondelta)=}")
     assert get_personatom_total_count(sue_persondelta) == 1
@@ -176,45 +176,45 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_PersonUnit
     assert get_personatom_total_count(sue_persondelta) == 1
 
 
-def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_partner_membership_insert():
+def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_contact_membership_insert():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     before_sue_person = personunit_shop(exx.sue)
     after_sue_person = copy_deepcopy(before_sue_person)
-    temp_yao_partnerunit = partnerunit_shop(exx.yao)
-    temp_zia_partnerunit = partnerunit_shop(exx.zia)
-    after_sue_person.set_partnerunit(temp_yao_partnerunit, auto_set_membership=False)
-    after_sue_person.set_partnerunit(temp_zia_partnerunit, auto_set_membership=False)
-    after_yao_partnerunit = after_sue_person.get_partner(exx.yao)
-    after_zia_partnerunit = after_sue_person.get_partner(exx.zia)
+    temp_yao_contactunit = contactunit_shop(exx.yao)
+    temp_zia_contactunit = contactunit_shop(exx.zia)
+    after_sue_person.set_contactunit(temp_yao_contactunit, auto_set_membership=False)
+    after_sue_person.set_contactunit(temp_zia_contactunit, auto_set_membership=False)
+    after_yao_contactunit = after_sue_person.get_contact(exx.yao)
+    after_zia_contactunit = after_sue_person.get_contact(exx.zia)
     zia_run_credit_w = 77
     zia_run_debt_w = 88
-    after_zia_partnerunit.add_membership(exx.run, zia_run_credit_w, zia_run_debt_w)
-    print(f"{after_sue_person.get_partnerunit_group_titles_dict()=}")
+    after_zia_contactunit.add_membership(exx.run, zia_run_credit_w, zia_run_debt_w)
+    print(f"{after_sue_person.get_contactunit_group_titles_dict()=}")
 
     # WHEN
     sue_persondelta = persondelta_shop()
-    print(f"{after_sue_person.get_partner(exx.zia).memberships=}")
+    print(f"{after_sue_person.get_contact(exx.zia).memberships=}")
     sue_persondelta.add_all_different_personatoms(before_sue_person, after_sue_person)
     # print(f"{sue_persondelta.personatoms.get(kw.INSERT).keys()=}")
     # print(
-    #     sue_persondelta.personatoms.get(kw.INSERT).get(kw.person_partner_membership).keys()
+    #     sue_persondelta.personatoms.get(kw.INSERT).get(kw.person_contact_membership).keys()
     # )
 
     # THEN
-    x_keylist = [kw.INSERT, kw.person_partnerunit, exx.yao]
+    x_keylist = [kw.INSERT, kw.person_contactunit, exx.yao]
     yao_personatom = get_from_nested_dict(sue_persondelta.personatoms, x_keylist)
-    assert yao_personatom.get_value(kw.partner_name) == exx.yao
+    assert yao_personatom.get_value(kw.contact_name) == exx.yao
 
-    x_keylist = [kw.INSERT, kw.person_partnerunit, exx.zia]
+    x_keylist = [kw.INSERT, kw.person_contactunit, exx.zia]
     zia_personatom = get_from_nested_dict(sue_persondelta.personatoms, x_keylist)
-    assert zia_personatom.get_value(kw.partner_name) == exx.zia
+    assert zia_personatom.get_value(kw.contact_name) == exx.zia
     print(f"\n{sue_persondelta.personatoms=}")
     # print(f"\n{zia_personatom=}")
 
-    x_keylist = [kw.INSERT, kw.person_partner_membership, exx.zia, exx.run]
+    x_keylist = [kw.INSERT, kw.person_contact_membership, exx.zia, exx.run]
     run_personatom = get_from_nested_dict(sue_persondelta.personatoms, x_keylist)
-    assert run_personatom.get_value(kw.partner_name) == exx.zia
+    assert run_personatom.get_value(kw.contact_name) == exx.zia
     assert run_personatom.get_value(kw.group_title) == exx.run
     assert run_personatom.get_value(kw.group_cred_lumen) == zia_run_credit_w
     assert run_personatom.get_value(kw.group_debt_lumen) == zia_run_debt_w
@@ -227,35 +227,35 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_partner_me
     assert get_personatom_total_count(sue_persondelta) == 3
 
 
-def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_partner_membership_update():
+def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_contact_membership_update():
     # ESTABLISH
     before_sue_person = personunit_shop(exx.sue)
-    before_sue_person.add_partnerunit(exx.xio)
-    before_sue_person.add_partnerunit(exx.zia)
+    before_sue_person.add_contactunit(exx.xio)
+    before_sue_person.add_contactunit(exx.zia)
     before_xio_credit_w = 77
     before_xio_debt_w = 88
-    before_xio_partner = before_sue_person.get_partner(exx.xio)
-    before_xio_partner.add_membership(exx.run, before_xio_credit_w, before_xio_debt_w)
+    before_xio_contact = before_sue_person.get_contact(exx.xio)
+    before_xio_contact.add_membership(exx.run, before_xio_credit_w, before_xio_debt_w)
     after_sue_person = copy_deepcopy(before_sue_person)
-    after_xio_partnerunit = after_sue_person.get_partner(exx.xio)
+    after_xio_contactunit = after_sue_person.get_contact(exx.xio)
     after_xio_credit_w = 55
     after_xio_debt_w = 66
-    after_xio_partnerunit.add_membership(exx.run, after_xio_credit_w, after_xio_debt_w)
+    after_xio_contactunit.add_membership(exx.run, after_xio_credit_w, after_xio_debt_w)
 
     # WHEN
     sue_persondelta = persondelta_shop()
     sue_persondelta.add_all_different_personatoms(before_sue_person, after_sue_person)
 
     # THEN
-    # x_keylist = [kw.UPDATE, kw.person_partnerunit, exx.xio]
+    # x_keylist = [kw.UPDATE, kw.person_contactunit, exx.xio]
     # xio_personatom = get_from_nested_dict(sue_persondelta.personatoms, x_keylist)
-    # assert xio_personatom.get_value(kw.partner_name) == exx.xio
+    # assert xio_personatom.get_value(kw.contact_name) == exx.xio
     # print(f"\n{sue_persondelta.personatoms=}")
     # print(f"\n{xio_personatom=}")
 
-    x_keylist = [kw.UPDATE, kw.person_partner_membership, exx.xio, exx.run]
+    x_keylist = [kw.UPDATE, kw.person_contact_membership, exx.xio, exx.run]
     xio_personatom = get_from_nested_dict(sue_persondelta.personatoms, x_keylist)
-    assert xio_personatom.get_value(kw.partner_name) == exx.xio
+    assert xio_personatom.get_value(kw.contact_name) == exx.xio
     assert xio_personatom.get_value(kw.group_title) == exx.run
     assert xio_personatom.get_value(kw.group_cred_lumen) == after_xio_credit_w
     assert xio_personatom.get_value(kw.group_debt_lumen) == after_xio_debt_w
@@ -264,31 +264,31 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_partner_me
     assert get_personatom_total_count(sue_persondelta) == 1
 
 
-def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_partner_membership_delete():
+def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_contact_membership_delete():
     # ESTABLISH
     before_sue_person = personunit_shop(exx.sue)
-    before_sue_person.add_partnerunit(exx.xio)
-    before_sue_person.add_partnerunit(exx.zia)
-    before_sue_person.add_partnerunit(exx.bob)
-    before_xio_partnerunit = before_sue_person.get_partner(exx.xio)
-    before_zia_partnerunit = before_sue_person.get_partner(exx.zia)
-    before_bob_partnerunit = before_sue_person.get_partner(exx.bob)
-    before_xio_partnerunit.add_membership(exx.run)
-    before_zia_partnerunit.add_membership(exx.run)
+    before_sue_person.add_contactunit(exx.xio)
+    before_sue_person.add_contactunit(exx.zia)
+    before_sue_person.add_contactunit(exx.bob)
+    before_xio_contactunit = before_sue_person.get_contact(exx.xio)
+    before_zia_contactunit = before_sue_person.get_contact(exx.zia)
+    before_bob_contactunit = before_sue_person.get_contact(exx.bob)
+    before_xio_contactunit.add_membership(exx.run)
+    before_zia_contactunit.add_membership(exx.run)
     fly_str = ";flyers"
-    before_xio_partnerunit.add_membership(fly_str)
-    before_zia_partnerunit.add_membership(fly_str)
-    before_bob_partnerunit.add_membership(fly_str)
-    before_group_titles_dict = before_sue_person.get_partnerunit_group_titles_dict()
+    before_xio_contactunit.add_membership(fly_str)
+    before_zia_contactunit.add_membership(fly_str)
+    before_bob_contactunit.add_membership(fly_str)
+    before_group_titles_dict = before_sue_person.get_contactunit_group_titles_dict()
 
     after_sue_person = copy_deepcopy(before_sue_person)
-    after_xio_partnerunit = after_sue_person.get_partner(exx.xio)
-    after_zia_partnerunit = after_sue_person.get_partner(exx.zia)
-    after_bob_partnerunit = after_sue_person.get_partner(exx.bob)
-    after_xio_partnerunit.delete_membership(exx.run)
-    after_zia_partnerunit.delete_membership(exx.run)
-    after_bob_partnerunit.delete_membership(fly_str)
-    after_group_titles_dict = after_sue_person.get_partnerunit_group_titles_dict()
+    after_xio_contactunit = after_sue_person.get_contact(exx.xio)
+    after_zia_contactunit = after_sue_person.get_contact(exx.zia)
+    after_bob_contactunit = after_sue_person.get_contact(exx.bob)
+    after_xio_contactunit.delete_membership(exx.run)
+    after_zia_contactunit.delete_membership(exx.run)
+    after_bob_contactunit.delete_membership(fly_str)
+    after_group_titles_dict = after_sue_person.get_contactunit_group_titles_dict()
     assert len(before_group_titles_dict.get(fly_str)) == 3
     assert len(before_group_titles_dict.get(exx.run)) == 2
     assert len(after_group_titles_dict.get(fly_str)) == 2
@@ -299,9 +299,9 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_partner_me
     sue_persondelta.add_all_different_personatoms(before_sue_person, after_sue_person)
 
     # THEN
-    x_keylist = [kw.DELETE, kw.person_partner_membership, exx.bob, fly_str]
+    x_keylist = [kw.DELETE, kw.person_contact_membership, exx.bob, fly_str]
     xio_personatom = get_from_nested_dict(sue_persondelta.personatoms, x_keylist)
-    assert xio_personatom.get_value(kw.partner_name) == exx.bob
+    assert xio_personatom.get_value(kw.contact_name) == exx.bob
     assert xio_personatom.get_value(kw.group_title) == fly_str
 
     print(f"{get_personatom_total_count(sue_persondelta)=}")
@@ -463,18 +463,18 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_updat
 def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_awardunit_delete():
     # ESTABLISH
     before_sue_au = personunit_shop(exx.sue)
-    before_sue_au.add_partnerunit(exx.xio)
-    before_sue_au.add_partnerunit(exx.zia)
-    before_sue_au.add_partnerunit(exx.bob)
-    xio_partnerunit = before_sue_au.get_partner(exx.xio)
-    zia_partnerunit = before_sue_au.get_partner(exx.zia)
-    bob_partnerunit = before_sue_au.get_partner(exx.bob)
-    xio_partnerunit.add_membership(exx.run)
-    zia_partnerunit.add_membership(exx.run)
+    before_sue_au.add_contactunit(exx.xio)
+    before_sue_au.add_contactunit(exx.zia)
+    before_sue_au.add_contactunit(exx.bob)
+    xio_contactunit = before_sue_au.get_contact(exx.xio)
+    zia_contactunit = before_sue_au.get_contact(exx.zia)
+    bob_contactunit = before_sue_au.get_contact(exx.bob)
+    xio_contactunit.add_membership(exx.run)
+    zia_contactunit.add_membership(exx.run)
     fly_str = ";flyers"
-    xio_partnerunit.add_membership(fly_str)
-    zia_partnerunit.add_membership(fly_str)
-    bob_partnerunit.add_membership(fly_str)
+    xio_contactunit.add_membership(fly_str)
+    zia_contactunit.add_membership(fly_str)
+    bob_contactunit.add_membership(fly_str)
     sports_str = "sports"
     sports_rope = before_sue_au.make_l1_rope(sports_str)
     ball_str = "basketball"
@@ -509,18 +509,18 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_award
 def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_awardunit_insert():
     # ESTABLISH
     before_sue_au = personunit_shop(exx.sue)
-    before_sue_au.add_partnerunit(exx.xio)
-    before_sue_au.add_partnerunit(exx.zia)
-    before_sue_au.add_partnerunit(exx.bob)
-    xio_partnerunit = before_sue_au.get_partner(exx.xio)
-    zia_partnerunit = before_sue_au.get_partner(exx.zia)
-    bob_partnerunit = before_sue_au.get_partner(exx.bob)
-    xio_partnerunit.add_membership(exx.run)
-    zia_partnerunit.add_membership(exx.run)
+    before_sue_au.add_contactunit(exx.xio)
+    before_sue_au.add_contactunit(exx.zia)
+    before_sue_au.add_contactunit(exx.bob)
+    xio_contactunit = before_sue_au.get_contact(exx.xio)
+    zia_contactunit = before_sue_au.get_contact(exx.zia)
+    bob_contactunit = before_sue_au.get_contact(exx.bob)
+    xio_contactunit.add_membership(exx.run)
+    zia_contactunit.add_membership(exx.run)
     fly_str = ";flyers"
-    xio_partnerunit.add_membership(fly_str)
-    zia_partnerunit.add_membership(fly_str)
-    bob_partnerunit.add_membership(fly_str)
+    xio_contactunit.add_membership(fly_str)
+    zia_contactunit.add_membership(fly_str)
+    bob_contactunit.add_membership(fly_str)
     sports_str = "sports"
     sports_rope = before_sue_au.make_l1_rope(sports_str)
     ball_str = "basketball"
@@ -560,10 +560,10 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_award
 def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_awardunit_update():
     # ESTABLISH
     before_sue_au = personunit_shop(exx.sue)
-    before_sue_au.add_partnerunit(exx.xio)
-    before_sue_au.add_partnerunit(exx.zia)
-    xio_partnerunit = before_sue_au.get_partner(exx.xio)
-    xio_partnerunit.add_membership(exx.run)
+    before_sue_au.add_contactunit(exx.xio)
+    before_sue_au.add_contactunit(exx.zia)
+    xio_contactunit = before_sue_au.get_contact(exx.xio)
+    xio_contactunit.add_membership(exx.run)
     sports_str = "sports"
     sports_rope = before_sue_au.make_l1_rope(sports_str)
     ball_str = "basketball"
@@ -1051,7 +1051,7 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_reaso
 def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_laborunit_insert():
     # ESTABLISH
     before_sue_person = personunit_shop(exx.sue)
-    before_sue_person.add_partnerunit(exx.xio)
+    before_sue_person.add_contactunit(exx.xio)
     sports_str = "sports"
     sports_rope = before_sue_person.make_l1_rope(sports_str)
     ball_str = "basketball"
@@ -1083,7 +1083,7 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_labor
 def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_laborunit_delete():
     # ESTABLISH
     before_sue_person = personunit_shop(exx.sue)
-    before_sue_person.add_partnerunit(exx.xio)
+    before_sue_person.add_contactunit(exx.xio)
     sports_str = "sports"
     sports_rope = before_sue_person.make_l1_rope(sports_str)
     ball_str = "basketball"
@@ -1117,7 +1117,7 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_labor
 def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_healerunit_insert_PlanUnitUpdate():
     # ESTABLISH
     before_sue_person = personunit_shop(exx.sue)
-    before_sue_person.add_partnerunit(exx.xio)
+    before_sue_person.add_contactunit(exx.xio)
     sports_str = "sports"
     sports_rope = before_sue_person.make_l1_rope(sports_str)
     ball_str = "basketball"
@@ -1149,7 +1149,7 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_heale
 def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_healerunit_insert_PlanUnitInsert():
     # ESTABLISH
     before_sue_person = personunit_shop(exx.sue)
-    before_sue_person.add_partnerunit(exx.xio)
+    before_sue_person.add_contactunit(exx.xio)
 
     after_sue_person = copy_deepcopy(before_sue_person)
     sports_str = "sports"
@@ -1182,7 +1182,7 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_heale
 def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_healerunit_delete_PlanUnitUpdate():
     # ESTABLISH
     before_sue_person = personunit_shop(exx.sue)
-    before_sue_person.add_partnerunit(exx.xio)
+    before_sue_person.add_contactunit(exx.xio)
     sports_str = "sports"
     sports_rope = before_sue_person.make_l1_rope(sports_str)
     ball_str = "basketball"
@@ -1219,7 +1219,7 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_heale
 def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_plan_healerunit_delete_PlanUnitDelete():
     # ESTABLISH
     before_sue_person = personunit_shop(exx.sue)
-    before_sue_person.add_partnerunit(exx.xio)
+    before_sue_person.add_contactunit(exx.xio)
     sports_str = "sports"
     sports_rope = before_sue_person.make_l1_rope(sports_str)
     ball_str = "basketball"
@@ -1256,8 +1256,8 @@ def test_PersonDelta_add_all_personatoms_Creates_PersonAtoms():
     # ESTABLISH
 
     after_sue_person = personunit_shop(exx.sue)
-    temp_xio_partnerunit = partnerunit_shop(exx.xio)
-    after_sue_person.set_partnerunit(temp_xio_partnerunit, auto_set_membership=False)
+    temp_xio_contactunit = contactunit_shop(exx.xio)
+    after_sue_person.set_contactunit(temp_xio_contactunit, auto_set_membership=False)
     sports_str = "sports"
     sports_rope = after_sue_person.make_l1_rope(sports_str)
     ball_str = "basketball"

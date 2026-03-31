@@ -1,6 +1,6 @@
 import dataclasses
 from src.ch00_py.dict_toolbox import get_serializable_dict
-from src.ch02_partner.group import AwardHeir, AwardLine, AwardUnit
+from src.ch02_contact.group import AwardHeir, AwardLine, AwardUnit
 from src.ch03_workforce.workforce import LaborHeir, LaborUnit
 from src.ch05_reason.reason_main import (
     CaseUnit,
@@ -112,12 +112,12 @@ def set_readable_plan_values(x_plan: PlanUnit, result: dict):
         else add_small_dot("Root Plan parent_rope is empty str")
     )
     result["plan_fund_total"] = x_plan.get_plan_fund_total()
-    all_partner_cred_str = f"all_partner_cred = {x_plan.all_partner_cred}"
-    all_partner_debt_str = f"all_partner_debt = {x_plan.all_partner_debt}"
-    all_partner_cred_str = add_small_dot(all_partner_cred_str)
-    all_partner_debt_str = add_small_dot(all_partner_debt_str)
-    result["all_partner_cred"] = all_partner_cred_str
-    result["all_partner_debt"] = all_partner_debt_str
+    all_contact_cred_str = f"all_contact_cred = {x_plan.all_contact_cred}"
+    all_contact_debt_str = f"all_contact_debt = {x_plan.all_contact_debt}"
+    all_contact_cred_str = add_small_dot(all_contact_cred_str)
+    all_contact_debt_str = add_small_dot(all_contact_debt_str)
+    result["all_contact_cred"] = all_contact_cred_str
+    result["all_contact_debt"] = all_contact_debt_str
     result["fund_ratio"] = readable_percent(result.get("fund_ratio"))
     result_gogo_want = result.get("gogo_want")
     result_stop_want = result.get("stop_want")
@@ -149,37 +149,37 @@ def get_plan_view_dict(x_plan: PlanUnit) -> dict[str,]:
     return get_serializable_dict(person_objs_asdict(x_plan))
 
 
-def get_partners_view_dict(person: PersonUnit) -> dict[str,]:
-    partners_dict = {}
-    for partner in person.partners.values():
-        partner_cred_lumen_readable = (
-            f"partner_cred_lumen: {partner.partner_cred_lumen}"
+def get_contacts_view_dict(person: PersonUnit) -> dict[str,]:
+    contacts_dict = {}
+    for contact in person.contacts.values():
+        contact_cred_lumen_readable = (
+            f"contact_cred_lumen: {contact.contact_cred_lumen}"
         )
-        partner_debt_lumen_readable = (
-            f"partner_debt_lumen: {partner.partner_debt_lumen}"
+        contact_debt_lumen_readable = (
+            f"contact_debt_lumen: {contact.contact_debt_lumen}"
         )
-        memberships_readable = f"memberships: {partner.memberships}"
-        credor_pool_readable = f"credor_pool: {partner.credor_pool}"
-        debtor_pool_readable = f"debtor_pool: {partner.debtor_pool}"
-        irrational_partner_debt_lumen_readable = (
-            f"irrational_partner_debt_lumen: {partner.irrational_partner_debt_lumen}"
+        memberships_readable = f"memberships: {contact.memberships}"
+        credor_pool_readable = f"credor_pool: {contact.credor_pool}"
+        debtor_pool_readable = f"debtor_pool: {contact.debtor_pool}"
+        irrational_contact_debt_lumen_readable = (
+            f"irrational_contact_debt_lumen: {contact.irrational_contact_debt_lumen}"
         )
-        inallocable_partner_debt_lumen_readable = (
-            f"inallocable_partner_debt_lumen: {partner.inallocable_partner_debt_lumen}"
+        inallocable_contact_debt_lumen_readable = (
+            f"inallocable_contact_debt_lumen: {contact.inallocable_contact_debt_lumen}"
         )
-        fund_give_readable = f"fund_give: {partner.fund_give}"
-        fund_take_readable = f"fund_take: {partner.fund_take}"
-        fund_agenda_give_readable = f"fund_agenda_give: {partner.fund_agenda_give}"
-        fund_agenda_take_readable = f"fund_agenda_take: {partner.fund_agenda_take}"
+        fund_give_readable = f"fund_give: {contact.fund_give}"
+        fund_take_readable = f"fund_take: {contact.fund_take}"
+        fund_agenda_give_readable = f"fund_agenda_give: {contact.fund_agenda_give}"
+        fund_agenda_take_readable = f"fund_agenda_take: {contact.fund_agenda_take}"
         fund_agenda_ratio_give_readable = (
-            f"fund_agenda_ratio_give: {partner.fund_agenda_ratio_give}"
+            f"fund_agenda_ratio_give: {contact.fund_agenda_ratio_give}"
         )
         fund_agenda_ratio_take_readable = (
-            f"fund_agenda_ratio_take: {partner.fund_agenda_ratio_take}"
+            f"fund_agenda_ratio_take: {contact.fund_agenda_ratio_take}"
         )
         x_members_dict = {
             x_membership.group_title: {
-                "partner_name": x_membership.partner_name,
+                "contact_name": x_membership.contact_name,
                 "group_title": x_membership.group_title,
                 "group_cred_lumen": x_membership.group_cred_lumen,
                 "group_debt_lumen": x_membership.group_debt_lumen,
@@ -225,30 +225,30 @@ def get_partners_view_dict(person: PersonUnit) -> dict[str,]:
                     f"fund_take: {x_membership.fund_take}"
                 ),
             }
-            for x_membership in partner.memberships.values()
+            for x_membership in contact.memberships.values()
         }
-        partner_dict = {
-            "partner_name": partner.partner_name,
-            "partner_cred_lumen": partner.partner_cred_lumen,
-            "partner_debt_lumen": partner.partner_debt_lumen,
+        contact_dict = {
+            "contact_name": contact.contact_name,
+            "contact_cred_lumen": contact.contact_cred_lumen,
+            "contact_debt_lumen": contact.contact_debt_lumen,
             "memberships": x_members_dict,
-            "credor_pool": partner.credor_pool,
-            "debtor_pool": partner.debtor_pool,
-            "irrational_partner_debt_lumen": partner.irrational_partner_debt_lumen,
-            "inallocable_partner_debt_lumen": partner.inallocable_partner_debt_lumen,
-            "fund_give": partner.fund_give,
-            "fund_take": partner.fund_take,
-            "fund_agenda_give": partner.fund_agenda_give,
-            "fund_agenda_take": partner.fund_agenda_take,
-            "fund_agenda_ratio_give": partner.fund_agenda_ratio_give,
-            "fund_agenda_ratio_take": partner.fund_agenda_ratio_take,
-            "partner_cred_lumen_readable": partner_cred_lumen_readable,
-            "partner_debt_lumen_readable": partner_debt_lumen_readable,
+            "credor_pool": contact.credor_pool,
+            "debtor_pool": contact.debtor_pool,
+            "irrational_contact_debt_lumen": contact.irrational_contact_debt_lumen,
+            "inallocable_contact_debt_lumen": contact.inallocable_contact_debt_lumen,
+            "fund_give": contact.fund_give,
+            "fund_take": contact.fund_take,
+            "fund_agenda_give": contact.fund_agenda_give,
+            "fund_agenda_take": contact.fund_agenda_take,
+            "fund_agenda_ratio_give": contact.fund_agenda_ratio_give,
+            "fund_agenda_ratio_take": contact.fund_agenda_ratio_take,
+            "contact_cred_lumen_readable": contact_cred_lumen_readable,
+            "contact_debt_lumen_readable": contact_debt_lumen_readable,
             "memberships_readable": memberships_readable,
             "credor_pool_readable": credor_pool_readable,
             "debtor_pool_readable": debtor_pool_readable,
-            "irrational_partner_debt_lumen_readable": irrational_partner_debt_lumen_readable,
-            "inallocable_partner_debt_lumen_readable": inallocable_partner_debt_lumen_readable,
+            "irrational_contact_debt_lumen_readable": irrational_contact_debt_lumen_readable,
+            "inallocable_contact_debt_lumen_readable": inallocable_contact_debt_lumen_readable,
             "fund_give_readable": fund_give_readable,
             "fund_take_readable": fund_take_readable,
             "fund_agenda_give_readable": fund_agenda_give_readable,
@@ -256,9 +256,9 @@ def get_partners_view_dict(person: PersonUnit) -> dict[str,]:
             "fund_agenda_ratio_give_readable": fund_agenda_ratio_give_readable,
             "fund_agenda_ratio_take_readable": fund_agenda_ratio_take_readable,
         }
-        partners_dict[partner.partner_name] = partner_dict
+        contacts_dict[contact.contact_name] = contact_dict
 
-    return partners_dict
+    return contacts_dict
 
 
 def get_groups_view_dict(person: PersonUnit) -> dict[str,]:
@@ -290,8 +290,8 @@ def get_groups_view_dict(person: PersonUnit) -> dict[str,]:
         #     group_debtor_pool_readable = f"debtor_pool_readable: {group.debtor_pool}"
 
         #     x_members_dict = {
-        #         # x_membership.partner_name: {
-        #         #     "partner_name": x_membership.partner_name,
+        #         # x_membership.contact_name: {
+        #         #     "contact_name": x_membership.contact_name,
         #         #     "group_title": x_membership.group_title,
         #         #     "group_cred_lumen": x_membership.group_cred_lumen,
         #         #     "group_debt_lumen": x_membership.group_debt_lumen,
@@ -303,8 +303,8 @@ def get_groups_view_dict(person: PersonUnit) -> dict[str,]:
         #         #     "fund_agenda_take": x_membership.fund_agenda_take,
         #         #     "fund_give": x_membership.fund_give,
         #         #     "fund_take": x_membership.fund_take,
-        #         #     "partner_name_readable": add_small_dot(
-        #         #         f"partner name: {x_membership.partner_name}"
+        #         #     "contact_name_readable": add_small_dot(
+        #         #         f"contact name: {x_membership.contact_name}"
         #         #     ),
         #         #     "group_cred_lumen_readable": add_small_dot(
         #         #         f"group_cred_lumen: {x_membership.group_cred_lumen}"
@@ -341,7 +341,7 @@ def get_groups_view_dict(person: PersonUnit) -> dict[str,]:
         #     }
         group_dict = {
             "group_title": group.group_title,
-            #         "partner_name": 1,
+            #         "contact_name": 1,
             #         "group_title": 1,
             #         "group_cred_lumen": 1,
             #         "group_debt_lumen": 1,
@@ -374,5 +374,5 @@ def get_groups_view_dict(person: PersonUnit) -> dict[str,]:
 def get_person_view_dict(person: PersonUnit) -> dict[str,]:
     return {
         "planroot": get_plan_view_dict(person.planroot),
-        "partners": get_partners_view_dict(person),
+        "contacts": get_contacts_view_dict(person),
     }

@@ -42,8 +42,8 @@ def test_PersonUnit_to_dict_ReturnsObj_Scenario0():
     assert person_dict[kw.credor_respect] == yao_person.credor_respect
     assert person_dict[kw.debtor_respect] == yao_person.debtor_respect
     assert person_dict[kw.last_lesson_id] == yao_person.last_lesson_id
-    assert len(person_dict[kw.partners]) == len(yao_person.partners)
-    assert len(person_dict[kw.partners]) != 12
+    assert len(person_dict[kw.contacts]) == len(yao_person.contacts)
+    assert len(person_dict[kw.contacts]) != 12
 
     x_planroot = yao_person.planroot
     planroot_dict = person_dict[kw.planroot]
@@ -83,9 +83,9 @@ def test_PersonUnit_to_dict_ReturnsObj_Scenario1_planroot_workforceunit():
 def test_PersonUnit_to_dict_ReturnsObj_Scenario2_With_planroot_healerunit():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
-    sue_person.add_partnerunit(exx.yao)
-    yao_partnerunit = sue_person.get_partner(exx.yao)
-    yao_partnerunit.add_membership(exx.run)
+    sue_person.add_contactunit(exx.yao)
+    yao_contactunit = sue_person.get_contact(exx.yao)
+    yao_contactunit.add_membership(exx.run)
     run_healerunit = healerunit_shop()
     run_healerunit.set_healer_name(x_healer_name=exx.run)
     root_rope = sue_person.planroot.get_plan_rope()
@@ -102,9 +102,9 @@ def test_PersonUnit_to_dict_ReturnsObj_Scenario2_With_planroot_healerunit():
 def test_PersonUnit_to_dict_ReturnsObj_Scenario3_plankid_WorkforceUnit():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
-    sue_person.add_partnerunit(exx.yao)
-    yao_partnerunit = sue_person.get_partner(exx.yao)
-    yao_partnerunit.add_membership(exx.run)
+    sue_person.add_contactunit(exx.yao)
+    yao_contactunit = sue_person.get_contact(exx.yao)
+    yao_contactunit.add_membership(exx.run)
 
     morn_str = "morning"
     morn_rope = sue_person.make_l1_rope(morn_str)
@@ -137,9 +137,9 @@ def test_PersonUnit_to_dict_ReturnsObj_Scenario4_planunit_WithLevels():
     x_mana_grain = 0.3
     zia_person.mana_grain = x_mana_grain
     override_str = "override"
-    zia_person.add_partnerunit(exx.yao)
-    yao_partnerunit = zia_person.get_partner(exx.yao)
-    yao_partnerunit.add_membership(exx.run)
+    zia_person.add_contactunit(exx.yao)
+    yao_contactunit = zia_person.get_contact(exx.yao)
+    yao_contactunit.add_membership(exx.run)
     run_healerunit = healerunit_shop({exx.run})
     root_rope = zia_person.planroot.get_plan_rope()
     zia_person.edit_plan_attr(root_rope, healerunit=run_healerunit)
@@ -240,10 +240,10 @@ def test_PersonUnit_to_dict_ReturnsJSON_Scenario5_BigExample():
     assert len(ulti_reasonunits_dict) == len(ulti_plan.reasonunits)
 
     anna_str = "Anna"
-    anna_partnerunit = yao_person.get_partner(anna_str)
-    assert anna_partnerunit.get_membership(";Family").group_cred_lumen == 6.2
-    assert yao_person.partners is not None
-    assert len(yao_person.partners) == 22
+    anna_contactunit = yao_person.get_contact(anna_str)
+    assert anna_contactunit.get_membership(";Family").group_cred_lumen == 6.2
+    assert yao_person.contacts is not None
+    assert len(yao_person.contacts) == 22
 
 
 def test_get_personunit_from_dict_ReturnsObj_Scenario0_PlanRoot():
@@ -280,20 +280,20 @@ def test_get_personunit_from_dict_ReturnsObj_Scenario1_knot_Example():
     assert after_bob_person.knot == before_bob_person.knot
 
 
-def test_get_personunit_from_dict_ReturnsObj_Scenario2_knot_PartnerExample():
+def test_get_personunit_from_dict_ReturnsObj_Scenario2_knot_ContactExample():
     # ESTABLISH
     slash_knot = "/"
     before_bob_person = personunit_shop("Bob", knot=slash_knot)
     bob_comma_str = ",Bob"
-    before_bob_person.add_partnerunit(bob_comma_str)
-    assert before_bob_person.partner_exists(bob_comma_str)
+    before_bob_person.add_contactunit(bob_comma_str)
+    assert before_bob_person.contact_exists(bob_comma_str)
 
     # WHEN
     after_bob_person = get_personunit_from_dict(before_bob_person.to_dict())
 
     # THEN
-    after_bob_partnerunit = after_bob_person.get_partner(bob_comma_str)
-    assert after_bob_partnerunit.groupmark == slash_knot
+    after_bob_contactunit = after_bob_person.get_contact(bob_comma_str)
+    assert after_bob_contactunit.groupmark == slash_knot
 
 
 def test_get_personunit_from_dict_ReturnsObj_Scenario3_knot_GroupExample():
@@ -301,16 +301,16 @@ def test_get_personunit_from_dict_ReturnsObj_Scenario3_knot_GroupExample():
     slash_knot = "/"
     before_bob_person = personunit_shop("Bob", knot=slash_knot)
     swim_str = f"{slash_knot}Swimmers"
-    before_bob_person.add_partnerunit(exx.yao)
-    yao_partnerunit = before_bob_person.get_partner(exx.yao)
-    yao_partnerunit.add_membership(swim_str)
+    before_bob_person.add_contactunit(exx.yao)
+    yao_contactunit = before_bob_person.get_contact(exx.yao)
+    yao_contactunit.add_membership(swim_str)
 
     # WHEN
     after_bob_person = get_personunit_from_dict(before_bob_person.to_dict())
 
     # THEN
-    after_yao_partnerunit = after_bob_person.get_partner(exx.yao)
-    assert after_yao_partnerunit.groupmark == slash_knot
+    after_yao_contactunit = after_bob_person.get_contact(exx.yao)
+    assert after_yao_contactunit.groupmark == slash_knot
 
 
 def test_get_personunit_from_dict_ReturnsObj_Scenario4_planroot_knot_IsApplied():
@@ -439,8 +439,8 @@ def test_get_dict_of_person_from_dict_ReturnsDictOfPersonUnits():
     ccn_person1 = ccn_dict_of_obj.get(x1_person.person_name)
     assert ccn_person1._plan_dict == x1_person._plan_dict
     philipa_str = "Philipa"
-    ccn_philipa_partnerunit = ccn_person1.get_partner(philipa_str)
-    x1_philipa_partnerunit = x1_person.get_partner(philipa_str)
-    assert ccn_philipa_partnerunit.memberships == x1_philipa_partnerunit.memberships
+    ccn_philipa_contactunit = ccn_person1.get_contact(philipa_str)
+    x1_philipa_contactunit = x1_person.get_contact(philipa_str)
+    assert ccn_philipa_contactunit.memberships == x1_philipa_contactunit.memberships
     assert ccn_person1 == x1_person
     assert ccn_dict_of_obj.get(x1_person.person_name) == x1_person

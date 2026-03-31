@@ -83,12 +83,12 @@ def get_idea_elements_sort_order() -> list[str]:
         "person_name_ERASE",
         "person_name_ERASE_otx",
         "person_name_ERASE_inx",
-        "partner_name",
-        "partner_name_otx",
-        "partner_name_inx",
-        "partner_name_ERASE",
-        "partner_name_ERASE_otx",
-        "partner_name_ERASE_inx",
+        "contact_name",
+        "contact_name_otx",
+        "contact_name_inx",
+        "contact_name_ERASE",
+        "contact_name_ERASE_otx",
+        "contact_name_ERASE_inx",
         "group_title",
         "group_title_otx",
         "group_title_inx",
@@ -156,8 +156,8 @@ def get_idea_elements_sort_order() -> list[str]:
         "gogo_want",
         "stop_want",
         "active_requisite",
-        "partner_cred_lumen",
-        "partner_debt_lumen",
+        "contact_cred_lumen",
+        "contact_debt_lumen",
         "group_cred_lumen",
         "group_debt_lumen",
         "credor_respect",
@@ -224,21 +224,21 @@ def get_idea_elements_sort_order() -> list[str]:
         "fund_agenda_take",
         "fund_agenda_ratio_give",
         "fund_agenda_ratio_take",
-        "inallocable_partner_debt_lumen",
+        "inallocable_contact_debt_lumen",
         "gogo_calc",
         "stop_calc",
         "tree_level",
         "range_evaluated",
         "descendant_pledge_count",
         "healerunit_ratio",
-        "all_partner_cred",
+        "all_contact_cred",
         "keeps_justified",
         "offtrack_fund",
         "parent_heir_active",
-        "irrational_partner_debt_lumen",
+        "irrational_contact_debt_lumen",
         "sum_healerunit_plans_fund_total",
         "keeps_buildable",
-        "all_partner_debt",
+        "all_contact_debt",
         "tree_traverse_count",
         "net_funds",
         "fund_rank",
@@ -279,12 +279,12 @@ def get_idea_sqlite_types() -> dict[str, str]:
         "person_name_ERASE": "TEXT",
         "person_name_ERASE_otx": "TEXT",
         "person_name_ERASE_inx": "TEXT",
-        "partner_name": "TEXT",
-        "partner_name_otx": "TEXT",
-        "partner_name_inx": "TEXT",
-        "partner_name_ERASE": "TEXT",
-        "partner_name_ERASE_otx": "TEXT",
-        "partner_name_ERASE_inx": "TEXT",
+        "contact_name": "TEXT",
+        "contact_name_otx": "TEXT",
+        "contact_name_inx": "TEXT",
+        "contact_name_ERASE": "TEXT",
+        "contact_name_ERASE_otx": "TEXT",
+        "contact_name_ERASE_inx": "TEXT",
         "group_title": "TEXT",
         "group_title_otx": "TEXT",
         "group_title_inx": "TEXT",
@@ -355,8 +355,8 @@ def get_idea_sqlite_types() -> dict[str, str]:
         "gogo_want": "REAL",
         "stop_want": "REAL",
         "active_requisite": "INTEGER",
-        "partner_cred_lumen": "REAL",
-        "partner_debt_lumen": "REAL",
+        "contact_cred_lumen": "REAL",
+        "contact_debt_lumen": "REAL",
         "group_cred_lumen": "REAL",
         "group_debt_lumen": "REAL",
         "credor_respect": "REAL",
@@ -435,11 +435,11 @@ def get_idea_sqlite_types() -> dict[str, str]:
         "fund_take": "REAL",
         "gogo_calc": "REAL",
         "stop_calc": "REAL",
-        "all_partner_cred": "INTEGER",
-        "all_partner_debt": "INTEGER",
+        "all_contact_cred": "INTEGER",
+        "all_contact_debt": "INTEGER",
         "parent_heir_active": "INTEGER",
-        "inallocable_partner_debt_lumen": "REAL",
-        "irrational_partner_debt_lumen": "REAL",
+        "inallocable_contact_debt_lumen": "REAL",
+        "irrational_contact_debt_lumen": "REAL",
         "reason_active": "INTEGER",
         "case_task": "INTEGER",
         "case_active": "INTEGER",
@@ -504,8 +504,8 @@ def idea_format_00006_moment_timeoffi_v0_0_0() -> str:
     return "idea_format_00006_moment_timeoffi_v0_0_0"
 
 
-def idea_format_00011_partner_v0_0_0() -> str:
-    return "idea_format_00011_partner_v0_0_0"
+def idea_format_00011_contact_v0_0_0() -> str:
+    return "idea_format_00011_contact_v0_0_0"
 
 
 def idea_format_00012_membership_v0_0_0() -> str:
@@ -520,8 +520,8 @@ def idea_format_00019_planunit_v0_0_0() -> str:
     return "idea_format_00019_planunit_v0_0_0"
 
 
-# def idea_format_00020_person_partner_membership_v0_0_0()-> str: return "idea_format_00020_person_partner_membership_v0_0_0"
-# def idea_format_00021_person_partnerunit_v0_0_0()-> str: return "idea_format_00021_person_partnerunit_v0_0_0"
+# def idea_format_00020_person_contact_membership_v0_0_0()-> str: return "idea_format_00020_person_contact_membership_v0_0_0"
+# def idea_format_00021_person_contactunit_v0_0_0()-> str: return "idea_format_00021_person_contactunit_v0_0_0"
 # def idea_format_00022_person_plan_awardunit_v0_0_0()-> str: return "idea_format_00022_person_plan_awardunit_v0_0_0"
 # def idea_format_00023_person_plan_factunit_v0_0_0()-> str: return "idea_format_00023_person_plan_factunit_v0_0_0"
 # def idea_format_00024_person_plan_laborunit_v0_0_0()-> str: return "idea_format_00024_person_plan_laborunit_v0_0_0"
@@ -532,12 +532,12 @@ def idea_format_00019_planunit_v0_0_0() -> str:
 # def idea_format_00029_personunit_v0_0_0()-> str: return "idea_format_00029_personunit_v0_0_0"
 
 
-def idea_format_00020_person_partner_membership_v0_0_0() -> str:
-    return "idea_format_00020_person_partner_membership_v0_0_0"
+def idea_format_00020_person_contact_membership_v0_0_0() -> str:
+    return "idea_format_00020_person_contact_membership_v0_0_0"
 
 
-def idea_format_00021_person_partnerunit_v0_0_0() -> str:
-    return "idea_format_00021_person_partnerunit_v0_0_0"
+def idea_format_00021_person_contactunit_v0_0_0() -> str:
+    return "idea_format_00021_person_contactunit_v0_0_0"
 
 
 def idea_format_00022_person_plan_awardunit_v0_0_0() -> str:
@@ -596,12 +596,12 @@ def idea_format_00045_translate_rope_v0_0_0() -> str:
     return "idea_format_00045_translate_rope_v0_0_0"
 
 
-def idea_format_00050_delete_person_partner_membership_v0_0_0() -> str:
-    return "idea_format_00050_delete_person_partner_membership_v0_0_0"
+def idea_format_00050_delete_person_contact_membership_v0_0_0() -> str:
+    return "idea_format_00050_delete_person_contact_membership_v0_0_0"
 
 
-def idea_format_00051_delete_person_partnerunit_v0_0_0() -> str:
-    return "idea_format_00051_delete_person_partnerunit_v0_0_0"
+def idea_format_00051_delete_person_contactunit_v0_0_0() -> str:
+    return "idea_format_00051_delete_person_contactunit_v0_0_0"
 
 
 def idea_format_00052_delete_person_plan_awardunit_v0_0_0() -> str:
@@ -640,8 +640,8 @@ def idea_format_00070_nabu_epochtime_v0_0_0() -> str:
     return "idea_format_00070_nabu_epochtime_v0_0_0"
 
 
-def idea_format_00113_partner_map1_v0_0_0() -> str:
-    return "idea_format_00113_partner_map1_v0_0_0"
+def idea_format_00113_contact_map1_v0_0_0() -> str:
+    return "idea_format_00113_contact_map1_v0_0_0"
 
 
 def idea_format_00115_group_map1_v0_0_0() -> str:
@@ -665,12 +665,12 @@ def get_idea_format_filenames() -> set[str]:
         idea_format_00004_moment_epoch_month_v0_0_0(),
         idea_format_00005_moment_epoch_weekday_v0_0_0(),
         idea_format_00006_moment_timeoffi_v0_0_0(),
-        idea_format_00011_partner_v0_0_0(),
+        idea_format_00011_contact_v0_0_0(),
         idea_format_00012_membership_v0_0_0(),
         idea_format_00013_planunit_v0_0_0(),
         idea_format_00019_planunit_v0_0_0(),
-        idea_format_00020_person_partner_membership_v0_0_0(),
-        idea_format_00021_person_partnerunit_v0_0_0(),
+        idea_format_00020_person_contact_membership_v0_0_0(),
+        idea_format_00021_person_contactunit_v0_0_0(),
         idea_format_00022_person_plan_awardunit_v0_0_0(),
         idea_format_00023_person_plan_factunit_v0_0_0(),
         idea_format_00024_person_plan_laborunit_v0_0_0(),
@@ -684,8 +684,8 @@ def get_idea_format_filenames() -> set[str]:
         idea_format_00043_translate_name_v0_0_0(),
         idea_format_00044_translate_label_v0_0_0(),
         idea_format_00045_translate_rope_v0_0_0(),
-        idea_format_00050_delete_person_partner_membership_v0_0_0(),
-        idea_format_00051_delete_person_partnerunit_v0_0_0(),
+        idea_format_00050_delete_person_contact_membership_v0_0_0(),
+        idea_format_00051_delete_person_contactunit_v0_0_0(),
         idea_format_00052_delete_person_plan_awardunit_v0_0_0(),
         idea_format_00053_delete_person_plan_factunit_v0_0_0(),
         idea_format_00054_delete_person_plan_laborunit_v0_0_0(),
@@ -695,7 +695,7 @@ def get_idea_format_filenames() -> set[str]:
         idea_format_00058_delete_person_planunit_v0_0_0(),
         idea_format_00059_delete_personunit_v0_0_0(),
         idea_format_00070_nabu_epochtime_v0_0_0(),
-        idea_format_00113_partner_map1_v0_0_0(),
+        idea_format_00113_contact_map1_v0_0_0(),
         idea_format_00115_group_map1_v0_0_0(),
         idea_format_00116_label_map1_v0_0_0(),
         idea_format_00117_rope_map1_v0_0_0(),
@@ -759,17 +759,17 @@ def get_idea_format_headers() -> dict[str, list[str]]:
     return {
         "moment_rope,epoch_label,c400_number,yr1_jan1_offset,monthday_index,fund_grain,mana_grain,respect_grain,knot,job_listen_rotations": idea_format_00000_momentunit_v0_0_0(),
         "moment_rope,person_name,bud_time,knot,quota,celldepth": idea_format_00001_moment_budunit_v0_0_0(),
-        "moment_rope,person_name,partner_name,tran_time,amount,knot": idea_format_00002_moment_paybook_v0_0_0(),
+        "moment_rope,person_name,contact_name,tran_time,amount,knot": idea_format_00002_moment_paybook_v0_0_0(),
         "moment_rope,cumulative_minute,hour_label,knot": idea_format_00003_moment_epoch_hour_v0_0_0(),
         "moment_rope,cumulative_day,month_label,knot": idea_format_00004_moment_epoch_month_v0_0_0(),
         "moment_rope,weekday_order,weekday_label,knot": idea_format_00005_moment_epoch_weekday_v0_0_0(),
         "moment_rope,offi_time,knot": idea_format_00006_moment_timeoffi_v0_0_0(),
-        "moment_rope,person_name,partner_name": idea_format_00011_partner_v0_0_0(),
-        "moment_rope,person_name,partner_name,group_title": idea_format_00012_membership_v0_0_0(),
+        "moment_rope,person_name,contact_name": idea_format_00011_contact_v0_0_0(),
+        "moment_rope,person_name,contact_name,group_title": idea_format_00012_membership_v0_0_0(),
         "moment_rope,person_name,plan_rope,star,pledge": idea_format_00013_planunit_v0_0_0(),
         "moment_rope,person_name,plan_rope,begin,close,addin,numor,denom,morph,gogo_want,stop_want": idea_format_00019_planunit_v0_0_0(),
-        "moment_rope,person_name,partner_name,group_title,group_cred_lumen,group_debt_lumen,knot": idea_format_00020_person_partner_membership_v0_0_0(),
-        "moment_rope,person_name,partner_name,partner_cred_lumen,partner_debt_lumen,knot": idea_format_00021_person_partnerunit_v0_0_0(),
+        "moment_rope,person_name,contact_name,group_title,group_cred_lumen,group_debt_lumen,knot": idea_format_00020_person_contact_membership_v0_0_0(),
+        "moment_rope,person_name,contact_name,contact_cred_lumen,contact_debt_lumen,knot": idea_format_00021_person_contactunit_v0_0_0(),
         "person_name,plan_rope,awardee_title,give_force,take_force,knot": idea_format_00022_person_plan_awardunit_v0_0_0(),
         "person_name,plan_rope,fact_context,fact_state,fact_lower,fact_upper,knot": idea_format_00023_person_plan_factunit_v0_0_0(),
         "person_name,plan_rope,labor_title,solo,knot": idea_format_00024_person_plan_laborunit_v0_0_0(),
@@ -783,8 +783,8 @@ def get_idea_format_headers() -> dict[str, list[str]]:
         "otx_name,inx_name,otx_knot,inx_knot,unknown_str": idea_format_00043_translate_name_v0_0_0(),
         "otx_label,inx_label,otx_knot,inx_knot,unknown_str": idea_format_00044_translate_label_v0_0_0(),
         "otx_rope,inx_rope,otx_knot,inx_knot,unknown_str": idea_format_00045_translate_rope_v0_0_0(),
-        "moment_rope,person_name,partner_name,group_title_ERASE": idea_format_00050_delete_person_partner_membership_v0_0_0(),
-        "moment_rope,person_name,partner_name_ERASE": idea_format_00051_delete_person_partnerunit_v0_0_0(),
+        "moment_rope,person_name,contact_name,group_title_ERASE": idea_format_00050_delete_person_contact_membership_v0_0_0(),
+        "moment_rope,person_name,contact_name_ERASE": idea_format_00051_delete_person_contactunit_v0_0_0(),
         "person_name,plan_rope,awardee_title_ERASE": idea_format_00052_delete_person_plan_awardunit_v0_0_0(),
         "person_name,plan_rope,fact_context_ERASE": idea_format_00053_delete_person_plan_factunit_v0_0_0(),
         "person_name,plan_rope,labor_title_ERASE": idea_format_00054_delete_person_plan_laborunit_v0_0_0(),
@@ -794,10 +794,10 @@ def get_idea_format_headers() -> dict[str, list[str]]:
         "person_name,plan_rope_ERASE": idea_format_00058_delete_person_planunit_v0_0_0(),
         "moment_rope,person_name_ERASE": idea_format_00059_delete_personunit_v0_0_0(),
         "moment_rope,otx_time,inx_time": idea_format_00070_nabu_epochtime_v0_0_0(),
-        "moment_rope,person_name,partner_name,otx_name,inx_name": idea_format_00113_partner_map1_v0_0_0(),
-        "moment_rope,person_name,partner_name,otx_title,inx_title": idea_format_00115_group_map1_v0_0_0(),
-        "moment_rope,person_name,partner_name,otx_label,inx_label": idea_format_00116_label_map1_v0_0_0(),
-        "moment_rope,person_name,partner_name,otx_rope,inx_rope": idea_format_00117_rope_map1_v0_0_0(),
+        "moment_rope,person_name,contact_name,otx_name,inx_name": idea_format_00113_contact_map1_v0_0_0(),
+        "moment_rope,person_name,contact_name,otx_title,inx_title": idea_format_00115_group_map1_v0_0_0(),
+        "moment_rope,person_name,contact_name,otx_label,inx_label": idea_format_00116_label_map1_v0_0_0(),
+        "moment_rope,person_name,contact_name,otx_rope,inx_rope": idea_format_00117_rope_map1_v0_0_0(),
     }
 
 
@@ -850,8 +850,8 @@ def get_idea_dimen_ref() -> dict[str, set[str]]:
             "br00117",
         },
         "nabu_timenum": {"br00070"},
-        "person_partner_membership": {"br00012", "br00020", "br00050"},
-        "person_partnerunit": {
+        "person_contact_membership": {"br00012", "br00020", "br00050"},
+        "person_contactunit": {
             "br00002",
             "br00011",
             "br00012",
@@ -937,8 +937,8 @@ def get_dimen_minimum_put_idea_names() -> dict[str, str]:
         "moment_timeoffi": idea_format_00006_moment_timeoffi_v0_0_0(),
         "momentunit": idea_format_00000_momentunit_v0_0_0(),
         "nabu_timenum": idea_format_00070_nabu_epochtime_v0_0_0(),
-        "person_partner_membership": idea_format_00020_person_partner_membership_v0_0_0(),
-        "person_partnerunit": idea_format_00021_person_partnerunit_v0_0_0(),
+        "person_contact_membership": idea_format_00020_person_contact_membership_v0_0_0(),
+        "person_contactunit": idea_format_00021_person_contactunit_v0_0_0(),
         "person_plan_awardunit": idea_format_00022_person_plan_awardunit_v0_0_0(),
         "person_plan_factunit": idea_format_00023_person_plan_factunit_v0_0_0(),
         "person_plan_healerunit": idea_format_00025_person_plan_healerunit_v0_0_0(),
@@ -958,8 +958,8 @@ def get_dimen_minimum_del_idea_names() -> dict[str, str]:
     """Returns all dimens and the idea format with only the args for that dimen."""
 
     return {
-        "person_partner_membership": idea_format_00050_delete_person_partner_membership_v0_0_0(),
-        "person_partnerunit": idea_format_00051_delete_person_partnerunit_v0_0_0(),
+        "person_contact_membership": idea_format_00050_delete_person_contact_membership_v0_0_0(),
+        "person_contactunit": idea_format_00051_delete_person_contactunit_v0_0_0(),
         "person_plan_awardunit": idea_format_00052_delete_person_plan_awardunit_v0_0_0(),
         "person_plan_factunit": idea_format_00053_delete_person_plan_factunit_v0_0_0(),
         "person_plan_healerunit": idea_format_00055_delete_person_plan_healerunit_v0_0_0(),

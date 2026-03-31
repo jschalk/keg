@@ -123,9 +123,9 @@ def get_translate_args_class_types() -> dict[str, str]:
         "stop_want": "float",
         "take_force": "float",
         "tran_time": "TimeNum",
-        "partner_name": "NameTerm",
-        "partner_cred_lumen": "float",
-        "partner_debt_lumen": "float",
+        "contact_name": "NameTerm",
+        "contact_cred_lumen": "float",
+        "contact_debt_lumen": "float",
         "weekday_label": "LabelTerm",
         "weekday_order": "int",
         "yr1_jan1_offset": "int",
@@ -187,7 +187,7 @@ def get_translateable_args() -> set:
         "plan_rope",
         "reason_context",
         "reason_state",
-        "partner_name",
+        "contact_name",
         "weekday_label",
     }
 
@@ -208,7 +208,7 @@ def set_translateable_otx_inx_args(args: set) -> set:
 
 def get_translate_nameterm_args() -> set[str]:
     return {
-        "partner_name",
+        "contact_name",
         "face_name",
         "healer_name",
         "person_name",

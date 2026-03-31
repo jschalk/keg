@@ -35,7 +35,7 @@
   "moment_paybook": {
     "jkeys": {
       "moment_rope" : { "class_type": "RopeTerm" }, 
-      "partner_name": { "class_type": "NameTerm" }, 
+      "contact_name": { "class_type": "NameTerm" }, 
       "person_name" : { "class_type": "NameTerm" }, 
       "tran_time"   : { "class_type": "TimeNum"  }
     }, 

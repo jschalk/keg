@@ -25,7 +25,7 @@ def test_stance_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
         kw.face_name,
         kw.moment_rope,
         kw.person_name,
-        kw.partner_name,
+        kw.contact_name,
         kw.otx_name,
         kw.inx_name,
     ]
@@ -159,7 +159,7 @@ def test_stance_sheets_to_lynx_mstr_Scenario1_DatabaseFileExists(
         kw.face_name,
         kw.moment_rope,
         kw.person_name,
-        kw.partner_name,
+        kw.contact_name,
         kw.otx_name,
         kw.inx_name,
     ]
