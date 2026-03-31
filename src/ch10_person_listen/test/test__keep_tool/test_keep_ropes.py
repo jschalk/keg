@@ -24,7 +24,7 @@ def test_get_keep_ropes_RaisesErrorWhen_keeps_justified_IsFalse(
     )
     save_gut_file(str(temp3_fs), sue_lessonfilehandler.default_gut_person())
     sue_gut_person = open_gut_file(str(temp3_fs), a23_lasso, exx.sue)
-    sue_gut_person.add_partnerunit(exx.sue)
+    sue_gut_person.add_contactunit(exx.sue)
     texas_str = "Texas"
     texas_rope = sue_gut_person.make_l1_rope(texas_str)
     dallas_str = "dallas"
@@ -55,7 +55,7 @@ def test_get_keep_ropes_RaisesErrorWhen_keeps_buildable_IsFalse(
     )
     save_gut_file(str(temp3_fs), sue_lessonfilehandler.default_gut_person())
     sue_gut_person = open_gut_file(str(temp3_fs), a23_lasso, exx.sue)
-    sue_gut_person.add_partnerunit(exx.sue)
+    sue_gut_person.add_contactunit(exx.sue)
     texas_str = "Tex/as"
     texas_rope = sue_gut_person.make_l1_rope(texas_str)
     sue_gut_person.set_l1_plan(planunit_shop(texas_str, problem_bool=True))
@@ -80,7 +80,7 @@ def test_get_keep_ropes_ReturnsObj(temp3_fs, graphics_bool):
     )
     save_gut_file(str(temp3_fs), sue_lessonfilehandler.default_gut_person())
     sue_gut_person = open_gut_file(str(temp3_fs), a23_lasso, exx.sue)
-    sue_gut_person.add_partnerunit(exx.sue)
+    sue_gut_person.add_contactunit(exx.sue)
     texas_str = "Texas"
     texas_rope = sue_gut_person.make_l1_rope(texas_str)
     sue_gut_person.set_l1_plan(planunit_shop(texas_str, problem_bool=True))
@@ -113,8 +113,8 @@ def test_save_all_gut_dutys_Setsdutys(temp3_fs, graphics_bool):
     sue_lessonfilehandler = lessonfilehandler_shop(mstr_dir, a23_lasso, exx.sue, None)
     save_gut_file(mstr_dir, sue_lessonfilehandler.default_gut_person())
     sue_gut_person = open_gut_file(mstr_dir, a23_lasso, exx.sue)
-    sue_gut_person.add_partnerunit(exx.sue)
-    sue_gut_person.add_partnerunit(exx.bob)
+    sue_gut_person.add_contactunit(exx.sue)
+    sue_gut_person.add_contactunit(exx.bob)
     texas_str = "Texas"
     texas_rope = sue_gut_person.make_l1_rope(texas_str)
     sue_gut_person.set_l1_plan(planunit_shop(texas_str, problem_bool=True))

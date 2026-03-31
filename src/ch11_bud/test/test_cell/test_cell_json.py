@@ -200,7 +200,7 @@ def test_cellunit_get_from_dict_ReturnsObj_Scenario1():
     bob_sue_found_factunits = {dirty_fact.fact_context: dirty_fact}
     bob_sue_boss_factunits = {sky_blue_fact.fact_context: sky_blue_fact}
     bob_sue_person = personunit_shop(bob_sue_bud_person)
-    bob_sue_person.add_partnerunit(exx.sue)
+    bob_sue_person.add_contactunit(exx.sue)
     bob_sue_cellunit = cellunit_shop(
         bob_sue_bud_person,
         bob_sue_ancestors,

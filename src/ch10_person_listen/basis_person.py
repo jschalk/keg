@@ -24,14 +24,14 @@ def create_empty_person_from_person(
 
 def create_listen_basis(x_person: PersonUnit) -> PersonUnit:
     x_listen = create_empty_person_from_person(x_person, x_person.person_name)
-    x_listen.partners = x_person.partners
+    x_listen.contacts = x_person.contacts
     x_listen.set_max_tree_traverse(x_person.max_tree_traverse)
     if x_person.credor_respect is not None:
         x_listen.set_credor_respect(x_person.credor_respect)
     if x_person.debtor_respect is not None:
         x_listen.set_debtor_respect(x_person.debtor_respect)
-    for x_partnerunit in x_listen.partners.values():
-        x_partnerunit.reset_listen_calculated_attrs()
+    for x_contactunit in x_listen.contacts.values():
+        x_contactunit.reset_listen_calculated_attrs()
     return x_listen
 
 

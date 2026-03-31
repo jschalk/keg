@@ -3,13 +3,13 @@ from src.ch04_rope.rope import RopeTerm
 from src.ch07_person_logic.person_main import PersonUnit
 
 
-def get_person_partnerunits_dataframe(x_person: PersonUnit) -> DataFrame:
-    if x_person.partners == {}:
+def get_person_contactunits_dataframe(x_person: PersonUnit) -> DataFrame:
+    if x_person.contacts == {}:
         return DataFrame(
             columns=[
-                "partner_name",
-                "partner_cred_lumen",
-                "partner_debt_lumen",
+                "contact_name",
+                "contact_cred_lumen",
+                "contact_debt_lumen",
                 "fund_give",
                 "fund_take",
                 "fund_agenda_give",
@@ -18,8 +18,8 @@ def get_person_partnerunits_dataframe(x_person: PersonUnit) -> DataFrame:
                 "fund_agenda_ratio_take",
             ]
         )
-    x_partnerunits_list = list(x_person.get_partnerunits_dict(all_attrs=True).values())
-    return DataFrame(x_partnerunits_list)
+    x_contactunits_list = list(x_person.get_contactunits_dict(all_attrs=True).values())
+    return DataFrame(x_contactunits_list)
 
 
 def get_person_agenda_dataframe(

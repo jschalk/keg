@@ -9,12 +9,12 @@ def br00013_example() -> pandas_DataFrame:
     """All rows valid. pledge=True throughout. Covers varied names."""
     # sue_person = personunit_shop(exx.sue, exx.a23)
     # add_epoch_planunit(sue_person)
-    # sue_person.add_partnerunit(exx.bob, 2)
-    # sue_person.add_partnerunit(exx.sue, 1)
+    # sue_person.add_contactunit(exx.bob, 2)
+    # sue_person.add_contactunit(exx.sue, 1)
     # casa_rope = sue_person.make_l1_rope(exx.casa)
     # clean_rope = sue_person.make_rope(casa_rope, exx.clean)
     # sue_person.add_plan(clean_rope, 1, pledge=True)
-    # sue_person.get_partner(exx.sue).add_membership(exx.run)
+    # sue_person.get_contact(exx.sue).add_membership(exx.run)
 
     h1_mop = init_rope([exx.hn1, "family", exx.casa, exx.clean, exx.mop])
     h1_tools = init_rope([exx.hn1, "family", exx.casa, exx.clean, exx.scrub])

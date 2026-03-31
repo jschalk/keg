@@ -134,10 +134,10 @@ def test_RiverCylce_create_cylceledger_ReturnsObjTwoRiverBooks():
     assert one_cylceledger == {exx.yao: yao_mana, exx.bob: bob_mana}
 
 
-def test_create_init_rivercycle_ReturnsObj_Scenario1_partnerunit():
+def test_create_init_rivercycle_ReturnsObj_Scenario1_contactunit():
     # ESTABLISH
     yao_person = personunit_shop(exx.yao)
-    yao_person.add_partnerunit(exx.yao)
+    yao_person.add_contactunit(exx.yao)
     yao_patientledger = get_patientledger(yao_person)
     keep_patientledgers = {exx.yao: yao_patientledger}
     keep_magnitude = 1200
@@ -156,13 +156,13 @@ def test_create_init_rivercycle_ReturnsObj_Scenario1_partnerunit():
 
 def test_create_init_rivercycle_ReturnsObj_Scenario2_magnitude_Default():
     # ESTABLISH
-    yao_partner_cred_lumen = 7
-    bob_partner_cred_lumen = 3
-    zia_partner_cred_lumen = 10
+    yao_contact_cred_lumen = 7
+    bob_contact_cred_lumen = 3
+    zia_contact_cred_lumen = 10
     yao_person = personunit_shop(exx.yao)
-    yao_person.add_partnerunit(exx.yao, yao_partner_cred_lumen)
-    yao_person.add_partnerunit(exx.bob, bob_partner_cred_lumen)
-    yao_person.add_partnerunit(exx.zia, zia_partner_cred_lumen)
+    yao_person.add_contactunit(exx.yao, yao_contact_cred_lumen)
+    yao_person.add_contactunit(exx.bob, bob_contact_cred_lumen)
+    yao_person.add_contactunit(exx.zia, zia_contact_cred_lumen)
     yao_patientledger = get_patientledger(yao_person)
     keep_patientledgers = {exx.yao: yao_patientledger}
     print(f"{keep_patientledgers=}")
@@ -181,15 +181,15 @@ def test_create_init_rivercycle_ReturnsObj_Scenario2_magnitude_Default():
     assert yao_riverbook.rivercares.get(exx.zia) == 500000000
 
 
-def test_create_init_rivercycle_ReturnsObj_Scenario3_partnerunit():
+def test_create_init_rivercycle_ReturnsObj_Scenario3_contactunit():
     # ESTABLISH
-    yao_partner_cred_lumen = 7
-    bob_partner_cred_lumen = 3
-    zia_partner_cred_lumen = 10
+    yao_contact_cred_lumen = 7
+    bob_contact_cred_lumen = 3
+    zia_contact_cred_lumen = 10
     yao_person = personunit_shop(exx.yao)
-    yao_person.add_partnerunit(exx.yao, yao_partner_cred_lumen)
-    yao_person.add_partnerunit(exx.bob, bob_partner_cred_lumen)
-    yao_person.add_partnerunit(exx.zia, zia_partner_cred_lumen)
+    yao_person.add_contactunit(exx.yao, yao_contact_cred_lumen)
+    yao_person.add_contactunit(exx.bob, bob_contact_cred_lumen)
+    yao_person.add_contactunit(exx.zia, zia_contact_cred_lumen)
     yao_patientledger = get_patientledger(yao_person)
     keep_patientledgers = {exx.yao: yao_patientledger}
     print(f"{keep_patientledgers=}")
@@ -210,7 +210,7 @@ def test_create_init_rivercycle_ReturnsObj_Scenario3_partnerunit():
     assert yao_riverbook.rivercares.get(exx.zia) == 501
 
 
-def test_create_next_rivercycle_ReturnsObj_ScenarioThree_partnerunit():
+def test_create_next_rivercycle_ReturnsObj_ScenarioThree_contactunit():
     # ESTABLISH
     yao_patientledger = example_yao_patientledger()
     bob_patientledger = example_bob_patientledger()

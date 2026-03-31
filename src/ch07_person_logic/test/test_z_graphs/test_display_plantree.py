@@ -3,7 +3,7 @@ from src.ch07_person_logic.person_graphic import (
     display_plantree,
     fund_graph0,
     get_person_agenda_plotly_fig,
-    get_person_partners_plotly_fig,
+    get_person_contacts_plotly_fig,
 )
 from src.ch07_person_logic.person_main import personunit_shop
 from src.ch07_person_logic.test._util.ch07_examples import (
@@ -48,20 +48,20 @@ def test_display_plantree_Scenario1_shows_case_tasks(graphics_bool):
     display_plantree(a_person, mode=kw.case_task, graphics_bool=graphics_bool)
 
 
-def test_get_person_partners_plotly_fig_DisplaysInfo(graphics_bool):
+def test_get_person_contacts_plotly_fig_DisplaysInfo(graphics_bool):
     # ESTABLISH
     luca_person = personunit_shop()
     luca_person.set_credor_respect(500)
     luca_person.set_debtor_respect(400)
-    yao_partner_cred_lumen = 66
-    yao_partner_debt_lumen = 77
-    luca_person.add_partnerunit(exx.yao, yao_partner_cred_lumen, yao_partner_debt_lumen)
-    sue_partner_cred_lumen = 434
-    sue_partner_debt_lumen = 323
-    luca_person.add_partnerunit(exx.sue, sue_partner_cred_lumen, sue_partner_debt_lumen)
+    yao_contact_cred_lumen = 66
+    yao_contact_debt_lumen = 77
+    luca_person.add_contactunit(exx.yao, yao_contact_cred_lumen, yao_contact_debt_lumen)
+    sue_contact_cred_lumen = 434
+    sue_contact_debt_lumen = 323
+    luca_person.add_contactunit(exx.sue, sue_contact_cred_lumen, sue_contact_debt_lumen)
 
     # WHEN
-    x_fig = get_person_partners_plotly_fig(luca_person)
+    x_fig = get_person_contacts_plotly_fig(luca_person)
 
     # THEN
     conditional_fig_show(x_fig, graphics_bool)

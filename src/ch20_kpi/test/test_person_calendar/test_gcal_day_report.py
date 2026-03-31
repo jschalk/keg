@@ -37,7 +37,7 @@ def test_get_gcal_day_punch_from_personunit_ReturnsObj_Scenario0_EmptyPerson():
     assert f"Day Report for {exx.sue}" in sue_day_punch_str
     assert "Schedule Priorities" in sue_day_punch_str
     assert "All Agenda Items" in sue_day_punch_str
-    assert "Partners" in sue_day_punch_str
+    assert "Contacts" in sue_day_punch_str
     assert "Group" not in sue_day_punch_str
 
 
@@ -56,7 +56,7 @@ def test_get_gcal_day_punch_from_personunit_ReturnsObj_Scenario1_NonEmptyPerson(
     assert f"Day Report for {exx.sue}" in sue_day_punch_str
     assert "Schedule Priorities" in sue_day_punch_str
     assert "All Agenda Items" in sue_day_punch_str
-    assert "Partners" in sue_day_punch_str
+    assert "Contacts" in sue_day_punch_str
     assert "Group" in sue_day_punch_str
     assert exx.run in sue_day_punch_str
 

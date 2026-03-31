@@ -11,8 +11,8 @@ from src.ch17_idea.idea_config import (
     get_idearef_from_file,
     idea_format_00013_planunit_v0_0_0,
     idea_format_00019_planunit_v0_0_0,
-    idea_format_00020_person_partner_membership_v0_0_0,
-    idea_format_00021_person_partnerunit_v0_0_0,
+    idea_format_00020_person_contact_membership_v0_0_0,
+    idea_format_00021_person_contactunit_v0_0_0,
 )
 from src.ch17_idea.idea_main import (
     _generate_idea_dataframe,
@@ -25,10 +25,10 @@ from src.ref.keywords import Ch17Keywords as kw
 
 def test_config_str_functions_ReturnsObj():
     # ESTABLISH / WHEN / THEN
-    x00021_idea = "idea_format_00021_person_partnerunit_v0_0_0"
-    assert idea_format_00021_person_partnerunit_v0_0_0() == x00021_idea
-    x00020_idea = "idea_format_00020_person_partner_membership_v0_0_0"
-    assert idea_format_00020_person_partner_membership_v0_0_0() == x00020_idea
+    x00021_idea = "idea_format_00021_person_contactunit_v0_0_0"
+    assert idea_format_00021_person_contactunit_v0_0_0() == x00021_idea
+    x00020_idea = "idea_format_00020_person_contact_membership_v0_0_0"
+    assert idea_format_00020_person_contact_membership_v0_0_0() == x00020_idea
     x0003_idea = "idea_format_00013_planunit_v0_0_0"
     assert idea_format_00013_planunit_v0_0_0() == x0003_idea
 
@@ -45,7 +45,7 @@ def test_get_idea_formats_dir_ReturnsObj():
 
 def test_get_idearef_obj_ReturnsObj():
     # ESTABLISH
-    idea_name_00021 = idea_format_00021_person_partnerunit_v0_0_0()
+    idea_name_00021 = idea_format_00021_person_contactunit_v0_0_0()
 
     # WHEN
     x_idearef = get_idearef_obj(idea_name_00021)
@@ -53,7 +53,7 @@ def test_get_idearef_obj_ReturnsObj():
     # THEN
     assert x_idearef.idea_name == idea_name_00021
     assert set(x_idearef.dimens) == {
-        kw.person_partnerunit,
+        kw.person_contactunit,
         kw.personunit,
         kw.momentunit,
     }
@@ -64,7 +64,7 @@ def test_get_idearef_obj_ReturnsObj():
 def test_get_headers_list_ReturnsObj():
     # ESTABLISH / WHEN
     format_00021_headers = _get_headers_list(
-        idea_format_00021_person_partnerunit_v0_0_0()
+        idea_format_00021_person_contactunit_v0_0_0()
     )
 
     # THEN
@@ -74,9 +74,9 @@ def test_get_headers_list_ReturnsObj():
         kw.face_name,
         kw.moment_rope,
         kw.person_name,
-        kw.partner_name,
-        kw.partner_cred_lumen,
-        kw.partner_debt_lumen,
+        kw.contact_name,
+        kw.contact_cred_lumen,
+        kw.contact_debt_lumen,
         kw.knot,
     ]
 
@@ -97,13 +97,13 @@ def get_sorted_headers_str(idea_filename):
 
 def test_get_sorted_headers_str_ReturnsObj_Scenario0_SingleExample():
     # ESTABLISH
-    filebasename = idea_format_00021_person_partnerunit_v0_0_0()
+    filebasename = idea_format_00021_person_contactunit_v0_0_0()
 
     # WHEN
     br00021_headers = get_sorted_headers_str(filebasename)
 
     # THEN
-    expected_br00021_headers_str = f"{kw.moment_rope},{kw.person_name},{kw.partner_name},{kw.partner_cred_lumen},{kw.partner_debt_lumen},{kw.knot}"
+    expected_br00021_headers_str = f"{kw.moment_rope},{kw.person_name},{kw.contact_name},{kw.contact_cred_lumen},{kw.contact_debt_lumen},{kw.knot}"
     assert br00021_headers == expected_br00021_headers_str
 
 
@@ -144,10 +144,10 @@ def test__generate_idea_dataframe_ReturnsObj():
     empty_d2 = []
     # WHEN
     x_df = _generate_idea_dataframe(
-        empty_d2, idea_format_00021_person_partnerunit_v0_0_0()
+        empty_d2, idea_format_00021_person_contactunit_v0_0_0()
     )
     # THEN
-    headers_list = _get_headers_list(idea_format_00021_person_partnerunit_v0_0_0())
+    headers_list = _get_headers_list(idea_format_00021_person_contactunit_v0_0_0())
     assert list(x_df.columns) == headers_list
 
 
@@ -182,9 +182,9 @@ def test_idea_FilesExist():
     assert len(idea_filenames) == len(get_idea_format_filenames())
 
 
-def test_get_idearef_obj_HasAttrs_idea_format_00021_person_partnerunit_v0_0_0():
+def test_get_idearef_obj_HasAttrs_idea_format_00021_person_contactunit_v0_0_0():
     # ESTABLISH
-    idea_name = idea_format_00021_person_partnerunit_v0_0_0()
+    idea_name = idea_format_00021_person_contactunit_v0_0_0()
 
     # WHEN
     format_00001_idearef = get_idearef_obj(idea_name)
@@ -192,9 +192,9 @@ def test_get_idearef_obj_HasAttrs_idea_format_00021_person_partnerunit_v0_0_0():
     # THEN
     assert len(format_00001_idearef.attributes) == 8
     assert format_00001_idearef.attributes == {
-        kw.partner_name: {kw.otx_key: True},
-        kw.partner_cred_lumen: {kw.otx_key: False},
-        kw.partner_debt_lumen: {kw.otx_key: False},
+        kw.contact_name: {kw.otx_key: True},
+        kw.contact_cred_lumen: {kw.otx_key: False},
+        kw.contact_debt_lumen: {kw.otx_key: False},
         kw.spark_num: {kw.otx_key: True},
         kw.face_name: {kw.otx_key: True},
         kw.moment_rope: {kw.otx_key: True},
@@ -206,14 +206,14 @@ def test_get_idearef_obj_HasAttrs_idea_format_00021_person_partnerunit_v0_0_0():
     assert headers_list[1] == kw.face_name
     assert headers_list[2] == kw.moment_rope
     assert headers_list[3] == kw.person_name
-    assert headers_list[4] == kw.partner_name
-    assert headers_list[5] == kw.partner_cred_lumen
-    assert headers_list[6] == kw.partner_debt_lumen
+    assert headers_list[4] == kw.contact_name
+    assert headers_list[5] == kw.contact_cred_lumen
+    assert headers_list[6] == kw.contact_debt_lumen
 
 
-def test_get_idearef_obj_HasAttrs_idea_format_00020_person_partner_membership_v0_0_0():
+def test_get_idearef_obj_HasAttrs_idea_format_00020_person_contact_membership_v0_0_0():
     # ESTABLISH
-    idea_name = idea_format_00020_person_partner_membership_v0_0_0()
+    idea_name = idea_format_00020_person_contact_membership_v0_0_0()
 
     # WHEN
     format_00020_idearef = get_idearef_obj(idea_name)
@@ -225,7 +225,7 @@ def test_get_idearef_obj_HasAttrs_idea_format_00020_person_partner_membership_v0
     assert headers_list[1] == kw.face_name
     assert headers_list[2] == kw.moment_rope
     assert headers_list[3] == kw.person_name
-    assert headers_list[4] == kw.partner_name
+    assert headers_list[4] == kw.contact_name
     assert headers_list[5] == kw.group_title
     assert headers_list[6] == kw.group_cred_lumen
     assert headers_list[7] == kw.group_debt_lumen

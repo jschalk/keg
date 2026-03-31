@@ -1,4 +1,4 @@
-from src.ch02_partner.group import awardunit_shop
+from src.ch02_contact.group import awardunit_shop
 from src.ch05_reason.reason_main import factunit_shop
 from src.ch06_plan.plan import planunit_shop
 from src.ch07_person_logic.person_main import personunit_shop
@@ -74,17 +74,17 @@ def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnitSimpleAttrs():
     assert after_sue_personunit.mana_grain != before_sue_personunit.mana_grain
 
 
-def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_delete_partner():
+def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_delete_contact():
     # ESTABLISH
     sue_persondelta = persondelta_shop()
 
     before_sue_personunit = personunit_shop(exx.sue)
-    before_sue_personunit.add_partnerunit(exx.yao)
-    before_sue_personunit.add_partnerunit(exx.zia)
+    before_sue_personunit.add_contactunit(exx.yao)
+    before_sue_personunit.add_contactunit(exx.zia)
 
-    dimen = kw.person_partnerunit
+    dimen = kw.person_contactunit
     x_personatom = personatom_shop(dimen, kw.DELETE)
-    x_personatom.set_jkey(kw.partner_name, exx.zia)
+    x_personatom.set_jkey(kw.contact_name, exx.zia)
     sue_persondelta.set_personatom(x_personatom)
 
     # WHEN
@@ -93,91 +93,91 @@ def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_delete_partner():
     # THEN
     print(f"{sue_persondelta.personatoms=}")
     assert after_sue_personunit != before_sue_personunit
-    assert after_sue_personunit.partner_exists(exx.yao)
-    assert after_sue_personunit.partner_exists(exx.zia) is False
+    assert after_sue_personunit.contact_exists(exx.yao)
+    assert after_sue_personunit.contact_exists(exx.zia) is False
 
 
-def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_insert_partner():
+def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_insert_contact():
     # ESTABLISH
     sue_persondelta = persondelta_shop()
 
     before_sue_personunit = personunit_shop(exx.sue)
-    before_sue_personunit.add_partnerunit(exx.yao)
-    assert before_sue_personunit.partner_exists(exx.yao)
-    assert before_sue_personunit.partner_exists(exx.zia) is False
+    before_sue_personunit.add_contactunit(exx.yao)
+    assert before_sue_personunit.contact_exists(exx.yao)
+    assert before_sue_personunit.contact_exists(exx.zia) is False
 
     # WHEN
-    dimen = kw.person_partnerunit
+    dimen = kw.person_contactunit
     x_personatom = personatom_shop(dimen, kw.INSERT)
-    x_personatom.set_jkey(kw.partner_name, exx.zia)
-    x_partner_cred_lumen = 55
-    x_partner_debt_lumen = 66
-    x_personatom.set_jvalue("partner_cred_lumen", x_partner_cred_lumen)
-    x_personatom.set_jvalue("partner_debt_lumen", x_partner_debt_lumen)
+    x_personatom.set_jkey(kw.contact_name, exx.zia)
+    x_contact_cred_lumen = 55
+    x_contact_debt_lumen = 66
+    x_personatom.set_jvalue("contact_cred_lumen", x_contact_cred_lumen)
+    x_personatom.set_jvalue("contact_debt_lumen", x_contact_debt_lumen)
     sue_persondelta.set_personatom(x_personatom)
     print(f"{sue_persondelta.personatoms.keys()=}")
     after_sue_personunit = sue_persondelta.get_atom_edited_person(before_sue_personunit)
 
     # THEN
-    yao_partnerunit = after_sue_personunit.get_partner(exx.yao)
-    zia_partnerunit = after_sue_personunit.get_partner(exx.zia)
-    assert yao_partnerunit is not None
-    assert zia_partnerunit is not None
-    assert zia_partnerunit.partner_cred_lumen == x_partner_cred_lumen
-    assert zia_partnerunit.partner_debt_lumen == x_partner_debt_lumen
+    yao_contactunit = after_sue_personunit.get_contact(exx.yao)
+    zia_contactunit = after_sue_personunit.get_contact(exx.zia)
+    assert yao_contactunit is not None
+    assert zia_contactunit is not None
+    assert zia_contactunit.contact_cred_lumen == x_contact_cred_lumen
+    assert zia_contactunit.contact_debt_lumen == x_contact_debt_lumen
 
 
-def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_update_partner():
+def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_update_contact():
     # ESTABLISH
     sue_persondelta = persondelta_shop()
 
     before_sue_personunit = personunit_shop(exx.sue)
-    before_sue_personunit.add_partnerunit(exx.yao)
-    assert before_sue_personunit.get_partner(exx.yao).partner_cred_lumen == 1
+    before_sue_personunit.add_contactunit(exx.yao)
+    assert before_sue_personunit.get_contact(exx.yao).contact_cred_lumen == 1
 
     # WHEN
-    dimen = kw.person_partnerunit
+    dimen = kw.person_contactunit
     x_personatom = personatom_shop(dimen, kw.UPDATE)
-    x_personatom.set_jkey(kw.partner_name, exx.yao)
-    yao_partner_cred_lumen = 55
-    x_personatom.set_jvalue("partner_cred_lumen", yao_partner_cred_lumen)
+    x_personatom.set_jkey(kw.contact_name, exx.yao)
+    yao_contact_cred_lumen = 55
+    x_personatom.set_jvalue("contact_cred_lumen", yao_contact_cred_lumen)
     sue_persondelta.set_personatom(x_personatom)
     print(f"{sue_persondelta.personatoms.keys()=}")
     after_sue_personunit = sue_persondelta.get_atom_edited_person(before_sue_personunit)
 
     # THEN
-    yao_partner = after_sue_personunit.get_partner(exx.yao)
-    assert yao_partner.partner_cred_lumen == yao_partner_cred_lumen
+    yao_contact = after_sue_personunit.get_contact(exx.yao)
+    assert yao_contact.contact_cred_lumen == yao_contact_cred_lumen
 
 
 def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_delete_membership():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     before_sue_personunit = personunit_shop(exx.sue)
-    before_sue_personunit.add_partnerunit(exx.yao)
-    before_sue_personunit.add_partnerunit(exx.zia)
-    before_sue_personunit.add_partnerunit(exx.bob)
-    yao_partnerunit = before_sue_personunit.get_partner(exx.yao)
-    zia_partnerunit = before_sue_personunit.get_partner(exx.zia)
-    bob_partnerunit = before_sue_personunit.get_partner(exx.bob)
-    yao_partnerunit.add_membership(exx.run)
-    zia_partnerunit.add_membership(exx.run)
+    before_sue_personunit.add_contactunit(exx.yao)
+    before_sue_personunit.add_contactunit(exx.zia)
+    before_sue_personunit.add_contactunit(exx.bob)
+    yao_contactunit = before_sue_personunit.get_contact(exx.yao)
+    zia_contactunit = before_sue_personunit.get_contact(exx.zia)
+    bob_contactunit = before_sue_personunit.get_contact(exx.bob)
+    yao_contactunit.add_membership(exx.run)
+    zia_contactunit.add_membership(exx.run)
     fly_str = ";flyers"
-    yao_partnerunit.add_membership(fly_str)
-    zia_partnerunit.add_membership(fly_str)
-    bob_partnerunit.add_membership(fly_str)
-    before_group_titles_dict = before_sue_personunit.get_partnerunit_group_titles_dict()
+    yao_contactunit.add_membership(fly_str)
+    zia_contactunit.add_membership(fly_str)
+    bob_contactunit.add_membership(fly_str)
+    before_group_titles_dict = before_sue_personunit.get_contactunit_group_titles_dict()
     assert len(before_group_titles_dict.get(exx.run)) == 2
     assert len(before_group_titles_dict.get(fly_str)) == 3
 
     # WHEN
-    yao_personatom = personatom_shop(kw.person_partner_membership, kw.DELETE)
+    yao_personatom = personatom_shop(kw.person_contact_membership, kw.DELETE)
     yao_personatom.set_jkey(kw.group_title, exx.run)
-    yao_personatom.set_jkey(kw.partner_name, exx.yao)
+    yao_personatom.set_jkey(kw.contact_name, exx.yao)
     # print(f"{yao_personatom=}")
-    zia_personatom = personatom_shop(kw.person_partner_membership, kw.DELETE)
+    zia_personatom = personatom_shop(kw.person_contact_membership, kw.DELETE)
     zia_personatom.set_jkey(kw.group_title, fly_str)
-    zia_personatom.set_jkey(kw.partner_name, exx.zia)
+    zia_personatom.set_jkey(kw.contact_name, exx.zia)
     # print(f"{zia_personatom=}")
     sue_persondelta = persondelta_shop()
     sue_persondelta.set_personatom(yao_personatom)
@@ -185,7 +185,7 @@ def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_delete_membership()
     after_sue_personunit = sue_persondelta.get_atom_edited_person(before_sue_personunit)
 
     # THEN
-    after_group_titles_dict = after_sue_personunit.get_partnerunit_group_titles_dict()
+    after_group_titles_dict = after_sue_personunit.get_contactunit_group_titles_dict()
     assert len(after_group_titles_dict.get(exx.run)) == 1
     assert len(after_group_titles_dict.get(fly_str)) == 2
 
@@ -193,18 +193,18 @@ def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_delete_membership()
 def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_insert_membership():
     # ESTABLISH
     before_sue_personunit = personunit_shop(exx.sue)
-    before_sue_personunit.add_partnerunit(exx.yao)
-    before_sue_personunit.add_partnerunit(exx.zia)
-    before_sue_personunit.add_partnerunit(exx.bob)
-    zia_partnerunit = before_sue_personunit.get_partner(exx.zia)
-    zia_partnerunit.add_membership(exx.run)
-    before_group_titles = before_sue_personunit.get_partnerunit_group_titles_dict()
+    before_sue_personunit.add_contactunit(exx.yao)
+    before_sue_personunit.add_contactunit(exx.zia)
+    before_sue_personunit.add_contactunit(exx.bob)
+    zia_contactunit = before_sue_personunit.get_contact(exx.zia)
+    zia_contactunit.add_membership(exx.run)
+    before_group_titles = before_sue_personunit.get_contactunit_group_titles_dict()
     assert len(before_group_titles.get(exx.run)) == 1
 
     # WHEN
-    yao_personatom = personatom_shop(kw.person_partner_membership, kw.INSERT)
+    yao_personatom = personatom_shop(kw.person_contact_membership, kw.INSERT)
     yao_personatom.set_jkey(kw.group_title, exx.run)
-    yao_personatom.set_jkey(kw.partner_name, exx.yao)
+    yao_personatom.set_jkey(kw.contact_name, exx.yao)
     yao_run_group_cred_lumen = 17
     yao_personatom.set_jvalue(kw.group_cred_lumen, yao_run_group_cred_lumen)
     print(f"{yao_personatom=}")
@@ -213,10 +213,10 @@ def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_insert_membership()
     after_sue_personunit = sue_persondelta.get_atom_edited_person(before_sue_personunit)
 
     # THEN
-    after_group_titles = after_sue_personunit.get_partnerunit_group_titles_dict()
+    after_group_titles = after_sue_personunit.get_contactunit_group_titles_dict()
     assert len(after_group_titles.get(exx.run)) == 2
-    after_yao_partnerunit = after_sue_personunit.get_partner(exx.yao)
-    after_yao_run_membership = after_yao_partnerunit.get_membership(exx.run)
+    after_yao_contactunit = after_sue_personunit.get_contact(exx.yao)
+    after_yao_run_membership = after_yao_contactunit.get_membership(exx.run)
     assert after_yao_run_membership is not None
     assert after_yao_run_membership.group_cred_lumen == yao_run_group_cred_lumen
 
@@ -225,18 +225,18 @@ def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_update_membership()
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     before_sue_personunit = personunit_shop(exx.sue)
-    before_sue_personunit.add_partnerunit(exx.yao)
-    before_yao_partnerunit = before_sue_personunit.get_partner(exx.yao)
+    before_sue_personunit.add_contactunit(exx.yao)
+    before_yao_contactunit = before_sue_personunit.get_contact(exx.yao)
     old_yao_run_group_cred_lumen = 3
-    before_yao_partnerunit.add_membership(exx.run, old_yao_run_group_cred_lumen)
-    yao_run_membership = before_yao_partnerunit.get_membership(exx.run)
+    before_yao_contactunit.add_membership(exx.run, old_yao_run_group_cred_lumen)
+    yao_run_membership = before_yao_contactunit.get_membership(exx.run)
     assert yao_run_membership.group_cred_lumen == old_yao_run_group_cred_lumen
     assert yao_run_membership.group_debt_lumen == 1
 
     # WHEN
-    yao_personatom = personatom_shop(kw.person_partner_membership, kw.UPDATE)
+    yao_personatom = personatom_shop(kw.person_contact_membership, kw.UPDATE)
     yao_personatom.set_jkey(kw.group_title, exx.run)
-    yao_personatom.set_jkey(kw.partner_name, exx.yao)
+    yao_personatom.set_jkey(kw.contact_name, exx.yao)
     new_yao_run_group_cred_lumen = 7
     new_yao_run_group_debt_lumen = 11
     yao_personatom.set_jvalue(kw.group_cred_lumen, new_yao_run_group_cred_lumen)
@@ -246,8 +246,8 @@ def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_update_membership()
     after_sue_personunit = sue_persondelta.get_atom_edited_person(before_sue_personunit)
 
     # THEN
-    after_yao_partnerunit = after_sue_personunit.get_partner(exx.yao)
-    after_yao_run_membership = after_yao_partnerunit.get_membership(exx.run)
+    after_yao_contactunit = after_sue_personunit.get_contact(exx.yao)
+    after_yao_run_membership = after_yao_contactunit.get_membership(exx.run)
     assert after_yao_run_membership.group_cred_lumen == new_yao_run_group_cred_lumen
     assert after_yao_run_membership.group_debt_lumen == new_yao_run_group_debt_lumen
 
@@ -377,18 +377,18 @@ def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_delete_plan_awardun
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     before_sue_personunit = personunit_shop(exx.sue)
-    before_sue_personunit.add_partnerunit(exx.yao)
-    before_sue_personunit.add_partnerunit(exx.zia)
-    before_sue_personunit.add_partnerunit(exx.bob)
-    yao_partnerunit = before_sue_personunit.get_partner(exx.yao)
-    zia_partnerunit = before_sue_personunit.get_partner(exx.zia)
-    bob_partnerunit = before_sue_personunit.get_partner(exx.bob)
-    yao_partnerunit.add_membership(exx.run)
-    zia_partnerunit.add_membership(exx.run)
+    before_sue_personunit.add_contactunit(exx.yao)
+    before_sue_personunit.add_contactunit(exx.zia)
+    before_sue_personunit.add_contactunit(exx.bob)
+    yao_contactunit = before_sue_personunit.get_contact(exx.yao)
+    zia_contactunit = before_sue_personunit.get_contact(exx.zia)
+    bob_contactunit = before_sue_personunit.get_contact(exx.bob)
+    yao_contactunit.add_membership(exx.run)
+    zia_contactunit.add_membership(exx.run)
     fly_str = ";flyers"
-    yao_partnerunit.add_membership(fly_str)
-    zia_partnerunit.add_membership(fly_str)
-    bob_partnerunit.add_membership(fly_str)
+    yao_contactunit.add_membership(fly_str)
+    zia_contactunit.add_membership(fly_str)
+    bob_contactunit.add_membership(fly_str)
 
     sports_str = "sports"
     sports_rope = before_sue_personunit.make_l1_rope(sports_str)
@@ -422,10 +422,10 @@ def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_delete_plan_awardun
 def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_update_plan_awardunit():
     # ESTABLISH
     before_sue_personunit = personunit_shop(exx.sue)
-    before_sue_personunit.add_partnerunit(exx.yao)
-    before_sue_personunit.add_partnerunit(exx.zia)
-    yao_partnerunit = before_sue_personunit.get_partner(exx.yao)
-    yao_partnerunit.add_membership(exx.run)
+    before_sue_personunit.add_contactunit(exx.yao)
+    before_sue_personunit.add_contactunit(exx.zia)
+    yao_contactunit = before_sue_personunit.get_contact(exx.yao)
+    yao_contactunit.add_membership(exx.run)
 
     sports_str = "sports"
     sports_rope = before_sue_personunit.make_l1_rope(sports_str)
@@ -462,10 +462,10 @@ def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_update_plan_awardun
 def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_insert_plan_awardunit():
     # ESTABLISH
     before_sue_personunit = personunit_shop(exx.sue)
-    before_sue_personunit.add_partnerunit(exx.yao)
-    before_sue_personunit.add_partnerunit(exx.zia)
-    yao_partnerunit = before_sue_personunit.get_partner(exx.yao)
-    yao_partnerunit.add_membership(exx.run)
+    before_sue_personunit.add_contactunit(exx.yao)
+    before_sue_personunit.add_contactunit(exx.zia)
+    yao_contactunit = before_sue_personunit.get_contact(exx.yao)
+    yao_contactunit.add_membership(exx.run)
     sports_str = "sports"
     sports_rope = before_sue_personunit.make_l1_rope(sports_str)
     ball_str = "basketball"
@@ -894,7 +894,7 @@ def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_delete_plan_reasonu
 def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_insert_plan_laborunit():
     # ESTABLISH
     before_sue_au = personunit_shop(exx.sue)
-    before_sue_au.add_partnerunit(exx.yao)
+    before_sue_au.add_contactunit(exx.yao)
     sports_str = "sports"
     sports_rope = before_sue_au.make_l1_rope(sports_str)
     ball_str = "basketball"
@@ -920,7 +920,7 @@ def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_insert_plan_laborun
 def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_delete_plan_laborunit():
     # ESTABLISH
     before_sue_au = personunit_shop(exx.sue)
-    before_sue_au.add_partnerunit(exx.yao)
+    before_sue_au.add_contactunit(exx.yao)
     sports_str = "sports"
     sports_rope = before_sue_au.make_l1_rope(sports_str)
     ball_str = "basketball"
@@ -948,7 +948,7 @@ def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_delete_plan_laborun
 def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_insert_plan_healerunit():
     # ESTABLISH
     before_sue_au = personunit_shop(exx.sue)
-    before_sue_au.add_partnerunit(exx.yao)
+    before_sue_au.add_contactunit(exx.yao)
     sports_str = "sports"
     sports_rope = before_sue_au.make_l1_rope(sports_str)
     ball_str = "basketball"
@@ -976,7 +976,7 @@ def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_insert_plan_healeru
 def test_PersonDelta_get_edited_person_ReturnsObj_PersonUnit_delete_plan_healerunit():
     # ESTABLISH
     before_sue_au = personunit_shop(exx.sue)
-    before_sue_au.add_partnerunit(exx.yao)
+    before_sue_au.add_contactunit(exx.yao)
     sports_str = "sports"
     sports_rope = before_sue_au.make_l1_rope(sports_str)
     ball_str = "basketball"
@@ -1006,24 +1006,24 @@ def test_PersonDelta_get_persondelta_example1_ContainsPersonAtoms():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     before_sue_personunit = personunit_shop(exx.sue)
-    before_sue_personunit.add_partnerunit(exx.yao)
-    before_sue_personunit.add_partnerunit(exx.zia)
-    before_sue_personunit.add_partnerunit(exx.bob)
-    yao_partnerunit = before_sue_personunit.get_partner(exx.yao)
-    zia_partnerunit = before_sue_personunit.get_partner(exx.zia)
-    bob_partnerunit = before_sue_personunit.get_partner(exx.bob)
-    yao_partnerunit.add_membership(exx.run)
-    zia_partnerunit.add_membership(exx.run)
+    before_sue_personunit.add_contactunit(exx.yao)
+    before_sue_personunit.add_contactunit(exx.zia)
+    before_sue_personunit.add_contactunit(exx.bob)
+    yao_contactunit = before_sue_personunit.get_contact(exx.yao)
+    zia_contactunit = before_sue_personunit.get_contact(exx.zia)
+    bob_contactunit = before_sue_personunit.get_contact(exx.bob)
+    yao_contactunit.add_membership(exx.run)
+    zia_contactunit.add_membership(exx.run)
     fly_str = ";flyers"
-    yao_partnerunit.add_membership(fly_str)
-    bob_partnerunit.add_membership(fly_str)
+    yao_contactunit.add_membership(fly_str)
+    bob_contactunit.add_membership(fly_str)
     assert before_sue_personunit.max_tree_traverse != 66
     assert before_sue_personunit.credor_respect != 77
     assert before_sue_personunit.debtor_respect != 88
-    assert before_sue_personunit.partner_exists(exx.yao)
-    assert before_sue_personunit.partner_exists(exx.zia)
-    assert yao_partnerunit.get_membership(fly_str) is not None
-    assert bob_partnerunit.get_membership(fly_str) is not None
+    assert before_sue_personunit.contact_exists(exx.yao)
+    assert before_sue_personunit.contact_exists(exx.zia)
+    assert yao_contactunit.get_membership(fly_str) is not None
+    assert bob_contactunit.get_membership(fly_str) is not None
 
     # WHEN
     ex1_persondelta = get_persondelta_example1()
@@ -1033,5 +1033,5 @@ def test_PersonDelta_get_persondelta_example1_ContainsPersonAtoms():
     assert after_sue_personunit.max_tree_traverse == 66
     assert after_sue_personunit.credor_respect == 77
     assert after_sue_personunit.debtor_respect == 88
-    assert after_sue_personunit.partner_exists(exx.yao)
-    assert after_sue_personunit.partner_exists(exx.zia) is False
+    assert after_sue_personunit.contact_exists(exx.yao)
+    assert after_sue_personunit.contact_exists(exx.zia) is False

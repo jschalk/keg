@@ -1,0 +1,6 @@
+{
+  "chapter_blurb": "Defines debt and cred to Contacts and Memberships to Groups.", 
+  "chapter_content": "Defines a contact, and its group memberships. Groups will be produced from memberships.", 
+  "chapter_description": "ch02_contact", 
+  "chapter_number": 2
+}

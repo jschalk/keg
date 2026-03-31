@@ -1,5 +1,5 @@
-from src.ch02_partner.group import awardunit_shop
-from src.ch02_partner.partner import partnerunit_shop
+from src.ch02_contact.contact import contactunit_shop
+from src.ch02_contact.group import awardunit_shop
 from src.ch04_rope.rope import create_rope_from_labels
 from src.ch06_plan.plan import planunit_shop
 from src.ch07_person_logic.person_main import personunit_shop
@@ -152,25 +152,25 @@ def test_PersonUnit_3AdvocatesNoplanunit_shop():
     # ESTABLISH
 
     zia_personunit = personunit_shop("Zia")
-    yao_partnerunit = partnerunit_shop(partner_name=exx.yao)
-    sue_partnerunit = partnerunit_shop(partner_name=exx.sue)
-    zia_partnerunit = partnerunit_shop(partner_name=exx.zia)
+    yao_contactunit = contactunit_shop(contact_name=exx.yao)
+    sue_contactunit = contactunit_shop(contact_name=exx.sue)
+    zia_contactunit = contactunit_shop(contact_name=exx.zia)
     # print(f"{yao=}")
-    zia_personunit.set_partnerunit(yao_partnerunit)
-    zia_personunit.set_partnerunit(sue_partnerunit)
-    zia_personunit.set_partnerunit(zia_partnerunit)
+    zia_personunit.set_contactunit(yao_contactunit)
+    zia_personunit.set_contactunit(sue_contactunit)
+    zia_personunit.set_contactunit(zia_contactunit)
     zia_personunit.planroot.set_awardunit(awardunit_shop(exx.yao, give_force=10))
     zia_personunit.planroot.set_awardunit(awardunit_shop(exx.sue, give_force=10))
     zia_personunit.planroot.set_awardunit(awardunit_shop(exx.zia, give_force=10))
 
     # WHEN
     assert zia_personunit.get_awardunits_metrics() is not None
-    partners_metrics = zia_personunit.get_awardunits_metrics()
+    contacts_metrics = zia_personunit.get_awardunits_metrics()
 
     # THEN
-    yao_awardunit = partners_metrics[exx.yao]
-    sue_awardunit = partners_metrics[exx.sue]
-    zia_awardunit = partners_metrics[exx.zia]
+    yao_awardunit = contacts_metrics[exx.yao]
+    sue_awardunit = contacts_metrics[exx.sue]
+    zia_awardunit = contacts_metrics[exx.zia]
     assert yao_awardunit.awardee_title is not None
     assert sue_awardunit.awardee_title is not None
     assert zia_awardunit.awardee_title is not None

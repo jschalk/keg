@@ -4,11 +4,11 @@
     "face_name"   : { "otx_key": true  }, 
     "knot"        : { "otx_key": false }, 
     "moment_rope" : { "otx_key": true  }, 
-    "partner_name": { "otx_key": true  }, 
+    "contact_name": { "otx_key": true  }, 
     "person_name" : { "otx_key": true  }, 
     "spark_num"   : { "otx_key": true  }, 
     "tran_time"   : { "otx_key": true  }
   }, 
-  "dimens": ["momentunit", "moment_paybook", "person_partnerunit", "personunit"], 
+  "dimens": ["momentunit", "moment_paybook", "person_contactunit", "personunit"], 
   "idea_number": "br00002"
 }

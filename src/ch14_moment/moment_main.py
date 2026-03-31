@@ -51,12 +51,12 @@ from src.ch13_time.epoch_main import (
     epochunit_shop,
 )
 from src.ch14_moment._ref.ch14_semantic_types import (
+    ContactName,
     FundGrain,
     FundNum,
     KnotTerm,
     ManaGrain,
     MomentRope,
-    PartnerName,
     PersonName,
     RespectGrain,
     SparkInt,
@@ -282,7 +282,7 @@ class MomentUnit:
     def add_paypurchase(
         self,
         person_name: PersonName,
-        partner_name: PartnerName,
+        contact_name: ContactName,
         tran_time: TimeNum,
         amount: FundNum,
         blocked_tran_times: set[TimeNum] = None,
@@ -290,7 +290,7 @@ class MomentUnit:
     ) -> None:
         self.paybook.add_tranunit(
             person_name=person_name,
-            partner_name=partner_name,
+            contact_name=contact_name,
             tran_time=tran_time,
             amount=amount,
             blocked_tran_times=blocked_tran_times,
@@ -298,17 +298,17 @@ class MomentUnit:
         )
 
     def paypurchase_exists(
-        self, src: PersonName, dst: PartnerName, x_tran_time: TimeNum
+        self, src: PersonName, dst: ContactName, x_tran_time: TimeNum
     ) -> bool:
         return self.paybook.tranunit_exists(src, dst, x_tran_time)
 
     def get_paypurchase(
-        self, src: PersonName, dst: PartnerName, x_tran_time: TimeNum
+        self, src: PersonName, dst: ContactName, x_tran_time: TimeNum
     ) -> TranUnit:
         return self.paybook.get_tranunit(src, dst, x_tran_time)
 
     def del_paypurchase(
-        self, src: PersonName, dst: PartnerName, x_tran_time: TimeNum
+        self, src: PersonName, dst: ContactName, x_tran_time: TimeNum
     ) -> TranUnit:
         return self.paybook.del_tranunit(src, dst, x_tran_time)
 
@@ -341,9 +341,9 @@ class MomentUnit:
         x_tranbook = tranbook_shop(self.moment_rope, x_tranunits)
         for person_name, x_personbudhistory in self.personbudhistorys.items():
             for x_bud_time, x_budunit in x_personbudhistory.buds.items():
-                for partner_name, x_amount in x_budunit.bud_partner_nets.items():
+                for contact_name, x_amount in x_budunit.bud_contact_nets.items():
                     x_tranbook.add_tranunit(
-                        person_name, partner_name, x_bud_time, x_amount
+                        person_name, contact_name, x_bud_time, x_amount
                     )
         self.all_tranbook = x_tranbook
 

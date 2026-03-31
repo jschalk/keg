@@ -1,12 +1,12 @@
 from sqlite3 import Cursor
 from src.ch00_py.db_toolbox import get_row_count
-from src.ch02_partner.group import (
+from src.ch02_contact.contact import contactunit_shop
+from src.ch02_contact.group import (
     awardheir_shop,
     awardunit_shop,
     groupunit_shop,
     membership_shop,
 )
-from src.ch02_partner.partner import partnerunit_shop
 from src.ch03_workforce.workforce import (
     laborheir_shop,
     workforceheir_shop,
@@ -45,7 +45,7 @@ def test_ObjKeysHolder_Exists():
     assert not x_objkeyholder.person_name
     assert not x_objkeyholder.rope
     assert not x_objkeyholder.reason_context
-    assert not x_objkeyholder.partner_name
+    assert not x_objkeyholder.contact_name
     assert not x_objkeyholder.membership
     assert not x_objkeyholder.group_title
     assert not x_objkeyholder.fact_rope
@@ -164,8 +164,8 @@ def test_insert_job_prnplan_CreatesTableRowsFor_prnplan_job(cursor0: Cursor):
     x_range_evaluated = 25
     x_descendant_pledge_count = 26
     x_healerunit_ratio = 27.0
-    x_all_partner_cred = 28
-    x_all_partner_debt = 29
+    x_all_contact_cred = 28
+    x_all_contact_debt = 29
     x_plan = planunit_shop(exx.casa)
     x_plan.parent_rope = x_parent_rope
     x_plan.knot = x_knot
@@ -193,8 +193,8 @@ def test_insert_job_prnplan_CreatesTableRowsFor_prnplan_job(cursor0: Cursor):
     x_plan.range_evaluated = x_range_evaluated
     x_plan.descendant_pledge_count = x_descendant_pledge_count
     x_plan.healerunit_ratio = x_healerunit_ratio
-    x_plan.all_partner_cred = x_all_partner_cred
-    x_plan.all_partner_debt = x_all_partner_debt
+    x_plan.all_contact_cred = x_all_contact_cred
+    x_plan.all_contact_debt = x_all_contact_debt
     x_plan.begin = x_begin
     x_plan.close = x_close
     x_plan.addin = x_addin
@@ -218,8 +218,8 @@ def test_insert_job_prnplan_CreatesTableRowsFor_prnplan_job(cursor0: Cursor):
     x_plan.range_evaluated = x_range_evaluated
     x_plan.descendant_pledge_count = x_descendant_pledge_count
     x_plan.healerunit_ratio = x_healerunit_ratio
-    x_plan.all_partner_cred = x_all_partner_cred
-    x_plan.all_partner_debt = x_all_partner_debt
+    x_plan.all_contact_cred = x_all_contact_cred
+    x_plan.all_contact_debt = x_all_contact_debt
 
     create_job_tables(cursor0)
     x_table_name = "person_planunit_job"
@@ -265,8 +265,8 @@ def test_insert_job_prnplan_CreatesTableRowsFor_prnplan_job(cursor0: Cursor):
         x_range_evaluated,
         x_descendant_pledge_count,
         x_healerunit_ratio,
-        x_all_partner_cred,
-        x_all_partner_debt,
+        x_all_contact_cred,
+        x_all_contact_debt,
     )
     assert rows[0] == expected_row0
 
@@ -403,7 +403,7 @@ def test_insert_job_prncase_CreatesTableRowsFor_prncase_job(cursor0: Cursor):
 
 def test_insert_job_prnmemb_CreatesTableRowsFor_prnmemb_job(cursor0: Cursor):
     # ESTABLISH
-    # x_args = get_person_calc_dimen_args("person_partner_membership")
+    # x_args = get_person_calc_dimen_args("person_contact_membership")
     # x_count = 0
     # for x_arg in get_default_sorted_list(x_args):
     #     x_count += 1
@@ -417,7 +417,7 @@ def test_insert_job_prnmemb_CreatesTableRowsFor_prnmemb_job(cursor0: Cursor):
 
     x_moment_rope = 1
     x_person_name = 2
-    x_partner_name = 3
+    x_contact_name = 3
     x_group_title = 4
     x_group_cred_lumen = 5.0
     x_group_debt_lumen = 6.0
@@ -430,7 +430,7 @@ def test_insert_job_prnmemb_CreatesTableRowsFor_prnmemb_job(cursor0: Cursor):
     x_fund_agenda_ratio_give = 13.0
     x_fund_agenda_ratio_take = 14.0
     x_membership = membership_shop(x_group_title)
-    x_membership.partner_name = x_partner_name
+    x_membership.contact_name = x_contact_name
     x_membership.group_cred_lumen = x_group_cred_lumen
     x_membership.group_debt_lumen = x_group_debt_lumen
     x_membership.credor_pool = x_credor_pool
@@ -443,7 +443,7 @@ def test_insert_job_prnmemb_CreatesTableRowsFor_prnmemb_job(cursor0: Cursor):
     x_membership.fund_agenda_ratio_take = x_fund_agenda_ratio_take
 
     create_job_tables(cursor0)
-    x_table_name = "person_partner_membership_job"
+    x_table_name = "person_contact_membership_job"
     assert get_row_count(cursor0, x_table_name) == 0
     x_objkeysholder = ObjKeysHolder(
         moment_rope=x_moment_rope, person_name=x_person_name
@@ -460,7 +460,7 @@ def test_insert_job_prnmemb_CreatesTableRowsFor_prnmemb_job(cursor0: Cursor):
     expected_row0 = (
         str(x_moment_rope),
         str(x_person_name),
-        str(x_partner_name),
+        str(x_contact_name),
         str(x_group_title),
         x_group_cred_lumen,
         x_group_debt_lumen,
@@ -479,23 +479,23 @@ def test_insert_job_prnmemb_CreatesTableRowsFor_prnmemb_job(cursor0: Cursor):
 
 def test_insert_job_prnptnr_CreatesTableRowsFor_prnptnr_job(cursor0: Cursor):
     # ESTABLISH
-    # x_args = get_person_calc_dimen_args("person_partnerunit")
+    # x_args = get_person_calc_dimen_args("person_contactunit")
     # x_count = 0
     # for x_arg in get_default_sorted_list(x_args):
     #     x_count += 1
     #     print(f"    x_{x_arg} = {x_count}")
     # print("")
     # for x_arg in get_default_sorted_list(x_args):
-    #     print(f"""    x_partner.{x_arg} = x_{x_arg}""")
+    #     print(f"""    x_contact.{x_arg} = x_{x_arg}""")
     # print("")
     # for x_arg in get_default_sorted_list(x_args):
     #     print(f"""        x_{x_arg},""")
 
     x_moment_rope = 1
     x_person_name = 2
-    x_partner_name = 3
-    x_partner_cred_lumen = 4
-    x_partner_debt_lumen = 5
+    x_contact_name = 3
+    x_contact_cred_lumen = 4
+    x_contact_debt_lumen = 5
     x_credor_pool = 6
     x_debtor_pool = 7
     x_fund_give = 8
@@ -504,34 +504,34 @@ def test_insert_job_prnptnr_CreatesTableRowsFor_prnptnr_job(cursor0: Cursor):
     x_fund_agenda_take = 11
     x_fund_agenda_ratio_give = 12
     x_fund_agenda_ratio_take = 13
-    x_inallocable_partner_debt_lumen = 14
-    x_irrational_partner_debt_lumen = 15
+    x_inallocable_contact_debt_lumen = 14
+    x_irrational_contact_debt_lumen = 15
     x_groupmark = 16
-    x_partner = partnerunit_shop(x_partner_name)
-    x_partner.partner_name = x_partner_name
-    x_partner.partner_cred_lumen = x_partner_cred_lumen
-    x_partner.partner_debt_lumen = x_partner_debt_lumen
-    x_partner.credor_pool = x_credor_pool
-    x_partner.debtor_pool = x_debtor_pool
-    x_partner.fund_give = x_fund_give
-    x_partner.fund_take = x_fund_take
-    x_partner.fund_agenda_give = x_fund_agenda_give
-    x_partner.fund_agenda_take = x_fund_agenda_take
-    x_partner.fund_agenda_ratio_give = x_fund_agenda_ratio_give
-    x_partner.fund_agenda_ratio_take = x_fund_agenda_ratio_take
-    x_partner.inallocable_partner_debt_lumen = x_inallocable_partner_debt_lumen
-    x_partner.irrational_partner_debt_lumen = x_irrational_partner_debt_lumen
-    x_partner.groupmark = x_groupmark
+    x_contact = contactunit_shop(x_contact_name)
+    x_contact.contact_name = x_contact_name
+    x_contact.contact_cred_lumen = x_contact_cred_lumen
+    x_contact.contact_debt_lumen = x_contact_debt_lumen
+    x_contact.credor_pool = x_credor_pool
+    x_contact.debtor_pool = x_debtor_pool
+    x_contact.fund_give = x_fund_give
+    x_contact.fund_take = x_fund_take
+    x_contact.fund_agenda_give = x_fund_agenda_give
+    x_contact.fund_agenda_take = x_fund_agenda_take
+    x_contact.fund_agenda_ratio_give = x_fund_agenda_ratio_give
+    x_contact.fund_agenda_ratio_take = x_fund_agenda_ratio_take
+    x_contact.inallocable_contact_debt_lumen = x_inallocable_contact_debt_lumen
+    x_contact.irrational_contact_debt_lumen = x_irrational_contact_debt_lumen
+    x_contact.groupmark = x_groupmark
 
     create_job_tables(cursor0)
-    x_table_name = "person_partnerunit_job"
+    x_table_name = "person_contactunit_job"
     assert get_row_count(cursor0, x_table_name) == 0
     x_objkeysholder = ObjKeysHolder(
         moment_rope=x_moment_rope, person_name=x_person_name
     )
 
     # WHEN
-    insert_job_prnptnr(cursor0, x_objkeysholder, x_partner)
+    insert_job_prnptnr(cursor0, x_objkeysholder, x_contact)
 
     # THEN
     assert get_row_count(cursor0, x_table_name) == 1
@@ -541,9 +541,9 @@ def test_insert_job_prnptnr_CreatesTableRowsFor_prnptnr_job(cursor0: Cursor):
     expected_row0 = (
         str(x_moment_rope),
         str(x_person_name),
-        str(x_partner_name),
-        x_partner_cred_lumen,
-        x_partner_debt_lumen,
+        str(x_contact_name),
+        x_contact_cred_lumen,
+        x_contact_debt_lumen,
         str(x_groupmark),
         x_credor_pool,
         x_debtor_pool,
@@ -553,8 +553,8 @@ def test_insert_job_prnptnr_CreatesTableRowsFor_prnptnr_job(cursor0: Cursor):
         x_fund_agenda_take,
         x_fund_agenda_ratio_give,
         x_fund_agenda_ratio_take,
-        x_inallocable_partner_debt_lumen,
-        x_irrational_partner_debt_lumen,
+        x_inallocable_contact_debt_lumen,
+        x_irrational_contact_debt_lumen,
     )
     expected_data = [expected_row0]
     assert rows == expected_data
@@ -862,9 +862,9 @@ def test_insert_job_prnlabo_CreatesTableRowsFor_prnlabo_job(cursor0: Cursor):
 def test_insert_job_obj_CreatesTableRows_Scenario0(cursor0: Cursor):
     # ESTABLISH
     sue_person = personunit_shop(exx.sue, exx.a23)
-    sue_person.add_partnerunit(exx.sue)
-    sue_person.add_partnerunit(exx.bob)
-    sue_person.get_partner(exx.bob).add_membership(exx.run)
+    sue_person.add_contactunit(exx.sue)
+    sue_person.add_contactunit(exx.bob)
+    sue_person.get_contact(exx.bob).add_membership(exx.run)
     casa_rope = sue_person.make_l1_rope("casa")
     situation_rope = sue_person.make_l1_rope(kw.reason_active)
     clean_rope = sue_person.make_rope(situation_rope, "clean")
@@ -883,8 +883,8 @@ def test_insert_job_obj_CreatesTableRows_Scenario0(cursor0: Cursor):
     sue_person.add_fact(situation_rope, clean_rope)
 
     create_job_tables(cursor0)
-    prnmemb_job_table = f"{kw.person_partner_membership}_job"
-    prnptnr_job_table = f"{kw.person_partnerunit}_job"
+    prnmemb_job_table = f"{kw.person_contact_membership}_job"
+    prnptnr_job_table = f"{kw.person_contactunit}_job"
     prngrou_job_table = f"{kw.person_groupunit}_job"
     prnawar_job_table = f"{kw.person_plan_awardunit}_job"
     prnfact_job_table = f"{kw.person_plan_factunit}_job"

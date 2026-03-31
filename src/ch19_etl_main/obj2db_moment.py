@@ -76,10 +76,10 @@ def _set_moment_dict_mmtpayy(
     for mmtpayy_row in cursor.fetchall():
         row_moment_rope = mmtpayy_row[0]
         row_person_name = mmtpayy_row[1]
-        row_partner_name = mmtpayy_row[2]
+        row_contact_name = mmtpayy_row[2]
         row_tran_time = mmtpayy_row[3]
         row_amount = mmtpayy_row[4]
-        keylist = [row_person_name, row_partner_name, row_tran_time]
+        keylist = [row_person_name, row_contact_name, row_tran_time]
         set_in_nested_dict(tranunits_dict, keylist, row_amount)
     paybook_dict = {"moment_rope": x_moment_rope, "tranunits": tranunits_dict}
     moment_dict["paybook"] = paybook_dict

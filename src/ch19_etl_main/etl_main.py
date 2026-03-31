@@ -970,34 +970,34 @@ def etl_moment_job_jsons_to_job_tables(cursor: sqlite3_Cursor, moment_mstr_dir: 
             insert_job_obj(cursor, job_obj)
 
 
-CREATE_MOMENT_PARTNER_NETS_SQLSTR = "CREATE TABLE IF NOT EXISTS moment_partner_nets (moment_rope TEXT, person_name TEXT, person_net_amount REAL)"
+CREATE_MOMENT_CONTACT_NETS_SQLSTR = "CREATE TABLE IF NOT EXISTS moment_contact_nets (moment_rope TEXT, person_name TEXT, person_net_amount REAL)"
 
 
-def insert_tranunit_partners_net(cursor: sqlite3_Cursor, tranbook: TranBook):
+def insert_tranunit_contacts_net(cursor: sqlite3_Cursor, tranbook: TranBook):
     """
-    Insert the net amounts for each partner in the tranbook into the specified table.
+    Insert the net amounts for each contact in the tranbook into the specified table.
 
     :param cursor: SQLite cursor object
     :param tranbook: TranBook object containing transaction units
     :param dst_tablename: Name of the destination table
     """
-    partners_net_array = tranbook._get_partners_net_array()
+    contacts_net_array = tranbook._get_contacts_net_array()
     cursor.executemany(
-        f"INSERT INTO moment_partner_nets (moment_rope, person_name, person_net_amount) VALUES ('{tranbook.moment_rope}', ?, ?)",
-        partners_net_array,
+        f"INSERT INTO moment_contact_nets (moment_rope, person_name, person_net_amount) VALUES ('{tranbook.moment_rope}', ?, ?)",
+        contacts_net_array,
     )
 
 
-def etl_moment_json_partner_nets_to_moment_partner_nets_table(
+def etl_moment_json_contact_nets_to_moment_contact_nets_table(
     cursor: sqlite3_Cursor, moment_mstr_dir: str
 ):
-    cursor.execute(CREATE_MOMENT_PARTNER_NETS_SQLSTR)
+    cursor.execute(CREATE_MOMENT_CONTACT_NETS_SQLSTR)
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):
         moment_lasso = lassounit_shop(create_rope(moment_label))
         x_momentunit = open_moment_file(moment_mstr_dir, moment_lasso)
         x_momentunit.set_all_tranbook()
-        insert_tranunit_partners_net(cursor, x_momentunit.all_tranbook)
+        insert_tranunit_contacts_net(cursor, x_momentunit.all_tranbook)
 
 
 def create_last_run_metrics_json(cursor: sqlite3_Cursor, moment_mstr_dir: str):
@@ -1007,7 +1007,7 @@ def create_last_run_metrics_json(cursor: sqlite3_Cursor, moment_mstr_dir: str):
     save_json(last_run_metrics_path, None, last_run_metrics_dict)
 
 
-def calc_moment_bud_partner_mandate_net_ledgers(moment_mstr_dir: str):
+def calc_moment_bud_contact_mandate_net_ledgers(moment_mstr_dir: str):
     etl_create_buds_root_cells(moment_mstr_dir)
     etl_create_moment_cell_trees(moment_mstr_dir)
     etl_set_cell_trees_found_facts(moment_mstr_dir)

@@ -125,7 +125,7 @@ def test_LessonFileHandler_create_initial_lesson_files_from_gut_SavesOnlyLessonF
     a23_lasso = lassounit_shop(exx.a23)
     sue_lessonfilehandler = lessonfilehandler_shop(str(temp3_fs), a23_lasso, exx.sue)
     sue_gut_person = sue_lessonfilehandler.default_gut_person()
-    sue_gut_person.add_partnerunit(exx.bob)
+    sue_gut_person.add_contactunit(exx.bob)
     assert gut_file_exists(str(temp3_fs), a23_lasso, exx.sue) is False
     save_gut_file(str(temp3_fs), sue_gut_person)
     assert gut_file_exists(str(temp3_fs), a23_lasso, exx.sue)
@@ -209,7 +209,7 @@ def test_LessonFileHandler_initialize_lesson_gut_files_SavesOnlyLessonFile(
     )
     sue_lessonfilehandler.initialize_lesson_gut_files()
     sue_gut_person = open_gut_file(str(temp3_fs), a23_lasso, exx.sue)
-    sue_gut_person.add_partnerunit(exx.bob)
+    sue_gut_person.add_contactunit(exx.bob)
     save_gut_file(str(temp3_fs), sue_gut_person)
     assert gut_file_exists(str(temp3_fs), a23_lasso, exx.sue)
     init_lesson_file_path = create_path(
@@ -225,7 +225,7 @@ def test_LessonFileHandler_initialize_lesson_gut_files_SavesOnlyLessonFile(
     assert sue_gut_person.planroot.get_plan_rope() == exx.a23
     assert sue_gut_person.person_name == exx.sue
     assert sue_gut_person.respect_grain == seven_int
-    assert sue_gut_person.partner_exists(exx.bob)
+    assert sue_gut_person.contact_exists(exx.bob)
     assert os_path_exists(init_lesson_file_path)
 
 

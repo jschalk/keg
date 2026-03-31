@@ -37,20 +37,20 @@ def test_create_legible_list_ReturnsObjEstablishWithPersonUpdate_credor_respect(
 def test_create_legible_list_ReturnsObjEstablishWithPersonUpdate_debtor_respect():
     # ESTABLISH
     dimen = kw.personunit
-    partner_debtor_pool_int = 78
-    partner_debtor_pool_personatom = personatom_shop(dimen, kw.UPDATE)
-    partner_debtor_pool_personatom.set_arg(kw.debtor_respect, partner_debtor_pool_int)
+    contact_debtor_pool_int = 78
+    contact_debtor_pool_personatom = personatom_shop(dimen, kw.UPDATE)
+    contact_debtor_pool_personatom.set_arg(kw.debtor_respect, contact_debtor_pool_int)
 
-    print(f"{partner_debtor_pool_personatom=}")
+    print(f"{contact_debtor_pool_personatom=}")
     x_persondelta = persondelta_shop()
-    x_persondelta.set_personatom(partner_debtor_pool_personatom)
+    x_persondelta.set_personatom(contact_debtor_pool_personatom)
     sue_person = personunit_shop("Sue")
 
     # WHEN
     legible_list = create_legible_list(x_persondelta, sue_person)
 
     # THEN
-    x_str = f"{sue_person.person_name}'s debtor pool is now {partner_debtor_pool_int}"
+    x_str = f"{sue_person.person_name}'s debtor pool is now {contact_debtor_pool_int}"
     assert legible_list[0] == x_str
 
 
@@ -58,10 +58,10 @@ def test_create_legible_list_ReturnsObjEstablishWithPersonUpdate_credor_respect_
     # ESTABLISH
     x_persondelta = persondelta_shop()
     dimen = kw.personunit
-    partner_pool_int = 83
+    contact_pool_int = 83
     personunit_personatom = personatom_shop(dimen, kw.UPDATE)
-    personunit_personatom.set_arg(kw.credor_respect, partner_pool_int)
-    personunit_personatom.set_arg(kw.debtor_respect, partner_pool_int)
+    personunit_personatom.set_arg(kw.credor_respect, contact_pool_int)
+    personunit_personatom.set_arg(kw.debtor_respect, contact_pool_int)
     x_persondelta.set_personatom(personunit_personatom)
     sue_person = personunit_shop("Sue")
 
@@ -69,7 +69,7 @@ def test_create_legible_list_ReturnsObjEstablishWithPersonUpdate_credor_respect_
     legible_list = create_legible_list(x_persondelta, sue_person)
 
     # THEN
-    x_str = f"{sue_person.person_name}'s total pool is now {partner_pool_int}"
+    x_str = f"{sue_person.person_name}'s total pool is now {contact_pool_int}"
     assert len(legible_list) == 1
     assert legible_list[0] == x_str
 

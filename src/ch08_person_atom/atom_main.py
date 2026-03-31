@@ -1,17 +1,17 @@
 from dataclasses import dataclass
 from src.ch00_py.db_toolbox import RowData, create_type_reference_insert_sqlstr
 from src.ch00_py.dict_toolbox import get_empty_dict_if_None
-from src.ch02_partner.group import awardunit_shop
-from src.ch02_partner.partner import partnerunit_shop
+from src.ch02_contact.contact import contactunit_shop
+from src.ch02_contact.group import awardunit_shop
 from src.ch04_rope.rope import create_rope, get_parent_rope, get_tail_label
 from src.ch05_reason.reason_main import factunit_shop
 from src.ch06_plan.plan import planunit_shop
 from src.ch07_person_logic.person_main import PersonUnit
 from src.ch07_person_logic.person_tool import person_attr_exists, person_get_obj
 from src.ch08_person_atom._ref.ch08_semantic_types import (
+    ContactName,
     FactNum,
     LabelTerm,
-    PartnerName,
     ReasonNum,
     RopeTerm,
     TitleTerm,
@@ -196,30 +196,30 @@ def _modify_person_update_personunit(x_person: PersonUnit, x_atom: PersonAtom):
         x_person.mana_grain = x_atom.get_value(x_arg)
 
 
-def _modify_person_partner_membership_delete(x_person: PersonUnit, x_atom: PersonAtom):
-    x_partner_name = x_atom.get_value("partner_name")
+def _modify_person_contact_membership_delete(x_person: PersonUnit, x_atom: PersonAtom):
+    x_contact_name = x_atom.get_value("contact_name")
     x_group_title = x_atom.get_value("group_title")
-    x_person.get_partner(x_partner_name).delete_membership(x_group_title)
+    x_person.get_contact(x_contact_name).delete_membership(x_group_title)
 
 
-def _modify_person_partner_membership_update(x_person: PersonUnit, x_atom: PersonAtom):
-    x_partner_name = x_atom.get_value("partner_name")
+def _modify_person_contact_membership_update(x_person: PersonUnit, x_atom: PersonAtom):
+    x_contact_name = x_atom.get_value("contact_name")
     x_group_title = x_atom.get_value("group_title")
-    x_partnerunit = x_person.get_partner(x_partner_name)
-    x_membership = x_partnerunit.get_membership(x_group_title)
+    x_contactunit = x_person.get_contact(x_contact_name)
+    x_membership = x_contactunit.get_membership(x_group_title)
     x_group_cred_lumen = x_atom.get_value("group_cred_lumen")
     x_group_debt_lumen = x_atom.get_value("group_debt_lumen")
     x_membership.set_group_cred_lumen(x_group_cred_lumen)
     x_membership.set_group_debt_lumen(x_group_debt_lumen)
 
 
-def _modify_person_partner_membership_insert(x_person: PersonUnit, x_atom: PersonAtom):
-    x_partner_name = x_atom.get_value("partner_name")
+def _modify_person_contact_membership_insert(x_person: PersonUnit, x_atom: PersonAtom):
+    x_contact_name = x_atom.get_value("contact_name")
     x_group_title = x_atom.get_value("group_title")
     x_group_cred_lumen = x_atom.get_value("group_cred_lumen")
     x_group_debt_lumen = x_atom.get_value("group_debt_lumen")
-    x_partnerunit = x_person.get_partner(x_partner_name)
-    x_partnerunit.add_membership(x_group_title, x_group_cred_lumen, x_group_debt_lumen)
+    x_contactunit = x_person.get_contact(x_contact_name)
+    x_contactunit.add_membership(x_group_title, x_group_cred_lumen, x_group_debt_lumen)
 
 
 def _modify_person_planunit_delete(x_person: PersonUnit, x_atom: PersonAtom):
@@ -399,24 +399,24 @@ def _modify_person_plan_healerunit_insert(x_person: PersonUnit, x_atom: PersonAt
     x_planunit.healerunit.set_healer_name(x_atom.get_value("healer_name"))
 
 
-def _modify_person_partnerunit_delete(x_person: PersonUnit, x_atom: PersonAtom):
-    x_person.del_partnerunit(x_atom.get_value("partner_name"))
+def _modify_person_contactunit_delete(x_person: PersonUnit, x_atom: PersonAtom):
+    x_person.del_contactunit(x_atom.get_value("contact_name"))
 
 
-def _modify_person_partnerunit_update(x_person: PersonUnit, x_atom: PersonAtom):
-    x_person.edit_partnerunit(
-        partner_name=x_atom.get_value("partner_name"),
-        partner_cred_lumen=x_atom.get_value("partner_cred_lumen"),
-        partner_debt_lumen=x_atom.get_value("partner_debt_lumen"),
+def _modify_person_contactunit_update(x_person: PersonUnit, x_atom: PersonAtom):
+    x_person.edit_contactunit(
+        contact_name=x_atom.get_value("contact_name"),
+        contact_cred_lumen=x_atom.get_value("contact_cred_lumen"),
+        contact_debt_lumen=x_atom.get_value("contact_debt_lumen"),
     )
 
 
-def _modify_person_partnerunit_insert(x_person: PersonUnit, x_atom: PersonAtom):
-    x_person.set_partnerunit(
-        partnerunit_shop(
-            partner_name=x_atom.get_value("partner_name"),
-            partner_cred_lumen=x_atom.get_value("partner_cred_lumen"),
-            partner_debt_lumen=x_atom.get_value("partner_debt_lumen"),
+def _modify_person_contactunit_insert(x_person: PersonUnit, x_atom: PersonAtom):
+    x_person.set_contactunit(
+        contactunit_shop(
+            contact_name=x_atom.get_value("contact_name"),
+            contact_cred_lumen=x_atom.get_value("contact_cred_lumen"),
+            contact_debt_lumen=x_atom.get_value("contact_debt_lumen"),
         )
     )
 
@@ -426,13 +426,13 @@ def _modify_person_personunit(x_person: PersonUnit, x_atom: PersonAtom):
         _modify_person_update_personunit(x_person, x_atom)
 
 
-def _modify_person_partner_membership(x_person: PersonUnit, x_atom: PersonAtom):
+def _modify_person_contact_membership(x_person: PersonUnit, x_atom: PersonAtom):
     if x_atom.crud_str == "DELETE":
-        _modify_person_partner_membership_delete(x_person, x_atom)
+        _modify_person_contact_membership_delete(x_person, x_atom)
     elif x_atom.crud_str == "UPDATE":
-        _modify_person_partner_membership_update(x_person, x_atom)
+        _modify_person_contact_membership_update(x_person, x_atom)
     elif x_atom.crud_str == "INSERT":
-        _modify_person_partner_membership_insert(x_person, x_atom)
+        _modify_person_contact_membership_insert(x_person, x_atom)
 
 
 def _modify_person_planunit(x_person: PersonUnit, x_atom: PersonAtom):
@@ -494,20 +494,20 @@ def _modify_person_plan_healerunit(x_person: PersonUnit, x_atom: PersonAtom):
         _modify_person_plan_healerunit_insert(x_person, x_atom)
 
 
-def _modify_person_partnerunit(x_person: PersonUnit, x_atom: PersonAtom):
+def _modify_person_contactunit(x_person: PersonUnit, x_atom: PersonAtom):
     if x_atom.crud_str == "DELETE":
-        _modify_person_partnerunit_delete(x_person, x_atom)
+        _modify_person_contactunit_delete(x_person, x_atom)
     elif x_atom.crud_str == "UPDATE":
-        _modify_person_partnerunit_update(x_person, x_atom)
+        _modify_person_contactunit_update(x_person, x_atom)
     elif x_atom.crud_str == "INSERT":
-        _modify_person_partnerunit_insert(x_person, x_atom)
+        _modify_person_contactunit_insert(x_person, x_atom)
 
 
 def modify_person_with_personatom(x_person: PersonUnit, x_atom: PersonAtom):
     if x_atom.dimen == "personunit":
         _modify_person_personunit(x_person, x_atom)
-    elif x_atom.dimen == "person_partner_membership":
-        _modify_person_partner_membership(x_person, x_atom)
+    elif x_atom.dimen == "person_contact_membership":
+        _modify_person_contact_membership(x_person, x_atom)
     elif x_atom.dimen == "person_planunit":
         _modify_person_planunit(x_person, x_atom)
     elif x_atom.dimen == "person_plan_awardunit":
@@ -522,8 +522,8 @@ def modify_person_with_personatom(x_person: PersonUnit, x_atom: PersonAtom):
         _modify_person_plan_healerunit(x_person, x_atom)
     elif x_atom.dimen == "person_plan_laborunit":
         _modify_person_plan_laborunit(x_person, x_atom)
-    elif x_atom.dimen == "person_partnerunit":
-        _modify_person_partnerunit(x_person, x_atom)
+    elif x_atom.dimen == "person_contactunit":
+        _modify_person_contactunit(x_person, x_atom)
 
 
 def jvalues_different(dimen: str, x_obj: any, y_obj: any) -> bool:
@@ -536,7 +536,7 @@ def jvalues_different(dimen: str, x_obj: any, y_obj: any) -> bool:
             or x_obj.fund_pool != y_obj.fund_pool
             or x_obj.fund_grain != y_obj.fund_grain
         )
-    elif dimen in {"person_partner_membership"}:
+    elif dimen in {"person_contact_membership"}:
         return (x_obj.group_cred_lumen != y_obj.group_cred_lumen) or (
             x_obj.group_debt_lumen != y_obj.group_debt_lumen
         )
@@ -569,9 +569,9 @@ def jvalues_different(dimen: str, x_obj: any, y_obj: any) -> bool:
             or x_obj.reason_upper != y_obj.reason_upper
             or x_obj.reason_divisor != y_obj.reason_divisor
         )
-    elif dimen == "person_partnerunit":
-        return (x_obj.partner_cred_lumen != y_obj.partner_cred_lumen) or (
-            x_obj.partner_debt_lumen != y_obj.partner_debt_lumen
+    elif dimen == "person_contactunit":
+        return (x_obj.contact_cred_lumen != y_obj.contact_cred_lumen) or (
+            x_obj.contact_debt_lumen != y_obj.contact_debt_lumen
         )
 
 
@@ -589,7 +589,7 @@ def get_personatom_from_rowdata(x_rowdata: RowData) -> PersonAtom:
 class AtomRow:
     _atom_dimens: set[str] = None
     _crud_command: CRUD_command = None
-    partner_name: PartnerName = None
+    contact_name: ContactName = None
     addin: float = None
     awardee_title: TitleTerm = None
     reason_context: RopeTerm = None
@@ -597,10 +597,10 @@ class AtomRow:
     begin: float = None
     respect_grain: float = None
     close: float = None
-    partner_cred_lumen: int = None
+    contact_cred_lumen: int = None
     group_cred_lumen: int = None
     credor_respect: int = None
-    partner_debt_lumen: int = None
+    contact_debt_lumen: int = None
     group_debt_lumen: int = None
     debtor_respect: int = None
     denom: int = None
@@ -645,7 +645,7 @@ class AtomRow:
             x_value = self.__dict__.get(x_arg)
             if x_value != None:
                 if class_type == "NameTerm":
-                    self.__dict__[x_arg] = PartnerName(x_value)
+                    self.__dict__[x_arg] = ContactName(x_value)
                 elif class_type == "TitleTerm":
                     self.__dict__[x_arg] = TitleTerm(x_value)
                 elif class_type == "RopeTerm":

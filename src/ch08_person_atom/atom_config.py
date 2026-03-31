@@ -62,17 +62,17 @@ def get_allowed_class_types() -> set[str]:
 
 def get_atom_args_class_types() -> dict[str, str]:
     return {
-        "partner_name": "NameTerm",
+        "contact_name": "NameTerm",
         "addin": "float",
         "awardee_title": "TitleTerm",
         "reason_context": "RopeTerm",
         "active_requisite": "bool",
         "begin": "float",
         "close": "float",
-        "partner_cred_lumen": "float",
+        "contact_cred_lumen": "float",
         "group_cred_lumen": "float",
         "credor_respect": "float",
-        "partner_debt_lumen": "float",
+        "contact_debt_lumen": "float",
         "group_debt_lumen": "float",
         "debtor_respect": "float",
         "denom": "int",
@@ -228,8 +228,8 @@ def save_atom_config_file(atom_config_dict):
 def get_person_dimens() -> set:
     return {
         "personunit",
-        "person_partnerunit",
-        "person_partner_membership",
+        "person_contactunit",
+        "person_contact_membership",
         "person_planunit",
         "person_plan_awardunit",
         "person_plan_reasonunit",
@@ -242,7 +242,7 @@ def get_person_dimens() -> set:
 
 def get_all_person_dimen_keys() -> set:
     return {
-        "partner_name",
+        "contact_name",
         "awardee_title",
         "reason_context",
         "fact_context",
@@ -261,7 +261,7 @@ def get_delete_key_name(key: str) -> str:
 
 def get_all_person_dimen_delete_keys() -> set:
     return {
-        "partner_name_ERASE",
+        "contact_name_ERASE",
         "awardee_title_ERASE",
         "reason_context_ERASE",
         "fact_context_ERASE",

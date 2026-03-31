@@ -42,7 +42,7 @@ def add_river_mana_col(fig, num_dict: dict, mana_amt, x0, y0, c_len):
     row_len = row_y1 - row_y0
     num_sum = sum(num_dict.values())
     ratio_dict = {
-        partner_name: partnerx / num_sum for partner_name, partnerx in num_dict.items()
+        contact_name: contactx / num_sum for contact_name, contactx in num_dict.items()
     }
     for careee in num_dict:
         new_y1 = row_y0 + row_len * ratio_dict.get(careee)

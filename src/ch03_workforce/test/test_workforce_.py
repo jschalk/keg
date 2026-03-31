@@ -1,4 +1,4 @@
-from src.ch02_partner.group import groupunit_shop, membership_shop
+from src.ch02_contact.group import groupunit_shop, membership_shop
 from src.ch03_workforce._ref.ch03_semantic_types import GroupTitle
 from src.ch03_workforce.workforce import (
     LaborHeir,
@@ -209,8 +209,8 @@ def test_WorkforceHeir_set_person_name_is_workforce_SetsAttribute_NonEmptyx_labo
     # ESTABLISH
     yao_groupunit = groupunit_shop(exx.yao)
     sue_groupunit = groupunit_shop(exx.sue)
-    yao_groupunit.set_g_membership(membership_shop(exx.yao, partner_name=exx.yao))
-    sue_groupunit.set_g_membership(membership_shop(exx.sue, partner_name=exx.sue))
+    yao_groupunit.set_g_membership(membership_shop(exx.yao, contact_name=exx.yao))
+    sue_groupunit.set_g_membership(membership_shop(exx.sue, contact_name=exx.sue))
     x_groupunits = {exx.yao: yao_groupunit, exx.sue: sue_groupunit}
     person_name = exx.yao
 
@@ -229,12 +229,12 @@ def test_WorkforceHeir_set_person_name_is_workforce_SetsAttribute_NonEmptyx_labo
     # ESTABLISH
     yao_groupunit = groupunit_shop(exx.yao)
     sue_groupunit = groupunit_shop(exx.sue)
-    yao_groupunit.set_g_membership(membership_shop(exx.yao, partner_name=exx.yao))
-    sue_groupunit.set_g_membership(membership_shop(exx.sue, partner_name=exx.sue))
+    yao_groupunit.set_g_membership(membership_shop(exx.yao, contact_name=exx.yao))
+    sue_groupunit.set_g_membership(membership_shop(exx.sue, contact_name=exx.sue))
     x_groupunits = {exx.yao: yao_groupunit, exx.sue: sue_groupunit}
     x_labors = {exx.sue}
     x_workforceheir = workforceheir_shop(labors=x_labors)
-    assert yao_groupunit.get_partner_membership(exx.yao) is not None
+    assert yao_groupunit.get_contact_membership(exx.yao) is not None
     assert x_workforceheir.person_name_is_workforce is False
 
     # WHEN
@@ -249,13 +249,13 @@ def test_WorkforceHeir_set_person_name_is_workforce_SetsAttribute_NonEmptyx_labo
     yao_groupunit = groupunit_shop(exx.yao)
     sue_groupunit = groupunit_shop(exx.sue)
     bob_groupunit = groupunit_shop(exx.bob)
-    yao_groupunit.set_g_membership(membership_shop(exx.yao, partner_name=exx.yao))
-    sue_groupunit.set_g_membership(membership_shop(exx.sue, partner_name=exx.sue))
+    yao_groupunit.set_g_membership(membership_shop(exx.yao, contact_name=exx.yao))
+    sue_groupunit.set_g_membership(membership_shop(exx.sue, contact_name=exx.sue))
 
     swim_str = ",swim"
     swim_groupunit = groupunit_shop(group_title=swim_str)
-    swim_groupunit.set_g_membership(membership_shop(swim_str, partner_name=exx.yao))
-    swim_groupunit.set_g_membership(membership_shop(swim_str, partner_name=exx.sue))
+    swim_groupunit.set_g_membership(membership_shop(swim_str, contact_name=exx.yao))
+    swim_groupunit.set_g_membership(membership_shop(swim_str, contact_name=exx.sue))
     x_groupunits = {
         exx.yao: yao_groupunit,
         exx.sue: sue_groupunit,
@@ -420,19 +420,19 @@ def test_WorkforceHeir_set_labors_Scenario4_WorkforceUnitEqualParentWorkforceHei
 #     sue_groupunit = groupunit_shop(exx.sue)
 #     bob_groupunit = groupunit_shop(exx.bob)
 #     bob_groupunit = groupunit_shop(exx.zia)
-#     yao_groupunit.set_g_membership(membership_shop(exx.yao, partner_name=exx.yao))
-#     sue_groupunit.set_g_membership(membership_shop(exx.sue, partner_name=exx.sue))
+#     yao_groupunit.set_g_membership(membership_shop(exx.yao, contact_name=exx.yao))
+#     sue_groupunit.set_g_membership(membership_shop(exx.sue, contact_name=exx.sue))
 
 #     swim2_str = ",swim2"
 #     swim2_groupunit = groupunit_shop(group_title=swim2_str)
-#     swim2_groupunit.set_g_membership(membership_shop(swim2_str, partner_name=exx.yao))
-#     swim2_groupunit.set_g_membership(membership_shop(swim2_str, partner_name=exx.sue))
+#     swim2_groupunit.set_g_membership(membership_shop(swim2_str, contact_name=exx.yao))
+#     swim2_groupunit.set_g_membership(membership_shop(swim2_str, contact_name=exx.sue))
 
 #     swim3_str = ",swim3"
 #     swim3_groupunit = groupunit_shop(group_title=swim3_str)
-#     swim3_groupunit.set_g_membership(membership_shop(swim3_str, partner_name=exx.yao))
-#     swim3_groupunit.set_g_membership(membership_shop(swim3_str, partner_name=exx.sue))
-#     swim3_groupunit.set_g_membership(membership_shop(swim3_str, partner_name=exx.zia))
+#     swim3_groupunit.set_g_membership(membership_shop(swim3_str, contact_name=exx.yao))
+#     swim3_groupunit.set_g_membership(membership_shop(swim3_str, contact_name=exx.sue))
+#     swim3_groupunit.set_g_membership(membership_shop(swim3_str, contact_name=exx.zia))
 
 #     x_groupunits = {
 #         exx.yao: yao_groupunit,

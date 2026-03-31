@@ -7,8 +7,8 @@ from src.ch00_py.dict_toolbox import (
     get_from_nested_dict,
     set_in_nested_dict,
 )
-from src.ch02_partner.group import MemberShip
-from src.ch02_partner.partner import MemberShip, PartnerName, PartnerUnit
+from src.ch02_contact.contact import ContactName, ContactUnit, MemberShip
+from src.ch02_contact.group import MemberShip
 from src.ch05_reason.reason_main import FactUnit, ReasonUnit
 from src.ch06_plan.plan import PlanUnit
 from src.ch07_person_logic.person_main import PersonUnit, personunit_shop
@@ -130,7 +130,7 @@ class PersonDelta:
         before_person.conpute()
         after_person.conpute()
         self.add_personatoms_personunit_simple_attrs(before_person, after_person)
-        self.add_personatoms_partners(before_person, after_person)
+        self.add_personatoms_contacts(before_person, after_person)
         self.add_personatoms_plans(before_person, after_person)
 
     def add_personatoms_personunit_simple_attrs(
@@ -153,150 +153,150 @@ class PersonDelta:
             x_personatom.set_jvalue("respect_grain", after_person.respect_grain)
         self.set_personatom(x_personatom)
 
-    def add_personatoms_partners(
+    def add_personatoms_contacts(
         self, before_person: PersonUnit, after_person: PersonUnit
     ):
-        before_partner_names = set(before_person.partners.keys())
-        after_partner_names = set(after_person.partners.keys())
+        before_contact_names = set(before_person.contacts.keys())
+        after_contact_names = set(after_person.contacts.keys())
 
-        self.add_personatom_partnerunit_inserts(
+        self.add_personatom_contactunit_inserts(
             after_person=after_person,
-            insert_partner_names=after_partner_names.difference(before_partner_names),
+            insert_contact_names=after_contact_names.difference(before_contact_names),
         )
-        self.add_personatom_partnerunit_deletes(
+        self.add_personatom_contactunit_deletes(
             before_person=before_person,
-            delete_partner_names=before_partner_names.difference(after_partner_names),
+            delete_contact_names=before_contact_names.difference(after_contact_names),
         )
-        self.add_personatom_partnerunit_updates(
+        self.add_personatom_contactunit_updates(
             before_person=before_person,
             after_person=after_person,
-            update_partner_names=before_partner_names & (after_partner_names),
+            update_contact_names=before_contact_names & (after_contact_names),
         )
 
-    def add_personatom_partnerunit_inserts(
-        self, after_person: PersonUnit, insert_partner_names: set
+    def add_personatom_contactunit_inserts(
+        self, after_person: PersonUnit, insert_contact_names: set
     ):
-        for insert_partner_name in insert_partner_names:
-            insert_partnerunit = after_person.get_partner(insert_partner_name)
-            x_personatom = personatom_shop("person_partnerunit", "INSERT")
-            x_personatom.set_jkey("partner_name", insert_partnerunit.partner_name)
-            if insert_partnerunit.partner_cred_lumen is not None:
+        for insert_contact_name in insert_contact_names:
+            insert_contactunit = after_person.get_contact(insert_contact_name)
+            x_personatom = personatom_shop("person_contactunit", "INSERT")
+            x_personatom.set_jkey("contact_name", insert_contactunit.contact_name)
+            if insert_contactunit.contact_cred_lumen is not None:
                 x_personatom.set_jvalue(
-                    "partner_cred_lumen", insert_partnerunit.partner_cred_lumen
+                    "contact_cred_lumen", insert_contactunit.contact_cred_lumen
                 )
-            if insert_partnerunit.partner_debt_lumen is not None:
+            if insert_contactunit.contact_debt_lumen is not None:
                 x_personatom.set_jvalue(
-                    "partner_debt_lumen", insert_partnerunit.partner_debt_lumen
+                    "contact_debt_lumen", insert_contactunit.contact_debt_lumen
                 )
             self.set_personatom(x_personatom)
-            all_group_titles = set(insert_partnerunit.memberships.keys())
+            all_group_titles = set(insert_contactunit.memberships.keys())
             self.add_personatom_memberships_inserts(
-                after_partnerunit=insert_partnerunit,
+                after_contactunit=insert_contactunit,
                 insert_membership_group_titles=all_group_titles,
             )
 
-    def add_personatom_partnerunit_updates(
+    def add_personatom_contactunit_updates(
         self,
         before_person: PersonUnit,
         after_person: PersonUnit,
-        update_partner_names: set,
+        update_contact_names: set,
     ):
-        for partner_name in update_partner_names:
-            after_partnerunit = after_person.get_partner(partner_name)
-            before_partnerunit = before_person.get_partner(partner_name)
+        for contact_name in update_contact_names:
+            after_contactunit = after_person.get_contact(contact_name)
+            before_contactunit = before_person.get_contact(contact_name)
             if jvalues_different(
-                "person_partnerunit", after_partnerunit, before_partnerunit
+                "person_contactunit", after_contactunit, before_contactunit
             ):
-                x_personatom = personatom_shop("person_partnerunit", "UPDATE")
-                x_personatom.set_jkey("partner_name", after_partnerunit.partner_name)
+                x_personatom = personatom_shop("person_contactunit", "UPDATE")
+                x_personatom.set_jkey("contact_name", after_contactunit.contact_name)
                 if (
-                    before_partnerunit.partner_cred_lumen
-                    != after_partnerunit.partner_cred_lumen
+                    before_contactunit.contact_cred_lumen
+                    != after_contactunit.contact_cred_lumen
                 ):
                     x_personatom.set_jvalue(
-                        "partner_cred_lumen", after_partnerunit.partner_cred_lumen
+                        "contact_cred_lumen", after_contactunit.contact_cred_lumen
                     )
                 if (
-                    before_partnerunit.partner_debt_lumen
-                    != after_partnerunit.partner_debt_lumen
+                    before_contactunit.contact_debt_lumen
+                    != after_contactunit.contact_debt_lumen
                 ):
                     x_personatom.set_jvalue(
-                        "partner_debt_lumen", after_partnerunit.partner_debt_lumen
+                        "contact_debt_lumen", after_contactunit.contact_debt_lumen
                     )
                 self.set_personatom(x_personatom)
-            self.add_personatom_partnerunit_update_memberships(
-                after_partnerunit=after_partnerunit,
-                before_partnerunit=before_partnerunit,
+            self.add_personatom_contactunit_update_memberships(
+                after_contactunit=after_contactunit,
+                before_contactunit=before_contactunit,
             )
 
-    def add_personatom_partnerunit_deletes(
-        self, before_person: PersonUnit, delete_partner_names: set
+    def add_personatom_contactunit_deletes(
+        self, before_person: PersonUnit, delete_contact_names: set
     ):
-        for delete_partner_name in delete_partner_names:
-            x_personatom = personatom_shop("person_partnerunit", "DELETE")
-            x_personatom.set_jkey("partner_name", delete_partner_name)
+        for delete_contact_name in delete_contact_names:
+            x_personatom = personatom_shop("person_contactunit", "DELETE")
+            x_personatom.set_jkey("contact_name", delete_contact_name)
             self.set_personatom(x_personatom)
-            delete_partnerunit = before_person.get_partner(delete_partner_name)
+            delete_contactunit = before_person.get_contact(delete_contact_name)
             non_mirror_group_titles = {
                 x_group_title
-                for x_group_title in delete_partnerunit.memberships.keys()
-                if x_group_title != delete_partner_name
+                for x_group_title in delete_contactunit.memberships.keys()
+                if x_group_title != delete_contact_name
             }
             self.add_personatom_memberships_delete(
-                delete_partner_name, non_mirror_group_titles
+                delete_contact_name, non_mirror_group_titles
             )
 
-    def add_personatom_partnerunit_update_memberships(
-        self, after_partnerunit: PartnerUnit, before_partnerunit: PartnerUnit
+    def add_personatom_contactunit_update_memberships(
+        self, after_contactunit: ContactUnit, before_contactunit: ContactUnit
     ):
         # before_non_mirror_group_titles
         before_group_titles = {
             x_group_title
-            for x_group_title in before_partnerunit.memberships.keys()
-            if x_group_title != before_partnerunit.partner_name
+            for x_group_title in before_contactunit.memberships.keys()
+            if x_group_title != before_contactunit.contact_name
         }
         # after_non_mirror_group_titles
         after_group_titles = {
             x_group_title
-            for x_group_title in after_partnerunit.memberships.keys()
-            if x_group_title != after_partnerunit.partner_name
+            for x_group_title in after_contactunit.memberships.keys()
+            if x_group_title != after_contactunit.contact_name
         }
 
         self.add_personatom_memberships_inserts(
-            after_partnerunit=after_partnerunit,
+            after_contactunit=after_contactunit,
             insert_membership_group_titles=after_group_titles.difference(
                 before_group_titles
             ),
         )
 
         self.add_personatom_memberships_delete(
-            before_partner_name=after_partnerunit.partner_name,
+            before_contact_name=after_contactunit.contact_name,
             before_group_titles=before_group_titles.difference(after_group_titles),
         )
 
         update_group_titles = before_group_titles & (after_group_titles)
-        for update_partner_name in update_group_titles:
-            before_membership = before_partnerunit.get_membership(update_partner_name)
-            after_membership = after_partnerunit.get_membership(update_partner_name)
+        for update_contact_name in update_group_titles:
+            before_membership = before_contactunit.get_membership(update_contact_name)
+            after_membership = after_contactunit.get_membership(update_contact_name)
             if jvalues_different(
-                "person_partner_membership", before_membership, after_membership
+                "person_contact_membership", before_membership, after_membership
             ):
                 self.add_personatom_membership_update(
-                    partner_name=after_partnerunit.partner_name,
+                    contact_name=after_contactunit.contact_name,
                     before_membership=before_membership,
                     after_membership=after_membership,
                 )
 
     def add_personatom_memberships_inserts(
         self,
-        after_partnerunit: PartnerUnit,
+        after_contactunit: ContactUnit,
         insert_membership_group_titles: list[TitleTerm],
     ):
-        after_partner_name = after_partnerunit.partner_name
+        after_contact_name = after_contactunit.contact_name
         for insert_group_title in insert_membership_group_titles:
-            after_membership = after_partnerunit.get_membership(insert_group_title)
-            x_personatom = personatom_shop("person_partner_membership", "INSERT")
-            x_personatom.set_jkey("partner_name", after_partner_name)
+            after_membership = after_contactunit.get_membership(insert_group_title)
+            x_personatom = personatom_shop("person_contact_membership", "INSERT")
+            x_personatom.set_jkey("contact_name", after_contact_name)
             x_personatom.set_jkey("group_title", after_membership.group_title)
             if after_membership.group_cred_lumen is not None:
                 x_personatom.set_jvalue(
@@ -310,12 +310,12 @@ class PersonDelta:
 
     def add_personatom_membership_update(
         self,
-        partner_name: PartnerName,
+        contact_name: ContactName,
         before_membership: MemberShip,
         after_membership: MemberShip,
     ):
-        x_personatom = personatom_shop("person_partner_membership", "UPDATE")
-        x_personatom.set_jkey("partner_name", partner_name)
+        x_personatom = personatom_shop("person_contact_membership", "UPDATE")
+        x_personatom.set_jkey("contact_name", contact_name)
         x_personatom.set_jkey("group_title", after_membership.group_title)
         if after_membership.group_cred_lumen != before_membership.group_cred_lumen:
             x_personatom.set_jvalue(
@@ -328,11 +328,11 @@ class PersonDelta:
         self.set_personatom(x_personatom)
 
     def add_personatom_memberships_delete(
-        self, before_partner_name: PartnerName, before_group_titles: TitleTerm
+        self, before_contact_name: ContactName, before_group_titles: TitleTerm
     ):
         for delete_group_title in before_group_titles:
-            x_personatom = personatom_shop("person_partner_membership", "DELETE")
-            x_personatom.set_jkey("partner_name", before_partner_name)
+            x_personatom = personatom_shop("person_contact_membership", "DELETE")
+            x_personatom.set_jkey("contact_name", before_contact_name)
             x_personatom.set_jkey("group_title", delete_group_title)
             self.set_personatom(x_personatom)
 

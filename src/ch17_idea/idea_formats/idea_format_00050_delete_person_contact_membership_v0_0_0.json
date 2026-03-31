@@ -1,0 +1,12 @@
+{
+  "attributes": {
+    "face_name"        : { "otx_key": true }, 
+    "group_title_ERASE": { "otx_key": true }, 
+    "moment_rope"      : { "otx_key": true }, 
+    "contact_name"     : { "otx_key": true }, 
+    "person_name"      : { "otx_key": true }, 
+    "spark_num"        : { "otx_key": true }
+  }, 
+  "dimens": ["momentunit", "personunit", "person_contactunit", "person_contact_membership"], 
+  "idea_number": "br00050"
+}

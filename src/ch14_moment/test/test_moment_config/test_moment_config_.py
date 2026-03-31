@@ -188,7 +188,7 @@ def test_get_moment_args_set_ReturnsObj():
     assert moment_args_set == mapping_args_set
     assert len(moment_args_set) == 24
     expected_moment_args_set = {
-        kw.partner_name,
+        kw.contact_name,
         kw.amount,
         kw.knot,
         kw.c400_number,

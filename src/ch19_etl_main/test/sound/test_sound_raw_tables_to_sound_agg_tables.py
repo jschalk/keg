@@ -133,14 +133,14 @@ def test_set_sound_raw_tables_error_message_UpdatesTable_Scenario1_person_raw_de
     spark7 = 7
 
     create_sound_and_heard_tables(cursor0)
-    persona_s_raw_del = create_prime_tablename(kw.person_partnerunit, kw.s_raw, "del")
+    persona_s_raw_del = create_prime_tablename(kw.person_contactunit, kw.s_raw, "del")
     insert_into_clause = f"""INSERT INTO {persona_s_raw_del} (
   {kw.idea_number}
 , {kw.spark_num}
 , {kw.face_name}
 , {kw.moment_rope}
 , {kw.person_name}
-, {kw.partner_name}_ERASE
+, {kw.contact_name}_ERASE
 )"""
     b117 = "br00117"
     b045 = "br00045"
@@ -215,9 +215,9 @@ VALUES
 , {kw.face_name}
 , {kw.moment_rope}
 , {kw.person_name}
-, {kw.partner_name}
-, {kw.partner_cred_lumen}
-, {kw.partner_debt_lumen}
+, {kw.contact_name}
+, {kw.contact_cred_lumen}
+, {kw.contact_debt_lumen}
 , {kw.error_message}
 )"""
     values_clause = f"""
@@ -281,7 +281,7 @@ def test_insert_sound_raw_selects_into_sound_agg_tables_PopulatesValidTable_Scen
 , {kw.face_name}
 , {kw.moment_rope}
 , {kw.person_name}
-, {kw.partner_name}_ERASE
+, {kw.contact_name}_ERASE
 )"""
     values_clause = f"""
 VALUES
@@ -365,9 +365,9 @@ VALUES
 , {kw.face_name}
 , {kw.moment_rope}
 , {kw.person_name}
-, {kw.partner_name}
-, {kw.partner_cred_lumen}
-, {kw.partner_debt_lumen}
+, {kw.contact_name}
+, {kw.contact_cred_lumen}
+, {kw.contact_debt_lumen}
 , {kw.error_message}
 )"""
     values_clause = f"""

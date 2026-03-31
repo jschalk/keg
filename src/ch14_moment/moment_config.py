@@ -57,7 +57,7 @@ def get_moment_args_dimen_mapping() -> dict[str, str]:
 
 def get_moment_args_class_types() -> dict[str, str]:
     return {
-        "partner_name": "NameTerm",
+        "contact_name": "NameTerm",
         "amount": "float",
         "knot": "str",
         "celldepth": "int",
@@ -86,7 +86,7 @@ def get_moment_args_class_types() -> dict[str, str]:
 
 def get_moment_args_set() -> set[str]:
     return {
-        "partner_name",
+        "contact_name",
         "amount",
         "knot",
         "c400_number",

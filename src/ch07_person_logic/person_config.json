@@ -16,12 +16,12 @@
       "fund_take"       : { "calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL" }
     }
   }, 
-  "person_partner_membership": {
+  "person_contact_membership": {
     "abbreviation": "prnmemb", 
-    "description": "A person dimen representing Membership data. Keys: person_name, partner_name, group_title. person seed.", 
+    "description": "A person dimen representing Membership data. Keys: person_name, contact_name, group_title. person seed.", 
     "jkeys": {
       "group_title": {"calc_by_conpute": false, "class_type": "TitleTerm", "sqlite_datatype": "TEXT"}, 
-      "partner_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
+      "contact_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
       "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}
     }, 
     "jvalues": {
@@ -37,11 +37,11 @@
       "group_debt_lumen"      : { "calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL" }
     }
   }, 
-  "person_partnerunit": {
+  "person_contactunit": {
     "abbreviation": "prnptnr", 
-    "description": "A person dimen representing ParterUnit data. Keys: person_name, partner_name. person seed.", 
+    "description": "A person dimen representing ParterUnit data. Keys: person_name, contact_name. person seed.", 
     "jkeys": {
-      "partner_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
+      "contact_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
       "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}
     }, 
     "jvalues": {
@@ -54,10 +54,10 @@
       "fund_give"                     : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
       "fund_take"                     : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
       "groupmark"                     : { "calc_by_conpute": true , "class_type": "str"  , "sqlite_datatype": "TEXT" }, 
-      "inallocable_partner_debt_lumen": { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "irrational_partner_debt_lumen" : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "partner_cred_lumen"            : { "calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "partner_debt_lumen"            : { "calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL" }
+      "inallocable_contact_debt_lumen": { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "irrational_contact_debt_lumen" : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "contact_cred_lumen"            : { "calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "contact_debt_lumen"            : { "calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL" }
     }
   }, 
   "person_plan_awardunit": {
@@ -160,8 +160,8 @@
     }, 
     "jvalues": {
       "addin": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "all_partner_cred": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
-      "all_partner_debt": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "all_contact_cred": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "all_contact_debt": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
       "begin": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
       "close": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
       "denom": {"calc_by_conpute": false, "class_type": "int", "sqlite_datatype": "INTEGER"}, 

@@ -1,6 +1,6 @@
 from datetime import datetime
 from src.ch00_py.plotly_toolbox import conditional_fig_show
-from src.ch02_partner.group import awardunit_shop
+from src.ch02_contact.group import awardunit_shop
 from src.ch05_reason.reason_main import reasonunit_shop
 from src.ch06_plan.plan import planunit_shop
 from src.ch07_person_logic.person_main import personunit_shop
@@ -679,8 +679,8 @@ def test_PersonUnit_create_agenda_plan_CreatesAllPersonAttributes():
 
     # ESTABLISH
     sue_person = personunit_shop("Sue")
-    assert len(sue_person.partners) == 0
-    assert len(sue_person.get_partnerunit_group_titles_dict()) == 0
+    assert len(sue_person.contacts) == 0
+    assert len(sue_person.get_contactunit_group_titles_dict()) == 0
 
     clean_str = "cleanings"
     clean_rope = sue_person.make_l1_rope(clean_str)
@@ -719,8 +719,8 @@ def test_PersonUnit_create_agenda_plan_CreatesAllPersonAttributes():
     awardunit_z = awardunit_shop(awardee_title=family_str)
     sweep_plan.set_awardunit(awardunit_z)
 
-    assert len(sue_person.partners) == 0
-    assert len(sue_person.get_partnerunit_group_titles_dict()) == 0
+    assert len(sue_person.contacts) == 0
+    assert len(sue_person.get_contactunit_group_titles_dict()) == 0
     assert len(sue_person.planroot.kids) == 1
     assert sue_person.get_plan_obj(daytime_rope).denom == 1440
     assert sue_person.get_plan_obj(daytime_rope).morph
@@ -741,8 +741,8 @@ def test_PersonUnit_create_agenda_plan_CreatesAllPersonAttributes():
     assert sue_person.get_plan_obj(clean_rope) is not None
     assert sue_person.get_plan_obj(cuisine_room_rope) is not None
     assert sue_person.get_plan_obj(cuisine_dirty_rope) is not None
-    assert len(sue_person.get_partnerunit_group_titles_dict()) == 0
-    assert sue_person.get_partnerunit_group_titles_dict().get(family_str) is None
+    assert len(sue_person.get_contactunit_group_titles_dict()) == 0
+    assert sue_person.get_contactunit_group_titles_dict().get(family_str) is None
 
     assert len(sue_person.planroot.kids) == 3
 

@@ -11,17 +11,17 @@ def test_AtomRow_Exists():
     # THEN
     assert x_atomrow._atom_dimens is None
     assert x_atomrow._crud_command is None
-    assert x_atomrow.partner_name is None
+    assert x_atomrow.contact_name is None
     assert x_atomrow.addin is None
     assert x_atomrow.reason_context is None
     assert x_atomrow.active_requisite is None
     assert x_atomrow.begin is None
     assert x_atomrow.respect_grain is None
     assert x_atomrow.close is None
-    assert x_atomrow.partner_cred_lumen is None
+    assert x_atomrow.contact_cred_lumen is None
     assert x_atomrow.group_cred_lumen is None
     assert x_atomrow.credor_respect is None
-    assert x_atomrow.partner_debt_lumen is None
+    assert x_atomrow.contact_debt_lumen is None
     assert x_atomrow.group_debt_lumen is None
     assert x_atomrow.debtor_respect is None
     assert x_atomrow.denom is None
@@ -62,7 +62,7 @@ def test_AtomRow_Exists():
 
 def test_atomrow_shop_ReturnsObj():
     # ESTABLISH
-    x_atom_dimens = {kw.person_partnerunit}
+    x_atom_dimens = {kw.person_contactunit}
 
     # WHEN
     x_atomrow = atomrow_shop(x_atom_dimens, kw.INSERT)
@@ -74,44 +74,44 @@ def test_atomrow_shop_ReturnsObj():
 
 def test_AtomRow_set_atom_dimen_SetsAttr():
     # ESTABLISH
-    x_atomrow = atomrow_shop({kw.person_partnerunit}, kw.INSERT)
-    assert kw.person_partner_membership not in x_atomrow._atom_dimens
+    x_atomrow = atomrow_shop({kw.person_contactunit}, kw.INSERT)
+    assert kw.person_contact_membership not in x_atomrow._atom_dimens
 
     # WHEN
-    x_atomrow.set_atom_dimen(kw.person_partner_membership)
+    x_atomrow.set_atom_dimen(kw.person_contact_membership)
 
     # THEN
-    assert kw.person_partner_membership in x_atomrow._atom_dimens
+    assert kw.person_contact_membership in x_atomrow._atom_dimens
 
 
 def test_AtomRow_atom_dimen_exists_ReturnsObj():
     # ESTABLISH
     x_atomrow = atomrow_shop(set(), kw.INSERT)
-    assert not x_atomrow.atom_dimen_exists(kw.person_partnerunit)
-    assert not x_atomrow.atom_dimen_exists(kw.person_partner_membership)
+    assert not x_atomrow.atom_dimen_exists(kw.person_contactunit)
+    assert not x_atomrow.atom_dimen_exists(kw.person_contact_membership)
 
     # WHEN
-    x_atomrow.set_atom_dimen(kw.person_partner_membership)
+    x_atomrow.set_atom_dimen(kw.person_contact_membership)
 
     # THEN
-    assert not x_atomrow.atom_dimen_exists(kw.person_partnerunit)
-    assert x_atomrow.atom_dimen_exists(kw.person_partner_membership)
+    assert not x_atomrow.atom_dimen_exists(kw.person_contactunit)
+    assert x_atomrow.atom_dimen_exists(kw.person_contact_membership)
 
 
 def test_AtomRow_delete_atom_dimen_SetsAttr():
     # ESTABLISH
-    x_atomrow = atomrow_shop({kw.person_partnerunit}, kw.INSERT)
-    x_atomrow.set_atom_dimen(kw.person_partnerunit)
-    x_atomrow.set_atom_dimen(kw.person_partner_membership)
-    assert x_atomrow.atom_dimen_exists(kw.person_partnerunit)
-    assert x_atomrow.atom_dimen_exists(kw.person_partner_membership)
+    x_atomrow = atomrow_shop({kw.person_contactunit}, kw.INSERT)
+    x_atomrow.set_atom_dimen(kw.person_contactunit)
+    x_atomrow.set_atom_dimen(kw.person_contact_membership)
+    assert x_atomrow.atom_dimen_exists(kw.person_contactunit)
+    assert x_atomrow.atom_dimen_exists(kw.person_contact_membership)
 
     # WHEN
-    x_atomrow.delete_atom_dimen(kw.person_partner_membership)
+    x_atomrow.delete_atom_dimen(kw.person_contact_membership)
 
     # THEN
-    assert x_atomrow.atom_dimen_exists(kw.person_partnerunit)
-    assert not x_atomrow.atom_dimen_exists(kw.person_partner_membership)
+    assert x_atomrow.atom_dimen_exists(kw.person_contactunit)
+    assert not x_atomrow.atom_dimen_exists(kw.person_contact_membership)
 
 
 def test_AtomRow_set_class_types_SetsAttr():
@@ -139,11 +139,11 @@ def test_AtomRow_set_class_types_SetsAttr():
     assert x_atomrow.morph == x_morph_bool
 
 
-def test_AtomRow_get_personatoms_ReturnsObj_person_partnerunit_str_INSERT_Scenario0():
+def test_AtomRow_get_personatoms_ReturnsObj_person_contactunit_str_INSERT_Scenario0():
     # ESTABLISH
-    x_dimen = kw.person_partnerunit
+    x_dimen = kw.person_contactunit
     x_atomrow = atomrow_shop({x_dimen}, kw.INSERT)
-    x_atomrow.partner_name = "Bob"
+    x_atomrow.contact_name = "Bob"
 
     # WHEN
     x_personatoms = x_atomrow.get_personatoms()
@@ -151,16 +151,16 @@ def test_AtomRow_get_personatoms_ReturnsObj_person_partnerunit_str_INSERT_Scenar
     # THEN
     assert len(x_personatoms) == 1
     static_atom = personatom_shop(x_dimen, kw.INSERT)
-    static_atom.set_arg(kw.partner_name, "Bob")
+    static_atom.set_arg(kw.contact_name, "Bob")
     assert x_personatoms[0] == static_atom
 
 
-def test_AtomRow_get_personatoms_ReturnsObj_person_partnerunit_str_INSERT_Scenario1():
+def test_AtomRow_get_personatoms_ReturnsObj_person_contactunit_str_INSERT_Scenario1():
     # ESTABLISH
-    x_dimen = kw.person_partnerunit
+    x_dimen = kw.person_contactunit
     x_atomrow = atomrow_shop({x_dimen}, kw.INSERT)
-    x_atomrow.partner_name = "Bob"
-    x_atomrow.partner_cred_lumen = 5
+    x_atomrow.contact_name = "Bob"
+    x_atomrow.contact_cred_lumen = 5
 
     # WHEN
     x_personatoms = x_atomrow.get_personatoms()
@@ -168,14 +168,14 @@ def test_AtomRow_get_personatoms_ReturnsObj_person_partnerunit_str_INSERT_Scenar
     # THEN
     assert len(x_personatoms) == 1
     static_atom = personatom_shop(x_dimen, kw.INSERT)
-    static_atom.set_arg(kw.partner_name, "Bob")
-    static_atom.set_arg("partner_cred_lumen", 5)
+    static_atom.set_arg(kw.contact_name, "Bob")
+    static_atom.set_arg("contact_cred_lumen", 5)
     assert x_personatoms[0] == static_atom
 
 
-def test_AtomRow_get_personatoms_ReturnsObj_person_partnerunit_NSERT_Fails():
+def test_AtomRow_get_personatoms_ReturnsObj_person_contactunit_NSERT_Fails():
     # ESTABLISH
-    x_dimen = kw.person_partnerunit
+    x_dimen = kw.person_contactunit
     x_atomrow = atomrow_shop({x_dimen}, kw.INSERT)
 
     # WHEN
@@ -185,13 +185,13 @@ def test_AtomRow_get_personatoms_ReturnsObj_person_partnerunit_NSERT_Fails():
     assert len(x_personatoms) == 0
 
 
-def test_AtomRow_get_personatoms_ReturnsObj_person_partnerunit_INSERT_Scenario2():
+def test_AtomRow_get_personatoms_ReturnsObj_person_contactunit_INSERT_Scenario2():
     # ESTABLISH
-    x_dimen = kw.person_partnerunit
+    x_dimen = kw.person_contactunit
     x_atomrow = atomrow_shop({x_dimen}, kw.INSERT)
-    x_atomrow.partner_name = "Bob"
+    x_atomrow.contact_name = "Bob"
     four_str = "4"
-    x_atomrow.partner_cred_lumen = four_str
+    x_atomrow.contact_cred_lumen = four_str
 
     # WHEN
     x_personatoms = x_atomrow.get_personatoms()
@@ -199,26 +199,26 @@ def test_AtomRow_get_personatoms_ReturnsObj_person_partnerunit_INSERT_Scenario2(
     # THEN
     assert len(x_personatoms) == 1
     static_atom = personatom_shop(x_dimen, kw.INSERT)
-    static_atom.set_arg(kw.partner_name, "Bob")
+    static_atom.set_arg(kw.contact_name, "Bob")
     four_int = 4
-    static_atom.set_arg("partner_cred_lumen", four_int)
+    static_atom.set_arg("contact_cred_lumen", four_int)
     assert x_personatoms[0] == static_atom
 
 
 def test_AtomRow_get_personatoms_ReturnsObjIfDimenIsCorrect():
     # ESTABLISH
     x_atomrow = atomrow_shop(set(), kw.INSERT)
-    x_atomrow.partner_name = "Bob"
+    x_atomrow.contact_name = "Bob"
     four_str = "4"
-    x_atomrow.partner_cred_lumen = four_str
+    x_atomrow.contact_cred_lumen = four_str
     assert len(x_atomrow.get_personatoms()) == 0
 
     # WHEN / THEN
-    x_atomrow.set_atom_dimen(kw.person_partner_membership)
+    x_atomrow.set_atom_dimen(kw.person_contact_membership)
     assert len(x_atomrow.get_personatoms()) == 0
 
     # THEN
-    x_atomrow.set_atom_dimen(kw.person_partnerunit)
+    x_atomrow.set_atom_dimen(kw.person_contactunit)
     assert len(x_atomrow.get_personatoms()) == 1
 
 

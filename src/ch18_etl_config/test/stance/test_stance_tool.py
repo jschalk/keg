@@ -72,7 +72,7 @@ def test_collect_stance_csv_strs_ReturnsObj_Scenario2_gut_PersonUnits(
     save_moment_file(a23_moment, a23_lasso)
     # create person gut file
     bob_gut = personunit_shop(exx.bob, exx.a23)
-    bob_gut.add_partnerunit("Yao", 44, 55)
+    bob_gut.add_contactunit("Yao", 44, 55)
     save_gut_file(moment_mstr_dir, bob_gut)
 
     # WHEN

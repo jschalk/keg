@@ -11,9 +11,9 @@ from src.ch00_py.dict_toolbox import (
 )
 from src.ch01_allot.allot import default_pool_num
 from src.ch11_bud._ref.ch11_semantic_types import (
+    ContactName,
     FundNum,
     MomentRope,
-    PartnerName,
     PersonName,
     TimeNum,
 )
@@ -33,13 +33,13 @@ DEFAULT_CELLDEPTH = 2
 @dataclass
 class TranUnit:
     src: PersonName = None
-    dst: PartnerName = None
+    dst: ContactName = None
     tran_time: TimeNum = None
     amount: FundNum = None
 
 
 def tranunit_shop(
-    src: PersonName, dst: PartnerName, tran_time: TimeNum, amount: FundNum
+    src: PersonName, dst: ContactName, tran_time: TimeNum, amount: FundNum
 ) -> TranUnit:
     return TranUnit(src=src, dst=dst, tran_time=tran_time, amount=amount)
 
@@ -47,8 +47,8 @@ def tranunit_shop(
 @dataclass
 class TranBook:
     moment_rope: MomentRope = None
-    tranunits: dict[PersonName, dict[PartnerName, dict[TimeNum, FundNum]]] = None
-    _partners_net: dict[PersonName, dict[PartnerName, FundNum]] = None
+    tranunits: dict[PersonName, dict[ContactName, dict[TimeNum, FundNum]]] = None
+    _contacts_net: dict[PersonName, dict[ContactName, FundNum]] = None
 
     def set_tranunit(
         self,
@@ -58,7 +58,7 @@ class TranBook:
     ):
         self.add_tranunit(
             person_name=tranunit.src,
-            partner_name=tranunit.dst,
+            contact_name=tranunit.dst,
             tran_time=tranunit.tran_time,
             amount=tranunit.amount,
             blocked_tran_times=blocked_tran_times,
@@ -68,7 +68,7 @@ class TranBook:
     def add_tranunit(
         self,
         person_name: PersonName,
-        partner_name: PartnerName,
+        contact_name: ContactName,
         tran_time: TimeNum,
         amount: FundNum,
         blocked_tran_times: set[TimeNum] = None,
@@ -82,28 +82,28 @@ class TranBook:
         if offi_time_max != None and tran_time >= offi_time_max:
             exception_str = f"Cannot set tranunit for tran_time={tran_time}, TimeNum is greater than current time={offi_time_max}"
             raise TranTimeError(exception_str)
-        x_keylist = [person_name, partner_name, tran_time]
+        x_keylist = [person_name, contact_name, tran_time]
         set_in_nested_dict(self.tranunits, x_keylist, amount)
 
     def tranunit_exists(
-        self, src: PersonName, dst: PartnerName, tran_time: TimeNum
+        self, src: PersonName, dst: ContactName, tran_time: TimeNum
     ) -> bool:
         return get_from_nested_dict(self.tranunits, [src, dst, tran_time], True) != None
 
     def get_tranunit(
-        self, src: PersonName, dst: PartnerName, tran_time: TimeNum
+        self, src: PersonName, dst: ContactName, tran_time: TimeNum
     ) -> TranUnit:
         x_amount = get_from_nested_dict(self.tranunits, [src, dst, tran_time], True)
         if x_amount != None:
             return tranunit_shop(src, dst, tran_time, x_amount)
 
     def get_amount(
-        self, src: PersonName, dst: PartnerName, tran_time: TimeNum
+        self, src: PersonName, dst: ContactName, tran_time: TimeNum
     ) -> TranUnit:
         return get_from_nested_dict(self.tranunits, [src, dst, tran_time], True)
 
     def del_tranunit(
-        self, src: PersonName, dst: PartnerName, tran_time: TimeNum
+        self, src: PersonName, dst: ContactName, tran_time: TimeNum
     ) -> TranUnit:
         x_keylist = [src, dst, tran_time]
         if exists_in_nested_dict(self.tranunits, x_keylist):
@@ -116,53 +116,53 @@ class TranBook:
                 x_set.update(set(tran_time_dict.keys()))
         return x_set
 
-    def get_persons_partners_net(
+    def get_persons_contacts_net(
         self,
-    ) -> dict[PersonName, dict[PartnerName, FundNum]]:
-        persons_partners_net_dict = {}
+    ) -> dict[PersonName, dict[ContactName, FundNum]]:
+        persons_contacts_net_dict = {}
         for person_name, person_dict in self.tranunits.items():
-            for partner_name, partner_dict in person_dict.items():
-                if persons_partners_net_dict.get(person_name) is None:
-                    persons_partners_net_dict[person_name] = {}
-                person_net_dict = persons_partners_net_dict.get(person_name)
-                person_net_dict[partner_name] = sum(partner_dict.values())
-        return persons_partners_net_dict
+            for contact_name, contact_dict in person_dict.items():
+                if persons_contacts_net_dict.get(person_name) is None:
+                    persons_contacts_net_dict[person_name] = {}
+                person_net_dict = persons_contacts_net_dict.get(person_name)
+                person_net_dict[contact_name] = sum(contact_dict.values())
+        return persons_contacts_net_dict
 
-    def get_partners_net_dict(self) -> dict[PartnerName, FundNum]:
-        partners_net_dict = {}
+    def get_contacts_net_dict(self) -> dict[ContactName, FundNum]:
+        contacts_net_dict = {}
         for person_dict in self.tranunits.values():
-            for partner_name, partner_dict in sorted(person_dict.items()):
-                if partners_net_dict.get(partner_name) is None:
-                    partners_net_dict[partner_name] = sum(partner_dict.values())
+            for contact_name, contact_dict in sorted(person_dict.items()):
+                if contacts_net_dict.get(contact_name) is None:
+                    contacts_net_dict[contact_name] = sum(contact_dict.values())
                 else:
-                    partners_net_dict[partner_name] += sum(partner_dict.values())
-        return partners_net_dict
+                    contacts_net_dict[contact_name] += sum(contact_dict.values())
+        return contacts_net_dict
 
-    def _get_partners_headers(self) -> list:
-        return ["partner_name", "net_amount"]
+    def _get_contacts_headers(self) -> list:
+        return ["contact_name", "net_amount"]
 
-    def _get_partners_net_array(self) -> list[list]:
-        x_plans = self.get_partners_net_dict().items()
-        return [[partner_name, net_amount] for partner_name, net_amount in x_plans]
+    def _get_contacts_net_array(self) -> list[list]:
+        x_plans = self.get_contacts_net_dict().items()
+        return [[contact_name, net_amount] for contact_name, net_amount in x_plans]
 
-    def get_partners_net_csv(self) -> str:
-        return create_csv(self._get_partners_headers(), self._get_partners_net_array())
+    def get_contacts_net_csv(self) -> str:
+        return create_csv(self._get_contacts_headers(), self._get_contacts_net_array())
 
     def join(self, x_tranbook):
         sorted_tranunits = sorted(
             x_tranbook.tranunits.items(),
             key=lambda x: next(iter(next(iter(x[1].values())).keys())),
         )
-        for src_partner_name, dst_dict in sorted_tranunits:
-            for dst_partner_name, tran_time_dict in dst_dict.items():
+        for src_contact_name, dst_dict in sorted_tranunits:
+            for dst_contact_name, tran_time_dict in dst_dict.items():
                 for x_tran_time, x_amount in tran_time_dict.items():
                     self.add_tranunit(
-                        src_partner_name, dst_partner_name, x_tran_time, x_amount
+                        src_contact_name, dst_contact_name, x_tran_time, x_amount
                     )
 
     def to_dict(
         self,
-    ) -> dict[MomentRope, dict[PersonName, dict[PartnerName, dict[TimeNum, FundNum]]]]:
+    ) -> dict[MomentRope, dict[PersonName, dict[ContactName, dict[TimeNum, FundNum]]]]:
         """Returns dict that is serializable to JSON."""
 
         return {"moment_rope": self.moment_rope, "tranunits": self.tranunits}
@@ -170,22 +170,22 @@ class TranBook:
 
 def tranbook_shop(
     x_moment_rope: MomentRope,
-    x_tranunits: dict[PersonName, dict[PartnerName, dict[TimeNum, FundNum]]] = None,
+    x_tranunits: dict[PersonName, dict[ContactName, dict[TimeNum, FundNum]]] = None,
 ):
     return TranBook(
         moment_rope=x_moment_rope,
         tranunits=get_empty_dict_if_None(x_tranunits),
-        _partners_net={},
+        _contacts_net={},
     )
 
 
 def get_tranbook_from_dict(x_dict: dict) -> TranBook:
     x_tranunits = x_dict.get("tranunits")
     new_tranunits = {}
-    for x_person_name, x_partner_dict in x_tranunits.items():
-        for x_partner_name, x_tran_time_dict in x_partner_dict.items():
+    for x_person_name, x_contact_dict in x_tranunits.items():
+        for x_contact_name, x_tran_time_dict in x_contact_dict.items():
             for x_tran_time, x_amount in x_tran_time_dict.items():
-                x_key_list = [x_person_name, x_partner_name, int(x_tran_time)]
+                x_key_list = [x_person_name, x_contact_name, int(x_tran_time)]
                 set_in_nested_dict(new_tranunits, x_key_list, x_amount)
     return tranbook_shop(x_dict.get("moment_rope"), new_tranunits)
 
@@ -197,28 +197,28 @@ class BudUnit:
     celldepth: int = None  # non-negative
     # Calculated
     magnitude: FundNum = None  # how much of the actual quota is distributed
-    bud_partner_nets: dict[PartnerName, FundNum] = None  # ledger of bud outcome
+    bud_contact_nets: dict[ContactName, FundNum] = None  # ledger of bud outcome
 
-    def set_bud_partner_net(
-        self, x_partner_name: PartnerName, bud_partner_net: FundNum
+    def set_bud_contact_net(
+        self, x_contact_name: ContactName, bud_contact_net: FundNum
     ):
-        self.bud_partner_nets[x_partner_name] = bud_partner_net
+        self.bud_contact_nets[x_contact_name] = bud_contact_net
 
-    def bud_partner_net_exists(self, x_partner_name: PartnerName) -> bool:
-        return self.bud_partner_nets.get(x_partner_name) != None
+    def bud_contact_net_exists(self, x_contact_name: ContactName) -> bool:
+        return self.bud_contact_nets.get(x_contact_name) != None
 
-    def get_bud_partner_net(self, x_partner_name: PartnerName) -> FundNum:
-        return self.bud_partner_nets.get(x_partner_name)
+    def get_bud_contact_net(self, x_contact_name: ContactName) -> FundNum:
+        return self.bud_contact_nets.get(x_contact_name)
 
-    def del_bud_partner_net(self, x_partner_name: PartnerName):
-        self.bud_partner_nets.pop(x_partner_name)
+    def del_bud_contact_net(self, x_contact_name: ContactName):
+        self.bud_contact_nets.pop(x_contact_name)
 
     def calc_magnitude(self):
-        bud_partner_nets = self.bud_partner_nets.values()
-        x_cred_sum = sum(da_net for da_net in bud_partner_nets if da_net > 0)
-        x_debt_sum = sum(da_net for da_net in bud_partner_nets if da_net < 0)
+        bud_contact_nets = self.bud_contact_nets.values()
+        x_cred_sum = sum(da_net for da_net in bud_contact_nets if da_net > 0)
+        x_debt_sum = sum(da_net for da_net in bud_contact_nets if da_net < 0)
         if x_cred_sum + x_debt_sum != 0:
-            exception_str = f"magnitude cannot be calculated: debt_bud_partner_net={x_debt_sum}, cred_bud_partner_net={x_cred_sum}"
+            exception_str = f"magnitude cannot be calculated: debt_bud_contact_net={x_debt_sum}, cred_bud_contact_net={x_cred_sum}"
             raise CalcMagnitudeError(exception_str)
         self.magnitude = x_cred_sum
 
@@ -226,8 +226,8 @@ class BudUnit:
         """Returns dict that is serializable to JSON."""
 
         x_dict = {"bud_time": self.bud_time, "quota": self.quota}
-        if self.bud_partner_nets:
-            x_dict["bud_partner_nets"] = self.bud_partner_nets
+        if self.bud_contact_nets:
+            x_dict["bud_contact_nets"] = self.bud_contact_nets
         if self.magnitude:
             x_dict["magnitude"] = self.magnitude
         if self.celldepth != DEFAULT_CELLDEPTH:
@@ -238,7 +238,7 @@ class BudUnit:
 def budunit_shop(
     bud_time: TimeNum,
     quota: FundNum = None,
-    bud_partner_nets: dict[PartnerName, FundNum] = None,
+    bud_contact_nets: dict[ContactName, FundNum] = None,
     magnitude: FundNum = None,
     celldepth: int = None,
 ) -> BudUnit:
@@ -251,7 +251,7 @@ def budunit_shop(
         bud_time=bud_time,
         quota=quota,
         celldepth=celldepth,
-        bud_partner_nets=get_empty_dict_if_None(bud_partner_nets),
+        bud_contact_nets=get_empty_dict_if_None(bud_contact_nets),
         magnitude=get_0_if_None(magnitude),
     )
 
@@ -262,7 +262,7 @@ class PersonBudHistory:
     buds: dict[TimeNum, BudUnit] = None
     # calculated fields
     sum_budunit_quota: FundNum = None
-    sum_partner_bud_nets: int = None
+    sum_contact_bud_nets: int = None
     bud_time_min: TimeNum = None
     bud_time_max: TimeNum = None
 
@@ -291,7 +291,7 @@ class PersonBudHistory:
     def get_headers(self) -> list[str]:
         return ["person_name", "bud_time", "quota"]
 
-    def to_dict(self) -> dict[PartnerName,]:
+    def to_dict(self) -> dict[ContactName,]:
         """Returns dict that is serializable to JSON."""
 
         return {"person_name": self.person_name, "buds": self._get_buds_dict()}
@@ -305,10 +305,10 @@ class PersonBudHistory:
     def get_tranbook(self, moment_rope: MomentRope) -> TranBook:
         x_tranbook = tranbook_shop(moment_rope)
         for x_bud_time, x_bud in self.buds.items():
-            for dst_partner_name, x_quota in x_bud.bud_partner_nets.items():
+            for dst_contact_name, x_quota in x_bud.bud_contact_nets.items():
                 x_tranbook.add_tranunit(
                     person_name=self.person_name,
-                    partner_name=dst_partner_name,
+                    contact_name=dst_contact_name,
                     tran_time=x_bud_time,
                     amount=x_quota,
                 )
@@ -316,13 +316,13 @@ class PersonBudHistory:
 
 
 def personbudhistory_shop(person_name: PersonName) -> PersonBudHistory:
-    return PersonBudHistory(person_name=person_name, buds={}, sum_partner_bud_nets={})
+    return PersonBudHistory(person_name=person_name, buds={}, sum_contact_bud_nets={})
 
 
 def get_budunit_from_dict(x_dict: dict) -> BudUnit:
     x_bud_time = x_dict.get("bud_time")
     x_quota = x_dict.get("quota")
-    x_bud_net = x_dict.get("bud_partner_nets")
+    x_bud_net = x_dict.get("bud_contact_nets")
     x_magnitude = x_dict.get("magnitude")
     x_celldepth = x_dict.get("celldepth")
     return budunit_shop(

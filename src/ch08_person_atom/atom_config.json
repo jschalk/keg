@@ -1,5 +1,5 @@
 {
-  "person_partner_membership": {
+  "person_contact_membership": {
     "DELETE": {"atom_order": 23}, 
     "INSERT": {"atom_order": 1}, 
     "UPDATE": {"atom_order": 10}, 
@@ -10,7 +10,7 @@
         "nesting_order": 1, 
         "sqlite_datatype": "TEXT"
       }, 
-      "partner_name": {
+      "contact_name": {
         "class_type": "NameTerm", 
         "column_ordinal": 0, 
         "nesting_order": 0, 
@@ -23,18 +23,18 @@
     }, 
     "normal_specs": {"normal_table_name": "membership"}
   }, 
-  "person_partnerunit": {
+  "person_contactunit": {
     "DELETE": {"atom_order": 24}, 
     "INSERT": {"atom_order": 0}, 
     "UPDATE": {"atom_order": 9}, 
     "jkeys": {
-      "partner_name": {"class_type": "NameTerm", "column_ordinal": 0, "sqlite_datatype": "TEXT"}
+      "contact_name": {"class_type": "NameTerm", "column_ordinal": 0, "sqlite_datatype": "TEXT"}
     }, 
     "jvalues": {
-      "partner_cred_lumen": { "class_type": "float", "column_ordinal": 2, "sqlite_datatype": "REAL" }, 
-      "partner_debt_lumen": { "class_type": "float", "column_ordinal": 1, "sqlite_datatype": "REAL" }
+      "contact_cred_lumen": { "class_type": "float", "column_ordinal": 2, "sqlite_datatype": "REAL" }, 
+      "contact_debt_lumen": { "class_type": "float", "column_ordinal": 1, "sqlite_datatype": "REAL" }
     }, 
-    "normal_specs": {"normal_table_name": "partnerunit"}
+    "normal_specs": {"normal_table_name": "contactunit"}
   }, 
   "person_plan_awardunit": {
     "DELETE": {"atom_order": 21}, 

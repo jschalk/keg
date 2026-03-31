@@ -105,27 +105,27 @@ def test_ropemap_shop_ReturnsObj_Scenario3_TranslateCoreAttrAreDefaultWhenGiven_
 
 def test_RopeMap_set_all_otx2inx_SetsAttr():
     # ESTABLISH
-    partner_name_ropemap = ropemap_shop()
+    contact_name_ropemap = ropemap_shop()
     x_otx2inx = {exx.xio: exx.sue, exx.zia: exx.zia}
-    assert partner_name_ropemap.otx2inx != x_otx2inx
+    assert contact_name_ropemap.otx2inx != x_otx2inx
 
     # WHEN
-    partner_name_ropemap.set_all_otx2inx(x_otx2inx)
+    contact_name_ropemap.set_all_otx2inx(x_otx2inx)
 
     # THEN
-    assert partner_name_ropemap.otx2inx == x_otx2inx
+    assert contact_name_ropemap.otx2inx == x_otx2inx
 
 
 def test_RopeMap_set_all_otx2inx_RaisesErrorIf_unknown_str_IsKeyIn_otx2inx():
     # ESTABLISH
     x_unknown_str = "UnknownTerm"
-    partner_name_ropemap = ropemap_shop(unknown_str=x_unknown_str)
+    contact_name_ropemap = ropemap_shop(unknown_str=x_unknown_str)
     x_otx2inx = {exx.xio: exx.sue, x_unknown_str: exx.zia}
-    assert partner_name_ropemap.otx2inx != x_otx2inx
+    assert contact_name_ropemap.otx2inx != x_otx2inx
 
     # WHEN / THEN
     with pytest_raises(Exception) as excinfo:
-        partner_name_ropemap.set_all_otx2inx(x_otx2inx, True)
+        contact_name_ropemap.set_all_otx2inx(x_otx2inx, True)
     exception_str = f"otx2inx cannot have unknown_str '{x_unknown_str}' in any str. Affected keys include ['{x_unknown_str}']."
     assert str(excinfo.value) == exception_str
 

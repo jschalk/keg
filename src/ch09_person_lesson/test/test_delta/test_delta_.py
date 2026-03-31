@@ -1,5 +1,5 @@
 from pytest import raises as pytest_raises
-from src.ch02_partner.partner import partnerunit_shop
+from src.ch02_contact.contact import contactunit_shop
 from src.ch04_rope.rope import create_rope, to_rope
 from src.ch07_person_logic.person_main import personunit_shop
 from src.ch08_person_atom.atom_main import personatom_shop
@@ -64,7 +64,7 @@ def test_PersonDelta_set_personatom_Sets_PersonUnitSimpleAttrs():
 def test_PersonDelta_set_personatom_RaisesErrorWhen_is_valid_IsFalse():
     # ESTABLISH
     ex1_persondelta = persondelta_shop()
-    x_dimen = kw.person_partnerunit
+    x_dimen = kw.person_contactunit
     person_star_personatom = personatom_shop(x_dimen, kw.UPDATE)
 
     # WHEN
@@ -78,11 +78,11 @@ def test_PersonDelta_set_personatom_RaisesErrorWhen_is_valid_IsFalse():
     assert str(excinfo.value) == exception_str
 
 
-def test_ChangUnit_c_personatom_exists_ReturnsObj_person_partnerunit_str():
+def test_ChangUnit_c_personatom_exists_ReturnsObj_person_contactunit_str():
     # ESTABLISH
     x_persondelta = persondelta_shop()
-    bob_personatom = personatom_shop(kw.person_partnerunit, kw.INSERT)
-    bob_personatom.set_arg(kw.partner_name, exx.bob)
+    bob_personatom = personatom_shop(kw.person_contactunit, kw.INSERT)
+    bob_personatom.set_arg(kw.contact_name, exx.bob)
     assert not x_persondelta.c_personatom_exists(bob_personatom)
 
     # WHEN
@@ -92,13 +92,13 @@ def test_ChangUnit_c_personatom_exists_ReturnsObj_person_partnerunit_str():
     assert x_persondelta.c_personatom_exists(bob_personatom)
 
 
-def test_ChangUnit_c_personatom_exists_ReturnsObj_person_partner_membership_str():
+def test_ChangUnit_c_personatom_exists_ReturnsObj_person_contact_membership_str():
     # ESTABLISH
     iowa_str = ";Iowa"
     x_persondelta = persondelta_shop()
-    bob_iowa_personatom = personatom_shop(kw.person_partner_membership, kw.INSERT)
+    bob_iowa_personatom = personatom_shop(kw.person_contact_membership, kw.INSERT)
     bob_iowa_personatom.set_arg(kw.group_title, iowa_str)
-    bob_iowa_personatom.set_arg(kw.partner_name, exx.bob)
+    bob_iowa_personatom.set_arg(kw.contact_name, exx.bob)
     assert not x_persondelta.c_personatom_exists(bob_iowa_personatom)
 
     # WHEN
@@ -151,29 +151,29 @@ def test_PersonDelta_add_personatom_Sets_PersonUnitSimpleAttrs():
     assert x_personatom.dimen == kw.personunit
 
 
-def test_PersonDelta_add_personatom_Sets_PersonUnit_partnerunits():
+def test_PersonDelta_add_personatom_Sets_PersonUnit_contactunits():
     # ESTABLISH
     ex1_persondelta = persondelta_shop()
     assert ex1_persondelta.personatoms == {}
 
     # WHEN
-    bob_partner_cred_lumen = 55
-    bob_partner_debt_lumen = 66
-    bob_partnerunit = partnerunit_shop(
-        exx.bob, bob_partner_cred_lumen, bob_partner_debt_lumen
+    bob_contact_cred_lumen = 55
+    bob_contact_debt_lumen = 66
+    bob_contactunit = contactunit_shop(
+        exx.bob, bob_contact_cred_lumen, bob_contact_debt_lumen
     )
-    cw_str = kw.partner_cred_lumen
-    dw_str = kw.partner_debt_lumen
-    print(f"{bob_partnerunit.to_dict()=}")
+    cw_str = kw.contact_cred_lumen
+    dw_str = kw.contact_debt_lumen
+    print(f"{bob_contactunit.to_dict()=}")
     bob_required_dict = {
-        kw.partner_name: bob_partnerunit.to_dict().get(kw.partner_name)
+        kw.contact_name: bob_contactunit.to_dict().get(kw.contact_name)
     }
-    bob_optional_dict = {cw_str: bob_partnerunit.to_dict().get(cw_str)}
-    bob_optional_dict[dw_str] = bob_partnerunit.to_dict().get(dw_str)
+    bob_optional_dict = {cw_str: bob_contactunit.to_dict().get(cw_str)}
+    bob_optional_dict[dw_str] = bob_contactunit.to_dict().get(dw_str)
     print(f"{bob_required_dict=}")
-    partnerunit_str = kw.person_partnerunit
+    contactunit_str = kw.person_contactunit
     ex1_persondelta.add_personatom(
-        dimen=partnerunit_str,
+        dimen=contactunit_str,
         crud_str=kw.INSERT,
         jkeys=bob_required_dict,
         jvalues=bob_optional_dict,
@@ -181,7 +181,7 @@ def test_PersonDelta_add_personatom_Sets_PersonUnit_partnerunits():
     # THEN
     assert len(ex1_persondelta.personatoms) == 1
     assert (
-        ex1_persondelta.personatoms.get(kw.INSERT).get(partnerunit_str).get(exx.bob)
+        ex1_persondelta.personatoms.get(kw.INSERT).get(contactunit_str).get(exx.bob)
         is not None
     )
 
@@ -227,9 +227,9 @@ def test_PersonDelta_get_dimen_sorted_personatoms_list_ReturnsObj_Scenario0_rope
     assert sue_atoms_list[0] == update_dict.get(kw.personunit)
     z_atom = sue_atoms_list[1]
     print(f"{z_atom=}")
-    print(delete_dict.get(kw.person_partnerunit).keys())
-    zia_partnerunit_delete = delete_dict.get(kw.person_partnerunit).get("Zia")
-    assert sue_atoms_list[1] == zia_partnerunit_delete
+    print(delete_dict.get(kw.person_contactunit).keys())
+    zia_contactunit_delete = delete_dict.get(kw.person_contactunit).get("Zia")
+    assert sue_atoms_list[1] == zia_contactunit_delete
 
 
 # def test_PersonDelta_add_personatom_Sets_PersonUnit_max_tree_traverse():
@@ -293,7 +293,7 @@ def test_PersonDelta_get_sorted_personatoms_ReturnsObj():
     print(f"atom_order 28 {ex1_persondelta.personatoms.get(kw.UPDATE).keys()=}")
     delete_dict = ex1_persondelta.personatoms.get(kw.DELETE)
     assert len(delete_dict.keys()) == 1
-    assert delete_dict.get(kw.person_partnerunit) is not None
+    assert delete_dict.get(kw.person_contactunit) is not None
     print(f"atom_order 26 {ex1_persondelta.personatoms.get(kw.DELETE).keys()=}")
 
     # WHEN
@@ -301,11 +301,11 @@ def test_PersonDelta_get_sorted_personatoms_ReturnsObj():
 
     # THEN
     assert len(sue_atom_order_list) == 2
-    print(delete_dict.get(kw.person_partnerunit).keys())
-    zia_partnerunit_delete = delete_dict.get(kw.person_partnerunit).get("Zia")
+    print(delete_dict.get(kw.person_contactunit).keys())
+    zia_contactunit_delete = delete_dict.get(kw.person_contactunit).get("Zia")
     # for personatom in sue_atom_order_list:
     #     print(f"{personatom.atom_order=}")
-    assert sue_atom_order_list[0] == zia_partnerunit_delete
+    assert sue_atom_order_list[0] == zia_contactunit_delete
     assert sue_atom_order_list[1] == update_dict.get(kw.personunit)
     # for crud_str, atom_list in sue_atom_order_dict.items():
     #     print(f"{crud_str=}")
@@ -392,10 +392,10 @@ def test_person_built_from_delta_is_valid_ReturnsObjEstablishWithNoPerson_Scenar
     x_personatom.set_jvalue(x_attribute, 100)
     sue_persondelta.set_personatom(x_personatom)
 
-    dimen = kw.person_partnerunit
+    dimen = kw.person_contactunit
     x_personatom = personatom_shop(dimen, kw.INSERT)
-    x_personatom.set_arg(kw.partner_name, exx.zia)
-    x_personatom.set_arg(kw.partner_cred_lumen, "70 is the number")
+    x_personatom.set_arg(kw.contact_name, exx.zia)
+    x_personatom.set_arg(kw.contact_cred_lumen, "70 is the number")
     sue_persondelta.set_personatom(x_personatom)
     print(f"{sue_persondelta=}")
 
@@ -407,11 +407,11 @@ def test_person_built_from_delta_is_valid_ReturnsObjEstablishWithNoPerson_Scenar
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     sue_persondelta = persondelta_shop()
-    dimen = kw.person_partnerunit
+    dimen = kw.person_contactunit
     # WHEN
     x_personatom = personatom_shop(dimen, kw.INSERT)
-    x_personatom.set_arg(kw.partner_name, exx.yao)
-    x_personatom.set_arg(kw.partner_cred_lumen, 30)
+    x_personatom.set_arg(kw.contact_name, exx.yao)
+    x_personatom.set_arg(kw.contact_cred_lumen, 30)
     sue_persondelta.set_personatom(x_personatom)
 
     # THEN
@@ -419,8 +419,8 @@ def test_person_built_from_delta_is_valid_ReturnsObjEstablishWithNoPerson_Scenar
 
     # WHEN
     x_personatom = personatom_shop(dimen, kw.INSERT)
-    x_personatom.set_arg(kw.partner_name, exx.bob)
-    x_personatom.set_arg(kw.partner_cred_lumen, "70 is the number")
+    x_personatom.set_arg(kw.contact_name, exx.bob)
+    x_personatom.set_arg(kw.contact_cred_lumen, "70 is the number")
     sue_persondelta.set_personatom(x_personatom)
 
     # THEN
@@ -435,16 +435,16 @@ def test_PersonDelta_get_ordered_personatoms_ReturnsObj_EstablishWithNoStartingN
     pool_attribute = kw.credor_respect
     pool_personatom.set_jvalue(pool_attribute, 100)
     sue_persondelta.set_personatom(pool_personatom)
-    dimen = kw.person_partnerunit
+    dimen = kw.person_contactunit
     zia_personatom = personatom_shop(dimen, kw.INSERT)
-    zia_personatom.set_arg(kw.partner_name, exx.zia)
-    zia_personatom.set_arg(kw.partner_cred_lumen, 70)
+    zia_personatom.set_arg(kw.contact_name, exx.zia)
+    zia_personatom.set_arg(kw.contact_cred_lumen, 70)
     sue_persondelta.set_personatom(zia_personatom)
     sue_person = personunit_shop(exx.sue)
     sue_person.set_credor_respect(100)
     yao_personatom = personatom_shop(dimen, kw.INSERT)
-    yao_personatom.set_arg(kw.partner_name, exx.yao)
-    yao_personatom.set_arg(kw.partner_cred_lumen, 30)
+    yao_personatom.set_arg(kw.contact_name, exx.yao)
+    yao_personatom.set_arg(kw.contact_cred_lumen, 30)
     sue_persondelta.set_personatom(yao_personatom)
 
     sue_person = personunit_shop(exx.sue)
@@ -473,16 +473,16 @@ def test_PersonDelta_get_ordered_personatoms_ReturnsObj_EstablishWithStartingNum
     pool_attribute = kw.credor_respect
     pool_personatom.set_jvalue(pool_attribute, 100)
     sue_persondelta.set_personatom(pool_personatom)
-    dimen = kw.person_partnerunit
+    dimen = kw.person_contactunit
     zia_personatom = personatom_shop(dimen, kw.INSERT)
-    zia_personatom.set_arg(kw.partner_name, exx.zia)
-    zia_personatom.set_arg(kw.partner_cred_lumen, 70)
+    zia_personatom.set_arg(kw.contact_name, exx.zia)
+    zia_personatom.set_arg(kw.contact_cred_lumen, 70)
     sue_persondelta.set_personatom(zia_personatom)
     sue_person = personunit_shop(exx.sue)
     sue_person.set_credor_respect(100)
     yao_personatom = personatom_shop(dimen, kw.INSERT)
-    yao_personatom.set_arg(kw.partner_name, exx.yao)
-    yao_personatom.set_arg(kw.partner_cred_lumen, 30)
+    yao_personatom.set_arg(kw.contact_name, exx.yao)
+    yao_personatom.set_arg(kw.contact_cred_lumen, 30)
     sue_persondelta.set_personatom(yao_personatom)
 
     sue_person = personunit_shop(exx.sue)
@@ -511,16 +511,16 @@ def test_PersonDelta_get_ordered_dict_ReturnsObj_Scenario0_EstablishWithStarting
     pool_attribute = kw.credor_respect
     pool_personatom.set_jvalue(pool_attribute, 100)
     sue_persondelta.set_personatom(pool_personatom)
-    dimen = kw.person_partnerunit
+    dimen = kw.person_contactunit
     zia_personatom = personatom_shop(dimen, kw.INSERT)
-    zia_personatom.set_arg(kw.partner_name, exx.zia)
-    zia_personatom.set_arg(kw.partner_cred_lumen, 70)
+    zia_personatom.set_arg(kw.contact_name, exx.zia)
+    zia_personatom.set_arg(kw.contact_cred_lumen, 70)
     sue_persondelta.set_personatom(zia_personatom)
     sue_person = personunit_shop(exx.sue)
     sue_person.set_credor_respect(100)
     yao_personatom = personatom_shop(dimen, kw.INSERT)
-    yao_personatom.set_arg(kw.partner_name, exx.yao)
-    yao_personatom.set_arg(kw.partner_cred_lumen, 30)
+    yao_personatom.set_arg(kw.contact_name, exx.yao)
+    yao_personatom.set_arg(kw.contact_cred_lumen, 30)
     sue_persondelta.set_personatom(yao_personatom)
 
     sue_person = personunit_shop(exx.sue)
@@ -548,14 +548,14 @@ def test_PersonDelta_get_ordered_dict_ReturnsObj_Scenario1():
     pool_attribute = kw.credor_respect
     pool_personatom.set_jvalue(pool_attribute, 100)
     sue_persondelta.set_personatom(pool_personatom)
-    dimen = kw.person_partnerunit
+    dimen = kw.person_contactunit
     zia_personatom = personatom_shop(dimen, kw.INSERT)
-    zia_personatom.set_arg(kw.partner_name, exx.zia)
-    zia_personatom.set_arg(kw.partner_cred_lumen, 70)
+    zia_personatom.set_arg(kw.contact_name, exx.zia)
+    zia_personatom.set_arg(kw.contact_cred_lumen, 70)
     sue_persondelta.set_personatom(zia_personatom)
     yao_personatom = personatom_shop(dimen, kw.INSERT)
-    yao_personatom.set_arg(kw.partner_name, exx.yao)
-    yao_personatom.set_arg(kw.partner_cred_lumen, 30)
+    yao_personatom.set_arg(kw.contact_name, exx.yao)
+    yao_personatom.set_arg(kw.contact_cred_lumen, 30)
     sue_persondelta.set_personatom(yao_personatom)
 
     # WHEN
@@ -574,16 +574,16 @@ def test_get_persondelta_from_ordered_dict_ReturnsObj():
     pool_attribute = kw.credor_respect
     pool_personatom.set_jvalue(pool_attribute, 100)
     expected_persondelta.set_personatom(pool_personatom)
-    dimen = kw.person_partnerunit
+    dimen = kw.person_contactunit
     zia_personatom = personatom_shop(dimen, kw.INSERT)
-    zia_personatom.set_arg(kw.partner_name, exx.zia)
-    zia_personatom.set_arg(kw.partner_cred_lumen, 70)
+    zia_personatom.set_arg(kw.contact_name, exx.zia)
+    zia_personatom.set_arg(kw.contact_cred_lumen, 70)
     expected_persondelta.set_personatom(zia_personatom)
     sue_person = personunit_shop(exx.sue)
     sue_person.set_credor_respect(100)
     yao_personatom = personatom_shop(dimen, kw.INSERT)
-    yao_personatom.set_arg(kw.partner_name, exx.yao)
-    yao_personatom.set_arg(kw.partner_cred_lumen, 30)
+    yao_personatom.set_arg(kw.contact_name, exx.yao)
+    yao_personatom.set_arg(kw.contact_cred_lumen, 30)
     expected_persondelta.set_personatom(yao_personatom)
     persondelta_dict = expected_persondelta.get_ordered_dict(5)
 
@@ -608,10 +608,10 @@ def test_PersonDelta_c_personatom_exists_ReturnsObj():
     x_persondelta = persondelta_shop()
 
     # WHEN / THEN
-    dimen = kw.person_partnerunit
+    dimen = kw.person_contactunit
     zia_personatom = personatom_shop(dimen, kw.INSERT)
-    zia_personatom.set_arg(kw.partner_name, exx.zia)
-    zia_personatom.set_arg(kw.partner_cred_lumen, 70)
+    zia_personatom.set_arg(kw.contact_name, exx.zia)
+    zia_personatom.set_arg(kw.contact_cred_lumen, 70)
     assert x_persondelta.c_personatom_exists(zia_personatom) is False
 
     # WHEN
@@ -626,10 +626,10 @@ def test_PersonDelta_is_empty_ReturnsObj():
     x_persondelta = persondelta_shop()
 
     # WHEN / THEN
-    dimen = kw.person_partnerunit
+    dimen = kw.person_contactunit
     zia_personatom = personatom_shop(dimen, kw.INSERT)
-    zia_personatom.set_arg(kw.partner_name, exx.zia)
-    zia_personatom.set_arg(kw.partner_cred_lumen, 70)
+    zia_personatom.set_arg(kw.contact_name, exx.zia)
+    zia_personatom.set_arg(kw.contact_cred_lumen, 70)
     assert x_persondelta.atoms_empty()
 
     # WHEN

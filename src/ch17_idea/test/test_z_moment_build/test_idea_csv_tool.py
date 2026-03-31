@@ -1,6 +1,6 @@
 from copy import deepcopy as copy_deepcopy
 from src.ch00_py.file_toolbox import create_path
-from src.ch02_partner.group import awardunit_shop
+from src.ch02_contact.group import awardunit_shop
 from src.ch04_rope.rope import to_rope
 from src.ch07_person_logic.person_main import personunit_shop
 from src.ch09_person_lesson.delta import persondelta_shop
@@ -48,13 +48,13 @@ def test_create_init_stance_idea_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
     expected_stance_csv_strs = {
         "br00000": "moment_rope,epoch_label,c400_number,yr1_jan1_offset,monthday_index,fund_grain,mana_grain,respect_grain,knot,job_listen_rotations\n",
         "br00001": "moment_rope,person_name,bud_time,knot,quota,celldepth\n",
-        "br00002": "moment_rope,person_name,partner_name,tran_time,amount,knot\n",
+        "br00002": "moment_rope,person_name,contact_name,tran_time,amount,knot\n",
         "br00003": "moment_rope,cumulative_minute,hour_label,knot\n",
         "br00004": "moment_rope,cumulative_day,month_label,knot\n",
         "br00005": "moment_rope,weekday_order,weekday_label,knot\n",
         # "br00006": "moment_rope,offi_time,_offi_time_max\n",
-        "br00020": "moment_rope,person_name,partner_name,group_title,group_cred_lumen,group_debt_lumen,knot\n",
-        "br00021": "moment_rope,person_name,partner_name,partner_cred_lumen,partner_debt_lumen,knot\n",
+        "br00020": "moment_rope,person_name,contact_name,group_title,group_cred_lumen,group_debt_lumen,knot\n",
+        "br00021": "moment_rope,person_name,contact_name,contact_cred_lumen,contact_debt_lumen,knot\n",
         "br00022": "person_name,plan_rope,awardee_title,give_force,take_force,knot\n",
         "br00023": "person_name,plan_rope,fact_context,fact_state,fact_lower,fact_upper,knot\n",
         "br00024": "person_name,plan_rope,labor_title,solo,knot\n",
@@ -271,10 +271,10 @@ def test_add_person_to_br00020_csv_ReturnsObj():
     csv_delimiter = ","
     x_ideas = create_init_stance_idea_csv_strs()
     bob_person = personunit_shop(exx.bob, exx.a23)
-    bob_person.add_partnerunit(exx.yao)
+    bob_person.add_contactunit(exx.yao)
     run_credit = 33
     run_debt = 55
-    bob_person.get_partner(exx.yao).add_membership(exx.run, run_credit, run_debt)
+    bob_person.get_contact(exx.yao).add_membership(exx.run, run_credit, run_debt)
     csv_header = x_ideas.get("br00020")
 
     # WHEN
@@ -297,7 +297,7 @@ def test_add_person_to_br00021_csv_ReturnsObj():
     yao_credit = 33
     yao_debt = 55
     bob_person = personunit_shop(exx.bob, exx.a23)
-    bob_person.add_partnerunit(exx.yao, yao_credit, yao_debt)
+    bob_person.add_contactunit(exx.yao, yao_credit, yao_debt)
     csv_header = x_ideas.get("br00021")
 
     # WHEN
@@ -540,7 +540,7 @@ def test_add_personunit_to_stance_csv_strs_ReturnsObj():
     csv_delimiter = ","
     x_ideas = create_init_stance_idea_csv_strs()
     bob_person = personunit_shop(exx.bob, exx.a23)
-    bob_person.add_partnerunit(exx.yao)
+    bob_person.add_contactunit(exx.yao)
     mop_rope = bob_person.make_l1_rope("mop")
     casa_rope = bob_person.make_l1_rope("casa")
     clean_rope = bob_person.make_rope(casa_rope, "clean")

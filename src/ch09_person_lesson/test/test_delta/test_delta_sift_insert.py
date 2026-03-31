@@ -4,59 +4,59 @@ from src.ch09_person_lesson.delta import get_minimal_persondelta, persondelta_sh
 from src.ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
 
 
-def test_get_minimal_persondelta_ReturnsObjWithoutUnecessaryINSERT_person_partnerunit():
+def test_get_minimal_persondelta_ReturnsObjWithoutUnecessaryINSERT_person_contactunit():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
-    sue_person.add_partnerunit(exx.yao)
-    sue_person.add_partnerunit(exx.bob)
+    sue_person.add_contactunit(exx.yao)
+    sue_person.add_contactunit(exx.bob)
 
-    partners_persondelta = persondelta_shop()
-    bob_atom = personatom_shop(kw.person_partnerunit, kw.INSERT)
-    bob_atom.set_arg(kw.partner_name, exx.bob)
-    yao_atom = personatom_shop(kw.person_partnerunit, kw.INSERT)
-    yao_atom.set_arg(kw.partner_name, exx.yao)
-    zia_atom = personatom_shop(kw.person_partnerunit, kw.INSERT)
-    zia_atom.set_arg(kw.partner_name, exx.zia)
-    partners_persondelta.set_personatom(bob_atom)
-    partners_persondelta.set_personatom(yao_atom)
-    partners_persondelta.set_personatom(zia_atom)
-    assert len(partners_persondelta.get_sorted_personatoms()) == 3
-    assert len(sue_person.partners) == 2
+    contacts_persondelta = persondelta_shop()
+    bob_atom = personatom_shop(kw.person_contactunit, kw.INSERT)
+    bob_atom.set_arg(kw.contact_name, exx.bob)
+    yao_atom = personatom_shop(kw.person_contactunit, kw.INSERT)
+    yao_atom.set_arg(kw.contact_name, exx.yao)
+    zia_atom = personatom_shop(kw.person_contactunit, kw.INSERT)
+    zia_atom.set_arg(kw.contact_name, exx.zia)
+    contacts_persondelta.set_personatom(bob_atom)
+    contacts_persondelta.set_personatom(yao_atom)
+    contacts_persondelta.set_personatom(zia_atom)
+    assert len(contacts_persondelta.get_sorted_personatoms()) == 3
+    assert len(sue_person.contacts) == 2
 
     # WHEN
-    new_persondelta = get_minimal_persondelta(partners_persondelta, sue_person)
+    new_persondelta = get_minimal_persondelta(contacts_persondelta, sue_person)
 
     # THEN
     assert len(new_persondelta.get_sorted_personatoms()) == 1
 
 
-def test_sift_ReturnsObjWithoutUnecessaryINSERT_person_partner_membership():
+def test_sift_ReturnsObjWithoutUnecessaryINSERT_person_contact_membership():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
-    sue_person.add_partnerunit(exx.yao)
-    sue_person.add_partnerunit(exx.bob)
-    yao_partnerunit = sue_person.get_partner(exx.yao)
-    yao_partnerunit.add_membership(exx.run)
-    print(f"{yao_partnerunit.memberships.keys()=}")
+    sue_person.add_contactunit(exx.yao)
+    sue_person.add_contactunit(exx.bob)
+    yao_contactunit = sue_person.get_contact(exx.yao)
+    yao_contactunit.add_membership(exx.run)
+    print(f"{yao_contactunit.memberships.keys()=}")
 
-    partners_persondelta = persondelta_shop()
-    bob_run_atom = personatom_shop(kw.person_partner_membership, kw.INSERT)
-    bob_run_atom.set_arg(kw.partner_name, exx.bob)
+    contacts_persondelta = persondelta_shop()
+    bob_run_atom = personatom_shop(kw.person_contact_membership, kw.INSERT)
+    bob_run_atom.set_arg(kw.contact_name, exx.bob)
     bob_run_atom.set_arg(kw.group_title, exx.run)
-    yao_run_atom = personatom_shop(kw.person_partner_membership, kw.INSERT)
-    yao_run_atom.set_arg(kw.partner_name, exx.yao)
+    yao_run_atom = personatom_shop(kw.person_contact_membership, kw.INSERT)
+    yao_run_atom.set_arg(kw.contact_name, exx.yao)
     yao_run_atom.set_arg(kw.group_title, exx.run)
-    zia_run_atom = personatom_shop(kw.person_partner_membership, kw.INSERT)
-    zia_run_atom.set_arg(kw.partner_name, exx.zia)
+    zia_run_atom = personatom_shop(kw.person_contact_membership, kw.INSERT)
+    zia_run_atom.set_arg(kw.contact_name, exx.zia)
     zia_run_atom.set_arg(kw.group_title, exx.run)
-    partners_persondelta.set_personatom(bob_run_atom)
-    partners_persondelta.set_personatom(yao_run_atom)
-    partners_persondelta.set_personatom(zia_run_atom)
-    print(f"{len(partners_persondelta.get_dimen_sorted_personatoms_list())=}")
-    assert len(partners_persondelta.get_dimen_sorted_personatoms_list()) == 3
+    contacts_persondelta.set_personatom(bob_run_atom)
+    contacts_persondelta.set_personatom(yao_run_atom)
+    contacts_persondelta.set_personatom(zia_run_atom)
+    print(f"{len(contacts_persondelta.get_dimen_sorted_personatoms_list())=}")
+    assert len(contacts_persondelta.get_dimen_sorted_personatoms_list()) == 3
 
     # WHEN
-    new_persondelta = get_minimal_persondelta(partners_persondelta, sue_person)
+    new_persondelta = get_minimal_persondelta(contacts_persondelta, sue_person)
 
     # THEN
     assert len(new_persondelta.get_dimen_sorted_personatoms_list()) == 2

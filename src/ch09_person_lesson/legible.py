@@ -12,16 +12,16 @@ def create_legible_list(x_delta: PersonDelta, x_person: PersonUnit) -> list[str]
     atoms_dict = x_delta.personatoms
     personunit_atom = get_leg_obj(atoms_dict, ["UPDATE", "personunit"])
 
-    partnerunit_insert_dict = get_leg_obj(atoms_dict, ["INSERT", "person_partnerunit"])
-    partnerunit_update_dict = get_leg_obj(atoms_dict, ["UPDATE", "person_partnerunit"])
-    partnerunit_delete_dict = get_leg_obj(atoms_dict, ["DELETE", "person_partnerunit"])
+    contactunit_insert_dict = get_leg_obj(atoms_dict, ["INSERT", "person_contactunit"])
+    contactunit_update_dict = get_leg_obj(atoms_dict, ["UPDATE", "person_contactunit"])
+    contactunit_delete_dict = get_leg_obj(atoms_dict, ["DELETE", "person_contactunit"])
 
-    x_list = ["INSERT", "person_partner_membership"]
-    partner_membership_insert_dict = get_leg_obj(atoms_dict, x_list)
-    x_list = ["UPDATE", "person_partner_membership"]
-    partner_membership_update_dict = get_leg_obj(atoms_dict, x_list)
-    x_list = ["DELETE", "person_partner_membership"]
-    partner_membership_delete_dict = get_leg_obj(atoms_dict, x_list)
+    x_list = ["INSERT", "person_contact_membership"]
+    contact_membership_insert_dict = get_leg_obj(atoms_dict, x_list)
+    x_list = ["UPDATE", "person_contact_membership"]
+    contact_membership_update_dict = get_leg_obj(atoms_dict, x_list)
+    x_list = ["DELETE", "person_contact_membership"]
+    contact_membership_delete_dict = get_leg_obj(atoms_dict, x_list)
 
     x_list = ["INSERT", "person_planunit"]
     person_planunit_insert_dict = get_leg_obj(atoms_dict, x_list)
@@ -71,30 +71,30 @@ def create_legible_list(x_delta: PersonDelta, x_person: PersonUnit) -> list[str]
     leg_list = []
     if personunit_atom is not None:
         add_personunit_legible_list(leg_list, personunit_atom, x_person)
-    if partnerunit_insert_dict is not None:
-        add_person_partnerunit_insert_to_legible_list(
-            leg_list, partnerunit_insert_dict, x_person
+    if contactunit_insert_dict is not None:
+        add_person_contactunit_insert_to_legible_list(
+            leg_list, contactunit_insert_dict, x_person
         )
-    if partnerunit_update_dict is not None:
-        add_person_partnerunit_update_to_legible_list(
-            leg_list, partnerunit_update_dict, x_person
+    if contactunit_update_dict is not None:
+        add_person_contactunit_update_to_legible_list(
+            leg_list, contactunit_update_dict, x_person
         )
-    if partnerunit_delete_dict is not None:
-        add_person_partnerunit_delete_to_legible_list(
-            leg_list, partnerunit_delete_dict, x_person
+    if contactunit_delete_dict is not None:
+        add_person_contactunit_delete_to_legible_list(
+            leg_list, contactunit_delete_dict, x_person
         )
 
-    if partner_membership_insert_dict is not None:
-        add_person_partner_membership_insert_to_legible_list(
-            leg_list, partner_membership_insert_dict, x_person
+    if contact_membership_insert_dict is not None:
+        add_person_contact_membership_insert_to_legible_list(
+            leg_list, contact_membership_insert_dict, x_person
         )
-    if partner_membership_update_dict is not None:
-        add_person_partner_membership_update_to_legible_list(
-            leg_list, partner_membership_update_dict, x_person
+    if contact_membership_update_dict is not None:
+        add_person_contact_membership_update_to_legible_list(
+            leg_list, contact_membership_update_dict, x_person
         )
-    if partner_membership_delete_dict is not None:
-        add_person_partner_membership_delete_to_legible_list(
-            leg_list, partner_membership_delete_dict, x_person
+    if contact_membership_delete_dict is not None:
+        add_person_contact_membership_delete_to_legible_list(
+            leg_list, contact_membership_delete_dict, x_person
         )
 
     if person_planunit_insert_dict is not None:
@@ -210,101 +210,101 @@ def add_personunit_legible_list(
         legible_list.append(x_str)
 
 
-def add_person_partnerunit_insert_to_legible_list(
-    legible_list: list[str], partnerunit_dict: PersonAtom, x_person: PersonUnit
+def add_person_contactunit_insert_to_legible_list(
+    legible_list: list[str], contactunit_dict: PersonAtom, x_person: PersonUnit
 ):
-    for partnerunit_atom in partnerunit_dict.values():
-        partner_name = partnerunit_atom.get_value("partner_name")
-        partner_cred_lumen_value = partnerunit_atom.get_value("partner_cred_lumen")
-        partner_debt_lumen_value = partnerunit_atom.get_value("partner_debt_lumen")
-        x_str = f"{partner_name} was added with {partner_cred_lumen_value} score credit and {partner_debt_lumen_value} score debt"
+    for contactunit_atom in contactunit_dict.values():
+        contact_name = contactunit_atom.get_value("contact_name")
+        contact_cred_lumen_value = contactunit_atom.get_value("contact_cred_lumen")
+        contact_debt_lumen_value = contactunit_atom.get_value("contact_debt_lumen")
+        x_str = f"{contact_name} was added with {contact_cred_lumen_value} score credit and {contact_debt_lumen_value} score debt"
         legible_list.append(x_str)
 
 
-def add_person_partnerunit_update_to_legible_list(
-    legible_list: list[str], partnerunit_dict: PersonAtom, x_person: PersonUnit
+def add_person_contactunit_update_to_legible_list(
+    legible_list: list[str], contactunit_dict: PersonAtom, x_person: PersonUnit
 ):
-    for partnerunit_atom in partnerunit_dict.values():
-        partner_name = partnerunit_atom.get_value("partner_name")
-        partner_cred_lumen_value = partnerunit_atom.get_value("partner_cred_lumen")
-        partner_debt_lumen_value = partnerunit_atom.get_value("partner_debt_lumen")
+    for contactunit_atom in contactunit_dict.values():
+        contact_name = contactunit_atom.get_value("contact_name")
+        contact_cred_lumen_value = contactunit_atom.get_value("contact_cred_lumen")
+        contact_debt_lumen_value = contactunit_atom.get_value("contact_debt_lumen")
         if (
-            partner_cred_lumen_value is not None
-            and partner_debt_lumen_value is not None
+            contact_cred_lumen_value is not None
+            and contact_debt_lumen_value is not None
         ):
-            x_str = f"{partner_name} now has {partner_cred_lumen_value} score credit and {partner_debt_lumen_value} score debt."
-        elif partner_cred_lumen_value is not None:
-            x_str = f"{partner_name} now has {partner_cred_lumen_value} score credit."
-        elif partner_debt_lumen_value is not None:
-            x_str = f"{partner_name} now has {partner_debt_lumen_value} score debt."
+            x_str = f"{contact_name} now has {contact_cred_lumen_value} score credit and {contact_debt_lumen_value} score debt."
+        elif contact_cred_lumen_value is not None:
+            x_str = f"{contact_name} now has {contact_cred_lumen_value} score credit."
+        elif contact_debt_lumen_value is not None:
+            x_str = f"{contact_name} now has {contact_debt_lumen_value} score debt."
         legible_list.append(x_str)
 
 
-def add_person_partnerunit_delete_to_legible_list(
-    legible_list: list[str], partnerunit_dict: PersonAtom, x_person: PersonUnit
+def add_person_contactunit_delete_to_legible_list(
+    legible_list: list[str], contactunit_dict: PersonAtom, x_person: PersonUnit
 ):
-    for partnerunit_atom in partnerunit_dict.values():
-        partner_name = partnerunit_atom.get_value("partner_name")
-        x_str = f"{partner_name} was removed from score partners."
+    for contactunit_atom in contactunit_dict.values():
+        contact_name = contactunit_atom.get_value("contact_name")
+        x_str = f"{contact_name} was removed from score contacts."
         legible_list.append(x_str)
 
 
-def add_person_partner_membership_insert_to_legible_list(
+def add_person_contact_membership_insert_to_legible_list(
     legible_list: list[str],
-    partner_membership_insert_dict: dict,
+    contact_membership_insert_dict: dict,
     x_person: PersonUnit,
 ):
-    for partner_membership_dict in partner_membership_insert_dict.values():
-        for partner_membership_atom in partner_membership_dict.values():
-            group_title = partner_membership_atom.get_value("group_title")
-            partner_name = partner_membership_atom.get_value("partner_name")
-            group_cred_lumen_value = partner_membership_atom.get_value(
+    for contact_membership_dict in contact_membership_insert_dict.values():
+        for contact_membership_atom in contact_membership_dict.values():
+            group_title = contact_membership_atom.get_value("group_title")
+            contact_name = contact_membership_atom.get_value("contact_name")
+            group_cred_lumen_value = contact_membership_atom.get_value(
                 "group_cred_lumen"
             )
-            group_debt_lumen_value = partner_membership_atom.get_value(
+            group_debt_lumen_value = contact_membership_atom.get_value(
                 "group_debt_lumen"
             )
-            x_str = f"Group '{group_title}' has new membership {partner_name} with group_cred_lumen_value{group_cred_lumen_value} and group_debt_lumen_value={group_debt_lumen_value}."
+            x_str = f"Group '{group_title}' has new membership {contact_name} with group_cred_lumen_value{group_cred_lumen_value} and group_debt_lumen_value={group_debt_lumen_value}."
             legible_list.append(x_str)
 
 
-def add_person_partner_membership_update_to_legible_list(
+def add_person_contact_membership_update_to_legible_list(
     legible_list: list[str],
-    partner_membership_update_dict: dict,
+    contact_membership_update_dict: dict,
     x_person: PersonUnit,
 ):
-    for partner_membership_dict in partner_membership_update_dict.values():
-        for partner_membership_atom in partner_membership_dict.values():
-            group_title = partner_membership_atom.get_value("group_title")
-            partner_name = partner_membership_atom.get_value("partner_name")
-            group_cred_lumen_value = partner_membership_atom.get_value(
+    for contact_membership_dict in contact_membership_update_dict.values():
+        for contact_membership_atom in contact_membership_dict.values():
+            group_title = contact_membership_atom.get_value("group_title")
+            contact_name = contact_membership_atom.get_value("contact_name")
+            group_cred_lumen_value = contact_membership_atom.get_value(
                 "group_cred_lumen"
             )
-            group_debt_lumen_value = partner_membership_atom.get_value(
+            group_debt_lumen_value = contact_membership_atom.get_value(
                 "group_debt_lumen"
             )
             if (
                 group_cred_lumen_value is not None
                 and group_debt_lumen_value is not None
             ):
-                x_str = f"Group '{group_title}' membership {partner_name} has new group_cred_lumen_value{group_cred_lumen_value} and group_debt_lumen_value={group_debt_lumen_value}."
+                x_str = f"Group '{group_title}' membership {contact_name} has new group_cred_lumen_value{group_cred_lumen_value} and group_debt_lumen_value={group_debt_lumen_value}."
             elif group_cred_lumen_value is not None:
-                x_str = f"Group '{group_title}' membership {partner_name} has new group_cred_lumen_value{group_cred_lumen_value}."
+                x_str = f"Group '{group_title}' membership {contact_name} has new group_cred_lumen_value{group_cred_lumen_value}."
             elif group_debt_lumen_value is not None:
-                x_str = f"Group '{group_title}' membership {partner_name} has new group_debt_lumen_value={group_debt_lumen_value}."
+                x_str = f"Group '{group_title}' membership {contact_name} has new group_debt_lumen_value={group_debt_lumen_value}."
             legible_list.append(x_str)
 
 
-def add_person_partner_membership_delete_to_legible_list(
+def add_person_contact_membership_delete_to_legible_list(
     legible_list: list[str],
-    partner_membership_delete_dict: dict,
+    contact_membership_delete_dict: dict,
     x_person: PersonUnit,
 ):
-    for partner_membership_dict in partner_membership_delete_dict.values():
-        for partner_membership_atom in partner_membership_dict.values():
-            group_title = partner_membership_atom.get_value("group_title")
-            partner_name = partner_membership_atom.get_value("partner_name")
-            x_str = f"Group '{group_title}' no longer has membership {partner_name}."
+    for contact_membership_dict in contact_membership_delete_dict.values():
+        for contact_membership_atom in contact_membership_dict.values():
+            group_title = contact_membership_atom.get_value("group_title")
+            contact_name = contact_membership_atom.get_value("contact_name")
+            x_str = f"Group '{group_title}' no longer has membership {contact_name}."
             legible_list.append(x_str)
 
 

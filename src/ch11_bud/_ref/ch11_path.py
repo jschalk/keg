@@ -6,7 +6,7 @@ from src.ch11_bud._ref.ch11_semantic_types import PersonName
 MOMENT_FILENAME = "moment.json"
 BUDUNIT_FILENAME = "budunit.json"
 CELLNODE_FILENAME = "cell.json"
-CELL_MANDATE_FILENAME = "cell_partner_mandate_ledger.json"
+CELL_MANDATE_FILENAME = "cell_contact_mandate_ledger.json"
 PERSONTIME_FILENAME = "persontime.json"
 PERSONSPARK_FILENAME = "person.json"
 SPARK_ALL_LESSON_FILENAME = "all_lesson.json"
@@ -91,18 +91,18 @@ def create_cell_json_path(
     return create_path(cell_dir, "cell.json")
 
 
-def create_cell_partner_mandate_ledger_path(
+def create_cell_contact_mandate_ledger_path(
     moment_mstr_dir: str,
     moment_lasso: LassoUnit,
     person_name: PersonName,
     bud_time: int,
     bud_ancestors: list[PersonName] = None,
 ) -> str:
-    """Returns path: moment_mstr_dir\\moments\\moment_rope\\persons\\person_name\\buds\n\\bud_time\\ledger_person1\\ledger_person2\\ledger_person3\\cell_partner_mandate_ledger.json"""
+    """Returns path: moment_mstr_dir\\moments\\moment_rope\\persons\\person_name\\buds\n\\bud_time\\ledger_person1\\ledger_person2\\ledger_person3\\cell_contact_mandate_ledger.json"""
     cell_dir = create_cell_dir_path(
         moment_mstr_dir, moment_lasso, person_name, bud_time, bud_ancestors
     )
-    return create_path(cell_dir, "cell_partner_mandate_ledger.json")
+    return create_path(cell_dir, "cell_contact_mandate_ledger.json")
 
 
 def create_person_spark_dir_path(

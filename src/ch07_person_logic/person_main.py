@@ -10,12 +10,12 @@ from src.ch01_allot.allot import (
     valid_allotment_ratio,
     validate_pool_num,
 )
-from src.ch02_partner.group import AwardUnit, GroupUnit, groupunit_shop, membership_shop
-from src.ch02_partner.partner import (
-    PartnerUnit,
-    partnerunit_shop,
-    partnerunits_get_from_dict,
+from src.ch02_contact.contact import (
+    ContactUnit,
+    contactunit_shop,
+    contactunits_get_from_dict,
 )
+from src.ch02_contact.group import AwardUnit, GroupUnit, groupunit_shop, membership_shop
 from src.ch03_workforce.workforce import WorkforceUnit
 from src.ch04_rope.rope import (
     all_ropes_between,
@@ -45,6 +45,7 @@ from src.ch06_plan.plan import (
     planunit_shop,
 )
 from src.ch07_person_logic._ref.ch07_semantic_types import (
+    ContactName,
     FactNum,
     FundGrain,
     FundNum,
@@ -53,7 +54,6 @@ from src.ch07_person_logic._ref.ch07_semantic_types import (
     KnotTerm,
     LabelTerm,
     ManaGrain,
-    PartnerName,
     PersonName,
     ReasonNum,
     RespectGrain,
@@ -80,7 +80,7 @@ class ReasonCaseError(Exception):
     pass
 
 
-class PartnerMissingError(Exception):
+class ContactMissingError(Exception):
     pass
 
 
@@ -111,7 +111,7 @@ class IsRopeTermError(Exception):
 @dataclass
 class PersonUnit:
     person_name: PersonName = None
-    partners: dict[PartnerName, PartnerUnit] = None
+    contacts: dict[ContactName, ContactUnit] = None
     planroot: PlanUnit = None  # planroot.get_rope defines planroot_rope
     knot: KnotTerm = None  # often must defined by creator class
     fund_pool: FundNum = None  # often must defined by creator class
@@ -153,10 +153,10 @@ class PersonUnit:
 
         self.fund_pool = validate_pool_num(x_fund_pool)
 
-    def set_partner_respect(self, x_partner_pool: int):
-        self.set_credor_respect(x_partner_pool)
-        self.set_debtor_respect(x_partner_pool)
-        self.set_fund_pool(x_partner_pool)
+    def set_contact_respect(self, x_contact_pool: int):
+        self.set_credor_respect(x_contact_pool)
+        self.set_debtor_respect(x_contact_pool)
+        self.set_fund_pool(x_contact_pool)
 
     def set_credor_respect(self, new_credor_respect: int):
         if valid_allotment_ratio(new_credor_respect, self.respect_grain) is False:
@@ -293,83 +293,83 @@ class PersonUnit:
             x_groupunit.fund_agenda_give += awardline_fund_give
             x_groupunit.fund_agenda_take += awardline_fund_take
 
-    def add_to_partnerunit_fund_give_take(
+    def add_to_contactunit_fund_give_take(
         self,
-        partnerunit_partner_name: PartnerName,
+        contactunit_contact_name: ContactName,
         fund_give,
         fund_take: float,
         fund_agenda_give: float,
         fund_agenda_take: float,
     ):
-        x_partnerunit = self.get_partner(partnerunit_partner_name)
-        x_partnerunit.add_partner_fund_give_take(
+        x_contactunit = self.get_contact(contactunit_contact_name)
+        x_contactunit.add_contact_fund_give_take(
             fund_give=fund_give,
             fund_take=fund_take,
             fund_agenda_give=fund_agenda_give,
             fund_agenda_take=fund_agenda_take,
         )
 
-    def del_partnerunit(self, partner_name: str):
-        self.partners.pop(partner_name)
+    def del_contactunit(self, contact_name: str):
+        self.contacts.pop(contact_name)
 
-    def add_partnerunit(
+    def add_contactunit(
         self,
-        partner_name: PartnerName,
-        partner_cred_lumen: int = None,
-        partner_debt_lumen: int = None,
+        contact_name: ContactName,
+        contact_cred_lumen: int = None,
+        contact_debt_lumen: int = None,
     ):
         x_knot = self.knot
-        partnerunit = partnerunit_shop(
-            partner_name, partner_cred_lumen, partner_debt_lumen, x_knot
+        contactunit = contactunit_shop(
+            contact_name, contact_cred_lumen, contact_debt_lumen, x_knot
         )
-        self.set_partnerunit(partnerunit)
+        self.set_contactunit(contactunit)
 
-    def set_partnerunit(
-        self, x_partnerunit: PartnerUnit, auto_set_membership: bool = True
+    def set_contactunit(
+        self, x_contactunit: ContactUnit, auto_set_membership: bool = True
     ):
-        if x_partnerunit.groupmark != self.knot:
-            x_partnerunit.groupmark = self.knot
-        if x_partnerunit.respect_grain != self.respect_grain:
-            x_partnerunit.respect_grain = self.respect_grain
-        if auto_set_membership and x_partnerunit.memberships_exist() is False:
-            x_partnerunit.add_membership(x_partnerunit.partner_name)
-        self.partners[x_partnerunit.partner_name] = x_partnerunit
+        if x_contactunit.groupmark != self.knot:
+            x_contactunit.groupmark = self.knot
+        if x_contactunit.respect_grain != self.respect_grain:
+            x_contactunit.respect_grain = self.respect_grain
+        if auto_set_membership and x_contactunit.memberships_exist() is False:
+            x_contactunit.add_membership(x_contactunit.contact_name)
+        self.contacts[x_contactunit.contact_name] = x_contactunit
 
-    def partner_exists(self, partner_name: PartnerName) -> bool:
-        return self.get_partner(partner_name) is not None
+    def contact_exists(self, contact_name: ContactName) -> bool:
+        return self.get_contact(contact_name) is not None
 
-    def edit_partnerunit(
+    def edit_contactunit(
         self,
-        partner_name: PartnerName,
-        partner_cred_lumen: int = None,
-        partner_debt_lumen: int = None,
+        contact_name: ContactName,
+        contact_cred_lumen: int = None,
+        contact_debt_lumen: int = None,
     ):
-        if self.partners.get(partner_name) is None:
-            raise PartnerMissingError(f"PartnerUnit '{partner_name}' does not exist.")
-        x_partnerunit = self.get_partner(partner_name)
-        if partner_cred_lumen is not None:
-            x_partnerunit.set_partner_cred_lumen(partner_cred_lumen)
-        if partner_debt_lumen is not None:
-            x_partnerunit.set_partner_debt_lumen(partner_debt_lumen)
-        self.set_partnerunit(x_partnerunit)
+        if self.contacts.get(contact_name) is None:
+            raise ContactMissingError(f"ContactUnit '{contact_name}' does not exist.")
+        x_contactunit = self.get_contact(contact_name)
+        if contact_cred_lumen is not None:
+            x_contactunit.set_contact_cred_lumen(contact_cred_lumen)
+        if contact_debt_lumen is not None:
+            x_contactunit.set_contact_debt_lumen(contact_debt_lumen)
+        self.set_contactunit(x_contactunit)
 
-    def clear_partnerunits_memberships(self):
-        for x_partnerunit in self.partners.values():
-            x_partnerunit.clear_memberships()
+    def clear_contactunits_memberships(self):
+        for x_contactunit in self.contacts.values():
+            x_contactunit.clear_memberships()
 
-    def get_partner(self, partner_name: PartnerName) -> PartnerUnit:
-        return self.partners.get(partner_name)
+    def get_contact(self, contact_name: ContactName) -> ContactUnit:
+        return self.contacts.get(contact_name)
 
-    def get_partnerunit_group_titles_dict(self) -> dict[GroupTitle, set[PartnerName]]:
+    def get_contactunit_group_titles_dict(self) -> dict[GroupTitle, set[ContactName]]:
         x_dict = {}
-        for x_partnerunit in self.partners.values():
-            for x_group_title in x_partnerunit.memberships.keys():
-                partner_name_set = x_dict.get(x_group_title)
-                if partner_name_set is None:
-                    x_dict[x_group_title] = {x_partnerunit.partner_name}
+        for x_contactunit in self.contacts.values():
+            for x_group_title in x_contactunit.memberships.keys():
+                contact_name_set = x_dict.get(x_group_title)
+                if contact_name_set is None:
+                    x_dict[x_group_title] = {x_contactunit.contact_name}
                 else:
-                    partner_name_set.add(x_partnerunit.partner_name)
-                    x_dict[x_group_title] = partner_name_set
+                    contact_name_set.add(x_contactunit.contact_name)
+                    x_dict[x_group_title] = contact_name_set
         return x_dict
 
     def set_groupunit(self, x_groupunit: GroupUnit):
@@ -384,22 +384,22 @@ class PersonUnit:
 
     def create_symmetry_groupunit(self, x_group_title: GroupTitle) -> GroupUnit:
         x_groupunit = groupunit_shop(x_group_title)
-        for x_partnerunit in self.partners.values():
+        for x_contactunit in self.contacts.values():
             x_membership = membership_shop(
                 group_title=x_group_title,
-                group_cred_lumen=x_partnerunit.partner_cred_lumen,
-                group_debt_lumen=x_partnerunit.partner_debt_lumen,
-                partner_name=x_partnerunit.partner_name,
+                group_cred_lumen=x_contactunit.contact_cred_lumen,
+                group_debt_lumen=x_contactunit.contact_debt_lumen,
+                contact_name=x_contactunit.contact_name,
             )
             x_groupunit.set_g_membership(x_membership)
         return x_groupunit
 
     def get_tree_traverse_generated_groupunits(self) -> set[GroupTitle]:
-        x_partnerunit_group_titles = set(
-            self.get_partnerunit_group_titles_dict().keys()
+        x_contactunit_group_titles = set(
+            self.get_contactunit_group_titles_dict().keys()
         )
         all_group_titles = set(self.groupunits.keys())
-        return all_group_titles.difference(x_partnerunit_group_titles)
+        return all_group_titles.difference(x_contactunit_group_titles)
 
     def _is_plan_rangeroot(self, plan_rope: RopeTerm) -> bool:
         parent_rope = get_parent_rope(plan_rope)
@@ -645,7 +645,7 @@ class PersonUnit:
         awardunits_to_delete = [
             awardunit_awardee_title
             for awardunit_awardee_title in x_plan.awardunits.keys()
-            if self.get_partnerunit_group_titles_dict().get(awardunit_awardee_title)
+            if self.get_contactunit_group_titles_dict().get(awardunit_awardee_title)
             is None
         ]
         for awardunit_awardee_title in awardunits_to_delete:
@@ -654,7 +654,7 @@ class PersonUnit:
             labors_to_delete = [
                 _laborunit_labor_title
                 for _laborunit_labor_title in x_plan.workforceunit.labors
-                if self.get_partnerunit_group_titles_dict().get(_laborunit_labor_title)
+                if self.get_contactunit_group_titles_dict().get(_laborunit_labor_title)
                 is None
             ]
             for _laborunit_labor_title in labors_to_delete:
@@ -801,7 +801,7 @@ class PersonUnit:
     ):
         if healerunit is not None:
             for x_healer_name in healerunit.healer_names:
-                if self.get_partnerunit_group_titles_dict().get(x_healer_name) is None:
+                if self.get_contactunit_group_titles_dict().get(x_healer_name) is None:
                     exception_str = f"Plan cannot edit healerunit because group_title '{x_healer_name}' does not exist as group in Person"
                     raise HealerunitGroupTitleError(exception_str)
 
@@ -876,27 +876,27 @@ reason_case:    {reason_case}"""
     ) -> tuple[dict[str, float], dict[str, float]]:
         credit_ledger = {}
         debt_ledger = {}
-        for x_partnerunit in self.partners.values():
-            credit_ledger[x_partnerunit.partner_name] = x_partnerunit.partner_cred_lumen
-            debt_ledger[x_partnerunit.partner_name] = x_partnerunit.partner_debt_lumen
+        for x_contactunit in self.contacts.values():
+            credit_ledger[x_contactunit.contact_name] = x_contactunit.contact_cred_lumen
+            debt_ledger[x_contactunit.contact_name] = x_contactunit.contact_debt_lumen
         return credit_ledger, debt_ledger
 
     def _allot_offtrack_fund(self):
-        self._add_to_partnerunits_fund_give_take(self.offtrack_fund)
+        self._add_to_contactunits_fund_give_take(self.offtrack_fund)
 
-    def get_partnerunits_partner_cred_lumen_sum(self) -> float:
+    def get_contactunits_contact_cred_lumen_sum(self) -> float:
         return sum(
-            partnerunit.get_partner_cred_lumen()
-            for partnerunit in self.partners.values()
+            contactunit.get_contact_cred_lumen()
+            for contactunit in self.contacts.values()
         )
 
-    def get_partnerunits_partner_debt_lumen_sum(self) -> float:
+    def get_contactunits_contact_debt_lumen_sum(self) -> float:
         return sum(
-            partnerunit.get_partner_debt_lumen()
-            for partnerunit in self.partners.values()
+            contactunit.get_contact_debt_lumen()
+            for contactunit in self.contacts.values()
         )
 
-    def _add_to_partnerunits_fund_give_take(self, plan_plan_fund_total: float):
+    def _add_to_contactunits_fund_give_take(self, plan_plan_fund_total: float):
         credor_ledger, debtor_ledger = self.get_credit_ledger_debt_ledger()
         fund_give_allot = allot_scale(
             credor_ledger, plan_plan_fund_total, self.fund_grain
@@ -904,18 +904,18 @@ reason_case:    {reason_case}"""
         fund_take_allot = allot_scale(
             debtor_ledger, plan_plan_fund_total, self.fund_grain
         )
-        for x_partner_name, partner_fund_give in fund_give_allot.items():
-            self.get_partner(x_partner_name).add_fund_give(partner_fund_give)
+        for x_contact_name, contact_fund_give in fund_give_allot.items():
+            self.get_contact(x_contact_name).add_fund_give(contact_fund_give)
             # if there is no differentiated agenda (what factunits exist do not change agenda)
             if not self.reason_contexts:
-                self.get_partner(x_partner_name).add_fund_agenda_give(partner_fund_give)
-        for x_partner_name, partner_fund_take in fund_take_allot.items():
-            self.get_partner(x_partner_name).add_fund_take(partner_fund_take)
+                self.get_contact(x_contact_name).add_fund_agenda_give(contact_fund_give)
+        for x_contact_name, contact_fund_take in fund_take_allot.items():
+            self.get_contact(x_contact_name).add_fund_take(contact_fund_take)
             # if there is no differentiated agenda (what factunits exist do not change agenda)
             if not self.reason_contexts:
-                self.get_partner(x_partner_name).add_fund_agenda_take(partner_fund_take)
+                self.get_contact(x_contact_name).add_fund_agenda_take(contact_fund_take)
 
-    def _add_to_partnerunits_fund_agenda_give_take(self, plan_plan_fund_total: float):
+    def _add_to_contactunits_fund_agenda_give_take(self, plan_plan_fund_total: float):
         credor_ledger, debtor_ledger = self.get_credit_ledger_debt_ledger()
         fund_give_allot = allot_scale(
             credor_ledger, plan_plan_fund_total, self.fund_grain
@@ -923,10 +923,10 @@ reason_case:    {reason_case}"""
         fund_take_allot = allot_scale(
             debtor_ledger, plan_plan_fund_total, self.fund_grain
         )
-        for x_partner_name, partner_fund_give in fund_give_allot.items():
-            self.get_partner(x_partner_name).add_fund_agenda_give(partner_fund_give)
-        for x_partner_name, partner_fund_take in fund_take_allot.items():
-            self.get_partner(x_partner_name).add_fund_agenda_take(partner_fund_take)
+        for x_contact_name, contact_fund_give in fund_give_allot.items():
+            self.get_contact(x_contact_name).add_fund_agenda_give(contact_fund_give)
+        for x_contact_name, contact_fund_take in fund_take_allot.items():
+            self.get_contact(x_contact_name).add_fund_agenda_take(contact_fund_take)
 
     def _reset_groupunits_fund_give_take(self):
         for groupunit_obj in self.groupunits.values():
@@ -946,7 +946,7 @@ reason_case:    {reason_case}"""
     def _allot_fund_person_agenda(self):
         for plan in self._plan_dict.values():
             # If there are no awardlines associated with plan
-            # allot plan_fund_total via general partnerunit
+            # allot plan_fund_total via general contactunit
             # cred ratio and debt ratio
             # if plan.is_agenda_plan() and plan.awardlines == {}:
             if plan.is_agenda_plan():
@@ -958,7 +958,7 @@ reason_case:    {reason_case}"""
                             awardline_fund_take=x_awardline.fund_take,
                         )
                 else:
-                    self._add_to_partnerunits_fund_agenda_give_take(
+                    self._add_to_contactunits_fund_agenda_give_take(
                         plan.get_plan_fund_total()
                     )
 
@@ -966,38 +966,38 @@ reason_case:    {reason_case}"""
         for x_groupunit in self.groupunits.values():
             x_groupunit._set_membership_fund_give_fund_take()
             for x_membership in x_groupunit.memberships.values():
-                self.add_to_partnerunit_fund_give_take(
-                    partnerunit_partner_name=x_membership.partner_name,
+                self.add_to_contactunit_fund_give_take(
+                    contactunit_contact_name=x_membership.contact_name,
                     fund_give=x_membership.fund_give,
                     fund_take=x_membership.fund_take,
                     fund_agenda_give=x_membership.fund_agenda_give,
                     fund_agenda_take=x_membership.fund_agenda_take,
                 )
 
-    def _set_partnerunits_fund_agenda_ratios(self):
+    def _set_contactunits_fund_agenda_ratios(self):
         fund_agenda_ratio_give_sum = sum(
-            x_partnerunit.fund_agenda_give for x_partnerunit in self.partners.values()
+            x_contactunit.fund_agenda_give for x_contactunit in self.contacts.values()
         )
         fund_agenda_ratio_take_sum = sum(
-            x_partnerunit.fund_agenda_take for x_partnerunit in self.partners.values()
+            x_contactunit.fund_agenda_take for x_contactunit in self.contacts.values()
         )
-        x_partnerunits_partner_cred_lumen_sum = (
-            self.get_partnerunits_partner_cred_lumen_sum()
+        x_contactunits_contact_cred_lumen_sum = (
+            self.get_contactunits_contact_cred_lumen_sum()
         )
-        x_partnerunits_partner_debt_lumen_sum = (
-            self.get_partnerunits_partner_debt_lumen_sum()
+        x_contactunits_contact_debt_lumen_sum = (
+            self.get_contactunits_contact_debt_lumen_sum()
         )
-        for x_partnerunit in self.partners.values():
-            x_partnerunit.set_fund_agenda_ratio_give_take(
+        for x_contactunit in self.contacts.values():
+            x_contactunit.set_fund_agenda_ratio_give_take(
                 fund_agenda_ratio_give_sum=fund_agenda_ratio_give_sum,
                 fund_agenda_ratio_take_sum=fund_agenda_ratio_take_sum,
-                partnerunits_partner_cred_lumen_sum=x_partnerunits_partner_cred_lumen_sum,
-                partnerunits_partner_debt_lumen_sum=x_partnerunits_partner_debt_lumen_sum,
+                contactunits_contact_cred_lumen_sum=x_contactunits_contact_cred_lumen_sum,
+                contactunits_contact_debt_lumen_sum=x_contactunits_contact_debt_lumen_sum,
             )
 
-    def _reset_partnerunit_fund_give_take(self):
-        for partnerunit in self.partners.values():
-            partnerunit.clear_fund_give_take()
+    def _reset_contactunit_fund_give_take(self):
+        for contactunit in self.contacts.values():
+            contactunit.clear_fund_give_take()
 
     def plan_exists(self, rope: RopeTerm) -> bool:
         if rope in {"", None}:
@@ -1097,7 +1097,7 @@ reason_case:    {reason_case}"""
             ):
                 self.offtrack_kids_star_set.add(x_plan.get_plan_rope())
 
-    def _set_groupunit_partnerunit_funds(self, keep_exceptions):
+    def _set_groupunit_contactunit_funds(self, keep_exceptions):
         for x_plan in self._plan_dict.values():
             x_plan.set_awardheirs_fund_give_fund_take()
             if x_plan.is_kidless():
@@ -1131,19 +1131,19 @@ reason_case:    {reason_case}"""
 
             if (
                 group_everyone != False
-                and x_plan_obj.all_partner_cred != False
-                and x_plan_obj.all_partner_debt != False
+                and x_plan_obj.all_contact_cred != False
+                and x_plan_obj.all_contact_debt != False
                 and x_plan_obj.awardheirs != {}
             ) or (
                 group_everyone != False
-                and x_plan_obj.all_partner_cred is False
-                and x_plan_obj.all_partner_debt is False
+                and x_plan_obj.all_contact_cred is False
+                and x_plan_obj.all_contact_debt is False
             ):
                 group_everyone = False
             elif group_everyone != False:
                 group_everyone = True
-            x_plan_obj.all_partner_cred = group_everyone
-            x_plan_obj.all_partner_debt = group_everyone
+            x_plan_obj.all_contact_cred = group_everyone
+            x_plan_obj.all_contact_debt = group_everyone
 
             if x_plan_obj.healerunit.any_healer_name_exists():
                 keep_justified_by_problem = False
@@ -1162,7 +1162,7 @@ reason_case:    {reason_case}"""
         for x_plan in self._plan_dict.values():
             x_plan.clear_awardlines()
             x_plan.clear_descendant_pledge_count()
-            x_plan.clear_all_partner_cred_debt()
+            x_plan.clear_all_contact_cred_debt()
 
     def _set_kids_plan_active(self, x_plan: PlanUnit, parent_plan: PlanUnit):
         x_plan.set_reasonheirs(self._plan_dict, parent_plan.reasonheirs)
@@ -1174,23 +1174,23 @@ reason_case:    {reason_case}"""
         if plan.awardheir_exists():
             self._set_groupunits_plan_fund_total(plan.awardheirs)
         elif plan.awardheir_exists() is False:
-            self._add_to_partnerunits_fund_give_take(plan.get_plan_fund_total())
+            self._add_to_contactunits_fund_give_take(plan.get_plan_fund_total())
 
     def _create_groupunits_metrics(self):
         self.groupunits = {}
         for (
             group_title,
-            partner_name_set,
-        ) in self.get_partnerunit_group_titles_dict().items():
+            contact_name_set,
+        ) in self.get_contactunit_group_titles_dict().items():
             x_groupunit = groupunit_shop(group_title)
-            for x_partner_name in partner_name_set:
-                x_membership = self.get_partner(x_partner_name).get_membership(
+            for x_contact_name in contact_name_set:
+                x_membership = self.get_contact(x_contact_name).get_membership(
                     group_title
                 )
                 x_groupunit.set_g_membership(x_membership)
                 self.set_groupunit(x_groupunit)
 
-    def _set_partnerunit_groupunit_respect_ledgers(self):
+    def _set_contactunit_groupunit_respect_ledgers(self):
         self.credor_respect = RespectNum(validate_pool_num(self.credor_respect))
         self.debtor_respect = RespectNum(validate_pool_num(self.debtor_respect))
         credor_ledger, debtor_ledger = self.get_credit_ledger_debt_ledger()
@@ -1200,12 +1200,12 @@ reason_case:    {reason_case}"""
         debtor_allot = allot_scale(
             debtor_ledger, self.debtor_respect, self.respect_grain
         )
-        for x_partner_name, partner_credor_pool in credor_allot.items():
-            self.get_partner(x_partner_name).set_credor_pool(partner_credor_pool)
-        for x_partner_name, partner_debtor_pool in debtor_allot.items():
-            self.get_partner(x_partner_name).set_debtor_pool(partner_debtor_pool)
+        for x_contact_name, contact_credor_pool in credor_allot.items():
+            self.get_contact(x_contact_name).set_credor_pool(contact_credor_pool)
+        for x_contact_name, contact_debtor_pool in debtor_allot.items():
+            self.get_contact(x_contact_name).set_debtor_pool(contact_debtor_pool)
         self._create_groupunits_metrics()
-        self._reset_partnerunit_fund_give_take()
+        self._reset_contactunit_fund_give_take()
 
     def _clear_plan_dict_and_person_obj_settle_attrs(self):
         self._plan_dict = {self.planroot.get_plan_rope(): self.planroot}
@@ -1238,8 +1238,8 @@ reason_case:    {reason_case}"""
         self._clear_plan_dict_and_person_obj_settle_attrs()
         self._set_plan_dict()
         self._set_plantree_range_attrs()
-        self._set_partnerunit_groupunit_respect_ledgers()
-        self._clear_partnerunit_fund_attrs()
+        self._set_contactunit_groupunit_respect_ledgers()
+        self._clear_contactunit_fund_attrs()
         self._clear_plantree_fund_and_plan_active()
         self._set_plantree_factheirs_workforceheir_awardheirs()
 
@@ -1250,8 +1250,8 @@ reason_case:    {reason_case}"""
             self.tree_traverse_count += 1
 
         self._set_plantree_fund_attrs(self.planroot)
-        self._set_groupunit_partnerunit_funds(keep_exceptions)
-        self._set_partnerunit_fund_related_attrs()
+        self._set_groupunit_contactunit_funds(keep_exceptions)
+        self._set_contactunit_fund_related_attrs()
         self._set_person_keep_attrs()
 
     def _set_plantree_plan_active(self):
@@ -1301,12 +1301,12 @@ reason_case:    {reason_case}"""
         if any_plan_active_has_altered is False:
             self.rational = True
 
-    def _set_partnerunit_fund_related_attrs(self):
+    def _set_contactunit_fund_related_attrs(self):
         self.set_offtrack_fund()
         self._allot_offtrack_fund()
         self._allot_fund_person_agenda()
         self._allot_groupunits_fund()
-        self._set_partnerunits_fund_agenda_ratios()
+        self._set_contactunits_fund_agenda_ratios()
 
     def _set_person_keep_attrs(self):
         self._set_keep_dict()
@@ -1330,11 +1330,11 @@ reason_case:    {reason_case}"""
         for x_keep_rope, x_keep_plan in self._keep_dict.items():
             for x_healer_name in x_keep_plan.healerunit.healer_names:
                 x_groupunit = self.get_groupunit(x_healer_name)
-                for x_partner_name in x_groupunit.memberships.keys():
-                    if _healers_dict.get(x_partner_name) is None:
-                        _healers_dict[x_partner_name] = {x_keep_rope: x_keep_plan}
+                for x_contact_name in x_groupunit.memberships.keys():
+                    if _healers_dict.get(x_contact_name) is None:
+                        _healers_dict[x_contact_name] = {x_keep_rope: x_keep_plan}
                     else:
-                        healer_dict = _healers_dict.get(x_partner_name)
+                        healer_dict = _healers_dict.get(x_contact_name)
                         healer_dict[x_keep_rope] = x_keep_plan
         return _healers_dict
 
@@ -1344,9 +1344,9 @@ reason_case:    {reason_case}"""
             for keep_rope in self._keep_dict.keys()
         )
 
-    def _clear_partnerunit_fund_attrs(self):
+    def _clear_contactunit_fund_attrs(self):
         self._reset_groupunits_fund_give_take()
-        self._reset_partnerunit_fund_give_take()
+        self._reset_contactunit_fund_give_take()
 
     def get_plan_tree_ordered_rope_list(
         self, no_range_descendants: bool = False
@@ -1385,11 +1385,11 @@ reason_case:    {reason_case}"""
                 x_dict[fact_rope] = fact_obj.to_dict()
         return x_dict
 
-    def get_partnerunits_dict(self, all_attrs: bool = False) -> dict[str, str]:
+    def get_contactunits_dict(self, all_attrs: bool = False) -> dict[str, str]:
         x_dict = {}
-        if self.partners is not None:
-            for partner_name, partner_obj in self.partners.items():
-                x_dict[partner_name] = partner_obj.to_dict(all_attrs)
+        if self.contacts is not None:
+            for contact_name, contact_obj in self.contacts.items():
+                x_dict[contact_name] = contact_obj.to_dict(all_attrs)
         return x_dict
 
     def to_dict(self) -> dict[str, str]:
@@ -1404,7 +1404,7 @@ reason_case:    {reason_case}"""
             "max_tree_traverse": self.max_tree_traverse,
             "planroot": self.planroot.to_dict(),
             "respect_grain": self.respect_grain,
-            "partners": self.get_partnerunits_dict(),
+            "contacts": self.get_contactunits_dict(),
         }
         if self.credor_respect is not None:
             x_dict["credor_respect"] = self.credor_respect
@@ -1448,7 +1448,7 @@ def personunit_shop(
         raise IsRopeTermError(exception_str)
     x_person = PersonUnit(
         person_name=person_name,
-        partners=get_empty_dict_if_None(),
+        contacts=get_empty_dict_if_None(),
         groupunits={},
         knot=knot,
         credor_respect=RespectNum(validate_pool_num()),
@@ -1500,9 +1500,9 @@ def get_personunit_from_dict(person_dict: dict) -> PersonUnit:
     x_person.debtor_respect = obj_from_person_dict(person_dict, "debtor_respect")
     x_person.last_lesson_id = obj_from_person_dict(person_dict, "last_lesson_id")
     x_knot = x_person.knot
-    x_partners = obj_from_person_dict(person_dict, "partners", x_knot).values()
-    for x_partnerunit in x_partners:
-        x_person.set_partnerunit(x_partnerunit)
+    x_contacts = obj_from_person_dict(person_dict, "contacts", x_knot).values()
+    for x_contactunit in x_contacts:
+        x_person.set_contactunit(x_contactunit)
     create_planroot_from_person_dict(x_person, person_dict)
 
     return x_person
@@ -1580,8 +1580,8 @@ def create_planroot_kids_from_dict(x_person: PersonUnit, planroot_dict: dict):
 def obj_from_person_dict(
     x_dict: dict[str, dict], dict_key: str, _knot: KnotTerm = None
 ) -> any:
-    if dict_key == "partners":
-        return partnerunits_get_from_dict(x_dict[dict_key], _knot)
+    if dict_key == "contacts":
+        return contactunits_get_from_dict(x_dict[dict_key], _knot)
     elif dict_key == "_max_tree_traverse":
         return (
             x_dict[dict_key]

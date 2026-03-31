@@ -1,0 +1,13 @@
+{
+  "attributes": {
+    "face_name"   : { "otx_key": true  }, 
+    "inx_name"    : { "otx_key": false }, 
+    "moment_rope" : { "otx_key": true  }, 
+    "otx_name"    : { "otx_key": true  }, 
+    "contact_name": { "otx_key": true  }, 
+    "person_name" : { "otx_key": true  }, 
+    "spark_num"   : { "otx_key": true  }
+  }, 
+  "dimens": ["translate_name", "person_contactunit", "momentunit", "personunit"], 
+  "idea_number": "br00113"
+}

@@ -59,7 +59,7 @@ def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario1(
     credit77 = 77
     credit88 = 88
     debt_empty = ""
-    prnptnr_str = kw.person_partnerunit
+    prnptnr_str = kw.person_contactunit
     put_agg_tablename = create_prime_tablename(prnptnr_str, kw.h_vld, "put")
     put_agg_csv_filename = f"{put_agg_tablename}.csv"
     moment_mstr_dir = str(temp3_fs)
@@ -69,10 +69,10 @@ def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario1(
     # a23_bob_e7_dir = create_path(a23_bob_dir, spark7)
     a23_bob_e3_dir = person_spark_dir(moment_mstr_dir, a23_lasso, bob_inx, spark3)
     a23_bob_e7_dir = person_spark_dir(moment_mstr_dir, a23_lasso, bob_inx, spark7)
-    e3_put_csv = f"""{kw.spark_num},{kw.face_name},{kw.moment_rope},{kw.person_name},{kw.partner_name},{kw.partner_cred_lumen},{kw.partner_debt_lumen}
+    e3_put_csv = f"""{kw.spark_num},{kw.face_name},{kw.moment_rope},{kw.person_name},{kw.contact_name},{kw.contact_cred_lumen},{kw.contact_debt_lumen}
 {spark3},{sue_inx},{exx.a23},{bob_inx},{bob_inx},{credit77},{debt_empty}
 """
-    e7_put_csv = f"""{kw.spark_num},{kw.face_name},{kw.moment_rope},{kw.person_name},{kw.partner_name},{kw.partner_cred_lumen},{kw.partner_debt_lumen}
+    e7_put_csv = f"""{kw.spark_num},{kw.face_name},{kw.moment_rope},{kw.person_name},{kw.contact_name},{kw.contact_cred_lumen},{kw.contact_debt_lumen}
 {spark7},{sue_inx},{exx.a23},{bob_inx},{bob_inx},{credit77},{debt_empty}
 {spark7},{sue_inx},{exx.a23},{bob_inx},{sue_inx},{credit88},{debt_empty}
 """
@@ -101,24 +101,24 @@ def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario1(
     # e7_lesson = lessonunit_shop(bob_inx, sue_inx, exx.a23, lessons_dir, atoms_dir, spark7)
     expected_e3_lesson = lessonunit_shop(bob_inx, None, exx.a23, spark_num=spark3)
     expected_e7_lesson = lessonunit_shop(bob_inx, None, exx.a23, spark_num=spark7)
-    prnptnr_dimen = kw.person_partnerunit
+    prnptnr_dimen = kw.person_contactunit
     expected_e3_lesson.persondelta.add_personatom(
         prnptnr_dimen,
         kw.INSERT,
-        jkeys={kw.partner_name: bob_inx},
-        jvalues={kw.partner_cred_lumen: credit77, kw.partner_debt_lumen: None},
+        jkeys={kw.contact_name: bob_inx},
+        jvalues={kw.contact_cred_lumen: credit77, kw.contact_debt_lumen: None},
     )
     expected_e7_lesson.persondelta.add_personatom(
         prnptnr_dimen,
         kw.INSERT,
-        jkeys={kw.partner_name: bob_inx},
-        jvalues={kw.partner_cred_lumen: credit77, kw.partner_debt_lumen: None},
+        jkeys={kw.contact_name: bob_inx},
+        jvalues={kw.contact_cred_lumen: credit77, kw.contact_debt_lumen: None},
     )
     expected_e7_lesson.persondelta.add_personatom(
         prnptnr_dimen,
         kw.INSERT,
-        jkeys={kw.partner_name: sue_inx},
-        jvalues={kw.partner_cred_lumen: credit88, kw.partner_debt_lumen: None},
+        jkeys={kw.contact_name: sue_inx},
+        jvalues={kw.contact_cred_lumen: credit88, kw.contact_debt_lumen: None},
     )
     e3_lessonunit = get_lessonunit_from_dict(open_json(e3_all_lesson_path))
     e7_lessonunit = get_lessonunit_from_dict(open_json(e7_all_lesson_path))
@@ -131,10 +131,10 @@ def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario1(
     assert e3_lessonunit == expected_e3_lesson
     e7_insert = e7_lessonunit.persondelta.personatoms.get("INSERT")
     expected_e7_insert = expected_e7_lesson.persondelta.personatoms.get("INSERT")
-    # print(e7_insert.get("person_partnerunit").keys())
-    # print(expected_e7_insert.get("person_partnerunit").keys())
-    e7_prnptnr = e7_insert.get("person_partnerunit")
-    expected_e7_prnptnr = expected_e7_insert.get("person_partnerunit")
+    # print(e7_insert.get("person_contactunit").keys())
+    # print(expected_e7_insert.get("person_contactunit").keys())
+    e7_prnptnr = e7_insert.get("person_contactunit")
+    expected_e7_prnptnr = expected_e7_insert.get("person_contactunit")
     assert e7_prnptnr.keys() == expected_e7_prnptnr.keys()
     # print(f"{expected_e7_insert.keys()=}")
     assert e7_insert == expected_e7_insert

@@ -138,16 +138,16 @@ def test_get_insert_heard_vld_sqlstrs_ReturnsObj_PopulatesTable_Scenario0(
     x66_debt = 66
 
     create_sound_and_heard_tables(cursor0)
-    prnptnr_h_agg_put_tablename = prime_tbl(kw.person_partnerunit, kw.h_agg, "put")
+    prnptnr_h_agg_put_tablename = prime_tbl(kw.person_contactunit, kw.h_agg, "put")
     print(f"{get_table_columns(cursor0, prnptnr_h_agg_put_tablename)=}")
     insert_into_clause = f"""INSERT INTO {prnptnr_h_agg_put_tablename} (
 {kw.spark_num}
 , {kw.face_name}
 , {kw.moment_rope}
 , {kw.person_name}
-, {kw.partner_name}
-, {kw.partner_cred_lumen}
-, {kw.partner_debt_lumen}
+, {kw.contact_name}
+, {kw.contact_cred_lumen}
+, {kw.contact_debt_lumen}
 )
 VALUES
 ({spark1}, '{exx.sue}', '{exx.a23}','{exx.yao}', '{yao_inx}', {x44_credit}, {x22_debt})
@@ -159,7 +159,7 @@ VALUES
 """
     cursor0.execute(insert_into_clause)
     assert get_row_count(cursor0, prnptnr_h_agg_put_tablename) == 5
-    prnptnr_h_vld_put_tablename = prime_tbl(kw.person_partnerunit, kw.h_vld, "put")
+    prnptnr_h_vld_put_tablename = prime_tbl(kw.person_contactunit, kw.h_vld, "put")
     assert get_row_count(cursor0, prnptnr_h_vld_put_tablename) == 0
 
     # WHEN
@@ -173,9 +173,9 @@ VALUES
 , {kw.face_name}
 , {kw.moment_rope}
 , {kw.person_name}
-, {kw.partner_name}
-, {kw.partner_cred_lumen}
-, {kw.partner_debt_lumen}
+, {kw.contact_name}
+, {kw.contact_cred_lumen}
+, {kw.contact_debt_lumen}
 FROM {prnptnr_h_vld_put_tablename}
 """
     cursor0.execute(select_sqlstr)
@@ -204,16 +204,16 @@ def test_etl_heard_agg_tables_to_heard_vld_tables_PopulatesTable_Scenario0(
     x66_debt = 66
 
     create_sound_and_heard_tables(cursor0)
-    prnptnr_h_agg_put_tablename = prime_tbl(kw.person_partnerunit, kw.h_agg, "put")
+    prnptnr_h_agg_put_tablename = prime_tbl(kw.person_contactunit, kw.h_agg, "put")
     print(f"{get_table_columns(cursor0, prnptnr_h_agg_put_tablename)=}")
     insert_into_clause = f"""INSERT INTO {prnptnr_h_agg_put_tablename} (
 {kw.spark_num}
 , {kw.face_name}
 , {kw.moment_rope}
 , {kw.person_name}
-, {kw.partner_name}
-, {kw.partner_cred_lumen}
-, {kw.partner_debt_lumen}
+, {kw.contact_name}
+, {kw.contact_cred_lumen}
+, {kw.contact_debt_lumen}
 )
 VALUES
 ({spark1}, '{exx.sue}', '{exx.a23}','{exx.yao}', '{yao_inx}', {x44_credit}, {x22_debt})
@@ -225,7 +225,7 @@ VALUES
 """
     cursor0.execute(insert_into_clause)
     assert get_row_count(cursor0, prnptnr_h_agg_put_tablename) == 5
-    prnptnr_h_vld_put_tablename = prime_tbl(kw.person_partnerunit, kw.h_vld, "put")
+    prnptnr_h_vld_put_tablename = prime_tbl(kw.person_contactunit, kw.h_vld, "put")
     assert get_row_count(cursor0, prnptnr_h_vld_put_tablename) == 0
 
     # WHEN
@@ -237,9 +237,9 @@ VALUES
 , {kw.face_name}
 , {kw.moment_rope}
 , {kw.person_name}
-, {kw.partner_name}
-, {kw.partner_cred_lumen}
-, {kw.partner_debt_lumen}
+, {kw.contact_name}
+, {kw.contact_cred_lumen}
+, {kw.contact_debt_lumen}
 FROM {prnptnr_h_vld_put_tablename}
 """
     cursor0.execute(select_sqlstr)

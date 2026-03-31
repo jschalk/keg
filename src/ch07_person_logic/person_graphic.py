@@ -14,7 +14,7 @@ from src.ch06_plan.plan import PlanUnit
 from src.ch07_person_logic.person_main import PersonUnit
 from src.ch07_person_logic.person_report import (
     get_person_agenda_dataframe,
-    get_person_partnerunits_dataframe,
+    get_person_contactunits_dataframe,
 )
 
 
@@ -146,19 +146,19 @@ def display_plantree(
         return x_fig
 
 
-def get_person_partners_plotly_fig(x_person: PersonUnit) -> plotly_Figure:
+def get_person_contacts_plotly_fig(x_person: PersonUnit) -> plotly_Figure:
     column_header_list = [
-        "partner_name",
+        "contact_name",
         "_credor_respect",
-        "partner_cred_lumen",
+        "contact_cred_lumen",
         "_debtor_respect",
-        "partner_debt_lumen",
+        "contact_debt_lumen",
         "fund_give",
         "fund_take",
         "fund_agenda_give",
         "fund_agenda_take",
     ]
-    df = get_person_partnerunits_dataframe(x_person)
+    df = get_person_contactunits_dataframe(x_person)
     df.insert(1, "_credor_respect", x_person.credor_respect)
     df.insert(4, "_debtor_respect", x_person.debtor_respect)
     header_dict = dict(values=column_header_list, fill_color="powderblue", align="left")
@@ -166,11 +166,11 @@ def get_person_partners_plotly_fig(x_person: PersonUnit) -> plotly_Figure:
         header=header_dict,
         cells=dict(
             values=[
-                df.partner_name,
+                df.contact_name,
                 df._credor_respect,
-                df.partner_cred_lumen,
+                df.contact_cred_lumen,
                 df._debtor_respect,
-                df.partner_debt_lumen,
+                df.contact_debt_lumen,
                 df.fund_give,
                 df.fund_take,
                 df.fund_agenda_give,
@@ -182,7 +182,7 @@ def get_person_partners_plotly_fig(x_person: PersonUnit) -> plotly_Figure:
     )
 
     fig = plotly_Figure(data=[x_table])
-    fig_label = f"PersonName '{x_person.person_name}' person partners metrics"
+    fig_label = f"PersonName '{x_person.person_name}' person contacts metrics"
     fig.update_xaxes(showgrid=False)
     fig.update_yaxes(showgrid=False, zeroline=True, showticklabels=False)
     fig.update_layout(plot_bgcolor="white", title=fig_label, title_font_size=20)
@@ -384,10 +384,10 @@ def personunit_graph1(graphics_bool) -> plotly_Figure:
     add_group_rect(fig, base_w, base_h, 2, 0.2, 0.4, "group2")
     add_group_rect(fig, base_w, base_h, 2, 0.4, 0.6, "group3")
     add_group_rect(fig, base_w, base_h, 2, 0.6, 1, "group4")
-    add_people_rect(fig, base_w, base_h, 0, 0, 0.3, "partner0")
-    add_people_rect(fig, base_w, base_h, 0, 0.3, 0.5, "partner1")
-    add_people_rect(fig, base_w, base_h, 0, 0.5, 0.7, "partner2")
-    add_people_rect(fig, base_w, base_h, 0, 0.7, 1, "partner3")
+    add_people_rect(fig, base_w, base_h, 0, 0, 0.3, "contact0")
+    add_people_rect(fig, base_w, base_h, 0, 0.3, 0.5, "contact1")
+    add_people_rect(fig, base_w, base_h, 0, 0.5, 0.7, "contact2")
+    add_people_rect(fig, base_w, base_h, 0, 0.7, 1, "contact3")
 
     fig.add_trace(
         plotly_Scatter(
@@ -521,7 +521,7 @@ def fund_graph0(
     add_keep__rect(fig, -0.5, -4.5, 10, 2.3, d_sue1_label, "", "", "")
     d_sue1_p0 = "Fund Source is PlanRoot. Each Plan fund range calculated by star "
     d_sue1_p1 = "PlanRoot Fund ranges: Black arrows. Sum of childless Plan's fund(s) equal planroot's fund "
-    d_sue1_p2 = "Regular Fund: Green arrows, all fund_grains end up at PartnerUnits"
+    d_sue1_p2 = "Regular Fund: Green arrows, all fund_grains end up at ContactUnits"
     d_sue1_p3 = "Agenda Fund: Blue arrows, fund_grains from active case_tasks"
     d_sue1_p4 = f"fund_pool = {x_person.fund_pool} "
     fig.add_trace(
@@ -555,13 +555,13 @@ def fund_graph0(
     add_rect_arrow(fig, 7, -0.6, 6.25, -0.6, green_str)
     add_rect_arrow(fig, 9, -0.4, 7.75, -0.4, blue_str)
     add_rect_arrow(fig, 9, -0.6, 7.75, -0.6, green_str)
-    partnerunit_str = "partnerunit"
+    contactunit_str = "contactunit"
     purple_str = "purple"
-    add_simp_rect(fig, 9, -0.4, 9.75, 0.2, partnerunit_str, "gold")
-    add_simp_rect(fig, 9, -1.0, 9.75, -0.4, partnerunit_str, "gold")
-    add_simp_rect(fig, 9, -1.6, 9.75, -1.0, partnerunit_str, "gold")
-    add_simp_rect(fig, 9, -2.2, 9.75, -1.6, partnerunit_str, "gold")
-    add_simp_rect(fig, 9, -4.0, 9.75, -2.2, partnerunit_str, "gold")
+    add_simp_rect(fig, 9, -0.4, 9.75, 0.2, contactunit_str, "gold")
+    add_simp_rect(fig, 9, -1.0, 9.75, -0.4, contactunit_str, "gold")
+    add_simp_rect(fig, 9, -1.6, 9.75, -1.0, contactunit_str, "gold")
+    add_simp_rect(fig, 9, -2.2, 9.75, -1.6, contactunit_str, "gold")
+    add_simp_rect(fig, 9, -4.0, 9.75, -2.2, contactunit_str, "gold")
 
     fund_t0 = "PersonUnit.fund_pool"
     fund_t1_0 = "PlanUnit.fund_onset"
@@ -579,10 +579,10 @@ def fund_graph0(
     fund_trace4_2 = "MemberShip.fund_agenda_give"
     fund_trace4_3 = "MemberShip.fund_agenda_take"
 
-    fund_trace5_0 = "PartnerUnit.fund_give"
-    fund_trace5_1 = "PartnerUnit.fund_take"
-    fund_trace5_2 = "PartnerUnit.fund_agenda_give"
-    fund_trace5_3 = "PartnerUnit.fund_agenda_take"
+    fund_trace5_0 = "ContactUnit.fund_give"
+    fund_trace5_1 = "ContactUnit.fund_take"
+    fund_trace5_2 = "ContactUnit.fund_agenda_give"
+    fund_trace5_3 = "ContactUnit.fund_agenda_take"
 
     tracex_list = [fund_t0, fund_t1_0, fund_t1_1, fund_t2_0, fund_t2_1]
     fig.add_trace(

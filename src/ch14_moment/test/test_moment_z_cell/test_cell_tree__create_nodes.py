@@ -69,17 +69,17 @@ def test_create_cell_tree_Scenaro2_LedgerDepth1(temp3_fs):
     x_cell = cellunit_shop(exx.bob, [], spark56, x_celldepth, quota=x_quota)
     bob37_dir = cell_dir(moment_mstr_dir, a23_lasso, exx.bob, tp37, [])
     cellunit_save_to_dir(bob37_dir, x_cell)
-    bob_partners = [[exx.yao], [exx.bob], [exx.zia]]
-    yao_partners = [[exx.zia]]
-    zia_partners = [[exx.bob], [exx.yao]]
+    bob_contacts = [[exx.yao], [exx.bob], [exx.zia]]
+    yao_contacts = [[exx.zia]]
+    zia_contacts = [[exx.bob], [exx.yao]]
     bob_e56_path = save_personspark(
-        moment_mstr_dir, a23_lasso, exx.bob, spark56, bob_partners
+        moment_mstr_dir, a23_lasso, exx.bob, spark56, bob_contacts
     )
     yao_e56_path = save_personspark(
-        moment_mstr_dir, a23_lasso, exx.yao, spark56, yao_partners
+        moment_mstr_dir, a23_lasso, exx.yao, spark56, yao_contacts
     )
     zia_e56_path = save_personspark(
-        moment_mstr_dir, a23_lasso, exx.zia, spark56, zia_partners
+        moment_mstr_dir, a23_lasso, exx.zia, spark56, zia_contacts
     )
     assert os_path_exists(bob_e56_path)
     assert os_path_exists(yao_e56_path)
@@ -165,20 +165,20 @@ def test_create_cell_tree_Scenaro3_LedgerDepth1_MostRecentSpark(temp3_fs):
     x_cell = cellunit_shop(exx.bob, [], spark55, x_celldepth, quota=x_quota)
     bob37_dir = cell_dir(moment_mstr_dir, a23_lasso, exx.bob, tp37, [])
     cellunit_save_to_dir(bob37_dir, x_cell)
-    bob_partners = [[exx.yao], [exx.bob], [exx.zia]]
-    yao_partners = [[exx.zia]]
-    zia_partners = [[exx.bob], [exx.yao]]
+    bob_contacts = [[exx.yao], [exx.bob], [exx.zia]]
+    yao_contacts = [[exx.zia]]
+    zia_contacts = [[exx.bob], [exx.yao]]
     bob_e55_path = save_personspark(
-        moment_mstr_dir, a23_lasso, exx.bob, spark55, bob_partners
+        moment_mstr_dir, a23_lasso, exx.bob, spark55, bob_contacts
     )
     yao_e44_path = save_personspark(
-        moment_mstr_dir, a23_lasso, exx.yao, spark44, yao_partners
+        moment_mstr_dir, a23_lasso, exx.yao, spark44, yao_contacts
     )
     yao_e33_path = save_personspark(
-        moment_mstr_dir, a23_lasso, exx.yao, spark33, yao_partners
+        moment_mstr_dir, a23_lasso, exx.yao, spark33, yao_contacts
     )
     zia_e33_path = save_personspark(
-        moment_mstr_dir, a23_lasso, exx.zia, spark33, zia_partners
+        moment_mstr_dir, a23_lasso, exx.zia, spark33, zia_contacts
     )
     assert os_path_exists(bob_e55_path)
     assert os_path_exists(yao_e44_path)
@@ -267,20 +267,20 @@ def test_create_cell_tree_Scenaro4_LedgerDepth1_OnePersonHasNoPast_personspark(
     x_cell = cellunit_shop(exx.bob, [], spark55, x_celldepth, quota=x_quota)
     bob37_dir = cell_dir(moment_mstr_dir, a23_lasso, exx.bob, tp37, [])
     cellunit_save_to_dir(bob37_dir, x_cell)
-    bob_partners = [[exx.yao], [exx.bob], [exx.zia]]
-    yao_partners = [[exx.zia]]
-    zia_partners = [[exx.bob], [exx.yao]]
+    bob_contacts = [[exx.yao], [exx.bob], [exx.zia]]
+    yao_contacts = [[exx.zia]]
+    zia_contacts = [[exx.bob], [exx.yao]]
     bob_e55_path = save_personspark(
-        moment_mstr_dir, a23_lasso, exx.bob, spark55, bob_partners
+        moment_mstr_dir, a23_lasso, exx.bob, spark55, bob_contacts
     )
     yao_e44_path = save_personspark(
-        moment_mstr_dir, a23_lasso, exx.yao, spark44, yao_partners
+        moment_mstr_dir, a23_lasso, exx.yao, spark44, yao_contacts
     )
     yao_e33_path = save_personspark(
-        moment_mstr_dir, a23_lasso, exx.yao, spark33, yao_partners
+        moment_mstr_dir, a23_lasso, exx.yao, spark33, yao_contacts
     )
     zia_e66_path = save_personspark(
-        moment_mstr_dir, a23_lasso, exx.zia, spark66, zia_partners
+        moment_mstr_dir, a23_lasso, exx.zia, spark66, zia_contacts
     )
     assert os_path_exists(bob_e55_path)
     assert os_path_exists(yao_e44_path)
@@ -352,20 +352,20 @@ def test_create_cell_tree_Scenaro5_LedgerDepth1_ZeroQuotaDoesNotGetCreated(
     x_cell = cellunit_shop(exx.bob, [], spark55, x_celldepth, quota=x_quota)
     bob37_dir = cell_dir(moment_mstr_dir, a23_lasso, exx.bob, tp37, [])
     cellunit_save_to_dir(bob37_dir, x_cell)
-    bob_partners = [[exx.yao], [exx.bob], [exx.zia]]
-    yao_partners = [[exx.zia]]
-    zia_partners = [[exx.bob], [exx.yao]]
+    bob_contacts = [[exx.yao], [exx.bob], [exx.zia]]
+    yao_contacts = [[exx.zia]]
+    zia_contacts = [[exx.bob], [exx.yao]]
     bob_e55_path = save_personspark(
-        moment_mstr_dir, a23_lasso, exx.bob, spark55, bob_partners
+        moment_mstr_dir, a23_lasso, exx.bob, spark55, bob_contacts
     )
     yao_e44_path = save_personspark(
-        moment_mstr_dir, a23_lasso, exx.yao, spark44, yao_partners
+        moment_mstr_dir, a23_lasso, exx.yao, spark44, yao_contacts
     )
     yao_e33_path = save_personspark(
-        moment_mstr_dir, a23_lasso, exx.yao, spark33, yao_partners
+        moment_mstr_dir, a23_lasso, exx.yao, spark33, yao_contacts
     )
     zia_e33_path = save_personspark(
-        moment_mstr_dir, a23_lasso, exx.zia, spark33, zia_partners
+        moment_mstr_dir, a23_lasso, exx.zia, spark33, zia_contacts
     )
     assert os_path_exists(bob_e55_path)
     assert os_path_exists(yao_e44_path)

@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 from io import StringIO as io_StringIO
 from os.path import exists as os_path_exists
 from src.ch00_py.file_toolbox import create_path, get_level1_dirs, save_file
-from src.ch02_partner.partner import PartnerUnit
+from src.ch02_contact.contact import ContactUnit
 from src.ch04_rope.rope import create_rope, is_sub_rope
 from src.ch05_reason.reason_main import ReasonHeir
 from src.ch06_plan.plan import PlanUnit
@@ -182,41 +182,41 @@ def get_gcal_all_agenda_str(
     return gcal_agenda_list_str
 
 
-def get_gcal_partners_str(x_person: PersonUnit) -> str:
-    x_str = "Person Partners"
-    partners_list = list(x_person.partners.values())
-    return create_partners_only_list_str(partners_list, x_str)
+def get_gcal_contacts_str(x_person: PersonUnit) -> str:
+    x_str = "Person Contacts"
+    contacts_list = list(x_person.contacts.values())
+    return create_contacts_only_list_str(contacts_list, x_str)
 
 
-def create_partners_only_list_str(partners_list: list[PartnerUnit], x_str: str) -> str:
-    partners_list.sort(
+def create_contacts_only_list_str(contacts_list: list[ContactUnit], x_str: str) -> str:
+    contacts_list.sort(
         key=lambda pu: (
             -pu.fund_agenda_ratio_give - pu.fund_agenda_ratio_take,
-            pu.partner_name,
+            pu.contact_name,
         )
     )
 
-    for partner in partners_list:
-        give_left = partner.fund_agenda_ratio_give - partner.fund_agenda_ratio_take
+    for contact in contacts_list:
+        give_left = contact.fund_agenda_ratio_give - contact.fund_agenda_ratio_take
         agenda_relative_give = gcal_readable_percent(give_left)
-        x_str += f"\n{agenda_relative_give} {partner.partner_name}"
+        x_str += f"\n{agenda_relative_give} {contact.contact_name}"
     return x_str
 
 
 def get_gcal_memberships_str(x_person: PersonUnit, group_title: GroupTitle) -> str:
     x_str = f"{group_title} Group"
     groupunit = x_person.get_groupunit(group_title)
-    group_partner_names = []
+    group_contact_names = []
     if not groupunit or len(groupunit.memberships) == 0:
         x_str += "\nNo memberships"
     else:
-        group_partner_names.extend(iter(groupunit.memberships.keys()))
-    partners_list = []
-    partners_list.extend(
-        x_person.get_partner(group_partner_name)
-        for group_partner_name in group_partner_names
+        group_contact_names.extend(iter(groupunit.memberships.keys()))
+    contacts_list = []
+    contacts_list.extend(
+        x_person.get_contact(group_contact_name)
+        for group_contact_name in group_contact_names
     )
-    return create_partners_only_list_str(partners_list, x_str)
+    return create_contacts_only_list_str(contacts_list, x_str)
 
 
 def get_gcal_day_punch_from_personunit(
@@ -233,7 +233,7 @@ def get_gcal_day_punch_from_personunit(
     x_dayevents = get_dayevents(x_person, epoch_label, day)
     x_str += f"\n{get_gcal_priorities_schedule_str(x_dayevents)}"
     x_str += f"\n{get_gcal_all_agenda_str(x_person, epoch_label, day)}"
-    x_str += f"\n{get_gcal_partners_str(x_person)}"
+    x_str += f"\n{get_gcal_contacts_str(x_person)}"
     if group_title:
         x_str += f"\n{get_gcal_memberships_str(x_person, group_title)}"
     return x_str

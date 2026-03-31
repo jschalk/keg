@@ -1,12 +1,12 @@
 from src.ch01_allot._ref.ch01_semantic_types import GrainNum, PoolNum, WeightNum
-from src.ch02_partner._ref.ch02_semantic_types import (
+from src.ch02_contact._ref.ch02_semantic_types import (
+    ContactName,
     FundGrain,
     FundNum,
     GroupMark,
     GroupTitle,
     HealerName,
     NameTerm,
-    PartnerName,
     RespectGrain,
     RespectNum,
     TitleTerm,
@@ -24,7 +24,7 @@ from src.ch05_reason._ref.ch05_semantic_types import FactNum, ReasonNum
 class PersonName(LabelTerm):
     """The LabelTerm used to identify a PersonUnit.
     Must be a LabelTerm/NameTerm because when identifying if a PlanUnit is an active pledge the PersonName will be compared
-    against PartnerNames. If they match the pledge will be active."""
+    against ContactNames. If they match the pledge will be active."""
 
     pass
 

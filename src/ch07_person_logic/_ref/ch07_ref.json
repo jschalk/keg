@@ -1,6 +1,6 @@
 {
-  "chapter_blurb": "Defines a PersonUnit as a PlanUnit and PartnerUnits capable of producing an agenda.", 
-  "chapter_content": "A person is a personunit, made of partners and plans. All plans are connected to the planroot, which is given all the funds in a personunit.", 
+  "chapter_blurb": "Defines a PersonUnit as a PlanUnit and ContactUnits capable of producing an agenda.", 
+  "chapter_content": "A person is a personunit, made of contacts and plans. All plans are connected to the planroot, which is given all the funds in a personunit.", 
   "chapter_description": "ch07_person_logic", 
   "chapter_number": 7
 }

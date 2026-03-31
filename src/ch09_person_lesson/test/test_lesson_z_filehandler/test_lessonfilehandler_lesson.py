@@ -480,7 +480,7 @@ def test_LessonFileHandler_create_save_lesson_file_SaveCorrectObj(
     # WHEN
     before_person = sue_lessonfilehandler.default_gut_person()
     after_person = copy_deepcopy(before_person)
-    after_person.add_partnerunit(exx.bob)
+    after_person.add_contactunit(exx.bob)
     sue_lessonfilehandler.create_save_lesson_file(before_person, after_person)
 
     # THEN

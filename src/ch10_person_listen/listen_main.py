@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from src.ch01_allot.allot import allot_scale
 from src.ch04_rope.rope import get_ancestor_ropes, get_first_label_from_rope
 from src.ch06_plan.plan import PlanUnit
-from src.ch07_person_logic.person_main import PartnerUnit, PersonUnit
+from src.ch07_person_logic.person_main import ContactUnit, PersonUnit
 from src.ch09_person_lesson.lasso import LassoUnit, lassounit_shop
 from src.ch09_person_lesson.lesson_filehandler import LessonFileHandler, open_gut_file
 from src.ch10_person_listen._ref.ch10_semantic_types import PersonName, RopeTerm
@@ -43,21 +43,21 @@ def _ingest_perspective_agenda(
     return listener
 
 
-def _allocate_irrational_partner_debt_lumen(
+def _allocate_irrational_contact_debt_lumen(
     listener: PersonUnit, speaker_person_name: PersonName
 ) -> PersonUnit:
-    speaker_partnerunit = listener.get_partner(speaker_person_name)
-    speaker_partner_debt_lumen = speaker_partnerunit.partner_debt_lumen
-    speaker_partnerunit.add_irrational_partner_debt_lumen(speaker_partner_debt_lumen)
+    speaker_contactunit = listener.get_contact(speaker_person_name)
+    speaker_contact_debt_lumen = speaker_contactunit.contact_debt_lumen
+    speaker_contactunit.add_irrational_contact_debt_lumen(speaker_contact_debt_lumen)
     return listener
 
 
-def _allocate_inallocable_partner_debt_lumen(
+def _allocate_inallocable_contact_debt_lumen(
     listener: PersonUnit, speaker_person_name: PersonName
 ) -> PersonUnit:
-    speaker_partnerunit = listener.get_partner(speaker_person_name)
-    speaker_partnerunit.add_inallocable_partner_debt_lumen(
-        speaker_partnerunit.partner_debt_lumen
+    speaker_contactunit = listener.get_contact(speaker_person_name)
+    speaker_contactunit.add_inallocable_contact_debt_lumen(
+        speaker_contactunit.contact_debt_lumen
     )
     return listener
 
@@ -121,20 +121,20 @@ def _add_and_replace_planunit_stars(
         x_planunit.star += x_star
 
 
-def get_debtors_roll(x_duty: PersonUnit) -> list[PartnerUnit]:
+def get_debtors_roll(x_duty: PersonUnit) -> list[ContactUnit]:
     return [
-        x_partnerunit
-        for x_partnerunit in x_duty.partners.values()
-        if x_partnerunit.partner_debt_lumen != 0
+        x_contactunit
+        for x_contactunit in x_duty.contacts.values()
+        if x_contactunit.contact_debt_lumen != 0
     ]
 
 
-def get_ordered_debtors_roll(x_person: PersonUnit) -> list[PartnerUnit]:
-    partners_ordered_list = get_debtors_roll(x_person)
-    partners_ordered_list.sort(
-        key=lambda x: (x.partner_debt_lumen, x.partner_name), reverse=True
+def get_ordered_debtors_roll(x_person: PersonUnit) -> list[ContactUnit]:
+    contacts_ordered_list = get_debtors_roll(x_person)
+    contacts_ordered_list.sort(
+        key=lambda x: (x.contact_debt_lumen, x.contact_name), reverse=True
     )
-    return partners_ordered_list
+    return contacts_ordered_list
 
 
 def migrate_all_facts(src_listener: PersonUnit, dst_listener: PersonUnit):
@@ -172,29 +172,29 @@ def listen_to_speaker_fact(
 
 
 def listen_to_speaker_agenda(listener: PersonUnit, speaker: PersonUnit) -> PersonUnit:
-    if listener.partner_exists(speaker.person_name) is False:
+    if listener.contact_exists(speaker.person_name) is False:
         raise MissingDebtorRespectError(
-            f"listener '{listener.person_name}' person is assumed to have {speaker.person_name} partnerunit."
+            f"listener '{listener.person_name}' person is assumed to have {speaker.person_name} contactunit."
         )
     perspective_person = get_perspective_person(speaker, listener.person_name)
     if perspective_person.rational is False:
-        return _allocate_irrational_partner_debt_lumen(listener, speaker.person_name)
+        return _allocate_irrational_contact_debt_lumen(listener, speaker.person_name)
     if listener.debtor_respect is None:
-        return _allocate_inallocable_partner_debt_lumen(listener, speaker.person_name)
+        return _allocate_inallocable_contact_debt_lumen(listener, speaker.person_name)
     if listener.person_name != speaker.person_name:
         agenda = generate_perspective_agenda(perspective_person)
     else:
         agenda = list(perspective_person.get_all_pledges().values())
     if len(agenda) == 0:
-        return _allocate_inallocable_partner_debt_lumen(listener, speaker.person_name)
+        return _allocate_inallocable_contact_debt_lumen(listener, speaker.person_name)
     return _ingest_perspective_agenda(listener, agenda)
 
 
 def listen_to_agendas_create_init_job_from_guts(
     moment_mstr_dir: str, listener_job: PersonUnit
 ):
-    for x_partnerunit in get_ordered_debtors_roll(listener_job):
-        speaker_id = x_partnerunit.partner_name
+    for x_contactunit in get_ordered_debtors_roll(listener_job):
+        speaker_id = x_contactunit.contact_name
         moment_lasso = lassounit_shop(
             listener_job.planroot.get_plan_rope(), listener_job.knot
         )
@@ -209,8 +209,8 @@ def listen_to_agendas_jobs_into_job(moment_mstr_dir: str, listener_job: PersonUn
     moment_lasso = lassounit_shop(
         listener_job.planroot.get_plan_rope(), listener_job.knot
     )
-    for x_partnerunit in get_ordered_debtors_roll(listener_job):
-        speaker_id = x_partnerunit.partner_name
+    for x_contactunit in get_ordered_debtors_roll(listener_job):
+        speaker_id = x_contactunit.contact_name
         speaker_job = open_job_file(moment_mstr_dir, moment_lasso, speaker_id)
         if speaker_job is None:
             speaker_job = create_empty_person_from_person(listener_job, speaker_id)
@@ -223,8 +223,8 @@ def listen_to_agendas_duty_vision(
     healer_keep_rope: RopeTerm,
 ):
     listener_id = listener_vision.person_name
-    for x_partnerunit in get_ordered_debtors_roll(listener_vision):
-        if x_partnerunit.partner_name == listener_id:
+    for x_contactunit in get_ordered_debtors_roll(listener_vision):
+        if x_contactunit.contact_name == listener_id:
             listener_duty = get_duty_person(
                 moment_mstr_dir=healer_lessonfilehandler.moment_mstr_dir,
                 person_name=healer_lessonfilehandler.person_name,
@@ -235,7 +235,7 @@ def listen_to_agendas_duty_vision(
             )
             listen_to_speaker_agenda(listener_vision, listener_duty)
         else:
-            speaker_id = x_partnerunit.partner_name
+            speaker_id = x_contactunit.contact_name
             healer_name = healer_lessonfilehandler.person_name
             speaker_vision = rj_speaker_person(
                 healer_lessonfilehandler.moment_mstr_dir,
@@ -266,15 +266,15 @@ def listen_to_facts_duty_vision(
         duty_person_name=new_vision.person_name,
     )
     migrate_all_facts(duty, new_vision)
-    for x_partnerunit in get_ordered_debtors_roll(new_vision):
-        if x_partnerunit.partner_name != new_vision.person_name:
+    for x_contactunit in get_ordered_debtors_roll(new_vision):
+        if x_contactunit.contact_name != new_vision.person_name:
             speaker_vision = get_vision_person(
                 healer_lessonfilehandler.moment_mstr_dir,
                 healer_lessonfilehandler.person_name,
                 healer_lessonfilehandler.moment_lasso.moment_rope,
                 healer_keep_rope,
                 healer_lessonfilehandler.moment_lasso.knot,
-                x_partnerunit.partner_name,
+                x_contactunit.contact_name,
             )
             if speaker_vision is not None:
                 listen_to_speaker_fact(new_vision, speaker_vision)
@@ -283,8 +283,8 @@ def listen_to_facts_duty_vision(
 def listen_to_facts_gut_job(moment_mstr_dir: str, new_job: PersonUnit):
     moment_lasso = lassounit_shop(new_job.planroot.get_plan_rope(), new_job.knot)
     old_job = open_job_file(moment_mstr_dir, moment_lasso, new_job.person_name)
-    for x_partnerunit in get_ordered_debtors_roll(old_job):
-        speaker_id = x_partnerunit.partner_name
+    for x_contactunit in get_ordered_debtors_roll(old_job):
+        speaker_id = x_contactunit.contact_name
         speaker_job = open_job_file(moment_mstr_dir, moment_lasso, speaker_id)
         if speaker_job is not None:
             listen_to_speaker_fact(new_job, speaker_job)

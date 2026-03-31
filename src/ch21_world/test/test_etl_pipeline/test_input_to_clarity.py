@@ -20,7 +20,7 @@ from src.ch11_bud._ref.ch11_path import (
     create_spark_expressed_lesson_path as expressed_path,
 )
 from src.ch14_moment._ref.ch14_path import (
-    create_bud_partner_mandate_ledger_path as bud_mandate,
+    create_bud_contact_mandate_ledger_path as bud_mandate,
 )
 from src.ch17_idea.idea_db_tool import save_sheet
 from src.ch18_etl_config._ref.ch18_path import (
@@ -53,7 +53,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario0_br000113PopulatesTables(
         kw.spark_num,
         kw.moment_rope,
         kw.person_name,
-        kw.partner_name,
+        kw.contact_name,
         kw.otx_name,
         kw.inx_name,
     ]
@@ -131,15 +131,15 @@ def test_sheets_input_to_lynx_with_cursor_Scenario0_br000113PopulatesTables(
     assert not os_path_exists(a23_sue_job_path)
     assert not db_table_exists(cursor0, kw.moment_ote1_agg)
     assert not db_table_exists(cursor0, prnptnr_job)
-    assert not db_table_exists(cursor0, kw.moment_partner_nets)
-    assert not db_table_exists(cursor0, kw.moment_kpi001_partner_nets)
+    assert not db_table_exists(cursor0, kw.moment_contact_nets)
+    assert not db_table_exists(cursor0, kw.moment_kpi001_contact_nets)
     assert not os_path_exists(last_run_metrics_path)
 
     # # create personunits
     # self.person_tables_to_spark_person_csvs(cursor)
 
     # # create all moment_job and mandate reports
-    # calc_moment_bud_partner_mandate_net_ledgers(moment_mstr_dir)
+    # calc_moment_bud_contact_mandate_net_ledgers(moment_mstr_dir)
 
     # WHEN
     sheets_input_to_lynx_with_cursor(
@@ -196,9 +196,9 @@ def test_sheets_input_to_lynx_with_cursor_Scenario0_br000113PopulatesTables(
     assert sue_gut.plan_exists(creg_rope)
     assert os_path_exists(a23_sue_job_path)
     assert get_row_count(cursor0, prnptnr_job) == 1
-    assert get_row_count(cursor0, kw.moment_partner_nets) == 0
+    assert get_row_count(cursor0, kw.moment_contact_nets) == 0
     # assert get_row_count(cursor, moment_ote1_agg_tablename) == 0
-    assert get_row_count(cursor0, kw.moment_kpi001_partner_nets) == 0
+    assert get_row_count(cursor0, kw.moment_kpi001_contact_nets) == 0
     assert os_path_exists(last_run_metrics_path)
 
 
@@ -218,7 +218,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
         kw.spark_num,
         kw.moment_rope,
         kw.person_name,
-        kw.partner_name,
+        kw.contact_name,
         kw.otx_name,
         kw.inx_name,
     ]
@@ -309,8 +309,8 @@ def test_sheets_input_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     assert not os_path_exists(a23_sue_job_path)
     assert not db_table_exists(cursor0, kw.moment_ote1_agg)
     assert not os_path_exists(sue37_mandate_path)
-    assert not db_table_exists(cursor0, kw.moment_partner_nets)
-    assert not db_table_exists(cursor0, kw.moment_kpi001_partner_nets)
+    assert not db_table_exists(cursor0, kw.moment_contact_nets)
+    assert not db_table_exists(cursor0, kw.moment_kpi001_contact_nets)
     # self.moment_agg_tables_to_moment_ote1_agg(cursor)
     moments_dir = create_path(mstr_dir, "moments")
     print(f"{get_level1_dirs(moments_dir)=}")
@@ -319,7 +319,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     # self.person_tables_to_spark_person_csvs(cursor)
 
     # # create all moment_job and mandate reports
-    # calc_moment_bud_partner_mandate_net_ledgers(moment_mstr_dir)
+    # calc_moment_bud_contact_mandate_net_ledgers(moment_mstr_dir)
 
     # WHEN
     sheets_input_to_lynx_with_cursor(
@@ -359,8 +359,8 @@ def test_sheets_input_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     assert get_row_count(cursor0, kw.moment_ote1_agg) == 1
     print(f"{sue37_mandate_path=}")
     assert os_path_exists(sue37_mandate_path)
-    assert get_row_count(cursor0, kw.moment_partner_nets) == 1
-    assert get_row_count(cursor0, kw.moment_kpi001_partner_nets) == 1
+    assert get_row_count(cursor0, kw.moment_contact_nets) == 1
+    assert get_row_count(cursor0, kw.moment_kpi001_contact_nets) == 1
 
 
 def test_sheets_input_to_lynx_with_cursor_Scenario2_PopulateMomentTranBook(
@@ -378,7 +378,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario2_PopulateMomentTranBook(
         kw.face_name,
         kw.moment_rope,
         kw.person_name,
-        kw.partner_name,
+        kw.contact_name,
         kw.tran_time,
         kw.amount,
         kw.knot,
@@ -391,7 +391,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario2_PopulateMomentTranBook(
     br00002_ex0_str = f"example0_{br00002_str}"
     save_sheet(input_file_path, br00002_ex0_str, br00002_df)
 
-    assert not db_table_exists(cursor0, kw.moment_partner_nets)
+    assert not db_table_exists(cursor0, kw.moment_contact_nets)
 
     # WHEN
     sheets_input_to_lynx_with_cursor(
@@ -399,7 +399,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario2_PopulateMomentTranBook(
     )
 
     # THEN
-    assert get_row_count(cursor0, kw.moment_partner_nets) == 1
+    assert get_row_count(cursor0, kw.moment_contact_nets) == 1
 
 
 def test_sheets_input_to_lynx_with_cursor_Scenario3_WhenNoMomentIdeas_ote1_IsStillCreated(
@@ -416,7 +416,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario3_WhenNoMomentIdeas_ote1_IsSti
         kw.face_name,
         kw.moment_rope,
         kw.person_name,
-        kw.partner_name,
+        kw.contact_name,
     ]
     br00011_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
     br00011_df = DataFrame(br00011_rows, columns=br00011_columns)
@@ -519,7 +519,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario5_CreatesFiles(
         kw.face_name,
         kw.moment_rope,
         kw.person_name,
-        kw.partner_name,
+        kw.contact_name,
     ]
     br00011_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
     br00011_df = DataFrame(br00011_rows, columns=br00011_columns)
@@ -570,7 +570,7 @@ def test_sheets_input_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
         kw.spark_num,
         kw.moment_rope,
         kw.person_name,
-        kw.partner_name,
+        kw.contact_name,
         kw.otx_name,
         kw.inx_name,
     ]

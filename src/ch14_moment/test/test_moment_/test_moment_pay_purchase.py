@@ -235,8 +235,8 @@ def test_MomentUnit_set_all_tranbook_SetsAttr():
     bob_bud_net = 445
     sue_x40000_bud = x_moment.get_personbudhistory(exx.sue).get_bud(x40000_tran_time)
     sue_x70000_bud = x_moment.get_personbudhistory(exx.sue).get_bud(x70000_tran_time)
-    sue_x40000_bud.set_bud_partner_net(exx.bob, bob_bud_net)
-    sue_x70000_bud.set_bud_partner_net(exx.zia, zia_bud_net)
+    sue_x40000_bud.set_bud_contact_net(exx.bob, bob_bud_net)
+    sue_x70000_bud.set_bud_contact_net(exx.zia, zia_bud_net)
 
     assert x_moment.all_tranbook == tranbook_shop(x_moment.moment_rope)
     assert x_moment.paypurchase_exists(exx.sue, exx.bob, t55_t)
@@ -245,8 +245,8 @@ def test_MomentUnit_set_all_tranbook_SetsAttr():
     assert x_moment.paypurchase_exists(exx.sue, exx.yao, t88_t)
     assert x_moment.paypurchase_exists(exx.bob, exx.sue, t99_t)
 
-    assert sue_x40000_bud.bud_partner_net_exists(exx.bob)
-    assert sue_x70000_bud.bud_partner_net_exists(exx.zia)
+    assert sue_x40000_bud.bud_contact_net_exists(exx.bob)
+    assert sue_x70000_bud.bud_contact_net_exists(exx.zia)
     # x_moment.add_budunit()
 
     # WHEN

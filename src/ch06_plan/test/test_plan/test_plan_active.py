@@ -1,4 +1,4 @@
-from src.ch02_partner.group import awardheir_shop, awardunit_shop
+from src.ch02_contact.group import awardheir_shop, awardunit_shop
 from src.ch03_workforce.workforce import workforceheir_shop, workforceunit_shop
 from src.ch04_rope.rope import create_rope
 from src.ch05_reason.reason_main import (
@@ -12,19 +12,19 @@ from src.ch06_plan.plan import planunit_shop
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_PlanUnit_clear_all_partner_cred_debt_ClearsAttrs():
+def test_PlanUnit_clear_all_contact_cred_debt_ClearsAttrs():
     # ESTABLISH
     ball_str = "ball"
-    ball_plan = planunit_shop(ball_str, all_partner_cred=55, all_partner_debt=33)
-    assert ball_plan.all_partner_cred == 55
-    assert ball_plan.all_partner_debt == 33
+    ball_plan = planunit_shop(ball_str, all_contact_cred=55, all_contact_debt=33)
+    assert ball_plan.all_contact_cred == 55
+    assert ball_plan.all_contact_debt == 33
 
     # WHEN
-    ball_plan.clear_all_partner_cred_debt()
+    ball_plan.clear_all_contact_cred_debt()
 
     # THEN
-    assert ball_plan.all_partner_cred is None
-    assert ball_plan.all_partner_debt is None
+    assert ball_plan.all_contact_cred is None
+    assert ball_plan.all_contact_debt is None
 
 
 def test_PlanUnit_set_fund_attr_ReturnsObj():

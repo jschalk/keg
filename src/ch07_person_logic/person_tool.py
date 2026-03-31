@@ -5,8 +5,8 @@ from src.ch00_py.dict_toolbox import (
     modular_addition,
 )
 from src.ch01_allot.allot import allot_scale
-from src.ch02_partner.group import AwardUnit, MemberShip
-from src.ch02_partner.partner import PartnerUnit, calc_give_take_net
+from src.ch02_contact.contact import ContactUnit, calc_give_take_net
+from src.ch02_contact.group import AwardUnit, MemberShip
 from src.ch04_rope.rope import get_unique_short_ropes, is_sub_rope
 from src.ch05_reason.reason_main import (
     CaseUnit,
@@ -16,8 +16,8 @@ from src.ch05_reason.reason_main import (
 )
 from src.ch06_plan.plan import PlanUnit
 from src.ch07_person_logic._ref.ch07_semantic_types import (
+    ContactName,
     FundNum,
-    PartnerName,
     RespectNum,
     RopeTerm,
 )
@@ -28,19 +28,19 @@ def personunit_exists(x_person: PersonUnit) -> bool:
     return x_person is not None
 
 
-def person_partnerunit_exists(x_person: PersonUnit, jkeys: dict[str, any]) -> bool:
-    x_partner_name = jkeys.get("partner_name")
-    return False if x_person is None else x_person.partner_exists(x_partner_name)
+def person_contactunit_exists(x_person: PersonUnit, jkeys: dict[str, any]) -> bool:
+    x_contact_name = jkeys.get("contact_name")
+    return False if x_person is None else x_person.contact_exists(x_contact_name)
 
 
-def person_partner_membership_exists(
+def person_contact_membership_exists(
     x_person: PersonUnit, jkeys: dict[str, any]
 ) -> bool:
-    x_partner_name = jkeys.get("partner_name")
+    x_contact_name = jkeys.get("contact_name")
     x_group_title = jkeys.get("group_title")
     return bool(
-        person_partnerunit_exists(x_person, jkeys)
-        and x_person.get_partner(x_partner_name).membership_exists(x_group_title)
+        person_contactunit_exists(x_person, jkeys)
+        and x_person.get_contact(x_contact_name).membership_exists(x_group_title)
     )
 
 
@@ -111,10 +111,10 @@ def person_plan_factunit_exists(x_person: PersonUnit, jkeys: dict[str, any]) -> 
 def person_attr_exists(
     x_dimen: str, x_person: PersonUnit, jkeys: dict[str, any]
 ) -> bool:
-    if x_dimen == "person_partner_membership":
-        return person_partner_membership_exists(x_person, jkeys)
-    elif x_dimen == "person_partnerunit":
-        return person_partnerunit_exists(x_person, jkeys)
+    if x_dimen == "person_contact_membership":
+        return person_contact_membership_exists(x_person, jkeys)
+    elif x_dimen == "person_contactunit":
+        return person_contactunit_exists(x_person, jkeys)
     elif x_dimen == "person_plan_awardunit":
         return person_plan_awardunit_exists(x_person, jkeys)
     elif x_dimen == "person_plan_factunit":
@@ -134,18 +134,18 @@ def person_attr_exists(
     return True
 
 
-def person_partnerunit_get_obj(
+def person_contactunit_get_obj(
     x_person: PersonUnit, jkeys: dict[str, any]
-) -> PartnerUnit:
-    return x_person.get_partner(jkeys.get("partner_name"))
+) -> ContactUnit:
+    return x_person.get_contact(jkeys.get("contact_name"))
 
 
-def person_partner_membership_get_obj(
+def person_contact_membership_get_obj(
     x_person: PersonUnit, jkeys: dict[str, any]
 ) -> MemberShip:
-    x_partner_name = jkeys.get("partner_name")
+    x_contact_name = jkeys.get("contact_name")
     x_group_title = jkeys.get("group_title")
-    return x_person.get_partner(x_partner_name).get_membership(x_group_title)
+    return x_person.get_contact(x_contact_name).get_membership(x_group_title)
 
 
 def person_planunit_get_obj(x_person: PersonUnit, jkeys: dict[str, any]) -> PlanUnit:
@@ -197,8 +197,8 @@ def person_get_obj(x_dimen: str, x_person: PersonUnit, jkeys: dict[str, any]) ->
         return x_person
 
     x_dimens = {
-        "person_partnerunit": person_partnerunit_get_obj,
-        "person_partner_membership": person_partner_membership_get_obj,
+        "person_contactunit": person_contactunit_get_obj,
+        "person_contact_membership": person_contact_membership_get_obj,
         "person_planunit": person_planunit_get_obj,
         "person_plan_awardunit": person_plan_awardunit_get_obj,
         "person_plan_reasonunit": person_plan_reasonunit_get_obj,
@@ -209,7 +209,7 @@ def person_get_obj(x_dimen: str, x_person: PersonUnit, jkeys: dict[str, any]) ->
         return x_func(x_person, jkeys)
 
 
-def get_person_partner_agenda_award_array(
+def get_person_contact_agenda_award_array(
     x_person: PersonUnit, conpute: bool = None
 ) -> list[list]:
     if conpute:
@@ -217,40 +217,40 @@ def get_person_partner_agenda_award_array(
 
     x_list = [
         [
-            x_partner.partner_name,
-            x_partner.fund_agenda_take,
-            x_partner.fund_agenda_give,
+            x_contact.contact_name,
+            x_contact.fund_agenda_take,
+            x_contact.fund_agenda_give,
         ]
-        for x_partner in x_person.partners.values()
+        for x_contact in x_person.contacts.values()
     ]
     x_list.sort(key=lambda y: y[0], reverse=False)
     return x_list
 
 
-def get_person_partner_agenda_award_csv(
+def get_person_contact_agenda_award_csv(
     x_person: PersonUnit, conpute: bool = None
 ) -> str:
-    x_partner_agenda_award_array = get_person_partner_agenda_award_array(
+    x_contact_agenda_award_array = get_person_contact_agenda_award_array(
         x_person, conpute
     )
-    x_headers = ["partner_name", "fund_agenda_take", "fund_agenda_give"]
-    return create_csv(x_headers, x_partner_agenda_award_array)
+    x_headers = ["contact_name", "fund_agenda_take", "fund_agenda_give"]
+    return create_csv(x_headers, x_contact_agenda_award_array)
 
 
-def get_partner_mandate_ledger(
+def get_contact_mandate_ledger(
     x_person: PersonUnit, conpute: bool = None
-) -> dict[PartnerName, FundNum]:
+) -> dict[ContactName, FundNum]:
     if not x_person:
         return {}
-    if len(x_person.partners) == 0:
+    if len(x_person.contacts) == 0:
         return {x_person.person_name: x_person.fund_pool}
 
     if conpute:
         x_person.conpute()
-    person_partners = x_person.partners.values()
+    person_contacts = x_person.contacts.values()
     mandates = {
-        x_partner.partner_name: x_partner.fund_agenda_give
-        for x_partner in person_partners
+        x_contact.contact_name: x_contact.fund_agenda_give
+        for x_contact in person_contacts
     }
     mandate_sum = sum(mandates.values())
     if mandate_sum == 0:
@@ -261,33 +261,33 @@ def get_partner_mandate_ledger(
 
 
 def reset_mandates_to_minimum(
-    mandates: dict[PartnerName, FundNum], mana_grain: FundNum
-) -> dict[PartnerName, FundNum]:
+    mandates: dict[ContactName, FundNum], mana_grain: FundNum
+) -> dict[ContactName, FundNum]:
     """Reset all mandates to the minimum value (mana_grain)."""
 
-    partner_names = set(mandates.keys())
-    for partner_name in partner_names:
-        mandates[partner_name] = mana_grain
+    contact_names = set(mandates.keys())
+    for contact_name in contact_names:
+        mandates[contact_name] = mana_grain
     return mandates
 
 
-def get_partner_agenda_net_ledger(
+def get_contact_agenda_net_ledger(
     x_person: PersonUnit, conpute: bool = None
-) -> dict[PartnerName, FundNum]:
+) -> dict[ContactName, FundNum]:
     if conpute:
         x_person.conpute()
 
     x_dict = {}
-    for x_partner in x_person.partners.values():
+    for x_contact in x_person.contacts.values():
         settle_net = calc_give_take_net(
-            x_partner.fund_agenda_give, x_partner.fund_agenda_take
+            x_contact.fund_agenda_give, x_contact.fund_agenda_take
         )
         if settle_net != 0:
-            x_dict[x_partner.partner_name] = settle_net
+            x_dict[x_contact.contact_name] = settle_net
     return x_dict
 
 
-def get_credit_ledger(x_person: PersonUnit) -> dict[PartnerUnit, RespectNum]:
+def get_credit_ledger(x_person: PersonUnit) -> dict[ContactUnit, RespectNum]:
     credit_ledger, debt_ledger = x_person.get_credit_ledger_debt_ledger()
     return credit_ledger
 

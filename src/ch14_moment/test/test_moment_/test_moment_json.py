@@ -36,7 +36,7 @@ def test_MomentUnit_to_dict_ReturnsObjWith_paybook(temp3_dir):
     amy_moment.add_budunit(exx.sue, sue_x7_tran_time, sue_x7_quota)
     amy_moment.add_paypurchase(
         person_name=exx.bob,
-        partner_name=exx.sue,
+        contact_name=exx.sue,
         tran_time=pay_tran_time,
         amount=bob_sue_amount,
     )
@@ -125,7 +125,7 @@ def test_get_momentunit_from_dict_ReturnsObj_Scenario0_WithParameters(temp3_dir)
     amy_moment.mana_grain = sue_mana_grain
     amy_moment.add_paypurchase(
         person_name=exx.bob,
-        partner_name=exx.sue,
+        contact_name=exx.sue,
         tran_time=pay_tran_time,
         amount=bob_sue_amount,
     )

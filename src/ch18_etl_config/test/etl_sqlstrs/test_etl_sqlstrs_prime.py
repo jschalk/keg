@@ -722,7 +722,7 @@ def test_create_insert_missing_face_name_into_translate_core_vld_sqlstr_ReturnsO
     # ESTABLISH
     default_knot = "|"
     default_unknown_str = "unknown2"
-    prnptnr_s_agg_tablename = prime_tbl(kw.person_partnerunit, "s_agg")
+    prnptnr_s_agg_tablename = prime_tbl(kw.person_contactunit, "s_agg")
 
     # WHEN
     insert_sqlstr = create_insert_missing_face_name_into_translate_core_vld_sqlstr(

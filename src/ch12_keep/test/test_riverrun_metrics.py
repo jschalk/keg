@@ -5,19 +5,19 @@ from src.ref.keywords import ExampleStrs as exx
 def test_RiverRun_calc_metrics_SetsAttrsScenario01(temp3_dir):
     # ESTABLISH / WHEN
     mstr_dir = temp3_dir
-    yao_partner_cred_lumen = 500
+    yao_contact_cred_lumen = 500
     x_keep_point_magnitude = 444
     x_riverrun = riverrun_shop(
         mstr_dir, exx.a23, exx.yao, keep_point_magnitude=x_keep_point_magnitude
     )
-    x_riverrun.set_keep_patientledger(exx.yao, exx.yao, yao_partner_cred_lumen)
-    assert x_riverrun.get_partner_need_due(exx.yao) == 0
+    x_riverrun.set_keep_patientledger(exx.yao, exx.yao, yao_contact_cred_lumen)
+    assert x_riverrun.get_contact_need_due(exx.yao) == 0
 
     # WHEN
     x_riverrun.calc_metrics()
 
     # THEN
-    assert x_riverrun.get_partner_need_due(exx.yao) == 0
+    assert x_riverrun.get_contact_need_due(exx.yao) == 0
     assert x_riverrun.cycle_count == 1
     assert x_riverrun.doctor_count == 0
     assert x_riverrun.patient_count == 1
@@ -46,21 +46,21 @@ def test_RiverRun_calc_metrics_SetsAttrsScenario01(temp3_dir):
 def test_RiverRun_calc_metrics_SetsAttrsScenario02(temp3_dir):
     # ESTABLISH / WHEN
     mstr_dir = temp3_dir
-    yao_partner_cred_lumen = 500
-    bob_partner_debt_lumen = 350
+    yao_contact_cred_lumen = 500
+    bob_contact_debt_lumen = 350
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
-    x_riverrun.set_keep_patientledger(exx.yao, exx.yao, yao_partner_cred_lumen)
-    x_riverrun.set_need_dues({exx.bob: bob_partner_debt_lumen})
-    assert x_riverrun.get_partner_need_due(exx.yao) == 0
+    x_riverrun.set_keep_patientledger(exx.yao, exx.yao, yao_contact_cred_lumen)
+    x_riverrun.set_need_dues({exx.bob: bob_contact_debt_lumen})
+    assert x_riverrun.get_contact_need_due(exx.yao) == 0
     keep_mana_amount = x_riverrun.keep_point_magnitude
-    assert x_riverrun.get_partner_need_due(exx.bob) == keep_mana_amount
+    assert x_riverrun.get_contact_need_due(exx.bob) == keep_mana_amount
 
     # WHEN
     x_riverrun.calc_metrics()
 
     # THEN
-    assert x_riverrun.get_partner_need_due(exx.yao) == 0
-    assert x_riverrun.get_partner_need_due(exx.bob) == keep_mana_amount
+    assert x_riverrun.get_contact_need_due(exx.yao) == 0
+    assert x_riverrun.get_contact_need_due(exx.bob) == keep_mana_amount
     assert x_riverrun.cycle_count == 1
     assert x_riverrun.doctor_count == 1
     assert x_riverrun.patient_count == 1
@@ -89,25 +89,25 @@ def test_RiverRun_calc_metrics_SetsAttrsScenario02(temp3_dir):
 def test_RiverRun_calc_metrics_SetsAttrsScenario03(temp3_dir):
     # ESTABLISH / WHEN
     mstr_dir = temp3_dir
-    yao_partner_cred_lumen = 500
-    bob_partner_debt_lumen = 25
-    sue_partner_debt_lumen = 75
+    yao_contact_cred_lumen = 500
+    bob_contact_debt_lumen = 25
+    sue_contact_debt_lumen = 75
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
-    x_riverrun.set_keep_patientledger(exx.yao, exx.yao, yao_partner_cred_lumen)
-    doctorledger = {exx.bob: bob_partner_debt_lumen, exx.sue: sue_partner_debt_lumen}
+    x_riverrun.set_keep_patientledger(exx.yao, exx.yao, yao_contact_cred_lumen)
+    doctorledger = {exx.bob: bob_contact_debt_lumen, exx.sue: sue_contact_debt_lumen}
     x_riverrun.set_need_dues(doctorledger)
-    assert x_riverrun.get_partner_need_due(exx.yao) == 0
+    assert x_riverrun.get_contact_need_due(exx.yao) == 0
     keep_mana_amount = x_riverrun.keep_point_magnitude
-    assert x_riverrun.get_partner_need_due(exx.bob) == keep_mana_amount * 0.25
-    assert x_riverrun.get_partner_need_due(exx.sue) == keep_mana_amount * 0.75
+    assert x_riverrun.get_contact_need_due(exx.bob) == keep_mana_amount * 0.25
+    assert x_riverrun.get_contact_need_due(exx.sue) == keep_mana_amount * 0.75
 
     # WHEN
     x_riverrun.calc_metrics()
 
     # THEN
-    assert x_riverrun.get_partner_need_due(exx.yao) == 0
-    assert x_riverrun.get_partner_need_due(exx.bob) == keep_mana_amount * 0.25
-    assert x_riverrun.get_partner_need_due(exx.sue) == keep_mana_amount * 0.75
+    assert x_riverrun.get_contact_need_due(exx.yao) == 0
+    assert x_riverrun.get_contact_need_due(exx.bob) == keep_mana_amount * 0.25
+    assert x_riverrun.get_contact_need_due(exx.sue) == keep_mana_amount * 0.75
     assert x_riverrun.cycle_count == 1
     assert x_riverrun.doctor_count == 2
     assert x_riverrun.patient_count == 1
@@ -136,28 +136,28 @@ def test_RiverRun_calc_metrics_SetsAttrsScenario03(temp3_dir):
 def test_RiverRun_calc_metrics_SetsAttrsScenario04(temp3_dir):
     # ESTABLISH / WHEN
     mstr_dir = temp3_dir
-    yao_yao_partner_cred_lumen = 500
-    yao_sue_partner_cred_lumen = 2000
-    bob_partner_debt_lumen = 25
-    sue_partner_debt_lumen = 75
+    yao_yao_contact_cred_lumen = 500
+    yao_sue_contact_cred_lumen = 2000
+    bob_contact_debt_lumen = 25
+    sue_contact_debt_lumen = 75
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
-    x_riverrun.set_keep_patientledger(exx.yao, exx.yao, yao_yao_partner_cred_lumen)
-    x_riverrun.set_keep_patientledger(exx.yao, exx.sue, yao_sue_partner_cred_lumen)
-    doctorledger = {exx.bob: bob_partner_debt_lumen, exx.sue: sue_partner_debt_lumen}
+    x_riverrun.set_keep_patientledger(exx.yao, exx.yao, yao_yao_contact_cred_lumen)
+    x_riverrun.set_keep_patientledger(exx.yao, exx.sue, yao_sue_contact_cred_lumen)
+    doctorledger = {exx.bob: bob_contact_debt_lumen, exx.sue: sue_contact_debt_lumen}
     x_riverrun.set_need_dues(doctorledger)
-    assert x_riverrun.get_partner_need_due(exx.yao) == 0
+    assert x_riverrun.get_contact_need_due(exx.yao) == 0
     keep_mana_amount = x_riverrun.keep_point_magnitude
-    assert x_riverrun.get_partner_need_due(exx.bob) == keep_mana_amount * 0.25
-    assert x_riverrun.get_partner_need_due(exx.sue) == keep_mana_amount * 0.75
+    assert x_riverrun.get_contact_need_due(exx.bob) == keep_mana_amount * 0.25
+    assert x_riverrun.get_contact_need_due(exx.sue) == keep_mana_amount * 0.75
 
     # WHEN
     x_riverrun.calc_metrics()
 
     # THEN
-    assert x_riverrun.get_partner_need_due(exx.yao) == 0
-    assert x_riverrun.get_partner_need_due(exx.bob) == keep_mana_amount * 0.25
-    assert x_riverrun.get_partner_need_due(exx.sue) == 0
-    assert x_riverrun.get_partner_need_yield(exx.sue) == keep_mana_amount * 0.75
+    assert x_riverrun.get_contact_need_due(exx.yao) == 0
+    assert x_riverrun.get_contact_need_due(exx.bob) == keep_mana_amount * 0.25
+    assert x_riverrun.get_contact_need_due(exx.sue) == 0
+    assert x_riverrun.get_contact_need_yield(exx.sue) == keep_mana_amount * 0.75
     assert x_riverrun.cycle_count == 2
     assert x_riverrun.doctor_count == 2
     assert x_riverrun.patient_count == 2
@@ -183,20 +183,20 @@ def test_RiverRun_calc_metrics_SetsAttrsScenario04(temp3_dir):
 def test_RiverRun_calc_metrics_SetsAttrsScenario05(temp3_dir):
     # ESTABLISH / WHEN
     mstr_dir = temp3_dir
-    yao_partner_cred_lumen = 500
+    yao_contact_cred_lumen = 500
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
-    x_riverrun.set_keep_patientledger(exx.yao, exx.yao, yao_partner_cred_lumen)
+    x_riverrun.set_keep_patientledger(exx.yao, exx.yao, yao_contact_cred_lumen)
     x_riverrun.set_need_dues({exx.yao: 1})
     keep_mana_amount = x_riverrun.keep_point_magnitude
-    assert x_riverrun.get_partner_need_due(exx.yao) == keep_mana_amount
-    assert x_riverrun.get_partner_need_yield(exx.yao) == 0
+    assert x_riverrun.get_contact_need_due(exx.yao) == keep_mana_amount
+    assert x_riverrun.get_contact_need_yield(exx.yao) == 0
 
     # WHEN
     x_riverrun.calc_metrics()
 
     # THEN
-    assert x_riverrun.get_partner_need_due(exx.yao) == 0
-    assert x_riverrun.get_partner_need_yield(exx.yao) == keep_mana_amount
+    assert x_riverrun.get_contact_need_due(exx.yao) == 0
+    assert x_riverrun.get_contact_need_yield(exx.yao) == keep_mana_amount
     assert x_riverrun.cycle_count == 2
     assert x_riverrun.doctor_count == 1
     assert x_riverrun.patient_count == 1
@@ -215,21 +215,21 @@ def test_RiverRun_calc_metrics_SetsAttrsScenario05(temp3_dir):
 def test_RiverRun_calc_metrics_Resets_need_yield(temp3_dir):
     # ESTABLISH / WHEN
     mstr_dir = temp3_dir
-    yao_partner_cred_lumen = 500
+    yao_contact_cred_lumen = 500
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
-    x_riverrun.set_keep_patientledger(exx.yao, exx.yao, yao_partner_cred_lumen)
+    x_riverrun.set_keep_patientledger(exx.yao, exx.yao, yao_contact_cred_lumen)
     x_riverrun.set_need_dues({exx.yao: 1})
     keep_mana_amount = x_riverrun.keep_point_magnitude
     x_riverrun.calc_metrics()
-    assert x_riverrun.get_partner_need_due(exx.yao) == 0
-    assert x_riverrun.get_partner_need_yield(exx.yao) == keep_mana_amount
+    assert x_riverrun.get_contact_need_due(exx.yao) == 0
+    assert x_riverrun.get_contact_need_yield(exx.yao) == keep_mana_amount
 
     # WHEN
     x_riverrun.calc_metrics()
 
     # THEN
-    assert x_riverrun.get_partner_need_due(exx.yao) == 0
-    assert x_riverrun.get_partner_need_yield(exx.yao) == keep_mana_amount
+    assert x_riverrun.get_contact_need_due(exx.yao) == 0
+    assert x_riverrun.get_contact_need_yield(exx.yao) == keep_mana_amount
 
 
 def test_RiverRun_calc_metrics_EndsRiverCycleLoopIfNoDifferencesBetweenCycles(
@@ -241,8 +241,8 @@ def test_RiverRun_calc_metrics_EndsRiverCycleLoopIfNoDifferencesBetweenCycles(
     x_riverrun.set_keep_patientledger(exx.yao, exx.yao, 1)
     x_riverrun.set_need_dues({exx.bob: 1})
     keep_mana_amount = x_riverrun.keep_point_magnitude
-    assert x_riverrun.get_partner_need_due(exx.yao) == 0
-    assert x_riverrun.get_partner_need_due(exx.bob) == keep_mana_amount
+    assert x_riverrun.get_contact_need_due(exx.yao) == 0
+    assert x_riverrun.get_contact_need_due(exx.bob) == keep_mana_amount
     assert x_riverrun.cycle_count == 0
     assert x_riverrun.cycle_carees_prev == set()
     assert x_riverrun.cycle_carees_curr == set()
@@ -253,6 +253,6 @@ def test_RiverRun_calc_metrics_EndsRiverCycleLoopIfNoDifferencesBetweenCycles(
     # THEN
     assert x_riverrun.cycle_carees_prev == {exx.yao}
     assert x_riverrun.cycle_carees_curr == {exx.yao}
-    assert x_riverrun.get_partner_need_due(exx.yao) == 0
-    assert x_riverrun.get_partner_need_due(exx.bob) == keep_mana_amount
+    assert x_riverrun.get_contact_need_due(exx.yao) == 0
+    assert x_riverrun.get_contact_need_due(exx.bob) == keep_mana_amount
     assert x_riverrun.cycle_count == 1

@@ -111,7 +111,7 @@ def test_get_moment_dict_from_heard_tables_ReturnsObj_With_mmtpayy_Attrs_Scenari
         f"INSERT INTO {mmtunit_h_vld_tablename} (moment_rope) VALUES ('{exx.a23}');"
     )
     cursor0.execute(momentunit_insert_sqlstr)
-    mmtpayy_insert_sqlstr = f"""INSERT INTO {momentpay_h_vld_tablename} (moment_rope, person_name, partner_name, tran_time, amount)
+    mmtpayy_insert_sqlstr = f"""INSERT INTO {momentpay_h_vld_tablename} (moment_rope, person_name, contact_name, tran_time, amount)
 VALUES ('{exx.a23}', '{exx.bob}', '{exx.sue}', {tp55}, {bob_sue_tp55_amount})
 ;
 """
@@ -148,7 +148,7 @@ def test_get_moment_dict_from_heard_tables_ReturnsObj_With_mmtpayy_Attrs_Scenari
         f"INSERT INTO {mmtunit_h_vld_tablename} (moment_rope) VALUES ('{exx.a23}');"
     )
     cursor0.execute(momentunit_insert_sqlstr)
-    mmtpayy_insert_sqlstr = f"""INSERT INTO {momentpay_h_vld_tablename} (moment_rope, person_name, partner_name, tran_time, amount)
+    mmtpayy_insert_sqlstr = f"""INSERT INTO {momentpay_h_vld_tablename} (moment_rope, person_name, contact_name, tran_time, amount)
 VALUES
   ('{exx.a23}', '{exx.bob}', '{exx.sue}', {tp55}, {a23_bob_sue_tp55_amount})
 , ('{a45_str}', '{exx.bob}', '{exx.sue}', {tp55}, {a45_bob_sue_tp55_amount})
@@ -416,7 +416,7 @@ def test_get_moment_dict_from_heard_tables_ReturnsObj_IsFormatted_Scenario1_mmtp
         f"INSERT INTO {mmtunit_h_vld_tablename} (moment_rope) VALUES ('{exx.a23}');"
     )
     cursor0.execute(momentunit_insert_sqlstr)
-    mmtpayy_insert_sqlstr = f"""INSERT INTO {momentpay_h_vld_tablename} (moment_rope, person_name, partner_name, tran_time, amount)
+    mmtpayy_insert_sqlstr = f"""INSERT INTO {momentpay_h_vld_tablename} (moment_rope, person_name, contact_name, tran_time, amount)
 VALUES ('{exx.a23}', '{exx.bob}', '{exx.sue}', {tp55}, {bob_sue_tp55_amount})
 ;
 """

@@ -5,12 +5,12 @@ from src.ch04_rope.rope import create_rope
 from src.ch09_person_lesson.lasso import lassounit_shop
 from src.ch14_moment._ref.ch14_path import (
     BUD_MANDATE_FILENAME,
-    create_bud_partner_mandate_ledger_path,
+    create_bud_contact_mandate_ledger_path,
 )
 from src.ref.keywords import Ch14Keywords as kw, ExampleStrs as exx
 
 
-def test_create_bud_partner_mandate_ledger_path_ReturnsObj(temp3_dir):
+def test_create_bud_contact_mandate_ledger_path_ReturnsObj(temp3_dir):
     # sourcery skip: extract-duplicate-method, inline-immediately-returned-variable
     # ESTABLISH
     x_moment_mstr_dir = temp3_dir
@@ -18,7 +18,7 @@ def test_create_bud_partner_mandate_ledger_path_ReturnsObj(temp3_dir):
     a23_lasso = lassounit_shop(exx.a23)
 
     # WHEN
-    gen_bud_path = create_bud_partner_mandate_ledger_path(
+    gen_bud_path = create_bud_contact_mandate_ledger_path(
         x_moment_mstr_dir, a23_lasso, exx.sue, timenum7
     )
 
@@ -34,9 +34,9 @@ def test_create_bud_partner_mandate_ledger_path_ReturnsObj(temp3_dir):
 
 
 @pytest_mark.skip_on_linux
-def test_create_bud_partner_mandate_ledger_path_HasDocString():
+def test_create_bud_contact_mandate_ledger_path_HasDocString():
     # ESTABLISH
-    doc_str = create_bud_partner_mandate_ledger_path(
+    doc_str = create_bud_contact_mandate_ledger_path(
         moment_mstr_dir="moment_mstr_dir",
         moment_lasso=lassounit_shop(create_rope(kw.moment_rope)),
         person_name=kw.person_name,
@@ -45,4 +45,4 @@ def test_create_bud_partner_mandate_ledger_path_HasDocString():
     doc_str = doc_str.replace("buds\\bud_time", "buds\n\\bud_time")
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    assert inspect_getdoc(create_bud_partner_mandate_ledger_path) == doc_str
+    assert inspect_getdoc(create_bud_contact_mandate_ledger_path) == doc_str
