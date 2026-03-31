@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime
 from os.path import exists as os_path_exists
 from sqlite3 import Cursor as sqlite3_Cursor, connect as sqlite3_connect
 from src.ch00_py.file_toolbox import create_path, delete_dir, set_dir
@@ -37,8 +38,9 @@ from src.ch19_etl_main.etl_main import (
     etl_translate_sound_agg_tables_to_translate_sound_vld_tables,
     get_max_brick_agg_spark_num,
 )
+from src.ch20_kpi.gcalendar import save_person_gcal_day_punchs
 from src.ch20_kpi.kpi_mstr import create_calendar_markdown_files, populate_kpi_bundle
-from src.ch21_world._ref.ch21_semantic_types import WorldName
+from src.ch21_world._ref.ch21_semantic_types import GroupTitle, PersonName, WorldName
 
 
 def create_stances(
@@ -48,9 +50,6 @@ def create_stances(
     moment_mstr_dir: str,
     prettify_excel_bool=True,
 ):
-    # TODO why is create_stance0001_file not drawing from world db instead of files?
-    # it should be the database because that's the end of the core pipeline so it should
-    # be the source of truth.
     create_stance0001_file(world_dir, output_dir, world_name, prettify_excel_bool)
     create_calendar_markdown_files(moment_mstr_dir, output_dir)
 
@@ -80,6 +79,7 @@ def sheets_input_to_lynx_with_cursor(
     etl_heard_vld_tables_to_moment_jsons(cursor, moment_mstr_dir)
     etl_heard_vld_to_spark_person_csvs(cursor, moment_mstr_dir)
     etl_spark_person_csvs_to_lesson_json(moment_mstr_dir)
+    # TODO fix etl_spark_lesson_json_to_spark_inherited_personunits
     etl_spark_lesson_json_to_spark_inherited_personunits(moment_mstr_dir)
     # Sparkized files to Lynx stage
     etl_spark_inherited_personunits_to_moment_gut(moment_mstr_dir)
@@ -127,29 +127,30 @@ class WorldDir:
     world_name: WorldName = None
     worlds_dir: str = None
     output_dir: str = None
-    _world_dir: str = None
-    _input_dir: str = None
-    _brick_dir: str = None
-    _moment_mstr_dir: str = None
+    input_dir: str = None
+    # calculated dirs
+    world_dir: str = None
+    brick_dir: str = None
+    moment_mstr_dir: str = None
 
     def get_world_db_path(self) -> str:
         "Returns path: world_dir/world.db"
-        return create_world_db_path(self._world_dir)
+        return create_world_db_path(self.world_dir)
 
     def delete_world_db(self):
         delete_dir(self.get_world_db_path())
 
     def set_input_dir(self, x_dir: str):
-        self._input_dir = x_dir
-        set_dir(self._input_dir)
+        self.input_dir = x_dir
+        set_dir(self.input_dir)
 
     def _set_world_dirs(self):
-        self._world_dir = create_path(self.worlds_dir, self.world_name)
-        self._brick_dir = create_path(self._world_dir, "brick")
-        self._moment_mstr_dir = create_moment_mstr_path(self._world_dir)
-        set_dir(self._world_dir)
-        set_dir(self._brick_dir)
-        set_dir(self._moment_mstr_dir)
+        self.world_dir = create_path(self.worlds_dir, self.world_name)
+        self.brick_dir = create_path(self.world_dir, "brick")
+        self.moment_mstr_dir = create_moment_mstr_path(self.world_dir)
+        set_dir(self.world_dir)
+        set_dir(self.brick_dir)
+        set_dir(self.moment_mstr_dir)
 
 
 def worlddir_shop(
@@ -162,13 +163,28 @@ def worlddir_shop(
         world_name=world_name,
         worlds_dir=worlds_dir,
         output_dir=output_dir,
-        _input_dir=input_dir,
+        input_dir=input_dir,
     )
     x_worlddir._set_world_dirs()
-    if not x_worlddir._input_dir:
-        x_worlddir.set_input_dir(create_path(x_worlddir._world_dir, "input"))
+    if not x_worlddir.input_dir:
+        x_worlddir.set_input_dir(create_path(x_worlddir.world_dir, "input"))
     return x_worlddir
 
 
-def sheets_to_gcal_day_reports():
-    pass
+def sheets_to_gcal_day_punchs(
+    worlddir: WorldDir,
+    person_name: PersonName,
+    day: datetime,
+    focus_group_title: GroupTitle = None,
+):
+    sheets_input_to_lynx_mstr(
+        world_db_path=worlddir.get_world_db_path(),
+        input_dir=worlddir.input_dir,
+        moment_mstr_dir=worlddir.moment_mstr_dir,
+    )
+    save_person_gcal_day_punchs(
+        moment_mstr_dir=worlddir.moment_mstr_dir,
+        person_name=person_name,
+        day=day,
+        focus_group_title=focus_group_title,
+    )

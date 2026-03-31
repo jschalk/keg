@@ -1,11 +1,10 @@
 from src.ch00_py.file_toolbox import create_path, save_file
 from src.ch00_py.notebook_toolbox import get_top_level_functions
-from src.ch00_py.test._util.ch00_env import get_temp_dir, temp_dir_setup
 from textwrap import dedent as textwrap_dedent
 
 
 def test_get_top_level_functions_ReturnsObj_Scenario0_multiple_functions(
-    temp_dir_setup,
+    temp3_fs, temp3_dir
 ):
     # ESTABLISH
     file_str = """
@@ -15,7 +14,7 @@ def a():
 def b():
     return 2
 """
-    x_file_path = create_path(get_temp_dir(), "example_tests.py")
+    x_file_path = create_path(temp3_dir, "example_tests.py")
     print(file_str)
     save_file(x_file_path, None, file_str)
 
@@ -29,7 +28,7 @@ def b():
 
 
 def test_get_top_level_functions_ReturnsObj_Scenario1_ignores_nested_functions(
-    temp_dir_setup,
+    temp3_fs, temp3_dir
 ):
     # ESTABLISH
     file_str = """
@@ -38,7 +37,7 @@ def outer():
         return 1
     return inner()
 """
-    x_file_path = create_path(get_temp_dir(), "example_tests.py")
+    x_file_path = create_path(temp3_dir, "example_tests.py")
     save_file(x_file_path, None, file_str)
 
     # WHEN
@@ -51,7 +50,7 @@ def outer():
 
 
 def test_get_top_level_functions_ReturnsObj_Scenario2_ignores_class_methods(
-    temp_dir_setup,
+    temp3_fs, temp3_dir
 ):
     # ESTABLISH
     file_str = """
@@ -62,7 +61,7 @@ class A:
 def standalone():
     return 2
 """
-    x_file_path = create_path(get_temp_dir(), "example_tests.py")
+    x_file_path = create_path(temp3_dir, "example_tests.py")
     save_file(x_file_path, None, file_str)
 
     # WHEN
@@ -74,7 +73,7 @@ def standalone():
 
 
 def test_get_top_level_functions_ReturnsObj_Scenario3_preserves_function_source(
-    temp_dir_setup,
+    temp3_fs, temp3_dir
 ):
     # ESTABLISH
     file_str = '''
@@ -83,7 +82,7 @@ def example(x, y):
     z = x + y
     return z
 '''
-    x_file_path = create_path(get_temp_dir(), "example_tests.py")
+    x_file_path = create_path(temp3_dir, "example_tests.py")
     save_file(x_file_path, None, file_str)
 
     # WHEN
@@ -98,7 +97,7 @@ def example(x, y):
 
 
 def test_get_top_level_functions_ReturnsObj_Scenario4_returns_empty_dict_when_no_functions(
-    temp_dir_setup,
+    temp3_fs, temp3_dir
 ):
     # ESTABLISH
     file_str = """
@@ -107,7 +106,7 @@ x = 10
 class A:
     pass
 """
-    x_file_path = create_path(get_temp_dir(), "example_tests.py")
+    x_file_path = create_path(temp3_dir, "example_tests.py")
     save_file(x_file_path, None, file_str)
 
     # WHEN

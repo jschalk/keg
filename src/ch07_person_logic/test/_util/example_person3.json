@@ -2213,44 +2213,11 @@
                 }, 
                 "star": 1
               }, 
-              "clean humidifiers": {
-                "awardunits": {
-                  ";Family": {"awardee_title": ";Family", "give_force": 1.0, "take_force": 1.0}
-                }, 
-                "plan_label": "clean humidifiers", 
-                "plan_uid": 55, 
-                "pledge": true, 
-                "reasonunits": {
-                  ";amy45;Nation-States;": {
-                    "cases": {
-                      ";amy45;Nation-States;USA;Portland; OR;Downtown;Northfield Apt;Apt X4XX": {
-                        "reason_state": ";amy45;Nation-States;USA;Portland; OR;Downtown;Northfield Apt;Apt X4XX"
-                      }
-                    }, 
-                    "reason_context": ";amy45;Nation-States;"
-                  }, 
-                  ";amy45;jour_minute;": {
-                    "cases": {
-                      ";amy45;jour_minute;": {
-                        "reason_lower": 420, 
-                        "reason_state": ";amy45;jour_minute;", 
-                        "reason_upper": 420
-                      }
-                    }, 
-                    "reason_context": ";amy45;jour_minute;"
-                  }, 
-                  ";amy45;sem_jours;": {
-                    "cases": { ";amy45;sem_jours;Mon": {"reason_state": ";amy45;sem_jours;Mon"} }, 
-                    "reason_context": ";amy45;sem_jours;"
-                  }
-                }, 
-                "star": 1
-              }, 
-              "clean sheets couch blankets": {
+              "clean couch blankets": {
                 "awardunits": {
                   "Perrison": {"awardee_title": "Perrison", "give_force": 1.0, "take_force": 1.0}
                 }, 
-                "plan_label": "clean sheets couch blankets", 
+                "plan_label": "clean couch blankets", 
                 "plan_uid": 41, 
                 "pledge": true, 
                 "reasonunits": {
@@ -2272,6 +2239,39 @@
                       }
                     }, 
                     "reason_context": ";amy45;ced_wk;"
+                  }, 
+                  ";amy45;jour_minute;": {
+                    "cases": {
+                      ";amy45;jour_minute;": {
+                        "reason_lower": 420, 
+                        "reason_state": ";amy45;jour_minute;", 
+                        "reason_upper": 420
+                      }
+                    }, 
+                    "reason_context": ";amy45;jour_minute;"
+                  }, 
+                  ";amy45;sem_jours;": {
+                    "cases": { ";amy45;sem_jours;Mon": {"reason_state": ";amy45;sem_jours;Mon"} }, 
+                    "reason_context": ";amy45;sem_jours;"
+                  }
+                }, 
+                "star": 1
+              }, 
+              "clean humidifiers": {
+                "awardunits": {
+                  ";Family": {"awardee_title": ";Family", "give_force": 1.0, "take_force": 1.0}
+                }, 
+                "plan_label": "clean humidifiers", 
+                "plan_uid": 55, 
+                "pledge": true, 
+                "reasonunits": {
+                  ";amy45;Nation-States;": {
+                    "cases": {
+                      ";amy45;Nation-States;USA;Portland; OR;Downtown;Northfield Apt;Apt X4XX": {
+                        "reason_state": ";amy45;Nation-States;USA;Portland; OR;Downtown;Northfield Apt;Apt X4XX"
+                      }
+                    }, 
+                    "reason_context": ";amy45;Nation-States;"
                   }, 
                   ";amy45;jour_minute;": {
                     "cases": {

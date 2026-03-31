@@ -684,9 +684,9 @@ def test_PersonUnit_create_agenda_plan_CreatesAllPersonAttributes():
 
     clean_str = "cleanings"
     clean_rope = sue_person.make_l1_rope(clean_str)
-    sweep_str = "sweep"
-    sweep_rope = sue_person.make_rope(clean_rope, sweep_str)
-    sweep_plan = planunit_shop(sweep_str, parent_rope=clean_rope)
+
+    sweep_rope = sue_person.make_rope(clean_rope, exx.sweep)
+    sweep_plan = planunit_shop(exx.sweep, parent_rope=clean_rope)
     print(f"{sweep_plan.get_plan_rope()=}")
     house_str = "house"
     house_rope = sue_person.make_l1_rope(house_str)
@@ -735,7 +735,7 @@ def test_PersonUnit_create_agenda_plan_CreatesAllPersonAttributes():
 
     print(f"{sweep_plan.get_plan_rope()=}")
     assert sue_person.get_plan_obj(sweep_rope) is not None
-    assert sue_person.get_plan_obj(sweep_rope).plan_label == sweep_str
+    assert sue_person.get_plan_obj(sweep_rope).plan_label == exx.sweep
     assert sue_person.get_plan_obj(sweep_rope).pledge
     assert len(sue_person.get_plan_obj(sweep_rope).reasonunits) == 2
     assert sue_person.get_plan_obj(clean_rope) is not None

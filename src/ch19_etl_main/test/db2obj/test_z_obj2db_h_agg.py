@@ -29,7 +29,6 @@ from src.ch19_etl_main.obj2db_person import (
     insert_h_agg_prnreas,
     insert_h_agg_prnunit,
 )
-from src.ch19_etl_main.test._util.ch19_env import cursor0, temp_dir_setup
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 

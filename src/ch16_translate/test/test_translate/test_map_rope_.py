@@ -368,9 +368,9 @@ def test_RopeMap_set_label_Edits_otx2inx():
     clean_inx_str = "propre"
     clean_otx_rope = create_rope(casa_otx_rope, clean_otx_str)
     clean_inx_rope = create_rope(casa_inx_rope, clean_inx_str)
-    sweep_str = "sweep"
-    sweep_otx_rope = create_rope(clean_otx_rope, sweep_str)
-    sweep_inx_rope = create_rope(clean_inx_rope, sweep_str)
+
+    sweep_otx_rope = create_rope(clean_otx_rope, exx.sweep)
+    sweep_inx_rope = create_rope(clean_inx_rope, exx.sweep)
     x_ropemap = ropemap_shop()
     x_ropemap.set_otx2inx(otx_amy45_str, inx_amy87_str)
     x_ropemap.set_otx2inx(casa_otx_rope, casa_inx_rope)
@@ -387,7 +387,7 @@ def test_RopeMap_set_label_Edits_otx2inx():
 
     # THEN
     menage_inx_rope = create_rope(casa_inx_rope, menage_inx_str)
-    sweep_menage_inx_rope = create_rope(menage_inx_rope, sweep_str)
+    sweep_menage_inx_rope = create_rope(menage_inx_rope, exx.sweep)
     assert x_ropemap.otx2inx_exists(otx_amy45_str, inx_amy87_str)
     assert x_ropemap.otx2inx_exists(casa_otx_rope, casa_inx_rope)
     assert x_ropemap.otx2inx_exists(clean_otx_rope, menage_inx_rope)

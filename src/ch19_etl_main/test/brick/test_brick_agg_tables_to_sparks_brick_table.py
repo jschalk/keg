@@ -1,4 +1,4 @@
-from sqlite3 import Cursor, connect as sqlite3_connect
+from sqlite3 import Cursor
 from src.ch00_py.db_toolbox import db_table_exists, get_row_count, get_table_columns
 from src.ch17_idea.idea_db_tool import create_idea_sorted_table
 from src.ch19_etl_main.etl_main import (
@@ -6,7 +6,6 @@ from src.ch19_etl_main.etl_main import (
     etl_sparks_brick_agg_db_to_spark_dict,
     etl_sparks_brick_agg_table_to_sparks_brick_valid_table,
 )
-from src.ch19_etl_main.test._util.ch19_env import cursor0
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 

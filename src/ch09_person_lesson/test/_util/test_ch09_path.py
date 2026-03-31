@@ -1,5 +1,4 @@
 from inspect import getdoc as inspect_getdoc
-from platform import system as platform_system
 from pytest import mark as pytest_mark
 from src.ch00_py.file_toolbox import create_path
 from src.ch04_rope.rope import create_rope
@@ -7,7 +6,6 @@ from src.ch09_person_lesson._ref.ch09_path import (
     MOMENT_FILENAME,
     create_atoms_dir_path,
     create_gut_path,
-    create_job_path,
     create_lessons_dir_path,
     create_moment_dir_path,
     create_moment_json_path,
@@ -16,15 +14,14 @@ from src.ch09_person_lesson._ref.ch09_path import (
     create_person_dir_path,
 )
 from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch09_person_lesson.test._util.ch09_env import get_temp_dir
 from src.ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
 
 A23_LASSO = lassounit_shop(exx.a23)
 
 
-def test_create_moments_dir_path_ReturnsObj():
+def test_create_moments_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
 
     # WHEN
     gen_dir_path = create_moments_dir_path(x_moment_mstr_dir)
@@ -34,9 +31,9 @@ def test_create_moments_dir_path_ReturnsObj():
     assert gen_dir_path == expected_moments_dir
 
 
-def test_create_moment_dir_path_ReturnsObj():
+def test_create_moment_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
 
     # WHEN
     gen_a23_dir_path = create_moment_dir_path(x_moment_mstr_dir, A23_LASSO)
@@ -47,9 +44,9 @@ def test_create_moment_dir_path_ReturnsObj():
     assert gen_a23_dir_path == expected_a23_path
 
 
-def test_create_moment_json_path_ReturnsObj():
+def test_create_moment_json_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
 
     # WHEN
     gen_a23_json_path = create_moment_json_path(x_moment_mstr_dir, A23_LASSO)
@@ -61,9 +58,9 @@ def test_create_moment_json_path_ReturnsObj():
     assert gen_a23_json_path == expected_a23_json_path
 
 
-def test_create_moment_persons_dir_path_ReturnsObj():
+def test_create_moment_persons_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
 
     # WHEN
     gen_persons_dir = create_moment_persons_dir_path(x_moment_mstr_dir, A23_LASSO)
@@ -75,9 +72,9 @@ def test_create_moment_persons_dir_path_ReturnsObj():
     assert gen_persons_dir == expected_persons_dir
 
 
-def test_create_person_dir_path_ReturnsObj():
+def test_create_person_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
 
     # WHEN
     sue_dir = create_person_dir_path(x_moment_mstr_dir, A23_LASSO, exx.sue)
@@ -92,9 +89,9 @@ def test_create_person_dir_path_ReturnsObj():
     assert sue_dir == expected_sue_dir
 
 
-def test_create_atoms_dir_path_ReturnsObj():
+def test_create_atoms_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
 
     # WHEN
     atoms_dir = create_atoms_dir_path(x_moment_mstr_dir, A23_LASSO, exx.sue)
@@ -108,9 +105,9 @@ def test_create_atoms_dir_path_ReturnsObj():
     assert atoms_dir == expected_atoms_dir
 
 
-def test_create_lessons_dir_path_ReturnsObj():
+def test_create_lessons_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
 
     # WHEN
     lessons_dir = create_lessons_dir_path(x_moment_mstr_dir, A23_LASSO, exx.sue)
@@ -124,9 +121,9 @@ def test_create_lessons_dir_path_ReturnsObj():
     assert lessons_dir == expected_lessons_dir
 
 
-def test_create_gut_path_ReturnsObj():
+def test_create_gut_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
 
     # WHEN
     gen_a23_e3_person_path = create_gut_path(x_moment_mstr_dir, A23_LASSO, exx.bob)
@@ -143,36 +140,16 @@ def test_create_gut_path_ReturnsObj():
     assert gen_a23_e3_person_path == expected_a23_bob_gut_json_path
 
 
-def test_create_job_path_ReturnsObj():
-    # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
-
-    # WHEN
-    gen_a23_e3_person_path = create_job_path(x_moment_mstr_dir, A23_LASSO, exx.bob)
-
-    # THEN
-    x_moments_dir = create_path(x_moment_mstr_dir, "moments")
-    a23_dir = create_path(x_moments_dir, "Amy23")
-    a23_persons_dir = create_path(a23_dir, "persons")
-    a23_bob_dir = create_path(a23_persons_dir, exx.bob)
-    a23_bob_job_dir = create_path(a23_bob_dir, kw.job)
-    expected_a23_bob_job_json_path = create_path(a23_bob_job_dir, f"{exx.bob}.json")
-    # person_filename = "person.json"
-    # expected_a23_e3_person_path = create_path(a23_bob_e3_dir, person_filename)
-    assert gen_a23_e3_person_path == expected_a23_bob_job_json_path
-
-
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_moments_dir_path_HasDocString():
     # ESTABLISH
     doc_str = create_moments_dir_path("moment_mstr_dir")
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    # TODO see if all " inspect_getdoc" can be gotten rid of
     assert inspect_getdoc(create_moments_dir_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_moment_dir_path_HasDocString():
     # ESTABLISH
     x_moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -182,7 +159,7 @@ def test_create_moment_dir_path_HasDocString():
     assert inspect_getdoc(create_moment_dir_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_moment_json_path_HasDocString():
     # ESTABLISH
     x_moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -195,7 +172,7 @@ def test_create_moment_json_path_HasDocString():
     assert inspect_getdoc(create_moment_json_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_moment_persons_dir_path_HasDocString():
     # ESTABLISH
     x_moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -208,7 +185,7 @@ def test_create_moment_persons_dir_path_HasDocString():
     assert inspect_getdoc(create_moment_persons_dir_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_person_dir_path_HasDocString():
     # ESTABLISH
     x_moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -222,7 +199,7 @@ def test_create_person_dir_path_HasDocString():
     assert inspect_getdoc(create_person_dir_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_atoms_dir_path_HasDocString():
     # ESTABLISH
     x_moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -236,7 +213,7 @@ def test_create_atoms_dir_path_HasDocString():
     assert inspect_getdoc(create_atoms_dir_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_lessons_dir_path_HasDocString():
     # ESTABLISH
     x_moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -250,7 +227,7 @@ def test_create_lessons_dir_path_HasDocString():
     assert inspect_getdoc(create_lessons_dir_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_gut_path_HasDocString():
     # ESTABLISH
     x_moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -265,17 +242,3 @@ def test_create_gut_path_HasDocString():
     print(f"{inspect_getdoc(create_gut_path)=}")
     print(inspect_getdoc(create_gut_path))
     assert inspect_getdoc(create_gut_path) == doc_str
-
-
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
-def test_create_job_path_HasDocString():
-    # ESTABLISH
-    x_moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
-    doc_str = create_job_path(
-        moment_mstr_dir="moment_mstr_dir",
-        moment_lasso=x_moment_lasso,
-        person_name=kw.person_name,
-    )
-    doc_str = f"Returns path: {doc_str}"
-    # WHEN / THEN
-    assert inspect_getdoc(create_job_path) == doc_str

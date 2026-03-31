@@ -1,7 +1,6 @@
 from src.ch07_person_logic.person_main import personunit_shop
 from src.ch12_keep.rivercycle import get_doctorledger, get_patientledger
 from src.ch12_keep.riverrun import riverrun_shop
-from src.ch12_keep.test._util.ch12_env import get_temp_dir
 from src.ref.keywords import ExampleStrs as exx
 
 
@@ -85,9 +84,9 @@ def test_get_doctorledger_ReturnsObjWithNoEmpty_partner_debt_lumen():
     assert len(yao_doctorledger) == 2
 
 
-def test_RiverRun_set_partner_need_due_SetsAttr():
+def test_RiverRun_set_partner_need_due_SetsAttr(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     bob_riverrun = riverrun_shop(mstr_dir, None, exx.bob)
     assert bob_riverrun.need_dues.get(exx.yao) is None
 
@@ -99,9 +98,9 @@ def test_RiverRun_set_partner_need_due_SetsAttr():
     assert bob_riverrun.need_dues.get(exx.yao) == yao_need_due
 
 
-def test_RiverRun_need_dues_unpaid_ReturnsObj():
+def test_RiverRun_need_dues_unpaid_ReturnsObj(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
     assert x_riverrun.need_dues_unpaid() is False
 

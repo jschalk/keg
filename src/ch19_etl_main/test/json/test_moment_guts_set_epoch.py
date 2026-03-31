@@ -8,13 +8,12 @@ from src.ch13_time.epoch_main import epochunit_shop
 from src.ch13_time.test._util.ch13_examples import get_five_config
 from src.ch14_moment.moment_main import momentunit_shop
 from src.ch19_etl_main.etl_main import add_moment_epoch_to_guts
-from src.ch19_etl_main.test._util.ch19_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 
-def test_add_moment_epoch_to_guts_SetsFiles_Scenario0(temp_dir_setup):
+def test_add_moment_epoch_to_guts_SetsFiles_Scenario0(temp3_fs):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     a23_moment = momentunit_shop(exx.a23, moment_mstr_dir)
     a23_moment.epoch = epochunit_shop(get_five_config())

@@ -12,13 +12,12 @@ from src.ch14_moment.moment_main import (
     open_moment_file,
     save_moment_file,
 )
-from src.ch14_moment.test._util.ch14_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch14Keywords as kw, ExampleStrs as exx
 
 
-def test_MomentUnit_to_dict_ReturnsObjWith_paybook():
+def test_MomentUnit_to_dict_ReturnsObjWith_paybook(temp3_dir):
     # ESTABLISH
-    moment_mstr_dir = create_path(get_temp_dir(), "temp1")
+    moment_mstr_dir = create_path(temp3_dir, "temp1")
     a45_rope = create_rope("amy45")
     a45_offi_times = {17, 37}
     amy_moment = momentunit_shop(a45_rope, moment_mstr_dir, offi_times=a45_offi_times)
@@ -72,10 +71,10 @@ def test_MomentUnit_to_dict_ReturnsObjWith_paybook():
     }
 
 
-def test_MomentUnit_to_dict_ReturnsObjWithOut_paybook():
+def test_MomentUnit_to_dict_ReturnsObjWithOut_paybook(temp3_dir):
     # ESTABLISH
     amy45_rope = create_rope("amy45")
-    amy_moment = momentunit_shop(amy45_rope, get_temp_dir())
+    amy_moment = momentunit_shop(amy45_rope, temp3_dir)
 
     # WHEN
     x_dict = amy_moment.to_dict(include_paybook=False)
@@ -95,11 +94,11 @@ def test_MomentUnit_to_dict_ReturnsObjWithOut_paybook():
     }
 
 
-def test_get_momentunit_from_dict_ReturnsObj_Scenario0_WithParameters():
+def test_get_momentunit_from_dict_ReturnsObj_Scenario0_WithParameters(temp3_dir):
     # ESTABLISH
     sue_knot = "/"
     amy45_rope = create_rope("amy45", None, sue_knot)
-    moment_mstr_dir = create_path(get_temp_dir(), "temp1")
+    moment_mstr_dir = create_path(temp3_dir, "temp1")
     a45_offi_times = {17, 37}
     amy_moment = momentunit_shop(
         amy45_rope, moment_mstr_dir, knot=sue_knot, offi_times=a45_offi_times
@@ -152,10 +151,10 @@ def test_get_momentunit_from_dict_ReturnsObj_Scenario0_WithParameters():
     assert x_moment == amy_moment
 
 
-def test_get_momentunit_from_dict_ReturnsObj_Scenario1_WithOutParameters():
+def test_get_momentunit_from_dict_ReturnsObj_Scenario1_WithOutParameters(temp3_dir):
     # ESTABLISH
     amy45_rope = create_rope("amy45")
-    amy_moment = momentunit_shop(amy45_rope, get_temp_dir())
+    amy_moment = momentunit_shop(amy45_rope, temp3_dir)
     x_dict = amy_moment.to_dict()
     x_dict[kw.epoch] = {}
     x_dict.pop(kw.knot)
@@ -182,10 +181,10 @@ def test_get_momentunit_from_dict_ReturnsObj_Scenario1_WithOutParameters():
     assert generated_moment == amy_moment
 
 
-def test_get_momentunit_from_dict_ReturnsObj_Scenario2():
+def test_get_momentunit_from_dict_ReturnsObj_Scenario2(temp3_dir):
     # ESTABLISH
     amy45_rope = create_rope("amy45", None, exx.slash)
-    temp_moment_mstr_dir = create_path(get_temp_dir(), "temp")
+    temp_moment_mstr_dir = create_path(temp3_dir, "temp")
     amy_moment = momentunit_shop(amy45_rope, temp_moment_mstr_dir, knot=exx.slash)
     sue_epoch_label = "sue casa"
     amy_moment.epoch.epoch_label = sue_epoch_label
@@ -227,16 +226,16 @@ def test_get_momentunit_from_dict_ReturnsObj_Scenario2():
     assert x_moment == amy_moment
 
 
-def test_open_moment_file_ReturnsObj_MomentUnit(temp_dir_setup):
+def test_open_moment_file_ReturnsObj_MomentUnit(temp3_fs):
     # ESTABLISH
     amy45_str = "Amy"
     amy45_rope = create_rope(amy45_str)
-    amy45_moment = momentunit_shop(amy45_rope, get_temp_dir())
+    amy45_moment = momentunit_shop(amy45_rope, str(temp3_fs))
     sue_epoch_label = "sue casa"
     amy45_moment.epoch.epoch_label = sue_epoch_label
     sue_respect_grain = 2
     amy45_moment.respect_grain = sue_respect_grain
-    x_moment_mstr_dir = create_path(get_temp_dir(), "Fay_bob")
+    x_moment_mstr_dir = create_path(str(temp3_fs), "Fay_bob")
     amy45_lasso = lassounit_shop(amy45_rope)
     amy45_json_path = create_moment_json_path(x_moment_mstr_dir, amy45_lasso)
     save_json(amy45_json_path, None, amy45_moment.to_dict())
@@ -255,9 +254,9 @@ def test_open_moment_file_ReturnsObj_MomentUnit(temp_dir_setup):
     assert generated_a45_moment.moment_dir == expected_a45_moment_dir
 
 
-def test_save_moment_file_ReturnsObj_Scenario0_MomentUnit(temp_dir_setup):
+def test_save_moment_file_ReturnsObj_Scenario0_MomentUnit(temp3_fs):
     # ESTABLISH
-    x_moment_mstr_dir = create_path(get_temp_dir(), "Fay_bob")
+    x_moment_mstr_dir = create_path(str(temp3_fs), "Fay_bob")
     amy45_str = "Amy"
     amy45_rope = create_rope(amy45_str)
     amy45_moment = momentunit_shop(amy45_rope, x_moment_mstr_dir)
@@ -276,7 +275,7 @@ def test_save_moment_file_ReturnsObj_Scenario0_MomentUnit(temp_dir_setup):
 
 
 def test_save_moment_file_RaisesException_WhenMomentUnitMomentMstrDirIsNone(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     amy45_str = "Amy"

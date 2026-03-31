@@ -16,7 +16,6 @@ from src.ch19_etl_main.etl_main import (
     create_sound_and_heard_tables,
     etl_heard_vld_tables_to_moment_jsons,
 )
-from src.ch19_etl_main.test._util.ch19_env import cursor0, get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 
@@ -100,11 +99,11 @@ def test_get_moment_heard_select1_sqlstrs_ReturnsObj(cursor0: Cursor):
 
 
 def test_etl_heard_vld_tables_to_moment_jsons_Scenario0_CreateFilesWithOnlyMomentRope(
-    temp_dir_setup, cursor0: Cursor
+    temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
     amy45_rope = create_rope("amy45")
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     momentunit_h_vld_tablename = create_prime_tablename(kw.momentunit, kw.h_vld)
     print(f"{momentunit_h_vld_tablename=}")
 

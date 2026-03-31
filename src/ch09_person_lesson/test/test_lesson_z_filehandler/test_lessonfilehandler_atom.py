@@ -2,10 +2,6 @@ from os.path import exists as os_path_exists
 from src.ch00_py.file_toolbox import create_path, get_dir_file_strs
 from src.ch09_person_lesson.lasso import lassounit_shop
 from src.ch09_person_lesson.lesson_filehandler import lessonfilehandler_shop
-from src.ch09_person_lesson.test._util.ch09_env import (
-    get_temp_dir as env_dir,
-    temp_dir_setup,
-)
 from src.ch09_person_lesson.test._util.ch09_examples import (
     get_atom_example_factunit_knee,
     get_atom_example_planunit_ball,
@@ -16,9 +12,11 @@ from src.ch09_person_lesson.test._util.ch09_examples import (
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_LessonFileHandler_atom_filename_ReturnsObj():
+def test_LessonFileHandler_atom_filename_ReturnsObj(temp3_fs):
     # ESTABLISH
-    yao_lessonfilehandler = lessonfilehandler_shop(env_dir(), moment_lasso(), exx.yao)
+    yao_lessonfilehandler = lessonfilehandler_shop(
+        str(temp3_fs), moment_lasso(), exx.yao
+    )
     one_int = 1
 
     # WHEN
@@ -28,9 +26,11 @@ def test_LessonFileHandler_atom_filename_ReturnsObj():
     assert one_atom_filename == f"{one_int}.json"
 
 
-def test_LessonFileHandler_atom_file_path_ReturnsObj():
+def test_LessonFileHandler_atom_file_path_ReturnsObj(temp3_fs):
     # ESTABLISH
-    yao_lessonfilehandler = lessonfilehandler_shop(env_dir(), moment_lasso(), exx.yao)
+    yao_lessonfilehandler = lessonfilehandler_shop(
+        str(temp3_fs), moment_lasso(), exx.yao
+    )
     one_int = 1
 
     # WHEN
@@ -42,9 +42,11 @@ def test_LessonFileHandler_atom_file_path_ReturnsObj():
     assert one_atom_file_path == expected_path
 
 
-def test_LessonFileHandler_save_valid_atom_file_SavesFile(temp_dir_setup):
+def test_LessonFileHandler_save_valid_atom_file_SavesFile(temp3_fs):
     # ESTABLISH
-    yao_lessonfilehandler = lessonfilehandler_shop(env_dir(), moment_lasso(), exx.yao)
+    yao_lessonfilehandler = lessonfilehandler_shop(
+        str(temp3_fs), moment_lasso(), exx.yao
+    )
     one_int = 1
     assert os_path_exists(yao_lessonfilehandler.atom_file_path(one_int)) is False
 
@@ -57,9 +59,11 @@ def test_LessonFileHandler_save_valid_atom_file_SavesFile(temp_dir_setup):
     assert atom_num == one_int
 
 
-def test_LessonFileHandler_atom_file_exists_ReturnsObj(temp_dir_setup):
+def test_LessonFileHandler_atom_file_exists_ReturnsObj(temp3_fs):
     # ESTABLISH
-    yao_lessonfilehandler = lessonfilehandler_shop(env_dir(), moment_lasso(), exx.yao)
+    yao_lessonfilehandler = lessonfilehandler_shop(
+        str(temp3_fs), moment_lasso(), exx.yao
+    )
     four_int = 4
     assert os_path_exists(yao_lessonfilehandler.atom_file_path(four_int)) is False
     assert yao_lessonfilehandler.h_atom_file_exists(four_int) is False
@@ -74,9 +78,11 @@ def test_LessonFileHandler_atom_file_exists_ReturnsObj(temp_dir_setup):
     assert yao_lessonfilehandler.h_atom_file_exists(four_int)
 
 
-def test_LessonFileHandler_delete_atom_file_DeletesFile(temp_dir_setup):
+def test_LessonFileHandler_delete_atom_file_DeletesFile(temp3_fs):
     # ESTABLISH
-    yao_lessonfilehandler = lessonfilehandler_shop(env_dir(), moment_lasso(), exx.yao)
+    yao_lessonfilehandler = lessonfilehandler_shop(
+        str(temp3_fs), moment_lasso(), exx.yao
+    )
     ten_int = 10
     yao_lessonfilehandler._save_valid_atom_file(
         get_atom_example_factunit_knee(), ten_int
@@ -90,9 +96,11 @@ def test_LessonFileHandler_delete_atom_file_DeletesFile(temp_dir_setup):
     assert yao_lessonfilehandler.h_atom_file_exists(ten_int) is False
 
 
-def test_LessonFileHandler_get_max_atom_file_number_ReturnsObj(temp_dir_setup):
+def test_LessonFileHandler_get_max_atom_file_number_ReturnsObj(temp3_fs):
     # ESTABLISH
-    yao_lessonfilehandler = lessonfilehandler_shop(env_dir(), moment_lasso(), exx.yao)
+    yao_lessonfilehandler = lessonfilehandler_shop(
+        str(temp3_fs), moment_lasso(), exx.yao
+    )
     ten_int = 10
     yao_lessonfilehandler._save_valid_atom_file(
         get_atom_example_factunit_knee(), ten_int
@@ -104,18 +112,22 @@ def test_LessonFileHandler_get_max_atom_file_number_ReturnsObj(temp_dir_setup):
 
 
 def test_LessonFileHandler_get_max_atom_file_number_ReturnsObjWhenDirIsEmpty(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    yao_lessonfilehandler = lessonfilehandler_shop(env_dir(), moment_lasso(), exx.yao)
+    yao_lessonfilehandler = lessonfilehandler_shop(
+        str(temp3_fs), moment_lasso(), exx.yao
+    )
 
     # WHEN / THEN
     assert yao_lessonfilehandler.get_max_atom_file_number() is None
 
 
-def test_LessonFileHandler_get_next_atom_file_number_ReturnsObj(temp_dir_setup):
+def test_LessonFileHandler_get_next_atom_file_number_ReturnsObj(temp3_fs):
     # ESTABLISH
-    yao_lessonfilehandler = lessonfilehandler_shop(env_dir(), moment_lasso(), exx.yao)
+    yao_lessonfilehandler = lessonfilehandler_shop(
+        str(temp3_fs), moment_lasso(), exx.yao
+    )
     # WHEN / THEN
     assert yao_lessonfilehandler._get_next_atom_file_number() == 0
 
@@ -129,9 +141,11 @@ def test_LessonFileHandler_get_next_atom_file_number_ReturnsObj(temp_dir_setup):
     assert yao_lessonfilehandler._get_next_atom_file_number() == 11
 
 
-def test_LessonFileHandler_save_atom_file_SavesFile(temp_dir_setup):
+def test_LessonFileHandler_save_atom_file_SavesFile(temp3_fs):
     # ESTABLISH
-    yao_lessonfilehandler = lessonfilehandler_shop(env_dir(), moment_lasso(), exx.yao)
+    yao_lessonfilehandler = lessonfilehandler_shop(
+        str(temp3_fs), moment_lasso(), exx.yao
+    )
     ten_int = 10
     yao_lessonfilehandler._save_valid_atom_file(
         get_atom_example_factunit_knee(), ten_int
@@ -153,10 +167,12 @@ def test_LessonFileHandler_save_atom_file_SavesFile(temp_dir_setup):
 
 
 def test_LessonFileHandler_get_person_from_atom_files_ReturnsFileWithZeroAtoms(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    yao_lessonfilehandler = lessonfilehandler_shop(env_dir(), moment_lasso(), exx.yao)
+    yao_lessonfilehandler = lessonfilehandler_shop(
+        str(temp3_fs), moment_lasso(), exx.yao
+    )
 
     # WHEN
     yao_person = yao_lessonfilehandler._get_person_from_atom_files()
@@ -174,10 +190,12 @@ def test_LessonFileHandler_get_person_from_atom_files_ReturnsFileWithZeroAtoms(
 
 
 def test_LessonFileHandler_get_person_from_atom_files_ReturnsFile_SimplePlan(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    yao_lessonfilehandler = lessonfilehandler_shop(env_dir(), moment_lasso(), exx.yao)
+    yao_lessonfilehandler = lessonfilehandler_shop(
+        str(temp3_fs), moment_lasso(), exx.yao
+    )
 
     # save atom files
     sports_atom = get_atom_example_planunit_sports(
@@ -202,10 +220,12 @@ def test_LessonFileHandler_get_person_from_atom_files_ReturnsFile_SimplePlan(
 
 
 def test_LessonFileHandler_get_person_from_atom_files_ReturnsFile_WithFactUnit(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    yao_lessonfilehandler = lessonfilehandler_shop(env_dir(), moment_lasso(), exx.yao)
+    yao_lessonfilehandler = lessonfilehandler_shop(
+        str(temp3_fs), moment_lasso(), exx.yao
+    )
 
     # save atom files
     x_moment_rope = yao_lessonfilehandler.moment_lasso.moment_rope

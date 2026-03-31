@@ -1,29 +1,26 @@
 from os.path import exists as os_path_exists
-from sqlite3 import Cursor, connect as sqlite3_connect
+from sqlite3 import Cursor
 from src.ch00_py.db_toolbox import db_table_exists, get_row_count
 from src.ch00_py.file_toolbox import save_json
 from src.ch02_partner.group import awardunit_shop
 from src.ch03_labor.labor import laborunit_shop
 from src.ch06_plan.healer import healerunit_shop
 from src.ch07_person_logic.person_main import personunit_shop
-from src.ch09_person_lesson._ref.ch09_path import (
-    create_job_path,
-    create_moment_json_path,
-)
+from src.ch09_person_lesson._ref.ch09_path import create_moment_json_path
 from src.ch09_person_lesson.lasso import lassounit_shop
+from src.ch10_person_listen._ref.ch10_path import create_job_path
 from src.ch10_person_listen.keep_tool import save_job_file
 from src.ch14_moment.moment_main import momentunit_shop
 from src.ch18_etl_config.etl_sqlstr import create_prime_tablename as prime_table
 from src.ch19_etl_main.etl_main import etl_moment_job_jsons_to_job_tables
-from src.ch19_etl_main.test._util.ch19_env import cursor0, get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 
 def test_etl_moment_job_jsons_to_job_tables_PopulatesTables_Scenario0(
-    temp_dir_setup, cursor0: Cursor
+    temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     sue_person = personunit_shop(exx.sue, exx.a23)
     sue_person.add_partnerunit(exx.sue)
     sue_person.add_partnerunit(exx.bob)
@@ -89,7 +86,7 @@ def test_etl_moment_job_jsons_to_job_tables_PopulatesTables_Scenario0(
 
 
 def test_etl_moment_job_jsons_to_job_tables_PopulatesTables_Scenario1(
-    temp_dir_setup, cursor0: Cursor
+    temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
     sue_inx = "Suzy"
@@ -98,7 +95,7 @@ def test_etl_moment_job_jsons_to_job_tables_PopulatesTables_Scenario1(
     credit44 = 44
     credit77 = 77
     credit88 = 88
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     bob_job = personunit_shop(bob_inx, exx.a23)
     bob_job.add_partnerunit(bob_inx, credit77)
     bob_job.add_partnerunit(yao_inx, credit44)

@@ -310,6 +310,7 @@ def test_create_gcalendar_csv_from_person_ReturnsObj_Scenario2_TodayEvents():
 
 
 def test_create_gcalendar_csv_from_person_ReturnsObj_Scenario3_WeeklyEventDisplayed():
+    # sourcery skip: extract-duplicate-method
     # ESTABLISH
     bob_person = personunit_shop(wx.Bob, wx.root_rope)
     bob_person.add_plan(wx.sweep_rope, pledge=True, star=1)

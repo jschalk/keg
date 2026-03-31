@@ -4,13 +4,27 @@ from src.ch00_py.file_toolbox import (
     get_json_filename,
 )
 from src.ch04_rope.rope import get_all_rope_labels, rebuild_rope
-from src.ch09_person_lesson._ref.ch09_path import create_moments_dir_path
+from src.ch09_person_lesson._ref.ch09_path import (
+    create_moment_persons_dir_path,
+    create_moments_dir_path,
+)
+from src.ch09_person_lesson.lasso import LassoUnit
 from src.ch10_person_listen._ref.ch10_semantic_types import (
     KnotTerm,
     MomentRope,
     PersonName,
     RopeTerm,
 )
+
+
+def create_job_path(
+    moment_mstr_dir: str, moment_lasso: LassoUnit, person_name: PersonName
+) -> str:
+    """Returns path: moment_mstr_dir\\moments\\moment_rope\\persons\\person_name\\job\\person_name.json"""
+    persons_dir = create_moment_persons_dir_path(moment_mstr_dir, moment_lasso)
+    person_dir = create_path(persons_dir, person_name)
+    job_dir = create_path(person_dir, "job")
+    return create_path(job_dir, f"{person_name}.json")
 
 
 def treasury_filename() -> str:

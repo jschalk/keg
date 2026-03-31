@@ -1,5 +1,4 @@
 from inspect import getdoc as inspect_getdoc
-from platform import system as platform_system
 from pytest import mark as pytest_mark
 from src.ch00_py.file_toolbox import create_path
 from src.ch04_rope.rope import create_rope
@@ -25,13 +24,12 @@ from src.ch11_bud._ref.ch11_path import (
     create_spark_all_lesson_path,
     create_spark_expressed_lesson_path,
 )
-from src.ch11_bud.test._util.ch11_env import get_temp_dir
 from src.ref.keywords import Ch11Keywords as kw, ExampleStrs as exx
 
 
-def test_create_buds_dir_path_ReturnsObj():
+def test_create_buds_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     a23_lasso = lassounit_shop(exx.a23)
 
     # WHEN
@@ -46,9 +44,9 @@ def test_create_buds_dir_path_ReturnsObj():
     assert buds_dir == expected_buds_dir
 
 
-def test_create_bud_dir_path_ReturnsObj():
+def test_create_bud_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     timenum7 = 7
     a23_lasso = lassounit_shop(exx.a23)
 
@@ -67,9 +65,9 @@ def test_create_bud_dir_path_ReturnsObj():
     assert generated_timenum_dir == expected_timenum_dir
 
 
-def test_create_budunit_json_path_ReturnsObj():
+def test_create_budunit_json_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     timenum7 = 7
     a23_lasso = lassounit_shop(exx.a23)
 
@@ -89,9 +87,9 @@ def test_create_budunit_json_path_ReturnsObj():
     assert gen_bud_path == expected_bud_path_dir
 
 
-def test_create_persontime_path_ReturnsObj():
+def test_create_persontime_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     timenum7 = 7
     a23_lasso = lassounit_shop(exx.a23)
 
@@ -111,9 +109,9 @@ def test_create_persontime_path_ReturnsObj():
     assert gen_persontime_path == expected_persontime_path_dir
 
 
-def test_create_cell_dir_path_ReturnsObj_Scenario0_No_bud_ancestors():
+def test_create_cell_dir_path_ReturnsObj_Scenario0_No_bud_ancestors(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     tp7 = 7
     a23_lasso = lassounit_shop(exx.a23)
 
@@ -125,9 +123,9 @@ def test_create_cell_dir_path_ReturnsObj_Scenario0_No_bud_ancestors():
     assert gen_cell_dir == timenum_dir
 
 
-def test_create_cell_dir_path_ReturnsObj_Scenario1_One_bud_ancestors():
+def test_create_cell_dir_path_ReturnsObj_Scenario1_One_bud_ancestors(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     tp7 = 7
     x_bud_ancestors = [exx.yao]
     a23_lasso = lassounit_shop(exx.a23)
@@ -143,9 +141,9 @@ def test_create_cell_dir_path_ReturnsObj_Scenario1_One_bud_ancestors():
     assert gen_cell_dir == tp_yao_dir
 
 
-def test_create_cell_dir_path_ReturnsObj_Scenario2_Three_bud_ancestors():
+def test_create_cell_dir_path_ReturnsObj_Scenario2_Three_bud_ancestors(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     tp7 = 7
     a23_lasso = lassounit_shop(exx.a23)
     x_bud_ancestors = [exx.yao, exx.bob, exx.zia]
@@ -163,9 +161,9 @@ def test_create_cell_dir_path_ReturnsObj_Scenario2_Three_bud_ancestors():
     assert gen_bud_celldepth_dir_path == expected_tp_yao_bob_zia_dir
 
 
-def test_create_cell_json_path_ReturnsObj_Scenario0_Empty_bud_ancestors():
+def test_create_cell_json_path_ReturnsObj_Scenario0_Empty_bud_ancestors(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     timenum7 = 7
     a23_lasso = lassounit_shop(exx.a23)
 
@@ -185,9 +183,9 @@ def test_create_cell_json_path_ReturnsObj_Scenario0_Empty_bud_ancestors():
     assert gen_cell_json_path == expected_cell_json_path
 
 
-def test_create_cell_json_path_ReturnsObj_Scenario1_Three_bud_ancestors():
+def test_create_cell_json_path_ReturnsObj_Scenario1_Three_bud_ancestors(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     tp7 = 7
     a23_lasso = lassounit_shop(exx.a23)
     bud_ancestors = [exx.yao, exx.bob]
@@ -205,9 +203,11 @@ def test_create_cell_json_path_ReturnsObj_Scenario1_Three_bud_ancestors():
     assert gen_cell_json_path == expected_cell_json_path
 
 
-def test_create_cell_partner_mandate_ledger_path_ReturnsObj_Scenario1_Three_bud_ancestors():
+def test_create_cell_partner_mandate_ledger_path_ReturnsObj_Scenario1_Three_bud_ancestors(
+    temp3_dir,
+):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     tp7 = 7
     a23_lasso = lassounit_shop(exx.a23)
     bud_ancestors = [exx.yao, exx.bob]
@@ -225,9 +225,9 @@ def test_create_cell_partner_mandate_ledger_path_ReturnsObj_Scenario1_Three_bud_
     assert gen_cell_json_path == expected_cell_json_path
 
 
-def test_create_person_spark_dir_path_ReturnsObj():
+def test_create_person_spark_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     spark3 = 3
     a23_lasso = lassounit_shop(exx.a23)
 
@@ -246,9 +246,9 @@ def test_create_person_spark_dir_path_ReturnsObj():
     assert gen_a23_e3_dir_path == expected_a23_bob_e3_dir
 
 
-def test_create_person_spark_csv_path_ReturnsObj():
+def test_create_person_spark_csv_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     spark3 = 3
     a23_lasso = lassounit_shop(exx.a23)
     x4_filename = "some_file"
@@ -267,9 +267,9 @@ def test_create_person_spark_csv_path_ReturnsObj():
     assert gen_csv_path == expected_a23_bob_e3_dir
 
 
-def test_create_personspark_path_ReturnsObj():
+def test_create_personspark_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     spark3 = 3
     a23_lasso = lassounit_shop(exx.a23)
 
@@ -289,9 +289,9 @@ def test_create_personspark_path_ReturnsObj():
     assert gen_a23_e3_person_path == expected_a23_bob_e3_person_path
 
 
-def test_create_spark_all_lesson_path_ReturnsObj():
+def test_create_spark_all_lesson_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     spark3 = 3
     a23_lasso = lassounit_shop(exx.a23)
 
@@ -313,9 +313,9 @@ def test_create_spark_all_lesson_path_ReturnsObj():
     assert gen_a23_e3_person_path == expected_a23_bob_e3_all_lesson_path
 
 
-def test_create_spark_expressed_lesson_path_ReturnsObj():
+def test_create_spark_expressed_lesson_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     spark3 = 3
     a23_lasso = lassounit_shop(exx.a23)
 
@@ -337,7 +337,7 @@ def test_create_spark_expressed_lesson_path_ReturnsObj():
     assert gen_a23_e3_person_path == expected_a23_bob_e3_expressed_lesson_path
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_buds_dir_path_HasDocString():
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
     # ESTABLISH
@@ -351,7 +351,7 @@ def test_create_buds_dir_path_HasDocString():
     assert inspect_getdoc(create_buds_dir_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_bud_dir_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -367,7 +367,7 @@ def test_create_bud_dir_path_HasDocString():
     assert inspect_getdoc(create_bud_dir_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_cell_dir_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -385,7 +385,7 @@ def test_create_cell_dir_path_HasDocString():
     assert inspect_getdoc(create_cell_dir_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_cell_json_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -403,7 +403,7 @@ def test_create_cell_json_path_HasDocString():
     assert inspect_getdoc(create_cell_json_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_cell_partner_mandate_ledger_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -421,7 +421,7 @@ def test_create_cell_partner_mandate_ledger_path_HasDocString():
     assert inspect_getdoc(create_cell_partner_mandate_ledger_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_budunit_json_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -437,7 +437,7 @@ def test_create_budunit_json_path_HasDocString():
     assert inspect_getdoc(create_budunit_json_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_persontime_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -453,7 +453,7 @@ def test_create_persontime_path_HasDocString():
     assert inspect_getdoc(create_persontime_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_person_spark_dir_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -468,7 +468,7 @@ def test_create_person_spark_dir_path_HasDocString():
     assert inspect_getdoc(create_person_spark_dir_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_person_spark_csv_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -484,7 +484,7 @@ def test_create_person_spark_csv_path_HasDocString():
     assert inspect_getdoc(create_person_spark_csv_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_personspark_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -499,7 +499,7 @@ def test_create_personspark_path_HasDocString():
     assert inspect_getdoc(create_personspark_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_spark_all_lesson_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
@@ -514,7 +514,7 @@ def test_create_spark_all_lesson_path_HasDocString():
     assert inspect_getdoc(create_spark_all_lesson_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_spark_expressed_lesson_path_HasDocString():
     # ESTABLISH
     moment_lasso = lassounit_shop(create_rope(kw.moment_rope))

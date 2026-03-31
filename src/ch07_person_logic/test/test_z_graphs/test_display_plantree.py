@@ -91,8 +91,7 @@ def test_PersonUnit_fund_graph0_VisualizesCirculation(graphics_bool):
     hun_y_rope = sue_person.make_rope(cat_rope, hun_y_str)
     clean_str = "cleaning"
     clean_rope = sue_person.make_rope(casa_rope, clean_str)
-    sweep_str = "sweep floor"
-    sweep_rope = sue_person.make_rope(clean_rope, sweep_str)
+    sweep_rope = sue_person.make_rope(clean_rope, exx.sweep)
     dish_str = "clean dishes"
     dish_rope = sue_person.make_rope(clean_rope, dish_str)
     sue_person.add_plan(casa_rope, star=30)

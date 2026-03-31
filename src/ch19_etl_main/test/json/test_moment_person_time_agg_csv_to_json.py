@@ -7,12 +7,11 @@ from src.ch18_etl_config._ref.ch18_path import (
     create_moment_ote1_json_path,
 )
 from src.ch19_etl_main.etl_main import etl_moment_ote1_agg_csvs_to_jsons
-from src.ch19_etl_main.test._util.ch19_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 
 def test_etl_moment_ote1_agg_csvs_to_jsons_CreatesFile_Scenaro0(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     spark3 = 3
@@ -20,7 +19,7 @@ def test_etl_moment_ote1_agg_csvs_to_jsons_CreatesFile_Scenaro0(
     amy45_str = "amy45"
     timenum55 = 55
     timenum66 = 66
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     a45_lasso = lassounit_shop(create_rope(amy45_str))
     a23_spark_time_p = create_moment_ote1_csv_path(moment_mstr_dir, a23_lasso)

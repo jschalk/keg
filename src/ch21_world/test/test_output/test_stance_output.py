@@ -3,14 +3,10 @@ from pandas import DataFrame, read_excel as pandas_read_excel
 from pandas.testing import assert_frame_equal
 from shutil import copy2 as shutil_copy2
 from src.ch00_py.file_toolbox import create_path, set_dir
-from src.ch17_idea.idea_db_tool import get_sheet_names, upsert_sheet
+from src.ch17_idea.idea_db_tool import get_sheet_names, save_sheet
 from src.ch18_etl_config._ref.ch18_path import (
     create_stance0001_path,
     create_stances_dir_path,
-)
-from src.ch21_world.test._util.ch21_env import (
-    get_temp_dir as worlds_dir,
-    temp_dir_setup,
 )
 from src.ch21_world.world import (
     create_stances,
@@ -20,27 +16,25 @@ from src.ch21_world.world import (
 from src.ref.keywords import Ch21Keywords as kw, ExampleStrs as exx
 
 
-def test_create_stances_CreatesFile_Senario0_EmptyWorld(
-    temp_dir_setup,
-):
+def test_create_stances_CreatesFile_Senario0_EmptyWorld(temp3_fs):
     # ESTABLISH
     fay_str = "Fay"
-    output_dir = create_path(worlds_dir(), "output")
-    fay_wdir = worlddir_shop(fay_str, worlds_dir(), output_dir)
+    output_dir = create_path(str(temp3_fs), "output")
+    fay_wdir = worlddir_shop(fay_str, str(temp3_fs), output_dir)
     sheets_input_to_lynx_mstr(
         world_db_path=fay_wdir.get_world_db_path(),
-        input_dir=fay_wdir._input_dir,
-        moment_mstr_dir=fay_wdir._moment_mstr_dir,
+        input_dir=fay_wdir.input_dir,
+        moment_mstr_dir=fay_wdir.moment_mstr_dir,
     )
     fay_stance0001_path = create_stance0001_path(fay_wdir.output_dir)
     assert os_path_exists(fay_stance0001_path) is False
 
     # WHEN
     create_stances(
-        fay_wdir._world_dir,
+        fay_wdir.world_dir,
         fay_wdir.output_dir,
         fay_wdir.world_name,
-        fay_wdir._moment_mstr_dir,
+        fay_wdir.moment_mstr_dir,
         prettify_excel_bool=False,
     )
 
@@ -48,14 +42,14 @@ def test_create_stances_CreatesFile_Senario0_EmptyWorld(
     assert os_path_exists(fay_stance0001_path)
 
 
-def test_create_stances_CreatesFile_Senario1_SingleSmallSpark(temp_dir_setup):
+def test_create_stances_CreatesFile_Senario1_SingleSmallSpark(temp3_fs):
     # ESTABLISH
     fay_str = "Fay"
-    output_dir = create_path(worlds_dir(), "output")
-    fay_wdir = worlddir_shop(fay_str, worlds_dir(), output_dir)
+    output_dir = create_path(str(temp3_fs), "output")
+    fay_wdir = worlddir_shop(fay_str, str(temp3_fs), output_dir)
     spark2 = 2
     ex_filename = "Faybob.xlsx"
-    input_file_path = create_path(fay_wdir._input_dir, ex_filename)
+    input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00011_columns = [
         kw.spark_num,
         kw.face_name,
@@ -65,21 +59,21 @@ def test_create_stances_CreatesFile_Senario1_SingleSmallSpark(temp_dir_setup):
     ]
     br00011_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
     br00011_df = DataFrame(br00011_rows, columns=br00011_columns)
-    upsert_sheet(input_file_path, "br00011_ex3", br00011_df)
+    save_sheet(input_file_path, "br00011_ex3", br00011_df)
     sheets_input_to_lynx_mstr(
         world_db_path=fay_wdir.get_world_db_path(),
-        input_dir=fay_wdir._input_dir,
-        moment_mstr_dir=fay_wdir._moment_mstr_dir,
+        input_dir=fay_wdir.input_dir,
+        moment_mstr_dir=fay_wdir.moment_mstr_dir,
     )
     fay_stance0001_path = create_stance0001_path(fay_wdir.output_dir)
     assert os_path_exists(fay_stance0001_path) is False
 
     # WHEN
     create_stances(
-        fay_wdir._world_dir,
+        fay_wdir.world_dir,
         fay_wdir.output_dir,
         fay_wdir.world_name,
-        fay_wdir._moment_mstr_dir,
+        fay_wdir.moment_mstr_dir,
         prettify_excel_bool=False,
     )
 
@@ -92,16 +86,16 @@ def test_create_stances_CreatesFile_Senario1_SingleSmallSpark(temp_dir_setup):
 
 
 def test_create_stances_CreatesFile_Senario2_CreatedStanceCanBeIdeasForOtherWorldDir(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # sourcery skip: no-loop-in-tests
     # ESTABLISH
     fay_str = "Fay"
-    fay_output_dir = create_path(worlds_dir(), "Fay_output")
-    fay_wdir = worlddir_shop(fay_str, worlds_dir(), fay_output_dir)
+    fay_output_dir = create_path(str(temp3_fs), "Fay_output")
+    fay_wdir = worlddir_shop(fay_str, str(temp3_fs), fay_output_dir)
     spark2 = 2
     ex_filename = "Faybob.xlsx"
-    input_file_path = create_path(fay_wdir._input_dir, ex_filename)
+    input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00011_columns = [
         kw.spark_num,
         kw.face_name,
@@ -111,24 +105,24 @@ def test_create_stances_CreatesFile_Senario2_CreatedStanceCanBeIdeasForOtherWorl
     ]
     br00011_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
     br00011_df = DataFrame(br00011_rows, columns=br00011_columns)
-    upsert_sheet(input_file_path, "br00011_ex3", br00011_df)
+    save_sheet(input_file_path, "br00011_ex3", br00011_df)
     sheets_input_to_lynx_mstr(
         world_db_path=fay_wdir.get_world_db_path(),
-        input_dir=fay_wdir._input_dir,
-        moment_mstr_dir=fay_wdir._moment_mstr_dir,
+        input_dir=fay_wdir.input_dir,
+        moment_mstr_dir=fay_wdir.moment_mstr_dir,
     )
     fay_stance0001_path = create_stance0001_path(fay_wdir.output_dir)
     create_stances(
-        world_dir=fay_wdir._world_dir,
+        world_dir=fay_wdir.world_dir,
         output_dir=fay_wdir.output_dir,
         world_name=fay_wdir.world_name,
-        moment_mstr_dir=fay_wdir._moment_mstr_dir,
+        moment_mstr_dir=fay_wdir.moment_mstr_dir,
         prettify_excel_bool=False,
     )
-    bob_output_dir = create_path(worlds_dir(), "Bob_output")
-    bob_wdir = worlddir_shop("Bob", worlds_dir(), bob_output_dir)
-    bob_input_st0001_path = create_path(bob_wdir._moment_mstr_dir, "Bob_input.xlsx")
-    set_dir(create_stances_dir_path(bob_wdir._moment_mstr_dir))
+    bob_output_dir = create_path(str(temp3_fs), "Bob_output")
+    bob_wdir = worlddir_shop("Bob", str(temp3_fs), bob_output_dir)
+    bob_input_st0001_path = create_path(bob_wdir.moment_mstr_dir, "Bob_input.xlsx")
+    set_dir(create_stances_dir_path(bob_wdir.moment_mstr_dir))
     shutil_copy2(fay_stance0001_path, dst=bob_input_st0001_path)
     # print(f" {pandas_read_excel(fay_stance0001_path)=}")
     # print(f"{pandas_read_excel(bob_input_st0001_path)=}")
@@ -136,18 +130,18 @@ def test_create_stances_CreatesFile_Senario2_CreatedStanceCanBeIdeasForOtherWorl
     print(f"{get_sheet_names(bob_input_st0001_path)=}")
     sheets_input_to_lynx_mstr(
         world_db_path=fay_wdir.get_world_db_path(),
-        input_dir=fay_wdir._input_dir,
-        moment_mstr_dir=fay_wdir._moment_mstr_dir,
+        input_dir=fay_wdir.input_dir,
+        moment_mstr_dir=fay_wdir.moment_mstr_dir,
     )
     bob_stance0001_path = create_stance0001_path(bob_wdir.output_dir)
     assert os_path_exists(bob_stance0001_path) is False
 
     # WHEN
     create_stances(
-        bob_wdir._world_dir,
+        bob_wdir.world_dir,
         bob_wdir.output_dir,
         bob_wdir.world_name,
-        bob_wdir._moment_mstr_dir,
+        bob_wdir.moment_mstr_dir,
         prettify_excel_bool=False,
     )
 
@@ -165,15 +159,15 @@ def test_create_stances_CreatesFile_Senario2_CreatedStanceCanBeIdeasForOtherWorl
 
 
 def test_create_stances_CreatesFile_Senario3_Create_calendar_markdown(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     fay_str = "Fay"
-    output_dir = create_path(worlds_dir(), "output")
-    fay_wdir = worlddir_shop(fay_str, worlds_dir(), output_dir)
+    output_dir = create_path(str(temp3_fs), "output")
+    fay_wdir = worlddir_shop(fay_str, str(temp3_fs), output_dir)
     spark2 = 2
     ex_filename = "Faybob.xlsx"
-    input_file_path = create_path(fay_wdir._input_dir, ex_filename)
+    input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00011_columns = [
         kw.spark_num,
         kw.face_name,
@@ -183,11 +177,11 @@ def test_create_stances_CreatesFile_Senario3_Create_calendar_markdown(
     ]
     br00011_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
     br00011_df = DataFrame(br00011_rows, columns=br00011_columns)
-    upsert_sheet(input_file_path, "br00011_ex3", br00011_df)
+    save_sheet(input_file_path, "br00011_ex3", br00011_df)
     sheets_input_to_lynx_mstr(
         world_db_path=fay_wdir.get_world_db_path(),
-        input_dir=fay_wdir._input_dir,
-        moment_mstr_dir=fay_wdir._moment_mstr_dir,
+        input_dir=fay_wdir.input_dir,
+        moment_mstr_dir=fay_wdir.moment_mstr_dir,
     )
 
     a23_calendar_md_path = create_path(output_dir, "Amy23_calendar.md")
@@ -196,10 +190,10 @@ def test_create_stances_CreatesFile_Senario3_Create_calendar_markdown(
 
     # WHEN
     create_stances(
-        fay_wdir._world_dir,
+        fay_wdir.world_dir,
         fay_wdir.output_dir,
         fay_wdir.world_name,
-        fay_wdir._moment_mstr_dir,
+        fay_wdir.moment_mstr_dir,
         prettify_excel_bool=False,
     )
 
@@ -207,10 +201,10 @@ def test_create_stances_CreatesFile_Senario3_Create_calendar_markdown(
     assert os_path_exists(a23_calendar_md_path)
 
 
-# def test_WorldDir_sheets_input_to_lynx_CreatesFiles(temp_dir_setup):
+# def test_WorldDir_sheets_input_to_lynx_CreatesFiles(temp3_fs):
 #     # ESTABLISH
 #     fay_str = "Fay"
-#     fay_wdir = worlddir_shop(fay_str, worlds_dir())
+#     fay_wdir = worlddir_shop(fay_str, str(temp3_fs))
 #     # delete_dir(fay_wdir.worlds_dir)
 #     spark1 = 1
 #     spark2 = 2
@@ -219,7 +213,7 @@ def test_create_stances_CreatesFile_Senario3_Create_calendar_markdown(
 #     hour6am = "6am"
 #     hour7am = "7am"
 #     ex_filename = "Faybob.xlsx"
-#     input_file_path = create_path(fay_wdir._input_dir, ex_filename)
+#     input_file_path = create_path(fay_wdir.input_dir, ex_filename)
 #     br00003_columns = [
 #         kw.face_name,
 #         kw.spark_num,
@@ -243,7 +237,7 @@ def test_create_stances_CreatesFile_Senario3_Create_calendar_markdown(
 #     br1row0 = [spark2, exx.sue, exx.a23, exx.sue, tp37, sue_quota, sue_celldepth]
 #     br00001_1df = DataFrame([br1row0], columns=br00001_columns)
 #     br00001_ex0_str = "example0_br00001"
-#     upsert_sheet(input_file_path, br00001_ex0_str, br00001_1df)
+#     save_sheet(input_file_path, br00001_ex0_str, br00001_1df)
 
 #     br3row0 = [spark1, exx.sue,  minute_360, exx.a23, hour6am]
 #     br3row1 = [spark1, exx.sue,  minute_420, exx.a23, hour7am]
@@ -252,8 +246,8 @@ def test_create_stances_CreatesFile_Senario3_Create_calendar_markdown(
 #     br00003_3df = DataFrame([br3row1, br3row0, br3row2], columns=br00003_columns)
 #     br00003_ex1_str = "example1_br00003"
 #     br00003_ex3_str = "example3_br00003"
-#     upsert_sheet(input_file_path, br00003_ex1_str, br00003_1df)
-#     upsert_sheet(input_file_path, br00003_ex3_str, br00003_3df)
+#     save_sheet(input_file_path, br00003_ex1_str, br00003_1df)
+#     save_sheet(input_file_path, br00003_ex3_str, br00003_3df)
 #     br00011_columns = [
 #         kw.face_name,
 #         kw.spark_num,
@@ -263,8 +257,8 @@ def test_create_stances_CreatesFile_Senario3_Create_calendar_markdown(
 #     ]
 #     br00011_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
 #     br00011_df = DataFrame(br00011_rows, columns=br00011_columns)
-#     upsert_sheet(input_file_path, "br00011_ex3", br00011_df)
-#     mstr_dir = fay_wdir._moment_mstr_dir
+#     save_sheet(input_file_path, "br00011_ex3", br00011_df)
+#     mstr_dir = fay_wdir.moment_mstr_dir
 #     wrong_a23_moment_dir = create_path(mstr_dir, exx.a23)
 #     assert os_path_exists(wrong_a23_moment_dir) is False
 #     a23_json_path = create_moment_json_path(mstr_dir, a23_lasso)
@@ -281,13 +275,13 @@ def test_create_stances_CreatesFile_Senario3_Create_calendar_markdown(
 #     # WHEN
 # sheets_input_to_lynx_mstr(
 #     world_db_path=fay_wdir.get_world_db_path(),
-#     input_dir=fay_wdir._input_dir,
-#     moment_mstr_dir=fay_wdir._moment_mstr_dir,
+#     input_dir=fay_wdir.input_dir,
+#     moment_mstr_dir=fay_wdir.moment_mstr_dir,
 # )
 
 #     # THEN
 #     assert os_path_exists(wrong_a23_moment_dir) is False
-#     brick_file_path = create_path(fay_wdir._brick_dir, "br00003.xlsx")
+#     brick_file_path = create_path(fay_wdir.brick_dir, "br00003.xlsx")
 #     assert os_path_exists(input_file_path)
 #     assert os_path_exists(brick_file_path)
 #     assert os_path_exists(a23_json_path)

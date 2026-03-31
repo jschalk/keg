@@ -290,9 +290,8 @@ def test_PersonUnit_conpute_WhenPlanUnitHasFundsBut_kidsHaveNostarDistributeFund
     clean_plan = planunit_shop(clean_str, star=2)
     sue_personunit.set_plan_obj(planunit_shop(clean_str), casa_rope)
 
-    sweep_str = "sweep"
-    sweep_rope = sue_personunit.make_rope(clean_rope, sweep_str)
-    sweep_plan = planunit_shop(sweep_str, star=0)
+    sweep_rope = sue_personunit.make_rope(clean_rope, exx.sweep)
+    sweep_plan = planunit_shop(exx.sweep, star=0)
     vacuum_str = "vacuum"
     vacuum_rope = sue_personunit.make_rope(clean_rope, vacuum_str)
     vacuum_plan = planunit_shop(vacuum_str, star=0)

@@ -47,10 +47,9 @@ def test_PersonUnit_conpute_ExecutesWithRangeRootFacts():
     clean_begin = -3
     clean_close = 7
     clean_plan = planunit_shop(exx.clean, begin=clean_begin, close=clean_close)
-    sweep_str = "sweep"
     sweep_gogo_want = -2
     sweep_stop_want = 1
-    sweep_plan = planunit_shop(sweep_str, gogo_want=sweep_gogo_want)
+    sweep_plan = planunit_shop(exx.sweep, gogo_want=sweep_gogo_want)
     sweep_plan.stop_want = sweep_stop_want
     zia_person.set_plan_obj(clean_plan, parent_rope=casa_rope)
     zia_person.add_fact(
@@ -78,9 +77,8 @@ def test_PersonUnit_conpute_RaisesErrorIfNon_RangeRootHasFactUnit():
     clean_begin = -3
     clean_close = 7
     clean_plan = planunit_shop(exx.clean, begin=clean_begin, close=clean_close)
-    sweep_str = "sweep"
-    sweep_rope = zia_person.make_rope(clean_rope, sweep_str)
-    sweep_plan = planunit_shop(sweep_str, addin=2)
+    sweep_rope = zia_person.make_rope(clean_rope, exx.sweep)
+    sweep_plan = planunit_shop(exx.sweep, addin=2)
     zia_person.set_plan_obj(clean_plan, parent_rope=casa_rope)
     zia_person.set_plan_obj(sweep_plan, parent_rope=clean_rope)
     zia_person.add_fact(sweep_rope, sweep_rope, fact_lower=1, fact_upper=5)

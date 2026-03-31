@@ -1,5 +1,4 @@
 from inspect import getdoc as inspect_getdoc
-from platform import system as platform_system
 from pytest import mark as pytest_mark
 from src.ch00_py.file_toolbox import create_path
 from src.ch04_rope.rope import create_rope
@@ -8,13 +7,13 @@ from src.ch14_moment._ref.ch14_path import (
     BUD_MANDATE_FILENAME,
     create_bud_partner_mandate_ledger_path,
 )
-from src.ch14_moment.test._util.ch14_env import get_temp_dir
 from src.ref.keywords import Ch14Keywords as kw, ExampleStrs as exx
 
 
-def test_create_bud_partner_mandate_ledger_path_ReturnsObj():
+def test_create_bud_partner_mandate_ledger_path_ReturnsObj(temp3_dir):
+    # sourcery skip: extract-duplicate-method, inline-immediately-returned-variable
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     timenum7 = 7
     a23_lasso = lassounit_shop(exx.a23)
 
@@ -34,7 +33,7 @@ def test_create_bud_partner_mandate_ledger_path_ReturnsObj():
     assert gen_bud_path == expected_bud_path_dir
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_bud_partner_mandate_ledger_path_HasDocString():
     # ESTABLISH
     doc_str = create_bud_partner_mandate_ledger_path(

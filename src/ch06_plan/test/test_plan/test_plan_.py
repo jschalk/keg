@@ -129,7 +129,7 @@ def test_PlanUnit_set_plan_label_Scenario1_RaisesErrorWhen_plan_label_IsNone():
     assert str(excinfo.value) == "Cannot set Plan's Label empty or None"
 
 
-def test_planunit_shop_ReturnsObj_WithOneParameter():
+def test_planunit_shop_ReturnsObj_Scenario0_WithOneParameter():
     # ESTABLISH
 
     # WHEN
@@ -175,7 +175,7 @@ def test_planunit_shop_ReturnsObj_WithOneParameter():
     assert x_planunit.healerunit_ratio == 0
 
 
-def test_planunit_shop_Allows_starToBeZero():
+def test_planunit_shop_ReturnsObj_Scenario1_Allows_starToBeZero():
     # ESTABLISH
     zero_int = 0
     # WHEN
@@ -184,7 +184,7 @@ def test_planunit_shop_Allows_starToBeZero():
     assert x_planunit.star == zero_int
 
 
-def test_planunit_shop_Allows_doesNotAllow_starToBeNegative():
+def test_planunit_shop_ReturnsObj_Scenario2_ConvertsNegative_starToZero():
     # ESTABLISH
     negative_int = -4
     # WHEN
@@ -194,7 +194,7 @@ def test_planunit_shop_Allows_doesNotAllow_starToBeNegative():
     assert x_planunit.star == zero_int
 
 
-def test_planunit_shop_ReturnsObj_Given_healerunit_Parameter():
+def test_planunit_shop_ReturnsObj_Scenario3_Given_healerunit_Parameter():
     # ESTABLISH
     x_healerunit = healerunit_shop({"Sue", "Yao"})
     x_problem_bool = True
@@ -214,7 +214,7 @@ def test_planunit_shop_ReturnsObj_Given_healerunit_Parameter():
     assert x_planunit.fund_grain == x_fund_grain
 
 
-def test_planunit_shop_ReturnsObjWith_awardunits():
+def test_planunit_shop_ReturnsObj_Scenario4_ReturnsObjWith_awardunits():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     biker_give_force = 12
@@ -237,7 +237,7 @@ def test_planunit_shop_ReturnsObjWith_awardunits():
     assert sport_plan.awardunits == x_awardunits
 
 
-def test_planunit_shop_ReturnsObjWithParameters():
+def test_planunit_shop_ReturnsObj_Scenario5_ReturnsObjWithParameters():
     # ESTABLISH
     sport_gogo_want = 5
     sport_stop_want = 13
@@ -253,7 +253,7 @@ def test_planunit_shop_ReturnsObjWithParameters():
     assert sport_plan.stop_want == sport_stop_want
 
 
-def test_PlanUnit_get_obj_key_ReturnsInfo():
+def test_PlanUnit_get_obj_key_ReturnsObj_Scenario0():
     # ESTABLISH / WHEN
     red_plan = planunit_shop(exx.red)
 
@@ -273,7 +273,7 @@ def test_PlanUnit_set_knot_SetsAttr():
     assert casa_plan.knot == exx.slash
 
 
-def test_PlanUnit_get_obj_key_ReturnsObj():
+def test_PlanUnit_get_obj_key_ReturnsObj_Scenario1():
     # ESTABLISH
     round_str = "round_stuff"
     round_rope = create_rope(exx.a23, round_str)
@@ -316,7 +316,7 @@ def test_PlanUnit_set_parent_rope_SetsAttr():
     assert ball_plan.parent_rope == sports_rope
 
 
-def test_PlanUnit_clear_descendant_pledge_count_ClearsAttrs():
+def test_PlanUnit_clear_descendant_pledge_count_SetsAttr_ToNone():
     # ESTABLISH
     ball_str = "ball"
     ball_plan = planunit_shop(ball_str, descendant_pledge_count=55)
@@ -329,7 +329,7 @@ def test_PlanUnit_clear_descendant_pledge_count_ClearsAttrs():
     assert ball_plan.descendant_pledge_count is None
 
 
-def test_PlanUnit_add_to_descendant_pledge_count_AddsToCount():
+def test_PlanUnit_add_to_descendant_pledge_count_SetsAttr_AddsToCount():
     # ESTABLISH
     ball_str = "ball"
     ball_plan = planunit_shop(ball_str, descendant_pledge_count=55)

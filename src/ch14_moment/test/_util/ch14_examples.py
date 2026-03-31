@@ -6,13 +6,10 @@ from src.ch07_person_logic.person_main import PersonUnit, personunit_shop
 from src.ch09_person_lesson.lasso import lassounit_shop
 from src.ch09_person_lesson.lesson_filehandler import open_gut_file, save_gut_file
 from src.ch14_moment.moment_main import MomentUnit, momentunit_shop
-from src.ch14_moment.test._util.ch14_env import get_temp_dir
 from src.ref.keywords import ExampleStrs as exx
 
 
-def create_example_moment2() -> MomentUnit:
-    # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+def create_example_moment2(x_moment_mstr_dir) -> MomentUnit:
     a45_rope = create_rope("amy45")
     amy_moment = momentunit_shop(a45_rope, x_moment_mstr_dir)
     wei_str = "Wei"
@@ -69,11 +66,10 @@ def create_example_moment2() -> MomentUnit:
     return amy_moment
 
 
-def create_example_moment3() -> MomentUnit:
+def create_example_moment3(x_moment_mstr_dir) -> MomentUnit:
     # ESTABLISH
     a45_rope = create_rope("amy45")
     a45_lasso = lassounit_shop(a45_rope)
-    x_moment_mstr_dir = get_temp_dir()
     amy_moment = momentunit_shop(a45_rope, x_moment_mstr_dir)
     wei_str = "Wei"
     amy_moment.create_init_job_from_guts(exx.yao)
@@ -109,9 +105,8 @@ def create_example_moment3() -> MomentUnit:
     return amy_moment
 
 
-def create_example_moment4() -> MomentUnit:
+def create_example_moment4(x_moment_mstr_dir) -> MomentUnit:
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
     a45_rope = create_rope("amy45")
     a45_lasso = lassounit_shop(a45_rope)
     amy_moment = momentunit_shop(a45_rope, x_moment_mstr_dir)

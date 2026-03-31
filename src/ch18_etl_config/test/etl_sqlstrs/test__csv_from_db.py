@@ -3,15 +3,10 @@ from sqlite3 import Cursor
 from src.ch00_py.csv_toolbox import open_csv_with_types
 from src.ch00_py.file_toolbox import create_path
 from src.ch18_etl_config.etl_csv import save_to_split_csvs
-from src.ch18_etl_config.test._util.ch18_env import (
-    cursor0,
-    get_temp_dir,
-    temp_dir_setup,
-)
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
 
-def test_save_to_split_csvs_CreatesFiles_Scenario0(temp_dir_setup, cursor0: Cursor):
+def test_save_to_split_csvs_CreatesFiles_Scenario0(temp3_fs, cursor0: Cursor):
     # ESTABLISH
     x_tablename = "test_table56"
     key_columns = ["user", "hair"]
@@ -36,7 +31,7 @@ VALUES
 ;
 """
     )
-    x_dir = get_temp_dir()
+    x_dir = str(temp3_fs)
     A_dir = create_path(x_dir, "A")
     B_dir = create_path(x_dir, "B")
     C_dir = create_path(x_dir, "C")
@@ -88,7 +83,7 @@ VALUES
 
 
 # def test_save_to_split_csvs_CreatesFiles_Scenario1_add_col1_prefix(
-#     temp_dir_setup, cursor0: Cursor
+#     temp3_fs, cursor0: Cursor
 # ):
 #     # ESTABLISH
 #     x_tablename = "test_table567"
@@ -109,7 +104,7 @@ VALUES
 # ;
 # """
 #     )
-#     x_dir = get_temp_dir()
+#     x_dir = str(temp3_fs)
 #     hairs_str = "hairs"
 #     A_dir = create_path(x_dir, "A")
 #     B_dir = create_path(x_dir, "B")
@@ -165,7 +160,7 @@ VALUES
 
 
 # def test_save_to_split_csvs_CreatesFiles_Scenario2_add_col2_prefix(
-#     temp_dir_setup, cursor0: Cursor
+#     temp3_fs, cursor0: Cursor
 # ):
 #     # ESTABLISH
 #     x_tablename = "test_table568"
@@ -176,7 +171,7 @@ VALUES
 #     cursor0.execute(
 #         f"""INSERT INTO {x_tablename} (hair, user, y_int, run) VALUES (1, "A", 200, "yes") ;"""
 #     )
-#     x_dir = get_temp_dir()
+#     x_dir = str(temp3_fs)
 #     hairs_str = "hairs"
 #     y_ints_str = "y_ints"
 #     A_dir = create_path(x_dir, "A")
@@ -213,7 +208,7 @@ VALUES
 
 
 def test_save_to_split_csvs_CreatesFiles_Scenario3_Different_Knots(
-    temp_dir_setup, cursor0: Cursor
+    temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
     x_tablename = "test_table568"
@@ -228,7 +223,7 @@ def test_save_to_split_csvs_CreatesFiles_Scenario3_Different_Knots(
     cursor0.execute(insert1_sql)
     cursor0.execute(insert2_sql)
     cursor0.execute(insert3_sql)
-    x_dir = get_temp_dir()
+    x_dir = str(temp3_fs)
     hairs_str = "hairs"
     y_ints_str = "y_ints"
     blue_dir = create_path(x_dir, exx.blue)
@@ -269,7 +264,7 @@ def test_save_to_split_csvs_CreatesFiles_Scenario3_Different_Knots(
 
 
 # def test_save_to_split_csvs_CreatesFiles_Scenario4_knot_is_NULL(
-#     temp_dir_setup, cursor0: Cursor
+#     temp3_fs, cursor0: Cursor
 # ):
 #     # ESTABLISH
 #     x_tablename = "test_table568"
@@ -284,7 +279,7 @@ def test_save_to_split_csvs_CreatesFiles_Scenario3_Different_Knots(
 #     cursor0.execute(insert1_sql)
 #     cursor0.execute(insert2_sql)
 #     cursor0.execute(insert3_sql)
-#     x_dir = get_temp_dir()
+#     x_dir = str(temp3_fs)
 #     hairs_str = "hairs"
 #     y_ints_str = "y_ints"
 #     red_dir = create_path(x_dir, exx.red)

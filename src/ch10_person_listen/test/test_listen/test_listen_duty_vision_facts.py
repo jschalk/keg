@@ -6,7 +6,6 @@ from src.ch10_person_listen.listen_main import (
     listen_to_agendas_duty_vision,
     listen_to_facts_duty_vision,
 )
-from src.ch10_person_listen.test._util.ch10_env import temp_dir_setup
 from src.ch10_person_listen.test._util.ch10_examples import (
     a23_casa_rope,
     a23_clean_rope,
@@ -22,7 +21,7 @@ from src.ch10_person_listen.test._util.ch10_examples import (
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_listen_to_facts_duty_vision_SetsSingleFactUnit_v1(temp_dir_setup):
+def test_listen_to_facts_duty_vision_SetsSingleFactUnit_v1(temp3_fs):
     # ESTABLISH
     yao_duty = personunit_shop(exx.yao, exx.a23)
     zia_partner_cred_lumen = 47
@@ -30,7 +29,7 @@ def test_listen_to_facts_duty_vision_SetsSingleFactUnit_v1(temp_dir_setup):
     zia_pool = 87
     yao_duty.add_partnerunit(exx.zia, zia_partner_cred_lumen, zia_partner_debt_lumen)
     yao_duty.set_partner_respect(zia_pool)
-    sue_texas_lessonfilehandler = get_texas_lessonfilehandler()
+    sue_texas_lessonfilehandler = get_texas_lessonfilehandler(str(temp3_fs))
     save_duty_person(
         moment_mstr_dir=sue_texas_lessonfilehandler.moment_mstr_dir,
         person_name=sue_texas_lessonfilehandler.person_name,
@@ -70,7 +69,7 @@ def test_listen_to_facts_duty_vision_SetsSingleFactUnit_v1(temp_dir_setup):
 
 
 def test_listen_to_facts_duty_vision_SetsSingleFactUnitWithDifferentcase_task(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     yao_duty = personunit_shop(exx.yao, exx.a23)
@@ -79,7 +78,7 @@ def test_listen_to_facts_duty_vision_SetsSingleFactUnitWithDifferentcase_task(
     yao_pool = 87
     yao_duty.add_partnerunit(exx.zia, yao_partner_cred_lumen, yao_partner_debt_lumen)
     yao_duty.set_partner_respect(yao_pool)
-    sue_texas_lessonfilehandler = get_texas_lessonfilehandler()
+    sue_texas_lessonfilehandler = get_texas_lessonfilehandler(str(temp3_fs))
     save_duty_person(
         moment_mstr_dir=sue_texas_lessonfilehandler.moment_mstr_dir,
         person_name=sue_texas_lessonfilehandler.person_name,
@@ -123,7 +122,7 @@ def test_listen_to_facts_duty_vision_SetsSingleFactUnitWithDifferentcase_task(
 
 
 def test_listen_to_facts_duty_vision_GetsFactsFromSrcPersonSelfNotSpeakerSelf(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     # yao_duty has fact a23_eat_rope = full
@@ -131,7 +130,7 @@ def test_listen_to_facts_duty_vision_GetsFactsFromSrcPersonSelfNotSpeakerSelf(
     # new_yao_vision fact_states yao_duty fact a23_eat_rope = full
     yao_duty = get_example_yao_speaker()
     yao_duty.add_fact(a23_eat_rope(), a23_full_rope())
-    sue_texas_lessonfilehandler = get_texas_lessonfilehandler()
+    sue_texas_lessonfilehandler = get_texas_lessonfilehandler(str(temp3_fs))
     save_duty_person(
         moment_mstr_dir=sue_texas_lessonfilehandler.moment_mstr_dir,
         person_name=sue_texas_lessonfilehandler.person_name,
@@ -176,13 +175,13 @@ def test_listen_to_facts_duty_vision_GetsFactsFromSrcPersonSelfNotSpeakerSelf(
 
 
 def test_listen_to_facts_duty_vision_ConfirmNoFactfact_stateedFromPersonsSpeakerDirPerson_v1(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     yao_duty = get_example_yao_speaker()
     yao_duty.del_fact(a23_eat_rope())
     assert yao_duty.get_fact(a23_eat_rope()) is None
-    sue_texas_lessonfilehandler = get_texas_lessonfilehandler()
+    sue_texas_lessonfilehandler = get_texas_lessonfilehandler(str(temp3_fs))
     save_duty_person(
         moment_mstr_dir=sue_texas_lessonfilehandler.moment_mstr_dir,
         person_name=sue_texas_lessonfilehandler.person_name,
@@ -241,13 +240,13 @@ def test_listen_to_facts_duty_vision_ConfirmNoFactfact_stateedFromPersonsSpeaker
 
 
 def test_listen_to_facts_duty_vision_SetsPrioritizesSelfFactsOverSpeakers(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     yao_duty = get_example_yao_speaker()
     yao_duty.add_fact(a23_eat_rope(), a23_full_rope())
     assert yao_duty.get_fact(a23_eat_rope()).fact_state == a23_full_rope()
-    sue_texas_lessonfilehandler = get_texas_lessonfilehandler()
+    sue_texas_lessonfilehandler = get_texas_lessonfilehandler(str(temp3_fs))
     save_duty_person(
         moment_mstr_dir=sue_texas_lessonfilehandler.moment_mstr_dir,
         person_name=sue_texas_lessonfilehandler.person_name,
@@ -291,13 +290,13 @@ def test_listen_to_facts_duty_vision_SetsPrioritizesSelfFactsOverSpeakers(
 
 
 def test_listen_to_facts_duty_vision_ConfirmNoFactfact_stateedFromPersonsSpeakerDirPerson_v2(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     zia_vision = get_example_zia_speaker()
     zia_vision.add_fact(a23_eat_rope(), a23_eat_rope())
     assert zia_vision.get_fact(a23_eat_rope()).fact_state == a23_eat_rope()
-    sue_texas_lessonfilehandler = get_texas_lessonfilehandler()
+    sue_texas_lessonfilehandler = get_texas_lessonfilehandler(str(temp3_fs))
     save_vision_person(
         sue_texas_lessonfilehandler.moment_mstr_dir,
         sue_texas_lessonfilehandler.person_name,
@@ -383,7 +382,7 @@ def test_listen_to_facts_duty_vision_ConfirmNoFactfact_stateedFromPersonsSpeaker
     assert new_yao_vision2.get_fact(a23_eat_rope()).fact_state == a23_eat_rope()
 
 
-# def test_listen_to_facts_duty_vision_SetsFact(temp_dir_setup):
+# def test_listen_to_facts_duty_vision_SetsFact(temp3_fs):
 #     # ESTABLISH
 #     exx.yao = "Yao"
 #     sue_speaker = personunit_shop(exx.yao)
@@ -393,21 +392,21 @@ def test_listen_to_facts_duty_vision_ConfirmNoFactfact_stateedFromPersonsSpeaker
 #     a23_clean_rope = sue_speaker.make_rope(situation_rope, exx.clean)
 #     dirty_str = "dirty"
 #     dirty_rope = sue_speaker.make_rope(situation_rope, dirty_str)
-#     sweep_str = "sweep"
-#     sweep_rope = sue_speaker.make_rope(casa_rope, sweep_str)
+#
+#     sweep_rope = sue_speaker.make_rope(casa_rope, exx.sweep)
 
 #     sue_speaker.add_partnerunit(exx.yao)
 #     sue_speaker.set_partner_respect(20)
 #     sue_speaker.set_plan_obj(planunit_shop(exx.clean), situation_rope)
 #     sue_speaker.set_plan_obj(planunit_shop(dirty_str), situation_rope)
-#     sue_speaker.set_plan_obj(planunit_shop(sweep_str, pledge=True), casa_rope)
+#     sue_speaker.set_plan_obj(planunit_shop(exx.sweep, pledge=True), casa_rope)
 #     sue_speaker.edit_plan_attr(
 #         sweep_rope, reason_context=situation_rope, reason_case=dirty_rope
 #     )
 #     sweep_plan = sue_speaker.get_plan_obj(sweep_rope)
 #     sweep_plan.laborunit.add_party(exx.yao)
 
-#     sue_texas_lessonfilehandler = get_texas_lessonfilehandler()
+#     sue_texas_lessonfilehandler = get_texas_lessonfilehandler(str(temp3_fs))
 #     save_vision_person(sue_texas_lessonfilehandler, exx.sue, sue_speaker.get_json(), True)
 #     yao_duty = personunit_shop(exx.yao)
 #     yao_duty.add_partnerunit(exx.yao)
@@ -442,8 +441,8 @@ def test_listen_to_facts_duty_vision_ConfirmNoFactfact_stateedFromPersonsSpeaker
 #     a23_clean_rope = yao_duty.make_rope(situation_rope, exx.clean)
 #     dirty_str = "dirty"
 #     dirty_rope = yao_duty.make_rope(situation_rope, dirty_str)
-#     sweep_str = "sweep"
-#     sweep_rope = yao_duty.make_rope(casa_rope, sweep_str)
+#
+#     sweep_rope = yao_duty.make_rope(casa_rope, exx.sweep)
 #     fridge_str = "fridge"
 #     fridge_rope = yao_duty.make_rope(casa_rope, fridge_str)
 #     running_str = "running"
@@ -452,7 +451,7 @@ def test_listen_to_facts_duty_vision_ConfirmNoFactfact_stateedFromPersonsSpeaker
 #     yao_duty.set_plan_obj(planunit_shop(running_str), fridge_rope)
 #     yao_duty.set_plan_obj(planunit_shop(exx.clean), situation_rope)
 #     yao_duty.set_plan_obj(planunit_shop(dirty_str), situation_rope)
-#     yao_duty.set_plan_obj(planunit_shop(sweep_str, pledge=True), casa_rope)
+#     yao_duty.set_plan_obj(planunit_shop(exx.sweep, pledge=True), casa_rope)
 #     yao_duty.edit_plan_attr(
 #         sweep_rope, reason_context=situation_rope, reason_case=dirty_rope
 #     )

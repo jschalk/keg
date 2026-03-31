@@ -1,11 +1,10 @@
 from src.ch12_keep.riverrun import riverrun_shop
-from src.ch12_keep.test._util.ch12_env import get_temp_dir
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_RiverRun_calc_metrics_SetsAttrsScenario01():
+def test_RiverRun_calc_metrics_SetsAttrsScenario01(temp3_dir):
     # ESTABLISH / WHEN
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     yao_partner_cred_lumen = 500
     x_keep_point_magnitude = 444
     x_riverrun = riverrun_shop(
@@ -44,9 +43,9 @@ def test_RiverRun_calc_metrics_SetsAttrsScenario01():
     # assert yao_rivergrade.rewards_magnitude == 500
 
 
-def test_RiverRun_calc_metrics_SetsAttrsScenario02():
+def test_RiverRun_calc_metrics_SetsAttrsScenario02(temp3_dir):
     # ESTABLISH / WHEN
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     yao_partner_cred_lumen = 500
     bob_partner_debt_lumen = 350
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
@@ -87,9 +86,9 @@ def test_RiverRun_calc_metrics_SetsAttrsScenario02():
     # assert yao_rivergrade.rewards_magnitude == 500
 
 
-def test_RiverRun_calc_metrics_SetsAttrsScenario03():
+def test_RiverRun_calc_metrics_SetsAttrsScenario03(temp3_dir):
     # ESTABLISH / WHEN
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     yao_partner_cred_lumen = 500
     bob_partner_debt_lumen = 25
     sue_partner_debt_lumen = 75
@@ -134,9 +133,9 @@ def test_RiverRun_calc_metrics_SetsAttrsScenario03():
     # assert yao_rivergrade.rewards_magnitude == 500
 
 
-def test_RiverRun_calc_metrics_SetsAttrsScenario04():
+def test_RiverRun_calc_metrics_SetsAttrsScenario04(temp3_dir):
     # ESTABLISH / WHEN
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     yao_yao_partner_cred_lumen = 500
     yao_sue_partner_cred_lumen = 2000
     bob_partner_debt_lumen = 25
@@ -181,9 +180,9 @@ def test_RiverRun_calc_metrics_SetsAttrsScenario04():
     # assert yao_rivergrade.rewards_magnitude == 500
 
 
-def test_RiverRun_calc_metrics_SetsAttrsScenario05():
+def test_RiverRun_calc_metrics_SetsAttrsScenario05(temp3_dir):
     # ESTABLISH / WHEN
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     yao_partner_cred_lumen = 500
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
     x_riverrun.set_keep_patientledger(exx.yao, exx.yao, yao_partner_cred_lumen)
@@ -213,9 +212,9 @@ def test_RiverRun_calc_metrics_SetsAttrsScenario05():
     assert yao_rivergrade.need_paid_bool
 
 
-def test_RiverRun_calc_metrics_Resets_need_yield():
+def test_RiverRun_calc_metrics_Resets_need_yield(temp3_dir):
     # ESTABLISH / WHEN
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     yao_partner_cred_lumen = 500
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
     x_riverrun.set_keep_patientledger(exx.yao, exx.yao, yao_partner_cred_lumen)
@@ -233,9 +232,11 @@ def test_RiverRun_calc_metrics_Resets_need_yield():
     assert x_riverrun.get_partner_need_yield(exx.yao) == keep_mana_amount
 
 
-def test_RiverRun_calc_metrics_EndsRiverCycleLoopIfNoDifferencesBetweenCycles():
+def test_RiverRun_calc_metrics_EndsRiverCycleLoopIfNoDifferencesBetweenCycles(
+    temp3_dir,
+):
     # ESTABLISH / WHEN
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
     x_riverrun.set_keep_patientledger(exx.yao, exx.yao, 1)
     x_riverrun.set_need_dues({exx.bob: 1})

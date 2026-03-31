@@ -5,16 +5,15 @@ from src.ch17_idea.idea_db_tool import create_idea_sorted_table
 from src.ch18_etl_config._ref.ch18_path import create_last_run_metrics_path
 from src.ch18_etl_config.etl_sqlstr import create_sound_and_heard_tables
 from src.ch19_etl_main.etl_main import create_last_run_metrics_json
-from src.ch19_etl_main.test._util.ch19_env import cursor0, get_temp_dir
 from src.ref.keywords import Ch19Keywords as kw
 
 
-def test_create_last_run_metrics_json_CreatesFile(cursor0: Cursor):
+def test_create_last_run_metrics_json_CreatesFile(cursor0: Cursor, temp3_fs):
     # ESTABLISH
     spark1 = 1
     spark3 = 3
     spark9 = 9
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     last_run_metrics_path = create_last_run_metrics_path(moment_mstr_dir)
     create_sound_and_heard_tables(cursor0)
     agg_br00003_tablename = f"br00003_{kw.brick_agg}"

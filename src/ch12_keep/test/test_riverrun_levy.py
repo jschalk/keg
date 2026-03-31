@@ -1,11 +1,10 @@
 from src.ch12_keep.riverrun import riverrun_shop
-from src.ch12_keep.test._util.ch12_env import get_temp_dir
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_RiverRun_levy_need_dues_Molds_cycleledger_Scenario01():
+def test_RiverRun_levy_need_dues_Molds_cycleledger_Scenario01(temp3_dir):
     # ESTABLISH / WHEN
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     yao_need_due = 222
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
     x_riverrun.set_partner_need_due(exx.yao, yao_need_due)
@@ -24,9 +23,9 @@ def test_RiverRun_levy_need_dues_Molds_cycleledger_Scenario01():
     assert y_cycleledger.get(exx.yao) == yao_paid - yao_need_due
 
 
-def test_RiverRun_levy_need_dues_Molds_cycleledger_Scenario02():
+def test_RiverRun_levy_need_dues_Molds_cycleledger_Scenario02(temp3_dir):
     # ESTABLISH / WHEN
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     yao_need_due = 222
     bob_need_due = 127
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
@@ -52,9 +51,9 @@ def test_RiverRun_levy_need_dues_Molds_cycleledger_Scenario02():
     assert need_got == 322
 
 
-def test_RiverRun_cycle_carees_vary_ReturnsObj():
+def test_RiverRun_cycle_carees_vary_ReturnsObj(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
     # WHEN / THEN
     assert x_riverrun._cycle_carees_vary() is False
@@ -67,9 +66,9 @@ def test_RiverRun_cycle_carees_vary_ReturnsObj():
     assert x_riverrun._cycle_carees_vary()
 
 
-def test_RiverRun_cycles_vary_ReturnsObj():
+def test_RiverRun_cycles_vary_ReturnsObj(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     yao_need_got = 5
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
     assert x_riverrun._cycle_carees_vary() is False

@@ -521,13 +521,13 @@ def test_PersonUnit_get_all_pledges_ReturnsObj():
     zia_person = personunit_shop(exx.zia)
     casa_rope = zia_person.make_l1_rope(exx.casa)
     clean_rope = zia_person.make_rope(casa_rope, exx.clean)
-    sweep_str = "sweep"
-    sweep_rope = zia_person.make_rope(clean_rope, sweep_str)
+
+    sweep_rope = zia_person.make_rope(clean_rope, exx.sweep)
     couch_str = "couch"
     couch_rope = zia_person.make_rope(casa_rope, couch_str)
     zia_person.set_plan_obj(planunit_shop(couch_str), casa_rope)
     zia_person.set_plan_obj(planunit_shop(exx.clean, pledge=True), casa_rope)
-    zia_person.set_plan_obj(planunit_shop(sweep_str, pledge=True), clean_rope)
+    zia_person.set_plan_obj(planunit_shop(exx.sweep, pledge=True), clean_rope)
     sweep_plan = zia_person.get_plan_obj(sweep_rope)
     zia_person.add_partnerunit(exx.yao)
     sweep_plan.laborunit.add_party(exx.yao)

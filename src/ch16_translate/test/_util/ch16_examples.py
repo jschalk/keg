@@ -151,9 +151,9 @@ def get_casa_maison_translateunit_set_by_otx2inx() -> TranslateUnit:
     clean_inx_str = "propre"
     clean_otx_rope = create_rope(casa_otx_rope, clean_otx_str)
     clean_inx_rope = create_rope(casa_inx_rope, clean_inx_str)
-    sweep_str = "sweep"
-    sweep_otx_rope = create_rope(clean_otx_rope, sweep_str)
-    sweep_inx_rope = create_rope(clean_inx_rope, sweep_str)
+
+    sweep_otx_rope = create_rope(clean_otx_rope, exx.sweep)
+    sweep_inx_rope = create_rope(clean_inx_rope, exx.sweep)
 
     sue_translateunit = translateunit_shop("Sue", 7)
     rx = kw.RopeTerm
@@ -175,9 +175,9 @@ def get_casa_maison_translateunit_set_by_label() -> TranslateUnit:
     clean_inx_str = "propre"
     clean_otx_rope = create_rope(casa_otx_rope, clean_otx_str)
     clean_inx_rope = create_rope(casa_inx_rope, clean_inx_str)
-    sweep_str = "sweep"
-    sweep_otx_rope = create_rope(clean_otx_rope, sweep_str)
-    sweep_inx_rope = create_rope(clean_inx_rope, sweep_str)
+
+    sweep_otx_rope = create_rope(clean_otx_rope, exx.sweep)
+    sweep_inx_rope = create_rope(clean_inx_rope, exx.sweep)
 
     sue_translateunit = translateunit_shop("Sue", 7)
     sue_translateunit.set_roadmap_label(otx_amy45_str, inx_amy87_str)
@@ -193,8 +193,8 @@ def get_casa_maison_rope_otx_dt() -> DataFrame:
     casa_otx_rope = create_rope(otx_amy45_str, casa_otx_str)
     clean_otx_str = "clean"
     clean_otx_rope = create_rope(casa_otx_rope, clean_otx_str)
-    sweep_str = "sweep"
-    sweep_otx_rope = create_rope(clean_otx_rope, sweep_str)
+
+    sweep_otx_rope = create_rope(clean_otx_rope, exx.sweep)
     otx_dt = DataFrame(columns=[kw.reason_context])
     otx_dt.loc[0, kw.reason_context] = otx_amy45_rope
     otx_dt.loc[1, kw.reason_context] = casa_otx_rope

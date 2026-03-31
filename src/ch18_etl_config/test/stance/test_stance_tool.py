@@ -25,15 +25,14 @@ from src.ch18_etl_config.stance_tool import (
     collect_stance_csv_strs,
     create_stance0001_file,
 )
-from src.ch18_etl_config.test._util.ch18_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
 
 def test_collect_stance_csv_strs_ReturnsObj_Scenario0_NoMomentUnits(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    world_dir = get_temp_dir()
+    world_dir = str(temp3_fs)
 
     # WHEN
     gen_stance_csv_strs = collect_stance_csv_strs(world_dir)
@@ -44,10 +43,10 @@ def test_collect_stance_csv_strs_ReturnsObj_Scenario0_NoMomentUnits(
 
 
 def test_collect_stance_csv_strs_ReturnsObj_Scenario1_SingleMomentUnit_NoPersonUnits(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    world_dir = get_temp_dir()
+    world_dir = str(temp3_fs)
     moment_mstr_dir = create_moment_mstr_path(world_dir)
     a23_moment = momentunit_shop(exx.a23, moment_mstr_dir)
     a23_lasso = lassounit_shop(exx.a23)
@@ -63,10 +62,10 @@ def test_collect_stance_csv_strs_ReturnsObj_Scenario1_SingleMomentUnit_NoPersonU
 
 
 def test_collect_stance_csv_strs_ReturnsObj_Scenario2_gut_PersonUnits(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    world_dir = get_temp_dir()
+    world_dir = str(temp3_fs)
     moment_mstr_dir = create_moment_mstr_path(world_dir)
     a23_moment = momentunit_shop(exx.a23, moment_mstr_dir)
     a23_lasso = lassounit_shop(exx.a23)
@@ -92,7 +91,7 @@ def test_collect_stance_csv_strs_ReturnsObj_Scenario2_gut_PersonUnits(
 
 
 def test_collect_stance_csv_strs_ReturnsObj_Scenario2_TranslateRowsInDB(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH database with translate data
     bob_otx = "Bob"
@@ -104,8 +103,8 @@ def test_collect_stance_csv_strs_ReturnsObj_Scenario2_TranslateRowsInDB(
     colon_str = ":"
     sue_unknown_str = "SueUnknown"
     bob_unknown_str = "BobUnknown"
-    world_dir = get_temp_dir()
-    output_dir = create_path(get_temp_dir(), "output")
+    world_dir = str(temp3_fs)
+    output_dir = create_path(str(temp3_fs), "output")
     world_db_path = create_world_db_path(world_dir)
     print(f"{world_db_path=}")
     set_dir(world_dir)
@@ -174,10 +173,10 @@ def test_collect_stance_csv_strs_ReturnsObj_Scenario2_TranslateRowsInDB(
 
 
 def test_create_stance0001_file_CreatesFile_Scenario0_NoMomentUnits(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    world_dir = get_temp_dir()
+    world_dir = str(temp3_fs)
     output_dir = create_path(world_dir, "output")
     stance0001_path = create_stance0001_path(output_dir)
     assert os_path_exists(stance0001_path) is False
@@ -193,7 +192,7 @@ def test_create_stance0001_file_CreatesFile_Scenario0_NoMomentUnits(
 
 
 def test_create_stance0001_file_CreatesFile_Scenario1_TranslateRowsInDB(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH database with translate data
     bob_otx = "Bob"
@@ -205,8 +204,8 @@ def test_create_stance0001_file_CreatesFile_Scenario1_TranslateRowsInDB(
     colon_str = ":"
     sue_unknown_str = "SueUnknown"
     bob_unknown_str = "BobUnknown"
-    world_dir = get_temp_dir()
-    output_dir = create_path(get_temp_dir(), "output")
+    world_dir = str(temp3_fs)
+    output_dir = create_path(str(temp3_fs), "output")
     world_db_path = create_world_db_path(world_dir)
     print(f"{world_db_path=}")
     set_dir(world_dir)

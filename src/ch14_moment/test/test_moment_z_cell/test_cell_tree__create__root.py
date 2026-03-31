@@ -8,12 +8,11 @@ from src.ch09_person_lesson.lasso import lassounit_shop
 from src.ch11_bud._ref.ch11_path import create_cell_json_path
 from src.ch11_bud.bud_main import DEFAULT_CELLDEPTH
 from src.ch14_moment.moment_main import _get_ote1_max_past_spark_num, momentunit_shop
-from src.ch14_moment.test._util.ch14_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch14Keywords as kw, ExampleStrs as exx
 
 
 def test_get_ote1_max_past_spark_num_ReturnsObj_Scenaro0(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     tp37 = 37
@@ -24,10 +23,10 @@ def test_get_ote1_max_past_spark_num_ReturnsObj_Scenaro0(
 
 
 def test_MomentUnit_create_buds_root_cells_Scenaro0_BudEmpty(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     amy23_moment = momentunit_shop(exx.a23, moment_mstr_dir)
     a23_lasso = lassounit_shop(exx.a23)
     a23_json_path = create_moment_json_path(moment_mstr_dir, a23_lasso)
@@ -44,10 +43,10 @@ def test_MomentUnit_create_buds_root_cells_Scenaro0_BudEmpty(
 
 
 def test_MomentUnit_create_buds_root_cells_Scenaro1_BudExists(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
 
     # Create MomentUnit with bob bud at time 37
     amy23_moment = momentunit_shop(exx.a23, mstr_dir)
@@ -83,10 +82,10 @@ def test_MomentUnit_create_buds_root_cells_Scenaro1_BudExists(
 
 
 def test_MomentUnit_create_buds_root_cells_Scenaro2_BudExistsButNoPersonExistsInSparksPast(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
 
     # Create MomentUnit with bob bud at time 37
     amy23_moment = momentunit_shop(exx.a23, mstr_dir)
@@ -122,10 +121,10 @@ def test_MomentUnit_create_buds_root_cells_Scenaro2_BudExistsButNoPersonExistsIn
 
 
 def test_MomentUnit_create_buds_root_cells_Scenaro3_BudExistsNotPerfectMatch_bud_time_spark_num(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     a23_mana_grain = 2
 
     # Create MomentUnit with bob bud at time 37

@@ -42,7 +42,6 @@ from src.ch11_bud.bud_filehandler import (
     save_persontime_file,
 )
 from src.ch11_bud.cell_main import CELLNODE_QUOTA_DEFAULT, cellunit_shop
-from src.ch11_bud.test._util.ch11_env import get_temp_dir, temp_dir_setup
 from src.ch11_bud.test._util.ch11_examples import (
     example_casa_clean_factunit as clean_factunit,
     example_casa_dirty_factunit as dirty_factunit,
@@ -53,11 +52,10 @@ from src.ch11_bud.test._util.ch11_examples import (
 from src.ref.keywords import Ch11Keywords as kw, ExampleStrs as exx
 
 
-def test_save_person_file_SetsFile(temp_dir_setup):
+def test_save_person_file_SetsFile(temp3_fs):
     # ESTABLISH
-    temp_dir = get_temp_dir()
     person_filename = "person.json"
-    person_path = create_path(temp_dir, person_filename)
+    person_path = create_path(str(temp3_fs), person_filename)
     sue_person = personunit_shop(exx.sue)
     assert os_path_exists(person_path) is False
 
@@ -68,11 +66,10 @@ def test_save_person_file_SetsFile(temp_dir_setup):
     assert os_path_exists(person_path)
 
 
-def test_open_person_file_ReturnsObj_Scenario0_NoFile():
+def test_open_person_file_ReturnsObj_Scenario0_NoFile(temp3_fs):
     # ESTABLISH
-    temp_dir = get_temp_dir()
     person_filename = "person.json"
-    person_path = create_path(temp_dir, person_filename)
+    person_path = create_path(str(temp3_fs), person_filename)
     assert os_path_exists(person_path) is False
 
     # WHEN
@@ -82,11 +79,10 @@ def test_open_person_file_ReturnsObj_Scenario0_NoFile():
     assert not gen_sue_person
 
 
-def test_open_person_file_ReturnsObj_Scenario1_FileExists():
+def test_open_person_file_ReturnsObj_Scenario1_FileExists(temp3_fs):
     # ESTABLISH
-    temp_dir = get_temp_dir()
     person_filename = "person.json"
-    person_path = create_path(temp_dir, person_filename)
+    person_path = create_path(str(temp3_fs), person_filename)
     expected_sue_person = personunit_shop(exx.sue)
     save_person_file(person_path, None, expected_sue_person)
     assert os_path_exists(person_path)
@@ -98,9 +94,9 @@ def test_open_person_file_ReturnsObj_Scenario1_FileExists():
     assert gen_sue_person == expected_sue_person
 
 
-def test_save_arbitrary_personspark_SetsFile_Scenario0(temp_dir_setup):
+def test_save_arbitrary_personspark_SetsFile_Scenario0(temp3_fs):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     spark5 = 5
     a23_lasso = lassounit_shop(exx.a23)
     personspark_path = create_personspark_path(
@@ -118,10 +114,10 @@ def test_save_arbitrary_personspark_SetsFile_Scenario0(temp_dir_setup):
 
 
 def test_save_arbitrary_personspark_SetsFile_Scenario1_includes_facts(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     spark5 = 5
     a23_lasso = lassounit_shop(exx.a23)
     personspark_path = create_personspark_path(
@@ -153,9 +149,9 @@ def test_save_arbitrary_personspark_SetsFile_Scenario1_includes_facts(
     assert gen_sue_person.to_dict() == expected_sue_person.to_dict()
 
 
-def test_get_personspark_obj_ReturnsObj_Scenario0_NoFile(temp_dir_setup):
+def test_get_personspark_obj_ReturnsObj_Scenario0_NoFile(temp3_fs):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     t3 = 3
     a23_lasso = lassounit_shop(exx.a23)
 
@@ -163,9 +159,9 @@ def test_get_personspark_obj_ReturnsObj_Scenario0_NoFile(temp_dir_setup):
     assert get_personspark_obj(moment_mstr_dir, a23_lasso, exx.sue, t3) is None
 
 
-def test_get_personspark_obj_ReturnsObj_Scenario1_FileExists(temp_dir_setup):
+def test_get_personspark_obj_ReturnsObj_Scenario1_FileExists(temp3_fs):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     t3 = 3
     a23_lasso = lassounit_shop(exx.a23)
     t3_json_path = create_personspark_path(moment_mstr_dir, a23_lasso, exx.sue, t3)
@@ -184,10 +180,10 @@ def test_get_personspark_obj_ReturnsObj_Scenario1_FileExists(temp_dir_setup):
 
 
 def test_collect_person_spark_dir_sets_ReturnsObj_Scenario0_none(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     # WHEN
     person_sparks_sets = collect_person_spark_dir_sets(moment_mstr_dir, a23_lasso)
@@ -196,10 +192,10 @@ def test_collect_person_spark_dir_sets_ReturnsObj_Scenario0_none(
 
 
 def test_collect_person_spark_dir_sets_ReturnsObj_Scenario1_DirsExist(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     spark1 = 1
     spark2 = 2
     a23_lasso = lassounit_shop(exx.a23)
@@ -218,10 +214,10 @@ def test_collect_person_spark_dir_sets_ReturnsObj_Scenario1_DirsExist(
 
 
 def test_collect_person_spark_dir_sets_ReturnsObj_Scenario2_DirsExist(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     spark1 = 1
     spark2 = 2
     spark7 = 7
@@ -343,9 +339,9 @@ def test_get_persons_downhill_spark_nums_ReturnsObj_Scenario4Empty_downhill_pers
     assert persons_downhill_spark_nums == {exx.bob: spark2, exx.sue: spark2}
 
 
-def test_cellunit_add_json_file_SetsFile_Scenario0(temp_dir_setup):
+def test_cellunit_add_json_file_SetsFile_Scenario0(temp3_fs):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     time7 = 777000
     a23_lasso = lassounit_shop(exx.a23)
     sue7_cell_path = node_path(moment_mstr_dir, a23_lasso, exx.sue, time7)
@@ -382,10 +378,10 @@ def test_cellunit_add_json_file_SetsFile_Scenario0(temp_dir_setup):
 
 
 def test_cellunit_add_json_file_SetsFile_Scenario1_ManyParametersEmpty(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     time7 = 777000
     das = [exx.bob, exx.sue]
     a23_lasso = lassounit_shop(exx.a23)
@@ -411,9 +407,9 @@ def test_cellunit_add_json_file_SetsFile_Scenario1_ManyParametersEmpty(
     assert generated_cell_dict.get(kw.quota) == CELLNODE_QUOTA_DEFAULT
 
 
-def test_cellunit_get_from_dir_ReturnsObj_Scenario0_NoFileExists(temp_dir_setup):
+def test_cellunit_get_from_dir_ReturnsObj_Scenario0_NoFileExists(temp3_fs):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     time7 = 777000
     das = [exx.bob, exx.sue]
     a23_lasso = lassounit_shop(exx.a23)
@@ -428,9 +424,9 @@ def test_cellunit_get_from_dir_ReturnsObj_Scenario0_NoFileExists(temp_dir_setup)
     assert cellunit_get_from_dir(cell_dir) is None
 
 
-def test_cellunit_get_from_dir_ReturnsObj_Scenario1_FileExists(temp_dir_setup):
+def test_cellunit_get_from_dir_ReturnsObj_Scenario1_FileExists(temp3_fs):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     time7 = 777000
     das = [exx.bob, exx.sue]
     a23_lasso = lassounit_shop(exx.a23)
@@ -453,9 +449,9 @@ def test_cellunit_get_from_dir_ReturnsObj_Scenario1_FileExists(temp_dir_setup):
     assert gen_cellunit == expected_cellunit
 
 
-def test_cellunit_save_to_dir_ReturnsObj_Scenario0(temp_dir_setup):
+def test_cellunit_save_to_dir_ReturnsObj_Scenario0(temp3_fs):
     # ESTABLISH
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = str(temp3_fs)
     time7 = 777000
     das = [exx.bob, exx.sue]
     a23_lasso = lassounit_shop(exx.a23)
@@ -474,10 +470,10 @@ def test_cellunit_save_to_dir_ReturnsObj_Scenario0(temp_dir_setup):
 
 
 def test_create_cell_partner_mandate_ledger_json_CreatesFile_Scenario0_NoCellFile(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     sue_ancestors = [exx.sue]
     tp6 = 6
     a23_lasso = lassounit_shop(exx.a23)
@@ -497,10 +493,10 @@ def test_create_cell_partner_mandate_ledger_json_CreatesFile_Scenario0_NoCellFil
 
 
 def test_create_cell_partner_mandate_ledger_json_CreatesFile_Scenario1(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     sue_ancestors = [exx.sue]
     sue_spark7 = 7
     sue_celldepth3 = 3
@@ -558,9 +554,9 @@ def test_create_cell_partner_mandate_ledger_json_CreatesFile_Scenario1(
     assert open_json(sue_partner_mandate_ledger_path) == {exx.yao: 311, exx.sue: 133}
 
 
-def test_save_valid_bud_file_Scenario0_SavesFile(temp_dir_setup):
+def test_save_valid_bud_file_Scenario0_SavesFile(temp3_fs):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     t55_bud = get_budunit_55_example()
     t55_bud_time = t55_bud.bud_time
@@ -574,9 +570,9 @@ def test_save_valid_bud_file_Scenario0_SavesFile(temp_dir_setup):
     assert os_path_exists(t55_bud_path)
 
 
-def test_save_valid_bud_file_Scenario1_RaisesError(temp_dir_setup):
+def test_save_valid_bud_file_Scenario1_RaisesError(temp3_fs):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     invalid_bud = get_budunit_invalid_example()
     a23_lasso = lassounit_shop(exx.a23)
 
@@ -587,9 +583,9 @@ def test_save_valid_bud_file_Scenario1_RaisesError(temp_dir_setup):
     assert str(excinfo.value) == exception_str
 
 
-def test_bud_file_exists_ReturnsObj(temp_dir_setup):
+def test_bud_file_exists_ReturnsObj(temp3_fs):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     t55_bud = get_budunit_55_example()
     a23_lasso = lassounit_shop(exx.a23)
     assert not bud_file_exists(mstr_dir, a23_lasso, exx.yao, t55_bud.bud_time)
@@ -601,9 +597,9 @@ def test_bud_file_exists_ReturnsObj(temp_dir_setup):
     assert bud_file_exists(mstr_dir, a23_lasso, exx.yao, t55_bud.bud_time)
 
 
-def test_open_bud_file_ReturnsObj_Scenario0_NoFileExists(temp_dir_setup):
+def test_open_bud_file_ReturnsObj_Scenario0_NoFileExists(temp3_fs):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     t55_bud = get_budunit_55_example()
     t55_bud_time = t55_bud.bud_time
@@ -613,9 +609,9 @@ def test_open_bud_file_ReturnsObj_Scenario0_NoFileExists(temp_dir_setup):
     assert not open_bud_file(mstr_dir, a23_lasso, exx.yao, t55_bud_time)
 
 
-def test_open_bud_file_ReturnsObj_Scenario1_FileExists(temp_dir_setup):
+def test_open_bud_file_ReturnsObj_Scenario1_FileExists(temp3_fs):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     t55_bud = get_budunit_55_example()
     t55_bud_time = t55_bud.bud_time
@@ -626,9 +622,9 @@ def test_open_bud_file_ReturnsObj_Scenario1_FileExists(temp_dir_setup):
     assert open_bud_file(mstr_dir, a23_lasso, exx.yao, t55_bud_time) == t55_bud
 
 
-def test_save_persontime_file_SavesFile(temp_dir_setup):
+def test_save_persontime_file_SavesFile(temp3_fs):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     t55_persontime = get_personunit_with_4_levels()
     t55_bud_time = 55
     a23_lasso = lassounit_shop(exx.a23)
@@ -647,9 +643,9 @@ def test_save_persontime_file_SavesFile(temp_dir_setup):
     assert os_path_exists(t55_persontime_path)
 
 
-def test_save_persontime_file_RaisesError(temp_dir_setup):
+def test_save_persontime_file_RaisesError(temp3_fs):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     irrational_persontime = get_personunit_irrational_example()
     t55_bud_time = 55
 
@@ -660,9 +656,9 @@ def test_save_persontime_file_RaisesError(temp_dir_setup):
     assert str(excinfo.value) == exception_str
 
 
-def test_persontime_file_exists_ReturnsObj(temp_dir_setup):
+def test_persontime_file_exists_ReturnsObj(temp3_fs):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     t55_bud_time = 55
     assert persontime_file_exists(mstr_dir, a23_lasso, exx.sue, t55_bud_time) is False
@@ -676,10 +672,10 @@ def test_persontime_file_exists_ReturnsObj(temp_dir_setup):
 
 
 def test_open_persontime_file_ReturnsObj_Scenario0_NoFileExists(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     t55_bud_time = 55
     assert not persontime_file_exists(mstr_dir, a23_lasso, exx.sue, t55_bud_time)
@@ -688,9 +684,9 @@ def test_open_persontime_file_ReturnsObj_Scenario0_NoFileExists(
     assert not open_persontime_file(mstr_dir, a23_lasso, exx.sue, t55_bud_time)
 
 
-def test_open_persontime_file_ReturnsObj_Scenario1_FileExists(temp_dir_setup):
+def test_open_persontime_file_ReturnsObj_Scenario1_FileExists(temp3_fs):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     t55_bud_time = 55
     t55_persontime = get_personunit_with_4_levels()
@@ -704,9 +700,9 @@ def test_open_persontime_file_ReturnsObj_Scenario1_FileExists(temp_dir_setup):
     assert file_persontime.to_dict() == t55_persontime.to_dict()
 
 
-def test_get_timenum_dirs_ReturnsObj_Scenario0(temp_dir_setup):
+def test_get_timenum_dirs_ReturnsObj_Scenario0(temp3_fs):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     t55_bud_time = 55
     t77_bud_time = 77
     persontime = get_personunit_with_4_levels()

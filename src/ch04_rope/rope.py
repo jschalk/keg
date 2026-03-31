@@ -66,6 +66,11 @@ def create_rope(
     return to_rope(x_rope, knot)
 
 
+def is_sub_rope(ref_rope: RopeTerm, sub_rope: RopeTerm) -> bool:
+    ref_rope = "" if ref_rope is None else ref_rope
+    return ref_rope.find(sub_rope) == 0
+
+
 def rebuild_rope(
     subj_rope: RopeTerm, old_rope: RopeTerm, new_rope: RopeTerm
 ) -> RopeTerm:
@@ -75,11 +80,6 @@ def rebuild_rope(
         return subj_rope.replace(old_rope, new_rope, 1)
     else:
         return subj_rope
-
-
-def is_sub_rope(ref_rope: RopeTerm, sub_rope: RopeTerm) -> bool:
-    ref_rope = "" if ref_rope is None else ref_rope
-    return ref_rope.find(sub_rope) == 0
 
 
 def is_heir_rope(src: RopeTerm, heir: RopeTerm, knot: KnotTerm = None) -> bool:

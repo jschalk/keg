@@ -1,7 +1,6 @@
 from src.ch01_allot.allot import default_grain_num_if_None, validate_pool_num
 from src.ch12_keep._ref.ch12_semantic_types import default_knot_if_None
 from src.ch12_keep.riverrun import RiverRun, riverrun_shop
-from src.ch12_keep.test._util.ch12_env import get_temp_dir
 from src.ch12_keep.test._util.ch12_examples import (
     example_yao_bob_zia_need_dues,
     example_yao_bob_zia_patientledgers,
@@ -83,10 +82,10 @@ def test_RiverRun_set_cycle_max_SetsAttr():
     assert x_riverrun.cycle_max == 10
 
 
-def test_riverrun_shop_ReturnsObj_Scenario0_WithArgs():
+def test_riverrun_shop_ReturnsObj_Scenario0_WithArgs(temp3_dir):
     # ESTABLISH
     ten_int = 10
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     x_keep_rope = ";fizz;"
     x_knot = ";"
     x_keep_point_magnitude = 333
@@ -132,9 +131,9 @@ def test_riverrun_shop_ReturnsObj_Scenario0_WithArgs():
     assert x_riverrun.cycle_carees_curr == set()
 
 
-def test_riverrun_shop_ReturnsObj_Scenario1_WithoutArgs():
+def test_riverrun_shop_ReturnsObj_Scenario1_WithoutArgs(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
 
     # WHEN
     x_riverrun = riverrun_shop(
@@ -161,9 +160,9 @@ def test_riverrun_shop_ReturnsObj_Scenario1_WithoutArgs():
     assert x_riverrun.cycle_max == 10
 
 
-def test_RiverRun_set_keep_patientledger_SetsAttr():
+def test_RiverRun_set_keep_patientledger_SetsAttr(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     yao_partner_cred_lumen = 500
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
     assert x_riverrun.keep_patientledgers == {}
@@ -181,9 +180,9 @@ def test_RiverRun_set_keep_patientledger_SetsAttr():
     }
 
 
-def test_RiverRun_delete_keep_patientledgers_person_SetsAttr():
+def test_RiverRun_delete_keep_patientledgers_person_SetsAttr(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
     x_riverrun.set_keep_patientledger(exx.yao, exx.yao, 1)
     x_riverrun.set_keep_patientledger(exx.bob, exx.bob, 1)
@@ -200,9 +199,9 @@ def test_RiverRun_delete_keep_patientledgers_person_SetsAttr():
     assert x_riverrun.keep_patientledgers == {exx.yao: {exx.yao: 1}}
 
 
-def test_RiverRun_get_all_keep_patientledger_partner_names_ReturnsObj():
+def test_RiverRun_get_all_keep_patientledger_partner_names_ReturnsObj(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
 
     # WHEN

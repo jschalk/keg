@@ -1,5 +1,4 @@
 from openpyxl import load_workbook
-from openpyxl.styles import PatternFill
 from os.path import exists as os_path_exists, join as os_path_join
 from pandas import (
     DataFrame,
@@ -13,14 +12,13 @@ from src.ch17_idea.idea_db_tool import (
     prettify_excel,
     update_spark_num_in_excel_files,
 )
-from src.ch17_idea.test._util.ch17_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch17Keywords as kw
 
 
-def test_csv_dict_to_excel_SavesFile(temp_dir_setup):
+def test_csv_dict_to_excel_SavesFile(temp3_fs):
     # ESTABLISH
     test_data = {"TestSheet": "A,B\n5,6\n7,8"}
-    x_dir = get_temp_dir()
+    x_dir = str(temp3_fs)
     x_filename = "test_data.xlsx"
     file_path = create_path(x_dir, x_filename)
     assert os_path_exists(file_path) is False
@@ -38,10 +36,10 @@ def test_csv_dict_to_excel_SavesFile(temp_dir_setup):
     print("Test passed successfully.")
 
 
-def test_prettify_excel_SetsAttrs(temp_dir_setup):
+def test_prettify_excel_SetsAttrs(temp3_fs):
     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
     # ESTABLISH
-    temp_dir = get_temp_dir()
+    temp_dir = str(temp3_fs)
     file_path = os_path_join(temp_dir, "test_huh.xlsx")
 
     df1 = DataFrame({"Name": ["Alice", "Bob"], "Salary": [50000, 60000]})
@@ -88,10 +86,10 @@ def test_prettify_excel_SetsAttrs(temp_dir_setup):
         )  # default width is ~8.43
 
 
-def test_update_spark_num_in_excel_files_SetAttrs(temp_dir_setup):
+def test_update_spark_num_in_excel_files_SetAttrs(temp3_fs):
     # ESTABLISH
     # Setup: Create test directory and Excel file
-    temp_dir = get_temp_dir()
+    temp_dir = str(temp3_fs)
     file_path = os_path_join(temp_dir, "example_stance.xlsx")
 
     # Create Excel file with two sheets

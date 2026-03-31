@@ -114,14 +114,14 @@ def test_set_listen_to_speaker_fact_SetsFact():
     clean_rope = yao_listener.make_rope(situation_rope, exx.clean)
     dirty_str = "dirty"
     dirty_rope = yao_listener.make_rope(situation_rope, dirty_str)
-    sweep_str = "sweep"
-    sweep_rope = yao_listener.make_rope(casa_rope, sweep_str)
+
+    sweep_rope = yao_listener.make_rope(casa_rope, exx.sweep)
 
     yao_listener.add_partnerunit(exx.yao)
     yao_listener.set_partner_respect(20)
     yao_listener.set_plan_obj(planunit_shop(exx.clean), situation_rope)
     yao_listener.set_plan_obj(planunit_shop(dirty_str), situation_rope)
-    yao_listener.set_plan_obj(planunit_shop(sweep_str, pledge=True), casa_rope)
+    yao_listener.set_plan_obj(planunit_shop(exx.sweep, pledge=True), casa_rope)
     yao_listener.edit_plan_attr(
         sweep_rope, reason_context=situation_rope, reason_case=dirty_rope
     )
@@ -151,8 +151,8 @@ def test_set_listen_to_speaker_fact_DoesNotOverrideFact():
     clean_rope = yao_listener.make_rope(situation_rope, exx.clean)
     dirty_str = "dirty"
     dirty_rope = yao_listener.make_rope(situation_rope, dirty_str)
-    sweep_str = "sweep"
-    sweep_rope = yao_listener.make_rope(casa_rope, sweep_str)
+
+    sweep_rope = yao_listener.make_rope(casa_rope, exx.sweep)
     fridge_str = "fridge"
     fridge_rope = yao_listener.make_rope(casa_rope, fridge_str)
     running_str = "running"
@@ -161,7 +161,7 @@ def test_set_listen_to_speaker_fact_DoesNotOverrideFact():
     yao_listener.set_plan_obj(planunit_shop(running_str), fridge_rope)
     yao_listener.set_plan_obj(planunit_shop(exx.clean), situation_rope)
     yao_listener.set_plan_obj(planunit_shop(dirty_str), situation_rope)
-    yao_listener.set_plan_obj(planunit_shop(sweep_str, pledge=True), casa_rope)
+    yao_listener.set_plan_obj(planunit_shop(exx.sweep, pledge=True), casa_rope)
     yao_listener.edit_plan_attr(
         sweep_rope, reason_context=situation_rope, reason_case=dirty_rope
     )
@@ -199,8 +199,8 @@ def test_migrate_all_facts_AddsPlanUnitsAndSetsFactUnits():
     clean_rope = yao_src.make_rope(situation_rope, exx.clean)
     dirty_str = "dirty"
     dirty_rope = yao_src.make_rope(situation_rope, dirty_str)
-    sweep_str = "sweep"
-    sweep_rope = yao_src.make_rope(casa_rope, sweep_str)
+
+    sweep_rope = yao_src.make_rope(casa_rope, exx.sweep)
     weather_str = "weather"
     weather_rope = yao_src.make_l1_rope(weather_str)
     rain_str = "raining"
@@ -212,7 +212,7 @@ def test_migrate_all_facts_AddsPlanUnitsAndSetsFactUnits():
     yao_src.set_partner_respect(20)
     yao_src.set_plan_obj(planunit_shop(exx.clean), situation_rope)
     yao_src.set_plan_obj(planunit_shop(dirty_str), situation_rope)
-    yao_src.set_plan_obj(planunit_shop(sweep_str, pledge=True), casa_rope)
+    yao_src.set_plan_obj(planunit_shop(exx.sweep, pledge=True), casa_rope)
     yao_src.edit_reason(sweep_rope, situation_rope, dirty_rope)
     # missing_fact_fact_contexts = list(yao_src.get_missing_fact_reason_contexts().keys())
     yao_src.set_plan_obj(planunit_shop(rain_str), weather_rope)

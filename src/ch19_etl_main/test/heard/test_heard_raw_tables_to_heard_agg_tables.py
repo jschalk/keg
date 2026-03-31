@@ -18,7 +18,6 @@ from src.ch18_etl_config.etl_sqlstr import (
     get_insert_heard_agg_sqlstrs,
 )
 from src.ch19_etl_main.etl_main import etl_heard_raw_tables_to_heard_agg_tables
-from src.ch19_etl_main.test._util.ch19_env import cursor0
 from src.ch19_etl_main.test.heard.test_heard_agg__update_factnum_pfhapx import (
     pfhapx_insert_nabtime,
     pfhapx_insert_prnfact,

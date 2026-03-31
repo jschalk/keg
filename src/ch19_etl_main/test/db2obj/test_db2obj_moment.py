@@ -5,7 +5,6 @@ from src.ch18_etl_config.etl_sqlstr import (
     create_sound_and_heard_tables,
 )
 from src.ch19_etl_main.obj2db_moment import get_moment_dict_from_heard_tables
-from src.ch19_etl_main.test._util.ch19_env import cursor0
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 

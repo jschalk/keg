@@ -1,5 +1,6 @@
 from copy import copy as copy_copy
 from enum import Enum
+from re import fullmatch as re_fullmatch
 from src.ch00_py._ref.ch00_path import (
     create_src_example_strs_path,
     create_src_keywords_main_path,
@@ -21,8 +22,9 @@ def get_keywords_by_chapter(keywords_dict: dict[str, dict[str]]) -> dict:
     chapters_keywords = {get_chapter_desc_prefix(chxx): set() for chxx in chapter_descs}
     for x_keyword, ref_dict in keywords_dict.items():
         keyworld_init_chapter_num = ref_dict.get("init_chapter")
-        chapter_set = chapters_keywords.get(keyworld_init_chapter_num)
-        chapter_set.add(x_keyword)
+        if bool(re_fullmatch(r"ch\d{2}", keyworld_init_chapter_num)):
+            chapter_set = chapters_keywords.get(keyworld_init_chapter_num)
+            chapter_set.add(x_keyword)
     return chapters_keywords
 
 

@@ -12,7 +12,6 @@ from src.ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_table,
     get_job_create_table_sqlstrs,
 )
-from src.ch18_etl_config.test._util.ch18_env import cursor0
 from src.ref.keywords import Ch18Keywords as kw
 
 

@@ -8,7 +8,6 @@ from src.ch18_etl_config.etl_sqlstr import (
     create_prime_tablename,
 )
 from src.ch19_etl_main.etl_main import set_moment_person_sound_agg_knot_errors
-from src.ch19_etl_main.test._util.ch19_env import cursor0
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 

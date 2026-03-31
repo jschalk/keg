@@ -304,7 +304,7 @@ def test_get_atom_config_dict_CheckEachDimenArgCount():
 
 
 def _has_every_element(x_arg, x_dict) -> bool:
-    arg_elements = {kw.class_type, kw.sqlite_datatype, kw.column_order}
+    arg_elements = {kw.class_type, kw.sqlite_datatype, kw.column_ordinal}
     for arg_element in arg_elements:
         if x_dict.get(arg_element) is None:
             print(f"{arg_element} failed for {x_arg=}")

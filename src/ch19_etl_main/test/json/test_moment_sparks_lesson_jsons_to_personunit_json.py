@@ -11,12 +11,11 @@ from src.ch11_bud._ref.ch11_path import (
 from src.ch19_etl_main.etl_main import (
     etl_spark_lesson_json_to_spark_inherited_personunits,
 )
-from src.ch19_etl_main.test._util.ch19_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 
 def test_etl_spark_lesson_json_to_spark_inherited_personunits_SetsFiles_person_json(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     sue_inx = "Suzy"
@@ -28,7 +27,7 @@ def test_etl_spark_lesson_json_to_spark_inherited_personunits_SetsFiles_person_j
     credit77 = 77
     credit88 = 88
     a23_lasso = lassounit_shop(exx.a23)
-    x_dir = get_temp_dir()
+    x_dir = str(temp3_fs)
     a23_bob_e3_dir = create_person_spark_dir_path(x_dir, a23_lasso, bob_inx, spark3)
     a23_bob_e7_dir = create_person_spark_dir_path(x_dir, a23_lasso, bob_inx, spark7)
     a23_bob_e3_lesson = lessonunit_shop(bob_inx, None, exx.a23, spark_num=spark3)
@@ -79,7 +78,7 @@ def test_etl_spark_lesson_json_to_spark_inherited_personunits_SetsFiles_person_j
 
 
 def test_etl_spark_lesson_json_to_spark_inherited_personunits_SetsFiles_expressed_lesson(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     sue_inx = "Suzy"
@@ -92,7 +91,7 @@ def test_etl_spark_lesson_json_to_spark_inherited_personunits_SetsFiles_expresse
     credit77 = 77
     credit88 = 88
     a23_lasso = lassounit_shop(exx.a23)
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     a23_bob_e3_lesson = lessonunit_shop(bob_inx, xia_inx, exx.a23, spark_num=spark3)
     a23_bob_e7_lesson = lessonunit_shop(bob_inx, xia_inx, exx.a23, spark_num=spark7)
     prnptnr_dimen = kw.person_partnerunit

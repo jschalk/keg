@@ -1,5 +1,4 @@
 from inspect import getdoc as inspect_getdoc
-from platform import system as platform_system
 from pytest import mark as pytest_mark
 from src.ch00_py.file_toolbox import create_path
 from src.ch22_lobby._ref.ch22_path import (
@@ -8,7 +7,6 @@ from src.ch22_lobby._ref.ch22_path import (
     create_moment_mstr_dir_path,
     create_world_dir_path,
 )
-from src.ch22_lobby.test._util.ch22_env import get_temp_dir
 from src.ref.keywords import Ch22Keywords as kw
 
 
@@ -17,9 +15,9 @@ def test_LobbyID_Exists():
     assert LobbyID("chat23") == "chat23"
 
 
-def test_create_lobby_dir_path_ReturnsObj():
+def test_create_lobby_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_lobby_mstr_dir = get_temp_dir()
+    x_lobby_mstr_dir = temp3_dir
     c23_str = "chat23"
 
     # WHEN
@@ -31,9 +29,9 @@ def test_create_lobby_dir_path_ReturnsObj():
     assert gen_c23_dir_path == expected_c23_path
 
 
-def test_create_world_dir_path_ReturnsObj():
+def test_create_world_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_lobby_mstr_dir = get_temp_dir()
+    x_lobby_mstr_dir = temp3_dir
     c23_str = "chat23"
     m23_str = "music23"
 
@@ -48,9 +46,9 @@ def test_create_world_dir_path_ReturnsObj():
     assert gen_m23_dir_path == expected_m23_path
 
 
-def test_create_moment_mstr_dir_path_ReturnsObj():
+def test_create_moment_mstr_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_lobby_mstr_dir = get_temp_dir()
+    x_lobby_mstr_dir = temp3_dir
     c23_str = "chat23"
     m23_str = "music23"
 
@@ -66,7 +64,7 @@ def test_create_moment_mstr_dir_path_ReturnsObj():
     assert gen_m23_dir_path == expected_m23_path
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_lobby_dir_path_HasDocString():
     # ESTABLISH
     doc_str = create_lobby_dir_path(kw.lobby_mstr_dir, kw.lobby_id)
@@ -75,7 +73,7 @@ def test_create_lobby_dir_path_HasDocString():
     assert inspect_getdoc(create_lobby_dir_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_world_dir_path_HasDocString():
     # ESTABLISH
     doc_str = create_world_dir_path(kw.lobby_mstr_dir, kw.lobby_id, kw.world_name)
@@ -84,7 +82,7 @@ def test_create_world_dir_path_HasDocString():
     assert inspect_getdoc(create_world_dir_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_moment_mstr_dir_path_HasDocString():
     # ESTABLISH
     doc_str = create_moment_mstr_dir_path(kw.lobby_mstr_dir, kw.lobby_id, kw.world_name)

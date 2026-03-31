@@ -4,7 +4,6 @@ from pytest import fixture as pytest_fixture
 from sqlite3 import Connection as sqlite3_Connection, connect as sqlite3_connect
 from src.ch17_idea.idea_config import get_idea_sqlite_types
 from src.ch17_idea.idea_db_tool import create_idea_table_from_csv, insert_idea_csv
-from src.ch17_idea.test._util.ch17_env import temp_dir_setup
 from src.ref.keywords import Ch17Keywords as kw
 
 
@@ -127,7 +126,7 @@ def test_insert_idea_csv_ChangesDBState_add_to_empty_table(
 
 
 def test_insert_idea_csv_ChangesDBState_Inserts(
-    setup_database_and_csv: tuple[sqlite3_Connection, str, str], temp_dir_setup
+    setup_database_and_csv: tuple[sqlite3_Connection, str, str], temp3_fs
 ):  # sourcery skip: extract-duplicate-method
     """Test the insert_csv function using pytest."""
     # ESTABLISH

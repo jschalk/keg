@@ -1,15 +1,14 @@
 from os.path import exists as os_path_exists
 from src.ch00_py.file_toolbox import create_path, open_json, save_json
 from src.ch01_allot.allot import allot_nested_scale
-from src.ch01_allot.test._util.ch01_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import ExampleStrs as exx
 
 
 def test_allot_nested_scale_ReturnsObj_Scenari0_depth0(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    x_dir = get_temp_dir()
+    x_dir = str(temp3_fs)
     root_ledger = {exx.bob: 10, exx.sue: 40}
     x_filename = "ledger.json"
     save_json(x_dir, x_filename, root_ledger)
@@ -30,10 +29,10 @@ def test_allot_nested_scale_ReturnsObj_Scenari0_depth0(
 
 
 def test_allot_nested_scale_ReturnsObj_Scenari1_depth0_NestedFilesExist(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    x_dir = get_temp_dir()
+    x_dir = str(temp3_fs)
     root_ledger = {exx.bob: 10, exx.sue: 40}
     bob_ledger = {exx.sue: 1, exx.yao: 1}
     sue_ledger = {exx.sue: 1, exx.yao: 3}
@@ -60,10 +59,10 @@ def test_allot_nested_scale_ReturnsObj_Scenari1_depth0_NestedFilesExist(
 
 
 def test_allot_nested_scale_ReturnsObj_Scenari2_depth1_NestedFilesExist(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    x_dir = get_temp_dir()
+    x_dir = str(temp3_fs)
     root_ledger = {exx.bob: 10, exx.sue: 40}
     bob_ledger = {exx.sue: 1, exx.yao: 1}
     sue_ledger = {exx.sue: 1, exx.yao: 3}
@@ -92,10 +91,10 @@ def test_allot_nested_scale_ReturnsObj_Scenari2_depth1_NestedFilesExist(
 
 
 def test_allot_nested_scale_ReturnsObj_Scenari3_depth1_NoNestedFiles(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    x_dir = get_temp_dir()
+    x_dir = str(temp3_fs)
     root_ledger = {exx.bob: 10, exx.sue: 40}
     x_filename = "ledger.json"
     save_json(x_dir, x_filename, root_ledger)
@@ -116,10 +115,10 @@ def test_allot_nested_scale_ReturnsObj_Scenari3_depth1_NoNestedFiles(
 
 
 def test_allot_nested_scale_ReturnsObj_Scenari4_depth1_NestedFilesExist(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    x_dir = get_temp_dir()
+    x_dir = str(temp3_fs)
     root_ledger = {exx.bob: 10, exx.sue: 40}
     bob_ledger = {exx.sue: 1, exx.yao: 1}
     sue_ledger = {exx.sue: 1, exx.yao: 3}
@@ -153,9 +152,9 @@ def test_allot_nested_scale_ReturnsObj_Scenari4_depth1_NestedFilesExist(
     assert nested_allot_scale == {exx.sue: 88, exx.yao: 28, exx.xio: 72, exx.zia: 12}
 
 
-def test_allot_nested_scale_SetsFiles_Scenario0(temp_dir_setup):
+def test_allot_nested_scale_SetsFiles_Scenario0(temp3_fs):
     # ESTABLISH
-    x_dir = get_temp_dir()
+    x_dir = str(temp3_fs)
     root_ledger = {exx.bob: 10, exx.sue: 40}
     bob_ledger = {exx.sue: 1, exx.yao: 1}
     sue_ledger = {exx.sue: 1, exx.yao: 3}
@@ -213,10 +212,10 @@ def test_allot_nested_scale_SetsFiles_Scenario0(temp_dir_setup):
 
 
 def test_allot_nested_scale_SetsFiles_Scenario1_Custom_dst_filename(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    x_dir = get_temp_dir()
+    x_dir = str(temp3_fs)
     root_ledger = {exx.bob: 10, exx.sue: 40}
     bob_ledger = {exx.sue: 1, exx.yao: 1}
     sue_ledger = {exx.sue: 1, exx.yao: 3}

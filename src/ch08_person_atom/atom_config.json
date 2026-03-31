@@ -6,20 +6,20 @@
     "jkeys": {
       "group_title": {
         "class_type": "TitleTerm", 
-        "column_order": 1, 
+        "column_ordinal": 1, 
         "nesting_order": 1, 
         "sqlite_datatype": "TEXT"
       }, 
       "partner_name": {
         "class_type": "NameTerm", 
-        "column_order": 0, 
+        "column_ordinal": 0, 
         "nesting_order": 0, 
         "sqlite_datatype": "TEXT"
       }
     }, 
     "jvalues": {
-      "group_cred_lumen": { "class_type": "float", "column_order": 3, "sqlite_datatype": "REAL" }, 
-      "group_debt_lumen": { "class_type": "float", "column_order": 2, "sqlite_datatype": "REAL" }
+      "group_cred_lumen": { "class_type": "float", "column_ordinal": 3, "sqlite_datatype": "REAL" }, 
+      "group_debt_lumen": { "class_type": "float", "column_ordinal": 2, "sqlite_datatype": "REAL" }
     }, 
     "normal_specs": {"normal_table_name": "membership"}
   }, 
@@ -28,11 +28,11 @@
     "INSERT": {"atom_order": 0}, 
     "UPDATE": {"atom_order": 9}, 
     "jkeys": {
-      "partner_name": {"class_type": "NameTerm", "column_order": 0, "sqlite_datatype": "TEXT"}
+      "partner_name": {"class_type": "NameTerm", "column_ordinal": 0, "sqlite_datatype": "TEXT"}
     }, 
     "jvalues": {
-      "partner_cred_lumen": { "class_type": "float", "column_order": 2, "sqlite_datatype": "REAL" }, 
-      "partner_debt_lumen": { "class_type": "float", "column_order": 1, "sqlite_datatype": "REAL" }
+      "partner_cred_lumen": { "class_type": "float", "column_ordinal": 2, "sqlite_datatype": "REAL" }, 
+      "partner_debt_lumen": { "class_type": "float", "column_ordinal": 1, "sqlite_datatype": "REAL" }
     }, 
     "normal_specs": {"normal_table_name": "partnerunit"}
   }, 
@@ -43,20 +43,20 @@
     "jkeys": {
       "awardee_title": {
         "class_type": "TitleTerm", 
-        "column_order": 1, 
+        "column_ordinal": 1, 
         "nesting_order": 1, 
         "sqlite_datatype": "TEXT"
       }, 
       "plan_rope": {
         "class_type": "RopeTerm", 
-        "column_order": 0, 
+        "column_ordinal": 0, 
         "nesting_order": 0, 
         "sqlite_datatype": "TEXT"
       }
     }, 
     "jvalues": {
-      "give_force": { "class_type": "float", "column_order": 3, "sqlite_datatype": "REAL" }, 
-      "take_force": { "class_type": "float", "column_order": 2, "sqlite_datatype": "REAL" }
+      "give_force": { "class_type": "float", "column_ordinal": 3, "sqlite_datatype": "REAL" }, 
+      "take_force": { "class_type": "float", "column_ordinal": 2, "sqlite_datatype": "REAL" }
     }, 
     "normal_specs": {"normal_table_name": "awardunit"}
   }, 
@@ -67,21 +67,21 @@
     "jkeys": {
       "fact_context": {
         "class_type": "RopeTerm", 
-        "column_order": 1, 
+        "column_ordinal": 1, 
         "nesting_order": 1, 
         "sqlite_datatype": "TEXT"
       }, 
       "plan_rope": {
         "class_type": "RopeTerm", 
-        "column_order": 0, 
+        "column_ordinal": 0, 
         "nesting_order": 0, 
         "sqlite_datatype": "TEXT"
       }
     }, 
     "jvalues": {
-      "fact_lower": { "class_type": "FactNum" , "column_order": 3, "sqlite_datatype": "REAL" }, 
-      "fact_state": { "class_type": "RopeTerm", "column_order": 2, "sqlite_datatype": "TEXT" }, 
-      "fact_upper": { "class_type": "FactNum" , "column_order": 4, "sqlite_datatype": "REAL" }
+      "fact_lower": { "class_type": "FactNum" , "column_ordinal": 3, "sqlite_datatype": "REAL" }, 
+      "fact_state": { "class_type": "RopeTerm", "column_ordinal": 2, "sqlite_datatype": "TEXT" }, 
+      "fact_upper": { "class_type": "FactNum" , "column_ordinal": 4, "sqlite_datatype": "REAL" }
     }, 
     "normal_specs": {"normal_table_name": "fact"}
   }, 
@@ -91,13 +91,13 @@
     "jkeys": {
       "healer_name": {
         "class_type": "NameTerm", 
-        "column_order": 1, 
+        "column_ordinal": 1, 
         "nesting_order": 1, 
         "sqlite_datatype": "TEXT"
       }, 
       "plan_rope": {
         "class_type": "RopeTerm", 
-        "column_order": 0, 
+        "column_ordinal": 0, 
         "nesting_order": 0, 
         "sqlite_datatype": "TEXT"
       }
@@ -111,13 +111,13 @@
     "jkeys": {
       "party_title": {
         "class_type": "TitleTerm", 
-        "column_order": 1, 
+        "column_ordinal": 1, 
         "nesting_order": 1, 
         "sqlite_datatype": "TEXT"
       }, 
       "plan_rope": {
         "class_type": "RopeTerm", 
-        "column_order": 0, 
+        "column_ordinal": 0, 
         "nesting_order": 0, 
         "sqlite_datatype": "TEXT"
       }
@@ -125,7 +125,7 @@
     "jvalues": {
       "solo": {
         "class_type": "int", 
-        "column_order": 2, 
+        "column_ordinal": 2, 
         "nesting_order": 2, 
         "sqlite_datatype": "INTEGER"
       }
@@ -139,27 +139,27 @@
     "jkeys": {
       "plan_rope": {
         "class_type": "RopeTerm", 
-        "column_order": 0, 
+        "column_ordinal": 0, 
         "nesting_order": 0, 
         "sqlite_datatype": "TEXT"
       }, 
       "reason_context": {
         "class_type": "RopeTerm", 
-        "column_order": 1, 
+        "column_ordinal": 1, 
         "nesting_order": 1, 
         "sqlite_datatype": "TEXT"
       }, 
       "reason_state": {
         "class_type": "RopeTerm", 
-        "column_order": 2, 
+        "column_ordinal": 2, 
         "nesting_order": 2, 
         "sqlite_datatype": "TEXT"
       }
     }, 
     "jvalues": {
-      "reason_divisor": { "class_type": "int"      , "column_order": 5, "sqlite_datatype": "INTEGER" }, 
-      "reason_lower"  : { "class_type": "ReasonNum", "column_order": 3, "sqlite_datatype": "REAL"    }, 
-      "reason_upper"  : { "class_type": "ReasonNum", "column_order": 4, "sqlite_datatype": "REAL"    }
+      "reason_divisor": { "class_type": "int"      , "column_ordinal": 5, "sqlite_datatype": "INTEGER" }, 
+      "reason_lower"  : { "class_type": "ReasonNum", "column_ordinal": 3, "sqlite_datatype": "REAL"    }, 
+      "reason_upper"  : { "class_type": "ReasonNum", "column_ordinal": 4, "sqlite_datatype": "REAL"    }
     }, 
     "normal_specs": {"normal_table_name": "case"}
   }, 
@@ -170,19 +170,19 @@
     "jkeys": {
       "plan_rope": {
         "class_type": "RopeTerm", 
-        "column_order": 0, 
+        "column_ordinal": 0, 
         "nesting_order": 0, 
         "sqlite_datatype": "TEXT"
       }, 
       "reason_context": {
         "class_type": "RopeTerm", 
-        "column_order": 1, 
+        "column_ordinal": 1, 
         "nesting_order": 1, 
         "sqlite_datatype": "TEXT"
       }
     }, 
     "jvalues": {
-      "active_requisite": {"class_type": "bool", "column_order": 2, "sqlite_datatype": "INTEGER"}
+      "active_requisite": {"class_type": "bool", "column_ordinal": 2, "sqlite_datatype": "INTEGER"}
     }, 
     "normal_specs": {"normal_table_name": "reason"}
   }, 
@@ -193,23 +193,23 @@
     "jkeys": {
       "plan_rope": {
         "class_type": "RopeTerm", 
-        "column_order": 0, 
+        "column_ordinal": 0, 
         "nesting_order": 0, 
         "sqlite_datatype": "TEXT"
       }
     }, 
     "jvalues": {
-      "addin"       : { "class_type": "float", "column_order": 10, "sqlite_datatype": "REAL"    }, 
-      "begin"       : { "class_type": "float", "column_order":  5, "sqlite_datatype": "REAL"    }, 
-      "close"       : { "class_type": "float", "column_order":  6, "sqlite_datatype": "REAL"    }, 
-      "denom"       : { "class_type": "int"  , "column_order":  8, "sqlite_datatype": "INTEGER" }, 
-      "gogo_want"   : { "class_type": "float", "column_order": 11, "sqlite_datatype": "REAL"    }, 
-      "morph"       : { "class_type": "bool" , "column_order":  9, "sqlite_datatype": "INTEGER" }, 
-      "numor"       : { "class_type": "int"  , "column_order":  7, "sqlite_datatype": "INTEGER" }, 
-      "pledge"      : { "class_type": "bool" , "column_order":  2, "sqlite_datatype": "INTEGER" }, 
-      "problem_bool": { "class_type": "bool" , "column_order":  4, "sqlite_datatype": "INTEGER" }, 
-      "star"        : { "class_type": "int"  , "column_order":  3, "sqlite_datatype": "INTEGER" }, 
-      "stop_want"   : { "class_type": "float", "column_order": 12, "sqlite_datatype": "REAL"    }
+      "addin"       : { "class_type": "float", "column_ordinal": 10, "sqlite_datatype": "REAL"    }, 
+      "begin"       : { "class_type": "float", "column_ordinal":  5, "sqlite_datatype": "REAL"    }, 
+      "close"       : { "class_type": "float", "column_ordinal":  6, "sqlite_datatype": "REAL"    }, 
+      "denom"       : { "class_type": "int"  , "column_ordinal":  8, "sqlite_datatype": "INTEGER" }, 
+      "gogo_want"   : { "class_type": "float", "column_ordinal": 11, "sqlite_datatype": "REAL"    }, 
+      "morph"       : { "class_type": "bool" , "column_ordinal":  9, "sqlite_datatype": "INTEGER" }, 
+      "numor"       : { "class_type": "int"  , "column_ordinal":  7, "sqlite_datatype": "INTEGER" }, 
+      "pledge"      : { "class_type": "bool" , "column_ordinal":  2, "sqlite_datatype": "INTEGER" }, 
+      "problem_bool": { "class_type": "bool" , "column_ordinal":  4, "sqlite_datatype": "INTEGER" }, 
+      "star"        : { "class_type": "int"  , "column_ordinal":  3, "sqlite_datatype": "INTEGER" }, 
+      "stop_want"   : { "class_type": "float", "column_ordinal": 12, "sqlite_datatype": "REAL"    }
     }, 
     "normal_specs": {"normal_table_name": "plan"}
   }, 
@@ -217,13 +217,13 @@
     "UPDATE": {"atom_order": 25}, 
     "jkeys": {}, 
     "jvalues": {
-      "credor_respect"   : { "class_type": "float", "column_order": 3, "sqlite_datatype": "REAL"    }, 
-      "debtor_respect"   : { "class_type": "float", "column_order": 2, "sqlite_datatype": "REAL"    }, 
-      "fund_grain"       : { "class_type": "float", "column_order": 1, "sqlite_datatype": "REAL"    }, 
-      "fund_pool"        : { "class_type": "float", "column_order": 0, "sqlite_datatype": "REAL"    }, 
-      "mana_grain"       : { "class_type": "float", "column_order": 6, "sqlite_datatype": "REAL"    }, 
-      "max_tree_traverse": { "class_type": "int"  , "column_order": 5, "sqlite_datatype": "INTEGER" }, 
-      "respect_grain"    : { "class_type": "float", "column_order": 4, "sqlite_datatype": "REAL"    }
+      "credor_respect"   : { "class_type": "float", "column_ordinal": 3, "sqlite_datatype": "REAL"    }, 
+      "debtor_respect"   : { "class_type": "float", "column_ordinal": 2, "sqlite_datatype": "REAL"    }, 
+      "fund_grain"       : { "class_type": "float", "column_ordinal": 1, "sqlite_datatype": "REAL"    }, 
+      "fund_pool"        : { "class_type": "float", "column_ordinal": 0, "sqlite_datatype": "REAL"    }, 
+      "mana_grain"       : { "class_type": "float", "column_ordinal": 6, "sqlite_datatype": "REAL"    }, 
+      "max_tree_traverse": { "class_type": "int"  , "column_ordinal": 5, "sqlite_datatype": "INTEGER" }, 
+      "respect_grain"    : { "class_type": "float", "column_ordinal": 4, "sqlite_datatype": "REAL"    }
     }, 
     "normal_specs": {"normal_table_name": "person"}
   }

@@ -7,7 +7,6 @@ from src.ch18_etl_config.etl_sqlstr import (
 )
 from src.ch19_etl_main.etl_main import CREATE_MOMENT_PARTNER_NETS_SQLSTR
 from src.ch20_kpi.kpi_mstr import create_populate_kpi001_table
-from src.ch20_kpi.test._util.ch20_env import cursor0
 from src.ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
 
 

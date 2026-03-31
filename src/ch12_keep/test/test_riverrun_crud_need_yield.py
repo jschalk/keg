@@ -1,13 +1,12 @@
 from src.ch07_person_logic.person_main import personunit_shop
 from src.ch12_keep.rivercycle import get_doctorledger
 from src.ch12_keep.riverrun import riverrun_shop
-from src.ch12_keep.test._util.ch12_env import get_temp_dir
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_RiverRun_set_partner_need_yield_SetsAttr():
+def test_RiverRun_set_partner_need_yield_SetsAttr(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     bob_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.bob)
     assert bob_riverrun.need_yields.get(exx.yao) is None
 
@@ -19,9 +18,9 @@ def test_RiverRun_set_partner_need_yield_SetsAttr():
     assert bob_riverrun.need_yields.get(exx.yao) == yao_need_yield
 
 
-def test_RiverRun_need_yields_is_empty_ReturnsObj():
+def test_RiverRun_need_yields_is_empty_ReturnsObj(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
     assert x_riverrun.need_yields_is_empty()
 
@@ -49,9 +48,9 @@ def test_RiverRun_need_yields_is_empty_ReturnsObj():
     assert x_riverrun.need_yields_is_empty()
 
 
-def test_RiverRun_reset_need_yields_SetsAttr():
+def test_RiverRun_reset_need_yields_SetsAttr(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     bob_mana_amount = 1000
     bob_mana_grain = 1
     bob_riverrun = riverrun_shop(
@@ -76,9 +75,9 @@ def test_RiverRun_reset_need_yields_SetsAttr():
     assert bob_riverrun.need_yields_is_empty()
 
 
-def test_RiverRun_partner_has_need_yield_ReturnsBool():
+def test_RiverRun_partner_has_need_yield_ReturnsBool(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     bob_mana_amount = 1000
     bob_mana_grain = 1
     bob_riverrun = riverrun_shop(
@@ -109,9 +108,9 @@ def test_RiverRun_partner_has_need_yield_ReturnsBool():
     assert bob_riverrun.partner_has_need_yield(exx.zia) is False
 
 
-def test_RiverRun_delete_need_yield_SetsAttr():
+def test_RiverRun_delete_need_yield_SetsAttr(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     bob_mana_amount = 88
     bob_mana_grain = 11
 
@@ -132,9 +131,9 @@ def test_RiverRun_delete_need_yield_SetsAttr():
     assert bob_riverrun.partner_has_need_yield(exx.yao) is False
 
 
-def test_RiverRun_get_partner_need_yield_ReturnsObj():
+def test_RiverRun_get_partner_need_yield_ReturnsObj(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     bob_mana_amount = 1000
     bob_mana_grain = 1
 
@@ -166,9 +165,9 @@ def test_RiverRun_get_partner_need_yield_ReturnsObj():
     assert bob_riverrun.get_partner_need_yield(exx.zia) == 0
 
 
-def test_RiverRun_add_partner_need_yield_ReturnsObj():
+def test_RiverRun_add_partner_need_yield_ReturnsObj(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     bob_mana_amount = 1000
     bob_mana_grain = 1
     bob_riverrun = riverrun_shop(
@@ -198,9 +197,9 @@ def test_RiverRun_add_partner_need_yield_ReturnsObj():
     assert bob_riverrun.get_partner_need_yield(exx.zia) == 10
 
 
-def test_RiverRun_levy_need_due_SetsAttr_ScenarioY():
+def test_RiverRun_levy_need_due_SetsAttr_ScenarioY(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     bob_mana_amount = 1000
     bob_mana_grain = 1
     bob_riverrun = riverrun_shop(
@@ -267,9 +266,9 @@ def test_RiverRun_levy_need_due_SetsAttr_ScenarioY():
     assert bob_riverrun.get_partner_need_yield(exx.yao) == 60
 
 
-def test_RiverRun_set_need_got_attrs_SetsAttrs():
+def test_RiverRun_set_need_got_attrs_SetsAttrs(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     six_need_got = 6
     ten_need_got = 10
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
@@ -289,9 +288,9 @@ def test_RiverRun_set_need_got_attrs_SetsAttrs():
     assert x_riverrun.need_got_prev == six_need_got
 
 
-def test_RiverRun_need_gotten_ReturnsObj():
+def test_RiverRun_need_gotten_ReturnsObj(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     six_need_got = 6
     ten_need_got = 10
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)

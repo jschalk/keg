@@ -5,7 +5,6 @@ from src.ch17_idea.idea_db_tool import (
     get_default_sorted_list,
     get_idea_into_dimen_raw_query,
 )
-from src.ch17_idea.test._util.ch17_env import cursor0
 from src.ref.keywords import Ch17Keywords as kw
 
 

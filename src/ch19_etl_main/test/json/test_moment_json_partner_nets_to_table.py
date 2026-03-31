@@ -10,7 +10,6 @@ from src.ch19_etl_main.etl_main import (
     etl_moment_json_partner_nets_to_moment_partner_nets_table,
     insert_tranunit_partners_net,
 )
-from src.ch19_etl_main.test._util.ch19_env import cursor0, get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 
@@ -47,10 +46,10 @@ def test_insert_tranunit_partners_net_PopulatesDatabase(cursor0: Cursor):
 
 
 def test_etl_moment_json_partner_nets_to_moment_partner_nets_table_PopulatesDatabase(
-    temp_dir_setup, cursor0: Cursor
+    temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     a23_moment = momentunit_shop(exx.a23, mstr_dir)
     t55_tran_time = 5505
     t55_yao_amount = -55

@@ -14,7 +14,6 @@ from src.ch17_idea.idea_config import (
     idea_format_00021_person_partnerunit_v0_0_0,
 )
 from src.ch17_idea.idea_main import create_idea_df, get_idearef_obj, save_idea_csv
-from src.ch17_idea.test._util.ch17_env import idea_moments_dir, temp_dir_setup
 from src.ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
 
 
@@ -173,8 +172,8 @@ def test_save_idea_csv_Arg_idea_format_00019_planunit_v0_0_0():
 
     # WHEN
     # name_filename = f"{exx.sue}_planunit_example_00019.csv"
-    # csv_example_path = create_path(idea_moments_dir(), name_filename)
-    # save_idea_csv(x_idea_name, sue_personunit, get_temp_dir(), name_filename)
+    # csv_example_path = create_path(str(temp3_fs), name_filename)
+    # save_idea_csv(x_idea_name, sue_personunit,, name_filename)
     idea_df = create_idea_df(sue_personunit, x_idea_name)
 
     # THEN
@@ -185,7 +184,7 @@ def test_save_idea_csv_Arg_idea_format_00019_planunit_v0_0_0():
 
 
 def test_save_idea_csv_Arg_idea_format_00021_person_partnerunit_v0_0_0_SaveToCSV(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     sue_partner_cred_lumen = 11
@@ -207,12 +206,12 @@ def test_save_idea_csv_Arg_idea_format_00021_person_partnerunit_v0_0_0_SaveToCSV
     )
     j1_ideaname = idea_format_00021_person_partnerunit_v0_0_0()
     name_filename = f"{exx.sue}_partner_example_00.csv"
-    csv_example_path = create_path(idea_moments_dir(), name_filename)
+    csv_example_path = create_path(str(temp3_fs), name_filename)
     print(f"{csv_example_path}")
     assert not os_path_exists(csv_example_path)
 
     # WHEN
-    save_idea_csv(j1_ideaname, sue_personunit, idea_moments_dir(), name_filename)
+    save_idea_csv(j1_ideaname, sue_personunit, str(temp3_fs), name_filename)
 
     # THEN
     assert os_path_exists(csv_example_path)
@@ -221,14 +220,14 @@ def test_save_idea_csv_Arg_idea_format_00021_person_partnerunit_v0_0_0_SaveToCSV
 ,,;amy56;,Sue,Sue,11,23,
 ,,;amy56;,Sue,Yao,41,37,
 """
-    idea_file_str = open_file(idea_moments_dir(), name_filename)
+    idea_file_str = open_file(str(temp3_fs), name_filename)
     print(f"      {idea_file_str=}")
     print(f"{sue1_name_example_csv=}")
     assert idea_file_str == sue1_name_example_csv
 
     # WHEN
     sue_personunit.add_partnerunit(exx.zia)
-    save_idea_csv(j1_ideaname, sue_personunit, idea_moments_dir(), name_filename)
+    save_idea_csv(j1_ideaname, sue_personunit, str(temp3_fs), name_filename)
 
     # THEN
     assert os_path_exists(csv_example_path)
@@ -238,11 +237,11 @@ def test_save_idea_csv_Arg_idea_format_00021_person_partnerunit_v0_0_0_SaveToCSV
 ,,;amy56;,Sue,Yao,41,37,
 ,,;amy56;,Sue,Zia,1,1,
 """
-    assert open_file(idea_moments_dir(), name_filename) == sue2_partner_example_csv
+    assert open_file(str(temp3_fs), name_filename) == sue2_partner_example_csv
 
 
 def test_save_idea_csv_Arg_idea_format_00013_planunit_v0_0_0(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     amy_moment_rope = create_rope("amy56")
@@ -255,11 +254,11 @@ def test_save_idea_csv_Arg_idea_format_00013_planunit_v0_0_0(
     x_idea_name = idea_format_00013_planunit_v0_0_0()
     planunit_format = create_idea_df(sue_personunit, x_idea_name)
     name_filename = f"{exx.sue}_planunit_example_000.csv"
-    csv_example_path = create_path(idea_moments_dir(), name_filename)
+    csv_example_path = create_path(str(temp3_fs), name_filename)
     assert not os_path_exists(csv_example_path)
 
     # WHEN
-    save_idea_csv(x_idea_name, sue_personunit, idea_moments_dir(), name_filename)
+    save_idea_csv(x_idea_name, sue_personunit, str(temp3_fs), name_filename)
 
     # THEN
     assert os_path_exists(csv_example_path)

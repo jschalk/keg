@@ -776,10 +776,14 @@ def etl_heard_vld_to_spark_person_csvs(
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for person_table in get_person_heard_vld_tablenames():
         if get_row_count(conn_or_cursor, person_table) > 0:
+            table_columns = set(get_table_columns(conn_or_cursor, person_table))
+            key_columns = ["moment_rope", "person_name", "spark_num"]
+            if "moment_rope" not in table_columns:
+                key_columns = ["plan_rope", "person_name", "spark_num"]
             save_to_split_csvs(
                 conn_or_cursor=conn_or_cursor,
                 tablename=person_table,
-                key_columns=["moment_rope", "person_name", "spark_num"],
+                key_columns=key_columns,
                 dst_dir=moments_dir,
                 col1_prefix="persons",
                 col2_prefix="sparks",

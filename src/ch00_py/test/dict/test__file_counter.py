@@ -3,12 +3,11 @@ from pathlib import Path
 from pytest import fixture as pytest_fixture
 from shutil import rmtree as shutil_rmtree
 from src.ch00_py.file_toolbox import count_dirs_files, create_path, save_file
-from src.ch00_py.test._util.ch00_env import get_temp_dir, temp_dir_setup
 from tempfile import mkdtemp as tempfile_mkdtemp
 
 
 @pytest_fixture
-def temp_directory():
+def ex_directory():
     """Fixture to create a temporary directory with files and subdirectories."""
     test_dir = Path(tempfile_mkdtemp())  # Create a temp directory
 
@@ -27,23 +26,23 @@ def temp_directory():
     shutil_rmtree(test_dir)
 
 
-def test_count_dirs_files_ReturnsObj_Scenario0(temp_directory):
+def test_count_dirs_files_ReturnsObj_Scenario0(ex_directory):
     # ESTABLISH / WHEN / THEN
-    assert count_dirs_files(temp_directory) == 5
+    assert count_dirs_files(ex_directory) == 5
 
     # WHEN / THEN
-    save_file(temp_directory, "testing.txt", "")
-    assert count_dirs_files(temp_directory) == 6
+    save_file(ex_directory, "testing.txt", "")
+    assert count_dirs_files(ex_directory) == 6
 
     # WHEN / THEN
-    test2_dir = create_path(temp_directory, "testing2")
+    test2_dir = create_path(ex_directory, "testing2")
     save_file(test2_dir, "testing.txt", "")
-    assert count_dirs_files(temp_directory) == 8
+    assert count_dirs_files(ex_directory) == 8
 
 
-def test_count_dirs_files_ReturnsObj_Scenario1_DoesNotCreateDir(temp_dir_setup):
+def test_count_dirs_files_ReturnsObj_Scenario1_DoesNotCreateDir(temp3_fs, temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     sub1_dir = create_path(env_dir, "sub1")
     assert os_path_exists(sub1_dir) is False
 

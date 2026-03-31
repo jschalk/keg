@@ -2,14 +2,13 @@ from pytest import raises as pytest_raises
 from src.ch04_rope.rope import create_rope
 from src.ch11_bud.bud_main import personbudhistory_shop
 from src.ch14_moment.moment_main import momentunit_shop
-from src.ch14_moment.test._util.ch14_env import get_temp_dir
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_MomentUnit_set_personbudhistory_SetsAttr():
+def test_MomentUnit_set_personbudhistory_SetsAttr(temp3_dir):
     # ESTABLISH
     amy45_rope = create_rope("amy45")
-    amy_moment = momentunit_shop(amy45_rope, get_temp_dir())
+    amy_moment = momentunit_shop(amy45_rope, temp3_dir)
     assert amy_moment.personbudhistorys == {}
 
     # WHEN
@@ -21,10 +20,10 @@ def test_MomentUnit_set_personbudhistory_SetsAttr():
     assert amy_moment.personbudhistorys.get(exx.sue) == sue_personbudhistory
 
 
-def test_MomentUnit_personbudhistory_exists_ReturnsObj():
+def test_MomentUnit_personbudhistory_exists_ReturnsObj(temp3_dir):
     # ESTABLISH
     amy45_rope = create_rope("amy45")
-    amy_moment = momentunit_shop(amy45_rope, get_temp_dir())
+    amy_moment = momentunit_shop(amy45_rope, temp3_dir)
     assert amy_moment.personbudhistory_exists(exx.sue) is False
 
     # WHEN
@@ -35,10 +34,10 @@ def test_MomentUnit_personbudhistory_exists_ReturnsObj():
     assert amy_moment.personbudhistory_exists(exx.sue)
 
 
-def test_MomentUnit_get_personbudhistory_ReturnsObj():
+def test_MomentUnit_get_personbudhistory_ReturnsObj(temp3_dir):
     # ESTABLISH
     amy45_rope = create_rope("amy45")
-    amy_moment = momentunit_shop(amy45_rope, get_temp_dir())
+    amy_moment = momentunit_shop(amy45_rope, temp3_dir)
     sue_personbudhistory = personbudhistory_shop(exx.sue)
     amy_moment.set_personbudhistory(sue_personbudhistory)
     assert amy_moment.personbudhistory_exists(exx.sue)
@@ -51,10 +50,10 @@ def test_MomentUnit_get_personbudhistory_ReturnsObj():
     assert sue_personbudhistory == sue_gen_personbudhistory
 
 
-def test_MomentUnit_del_personbudhistory_SetsAttr():
+def test_MomentUnit_del_personbudhistory_SetsAttr(temp3_dir):
     # ESTABLISH
     amy45_rope = create_rope("amy45")
-    amy_moment = momentunit_shop(amy45_rope, get_temp_dir())
+    amy_moment = momentunit_shop(amy45_rope, temp3_dir)
     sue_personbudhistory = personbudhistory_shop(exx.sue)
     amy_moment.set_personbudhistory(sue_personbudhistory)
     assert amy_moment.personbudhistory_exists(exx.sue)
@@ -66,10 +65,10 @@ def test_MomentUnit_del_personbudhistory_SetsAttr():
     assert amy_moment.personbudhistory_exists(exx.sue) is False
 
 
-def test_MomentUnit_add_budunit_SetsAttr():
+def test_MomentUnit_add_budunit_SetsAttr(temp3_dir):
     # ESTABLISH
     amy45_rope = create_rope("amy45")
-    amy_moment = momentunit_shop(amy45_rope, get_temp_dir())
+    amy_moment = momentunit_shop(amy45_rope, temp3_dir)
     assert amy_moment.personbudhistorys == {}
 
     # WHEN
@@ -94,10 +93,10 @@ def test_MomentUnit_add_budunit_SetsAttr():
     assert amy_moment.get_personbudhistory(exx.bob) == bob_personbudhistory
 
 
-def test_MomentUnit_bud_quota_exists_SetsAttr():
+def test_MomentUnit_bud_quota_exists_SetsAttr(temp3_dir):
     # ESTABLISH
     amy45_rope = create_rope("amy45")
-    amy_moment = momentunit_shop(amy45_rope, get_temp_dir())
+    amy_moment = momentunit_shop(amy45_rope, temp3_dir)
     assert amy_moment.personbudhistorys == {}
     bob_x0_bud_time = 702
     bob_x0_quota = 33
@@ -118,10 +117,10 @@ def test_MomentUnit_bud_quota_exists_SetsAttr():
     assert not amy_moment.bud_quota_exists(exx.sue, sue_x7_bud_time, sue_x7_quota)
 
 
-def test_MomentUnit_get_budunit_ReturnsObj_Scenario0_BrokerDoesNotExist():
+def test_MomentUnit_get_budunit_ReturnsObj_Scenario0_BrokerDoesNotExist(temp3_dir):
     # ESTABLISH
     amy45_rope = create_rope("amy45")
-    amy_moment = momentunit_shop(amy45_rope, get_temp_dir())
+    amy_moment = momentunit_shop(amy45_rope, temp3_dir)
     sue_x7_bud_time = 7
 
     # WHEN
@@ -132,10 +131,10 @@ def test_MomentUnit_get_budunit_ReturnsObj_Scenario0_BrokerDoesNotExist():
     assert not gen_sue_x7_budunit
 
 
-def test_MomentUnit_get_budunit_ReturnsObj_Scenario1_BudDoesNotExist():
+def test_MomentUnit_get_budunit_ReturnsObj_Scenario1_BudDoesNotExist(temp3_dir):
     # ESTABLISH
     amy45_rope = create_rope("amy45")
-    amy_moment = momentunit_shop(amy45_rope, get_temp_dir())
+    amy_moment = momentunit_shop(amy45_rope, temp3_dir)
     sue_x4_bud_time = 4
     sue_x4_quota = 66
     amy_moment.add_budunit(exx.sue, sue_x4_bud_time, sue_x4_quota)
@@ -149,10 +148,10 @@ def test_MomentUnit_get_budunit_ReturnsObj_Scenario1_BudDoesNotExist():
     assert not gen_sue_x7_budunit
 
 
-def test_MomentUnit_get_budunit_ReturnsObj_Scenario2_BudExists():
+def test_MomentUnit_get_budunit_ReturnsObj_Scenario2_BudExists(temp3_dir):
     # ESTABLISH
     amy45_rope = create_rope("amy45")
-    amy_moment = momentunit_shop(amy45_rope, get_temp_dir())
+    amy_moment = momentunit_shop(amy45_rope, temp3_dir)
     bob_x0_bud_time = 702
     bob_x0_quota = 33
     sue_x4_bud_time = 4
@@ -172,10 +171,10 @@ def test_MomentUnit_get_budunit_ReturnsObj_Scenario2_BudExists():
     assert gen_sue_x7_budunit == sue_broker.get_bud(sue_x7_bud_time)
 
 
-def test_MomentUnit_get_personbudhistorys_bud_times_ReturnsObj():
+def test_MomentUnit_get_personbudhistorys_bud_times_ReturnsObj(temp3_dir):
     # ESTABLISH
     amy45_rope = create_rope("amy45")
-    amy_moment = momentunit_shop(amy45_rope, get_temp_dir())
+    amy_moment = momentunit_shop(amy45_rope, temp3_dir)
     bob_x0_bud_time = 702
     bob_x0_quota = 33
     sue_x4_bud_time = 4
@@ -194,10 +193,12 @@ def test_MomentUnit_get_personbudhistorys_bud_times_ReturnsObj():
     assert amy_moment.get_personbudhistorys_bud_times() == all_bud_times
 
 
-def test_MomentUnit_add_budunit_RaisesErrorWhen_bud_time_IsLessThan_offi_time_max():
+def test_MomentUnit_add_budunit_RaisesErrorWhen_bud_time_IsLessThan_offi_time_max(
+    temp3_dir,
+):
     # ESTABLISH
     amy45_rope = create_rope("amy45")
-    amy_moment = momentunit_shop(amy45_rope, get_temp_dir())
+    amy_moment = momentunit_shop(amy45_rope, temp3_dir)
     amy_offi_time_max = 606
     amy_moment.offi_time_max = amy_offi_time_max
     bob_x0_bud_time = 707
@@ -217,10 +218,12 @@ def test_MomentUnit_add_budunit_RaisesErrorWhen_bud_time_IsLessThan_offi_time_ma
     assert str(excinfo.value) == exception_str
 
 
-def test_MomentUnit_add_budunit_DoesNotRaiseError_allow_prev_to_offi_time_max_entry_IsTrue():
+def test_MomentUnit_add_budunit_DoesNotRaiseError_allow_prev_to_offi_time_max_entry_IsTrue(
+    temp3_dir,
+):
     # ESTABLISH
     amy45_rope = create_rope("amy45")
-    amy_moment = momentunit_shop(amy45_rope, get_temp_dir())
+    amy_moment = momentunit_shop(amy45_rope, temp3_dir)
     amy_offi_time_max = 606
     amy_moment.offi_time_max = amy_offi_time_max
     bob_x0_bud_time = 707
@@ -254,10 +257,10 @@ def test_MomentUnit_add_budunit_DoesNotRaiseError_allow_prev_to_offi_time_max_en
     assert amy_moment.get_personbudhistory(exx.bob) == bob_personbudhistory
 
 
-def test_MomentUnit_add_budunit_SetsAttr_celldepth():
+def test_MomentUnit_add_budunit_SetsAttr_celldepth(temp3_dir):
     # ESTABLISH
     amy45_rope = create_rope("amy45")
-    amy_moment = momentunit_shop(amy45_rope, get_temp_dir())
+    amy_moment = momentunit_shop(amy45_rope, temp3_dir)
     sue_x4_bud_time = 4
     sue_x4_quota = 55
     sue_x7_bud_time = 7

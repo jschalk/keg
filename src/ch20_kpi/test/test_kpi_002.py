@@ -6,7 +6,6 @@ from src.ch18_etl_config.etl_sqlstr import (
     create_prime_tablename,
 )
 from src.ch20_kpi.kpi_mstr import create_populate_kpi002_table
-from src.ch20_kpi.test._util.ch20_env import cursor0
 from src.ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
 
 

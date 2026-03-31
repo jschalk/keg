@@ -3,7 +3,6 @@ from sqlite3 import Cursor
 from src.ch00_py.db_toolbox import get_rowdata
 from src.ch04_rope.rope import create_rope
 from src.ch08_person_atom.atom_main import get_personatom_from_rowdata, personatom_shop
-from src.ch08_person_atom.test._util.ch08_env import cursor0
 from src.ref.keywords import Ch08Keywords as kw
 
 

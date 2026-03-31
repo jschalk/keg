@@ -6,7 +6,6 @@ from src.ch19_etl_main.etl_main import (
     etl_brick_raw_tables_to_brick_agg_tables,
     get_max_brick_agg_spark_num,
 )
-from src.ch19_etl_main.test._util.ch19_env import cursor0
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 

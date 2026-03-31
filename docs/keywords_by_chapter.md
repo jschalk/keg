@@ -1,7 +1,7 @@
 # Keywords by Chapter
 
 ## Keywords by Chapter
-- ch00_py: INSERT, UPDATE, ch00, filename, sqlite_datatype
+- ch00_py: INSERT, Keyword, UPDATE, ch00, filename, init_chapter, keyword, semantic_type, sqlite_datatype
 - ch01_allot: BreakTerm, FirstLabel, GrainNum, LabelTerm, PoolNum, RopeTerm, WeightNum, ch01, parent_rope
 - ch02_partner: FundGrain, FundNum, GroupMark, GroupTitle, HealerName, NameTerm, PartnerName, RespectGrain, RespectNum, TitleTerm, awardee_title, awardunits, ch02, conpute, credor_pool, debtor_pool, fund_agenda_give, fund_agenda_ratio_give, fund_agenda_ratio_take, fund_agenda_take, fund_give, fund_grain, fund_take, give_force, group_cred_lumen, group_debt_lumen, group_title, groupmark, groupunits, inallocable_partner_debt_lumen, irrational_partner_debt_lumen, laborheir, laborunit, memberships, parent_solo, partner_cred_lumen, partner_debt_lumen, partner_name, party_title, partys, rational, respect_grain, solo, take_force
 - ch03_labor: person, person_name, person_name_is_labor
@@ -9,7 +9,7 @@
 - ch05_reason: active_requisite, case_active, case_task, cases, ch05, fact_context, fact_lower, fact_state, fact_upper, factheirs, factunits, parent_heir_active, reason_active, reason_context, reason_divisor, reason_lower, reason_state, reason_task, reason_upper, reasonunits
 - ch06_plan: addin, all_partner_cred, all_partner_debt, awardheirs, awardlines, begin, ch06, close, denom, descendant_pledge_count, fund_cease, fund_onset, fund_pool, fund_ratio, gogo_calc, gogo_want, healer_name, healerunit, healerunit_ratio, is_expanded, kids, morph, numor, plan, plan_active, plan_active_hx, plan_fund_total, plan_label, plan_rope, plan_task, plan_uid, pledge, problem_bool, range_evaluated, range_inheritors, reasonheirs, star, stop_calc, stop_want, tree_level, tree_traverse_count
 - ch07_person_logic: PersonName, PersonUnit, ancestors, calc_by_conpute, ch07, class_type, credor_respect, debtor_respect, dimen, dimens, jkeys, jvalues, keep_rope, keeps_buildable, keeps_justified, last_lesson_id, mandate, max_tree_traverse, offtrack_fund, offtrack_kids_star_set, partner_pool, partners, person_groupunit, person_partner_membership, person_partnerunit, person_plan_awardunit, person_plan_factunit, person_plan_healerunit, person_plan_partyunit, person_plan_reason_caseunit, person_plan_reasonunit, person_planunit, personunit, planroot, prnawar, prncase, prnfact, prngrou, prnheal, prnlabo, prnmemb, prnplan, prnptnr, prnreas, prnunit, reason_contexts, sum_healerunit_plans_fund_total
-- ch08_person_atom: CRUD_command, DELETE, atom, atom_hx, ch08, column_order, crud, nesting_order, normal_specs, normal_table_name
+- ch08_person_atom: CRUD_command, DELETE, atom, atom_hx, ch08, column_ordinal, crud, nesting_order, normal_specs, normal_table_name
 - ch09_person_lesson: FaceName, Lasso, MomentRope, ch09, face_name, gut, job, lasso, moment, moment_mstr_dir, moment_rope, spark_num
 - ch10_person_listen: ch10
 - ch11_bud: Epoch, SparkInt, TimeNum, amount, boss_facts, bud_partner_nets, bud_person_name, bud_time, celldepth, ch11, epoch, found_facts, magnitude, offi_time, offi_time_max, personadjust, personspark_facts, quota, time, tran_time
@@ -18,9 +18,9 @@
 - ch14_moment: all_tranbook, ch14, cumulative_minute, hour_label, job_listen_rotations, moment_budunit, moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, moment_paybook, moment_static, moment_timeoffi, momentunit, offi_times, paybook, personbudhistorys, weekday_label, weekday_order
 - ch15_nabu: Nabu, NabuTime, ch15, inx_epoch_diff, inx_time, nabu, nabu_timenum, otx2inx, otx_epoch_length, otx_time, timenabu
 - ch16_translate: ch16, inx_knot, inx_label, inx_name, inx_rope, inx_title, labelmap, namemap, otx_knot, otx_label, otx_name, otx_rope, otx_title, ropemap, titlemap, translate, translate_core, translate_label, translate_name, translate_rope, translate_title, translateunit, unknown_str
-- ch17_idea: allowed_crud, attributes, build_order, ch17, delete_insert, delete_insert_update, delete_update, error_message, fund_rank, idea_category, idea_number, insert_multiple, insert_one_time, insert_update, net_funds, otx_key, pledges_count, source_dimen, translate_spark_num, world_name
+- ch17_idea: allowed_crud, attributes, build_order, ch17, delete_insert, delete_insert_update, delete_update, error_message, fund_rank, idea_category, idea_number, insert_multiple, insert_one_time, insert_update, net_funds, otx_key, pledges_count, sheet, source_dimen, translate_spark_num, world_name
 - ch18_etl_config: b_agg, b_raw, b_vld, brick_agg, brick_raw, brick_valid, ch18, h_agg, h_raw, h_vld, heard_agg, heard_raw, heard_vld, mmtbudd, mmthour, mmtmont, mmtoffi, mmtpayy, mmtunit, mmtweek, moment_ote1_agg, nabtime, person_net_amount, s_agg, s_raw, s_vld, sound_agg, sound_raw, sound_vld, sparks_brick_agg, sparks_brick_valid, trlcore, trllabe, trlname, trlrope, trltitl
-- ch19_etl_main: moment_partner_nets
+- ch19_etl_main: day_punch, moment_partner_nets
 - ch20_kpi: Event, ch20, default_kpi_bundle, gcal, moment_kpi001_partner_nets, moment_kpi002_person_pledges
 - ch21_world: WorldName, ch21
 - ch22_lobby: LobbyID, lobby_id, lobby_mstr_dir, lobbys

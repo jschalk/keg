@@ -2037,16 +2037,18 @@
                 }, 
                 "star": 1.0
               }, 
-              "clean humidifiers": {
-                "awardunits": { ";Family": {"awardee_title": ";Family", "give_force": 1.0, "take_force": 1} }, 
-                "plan_label": "clean humidifiers", 
-                "plan_uid": 55, 
+              "clean couch blankets": {
+                "awardunits": {
+                  "Perrison": {"awardee_title": "Perrison", "give_force": 1.0, "take_force": 1}
+                }, 
+                "plan_label": "clean couch blankets", 
+                "plan_uid": 41, 
                 "pledge": true, 
                 "reasonunits": {
                   "A;ziet;gregziet;": {
                     "cases": {
                       "A;ziet;gregziet;": {
-                        "reason_divisor": 10080.0, 
+                        "reason_divisor": 30240.0, 
                         "reason_lower": 3420.0, 
                         "reason_state": ";A;ziet;gregziet;", 
                         "reason_upper": 3420.0
@@ -2057,18 +2059,16 @@
                 }, 
                 "star": 1
               }, 
-              "clean sheets couch blankets": {
-                "awardunits": {
-                  "Perrison": {"awardee_title": "Perrison", "give_force": 1.0, "take_force": 1}
-                }, 
-                "plan_label": "clean sheets couch blankets", 
-                "plan_uid": 41, 
+              "clean humidifiers": {
+                "awardunits": { ";Family": {"awardee_title": ";Family", "give_force": 1.0, "take_force": 1} }, 
+                "plan_label": "clean humidifiers", 
+                "plan_uid": 55, 
                 "pledge": true, 
                 "reasonunits": {
                   "A;ziet;gregziet;": {
                     "cases": {
                       "A;ziet;gregziet;": {
-                        "reason_divisor": 30240.0, 
+                        "reason_divisor": 10080.0, 
                         "reason_lower": 3420.0, 
                         "reason_state": ";A;ziet;gregziet;", 
                         "reason_upper": 3420.0

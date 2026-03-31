@@ -1,9 +1,10 @@
 from inspect import getdoc as inspect_getdoc
-from platform import system as platform_system
 from pytest import mark as pytest_mark, raises as pytest_raises
 from src.ch00_py.file_toolbox import create_path, get_json_filename
 from src.ch04_rope.rope import create_rope, create_rope_from_labels
+from src.ch09_person_lesson.lasso import lassounit_shop
 from src.ch10_person_listen._ref.ch10_path import (
+    create_job_path,
     create_keep_duty_path,
     create_keep_dutys_path,
     create_keep_grade_path,
@@ -14,8 +15,42 @@ from src.ch10_person_listen._ref.ch10_path import (
     create_treasury_db_path,
     treasury_filename,
 )
-from src.ch10_person_listen.test._util.ch10_env import get_temp_dir
 from src.ref.keywords import Ch10Keywords as kw, ExampleStrs as exx
+
+A23_LASSO = lassounit_shop(exx.a23)
+
+
+def test_create_job_path_ReturnsObj(temp3_dir):
+    # ESTABLISH
+    x_moment_mstr_dir = temp3_dir
+
+    # WHEN
+    gen_a23_e3_person_path = create_job_path(x_moment_mstr_dir, A23_LASSO, exx.bob)
+
+    # THEN
+    x_moments_dir = create_path(x_moment_mstr_dir, "moments")
+    a23_dir = create_path(x_moments_dir, "Amy23")
+    a23_persons_dir = create_path(a23_dir, "persons")
+    a23_bob_dir = create_path(a23_persons_dir, exx.bob)
+    a23_bob_job_dir = create_path(a23_bob_dir, kw.job)
+    expected_a23_bob_job_json_path = create_path(a23_bob_job_dir, f"{exx.bob}.json")
+    # person_filename = "person.json"
+    # expected_a23_e3_person_path = create_path(a23_bob_e3_dir, person_filename)
+    assert gen_a23_e3_person_path == expected_a23_bob_job_json_path
+
+
+@pytest_mark.skip_on_linux
+def test_create_job_path_HasDocString():
+    # ESTABLISH
+    x_moment_lasso = lassounit_shop(create_rope(kw.moment_rope))
+    doc_str = create_job_path(
+        moment_mstr_dir="moment_mstr_dir",
+        moment_lasso=x_moment_lasso,
+        person_name=kw.person_name,
+    )
+    doc_str = f"Returns path: {doc_str}"
+    # WHEN / THEN
+    assert inspect_getdoc(create_job_path) == doc_str
 
 
 def test_treasury_filename_ReturnsObj():
@@ -23,9 +58,9 @@ def test_treasury_filename_ReturnsObj():
     assert treasury_filename() == "treasury.db"
 
 
-def test_create_keeps_dir_path_ReturnsObj():
+def test_create_keeps_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
 
     # WHEN
     keeps_dir = create_keeps_dir_path(x_moment_mstr_dir, exx.a23, exx.sue)
@@ -39,9 +74,9 @@ def test_create_keeps_dir_path_ReturnsObj():
     assert keeps_dir == expected_keeps_dir
 
 
-def test_create_keep_rope_path_ReturnsObj_Scenario0_SimpleRope():
+def test_create_keep_rope_path_ReturnsObj_Scenario0_SimpleRope(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     casa_rope = create_rope(exx.a23, exx.casa)
 
     # WHEN
@@ -58,11 +93,13 @@ def test_create_keep_rope_path_ReturnsObj_Scenario0_SimpleRope():
     assert keep_casa_path == expected_keep_casa_dir
 
 
-def test_create_keep_rope_path_ReturnsObj_Scenario1_MoreTestsForRopePathCreation():
+def test_create_keep_rope_path_ReturnsObj_Scenario1_MoreTestsForRopePathCreation(
+    temp3_dir,
+):
     # ESTABLISH
     peru_str = "peru"
     peru_rope = create_rope(peru_str)
-    moment_mstr_dir = get_temp_dir()
+    moment_mstr_dir = temp3_dir
     texas_str = "texas"
     dallas_str = "dallas"
     elpaso_str = "el paso"
@@ -155,9 +192,9 @@ def test_create_keep_rope_path_RaisesError_Scenarion2_keep_rope_DoesNotExist():
     assert str(excinfo.value) == assertion_fail_str
 
 
-def test_create_keep_dutys_path_ReturnsObj() -> None:
+def test_create_keep_dutys_path_ReturnsObj(temp3_dir) -> None:
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     casa_rope = create_rope(exx.a23, exx.casa)
 
     # WHEN
@@ -177,9 +214,9 @@ def test_create_keep_dutys_path_ReturnsObj() -> None:
     assert gen_keep_dutys_path == expected_keep_dutys_path
 
 
-def test_create_keep_duty_path_ReturnsObj() -> None:
+def test_create_keep_duty_path_ReturnsObj(temp3_dir) -> None:
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     casa_rope = create_rope(exx.a23, exx.casa)
 
     # WHEN
@@ -201,9 +238,9 @@ def test_create_keep_duty_path_ReturnsObj() -> None:
     assert gen_keep_duty_path == expected_keep_duty_path
 
 
-def test_create_keep_grades_path_ReturnsObj() -> None:
+def test_create_keep_grades_path_ReturnsObj(temp3_dir) -> None:
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     casa_rope = create_rope(exx.a23, exx.casa)
 
     # WHEN
@@ -223,9 +260,9 @@ def test_create_keep_grades_path_ReturnsObj() -> None:
     assert gen_keep_dutys_path == expected_keep_dutys_path
 
 
-def test_create_keep_grade_path_ReturnsObj() -> None:
+def test_create_keep_grade_path_ReturnsObj(temp3_dir) -> None:
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     casa_rope = create_rope(exx.a23, exx.casa)
 
     # WHEN
@@ -246,9 +283,9 @@ def test_create_keep_grade_path_ReturnsObj() -> None:
     assert gen_keep_grade_path == expected_grade_path
 
 
-def test_create_keep_visions_path_ReturnsObj() -> None:
+def test_create_keep_visions_path_ReturnsObj(temp3_dir) -> None:
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     casa_rope = create_rope(exx.a23, exx.casa)
 
     # WHEN
@@ -268,9 +305,9 @@ def test_create_keep_visions_path_ReturnsObj() -> None:
     assert gen_keep_dutys_path == expected_keep_dutys_path
 
 
-def test_create_treasury_db_path_ReturnsObj() -> None:
+def test_create_treasury_db_path_ReturnsObj(temp3_dir) -> None:
     # ESTABLISH
-    x_moment_mstr_dir = get_temp_dir()
+    x_moment_mstr_dir = temp3_dir
     casa_rope = create_rope(exx.a23, exx.casa)
 
     # WHEN
@@ -290,7 +327,7 @@ def test_create_treasury_db_path_ReturnsObj() -> None:
     assert gen_keep_dutys_path == expected_keep_dutys_path
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_keeps_dir_path_HasDocString():
     # ESTABLISH
     x_moment_rope = create_rope(kw.moment_rope)
@@ -304,7 +341,7 @@ def test_create_keeps_dir_path_HasDocString():
     assert inspect_getdoc(create_keeps_dir_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_keep_rope_path_HasDocString() -> None:
     # ESTABLISH
     level1_label_str = "level1_label"
@@ -322,7 +359,7 @@ def test_create_keep_rope_path_HasDocString() -> None:
     assert inspect_getdoc(create_keep_rope_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_keep_dutys_path_HasDocString() -> None:
     # ESTABLISH
     x_moment_rope = create_rope(kw.moment_rope)
@@ -339,7 +376,7 @@ def test_create_keep_dutys_path_HasDocString() -> None:
     assert inspect_getdoc(create_keep_dutys_path) == expected_doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_keep_duty_path_HasDocString() -> None:
     # ESTABLISH
     duty_person_str = "duty_person"
@@ -358,7 +395,7 @@ def test_create_keep_duty_path_HasDocString() -> None:
     assert inspect_getdoc(create_keep_duty_path) == expected_doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_keep_grades_path_HasDocString() -> None:
     # ESTABLISH
     x_moment_rope = create_rope(kw.moment_rope)
@@ -376,7 +413,7 @@ def test_create_keep_grades_path_HasDocString() -> None:
     assert inspect_getdoc(create_keep_grades_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_keep_grade_path_HasDocString() -> None:
     # ESTABLISH
     x_moment_rope = create_rope(kw.moment_rope)
@@ -395,7 +432,7 @@ def test_create_keep_grade_path_HasDocString() -> None:
     assert inspect_getdoc(create_keep_grade_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_keep_visions_path_HasDocString() -> None:
     # ESTABLISH
     x_moment_rope = create_rope(kw.moment_rope)
@@ -412,7 +449,7 @@ def test_create_keep_visions_path_HasDocString() -> None:
     assert inspect_getdoc(create_keep_visions_path) == doc_str
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_create_treasury_db_path_HasDocString() -> None:
     # ESTABLISH
     x_moment_rope = create_rope(kw.moment_rope)

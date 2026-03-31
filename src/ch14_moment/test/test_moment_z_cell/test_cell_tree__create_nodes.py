@@ -12,13 +12,12 @@ from src.ch11_bud.bud_filehandler import (
 )
 from src.ch11_bud.cell_main import cellunit_shop
 from src.ch14_moment.moment_cell import create_cell_tree
-from src.ch14_moment.test._util.ch14_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_create_cell_tree_Scenaro0_timenum_Empty(temp_dir_setup):
+def test_create_cell_tree_Scenaro0_timenum_Empty(temp3_fs):
     # ESTABLISH
-    moment_mstr_dir = create_path(get_temp_dir(), "Fay_mstr")
+    moment_mstr_dir = create_path(str(temp3_fs), "Fay_mstr")
     tp37 = 37
     a23_lasso = lassounit_shop(exx.a23)
     a23_bob_tp37_path = cell_dir(moment_mstr_dir, a23_lasso, exx.bob, tp37, [])
@@ -32,9 +31,9 @@ def test_create_cell_tree_Scenaro0_timenum_Empty(temp_dir_setup):
     assert os_path_exists(a23_bob_tp37_path) is False
 
 
-def test_create_cell_tree_Scenaro1_LedgerDepth0(temp_dir_setup):
+def test_create_cell_tree_Scenaro1_LedgerDepth0(temp3_fs):
     # ESTABLISH
-    moment_mstr_dir = create_path(get_temp_dir(), "Fay_mstr")
+    moment_mstr_dir = create_path(str(temp3_fs), "Fay_mstr")
     tp37 = 37  # timenum
     bud1_quota = 450
     bud1_celldepth = 0
@@ -59,9 +58,9 @@ def test_create_cell_tree_Scenaro1_LedgerDepth0(temp_dir_setup):
     assert generated_bob37_quota_ledger == {"Bob": 225, exx.yao: 225}
 
 
-def test_create_cell_tree_Scenaro2_LedgerDepth1(temp_dir_setup):
+def test_create_cell_tree_Scenaro2_LedgerDepth1(temp3_fs):
     # ESTABLISH
-    moment_mstr_dir = create_path(get_temp_dir(), "Fay_mstr")
+    moment_mstr_dir = create_path(str(temp3_fs), "Fay_mstr")
     tp37 = 37  # timenum
     x_quota = 450
     x_celldepth = 1
@@ -153,9 +152,9 @@ def test_create_cell_tree_Scenaro2_LedgerDepth1(temp_dir_setup):
     assert gen_bob37_zia_quota_ledger == {exx.bob: 75, exx.yao: 75}
 
 
-def test_create_cell_tree_Scenaro3_LedgerDepth1_MostRecentSpark(temp_dir_setup):
+def test_create_cell_tree_Scenaro3_LedgerDepth1_MostRecentSpark(temp3_fs):
     # ESTABLISH
-    moment_mstr_dir = create_path(get_temp_dir(), "Fay_mstr")
+    moment_mstr_dir = create_path(str(temp3_fs), "Fay_mstr")
     a23_lasso = lassounit_shop(exx.a23)
     tp37 = 37  # timenum
     x_quota = 450
@@ -253,10 +252,10 @@ def test_create_cell_tree_Scenaro3_LedgerDepth1_MostRecentSpark(temp_dir_setup):
 
 
 def test_create_cell_tree_Scenaro4_LedgerDepth1_OnePersonHasNoPast_personspark(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = create_path(get_temp_dir(), "Fay_mstr")
+    moment_mstr_dir = create_path(str(temp3_fs), "Fay_mstr")
     tp37 = 37  # timenum
     x_quota = 450
     x_celldepth = 1
@@ -339,10 +338,10 @@ def test_create_cell_tree_Scenaro4_LedgerDepth1_OnePersonHasNoPast_personspark(
 
 
 def test_create_cell_tree_Scenaro5_LedgerDepth1_ZeroQuotaDoesNotGetCreated(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = create_path(get_temp_dir(), "Fay_mstr")
+    moment_mstr_dir = create_path(str(temp3_fs), "Fay_mstr")
     a23_lasso = lassounit_shop(exx.a23)
     tp37 = 37  # timenum
     x_quota = 2

@@ -221,9 +221,9 @@ def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario2_RodeUnit_g
     clean_inx_str = "propre"
     clean_otx_rope = create_rope(casa_otx_rope, clean_otx_str)
     clean_inx_rope = create_rope(casa_inx_rope, clean_inx_str)
-    sweep_str = "sweep"
-    sweep_otx_rope = create_rope(clean_otx_rope, sweep_str)
-    sweep_inx_rope = create_rope(clean_inx_rope, sweep_str)
+
+    sweep_otx_rope = create_rope(clean_otx_rope, exx.sweep)
+    sweep_inx_rope = create_rope(clean_inx_rope, exx.sweep)
     yao_translateunit = get_casa_maison_translateunit_set_by_otx2inx()
     otx_dt = get_casa_maison_rope_otx_dt()
     old_otx_dt = copy_deepcopy(otx_dt)
@@ -263,9 +263,9 @@ def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario3_RodeUnit_g
     clean_inx_str = "propre"
     clean_otx_rope = create_rope(casa_otx_rope, clean_otx_str)
     clean_inx_rope = create_rope(casa_inx_rope, clean_inx_str)
-    sweep_str = "sweep"
-    sweep_otx_rope = create_rope(clean_otx_rope, sweep_str)
-    sweep_inx_rope = create_rope(clean_inx_rope, sweep_str)
+
+    sweep_otx_rope = create_rope(clean_otx_rope, exx.sweep)
+    sweep_inx_rope = create_rope(clean_inx_rope, exx.sweep)
     yao_translateunit = get_casa_maison_translateunit_set_by_label()
     # print(f"{yao_translateunit=}")
     otx_dt = get_casa_maison_rope_otx_dt()

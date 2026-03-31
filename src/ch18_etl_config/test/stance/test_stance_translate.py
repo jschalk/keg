@@ -11,7 +11,6 @@ from src.ch18_etl_config.stance_tool import (
     add_to_br00045_csv,
     add_translate_rows_to_stance_csv_strs,
 )
-from src.ch18_etl_config.test._util.ch18_env import cursor0
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
 

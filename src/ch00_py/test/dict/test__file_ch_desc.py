@@ -8,7 +8,6 @@ def test_get_chapter_descs_Scenario0_RemovesLinterAndRef():
     with patch("src.ch00_py.chapter_desc_main.get_level1_dirs") as mock_get_dirs, patch(
         "src.ch00_py.chapter_desc_main.create_path"
     ) as mock_create_path:
-
         mock_get_dirs.return_value = [
             "intro",
             "chapter1",
@@ -35,7 +34,6 @@ def test_get_chapter_descs_Scenario1_GetsLevel1Directories():
     with patch("src.ch00_py.chapter_desc_main.get_level1_dirs") as mock_get_dirs, patch(
         "src.ch00_py.chapter_desc_main.create_path"
     ):
-
         mock_get_dirs.return_value = ["chapter1", "linter", "ref"]
 
         # WHEN

@@ -5,13 +5,12 @@ from sqlite3 import connect as sqlite3_connect
 from src.ch00_py.file_toolbox import count_files, create_path, set_dir
 from src.ch17_idea.idea_db_tool import open_csv
 from src.ch20_kpi.kpi_mstr import create_kpi_csvs
-from src.ch20_kpi.test._util.ch20_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch20Keywords as kw
 
 
-def test_create_kpi_csvs_Scenario0_NotCreateFileWhenNoKPITables(temp_dir_setup):
+def test_create_kpi_csvs_Scenario0_NotCreateFileWhenNoKPITables(temp3_fs):
     # ESTABLISH
-    temp_dir = get_temp_dir()
+    temp_dir = str(temp3_fs)
     db_path = create_path(temp_dir, "example3.db")
     set_dir(temp_dir)
     with sqlite3_connect(db_path) as db_conn:
@@ -30,9 +29,9 @@ def test_create_kpi_csvs_Scenario0_NotCreateFileWhenNoKPITables(temp_dir_setup):
     db_conn.close()
 
 
-def test_create_kpi_csvs_Scenario1_CreateFile(temp_dir_setup):
+def test_create_kpi_csvs_Scenario1_CreateFile(temp3_fs):
     # ESTABLISH
-    temp_dir = get_temp_dir()
+    temp_dir = str(temp3_fs)
     set_dir(temp_dir)
     db_path = create_path(temp_dir, "example2.db")
     kpi_tablename = "test_kpi_table"

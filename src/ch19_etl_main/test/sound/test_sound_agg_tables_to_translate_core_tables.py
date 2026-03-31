@@ -33,7 +33,6 @@ from src.ch19_etl_main.etl_main import (
     update_translate_sound_agg_inconsist_errors,
     update_translate_sound_agg_knot_errors,
 )
-from src.ch19_etl_main.test._util.ch19_env import cursor0
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 

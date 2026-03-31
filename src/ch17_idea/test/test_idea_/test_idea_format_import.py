@@ -3,11 +3,10 @@ from src.ch07_person_logic.person_main import personunit_shop
 from src.ch17_idea.idea_config import idea_format_00021_person_partnerunit_v0_0_0
 from src.ch17_idea.idea_db_tool import open_csv
 from src.ch17_idea.idea_main import get_idearef_obj, save_idea_csv
-from src.ch17_idea.test._util.ch17_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
 
 
-def test_open_csv_ReturnsObjWhenFileExists(temp_dir_setup):
+def test_open_csv_ReturnsObjWhenFileExists(temp3_fs):
     # ESTABLISH
     sue_partner_cred_lumen = 11
     bob_partner_cred_lumen = 13
@@ -28,10 +27,10 @@ def test_open_csv_ReturnsObjWhenFileExists(temp_dir_setup):
     )
     j1_ideaname = idea_format_00021_person_partnerunit_v0_0_0()
     name_filename = f"{exx.sue}_partner_example_01.csv"
-    save_idea_csv(j1_ideaname, sue_personunit, get_temp_dir(), name_filename)
+    save_idea_csv(j1_ideaname, sue_personunit, str(temp3_fs), name_filename)
 
     # WHEN
-    partner_dataframe = open_csv(get_temp_dir(), name_filename)
+    partner_dataframe = open_csv(str(temp3_fs), name_filename)
 
     # THEN
     array_headers = list(partner_dataframe.columns)
@@ -58,12 +57,12 @@ def test_open_csv_ReturnsObjWhenFileExists(temp_dir_setup):
     assert len(partner_dataframe) == 3
 
 
-def test_open_csv_ReturnsObjWhenNoFileExists(temp_dir_setup):
+def test_open_csv_ReturnsObjWhenNoFileExists(temp3_fs):
     # ESTABLISH
     name_filename = f"{exx.sue}_partner_example_77.csv"
 
     # WHEN
-    partner_dataframe = open_csv(get_temp_dir(), name_filename)
+    partner_dataframe = open_csv(str(temp3_fs), name_filename)
 
     # THEN
     assert partner_dataframe is None

@@ -10,11 +10,11 @@ from src.ch00_py.file_toolbox import (
 )
 from src.ch09_person_lesson._ref.ch09_path import (
     create_gut_path,
-    create_job_path,
     create_moment_json_path,
 )
 from src.ch09_person_lesson.lasso import lassounit_shop
 from src.ch09_person_lesson.lesson_filehandler import open_gut_file
+from src.ch10_person_listen._ref.ch10_path import create_job_path
 from src.ch11_bud._ref.ch11_path import (
     create_spark_all_lesson_path,
     create_spark_expressed_lesson_path as expressed_path,
@@ -22,17 +22,13 @@ from src.ch11_bud._ref.ch11_path import (
 from src.ch14_moment._ref.ch14_path import (
     create_bud_partner_mandate_ledger_path as bud_mandate,
 )
-from src.ch17_idea.idea_db_tool import upsert_sheet
+from src.ch17_idea.idea_db_tool import save_sheet
 from src.ch18_etl_config._ref.ch18_path import (
     create_last_run_metrics_path,
     create_moment_ote1_csv_path,
 )
 from src.ch18_etl_config.etl_sqlstr import create_prime_tablename as prime_tbl
-from src.ch21_world.test._util.ch21_env import (
-    cursor0,
-    get_temp_dir as worlds_dir,
-    temp_dir_setup,
-)
+from src.ch21_world.test._util.ch21_examples import br00013_example
 from src.ch21_world.world import (
     sheets_input_to_lynx_mstr,
     sheets_input_to_lynx_with_cursor,
@@ -42,16 +38,16 @@ from src.ref.keywords import Ch21Keywords as kw, ExampleStrs as exx
 
 
 def test_sheets_input_to_lynx_with_cursor_Scenario0_br000113PopulatesTables(
-    temp_dir_setup, cursor0: Cursor
+    temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH:
     fay_str = "Fay"
-    fay_wdir = worlddir_shop(fay_str, worlds_dir())
+    fay_wdir = worlddir_shop(fay_str, str(temp3_fs))
     # delete_dir(fay_wdir.worlds_dir)
     sue_inx = "Suzy"
     e3 = 3
     ex_filename = "Faybob.xlsx"
-    input_file_path = create_path(fay_wdir._input_dir, ex_filename)
+    input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00113_columns = [
         kw.face_name,
         kw.spark_num,
@@ -65,7 +61,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario0_br000113PopulatesTables(
     br00113row0 = [exx.sue, e3, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
     br00113_df = DataFrame([br00113row0], columns=br00113_columns)
     br00113_ex0_str = f"example0_{br00113_str}"
-    upsert_sheet(input_file_path, br00113_ex0_str, br00113_df)
+    save_sheet(input_file_path, br00113_ex0_str, br00113_df)
     br00113_raw = f"{br00113_str}_brick_raw"
     br00113_agg = f"{br00113_str}_brick_agg"
     br00113_valid = f"{br00113_str}_brick_valid"
@@ -92,7 +88,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario0_br000113PopulatesTables(
     prnunit_put_heard_agg = prime_tbl(kw.personunit, kw.h_vld, "put")
     prnptnr_put_heard_raw = prime_tbl(kw.prnptnr, kw.h_raw, "put")
     prnptnr_put_heard_agg = prime_tbl(kw.prnptnr, kw.h_vld, "put")
-    mstr_dir = fay_wdir._moment_mstr_dir
+    mstr_dir = fay_wdir.moment_mstr_dir
     a23_lasso = lassounit_shop(exx.a23)
     a23_json_path = create_moment_json_path(mstr_dir, a23_lasso)
     a23_e1_all_lesson_path = create_spark_all_lesson_path(
@@ -147,7 +143,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario0_br000113PopulatesTables(
 
     # WHEN
     sheets_input_to_lynx_with_cursor(
-        cursor0, fay_wdir._input_dir, fay_wdir._moment_mstr_dir
+        cursor0, fay_wdir.input_dir, fay_wdir.moment_mstr_dir
     )
 
     # THEN
@@ -207,16 +203,16 @@ def test_sheets_input_to_lynx_with_cursor_Scenario0_br000113PopulatesTables(
 
 
 def test_sheets_input_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
-    temp_dir_setup, cursor0: Cursor
+    temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH:
     fay_str = "Fay"
-    fay_wdir = worlddir_shop(fay_str, worlds_dir())
+    fay_wdir = worlddir_shop(fay_str, str(temp3_fs))
     # delete_dir(fay_wdir.worlds_dir)
     sue_inx = "Suzy"
     e3 = 3
     ex_filename = "Faybob.xlsx"
-    input_file_path = create_path(fay_wdir._input_dir, ex_filename)
+    input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00113_columns = [
         kw.face_name,
         kw.spark_num,
@@ -231,7 +227,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     br00113row0 = [exx.sue, e3, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
     br00113_df = DataFrame([br00113row0], columns=br00113_columns)
     br00113_ex0_str = f"example0_{br00113_str}"
-    upsert_sheet(input_file_path, br00113_ex0_str, br00113_df)
+    save_sheet(input_file_path, br00113_ex0_str, br00113_df)
 
     br00001_columns = [
         kw.spark_num,
@@ -249,7 +245,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     br1row0 = [e3, exx.sue, exx.a23, exx.sue, tp37, ";", sue_quota, sue_celldepth]
     br00001_1df = DataFrame([br1row0], columns=br00001_columns)
     br00001_ex0_str = "example0_br00001"
-    upsert_sheet(input_file_path, br00001_ex0_str, br00001_1df)
+    save_sheet(input_file_path, br00001_ex0_str, br00001_1df)
 
     # Names of tables
     br00113_raw = f"{br00113_str}_brick_raw"
@@ -274,7 +270,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     prnunit_put_heard_agg = prime_tbl(kw.personunit, kw.h_vld, "put")
     prnptnr_put_heard_raw = prime_tbl(kw.prnptnr, kw.h_raw, "put")
     prnptnr_put_heard_agg = prime_tbl(kw.prnptnr, kw.h_vld, "put")
-    mstr_dir = fay_wdir._moment_mstr_dir
+    mstr_dir = fay_wdir.moment_mstr_dir
     a23_lasso = lassounit_shop(exx.a23)
     a23_json_path = create_moment_json_path(mstr_dir, a23_lasso)
     a23_e1_all_lesson_path = create_spark_all_lesson_path(
@@ -327,7 +323,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
 
     # WHEN
     sheets_input_to_lynx_with_cursor(
-        cursor0, fay_wdir._input_dir, fay_wdir._moment_mstr_dir
+        cursor0, fay_wdir.input_dir, fay_wdir.moment_mstr_dir
     )
 
     # THEN
@@ -368,15 +364,15 @@ def test_sheets_input_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
 
 
 def test_sheets_input_to_lynx_with_cursor_Scenario2_PopulateMomentTranBook(
-    temp_dir_setup, cursor0: Cursor
+    temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH:
     fay_str = "Fay"
-    fay_wdir = worlddir_shop(fay_str, worlds_dir())
+    fay_wdir = worlddir_shop(fay_str, str(temp3_fs))
     # delete_dir(fay_wdir.worlds_dir)
     e3 = 3
     ex_filename = "Faybob.xlsx"
-    input_file_path = create_path(fay_wdir._input_dir, ex_filename)
+    input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00002_columns = [
         kw.spark_num,
         kw.face_name,
@@ -393,13 +389,13 @@ def test_sheets_input_to_lynx_with_cursor_Scenario2_PopulateMomentTranBook(
     br00002row0 = [e3, exx.sue, exx.a23, exx.sue, exx.bob, tp37, sue_to_bob_amount, ";"]
     br00002_df = DataFrame([br00002row0], columns=br00002_columns)
     br00002_ex0_str = f"example0_{br00002_str}"
-    upsert_sheet(input_file_path, br00002_ex0_str, br00002_df)
+    save_sheet(input_file_path, br00002_ex0_str, br00002_df)
 
     assert not db_table_exists(cursor0, kw.moment_partner_nets)
 
     # WHEN
     sheets_input_to_lynx_with_cursor(
-        cursor0, fay_wdir._input_dir, fay_wdir._moment_mstr_dir
+        cursor0, fay_wdir.input_dir, fay_wdir.moment_mstr_dir
     )
 
     # THEN
@@ -407,14 +403,14 @@ def test_sheets_input_to_lynx_with_cursor_Scenario2_PopulateMomentTranBook(
 
 
 def test_sheets_input_to_lynx_with_cursor_Scenario3_WhenNoMomentIdeas_ote1_IsStillCreated(
-    temp_dir_setup, cursor0: Cursor
+    temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
     fay_str = "Fay"
-    fay_wdir = worlddir_shop(fay_str, worlds_dir())
+    fay_wdir = worlddir_shop(fay_str, str(temp3_fs))
     spark2 = 2
     ex_filename = "Faybob.xlsx"
-    input_file_path = create_path(fay_wdir._input_dir, ex_filename)
+    input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00011_columns = [
         kw.spark_num,
         kw.face_name,
@@ -424,15 +420,15 @@ def test_sheets_input_to_lynx_with_cursor_Scenario3_WhenNoMomentIdeas_ote1_IsSti
     ]
     br00011_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
     br00011_df = DataFrame(br00011_rows, columns=br00011_columns)
-    upsert_sheet(input_file_path, "br00011_ex3", br00011_df)
-    moment_mstr = fay_wdir._moment_mstr_dir
+    save_sheet(input_file_path, "br00011_ex3", br00011_df)
+    moment_mstr = fay_wdir.moment_mstr_dir
     a23_lasso = lassounit_shop(exx.a23)
     a23_ote1_csv_path = create_moment_ote1_csv_path(moment_mstr, a23_lasso)
     assert os_path_exists(a23_ote1_csv_path) is False
 
     # WHEN
     sheets_input_to_lynx_with_cursor(
-        cursor0, fay_wdir._input_dir, fay_wdir._moment_mstr_dir
+        cursor0, fay_wdir.input_dir, fay_wdir.moment_mstr_dir
     )
 
     # THEN
@@ -440,13 +436,13 @@ def test_sheets_input_to_lynx_with_cursor_Scenario3_WhenNoMomentIdeas_ote1_IsSti
 
 
 def test_sheets_input_to_lynx_with_cursor_Scenario4_DeletesPreviousFiles(
-    temp_dir_setup, cursor0: Cursor
+    temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
     fay_str = "Fay"
-    fay_wdir = worlddir_shop(fay_str, worlds_dir())
+    fay_wdir = worlddir_shop(fay_str, str(temp3_fs))
     print(f"{fay_wdir.worlds_dir=}")
-    mstr_dir = fay_wdir._moment_mstr_dir
+    mstr_dir = fay_wdir.moment_mstr_dir
     moments_dir = create_path(mstr_dir, "moments")
     testing2_filename = "testing2.txt"
     testing3_filename = "testing3.txt"
@@ -460,7 +456,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario4_DeletesPreviousFiles(
 
     # WHEN
     sheets_input_to_lynx_with_cursor(
-        cursor0, fay_wdir._input_dir, fay_wdir._moment_mstr_dir
+        cursor0, fay_wdir.input_dir, fay_wdir.moment_mstr_dir
     )
 
     # THEN
@@ -469,11 +465,11 @@ def test_sheets_input_to_lynx_with_cursor_Scenario4_DeletesPreviousFiles(
 
 
 def test_sheets_input_to_lynx_with_cursor_Scenario5_CreatesFiles(
-    temp_dir_setup, cursor0: Cursor
+    temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
     fay_str = "Fay"
-    fay_wdir = worlddir_shop(fay_str, worlds_dir())
+    fay_wdir = worlddir_shop(fay_str, str(temp3_fs))
     # delete_dir(fay_wdir.worlds_dir)
     spark1 = 1
     spark2 = 2
@@ -482,7 +478,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario5_CreatesFiles(
     hour6am = "6am"
     hour7am = "7am"
     ex_filename = "Faybob.xlsx"
-    input_file_path = create_path(fay_wdir._input_dir, ex_filename)
+    input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00003_columns = [
         kw.spark_num,
         kw.face_name,
@@ -507,7 +503,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario5_CreatesFiles(
     br1row0 = [spark2, exx.sue, exx.a23, exx.sue, tp37, ";", sue_quota, sue_celldepth]
     br00001_1df = DataFrame([br1row0], columns=br00001_columns)
     br00001_ex0_str = "example0_br00001"
-    upsert_sheet(input_file_path, br00001_ex0_str, br00001_1df)
+    save_sheet(input_file_path, br00001_ex0_str, br00001_1df)
 
     br3row0 = [spark1, exx.sue, minute_360, exx.a23, hour6am, ";"]
     br3row1 = [spark1, exx.sue, minute_420, exx.a23, hour7am, ";"]
@@ -516,8 +512,8 @@ def test_sheets_input_to_lynx_with_cursor_Scenario5_CreatesFiles(
     br00003_3df = DataFrame([br3row1, br3row0, br3row2], columns=br00003_columns)
     br00003_ex1_str = "example1_br00003"
     br00003_ex3_str = "example3_br00003"
-    upsert_sheet(input_file_path, br00003_ex1_str, br00003_1df)
-    upsert_sheet(input_file_path, br00003_ex3_str, br00003_3df)
+    save_sheet(input_file_path, br00003_ex1_str, br00003_1df)
+    save_sheet(input_file_path, br00003_ex3_str, br00003_3df)
     br00011_columns = [
         kw.spark_num,
         kw.face_name,
@@ -527,8 +523,8 @@ def test_sheets_input_to_lynx_with_cursor_Scenario5_CreatesFiles(
     ]
     br00011_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
     br00011_df = DataFrame(br00011_rows, columns=br00011_columns)
-    upsert_sheet(input_file_path, "br00011_ex3", br00011_df)
-    mstr_dir = fay_wdir._moment_mstr_dir
+    save_sheet(input_file_path, "br00011_ex3", br00011_df)
+    mstr_dir = fay_wdir.moment_mstr_dir
     wrong_a23_moment_dir = create_path(mstr_dir, exx.a23)
     assert os_path_exists(wrong_a23_moment_dir) is False
     a23_lasso = lassounit_shop(exx.a23)
@@ -545,7 +541,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario5_CreatesFiles(
 
     # WHEN
     sheets_input_to_lynx_with_cursor(
-        cursor0, fay_wdir._input_dir, fay_wdir._moment_mstr_dir
+        cursor0, fay_wdir.input_dir, fay_wdir.moment_mstr_dir
     )
 
     # THEN
@@ -559,16 +555,16 @@ def test_sheets_input_to_lynx_with_cursor_Scenario5_CreatesFiles(
 
 
 def test_sheets_input_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH:
     fay_str = "Fay"
-    fay_wdir = worlddir_shop(fay_str, worlds_dir())
+    fay_wdir = worlddir_shop(fay_str, str(temp3_fs))
     # delete_dir(fay_wdir.worlds_dir)
     sue_inx = "Suzy"
     e3 = 3
     ex_filename = "Faybob.xlsx"
-    input_file_path = create_path(fay_wdir._input_dir, ex_filename)
+    input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00113_columns = [
         kw.face_name,
         kw.spark_num,
@@ -583,7 +579,7 @@ def test_sheets_input_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     br00113row0 = [exx.sue, e3, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
     br00113_df = DataFrame([br00113row0], columns=br00113_columns)
     br00113_ex0_str = f"example0_{br00113_str}"
-    upsert_sheet(input_file_path, br00113_ex0_str, br00113_df)
+    save_sheet(input_file_path, br00113_ex0_str, br00113_df)
 
     br00001_columns = [
         kw.spark_num,
@@ -601,15 +597,15 @@ def test_sheets_input_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     br1row0 = [e3, exx.sue, exx.a23, exx.sue, tp37, ";", sue_quota, sue_celldepth]
     br00001_1df = DataFrame([br1row0], columns=br00001_columns)
     br00001_ex0_str = "example0_br00001"
-    upsert_sheet(input_file_path, br00001_ex0_str, br00001_1df)
+    save_sheet(input_file_path, br00001_ex0_str, br00001_1df)
     fay_db_path = fay_wdir.get_world_db_path()
     assert not os_path_exists(fay_db_path)
 
     # WHEN
     sheets_input_to_lynx_mstr(
         world_db_path=fay_wdir.get_world_db_path(),
-        input_dir=fay_wdir._input_dir,
-        moment_mstr_dir=fay_wdir._moment_mstr_dir,
+        input_dir=fay_wdir.input_dir,
+        moment_mstr_dir=fay_wdir.moment_mstr_dir,
     )
 
     # THEN
@@ -664,3 +660,57 @@ def test_sheets_input_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
         assert get_row_count(cursor, prnptnr_put_heard_agg) == 1
         assert get_row_count(cursor, kw.moment_ote1_agg) == 1
     db_conn.close()
+
+
+# TODO reactiavte this test and convert to using cursor
+# def test_sheets_input_to_lynx_mstr_Scenario1_Creates_job_Files(temp3_fs):
+#     # ESTABLISH
+#     here_wdir = worlddir_shop("HereNow", str(temp3_fs))
+#     br00013_example_path = create_path(here_wdir.input_dir, "example.xlsx")
+#     save_sheet(br00013_example_path, "br00013_ex1", br00013_example())
+#     print(br00013_example())
+
+#     #     # TODO convert this to dataframe
+#     #     # sue_a23_person = get_a23_sue_clean_example()
+#     #     # sue_ep8_person = get_ep8_sue_clean_example()
+#     #     # yao_ep8_person = get_ep8_yao_clean_example()
+#     #     # TODO save dataframes as sheets
+#     #     epoch_config = get_default_epoch_config_dict()
+#     #     x_epoch_label = epoch_config.get("epoch_label")
+#     #     # add_epoch_planunit(sue_a23_person, epoch_config)
+#     #     # add_epoch_planunit(sue_ep8_person, epoch_config)
+#     #     # add_epoch_planunit(yao_ep8_person, epoch_config)
+#     #     apr7 = datetime(2010, 4, 7)
+#     #     # save momentunit json
+#     #     mmt_mstr_dir = str(temp3_fs)
+#     mmt_dir = here_wdir.moment_mstr_dir
+#     hn1_lasso = lassounit_shop(exx.hn1)
+#     hn7_lasso = lassounit_shop(exx.hn7)
+#     hn1_mmt_json_path = create_moment_json_path(mmt_dir, hn1_lasso)
+#     hn7_mmt_json_path = create_moment_json_path(mmt_dir, hn7_lasso)
+#     hn7_zia_job_path = create_job_path(mmt_dir, hn7_lasso, exx.zia)
+#     hn7_yao_job_path = create_job_path(mmt_dir, hn7_lasso, exx.yao)
+#     hn7_sue_job_path = create_job_path(mmt_dir, hn7_lasso, exx.sue)
+#     hn7_xio_job_path = create_job_path(mmt_dir, hn7_lasso, exx.xio)
+#     assert not os_path_exists(hn1_mmt_json_path)
+#     assert not os_path_exists(hn7_mmt_json_path)
+#     assert not os_path_exists(hn7_zia_job_path)
+#     assert not os_path_exists(hn7_yao_job_path)
+#     assert not os_path_exists(hn7_sue_job_path)
+#     assert not os_path_exists(hn7_xio_job_path)
+
+#     # WHEN
+#     sheets_input_to_lynx_mstr(
+#         world_db_path=here_wdir.get_world_db_path(),
+#         input_dir=here_wdir.input_dir,
+#         moment_mstr_dir=here_wdir.moment_mstr_dir,
+#     )
+
+#     # THEN
+#     assert os_path_exists(hn1_mmt_json_path)
+#     assert os_path_exists(hn7_mmt_json_path)
+#     assert os_path_exists(hn7_zia_job_path)
+#     assert os_path_exists(hn7_yao_job_path)
+#     assert os_path_exists(hn7_sue_job_path)
+#     assert os_path_exists(hn7_xio_job_path)
+#     assert 1 == 2

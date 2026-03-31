@@ -13,10 +13,6 @@ from src.ch10_person_listen.listen_main import (
     create_listen_basis,
     listen_to_agendas_jobs_into_job,
 )
-from src.ch10_person_listen.test._util.ch10_env import (
-    get_temp_dir as env_dir,
-    temp_dir_setup,
-)
 from src.ch10_person_listen.test._util.ch10_examples import (
     a23_casa_rope,
     a23_clean_rope,
@@ -31,10 +27,10 @@ from src.ref.keywords import ExampleStrs as exx
 
 
 def test_listen_to_agendas_jobs_into_job_Addscase_tasksToPersonWhenNo_partyunitIsSet(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = env_dir()
+    moment_mstr_dir = str(temp3_fs)
     yao_gut = personunit_shop(exx.yao, exx.a23)
     zia_partner_cred_lumen = 47
     zia_partner_debt_lumen = 41
@@ -60,9 +56,9 @@ def test_listen_to_agendas_jobs_into_job_Addscase_tasksToPersonWhenNo_partyunitI
     assert len(new_yao_job.get_agenda_dict()) == 2
 
 
-def test_listen_to_agendas_jobs_into_job_Addscase_tasksToPerson(temp_dir_setup):
+def test_listen_to_agendas_jobs_into_job_Addscase_tasksToPerson(temp3_fs):
     # ESTABLISH
-    moment_mstr_dir = env_dir()
+    moment_mstr_dir = str(temp3_fs)
     yao_gut = personunit_shop(exx.yao, exx.a23)
     zia_partner_cred_lumen = 47
     zia_partner_debt_lumen = 41
@@ -92,10 +88,10 @@ def test_listen_to_agendas_jobs_into_job_Addscase_tasksToPerson(temp_dir_setup):
 
 
 def test_listen_to_agendas_jobs_into_job_Addscase_tasksToPersonWithDetailsDecidedBy_partner_debt_lumen(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = env_dir()
+    moment_mstr_dir = str(temp3_fs)
     zia_job = get_example_zia_speaker()
     bob_job = get_example_bob_speaker()
     bob_job.edit_plan_attr(
@@ -152,10 +148,10 @@ def test_listen_to_agendas_jobs_into_job_Addscase_tasksToPersonWithDetailsDecide
 
 
 def test_listen_to_agendas_jobs_into_job_ProcessesIrrationalPerson(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = env_dir()
+    moment_mstr_dir = str(temp3_fs)
     yao_gut = personunit_shop(exx.yao, exx.a23)
     zia_partner_cred_lumen = 47
     zia_partner_debt_lumen = 41
@@ -224,10 +220,10 @@ def test_listen_to_agendas_jobs_into_job_ProcessesIrrationalPerson(
 
 
 def test_listen_to_agendas_jobs_into_job_ProcessesMissingDebtorPerson(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = env_dir()
+    moment_mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     yao_gut_path = create_gut_path(moment_mstr_dir, a23_lasso, exx.yao)
     delete_dir(yao_gut_path)  # don't know why I have to do this...
@@ -269,10 +265,10 @@ def test_listen_to_agendas_jobs_into_job_ProcessesMissingDebtorPerson(
 
 
 def test_listen_to_agendas_jobs_into_job_ListensToPerson_gut_AndNotPerson_job(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    moment_mstr_dir = env_dir()
+    moment_mstr_dir = str(temp3_fs)
     yao_gut = personunit_shop(exx.yao, exx.a23)
     yao_partner_cred_lumen = 57
     yao_partner_debt_lumen = 51

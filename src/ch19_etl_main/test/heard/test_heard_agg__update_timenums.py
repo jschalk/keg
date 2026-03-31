@@ -5,7 +5,6 @@ from src.ch18_etl_config.etl_sqlstr import (
     create_sound_and_heard_tables,
     update_heard_agg_timenum_columns,
 )
-from src.ch19_etl_main.test._util.ch19_env import cursor0
 from src.ch19_etl_main.test.heard.test_heard_agg__update_casenum_pchapx import (
     pchapx_insert_nabtime,
     pchapx_insert_prncase,

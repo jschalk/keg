@@ -152,7 +152,6 @@ def get_plan_view_dict(x_plan: PlanUnit) -> dict[str,]:
 def get_partners_view_dict(person: PersonUnit) -> dict[str,]:
     partners_dict = {}
     for partner in person.partners.values():
-
         partner_cred_lumen_readable = (
             f"partner_cred_lumen: {partner.partner_cred_lumen}"
         )
@@ -266,7 +265,6 @@ def get_groups_view_dict(person: PersonUnit) -> dict[str,]:
     groups_dict = {}
     group_title_readable_key = "group_title_readable"
     for group in person.groupunits.values():
-
         #     group_cred_lumen_readable_key = f"group_cred_lumen_readable"
         #     group_debt_lumen_readable_key = f"group_debt_lumen_readable"
         #     credor_pool_readable_key = f"credor_pool_readable"

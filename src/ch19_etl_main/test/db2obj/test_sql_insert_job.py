@@ -15,7 +15,6 @@ from src.ch19_etl_main.obj2db_person import (
     create_prnptnr_metrics_insert_sqlstr,
     create_prnreas_metrics_insert_sqlstr,
 )
-from src.ch19_etl_main.test._util.ch19_env import cursor0
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 

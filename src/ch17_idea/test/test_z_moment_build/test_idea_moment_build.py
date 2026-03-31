@@ -4,7 +4,6 @@ from src.ch13_time.epoch_main import epochunit_shop, get_default_epoch_config_di
 from src.ch13_time.test._util.ch13_examples import get_five_config
 from src.ch14_moment.moment_main import momentunit_shop
 from src.ch17_idea.idea_main import moment_build_from_df
-from src.ch17_idea.test._util.ch17_env import idea_moments_dir, temp_dir_setup
 from src.ch17_idea.test._util.ch17_examples import (
     J45_ROPE,
     get_ex1_br00000_df,
@@ -25,7 +24,7 @@ from src.ref.keywords import ExampleStrs as exx
 
 # ESTABLISH a dataframe, build a moment unit
 def test_moment_build_from_df_ReturnsObj_Scenario0_OneMomentRope(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     br00000_df = get_ex1_br00000_df()
@@ -38,7 +37,7 @@ def test_moment_build_from_df_ReturnsObj_Scenario0_OneMomentRope(
     x_respect_grain = 66
     x_mana_grain = 77
     x_job_listen_rotations = 7
-    x_moments_dir = create_path(idea_moments_dir(), "Fay")
+    x_moments_dir = create_path(str(temp3_fs), "Fay")
 
     # WHEN
     x_momentunits = moment_build_from_df(
@@ -102,7 +101,7 @@ def test_moment_build_from_df_ReturnsObj_Scenario0_OneMomentRope(
 
 # ESTABLISH a dataframe, build a moment unit
 def test_moment_build_from_df_ReturnsObj_Scenario1_TwoMomentRopes(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     br00000_df = get_ex2_br00000_df()
@@ -114,7 +113,7 @@ def test_moment_build_from_df_ReturnsObj_Scenario1_TwoMomentRopes(
     x_fund_grain = 55
     x_respect_grain = 66
     x_mana_grain = 77
-    x_moments_dir = create_path(idea_moments_dir(), "Fay")
+    x_moments_dir = create_path(str(temp3_fs), "Fay")
 
     # WHEN
     x_momentunits = moment_build_from_df(

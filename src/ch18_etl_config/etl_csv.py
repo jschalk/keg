@@ -57,8 +57,9 @@ def save_to_split_csvs(
         x_rope = key_values[0]
 
         path_dirs = get_all_rope_labels(x_rope, knot_str)
+        path_dirs = [path_dirs[0]]
         path_dirs.extend(key_values[1:])
-        key_path = get_key_part(path_dirs)
+        key_path = get_key_dir_part(path_dirs)
         csv_path = create_path(dst_dir, key_path)
         set_dir(csv_path)
         dst_file = os_path_join(csv_path, f"{tablename}.csv")
@@ -69,5 +70,5 @@ def save_to_split_csvs(
             writer.writerows(collection)
 
 
-def get_key_part(key_values: list[str]) -> str:
+def get_key_dir_part(key_values: list[str]) -> str:
     return "/".join(str(value) for value in key_values)

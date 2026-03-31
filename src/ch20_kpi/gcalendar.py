@@ -10,11 +10,9 @@ from src.ch04_rope.rope import create_rope, is_sub_rope
 from src.ch05_reason.reason_main import ReasonHeir
 from src.ch06_plan.plan import PlanUnit
 from src.ch07_person_logic.person_main import PersonUnit, get_sorted_plan_list
-from src.ch09_person_lesson._ref.ch09_path import (
-    create_job_path,
-    create_moments_dir_path,
-)
+from src.ch09_person_lesson._ref.ch09_path import create_moments_dir_path
 from src.ch09_person_lesson.lasso import LassoUnit, lassounit_shop
+from src.ch10_person_listen._ref.ch10_path import create_job_path
 from src.ch10_person_listen.keep_tool import open_job_file
 from src.ch13_time.epoch_main import (
     get_default_epoch_config_dict,
@@ -23,7 +21,7 @@ from src.ch13_time.epoch_main import (
 )
 from src.ch13_time.epoch_reason import set_epoch_fact
 from src.ch14_moment.moment_main import open_moment_file
-from src.ch20_kpi._ref.ch20_path import create_day_report_txt_path
+from src.ch20_kpi._ref.ch20_path import create_day_punch_txt_path
 from src.ch20_kpi._ref.ch20_semantic_types import (
     GroupTitle,
     KnotTerm,
@@ -221,7 +219,7 @@ def get_gcal_memberships_str(x_person: PersonUnit, group_title: GroupTitle) -> s
     return create_partners_only_list_str(partners_list, x_str)
 
 
-def get_gcal_day_report_from_personunit(
+def get_gcal_day_punch_from_personunit(
     x_person: PersonUnit,
     day: datetime,
     epoch_label: LabelTerm = None,
@@ -305,7 +303,7 @@ def create_gcalendar_csv_from_person(x_person: PersonUnit, day: datetime = None)
     return create_gcalendar_csv_from_list(events_list)
 
 
-def get_gcal_day_report_from_job_file(
+def get_gcal_day_punch_from_job_file(
     moment_mstr_dir: str,
     moment_lasso: LassoUnit,
     person_name: PersonName,
@@ -315,11 +313,11 @@ def get_gcal_day_report_from_job_file(
     momentunit = open_moment_file(moment_mstr_dir, moment_lasso)
     epoch_label = momentunit.epoch.epoch_label
     job = open_job_file(moment_mstr_dir, moment_lasso, person_name)
-    return get_gcal_day_report_from_personunit(job, day, epoch_label, focus_group_title)
+    return get_gcal_day_punch_from_personunit(job, day, epoch_label, focus_group_title)
 
 
-def add_gcal_day_report_to_dict(
-    day_reports: dict,
+def add_gcal_day_punch_to_dict(
+    day_punchs: dict,
     moment_mstr_dir: str,
     moment_lasso: LassoUnit,
     person_name: PersonName,
@@ -328,25 +326,25 @@ def add_gcal_day_report_to_dict(
 ):
     mmt_job_path = create_job_path(moment_mstr_dir, moment_lasso, person_name)
     if os_path_exists(mmt_job_path):
-        day_report_str = get_gcal_day_report_from_job_file(
+        day_punch_str = get_gcal_day_punch_from_job_file(
             moment_mstr_dir, moment_lasso, person_name, day, focus_group_title
         )
-        report_path = create_day_report_txt_path(
+        report_path = create_day_punch_txt_path(
             moment_mstr_dir, moment_lasso, person_name
         )
-        day_reports[moment_lasso.moment_rope] = {
-            "day_report": day_report_str,
+        day_punchs[moment_lasso.moment_rope] = {
+            "day_punch": day_punch_str,
             "file_path": report_path,
         }
 
 
-def get_person_gcal_day_reports(
+def get_person_gcal_day_punchs(
     moment_mstr_dir: str,
     person_name: PersonName,
     day: datetime,
     focus_group_title: GroupTitle = None,
 ) -> dict[PersonName, dict[str, str]]:
-    day_reports = {}
+    day_punchs = {}
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):
         moment_lasso = lassounit_shop(create_rope(moment_label))
@@ -354,27 +352,27 @@ def get_person_gcal_day_reports(
         persons_path = create_path(moment_path, "persons")
         for dir_person in get_level1_dirs(persons_path):
             if dir_person == person_name:
-                add_gcal_day_report_to_dict(
-                    day_reports,
+                add_gcal_day_punch_to_dict(
+                    day_punchs,
                     moment_mstr_dir,
                     moment_lasso,
                     person_name,
                     day,
                     focus_group_title,
                 )
-    return day_reports
+    return day_punchs
 
 
-def save_person_gcal_day_reports(
+def save_person_gcal_day_punchs(
     moment_mstr_dir: str,
     person_name: PersonName,
     day: datetime,
     focus_group_title: GroupTitle = None,
 ):
-    day_reports = get_person_gcal_day_reports(
+    day_punchs = get_person_gcal_day_punchs(
         moment_mstr_dir, person_name, day, focus_group_title
     )
-    for person_name, report_dict in day_reports.items():
+    for person_name, report_dict in day_punchs.items():
         file_path = report_dict.get("file_path")
-        day_report = report_dict.get("day_report")
-        save_file(file_path, None, day_report)
+        day_punch = report_dict.get("day_punch")
+        save_file(file_path, None, day_punch)

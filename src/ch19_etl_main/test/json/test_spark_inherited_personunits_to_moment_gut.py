@@ -5,7 +5,6 @@ from src.ch09_person_lesson._ref.ch09_path import create_gut_path
 from src.ch09_person_lesson.lasso import lassounit_shop
 from src.ch11_bud._ref.ch11_path import create_person_spark_dir_path
 from src.ch19_etl_main.etl_main import etl_spark_inherited_personunits_to_moment_gut
-from src.ch19_etl_main.test._util.ch19_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import ExampleStrs as exx
 
 # create test where spark create_person_spark_dir_path()
@@ -14,7 +13,7 @@ from src.ref.keywords import ExampleStrs as exx
 
 
 def test_etl_spark_inherited_personunits_to_moment_gut_SetsFiles_Scenario0(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
     sue_inx = "Suzy"
@@ -25,7 +24,7 @@ def test_etl_spark_inherited_personunits_to_moment_gut_SetsFiles_Scenario0(
     credit44 = 44
     credit77 = 77
     credit88 = 88
-    mstr_dir = get_temp_dir()
+    mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     a23_bob_e3_dir = create_person_spark_dir_path(mstr_dir, a23_lasso, bob_inx, spark3)
     a23_bob_e7_dir = create_person_spark_dir_path(mstr_dir, a23_lasso, bob_inx, spark7)

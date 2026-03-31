@@ -6,7 +6,6 @@ from src.ch18_etl_config.etl_sqlstr import (
     get_insert_into_heard_raw_sqlstrs,
 )
 from src.ch19_etl_main.etl_main import etl_sound_vld_tables_to_heard_raw_tables
-from src.ch19_etl_main.test._util.ch19_env import cursor0
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 

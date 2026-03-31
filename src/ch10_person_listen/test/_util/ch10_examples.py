@@ -6,7 +6,6 @@ from src.ch09_person_lesson.lesson_filehandler import (
     lessonfilehandler_shop,
 )
 from src.ch09_person_lesson.test._util.ch09_examples import get_texas_rope
-from src.ch10_person_listen.test._util.ch10_env import get_temp_dir
 from src.ref.keywords import Ch10Keywords as kw, ExampleStrs as exx
 
 
@@ -108,9 +107,9 @@ def get_example_yao_speaker() -> PersonUnit:
     return yao_speaker
 
 
-def get_texas_lessonfilehandler() -> LessonFileHandler:
+def get_texas_lessonfilehandler(x_dir: str) -> LessonFileHandler:
     moment_lasso = lassounit_shop(ch10_example_moment_rope())
-    return lessonfilehandler_shop(get_temp_dir(), moment_lasso, person_name="Sue")
+    return lessonfilehandler_shop(x_dir, moment_lasso, person_name="Sue")
 
 
 def get_dakota_rope() -> RopeTerm:
@@ -121,9 +120,9 @@ def get_dakota_rope() -> RopeTerm:
     return create_rope_from_labels([moment_rope, nation_str, usa_str, dakota_str])
 
 
-def get_dakota_lessonfilehandler() -> LessonFileHandler:
+def get_dakota_lessonfilehandler(x_dir: str) -> LessonFileHandler:
     moment_lasso = lassounit_shop(ch10_example_moment_rope())
-    return lessonfilehandler_shop(get_temp_dir(), moment_lasso, person_name="Sue")
+    return lessonfilehandler_shop(x_dir, moment_lasso, person_name="Sue")
 
 
 def get_fund_breakdown_person() -> PersonUnit:
@@ -136,14 +135,13 @@ def get_fund_breakdown_person() -> PersonUnit:
     hun_y_str = "hungry"
     clean_str = "cleaning"
     clean_rope = sue_person.make_rope(casa_rope, clean_str)
-    sweep_str = "sweep floor"
     dish_str = "clean dishes"
     sue_person.set_l1_plan(planunit_shop(exx.casa, star=30))
     sue_person.set_plan_obj(planunit_shop(cat_str, star=30), casa_rope)
     sue_person.set_plan_obj(planunit_shop(hun_n_str, star=30), cat_rope)
     sue_person.set_plan_obj(planunit_shop(hun_y_str, star=30), cat_rope)
     sue_person.set_plan_obj(planunit_shop(clean_str, star=30), casa_rope)
-    sue_person.set_plan_obj(planunit_shop(sweep_str, star=30, pledge=True), clean_rope)
+    sue_person.set_plan_obj(planunit_shop(exx.sweep, star=30, pledge=True), clean_rope)
     sue_person.set_plan_obj(planunit_shop(dish_str, star=30, pledge=True), clean_rope)
 
     cat_str = "cat have dinner"

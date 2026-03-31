@@ -194,7 +194,7 @@ class PandasToolsExcelWriterError(Exception):
     pass
 
 
-def upsert_sheet(
+def save_sheet(
     file_path: str, sheet_name: str, dataframe: DataFrame, replace: bool = False
 ):
     # sourcery skip: remove-redundant-exception, simplify-single-exception-tuple
@@ -283,7 +283,7 @@ def split_excel_into_dirs(
             set_dir(subdirectory)
             # Define the destination file path
             dst_file = create_path(subdirectory, f"{filename}.xlsx")
-            upsert_sheet(dst_file, sheet_name, filtered_df)
+            save_sheet(dst_file, sheet_name, filtered_df)
 
 
 def if_nan_return_None(x_obj: any) -> any:

@@ -19,7 +19,6 @@ from src.ch17_idea.idea_main import (
     _get_headers_list,
     get_idearef_obj,
 )
-from src.ch17_idea.test._util.ch17_env import src_chapter_dir
 from src.ch17_idea.test.test_idea_.test_idea__config import change_erase_attrs
 from src.ref.keywords import Ch17Keywords as kw
 
@@ -39,8 +38,9 @@ def test_get_idea_formats_dir_ReturnsObj():
     idea_dir = get_idea_formats_dir()
     # THEN
     print(f"{idea_dir=}")
-    print(f"{src_chapter_dir()=}")
-    assert idea_dir == create_path(src_chapter_dir(), "idea_formats")
+    src_chapter_dir = create_path("src", "ch17_idea")
+    print(f"{src_chapter_dir=}")
+    assert idea_dir == create_path(src_chapter_dir, "idea_formats")
 
 
 def test_get_idearef_obj_ReturnsObj():

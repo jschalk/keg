@@ -1,12 +1,11 @@
 from src.ch12_keep.rivercycle import rivergrade_shop
 from src.ch12_keep.riverrun import riverrun_shop
-from src.ch12_keep.test._util.ch12_env import get_temp_dir
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_RiverRun_set_initial_rivergrade_SetsAttr():
+def test_RiverRun_set_initial_rivergrade_SetsAttr(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     yao_number = 8
     yao_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao, number=yao_number)
     x_doctor_count = 5
@@ -36,9 +35,9 @@ def test_RiverRun_set_initial_rivergrade_SetsAttr():
     assert gen_rivergrade == bob_rivergrade
 
 
-def test_RiverRun_rivergrades_is_empty_ReturnsObj():
+def test_RiverRun_rivergrades_is_empty_ReturnsObj(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     yao_number = 8
     yao_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao, number=yao_number)
 
@@ -51,9 +50,9 @@ def test_RiverRun_rivergrades_is_empty_ReturnsObj():
     assert yao_riverrun.rivergrades_is_empty() is False
 
 
-def test_RiverRun_rivergrade_exists_ReturnsObj():
+def test_RiverRun_rivergrade_exists_ReturnsObj(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     yao_number = 8
     yao_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao, yao_number)
     yao_riverrun.set_initial_rivergrade("Yao")
@@ -69,9 +68,9 @@ def test_RiverRun_rivergrade_exists_ReturnsObj():
     assert yao_riverrun.rivergrades_is_empty() is False
 
 
-def test_RiverRun_set_all_initial_rivergrades_SetsAttr():
+def test_RiverRun_set_all_initial_rivergrades_SetsAttr(temp3_dir):
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
     x_riverrun.set_keep_patientledger(exx.yao, exx.yao, 1)
     x_riverrun.set_keep_patientledger(exx.yao, exx.bob, 1)
@@ -94,10 +93,10 @@ def test_RiverRun_set_all_initial_rivergrades_SetsAttr():
     assert x_riverrun.rivergrade_exists(exx.zia)
 
 
-def test_RiverRun_set_all_initial_rivergrades_OverWritesPrevious():
+def test_RiverRun_set_all_initial_rivergrades_OverWritesPrevious(temp3_dir):
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
-    mstr_dir = get_temp_dir()
+    mstr_dir = temp3_dir
     x_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao)
     x_riverrun.set_keep_patientledger(exx.yao, exx.yao, 1)
     x_riverrun.set_keep_patientledger(exx.yao, exx.bob, 1)

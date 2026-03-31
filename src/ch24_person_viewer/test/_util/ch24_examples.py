@@ -7,10 +7,8 @@ SUE_PERSON = personunit_shop(exx.sue, exx.a23)
 CASA_ROPE = SUE_PERSON.make_l1_rope(exx.casa)
 CLEAN_ROPE = SUE_PERSON.make_rope(CASA_ROPE, exx.clean)
 MOP_ROPE = SUE_PERSON.make_rope(CLEAN_ROPE, exx.mop)
-SWEEP_STR = "sweep"
-SWEEP_ROPE = SUE_PERSON.make_rope(CLEAN_ROPE, SWEEP_STR)
-SCRUB_STR = "scrub"
-SCRUB_ROPE = SUE_PERSON.make_rope(CLEAN_ROPE, SCRUB_STR)
+SWEEP_ROPE = SUE_PERSON.make_rope(CLEAN_ROPE, exx.sweep)
+SCRUB_ROPE = SUE_PERSON.make_rope(CLEAN_ROPE, exx.scrub)
 
 
 class ExampleValuesRef(str, Enum):
@@ -22,9 +20,9 @@ class ExampleValuesRef(str, Enum):
     clean_rope = CLEAN_ROPE
     mop_str = exx.mop
     mop_rope = MOP_ROPE
-    sweep_str = SWEEP_STR
+    sweep_str = exx.sweep
     sweep_rope = SWEEP_ROPE
-    scrub_str = SCRUB_STR
+    scrub_str = exx.sweep
     scrub_rope = SCRUB_ROPE
 
     def __str__(self):

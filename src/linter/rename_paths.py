@@ -1,8 +1,6 @@
 from os import getcwd as os_getcwd
 from os.path import isdir as os_path_isdir
-from src.ch00_py.file_toolbox import create_path, open_json, save_json
 from src.linter.chapter_migration_tools import (
-    first_level_dirs_with_prefix,
     rename_files_and_dirs_4times,
     string_exists_in_filepaths,
 )
@@ -18,7 +16,7 @@ def main():
     replace_str = input("Replace string: ").strip()
     print(f"Goal is to move {find_str} to {replace_str}")
 
-    if not os_path_isdir(src_dir):
+    if os_path_isdir(src_dir) is False:
         print("Error: directory does not exist.")
         return
 

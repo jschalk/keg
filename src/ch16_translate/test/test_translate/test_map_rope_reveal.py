@@ -1,5 +1,6 @@
 from src.ch04_rope.rope import create_rope, to_rope
 from src.ch16_translate.map_term import ropemap_shop
+from src.ref.keywords import ExampleStrs as exx
 
 
 def test_RopeMap_reveal_inx_ReturnsObjAndSetsAttr_rope_Scenario0():
@@ -109,9 +110,9 @@ def test_RopeMap_reveal_inx_AddsMissingObjsTo_otx2inx_RopeTerm():
     clean_inx_str = "propre"
     clean_otx_rope = create_rope(casa_otx_rope, clean_otx_str)
     clean_inx_rope = create_rope(casa_inx_rope, clean_inx_str)
-    sweep_str = "sweep"
-    sweep_otx_rope = create_rope(clean_otx_rope, sweep_str)
-    sweep_inx_rope = create_rope(clean_inx_rope, sweep_str)
+
+    sweep_otx_rope = create_rope(clean_otx_rope, exx.sweep)
+    sweep_inx_rope = create_rope(clean_inx_rope, exx.sweep)
     x_ropemap = ropemap_shop()
     x_ropemap.set_label(otx_a45_str, inx_a87_str)
     x_ropemap.set_label(casa_otx_str, casa_inx_str)

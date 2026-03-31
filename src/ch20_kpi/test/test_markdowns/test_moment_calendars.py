@@ -17,15 +17,12 @@ from src.ch13_time.test._util.ch13_examples import (
 )
 from src.ch14_moment.moment_main import momentunit_shop
 from src.ch20_kpi.kpi_mstr import create_calendar_markdown_files
-from src.ch20_kpi.test._util.ch20_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_create_calendar_markdown_files_Senario0_NoFileIfWorldIsEmpty(
-    temp_dir_setup,
-):
+def test_create_calendar_markdown_files_Senario0_NoFileIfWorldIsEmpty(temp3_fs):
     # ESTABLISH
-    temp_dir = get_temp_dir()
+    temp_dir = str(temp3_fs)
     moment_mstr_dir = create_path(temp_dir, "moment_mstr")
     output_dir = create_path(temp_dir, "output")
     assert not os_path_exists(output_dir)
@@ -39,10 +36,10 @@ def test_create_calendar_markdown_files_Senario0_NoFileIfWorldIsEmpty(
 
 
 def test_create_calendar_markdown_files_Senario1_CreatesFileFromMomentUnitJSON(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    temp_dir = get_temp_dir()
+    temp_dir = str(temp3_fs)
     moment_mstr_dir = create_path(temp_dir, "moment_mstr")
     output_dir = create_path(temp_dir, "output")
     a23_lasso = lassounit_shop(exx.a23)

@@ -4,7 +4,6 @@ from src.ch00_py.keyword_class_builder import (
     get_keywords_by_chapter_md,
     save_keywords_by_chapter_md,
 )
-from src.ch98_docs_builder.test._util.ch98_env import get_temp_dir, temp_dir_setup
 
 
 def test_get_keywords_by_chapter_md_SetsFile_CheckMarkdownHasAllStrFunctions():
@@ -22,10 +21,10 @@ def test_get_keywords_by_chapter_md_SetsFile_CheckMarkdownHasAllStrFunctions():
 
 
 def test_save_keywords_by_chapter_md_SavesFile_get_keywords_by_chapter_md_ToGivenDirectory(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    temp_dir = get_temp_dir()
+    temp_dir = str(temp3_fs)
     keywords_by_chapter_md_path = create_path(temp_dir, "keywords_by_chapter.md")
     assert not os_path_exists(keywords_by_chapter_md_path)
 

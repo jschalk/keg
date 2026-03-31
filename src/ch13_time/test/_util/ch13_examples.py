@@ -19,13 +19,11 @@ DIRTYNESS_STR = "dirtyness"
 FIVE_STR = "five"
 WK_STR = "wk"
 WED_STR = "Wed"
-SWEEP_STR = "sweep"
-SCRUB_STR = "scrub"
 
 BOB_PERSON = personunit_shop(exx.bob)
 MOP_ROPE = BOB_PERSON.make_l1_rope(exx.mop)
-SWEEP_ROPE = BOB_PERSON.make_l1_rope(SWEEP_STR)
-SCRUB_ROPE = BOB_PERSON.make_l1_rope(SCRUB_STR)
+SWEEP_ROPE = BOB_PERSON.make_l1_rope(exx.sweep)
+SCRUB_ROPE = BOB_PERSON.make_l1_rope(exx.scrub)
 CLEAN_ROPE = BOB_PERSON.make_l1_rope(exx.clean)
 DIRTYNESS_ROPE = BOB_PERSON.make_rope(CLEAN_ROPE, DIRTYNESS_STR)
 TIME_ROPE = BOB_PERSON.make_l1_rope(kw.time)
@@ -54,9 +52,9 @@ class Ch13ExampleStrs(str, Enum):
     wed_str = WED_STR
     root_rope = BOB_PERSON.planroot.get_plan_rope()
     mop_rope = MOP_ROPE
-    sweep_str = SWEEP_STR
+    sweep_str = exx.sweep
     sweep_rope = SWEEP_ROPE
-    scrub_str = SCRUB_STR
+    scrub_str = exx.scrub
     scrub_rope = SCRUB_ROPE
     clean_rope = CLEAN_ROPE
     dirtyness_rope = DIRTYNESS_ROPE

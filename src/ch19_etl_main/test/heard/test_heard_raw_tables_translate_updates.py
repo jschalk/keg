@@ -7,7 +7,6 @@ from src.ch18_etl_config.etl_sqlstr import (
     create_update_heard_raw_existing_inx_col_sqlstr,
 )
 from src.ch19_etl_main.etl_main import set_all_heard_raw_inx_columns
-from src.ch19_etl_main.test._util.ch19_env import cursor0
 from src.ref.keywords import Ch19Keywords as kw
 
 

@@ -17,10 +17,6 @@ from src.ch18_etl_config._ref.ch18_path import (
     create_moment_ote1_json_path,
 )
 from src.ch19_etl_main.etl_main import calc_moment_bud_partner_mandate_net_ledgers
-from src.ch19_etl_main.test._util.ch19_env import (
-    get_temp_dir as worlds_dir,
-    temp_dir_setup,
-)
 from src.ch19_etl_main.test._util.ch19_examples import (
     get_bob_mop_reason_personunit_example,
 )
@@ -28,10 +24,10 @@ from src.ref.keywords import ExampleStrs as exx
 
 
 def test_calc_moment_bud_partner_mandate_net_ledgers_Scenaro0_BudEmpty(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    mstr_dir = create_moment_mstr_path(worlds_dir())
+    mstr_dir = create_moment_mstr_path(str(temp3_fs))
     amy23_moment = momentunit_shop(exx.a23, mstr_dir)
     a23_lasso = lassounit_shop(amy23_moment.moment_rope, amy23_moment.knot)
     a23_json_path = create_moment_json_path(mstr_dir, a23_lasso)
@@ -48,10 +44,10 @@ def test_calc_moment_bud_partner_mandate_net_ledgers_Scenaro0_BudEmpty(
 
 
 def test_calc_moment_bud_partner_mandate_net_ledgers_Scenaro1_SimpleBud(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    mstr_dir = create_moment_mstr_path(worlds_dir())
+    mstr_dir = create_moment_mstr_path(str(temp3_fs))
     amy23_moment = momentunit_shop(exx.a23, mstr_dir)
     tp37 = 37
     bud1_quota = 450
@@ -79,10 +75,10 @@ def test_calc_moment_bud_partner_mandate_net_ledgers_Scenaro1_SimpleBud(
 
 
 def test_calc_moment_bud_partner_mandate_net_ledgers_Scenaro2_BudExists(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    mstr_dir = create_moment_mstr_path(worlds_dir())
+    mstr_dir = create_moment_mstr_path(str(temp3_fs))
 
     # Create MomentUnit with bob bud at time 37
     amy23_moment = momentunit_shop(exx.a23, mstr_dir)

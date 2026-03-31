@@ -5,7 +5,6 @@ from src.ch19_etl_main.etl_main import (
     create_sound_and_heard_tables,
     etl_heard_raw_tables_to_moment_ote1_agg,
 )
-from src.ch19_etl_main.test._util.ch19_env import cursor0
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 

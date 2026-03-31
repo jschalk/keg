@@ -472,26 +472,24 @@ def test_PersonUnit_conpute_SetsPlanUnitsActiveWithEvery6WeeksReason_personunit_
 
     casa_rope = yao_personunit.make_l1_rope("casa")
     cleaning_rope = yao_personunit.make_rope(casa_rope, "cleaning")
-    clean_couch_rope = yao_personunit.make_rope(
-        cleaning_rope, "clean sheets couch blankets"
-    )
-    clean_sheet_plan = yao_personunit.get_plan_obj(clean_couch_rope)
-    # print(f"{clean_sheet_plan.reasonunits.values()=}")
-    ced_wk_reason = clean_sheet_plan.reasonunits.get(ced_wk_reason_context)
+    clean_couch_rope = yao_personunit.make_rope(cleaning_rope, "clean couch blankets")
+    clean_couch_plan = yao_personunit.get_plan_obj(clean_couch_rope)
+    # print(f"{clean_couch_plan.reasonunits.values()=}")
+    ced_wk_reason = clean_couch_plan.reasonunits.get(ced_wk_reason_context)
     ced_wk_case = ced_wk_reason.cases.get(ced_wk_reason_context)
     print(
-        f"{clean_sheet_plan.plan_label=} {ced_wk_reason.reason_context=} {ced_wk_case.reason_state=}"
+        f"{clean_couch_plan.plan_label=} {ced_wk_reason.reason_context=} {ced_wk_case.reason_state=}"
     )
-    # print(f"{clean_sheet_plan.plan_label=} {ced_wk_reason.reason_context=} {case_x=}")
+    # print(f"{clean_couch_plan.plan_label=} {ced_wk_reason.reason_context=} {case_x=}")
     reason_divisor = ced_wk_case.reason_divisor
     reason_lower = ced_wk_case.reason_lower
     reason_upper = ced_wk_case.reason_upper
     # print(f"{plan.reasonunits=}")
-    assert clean_sheet_plan.plan_active is False
+    assert clean_couch_plan.plan_active is False
 
     # for plan in plan_dict:
     #     # print(f"{plan.parent_rope=}")
-    #     if plan.plan_label == "clean sheets couch blankets":
+    #     if plan.plan_label == "clean couch blankets":
     #         print(f"{plan.get_plan_rope()=}")
 
     assert reason_divisor == 6
@@ -523,7 +521,7 @@ def test_PersonUnit_conpute_SetsPlanUnitsActiveWithEvery6WeeksReason_personunit_
     wk_rope = yao_personunit.make_l1_rope(wk_str)
     casa_rope = yao_personunit.make_l1_rope("casa")
     cleaning_rope = yao_personunit.make_rope(casa_rope, "cleaning")
-    clean_couch_str = "clean sheets couch blankets"
+    clean_couch_str = "clean couch blankets"
     clean_couch_rope = yao_personunit.make_rope(cleaning_rope, clean_couch_str)
     clean_couch_plan = yao_personunit.get_plan_obj(rope=clean_couch_rope)
     wk_reason = clean_couch_plan.reasonunits.get(wk_rope)

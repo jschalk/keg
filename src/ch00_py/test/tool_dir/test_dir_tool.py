@@ -1,11 +1,10 @@
 from pathlib import Path
 from src.ch00_py.file_toolbox import get_level1_dirs, set_dir
-from src.ch00_py.test._util.ch00_env import get_temp_dir, temp_dir_setup
 
 
-def test_get_level1_dirs_EmptyDirectory(temp_dir_setup):
+def test_get_level1_dirs_EmptyDirectory(temp3_fs, temp3_dir):
     # ESTABLISH
-    test_dir = get_temp_dir()
+    test_dir = temp3_dir
 
     # WHEN
     result = get_level1_dirs(test_dir)
@@ -29,9 +28,9 @@ def test_get_level1_dirs_NonExistentDirectory():
     assert result == expected_dirs, assert_fail_str
 
 
-def test_get_level1_dirs_ReturnsObj_Sorted(temp_dir_setup):
+def test_get_level1_dirs_ReturnsObj_Sorted(temp3_fs, temp3_dir):
     # ESTABLISH
-    test_dir = get_temp_dir()
+    test_dir = temp3_dir
     # Create a temporary directory structure
     set_dir((Path(test_dir) / "dir2"))
     set_dir((Path(test_dir) / "dir1"))

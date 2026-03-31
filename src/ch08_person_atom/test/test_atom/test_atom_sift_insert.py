@@ -58,8 +58,8 @@ def test_sift_atom_ReturnsObj_PersonAtom_INSERT_person_planunit():
     root_rope = sue_person.planroot.get_plan_rope()
     casa_rope = sue_person.make_l1_rope(exx.casa)
     clean_rope = sue_person.make_rope(casa_rope, exx.clean)
-    sweep_str = "sweep"
-    sweep_rope = sue_person.make_rope(clean_rope, sweep_str)
+
+    sweep_rope = sue_person.make_rope(clean_rope, exx.sweep)
 
     root_atom = personatom_shop(kw.person_planunit, kw.INSERT)
     root_atom.set_arg(kw.plan_rope, root_rope)

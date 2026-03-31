@@ -240,22 +240,6 @@ def check_custom_exception_classes_style(all_classes: dict[str, str]):
     return (True, "All Exception classes satisfy style requirements")
 
 
-def env_file_has_required_elements(env_filepath: str):
-    file_funcs, class_bases = get_func_names_and_class_bases_from_file(env_filepath)
-    cursor0_exists = "cursor0" in file_funcs
-    get_temp_dir_exists = "get_temp_dir" in file_funcs
-    temp_dir_setup_str = """
-@pytest_fixture()
-def temp_dir_setup():
-    env_dir = get_temp_dir()
-    delete_dir(dir=env_dir)
-    os_makedirs(env_dir)
-    yield env_dir
-    delete_dir(dir=env_dir)"""
-    temp_dir_setup_exists = temp_dir_setup_str in open_file(env_filepath)
-    return (temp_dir_setup_exists and get_temp_dir_exists) or cursor0_exists
-
-
 def evaluate_and_add_classes(
     x_bases, filename, all_classes: dict, x_class, semantic_type_candidates: dict
 ):
@@ -406,12 +390,12 @@ def check_path_funcs_HasDocString_TestsExist(
 
 
 def necessary_comments_exist(function_name: str, test_function_str: str) -> bool:
-    establish_exists = test_function_str.find("ESTABLISH") > -1
-    when_exists = test_function_str.find("WHEN") > -1
-    then_exists = test_function_str.find("THEN") > -1
+    establish_exists = "ESTABLISH" in test_function_str
+    when_exists = "WHEN" in test_function_str
+    then_exists = "THEN" in test_function_str
     establish_when_then_exist = establish_exists and when_exists and then_exists
-    if function_name.find("SQLTEST") > -1:
-        before_str_exists = test_function_str.find("BEFORE") > -1
+    if "SQLTEST" in function_name:
+        before_str_exists = "BEFORE" in test_function_str
         if not before_str_exists:
             print(f"SQLTEST {function_name} requires BEFORE comment")
         return before_str_exists and establish_when_then_exist

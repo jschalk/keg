@@ -1,6 +1,5 @@
 from os.path import exists as os_path_exist, join as os_path_join
 from pathlib import Path as pathlib_Path
-from platform import system as platform_system
 from pytest import mark as pytest_mark, raises as pytest_raises
 from src.ch00_py.dict_toolbox import get_dict_from_json
 from src.ch00_py.file_toolbox import (
@@ -25,14 +24,13 @@ from src.ch00_py.file_toolbox import (
     save_json,
     set_dir,
 )
-from src.ch00_py.test._util.ch00_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch00Keywords as kw, ExampleStrs as exx
 
 
-def test_create_path_ReturnsObj(temp_dir_setup):
+def test_create_path_ReturnsObj(temp3_dir):
     # ESTABLISH
     obj_filename = "obj.json"
-    x_dir = os_path_join(get_temp_dir(), "_instrument")
+    x_dir = os_path_join(temp3_dir, "_instrument")
     x_filename = "examples"
 
     # WHEN / THEN
@@ -44,9 +42,9 @@ def test_create_path_ReturnsObj(temp_dir_setup):
     assert create_path(x_dir, 1) == os_path_join(x_dir, str(1))
 
 
-def test_is_subdirectory_ReturnsObj(temp_dir_setup):
+def test_is_subdirectory_ReturnsObj(temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     sub = os_path_join(env_dir, "subdir")
 
     # WHEN / THEN
@@ -55,9 +53,9 @@ def test_is_subdirectory_ReturnsObj(temp_dir_setup):
     assert is_subdirectory(env_dir, env_dir)
 
 
-def test_get_immediate_subdir_ReturnsObj(temp_dir_setup):
+def test_get_immediate_subdir_ReturnsObj(temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     level1 = os_path_join(env_dir, "level1")
     level2 = os_path_join(level1, "level2")
     expected_path = str(pathlib_Path(level1).resolve())
@@ -70,9 +68,9 @@ def test_get_immediate_subdir_ReturnsObj(temp_dir_setup):
     assert get_immediate_subdir(level2, env_dir) is None
 
 
-def test_set_dir_SetsFile(temp_dir_setup):
+def test_set_dir_SetsFile(temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     fay_name = "Fay_bob"
     fay_dir = create_path(env_dir, fay_name)
     assert not os_path_exist(fay_dir)
@@ -90,9 +88,9 @@ def test_set_dir_SetsFile(temp_dir_setup):
     assert os_path_exist(fay_dir)
 
 
-def test_save_file_SetsFile(temp_dir_setup):
+def test_save_file_SetsFile(temp3_fs, temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     x_name = "Fay_bob"
     x_file_ext = "txt"
     x_filename = f"{x_name}.{x_file_ext}"
@@ -108,10 +106,10 @@ def test_save_file_SetsFile(temp_dir_setup):
 
 
 def test_open_file_OpensFilesWith_dest_dirAnd_filename(
-    temp_dir_setup,
+    temp3_fs,
 ):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = str(temp3_fs)
     x1_name = "x1"
     x2_name = "x2"
     x1_file_ext = "txt"
@@ -129,11 +127,9 @@ def test_open_file_OpensFilesWith_dest_dirAnd_filename(
     assert open_file(dest_dir=env_dir, filename=x2_filename) == x2_file_str
 
 
-def test_open_file_OpensFilesWithOnly_dest_dir(
-    temp_dir_setup,
-):
+def test_open_file_OpensFilesWithOnly_dest_dir(temp3_fs, temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     x1_name = "x1"
     x2_name = "x2"
     x1_file_ext = "txt"
@@ -156,9 +152,9 @@ def test_open_file_OpensFilesWithOnly_dest_dir(
     assert open_file(dest_dir=x2_file_path) == x2_file_str
 
 
-def test_save_json_Scenario0_SetsFile(temp_dir_setup):
+def test_save_json_Scenario0_SetsFile(temp3_fs, temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     bob_str = "bob"
     yao2_str = "Yao"
     x_filename = "Fay_bob.json"
@@ -177,9 +173,11 @@ def test_save_json_Scenario0_SetsFile(temp_dir_setup):
     assert generated_dict == expected_dict
 
 
-def test_save_json_Scenario1_SetsFile_sort_keys_case_insensitive_False(temp_dir_setup):
+def test_save_json_Scenario1_SetsFile_sort_keys_case_insensitive_False(
+    temp3_fs, temp3_dir
+):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     x_filename = "x1.json"
     x_dict = {"apple": 1, "Banana": 2, "Apricot": 3, "banana": 4, "Apple": 5}
     print(f"{env_dir=} {x_filename=}")
@@ -196,9 +194,11 @@ def test_save_json_Scenario1_SetsFile_sort_keys_case_insensitive_False(temp_dir_
     assert list(generated_dict.keys()) == expected_keys_list
 
 
-def test_save_json_Scenario2_SetsFile_sort_keys_case_insensitive_True(temp_dir_setup):
+def test_save_json_Scenario2_SetsFile_sort_keys_case_insensitive_True(
+    temp3_fs, temp3_dir
+):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     x_filename = "Fay_bob.json"
     x_dict = {"apple": 1, "Banana": 2, "Apricot": 3, "banana": 4, "Apple": 5}
     print(f"{env_dir=} {x_filename=}")
@@ -215,11 +215,9 @@ def test_save_json_Scenario2_SetsFile_sort_keys_case_insensitive_True(temp_dir_s
     assert list(generated_dict.keys()) == expected_keys_list
 
 
-def test_open_json_ReturnsObj(
-    temp_dir_setup,
-):
+def test_open_json_ReturnsObj(temp3_fs, temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     bob_str = "bob"
     yao2_str = "Yao"
     x_filename = "Fay_bob.json"
@@ -236,9 +234,9 @@ def test_open_json_ReturnsObj(
     assert generated_dict == expected_dict
 
 
-def test_save_file_ReplacesFileAsDefault(temp_dir_setup):
+def test_save_file_ReplacesFileAsDefault(temp3_fs, temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     swim2_str = "swim"
     swim_file_ext = "txt"
     swim_filename = f"{swim2_str}.{swim_file_ext}"
@@ -260,9 +258,9 @@ def test_save_file_ReplacesFileAsDefault(temp_dir_setup):
     assert open_file(dest_dir=env_dir, filename=swim_filename) == swim_new_file_str
 
 
-def test_save_file_DoesNotReplaceFile(temp_dir_setup):
+def test_save_file_DoesNotReplaceFile(temp3_fs, temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     swim2_str = "swim"
     swim_file_ext = "txt"
     swim_filename = f"{swim2_str}.{swim_file_ext}"
@@ -284,9 +282,9 @@ def test_save_file_DoesNotReplaceFile(temp_dir_setup):
     assert open_file(env_dir, swim_filename) == swim_old_file_str
 
 
-def test_save_file_DoesNotRequireSeperateFilename(temp_dir_setup):
+def test_save_file_DoesNotRequireSeperateFilename(temp3_fs, temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     swim2_str = "swim"
     swim_file_ext = "txt"
     swim_filename = f"{swim2_str}.{swim_file_ext}"
@@ -302,9 +300,9 @@ def test_save_file_DoesNotRequireSeperateFilename(temp_dir_setup):
     assert os_path_exist(swim_file_path)
 
 
-def test_get_dir_file_strs_GrabsFileData(temp_dir_setup):
+def test_get_dir_file_strs_GrabsFileData(temp3_fs, temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     x1_filename = "x1.txt"
     x2_filename = "x2.txt"
     x1_file_str = "trying this"
@@ -321,9 +319,9 @@ def test_get_dir_file_strs_GrabsFileData(temp_dir_setup):
     assert files_dict.get(x2_filename) == x2_file_str
 
 
-def test_get_dir_file_strs_delete_extensions_ReturnsObj(temp_dir_setup):
+def test_get_dir_file_strs_delete_extensions_ReturnsObj(temp3_fs, temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     x1_name = "x1"
     x2_name = "x2"
     x1_file_ext = "txt"
@@ -343,9 +341,9 @@ def test_get_dir_file_strs_delete_extensions_ReturnsObj(temp_dir_setup):
     assert files_dict.get(x2_name) == x2_file_str
 
 
-def test_get_dir_file_strs_returnsSubDirs(temp_dir_setup):
+def test_get_dir_file_strs_returnsSubDirs(temp3_fs, temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     x1_name = "x1"
     x2_name = "x2"
     x1_file_ext = "txt"
@@ -375,9 +373,9 @@ def test_get_dir_file_strs_returnsSubDirs(temp_dir_setup):
     assert files_dict.get(x2_name) is True
 
 
-def test_get_dir_file_strs_doesNotReturnsFiles(temp_dir_setup):
+def test_get_dir_file_strs_doesNotReturnsFiles(temp3_fs, temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     x1_name = "x1"
     x1_file_ext = "txt"
     x1_filename = f"{x1_name}.{x1_file_ext}"
@@ -406,24 +404,24 @@ def test_get_dir_file_strs_doesNotReturnsFiles(temp_dir_setup):
 
 
 def test_get_integer_filenames_ReturnsCoorectObjIfDirectoryDoesNotExist(
-    temp_dir_setup,
+    temp3_fs, temp3_dir
 ):
     # ESTABLISH
-    env_dir = get_temp_dir()
-    temp_dir = f"{env_dir}\\temp_does_not_exist"
-    assert os_path_exist(temp_dir) is False
+    env_dir = temp3_dir
+    does_not_exist_dir = f"{env_dir}\\temp_does_not_exist"
+    assert os_path_exist(does_not_exist_dir) is False
 
     # WHEN
-    files_dict = get_integer_filenames(temp_dir, 0)
+    files_dict = get_integer_filenames(does_not_exist_dir, 0)
 
     # THEN
     assert len(files_dict) == 0
     assert files_dict == set()
 
 
-def test_get_integer_filenames_GrabsFileNamesWith_Integers_v0(temp_dir_setup):
+def test_get_integer_filenames_GrabsFileNamesWith_Integers_v0(temp3_fs, temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     x1_filename = "1.json"
     x2_filename = "2.json"
     x_file_str = "file strs"
@@ -439,10 +437,10 @@ def test_get_integer_filenames_GrabsFileNamesWith_Integers_v0(temp_dir_setup):
 
 
 def test_get_integer_filenames_GrabsFileNamesWith_IntegersWithCorrectExtension(
-    temp_dir_setup,
+    temp3_fs, temp3_dir
 ):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     z_filename = "z.json"
     x1_filename = "1.json"
     x2_filename = "2.json"
@@ -468,10 +466,10 @@ def test_get_integer_filenames_GrabsFileNamesWith_IntegersWithCorrectExtension(
 
 
 def test_get_integer_filenames_GrabsFileNamesWith_IntegersGreaterThan_min_integer(
-    temp_dir_setup,
+    temp3_fs, temp3_dir
 ):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     z_filename = "z.json"
     x1_filename = "1.json"
     x2_filename = "2.json"
@@ -491,11 +489,9 @@ def test_get_integer_filenames_GrabsFileNamesWith_IntegersGreaterThan_min_intege
     assert get_integer_filenames(env_dir, 0, "txt") == {1, 3}
 
 
-def test_count_files_ReturnsNoneIfDirectoryDoesNotExist(
-    temp_dir_setup,
-):
+def test_count_files_ReturnsNoneIfDirectoryDoesNotExist(temp3_fs, temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     does_not_exist_dir = create_path(env_dir, "swim")
 
     # WHEN
@@ -526,7 +522,7 @@ def test_create_directory_path_ReturnsObj():
     assert kern_path == create_path(elpaso_path, kern_str)
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_is_path_valid_ReturnsObj():
     # ESTABLISH / WHEN / THEN
     assert is_path_valid("run")
@@ -543,7 +539,7 @@ def test_can_usser_edit_paths_ReturnsObj():
     assert can_usser_edit_paths()
 
 
-@pytest_mark.skipif(platform_system() == "Linux", reason="conflict in file path str")
+@pytest_mark.skip_on_linux
 def test_is_path_existent_or_creatable_ReturnsObj():
     # ESTABLISH / WHEN / THEN
     """I am not able to test. For now make sure it runs."""
@@ -568,9 +564,9 @@ def test_is_path_existent_or_probably_creatable_ReturnsObj():
     assert is_path_existent_or_probably_creatable("run///trail") is False
 
 
-def test_get_all_dirs_with_file_ReturnsDirectories(temp_dir_setup):
+def test_get_all_dirs_with_file_ReturnsDirectories(temp3_fs, temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     x1_filename = "x1.txt"
     x1_file_str = "trying this"
     iowa_rel_dir = create_path("iowa", "dallas")
@@ -587,9 +583,9 @@ def test_get_all_dirs_with_file_ReturnsDirectories(temp_dir_setup):
     assert directory_set == {iowa_rel_dir, ohio_rel_dir}
 
 
-def test_get_dir_filenames_ReturnsObj_Scenario0_NoFilter(temp_dir_setup):
+def test_get_dir_filenames_ReturnsObj_Scenario0_NoFilter(temp3_fs, temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     x1_filename = "x1.txt"
     x2_filename = "x2.txt"
     iowa_rel_dir = create_path("iowa", "dallas")
@@ -610,11 +606,9 @@ def test_get_dir_filenames_ReturnsObj_Scenario0_NoFilter(temp_dir_setup):
     assert len(filenames_set) == 3
 
 
-def test_get_dir_filenames_ReturnsObj_Scenario1_FilterByExtension(
-    temp_dir_setup,
-):
+def test_get_dir_filenames_ReturnsObj_Scenario1_FilterByExtension(temp3_fs, temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     x1_filename = "x1.txt"
     x2_filename = "x2.json"
     iowa_rel_dir = create_path("iowa", "dallas")
@@ -636,11 +630,9 @@ def test_get_dir_filenames_ReturnsObj_Scenario1_FilterByExtension(
     assert len(filenames_set) == 2
 
 
-def test_get_dir_filenames_ReturnsObj_Scenario2_FilterByExtension(
-    temp_dir_setup,
-):
+def test_get_dir_filenames_ReturnsObj_Scenario2_FilterByExtension(temp3_fs, temp3_dir):
     # ESTABLISH
-    env_dir = get_temp_dir()
+    env_dir = temp3_dir
     x1_filename = "br.txt"
     x2_filename = "x2.json"
     x3_filename = "x3.json"
@@ -669,9 +661,9 @@ def test_get_dir_filenames_ReturnsObj_Scenario2_FilterByExtension(
     assert len(filenames_set) == 2
 
 
-def test_get_max_file_number_ReturnsObj(temp_dir_setup):
+def test_get_max_file_number_ReturnsObj(temp3_fs, temp3_dir):
     # ESTABLISH
-    x_dir = get_temp_dir()
+    x_dir = temp3_dir
     six_int = 6
     ten_int = 10
     save_file(x_dir, f"{six_int}.json", "Faybob")
@@ -681,11 +673,9 @@ def test_get_max_file_number_ReturnsObj(temp_dir_setup):
     assert get_max_file_number(x_dir) == ten_int
 
 
-def test_get_max_file_number_ReturnsObjWhenDirIsEmpty(
-    temp_dir_setup,
-):
+def test_get_max_file_number_ReturnsObjWhenDirIsEmpty(temp3_fs, temp3_dir):
     # ESTABLISH
-    x_dir = get_temp_dir()
+    x_dir = temp3_dir
 
     # WHEN / THEN
     assert get_max_file_number(x_dir) is None

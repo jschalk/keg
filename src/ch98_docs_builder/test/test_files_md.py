@@ -8,7 +8,6 @@ from src.ch98_docs_builder.doc_builder import (
     save_idea_brick_mds,
     save_ropeterm_description_md,
 )
-from src.ch98_docs_builder.test._util.ch98_env import get_temp_dir, temp_dir_setup
 from src.ref.keywords import Ch98Keywords as kw
 
 
@@ -21,9 +20,9 @@ def test_get_chapter_blurbs_md_ReturnsObj():
     assert chapter_blurbs_md.find("ch02") > 0
 
 
-def test_save_chapter_blurbs_md_CreatesFile(temp_dir_setup):
+def test_save_chapter_blurbs_md_CreatesFile(temp3_fs):
     # ESTABLISH
-    temp_dir = get_temp_dir()
+    temp_dir = str(temp3_fs)
     chapter_blurbs_path = create_path(temp_dir, "chapter_blurbs.md")
     assert not os_path_exists(chapter_blurbs_path)
 
@@ -36,9 +35,9 @@ def test_save_chapter_blurbs_md_CreatesFile(temp_dir_setup):
     assert open_file(chapter_blurbs_path) == expected_chapter_blurbs_md
 
 
-def test_save_ropeterm_description_md_CreatesFile(temp_dir_setup):
+def test_save_ropeterm_description_md_CreatesFile(temp3_fs):
     # ESTABLISH
-    temp_dir = get_temp_dir()
+    temp_dir = str(temp3_fs)
     file_path = create_path(temp_dir, "ropeterm_explanation.md")
     assert not os_path_exists(file_path)
 
@@ -50,9 +49,9 @@ def test_save_ropeterm_description_md_CreatesFile(temp_dir_setup):
     assert open_file(file_path) == get_ropeterm_description_md()
 
 
-def test_save_idea_brick_mds_CreatesFiles(temp_dir_setup):
+def test_save_idea_brick_mds_CreatesFiles(temp3_fs):
     # ESTABLISH
-    temp_dir = get_temp_dir()
+    temp_dir = str(temp3_fs)
     assert count_dirs_files(temp_dir) == 0
 
     # WHEN
@@ -62,9 +61,9 @@ def test_save_idea_brick_mds_CreatesFiles(temp_dir_setup):
     assert count_dirs_files(temp_dir) == 42
 
 
-def test_save_idea_brick_formats_CreatesFile(temp_dir_setup):
+def test_save_idea_brick_formats_CreatesFile(temp3_fs):
     # ESTABLISH
-    doc_main_dir = get_temp_dir()
+    doc_main_dir = str(temp3_fs)
     idea_brick_formats_path = create_path(doc_main_dir, "idea_brick_formats.md")
     assert not os_path_exists(idea_brick_formats_path)
 

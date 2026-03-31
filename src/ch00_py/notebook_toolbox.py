@@ -32,7 +32,6 @@ def get_imports_from_source(source: str) -> List[str]:
     imports: list[str] = []
 
     for node in ast_walk(tree):
-
         # import x, import x as y
         if isinstance(node, ast_Import):
             parts = []

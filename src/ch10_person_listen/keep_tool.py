@@ -9,7 +9,6 @@ from src.ch00_py.file_toolbox import (
     set_dir,
 )
 from src.ch07_person_logic.person_main import PersonUnit, get_personunit_from_dict
-from src.ch09_person_lesson._ref.ch09_path import create_job_path
 from src.ch09_person_lesson.lasso import LassoUnit, lassounit_shop
 from src.ch09_person_lesson.lesson_filehandler import (
     open_gut_file,
@@ -17,6 +16,7 @@ from src.ch09_person_lesson.lesson_filehandler import (
     save_person_file,
 )
 from src.ch10_person_listen._ref.ch10_path import (
+    create_job_path,
     create_keep_duty_path,
     create_keep_rope_path,
     create_keep_visions_path,
