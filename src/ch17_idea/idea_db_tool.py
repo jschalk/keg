@@ -201,6 +201,7 @@ def save_sheet(
     - sheet_name (str): The name of the sheet to update or create.
     - dataframe (pd.DataFrame): The DataFrame to write to the sheet.
     """
+
     # Check if the file exists
     if not os_path_exists(file_path):
         # If file does not exist, create it with the specified sheet
@@ -633,30 +634,28 @@ def export_db_to_excel(
         remove_empty_sheets(dest_path)
 
 
-def remove_empty_sheets(file_path: str) -> list[str]:
-    """
-    Opens an Excel file and deletes all sheets that have no data rows,
-    even if they contain a header row.
-
-    Args:
-        file_path: Path to the .xlsx file to clean up.
-
-    Returns:
-        List of sheet names that were removed.
-    """
+def remove_empty_sheets(file_path):
     wb = openpyxl_load_workbook(file_path)
     removed = []
 
+    # Identify which sheets to remove
+    to_remove = []
     for sheet_name in wb.sheetnames:
         ws = wb[sheet_name]
+        # has_data is True if any cell from row 2 onwards has a value
         has_data = any(
-            cell.value is not None
-            for row in ws.iter_rows(min_row=2)  # skip header
-            for cell in row
+            cell.value is not None for row in ws.iter_rows(min_row=2) for cell in row
         )
         if not has_data:
-            del wb[sheet_name]
-            removed.append(sheet_name)
+            to_remove.append(sheet_name)
+
+    # Safety: If we are about to delete EVERYTHING, keep the first sheet
+    if len(to_remove) == len(wb.sheetnames):
+        to_remove = to_remove[1:]
+
+    for sheet_name in to_remove:
+        del wb[sheet_name]
+        removed.append(sheet_name)
 
     wb.save(file_path)
     return removed

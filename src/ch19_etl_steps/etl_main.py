@@ -63,12 +63,12 @@ from src.ch14_moment.moment_cell import (
 )
 from src.ch14_moment.moment_main import open_moment_file
 from src.ch16_translate.translate_config import (
-    get_quick_translates_column_ref,
     get_translate_args_class_types,
     get_translate_labelterm_args,
     get_translate_nameterm_args,
     get_translate_ropeterm_args,
     get_translate_titleterm_args,
+    get_translates_column_ref,
     translateable_class_types,
 )
 from src.ch16_translate.translate_main import default_unknown_str_if_None
@@ -422,7 +422,7 @@ def etl_sound_raw_tables_to_sound_agg_tables(cursor: sqlite3_Cursor):
 
 
 def insert_translate_sound_agg_into_translate_core_raw_table(cursor: sqlite3_Cursor):
-    for dimen in get_quick_translates_column_ref():
+    for dimen in get_translates_column_ref():
         if dimen != "translate_epoch":
             cursor.execute(create_insert_into_translate_core_raw_sqlstr(dimen))
 
@@ -462,7 +462,7 @@ GROUP BY face_name
 
 
 def update_translate_sound_agg_inconsist_errors(cursor: sqlite3_Cursor):
-    for dimen in get_quick_translates_column_ref():
+    for dimen in get_translates_column_ref():
         cursor.execute(create_update_translate_sound_agg_inconsist_sqlstr(dimen))
 
 
@@ -476,7 +476,7 @@ def update_translate_sound_agg_knot_errors(cursor: sqlite3_Cursor):
 def insert_translate_sound_agg_tables_to_translate_sound_vld_table(
     cursor: sqlite3_Cursor,
 ):
-    for dimen in get_quick_translates_column_ref():
+    for dimen in get_translates_column_ref():
         if dimen != "translate_epoch":
             cursor.execute(create_insert_translate_sound_vld_table_sqlstr(dimen))
 

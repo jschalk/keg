@@ -3,11 +3,11 @@ from src.ch00_py.file_toolbox import create_path
 from src.ch16_translate.translate_config import (
     default_unknown_str,
     default_unknown_str_if_None,
-    get_quick_translates_column_ref,
     get_translate_args_dimen_mapping,
     get_translate_config_dict,
     get_translate_dimens,
     get_translate_filename,
+    get_translates_column_ref,
     translate_config_path,
 )
 from src.ref.keywords import Ch16Keywords as kw
@@ -132,15 +132,15 @@ def _get_all_translate_config_attrs() -> dict[str, set[str]]:
     return x_translate_attrs
 
 
-def test_get_quick_translates_column_ref_ReturnsObj():
+def test_get_translates_column_ref_ReturnsObj():
     # ESTABLISH
     all_translate_config_attrs = _get_all_translate_config_attrs()
     # print(f"{all_translate_config_attrs=}")
 
     # WHEN / THEN
-    assert kw.translate_rope in set(get_quick_translates_column_ref().keys())
-    assert len(get_quick_translates_column_ref().keys()) == 4
-    assert get_quick_translates_column_ref() == all_translate_config_attrs
+    assert kw.translate_rope in set(get_translates_column_ref().keys())
+    assert len(get_translates_column_ref().keys()) == 4
+    assert get_translates_column_ref() == all_translate_config_attrs
 
 
 def test_default_unknown_str_ReturnsObj():

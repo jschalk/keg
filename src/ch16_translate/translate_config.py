@@ -132,7 +132,7 @@ def get_translate_args_class_types() -> dict[str, str]:
     }
 
 
-def get_quick_translates_column_ref() -> dict[str, set[str]]:
+def get_translates_column_ref() -> dict[str, set[str]]:
     """for each translate_config dimen contains the associated columns"""
     return {
         "translate_title": {

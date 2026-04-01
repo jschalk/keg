@@ -3,7 +3,10 @@ from datetime import datetime
 from os.path import exists as os_path_exists
 from sqlite3 import Cursor as sqlite3_Cursor, connect as sqlite3_connect
 from src.ch00_py.file_toolbox import create_path, delete_dir, set_dir
-from src.ch17_idea.idea_db_tool import update_spark_num_in_excel_files
+from src.ch17_idea.idea_db_tool import (
+    export_db_to_excel,
+    update_spark_num_in_excel_files,
+)
 from src.ch18_etl_config._ref.ch18_path import (
     create_moment_mstr_path,
     create_world_db_path,
@@ -41,6 +44,7 @@ from src.ch19_etl_steps.etl_main import (
 from src.ch20_kpi.gcalendar import save_person_gcal_day_punchs
 from src.ch20_kpi.kpi_mstr import create_calendar_markdown_files, populate_kpi_bundle
 from src.ch21_world._ref.ch21_semantic_types import GroupTitle, PersonName, WorldName
+import today
 
 
 def create_stances(
@@ -98,6 +102,10 @@ def sheets_input_to_lynx_mstr(world_db_path: str, input_dir: str, moment_mstr_di
     with sqlite3_connect(world_db_path) as db_conn:
         cursor = db_conn.cursor()
         sheets_input_to_lynx_with_cursor(cursor, input_dir, moment_mstr_dir)
+        # TODO add some way to export the db to excel for testing purposes
+        # excel_path = "src/ch21_world/test/test_world_examples/example.xlsx"
+        # export_db_to_excel(cursor, excel_path, True)
+
         db_conn.commit()
     db_conn.close()
 
@@ -187,3 +195,24 @@ def sheets_to_gcal_day_punchs(
         day=day,
         focus_group_title=focus_group_title,
     )
+
+
+# TODO test and creat this function
+def create_today_day_punchs(
+    worlddir: WorldDir, person_name: PersonName, focus_group_title: GroupTitle = None
+):
+    sheets_to_gcal_day_punchs(
+        worlddir=worlddir,
+        person_name=person_name,
+        day=datetime.now(),
+        focus_group_title=focus_group_title,
+    )
+    # return today day punchs for person_name as strs
+
+
+# TODO
+def save_today_day_punchs_to_markdown(
+    worlddir: WorldDir, person_name: PersonName, focus_group_title: GroupTitle = None
+):
+    create_today_day_punchs(worlddir, person_name, focus_group_title)
+    # save today day punchs for person_name as markdown files in worlddir.output_dir

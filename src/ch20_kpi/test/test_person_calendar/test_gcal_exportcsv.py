@@ -269,7 +269,7 @@ def test_create_gcalendar_csv_from_person_ReturnsObj_Scenario1_Non_all_day_Event
     assert "2. sweep (33.33%)" in pledges_row["Description"]
 
 
-def test_create_gcalendar_csv_from_person_ReturnsObj_Scenario2_TodayEvents():
+def test_create_gcalendar_csv_from_person_ReturnsObj_Scenario2_DiferentEvents():
     # ESTABLISH
     bob_person = personunit_shop(wx.Bob, wx.root_rope)
     bob_person.add_plan(wx.sweep_rope, pledge=True, star=1)
@@ -280,22 +280,21 @@ def test_create_gcalendar_csv_from_person_ReturnsObj_Scenario2_TodayEvents():
     default_epoch_label = default_epoch_config.get(kw.epoch_label)
     add_epoch_planunit(bob_person, default_epoch_config)
     set_epoch_base_case_dayly(bob_person, wx.mop_rope, default_epoch_label, 600, 90)
-    apr7 = datetime(2010, 5, 7)
 
     # WHEN
     bob_gcal_csv = create_gcalendar_csv_from_person(bob_person)
 
     # THEN
-    today_str = datetime.now().date().strftime("%m/%d/%Y")
+    now_date_str = datetime.now().date().strftime("%m/%d/%Y")
 
     reader = csv_DictReader(io_StringIO(bob_gcal_csv))
     rows = list(reader)
 
     chore_row = next((r for r in rows if r["Subject"].startswith("1. mop")), None)
     assert chore_row is not None, "Expected a chore row starting with '1. mop'"
-    assert chore_row["Start Date"] == today_str
+    assert chore_row["Start Date"] == now_date_str
     assert chore_row["Start Time"] == "10:00 AM"
-    assert chore_row["End Date"] == today_str
+    assert chore_row["End Date"] == now_date_str
     assert chore_row["End Time"] == "11:30 AM"
     assert chore_row["All Day Event"] == "False"
     assert ";YY;mop;" in chore_row["Description"]
@@ -303,7 +302,7 @@ def test_create_gcalendar_csv_from_person_ReturnsObj_Scenario2_TodayEvents():
 
     pledges_row = next((r for r in rows if r["Subject"] == "Pledges"), None)
     assert pledges_row is not None, "Expected a Pledges row"
-    assert pledges_row["Start Date"] == today_str
+    assert pledges_row["Start Date"] == now_date_str
     assert pledges_row["All Day Event"] == "True"
     assert "1. mop (66.67%)" in pledges_row["Description"]
     assert "2. sweep (33.33%)" in pledges_row["Description"]

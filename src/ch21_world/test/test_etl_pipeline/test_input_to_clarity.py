@@ -665,12 +665,12 @@ def test_sheets_input_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
 
 def test_sheets_input_to_lynx_mstr_Scenario1_Creates_job_Files(temp3_fs):
     # ESTABLISH
-    h1_mop = init_rope(["herenow1", "family", exx.casa, exx.clean, exx.mop])
-    h1_tools = init_rope(["herenow1", "family", exx.casa, exx.clean, exx.scrub])
+    hr_mop = init_rope(["herenow_red", "family", exx.casa, exx.clean, exx.mop])
+    hr_tools = init_rope(["herenow_red", "family", exx.casa, exx.clean, exx.scrub])
 
     data = [
-        (0, exx.sue, exx.zia, exx.hn1, h1_mop, 1, True),
-        (0, exx.sue, exx.yao, exx.hn1, h1_tools, 2, True),
+        (0, exx.sue, exx.zia, exx.hn_red, hr_mop, 1, True),
+        (0, exx.sue, exx.yao, exx.hn_red, hr_tools, 2, True),
     ]
     cols = [
         kw.spark_num,
@@ -688,13 +688,13 @@ def test_sheets_input_to_lynx_mstr_Scenario1_Creates_job_Files(temp3_fs):
     save_sheet(br00013_example_path, "br00013_ex1", br00013_example)
     # print(br00013_example().to_dict())
     mmt_dir = here_wdir.moment_mstr_dir
-    hn1_lasso = lassounit_shop(exx.hn1)
-    hn1_mmt_json_path = create_moment_json_path(mmt_dir, hn1_lasso)
-    hn1_yao_job_path = create_job_path(mmt_dir, hn1_lasso, exx.yao)
-    hn1_zia_job_path = create_job_path(mmt_dir, hn1_lasso, exx.zia)
-    assert not os_path_exists(hn1_mmt_json_path)
-    assert not os_path_exists(hn1_yao_job_path)
-    assert not os_path_exists(hn1_zia_job_path)
+    hn_red_lasso = lassounit_shop(exx.hn_red)
+    hn_red_mmt_json_path = create_moment_json_path(mmt_dir, hn_red_lasso)
+    hn_red_yao_job_path = create_job_path(mmt_dir, hn_red_lasso, exx.yao)
+    hn_red_zia_job_path = create_job_path(mmt_dir, hn_red_lasso, exx.zia)
+    assert not os_path_exists(hn_red_mmt_json_path)
+    assert not os_path_exists(hn_red_yao_job_path)
+    assert not os_path_exists(hn_red_zia_job_path)
 
     # WHEN
     sheets_input_to_lynx_mstr(
@@ -706,6 +706,6 @@ def test_sheets_input_to_lynx_mstr_Scenario1_Creates_job_Files(temp3_fs):
     # THEN
     # world_test_ex_dir = "src\ch21_world\test\test_world_examples"
     # export_db_to_excel(here_wdir.get_world_db_path(), here_wdir.worlds_dir, "export.xlsx")
-    assert os_path_exists(hn1_mmt_json_path)
-    assert os_path_exists(hn1_zia_job_path)
-    assert os_path_exists(hn1_yao_job_path)
+    assert os_path_exists(hn_red_mmt_json_path)
+    assert os_path_exists(hn_red_zia_job_path)
+    assert os_path_exists(hn_red_yao_job_path)
