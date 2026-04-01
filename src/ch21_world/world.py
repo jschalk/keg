@@ -100,13 +100,20 @@ def sheets_input_to_lynx_with_cursor(
     create_last_run_metrics_json(cursor, moment_mstr_dir)
 
 
-def sheets_input_to_lynx_mstr(world_db_path: str, input_dir: str, moment_mstr_dir: str):
+def sheets_input_to_lynx_mstr(
+    world_db_path: str,
+    input_dir: str,
+    moment_mstr_dir: str,
+    export_db: bool = False,
+    output_dir=None,
+):
     with sqlite3_connect(world_db_path) as db_conn:
         cursor = db_conn.cursor()
         sheets_input_to_lynx_with_cursor(cursor, input_dir, moment_mstr_dir)
-        # TODO add some way to export the db to excel for testing purposes
-        # excel_path = "src/ch21_world/test/test_world_examples/example.xlsx"
-        # export_db_to_excel(cursor, excel_path, True)
+        if export_db and output_dir:
+            # TODO add some way to export the db to excel for testing purposes
+            excel_path = create_path(output_dir, "db_export.xlsx")
+            export_db_to_excel(cursor, excel_path, True)
 
         db_conn.commit()
     db_conn.close()
@@ -190,6 +197,8 @@ def sheets_to_gcal_day_punchs(
         world_db_path=worlddir.get_world_db_path(),
         input_dir=worlddir.input_dir,
         moment_mstr_dir=worlddir.moment_mstr_dir,
+        export_db=True,
+        output_dir=worlddir.output_dir,
     )
     save_person_gcal_day_punchs(
         moment_mstr_dir=worlddir.moment_mstr_dir,
