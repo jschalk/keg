@@ -19,16 +19,16 @@ def get_idea_brick_md(idea_brick_config) -> str:
     return "\n".join(idea_md_lines) + "\n"
 
 
-def get_idea_brick_mds(idea_brick_format_dir: str = None) -> dict[str,]:
-    if not idea_brick_format_dir:
-        idea_brick_format_dir = get_idea_formats_dir()
+def get_idea_brick_mds(brick_format_dir: str = None) -> dict[str,]:
+    if not brick_format_dir:
+        brick_format_dir = get_idea_formats_dir()
 
-    idea_formats_dir = Path(idea_brick_format_dir)
+    idea_formats_dir = Path(brick_format_dir)
     idea_brick_mds = {}
     for json_path in sorted(idea_formats_dir.glob("*.json")):
-        idea_brick_format = open_json(json_path)
-        idea_number = idea_brick_format["idea_number"]
-        idea_brick_mds[idea_number] = get_idea_brick_md(idea_brick_format)
+        brick_format = open_json(json_path)
+        idea_number = brick_format["idea_number"]
+        idea_brick_mds[idea_number] = get_idea_brick_md(brick_format)
 
     return idea_brick_mds
 

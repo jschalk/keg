@@ -145,8 +145,8 @@ def test_get_idea_brick_mds_ReturnsObj(temp3_fs):
 
 def test_get_brick_formats_md_ReturnsObj():
     # ESTABLISH / WHEN
-    idea_brick_formats_md = get_brick_formats_md()
+    brick_formats_md = get_brick_formats_md()
 
     # THEN
-    assert idea_brick_formats_md
-    assert idea_brick_formats_md.find("br00004") > 0
+    assert brick_formats_md
+    assert brick_formats_md.find("br00004") > 0

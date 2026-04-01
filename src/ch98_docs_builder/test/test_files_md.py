@@ -61,16 +61,16 @@ def test_save_idea_brick_mds_CreatesFiles(temp3_fs):
     assert count_dirs_files(temp_dir) == 42
 
 
-def test_save_idea_brick_formats_CreatesFile(temp3_fs):
+def test_save_brick_formats_CreatesFile(temp3_fs):
     # ESTABLISH
     doc_main_dir = str(temp3_fs)
-    idea_brick_formats_path = create_path(doc_main_dir, "idea_brick_formats.md")
-    assert not os_path_exists(idea_brick_formats_path)
+    brick_formats_path = create_path(doc_main_dir, "brick_formats.md")
+    assert not os_path_exists(brick_formats_path)
 
     # WHEN
     save_brick_formats_md(doc_main_dir)
 
     # THEN
-    assert os_path_exists(idea_brick_formats_path)
-    idea_brick_formats_md = open_file(idea_brick_formats_path)
-    assert idea_brick_formats_md.find("br00004") > 0
+    assert os_path_exists(brick_formats_path)
+    brick_formats_md = open_file(brick_formats_path)
+    assert brick_formats_md.find("br00004") > 0

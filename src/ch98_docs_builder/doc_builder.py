@@ -74,7 +74,7 @@ def save_ropeterm_description_md(x_dir: str):
 
 def save_idea_brick_mds(dest_dir: str):
     idea_brick_mds = get_idea_brick_mds()
-    dest_dir = create_path(dest_dir, "ch17_idea_brick_formats")
+    dest_dir = create_path(dest_dir, "ch17_brick_formats")
 
     for idea_number, idea_brick_md in idea_brick_mds.items():
         save_file(dest_dir, f"{idea_number}.md", idea_brick_md)
@@ -82,7 +82,7 @@ def save_idea_brick_mds(dest_dir: str):
 
 def save_brick_formats_md(dest_dir: str):
     brick_formats_md = get_brick_formats_md()
-    save_file(dest_dir, "idea_brick_formats.md", brick_formats_md)
+    save_file(dest_dir, "brick_formats.md", brick_formats_md)
 
 
 def resave_chapter_and_keyword_json_files():
