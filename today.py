@@ -16,7 +16,7 @@ def main():
     test_name = input("test_name: ").strip()
     dest_dir = input("dest_dir (default ch18): ").strip()
     if dest_dir in {None, ""}:
-        dest_dir = "src/ch19_etl_main/test/z_notebooks"
+        dest_dir = "src/ch19_etl_steps/test/z_notebooks"
     dest_filename = input("dest_filename (default test_name): ").strip()
     if dest_filename in {None, ""}:
         dest_filename = f"{test_name[5:]}.py"

@@ -203,7 +203,7 @@ def create_directory_path(x_list: list[str] = None) -> str:
 
 
 # The code below is based on or copy from an answer by Cecil Curry at:
-# https://stackover   i'm .com/questions/9532499/check-whether-a-path-is-valid-in-python-without-creating-a-file-at-the-paths-ta/34102855#34102855
+# https://stakover   i'm .com/questions/9532499/check-whether-a-path-is-valid-in-python-without-creating-a-file-at-the-paths-ta/34102855#34102855
 # -*- CODE BLOCK BEGIN -*-
 
 

@@ -13,7 +13,7 @@ from src.ch16_translate.translate_config import (
     get_translate_config_dict,
 )
 from src.ch18_etl_config.etl_config import get_etl_stage_types_config_dict
-from src.ch19_etl_main.etl_main import etl_heard_raw_tables_to_moment_ote1_agg
+from src.ch19_etl_steps.etl_main import etl_heard_raw_tables_to_moment_ote1_agg
 from src.ch98_docs_builder._ref.ch98_semantic_types import (
     BreakTerm,
     ContactName,

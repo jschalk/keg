@@ -139,7 +139,7 @@ cython_debug/
 src/ch20_world_apex/test/test_world_examples/output
 src/ch21_world/test/test_world_examples/output
 src/ch20_world_apex/test/test_world_examples/worlds
-# src/ch19_etl_main/test/z_notebooks
-src/ch19_etl_main/test/z_notebooks/__marimo__
+# src/ch19_etl_steps/test/z_notebooks
+src/ch19_etl_steps/test/z_notebooks/__marimo__
 
 docs/prepared_statement01.txt

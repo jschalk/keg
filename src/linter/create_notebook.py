@@ -1,7 +1,7 @@
 # test_file_path = "src\ch18_etl_config\test\z_heard\test_heard_agg_update_reasonnum_columns.py"
 # test_name = "test_get_update_prncase_inx_epoch_diff_sqlstr_SetsColumnValues"
 
-# dest_dir = "src/ch19_etl_main/test/z_notebooks"
+# dest_dir = "src/ch19_etl_steps/test/z_notebooks"
 # dest_filename = "reasonnum_update_test.py"
 # from src.ch00_py.file_toolbox import create_path
 
@@ -32,7 +32,7 @@ def main():
     test_name = input("test_name: ").strip()
     dest_dir = input("dest_dir (default ch18): ").strip()
     if dest_dir in {None, ""}:
-        dest_dir = "src/ch19_etl_main/test/z_notebooks"
+        dest_dir = "src/ch19_etl_steps/test/z_notebooks"
     dest_filename = input("dest_filename (default test_name): ").strip()
     if dest_filename in {None, ""}:
         dest_filename = f"{test_name[5:]}.py"
