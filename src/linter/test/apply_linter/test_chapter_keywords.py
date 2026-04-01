@@ -161,7 +161,7 @@ def test_Chapters_KeywordsAppearWhereTheyShould():
             # chapter_file_count += 1
             # all_file_count += 1
             # print(f"{all_file_count} Chapter: {chapter_file_count} {file_path}")
-            file_str = open(file_path).read()
+            file_str = open_file(file_path)
             for keyword in not_allowed_keywords:
                 notallowed_keyword_failure_str = f"keyword {keyword} is not allowed in chapter {chapter_prefix}. It is in {file_path=}"
                 assert keyword not in file_str, notallowed_keyword_failure_str

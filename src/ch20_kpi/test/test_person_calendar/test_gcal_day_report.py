@@ -1,13 +1,17 @@
 from datetime import datetime
 from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import open_file
+from src.ch00_py.file_toolbox import create_path, open_file, save_file
 from src.ch07_person_logic.person_main import personunit_shop
 from src.ch09_person_lesson.lasso import lassounit_shop
 from src.ch10_person_listen.keep_tool import save_job_file
 from src.ch13_time.epoch_main import add_epoch_planunit, get_default_epoch_config_dict
 from src.ch14_moment.moment_main import momentunit_shop, save_moment_file
-from src.ch20_kpi._ref.ch20_path import create_day_punch_txt_path as day_punch_path
+from src.ch20_kpi._ref.ch20_path import (
+    create_day_punch_txt_path as day_punch_path,
+    create_dst_person_punch_path as dst_punch_path,
+)
 from src.ch20_kpi.gcalendar import (
+    copy_person_day_punches_to_dst_dir,
     gcal_readable_percent,
     get_gcal_day_punch_from_job_file,
     get_gcal_day_punch_from_personunit,
@@ -258,3 +262,37 @@ def test_save_person_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     assert "Schedule Priorities" in sue_ep8_day_punch_str
     assert f"Day Report for {exx.sue}" in sue_a23_day_punch_str
     assert f"Day Report for {exx.sue}" in sue_ep8_day_punch_str
+
+
+def test_copy_person_day_punches_to_dst_dir_SavesFiles_Scenario0_TwoSueReports(
+    temp3_fs,
+):
+    # ESTABLISH
+    # save momentunit json
+    mmt_mstr_dir = str(temp3_fs)
+    a23_moment = momentunit_shop(exx.a23, mmt_mstr_dir)
+    ep8_moment = momentunit_shop(exx.ep8, mmt_mstr_dir)
+    a23_lasso = lassounit_shop(a23_moment.moment_rope, a23_moment.knot)
+    ep8_lasso = lassounit_shop(ep8_moment.moment_rope, ep8_moment.knot)
+    save_moment_file(a23_moment, a23_lasso)
+    save_moment_file(ep8_moment, ep8_lasso)
+    sue_a23_day_punch_path = day_punch_path(mmt_mstr_dir, a23_lasso, exx.sue)
+    sue_ep8_day_punch_path = day_punch_path(mmt_mstr_dir, ep8_lasso, exx.sue)
+    save_file(sue_a23_day_punch_path, None, "example sue_a23")
+    save_file(sue_ep8_day_punch_path, None, "example sue_ep8")
+    dst_dir = create_path(mmt_mstr_dir, "dst")
+    sue_a23_dst_punch_path = dst_punch_path(dst_dir, a23_lasso, exx.sue)
+    sue_ep8_dst_punch_path = dst_punch_path(dst_dir, ep8_lasso, exx.sue)
+    assert not os_path_exists(sue_a23_dst_punch_path)
+    assert not os_path_exists(sue_ep8_dst_punch_path)
+
+    # WHEN
+    copy_person_day_punches_to_dst_dir(
+        moment_mstr_dir=mmt_mstr_dir,
+        dst_dir=dst_dir,
+        person_name=exx.sue,
+    )
+
+    # THEN
+    assert os_path_exists(sue_a23_dst_punch_path)
+    assert os_path_exists(sue_ep8_dst_punch_path)

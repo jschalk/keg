@@ -76,3 +76,16 @@ def test_LassoUnit_make_path_ReturnsObj_Scenario1_DifferentKnot():
     assert casa_path
     expected_casa_path = create_path(exx.sue, exx.casa)
     assert casa_path == expected_casa_path
+
+
+def test_LassoUnit_first_label_ReturnsObj_Scenario0_DifferentKnot():
+    # ESTABLISH
+    clean_rope = create_rope(exx.casa, exx.clean, exx.dash)
+    clean_lasso = lassounit_shop(clean_rope, knot=exx.dash)
+
+    # WHEN
+    clean_rope_first_label = clean_lasso.get_first_label()
+
+    # THEN
+    assert clean_rope_first_label
+    assert clean_rope_first_label == exx.casa

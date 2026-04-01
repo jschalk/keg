@@ -4,7 +4,13 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta
 from io import StringIO as io_StringIO
 from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import create_path, get_level1_dirs, save_file
+from src.ch00_py.file_toolbox import (
+    create_path,
+    get_dir_filenames,
+    get_level1_dirs,
+    open_file,
+    save_file,
+)
 from src.ch02_contact.contact import ContactUnit
 from src.ch04_rope.rope import create_rope, is_sub_rope
 from src.ch05_reason.reason_main import ReasonHeir
@@ -22,7 +28,10 @@ from src.ch13_time.epoch_main import (
 )
 from src.ch13_time.epoch_reason import set_epoch_fact
 from src.ch14_moment.moment_main import open_moment_file
-from src.ch20_kpi._ref.ch20_path import create_day_punch_txt_path
+from src.ch20_kpi._ref.ch20_path import (
+    create_day_punch_txt_path,
+    create_dst_person_punch_path,
+)
 from src.ch20_kpi._ref.ch20_semantic_types import (
     GroupTitle,
     KnotTerm,
@@ -380,3 +389,21 @@ def save_person_gcal_day_punchs(
         file_path = report_dict.get("file_path")
         day_punch = report_dict.get("day_punch")
         save_file(file_path, None, day_punch)
+
+
+def copy_person_day_punches_to_dst_dir(
+    moment_mstr_dir: str, dst_dir: str, person_name: PersonName
+):
+    moments_dir = create_moments_dir_path(moment_mstr_dir)
+    for moment_label in get_level1_dirs(moments_dir):
+        moment_lasso = lassounit_shop(create_rope(moment_label))
+        moment_path = create_path(moments_dir, moment_lasso.make_path())
+        day_punchs_path = create_path(moment_path, "day_punchs")
+
+        for sub_dir, person_filename in get_dir_filenames(day_punchs_path):
+            if person_filename == f"{person_name}.txt":
+                dst_person_punch_path = create_dst_person_punch_path(
+                    dst_dir, moment_lasso, person_name
+                )
+                day_punch_file_path = create_path(day_punchs_path, person_filename)
+                save_file(dst_person_punch_path, None, open_file(day_punch_file_path))

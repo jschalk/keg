@@ -47,7 +47,7 @@ def test_Chapters_NonTestFilesDoNotHavePrintStatments():
         py_files = [f for f in os_listdir(chapter_dir) if f.endswith(".py")]
         for py_file in py_files:
             py_file_path = create_path(chapter_dir, py_file)
-            py_file_str = open(py_file_path).read()
+            py_file_str = open(py_file_path, encoding="utf-8").read()
             print_str_in_py_file_bool = print_str in py_file_str
             if print_str_in_py_file_bool:
                 print(f"Chapter {chapter_desc} file {py_file_path} has print statement")

@@ -41,10 +41,12 @@ from src.ch19_etl_steps.etl_main import (
     etl_translate_sound_agg_tables_to_translate_sound_vld_tables,
     get_max_brick_agg_spark_num,
 )
-from src.ch20_kpi.gcalendar import save_person_gcal_day_punchs
+from src.ch20_kpi.gcalendar import (
+    copy_person_day_punches_to_dst_dir,
+    save_person_gcal_day_punchs,
+)
 from src.ch20_kpi.kpi_mstr import create_calendar_markdown_files, populate_kpi_bundle
 from src.ch21_world._ref.ch21_semantic_types import GroupTitle, PersonName, WorldName
-import today
 
 
 def create_stances(
@@ -197,22 +199,25 @@ def sheets_to_gcal_day_punchs(
     )
 
 
-# TODO test and creat this function
-def create_today_day_punchs(
-    worlddir: WorldDir, person_name: PersonName, focus_group_title: GroupTitle = None
+def create_today_punchs(
+    working_dir: str,
+    input_dir: str,
+    output_dir: str,
+    person_name: PersonName,
+    focus_group_title: GroupTitle = None,
 ):
+    worlddir = worlddir_shop(
+        world_name="world01",
+        worlds_dir=working_dir,
+        input_dir=input_dir,
+        output_dir=output_dir,
+    )
     sheets_to_gcal_day_punchs(
         worlddir=worlddir,
         person_name=person_name,
         day=datetime.now(),
         focus_group_title=focus_group_title,
     )
-    # return today day punchs for person_name as strs
-
-
-# TODO
-def save_today_day_punchs_to_markdown(
-    worlddir: WorldDir, person_name: PersonName, focus_group_title: GroupTitle = None
-):
-    create_today_day_punchs(worlddir, person_name, focus_group_title)
-    # save today day punchs for person_name as markdown files in worlddir.output_dir
+    copy_person_day_punches_to_dst_dir(
+        worlddir.moment_mstr_dir, worlddir.output_dir, person_name
+    )

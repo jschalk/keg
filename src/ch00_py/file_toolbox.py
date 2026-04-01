@@ -108,7 +108,7 @@ def open_file(dest_dir: str, filename: str = None):
     file_path = create_path(dest_dir, filename)
     x_str = ""
     try:
-        with open(file_path, "r") as f:
+        with open(file_path, "r", encoding="utf-8") as f:
             x_str = f.read()
     except (PermissionError, FileNotFoundError, OSError) as e:
         raise CouldNotOpenFileError(f"Could not load file {file_path} {e.args}") from e

@@ -82,6 +82,11 @@ def test_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueReport(temp3
     br00013_df = pandas_DataFrame(br00013_data, columns=br00013_cols)
     here_wdir = worlddir_shop("HereNow", str(temp3_fs))
     bricks01_path = create_path(here_wdir.input_dir, "example.xlsx")
+    # unrelated to this test
+    # br00013_export_dir = create_path("C:\dev\_temp_working_dir", "br00013_example.xlsx")
+    # br00011_export_dir = create_path("C:\dev\_temp_working_dir", "br00011_example.xlsx")
+    # br00013_df.to_excel(br00013_export_dir, sheet_name="br00013_ex1", index=False)
+    # br00011_df.to_excel(br00011_export_dir, sheet_name="br00011_ex1", index=False)
     save_sheet(bricks01_path, "br00013_ex1", br00013_df)
     save_sheet(bricks01_path, "br00011_ex1", br00011_df)
     mmt_dir = here_wdir.moment_mstr_dir

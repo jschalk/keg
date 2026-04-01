@@ -1,0 +1,7 @@
+{
+  "chapter_blurb": "ETL app to create day punches from excel files.", 
+  "chapter_content": "Simple ETL app to create a world database from excel files.", 
+  "chapter_description": "ch30_etl_app", 
+  "chapter_number": 30, 
+  "ontology summary": "The entry point for most excel savy users."
+}

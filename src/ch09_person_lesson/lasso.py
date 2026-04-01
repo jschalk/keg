@@ -23,6 +23,10 @@ class LassoUnit:
         rope_labels = get_all_rope_labels(self.moment_rope, self.knot)
         return create_directory_path(x_list=[*rope_labels])
 
+    def get_first_label(self) -> str:
+        rope_labels = get_all_rope_labels(self.moment_rope, self.knot)
+        return rope_labels[0]
+
 
 def lassounit_shop(moment_rope: MomentRope = None, knot: KnotTerm = None) -> LassoUnit:
     if moment_rope is None:
