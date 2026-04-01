@@ -1,14 +1,13 @@
-from platform import system
-from pytest import mark as pytest_mark
-from sqlite3 import Cursor, connect as sqlite3_connect
-from typing import Any, Generator
 from pathlib import Path
-from uuid import uuid4
+from platform import system
 from pyperclip import copy as pyperclip_copy
 import pytest
-import subprocess
+from pytest import mark as pytest_mark
 import shutil
-
+from sqlite3 import Cursor, connect as sqlite3_connect
+import subprocess
+from typing import Any, Generator
+from uuid import uuid4
 
 _config = None
 
@@ -29,8 +28,12 @@ def pytest_collection_modifyitems(items):
 def pytest_addoption(parser):
     parser.addoption("--graphics_bool", action="store", default=False)
     parser.addoption("--run_big_tests", action="store", default=False)
-    parser.addoption("--rebuild_bool", action="store", default=False)
     parser.addoption("--clip", action="store_true", default=False)
+    parser.addoption(
+        "--rebuild_jsons",
+        action="store_true",
+        help="Rebuild JSON files during the test run",
+    )
 
 
 def pytest_generate_tests(metafunc):
@@ -44,10 +47,12 @@ def pytest_generate_tests(metafunc):
     run_big_tests_value = run_big_tests_value == "True"
     if "run_big_tests" in metafunc.fixturenames and run_big_tests_value is not None:
         metafunc.parametrize("run_big_tests", [run_big_tests_value])
-    rebuild_bool_value = metafunc.config.option.rebuild_bool
-    rebuild_bool_value = rebuild_bool_value == "True"
-    if "rebuild_bool" in metafunc.fixturenames and rebuild_bool_value is not None:
-        metafunc.parametrize("rebuild_bool", [rebuild_bool_value])
+
+
+@pytest.fixture
+def rebuild_jsons(request):
+    """Fixture to access the flag value in tests"""
+    return request.config.getoption("--rebuild_jsons")
 
 
 # Create an isolated scratch directory for every test and switch cwd into it.
@@ -80,5 +85,3 @@ def pytest_runtest_logreport(report):
     """Called after each test phase (setup, call, teardown). If the test failed and --clip is set, copies the test name to clipboard."""
     if report.failed and _config.getoption("--clip"):
         test_name = report.nodeid.split("::")[-1]
-        print(f"\n📋 Copied to clipboard: {test_name}")
-        pyperclip_copy(test_name)
