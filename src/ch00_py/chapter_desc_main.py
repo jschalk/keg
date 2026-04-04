@@ -6,6 +6,10 @@ def get_chapter_descs() -> dict[str, str]:
     src_dir = "src"
     chapter_descs = get_level1_dirs(src_dir)
     """linter is not evaluated"""
+    if "__pycache__" in chapter_descs:
+        chapter_descs.remove("__pycache__")
+    if "keg2.egg-info" in chapter_descs:
+        chapter_descs.remove("keg2.egg-info")
     chapter_descs.remove("linter")
     chapter_descs.remove("ref")
     return {
