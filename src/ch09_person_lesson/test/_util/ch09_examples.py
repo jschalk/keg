@@ -114,24 +114,24 @@ def get_persondelta_example1() -> PersonDelta:
 
 
 def get_sue_lessonunit() -> LessonUnit:
-    return lessonunit_shop(person_name="Sue", lesson_id=37, face_name="Yao")
+    return lessonunit_shop(person_name="Sue", lesson_id=37, spark_face="Yao")
 
 
 def sue_1personatoms_lessonunit() -> LessonUnit:
-    x_lessonunit = lessonunit_shop(person_name="Sue", lesson_id=53, face_name="Yao")
+    x_lessonunit = lessonunit_shop(person_name="Sue", lesson_id=53, spark_face="Yao")
     x_lessonunit.persondelta.set_personatom(get_atom_example_planunit_sports())
     return x_lessonunit
 
 
 def sue_2personatoms_lessonunit() -> LessonUnit:
-    x_lessonunit = lessonunit_shop(person_name="Sue", lesson_id=53, face_name="Yao")
+    x_lessonunit = lessonunit_shop(person_name="Sue", lesson_id=53, spark_face="Yao")
     x_lessonunit.persondelta.set_personatom(get_atom_example_planunit_knee())
     x_lessonunit.persondelta.set_personatom(get_atom_example_planunit_sports())
     return x_lessonunit
 
 
 def sue_3personatoms_lessonunit() -> LessonUnit:
-    x_lessonunit = lessonunit_shop(person_name="Sue", lesson_id=37, face_name="Yao")
+    x_lessonunit = lessonunit_shop(person_name="Sue", lesson_id=37, spark_face="Yao")
     x_lessonunit.persondelta.set_personatom(get_atom_example_factunit_knee())
     x_lessonunit.persondelta.set_personatom(get_atom_example_planunit_ball())
     x_lessonunit.persondelta.set_personatom(get_atom_example_planunit_knee())
@@ -139,7 +139,7 @@ def sue_3personatoms_lessonunit() -> LessonUnit:
 
 
 def sue_4personatoms_lessonunit() -> LessonUnit:
-    x_lessonunit = lessonunit_shop(person_name="Sue", lesson_id=47, face_name="Yao")
+    x_lessonunit = lessonunit_shop(person_name="Sue", lesson_id=47, spark_face="Yao")
     x_lessonunit.persondelta.set_personatom(get_atom_example_factunit_knee())
     x_lessonunit.persondelta.set_personatom(get_atom_example_planunit_ball())
     x_lessonunit.persondelta.set_personatom(get_atom_example_planunit_knee())

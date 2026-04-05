@@ -52,7 +52,7 @@ def test_create_stances_CreatesFile_Senario1_SingleSmallSpark(temp3_fs):
     input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00011_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.contact_name,
@@ -82,7 +82,7 @@ def test_create_stances_CreatesFile_Senario1_SingleSmallSpark(temp3_fs):
     print(get_sheet_names(fay_stance0001_path))
     br00021_sheet_df = pandas_read_excel(fay_stance0001_path, "br00021")
     print(f"{br00021_sheet_df=}")
-    assert br00021_sheet_df.iloc[0][kw.face_name] == "Fay"
+    assert br00021_sheet_df.iloc[0][kw.spark_face] == "Fay"
 
 
 def test_create_stances_CreatesFile_Senario2_CreatedStanceCanBeIdeasForOtherWorldDir(
@@ -98,7 +98,7 @@ def test_create_stances_CreatesFile_Senario2_CreatedStanceCanBeIdeasForOtherWorl
     input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00011_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.contact_name,
@@ -170,7 +170,7 @@ def test_create_stances_CreatesFile_Senario3_Create_calendar_markdown(
     input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00011_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.contact_name,
@@ -215,14 +215,14 @@ def test_create_stances_CreatesFile_Senario3_Create_calendar_markdown(
 #     ex_filename = "Faybob.xlsx"
 #     input_file_path = create_path(fay_wdir.input_dir, ex_filename)
 #     br00003_columns = [
-#         kw.face_name,
+#         kw.spark_face,
 #         kw.spark_num,
 #         kw.cumulative_minute,
 #         kw.moment_rope,
 #         kw.hour_label,
 #     ]
 #     br00001_columns = [
-#         kw.face_name,
+#         kw.spark_face,
 #         kw.spark_num,
 #         kw.moment_rope,
 #         kw.person_name,
@@ -249,7 +249,7 @@ def test_create_stances_CreatesFile_Senario3_Create_calendar_markdown(
 #     save_sheet(input_file_path, br00003_ex1_str, br00003_1df)
 #     save_sheet(input_file_path, br00003_ex3_str, br00003_3df)
 #     br00011_columns = [
-#         kw.face_name,
+#         kw.spark_face,
 #         kw.spark_num,
 #         kw.moment_rope,
 #         kw.person_name,

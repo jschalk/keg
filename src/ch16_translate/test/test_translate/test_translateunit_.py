@@ -49,7 +49,7 @@ def test_get_translate_args_class_types_ReturnsObj():
     assert translate_args_class_types.get(kw.debtor_respect) == "float"
     assert translate_args_class_types.get(kw.denom) == "int"
     assert translate_args_class_types.get(kw.reason_divisor) == "int"
-    assert translate_args_class_types.get(kw.face_name) == kw.NameTerm
+    assert translate_args_class_types.get(kw.spark_face) == kw.NameTerm
     assert translate_args_class_types.get(kw.fact_context) == kw.RopeTerm
     assert translate_args_class_types.get(kw.moment_rope) == kw.RopeTerm
     assert translate_args_class_types.get(kw.fact_upper) == kw.FactNum
@@ -105,7 +105,7 @@ def test_get_translate_args_class_types_ReturnsObj():
         kw.respect_grain,
     }
     assert atom_args.union(moment_args) != translate_args
-    assert atom_args.union(moment_args).union({kw.face_name}) == translate_args
+    assert atom_args.union(moment_args).union({kw.spark_face}) == translate_args
     assert check_class_types_are_correct()
     # assert translate_args_class_types.keys() == get_atom_args_dimen_mapping().keys()
     # assert all_atom_args_class_types_are_correct(x_class_types)
@@ -168,7 +168,7 @@ def test_get_translateable_args_ReturnsObj():
         kw.awardee_title,
         kw.person_name,
         kw.epoch_label,
-        kw.face_name,
+        kw.spark_face,
         kw.fact_context,
         kw.fact_state,
         kw.group_title,
@@ -266,7 +266,7 @@ def test_get_translate_nameterm_args_ReturnsObj():
     # THEN
     assert translate_NameTerm_args == {
         kw.contact_name,
-        kw.face_name,
+        kw.spark_face,
         kw.healer_name,
         kw.person_name,
     }
@@ -341,7 +341,7 @@ def test_TranslateUnit_Exists():
     x_translateunit = TranslateUnit()
 
     # WHEN / THEN
-    assert not x_translateunit.face_name
+    assert not x_translateunit.spark_face
     assert not x_translateunit.spark_num
     assert not x_translateunit.titlemap
     assert not x_translateunit.namemap
@@ -351,7 +351,7 @@ def test_TranslateUnit_Exists():
     assert not x_translateunit.otx_knot
     assert not x_translateunit.inx_knot
     assert set(x_translateunit.__dict__.keys()) == {
-        kw.face_name,
+        kw.spark_face,
         kw.spark_num,
         kw.titlemap,
         kw.namemap,
@@ -370,15 +370,15 @@ def test_translateunit_shop_ReturnsObj_Scenario0():
     sue_translateunit = translateunit_shop(exx.sue)
 
     # THEN
-    assert sue_translateunit.face_name == exx.sue
+    assert sue_translateunit.spark_face == exx.sue
     assert sue_translateunit.spark_num == 0
     assert sue_translateunit.unknown_str == default_unknown_str_if_None()
     assert sue_translateunit.otx_knot == default_knot_if_None()
     assert sue_translateunit.inx_knot == default_knot_if_None()
-    assert sue_translateunit.titlemap == titlemap_shop(face_name=exx.sue)
-    assert sue_translateunit.namemap == namemap_shop(face_name=exx.sue)
-    assert sue_translateunit.labelmap == labelmap_shop(face_name=exx.sue)
-    assert sue_translateunit.ropemap == ropemap_shop(face_name=exx.sue)
+    assert sue_translateunit.titlemap == titlemap_shop(spark_face=exx.sue)
+    assert sue_translateunit.namemap == namemap_shop(spark_face=exx.sue)
+    assert sue_translateunit.labelmap == labelmap_shop(spark_face=exx.sue)
+    assert sue_translateunit.ropemap == ropemap_shop(spark_face=exx.sue)
     assert sue_translateunit.namemap.spark_num == 0
     assert sue_translateunit.namemap.unknown_str == default_unknown_str_if_None()
     assert sue_translateunit.namemap.otx_knot == default_knot_if_None()
@@ -406,7 +406,7 @@ def test_translateunit_shop_ReturnsObj_Scenario1():
 
     # WHEN
     sue_translateunit = translateunit_shop(
-        face_name=exx.sue,
+        spark_face=exx.sue,
         spark_num=five_spark_num,
         otx_knot=slash_otx_knot,
         inx_knot=colon_inx_knot,
@@ -432,22 +432,22 @@ def test_translateunit_shop_ReturnsObj_Scenario1():
     # assert sue_translateunit.namemap == x_namemap
     # assert sue_translateunit.ropemap == x_ropemap
 
-    assert sue_translateunit.namemap.face_name == exx.sue
+    assert sue_translateunit.namemap.spark_face == exx.sue
     assert sue_translateunit.namemap.spark_num == five_spark_num
     assert sue_translateunit.namemap.unknown_str == y_uk
     assert sue_translateunit.namemap.otx_knot == slash_otx_knot
     assert sue_translateunit.namemap.inx_knot == colon_inx_knot
-    assert sue_translateunit.titlemap.face_name == exx.sue
+    assert sue_translateunit.titlemap.spark_face == exx.sue
     assert sue_translateunit.titlemap.spark_num == five_spark_num
     assert sue_translateunit.titlemap.unknown_str == y_uk
     assert sue_translateunit.titlemap.otx_knot == slash_otx_knot
     assert sue_translateunit.titlemap.inx_knot == colon_inx_knot
-    assert sue_translateunit.labelmap.face_name == exx.sue
+    assert sue_translateunit.labelmap.spark_face == exx.sue
     assert sue_translateunit.labelmap.spark_num == five_spark_num
     assert sue_translateunit.labelmap.unknown_str == y_uk
     assert sue_translateunit.labelmap.otx_knot == slash_otx_knot
     assert sue_translateunit.labelmap.inx_knot == colon_inx_knot
-    assert sue_translateunit.ropemap.face_name == exx.sue
+    assert sue_translateunit.ropemap.spark_face == exx.sue
     assert sue_translateunit.ropemap.spark_num == five_spark_num
     assert sue_translateunit.ropemap.unknown_str == y_uk
     assert sue_translateunit.ropemap.otx_knot == slash_otx_knot
@@ -461,7 +461,7 @@ def test_translateunit_shop_ReturnsObj_Scenario2_TranslateCoreAttrAreDefaultWhen
 
     # WHEN
     x_translateunit = translateunit_shop(
-        face_name=exx.bob,
+        spark_face=exx.bob,
         spark_num=spark7,
         unknown_str=x_nan,
         otx_knot=x_nan,
@@ -469,7 +469,7 @@ def test_translateunit_shop_ReturnsObj_Scenario2_TranslateCoreAttrAreDefaultWhen
     )
 
     # THEN
-    assert x_translateunit.face_name == exx.bob
+    assert x_translateunit.spark_face == exx.bob
     assert x_translateunit.spark_num == spark7
     assert x_translateunit.unknown_str == default_unknown_str_if_None()
     assert x_translateunit.otx_knot == default_knot_if_None()

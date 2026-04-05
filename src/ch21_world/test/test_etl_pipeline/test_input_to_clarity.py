@@ -50,7 +50,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario0_br000113PopulatesTables(
     ex_filename = "Faybob.xlsx"
     input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00113_columns = [
-        kw.face_name,
+        kw.spark_face,
         kw.spark_num,
         kw.moment_rope,
         kw.person_name,
@@ -215,7 +215,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     ex_filename = "Faybob.xlsx"
     input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00113_columns = [
-        kw.face_name,
+        kw.spark_face,
         kw.spark_num,
         kw.moment_rope,
         kw.person_name,
@@ -232,7 +232,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
 
     br00001_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.bud_time,
@@ -376,7 +376,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario2_PopulateMomentTranBook(
     input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00002_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.contact_name,
@@ -414,7 +414,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario3_WhenNoMomentIdeas_ote1_IsSti
     input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00011_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.contact_name,
@@ -482,7 +482,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario5_CreatesFiles(
     input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00003_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.cumulative_minute,
         kw.moment_rope,
         kw.hour_label,
@@ -490,7 +490,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario5_CreatesFiles(
     ]
     br00001_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.bud_time,
@@ -517,7 +517,7 @@ def test_sheets_input_to_lynx_with_cursor_Scenario5_CreatesFiles(
     save_sheet(input_file_path, br00003_ex3_str, br00003_3df)
     br00011_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.contact_name,
@@ -567,7 +567,7 @@ def test_sheets_input_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     ex_filename = "Faybob.xlsx"
     input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00113_columns = [
-        kw.face_name,
+        kw.spark_face,
         kw.spark_num,
         kw.moment_rope,
         kw.person_name,
@@ -584,7 +584,7 @@ def test_sheets_input_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
 
     br00001_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.bud_time,
@@ -674,7 +674,7 @@ def test_sheets_input_to_lynx_mstr_Scenario1_Creates_job_Files(temp3_fs):
     ]
     cols = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.person_name,
         kw.moment_rope,
         kw.plan_rope,

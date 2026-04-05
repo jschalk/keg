@@ -1,10 +1,10 @@
 {
   "attributes": {
     "contact_name": { "otx_key": true }, 
-    "face_name"   : { "otx_key": true }, 
     "group_title" : { "otx_key": true }, 
     "moment_rope" : { "otx_key": true }, 
     "person_name" : { "otx_key": true }, 
+    "spark_face"  : { "otx_key": true }, 
     "spark_num"   : { "otx_key": true }
   }, 
   "dimens": ["personunit", "person_contactunit", "person_contact_membership", "momentunit"], 

@@ -21,7 +21,7 @@ def test_etl_brick_raw_tables_to_brick_agg_tables_PopulatesAggTable_Scenario0_Gr
     raw_br00003_tablename = f"br00003_{kw.brick_raw}"
     raw_br00003_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.cumulative_minute,
         kw.hour_label,
@@ -31,7 +31,7 @@ def test_etl_brick_raw_tables_to_brick_agg_tables_PopulatesAggTable_Scenario0_Gr
     create_idea_sorted_table(cursor0, raw_br00003_tablename, raw_br00003_columns)
     insert_into_clause = f"""INSERT INTO {raw_br00003_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.cumulative_minute}
 , {kw.hour_label}
@@ -98,7 +98,7 @@ def test_etl_brick_raw_tables_to_brick_agg_tables_PopulatesAggTable_Scenario1_Gr
     raw_br00003_tablename = f"br00003_{kw.brick_raw}"
     raw_br00003_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.cumulative_minute,
         kw.hour_label,
@@ -108,7 +108,7 @@ def test_etl_brick_raw_tables_to_brick_agg_tables_PopulatesAggTable_Scenario1_Gr
     create_idea_sorted_table(cursor0, raw_br00003_tablename, raw_br00003_columns)
     insert_into_clause = f"""INSERT INTO {raw_br00003_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.cumulative_minute}
 , {kw.hour_label}
@@ -169,7 +169,7 @@ def test_etl_brick_raw_tables_to_brick_agg_tables_PopulatesAggTable_Scenario2_Gr
     raw_br00003_tablename = f"br00003_{kw.brick_raw}"
     raw_br00003_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.cumulative_minute,
         kw.hour_label,
@@ -179,7 +179,7 @@ def test_etl_brick_raw_tables_to_brick_agg_tables_PopulatesAggTable_Scenario2_Gr
     create_idea_sorted_table(cursor0, raw_br00003_tablename, raw_br00003_columns)
     insert_into_clause = f"""INSERT INTO {raw_br00003_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.cumulative_minute}
 , {kw.hour_label}
@@ -225,7 +225,7 @@ def test_get_max_brick_sparks_spark_num_ReturnsObj_Scenario0_NoTables(cursor0: C
     agg_br00003_tablename = f"br00003_{kw.brick_agg}"
     agg_br00003_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.cumulative_minute,
         kw.hour_label,
@@ -248,7 +248,7 @@ def test_get_max_brick_sparks_spark_num_ReturnsObj_Scenario1_OneTable(cursor0: C
     agg_br00003_tablename = f"br00003_{kw.brick_agg}"
     agg_br00003_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.cumulative_minute,
         kw.hour_label,
@@ -256,7 +256,7 @@ def test_get_max_brick_sparks_spark_num_ReturnsObj_Scenario1_OneTable(cursor0: C
     create_idea_sorted_table(cursor0, agg_br00003_tablename, agg_br00003_columns)
     insert_into_clause = f"""INSERT INTO {agg_br00003_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.cumulative_minute}
 , {kw.hour_label}

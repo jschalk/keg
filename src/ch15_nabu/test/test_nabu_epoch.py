@@ -14,11 +14,11 @@ from src.ref.keywords import Ch15Keywords as kw, ExampleStrs as exx
 #     x_timenabu = NabuTime()
 
 #     # WHEN / THEN
-#     assert not x_timenabu.face_name
+#     assert not x_timenabu.spark_face
 #     assert not x_timenabu.spark_num
 #     assert not x_timenabu.otx2inx
 #     assert set(x_timenabu.__dict__.keys()) == {
-#         kw.face_name,
+#         kw.spark_face,
 #         kw.spark_num,
 #         kw.otx2inx,
 #     }
@@ -26,7 +26,7 @@ from src.ref.keywords import Ch15Keywords as kw, ExampleStrs as exx
 
 # def test_NabuTime_set_all_otx2inx_SetsAttr_Scenario0():
 #     # ESTABLISH
-#     sue_timenabu = NabuTime(face_name=exx.sue)
+#     sue_timenabu = NabuTime(spark_face=exx.sue)
 #     sue_inx_epoch_diff = 19
 #     sue_epoch_length = 100
 #     sue_otx2inx = {sue_epoch_length: sue_inx_epoch_diff}
@@ -41,7 +41,7 @@ from src.ref.keywords import Ch15Keywords as kw, ExampleStrs as exx
 
 # def test_NabuTime_set_all_otx2inx_SetsAttr_Scenario1_WithParametersGreaterThan_epoch_length():
 #     # ESTABLISH
-#     sue_timenabu = NabuTime(face_name=exx.sue)
+#     sue_timenabu = NabuTime(spark_face=exx.sue)
 #     sue_epoch_length = 500
 #     sue_inx_epoch_diff = 719
 #     static_sue_otx2inx = {sue_epoch_length: sue_inx_epoch_diff}
@@ -63,7 +63,7 @@ from src.ref.keywords import Ch15Keywords as kw, ExampleStrs as exx
 #     sue_timenabu = timenabu_shop(exx.sue)
 
 #     # THEN
-#     assert sue_timenabu.face_name == exx.sue
+#     assert sue_timenabu.spark_face == exx.sue
 #     assert sue_timenabu.spark_num == 0
 #     assert sue_timenabu.otx2inx == {}
 
@@ -79,7 +79,7 @@ from src.ref.keywords import Ch15Keywords as kw, ExampleStrs as exx
 #     sue_timenabu = timenabu_shop(exx.sue, spark2, otx2inx=x_otx2inx)
 
 #     # THEN
-#     assert sue_timenabu.face_name == exx.sue
+#     assert sue_timenabu.spark_face == exx.sue
 #     assert sue_timenabu.spark_num == spark2
 #     assert sue_timenabu.otx2inx == x_otx2inx
 #     assert sue_timenabu.otx2inx == {500: 11}
@@ -96,7 +96,7 @@ from src.ref.keywords import Ch15Keywords as kw, ExampleStrs as exx
 #     sue_timenabu = timenabu_shop(exx.sue, spark2, static_sue_otx2inx)
 
 #     # THEN
-#     assert sue_timenabu.face_name == exx.sue
+#     assert sue_timenabu.spark_face == exx.sue
 #     assert sue_timenabu.spark_num == spark2
 #     assert sue_timenabu.otx2inx != static_sue_otx2inx
 #     expected_sue_otx2inx = {sue_epoch_length: sue_inx_epoch_diff % sue_epoch_length}
@@ -117,7 +117,7 @@ from src.ref.keywords import Ch15Keywords as kw, ExampleStrs as exx
 #     )
 
 #     # THEN
-#     assert sue_timenabu.face_name == exx.sue
+#     assert sue_timenabu.spark_face == exx.sue
 #     assert sue_timenabu.spark_num == spark7
 #     assert str(type(sue_timenabu.spark_num)) != "<class 'numpy.int64'>"
 #     assert str(type(sue_timenabu.spark_num)) == "<class 'int'>"
@@ -310,7 +310,7 @@ from src.ref.keywords import Ch15Keywords as kw, ExampleStrs as exx
 #     x0_epoch_diff = 6
 #     sue_timenabu.set_otx2inx(x0_epoch_length, x0_epoch_diff)
 #     expected_dict = {
-#         kw.face_name: sue_timenabu.face_name,
+#         kw.spark_face: sue_timenabu.spark_face,
 #         kw.spark_num: sue_timenabu.spark_num,
 #         kw.otx2inx: sue_timenabu.otx2inx,
 #     }
@@ -331,7 +331,7 @@ from src.ref.keywords import Ch15Keywords as kw, ExampleStrs as exx
 #     gen_timenabu = get_timenabu_from_dict(sue_timenabu.to_dict())
 
 #     # THEN
-#     assert gen_timenabu.face_name == sue_timenabu.face_name
+#     assert gen_timenabu.spark_face == sue_timenabu.spark_face
 #     assert gen_timenabu.spark_num == sue_timenabu.spark_num
 #     assert gen_timenabu.spark_num == spark7
 #     assert gen_timenabu.otx2inx == {x0_epoch_length: x0_epoch_diff}
@@ -369,7 +369,7 @@ from src.ref.keywords import Ch15Keywords as kw, ExampleStrs as exx
 #     assert new_timenabu == timenabu_shop(exx.sue, 5, {None: sue_epoch_diff})
 
 
-# def test_inherit_timenabu_ReturnsObj_Scenario2_RaiseErrorWhenDifferent_face_name():
+# def test_inherit_timenabu_ReturnsObj_Scenario2_RaiseErrorWhenDifferent_spark_face():
 #     # ESTABLISH
 #     sue0_epoch_min = 555
 #     sue1_epoch_min = 655

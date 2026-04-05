@@ -45,7 +45,7 @@ def test_LessonUnit_Exists():
     x_lessonunit = LessonUnit()
 
     # THEN
-    assert not x_lessonunit.face_name
+    assert not x_lessonunit.spark_face
     assert not x_lessonunit.moment_rope
     assert not x_lessonunit.person_name
     assert not x_lessonunit.lesson_id
@@ -55,7 +55,7 @@ def test_LessonUnit_Exists():
     assert not x_lessonunit.atoms_dir
     assert not x_lessonunit.spark_num
     assert x_lessonunit.__dict__.keys() == {
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         "lesson_id",
@@ -74,7 +74,7 @@ def test_lessonunit_shop_ReturnsObjEstablishWithEmptyArgs():
     bob_lessonunit = lessonunit_shop(person_name=exx.bob)
 
     # THEN
-    assert not bob_lessonunit.face_name
+    assert not bob_lessonunit.spark_face
     assert bob_lessonunit.moment_rope == get_default_rope()
     assert bob_lessonunit.person_name == exx.bob
     assert bob_lessonunit.lesson_id == 0
@@ -97,7 +97,7 @@ def test_lessonunit_shop_ReturnsObjEstablishWithNonEmptyArgs():
 
     # WHEN
     bob_lessonunit = lessonunit_shop(
-        face_name=exx.sue,
+        spark_face=exx.sue,
         person_name=exx.bob,
         moment_rope=amy45_str,
         lesson_id=bob_lesson_id,
@@ -109,7 +109,7 @@ def test_lessonunit_shop_ReturnsObjEstablishWithNonEmptyArgs():
     )
 
     # THEN
-    assert bob_lessonunit.face_name == exx.sue
+    assert bob_lessonunit.spark_face == exx.sue
     assert bob_lessonunit.person_name == exx.bob
     assert bob_lessonunit.moment_rope == amy45_str
     assert bob_lessonunit.lesson_id == bob_lesson_id
@@ -124,38 +124,38 @@ def test_lessonunit_shop_ReturnsObjEstablishWithSomeArgs_v1():
     # ESTABLISH
 
     # WHEN
-    bob_lessonunit = lessonunit_shop(person_name=exx.bob, face_name=exx.yao)
+    bob_lessonunit = lessonunit_shop(person_name=exx.bob, spark_face=exx.yao)
 
     # THEN
     assert bob_lessonunit.person_name == exx.bob
-    assert bob_lessonunit.face_name == exx.yao
+    assert bob_lessonunit.spark_face == exx.yao
 
 
 def test_LessonUnit_set_face_SetsAttribute():
     # ESTABLISH
     bob_lessonunit = lessonunit_shop(person_name=exx.bob)
-    assert bob_lessonunit.face_name is None
-    assert bob_lessonunit.face_name != exx.sue
+    assert bob_lessonunit.spark_face is None
+    assert bob_lessonunit.spark_face != exx.sue
 
     # WHEN
     bob_lessonunit.set_face(exx.sue)
 
     # THEN
-    assert bob_lessonunit.face_name == exx.sue
+    assert bob_lessonunit.spark_face == exx.sue
 
 
 def test_LessonUnit_del_face_SetsAttribute():
     # ESTABLISH
     bob_lessonunit = lessonunit_shop(person_name=exx.bob)
     bob_lessonunit.set_face(exx.yao)
-    assert bob_lessonunit.face_name == exx.yao
+    assert bob_lessonunit.spark_face == exx.yao
 
     # WHEN
     bob_lessonunit.del_face()
 
     # THEN
-    assert bob_lessonunit.face_name != exx.yao
-    assert bob_lessonunit.face_name is None
+    assert bob_lessonunit.spark_face != exx.yao
+    assert bob_lessonunit.spark_face is None
 
 
 def test_LessonUnit_set_persondelta_SetsAttribute():
@@ -237,8 +237,8 @@ def test_LessonUnit_get_step_dict_ReturnsObj_Simple():
     assert x_dict.get(kw.moment_rope) == amy45_str
     assert x_dict.get(kw.person_name) is not None
     assert x_dict.get(kw.person_name) == exx.bob
-    assert x_dict.get(kw.face_name) is not None
-    assert x_dict.get(kw.face_name) == exx.sue
+    assert x_dict.get(kw.spark_face) is not None
+    assert x_dict.get(kw.spark_face) == exx.sue
     assert x_dict.get(kw.spark_num) is not None
     assert x_dict.get(kw.spark_num) == amy45_e5_int
 
@@ -312,8 +312,8 @@ def test_LessonUnit_get_serializable_step_dict_ReturnsObj_Simple():
     assert total_dict.get(kw.moment_rope) == amy45_str
     assert total_dict.get(kw.person_name) is not None
     assert total_dict.get(kw.person_name) == exx.bob
-    assert total_dict.get(kw.face_name) is not None
-    assert total_dict.get(kw.face_name) == exx.sue
+    assert total_dict.get(kw.spark_face) is not None
+    assert total_dict.get(kw.spark_face) == exx.sue
     assert total_dict.get(kw.spark_num) is not None
     assert total_dict.get(kw.spark_num) == amy45_e5_int
     delta_str = "delta"
@@ -362,9 +362,9 @@ def test_LessonUnit_get_serializable_step_dict_ReturnsObj_Scenario1_WithPersonDe
       "jvalues": {"credor_respect": 77}
     }
   }, 
-  "face_name": null, 
   "moment_rope": ";YY;", 
   "person_name": "Bob", 
+  "spark_face": null, 
   "spark_num": null
 }"""
     assert get_json_from_dict(generated_dict) == expected_json
@@ -384,7 +384,7 @@ def test_get_lessonunit_from_dict_ReturnsObj_WithPersonDeltaPopulated():
 
     # THEN
     assert generated_bob_lessonunit
-    assert generated_bob_lessonunit.face_name == bob_lessonunit.face_name
+    assert generated_bob_lessonunit.spark_face == bob_lessonunit.spark_face
     assert generated_bob_lessonunit.spark_num == bob_lessonunit.spark_num
     assert generated_bob_lessonunit.moment_rope == bob_lessonunit.moment_rope
     assert generated_bob_lessonunit.persondelta == bob_lessonunit.persondelta
@@ -424,8 +424,8 @@ def test_LessonUnit_get_deltametric_dict_ReturnsObj():
     # THEN
     assert x_dict.get(kw.person_name) is not None
     assert x_dict.get(kw.person_name) == exx.bob
-    assert x_dict.get(kw.face_name) is not None
-    assert x_dict.get(kw.face_name) == exx.yao
+    assert x_dict.get(kw.spark_face) is not None
+    assert x_dict.get(kw.spark_face) == exx.yao
     assert x_dict.get(kw.spark_num) is not None
     assert x_dict.get(kw.spark_num) == spark5_int
 

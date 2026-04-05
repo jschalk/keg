@@ -1,11 +1,11 @@
 {
   "attributes": {
-    "face_name"  : { "otx_key": true  }, 
     "knot"       : { "otx_key": false }, 
     "labor_title": { "otx_key": true  }, 
     "person_name": { "otx_key": true  }, 
     "plan_rope"  : { "otx_key": true  }, 
     "solo"       : { "otx_key": false }, 
+    "spark_face" : { "otx_key": true  }, 
     "spark_num"  : { "otx_key": true  }
   }, 
   "dimens": ["person_planunit", "person_plan_laborunit"], 

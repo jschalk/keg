@@ -15,7 +15,7 @@ def test_LabelMap_Exists():
     x_labelmap = LabelMap()
 
     # WHEN / THEN
-    assert not x_labelmap.face_name
+    assert not x_labelmap.spark_face
     assert not x_labelmap.spark_num
     assert not x_labelmap.otx2inx
     assert not x_labelmap.unknown_str
@@ -28,7 +28,7 @@ def test_labelmap_shop_ReturnsObj_Scenario0_WithoutParameters():
     x_labelmap = labelmap_shop()
 
     # THEN
-    assert not x_labelmap.face_name
+    assert not x_labelmap.spark_face
     assert x_labelmap.spark_num == 0
     assert x_labelmap.otx2inx == {}
     assert x_labelmap.unknown_str == default_unknown_str_if_None()
@@ -46,7 +46,7 @@ def test_labelmap_shop_ReturnsObj_Scenario1_WithParameters():
 
     # WHEN
     x_labelmap = labelmap_shop(
-        face_name=exx.bob,
+        spark_face=exx.bob,
         spark_num=spark7,
         otx2inx=otx2inx,
         unknown_str=x_unknown_str,
@@ -55,7 +55,7 @@ def test_labelmap_shop_ReturnsObj_Scenario1_WithParameters():
     )
 
     # THEN
-    assert x_labelmap.face_name == exx.bob
+    assert x_labelmap.spark_face == exx.bob
     assert x_labelmap.spark_num == spark7
     assert x_labelmap.otx2inx == otx2inx
     assert x_labelmap.unknown_str == x_unknown_str
@@ -71,7 +71,7 @@ def test_labelmap_shop_ReturnsObj_Scenario2_TranslateCoreAttrAreDefaultWhenGiven
 
     # WHEN
     x_labelmap = labelmap_shop(
-        face_name=exx.bob,
+        spark_face=exx.bob,
         spark_num=spark7,
         otx2inx=otx2inx,
         unknown_str=x_nan,
@@ -80,7 +80,7 @@ def test_labelmap_shop_ReturnsObj_Scenario2_TranslateCoreAttrAreDefaultWhenGiven
     )
 
     # THEN
-    assert x_labelmap.face_name == exx.bob
+    assert x_labelmap.spark_face == exx.bob
     assert x_labelmap.spark_num == spark7
     assert x_labelmap.otx2inx == otx2inx
     assert x_labelmap.unknown_str == default_unknown_str_if_None()
@@ -277,7 +277,7 @@ def test_LabelMap_to_dict_ReturnsObj():
         kw.inx_knot: x_labelmap.inx_knot,
         kw.unknown_str: x_labelmap.unknown_str,
         kw.otx2inx: {},
-        kw.face_name: x_labelmap.face_name,
+        kw.spark_face: x_labelmap.spark_face,
         kw.spark_num: x_labelmap.spark_num,
     }
     assert x_labelmap.to_dict() == x1_rope_map_dict
@@ -291,7 +291,7 @@ def test_LabelMap_to_dict_ReturnsObj():
         kw.inx_knot: x_labelmap.inx_knot,
         kw.unknown_str: x_labelmap.unknown_str,
         kw.otx2inx: {clean_otx: clean_inx},
-        kw.face_name: exx.sue,
+        kw.spark_face: exx.sue,
         kw.spark_num: spark7,
     }
     assert x_labelmap.to_dict() == x2_rope_map_dict
@@ -310,7 +310,7 @@ def test_get_labelmap_from_dict_ReturnsObj():
     gen_labelmap = get_labelmap_from_dict(x_labelmap.to_dict())
 
     # THEN
-    assert gen_labelmap.face_name == x_labelmap.face_name
+    assert gen_labelmap.spark_face == x_labelmap.spark_face
     assert gen_labelmap.spark_num == x_labelmap.spark_num
     assert gen_labelmap.spark_num == spark7
     assert gen_labelmap == x_labelmap
@@ -439,7 +439,7 @@ def test_inherit_labelmap_ReturnsObj_Scenario3_RaiseErrorWhenDifferent_x_unknown
     assert str(excinfo.value) == "Core attrs in conflict"
 
 
-def test_inherit_labelmap_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_face_name():
+def test_inherit_labelmap_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_spark_face():
     # ESTABLISH
     old_labelmap = labelmap_shop(exx.sue, 0)
     new_labelmap = labelmap_shop(exx.bob, 1)

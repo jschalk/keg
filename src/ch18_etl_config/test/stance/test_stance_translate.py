@@ -16,7 +16,7 @@ from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
 def test_add_to_br00042_csv_ReturnsObj(cursor0: Cursor):
     # ESTABLISH database with translate data
-    # - [`br00042`](ideas/br00042.md): spark_num, face_name, otx_title, inx_title, otx_knot, inx_knot, unknown_str
+    # - [`br00042`](ideas/br00042.md): spark_num, spark_face, otx_title, inx_title, otx_knot, inx_knot, unknown_str
     bob_otx = "Bob"
     bob_inx = "Bobby"
     sue_otx = "Sue"
@@ -35,7 +35,7 @@ def test_add_to_br00042_csv_ReturnsObj(cursor0: Cursor):
     trltitl_dimen = kw.translate_title
     trltitl_s_vld_tablename = prime_tbl(trltitl_dimen, kw.s_vld)
     insert_trltitl_sqlstr = f"""INSERT INTO {trltitl_s_vld_tablename}
-    ({kw.spark_num}, {kw.face_name}, {kw.otx_title}, {kw.inx_title})
+    ({kw.spark_num}, {kw.spark_face}, {kw.otx_title}, {kw.inx_title})
     VALUES
       ({spark1}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
     , ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx}')
@@ -45,7 +45,7 @@ def test_add_to_br00042_csv_ReturnsObj(cursor0: Cursor):
 
     trlcore_s_vld_tablename = prime_tbl("TRLCORE", kw.s_vld)
     insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename}
-    ({kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+    ({kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
     VALUES
       ('{sue_otx}', '{sue_otx_knot}', '{sue_inx_knot}', '{sue_unknown_str}')
     , ('{bob_otx}', '{bob_otx_knot}', '{bob_inx_knot}', '{bob_unknown_str}')
@@ -57,7 +57,7 @@ def test_add_to_br00042_csv_ReturnsObj(cursor0: Cursor):
     x_ideas = create_init_stance_idea_csv_strs()
     header_only_csv = x_ideas.get("br00042")
     print(f"{header_only_csv=}")
-    expected_header_only_csv = f"{kw.spark_num},{kw.face_name},{kw.otx_title},{kw.inx_title},{kw.otx_knot},{kw.inx_knot},{kw.unknown_str}\n"
+    expected_header_only_csv = f"{kw.spark_num},{kw.spark_face},{kw.otx_title},{kw.inx_title},{kw.otx_knot},{kw.inx_knot},{kw.unknown_str}\n"
     assert header_only_csv == expected_header_only_csv
 
     # WHEN
@@ -74,7 +74,7 @@ def test_add_to_br00042_csv_ReturnsObj(cursor0: Cursor):
 
 def test_add_to_br00043_csv_ReturnsObj(cursor0: Cursor):
     # ESTABLISH database with translate data
-    # - [`br00043`](ideas/br00043.md): spark_num, face_name, otx_name, inx_name, otx_knot, inx_knot, unknown_str
+    # - [`br00043`](ideas/br00043.md): spark_num, spark_face, otx_name, inx_name, otx_knot, inx_knot, unknown_str
     bob_otx = "Bob"
     bob_inx = "Bobby"
     sue_otx = "Sue"
@@ -94,7 +94,7 @@ def test_add_to_br00043_csv_ReturnsObj(cursor0: Cursor):
     trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
     insert_trlname_sqlstr = f"""
 INSERT INTO {trlname_s_vld_tablename}
-({kw.spark_num}, {kw.face_name}, {kw.otx_name}, {kw.inx_name})
+({kw.spark_num}, {kw.spark_face}, {kw.otx_name}, {kw.inx_name})
 VALUES
   ({spark1}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
 , ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx}')
@@ -105,7 +105,7 @@ VALUES
     trlcore_s_vld_tablename = prime_tbl("TRLCORE", kw.s_vld)
     insert_trlcore_sqlstr = f"""
 INSERT INTO {trlcore_s_vld_tablename}
-({kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+({kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
 VALUES
   ('{sue_otx}', '{sue_otx_knot}', '{sue_inx_knot}', '{sue_unknown_str}')
 , ('{bob_otx}', '{bob_otx_knot}', '{bob_inx_knot}', '{bob_unknown_str}')
@@ -117,7 +117,7 @@ VALUES
     x_ideas = create_init_stance_idea_csv_strs()
     header_only_csv = x_ideas.get("br00043")
     print(f"{header_only_csv=}")
-    expected_header_only_csv = f"{kw.spark_num},{kw.face_name},{kw.otx_name},{kw.inx_name},{kw.otx_knot},{kw.inx_knot},{kw.unknown_str}\n"
+    expected_header_only_csv = f"{kw.spark_num},{kw.spark_face},{kw.otx_name},{kw.inx_name},{kw.otx_knot},{kw.inx_knot},{kw.unknown_str}\n"
     assert header_only_csv == expected_header_only_csv
 
     # WHEN
@@ -134,7 +134,7 @@ VALUES
 
 def test_add_to_br00044_csv_ReturnsObj(cursor0: Cursor):
     # ESTABLISH database with translate data
-    # - [`br00044`](ideas/br00044.md): spark_num, face_name, otx_label, inx_label, otx_knot, inx_knot, unknown_str
+    # - [`br00044`](ideas/br00044.md): spark_num, spark_face, otx_label, inx_label, otx_knot, inx_knot, unknown_str
     bob_otx_knot = ";"
     bob_inx_knot = "/"
     sue_otx_knot = "?"
@@ -154,7 +154,7 @@ def test_add_to_br00044_csv_ReturnsObj(cursor0: Cursor):
     trllabe_s_vld_tablename = prime_tbl(trllabe_dimen, kw.s_vld)
     insert_trllabe_sqlstr = f"""
 INSERT INTO {trllabe_s_vld_tablename}
-({kw.spark_num}, {kw.face_name}, {kw.otx_label}, {kw.inx_label})
+({kw.spark_num}, {kw.spark_face}, {kw.otx_label}, {kw.inx_label})
 VALUES
   ({spark1}, '{exx.sue}', '{sue_clean_otx}', '{sue_clean_inx}')
 , ({spark7}, '{exx.bob}', '{bob_clean_otx}', '{bob_clean_inx}')
@@ -165,7 +165,7 @@ VALUES
     trlcore_s_vld_tablename = prime_tbl("TRLCORE", kw.s_vld)
     insert_trlcore_sqlstr = f"""
 INSERT INTO {trlcore_s_vld_tablename}
-({kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+({kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
 VALUES
   ('{exx.sue}', '{sue_otx_knot}', '{sue_inx_knot}', '{sue_unknown_str}')
 , ('{exx.bob}', '{bob_otx_knot}', '{bob_inx_knot}', '{bob_unknown_str}')
@@ -177,7 +177,7 @@ VALUES
     x_ideas = create_init_stance_idea_csv_strs()
     header_only_csv = x_ideas.get("br00044")
     print(f"{header_only_csv=}")
-    expected_header_only_csv = f"{kw.spark_num},{kw.face_name},{kw.otx_label},{kw.inx_label},{kw.otx_knot},{kw.inx_knot},{kw.unknown_str}\n"
+    expected_header_only_csv = f"{kw.spark_num},{kw.spark_face},{kw.otx_label},{kw.inx_label},{kw.otx_knot},{kw.inx_knot},{kw.unknown_str}\n"
     assert header_only_csv == expected_header_only_csv
 
     # WHEN
@@ -194,7 +194,7 @@ VALUES
 
 def test_add_to_br00045_csv_ReturnsObj(cursor0: Cursor):
     # ESTABLISH database with translate data
-    # - [`br00045`](ideas/br00045.md): spark_num, face_name, otx_rope, inx_rope, otx_knot, inx_knot, unknown_str
+    # - [`br00045`](ideas/br00045.md): spark_num, spark_face, otx_rope, inx_rope, otx_knot, inx_knot, unknown_str
     bob_otx_knot = ";"
     bob_inx_knot = "/"
     sue_otx_knot = "?"
@@ -214,7 +214,7 @@ def test_add_to_br00045_csv_ReturnsObj(cursor0: Cursor):
     trlrope_s_vld_tablename = prime_tbl(trlrope_dimen, kw.s_vld)
     insert_trlrope_sqlstr = f"""
 INSERT INTO {trlrope_s_vld_tablename}
-({kw.spark_num}, {kw.face_name}, {kw.otx_rope}, {kw.inx_rope})
+({kw.spark_num}, {kw.spark_face}, {kw.otx_rope}, {kw.inx_rope})
 VALUES
   ({spark1}, '{exx.sue}', '{sue_clean_otx}', '{sue_clean_inx}')
 , ({spark7}, '{exx.bob}', '{bob_clean_otx}', '{bob_clean_inx}')
@@ -225,7 +225,7 @@ VALUES
     trlcore_s_vld_tablename = prime_tbl("TRLCORE", kw.s_vld)
     insert_trlcore_sqlstr = f"""
 INSERT INTO {trlcore_s_vld_tablename}
-({kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+({kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
 VALUES
   ('{exx.sue}', '{sue_otx_knot}', '{sue_inx_knot}', '{sue_unknown_str}')
 , ('{exx.bob}', '{bob_otx_knot}', '{bob_inx_knot}', '{bob_unknown_str}')
@@ -237,7 +237,7 @@ VALUES
     x_ideas = create_init_stance_idea_csv_strs()
     header_only_csv = x_ideas.get("br00045")
     print(f"{header_only_csv=}")
-    expected_header_only_csv = f"{kw.spark_num},{kw.face_name},{kw.otx_rope},{kw.inx_rope},{kw.otx_knot},{kw.inx_knot},{kw.unknown_str}\n"
+    expected_header_only_csv = f"{kw.spark_num},{kw.spark_face},{kw.otx_rope},{kw.inx_rope},{kw.otx_knot},{kw.inx_knot},{kw.unknown_str}\n"
     assert header_only_csv == expected_header_only_csv
 
     # WHEN
@@ -254,7 +254,7 @@ VALUES
 
 def test_add_translate_rows_to_stance_csv_strs_ReturnsObj(cursor0: Cursor):
     # ESTABLISH database with translate data
-    # - [`br00042`](ideas/br00042.md): spark_num, face_name, otx_title, inx_title, otx_knot, inx_knot, unknown_str
+    # - [`br00042`](ideas/br00042.md): spark_num, spark_face, otx_title, inx_title, otx_knot, inx_knot, unknown_str
     bob_otx = "Bob"
     bob_inx = "Bobby"
     sue_otx = "Sue"
@@ -275,7 +275,7 @@ def test_add_translate_rows_to_stance_csv_strs_ReturnsObj(cursor0: Cursor):
     trltitl_dimen = kw.translate_title
     trltitl_s_vld_tablename = prime_tbl(trltitl_dimen, kw.s_vld)
     insert_trltitl_sqlstr = f"""INSERT INTO {trltitl_s_vld_tablename}
-    ({kw.spark_num}, {kw.face_name}, {kw.otx_title}, {kw.inx_title})
+    ({kw.spark_num}, {kw.spark_face}, {kw.otx_title}, {kw.inx_title})
     VALUES
       ({spark1}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
     , ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx}')
@@ -288,7 +288,7 @@ def test_add_translate_rows_to_stance_csv_strs_ReturnsObj(cursor0: Cursor):
     trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
     insert_trlname_sqlstr = f"""
 INSERT INTO {trlname_s_vld_tablename}
-({kw.spark_num}, {kw.face_name}, {kw.otx_name}, {kw.inx_name})
+({kw.spark_num}, {kw.spark_face}, {kw.otx_name}, {kw.inx_name})
 VALUES
   ({spark1}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
 , ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx}')
@@ -305,7 +305,7 @@ VALUES
     trllabe_s_vld_tablename = prime_tbl(trllabe_dimen, kw.s_vld)
     insert_trllabe_sqlstr = f"""
 INSERT INTO {trllabe_s_vld_tablename}
-({kw.spark_num}, {kw.face_name}, {kw.otx_label}, {kw.inx_label})
+({kw.spark_num}, {kw.spark_face}, {kw.otx_label}, {kw.inx_label})
 VALUES
   ({spark1}, '{exx.sue}', '{sue_clean_otx}', '{sue_clean_inx}')
 , ({spark7}, '{exx.bob}', '{bob_clean_otx}', '{bob_clean_inx}')
@@ -322,7 +322,7 @@ VALUES
     trlrope_s_vld_tablename = prime_tbl(trlrope_dimen, kw.s_vld)
     insert_trlrope_sqlstr = f"""
 INSERT INTO {trlrope_s_vld_tablename}
-({kw.spark_num}, {kw.face_name}, {kw.otx_rope}, {kw.inx_rope})
+({kw.spark_num}, {kw.spark_face}, {kw.otx_rope}, {kw.inx_rope})
 VALUES
   ({spark1}, '{exx.sue}', '{sue_clean_otx}', '{sue_clean_inx}')
 , ({spark7}, '{exx.bob}', '{bob_clean_otx}', '{bob_clean_inx}')
@@ -333,7 +333,7 @@ VALUES
     # insert translate_core records
     trlcore_s_vld_tablename = prime_tbl("TRLCORE", kw.s_vld)
     insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename}
-    ({kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+    ({kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
     VALUES
       ('{sue_otx}', '{sue_otx_knot}', '{sue_inx_knot}', '{sue_unknown_str}')
     , ('{bob_otx}', '{bob_otx_knot}', '{bob_inx_knot}', '{bob_unknown_str}')

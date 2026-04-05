@@ -99,7 +99,7 @@ def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario1_Single
     sweep_inx_rope = create_rope(clean_inx_rope, exx.sweep)
 
     sue_translateunit = get_casa_maison_translateunit_set_by_label()
-    sue_dir = create_path(str(temp3_fs), sue_translateunit.face_name)
+    sue_dir = create_path(str(temp3_fs), sue_translateunit.spark_face)
     save_json(sue_dir, get_translate_filename(), sue_translateunit.to_dict())
     sue_otx_dt = get_casa_maison_rope_otx_dt()
     sue_inx_dt = get_casa_maison_rope_inx_dt()
@@ -151,7 +151,7 @@ def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario2_TwoFil
     # ESTABLISH
     sue_translateunit = get_casa_maison_translateunit_set_by_label()
     sue_translateunit.set_namemap(get_suita_namemap())
-    sue_dir = create_path(str(temp3_fs), sue_translateunit.face_name)
+    sue_dir = create_path(str(temp3_fs), sue_translateunit.spark_face)
     translateunit_file_path = create_path(sue_dir, get_translate_filename())
     print(f"{sue_dir=}")
     save_json(sue_dir, get_translate_filename(), sue_translateunit.to_dict())

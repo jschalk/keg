@@ -39,7 +39,7 @@ from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 def test_insert_h_agg_prnunit_CreatesTableRowsFor_personunit_h_agg(cursor0: Cursor):
     # ESTABLISH
     x_spark_num = 77
-    x_face_name = exx.yao
+    x_spark_face = exx.yao
     x_person_name = "Sue"
     x_credor_respect = 88.2
     x_debtor_respect = 88.4
@@ -61,7 +61,7 @@ def test_insert_h_agg_prnunit_CreatesTableRowsFor_personunit_h_agg(cursor0: Curs
     create_sound_and_heard_tables(cursor0)
     x_table_name = "personunit_put_h_agg"
     assert get_row_count(cursor0, x_table_name) == 0
-    objkeysholder = ObjKeysHolder(x_spark_num, x_face_name)
+    objkeysholder = ObjKeysHolder(x_spark_num, x_spark_face)
 
     # WHEN
     insert_h_agg_prnunit(cursor0, objkeysholder, sue_person)
@@ -73,7 +73,7 @@ def test_insert_h_agg_prnunit_CreatesTableRowsFor_personunit_h_agg(cursor0: Curs
     rows = cursor0.fetchall()
     expected_row0 = (
         x_spark_num,
-        x_face_name,
+        x_spark_face,
         exx.a23_dash,
         x_person_name,
         x_credor_respect,
@@ -92,7 +92,7 @@ def test_insert_h_agg_prnunit_CreatesTableRowsFor_personunit_h_agg(cursor0: Curs
 def test_insert_h_agg_prnplan_CreatesTableRowsFor_prnplan_h_agg(cursor0: Cursor):
     # ESTABLISH
     x_spark_num = 77
-    x_face_name = exx.yao
+    x_spark_face = exx.yao
     x_person_name = 2
     x_knot = exx.dash
     casa_rope = create_rope(exx.a23_dash, "casa", x_knot)
@@ -140,7 +140,7 @@ def test_insert_h_agg_prnplan_CreatesTableRowsFor_prnplan_h_agg(cursor0: Cursor)
     assert get_row_count(cursor0, x_table_name) == 0
     x_objkeysholder = ObjKeysHolder(
         spark_num=x_spark_num,
-        face_name=x_face_name,
+        spark_face=x_spark_face,
         moment_rope=exx.a23_dash,
         person_name=x_person_name,
         knot=x_knot,
@@ -157,7 +157,7 @@ def test_insert_h_agg_prnplan_CreatesTableRowsFor_prnplan_h_agg(cursor0: Cursor)
     rows = cursor0.fetchall()
     expected_row0 = (
         x_spark_num,
-        x_face_name,
+        x_spark_face,
         str(x_person_name),
         clean_rope,
         x_begin,
@@ -181,7 +181,7 @@ def test_insert_h_agg_prnplan_CreatesTableRowsFor_prnplan_h_agg(cursor0: Cursor)
 def test_insert_h_agg_prnreas_CreatesTableRowsFor_prnreas_h_agg(cursor0: Cursor):
     # ESTABLISH
     x_spark_num = 77
-    x_face_name = exx.yao
+    x_spark_face = exx.yao
     x_person_name = 2
     x_rope = 3
     x_knot = exx.dash
@@ -196,7 +196,7 @@ def test_insert_h_agg_prnreas_CreatesTableRowsFor_prnreas_h_agg(cursor0: Cursor)
     assert get_row_count(cursor0, x_table_name) == 0
     x_objkeysholder = ObjKeysHolder(
         spark_num=x_spark_num,
-        face_name=x_face_name,
+        spark_face=x_spark_face,
         moment_rope=exx.a23_dash,
         person_name=x_person_name,
         rope=x_rope,
@@ -213,7 +213,7 @@ def test_insert_h_agg_prnreas_CreatesTableRowsFor_prnreas_h_agg(cursor0: Cursor)
     rows = cursor0.fetchall()
     expected_row0 = (
         x_spark_num,
-        x_face_name,
+        x_spark_face,
         str(x_person_name),
         str(x_rope),
         str(x_reason_context),
@@ -228,7 +228,7 @@ def test_insert_h_agg_prnreas_CreatesTableRowsFor_prnreas_h_agg(cursor0: Cursor)
 def test_insert_h_agg_prncase_CreatesTableRowsFor_prncase_h_agg(cursor0: Cursor):
     # ESTABLISH
     x_spark_num = 77
-    x_face_name = exx.yao
+    x_spark_face = exx.yao
     x_person_name = 2
     x_rope = 3
     x_knot = exx.dash
@@ -253,7 +253,7 @@ def test_insert_h_agg_prncase_CreatesTableRowsFor_prncase_h_agg(cursor0: Cursor)
     assert get_row_count(cursor0, x_table_name) == 0
     x_objkeysholder = ObjKeysHolder(
         spark_num=x_spark_num,
-        face_name=x_face_name,
+        spark_face=x_spark_face,
         person_name=x_person_name,
         rope=x_rope,
         reason_context=x_reason_context,
@@ -270,7 +270,7 @@ def test_insert_h_agg_prncase_CreatesTableRowsFor_prncase_h_agg(cursor0: Cursor)
     rows = cursor0.fetchall()
     expected_row0 = (
         x_spark_num,
-        x_face_name,
+        x_spark_face,
         str(x_person_name),
         str(x_rope),
         str(x_reason_context),
@@ -307,7 +307,7 @@ def test_insert_h_agg_prncase_CreatesTableRowsFor_prncase_h_agg(cursor0: Cursor)
 #     #     print(f"""        x_{x_arg},""")
 
 #     x_spark_num = 77
-#     x_face_name = exx.yao
+#     x_spark_face = exx.yao
 #     x_person_name = 2
 #     x_contact_name = 3
 #     x_group_title = 4
@@ -339,7 +339,7 @@ def test_insert_h_agg_prncase_CreatesTableRowsFor_prncase_h_agg(cursor0: Cursor)
 #     create_sound_and_heard_tables(cursor0)
 #     x_table_name = "person_contact_membership_put_h_agg"
 #     assert get_row_count(cursor0, x_table_name) == 0
-#     x_objkeysholder = ObjKeysHolder(spark_num=x_spark_num, face_name=x_face_name, moment_rope=exx.a23_dash, person_name=x_person_name)
+#     x_objkeysholder = ObjKeysHolder(spark_num=x_spark_num, spark_face=x_spark_face, moment_rope=exx.a23_dash, person_name=x_person_name)
 
 #     # WHEN
 #     insert_h_agg_prnmemb(cursor0, x_objkeysholder, x_membership)
@@ -351,7 +351,7 @@ def test_insert_h_agg_prncase_CreatesTableRowsFor_prncase_h_agg(cursor0: Cursor)
 #     rows = cursor0.fetchall()
 #     expected_row0 = (
 #         x_spark_num,
-#         x_face_name,
+#         x_spark_face,
 #         str(exx.a23_dash),
 #         str(x_person_name),
 #         str(x_contact_name),
@@ -386,7 +386,7 @@ def test_insert_h_agg_prncase_CreatesTableRowsFor_prncase_h_agg(cursor0: Cursor)
 #     #     print(f"""        x_{x_arg},""")
 
 #     x_spark_num = 77
-#     x_face_name = exx.yao
+#     x_spark_face = exx.yao
 #     x_person_name = 2
 #     x_contact_name = 3
 #     x_contact_cred_lumen = 4
@@ -423,7 +423,7 @@ def test_insert_h_agg_prncase_CreatesTableRowsFor_prncase_h_agg(cursor0: Cursor)
 #     create_sound_and_heard_tables(cursor0)
 #     x_table_name = "person_contactunit_put_h_agg"
 #     assert get_row_count(cursor0, x_table_name) == 0
-#     x_objkeysholder = ObjKeysHolder(spark_num=x_spark_num, face_name=x_face_name, moment_rope=exx.a23_dash, person_name=x_person_name)
+#     x_objkeysholder = ObjKeysHolder(spark_num=x_spark_num, spark_face=x_spark_face, moment_rope=exx.a23_dash, person_name=x_person_name)
 
 #     # WHEN
 #     insert_h_agg_prncont(cursor0, x_objkeysholder, x_contact)
@@ -435,7 +435,7 @@ def test_insert_h_agg_prncase_CreatesTableRowsFor_prncase_h_agg(cursor0: Cursor)
 #     rows = cursor0.fetchall()
 #     expected_row0 = (
 #         x_spark_num,
-#         x_face_name,
+#         x_spark_face,
 #         str(exx.a23_dash),
 #         str(x_person_name),
 #         str(x_contact_name),
@@ -472,7 +472,7 @@ def test_insert_h_agg_prncase_CreatesTableRowsFor_prncase_h_agg(cursor0: Cursor)
 #     #     print(f"""        x_{x_arg},""")
 
 #     x_spark_num = 77
-#     x_face_name = exx.yao
+#     x_spark_face = exx.yao
 #     x_person_name = 2
 #     x_group_title = 3
 #     x_fund_grain = 4
@@ -497,7 +497,7 @@ def test_insert_h_agg_prncase_CreatesTableRowsFor_prncase_h_agg(cursor0: Cursor)
 #     create_sound_and_heard_tables(cursor0)
 #     x_table_name = "person_groupunit_put_h_agg"
 #     assert get_row_count(cursor0, x_table_name) == 0
-#     x_objkeysholder = ObjKeysHolder(spark_num=x_spark_num, face_name=x_face_name, moment_rope=exx.a23_dash, person_name=x_person_name)
+#     x_objkeysholder = ObjKeysHolder(spark_num=x_spark_num, spark_face=x_spark_face, moment_rope=exx.a23_dash, person_name=x_person_name)
 
 #     # WHEN
 #     insert_h_agg_prngrou(cursor0, x_objkeysholder, x_group)
@@ -509,7 +509,7 @@ def test_insert_h_agg_prncase_CreatesTableRowsFor_prncase_h_agg(cursor0: Cursor)
 #     rows = cursor0.fetchall()
 #     expected_row0 = (
 #         x_spark_num,
-#         x_face_name,
+#         x_spark_face,
 #         str(exx.a23_dash),
 #         str(x_person_name),
 #         str(x_group_title),
@@ -540,7 +540,7 @@ def test_insert_h_agg_prncase_CreatesTableRowsFor_prncase_h_agg(cursor0: Cursor)
 #     #     print(f"""        x_{x_arg},""")
 
 #     x_spark_num = 77
-#     x_face_name = exx.yao
+#     x_spark_face = exx.yao
 #     x_person_name = 2
 #     x_rope = 3
 #     x_awardee_title = 4
@@ -560,7 +560,7 @@ def test_insert_h_agg_prncase_CreatesTableRowsFor_prncase_h_agg(cursor0: Cursor)
 #     create_sound_and_heard_tables(cursor0)
 #     x_table_name = "person_plan_awardunit_put_h_agg"
 #     assert get_row_count(cursor0, x_table_name) == 0
-#     x_objkeysholder = ObjKeysHolder(spark_num=x_spark_num, face_name=x_face_name, moment_rope=exx.a23_dash, person_name=x_person_name, rope=x_rope)
+#     x_objkeysholder = ObjKeysHolder(spark_num=x_spark_num, spark_face=x_spark_face, moment_rope=exx.a23_dash, person_name=x_person_name, rope=x_rope)
 
 #     # WHEN
 #     insert_h_agg_prnawar(cursor0, x_objkeysholder, x_awardheir)
@@ -572,7 +572,7 @@ def test_insert_h_agg_prncase_CreatesTableRowsFor_prncase_h_agg(cursor0: Cursor)
 #     rows = cursor0.fetchall()
 #     expected_row0 = (
 #         x_spark_num,
-#         x_face_name,
+#         x_spark_face,
 #         str(exx.a23_dash),
 #         str(x_person_name),
 #         str(x_rope),
@@ -589,7 +589,7 @@ def test_insert_h_agg_prncase_CreatesTableRowsFor_prncase_h_agg(cursor0: Cursor)
 def test_insert_h_agg_prnfact_CreatesTableRowsFor_prnfact_h_agg(cursor0: Cursor):
     # ESTABLISH
     x_spark_num = 77
-    x_face_name = exx.yao
+    x_spark_face = exx.yao
     x_person_name = 2
     x_rope = 3
     x_knot = exx.dash
@@ -610,7 +610,7 @@ def test_insert_h_agg_prnfact_CreatesTableRowsFor_prnfact_h_agg(cursor0: Cursor)
     assert get_row_count(cursor0, x_table_name) == 0
     x_objkeysholder = ObjKeysHolder(
         spark_num=x_spark_num,
-        face_name=x_face_name,
+        spark_face=x_spark_face,
         person_name=x_person_name,
         rope=x_rope,
         knot=x_knot,
@@ -626,7 +626,7 @@ def test_insert_h_agg_prnfact_CreatesTableRowsFor_prnfact_h_agg(cursor0: Cursor)
     rows = cursor0.fetchall()
     expected_row0 = (
         x_spark_num,
-        x_face_name,
+        x_spark_face,
         str(x_person_name),
         str(x_rope),
         str(x_reason_context),
@@ -662,7 +662,7 @@ def test_insert_h_agg_prnfact_CreatesTableRowsFor_prnfact_h_agg(cursor0: Cursor)
 #     #     print(f"""        x_{x_arg},""")
 
 #     x_spark_num = 77
-#     x_face_name = exx.yao
+#     x_spark_face = exx.yao
 #     x_person_name = 2
 #     x_rope = 3
 #     x_healerunit = healerunit_shop()
@@ -674,7 +674,7 @@ def test_insert_h_agg_prnfact_CreatesTableRowsFor_prnfact_h_agg(cursor0: Cursor)
 #     create_sound_and_heard_tables(cursor0)
 #     x_table_name = "person_plan_healerunit_put_h_agg"
 #     assert get_row_count(cursor0, x_table_name) == 0
-#     x_objkeysholder = ObjKeysHolder(spark_num=x_spark_num, face_name=x_face_name, moment_rope=exx.a23_dash, person_name=x_person_name, rope=x_rope)
+#     x_objkeysholder = ObjKeysHolder(spark_num=x_spark_num, spark_face=x_spark_face, moment_rope=exx.a23_dash, person_name=x_person_name, rope=x_rope)
 
 #     # WHEN
 #     insert_h_agg_prnheal(cursor0, x_objkeysholder, x_healerunit)
@@ -686,7 +686,7 @@ def test_insert_h_agg_prnfact_CreatesTableRowsFor_prnfact_h_agg(cursor0: Cursor)
 #     rows = cursor0.fetchall()
 #     expected_row0 = (
 #         x_spark_num,
-#         x_face_name,
+#         x_spark_face,
 #         str(exx.a23_dash),
 #         str(x_person_name),
 #         str(x_rope),
@@ -717,7 +717,7 @@ def test_insert_h_agg_prnfact_CreatesTableRowsFor_prnfact_h_agg(cursor0: Cursor)
 #     #     print(f"""        x_{x_arg},""")
 
 #     x_spark_num = 77
-#     x_face_name = exx.yao
+#     x_spark_face = exx.yao
 #     x_person_name = 2
 #     x_rope = 3
 #     x_person_name_is_workforce = 5
@@ -734,7 +734,7 @@ def test_insert_h_agg_prnfact_CreatesTableRowsFor_prnfact_h_agg(cursor0: Cursor)
 #     create_sound_and_heard_tables(cursor0)
 #     x_table_name = "person_plan_laborunit_put_h_agg"
 #     assert get_row_count(cursor0, x_table_name) == 0
-#     x_objkeysholder = ObjKeysHolder(spark_num=x_spark_num, face_name=x_face_name, moment_rope=exx.a23_dash, person_name=x_person_name, rope=x_rope)
+#     x_objkeysholder = ObjKeysHolder(spark_num=x_spark_num, spark_face=x_spark_face, moment_rope=exx.a23_dash, person_name=x_person_name, rope=x_rope)
 
 #     # WHEN
 #     insert_h_agg_prnlabo(cursor0, x_objkeysholder, x_workforceheir)
@@ -746,7 +746,7 @@ def test_insert_h_agg_prnfact_CreatesTableRowsFor_prnfact_h_agg(cursor0: Cursor)
 #     rows = cursor0.fetchall()
 #     expected_row0 = (
 #         x_spark_num,
-#         x_face_name,
+#         x_spark_face,
 #         str(exx.a23_dash),
 #         str(x_person_name),
 #         str(x_rope),
@@ -805,7 +805,7 @@ def test_insert_h_agg_obj_CreatesTableRows_Scenario0_ReasonNumRelevantTables(
 
     # WHEN
     spark7 = 7
-    insert_h_agg_obj(cursor0, sue_person, spark7, face_name=exx.yao)
+    insert_h_agg_obj(cursor0, sue_person, spark7, spark_face=exx.yao)
 
     # THEN
     assert get_row_count(cursor0, prnunit_h_agg_table) == 1
@@ -813,7 +813,7 @@ def test_insert_h_agg_obj_CreatesTableRows_Scenario0_ReasonNumRelevantTables(
     assert get_row_count(cursor0, prnfact_h_agg_table) == 1
     assert get_row_count(cursor0, prnreas_h_agg_table) == 3
     assert get_row_count(cursor0, prncase_h_agg_table) == 3
-    select_case_sqlstr = f"SELECT spark_num, face_name FROM {prncase_h_agg_table};"
+    select_case_sqlstr = f"SELECT spark_num, spark_face FROM {prncase_h_agg_table};"
     cursor0.execute(select_case_sqlstr)
     rows = cursor0.fetchall()
     print(rows)

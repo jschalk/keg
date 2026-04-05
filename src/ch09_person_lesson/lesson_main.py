@@ -34,7 +34,7 @@ def get_init_lesson_id_if_None(x_lesson_id: int = None) -> int:
 
 @dataclass
 class LessonUnit:
-    face_name: FaceName = None
+    spark_face: FaceName = None
     moment_rope: MomentRope = None
     person_name: PersonName = None
     lessons_dir: str = None
@@ -46,11 +46,11 @@ class LessonUnit:
     delta_start: int = None
     """Represents a per moment_rope/spark_num PersonDelta for a person_name"""
 
-    def set_face(self, x_face_name: FaceName):
-        self.face_name = x_face_name
+    def set_face(self, x_spark_face: FaceName):
+        self.spark_face = x_spark_face
 
     def del_face(self):
-        self.face_name = None
+        self.spark_face = None
 
     def set_persondelta(self, x_persondelta: PersonDelta):
         self.persondelta = x_persondelta
@@ -66,7 +66,7 @@ class LessonUnit:
 
     def get_step_dict(self) -> dict[str, any]:
         return {
-            "face_name": self.face_name,
+            "spark_face": self.spark_face,
             "moment_rope": self.moment_rope,
             "person_name": self.person_name,
             "spark_num": self.spark_num,
@@ -86,7 +86,7 @@ class LessonUnit:
         x_dict = self.get_step_dict()
         return {
             "person_name": x_dict.get("person_name"),
-            "face_name": x_dict.get("face_name"),
+            "spark_face": x_dict.get("spark_face"),
             "spark_num": x_dict.get("spark_num"),
             "delta_atom_numbers": self.get_delta_atom_numbers(x_dict),
         }
@@ -158,7 +158,7 @@ class LessonUnit:
 
 def lessonunit_shop(
     person_name: PersonName,
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     moment_rope: MomentRope = None,
     lesson_id: int = None,
     persondelta: PersonDelta = None,
@@ -170,7 +170,7 @@ def lessonunit_shop(
     persondelta = persondelta_shop() if persondelta is None else persondelta
     moment_rope = get_default_rope() if moment_rope is None else moment_rope
     x_lessonunit = LessonUnit(
-        face_name=face_name,
+        spark_face=spark_face,
         person_name=person_name,
         moment_rope=moment_rope,
         lesson_id=get_init_lesson_id_if_None(lesson_id),
@@ -192,10 +192,10 @@ def create_lessonunit_from_files(
     lesson_dict = open_json(lessons_dir, lesson_filename)
     x_person_name = lesson_dict.get("person_name")
     x_moment_rope = lesson_dict.get("moment_rope")
-    x_face_name = lesson_dict.get("face_name")
+    x_spark_face = lesson_dict.get("spark_face")
     delta_atom_numbers_list = lesson_dict.get("delta_atom_numbers")
     x_lessonunit = lessonunit_shop(
-        face_name=x_face_name,
+        spark_face=x_spark_face,
         person_name=x_person_name,
         moment_rope=x_moment_rope,
         lesson_id=lesson_id,
@@ -211,7 +211,7 @@ def get_lessonunit_from_dict(lesson_dict: dict) -> LessonUnit:
     else:
         x_spark_num = int(lesson_dict.get("spark_num"))
     x_lessonunit = lessonunit_shop(
-        face_name=lesson_dict.get("face_name"),
+        spark_face=lesson_dict.get("spark_face"),
         person_name=lesson_dict.get("person_name"),
         moment_rope=lesson_dict.get("moment_rope"),
         lesson_id=lesson_dict.get("lesson_id"),

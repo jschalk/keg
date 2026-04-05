@@ -2,7 +2,6 @@
   "attributes": {
     "credor_respect"   : { "otx_key": false }, 
     "debtor_respect"   : { "otx_key": false }, 
-    "face_name"        : { "otx_key": true  }, 
     "fund_grain"       : { "otx_key": false }, 
     "fund_pool"        : { "otx_key": false }, 
     "knot"             : { "otx_key": false }, 
@@ -11,6 +10,7 @@
     "moment_rope"      : { "otx_key": true  }, 
     "person_name"      : { "otx_key": true  }, 
     "respect_grain"    : { "otx_key": false }, 
+    "spark_face"       : { "otx_key": true  }, 
     "spark_num"        : { "otx_key": true  }
   }, 
   "dimens": ["momentunit", "personunit"], 

@@ -37,7 +37,7 @@ def test_create_prnunit_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     x_respect_grain = 0.2
     values_dict = {
         kw.spark_num: 77,
-        kw.face_name: exx.yao,
+        kw.spark_face: exx.yao,
         kw.moment_rope: x_moment_rope,
         kw.person_name: x_person_name,
         kw.credor_respect: x_credor_respect,
@@ -88,7 +88,7 @@ def test_create_prnplan_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     x_knot = exx.dash
     values_dict = {
         kw.spark_num: 77,
-        kw.face_name: exx.yao,
+        kw.spark_face: exx.yao,
         kw.person_name: x_person_name,
         kw.addin: x_addin,
         kw.begin: x_begin,
@@ -134,7 +134,7 @@ def test_create_prnreas_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     x_active_requisite = 3
     values_dict = {
         kw.spark_num: 77,
-        kw.face_name: exx.yao,
+        kw.spark_face: exx.yao,
         kw.person_name: x_person_name,
         kw.plan_rope: x_rope,
         kw.reason_context: x_reason_context,
@@ -174,7 +174,7 @@ def test_create_prncase_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     x_reason_divisor = 6
     values_dict = {
         kw.spark_num: 77,
-        kw.face_name: exx.yao,
+        kw.spark_face: exx.yao,
         kw.person_name: x_person_name,
         kw.plan_rope: x_rope,
         kw.reason_context: x_reason_context,
@@ -219,7 +219,7 @@ def test_create_prncase_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     x_fund_take = 6
 #     values_dict = {
 #     kw.spark_num: 77,
-#     kw.face_name: exx.yao,
+#     kw.spark_face: exx.yao,
 #     kw.moment_rope: x_moment_rope,
 #     kw.person_name: x_person_name,
 #     kw.plan_rope: x_rope,
@@ -262,7 +262,7 @@ def test_create_prnfact_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
     x_fact_upper_otx = 5
     values_dict = {
         kw.spark_num: 77,
-        kw.face_name: exx.yao,
+        kw.spark_face: exx.yao,
         kw.person_name: x_person_name,
         kw.plan_rope: x_rope,
         kw.knot: x_knot,
@@ -302,7 +302,7 @@ def test_create_prnfact_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     x_healer_name = 2
 #     values_dict = {
 #     kw.spark_num: 77,
-#     kw.face_name: exx.yao,
+#     kw.spark_face: exx.yao,
 #     kw.moment_rope: x_moment_rope,
 #     kw.person_name: x_person_name,
 #     kw.plan_rope: x_rope,
@@ -340,7 +340,7 @@ def test_create_prnfact_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     x_person_name_is_workforce = 3
 #     values_dict = {
 #     kw.spark_num: 77,
-#     kw.face_name: exx.yao,
+#     kw.spark_face: exx.yao,
 #     kw.moment_rope: x_moment_rope,
 #     kw.person_name: x_person_name,
 #     kw.plan_rope: x_rope,
@@ -391,7 +391,7 @@ def test_create_prnfact_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     x_groupmark = 13
 #     values_dict = {
 #     kw.spark_num: 77,
-#     kw.face_name: exx.yao,
+#     kw.spark_face: exx.yao,
 #     kw.moment_rope: x_moment_rope,
 #     kw.person_name: x_person_name,
 #     kw.contact_name: x_contact_name,
@@ -449,7 +449,7 @@ def test_create_prnfact_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     x_fund_agenda_ratio_take = 12
 #     values_dict = {
 #     kw.spark_num: 77,
-#     kw.face_name: exx.yao,
+#     kw.spark_face: exx.yao,
 #     kw.moment_rope: x_moment_rope,
 #     kw.person_name: x_person_name,
 #     kw.contact_name: x_contact_name,
@@ -501,7 +501,7 @@ def test_create_prnfact_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):
 #     x_fund_agenda_take = 8
 #     values_dict = {
 #     kw.spark_num: 77,
-#     kw.face_name: exx.yao,
+#     kw.spark_face: exx.yao,
 #     kw.moment_rope: x_moment_rope,
 #     kw.person_name: x_person_name,
 #     kw.group_title: x_group_title,

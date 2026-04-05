@@ -16,7 +16,7 @@ def test_RopeMap_Exists():
     x_ropemap = RopeMap()
 
     # WHEN / THEN
-    assert not x_ropemap.face_name
+    assert not x_ropemap.spark_face
     assert not x_ropemap.spark_num
     assert not x_ropemap.otx2inx
     assert not x_ropemap.unknown_str
@@ -35,7 +35,7 @@ def test_ropemap_shop_ReturnsObj_Scenario0():
 
     # WHEN
     e7_ropemap = ropemap_shop(
-        face_name=exx.bob,
+        spark_face=exx.bob,
         spark_num=spark7,
         otx2inx=otx2inx,
         unknown_str=x_unknown_str,
@@ -44,14 +44,14 @@ def test_ropemap_shop_ReturnsObj_Scenario0():
     )
 
     # THEN
-    assert e7_ropemap.face_name == exx.bob
+    assert e7_ropemap.spark_face == exx.bob
     assert e7_ropemap.spark_num == spark7
     assert e7_ropemap.otx2inx == otx2inx
     assert e7_ropemap.unknown_str == x_unknown_str
     assert e7_ropemap.otx_knot == slash_otx_knot
     assert e7_ropemap.inx_knot == colon_inx_knot
     assert e7_ropemap.labelmap == labelmap_shop(
-        face_name=exx.bob,
+        spark_face=exx.bob,
         spark_num=spark7,
         unknown_str=x_unknown_str,
         otx_knot=slash_otx_knot,
@@ -68,7 +68,7 @@ def test_ropemap_shop_ReturnsObj_Scenario2():
     assert x_ropemap.unknown_str == default_unknown_str_if_None()
     assert x_ropemap.otx_knot == default_knot_if_None()
     assert x_ropemap.inx_knot == default_knot_if_None()
-    assert x_ropemap.face_name is None
+    assert x_ropemap.spark_face is None
     assert x_ropemap.spark_num == 0
     assert x_ropemap.labelmap == labelmap_shop(
         spark_num=0,
@@ -86,7 +86,7 @@ def test_ropemap_shop_ReturnsObj_Scenario3_TranslateCoreAttrAreDefaultWhenGiven_
 
     # WHEN
     x_ropemap = ropemap_shop(
-        face_name=exx.bob,
+        spark_face=exx.bob,
         spark_num=spark7,
         otx2inx=otx2inx,
         unknown_str=x_nan,
@@ -95,7 +95,7 @@ def test_ropemap_shop_ReturnsObj_Scenario3_TranslateCoreAttrAreDefaultWhenGiven_
     )
 
     # THEN
-    assert x_ropemap.face_name == exx.bob
+    assert x_ropemap.spark_face == exx.bob
     assert x_ropemap.spark_num == spark7
     assert x_ropemap.otx2inx == otx2inx
     assert x_ropemap.unknown_str == default_unknown_str_if_None()
@@ -404,7 +404,7 @@ def test_RopeMap_to_dict_ReturnsObj():
     x_ropemap = ropemap_shop(exx.sue, otx_knot=slash_otx_knot)
     x1_rope_map_dict = {
         kw.spark_num: 0,
-        kw.face_name: exx.sue,
+        kw.spark_face: exx.sue,
         kw.inx_knot: x_ropemap.inx_knot,
         kw.otx2inx: {},
         kw.otx_knot: x_ropemap.otx_knot,
@@ -420,7 +420,7 @@ def test_RopeMap_to_dict_ReturnsObj():
     # THEN
     x2_rope_map_dict = {
         kw.spark_num: spark7,
-        kw.face_name: exx.sue,
+        kw.spark_face: exx.sue,
         kw.inx_knot: x_ropemap.inx_knot,
         kw.otx2inx: {clean_otx: clean_inx},
         kw.otx_knot: x_ropemap.otx_knot,
@@ -445,10 +445,10 @@ def test_get_ropemap_from_dict_ReturnsObj():
     gen_ropemap = get_ropemap_from_dict(x_ropemap.to_dict())
 
     # THEN
-    assert gen_ropemap.face_name == x_ropemap.face_name
+    assert gen_ropemap.spark_face == x_ropemap.spark_face
     assert gen_ropemap.spark_num == x_ropemap.spark_num
     assert gen_ropemap.spark_num == spark7
-    assert gen_ropemap.labelmap.face_name == x_ropemap.labelmap.face_name
+    assert gen_ropemap.labelmap.spark_face == x_ropemap.labelmap.spark_face
     assert gen_ropemap.labelmap.otx2inx != x_ropemap.labelmap.otx2inx
     assert gen_ropemap.labelmap != x_ropemap.labelmap
     assert gen_ropemap.otx2inx == x_ropemap.otx2inx
@@ -615,7 +615,7 @@ def test_inherit_ropemap_ReturnsObj_Scenario3_RaiseErrorWhenDifferent_x_unknown_
     assert str(excinfo.value) == "Core attrs in conflict"
 
 
-def test_inherit_ropemap_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_face_name():
+def test_inherit_ropemap_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_spark_face():
     # ESTABLISH
     old_ropemap = ropemap_shop(exx.sue, 0)
     new_ropemap = ropemap_shop(exx.bob, 1)

@@ -80,7 +80,7 @@ def test_get_all_idea_dataframes_ReturnsObj_Scenario0_TranslateSheetNames(
     ex_file_path = create_path(x_dir, ex_filename)
     idea_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.cumulative_minute,
         kw.moment_rope,
         kw.hour_label,
@@ -118,7 +118,7 @@ def test_get_all_idea_dataframes_ReturnsObj_Scenario1(temp3_fs):
     ex_file_path = create_path(x_dir, ex_filename)
     idea_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.cumulative_minute,
         kw.moment_rope,
         kw.hour_label,
@@ -128,7 +128,7 @@ def test_get_all_idea_dataframes_ReturnsObj_Scenario1(temp3_fs):
     row2 = [spark1, exx.sue, minute_420, exx.a23, hour7am, ";"]
     incomplete_idea_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.cumulative_minute,
         kw.moment_rope,
     ]

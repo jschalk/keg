@@ -53,7 +53,7 @@ def test_get_idea_brick_md_ReturnsObj():
             kw.knot: {kw.otx_key: False},
             kw.c400_number: {kw.otx_key: False},
             kw.spark_num: {kw.otx_key: True},
-            kw.face_name: {kw.otx_key: True},
+            kw.spark_face: {kw.otx_key: True},
             kw.moment_rope: {kw.otx_key: True},
             kw.fund_grain: {kw.otx_key: False},
             kw.job_listen_rotations: {kw.otx_key: False},
@@ -78,7 +78,7 @@ def test_get_idea_brick_md_ReturnsObj():
 
 ## Attributes
 - `{kw.spark_num}`
-- `{kw.face_name}`
+- `{kw.spark_face}`
 - `{kw.moment_rope}`
 - `{kw.epoch_label}`
 - `{kw.c400_number}`
@@ -102,7 +102,7 @@ def test_get_idea_brick_mds_ReturnsObj(temp3_fs):
             kw.knot: {kw.otx_key: False},
             kw.c400_number: {kw.otx_key: False},
             kw.spark_num: {kw.otx_key: True},
-            kw.face_name: {kw.otx_key: True},
+            kw.spark_face: {kw.otx_key: True},
             kw.moment_rope: {kw.otx_key: True},
             kw.fund_grain: {kw.otx_key: False},
             kw.job_listen_rotations: {kw.otx_key: False},
@@ -127,7 +127,7 @@ def test_get_idea_brick_mds_ReturnsObj(temp3_fs):
 
 ## Attributes
 - `{kw.spark_num}`
-- `{kw.face_name}`
+- `{kw.spark_face}`
 - `{kw.moment_rope}`
 - `{kw.epoch_label}`
 - `{kw.c400_number}`

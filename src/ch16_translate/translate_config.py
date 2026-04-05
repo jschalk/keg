@@ -83,7 +83,7 @@ def get_translate_args_class_types() -> dict[str, str]:
         "debtor_respect": "float",
         "denom": "int",
         "epoch_label": "LabelTerm",
-        "face_name": "NameTerm",
+        "spark_face": "NameTerm",
         "fact_context": "RopeTerm",
         "fact_state": "RopeTerm",
         "fact_upper": "FactNum",
@@ -175,7 +175,7 @@ def get_translateable_args() -> set:
         "awardee_title",
         "person_name",
         "epoch_label",
-        "face_name",
+        "spark_face",
         "fact_context",
         "fact_state",
         "group_title",
@@ -209,7 +209,7 @@ def set_translateable_otx_inx_args(args: set) -> set:
 def get_translate_nameterm_args() -> set[str]:
     return {
         "contact_name",
-        "face_name",
+        "spark_face",
         "healer_name",
         "person_name",
     }

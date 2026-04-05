@@ -1,9 +1,9 @@
 {
   "attributes": {
-    "face_name"  : { "otx_key": true  }, 
     "knot"       : { "otx_key": false }, 
     "moment_rope": { "otx_key": true  }, 
     "offi_time"  : { "otx_key": true  }, 
+    "spark_face" : { "otx_key": true  }, 
     "spark_num"  : { "otx_key": true  }
   }, 
   "dimens": ["momentunit", "moment_timeoffi"], 

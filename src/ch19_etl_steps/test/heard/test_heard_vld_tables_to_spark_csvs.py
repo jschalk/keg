@@ -35,7 +35,7 @@ def test_etl_heard_vld_to_spark_person_csvs_CreatesCSVs_Scenario0_person_contact
 
     create_sound_and_heard_tables(cursor0)
     insert_raw_sqlstr = f"""
-INSERT INTO {put_agg_tablename} ({kw.spark_num},{kw.face_name},{kw.moment_rope},{kw.person_name},{kw.contact_name},{kw.contact_cred_lumen},{kw.knot})
+INSERT INTO {put_agg_tablename} ({kw.spark_num},{kw.spark_face},{kw.moment_rope},{kw.person_name},{kw.contact_name},{kw.contact_cred_lumen},{kw.knot})
 VALUES
   ({spark3},'{sue_inx}','{exx.a23_dash}','{bob_inx}','{yao_inx}',{yao_contact_cred_lumen5},'{exx.dash}')
 , ({spark7},'{sue_inx}','{exx.a23_dash}','{bob_inx}','{yao_inx}',{yao_contact_cred_lumen5},'{exx.dash}')
@@ -59,10 +59,10 @@ VALUES
     e7_put_csv = open_file(a23_e7_prncont_put_path)
     print(f"{e3_put_csv=}")
     print(f"{e7_put_csv=}")
-    expected_e3_put_csv = f"""spark_num,face_name,moment_rope,person_name,contact_name,contact_cred_lumen,contact_debt_lumen,knot
+    expected_e3_put_csv = f"""spark_num,spark_face,moment_rope,person_name,contact_name,contact_cred_lumen,contact_debt_lumen,knot
 3,Suzy,{exx.a23_dash},Bobby,Bobby,5.0,,{exx.dash}
 """
-    expected_e7_put_csv = f"""spark_num,face_name,moment_rope,person_name,contact_name,contact_cred_lumen,contact_debt_lumen,knot
+    expected_e7_put_csv = f"""spark_num,spark_face,moment_rope,person_name,contact_name,contact_cred_lumen,contact_debt_lumen,knot
 7,Suzy,{exx.a23_dash},Bobby,Bobby,5.0,,{exx.dash}
 7,Suzy,{exx.a23_dash},Bobby,Suzy,7.0,,{exx.dash}
 """
@@ -97,7 +97,7 @@ def test_etl_heard_vld_to_spark_person_csvs_CreatesCSVs_Scenario1_person_plan_re
     dirty_rope = create_rope(exx.a23, exx.dirtyness)
     insert_raw_sqlstr = f"""
 INSERT INTO {put_agg_tablename} (
-{kw.spark_num},{kw.face_name},{kw.person_name},{kw.plan_rope},{kw.reason_context},{kw.active_requisite},{kw.knot})
+{kw.spark_num},{kw.spark_face},{kw.person_name},{kw.plan_rope},{kw.reason_context},{kw.active_requisite},{kw.knot})
 VALUES
   ({spark3},'{sue_inx}','{bob_inx}','{mop_rope}','{dirty_rope}',NULL,'{x_knot}')
 , ({spark7},'{sue_inx}','{bob_inx}','{mop_rope}','{dirty_rope}',NULL,'{x_knot}')
@@ -121,10 +121,10 @@ VALUES
     e7_put_csv = open_file(a23_e7_prncont_put_path)
     # print(f"{e3_put_csv=}")
     print(f"{e7_put_csv=}")
-    expected_e3_put_csv = f"""{kw.spark_num},{kw.face_name},{kw.person_name},{kw.plan_rope},{kw.reason_context},{kw.active_requisite},{kw.knot}
+    expected_e3_put_csv = f"""{kw.spark_num},{kw.spark_face},{kw.person_name},{kw.plan_rope},{kw.reason_context},{kw.active_requisite},{kw.knot}
 3,Suzy,{bob_inx},{mop_rope},{dirty_rope},,;
 """
-    expected_e7_put_csv = f"""{kw.spark_num},{kw.face_name},{kw.person_name},{kw.plan_rope},{kw.reason_context},{kw.active_requisite},{kw.knot}
+    expected_e7_put_csv = f"""{kw.spark_num},{kw.spark_face},{kw.person_name},{kw.plan_rope},{kw.reason_context},{kw.active_requisite},{kw.knot}
 7,Suzy,{bob_inx},{mop_rope},{dirty_rope},,;
 7,Suzy,{bob_inx},{mop_rope},{dirty_rope},,;
 """

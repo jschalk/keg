@@ -2,7 +2,6 @@
   "attributes": {
     "c400_number"         : { "otx_key": false }, 
     "epoch_label"         : { "otx_key": false }, 
-    "face_name"           : { "otx_key": true  }, 
     "fund_grain"          : { "otx_key": false }, 
     "job_listen_rotations": { "otx_key": false }, 
     "knot"                : { "otx_key": false }, 
@@ -10,6 +9,7 @@
     "moment_rope"         : { "otx_key": true  }, 
     "monthday_index"      : { "otx_key": false }, 
     "respect_grain"       : { "otx_key": false }, 
+    "spark_face"          : { "otx_key": true  }, 
     "spark_num"           : { "otx_key": true  }, 
     "yr1_jan1_offset"     : { "otx_key": false }
   }, 

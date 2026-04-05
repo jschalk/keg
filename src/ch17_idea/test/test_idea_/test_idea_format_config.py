@@ -71,7 +71,7 @@ def test_get_headers_list_ReturnsObj():
     # print(f"{format_00001_headers=}")
     assert format_00021_headers == [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.contact_name,
@@ -84,7 +84,7 @@ def test_get_headers_list_ReturnsObj():
 def get_sorted_headers_str(idea_filename):
     x_idearef = get_idearef_from_file(idea_filename)
     idea_attributes = set(x_idearef.get(kw.attributes).keys())
-    idea_attributes.remove(kw.face_name)
+    idea_attributes.remove(kw.spark_face)
     idea_attributes.remove(kw.spark_num)
     # print(f"{idea_attributes=}")
     attr_sort = get_idea_elements_sort_order()
@@ -196,14 +196,14 @@ def test_get_idearef_obj_HasAttrs_idea_format_00021_person_contactunit_v0_0_0():
         kw.contact_cred_lumen: {kw.otx_key: False},
         kw.contact_debt_lumen: {kw.otx_key: False},
         kw.spark_num: {kw.otx_key: True},
-        kw.face_name: {kw.otx_key: True},
+        kw.spark_face: {kw.otx_key: True},
         kw.moment_rope: {kw.otx_key: True},
         kw.person_name: {kw.otx_key: True},
         kw.knot: {kw.otx_key: False},
     }
     headers_list = format_00001_idearef.get_headers_list()
     assert headers_list[0] == kw.spark_num
-    assert headers_list[1] == kw.face_name
+    assert headers_list[1] == kw.spark_face
     assert headers_list[2] == kw.moment_rope
     assert headers_list[3] == kw.person_name
     assert headers_list[4] == kw.contact_name
@@ -222,7 +222,7 @@ def test_get_idearef_obj_HasAttrs_idea_format_00020_person_contact_membership_v0
     assert len(format_00020_idearef.attributes) == 9
     headers_list = format_00020_idearef.get_headers_list()
     assert headers_list[0] == kw.spark_num
-    assert headers_list[1] == kw.face_name
+    assert headers_list[1] == kw.spark_face
     assert headers_list[2] == kw.moment_rope
     assert headers_list[3] == kw.person_name
     assert headers_list[4] == kw.contact_name
@@ -243,7 +243,7 @@ def test_get_idearef_obj_HasAttrs_idea_format_00013_planunit_v0_0_0():
     assert len(format_00003_idearef.attributes) == 7
     headers_list = format_00003_idearef.get_headers_list()
     assert headers_list[0] == kw.spark_num
-    assert headers_list[1] == kw.face_name
+    assert headers_list[1] == kw.spark_face
     assert headers_list[2] == kw.moment_rope
     assert headers_list[3] == kw.person_name
     assert headers_list[4] == kw.plan_rope
@@ -262,7 +262,7 @@ def test_get_idearef_obj_HasAttrs_idea_format_00019_planunit_v0_0_0():
     assert len(format_00019_idearef.attributes) == 13
     headers_list = format_00019_idearef.get_headers_list()
     assert headers_list[0] == kw.spark_num
-    assert headers_list[1] == kw.face_name
+    assert headers_list[1] == kw.spark_face
     assert headers_list[2] == kw.moment_rope
     assert headers_list[3] == kw.person_name
     assert headers_list[4] == kw.plan_rope
@@ -302,6 +302,7 @@ def test_get_dimen_minimum_put_idea_names_ReturnsObj():
 
 
 def test_get_dimen_minimum_del_idea_names_ReturnsObj():
+    # sourcery skip: no-conditionals-in-tests
     # ESTABLISH / WHEN
     dimen_minimum_del_idea_names = get_dimen_minimum_del_idea_names()
 
@@ -309,10 +310,11 @@ def test_get_dimen_minimum_del_idea_names_ReturnsObj():
     assert dimen_minimum_del_idea_names
     dimen_minimum_keys = set(dimen_minimum_del_idea_names.keys())
     idea_config_dict = get_idea_config_dict()
-    idea_config_dimens = set()
-    for idea_dimen, dimen_config in idea_config_dict.items():
-        if dimen_config.get(kw.idea_category) == kw.person:
-            idea_config_dimens.add(idea_dimen)
+    idea_config_dimens = {
+        idea_dimen
+        for idea_dimen, dimen_config in idea_config_dict.items()
+        if dimen_config.get(kw.idea_category) == kw.person
+    }
     print(f"{idea_config_dimens=}")
     assert dimen_minimum_keys == idea_config_dimens
     for idea_dimen in idea_config_dimens:

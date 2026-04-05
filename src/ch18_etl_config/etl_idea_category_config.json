@@ -7,7 +7,7 @@
         "set_nabuable_otx_inx_args": true
       }, 
       "h_raw": { "add": ["error_message"], "set_translateable_otx_inx_args": true }, 
-      "h_vld": { "remove": ["spark_num", "face_name"] }, 
+      "h_vld": { "remove": ["spark_num", "spark_face"] }, 
       "s_agg": { "add": ["error_message"] }, 
       "s_raw": { "add": ["idea_number", "error_message"] }, 
       "s_vld": {}
@@ -56,7 +56,7 @@
     }
   }, 
   "translate_core": {
-    "override_columns": ["face_name", "otx_knot", "inx_knot", "unknown_str"], 
+    "override_columns": ["spark_face", "otx_knot", "inx_knot", "unknown_str"], 
     "stages": {
       "s_agg": {}, 
       "s_raw": { "add": ["source_dimen", "error_message"] }, 

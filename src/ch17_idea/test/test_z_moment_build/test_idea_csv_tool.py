@@ -91,7 +91,7 @@ def test_create_init_stance_idea_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
     expected_br00045_csv = expected_stance_csv_strs.get("br00045")
     print(f"{expected_br00001_csv=}")
 
-    face_spark_str = "spark_num,face_name,"
+    face_spark_str = "spark_num,spark_face,"
     assert x_ideas.get("br00000") == f"{face_spark_str}{expected_br00000_csv}"
     assert x_ideas.get("br00001") == f"{face_spark_str}{expected_br00001_csv}"
     assert x_ideas.get("br00002") == f"{face_spark_str}{expected_br00002_csv}"
@@ -229,12 +229,12 @@ def test_add_momentunits_to_stance_csv_strs_ReturnsObj_Scenario1_TwoMomentUnits(
     expected_br00003_csv = get_ordered_csv(get_ex2_br00003_df())
     expected_br00004_csv = get_ordered_csv(get_ex2_br00004_df())
     expected_br00005_csv = get_ordered_csv(get_ex2_br00005_df())
-    expected_br00000_csv = f"spark_num,face_name,{expected_br00000_csv}"
-    expected_br00001_csv = f"spark_num,face_name,{expected_br00001_csv}"
-    expected_br00002_csv = f"spark_num,face_name,{expected_br00002_csv}"
-    expected_br00003_csv = f"spark_num,face_name,{expected_br00003_csv}"
-    expected_br00004_csv = f"spark_num,face_name,{expected_br00004_csv}"
-    expected_br00005_csv = f"spark_num,face_name,{expected_br00005_csv}"
+    expected_br00000_csv = f"spark_num,spark_face,{expected_br00000_csv}"
+    expected_br00001_csv = f"spark_num,spark_face,{expected_br00001_csv}"
+    expected_br00002_csv = f"spark_num,spark_face,{expected_br00002_csv}"
+    expected_br00003_csv = f"spark_num,spark_face,{expected_br00003_csv}"
+    expected_br00004_csv = f"spark_num,spark_face,{expected_br00004_csv}"
+    expected_br00005_csv = f"spark_num,spark_face,{expected_br00005_csv}"
     x_rope = exx.a23_slash
     expected_br00000_csv = expected_br00000_csv.replace(x_rope, f",,{x_rope}")
     expected_br00001_csv = expected_br00001_csv.replace(x_rope, f",,{x_rope}")

@@ -20,7 +20,7 @@ def get_clean_labelmap() -> LabelMap:
     clean_inx = "propre"
     casa_otx = "casa1"
     casa_inx = "casa2"
-    labelmap = labelmap_shop(face_name="Sue")
+    labelmap = labelmap_shop(spark_face="Sue")
     labelmap.set_otx2inx(clean_otx, clean_inx)
     labelmap.set_otx2inx(casa_otx, casa_inx)
     return labelmap
@@ -36,7 +36,7 @@ def get_clean_ropemap() -> RopeMap:
     knot = default_knot_if_None()
     clean_otx_rope = create_rope(otx_amy45_str, clean_otx_str, knot)
     # clean_otx_rope = f"{knot}{otx_amy45_str}{knot}{clean_otx_str}{knot}"
-    rope_mapunit = ropemap_shop(face_name="Sue")
+    rope_mapunit = ropemap_shop(spark_face="Sue")
     rope_mapunit.set_label(clean_otx_str, clean_inx_str)
     rope_mapunit.set_otx2inx(otx_amy45_rope, inx_amy87_rope)
     print(f"{rope_mapunit.otx2inx.keys()=}")
@@ -49,7 +49,7 @@ def get_swim_titlemap() -> TitleMap:
     swim_otx = f"swim{knot}"
     swim_inx = f"nage{knot}"
     climb_otx = f"climb{knot}"
-    x_titlemap = titlemap_shop(face_name="Sue")
+    x_titlemap = titlemap_shop(spark_face="Sue")
     x_titlemap.set_otx2inx(swim_otx, swim_inx)
     x_titlemap.set_otx2inx(climb_otx, climb_otx)
     return x_titlemap
@@ -63,7 +63,7 @@ def get_suita_namemap() -> NameMap:
     xio_inx = "Xioita"
     sue_inx = "Suita"
     bob_inx = "Bobita"
-    contact_name_mapunit = namemap_shop(face_name="Sue")
+    contact_name_mapunit = namemap_shop(spark_face="Sue")
     contact_name_mapunit.set_otx2inx(xio_otx, xio_inx)
     contact_name_mapunit.set_otx2inx(sue_otx, sue_inx)
     contact_name_mapunit.set_otx2inx(bob_otx, bob_inx)
@@ -75,7 +75,7 @@ def get_suita_namemap() -> NameMap:
 #     sue_inx = "Sue"
 #     zia_otx = "Zia"
 #     zia_inx = "Zia"
-#     x_titlemap = mapunit_shop(kw.NameTerm, face_name="Sue")
+#     x_titlemap = mapunit_shop(kw.NameTerm, spark_face="Sue")
 #     x_titlemap.set_otx2inx(sue_otx, sue_inx)
 #     x_titlemap.set_otx2inx(zia_otx, zia_inx)
 #     return x_titlemap
@@ -86,7 +86,7 @@ def get_suita_namemap() -> NameMap:
 #     sue_inx = f"Sue{default_knot_if_None()}"
 #     zia_otx = "Zia"
 #     zia_inx = f"Zia{default_knot_if_None()}"
-#     x_titlemap = mapunit_shop(kw.TitleTerm, face_name="Sue")
+#     x_titlemap = mapunit_shop(kw.TitleTerm, spark_face="Sue")
 #     x_titlemap.set_otx2inx(sue_otx, sue_inx)
 #     x_titlemap.set_otx2inx(zia_otx, zia_inx)
 #     return x_titlemap
@@ -96,7 +96,7 @@ def get_suita_namemap() -> NameMap:
 #     clean_inx = "propre"
 #     casa_otx = f"casa{default_knot_if_None()}"
 #     casa_inx = "casa"
-#     labelmap = mapunit_shop(kw.LabelTerm, face_name="Sue")
+#     labelmap = mapunit_shop(kw.LabelTerm, spark_face="Sue")
 #     labelmap.set_otx2inx(exx.clean, clean_inx)
 #     labelmap.set_otx2inx(casa_otx, casa_inx)
 #     return labelmap
@@ -234,7 +234,7 @@ def get_casa_maison_rope_otx2inx_dt() -> DataFrame:
 
     inx_dt = DataFrame(
         columns=[
-            kw.face_name,
+            kw.spark_face,
             kw.spark_num,
             kw.otx_knot,
             kw.inx_knot,
@@ -265,7 +265,7 @@ def get_casa_maison_label_dt() -> DataFrame:
 
     inx_dt = DataFrame(
         columns=[
-            kw.face_name,
+            kw.spark_face,
             kw.spark_num,
             kw.otx_knot,
             kw.inx_knot,
@@ -285,7 +285,7 @@ def get_invalid_namemap() -> NameMap:
     sue_inx = "Sue"
     zia_otx = "Zia"
     zia_inx = "Zia"
-    namemap = namemap_shop(face_name="Sue")
+    namemap = namemap_shop(spark_face="Sue")
     namemap.set_otx2inx(sue_otx, sue_inx)
     namemap.set_otx2inx(zia_otx, zia_inx)
     return namemap
@@ -296,7 +296,7 @@ def get_invalid_titlemap() -> TitleMap:
     sue_inx = f"Sue{default_knot_if_None()}"
     zia_otx = "Zia"
     zia_inx = f"Zia{default_knot_if_None()}"
-    x_titlemap = titlemap_shop(face_name="Sue")
+    x_titlemap = titlemap_shop(spark_face="Sue")
     x_titlemap.set_otx2inx(sue_otx, sue_inx)
     x_titlemap.set_otx2inx(zia_otx, zia_inx)
     return x_titlemap
@@ -307,7 +307,7 @@ def get_invalid_ropemap() -> RopeMap:
     casa_inx = create_rope(exx.casa)
     clean_str = create_rope(casa_otx, "clean")
     clean_inx = create_rope(casa_inx, "propre")
-    ropemap = ropemap_shop(face_name="Sue")
+    ropemap = ropemap_shop(spark_face="Sue")
     ropemap.set_otx2inx(clean_str, clean_inx)
     # ropemap.set_otx2inx(casa_otx, casa_inx)
     return ropemap
@@ -325,7 +325,7 @@ def get_slash_labelmap() -> LabelMap:
         otx_knot=slash_otx_knot,
         inx_knot=colon_inx_knot,
         unknown_str=x_unknown_str,
-        face_name="Sue",
+        spark_face="Sue",
         spark_num=7,
     )
     x_labelmap.set_otx2inx(otx_amy45_str, inx_amy87_str)
@@ -350,7 +350,7 @@ def get_slash_ropemap() -> RopeMap:
         otx_knot=slash_otx_knot,
         inx_knot=colon_inx_knot,
         unknown_str=x_unknown_str,
-        face_name="Sue",
+        spark_face="Sue",
         spark_num=7,
         x_labelmap=get_slash_labelmap(),
     )
@@ -372,7 +372,7 @@ def get_slash_titlemap() -> TitleMap:
         otx_knot=slash_otx_knot,
         inx_knot=colon_inx_knot,
         unknown_str=x_unknown_str,
-        face_name="Sue",
+        spark_face="Sue",
         spark_num=7,
     )
     x_titlemap.set_otx2inx(swim_otx, swim_inx)
@@ -395,7 +395,7 @@ def get_slash_namemap() -> NameMap:
         otx_knot=slash_otx_knot,
         inx_knot=colon_inx_knot,
         unknown_str=x_unknown_str,
-        face_name="Sue",
+        spark_face="Sue",
         spark_num=7,
     )
     x_namemap.set_otx2inx(xio_otx, xio_inx)
@@ -413,7 +413,7 @@ def get_translate_core_attrs_are_none_namemap() -> NameMap:
     bob_inx = "Bobita"
     x_nan = float("nan")
     x_namemap = namemap_shop(
-        face_name="Sue",
+        spark_face="Sue",
         spark_num=7,
         otx_knot=x_nan,
         inx_knot=x_nan,

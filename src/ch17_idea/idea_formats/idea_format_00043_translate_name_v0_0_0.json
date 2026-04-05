@@ -1,10 +1,10 @@
 {
   "attributes": {
-    "face_name"  : { "otx_key": true  }, 
     "inx_knot"   : { "otx_key": false }, 
     "inx_name"   : { "otx_key": false }, 
     "otx_knot"   : { "otx_key": false }, 
     "otx_name"   : { "otx_key": true  }, 
+    "spark_face" : { "otx_key": true  }, 
     "spark_num"  : { "otx_key": true  }, 
     "unknown_str": { "otx_key": false }
   }, 

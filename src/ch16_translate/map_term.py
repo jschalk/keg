@@ -38,7 +38,7 @@ class SetLabelError(Exception):
 
 @dataclass
 class MapCore:
-    face_name: FaceName = None
+    spark_face: FaceName = None
     spark_num: SparkInt = None
     otx2inx: dict[str, str] = None
     unknown_str: str = None
@@ -61,7 +61,7 @@ class MapCore:
         """Returns dict that is serializable to JSON."""
 
         return {
-            "face_name": self.face_name,
+            "spark_face": self.spark_face,
             "spark_num": self.spark_num,
             "otx_knot": self.otx_knot,
             "inx_knot": self.inx_knot,
@@ -112,7 +112,7 @@ class NameMap(MapCore):
 
 
 def namemap_shop(
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: SparkInt = None,
     otx_knot: KnotTerm = None,
     inx_knot: KnotTerm = None,
@@ -124,7 +124,7 @@ def namemap_shop(
     inx_knot = default_knot_if_None(inx_knot)
 
     return NameMap(
-        face_name=face_name,
+        spark_face=spark_face,
         spark_num=get_0_if_None(spark_num),
         otx_knot=otx_knot,
         inx_knot=inx_knot,
@@ -135,7 +135,7 @@ def namemap_shop(
 
 def get_namemap_from_dict(x_dict: dict) -> NameMap:
     return namemap_shop(
-        face_name=x_dict.get("face_name"),
+        spark_face=x_dict.get("spark_face"),
         spark_num=x_dict.get("spark_num"),
         otx_knot=x_dict.get("otx_knot"),
         inx_knot=x_dict.get("inx_knot"),
@@ -186,7 +186,7 @@ class TitleMap(MapCore):
 
 
 def titlemap_shop(
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: SparkInt = None,
     otx_knot: KnotTerm = None,
     inx_knot: KnotTerm = None,
@@ -198,7 +198,7 @@ def titlemap_shop(
     inx_knot = default_knot_if_None(inx_knot)
 
     return TitleMap(
-        face_name=face_name,
+        spark_face=spark_face,
         spark_num=get_0_if_None(spark_num),
         otx_knot=otx_knot,
         inx_knot=inx_knot,
@@ -209,7 +209,7 @@ def titlemap_shop(
 
 def get_titlemap_from_dict(x_dict: dict) -> TitleMap:
     return titlemap_shop(
-        face_name=x_dict.get("face_name"),
+        spark_face=x_dict.get("spark_face"),
         spark_num=x_dict.get("spark_num"),
         otx_knot=x_dict.get("otx_knot"),
         inx_knot=x_dict.get("inx_knot"),
@@ -260,7 +260,7 @@ class LabelMap(MapCore):
 
 
 def labelmap_shop(
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: SparkInt = None,
     otx_knot: KnotTerm = None,
     inx_knot: KnotTerm = None,
@@ -272,7 +272,7 @@ def labelmap_shop(
     inx_knot = default_knot_if_None(inx_knot)
 
     return LabelMap(
-        face_name=face_name,
+        spark_face=spark_face,
         spark_num=get_0_if_None(spark_num),
         otx_knot=otx_knot,
         inx_knot=inx_knot,
@@ -283,7 +283,7 @@ def labelmap_shop(
 
 def get_labelmap_from_dict(x_dict: dict) -> LabelMap:
     return labelmap_shop(
-        face_name=x_dict.get("face_name"),
+        spark_face=x_dict.get("spark_face"),
         spark_num=x_dict.get("spark_num"),
         otx_knot=x_dict.get("otx_knot"),
         inx_knot=x_dict.get("inx_knot"),
@@ -294,7 +294,7 @@ def get_labelmap_from_dict(x_dict: dict) -> LabelMap:
 
 @dataclass
 class RopeMap:
-    face_name: FaceName = None
+    spark_face: FaceName = None
     spark_num: SparkInt = None
     otx2inx: dict = None
     unknown_str: str = None
@@ -397,7 +397,7 @@ class RopeMap:
         """Returns dict that is serializable to JSON."""
 
         return {
-            "face_name": self.face_name,
+            "spark_face": self.spark_face,
             "spark_num": self.spark_num,
             "otx_knot": self.otx_knot,
             "inx_knot": self.inx_knot,
@@ -407,7 +407,7 @@ class RopeMap:
 
 
 def ropemap_shop(
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: SparkInt = None,
     otx_knot: KnotTerm = None,
     inx_knot: KnotTerm = None,
@@ -424,7 +424,7 @@ def ropemap_shop(
             otx_knot=otx_knot,
             inx_knot=inx_knot,
             unknown_str=unknown_str,
-            face_name=face_name,
+            spark_face=spark_face,
             spark_num=spark_num,
         )
 
@@ -434,14 +434,14 @@ def ropemap_shop(
         otx_knot=otx_knot,
         inx_knot=inx_knot,
         labelmap=x_labelmap,
-        face_name=face_name,
+        spark_face=spark_face,
         spark_num=get_0_if_None(spark_num),
     )
 
 
 def get_ropemap_from_dict(x_dict: dict) -> RopeMap:
     return ropemap_shop(
-        face_name=x_dict.get("face_name"),
+        spark_face=x_dict.get("spark_face"),
         spark_num=x_dict.get("spark_num"),
         otx_knot=x_dict.get("otx_knot"),
         inx_knot=x_dict.get("inx_knot"),
@@ -456,7 +456,7 @@ class MapCoreAttrConflictError(Exception):
 
 def _check_core_attrs_match(new_obj: MapCore, old_obj: MapCore):
     if (
-        old_obj.face_name != new_obj.face_name
+        old_obj.spark_face != new_obj.spark_face
         or old_obj.otx_knot != new_obj.otx_knot
         or old_obj.inx_knot != new_obj.inx_knot
         or old_obj.unknown_str != new_obj.unknown_str

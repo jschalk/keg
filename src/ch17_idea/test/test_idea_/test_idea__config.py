@@ -98,9 +98,9 @@ def test_get_idea_elements_sort_order_ReturnsObj():
     assert table_sorting_priority[2] == kw.source_dimen
     assert table_sorting_priority[3] == kw.translate_spark_num
     assert table_sorting_priority[4] == kw.spark_num
-    assert table_sorting_priority[5] == kw.face_name
-    assert table_sorting_priority[6] == f"{kw.face_name}_otx"
-    assert table_sorting_priority[7] == f"{kw.face_name}_inx"
+    assert table_sorting_priority[5] == kw.spark_face
+    assert table_sorting_priority[6] == f"{kw.spark_face}_otx"
+    assert table_sorting_priority[7] == f"{kw.spark_face}_inx"
     assert table_sorting_priority[8] == kw.moment_rope
     assert table_sorting_priority[9] == f"{kw.moment_rope}_otx"
     assert table_sorting_priority[10] == f"{kw.moment_rope}_inx"
@@ -312,7 +312,7 @@ def test_get_idea_elements_sort_order_ReturnsObj():
     all_args.update()
     all_args.add(kw.idea_number)
     all_args.add(kw.spark_num)
-    all_args.add(kw.face_name)
+    all_args.add(kw.spark_face)
     all_args.add(kw.source_dimen)
     all_args.add(kw.translate_spark_num)
     all_args.add(kw.error_message)
@@ -344,7 +344,7 @@ def test_get_idea_sqlite_types_ReturnsObj():
     # THEN
     assert set(sqlite_types.keys()) == set(get_idea_elements_sort_order())
     assert sqlite_types.get(kw.idea_number) == "TEXT"
-    assert sqlite_types.get(kw.face_name) == "TEXT"
+    assert sqlite_types.get(kw.spark_face) == "TEXT"
     assert sqlite_types.get(kw.translate_spark_num) == "INTEGER"
     assert sqlite_types.get(kw.spark_num) == "INTEGER"
     assert sqlite_types.get(kw.moment_rope) == "TEXT"
@@ -559,7 +559,7 @@ def _validate_idea_config(x_idea_config: dict):
         idea_jkeys_keys = set(idea_dict.get(kw.jkeys).keys())
         # print(f"   {sub_jkeys_keys=}")
         # print(f"  {idea_jkeys_keys=}")
-        assert kw.face_name in idea_jkeys_keys
+        assert kw.spark_face in idea_jkeys_keys
         assert kw.spark_num in idea_jkeys_keys
         if idea_dict.get(kw.idea_category) in {kw.person} and kw.plan in idea_dimen:
             assert kw.moment_rope not in idea_jkeys_keys, idea_dimen
@@ -570,7 +570,7 @@ def _validate_idea_config(x_idea_config: dict):
                 idea_jkeys_keys.remove(kw.moment_rope)
         if idea_dict.get(kw.idea_category) in {kw.person}:
             idea_jkeys_keys.remove(kw.person_name)
-        idea_jkeys_keys.remove(kw.face_name)
+        idea_jkeys_keys.remove(kw.spark_face)
         idea_jkeys_keys.remove(kw.spark_num)
         assertion_failure_str = f"{idea_dimen=} {sub_jkeys_keys=} {idea_jkeys_keys=}"
         assert sub_jkeys_keys == idea_jkeys_keys, assertion_failure_str
@@ -691,7 +691,7 @@ def test_get_idea_format_filenames_ReturnsObj_Validate_idea_format_files():
                     # )
                 assert x_dimen not in format_dimens
 
-    # assert kw.face_name in idea_format_attributes
+    # assert kw.spark_face in idea_format_attributes
     # assert kw.spark_num in idea_format_attributes
 
     # confirm every ideanumber is unique
@@ -834,7 +834,7 @@ def test_get_quick_ideas_column_ref_ReturnsObj():
     assert len(x_idea_quick_column_ref) == len(get_idea_numbers())
     assert x_idea_quick_column_ref.get("br00000") == {
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.c400_number,
         kw.moment_rope,
         kw.fund_grain,

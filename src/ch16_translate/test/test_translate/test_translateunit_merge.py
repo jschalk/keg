@@ -64,7 +64,7 @@ def test_TranslateUnit_inherit_translateunit_ReturnsObj_Scenario3_RaiseErrorWhen
     assert str(excinfo.value) == "Core attrs in conflict"
 
 
-def test_TranslateUnit_inherit_translateunit_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_face_name():
+def test_TranslateUnit_inherit_translateunit_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_spark_face():
     # ESTABLISH
     old_translateunit = translateunit_shop(exx.sue, 0)
     new_translateunit = translateunit_shop(exx.bob, 1)

@@ -436,17 +436,17 @@ def check_dataframe_column_names(df: DataFrame, name_col1: str, name_col2: str) 
     return df.columns[0] == name_col1 and df.columns[1] == name_col2
 
 
-def update_all_face_name_spark_num_columns(
-    excel_file_path: str, face_name: FaceName, spark_num: SparkInt
+def update_all_spark_face_spark_num_columns(
+    excel_file_path: str, spark_face: FaceName, spark_num: SparkInt
 ):
     workbook = openpyxl_load_workbook(excel_file_path)
     # Loop through all sheets in the workbook
     for sheet in workbook.sheetnames:
         ws = workbook[sheet]
-        if ws["A1"].value == "spark_num" and ws["B1"].value == "face_name":
+        if ws["A1"].value == "spark_num" and ws["B1"].value == "spark_face":
             for row in range(2, ws.max_row + 1):
                 ws.cell(row=row, column=1, value=spark_num)
-                ws.cell(row=row, column=2, value=face_name)
+                ws.cell(row=row, column=2, value=spark_face)
 
             # Save the updated sheet
             workbook.save(excel_file_path)

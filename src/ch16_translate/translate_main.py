@@ -41,7 +41,7 @@ class TranslateUnit:
     """
 
     spark_num: SparkInt = None
-    face_name: PersonName = None
+    spark_face: PersonName = None
     titlemap: TitleMap = None
     namemap: NameMap = None
     labelmap: LabelMap = None
@@ -127,7 +127,7 @@ class TranslateUnit:
         return self.ropemap.del_otx2inx(otx_rope)
 
     def _check_all_core_attrs_match(self, x_mapcore: MapCore):
-        self._check_attr_match("face_name", x_mapcore)
+        self._check_attr_match("spark_face", x_mapcore)
         self._check_attr_match("otx_knot", x_mapcore)
         self._check_attr_match("inx_knot", x_mapcore)
         self._check_attr_match("unknown_str", x_mapcore)
@@ -209,7 +209,7 @@ class TranslateUnit:
         x_ropemap = _get_rid_of_translate_core_keys(self.ropemap.to_dict())
 
         return {
-            "face_name": self.face_name,
+            "spark_face": self.spark_face,
             "spark_num": self.spark_num,
             "otx_knot": self.otx_knot,
             "inx_knot": self.inx_knot,
@@ -222,7 +222,7 @@ class TranslateUnit:
 
 
 def translateunit_shop(
-    face_name: PersonName,
+    spark_face: PersonName,
     spark_num: SparkInt = None,
     otx_knot: KnotTerm = None,
     inx_knot: KnotTerm = None,
@@ -233,28 +233,28 @@ def translateunit_shop(
     inx_knot = default_knot_if_None(inx_knot)
 
     x_namemap = namemap_shop(
-        face_name=face_name,
+        spark_face=spark_face,
         spark_num=spark_num,
         otx_knot=otx_knot,
         inx_knot=inx_knot,
         unknown_str=unknown_str,
     )
     x_titlemap = titlemap_shop(
-        face_name=face_name,
+        spark_face=spark_face,
         spark_num=spark_num,
         otx_knot=otx_knot,
         inx_knot=inx_knot,
         unknown_str=unknown_str,
     )
     x_labelmap = labelmap_shop(
-        face_name=face_name,
+        spark_face=spark_face,
         spark_num=spark_num,
         otx_knot=otx_knot,
         inx_knot=inx_knot,
         unknown_str=unknown_str,
     )
     x_ropemap = ropemap_shop(
-        face_name=face_name,
+        spark_face=spark_face,
         spark_num=spark_num,
         otx_knot=otx_knot,
         inx_knot=inx_knot,
@@ -263,7 +263,7 @@ def translateunit_shop(
     )
 
     return TranslateUnit(
-        face_name=face_name,
+        spark_face=spark_face,
         spark_num=get_0_if_None(spark_num),
         unknown_str=unknown_str,
         otx_knot=otx_knot,
@@ -277,7 +277,7 @@ def translateunit_shop(
 
 def get_translateunit_from_dict(x_dict: dict) -> TranslateUnit:
     x_spark_num = x_dict.get("spark_num")
-    x_face_name = x_dict.get("face_name")
+    x_spark_face = x_dict.get("spark_face")
     x_otx_knot = x_dict.get("otx_knot")
     x_inx_knot = x_dict.get("inx_knot")
     x_unknown_str = x_dict.get("unknown_str")
@@ -288,7 +288,7 @@ def get_translateunit_from_dict(x_dict: dict) -> TranslateUnit:
     namemap_dict = _add_translate_core_keys(
         namemap_dict,
         x_spark_num,
-        x_face_name,
+        x_spark_face,
         x_otx_knot,
         x_inx_knot,
         x_unknown_str,
@@ -296,7 +296,7 @@ def get_translateunit_from_dict(x_dict: dict) -> TranslateUnit:
     titlemap_dict = _add_translate_core_keys(
         titlemap_dict,
         x_spark_num,
-        x_face_name,
+        x_spark_face,
         x_otx_knot,
         x_inx_knot,
         x_unknown_str,
@@ -304,7 +304,7 @@ def get_translateunit_from_dict(x_dict: dict) -> TranslateUnit:
     labelmap_dict = _add_translate_core_keys(
         labelmap_dict,
         x_spark_num,
-        x_face_name,
+        x_spark_face,
         x_otx_knot,
         x_inx_knot,
         x_unknown_str,
@@ -312,7 +312,7 @@ def get_translateunit_from_dict(x_dict: dict) -> TranslateUnit:
     ropemap_dict = _add_translate_core_keys(
         ropemap_dict,
         x_spark_num,
-        x_face_name,
+        x_spark_face,
         x_otx_knot,
         x_inx_knot,
         x_unknown_str,
@@ -323,7 +323,7 @@ def get_translateunit_from_dict(x_dict: dict) -> TranslateUnit:
     x_ropemap = get_ropemap_from_dict(ropemap_dict)
     x_ropemap.labelmap = x_labelmap
     return TranslateUnit(
-        face_name=x_face_name,
+        spark_face=x_spark_face,
         spark_num=x_spark_num,
         otx_knot=x_otx_knot,
         inx_knot=x_inx_knot,
@@ -337,7 +337,7 @@ def get_translateunit_from_dict(x_dict: dict) -> TranslateUnit:
 
 def _get_rid_of_translate_core_keys(map_dict: dict) -> dict:
     map_dict.pop("spark_num")
-    map_dict.pop("face_name")
+    map_dict.pop("spark_face")
     map_dict.pop("otx_knot")
     map_dict.pop("inx_knot")
     map_dict.pop("unknown_str")
@@ -347,13 +347,13 @@ def _get_rid_of_translate_core_keys(map_dict: dict) -> dict:
 def _add_translate_core_keys(
     map_dict: dict,
     spark_num: int,
-    face_name: str,
+    spark_face: str,
     otx_knot: KnotTerm,
     inx_knot: KnotTerm,
     unknown_str: str,
 ) -> dict:
     map_dict["spark_num"] = spark_num
-    map_dict["face_name"] = face_name
+    map_dict["spark_face"] = spark_face
     map_dict["otx_knot"] = otx_knot
     map_dict["inx_knot"] = inx_knot
     map_dict["unknown_str"] = unknown_str
@@ -366,7 +366,7 @@ class TranslateCoreAttrConflictError(Exception):
 
 def inherit_translateunit(older: TranslateUnit, newer: TranslateUnit) -> TranslateUnit:
     if (
-        older.face_name != newer.face_name
+        older.spark_face != newer.spark_face
         or older.otx_knot != newer.otx_knot
         or older.inx_knot != newer.inx_knot
         or older.unknown_str != newer.unknown_str

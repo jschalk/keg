@@ -16,7 +16,7 @@ def test_NameMap_Exists():
     x_namemap = NameMap()
 
     # WHEN / THEN
-    assert not x_namemap.face_name
+    assert not x_namemap.spark_face
     assert not x_namemap.spark_num
     assert not x_namemap.otx2inx
     assert not x_namemap.unknown_str
@@ -29,7 +29,7 @@ def test_namemap_shop_ReturnsObj_Scenario0():
     x_namemap = namemap_shop()
 
     # THEN
-    assert not x_namemap.face_name
+    assert not x_namemap.spark_face
     assert x_namemap.spark_num == 0
     assert x_namemap.otx2inx == {}
     assert x_namemap.unknown_str == default_unknown_str_if_None()
@@ -47,7 +47,7 @@ def test_namemap_shop_ReturnsObj_Scenario1_WithParameters():
 
     # WHEN
     x_namemap = namemap_shop(
-        face_name=exx.bob,
+        spark_face=exx.bob,
         spark_num=spark7,
         otx2inx=otx2inx,
         unknown_str=x_unknown_str,
@@ -56,7 +56,7 @@ def test_namemap_shop_ReturnsObj_Scenario1_WithParameters():
     )
 
     # THEN
-    assert x_namemap.face_name == exx.bob
+    assert x_namemap.spark_face == exx.bob
     assert x_namemap.spark_num == spark7
     assert x_namemap.otx2inx == otx2inx
     assert x_namemap.unknown_str == x_unknown_str
@@ -72,7 +72,7 @@ def test_namemap_shop_ReturnsObj_Scenario2_TranslateCoreAttrAreDefaultWhenGiven_
 
     # WHEN
     x_namemap = namemap_shop(
-        face_name=exx.bob,
+        spark_face=exx.bob,
         spark_num=numpy_int64(spark7),
         otx2inx=otx2inx,
         unknown_str=x_nan,
@@ -81,7 +81,7 @@ def test_namemap_shop_ReturnsObj_Scenario2_TranslateCoreAttrAreDefaultWhenGiven_
     )
 
     # THEN
-    assert x_namemap.face_name == exx.bob
+    assert x_namemap.spark_face == exx.bob
     assert x_namemap.spark_num == spark7
     assert str(type(x_namemap.spark_num)) != "<class 'numpy.int64'>"
     assert str(type(x_namemap.spark_num)) == "<class 'int'>"
@@ -273,7 +273,7 @@ def test_NameMap_to_dict_ReturnsObj():
     x_namemap = namemap_shop(
         otx_knot=slash_otx_knot,
         inx_knot=colon_inx_knot,
-        face_name=exx.sue,
+        spark_face=exx.sue,
         spark_num=spark7,
     )
     x1_rope_map_dict = {
@@ -281,7 +281,7 @@ def test_NameMap_to_dict_ReturnsObj():
         kw.inx_knot: x_namemap.inx_knot,
         kw.unknown_str: x_namemap.unknown_str,
         kw.otx2inx: {},
-        kw.face_name: x_namemap.face_name,
+        kw.spark_face: x_namemap.spark_face,
         kw.spark_num: x_namemap.spark_num,
     }
     assert x_namemap.to_dict() == x1_rope_map_dict
@@ -294,7 +294,7 @@ def test_NameMap_to_dict_ReturnsObj():
         kw.inx_knot: x_namemap.inx_knot,
         kw.unknown_str: x_namemap.unknown_str,
         kw.otx2inx: {clean_otx: clean_inx},
-        kw.face_name: exx.sue,
+        kw.spark_face: exx.sue,
         kw.spark_num: spark7,
     }
     assert x_namemap.to_dict() == x2_rope_map_dict
@@ -313,7 +313,7 @@ def test_get_namemap_from_dict_ReturnsObj():
     gen_namemap = get_namemap_from_dict(x_namemap.to_dict())
 
     # THEN
-    assert gen_namemap.face_name == x_namemap.face_name
+    assert gen_namemap.spark_face == x_namemap.spark_face
     assert gen_namemap.spark_num == x_namemap.spark_num
     assert gen_namemap.spark_num == spark7
     assert gen_namemap == x_namemap
@@ -441,7 +441,7 @@ def test_inherit_namemap_ReturnsObj_Scenario3_RaiseErrorWhenDifferent_x_unknown_
     assert str(excinfo.value) == "Core attrs in conflict"
 
 
-def test_inherit_namemap_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_face_name():
+def test_inherit_namemap_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_spark_face():
     # ESTABLISH
     old_namemap = namemap_shop(exx.sue, 0)
     new_namemap = namemap_shop(exx.bob, 1)

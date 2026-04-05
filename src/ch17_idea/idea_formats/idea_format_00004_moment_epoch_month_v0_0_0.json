@@ -1,10 +1,10 @@
 {
   "attributes": {
     "cumulative_day": { "otx_key": true  }, 
-    "face_name"     : { "otx_key": true  }, 
     "knot"          : { "otx_key": false }, 
     "moment_rope"   : { "otx_key": true  }, 
     "month_label"   : { "otx_key": false }, 
+    "spark_face"    : { "otx_key": true  }, 
     "spark_num"     : { "otx_key": true  }
   }, 
   "dimens": ["momentunit", "moment_epoch_month"], 

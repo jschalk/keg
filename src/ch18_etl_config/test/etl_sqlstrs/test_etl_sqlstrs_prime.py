@@ -24,7 +24,7 @@ from src.ch18_etl_config.etl_config import (
 )
 from src.ch18_etl_config.etl_sqlstr import (
     create_insert_into_translate_core_raw_sqlstr,
-    create_insert_missing_face_name_into_translate_core_vld_sqlstr,
+    create_insert_missing_spark_face_into_translate_core_vld_sqlstr,
     create_insert_translate_core_agg_into_vld_sqlstr,
     create_insert_translate_sound_vld_table_sqlstr,
     create_prime_db_table,
@@ -317,9 +317,9 @@ def test_create_sound_raw_update_inconsist_error_message_sqlstr_ReturnsObj_Scena
     assert update_sqlstr == expected_update_sqlstr
 
     static_example_sqlstr = """WITH inconsistency_rows AS (
-SELECT spark_num, face_name, otx_title
+SELECT spark_num, spark_face, otx_title
 FROM translate_title_s_raw
-GROUP BY spark_num, face_name, otx_title
+GROUP BY spark_num, spark_face, otx_title
 HAVING MIN(inx_title) != MAX(inx_title)
     OR MIN(otx_knot) != MAX(otx_knot)
     OR MIN(inx_knot) != MAX(inx_knot)
@@ -329,7 +329,7 @@ UPDATE translate_title_s_raw
 SET error_message = 'Inconsistent data'
 FROM inconsistency_rows
 WHERE inconsistency_rows.spark_num = translate_title_s_raw.spark_num
-    AND inconsistency_rows.face_name = translate_title_s_raw.face_name
+    AND inconsistency_rows.spark_face = translate_title_s_raw.spark_face
     AND inconsistency_rows.otx_title = translate_title_s_raw.otx_title
 ;
 """
@@ -356,7 +356,7 @@ def test_create_sound_raw_update_inconsist_error_message_sqlstr_ReturnsObj_Scena
     exclude_cols = {
         kw.idea_number,
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.error_message,
     }
     expected_update_sqlstr = create_update_inconsistency_error_query(
@@ -407,7 +407,7 @@ def test_create_sound_raw_update_inconsist_error_message_sqlstr_ReturnsObj_Scena
     exclude_cols = {
         kw.idea_number,
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.error_message,
     }
     expected_update_sqlstr = create_update_inconsistency_error_query(
@@ -467,9 +467,9 @@ def test_create_sound_raw_update_inconsist_error_message_sqlstr_ReturnsObj_Scena
     assert update_sqlstr == expected_update_sqlstr
 
     static_example_sqlstr = """WITH inconsistency_rows AS (
-SELECT spark_num, face_name, person_name, plan_rope, awardee_title
+SELECT spark_num, spark_face, person_name, plan_rope, awardee_title
 FROM person_plan_awardunit_put_s_raw
-GROUP BY spark_num, face_name, person_name, plan_rope, awardee_title
+GROUP BY spark_num, spark_face, person_name, plan_rope, awardee_title
 HAVING MIN(give_force) != MAX(give_force)
     OR MIN(take_force) != MAX(take_force)
     OR MIN(knot) != MAX(knot)
@@ -478,7 +478,7 @@ UPDATE person_plan_awardunit_put_s_raw
 SET error_message = 'Inconsistent data'
 FROM inconsistency_rows
 WHERE inconsistency_rows.spark_num = person_plan_awardunit_put_s_raw.spark_num
-    AND inconsistency_rows.face_name = person_plan_awardunit_put_s_raw.face_name
+    AND inconsistency_rows.spark_face = person_plan_awardunit_put_s_raw.spark_face
     AND inconsistency_rows.person_name = person_plan_awardunit_put_s_raw.person_name
     AND inconsistency_rows.plan_rope = person_plan_awardunit_put_s_raw.plan_rope
     AND inconsistency_rows.awardee_title = person_plan_awardunit_put_s_raw.awardee_title
@@ -515,11 +515,11 @@ def test_create_sound_agg_insert_sqlstrs_ReturnsObj_Scenario0_TranslateDimen(
     # print(expected_insert_sqlstr)
     assert update_sqlstrs[0] == expected_insert_sqlstr
 
-    static_example_sqlstr = """INSERT INTO translate_title_s_agg (spark_num, face_name, otx_title, inx_title, otx_knot, inx_knot, unknown_str)
-SELECT spark_num, face_name, otx_title, MAX(inx_title), MAX(otx_knot), MAX(inx_knot), MAX(unknown_str)
+    static_example_sqlstr = """INSERT INTO translate_title_s_agg (spark_num, spark_face, otx_title, inx_title, otx_knot, inx_knot, unknown_str)
+SELECT spark_num, spark_face, otx_title, MAX(inx_title), MAX(otx_knot), MAX(inx_knot), MAX(unknown_str)
 FROM translate_title_s_raw
 WHERE error_message IS NULL
-GROUP BY spark_num, face_name, otx_title
+GROUP BY spark_num, spark_face, otx_title
 ;
 """
     print(update_sqlstrs[0])
@@ -555,11 +555,11 @@ def test_create_sound_agg_insert_sqlstrs_ReturnsObj_Scenario1_MomentDimen(
     print(expected_insert_sqlstr)
     assert update_sqlstrs[0] == expected_insert_sqlstr
 
-    static_example_sqlstr = """INSERT INTO moment_epoch_hour_s_agg (spark_num, face_name, moment_rope, cumulative_minute, hour_label, knot)
-SELECT spark_num, face_name, moment_rope, cumulative_minute, MAX(hour_label), MAX(knot)
+    static_example_sqlstr = """INSERT INTO moment_epoch_hour_s_agg (spark_num, spark_face, moment_rope, cumulative_minute, hour_label, knot)
+SELECT spark_num, spark_face, moment_rope, cumulative_minute, MAX(hour_label), MAX(knot)
 FROM moment_epoch_hour_s_raw
 WHERE error_message IS NULL
-GROUP BY spark_num, face_name, moment_rope, cumulative_minute
+GROUP BY spark_num, spark_face, moment_rope, cumulative_minute
 ;
 """
     print(update_sqlstrs[0])
@@ -595,11 +595,11 @@ def test_create_sound_agg_insert_sqlstrs_ReturnsObj_Scenario2_NabuDimen(
     print(expected_insert_sqlstr)
     assert update_sqlstrs[0] == expected_insert_sqlstr
 
-    static_example_sqlstr = """INSERT INTO nabu_timenum_s_agg (spark_num, face_name, moment_rope, otx_time, inx_time)
-SELECT spark_num, face_name, moment_rope, otx_time, MAX(inx_time)
+    static_example_sqlstr = """INSERT INTO nabu_timenum_s_agg (spark_num, spark_face, moment_rope, otx_time, inx_time)
+SELECT spark_num, spark_face, moment_rope, otx_time, MAX(inx_time)
 FROM nabu_timenum_s_raw
 WHERE error_message IS NULL
-GROUP BY spark_num, face_name, moment_rope, otx_time
+GROUP BY spark_num, spark_face, moment_rope, otx_time
 ;
 """
     print(update_sqlstrs[0])
@@ -633,11 +633,11 @@ def test_create_sound_agg_insert_sqlstrs_ReturnsObj_Scenario3_PersonDimen(
     print(put_expected_insert_sqlstr)
     assert update_sqlstrs[0] == put_expected_insert_sqlstr
 
-    static_example_put_sqlstr = """INSERT INTO person_plan_awardunit_put_s_agg (spark_num, face_name, person_name, plan_rope, awardee_title, give_force, take_force, knot)
-SELECT spark_num, face_name, person_name, plan_rope, awardee_title, MAX(give_force), MAX(take_force), MAX(knot)
+    static_example_put_sqlstr = """INSERT INTO person_plan_awardunit_put_s_agg (spark_num, spark_face, person_name, plan_rope, awardee_title, give_force, take_force, knot)
+SELECT spark_num, spark_face, person_name, plan_rope, awardee_title, MAX(give_force), MAX(take_force), MAX(knot)
 FROM person_plan_awardunit_put_s_raw
 WHERE error_message IS NULL
-GROUP BY spark_num, face_name, person_name, plan_rope, awardee_title
+GROUP BY spark_num, spark_face, person_name, plan_rope, awardee_title
 ;
 """
     # print(update_sqlstrs[0])
@@ -664,10 +664,10 @@ GROUP BY spark_num, face_name, person_name, plan_rope, awardee_title
     print(update_sqlstrs[1])
     assert update_sqlstrs[1] == del_expected_insert_sqlstr
 
-    static_example_del_sqlstr = """INSERT INTO person_plan_awardunit_del_s_agg (spark_num, face_name, person_name, plan_rope, awardee_title_ERASE)
-SELECT spark_num, face_name, person_name, plan_rope, awardee_title_ERASE
+    static_example_del_sqlstr = """INSERT INTO person_plan_awardunit_del_s_agg (spark_num, spark_face, person_name, plan_rope, awardee_title_ERASE)
+SELECT spark_num, spark_face, person_name, plan_rope, awardee_title_ERASE
 FROM person_plan_awardunit_del_s_raw
-GROUP BY spark_num, face_name, person_name, plan_rope, awardee_title_ERASE
+GROUP BY spark_num, spark_face, person_name, plan_rope, awardee_title_ERASE
 ;
 """
     assert update_sqlstrs[1] == static_example_del_sqlstr
@@ -682,10 +682,10 @@ def test_create_insert_into_translate_core_raw_sqlstr_ReturnsObj():
     # THEN
     translate_s_agg_tablename = prime_tbl(dimen, "s_agg")
     translate_core_s_raw_tablename = prime_tbl("TRLCORE", kw.s_raw)
-    expected_sqlstr = f"""INSERT INTO {translate_core_s_raw_tablename} (source_dimen, face_name, otx_knot, inx_knot, unknown_str)
-SELECT '{translate_s_agg_tablename}', face_name, otx_knot, inx_knot, unknown_str
+    expected_sqlstr = f"""INSERT INTO {translate_core_s_raw_tablename} (source_dimen, spark_face, otx_knot, inx_knot, unknown_str)
+SELECT '{translate_s_agg_tablename}', spark_face, otx_knot, inx_knot, unknown_str
 FROM {translate_s_agg_tablename}
-GROUP BY face_name, otx_knot, inx_knot, unknown_str
+GROUP BY spark_face, otx_knot, inx_knot, unknown_str
 ;
 """
     assert rope_sqlstr == expected_sqlstr
@@ -705,9 +705,9 @@ def test_create_insert_translate_core_agg_into_vld_sqlstr_ReturnsObj():
     trlcore_dimen = "TRLCORE"
     translate_core_s_agg_tablename = prime_tbl(trlcore_dimen, "s_agg")
     translate_core_s_vld_tablename = prime_tbl(trlcore_dimen, kw.s_vld)
-    expected_sqlstr = f"""INSERT INTO {translate_core_s_vld_tablename} (face_name, otx_knot, inx_knot, unknown_str)
+    expected_sqlstr = f"""INSERT INTO {translate_core_s_vld_tablename} (spark_face, otx_knot, inx_knot, unknown_str)
 SELECT
-  face_name
+  spark_face
 , IFNULL(otx_knot, '{default_knot}')
 , IFNULL(inx_knot, '{default_knot}')
 , IFNULL(unknown_str, '{default_unknown_str}')
@@ -718,30 +718,30 @@ FROM {translate_core_s_agg_tablename}
     assert insert_sqlstr == expected_sqlstr
 
 
-def test_create_insert_missing_face_name_into_translate_core_vld_sqlstr_ReturnsObj():
+def test_create_insert_missing_spark_face_into_translate_core_vld_sqlstr_ReturnsObj():
     # ESTABLISH
     default_knot = "|"
     default_unknown_str = "unknown2"
     prncont_s_agg_tablename = prime_tbl(kw.person_contactunit, "s_agg")
 
     # WHEN
-    insert_sqlstr = create_insert_missing_face_name_into_translate_core_vld_sqlstr(
+    insert_sqlstr = create_insert_missing_spark_face_into_translate_core_vld_sqlstr(
         default_knot, default_unknown_str, prncont_s_agg_tablename
     )
 
     # THEN
     trlcore_dimen = "TRLCORE"
     translate_core_s_vld_tablename = prime_tbl(trlcore_dimen, kw.s_vld)
-    expected_sqlstr = f"""INSERT INTO {translate_core_s_vld_tablename} (face_name, otx_knot, inx_knot, unknown_str)
+    expected_sqlstr = f"""INSERT INTO {translate_core_s_vld_tablename} (spark_face, otx_knot, inx_knot, unknown_str)
 SELECT
-  {prncont_s_agg_tablename}.face_name
+  {prncont_s_agg_tablename}.spark_face
 , '{default_knot}'
 , '{default_knot}'
 , '{default_unknown_str}'
 FROM {prncont_s_agg_tablename} 
-LEFT JOIN translate_core_s_vld ON translate_core_s_vld.face_name = {prncont_s_agg_tablename}.face_name
-WHERE translate_core_s_vld.face_name IS NULL
-GROUP BY {prncont_s_agg_tablename}.face_name
+LEFT JOIN translate_core_s_vld ON translate_core_s_vld.spark_face = {prncont_s_agg_tablename}.spark_face
+WHERE translate_core_s_vld.spark_face IS NULL
+GROUP BY {prncont_s_agg_tablename}.spark_face
 ;
 """
     print(expected_sqlstr)
@@ -758,11 +758,11 @@ def test_create_insert_translate_sound_vld_table_sqlstr_ReturnsObj_translate_rop
     translate_dimen_s_agg_tablename = prime_tbl(dimen, "s_agg")
     translate_dimen_s_vld_tablename = prime_tbl(dimen, kw.s_vld)
     expected_rope_sqlstr = f"""
-INSERT INTO {translate_dimen_s_vld_tablename} (spark_num, face_name, otx_rope, inx_rope)
-SELECT spark_num, face_name, MAX(otx_rope), MAX(inx_rope)
+INSERT INTO {translate_dimen_s_vld_tablename} (spark_num, spark_face, otx_rope, inx_rope)
+SELECT spark_num, spark_face, MAX(otx_rope), MAX(inx_rope)
 FROM {translate_dimen_s_agg_tablename}
 WHERE error_message IS NULL
-GROUP BY spark_num, face_name
+GROUP BY spark_num, spark_face
 ;
 """
     print(expected_rope_sqlstr)
@@ -779,11 +779,11 @@ def test_create_insert_translate_sound_vld_table_sqlstr_ReturnsObj_translate_lab
     translate_label_s_agg_tablename = prime_tbl(dimen, "s_agg")
     translate_label_s_vld_tablename = prime_tbl(dimen, kw.s_vld)
     expected_label_sqlstr = f"""
-INSERT INTO {translate_label_s_vld_tablename} (spark_num, face_name, otx_label, inx_label)
-SELECT spark_num, face_name, MAX(otx_label), MAX(inx_label)
+INSERT INTO {translate_label_s_vld_tablename} (spark_num, spark_face, otx_label, inx_label)
+SELECT spark_num, spark_face, MAX(otx_label), MAX(inx_label)
 FROM {translate_label_s_agg_tablename}
 WHERE error_message IS NULL
-GROUP BY spark_num, face_name
+GROUP BY spark_num, spark_face
 ;
 """
     assert label_sqlstr == expected_label_sqlstr

@@ -294,7 +294,7 @@ def test_LessonFileHandler_default_lessonunit_ReturnsObjWithCorrect_lesson_id_Wh
     assert (
         sue_lessonunit.lesson_id == sue_lessonfilehandler._get_next_lesson_file_number()
     )
-    assert sue_lessonunit.face_name is None
+    assert sue_lessonunit.spark_face is None
     assert sue_lessonunit.atoms_dir == sue_lessonfilehandler.atoms_dir
     assert sue_lessonunit.lessons_dir == sue_lessonfilehandler.lessons_dir
 
@@ -323,7 +323,7 @@ def test_LessonFileHandler_default_lessonunit_ReturnsObjWithCorrect_lesson_id_Wh
     assert (
         sue_lessonunit.lesson_id == sue_lessonfilehandler._get_next_lesson_file_number()
     )
-    assert sue_lessonunit.face_name is None
+    assert sue_lessonunit.spark_face is None
     assert sue_lessonunit.atoms_dir == sue_lessonfilehandler.atoms_dir
     assert sue_lessonunit.lessons_dir == sue_lessonfilehandler.lessons_dir
 
@@ -348,9 +348,9 @@ def test_LessonFileHandler_get_lessonunit_ReturnsObjWhenFilesDoesExist(
     # THEN
     assert y0_lessonunit is not None
     assert y1_lessonunit is not None
-    assert exx.yao in y0_lessonunit.face_name
-    assert exx.bob not in y0_lessonunit.face_name
-    assert exx.bob in y1_lessonunit.face_name
+    assert exx.yao in y0_lessonunit.spark_face
+    assert exx.bob not in y0_lessonunit.spark_face
+    assert exx.bob in y1_lessonunit.spark_face
 
 
 def test_LessonFileHandler_get_lessonunit_RaisesExceptionWhenFileDoesNotExist(

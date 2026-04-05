@@ -7,7 +7,7 @@ from src.ref.keywords import ExampleStrs as exx
 def test_TranslateUnit_set_titlemap_SetsAttr():
     # ESTABLISH
     sue_translateunit = translateunit_shop(exx.sue)
-    x_titlemap = titlemap_shop(face_name=exx.sue)
+    x_titlemap = titlemap_shop(spark_face=exx.sue)
     x_titlemap.set_otx2inx("Bob", "Bob of Portland")
     assert sue_translateunit.titlemap != x_titlemap
 
@@ -22,7 +22,7 @@ def test_TranslateUnit_set_titlemap_RaisesErrorIf_titlemap_otx_knot_IsNotSame():
     # ESTABLISH
     sue_translateunit = translateunit_shop(exx.sue)
     slash_otx_knot = "/"
-    x_titlemap = titlemap_shop(otx_knot=slash_otx_knot, face_name=exx.sue)
+    x_titlemap = titlemap_shop(otx_knot=slash_otx_knot, spark_face=exx.sue)
     assert sue_translateunit.otx_knot != x_titlemap.otx_knot
     assert sue_translateunit.titlemap != x_titlemap
 
@@ -37,7 +37,7 @@ def test_TranslateUnit_set_titlemap_RaisesErrorIf_titlemap_inx_knot_IsNotSame():
     # ESTABLISH
     sue_translateunit = translateunit_shop(exx.sue)
     slash_inx_knot = "/"
-    x_titlemap = titlemap_shop(inx_knot=slash_inx_knot, face_name=exx.sue)
+    x_titlemap = titlemap_shop(inx_knot=slash_inx_knot, spark_face=exx.sue)
     assert sue_translateunit.inx_knot != x_titlemap.inx_knot
     assert sue_translateunit.titlemap != x_titlemap
 
@@ -52,7 +52,7 @@ def test_TranslateUnit_set_titlemap_RaisesErrorIf_titlemap_unknown_str_IsNotSame
     # ESTABLISH
     sue_translateunit = translateunit_shop(exx.sue)
     casa_unknown_str = "Unknown_casa"
-    x_titlemap = titlemap_shop(unknown_str=casa_unknown_str, face_name=exx.sue)
+    x_titlemap = titlemap_shop(unknown_str=casa_unknown_str, spark_face=exx.sue)
     assert sue_translateunit.unknown_str != x_titlemap.unknown_str
     assert sue_translateunit.titlemap != x_titlemap
 
@@ -63,24 +63,24 @@ def test_TranslateUnit_set_titlemap_RaisesErrorIf_titlemap_unknown_str_IsNotSame
     assert str(excinfo.value) == exception_str
 
 
-def test_TranslateUnit_set_titlemap_RaisesErrorIf_titlemap_face_name_IsNotSame():
+def test_TranslateUnit_set_titlemap_RaisesErrorIf_titlemap_spark_face_IsNotSame():
     # ESTABLISH
     sue_translateunit = translateunit_shop(exx.sue)
-    x_titlemap = titlemap_shop(face_name=exx.yao)
-    assert sue_translateunit.face_name != x_titlemap.face_name
+    x_titlemap = titlemap_shop(spark_face=exx.yao)
+    assert sue_translateunit.spark_face != x_titlemap.spark_face
     assert sue_translateunit.titlemap != x_titlemap
 
     # WHEN / THEN
     with pytest_raises(Exception) as excinfo:
         sue_translateunit.set_titlemap(x_titlemap)
-    exception_str = f"set_mapcore Error: TranslateUnit face_name is '{sue_translateunit.face_name}', MapCore is '{exx.yao}'."
+    exception_str = f"set_mapcore Error: TranslateUnit spark_face is '{sue_translateunit.spark_face}', MapCore is '{exx.yao}'."
     assert str(excinfo.value) == exception_str
 
 
 def test_TranslateUnit_get_titlemap_ReturnsObj():
     # ESTABLISH
     sue_translateunit = translateunit_shop(exx.sue)
-    static_x_titlemap = titlemap_shop(face_name=exx.sue)
+    static_x_titlemap = titlemap_shop(spark_face=exx.sue)
     static_x_titlemap.set_otx2inx("Bob", "Bob of Portland")
     sue_translateunit.set_titlemap(static_x_titlemap)
 

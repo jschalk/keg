@@ -26,7 +26,7 @@ def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario0_IgnoresCSV_
     # a23_bob_e3_dir = create_path(a23_bob_dir, spark3)
     # a23_bob_e7_dir = create_path(a23_bob_dir, spark7)
     a23_bob_e3_dir = person_spark_dir(moment_mstr_dir, a23_lasso, bob_inx, spark3)
-    e3_put_csv = f"""{kw.spark_num},{kw.face_name},moment_rope,person_name,credor_respect,debtor_respect,fund_pool,max_tree_traverse,fund_grain,mana_grain,respect_grain
+    e3_put_csv = f"""{kw.spark_num},{kw.spark_face},moment_rope,person_name,credor_respect,debtor_respect,fund_pool,max_tree_traverse,fund_grain,mana_grain,respect_grain
 {spark3},{sue_inx},{exx.a23},{bob_inx},,,,,,,,
 """
     save_file(a23_bob_e3_dir, put_agg_csv_filename, e3_put_csv)
@@ -69,10 +69,10 @@ def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario1(
     # a23_bob_e7_dir = create_path(a23_bob_dir, spark7)
     a23_bob_e3_dir = person_spark_dir(moment_mstr_dir, a23_lasso, bob_inx, spark3)
     a23_bob_e7_dir = person_spark_dir(moment_mstr_dir, a23_lasso, bob_inx, spark7)
-    e3_put_csv = f"""{kw.spark_num},{kw.face_name},{kw.moment_rope},{kw.person_name},{kw.contact_name},{kw.contact_cred_lumen},{kw.contact_debt_lumen}
+    e3_put_csv = f"""{kw.spark_num},{kw.spark_face},{kw.moment_rope},{kw.person_name},{kw.contact_name},{kw.contact_cred_lumen},{kw.contact_debt_lumen}
 {spark3},{sue_inx},{exx.a23},{bob_inx},{bob_inx},{credit77},{debt_empty}
 """
-    e7_put_csv = f"""{kw.spark_num},{kw.face_name},{kw.moment_rope},{kw.person_name},{kw.contact_name},{kw.contact_cred_lumen},{kw.contact_debt_lumen}
+    e7_put_csv = f"""{kw.spark_num},{kw.spark_face},{kw.moment_rope},{kw.person_name},{kw.contact_name},{kw.contact_cred_lumen},{kw.contact_debt_lumen}
 {spark7},{sue_inx},{exx.a23},{bob_inx},{bob_inx},{credit77},{debt_empty}
 {spark7},{sue_inx},{exx.a23},{bob_inx},{sue_inx},{credit88},{debt_empty}
 """

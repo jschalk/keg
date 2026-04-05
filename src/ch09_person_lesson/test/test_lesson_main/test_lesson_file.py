@@ -125,7 +125,7 @@ def test_LessonUnit_save_lesson_file_SavesCorrectFile(temp3_fs):
     print(f"{lesson_file_dict=}")
     assert lesson_file_dict.get("delta_atom_numbers") == []
     assert lesson_file_dict.get(kw.person_name) == exx.sue
-    assert lesson_file_dict.get(kw.face_name) is None
+    assert lesson_file_dict.get(kw.spark_face) is None
     print(f"{lesson_file_dict.keys()=}")
 
 
@@ -251,5 +251,5 @@ def test_create_lessonunit_from_files_ReturnsObj(temp3_fs):
 
     # THEN
     assert src_sue_lessonunit.person_name == new_sue_lessonunit.person_name
-    assert src_sue_lessonunit.face_name == new_sue_lessonunit.face_name
+    assert src_sue_lessonunit.spark_face == new_sue_lessonunit.spark_face
     assert src_sue_lessonunit.persondelta == new_sue_lessonunit.persondelta

@@ -28,7 +28,7 @@ from src.ch19_etl_steps.etl_main import (
     insert_translate_core_raw_to_translate_core_agg_table,
     insert_translate_sound_agg_into_translate_core_raw_table,
     insert_translate_sound_agg_tables_to_translate_sound_vld_table,
-    populate_translate_core_vld_with_missing_face_names,
+    populate_translate_core_vld_with_missing_spark_faces,
     update_inconsistency_translate_core_raw_table,
     update_translate_sound_agg_inconsist_errors,
     update_translate_sound_agg_knot_errors,
@@ -54,7 +54,7 @@ def test_create_insert_into_translate_core_raw_sqlstr_ReturnsObj_PopulatesTable_
     translate_rope_s_agg_tablename = create_prime_tablename(trlrope_dimen, "s_agg")
     insert_into_clause = f"""INSERT INTO {translate_rope_s_agg_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.otx_rope}
 , {kw.inx_rope}
 , {kw.otx_knot}
@@ -110,7 +110,7 @@ VALUES
 #     )
 #     insert_into_clause = f"""INSERT INTO {translate_epoc_s_agg_tablename} (
 #   {kw.spark_num}
-# , {kw.face_name}
+# , {kw.spark_face}
 # , {kw.otx_epoch_length}
 # , {kw.inx_epoch_diff}
 # )"""
@@ -152,7 +152,7 @@ def test_insert_translate_sound_agg_into_translate_core_raw_table_PopulatesTable
     translate_rope_s_agg_tablename = create_prime_tablename(trlrope_dimen, "s_agg")
     insert_into_clause = f"""INSERT INTO {translate_rope_s_agg_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.otx_rope}
 , {kw.inx_rope}
 , {kw.otx_knot}
@@ -173,7 +173,7 @@ VALUES
     translate_name_s_agg_tablename = create_prime_tablename(trlname_dimen, "s_agg")
     insert_into_clause = f"""INSERT INTO {translate_name_s_agg_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.otx_name}
 , {kw.inx_name}
 , {kw.otx_knot}
@@ -230,7 +230,7 @@ def test_update_inconsistency_translate_core_raw_table_UpdatesTable_Scenario0(
     translate_core_s_raw_tablename = create_prime_tablename(trlcore_dimen, kw.s_raw)
     insert_into_clause = f"""INSERT INTO {translate_core_s_raw_tablename} (
   source_dimen
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.otx_knot}
 , {kw.inx_knot}
 , {kw.unknown_str}
@@ -288,7 +288,7 @@ def test_insert_translate_core_raw_to_translate_core_agg_table_PopulatesTable_Sc
     translate_core_s_raw_tablename = create_prime_tablename(trlcore_dimen, kw.s_raw)
     insert_into_clause = f"""INSERT INTO {translate_core_s_raw_tablename} (
   source_dimen
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.otx_knot}
 , {kw.inx_knot}
 , {kw.unknown_str}
@@ -336,7 +336,7 @@ def test_insert_translate_core_agg_to_translate_core_vld_table_PopulatesTable_Sc
     trlcore_dimen = kw.translate_core
     translate_core_s_agg_tablename = create_prime_tablename(trlcore_dimen, "s_agg")
     insert_into_clause = f"""INSERT INTO {translate_core_s_agg_tablename} (
-  {kw.face_name}
+  {kw.spark_face}
 , {kw.otx_knot}
 , {kw.inx_knot}
 , {kw.unknown_str}
@@ -391,7 +391,7 @@ def test_create_update_translate_sound_agg_inconsist_sqlstr_PopulatesTable_Scena
     translate_rope_s_agg_tablename = create_prime_tablename(trlrope_dimen, "s_agg")
     insert_into_clause = f"""INSERT INTO {translate_rope_s_agg_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.otx_rope}
 , {kw.inx_rope}
 , {kw.otx_knot}
@@ -413,7 +413,7 @@ VALUES
     print(CREATE_TRLCORE_SOUND_VLD_SQLSTR)
     translate_core_s_vld_tablename = create_prime_tablename("trlcore", kw.s_vld)
     insert_into_clause = f"""INSERT INTO {translate_core_s_vld_tablename} (
-  {kw.face_name}
+  {kw.spark_face}
 , {kw.otx_knot}
 , {kw.inx_knot}
 , {kw.unknown_str}
@@ -468,7 +468,7 @@ def test_update_translate_sound_agg_inconsist_errors_PopulatesTable_Scenario1(
     translate_rope_s_agg_tablename = create_prime_tablename(trlrope_dimen, "s_agg")
     insert_into_clause = f"""INSERT INTO {translate_rope_s_agg_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.otx_rope}
 , {kw.inx_rope}
 , {kw.otx_knot}
@@ -488,7 +488,7 @@ VALUES
     cursor0.execute(f"{insert_into_clause} {values_clause}")
     translate_core_s_vld_tablename = create_prime_tablename("trlcore", kw.s_vld)
     insert_into_clause = f"""INSERT INTO {translate_core_s_vld_tablename} (
-  {kw.face_name}
+  {kw.spark_face}
 , {kw.otx_knot}
 , {kw.inx_knot}
 , {kw.unknown_str}
@@ -545,7 +545,7 @@ def test_create_update_trllabe_sound_agg_knot_error_sqlstr_PopulatesTable_Scenar
     trllabe_s_agg_tablename = create_prime_tablename(trllabe_dimen, "s_agg")
     insert_into_clause = f"""INSERT INTO {trllabe_s_agg_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.otx_label}
 , {kw.inx_label}
 )"""
@@ -562,7 +562,7 @@ VALUES
     cursor0.execute(CREATE_TRLCORE_SOUND_VLD_SQLSTR)
     translate_core_s_vld_tablename = create_prime_tablename("trlcore", kw.s_vld)
     insert_sqlstr = f"""INSERT INTO {translate_core_s_vld_tablename} (
-  {kw.face_name}
+  {kw.spark_face}
 , {kw.otx_knot}
 , {kw.inx_knot}
 , {kw.unknown_str}
@@ -578,7 +578,7 @@ VALUES
     testing_select_sqlstr = """
   SELECT label_agg.rowid, label_agg.otx_label, label_agg.inx_label, *
   FROM translate_label_s_agg label_agg
-  JOIN translate_core_s_vld core_vld ON core_vld.face_name = label_agg.face_name
+  JOIN translate_core_s_vld core_vld ON core_vld.spark_face = label_agg.spark_face
   WHERE label_agg.otx_label LIKE '%' || core_vld.otx_knot || '%'
       OR label_agg.inx_label LIKE '%' || core_vld.inx_knot || '%'
 """
@@ -635,7 +635,7 @@ def test_create_update_trlrope_sound_agg_knot_error_sqlstr_PopulatesTable_Scenar
     trlrope_s_agg_tablename = create_prime_tablename(trlrope_dimen, "s_agg")
     insert_into_clause = f"""INSERT INTO {trlrope_s_agg_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.otx_rope}
 , {kw.inx_rope}
 )"""
@@ -652,7 +652,7 @@ VALUES
     cursor0.execute(CREATE_TRLCORE_SOUND_VLD_SQLSTR)
     translate_core_s_vld_tablename = create_prime_tablename("trlcore", kw.s_vld)
     insert_sqlstr = f"""INSERT INTO {translate_core_s_vld_tablename} (
-  {kw.face_name}
+  {kw.spark_face}
 , {kw.otx_knot}
 , {kw.inx_knot}
 , {kw.unknown_str}
@@ -668,7 +668,7 @@ VALUES
     testing_select_sqlstr = """
   SELECT rope_agg.rowid, rope_agg.otx_rope, rope_agg.inx_rope
   FROM translate_rope_s_agg rope_agg
-  JOIN translate_core_s_vld core_vld ON core_vld.face_name = rope_agg.face_name
+  JOIN translate_core_s_vld core_vld ON core_vld.spark_face = rope_agg.spark_face
   WHERE NOT rope_agg.otx_rope LIKE core_vld.otx_knot || '%'
      OR NOT rope_agg.inx_rope LIKE core_vld.inx_knot || '%'
   """
@@ -727,7 +727,7 @@ def test_create_update_trlname_sound_agg_knot_error_sqlstr_PopulatesTable_Scenar
     trlname_s_agg_tablename = create_prime_tablename(trlname_dimen, "s_agg")
     insert_into_clause = f"""INSERT INTO {trlname_s_agg_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.otx_name}
 , {kw.inx_name}
 )"""
@@ -744,7 +744,7 @@ VALUES
     cursor0.execute(CREATE_TRLCORE_SOUND_VLD_SQLSTR)
     translate_core_s_vld_tablename = create_prime_tablename("trlcore", kw.s_vld)
     insert_sqlstr = f"""INSERT INTO {translate_core_s_vld_tablename} (
-  {kw.face_name}
+  {kw.spark_face}
 , {kw.otx_knot}
 , {kw.inx_knot}
 , {kw.unknown_str}
@@ -760,7 +760,7 @@ VALUES
     testing_select_sqlstr = """
   SELECT name_agg.rowid, name_agg.otx_name, name_agg.inx_name
   FROM translate_name_s_agg name_agg
-  JOIN translate_core_s_vld core_vld ON core_vld.face_name = name_agg.face_name
+  JOIN translate_core_s_vld core_vld ON core_vld.spark_face = name_agg.spark_face
   WHERE NOT name_agg.otx_name LIKE core_vld.otx_knot || '%'
      OR NOT name_agg.inx_name LIKE core_vld.inx_knot || '%'
   """
@@ -820,7 +820,7 @@ def test_create_update_trltitl_sound_agg_knot_error_sqlstr_PopulatesTable_Scenar
     trltitl_s_agg_tablename = create_prime_tablename(trltitl_dimen, "s_agg")
     insert_into_clause = f"""INSERT INTO {trltitl_s_agg_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.otx_title}
 , {kw.inx_title}
 )"""
@@ -837,7 +837,7 @@ VALUES
     cursor0.execute(CREATE_TRLCORE_SOUND_VLD_SQLSTR)
     translate_core_s_vld_tablename = create_prime_tablename("trlcore", kw.s_vld)
     insert_sqlstr = f"""INSERT INTO {translate_core_s_vld_tablename} (
-  {kw.face_name}
+  {kw.spark_face}
 , {kw.otx_knot}
 , {kw.inx_knot}
 , {kw.unknown_str}
@@ -853,7 +853,7 @@ VALUES
     testing_select_sqlstr = """
   SELECT title_agg.rowid, title_agg.otx_title, title_agg.inx_title
   FROM translate_title_s_agg title_agg
-  JOIN translate_core_s_vld core_vld ON core_vld.face_name = title_agg.face_name
+  JOIN translate_core_s_vld core_vld ON core_vld.spark_face = title_agg.spark_face
   WHERE NOT ((
         title_agg.otx_title LIKE core_vld.otx_knot || '%' 
     AND title_agg.inx_title LIKE core_vld.inx_knot || '%') 
@@ -914,16 +914,16 @@ def test_update_translate_sound_agg_knot_errors_UpdatesTables_Scenario0(
     trlname_s_agg_tablename = create_prime_tablename(kw.translate_name, "s_agg")
     trltitl_s_agg_tablename = create_prime_tablename(kw.translate_title, "s_agg")
     insert_trllabe_sqlstr = f"""
-INSERT INTO {trllabe_s_agg_tablename} ({kw.spark_num}, {kw.face_name}, {kw.otx_label}, {kw.inx_label})
+INSERT INTO {trllabe_s_agg_tablename} ({kw.spark_num}, {kw.spark_face}, {kw.otx_label}, {kw.inx_label})
 VALUES ({spark1}, '{exx.bob}', '{casa_str}{rdx}', '{casa_str}');"""
     insert_trlrope_sqlstr = f"""
-INSERT INTO {trlrope_s_agg_tablename} ({kw.spark_num}, {kw.face_name}, {kw.otx_rope}, {kw.inx_rope})
+INSERT INTO {trlrope_s_agg_tablename} ({kw.spark_num}, {kw.spark_face}, {kw.otx_rope}, {kw.inx_rope})
 VALUES ({spark1}, '{exx.bob}', '{casa_str}{rdx}', '{casa_str}');"""
     insert_trlname_sqlstr = f"""
-INSERT INTO {trlname_s_agg_tablename} ({kw.spark_num}, {kw.face_name}, {kw.otx_name}, {kw.inx_name})
+INSERT INTO {trlname_s_agg_tablename} ({kw.spark_num}, {kw.spark_face}, {kw.otx_name}, {kw.inx_name})
 VALUES ({spark1}, '{exx.bob}', '{casa_str}{rdx}', '{casa_str}');"""
     insert_trltitl_sqlstr = f"""
-INSERT INTO {trltitl_s_agg_tablename} ({kw.spark_num}, {kw.face_name}, {kw.otx_title}, {kw.inx_title})
+INSERT INTO {trltitl_s_agg_tablename} ({kw.spark_num}, {kw.spark_face}, {kw.otx_title}, {kw.inx_title})
 VALUES ({spark1}, '{exx.bob}', '{bad_sue_otx}', '{sue_inx}');"""
     cursor0.execute(insert_trllabe_sqlstr)
     cursor0.execute(insert_trlrope_sqlstr)
@@ -933,7 +933,7 @@ VALUES ({spark1}, '{exx.bob}', '{bad_sue_otx}', '{sue_inx}');"""
     trlcore_s_vld_tablename = create_prime_tablename("trlcore", kw.s_vld)
     cursor0.execute(CREATE_TRLCORE_SOUND_VLD_SQLSTR)
     insert_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename} (
-{kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+{kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
 VALUES ('{exx.bob}', '{rdx}', '{rdx}', '{ukx}');"""
     cursor0.execute(insert_sqlstr)
     trllabe_error_count_sqlstr = f"SELECT COUNT(*) FROM {trllabe_s_agg_tablename} WHERE {kw.error_message} IS NOT NULL;"
@@ -954,7 +954,7 @@ VALUES ('{exx.bob}', '{rdx}', '{rdx}', '{ukx}');"""
     assert cursor0.execute(trlname_error_count_sqlstr).fetchone()[0] == 1
     assert cursor0.execute(trltitl_error_count_sqlstr).fetchone()[0] == 1
     assert get_row_count(cursor0, trltitl_s_agg_tablename) == 1
-    select_core_raw_sqlstr = f"SELECT {kw.spark_num}, {kw.face_name}, {kw.otx_label}, {kw.inx_label} FROM {trllabe_s_agg_tablename}"
+    select_core_raw_sqlstr = f"SELECT {kw.spark_num}, {kw.spark_face}, {kw.otx_label}, {kw.inx_label} FROM {trllabe_s_agg_tablename}"
     cursor0.execute(select_core_raw_sqlstr)
     rows = cursor0.fetchall()
     exp_row0 = (1, exx.bob, f"{casa_str}{rdx}", casa_str)
@@ -982,7 +982,7 @@ def test_create_insert_translate_sound_vld_table_sqlstr_ReturnsObj_PopulatesTabl
     translate_rope_s_agg_tablename = create_prime_tablename(trlrope_dimen, "s_agg")
     insert_into_clause = f"""INSERT INTO {translate_rope_s_agg_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.otx_rope}
 , {kw.inx_rope}
 , {kw.otx_knot}
@@ -1047,7 +1047,7 @@ def test_insert_translate_sound_agg_tables_to_translate_sound_vld_table_Populate
     translate_rope_s_agg_tablename = create_prime_tablename(trlrope_dimen, "s_agg")
     insert_into_clause = f"""INSERT INTO {translate_rope_s_agg_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.otx_rope}
 , {kw.inx_rope}
 , {kw.otx_knot}
@@ -1109,7 +1109,7 @@ def test_etl_translate_sound_agg_tables_to_translate_sound_vld_tables_Scenario0_
     translate_name_s_agg_tablename = create_prime_tablename(trlname_dimen, "s_agg")
     insert_into_clause = f"""INSERT INTO {translate_name_s_agg_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.otx_name}
 , {kw.inx_name}
 , {kw.otx_knot}
@@ -1182,13 +1182,13 @@ def test_etl_translate_sound_agg_tables_to_translate_sound_vld_tables_Scenario1_
     trlrope_s_agg_tablename = create_prime_tablename(kw.translate_rope, "s_agg")
     trlname_s_agg_tablename = create_prime_tablename(kw.translate_name, "s_agg")
     insert_trllabe_sqlstr = f"""
-INSERT INTO {trllabe_s_agg_tablename} ({kw.spark_num}, {kw.face_name}, {kw.otx_label}, {kw.inx_label})
+INSERT INTO {trllabe_s_agg_tablename} ({kw.spark_num}, {kw.spark_face}, {kw.otx_label}, {kw.inx_label})
 VALUES ({spark1}, '{exx.bob}', '{casa_str}{rdx}', '{casa_str}');"""
     insert_trlrope_sqlstr = f"""
-INSERT INTO {trlrope_s_agg_tablename} ({kw.spark_num}, {kw.face_name}, {kw.otx_rope}, {kw.inx_rope})
+INSERT INTO {trlrope_s_agg_tablename} ({kw.spark_num}, {kw.spark_face}, {kw.otx_rope}, {kw.inx_rope})
 VALUES ({spark1}, '{exx.bob}', '{casa_str}{rdx}', '{casa_str}');"""
     insert_trlname_sqlstr = f"""
-INSERT INTO {trlname_s_agg_tablename} ({kw.spark_num}, {kw.face_name}, {kw.otx_name}, {kw.inx_name})
+INSERT INTO {trlname_s_agg_tablename} ({kw.spark_num}, {kw.spark_face}, {kw.otx_name}, {kw.inx_name})
 VALUES ({spark1}, '{exx.bob}', '{casa_str}{rdx}', '{casa_str}');"""
     cursor0.execute(insert_trllabe_sqlstr)
     cursor0.execute(insert_trlrope_sqlstr)
@@ -1196,7 +1196,7 @@ VALUES ({spark1}, '{exx.bob}', '{casa_str}{rdx}', '{casa_str}');"""
 
     trlcore_s_vld_tablename = create_prime_tablename("trlcore", kw.s_vld)
     insert_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename} (
-{kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+{kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
 VALUES ('{exx.bob}', '{rdx}', '{rdx}', '{ukx}');"""
     cursor0.execute(insert_sqlstr)
     trllabe_error_count_sqlstr = f"SELECT COUNT(*) FROM {trllabe_s_agg_tablename} WHERE {kw.error_message} IS NOT NULL;"
@@ -1213,7 +1213,7 @@ VALUES ('{exx.bob}', '{rdx}', '{rdx}', '{ukx}');"""
     assert cursor0.execute(trllabe_error_count_sqlstr).fetchone()[0] == 1
     assert cursor0.execute(trlrope_error_count_sqlstr).fetchone()[0] == 1
     assert cursor0.execute(trlname_error_count_sqlstr).fetchone()[0] == 1
-    select_core_raw_sqlstr = f"SELECT {kw.spark_num}, {kw.face_name}, {kw.otx_label}, {kw.inx_label} FROM {trllabe_s_agg_tablename}"
+    select_core_raw_sqlstr = f"SELECT {kw.spark_num}, {kw.spark_face}, {kw.otx_label}, {kw.inx_label} FROM {trllabe_s_agg_tablename}"
     cursor0.execute(select_core_raw_sqlstr)
     rows = cursor0.fetchall()
     exp_row0 = (1, exx.bob, f"{casa_str}{rdx}", casa_str)
@@ -1221,7 +1221,7 @@ VALUES ('{exx.bob}', '{rdx}', '{rdx}', '{ukx}');"""
     assert rows == [exp_row0]
 
 
-def test_populate_translate_core_vld_with_missing_face_names_Scenario0_Populates1MissingTranslateCoreRow(
+def test_populate_translate_core_vld_with_missing_spark_faces_Scenario0_Populates1MissingTranslateCoreRow(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -1234,7 +1234,7 @@ def test_populate_translate_core_vld_with_missing_face_names_Scenario0_Populates
     prncont_str = kw.person_contactunit
     prncont_s_agg_tablename = create_prime_tablename(prncont_str, "s_agg", "put")
     insert_prncont_sqlstr = f"""
-INSERT INTO {prncont_s_agg_tablename} ({kw.spark_num}, {kw.face_name}, {kw.person_name}, {kw.contact_name})
+INSERT INTO {prncont_s_agg_tablename} ({kw.spark_num}, {kw.spark_face}, {kw.person_name}, {kw.contact_name})
 VALUES ({spark1}, '{exx.bob}', '{exx.bob}', '{exx.bob}');"""
     cursor0.execute(insert_prncont_sqlstr)
 
@@ -1242,11 +1242,11 @@ VALUES ({spark1}, '{exx.bob}', '{exx.bob}', '{exx.bob}');"""
     assert get_row_count(cursor0, trlcore_s_vld_tablename) == 0
 
     # WHEN
-    populate_translate_core_vld_with_missing_face_names(cursor0)
+    populate_translate_core_vld_with_missing_spark_faces(cursor0)
 
     # THEN
     assert get_row_count(cursor0, trlcore_s_vld_tablename) == 1
-    select_core_vld_sqlstr = f"SELECT {kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str} FROM {trlcore_s_vld_tablename}"
+    select_core_vld_sqlstr = f"SELECT {kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str} FROM {trlcore_s_vld_tablename}"
     cursor0.execute(select_core_vld_sqlstr)
     rows = cursor0.fetchall()
     x_knot = default_knot_if_None()
@@ -1255,7 +1255,7 @@ VALUES ({spark1}, '{exx.bob}', '{exx.bob}', '{exx.bob}');"""
     assert rows == [exp_row0]
 
 
-def test_populate_translate_core_vld_with_missing_face_names_Scenario1_PopulatesSomeMissingTranslateCoreRows(
+def test_populate_translate_core_vld_with_missing_spark_faces_Scenario1_PopulatesSomeMissingTranslateCoreRows(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -1267,23 +1267,23 @@ def test_populate_translate_core_vld_with_missing_face_names_Scenario1_Populates
     prncont_str = kw.person_contactunit
     prncont_s_agg_tablename = create_prime_tablename(prncont_str, "s_agg", "put")
     insert_prncont_sqlstr = f"""
-INSERT INTO {prncont_s_agg_tablename} ({kw.spark_num}, {kw.face_name}, {kw.person_name}, {kw.contact_name})
+INSERT INTO {prncont_s_agg_tablename} ({kw.spark_num}, {kw.spark_face}, {kw.person_name}, {kw.contact_name})
 VALUES ({spark1}, '{exx.bob}', '{exx.bob}', '{exx.bob}'), ({spark1}, '{exx.yao}', '{exx.yao}', '{exx.yao}');"""
     cursor0.execute(insert_prncont_sqlstr)
 
     trlcore_s_vld_tablename = create_prime_tablename("trlcore", kw.s_vld)
     insert_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename} (
-{kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+{kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
 VALUES ('{exx.bob}', '{rdx}', '{rdx}', '{ukx}');"""
     cursor0.execute(insert_sqlstr)
     assert get_row_count(cursor0, trlcore_s_vld_tablename) == 1
 
     # WHEN
-    populate_translate_core_vld_with_missing_face_names(cursor0)
+    populate_translate_core_vld_with_missing_spark_faces(cursor0)
 
     # THEN
     assert get_row_count(cursor0, trlcore_s_vld_tablename) == 2
-    select_core_vld_sqlstr = f"SELECT {kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str} FROM {trlcore_s_vld_tablename} ORDER BY {kw.face_name}"
+    select_core_vld_sqlstr = f"SELECT {kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str} FROM {trlcore_s_vld_tablename} ORDER BY {kw.spark_face}"
     cursor0.execute(select_core_vld_sqlstr)
     rows = cursor0.fetchall()
     default_knot = default_knot_if_None()
@@ -1308,7 +1308,7 @@ def test_etl_translate_sound_agg_tables_to_translate_sound_vld_tables_Scenario2_
     prncont_str = kw.person_contactunit
     prncont_s_agg_tablename = create_prime_tablename(prncont_str, "s_agg", "put")
     insert_prncont_sqlstr = f"""
-INSERT INTO {prncont_s_agg_tablename} ({kw.spark_num}, {kw.face_name}, {kw.person_name}, {kw.contact_name})
+INSERT INTO {prncont_s_agg_tablename} ({kw.spark_num}, {kw.spark_face}, {kw.person_name}, {kw.contact_name})
 VALUES ({spark1}, '{exx.bob}', '{exx.bob}', '{exx.bob}');"""
     cursor0.execute(insert_prncont_sqlstr)
 
@@ -1341,13 +1341,13 @@ def test_etl_translate_sound_agg_tables_to_translate_sound_vld_tables_Scenario3_
     prncont_str = kw.person_contactunit
     prncont_s_agg_tablename = create_prime_tablename(prncont_str, "s_agg", "put")
     insert_prncont_sqlstr = f"""
-INSERT INTO {prncont_s_agg_tablename} ({kw.spark_num}, {kw.face_name}, {kw.person_name}, {kw.contact_name})
+INSERT INTO {prncont_s_agg_tablename} ({kw.spark_num}, {kw.spark_face}, {kw.person_name}, {kw.contact_name})
 VALUES ({spark1}, '{exx.bob}', '{exx.bob}', '{exx.bob}'), ({spark1}, '{exx.yao}', '{exx.yao}', '{exx.yao}');"""
     cursor0.execute(insert_prncont_sqlstr)
 
     trlcore_s_vld_tablename = create_prime_tablename("trlcore", kw.s_vld)
     insert_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename} (
-{kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+{kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
 VALUES ('{exx.bob}', '{rdx}', '{rdx}', '{ukx}');"""
     cursor0.execute(insert_sqlstr)
     assert get_row_count(cursor0, trlcore_s_vld_tablename) == 1

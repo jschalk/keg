@@ -35,7 +35,7 @@ def test_get_insert_heard_vld_sqlstrs_ReturnsObj_CheckMomentDimen(cursor0: Curso
         agg_columns = get_table_columns(cursor0, agg_tablename)
         vld_columns = get_table_columns(cursor0, vld_tablename)
         agg_columns = {agg_col for agg_col in agg_columns if agg_col[-3:] != "otx"}
-        agg_columns.remove(kw.face_name)
+        agg_columns.remove(kw.spark_face)
         agg_columns.remove(kw.spark_num)
         agg_columns = get_default_sorted_list(agg_columns)
 
@@ -142,7 +142,7 @@ def test_get_insert_heard_vld_sqlstrs_ReturnsObj_PopulatesTable_Scenario0(
     print(f"{get_table_columns(cursor0, prncont_h_agg_put_tablename)=}")
     insert_into_clause = f"""INSERT INTO {prncont_h_agg_put_tablename} (
 {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.person_name}
 , {kw.contact_name}
@@ -170,7 +170,7 @@ VALUES
     # THEN
     assert get_row_count(cursor0, prncont_h_vld_put_tablename) == 4
     select_sqlstr = f"""SELECT {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.person_name}
 , {kw.contact_name}
@@ -208,7 +208,7 @@ def test_etl_heard_agg_tables_to_heard_vld_tables_PopulatesTable_Scenario0(
     print(f"{get_table_columns(cursor0, prncont_h_agg_put_tablename)=}")
     insert_into_clause = f"""INSERT INTO {prncont_h_agg_put_tablename} (
 {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.person_name}
 , {kw.contact_name}
@@ -234,7 +234,7 @@ VALUES
     # THEN
     assert get_row_count(cursor0, prncont_h_vld_put_tablename) == 4
     select_sqlstr = f"""SELECT {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.person_name}
 , {kw.contact_name}

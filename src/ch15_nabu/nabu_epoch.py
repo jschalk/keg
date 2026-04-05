@@ -9,7 +9,7 @@ from src.ch15_nabu._ref.ch15_semantic_types import FaceName, SparkInt, TimeNum
 
 @dataclass
 class NabuTime:
-    face_name: FaceName = None
+    spark_face: FaceName = None
     spark_num: SparkInt = None
     # otx2inx dict key 'otx_epoch_length', key can be None is only inx_epoch_diff is given
     # otx2inx dict value 'inx_epoch_diff'
@@ -43,25 +43,25 @@ class NabuTime:
     def to_dict(self) -> dict:
         """Returns seralizable dictionary"""
         return {
-            "face_name": self.face_name,
+            "spark_face": self.spark_face,
             "spark_num": self.spark_num,
             "otx2inx": self.otx2inx,
         }
 
 
 def timenabu_shop(
-    face_name: FaceName,
+    spark_face: FaceName,
     spark_num: SparkInt = None,
     otx2inx: dict[TimeNum, TimeNum] = None,
 ):
-    x_timenabu = NabuTime(face_name=face_name, spark_num=get_0_if_None(spark_num))
+    x_timenabu = NabuTime(spark_face=spark_face, spark_num=get_0_if_None(spark_num))
     x_timenabu.set_all_otx2inx(otx2inx)
     return x_timenabu
 
 
 def get_timenabu_from_dict(x_dict: dict) -> NabuTime:
     return timenabu_shop(
-        face_name=x_dict.get("face_name"),
+        spark_face=x_dict.get("spark_face"),
         spark_num=x_dict.get("spark_num"),
         otx2inx=x_dict.get("otx2inx"),
     )
@@ -72,7 +72,7 @@ class InheritTimeNabuError(Exception):
 
 
 def inherit_timenabu(new: NabuTime, old: NabuTime):
-    if new.face_name != old.face_name:
+    if new.spark_face != old.spark_face:
         exception_str = "Core attrs in conflict"
         raise InheritTimeNabuError(exception_str)
     if new.spark_num <= old.spark_num:

@@ -25,7 +25,7 @@ def test_create_knot_exists_in_name_error_update_sqlstr_ReturnsObj_PopulatesTabl
     prncont_dimen = kw.person_contactunit
     prncont_s_agg_put = create_prime_tablename(prncont_dimen, "s_agg", "put")
     insert_prncont_sqlstr = f"""INSERT INTO {prncont_s_agg_put} (
-  {kw.spark_num}, {kw.face_name}, {kw.moment_rope}, {kw.person_name}, {kw.contact_name})
+  {kw.spark_num}, {kw.spark_face}, {kw.moment_rope}, {kw.person_name}, {kw.contact_name})
 VALUES
   ({spark1}, '{exx.sue}', '{exx.a23}', '{exx.yao}', '{exx.yao}')
 , ({spark1}, '{exx.sue}', '{exx.a23}', '{exx.yao}', '{bob_str}')
@@ -35,7 +35,7 @@ VALUES
     cursor0.execute(CREATE_TRLCORE_SOUND_VLD_SQLSTR)
     trlcore_s_vld_tablename = create_prime_tablename("trlcore", kw.s_vld)
     insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename} (
-  {kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+  {kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
 VALUES
   ('{exx.sue}', '{colon}', '{colon}', '{ukx}')
 , ('{exx.yao}', '{comma}', '{comma}', '{ukx}')
@@ -78,7 +78,7 @@ def test_create_knot_exists_in_label_error_update_sqlstr_ReturnsObj_PopulatesTab
     cursor0.execute(CREATE_MMTMONT_SOUND_AGG_SQLSTR)
     mmtmont_s_agg_put = create_prime_tablename(kw.mmtmont, "s_agg")
     insert_mmtmont_sqlstr = f"""INSERT INTO {mmtmont_s_agg_put} (
-  {kw.spark_num}, {kw.face_name}, {kw.moment_rope}, {kw.month_label}, {kw.cumulative_day})
+  {kw.spark_num}, {kw.spark_face}, {kw.moment_rope}, {kw.month_label}, {kw.cumulative_day})
 VALUES
   ({spark1}, '{exx.sue}', '{exx.a23}', '{exx.June}', 101)
 , ({spark1}, '{exx.sue}', '{exx.a23}', '{bad_june_str}', 101)
@@ -88,7 +88,7 @@ VALUES
     cursor0.execute(CREATE_TRLCORE_SOUND_VLD_SQLSTR)
     trlcore_s_vld_tablename = create_prime_tablename(kw.trlcore, kw.s_vld)
     insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename} (
-  {kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+  {kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
 VALUES
   ('{exx.sue}', '{colon}', '{colon}', '{ukx}')
 , ('{exx.yao}', '{comma}', '{comma}', '{ukx}')
@@ -135,7 +135,7 @@ def test_set_moment_person_sound_agg_knot_errors_PopulatesTable_Scenario0(
     prncont_dimen = kw.person_contactunit
     prncont_s_agg_put = create_prime_tablename(prncont_dimen, "s_agg", "put")
     insert_prncont_sqlstr = f"""INSERT INTO {prncont_s_agg_put} (
-  {kw.spark_num}, {kw.face_name}, {kw.moment_rope}, {kw.person_name}, {kw.contact_name})
+  {kw.spark_num}, {kw.spark_face}, {kw.moment_rope}, {kw.person_name}, {kw.contact_name})
 VALUES
   ({spark1}, '{exx.sue}', '{exx.a23}', '{exx.yao}', '{exx.yao}')
 , ({spark1}, '{exx.sue}', '{exx.a23}', '{exx.yao}', '{bob_str}')
@@ -146,7 +146,7 @@ VALUES
     cursor0.execute(CREATE_TRLCORE_SOUND_VLD_SQLSTR)
     trlcore_s_vld_tablename = create_prime_tablename("trlcore", kw.s_vld)
     insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename} (
-  {kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+  {kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
 VALUES
   ('{exx.sue}', '{colon}', '{colon}', '{ukx}')
 , ('{exx.yao}', '{comma}', '{comma}', '{ukx}')

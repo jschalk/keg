@@ -27,7 +27,7 @@ def test_etl_brick_valid_tables_to_sound_raw_tables_PopulatesValidTable_Scenario
     br00117_valid_tablename = f"br00117_{kw.brick_valid}"
     br00117_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.contact_name,
@@ -38,7 +38,7 @@ def test_etl_brick_valid_tables_to_sound_raw_tables_PopulatesValidTable_Scenario
     create_idea_sorted_table(cursor0, br00117_valid_tablename, set(br00117_columns))
     insert_into_clause = f"""INSERT INTO {br00117_valid_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.person_name}
 , {kw.contact_name}
@@ -57,7 +57,7 @@ VALUES
     br00045_valid_tablename = f"br00045_{kw.brick_valid}"
     br00045_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.otx_rope,
         kw.inx_rope,
         kw.otx_knot,
@@ -68,7 +68,7 @@ VALUES
     create_idea_sorted_table(cursor0, br00045_valid_tablename, br00045_columns)
     insert_into_clause = f"""INSERT INTO {br00045_valid_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.otx_rope}
 , {kw.inx_rope}
 , {kw.otx_knot}

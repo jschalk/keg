@@ -1,9 +1,9 @@
 {
   "attributes": {
-    "face_name"           : { "otx_key": true }, 
     "person_name"         : { "otx_key": true }, 
     "plan_rope"           : { "otx_key": true }, 
     "reason_context_ERASE": { "otx_key": true }, 
+    "spark_face"          : { "otx_key": true }, 
     "spark_num"           : { "otx_key": true }
   }, 
   "dimens": ["person_planunit", "person_plan_reasonunit"], 

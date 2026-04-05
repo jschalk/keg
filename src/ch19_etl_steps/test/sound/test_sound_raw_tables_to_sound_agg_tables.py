@@ -33,7 +33,7 @@ def test_create_sound_raw_update_inconsist_error_message_sqlstr_ExecutedSqlUpdat
     insert_into_clause = f"""INSERT INTO {trlrope_s_raw_tablename} (
   {kw.idea_number}
 , {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.otx_rope}
 , {kw.inx_rope}
 , {kw.otx_knot}
@@ -84,7 +84,7 @@ def test_set_sound_raw_tables_error_message_UpdatesTable_Scenario0(cursor0: Curs
     insert_into_clause = f"""INSERT INTO {trlrope_s_raw_tablename} (
   {kw.idea_number}
 , {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.otx_rope}
 , {kw.inx_rope}
 , {kw.otx_knot}
@@ -137,7 +137,7 @@ def test_set_sound_raw_tables_error_message_UpdatesTable_Scenario1_person_raw_de
     insert_into_clause = f"""INSERT INTO {persona_s_raw_del} (
   {kw.idea_number}
 , {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.person_name}
 , {kw.contact_name}_ERASE
@@ -184,7 +184,7 @@ def test_insert_sound_raw_selects_into_sound_agg_tables_PopulatesValidTable_Scen
     insert_into_clause = f"""INSERT INTO {trlrope_s_raw_tablename} (
   {kw.idea_number}
 , {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.otx_rope}
 , {kw.inx_rope}
 , {kw.otx_knot}
@@ -212,7 +212,7 @@ VALUES
     insert_into_clause = f"""INSERT INTO {prncont_put_s_raw_tblname} (
   {kw.idea_number}
 , {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.person_name}
 , {kw.contact_name}
@@ -278,7 +278,7 @@ def test_insert_sound_raw_selects_into_sound_agg_tables_PopulatesValidTable_Scen
     insert_into_clause = f"""INSERT INTO {prncont_del_s_raw_tblname} (
   {kw.idea_number}
 , {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.person_name}
 , {kw.contact_name}_ERASE
@@ -333,7 +333,7 @@ def test_etl_sound_raw_tables_to_sound_agg_tables_PopulatesValidTable_Scenario0(
     insert_into_clause = f"""INSERT INTO {trlrope_s_raw_tablename} (
   {kw.idea_number}
 , {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.otx_rope}
 , {kw.inx_rope}
 , {kw.otx_knot}
@@ -362,7 +362,7 @@ VALUES
     insert_into_clause = f"""INSERT INTO {prncont_put_s_raw_tblname} (
   {kw.idea_number}
 , {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.person_name}
 , {kw.contact_name}

@@ -22,7 +22,7 @@ def test_stance_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     ex_filename = "stance_Faybob.xlsx"
     input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00113_columns = [
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.contact_name,
@@ -37,7 +37,7 @@ def test_stance_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     save_sheet(input_file_path, br00113_ex0_str, br00113_df)
 
     br00001_columns = [
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.bud_time,
@@ -122,7 +122,7 @@ def create_brick_agg_record(wdir: WorldDir, spark_num: int):
     agg_br00003_tablename = f"br00003_{kw.brick_agg}"
     agg_br00003_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.cumulative_minute,
         kw.hour_label,
@@ -132,7 +132,7 @@ def create_brick_agg_record(wdir: WorldDir, spark_num: int):
         create_idea_sorted_table(cursor, agg_br00003_tablename, agg_br00003_columns)
         insert_into_clause = f"""INSERT INTO {agg_br00003_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.cumulative_minute}
 , {kw.hour_label}
@@ -156,7 +156,7 @@ def test_stance_sheets_to_lynx_mstr_Scenario1_DatabaseFileExists(
     ex_filename = "stance_Faybob.xlsx"
     input_file_path = create_path(fay_wdir.input_dir, ex_filename)
     br00113_columns = [
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.contact_name,

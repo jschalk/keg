@@ -4,7 +4,6 @@
     "begin"       : { "otx_key": false }, 
     "close"       : { "otx_key": false }, 
     "denom"       : { "otx_key": false }, 
-    "face_name"   : { "otx_key": true  }, 
     "gogo_want"   : { "otx_key": false }, 
     "knot"        : { "otx_key": false }, 
     "morph"       : { "otx_key": false }, 
@@ -13,6 +12,7 @@
     "plan_rope"   : { "otx_key": true  }, 
     "pledge"      : { "otx_key": false }, 
     "problem_bool": { "otx_key": false }, 
+    "spark_face"  : { "otx_key": true  }, 
     "spark_num"   : { "otx_key": true  }, 
     "star"        : { "otx_key": false }, 
     "stop_want"   : { "otx_key": false }

@@ -56,7 +56,7 @@ def test_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueReport(temp3
     ]
     br00011_cols = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.contact_name,
@@ -72,7 +72,7 @@ def test_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueReport(temp3
     ]
     br00013_cols = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.person_name,
         kw.moment_rope,
         kw.plan_rope,

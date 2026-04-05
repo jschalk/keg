@@ -1,9 +1,9 @@
 {
   "attributes": {
-    "face_name"  : { "otx_key": true  }, 
     "inx_time"   : { "otx_key": false }, 
     "moment_rope": { "otx_key": true  }, 
     "otx_time"   : { "otx_key": true  }, 
+    "spark_face" : { "otx_key": true  }, 
     "spark_num"  : { "otx_key": true  }
   }, 
   "dimens": ["nabu_timenum", "momentunit"], 

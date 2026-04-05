@@ -28,7 +28,7 @@ def test_get_insert_into_heard_raw_sqlstrs_ReturnsObj_PopulatesTable_Scenario0(
     print(f"{get_table_columns(cursor0, personacontact_s_vld_put_tablename)=}")
     insert_into_clause = f"""INSERT INTO {personacontact_s_vld_put_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.person_name}
 , {kw.contact_name}
@@ -55,7 +55,7 @@ VALUES
     # THEN
     assert get_row_count(cursor0, prnawar_h_raw_put_tablename) == 4
     select_sqlstr = f"""SELECT {kw.spark_num}
-, {kw.face_name}_otx
+, {kw.spark_face}_otx
 , {kw.moment_rope}_otx
 , {kw.person_name}_otx
 , {kw.contact_name}_otx
@@ -93,7 +93,7 @@ def test_etl_sound_vld_tables_to_heard_raw_tables_Scenario0_AddRowsToTable(
     print(f"{get_table_columns(cursor0, prncont_s_vld_put_tablename)=}")
     insert_into_clause = f"""INSERT INTO {prncont_s_vld_put_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.person_name}
 , {kw.contact_name}
@@ -119,7 +119,7 @@ VALUES
     # THEN
     assert get_row_count(cursor0, prncont_h_raw_put_tablename) == 4
     select_sqlstr = f"""SELECT {kw.spark_num}
-, {kw.face_name}_otx
+, {kw.spark_face}_otx
 , {kw.moment_rope}_otx
 , {kw.person_name}_otx
 , {kw.contact_name}_otx
@@ -156,7 +156,7 @@ def test_etl_sound_vld_tables_to_heard_raw_tables_Scenario1_Populates_inx_Column
     print(f"{get_table_columns(cursor0, prncont_s_vld_put_tablename)=}")
     insert_into_clause = f"""INSERT INTO {prncont_s_vld_put_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.person_name}
 , {kw.contact_name}
@@ -182,7 +182,7 @@ VALUES
     # THEN
     assert get_row_count(cursor0, prncont_h_raw_put_tablename) == 4
     select_sqlstr = f"""SELECT {kw.spark_num}
-, {kw.face_name}_inx
+, {kw.spark_face}_inx
 , {kw.moment_rope}_inx
 , {kw.person_name}_inx
 , {kw.contact_name}_inx

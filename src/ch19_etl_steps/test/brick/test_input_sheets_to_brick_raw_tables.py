@@ -23,7 +23,7 @@ def test_etl_input_dfs_to_brick_raw_tables_PopulatesTables_Scenario0(
     input_file_path = create_path(input_dir, ex_filename)
     br3_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.cumulative_minute,
         kw.moment_rope,
         kw.hour_label,
@@ -102,7 +102,7 @@ def test_etl_input_dfs_to_brick_raw_tables_PopulatesTables_Scenario1(
     input_file_path = create_path(input_dir, ex_filename)
     idea_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.cumulative_minute,
         kw.moment_rope,
         kw.hour_label,
@@ -113,7 +113,7 @@ def test_etl_input_dfs_to_brick_raw_tables_PopulatesTables_Scenario1(
     row3 = [spark2, exx.sue, minute_420, exx.a23_dash, hour7am, exx.dash]
     incomplete_idea_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.cumulative_minute,
         kw.moment_rope,
         kw.knot,
@@ -192,7 +192,7 @@ ORDER BY sheet_name, {kw.spark_num}, {kw.cumulative_minute};"""
 #     input_file_path = create_path(input_dir, ex_filename)
 #     idea_columns = [
 #     kw.spark_num,
-#     kw.face_name,
+#     kw.spark_face,
 #     kw.cumulative_minute,
 #     kw.moment_rope,
 #     kw.hour_label,

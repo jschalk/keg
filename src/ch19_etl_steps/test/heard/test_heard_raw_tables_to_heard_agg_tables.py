@@ -124,7 +124,7 @@ def test_get_insert_heard_agg_sqlstrs_ReturnsObj_PopulatesTable_Scenario0(
     print(f"{get_table_columns(cursor0, prncont_h_raw_put_tablename)=}")
     insert_into_clause = f"""INSERT INTO {prncont_h_raw_put_tablename} (
   {kw.spark_num}
-, {kw.face_name}_inx
+, {kw.spark_face}_inx
 , {kw.moment_rope}_inx
 , {kw.person_name}_inx
 , {kw.contact_name}_inx
@@ -152,7 +152,7 @@ VALUES
     # THEN
     assert get_row_count(cursor0, prncont_h_agg_put_tablename) == 4
     select_sqlstr = f"""SELECT {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.person_name}
 , {kw.contact_name}
@@ -190,7 +190,7 @@ def test_etl_heard_raw_tables_to_heard_agg_tables_PopulatesTable_Scenario0(
     print(f"{get_table_columns(cursor0, prncont_h_raw_put_tablename)=}")
     insert_into_clause = f"""INSERT INTO {prncont_h_raw_put_tablename} (
   {kw.spark_num}
-, {kw.face_name}_inx
+, {kw.spark_face}_inx
 , {kw.moment_rope}_inx
 , {kw.person_name}_inx
 , {kw.contact_name}_inx
@@ -216,7 +216,7 @@ VALUES
     # THEN
     assert get_row_count(cursor0, prncont_h_agg_put_tablename) == 4
     select_sqlstr = f"""SELECT {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.person_name}
 , {kw.contact_name}

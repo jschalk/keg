@@ -1,6 +1,5 @@
 {
   "attributes": {
-    "face_name"   : { "otx_key": true  }, 
     "fact_context": { "otx_key": true  }, 
     "fact_lower"  : { "otx_key": false }, 
     "fact_state"  : { "otx_key": false }, 
@@ -8,6 +7,7 @@
     "knot"        : { "otx_key": false }, 
     "person_name" : { "otx_key": true  }, 
     "plan_rope"   : { "otx_key": true  }, 
+    "spark_face"  : { "otx_key": true  }, 
     "spark_num"   : { "otx_key": true  }
   }, 
   "dimens": ["person_planunit", "person_plan_factunit"], 

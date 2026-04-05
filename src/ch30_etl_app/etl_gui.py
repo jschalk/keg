@@ -16,7 +16,7 @@ import platform
 from src.ch21_world.world import create_today_punchs
 import subprocess
 import tkinter as tk
-from tkinter import filedialog, messagebox
+from tkinter import filedialog, messagebox, ttk
 
 # ──────────────────────────────────────────────
 #  Stub — replace with your real ETL logic
@@ -37,6 +37,49 @@ FG = "#e4e4e8"
 FG_DIM = "#7a7a88"
 ENTRY_BG = "#13131a"
 BTN_ACTIVE = "#f0d060"
+
+
+class OptionTable(tk.Frame):
+    def __init__(self, parent, options: dict, **kwargs):
+        super().__init__(parent, **kwargs)
+        self.options = options  # {description: function}
+        self._build()
+
+    def _build(self):
+        # Scrollable Treeview
+        tree_frame = tk.Frame(self)
+        tree_frame.pack(fill=tk.BOTH, expand=True)
+
+        scrollbar = ttk.Scrollbar(tree_frame, orient=tk.VERTICAL)
+        self.tree = ttk.Treeview(
+            tree_frame,
+            columns=("action",),
+            show="headings",
+            selectmode="browse",
+            yscrollcommand=scrollbar.set,
+            height=5,  # always shows exactly 5 rows
+        )
+        scrollbar.config(command=self.tree.yview)
+
+        self.tree.heading("action", text="Additional Special Actions")
+        self.tree.column("action", anchor=tk.W)
+
+        for description in self.options:
+            self.tree.insert("", tk.END, values=(description,))
+
+        self.tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+        self.tree.bind("<<TreeviewSelect>>", self._on_select)
+
+    def _on_select(self, event):
+        selected = self.tree.selection()
+        if not selected:
+            return
+        description = self.tree.item(selected[0], "values")[0]
+        fn = self.options.get(description)
+        if callable(fn):
+            fn()
 
 
 def open_directory(path: str) -> None:
@@ -65,7 +108,7 @@ class ETLApp(tk.Tk):
         w, h = 560, 430
         x = (self.winfo_screenwidth() - w) // 2
         y = (self.winfo_screenheight() - h) // 2
-        self.geometry(f"{w}x{h}+{x}+{y}")
+        self.geometry(f"{w}x{h+120}+{x}+{y}")
 
         # String vars ─ empty string = "not set" (optional dirs stay None)
         self._working = tk.StringVar()
@@ -73,7 +116,33 @@ class ETLApp(tk.Tk):
         self._output = tk.StringVar()
         self._person = tk.StringVar()
 
+        # Your config: description -> function
         self._build_ui()
+
+    def create_five_time_config_file(self):
+        # TODO dataframes and save to file
+        # prnt("create_five_time_config_file...")
+        pass
+
+    def create_random_time_config_file(self):
+        # TODO dataframes and save to file
+        # prnt("create_random_time_config_file...")
+        pass
+
+    def create_emmanuel_stance_file(self):
+        # TODO dataframes and save to file
+        # prnt("create_emmanuel_stance_file...")
+        pass
+
+    def create_example_moment_ledger_file(self):
+        # TODO dataframes and save to file
+        # prnt("create_example_moment_ledger_file...")
+        pass
+
+    def create_example_moment_budget_file(self):
+        # TODO dataframes and save to file
+        # prnt("create_example_moment_budget_file...")
+        pass
 
     # ── UI construction ────────────────────────
     def _build_ui(self):
@@ -170,6 +239,16 @@ class ETLApp(tk.Tk):
             command=self._run,
         )
         self._run_btn.pack()
+
+        options = {
+            "create_five_time_config_file": self.create_five_time_config_file,
+            "create_random_time_config_file": self.create_random_time_config_file,
+            "create_emmanuel_stance_file": self.create_emmanuel_stance_file,
+            "create_example_moment_ledger_file": self.create_example_moment_ledger_file,
+            "create_example_moment_budget_file": self.create_example_moment_budget_file,
+        }
+        table = OptionTable(self, options)
+        table.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 
         # hover effect
         self._run_btn.bind("<Enter>", lambda _: self._run_btn.configure(bg=BTN_ACTIVE))
@@ -299,8 +378,7 @@ class ETLApp(tk.Tk):
     # ── browse helper ──────────────────────────
     @staticmethod
     def _browse(var: tk.StringVar):
-        path = filedialog.askdirectory(title="Select directory")
-        if path:
+        if path := filedialog.askdirectory(title="Select directory"):
             var.set(path)
 
     # ── run handler ────────────────────────────

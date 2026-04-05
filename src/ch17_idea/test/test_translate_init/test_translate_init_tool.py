@@ -40,7 +40,7 @@ def test_get_translate_name_dt_columns_ReturnsObj():
     assert len(get_translate_name_dt_columns()) == 7
     static_list = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.otx_knot,
         kw.inx_knot,
         kw.unknown_str,
@@ -57,7 +57,7 @@ def test_get_translate_title_dt_columns_ReturnsObj():
     assert len(get_translate_title_dt_columns()) == 7
     static_list = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.otx_knot,
         kw.inx_knot,
         kw.unknown_str,
@@ -74,7 +74,7 @@ def test_get_translate_label_dt_columns_ReturnsObj():
     assert len(get_translate_label_dt_columns()) == 7
     static_list = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.otx_knot,
         kw.inx_knot,
         kw.unknown_str,
@@ -91,7 +91,7 @@ def test_get_translate_rope_dt_columns_ReturnsObj():
     assert len(get_translate_rope_dt_columns()) == 7
     static_list = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.otx_knot,
         kw.inx_knot,
         kw.unknown_str,
@@ -183,7 +183,7 @@ def test_load_namemap_from_csv_SetsAttrWhenFileExists(temp3_fs):
     assert os_path_exists(name_csv_path)
     empty_translateunit = translateunit_shop("Sue")
     sue_namemap = empty_translateunit.get_mapunit(kw.NameTerm)
-    sue_namemap.face_name = "Sue"
+    sue_namemap.spark_face = "Sue"
     print(f"{empty_translateunit=} {sue_namemap=}")
     assert len(sue_namemap.otx2inx) == 0
 
@@ -204,7 +204,7 @@ def test_load_namemap_from_csv_DoesNotChangeWhenFileDoesNotExist(temp3_fs):
     assert os_path_exists(name_csv_path) is False
     empty_translateunit = translateunit_shop("Sue")
     sue_namemap = empty_translateunit.get_mapunit(kw.NameTerm)
-    sue_namemap.face_name = "Sue"
+    sue_namemap.spark_face = "Sue"
     print(f"{empty_translateunit=} {sue_namemap=}")
     assert len(sue_namemap.otx2inx) == 0
 
@@ -225,7 +225,7 @@ def test_load_titlemap_from_csv_SetsAttrWhenFileExists(temp3_fs):
     assert os_path_exists(group_csv_path)
     empty_translateunit = translateunit_shop("Sue")
     sue_titlemap = empty_translateunit.get_mapunit(kw.TitleTerm)
-    sue_titlemap.face_name = "Sue"
+    sue_titlemap.spark_face = "Sue"
     print(f"{empty_translateunit=} {sue_titlemap=}")
     assert len(sue_titlemap.otx2inx) == 0
 
@@ -248,7 +248,7 @@ def test_load_titlemap_from_csv_DoesNotChangeWhenFileDoesNotExist(
     assert os_path_exists(group_csv_path) is False
     empty_translateunit = translateunit_shop("Sue")
     sue_titlemap = empty_translateunit.get_mapunit(kw.TitleTerm)
-    sue_titlemap.face_name = "Sue"
+    sue_titlemap.spark_face = "Sue"
     print(f"{empty_translateunit=} {sue_titlemap=}")
     assert len(sue_titlemap.otx2inx) == 0
 
@@ -269,7 +269,7 @@ def test_load_labelmap_from_csv_SetsAttrWhenFileExists(temp3_fs):
     assert os_path_exists(label_csv_path)
     empty_translateunit = translateunit_shop("Sue")
     sue_labelmap = empty_translateunit.get_mapunit(kw.LabelTerm)
-    sue_labelmap.face_name = "Sue"
+    sue_labelmap.spark_face = "Sue"
     print(f"{empty_translateunit=} {sue_labelmap=}")
     assert len(sue_labelmap.otx2inx) == 0
 
@@ -292,7 +292,7 @@ def test_load_labelmap_from_csv_DoesNotChangeWhenFileDoesNotExist(
     assert os_path_exists(label_csv_path) is False
     empty_translateunit = translateunit_shop("Sue")
     sue_labelmap = empty_translateunit.get_mapunit(kw.LabelTerm)
-    sue_labelmap.face_name = "Sue"
+    sue_labelmap.spark_face = "Sue"
     print(f"{empty_translateunit=} {sue_labelmap=}")
     assert len(sue_labelmap.otx2inx) == 0
 
@@ -313,7 +313,7 @@ def test_load_ropemap_from_csv_SetsAttrWhenFileExists(temp3_fs):
     assert os_path_exists(rope_csv_path)
     empty_translateunit = translateunit_shop("Sue")
     sue_ropemap = empty_translateunit.get_mapunit(kw.RopeTerm)
-    sue_ropemap.face_name = "Sue"
+    sue_ropemap.spark_face = "Sue"
     print(f"{empty_translateunit=} {sue_ropemap=}")
     assert len(sue_ropemap.otx2inx) == 0
 
@@ -324,7 +324,7 @@ def test_load_ropemap_from_csv_SetsAttrWhenFileExists(temp3_fs):
     assert len(sue_ropemap.otx2inx) == 2
     ex_ropemap = sue_translateunit.get_mapunit(kw.RopeTerm)
     assert ex_ropemap.spark_num == sue_ropemap.spark_num
-    assert ex_ropemap.face_name == sue_ropemap.face_name
+    assert ex_ropemap.spark_face == sue_ropemap.spark_face
     assert ex_ropemap.otx2inx == sue_ropemap.otx2inx
     assert ex_ropemap.labelmap != sue_ropemap.labelmap
 
@@ -339,7 +339,7 @@ def test_load_ropemap_from_csv_DoesNotChangeWhenFileDoesNotExist(
     assert os_path_exists(rope_csv_path) is False
     empty_translateunit = translateunit_shop("Sue")
     sue_ropemap = empty_translateunit.get_mapunit(kw.RopeTerm)
-    sue_ropemap.face_name = "Sue"
+    sue_ropemap.spark_face = "Sue"
     print(f"{empty_translateunit=} {sue_ropemap=}")
     assert len(sue_ropemap.otx2inx) == 0
 
@@ -358,7 +358,7 @@ def test_create_dir_valid_empty_translateunit_Sets_otx_knot_inx_knot(
     slash_otx_knot = "/"
     colon_inx_knot = ":"
     sue_translateunit = translateunit_shop(
-        face_name=exx.sue,
+        spark_face=exx.sue,
         otx_knot=slash_otx_knot,
         inx_knot=colon_inx_knot,
         unknown_str=x_unknown_str,
@@ -389,7 +389,7 @@ def test_create_dir_valid_empty_translateunit_Returns_spark_num(
     colon_inx_knot = ":"
     spark7 = 7
     sue_translateunit = translateunit_shop(
-        face_name=exx.sue,
+        spark_face=exx.sue,
         spark_num=spark7,
         otx_knot=slash_otx_knot,
         inx_knot=colon_inx_knot,
@@ -403,7 +403,7 @@ def test_create_dir_valid_empty_translateunit_Returns_spark_num(
     gen_translateunit = create_dir_valid_empty_translateunit(map_dir)
 
     # THEN
-    assert gen_translateunit.face_name == exx.sue
+    assert gen_translateunit.spark_face == exx.sue
     assert gen_translateunit.spark_num == spark7
     assert gen_translateunit.unknown_str == x_unknown_str
     assert gen_translateunit.otx_knot == slash_otx_knot

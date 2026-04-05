@@ -95,7 +95,7 @@ from src.ch18_etl_config.etl_sqlstr import (
     CREATE_MOMENT_OTE1_AGG_SQLSTR,
     INSERT_MOMENT_OTE1_AGG_FROM_HEARD_SQLSTR,
     create_insert_into_translate_core_raw_sqlstr,
-    create_insert_missing_face_name_into_translate_core_vld_sqlstr,
+    create_insert_missing_spark_face_into_translate_core_vld_sqlstr,
     create_insert_translate_core_agg_into_vld_sqlstr,
     create_insert_translate_sound_vld_table_sqlstr,
     create_job_tables,
@@ -255,7 +255,7 @@ def etl_brick_agg_tables_to_brick_valid_tables(conn_or_cursor: sqlite3_Connectio
                 conn_or_cursor, x_tablename, agg_columns
             )
             select_sqlstr = select_sqlstr.replace("spark_num", "agg.spark_num")
-            select_sqlstr = select_sqlstr.replace("face_name", "agg.face_name")
+            select_sqlstr = select_sqlstr.replace("spark_face", "agg.spark_face")
             select_sqlstr = select_sqlstr.replace(x_tablename, f"{x_tablename} agg")
             join_clause_str = """JOIN sparks_brick_valid valid_sparks ON valid_sparks.spark_num = agg.spark_num"""
             insert_select_into_sqlstr = f"""
@@ -270,7 +270,7 @@ def etl_brick_agg_tables_to_sparks_brick_agg_table(conn_or_cursor: sqlite3_Curso
     if not db_table_exists(conn_or_cursor, brick_sparks_tablename):
         brick_sparks_columns = [
             "idea_number",
-            "face_name",
+            "spark_face",
             "spark_num",
             "error_message",
         ]
@@ -283,10 +283,10 @@ def etl_brick_agg_tables_to_sparks_brick_agg_table(conn_or_cursor: sqlite3_Curso
         if agg_tablename in brick_agg_tables:
             idea_number = brick_agg_tables.get(agg_tablename)
             insert_from_select_sqlstr = f"""
-INSERT INTO {brick_sparks_tablename} (idea_number, spark_num, face_name)
-SELECT '{idea_number}', spark_num, face_name 
+INSERT INTO {brick_sparks_tablename} (idea_number, spark_num, spark_face)
+SELECT '{idea_number}', spark_num, spark_face 
 FROM {agg_tablename}
-GROUP BY spark_num, face_name
+GROUP BY spark_num, spark_face
 ;
 """
             conn_or_cursor.execute(insert_from_select_sqlstr)
@@ -298,7 +298,7 @@ WHERE spark_num IN (
     SELECT spark_num 
     FROM {brick_sparks_tablename} 
     GROUP BY spark_num 
-    HAVING MAX(face_name) <> MIN(face_name)
+    HAVING MAX(spark_face) <> MIN(spark_face)
 )
 ;
 """
@@ -310,13 +310,13 @@ def etl_sparks_brick_agg_table_to_sparks_brick_valid_table(
 ):
     valid_sparks_tablename = "sparks_brick_valid"
     if not db_table_exists(conn_or_cursor, valid_sparks_tablename):
-        brick_sparks_columns = ["spark_num", "face_name"]
+        brick_sparks_columns = ["spark_num", "spark_face"]
         create_idea_sorted_table(
             conn_or_cursor, valid_sparks_tablename, brick_sparks_columns
         )
     insert_select_sqlstr = f"""
-INSERT INTO {valid_sparks_tablename} (spark_num, face_name)
-SELECT spark_num, face_name 
+INSERT INTO {valid_sparks_tablename} (spark_num, spark_face)
+SELECT spark_num, spark_face 
 FROM sparks_brick_agg
 WHERE error_message IS NULL
 ;
@@ -328,7 +328,7 @@ def etl_sparks_brick_agg_db_to_spark_dict(
     conn_or_cursor: sqlite3_Cursor,
 ) -> dict[SparkInt, FaceName]:
     select_sqlstr = """
-SELECT spark_num, face_name 
+SELECT spark_num, spark_face 
 FROM sparks_brick_valid
 ;
 """
@@ -439,7 +439,7 @@ def update_inconsistency_translate_core_raw_table(cursor: sqlite3_Cursor):
     sqlstr = create_update_inconsistency_error_query(
         cursor,
         x_tablename=translate_core_s_raw_tablename,
-        focus_columns={"face_name"},
+        focus_columns={"spark_face"},
         exclude_columns={"source_dimen"},
         error_holder_column="error_message",
         error_str="Inconsistent data",
@@ -452,11 +452,11 @@ def insert_translate_core_raw_to_translate_core_agg_table(cursor: sqlite3_Cursor
     translate_core_s_raw_tablename = create_prime_tablename("trlcore", "s_raw")
     translate_core_s_agg_tablename = create_prime_tablename("trlcore", "s_agg")
     sqlstr = f"""
-INSERT INTO {translate_core_s_agg_tablename} (face_name, otx_knot, inx_knot, unknown_str)
-SELECT face_name, MAX(otx_knot), MAX(inx_knot), MAX(unknown_str)
+INSERT INTO {translate_core_s_agg_tablename} (spark_face, otx_knot, inx_knot, unknown_str)
+SELECT spark_face, MAX(otx_knot), MAX(inx_knot), MAX(unknown_str)
 FROM {translate_core_s_raw_tablename}
 WHERE error_message IS NULL
-GROUP BY face_name
+GROUP BY spark_face
 """
     cursor.execute(sqlstr)
 
@@ -520,9 +520,9 @@ def get_moment_person_sound_agg_translateable_columns(
     return translate_columns
 
 
-def populate_translate_core_vld_with_missing_face_names(cursor: sqlite3_Cursor):
+def populate_translate_core_vld_with_missing_spark_faces(cursor: sqlite3_Cursor):
     for agg_tablename in get_moment_person_sound_agg_tablenames():
-        insert_sqlstr = create_insert_missing_face_name_into_translate_core_vld_sqlstr(
+        insert_sqlstr = create_insert_missing_spark_face_into_translate_core_vld_sqlstr(
             default_knot=default_knot_if_None(),
             default_unknown=default_unknown_str_if_None(),
             moment_person_sound_agg_tablename=agg_tablename,
@@ -537,7 +537,7 @@ def etl_translate_sound_agg_tables_to_translate_sound_vld_tables(
     update_inconsistency_translate_core_raw_table(cursor)
     insert_translate_core_raw_to_translate_core_agg_table(cursor)
     insert_translate_core_agg_to_translate_core_vld_table(cursor)
-    populate_translate_core_vld_with_missing_face_names(cursor)
+    populate_translate_core_vld_with_missing_spark_faces(cursor)
     update_translate_sound_agg_inconsist_errors(cursor)
     update_translate_sound_agg_knot_errors(cursor)
     insert_translate_sound_agg_tables_to_translate_sound_vld_table(cursor)
@@ -810,7 +810,7 @@ def save_spark_lesson_json(
 ):
     spark_lesson = lessonunit_shop(
         person_name=person_name,
-        face_name=None,
+        spark_face=None,
         moment_rope=moment_lasso.moment_rope,
         spark_num=spark_num,
     )
@@ -845,7 +845,7 @@ def add_personatoms_from_csv(spark_lesson: LessonUnit, spark_dir: str):
                 x_atom = personatom_shop(person_dimen, "INSERT")
                 for col_name, row_value in zip(headers, put_row):
                     if col_name not in {
-                        "face_name",
+                        "spark_face",
                         "spark_num",
                         "moment_rope",
                         "person_name",
@@ -860,7 +860,7 @@ def add_personatoms_from_csv(spark_lesson: LessonUnit, spark_dir: str):
                 x_atom = personatom_shop(person_dimen, "DELETE")
                 for col_name, row_value in zip(headers, del_row):
                     if col_name not in {
-                        "face_name",
+                        "spark_face",
                         "spark_num",
                         "moment_rope",
                         "person_name",

@@ -23,7 +23,7 @@ def br00013_example() -> pandas_DataFrame:
     ]
     cols = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.person_name,
         kw.moment_rope,
         kw.plan_rope,

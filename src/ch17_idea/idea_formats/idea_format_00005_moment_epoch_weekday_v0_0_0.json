@@ -1,8 +1,8 @@
 {
   "attributes": {
-    "face_name"    : { "otx_key": true  }, 
     "knot"         : { "otx_key": false }, 
     "moment_rope"  : { "otx_key": true  }, 
+    "spark_face"   : { "otx_key": true  }, 
     "spark_num"    : { "otx_key": true  }, 
     "weekday_label": { "otx_key": false }, 
     "weekday_order": { "otx_key": true  }

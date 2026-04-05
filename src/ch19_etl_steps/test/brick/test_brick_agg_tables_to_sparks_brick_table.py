@@ -23,7 +23,7 @@ def test_etl_brick_agg_tables_to_sparks_brick_agg_table_PopulatesTables_Scenario
     agg_br00003_tablename = f"br00003_{kw.brick_agg}"
     agg_br00003_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.cumulative_minute,
         kw.hour_label,
@@ -31,7 +31,7 @@ def test_etl_brick_agg_tables_to_sparks_brick_agg_table_PopulatesTables_Scenario
     create_idea_sorted_table(cursor0, agg_br00003_tablename, agg_br00003_columns)
     insert_into_clause = f"""INSERT INTO {agg_br00003_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.cumulative_minute}
 , {kw.hour_label}
@@ -58,14 +58,14 @@ VALUES
     brick_sparks_table_cols = set(get_table_columns(cursor0, brick_sparks_tablename))
     assert len(brick_sparks_table_cols) == 4
     assert kw.idea_number in brick_sparks_table_cols
-    assert kw.face_name in brick_sparks_table_cols
+    assert kw.spark_face in brick_sparks_table_cols
     assert kw.spark_num in brick_sparks_table_cols
     assert kw.error_message in brick_sparks_table_cols
     assert get_row_count(cursor0, brick_sparks_tablename) == 3
     select_agg_sqlstr = f"""
 SELECT * 
 FROM {brick_sparks_tablename} 
-ORDER BY {kw.spark_num}, {kw.face_name};"""
+ORDER BY {kw.spark_num}, {kw.spark_face};"""
     cursor0.execute(select_agg_sqlstr)
 
     rows = cursor0.fetchall()
@@ -93,7 +93,7 @@ def test_etl_brick_agg_tables_to_sparks_brick_agg_table_PopulatesTables_Scenario
     agg_br00003_tablename = f"br00003_{kw.brick_agg}"
     agg_br00003_columns = [
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         kw.cumulative_minute,
         kw.hour_label,
@@ -101,7 +101,7 @@ def test_etl_brick_agg_tables_to_sparks_brick_agg_table_PopulatesTables_Scenario
     create_idea_sorted_table(cursor0, agg_br00003_tablename, agg_br00003_columns)
     insert_into_clause = f"""INSERT INTO {agg_br00003_tablename} (
   {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.moment_rope}
 , {kw.cumulative_minute}
 , {kw.hour_label}
@@ -130,7 +130,7 @@ VALUES
     select_agg_sqlstr = f"""
 SELECT * 
 FROM {brick_sparks_tablename} 
-ORDER BY {kw.spark_num}, {kw.face_name};"""
+ORDER BY {kw.spark_num}, {kw.spark_face};"""
     cursor0.execute(select_agg_sqlstr)
 
     rows = cursor0.fetchall()
@@ -158,14 +158,14 @@ def test_etl_sparks_brick_agg_table_to_sparks_brick_valid_table_PopulatesTables_
     agg_sparks_columns = [
         kw.idea_number,
         kw.spark_num,
-        kw.face_name,
+        kw.spark_face,
         kw.error_message,
     ]
     create_idea_sorted_table(cursor0, agg_sparks_tablename, agg_sparks_columns)
     insert_into_clause = f"""INSERT INTO {agg_sparks_tablename} (
   {kw.idea_number}
 , {kw.spark_num}
-, {kw.face_name}
+, {kw.spark_face}
 , {kw.error_message}
 )"""
     invalid_str = "invalid because of conflicting spark_num"
@@ -192,7 +192,7 @@ VALUES
     select_agg_sqlstr = f"""
 SELECT * 
 FROM {valid_sparks_tablename} 
-ORDER BY {kw.spark_num}, {kw.face_name};"""
+ORDER BY {kw.spark_num}, {kw.spark_face};"""
     cursor0.execute(select_agg_sqlstr)
 
     rows = cursor0.fetchall()
@@ -209,11 +209,11 @@ def test_etl_sparks_brick_agg_db_to_spark_dict_ReturnsObj_Scenario0(cursor0: Cur
     spark1 = 1
     spark3 = 3
     spark9 = 9
-    agg_columns = [kw.face_name, kw.spark_num, kw.error_message]
+    agg_columns = [kw.spark_face, kw.spark_num, kw.error_message]
     agg_sparks_tablename = kw.sparks_brick_agg
     create_idea_sorted_table(cursor0, agg_sparks_tablename, agg_columns)
     insert_into_clause = f"""
-INSERT INTO {agg_sparks_tablename} ({kw.spark_num}, {kw.face_name}, {kw.error_message})
+INSERT INTO {agg_sparks_tablename} ({kw.spark_num}, {kw.spark_face}, {kw.error_message})
 VALUES     
   ('{spark3}', '{exx.bob}', NULL)
 , ('{spark1}', '{exx.sue}', 'invalid because of conflicting spark_num')

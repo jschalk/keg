@@ -24,7 +24,7 @@ def test_TranslateUnit_to_dict_ReturnsObj_Scenario0():
     # THEN
     print(sue_dict)
     assert sue_dict
-    assert sue_dict.get(kw.face_name) == exx.sue
+    assert sue_dict.get(kw.spark_face) == exx.sue
     assert sue_dict.get(kw.spark_num) == sue_translateunit.spark_num
     assert sue_dict.get(kw.otx_knot) == default_knot_if_None()
     assert sue_dict.get(kw.inx_knot) == default_knot_if_None()
@@ -57,7 +57,7 @@ def test_TranslateUnit_to_dict_ReturnsObj_Scenario1():
     sue_dict = sue_translateunit.to_dict()
 
     # THEN
-    assert sue_dict.get(kw.face_name) == exx.sue
+    assert sue_dict.get(kw.spark_face) == exx.sue
     assert sue_dict.get(kw.otx_knot) == slash_otx_knot
     assert sue_dict.get(kw.inx_knot) == colon_inx_knot
     assert sue_dict.get(kw.unknown_str) == x_unknown_str
@@ -94,7 +94,7 @@ def test_get_translateunit_from_dict_ReturnsObj():
 
     # THEN
     assert gen_translateunit
-    assert gen_translateunit.face_name == exx.sue
+    assert gen_translateunit.spark_face == exx.sue
     assert gen_translateunit.spark_num == sue_spark_num
     assert gen_translateunit.otx_knot == slash_otx_knot
     assert gen_translateunit.inx_knot == colon_inx_knot

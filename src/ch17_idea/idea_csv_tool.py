@@ -39,7 +39,7 @@ def create_init_stance_idea_csv_strs() -> dict[str, str]:
         idea_format_filename = get_idea_format_filename(idea_number)
         for idea_columns, idea_filename in idea_format_headers.items():
             if idea_filename == idea_format_filename:
-                moment_csv_strs[idea_number] = f"spark_num,face_name,{idea_columns}\n"
+                moment_csv_strs[idea_number] = f"spark_num,spark_face,{idea_columns}\n"
     return moment_csv_strs
 
 
@@ -85,12 +85,12 @@ def _add_momentunit_to_br00000_csv(
     x_csv: str,
     x_moment: MomentUnit,
     csv_delimiter: str,
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: int = None,
 ) -> str:
     x_knot = get_csv_compatible_knot(x_moment.knot, csv_delimiter)
     x_row = [
-        if_none_str(face_name),
+        if_none_str(spark_face),
         if_none_str(spark_num),
         x_moment.moment_rope,
         x_moment.epoch.epoch_label,
@@ -112,14 +112,14 @@ def _add_budunit_to_br00001_csv(
     x_csv: str,
     x_moment: MomentUnit,
     csv_delimiter: str,
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: int = None,
 ) -> str:
     x_knot = get_csv_compatible_knot(x_moment.knot, csv_delimiter)
     for broker_person_name, personbudhistorys in x_moment.personbudhistorys.items():
         for bud_time, budunit in personbudhistorys.buds.items():
             x_row = [
-                if_none_str(face_name),
+                if_none_str(spark_face),
                 if_none_str(spark_num),
                 x_moment.moment_rope,
                 broker_person_name,
@@ -137,7 +137,7 @@ def _add_paybook_to_br00002_csv(
     x_csv: str,
     x_moment: MomentUnit,
     csv_delimiter: str,
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: int = None,
 ) -> str:
     x_knot = get_csv_compatible_knot(x_moment.knot, csv_delimiter)
@@ -146,7 +146,7 @@ def _add_paybook_to_br00002_csv(
             for tran_time, amount in time_dict.items():
                 moment_rope = x_moment.moment_rope
                 x_row = [
-                    if_none_str(face_name),
+                    if_none_str(spark_face),
                     if_none_str(spark_num),
                     moment_rope,
                     person_name,
@@ -164,13 +164,13 @@ def _add_hours_to_br00003_csv(
     x_csv: str,
     x_moment: MomentUnit,
     csv_delimiter: str,
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: int = None,
 ) -> str:
     x_knot = get_csv_compatible_knot(x_moment.knot, csv_delimiter)
     for hour_plan in x_moment.epoch.hours_config:
         x_row = [
-            if_none_str(face_name),
+            if_none_str(spark_face),
             if_none_str(spark_num),
             x_moment.moment_rope,
             str(hour_plan[1]),
@@ -186,13 +186,13 @@ def _add_months_to_br00004_csv(
     x_csv: str,
     x_moment: MomentUnit,
     csv_delimiter: str,
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: int = None,
 ) -> str:
     x_knot = get_csv_compatible_knot(x_moment.knot, csv_delimiter)
     for month_plan in x_moment.epoch.months_config:
         x_row = [
-            if_none_str(face_name),
+            if_none_str(spark_face),
             if_none_str(spark_num),
             x_moment.moment_rope,
             str(month_plan[1]),
@@ -208,13 +208,13 @@ def _add_weekdays_to_br00005_csv(
     x_csv: str,
     x_moment: MomentUnit,
     csv_delimiter: str,
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: int = None,
 ) -> str:
     x_knot = get_csv_compatible_knot(x_moment.knot, csv_delimiter)
     for count_x, weekday_label in enumerate(x_moment.epoch.weekdays_config):
         x_row = [
-            if_none_str(face_name),
+            if_none_str(spark_face),
             if_none_str(spark_num),
             x_moment.moment_rope,
             str(count_x),
@@ -230,14 +230,14 @@ def add_person_to_br00020_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: int = None,
 ) -> str:
     x_knot = get_csv_compatible_knot(x_person.knot, csv_delimiter)
     for contactunit in x_person.contacts.values():
         for membership in contactunit.memberships.values():
             x_row = [
-                if_none_str(face_name),
+                if_none_str(spark_face),
                 if_none_str(spark_num),
                 x_person.planroot.get_plan_rope(),
                 x_person.person_name,
@@ -256,13 +256,13 @@ def add_person_to_br00021_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: int = None,
 ) -> str:
     x_knot = get_csv_compatible_knot(x_person.knot, csv_delimiter)
     for contactunit in x_person.contacts.values():
         x_row = [
-            if_none_str(face_name),
+            if_none_str(spark_face),
             if_none_str(spark_num),
             x_person.planroot.get_plan_rope(),
             x_person.person_name,
@@ -280,14 +280,14 @@ def add_person_to_br00022_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: int = None,
 ) -> str:
     x_knot = get_csv_compatible_knot(x_person.knot, csv_delimiter)
     for planunit in x_person._plan_dict.values():
         for awardunit in planunit.awardunits.values():
             x_row = [
-                if_none_str(face_name),
+                if_none_str(spark_face),
                 if_none_str(spark_num),
                 x_person.planroot.get_plan_rope(),
                 x_person.person_name,
@@ -306,13 +306,13 @@ def add_person_to_br00023_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: int = None,
 ) -> str:
     x_knot = get_csv_compatible_knot(x_person.knot, csv_delimiter)
     for factunit in x_person.planroot.factunits.values():
         x_row = [
-            if_none_str(face_name),
+            if_none_str(spark_face),
             if_none_str(spark_num),
             x_person.planroot.get_plan_rope(),
             x_person.person_name,
@@ -332,14 +332,14 @@ def add_person_to_br00024_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: int = None,
 ) -> str:
     x_knot = get_csv_compatible_knot(x_person.knot, csv_delimiter)
     for planunit in x_person._plan_dict.values():
         for group_title in planunit.workforceunit.labors:
             x_row = [
-                if_none_str(face_name),
+                if_none_str(spark_face),
                 if_none_str(spark_num),
                 x_person.planroot.get_plan_rope(),
                 x_person.person_name,
@@ -356,14 +356,14 @@ def add_person_to_br00025_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: int = None,
 ) -> str:
     x_knot = get_csv_compatible_knot(x_person.knot, csv_delimiter)
     for planunit in x_person._plan_dict.values():
         for group_title in planunit.healerunit.healer_names:
             x_row = [
-                if_none_str(face_name),
+                if_none_str(spark_face),
                 if_none_str(spark_num),
                 x_person.planroot.get_plan_rope(),
                 x_person.person_name,
@@ -380,7 +380,7 @@ def add_person_to_br00026_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: int = None,
 ) -> str:
     x_knot = get_csv_compatible_knot(x_person.knot, csv_delimiter)
@@ -388,7 +388,7 @@ def add_person_to_br00026_csv(
         for reasonunit in planunit.reasonunits.values():
             for caseunit in reasonunit.cases.values():
                 x_row = [
-                    if_none_str(face_name),
+                    if_none_str(spark_face),
                     if_none_str(spark_num),
                     x_person.planroot.get_plan_rope(),
                     x_person.person_name,
@@ -409,14 +409,14 @@ def add_person_to_br00027_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: int = None,
 ) -> str:
     x_knot = get_csv_compatible_knot(x_person.knot, csv_delimiter)
     for planunit in x_person._plan_dict.values():
         for reasonunit in planunit.reasonunits.values():
             x_row = [
-                if_none_str(face_name),
+                if_none_str(spark_face),
                 if_none_str(spark_num),
                 x_person.planroot.get_plan_rope(),
                 x_person.person_name,
@@ -434,14 +434,14 @@ def add_person_to_br00028_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: int = None,
 ) -> str:
     x_knot = get_csv_compatible_knot(x_person.knot, csv_delimiter)
     for planunit in x_person._plan_dict.values():
         if planunit != x_person.planroot:
             x_row = [
-                if_none_str(face_name),
+                if_none_str(spark_face),
                 if_none_str(spark_num),
                 x_person.planroot.get_plan_rope(),
                 x_person.person_name,
@@ -468,12 +468,12 @@ def add_person_to_br00029_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
-    face_name: FaceName = None,
+    spark_face: FaceName = None,
     spark_num: int = None,
 ) -> str:
     x_knot = get_csv_compatible_knot(x_person.knot, csv_delimiter)
     x_row = [
-        if_none_str(face_name),
+        if_none_str(spark_face),
         if_none_str(spark_num),
         x_person.planroot.get_plan_rope(),
         x_person.person_name,

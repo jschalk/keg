@@ -198,7 +198,7 @@ def test_get_all_dimen_columns_set_ReturnsObj_Scenario1_translate_core_Dimens():
     translate_core_columns = get_all_dimen_columns_set(kw.translate_core)
 
     # THEN
-    expected_columns = {kw.face_name, kw.otx_knot, kw.inx_knot, kw.unknown_str}
+    expected_columns = {kw.spark_face, kw.otx_knot, kw.inx_knot, kw.unknown_str}
     assert translate_core_columns == expected_columns
 
 
@@ -382,7 +382,7 @@ def test_get_prime_columns_ReturnsObj_Scenario2_moment_epoch_month():
         kw.spark_num,
         kw.moment_rope,
         kw.month_label,
-        kw.face_name,
+        kw.spark_face,
         kw.cumulative_day,
         kw.knot,
     }
@@ -405,8 +405,8 @@ def test_get_prime_columns_ReturnsObj_Scenario3_h_raw_set_translateable_otx_inx_
         f"{kw.moment_rope}_inx",
         f"{kw.month_label}_otx",
         f"{kw.month_label}_inx",
-        f"{kw.face_name}_otx",
-        f"{kw.face_name}_inx",
+        f"{kw.spark_face}_otx",
+        f"{kw.spark_face}_inx",
         kw.cumulative_day,
         kw.error_message,
         kw.knot,
@@ -425,7 +425,7 @@ def test_get_prime_columns_ReturnsObj_Scenario4_h_agg_set_nabuable_otx_inx_args(
     # THEN
     print(f"{mmtoffi_h_agg_columns=}")
     assert mmtoffi_h_agg_columns == {
-        kw.face_name,
+        kw.spark_face,
         kw.moment_rope,
         f"{kw.offi_time}_otx",
         f"{kw.offi_time}_inx",
@@ -458,7 +458,7 @@ def test_get_prime_columns_ReturnsObj_Scenario5_h_agg_set_nabuable_otx_inx_args_
         f"context_plan_{kw.close}",
         f"context_plan_{kw.denom}",
         f"context_plan_{kw.morph}",
-        kw.face_name,
+        kw.spark_face,
         kw.inx_epoch_diff,
         kw.plan_rope,
         kw.reason_context,
@@ -483,7 +483,7 @@ def test_get_del_dimen_columns_set_ReturnsObj_Scenario0() -> list[str]:
         kw.plan_rope,
         kw.spark_num,
         kw.person_name,
-        kw.face_name,
+        kw.spark_face,
         f"{kw.labor_title}_ERASE",
     }
 
@@ -497,5 +497,5 @@ def test_create_prime_table_sqlstr_ReturnsObj_Scenario0_CaseUnit():
     # THEN
     assert table_sqlstr
     print(table_sqlstr)
-    expected_sqlstr = "CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_put_s_raw (idea_number TEXT, spark_num INTEGER, face_name TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, knot TEXT, error_message TEXT)"
+    expected_sqlstr = "CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_put_s_raw (idea_number TEXT, spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, knot TEXT, error_message TEXT)"
     assert table_sqlstr == expected_sqlstr

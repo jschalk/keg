@@ -15,7 +15,7 @@ def test_TitleMap_Exists():
     x_titlemap = TitleMap()
 
     # WHEN / THEN
-    assert not x_titlemap.face_name
+    assert not x_titlemap.spark_face
     assert not x_titlemap.spark_num
     assert not x_titlemap.otx2inx
     assert not x_titlemap.unknown_str
@@ -28,7 +28,7 @@ def test_titlemap_shop_ReturnsObj_Scenario0_NoParameters():
     x_titlemap = titlemap_shop()
 
     # THEN
-    assert not x_titlemap.face_name
+    assert not x_titlemap.spark_face
     assert x_titlemap.spark_num == 0
     assert x_titlemap.otx2inx == {}
     assert x_titlemap.unknown_str == default_unknown_str_if_None()
@@ -46,7 +46,7 @@ def test_titlemap_shop_ReturnsObj_Scenario1_WithParameters():
 
     # WHEN
     x_titlemap = titlemap_shop(
-        face_name=exx.bob,
+        spark_face=exx.bob,
         spark_num=spark7,
         otx2inx=otx2inx,
         unknown_str=x_unknown_str,
@@ -55,7 +55,7 @@ def test_titlemap_shop_ReturnsObj_Scenario1_WithParameters():
     )
 
     # THEN
-    assert x_titlemap.face_name == exx.bob
+    assert x_titlemap.spark_face == exx.bob
     assert x_titlemap.spark_num == spark7
     assert x_titlemap.otx2inx == otx2inx
     assert x_titlemap.unknown_str == x_unknown_str
@@ -71,7 +71,7 @@ def test_titlemap_shop_ReturnsObj_Scenario2_TranslateCoreAttrAreDefaultWhenGiven
 
     # WHEN
     x_titlemap = titlemap_shop(
-        face_name=exx.bob,
+        spark_face=exx.bob,
         spark_num=spark7,
         otx2inx=otx2inx,
         unknown_str=x_nan,
@@ -80,7 +80,7 @@ def test_titlemap_shop_ReturnsObj_Scenario2_TranslateCoreAttrAreDefaultWhenGiven
     )
 
     # THEN
-    assert x_titlemap.face_name == exx.bob
+    assert x_titlemap.spark_face == exx.bob
     assert x_titlemap.spark_num == spark7
     assert x_titlemap.otx2inx == otx2inx
     assert x_titlemap.unknown_str == default_unknown_str_if_None()
@@ -269,7 +269,7 @@ def test_TitleMap_to_dict_ReturnsObj():
     x_titlemap = titlemap_shop(
         otx_knot=slash_otx_knot,
         inx_knot=colon_inx_knot,
-        face_name=exx.sue,
+        spark_face=exx.sue,
     )
     x1_rope_map_dict = {
         kw.otx_knot: x_titlemap.otx_knot,
@@ -277,7 +277,7 @@ def test_TitleMap_to_dict_ReturnsObj():
         kw.unknown_str: x_titlemap.unknown_str,
         kw.otx2inx: {},
         kw.spark_num: x_titlemap.spark_num,
-        kw.face_name: x_titlemap.face_name,
+        kw.spark_face: x_titlemap.spark_face,
     }
     assert x_titlemap.to_dict() == x1_rope_map_dict
 
@@ -290,7 +290,7 @@ def test_TitleMap_to_dict_ReturnsObj():
         kw.unknown_str: x_titlemap.unknown_str,
         kw.otx2inx: {clean_otx: clean_inx},
         kw.spark_num: x_titlemap.spark_num,
-        kw.face_name: exx.sue,
+        kw.spark_face: exx.sue,
     }
     assert x_titlemap.to_dict() == x2_rope_map_dict
 
@@ -308,7 +308,7 @@ def test_get_titlemap_from_dict_ReturnsObj():
     gen_titlemap = get_titlemap_from_dict(x_titlemap.to_dict())
 
     # THEN
-    assert gen_titlemap.face_name == x_titlemap.face_name
+    assert gen_titlemap.spark_face == x_titlemap.spark_face
     assert gen_titlemap.spark_num == x_titlemap.spark_num
     assert gen_titlemap.spark_num == spark7
     assert gen_titlemap == x_titlemap
@@ -428,7 +428,7 @@ def test_inherit_titlemap_ReturnsObj_Scenario3_RaiseErrorWhenDifferent_x_unknown
     assert str(excinfo.value) == "Core attrs in conflict"
 
 
-def test_inherit_titlemap_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_face_name():
+def test_inherit_titlemap_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_spark_face():
     # ESTABLISH
     old_titlemap = titlemap_shop(exx.sue, 0)
     new_titlemap = titlemap_shop(exx.bob, 1)

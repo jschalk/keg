@@ -2,11 +2,11 @@
   "attributes": {
     "bud_time"   : { "otx_key": true  }, 
     "celldepth"  : { "otx_key": false }, 
-    "face_name"  : { "otx_key": true  }, 
     "knot"       : { "otx_key": false }, 
     "moment_rope": { "otx_key": true  }, 
     "person_name": { "otx_key": true  }, 
     "quota"      : { "otx_key": false }, 
+    "spark_face" : { "otx_key": true  }, 
     "spark_num"  : { "otx_key": true  }
   }, 
   "dimens": ["moment_budunit", "momentunit", "personunit"], 

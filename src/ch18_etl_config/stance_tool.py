@@ -34,17 +34,17 @@ def add_to_br00042_csv(x_csv: str, cursor: sqlite3_Cursor, csv_delimiter: str) -
     select_sqlstr = f"""
 SELECT
   "" spark_num
-, trltitl.face_name
+, trltitl.spark_face
 , trltitl.otx_title
 , trltitl.inx_title
 , trlcore.otx_knot
 , trlcore.inx_knot
 , trlcore.unknown_str
 FROM {trltitl_s_vld_tablename} trltitl
-JOIN {trlcore_s_vld_tablename} trlcore ON trlcore.face_name = trltitl.face_name
+JOIN {trlcore_s_vld_tablename} trlcore ON trlcore.spark_face = trltitl.spark_face
 ORDER BY 
   spark_num
-, trltitl.face_name
+, trltitl.spark_face
 , trltitl.otx_title
 , trltitl.inx_title
 , trlcore.otx_knot
@@ -65,16 +65,16 @@ def add_to_br00043_csv(x_csv: str, cursor: sqlite3_Cursor, csv_delimiter: str) -
     select_sqlstr = f"""
 SELECT
   "" spark_num
-, trlname.face_name
+, trlname.spark_face
 , trlname.otx_name
 , trlname.inx_name
 , trlcore.otx_knot
 , trlcore.inx_knot
 , trlcore.unknown_str
 FROM {trlname_s_vld_tablename} trlname
-JOIN {trlcore_s_vld_tablename} trlcore ON trlcore.face_name = trlname.face_name
+JOIN {trlcore_s_vld_tablename} trlcore ON trlcore.spark_face = trlname.spark_face
 ORDER BY 
-  trlname.face_name
+  trlname.spark_face
 , trlname.otx_name
 , trlname.inx_name
 , trlcore.otx_knot
@@ -96,16 +96,16 @@ def add_to_br00044_csv(x_csv: str, cursor: sqlite3_Cursor, csv_delimiter: str) -
     select_sqlstr = f"""
 SELECT
   "" spark_num
-, trllabe.face_name
+, trllabe.spark_face
 , trllabe.otx_label
 , trllabe.inx_label
 , trlcore.otx_knot
 , trlcore.inx_knot
 , trlcore.unknown_str
 FROM {trllabe_s_vld_tablename} trllabe
-JOIN {trlcore_s_vld_tablename} trlcore ON trlcore.face_name = trllabe.face_name
+JOIN {trlcore_s_vld_tablename} trlcore ON trlcore.spark_face = trllabe.spark_face
 ORDER BY 
-  trllabe.face_name
+  trllabe.spark_face
 , trllabe.otx_label
 , trllabe.inx_label
 , trlcore.otx_knot
@@ -127,16 +127,16 @@ def add_to_br00045_csv(x_csv: str, cursor: sqlite3_Cursor, csv_delimiter: str) -
     select_sqlstr = f"""
 SELECT
   "" spark_num
-, trlrope.face_name
+, trlrope.spark_face
 , trlrope.otx_rope
 , trlrope.inx_rope
 , trlcore.otx_knot
 , trlcore.inx_knot
 , trlcore.unknown_str
 FROM {trlrope_s_vld_tablename} trlrope
-JOIN {trlcore_s_vld_tablename} trlcore ON trlcore.face_name = trlrope.face_name
+JOIN {trlcore_s_vld_tablename} trlcore ON trlcore.spark_face = trlrope.spark_face
 ORDER BY 
-  trlrope.face_name
+  trlrope.spark_face
 , trlrope.otx_rope
 , trlrope.inx_rope
 , trlcore.otx_knot
@@ -204,13 +204,13 @@ def create_stance0001_file(
     prettify_excel_bool: bool = True,
 ):
     stance_csv_strs = collect_stance_csv_strs(world_dir)
-    with_face_name_csvs = {}
+    with_spark_face_csvs = {}
     for csv_key, csv_str in stance_csv_strs.items():
-        csv_str = replace_csv_column_from_string(csv_str, "face_name", world_name)
+        csv_str = replace_csv_column_from_string(csv_str, "spark_face", world_name)
         csv_str = delete_column_from_csv_string(csv_str, "spark_num")
-        with_face_name_csvs[csv_key] = csv_str
+        with_spark_face_csvs[csv_key] = csv_str
 
-    csv_dict_to_excel(with_face_name_csvs, output_dir, "stance0001.xlsx")
+    csv_dict_to_excel(with_spark_face_csvs, output_dir, "stance0001.xlsx")
 
     # Hard to test function to prettify the excel file
     if prettify_excel_bool:

@@ -1,10 +1,10 @@
 {
   "attributes": {
-    "face_name"  : { "otx_key": true  }, 
     "moment_rope": { "otx_key": true  }, 
     "person_name": { "otx_key": true  }, 
     "plan_rope"  : { "otx_key": true  }, 
     "pledge"     : { "otx_key": false }, 
+    "spark_face" : { "otx_key": true  }, 
     "spark_num"  : { "otx_key": true  }, 
     "star"       : { "otx_key": false }
   }, 

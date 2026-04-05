@@ -5,9 +5,9 @@
     "idea_category": "moment", 
     "jkeys": {
       "bud_time": {}, 
-      "face_name": {}, 
       "moment_rope": {}, 
       "person_name": {}, 
+      "spark_face": {}, 
       "spark_num": {}
     }, 
     "jvalues": {"celldepth": {}, "knot": {}, "quota": {}}
@@ -16,21 +16,21 @@
     "allowed_crud": "insert_one_time", 
     "build_order": 6, 
     "idea_category": "moment", 
-    "jkeys": {"cumulative_minute": {}, "face_name": {}, "moment_rope": {}, "spark_num": {}}, 
+    "jkeys": {"cumulative_minute": {}, "moment_rope": {}, "spark_face": {}, "spark_num": {}}, 
     "jvalues": {"hour_label": {}, "knot": {}}
   }, 
   "moment_epoch_month": {
     "allowed_crud": "insert_one_time", 
     "build_order": 7, 
     "idea_category": "moment", 
-    "jkeys": {"cumulative_day": {}, "face_name": {}, "moment_rope": {}, "spark_num": {}}, 
+    "jkeys": {"cumulative_day": {}, "moment_rope": {}, "spark_face": {}, "spark_num": {}}, 
     "jvalues": {"knot": {}, "month_label": {}}
   }, 
   "moment_epoch_weekday": {
     "allowed_crud": "insert_one_time", 
     "build_order": 8, 
     "idea_category": "moment", 
-    "jkeys": {"face_name": {}, "moment_rope": {}, "spark_num": {}, "weekday_order": {}}, 
+    "jkeys": {"moment_rope": {}, "spark_face": {}, "spark_num": {}, "weekday_order": {}}, 
     "jvalues": {"knot": {}, "weekday_label": {}}
   }, 
   "moment_paybook": {
@@ -39,9 +39,9 @@
     "idea_category": "moment", 
     "jkeys": {
       "contact_name": {}, 
-      "face_name": {}, 
       "moment_rope": {}, 
       "person_name": {}, 
+      "spark_face": {}, 
       "spark_num": {}, 
       "tran_time": {}
     }, 
@@ -51,14 +51,14 @@
     "allowed_crud": "insert_multiple", 
     "build_order": 22, 
     "idea_category": "moment", 
-    "jkeys": {"face_name": {}, "moment_rope": {}, "offi_time": {}, "spark_num": {}}, 
+    "jkeys": {"moment_rope": {}, "offi_time": {}, "spark_face": {}, "spark_num": {}}, 
     "jvalues": {"knot": {}}
   }, 
   "momentunit": {
     "allowed_crud": "insert_one_time", 
     "build_order": 5, 
     "idea_category": "moment", 
-    "jkeys": {"face_name": {}, "moment_rope": {}, "spark_num": {}}, 
+    "jkeys": {"moment_rope": {}, "spark_face": {}, "spark_num": {}}, 
     "jvalues": {
       "c400_number": {}, 
       "epoch_label": {}, 
@@ -75,7 +75,7 @@
     "allowed_crud": "insert_one_time", 
     "build_order": 4, 
     "idea_category": "nabu", 
-    "jkeys": {"face_name": {}, "moment_rope": {}, "otx_time": {}, "spark_num": {}}, 
+    "jkeys": {"moment_rope": {}, "otx_time": {}, "spark_face": {}, "spark_num": {}}, 
     "jvalues": {"inx_time": {}}
   }, 
   "person_contact_membership": {
@@ -84,10 +84,10 @@
     "idea_category": "person", 
     "jkeys": {
       "contact_name": {}, 
-      "face_name": {}, 
       "group_title": {}, 
       "moment_rope": {}, 
       "person_name": {}, 
+      "spark_face": {}, 
       "spark_num": {}
     }, 
     "jvalues": {"group_cred_lumen": {}, "group_debt_lumen": {}, "knot": {}}
@@ -98,9 +98,9 @@
     "idea_category": "person", 
     "jkeys": {
       "contact_name": {}, 
-      "face_name": {}, 
       "moment_rope": {}, 
       "person_name": {}, 
+      "spark_face": {}, 
       "spark_num": {}
     }, 
     "jvalues": {"contact_cred_lumen": {}, "contact_debt_lumen": {}, "knot": {}}
@@ -111,9 +111,9 @@
     "idea_category": "person", 
     "jkeys": {
       "awardee_title": {}, 
-      "face_name": {}, 
       "person_name": {}, 
       "plan_rope": {}, 
+      "spark_face": {}, 
       "spark_num": {}
     }, 
     "jvalues": {"give_force": {}, "knot": {}, "take_force": {}}
@@ -123,10 +123,10 @@
     "build_order": 12, 
     "idea_category": "person", 
     "jkeys": {
-      "face_name": {}, 
       "fact_context": {}, 
       "person_name": {}, 
       "plan_rope": {}, 
+      "spark_face": {}, 
       "spark_num": {}
     }, 
     "jvalues": {"fact_lower": {}, "fact_state": {}, "fact_upper": {}, "knot": {}}
@@ -136,10 +136,10 @@
     "build_order": 15, 
     "idea_category": "person", 
     "jkeys": {
-      "face_name": {}, 
       "healer_name": {}, 
       "person_name": {}, 
       "plan_rope": {}, 
+      "spark_face": {}, 
       "spark_num": {}
     }, 
     "jvalues": {"knot": {}}
@@ -149,10 +149,10 @@
     "build_order": 14, 
     "idea_category": "person", 
     "jkeys": {
-      "face_name": {}, 
       "labor_title": {}, 
       "person_name": {}, 
       "plan_rope": {}, 
+      "spark_face": {}, 
       "spark_num": {}
     }, 
     "jvalues": {"knot": {}, "solo": {}}
@@ -162,11 +162,11 @@
     "build_order": 16, 
     "idea_category": "person", 
     "jkeys": {
-      "face_name": {}, 
       "person_name": {}, 
       "plan_rope": {}, 
       "reason_context": {}, 
       "reason_state": {}, 
+      "spark_face": {}, 
       "spark_num": {}
     }, 
     "jvalues": {"knot": {}, "reason_divisor": {}, "reason_lower": {}, "reason_upper": {}}
@@ -176,10 +176,10 @@
     "build_order": 17, 
     "idea_category": "person", 
     "jkeys": {
-      "face_name": {}, 
       "person_name": {}, 
       "plan_rope": {}, 
       "reason_context": {}, 
+      "spark_face": {}, 
       "spark_num": {}
     }, 
     "jvalues": {"active_requisite": {}, "knot": {}}
@@ -188,7 +188,7 @@
     "allowed_crud": "delete_insert_update", 
     "build_order": 18, 
     "idea_category": "person", 
-    "jkeys": {"face_name": {}, "person_name": {}, "plan_rope": {}, "spark_num": {}}, 
+    "jkeys": {"person_name": {}, "plan_rope": {}, "spark_face": {}, "spark_num": {}}, 
     "jvalues": {
       "addin": {}, 
       "begin": {}, 
@@ -208,7 +208,7 @@
     "allowed_crud": "UPDATE", 
     "build_order": 19, 
     "idea_category": "person", 
-    "jkeys": {"face_name": {}, "moment_rope": {}, "person_name": {}, "spark_num": {}}, 
+    "jkeys": {"moment_rope": {}, "person_name": {}, "spark_face": {}, "spark_num": {}}, 
     "jvalues": {
       "credor_respect": {}, 
       "debtor_respect": {}, 
@@ -224,28 +224,28 @@
     "allowed_crud": "insert_one_time", 
     "build_order": 2, 
     "idea_category": "translate", 
-    "jkeys": {"face_name": {}, "otx_label": {}, "spark_num": {}}, 
+    "jkeys": {"otx_label": {}, "spark_face": {}, "spark_num": {}}, 
     "jvalues": {"inx_knot": {}, "inx_label": {}, "otx_knot": {}, "unknown_str": {}}
   }, 
   "translate_name": {
     "allowed_crud": "insert_one_time", 
     "build_order": 0, 
     "idea_category": "translate", 
-    "jkeys": {"face_name": {}, "otx_name": {}, "spark_num": {}}, 
+    "jkeys": {"otx_name": {}, "spark_face": {}, "spark_num": {}}, 
     "jvalues": {"inx_knot": {}, "inx_name": {}, "otx_knot": {}, "unknown_str": {}}
   }, 
   "translate_rope": {
     "allowed_crud": "insert_one_time", 
     "build_order": 3, 
     "idea_category": "translate", 
-    "jkeys": {"face_name": {}, "otx_rope": {}, "spark_num": {}}, 
+    "jkeys": {"otx_rope": {}, "spark_face": {}, "spark_num": {}}, 
     "jvalues": {"inx_knot": {}, "inx_rope": {}, "otx_knot": {}, "unknown_str": {}}
   }, 
   "translate_title": {
     "allowed_crud": "insert_one_time", 
     "build_order": 1, 
     "idea_category": "translate", 
-    "jkeys": {"face_name": {}, "otx_title": {}, "spark_num": {}}, 
+    "jkeys": {"otx_title": {}, "spark_face": {}, "spark_num": {}}, 
     "jvalues": {"inx_knot": {}, "inx_title": {}, "otx_knot": {}, "unknown_str": {}}
   }
 }

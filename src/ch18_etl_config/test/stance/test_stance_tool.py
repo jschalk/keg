@@ -116,7 +116,7 @@ def test_collect_stance_csv_strs_ReturnsObj_Scenario2_TranslateRowsInDB(
         trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
         print(f"{trlname_s_vld_tablename=}")
         insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename}
-        ({kw.spark_num}, {kw.face_name}, {kw.otx_name}, {kw.inx_name})
+        ({kw.spark_num}, {kw.spark_face}, {kw.otx_name}, {kw.inx_name})
         VALUES
           ({spark1}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
         , ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx}')
@@ -126,7 +126,7 @@ def test_collect_stance_csv_strs_ReturnsObj_Scenario2_TranslateRowsInDB(
 
         trlcore_s_vld_tablename = prime_tbl("TRLCORE", kw.s_vld)
         insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename}
-        ({kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+        ({kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
         VALUES
           ('{sue_otx}', '{exx.slash}', '{colon_str}', '{sue_unknown_str}')
         , ('{bob_otx}', '{exx.slash}', '{colon_str}', '{bob_unknown_str}')
@@ -154,17 +154,17 @@ def test_collect_stance_csv_strs_ReturnsObj_Scenario2_TranslateRowsInDB(
     br00045_csv = gen_stance_csv_strs.get(br00045_str)
 
     expected_br00042_csv = (
-        "spark_num,face_name,otx_title,inx_title,otx_knot,inx_knot,unknown_str\n"
+        "spark_num,spark_face,otx_title,inx_title,otx_knot,inx_knot,unknown_str\n"
     )
-    expected_br00043_csv = f"""spark_num,face_name,otx_name,inx_name,otx_knot,inx_knot,unknown_str
+    expected_br00043_csv = f"""spark_num,spark_face,otx_name,inx_name,otx_knot,inx_knot,unknown_str
 ,{bob_otx},{bob_otx},{bob_inx},{exx.slash},{colon_str},{bob_unknown_str}
 ,{sue_otx},{sue_otx},{sue_inx},{exx.slash},{colon_str},{sue_unknown_str}
 """
     expected_br00044_csv = (
-        "spark_num,face_name,otx_label,inx_label,otx_knot,inx_knot,unknown_str\n"
+        "spark_num,spark_face,otx_label,inx_label,otx_knot,inx_knot,unknown_str\n"
     )
     expected_br00045_csv = (
-        "spark_num,face_name,otx_rope,inx_rope,otx_knot,inx_knot,unknown_str\n"
+        "spark_num,spark_face,otx_rope,inx_rope,otx_knot,inx_knot,unknown_str\n"
     )
     assert br00042_csv == expected_br00042_csv
     assert br00043_csv == expected_br00043_csv
@@ -217,7 +217,7 @@ def test_create_stance0001_file_CreatesFile_Scenario1_TranslateRowsInDB(
         trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
         print(f"{trlname_s_vld_tablename=}")
         insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename}
-        ({kw.spark_num}, {kw.face_name}, {kw.otx_name}, {kw.inx_name})
+        ({kw.spark_num}, {kw.spark_face}, {kw.otx_name}, {kw.inx_name})
         VALUES
           ({spark1}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
         , ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx}')
@@ -227,7 +227,7 @@ def test_create_stance0001_file_CreatesFile_Scenario1_TranslateRowsInDB(
 
         trlcore_s_vld_tablename = prime_tbl("TRLCORE", kw.s_vld)
         insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename}
-        ({kw.face_name}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+        ({kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
         VALUES
           ('{sue_otx}', '{exx.slash}', '{colon_str}', '{sue_unknown_str}')
         , ('{bob_otx}', '{exx.slash}', '{colon_str}', '{bob_unknown_str}')
