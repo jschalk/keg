@@ -8,6 +8,13 @@ def create_src_keg_definitions_path(src_dir: str) -> str:
     return create_path(ref_dir, "keg_definitions.json")
 
 
+def create_src_keg_exam_path(src_dir: str) -> str:
+    """Returns path: src\\ref\\keg_exam.json"""
+
+    ref_dir = create_path(src_dir, "ref")
+    return create_path(ref_dir, "keg_exam.json")
+
+
 def create_chapter_ref_path(chapter_dir: str, chapter_prefix: str) -> str:
     """Returns path: src\\chapter_dir\\_ref\\chXX_ref.json"""
 

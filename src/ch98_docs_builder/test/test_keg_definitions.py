@@ -355,3 +355,18 @@ def test_get_keg_definitions_ReturnsObj_HasAllkeywords():
     assert set(keg_definitions.keys()) == config_keywords
     for keyword, description in keg_definitions.items():
         assert description, keyword
+
+
+def test_get_keg_definitions_ReturnsObj_get_all_person_calc_args():
+    # ESTABLISH
+    all_person_calc_args = get_all_person_calc_args()
+    # print(f"{person_config_args.keys()=}")
+
+    # WHEN
+    keg_definitions = get_keg_definitions()
+
+    # THEN
+    for person_calc_arg in all_person_calc_args:
+        print(f"{person_calc_arg=}")
+        py_key_description = keg_definitions.get(person_calc_arg)
+        assert py_key_description, person_calc_arg
