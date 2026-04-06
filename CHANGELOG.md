@@ -1,3 +1,10 @@
+## [0.83.2](https://github.com/jschalk/keg/compare/v0.83.1...v0.83.2) (2026-04-06)
+
+
+### Bug Fixes
+
+* [#1131](https://github.com/jschalk/keg/issues/1131) etl_gui_main was accidently  deleted by key commands that keep going off by accident ([40cea58](https://github.com/jschalk/keg/commit/40cea581b6a494a2444b5c9e3c8965d20e9b11ea))
+
 ## [0.83.1](https://github.com/jschalk/keg/compare/v0.83.0...v0.83.1) (2026-04-05)
 
 
