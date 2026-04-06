@@ -21,6 +21,7 @@
   "b_vld": "5 character abbreviation of brick_valid. stage_type_order=3 Brick Valid: The Brick Agg tables filtered to correct datatypes. ", 
   "Baileyday": "Second Day of 5 day week of 'Five' Epoch", 
   "begin": "float that describes the begin of a numerical range if it exists, Plan seed", 
+  "belief": "A collection of ideas (currently only in brick format) with a spark_face but no spark_num.", 
   "boss_facts": "TODO", 
   "break": "Used so often in Python that it cannot be given any kegolgy meaning.", 
   "BreakTerm": "str first used in ch02. All str separator classes are BreakTerms. Meant to envoke the analogy of the necessity to break experience reality into things so they can be understood.", 

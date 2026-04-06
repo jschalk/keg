@@ -65,6 +65,7 @@
   "b_raw": {"init_chapter": "ch18"}, 
   "b_vld": {"init_chapter": "ch18"}, 
   "begin": {"init_chapter": "ch06"}, 
+  "belief": {"init_chapter": "ch17"}, 
   "boss_facts": {"init_chapter": "ch11"}, 
   "brick": {"init_chapter": "ch17"}, 
   "brick_agg": {"init_chapter": "ch18"}, 
