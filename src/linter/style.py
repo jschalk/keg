@@ -28,6 +28,7 @@ def filename_style_is_correct(filename: str) -> bool:
     if relevant_file_type and filename_has_uppercase_char:
         return False
     elif filename.endswith(".py") and filename.endswith("s.py"):
+        print(f"{filename} style is wrong. Should not end with 's'.")
         return False
     return True
 

@@ -3,6 +3,11 @@ from inspect import getdoc as inspect_getdoc
 from src.ch04_rope.rope import create_rope, default_knot_if_None
 from src.ch07_person_logic.person_main import personunit_shop
 from src.ch13_time._ref.ch13_semantic_types import EpochLabel
+from src.ch13_time.epoch_config import (
+    get_creg_config,
+    get_custom_epoch_config,
+    get_squirt_config,
+)
 from src.ch13_time.epoch_main import (
     DEFAULT_EPOCH_LENGTH,
     C400Constants,
@@ -18,11 +23,6 @@ from src.ch13_time.epoch_main import (
     get_week_rope,
     get_year_rope,
     validate_epoch_config,
-)
-from src.ch13_time.test._util.ch13_examples import (
-    get_creg_config,
-    get_example_epoch_config,
-    get_squirt_config,
 )
 from src.ref.keywords import Ch13Keywords as kw, ExampleStrs as exx
 
@@ -300,7 +300,7 @@ def test_epoch_config_shop_ReturnsObj_AllParameters():
     assert five_dict.get(kw.yr1_jan1_offset) == five_yr1_jan1_offset
 
     # five_filename = f"epoch_config_{kw.five}.json"
-    expected_config = get_example_epoch_config(kw.five)
+    expected_config = get_custom_epoch_config(kw.five)
     assert validate_epoch_config(expected_config)
     assert expected_config.get(kw.hours_config) == x_hours_config
     assert expected_config == five_dict

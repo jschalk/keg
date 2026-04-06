@@ -1,4 +1,4 @@
-from src.ch30_etl_app.etl_gui import ETLApp
+from src.ch30_etl_app.etl_gui_main import ETLApp
 
 
 def main():

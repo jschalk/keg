@@ -1,11 +1,15 @@
 from datetime import datetime
 from enum import Enum
 from plotly.graph_objects import Figure as plotly_Figure, Scatter as plotly_Scatter
-from src.ch00_py.file_toolbox import open_json
 from src.ch00_py.plotly_toolbox import conditional_fig_show
 from src.ch06_plan.plan import PlanUnit
 from src.ch07_person_logic.person_main import PersonUnit, personunit_shop
-from src.ch13_time._ref.ch13_semantic_types import LabelTerm
+from src.ch13_time.epoch_config import (
+    get_creg_config,
+    get_five_config,
+    get_lizzy9_config,
+    get_squirt_config,
+)
 from src.ch13_time.epoch_main import (
     add_epoch_planunit,
     create_weekday_planunits,
@@ -91,28 +95,6 @@ def get_bob_five_person() -> PersonUnit:
     bob_person.add_plan(MOP_ROPE, pledge=True)
     add_epoch_planunit(bob_person, get_five_config())
     return bob_person
-
-
-def get_example_epoch_config(epoch_label: LabelTerm) -> dict:
-    x_dir = "src/ch13_time/test/_util"
-    x_filename = f"epoch_config_{epoch_label}.json"
-    return open_json(x_dir, x_filename)
-
-
-def get_five_config() -> dict:
-    return get_example_epoch_config(kw.five)
-
-
-def get_creg_config() -> dict:
-    return get_example_epoch_config(kw.creg)
-
-
-def get_squirt_config() -> dict:
-    return get_example_epoch_config("squirt")
-
-
-def get_lizzy9_config() -> dict:
-    return get_example_epoch_config("lizzy9")
 
 
 def cregtime_planunit() -> PlanUnit:

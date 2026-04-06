@@ -19,6 +19,8 @@ from src.ch13_time._ref.ch13_semantic_types import (
     TimeNum,
 )
 
+DEFAULT_EPOCH_LENGTH = 1472657760
+
 
 @dataclass
 class C400Constants:
@@ -162,6 +164,19 @@ def get_epoch_rope(
 def get_epoch_length(epoch_config: dict) -> int:
     c400_number = epoch_config.get("c400_number")
     return c400_number * get_c400_constants().c400_leap_length
+
+
+def epoch_config_path() -> str:
+    "Returns path: src/ch13_time/epoch_configs/default_epoch_config.json"
+
+    src_dir = create_path(os_getcwd(), "src")
+    chapter_dir = create_path(src_dir, "ch13_time")
+    epoch_configs_dir = create_path(chapter_dir, "epoch_configs")
+    return create_path(epoch_configs_dir, "default_epoch_config.json")
+
+
+def get_default_epoch_config_dict() -> dict:
+    return open_json(epoch_config_path())
 
 
 def add_epoch_planunit(x_personunit: PersonUnit, epoch_config: dict = None):
@@ -583,21 +598,6 @@ class EpochHolder:
 
 def epochholder_shop(x_personunit: PersonUnit, epoch_label: LabelTerm, x_min: int):
     return EpochHolder(x_personunit, epoch_label, x_min=x_min)
-
-
-def epoch_config_path() -> str:
-    "Returns path: ch13_time/default_epoch_config.json"
-
-    src_dir = create_path(os_getcwd(), "src")
-    chapter_dir = create_path(src_dir, "ch13_time")
-    return create_path(chapter_dir, "default_epoch_config.json")
-
-
-def get_default_epoch_config_dict() -> dict:
-    return open_json(epoch_config_path())
-
-
-DEFAULT_EPOCH_LENGTH = 1472657760
 
 
 @dataclass
