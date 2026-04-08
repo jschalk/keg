@@ -43,7 +43,7 @@ def get_brick_formats_md():
         idea = data["idea_number"]
         attr_names = set(data["attributes"].keys())
         sorted_attrs = get_default_sorted_list(attr_names)
-        idea_md_path = create_path("ideas", f"{idea}.md")
+        idea_md_path = create_path("idea_formats", f"{idea}.md")
         manifest_line = f"- [`{idea}`]({idea_md_path}): " + ", ".join(sorted_attrs)
         manifest_lines.append(manifest_line)
 

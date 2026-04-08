@@ -20,7 +20,7 @@ def test_belief_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     # delete_dir(fay_wdir.worlds_dir)
     sue_inx = "Suzy"
     ex_filename = "belief_Faybob.xlsx"
-    input_file_path = create_path(fay_wdir.input_dir, ex_filename)
+    i_src_dir_file_path = create_path(fay_wdir.i_src_dir, ex_filename)
     br00113_columns = [
         kw.spark_face,
         kw.moment_rope,
@@ -34,7 +34,7 @@ def test_belief_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     br00113row0 = [exx.sue, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
     br00113_df = DataFrame([br00113row0], columns=br00113_columns)
     br00113_ex0_str = f"example0_{br00113_str}"
-    save_sheet(input_file_path, br00113_ex0_str, br00113_df)
+    save_sheet(i_src_dir_file_path, br00113_ex0_str, br00113_df)
 
     br00001_columns = [
         kw.spark_face,
@@ -51,14 +51,14 @@ def test_belief_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     br1row0 = [exx.sue, exx.a23, exx.sue, tp37, ";", sue_quota, sue_celldepth]
     br00001_1df = DataFrame([br1row0], columns=br00001_columns)
     br00001_ex0_str = "example0_br00001"
-    save_sheet(input_file_path, br00001_ex0_str, br00001_1df)
+    save_sheet(i_src_dir_file_path, br00001_ex0_str, br00001_1df)
     fay_db_path = fay_wdir.get_world_db_path()
     assert not os_path_exists(fay_db_path)
 
     # WHEN
     belief_sheets_to_lynx_mstr(
         world_db_path=fay_wdir.get_world_db_path(),
-        input_dir=fay_wdir.input_dir,
+        i_src_dir=fay_wdir.i_src_dir,
         moment_mstr_dir=fay_wdir.moment_mstr_dir,
     )
 
@@ -146,6 +146,7 @@ def create_brick_agg_record(wdir: WorldDir, spark_num: int):
 def test_belief_sheets_to_lynx_mstr_Scenario1_DatabaseFileExists(
     temp3_fs,
 ):  # sourcery skip: extract-method
+    # TODO add b_src_dir and move belief sheets to i_src_dir
     # ESTABLISH:
     fay_rope = create_rope("Fay34")
     fay_wdir = worlddir_shop(fay_rope, str(temp3_fs))
@@ -154,7 +155,7 @@ def test_belief_sheets_to_lynx_mstr_Scenario1_DatabaseFileExists(
     # delete_dir(fay_wdir.worlds_dir)
     sue_inx = "Suzy"
     ex_filename = "belief_Faybob.xlsx"
-    input_file_path = create_path(fay_wdir.input_dir, ex_filename)
+    i_src_dir_file_path = create_path(fay_wdir.i_src_dir, ex_filename)
     br00113_columns = [
         kw.spark_face,
         kw.moment_rope,
@@ -168,19 +169,19 @@ def test_belief_sheets_to_lynx_mstr_Scenario1_DatabaseFileExists(
     br00113row0 = [exx.sue, a23_rope, exx.sue, exx.sue, exx.sue, sue_inx]
     br00113_df = DataFrame([br00113row0], columns=br00113_columns)
     br00113_ex0_str = f"example0_{br00113_str}"
-    save_sheet(input_file_path, br00113_ex0_str, br00113_df)
+    save_sheet(i_src_dir_file_path, br00113_ex0_str, br00113_df)
     fay_db_path = fay_wdir.get_world_db_path()
     assert os_path_exists(fay_db_path)
     with sqlite3_connect(fay_db_path) as db_conn0:
         cursor0 = db_conn0.cursor()
         assert get_max_brick_agg_spark_num(cursor0) == spark5
     db_conn0.close()
-    assert os_path_exists(input_file_path)
+    assert os_path_exists(i_src_dir_file_path)
 
     # WHEN
     belief_sheets_to_lynx_mstr(
         world_db_path=fay_wdir.get_world_db_path(),
-        input_dir=fay_wdir.input_dir,
+        i_src_dir=fay_wdir.i_src_dir,
         moment_mstr_dir=fay_wdir.moment_mstr_dir,
     )
 
@@ -195,4 +196,4 @@ def test_belief_sheets_to_lynx_mstr_Scenario1_DatabaseFileExists(
         rows = cursor1.fetchall()
         assert len(rows) == 2
     db_conn1.close()
-    assert not os_path_exists(input_file_path)
+    assert not os_path_exists(i_src_dir_file_path)

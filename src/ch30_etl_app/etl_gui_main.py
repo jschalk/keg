@@ -15,11 +15,11 @@ import os
 import platform
 from src.ch21_world.world import create_today_punchs
 from src.ch30_etl_app.etl_gui_tool import (
+    create_elpaso_time_config_file,
     create_emmanuel_belief_file,
     create_example_moment_budget_file,
     create_example_moment_ledger_file,
     create_five_time_config_file,
-    create_random_time_config_file,
 )
 import subprocess
 import tkinter as tk
@@ -47,10 +47,10 @@ BTN_ACTIVE = "#f0d060"
 
 
 class OptionTable(tk.Frame):
-    def __init__(self, parent, options: dict, input_dir: str, **kwargs):
+    def __init__(self, parent, options: dict, i_src_dir: str, **kwargs):
         super().__init__(parent, **kwargs)
         self.options = options
-        self.input_dir = input_dir
+        self.i_src_dir = i_src_dir
         self._build()
 
     def _build(self):
@@ -87,7 +87,7 @@ class OptionTable(tk.Frame):
         description = self.tree.item(selected[0], "values")[0]
         fn = self.options.get(description)
         if callable(fn):
-            fn(self.input_dir())  # ← call it to get the current string value
+            fn(self.i_src_dir())  # ← call it to get the current string value
 
 
 def open_directory(path: str) -> None:
@@ -120,7 +120,7 @@ class ETLApp(tk.Tk):
 
         # String vars ─ empty string = "not set" (optional dirs stay None)
         self._working = tk.StringVar()
-        self._input = tk.StringVar()
+        self._i_src_dir = tk.StringVar()
         self._output = tk.StringVar()
         self._person = tk.StringVar()
 
@@ -169,9 +169,9 @@ class ETLApp(tk.Tk):
         self._dir_row(
             card, 0, "WORKING DIR", self._working, required=True, tip=working_dir_tip
         )
-        input_dir_tip = "Source Excel files  (optional)"
+        i_src_dir_tip = "Source Excel files  (optional)"
         self._dir_row(
-            card, 1, "INPUT DIR  ", self._input, required=False, tip=input_dir_tip
+            card, 1, "I_SRC_DIR  ", self._i_src_dir, required=False, tip=i_src_dir_tip
         )
         output_dir_tip = "Destination for results  (optional — opened on finish)"
         self._dir_row(
@@ -208,13 +208,13 @@ class ETLApp(tk.Tk):
         self._run_btn.pack()
 
         options = {
-            "create_five_time_config_file": create_five_time_config_file,
-            "create_random_time_config_file": create_random_time_config_file,
+            "Create TeamFive Moment Time Config File": create_five_time_config_file,
+            "Create El Paso Moment Time Config File": create_elpaso_time_config_file,
             "create_emmanuel_belief_file": create_emmanuel_belief_file,
             "create_example_moment_ledger_file": create_example_moment_ledger_file,
             "create_example_moment_budget_file": create_example_moment_budget_file,
         }
-        table = OptionTable(self, options, input_dir=self._input.get)
+        table = OptionTable(self, options, i_src_dir=self._i_src_dir.get)
         table.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 
         # hover effect
@@ -351,12 +351,12 @@ class ETLApp(tk.Tk):
     # ── run handler ────────────────────────────
     def _run(self):
         working = self._working.get().strip()
-        input_ = self._input.get().strip()
+        i_src_dir_ = self._i_src_dir.get().strip()
         output = self._output.get().strip()
         person = self._person.get().strip()
 
         # Treat placeholder text as empty
-        input_ = input_ if os.path.isdir(input_) else None
+        i_src_dir_ = i_src_dir_ if os.path.isdir(i_src_dir_) else None
         output = output if os.path.isdir(output) else None
         person = person if person and not person.startswith("Filter by") else None
 
@@ -374,7 +374,7 @@ class ETLApp(tk.Tk):
         self.update_idletasks()
 
         try:
-            create_today_punchs(working, input_, output, person)
+            create_today_punchs(working, i_src_dir_, output, person)
             self._status.set("✔  Pipeline completed successfully.")
             messagebox.showinfo("Done", "ETL pipeline finished successfully.")
         except Exception as exc:  # noqa: BLE001

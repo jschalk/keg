@@ -3,15 +3,13 @@ from datetime import datetime
 from os.path import exists as os_path_exists
 from sqlite3 import Cursor as sqlite3_Cursor, connect as sqlite3_connect
 from src.ch00_py.file_toolbox import create_path, delete_dir, set_dir
-from src.ch17_idea.idea_db_tool import (
-    export_db_to_excel,
-    update_spark_num_in_excel_files,
-)
+from src.ch17_idea.idea_db_tool import export_db_to_excel
 from src.ch18_etl_config._ref.ch18_path import (
     create_moment_mstr_path,
     create_world_db_path,
 )
 from src.ch18_etl_config.belief_tool import create_belief0001_file
+from src.ch19_etl_steps.belief2idea import update_spark_num_in_belief_files
 from src.ch19_etl_steps.etl_main import (
     add_moment_epoch_to_guts,
     calc_moment_bud_contact_mandate_net_ledgers,
@@ -25,7 +23,7 @@ from src.ch19_etl_steps.etl_main import (
     etl_heard_raw_tables_to_moment_ote1_agg,
     etl_heard_vld_tables_to_moment_jsons,
     etl_heard_vld_to_spark_person_csvs,
-    etl_input_dfs_to_brick_raw_tables,
+    etl_idea_dfs_to_brick_raw_tables,
     etl_moment_guts_to_moment_jobs,
     etl_moment_job_jsons_to_job_tables,
     etl_moment_json_contact_nets_to_moment_contact_nets_table,
@@ -60,14 +58,14 @@ def create_beliefs(
     create_calendar_markdown_files(moment_mstr_dir, output_dir)
 
 
-def sheets_input_to_lynx_with_cursor(
-    cursor: sqlite3_Cursor, input_dir: str, moment_mstr_dir: str
+def idea_sheets_to_lynx_with_cursor(
+    cursor: sqlite3_Cursor, i_src_dir: str, moment_mstr_dir: str
 ):
     delete_dir(moment_mstr_dir)
     set_dir(moment_mstr_dir)
 
     # collect excel file data into central location
-    etl_input_dfs_to_brick_raw_tables(cursor, input_dir)
+    etl_idea_dfs_to_brick_raw_tables(cursor, i_src_dir)
     # brick raw to sound raw, check by spark_nums
     etl_brick_raw_tables_to_brick_agg_tables(cursor)
     etl_brick_agg_tables_to_sparks_brick_agg_table(cursor)
@@ -100,16 +98,16 @@ def sheets_input_to_lynx_with_cursor(
     create_last_run_metrics_json(cursor, moment_mstr_dir)
 
 
-def sheets_input_to_lynx_mstr(
+def idea_sheets_to_lynx_mstr(
     world_db_path: str,
-    input_dir: str,
+    i_src_dir: str,
     moment_mstr_dir: str,
     export_db: bool = False,
     output_dir=None,
 ):
     with sqlite3_connect(world_db_path) as db_conn:
         cursor = db_conn.cursor()
-        sheets_input_to_lynx_with_cursor(cursor, input_dir, moment_mstr_dir)
+        idea_sheets_to_lynx_with_cursor(cursor, i_src_dir, moment_mstr_dir)
         if export_db and output_dir:
             excel_path = create_path(output_dir, "db_export.xlsx")
             export_db_to_excel(cursor, excel_path, True)
@@ -119,22 +117,23 @@ def sheets_input_to_lynx_mstr(
 
 
 def belief_sheets_to_lynx_mstr(
-    world_db_path: str, input_dir: str, moment_mstr_dir: str
+    world_db_path: str, i_src_dir: str, moment_mstr_dir: str
 ):
+    # TODO add b_src_dir and move belief sheets to i_src_dir
+    # TODO add b_src_dir and move belief sheets to i_src_dir
     max_brick_agg_spark_num = 0
     if os_path_exists(world_db_path):
         with sqlite3_connect(world_db_path) as db_conn0:
             cursor0 = db_conn0.cursor()
             max_brick_agg_spark_num = get_max_brick_agg_spark_num(cursor0)
         db_conn0.close()
-    next_spark_num = max_brick_agg_spark_num + 1
-    update_spark_num_in_excel_files(input_dir, next_spark_num)
-    sheets_input_to_lynx_mstr(
+    update_spark_num_in_belief_files(i_src_dir, max_brick_agg_spark_num)
+    idea_sheets_to_lynx_mstr(
         world_db_path=world_db_path,
-        input_dir=input_dir,
+        i_src_dir=i_src_dir,
         moment_mstr_dir=moment_mstr_dir,
     )
-    delete_dir(input_dir)
+    delete_dir(i_src_dir)
 
 
 @dataclass
@@ -142,7 +141,7 @@ class WorldDir:
     world_name: WorldName = None
     worlds_dir: str = None
     output_dir: str = None
-    input_dir: str = None
+    i_src_dir: str = None
     # calculated dirs
     world_dir: str = None
     brick_dir: str = None
@@ -155,9 +154,9 @@ class WorldDir:
     def delete_world_db(self):
         delete_dir(self.get_world_db_path())
 
-    def set_input_dir(self, x_dir: str):
-        self.input_dir = x_dir
-        set_dir(self.input_dir)
+    def set_i_src_dir(self, x_dir: str):
+        self.i_src_dir = x_dir
+        set_dir(self.i_src_dir)
 
     def _set_world_dirs(self):
         self.world_dir = create_path(self.worlds_dir, self.world_name)
@@ -172,29 +171,29 @@ def worlddir_shop(
     world_name: WorldName,
     worlds_dir: str,
     output_dir: str = None,
-    input_dir: str = None,
+    i_src_dir: str = None,
 ) -> WorldDir:
     x_worlddir = WorldDir(
         world_name=world_name,
         worlds_dir=worlds_dir,
         output_dir=output_dir,
-        input_dir=input_dir,
+        i_src_dir=i_src_dir,
     )
     x_worlddir._set_world_dirs()
-    if not x_worlddir.input_dir:
-        x_worlddir.set_input_dir(create_path(x_worlddir.world_dir, "input"))
+    if not x_worlddir.i_src_dir:
+        x_worlddir.set_i_src_dir(create_path(x_worlddir.world_dir, "i_src_dir"))
     return x_worlddir
 
 
-def sheets_to_gcal_day_punchs(
+def idea_sheets_to_gcal_day_punchs(
     worlddir: WorldDir,
     person_name: PersonName,
     day: datetime,
     focus_group_title: GroupTitle = None,
 ):
-    sheets_input_to_lynx_mstr(
+    idea_sheets_to_lynx_mstr(
         world_db_path=worlddir.get_world_db_path(),
-        input_dir=worlddir.input_dir,
+        i_src_dir=worlddir.i_src_dir,
         moment_mstr_dir=worlddir.moment_mstr_dir,
         export_db=True,
         output_dir=worlddir.output_dir,
@@ -209,7 +208,7 @@ def sheets_to_gcal_day_punchs(
 
 def create_today_punchs(
     working_dir: str,
-    input_dir: str,
+    i_src_dir: str,
     output_dir: str,
     person_name: PersonName,
     focus_group_title: GroupTitle = None,
@@ -217,10 +216,10 @@ def create_today_punchs(
     worlddir = worlddir_shop(
         world_name="world01",
         worlds_dir=working_dir,
-        input_dir=input_dir,
+        i_src_dir=i_src_dir,
         output_dir=output_dir,
     )
-    sheets_to_gcal_day_punchs(
+    idea_sheets_to_gcal_day_punchs(
         worlddir=worlddir,
         person_name=person_name,
         day=datetime.now(),

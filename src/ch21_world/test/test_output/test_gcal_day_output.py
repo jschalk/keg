@@ -13,11 +13,11 @@ from src.ch14_moment.moment_main import momentunit_shop, save_moment_file
 from src.ch17_idea.idea_db_tool import save_sheet
 from src.ch20_kpi._ref.ch20_path import create_day_punch_txt_path as day_punch_path
 from src.ch21_world.test._util.ch21_examples import br00013_example
-from src.ch21_world.world import sheets_to_gcal_day_punchs, worlddir_shop
+from src.ch21_world.world import idea_sheets_to_gcal_day_punchs, worlddir_shop
 from src.ref.keywords import Ch21Keywords as kw, ExampleStrs as exx
 
 
-def test_sheets_to_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
+def test_idea_sheets_to_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     temp3_fs,
 ):
     # ESTABLISH
@@ -32,14 +32,16 @@ def test_sheets_to_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     assert not os_path_exists(sue_ep8_day_punch_path)
 
     # WHEN
-    sheets_to_gcal_day_punchs(worlddir, exx.sue, apr7)
+    idea_sheets_to_gcal_day_punchs(worlddir, exx.sue, apr7)
 
     # THEN
     assert not os_path_exists(sue_a23_day_punch_path)
     assert not os_path_exists(sue_ep8_day_punch_path)
 
 
-def test_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueReport(temp3_fs):
+def test_idea_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueReport(
+    temp3_fs,
+):
     # ESTABLISH
     hr_mop = init_rope(["herenow_red", "family", exx.casa, exx.clean, exx.mop])
     hr_tools = init_rope(["herenow_red", "family", exx.casa, exx.clean, exx.scrub])
@@ -81,7 +83,7 @@ def test_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueReport(temp3
     ]
     br00013_df = pandas_DataFrame(br00013_data, columns=br00013_cols)
     here_wdir = worlddir_shop("HereNow", str(temp3_fs))
-    bricks01_path = create_path(here_wdir.input_dir, "example.xlsx")
+    bricks01_path = create_path(here_wdir.i_src_dir, "example.xlsx")
     # unrelated to this test
     # br00013_export_dir = create_path("C:\dev\_temp_working_dir", "br00013_example.xlsx")
     # br00011_export_dir = create_path("C:\dev\_temp_working_dir", "br00011_example.xlsx")
@@ -111,7 +113,7 @@ def test_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueReport(temp3
 
     # WHEN
     apr7 = datetime(2010, 5, 7)
-    sheets_to_gcal_day_punchs(here_wdir, exx.sue, apr7)
+    idea_sheets_to_gcal_day_punchs(here_wdir, exx.sue, apr7)
 
     # THEN
     assert os_path_exists(hn_red_mmt_json_path)

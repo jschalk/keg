@@ -77,6 +77,16 @@ def get_keg_exam() -> dict[str, dict]:
     return open_json(create_src_keg_exam_path("src"))
 
 
+def get_keg_ch_sorted_terms(keywords_main: dict) -> list[str]:
+    def parse_init_ch(value):
+        return float("inf") if value == "" else int(value[2:4])
+
+    return sorted(
+        keywords_main.keys(),
+        key=lambda term: (-parse_init_ch(keywords_main[term]["init_chapter"]), term),
+    )
+
+
 def get_kegology_exam_grade(answers: dict[str, str]) -> int:
     """Return the highest completed exam question index.
 

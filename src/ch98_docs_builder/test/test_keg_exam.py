@@ -50,18 +50,89 @@ from src.ch98_docs_builder._ref.ch98_semantic_types import (
 from src.ch98_docs_builder.keg_definitions_builder import (
     get_chxx_prefix_path_dict,
     get_chxx_ref_blurb,
+    get_keg_ch_sorted_terms,
     get_keg_definitions,
     get_keg_exam,
-    get_person_dimen_config,
     get_kegology_exam_grade,
+    get_person_dimen_config,
 )
 from src.ref.keywords import Ch98Keywords as kw
 
 
-def test_get_keg_exam_ReturnsObj_ObjExists():
+def test_get_keg_ch_sorted_terms_ReturnsObj_Scenario0_BasicSorting():
     # ESTABLISH
-
+    data = {
+        "apple": {kw.init_chapter: "ch03"},
+        "banana": {kw.init_chapter: "ch05"},
+        "cherry": {kw.init_chapter: "ch05"},
+        "date": {kw.init_chapter: "ch02"},
+    }
     # WHEN
+    result = get_keg_ch_sorted_terms(data)
+    # THEN
+    assert result == ["banana", "cherry", "apple", "date"]
+
+
+def test_get_keg_ch_sorted_terms_ReturnsObj_Scenario1_AlphabeticalTiebreak():
+    # ESTABLISH
+    data = {
+        "zebra": {kw.init_chapter: "ch10"},
+        "alpha": {kw.init_chapter: "ch10"},
+        "middle": {kw.init_chapter: "ch10"},
+    }
+    # WHEN
+    result = get_keg_ch_sorted_terms(data)
+    # THEN
+    assert result == ["alpha", "middle", "zebra"]
+
+
+def test_get_keg_ch_sorted_terms_ReturnsObj_Scenario2_SingleItem():
+    # ESTABLISH
+    data = {
+        "only": {kw.init_chapter: "ch01"},
+    }
+    # WHEN
+    result = get_keg_ch_sorted_terms(data)
+    # THEN
+    assert result == ["only"]
+
+
+def test_get_keg_ch_sorted_terms_ReturnsObj_Scenario3_EmptyDict():
+    # ESTABLISH
+    data = {}
+    # WHEN
+    result = get_keg_ch_sorted_terms(data)
+    # THEN
+    assert result == []
+
+
+def test_get_keg_ch_sorted_terms_ReturnsObj_Scenario4_NegativeAndZeroValues():
+    # ESTABLISH
+    data = {
+        "a": {kw.init_chapter: "ch00"},
+        "b": {kw.init_chapter: "ch-1"},
+        "c": {kw.init_chapter: "ch02"},
+    }
+    # WHEN
+    result = get_keg_ch_sorted_terms(data)
+    # THEN
+    assert result == ["c", "a", "b"]
+
+
+def test_get_keg_ch_sorted_terms_ReturnsObj_Scenario5_NoneValue():
+    # ESTABLISH
+    data = {
+        "a": {kw.init_chapter: "ch01"},
+        "b": {kw.init_chapter: ""},  # missing key
+    }
+    # WHEN
+    result = get_keg_ch_sorted_terms(data)
+    # THEN
+    assert result == ["b", "a"]
+
+
+def test_get_keg_exam_ReturnsObj_ObjExists():
+    # ESTABLISH / WHEN
     keg_exam = get_keg_exam()
 
     # THEN
@@ -97,6 +168,7 @@ def test_get_keg_exam_ReturnsObj_KeysAreSequentialInts():
 
 
 def test_get_keg_exam_ReturnsObj_DictionariesHavekeys():
+    # sourcery skip: no-conditionals-in-tests
     # ESTABLISH / WHEN
     keg_exam = get_keg_exam()
 
@@ -104,62 +176,57 @@ def test_get_keg_exam_ReturnsObj_DictionariesHavekeys():
     assert isinstance(keg_exam, dict), "keg_exam must be a dict"
     required_fields = {"question_type", "question_str"}
 
-    for key, value in keg_exam.items():
-        assert_dict_fails_str = (
-            f"Expected keg_exam[{key!r}] to be a dict, but got {type(value).__name__}"
-        )
-        assert isinstance(value, dict), assert_dict_fails_str
-        missing_fields = required_fields - value.keys()
-        assertion_missing_fields_fails = (
-            f"keg_exam[{key!r}] is missing required field(s): {sorted(missing_fields)}"
-        )
+    for exam_level, exam_dict in keg_exam.items():
+        assert_dict_fails_str = f"Expected keg_exam[{exam_level!r}] to be a dict, but got {type(exam_dict).__name__}"
+        assert isinstance(exam_dict, dict), assert_dict_fails_str
+        missing_fields = required_fields - exam_dict.keys()
+        assertion_missing_fields_fails = f"keg_exam[{exam_level!r}] is missing required field(s): {sorted(missing_fields)}"
         assert not missing_fields, assertion_missing_fields_fails
+
+        if exam_dict.get("question_type") == "Keyword Definition":
+            assert exam_dict.get("keyword")
 
 
 # TODO get this workings
-# def test_get_keg_definitions_keywords_have_unique_keyword_definition_questions():
-#     # ESTABLISH / WHEN
-#     keg_exam = get_keg_exam()
+def test_get_keg_exam_HasAll_keywordsDefinitionQuestions():
+    # ESTABLISH / WHEN
+    keg_exam = get_keg_exam()
 
-#     # THEN
-#     keg_definitions = get_keg_definitions()
-#     keyword_definition_questions = [
-#         value["question_str"]
-#         for value in keg_exam.values()
-#         if isinstance(value, dict)
-#         and value.get("question_type") == "Keyword Definition"
-#     ]
-#     definition_fail_str = "No Keyword Definition questions found in keg_exam"
-#     assert keyword_definition_questions, definition_fail_str
+    # THEN
+    keyword_definition_questions = [
+        value["question_str"]
+        for value in keg_exam.values()
+        if isinstance(value, dict)
+        and value.get("question_type") == "Keyword Definition"
+    ]
+    definition_fail_str = "No Keyword Definition questions found in keg_exam"
+    assert keyword_definition_questions, definition_fail_str
 
-#     expected_keyword_definition_questions = {}
-#     int_keys = set()
-#     for key in keg_exam.keys():
-#         int_keys.add(int(key))
-#     x_count = max(int_keys) + 1
-#     for keyword_term, keyword_desc in keg_definitions.items():
-#         x_question_str = f"Do know what {keyword_term} is about this?: {keyword_desc}"
-#         question_dict = {
-#             "question_type": "Keyword Definition",
-#             "question_str": x_question_str,
-#         }
-#         expected_keyword_definition_questions[str(x_count)] = question_dict
-#         x_count += 1
-#     print(expected_keyword_definition_questions)
+    keg_definitions = get_keg_definitions()
 
-#     for keyword in sorted(keg_definitions):
-#         matches = [
-#             question_str
-#             for question_str in keyword_definition_questions
-#             if keyword in question_str
-#         ]
-#         assert len(matches) == 1, (
-#             f"Expected exactly one Keyword Definition question for keyword {keyword!r}, "
-#             f"found {len(matches)} matches: {matches}"
-#         )
+    expected_keyword_definition_questions = {}
+    int_keys = {int(key) for key in keg_exam.keys()}
+    x_count = max(int_keys) + 1
+    sorted_keywords = get_keg_ch_sorted_terms(get_keywords_src_config())
+    for keyword_term in sorted_keywords:
+        x_question_str = f"Have you read the Kegology definition of '{keyword_term}'?"
+        question_dict = {
+            "question_type": "Keyword Definition",
+            "question_str": x_question_str,
+            "keyword": keyword_term,
+        }
+        expected_keyword_definition_questions[str(x_count)] = question_dict
+        x_count += 1
+
+    # for exam_level, question_dict2 in expected_keyword_definition_questions.items():
+    #     print(f""""{exam_level}": {question_dict2},""")
+    # need to create new asserts that all keyword_terms have exam question
 
 
-# # TODO get these tests working
+# The concept is that a set of statements like "I have read about the keg definition of 'plan'
+# and the function will return the highest completed keg exam level.
+# if new terms are introduced that could change a keg exam level measurement.
+# Thus each exam measurement is associated with a keg version.
 # def test_get_kegology_exam_grade_ReturnsHighestCompletedQuestionNum():
 #     # ESTABLISH
 #     # Simulating answers dict with question_str as key, answer as value

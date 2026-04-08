@@ -120,7 +120,7 @@ class CalendarMarkDown:
         self.month_char_width = (self.week_length * 3) + 5
         self.monthmarkdownrow_length = int(self.max_md_width / self.month_char_width)
         # set the display_md_width to month_char_width * columns minus unnessary spaces on right
-        # substract 6 spaces because length is 5 and each month number has additional space
+        # subtract 6 spaces because length is 5 and each month number has additional space
         self.display_md_width = self.monthmarkdownrow_length * self.month_char_width - 6
         self.monthmarkdownrows = []
         x_monthmarkdownrow = MonthMarkDownRow([])

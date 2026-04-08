@@ -14,6 +14,8 @@ from pandas import (
     ExcelWriter,
     read_csv as pandas_read_csv,
     read_excel as pandas_read_excel,
+    to_datetime as pandas_to_datetime,
+    to_numeric as pandas_to_numeric,
 )
 from pandas.api.types import is_numeric_dtype as pandas_api_types_is_numeric_dtype
 from sqlite3 import Connection as sqlite3_Connection, Cursor as sqlite3_Cursor
@@ -199,7 +201,7 @@ def save_sheet(
     Args:
     - file_path (str): The path to the Excel file.
     - sheet_name (str): The name of the sheet to update or create.
-    - dataframe (pd.DataFrame): The DataFrame to write to the sheet.
+    - dataframe (DataFrame): The DataFrame to write to the sheet.
     """
 
     # Check if the file exists
@@ -403,12 +405,12 @@ def set_dataframe_first_two_columns(df: DataFrame, value_col1, value_col2) -> Da
     Sets the first and second columns of a pandas DataFrame to specified values.
 
     Parameters:
-    - df (pd.DataFrame): The DataFrame to modify.
+    - df (DataFrame): The DataFrame to modify.
     - value_col1: The value to set in the first column.
     - value_col2: The value to set in the second column.
 
     Returns:
-    - pd.DataFrame: The modified DataFrame.
+    - DataFrame: The modified DataFrame.
     """
     if df.shape[1] < 2:
         raise ValueError("DataFrame must have at least two columns.")
@@ -423,7 +425,7 @@ def check_dataframe_column_names(df: DataFrame, name_col1: str, name_col2: str) 
     Checks if the first two columns of a pandas DataFrame have the specified names.
 
     Parameters:
-    - df (pd.DataFrame): The DataFrame to check.
+    - df (DataFrame): The DataFrame to check.
     - name_col1 (str): Expected name of the first column.
     - name_col2 (str): Expected name of the second column.
 
@@ -475,19 +477,19 @@ def is_column_type_valid(df: DataFrame, column: str, sqlite_data_type: str) -> b
     return str(actual_dtype) == expected_data_type
 
 
-def prettify_excel(input_file: str, zoom: int = 120) -> None:
+def prettify_excel(file_path: str, zoom: int = 120) -> None:
     """
     Reads all sheets from an Excel file, applies formatting improvements to each,
     and overwrites the original file. Safely handles sheets with only headers and no data.
 
     Args:
-        input_file (str): Path to the Excel file to overwrite.
+        file_path (str): Path to the Excel file to overwrite.
         zoom (int): Zoom level for each worksheet.
     """
     # Load all sheets
-    sheet_data = pandas_read_excel(input_file, sheet_name=None)
+    sheet_data = pandas_read_excel(file_path, sheet_name=None)
 
-    with ExcelWriter(input_file, engine="xlsxwriter") as writer:
+    with ExcelWriter(file_path, engine="xlsxwriter") as writer:
         for sheet_name, df in sheet_data.items():
             df.to_excel(writer, sheet_name=sheet_name, index=False)
             workbook = writer.book
@@ -542,35 +544,30 @@ def prettify_excel(input_file: str, zoom: int = 120) -> None:
                 )
 
 
-def update_spark_num_in_excel_files(directory: str, value) -> None:
+def set_df_idea_column_types(df: DataFrame) -> DataFrame:
     """
-    Adds or updates the 'spark_num' column with a given value
-    in all Excel files in the directory that contain 'belief' in the filename.
-
-    Args:
-        directory (str): Path to the directory containing Excel files.
-        value: The value to set in the 'spark_num' column.
+    schema: dict like {"col1": "int", "col2": "float", "col3": "string"}
     """
-    for filename in os_listdir(directory):
-        if (
-            filename.lower().endswith((".xlsx", ".xls"))
-            and "belief" in filename.lower()
-        ):
-            filepath = os_path_join(directory, filename)
+    schema = get_idea_sqlite_types()
+    df = df.copy()
 
-            # Read all sheets
-            sheets = pandas_read_excel(filepath, sheet_name=None)
+    for col, dtype in schema.items():
+        if col not in df.columns:
+            continue
+        if dtype in ("int", "int64", "INTEGER"):
+            df[col] = pandas_to_numeric(df[col], errors="coerce").astype("Int64")
+        elif dtype in ("float", "float64", "REAL"):
+            df[col] = pandas_to_numeric(df[col], errors="coerce")
+        elif dtype in ("str", "string", "text"):
+            df[col] = df[col].astype("string")
+        elif dtype in ("bool", "boolean"):
+            df[col] = df[col].astype("boolean")
+        elif dtype in ("datetime", "datetime64"):
+            df[col] = pandas_to_datetime(df[col], errors="coerce")
+        else:
+            raise ValueError(f"Unsupported dtype: {dtype}")
 
-            # Modify each sheet
-            updated_sheets = {}
-            for sheet_name, df in sheets.items():
-                df["spark_num"] = value  # Add or overwrite
-                updated_sheets[sheet_name] = df
-
-            # Write all sheets back to the same file
-            with ExcelWriter(filepath, engine="xlsxwriter") as writer:
-                for sheet_name, df in updated_sheets.items():
-                    df.to_excel(writer, sheet_name=sheet_name, index=False)
+    return df
 
 
 def export_db_to_excel(

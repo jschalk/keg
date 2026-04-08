@@ -126,10 +126,10 @@ from src.ch19_etl_steps.obj2db_moment import get_moment_dict_from_heard_tables
 from src.ch19_etl_steps.obj2db_person import insert_job_obj
 
 
-def etl_input_dfs_to_brick_raw_tables(cursor: sqlite3_Cursor, input_dir: str):
+def etl_idea_dfs_to_brick_raw_tables(cursor: sqlite3_Cursor, i_src_dir: str):
     idea_sqlite_types = get_idea_sqlite_types()
 
-    for ref in get_all_idea_dataframes(input_dir):
+    for ref in get_all_idea_dataframes(i_src_dir):
         x_file_path = create_path(ref.file_dir, ref.filename)
         df = pandas_read_excel(x_file_path, ref.sheet_name)
         idea_sorting_columns = get_default_sorted_list(set(df.columns))
