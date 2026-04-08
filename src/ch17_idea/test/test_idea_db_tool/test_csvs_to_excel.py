@@ -10,9 +10,9 @@ import pytest
 from src.ch00_py.file_toolbox import create_path
 from src.ch17_idea.idea_db_tool import (
     csv_dict_to_excel,
+    get_idea_sqlite_types,
     prettify_excel,
-    update_spark_num_in_excel_file,
-    update_spark_num_in_excel_files,
+    set_df_idea_column_types,
 )
 from src.ref.keywords import Ch17Keywords as kw
 from unittest.mock import MagicMock, patch
@@ -89,83 +89,59 @@ def test_prettify_excel_SetsAttrs(temp3_fs):
         )  # default width is ~8.43
 
 
-def create_excel_file(filepath, sheets_dict):
-    with pandas_ExcelWriter(filepath, engine="xlsxwriter") as writer:
-        for name, df in sheets_dict.items():
-            df.to_excel(writer, sheet_name=name, index=False)
-
-
-def test_update_spark_num_in_excel_file_SetsFile_Scenario0_UpdatesAllSheets(temp3_fs):
+def test_set_df_idea_column_types_SetsAttrs_Scenario0_BasicConversion():
     # ESTABLISH
-    filepath = create_path(str(temp3_fs), "test.xlsx")
-    df1 = DataFrame({"a": [1, 2]})
-    df2 = DataFrame({"b": [3, 4]})
-    create_excel_file(filepath, {"Sheet1": df1, "Sheet2": df2})
-
+    df = DataFrame(
+        {
+            kw.plan_label: ["a", "b"],
+            kw.addin: ["1", "2"],
+            kw.gogo_want: ["10.5", "20.1"],
+        }
+    )
     # WHEN
-    update_spark_num_in_excel_file(filepath, 42)
-
+    result = set_df_idea_column_types(df)
     # THEN
-    result = pandas_read_excel(filepath, sheet_name=None)
-    assert set(result.keys()) == {"Sheet1", "Sheet2"}
-    for df in result.values():
-        assert "spark_num" in df.columns
-        assert all(df["spark_num"] == 42)
+    assert str(result[kw.plan_label].dtype) == "str"
+    assert str(result[kw.addin].dtype) == "int64"
+    assert str(result[kw.gogo_want].dtype) == "float64"
+    assert result[kw.addin].tolist() == [1, 2]
+    assert result[kw.gogo_want].tolist() == [10.5, 20.1]
 
 
-def test_update_spark_num_in_excel_file_SetsFile_Scenario1_PreservesOtherColumns(
-    temp3_fs,
-):
+def test_set_df_idea_column_types_SetsAttrs_Scenario1_HandlesInvalidValuesWithCoerce():
     # ESTABLISH
-    filepath = temp3_fs / "test.xlsx"
-    df = DataFrame({"a": [1, 2], "b": [3, 4]})
-    create_excel_file(filepath, {"Sheet1": df})
+    df = DataFrame({kw.numor: ["1", "bad", "3"]})
     # WHEN
-    update_spark_num_in_excel_file(filepath, 99)
+    result = set_df_idea_column_types(df)
     # THEN
-    result = pandas_read_excel(filepath, sheet_name=None)
-    out_df = result["Sheet1"]
-
-    assert list(out_df.columns) == ["a", "b", "spark_num"]
-    assert out_df["a"].tolist() == [1, 2]
-    assert out_df["b"].tolist() == [3, 4]
+    assert str(result[kw.numor].dtype) == "Int64"
+    assert result[kw.numor].isna().tolist() == [False, True, False]
 
 
-# def test_update_spark_num_in_excel_file_SetsFile_Scenario2_EmptyWorkbook(temp3_fs):
+def test_set_df_idea_column_types_SetsAttrs_Scenario2_MissingColumnIsIgnored():
+    # ESTABLISH
+    df = DataFrame({kw.numor: ["1", "2"]})
+    # WHEN
+    result = set_df_idea_column_types(df)
+    # THEN
+    assert "b" not in result.columns
+    assert str(result[kw.numor].dtype) == "Int64"
+
+
+# def test_set_df_idea_column_types_SetsAttrs_Scenario3_Unsupported_dtype_raises_Exception():
 #     # ESTABLISH
-#     filepath = temp3_fs / "test.xlsx"
-
-#     # Create empty workbook
-#     with pandas_ExcelWriter(filepath, engine="xlsxwriter"):
-#         pass
-#     # WHEN
-#     update_spark_num_in_excel_file(filepath, 5)
-#     # THEN
-#     result = pandas_read_excel(filepath, sheet_name=None)
-#     assert result == {}
+#     df = DataFrame({kw.plan_label: ["1", "2"]})
+#     # WHEN/THEN
+#     with pytest.raises(ValueError, match="Unsupported dtype"):
+#         set_df_idea_column_types(df)
 
 
-def test_update_spark_num_in_excel_files_SetAttrs(temp3_fs):
+def test_set_df_idea_column_types_SetsAttrs_Scenario4_DoesNotMutateOriginalDataframe():
     # ESTABLISH
-    # Setup: Create test directory and Excel file
-    temp_dir = str(temp3_fs)
-    file_path = os_path_join(temp_dir, "example_belief.xlsx")
-
-    # Create Excel file with two sheets
-    df1 = DataFrame({"name": ["Alice", "Bob"], "score": [80, 90]})
-    df2 = DataFrame({"item": ["Pen", "Notebook"], "price": [1.5, 3.0]})
-    with pandas_ExcelWriter(file_path) as writer:
-        df1.to_excel(writer, sheet_name="Sheet1", index=False)
-        df2.to_excel(writer, sheet_name="Sheet2", index=False)
-
+    df = DataFrame({kw.numor: ["1", "2"]})
     # WHEN
-    # Apply function
-    update_spark_num_in_excel_files(temp_dir, 42)
-
+    result = set_df_idea_column_types(df)
     # THEN
-    # Reload the file and verify that spark_num column exists and is correct
-    result = pandas_read_excel(file_path, sheet_name=None)
-
-    for sheet_df in result.values():
-        assert kw.spark_num in sheet_df.columns
-        assert all(sheet_df[kw.spark_num] == 42)
+    # original should remain object/string-like
+    assert str(df[kw.numor].dtype) in {"object", "str"}
+    assert str(result[kw.numor].dtype) == "Int64"

@@ -3,15 +3,13 @@ from datetime import datetime
 from os.path import exists as os_path_exists
 from sqlite3 import Cursor as sqlite3_Cursor, connect as sqlite3_connect
 from src.ch00_py.file_toolbox import create_path, delete_dir, set_dir
-from src.ch17_idea.idea_db_tool import (
-    export_db_to_excel,
-    update_spark_num_in_excel_files,
-)
+from src.ch17_idea.idea_db_tool import export_db_to_excel
 from src.ch18_etl_config._ref.ch18_path import (
     create_moment_mstr_path,
     create_world_db_path,
 )
 from src.ch18_etl_config.belief_tool import create_belief0001_file
+from src.ch19_etl_steps.belief2idea import update_spark_num_in_belief_files
 from src.ch19_etl_steps.etl_main import (
     add_moment_epoch_to_guts,
     calc_moment_bud_contact_mandate_net_ledgers,
@@ -130,7 +128,7 @@ def belief_sheets_to_lynx_mstr(
             max_brick_agg_spark_num = get_max_brick_agg_spark_num(cursor0)
         db_conn0.close()
     next_spark_num = max_brick_agg_spark_num + 1
-    update_spark_num_in_excel_files(i_src_dir, next_spark_num)
+    update_spark_num_in_belief_files(i_src_dir, next_spark_num)
     idea_sheets_to_lynx_mstr(
         world_db_path=world_db_path,
         i_src_dir=i_src_dir,
