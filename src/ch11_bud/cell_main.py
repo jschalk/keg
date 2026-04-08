@@ -48,7 +48,7 @@ class CellUnit:
     found_facts: dict[RopeTerm, FactUnit] = None
     boss_facts: dict[RopeTerm, FactUnit] = None
     reason_contexts: set[RopeTerm] = None
-    _contact_mandate_ledger: dict[PersonName, FundNum] = None
+    contact_mandate_ledger: dict[PersonName, FundNum] = None
 
     def get_cell_person_name(self) -> PersonName:
         return self.bud_person_name if self.ancestors == [] else self.ancestors[-1]
@@ -139,7 +139,7 @@ class CellUnit:
 
     def _set_contact_mandate_ledger(self):
         self.personadjust.set_fund_pool(self.mandate)
-        self._contact_mandate_ledger = get_contact_mandate_ledger(
+        self.contact_mandate_ledger = get_contact_mandate_ledger(
             self.personadjust, True
         )
 
@@ -206,7 +206,7 @@ def cellunit_shop(
         found_facts=get_empty_dict_if_None(found_facts),
         boss_facts=get_empty_dict_if_None(boss_facts),
         reason_contexts=reason_contexts,
-        _contact_mandate_ledger={},
+        contact_mandate_ledger={},
     )
 
 
@@ -247,8 +247,8 @@ def cellunit_get_from_dict(x_dict: dict) -> CellUnit:
 def create_child_cellunits(parent_cell: CellUnit) -> list[CellUnit]:
     parent_cell.calc_contact_mandate_ledger()
     x_list = []
-    for child_person_name in sorted(parent_cell._contact_mandate_ledger):
-        child_mandate = parent_cell._contact_mandate_ledger.get(child_person_name)
+    for child_person_name in sorted(parent_cell.contact_mandate_ledger):
+        child_mandate = parent_cell.contact_mandate_ledger.get(child_person_name)
         if child_mandate > 0 and parent_cell.celldepth > 0:
             child_ancestors = copy_deepcopy(parent_cell.ancestors)
             child_ancestors.append(child_person_name)

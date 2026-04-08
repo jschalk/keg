@@ -251,7 +251,7 @@ def _add_child_decrees(
     person_name: str,
     bud_time: int,
 ):
-    for child_person_name, child_mandate in x_cell._contact_mandate_ledger.items():
+    for child_person_name, child_mandate in x_cell.contact_mandate_ledger.items():
         child_cell_ancestors = x_decree.get_child_cell_ancestors(child_person_name)
         child_dir = create_cell_dir_path(
             mstr_dir, moment_lasso, person_name, bud_time, child_cell_ancestors

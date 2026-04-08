@@ -133,7 +133,7 @@ VALUES{rows_str}
 """
 
 
-def dict_factory(cursor, row):
+def dict_shop(cursor, row):
     fields = [column[0] for column in cursor.description]
     return dict(zip(fields, row))
 
@@ -163,7 +163,7 @@ def rowdata_shop(
 def get_rowdata(
     tablename: str, x_conn: sqlite3_Connection, select_sqlstr: str
 ) -> RowData:
-    x_conn.row_factory = dict_factory
+    x_conn.row_factory = dict_shop
     results = x_conn.execute(select_sqlstr)
     row1 = results.fetchone()
     return rowdata_shop(tablename, row1)

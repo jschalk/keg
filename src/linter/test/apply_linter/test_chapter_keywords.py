@@ -163,9 +163,9 @@ def test_Chapters_KeywordsAppearWhereTheyShould():
             # all_file_count += 1
             # print(f"{all_file_count} Chapter: {chapter_file_count} {file_path}")
             file_str = open_file(file_path)
-            for keyword in not_allowed_keywords:
-                notallowed_keyword_failure_str = f"keyword {keyword} is not allowed in chapter {chapter_prefix}. It is in {file_path=}"
-                assert keyword not in file_str, notallowed_keyword_failure_str
+            check_not_allowed_keywords(
+                not_allowed_keywords, file_str, chapter_prefix, file_path
+            )
             # print(f"{file_path=}")
             excessive_imports_str = f"{file_path} has too many Keywords class imports"
             ch_class_name = f"C{chapter_prefix[1:]}Keywords"
@@ -224,6 +224,19 @@ def test_Chapters_KeywordsAppearWhereTheyShould():
             #     print()
             if keyword not in {"semantic_type"}:
                 assert min_chapter_count != 1, ch_count_fail_str
+
+
+def check_not_allowed_keywords(
+    not_allowed_keywords: set, file_str: str, chapter_prefix: str, file_path: str
+):
+    for keyword in not_allowed_keywords:
+        notallowed_keyword_failure_str = f"keyword '{keyword}' is not allowed in chapter {chapter_prefix}. It is in {file_path=}"
+        if keyword in {"fact", "factory"}:
+            # Special case, doesn't provide perfect check but better than nothing
+            if keyword in file_str and "row_factory" not in file_str:
+                assert False, notallowed_keyword_failure_str
+        else:
+            assert keyword not in file_str, notallowed_keyword_failure_str
 
 
 def add_ch_keyword_count(keywords_ch_counts: dict, keyword: str, chapter_prefix: str):

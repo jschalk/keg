@@ -157,7 +157,7 @@ def create_cell_contact_mandate_ledger_json(dirpath: str):
     if cell := cellunit_get_from_dir(dirpath):
         cell.calc_contact_mandate_ledger()
         save_json(
-            dirpath, "cell_contact_mandate_ledger.json", cell._contact_mandate_ledger
+            dirpath, "cell_contact_mandate_ledger.json", cell.contact_mandate_ledger
         )
 
 

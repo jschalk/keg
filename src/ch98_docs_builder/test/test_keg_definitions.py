@@ -5,6 +5,7 @@ from src.ch07_person_logic.person_config import (
     get_all_person_calc_args,
     get_person_config_dict,
 )
+from src.ch11_bud.cell_main import cellunit_shop
 from src.ch13_time.epoch_main import get_c400_constants, get_default_epoch_config_dict
 from src.ch14_moment.moment_config import get_moment_config_args
 from src.ch15_nabu.nabu_config import get_nabu_args, get_nabuable_args
@@ -53,7 +54,7 @@ from src.ch98_docs_builder.keg_definitions_builder import (
     get_keg_definitions,
     get_person_dimen_config,
 )
-from src.ref.keywords import Ch98Keywords as kw
+from src.ref.keywords import Ch98Keywords as kw, ExampleStrs as exx
 
 
 def python_keywords() -> set:
@@ -181,6 +182,17 @@ def test_get_keg_definitions_ReturnsObj_Check_c400_constants():
         # print(f"{constant_name} {formated_constant} {constant_description=}")
         assert formated_constant in constant_description
         assert "C400Constant for building Epochs" in constant_description
+
+
+def test_get_keg_definitions_ReturnsObj_Check_CellUnit():
+    # ESTABLISH / WHEN
+    keg_definitions = get_keg_definitions()
+    # THEN
+    for cell_attr in sorted(cellunit_shop(exx.sue).__dict__.keys()):
+        formated_constant = f", used with Budget Cells"
+        constant_description = keg_definitions.get(cell_attr)
+        print(f"{cell_attr=} {formated_constant} {constant_description=}")
+        assert formated_constant in constant_description, cell_attr
 
 
 def test_get_keg_definitions_ReturnsObj_CheckChapter():

@@ -19,7 +19,7 @@ from src.ch00_py.db_toolbox import (
     create_type_reference_insert_sqlstr,
     create_update_inconsistency_error_query,
     db_table_exists,
-    dict_factory,
+    dict_shop,
     get_db_tables,
     get_groupby_sql_query,
     get_grouping_with_all_values_equal_sql_query,
@@ -191,7 +191,7 @@ def test_rowdata_shop_ReturnsObj(
     print(f"{row=}")
     print(f"{type(row)=}")
 
-    cursor0.row_factory = dict_factory
+    cursor0.row_factory = dict_shop
     res2 = cursor0.execute("SELECT 'Earth' AS name, 6378 AS radius")
     row2 = res2.fetchone()
     print(f"{row2=}")
@@ -227,7 +227,7 @@ def test_rowdata_shop_ReturnsObjWithoutNone(
 ):  # sourcery skip: extract-method
     # ESTABLISH
     x_tablename = "earth"
-    cursor0.row_factory = dict_factory
+    cursor0.row_factory = dict_shop
     res2 = cursor0.execute("SELECT 'Earth' AS name, 6378 AS radius, NULL as color")
     row2 = res2.fetchone()
     print(f"{row2=}")

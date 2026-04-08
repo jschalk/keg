@@ -38,10 +38,25 @@ def test_CellUnit_Exists():
     assert not x_cellunit.mandate
     assert not x_cellunit.personadjust
     assert not x_cellunit.reason_contexts
-    assert not x_cellunit._contact_mandate_ledger
+    assert not x_cellunit.contact_mandate_ledger
     assert not x_cellunit.personspark_facts
     assert not x_cellunit.found_facts
     assert not x_cellunit.boss_facts
+    assert set(x_cellunit.__dict__.keys()) == {
+        kw.ancestors,
+        kw.spark_num,
+        kw.celldepth,
+        kw.bud_person_name,
+        kw.mana_grain,
+        kw.quota,
+        kw.mandate,
+        kw.personadjust,
+        kw.reason_contexts,
+        "contact_mandate_ledger",
+        kw.personspark_facts,
+        kw.found_facts,
+        kw.boss_facts,
+    }
 
 
 def test_cellunit_shop_ReturnsObj_Scenario0_WithoutParameters():
@@ -58,7 +73,7 @@ def test_cellunit_shop_ReturnsObj_Scenario0_WithoutParameters():
     assert x_cellunit.personadjust.to_dict() == personunit_shop(exx.bob).to_dict()
     assert x_cellunit.personspark_facts == {}
     assert x_cellunit.reason_contexts == set()
-    assert x_cellunit._contact_mandate_ledger == {}
+    assert x_cellunit.contact_mandate_ledger == {}
     assert x_cellunit.found_facts == {}
     assert x_cellunit.boss_facts == {}
 
@@ -718,7 +733,7 @@ def test_CellUnit_set_contact_mandate_ledger_ReturnsObj_Scenario0():
     )
     assert sue_cell.personadjust.fund_pool != sue_quota300
     assert sue_cell.personadjust.fund_pool != sue_mandate
-    assert sue_cell._contact_mandate_ledger == {}
+    assert sue_cell.contact_mandate_ledger == {}
 
     # WHEN
     sue_cell._set_contact_mandate_ledger()
@@ -726,7 +741,7 @@ def test_CellUnit_set_contact_mandate_ledger_ReturnsObj_Scenario0():
     # THEN
     assert sue_cell.personadjust.fund_pool != sue_quota300
     assert sue_cell.personadjust.fund_pool == sue_mandate
-    assert sue_cell._contact_mandate_ledger == {exx.sue: sue_mandate}
+    assert sue_cell.contact_mandate_ledger == {exx.sue: sue_mandate}
 
 
 def test_CellUnit_set_contact_mandate_ledger_ReturnsObj_Scenario1():
@@ -752,7 +767,7 @@ def test_CellUnit_set_contact_mandate_ledger_ReturnsObj_Scenario1():
     )
     assert sue_cell.personadjust.fund_pool != sue_quota300
     assert sue_cell.personadjust.fund_pool != sue_mandate
-    assert sue_cell._contact_mandate_ledger == {}
+    assert sue_cell.contact_mandate_ledger == {}
 
     # WHEN
     sue_cell._set_contact_mandate_ledger()
@@ -760,8 +775,8 @@ def test_CellUnit_set_contact_mandate_ledger_ReturnsObj_Scenario1():
     # THEN
     assert sue_cell.personadjust.fund_pool != sue_quota300
     assert sue_cell.personadjust.fund_pool == sue_mandate
-    assert sue_cell._contact_mandate_ledger != {}
-    assert sue_cell._contact_mandate_ledger == {exx.yao: 311, exx.sue: 133}
+    assert sue_cell.contact_mandate_ledger != {}
+    assert sue_cell.contact_mandate_ledger == {exx.yao: 311, exx.sue: 133}
 
 
 def test_CellUnit_calc_contact_mandate_ledger_ReturnsObj_Scenario0():
@@ -805,7 +820,7 @@ def test_CellUnit_calc_contact_mandate_ledger_ReturnsObj_Scenario0():
     assert not sue_cell.reason_contexts
     assert sue_cell.boss_facts == {sky_blue_fact.fact_context: sky_blue_fact}
     assert sue_cell.personadjust.get_planroot_factunits_dict() == {}
-    assert sue_cell._contact_mandate_ledger == {}
+    assert sue_cell.contact_mandate_ledger == {}
 
     # WHEN
     sue_cell.calc_contact_mandate_ledger()
@@ -820,8 +835,8 @@ def test_CellUnit_calc_contact_mandate_ledger_ReturnsObj_Scenario0():
     # plan_dict = sue_cell.personadjust.get_plan_dict()
     # for plan_rope, plan_obj in plan_dict.items():
     #     print(f"{plan_rope=} {plan_obj.fund_onset=} {plan_obj.fund_cease}")
-    assert sue_cell._contact_mandate_ledger != {}
-    assert sue_cell._contact_mandate_ledger == {exx.yao: 311, exx.sue: 133}
+    assert sue_cell.contact_mandate_ledger != {}
+    assert sue_cell.contact_mandate_ledger == {exx.yao: 311, exx.sue: 133}
 
 
 def test_create_child_cellunits_ReturnsObj_Scenario0():
@@ -926,7 +941,7 @@ def test_create_child_cellunits_ReturnsObj_Scenario2_boss_facts():
         exx.yao, celldepth=yao_celldepth, quota=yao_quota, personadjust=yao_person
     )
     yao_cell.personspark_facts = {dirty_fact.fact_context: dirty_fact}
-    # sue_cell._contact_mandate_ledger = {exx.yao: 210, exx.sue: 90, exx.bob: 0}
+    # sue_cell.contact_mandate_ledger = {exx.yao: 210, exx.sue: 90, exx.bob: 0}
 
     # WHEN
     sue_child_cellunits = create_child_cellunits(yao_cell)
@@ -983,7 +998,7 @@ def test_create_child_cellunits_ReturnsObj_Scenario3_StateOfCellAdjustIsReset():
     assert not sue_cell.reason_contexts
     assert sue_cell.boss_facts == {sky_blue_fact.fact_context: sky_blue_fact}
     assert sue_cell.personadjust.get_planroot_factunits_dict() == {}
-    assert sue_cell._contact_mandate_ledger == {}
+    assert sue_cell.contact_mandate_ledger == {}
 
     # WHEN
     sue_child_cellunits = create_child_cellunits(sue_cell)
@@ -1001,8 +1016,8 @@ def test_create_child_cellunits_ReturnsObj_Scenario3_StateOfCellAdjustIsReset():
     # plan_dict = sue_cell.personadjust.get_plan_dict()
     # for plan_rope, plan_obj in plan_dict.items():
     #     print(f"{plan_rope=} {plan_obj.fund_onset=} {plan_obj.fund_cease}")
-    assert sue_cell._contact_mandate_ledger != {}
-    assert sue_cell._contact_mandate_ledger == {exx.yao: 311, exx.sue: 133}
+    assert sue_cell.contact_mandate_ledger != {}
+    assert sue_cell.contact_mandate_ledger == {exx.yao: 311, exx.sue: 133}
 
     # THEN
     assert len(sue_child_cellunits) == 2
