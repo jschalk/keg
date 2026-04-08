@@ -127,8 +127,7 @@ def belief_sheets_to_lynx_mstr(
             cursor0 = db_conn0.cursor()
             max_brick_agg_spark_num = get_max_brick_agg_spark_num(cursor0)
         db_conn0.close()
-    next_spark_num = max_brick_agg_spark_num + 1
-    update_spark_num_in_belief_files(i_src_dir, next_spark_num)
+    update_spark_num_in_belief_files(i_src_dir, max_brick_agg_spark_num)
     idea_sheets_to_lynx_mstr(
         world_db_path=world_db_path,
         i_src_dir=i_src_dir,

@@ -5,9 +5,13 @@ from pandas import (
     isna as pandas_isna,
     read_excel as pandas_read_excel,
 )
+from pathlib import Path
+from pytest import raises as pytest_raises
 from src.ch00_py.file_toolbox import create_path
 from src.ch19_etl_steps.belief2idea import (
+    MigrationConflictError,
     add_spark_num_column,
+    compare_br_sheets,
     create_spark_face_spark_nums,
     get_max_spark_num_from_files,
     get_spark_faces_from_df,
@@ -201,6 +205,86 @@ def test_add_spark_num_column_SetsAttr_Scenario0_MutatesOriginalDataframe():
     assert kw.spark_num in df.columns
 
 
+def test_compare_br_sheets_Scenario0_DoesNotRaiseException(tmp_path):
+    # ESTABLISH
+    # Setup source and destination directories
+    src_dir = tmp_path / "src"
+    dst_dir = tmp_path / "dst"
+    src_dir.mkdir()
+    dst_dir.mkdir()
+
+    # Create Excel files
+    src_file = src_dir / "file.xlsx"
+    dst_file = dst_dir / "file.xlsx"
+
+    df_br = DataFrame({"A": [1, 2], "B": [3, 4]})
+    df_other = DataFrame({"X": [9, 8]})
+
+    with pandas_ExcelWriter(src_file) as writer:
+        df_br.to_excel(writer, sheet_name="br_sheet", index=False)
+        df_other.to_excel(writer, sheet_name="other_sheet", index=False)
+
+    with pandas_ExcelWriter(dst_file) as writer:
+        df_br.to_excel(writer, sheet_name="br_sheet", index=False)
+        df_other.to_excel(writer, sheet_name="other_sheet", index=False)
+
+    # WHEN / THEN
+    # Should not raise exception
+    compare_br_sheets(src_dir, dst_dir)
+
+
+def test_compare_br_sheets_Scenario1_DoesRaiseException(tmp_path):
+    # ESTABLISH
+    src_dir = tmp_path / "src"
+    dst_dir = tmp_path / "dst"
+    src_dir.mkdir()
+    dst_dir.mkdir()
+
+    src_file = src_dir / "file.xlsx"
+    dst_file = dst_dir / "file.xlsx"
+
+    df_br_src = DataFrame({"A": [1, 2]})
+    df_br_dst = DataFrame({"A": [1, 99]})  # conflict
+
+    with pandas_ExcelWriter(src_file) as writer:
+        df_br_src.to_excel(writer, sheet_name="br_sheet", index=False)
+
+    with pandas_ExcelWriter(dst_file) as writer:
+        df_br_dst.to_excel(writer, sheet_name="br_sheet", index=False)
+
+    # WHEN / THEN
+    with pytest_raises(MigrationConflictError, match="Conflict in sheet"):
+        compare_br_sheets(src_dir, dst_dir)
+
+
+def test_compare_br_sheets_Scenario2_MissingSheetRaiseException(tmp_path):
+    # ESTABLISH
+    src_dir = tmp_path / "src"
+    dst_dir = tmp_path / "dst"
+    src_dir.mkdir()
+    dst_dir.mkdir()
+
+    src_file = src_dir / "file.xlsx"
+    dst_file = dst_dir / "file.xlsx"
+
+    df_br = DataFrame({"A": [1, 2]})
+
+    with pandas_ExcelWriter(src_file) as writer:
+        df_br.to_excel(writer, sheet_name="br_missing_in_dst", index=False)
+
+    with pandas_ExcelWriter(dst_file) as writer:
+        df_br.to_excel(writer, sheet_name="other_sheet", index=False)
+
+    # WHEN / THEN
+    with pytest_raises(
+        MigrationConflictError, match="exists in source but not in destination"
+    ):
+        compare_br_sheets(src_dir, dst_dir)
+
+
+#################################################################################
+
+
 def create_excel_file(filepath, sheets_dict):
     with pandas_ExcelWriter(filepath, engine="xlsxwriter") as writer:
         for name, df in sheets_dict.items():
@@ -215,7 +299,7 @@ def test_update_spark_num_in_excel_file_SetsFile_Scenario0_UpdatesAllSheets(temp
     create_excel_file(filepath, {"Sheet1": df1, "Sheet2": df2})
 
     # WHEN
-    update_spark_num_in_excel_file(filepath, 42)
+    update_spark_num_in_excel_file(filepath, 41)
 
     # THEN
     result = pandas_read_excel(filepath, sheet_name=None)
@@ -272,7 +356,7 @@ def test_update_spark_num_in_belief_files_SetAttrs(temp3_fs):
 
     # WHEN
     # Apply function
-    update_spark_num_in_belief_files(temp_dir, 42)
+    update_spark_num_in_belief_files(temp_dir, 41)
 
     # THEN
     # Reload the file and verify that spark_num column exists and is correct
