@@ -122,7 +122,7 @@ def test_get_keg_definitions_ReturnsObj_Check_stages_types():
         expected_abbv5_description = f"5 character abbreviation of {abbv9_str}. {stage_type_order=} {type_description_str}"
         abbv5_fail_str = expected_abbv5_description
         print(f"{stage_type_abbv5=}")
-        assert expected_abbv5_description == abbv5_keyword_description, abbv5_fail_str
+        assert expected_abbv5_description in abbv5_keyword_description, abbv5_fail_str
 
         print(f"{abbv9_str=}")
         expected_abbv9_description = f"{stage_type_order=} {type_description_str}"

@@ -1,47 +1,67 @@
 {
-  "b_agg": {
-    "abbv9": "brick_agg", 
-    "description": "Brick Agg: The Brick Raw tables are aggregated to elimanate duplicates.", 
-    "stage_type_order": 2
+  "beli_dst": {
+    "abbv9": "belve_dst", 
+    "description": "Belief Destination files. Ideas formats without SparkNum.", 
+    "stage_type_order": 14
   }, 
-  "b_raw": {
-    "abbv9": "brick_raw", 
-    "description": "Brick Raw: The importable Excel Sheets entering the database", 
+  "beli_src": {
+    "abbv9": "belve_src", 
+    "description": "Belief Source files. Ideas formats without SparkNum.", 
     "stage_type_order": 1
   }, 
-  "b_vld": {
+  "br_agg": {
+    "abbv9": "brick_agg", 
+    "description": "Brick Agg: The Brick Raw tables are aggregated to elimanate duplicates.", 
+    "stage_type_order": 4
+  }, 
+  "br_raw": {
+    "abbv9": "brick_raw", 
+    "description": "Brick Raw: The importable Excel Sheets entering the database", 
+    "stage_type_order": 3
+  }, 
+  "br_vld": {
     "abbv9": "brick_valid", 
     "description": "Brick Valid: The Brick Agg tables filtered to correct datatypes. ", 
-    "stage_type_order": 3
+    "stage_type_order": 6
   }, 
   "h_agg": {
     "abbv9": "heard_agg", 
     "description": "Populated by aggregated Heard Raw tables. Nabu number conversions take place here.", 
-    "stage_type_order": 8
+    "stage_type_order": 11
   }, 
   "h_raw": {
     "abbv9": "heard_raw", 
     "description": "Populated by Sound Valid tables", 
-    "stage_type_order": 7
+    "stage_type_order": 10
   }, 
   "h_vld": {
     "abbv9": "heard_vld", 
     "description": "Populated by aggregated and Nabu changed Heard Agg tables", 
-    "stage_type_order": 9
+    "stage_type_order": 12
+  }, 
+  "idea_src": {
+    "abbv9": "ideaa_src", 
+    "description": "Idea files. Ideas formats witt SparkNum.", 
+    "stage_type_order": 2
+  }, 
+  "lynx": {
+    "abbv9": "lynxx_mst", 
+    "description": "File buildout of Moments and PersonUnits", 
+    "stage_type_order": 13
   }, 
   "s_agg": {
     "abbv9": "sound_agg", 
     "description": "Populated by aggregated Sound Raw dimen data (elimanate duplicates). Translate Core data is validated then used to translate non-Translate dimen data", 
-    "stage_type_order": 5
+    "stage_type_order": 8
   }, 
   "s_raw": {
     "abbv9": "sound_raw", 
     "description": "The Brick Valid data is seperated by column into dimen data such as person_planunit and moment_budunit", 
-    "stage_type_order": 4
+    "stage_type_order": 7
   }, 
   "s_vld": {
     "abbv9": "sound_vld", 
     "description": "The Translated Sound Agg data is aggregated to elimanate duplicates into Sound Valid", 
-    "stage_type_order": 6
+    "stage_type_order": 9
   }
 }

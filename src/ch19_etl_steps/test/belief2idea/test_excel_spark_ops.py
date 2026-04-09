@@ -6,13 +6,14 @@ from pandas import (
     read_excel as pandas_read_excel,
 )
 from pathlib import Path
-from pytest import raises as pytest_raises
+from pytest import fixture as pytest_fixture, raises as pytest_raises
 from src.ch00_py.file_toolbox import create_path
-from src.ch19_etl_steps.belief2idea import (
+from src.ch19_etl_steps.belief2idea import (  # move_b_src_sheets_to_i_src,
     MigrationConflictError,
     add_spark_num_column,
     compare_br_sheets,
     create_spark_face_spark_nums,
+    get_excel_sheet_tuples,
     get_max_spark_num_from_files,
     get_spark_faces_from_df,
     get_spark_faces_from_files,
@@ -205,7 +206,58 @@ def test_add_spark_num_column_SetsAttr_Scenario0_MutatesOriginalDataframe():
     assert kw.spark_num in df.columns
 
 
-def test_compare_br_sheets_Scenario0_DoesNotRaiseException(tmp_path):
+@pytest_fixture
+def excel_dir(tmp_path):
+    """Creates a temporary directory with sample Excel files for testing."""
+    from openpyxl import Workbook
+
+    # File 1: two sheets
+    wb1 = Workbook()
+    wb1.active.title = "Alpha"
+    wb1.create_sheet("Beta")
+    wb1.save(tmp_path / "report.xlsx")
+
+    # File 2: one sheet
+    wb2 = Workbook()
+    wb2.active.title = "Summary"
+    wb2.save(tmp_path / "data.xlsx")
+
+    # Non-Excel file (should be ignored)
+    (tmp_path / "notes.txt").write_text("ignore me")
+
+    return tmp_path
+
+
+def test_get_excel_sheet_tuples_ReturnsObj_Scenario0_AllSheetTuples(excel_dir):
+    """All (filename, sheet) pairs across every Excel file are returned."""
+    # ESTABLISH / WHEN
+    result = get_excel_sheet_tuples(str(excel_dir))
+    # THEN
+    assert ("data.xlsx", "Summary") in result
+    assert ("report.xlsx", "Alpha") in result
+    assert ("report.xlsx", "Beta") in result
+    assert len(result) == 3
+
+
+def test_get_excel_sheet_tuples_ReturnsObj_Scenario1_SortedList(excel_dir):
+    """Returned list is sorted lexicographically by (filename, sheet_name)."""
+    # ESTABLISH / WHEN
+    result = get_excel_sheet_tuples(str(excel_dir))
+    # THEN
+    assert result == sorted(result)
+
+
+def test_get_excel_sheet_tuples_ReturnsObj_Scenario2_EmptyListForNoExcelFiles(tmp_path):
+    """Returns an empty list when the directory contains no Excel files."""
+    # ESTABLISH
+    (tmp_path / "readme.md").write_text("nothing here")
+    # WHEN
+    result = get_excel_sheet_tuples(str(tmp_path))
+    # THEN
+    assert result == []
+
+
+def test_compare_br_sheets_Scenario0_DoesNotRaiseException(tmp_path: Path):
     # ESTABLISH
     # Setup source and destination directories
     src_dir = tmp_path / "src"
@@ -233,7 +285,7 @@ def test_compare_br_sheets_Scenario0_DoesNotRaiseException(tmp_path):
     compare_br_sheets(src_dir, dst_dir)
 
 
-def test_compare_br_sheets_Scenario1_DoesRaiseException(tmp_path):
+def test_compare_br_sheets_Scenario1_DoesRaiseException(tmp_path: Path):
     # ESTABLISH
     src_dir = tmp_path / "src"
     dst_dir = tmp_path / "dst"
@@ -257,7 +309,7 @@ def test_compare_br_sheets_Scenario1_DoesRaiseException(tmp_path):
         compare_br_sheets(src_dir, dst_dir)
 
 
-def test_compare_br_sheets_Scenario2_MissingSheetRaiseException(tmp_path):
+def test_compare_br_sheets_Scenario2_MissingSheetRaiseException(tmp_path: Path):
     # ESTABLISH
     src_dir = tmp_path / "src"
     dst_dir = tmp_path / "dst"
@@ -280,6 +332,82 @@ def test_compare_br_sheets_Scenario2_MissingSheetRaiseException(tmp_path):
         MigrationConflictError, match="exists in source but not in destination"
     ):
         compare_br_sheets(src_dir, dst_dir)
+
+
+# def test_move_br_sheets_no_conflict(tmp_path: Path):
+#     # ESTABLISH
+#     src_dir = tmp_path / "src"
+#     dst_dir = tmp_path / "dst"
+#     src_dir.mkdir()
+#     dst_dir.mkdir()
+
+#     src_file = src_dir / "file.xlsx"
+#     dst_file = dst_dir / "file.xlsx"
+
+#     df_br = DataFrame({"A": [1, 2]})
+#     df_other = DataFrame({"X": [9]})
+
+#     # Source has br sheet
+#     with pandas_ExcelWriter(src_file) as writer:
+#         df_br.to_excel(writer, sheet_name="br_sheet", index=False)
+#         df_other.to_excel(writer, sheet_name="other", index=False)
+
+#     # Destination starts empty
+#     with pandas_ExcelWriter(dst_file) as writer:
+#         df_other.to_excel(writer, sheet_name="other", index=False)
+#     # WHEN
+#     move_b_src_sheets_to_i_src(src_dir, dst_dir)
+#     # THEN
+#     # Verify br_sheet now exists in destination
+#     result_sheets = pandas_read_excel(dst_file, sheet_name=None)
+#     assert "br_sheet" in result_sheets
+#     assert result_sheets["br_sheet"].equals(df_br)
+
+
+# def test_move_br_sheets_conflict_raises(tmp_path: Path):
+#     # ESTABLISH
+#     src_dir = tmp_path / "src"
+#     dst_dir = tmp_path / "dst"
+#     src_dir.mkdir()
+#     dst_dir.mkdir()
+
+#     src_file = src_dir / "file.xlsx"
+#     dst_file = dst_dir / "file.xlsx"
+
+#     df_src = DataFrame({"A": [1, 2]})
+#     df_dst_conflict = DataFrame({"A": [1, 99]})  # different
+
+#     with pandas_ExcelWriter(src_file) as writer:
+#         df_src.to_excel(writer, sheet_name="br_sheet", index=False)
+
+#     with pandas_ExcelWriter(dst_file) as writer:
+#         df_dst_conflict.to_excel(writer, sheet_name="br_sheet", index=False)
+
+#     # WHEN / THEN
+#     with pytest_raises(MigrationConflictError):
+#         move_b_src_sheets_to_i_src(src_dir, dst_dir)
+
+
+# def test_move_br_sheets_overwrites_or_adds_when_missing(tmp_path: Path):
+#     # ESTABLISH
+#     src_dir = tmp_path / "src"
+#     dst_dir = tmp_path / "dst"
+#     src_dir.mkdir()
+#     dst_dir.mkdir()
+#     src_file = src_dir / "file.xlsx"
+#     dst_file = dst_dir / "file.xlsx"
+#     df_src = DataFrame({"A": [5, 6]})
+#     with pandas_ExcelWriter(src_file) as writer:
+#         df_src.to_excel(writer, sheet_name="br_new", index=False)
+#     # Destination has no br sheets
+#     with pandas_ExcelWriter(dst_file) as writer:
+#         DataFrame({"X": [1]}).to_excel(writer, sheet_name="other", index=False)
+#     # WHEN
+#     move_b_src_sheets_to_i_src(src_dir, dst_dir)
+#     # THEN
+#     result_sheets = pandas_read_excel(dst_file, sheet_name=None)
+#     assert "br_new" in result_sheets
+#     assert result_sheets["br_new"].equals(df_src)
 
 
 #################################################################################
