@@ -6,7 +6,7 @@ from src.ch07_person_logic.person_main import personunit_shop
 from src.ch09_person_lesson.lasso import lassounit_shop
 from src.ch09_person_lesson.lesson_filehandler import save_gut_file
 from src.ch14_moment.moment_main import momentunit_shop, save_moment_file
-from src.ch17_idea.idea_belief import (
+from src.ch17_idea.brick_belief_csv import (
     add_momentunit_to_belief_csv_strs,
     add_personunit_to_belief_csv_strs,
     create_init_belief_idea_csv_strs,

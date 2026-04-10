@@ -1,7 +1,5 @@
 from src.ch00_py.dict_toolbox import get_empty_str_if_None as if_none_str
-from src.ch04_rope.rope import default_knot_if_None
 from src.ch07_person_logic.person_main import PersonUnit
-from src.ch09_person_lesson.lesson_main import LessonUnit
 from src.ch14_moment.moment_main import MomentUnit
 from src.ch17_idea._ref.ch17_semantic_types import FaceName, KnotTerm, MomentRope
 from src.ch17_idea.idea_config import (

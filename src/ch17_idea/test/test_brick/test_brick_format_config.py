@@ -1,4 +1,9 @@
 from src.ch00_py.file_toolbox import create_path, get_dir_file_strs
+from src.ch17_idea.brick_main import (
+    _generate_brick_dataframe,
+    _get_headers_list,
+    get_brickref_obj,
+)
 from src.ch17_idea.idea_config import (
     br00013_planunit_v0_0_0,
     br00019_planunit_v0_0_0,
@@ -14,12 +19,7 @@ from src.ch17_idea.idea_config import (
     get_idea_config_dict,
     get_idea_elements_sort_order,
 )
-from src.ch17_idea.idea_main import (
-    _generate_idea_dataframe,
-    _get_headers_list,
-    get_brickref_obj,
-)
-from src.ch17_idea.test.test_idea_.test__idea__config import change_erase_attrs
+from src.ch17_idea.test.test_brick.test__idea_config import change_erase_attrs
 from src.ref.keywords import Ch17Keywords as kw
 
 
@@ -137,31 +137,31 @@ def test_get_brick_format_headers_ReturnsObj():
     assert set(x_headers.values()) == get_brick_format_filenames()
 
 
-def test__generate_idea_dataframe_ReturnsObj():
+def test__generate_brick_dataframe_ReturnsObj():
     # ESTABLISH
     empty_d2 = []
     # WHEN
-    x_df = _generate_idea_dataframe(empty_d2, br00021_person_contactunit_v0_0_0())
+    x_df = _generate_brick_dataframe(empty_d2, br00021_person_contactunit_v0_0_0())
     # THEN
     headers_list = _get_headers_list(br00021_person_contactunit_v0_0_0())
     assert list(x_df.columns) == headers_list
 
 
-def for_all_ideas__generate_idea_dataframe():
+def for_all_ideas__generate_brick_dataframe():
     # Catching brope exceptions can make debugging difficult. Consider catching more specific exceptions or at least logging the exception details.
     empty_d2 = []
     for x_filename in get_brick_format_filenames():
         try:
-            _generate_idea_dataframe(empty_d2, x_filename)
+            _generate_brick_dataframe(empty_d2, x_filename)
         except Exception:
-            print(f"_generate_idea_dataframe failed for {x_filename=}")
+            print(f"_generate_brick_dataframe failed for {x_filename=}")
             return False
     return True
 
 
-def test__generate_idea_dataframe_ReturnsObjForEvery_idea():
+def test__generate_brick_dataframe_ReturnsObjForEvery_idea():
     # ESTABLISH / WHEN / THEN
-    assert for_all_ideas__generate_idea_dataframe()
+    assert for_all_ideas__generate_brick_dataframe()
 
 
 def test_idea_FilesExist():

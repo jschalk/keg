@@ -7,7 +7,7 @@ from src.ch04_rope.rope import create_rope, default_knot_if_None
 from src.ch13_time.epoch_config import get_creg_config, get_five_config
 from src.ch13_time.epoch_main import epochunit_shop
 from src.ch14_moment.moment_main import momentunit_shop
-from src.ch17_idea.idea_belief import (
+from src.ch17_idea.brick_belief_csv import (
     add_momentunits_to_belief_csv_strs,
     create_init_belief_idea_csv_strs,
 )

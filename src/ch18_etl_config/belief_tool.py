@@ -10,7 +10,7 @@ from src.ch09_person_lesson._ref.ch09_path import create_moments_dir_path
 from src.ch09_person_lesson.lasso import lassounit_shop
 from src.ch11_bud.bud_filehandler import open_person_file
 from src.ch14_moment.moment_main import open_moment_file
-from src.ch17_idea.idea_belief import (
+from src.ch17_idea.brick_belief_csv import (
     add_momentunit_to_belief_csv_strs,
     add_personunit_to_belief_csv_strs,
     create_init_belief_idea_csv_strs,

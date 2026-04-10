@@ -1,5 +1,5 @@
 from sqlite3 import Cursor, connect as sqlite3_connect
-from src.ch17_idea.idea_belief import create_init_belief_idea_csv_strs
+from src.ch17_idea.brick_belief_csv import create_init_belief_idea_csv_strs
 from src.ch18_etl_config.belief_tool import (
     add_to_br00042_csv,
     add_to_br00043_csv,

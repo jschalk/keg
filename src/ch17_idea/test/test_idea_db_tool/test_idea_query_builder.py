@@ -2,18 +2,18 @@ from sqlite3 import Cursor
 from src.ch17_idea.idea_config import get_idea_config_dict
 from src.ch17_idea.idea_db_tool import (
     create_idea_sorted_table,
+    get_brick_into_dimen_raw_query,
     get_default_sorted_list,
-    get_idea_into_dimen_raw_query,
 )
 from src.ref.keywords import Ch17Keywords as kw
 
 
-def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario0_person_plan_laborunit(
+def test_get_brick_into_dimen_raw_query_ReturnsObj_Scenario0_person_plan_laborunit(
     cursor0: Cursor,
 ):
     # ESTABLISH
     brick_type = "br000XX"
-    idea_cols = [
+    brick_cols = [
         kw.spark_num,
         kw.spark_face,
         kw.plan_rope,
@@ -35,11 +35,11 @@ def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario0_person_plan_laboruni
     prnlabo_args = get_default_sorted_list(prnlabo_args)
     print(f"{prnlabo_jkeys=}")
     print(f"{prnlabo_jvals=}")
-    create_idea_sorted_table(cursor0, src_table, idea_cols)
+    create_idea_sorted_table(cursor0, src_table, brick_cols)
     create_idea_sorted_table(cursor0, dst_table, prnlabo_args)
 
     # WHEN
-    gen_sqlstr = get_idea_into_dimen_raw_query(
+    gen_sqlstr = get_brick_into_dimen_raw_query(
         cursor0, brick_type, prnlabo_cat, prnlabo_jkeys
     )
 
@@ -58,12 +58,12 @@ GROUP BY {columns_str}
     assert gen_sqlstr == expected_sqlstr
 
 
-def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario1_person_contactunit(
+def test_get_brick_into_dimen_raw_query_ReturnsObj_Scenario1_person_contactunit(
     cursor0: Cursor,
 ):
     # ESTABLISH
     brick_type = "br000XX"
-    idea_cols = [
+    brick_cols = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
@@ -84,11 +84,11 @@ def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario1_person_contactunit(
     prncont_args = set(prncont_jkeys.keys()).union(set(prncont_jvals.keys()))
     print(f"{prncont_jkeys=}")
     print(f"{prncont_jvals=}")
-    create_idea_sorted_table(cursor0, src_table, idea_cols)
+    create_idea_sorted_table(cursor0, src_table, brick_cols)
     create_idea_sorted_table(cursor0, prncont_table, list(prncont_args))
 
     # WHEN
-    gen_sqlstr = get_idea_into_dimen_raw_query(
+    gen_sqlstr = get_brick_into_dimen_raw_query(
         cursor0, brick_type, kw.person_contactunit, prncont_jkeys
     )
 
@@ -108,12 +108,12 @@ GROUP BY {columns_str}
     assert gen_sqlstr == expected_sqlstr
 
 
-def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario2_person_contactunit(
+def test_get_brick_into_dimen_raw_query_ReturnsObj_Scenario2_person_contactunit(
     cursor0: Cursor,
 ):
     # ESTABLISH
     brick_type = "br000XX"
-    idea_cols = [
+    brick_cols = [
         kw.spark_num,
         kw.spark_face,
         kw.plan_rope,
@@ -132,11 +132,11 @@ def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario2_person_contactunit(
     prncont_args = set(prncont_jkeys.keys()).union(set(prncont_jvals.keys()))
     print(f"{prncont_jkeys=}")
     print(f"{prncont_jvals=}")
-    create_idea_sorted_table(cursor0, src_table, idea_cols)
+    create_idea_sorted_table(cursor0, src_table, brick_cols)
     create_idea_sorted_table(cursor0, prncont_table, list(prncont_args))
 
     # WHEN
-    gen_sqlstr = get_idea_into_dimen_raw_query(
+    gen_sqlstr = get_brick_into_dimen_raw_query(
         cursor0, brick_type, kw.person_contactunit, prncont_jkeys
     )
 

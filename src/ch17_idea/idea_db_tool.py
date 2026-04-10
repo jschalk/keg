@@ -345,7 +345,7 @@ def create_idea_sorted_table(
     create_table_from_columns(conn, tablename, columns_list, get_idea_sqlite_types())
 
 
-def get_idea_into_dimen_raw_query(
+def get_brick_into_dimen_raw_query(
     conn_or_cursor: sqlite3_Connection,
     brick_type: str,
     x_dimen: str,

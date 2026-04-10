@@ -72,6 +72,7 @@ from src.ch16_translate.translate_config import (
     translateable_class_types,
 )
 from src.ch16_translate.translate_main import default_unknown_str_if_None
+from src.ch17_idea.brick_main import get_brickref_obj
 from src.ch17_idea.idea_config import (
     get_brick_format_filename,
     get_brick_types,
@@ -84,7 +85,6 @@ from src.ch17_idea.idea_db_tool import (
     get_default_sorted_list,
     split_excel_into_dirs,
 )
-from src.ch17_idea.idea_main import get_brickref_obj
 from src.ch18_etl_config._ref.ch18_path import (
     create_last_run_metrics_path,
     create_moment_ote1_csv_path,

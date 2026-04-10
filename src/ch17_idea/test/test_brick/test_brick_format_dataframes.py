@@ -7,17 +7,17 @@ from src.ch13_time.test._util.ch13_examples import (
     add_time_creg_planunit,
     add_time_five_planunit,
 )
+from src.ch17_idea.brick_main import create_brick_df, get_brickref_obj, save_idea_csv
 from src.ch17_idea.idea_config import (
     br00013_planunit_v0_0_0,
     br00019_planunit_v0_0_0,
     br00020_person_contact_membership_v0_0_0,
     br00021_person_contactunit_v0_0_0,
 )
-from src.ch17_idea.idea_main import create_idea_df, get_brickref_obj, save_idea_csv
 from src.ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
 
 
-def test_create_idea_df_Arg_br00021_person_contactunit_v0_0_0():
+def test_create_brick_df_Arg_br00021_person_contactunit_v0_0_0():
     # ESTABLISH
     sue_contact_cred_lumen = 11
     bob_contact_cred_lumen = 13
@@ -39,7 +39,7 @@ def test_create_idea_df_Arg_br00021_person_contactunit_v0_0_0():
 
     # WHEN
     x_brick_name = br00021_person_contactunit_v0_0_0()
-    contact_dataframe = create_idea_df(sue_personunit, x_brick_name)
+    contact_dataframe = create_brick_df(sue_personunit, x_brick_name)
 
     # THEN
     array_headers = list(contact_dataframe.columns)
@@ -66,7 +66,7 @@ def test_create_idea_df_Arg_br00021_person_contactunit_v0_0_0():
     assert len(contact_dataframe) == 3
 
 
-def test_create_idea_df_Arg_br00020_person_contact_membership_v0_0_0():
+def test_create_brick_df_Arg_br00020_person_contact_membership_v0_0_0():
     # ESTABLISH
     amy_moment_rope = create_rope("amy56")
     sue_personunit = personunit_shop(exx.sue, amy_moment_rope)
@@ -93,7 +93,7 @@ def test_create_idea_df_Arg_br00020_person_contact_membership_v0_0_0():
 
     # WHEN
     x_brick_name = br00020_person_contact_membership_v0_0_0()
-    membership_dataframe = create_idea_df(sue_personunit, x_brick_name)
+    membership_dataframe = create_brick_df(sue_personunit, x_brick_name)
 
     # THEN
     array_headers = list(membership_dataframe.columns)
@@ -131,7 +131,7 @@ def test_create_idea_df_Arg_br00020_person_contact_membership_v0_0_0():
     assert len(membership_dataframe) == 10
 
 
-def test_create_idea_df_Arg_br00013_planunit_v0_0_0():
+def test_create_brick_df_Arg_br00013_planunit_v0_0_0():
     # ESTABLISH
     amy_moment_rope = create_rope("amy56")
     sue_personunit = personunit_shop(exx.sue, amy_moment_rope)
@@ -143,7 +143,7 @@ def test_create_idea_df_Arg_br00013_planunit_v0_0_0():
 
     # WHEN
     x_brick_name = br00013_planunit_v0_0_0()
-    planunit_format = create_idea_df(sue_personunit, x_brick_name)
+    planunit_format = create_brick_df(sue_personunit, x_brick_name)
 
     # THEN
     array_headers = list(planunit_format.columns)
@@ -174,7 +174,7 @@ def test_save_idea_csv_Arg_br00019_planunit_v0_0_0():
     # name_filename = f"{exx.sue}_planunit_example_00019.csv"
     # csv_example_path = create_path(str(temp3_fs), name_filename)
     # save_idea_csv(x_brick_name, sue_personunit,, name_filename)
-    idea_df = create_idea_df(sue_personunit, x_brick_name)
+    idea_df = create_brick_df(sue_personunit, x_brick_name)
 
     # THEN
     array_headers = list(idea_df.columns)
@@ -252,7 +252,7 @@ def test_save_idea_csv_Arg_br00013_planunit_v0_0_0(
     clean_rope = sue_personunit.make_rope(casa_rope, exx.clean)
     sue_personunit.set_plan_obj(planunit_shop(exx.clean, pledge=True), casa_rope)
     x_brick_name = br00013_planunit_v0_0_0()
-    planunit_format = create_idea_df(sue_personunit, x_brick_name)
+    planunit_format = create_brick_df(sue_personunit, x_brick_name)
     name_filename = f"{exx.sue}_planunit_example_000.csv"
     csv_example_path = create_path(str(temp3_fs), name_filename)
     assert not os_path_exists(csv_example_path)

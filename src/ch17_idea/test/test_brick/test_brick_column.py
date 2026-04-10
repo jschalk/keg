@@ -1,4 +1,4 @@
-from src.ch17_idea.idea_main import BrickRef, brickref_shop
+from src.ch17_idea.brick_main import BrickRef, brickref_shop
 from src.ref.keywords import Ch17Keywords as kw
 
 

@@ -73,11 +73,11 @@ def _get_headers_list(brick_name: str) -> list[str]:
     return get_brickref_obj(brick_name).get_headers_list()
 
 
-def _generate_idea_dataframe(d2_list: list[list[str]], brick_name: str) -> DataFrame:
+def _generate_brick_dataframe(d2_list: list[list[str]], brick_name: str) -> DataFrame:
     return DataFrame(d2_list, columns=_get_headers_list(brick_name))
 
 
-def create_idea_df(x_personunit: PersonUnit, brick_name: str) -> DataFrame:
+def create_brick_df(x_personunit: PersonUnit, brick_name: str) -> DataFrame:
     x_persondelta = persondelta_shop()
     x_persondelta.add_all_personatoms(x_personunit)
     x_brickref = get_brickref_obj(brick_name)
@@ -88,7 +88,7 @@ def create_idea_df(x_personunit: PersonUnit, brick_name: str) -> DataFrame:
         sorted_personatoms, x_brickref, x_moment_rope, x_person_name
     )
     d2_list = _delta_all_pledge_values(d2_list, x_brickref)
-    x_idea = _generate_idea_dataframe(d2_list, brick_name)
+    x_idea = _generate_brick_dataframe(d2_list, brick_name)
     sorting_columns = x_brickref.get_headers_list()
     return _sort_dataframe(x_idea, sorting_columns)
 
@@ -146,7 +146,7 @@ def _sort_dataframe(x_idea: DataFrame, sorting_columns: list[str]) -> DataFrame:
 def save_idea_csv(
     x_ideaname: str, x_personunit: PersonUnit, x_dir: str, x_filename: str
 ):
-    x_dataframe = create_idea_df(x_personunit, x_ideaname)
+    x_dataframe = create_brick_df(x_personunit, x_ideaname)
     save_dataframe_to_csv(x_dataframe, x_dir, x_filename)
 
 
