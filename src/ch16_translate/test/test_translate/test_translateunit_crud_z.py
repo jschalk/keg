@@ -1,12 +1,12 @@
 from pytest import raises as pytest_raises
 from src.ch16_translate.map_term import namemap_shop, ropemap_shop
 from src.ch16_translate.test._util.ch16_examples import (
+    get_bowl_titlemap,
     get_clean_ropemap,
     get_invalid_namemap,
     get_invalid_ropemap,
     get_invalid_titlemap,
     get_suita_namemap,
-    get_swim_titlemap,
 )
 from src.ch16_translate.translate_main import translateunit_shop
 from src.ref.keywords import Ch16Keywords as kw, ExampleStrs as exx
@@ -124,7 +124,7 @@ def test_TranslateUnit_is_valid_ReturnsObj():
     invalid_titlemap = get_invalid_titlemap()
     invalid_labelmap = get_invalid_ropemap()
     valid_namemap = get_suita_namemap()
-    valid_titlemap = get_swim_titlemap()
+    valid_titlemap = get_bowl_titlemap()
     valid_labelmap = get_clean_ropemap()
     assert valid_namemap.is_valid()
     assert valid_titlemap.is_valid()

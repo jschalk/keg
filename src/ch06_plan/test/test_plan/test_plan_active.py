@@ -31,16 +31,16 @@ def test_PlanUnit_set_fund_attr_ReturnsObj():
     # ESTABLISH
     texas_str = "texas"
     texas_plan = planunit_shop(texas_str)
-    swim_str = ";swimmers"
-    texas_plan.awardheirs[swim_str] = awardheir_shop(swim_str, 2, 3)
+    bowlers_str = ";bowlers"
+    texas_plan.awardheirs[bowlers_str] = awardheir_shop(bowlers_str, 2, 3)
     texas_plan.awardheirs[exx.run] = awardheir_shop(exx.run, 1, 5)
     assert not texas_plan.fund_onset
     assert not texas_plan.fund_cease
     assert not texas_plan.fund_ratio
-    swim_awardheir = texas_plan.awardheirs.get(swim_str)
+    bowl_awardheir = texas_plan.awardheirs.get(bowlers_str)
     run_awardheir = texas_plan.awardheirs.get(exx.run)
-    assert not swim_awardheir.fund_give
-    assert not swim_awardheir.fund_take
+    assert not bowl_awardheir.fund_give
+    assert not bowl_awardheir.fund_take
     assert not run_awardheir.fund_give
     assert not run_awardheir.fund_take
     x_onset = 70
@@ -54,10 +54,10 @@ def test_PlanUnit_set_fund_attr_ReturnsObj():
     assert texas_plan.fund_onset == x_onset
     assert texas_plan.fund_cease == x_cease
     assert texas_plan.fund_ratio >= 0.25
-    swim_awardheir = texas_plan.awardheirs.get(swim_str)
+    bowl_awardheir = texas_plan.awardheirs.get(bowlers_str)
     run_awardheir = texas_plan.awardheirs.get(exx.run)
-    assert swim_awardheir.fund_give == 20
-    assert swim_awardheir.fund_take == 11
+    assert bowl_awardheir.fund_give == 20
+    assert bowl_awardheir.fund_take == 11
     assert run_awardheir.fund_give == 10
     assert run_awardheir.fund_take == 19
 
@@ -126,22 +126,22 @@ def test_PlanUnit_set_awardheirs_fund_give_fund_take_SetsAttr_WithValues():
     biker_take_force = 15
     biker_str = "bikers2"
     biker_awardheir = awardheir_shop(biker_str, biker_give_force, biker_take_force)
-    swim_str = "swimmers"
-    swim_group_title = swim_str
-    swim_give_force = 29
-    swim_take_force = 32
-    swim_awardheir = awardheir_shop(swim_group_title, swim_give_force, swim_take_force)
+    bowlers_str = "bowlers"
+    bowl_group_title = bowlers_str
+    bowl_give_force = 29
+    bowl_take_force = 32
+    bowl_awardheir = awardheir_shop(bowl_group_title, bowl_give_force, bowl_take_force)
     x_awardheirs = {
-        swim_awardheir.awardee_title: swim_awardheir,
+        bowl_awardheir.awardee_title: bowl_awardheir,
         biker_awardheir.awardee_title: biker_awardheir,
     }
     sport_str = "sport"
     sport_plan = planunit_shop(sport_str, awardheirs=x_awardheirs)
     assert sport_plan.fund_grain == 1
     assert len(sport_plan.awardheirs) == 2
-    swim_awardheir = sport_plan.awardheirs.get(swim_str)
-    assert not swim_awardheir.fund_give
-    assert not swim_awardheir.fund_take
+    bowl_awardheir = sport_plan.awardheirs.get(bowlers_str)
+    assert not bowl_awardheir.fund_give
+    assert not bowl_awardheir.fund_take
     biker_awardheir = sport_plan.awardheirs.get(biker_str)
     assert not biker_awardheir.fund_give
     assert not biker_awardheir.fund_take
@@ -153,9 +153,9 @@ def test_PlanUnit_set_awardheirs_fund_give_fund_take_SetsAttr_WithValues():
 
     # THEN
     print(f"{len(sport_plan.awardheirs)=}")
-    swim_awardheir = sport_plan.awardheirs.get(swim_str)
-    assert swim_awardheir.fund_give == 516
-    assert swim_awardheir.fund_take == 496
+    bowl_awardheir = sport_plan.awardheirs.get(bowlers_str)
+    assert bowl_awardheir.fund_give == 516
+    assert bowl_awardheir.fund_take == 496
     biker_awardheir = sport_plan.awardheirs.get(biker_str)
     assert biker_awardheir.fund_give == 213
     assert biker_awardheir.fund_take == 233
@@ -476,10 +476,10 @@ def test_PlanUnit_set_workforceunit_empty_if_None_SetsAttr():
 
 def test_PlanUnit_set_workforceheir_SetsAttr():
     # ESTABLISH
-    swim_str = "swimmers"
+    bowlers_str = "bowlers"
     sport_str = "sports"
     sport_plan = planunit_shop(sport_str)
-    sport_plan.workforceunit.add_labor(labor_title=swim_str)
+    sport_plan.workforceunit.add_labor(labor_title=bowlers_str)
     # assert sport_plan.workforceheir is None
 
     # WHEN
@@ -487,10 +487,10 @@ def test_PlanUnit_set_workforceheir_SetsAttr():
 
     # THEN
     assert sport_plan.workforceheir is not None
-    swim_workforceunit = workforceunit_shop()
-    swim_workforceunit.add_labor(labor_title=swim_str)
-    swim_workforceheir = workforceheir_shop()
-    swim_workforceheir.set_labors(
-        workforceunit=swim_workforceunit, parent_workforceheir=None, groupunits=None
+    bowl_workforceunit = workforceunit_shop()
+    bowl_workforceunit.add_labor(labor_title=bowlers_str)
+    bowl_workforceheir = workforceheir_shop()
+    bowl_workforceheir.set_labors(
+        workforceunit=bowl_workforceunit, parent_workforceheir=None, groupunits=None
     )
-    assert sport_plan.workforceheir == swim_workforceheir
+    assert sport_plan.workforceheir == bowl_workforceheir

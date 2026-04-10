@@ -34,57 +34,57 @@ def test_GroupUnit_Exists():
 
 def test_groupunit_shop_ReturnsObj():
     # ESTABLISH
-    swim_str = ";swimmers"
+    bowlers_str = ";bowlers"
 
     # WHEN
-    swim_groupunit = groupunit_shop(group_title=swim_str)
+    bowl_groupunit = groupunit_shop(group_title=bowlers_str)
 
     # THEN
-    print(f"{swim_str}")
-    assert swim_groupunit is not None
-    assert swim_groupunit.group_title is not None
-    assert swim_groupunit.group_title == swim_str
-    assert swim_groupunit.memberships == {}
-    assert swim_groupunit.fund_give == 0
-    assert swim_groupunit.fund_take == 0
-    assert swim_groupunit.fund_agenda_give == 0
-    assert swim_groupunit.fund_agenda_take == 0
-    assert swim_groupunit.credor_pool == 0
-    assert swim_groupunit.debtor_pool == 0
-    assert swim_groupunit.fund_grain == default_grain_num_if_None()
+    print(f"{bowlers_str}")
+    assert bowl_groupunit is not None
+    assert bowl_groupunit.group_title is not None
+    assert bowl_groupunit.group_title == bowlers_str
+    assert bowl_groupunit.memberships == {}
+    assert bowl_groupunit.fund_give == 0
+    assert bowl_groupunit.fund_take == 0
+    assert bowl_groupunit.fund_agenda_give == 0
+    assert bowl_groupunit.fund_agenda_take == 0
+    assert bowl_groupunit.credor_pool == 0
+    assert bowl_groupunit.debtor_pool == 0
+    assert bowl_groupunit.fund_grain == default_grain_num_if_None()
 
 
 def test_groupunit_shop_ReturnsObj_Scenario1_DefaultsPopulated():
     # ESTABLISH
-    swim_str = "/swimmers"
+    bowlers_str = "/bowlers"
     x_fund_grain = 7
 
     # WHEN
-    swim_groupunit = groupunit_shop(group_title=swim_str, fund_grain=x_fund_grain)
+    bowl_groupunit = groupunit_shop(group_title=bowlers_str, fund_grain=x_fund_grain)
 
     # THEN
-    assert swim_groupunit.fund_grain == x_fund_grain
+    assert bowl_groupunit.fund_grain == x_fund_grain
 
 
 def test_GroupUnit_set_membership_SetsAttr():
     # ESTABLISH
-    swim_str = ";swimmers"
-    yao_swim_membership = membership_shop(swim_str)
-    sue_swim_membership = membership_shop(swim_str)
-    yao_swim_membership.contact_name = exx.yao
-    sue_swim_membership.contact_name = exx.sue
-    swimmers_groupunit = groupunit_shop(swim_str)
+    bowlers_str = ";bowlers"
+    yao_bowl_membership = membership_shop(bowlers_str)
+    sue_bowl_membership = membership_shop(bowlers_str)
+    yao_bowl_membership.contact_name = exx.yao
+    sue_bowl_membership.contact_name = exx.sue
+    bowlers_groupunit = groupunit_shop(bowlers_str)
 
     # WHEN
-    swimmers_groupunit.set_g_membership(yao_swim_membership)
-    swimmers_groupunit.set_g_membership(sue_swim_membership)
+    bowlers_groupunit.set_g_membership(yao_bowl_membership)
+    bowlers_groupunit.set_g_membership(sue_bowl_membership)
 
     # THEN
-    swimmers_memberships = {
-        yao_swim_membership.contact_name: yao_swim_membership,
-        sue_swim_membership.contact_name: sue_swim_membership,
+    bowlers_memberships = {
+        yao_bowl_membership.contact_name: yao_bowl_membership,
+        sue_bowl_membership.contact_name: sue_bowl_membership,
     }
-    assert swimmers_groupunit.memberships == swimmers_memberships
+    assert bowlers_groupunit.memberships == bowlers_memberships
 
 
 def test_GroupUnit_set_membership_SetsAttr_credor_pool_debtor_pool():

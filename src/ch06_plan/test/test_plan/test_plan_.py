@@ -220,12 +220,12 @@ def test_planunit_shop_ReturnsObj_Scenario4_ReturnsObjWith_awardunits():
     biker_give_force = 12
     biker_take_force = 15
     biker_awardunit = awardunit_shop("bikers2", biker_give_force, biker_take_force)
-    swim_group_title = "swimmers"
-    swim_give_force = 29
-    swim_take_force = 32
-    swim_awardunit = awardunit_shop(swim_group_title, swim_give_force, swim_take_force)
+    bowl_group_title = "bowlers"
+    bowl_give_force = 29
+    bowl_take_force = 32
+    bowl_awardunit = awardunit_shop(bowl_group_title, bowl_give_force, bowl_take_force)
     x_awardunits = {
-        swim_awardunit.awardee_title: swim_awardunit,
+        bowl_awardunit.awardee_title: bowl_awardunit,
         biker_awardunit.awardee_title: biker_awardunit,
     }
 
@@ -351,20 +351,20 @@ def test_PlanUnit_add_to_descendant_pledge_count_SetsAttr_AddsToCount():
 
 def test_PlanUnit_has_begin_close_ReturnsObj():
     # ESTABLISH
-    swim_plan = planunit_shop(exx.swim)
-    assert not swim_plan.has_begin_close()
+    bowl_plan = planunit_shop(exx.bowl)
+    assert not bowl_plan.has_begin_close()
     # WHEN
-    swim_plan.begin = 9
+    bowl_plan.begin = 9
     # THEN
-    assert not swim_plan.has_begin_close()
+    assert not bowl_plan.has_begin_close()
     # WHEN
-    swim_plan.close = 10
+    bowl_plan.close = 10
     # THEN
-    assert swim_plan.has_begin_close()
+    assert bowl_plan.has_begin_close()
     # WHEN
-    swim_plan.begin = None
+    bowl_plan.begin = None
     # THEN
-    assert not swim_plan.has_begin_close()
+    assert not bowl_plan.has_begin_close()
 
 
 def test_PlanUnit_clear_gogo_calc_stop_calc_SetsAttr():

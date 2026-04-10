@@ -11,17 +11,17 @@ def test_create_legible_list_ReturnsObj_plan_awardunit_INSERT():
     dimen = kw.person_plan_awardunit
     casa_rope = sue_person.make_l1_rope("casa")
     rope_value = sue_person.make_rope(casa_rope, "clean fridge")
-    awardee_title_value = f"{sue_person.knot}Swimmers"
+    awardee_title_value = f"{sue_person.knot}bowlers"
     give_force_value = 81
     take_force_value = 43
-    swim_personatom = personatom_shop(dimen, kw.INSERT)
-    swim_personatom.set_arg(kw.plan_rope, rope_value)
-    swim_personatom.set_arg(kw.awardee_title, awardee_title_value)
-    swim_personatom.set_arg(kw.give_force, give_force_value)
-    swim_personatom.set_arg(kw.take_force, take_force_value)
-    # print(f"{swim_personatom=}")
+    bowl_personatom = personatom_shop(dimen, kw.INSERT)
+    bowl_personatom.set_arg(kw.plan_rope, rope_value)
+    bowl_personatom.set_arg(kw.awardee_title, awardee_title_value)
+    bowl_personatom.set_arg(kw.give_force, give_force_value)
+    bowl_personatom.set_arg(kw.take_force, take_force_value)
+    # print(f"{bowl_personatom=}")
     x_persondelta = persondelta_shop()
-    x_persondelta.set_personatom(swim_personatom)
+    x_persondelta.set_personatom(bowl_personatom)
 
     # WHEN
     legible_list = create_legible_list(x_persondelta, sue_person)
@@ -37,19 +37,19 @@ def test_create_legible_list_ReturnsObj_plan_awardunit_UPDATE_give_force_take_fo
     sue_person = personunit_shop("Sue")
 
     dimen = kw.person_plan_awardunit
-    awardee_title_value = f"{sue_person.knot}Swimmers"
+    awardee_title_value = f"{sue_person.knot}bowlers"
     casa_rope = sue_person.make_l1_rope("casa")
     rope_value = sue_person.make_rope(casa_rope, "clean fridge")
     give_force_value = 81
     take_force_value = 43
-    swim_personatom = personatom_shop(dimen, kw.UPDATE)
-    swim_personatom.set_arg(kw.plan_rope, rope_value)
-    swim_personatom.set_arg(kw.awardee_title, awardee_title_value)
-    swim_personatom.set_arg(kw.give_force, give_force_value)
-    swim_personatom.set_arg(kw.take_force, take_force_value)
-    # print(f"{swim_personatom=}")
+    bowl_personatom = personatom_shop(dimen, kw.UPDATE)
+    bowl_personatom.set_arg(kw.plan_rope, rope_value)
+    bowl_personatom.set_arg(kw.awardee_title, awardee_title_value)
+    bowl_personatom.set_arg(kw.give_force, give_force_value)
+    bowl_personatom.set_arg(kw.take_force, take_force_value)
+    # print(f"{bowl_personatom=}")
     x_persondelta = persondelta_shop()
-    x_persondelta.set_personatom(swim_personatom)
+    x_persondelta.set_personatom(bowl_personatom)
 
     # WHEN
     legible_list = create_legible_list(x_persondelta, sue_person)
@@ -64,17 +64,17 @@ def test_create_legible_list_ReturnsObj_plan_awardunit_UPDATE_give_force():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     dimen = kw.person_plan_awardunit
-    awardee_title_value = f"{sue_person.knot}Swimmers"
+    awardee_title_value = f"{sue_person.knot}bowlers"
     casa_rope = sue_person.make_l1_rope("casa")
     rope_value = sue_person.make_rope(casa_rope, "clean fridge")
     give_force_value = 81
-    swim_personatom = personatom_shop(dimen, kw.UPDATE)
-    swim_personatom.set_arg(kw.plan_rope, rope_value)
-    swim_personatom.set_arg(kw.awardee_title, awardee_title_value)
-    swim_personatom.set_arg(kw.give_force, give_force_value)
-    # print(f"{swim_personatom=}")
+    bowl_personatom = personatom_shop(dimen, kw.UPDATE)
+    bowl_personatom.set_arg(kw.plan_rope, rope_value)
+    bowl_personatom.set_arg(kw.awardee_title, awardee_title_value)
+    bowl_personatom.set_arg(kw.give_force, give_force_value)
+    # print(f"{bowl_personatom=}")
     x_persondelta = persondelta_shop()
-    x_persondelta.set_personatom(swim_personatom)
+    x_persondelta.set_personatom(bowl_personatom)
 
     # WHEN
     legible_list = create_legible_list(x_persondelta, sue_person)
@@ -89,18 +89,18 @@ def test_create_legible_list_ReturnsObj_plan_awardunit_UPDATE_take_force():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     dimen = kw.person_plan_awardunit
-    awardee_title_value = f"{sue_person.knot}Swimmers"
+    awardee_title_value = f"{sue_person.knot}bowlers"
     casa_rope = sue_person.make_l1_rope("casa")
     rope_value = sue_person.make_rope(casa_rope, "clean fridge")
 
     take_force_value = 81
-    swim_personatom = personatom_shop(dimen, kw.UPDATE)
-    swim_personatom.set_arg(kw.plan_rope, rope_value)
-    swim_personatom.set_arg(kw.awardee_title, awardee_title_value)
-    swim_personatom.set_arg(kw.take_force, take_force_value)
-    # print(f"{swim_personatom=}")
+    bowl_personatom = personatom_shop(dimen, kw.UPDATE)
+    bowl_personatom.set_arg(kw.plan_rope, rope_value)
+    bowl_personatom.set_arg(kw.awardee_title, awardee_title_value)
+    bowl_personatom.set_arg(kw.take_force, take_force_value)
+    # print(f"{bowl_personatom=}")
     x_persondelta = persondelta_shop()
-    x_persondelta.set_personatom(swim_personatom)
+    x_persondelta.set_personatom(bowl_personatom)
 
     # WHEN
     legible_list = create_legible_list(x_persondelta, sue_person)
@@ -117,13 +117,13 @@ def test_create_legible_list_ReturnsObj_plan_awardunit_DELETE():
     dimen = kw.person_plan_awardunit
     casa_rope = sue_person.make_l1_rope("casa")
     rope_value = sue_person.make_rope(casa_rope, "clean fridge")
-    awardee_title_value = f"{sue_person.knot}Swimmers"
-    swim_personatom = personatom_shop(dimen, kw.DELETE)
-    swim_personatom.set_arg(kw.plan_rope, rope_value)
-    swim_personatom.set_arg(kw.awardee_title, awardee_title_value)
-    # print(f"{swim_personatom=}")
+    awardee_title_value = f"{sue_person.knot}bowlers"
+    bowl_personatom = personatom_shop(dimen, kw.DELETE)
+    bowl_personatom.set_arg(kw.plan_rope, rope_value)
+    bowl_personatom.set_arg(kw.awardee_title, awardee_title_value)
+    # print(f"{bowl_personatom=}")
     x_persondelta = persondelta_shop()
-    x_persondelta.set_personatom(swim_personatom)
+    x_persondelta.set_personatom(bowl_personatom)
 
     # WHEN
     legible_list = create_legible_list(x_persondelta, sue_person)

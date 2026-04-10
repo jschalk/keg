@@ -538,7 +538,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
     assert not os_path_exists(a23_sue_gut_path)
     assert not os_path_exists(a23_sue_job_path)
     assert not os_path_exists(sue37_mandate_path)
-    assert count_dirs_files(fay_wdir.worlds_dir) == 5
+    assert count_dirs_files(fay_wdir.worlds_dir) == 6
 
     # WHEN
     idea_sheets_to_lynx_with_cursor(
@@ -552,12 +552,13 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
     assert os_path_exists(a23_sue_gut_path)
     assert os_path_exists(a23_sue_job_path)
     assert os_path_exists(sue37_mandate_path)
-    assert count_dirs_files(fay_wdir.worlds_dir) == 42
+    assert count_dirs_files(fay_wdir.worlds_dir) == 43
 
 
 def test_idea_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     temp3_fs,
 ):
+    # sourcery skip: extract-method, move-assign-in-block
     # ESTABLISH:
     fay_str = "Fay"
     fay_wdir = worlddir_shop(fay_str, str(temp3_fs))
@@ -603,11 +604,7 @@ def test_idea_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     assert not os_path_exists(fay_db_path)
 
     # WHEN
-    idea_sheets_to_lynx_mstr(
-        world_db_path=fay_wdir.get_world_db_path(),
-        i_src_dir=fay_wdir.i_src_dir,
-        moment_mstr_dir=fay_wdir.moment_mstr_dir,
-    )
+    idea_sheets_to_lynx_mstr(fay_wdir)
 
     # THEN
     assert os_path_exists(fay_db_path)
@@ -697,11 +694,7 @@ def test_idea_sheets_to_lynx_mstr_Scenario1_Creates_job_Files(temp3_fs):
     assert not os_path_exists(hn_red_zia_job_path)
 
     # WHEN
-    idea_sheets_to_lynx_mstr(
-        world_db_path=here_wdir.get_world_db_path(),
-        i_src_dir=here_wdir.i_src_dir,
-        moment_mstr_dir=here_wdir.moment_mstr_dir,
-    )
+    idea_sheets_to_lynx_mstr(here_wdir)
 
     # THEN
     # world_test_ex_dir = "src\ch21_world\test\test_world_examples"

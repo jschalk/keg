@@ -11,15 +11,15 @@ def test_create_legible_list_ReturnsObj_plan_reasonunit_INSERT_With_active_requi
     dimen = kw.person_plan_reasonunit
     casa_rope = sue_person.make_l1_rope("casa")
     rope_value = sue_person.make_rope(casa_rope, "clean fridge")
-    reason_context_value = f"{sue_person.knot}Swimmers"
+    reason_context_value = f"{sue_person.knot}bowlers"
     active_requisite_value = True
-    swim_personatom = personatom_shop(dimen, kw.INSERT)
-    swim_personatom.set_arg(kw.plan_rope, rope_value)
-    swim_personatom.set_arg(kw.reason_context, reason_context_value)
-    swim_personatom.set_arg(kw.active_requisite, active_requisite_value)
-    # print(f"{swim_personatom=}")
+    bowl_personatom = personatom_shop(dimen, kw.INSERT)
+    bowl_personatom.set_arg(kw.plan_rope, rope_value)
+    bowl_personatom.set_arg(kw.reason_context, reason_context_value)
+    bowl_personatom.set_arg(kw.active_requisite, active_requisite_value)
+    # print(f"{bowl_personatom=}")
     x_persondelta = persondelta_shop()
-    x_persondelta.set_personatom(swim_personatom)
+    x_persondelta.set_personatom(bowl_personatom)
 
     # WHEN
     legible_list = create_legible_list(x_persondelta, sue_person)
@@ -36,13 +36,13 @@ def test_create_legible_list_ReturnsObj_plan_reasonunit_INSERT_Without_active_re
     dimen = kw.person_plan_reasonunit
     casa_rope = sue_person.make_l1_rope("casa")
     rope_value = sue_person.make_rope(casa_rope, "clean fridge")
-    reason_context_value = f"{sue_person.knot}Swimmers"
-    swim_personatom = personatom_shop(dimen, kw.INSERT)
-    swim_personatom.set_arg(kw.plan_rope, rope_value)
-    swim_personatom.set_arg(kw.reason_context, reason_context_value)
-    # print(f"{swim_personatom=}")
+    reason_context_value = f"{sue_person.knot}bowlers"
+    bowl_personatom = personatom_shop(dimen, kw.INSERT)
+    bowl_personatom.set_arg(kw.plan_rope, rope_value)
+    bowl_personatom.set_arg(kw.reason_context, reason_context_value)
+    # print(f"{bowl_personatom=}")
     x_persondelta = persondelta_shop()
-    x_persondelta.set_personatom(swim_personatom)
+    x_persondelta.set_personatom(bowl_personatom)
 
     # WHEN
     legible_list = create_legible_list(x_persondelta, sue_person)
@@ -57,17 +57,17 @@ def test_create_legible_list_ReturnsObj_plan_reasonunit_UPDATE_active_requisite_
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     dimen = kw.person_plan_reasonunit
-    reason_context_value = f"{sue_person.knot}Swimmers"
+    reason_context_value = f"{sue_person.knot}bowlers"
     casa_rope = sue_person.make_l1_rope("casa")
     rope_value = sue_person.make_rope(casa_rope, "clean fridge")
     active_requisite_value = True
-    swim_personatom = personatom_shop(dimen, kw.UPDATE)
-    swim_personatom.set_arg(kw.plan_rope, rope_value)
-    swim_personatom.set_arg(kw.reason_context, reason_context_value)
-    swim_personatom.set_arg(kw.active_requisite, active_requisite_value)
-    # print(f"{swim_personatom=}")
+    bowl_personatom = personatom_shop(dimen, kw.UPDATE)
+    bowl_personatom.set_arg(kw.plan_rope, rope_value)
+    bowl_personatom.set_arg(kw.reason_context, reason_context_value)
+    bowl_personatom.set_arg(kw.active_requisite, active_requisite_value)
+    # print(f"{bowl_personatom=}")
     x_persondelta = persondelta_shop()
-    x_persondelta.set_personatom(swim_personatom)
+    x_persondelta.set_personatom(bowl_personatom)
 
     # WHEN
     legible_list = create_legible_list(x_persondelta, sue_person)
@@ -82,15 +82,15 @@ def test_create_legible_list_ReturnsObj_plan_reasonunit_UPDATE_active_requisite_
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     dimen = kw.person_plan_reasonunit
-    reason_context_value = f"{sue_person.knot}Swimmers"
+    reason_context_value = f"{sue_person.knot}bowlers"
     casa_rope = sue_person.make_l1_rope("casa")
     rope_value = sue_person.make_rope(casa_rope, "clean fridge")
-    swim_personatom = personatom_shop(dimen, kw.UPDATE)
-    swim_personatom.set_arg(kw.plan_rope, rope_value)
-    swim_personatom.set_arg(kw.reason_context, reason_context_value)
-    # print(f"{swim_personatom=}")
+    bowl_personatom = personatom_shop(dimen, kw.UPDATE)
+    bowl_personatom.set_arg(kw.plan_rope, rope_value)
+    bowl_personatom.set_arg(kw.reason_context, reason_context_value)
+    # print(f"{bowl_personatom=}")
     x_persondelta = persondelta_shop()
-    x_persondelta.set_personatom(swim_personatom)
+    x_persondelta.set_personatom(bowl_personatom)
 
     # WHEN
     legible_list = create_legible_list(x_persondelta, sue_person)
@@ -107,13 +107,13 @@ def test_create_legible_list_ReturnsObj_plan_reasonunit_DELETE():
     dimen = kw.person_plan_reasonunit
     casa_rope = sue_person.make_l1_rope("casa")
     rope_value = sue_person.make_rope(casa_rope, "clean fridge")
-    reason_context_value = f"{sue_person.knot}Swimmers"
-    swim_personatom = personatom_shop(dimen, kw.DELETE)
-    swim_personatom.set_arg(kw.plan_rope, rope_value)
-    swim_personatom.set_arg(kw.reason_context, reason_context_value)
-    # print(f"{swim_personatom=}")
+    reason_context_value = f"{sue_person.knot}bowlers"
+    bowl_personatom = personatom_shop(dimen, kw.DELETE)
+    bowl_personatom.set_arg(kw.plan_rope, rope_value)
+    bowl_personatom.set_arg(kw.reason_context, reason_context_value)
+    # print(f"{bowl_personatom=}")
     x_persondelta = persondelta_shop()
-    x_persondelta.set_personatom(swim_personatom)
+    x_persondelta.set_personatom(bowl_personatom)
 
     # WHEN
     legible_list = create_legible_list(x_persondelta, sue_person)

@@ -13,7 +13,7 @@ class DictToolExampleStrs(str, Enum):
     clean_str = "clean"
     dirtyness_str = "dirtyness"
     slash_str = "/"
-    swim = "swim"
+    bowl = "bowl"
     wk_str = "wk"
 
     def __str__(self):

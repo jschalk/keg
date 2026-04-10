@@ -228,7 +228,7 @@ def get_yao_run_with_reason_personunit_example() -> PersonUnit:
     yao_person = personunit_shop("Yao", exx.a23)
     sport_str = "sport"
     participate_str = "participate"
-    ski_str = "skiing"
+    ski_str = "sking"
     run_str = "running"
     weather_str = "weather"
     raining_str = "raining"

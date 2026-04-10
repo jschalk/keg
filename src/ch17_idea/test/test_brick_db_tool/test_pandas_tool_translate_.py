@@ -33,7 +33,7 @@ def test_get_dataframe_translateable_columns_ReturnsObj():
         kw.contact_name,
         kw.reason_context,
     }
-    x_dt = DataFrame(columns=["calc_swim", kw.contact_name, kw.contact_cred_lumen])
+    x_dt = DataFrame(columns=["calc_bowl", kw.contact_name, kw.contact_cred_lumen])
     assert get_dataframe_translateable_columns(x_dt) == {kw.contact_name}
 
 

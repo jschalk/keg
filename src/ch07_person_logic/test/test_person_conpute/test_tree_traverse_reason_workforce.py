@@ -66,23 +66,23 @@ def test_PersonUnit_conpute_Set_child_plan_workforceheir_FromParent_workforceuni
 def test_PersonUnit_conpute_Set_grandchild_plan_workforceheir_From_plankid_workforceunit_Scenario0():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
-    swim_rope = sue_person.make_l1_rope(exx.swim)
+    bowl_rope = sue_person.make_l1_rope(exx.bowl)
     morn_str = "morning"
-    morn_rope = sue_person.make_rope(swim_rope, morn_str)
+    morn_rope = sue_person.make_rope(bowl_rope, morn_str)
     four_str = "fourth"
     four_rope = sue_person.make_rope(morn_rope, four_str)
     x_workforceunit = workforceunit_shop()
-    swimmers_str = ";swimmers"
-    x_workforceunit.add_labor(labor_title=swimmers_str)
+    bowlers_str = ";bowlers"
+    x_workforceunit.add_labor(labor_title=bowlers_str)
 
     sue_person.add_contactunit(exx.yao)
     yao_contactunit = sue_person.get_contact(exx.yao)
-    yao_contactunit.add_membership(swimmers_str)
+    yao_contactunit.add_membership(bowlers_str)
 
-    sue_person.set_l1_plan(planunit_shop(exx.swim))
-    sue_person.set_plan_obj(planunit_shop(morn_str), parent_rope=swim_rope)
+    sue_person.set_l1_plan(planunit_shop(exx.bowl))
+    sue_person.set_plan_obj(planunit_shop(morn_str), parent_rope=bowl_rope)
     sue_person.set_plan_obj(planunit_shop(four_str), parent_rope=morn_rope)
-    sue_person.edit_plan_attr(swim_rope, workforceunit=x_workforceunit)
+    sue_person.edit_plan_attr(bowl_rope, workforceunit=x_workforceunit)
     # print(sue_person.make_rope(four_rope=}\n{morn_rope=))
     four_plan = sue_person.get_plan_obj(four_rope)
     assert four_plan.workforceunit == workforceunit_shop()
@@ -105,24 +105,24 @@ def test_PersonUnit_conpute_Set_grandchild_plan_workforceheir_From_plankid_workf
 def test_PersonUnit_conpute_Set_grandchild_plan_workforceheir_From_plankid_workforceunit_Scenario1_solo_AttrIsPassed():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
-    swim_rope = sue_person.make_l1_rope(exx.swim)
+    bowl_rope = sue_person.make_l1_rope(exx.bowl)
     morn_str = "morning"
-    morn_rope = sue_person.make_rope(swim_rope, morn_str)
+    morn_rope = sue_person.make_rope(bowl_rope, morn_str)
     four_str = "fourth"
     four_rope = sue_person.make_rope(morn_rope, four_str)
-    swimmers_workforceunit = workforceunit_shop()
-    swimmers_str = ";swimmers"
-    swimmers_solo_bool = True
-    swimmers_workforceunit.add_labor(swimmers_str, solo=swimmers_solo_bool)
+    bowlers_workforceunit = workforceunit_shop()
+    bowlers_str = ";bowlers"
+    bowlers_solo_bool = True
+    bowlers_workforceunit.add_labor(bowlers_str, solo=bowlers_solo_bool)
 
     sue_person.add_contactunit(exx.yao)
     yao_contactunit = sue_person.get_contact(exx.yao)
-    yao_contactunit.add_membership(swimmers_str)
+    yao_contactunit.add_membership(bowlers_str)
 
-    sue_person.set_l1_plan(planunit_shop(exx.swim))
-    sue_person.set_plan_obj(planunit_shop(morn_str), parent_rope=swim_rope)
+    sue_person.set_l1_plan(planunit_shop(exx.bowl))
+    sue_person.set_plan_obj(planunit_shop(morn_str), parent_rope=bowl_rope)
     sue_person.set_plan_obj(planunit_shop(four_str), parent_rope=morn_rope)
-    sue_person.edit_plan_attr(swim_rope, workforceunit=swimmers_workforceunit)
+    sue_person.edit_plan_attr(bowl_rope, workforceunit=bowlers_workforceunit)
     # print(sue_person.make_rope(four_rope=}\n{morn_rope=))
     four_plan = sue_person.get_plan_obj(four_rope)
     assert four_plan.workforceunit == workforceunit_shop()
@@ -135,13 +135,13 @@ def test_PersonUnit_conpute_Set_grandchild_plan_workforceheir_From_plankid_workf
     expected_workforceheir = workforceheir_shop()
     expected_workforceheir.set_labors(
         parent_workforceheir=None,
-        workforceunit=swimmers_workforceunit,
+        workforceunit=bowlers_workforceunit,
         groupunits=sue_person.groupunits,
     )
     assert four_plan.workforceheir
     assert four_plan.workforceheir == expected_workforceheir
-    swimmers_labor = four_plan.workforceheir.labors.get(swimmers_str)
-    assert swimmers_labor.solo == swimmers_solo_bool
+    bowlers_labor = four_plan.workforceheir.labors.get(bowlers_str)
+    assert bowlers_labor.solo == bowlers_solo_bool
 
 
 def test_PersonUnit__get_filtered_awardunits_plan_CleansPlan_Workforceunit():
@@ -151,27 +151,27 @@ def test_PersonUnit__get_filtered_awardunits_plan_CleansPlan_Workforceunit():
     sue1_person.add_contactunit(exx.zia)
 
     casa_rope = sue1_person.make_l1_rope(exx.casa)
-    swim_rope = sue1_person.make_l1_rope(exx.swim)
+    bowl_rope = sue1_person.make_l1_rope(exx.bowl)
     root_rope = sue1_person.planroot.get_plan_rope()
     sue1_person.set_plan_obj(planunit_shop(exx.casa), parent_rope=root_rope)
-    sue1_person.set_plan_obj(planunit_shop(exx.swim), parent_rope=root_rope)
-    swim_workforceunit = workforceunit_shop()
-    swim_workforceunit.add_labor(labor_title=exx.xio)
-    swim_workforceunit.add_labor(labor_title=exx.zia)
-    sue1_person.edit_plan_attr(swim_rope, workforceunit=swim_workforceunit)
-    sue1_person_swim_plan = sue1_person.get_plan_obj(swim_rope)
-    sue1_person_swim_labors = sue1_person_swim_plan.workforceunit.labors
-    assert len(sue1_person_swim_labors) == 2
+    sue1_person.set_plan_obj(planunit_shop(exx.bowl), parent_rope=root_rope)
+    bowl_workforceunit = workforceunit_shop()
+    bowl_workforceunit.add_labor(labor_title=exx.xio)
+    bowl_workforceunit.add_labor(labor_title=exx.zia)
+    sue1_person.edit_plan_attr(bowl_rope, workforceunit=bowl_workforceunit)
+    sue1_person_bowl_plan = sue1_person.get_plan_obj(bowl_rope)
+    sue1_person_bowl_labors = sue1_person_bowl_plan.workforceunit.labors
+    assert len(sue1_person_bowl_labors) == 2
 
     # WHEN
     sue2_person = personunit_shop(exx.sue)
     sue2_person.add_contactunit(exx.xio)
-    cleaned_plan = sue2_person._get_filtered_awardunits_plan(sue1_person_swim_plan)
+    cleaned_plan = sue2_person._get_filtered_awardunits_plan(sue1_person_bowl_plan)
 
     # THEN
-    cleaned_swim_labors = cleaned_plan.workforceunit.labors
-    assert len(cleaned_swim_labors) == 1
-    assert list(cleaned_swim_labors) == [exx.xio]
+    cleaned_bowl_labors = cleaned_plan.workforceunit.labors
+    assert len(cleaned_bowl_labors) == 1
+    assert list(cleaned_bowl_labors) == [exx.xio]
 
 
 def test_PersonUnit_set_plan_CleansPlan_awardunits():
@@ -181,30 +181,30 @@ def test_PersonUnit_set_plan_CleansPlan_awardunits():
     sue1_person.add_contactunit(exx.zia)
 
     casa_rope = sue1_person.make_l1_rope(exx.casa)
-    swim_rope = sue1_person.make_l1_rope(exx.swim)
+    bowl_rope = sue1_person.make_l1_rope(exx.bowl)
     sue1_person.set_plan_obj(
         planunit_shop(exx.casa), parent_rope=sue1_person.planroot.get_plan_rope()
     )
     sue1_person.set_plan_obj(
-        planunit_shop(exx.swim), parent_rope=sue1_person.planroot.get_plan_rope()
+        planunit_shop(exx.bowl), parent_rope=sue1_person.planroot.get_plan_rope()
     )
-    swim_workforceunit = workforceunit_shop()
-    swim_workforceunit.add_labor(labor_title=exx.xio)
-    swim_workforceunit.add_labor(labor_title=exx.zia)
-    sue1_person.edit_plan_attr(swim_rope, workforceunit=swim_workforceunit)
-    sue1_person_swim_plan = sue1_person.get_plan_obj(swim_rope)
-    sue1_person_swim_labors = sue1_person_swim_plan.workforceunit.labors
-    assert len(sue1_person_swim_labors) == 2
+    bowl_workforceunit = workforceunit_shop()
+    bowl_workforceunit.add_labor(labor_title=exx.xio)
+    bowl_workforceunit.add_labor(labor_title=exx.zia)
+    sue1_person.edit_plan_attr(bowl_rope, workforceunit=bowl_workforceunit)
+    sue1_person_bowl_plan = sue1_person.get_plan_obj(bowl_rope)
+    sue1_person_bowl_labors = sue1_person_bowl_plan.workforceunit.labors
+    assert len(sue1_person_bowl_labors) == 2
 
     # WHEN
     sue2_person = personunit_shop("Sue")
     sue2_person.add_contactunit(exx.xio)
     sue2_person.set_l1_plan(
-        sue1_person_swim_plan, get_rid_of_missing_awardunits_awardee_titles=False
+        sue1_person_bowl_plan, get_rid_of_missing_awardunits_awardee_titles=False
     )
 
     # THEN
-    sue2_person_swim_plan = sue2_person.get_plan_obj(swim_rope)
-    sue2_person_swim_labors = sue2_person_swim_plan.workforceunit.labors
-    assert len(sue2_person_swim_labors) == 1
-    assert list(sue2_person_swim_labors) == [exx.xio]
+    sue2_person_bowl_plan = sue2_person.get_plan_obj(bowl_rope)
+    sue2_person_bowl_labors = sue2_person_bowl_plan.workforceunit.labors
+    assert len(sue2_person_bowl_labors) == 1
+    assert list(sue2_person_bowl_labors) == [exx.xio]

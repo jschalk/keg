@@ -23,8 +23,8 @@ def best_soccer_str() -> str:
     return "The best sport is soccer"
 
 
-def best_swim_str() -> str:
-    return "The best sport is swimming"
+def best_bowl_str() -> str:
+    return "The best sport is bowling"
 
 
 def best_run_str() -> str:
@@ -39,8 +39,8 @@ def play_soccer_str() -> str:
     return "play soccer"
 
 
-def play_swim_str() -> str:
-    return "play swimming"
+def play_bowl_str() -> str:
+    return "play bowling"
 
 
 def play_run_str() -> str:
@@ -56,11 +56,11 @@ def get_sue_personunit() -> PersonUnit:
     sue_person.add_contactunit(sue2_str(), sue_cred_lumen, sue_debt_lumen)
     sue_person.add_contactunit(bob2_str(), bob_cred_lumen, bob_debt_lumen)
     sue_contact = sue_person.get_contact(sue2_str())
-    swim_str = ";swimmers"
+    bowlers_str = ";bowlers"
     team_str = ";Team Administrator"
-    sue_contact.add_membership(swim_str, 77, 51)
+    sue_contact.add_membership(bowlers_str, 77, 51)
     bob_contact = sue_person.get_contact(bob2_str())
-    bob_contact.add_membership(swim_str, 12, 37)
+    bob_contact.add_membership(bowlers_str, 12, 37)
     bob_contact.add_membership(team_str, 51, 91)
 
     casa_rope = sue_person.make_l1_rope("casa")
@@ -82,19 +82,19 @@ def get_sue_personunit() -> PersonUnit:
     sports_rope = sue_person.make_l1_rope("sports")
     best_rope = sue_person.make_rope(sports_rope, best_sport_str())
     best_soccer_rope = sue_person.make_rope(best_rope, best_soccer_str())
-    best_swim_rope = sue_person.make_rope(best_rope, best_swim_str())
+    best_bowl_rope = sue_person.make_rope(best_rope, best_bowl_str())
     best_run_rope = sue_person.make_rope(best_rope, best_run_str())
     play_rope = sue_person.make_rope(sports_rope, play_str())
     play_soccer_rope = sue_person.make_rope(play_rope, play_soccer_str())
-    play_swim_rope = sue_person.make_rope(play_rope, play_swim_str())
+    play_bowl_rope = sue_person.make_rope(play_rope, play_bowl_str())
     play_run_rope = sue_person.make_rope(play_rope, play_run_str())
     sue_person.add_plan(sports_rope, 5)
     sue_person.add_plan(best_soccer_rope, 23)
-    sue_person.add_plan(best_swim_rope, 2)
+    sue_person.add_plan(best_bowl_rope, 2)
     sue_person.add_plan(best_run_rope, 23)
     sue_person.add_plan(play_rope, 2)
     sue_person.add_plan(play_soccer_rope, 11, pledge=True)
-    sue_person.add_plan(play_swim_rope, 55, pledge=True)
+    sue_person.add_plan(play_bowl_rope, 55, pledge=True)
     sue_person.add_plan(play_run_rope, 22, pledge=True)
 
     # Add some award links
@@ -123,11 +123,11 @@ def get_sue_person_with_facts_and_reasons() -> PersonUnit:
     sports_rope = sue_person.make_l1_rope("sports")
     best_rope = sue_person.make_rope(sports_rope, best_sport_str())
     best_soccer_rope = sue_person.make_rope(best_rope, best_soccer_str())
-    best_swim_rope = sue_person.make_rope(best_rope, best_swim_str())
+    best_bowl_rope = sue_person.make_rope(best_rope, best_bowl_str())
     best_run_rope = sue_person.make_rope(best_rope, best_run_str())
     play_rope = sue_person.make_rope(sports_rope, play_str())
     play_soccer_rope = sue_person.make_rope(play_rope, play_soccer_str())
-    play_swim_rope = sue_person.make_rope(play_rope, play_swim_str())
+    play_bowl_rope = sue_person.make_rope(play_rope, play_bowl_str())
     play_run_rope = sue_person.make_rope(play_rope, play_run_str())
     sue_person.add_fact(tidi_rope, dirty_rope, 4, 8)
     sue_person.add_fact(best_rope, best_soccer_rope, 1, 7)
@@ -135,7 +135,7 @@ def get_sue_person_with_facts_and_reasons() -> PersonUnit:
     mop_workforceunit.add_labor(sue2_str())
     mop_workforceunit.add_labor(bob2_str(), True)
     sue_person.edit_plan_attr(mop_rope, workforceunit=mop_workforceunit)
-    # add reasons to mop_plan, sweep_plan, play_soccer_plan, plan_swim_plan, play_run_plan
+    # add reasons to mop_plan, sweep_plan, play_soccer_plan, plan_bowl_plan, play_run_plan
     x_plan = "plan_rope"
     x_context = "reason_context"
     x_state = "reason_state"
@@ -156,12 +156,12 @@ def get_sue_person_with_facts_and_reasons() -> PersonUnit:
         x_context: tidi_rope,
         x_state: tidy_rope,
     }
-    swim_swim_jkeys = {
-        x_plan: play_swim_rope,
+    bowl_bowl_jkeys = {
+        x_plan: play_bowl_rope,
         x_context: best_rope,
-        x_state: best_swim_rope,
+        x_state: best_bowl_rope,
     }
-    swim_tidy_jkeys = {x_plan: play_swim_rope, x_context: tidi_rope, x_state: tidy_rope}
+    bowl_tidy_jkeys = {x_plan: play_bowl_rope, x_context: tidi_rope, x_state: tidy_rope}
     run_run_jkeys = {
         x_plan: play_run_rope,
         x_context: best_rope,
@@ -172,8 +172,8 @@ def get_sue_person_with_facts_and_reasons() -> PersonUnit:
     person_plan_reason_caseunit_set_obj(sue_person, soccer_soccer_jkeys)
     person_plan_reason_caseunit_set_obj(sue_person, soccer_run_jkeys)
     person_plan_reason_caseunit_set_obj(sue_person, soccer_tidy_jkeys)
-    person_plan_reason_caseunit_set_obj(sue_person, swim_swim_jkeys)
-    person_plan_reason_caseunit_set_obj(sue_person, swim_tidy_jkeys)
+    person_plan_reason_caseunit_set_obj(sue_person, bowl_bowl_jkeys)
+    person_plan_reason_caseunit_set_obj(sue_person, bowl_tidy_jkeys)
     person_plan_reason_caseunit_set_obj(sue_person, run_run_jkeys)
     sue_person.conpute()
     return sue_person

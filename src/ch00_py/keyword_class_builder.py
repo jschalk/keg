@@ -2,8 +2,8 @@ from copy import copy as copy_copy
 from enum import Enum
 from re import fullmatch as re_fullmatch
 from src.ch00_py._ref.ch00_path import (
+    create_src_ch_keywords_path,
     create_src_example_strs_path,
-    create_src_keywords_main_path,
 )
 from src.ch00_py.chapter_desc_main import get_chapter_desc_prefix, get_chapter_descs
 from src.ch00_py.file_toolbox import create_path, open_json, save_file
@@ -14,7 +14,7 @@ def get_example_strs_config() -> dict[str, dict]:
 
 
 def get_keywords_src_config() -> dict[str, dict]:
-    return open_json(create_src_keywords_main_path("src"))
+    return open_json(create_src_ch_keywords_path("src"))
 
 
 def get_keywords_by_chapter(keywords_dict: dict[str, dict[str]]) -> dict:

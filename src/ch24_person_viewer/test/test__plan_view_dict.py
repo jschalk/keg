@@ -4,17 +4,17 @@ from src.ch13_time.epoch_str_func import (
     get_reason_case_readable_str,
 )
 from src.ch24_person_viewer.person_viewer_example import (
+    best_bowl_str,
     best_run_str,
     best_soccer_str,
     best_sport_str,
-    best_swim_str,
     get_personunit_irrational_example,
     get_sue_person_with_facts_and_reasons,
     get_sue_personunit,
+    play_bowl_str,
     play_run_str,
     play_soccer_str,
     play_str,
-    play_swim_str,
 )
 from src.ch24_person_viewer.person_viewer_tool import add_small_dot, get_plan_view_dict
 from src.ref.keywords import Ch24Keywords as kw, ExampleStrs as exx
@@ -294,11 +294,11 @@ def test_get_plan_view_dict_ReturnsObj_Scenario6_PlanUnit_ReasonUnit():
     sports_rope = sue_person.make_l1_rope("sports")
     best_rope = sue_person.make_rope(sports_rope, best_sport_str())
     best_soccer_rope = sue_person.make_rope(best_rope, best_soccer_str())
-    best_swim_rope = sue_person.make_rope(best_rope, best_swim_str())
+    best_bowl_rope = sue_person.make_rope(best_rope, best_bowl_str())
     best_run_rope = sue_person.make_rope(best_rope, best_run_str())
     play_rope = sue_person.make_rope(sports_rope, play_str())
     play_soccer_rope = sue_person.make_rope(play_rope, play_soccer_str())
-    play_swim_rope = sue_person.make_rope(play_rope, play_swim_str())
+    play_bowl_rope = sue_person.make_rope(play_rope, play_bowl_str())
     play_run_rope = sue_person.make_rope(play_rope, play_run_str())
     play_soccer_plan = sue_person.get_plan_obj(play_soccer_rope)
 
@@ -373,11 +373,11 @@ def test_get_plan_view_dict_ReturnsObj_Scenario7_PlanUnit_ReasonHeirs():
     sports_rope = sue_person.make_l1_rope("sports")
     best_rope = sue_person.make_rope(sports_rope, best_sport_str())
     best_soccer_rope = sue_person.make_rope(best_rope, best_soccer_str())
-    best_swim_rope = sue_person.make_rope(best_rope, best_swim_str())
+    best_bowl_rope = sue_person.make_rope(best_rope, best_bowl_str())
     best_run_rope = sue_person.make_rope(best_rope, best_run_str())
     play_rope = sue_person.make_rope(sports_rope, play_str())
     play_soccer_rope = sue_person.make_rope(play_rope, play_soccer_str())
-    play_swim_rope = sue_person.make_rope(play_rope, play_swim_str())
+    play_bowl_rope = sue_person.make_rope(play_rope, play_bowl_str())
     play_run_rope = sue_person.make_rope(play_rope, play_run_str())
     play_soccer_plan = sue_person.get_plan_obj(play_soccer_rope)
 

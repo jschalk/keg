@@ -1,6 +1,9 @@
 from inspect import getdoc as inspect_getdoc
 from re import fullmatch as re_fullmatch
-from src.ch00_py.keyword_class_builder import get_keywords_src_config
+from src.ch00_py.keyword_class_builder import (
+    get_example_strs_config,
+    get_keywords_src_config,
+)
 from src.ch07_person_logic.person_config import (
     get_all_person_calc_args,
     get_person_config_dict,
@@ -72,7 +75,7 @@ def test_get_keg_definitions_ReturnsObj_Check_python_keywords():
 
     # THEN
     py_used_often_str = (
-        "Used so often in Python that it cannot be given any kegolgy meaning."
+        "Used so often in Python that it cannot be given any kegology meaning."
     )
     for python_keyword in python_keyword_args:
         py_key_description = keg_definitions.get(python_keyword)
@@ -193,8 +196,8 @@ def test_get_keg_definitions_ReturnsObj_Check_CellUnit():
     # ESTABLISH / WHEN
     keg_definitions = get_keg_definitions()
     # THEN
+    formated_constant = ", used with Budget Cells"
     for cell_attr in sorted(cellunit_shop(exx.sue).__dict__.keys()):
-        formated_constant = f", used with Budget Cells"
         constant_description = keg_definitions.get(cell_attr)
         print(f"{cell_attr=} {formated_constant} {constant_description=}")
         assert formated_constant in constant_description, cell_attr
@@ -356,6 +359,20 @@ def check_translate_desc_str(
         assert f", {src_label.upper()} arg" in description, assert_fail_str
 
 
+def test_get_keg_definitions_ReturnsObj_HasAllExampleStrs():
+    # ESTABLISH / WHEN
+    keg_definitions = get_keg_definitions()
+
+    # THEN
+    keg_def_keys = set(keg_definitions.keys())
+    for example_key, example_str in get_example_strs_config().items():
+        assert example_key in keg_def_keys
+        expected_str = f"Example key with value '{example_str}' used for tests throughout codebase."
+        print(f"                    {expected_str=}")
+        print(f"{keg_definitions.get(example_key)=}")
+        assert expected_str in keg_definitions.get(example_key)
+
+
 def test_get_keg_definitions_ReturnsObj_HasAllkeywords():
     # ESTABLISH / WHEN
     keg_definitions = get_keg_definitions()
@@ -365,11 +382,12 @@ def test_get_keg_definitions_ReturnsObj_HasAllkeywords():
     keywords_config = get_keywords_src_config()
 
     description_keywords = set(keg_definitions.keys())
-    config_keywords = set(keywords_config.keys())
-    config_keywords.update(python_keywords())
-    print(f"{config_keywords.difference(description_keywords)=}")
-    print(f"{description_keywords.difference(config_keywords)=}")
-    assert set(keg_definitions.keys()) == config_keywords
+    expected_keg_keys = set(keywords_config.keys())
+    expected_keg_keys.update(python_keywords())
+    print(f"{expected_keg_keys.difference(description_keywords)=}")
+    print(f"{description_keywords.difference(expected_keg_keys)=}")
+    expected_keg_keys.update(set(get_example_strs_config().keys()))
+    assert set(keg_definitions.keys()) == expected_keg_keys
     for keyword, description in keg_definitions.items():
         assert description, keyword
 

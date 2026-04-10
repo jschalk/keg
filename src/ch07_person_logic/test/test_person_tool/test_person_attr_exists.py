@@ -43,9 +43,9 @@ def test_person_contactunit_exists_ReturnsObj():
 def test_person_contact_membership_exists_ReturnsObj():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
-    swim_str = ";swim"
+    bowlers_str = ";bowlers"
     sue_person = personunit_shop("Sue")
-    jkeys = {kw.contact_name: exx.yao, kw.group_title: swim_str}
+    jkeys = {kw.contact_name: exx.yao, kw.group_title: bowlers_str}
 
     # WHEN / THEN
     assert not person_contact_membership_exists(None, {})
@@ -64,7 +64,7 @@ def test_person_contact_membership_exists_ReturnsObj():
 
     # WHEN
     yao_plan = sue_person.get_contact(exx.yao)
-    yao_plan.add_membership(swim_str)
+    yao_plan.add_membership(bowlers_str)
     # THEN
     assert person_contact_membership_exists(sue_person, jkeys)
 
@@ -115,9 +115,9 @@ def test_person_plan_awardunit_exists_ReturnsObj():
     clean_rope = sue_person.make_rope(casa_rope, exx.clean)
     root_rope = sue_person.planroot.get_plan_rope()
     root_rope = sue_person.planroot.get_plan_rope()
-    root_jkeys = {kw.plan_rope: root_rope, kw.awardee_title: exx.swim}
-    casa_jkeys = {kw.plan_rope: casa_rope, kw.awardee_title: exx.swim}
-    clean_jkeys = {kw.plan_rope: clean_rope, kw.awardee_title: exx.swim}
+    root_jkeys = {kw.plan_rope: root_rope, kw.awardee_title: exx.bowl}
+    casa_jkeys = {kw.plan_rope: casa_rope, kw.awardee_title: exx.bowl}
+    clean_jkeys = {kw.plan_rope: clean_rope, kw.awardee_title: exx.bowl}
 
     # WHEN / THEN
     assert not person_plan_awardunit_exists(None, {})
@@ -127,7 +127,7 @@ def test_person_plan_awardunit_exists_ReturnsObj():
     assert not person_plan_awardunit_exists(sue_person, clean_jkeys)
 
     # WHEN
-    sue_person.planroot.set_awardunit(awardunit_shop(exx.swim))
+    sue_person.planroot.set_awardunit(awardunit_shop(exx.bowl))
 
     # THEN
     assert not person_plan_awardunit_exists(sue_person, {})
@@ -223,9 +223,9 @@ def test_person_plan_laborunit_exists_ReturnsObj():
     casa_rope = sue_person.make_l1_rope(exx.casa)
     clean_rope = sue_person.make_rope(casa_rope, exx.clean)
     root_rope = sue_person.planroot.get_plan_rope()
-    root_jkeys = {kw.plan_rope: root_rope, kw.labor_title: exx.swim}
-    casa_jkeys = {kw.plan_rope: casa_rope, kw.labor_title: exx.swim}
-    clean_jkeys = {kw.plan_rope: clean_rope, kw.labor_title: exx.swim}
+    root_jkeys = {kw.plan_rope: root_rope, kw.labor_title: exx.bowl}
+    casa_jkeys = {kw.plan_rope: casa_rope, kw.labor_title: exx.bowl}
+    clean_jkeys = {kw.plan_rope: clean_rope, kw.labor_title: exx.bowl}
 
     # WHEN / THEN
     assert not person_plan_laborunit_exists(None, {})
@@ -235,7 +235,7 @@ def test_person_plan_laborunit_exists_ReturnsObj():
     assert not person_plan_laborunit_exists(sue_person, clean_jkeys)
 
     # WHEN
-    sue_person.planroot.workforceunit.add_labor(exx.swim)
+    sue_person.planroot.workforceunit.add_labor(exx.bowl)
 
     # THEN
     assert not person_plan_laborunit_exists(sue_person, {})
@@ -250,9 +250,9 @@ def test_person_plan_healerunit_exists_ReturnsObj():
     casa_rope = sue_person.make_l1_rope(exx.casa)
     clean_rope = sue_person.make_rope(casa_rope, exx.clean)
     root_rope = sue_person.planroot.get_plan_rope()
-    root_jkeys = {kw.plan_rope: root_rope, kw.healer_name: exx.swim}
-    casa_jkeys = {kw.plan_rope: casa_rope, kw.healer_name: exx.swim}
-    clean_jkeys = {kw.plan_rope: clean_rope, kw.healer_name: exx.swim}
+    root_jkeys = {kw.plan_rope: root_rope, kw.healer_name: exx.bowl}
+    casa_jkeys = {kw.plan_rope: casa_rope, kw.healer_name: exx.bowl}
+    clean_jkeys = {kw.plan_rope: clean_rope, kw.healer_name: exx.bowl}
 
     # WHEN / THEN
     assert not person_plan_healerunit_exists(None, {})
@@ -262,7 +262,7 @@ def test_person_plan_healerunit_exists_ReturnsObj():
     assert not person_plan_healerunit_exists(sue_person, clean_jkeys)
 
     # WHEN
-    sue_person.planroot.healerunit.set_healer_name(exx.swim)
+    sue_person.planroot.healerunit.set_healer_name(exx.bowl)
 
     # THEN
     assert not person_plan_healerunit_exists(sue_person, {})
@@ -324,9 +324,9 @@ def test_person_attr_exists_ReturnsObj_person_contactunit():
 
 def test_person_attr_exists_ReturnsObj_person_contact_membership():
     # ESTABLISH
-    swim_str = ";swim"
+    bowlers_str = ";bowlers"
     sue_person = personunit_shop("Sue")
-    x_jkeys = {kw.contact_name: exx.yao, kw.group_title: swim_str}
+    x_jkeys = {kw.contact_name: exx.yao, kw.group_title: bowlers_str}
     x_dimen = kw.person_contact_membership
 
     # WHEN / THEN
@@ -346,7 +346,7 @@ def test_person_attr_exists_ReturnsObj_person_contact_membership():
 
     # WHEN
     yao_plan = sue_person.get_contact(exx.yao)
-    yao_plan.add_membership(swim_str)
+    yao_plan.add_membership(bowlers_str)
     # THEN
     assert person_attr_exists(x_dimen, sue_person, x_jkeys)
 
@@ -398,9 +398,9 @@ def test_person_attr_exists_ReturnsObj_person_plan_awardunit():
     clean_rope = sue_person.make_rope(casa_rope, exx.clean)
     root_rope = sue_person.planroot.get_plan_rope()
     x_dimen = kw.person_plan_awardunit
-    root_jkeys = {kw.plan_rope: root_rope, kw.awardee_title: exx.swim}
-    casa_jkeys = {kw.plan_rope: casa_rope, kw.awardee_title: exx.swim}
-    clean_jkeys = {kw.plan_rope: clean_rope, kw.awardee_title: exx.swim}
+    root_jkeys = {kw.plan_rope: root_rope, kw.awardee_title: exx.bowl}
+    casa_jkeys = {kw.plan_rope: casa_rope, kw.awardee_title: exx.bowl}
+    clean_jkeys = {kw.plan_rope: clean_rope, kw.awardee_title: exx.bowl}
 
     # WHEN / THEN
     assert not person_attr_exists(x_dimen, None, {})
@@ -410,7 +410,7 @@ def test_person_attr_exists_ReturnsObj_person_plan_awardunit():
     assert not person_attr_exists(x_dimen, sue_person, clean_jkeys)
 
     # WHEN
-    sue_person.planroot.set_awardunit(awardunit_shop(exx.swim))
+    sue_person.planroot.set_awardunit(awardunit_shop(exx.bowl))
 
     # THEN
     assert not person_attr_exists(x_dimen, sue_person, {})
@@ -506,9 +506,9 @@ def test_person_attr_exists_ReturnsObj_person_plan_laborunit():
     clean_rope = sue_person.make_rope(casa_rope, exx.clean)
     root_rope = sue_person.planroot.get_plan_rope()
     x_dimen = kw.person_plan_laborunit
-    root_jkeys = {kw.plan_rope: root_rope, kw.labor_title: exx.swim}
-    casa_jkeys = {kw.plan_rope: casa_rope, kw.labor_title: exx.swim}
-    clean_jkeys = {kw.plan_rope: clean_rope, kw.labor_title: exx.swim}
+    root_jkeys = {kw.plan_rope: root_rope, kw.labor_title: exx.bowl}
+    casa_jkeys = {kw.plan_rope: casa_rope, kw.labor_title: exx.bowl}
+    clean_jkeys = {kw.plan_rope: clean_rope, kw.labor_title: exx.bowl}
 
     # WHEN / THEN
     assert not person_attr_exists(x_dimen, None, {})
@@ -518,7 +518,7 @@ def test_person_attr_exists_ReturnsObj_person_plan_laborunit():
     assert not person_attr_exists(x_dimen, sue_person, clean_jkeys)
 
     # WHEN
-    sue_person.planroot.workforceunit.add_labor(exx.swim)
+    sue_person.planroot.workforceunit.add_labor(exx.bowl)
 
     # THEN
     assert not person_attr_exists(x_dimen, sue_person, {})
@@ -534,9 +534,9 @@ def test_person_attr_exists_ReturnsObj_person_plan_healerunit():
     clean_rope = sue_person.make_rope(casa_rope, exx.clean)
     root_rope = sue_person.planroot.get_plan_rope()
     x_dimen = kw.person_plan_healerunit
-    root_jkeys = {kw.plan_rope: root_rope, kw.healer_name: exx.swim}
-    casa_jkeys = {kw.plan_rope: casa_rope, kw.healer_name: exx.swim}
-    clean_jkeys = {kw.plan_rope: clean_rope, kw.healer_name: exx.swim}
+    root_jkeys = {kw.plan_rope: root_rope, kw.healer_name: exx.bowl}
+    casa_jkeys = {kw.plan_rope: casa_rope, kw.healer_name: exx.bowl}
+    clean_jkeys = {kw.plan_rope: clean_rope, kw.healer_name: exx.bowl}
 
     # WHEN / THEN
     assert not person_attr_exists(x_dimen, None, {})
@@ -546,7 +546,7 @@ def test_person_attr_exists_ReturnsObj_person_plan_healerunit():
     assert not person_attr_exists(x_dimen, sue_person, clean_jkeys)
 
     # WHEN
-    sue_person.planroot.healerunit.set_healer_name(exx.swim)
+    sue_person.planroot.healerunit.set_healer_name(exx.bowl)
 
     # THEN
     assert not person_attr_exists(x_dimen, sue_person, {})

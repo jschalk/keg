@@ -954,6 +954,19 @@
                     "kids": {
                       "PSU Sports": {
                         "kids": {
+                          "bowling": {
+                            "plan_label": "bowling", 
+                            "plan_uid": 212, 
+                            "reasonunits": {
+                              ";amy45;Nation-States;": {
+                                "cases": {
+                                  ";amy45;Nation-States;USA;Portland; OR;Downtown;PSU,Pool": {"reason_state": ";amy45;Nation-States;USA;Portland; OR;Downtown;PSU,Pool"}
+                                }, 
+                                "reason_context": ";amy45;Nation-States;"
+                              }
+                            }, 
+                            "star": 1
+                          }, 
                           "browsing": {
                             "plan_label": "browsing", 
                             "plan_uid": 217, 
@@ -987,19 +1000,6 @@
                                   ";amy45;Nation-States;USA;Portland; OR;Downtown;PSU,Stott Field": {
                                     "reason_state": ";amy45;Nation-States;USA;Portland; OR;Downtown;PSU,Stott Field"
                                   }
-                                }, 
-                                "reason_context": ";amy45;Nation-States;"
-                              }
-                            }, 
-                            "star": 1
-                          }, 
-                          "swimming": {
-                            "plan_label": "swimming", 
-                            "plan_uid": 212, 
-                            "reasonunits": {
-                              ";amy45;Nation-States;": {
-                                "cases": {
-                                  ";amy45;Nation-States;USA;Portland; OR;Downtown;PSU,Pool": {"reason_state": ";amy45;Nation-States;USA;Portland; OR;Downtown;PSU,Pool"}
                                 }, 
                                 "reason_context": ";amy45;Nation-States;"
                               }
@@ -1729,7 +1729,7 @@
       "Water Living": {
         "is_expanded": false, 
         "kids": {
-          "Swimming in Williamette watershed": {
+          "bowling in Williamette watershed": {
             "kids": {
               "Go climbing at east Circuit": {
                 "plan_label": "Go climbing at east Circuit", 
@@ -1777,7 +1777,7 @@
                 "star": 1
               }
             }, 
-            "plan_label": "Swimming in Williamette watershed", 
+            "plan_label": "bowling in Williamette watershed", 
             "plan_uid": 225, 
             "reasonunits": {
               ";amy45;WaterExistence;": {

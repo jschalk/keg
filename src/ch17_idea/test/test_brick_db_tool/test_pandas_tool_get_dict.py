@@ -94,7 +94,7 @@ def test_dataframe_to_dict_ReturnsObj_ThreeKeyColumns():
         "name": ["Sue", "Sue", "Sue", "Bob", "Yao"],
         "age": [25, 46, 46, 30, 35],
         "city": ["NYC", "Boston", "ElPaso", "Dallas", "Paris"],
-        "sport": ["run", "swim", "tennis", "run", "swim"],
+        "sport": ["run", "bowl", "tennis", "run", "bowl"],
     }
     df = DataFrame(data)
 
@@ -117,7 +117,7 @@ def test_dataframe_to_dict_ReturnsObj_ThreeKeyColumns():
                     "name": "Sue",
                     "age": 46,
                     "city": "Boston",
-                    "sport": "swim",
+                    "sport": "bowl",
                 },
                 "ElPaso": {
                     "name": "Sue",
@@ -143,7 +143,7 @@ def test_dataframe_to_dict_ReturnsObj_ThreeKeyColumns():
                     "name": "Yao",
                     "age": 35,
                     "city": "Paris",
-                    "sport": "swim",
+                    "sport": "bowl",
                 }
             }
         },

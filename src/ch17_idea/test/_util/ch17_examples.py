@@ -389,26 +389,26 @@ def get_ex02_atom_dataframe() -> DataFrame:
     # x_dt.loc[5] = ["Fay3", "Bob0", False, 20]
     # x_dt.loc[6] = ["Fay3", "Bob0", False, 20]
     # x_dt.loc[7] = ["Fay3", "Bob0", False, 20]
-    x_dt.loc[0] = [";yao4", "sue2", ";swim2", ";workforce5", "aw1", "amy45;casa"]
-    x_dt.loc[1] = [";yao3", "sue2", ";swim1", ";workforce4", "aw1", "amy45;casa;clean"]
-    x_dt.loc[2] = [";yao4", "sue2", ";swim1", ";workforce5", "aw1", "amy45;casa"]
-    x_dt.loc[3] = [";yao3", "sue2", ";swim2", ";workforce4", "aw1", "amy45;casa;clean"]
-    x_dt.loc[4] = [";yao4", "sue1", ";swim1", ";workforce5", "aw1", "amy45;casa"]
-    x_dt.loc[5] = [";yao3", "sue1", ";swim1", ";workforce4", "aw1", "amy45;casa;clean"]
-    x_dt.loc[6] = [";yao4", "sue1", ";swim2", ";workforce5", "aw1", "amy45;casa"]
-    x_dt.loc[7] = [";yao3", "sue1", ";swim2", ";workforce4", "aw1", "amy45;casa;clean"]
+    x_dt.loc[0] = [";yao4", "sue2", ";bowl2", ";workforce5", "aw1", "amy45;casa"]
+    x_dt.loc[1] = [";yao3", "sue2", ";bowl1", ";workforce4", "aw1", "amy45;casa;clean"]
+    x_dt.loc[2] = [";yao4", "sue2", ";bowl1", ";workforce5", "aw1", "amy45;casa"]
+    x_dt.loc[3] = [";yao3", "sue2", ";bowl2", ";workforce4", "aw1", "amy45;casa;clean"]
+    x_dt.loc[4] = [";yao4", "sue1", ";bowl1", ";workforce5", "aw1", "amy45;casa"]
+    x_dt.loc[5] = [";yao3", "sue1", ";bowl1", ";workforce4", "aw1", "amy45;casa;clean"]
+    x_dt.loc[6] = [";yao4", "sue1", ";bowl2", ";workforce5", "aw1", "amy45;casa"]
+    x_dt.loc[7] = [";yao3", "sue1", ";bowl2", ";workforce4", "aw1", "amy45;casa;clean"]
 
     return x_dt
 
 
 def get_ex02_atom_csv() -> str:
     return """contact_name,group_title,plan_rope,labor_title,awardee_title,healer_name
-sue1,;swim1,amy45;casa,;workforce5,aw1,;yao4
-sue1,;swim1,amy45;casa;clean,;workforce4,aw1,;yao3
-sue1,;swim2,amy45;casa,;workforce5,aw1,;yao4
-sue1,;swim2,amy45;casa;clean,;workforce4,aw1,;yao3
-sue2,;swim1,amy45;casa,;workforce5,aw1,;yao4
-sue2,;swim1,amy45;casa;clean,;workforce4,aw1,;yao3
-sue2,;swim2,amy45;casa,;workforce5,aw1,;yao4
-sue2,;swim2,amy45;casa;clean,;workforce4,aw1,;yao3
+sue1,;bowl1,amy45;casa,;workforce5,aw1,;yao4
+sue1,;bowl1,amy45;casa;clean,;workforce4,aw1,;yao3
+sue1,;bowl2,amy45;casa,;workforce5,aw1,;yao4
+sue1,;bowl2,amy45;casa;clean,;workforce4,aw1,;yao3
+sue2,;bowl1,amy45;casa,;workforce5,aw1,;yao4
+sue2,;bowl1,amy45;casa;clean,;workforce4,aw1,;yao3
+sue2,;bowl2,amy45;casa,;workforce5,aw1,;yao4
+sue2,;bowl2,amy45;casa;clean,;workforce4,aw1,;yao3
 """

@@ -137,7 +137,7 @@ def test_insert_idea_csv_ChangesDBState_Inserts(
         csv_file.write(
             f"{kw.spark_num},{kw.spark_face},{kw.moment_rope},{kw.person_name},{kw.contact_name},{kw.group_title},{kw.gogo_want}\n"
         )
-        csv_file.write("7,Zia,Amy55,Yao,Zia,;swimmers,10.2\n")
+        csv_file.write("7,Zia,Amy55,Yao,Zia,;bowlers,10.2\n")
         csv_file.write("8,Zia,Amy43,Zia,Bob,;runners,11.1\n")
 
     br_tablename = "brXXXXX"
@@ -158,7 +158,7 @@ def test_insert_idea_csv_ChangesDBState_Inserts(
     expected_table_data = [
         (3, "Sue", "Amy43", "Bob", "Bob", ";runners", 6.5),
         (3, "Sue", "Amy43", "Yao", "Bob", ";runners", 7.5),
-        (7, "Zia", "Amy55", "Yao", "Zia", ";swimmers", 10.2),
+        (7, "Zia", "Amy55", "Yao", "Zia", ";bowlers", 10.2),
         (8, "Zia", "Amy43", "Zia", "Bob", ";runners", 11.1),
     ]
     cursor = conn.cursor()
@@ -181,7 +181,7 @@ def test_insert_idea_csv_ChangesDBState_CanCreateTable(
         csv_file.write(
             f"{kw.spark_num},{kw.spark_face},{kw.moment_rope},{kw.person_name},{kw.contact_name},{kw.group_title},{kw.gogo_want}\n"
         )
-        csv_file.write("7,Zia,Amy55,Yao,Zia,;swimmers,10.2\n")
+        csv_file.write("7,Zia,Amy55,Yao,Zia,;bowlers,10.2\n")
         csv_file.write("8,Zia,Amy43,Zia,Bob,;runners,11.1\n")
 
     br_tablename = "brXXXXX"
@@ -195,7 +195,7 @@ def test_insert_idea_csv_ChangesDBState_CanCreateTable(
 
     # THEN
     expected_table_data = [
-        (7, "Zia", "Amy55", "Yao", "Zia", ";swimmers", 10.2),
+        (7, "Zia", "Amy55", "Yao", "Zia", ";bowlers", 10.2),
         (8, "Zia", "Amy43", "Zia", "Bob", ";runners", 11.1),
     ]
     cursor = conn.cursor()

@@ -529,7 +529,7 @@ def test_create_update_trllabe_sound_agg_knot_error_sqlstr_PopulatesTable_Scenar
     run_str = "Run"
     fly_str = "Fly"
     fly_inx = "fli"
-    ski_inx = "Skiito"
+    ski_inx = "Skito"
     rdx = ":"
     run_rdx_run = f"{run_str}{rdx}{run_str}"
     ukx = "Unknown"
@@ -620,7 +620,7 @@ def test_create_update_trlrope_sound_agg_knot_error_sqlstr_PopulatesTable_Scenar
     spt_run_str = f"{rdx}sports{rdx}Run"
     spt_fly_str = f"{rdx}sports{rdx}Fly"
     bad_fly_str = f"sports{rdx}fli"
-    bad_ski_str = "Skiito"
+    bad_ski_str = "Skito"
     bad_run_str = f"run{rdx}run"
     ukx = "Unknown"
     spark1 = 1
@@ -803,10 +803,10 @@ def test_create_update_trltitl_sound_agg_knot_error_sqlstr_PopulatesTable_Scenar
     sue_inx = "Sue"
     sue_otx = "Suzy"
     bad_sue_otx = f"{rdx_otx}Suzy"
-    swim_inx = f"{rdx_inx}swimmers"
-    swim_otx = f"{rdx_otx}swimmers"
-    bad_swim_otx = "swimmers"
-    bad_swim_inx = "swimmers"
+    bowl_inx = f"{rdx_inx}bowlers"
+    bowl_otx = f"{rdx_otx}bowlers"
+    bad_bowl_otx = "bowlers"
+    bad_bowl_inx = "bowlers"
     ukx = "Unknown"
     spark1 = 1
     spark2 = 2
@@ -828,9 +828,9 @@ def test_create_update_trltitl_sound_agg_knot_error_sqlstr_PopulatesTable_Scenar
 VALUES
   ({spark1}, '{exx.bob}', '{sue_otx}', '{sue_inx}')
 , ({spark1}, '{exx.yao}', '{bad_sue_otx}', '{sue_inx}')
-, ({spark2}, '{exx.bob}', '{swim_otx}', '{swim_inx}')
-, ({spark5}, '{exx.yao}', '{swim_otx}', '{bad_swim_inx}')
-, ({spark7}, '{exx.yao}', '{bad_swim_otx}', '{swim_inx}')
+, ({spark2}, '{exx.bob}', '{bowl_otx}', '{bowl_inx}')
+, ({spark5}, '{exx.yao}', '{bowl_otx}', '{bad_bowl_inx}')
+, ({spark7}, '{exx.yao}', '{bad_bowl_otx}', '{bowl_inx}')
 ;
 """
     cursor0.execute(f"{insert_into_clause} {values_clause}")
@@ -881,9 +881,9 @@ VALUES
     error_x = error_title_str
     exp_row0 = (1, exx.bob, sue_otx, sue_inx, None, None, None, None)
     exp_row1 = (1, exx.yao, bad_sue_otx, sue_inx, None, None, None, error_x)
-    exp_row2 = (2, exx.bob, swim_otx, swim_inx, None, None, None, None)
-    exp_row3 = (5, exx.yao, swim_otx, bad_swim_inx, None, None, None, error_x)
-    exp_row4 = (7, exx.yao, bad_swim_otx, swim_inx, None, None, None, error_x)
+    exp_row2 = (2, exx.bob, bowl_otx, bowl_inx, None, None, None, None)
+    exp_row3 = (5, exx.yao, bowl_otx, bad_bowl_inx, None, None, None, error_x)
+    exp_row4 = (7, exx.yao, bad_bowl_otx, bowl_inx, None, None, None, error_x)
     assert rows[0] == exp_row0
     assert rows[1] == exp_row1
     print(f" {rows[2]=}")

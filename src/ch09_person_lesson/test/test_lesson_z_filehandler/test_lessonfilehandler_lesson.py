@@ -229,8 +229,8 @@ def test_LessonFileHandler_validate_lessonunit_ReturnsObjWithAttributesFixed(
     invalid_sue_lessonunit = lessonunit_shop(
         person_name="Bob",
         lesson_id=sue_lessonfilehandler._get_next_lesson_file_number() - 5,
-        atoms_dir=create_path(sue_lessonfilehandler.atoms_dir, "swimming"),
-        lessons_dir=create_path(sue_lessonfilehandler.atoms_dir, "swimming"),
+        atoms_dir=create_path(sue_lessonfilehandler.atoms_dir, "bowling"),
+        lessons_dir=create_path(sue_lessonfilehandler.atoms_dir, "bowling"),
     )
     valid_lessonunit = sue_lessonfilehandler.validate_lessonunit(invalid_sue_lessonunit)
 
@@ -266,8 +266,8 @@ def test_LessonFileHandler_save_lesson_file_SaveCorrectObj_correct_invalid_attrs
     invalid_sue_lessonunit = lessonunit_shop(
         person_name="Bob",
         lesson_id=sue_lessonfilehandler._get_next_lesson_file_number() - 5,
-        atoms_dir=create_path(sue_lessonfilehandler.atoms_dir, "swimming"),
-        lessons_dir=create_path(sue_lessonfilehandler.atoms_dir, "swimming"),
+        atoms_dir=create_path(sue_lessonfilehandler.atoms_dir, "bowling"),
+        lessons_dir=create_path(sue_lessonfilehandler.atoms_dir, "bowling"),
     )
     sue_lessonfilehandler.save_lesson_file(invalid_sue_lessonunit)
 
@@ -437,9 +437,9 @@ def test_LessonFileHandler_save_lesson_file_ReturnsValidObj(temp3_fs):
     a23_lasso = lassounit_shop(exx.a23)
     sue_lessonfilehandler = lessonfilehandler_shop(str(temp3_fs), a23_lasso, exx.sue)
     sue2_lessonunit = sue_2personatoms_lessonunit()
-    sue2_lessonunit.atoms_dir = create_path(sue_lessonfilehandler.atoms_dir, "swimming")
+    sue2_lessonunit.atoms_dir = create_path(sue_lessonfilehandler.atoms_dir, "bowling")
     sue2_lessonunit.lessons_dir = create_path(
-        sue_lessonfilehandler.atoms_dir, "swimming"
+        sue_lessonfilehandler.atoms_dir, "bowling"
     )
     sue2_lessonunit.person_name = "Bob"
     sue2_lessonunit.lesson_id = sue_lessonfilehandler._get_next_lesson_file_number() - 5

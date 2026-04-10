@@ -1,9 +1,9 @@
 from pytest import raises as pytest_raises
 from src.ch16_translate.test._util.ch16_examples import (
+    get_bowl_titlemap,
     get_clean_labelmap,
     get_clean_ropemap,
     get_suita_namemap,
-    get_swim_titlemap,
 )
 from src.ch16_translate.translate_main import inherit_translateunit, translateunit_shop
 from src.ref.keywords import Ch16Keywords as kw, ExampleStrs as exx
@@ -95,7 +95,7 @@ def test_TranslateUnit_inherit_translateunit_ReturnsObj_Scenario6_namemap_Inheri
     spark1 = 1
     old_translateunit = translateunit_shop(exx.sue, 0)
     old_translateunit.set_namemap(get_suita_namemap())
-    old_translateunit.set_titlemap(get_swim_titlemap())
+    old_translateunit.set_titlemap(get_bowl_titlemap())
     old_translateunit.set_labelmap(get_clean_labelmap())
     old_translateunit.set_ropemap(get_clean_ropemap())
     new_translateunit = translateunit_shop(exx.sue, spark1)
@@ -109,7 +109,7 @@ def test_TranslateUnit_inherit_translateunit_ReturnsObj_Scenario6_namemap_Inheri
     merged_contactbrigde = get_suita_namemap()
     merged_contactbrigde.spark_num = spark1
     assert merged_translateunit.namemap == merged_contactbrigde
-    merged_groupbrigde = get_swim_titlemap()
+    merged_groupbrigde = get_bowl_titlemap()
     merged_groupbrigde.spark_num = spark1
     assert merged_translateunit.titlemap == merged_groupbrigde
     merged_labelbrigde = get_clean_labelmap()
@@ -126,7 +126,7 @@ def test_TranslateUnit_inherit_translateunit_ReturnsObj_Scenario7_namemap_Inheri
     spark1 = 1
     old_translateunit = translateunit_shop(exx.sue, 0)
     old_translateunit.set_namemap(get_suita_namemap())
-    old_translateunit.set_titlemap(get_swim_titlemap())
+    old_translateunit.set_titlemap(get_bowl_titlemap())
     new_translateunit = translateunit_shop(exx.sue, spark1)
     bob_otx = "Bob"
     bob_inx = "Bobby"
@@ -144,6 +144,6 @@ def test_TranslateUnit_inherit_translateunit_ReturnsObj_Scenario7_namemap_Inheri
     merged_contactbrigde.spark_num = spark1
     merged_contactbrigde.set_otx2inx(bob_otx, bob_inx)
     assert merged_translateunit.namemap == merged_contactbrigde
-    merged_groupbrigde = get_swim_titlemap()
+    merged_groupbrigde = get_bowl_titlemap()
     merged_groupbrigde.spark_num = spark1
     assert merged_translateunit.titlemap == merged_groupbrigde

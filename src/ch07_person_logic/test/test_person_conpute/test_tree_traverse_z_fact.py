@@ -97,26 +97,26 @@ def test_PersonUnit_conpute_RaisesErrorIfNon_RangeRootHasFactUnit():
 def test_PersonUnit_conpute_FactHeirsInherited():
     # ESTABLISH
     zia_person = personunit_shop("Zia")
-    swim_rope = zia_person.make_l1_rope(exx.swim)
-    zia_person.set_l1_plan(planunit_shop(exx.swim))
+    bowl_rope = zia_person.make_l1_rope(exx.bowl)
+    zia_person.set_l1_plan(planunit_shop(exx.bowl))
     fast_str = "fast"
     slow_str = "slow"
-    fast_rope = zia_person.make_rope(swim_rope, fast_str)
-    slow_rope = zia_person.make_rope(swim_rope, slow_str)
-    zia_person.set_plan_obj(planunit_shop(fast_str), parent_rope=swim_rope)
-    zia_person.set_plan_obj(planunit_shop(slow_str), parent_rope=swim_rope)
+    fast_rope = zia_person.make_rope(bowl_rope, fast_str)
+    slow_rope = zia_person.make_rope(bowl_rope, slow_str)
+    zia_person.set_plan_obj(planunit_shop(fast_str), parent_rope=bowl_rope)
+    zia_person.set_plan_obj(planunit_shop(slow_str), parent_rope=bowl_rope)
 
     earth_str = "earth"
     earth_rope = zia_person.make_l1_rope(earth_str)
     zia_person.set_l1_plan(planunit_shop(earth_str))
 
-    swim_plan = zia_person.get_plan_obj(swim_rope)
+    bowl_plan = zia_person.get_plan_obj(bowl_rope)
     fast_plan = zia_person.get_plan_obj(fast_rope)
     slow_plan = zia_person.get_plan_obj(slow_rope)
     zia_person.add_fact(
         fact_context=earth_rope, fact_state=earth_rope, fact_lower=1.0, fact_upper=5.0
     )
-    assert swim_plan.factheirs == {}
+    assert bowl_plan.factheirs == {}
     assert fast_plan.factheirs == {}
     assert slow_plan.factheirs == {}
 
@@ -124,29 +124,29 @@ def test_PersonUnit_conpute_FactHeirsInherited():
     zia_person.conpute()
 
     # THEN
-    assert swim_plan.factheirs != {}
+    assert bowl_plan.factheirs != {}
     assert fast_plan.factheirs != {}
     assert slow_plan.factheirs != {}
     factheir_set_range = factheir_shop(earth_rope, earth_rope, 1.0, 5.0)
     factheirs_set_range = {factheir_set_range.fact_context: factheir_set_range}
-    assert swim_plan.factheirs == factheirs_set_range
+    assert bowl_plan.factheirs == factheirs_set_range
     assert fast_plan.factheirs == factheirs_set_range
     assert slow_plan.factheirs == factheirs_set_range
-    print(f"{swim_plan.factheirs=}")
-    assert len(swim_plan.factheirs) == 1
+    print(f"{bowl_plan.factheirs=}")
+    assert len(bowl_plan.factheirs) == 1
 
     # WHEN
-    swim_earth_factheir = swim_plan.factheirs.get(earth_rope)
-    swim_earth_factheir.set_range_null()
+    bowl_earth_factheir = bowl_plan.factheirs.get(earth_rope)
+    bowl_earth_factheir.set_range_null()
 
     # THEN
     fact_none_range = factheir_shop(earth_rope, earth_rope, None, None)
     facts_none_range = {fact_none_range.fact_context: fact_none_range}
-    assert swim_plan.factheirs == facts_none_range
+    assert bowl_plan.factheirs == facts_none_range
     assert fast_plan.factheirs == factheirs_set_range
     assert slow_plan.factheirs == factheirs_set_range
 
-    fact_x1 = swim_plan.factheirs.get(earth_rope)
+    fact_x1 = bowl_plan.factheirs.get(earth_rope)
     fact_x1.set_range_null()
     print(type(fact_x1))
     assert str(type(fact_x1)).find(".reason.FactHeir'>")
@@ -156,20 +156,20 @@ def test_PersonUnit_conpute_FactUnitMoldsFactHeir():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     zia_person = personunit_shop("Zia")
-    swim_rope = zia_person.make_l1_rope(exx.swim)
-    zia_person.set_l1_plan(planunit_shop(exx.swim))
-    swim_plan = zia_person.get_plan_obj(swim_rope)
+    bowl_rope = zia_person.make_l1_rope(exx.bowl)
+    zia_person.set_l1_plan(planunit_shop(exx.bowl))
+    bowl_plan = zia_person.get_plan_obj(bowl_rope)
 
     fast_str = "fast"
     slow_str = "slow"
-    zia_person.set_plan_obj(planunit_shop(fast_str), parent_rope=swim_rope)
-    zia_person.set_plan_obj(planunit_shop(slow_str), parent_rope=swim_rope)
+    zia_person.set_plan_obj(planunit_shop(fast_str), parent_rope=bowl_rope)
+    zia_person.set_plan_obj(planunit_shop(slow_str), parent_rope=bowl_rope)
 
     earth_str = "earth"
     earth_rope = zia_person.make_l1_rope(earth_str)
     zia_person.set_l1_plan(planunit_shop(earth_str))
 
-    assert swim_plan.factheirs == {}
+    assert bowl_plan.factheirs == {}
 
     # WHEN
     zia_person.add_fact(
@@ -182,11 +182,11 @@ def test_PersonUnit_conpute_FactUnitMoldsFactHeir():
         earth_rope, earth_rope, fact_lower=1.0, fact_upper=5.0
     )
     first_earthdict = {first_earthheir.fact_context: first_earthheir}
-    assert swim_plan.factheirs == first_earthdict
+    assert bowl_plan.factheirs == first_earthdict
 
     # WHEN
     # earth_curb = factunit_shop(fact_context=earth_rope, fact_state=earth_rope, reason_lower=3.0, reason_upper=4.0)
-    # swim_y.set_factunit(factunit=earth_curb) Not sure what this is for. Testing what "set_factunit" does with the parameters, but what?
+    # bowl_y.set_factunit(factunit=earth_curb) Not sure what this is for. Testing what "set_factunit" does with the parameters, but what?
     zia_person.add_fact(
         fact_context=earth_rope, fact_state=earth_rope, fact_lower=3.0, fact_upper=5.0
     )
@@ -197,44 +197,44 @@ def test_PersonUnit_conpute_FactUnitMoldsFactHeir():
         earth_rope, earth_rope, fact_lower=3.0, fact_upper=5.0
     )
     after_earthdict = {after_earthheir.fact_context: after_earthheir}
-    assert swim_plan.factheirs == after_earthdict
+    assert bowl_plan.factheirs == after_earthdict
 
 
 def test_PersonUnit_conpute_FactHeirDeletesFactUnit():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     sue_person = personunit_shop("Sue")
-    swim_rope = sue_person.make_l1_rope(exx.swim)
-    sue_person.set_l1_plan(planunit_shop(exx.swim))
+    bowl_rope = sue_person.make_l1_rope(exx.bowl)
+    sue_person.set_l1_plan(planunit_shop(exx.bowl))
     fast_str = "fast"
     slow_str = "slow"
-    sue_person.set_plan_obj(planunit_shop(fast_str), parent_rope=swim_rope)
-    sue_person.set_plan_obj(planunit_shop(slow_str), parent_rope=swim_rope)
+    sue_person.set_plan_obj(planunit_shop(fast_str), parent_rope=bowl_rope)
+    sue_person.set_plan_obj(planunit_shop(slow_str), parent_rope=bowl_rope)
     earth_str = "earth"
     earth_rope = sue_person.make_l1_rope(earth_str)
     sue_person.set_l1_plan(planunit_shop(earth_str))
-    swim_plan = sue_person.get_plan_obj(swim_rope)
+    bowl_plan = sue_person.get_plan_obj(bowl_rope)
     first_earthheir = factheir_shop(
         earth_rope, earth_rope, fact_lower=200.0, fact_upper=500.0
     )
     first_earthdict = {first_earthheir.fact_context: first_earthheir}
     sue_person.add_fact(earth_rope, earth_rope, fact_lower=200.0, fact_upper=500.0)
-    assert swim_plan.factheirs == {}
+    assert bowl_plan.factheirs == {}
 
     # WHEN
     sue_person.conpute()
 
     # THEN
-    assert swim_plan.factheirs == first_earthdict
+    assert bowl_plan.factheirs == first_earthdict
 
     # WHEN
     earth_curb = factunit_shop(earth_rope, earth_rope, fact_lower=3.0, fact_upper=4.0)
-    swim_plan.set_factunit(factunit=earth_curb)
+    bowl_plan.set_factunit(factunit=earth_curb)
     sue_person.conpute()
 
     # THEN
-    assert swim_plan.factheirs == first_earthdict
-    assert swim_plan.factunits == {}
+    assert bowl_plan.factheirs == first_earthdict
+    assert bowl_plan.factunits == {}
 
 
 def test_PersonUnit_conpute_Setscase_taskAsComplete():

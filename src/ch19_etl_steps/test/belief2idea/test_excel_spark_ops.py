@@ -8,7 +8,8 @@ from pandas import (
 )
 from pathlib import Path
 from pytest import fixture as pytest_fixture, raises as pytest_raises
-from src.ch00_py.file_toolbox import create_path
+from src.ch00_py.file_toolbox import count_dirs_files, create_path
+from src.ch17_idea.brick_db_tool import sheet_exists
 from src.ch19_etl_steps.belief2idea import (  # move_b_src_sheets_to_i_src,
     add_spark_num_column,
     beliefs_sheets_to_idea_sheets,
@@ -19,8 +20,6 @@ from src.ch19_etl_steps.belief2idea import (  # move_b_src_sheets_to_i_src,
     get_spark_faces_from_df,
     get_spark_faces_from_files,
     get_validated_bele_src_brick_type_sheets,
-    update_spark_num_in_belief_files,
-    update_spark_num_in_excel_file,
 )
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
@@ -262,7 +261,7 @@ def test_get_excel_sheet_tuples_ReturnsObj_Scenario2_EmptyListForNoExcelFiles(
 
 def test_get_sheets_with_brick_types_ReturnsObj_Scenario0_MatchingTuples(
     tmp_path: Path,
-):
+):  # sourcery skip: extract-duplicate-method
     """Only tuples whose sheet_name contains a br_string are returned."""
     # ESTABLISH
     br_excel_dir = tmp_path / "beliefs"
@@ -289,39 +288,15 @@ def test_get_sheets_with_brick_types_ReturnsObj_Scenario0_MatchingTuples(
     assert ("report.xlsx", "Summary") not in result
 
 
-# --- Pytest fixtures & tests ---
-
-
-@pytest_fixture
-def idea_dir_no_overlap(tmp_path):
-
-    d = tmp_path / "idea"
-    d.mkdir()
-    wb = openpyxl_Workbook()
-    wb.active.title = "Summary"
-    wb.create_sheet("Details")
-    wb.save(d / "idea_report.xlsx")
-    return d
-
-
-@pytest_fixture
-def idea_dir_with_overlap(tmp_path):
-
-    d = tmp_path / "idea_overlap"
-    d.mkdir()
-    wb = openpyxl_Workbook()
-    wb.active.title = "BR00005_Sales"  # overlaps with bele_dir
-    wb.save(d / "idea_report.xlsx")
-    return d
-
-
-def test_get_validated_bele_src_brick_type_sheets_ReturnsBeleBrSheets(
-    idea_dir_no_overlap, tmp_path
+def test_get_validated_bele_src_brick_type_sheets_ReturnsObj_Scenario0_BeleBrSheets(
+    tmp_path,
 ):
     """Returns only BR sheet tuples from bele_src_dir when there is no overlap."""
     # ESTABLISH
     bele_dir = tmp_path / "bele"
     bele_dir.mkdir()
+    i_src_dir = tmp_path / "ideas"
+    i_src_dir.mkdir()
     wb = openpyxl_Workbook()
     wb.active.title = "BR00005_Sales"
     wb.create_sheet("Revenue")
@@ -329,40 +304,80 @@ def test_get_validated_bele_src_brick_type_sheets_ReturnsBeleBrSheets(
     wb.save(bele_dir / "x300reports.xlsx")
 
     # WHEN
-    result = get_validated_bele_src_brick_type_sheets(
-        bele_dir, str(idea_dir_no_overlap)
-    )
+    result = get_validated_bele_src_brick_type_sheets(bele_dir, i_src_dir)
     # THEN
     assert ("x300reports.xlsx", "BR00005_Sales") in result
     assert ("x300reports.xlsx", "BR00042_Costs") in result
     assert ("x300reports.xlsx", "Revenue") not in result
 
 
-def test_get_validated_bele_src_brick_type_sheets_RaisesOnOverlap(
-    idea_dir_with_overlap, tmp_path
+def test_get_validated_bele_src_brick_type_sheets_Scenario1_RaisesOnOverlap(
+    tmp_path: Path,
 ):
     """Raises ValueError when a BR sheet name exists in both directories."""
     # ESTABLISH
     bele_dir = tmp_path / "bele"
     bele_dir.mkdir()
-    wb = openpyxl_Workbook()
-    wb.active.title = "BR00005_Sales"
-    wb.create_sheet("Revenue")
-    wb.create_sheet("BR00042_Costs")
-    wb.save(bele_dir / "x300reports.xlsx")
+    bele_wb = openpyxl_Workbook()
+    bele_wb.active.title = "BR00005_Sales"
+    bele_wb.create_sheet("Revenue")
+    bele_wb.create_sheet("BR00042_Costs")
+    x3_filename = "x300reports.xlsx"
+    bele_wb.save(bele_dir / x3_filename)
+
+    i_src_dir = tmp_path / "idea_overlap"
+    i_src_dir.mkdir()
+    idea_wb = openpyxl_Workbook()
+    idea_wb.active.title = "BR00005_Sales"  # overlaps with bele_dir
+    idea_wb.save(i_src_dir / x3_filename)
 
     # WHEN / THEN
     with pytest_raises(ValueError, match="BR00005_Sales"):
-        get_validated_bele_src_brick_type_sheets(
-            str(bele_dir), str(idea_dir_with_overlap)
-        )
+        get_validated_bele_src_brick_type_sheets(bele_dir, i_src_dir)
 
 
-def test_get_validated_bele_src_brick_type_sheets_ReturnsEmptyWhenNoBeleBrSheets(
-    idea_dir_no_overlap, tmp_path
+def test_get_validated_bele_src_brick_type_sheets_Scenario2_DoesNotRaiseError(
+    tmp_path: Path,
+):
+    """Raises ValueError when a BR sheet name exists in both directories."""
+    # ESTABLISH
+    bele_dir = tmp_path / "bele"
+    bele_dir.mkdir()
+    bele_wb = openpyxl_Workbook()
+    bele_wb.active.title = "BR00005_Sales"
+    bele_wb.create_sheet("Revenue")
+    br42_sheetname = "BR00042_Costs"
+    bele_wb.create_sheet(br42_sheetname)
+    x3_filename = "x300reports.xlsx"
+    bele_wb.save(bele_dir / x3_filename)
+
+    i_src_dir = tmp_path / "idea_overlap"
+    i_src_dir.mkdir()
+    idea_wb = openpyxl_Workbook()
+    idea_wb.active.title = "BR00005_Sales"  # overlaps with bele_dir
+    x4_filename = "x400reports.xlsx"
+    idea_wb.create_sheet(br42_sheetname)
+    idea_wb.save(i_src_dir / x4_filename)
+
+    # WHEN
+    sheet_tuples = get_validated_bele_src_brick_type_sheets(bele_dir, i_src_dir)
+    # THEN
+    print(f"{(x3_filename, br42_sheetname)=}")
+    print(f"{sheet_tuples=}")
+    assert (x3_filename, br42_sheetname) in sheet_tuples
+
+
+def test_get_validated_bele_src_brick_type_sheets_ReturnsObj_Scenario2_EmptyWhenNoBeleBrSheets(
+    tmp_path,
 ):
     """Returns an empty list when bele_src_dir has no BR sheets."""
     # ESTABLISH
+    i_src_dir = tmp_path / "ideas"
+    i_src_dir.mkdir()
+    wb = openpyxl_Workbook()
+    wb.active.title = "Summary"
+    wb.create_sheet("Details")
+    wb.save(i_src_dir / "idea_report.xlsx")
 
     empty_bele = tmp_path / "empty_bele"
     empty_bele.mkdir()
@@ -370,18 +385,16 @@ def test_get_validated_bele_src_brick_type_sheets_ReturnsEmptyWhenNoBeleBrSheets
     wb.active.title = "Summary"
     wb.save(empty_bele / "plain.xlsx")
     # WHEN
-    result = get_validated_bele_src_brick_type_sheets(
-        str(empty_bele), str(idea_dir_no_overlap)
-    )
+    result = get_validated_bele_src_brick_type_sheets(empty_bele, i_src_dir)
     # THEN
     assert result == []
 
 
-def test_beliefs_sheets_to_idea_sheets_Scenario0_ReturnsObj_TwoTuples(tmp_path: Path):
+def test_beliefs_sheets_to_idea_sheets_Scenario0_TwoTuples(tmp_path: Path):
     """Returns one (filename, sheet_name) tuple per BR sheet copied."""
     # ESTABLISH
-    empty_idea_dir = tmp_path / "idea"
-    empty_idea_dir.mkdir()
+    empty_i_src_dir = tmp_path / "ideas"
+    empty_i_src_dir.mkdir()
 
     populated_bele_dir = tmp_path / "bele"
     populated_bele_dir.mkdir()
@@ -399,146 +412,174 @@ def test_beliefs_sheets_to_idea_sheets_Scenario0_ReturnsObj_TwoTuples(tmp_path: 
     wb.save(populated_bele_dir / "AllSales.xlsx")
 
     # WHEN
-    result = beliefs_sheets_to_idea_sheets(populated_bele_dir, empty_idea_dir)
+    result = beliefs_sheets_to_idea_sheets(populated_bele_dir, empty_i_src_dir)
     # THEN
-    assert ("BR00004_Costs.xlsx", "BR00004_Costs") in result
-    assert ("BR00020_Sales.xlsx", "BR00020_Sales") in result
+    dst_all_sales_path = create_path(empty_i_src_dir, "AllSales.xlsx")
+    assert (dst_all_sales_path, "BR00004_Costs") in result
+    assert (dst_all_sales_path, "BR00020_Sales") in result
     assert len(result) == 2
 
 
-def test_beliefs_sheets_to_idea_sheets_Scenario1_ReturnsObj_DataReadableByPandas(
+def test_beliefs_sheets_to_idea_sheets_Scenario1_CreatesDestinationFile(
     tmp_path: Path,
 ):
     """Each copied sheet can be read by pandas and contains the original data."""
     # ESTABLISH
-    empty_idea_dir = tmp_path / "idea"
-    empty_idea_dir.mkdir()
+    empty_i_src_dir = tmp_path / "ideas"
+    empty_i_src_dir.mkdir()
     populated_bele_dir = tmp_path / "bele"
     populated_bele_dir.mkdir()
     wb = openpyxl_Workbook()
     ws1 = wb.active
     ws1.title = "BR00020_Sales"
-    ws1.append(["product", "units", "revenue"])
-    ws1.append(["widget", 10, 500])
-    ws1.append(["gadget", 5, 250])
+    ws1.append([kw.spark_face, "product", "units", "revenue"])
+    ws1.append([exx.sue, "widget", 10, 500])
+    ws1.append([exx.sue, "gadget", 5, 250])
 
     ws2 = wb.create_sheet("BR00004_Costs")
-    ws2.append(["category", "amount"])
-    ws2.append(["rent", 1000])
+    ws2.append([kw.spark_face, "category", "amount"])
+    ws2.append([exx.sue, "rent", 1000])
     wb.create_sheet("Summary")  # non-BR, should be ignored
     wb.save(populated_bele_dir / "AllSales.xlsx")
 
     # WHEN
-    beliefs_sheets_to_idea_sheets(populated_bele_dir, empty_idea_dir)
+    beliefs_sheets_to_idea_sheets(populated_bele_dir, empty_i_src_dir)
     # THEN
-    df = pandas_read_excel(
-        os_path_join(str(empty_idea_dir), "BR00020_Sales.xlsx"),
-        sheet_name="BR00020_Sales",
-    )
-    assert list(df.columns) == ["product", "units", "revenue"]
+    allsales_dir = os_path_join(str(empty_i_src_dir), "AllSales.xlsx")
+    df = pandas_read_excel(allsales_dir, sheet_name="BR00020_Sales")
+    expected_dst_columns = [kw.spark_num, kw.spark_face, "product", "units", "revenue"]
+    assert list(df.columns) == expected_dst_columns
     assert len(df) == 2
+    assert df[kw.spark_num].min() == 1
     assert df["revenue"].sum() == 750
 
 
 def test_beliefs_sheets_to_idea_sheets_Scenario2_RaisesOnOverlap(tmp_path: Path):
+    # sourcery skip: extract-duplicate-method
     """Propagates ValueError from get_bele_br_sheets_validated on sheet name overlap."""
     # ESTABLISH
     beliefs_dir = tmp_path / "bele"
     beliefs_dir.mkdir()
-    ideas_dir = tmp_path / "idea"
-    ideas_dir.mkdir()
+    i_src_dir = tmp_path / "ideas"
+    i_src_dir.mkdir()
 
     wb_bele = openpyxl_Workbook()
     wb_bele.active.title = "BR00020_Sales"
-    wb_bele.save(beliefs_dir / "AllSales.xlsx")
+    allsales_filename = "AllSales.xlsx"
+    wb_bele.save(beliefs_dir / allsales_filename)
 
     wb_idea = openpyxl_Workbook()
     wb_idea.active.title = "BR00020_Sales"
-    wb_idea.save(ideas_dir / "existing.xlsx")
+    wb_idea.save(i_src_dir / allsales_filename)
     # WHEN / THEN
     with pytest_raises(ValueError, match="BR00020_Sales"):
-        beliefs_sheets_to_idea_sheets(beliefs_dir, ideas_dir)
+        beliefs_sheets_to_idea_sheets(beliefs_dir, i_src_dir)
 
 
-def create_excel_file(filepath, sheets_dict):
-    with pandas_ExcelWriter(filepath, engine="xlsxwriter") as writer:
-        for name, df in sheets_dict.items():
-            df.to_excel(writer, sheet_name=name, index=False)
-
-
-# TODO depercate this function
-def test_update_spark_num_in_excel_file_SetsFile_Scenario0_UpdatesAllSheets(temp3_fs):
-    # ESTABLISH
-    filepath = create_path(str(temp3_fs), "test.xlsx")
-    df1 = DataFrame({"a": [1, 2]})
-    df2 = DataFrame({"b": [3, 4]})
-    create_excel_file(filepath, {"Sheet1": df1, "Sheet2": df2})
-
-    # WHEN
-    update_spark_num_in_excel_file(filepath, 41)
-
-    # THEN
-    result = pandas_read_excel(filepath, sheet_name=None)
-    assert set(result.keys()) == {"Sheet1", "Sheet2"}
-    for df in result.values():
-        assert kw.spark_num in df.columns
-        assert all(df[kw.spark_num] == 42)
-
-
-def test_update_spark_num_in_excel_file_SetsFile_Scenario1_PreservesOtherColumns(
-    temp3_fs,
+def test_beliefs_sheets_to_idea_sheets_Scenario3_DestinationFileHas_spark_num_SetBy_i_src_dir(
+    tmp_path: Path,
 ):
+    """Each copied sheet can be read by pandas and contains the original data."""
     # ESTABLISH
-    filepath = temp3_fs / "test.xlsx"
-    df = DataFrame({"a": [1, 2], "b": [3, 4]})
-    create_excel_file(filepath, {"Sheet1": df})
-    # WHEN
-    update_spark_num_in_excel_file(filepath, 99)
-    # THEN
-    result = pandas_read_excel(filepath, sheet_name=None)
-    out_df = result["Sheet1"]
+    i_src_dir = tmp_path / "ideas"
+    i_src_dir.mkdir()
+    populated_bele_dir = tmp_path / "bele"
+    populated_bele_dir.mkdir()
+    idea_wb = openpyxl_Workbook()
+    idea_ws1 = idea_wb.active
+    idea_ws1.title = "BR00020_Sales"
+    expected_dst_columns = [kw.spark_num, kw.spark_face, "product", "units", "revenue"]
+    idea_ws1.append(expected_dst_columns)
+    curr_spark_num = 10
+    idea_ws1.append([curr_spark_num, exx.sue, "widget", 10, 500])
+    idea_wb.save(i_src_dir / "OtherFile.xlsx")
 
-    assert list(out_df.columns) == ["a", "b", kw.spark_num]
-    assert out_df["a"].tolist() == [1, 2]
-    assert out_df["b"].tolist() == [3, 4]
+    wb = openpyxl_Workbook()
+    ws1 = wb.active
+    ws1.title = "BR00020_Sales"
+    ws1.append([kw.spark_face, "product", "units", "revenue"])
+    ws1.append([exx.sue, "widget", 10, 500])
+    ws1.append([exx.sue, "gadget", 5, 250])
 
-
-# def test_update_spark_num_in_excel_file_SetsFile_Scenario2_EmptyWorkbook(temp3_fs):
-#     # ESTABLISH
-#     filepath = temp3_fs / "test.xlsx"
-
-#     # Create empty workbook
-#     with pandas_ExcelWriter(filepath, engine="xlsxwriter"):
-#         pass
-#     # WHEN
-#     update_spark_num_in_excel_file(filepath, 5)
-#     # THEN
-#     result = pandas_read_excel(filepath, sheet_name=None)
-#     assert result == {}
-
-
-# TODO depercate this function
-def test_update_spark_num_in_belief_files_SetAttrs(temp3_fs):
-    # ESTABLISH
-    # Setup: Create test directory and Excel file
-    temp_dir = str(temp3_fs)
-    file_path = os_path_join(temp_dir, "example_belief.xlsx")
-
-    # Create Excel file with two sheets
-    df1 = DataFrame({"name": ["Alice", "Bob"], "score": [80, 90]})
-    df2 = DataFrame({"item": ["Pen", "Notebook"], "price": [1.5, 3.0]})
-    with pandas_ExcelWriter(file_path) as writer:
-        df1.to_excel(writer, sheet_name="Sheet1", index=False)
-        df2.to_excel(writer, sheet_name="Sheet2", index=False)
+    ws2 = wb.create_sheet("BR00004_Costs")
+    ws2.append([kw.spark_face, "category", "amount"])
+    ws2.append([exx.sue, "rent", 1000])
+    wb.create_sheet("Summary")  # non-BR, should be ignored
+    wb.save(populated_bele_dir / "AllSales.xlsx")
 
     # WHEN
-    # Apply function
-    update_spark_num_in_belief_files(temp_dir, 41)
-
+    beliefs_sheets_to_idea_sheets(populated_bele_dir, i_src_dir)
     # THEN
-    # Reload the file and verify that spark_num column exists and is correct
-    result = pandas_read_excel(file_path, sheet_name=None)
+    allsales_dir = os_path_join(str(i_src_dir), "AllSales.xlsx")
+    df = pandas_read_excel(allsales_dir, sheet_name="BR00020_Sales")
+    assert list(df.columns) == expected_dst_columns
+    assert len(df) == 2
+    assert df[kw.spark_num].min() == 11
+    assert df[kw.spark_num].min() == curr_spark_num + 1
+    assert df["revenue"].sum() == 750
 
-    for sheet_df in result.values():
-        assert kw.spark_num in sheet_df.columns
-        assert all(sheet_df[kw.spark_num] == 42)
+
+def test_beliefs_sheets_to_idea_sheets_Scenario4_ParameterSparkNumAccepted(
+    tmp_path: Path,
+):
+    """Each copied sheet can be read by pandas and contains the original data."""
+    # ESTABLISH
+    i_src_dir = tmp_path / "ideas"
+    i_src_dir.mkdir()
+    populated_bele_dir = tmp_path / "bele"
+    populated_bele_dir.mkdir()
+    idea_wb = openpyxl_Workbook()
+    idea_ws1 = idea_wb.active
+    idea_ws1.title = "BR00020_Sales"
+    expected_dst_columns = [kw.spark_num, kw.spark_face, "product", "units", "revenue"]
+    idea_ws1.append(expected_dst_columns)
+    curr_spark_num = 10
+    idea_ws1.append([curr_spark_num, exx.sue, "widget", 10, 500])
+    idea_wb.save(i_src_dir / "OtherFile.xlsx")
+
+    wb = openpyxl_Workbook()
+    ws1 = wb.active
+    ws1.title = "BR00020_Sales"
+    ws1.append([kw.spark_face, "product", "units", "revenue"])
+    ws1.append([exx.sue, "widget", 10, 500])
+    ws1.append([exx.sue, "gadget", 5, 250])
+
+    ws2 = wb.create_sheet("BR00004_Costs")
+    ws2.append([kw.spark_face, "category", "amount"])
+    ws2.append([exx.sue, "rent", 1000])
+    wb.create_sheet("Summary")  # non-BR, should be ignored
+    wb.save(populated_bele_dir / "AllSales.xlsx")
+    db_max_spark_num = 22
+
+    # WHEN
+    beliefs_sheets_to_idea_sheets(populated_bele_dir, i_src_dir, db_max_spark_num)
+    # THEN
+    allsales_dir = os_path_join(str(i_src_dir), "AllSales.xlsx")
+    df = pandas_read_excel(allsales_dir, sheet_name="BR00020_Sales")
+    assert df[kw.spark_num].min() != 11
+    assert df[kw.spark_num].min() != curr_spark_num + 1
+    assert df[kw.spark_num].min() == db_max_spark_num + 1
+
+
+def test_beliefs_sheets_to_idea_sheets_Scenario5_src_dir_IsEmptied(
+    tmp_path: Path,
+):
+    """Each copied sheet can be read by pandas and contains the original data."""
+    # ESTABLISH
+    bele_dir = tmp_path / "bele"
+    bele_dir.mkdir()
+    i_src_dir = tmp_path / "ideas"
+    i_src_dir.mkdir()
+
+    wb = openpyxl_Workbook()
+    ws1 = wb.active
+    ws1.title = "BR00020_Sales"
+    ws1.append([kw.spark_face, "product", "units", "revenue"])
+    ws1.append([exx.sue, "widget", 10, 500])
+    wb.save(bele_dir / "AllSales.xlsx")
+    assert count_dirs_files(bele_dir) == 1
+
+    # WHEN
+    beliefs_sheets_to_idea_sheets(bele_dir, i_src_dir)
+    # THEN
+    assert count_dirs_files(bele_dir) == 0

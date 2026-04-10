@@ -13,44 +13,44 @@ from src.ref.keywords import ExampleStrs as exx
 def test_PersonUnit_set_plan_ScenarioXX_RaisesErrorWhen_parent_rope_IsInvalid():
     # ESTABLISH
     zia_person = personunit_shop("Zia")
-    invalid_rootlabel_swim_rope = create_rope("swimming")
+    invalid_rootlabel_bowl_rope = create_rope("bowling")
     casa_plan = planunit_shop(exx.casa)
-    assert invalid_rootlabel_swim_rope != zia_person.planroot.get_plan_rope()
+    assert invalid_rootlabel_bowl_rope != zia_person.planroot.get_plan_rope()
 
     # WHEN / THEN
     with pytest_raises(Exception) as excinfo:
-        zia_person.set_plan_obj(casa_plan, parent_rope=invalid_rootlabel_swim_rope)
-    exception_str = f"set_plan failed because parent_rope '{invalid_rootlabel_swim_rope}' has an invalid root rope. Should be {zia_person.planroot.get_plan_rope()}."
+        zia_person.set_plan_obj(casa_plan, parent_rope=invalid_rootlabel_bowl_rope)
+    exception_str = f"set_plan failed because parent_rope '{invalid_rootlabel_bowl_rope}' has an invalid root rope. Should be {zia_person.planroot.get_plan_rope()}."
     assert str(excinfo.value) == exception_str
 
 
 def test_PersonUnit_set_plan_ScenarioXX_RaisesErrorWhen_parent_rope_PlanDoesNotExist():
     # ESTABLISH
     zia_person = personunit_shop("Zia")
-    swim_rope = zia_person.make_l1_rope("swimming")
+    bowl_rope = zia_person.make_l1_rope("bowling")
 
     # WHEN / THEN
     with pytest_raises(Exception) as excinfo:
         zia_person.set_plan_obj(
             planunit_shop(exx.casa),
-            parent_rope=swim_rope,
+            parent_rope=bowl_rope,
             create_missing_ancestors=False,
         )
-    exception_str = f"set_plan failed because '{swim_rope}' plan does not exist."
+    exception_str = f"set_plan failed because '{bowl_rope}' plan does not exist."
     assert str(excinfo.value) == exception_str
 
 
 def test_PersonUnit_set_plan_ScenarioXX_RaisesErrorWhen_plan_label_IsNotLabel():
     # ESTABLISH
     zia_person = personunit_shop("Zia")
-    swim_rope = zia_person.make_l1_rope("swimming")
+    bowl_rope = zia_person.make_l1_rope("bowling")
     casa_rope = zia_person.make_l1_rope(exx.casa)
     run_str = "run"
     run_rope = zia_person.make_rope(casa_rope, run_str)
 
     # WHEN / THEN
     with pytest_raises(Exception) as excinfo:
-        zia_person.set_plan_obj(planunit_shop(run_rope), parent_rope=swim_rope)
+        zia_person.set_plan_obj(planunit_shop(run_rope), parent_rope=bowl_rope)
     exception_str = f"set_plan failed because '{run_rope}' is not a LabelTerm."
     assert str(excinfo.value) == exception_str
 
@@ -636,13 +636,14 @@ def test_PersonUnit_set_plan_ScenarioXX_MustReorderKidsDictToBeAlphabetical():
     # ESTABLISH
     bob_person = personunit_shop("Bob")
     bob_person.set_l1_plan(planunit_shop(exx.casa))
-    bob_person.set_l1_plan(planunit_shop(exx.swim))
+    bob_person.set_l1_plan(planunit_shop(exx.bowl))
 
     # WHEN
     plan_list = list(bob_person.planroot.kids.values())
 
     # THEN
-    assert plan_list[0].plan_label == exx.casa
+    assert plan_list[0].plan_label == exx.bowl
+    assert plan_list[1].plan_label == exx.casa
 
 
 def test_PersonUnit_set_plan_ScenarioXX_adoptee_RaisesErrorIfAdopteePlanDoesNotHaveParent():
@@ -651,7 +652,7 @@ def test_PersonUnit_set_plan_ScenarioXX_adoptee_RaisesErrorIfAdopteePlanDoesNotH
     sports_str = "sports"
     sports_rope = bob_person.make_l1_rope(sports_str)
     bob_person.set_l1_plan(planunit_shop(sports_str))
-    bob_person.set_plan_obj(planunit_shop(exx.swim), parent_rope=sports_rope)
+    bob_person.set_plan_obj(planunit_shop(exx.bowl), parent_rope=sports_rope)
 
     # WHEN / THEN
     summer_str = "summer"
@@ -661,7 +662,7 @@ def test_PersonUnit_set_plan_ScenarioXX_adoptee_RaisesErrorIfAdopteePlanDoesNotH
         bob_person.set_plan_obj(
             plan_kid=planunit_shop(summer_str),
             parent_rope=sports_rope,
-            adoptees=[exx.swim, hike_str],
+            adoptees=[exx.bowl, hike_str],
         )
     assert str(excinfo.value) == f"get_plan_obj failed. no plan at '{hike_rope}'"
 
@@ -672,34 +673,34 @@ def test_PersonUnit_set_plan_ScenarioXX_adoptee_AddsAdoptee():
     sports_str = "sports"
     sports_rope = bob_person.make_l1_rope(sports_str)
     bob_person.set_l1_plan(planunit_shop(sports_str))
-    bob_person.set_plan_obj(planunit_shop(exx.swim), parent_rope=sports_rope)
+    bob_person.set_plan_obj(planunit_shop(exx.bowl), parent_rope=sports_rope)
     hike_str = "hike"
     bob_person.set_plan_obj(planunit_shop(hike_str), parent_rope=sports_rope)
 
-    sports_swim_rope = bob_person.make_rope(sports_rope, exx.swim)
+    sports_bowl_rope = bob_person.make_rope(sports_rope, exx.bowl)
     sports_hike_rope = bob_person.make_rope(sports_rope, hike_str)
-    assert bob_person.plan_exists(sports_swim_rope)
+    assert bob_person.plan_exists(sports_bowl_rope)
     assert bob_person.plan_exists(sports_hike_rope)
     summer_str = "summer"
     summer_rope = bob_person.make_rope(sports_rope, summer_str)
-    summer_swim_rope = bob_person.make_rope(summer_rope, exx.swim)
+    summer_bowl_rope = bob_person.make_rope(summer_rope, exx.bowl)
     summer_hike_rope = bob_person.make_rope(summer_rope, hike_str)
-    assert bob_person.plan_exists(summer_swim_rope) is False
+    assert bob_person.plan_exists(summer_bowl_rope) is False
     assert bob_person.plan_exists(summer_hike_rope) is False
 
     # WHEN / THEN
     bob_person.set_plan_obj(
         plan_kid=planunit_shop(summer_str),
         parent_rope=sports_rope,
-        adoptees=[exx.swim, hike_str],
+        adoptees=[exx.bowl, hike_str],
     )
 
     # THEN
     summer_plan = bob_person.get_plan_obj(summer_rope)
     print(f"{summer_plan.kids.keys()=}")
-    assert bob_person.plan_exists(summer_swim_rope)
+    assert bob_person.plan_exists(summer_bowl_rope)
     assert bob_person.plan_exists(summer_hike_rope)
-    assert bob_person.plan_exists(sports_swim_rope) is False
+    assert bob_person.plan_exists(sports_bowl_rope) is False
     assert bob_person.plan_exists(sports_hike_rope) is False
 
 
@@ -709,8 +710,8 @@ def test_PersonUnit_set_plan_ScenarioXX_bundling_SetsNewParentWithstarEqualToSum
     sports_str = "sports"
     sports_rope = bob_person.make_l1_rope(sports_str)
     bob_person.set_l1_plan(planunit_shop(sports_str, star=2))
-    swim_star = 3
-    bob_person.set_plan_obj(planunit_shop(exx.swim, star=swim_star), sports_rope)
+    bowl_star = 3
+    bob_person.set_plan_obj(planunit_shop(exx.bowl, star=bowl_star), sports_rope)
     hike_str = "hike"
     hike_star = 5
     bob_person.set_plan_obj(planunit_shop(hike_str, star=hike_star), sports_rope)
@@ -718,18 +719,18 @@ def test_PersonUnit_set_plan_ScenarioXX_bundling_SetsNewParentWithstarEqualToSum
     bball_star = 7
     bob_person.set_plan_obj(planunit_shop(bball_str, star=bball_star), sports_rope)
 
-    sports_swim_rope = bob_person.make_rope(sports_rope, exx.swim)
+    sports_bowl_rope = bob_person.make_rope(sports_rope, exx.bowl)
     sports_hike_rope = bob_person.make_rope(sports_rope, hike_str)
     sports_bball_rope = bob_person.make_rope(sports_rope, bball_str)
-    assert bob_person.get_plan_obj(sports_swim_rope).star == swim_star
+    assert bob_person.get_plan_obj(sports_bowl_rope).star == bowl_star
     assert bob_person.get_plan_obj(sports_hike_rope).star == hike_star
     assert bob_person.get_plan_obj(sports_bball_rope).star == bball_star
     summer_str = "summer"
     summer_rope = bob_person.make_rope(sports_rope, summer_str)
-    summer_swim_rope = bob_person.make_rope(summer_rope, exx.swim)
+    summer_bowl_rope = bob_person.make_rope(summer_rope, exx.bowl)
     summer_hike_rope = bob_person.make_rope(summer_rope, hike_str)
     summer_bball_rope = bob_person.make_rope(summer_rope, bball_str)
-    assert bob_person.plan_exists(summer_swim_rope) is False
+    assert bob_person.plan_exists(summer_bowl_rope) is False
     assert bob_person.plan_exists(summer_hike_rope) is False
     assert bob_person.plan_exists(summer_bball_rope) is False
 
@@ -737,16 +738,16 @@ def test_PersonUnit_set_plan_ScenarioXX_bundling_SetsNewParentWithstarEqualToSum
     bob_person.set_plan_obj(
         plan_kid=planunit_shop(summer_str),
         parent_rope=sports_rope,
-        adoptees=[exx.swim, hike_str],
+        adoptees=[exx.bowl, hike_str],
         bundling=True,
     )
 
     # THEN
-    assert bob_person.get_plan_obj(summer_rope).star == swim_star + hike_star
-    assert bob_person.get_plan_obj(summer_swim_rope).star == swim_star
+    assert bob_person.get_plan_obj(summer_rope).star == bowl_star + hike_star
+    assert bob_person.get_plan_obj(summer_bowl_rope).star == bowl_star
     assert bob_person.get_plan_obj(summer_hike_rope).star == hike_star
     assert bob_person.plan_exists(summer_bball_rope) is False
-    assert bob_person.plan_exists(sports_swim_rope) is False
+    assert bob_person.plan_exists(sports_bowl_rope) is False
     assert bob_person.plan_exists(sports_hike_rope) is False
     assert bob_person.plan_exists(sports_bball_rope)
 
@@ -757,8 +758,8 @@ def test_PersonUnit_del_plan_obj_DeletingBundledPlanReturnsPlansToOriginalState(
     sports_str = "sports"
     sports_rope = bob_person.make_l1_rope(sports_str)
     bob_person.set_l1_plan(planunit_shop(sports_str, star=2))
-    swim_star = 3
-    bob_person.set_plan_obj(planunit_shop(exx.swim, star=swim_star), sports_rope)
+    bowl_star = 3
+    bob_person.set_plan_obj(planunit_shop(exx.bowl, star=bowl_star), sports_rope)
     hike_str = "hike"
     hike_star = 5
     bob_person.set_plan_obj(planunit_shop(hike_str, star=hike_star), sports_rope)
@@ -766,31 +767,31 @@ def test_PersonUnit_del_plan_obj_DeletingBundledPlanReturnsPlansToOriginalState(
     bball_star = 7
     bob_person.set_plan_obj(planunit_shop(bball_str, star=bball_star), sports_rope)
 
-    sports_swim_rope = bob_person.make_rope(sports_rope, exx.swim)
+    sports_bowl_rope = bob_person.make_rope(sports_rope, exx.bowl)
     sports_hike_rope = bob_person.make_rope(sports_rope, hike_str)
     sports_bball_rope = bob_person.make_rope(sports_rope, bball_str)
-    assert bob_person.get_plan_obj(sports_swim_rope).star == swim_star
+    assert bob_person.get_plan_obj(sports_bowl_rope).star == bowl_star
     assert bob_person.get_plan_obj(sports_hike_rope).star == hike_star
     assert bob_person.get_plan_obj(sports_bball_rope).star == bball_star
     summer_str = "summer"
     summer_rope = bob_person.make_rope(sports_rope, summer_str)
-    summer_swim_rope = bob_person.make_rope(summer_rope, exx.swim)
+    summer_bowl_rope = bob_person.make_rope(summer_rope, exx.bowl)
     summer_hike_rope = bob_person.make_rope(summer_rope, hike_str)
     summer_bball_rope = bob_person.make_rope(summer_rope, bball_str)
-    assert bob_person.plan_exists(summer_swim_rope) is False
+    assert bob_person.plan_exists(summer_bowl_rope) is False
     assert bob_person.plan_exists(summer_hike_rope) is False
     assert bob_person.plan_exists(summer_bball_rope) is False
     bob_person.set_plan_obj(
         plan_kid=planunit_shop(summer_str),
         parent_rope=sports_rope,
-        adoptees=[exx.swim, hike_str],
+        adoptees=[exx.bowl, hike_str],
         bundling=True,
     )
-    assert bob_person.get_plan_obj(summer_rope).star == swim_star + hike_star
-    assert bob_person.get_plan_obj(summer_swim_rope).star == swim_star
+    assert bob_person.get_plan_obj(summer_rope).star == bowl_star + hike_star
+    assert bob_person.get_plan_obj(summer_bowl_rope).star == bowl_star
     assert bob_person.get_plan_obj(summer_hike_rope).star == hike_star
     assert bob_person.plan_exists(summer_bball_rope) is False
-    assert bob_person.plan_exists(sports_swim_rope) is False
+    assert bob_person.plan_exists(sports_bowl_rope) is False
     assert bob_person.plan_exists(sports_hike_rope) is False
     assert bob_person.plan_exists(sports_bball_rope)
     print(f"{bob_person._plan_dict.keys()=}")
@@ -799,10 +800,10 @@ def test_PersonUnit_del_plan_obj_DeletingBundledPlanReturnsPlansToOriginalState(
     bob_person.del_plan_obj(rope=summer_rope, del_children=False)
 
     # THEN
-    sports_swim_plan = bob_person.get_plan_obj(sports_swim_rope)
+    sports_bowl_plan = bob_person.get_plan_obj(sports_bowl_rope)
     sports_hike_plan = bob_person.get_plan_obj(sports_hike_rope)
     sports_bball_plan = bob_person.get_plan_obj(sports_bball_rope)
-    assert sports_swim_plan.star == swim_star
+    assert sports_bowl_plan.star == bowl_star
     assert sports_hike_plan.star == hike_star
     assert sports_bball_plan.star == bball_star
 
@@ -814,31 +815,31 @@ def test_PersonUnit_edit_plan_attr_DeletesPlanUnit_awardunits():
     yao_person.add_contactunit(exx.zia)
     yao_person.add_contactunit(exx.xio)
 
-    swim_rope = yao_person.make_l1_rope(exx.swim)
+    bowl_rope = yao_person.make_l1_rope(exx.bowl)
 
-    yao_person.set_l1_plan(planunit_shop(exx.swim))
+    yao_person.set_l1_plan(planunit_shop(exx.bowl))
     awardunit_yao = awardunit_shop(exx.yao, give_force=10)
     awardunit_zia = awardunit_shop(exx.zia, give_force=10)
     awardunit_Xio = awardunit_shop(exx.xio, give_force=10)
 
-    swim_plan = yao_person.get_plan_obj(swim_rope)
-    yao_person.edit_plan_attr(swim_rope, awardunit=awardunit_yao)
-    yao_person.edit_plan_attr(swim_rope, awardunit=awardunit_zia)
-    yao_person.edit_plan_attr(swim_rope, awardunit=awardunit_Xio)
+    bowl_plan = yao_person.get_plan_obj(bowl_rope)
+    yao_person.edit_plan_attr(bowl_rope, awardunit=awardunit_yao)
+    yao_person.edit_plan_attr(bowl_rope, awardunit=awardunit_zia)
+    yao_person.edit_plan_attr(bowl_rope, awardunit=awardunit_Xio)
 
-    assert len(swim_plan.awardunits) == 3
-    assert len(yao_person.planroot.kids[exx.swim].awardunits) == 3
+    assert len(bowl_plan.awardunits) == 3
+    assert len(yao_person.planroot.kids[exx.bowl].awardunits) == 3
 
     # WHEN
-    yao_person.edit_plan_attr(swim_rope, awardunit_del=exx.yao)
+    yao_person.edit_plan_attr(bowl_rope, awardunit_del=exx.yao)
 
     # THEN
-    swim_plan = yao_person.get_plan_obj(swim_rope)
-    print(f"{swim_plan.plan_label=}")
-    print(f"{swim_plan.awardunits=}")
-    print(f"{swim_plan.awardheirs=}")
+    bowl_plan = yao_person.get_plan_obj(bowl_rope)
+    print(f"{bowl_plan.plan_label=}")
+    print(f"{bowl_plan.awardunits=}")
+    print(f"{bowl_plan.awardheirs=}")
 
-    assert len(yao_person.planroot.kids[exx.swim].awardunits) == 2
+    assert len(yao_person.planroot.kids[exx.bowl].awardunits) == 2
 
 
 def test_PersonUnit__get_filtered_awardunits_plan_RemovesContact_awardunits():
@@ -877,17 +878,17 @@ def test_PersonUnit__get_filtered_awardunits_plan_RemovesGroup_awardunit():
     example_person.add_contactunit(xia_str)
     example_person.add_contactunit(zoa_str)
 
-    swim_rope = example_person.make_l1_rope(exx.swim)
-    example_person.set_l1_plan(planunit_shop(exx.swim))
-    example_person.edit_plan_attr(swim_rope, awardunit=awardunit_shop(xia_str))
-    example_person.edit_plan_attr(swim_rope, awardunit=awardunit_shop(zoa_str))
-    example_person_swim_plan = example_person.get_plan_obj(swim_rope)
-    assert len(example_person_swim_plan.awardunits) == 2
+    bowl_rope = example_person.make_l1_rope(exx.bowl)
+    example_person.set_l1_plan(planunit_shop(exx.bowl))
+    example_person.edit_plan_attr(bowl_rope, awardunit=awardunit_shop(xia_str))
+    example_person.edit_plan_attr(bowl_rope, awardunit=awardunit_shop(zoa_str))
+    example_person_bowl_plan = example_person.get_plan_obj(bowl_rope)
+    assert len(example_person_bowl_plan.awardunits) == 2
     bob_person = personunit_shop(exx.bob)
     bob_person.add_contactunit(xia_str)
 
     # WHEN
-    cleaned_plan = bob_person._get_filtered_awardunits_plan(example_person_swim_plan)
+    cleaned_plan = bob_person._get_filtered_awardunits_plan(example_person_bowl_plan)
 
     # THEN
     assert len(cleaned_plan.awardunits) == 1
@@ -903,23 +904,23 @@ def test_PersonUnit_set_plan_ScenarioXX_SetsPlan_awardunits():
     example_person.add_contactunit(zoa_str)
 
     casa_rope = example_person.make_l1_rope(exx.casa)
-    swim_rope = example_person.make_l1_rope(exx.swim)
+    bowl_rope = example_person.make_l1_rope(exx.bowl)
     example_person.set_l1_plan(planunit_shop(exx.casa))
-    example_person.set_l1_plan(planunit_shop(exx.swim))
-    example_person.edit_plan_attr(swim_rope, awardunit=awardunit_shop(xia_str))
-    example_person.edit_plan_attr(swim_rope, awardunit=awardunit_shop(zoa_str))
-    example_person_swim_plan = example_person.get_plan_obj(swim_rope)
-    assert len(example_person_swim_plan.awardunits) == 2
+    example_person.set_l1_plan(planunit_shop(exx.bowl))
+    example_person.edit_plan_attr(bowl_rope, awardunit=awardunit_shop(xia_str))
+    example_person.edit_plan_attr(bowl_rope, awardunit=awardunit_shop(zoa_str))
+    example_person_bowl_plan = example_person.get_plan_obj(bowl_rope)
+    assert len(example_person_bowl_plan.awardunits) == 2
     bob_person = personunit_shop(exx.bob)
     bob_person.add_contactunit(xia_str)
 
     # WHEN
-    bob_person.set_l1_plan(example_person_swim_plan, create_missing_plans=False)
+    bob_person.set_l1_plan(example_person_bowl_plan, create_missing_plans=False)
 
     # THEN
-    bob_person_swim_plan = bob_person.get_plan_obj(swim_rope)
-    assert len(bob_person_swim_plan.awardunits) == 1
-    assert list(bob_person_swim_plan.awardunits.keys()) == [xia_str]
+    bob_person_bowl_plan = bob_person.get_plan_obj(bowl_rope)
+    assert len(bob_person_bowl_plan.awardunits) == 1
+    assert list(bob_person_bowl_plan.awardunits.keys()) == [xia_str]
 
 
 def test_PersonUnit_get_plan_obj_ReturnsPlan():
@@ -983,7 +984,7 @@ def test_PersonUnit_plan_exists_ReturnsBool():
     oregon_rope = sue_person.make_rope(usa_rope, "Oregon")
     # do not exist in person
     sports_rope = sue_person.make_l1_rope("sports")
-    swim_rope = sue_person.make_rope(sports_rope, "swimming")
+    bowl_rope = sue_person.make_rope(sports_rope, "bowling")
     idaho_rope = sue_person.make_rope(usa_rope, "Idaho")
     japan_rope = sue_person.make_rope(nation_rope, "Japan")
 
@@ -1009,7 +1010,7 @@ def test_PersonUnit_plan_exists_ReturnsBool():
     assert sue_person.plan_exists(oregon_rope)
     assert sue_person.plan_exists(to_rope("B")) is False
     assert sue_person.plan_exists(sports_rope) is False
-    assert sue_person.plan_exists(swim_rope) is False
+    assert sue_person.plan_exists(bowl_rope) is False
     assert sue_person.plan_exists(idaho_rope) is False
     assert sue_person.plan_exists(japan_rope) is False
 

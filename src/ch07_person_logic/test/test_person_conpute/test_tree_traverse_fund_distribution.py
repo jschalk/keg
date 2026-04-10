@@ -282,8 +282,8 @@ def test_PersonUnit_conpute_WhenPlanUnitHasFundsBut_kidsHaveNostarDistributeFund
     casa_rope = sue_personunit.make_l1_rope(exx.casa)
     casa_plan = planunit_shop(exx.casa, star=1)
 
-    swim_rope = sue_personunit.make_rope(casa_rope, exx.swim)
-    swim_plan = planunit_shop(exx.swim, star=8)
+    bowl_rope = sue_personunit.make_rope(casa_rope, exx.bowl)
+    bowl_plan = planunit_shop(exx.bowl, star=8)
 
     clean_str = "cleaning"
     clean_rope = sue_personunit.make_rope(casa_rope, clean_str)
@@ -297,13 +297,13 @@ def test_PersonUnit_conpute_WhenPlanUnitHasFundsBut_kidsHaveNostarDistributeFund
     vacuum_plan = planunit_shop(vacuum_str, star=0)
 
     sue_personunit.set_l1_plan(casa_plan)
-    sue_personunit.set_plan_obj(swim_plan, casa_rope)
+    sue_personunit.set_plan_obj(bowl_plan, casa_rope)
     sue_personunit.set_plan_obj(clean_plan, casa_rope)
     sue_personunit.set_plan_obj(sweep_plan, clean_rope)  # _star=0
     sue_personunit.set_plan_obj(vacuum_plan, clean_rope)  # _star=0
 
     assert sue_personunit.get_plan_obj(casa_rope).fund_ratio is None
-    assert sue_personunit.get_plan_obj(swim_rope).fund_ratio is None
+    assert sue_personunit.get_plan_obj(bowl_rope).fund_ratio is None
     assert sue_personunit.get_plan_obj(clean_rope).fund_ratio is None
     assert sue_personunit.get_plan_obj(sweep_rope).fund_ratio is None
     assert sue_personunit.get_plan_obj(vacuum_rope).fund_ratio is None
@@ -320,7 +320,7 @@ def test_PersonUnit_conpute_WhenPlanUnitHasFundsBut_kidsHaveNostarDistributeFund
     print(f"{sue_personunit.fund_pool=}")
     clean_fund_ratio = 0.2
     assert sue_personunit.get_plan_obj(casa_rope).fund_ratio == 1
-    assert sue_personunit.get_plan_obj(swim_rope).fund_ratio == 0.8
+    assert sue_personunit.get_plan_obj(bowl_rope).fund_ratio == 0.8
     assert sue_personunit.get_plan_obj(clean_rope).fund_ratio == clean_fund_ratio
     assert sue_personunit.get_plan_obj(sweep_rope).fund_ratio == 0
     assert sue_personunit.get_plan_obj(vacuum_rope).fund_ratio == 0
@@ -485,8 +485,8 @@ def test_PersonUnit_conpute_WithRootLevelAwardUnitSetsGroupUnit_fund_give_fund_t
 def test_PersonUnit_conpute_WithLevel3AwardUnitSetsGroupUnit_fund_give_fund_take():
     # ESTABLISH
     x_person = personunit_shop(exx.bob)
-    swim_rope = x_person.make_l1_rope(exx.swim)
-    x_person.set_l1_plan(planunit_shop(exx.swim))
+    bowl_rope = x_person.make_l1_rope(exx.bowl)
+    x_person.set_l1_plan(planunit_shop(exx.bowl))
 
     x_person.set_contactunit(contactunit_shop(exx.yao))
     x_person.set_contactunit(contactunit_shop(exx.zia))
@@ -494,10 +494,10 @@ def test_PersonUnit_conpute_WithLevel3AwardUnitSetsGroupUnit_fund_give_fund_take
     yao_awardunit = awardunit_shop(exx.yao, give_force=20, take_force=6)
     zia_awardunit = awardunit_shop(exx.zia, give_force=10, take_force=1)
     xio_awardunit = awardunit_shop(exx.xio, give_force=10)
-    swim_plan = x_person.get_plan_obj(swim_rope)
-    swim_plan.set_awardunit(yao_awardunit)
-    swim_plan.set_awardunit(zia_awardunit)
-    swim_plan.set_awardunit(xio_awardunit)
+    bowl_plan = x_person.get_plan_obj(bowl_rope)
+    bowl_plan.set_awardunit(yao_awardunit)
+    bowl_plan.set_awardunit(zia_awardunit)
+    bowl_plan.set_awardunit(xio_awardunit)
     assert len(x_person.get_contactunit_group_titles_dict()) == 3
 
     # WHEN
@@ -526,8 +526,8 @@ def test_PersonUnit_conpute_WithLevel3AwardUnitSetsGroupUnit_fund_give_fund_take
 def test_PersonUnit_conpute_CreatesNewGroupUnitAndSetsGroup_fund_give_fund_take():
     # ESTABLISH
     x_person = personunit_shop(exx.yao)
-    swim_rope = x_person.make_l1_rope(exx.swim)
-    x_person.set_l1_plan(planunit_shop(exx.swim))
+    bowl_rope = x_person.make_l1_rope(exx.bowl)
+    x_person.set_l1_plan(planunit_shop(exx.bowl))
 
     x_person.set_contactunit(contactunit_shop(exx.yao))
     x_person.set_contactunit(contactunit_shop(exx.zia))
@@ -535,10 +535,10 @@ def test_PersonUnit_conpute_CreatesNewGroupUnitAndSetsGroup_fund_give_fund_take(
     yao_awardunit = awardunit_shop(exx.yao, give_force=20, take_force=6)
     zia_awardunit = awardunit_shop(exx.zia, give_force=10, take_force=1)
     xio_awardunit = awardunit_shop(exx.xio, give_force=10)
-    swim_plan = x_person.get_plan_obj(swim_rope)
-    swim_plan.set_awardunit(yao_awardunit)
-    swim_plan.set_awardunit(zia_awardunit)
-    swim_plan.set_awardunit(xio_awardunit)
+    bowl_plan = x_person.get_plan_obj(bowl_rope)
+    bowl_plan.set_awardunit(yao_awardunit)
+    bowl_plan.set_awardunit(zia_awardunit)
+    bowl_plan.set_awardunit(xio_awardunit)
     assert len(x_person.get_contactunit_group_titles_dict()) == 2
 
     # WHEN
@@ -568,8 +568,8 @@ def test_PersonUnit_conpute_CreatesNewGroupUnitAndSetsGroup_fund_give_fund_take(
 def test_PersonUnit_conpute_WithLevel3AwardUnitAndEmptyAncestorsSetsGroupUnit_fund_give_fund_take():
     # ESTABLISH
     x_person = personunit_shop(exx.yao)
-    swim_rope = x_person.make_l1_rope(exx.swim)
-    x_person.set_l1_plan(planunit_shop(exx.swim))
+    bowl_rope = x_person.make_l1_rope(exx.bowl)
+    x_person.set_l1_plan(planunit_shop(exx.bowl))
 
     x_person.set_contactunit(contactunit_shop(exx.yao))
     x_person.set_contactunit(contactunit_shop(exx.zia))
@@ -577,10 +577,10 @@ def test_PersonUnit_conpute_WithLevel3AwardUnitAndEmptyAncestorsSetsGroupUnit_fu
     yao_awardunit = awardunit_shop(exx.yao, give_force=20, take_force=6)
     zia_awardunit = awardunit_shop(exx.zia, give_force=10, take_force=1)
     xio_awardunit = awardunit_shop(exx.xio, give_force=10)
-    swim_plan = x_person.get_plan_obj(swim_rope)
-    swim_plan.set_awardunit(yao_awardunit)
-    swim_plan.set_awardunit(zia_awardunit)
-    swim_plan.set_awardunit(xio_awardunit)
+    bowl_plan = x_person.get_plan_obj(bowl_rope)
+    bowl_plan.set_awardunit(yao_awardunit)
+    bowl_plan.set_awardunit(zia_awardunit)
+    bowl_plan.set_awardunit(xio_awardunit)
 
     # no awardunits attached to this one
     x_person.set_l1_plan(planunit_shop("hunt", star=3))
@@ -781,17 +781,17 @@ def test_PersonUnit_conpute_SetsGroupLinkPersonCredAndDebt():
 def test_PersonUnit_conpute_SetsContactUnitPerson_fund():
     # ESTABLISH
     yao_person = personunit_shop("Yao")
-    swim_rope = yao_person.make_l1_rope(exx.swim)
-    yao_person.set_l1_plan(planunit_shop(exx.swim))
+    bowl_rope = yao_person.make_l1_rope(exx.bowl)
+    yao_person.set_l1_plan(planunit_shop(exx.bowl))
     yao_person.set_contactunit(contactunit_shop(exx.sue))
     yao_person.set_contactunit(contactunit_shop(exx.bob))
     yao_person.set_contactunit(contactunit_shop(exx.zia))
     bl_sue = awardunit_shop(exx.sue, 20, take_force=40)
     bl_bob = awardunit_shop(exx.bob, 10, take_force=5)
     bl_zia = awardunit_shop(exx.zia, 10, take_force=5)
-    yao_person.get_plan_obj(swim_rope).set_awardunit(bl_sue)
-    yao_person.get_plan_obj(swim_rope).set_awardunit(bl_bob)
-    yao_person.get_plan_obj(swim_rope).set_awardunit(bl_zia)
+    yao_person.get_plan_obj(bowl_rope).set_awardunit(bl_sue)
+    yao_person.get_plan_obj(bowl_rope).set_awardunit(bl_bob)
+    yao_person.get_plan_obj(bowl_rope).set_awardunit(bl_zia)
 
     sue_contactunit = yao_person.get_contact(exx.sue)
     bob_contactunit = yao_person.get_contact(exx.bob)
@@ -876,18 +876,18 @@ def test_PersonUnit_conpute_SetsContactUnitPerson_fund():
 def test_PersonUnit_conpute_SetsPartGroupedLWContactUnitPerson_fund():
     # ESTABLISH
     yao_person = personunit_shop("Yao")
-    swim_rope = yao_person.make_l1_rope(exx.swim)
-    yao_person.set_l1_plan(planunit_shop(exx.swim))
+    bowl_rope = yao_person.make_l1_rope(exx.bowl)
+    yao_person.set_l1_plan(planunit_shop(exx.bowl))
     yao_person.set_contactunit(contactunit_shop(exx.sue))
     yao_person.set_contactunit(contactunit_shop(exx.bob))
     yao_person.set_contactunit(contactunit_shop(exx.zia))
     sue_awardunit = awardunit_shop(exx.sue, 20, take_force=40)
     bob_awardunit = awardunit_shop(exx.bob, 10, take_force=5)
     zia_awardunit = awardunit_shop(exx.zia, 10, take_force=5)
-    swim_plan = yao_person.get_plan_obj(swim_rope)
-    swim_plan.set_awardunit(sue_awardunit)
-    swim_plan.set_awardunit(bob_awardunit)
-    swim_plan.set_awardunit(zia_awardunit)
+    bowl_plan = yao_person.get_plan_obj(bowl_rope)
+    bowl_plan.set_awardunit(sue_awardunit)
+    bowl_plan.set_awardunit(bob_awardunit)
+    bowl_plan.set_awardunit(zia_awardunit)
 
     # no awardunits attached to this one
     hunt_str = "hunt"
@@ -943,8 +943,8 @@ def test_PersonUnit_conpute_SetsPartGroupedLWContactUnitPerson_fund():
 def test_PersonUnit_conpute_CreatesNewGroupUnitAndSetsContact_fund_give_fund_take():
     # ESTABLISH
     bob_person = personunit_shop(exx.bob)
-    swim_rope = bob_person.make_l1_rope(exx.swim)
-    bob_person.set_l1_plan(planunit_shop(exx.swim))
+    bowl_rope = bob_person.make_l1_rope(exx.bowl)
+    bob_person.set_l1_plan(planunit_shop(exx.bowl))
 
     bob_person.set_contactunit(contactunit_shop(exx.yao))
     bob_person.set_contactunit(contactunit_shop(exx.zia))
@@ -952,10 +952,10 @@ def test_PersonUnit_conpute_CreatesNewGroupUnitAndSetsContact_fund_give_fund_tak
     yao_awardunit = awardunit_shop(exx.yao, give_force=20, take_force=6)
     zia_awardunit = awardunit_shop(exx.zia, give_force=10, take_force=1)
     xio_awardunit = awardunit_shop(exx.xio, give_force=10)
-    swim_plan = bob_person.get_plan_obj(swim_rope)
-    swim_plan.set_awardunit(yao_awardunit)
-    swim_plan.set_awardunit(zia_awardunit)
-    swim_plan.set_awardunit(xio_awardunit)
+    bowl_plan = bob_person.get_plan_obj(bowl_rope)
+    bowl_plan.set_awardunit(yao_awardunit)
+    bowl_plan.set_awardunit(zia_awardunit)
+    bowl_plan.set_awardunit(xio_awardunit)
     assert len(bob_person.get_contactunit_group_titles_dict()) == 2
 
     # WHEN
@@ -977,7 +977,7 @@ def test_PersonUnit_conpute_CreatesNewGroupUnitAndSetsContact_fund_give_fund_tak
 def test_PersonUnit_conpute_SetsContactUnit_fund_give_fund_take():
     # ESTABLISH
     yao_person = personunit_shop("Yao")
-    yao_person.set_l1_plan(planunit_shop("swim"))
+    yao_person.set_l1_plan(planunit_shop("bowl"))
     yao_person.set_contactunit(contactunit_shop(exx.sue, 8))
     yao_person.set_contactunit(contactunit_shop(exx.bob))
     yao_person.set_contactunit(contactunit_shop(exx.zia))

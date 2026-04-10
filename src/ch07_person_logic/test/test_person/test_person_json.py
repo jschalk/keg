@@ -300,10 +300,10 @@ def test_get_personunit_from_dict_ReturnsObj_Scenario3_knot_GroupExample():
     # ESTABLISH
     slash_knot = "/"
     before_bob_person = personunit_shop("Bob", knot=slash_knot)
-    swim_str = f"{slash_knot}Swimmers"
+    bowlers_str = f"{slash_knot}bowlers"
     before_bob_person.add_contactunit(exx.yao)
     yao_contactunit = before_bob_person.get_contact(exx.yao)
-    yao_contactunit.add_membership(swim_str)
+    yao_contactunit.add_membership(bowlers_str)
 
     # WHEN
     after_bob_person = get_personunit_from_dict(before_bob_person.to_dict())

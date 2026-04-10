@@ -90,37 +90,37 @@ def test_sift_atom_ReturnsObj_PersonAtom_INSERT_person_planunit():
 
 
 def test_sift_atom_ReturnsObj_PersonAtom_INSERT_person_plan_awardunit():
+    # sourcery skip: extract-duplicate-method
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     casa_rope = sue_person.make_l1_rope(exx.casa)
     clean_rope = sue_person.make_rope(casa_rope, exx.clean)
-    swim_str = "Swim"
 
-    casa_swim_atom = create_xxx_swim_atom(casa_rope, swim_str)
-    clean_swim_atom = create_xxx_swim_atom(clean_rope, swim_str)
+    casa_bowl_atom = create_xxx_bowl_atom(casa_rope)
+    clean_bowl_atom = create_xxx_bowl_atom(clean_rope)
     sue_person.add_plan(casa_rope)
     sue_person.add_plan(clean_rope)
-    assert sift_personatom(sue_person, casa_swim_atom)
-    assert sift_personatom(sue_person, clean_swim_atom)
+    assert sift_personatom(sue_person, casa_bowl_atom)
+    assert sift_personatom(sue_person, clean_bowl_atom)
 
     # WHEN
-    sue_person.get_plan_obj(casa_rope).set_awardunit(awardunit_shop(swim_str))
+    sue_person.get_plan_obj(casa_rope).set_awardunit(awardunit_shop(exx.bowl))
 
     # THEN
-    assert not sift_personatom(sue_person, casa_swim_atom)
-    assert sift_personatom(sue_person, clean_swim_atom)
+    assert not sift_personatom(sue_person, casa_bowl_atom)
+    assert sift_personatom(sue_person, clean_bowl_atom)
 
     # WHEN
-    sue_person.get_plan_obj(clean_rope).set_awardunit(awardunit_shop(swim_str))
+    sue_person.get_plan_obj(clean_rope).set_awardunit(awardunit_shop(exx.bowl))
     # THEN
-    assert not sift_personatom(sue_person, casa_swim_atom)
-    assert not sift_personatom(sue_person, clean_swim_atom)
+    assert not sift_personatom(sue_person, casa_bowl_atom)
+    assert not sift_personatom(sue_person, clean_bowl_atom)
 
 
-def create_xxx_swim_atom(x_rope, swim_str):
+def create_xxx_bowl_atom(x_rope):
     result = personatom_shop(kw.person_plan_awardunit, kw.INSERT)
     result.set_arg(kw.plan_rope, x_rope)
-    result.set_arg(kw.awardee_title, swim_str)
+    result.set_arg(kw.awardee_title, exx.bowl)
     return result
 
 
@@ -160,6 +160,7 @@ def create_wk_atom(casa_rope, wk_rope):
 
 
 def test_sift_atom_ReturnsObj_PersonAtom_INSERT_person_plan_reason_caseunit_Exists():
+    # sourcery skip: extract-duplicate-method
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     casa_rope = sue_person.make_l1_rope(exx.casa)
@@ -201,70 +202,71 @@ def test_sift_atom_ReturnsObj_PersonAtom_INSERT_person_plan_reason_caseunit_Exis
 
 
 def test_sift_atom_ReturnsObj_PersonAtom_INSERT_person_plan_laborunit():
+    # sourcery skip: extract-duplicate-method
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     casa_rope = sue_person.make_l1_rope(exx.casa)
     clean_rope = sue_person.make_rope(casa_rope, exx.clean)
-    swim_str = "Swim"
 
-    casa_swim_atom = personatom_shop(kw.person_plan_laborunit, kw.INSERT)
-    casa_swim_atom.set_arg(kw.plan_rope, casa_rope)
-    casa_swim_atom.set_arg(kw.labor_title, swim_str)
-    clean_swim_atom = personatom_shop(kw.person_plan_laborunit, kw.INSERT)
-    clean_swim_atom.set_arg(kw.plan_rope, clean_rope)
-    clean_swim_atom.set_arg(kw.labor_title, swim_str)
+    casa_bowl_atom = personatom_shop(kw.person_plan_laborunit, kw.INSERT)
+    casa_bowl_atom.set_arg(kw.plan_rope, casa_rope)
+    casa_bowl_atom.set_arg(kw.labor_title, exx.bowl)
+    clean_bowl_atom = personatom_shop(kw.person_plan_laborunit, kw.INSERT)
+    clean_bowl_atom.set_arg(kw.plan_rope, clean_rope)
+    clean_bowl_atom.set_arg(kw.labor_title, exx.bowl)
     sue_person.add_plan(casa_rope)
     sue_person.add_plan(clean_rope)
-    assert sift_personatom(sue_person, casa_swim_atom)
-    assert sift_personatom(sue_person, clean_swim_atom)
+    assert sift_personatom(sue_person, casa_bowl_atom)
+    assert sift_personatom(sue_person, clean_bowl_atom)
 
     # WHEN
-    sue_person.get_plan_obj(casa_rope).workforceunit.add_labor(swim_str)
+    sue_person.get_plan_obj(casa_rope).workforceunit.add_labor(exx.bowl)
 
     # THEN
-    assert not sift_personatom(sue_person, casa_swim_atom)
-    assert sift_personatom(sue_person, clean_swim_atom)
+    assert not sift_personatom(sue_person, casa_bowl_atom)
+    assert sift_personatom(sue_person, clean_bowl_atom)
 
     # WHEN
-    sue_person.get_plan_obj(clean_rope).workforceunit.add_labor(swim_str)
+    sue_person.get_plan_obj(clean_rope).workforceunit.add_labor(exx.bowl)
     # THEN
-    assert not sift_personatom(sue_person, casa_swim_atom)
-    assert not sift_personatom(sue_person, clean_swim_atom)
+    assert not sift_personatom(sue_person, casa_bowl_atom)
+    assert not sift_personatom(sue_person, clean_bowl_atom)
 
 
 def test_sift_atom_ReturnsObj_PersonAtom_INSERT_person_plan_healerunit():
+    # sourcery skip: extract-duplicate-method
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     casa_rope = sue_person.make_l1_rope(exx.casa)
     clean_rope = sue_person.make_rope(casa_rope, exx.clean)
-    swim_str = "Swim"
 
-    casa_swim_atom = personatom_shop(kw.person_plan_healerunit, kw.INSERT)
-    casa_swim_atom.set_arg(kw.plan_rope, casa_rope)
-    casa_swim_atom.set_arg(kw.healer_name, swim_str)
-    clean_swim_atom = personatom_shop(kw.person_plan_healerunit, kw.INSERT)
-    clean_swim_atom.set_arg(kw.plan_rope, clean_rope)
-    clean_swim_atom.set_arg(kw.healer_name, swim_str)
+    casa_bowl_atom = personatom_shop(kw.person_plan_healerunit, kw.INSERT)
+    casa_bowl_atom.set_arg(kw.plan_rope, casa_rope)
+    casa_bowl_atom.set_arg(kw.healer_name, exx.bowl)
+    clean_bowl_atom = personatom_shop(kw.person_plan_healerunit, kw.INSERT)
+    clean_bowl_atom.set_arg(kw.plan_rope, clean_rope)
+    clean_bowl_atom.set_arg(kw.healer_name, exx.bowl)
     sue_person.add_plan(casa_rope)
     sue_person.add_plan(clean_rope)
-    assert sift_personatom(sue_person, casa_swim_atom)
-    assert sift_personatom(sue_person, clean_swim_atom)
+    assert sift_personatom(sue_person, casa_bowl_atom)
+    assert sift_personatom(sue_person, clean_bowl_atom)
 
     # WHEN
-    sue_person.get_plan_obj(casa_rope).healerunit.set_healer_name(swim_str)
+    sue_person.get_plan_obj(casa_rope).healerunit.set_healer_name(exx.bowl)
 
     # THEN
-    assert not sift_personatom(sue_person, casa_swim_atom)
-    assert sift_personatom(sue_person, clean_swim_atom)
+    assert not sift_personatom(sue_person, casa_bowl_atom)
+    assert sift_personatom(sue_person, clean_bowl_atom)
 
     # WHEN
-    sue_person.get_plan_obj(clean_rope).healerunit.set_healer_name(swim_str)
+    sue_person.get_plan_obj(clean_rope).healerunit.set_healer_name(exx.bowl)
     # THEN
-    assert not sift_personatom(sue_person, casa_swim_atom)
-    assert not sift_personatom(sue_person, clean_swim_atom)
+    assert not sift_personatom(sue_person, casa_bowl_atom)
+    assert not sift_personatom(sue_person, clean_bowl_atom)
 
 
 def test_sift_atom_ReturnsObj_PersonAtom_INSERT_person_plan_factunit():
+    # sourcery skip: extract-duplicate-method
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     casa_rope = sue_person.make_l1_rope(exx.casa)

@@ -1,13 +1,13 @@
 {
+  "bele_src": {
+    "abbv9": "belve_src", 
+    "description": "Belief Source files. Brick formats without SparkNum.", 
+    "stage_type_order": 1
+  }, 
   "beli_dst": {
     "abbv9": "belve_dst", 
-    "description": "Belief Destination files. Ideas formats without SparkNum.", 
+    "description": "Belief Destination files. Brick formats without SparkNum.", 
     "stage_type_order": 14
-  }, 
-  "beli_src": {
-    "abbv9": "belve_src", 
-    "description": "Belief Source files. Ideas formats without SparkNum.", 
-    "stage_type_order": 1
   }, 
   "br_agg": {
     "abbv9": "brick_agg", 
@@ -41,7 +41,7 @@
   }, 
   "idea_src": {
     "abbv9": "ideaa_src", 
-    "description": "Idea files. Ideas formats witt SparkNum.", 
+    "description": "Idea files. Brick formats with SparkNum.", 
     "stage_type_order": 2
   }, 
   "lynx": {

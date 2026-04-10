@@ -238,25 +238,25 @@ def test_LabelMap_reveal_inx_ReturnsObjAndSetsAttr_label():
     # ESTABLISH
     inx_r_knot = ":"
     otx_r_knot = "/"
-    swim_otx = f"swim{otx_r_knot}"
+    bowl_otx = f"bowl{otx_r_knot}"
     climb_otx = f"climb{otx_r_knot}_{inx_r_knot}"
     x_labelmap = labelmap_shop(otx_knot=otx_r_knot, inx_knot=inx_r_knot)
-    x_labelmap.otx_exists(swim_otx) is False
+    x_labelmap.otx_exists(bowl_otx) is False
     x_labelmap.otx_exists(climb_otx) is False
 
     # WHEN
-    swim_inx = f"swim{inx_r_knot}"
-    assert x_labelmap.reveal_inx(swim_otx) == swim_inx
+    bowl_inx = f"bowl{inx_r_knot}"
+    assert x_labelmap.reveal_inx(bowl_otx) == bowl_inx
 
     # THEN
-    assert x_labelmap.otx_exists(swim_otx)
+    assert x_labelmap.otx_exists(bowl_otx)
     assert x_labelmap.otx_exists(climb_otx) is False
-    assert x_labelmap.get_inx_value(swim_otx) == swim_inx
+    assert x_labelmap.get_inx_value(bowl_otx) == bowl_inx
 
     # WHEN
     assert x_labelmap.reveal_inx(climb_otx) is None
     # THEN
-    assert x_labelmap.otx_exists(swim_otx)
+    assert x_labelmap.otx_exists(bowl_otx)
     assert x_labelmap.otx_exists(climb_otx) is False
 
 

@@ -43,7 +43,7 @@ from src.ch17_idea.idea_config import (
     get_idea_dimen_ref,
     get_idea_elements_sort_order,
     get_idea_sqlite_types,
-    get_quick_ideas_column_ref,
+    get_quick_bricks_column_ref,
     idea_config_path,
 )
 from src.ref.keywords import Ch17Keywords as kw
@@ -826,9 +826,9 @@ def test_get_idea_config_dict_ReturnsObj_Scenario1_CountDimens():
     assert len(get_idea_config_dict({kw.nabu, kw.translate})) == 5
 
 
-def test_get_quick_ideas_column_ref_ReturnsObj():
+def test_get_quick_bricks_column_ref_ReturnsObj():
     # ESTABLISH / WHEN
-    x_idea_quick_column_ref = get_quick_ideas_column_ref()
+    x_idea_quick_column_ref = get_quick_bricks_column_ref()
 
     # THEN
     assert len(x_idea_quick_column_ref) == len(get_brick_types())

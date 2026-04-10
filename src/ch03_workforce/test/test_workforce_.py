@@ -176,9 +176,9 @@ def test_WorkforceHeir_Exists():
 
 def test_workforceheir_shop_ReturnsObj_Scenario1_WithAttributes():
     # ESTABLISH
-    swim_labor_title = GroupTitle("swimmers")
+    bowl_labor_title = GroupTitle("bowlers")
     _person_name_x_workforceunit = "example"
-    x_labors = {swim_labor_title: laborunit_shop(swim_labor_title)}
+    x_labors = {bowl_labor_title: laborunit_shop(bowl_labor_title)}
 
     # WHEN
     x_workforceheir = workforceheir_shop(
@@ -252,25 +252,25 @@ def test_WorkforceHeir_set_person_name_is_workforce_SetsAttribute_NonEmptyx_labo
     yao_groupunit.set_g_membership(membership_shop(exx.yao, contact_name=exx.yao))
     sue_groupunit.set_g_membership(membership_shop(exx.sue, contact_name=exx.sue))
 
-    swim_str = ",swim"
-    swim_groupunit = groupunit_shop(group_title=swim_str)
-    swim_groupunit.set_g_membership(membership_shop(swim_str, contact_name=exx.yao))
-    swim_groupunit.set_g_membership(membership_shop(swim_str, contact_name=exx.sue))
+    bowlers_str = ",bowl"
+    bowl_groupunit = groupunit_shop(group_title=bowlers_str)
+    bowl_groupunit.set_g_membership(membership_shop(bowlers_str, contact_name=exx.yao))
+    bowl_groupunit.set_g_membership(membership_shop(bowlers_str, contact_name=exx.sue))
     x_groupunits = {
         exx.yao: yao_groupunit,
         exx.sue: sue_groupunit,
         exx.bob: bob_groupunit,
-        swim_str: swim_groupunit,
+        bowlers_str: bowl_groupunit,
     }
 
-    x_labors = {swim_str}
+    x_labors = {bowlers_str}
     x_workforceheir = workforceheir_shop(labors=x_labors)
     assert x_workforceheir.person_name_is_workforce is False
     x_workforceheir.set_person_name_is_workforce(x_groupunits, person_name=exx.yao)
     assert x_workforceheir.person_name_is_workforce
 
     # WHEN
-    swim_groupunit.del_membership(exx.yao)
+    bowl_groupunit.del_membership(exx.yao)
     x_workforceheir.set_person_name_is_workforce(x_groupunits, exx.yao)
 
     # THEN
@@ -297,10 +297,10 @@ def test_WorkforceHeir_set_labors_Scenario0_WorkforceUnitIsEmptyAndParentWorkfor
 def test_WorkforceHeir_set_labors_Scenario1_WorkforceUnitNotEmpty_ParentWorkforceHeirIsNone():
     # ESTABLISH
     xio_solo_bool = True
-    swim_str = ",swim"
+    bowlers_str = ",bowl"
     x_workforceunit = workforceunit_shop()
     x_workforceunit.add_labor(exx.xio, xio_solo_bool)
-    x_workforceunit.add_labor(swim_str)
+    x_workforceunit.add_labor(bowlers_str)
     x_workforceheir = workforceheir_shop()
     assert x_workforceheir.labors == {}
 
@@ -311,7 +311,7 @@ def test_WorkforceHeir_set_labors_Scenario1_WorkforceUnitNotEmpty_ParentWorkforc
     assert x_workforceheir.labors.keys() == x_workforceunit.labors.keys()
     expected_labors = {
         exx.xio: laborheir_shop(exx.xio, xio_solo_bool),
-        swim_str: laborheir_shop(swim_str, False),
+        bowlers_str: laborheir_shop(bowlers_str, False),
     }
     print(f"{x_workforceheir.labors=}")
     print(f"    {expected_labors=}")
@@ -321,10 +321,10 @@ def test_WorkforceHeir_set_labors_Scenario1_WorkforceUnitNotEmpty_ParentWorkforc
 def test_WorkforceHeir_set_labors_Scenario2_WorkforceUnitNotEmpty_ParentWorkforceHeirEmpty():
     # ESTABLISH
     xio_solo_bool = True
-    swim_str = ",swim"
+    bowlers_str = ",bowl"
     x_workforceunit = workforceunit_shop()
     x_workforceunit.add_labor(exx.xio, xio_solo_bool)
-    x_workforceunit.add_labor(swim_str)
+    x_workforceunit.add_labor(bowlers_str)
     x_workforceheir = workforceheir_shop()
     parent_workforceheir_empty = workforceheir_shop()
     assert x_workforceheir.labors == {}
@@ -338,7 +338,7 @@ def test_WorkforceHeir_set_labors_Scenario2_WorkforceUnitNotEmpty_ParentWorkforc
     assert x_workforceheir.labors.keys() == x_workforceunit.labors.keys()
     expected_labors = {
         exx.xio: laborheir_shop(exx.xio, xio_solo_bool),
-        swim_str: laborheir_shop(swim_str, False),
+        bowlers_str: laborheir_shop(bowlers_str, False),
     }
     print(f"{x_workforceheir.labors=}")
     print(f"    {expected_labors=}")
@@ -348,14 +348,14 @@ def test_WorkforceHeir_set_labors_Scenario2_WorkforceUnitNotEmpty_ParentWorkforc
 def test_WorkforceHeir_set_labors_Scenario3_WorkforceUnit_Empty_ParentWorkforceHeirNotEmpty():
     # ESTABLISH
     xio_solo_bool = True
-    swim_str = ",swim"
-    workforceunit_swim = workforceunit_shop()
-    workforceunit_swim.add_labor(exx.xio, xio_solo_bool)
-    workforceunit_swim.add_labor(swim_str, False)
+    bowlers_str = ",bowl"
+    workforceunit_bowl = workforceunit_shop()
+    workforceunit_bowl.add_labor(exx.xio, xio_solo_bool)
+    workforceunit_bowl.add_labor(bowlers_str, False)
     empty_workforceheir = workforceheir_shop()
     parent_workforceheir = workforceheir_shop()
     parent_workforceheir.set_labors(
-        empty_workforceheir, workforceunit_swim, groupunits=None
+        empty_workforceheir, workforceunit_bowl, groupunits=None
     )
 
     workforceunit_empty = workforceunit_shop()
@@ -372,7 +372,7 @@ def test_WorkforceHeir_set_labors_Scenario3_WorkforceUnit_Empty_ParentWorkforceH
     assert x_workforceheir.labors.keys() == parent_workforceheir.labors.keys()
     expected_labors = {
         exx.xio: laborheir_shop(exx.xio, xio_solo_bool),
-        swim_str: laborheir_shop(swim_str, False),
+        bowlers_str: laborheir_shop(bowlers_str, False),
     }
     print(f"{x_workforceheir.labors=}")
     print(f"    {expected_labors=}")
@@ -390,24 +390,24 @@ def test_WorkforceHeir_set_labors_Scenario4_WorkforceUnitEqualParentWorkforceHei
         empty_workforceheir, xio_workforceunit, groupunits=None
     )
 
-    swim_str = ",swim"
-    swim_workforceunit = workforceunit_shop()
-    swim_workforceunit.add_labor(swim_str)
+    bowlers_str = ",bowl"
+    bowl_workforceunit = workforceunit_shop()
+    bowl_workforceunit.add_labor(bowlers_str)
 
     x_workforceheir = workforceheir_shop()
     assert x_workforceheir.labors == {}
 
     # WHEN
     x_workforceheir.set_labors(
-        parent_workforceheir, swim_workforceunit, groupunits=None
+        parent_workforceheir, bowl_workforceunit, groupunits=None
     )
 
     # THEN
     assert x_workforceheir.labors.keys() != parent_workforceheir.labors.keys()
-    assert x_workforceheir.labors.keys() != swim_workforceunit.labors.keys()
+    assert x_workforceheir.labors.keys() != bowl_workforceunit.labors.keys()
     expected_labors = {
         exx.xio: laborheir_shop(exx.xio, xio_solo_bool),
-        swim_str: laborheir_shop(swim_str, False),
+        bowlers_str: laborheir_shop(bowlers_str, False),
     }
     print(f"{x_workforceheir.labors=}")
     print(f"    {expected_labors=}")
@@ -423,71 +423,71 @@ def test_WorkforceHeir_set_labors_Scenario4_WorkforceUnitEqualParentWorkforceHei
 #     yao_groupunit.set_g_membership(membership_shop(exx.yao, contact_name=exx.yao))
 #     sue_groupunit.set_g_membership(membership_shop(exx.sue, contact_name=exx.sue))
 
-#     swim2_str = ",swim2"
-#     swim2_groupunit = groupunit_shop(group_title=swim2_str)
-#     swim2_groupunit.set_g_membership(membership_shop(swim2_str, contact_name=exx.yao))
-#     swim2_groupunit.set_g_membership(membership_shop(swim2_str, contact_name=exx.sue))
+#     bowl2_str = ",bowl2"
+#     bowl2_groupunit = groupunit_shop(group_title=bowl2_str)
+#     bowl2_groupunit.set_g_membership(membership_shop(bowl2_str, contact_name=exx.yao))
+#     bowl2_groupunit.set_g_membership(membership_shop(bowl2_str, contact_name=exx.sue))
 
-#     swim3_str = ",swim3"
-#     swim3_groupunit = groupunit_shop(group_title=swim3_str)
-#     swim3_groupunit.set_g_membership(membership_shop(swim3_str, contact_name=exx.yao))
-#     swim3_groupunit.set_g_membership(membership_shop(swim3_str, contact_name=exx.sue))
-#     swim3_groupunit.set_g_membership(membership_shop(swim3_str, contact_name=exx.zia))
+#     bowl3_str = ",bowl3"
+#     bowl3_groupunit = groupunit_shop(group_title=bowl3_str)
+#     bowl3_groupunit.set_g_membership(membership_shop(bowl3_str, contact_name=exx.yao))
+#     bowl3_groupunit.set_g_membership(membership_shop(bowl3_str, contact_name=exx.sue))
+#     bowl3_groupunit.set_g_membership(membership_shop(bowl3_str, contact_name=exx.zia))
 
 #     x_groupunits = {
 #         exx.yao: yao_groupunit,
 #         exx.sue: sue_groupunit,
 #         exx.bob: bob_groupunit,
-#         swim2_str: swim2_groupunit,
-#         swim3_str: swim3_groupunit,
+#         bowl2_str: bowl2_groupunit,
+#         bowl3_str: bowl3_groupunit,
 #     }
 
 #     parent_workforceunit = workforceunit_shop()
-#     parent_workforceunit.add_labor(labor_title=swim3_str)
+#     parent_workforceunit.add_labor(labor_title=bowl3_str)
 #     parent_workforceheir = workforceheir_shop()
 #     parent_workforceheir.set_labors(
 #         parent_workforceheir=None, workforceunit=parent_workforceunit, groupunits=None
 #     )
 
-#     workforceunit_swim2 = workforceunit_shop()
-#     workforceunit_swim2.add_labor(labor_title=swim2_str)
+#     workforceunit_bowl2 = workforceunit_shop()
+#     workforceunit_bowl2.add_labor(labor_title=bowl2_str)
 #     x_workforceheir = workforceheir_shop()
 #     assert x_workforceheir.labors == {}
 
 #     # WHEN
-#     x_workforceheir.set_labors(parent_workforceheir, workforceunit_swim2, x_groupunits)
+#     x_workforceheir.set_labors(parent_workforceheir, workforceunit_bowl2, x_groupunits)
 
 #     # THEN
-#     assert x_workforceheir.labors.keys() == workforceunit_swim2.labors.keys()
+#     assert x_workforceheir.labors.keys() == workforceunit_bowl2.labors.keys()
 #     assert len(x_workforceheir.labors) == 1
-#     assert list(x_workforceheir.labors) == [swim2_str]
+#     assert list(x_workforceheir.labors) == [bowl2_str]
 
 
 def test_WorkforceUnit_get_laborunit_ReturnsObj():
     # ESTABLISH
     climb_str = ",climbers"
     hike_str = ",hikers"
-    swim_str = ";swimmers"
+    bowlers_str = ";bowlers"
 
     x_workforceunit = workforceunit_shop()
     x_workforceunit.add_labor(climb_str)
     x_workforceunit.add_labor(hike_str)
-    x_workforceunit.add_labor(swim_str)
+    x_workforceunit.add_labor(bowlers_str)
 
     # WHEN / THEN
     assert x_workforceunit.get_laborunit(hike_str) is not None
-    assert x_workforceunit.get_laborunit(swim_str) is not None
+    assert x_workforceunit.get_laborunit(bowlers_str) is not None
     assert x_workforceunit.get_laborunit(exx.run) is None
 
 
 def test_WorkforceHeir_labor_title_in_ReturnsBoolWhen_laborsNotEmpty():
     # ESTABLISH
-    swim_str = ",swim"
+    bowlers_str = ",bowl"
     hike_str = ",hike"
-    swim_dict = {swim_str}
+    bowl_dict = {bowlers_str}
     hike_dict = {hike_str}
     x_workforceunit = workforceunit_shop()
-    x_workforceunit.add_labor(labor_title=swim_str)
+    x_workforceunit.add_labor(labor_title=bowlers_str)
     x_workforceunit.add_labor(labor_title=hike_str)
     x_workforceheir = workforceheir_shop()
     x_workforceheir.set_labors(
@@ -497,7 +497,7 @@ def test_WorkforceHeir_labor_title_in_ReturnsBoolWhen_laborsNotEmpty():
     hunt_dict = {hunt_str}
     play_str = ",play"
     play_dict = {play_str}
-    assert swim_str in x_workforceheir.labors
+    assert bowlers_str in x_workforceheir.labors
     assert hike_str in x_workforceheir.labors
     print(f"{hunt_str in x_workforceheir.labors=}")
     assert hunt_str not in x_workforceheir.labors
@@ -506,7 +506,7 @@ def test_WorkforceHeir_labor_title_in_ReturnsBoolWhen_laborsNotEmpty():
     hunt_play_dict = {hunt_str, play_str}
 
     # WHEN / THEN
-    assert x_workforceheir.has_labor(swim_dict)
+    assert x_workforceheir.has_labor(bowl_dict)
     assert x_workforceheir.has_labor(hike_dict)
     assert x_workforceheir.has_labor(hunt_dict) is False
     assert x_workforceheir.has_labor(hunt_hike_dict)

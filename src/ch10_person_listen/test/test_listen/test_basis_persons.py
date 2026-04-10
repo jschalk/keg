@@ -30,7 +30,7 @@ def test_create_empty_person_from_person_ReturnsObj():
         zia_inallocable_contact_debt_lumen
     )
     zia_contactunit = yao_gut.get_contact(exx.zia)
-    zia_contactunit.add_membership(f"{exx.slash}swimmers")
+    zia_contactunit.add_membership(f"{exx.slash}bowlers")
     yao_gut.set_credor_respect(zia_credor_pool)
     yao_gut.set_debtor_respect(zia_debtor_pool)
 
@@ -75,7 +75,7 @@ def test_create_listen_basis_ReturnsObj():
         zia_inallocable_contact_debt_lumen
     )
     zia_contactunit = yao_duty.get_contact(exx.zia)
-    zia_contactunit.add_membership(f"{exx.slash}swimmers")
+    zia_contactunit.add_membership(f"{exx.slash}bowlers")
     yao_duty.set_credor_respect(zia_credor_pool)
     yao_duty.set_debtor_respect(zia_debtor_pool)
 
@@ -121,7 +121,7 @@ def test_get_default_job_ReturnsObj():
     sue_personunit.set_last_lesson_id(last_lesson_id)
     sue_personunit.add_contactunit(exx.bob, 3, 4)
     bob_contactunit = sue_personunit.get_contact(exx.bob)
-    bob_contactunit.add_membership(f"{exx.slash}swimmers")
+    bob_contactunit.add_membership(f"{exx.slash}bowlers")
     sue_personunit.set_contact_respect(sue_contact_pool)
     sue_personunit.set_l1_plan(planunit_shop(exx.casa))
     sue_personunit.set_max_tree_traverse(sue_max_tree_traverse)

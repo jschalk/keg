@@ -173,11 +173,13 @@ def test_get_contacts_view_dict_ReturnsObj_Scenario2_memberships():
     # ESTABLISH
     sue_believer = personunit_shop(exx.sue)
     sue_believer.add_contactunit(exx.yao)
-    swim_str = ";swimmers"
-    yao_swim_cred_lumen = 311
-    yao_swim_debt_lumen = 313
+    bowlers_str = ";bowlers"
+    yao_bowl_cred_lumen = 311
+    yao_bowl_debt_lumen = 313
     yao_contactunit = sue_believer.get_contact(exx.yao)
-    yao_contactunit.add_membership(swim_str, yao_swim_cred_lumen, yao_swim_debt_lumen)
+    yao_contactunit.add_membership(
+        bowlers_str, yao_bowl_cred_lumen, yao_bowl_debt_lumen
+    )
     sue_believer.conpute()
 
     # WHEN
@@ -188,8 +190,8 @@ def test_get_contacts_view_dict_ReturnsObj_Scenario2_memberships():
     yao_contact_dict = contacts_view_dict.get(exx.yao)
     assert kw.memberships in set(yao_contact_dict.keys())
     yao_memberships_dict = yao_contact_dict.get(kw.memberships)
-    assert {swim_str, exx.yao} == set(yao_memberships_dict.keys())
-    yao_swim_dict = yao_memberships_dict.get(swim_str)
+    assert {bowlers_str, exx.yao} == set(yao_memberships_dict.keys())
+    yao_bowl_dict = yao_memberships_dict.get(bowlers_str)
 
     group_title_readable_key = add_readable(kw.group_title)
     group_cred_lumen_readable_key = add_readable(kw.group_cred_lumen)
@@ -202,7 +204,7 @@ def test_get_contacts_view_dict_ReturnsObj_Scenario2_memberships():
     fund_agenda_take_readable_key = add_readable(kw.fund_agenda_take)
     fund_give_readable_key = add_readable(kw.fund_give)
     fund_take_readable_key = add_readable(kw.fund_take)
-    assert set(yao_swim_dict.keys()) == {
+    assert set(yao_bowl_dict.keys()) == {
         kw.contact_name,
         kw.group_title,
         kw.group_cred_lumen,
@@ -227,31 +229,31 @@ def test_get_contacts_view_dict_ReturnsObj_Scenario2_memberships():
         fund_give_readable_key,
         fund_take_readable_key,
     }
-    yao_swim_mu = yao_contactunit.get_membership(swim_str)
+    yao_bowl_mu = yao_contactunit.get_membership(bowlers_str)
 
-    expected_group_title_readable = f"{kw.group_title}: {yao_swim_mu.group_title}"
+    expected_group_title_readable = f"{kw.group_title}: {yao_bowl_mu.group_title}"
     expected_group_cred_lumen_readable = (
-        f"{kw.group_cred_lumen}: {yao_swim_mu.group_cred_lumen}"
+        f"{kw.group_cred_lumen}: {yao_bowl_mu.group_cred_lumen}"
     )
     expected_group_debt_lumen_readable = (
-        f"{kw.group_debt_lumen}: {yao_swim_mu.group_debt_lumen}"
+        f"{kw.group_debt_lumen}: {yao_bowl_mu.group_debt_lumen}"
     )
-    expected_credor_pool_readable = f"{kw.credor_pool}: {yao_swim_mu.credor_pool}"
-    expected_debtor_pool_readable = f"{kw.debtor_pool}: {yao_swim_mu.debtor_pool}"
+    expected_credor_pool_readable = f"{kw.credor_pool}: {yao_bowl_mu.credor_pool}"
+    expected_debtor_pool_readable = f"{kw.debtor_pool}: {yao_bowl_mu.debtor_pool}"
     expected_fund_agenda_give_readable = (
-        f"{kw.fund_agenda_give}: {yao_swim_mu.fund_agenda_give}"
+        f"{kw.fund_agenda_give}: {yao_bowl_mu.fund_agenda_give}"
     )
     expected_fund_agenda_ratio_give_readable = (
-        f"{kw.fund_agenda_ratio_give}: {yao_swim_mu.fund_agenda_ratio_give}"
+        f"{kw.fund_agenda_ratio_give}: {yao_bowl_mu.fund_agenda_ratio_give}"
     )
     expected_fund_agenda_ratio_take_readable = (
-        f"{kw.fund_agenda_ratio_take}: {yao_swim_mu.fund_agenda_ratio_take}"
+        f"{kw.fund_agenda_ratio_take}: {yao_bowl_mu.fund_agenda_ratio_take}"
     )
     expected_fund_agenda_take_readable = (
-        f"{kw.fund_agenda_take}: {yao_swim_mu.fund_agenda_take}"
+        f"{kw.fund_agenda_take}: {yao_bowl_mu.fund_agenda_take}"
     )
-    expected_fund_give_readable = f"{kw.fund_give}: {yao_swim_mu.fund_give}"
-    expected_fund_take_readable = f"{kw.fund_take}: {yao_swim_mu.fund_take}"
+    expected_fund_give_readable = f"{kw.fund_give}: {yao_bowl_mu.fund_give}"
+    expected_fund_take_readable = f"{kw.fund_take}: {yao_bowl_mu.fund_take}"
 
     expected_group_title_readable = add_small_dot(expected_group_title_readable)
     expected_group_cred_lumen_readable = add_small_dot(
@@ -277,53 +279,53 @@ def test_get_contacts_view_dict_ReturnsObj_Scenario2_memberships():
     expected_fund_give_readable = add_small_dot(expected_fund_give_readable)
     expected_fund_take_readable = add_small_dot(expected_fund_take_readable)
 
-    assert yao_swim_dict.get(kw.contact_name) == yao_swim_mu.contact_name
-    assert yao_swim_dict.get(kw.group_title) == yao_swim_mu.group_title
-    assert yao_swim_dict.get(kw.group_cred_lumen) == yao_swim_mu.group_cred_lumen
-    assert yao_swim_dict.get(kw.group_debt_lumen) == yao_swim_mu.group_debt_lumen
-    assert yao_swim_dict.get(kw.credor_pool) == yao_swim_mu.credor_pool
-    assert yao_swim_dict.get(kw.debtor_pool) == yao_swim_mu.debtor_pool
-    assert yao_swim_dict.get(kw.fund_agenda_give) == yao_swim_mu.fund_agenda_give
+    assert yao_bowl_dict.get(kw.contact_name) == yao_bowl_mu.contact_name
+    assert yao_bowl_dict.get(kw.group_title) == yao_bowl_mu.group_title
+    assert yao_bowl_dict.get(kw.group_cred_lumen) == yao_bowl_mu.group_cred_lumen
+    assert yao_bowl_dict.get(kw.group_debt_lumen) == yao_bowl_mu.group_debt_lumen
+    assert yao_bowl_dict.get(kw.credor_pool) == yao_bowl_mu.credor_pool
+    assert yao_bowl_dict.get(kw.debtor_pool) == yao_bowl_mu.debtor_pool
+    assert yao_bowl_dict.get(kw.fund_agenda_give) == yao_bowl_mu.fund_agenda_give
     assert (
-        yao_swim_dict.get(kw.fund_agenda_ratio_give)
-        == yao_swim_mu.fund_agenda_ratio_give
+        yao_bowl_dict.get(kw.fund_agenda_ratio_give)
+        == yao_bowl_mu.fund_agenda_ratio_give
     )
     assert (
-        yao_swim_dict.get(kw.fund_agenda_ratio_take)
-        == yao_swim_mu.fund_agenda_ratio_take
+        yao_bowl_dict.get(kw.fund_agenda_ratio_take)
+        == yao_bowl_mu.fund_agenda_ratio_take
     )
-    assert yao_swim_dict.get(kw.fund_agenda_take) == yao_swim_mu.fund_agenda_take
-    assert yao_swim_dict.get(kw.fund_give) == yao_swim_mu.fund_give
-    assert yao_swim_dict.get(kw.fund_take) == yao_swim_mu.fund_take
-    assert yao_swim_dict.get(group_title_readable_key) == expected_group_title_readable
+    assert yao_bowl_dict.get(kw.fund_agenda_take) == yao_bowl_mu.fund_agenda_take
+    assert yao_bowl_dict.get(kw.fund_give) == yao_bowl_mu.fund_give
+    assert yao_bowl_dict.get(kw.fund_take) == yao_bowl_mu.fund_take
+    assert yao_bowl_dict.get(group_title_readable_key) == expected_group_title_readable
     assert (
-        yao_swim_dict.get(group_cred_lumen_readable_key)
+        yao_bowl_dict.get(group_cred_lumen_readable_key)
         == expected_group_cred_lumen_readable
     )
     assert (
-        yao_swim_dict.get(group_debt_lumen_readable_key)
+        yao_bowl_dict.get(group_debt_lumen_readable_key)
         == expected_group_debt_lumen_readable
     )
-    assert yao_swim_dict.get(credor_pool_readable_key) == expected_credor_pool_readable
-    assert yao_swim_dict.get(debtor_pool_readable_key) == expected_debtor_pool_readable
+    assert yao_bowl_dict.get(credor_pool_readable_key) == expected_credor_pool_readable
+    assert yao_bowl_dict.get(debtor_pool_readable_key) == expected_debtor_pool_readable
     assert (
-        yao_swim_dict.get(fund_agenda_give_readable_key)
+        yao_bowl_dict.get(fund_agenda_give_readable_key)
         == expected_fund_agenda_give_readable
     )
     assert (
-        yao_swim_dict.get(fund_agenda_ratio_give_readable_key)
+        yao_bowl_dict.get(fund_agenda_ratio_give_readable_key)
         == expected_fund_agenda_ratio_give_readable
     )
     assert (
-        yao_swim_dict.get(fund_agenda_ratio_take_readable_key)
+        yao_bowl_dict.get(fund_agenda_ratio_take_readable_key)
         == expected_fund_agenda_ratio_take_readable
     )
     assert (
-        yao_swim_dict.get(fund_agenda_take_readable_key)
+        yao_bowl_dict.get(fund_agenda_take_readable_key)
         == expected_fund_agenda_take_readable
     )
-    assert yao_swim_dict.get(fund_give_readable_key) == expected_fund_give_readable
-    assert yao_swim_dict.get(fund_take_readable_key) == expected_fund_take_readable
+    assert yao_bowl_dict.get(fund_give_readable_key) == expected_fund_give_readable
+    assert yao_bowl_dict.get(fund_take_readable_key) == expected_fund_take_readable
 
     # sue_believer = personunit_shop(exx.sue)
     # exx.yao = "Yao"
@@ -334,17 +336,17 @@ def test_get_contacts_view_dict_ReturnsObj_Scenario2_memberships():
     # bob_debt_lumen = 290
     # sue_believer.add_contactunit(exx.yao, yao_cred_lumen, yao_debt_lumen)
     # sue_believer.add_contactunit(exx.bob, bob_cred_lumen, bob_debt_lumen)
-    # swim_str = ";swimmers"
-    # yao_swim_cred_lumen = 311
-    # yao_swim_debt_lumen = 313
-    # bob_swim_cred_lumen = 411
-    # bob_swim_debt_lumen = 413
+    # bowlers_str = ";bowlers"
+    # yao_bowl_cred_lumen = 311
+    # yao_bowl_debt_lumen = 313
+    # bob_bowl_cred_lumen = 411
+    # bob_bowl_debt_lumen = 413
     # clea_str = ";cleaners"
     # cleaners_cred_lumen = 511
     # cleaners_debt_lumen = 513
     # yao_contactunit = sue_believer.get_contact(exx.yao)
     # bob_contactunit = sue_believer.get_contact(exx.bob)
-    # bob_contactunit.add_membership(swim_str, bob_swim_cred_lumen, bob_swim_debt_lumen)
-    # yao_contactunit.add_membership(swim_str, yao_swim_cred_lumen, yao_swim_debt_lumen)
+    # bob_contactunit.add_membership(bowlers_str, bob_bowl_cred_lumen, bob_bowl_debt_lumen)
+    # yao_contactunit.add_membership(bowlers_str, yao_bowl_cred_lumen, yao_bowl_debt_lumen)
     # yao_contactunit.add_membership(clea_str, cleaners_cred_lumen, cleaners_debt_lumen)
     # sue_believer.get_contact(exx.yao).add_membership()

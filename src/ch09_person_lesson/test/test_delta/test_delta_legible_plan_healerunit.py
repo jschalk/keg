@@ -11,13 +11,13 @@ def test_create_legible_list_ReturnsObj_plan_healerunit_INSERT():
     dimen = kw.person_plan_healerunit
     casa_rope = sue_person.make_l1_rope("casa")
     rope_value = sue_person.make_rope(casa_rope, "clean fridge")
-    healer_name_value = f"{sue_person.knot}Swimmers"
-    swim_personatom = personatom_shop(dimen, kw.INSERT)
-    swim_personatom.set_arg(kw.plan_rope, rope_value)
-    swim_personatom.set_arg(kw.healer_name, healer_name_value)
-    # print(f"{swim_personatom=}")
+    healer_name_value = f"{sue_person.knot}bowlers"
+    bowl_personatom = personatom_shop(dimen, kw.INSERT)
+    bowl_personatom.set_arg(kw.plan_rope, rope_value)
+    bowl_personatom.set_arg(kw.healer_name, healer_name_value)
+    # print(f"{bowl_personatom=}")
     x_persondelta = persondelta_shop()
-    x_persondelta.set_personatom(swim_personatom)
+    x_persondelta.set_personatom(bowl_personatom)
 
     # WHEN
     legible_list = create_legible_list(x_persondelta, sue_person)
@@ -34,13 +34,13 @@ def test_create_legible_list_ReturnsObj_plan_healerunit_DELETE():
     dimen = kw.person_plan_healerunit
     casa_rope = sue_person.make_l1_rope("casa")
     rope_value = sue_person.make_rope(casa_rope, "clean fridge")
-    healer_name_value = f"{sue_person.knot}Swimmers"
-    swim_personatom = personatom_shop(dimen, kw.DELETE)
-    swim_personatom.set_arg(kw.plan_rope, rope_value)
-    swim_personatom.set_arg(kw.healer_name, healer_name_value)
-    # print(f"{swim_personatom=}")
+    healer_name_value = f"{sue_person.knot}bowlers"
+    bowl_personatom = personatom_shop(dimen, kw.DELETE)
+    bowl_personatom.set_arg(kw.plan_rope, rope_value)
+    bowl_personatom.set_arg(kw.healer_name, healer_name_value)
+    # print(f"{bowl_personatom=}")
     x_persondelta = persondelta_shop()
-    x_persondelta.set_personatom(swim_personatom)
+    x_persondelta.set_personatom(bowl_personatom)
 
     # WHEN
     legible_list = create_legible_list(x_persondelta, sue_person)

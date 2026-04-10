@@ -356,12 +356,12 @@ def test_PersonDelta_get_sorted_personatoms_ReturnsObj_Rope_Sorted():
     knee_str = "knee"
     knee_rope = create_rope(sports_rope, knee_str)
     x_dimen = kw.person_plan_awardunit
-    swimmers_str = ",Swimmers"
+    bowlers_str = ",bowlers"
     sports_awardunit_personatom = personatom_shop(x_dimen, kw.INSERT)
-    sports_awardunit_personatom.set_jkey(kw.awardee_title, swimmers_str)
+    sports_awardunit_personatom.set_jkey(kw.awardee_title, bowlers_str)
     sports_awardunit_personatom.set_jkey(kw.plan_rope, sports_rope)
     knee_awardunit_personatom = personatom_shop(x_dimen, kw.INSERT)
-    knee_awardunit_personatom.set_jkey(kw.awardee_title, swimmers_str)
+    knee_awardunit_personatom.set_jkey(kw.awardee_title, bowlers_str)
     knee_awardunit_personatom.set_jkey(kw.plan_rope, knee_rope)
     x_persondelta = persondelta_shop()
     x_persondelta.set_personatom(knee_awardunit_personatom)

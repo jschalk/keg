@@ -11,20 +11,20 @@ def test_PersonUnit_get_contactunit_group_titles_dict_ReturnsObj():
     bob_person.add_contactunit(exx.zia)
     sue_contactunit = bob_person.get_contact(exx.sue)
     zia_contactunit = bob_person.get_contact(exx.zia)
-    swim_group_str = ";Swim"
+    bowl_group_str = ";bowl"
     sue_contactunit.add_membership(exx.run)
     zia_contactunit.add_membership(exx.run)
-    zia_contactunit.add_membership(swim_group_str)
+    zia_contactunit.add_membership(bowl_group_str)
 
     # WHEN
     group_titles_dict = bob_person.get_contactunit_group_titles_dict()
 
     # THEN
     print(f"{group_titles_dict=}")
-    all_group_titles = {exx.yao, exx.sue, exx.zia, exx.run, swim_group_str}
+    all_group_titles = {exx.yao, exx.sue, exx.zia, exx.run, bowl_group_str}
     assert set(group_titles_dict.keys()) == all_group_titles
-    assert set(group_titles_dict.keys()) != {swim_group_str, exx.run}
-    assert group_titles_dict.get(swim_group_str) == {exx.zia}
+    assert set(group_titles_dict.keys()) != {bowl_group_str, exx.run}
+    assert group_titles_dict.get(bowl_group_str) == {exx.zia}
     assert group_titles_dict.get(exx.run) == {exx.zia, exx.sue}
     assert group_titles_dict.get(exx.yao) == {exx.yao}
     assert group_titles_dict.get(exx.sue) == {exx.sue}

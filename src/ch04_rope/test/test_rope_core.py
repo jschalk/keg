@@ -630,7 +630,7 @@ def test_rope_is_valid_dir_path_ReturnsObj_Scenario2_WhereSlashNotknotEdgeSituat
     # ESTABLISH
     question_str = "?"
     sport_str = "sport"
-    run_str = "run/swim"
+    run_str = "run/bowl"
     lap_str = "lap"
     sport_rope = create_rope(sport_str, knot=question_str)
     run_rope = create_rope(sport_rope, run_str, knot=question_str)
@@ -647,7 +647,7 @@ def test_rope_is_valid_dir_path_ReturnsObj_Scenario2_WhereSlashNotknotEdgeSituat
 def test_all_ropes_between_ReturnsObj_Scenario0_Default_knot():
     # ESTABLISH
     sport_str = "sport"
-    run_str = "run/swim"
+    run_str = "run/bowl"
     lap_str = "lap"
     sport_rope = create_rope(exx.casa, sport_str)
     run_rope = create_rope(sport_rope, run_str)
@@ -666,7 +666,7 @@ def test_all_ropes_between_ReturnsObj_Scenario0_Default_knot():
 def test_all_ropes_between_ReturnsObj_Scenario1_NonDefault_knot():
     # ESTABLISH
     sport_str = "sport"
-    run_str = "run,swim"
+    run_str = "run,bowl"
     lap_str = "lap"
     sport_rope = create_rope(exx.casa, sport_str, knot=exx.slash)
     run_rope = create_rope(sport_rope, run_str, knot=exx.slash)

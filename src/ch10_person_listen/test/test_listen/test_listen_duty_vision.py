@@ -150,10 +150,6 @@ def get_utah_str() -> LabelTerm:
     return "Utah"
 
 
-def get_swim_str() -> LabelTerm:
-    return "swim"
-
-
 def get_location_str() -> LabelTerm:
     return "location"
 
@@ -178,8 +174,8 @@ def get_utah_rope() -> RopeTerm:
     return create_rope(get_usa_rope(), get_utah_str())
 
 
-def get_swim_rope() -> RopeTerm:
-    return create_rope(ch10_example_moment_rope(), get_swim_str())
+def get_bowl_rope() -> RopeTerm:
+    return create_rope(ch10_example_moment_rope(), exx.bowl)
 
 
 def get_location_rope() -> RopeTerm:
@@ -252,8 +248,8 @@ def test_listen_to_person_visions_Pipeline_Scenario1_yao_gut_CanOnlyReferenceIts
     yao_gut0.set_l1_plan(planunit_shop(get_location_str()))
     yao_gut0.set_plan_obj(planunit_shop(get_in_mer_str()), get_location_rope())
     yao_gut0.set_plan_obj(planunit_shop(get_on_land_str()), get_location_rope())
-    yao_gut0.set_l1_plan(planunit_shop(get_swim_str(), pledge=True))
-    yao_gut0.edit_reason(get_swim_rope(), get_location_rope(), get_in_mer_rope())
+    yao_gut0.set_l1_plan(planunit_shop(exx.bowl, pledge=True))
+    yao_gut0.edit_reason(get_bowl_rope(), get_location_rope(), get_in_mer_rope())
     yao_gut0.add_fact(get_location_rope(), get_in_mer_rope())
     print(f"{yao_gut0.get_fact(get_location_rope())=}")
     yao_gut0.del_plan_obj(run_rope())
@@ -369,7 +365,7 @@ def test_listen_to_person_visions_Pipeline_Scenario1_yao_gut_CanOnlyReferenceIts
     assert yao_job.plan_exists(cuisine_rope()) is False
     assert yao_job.plan_exists(clean_rope()) is False
     assert yao_job.plan_exists(run_rope()) is False
-    assert yao_job.plan_exists(get_swim_rope())
+    assert yao_job.plan_exists(get_bowl_rope())
     assert yao_job.plan_exists(get_in_mer_rope())
     assert yao_job.plan_exists(get_on_land_rope()) is False
     assert yao_job.get_fact(get_location_rope()) is not None

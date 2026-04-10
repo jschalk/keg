@@ -302,18 +302,18 @@ def test_get_from_nested_dict_RaisesNestedError():
 
     # WHEN / THEN
     with pytest_raises(Exception) as excinfo:
-        get_from_nested_dict(y_dict, [ex0.swim])
-    assert str(excinfo.value) == f"'{ex0.swim}' failed at level 0."
+        get_from_nested_dict(y_dict, [ex0.bowl])
+    assert str(excinfo.value) == f"'{ex0.bowl}' failed at level 0."
 
     # WHEN / THEN
     with pytest_raises(Exception) as excinfo:
-        get_from_nested_dict(y_dict, [sports_str, ex0.swim])
-    assert str(excinfo.value) == f"'{ex0.swim}' failed at level 1."
+        get_from_nested_dict(y_dict, [sports_str, ex0.bowl])
+    assert str(excinfo.value) == f"'{ex0.bowl}' failed at level 1."
 
     # WHEN / THEN
     with pytest_raises(Exception) as excinfo:
-        get_from_nested_dict(y_dict, [sports_str, ex0.swim, _2pm_str])
-    assert str(excinfo.value) == f"'{ex0.swim}' failed at level 1."
+        get_from_nested_dict(y_dict, [sports_str, ex0.bowl, _2pm_str])
+    assert str(excinfo.value) == f"'{ex0.bowl}' failed at level 1."
 
 
 def test_get_from_nested_dict_ReturnsNoneWhen_if_missing_return_None_True():
@@ -347,17 +347,17 @@ def test_get_from_nested_dict_ReturnsNoneWhen_if_missing_return_None_True():
     )
 
     # WHEN / THEN
-    assert get_from_nested_dict(y_dict, [ex0.swim], if_missing_return_None=True) is None
+    assert get_from_nested_dict(y_dict, [ex0.bowl], if_missing_return_None=True) is None
 
     # WHEN / THEN
     x_value = get_from_nested_dict(
-        y_dict, [sports_str, ex0.swim], if_missing_return_None=True
+        y_dict, [sports_str, ex0.bowl], if_missing_return_None=True
     )
     assert x_value is None
 
     # WHEN / THEN
     x_value = get_from_nested_dict(
-        y_dict, [sports_str, ex0.swim, _2pm_str], if_missing_return_None=True
+        y_dict, [sports_str, ex0.bowl, _2pm_str], if_missing_return_None=True
     )
     assert x_value is None
 
@@ -571,7 +571,7 @@ def test_add_headers_to_csv_ReturnsObj():
     # ESTABLISH
     six_str = "six"
     seven_str = "seven"
-    headers = [ex0.swim, six_str, seven_str]
+    headers = [ex0.bowl, six_str, seven_str]
     headerless_csv = """Bob,13,29
 Sue,11,23
 Yao,41,37
@@ -586,7 +586,7 @@ Yao,41,37
     assert gen_csv
     assert (
         gen_csv
-        == f"""{ex0.swim},{six_str},{seven_str}
+        == f"""{ex0.bowl},{six_str},{seven_str}
 {headerless_csv}"""
     )
 
@@ -598,17 +598,17 @@ def test_is_2d_with_unique_keys_ReturnsObj():
     assert is_2d_with_unique_keys({})
     assert is_2d_with_unique_keys({ex0.sue: {}})
     assert is_2d_with_unique_keys({ex0.sue: {}, ex0.bob: {}}) is False
-    assert is_2d_with_unique_keys({"swim": 155, ex0.sue: {}, ex0.bob: {}}) is False
-    assert is_2d_with_unique_keys({"swim": 155, ex0.sue: {}})
+    assert is_2d_with_unique_keys({"bowl": 155, ex0.sue: {}, ex0.bob: {}}) is False
+    assert is_2d_with_unique_keys({"bowl": 155, ex0.sue: {}})
     assert is_2d_with_unique_keys({ex0.casa: {"clean": ex0.bob}})
     assert is_2d_with_unique_keys({ex0.casa: {"clean": {ex0.bob: 13}}})
-    x0_dict = {ex0.casa: {"clean": {ex0.bob: 13}, "swim": {}}}
+    x0_dict = {ex0.casa: {"clean": {ex0.bob: 13}, "bowl": {}}}
     assert not (is_2d_with_unique_keys(x0_dict))
     assert is_2d_with_unique_keys({ex0.casa: {"clean": {ex0.bob: 13}}, "school": 14})
     x1_dict = {ex0.casa: {"clean": {ex0.bob: 3}}, "school": {"clean": 1}}
     assert not (is_2d_with_unique_keys(x1_dict))
     assert is_2d_with_unique_keys({ex0.casa: {"school": {ex0.sue: {1: {}}}}})
-    x2_dict = {ex0.casa: {"clean": {ex0.bob: 13}, "school": {"swim": 14}}}
+    x2_dict = {ex0.casa: {"clean": {ex0.bob: 13}, "school": {"bowl": 14}}}
     assert not (is_2d_with_unique_keys(x2_dict))
 
     # No duplicate keys paired to dictionarys
@@ -625,9 +625,9 @@ def test_get_nested_dict_keys_by_level_ReturnsObj():
     assert get_nested_dict_keys_by_level({ex0.sue: {}}) == {0: {ex0.sue}}
     x2_dict = {ex0.sue: {}, ex0.bob: {}}
     assert get_nested_dict_keys_by_level(x2_dict) == {0: {ex0.sue, ex0.bob}}
-    x3_dict = {"swim": 155, ex0.sue: {}, ex0.bob: {}}
+    x3_dict = {"bowl": 155, ex0.sue: {}, ex0.bob: {}}
     assert get_nested_dict_keys_by_level(x3_dict) == {0: {ex0.sue, ex0.bob}}
-    x4_dict = {"swim": 155, ex0.sue: {ex0.zia: {}}, ex0.bob: {"Yao": {}}}
+    x4_dict = {"bowl": 155, ex0.sue: {ex0.zia: {}}, ex0.bob: {"Yao": {}}}
     expected_x4_dict = {0: {ex0.sue, ex0.bob}, 1: {ex0.zia, "Yao"}}
     assert get_nested_dict_keys_by_level(x4_dict) == expected_x4_dict
 
@@ -641,13 +641,13 @@ def test_get_nested_keys_by_level_ReturnsObj():
     assert get_nested_keys_by_level({ex0.sue: {}}) == {0: {ex0.sue}}
     x2_dict = {ex0.sue: {}, ex0.bob: {}}
     assert get_nested_keys_by_level(x2_dict) == {0: {ex0.sue, ex0.bob}}
-    x3_dict = {ex0.swim: 155, ex0.sue: {}, ex0.bob: {}}
-    assert get_nested_keys_by_level(x3_dict) == {0: {ex0.swim, ex0.sue, ex0.bob}}
-    x4_dict = {ex0.swim: 155, ex0.sue: {ex0.zia: {}}, ex0.bob: {ex0.yao: {ex0.swim: 1}}}
+    x3_dict = {ex0.bowl: 155, ex0.sue: {}, ex0.bob: {}}
+    assert get_nested_keys_by_level(x3_dict) == {0: {ex0.bowl, ex0.sue, ex0.bob}}
+    x4_dict = {ex0.bowl: 155, ex0.sue: {ex0.zia: {}}, ex0.bob: {ex0.yao: {ex0.bowl: 1}}}
     expected_x4_dict = {
-        0: {ex0.sue, ex0.bob, ex0.swim},
+        0: {ex0.sue, ex0.bob, ex0.bowl},
         1: {ex0.zia, ex0.yao},
-        2: {ex0.swim},
+        2: {ex0.bowl},
     }
     assert get_nested_keys_by_level(x4_dict) == expected_x4_dict
 
@@ -661,10 +661,10 @@ def test_get_nested_non_dict_keys_by_level_ReturnsObj():
     assert get_nested_non_dict_keys_by_level({ex0.sue: {}}) == {0: set()}
     x2_dict = {ex0.sue: {}, ex0.bob: {}}
     assert get_nested_non_dict_keys_by_level(x2_dict) == {0: set()}
-    x3_dict = {ex0.swim: 155, ex0.sue: {}, ex0.bob: {}}
-    assert get_nested_non_dict_keys_by_level(x3_dict) == {0: {ex0.swim}}
-    x4_dict = {ex0.swim: 155, ex0.sue: {ex0.zia: {}}, ex0.bob: {ex0.yao: {ex0.swim: 1}}}
-    expected_x4_dict = {0: {ex0.swim}, 1: set(), 2: {ex0.swim}}
+    x3_dict = {ex0.bowl: 155, ex0.sue: {}, ex0.bob: {}}
+    assert get_nested_non_dict_keys_by_level(x3_dict) == {0: {ex0.bowl}}
+    x4_dict = {ex0.bowl: 155, ex0.sue: {ex0.zia: {}}, ex0.bob: {ex0.yao: {ex0.bowl: 1}}}
+    expected_x4_dict = {0: {ex0.bowl}, 1: set(), 2: {ex0.bowl}}
     assert get_nested_non_dict_keys_by_level(x4_dict) == expected_x4_dict
 
 
@@ -678,10 +678,10 @@ def test_get_nested_non_dict_keys_list_ReturnsObj():
     assert get_nested_non_dict_keys_list({ex0.sue: {}}) == []
     x2_dict = {ex0.sue: {}, ex0.bob: {}}
     assert get_nested_non_dict_keys_list(x2_dict) == []
-    x3_dict = {ex0.swim: 155, ex0.sue: {}, ex0.bob: {}}
-    assert get_nested_non_dict_keys_list(x3_dict) == [ex0.swim]
-    x4_dict = {ex0.swim: 155, ex0.sue: {ex0.zia: {}}, ex0.bob: {ex0.yao: {run_str: 1}}}
-    assert get_nested_non_dict_keys_list(x4_dict) == [ex0.swim, run_str]
+    x3_dict = {ex0.bowl: 155, ex0.sue: {}, ex0.bob: {}}
+    assert get_nested_non_dict_keys_list(x3_dict) == [ex0.bowl]
+    x4_dict = {ex0.bowl: 155, ex0.sue: {ex0.zia: {}}, ex0.bob: {ex0.yao: {run_str: 1}}}
+    assert get_nested_non_dict_keys_list(x4_dict) == [ex0.bowl, run_str]
     x5_dict = {"casa": {"clean": {ex0.bob: 13}}, "school": 14}
     assert get_nested_non_dict_keys_list(x5_dict) == ["school", ex0.bob]
 
@@ -698,7 +698,7 @@ def test_get_nested_dict_key_by_level_ReturnsObj():
     # ESTABLISH /  WHEN / THEN
     assert get_nested_dict_key_by_level({}) == []
     assert get_nested_dict_key_by_level({ex0.sue: {}}) == [ex0.sue]
-    x4_dict = {"swim": 155, ex0.sue: {ex0.bob: {"Yao": {}}}}
+    x4_dict = {"bowl": 155, ex0.sue: {ex0.bob: {"Yao": {}}}}
     assert get_nested_dict_key_by_level(x4_dict) == [ex0.sue, ex0.bob, "Yao"]
 
 
@@ -718,8 +718,8 @@ def test_create_2d_array_from_dict_ReturnsObj_Scenario0_Simple():
     assert create_2d_array_from_dict({}) == [[], []]
     assert create_2d_array_from_dict({ex0.sue: x1_int}) == [[ex0.sue], [x1_int]]
     assert create_2d_array_from_dict({ex0.sue: {}}) == [[], []]
-    x0_2d_array = [["swim"], [155]]
-    assert create_2d_array_from_dict({"swim": 155, ex0.sue: {}}) == x0_2d_array
+    x0_2d_array = [["bowl"], [155]]
+    assert create_2d_array_from_dict({"bowl": 155, ex0.sue: {}}) == x0_2d_array
     x1_2d_array = [["clean"], [ex0.bob]]
     assert create_2d_array_from_dict({"casa": {"clean": ex0.bob}}) == x1_2d_array
     x2_2d_array = [[ex0.bob], [13]]

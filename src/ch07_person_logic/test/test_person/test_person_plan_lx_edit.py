@@ -13,7 +13,7 @@ def test_PersonUnit_edit_plan_label_FailsWhenPlanDoesNotExist():
 
     casa_rope = yao_person.make_l1_rope(exx.casa)
     yao_person.set_l1_plan(planunit_shop(exx.casa))
-    yao_person.set_plan_obj(planunit_shop(exx.swim), parent_rope=casa_rope)
+    yao_person.set_plan_obj(planunit_shop(exx.bowl), parent_rope=casa_rope)
 
     # WHEN / THEN
     no_plan_rope = yao_person.make_l1_rope("bees")

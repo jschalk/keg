@@ -238,67 +238,67 @@ def test_open_json_ReturnsObj(temp3_fs, temp3_dir):
 def test_save_file_ReplacesFileAsDefault(temp3_fs, temp3_dir):
     # ESTABLISH
     env_dir = temp3_dir
-    swim2_str = "swim"
-    swim_file_ext = "txt"
-    swim_filename = f"{swim2_str}.{swim_file_ext}"
-    swim_old_file_str = "swimming is good"
-    swim_new_file_str = "swimming is ok"
-    print(f"{env_dir=} {swim_filename=}")
-    save_file(dest_dir=env_dir, filename=swim_filename, file_str=swim_old_file_str)
-    assert open_file(dest_dir=env_dir, filename=swim_filename) == swim_old_file_str
+    bowl2_str = "bowl"
+    bowl_file_ext = "txt"
+    bowl_filename = f"{bowl2_str}.{bowl_file_ext}"
+    bowl_old_file_str = "bowling is good"
+    bowl_new_file_str = "bowling is ok"
+    print(f"{env_dir=} {bowl_filename=}")
+    save_file(dest_dir=env_dir, filename=bowl_filename, file_str=bowl_old_file_str)
+    assert open_file(dest_dir=env_dir, filename=bowl_filename) == bowl_old_file_str
 
     # WHEN
     save_file(
         dest_dir=env_dir,
-        filename=swim_filename,
-        file_str=swim_new_file_str,
+        filename=bowl_filename,
+        file_str=bowl_new_file_str,
         replace=None,
     )
 
     # THEN
-    assert open_file(dest_dir=env_dir, filename=swim_filename) == swim_new_file_str
+    assert open_file(dest_dir=env_dir, filename=bowl_filename) == bowl_new_file_str
 
 
 def test_save_file_DoesNotReplaceFile(temp3_fs, temp3_dir):
     # ESTABLISH
     env_dir = temp3_dir
-    swim2_str = "swim"
-    swim_file_ext = "txt"
-    swim_filename = f"{swim2_str}.{swim_file_ext}"
-    swim_old_file_str = "swimming is good"
-    swim_new_file_str = "swimming is ok"
-    print(f"{env_dir=} {swim_filename=}")
-    save_file(dest_dir=env_dir, filename=swim_filename, file_str=swim_old_file_str)
-    assert open_file(env_dir, swim_filename) == swim_old_file_str
+    bowl2_str = "bowl"
+    bowl_file_ext = "txt"
+    bowl_filename = f"{bowl2_str}.{bowl_file_ext}"
+    bowl_old_file_str = "bowling is good"
+    bowl_new_file_str = "bowling is ok"
+    print(f"{env_dir=} {bowl_filename=}")
+    save_file(dest_dir=env_dir, filename=bowl_filename, file_str=bowl_old_file_str)
+    assert open_file(env_dir, bowl_filename) == bowl_old_file_str
 
     # WHEN
     save_file(
         dest_dir=env_dir,
-        filename=swim_filename,
-        file_str=swim_new_file_str,
+        filename=bowl_filename,
+        file_str=bowl_new_file_str,
         replace=False,
     )
 
     # THEN
-    assert open_file(env_dir, swim_filename) == swim_old_file_str
+    assert open_file(env_dir, bowl_filename) == bowl_old_file_str
 
 
 def test_save_file_DoesNotRequireSeperateFilename(temp3_fs, temp3_dir):
     # ESTABLISH
     env_dir = temp3_dir
-    swim2_str = "swim"
-    swim_file_ext = "txt"
-    swim_filename = f"{swim2_str}.{swim_file_ext}"
-    swim_file_str = "swimming is good"
-    print(f"{env_dir=} {swim_filename=}")
-    swim_file_path = create_path(env_dir, swim_filename)
-    assert os_path_exist(swim_file_path) is False
+    bowl2_str = "bowl"
+    bowl_file_ext = "txt"
+    bowl_filename = f"{bowl2_str}.{bowl_file_ext}"
+    bowl_file_str = "bowling is good"
+    print(f"{env_dir=} {bowl_filename=}")
+    bowl_file_path = create_path(env_dir, bowl_filename)
+    assert os_path_exist(bowl_file_path) is False
 
     # WHEN
-    save_file(swim_file_path, filename=None, file_str=swim_file_str)
+    save_file(bowl_file_path, filename=None, file_str=bowl_file_str)
 
     # THEN
-    assert os_path_exist(swim_file_path)
+    assert os_path_exist(bowl_file_path)
 
 
 def test_get_dir_file_strs_GrabsFileData(temp3_fs, temp3_dir):
@@ -493,7 +493,7 @@ def test_get_integer_filenames_GrabsFileNamesWith_IntegersGreaterThan_min_intege
 def test_count_files_ReturnsNoneIfDirectoryDoesNotExist(temp3_fs, temp3_dir):
     # ESTABLISH
     env_dir = temp3_dir
-    does_not_exist_dir = create_path(env_dir, "swim")
+    does_not_exist_dir = create_path(env_dir, "bowl")
 
     # WHEN
     dir_count = count_files(dir_path=does_not_exist_dir)

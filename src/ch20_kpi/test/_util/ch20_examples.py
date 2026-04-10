@@ -37,8 +37,8 @@ def get_ep8_yao_clean_example() -> PersonUnit:
     yao_person.add_contactunit(exx.yao, 1)
     yao_person.add_contactunit(exx.sue, 1)
     casa_rope = yao_person.make_l1_rope(exx.casa)
-    swim_rope = yao_person.make_rope(casa_rope, exx.swim)
-    yao_person.add_plan(swim_rope, 1, pledge=True)
+    bowl_rope = yao_person.make_rope(casa_rope, exx.bowl)
+    yao_person.add_plan(bowl_rope, 1, pledge=True)
     yao_person.get_contact(exx.yao).add_membership(exx.run)
     yao_person.conpute()
     return yao_person

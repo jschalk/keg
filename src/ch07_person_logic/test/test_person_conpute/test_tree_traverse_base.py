@@ -53,7 +53,7 @@ def test_PersonUnit_clear_plan_dict_and_person_obj_settle_attrs_SetsAttrs_Scenar
     x_keep_justifed = False
     x_sum_healerunit_plans_fund_total = 140
     sue_person.keeps_justified = x_keep_justifed
-    sue_person.keeps_buildable = "swimmers"
+    sue_person.keeps_buildable = "bowlers"
     sue_person.sum_healerunit_plans_fund_total = x_sum_healerunit_plans_fund_total
     sue_person._keep_dict = {"run": "run"}
     sue_person._healers_dict = {"run": "run"}
@@ -251,38 +251,38 @@ def test_PersonUnit_conpute_SetsPlanUnitAttr_awardunits():
 
     assert len(sue_person.contacts) == 3
     assert len(sue_person.get_contactunit_group_titles_dict()) == 3
-    sue_person.set_l1_plan(planunit_shop(exx.swim))
+    sue_person.set_l1_plan(planunit_shop(exx.bowl))
     awardunit_yao = awardunit_shop(exx.yao, give_force=10)
     awardunit_zia = awardunit_shop(exx.zia, give_force=10)
     awardunit_Xio = awardunit_shop(exx.xio, give_force=10)
-    swim_rope = sue_person.make_l1_rope(exx.swim)
-    sue_person.edit_plan_attr(swim_rope, awardunit=awardunit_yao)
-    sue_person.edit_plan_attr(swim_rope, awardunit=awardunit_zia)
-    sue_person.edit_plan_attr(swim_rope, awardunit=awardunit_Xio)
+    bowl_rope = sue_person.make_l1_rope(exx.bowl)
+    sue_person.edit_plan_attr(bowl_rope, awardunit=awardunit_yao)
+    sue_person.edit_plan_attr(bowl_rope, awardunit=awardunit_zia)
+    sue_person.edit_plan_attr(bowl_rope, awardunit=awardunit_Xio)
 
     street_str = "streets"
-    sue_person.set_plan_obj(planunit_shop(street_str), parent_rope=swim_rope)
+    sue_person.set_plan_obj(planunit_shop(street_str), parent_rope=bowl_rope)
     assert sue_person.planroot.awardunits in (None, {})
-    assert len(sue_person.planroot.kids[exx.swim].awardunits) == 3
+    assert len(sue_person.planroot.kids[exx.bowl].awardunits) == 3
 
     # WHEN
     sue_person.conpute()
 
     # THEN
     print(f"{sue_person._plan_dict.keys()=} ")
-    swim_plan = sue_person._plan_dict.get(swim_rope)
-    street_plan = sue_person._plan_dict.get(sue_person.make_rope(swim_rope, street_str))
+    bowl_plan = sue_person._plan_dict.get(bowl_rope)
+    street_plan = sue_person._plan_dict.get(sue_person.make_rope(bowl_rope, street_str))
 
-    assert len(swim_plan.awardunits) == 3
-    assert len(swim_plan.awardheirs) == 3
+    assert len(bowl_plan.awardunits) == 3
+    assert len(bowl_plan.awardheirs) == 3
     assert street_plan.awardunits in (None, {})
     assert len(street_plan.awardheirs) == 3
 
     print(f"{len(sue_person._plan_dict)}")
-    print(f"{swim_plan.awardunits}")
-    print(f"{swim_plan.awardheirs}")
-    print(f"{swim_plan.awardheirs}")
-    assert len(sue_person.planroot.kids["swim"].awardheirs) == 3
+    print(f"{bowl_plan.awardunits}")
+    print(f"{bowl_plan.awardheirs}")
+    print(f"{bowl_plan.awardheirs}")
+    assert len(sue_person.planroot.kids["bowl"].awardheirs) == 3
 
 
 def test_PersonUnit_conpute_TreeTraverseSetsClearsAwardLineestors():
@@ -319,37 +319,37 @@ def test_PersonUnit_conpute_DoesNotKeepNonRequired_awardheirs():
     yao_person.add_contactunit(exx.zia)
     yao_person.add_contactunit(exx.xio)
 
-    swim_rope = yao_person.make_l1_rope(exx.swim)
+    bowl_rope = yao_person.make_l1_rope(exx.bowl)
 
-    yao_person.set_l1_plan(planunit_shop(exx.swim))
+    yao_person.set_l1_plan(planunit_shop(exx.bowl))
     awardunit_yao = awardunit_shop(exx.yao, give_force=10)
     awardunit_zia = awardunit_shop(exx.zia, give_force=10)
     awardunit_Xio = awardunit_shop(exx.xio, give_force=10)
 
-    swim_plan = yao_person.get_plan_obj(swim_rope)
-    yao_person.edit_plan_attr(swim_rope, awardunit=awardunit_yao)
-    yao_person.edit_plan_attr(swim_rope, awardunit=awardunit_zia)
-    yao_person.edit_plan_attr(swim_rope, awardunit=awardunit_Xio)
+    bowl_plan = yao_person.get_plan_obj(bowl_rope)
+    yao_person.edit_plan_attr(bowl_rope, awardunit=awardunit_yao)
+    yao_person.edit_plan_attr(bowl_rope, awardunit=awardunit_zia)
+    yao_person.edit_plan_attr(bowl_rope, awardunit=awardunit_Xio)
 
-    assert len(swim_plan.awardunits) == 3
-    assert len(swim_plan.awardheirs) == 0
-
-    # WHEN
-    yao_person.conpute()
-
-    # THEN
-    assert len(swim_plan.awardunits) == 3
-    assert len(swim_plan.awardheirs) == 3
-    yao_person.edit_plan_attr(swim_rope, awardunit_del=exx.yao)
-    assert len(swim_plan.awardunits) == 2
-    assert len(swim_plan.awardheirs) == 3
+    assert len(bowl_plan.awardunits) == 3
+    assert len(bowl_plan.awardheirs) == 0
 
     # WHEN
     yao_person.conpute()
 
     # THEN
-    assert len(swim_plan.awardunits) == 2
-    assert len(swim_plan.awardheirs) == 2
+    assert len(bowl_plan.awardunits) == 3
+    assert len(bowl_plan.awardheirs) == 3
+    yao_person.edit_plan_attr(bowl_rope, awardunit_del=exx.yao)
+    assert len(bowl_plan.awardunits) == 2
+    assert len(bowl_plan.awardheirs) == 3
+
+    # WHEN
+    yao_person.conpute()
+
+    # THEN
+    assert len(bowl_plan.awardunits) == 2
+    assert len(bowl_plan.awardheirs) == 2
 
 
 def test_PersonUnit_get_plan_tree_ordered_rope_list_ReturnsObj_Scenario0():
@@ -472,8 +472,8 @@ def test_PersonUnit_conpute_WhenPlanUnitHas_starButAll_kidsHaveZero_starAddTo_of
     casa_rope = sue_personunit.make_l1_rope(exx.casa)
     casa_plan = planunit_shop(exx.casa, star=1)
 
-    swim_rope = sue_personunit.make_rope(casa_rope, exx.swim)
-    swim_plan = planunit_shop(exx.swim, star=8)
+    bowl_rope = sue_personunit.make_rope(casa_rope, exx.bowl)
+    bowl_plan = planunit_shop(exx.bowl, star=8)
 
     clean_str = "cleaning"
     clean_rope = sue_personunit.make_rope(casa_rope, clean_str)
@@ -487,7 +487,7 @@ def test_PersonUnit_conpute_WhenPlanUnitHas_starButAll_kidsHaveZero_starAddTo_of
     vacuum_plan = planunit_shop(vacuum_str, star=0)
 
     sue_personunit.set_l1_plan(casa_plan)
-    sue_personunit.set_plan_obj(swim_plan, casa_rope)
+    sue_personunit.set_plan_obj(bowl_plan, casa_rope)
     sue_personunit.set_plan_obj(clean_plan, casa_rope)
     sue_personunit.set_plan_obj(sweep_plan, clean_rope)  # _star=0
     sue_personunit.set_plan_obj(vacuum_plan, clean_rope)  # _star=0
@@ -549,14 +549,14 @@ def test_PersonUnit_conpute_CreatesNewGroupUnits_Scenario0():
 def test_PersonUnit_conpute_CreatesNewGroupUnits_Scenario1():
     # ESTABLISH
     yao_person = personunit_shop(exx.yao)
-    swim_rope = yao_person.make_l1_rope(exx.swim)
-    yao_person.set_l1_plan(planunit_shop(exx.swim))
+    bowl_rope = yao_person.make_l1_rope(exx.bowl)
+    yao_person.set_l1_plan(planunit_shop(exx.bowl))
     yao_person.add_contactunit(exx.yao)
     yao_person.add_contactunit(exx.zia)
-    swim_plan = yao_person.get_plan_obj(swim_rope)
-    swim_plan.set_awardunit(awardunit_shop(exx.yao))
-    swim_plan.set_awardunit(awardunit_shop(exx.zia))
-    swim_plan.set_awardunit(awardunit_shop(exx.xio))
+    bowl_plan = yao_person.get_plan_obj(bowl_rope)
+    bowl_plan.set_awardunit(awardunit_shop(exx.yao))
+    bowl_plan.set_awardunit(awardunit_shop(exx.zia))
+    bowl_plan.set_awardunit(awardunit_shop(exx.xio))
     assert len(yao_person.get_contactunit_group_titles_dict()) == 2
     assert not yao_person.groupunit_exists(exx.yao)
     assert not yao_person.groupunit_exists(exx.zia)
@@ -585,14 +585,14 @@ def test_PersonUnit_conpute_CreatesNewGroupUnits_Scenario1():
 def test_PersonUnit_get_tree_traverse_generated_groupunits_ReturnsObj():
     # ESTABLISH
     yao_person = personunit_shop(exx.yao)
-    swim_rope = yao_person.make_l1_rope(exx.swim)
-    yao_person.set_l1_plan(planunit_shop(exx.swim))
+    bowl_rope = yao_person.make_l1_rope(exx.bowl)
+    yao_person.set_l1_plan(planunit_shop(exx.bowl))
     yao_person.add_contactunit(exx.yao)
     yao_person.add_contactunit(exx.zia)
-    swim_plan = yao_person.get_plan_obj(swim_rope)
-    swim_plan.set_awardunit(awardunit_shop(exx.yao))
-    swim_plan.set_awardunit(awardunit_shop(exx.zia))
-    swim_plan.set_awardunit(awardunit_shop(exx.xio))
+    bowl_plan = yao_person.get_plan_obj(bowl_rope)
+    bowl_plan.set_awardunit(awardunit_shop(exx.yao))
+    bowl_plan.set_awardunit(awardunit_shop(exx.zia))
+    bowl_plan.set_awardunit(awardunit_shop(exx.xio))
     yao_person.conpute()
     assert yao_person.groupunit_exists(exx.yao)
     assert yao_person.groupunit_exists(exx.zia)
@@ -610,7 +610,7 @@ def test_PersonUnit_get_tree_traverse_generated_groupunits_ReturnsObj():
     assert symmerty_group_titles == {exx.xio}
 
     # ESTABLISH
-    swim_plan.set_awardunit(awardunit_shop(exx.run))
+    bowl_plan.set_awardunit(awardunit_shop(exx.run))
     assert not yao_person.groupunit_exists(exx.run)
     yao_person.conpute()
     assert yao_person.groupunit_exists(exx.run)

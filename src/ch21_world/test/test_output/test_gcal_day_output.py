@@ -133,9 +133,5 @@ def test_idea_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueReport(
     assert exx.sweep in sue_hn_blu_punch_str
 
 
-# # TODO
-# def save_today_day_punchs_to_markdown(
-#     worlddir: WorldDir, person_name: PersonName, focus_group_title: GroupTitle = None
-# ):
-#     create_today_day_punchs(worlddir, person_name, focus_group_title)
-#     # save today day punchs for person_name as markdown files in worlddir.output_dir
+# TODO create test for this
+# def create_today_punchs(

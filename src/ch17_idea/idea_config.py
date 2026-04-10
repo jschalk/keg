@@ -38,8 +38,9 @@ def get_allowed_curds() -> set[str]:
 
 
 def get_brick_formats_dir() -> str:
-    idea_dir = create_path("src", "ch17_idea")
-    return create_path(idea_dir, "brick_formats")
+    """src/ch17_idea/brick_formats"""
+    ch_dir = create_path("src", "ch17_idea")
+    return create_path(ch_dir, "brick_formats")
 
 
 def get_idea_elements_sort_order() -> list[str]:
@@ -806,7 +807,7 @@ def get_brickref_from_file(brick_format_filename: str) -> dict:
     return open_json(get_brick_formats_dir(), brickref_filename)
 
 
-def get_quick_ideas_column_ref() -> dict[str, set[str]]:
+def get_quick_bricks_column_ref() -> dict[str, set[str]]:
     brick_type_dict = {}
     for brick_format_filename in get_brick_format_filenames():
         brickref_dict = get_brickref_from_file(brick_format_filename)

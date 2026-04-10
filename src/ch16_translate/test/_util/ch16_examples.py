@@ -44,13 +44,13 @@ def get_clean_ropemap() -> RopeMap:
     return rope_mapunit
 
 
-def get_swim_titlemap() -> TitleMap:
+def get_bowl_titlemap() -> TitleMap:
     knot = default_knot_if_None()
-    swim_otx = f"swim{knot}"
-    swim_inx = f"nage{knot}"
+    bowl_otx = f"bowl{knot}"
+    bowl_inx = f"nage{knot}"
     climb_otx = f"climb{knot}"
     x_titlemap = titlemap_shop(spark_face="Sue")
-    x_titlemap.set_otx2inx(swim_otx, swim_inx)
+    x_titlemap.set_otx2inx(bowl_otx, bowl_inx)
     x_titlemap.set_otx2inx(climb_otx, climb_otx)
     return x_titlemap
 
@@ -105,7 +105,7 @@ def get_suita_namemap() -> NameMap:
 def get_sue_translateunit() -> TranslateUnit:
     sue_translateunit = translateunit_shop("Sue")
     sue_translateunit.set_namemap(get_suita_namemap())
-    sue_translateunit.set_titlemap(get_swim_titlemap())
+    sue_translateunit.set_titlemap(get_bowl_titlemap())
     sue_translateunit.set_labelmap(get_clean_labelmap())
     sue_translateunit.set_ropemap(get_clean_ropemap())
     sue_translateunit.ropemap.labelmap = get_clean_labelmap()
@@ -364,8 +364,8 @@ def get_slash_titlemap() -> TitleMap:
     x_unknown_str = "UnknownTerm"
     slash_otx_knot = "/"
     colon_inx_knot = ":"
-    swim_otx = f"swim{slash_otx_knot}"
-    swim_inx = f"nage{colon_inx_knot}"
+    bowl_otx = f"bowl{slash_otx_knot}"
+    bowl_inx = f"nage{colon_inx_knot}"
     climb_otx = f"climb{slash_otx_knot}"
     climb_inx = f"climb{colon_inx_knot}"
     x_titlemap = titlemap_shop(
@@ -375,7 +375,7 @@ def get_slash_titlemap() -> TitleMap:
         spark_face="Sue",
         spark_num=7,
     )
-    x_titlemap.set_otx2inx(swim_otx, swim_inx)
+    x_titlemap.set_otx2inx(bowl_otx, bowl_inx)
     x_titlemap.set_otx2inx(climb_otx, climb_inx)
     return x_titlemap
 

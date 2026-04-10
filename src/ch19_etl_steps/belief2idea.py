@@ -1,4 +1,4 @@
-from openpyxl import Workbook as openpyxl_Workbook, load_workbook
+from openpyxl import load_workbook
 from os import listdir as os_listdir
 from os.path import join as os_path_join
 from pandas import (
@@ -8,6 +8,9 @@ from pandas import (
     to_numeric as pandas_to_numeric,
 )
 from pathlib import Path
+from src.ch00_py.dict_toolbox import get_0_if_None
+from src.ch00_py.file_toolbox import delete_dir, set_dir
+from src.ch17_idea.brick_db_tool import save_sheet
 from src.ch17_idea.idea_config import get_brick_types
 from typing import List, Tuple
 
@@ -108,7 +111,7 @@ def create_spark_face_spark_nums(
 def add_spark_num_column(df: DataFrame, spark_face_spark_nums: dict[str, int]):
     """
     Adds 'spark_num' as the first column based on 'spark_face' values.
-    - mutates original DataFrame (does not )
+    - mutates original DataFrame (does not create new df)
     """
     if "spark_face" not in df.columns:
         # raise ValueError("Column 'spark_face' not found in DataFrame")
@@ -137,8 +140,7 @@ def get_excel_sheet_tuples(directory: str) -> List[Tuple[str, str]]:
         if filename.lower().endswith(excel_extensions):
             filepath = os_path_join(directory, filename)
             wb = load_workbook(filepath, read_only=True)
-            for sheet_name in wb.sheetnames:
-                result.append((filename, sheet_name))
+            result.extend((filename, sheet_name) for sheet_name in wb.sheetnames)
             wb.close()
 
     return sorted(result)
@@ -188,12 +190,10 @@ def get_validated_bele_src_brick_type_sheets(
     """
     bele_br_sheets = get_sheets_with_brick_types(bele_src_dir)
     idea_br_sheets = get_sheets_with_brick_types(idea_src_dir)
+    bele_br_sheets_set = set(bele_br_sheets)
+    idea_br_sheets_set = set(idea_br_sheets)
 
-    bele_sheet_names = {sheet_name for _, sheet_name in bele_br_sheets}
-    idea_sheet_names = {sheet_name for _, sheet_name in idea_br_sheets}
-
-    overlapping = bele_sheet_names & idea_sheet_names
-    if overlapping:
+    if overlapping := idea_br_sheets_set.intersection(bele_br_sheets_set):
         raise ValueError(
             f"BR sheets found in both bele_src_dir and idea_src_dir: "
             f"{sorted(overlapping)}"
@@ -203,8 +203,7 @@ def get_validated_bele_src_brick_type_sheets(
 
 
 def beliefs_sheets_to_idea_sheets(
-    bele_src_dir: str,
-    idea_src_dir: str,
+    bele_src_dir: str, idea_src_dir: str, db_max_spark_num: int = None
 ) -> List[Tuple[str, str]]:
     """
     Copies all BR sheets from bele_src_dir into idea_src_dir.
@@ -222,15 +221,17 @@ def beliefs_sheets_to_idea_sheets(
         ValueError: (propagated from get_bele_br_sheets_validated) if any BR
                     sheet name exists in both directories before the copy.
     """
-    # TODO get max_spark_num from idea_src_dir
-    # TODO get face_sparks from bele_src_dir
-    # TODO create spark_num, face_spark tuples
-    # TODO when being copied over, add spark_num to dataframe
+    bele_spark_faces = get_spark_faces_from_files(bele_src_dir)
+    idea_max_spark_num = get_0_if_None(get_max_spark_num_from_files(idea_src_dir))
+    general_max_spark_num = max(idea_max_spark_num, get_0_if_None(db_max_spark_num))
+    spark_face_spark_nums = create_spark_face_spark_nums(
+        bele_spark_faces, general_max_spark_num
+    )
+
     bele_br_sheets = get_validated_bele_src_brick_type_sheets(
         bele_src_dir, idea_src_dir
     )
-
-    # Group sheet names by their source file for efficient workbook loading
+    # Group sheet names by their source file
     file_to_sheets: dict[str, List[str]] = {}
     for filename, sheet_name in bele_br_sheets:
         file_to_sheets.setdefault(filename, []).append(sheet_name)
@@ -239,65 +240,13 @@ def beliefs_sheets_to_idea_sheets(
 
     for filename, sheet_names in file_to_sheets.items():
         src_path = os_path_join(bele_src_dir, filename)
-        src_wb = load_workbook(src_path, data_only=True)  # resolve formulas to values
-
+        dst_path = os_path_join(idea_src_dir, filename)
         for sheet_name in sheet_names:
-            src_ws = src_wb[sheet_name]
+            br_df = pandas_read_excel(src_path, sheet_name)
+            add_spark_num_column(br_df, spark_face_spark_nums)
+            save_sheet(dst_path, sheet_name, br_df, False)
+            copied.append((dst_path, sheet_name))
 
-            dest_wb = openpyxl_Workbook()
-            dest_ws = dest_wb.active
-            dest_ws.title = sheet_name
-
-            # Copy column dimensions so pandas read_excel gets clean column widths
-            for col_idx, col_dim in src_ws.column_dimensions.items():
-                dest_ws.column_dimensions[col_idx].width = col_dim.width
-
-            # Copy all cell values row by row (no styling — pandas doesn't need it)
-            for row in src_ws.iter_rows():
-                for cell in row:
-                    dest_ws.cell(
-                        row=cell.row,
-                        column=cell.column,
-                        value=cell.value,
-                    )
-
-            new_filename = f"{sheet_name}.xlsx"
-            dest_path = os_path_join(idea_src_dir, new_filename)
-            dest_wb.save(dest_path)
-            copied.append((new_filename, sheet_name))
-
-        src_wb.close()
-
+    delete_dir(bele_src_dir)
+    set_dir(bele_src_dir)
     return sorted(copied)
-
-
-def update_spark_num_in_excel_file(filepath: str, max_spark_num):
-    # Read all sheets
-    sheets = pandas_read_excel(filepath, sheet_name=None)
-    spark_num = max_spark_num + 1
-    # Modify each sheet
-    updated_sheets = {}
-    for sheet_name, df in sheets.items():
-        df["spark_num"] = spark_num  # Add or overwrite
-        updated_sheets[sheet_name] = df
-
-    # Write all sheets back to the same file
-    with ExcelWriter(filepath, engine="xlsxwriter") as writer:
-        for sheet_name, df in updated_sheets.items():
-            df.to_excel(writer, sheet_name=sheet_name, index=False)
-
-
-def update_spark_num_in_belief_files(directory: str, max_spark_num: int) -> None:
-    """
-    Adds or updates the 'spark_num' column with a given value
-    in all Excel files in the directory that contain 'belief' in the filename.
-
-    Args:
-        directory (str): Path to the directory containing Excel files.
-        value: The value to set in the 'spark_num' column.
-    """
-    for filename in os_listdir(directory):
-        is_excel_file = filename.lower().endswith((".xlsx", ".xls"))
-        if is_excel_file and "belief" in filename.lower():
-            filepath = os_path_join(directory, filename)
-            update_spark_num_in_excel_file(filepath, max_spark_num)

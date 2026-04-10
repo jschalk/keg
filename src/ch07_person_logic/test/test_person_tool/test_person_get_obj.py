@@ -29,17 +29,17 @@ def test_person_contactunit_get_obj_ReturnsObj():
 
 def test_person_contact_membership_get_obj_ReturnsObj():
     # ESTABLISH
-    swim_str = ";swim"
+    bowlers_str = ";bowlers"
     sue_person = personunit_shop("Sue")
-    jkeys = {kw.contact_name: exx.yao, "group_title": swim_str}
+    jkeys = {kw.contact_name: exx.yao, "group_title": bowlers_str}
     sue_person.add_contactunit(exx.yao)
-    sue_person.get_contact(exx.yao).add_membership(swim_str)
+    sue_person.get_contact(exx.yao).add_membership(bowlers_str)
 
     # WHEN
     x_obj = person_contact_membership_get_obj(sue_person, jkeys)
     # THEN
     assert x_obj
-    assert x_obj == sue_person.get_contact(exx.yao).get_membership(swim_str)
+    assert x_obj == sue_person.get_contact(exx.yao).get_membership(bowlers_str)
 
 
 def test_person_planunit_get_obj_ReturnsObj():
@@ -61,15 +61,15 @@ def test_person_plan_awardunit_get_obj_ReturnsObj():
     sue_person = personunit_shop("Sue")
     casa_rope = sue_person.make_l1_rope(exx.casa)
     sue_person.add_plan(casa_rope)
-    jkeys = {kw.plan_rope: casa_rope, kw.awardee_title: exx.swim}
+    jkeys = {kw.plan_rope: casa_rope, kw.awardee_title: exx.bowl}
     sue_person.add_plan(casa_rope)
-    sue_person.get_plan_obj(casa_rope).set_awardunit(awardunit_shop(exx.swim))
+    sue_person.get_plan_obj(casa_rope).set_awardunit(awardunit_shop(exx.bowl))
 
     # WHEN
     x_obj = person_plan_awardunit_get_obj(sue_person, jkeys)
     # THEN
     assert x_obj
-    assert x_obj == sue_person.get_plan_obj(casa_rope).get_awardunit(exx.swim)
+    assert x_obj == sue_person.get_plan_obj(casa_rope).get_awardunit(exx.bowl)
 
 
 def test_person_plan_reasonunit_get_obj_ReturnsObj():
@@ -161,17 +161,17 @@ def test_person_get_obj_ReturnsObj_person_contactunit_get_obj():
 
 def test_person_get_obj_ReturnsObj_person_contact_membership_get_obj():
     # ESTABLISH
-    swim_str = ";swim"
+    bowlers_str = ";bowlers"
     sue_person = personunit_shop("Sue")
-    jkeys = {kw.contact_name: exx.yao, "group_title": swim_str}
+    jkeys = {kw.contact_name: exx.yao, "group_title": bowlers_str}
     sue_person.add_contactunit(exx.yao)
-    sue_person.get_contact(exx.yao).add_membership(swim_str)
+    sue_person.get_contact(exx.yao).add_membership(bowlers_str)
 
     # WHEN
     x_obj = person_get_obj(kw.person_contact_membership, sue_person, jkeys)
     # THEN
     assert x_obj
-    assert x_obj == sue_person.get_contact(exx.yao).get_membership(swim_str)
+    assert x_obj == sue_person.get_contact(exx.yao).get_membership(bowlers_str)
 
 
 def test_person_get_obj_ReturnsObj_person_planunit_get_obj():
@@ -193,15 +193,15 @@ def test_person_get_obj_ReturnsObj_person_plan_awardunit_get_obj():
     sue_person = personunit_shop("Sue")
     casa_rope = sue_person.make_l1_rope(exx.casa)
     sue_person.add_plan(casa_rope)
-    jkeys = {kw.plan_rope: casa_rope, kw.awardee_title: exx.swim}
+    jkeys = {kw.plan_rope: casa_rope, kw.awardee_title: exx.bowl}
     sue_person.add_plan(casa_rope)
-    sue_person.get_plan_obj(casa_rope).set_awardunit(awardunit_shop(exx.swim))
+    sue_person.get_plan_obj(casa_rope).set_awardunit(awardunit_shop(exx.bowl))
 
     # WHEN
     x_obj = person_get_obj(kw.person_plan_awardunit, sue_person, jkeys)
     # THEN
     assert x_obj
-    assert x_obj == sue_person.get_plan_obj(casa_rope).get_awardunit(exx.swim)
+    assert x_obj == sue_person.get_plan_obj(casa_rope).get_awardunit(exx.bowl)
 
 
 def test_person_get_obj_ReturnsObj_person_plan_reasonunit_get_obj():

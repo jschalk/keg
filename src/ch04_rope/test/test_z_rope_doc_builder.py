@@ -16,23 +16,23 @@ def test_get_ropeterm_description_md_ReturnsObj():
 Imagine all the things in the world and how they are related. Most things are not related to other things. But we as humans can create those connections. For example an apple that I eat and the moon seem completely seperate but we can create the connection arbitrarily: the apple is in an orchard, the orchard is loved by Sue, Sue loves the moon: "apple-orchard-things Sue loves-moon".
 
 There are infinitely many connections that can be possibly experienced. When we're living the infinite is open to us but only some connections are actually experienced. In keg I define terms that are connections "Ropes". Imagine there is a rope connecting all things that are related to each other. Examples:
-1. My cat and her food bowl. 
+1. My cat and her food dish. 
 2. A mountain as a concept and Wy'East (an actual mountain).
 3. My cat and a cat you know.
 
 There are infinitely many ways of defining a rope between to things:
-1. My cat, and her food bowl. 
-2. My cat, all cats in the world, all cat bowls in the world, and her food bowl. 
-3. My cat, all the things she wants, and her food bowl.
+1. My cat, and her food dish. 
+2. My cat, all cats in the world, all cat dishs in the world, and her food dish. 
+3. My cat, all the things she wants, and her food dish.
 
 The way those ropes are made creates context that changes what exactly is being talked about. 
-1. My cat, all basic cat food, and her food bowl. 
-2. My cat, all fancy cat food, and her food bowl. 
-In the first situation my cat's food has a conext of "basic" food., in the second situation the food context is "fancy". But its not explicit that the food bowl has any food in it or what type it is. 
+1. My cat, all basic cat food, and her food dish. 
+2. My cat, all fancy cat food, and her food dish. 
+In the first situation my cat's food has a conext of "basic" food., in the second situation the food context is "fancy". But its not explicit that the food dish has any food in it or what type it is. 
 
-In the example of "My cat, all basic cat food, and her food bowl." it is intuitive that there are three things (My cat) (all basic cat food) (her food bowl) but its also reasonable to say there are two things: (My cat) (all basic cat food, her bowl). To clearly express what things the rope is connecting to and through we must use separator characters. I call them "knots". (In Data Science they are call delimiters or separators) Every rope that connects two things can tie itself a knot and that knot defines the seperation and connection between two things. 
-- Example with knot ";" and three things: ;My Cat;all basic cat food;her food bowl;
-- Example with knot ";" and two things: ;My Cat all basic cat food;her food bowl;
+In the example of "My cat, all basic cat food, and her food dish." it is intuitive that there are three things (My cat) (all basic cat food) (her food dish) but its also reasonable to say there are two things: (My cat) (all basic cat food, her dish). To clearly express what things the rope is connecting to and through we must use separator characters. I call them "knots". (In Data Science they are call delimiters or separators) Every rope that connects two things can tie itself a knot and that knot defines the seperation and connection between two things. 
+- Example with knot ";" and three things: ;My Cat;all basic cat food;her food dish;
+- Example with knot ";" and two things: ;My Cat all basic cat food;her food dish;
 
 Knots cannot be part of things' labels. Otherwise it becomes impossible to know what is a real knot and what is part of the thing's label. 
 - ";" knot and 3 things: ;apples, oranges, pears;supermarket fruits;yogurt;

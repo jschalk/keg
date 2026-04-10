@@ -39,9 +39,9 @@ def test_sift_ReturnsObjWithoutUnecessaryDELETE_person_contact_membership():
     sue_person.add_contactunit(exx.yao)
     sue_person.add_contactunit(exx.bob)
     yao_contactunit = sue_person.get_contact(exx.yao)
-    swim_str = ";swim"
+    bowlers_str = ";bowlers"
     yao_contactunit.add_membership(exx.run)
-    yao_contactunit.add_membership(swim_str)
+    yao_contactunit.add_membership(bowlers_str)
     print(f"{yao_contactunit.memberships.keys()=}")
 
     contacts_persondelta = persondelta_shop()

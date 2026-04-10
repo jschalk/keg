@@ -67,16 +67,16 @@ def test_PersonUnit_set_all_plan_plan_uids_unique_Setsplan_uids():
     # ESTABLISH
     zia_person = personunit_shop(person_name=exx.zia)
     sports_str = "sports"
-    zia_person.set_l1_plan(planunit_shop(exx.swim, plan_uid=None))
+    zia_person.set_l1_plan(planunit_shop(exx.bowl, plan_uid=None))
     zia_person.set_l1_plan(planunit_shop(sports_str, plan_uid=2))
-    swim_rope = zia_person.make_l1_rope(exx.swim)
-    assert zia_person.get_plan_obj(swim_rope).plan_uid is None
+    bowl_rope = zia_person.make_l1_rope(exx.bowl)
+    assert zia_person.get_plan_obj(bowl_rope).plan_uid is None
 
     # WHEN
     zia_person.set_all_plan_plan_uids_unique()
 
     # THEN
-    assert zia_person.get_plan_obj(swim_rope).plan_uid is not None
+    assert zia_person.get_plan_obj(bowl_rope).plan_uid is not None
 
 
 def test_PersonUnit_get_tree_metrics_ReturnsANone_pledge_PlanRopeTerm():

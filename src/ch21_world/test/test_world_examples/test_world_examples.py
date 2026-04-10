@@ -48,11 +48,7 @@ def test_idea_sheets_to_lynx_mstr_Examples(temp3_fs, run_big_tests):
         print(f"before WHEN {os_path_exists(i_src_dir)=}")
 
         # WHEN
-        idea_sheets_to_lynx_mstr(
-            world_db_path=example_worlddir.get_world_db_path(),
-            i_src_dir=example_worlddir.i_src_dir,
-            moment_mstr_dir=example_worlddir.moment_mstr_dir,
-        )
+        idea_sheets_to_lynx_mstr(example_worlddir)
         create_beliefs(
             example_worlddir.world_dir,
             example_worlddir.output_dir,
