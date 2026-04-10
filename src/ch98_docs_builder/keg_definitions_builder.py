@@ -77,13 +77,13 @@ def get_keg_exam() -> dict[str, dict]:
     return open_json(create_src_keg_exam_path("src"))
 
 
-def get_keg_ch_sorted_terms(keywords_main: dict) -> list[str]:
+def get_keg_ch_sorted_terms(ch_keywords: dict) -> list[str]:
     def parse_init_ch(value):
         return float("inf") if value == "" else int(value[2:4])
 
     return sorted(
-        keywords_main.keys(),
-        key=lambda term: (-parse_init_ch(keywords_main[term]["init_chapter"]), term),
+        ch_keywords.keys(),
+        key=lambda term: (-parse_init_ch(ch_keywords[term]["init_chapter"]), term),
     )
 
 

@@ -14,8 +14,8 @@ from src.ch00_py.file_toolbox import (
     save_json,
 )
 from src.ch00_py.keyword_class_builder import (
+    create_src_ch_keywords_path,
     create_src_example_strs_path,
-    create_src_keywords_main_path,
 )
 from src.ch04_rope._ref.ch04_doc_builder import get_ropeterm_description_md
 from src.ch17_idea._ref.ch17_doc_builder import get_brick_formats_md, get_brick_mds
@@ -91,8 +91,8 @@ def resave_chapter_and_keyword_json_files():
         for x_dir, x_filename in json_file_tuples:
             json_dir = create_path(chapter_dir, x_dir)
             save_json(json_dir, x_filename, open_json(json_dir, x_filename))
-    keywords_main_json_path = create_src_keywords_main_path("src")
+    ch_keywords_json_path = create_src_ch_keywords_path("src")
     ex_strs_json_path = create_src_example_strs_path("src")
-    save_json(keywords_main_json_path, None, open_json(keywords_main_json_path))
+    save_json(ch_keywords_json_path, None, open_json(ch_keywords_json_path))
     save_json(ex_strs_json_path, None, open_json(ex_strs_json_path))
     rebuild_keg_definitions_contents()
