@@ -14,11 +14,11 @@ from src.ch19_etl_steps.etl_main import (
     add_moment_epoch_to_guts,
     calc_moment_bud_contact_mandate_net_ledgers,
     create_last_run_metrics_json,
-    etl_brick_agg_tables_to_brick_valid_tables,
+    etl_brick_agg_tables_to_brick_vld_tables,
     etl_brick_agg_tables_to_sparks_brick_agg_table,
     etl_brick_dfs_to_brick_raw_tables,
     etl_brick_raw_tables_to_brick_agg_tables,
-    etl_brick_valid_tables_to_sound_raw_tables,
+    etl_brick_vld_tables_to_sound_raw_tables,
     etl_heard_agg_tables_to_heard_vld_tables,
     etl_heard_raw_tables_to_heard_agg_tables,
     etl_heard_raw_tables_to_moment_ote1_agg,
@@ -35,7 +35,7 @@ from src.ch19_etl_steps.etl_main import (
     etl_spark_inherited_personunits_to_moment_gut,
     etl_spark_lesson_json_to_spark_inherited_personunits,
     etl_spark_person_csvs_to_lesson_json,
-    etl_sparks_brick_agg_table_to_sparks_brick_valid_table,
+    etl_sparks_brick_agg_table_to_sparks_brick_vld_table,
     etl_translate_sound_agg_tables_to_translate_sound_vld_tables,
     get_max_brick_agg_spark_num,
 )
@@ -69,9 +69,9 @@ def idea_sheets_to_lynx_with_cursor(
     # brick raw to sound raw, check by spark_nums
     etl_brick_raw_tables_to_brick_agg_tables(cursor)
     etl_brick_agg_tables_to_sparks_brick_agg_table(cursor)
-    etl_sparks_brick_agg_table_to_sparks_brick_valid_table(cursor)
-    etl_brick_agg_tables_to_brick_valid_tables(cursor)
-    etl_brick_valid_tables_to_sound_raw_tables(cursor)
+    etl_sparks_brick_agg_table_to_sparks_brick_vld_table(cursor)
+    etl_brick_agg_tables_to_brick_vld_tables(cursor)
+    etl_brick_vld_tables_to_sound_raw_tables(cursor)
     # sound raw to heard raw, filter through translates
     etl_sound_raw_tables_to_sound_agg_tables(cursor)
     etl_translate_sound_agg_tables_to_translate_sound_vld_tables(cursor)

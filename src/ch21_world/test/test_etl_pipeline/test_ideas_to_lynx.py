@@ -65,8 +65,8 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario0_br000113PopulatesTables(
     save_sheet(i_src_dir_file_path, br00113_ex0_str, br00113_df)
     br00113_raw = f"{br00113_str}_brick_raw"
     br00113_agg = f"{br00113_str}_brick_agg"
-    br00113_valid = f"{br00113_str}_brick_valid"
-    sparks_brick_valid_tablename = kw.sparks_brick_valid
+    br00113_valid = f"{br00113_str}_brick_vld"
+    sparks_brick_vld_tablename = kw.sparks_brick_vld
     trlname_sound_raw = prime_tbl(kw.trlname, kw.s_raw)
     trlname_sound_agg = prime_tbl(kw.trlname, "s_agg")
     trlname_sound_vld = prime_tbl(kw.trlname, kw.s_vld)
@@ -104,7 +104,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario0_br000113PopulatesTables(
     assert not db_table_exists(cursor0, br00113_raw)
     assert not db_table_exists(cursor0, br00113_agg)
     assert not db_table_exists(cursor0, kw.sparks_brick_agg)
-    assert not db_table_exists(cursor0, sparks_brick_valid_tablename)
+    assert not db_table_exists(cursor0, sparks_brick_vld_tablename)
     assert not db_table_exists(cursor0, br00113_valid)
     assert not db_table_exists(cursor0, trlname_sound_raw)
     assert not db_table_exists(cursor0, trlname_sound_agg)
@@ -162,7 +162,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario0_br000113PopulatesTables(
     assert get_row_count(cursor0, br00113_raw) == 1
     assert get_row_count(cursor0, br00113_agg) == 1
     assert get_row_count(cursor0, kw.sparks_brick_agg) == 1
-    assert get_row_count(cursor0, sparks_brick_valid_tablename) == 1
+    assert get_row_count(cursor0, sparks_brick_vld_tablename) == 1
     assert get_row_count(cursor0, br00113_valid) == 1
     assert get_row_count(cursor0, trlname_sound_raw) == 1
     assert get_row_count(cursor0, momentunit_sound_raw) == 1
@@ -251,8 +251,8 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     # Names of tables
     br00113_raw = f"{br00113_str}_brick_raw"
     br00113_agg = f"{br00113_str}_brick_agg"
-    br00113_valid = f"{br00113_str}_brick_valid"
-    sparks_brick_valid_tablename = kw.sparks_brick_valid
+    br00113_valid = f"{br00113_str}_brick_vld"
+    sparks_brick_vld_tablename = kw.sparks_brick_vld
     trlname_sound_raw = prime_tbl(kw.trlname, kw.s_raw)
     trlname_sound_agg = prime_tbl(kw.trlname, "s_agg")
     trlname_sound_vld = prime_tbl(kw.trlname, kw.s_vld)
@@ -285,7 +285,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     assert not db_table_exists(cursor0, br00113_raw)
     assert not db_table_exists(cursor0, br00113_agg)
     assert not db_table_exists(cursor0, kw.sparks_brick_agg)
-    assert not db_table_exists(cursor0, sparks_brick_valid_tablename)
+    assert not db_table_exists(cursor0, sparks_brick_vld_tablename)
     assert not db_table_exists(cursor0, br00113_valid)
     assert not db_table_exists(cursor0, trlname_sound_raw)
     assert not db_table_exists(cursor0, trlname_sound_agg)
@@ -332,7 +332,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     assert get_row_count(cursor0, br00113_agg) == 1
     print(cursor0.execute(f"SELECT * FROM {kw.sparks_brick_agg}").fetchall())
     assert get_row_count(cursor0, kw.sparks_brick_agg) == 2
-    assert get_row_count(cursor0, sparks_brick_valid_tablename) == 2
+    assert get_row_count(cursor0, sparks_brick_vld_tablename) == 2
     assert get_row_count(cursor0, br00113_valid) == 2
     assert get_row_count(cursor0, trlname_sound_raw) == 2
     assert get_row_count(cursor0, momentunit_sound_raw) == 4
@@ -614,8 +614,8 @@ def test_idea_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     with sqlite3_connect(fay_db_path) as db_conn:
         br00113_raw = f"{br00113_str}_brick_raw"
         br00113_agg = f"{br00113_str}_brick_agg"
-        br00113_valid = f"{br00113_str}_brick_valid"
-        sparks_brick_valid_tablename = kw.sparks_brick_valid
+        br00113_valid = f"{br00113_str}_brick_vld"
+        sparks_brick_vld_tablename = kw.sparks_brick_vld
         trlname_sound_raw = prime_tbl("trlname", kw.s_raw)
         trlname_sound_agg = prime_tbl("trlname", "s_agg")
         trlname_sound_vld = prime_tbl("TRLNAME", kw.s_vld)
@@ -639,7 +639,7 @@ def test_idea_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
         assert get_row_count(cursor, br00113_raw) == 1
         assert get_row_count(cursor, br00113_agg) == 1
         assert get_row_count(cursor, kw.sparks_brick_agg) == 2
-        assert get_row_count(cursor, sparks_brick_valid_tablename) == 2
+        assert get_row_count(cursor, sparks_brick_vld_tablename) == 2
         assert get_row_count(cursor, br00113_valid) == 2
         assert get_row_count(cursor, trlname_sound_raw) == 2
         assert get_row_count(cursor, momentunit_sound_raw) == 4

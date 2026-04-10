@@ -2,7 +2,7 @@ from sqlite3 import Cursor
 from src.ch00_py.db_toolbox import db_table_exists, get_row_count
 from src.ch17_idea.brick_db_tool import create_idea_sorted_table
 from src.ch18_etl_config.etl_sqlstr import create_prime_tablename
-from src.ch19_etl_steps.etl_main import etl_brick_valid_tables_to_sound_raw_tables
+from src.ch19_etl_steps.etl_main import etl_brick_vld_tables_to_sound_raw_tables
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 # get examples from tests from etl_brick_agg_dfs_to_translate_title_raw
@@ -11,7 +11,7 @@ from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 # get examples from tests from etl_brick_agg_dfs_to_translate_rope_raw
 
 
-def test_etl_brick_valid_tables_to_sound_raw_tables_PopulatesValidTable_Scenario0_Only_valid_sparks(
+def test_etl_brick_vld_tables_to_sound_raw_tables_PopulatesValidTable_Scenario0_Only_valid_sparks(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -24,7 +24,7 @@ def test_etl_brick_valid_tables_to_sound_raw_tables_PopulatesValidTable_Scenario
     spark5 = 5
     spark7 = 7
 
-    br00117_valid_tablename = f"br00117_{kw.brick_valid}"
+    br00117_valid_tablename = f"br00117_{kw.brick_vld}"
     br00117_columns = [
         kw.spark_num,
         kw.spark_face,
@@ -54,7 +54,7 @@ VALUES
 """
     cursor0.execute(f"{insert_into_clause} {values_clause}")
 
-    br00045_valid_tablename = f"br00045_{kw.brick_valid}"
+    br00045_valid_tablename = f"br00045_{kw.brick_vld}"
     br00045_columns = [
         kw.spark_num,
         kw.spark_face,
@@ -92,7 +92,7 @@ VALUES
     assert not db_table_exists(cursor0, prncont_put_s_raw_tblname)
 
     # WHEN
-    etl_brick_valid_tables_to_sound_raw_tables(cursor0)
+    etl_brick_vld_tables_to_sound_raw_tables(cursor0)
 
     # THEN
     assert get_row_count(cursor0, trlrope_s_raw_tablename) == 5

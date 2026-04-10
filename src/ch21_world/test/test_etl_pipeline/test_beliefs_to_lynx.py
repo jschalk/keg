@@ -67,8 +67,8 @@ def test_belief_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     with sqlite3_connect(fay_db_path) as db_conn:
         br00113_raw = f"{br00113_str}_brick_raw"
         br00113_agg = f"{br00113_str}_brick_agg"
-        br00113_valid = f"{br00113_str}_brick_valid"
-        sparks_brick_valid_tablename = kw.sparks_brick_valid
+        br00113_valid = f"{br00113_str}_brick_vld"
+        sparks_brick_vld_tablename = kw.sparks_brick_vld
         trlname_sound_raw = create_prime_tablename("trlname", kw.s_raw)
         trlname_sound_agg = create_prime_tablename("trlname", "s_agg")
         trlname_sound_vld = create_prime_tablename("trlname", kw.s_vld)
@@ -92,7 +92,7 @@ def test_belief_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
         assert get_row_count(cursor, br00113_raw) == 1
         assert get_row_count(cursor, br00113_agg) == 1
         assert get_row_count(cursor, kw.sparks_brick_agg) == 2
-        assert get_row_count(cursor, sparks_brick_valid_tablename) == 2
+        assert get_row_count(cursor, sparks_brick_vld_tablename) == 2
         assert get_row_count(cursor, br00113_valid) == 2
         assert get_row_count(cursor, trlname_sound_raw) == 2
         assert get_row_count(cursor, momentunit_sound_raw) == 4

@@ -20,7 +20,7 @@
     "stage_type_order": 3
   }, 
   "br_vld": {
-    "abbv9": "brick_valid", 
+    "abbv9": "brick_vld", 
     "description": "Brick Valid: The Brick Agg tables filtered to correct datatypes. ", 
     "stage_type_order": 6
   }, 
