@@ -250,37 +250,3 @@ def beliefs_sheets_to_idea_sheets(
     delete_dir(bele_src_dir)
     set_dir(bele_src_dir)
     return sorted(copied)
-
-
-# TODO deprecate this
-def update_spark_num_in_excel_file(filepath: str, max_spark_num):
-    # Read all sheets
-    sheets = pandas_read_excel(filepath, sheet_name=None)
-    spark_num = max_spark_num + 1
-    # Modify each sheet
-    updated_sheets = {}
-    for sheet_name, df in sheets.items():
-        df["spark_num"] = spark_num  # Add or overwrite
-        updated_sheets[sheet_name] = df
-
-    # Write all sheets back to the same file
-    with ExcelWriter(filepath, engine="xlsxwriter") as writer:
-        for sheet_name, df in updated_sheets.items():
-            df.to_excel(writer, sheet_name=sheet_name, index=False)
-
-
-# TODO deprecate this
-def update_spark_num_in_belief_files(directory: str, max_spark_num: int) -> None:
-    """
-    Adds or updates the 'spark_num' column with a given value
-    in all Excel files in the directory that contain 'belief' in the filename.
-
-    Args:
-        directory (str): Path to the directory containing Excel files.
-        value: The value to set in the 'spark_num' column.
-    """
-    for filename in os_listdir(directory):
-        is_excel_file = filename.lower().endswith((".xlsx", ".xls"))
-        if is_excel_file and "belief" in filename.lower():
-            filepath = os_path_join(directory, filename)
-            update_spark_num_in_excel_file(filepath, max_spark_num)

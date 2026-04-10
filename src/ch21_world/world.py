@@ -9,7 +9,7 @@ from src.ch18_etl_config._ref.ch18_path import (
     create_world_db_path,
 )
 from src.ch18_etl_config.belief_tool import create_belief0001_file
-from src.ch19_etl_steps.belief2idea import update_spark_num_in_belief_files
+from src.ch19_etl_steps.belief2idea import beliefs_sheets_to_idea_sheets
 from src.ch19_etl_steps.etl_main import (
     add_moment_epoch_to_guts,
     calc_moment_bud_contact_mandate_net_ledgers,
@@ -98,54 +98,16 @@ def idea_sheets_to_lynx_with_cursor(
     create_last_run_metrics_json(cursor, moment_mstr_dir)
 
 
-def idea_sheets_to_lynx_mstr(
-    world_db_path: str,
-    i_src_dir: str,
-    moment_mstr_dir: str,
-    export_db: bool = False,
-    output_dir=None,
-):
-    with sqlite3_connect(world_db_path) as db_conn:
-        cursor = db_conn.cursor()
-        idea_sheets_to_lynx_with_cursor(cursor, i_src_dir, moment_mstr_dir)
-        if export_db and output_dir:
-            excel_path = create_path(output_dir, "db_export.xlsx")
-            export_db_to_excel(cursor, excel_path, True)
-
-        db_conn.commit()
-    db_conn.close()
-
-
-def belief_sheets_to_lynx_mstr(
-    world_db_path: str, i_src_dir: str, moment_mstr_dir: str
-):
-    # TODO add b_src_dir and move belief sheets to i_src_dir
-    # TODO add b_src_dir and move belief sheets to i_src_dir
-    max_brick_agg_spark_num = 0
-    if os_path_exists(world_db_path):
-        with sqlite3_connect(world_db_path) as db_conn0:
-            cursor0 = db_conn0.cursor()
-            max_brick_agg_spark_num = get_max_brick_agg_spark_num(cursor0)
-        db_conn0.close()
-    # TODO swith to beliefs_sheets_to_idea_sheets
-    # TODO change beliefs_sheets_to_idea_sheets to accept max_brick_agg_spark_num
-    update_spark_num_in_belief_files(i_src_dir, max_brick_agg_spark_num)
-    idea_sheets_to_lynx_mstr(
-        world_db_path=world_db_path,
-        i_src_dir=i_src_dir,
-        moment_mstr_dir=moment_mstr_dir,
-    )
-    delete_dir(i_src_dir)
-
-
 @dataclass
 class WorldDir:
     world_name: WorldName = None
     worlds_dir: str = None
     output_dir: str = None
     i_src_dir: str = None
+    bele_src_dir: str = None
     # calculated dirs
     world_dir: str = None
+    db_path: str = None
     brick_dir: str = None
     moment_mstr_dir: str = None
 
@@ -159,6 +121,10 @@ class WorldDir:
     def set_i_src_dir(self, x_dir: str):
         self.i_src_dir = x_dir
         set_dir(self.i_src_dir)
+
+    def set_bele_src_dir(self, x_dir: str):
+        self.bele_src_dir = x_dir
+        set_dir(self.bele_src_dir)
 
     def _set_world_dirs(self):
         self.world_dir = create_path(self.worlds_dir, self.world_name)
@@ -174,17 +140,49 @@ def worlddir_shop(
     worlds_dir: str,
     output_dir: str = None,
     i_src_dir: str = None,
+    bele_src_dir: str = None,
 ) -> WorldDir:
     x_worlddir = WorldDir(
         world_name=world_name,
         worlds_dir=worlds_dir,
         output_dir=output_dir,
         i_src_dir=i_src_dir,
+        bele_src_dir=bele_src_dir,
     )
     x_worlddir._set_world_dirs()
+    x_worlddir.db_path = x_worlddir.get_world_db_path()
     if not x_worlddir.i_src_dir:
         x_worlddir.set_i_src_dir(create_path(x_worlddir.world_dir, "i_src_dir"))
+    if not x_worlddir.bele_src_dir:
+        x_worlddir.set_bele_src_dir(create_path(x_worlddir.world_dir, "bele_src_dir"))
     return x_worlddir
+
+
+def idea_sheets_to_lynx_mstr(worlddir: WorldDir, export_db: bool = False):
+    with sqlite3_connect(worlddir.db_path) as db_conn:
+        cursor = db_conn.cursor()
+        idea_sheets_to_lynx_with_cursor(
+            cursor, worlddir.i_src_dir, worlddir.moment_mstr_dir
+        )
+        if export_db and worlddir.output_dir:
+            excel_path = create_path(worlddir.output_dir, "db_export.xlsx")
+            export_db_to_excel(cursor, excel_path, True)
+
+        db_conn.commit()
+    db_conn.close()
+
+
+def belief_sheets_to_lynx_mstr(worlddir: WorldDir):
+    max_brick_agg_spark_num = 0
+    if os_path_exists(worlddir.db_path):
+        with sqlite3_connect(worlddir.db_path) as db_conn0:
+            cursor0 = db_conn0.cursor()
+            max_brick_agg_spark_num = get_max_brick_agg_spark_num(cursor0)
+        db_conn0.close()
+    migrated_sheets = beliefs_sheets_to_idea_sheets(
+        worlddir.bele_src_dir, worlddir.i_src_dir, max_brick_agg_spark_num
+    )
+    idea_sheets_to_lynx_mstr(worlddir)
 
 
 def idea_sheets_to_gcal_day_punchs(
@@ -193,13 +191,7 @@ def idea_sheets_to_gcal_day_punchs(
     day: datetime,
     focus_group_title: GroupTitle = None,
 ):
-    idea_sheets_to_lynx_mstr(
-        world_db_path=worlddir.get_world_db_path(),
-        i_src_dir=worlddir.i_src_dir,
-        moment_mstr_dir=worlddir.moment_mstr_dir,
-        export_db=True,
-        output_dir=worlddir.output_dir,
-    )
+    idea_sheets_to_lynx_mstr(worlddir, export_db=True)
     save_person_gcal_day_punchs(
         moment_mstr_dir=worlddir.moment_mstr_dir,
         person_name=person_name,
