@@ -9,7 +9,7 @@ from src.ch14_moment.moment_main import momentunit_shop, save_moment_file
 from src.ch17_idea.brick_belief_csv import (
     add_momentunit_to_belief_csv_strs,
     add_personunit_to_belief_csv_strs,
-    create_init_belief_idea_csv_strs,
+    create_init_belief_brick_csv_strs,
 )
 from src.ch17_idea.brick_db_tool import get_sheet_names
 from src.ch18_etl_config._ref.ch18_path import (
@@ -38,7 +38,7 @@ def test_collect_belief_csv_strs_ReturnsObj_Scenario0_NoMomentUnits(
     gen_belief_csv_strs = collect_belief_csv_strs(world_dir)
 
     # THEN
-    expected_belief_csv_strs = create_init_belief_idea_csv_strs()
+    expected_belief_csv_strs = create_init_belief_brick_csv_strs()
     assert gen_belief_csv_strs == expected_belief_csv_strs
 
 
@@ -56,7 +56,7 @@ def test_collect_belief_csv_strs_ReturnsObj_Scenario1_SingleMomentUnit_NoPersonU
     gen_belief_csv_strs = collect_belief_csv_strs(world_dir)
 
     # THEN
-    expected_belief_csv_strs = create_init_belief_idea_csv_strs()
+    expected_belief_csv_strs = create_init_belief_brick_csv_strs()
     add_momentunit_to_belief_csv_strs(a23_moment, expected_belief_csv_strs, ",")
     assert gen_belief_csv_strs == expected_belief_csv_strs
 
@@ -79,7 +79,7 @@ def test_collect_belief_csv_strs_ReturnsObj_Scenario2_gut_PersonUnits(
     gen_belief_csv_strs = collect_belief_csv_strs(world_dir)
 
     # THEN
-    expected_belief_csv_strs = create_init_belief_idea_csv_strs()
+    expected_belief_csv_strs = create_init_belief_brick_csv_strs()
     add_momentunit_to_belief_csv_strs(a23_moment, expected_belief_csv_strs, ",")
     add_personunit_to_belief_csv_strs(bob_gut, expected_belief_csv_strs, ",")
     expected_br00020_csv_str = expected_belief_csv_strs.get("br00020")
@@ -142,7 +142,7 @@ def test_collect_belief_csv_strs_ReturnsObj_Scenario2_TranslateRowsInDB(
     assert gen_belief_csv_strs
     generated_belief_csv_keys = set(gen_belief_csv_strs.keys())
     print(f"{generated_belief_csv_keys=}")
-    belief_csv_strs = create_init_belief_idea_csv_strs()
+    belief_csv_strs = create_init_belief_brick_csv_strs()
     assert generated_belief_csv_keys == set(belief_csv_strs.keys())
     br00042_str = "br00042"
     br00043_str = "br00043"
@@ -187,7 +187,7 @@ def test_create_belief0001_file_CreatesFile_Scenario0_NoMomentUnits(
     # THEN
     assert os_path_exists(belief0001_path)
     bob_belief0001_sheetnames = get_sheet_names(belief0001_path)
-    belief_csv_strs = create_init_belief_idea_csv_strs()
+    belief_csv_strs = create_init_belief_brick_csv_strs()
     assert set(bob_belief0001_sheetnames) == set(belief_csv_strs.keys())
 
 
@@ -246,7 +246,7 @@ def test_create_belief0001_file_CreatesFile_Scenario1_TranslateRowsInDB(
     assert os_path_exists(belief0001_path)
     bob_belief0001_sheetnames = get_sheet_names(belief0001_path)
     print(f"{bob_belief0001_sheetnames=}")
-    belief_csv_strs = create_init_belief_idea_csv_strs()
+    belief_csv_strs = create_init_belief_brick_csv_strs()
     assert set(bob_belief0001_sheetnames) == set(belief_csv_strs.keys())
     br00042_str = "br00042"
     br00043_str = "br00043"

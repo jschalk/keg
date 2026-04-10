@@ -9,7 +9,7 @@ from src.ch13_time.epoch_main import epochunit_shop
 from src.ch14_moment.moment_main import momentunit_shop
 from src.ch17_idea.brick_belief_csv import (
     add_momentunits_to_belief_csv_strs,
-    create_init_belief_idea_csv_strs,
+    create_init_belief_brick_csv_strs,
 )
 from src.ch17_idea.brick_db_tool import (
     csv_dict_to_excel,
@@ -26,7 +26,7 @@ def create_five_time_config_belief_csvs() -> dict[str, str]:
     five_epochunit = epochunit_shop(get_five_config())
     five_moment = momentunit_shop(team_five_rope, None, five_epochunit)
     moments = {five_moment.moment_rope: five_moment}
-    belief_csv_strs = create_init_belief_idea_csv_strs()
+    belief_csv_strs = create_init_belief_brick_csv_strs()
     add_momentunits_to_belief_csv_strs(moments, belief_csv_strs, ",")
 
     with_spark_face_csvs = {}
@@ -42,7 +42,7 @@ def create_elpaso_time_config_belief_csvs() -> dict[str, str]:
     creg_epochunit = epochunit_shop(get_creg_config())
     elpaso_moment = momentunit_shop(elpaso_rope, None, creg_epochunit)
     moments = {elpaso_moment.moment_rope: elpaso_moment}
-    belief_csv_strs = create_init_belief_idea_csv_strs()
+    belief_csv_strs = create_init_belief_brick_csv_strs()
     add_momentunits_to_belief_csv_strs(moments, belief_csv_strs, ",")
 
     with_spark_face_csvs = {}

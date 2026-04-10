@@ -807,7 +807,7 @@ def get_brickref_from_file(brick_format_filename: str) -> dict:
     return open_json(get_brick_formats_dir(), brickref_filename)
 
 
-def get_quick_ideas_column_ref() -> dict[str, set[str]]:
+def get_quick_bricks_column_ref() -> dict[str, set[str]]:
     brick_type_dict = {}
     for brick_format_filename in get_brick_format_filenames():
         brickref_dict = get_brickref_from_file(brick_format_filename)

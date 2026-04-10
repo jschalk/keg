@@ -8,7 +8,7 @@ from src.ch17_idea.idea_config import (
 )
 
 
-def create_init_belief_idea_csv_strs() -> dict[str, str]:
+def create_init_belief_brick_csv_strs() -> dict[str, str]:
     """Returns strings of csv headers with comma delimiter"""
     belief_brick_types = [
         "br00000",

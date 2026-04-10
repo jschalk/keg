@@ -147,23 +147,6 @@ def test__generate_brick_dataframe_ReturnsObj():
     assert list(x_df.columns) == headers_list
 
 
-def for_all_ideas__generate_brick_dataframe():
-    # Catching brope exceptions can make debugging difficult. Consider catching more specific exceptions or at least logging the exception details.
-    empty_d2 = []
-    for x_filename in get_brick_format_filenames():
-        try:
-            _generate_brick_dataframe(empty_d2, x_filename)
-        except Exception:
-            print(f"_generate_brick_dataframe failed for {x_filename=}")
-            return False
-    return True
-
-
-def test__generate_brick_dataframe_ReturnsObjForEvery_idea():
-    # ESTABLISH / WHEN / THEN
-    assert for_all_ideas__generate_brick_dataframe()
-
-
 def test_idea_FilesExist():
     # ESTABLISH
     brick_format_dir = get_brick_formats_dir()

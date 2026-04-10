@@ -229,7 +229,7 @@ def test_get_etl_stage_types_config_dict_ReturnsObj_Scenario0_IsFullyPopulated()
         kw.br_agg,
         kw.br_raw,
         kw.br_vld,
-        kw.beli_src,
+        kw.bele_src,
         kw.beli_dst,
         kw.idea_src,
         kw.lynx,
@@ -276,7 +276,7 @@ def test_get_ordered_stage_types_ReturnsObj():
     assert ordered_stage_types
     print(ordered_stage_types)
     expected_ordered_stage_types = [
-        kw.beli_src,
+        kw.bele_src,
         kw.idea_src,
         kw.br_raw,
         kw.br_agg,

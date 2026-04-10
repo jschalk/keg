@@ -95,14 +95,14 @@ def test_get_all_brick_dataframes_ReturnsObj_Scenario0_TranslateSheetNames(
     save_sheet(ex_file_path, br00003_str, df1)
 
     # WHEN
-    x_ideasheets = get_all_brick_dataframes(env_dir)
+    x_bricksheets = get_all_brick_dataframes(env_dir)
 
     # THEN
-    assert x_ideasheets
+    assert x_bricksheets
     br3_brickfileref = BrickFileRef(x_dir, ex_filename, br00003_str, "br00003")
-    assert x_ideasheets == [br3_brickfileref]
-    # assert (x_dir, ex_filename, br00003_str) in x_ideasheets
-    assert len(x_ideasheets) == 1
+    assert x_bricksheets == [br3_brickfileref]
+    # assert (x_dir, ex_filename, br00003_str) in x_bricksheets
+    assert len(x_bricksheets) == 1
 
 
 def test_get_all_brick_dataframes_ReturnsObj_Scenario1(temp3_fs):
@@ -143,12 +143,12 @@ def test_get_all_brick_dataframes_ReturnsObj_Scenario1(temp3_fs):
     save_sheet(ex_file_path, br00003_ex2_str, df2)
 
     # WHEN
-    x_ideasheets = get_all_brick_dataframes(env_dir)
+    x_bricksheets = get_all_brick_dataframes(env_dir)
 
     # THEN
-    assert x_ideasheets
+    assert x_bricksheets
     ex1_brickfileref = BrickFileRef(x_dir, ex_filename, br00003_ex1_str, "br00003")
     ex2_brickfileref = BrickFileRef(x_dir, ex_filename, br00003_ex2_str, "br00003")
 
-    assert x_ideasheets == [ex1_brickfileref]
-    assert len(x_ideasheets) == 1
+    assert x_bricksheets == [ex1_brickfileref]
+    assert len(x_bricksheets) == 1

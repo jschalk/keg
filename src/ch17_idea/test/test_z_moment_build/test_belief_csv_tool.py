@@ -19,7 +19,7 @@ from src.ch17_idea.brick_belief_csv import (
     add_person_to_br00028_csv,
     add_person_to_br00029_csv,
     add_personunit_to_belief_csv_strs,
-    create_init_belief_idea_csv_strs,
+    create_init_belief_brick_csv_strs,
 )
 from src.ch17_idea.brick_db_tool import get_ordered_csv
 from src.ch17_idea.brick_main import moment_build_from_df
@@ -35,14 +35,14 @@ from src.ch17_idea.test._util.ch17_examples import (  # get_ex2_br00006_df,
 from src.ref.keywords import ExampleStrs as exx
 
 
-def test_create_init_belief_idea_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
+def test_create_init_belief_brick_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
     temp3_fs,
 ):
     # ESTABLISH
     csv_delimiter = ","
 
     # WHEN
-    x_ideas = create_init_belief_idea_csv_strs()
+    x_bricks = create_init_belief_brick_csv_strs()
 
     # THEN
     expected_belief_csv_strs = {
@@ -92,30 +92,30 @@ def test_create_init_belief_idea_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
     print(f"{expected_br00001_csv=}")
 
     face_spark_str = "spark_num,spark_face,"
-    assert x_ideas.get("br00000") == f"{face_spark_str}{expected_br00000_csv}"
-    assert x_ideas.get("br00001") == f"{face_spark_str}{expected_br00001_csv}"
-    assert x_ideas.get("br00002") == f"{face_spark_str}{expected_br00002_csv}"
-    assert x_ideas.get("br00003") == f"{face_spark_str}{expected_br00003_csv}"
-    assert x_ideas.get("br00004") == f"{face_spark_str}{expected_br00004_csv}"
-    assert x_ideas.get("br00005") == f"{face_spark_str}{expected_br00005_csv}"
-    # assert x_ideas.get("br00006") == f"{face_spark_str}{expected_br00006_csv}"
+    assert x_bricks.get("br00000") == f"{face_spark_str}{expected_br00000_csv}"
+    assert x_bricks.get("br00001") == f"{face_spark_str}{expected_br00001_csv}"
+    assert x_bricks.get("br00002") == f"{face_spark_str}{expected_br00002_csv}"
+    assert x_bricks.get("br00003") == f"{face_spark_str}{expected_br00003_csv}"
+    assert x_bricks.get("br00004") == f"{face_spark_str}{expected_br00004_csv}"
+    assert x_bricks.get("br00005") == f"{face_spark_str}{expected_br00005_csv}"
+    # assert x_bricks.get("br00006") == f"{face_spark_str}{expected_br00006_csv}"
     print(f"{expected_br00020_csv=}")
-    print(x_ideas.get("br00020"))
-    assert x_ideas.get("br00020") == f"{face_spark_str}{expected_br00020_csv}"
-    assert x_ideas.get("br00021") == f"{face_spark_str}{expected_br00021_csv}"
-    assert x_ideas.get("br00022") == f"{face_spark_str}{expected_br00022_csv}"
-    assert x_ideas.get("br00023") == f"{face_spark_str}{expected_br00023_csv}"
-    assert x_ideas.get("br00024") == f"{face_spark_str}{expected_br00024_csv}"
-    assert x_ideas.get("br00025") == f"{face_spark_str}{expected_br00025_csv}"
-    assert x_ideas.get("br00026") == f"{face_spark_str}{expected_br00026_csv}"
-    assert x_ideas.get("br00027") == f"{face_spark_str}{expected_br00027_csv}"
-    assert x_ideas.get("br00028") == f"{face_spark_str}{expected_br00028_csv}"
-    assert x_ideas.get("br00029") == f"{face_spark_str}{expected_br00029_csv}"
-    assert x_ideas.get("br00042") == f"{face_spark_str}{expected_br00042_csv}"
-    assert x_ideas.get("br00043") == f"{face_spark_str}{expected_br00043_csv}"
-    assert x_ideas.get("br00044") == f"{face_spark_str}{expected_br00044_csv}"
-    assert x_ideas.get("br00045") == f"{face_spark_str}{expected_br00045_csv}"
-    assert len(x_ideas) == 20
+    print(x_bricks.get("br00020"))
+    assert x_bricks.get("br00020") == f"{face_spark_str}{expected_br00020_csv}"
+    assert x_bricks.get("br00021") == f"{face_spark_str}{expected_br00021_csv}"
+    assert x_bricks.get("br00022") == f"{face_spark_str}{expected_br00022_csv}"
+    assert x_bricks.get("br00023") == f"{face_spark_str}{expected_br00023_csv}"
+    assert x_bricks.get("br00024") == f"{face_spark_str}{expected_br00024_csv}"
+    assert x_bricks.get("br00025") == f"{face_spark_str}{expected_br00025_csv}"
+    assert x_bricks.get("br00026") == f"{face_spark_str}{expected_br00026_csv}"
+    assert x_bricks.get("br00027") == f"{face_spark_str}{expected_br00027_csv}"
+    assert x_bricks.get("br00028") == f"{face_spark_str}{expected_br00028_csv}"
+    assert x_bricks.get("br00029") == f"{face_spark_str}{expected_br00029_csv}"
+    assert x_bricks.get("br00042") == f"{face_spark_str}{expected_br00042_csv}"
+    assert x_bricks.get("br00043") == f"{face_spark_str}{expected_br00043_csv}"
+    assert x_bricks.get("br00044") == f"{face_spark_str}{expected_br00044_csv}"
+    assert x_bricks.get("br00045") == f"{face_spark_str}{expected_br00045_csv}"
+    assert len(x_bricks) == 20
 
 
 def test_add_momentunit_to_belief_csv_strs_ReturnsObj_Scenario0_OneMomentUnit(
@@ -147,7 +147,7 @@ def test_add_momentunit_to_belief_csv_strs_ReturnsObj_Scenario0_OneMomentUnit(
         x_moments_dir,
     )
     csv_delimiter = ","
-    x_csvs = create_init_belief_idea_csv_strs()
+    x_csvs = create_init_belief_brick_csv_strs()
     br00_csv_header = x_csvs.get("br00000")
     br01_csv_header = x_csvs.get("br00001")
     br02_csv_header = x_csvs.get("br00002")
@@ -217,10 +217,10 @@ def test_add_momentunits_to_belief_csv_strs_ReturnsObj_Scenario1_TwoMomentUnits(
         x_moments_dir,
     )
     csv_delimiter = ","
-    x_ideas = create_init_belief_idea_csv_strs()
+    x_bricks = create_init_belief_brick_csv_strs()
 
     # WHEN
-    add_momentunits_to_belief_csv_strs(x_momentunits, x_ideas, csv_delimiter)
+    add_momentunits_to_belief_csv_strs(x_momentunits, x_bricks, csv_delimiter)
 
     # THEN
     expected_br00000_csv = get_ordered_csv(get_ex2_br00000_df())
@@ -249,13 +249,13 @@ def test_add_momentunits_to_belief_csv_strs_ReturnsObj_Scenario1_TwoMomentUnits(
     expected_br00004_csv = expected_br00004_csv.replace(J45_ROPE, f",,{J45_ROPE}")
     expected_br00005_csv = expected_br00005_csv.replace(J45_ROPE, f",,{J45_ROPE}")
 
-    assert len(x_ideas) == 20
-    generated_br00000_csv = x_ideas.get("br00000")
-    generated_br00001_csv = x_ideas.get("br00001")
-    generated_br00002_csv = x_ideas.get("br00002")
-    generated_br00003_csv = x_ideas.get("br00003")
-    generated_br00004_csv = x_ideas.get("br00004")
-    generated_br00005_csv = x_ideas.get("br00005")
+    assert len(x_bricks) == 20
+    generated_br00000_csv = x_bricks.get("br00000")
+    generated_br00001_csv = x_bricks.get("br00001")
+    generated_br00002_csv = x_bricks.get("br00002")
+    generated_br00003_csv = x_bricks.get("br00003")
+    generated_br00004_csv = x_bricks.get("br00004")
+    generated_br00005_csv = x_bricks.get("br00005")
     print(f"{generated_br00001_csv=}")
     print(f" {expected_br00001_csv=}")
     assert generated_br00000_csv == expected_br00000_csv
@@ -269,13 +269,13 @@ def test_add_momentunits_to_belief_csv_strs_ReturnsObj_Scenario1_TwoMomentUnits(
 def test_add_person_to_br00020_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_ideas = create_init_belief_idea_csv_strs()
+    x_bricks = create_init_belief_brick_csv_strs()
     bob_person = personunit_shop(exx.bob, exx.a23)
     bob_person.add_contactunit(exx.yao)
     run_credit = 33
     run_debt = 55
     bob_person.get_contact(exx.yao).add_membership(exx.run, run_credit, run_debt)
-    csv_header = x_ideas.get("br00020")
+    csv_header = x_bricks.get("br00020")
 
     # WHEN
     x_csv = add_person_to_br00020_csv(csv_header, bob_person, csv_delimiter)
@@ -293,12 +293,12 @@ def test_add_person_to_br00020_csv_ReturnsObj():
 def test_add_person_to_br00021_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_ideas = create_init_belief_idea_csv_strs()
+    x_bricks = create_init_belief_brick_csv_strs()
     yao_credit = 33
     yao_debt = 55
     bob_person = personunit_shop(exx.bob, exx.a23)
     bob_person.add_contactunit(exx.yao, yao_credit, yao_debt)
-    csv_header = x_ideas.get("br00021")
+    csv_header = x_bricks.get("br00021")
 
     # WHEN
     x_csv = add_person_to_br00021_csv(csv_header, bob_person, csv_delimiter)
@@ -311,7 +311,7 @@ def test_add_person_to_br00021_csv_ReturnsObj():
 def test_add_person_to_br00022_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_ideas = create_init_belief_idea_csv_strs()
+    x_bricks = create_init_belief_brick_csv_strs()
     bob_person = personunit_shop(exx.bob, exx.a23)
     casa_rope = bob_person.make_l1_rope("casa")
     yao_give_force = 55
@@ -319,7 +319,7 @@ def test_add_person_to_br00022_csv_ReturnsObj():
     casa_awardunit = awardunit_shop(exx.yao, yao_give_force, yao_take_force)
     bob_person.add_plan(casa_rope)
     bob_person.edit_plan_attr(casa_rope, awardunit=casa_awardunit)
-    csv_header = x_ideas.get("br00022")
+    csv_header = x_bricks.get("br00022")
     print(f"{csv_header=}")
 
     # WHEN
@@ -334,7 +334,7 @@ def test_add_person_to_br00022_csv_ReturnsObj():
 def test_add_person_to_br00023_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_ideas = create_init_belief_idea_csv_strs()
+    x_bricks = create_init_belief_brick_csv_strs()
     a23_rope = to_rope(exx.a23)
     bob_person = personunit_shop(exx.bob, exx.a23)
     casa_rope = bob_person.make_l1_rope("casa")
@@ -344,7 +344,7 @@ def test_add_person_to_br00023_csv_ReturnsObj():
     bob_person.add_plan(casa_rope)
     bob_person.add_plan(clean_rope)
     bob_person.add_fact(casa_rope, clean_rope, clean_fact_lower, clean_fact_upper)
-    csv_header = x_ideas.get("br00023")
+    csv_header = x_bricks.get("br00023")
     print(f"{csv_header=}")
 
     # WHEN
@@ -358,14 +358,14 @@ def test_add_person_to_br00023_csv_ReturnsObj():
 def test_add_person_to_br00024_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_ideas = create_init_belief_idea_csv_strs()
+    x_bricks = create_init_belief_brick_csv_strs()
     bob_person = personunit_shop(exx.bob, exx.a23)
     casa_rope = bob_person.make_l1_rope("casa")
     bob_person.add_plan(casa_rope)
     casa_plan = bob_person.get_plan_obj(casa_rope)
     cleaners_str = "cleaners"
     casa_plan.workforceunit.add_labor(cleaners_str)
-    csv_header = x_ideas.get("br00024")
+    csv_header = x_bricks.get("br00024")
     print(f"{csv_header=}")
 
     # WHEN
@@ -380,14 +380,14 @@ def test_add_person_to_br00024_csv_ReturnsObj():
 def test_add_person_to_br00025_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_ideas = create_init_belief_idea_csv_strs()
+    x_bricks = create_init_belief_brick_csv_strs()
     bob_person = personunit_shop(exx.bob, exx.a23)
     casa_rope = bob_person.make_l1_rope("casa")
     bob_person.add_plan(casa_rope)
     casa_plan = bob_person.get_plan_obj(casa_rope)
     cleaners_str = "cleaners"
     casa_plan.healerunit.set_healer_name(cleaners_str)
-    csv_header = x_ideas.get("br00025")
+    csv_header = x_bricks.get("br00025")
     print(f"{csv_header=}")
 
     # WHEN
@@ -402,7 +402,7 @@ def test_add_person_to_br00025_csv_ReturnsObj():
 def test_add_person_to_br00026_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_ideas = create_init_belief_idea_csv_strs()
+    x_bricks = create_init_belief_brick_csv_strs()
     bob_person = personunit_shop(exx.bob, exx.a23)
     mop_rope = bob_person.make_l1_rope("mop")
     casa_rope = bob_person.make_l1_rope("casa")
@@ -421,7 +421,7 @@ def test_add_person_to_br00026_csv_ReturnsObj():
         reason_upper=clean_reason_upper,
         reason_divisor=clean_reason_divisor,
     )
-    csv_header = x_ideas.get("br00026")
+    csv_header = x_bricks.get("br00026")
     print(f"{csv_header=}")
 
     # WHEN
@@ -436,7 +436,7 @@ def test_add_person_to_br00026_csv_ReturnsObj():
 def test_add_person_to_br00027_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_ideas = create_init_belief_idea_csv_strs()
+    x_bricks = create_init_belief_brick_csv_strs()
     bob_person = personunit_shop(exx.bob, exx.a23)
     mop_rope = bob_person.make_l1_rope("mop")
     casa_rope = bob_person.make_l1_rope("casa")
@@ -447,7 +447,7 @@ def test_add_person_to_br00027_csv_ReturnsObj():
         reason_context=casa_rope,
         reason_requisite_active=True,
     )
-    csv_header = x_ideas.get("br00027")
+    csv_header = x_bricks.get("br00027")
     print(f"{csv_header=}")
 
     # WHEN
@@ -462,7 +462,7 @@ def test_add_person_to_br00027_csv_ReturnsObj():
 def test_add_person_to_br00028_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_ideas = create_init_belief_idea_csv_strs()
+    x_bricks = create_init_belief_brick_csv_strs()
     a23_rope = to_rope(exx.a23)
     bob_person = personunit_shop(exx.bob, exx.a23)
     mop_rope = bob_person.make_l1_rope("mop")
@@ -494,7 +494,7 @@ def test_add_person_to_br00028_csv_ReturnsObj():
         pledge=casa_pledge,
         problem_bool=casa_problem_bool,
     )
-    csv_header = x_ideas.get("br00028")
+    csv_header = x_bricks.get("br00028")
     print(f"{csv_header=}")
 
     # WHEN
@@ -515,7 +515,7 @@ def test_add_person_to_br00028_csv_ReturnsObj():
 def test_add_person_to_br00029_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_ideas = create_init_belief_idea_csv_strs()
+    x_bricks = create_init_belief_brick_csv_strs()
     bob_person = personunit_shop(exx.bob, exx.a23)
     bob_person.credor_respect = 444
     bob_person.debtor_respect = 555
@@ -524,7 +524,7 @@ def test_add_person_to_br00029_csv_ReturnsObj():
     bob_person.fund_grain = 12
     bob_person.mana_grain = 13
     bob_person.respect_grain = 15
-    csv_header = x_ideas.get("br00029")
+    csv_header = x_bricks.get("br00029")
     print(f"{csv_header=}")
 
     # WHEN
@@ -538,7 +538,7 @@ def test_add_person_to_br00029_csv_ReturnsObj():
 def test_add_personunit_to_belief_csv_strs_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_ideas = create_init_belief_idea_csv_strs()
+    x_bricks = create_init_belief_brick_csv_strs()
     bob_person = personunit_shop(exx.bob, exx.a23)
     bob_person.add_contactunit(exx.yao)
     mop_rope = bob_person.make_l1_rope("mop")
@@ -554,29 +554,29 @@ def test_add_personunit_to_belief_csv_strs_ReturnsObj():
     bob_person.edit_plan_attr(casa_rope, awardunit=awardunit_shop(exx.yao))
     bob_person.add_fact(casa_rope, clean_rope)
 
-    br00020_header = x_ideas.get("br00020")
-    br00021_header = x_ideas.get("br00021")
-    br00022_header = x_ideas.get("br00022")
-    br00023_header = x_ideas.get("br00023")
-    br00024_header = x_ideas.get("br00024")
-    br00025_header = x_ideas.get("br00025")
-    br00026_header = x_ideas.get("br00026")
-    br00027_header = x_ideas.get("br00027")
-    br00028_header = x_ideas.get("br00028")
-    br00029_header = x_ideas.get("br00029")
+    br00020_header = x_bricks.get("br00020")
+    br00021_header = x_bricks.get("br00021")
+    br00022_header = x_bricks.get("br00022")
+    br00023_header = x_bricks.get("br00023")
+    br00024_header = x_bricks.get("br00024")
+    br00025_header = x_bricks.get("br00025")
+    br00026_header = x_bricks.get("br00026")
+    br00027_header = x_bricks.get("br00027")
+    br00028_header = x_bricks.get("br00028")
+    br00029_header = x_bricks.get("br00029")
 
     # WHEN
     bob_person.conpute()
-    add_personunit_to_belief_csv_strs(bob_person, x_ideas, csv_delimiter)
+    add_personunit_to_belief_csv_strs(bob_person, x_bricks, csv_delimiter)
 
     # THEN
-    assert x_ideas.get("br00020") != br00020_header
-    assert x_ideas.get("br00021") != br00021_header
-    assert x_ideas.get("br00022") != br00022_header
-    assert x_ideas.get("br00023") != br00023_header
-    # assert x_ideas.get("br00024") != br00024_header
-    # assert x_ideas.get("br00025") != br00025_header
-    assert x_ideas.get("br00026") != br00026_header
-    assert x_ideas.get("br00027") != br00027_header
-    assert x_ideas.get("br00028") != br00028_header
-    assert x_ideas.get("br00029") != br00029_header
+    assert x_bricks.get("br00020") != br00020_header
+    assert x_bricks.get("br00021") != br00021_header
+    assert x_bricks.get("br00022") != br00022_header
+    assert x_bricks.get("br00023") != br00023_header
+    # assert x_bricks.get("br00024") != br00024_header
+    # assert x_bricks.get("br00025") != br00025_header
+    assert x_bricks.get("br00026") != br00026_header
+    assert x_bricks.get("br00027") != br00027_header
+    assert x_bricks.get("br00028") != br00028_header
+    assert x_bricks.get("br00029") != br00029_header

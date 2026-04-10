@@ -1,7 +1,7 @@
 {
-  "chapter_blurb": "Defines Idea Bricks: Spreadsheet data formats of any MomentUnit data.", 
-  "chapter_content": "idea bricks are tables of data that build moment systems and the personunits within them.", 
+  "chapter_blurb": "Defines how to build Ideas using Bricks. Moments and Persons are built by Ideas.", 
+  "chapter_content": "Bricks are tables of data that build moment systems and the personunits within them.", 
   "chapter_description": "ch17_idea", 
   "chapter_number": 17, 
-  "ontology summary": "Ideas are a complicated mis of things that can change Persons or Moment attributes like ledger."
+  "ontology summary": "Ideas are a complicated mix of things that can change Persons or Moment attributes like ledger."
 }
