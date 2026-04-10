@@ -295,7 +295,7 @@ def test_get_validated_bele_src_brick_type_sheets_ReturnsObj_Scenario0_BeleBrShe
     # ESTABLISH
     bele_dir = tmp_path / "bele"
     bele_dir.mkdir()
-    i_src_dir = tmp_path / "idea"
+    i_src_dir = tmp_path / "ideas"
     i_src_dir.mkdir()
     wb = openpyxl_Workbook()
     wb.active.title = "BR00005_Sales"
@@ -372,7 +372,7 @@ def test_get_validated_bele_src_brick_type_sheets_ReturnsObj_Scenario2_EmptyWhen
 ):
     """Returns an empty list when bele_src_dir has no BR sheets."""
     # ESTABLISH
-    i_src_dir = tmp_path / "idea"
+    i_src_dir = tmp_path / "ideas"
     i_src_dir.mkdir()
     wb = openpyxl_Workbook()
     wb.active.title = "Summary"
@@ -393,7 +393,7 @@ def test_get_validated_bele_src_brick_type_sheets_ReturnsObj_Scenario2_EmptyWhen
 def test_beliefs_sheets_to_idea_sheets_Scenario0_TwoTuples(tmp_path: Path):
     """Returns one (filename, sheet_name) tuple per BR sheet copied."""
     # ESTABLISH
-    empty_i_src_dir = tmp_path / "idea"
+    empty_i_src_dir = tmp_path / "ideas"
     empty_i_src_dir.mkdir()
 
     populated_bele_dir = tmp_path / "bele"
@@ -425,7 +425,7 @@ def test_beliefs_sheets_to_idea_sheets_Scenario1_CreatesDestinationFile(
 ):
     """Each copied sheet can be read by pandas and contains the original data."""
     # ESTABLISH
-    empty_i_src_dir = tmp_path / "idea"
+    empty_i_src_dir = tmp_path / "ideas"
     empty_i_src_dir.mkdir()
     populated_bele_dir = tmp_path / "bele"
     populated_bele_dir.mkdir()
@@ -460,7 +460,7 @@ def test_beliefs_sheets_to_idea_sheets_Scenario2_RaisesOnOverlap(tmp_path: Path)
     # ESTABLISH
     beliefs_dir = tmp_path / "bele"
     beliefs_dir.mkdir()
-    i_src_dir = tmp_path / "idea"
+    i_src_dir = tmp_path / "ideas"
     i_src_dir.mkdir()
 
     wb_bele = openpyxl_Workbook()
@@ -481,7 +481,7 @@ def test_beliefs_sheets_to_idea_sheets_Scenario3_DestinationFileHas_spark_num_Se
 ):
     """Each copied sheet can be read by pandas and contains the original data."""
     # ESTABLISH
-    i_src_dir = tmp_path / "idea"
+    i_src_dir = tmp_path / "ideas"
     i_src_dir.mkdir()
     populated_bele_dir = tmp_path / "bele"
     populated_bele_dir.mkdir()
@@ -524,7 +524,7 @@ def test_beliefs_sheets_to_idea_sheets_Scenario4_ParameterSparkNumAccepted(
 ):
     """Each copied sheet can be read by pandas and contains the original data."""
     # ESTABLISH
-    i_src_dir = tmp_path / "idea"
+    i_src_dir = tmp_path / "ideas"
     i_src_dir.mkdir()
     populated_bele_dir = tmp_path / "bele"
     populated_bele_dir.mkdir()
@@ -568,7 +568,7 @@ def test_beliefs_sheets_to_idea_sheets_Scenario5_src_dir_IsEmptied(
     # ESTABLISH
     bele_dir = tmp_path / "bele"
     bele_dir.mkdir()
-    i_src_dir = tmp_path / "idea"
+    i_src_dir = tmp_path / "ideas"
     i_src_dir.mkdir()
 
     wb = openpyxl_Workbook()

@@ -529,7 +529,7 @@ def test_create_update_trllabe_sound_agg_knot_error_sqlstr_PopulatesTable_Scenar
     run_str = "Run"
     fly_str = "Fly"
     fly_inx = "fli"
-    ski_inx = "Skiito"
+    ski_inx = "Skito"
     rdx = ":"
     run_rdx_run = f"{run_str}{rdx}{run_str}"
     ukx = "Unknown"
@@ -620,7 +620,7 @@ def test_create_update_trlrope_sound_agg_knot_error_sqlstr_PopulatesTable_Scenar
     spt_run_str = f"{rdx}sports{rdx}Run"
     spt_fly_str = f"{rdx}sports{rdx}Fly"
     bad_fly_str = f"sports{rdx}fli"
-    bad_ski_str = "Skiito"
+    bad_ski_str = "Skito"
     bad_run_str = f"run{rdx}run"
     ukx = "Unknown"
     spark1 = 1

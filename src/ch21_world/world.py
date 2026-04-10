@@ -152,9 +152,9 @@ def worlddir_shop(
     x_worlddir._set_world_dirs()
     x_worlddir.db_path = x_worlddir.get_world_db_path()
     if not x_worlddir.i_src_dir:
-        x_worlddir.set_i_src_dir(create_path(x_worlddir.world_dir, "i_src_dir"))
+        x_worlddir.set_i_src_dir(create_path(x_worlddir.world_dir, "i_src"))
     if not x_worlddir.bele_src_dir:
-        x_worlddir.set_bele_src_dir(create_path(x_worlddir.world_dir, "bele_src_dir"))
+        x_worlddir.set_bele_src_dir(create_path(x_worlddir.world_dir, "bele_src"))
     return x_worlddir
 
 

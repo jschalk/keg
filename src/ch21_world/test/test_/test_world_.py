@@ -28,7 +28,7 @@ def test_WorldDir_Exists():
         "worlds_dir",
         "output_dir",
         "world_dir",
-        "bele_src_dir",
+        kw.bele_src_dir,
         kw.i_src_dir,
         "brick_dir",
         "db_path",
@@ -40,8 +40,8 @@ def test_WorldDir_set_i_src_dir_SetsDirsAndFiles(temp3_fs):
     # ESTABLISH
     fay_wdir = WorldDir("Fay")
     x_example_dir = create_path(str(temp3_fs), "example_dir")
-    x_i_src_dir = create_path(x_example_dir, "i_src_dir")
-    x_bele_src_dir = create_path(x_example_dir, "bele_src_dir")
+    x_i_src_dir = create_path(x_example_dir, "i_src")
+    x_bele_src_dir = create_path(x_example_dir, "bele_src")
     assert not fay_wdir.world_dir
     assert not fay_wdir.i_src_dir
     assert not fay_wdir.bele_src_dir
@@ -67,8 +67,8 @@ def test_WorldDir_set_bele_src_dir_SetsDirsAndFiles(temp3_fs):
     # ESTABLISH
     fay_wdir = WorldDir("Fay")
     x_example_dir = create_path(str(temp3_fs), "example_dir")
-    x_i_src_dir = create_path(x_example_dir, "i_src_dir")
-    x_bele_src_dir = create_path(x_example_dir, "bele_src_dir")
+    x_i_src_dir = create_path(x_example_dir, "i_src")
+    x_bele_src_dir = create_path(x_example_dir, "bele_src")
     assert not fay_wdir.world_dir
     assert not fay_wdir.i_src_dir
     assert not fay_wdir.bele_src_dir
@@ -93,8 +93,8 @@ def test_WorldDir_set_world_dirs_SetsDirsAndFiles(temp3_fs):
     fay_str = "Fay"
     fay_wdir = WorldDir(world_name=fay_str, worlds_dir=str(temp3_fs))
     x_world_dir = create_path(str(temp3_fs), fay_str)
-    x_i_src_dir = create_path(x_world_dir, "i_src_dir")
-    x_bele_src_dir = create_path(x_world_dir, "bele_src_dir")
+    x_i_src_dir = create_path(x_world_dir, "i_src")
+    x_bele_src_dir = create_path(x_world_dir, "bele_src")
     x_brick_dir = create_path(x_world_dir, "brick")
     x_moment_mstr_dir = create_path(x_world_dir, "moment_mstr")
 
@@ -160,8 +160,8 @@ def test_worlddir_shop_ReturnsObj_Scenario1_WithoutParameters(temp3_fs):
     assert x_wdir.world_name == exx.a23
     assert x_wdir.worlds_dir == str(temp3_fs)
     assert not x_wdir.output_dir
-    assert x_wdir.i_src_dir == create_path(x_wdir.world_dir, "i_src_dir")
-    assert x_wdir.bele_src_dir == create_path(x_wdir.world_dir, "bele_src_dir")
+    assert x_wdir.i_src_dir == create_path(x_wdir.world_dir, "i_src")
+    assert x_wdir.bele_src_dir == create_path(x_wdir.world_dir, "bele_src")
     assert x_wdir.db_path == create_path(x_wdir.world_dir, "world.db")
 
 
