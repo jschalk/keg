@@ -1,3 +1,10 @@
+## [0.83.4](https://github.com/jschalk/keg/compare/v0.83.3...v0.83.4) (2026-04-10)
+
+
+### Bug Fixes
+
+* 1141 keyword tier added ([8296a1d](https://github.com/jschalk/keg/commit/8296a1d6197700cbae8fc562d102e6e78a56363f))
+
 ## [0.83.3](https://github.com/jschalk/keg/compare/v0.83.2...v0.83.3) (2026-04-06)
 
 
