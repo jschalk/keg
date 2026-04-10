@@ -12,7 +12,7 @@ from src.ch16_translate.test._util.ch16_examples import (
 )
 from src.ch16_translate.translate_config import get_translate_filename
 from src.ch16_translate.translate_main import translateunit_shop
-from src.ch17_idea.idea_db_tool import (
+from src.ch17_idea.brick_db_tool import (
     move_otx_csvs_to_translate_inx,
     open_csv,
     save_dataframe_to_csv,

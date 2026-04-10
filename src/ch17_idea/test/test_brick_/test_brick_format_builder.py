@@ -14,13 +14,13 @@ def create_dimens_brick_format_dict() -> dict:
     x_count = 20
     for idea_dimen, dimen_dict in get_idea_config_dict().items():
         if dimen_dict.get(kw.idea_category) == "person":
-            idea_filename = f"br{x_count:05}_{idea_dimen}_v0_0_0.json"
+            brick_filename = f"br{x_count:05}_{idea_dimen}_v0_0_0.json"
             attributes_set = {kw.moment_rope, kw.person_name}
             args_dict = get_atom_config_args(idea_dimen)
             attributes_set.update(set(args_dict.keys()))
 
             brick_format = {"dimens": [idea_dimen], "attributes": attributes_set}
-            brick_format_files_dict[idea_filename] = brick_format
+            brick_format_files_dict[brick_filename] = brick_format
             x_count += 1
     return brick_format_files_dict
 

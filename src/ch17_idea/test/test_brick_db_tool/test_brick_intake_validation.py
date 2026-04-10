@@ -1,6 +1,6 @@
 from pandas import DataFrame
 from pytest import raises as pytest_raises
-from src.ch17_idea.idea_db_tool import is_column_type_valid
+from src.ch17_idea.brick_db_tool import is_column_type_valid
 
 
 def test_is_column_type_valid_ReturnsObj():

@@ -2,8 +2,8 @@ from os import remove as os_remove
 from os.path import exists as os_path_exists
 from pytest import fixture as pytest_fixture
 from sqlite3 import Connection as sqlite3_Connection, connect as sqlite3_connect
+from src.ch17_idea.brick_db_tool import create_brick_table_from_csv, insert_idea_csv
 from src.ch17_idea.idea_config import get_idea_sqlite_types
-from src.ch17_idea.idea_db_tool import create_idea_table_from_csv, insert_idea_csv
 from src.ref.keywords import Ch17Keywords as kw
 
 
@@ -55,10 +55,10 @@ def setup_database_and_csv() -> tuple[sqlite3_Connection, str, str]:  # type: ig
         os_remove(test_csv_filepath)
 
 
-def test_create_idea_table_from_csv_ChangesDBState(
+def test_create_brick_table_from_csv_ChangesDBState(
     setup_database_and_csv: tuple[sqlite3_Connection, str, str],
 ):
-    """Test the create_idea_table_from_csv_with_types function."""
+    """Test the create_brick_table_from_csv_with_types function."""
     # ESTABLISH
     conn, test_csv_filepath = setup_database_and_csv
     # Call the function to create a table based on the CSV header and column types
@@ -69,7 +69,7 @@ def test_create_idea_table_from_csv_ChangesDBState(
     assert columns == []
 
     # WHEN
-    create_idea_table_from_csv(test_csv_filepath, conn, new_table)
+    create_brick_table_from_csv(test_csv_filepath, conn, new_table)
 
     # THEN Verify the table was created
     cursor = conn.cursor()
@@ -106,7 +106,7 @@ def test_insert_idea_csv_ChangesDBState_add_to_empty_table(
     # ESTABLISH
     conn, test_csv_filepath = setup_database_and_csv
     br_tablename = "brXXXXX"
-    create_idea_table_from_csv(test_csv_filepath, conn, br_tablename)
+    create_brick_table_from_csv(test_csv_filepath, conn, br_tablename)
     cursor = conn.cursor()
     cursor.execute(f"SELECT * FROM {br_tablename}")
     assert cursor.fetchall() == []
@@ -141,7 +141,7 @@ def test_insert_idea_csv_ChangesDBState_Inserts(
         csv_file.write("8,Zia,Amy43,Zia,Bob,;runners,11.1\n")
 
     br_tablename = "brXXXXX"
-    create_idea_table_from_csv(test_csv_filepath, conn, br_tablename)
+    create_brick_table_from_csv(test_csv_filepath, conn, br_tablename)
     insert_idea_csv(test_csv_filepath, conn, br_tablename)
     before_table_data = [
         (3, "Sue", "Amy43", "Bob", "Bob", ";runners", 6.5),
@@ -206,13 +206,13 @@ def test_insert_idea_csv_ChangesDBState_CanCreateTable(
     os_remove(zia_csv_filepath)
 
 
-def test_create_idea_table_from_csv_NolessonableExists(
+def test_create_brick_table_from_csv_NolessonableExists(
     setup_database_and_csv: tuple[sqlite3_Connection, str, str],
 ):
     # ESTABLISH
     conn, test_csv_filepath = setup_database_and_csv
     br_tablename = "new_test_table"
-    create_idea_table_from_csv(test_csv_filepath, conn, br_tablename)
+    create_brick_table_from_csv(test_csv_filepath, conn, br_tablename)
     insert_idea_csv(test_csv_filepath, conn, br_tablename)
     before_table_data = [
         (3, "Sue", "Amy43", "Bob", "Bob", ";runners", 6.5),
@@ -223,7 +223,7 @@ def test_create_idea_table_from_csv_NolessonableExists(
     assert cursor.fetchall() == before_table_data
 
     # WHEN
-    create_idea_table_from_csv(test_csv_filepath, conn, br_tablename)
+    create_brick_table_from_csv(test_csv_filepath, conn, br_tablename)
 
     # THEN
     cursor.execute(f"SELECT * FROM {br_tablename}")

@@ -9,7 +9,7 @@ from src.ch16_translate.test._util.ch16_examples import (  # get_casa_maison_tra
     get_sue_translateunit,
 )
 from src.ch16_translate.translate_main import translateunit_shop
-from src.ch17_idea.idea_db_tool import (
+from src.ch17_idea.brick_db_tool import (
     get_idea_elements_sort_order as sorting_columns,
     get_ordered_csv,
 )

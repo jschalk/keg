@@ -9,7 +9,7 @@ from src.ch16_translate.translate_main import (
     TranslateUnit,
     translateunit_shop,
 )
-from src.ch17_idea.idea_db_tool import get_ordered_csv, open_csv
+from src.ch17_idea.brick_db_tool import get_ordered_csv, open_csv
 
 
 def get_translate_name_dt_columns() -> list[str]:

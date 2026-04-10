@@ -23,7 +23,7 @@ from src.ch11_bud._ref.ch11_path import (
 from src.ch14_moment._ref.ch14_path import (
     create_bud_contact_mandate_ledger_path as bud_mandate,
 )
-from src.ch17_idea.idea_db_tool import save_sheet
+from src.ch17_idea.brick_db_tool import save_sheet
 from src.ch18_etl_config._ref.ch18_path import (
     create_last_run_metrics_path,
     create_moment_ote1_csv_path,

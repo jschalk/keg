@@ -1,7 +1,7 @@
 from openpyxl import load_workbook
 import pytest
 import sqlite3
-from src.ch17_idea.idea_db_tool import export_db_to_excel
+from src.ch17_idea.brick_db_tool import export_db_to_excel
 
 
 @pytest.fixture

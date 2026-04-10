@@ -3,7 +3,7 @@ from datetime import datetime
 from os.path import exists as os_path_exists
 from sqlite3 import Cursor as sqlite3_Cursor, connect as sqlite3_connect
 from src.ch00_py.file_toolbox import create_path, delete_dir, set_dir
-from src.ch17_idea.idea_db_tool import export_db_to_excel
+from src.ch17_idea.brick_db_tool import export_db_to_excel
 from src.ch18_etl_config._ref.ch18_path import (
     create_moment_mstr_path,
     create_world_db_path,
@@ -16,6 +16,7 @@ from src.ch19_etl_steps.etl_main import (
     create_last_run_metrics_json,
     etl_brick_agg_tables_to_brick_valid_tables,
     etl_brick_agg_tables_to_sparks_brick_agg_table,
+    etl_brick_dfs_to_brick_raw_tables,
     etl_brick_raw_tables_to_brick_agg_tables,
     etl_brick_valid_tables_to_sound_raw_tables,
     etl_heard_agg_tables_to_heard_vld_tables,
@@ -23,7 +24,6 @@ from src.ch19_etl_steps.etl_main import (
     etl_heard_raw_tables_to_moment_ote1_agg,
     etl_heard_vld_tables_to_moment_jsons,
     etl_heard_vld_to_spark_person_csvs,
-    etl_idea_dfs_to_brick_raw_tables,
     etl_moment_guts_to_moment_jobs,
     etl_moment_job_jsons_to_job_tables,
     etl_moment_json_contact_nets_to_moment_contact_nets_table,
@@ -65,7 +65,7 @@ def idea_sheets_to_lynx_with_cursor(
     set_dir(moment_mstr_dir)
 
     # collect excel file data into central location
-    etl_idea_dfs_to_brick_raw_tables(cursor, i_src_dir)
+    etl_brick_dfs_to_brick_raw_tables(cursor, i_src_dir)
     # brick raw to sound raw, check by spark_nums
     etl_brick_raw_tables_to_brick_agg_tables(cursor)
     etl_brick_agg_tables_to_sparks_brick_agg_table(cursor)

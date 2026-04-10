@@ -10,7 +10,7 @@ from src.ch16_translate.test._util.ch16_examples import (
     get_casa_maison_translateunit_set_by_otx2inx,
 )
 from src.ch16_translate.translate_main import translateunit_shop
-from src.ch17_idea.idea_db_tool import (
+from src.ch17_idea.brick_db_tool import (
     get_dataframe_translateable_columns,
     translate_all_columns_dataframe,
     translate_single_column_dataframe,

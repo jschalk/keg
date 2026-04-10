@@ -300,7 +300,7 @@ def dataframe_to_dict(x_df: DataFrame, key_columns: list[str]) -> dict:
     return x_dict
 
 
-def create_idea_table_from_csv(
+def create_brick_table_from_csv(
     csv_filepath: str, conn_or_cursor: sqlite3_Connection, tablename: str
 ):
     column_types = get_idea_sqlite_types()
@@ -311,7 +311,7 @@ def insert_idea_csv(
     csv_filepath: str, conn_or_cursor: sqlite3_Connection, tablename: str
 ):
     if db_table_exists(conn_or_cursor, tablename) is False:
-        create_idea_table_from_csv(csv_filepath, conn_or_cursor, tablename)
+        create_brick_table_from_csv(csv_filepath, conn_or_cursor, tablename)
 
     # Future feature? filtering csv file so only relevant idea columns are loaded
     insert_csv(csv_filepath, conn_or_cursor, tablename)
@@ -544,7 +544,7 @@ def prettify_excel(file_path: str, zoom: int = 120) -> None:
                 )
 
 
-def set_df_idea_column_types(df: DataFrame) -> DataFrame:
+def set_df_brick_column_types(df: DataFrame) -> DataFrame:
     """
     schema: dict like {"col1": "int", "col2": "float", "col3": "string"}
     """

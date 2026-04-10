@@ -19,7 +19,7 @@ from src.ch17_idea.idea_config import (
     get_idea_config_dict,
     get_idea_elements_sort_order,
 )
-from src.ch17_idea.test.test_brick.test__idea_config import change_erase_attrs
+from src.ch17_idea.test.test_brick_.test__idea_config import change_erase_attrs
 from src.ref.keywords import Ch17Keywords as kw
 
 
@@ -79,8 +79,8 @@ def test_get_headers_list_ReturnsObj():
     ]
 
 
-def get_sorted_headers_str(idea_filename):
-    x_brickref = get_brickref_from_file(idea_filename)
+def get_sorted_headers_str(brick_filename):
+    x_brickref = get_brickref_from_file(brick_filename)
     idea_attributes = set(x_brickref.get(kw.attributes).keys())
     idea_attributes.remove(kw.spark_face)
     idea_attributes.remove(kw.spark_num)
@@ -129,8 +129,8 @@ def test_get_brick_format_headers_ReturnsObj():
     # THEN
     # print(f"{set(get_brick_format_headers().values())=}")
     # sourcery skip: no-loop-in-tests
-    for x_idea_filename in sorted(list(get_brick_format_filenames())):
-        check_sorted_headers_exist(x_idea_filename, x_headers)
+    for x_brick_filename in sorted(list(get_brick_format_filenames())):
+        check_sorted_headers_exist(x_brick_filename, x_headers)
 
     # print(f"{x_headers=}")
     assert len(x_headers) == len(get_brick_format_filenames())
@@ -172,10 +172,10 @@ def test_idea_FilesExist():
     idea_files = get_dir_file_strs(idea_dir, True)
 
     # THEN
-    idea_filenames = set(idea_files.keys())
-    print(f"{idea_filenames=}")
-    assert idea_filenames == get_brick_format_filenames()
-    assert len(idea_filenames) == len(get_brick_format_filenames())
+    brick_filenames = set(idea_files.keys())
+    print(f"{brick_filenames=}")
+    assert brick_filenames == get_brick_format_filenames()
+    assert len(brick_filenames) == len(get_brick_format_filenames())
 
 
 def test_get_brickref_obj_HasAttrs_br00021_person_contactunit_v0_0_0():

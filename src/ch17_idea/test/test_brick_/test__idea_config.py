@@ -592,12 +592,12 @@ def _validate_idea_config(x_idea_config: dict):
 
 def test_get_brick_format_filenames_ReturnsObj_CheckSome_brick_format_filesnames_Exist():
     # ESTABLISH
-    idea_filenames_set = get_brick_format_filenames()
+    brick_filenames_set = get_brick_format_filenames()
 
     # WHEN / THEN
-    assert br00021_person_contactunit_v0_0_0() in idea_filenames_set
-    assert br00020_person_contact_membership_v0_0_0() in idea_filenames_set
-    assert br00013_planunit_v0_0_0() in idea_filenames_set
+    assert br00021_person_contactunit_v0_0_0() in brick_filenames_set
+    assert br00020_person_contact_membership_v0_0_0() in brick_filenames_set
+    assert br00013_planunit_v0_0_0() in brick_filenames_set
 
 
 def change_erase_attrs(idea_attrs: set):
@@ -612,11 +612,11 @@ def change_erase_attrs(idea_attrs: set):
 def test_get_brick_format_filenames_ReturnsObj_Validate_brick_format_files():
     # sourcery skip:  no-conditionals-in-tests
     # ESTABLISH / WHEN
-    idea_filenames_sorted = list(get_brick_format_filenames())
+    brick_filenames_sorted = list(get_brick_format_filenames())
 
     # THEN
-    idea_filenames_sorted.sort(key=lambda x: x)
-    print(f"{len(idea_filenames_sorted)=}")
+    brick_filenames_sorted.sort(key=lambda x: x)
+    print(f"{len(brick_filenames_sorted)=}")
 
     all_dimen_keys_dict = {
         dimen: set(dict.get(kw.jkeys).keys())
@@ -633,12 +633,12 @@ def test_get_brick_format_filenames_ReturnsObj_Validate_brick_format_files():
 
     # for every brick_format file there exists a unique brick_type with leading zeros to make 5 digits
     brick_types_set = set()
-    for idea_filename in idea_filenames_sorted:
-        ref_dict = get_brickref_from_file(idea_filename)
-        # print(f"{idea_filename=} {ref_dict.get(kw.brick_type)=}")
+    for brick_filename in brick_filenames_sorted:
+        ref_dict = get_brickref_from_file(brick_filename)
+        # print(f"{brick_filename=} {ref_dict.get(kw.brick_type)=}")
         brick_type_value = ref_dict.get(kw.brick_type)
         assert brick_type_value
-        assert brick_type_value[2:8] == idea_filename[2:7]
+        assert brick_type_value[2:8] == brick_filename[2:7]
         brick_types_set.add(brick_type_value)
 
         format_dimens = ref_dict.get(kw.dimens)
@@ -695,7 +695,7 @@ def test_get_brick_format_filenames_ReturnsObj_Validate_brick_format_files():
     # assert kw.spark_num in brick_format_attributes
 
     # confirm every ideanumber is unique
-    assert len(brick_types_set) == len(idea_filenames_sorted)
+    assert len(brick_types_set) == len(brick_filenames_sorted)
     assert brick_types_set == get_brick_types()
 
 

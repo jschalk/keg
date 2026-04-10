@@ -7,7 +7,7 @@ from src.ch09_person_lesson.lasso import lassounit_shop
 from src.ch13_time.calendar_markdown import get_calendarmarkdown_str
 from src.ch14_moment.moment_frame import get_moment_epochholder
 from src.ch14_moment.moment_main import open_moment_file
-from src.ch17_idea.idea_db_tool import save_table_to_csv
+from src.ch17_idea.brick_db_tool import save_table_to_csv
 from src.ch20_kpi.kpi_sqlstr import get_create_kpi001_sqlstr, get_create_kpi002_sqlstr
 
 

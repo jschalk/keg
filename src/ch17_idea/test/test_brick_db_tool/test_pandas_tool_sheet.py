@@ -9,7 +9,7 @@ from pandas.testing import assert_frame_equal as pandas_testing_assert_frame_equ
 from pathlib import Path
 from pytest import fixture as pytest_fixture, raises as pytest_raises
 from src.ch00_py.file_toolbox import create_path, set_dir
-from src.ch17_idea.idea_db_tool import (
+from src.ch17_idea.brick_db_tool import (
     append_df_to_excel,
     check_dataframe_column_names,
     get_all_excel_sheet_names,

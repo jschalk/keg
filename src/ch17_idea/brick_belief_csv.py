@@ -38,9 +38,9 @@ def create_init_belief_idea_csv_strs() -> dict[str, str]:
     moment_csv_strs = {}
     for brick_type in belief_brick_types:
         brick_format_filename = get_brick_format_filename(brick_type)
-        for idea_columns, idea_filename in brick_format_headers.items():
-            if idea_filename == brick_format_filename:
-                moment_csv_strs[brick_type] = f"spark_num,spark_face,{idea_columns}\n"
+        for brick_columns, brick_filename in brick_format_headers.items():
+            if brick_filename == brick_format_filename:
+                moment_csv_strs[brick_type] = f"spark_num,spark_face,{brick_columns}\n"
     return moment_csv_strs
 
 

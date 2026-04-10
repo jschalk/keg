@@ -1,6 +1,6 @@
 from sqlite3 import Cursor
 from src.ch00_py.db_toolbox import db_table_exists, get_row_count, get_table_columns
-from src.ch17_idea.idea_db_tool import create_idea_sorted_table
+from src.ch17_idea.brick_db_tool import create_idea_sorted_table
 from src.ch19_etl_steps.etl_main import (
     etl_brick_agg_tables_to_sparks_brick_agg_table,
     etl_sparks_brick_agg_db_to_spark_dict,

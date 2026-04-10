@@ -21,8 +21,8 @@ from src.ch17_idea.brick_belief_csv import (
     add_personunit_to_belief_csv_strs,
     create_init_belief_idea_csv_strs,
 )
+from src.ch17_idea.brick_db_tool import get_ordered_csv
 from src.ch17_idea.brick_main import moment_build_from_df
-from src.ch17_idea.idea_db_tool import get_ordered_csv
 from src.ch17_idea.test._util.ch17_examples import (  # get_ex2_br00006_df,
     J45_ROPE,
     get_ex2_br00000_df,

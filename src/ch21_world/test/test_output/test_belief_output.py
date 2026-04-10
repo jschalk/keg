@@ -3,7 +3,7 @@ from pandas import DataFrame, read_excel as pandas_read_excel
 from pandas.testing import assert_frame_equal
 from shutil import copy2 as shutil_copy2
 from src.ch00_py.file_toolbox import create_path, set_dir
-from src.ch17_idea.idea_db_tool import get_sheet_names, save_sheet
+from src.ch17_idea.brick_db_tool import get_sheet_names, save_sheet
 from src.ch18_etl_config._ref.ch18_path import (
     create_belief0001_path,
     create_beliefs_dir_path,

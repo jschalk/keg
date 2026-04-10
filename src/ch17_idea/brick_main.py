@@ -17,12 +17,12 @@ from src.ch09_person_lesson.delta import (
 from src.ch13_time.epoch_main import epochunit_shop
 from src.ch14_moment.moment_main import MomentUnit, momentunit_shop
 from src.ch17_idea._ref.ch17_semantic_types import MomentRope, PersonName
-from src.ch17_idea.idea_config import get_brick_format_headers, get_brickref_from_file
-from src.ch17_idea.idea_db_tool import (
+from src.ch17_idea.brick_db_tool import (
     get_default_sorted_list,
     if_nan_return_None,
     save_dataframe_to_csv,
 )
+from src.ch17_idea.idea_config import get_brick_format_headers, get_brickref_from_file
 
 
 @dataclass

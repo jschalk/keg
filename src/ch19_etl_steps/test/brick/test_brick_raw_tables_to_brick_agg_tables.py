@@ -1,6 +1,6 @@
 from sqlite3 import Cursor, connect as sqlite3_connect
 from src.ch00_py.db_toolbox import db_table_exists, get_row_count, get_table_columns
-from src.ch17_idea.idea_db_tool import create_idea_sorted_table
+from src.ch17_idea.brick_db_tool import create_idea_sorted_table
 from src.ch18_etl_config.etl_sqlstr import create_sound_and_heard_tables
 from src.ch19_etl_steps.etl_main import (
     etl_brick_raw_tables_to_brick_agg_tables,

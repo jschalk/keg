@@ -11,7 +11,7 @@ from src.ch17_idea.brick_belief_csv import (
     add_momentunits_to_belief_csv_strs,
     create_init_belief_idea_csv_strs,
 )
-from src.ch17_idea.idea_db_tool import (
+from src.ch17_idea.brick_db_tool import (
     csv_dict_to_excel,
     prettify_excel,
     remove_empty_sheets,

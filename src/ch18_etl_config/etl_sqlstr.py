@@ -4,8 +4,11 @@ from src.ch00_py.db_toolbox import (
     create_update_inconsistency_error_query,
 )
 from src.ch13_time.epoch_main import DEFAULT_EPOCH_LENGTH, get_c400_constants
+from src.ch17_idea.brick_db_tool import (
+    create_idea_sorted_table,
+    get_default_sorted_list,
+)
 from src.ch17_idea.idea_config import get_idea_config_dict, get_quick_ideas_column_ref
-from src.ch17_idea.idea_db_tool import create_idea_sorted_table, get_default_sorted_list
 from src.ch18_etl_config._ref.ch18_semantic_types import KnotTerm
 from src.ch18_etl_config.etl_config import create_prime_tablename
 
@@ -447,11 +450,11 @@ def create_prime_db_table(
     return tablename
 
 
-def create_all_idea_tables(conn_or_cursor: sqlite3_Connection):
+def create_all_brick_tables(conn_or_cursor: sqlite3_Connection):
     idea_refs = get_quick_ideas_column_ref()
-    for brick_type, idea_columns in idea_refs.items():
+    for brick_type, brick_columns in idea_refs.items():
         x_tablename = f"{brick_type}_raw"
-        create_idea_sorted_table(conn_or_cursor, x_tablename, idea_columns)
+        create_idea_sorted_table(conn_or_cursor, x_tablename, brick_columns)
 
 
 def create_sound_raw_update_inconsist_error_message_sqlstr(

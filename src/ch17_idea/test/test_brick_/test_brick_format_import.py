@@ -1,8 +1,8 @@
 from src.ch04_rope.rope import create_rope
 from src.ch07_person_logic.person_main import personunit_shop
+from src.ch17_idea.brick_db_tool import open_csv
 from src.ch17_idea.brick_main import get_brickref_obj, save_idea_csv
 from src.ch17_idea.idea_config import br00021_person_contactunit_v0_0_0
-from src.ch17_idea.idea_db_tool import open_csv
 from src.ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
 
 

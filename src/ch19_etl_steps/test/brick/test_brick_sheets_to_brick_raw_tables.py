@@ -2,12 +2,12 @@ from pandas import DataFrame
 from sqlite3 import Cursor
 from src.ch00_py.db_toolbox import db_table_exists, get_row_count, get_table_columns
 from src.ch00_py.file_toolbox import create_path
-from src.ch17_idea.idea_db_tool import save_sheet
-from src.ch19_etl_steps.etl_main import etl_idea_dfs_to_brick_raw_tables
+from src.ch17_idea.brick_db_tool import save_sheet
+from src.ch19_etl_steps.etl_main import etl_brick_dfs_to_brick_raw_tables
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 
-def test_etl_idea_dfs_to_brick_raw_tables_PopulatesTables_Scenario0(
+def test_etl_brick_dfs_to_brick_raw_tables_PopulatesTables_Scenario0(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -42,7 +42,7 @@ def test_etl_idea_dfs_to_brick_raw_tables_PopulatesTables_Scenario0(
     assert not db_table_exists(cursor0, br00003_tablename)
 
     # WHEN
-    etl_idea_dfs_to_brick_raw_tables(cursor0, i_src_dir)
+    etl_brick_dfs_to_brick_raw_tables(cursor0, i_src_dir)
 
     # THEN
     assert db_table_exists(cursor0, br00003_tablename)
@@ -87,7 +87,7 @@ ORDER BY sheet_name, {kw.spark_num}, {kw.cumulative_minute};"""
     assert rows[4] == row4
 
 
-def test_etl_idea_dfs_to_brick_raw_tables_PopulatesTables_Scenario1(
+def test_etl_brick_dfs_to_brick_raw_tables_PopulatesTables_Scenario1(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -100,7 +100,7 @@ def test_etl_idea_dfs_to_brick_raw_tables_PopulatesTables_Scenario1(
     ex_filename = "Faybob.xlsx"
     i_src_dir = create_path(str(temp3_fs), "i_src")
     i_src_file_path = create_path(i_src_dir, ex_filename)
-    idea_columns = [
+    brick_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.cumulative_minute,
@@ -111,7 +111,7 @@ def test_etl_idea_dfs_to_brick_raw_tables_PopulatesTables_Scenario1(
     row1 = [spark1, exx.sue, minute_360, exx.a23_dash, hour6am, exx.dash]
     row2 = [spark1, exx.sue, minute_420, exx.a23_dash, hour7am, exx.dash]
     row3 = [spark2, exx.sue, minute_420, exx.a23_dash, hour7am, exx.dash]
-    incomplete_idea_columns = [
+    incomplete_brick_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.cumulative_minute,
@@ -121,9 +121,9 @@ def test_etl_idea_dfs_to_brick_raw_tables_PopulatesTables_Scenario1(
     incom_row1 = [spark1, exx.sue, minute_360, exx.a23_dash, exx.dash]
     incom_row2 = [spark1, exx.sue, minute_420, exx.a23_dash, exx.dash]
 
-    df1 = DataFrame([row1, row2], columns=idea_columns)
-    df2 = DataFrame([incom_row1, incom_row2], columns=incomplete_idea_columns)
-    df3 = DataFrame([row2, row1, row3], columns=idea_columns)
+    df1 = DataFrame([row1, row2], columns=brick_columns)
+    df2 = DataFrame([incom_row1, incom_row2], columns=incomplete_brick_columns)
+    df3 = DataFrame([row2, row1, row3], columns=brick_columns)
     br00003_ex1_str = "example1_br00003"
     br00003_ex2_str = "example2_br00003"
     br00003_ex3_str = "example3_br00003"
@@ -134,7 +134,7 @@ def test_etl_idea_dfs_to_brick_raw_tables_PopulatesTables_Scenario1(
     assert not db_table_exists(cursor0, br00003_tablename)
 
     # WHEN
-    etl_idea_dfs_to_brick_raw_tables(cursor0, i_src_dir)
+    etl_brick_dfs_to_brick_raw_tables(cursor0, i_src_dir)
 
     # THEN
     assert db_table_exists(cursor0, br00003_tablename)
@@ -177,7 +177,7 @@ ORDER BY sheet_name, {kw.spark_num}, {kw.cumulative_minute};"""
     assert rows[4] == row4
 
 
-# def test_etl_idea_dfs_to_brick_raw_tables_PopulatesTables_Scenario2(
+# def test_etl_brick_dfs_to_brick_raw_tables_PopulatesTables_Scenario2(
 #     temp3_fs,
 # ):
 #     # ESTABLISH
@@ -190,7 +190,7 @@ ORDER BY sheet_name, {kw.spark_num}, {kw.cumulative_minute};"""
 #     ex_filename = "Faybob.xlsx"
 #     i_src_dir = create_path(str(temp3_fs), "i_src")
 #     i_src_file_path = create_path(i_src_dir, ex_filename)
-#     idea_columns = [
+#     brick_columns = [
 #     kw.spark_num,
 #     kw.spark_face,
 #     kw.cumulative_minute,
@@ -202,7 +202,7 @@ ORDER BY sheet_name, {kw.spark_num}, {kw.cumulative_minute};"""
 #     df_row1 = [spark1, exx.sue, minute_420, exx.a23_dash, hour7am]
 #     df_row2 = [spark2, exx.sue, minute_420, exx.a23_dash, hour7am]
 
-#     df1 = DataFrame([df_row0, df_row1, df_row2], columns=idea_columns)
+#     df1 = DataFrame([df_row0, df_row1, df_row2], columns=brick_columns)
 #     br00003_ex1_str = "example1_br00003"
 #     save_sheet(i_src_file_path, br00003_ex1_str, df1)
 #     cursor0 = db_conn.cursor0()
@@ -210,7 +210,7 @@ ORDER BY sheet_name, {kw.spark_num}, {kw.cumulative_minute};"""
 #     assert not db_table_exists(cursor0, br00003_tablename)
 
 #     # WHEN
-#     etl_idea_dfs_to_brick_raw_tables(db_conn, i_src_dir)
+#     etl_brick_dfs_to_brick_raw_tables(db_conn, i_src_dir)
 
 #     # THEN
 #     assert db_table_exists(cursor0, br00003_tablename)

@@ -1,10 +1,10 @@
 from sqlite3 import Cursor
-from src.ch17_idea.idea_config import get_idea_config_dict
-from src.ch17_idea.idea_db_tool import (
+from src.ch17_idea.brick_db_tool import (
     create_idea_sorted_table,
     get_brick_into_dimen_raw_query,
     get_default_sorted_list,
 )
+from src.ch17_idea.idea_config import get_idea_config_dict
 from src.ref.keywords import Ch17Keywords as kw
 
 

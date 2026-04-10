@@ -1,7 +1,7 @@
 from os.path import exists as os_path_exists
 from pandas import DataFrame
 from src.ch00_py.file_toolbox import create_path, open_file
-from src.ch17_idea.idea_db_tool import (
+from src.ch17_idea.brick_db_tool import (
     get_ordered_csv,
     get_relevant_columns_dataframe,
     save_dataframe_to_csv,

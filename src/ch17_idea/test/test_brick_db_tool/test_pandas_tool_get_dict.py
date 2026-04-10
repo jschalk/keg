@@ -1,5 +1,5 @@
 from pandas import DataFrame
-from src.ch17_idea.idea_db_tool import dataframe_to_dict
+from src.ch17_idea.brick_db_tool import dataframe_to_dict
 
 
 def test_dataframe_to_dict_ReturnsObj_Empty():

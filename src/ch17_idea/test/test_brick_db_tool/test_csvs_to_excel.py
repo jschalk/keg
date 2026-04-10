@@ -8,11 +8,11 @@ from pandas import (
 from pandas.testing import assert_frame_equal as pandas_testing_assert_frame_equal
 import pytest
 from src.ch00_py.file_toolbox import create_path
-from src.ch17_idea.idea_db_tool import (
+from src.ch17_idea.brick_db_tool import (
     csv_dict_to_excel,
     get_idea_sqlite_types,
     prettify_excel,
-    set_df_idea_column_types,
+    set_df_brick_column_types,
 )
 from src.ref.keywords import Ch17Keywords as kw
 from unittest.mock import MagicMock, patch
@@ -89,7 +89,7 @@ def test_prettify_excel_SetsAttrs(temp3_fs):
         )  # default width is ~8.43
 
 
-def test_set_df_idea_column_types_SetsAttrs_Scenario0_BasicConversion():
+def test_set_df_brick_column_types_SetsAttrs_Scenario0_BasicConversion():
     # ESTABLISH
     df = DataFrame(
         {
@@ -99,7 +99,7 @@ def test_set_df_idea_column_types_SetsAttrs_Scenario0_BasicConversion():
         }
     )
     # WHEN
-    result = set_df_idea_column_types(df)
+    result = set_df_brick_column_types(df)
     # THEN
     assert str(result[kw.plan_label].dtype) == "str"
     assert str(result[kw.addin].dtype) == "int64"
@@ -108,39 +108,39 @@ def test_set_df_idea_column_types_SetsAttrs_Scenario0_BasicConversion():
     assert result[kw.gogo_want].tolist() == [10.5, 20.1]
 
 
-def test_set_df_idea_column_types_SetsAttrs_Scenario1_HandlesInvalidValuesWithCoerce():
+def test_set_df_brick_column_types_SetsAttrs_Scenario1_HandlesInvalidValuesWithCoerce():
     # ESTABLISH
     df = DataFrame({kw.numor: ["1", "bad", "3"]})
     # WHEN
-    result = set_df_idea_column_types(df)
+    result = set_df_brick_column_types(df)
     # THEN
     assert str(result[kw.numor].dtype) == "Int64"
     assert result[kw.numor].isna().tolist() == [False, True, False]
 
 
-def test_set_df_idea_column_types_SetsAttrs_Scenario2_MissingColumnIsIgnored():
+def test_set_df_brick_column_types_SetsAttrs_Scenario2_MissingColumnIsIgnored():
     # ESTABLISH
     df = DataFrame({kw.numor: ["1", "2"]})
     # WHEN
-    result = set_df_idea_column_types(df)
+    result = set_df_brick_column_types(df)
     # THEN
     assert "b" not in result.columns
     assert str(result[kw.numor].dtype) == "Int64"
 
 
-# def test_set_df_idea_column_types_SetsAttrs_Scenario3_Unsupported_dtype_raises_Exception():
+# def test_set_df_brick_column_types_SetsAttrs_Scenario3_Unsupported_dtype_raises_Exception():
 #     # ESTABLISH
 #     df = DataFrame({kw.plan_label: ["1", "2"]})
 #     # WHEN/THEN
 #     with pytest.raises(ValueError, match="Unsupported dtype"):
-#         set_df_idea_column_types(df)
+#         set_df_brick_column_types(df)
 
 
-def test_set_df_idea_column_types_SetsAttrs_Scenario4_DoesNotMutateOriginalDataframe():
+def test_set_df_brick_column_types_SetsAttrs_Scenario4_DoesNotMutateOriginalDataframe():
     # ESTABLISH
     df = DataFrame({kw.numor: ["1", "2"]})
     # WHEN
-    result = set_df_idea_column_types(df)
+    result = set_df_brick_column_types(df)
     # THEN
     # original should remain object/string-like
     assert str(df[kw.numor].dtype) in {"object", "str"}
