@@ -234,7 +234,6 @@ def test_get_etl_stage_types_config_dict_ReturnsObj_Scenario0_IsFullyPopulated()
         kw.idea_src,
         kw.lynx,
     }
-    # TODO convert "brick_vld" to "brick_vld"
     expected_abbv9_stage_types = {
         kw.heard_agg,
         kw.heard_raw,

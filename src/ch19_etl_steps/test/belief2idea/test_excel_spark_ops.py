@@ -1,3 +1,4 @@
+from openpyxl import Workbook as openpyxl_Workbook
 from os.path import exists as os_path_exists, join as os_path_join
 from pandas import (
     DataFrame,
@@ -9,9 +10,8 @@ from pathlib import Path
 from pytest import fixture as pytest_fixture, raises as pytest_raises
 from src.ch00_py.file_toolbox import create_path
 from src.ch19_etl_steps.belief2idea import (  # move_b_src_sheets_to_i_src,
-    MigrationConflictError,
     add_spark_num_column,
-    compare_br_sheets,
+    beliefs_sheets_to_idea_sheets,
     create_spark_face_spark_nums,
     get_excel_sheet_tuples,
     get_max_spark_num_from_files,
@@ -211,16 +211,15 @@ def test_add_spark_num_column_SetsAttr_Scenario0_MutatesOriginalDataframe():
 @pytest_fixture
 def excel_dir(tmp_path):
     """Creates a temporary directory with sample Excel files for testing."""
-    from openpyxl import Workbook
 
     # File 1: two sheets
-    wb1 = Workbook()
+    wb1 = openpyxl_Workbook()
     wb1.active.title = "Alpha"
     wb1.create_sheet("Beta")
     wb1.save(tmp_path / "report.xlsx")
 
     # File 2: one sheet
-    wb2 = Workbook()
+    wb2 = openpyxl_Workbook()
     wb2.active.title = "Summary"
     wb2.save(tmp_path / "data.xlsx")
 
@@ -249,7 +248,9 @@ def test_get_excel_sheet_tuples_ReturnsObj_Scenario1_SortedList(excel_dir):
     assert result == sorted(result)
 
 
-def test_get_excel_sheet_tuples_ReturnsObj_Scenario2_EmptyListForNoExcelFiles(tmp_path):
+def test_get_excel_sheet_tuples_ReturnsObj_Scenario2_EmptyListForNoExcelFiles(
+    tmp_path: Path,
+):
     """Returns an empty list when the directory contains no Excel files."""
     # ESTABLISH
     (tmp_path / "readme.md").write_text("nothing here")
@@ -259,32 +260,27 @@ def test_get_excel_sheet_tuples_ReturnsObj_Scenario2_EmptyListForNoExcelFiles(tm
     assert result == []
 
 
-# --- Pytest fixtures & tests ---
-
-
-@pytest_fixture
-def br_excel_dir(tmp_path):
-    """Creates a temp directory with sheets named to test br_string matching."""
-    from openpyxl import Workbook
-
-    wb1 = Workbook()
+def test_get_sheets_with_brick_types_ReturnsObj_Scenario0_MatchingTuples(
+    tmp_path: Path,
+):
+    """Only tuples whose sheet_name contains a br_string are returned."""
+    # ESTABLISH
+    br_excel_dir = tmp_path / "beliefs"
+    br_excel_dir.mkdir()
+    wb1 = openpyxl_Workbook()
     wb1.active.title = "br00002_Sales"
     wb1.create_sheet("Revenue")
     wb1.create_sheet("Costs_BR00005")
-    wb1.save(tmp_path / "x300reports.xlsx")
+    wb1.save(br_excel_dir / "x300reports.xlsx")
 
-    wb2 = Workbook()
+    wb2 = openpyxl_Workbook()
     wb2.active.title = "Summary"
     wb2.create_sheet("BR00042_Overview")
-    wb2.save(tmp_path / "report.xlsx")
+    wb2.save(br_excel_dir / "report.xlsx")
 
-    return tmp_path
+    # WHEN
+    result = get_sheets_with_brick_types(br_excel_dir)
 
-
-def test_get_sheets_with_brick_types_ReturnsObj_Scenario0_MatchingTuples(br_excel_dir):
-    """Only tuples whose sheet_name contains a br_string are returned."""
-    # ESTABLISH / WHEN
-    result = get_sheets_with_brick_types(str(br_excel_dir))
     # THEN
     assert ("x300reports.xlsx", "br00002_Sales") in result
     assert ("x300reports.xlsx", "Costs_BR00005") in result
@@ -297,26 +293,11 @@ def test_get_sheets_with_brick_types_ReturnsObj_Scenario0_MatchingTuples(br_exce
 
 
 @pytest_fixture
-def bele_dir(tmp_path):
-    from openpyxl import Workbook
-
-    d = tmp_path / "bele"
-    d.mkdir()
-    wb = Workbook()
-    wb.active.title = "BR00005_Sales"
-    wb.create_sheet("Revenue")
-    wb.create_sheet("BR00042_Costs")
-    wb.save(d / "x300reports.xlsx")
-    return d
-
-
-@pytest_fixture
 def idea_dir_no_overlap(tmp_path):
-    from openpyxl import Workbook
 
     d = tmp_path / "idea"
     d.mkdir()
-    wb = Workbook()
+    wb = openpyxl_Workbook()
     wb.active.title = "Summary"
     wb.create_sheet("Details")
     wb.save(d / "idea_report.xlsx")
@@ -325,23 +306,31 @@ def idea_dir_no_overlap(tmp_path):
 
 @pytest_fixture
 def idea_dir_with_overlap(tmp_path):
-    from openpyxl import Workbook
 
     d = tmp_path / "idea_overlap"
     d.mkdir()
-    wb = Workbook()
+    wb = openpyxl_Workbook()
     wb.active.title = "BR00005_Sales"  # overlaps with bele_dir
     wb.save(d / "idea_report.xlsx")
     return d
 
 
 def test_get_validated_bele_src_brick_type_sheets_ReturnsBeleBrSheets(
-    bele_dir, idea_dir_no_overlap
+    idea_dir_no_overlap, tmp_path
 ):
     """Returns only BR sheet tuples from bele_src_dir when there is no overlap."""
-    # ESTABLISH / WHEN
+    # ESTABLISH
+    bele_dir = tmp_path / "bele"
+    bele_dir.mkdir()
+    wb = openpyxl_Workbook()
+    wb.active.title = "BR00005_Sales"
+    wb.create_sheet("Revenue")
+    wb.create_sheet("BR00042_Costs")
+    wb.save(bele_dir / "x300reports.xlsx")
+
+    # WHEN
     result = get_validated_bele_src_brick_type_sheets(
-        str(bele_dir), str(idea_dir_no_overlap)
+        bele_dir, str(idea_dir_no_overlap)
     )
     # THEN
     assert ("x300reports.xlsx", "BR00005_Sales") in result
@@ -350,10 +339,19 @@ def test_get_validated_bele_src_brick_type_sheets_ReturnsBeleBrSheets(
 
 
 def test_get_validated_bele_src_brick_type_sheets_RaisesOnOverlap(
-    bele_dir, idea_dir_with_overlap
+    idea_dir_with_overlap, tmp_path
 ):
     """Raises ValueError when a BR sheet name exists in both directories."""
-    # ESTABLISH / WHEN / THEN
+    # ESTABLISH
+    bele_dir = tmp_path / "bele"
+    bele_dir.mkdir()
+    wb = openpyxl_Workbook()
+    wb.active.title = "BR00005_Sales"
+    wb.create_sheet("Revenue")
+    wb.create_sheet("BR00042_Costs")
+    wb.save(bele_dir / "x300reports.xlsx")
+
+    # WHEN / THEN
     with pytest_raises(ValueError, match="BR00005_Sales"):
         get_validated_bele_src_brick_type_sheets(
             str(bele_dir), str(idea_dir_with_overlap)
@@ -365,11 +363,10 @@ def test_get_validated_bele_src_brick_type_sheets_ReturnsEmptyWhenNoBeleBrSheets
 ):
     """Returns an empty list when bele_src_dir has no BR sheets."""
     # ESTABLISH
-    from openpyxl import Workbook
 
     empty_bele = tmp_path / "empty_bele"
     empty_bele.mkdir()
-    wb = Workbook()
+    wb = openpyxl_Workbook()
     wb.active.title = "Summary"
     wb.save(empty_bele / "plain.xlsx")
     # WHEN
@@ -380,160 +377,87 @@ def test_get_validated_bele_src_brick_type_sheets_ReturnsEmptyWhenNoBeleBrSheets
     assert result == []
 
 
-def test_compare_br_sheets_Scenario0_DoesNotRaiseException(tmp_path: Path):
+def test_beliefs_sheets_to_idea_sheets_Scenario0_ReturnsObj_TwoTuples(tmp_path: Path):
+    """Returns one (filename, sheet_name) tuple per BR sheet copied."""
     # ESTABLISH
-    # Setup source and destination directories
-    src_dir = tmp_path / "src"
-    dst_dir = tmp_path / "dst"
-    src_dir.mkdir()
-    dst_dir.mkdir()
+    empty_idea_dir = tmp_path / "idea"
+    empty_idea_dir.mkdir()
 
-    # Create Excel files
-    src_file = src_dir / "file.xlsx"
-    dst_file = dst_dir / "file.xlsx"
+    populated_bele_dir = tmp_path / "bele"
+    populated_bele_dir.mkdir()
+    wb = openpyxl_Workbook()
+    ws1 = wb.active
+    ws1.title = "BR00020_Sales"
+    ws1.append(["product", "units", "revenue"])
+    ws1.append(["widget", 10, 500])
+    ws1.append(["gadget", 5, 250])
 
-    df_br = DataFrame({"A": [1, 2], "B": [3, 4]})
-    df_other = DataFrame({"X": [9, 8]})
+    ws2 = wb.create_sheet("BR00004_Costs")
+    ws2.append(["category", "amount"])
+    ws2.append(["rent", 1000])
+    wb.create_sheet("Summary")  # non-BR, should be ignored
+    wb.save(populated_bele_dir / "AllSales.xlsx")
 
-    with pandas_ExcelWriter(src_file) as writer:
-        df_br.to_excel(writer, sheet_name="br_sheet", index=False)
-        df_other.to_excel(writer, sheet_name="other_sheet", index=False)
-
-    with pandas_ExcelWriter(dst_file) as writer:
-        df_br.to_excel(writer, sheet_name="br_sheet", index=False)
-        df_other.to_excel(writer, sheet_name="other_sheet", index=False)
-
-    # WHEN / THEN
-    # Should not raise exception
-    compare_br_sheets(src_dir, dst_dir)
+    # WHEN
+    result = beliefs_sheets_to_idea_sheets(populated_bele_dir, empty_idea_dir)
+    # THEN
+    assert ("BR00004_Costs.xlsx", "BR00004_Costs") in result
+    assert ("BR00020_Sales.xlsx", "BR00020_Sales") in result
+    assert len(result) == 2
 
 
-def test_compare_br_sheets_Scenario1_DoesRaiseException(tmp_path: Path):
+def test_beliefs_sheets_to_idea_sheets_Scenario1_ReturnsObj_DataReadableByPandas(
+    tmp_path: Path,
+):
+    """Each copied sheet can be read by pandas and contains the original data."""
     # ESTABLISH
-    src_dir = tmp_path / "src"
-    dst_dir = tmp_path / "dst"
-    src_dir.mkdir()
-    dst_dir.mkdir()
+    empty_idea_dir = tmp_path / "idea"
+    empty_idea_dir.mkdir()
+    populated_bele_dir = tmp_path / "bele"
+    populated_bele_dir.mkdir()
+    wb = openpyxl_Workbook()
+    ws1 = wb.active
+    ws1.title = "BR00020_Sales"
+    ws1.append(["product", "units", "revenue"])
+    ws1.append(["widget", 10, 500])
+    ws1.append(["gadget", 5, 250])
 
-    src_file = src_dir / "file.xlsx"
-    dst_file = dst_dir / "file.xlsx"
+    ws2 = wb.create_sheet("BR00004_Costs")
+    ws2.append(["category", "amount"])
+    ws2.append(["rent", 1000])
+    wb.create_sheet("Summary")  # non-BR, should be ignored
+    wb.save(populated_bele_dir / "AllSales.xlsx")
 
-    df_br_src = DataFrame({"A": [1, 2]})
-    df_br_dst = DataFrame({"A": [1, 99]})  # conflict
-
-    with pandas_ExcelWriter(src_file) as writer:
-        df_br_src.to_excel(writer, sheet_name="br_sheet", index=False)
-
-    with pandas_ExcelWriter(dst_file) as writer:
-        df_br_dst.to_excel(writer, sheet_name="br_sheet", index=False)
-
-    # WHEN / THEN
-    with pytest_raises(MigrationConflictError, match="Conflict in sheet"):
-        compare_br_sheets(src_dir, dst_dir)
+    # WHEN
+    beliefs_sheets_to_idea_sheets(populated_bele_dir, empty_idea_dir)
+    # THEN
+    df = pandas_read_excel(
+        os_path_join(str(empty_idea_dir), "BR00020_Sales.xlsx"),
+        sheet_name="BR00020_Sales",
+    )
+    assert list(df.columns) == ["product", "units", "revenue"]
+    assert len(df) == 2
+    assert df["revenue"].sum() == 750
 
 
-def test_compare_br_sheets_Scenario2_MissingSheetRaiseException(tmp_path: Path):
+def test_beliefs_sheets_to_idea_sheets_Scenario2_RaisesOnOverlap(tmp_path: Path):
+    """Propagates ValueError from get_bele_br_sheets_validated on sheet name overlap."""
     # ESTABLISH
-    src_dir = tmp_path / "src"
-    dst_dir = tmp_path / "dst"
-    src_dir.mkdir()
-    dst_dir.mkdir()
+    beliefs_dir = tmp_path / "bele"
+    beliefs_dir.mkdir()
+    ideas_dir = tmp_path / "idea"
+    ideas_dir.mkdir()
 
-    src_file = src_dir / "file.xlsx"
-    dst_file = dst_dir / "file.xlsx"
+    wb_bele = openpyxl_Workbook()
+    wb_bele.active.title = "BR00020_Sales"
+    wb_bele.save(beliefs_dir / "AllSales.xlsx")
 
-    df_br = DataFrame({"A": [1, 2]})
-
-    with pandas_ExcelWriter(src_file) as writer:
-        df_br.to_excel(writer, sheet_name="br_missing_in_dst", index=False)
-
-    with pandas_ExcelWriter(dst_file) as writer:
-        df_br.to_excel(writer, sheet_name="other_sheet", index=False)
-
+    wb_idea = openpyxl_Workbook()
+    wb_idea.active.title = "BR00020_Sales"
+    wb_idea.save(ideas_dir / "existing.xlsx")
     # WHEN / THEN
-    with pytest_raises(
-        MigrationConflictError, match="exists in source but not in destination"
-    ):
-        compare_br_sheets(src_dir, dst_dir)
-
-
-# def test_move_br_sheets_no_conflict(tmp_path: Path):
-#     # ESTABLISH
-#     src_dir = tmp_path / "src"
-#     dst_dir = tmp_path / "dst"
-#     src_dir.mkdir()
-#     dst_dir.mkdir()
-
-#     src_file = src_dir / "file.xlsx"
-#     dst_file = dst_dir / "file.xlsx"
-
-#     df_br = DataFrame({"A": [1, 2]})
-#     df_other = DataFrame({"X": [9]})
-
-#     # Source has br sheet
-#     with pandas_ExcelWriter(src_file) as writer:
-#         df_br.to_excel(writer, sheet_name="br_sheet", index=False)
-#         df_other.to_excel(writer, sheet_name="other", index=False)
-
-#     # Destination starts empty
-#     with pandas_ExcelWriter(dst_file) as writer:
-#         df_other.to_excel(writer, sheet_name="other", index=False)
-#     # WHEN
-#     move_b_src_sheets_to_i_src(src_dir, dst_dir)
-#     # THEN
-#     # Verify br_sheet now exists in destination
-#     result_sheets = pandas_read_excel(dst_file, sheet_name=None)
-#     assert "br_sheet" in result_sheets
-#     assert result_sheets["br_sheet"].equals(df_br)
-
-
-# def test_move_br_sheets_conflict_raises(tmp_path: Path):
-#     # ESTABLISH
-#     src_dir = tmp_path / "src"
-#     dst_dir = tmp_path / "dst"
-#     src_dir.mkdir()
-#     dst_dir.mkdir()
-
-#     src_file = src_dir / "file.xlsx"
-#     dst_file = dst_dir / "file.xlsx"
-
-#     df_src = DataFrame({"A": [1, 2]})
-#     df_dst_conflict = DataFrame({"A": [1, 99]})  # different
-
-#     with pandas_ExcelWriter(src_file) as writer:
-#         df_src.to_excel(writer, sheet_name="br_sheet", index=False)
-
-#     with pandas_ExcelWriter(dst_file) as writer:
-#         df_dst_conflict.to_excel(writer, sheet_name="br_sheet", index=False)
-
-#     # WHEN / THEN
-#     with pytest_raises(MigrationConflictError):
-#         move_b_src_sheets_to_i_src(src_dir, dst_dir)
-
-
-# def test_move_br_sheets_overwrites_or_adds_when_missing(tmp_path: Path):
-#     # ESTABLISH
-#     src_dir = tmp_path / "src"
-#     dst_dir = tmp_path / "dst"
-#     src_dir.mkdir()
-#     dst_dir.mkdir()
-#     src_file = src_dir / "file.xlsx"
-#     dst_file = dst_dir / "file.xlsx"
-#     df_src = DataFrame({"A": [5, 6]})
-#     with pandas_ExcelWriter(src_file) as writer:
-#         df_src.to_excel(writer, sheet_name="br_new", index=False)
-#     # Destination has no br sheets
-#     with pandas_ExcelWriter(dst_file) as writer:
-#         DataFrame({"X": [1]}).to_excel(writer, sheet_name="other", index=False)
-#     # WHEN
-#     move_b_src_sheets_to_i_src(src_dir, dst_dir)
-#     # THEN
-#     result_sheets = pandas_read_excel(dst_file, sheet_name=None)
-#     assert "br_new" in result_sheets
-#     assert result_sheets["br_new"].equals(df_src)
-
-
-#################################################################################
+    with pytest_raises(ValueError, match="BR00020_Sales"):
+        beliefs_sheets_to_idea_sheets(beliefs_dir, ideas_dir)
 
 
 def create_excel_file(filepath, sheets_dict):
@@ -542,6 +466,7 @@ def create_excel_file(filepath, sheets_dict):
             df.to_excel(writer, sheet_name=name, index=False)
 
 
+# TODO depercate this function
 def test_update_spark_num_in_excel_file_SetsFile_Scenario0_UpdatesAllSheets(temp3_fs):
     # ESTABLISH
     filepath = create_path(str(temp3_fs), "test.xlsx")
@@ -592,6 +517,7 @@ def test_update_spark_num_in_excel_file_SetsFile_Scenario1_PreservesOtherColumns
 #     assert result == {}
 
 
+# TODO depercate this function
 def test_update_spark_num_in_belief_files_SetAttrs(temp3_fs):
     # ESTABLISH
     # Setup: Create test directory and Excel file

@@ -1,4 +1,4 @@
-from openpyxl import load_workbook
+from openpyxl import Workbook as openpyxl_Workbook, load_workbook
 from os import listdir as os_listdir
 from os.path import join as os_path_join
 from pandas import (
@@ -202,109 +202,73 @@ def get_validated_bele_src_brick_type_sheets(
     return bele_br_sheets
 
 
-class MigrationConflictError(Exception):
-    """Raised when there is a conflict between source and destination Excel sheets."""
-
-    pass
-
-
-def compare_br_sheets(src_dir: str, dst_dir: str) -> None:
+def beliefs_sheets_to_idea_sheets(
+    bele_src_dir: str,
+    idea_src_dir: str,
+) -> List[Tuple[str, str]]:
     """
-    Compares all sheets containing 'br' in their name in Excel files from src_dir and dst_dir.
-    Raises MigrationConflictError if any conflict is found.
+    Copies all BR sheets from bele_src_dir into idea_src_dir.
+    Each BR sheet is written into its own new Excel file, named after the sheet,
+    preserving values and structure for downstream pandas operations.
+
+    Args:
+        bele_src_dir: Path to the BELE source directory.
+        idea_src_dir: Path to the IDEA source directory.
+
+    Returns:
+        Sorted list of (new_filename, sheet_name) tuples for every sheet copied.
+
+    Raises:
+        ValueError: (propagated from get_bele_br_sheets_validated) if any BR
+                    sheet name exists in both directories before the copy.
     """
-    src_dir = Path(src_dir)
-    dst_dir = Path(dst_dir)
+    # TODO get max_spark_num from idea_src_dir
+    # TODO get face_sparks from bele_src_dir
+    # TODO create spark_num, face_spark tuples
+    # TODO when being copied over, add spark_num to dataframe
+    bele_br_sheets = get_validated_bele_src_brick_type_sheets(
+        bele_src_dir, idea_src_dir
+    )
 
-    # Only Excel files
-    src_files = [f for f in src_dir.iterdir() if f.suffix.lower() in {".xlsx", ".xls"}]
-    dst_files = {
-        f.name: f for f in dst_dir.iterdir() if f.suffix.lower() in {".xlsx", ".xls"}
-    }
+    # Group sheet names by their source file for efficient workbook loading
+    file_to_sheets: dict[str, List[str]] = {}
+    for filename, sheet_name in bele_br_sheets:
+        file_to_sheets.setdefault(filename, []).append(sheet_name)
 
-    for src_file in src_files:
-        if src_file.name not in dst_files:
-            # Could ignore or raise a warning if the dst file doesn't exist
-            continue
+    copied: List[Tuple[str, str]] = []
 
-        dst_file = dst_files[src_file.name]
+    for filename, sheet_names in file_to_sheets.items():
+        src_path = os_path_join(bele_src_dir, filename)
+        src_wb = load_workbook(src_path, data_only=True)  # resolve formulas to values
 
-        # Read all sheets
-        src_sheets = pandas_read_excel(src_file, sheet_name=None)
-        dst_sheets = pandas_read_excel(dst_file, sheet_name=None)
+        for sheet_name in sheet_names:
+            src_ws = src_wb[sheet_name]
 
-        # Filter sheets containing 'br'
-        filtered_sheet_names = [name for name in src_sheets if "br" in name.lower()]
+            dest_wb = openpyxl_Workbook()
+            dest_ws = dest_wb.active
+            dest_ws.title = sheet_name
 
-        for sheet_name in filtered_sheet_names:
-            if sheet_name not in dst_sheets:
-                raise MigrationConflictError(
-                    f"Sheet '{sheet_name}' exists in source but not in destination file '{dst_file.name}'"
-                )
+            # Copy column dimensions so pandas read_excel gets clean column widths
+            for col_idx, col_dim in src_ws.column_dimensions.items():
+                dest_ws.column_dimensions[col_idx].width = col_dim.width
 
-            src_df = src_sheets[sheet_name].fillna("").astype(str)
-            dst_df = dst_sheets[sheet_name].fillna("").astype(str)
+            # Copy all cell values row by row (no styling — pandas doesn't need it)
+            for row in src_ws.iter_rows():
+                for cell in row:
+                    dest_ws.cell(
+                        row=cell.row,
+                        column=cell.column,
+                        value=cell.value,
+                    )
 
-            if not src_df.equals(dst_df):
-                raise MigrationConflictError(
-                    f"Conflict in sheet '{sheet_name}' between '{src_file.name}' and '{dst_file.name}'"
-                )
+            new_filename = f"{sheet_name}.xlsx"
+            dest_path = os_path_join(idea_src_dir, new_filename)
+            dest_wb.save(dest_path)
+            copied.append((new_filename, sheet_name))
 
+        src_wb.close()
 
-# def move_b_src_sheets_to_i_src(src_dir: str, dst_dir: str) -> None:
-#     src_dir = Path(src_dir)
-#     dst_dir = Path(dst_dir)
-
-#     # TODO add compare_br_sheets to raise exception
-#     compare_br_sheets(src_dir, dst_dir)
-
-#     for src_file in src_dir.iterdir():
-#         if not src_file.is_file() or src_file.suffix.lower() not in {".xlsx", ".xls"}:
-#             continue
-
-#         dst_file = dst_dir / src_file.name
-
-#         # Read source sheets
-#         src_sheets = pandas_read_excel(src_file, sheet_name=None)
-
-#         # Filter "br" sheets
-#         br_sheets = {
-#             name: df for name, df in src_sheets.items() if "br" in name.lower()
-#         }
-
-#         if not br_sheets:
-#             continue
-
-#         # Read destination sheets if file exists, else empty
-#         if dst_file.exists():
-#             dst_sheets = pandas_read_excel(dst_file, sheet_name=None)
-#         else:
-#             dst_sheets = {}
-
-#         # Check for conflicts
-#         for sheet_name, src_df in br_sheets.items():
-#             if sheet_name in dst_sheets:
-#                 dst_df = dst_sheets[sheet_name]
-
-#                 # Normalize before comparison
-#                 src_cmp = src_df.fillna("").astype(str)
-#                 dst_cmp = dst_df.fillna("").astype(str)
-
-#                 if not src_cmp.equals(dst_cmp):
-#                     raise MigrationConflictError(
-#                         f"Conflict in sheet '{sheet_name}' for file '{src_file.name}'"
-#                     )
-
-#         # Merge sheets (copy br sheets into destination)
-#         updated_sheets = dict(dst_sheets)  # copy existing
-
-#         for sheet_name, df in br_sheets.items():
-#             updated_sheets[sheet_name] = df
-
-#         # Write back to Excel
-#         with ExcelWriter(dst_file, engine="xlsxwriter") as writer:
-#             for sheet_name, df in updated_sheets.items():
-#                 df.to_excel(writer, sheet_name=sheet_name, index=False)
+    return sorted(copied)
 
 
 def update_spark_num_in_excel_file(filepath: str, max_spark_num):
