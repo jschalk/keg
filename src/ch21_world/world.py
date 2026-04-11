@@ -108,7 +108,6 @@ class WorldDir:
     # calculated dirs
     world_dir: str = None
     db_path: str = None
-    idea_dir: str = None
     moment_mstr_dir: str = None
 
     def get_world_db_path(self) -> str:
@@ -128,10 +127,8 @@ class WorldDir:
 
     def _set_world_dirs(self):
         self.world_dir = create_path(self.worlds_dir, self.world_name)
-        self.idea_dir = create_path(self.world_dir, "idea")
         self.moment_mstr_dir = create_moment_mstr_path(self.world_dir)
         set_dir(self.world_dir)
-        set_dir(self.idea_dir)
         set_dir(self.moment_mstr_dir)
 
 

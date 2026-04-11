@@ -538,7 +538,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
     assert not os_path_exists(a23_sue_gut_path)
     assert not os_path_exists(a23_sue_job_path)
     assert not os_path_exists(sue37_mandate_path)
-    assert count_dirs_files(fay_wdir.worlds_dir) == 6
+    assert count_dirs_files(fay_wdir.worlds_dir) == 5
 
     # WHEN
     idea_sheets_to_lynx_with_cursor(
@@ -552,7 +552,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
     assert os_path_exists(a23_sue_gut_path)
     assert os_path_exists(a23_sue_job_path)
     assert os_path_exists(sue37_mandate_path)
-    assert count_dirs_files(fay_wdir.worlds_dir) == 43
+    assert count_dirs_files(fay_wdir.worlds_dir) == 42
 
 
 def test_idea_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(

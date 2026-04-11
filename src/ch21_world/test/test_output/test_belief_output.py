@@ -258,7 +258,7 @@ def test_create_beliefs_CreatesFile_Senario3_Create_calendar_markdown(
 
 #     # THEN
 #     assert os_path_exists(wrong_a23_moment_dir) is False
-#     idea_file_path = create_path(fay_wdir.idea_dir, "ii00003.xlsx")
+#     i_src_file_path = create_path(fay_wdir.i_src_dir, "ii00003.xlsx")
 #     assert os_path_exists(i_src_dir_file_path)
 #     assert os_path_exists(idea_file_path)
 #     assert os_path_exists(a23_json_path)

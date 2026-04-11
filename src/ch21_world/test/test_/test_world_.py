@@ -20,7 +20,6 @@ def test_WorldDir_Exists():
     assert not x_wdir.output_dir
     assert not x_wdir.world_dir
     assert not x_wdir.i_src_dir
-    assert not x_wdir.idea_dir
     assert not x_wdir.db_path
     assert not x_wdir.moment_mstr_dir
     assert set(x_wdir.__dict__.keys()) == {
@@ -30,7 +29,6 @@ def test_WorldDir_Exists():
         "world_dir",
         f"{kw.b_src}_dir",
         kw.i_src_dir,
-        "idea_dir",
         "db_path",
         kw.moment_mstr_dir,
     }
@@ -46,7 +44,6 @@ def test_WorldDir_set_i_src_dir_SetsDirsAndFiles(temp3_fs):
     assert not fay_wdir.i_src_dir
     assert not fay_wdir.b_src_dir
     assert not fay_wdir.db_path
-    assert not fay_wdir.idea_dir
     assert not fay_wdir.moment_mstr_dir
     assert os_path_exists(x_i_src_dir) is False
 
@@ -57,7 +54,6 @@ def test_WorldDir_set_i_src_dir_SetsDirsAndFiles(temp3_fs):
     assert not fay_wdir.world_dir
     assert fay_wdir.i_src_dir == x_i_src_dir
     assert not fay_wdir.b_src_dir
-    assert not fay_wdir.idea_dir
     assert not fay_wdir.db_path
     assert not fay_wdir.moment_mstr_dir
     assert os_path_exists(x_i_src_dir)
@@ -72,7 +68,6 @@ def test_WorldDir_set_b_src_dir_SetsDirsAndFiles(temp3_fs):
     assert not fay_wdir.world_dir
     assert not fay_wdir.i_src_dir
     assert not fay_wdir.b_src_dir
-    assert not fay_wdir.idea_dir
     assert not fay_wdir.moment_mstr_dir
     assert os_path_exists(x_i_src_dir) is False
 
@@ -83,7 +78,6 @@ def test_WorldDir_set_b_src_dir_SetsDirsAndFiles(temp3_fs):
     assert not fay_wdir.world_dir
     assert not fay_wdir.i_src_dir
     assert fay_wdir.b_src_dir == x_b_src_dir
-    assert not fay_wdir.idea_dir
     assert not fay_wdir.moment_mstr_dir
     assert os_path_exists(x_b_src_dir)
 
@@ -95,18 +89,15 @@ def test_WorldDir_set_world_dirs_SetsDirsAndFiles(temp3_fs):
     x_world_dir = create_path(str(temp3_fs), fay_str)
     x_i_src_dir = create_path(x_world_dir, kw.i_src)
     x_b_src_dir = create_path(x_world_dir, kw.b_src)
-    x_idea_dir = create_path(x_world_dir, "idea")
     x_moment_mstr_dir = create_path(x_world_dir, "moment_mstr")
 
     assert not fay_wdir.world_dir
     assert not fay_wdir.i_src_dir
     assert not fay_wdir.b_src_dir
-    assert not fay_wdir.idea_dir
     assert not fay_wdir.moment_mstr_dir
     assert os_path_exists(x_world_dir) is False
     assert os_path_exists(x_i_src_dir) is False
     assert os_path_exists(x_b_src_dir) is False
-    assert os_path_exists(x_idea_dir) is False
     assert os_path_exists(x_moment_mstr_dir) is False
 
     # WHEN
@@ -115,11 +106,9 @@ def test_WorldDir_set_world_dirs_SetsDirsAndFiles(temp3_fs):
     # THEN
     assert fay_wdir.world_dir == x_world_dir
     assert not fay_wdir.i_src_dir
-    assert fay_wdir.idea_dir == x_idea_dir
     assert os_path_exists(x_world_dir)
     assert os_path_exists(x_i_src_dir) is False
     assert os_path_exists(x_b_src_dir) is False
-    assert os_path_exists(x_idea_dir)
     assert os_path_exists(x_moment_mstr_dir)
 
 
