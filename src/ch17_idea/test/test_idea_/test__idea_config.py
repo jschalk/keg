@@ -715,7 +715,7 @@ def test_get_idea_format_filename_ReturnsObj():
     assert ii00020_filename == ii00020_person_contact_membership_v0_0_0()
     assert ii00013_filename == ii00013_planunit_v0_0_0()
 
-    all_set = {get_idea_format_filename(br) for br in get_idea_types()}
+    all_set = {get_idea_format_filename(idea_type) for idea_type in get_idea_types()}
     assert all_set == get_idea_format_filenames()
 
 

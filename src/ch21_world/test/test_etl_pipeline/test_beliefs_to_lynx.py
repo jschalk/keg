@@ -20,7 +20,7 @@ def test_belief_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     # delete_dir(fay_wdir.worlds_dir)
     sue_inx = "Suzy"
     ex_filename = "belief_Faybob.xlsx"
-    bele_src_dir_file_path = create_path(fay_wdir.bele_src_dir, ex_filename)
+    b_src_dir_file_path = create_path(fay_wdir.b_src_dir, ex_filename)
     ii00113_columns = [
         kw.spark_face,
         kw.moment_rope,
@@ -34,7 +34,7 @@ def test_belief_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     ii00113row0 = [exx.sue, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
     ii00113_df = DataFrame([ii00113row0], columns=ii00113_columns)
     ii00113_ex0_str = f"example0_{ii00113_str}"
-    save_sheet(bele_src_dir_file_path, ii00113_ex0_str, ii00113_df)
+    save_sheet(b_src_dir_file_path, ii00113_ex0_str, ii00113_df)
 
     ii00001_columns = [
         kw.spark_face,
@@ -48,13 +48,13 @@ def test_belief_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     tp37 = 37
     sue_quota = 235
     sue_celldepth = 3
-    br1row0 = [exx.sue, exx.a23, exx.sue, tp37, ";", sue_quota, sue_celldepth]
-    ii00001_1df = DataFrame([br1row0], columns=ii00001_columns)
+    ii1row0 = [exx.sue, exx.a23, exx.sue, tp37, ";", sue_quota, sue_celldepth]
+    ii00001_1df = DataFrame([ii1row0], columns=ii00001_columns)
     ii00001_ex0_str = "example0_ii00001"
-    save_sheet(bele_src_dir_file_path, ii00001_ex0_str, ii00001_1df)
+    save_sheet(b_src_dir_file_path, ii00001_ex0_str, ii00001_1df)
     fay_db_path = fay_wdir.get_world_db_path()
     assert not os_path_exists(fay_db_path)
-    assert os_path_exists(bele_src_dir_file_path)
+    assert os_path_exists(b_src_dir_file_path)
     i_src_dir_file_path = create_path(fay_wdir.i_src_dir, ex_filename)
     assert not os_path_exists(i_src_dir_file_path)
 
@@ -62,7 +62,7 @@ def test_belief_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     belief_sheets_to_lynx_mstr(fay_wdir)
 
     # THEN
-    assert not os_path_exists(bele_src_dir_file_path)
+    assert not os_path_exists(b_src_dir_file_path)
     assert os_path_exists(i_src_dir_file_path)
 
     assert os_path_exists(fay_db_path)
@@ -156,7 +156,7 @@ def test_belief_sheets_to_lynx_mstr_Scenario1_DatabaseFileExists(
     # delete_dir(fay_wdir.worlds_dir)
     sue_inx = "Suzy"
     ex_filename = "belief_Faybob.xlsx"
-    bele_src_dir_file_path = create_path(fay_wdir.bele_src_dir, ex_filename)
+    b_src_dir_file_path = create_path(fay_wdir.b_src_dir, ex_filename)
     ii00113_columns = [
         kw.spark_face,
         kw.moment_rope,
@@ -170,14 +170,14 @@ def test_belief_sheets_to_lynx_mstr_Scenario1_DatabaseFileExists(
     ii00113row0 = [exx.sue, a23_rope, exx.sue, exx.sue, exx.sue, sue_inx]
     ii00113_df = DataFrame([ii00113row0], columns=ii00113_columns)
     ii00113_ex0_str = f"example0_{ii00113_str}"
-    save_sheet(bele_src_dir_file_path, ii00113_ex0_str, ii00113_df)
+    save_sheet(b_src_dir_file_path, ii00113_ex0_str, ii00113_df)
     fay_db_path = fay_wdir.get_world_db_path()
     assert os_path_exists(fay_db_path)
     with sqlite3_connect(fay_db_path) as db_conn0:
         cursor0 = db_conn0.cursor()
         assert get_max_ideax_agg_spark_num(cursor0) == spark5
     db_conn0.close()
-    assert os_path_exists(bele_src_dir_file_path)
+    assert os_path_exists(b_src_dir_file_path)
     i_src_dir_file_path = create_path(fay_wdir.i_src_dir, ex_filename)
     assert not os_path_exists(i_src_dir_file_path)
 
@@ -196,4 +196,4 @@ def test_belief_sheets_to_lynx_mstr_Scenario1_DatabaseFileExists(
         assert len(rows) == 2
     db_conn1.close()
     assert os_path_exists(i_src_dir_file_path)
-    assert not os_path_exists(bele_src_dir_file_path)
+    assert not os_path_exists(b_src_dir_file_path)

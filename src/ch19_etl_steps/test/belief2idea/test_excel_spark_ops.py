@@ -10,7 +10,7 @@ from pathlib import Path
 from pytest import fixture as pytest_fixture, raises as pytest_raises
 from src.ch00_py.file_toolbox import count_dirs_files, create_path
 from src.ch17_idea.idea_db_tool import sheet_exists
-from src.ch19_etl_steps.belief2idea import (  # move_b_src_sheets_to_i_src,
+from src.ch19_etl_steps.belief2idea import (
     add_spark_num_column,
     beliefs_sheets_to_idea_sheets,
     create_spark_face_spark_nums,
@@ -19,7 +19,7 @@ from src.ch19_etl_steps.belief2idea import (  # move_b_src_sheets_to_i_src,
     get_sheets_with_idea_types,
     get_spark_faces_from_df,
     get_spark_faces_from_files,
-    get_validated_bele_src_idea_type_sheets,
+    get_validated_b_src_idea_type_sheets,
 )
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
@@ -262,23 +262,23 @@ def test_get_excel_sheet_tuples_ReturnsObj_Scenario2_EmptyListForNoExcelFiles(
 def test_get_sheets_with_idea_types_ReturnsObj_Scenario0_MatchingTuples(
     tmp_path: Path,
 ):  # sourcery skip: extract-duplicate-method
-    """Only tuples whose sheet_name contains a br_string are returned."""
+    """Only tuples whose sheet_name contains a ii_string are returned."""
     # ESTABLISH
-    br_excel_dir = tmp_path / "beliefs"
-    br_excel_dir.mkdir()
+    beliefs_excel_dir = tmp_path / "beliefs"
+    beliefs_excel_dir.mkdir()
     wb1 = openpyxl_Workbook()
     wb1.active.title = "ii00002_Sales"
     wb1.create_sheet("Revenue")
     wb1.create_sheet("Costs_ii00005")
-    wb1.save(br_excel_dir / "x300reports.xlsx")
+    wb1.save(beliefs_excel_dir / "x300reports.xlsx")
 
     wb2 = openpyxl_Workbook()
     wb2.active.title = "Summary"
     wb2.create_sheet("ii00042_Overview")
-    wb2.save(br_excel_dir / "report.xlsx")
+    wb2.save(beliefs_excel_dir / "report.xlsx")
 
     # WHEN
-    result = get_sheets_with_idea_types(br_excel_dir)
+    result = get_sheets_with_idea_types(beliefs_excel_dir)
 
     # THEN
     assert ("x300reports.xlsx", "ii00002_Sales") in result
@@ -288,10 +288,10 @@ def test_get_sheets_with_idea_types_ReturnsObj_Scenario0_MatchingTuples(
     assert ("report.xlsx", "Summary") not in result
 
 
-def test_get_validated_bele_src_idea_type_sheets_ReturnsObj_Scenario0_BeleBrSheets(
+def test_get_validated_b_src_idea_type_sheets_ReturnsObj_Scenario0_BeleBrSheets(
     tmp_path,
 ):
-    """Returns only BR sheet tuples from bele_src_dir when there is no overlap."""
+    """Returns only idea_type sheet tuples from b_src_dir when there is no overlap."""
     # ESTABLISH
     bele_dir = tmp_path / "bele"
     bele_dir.mkdir()
@@ -304,17 +304,17 @@ def test_get_validated_bele_src_idea_type_sheets_ReturnsObj_Scenario0_BeleBrShee
     wb.save(bele_dir / "x300reports.xlsx")
 
     # WHEN
-    result = get_validated_bele_src_idea_type_sheets(bele_dir, i_src_dir)
+    result = get_validated_b_src_idea_type_sheets(bele_dir, i_src_dir)
     # THEN
     assert ("x300reports.xlsx", "ii00005_Sales") in result
     assert ("x300reports.xlsx", "ii00042_Costs") in result
     assert ("x300reports.xlsx", "Revenue") not in result
 
 
-def test_get_validated_bele_src_idea_type_sheets_Scenario1_RaisesOnOverlap(
+def test_get_validated_b_src_idea_type_sheets_Scenario1_RaisesOnOverlap(
     tmp_path: Path,
 ):
-    """Raises ValueError when a BR sheet name exists in both directories."""
+    """Raises ValueError when a idea_type sheet name exists in both directories."""
     # ESTABLISH
     bele_dir = tmp_path / "bele"
     bele_dir.mkdir()
@@ -333,21 +333,21 @@ def test_get_validated_bele_src_idea_type_sheets_Scenario1_RaisesOnOverlap(
 
     # WHEN / THEN
     with pytest_raises(ValueError, match="ii00005_Sales"):
-        get_validated_bele_src_idea_type_sheets(bele_dir, i_src_dir)
+        get_validated_b_src_idea_type_sheets(bele_dir, i_src_dir)
 
 
-def test_get_validated_bele_src_idea_type_sheets_Scenario2_DoesNotRaiseError(
+def test_get_validated_b_src_idea_type_sheets_Scenario2_DoesNotRaiseError(
     tmp_path: Path,
 ):
-    """Raises ValueError when a BR sheet name exists in both directories."""
+    """Raises ValueError when a idea_type sheet name exists in both directories."""
     # ESTABLISH
     bele_dir = tmp_path / "bele"
     bele_dir.mkdir()
     bele_wb = openpyxl_Workbook()
     bele_wb.active.title = "ii00005_Sales"
     bele_wb.create_sheet("Revenue")
-    br42_sheetname = "ii00042_Costs"
-    bele_wb.create_sheet(br42_sheetname)
+    ii42_sheetname = "ii00042_Costs"
+    bele_wb.create_sheet(ii42_sheetname)
     x3_filename = "x300reports.xlsx"
     bele_wb.save(bele_dir / x3_filename)
 
@@ -356,21 +356,21 @@ def test_get_validated_bele_src_idea_type_sheets_Scenario2_DoesNotRaiseError(
     idea_wb = openpyxl_Workbook()
     idea_wb.active.title = "ii00005_Sales"  # overlaps with bele_dir
     x4_filename = "x400reports.xlsx"
-    idea_wb.create_sheet(br42_sheetname)
+    idea_wb.create_sheet(ii42_sheetname)
     idea_wb.save(i_src_dir / x4_filename)
 
     # WHEN
-    sheet_tuples = get_validated_bele_src_idea_type_sheets(bele_dir, i_src_dir)
+    sheet_tuples = get_validated_b_src_idea_type_sheets(bele_dir, i_src_dir)
     # THEN
-    print(f"{(x3_filename, br42_sheetname)=}")
+    print(f"{(x3_filename, ii42_sheetname)=}")
     print(f"{sheet_tuples=}")
-    assert (x3_filename, br42_sheetname) in sheet_tuples
+    assert (x3_filename, ii42_sheetname) in sheet_tuples
 
 
-def test_get_validated_bele_src_idea_type_sheets_ReturnsObj_Scenario2_EmptyWhenNoBeleBrSheets(
+def test_get_validated_b_src_idea_type_sheets_ReturnsObj_Scenario2_EmptyWhenNoBeleBrSheets(
     tmp_path,
 ):
-    """Returns an empty list when bele_src_dir has no BR sheets."""
+    """Returns an empty list when b_src_dir has no idea_type sheets."""
     # ESTABLISH
     i_src_dir = tmp_path / "ideas"
     i_src_dir.mkdir()
@@ -385,13 +385,13 @@ def test_get_validated_bele_src_idea_type_sheets_ReturnsObj_Scenario2_EmptyWhenN
     wb.active.title = "Summary"
     wb.save(empty_bele / "plain.xlsx")
     # WHEN
-    result = get_validated_bele_src_idea_type_sheets(empty_bele, i_src_dir)
+    result = get_validated_b_src_idea_type_sheets(empty_bele, i_src_dir)
     # THEN
     assert result == []
 
 
 def test_beliefs_sheets_to_idea_sheets_Scenario0_TwoTuples(tmp_path: Path):
-    """Returns one (filename, sheet_name) tuple per BR sheet copied."""
+    """Returns one (filename, sheet_name) tuple per idea_type sheet copied."""
     # ESTABLISH
     empty_i_src_dir = tmp_path / "ideas"
     empty_i_src_dir.mkdir()
@@ -456,7 +456,7 @@ def test_beliefs_sheets_to_idea_sheets_Scenario1_CreatesDestinationFile(
 
 def test_beliefs_sheets_to_idea_sheets_Scenario2_RaisesOnOverlap(tmp_path: Path):
     # sourcery skip: extract-duplicate-method
-    """Propagates ValueError from get_bele_br_sheets_validated on sheet name overlap."""
+    """Propagates ValueError from get_bele_ii_sheets_validated on sheet name overlap."""
     # ESTABLISH
     beliefs_dir = tmp_path / "bele"
     beliefs_dir.mkdir()

@@ -104,7 +104,7 @@ class WorldDir:
     worlds_dir: str = None
     output_dir: str = None
     i_src_dir: str = None
-    bele_src_dir: str = None
+    b_src_dir: str = None
     # calculated dirs
     world_dir: str = None
     db_path: str = None
@@ -122,9 +122,9 @@ class WorldDir:
         self.i_src_dir = x_dir
         set_dir(self.i_src_dir)
 
-    def set_bele_src_dir(self, x_dir: str):
-        self.bele_src_dir = x_dir
-        set_dir(self.bele_src_dir)
+    def set_b_src_dir(self, x_dir: str):
+        self.b_src_dir = x_dir
+        set_dir(self.b_src_dir)
 
     def _set_world_dirs(self):
         self.world_dir = create_path(self.worlds_dir, self.world_name)
@@ -140,21 +140,21 @@ def worlddir_shop(
     worlds_dir: str,
     output_dir: str = None,
     i_src_dir: str = None,
-    bele_src_dir: str = None,
+    b_src_dir: str = None,
 ) -> WorldDir:
     x_worlddir = WorldDir(
         world_name=world_name,
         worlds_dir=worlds_dir,
         output_dir=output_dir,
         i_src_dir=i_src_dir,
-        bele_src_dir=bele_src_dir,
+        b_src_dir=b_src_dir,
     )
     x_worlddir._set_world_dirs()
     x_worlddir.db_path = x_worlddir.get_world_db_path()
     if not x_worlddir.i_src_dir:
         x_worlddir.set_i_src_dir(create_path(x_worlddir.world_dir, "i_src"))
-    if not x_worlddir.bele_src_dir:
-        x_worlddir.set_bele_src_dir(create_path(x_worlddir.world_dir, "bele_src"))
+    if not x_worlddir.b_src_dir:
+        x_worlddir.set_b_src_dir(create_path(x_worlddir.world_dir, "b_src"))
     return x_worlddir
 
 
@@ -180,7 +180,7 @@ def belief_sheets_to_lynx_mstr(worlddir: WorldDir):
             max_ideax_agg_spark_num = get_max_ideax_agg_spark_num(cursor0)
         db_conn0.close()
     migrated_sheets = beliefs_sheets_to_idea_sheets(
-        worlddir.bele_src_dir, worlddir.i_src_dir, max_ideax_agg_spark_num
+        worlddir.b_src_dir, worlddir.i_src_dir, max_ideax_agg_spark_num
     )
     idea_sheets_to_lynx_mstr(worlddir)
 

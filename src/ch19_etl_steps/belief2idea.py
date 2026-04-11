@@ -149,102 +149,102 @@ def get_excel_sheet_tuples(directory: str) -> List[Tuple[str, str]]:
 def get_sheets_with_idea_types(directory: str) -> List[Tuple[str, str]]:
     """
     Returns all (filename, sheet_name) tuples where the sheet_name contains
-    any of the provided br_strings.
+    any of the provided idea_types.
 
     Args:
         directory:  Path to the directory to search for Excel files.
-        br_strings: Set of strings to match against sheet names.
+        idea_types: Set of strings to match against sheet names.
 
     Returns:
         Sorted list of (filename, sheet_name) tuples where sheet_name
-        contains at least one br_string.
+        contains at least one idea_type.
     """
     idea_types = get_idea_types()
     all_tuples = get_excel_sheet_tuples(directory)
     return [
         (filename, sheet_name)
         for filename, sheet_name in all_tuples
-        if any(br in sheet_name.lower() for br in idea_types)
+        if any(idea_type in sheet_name.lower() for idea_type in idea_types)
     ]
 
 
-def get_validated_bele_src_idea_type_sheets(
-    bele_src_dir: str,
-    idea_src_dir: str,
+def get_validated_b_src_idea_type_sheets(
+    b_src_dir: str,
+    i_src_dir: str,
 ) -> List[Tuple[str, str]]:
     """
-    Returns all BR sheets found in bele_src_dir.
-    Raises a ValueError if any of those BR sheets also exist in idea_src_dir.
+    Returns all idea_type sheets found in b_src_dir.
+    Raises a ValueError if any of those idea_type sheets also exist in i_src_dir.
 
     Args:
-        bele_src_dir: Path to the BELE source directory.
-        idea_src_dir: Path to the IDEA source directory.
+        b_src_dir: Path to the BELE source directory.
+        i_src_dir: Path to the IDEA source directory.
 
     Returns:
-        Sorted list of (filename, sheet_name) tuples from bele_src_dir
-        whose sheet_name contains a BR string.
+        Sorted list of (filename, sheet_name) tuples from b_src_dir
+        whose sheet_name contains a idea_type string.
 
     Raises:
-        ValueError: If any BR sheet found in bele_src_dir also exists
-                    in idea_src_dir (matched on sheet_name alone).
+        ValueError: If any idea_type sheet found in b_src_dir also exists
+                    in i_src_dir (matched on sheet_name alone).
     """
-    bele_br_sheets = get_sheets_with_idea_types(bele_src_dir)
-    idea_br_sheets = get_sheets_with_idea_types(idea_src_dir)
-    bele_br_sheets_set = set(bele_br_sheets)
-    idea_br_sheets_set = set(idea_br_sheets)
+    bele_ii_sheets = get_sheets_with_idea_types(b_src_dir)
+    idea_ii_sheets = get_sheets_with_idea_types(i_src_dir)
+    bele_ii_sheets_set = set(bele_ii_sheets)
+    idea_ii_sheets_set = set(idea_ii_sheets)
 
-    if overlapping := idea_br_sheets_set.intersection(bele_br_sheets_set):
+    if overlapping := idea_ii_sheets_set.intersection(bele_ii_sheets_set):
         raise ValueError(
-            f"BR sheets found in both bele_src_dir and idea_src_dir: "
+            f"idea_type sheets found in both b_src_dir and i_src_dir: "
             f"{sorted(overlapping)}"
         )
 
-    return bele_br_sheets
+    return bele_ii_sheets
 
 
 def beliefs_sheets_to_idea_sheets(
-    bele_src_dir: str, idea_src_dir: str, db_max_spark_num: int = None
+    b_src_dir: str, i_src_dir: str, db_max_spark_num: int = None
 ) -> List[Tuple[str, str]]:
     """
-    Copies all BR sheets from bele_src_dir into idea_src_dir.
-    Each BR sheet is written into its own new Excel file, named after the sheet,
+    Copies all idea_type sheets from b_src_dir into i_src_dir.
+    Each idea_type sheet is written into its own new Excel file, named after the sheet,
     preserving values and structure for downstream pandas operations.
 
     Args:
-        bele_src_dir: Path to the BELE source directory.
-        idea_src_dir: Path to the IDEA source directory.
+        b_src_dir: Path to the BELE source directory.
+        i_src_dir: Path to the IDEA source directory.
 
     Returns:
         Sorted list of (new_filename, sheet_name) tuples for every sheet copied.
 
     Raises:
-        ValueError: (propagated from get_bele_br_sheets_validated) if any BR
+        ValueError: (propagated from get_bele_ii_sheets_validated) if any BR
                     sheet name exists in both directories before the copy.
     """
-    bele_spark_faces = get_spark_faces_from_files(bele_src_dir)
-    idea_max_spark_num = get_0_if_None(get_max_spark_num_from_files(idea_src_dir))
+    bele_spark_faces = get_spark_faces_from_files(b_src_dir)
+    idea_max_spark_num = get_0_if_None(get_max_spark_num_from_files(i_src_dir))
     general_max_spark_num = max(idea_max_spark_num, get_0_if_None(db_max_spark_num))
     spark_face_spark_nums = create_spark_face_spark_nums(
         bele_spark_faces, general_max_spark_num
     )
 
-    bele_br_sheets = get_validated_bele_src_idea_type_sheets(bele_src_dir, idea_src_dir)
+    bele_ii_sheets = get_validated_b_src_idea_type_sheets(b_src_dir, i_src_dir)
     # Group sheet names by their source file
     file_to_sheets: dict[str, List[str]] = {}
-    for filename, sheet_name in bele_br_sheets:
+    for filename, sheet_name in bele_ii_sheets:
         file_to_sheets.setdefault(filename, []).append(sheet_name)
 
     copied: List[Tuple[str, str]] = []
 
     for filename, sheet_names in file_to_sheets.items():
-        src_path = os_path_join(bele_src_dir, filename)
-        dst_path = os_path_join(idea_src_dir, filename)
+        src_path = os_path_join(b_src_dir, filename)
+        dst_path = os_path_join(i_src_dir, filename)
         for sheet_name in sheet_names:
-            br_df = pandas_read_excel(src_path, sheet_name)
-            add_spark_num_column(br_df, spark_face_spark_nums)
-            save_sheet(dst_path, sheet_name, br_df, False)
+            ii_df = pandas_read_excel(src_path, sheet_name)
+            add_spark_num_column(ii_df, spark_face_spark_nums)
+            save_sheet(dst_path, sheet_name, ii_df, False)
             copied.append((dst_path, sheet_name))
 
-    delete_dir(bele_src_dir)
-    set_dir(bele_src_dir)
+    delete_dir(b_src_dir)
+    set_dir(b_src_dir)
     return sorted(copied)

@@ -31,8 +31,8 @@ def black_str() -> str:
     return "black"
 
 
-def bob_str() -> str:
-    return "Bob"
+def ben_str() -> str:
+    return "ben"
 
 
 def buz_str() -> str:
@@ -265,7 +265,7 @@ def get_keep_graphic_base_fig() -> plotly_Figure:
 
 def cares1_dict() -> dict:
     return {
-        bob_str(): 2.2 - 1.0,
+        ben_str(): 2.2 - 1.0,
         buz_str(): 3.0 - 2.2,
         car_str(): 4.6 - 3.0,
         ric_str(): 5.2 - 4.6,
@@ -291,7 +291,7 @@ def needs1_dict() -> dict:
 
 def rivercycle1_dict() -> dict:
     return {
-        bob_str(): 60,
+        ben_str(): 60,
         joc_str(): 200,
         luc_str(): 55,
         ell_str(): 66,
@@ -304,7 +304,7 @@ def rivercycle1_dict() -> dict:
 
 def rivercycle2_dict() -> dict:
     return {
-        bob_str(): 8,
+        ben_str(): 8,
         joc_str(): 13,
         ell_str(): 1,
         sue_str(): 1,
@@ -313,7 +313,7 @@ def rivercycle2_dict() -> dict:
 
 def rivercycle3_dict() -> dict:
     return {
-        bob_str(): 60,
+        ben_str(): 60,
         joc_str(): 200,
         luc_str(): 55,
         xio_str(): 130,
@@ -323,7 +323,7 @@ def rivercycle3_dict() -> dict:
 
 
 def rivercycle4_dict() -> dict:
-    return {bob_str(): 60, joc_str(): 200}
+    return {ben_str(): 60, joc_str(): 200}
 
 
 def add_cycle_to_need_arrows(fig, cx_src, cx0, cx1, cy1, cy2, cy3, coor_dict):
@@ -430,7 +430,7 @@ def get_protect_structures2_fig(graphics_bool: bool) -> plotly_Figure:
 
         ay0 = 3.88
         ay1 = ay0 - 2.6
-        bob_src = 2
+        ben_src = 2
         buz_src = 2.75
         car_src = 3.25
         ric_src = 4.75
@@ -438,7 +438,7 @@ def get_protect_structures2_fig(graphics_bool: bool) -> plotly_Figure:
         xio_src = 6.7
         yao_src = 7.3
         zia_src = 8.5
-        bob_dst = 1.3
+        ben_dst = 1.3
         joc_dst = 2.5
         luc_dst = 4.25
         mar_dst = 4.75
@@ -446,9 +446,9 @@ def get_protect_structures2_fig(graphics_bool: bool) -> plotly_Figure:
         xio_dst = 6.7
         yao_dst = 7.3
         zia_dst = 8.5
-        add_rect2_arrow(fig, bob_dst, ay1, bob_src, ay0, green_str(), 2)
-        add_rect2_arrow(fig, luc_dst, ay1, bob_src, ay0, green_str(), 2)
-        add_rect2_arrow(fig, sue_dst, ay1, bob_src, ay0, green_str(), 2)
+        add_rect2_arrow(fig, ben_dst, ay1, ben_src, ay0, green_str(), 2)
+        add_rect2_arrow(fig, luc_dst, ay1, ben_src, ay0, green_str(), 2)
+        add_rect2_arrow(fig, sue_dst, ay1, ben_src, ay0, green_str(), 2)
         add_rect2_arrow(fig, joc_dst, ay1, buz_src, ay0, green_str(), 1)
         add_rect2_arrow(fig, luc_dst, ay1, buz_src, ay0, green_str(), 1)
         add_rect2_arrow(fig, joc_dst, ay1, car_src, ay0, green_str(), 1)

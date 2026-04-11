@@ -235,12 +235,12 @@ def test_allot_nested_scale_SetsFiles_Scenario1_Custom_dst_filename(
     x_grain = 1
     dst_filename = "dst_alloted.json"
     x_dst_path = create_path(x_dir, dst_filename)
-    bob_dst_path = create_path(bob_dir, dst_filename)
+    bob_dest_path = create_path(bob_dir, dst_filename)
     sue_dst_path = create_path(sue_dir, dst_filename)
     bob_yao_dst_path = create_path(bob_yao_dir, dst_filename)
     sue_yao_dst_path = create_path(sue_yao_dir, dst_filename)
     assert os_path_exists(x_dst_path) is False
-    assert os_path_exists(bob_dst_path) is False
+    assert os_path_exists(bob_dest_path) is False
     assert os_path_exists(sue_dst_path) is False
     assert os_path_exists(bob_yao_dst_path) is False
     assert os_path_exists(sue_yao_dst_path) is False
@@ -257,12 +257,12 @@ def test_allot_nested_scale_SetsFiles_Scenario1_Custom_dst_filename(
 
     # THEN
     assert os_path_exists(x_dst_path)
-    assert os_path_exists(bob_dst_path)
+    assert os_path_exists(bob_dest_path)
     assert os_path_exists(sue_dst_path)
     assert os_path_exists(bob_yao_dst_path)
     assert os_path_exists(sue_yao_dst_path)
     assert open_json(x_dst_path) == {exx.sue: 160, exx.bob: 40}
-    assert open_json(bob_dst_path) == {exx.sue: 20, exx.yao: 20}
+    assert open_json(bob_dest_path) == {exx.sue: 20, exx.yao: 20}
     assert open_json(sue_dst_path) == {exx.sue: 40, exx.yao: 120}
     assert open_json(bob_yao_dst_path) == {exx.sue: 4, exx.yao: 4, exx.zia: 12}
     assert open_json(sue_yao_dst_path) == {exx.sue: 24, exx.yao: 24, exx.xio: 72}

@@ -99,8 +99,8 @@ def test_get_all_idea_dataframes_ReturnsObj_Scenario0_TranslateSheetNames(
 
     # THEN
     assert x_ideasheets
-    br3_ideafileref = IdeaFileRef(x_dir, ex_filename, ii00003_str, "ii00003")
-    assert x_ideasheets == [br3_ideafileref]
+    ii3_ideafileref = IdeaFileRef(x_dir, ex_filename, ii00003_str, "ii00003")
+    assert x_ideasheets == [ii3_ideafileref]
     # assert (x_dir, ex_filename, ii00003_str) in x_ideasheets
     assert len(x_ideasheets) == 1
 

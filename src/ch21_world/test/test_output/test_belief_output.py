@@ -211,16 +211,16 @@ def test_create_beliefs_CreatesFile_Senario3_Create_calendar_markdown(
 #     tp37 = 37
 #     sue_quota = 235
 #     sue_celldepth = 3
-#     br1row0 = [spark2, exx.sue, exx.a23, exx.sue, tp37, sue_quota, sue_celldepth]
-#     ii00001_1df = DataFrame([br1row0], columns=ii00001_columns)
+#     ii1row0 = [spark2, exx.sue, exx.a23, exx.sue, tp37, sue_quota, sue_celldepth]
+#     ii00001_1df = DataFrame([ii1row0], columns=ii00001_columns)
 #     ii00001_ex0_str = "example0_ii00001"
 #     save_sheet(i_src_dir_file_path, ii00001_ex0_str, ii00001_1df)
 
-#     br3row0 = [spark1, exx.sue,  minute_360, exx.a23, hour6am]
-#     br3row1 = [spark1, exx.sue,  minute_420, exx.a23, hour7am]
-#     br3row2 = [spark2, exx.sue, minute_420, exx.a23, hour7am]
-#     ii00003_1df = DataFrame([br3row0, br3row1], columns=ii00003_columns)
-#     ii00003_3df = DataFrame([br3row1, br3row0, br3row2], columns=ii00003_columns)
+#     ii3row0 = [spark1, exx.sue,  minute_360, exx.a23, hour6am]
+#     ii3row1 = [spark1, exx.sue,  minute_420, exx.a23, hour7am]
+#     ii3row2 = [spark2, exx.sue, minute_420, exx.a23, hour7am]
+#     ii00003_1df = DataFrame([ii3row0, ii3row1], columns=ii00003_columns)
+#     ii00003_3df = DataFrame([ii3row1, ii3row0, ii3row2], columns=ii00003_columns)
 #     ii00003_ex1_str = "example1_ii00003"
 #     ii00003_ex3_str = "example3_ii00003"
 #     save_sheet(i_src_dir_file_path, ii00003_ex1_str, ii00003_1df)

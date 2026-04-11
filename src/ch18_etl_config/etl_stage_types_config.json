@@ -1,28 +1,13 @@
 {
-  "bele_src": {
-    "abbv9": "belve_src", 
-    "description": "Belief Source files. Idea formats without SparkNum.", 
-    "stage_type_order": 1
-  }, 
-  "beli_dst": {
+  "b_dst": {
     "abbv9": "belve_dst", 
     "description": "Belief Destination files. Idea formats without SparkNum.", 
     "stage_type_order": 14
   }, 
-  "br_agg": {
-    "abbv9": "ideax_agg", 
-    "description": "Idea Agg: The Idea Raw tables are aggregated to elimanate duplicates.", 
-    "stage_type_order": 4
-  }, 
-  "br_raw": {
-    "abbv9": "ideax_raw", 
-    "description": "Idea Raw: The importable Excel Sheets entering the database", 
-    "stage_type_order": 3
-  }, 
-  "br_vld": {
-    "abbv9": "ideax_vld", 
-    "description": "Idea Valid: The Idea Agg tables filtered to correct datatypes. ", 
-    "stage_type_order": 6
+  "b_src": {
+    "abbv9": "belve_src", 
+    "description": "Belief Source files. Idea formats without SparkNum.", 
+    "stage_type_order": 1
   }, 
   "h_agg": {
     "abbv9": "heard_agg", 
@@ -39,10 +24,25 @@
     "description": "Populated by aggregated and Nabu changed Heard Agg tables", 
     "stage_type_order": 12
   }, 
-  "idea_src": {
-    "abbv9": "ideaa_src", 
+  "i_agg": {
+    "abbv9": "ideax_agg", 
+    "description": "Idea Agg: The Idea Raw tables are aggregated to elimanate duplicates.", 
+    "stage_type_order": 4
+  }, 
+  "i_raw": {
+    "abbv9": "ideax_raw", 
+    "description": "Idea Raw: The importable Excel Sheets entering the database", 
+    "stage_type_order": 3
+  }, 
+  "i_src": {
+    "abbv9": "ideax_src", 
     "description": "Idea files. Idea formats with SparkNum.", 
     "stage_type_order": 2
+  }, 
+  "i_vld": {
+    "abbv9": "ideax_vld", 
+    "description": "Idea Valid: The Idea Agg tables filtered to correct datatypes. ", 
+    "stage_type_order": 6
   }, 
   "lynx": {
     "abbv9": "lynxx_mst", 

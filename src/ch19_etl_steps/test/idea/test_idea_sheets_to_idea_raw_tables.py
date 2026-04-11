@@ -19,9 +19,9 @@ def test_etl_idea_dfs_to_ideax_raw_tables_PopulatesTables_Scenario0(
     hour6am = "6am"
     hour7am = "7am"
     ex_filename = "Faybob.xlsx"
-    i_src_dir = create_path(str(temp3_fs), "i_src")
+    i_src_dir = create_path(str(temp3_fs), kw.i_src)
     i_src_file_path = create_path(i_src_dir, ex_filename)
-    br3_columns = [
+    ii3_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.cumulative_minute,
@@ -35,7 +35,7 @@ def test_etl_idea_dfs_to_ideax_raw_tables_PopulatesTables_Scenario0(
     row3 = [spark3, exx.sue, "num55", exx.a23_dash, hour7am, exx.dash]
     row4 = ["spark3", exx.sue, "num55", exx.a23_dash, hour7am, exx.dash]
 
-    df1 = DataFrame([row0, row1, row2, row3, row4], columns=br3_columns)
+    df1 = DataFrame([row0, row1, row2, row3, row4], columns=ii3_columns)
     ii00003_ex1_str = "example1_ii00003"
     save_sheet(i_src_file_path, ii00003_ex1_str, df1)
     ii00003_tablename = f"ii00003_{kw.ideax_raw}"
@@ -70,14 +70,14 @@ ORDER BY sheet_name, {kw.spark_num}, {kw.cumulative_minute};"""
     s_dir = create_path(i_src_dir, ".")
     m_360 = minute_360
     m_420 = minute_420
-    br3_str = ii00003_ex1_str
+    ii3_str = ii00003_ex1_str
     err4 = f"Conversion errors: {kw.cumulative_minute}: num55"
     err0 = f"Conversion errors: {kw.spark_num}: spark3, {kw.cumulative_minute}: num55"
-    row0 = (s_dir, file, br3_str, None, exx.sue, exx.a23_dash, None, hour7am, "-", err0)
-    row1 = (s_dir, file, br3_str, e1, exx.sue, exx.a23_dash, m_360, hour6am, "-", None)
-    row2 = (s_dir, file, br3_str, e1, exx.sue, exx.a23_dash, m_420, hour7am, "-", None)
-    row3 = (s_dir, file, br3_str, e2, exx.sue, exx.a23_dash, m_420, hour7am, "-", None)
-    row4 = (s_dir, file, br3_str, e3, exx.sue, exx.a23_dash, None, hour7am, "-", err4)
+    row0 = (s_dir, file, ii3_str, None, exx.sue, exx.a23_dash, None, hour7am, "-", err0)
+    row1 = (s_dir, file, ii3_str, e1, exx.sue, exx.a23_dash, m_360, hour6am, "-", None)
+    row2 = (s_dir, file, ii3_str, e1, exx.sue, exx.a23_dash, m_420, hour7am, "-", None)
+    row3 = (s_dir, file, ii3_str, e2, exx.sue, exx.a23_dash, m_420, hour7am, "-", None)
+    row4 = (s_dir, file, ii3_str, e3, exx.sue, exx.a23_dash, None, hour7am, "-", err4)
     print(f"{rows[0]=}")
     print(f"   {row0=}")
     assert rows[0] == row0
@@ -98,7 +98,7 @@ def test_etl_idea_dfs_to_ideax_raw_tables_PopulatesTables_Scenario1(
     hour6am = "6am"
     hour7am = "7am"
     ex_filename = "Faybob.xlsx"
-    i_src_dir = create_path(str(temp3_fs), "i_src")
+    i_src_dir = create_path(str(temp3_fs), kw.i_src)
     i_src_file_path = create_path(i_src_dir, ex_filename)
     idea_columns = [
         kw.spark_num,

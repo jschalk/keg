@@ -105,18 +105,18 @@ def test_insert_idea_csv_ChangesDBState_add_to_empty_table(
 ):
     # ESTABLISH
     conn, test_csv_filepath = setup_database_and_csv
-    br_tablename = "brXXXXX"
-    create_idea_table_from_csv(test_csv_filepath, conn, br_tablename)
+    ii_tablename = "iiXXXXX"
+    create_idea_table_from_csv(test_csv_filepath, conn, ii_tablename)
     cursor = conn.cursor()
-    cursor.execute(f"SELECT * FROM {br_tablename}")
+    cursor.execute(f"SELECT * FROM {ii_tablename}")
     assert cursor.fetchall() == []
 
     # WHEN Call the function to insert data from the CSV file into the database
-    insert_idea_csv(test_csv_filepath, conn, br_tablename)
+    insert_idea_csv(test_csv_filepath, conn, ii_tablename)
 
     # THEN
     # Verify the data was inserted
-    cursor.execute(f"SELECT * FROM {br_tablename}")
+    cursor.execute(f"SELECT * FROM {ii_tablename}")
     rows = cursor.fetchall()
     expected_data = [
         (3, "Sue", "Amy43", "Bob", "Bob", ";runners", 6.5),
@@ -132,7 +132,7 @@ def test_insert_idea_csv_ChangesDBState_Inserts(
     # ESTABLISH
     conn, test_csv_filepath = setup_database_and_csv
     # Create a new CSV file
-    zia_csv_filepath = "zia_brXXXXX.csv"
+    zia_csv_filepath = "zia_iiXXXXX.csv"
     with open(zia_csv_filepath, "w", newline="", encoding="utf-8") as csv_file:
         csv_file.write(
             f"{kw.spark_num},{kw.spark_face},{kw.moment_rope},{kw.person_name},{kw.contact_name},{kw.group_title},{kw.gogo_want}\n"
@@ -140,19 +140,19 @@ def test_insert_idea_csv_ChangesDBState_Inserts(
         csv_file.write("7,Zia,Amy55,Yao,Zia,;bowlers,10.2\n")
         csv_file.write("8,Zia,Amy43,Zia,Bob,;runners,11.1\n")
 
-    br_tablename = "brXXXXX"
-    create_idea_table_from_csv(test_csv_filepath, conn, br_tablename)
-    insert_idea_csv(test_csv_filepath, conn, br_tablename)
+    ii_tablename = "iiXXXXX"
+    create_idea_table_from_csv(test_csv_filepath, conn, ii_tablename)
+    insert_idea_csv(test_csv_filepath, conn, ii_tablename)
     before_table_data = [
         (3, "Sue", "Amy43", "Bob", "Bob", ";runners", 6.5),
         (3, "Sue", "Amy43", "Yao", "Bob", ";runners", 7.5),
     ]
     cursor = conn.cursor()
-    cursor.execute(f"SELECT * FROM {br_tablename}")
+    cursor.execute(f"SELECT * FROM {ii_tablename}")
     assert cursor.fetchall() == before_table_data
 
     # WHEN
-    insert_idea_csv(zia_csv_filepath, conn, br_tablename)
+    insert_idea_csv(zia_csv_filepath, conn, ii_tablename)
 
     # THEN
     expected_table_data = [
@@ -162,7 +162,7 @@ def test_insert_idea_csv_ChangesDBState_Inserts(
         (8, "Zia", "Amy43", "Zia", "Bob", ";runners", 11.1),
     ]
     cursor = conn.cursor()
-    cursor.execute(f"SELECT * FROM {br_tablename}")
+    cursor.execute(f"SELECT * FROM {ii_tablename}")
     assert cursor.fetchall() == expected_table_data
 
     # if os_path_exists(zia_csv_filepath):
@@ -176,7 +176,7 @@ def test_insert_idea_csv_ChangesDBState_CanCreateTable(
     # ESTABLISH
     conn, test_csv_filepath = setup_database_and_csv
     # Create a new CSV file
-    zia_csv_filepath = "zia_brXXXXX.csv"
+    zia_csv_filepath = "zia_iiXXXXX.csv"
     with open(zia_csv_filepath, "w", newline="", encoding="utf-8") as csv_file:
         csv_file.write(
             f"{kw.spark_num},{kw.spark_face},{kw.moment_rope},{kw.person_name},{kw.contact_name},{kw.group_title},{kw.gogo_want}\n"
@@ -184,14 +184,14 @@ def test_insert_idea_csv_ChangesDBState_CanCreateTable(
         csv_file.write("7,Zia,Amy55,Yao,Zia,;bowlers,10.2\n")
         csv_file.write("8,Zia,Amy43,Zia,Bob,;runners,11.1\n")
 
-    br_tablename = "brXXXXX"
+    ii_tablename = "iiXXXXX"
     cursor = conn.cursor()
-    cursor.execute(f"PRAGMA table_info({br_tablename})")
+    cursor.execute(f"PRAGMA table_info({ii_tablename})")
     columns = cursor.fetchall()
     assert columns == []
 
     # WHEN
-    insert_idea_csv(zia_csv_filepath, conn, br_tablename)
+    insert_idea_csv(zia_csv_filepath, conn, ii_tablename)
 
     # THEN
     expected_table_data = [
@@ -199,7 +199,7 @@ def test_insert_idea_csv_ChangesDBState_CanCreateTable(
         (8, "Zia", "Amy43", "Zia", "Bob", ";runners", 11.1),
     ]
     cursor = conn.cursor()
-    cursor.execute(f"SELECT * FROM {br_tablename}")
+    cursor.execute(f"SELECT * FROM {ii_tablename}")
     assert cursor.fetchall() == expected_table_data
 
     # if os_path_exists(zia_csv_filepath):
@@ -211,20 +211,20 @@ def test_create_idea_table_from_csv_NolessonableExists(
 ):
     # ESTABLISH
     conn, test_csv_filepath = setup_database_and_csv
-    br_tablename = "new_test_table"
-    create_idea_table_from_csv(test_csv_filepath, conn, br_tablename)
-    insert_idea_csv(test_csv_filepath, conn, br_tablename)
+    ii_tablename = "new_test_table"
+    create_idea_table_from_csv(test_csv_filepath, conn, ii_tablename)
+    insert_idea_csv(test_csv_filepath, conn, ii_tablename)
     before_table_data = [
         (3, "Sue", "Amy43", "Bob", "Bob", ";runners", 6.5),
         (3, "Sue", "Amy43", "Yao", "Bob", ";runners", 7.5),
     ]
     cursor = conn.cursor()
-    cursor.execute(f"SELECT * FROM {br_tablename}")
+    cursor.execute(f"SELECT * FROM {ii_tablename}")
     assert cursor.fetchall() == before_table_data
 
     # WHEN
-    create_idea_table_from_csv(test_csv_filepath, conn, br_tablename)
+    create_idea_table_from_csv(test_csv_filepath, conn, ii_tablename)
 
     # THEN
-    cursor.execute(f"SELECT * FROM {br_tablename}")
+    cursor.execute(f"SELECT * FROM {ii_tablename}")
     assert cursor.fetchall() == before_table_data
