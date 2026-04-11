@@ -83,7 +83,7 @@ def test_idea_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueReport(
     ]
     ii00013_df = pandas_DataFrame(ii00013_data, columns=ii00013_cols)
     here_wdir = worlddir_shop("HereNow", str(temp3_fs))
-    ideas01_path = create_path(here_wdir.i_src_dir, "example.xlsx")
+    ideas01_path = create_path(here_wdir.ideas_src_dir, "example.xlsx")
     # unrelated to this test
     # ii00013_export_dir = create_path("C:\dev\_temp_working_dir", "ii00013_example.xlsx")
     # ii00011_export_dir = create_path("C:\dev\_temp_working_dir", "ii00011_example.xlsx")

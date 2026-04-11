@@ -59,13 +59,13 @@ def create_beliefs(
 
 
 def idea_sheets_to_lynx_with_cursor(
-    cursor: sqlite3_Cursor, i_src_dir: str, moment_mstr_dir: str
+    cursor: sqlite3_Cursor, ideas_src_dir: str, moment_mstr_dir: str
 ):
     delete_dir(moment_mstr_dir)
     set_dir(moment_mstr_dir)
 
     # collect excel file data into central location
-    etl_idea_dfs_to_ideax_raw_tables(cursor, i_src_dir)
+    etl_idea_dfs_to_ideax_raw_tables(cursor, ideas_src_dir)
     # idea raw to sound raw, check by spark_nums
     etl_ideax_raw_tables_to_ideax_agg_tables(cursor)
     etl_ideax_agg_tables_to_sparks_ideax_agg_table(cursor)
@@ -103,8 +103,8 @@ class WorldDir:
     world_name: WorldName = None
     worlds_dir: str = None
     output_dir: str = None
-    i_src_dir: str = None
-    b_src_dir: str = None
+    ideas_src_dir: str = None
+    beliefs_src_dir: str = None
     # calculated dirs
     world_dir: str = None
     db_path: str = None
@@ -117,13 +117,13 @@ class WorldDir:
     def delete_world_db(self):
         delete_dir(self.get_world_db_path())
 
-    def set_i_src_dir(self, x_dir: str):
-        self.i_src_dir = x_dir
-        set_dir(self.i_src_dir)
+    def set_ideas_src_dir(self, x_dir: str):
+        self.ideas_src_dir = x_dir
+        set_dir(self.ideas_src_dir)
 
-    def set_b_src_dir(self, x_dir: str):
-        self.b_src_dir = x_dir
-        set_dir(self.b_src_dir)
+    def set_beliefs_src_dir(self, x_dir: str):
+        self.beliefs_src_dir = x_dir
+        set_dir(self.beliefs_src_dir)
 
     def _set_world_dirs(self):
         self.world_dir = create_path(self.worlds_dir, self.world_name)
@@ -136,22 +136,22 @@ def worlddir_shop(
     world_name: WorldName,
     worlds_dir: str,
     output_dir: str = None,
-    i_src_dir: str = None,
-    b_src_dir: str = None,
+    ideas_src_dir: str = None,
+    beliefs_src_dir: str = None,
 ) -> WorldDir:
     x_worlddir = WorldDir(
         world_name=world_name,
         worlds_dir=worlds_dir,
         output_dir=output_dir,
-        i_src_dir=i_src_dir,
-        b_src_dir=b_src_dir,
+        ideas_src_dir=ideas_src_dir,
+        beliefs_src_dir=beliefs_src_dir,
     )
     x_worlddir._set_world_dirs()
     x_worlddir.db_path = x_worlddir.get_world_db_path()
-    if not x_worlddir.i_src_dir:
-        x_worlddir.set_i_src_dir(create_path(x_worlddir.world_dir, "i_src"))
-    if not x_worlddir.b_src_dir:
-        x_worlddir.set_b_src_dir(create_path(x_worlddir.world_dir, "b_src"))
+    if not x_worlddir.ideas_src_dir:
+        x_worlddir.set_ideas_src_dir(create_path(x_worlddir.world_dir, "i_src"))
+    if not x_worlddir.beliefs_src_dir:
+        x_worlddir.set_beliefs_src_dir(create_path(x_worlddir.world_dir, "b_src"))
     return x_worlddir
 
 
@@ -159,7 +159,7 @@ def idea_sheets_to_lynx_mstr(worlddir: WorldDir, export_db: bool = False):
     with sqlite3_connect(worlddir.db_path) as db_conn:
         cursor = db_conn.cursor()
         idea_sheets_to_lynx_with_cursor(
-            cursor, worlddir.i_src_dir, worlddir.moment_mstr_dir
+            cursor, worlddir.ideas_src_dir, worlddir.moment_mstr_dir
         )
         if export_db and worlddir.output_dir:
             excel_path = create_path(worlddir.output_dir, "db_export.xlsx")
@@ -176,8 +176,8 @@ def belief_sheets_to_lynx_mstr(worlddir: WorldDir):
             cursor0 = db_conn0.cursor()
             max_ideax_agg_spark_num = get_max_ideax_agg_spark_num(cursor0)
         db_conn0.close()
-    migrated_sheets = beliefs_sheets_to_idea_sheets(
-        worlddir.b_src_dir, worlddir.i_src_dir, max_ideax_agg_spark_num
+    beliefs_sheets_to_idea_sheets(
+        worlddir.beliefs_src_dir, worlddir.ideas_src_dir, max_ideax_agg_spark_num
     )
     idea_sheets_to_lynx_mstr(worlddir)
 
@@ -199,7 +199,7 @@ def idea_sheets_to_gcal_day_punchs(
 
 def create_today_punchs(
     working_dir: str,
-    i_src_dir: str,
+    ideas_src_dir: str,
     output_dir: str,
     person_name: PersonName,
     focus_group_title: GroupTitle = None,
@@ -207,7 +207,7 @@ def create_today_punchs(
     worlddir = worlddir_shop(
         world_name="world01",
         worlds_dir=working_dir,
-        i_src_dir=i_src_dir,
+        ideas_src_dir=ideas_src_dir,
         output_dir=output_dir,
     )
     idea_sheets_to_gcal_day_punchs(

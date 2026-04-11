@@ -41,7 +41,7 @@ def test_create_beliefs_CreatesFile_Senario1_SingleSmallSpark(temp3_fs):
     fay_wdir = worlddir_shop(fay_str, str(temp3_fs), output_dir)
     spark2 = 2
     ex_filename = "Faybob.xlsx"
-    i_src_dir_file_path = create_path(fay_wdir.i_src_dir, ex_filename)
+    i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
     ii00011_columns = [
         kw.spark_num,
         kw.spark_face,
@@ -83,7 +83,7 @@ def test_create_beliefs_CreatesFile_Senario2_CreatedBeliefCanBeIdeasForOtherWorl
     fay_wdir = worlddir_shop(fay_str, str(temp3_fs), fay_output_dir)
     spark2 = 2
     ex_filename = "Faybob.xlsx"
-    i_src_dir_file_path = create_path(fay_wdir.i_src_dir, ex_filename)
+    i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
     ii00011_columns = [
         kw.spark_num,
         kw.spark_face,
@@ -149,7 +149,7 @@ def test_create_beliefs_CreatesFile_Senario3_Create_calendar_markdown(
     fay_wdir = worlddir_shop(fay_str, str(temp3_fs), output_dir)
     spark2 = 2
     ex_filename = "Faybob.xlsx"
-    i_src_dir_file_path = create_path(fay_wdir.i_src_dir, ex_filename)
+    i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
     ii00011_columns = [
         kw.spark_num,
         kw.spark_face,
@@ -190,7 +190,7 @@ def test_create_beliefs_CreatesFile_Senario3_Create_calendar_markdown(
 #     hour6am = "6am"
 #     hour7am = "7am"
 #     ex_filename = "Faybob.xlsx"
-#     i_src_dir_file_path = create_path(fay_wdir.i_src_dir, ex_filename)
+#     i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
 #     ii00003_columns = [
 #         kw.spark_face,
 #         kw.spark_num,
@@ -252,13 +252,13 @@ def test_create_beliefs_CreatesFile_Senario3_Create_calendar_markdown(
 #     # WHEN
 # idea_sheets_to_lynx_mstr(
 #     world_db_path=fay_wdir.get_world_db_path(),
-#     i_src_dir=fay_wdir.i_src_dir,
+#     i_src_dir=fay_wdir.ideas_src_dir,
 #     moment_mstr_dir=fay_wdir.moment_mstr_dir,
 # )
 
 #     # THEN
 #     assert os_path_exists(wrong_a23_moment_dir) is False
-#     i_src_file_path = create_path(fay_wdir.i_src_dir, "ii00003.xlsx")
+#     i_src_file_path = create_path(fay_wdir.ideas_src_dir, "ii00003.xlsx")
 #     assert os_path_exists(i_src_dir_file_path)
 #     assert os_path_exists(idea_file_path)
 #     assert os_path_exists(a23_json_path)

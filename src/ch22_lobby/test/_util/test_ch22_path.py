@@ -67,7 +67,7 @@ def test_create_moment_mstr_dir_path_ReturnsObj(temp3_dir):
 @pytest_mark.skip_on_linux
 def test_create_lobby_dir_path_HasDocString():
     # ESTABLISH
-    doc_str = create_lobby_dir_path(kw.lobby_mstr_dir, kw.lobby_id)
+    doc_str = create_lobby_dir_path("lobby_mstr_dir", kw.lobby_id)
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
     assert inspect_getdoc(create_lobby_dir_path) == doc_str
@@ -76,7 +76,7 @@ def test_create_lobby_dir_path_HasDocString():
 @pytest_mark.skip_on_linux
 def test_create_world_dir_path_HasDocString():
     # ESTABLISH
-    doc_str = create_world_dir_path(kw.lobby_mstr_dir, kw.lobby_id, kw.world_name)
+    doc_str = create_world_dir_path("lobby_mstr_dir", kw.lobby_id, kw.world_name)
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
     assert inspect_getdoc(create_world_dir_path) == doc_str
@@ -85,7 +85,7 @@ def test_create_world_dir_path_HasDocString():
 @pytest_mark.skip_on_linux
 def test_create_moment_mstr_dir_path_HasDocString():
     # ESTABLISH
-    doc_str = create_moment_mstr_dir_path(kw.lobby_mstr_dir, kw.lobby_id, kw.world_name)
+    doc_str = create_moment_mstr_dir_path("lobby_mstr_dir", kw.lobby_id, kw.world_name)
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
     assert inspect_getdoc(create_moment_mstr_dir_path) == doc_str

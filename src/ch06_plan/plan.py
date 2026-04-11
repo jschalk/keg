@@ -225,7 +225,7 @@ class PlanUnit:
     is_expanded : bool flag that can be used by UI to display or high tree branch.
 
     active : bool that describes if the plan pledge is plan_active, conpute.
-    active_hx : dict[int, bool] Historical record of active state, used to calcualte if changes have occured
+    active_hx : dict[int, bool] Historical record of active state, used to track changes between tree_traverses
     all_contact_cred : bool Flag indicating there are not explicitley defined awardunits
     all_contact_debt : bool Flag indicating there are not explicitley defined awardunits
     awardheirs : dict[GroupTitle, AwardHeir] parent plan provided awards.

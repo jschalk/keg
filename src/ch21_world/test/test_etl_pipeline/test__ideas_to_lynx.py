@@ -48,7 +48,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario0_ii000113PopulatesTables(
     sue_inx = "Suzy"
     e3 = 3
     ex_filename = "Faybob.xlsx"
-    i_src_dir_file_path = create_path(fay_wdir.i_src_dir, ex_filename)
+    i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
     ii00113_columns = [
         kw.spark_face,
         kw.spark_num,
@@ -144,7 +144,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario0_ii000113PopulatesTables(
 
     # WHEN
     idea_sheets_to_lynx_with_cursor(
-        cursor0, fay_wdir.i_src_dir, fay_wdir.moment_mstr_dir
+        cursor0, fay_wdir.ideas_src_dir, fay_wdir.moment_mstr_dir
     )
 
     # THEN
@@ -213,7 +213,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     sue_inx = "Suzy"
     e3 = 3
     ex_filename = "Faybob.xlsx"
-    i_src_dir_file_path = create_path(fay_wdir.i_src_dir, ex_filename)
+    i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
     ii00113_columns = [
         kw.spark_face,
         kw.spark_num,
@@ -324,7 +324,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
 
     # WHEN
     idea_sheets_to_lynx_with_cursor(
-        cursor0, fay_wdir.i_src_dir, fay_wdir.moment_mstr_dir
+        cursor0, fay_wdir.ideas_src_dir, fay_wdir.moment_mstr_dir
     )
 
     # THEN
@@ -373,7 +373,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario2_PopulateMomentTranBook(
     # delete_dir(fay_wdir.worlds_dir)
     e3 = 3
     ex_filename = "Faybob.xlsx"
-    i_src_dir_file_path = create_path(fay_wdir.i_src_dir, ex_filename)
+    i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
     ii00002_columns = [
         kw.spark_num,
         kw.spark_face,
@@ -396,7 +396,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario2_PopulateMomentTranBook(
 
     # WHEN
     idea_sheets_to_lynx_with_cursor(
-        cursor0, fay_wdir.i_src_dir, fay_wdir.moment_mstr_dir
+        cursor0, fay_wdir.ideas_src_dir, fay_wdir.moment_mstr_dir
     )
 
     # THEN
@@ -411,7 +411,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario3_WhenNoMomentIdeas_ote1_IsStil
     fay_wdir = worlddir_shop(fay_str, str(temp3_fs))
     spark2 = 2
     ex_filename = "Faybob.xlsx"
-    i_src_dir_file_path = create_path(fay_wdir.i_src_dir, ex_filename)
+    i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
     ii00011_columns = [
         kw.spark_num,
         kw.spark_face,
@@ -429,7 +429,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario3_WhenNoMomentIdeas_ote1_IsStil
 
     # WHEN
     idea_sheets_to_lynx_with_cursor(
-        cursor0, fay_wdir.i_src_dir, fay_wdir.moment_mstr_dir
+        cursor0, fay_wdir.ideas_src_dir, fay_wdir.moment_mstr_dir
     )
 
     # THEN
@@ -457,7 +457,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario4_DeletesPreviousFiles(
 
     # WHEN
     idea_sheets_to_lynx_with_cursor(
-        cursor0, fay_wdir.i_src_dir, fay_wdir.moment_mstr_dir
+        cursor0, fay_wdir.ideas_src_dir, fay_wdir.moment_mstr_dir
     )
 
     # THEN
@@ -479,7 +479,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
     hour6am = "6am"
     hour7am = "7am"
     ex_filename = "Faybob.xlsx"
-    i_src_dir_file_path = create_path(fay_wdir.i_src_dir, ex_filename)
+    i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
     ii00003_columns = [
         kw.spark_num,
         kw.spark_face,
@@ -542,7 +542,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
 
     # WHEN
     idea_sheets_to_lynx_with_cursor(
-        cursor0, fay_wdir.i_src_dir, fay_wdir.moment_mstr_dir
+        cursor0, fay_wdir.ideas_src_dir, fay_wdir.moment_mstr_dir
     )
 
     # THEN
@@ -566,7 +566,7 @@ def test_idea_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     sue_inx = "Suzy"
     e3 = 3
     ex_filename = "Faybob.xlsx"
-    i_src_dir_file_path = create_path(fay_wdir.i_src_dir, ex_filename)
+    i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
     ii00113_columns = [
         kw.spark_face,
         kw.spark_num,
@@ -681,7 +681,7 @@ def test_idea_sheets_to_lynx_mstr_Scenario1_Creates_job_Files(temp3_fs):
     ii00013_example = pandas_DataFrame(data, columns=cols)
 
     here_wdir = worlddir_shop("HereNow", str(temp3_fs))
-    ii00013_example_path = create_path(here_wdir.i_src_dir, "example.xlsx")
+    ii00013_example_path = create_path(here_wdir.ideas_src_dir, "example.xlsx")
     save_sheet(ii00013_example_path, "ii00013_ex1", ii00013_example)
     # print(ii00013_example().to_dict())
     mmt_dir = here_wdir.moment_mstr_dir
