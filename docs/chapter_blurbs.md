@@ -21,7 +21,7 @@ What does each one do?
 - **ch15_nabu**: Defines NabuUnit tools that interpret numeric values into inside accounting.
 - **ch16_translate**: Defines TranslateUnit tools that translate MomentUnits into inside language.
 - **ch17_idea**: Defines how to build Ideas using Ideas. Moments and Persons are built by Ideas.
-- **ch18_etl_config**: Defines the tools that use Idea Ideas to build MomentUnits.
+- **ch18_etl_config**: Defines the tools that use Ideas to build MomentUnits.
 - **ch19_etl_steps**: Defines the tools that report from core world data.
 - **ch20_kpi**: Defines the analytics outcomes of completed MomentUnits.
 - **ch21_world**: Defines WorldDirs that admin MomentUnits input data and outcomes

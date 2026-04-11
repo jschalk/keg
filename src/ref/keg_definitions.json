@@ -74,7 +74,7 @@
   "ch15": "Defines NabuUnit tools that interpret numeric values into inside accounting.", 
   "ch16": "Defines TranslateUnit tools that translate MomentUnits into inside language.", 
   "ch17": "Defines how to build Ideas using Ideas. Moments and Persons are built by Ideas.", 
-  "ch18": "Defines the tools that use Idea Ideas to build MomentUnits.", 
+  "ch18": "Defines the tools that use Ideas to build MomentUnits.", 
   "ch19": "Defines the tools that report from core world data.", 
   "ch20": "Defines the analytics outcomes of completed MomentUnits.", 
   "ch21": "Defines WorldDirs that admin MomentUnits input data and outcomes", 
