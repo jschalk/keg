@@ -243,7 +243,6 @@ def beliefs_sheets_to_idea_sheets(
             ii_df = pandas_read_excel(src_path, sheet_name)
             add_spark_num_column(ii_df, spark_face_spark_nums)
             save_sheet(dst_path, sheet_name, ii_df, False)
-            print(f"{dst_path=}")
             copied.append((dst_path, sheet_name))
 
     delete_dir(b_src_dir)

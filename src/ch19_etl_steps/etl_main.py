@@ -170,7 +170,6 @@ def etl_idea_dfs_to_ideax_raw_tables(cursor: sqlite3_Cursor, ideas_src_dir: str)
             insert_sqlstr = create_type_reference_insert_sqlstr(
                 x_tablename, column_names, [row_values]
             )
-            print(f"insert row for {ref.sheet_name=}")
             cursor.execute(insert_sqlstr)
 
 

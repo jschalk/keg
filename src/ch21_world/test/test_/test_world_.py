@@ -148,9 +148,9 @@ def test_worlddir_shop_ReturnsObj_Scenario1_WithoutParameters(temp3_fs):
     # THEN
     assert x_wdir.world_name == exx.a23
     assert x_wdir.worlds_dir == str(temp3_fs)
-    assert not x_wdir.output_dir
-    assert x_wdir.ideas_src_dir == create_path(x_wdir.world_dir, kw.i_src)
-    assert x_wdir.beliefs_src_dir == create_path(x_wdir.world_dir, kw.b_src)
+    assert x_wdir.output_dir == create_path(x_wdir.world_dir, "output")
+    assert x_wdir.ideas_src_dir == create_path(x_wdir.world_dir, "ideas_src")
+    assert x_wdir.beliefs_src_dir == create_path(x_wdir.world_dir, "beliefs_src")
     assert x_wdir.db_path == create_path(x_wdir.world_dir, "world.db")
 
 

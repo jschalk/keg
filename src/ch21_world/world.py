@@ -148,10 +148,12 @@ def worlddir_shop(
     )
     x_worlddir._set_world_dirs()
     x_worlddir.db_path = x_worlddir.get_world_db_path()
+    if not x_worlddir.output_dir:
+        x_worlddir.output_dir = create_path(x_worlddir.world_dir, "output")
     if not x_worlddir.ideas_src_dir:
-        x_worlddir.set_ideas_src_dir(create_path(x_worlddir.world_dir, "i_src"))
+        x_worlddir.set_ideas_src_dir(create_path(x_worlddir.world_dir, "ideas_src"))
     if not x_worlddir.beliefs_src_dir:
-        x_worlddir.set_beliefs_src_dir(create_path(x_worlddir.world_dir, "b_src"))
+        x_worlddir.set_beliefs_src_dir(create_path(x_worlddir.world_dir, "beliefs_src"))
     return x_worlddir
 
 
@@ -162,6 +164,7 @@ def idea_sheets_to_lynx_mstr(worlddir: WorldDir, export_db: bool = False):
             cursor, worlddir.ideas_src_dir, worlddir.moment_mstr_dir
         )
         if export_db and worlddir.output_dir:
+            set_dir(worlddir.output_dir)
             excel_path = create_path(worlddir.output_dir, "db_export.xlsx")
             export_db_to_excel(cursor, excel_path, True)
 
@@ -198,16 +201,17 @@ def idea_sheets_to_gcal_day_punchs(
 
 
 def create_today_punchs(
-    working_dir: str,
-    beliefs_src_dir: str,
-    ideas_src_dir: str,
-    output_dir: str,
     person_name: PersonName,
+    world_name: WorldName,
+    worlds_dir: str,
+    output_dir: str = None,
+    ideas_src_dir: str = None,
+    beliefs_src_dir: str = None,
     focus_group_title: GroupTitle = None,
 ):
     worlddir = worlddir_shop(
-        world_name="world01",
-        worlds_dir=working_dir,
+        world_name=world_name,
+        worlds_dir=worlds_dir,
         output_dir=output_dir,
         ideas_src_dir=ideas_src_dir,
         beliefs_src_dir=beliefs_src_dir,

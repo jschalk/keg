@@ -126,7 +126,7 @@ def test_idea_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueReport(
     assert os_path_exists(hn_blu_yao_job_path)
     assert os_path_exists(hn_blu_sue_job_path)
     blu_sue_person = open_job_file(mmt_dir, hn_blu_lasso, exx.sue)
-    print(f"{blu_sue_person.get_plan_dict().keys()=}")
+    # print(f"{blu_sue_person.get_plan_dict().keys()=}")
     assert os_path_exists(hn_blu_xio_job_path)
     sue_hn_red_day_punch_path = day_punch_path(mmt_dir, hn_red_lasso, exx.sue)
     sue_hn_blu_day_punch_path = day_punch_path(mmt_dir, hn_blu_lasso, exx.sue)
@@ -137,100 +137,102 @@ def test_idea_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueReport(
     assert exx.sweep in sue_hn_blu_punch_str
 
 
-# def test_create_today_punchs_SavesFiles_Scenario0_PopulatedSueReport(
-#     temp3_fs,
-# ):
-#     # ESTABLISH
-#     hr_mop = init_rope(["herenow_red", "family", exx.casa, exx.clean, exx.mop])
-#     hr_tools = init_rope(["herenow_red", "family", exx.casa, exx.clean, exx.scrub])
-#     hb_mop = init_rope(["herenow_blu", "family", exx.casa, exx.clean, exx.mop])
-#     hb_sweep = init_rope(["herenow_blu", "family", exx.casa, exx.clean, exx.sweep])
-#     hb_brush = init_rope(["herenow_blu", "family", exx.casa, exx.clean, "brush"])
-#     spark0, spark2, spark3, spark4 = (0, 2, 3, 4)
-#     # create connections between sue and yao and themselves
-#     ii00011_data = [
-#         (spark0, exx.bob, exx.hn_blu, exx.sue, exx.sue),
-#         (spark0, exx.bob, exx.hn_blu, exx.sue, exx.yao),
-#         (spark0, exx.bob, exx.hn_blu, exx.yao, exx.yao),
-#         (spark0, exx.bob, exx.hn_blu, exx.yao, exx.sue),
-#     ]
-#     ii00011_cols = [
-#         kw.spark_num,
-#         kw.spark_face,
-#         kw.moment_rope,
-#         kw.person_name,
-#         kw.contact_name,
-#     ]
-#     ii00011_df = pandas_DataFrame(ii00011_data, columns=ii00011_cols)
-#     # create tasks for sue, yao, others
-#     ii00013_data = [
-#         (spark0, exx.bob, exx.zia, exx.hn_red, hr_mop, 1, True),
-#         (spark0, exx.bob, exx.yao, exx.hn_red, hr_tools, 2, True),
-#         (spark2, exx.bob, exx.sue, exx.hn_blu, hb_mop, 8, True),
-#         (spark3, exx.bob, exx.sue, exx.hn_blu, hb_sweep, 3, True),
-#         (spark4, exx.bob, exx.xio, exx.hn_blu, hb_brush, 1, True),
-#     ]
-#     ii00013_cols = [
-#         kw.spark_num,
-#         kw.spark_face,
-#         kw.person_name,
-#         kw.moment_rope,
-#         kw.plan_rope,
-#         kw.star,
-#         kw.pledge,
-#     ]
-#     ii00013_df = pandas_DataFrame(ii00013_data, columns=ii00013_cols)
-#     here_wdir = worlddir_shop("HereNow", str(temp3_fs))
-#     ideas01_path = create_path(here_wdir.ideas_src_dir, "example.xlsx")
-#     # unrelated to this test
-#     # ii00013_export_dir = create_path("C:\dev\_temp_working_dir", "ii00013_example.xlsx")
-#     # ii00011_export_dir = create_path("C:\dev\_temp_working_dir", "ii00011_example.xlsx")
-#     # ii00013_df.to_excel(ii00013_export_dir, sheet_name="ii00013_ex1", index=False)
-#     # ii00011_df.to_excel(ii00011_export_dir, sheet_name="ii00011_ex1", index=False)
-#     save_sheet(ideas01_path, "ii00013_ex1", ii00013_df)
-#     save_sheet(ideas01_path, "ii00011_ex1", ii00011_df)
-#     mmt_dir = here_wdir.moment_mstr_dir
-#     hn_red_lasso = lassounit_shop(exx.hn_red)
-#     hn_blu_lasso = lassounit_shop(exx.hn_blu)
-#     hn_red_mmt_json_path = create_moment_json_path(mmt_dir, hn_red_lasso)
-#     hn_blu_mmt_json_path = create_moment_json_path(mmt_dir, hn_blu_lasso)
-#     hn_red_zia_job_path = create_job_path(mmt_dir, hn_red_lasso, exx.zia)
-#     hn_blu_yao_job_path = create_job_path(mmt_dir, hn_blu_lasso, exx.yao)
-#     hn_blu_sue_job_path = create_job_path(mmt_dir, hn_blu_lasso, exx.sue)
-#     hn_blu_xio_job_path = create_job_path(mmt_dir, hn_blu_lasso, exx.xio)
-#     assert not os_path_exists(hn_red_mmt_json_path)
-#     assert not os_path_exists(hn_blu_mmt_json_path)
-#     assert not os_path_exists(hn_red_zia_job_path)
-#     assert not os_path_exists(hn_blu_yao_job_path)
-#     assert not os_path_exists(hn_blu_sue_job_path)
-#     assert not os_path_exists(hn_blu_xio_job_path)
-#     sue_hn_red_day_punch_path = day_punch_path(mmt_dir, hn_red_lasso, exx.sue)
-#     sue_hn_blu_day_punch_path = day_punch_path(mmt_dir, hn_blu_lasso, exx.sue)
-#     assert not os_path_exists(sue_hn_red_day_punch_path)
-#     assert not os_path_exists(sue_hn_blu_day_punch_path)
+def test_create_today_punchs_SavesFiles_Scenario0_PopulatedSueReport(
+    temp3_fs,
+):
+    # ESTABLISH
+    hr_mop = init_rope(["herenow_red", "family", exx.casa, exx.clean, exx.mop])
+    hr_tools = init_rope(["herenow_red", "family", exx.casa, exx.clean, exx.scrub])
+    hb_mop = init_rope(["herenow_blu", "family", exx.casa, exx.clean, exx.mop])
+    hb_sweep = init_rope(["herenow_blu", "family", exx.casa, exx.clean, exx.sweep])
+    hb_brush = init_rope(["herenow_blu", "family", exx.casa, exx.clean, "brush"])
+    spark0, spark2, spark3, spark4 = (0, 2, 3, 4)
+    # create connections between sue and yao and themselves
+    ii00011_data = [
+        (spark0, exx.bob, exx.hn_blu, exx.sue, exx.sue),
+        (spark0, exx.bob, exx.hn_blu, exx.sue, exx.yao),
+        (spark0, exx.bob, exx.hn_blu, exx.yao, exx.yao),
+        (spark0, exx.bob, exx.hn_blu, exx.yao, exx.sue),
+    ]
+    ii00011_cols = [
+        kw.spark_num,
+        kw.spark_face,
+        kw.moment_rope,
+        kw.person_name,
+        kw.contact_name,
+    ]
+    ii00011_df = pandas_DataFrame(ii00011_data, columns=ii00011_cols)
+    # create tasks for sue, yao, others
+    ii00013_data = [
+        (spark0, exx.bob, exx.zia, exx.hn_red, hr_mop, 1, True),
+        (spark0, exx.bob, exx.yao, exx.hn_red, hr_tools, 2, True),
+        (spark2, exx.bob, exx.sue, exx.hn_blu, hb_mop, 8, True),
+        (spark3, exx.bob, exx.sue, exx.hn_blu, hb_sweep, 3, True),
+        (spark4, exx.bob, exx.xio, exx.hn_blu, hb_brush, 1, True),
+    ]
+    ii00013_cols = [
+        kw.spark_num,
+        kw.spark_face,
+        kw.person_name,
+        kw.moment_rope,
+        kw.plan_rope,
+        kw.star,
+        kw.pledge,
+    ]
+    ii00013_df = pandas_DataFrame(ii00013_data, columns=ii00013_cols)
+    # external_dir = "C:dev/_temp_working_dir"
+    here_wdir = worlddir_shop("HereNow", str(temp3_fs))
+    ideas01_path = create_path(here_wdir.ideas_src_dir, "example.xlsx")
+    # unrelated to this test
+    # ii00013_export_dir = create_path("C:\dev\_temp_working_dir", "ii00013_example.xlsx")
+    # ii00011_export_dir = create_path("C:\dev\_temp_working_dir", "ii00011_example.xlsx")
+    # ii00013_df.to_excel(ii00013_export_dir, sheet_name="ii00013_ex1", index=False)
+    # ii00011_df.to_excel(ii00011_export_dir, sheet_name="ii00011_ex1", index=False)
+    save_sheet(ideas01_path, "ii00013_ex1", ii00013_df)
+    save_sheet(ideas01_path, "ii00011_ex1", ii00011_df)
+    mmt_dir = here_wdir.moment_mstr_dir
+    hn_red_lasso = lassounit_shop(exx.hn_red)
+    hn_blu_lasso = lassounit_shop(exx.hn_blu)
+    hn_red_mmt_json_path = create_moment_json_path(mmt_dir, hn_red_lasso)
+    hn_blu_mmt_json_path = create_moment_json_path(mmt_dir, hn_blu_lasso)
+    hn_red_zia_job_path = create_job_path(mmt_dir, hn_red_lasso, exx.zia)
+    hn_blu_yao_job_path = create_job_path(mmt_dir, hn_blu_lasso, exx.yao)
+    hn_blu_sue_job_path = create_job_path(mmt_dir, hn_blu_lasso, exx.sue)
+    hn_blu_xio_job_path = create_job_path(mmt_dir, hn_blu_lasso, exx.xio)
+    assert not os_path_exists(hn_red_mmt_json_path)
+    assert not os_path_exists(hn_blu_mmt_json_path)
+    assert not os_path_exists(hn_red_zia_job_path)
+    assert not os_path_exists(hn_blu_yao_job_path)
+    assert not os_path_exists(hn_blu_sue_job_path)
+    assert not os_path_exists(hn_blu_xio_job_path)
+    sue_hn_red_day_punch_path = day_punch_path(mmt_dir, hn_red_lasso, exx.sue)
+    sue_hn_blu_day_punch_path = day_punch_path(mmt_dir, hn_blu_lasso, exx.sue)
+    assert not os_path_exists(sue_hn_red_day_punch_path)
+    assert not os_path_exists(sue_hn_blu_day_punch_path)
 
-#     # WHEN
-#     create_today_punchs(
-#         working_dir=here_wdir.world_dir,
-#         beliefs_src_dir=here_wdir.beliefs_src_dir,
-#         ideas_src_dir=here_wdir.ideas_src_dir,
-#         output_dir=here_wdir.output_dir,
-#         person_name=exx.sue,
-#     )
+    # WHEN
+    create_today_punchs(
+        person_name=exx.sue,
+        world_name=here_wdir.world_name,
+        worlds_dir=here_wdir.worlds_dir,
+        output_dir=here_wdir.output_dir,
+        ideas_src_dir=here_wdir.ideas_src_dir,
+        beliefs_src_dir=here_wdir.beliefs_src_dir,
+    )
 
-#     # THEN
-#     # assert os_path_exists(hn_red_mmt_json_path)
-#     # assert os_path_exists(hn_blu_mmt_json_path)
-#     assert os_path_exists(hn_red_zia_job_path)
-#     assert os_path_exists(hn_blu_yao_job_path)
-#     assert os_path_exists(hn_blu_sue_job_path)
-#     blu_sue_person = open_job_file(mmt_dir, hn_blu_lasso, exx.sue)
-#     print(f"{blu_sue_person.get_plan_dict().keys()=}")
-#     assert os_path_exists(hn_blu_xio_job_path)
-#     sue_hn_red_day_punch_path = day_punch_path(mmt_dir, hn_red_lasso, exx.sue)
-#     sue_hn_blu_day_punch_path = day_punch_path(mmt_dir, hn_blu_lasso, exx.sue)
-#     assert not os_path_exists(sue_hn_red_day_punch_path)
-#     assert os_path_exists(sue_hn_blu_day_punch_path)
-#     sue_hn_blu_punch_str = open_file(sue_hn_blu_day_punch_path)
-#     print(sue_hn_blu_punch_str)
-#     assert exx.sweep in sue_hn_blu_punch_str
+    # THEN
+    # assert os_path_exists(hn_red_mmt_json_path)
+    # assert os_path_exists(hn_blu_mmt_json_path)
+    assert os_path_exists(hn_red_zia_job_path)
+    assert os_path_exists(hn_blu_yao_job_path)
+    assert os_path_exists(hn_blu_sue_job_path)
+    blu_sue_person = open_job_file(mmt_dir, hn_blu_lasso, exx.sue)
+    # print(f"{blu_sue_person.get_plan_dict().keys()=}")
+    assert os_path_exists(hn_blu_xio_job_path)
+    sue_hn_red_day_punch_path = day_punch_path(mmt_dir, hn_red_lasso, exx.sue)
+    sue_hn_blu_day_punch_path = day_punch_path(mmt_dir, hn_blu_lasso, exx.sue)
+    assert not os_path_exists(sue_hn_red_day_punch_path)
+    assert os_path_exists(sue_hn_blu_day_punch_path)
+    sue_hn_blu_punch_str = open_file(sue_hn_blu_day_punch_path)
+    # print(sue_hn_blu_punch_str)
+    assert exx.sweep in sue_hn_blu_punch_str
