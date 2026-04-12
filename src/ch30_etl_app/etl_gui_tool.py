@@ -1,3 +1,4 @@
+from pathlib import Path
 from src.ch00_py.csv_toolbox import (
     delete_column_from_csv_string,
     replace_csv_column_from_string,
@@ -16,7 +17,41 @@ from src.ch17_idea.idea_db_tool import (
     prettify_excel,
     remove_empty_sheets,
 )
+from src.ch21_world.world import worlddir_shop
 from typing import Callable
+
+
+def get_app_default_person_name() -> str:
+    return "Steve"
+
+
+def get_app_default_world_name() -> str:
+    return "my_first_world"
+
+
+def get_app_default_dir(is_windows: bool | None = None) -> Path:
+    if is_windows is None:
+        import sys
+
+        is_windows = sys.platform.startswith("win")
+
+    if is_windows:
+        return Path("C:/keg/worlds")
+    else:
+        return Path.home() / "keg" / "worlds"
+
+
+def get_workspace_dirs(default_root: Path) -> dict[str, Path]:
+    x_worlddir = worlddir_shop(
+        world_name=get_app_default_world_name(), worlds_dir=default_root
+    )
+    return {
+        "working": x_worlddir.worlds_dir,
+        "beliefs_src": x_worlddir.beliefs_src_dir,
+        "ideas_src": x_worlddir.ideas_src_dir,
+        "output": x_worlddir.output_dir,
+    }
+
 
 TEAMFIVE = "TeamFive"
 

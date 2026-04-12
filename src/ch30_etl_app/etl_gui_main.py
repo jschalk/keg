@@ -11,24 +11,26 @@ To integrate your CLI logic, replace the `create_today_punchs()` call inside
 `_run()` with your actual ETL function / subprocess call.
 """
 
-import os
-import platform
+from os import startfile as os_startfile
+from os.path import isdir as os_path_isdir
+from platform import system as platform_system
 from src.ch21_world.world import create_today_punchs
-from src.ch30_etl_app.etl_gui_tool import get_option_table_options
-import subprocess
+from src.ch30_etl_app.etl_gui_tool import (
+    get_app_default_dir,
+    get_app_default_person_name,
+    get_app_default_world_name,
+    get_option_table_options,
+    get_workspace_dirs,
+)
+from subprocess import Popen as subprocess_Popen
 import tkinter as tk
-from tkinter import filedialog, messagebox, ttk
+from tkinter import (
+    filedialog as tkinter_filedialog,
+    messagebox as tkinter_messagebox,
+    ttk as tkinter_ttk,
+)
 
-# ──────────────────────────────────────────────
-#  Stub — replace with your real ETL logic
-# ──────────────────────────────────────────────
-
-
-# ──────────────────────────────────────────────
-#  Helpers
-# ──────────────────────────────────────────────
-MONO = ("Courier New", 9) if platform.system() == "Windows" else ("Menlo", 10)
-
+MONO = ("Courier New", 9) if platform_system() == "Windows" else ("Menlo", 10)
 BG = "#1a1a1f"
 BG_CARD = "#22222a"
 BORDER = "#33333d"
@@ -52,8 +54,8 @@ class OptionTable(tk.Frame):
         tree_frame = tk.Frame(self)
         tree_frame.pack(fill=tk.BOTH, expand=True)
 
-        scrollbar = ttk.Scrollbar(tree_frame, orient=tk.VERTICAL)
-        self.tree = ttk.Treeview(
+        scrollbar = tkinter_ttk.Scrollbar(tree_frame, orient=tk.VERTICAL)
+        self.tree = tkinter_ttk.Treeview(
             tree_frame,
             columns=("action",),
             show="headings",
@@ -63,7 +65,7 @@ class OptionTable(tk.Frame):
         )
         scrollbar.config(command=self.tree.yview)
 
-        self.tree.heading("action", text="Special Actions")
+        self.tree.heading("action", text="Click to add Beliefs")
         self.tree.column("action", anchor=tk.W)
 
         for description in self.options:
@@ -86,13 +88,13 @@ class OptionTable(tk.Frame):
 
 def open_directory(path: str) -> None:
     """Open a folder in the OS file explorer."""
-    system = platform.system()
+    system = platform_system()
     if system == "Windows":
-        os.startfile(path)  # noqa: S606
+        os_startfile(path)  # noqa: S606
     elif system == "Darwin":
-        subprocess.Popen(["open", path])
+        subprocess_Popen(["open", path])
     else:
-        subprocess.Popen(["xdg-open", path])
+        subprocess_Popen(["xdg-open", path])
 
 
 # ──────────────────────────────────────────────
@@ -107,19 +109,36 @@ class ETLApp(tk.Tk):
 
         # Set a reasonable minimum size and centre on screen
         self.update_idletasks()
-        w, h = 560, 430
+        w, h = 560, 500
         x = (self.winfo_screenwidth() - w) // 2
         y = (self.winfo_screenheight() - h) // 2
         self.geometry(f"{w}x{h+120}+{x}+{y}")
 
         # String vars ─ empty string = "not set" (optional dirs stay None)
+        self._person = tk.StringVar()
         self._working = tk.StringVar()
+        self._b_src_dir = tk.StringVar()
         self._i_src_dir = tk.StringVar()
         self._output = tk.StringVar()
-        self._person = tk.StringVar()
 
         # Your config: description -> function
         self._build_ui()
+        self._set_defaults()
+
+    def _set_defaults(self):
+        vars_map = {
+            "working": self._working,
+            "beliefs_src": self._b_src_dir,
+            "ideas_src": self._i_src_dir,
+            "output": self._output,
+            "person": self._person,
+        }
+
+        defaults = get_workspace_dirs(get_app_default_dir())
+        defaults["person"] = get_app_default_person_name()
+
+        for key, var in vars_map.items():
+            var.set(defaults[key])
 
     # ── UI construction ────────────────────────
     def _build_ui(self):
@@ -135,7 +154,7 @@ class ETLApp(tk.Tk):
             text="Keg Listening App#1",
             font=(
                 ("Courier New", 17, "bold")
-                if platform.system() == "Windows"
+                if platform_system() == "Windows"
                 else ("Menlo", 16, "bold")
             ),
             bg=BG,
@@ -159,18 +178,21 @@ class ETLApp(tk.Tk):
         card = tk.Frame(self, bg=BG_CARD, bd=0, padx=24, pady=20)
         card.pack(fill="x", padx=28, pady=(16, 0))
 
+        p_title = "PERSON NAM8"
         w_title = "WORKING DIR"
-        i_title = "I_SRC_DIR  "
+        b_title = "BELIEFS_DIR"
+        i_title = "IDEAS_DIR  "
         o_title = "OUTPUT DIR "
-        p_title = "PERSON NAME"
+        person_tip = "e.g. 'Big Steve'"
+        self._text_row(card, 0, p_title, self._person, required=True, tip=person_tip)
         work_tip = "Root directory for the ETL process"
-        self._dir_row(card, 0, w_title, self._working, required=True, tip=work_tip)
-        ideas_tip = "Source Excel files  (optional)"
-        self._dir_row(card, 1, i_title, self._i_src_dir, required=False, tip=ideas_tip)
-        output_tip = "Destination for results  (optional — opened on finish)"
-        self._dir_row(card, 2, o_title, self._output, required=False, tip=output_tip)
-        person_tip = "e.g. 'Big Steve'  (optional)"
-        self._text_row(card, 3, p_title, self._person, required=False, tip=person_tip)
+        self._dir_row(card, 1, w_title, self._working, required=True, tip=work_tip)
+        b_tip = "Source of Beliefs. Non-sparked Ideas."
+        self._dir_row(card, 2, b_title, self._b_src_dir, required=True, tip=b_tip)
+        ideas_tip = "Source of Ideas files. Beliefs that have been sparked."
+        self._dir_row(card, 3, i_title, self._i_src_dir, required=True, tip=ideas_tip)
+        output_tip = "Destination for results (opened on finish)"
+        self._dir_row(card, 4, o_title, self._output, required=True, tip=output_tip)
 
         # ── run button ──────────────────────────
         btn_frame = tk.Frame(self, bg=BG, pady=22)
@@ -181,7 +203,7 @@ class ETLApp(tk.Tk):
             text="▶  CREATE DAILY AGENDA",
             font=(
                 ("Courier New", 11, "bold")
-                if platform.system() == "Windows"
+                if platform_system() == "Windows"
                 else ("Menlo", 11, "bold")
             ),
             bg=ACCENT,
@@ -328,24 +350,26 @@ class ETLApp(tk.Tk):
     # ── browse helper ──────────────────────────
     @staticmethod
     def _browse(var: tk.StringVar):
-        if path := filedialog.askdirectory(title="Select directory"):
+        if path := tkinter_filedialog.askdirectory(title="Select directory"):
             var.set(path)
 
     # ── run handler ────────────────────────────
     def _run(self):
+        person = self._person.get().strip()
         working = self._working.get().strip()
+        b_src_dir_ = self._b_src_dir.get().strip()
         i_src_dir_ = self._i_src_dir.get().strip()
         output = self._output.get().strip()
-        person = self._person.get().strip()
 
         # Treat placeholder text as empty
-        i_src_dir_ = i_src_dir_ if os.path.isdir(i_src_dir_) else None
-        output = output if os.path.isdir(output) else None
+        b_src_dir_ = b_src_dir_ if os_path_isdir(b_src_dir_) else None
+        i_src_dir_ = i_src_dir_ if os_path_isdir(i_src_dir_) else None
+        output = output if os_path_isdir(output) else None
         person = person if person and not person.startswith("Filter by") else None
 
         # Validate required field
-        if not working or not os.path.isdir(working):
-            messagebox.showerror(
+        if not working or not os_path_isdir(working):
+            tkinter_messagebox.showerror(
                 "Missing working directory",
                 "Please select a valid working directory before running.",
             )
@@ -359,15 +383,15 @@ class ETLApp(tk.Tk):
         try:
             create_today_punchs(working, i_src_dir_, output, person)
             self._status.set("✔  Pipeline completed successfully.")
-            messagebox.showinfo("Done", "ETL pipeline finished successfully.")
+            tkinter_messagebox.showinfo("Done", "ETL pipeline finished successfully.")
         except Exception as exc:  # noqa: BLE001
             self._status.set(f"✘  Error: {exc}")
-            messagebox.showerror("Pipeline error", str(exc))
+            tkinter_messagebox.showerror("Pipeline error", str(exc))
         finally:
             self._run_btn.configure(state="normal", text="▶  RUN PIPELINE", bg=ACCENT)
 
         # Open output directory if one was given
-        if output and os.path.isdir(output):
+        if output and os_path_isdir(output):
             open_directory(output)
 
 
