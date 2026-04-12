@@ -1,4 +1,6 @@
+from dataclasses import dataclass
 from pathlib import Path
+from platform import system as platform_system
 from src.ch00_py.csv_toolbox import (
     delete_column_from_csv_string,
     replace_csv_column_from_string,
@@ -21,8 +23,39 @@ from src.ch21_world.world import worlddir_shop
 from typing import Callable
 
 
+@dataclass
+class ETLAppSettings:
+    mono: str
+    bg: str
+    bg_card: str
+    border: str
+    accent: str
+    accent_dim: str
+    fg: str
+    fg_dim: str
+    fg_black: str
+    entry_bg: str
+    btn_active: str
+
+
+def get_app_glb_attrs() -> ETLAppSettings:
+    return ETLAppSettings(
+        mono=("Courier New", 9) if platform_system() == "Windows" else ("Menlo", 10),
+        bg="#1a1a1f",
+        bg_card="#22222a",
+        border="#33333d",
+        accent="#e8c547",
+        accent_dim="#b89a2f",
+        fg="#e4e4e8",
+        fg_dim="#7a7a88",
+        fg_black="#0d0d10",
+        entry_bg="#13131a",
+        btn_active="#f0d060",
+    )
+
+
 def get_app_default_person_name() -> str:
-    return "Steve"
+    return "Emmanuel"
 
 
 def get_app_default_world_name() -> str:
@@ -155,3 +188,31 @@ def get_option_table_options() -> dict[str, Callable]:
         "create_example_moment_ledger_file": create_example_moment_ledger_file,
         "create_example_moment_budget_file": create_example_moment_budget_file,
     }
+
+
+def add_open_dir_button(
+    app_self,
+    parent,
+    var,
+    row,
+    mono_font,
+    bg_border,
+    fg,
+    accent,
+    open_dir_func: Callable,
+):
+    app_self.Button(
+        parent,
+        text="📂",
+        font=mono_font,
+        bg=bg_border,
+        fg=fg,
+        activebackground=accent,
+        activeforeground="#0d0d10",
+        relief="flat",
+        bd=0,
+        padx=10,
+        pady=4,
+        cursor="hand2",
+        command=lambda v=var: open_dir_func(v),
+    ).grid(row=row, column=3, padx=(4, 0), pady=7)
