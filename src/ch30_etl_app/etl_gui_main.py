@@ -16,11 +16,10 @@ from platform import system as platform_system
 from src.ch21_world.world import create_today_punchs
 from src.ch30_etl_app.etl_gui_tool import (
     get_app_default_dir,
+    get_app_default_dirs,
     get_app_default_person_name,
-    get_app_default_world_name,
     get_app_glb_attrs,
     get_option_table_options,
-    get_workspace_dirs,
 )
 from subprocess import run as subprocess_run
 import tkinter as tk
@@ -80,10 +79,8 @@ def open_directory(path: str) -> None:
 
     if system == "Windows":
         subprocess_run(["explorer", path], check=False)
-
     elif system == "Darwin":
         subprocess_run(["open", path], check=False)
-
     else:
         subprocess_run(["xdg-open", path], check=False)
 
@@ -126,7 +123,7 @@ class ETLApp(tk.Tk):
             "person": self._person,
         }
 
-        defaults = get_workspace_dirs(get_app_default_dir())
+        defaults = get_app_default_dirs(get_app_default_dir())
         defaults["person"] = get_app_default_person_name()
 
         for key, var in vars_map.items():
@@ -179,87 +176,6 @@ class ETLApp(tk.Tk):
                 "tip": "Destination for results (opened on finish)",
             },
         }
-
-    def _build_ui(self):
-        # ── header bar ──────────────────────────
-        ax = get_app_glb_attrs()
-        header = tk.Frame(self, bg=ax.accent, height=4)
-        header.pack(fill="x")
-
-        title_frame = tk.Frame(self, bg=ax.bg, pady=18)
-        title_frame.pack(fill="x", padx=28)
-
-        tk.Label(
-            title_frame,
-            text="Keg Listening App#1",
-            font=ax.platform_font,
-            bg=ax.bg,
-            fg=ax.accent,
-            anchor="w",
-        ).pack(side="left")
-
-        tk.Label(
-            title_frame,
-            text="excel files → db → daily agendas",
-            font=ax.mono,
-            bg=ax.bg,
-            fg=ax.fg_dim,
-            anchor="e",
-        ).pack(side="right", pady=(4, 0))
-
-        # ── divider ─────────────────────────────
-        tk.Frame(self, bg=ax.border, height=1).pack(fill="x", padx=28)
-
-        # ── directory pickers ───────────────────
-        card = tk.Frame(self, bg=ax.bg_card, bd=0, padx=24, pady=20)
-        card.pack(fill="x", padx=28, pady=(16, 0))
-        self._create_dir_rows(card)
-
-        # ── run button ──────────────────────────
-        btn_frame = tk.Frame(self, bg=ax.bg, pady=22)
-        btn_frame.pack()
-
-        self._run_btn = tk.Button(
-            btn_frame,
-            text="▶  CREATE DAILY AGENDA",
-            font=ax.platform_font,
-            bg=ax.accent,
-            fg=ax.fg_black,
-            activebackground=ax.btn_active,
-            activeforeground=ax.fg_black,
-            relief="flat",
-            bd=0,
-            padx=28,
-            pady=10,
-            cursor="hand2",
-            command=self._run,
-        )
-        self._run_btn.pack()
-        options = get_option_table_options()
-        table = OptionTable(self, options, i_src_dir=self._i_src_dir.get)
-        table.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
-
-        # hover effect
-        self._run_btn.bind(
-            "<Enter>", lambda _: self._run_btn.configure(bg=ax.btn_active)
-        )
-        self._run_btn.bind("<Leave>", lambda _: self._run_btn.configure(bg=ax.accent))
-
-        # ── status bar ──────────────────────────
-        self._status = tk.StringVar(value="Ready.")
-        status_bar = tk.Label(
-            self,
-            textvariable=self._status,
-            font=ax.mono,
-            bg=ax.bg,
-            fg=ax.fg_dim,
-            anchor="w",
-            padx=28,
-            pady=6,
-        )
-        status_bar.pack(fill="x", side="bottom")
-
-        tk.Frame(self, bg=ax.border, height=1).pack(fill="x", side="bottom")
 
     def _create_dir_rows(self, card):
         for row_number, row_dict in self.get_main_rows_config().items():
@@ -375,6 +291,87 @@ class ETLApp(tk.Tk):
 
         if not required:
             self._placeholder(entry, var, tip)
+
+    def _build_ui(self):
+        # ── header bar ──────────────────────────
+        ax = get_app_glb_attrs()
+        header = tk.Frame(self, bg=ax.accent, height=4)
+        header.pack(fill="x")
+
+        title_frame = tk.Frame(self, bg=ax.bg, pady=18)
+        title_frame.pack(fill="x", padx=28)
+
+        tk.Label(
+            title_frame,
+            text="Keg Listening App#1",
+            font=ax.platform_font,
+            bg=ax.bg,
+            fg=ax.accent,
+            anchor="w",
+        ).pack(side="left")
+
+        tk.Label(
+            title_frame,
+            text="excel files → db → daily agendas",
+            font=ax.mono,
+            bg=ax.bg,
+            fg=ax.fg_dim,
+            anchor="e",
+        ).pack(side="right", pady=(4, 0))
+
+        # ── divider ─────────────────────────────
+        tk.Frame(self, bg=ax.border, height=1).pack(fill="x", padx=28)
+
+        # ── directory pickers ───────────────────
+        card = tk.Frame(self, bg=ax.bg_card, bd=0, padx=24, pady=20)
+        card.pack(fill="x", padx=28, pady=(16, 0))
+        self._create_dir_rows(card)
+
+        # ── run button ──────────────────────────
+        btn_frame = tk.Frame(self, bg=ax.bg, pady=22)
+        btn_frame.pack()
+
+        self._run_btn = tk.Button(
+            btn_frame,
+            text="▶  CREATE DAILY AGENDA",
+            font=ax.platform_font,
+            bg=ax.accent,
+            fg=ax.fg_black,
+            activebackground=ax.btn_active,
+            activeforeground=ax.fg_black,
+            relief="flat",
+            bd=0,
+            padx=28,
+            pady=10,
+            cursor="hand2",
+            command=self._run,
+        )
+        self._run_btn.pack()
+        options = get_option_table_options()
+        table = OptionTable(self, options, i_src_dir=self._i_src_dir.get)
+        table.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+
+        # hover effect
+        self._run_btn.bind(
+            "<Enter>", lambda _: self._run_btn.configure(bg=ax.btn_active)
+        )
+        self._run_btn.bind("<Leave>", lambda _: self._run_btn.configure(bg=ax.accent))
+
+        # ── status bar ──────────────────────────
+        self._status = tk.StringVar(value="Ready.")
+        status_bar = tk.Label(
+            self,
+            textvariable=self._status,
+            font=ax.mono,
+            bg=ax.bg,
+            fg=ax.fg_dim,
+            anchor="w",
+            padx=28,
+            pady=6,
+        )
+        status_bar.pack(fill="x", side="bottom")
+
+        tk.Frame(self, bg=ax.border, height=1).pack(fill="x", side="bottom")
 
     @staticmethod
     def _placeholder(entry, var, tip):

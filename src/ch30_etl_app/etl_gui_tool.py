@@ -78,7 +78,7 @@ def get_app_default_dir(is_windows: bool | None = None) -> Path:
         return Path.home() / "keg" / "worlds"
 
 
-def get_workspace_dirs(default_root: Path) -> dict[str, Path]:
+def get_app_default_dirs(default_root: Path) -> dict[str, Path]:
     x_worlddir = worlddir_shop(
         world_name=get_app_default_world_name(), worlds_dir=default_root
     )
