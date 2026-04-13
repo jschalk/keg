@@ -21,7 +21,7 @@ from src.ch30_etl_app.etl_gui_tool import (
     get_app_glb_attrs,
     get_option_table_options,
 )
-from subprocess import run as subprocess_run
+from subprocess import Popen as subprocess_Popen
 import tkinter as tk
 from tkinter import (
     filedialog as tkinter_filedialog,
@@ -78,11 +78,13 @@ def open_directory(path: str) -> None:
     system = platform_system()
 
     if system == "Windows":
-        subprocess_run(["explorer", path], check=False)
+        subprocess_Popen(["explorer", path])
+
     elif system == "Darwin":
-        subprocess_run(["open", path], check=False)
+        subprocess_Popen(["open", path])
+
     else:
-        subprocess_run(["xdg-open", path], check=False)
+        subprocess_Popen(["xdg-open", path])
 
 
 # ──────────────────────────────────────────────
