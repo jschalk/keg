@@ -36,11 +36,14 @@ class ETLAppSettings:
     fg_black: str
     entry_bg: str
     btn_active: str
+    platform_font: str
 
 
 def get_app_glb_attrs() -> ETLAppSettings:
+    is_windows = platform_system() == "Windows"
+    platform_font = ("Courier New", 17, "bold") if is_windows else ("Menlo", 16, "bold")
     return ETLAppSettings(
-        mono=("Courier New", 9) if platform_system() == "Windows" else ("Menlo", 10),
+        mono=("Courier New", 9) if is_windows else ("Menlo", 10),
         bg="#1a1a1f",
         bg_card="#22222a",
         border="#33333d",
@@ -51,6 +54,7 @@ def get_app_glb_attrs() -> ETLAppSettings:
         fg_black="#0d0d10",
         entry_bg="#13131a",
         btn_active="#f0d060",
+        platform_font=platform_font,
     )
 
 
@@ -189,30 +193,40 @@ def get_option_table_options() -> dict[str, Callable]:
         "create_example_moment_budget_file": create_example_moment_budget_file,
     }
 
-
-def add_open_dir_button(
-    app_self,
-    parent,
-    var,
-    row,
-    mono_font,
-    bg_border,
-    fg,
-    accent,
-    open_dir_func: Callable,
-):
-    app_self.Button(
-        parent,
-        text="📂",
-        font=mono_font,
-        bg=bg_border,
-        fg=fg,
-        activebackground=accent,
-        activeforeground="#0d0d10",
-        relief="flat",
-        bd=0,
-        padx=10,
-        pady=4,
-        cursor="hand2",
-        command=lambda v=var: open_dir_func(v),
-    ).grid(row=row, column=3, padx=(4, 0), pady=7)
+    # main_rows_config = {
+    #     "0": {
+    #         "row_type": "text",
+    #         "title": "PERSON NAME",
+    #         "var": self._person,
+    #         "required": True,
+    #         "tip": "e.g. 'Emmanuel'",
+    #     },
+    #     "1": {
+    #         "row_type": "dir",
+    #         "title": "WORKING DIR",
+    #         "var": self._working,
+    #         "required": True,
+    #         "tip": "Root directory for the ETL process",
+    #     },
+    #     "2": {
+    #         "row_type": "dir",
+    #         "title": "BELIEFS_DIR",
+    #         "var": self._b_src_dir,
+    #         "required": True,
+    #         "tip": "Source of Beliefs. Non-sparked Ideas.",
+    #     },
+    #     "3": {
+    #         "row_type": "dir",
+    #         "title": "IDEAS_DIR  ",
+    #         "var": self._i_src_dir,
+    #         "required": True,
+    #         "tip": "Source of Ideas files. Beliefs that have been sparked.",
+    #     },
+    #     "4": {
+    #         "row_type": "dir",
+    #         "title": "OUTPUT DIR ",
+    #         "var": self._output,
+    #         "required": True,
+    #         "tip": "Destination for results (opened on finish)",
+    #     },
+    # }

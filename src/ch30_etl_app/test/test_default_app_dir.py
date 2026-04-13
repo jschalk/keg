@@ -27,6 +27,7 @@ def test_ETLAppSettings_Exists():
     x_fg_black = "xx_fg_black"
     x_entry_bg = "xx_entry_bg"
     x_btn_active = "xx_btn_active"
+    x_platform_font = "xx_platform_font"
     # WHEN
     app_settings = ETLAppSettings(
         mono=x_mono,
@@ -40,6 +41,7 @@ def test_ETLAppSettings_Exists():
         fg_black=x_fg_black,
         entry_bg=x_entry_bg,
         btn_active=x_btn_active,
+        platform_font=x_platform_font,
     )
     # THEN
     assert app_settings
@@ -73,7 +75,13 @@ def test_get_app_glb_attrs_ReturnsObj():
         "entry_bg",
         "btn_active",
         "fg_black",
+        "platform_font",
     }
+    expected_platform_font = (
+        ("Courier New", 17, "bold")
+        if platform_system() == "Windows"
+        else ("Menlo", 16, "bold")
+    )
     expected_app_settings = ETLAppSettings(
         mono=("Courier New", 9) if platform_system() == "Windows" else ("Menlo", 10),
         bg="#1a1a1f",
@@ -86,6 +94,7 @@ def test_get_app_glb_attrs_ReturnsObj():
         fg_black="#0d0d10",
         entry_bg="#13131a",
         btn_active="#f0d060",
+        platform_font=expected_platform_font,
     )
     assert app_glb_attrs == expected_app_settings
 

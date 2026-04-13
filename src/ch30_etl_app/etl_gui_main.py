@@ -11,7 +11,7 @@ To integrate your CLI logic, replace the `create_today_punchs()` call inside
 `_run()` with your actual ETL function / subprocess call.
 """
 
-from os import startfile as os_startfile
+from os import startfile
 from os.path import isdir as os_path_isdir
 from platform import system as platform_system
 from src.ch21_world.world import create_today_punchs
@@ -79,10 +79,15 @@ class OptionTable(tk.Frame):
 def open_directory(path: str) -> None:
     """Open a folder in the OS file explorer."""
     system = platform_system()
+
     if system == "Windows":
-        os_startfile(path)  # noqa: S606
+        from os import startfile  # import only when needed
+
+        startfile(path)  # noqa: S606
+
     elif system == "Darwin":
         subprocess_Popen(["open", path])
+
     else:
         subprocess_Popen(["xdg-open", path])
 
@@ -140,6 +145,45 @@ class ETLApp(tk.Tk):
             tkinter_messagebox.showwarning("Invalid directory", invalid_dir_str)
 
     # ── UI construction ────────────────────────
+    def get_main_rows_config(self) -> dict:
+        return {
+            "0": {
+                "row_type": "text",
+                "title": "PERSON NAME",
+                "var": self._person,
+                "required": True,
+                "tip": "e.g. 'Emmanuel'",
+            },
+            "1": {
+                "row_type": "dir",
+                "title": "WORKING DIR",
+                "var": self._working,
+                "required": True,
+                "tip": "Root directory for the ETL process",
+            },
+            "2": {
+                "row_type": "dir",
+                "title": "BELIEFS_DIR",
+                "var": self._b_src_dir,
+                "required": True,
+                "tip": "Source of Beliefs. Non-sparked Ideas.",
+            },
+            "3": {
+                "row_type": "dir",
+                "title": "IDEAS_DIR  ",
+                "var": self._i_src_dir,
+                "required": True,
+                "tip": "Source of Ideas files. Beliefs that have been sparked.",
+            },
+            "4": {
+                "row_type": "dir",
+                "title": "OUTPUT DIR ",
+                "var": self._output,
+                "required": True,
+                "tip": "Destination for results (opened on finish)",
+            },
+        }
+
     def _build_ui(self):
         # ── header bar ──────────────────────────
         ax = get_app_glb_attrs()
@@ -152,11 +196,7 @@ class ETLApp(tk.Tk):
         tk.Label(
             title_frame,
             text="Keg Listening App#1",
-            font=(
-                ("Courier New", 17, "bold")
-                if platform_system() == "Windows"
-                else ("Menlo", 16, "bold")
-            ),
+            font=ax.platform_font,
             bg=ax.bg,
             fg=ax.accent,
             anchor="w",
@@ -177,22 +217,7 @@ class ETLApp(tk.Tk):
         # ── directory pickers ───────────────────
         card = tk.Frame(self, bg=ax.bg_card, bd=0, padx=24, pady=20)
         card.pack(fill="x", padx=28, pady=(16, 0))
-
-        p_title = "PERSON NAME"
-        w_title = "WORKING DIR"
-        b_title = "BELIEFS_DIR"
-        i_title = "IDEAS_DIR  "
-        o_title = "OUTPUT DIR "
-        person_tip = "e.g. 'Emmanuel'"
-        self._text_row(card, 0, p_title, self._person, required=True, tip=person_tip)
-        work_tip = "Root directory for the ETL process"
-        self._dir_row(card, 1, w_title, self._working, required=True, tip=work_tip)
-        b_tip = "Source of Beliefs. Non-sparked Ideas."
-        self._dir_row(card, 2, b_title, self._b_src_dir, required=True, tip=b_tip)
-        ideas_tip = "Source of Ideas files. Beliefs that have been sparked."
-        self._dir_row(card, 3, i_title, self._i_src_dir, required=True, tip=ideas_tip)
-        output_tip = "Destination for results (opened on finish)"
-        self._dir_row(card, 4, o_title, self._output, required=True, tip=output_tip)
+        self._create_dir_rows(card)
 
         # ── run button ──────────────────────────
         btn_frame = tk.Frame(self, bg=ax.bg, pady=22)
@@ -201,11 +226,7 @@ class ETLApp(tk.Tk):
         self._run_btn = tk.Button(
             btn_frame,
             text="▶  CREATE DAILY AGENDA",
-            font=(
-                ("Courier New", 11, "bold")
-                if platform_system() == "Windows"
-                else ("Menlo", 11, "bold")
-            ),
+            font=ax.platform_font,
             bg=ax.accent,
             fg=ax.fg_black,
             activebackground=ax.btn_active,
@@ -243,6 +264,19 @@ class ETLApp(tk.Tk):
         status_bar.pack(fill="x", side="bottom")
 
         tk.Frame(self, bg=ax.border, height=1).pack(fill="x", side="bottom")
+
+    def _create_dir_rows(self, card):
+        for row_number, row_dict in self.get_main_rows_config().items():
+            row_int = (int(row_number),)
+            title = (row_dict.get("title"),)
+            var = (row_dict.get("var"),)
+            req = (row_dict.get("required"),)
+            tip = (row_dict.get("tip"),)
+
+            if row_dict.get("row_type") == "text":
+                self._text_row(card, row_int, title, var, required=req, tip=tip)
+            elif row_dict.get("row_type") == "dir":
+                self._dir_row(card, row_int, title, var, required=req, tip=tip)
 
     def _dir_row(self, parent, row, label, var, *, required, tip):
         """Render one label + entry + browse button row."""
@@ -286,7 +320,7 @@ class ETLApp(tk.Tk):
             bg=ax.border,
             fg=ax.fg,
             activebackground=ax.accent,
-            activeforeground="#0d0d10",
+            activeforeground=ax.fg_black,
             relief="flat",
             bd=0,
             padx=10,
@@ -301,7 +335,7 @@ class ETLApp(tk.Tk):
             bg=ax.border,
             fg=ax.fg,
             activebackground=ax.accent,
-            activeforeground="#0d0d10",
+            activeforeground=ax.fg_black,
             relief="flat",
             bd=0,
             padx=10,
