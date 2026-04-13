@@ -11,7 +11,6 @@ To integrate your CLI logic, replace the `create_today_punchs()` call inside
 `_run()` with your actual ETL function / subprocess call.
 """
 
-from os import startfile
 from os.path import isdir as os_path_isdir
 from platform import system as platform_system
 from src.ch21_world.world import create_today_punchs
@@ -23,7 +22,7 @@ from src.ch30_etl_app.etl_gui_tool import (
     get_option_table_options,
     get_workspace_dirs,
 )
-from subprocess import Popen as subprocess_Popen
+from subprocess import run as subprocess_run
 import tkinter as tk
 from tkinter import (
     filedialog as tkinter_filedialog,
@@ -77,19 +76,16 @@ class OptionTable(tk.Frame):
 
 
 def open_directory(path: str) -> None:
-    """Open a folder in the OS file explorer."""
     system = platform_system()
 
     if system == "Windows":
-        from os import startfile  # import only when needed
-
-        startfile(path)  # noqa: S606
+        subprocess_run(["explorer", path], check=False)
 
     elif system == "Darwin":
-        subprocess_Popen(["open", path])
+        subprocess_run(["open", path], check=False)
 
     else:
-        subprocess_Popen(["xdg-open", path])
+        subprocess_run(["xdg-open", path], check=False)
 
 
 # ──────────────────────────────────────────────
