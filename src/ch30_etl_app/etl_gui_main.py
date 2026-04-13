@@ -31,10 +31,10 @@ from tkinter import (
 
 
 class OptionTable(tk.Frame):
-    def __init__(self, parent, options: dict, i_src_dir: str, **kwargs):
+    def __init__(self, parent, options: dict, b_src_dir: str, **kwargs):
         super().__init__(parent, **kwargs)
         self.options = options
-        self.i_src_dir = i_src_dir
+        self.b_src_dir = b_src_dir
         self._build()
 
     def _build(self):
@@ -53,7 +53,7 @@ class OptionTable(tk.Frame):
         )
         scrollbar.config(command=self.tree.yview)
 
-        self.tree.heading("action", text="Click to add Beliefs")
+        self.tree.heading("action", text="Click to add Beliefs to Beliefs Directory")
         self.tree.column("action", anchor=tk.W)
 
         for description in self.options:
@@ -71,7 +71,7 @@ class OptionTable(tk.Frame):
         description = self.tree.item(selected[0], "values")[0]
         fn = self.options.get(description)
         if callable(fn):
-            fn(self.i_src_dir())  # ← call it to get the current string value
+            fn(self.b_src_dir())  # ← call it to get the current string value
 
 
 def open_directory(path: str) -> None:
@@ -98,12 +98,13 @@ class ETLApp(tk.Tk):
 
         # Set a reasonable minimum size and centre on screen
         self.update_idletasks()
-        app_width, app_height = 640, 500
+        app_width, app_height = 640, 540
         x = (self.winfo_screenwidth() - app_width) // 2
         y = (self.winfo_screenheight() - app_height) // 2
         self.geometry(f"{app_width}x{app_height+120}+{x}+{y}")
 
         # String vars ─ empty string = "not set" (optional dirs stay None)
+        self._world_name = tk.StringVar()
         self._person = tk.StringVar()
         self._working = tk.StringVar()
         self._b_src_dir = tk.StringVar()
@@ -116,17 +117,20 @@ class ETLApp(tk.Tk):
 
     def _set_defaults(self):
         vars_map = {
+            "world_name": self._world_name,
             "working": self._working,
             "beliefs_src": self._b_src_dir,
             "ideas_src": self._i_src_dir,
             "output": self._output,
             "person": self._person,
         }
-
         defaults = get_app_default_dirs(get_app_default_dir())
+        defaults["person"] = get_app_default_person_name()
         defaults["person"] = get_app_default_person_name()
 
         for key, var in vars_map.items():
+            if defaults.get(key) is None:
+                raise Exception(f"Missing default {key=}")
             var.set(defaults[key])
 
     def _open_dir(self, var: tk.StringVar):
@@ -179,11 +183,11 @@ class ETLApp(tk.Tk):
 
     def _create_dir_rows(self, card):
         for row_number, row_dict in self.get_main_rows_config().items():
-            row_int = (int(row_number),)
-            title = (row_dict.get("title"),)
-            var = (row_dict.get("var"),)
-            req = (row_dict.get("required"),)
-            tip = (row_dict.get("tip"),)
+            row_int = int(row_number)
+            title = row_dict.get("title")
+            var = row_dict.get("var")
+            req = row_dict.get("required")
+            tip = row_dict.get("tip")
 
             if row_dict.get("row_type") == "text":
                 self._text_row(card, row_int, title, var, required=req, tip=tip)
@@ -348,7 +352,7 @@ class ETLApp(tk.Tk):
         )
         self._run_btn.pack()
         options = get_option_table_options()
-        table = OptionTable(self, options, i_src_dir=self._i_src_dir.get)
+        table = OptionTable(self, options, b_src_dir=self._b_src_dir.get)
         table.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 
         # hover effect
@@ -424,12 +428,19 @@ class ETLApp(tk.Tk):
             return
 
         # Lock UI
-        self._run_btn.configure(state="disabled", text="⏳  Running…", bg=ax.accent_DIM)
+        self._run_btn.configure(state="disabled", text="⏳  Running…", bg=ax.accent_dim)
         self._status.set("Running ETL pipeline…")
         self.update_idletasks()
 
         try:
-            create_today_punchs(working, i_src_dir_, output, person)
+            create_today_punchs(
+                person_name=person,
+                world_name=self._world_name.get(),
+                worlds_dir=self._working.get(),
+                output_dir=self._output.get(),
+                ideas_src_dir=self._i_src_dir.get(),
+                beliefs_src_dir=self._b_src_dir.get(),
+            )
             self._status.set("✔  Pipeline completed successfully.")
             tkinter_messagebox.showinfo("Done", "ETL pipeline finished successfully.")
         except Exception as exc:  # noqa: BLE001

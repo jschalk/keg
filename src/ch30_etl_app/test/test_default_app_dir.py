@@ -146,10 +146,11 @@ def test_get_app_default_dir_ReturnsObj_Scenari0_app_default_dir():
     x_default_dirs = get_app_default_dirs(x_root_dir)
     # THEN
     assert x_default_dirs
-    example_worlddir = worlddir_shop(
-        world_name=get_app_default_world_name(), worlds_dir=get_app_default_dir()
-    )
+    example_world_name = get_app_default_world_name()
+    default_dir = get_app_default_dir()
+    example_worlddir = worlddir_shop(example_world_name, worlds_dir=default_dir)
     assert x_default_dirs == {
+        "world_name": example_worlddir.world_name,
         "working": example_worlddir.worlds_dir,
         "beliefs_src": example_worlddir.beliefs_src_dir,
         "ideas_src": example_worlddir.ideas_src_dir,

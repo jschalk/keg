@@ -79,10 +79,10 @@ def get_app_default_dir(is_windows: bool | None = None) -> Path:
 
 
 def get_app_default_dirs(default_root: Path) -> dict[str, Path]:
-    x_worlddir = worlddir_shop(
-        world_name=get_app_default_world_name(), worlds_dir=default_root
-    )
+    x_world_name = get_app_default_world_name()
+    x_worlddir = worlddir_shop(world_name=x_world_name, worlds_dir=default_root)
     return {
+        "world_name": x_world_name,
         "working": x_worlddir.worlds_dir,
         "beliefs_src": x_worlddir.beliefs_src_dir,
         "ideas_src": x_worlddir.ideas_src_dir,
@@ -193,40 +193,15 @@ def get_option_table_options() -> dict[str, Callable]:
         "create_example_moment_budget_file": create_example_moment_budget_file,
     }
 
-    # main_rows_config = {
-    #     "0": {
-    #         "row_type": "text",
-    #         "title": "PERSON NAME",
-    #         "var": self._person,
-    #         "required": True,
-    #         "tip": "e.g. 'Emmanuel'",
-    #     },
-    #     "1": {
-    #         "row_type": "dir",
-    #         "title": "WORKING DIR",
-    #         "var": self._working,
-    #         "required": True,
-    #         "tip": "Root directory for the ETL process",
-    #     },
-    #     "2": {
-    #         "row_type": "dir",
-    #         "title": "BELIEFS_DIR",
-    #         "var": self._b_src_dir,
-    #         "required": True,
-    #         "tip": "Source of Beliefs. Non-sparked Ideas.",
-    #     },
-    #     "3": {
-    #         "row_type": "dir",
-    #         "title": "IDEAS_DIR  ",
-    #         "var": self._i_src_dir,
-    #         "required": True,
-    #         "tip": "Source of Ideas files. Beliefs that have been sparked.",
-    #     },
-    #     "4": {
-    #         "row_type": "dir",
-    #         "title": "OUTPUT DIR ",
-    #         "var": self._output,
-    #         "required": True,
-    #         "tip": "Destination for results (opened on finish)",
-    #     },
-    # }
+
+# def add_title1_label(title_frame):
+#     ax = get_app_glb_attrs()
+#     app1_str = "Keg Listening App#1"
+#     tk.Label(
+#         title_frame,
+#         text=app1_str,
+#         font=ax.platform_font,
+#         bg=ax.bg,
+#         fg=ax.accent,
+#         anchor="w",
+#     ).pack(side="left")
