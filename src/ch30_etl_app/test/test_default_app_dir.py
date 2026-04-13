@@ -1,19 +1,107 @@
 from os import name as os_name
 from pathlib import Path
+from platform import system as platform_system
 from pytest import MonkeyPatch
 from src.ch21_world.world import worlddir_shop
 from src.ch30_etl_app.etl_gui_tool import (
+    ETLAppSettings,
     get_app_default_dir,
     get_app_default_person_name,
     get_app_default_world_name,
+    get_app_glb_attrs,
     get_workspace_dirs,
 )
 import sys
 
 
+def test_ETLAppSettings_Exists():
+    # ESTABLISH
+    x_mono = "xx_mono"
+    x_bg = "xx_bg"
+    x_bg_card = "xx_bg_card"
+    x_border = "xx_border"
+    x_accent = "xx_accent"
+    x_accent_dim = "xx_accent_dim"
+    x_fg = "xx_fg"
+    x_fg_dim = "xx_fg_dim"
+    x_fg_black = "xx_fg_black"
+    x_entry_bg = "xx_entry_bg"
+    x_btn_active = "xx_btn_active"
+    x_platform_font = "xx_platform_font"
+    # WHEN
+    app_settings = ETLAppSettings(
+        mono=x_mono,
+        bg=x_bg,
+        bg_card=x_bg_card,
+        border=x_border,
+        accent=x_accent,
+        accent_dim=x_accent_dim,
+        fg=x_fg,
+        fg_dim=x_fg_dim,
+        fg_black=x_fg_black,
+        entry_bg=x_entry_bg,
+        btn_active=x_btn_active,
+        platform_font=x_platform_font,
+    )
+    # THEN
+    assert app_settings
+    assert app_settings.mono
+    assert app_settings.bg
+    assert app_settings.bg_card
+    assert app_settings.border
+    assert app_settings.accent
+    assert app_settings.accent_dim
+    assert app_settings.fg
+    assert app_settings.fg_dim
+    assert app_settings.entry_bg
+    assert app_settings.btn_active
+
+
+def test_get_app_glb_attrs_ReturnsObj():
+    # ESTABLISH / WHEN
+    app_glb_attrs = get_app_glb_attrs()
+
+    # THEN
+    assert app_glb_attrs
+    assert set(app_glb_attrs.__dict__.keys()) == {
+        "mono",
+        "bg",
+        "bg_card",
+        "border",
+        "accent",
+        "accent_dim",
+        "fg",
+        "fg_dim",
+        "entry_bg",
+        "btn_active",
+        "fg_black",
+        "platform_font",
+    }
+    expected_platform_font = (
+        ("Courier New", 17, "bold")
+        if platform_system() == "Windows"
+        else ("Menlo", 16, "bold")
+    )
+    expected_app_settings = ETLAppSettings(
+        mono=("Courier New", 9) if platform_system() == "Windows" else ("Menlo", 10),
+        bg="#1a1a1f",
+        bg_card="#22222a",
+        border="#33333d",
+        accent="#e8c547",
+        accent_dim="#b89a2f",
+        fg="#e4e4e8",
+        fg_dim="#7a7a88",
+        fg_black="#0d0d10",
+        entry_bg="#13131a",
+        btn_active="#f0d060",
+        platform_font=expected_platform_font,
+    )
+    assert app_glb_attrs == expected_app_settings
+
+
 def test_get_app_default_person_name_ReturnsObj():
     # ESTABLISH / WHEN / THEN
-    assert get_app_default_person_name() == "Steve"
+    assert get_app_default_person_name() == "Emmanuel"
 
 
 def test_get_app_default_world_name_ReturnsObj():

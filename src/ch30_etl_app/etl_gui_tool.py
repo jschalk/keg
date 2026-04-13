@@ -1,4 +1,6 @@
+from dataclasses import dataclass
 from pathlib import Path
+from platform import system as platform_system
 from src.ch00_py.csv_toolbox import (
     delete_column_from_csv_string,
     replace_csv_column_from_string,
@@ -21,8 +23,43 @@ from src.ch21_world.world import worlddir_shop
 from typing import Callable
 
 
+@dataclass
+class ETLAppSettings:
+    mono: str
+    bg: str
+    bg_card: str
+    border: str
+    accent: str
+    accent_dim: str
+    fg: str
+    fg_dim: str
+    fg_black: str
+    entry_bg: str
+    btn_active: str
+    platform_font: str
+
+
+def get_app_glb_attrs() -> ETLAppSettings:
+    is_windows = platform_system() == "Windows"
+    platform_font = ("Courier New", 17, "bold") if is_windows else ("Menlo", 16, "bold")
+    return ETLAppSettings(
+        mono=("Courier New", 9) if is_windows else ("Menlo", 10),
+        bg="#1a1a1f",
+        bg_card="#22222a",
+        border="#33333d",
+        accent="#e8c547",
+        accent_dim="#b89a2f",
+        fg="#e4e4e8",
+        fg_dim="#7a7a88",
+        fg_black="#0d0d10",
+        entry_bg="#13131a",
+        btn_active="#f0d060",
+        platform_font=platform_font,
+    )
+
+
 def get_app_default_person_name() -> str:
-    return "Steve"
+    return "Emmanuel"
 
 
 def get_app_default_world_name() -> str:
@@ -155,3 +192,41 @@ def get_option_table_options() -> dict[str, Callable]:
         "create_example_moment_ledger_file": create_example_moment_ledger_file,
         "create_example_moment_budget_file": create_example_moment_budget_file,
     }
+
+    # main_rows_config = {
+    #     "0": {
+    #         "row_type": "text",
+    #         "title": "PERSON NAME",
+    #         "var": self._person,
+    #         "required": True,
+    #         "tip": "e.g. 'Emmanuel'",
+    #     },
+    #     "1": {
+    #         "row_type": "dir",
+    #         "title": "WORKING DIR",
+    #         "var": self._working,
+    #         "required": True,
+    #         "tip": "Root directory for the ETL process",
+    #     },
+    #     "2": {
+    #         "row_type": "dir",
+    #         "title": "BELIEFS_DIR",
+    #         "var": self._b_src_dir,
+    #         "required": True,
+    #         "tip": "Source of Beliefs. Non-sparked Ideas.",
+    #     },
+    #     "3": {
+    #         "row_type": "dir",
+    #         "title": "IDEAS_DIR  ",
+    #         "var": self._i_src_dir,
+    #         "required": True,
+    #         "tip": "Source of Ideas files. Beliefs that have been sparked.",
+    #     },
+    #     "4": {
+    #         "row_type": "dir",
+    #         "title": "OUTPUT DIR ",
+    #         "var": self._output,
+    #         "required": True,
+    #         "tip": "Destination for results (opened on finish)",
+    #     },
+    # }
