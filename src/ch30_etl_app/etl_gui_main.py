@@ -87,6 +87,10 @@ def open_directory(path: str) -> None:
         subprocess_Popen(["xdg-open", path])
 
 
+class ETLAppMissingDefaultError(Exception):
+    pass
+
+
 # ──────────────────────────────────────────────
 #  Main application window
 # ──────────────────────────────────────────────
@@ -128,11 +132,10 @@ class ETLApp(tk.Tk):
         }
         defaults = get_app_default_dirs(get_app_default_dir())
         defaults["person"] = get_app_default_person_name()
-        defaults["person"] = get_app_default_person_name()
 
         for key, var in vars_map.items():
             if defaults.get(key) is None:
-                raise Exception(f"Missing default {key=}")
+                raise ETLAppMissingDefaultError(f"Missing default {key=}")
             var.set(defaults[key])
 
     def _open_dir(self, var: tk.StringVar):

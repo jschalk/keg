@@ -146,4 +146,3 @@ def test_delete_column_from_csv_string_ReturnsObj():
     expected_output = [{"id": "1", "name": "Alice"}, {"id": "2", "name": "Bob"}]
     assert reader.fieldnames == ["id", "name"]
     assert rows == expected_output
-    # exam_tier
