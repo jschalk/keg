@@ -15,7 +15,7 @@ from src.ch17_idea.idea_belief_csv import (
     add_personunit_to_belief_csv_strs,
     create_init_belief_idea_csv_strs,
 )
-from src.ch17_idea.idea_db_tool import csv_dict_to_excel, prettify_excel
+from src.ch17_idea.idea_db_tool import csv_dict_to_excel, prettify_excel_file
 from src.ch18_etl_config._ref.ch18_path import (
     create_belief0001_path,
     create_moment_mstr_path,
@@ -215,4 +215,4 @@ def create_belief0001_file(
     # Hard to test function to prettify the excel file
     if prettify_excel_bool:
         belief0001_path = create_belief0001_path(output_dir)
-        prettify_excel(belief0001_path)
+        prettify_excel_file(belief0001_path)

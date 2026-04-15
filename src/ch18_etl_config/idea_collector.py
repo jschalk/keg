@@ -45,6 +45,15 @@ def get_all_ideafilerefs(dir: str) -> list[IdeaFileRef]:
     return idea_dfs
 
 
+def get_etl_db_sheets_tier2_order() -> list:
+    etl_config = get_etl_stage_types_config_dict()
+    x_list = sorted(etl_config.keys(), key=lambda k: etl_config[k]["stage_type_order"])
+    final_list = x_list[:2]
+    final_list.extend(["ideax_raw", "ideax_agg", "ideax_vld"])
+    final_list.extend(x_list[5:])
+    return final_list
+
+
 def reorder_etl_db_sheets(filepath: str | Path) -> None:
     """
     Reorders sheets in an Excel file based on:
@@ -55,10 +64,8 @@ def reorder_etl_db_sheets(filepath: str | Path) -> None:
     Modifies the file in place.
     """
     tier1_prefixes = ["ii"]
-    etl_config = get_etl_stage_types_config_dict()
-    tier2_postfixes = sorted(
-        etl_config.keys(), key=lambda k: etl_config[k]["stage_type_order"]
-    )
+    tier2_postfixes = get_etl_db_sheets_tier2_order()
+    print(f"{tier2_postfixes=}")
     filepath = Path(filepath)
 
     # Read all sheets

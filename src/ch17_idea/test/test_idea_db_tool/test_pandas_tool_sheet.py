@@ -12,6 +12,7 @@ from src.ch00_py.file_toolbox import create_path, set_dir
 from src.ch17_idea.idea_db_tool import (
     append_df_to_excel,
     check_dataframe_column_names,
+    delete_sheet,
     get_all_excel_sheet_names,
     if_nan_return_None,
     save_sheet,
@@ -597,3 +598,47 @@ def test_update_all_spark_face_spark_num_columns_Scenario1_NoMatchingSheets(
     ws = workbook.active
     assert ws.cell(row=1, column=1).value == "foo"
     assert ws.cell(row=1, column=2).value == "bar"
+
+
+def test_delete_sheet_DeletesAttr_Scenario0_DeletesSheet(tmp_path):
+    # ESTABLISH
+    file_path = tmp_path / "test.xlsx"
+    # Create workbook with two sheets
+    wb = openpyxl_Workbook()
+    ws1 = wb.active
+    ws1.title = "Sheet1"
+    x2_sheetname = "Sheet2"
+    wb.create_sheet(x2_sheetname)
+    wb.save(file_path)
+    assert sheet_exists(file_path, x2_sheetname)
+
+    # WHEN
+    # Delete one sheetks
+    delete_sheet(str(file_path), "Sheet2")
+
+    # Reload and verify
+    assert not sheet_exists(file_path, x2_sheetname)
+
+
+def test_delete_sheet_DeletesAttr_Scenario1_NonexistentSheet(tmp_path):
+    # ESTABLISH
+    file_path = tmp_path / "test.xlsx"
+
+    # Create workbook with one sheet
+    wb = openpyxl_Workbook()
+    ws = wb.active
+    x1_sheetname = "OnlySheet"
+    ws.title = x1_sheetname
+    wb.save(file_path)
+    x2_sheetname = "MissingSheet"
+    assert sheet_exists(file_path, x1_sheetname)
+    assert not sheet_exists(file_path, x2_sheetname)
+
+    # WHEN
+    delete_sheet(str(file_path), x2_sheetname)
+
+    # THEN
+    assert sheet_exists(file_path, x1_sheetname)
+    assert not sheet_exists(file_path, x2_sheetname)
+    wb2 = openpyxl_load_workbook(file_path)
+    assert wb2.sheetnames == [x1_sheetname]

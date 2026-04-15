@@ -10,6 +10,7 @@ from src.ch18_etl_config.idea_collector import (
     IdeaFileRef,
     get_all_excel_ideasheets,
     get_all_ideafilerefs,
+    get_etl_db_sheets_tier2_order,
     reorder_etl_db_sheets,
 )
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
@@ -211,6 +212,28 @@ def test_get_all_ideafilerefs_ReturnsObj_Scenario2_TwoSheets(temp3_fs):
     assert len(x_ideasheets) == 2
 
 
+def test_get_etl_db_sheets_tier2_order_ReturnsObj():
+    # ESTABLISH
+    tier2_postfixs = get_etl_db_sheets_tier2_order()
+    # WHEN / THEN
+    assert tier2_postfixs
+    assert tier2_postfixs == [
+        "b_src",
+        "i_src",
+        "ideax_raw",
+        "ideax_agg",
+        "ideax_vld",
+        "s_raw",
+        "s_agg",
+        "s_vld",
+        "h_raw",
+        "h_agg",
+        "h_vld",
+        "lynx",
+        "b_dst",
+    ]
+
+
 def create_excel(filepath: Path, sheet_names: list[str]):
     with pandas_ExcelWriter(filepath, engine="xlsxwriter") as writer:
         for name in sheet_names:
@@ -237,15 +260,15 @@ def test_reorder_etl_db_sheets_SortsSheets_Scenario1_PostfixPriority(tmp_path):
     # ESTABLISH
     filepath = tmp_path / "test.xlsx"
 
-    create_excel(filepath, ["misc", "report_done_i_raw", "zzz_final_i_vld"])
+    create_excel(filepath, ["misc", "report_done_ideax_raw", "zzz_final_ideax_vld"])
     # WHEN
     reorder_etl_db_sheets(filepath)
     # THEN
     result = get_sheet_order(filepath)
-    assert result == ["report_done_i_raw", "zzz_final_i_vld", "misc"]
+    assert result == ["report_done_ideax_raw", "zzz_final_ideax_vld", "misc"]
 
 
-def test_reorder_etl_db_sheets_SortsSheets_Scenario2_FallbackPreservesOriginalOrder(
+def test_reorder_etl_db_sheets_SortsSheets_Scenario2_FallbackIgnoresOriginalOrder(
     tmp_path,
 ):
     # ESTABLISH
@@ -257,4 +280,19 @@ def test_reorder_etl_db_sheets_SortsSheets_Scenario2_FallbackPreservesOriginalOr
     # THEN
     result = get_sheet_order(filepath)
     expected_sheet_order = ["ii_sheet1", "sheet3_s_vld", "sheet2"]
+    assert result == expected_sheet_order
+
+
+def test_reorder_etl_db_sheets_SortsSheets_Scenario3_ideax_raw_ideax_agg_AreSorted(
+    tmp_path,
+):
+    # ESTABLISH
+    filepath = tmp_path / "test.xlsx"
+    original = ["sheet3_s_vld", "sheet2ideax_agg", "sheet3ideax_raw"]
+    create_excel(filepath, original)
+    # WHEN
+    reorder_etl_db_sheets(filepath)
+    # THEN
+    result = get_sheet_order(filepath)
+    expected_sheet_order = ["sheet3ideax_raw", "sheet2ideax_agg", "sheet3_s_vld"]
     assert result == expected_sheet_order

@@ -1,4 +1,7 @@
-from openpyxl import load_workbook
+from openpyxl import (
+    Workbook as openpyxl_Workbook,
+    load_workbook as openpyxl_load_workbook,
+)
 import pytest
 import sqlite3
 from src.ch17_idea.idea_db_tool import export_db_to_excel
@@ -38,7 +41,7 @@ def test_export_db_to_excel_CreatesFile_sheet_per_table(db, tmp_path):
     # WHEN
     export_db_to_excel(db, dest)
     # THEN
-    wb = load_workbook(dest)
+    wb = openpyxl_load_workbook(dest)
     assert set(wb.sheetnames) == {"users", "products"}
 
 
@@ -48,7 +51,7 @@ def test_export_db_to_excel_CreatesFile_headers(db, tmp_path):
     # WHEN
     export_db_to_excel(db, dest)
     # THEN
-    wb = load_workbook(dest)
+    wb = openpyxl_load_workbook(dest)
     headers = [cell.value for cell in wb["users"][1]]
     assert headers == ["id", "name", "age"]
 
@@ -59,7 +62,7 @@ def test_export_db_to_excel_CreatesFile_row_count(db, tmp_path):
     # WHEN
     export_db_to_excel(db, dest)
     # THEN
-    wb = load_workbook(dest)
+    wb = openpyxl_load_workbook(dest)
     # max_row includes header row
     assert wb["users"].max_row == 4
     assert wb["products"].max_row == 3
@@ -70,7 +73,7 @@ def test_export_db_to_excel_CreatesFile_data_values(db, tmp_path):
     dest = str(tmp_path / "output.xlsx")
     # WHEN
     export_db_to_excel(db, dest)
-    wb = load_workbook(dest)
+    wb = openpyxl_load_workbook(dest)
     # THEN
     rows = [[cell.value for cell in row] for row in wb["users"].iter_rows(min_row=2)]
     assert rows == [[1, "Alice", 30], [2, "Bob", 25], [3, "Charlie", 35]]
@@ -83,7 +86,7 @@ def test_export_db_to_excel_CreatesFile_empty_table(db, tmp_path):
     # WHEN
     export_db_to_excel(db, dest)
     # THEN
-    wb = load_workbook(dest)
+    wb = openpyxl_load_workbook(dest)
     assert "empty_table" in wb.sheetnames
     assert wb["empty_table"].max_row == 1  # header only
 

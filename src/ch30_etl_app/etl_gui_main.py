@@ -14,6 +14,7 @@ To integrate your CLI logic, replace the `create_today_punchs()` call inside
 from os.path import isdir as os_path_isdir
 from platform import system as platform_system
 from src.ch00_py.file_toolbox import delete_dir, set_dir
+from src.ch17_idea.idea_db_tool import prettify_excel_dir
 from src.ch21_world.world import create_today_punchs
 from src.ch30_etl_app.etl_gui_tool import (
     fill_spark_face_in_directory,
@@ -76,6 +77,7 @@ class OptionTable(tk.Frame):
         if callable(fn):
             fn(self.b_src_dir())  # ← call it to get the current string value
         fill_spark_face_in_directory(self.b_src_dir(), self.person_name())
+        # prettify_excel_dir(self.b_src_dir())
 
 
 def open_directory(path: str) -> None:
@@ -293,21 +295,21 @@ class ETLApp(tk.Tk):
                 "Invalid directory", f"Not a valid directory:\n{path}"
             )
             return
-        confirmed = tkinter_messagebox.askyesno(
-            "Confirm delete",
-            f"Delete all contents in:\n{path}\n\nThis cannot be undone.",
-        )
-        if confirmed:
-            delete_dir(path)
-            if len(self._working.get()) > 0:
-                set_dir(self._working.get())
-            if self._b_src_dir:
-                set_dir(self._b_src_dir.get())
-            if self._i_src_dir:
-                set_dir(self._i_src_dir.get())
-            if self._output:
-                set_dir(self._output.get())
-            self._status.set(f"✔  Deleted contents of {path}")
+        explain_str = f"Delete all contents in:\n{path}\n\nThis cannot be undone."
+        if confirmed := tkinter_messagebox.askyesno("Confirm delete", explain_str):
+            self._rebuild_dirs(path)
+
+    def _rebuild_dirs(self, path):
+        delete_dir(path)
+        if len(self._working.get()) > 0:
+            set_dir(self._working.get())
+        if self._b_src_dir:
+            set_dir(self._b_src_dir.get())
+        if self._i_src_dir:
+            set_dir(self._i_src_dir.get())
+        if self._output:
+            set_dir(self._output.get())
+        self._status.set(f"✔  Deleted contents of {path}")
 
     def _text_row(self, parent, row, label, var, *, required, tip):
         """Render one label + plain text entry row (no browse button)."""

@@ -23,10 +23,11 @@ from src.ch17_idea.idea_belief_csv import (
 )
 from src.ch17_idea.idea_db_tool import (
     csv_dict_to_excel,
-    prettify_excel,
+    prettify_excel_file,
     remove_empty_sheets,
 )
 from src.ch21_world.world import worlddir_shop
+from sys import platform as sys_platform
 from typing import Callable
 
 
@@ -75,14 +76,9 @@ def get_app_default_world_name() -> str:
 
 def get_app_default_dir(is_windows: bool | None = None) -> Path:
     if is_windows is None:
-        import sys
+        is_windows = sys_platform.startswith("win")
 
-        is_windows = sys.platform.startswith("win")
-
-    if is_windows:
-        return Path("C:/keg/worlds")
-    else:
-        return Path.home() / "keg" / "worlds"
+    return Path("C:/keg/worlds") if is_windows else Path.home() / "keg" / "worlds"
 
 
 def get_app_default_dirs(default_root: Path) -> dict[str, Path]:
@@ -160,7 +156,11 @@ def create_simple_tasks_belief_csvs() -> dict[str, str]:
     emman_person.conpute()
     add_personunit_to_belief_csv_strs(steve_person, belief_csv_strs, ",")
     add_personunit_to_belief_csv_strs(emman_person, belief_csv_strs, ",")
-    return belief_csv_strs
+    return {
+        sheetname_key: csv_str
+        for sheetname_key, csv_str in belief_csv_strs.items()
+        if sheetname_key not in {"ii00020", "ii00029"}
+    }
 
 
 def create_five_time_config_belief_csvs() -> dict[str, str]:
@@ -221,7 +221,7 @@ def save_and_prettify_excel_file(
     delete_dir(dest_file_path)
     csv_dict_to_excel(belief_csvs, dest_dir, dest_filename)
     remove_empty_sheets(dest_file_path)
-    # prettify_excel(dest_file_path)
+    # prettify_excel_file(dest_file_path)
 
 
 def create_simple_tasks_belief_file(dest_dir: str):
