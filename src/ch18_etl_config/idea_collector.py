@@ -63,7 +63,7 @@ def reorder_etl_db_sheets(filepath: str | Path) -> None:
 
     Modifies the file in place.
     """
-    tier1_prefixes = ["ii"]
+    # tier1_prefixes = ["ii"]
     tier2_postfixes = get_etl_db_sheets_tier2_order()
     print(f"{tier2_postfixes=}")
     filepath = Path(filepath)
@@ -75,9 +75,9 @@ def reorder_etl_db_sheets(filepath: str | Path) -> None:
 
     def sort_key(sheet_name: str):
         # Tier 1: prefix match
-        for i, prefix in enumerate(tier1_prefixes):
-            if sheet_name.startswith(prefix):
-                return (0, i, sheet_name)
+        # for i, prefix in enumerate(tier1_prefixes):
+        #     if sheet_name.startswith(prefix):
+        #         return (0, i, sheet_name)
 
         # Tier 2: postfix match
         for i, postfix in enumerate(tier2_postfixes):

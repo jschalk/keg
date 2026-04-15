@@ -273,13 +273,13 @@ def test_reorder_etl_db_sheets_SortsSheets_Scenario2_FallbackIgnoresOriginalOrde
 ):
     # ESTABLISH
     filepath = tmp_path / "test.xlsx"
-    original = ["sheet3_s_vld", "ii_sheet1", "sheet2"]
+    original = ["sheet3_s_vld", "sheet7_ideax_vld", "sheet2"]
     create_excel(filepath, original)
     # WHEN
     reorder_etl_db_sheets(filepath)
     # THEN
     result = get_sheet_order(filepath)
-    expected_sheet_order = ["ii_sheet1", "sheet3_s_vld", "sheet2"]
+    expected_sheet_order = ["sheet7_ideax_vld", "sheet3_s_vld", "sheet2"]
     assert result == expected_sheet_order
 
 
@@ -288,11 +288,11 @@ def test_reorder_etl_db_sheets_SortsSheets_Scenario3_ideax_raw_ideax_agg_AreSort
 ):
     # ESTABLISH
     filepath = tmp_path / "test.xlsx"
-    original = ["sheet3_s_vld", "sheet2ideax_agg", "sheet3ideax_raw"]
+    original = ["sheet3_s_vld", "iisheet2ideax_agg", "iisheet3ideax_raw"]
     create_excel(filepath, original)
     # WHEN
     reorder_etl_db_sheets(filepath)
     # THEN
     result = get_sheet_order(filepath)
-    expected_sheet_order = ["sheet3ideax_raw", "sheet2ideax_agg", "sheet3_s_vld"]
+    expected_sheet_order = ["iisheet3ideax_raw", "iisheet2ideax_agg", "sheet3_s_vld"]
     assert result == expected_sheet_order
