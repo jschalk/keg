@@ -83,7 +83,8 @@ def get_app_default_world_name() -> str:
 
 def get_app_default_dir(is_windows: bool | None = None) -> Path:
     if is_windows is None:
-        is_windows = platform.startswith("win")
+        is_windows = platform_system().lower().startswith("win")
+    print(f"{is_windows=} {platform_system().lower()=}")
     return Path("C:/keg/worlds") if is_windows else Path.home() / "keg" / "worlds"
 
 

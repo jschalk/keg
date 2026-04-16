@@ -1,5 +1,6 @@
 from os import name as os_name
 from pathlib import Path
+import platform
 from platform import system as platform_system
 from pytest import MonkeyPatch
 from src.ch21_world.world import worlddir_shop
@@ -116,13 +117,13 @@ def test_get_app_default_world_name_ReturnsObj():
 
 
 # this test is failing when github actions run it. Probably same issue: monkeypath is failing for platform
-# def test_get_app_default_dir_ReturnsObj_WindowsPath(monkeypatch: MonkeyPatch):
-#     # ESTABLISH
-#     monkeypatch.setattr(sys, "platform", "win32")
-#     # WHEN
-#     path = get_app_default_dir()
-#     # THEN
-#     assert path == Path("C:/keg/worlds")
+def test_get_app_default_dir_ReturnsObj_WindowsPath(monkeypatch: MonkeyPatch):
+    # ESTABLISH
+    monkeypatch.setattr(platform, "system", lambda: "Windows")
+    # WHEN
+    path = get_app_default_dir()
+    # THEN
+    assert path == Path("C:/keg/worlds")
 
 
 def test_get_app_default_dir_ReturnsObj_UnixPath(monkeypatch):
@@ -138,7 +139,7 @@ def test_get_app_default_dir_ReturnsObj_UnixPath(monkeypatch):
 # def test_get_app_default_dir_ReturnsObj_MacosPath(monkeypatch: MonkeyPatch):
 #     # ESTABLISH
 #     # monkeypatch setattr for platform isn't working
-#     monkeypatch.setattr(sys, "platform", "darwin")
+#     monkeypatch.setattr(platform, "system", lambda: "darwin")
 #     fake_home = Path("/Users/testuser")
 #     monkeypatch.setattr(Path, "home", lambda: fake_home)
 #     # WHEN
