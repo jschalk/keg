@@ -42,7 +42,7 @@ from src.ch19_etl_steps.etl_main import (
 )
 from src.ch20_kpi.gcalendar import (
     copy_person_day_punches_to_dst_dir,
-    save_person_gcal_day_punchs,
+    lynx_to_person_gcal_day_punchs,
 )
 from src.ch20_kpi.kpi_mstr import create_calendar_markdown_files, populate_kpi_bundle
 from src.ch21_world._ref.ch21_semantic_types import GroupTitle, PersonName, WorldName
@@ -188,21 +188,22 @@ def belief_sheets_to_lynx_mstr(worlddir: WorldDir, export_db: bool = False):
 
 def belief_sheets_to_gcal_day_punchs(
     worlddir: WorldDir,
-    person_name: PersonName,
+    person_names: set[PersonName],
     day: datetime,
     focus_group_title: GroupTitle = None,
 ):
     belief_sheets_to_lynx_mstr(worlddir, export_db=True)
-    save_person_gcal_day_punchs(
-        moment_mstr_dir=worlddir.moment_mstr_dir,
-        person_name=person_name,
-        day=day,
-        focus_group_title=focus_group_title,
-    )
+    for person_name in sorted(person_names):
+        lynx_to_person_gcal_day_punchs(
+            moment_mstr_dir=worlddir.moment_mstr_dir,
+            person_name=person_name,
+            day=day,
+            focus_group_title=focus_group_title,
+        )
 
 
 def create_today_punchs(
-    person_name: PersonName,
+    person_names: set[PersonName],
     world_name: WorldName,
     worlds_dir: str,
     output_dir: str = None,
@@ -219,10 +220,11 @@ def create_today_punchs(
     )
     belief_sheets_to_gcal_day_punchs(
         worlddir=worlddir,
-        person_name=person_name,
+        person_names=person_names,
         day=datetime.now(),
         focus_group_title=focus_group_title,
     )
-    copy_person_day_punches_to_dst_dir(
-        worlddir.moment_mstr_dir, worlddir.output_dir, person_name
-    )
+    for person_name in person_names:
+        copy_person_day_punches_to_dst_dir(
+            worlddir.moment_mstr_dir, worlddir.output_dir, person_name
+        )

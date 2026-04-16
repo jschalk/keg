@@ -1,7 +1,10 @@
 from dataclasses import dataclass
+from io import StringIO
+import pandas as pd
 from pandas import (
     DataFrame as pandas_DataFrame,
     ExcelWriter as pandas_ExcelWriter,
+    read_csv as pandas_read_csv,
     read_excel as pandas_read_excel,
 )
 from pathlib import Path
@@ -27,7 +30,7 @@ from src.ch17_idea.idea_db_tool import (
     remove_empty_sheets,
 )
 from src.ch21_world.world import worlddir_shop
-from sys import platform as sys_platform
+from sys import platform
 from typing import Callable
 
 
@@ -66,8 +69,12 @@ def get_app_glb_attrs() -> ETLAppSettings:
     )
 
 
-def get_app_default_person_name() -> str:
+def get_app_default_me_personname() -> str:
     return "Emmanuel"
+
+
+def get_app_default_you_personname() -> str:
+    return "Steve"
 
 
 def get_app_default_world_name() -> str:
@@ -76,8 +83,7 @@ def get_app_default_world_name() -> str:
 
 def get_app_default_dir(is_windows: bool | None = None) -> Path:
     if is_windows is None:
-        is_windows = sys_platform.startswith("win")
-
+        is_windows = platform.startswith("win")
     return Path("C:/keg/worlds") if is_windows else Path.home() / "keg" / "worlds"
 
 
@@ -156,11 +162,46 @@ def create_simple_tasks_belief_csvs() -> dict[str, str]:
     emman_person.conpute()
     add_personunit_to_belief_csv_strs(steve_person, belief_csv_strs, ",")
     add_personunit_to_belief_csv_strs(emman_person, belief_csv_strs, ",")
+    ii00013_csv = ""
+    for sheetname_key, csv_str in belief_csv_strs.items():
+        if sheetname_key == "ii00028":
+            ii00013_csv = transform_ii00029_into_ii00013_csv(csv_str, mmt01_rope)
+    belief_csv_strs["ii00013"] = ii00013_csv
     return {
         sheetname_key: csv_str
         for sheetname_key, csv_str in belief_csv_strs.items()
-        if sheetname_key not in {"ii00020", "ii00029"}
+        if sheetname_key not in {"ii00020", "ii00029", "ii00028"}
     }
+
+
+def transform_ii00029_into_ii00013_csv(csv_str: str, moment_rope: str):
+    # Load CSV into DataFrame
+    # String → DataFrame
+    df = pandas_read_csv(StringIO(csv_str))
+
+    # Delete column if it exists
+    to_delete_columns = {
+        "begin",
+        "close",
+        "addin",
+        "numor",
+        "denom",
+        "morph",
+        "gogo_want",
+        "stop_want",
+        "problem_bool",
+    }
+    for to_delete_column in to_delete_columns:
+        if to_delete_column in df.columns:
+            df = df.drop(columns=[to_delete_column])
+
+    # Add new column
+    df.insert(2, "moment_rope", moment_rope)
+
+    # DataFrame → CSV string
+    output = StringIO()
+    df.to_csv(output, index=False)
+    return output.getvalue()
 
 
 def create_five_time_config_belief_csvs() -> dict[str, str]:

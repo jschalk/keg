@@ -613,10 +613,9 @@ def test_delete_sheet_DeletesAttr_Scenario0_DeletesSheet(tmp_path):
     assert sheet_exists(file_path, x2_sheetname)
 
     # WHEN
-    # Delete one sheetks
     delete_sheet(str(file_path), "Sheet2")
 
-    # Reload and verify
+    # THEN
     assert not sheet_exists(file_path, x2_sheetname)
 
 

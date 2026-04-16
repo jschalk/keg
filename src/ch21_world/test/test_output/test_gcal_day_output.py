@@ -36,7 +36,7 @@ def test_belief_sheets_to_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     assert not os_path_exists(sue_ep8_day_punch_path)
 
     # WHEN
-    belief_sheets_to_gcal_day_punchs(worlddir, exx.sue, apr7)
+    belief_sheets_to_gcal_day_punchs(worlddir, {exx.sue}, apr7)
 
     # THEN
     assert not os_path_exists(sue_a23_day_punch_path)
@@ -117,7 +117,7 @@ def test_belief_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueRepor
 
     # WHEN
     apr7 = datetime(2010, 5, 7)
-    belief_sheets_to_gcal_day_punchs(here_wdir, exx.sue, apr7)
+    belief_sheets_to_gcal_day_punchs(here_wdir, {exx.sue}, apr7)
 
     # THEN
     assert os_path_exists(hn_red_mmt_json_path)
@@ -212,7 +212,7 @@ def test_create_today_punchs_SavesFiles_Scenario0_PopulatedSueReport(
 
     # WHEN
     create_today_punchs(
-        person_name=exx.sue,
+        person_names={exx.sue},
         world_name=here_wdir.world_name,
         worlds_dir=here_wdir.worlds_dir,
         output_dir=here_wdir.output_dir,

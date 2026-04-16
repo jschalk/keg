@@ -504,7 +504,6 @@ def prettify_excel_file(file_path: str, zoom: int = 120) -> None:
 
     with ExcelWriter(file_path, engine="xlsxwriter") as writer:
         for sheet_name, df in sheet_data.items():
-            print(f"{file_path=}")
             df.to_excel(writer, sheet_name=sheet_name, index=False)
             workbook = writer.book
             worksheet = writer.sheets[sheet_name]

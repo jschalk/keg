@@ -65,7 +65,6 @@ def reorder_etl_db_sheets(filepath: str | Path) -> None:
     """
     # tier1_prefixes = ["ii"]
     tier2_postfixes = get_etl_db_sheets_tier2_order()
-    print(f"{tier2_postfixes=}")
     filepath = Path(filepath)
 
     # Read all sheets
