@@ -1,3 +1,4 @@
+from pandas import NA as pandas_NA
 from pytest import raises as pytest_raises
 from sqlite3 import (
     Connection as sqlite3_Connection,
@@ -168,6 +169,47 @@ def test_create_type_reference_insert_sqlstr_InsertsRows_Scenario3(cursor0: Curs
     rows = cursor0.execute(f"SELECT * FROM {x_table}").fetchall()
     print(f"{rows=}")
     assert rows == [("47.0", "34", None), ("48.0", "35", "huh")]
+
+
+def test_create_type_reference_insert_sqlstr_InsertsRows_Scenario4_pandas_NA_Values(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    x_table = "kubo_casas"
+    eagle_id_str = "eagle_id"
+    casa_id_str = "casa_id"
+    casa_color_str = "casa_color"
+    x_columns = [eagle_id_str, casa_id_str, casa_color_str]
+
+    cursor0.execute(
+        "CREATE TABLE kubo_casas (eagle_id TEXT, casa_id TEXT, casa_color TEXT)"
+    )
+
+    eagle_id_value = 47.0
+    casa_id_value = 34
+
+    x_values = [
+        [eagle_id_value, casa_id_value, None],  # existing None case
+        [eagle_id_value + 1, casa_id_value + 1, "huh"],  # normal string
+        [eagle_id_value + 2, casa_id_value + 2, pandas_NA],  # ✅ pandas NA
+        [eagle_id_value + 3, casa_id_value + 3, float("nan")],  # ✅ float NaN
+    ]
+
+    # WHEN
+    gen_sqlstr = create_type_reference_insert_sqlstr(x_table, x_columns, x_values)
+    print(f"{gen_sqlstr}")
+    cursor0.execute(gen_sqlstr)
+
+    # THEN
+    rows = cursor0.execute(f"SELECT * FROM {x_table}").fetchall()
+    print(f"{rows=}")
+
+    assert rows == [
+        ("47.0", "34", None),
+        ("48.0", "35", "huh"),
+        ("49.0", "36", None),  # pd.NA → NULL
+        ("50.0", "37", None),  # NaN → NULL
+    ]
 
 
 def test_RowData_Exists():

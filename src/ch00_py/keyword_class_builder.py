@@ -17,6 +17,10 @@ def get_keywords_src_config() -> dict[str, dict]:
     return open_json(create_src_keywords_main_path("src"))
 
 
+def get_possible_keyword_config_keys() -> set:
+    return {"init_chapter", "semantic_type", "exam_tier"}
+
+
 def get_keywords_by_chapter(keywords_dict: dict[str, dict[str]]) -> dict:
     chapter_descs = get_chapter_descs().keys()
     chapters_keywords = {get_chapter_desc_prefix(chxx): set() for chxx in chapter_descs}

@@ -1,5 +1,6 @@
 from csv import reader as csv_reader
 from dataclasses import dataclass
+from pandas import isna as pandas_isna
 from sqlite3 import Connection as sqlite3_Connection, Error as sqlite3_Error
 
 
@@ -107,7 +108,7 @@ INSERT INTO {x_table} ("""
     for row in x_values:
         values_str = ""
         for x_value in row:
-            if x_value is None:
+            if x_value is None or pandas_isna(x_value):
                 x_value = "NULL"
             else:
                 try:

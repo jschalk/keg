@@ -88,8 +88,8 @@ def _add_momentunit_to_ii00000_csv(
 ) -> str:
     x_knot = get_csv_compatible_knot(x_moment.knot, csv_delimiter)
     x_row = [
-        if_none_str(spark_face),
         if_none_str(spark_num),
+        if_none_str(spark_face),
         x_moment.moment_rope,
         x_moment.epoch.epoch_label,
         str(x_moment.epoch.c400_number),
@@ -117,8 +117,8 @@ def _add_budunit_to_ii00001_csv(
     for broker_person_name, personbudhistorys in x_moment.personbudhistorys.items():
         for bud_time, budunit in personbudhistorys.buds.items():
             x_row = [
-                if_none_str(spark_face),
                 if_none_str(spark_num),
+                if_none_str(spark_face),
                 x_moment.moment_rope,
                 broker_person_name,
                 str(bud_time),
@@ -168,8 +168,8 @@ def _add_hours_to_ii00003_csv(
     x_knot = get_csv_compatible_knot(x_moment.knot, csv_delimiter)
     for hour_plan in x_moment.epoch.hours_config:
         x_row = [
-            if_none_str(spark_face),
             if_none_str(spark_num),
+            if_none_str(spark_face),
             x_moment.moment_rope,
             str(hour_plan[1]),
             hour_plan[0],
@@ -190,8 +190,8 @@ def _add_months_to_ii00004_csv(
     x_knot = get_csv_compatible_knot(x_moment.knot, csv_delimiter)
     for month_plan in x_moment.epoch.months_config:
         x_row = [
-            if_none_str(spark_face),
             if_none_str(spark_num),
+            if_none_str(spark_face),
             x_moment.moment_rope,
             str(month_plan[1]),
             month_plan[0],
@@ -212,8 +212,8 @@ def _add_weekdays_to_ii00005_csv(
     x_knot = get_csv_compatible_knot(x_moment.knot, csv_delimiter)
     for count_x, weekday_label in enumerate(x_moment.epoch.weekdays_config):
         x_row = [
-            if_none_str(spark_face),
             if_none_str(spark_num),
+            if_none_str(spark_face),
             x_moment.moment_rope,
             str(count_x),
             weekday_label,
@@ -235,8 +235,8 @@ def add_person_to_ii00020_csv(
     for contactunit in x_person.contacts.values():
         for membership in contactunit.memberships.values():
             x_row = [
-                if_none_str(spark_face),
                 if_none_str(spark_num),
+                if_none_str(spark_face),
                 x_person.planroot.get_plan_rope(),
                 x_person.person_name,
                 contactunit.contact_name,
@@ -260,8 +260,8 @@ def add_person_to_ii00021_csv(
     x_knot = get_csv_compatible_knot(x_person.knot, csv_delimiter)
     for contactunit in x_person.contacts.values():
         x_row = [
-            if_none_str(spark_face),
             if_none_str(spark_num),
+            if_none_str(spark_face),
             x_person.planroot.get_plan_rope(),
             x_person.person_name,
             contactunit.contact_name,
@@ -285,9 +285,8 @@ def add_person_to_ii00022_csv(
     for planunit in x_person._plan_dict.values():
         for awardunit in planunit.awardunits.values():
             x_row = [
-                if_none_str(spark_face),
                 if_none_str(spark_num),
-                x_person.planroot.get_plan_rope(),
+                if_none_str(spark_face),
                 x_person.person_name,
                 planunit.get_plan_rope(),
                 awardunit.awardee_title,
@@ -310,9 +309,8 @@ def add_person_to_ii00023_csv(
     x_knot = get_csv_compatible_knot(x_person.knot, csv_delimiter)
     for factunit in x_person.planroot.factunits.values():
         x_row = [
-            if_none_str(spark_face),
             if_none_str(spark_num),
-            x_person.planroot.get_plan_rope(),
+            if_none_str(spark_face),
             x_person.person_name,
             x_person.planroot.get_plan_rope(),
             factunit.fact_context,
@@ -337,9 +335,8 @@ def add_person_to_ii00024_csv(
     for planunit in x_person._plan_dict.values():
         for group_title in planunit.workforceunit.labors:
             x_row = [
-                if_none_str(spark_face),
                 if_none_str(spark_num),
-                x_person.planroot.get_plan_rope(),
+                if_none_str(spark_face),
                 x_person.person_name,
                 planunit.get_plan_rope(),
                 group_title,
@@ -361,9 +358,8 @@ def add_person_to_ii00025_csv(
     for planunit in x_person._plan_dict.values():
         for group_title in planunit.healerunit.healer_names:
             x_row = [
-                if_none_str(spark_face),
                 if_none_str(spark_num),
-                x_person.planroot.get_plan_rope(),
+                if_none_str(spark_face),
                 x_person.person_name,
                 planunit.get_plan_rope(),
                 group_title,
@@ -388,7 +384,6 @@ def add_person_to_ii00026_csv(
                 x_row = [
                     if_none_str(spark_face),
                     if_none_str(spark_num),
-                    x_person.planroot.get_plan_rope(),
                     x_person.person_name,
                     planunit.get_plan_rope(),
                     reasonunit.reason_context,
@@ -414,9 +409,8 @@ def add_person_to_ii00027_csv(
     for planunit in x_person._plan_dict.values():
         for reasonunit in planunit.reasonunits.values():
             x_row = [
-                if_none_str(spark_face),
                 if_none_str(spark_num),
-                x_person.planroot.get_plan_rope(),
+                if_none_str(spark_face),
                 x_person.person_name,
                 planunit.get_plan_rope(),
                 reasonunit.reason_context,
@@ -439,9 +433,8 @@ def add_person_to_ii00028_csv(
     for planunit in x_person._plan_dict.values():
         if planunit != x_person.planroot:
             x_row = [
-                if_none_str(spark_face),
                 if_none_str(spark_num),
-                x_person.planroot.get_plan_rope(),
+                if_none_str(spark_face),
                 x_person.person_name,
                 planunit.get_plan_rope(),
                 if_none_str(planunit.begin),
@@ -471,8 +464,8 @@ def add_person_to_ii00029_csv(
 ) -> str:
     x_knot = get_csv_compatible_knot(x_person.knot, csv_delimiter)
     x_row = [
-        if_none_str(spark_face),
         if_none_str(spark_num),
+        if_none_str(spark_face),
         x_person.planroot.get_plan_rope(),
         x_person.person_name,
         if_none_str(x_person.credor_respect),
@@ -492,6 +485,7 @@ def add_person_to_ii00029_csv(
 def add_personunit_to_belief_csv_strs(
     x_person: PersonUnit, moment_csv_strs: dict[str, str], csv_delimiter: str
 ) -> str:
+    """PersonUnit must be to be conputed."""
     ii00020_csv = moment_csv_strs.get("ii00020")
     ii00021_csv = moment_csv_strs.get("ii00021")
     ii00022_csv = moment_csv_strs.get("ii00022")

@@ -14,6 +14,7 @@ from src.ch00_py.keyword_class_builder import (
     get_example_strs_config,
     get_keywords_by_chapter,
     get_keywords_src_config,
+    get_possible_keyword_config_keys,
 )
 from src.ref.keywords import Ch00Keywords as kw
 
@@ -56,13 +57,20 @@ def test_get_example_strs_config_ReturnsObj():
         assert type(key_value) == type("")
 
 
+def test_get_possible_keyword_config_keys_ReturnsObj():
+    # ESTABLISH / WHEN
+    req_config_keys = get_possible_keyword_config_keys()
+    # THEN
+    assert req_config_keys == {kw.init_chapter, kw.semantic_type, kw.exam_tier}
+
+
 def test_get_keywords_src_config_ReturnsObj():
     # ESTABLISH / WHEN
     keywords_config = get_keywords_src_config()
 
     # THEN
     assert keywords_config
-    req_config_keys = {kw.init_chapter, kw.semantic_type, kw.exam_tier}
+    req_config_keys = get_possible_keyword_config_keys()
     for keyword, ref_dict in keywords_config.items():
         ref_keys = set(ref_dict.keys())
         # print(f"{keyword=} {ref_dict=}")

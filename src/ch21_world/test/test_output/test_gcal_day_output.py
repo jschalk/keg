@@ -14,14 +14,14 @@ from src.ch17_idea.idea_db_tool import save_sheet
 from src.ch20_kpi._ref.ch20_path import create_day_punch_txt_path as day_punch_path
 from src.ch21_world.test._util.ch21_examples import ii00013_example
 from src.ch21_world.world import (
+    belief_sheets_to_gcal_day_punchs,
     create_today_punchs,
-    idea_sheets_to_gcal_day_punchs,
     worlddir_shop,
 )
 from src.ref.keywords import Ch21Keywords as kw, ExampleStrs as exx
 
 
-def test_idea_sheets_to_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
+def test_belief_sheets_to_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     temp3_fs,
 ):
     # ESTABLISH
@@ -36,14 +36,14 @@ def test_idea_sheets_to_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     assert not os_path_exists(sue_ep8_day_punch_path)
 
     # WHEN
-    idea_sheets_to_gcal_day_punchs(worlddir, exx.sue, apr7)
+    belief_sheets_to_gcal_day_punchs(worlddir, {exx.sue}, apr7)
 
     # THEN
     assert not os_path_exists(sue_a23_day_punch_path)
     assert not os_path_exists(sue_ep8_day_punch_path)
 
 
-def test_idea_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueReport(
+def test_belief_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueReport(
     temp3_fs,
 ):
     # ESTABLISH
@@ -117,7 +117,7 @@ def test_idea_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueReport(
 
     # WHEN
     apr7 = datetime(2010, 5, 7)
-    idea_sheets_to_gcal_day_punchs(here_wdir, exx.sue, apr7)
+    belief_sheets_to_gcal_day_punchs(here_wdir, {exx.sue}, apr7)
 
     # THEN
     assert os_path_exists(hn_red_mmt_json_path)
@@ -148,12 +148,6 @@ def test_create_today_punchs_SavesFiles_Scenario0_PopulatedSueReport(
     hb_brush = init_rope(["herenow_blu", "family", exx.casa, exx.clean, "brush"])
     spark0, spark2, spark3, spark4 = (0, 2, 3, 4)
     # create connections between sue and yao and themselves
-    ii00011_data = [
-        (spark0, exx.bob, exx.hn_blu, exx.sue, exx.sue),
-        (spark0, exx.bob, exx.hn_blu, exx.sue, exx.yao),
-        (spark0, exx.bob, exx.hn_blu, exx.yao, exx.yao),
-        (spark0, exx.bob, exx.hn_blu, exx.yao, exx.sue),
-    ]
     ii00011_cols = [
         kw.spark_num,
         kw.spark_face,
@@ -161,15 +155,14 @@ def test_create_today_punchs_SavesFiles_Scenario0_PopulatedSueReport(
         kw.person_name,
         kw.contact_name,
     ]
+    ii00011_data = [
+        (spark0, exx.bob, exx.hn_blu, exx.sue, exx.sue),
+        (spark0, exx.bob, exx.hn_blu, exx.sue, exx.yao),
+        (spark0, exx.bob, exx.hn_blu, exx.yao, exx.yao),
+        (spark0, exx.bob, exx.hn_blu, exx.yao, exx.sue),
+    ]
     ii00011_df = pandas_DataFrame(ii00011_data, columns=ii00011_cols)
     # create tasks for sue, yao, others
-    ii00013_data = [
-        (spark0, exx.bob, exx.zia, exx.hn_red, hr_mop, 1, True),
-        (spark0, exx.bob, exx.yao, exx.hn_red, hr_tools, 2, True),
-        (spark2, exx.bob, exx.sue, exx.hn_blu, hb_mop, 8, True),
-        (spark3, exx.bob, exx.sue, exx.hn_blu, hb_sweep, 3, True),
-        (spark4, exx.bob, exx.xio, exx.hn_blu, hb_brush, 1, True),
-    ]
     ii00013_cols = [
         kw.spark_num,
         kw.spark_face,
@@ -178,6 +171,13 @@ def test_create_today_punchs_SavesFiles_Scenario0_PopulatedSueReport(
         kw.plan_rope,
         kw.star,
         kw.pledge,
+    ]
+    ii00013_data = [
+        (spark0, exx.bob, exx.zia, exx.hn_red, hr_mop, 1, True),
+        (spark0, exx.bob, exx.yao, exx.hn_red, hr_tools, 2, True),
+        (spark2, exx.bob, exx.sue, exx.hn_blu, hb_mop, 8, True),
+        (spark3, exx.bob, exx.sue, exx.hn_blu, hb_sweep, 3, True),
+        (spark4, exx.bob, exx.xio, exx.hn_blu, hb_brush, 1, True),
     ]
     ii00013_df = pandas_DataFrame(ii00013_data, columns=ii00013_cols)
     # external_dir = "C:dev/_temp_working_dir"
@@ -212,7 +212,7 @@ def test_create_today_punchs_SavesFiles_Scenario0_PopulatedSueReport(
 
     # WHEN
     create_today_punchs(
-        person_name=exx.sue,
+        person_names={exx.sue},
         world_name=here_wdir.world_name,
         worlds_dir=here_wdir.worlds_dir,
         output_dir=here_wdir.output_dir,

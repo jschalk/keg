@@ -113,6 +113,9 @@ def add_spark_num_column(df: DataFrame, spark_face_spark_nums: dict[str, int]):
     Adds 'spark_num' as the first column based on 'spark_face' values.
     - mutates original DataFrame (does not create new df)
     """
+    if "spark_num" in df.columns:
+        df.drop(columns=["spark_num"], inplace=True)
+
     if "spark_face" not in df.columns:
         # raise ValueError("Column 'spark_face' not found in DataFrame")
         return

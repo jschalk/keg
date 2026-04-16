@@ -445,8 +445,8 @@ def test_beliefs_sheets_to_idea_sheets_Scenario1_CreatesDestinationFile(
     # WHEN
     beliefs_sheets_to_idea_sheets(populated_bele_dir, empty_i_src_dir)
     # THEN
-    allsales_dir = os_path_join(str(empty_i_src_dir), "AllSales.xlsx")
-    df = pandas_read_excel(allsales_dir, sheet_name="ii00020_Sales")
+    allsales_path = os_path_join(str(empty_i_src_dir), "AllSales.xlsx")
+    df = pandas_read_excel(allsales_path, sheet_name="ii00020_Sales")
     expected_dst_columns = [kw.spark_num, kw.spark_face, "product", "units", "revenue"]
     assert list(df.columns) == expected_dst_columns
     assert len(df) == 2
@@ -510,8 +510,8 @@ def test_beliefs_sheets_to_idea_sheets_Scenario3_DestinationFileHas_spark_num_Se
     # WHEN
     beliefs_sheets_to_idea_sheets(populated_bele_dir, i_src_dir)
     # THEN
-    allsales_dir = os_path_join(str(i_src_dir), "AllSales.xlsx")
-    df = pandas_read_excel(allsales_dir, sheet_name="ii00020_Sales")
+    allsales_path = os_path_join(str(i_src_dir), "AllSales.xlsx")
+    df = pandas_read_excel(allsales_path, sheet_name="ii00020_Sales")
     assert list(df.columns) == expected_dst_columns
     assert len(df) == 2
     assert df[kw.spark_num].min() == 11
@@ -554,8 +554,8 @@ def test_beliefs_sheets_to_idea_sheets_Scenario4_ParameterSparkNumAccepted(
     # WHEN
     beliefs_sheets_to_idea_sheets(populated_bele_dir, i_src_dir, db_max_spark_num)
     # THEN
-    allsales_dir = os_path_join(str(i_src_dir), "AllSales.xlsx")
-    df = pandas_read_excel(allsales_dir, sheet_name="ii00020_Sales")
+    allsales_path = os_path_join(str(i_src_dir), "AllSales.xlsx")
+    df = pandas_read_excel(allsales_path, sheet_name="ii00020_Sales")
     assert df[kw.spark_num].min() != 11
     assert df[kw.spark_num].min() != curr_spark_num + 1
     assert df[kw.spark_num].min() == db_max_spark_num + 1
@@ -583,3 +583,33 @@ def test_beliefs_sheets_to_idea_sheets_Scenario5_src_dir_IsEmptied(
     beliefs_sheets_to_idea_sheets(bele_dir, i_src_dir)
     # THEN
     assert count_dirs_files(bele_dir) == 0
+
+
+def test_beliefs_sheets_to_idea_sheets_Scenario6_src_num_Exists(
+    tmp_path: Path,
+):
+    """Each copied sheet can be read by pandas and contains the original data."""
+    # ESTABLISH
+    bele_dir = tmp_path / "bele"
+    bele_dir.mkdir()
+    i_src_dir = tmp_path / "ideas"
+    i_src_dir.mkdir()
+
+    wb = openpyxl_Workbook()
+    ws1 = wb.active
+    ws1.title = "ii00020_Sales"
+    ws1.append([kw.spark_num, kw.spark_face, "product", "units", "revenue"])
+    ws1.append(["", exx.sue, "widget", 10, 500])
+    bele_allsales_path = bele_dir / "AllSales.xlsx"
+    wb.save(bele_allsales_path)
+    assert count_dirs_files(bele_dir) == 1
+    assert count_dirs_files(i_src_dir) == 0
+
+    # WHEN
+    beliefs_sheets_to_idea_sheets(bele_dir, i_src_dir)
+    # THEN
+    assert count_dirs_files(bele_dir) == 0
+    assert count_dirs_files(i_src_dir) == 1
+    idea_allsales_path = i_src_dir / "AllSales.xlsx"
+    df = pandas_read_excel(idea_allsales_path, sheet_name="ii00020_Sales")
+    assert df[kw.spark_num].min() == 1

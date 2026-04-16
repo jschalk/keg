@@ -29,6 +29,7 @@ from src.ch00_py.db_toolbox import (
 from src.ch00_py.dict_toolbox import set_in_nested_dict
 from src.ch00_py.file_toolbox import (
     create_path,
+    delete_dir,
     get_dir_file_strs,
     get_dir_filenames,
     open_json,
@@ -73,12 +74,16 @@ def get_sheet_names(x_path: str) -> list[str]:
     return openpyxl_load_workbook(x_path).sheetnames
 
 
+def get_all_excel_files(dir: str) -> set[tuple[str, str]]:
+    return get_dir_filenames(dir, {"xlsx"})
+
+
 def get_all_excel_sheet_names(
     dir: str, sub_strs: set[str] = None
 ) -> set[(str, str, str)]:
     if sub_strs is None:
         sub_strs = set()
-    excel_files = get_dir_filenames(dir, {"xlsx"})
+    excel_files = get_all_excel_files(dir)
     sheet_names = set()
     for relative_dir, filename in excel_files:
         absolute_dir = create_path(dir, relative_dir)
@@ -477,7 +482,15 @@ def is_column_type_valid(df: DataFrame, column: str, sqlite_data_type: str) -> b
     return str(actual_dtype) == expected_data_type
 
 
-def prettify_excel(file_path: str, zoom: int = 120) -> None:
+def prettify_excel_dir(x_dir: str, zoom: int = 120) -> None:
+    """Reads all sheets in a directory, applies formatting improvements to each"""
+    for relative_dir, filename in get_all_excel_files(x_dir):
+        file_dir = create_path(x_dir, relative_dir)
+        file_path = create_path(file_dir, filename)
+        prettify_excel_file(file_path)
+
+
+def prettify_excel_file(file_path: str, zoom: int = 120) -> None:
     """
     Reads all sheets from an Excel file, applies formatting improvements to each,
     and overwrites the original file. Safely handles sheets with only headers and no data.
@@ -626,6 +639,7 @@ def export_db_to_excel(
         # Freeze the header row
         ws.freeze_panes = "A2"
 
+    delete_dir(dest_path)
     wb.save(dest_path)
     if no_empty_sheets:
         remove_empty_sheets(dest_path)
@@ -656,3 +670,25 @@ def remove_empty_sheets(file_path):
 
     wb.save(file_path)
     return removed
+
+
+def delete_sheet(file_path: str, sheet_name: str) -> None:
+    """
+    Deletes a sheet from an Excel file.
+
+    Args:
+        file_path (str): Path to the Excel file
+        sheet_name (str): Name of the sheet to delete
+    """
+    wb = openpyxl_load_workbook(file_path)
+
+    if sheet_name not in wb.sheetnames:
+        return
+
+    # Prevent deleting the last remaining sheet
+    if len(wb.sheetnames) == 1:
+        return
+
+    ws = wb[sheet_name]
+    wb.remove(ws)
+    wb.save(file_path)

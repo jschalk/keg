@@ -327,7 +327,9 @@ def test_add_person_to_ii00022_csv_ReturnsObj():
     x_csv = add_person_to_ii00022_csv(csv_header, bob_person, csv_delimiter)
 
     # THEN
-    yao_award_row = f",,{exx.a23},{exx.bob},{casa_rope},{exx.yao},{yao_give_force},{yao_take_force},;\n"
+    yao_award_row = (
+        f",,{exx.bob},{casa_rope},{exx.yao},{yao_give_force},{yao_take_force},;\n"
+    )
     assert x_csv == f"{csv_header}{yao_award_row}"
 
 
@@ -351,7 +353,7 @@ def test_add_person_to_ii00023_csv_ReturnsObj():
     x_csv = add_person_to_ii00023_csv(csv_header, bob_person, csv_delimiter)
 
     # THEN
-    clean_row = f",,{exx.a23},{exx.bob},{a23_rope},{casa_rope},{clean_rope},{clean_fact_lower},{clean_fact_upper},;\n"
+    clean_row = f",,{exx.bob},{a23_rope},{casa_rope},{clean_rope},{clean_fact_lower},{clean_fact_upper},;\n"
     assert x_csv == f"{csv_header}{clean_row}"
 
 
@@ -373,7 +375,7 @@ def test_add_person_to_ii00024_csv_ReturnsObj():
     x_csv = add_person_to_ii00024_csv(csv_header, bob_person, csv_delimiter)
 
     # THEN
-    cleaners_row = f",,{exx.a23},{exx.bob},{casa_rope},{cleaners_str},;\n"
+    cleaners_row = f",,{exx.bob},{casa_rope},{cleaners_str},;\n"
     assert x_csv == f"{csv_header}{cleaners_row}"
 
 
@@ -395,7 +397,7 @@ def test_add_person_to_ii00025_csv_ReturnsObj():
     x_csv = add_person_to_ii00025_csv(csv_header, bob_person, csv_delimiter)
 
     # THEN
-    cleaners_row = f",,{exx.a23},{exx.bob},{casa_rope},{cleaners_str},;\n"
+    cleaners_row = f",,{exx.bob},{casa_rope},{cleaners_str},;\n"
     assert x_csv == f"{csv_header}{cleaners_row}"
 
 
@@ -429,7 +431,7 @@ def test_add_person_to_ii00026_csv_ReturnsObj():
     x_csv = add_person_to_ii00026_csv(csv_header, bob_person, csv_delimiter)
 
     # THEN
-    mop_row = f",,{exx.a23},{exx.bob},{mop_rope},{casa_rope},{clean_rope},{clean_reason_lower},{clean_reason_upper},{clean_reason_divisor},;\n"
+    mop_row = f",,{exx.bob},{mop_rope},{casa_rope},{clean_rope},{clean_reason_lower},{clean_reason_upper},{clean_reason_divisor},;\n"
     assert x_csv == f"{csv_header}{mop_row}"
 
 
@@ -455,7 +457,7 @@ def test_add_person_to_ii00027_csv_ReturnsObj():
     x_csv = add_person_to_ii00027_csv(csv_header, bob_person, csv_delimiter)
 
     # THEN
-    casa_row = f",,{exx.a23},{exx.bob},{mop_rope},{casa_rope},True,;\n"
+    casa_row = f",,{exx.bob},{mop_rope},{casa_rope},True,;\n"
     assert x_csv == f"{csv_header}{casa_row}"
 
 
@@ -502,9 +504,9 @@ def test_add_person_to_ii00028_csv_ReturnsObj():
     x_csv = add_person_to_ii00028_csv(csv_header, bob_person, csv_delimiter)
 
     # THEN
-    root_row = f",,{exx.a23},{exx.bob},,{a23_rope},,,,,,,,,1,False,False,;\n"
-    mop_row = f",,{exx.a23},{exx.bob},{mop_rope},{casa_begin},{casa_close},{casa_addin},{casa_numor},{casa_denom},{casa_morph},{casa_gogo_want},{casa_stop_want},{casa_star},{casa_pledge},{casa_problem_bool},;\n"
-    casa_row = f",,{exx.a23},{exx.bob},{casa_rope},,,,,,,,,0,False,False,;\n"
+    root_row = f",,{exx.bob},,{a23_rope},,,,,,,,,1,False,False,;\n"
+    mop_row = f",,{exx.bob},{mop_rope},{casa_begin},{casa_close},{casa_addin},{casa_numor},{casa_denom},{casa_morph},{casa_gogo_want},{casa_stop_want},{casa_star},{casa_pledge},{casa_problem_bool},;\n"
+    casa_row = f",,{exx.bob},{casa_rope},,,,,,,,,0,False,False,;\n"
     # print(f"{mop_row=}")
     expected_csv = f"{csv_header}{mop_row}{casa_row}"
     print(f"       {x_csv=}")

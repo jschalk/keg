@@ -120,7 +120,7 @@ from src.ch18_etl_config.etl_sqlstr import (
     get_person_heard_vld_tablenames,
     update_heard_agg_timenum_columns,
 )
-from src.ch18_etl_config.idea_collector import IdeaFileRef, get_all_idea_dataframes
+from src.ch18_etl_config.idea_collector import IdeaFileRef, get_all_ideafilerefs
 from src.ch19_etl_steps._ref.ch19_semantic_types import FaceName, SparkInt
 from src.ch19_etl_steps.obj2db_moment import get_moment_dict_from_heard_tables
 from src.ch19_etl_steps.obj2db_person import insert_job_obj
@@ -129,7 +129,7 @@ from src.ch19_etl_steps.obj2db_person import insert_job_obj
 def etl_idea_dfs_to_ideax_raw_tables(cursor: sqlite3_Cursor, ideas_src_dir: str):
     idea_sqlite_types = get_idea_sqlite_types()
 
-    for ref in get_all_idea_dataframes(ideas_src_dir):
+    for ref in get_all_ideafilerefs(ideas_src_dir):
         x_file_path = create_path(ref.file_dir, ref.filename)
         df = pandas_read_excel(x_file_path, ref.sheet_name)
         idea_sorting_columns = get_default_sorted_list(set(df.columns))
@@ -149,28 +149,38 @@ def etl_idea_dfs_to_ideax_raw_tables(cursor: sqlite3_Cursor, ideas_src_dir: str)
         cursor.execute(create_table_sqlstr)
 
         for idx, row in df.iterrows():
-            row_dict = row.to_dict()
-            nonconvertible_columns = get_nonconvertible_columns(
-                row_dict, idea_sqlite_types
+            _insert_row_into_ideax_raw_table(
+                cursor, x_tablename, column_names, row, idea_sqlite_types
             )
-            error_message = None
-            if nonconvertible_columns:
-                error_message = ""
-                for issue_col, issue_value in nonconvertible_columns.items():
-                    if error_message:
-                        error_message += ", "
-                    error_message += f"{issue_col}: {issue_value}"
-                error_message = f"Conversion errors: {error_message}"
-            row_values = list(row)
-            row_values.append(error_message)
-            # Set value to None for non-convertible columns
-            for x_index, col in enumerate(column_names):
-                if nonconvertible_columns.get(col):
-                    row_values[x_index] = None
-            insert_sqlstr = create_type_reference_insert_sqlstr(
-                x_tablename, column_names, [row_values]
-            )
-            cursor.execute(insert_sqlstr)
+
+
+def _insert_row_into_ideax_raw_table(
+    cursor: sqlite3_Cursor,
+    x_tablename: str,
+    column_names: list[str],
+    row,
+    idea_sqlite_types: dict,
+):
+    row_dict = row.to_dict()
+    nonconvertible_columns = get_nonconvertible_columns(row_dict, idea_sqlite_types)
+    error_message = None
+    if nonconvertible_columns:
+        error_message = ""
+        for issue_col, issue_value in nonconvertible_columns.items():
+            if error_message:
+                error_message += ", "
+            error_message += f"{issue_col}: {issue_value}"
+        error_message = f"Conversion errors: {error_message}"
+    row_values = list(row)
+    row_values.append(error_message)
+    # Set value to None for non-convertible columns
+    for x_index, col in enumerate(column_names):
+        if nonconvertible_columns.get(col):
+            row_values[x_index] = None
+    insert_sqlstr = create_type_reference_insert_sqlstr(
+        x_tablename, column_names, [row_values]
+    )
+    cursor.execute(insert_sqlstr)
 
 
 def get_max_ideax_agg_spark_num(cursor: sqlite3_Cursor) -> int:

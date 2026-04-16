@@ -11,7 +11,8 @@ from src.ch00_py.file_toolbox import create_path
 from src.ch17_idea.idea_db_tool import (
     csv_dict_to_excel,
     get_idea_sqlite_types,
-    prettify_excel,
+    prettify_excel_dir,
+    prettify_excel_file,
     set_df_idea_column_types,
 )
 from src.ref.keywords import Ch17Keywords as kw
@@ -39,7 +40,7 @@ def test_csv_dict_to_excel_SavesFile(temp3_fs):
     print("Test passed successfully.")
 
 
-def test_prettify_excel_SetsAttrs(temp3_fs):
+def test_prettify_excel_file_SetsAttrs(temp3_fs):
     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
     # ESTABLISH
     temp_dir = str(temp3_fs)
@@ -53,7 +54,59 @@ def test_prettify_excel_SetsAttrs(temp3_fs):
         df2.to_excel(writer, sheet_name="Supplies", index=False)
 
     # WHEN
-    prettify_excel(file_path)
+    prettify_excel_file(file_path)
+
+    # THEN: Verify formatting changes
+    wb = load_workbook(file_path)
+
+    # Check headers in both sheets
+    for sheet_name in ["Employees", "Supplies"]:
+        ws = wb[sheet_name]
+
+        # # Confirm header fill color (should match '#D7E4BC' -> RGB: D7E4BC)
+        header_fill = ws["A1"].fill
+        print(f"{header_fill=}")
+        # assert isinstance(header_fill, PatternFill)
+        # assert header_fill.fill_type == "solid"
+        # assert header_fill.start_color.rgb in (
+        #     "FFD7E4BC",
+        #     "00D7E4BC",
+        # )  # OpenPyXL sometimes uses different alpha
+
+        # Confirm freeze pane is set at row 2
+        print(f"{ws.freeze_panes=}")
+        assert ws.freeze_panes == "A2"
+
+        # Confirm zoom level (optional: may not always be persisted depending on openpyxl)
+        if ws.sheet_view.zoomScale is not None:
+            assert ws.sheet_view.zoomScale == 120
+
+        # Confirm at least one column has adjusted width (Excel doesn't save actual width in standard units)
+        col_widths = [
+            ws.column_dimensions[col_letter].width for col_letter in ["A", "B"]
+        ]
+        assert any(
+            width and width > 8 for width in col_widths
+        )  # default width is ~8.43
+
+
+def test_prettify_excel_dir_SetsAttrs(temp3_fs):
+    # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
+    # ESTABLISH
+    temp_dir = str(temp3_fs)
+    file_path = os_path_join(temp_dir, "test_huh.xlsx")
+
+    df1 = DataFrame({"Name": ["Alice", "Bob"], "Salary": [50000, 60000]})
+    df2 = DataFrame({"Item": ["Pen", "Notebook"], "Price": [1.5, 3.0]})
+
+    with pandas_ExcelWriter(file_path, engine="xlsxwriter") as writer:
+        df1.to_excel(writer, sheet_name="Employees", index=False)
+        df2.to_excel(writer, sheet_name="Supplies", index=False)
+    print(f"{temp_dir=}")
+    print(f"{type(temp_dir)=}")
+
+    # WHEN
+    prettify_excel_dir(temp_dir)
 
     # THEN: Verify formatting changes
     wb = load_workbook(file_path)

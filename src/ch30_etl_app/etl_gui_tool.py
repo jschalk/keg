@@ -1,4 +1,12 @@
 from dataclasses import dataclass
+from io import StringIO
+import pandas as pd
+from pandas import (
+    DataFrame as pandas_DataFrame,
+    ExcelWriter as pandas_ExcelWriter,
+    read_csv as pandas_read_csv,
+    read_excel as pandas_read_excel,
+)
 from pathlib import Path
 from platform import system as platform_system
 from src.ch00_py.csv_toolbox import (
@@ -7,19 +15,22 @@ from src.ch00_py.csv_toolbox import (
 )
 from src.ch00_py.file_toolbox import create_path, delete_dir
 from src.ch04_rope.rope import create_rope, default_knot_if_None
+from src.ch07_person_logic.person_main import personunit_shop
 from src.ch13_time.epoch_config import get_creg_config, get_five_config
 from src.ch13_time.epoch_main import epochunit_shop
 from src.ch14_moment.moment_main import momentunit_shop
 from src.ch17_idea.idea_belief_csv import (
     add_momentunits_to_belief_csv_strs,
+    add_personunit_to_belief_csv_strs,
     create_init_belief_idea_csv_strs,
 )
 from src.ch17_idea.idea_db_tool import (
     csv_dict_to_excel,
-    prettify_excel,
+    prettify_excel_file,
     remove_empty_sheets,
 )
 from src.ch21_world.world import worlddir_shop
+from sys import platform
 from typing import Callable
 
 
@@ -58,8 +69,12 @@ def get_app_glb_attrs() -> ETLAppSettings:
     )
 
 
-def get_app_default_person_name() -> str:
+def get_app_default_me_personname() -> str:
     return "Emmanuel"
+
+
+def get_app_default_you_personname() -> str:
+    return "Steve"
 
 
 def get_app_default_world_name() -> str:
@@ -68,14 +83,8 @@ def get_app_default_world_name() -> str:
 
 def get_app_default_dir(is_windows: bool | None = None) -> Path:
     if is_windows is None:
-        import sys
-
-        is_windows = sys.platform.startswith("win")
-
-    if is_windows:
-        return Path("C:/keg/worlds")
-    else:
-        return Path.home() / "keg" / "worlds"
+        is_windows = platform.startswith("win")
+    return Path("C:/keg/worlds") if is_windows else Path.home() / "keg" / "worlds"
 
 
 def get_app_default_dirs(default_root: Path) -> dict[str, Path]:
@@ -90,7 +99,109 @@ def get_app_default_dirs(default_root: Path) -> dict[str, Path]:
     }
 
 
+def fill_spark_face_in_directory(directory: str, face_name: str) -> None:
+    """
+    For every Excel file in a directory:
+    - For every sheet:
+        - If 'spark_face' column exists
+        - Replace empty / NaN / 'nan' values with `face_name`
+    - Overwrites the original file
+    """
+    directory_path = Path(directory)
+
+    for file_path in directory_path.glob("*.xlsx"):
+        # Load all sheets
+        sheets = pandas_read_excel(file_path, sheet_name=None)
+
+        updated_sheets = {}
+        file_modified = False
+
+        for sheet_name, df in sheets.items():
+            if "spark_face" in df.columns:
+                # Cast column to string dtype
+                df["spark_face"] = df["spark_face"].astype("string")
+                # Normalize values: treat "", "nan", None as missing
+                mask = (
+                    df["spark_face"].isna()
+                    | (df["spark_face"].astype(str).str.strip().str.lower() == "nan")
+                    | (df["spark_face"].astype(str).str.strip() == "")
+                )
+
+                if mask.any():
+                    df.loc[mask, "spark_face"] = face_name
+                    file_modified = True
+
+            updated_sheets[sheet_name] = df
+
+        # Only rewrite file if something changed
+        if file_modified:
+            with pandas_ExcelWriter(file_path, engine="openpyxl", mode="w") as writer:
+                for sheet_name, df in updated_sheets.items():
+                    df.to_excel(writer, sheet_name=sheet_name, index=False)
+
+
 TEAMFIVE = "TeamFive"
+
+
+def create_simple_tasks_belief_csvs() -> dict[str, str]:
+    mmt01_rope = create_rope("mmt01")
+    steve_name = "Steve"
+    emman_name = "Emmanuel"
+    steve_person = personunit_shop(steve_name, mmt01_rope)
+    emman_person = personunit_shop(emman_name, mmt01_rope)
+    steve_person.add_contactunit(steve_name)
+    steve_person.add_contactunit(emman_name)
+    emman_person.add_contactunit(emman_name)
+    emman_person.add_contactunit(steve_name)
+    music_rope = emman_person.make_l1_rope("enjoy music")
+    golf_rope = emman_person.make_l1_rope("play disc golf")
+    steve_person.add_plan(music_rope, 1, True)
+    emman_person.add_plan(golf_rope, 1, True)
+    belief_csv_strs = create_init_belief_idea_csv_strs()
+    steve_person.conpute()
+    emman_person.conpute()
+    add_personunit_to_belief_csv_strs(steve_person, belief_csv_strs, ",")
+    add_personunit_to_belief_csv_strs(emman_person, belief_csv_strs, ",")
+    ii00013_csv = ""
+    for sheetname_key, csv_str in belief_csv_strs.items():
+        if sheetname_key == "ii00028":
+            ii00013_csv = transform_ii00029_into_ii00013_csv(csv_str, mmt01_rope)
+    belief_csv_strs["ii00013"] = ii00013_csv
+    return {
+        sheetname_key: csv_str
+        for sheetname_key, csv_str in belief_csv_strs.items()
+        if sheetname_key not in {"ii00020", "ii00029", "ii00028"}
+    }
+
+
+def transform_ii00029_into_ii00013_csv(csv_str: str, moment_rope: str):
+    # Load CSV into DataFrame
+    # String → DataFrame
+    df = pandas_read_csv(StringIO(csv_str))
+
+    # Delete column if it exists
+    to_delete_columns = {
+        "begin",
+        "close",
+        "addin",
+        "numor",
+        "denom",
+        "morph",
+        "gogo_want",
+        "stop_want",
+        "problem_bool",
+    }
+    for to_delete_column in to_delete_columns:
+        if to_delete_column in df.columns:
+            df = df.drop(columns=[to_delete_column])
+
+    # Add new column
+    df.insert(2, "moment_rope", moment_rope)
+
+    # DataFrame → CSV string
+    output = StringIO()
+    df.to_csv(output, index=False)
+    return output.getvalue()
 
 
 def create_five_time_config_belief_csvs() -> dict[str, str]:
@@ -151,7 +262,13 @@ def save_and_prettify_excel_file(
     delete_dir(dest_file_path)
     csv_dict_to_excel(belief_csvs, dest_dir, dest_filename)
     remove_empty_sheets(dest_file_path)
-    prettify_excel(dest_file_path)
+    # prettify_excel_file(dest_file_path)
+
+
+def create_simple_tasks_belief_file(dest_dir: str):
+    dest_filename = "simple_task_example.xlsx"
+    belief_csvs = create_simple_tasks_belief_csvs()
+    save_and_prettify_excel_file(belief_csvs, dest_dir, dest_filename)
 
 
 def create_five_time_config_file(dest_dir: str):
@@ -186,6 +303,7 @@ def create_example_moment_budget_file(file_path: str):
 
 def get_option_table_options() -> dict[str, Callable]:
     return {
+        "Simple Tasks Example": create_simple_tasks_belief_file,
         "Create TeamFive Moment with Five time": create_five_time_config_file,
         "Create El Paso Moment with standard time.": create_elpaso_time_config_file,
         "create_emmanuel_belief_file": create_emmanuel_belief_file,

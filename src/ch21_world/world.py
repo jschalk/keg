@@ -9,6 +9,7 @@ from src.ch18_etl_config._ref.ch18_path import (
     create_world_db_path,
 )
 from src.ch18_etl_config.belief_tool import create_belief0001_file
+from src.ch18_etl_config.idea_collector import reorder_etl_db_sheets
 from src.ch19_etl_steps.belief2idea import beliefs_sheets_to_idea_sheets
 from src.ch19_etl_steps.etl_main import (
     add_moment_epoch_to_guts,
@@ -41,7 +42,7 @@ from src.ch19_etl_steps.etl_main import (
 )
 from src.ch20_kpi.gcalendar import (
     copy_person_day_punches_to_dst_dir,
-    save_person_gcal_day_punchs,
+    lynx_to_person_gcal_day_punchs,
 )
 from src.ch20_kpi.kpi_mstr import create_calendar_markdown_files, populate_kpi_bundle
 from src.ch21_world._ref.ch21_semantic_types import GroupTitle, PersonName, WorldName
@@ -63,7 +64,6 @@ def idea_sheets_to_lynx_with_cursor(
 ):
     delete_dir(moment_mstr_dir)
     set_dir(moment_mstr_dir)
-
     # collect excel file data into central location
     etl_idea_dfs_to_ideax_raw_tables(cursor, ideas_src_dir)
     # idea raw to sound raw, check by spark_nums
@@ -167,6 +167,7 @@ def idea_sheets_to_lynx_mstr(worlddir: WorldDir, export_db: bool = False):
             set_dir(worlddir.output_dir)
             excel_path = create_path(worlddir.output_dir, "db_export.xlsx")
             export_db_to_excel(cursor, excel_path, True)
+            reorder_etl_db_sheets(excel_path)
 
         db_conn.commit()
     db_conn.close()
@@ -185,23 +186,24 @@ def belief_sheets_to_lynx_mstr(worlddir: WorldDir, export_db: bool = False):
     idea_sheets_to_lynx_mstr(worlddir, export_db)
 
 
-def idea_sheets_to_gcal_day_punchs(
+def belief_sheets_to_gcal_day_punchs(
     worlddir: WorldDir,
-    person_name: PersonName,
+    person_names: set[PersonName],
     day: datetime,
     focus_group_title: GroupTitle = None,
 ):
     belief_sheets_to_lynx_mstr(worlddir, export_db=True)
-    save_person_gcal_day_punchs(
-        moment_mstr_dir=worlddir.moment_mstr_dir,
-        person_name=person_name,
-        day=day,
-        focus_group_title=focus_group_title,
-    )
+    for person_name in sorted(person_names):
+        lynx_to_person_gcal_day_punchs(
+            moment_mstr_dir=worlddir.moment_mstr_dir,
+            person_name=person_name,
+            day=day,
+            focus_group_title=focus_group_title,
+        )
 
 
 def create_today_punchs(
-    person_name: PersonName,
+    person_names: set[PersonName],
     world_name: WorldName,
     worlds_dir: str,
     output_dir: str = None,
@@ -216,12 +218,13 @@ def create_today_punchs(
         ideas_src_dir=ideas_src_dir,
         beliefs_src_dir=beliefs_src_dir,
     )
-    idea_sheets_to_gcal_day_punchs(
+    belief_sheets_to_gcal_day_punchs(
         worlddir=worlddir,
-        person_name=person_name,
+        person_names=person_names,
         day=datetime.now(),
         focus_group_title=focus_group_title,
     )
-    copy_person_day_punches_to_dst_dir(
-        worlddir.moment_mstr_dir, worlddir.output_dir, person_name
-    )
+    for person_name in person_names:
+        copy_person_day_punches_to_dst_dir(
+            worlddir.moment_mstr_dir, worlddir.output_dir, person_name
+        )

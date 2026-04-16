@@ -13,11 +13,16 @@ To integrate your CLI logic, replace the `create_today_punchs()` call inside
 
 from os.path import isdir as os_path_isdir
 from platform import system as platform_system
+from src.ch00_py.file_toolbox import delete_dir, set_dir
+from src.ch17_idea.idea_db_tool import prettify_excel_dir
+from src.ch20_kpi.gcalendar import lynx_to_person_gcal_day_punchs
 from src.ch21_world.world import create_today_punchs
 from src.ch30_etl_app.etl_gui_tool import (
+    fill_spark_face_in_directory,
     get_app_default_dir,
     get_app_default_dirs,
-    get_app_default_person_name,
+    get_app_default_me_personname,
+    get_app_default_you_personname,
     get_app_glb_attrs,
     get_option_table_options,
 )
@@ -31,10 +36,12 @@ from tkinter import (
 
 
 class OptionTable(tk.Frame):
-    def __init__(self, parent, options: dict, b_src_dir: str, **kwargs):
+    def __init__(self, parent, options: dict, b_src_dir: str, me_personname, **kwargs):
         super().__init__(parent, **kwargs)
         self.options = options
         self.b_src_dir = b_src_dir
+        self.me_personname = me_personname
+        # self.you_personname = you_personname
         self._build()
 
     def _build(self):
@@ -72,6 +79,8 @@ class OptionTable(tk.Frame):
         fn = self.options.get(description)
         if callable(fn):
             fn(self.b_src_dir())  # ← call it to get the current string value
+        fill_spark_face_in_directory(self.b_src_dir(), self.me_personname())
+        # prettify_excel_dir(self.b_src_dir())
 
 
 def open_directory(path: str) -> None:
@@ -85,6 +94,10 @@ def open_directory(path: str) -> None:
 
     else:
         subprocess_Popen(["xdg-open", path])
+
+
+class ETLAppMissingDefaultError(Exception):
+    pass
 
 
 # ──────────────────────────────────────────────
@@ -107,7 +120,8 @@ class ETLApp(tk.Tk):
 
         # String vars ─ empty string = "not set" (optional dirs stay None)
         self._world_name = tk.StringVar()
-        self._person = tk.StringVar()
+        self._me_personname = tk.StringVar()
+        self._you_personname = tk.StringVar()
         self._working = tk.StringVar()
         self._b_src_dir = tk.StringVar()
         self._i_src_dir = tk.StringVar()
@@ -124,15 +138,16 @@ class ETLApp(tk.Tk):
             "beliefs_src": self._b_src_dir,
             "ideas_src": self._i_src_dir,
             "output": self._output,
-            "person": self._person,
+            "me_personname": self._me_personname,
+            "you_personname": self._you_personname,
         }
         defaults = get_app_default_dirs(get_app_default_dir())
-        defaults["person"] = get_app_default_person_name()
-        defaults["person"] = get_app_default_person_name()
+        defaults["me_personname"] = get_app_default_me_personname()
+        defaults["you_personname"] = get_app_default_you_personname()
 
         for key, var in vars_map.items():
             if defaults.get(key) is None:
-                raise Exception(f"Missing default {key=}")
+                raise ETLAppMissingDefaultError(f"Missing default {key=}")
             var.set(defaults[key])
 
     def _open_dir(self, var: tk.StringVar):
@@ -148,33 +163,40 @@ class ETLApp(tk.Tk):
         return {
             "0": {
                 "row_type": "text",
-                "title": "PERSON NAME",
-                "var": self._person,
+                "title": "ME         ",
+                "var": self._me_personname,
                 "required": True,
                 "tip": "e.g. 'Emmanuel'",
             },
             "1": {
+                "row_type": "text",
+                "title": "YOU        ",
+                "var": self._you_personname,
+                "required": True,
+                "tip": "e.g. 'Emmanuel'",
+            },
+            "2": {
                 "row_type": "dir",
                 "title": "WORKING DIR",
                 "var": self._working,
                 "required": True,
                 "tip": "Root directory for the ETL process",
             },
-            "2": {
+            "3": {
                 "row_type": "dir",
                 "title": "BELIEFS_DIR",
                 "var": self._b_src_dir,
                 "required": True,
                 "tip": "Source of Beliefs. Non-sparked Ideas.",
             },
-            "3": {
+            "4": {
                 "row_type": "dir",
                 "title": "IDEAS_DIR  ",
                 "var": self._i_src_dir,
                 "required": True,
                 "tip": "Source of Ideas files. Beliefs that have been sparked.",
             },
-            "4": {
+            "5": {
                 "row_type": "dir",
                 "title": "OUTPUT DIR ",
                 "var": self._output,
@@ -261,8 +283,46 @@ class ETLApp(tk.Tk):
             cursor="hand2",
             command=lambda v=var: self._open_dir(v),
         ).grid(row=row, column=3, padx=(4, 0), pady=7)
+        tk.Button(
+            parent,
+            text="🗑",
+            font=ax.mono,
+            bg=ax.border,
+            fg=ax.fg,
+            activebackground="#ff5f57",
+            activeforeground=ax.fg_black,
+            relief="flat",
+            bd=0,
+            padx=10,
+            pady=4,
+            cursor="hand2",
+            command=lambda v=var: self._confirm_delete(v),
+        ).grid(row=row, column=4, padx=(4, 0), pady=7)
         parent.columnconfigure(1, weight=1)
         parent.columnconfigure(3, weight=0)
+
+    def _confirm_delete(self, var: tk.StringVar):
+        path = var.get().strip()
+        if not os_path_isdir(path):
+            tkinter_messagebox.showwarning(
+                "Invalid directory", f"Not a valid directory:\n{path}"
+            )
+            return
+        explain_str = f"Delete all contents in:\n{path}\n\nThis cannot be undone."
+        if confirmed := tkinter_messagebox.askyesno("Confirm delete", explain_str):
+            self._rebuild_dirs(path)
+
+    def _rebuild_dirs(self, path):
+        delete_dir(path)
+        if len(self._working.get()) > 0:
+            set_dir(self._working.get())
+        if self._b_src_dir:
+            set_dir(self._b_src_dir.get())
+        if self._i_src_dir:
+            set_dir(self._i_src_dir.get())
+        if self._output:
+            set_dir(self._output.get())
+        self._status.set(f"✔  Deleted contents of {path}")
 
     def _text_row(self, parent, row, label, var, *, required, tip):
         """Render one label + plain text entry row (no browse button)."""
@@ -354,7 +414,12 @@ class ETLApp(tk.Tk):
         )
         self._run_btn.pack()
         options = get_option_table_options()
-        table = OptionTable(self, options, b_src_dir=self._b_src_dir.get)
+        table = OptionTable(
+            self,
+            options,
+            b_src_dir=self._b_src_dir.get,
+            me_personname=self._me_personname.get,
+        )
         table.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 
         # hover effect
@@ -409,7 +474,8 @@ class ETLApp(tk.Tk):
     # ── run handler ────────────────────────────
     def _run(self):
         ax = get_app_glb_attrs()
-        person = self._person.get().strip()
+        me_person = self._me_personname.get().strip()
+        you_person = self._you_personname.get().strip()
         working = self._working.get().strip()
         b_src_dir_ = self._b_src_dir.get().strip()
         i_src_dir_ = self._i_src_dir.get().strip()
@@ -419,7 +485,7 @@ class ETLApp(tk.Tk):
         b_src_dir_ = b_src_dir_ if os_path_isdir(b_src_dir_) else None
         i_src_dir_ = i_src_dir_ if os_path_isdir(i_src_dir_) else None
         output = output if os_path_isdir(output) else None
-        person = person if person and not person.startswith("Filter by") else None
+        # person = person if person and not person.startswith("Filter ") else None
 
         # Validate required field
         if not working or not os_path_isdir(working):
@@ -436,7 +502,7 @@ class ETLApp(tk.Tk):
 
         try:
             create_today_punchs(
-                person_name=person,
+                person_names={me_person, you_person},
                 world_name=self._world_name.get(),
                 worlds_dir=self._working.get(),
                 output_dir=self._output.get(),
@@ -445,6 +511,7 @@ class ETLApp(tk.Tk):
             )
             self._status.set("✔  Pipeline completed successfully.")
             tkinter_messagebox.showinfo("Done", "ETL pipeline finished successfully.")
+
         except Exception as exc:  # noqa: BLE001
             self._status.set(f"✘  Error: {exc}")
             tkinter_messagebox.showerror("Pipeline error", str(exc))

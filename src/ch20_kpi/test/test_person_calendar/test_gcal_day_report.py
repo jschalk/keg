@@ -16,7 +16,7 @@ from src.ch20_kpi.gcalendar import (
     get_gcal_day_punch_from_job_file,
     get_gcal_day_punch_from_personunit,
     get_person_gcal_day_punchs,
-    save_person_gcal_day_punchs,
+    lynx_to_person_gcal_day_punchs,
 )
 from src.ch20_kpi.test._util.ch20_examples import (
     get_a23_sue_clean_example,
@@ -211,7 +211,7 @@ def test_get_person_gcal_day_punchs_ReturnsObj_Scenario2_OnlySueReports(
     assert sue_ep8_day_punch_path == sue_ep8_dict.get("file_path")
 
 
-def test_save_person_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
+def test_lynx_to_person_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     temp3_fs,
 ):
     # ESTABLISH
@@ -247,7 +247,7 @@ def test_save_person_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     assert not os_path_exists(sue_ep8_day_punch_path)
 
     # WHEN
-    save_person_gcal_day_punchs(
+    lynx_to_person_gcal_day_punchs(
         moment_mstr_dir=mmt_mstr_dir,
         person_name=exx.sue,
         day=apr7,

@@ -1,10 +1,17 @@
-from pandas import DataFrame
+from pandas import (
+    DataFrame,
+    ExcelWriter as pandas_ExcelWriter,
+    read_excel as pandas_read_excel,
+)
+from pathlib import Path
 from src.ch00_py.file_toolbox import create_path
 from src.ch17_idea.idea_db_tool import save_sheet
 from src.ch18_etl_config.idea_collector import (
     IdeaFileRef,
     get_all_excel_ideasheets,
-    get_all_idea_dataframes,
+    get_all_ideafilerefs,
+    get_etl_db_sheets_tier2_order,
+    reorder_etl_db_sheets,
 )
 from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
@@ -65,7 +72,7 @@ def test_IdeaFileRef_get_csv_filename_ReturnsObj_Scenario1():
     assert x_ideafileref.get_csv_filename() == f"{ii00003_str}.csv"
 
 
-def test_get_all_idea_dataframes_ReturnsObj_Scenario0_TranslateSheetNames(
+def test_get_all_ideafilerefs_ReturnsObj_Scenario0_TranslateSheetNames(
     temp3_fs,
 ):
     # ESTABLISH
@@ -95,7 +102,7 @@ def test_get_all_idea_dataframes_ReturnsObj_Scenario0_TranslateSheetNames(
     save_sheet(ex_file_path, ii00003_str, df1)
 
     # WHEN
-    x_ideasheets = get_all_idea_dataframes(env_dir)
+    x_ideasheets = get_all_ideafilerefs(env_dir)
 
     # THEN
     assert x_ideasheets
@@ -105,7 +112,7 @@ def test_get_all_idea_dataframes_ReturnsObj_Scenario0_TranslateSheetNames(
     assert len(x_ideasheets) == 1
 
 
-def test_get_all_idea_dataframes_ReturnsObj_Scenario1(temp3_fs):
+def test_get_all_ideafilerefs_ReturnsObj_Scenario1_OneSheets(temp3_fs):
     # ESTABLISH
     env_dir = str(temp3_fs)
     x_dir = create_path(env_dir, "examples_dir")
@@ -143,7 +150,7 @@ def test_get_all_idea_dataframes_ReturnsObj_Scenario1(temp3_fs):
     save_sheet(ex_file_path, ii00003_ex2_str, df2)
 
     # WHEN
-    x_ideasheets = get_all_idea_dataframes(env_dir)
+    x_ideasheets = get_all_ideafilerefs(env_dir)
 
     # THEN
     assert x_ideasheets
@@ -152,3 +159,140 @@ def test_get_all_idea_dataframes_ReturnsObj_Scenario1(temp3_fs):
 
     assert x_ideasheets == [ex1_ideafileref]
     assert len(x_ideasheets) == 1
+
+
+def test_get_all_ideafilerefs_ReturnsObj_Scenario2_TwoSheets(temp3_fs):
+    # ESTABLISH
+    env_dir = str(temp3_fs)
+    x_dir = create_path(env_dir, "examples_dir")
+    spark1 = 1
+    minute_360 = 360
+    minute_420 = 420
+    hour6am = "6am"
+    hour7am = "7am"
+    ex_filename = "Faybob.xlsx"
+    ex_file_path = create_path(x_dir, ex_filename)
+    ex1_idea_columns = [
+        kw.spark_num,
+        kw.spark_face,
+        kw.cumulative_minute,
+        kw.moment_rope,
+        kw.hour_label,
+        kw.knot,
+    ]
+    ex1_row1 = [spark1, exx.sue, minute_360, exx.a23, hour6am, ";"]
+    ex1_row2 = [spark1, exx.sue, minute_420, exx.a23, hour7am, ";"]
+    ex2_idea_columns = [
+        kw.spark_num,
+        kw.spark_face,
+        kw.cumulative_minute,
+        kw.moment_rope,
+        kw.hour_label,
+        kw.knot,
+    ]
+    ex2_row1 = [spark1, exx.sue, minute_360, exx.a23, hour6am, ";"]
+    ex2_row2 = [spark1, exx.sue, minute_420, exx.a23, hour7am, ";"]
+
+    df1 = DataFrame([ex1_row1, ex1_row2], columns=ex1_idea_columns)
+    df2 = DataFrame([ex2_row1, ex2_row2], columns=ex2_idea_columns)
+    ii00003_ex1_str = "example1_ii00003"
+    ii00003_ex2_str = "example2_ii00003"
+    save_sheet(ex_file_path, ii00003_ex1_str, df1)
+    save_sheet(ex_file_path, ii00003_ex2_str, df2)
+
+    # WHEN
+    x_ideasheets = get_all_ideafilerefs(env_dir)
+
+    # THEN
+    assert x_ideasheets
+    ex1_ideafileref = IdeaFileRef(x_dir, ex_filename, ii00003_ex1_str, "ii00003")
+    ex2_ideafileref = IdeaFileRef(x_dir, ex_filename, ii00003_ex2_str, "ii00003")
+
+    assert x_ideasheets == [ex1_ideafileref, ex2_ideafileref]
+    assert len(x_ideasheets) == 2
+
+
+def test_get_etl_db_sheets_tier2_order_ReturnsObj():
+    # ESTABLISH
+    tier2_postfixs = get_etl_db_sheets_tier2_order()
+    # WHEN / THEN
+    assert tier2_postfixs
+    assert tier2_postfixs == [
+        "b_src",
+        "i_src",
+        "ideax_raw",
+        "ideax_agg",
+        "ideax_vld",
+        "s_raw",
+        "s_agg",
+        "s_vld",
+        "h_raw",
+        "h_agg",
+        "h_vld",
+        "lynx",
+        "b_dst",
+    ]
+
+
+def create_excel(filepath: Path, sheet_names: list[str]):
+    with pandas_ExcelWriter(filepath, engine="xlsxwriter") as writer:
+        for name in sheet_names:
+            DataFrame({"col": [name]}).to_excel(writer, sheet_name=name, index=False)
+
+
+def get_sheet_order(filepath: Path) -> list[str]:
+    return list(pandas_read_excel(filepath, sheet_name=None).keys())
+
+
+def test_reorder_etl_db_sheets_SortsSheets_Scenario0_NoPrefixOrPostfix(tmp_path):
+    # ESTABLISH
+    filepath = tmp_path / "test.xlsx"
+
+    create_excel(filepath, ["misc", "BBB_data", "AAA_info"])
+    # WHEN
+    reorder_etl_db_sheets(filepath)
+    # THEN
+    result = get_sheet_order(filepath)
+    assert result == ["AAA_info", "BBB_data", "misc"]
+
+
+def test_reorder_etl_db_sheets_SortsSheets_Scenario1_PostfixPriority(tmp_path):
+    # ESTABLISH
+    filepath = tmp_path / "test.xlsx"
+
+    create_excel(filepath, ["misc", "report_done_ideax_raw", "zzz_final_ideax_vld"])
+    # WHEN
+    reorder_etl_db_sheets(filepath)
+    # THEN
+    result = get_sheet_order(filepath)
+    assert result == ["report_done_ideax_raw", "zzz_final_ideax_vld", "misc"]
+
+
+def test_reorder_etl_db_sheets_SortsSheets_Scenario2_FallbackIgnoresOriginalOrder(
+    tmp_path,
+):
+    # ESTABLISH
+    filepath = tmp_path / "test.xlsx"
+    original = ["sheet3_s_vld", "sheet7_ideax_vld", "sheet2"]
+    create_excel(filepath, original)
+    # WHEN
+    reorder_etl_db_sheets(filepath)
+    # THEN
+    result = get_sheet_order(filepath)
+    expected_sheet_order = ["sheet7_ideax_vld", "sheet3_s_vld", "sheet2"]
+    assert result == expected_sheet_order
+
+
+def test_reorder_etl_db_sheets_SortsSheets_Scenario3_ideax_raw_ideax_agg_AreSorted(
+    tmp_path,
+):
+    # ESTABLISH
+    filepath = tmp_path / "test.xlsx"
+    original = ["sheet3_s_vld", "iisheet2ideax_agg", "iisheet3ideax_raw"]
+    create_excel(filepath, original)
+    # WHEN
+    reorder_etl_db_sheets(filepath)
+    # THEN
+    result = get_sheet_order(filepath)
+    expected_sheet_order = ["iisheet3ideax_raw", "iisheet2ideax_agg", "sheet3_s_vld"]
+    assert result == expected_sheet_order
