@@ -879,7 +879,7 @@ def test_create_select_query_ReturnsObj_Scenario4_ColumnOrdering(cursor0: Cursor
     assert gen_sqlstr == expected_sqlstr
 
 
-def test_create_select_query_ReturnsObj_Scenario4(cursor0: Cursor):
+def test_create_select_query_ReturnsObj_Scenario5(cursor0: Cursor):
     # ESTABLISH
     x_tablename = "dark_side"
     id_str = "id"
@@ -1240,7 +1240,7 @@ def test_get_db_tables_ReturnsObj_Scenario1_TablenamesContainsString(cursor0: Cu
     assert get_db_tables(cursor0, "2") == {x_table2: 1}
 
 
-def test_get_db_tables_ReturnsObj_Scenario1_TablenamesStartWithString(cursor0: Cursor):
+def test_get_db_tables_ReturnsObj_Scenario2_TablenamesStartWithString(cursor0: Cursor):
     # ESTABLISH
     x_table1 = "side1"
     x_table2 = "side2"

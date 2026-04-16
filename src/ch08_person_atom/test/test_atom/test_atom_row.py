@@ -139,7 +139,7 @@ def test_AtomRow_set_class_types_SetsAttr():
     assert x_atomrow.morph == x_morph_bool
 
 
-def test_AtomRow_get_personatoms_ReturnsObj_person_contactunit_str_INSERT_Scenario0():
+def test_AtomRow_get_personatoms_ReturnsObj_Scenario0_person_contactunit_str_INSERT():
     # ESTABLISH
     x_dimen = kw.person_contactunit
     x_atomrow = atomrow_shop({x_dimen}, kw.INSERT)
@@ -155,7 +155,7 @@ def test_AtomRow_get_personatoms_ReturnsObj_person_contactunit_str_INSERT_Scenar
     assert x_personatoms[0] == static_atom
 
 
-def test_AtomRow_get_personatoms_ReturnsObj_person_contactunit_str_INSERT_Scenario1():
+def test_AtomRow_get_personatoms_ReturnsObj_Scenario1_person_contactunit_str_INSERT():
     # ESTABLISH
     x_dimen = kw.person_contactunit
     x_atomrow = atomrow_shop({x_dimen}, kw.INSERT)
@@ -173,7 +173,7 @@ def test_AtomRow_get_personatoms_ReturnsObj_person_contactunit_str_INSERT_Scenar
     assert x_personatoms[0] == static_atom
 
 
-def test_AtomRow_get_personatoms_ReturnsObj_person_contactunit_NSERT_Fails():
+def test_AtomRow_get_personatoms_ReturnsObj_Scenario2_person_contactunit_NSERT_Fails():
     # ESTABLISH
     x_dimen = kw.person_contactunit
     x_atomrow = atomrow_shop({x_dimen}, kw.INSERT)
@@ -185,7 +185,7 @@ def test_AtomRow_get_personatoms_ReturnsObj_person_contactunit_NSERT_Fails():
     assert len(x_personatoms) == 0
 
 
-def test_AtomRow_get_personatoms_ReturnsObj_person_contactunit_INSERT_Scenario2():
+def test_AtomRow_get_personatoms_ReturnsObj_Scenario3_person_contactunit_INSERT():
     # ESTABLISH
     x_dimen = kw.person_contactunit
     x_atomrow = atomrow_shop({x_dimen}, kw.INSERT)
@@ -205,7 +205,7 @@ def test_AtomRow_get_personatoms_ReturnsObj_person_contactunit_INSERT_Scenario2(
     assert x_personatoms[0] == static_atom
 
 
-def test_AtomRow_get_personatoms_ReturnsObjIfDimenIsCorrect():
+def test_AtomRow_get_personatoms_ReturnsObj_Scenario4_IfDimenIsCorrect():
     # ESTABLISH
     x_atomrow = atomrow_shop(set(), kw.INSERT)
     x_atomrow.contact_name = "Bob"
@@ -222,7 +222,7 @@ def test_AtomRow_get_personatoms_ReturnsObjIfDimenIsCorrect():
     assert len(x_atomrow.get_personatoms()) == 1
 
 
-def test_AtomRow_get_personatoms_ReturnsObj_person_planunit_INSERT_pledge_False_Scenario0():
+def test_AtomRow_get_personatoms_ReturnsObj_Scenario5_person_planunit_INSERT_pledge_False():
     # ESTABLISH
     x_atomrow = atomrow_shop({kw.person_planunit}, kw.INSERT)
     x_atomrow.plan_rope = create_rope("amy78", "casa")
@@ -241,7 +241,7 @@ def test_AtomRow_get_personatoms_ReturnsObj_person_planunit_INSERT_pledge_False_
     assert x_personatom == static_personatom
 
 
-def test_AtomRow_get_personatoms_ReturnsObj_person_planunit_INSERT_pledge_False_Scenario1():
+def test_AtomRow_get_personatoms_ReturnsObj_Scenario6_person_planunit_INSERT_pledge_False():
     # ESTABLISH
     x_dimens = {kw.person_planunit, kw.person_plan_healerunit}
     x_atomrow = atomrow_shop(x_dimens, kw.INSERT)

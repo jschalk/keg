@@ -13,7 +13,7 @@ def test_get_inflection_points_dict_ReturnsObj_Scenario0_EmptyList():
     assert get_inflection_points_dict([]) == {}
 
 
-def test_get_inflection_points_dict_ReturnsObj_Scenario0_One_dayevent():
+def test_get_inflection_points_dict_ReturnsObj_Scenario1_One_dayevent():
     # ESTABLISH
     x1_plan = planunit_shop(exx.mop, fund_ratio=0.1)
     dayevent = DayEvent(x1_plan, 1, 0, day_min_upper=60)
@@ -25,7 +25,7 @@ def test_get_inflection_points_dict_ReturnsObj_Scenario0_One_dayevent():
     assert points == {0: dayevent, 60: None}
 
 
-def test_get_inflection_points_dict_ReturnsObj_Scenario1_TwoSequential_dayevents_NoOverlap():
+def test_get_inflection_points_dict_ReturnsObj_Scenario2_TwoSequential_dayevents_NoOverlap():
     # ESTABLISH
     x_fund_ratio = 0.1
     x_plan = planunit_shop(exx.mop, fund_ratio=x_fund_ratio)
@@ -40,7 +40,7 @@ def test_get_inflection_points_dict_ReturnsObj_Scenario1_TwoSequential_dayevents
     assert inflection_points == {0: y0_dayevent, 30: None, 60: y1_dayevent, 90: None}
 
 
-def test_get_inflection_points_dict_ReturnsObj_Scenario2_Higher_fund_ratio_dayevent_Interrupts():
+def test_get_inflection_points_dict_ReturnsObj_Scenario3_Higher_fund_ratio_dayevent_Interrupts():
     # ESTABLISH
     x1_fund_ratio = 0.1
     x1_plan = planunit_shop(exx.mop, fund_ratio=x1_fund_ratio)
@@ -57,7 +57,7 @@ def test_get_inflection_points_dict_ReturnsObj_Scenario2_Higher_fund_ratio_dayev
     assert inflection_points == {0: y60_dayevent, 30: y90_dayevent, 90: None}
 
 
-def test_get_inflection_points_dict_ReturnsObj_Scenario3_Lower_fund_ratio_dayevent_DoesNotInterrupt():
+def test_get_inflection_points_dict_ReturnsObj_Scenario4_Lower_fund_ratio_dayevent_DoesNotInterrupt():
     # ESTABLISH
     x1_fund_ratio = 0.1
     x1_plan = planunit_shop(exx.mop, fund_ratio=x1_fund_ratio)
@@ -74,7 +74,7 @@ def test_get_inflection_points_dict_ReturnsObj_Scenario3_Lower_fund_ratio_dayeve
     assert inflection_points == {0: y60_dayevent, 60: y90_dayevent, 90: None}
 
 
-def test_get_inflection_points_dict_ReturnsObj_Scenario4_Same_fund_ratio_dayevent_DoesNotInterrupt():
+def test_get_inflection_points_dict_ReturnsObj_Scenario5_Same_fund_ratio_dayevent_DoesNotInterrupt():
     # ESTABLISH
     x1_fund_ratio = 0.1
     x1_plan = planunit_shop(exx.mop, fund_ratio=x1_fund_ratio)

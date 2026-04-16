@@ -11,7 +11,7 @@ from dataclasses import dataclass
 from os import walk as os_walk
 from os.path import exists as os_path_exists, join as os_path_join
 from pathlib import Path as pathlib_Path
-from re import compile as re_compile
+from re import compile as re_compile, search as re_search
 from src.ch00_py.dict_toolbox import is_camel_case, uppercase_in_str
 from src.ch00_py.file_toolbox import create_path, get_dir_filenames, open_file
 from src.ch00_py.keyword_class_builder import get_example_strs_config
@@ -20,6 +20,7 @@ from src.ch98_docs_builder.doc_builder import (
     get_chapter_descs,
     get_func_names_and_class_bases_from_file,
 )
+from typing import Dict, List, Set, Tuple
 
 
 def filename_style_is_correct(filename: str) -> bool:
@@ -497,3 +498,44 @@ def find_incorrect_imports(py_file_path: str, min_number: int) -> list[str]:
     collector = _ImportCollector(min_number)
     collector.visit(tree)
     return collector.matches
+
+
+_PATTERN = re_compile(r"^test_(?P<func>.+?)_ReturnsObj(?P<rest>.*)$")
+
+_SCENARIO_PATTERN = re_compile(r"(Scenario\d+)")
+
+
+def find_matching_tests(test_names: Set[str]) -> List[str]:
+    """
+    Returns test names that:
+    - match: test_<func>_ReturnsObj...
+    - contain a ScenarioX anywhere after that
+    - have at least one other test with the same (func, ScenarioX)
+    """
+
+    groups: Dict[Tuple[str, str], List[str]] = {}
+
+    for name in test_names:
+        match = _PATTERN.match(name)
+        if not match:
+            continue
+
+        func_name = match.group("func")
+        rest = match.group("rest")
+
+        scenario_match = _SCENARIO_PATTERN.search(rest)
+        if not scenario_match:
+            continue
+
+        scenario = scenario_match.group(1)
+
+        key = (func_name, scenario)
+        groups.setdefault(key, []).append(name)
+
+    # Flatten only groups with duplicates
+    result: List[str] = []
+    for names in groups.values():
+        if len(names) > 1:
+            result.extend(names)
+
+    return result

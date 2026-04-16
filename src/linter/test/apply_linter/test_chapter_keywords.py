@@ -10,6 +10,7 @@ from src.ch00_py.keyword_class_builder import (
 from src.ch98_docs_builder.doc_builder import get_chapter_desc_prefix, get_chapter_descs
 from src.linter.style import (
     check_custom_exception_classes_style,
+    find_matching_tests,
     function_name_style_is_correct,
     get_all_semantic_types_from_ref_files,
     get_chapters_obj_metrics,
@@ -81,6 +82,9 @@ def test_Chapters_CheckStringMetricsFromEveryFile():
     all_functions = chapters_func_class_metrics.all_functions
 
     # THEN
+    matching_tests = find_matching_tests(all_functions)
+    assert not matching_tests
+
     flagged_func_name_count = {}
     for function_name in sorted(all_functions.keys()):
         func_name_count = all_functions.get(function_name)

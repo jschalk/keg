@@ -68,7 +68,7 @@ def test_create_riverbook_ReturnsObj_Scenario0_mana_grain_IsNone():
     assert yao_riverbook.mana_grain == default_grain_num_if_None()
 
 
-def test_create_riverbook_ReturnsObj_Scenario0_mana_grain_ArgPassed():
+def test_create_riverbook_ReturnsObj_Scenario1_mana_grain_ArgPassed():
     # ESTABLISH
     yao_person = personunit_shop(exx.yao)
     yao_person.add_contactunit(exx.yao)

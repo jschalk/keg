@@ -108,7 +108,7 @@ def test_CellUnit_to_dict_ReturnsObj_Scenario1_EmptyPersonAdjust():
     assert x_cell_dict.get(kw.boss_facts) == {}
 
 
-def test_CellUnit_to_dict_ReturnsObj_Scenario1_WithMoreParameters():
+def test_CellUnit_to_dict_ReturnsObj_Scenario2_WithMoreParameters():
     # ESTABLISH
     bob_sue_ancestors = [exx.bob, exx.sue]
     bob_sue_spark7 = 7

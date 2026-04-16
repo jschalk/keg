@@ -788,7 +788,7 @@ def test_get_idea_config_dict_ReturnsObj_Scenario1_Check_build_order():
     print(f"{sorted(builder_order_dict.keys())=}")
 
 
-def test_get_idea_config_dict_ReturnsObj_Scenario0_Person():
+def test_get_idea_config_dict_ReturnsObj_Scenario2_Person():
     # ESTABLISH / WHEN
     person_idea_config = get_idea_config_dict(kw.person)
 
@@ -817,7 +817,7 @@ def test_get_idea_config_dict_ReturnsObj_Scenario0_Person():
     assert not person_idea_config.get(kw.moment_timeoffi)
 
 
-def test_get_idea_config_dict_ReturnsObj_Scenario1_CountDimens():
+def test_get_idea_config_dict_ReturnsObj_Scenario3_CountDimens():
     # ESTABLISH / WHEN / THEN
     assert len(get_idea_config_dict(idea_categorys={kw.person})) == 10
     assert len(get_idea_config_dict(idea_categorys={kw.moment})) == 7

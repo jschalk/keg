@@ -8,7 +8,7 @@ from src.ch19_etl_steps.obj2db_moment import get_moment_dict_from_heard_tables
 from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 
-def test_get_moment_dict_from_heard_tables_ReturnsObj_With_momentunit_Attrs_Scenario0(
+def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario0_With_momentunit_Attrs(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -66,7 +66,7 @@ VALUES (
     assert a23_dict.get(kw.knot) == a23_knot
 
 
-def test_get_moment_dict_from_heard_tables_ReturnsObj_With_momentunit_Attrs_Scenario1(
+def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario1_With_momentunit_Attrs(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -97,7 +97,7 @@ def test_get_moment_dict_from_heard_tables_ReturnsObj_With_momentunit_Attrs_Scen
     }
 
 
-def test_get_moment_dict_from_heard_tables_ReturnsObj_With_mmtpayy_Attrs_Scenario0(
+def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario2_With_mmtpayy_Attrs(
     cursor0: Cursor,
 ):
     # sourcery skip: extract-duplicate-method
@@ -133,7 +133,7 @@ VALUES ('{exx.a23}', '{exx.bob}', '{exx.sue}', {tp55}, {bob_sue_tp55_amount})
     assert a23_trans_bob_sue_dict.get(tp55) == bob_sue_tp55_amount
 
 
-def test_get_moment_dict_from_heard_tables_ReturnsObj_With_mmtpayy_Attrs_Scenario1(
+def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario3_With_mmtpayy_Attrs(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -172,7 +172,7 @@ VALUES
     assert a23_trans_bob_sue_dict == {tp55: a23_bob_sue_tp55_amount}
 
 
-def test_get_moment_dict_from_heard_tables_ReturnsObj_With_momentbud_Attrs_Scenario0(
+def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario4_With_momentbud_Attrs(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -213,7 +213,7 @@ VALUES ('{exx.a23}', '{exx.bob}', {tp55}, '{exx.dash}', {bob_tp55_quota}, {bob_t
     assert a23_personbudhistory_bob_tp55_dict == expected_bob_tp55_dict
 
 
-def test_get_moment_dict_from_heard_tables_ReturnsObj_With_mmthour_Attrs_Scenario0(
+def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario5_With_mmthour_Attrs(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -248,7 +248,7 @@ VALUES
     assert a23_hours_config_dict == [[hour3_label, hour3_min], [hour4_label, hour4_min]]
 
 
-def test_get_moment_dict_from_heard_tables_ReturnsObj_With_mmtmont_Attrs_Scenario0(
+def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario6_With_mmtmont_Attrs(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -284,7 +284,7 @@ VALUES
     ]
 
 
-def test_get_moment_dict_from_heard_tables_ReturnsObj_With_mmtweek_Attrs_Scenario0(
+def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario7_With_mmtweek_Attrs(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -317,7 +317,7 @@ VALUES
     assert a23_weekdays_config_dict == [ana_label, bee_label]
 
 
-def test_get_moment_dict_from_heard_tables_ReturnsObj_With_mmtoffi_Attrs_Scenario0(
+def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario8_With_mmtoffi_Attrs(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -347,7 +347,7 @@ VALUES
     assert a23_offi_times_config_dict == [offi_time5, offi_time7]
 
 
-def test_get_moment_dict_from_heard_tables_ReturnsObj_IsFormatted_Scenario0_momentunit(
+def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario9_IsFormatted_momentunit(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -403,7 +403,7 @@ VALUES (
     assert a23_momentunit.knot == a23_knot
 
 
-def test_get_moment_dict_from_heard_tables_ReturnsObj_IsFormatted_Scenario1_mmtpayy(
+def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario10_IsFormatted_mmtpayy(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -433,7 +433,7 @@ VALUES ('{exx.a23}', '{exx.bob}', '{exx.sue}', {tp55}, {bob_sue_tp55_amount})
     assert bob_tranunit == {exx.sue: {tp55: bob_sue_tp55_amount}}
 
 
-def test_get_moment_dict_from_heard_tables_ReturnsObj_IsFormatted_Scenario2_momentbud(
+def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario11_IsFormatted_momentbud(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -467,7 +467,7 @@ VALUES ('{exx.a23}', '{exx.bob}', {tp55}, {bob_tp55_quota}, {bob_tp55_celldepth}
     assert a23_bob_55_bud.celldepth == bob_tp55_celldepth
 
 
-def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario3_mmthour(
+def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario12_mmthour(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -501,7 +501,7 @@ VALUES
     ]
 
 
-def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario4_mmtmont(
+def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario13_mmtmont(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -535,7 +535,7 @@ VALUES
     ]
 
 
-def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario5_mmtweek(
+def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario14_mmtweek(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -566,7 +566,7 @@ VALUES
     assert a23_momentunit.epoch.weekdays_config == [ana_label, bee_label]
 
 
-def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario5_mmtoffi(
+def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario15_mmtoffi(
     cursor0: Cursor,
 ):
     # ESTABLISH
