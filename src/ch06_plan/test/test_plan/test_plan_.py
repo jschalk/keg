@@ -196,7 +196,7 @@ def test_planunit_shop_ReturnsObj_Scenario2_ConvertsNegative_starToZero():
 
 def test_planunit_shop_ReturnsObj_Scenario3_Given_healerunit_Parameter():
     # ESTABLISH
-    x_healerunit = healerunit_shop({"Sue", "Yao"})
+    x_healerunit = healerunit_shop({"Sue", exx.yao})
     x_problem_bool = True
     x_fund_grain = 88
 

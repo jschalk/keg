@@ -9,7 +9,7 @@ from src.ref.keywords import ExampleStrs as exx
 
 def test_PersonUnit_edit_plan_label_FailsWhenPlanDoesNotExist():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
 
     casa_rope = yao_person.make_l1_rope(exx.casa)
     yao_person.set_l1_plan(planunit_shop(exx.casa))
@@ -163,7 +163,7 @@ def test_person_set_person_name_ModifiesBoth():
     # ESTABLISH
     sue_person = get_personunit_with_4_levels_and_2reasons_2facts()
     assert sue_person.person_name == "Sue"
-    # mid_plan_label1 = "Yao"
+    # mid_plan_label1 = exx.yao
     # sue_person.edit_plan_label(old_rope=old_plan_label, new_plan_label=mid_plan_label1)
     # assert sue_person.person_name == old_plan_label
     # assert sue_person.planroot.plan_label == mid_plan_label1

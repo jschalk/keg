@@ -56,7 +56,7 @@ def test_PersonUnit_conpute_Sets_planunit_fund_onset_fund_cease_Scenario0():
 def test_PersonUnit_conpute_Sets_planunit_fund_onset_fund_cease_Scenario1():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
-    yao_personunit = personunit_shop("Yao")
+    yao_personunit = personunit_shop(exx.yao)
 
     auto_str = "auto"
     auto_rope = yao_personunit.make_l1_rope(auto_str)
@@ -120,7 +120,7 @@ def test_PersonUnit_conpute_Sets_planunit_fund_onset_fund_cease_Scenario1():
 def test_PersonUnit_conpute_Sets_planunit_fund_onset_fund_cease_Scenario2_DifferentOrderOfPlans():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
-    yao_personunit = personunit_shop("Yao")
+    yao_personunit = personunit_shop(exx.yao)
 
     auto_str = "auto"
     auto_rope = yao_personunit.make_l1_rope(auto_str)
@@ -687,7 +687,7 @@ def test_PersonUnit_set_awardunit_CalculatesInheritedAwardUnitPersonFund():
 
 def test_PersonUnit_conpute_SetsGroupLinkPersonCredAndDebt():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     yao_person.set_contactunit(contactunit_shop(exx.sue))
     yao_person.set_contactunit(contactunit_shop(exx.bob))
     yao_person.set_contactunit(contactunit_shop(exx.zia))
@@ -780,7 +780,7 @@ def test_PersonUnit_conpute_SetsGroupLinkPersonCredAndDebt():
 
 def test_PersonUnit_conpute_SetsContactUnitPerson_fund():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     bowl_rope = yao_person.make_l1_rope(exx.bowl)
     yao_person.set_l1_plan(planunit_shop(exx.bowl))
     yao_person.set_contactunit(contactunit_shop(exx.sue))
@@ -875,7 +875,7 @@ def test_PersonUnit_conpute_SetsContactUnitPerson_fund():
 
 def test_PersonUnit_conpute_SetsPartGroupedLWContactUnitPerson_fund():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     bowl_rope = yao_person.make_l1_rope(exx.bowl)
     yao_person.set_l1_plan(planunit_shop(exx.bowl))
     yao_person.set_contactunit(contactunit_shop(exx.sue))
@@ -976,7 +976,7 @@ def test_PersonUnit_conpute_CreatesNewGroupUnitAndSetsContact_fund_give_fund_tak
 
 def test_PersonUnit_conpute_SetsContactUnit_fund_give_fund_take():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     yao_person.set_l1_plan(planunit_shop("bowl"))
     yao_person.set_contactunit(contactunit_shop(exx.sue, 8))
     yao_person.set_contactunit(contactunit_shop(exx.bob))
@@ -1186,7 +1186,7 @@ def are_equal(x1: float, x2: float):
 
 def test_PersonUnit_conpute_SetsAttrsWhenNoFactUnitsNoReasonUnitsEmpty_agenda_ratio_cred_debt():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     sue_contactunit = contactunit_shop(exx.sue, 0.5, contact_debt_lumen=2)
     bob_contactunit = contactunit_shop(exx.bob, 1.5, contact_debt_lumen=3)
     zia_contactunit = contactunit_shop(exx.zia, 8, contact_debt_lumen=5)

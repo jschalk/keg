@@ -10,7 +10,7 @@ from src.ref.keywords import ExampleStrs as exx
 def test_PersonUnit_set_plantree_range_attrs_SetsInitialPlan_gogo_calc_stop_calc_UnitDoesNotErrorWithEmptyPersonUnit():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     root_rope = yao_person.planroot.get_plan_rope()
     root_plan = yao_person.get_plan_obj(root_rope)
     assert not root_plan.begin
@@ -44,7 +44,7 @@ def test_PersonUnit_set_plantree_range_attrs_SetsInitialPlan_gogo_calc_stop_calc
 
 def test_PersonUnit_set_plantree_range_attrs_SetsInitialPlan_gogo_calc_stop_calc_SimpleLabel():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     root_rope = yao_person.planroot.get_plan_rope()
     ziet0_begin = 7
     ziet0_close = 31
@@ -68,7 +68,7 @@ def test_PersonUnit_set_plantree_range_attrs_SetsInitialPlan_gogo_calc_stop_calc
 
 def test_PersonUnit_set_plantree_range_attrs_SetsInitialPlan_gogo_calc_stop_calc_LabelWith_denom():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     root_rope = yao_person.planroot.get_plan_rope()
     ziet0_begin = 6
     ziet0_close = 21
@@ -101,7 +101,7 @@ def test_PersonUnit_set_plantree_range_attrs_SetsInitialPlan_gogo_calc_stop_calc
 
 def test_PersonUnit_set_plantree_range_attrs_SetsInitialPlan_gogo_calc_stop_calc_LabelWith_denom_numor():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     root_rope = yao_person.planroot.get_plan_rope()
     ziet0_begin = 6
     ziet0_close = 18
@@ -137,7 +137,7 @@ def test_PersonUnit_set_plantree_range_attrs_SetsInitialPlan_gogo_calc_stop_calc
 
 def test_PersonUnit_set_plantree_range_attrs_SetsInitialPlan_gogo_calc_stop_calc_LabelWith_addin():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     root_rope = yao_person.planroot.get_plan_rope()
     ziet0_begin = 6
     ziet0_close = 18
@@ -170,7 +170,7 @@ def test_PersonUnit_set_plantree_range_attrs_SetsInitialPlan_gogo_calc_stop_calc
 
 def test_PersonUnit_set_plantree_range_attrs_SetsInitialPlan_gogo_calc_stop_calc_LabelWith_denom_addin():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     root_rope = yao_person.planroot.get_plan_rope()
     ziet0_begin = 6
     ziet0_close = 18
@@ -206,7 +206,7 @@ def test_PersonUnit_set_plantree_range_attrs_SetsInitialPlan_gogo_calc_stop_calc
 
 def test_PersonUnit_set_plantree_range_attrs_SetsDescendentPlan_gogo_calc_stop_calc_Simple0():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     root_rope = yao_person.planroot.get_plan_rope()
     ziet0_str = "ziet0"
     ziet0_rope = yao_person.make_l1_rope(ziet0_str)
@@ -246,7 +246,7 @@ def test_PersonUnit_set_plantree_range_attrs_SetsDescendentPlan_gogo_calc_stop_c
 
 def test_PersonUnit_set_plantree_range_attrs_SetsDescendentPlan_gogo_calc_stop_calc_LabelWith_denom():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     ziet0_str = "ziet0"
     ziet0_rope = yao_person.make_l1_rope(ziet0_str)
     ziet0_begin = 14
@@ -285,7 +285,7 @@ def test_PersonUnit_set_plantree_range_attrs_SetsDescendentPlan_gogo_calc_stop_c
 
 def test_PersonUnit_set_plantree_range_attrs_SetsDescendentPlan_gogo_calc_stop_calc_LabelWith_denom_numor():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     ziet0_str = "ziet0"
     ziet0_rope = yao_person.make_l1_rope(ziet0_str)
     ziet0_begin = 14
@@ -326,7 +326,7 @@ def test_PersonUnit_set_plantree_range_attrs_SetsDescendentPlan_gogo_calc_stop_c
 
 def test_PersonUnit_set_plantree_range_attrs_SetsDescendentPlan_gogo_calc_stop_calc_LabelWith_addin():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     ziet0_str = "ziet0"
     ziet0_rope = yao_person.make_l1_rope(ziet0_str)
     ziet0_begin = 3
@@ -367,7 +367,7 @@ def test_PersonUnit_set_plantree_range_attrs_SetsDescendentPlan_gogo_calc_stop_c
 
 def test_PersonUnit_set_plantree_range_attrs_Sets2LevelsDescendentPlan_gogo_calc_stop_calc_LabelWith_addin():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     ziet0_str = "ziet0"
     ziet0_rope = yao_person.make_l1_rope(ziet0_str)
     ziet0_begin = 3
@@ -416,7 +416,7 @@ def test_PersonUnit_set_plantree_range_attrs_Sets2LevelsDescendentPlan_gogo_calc
 
 def test_PersonUnit_set_plantree_range_attrs_SetsDescendentPlan_gogo_calc_stop_calc_LabelWith_denom_addin():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     ziet0_str = "ziet0"
     ziet0_rope = yao_person.make_l1_rope(ziet0_str)
     ziet0_begin = 21
@@ -458,7 +458,7 @@ def test_PersonUnit_set_plantree_range_attrs_SetsDescendentPlan_gogo_calc_stop_c
 
 def test_PersonUnit_set_plantree_range_attrs_SetsDescendentPlan_When_knot_IsNonDefault():
     # ESTABLISH
-    yao_person = personunit_shop("Yao", knot=exx.slash)
+    yao_person = personunit_shop(exx.yao, knot=exx.slash)
     root_rope = yao_person.planroot.get_plan_rope()
     ziet0_str = "ziet0"
     ziet0_rope = yao_person.make_l1_rope(ziet0_str)

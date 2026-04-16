@@ -162,7 +162,7 @@ def test_contactunit_shop_SetsAttributes_groupmark():
     # ESTABLISH
 
     # WHEN
-    yao_contactunit = contactunit_shop("Yao", groupmark=exx.slash)
+    yao_contactunit = contactunit_shop(exx.yao, groupmark=exx.slash)
 
     # THEN
     assert yao_contactunit.groupmark == exx.slash
@@ -173,7 +173,7 @@ def test_contactunit_shop_SetsAttributes_respect_grain():
     respect_grain_float = 00.45
 
     # WHEN
-    yao_contactunit = contactunit_shop("Yao", respect_grain=respect_grain_float)
+    yao_contactunit = contactunit_shop(exx.yao, respect_grain=respect_grain_float)
 
     # THEN
     assert yao_contactunit.respect_grain == respect_grain_float

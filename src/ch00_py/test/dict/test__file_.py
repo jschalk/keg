@@ -156,10 +156,9 @@ def test_open_file_OpensFilesWithOnly_dest_dir(temp3_fs, temp3_dir):
 def test_save_json_Scenario0_SetsFile(temp3_fs, temp3_dir):
     # ESTABLISH
     env_dir = temp3_dir
-    bob_str = "bob"
-    yao2_str = "Yao"
+    yao2_str = exx.yao
     x_filename = "Fay_bob.json"
-    x_dict = {"users": {bob_str: 1, yao2_str: 2}}
+    x_dict = {"users": {exx.bob: 1, yao2_str: 2}}
     print(f"{env_dir=} {x_filename=}")
     assert not os_path_exist(create_path(env_dir, x_filename))
 
@@ -170,7 +169,7 @@ def test_save_json_Scenario0_SetsFile(temp3_fs, temp3_dir):
     assert os_path_exist(create_path(env_dir, x_filename))
     generated_dict = get_dict_from_json(open_file(env_dir, x_filename))
     print(f"{generated_dict=}")
-    expected_dict = {"users": {"bob": 1, "Yao": 2}}
+    expected_dict = {"users": {exx.bob: 1, exx.yao: 2}}
     assert generated_dict == expected_dict
 
 
@@ -219,10 +218,9 @@ def test_save_json_Scenario2_SetsFile_sort_keys_case_insensitive_True(
 def test_open_json_ReturnsObj(temp3_fs, temp3_dir):
     # ESTABLISH
     env_dir = temp3_dir
-    bob_str = "bob"
-    yao2_str = "Yao"
+    yao2_str = exx.yao
     x_filename = "Fay_bob.json"
-    x_dict = {"names": {bob_str: 1, yao2_str: 2}}
+    x_dict = {"names": {exx.bob: 1, yao2_str: 2}}
     print(f"{env_dir=} {x_filename=}")
     save_json(env_dir, x_filename, x_dict)
     assert os_path_exist(create_path(env_dir, x_filename))
@@ -231,7 +229,7 @@ def test_open_json_ReturnsObj(temp3_fs, temp3_dir):
     generated_dict = open_json(env_dir, x_filename)
 
     # THEN
-    expected_dict = {"names": {"bob": 1, "Yao": 2}}
+    expected_dict = {"names": {exx.bob: 1, exx.yao: 2}}
     assert generated_dict == expected_dict
 
 

@@ -22,7 +22,7 @@ def test_get_groups_view_dict_ReturnsObj_Scenario0_Empty():
 # def test_get_groups_view_dict_ReturnsObj_Scenario1_groups():
 #     # ESTABLISH
 #     sue_believer = personunit_shop(exx.sue)
-#     exx.yao = "Yao"
+#     exx.yao = exx.yao
 #     bob_str = "Bob"
 #     yao_cred_lumen = 110
 #     yao_debt_lumen = 130
@@ -112,7 +112,7 @@ def test_get_groups_view_dict_ReturnsObj_Scenario0_Empty():
 # def test_get_groups_view_dict_ReturnsObj_Scenario2_memberships():
 #     # ESTABLISH
 #     sue_believer = personunit_shop(exx.sue)
-#     exx.yao = "Yao"
+#     exx.yao = exx.yao
 #     sue_believer.add_contactunit(exx.yao)
 #     bowlers_str = ";bowlers"
 #     yao_bowl_cred_lumen = 311
@@ -246,7 +246,7 @@ def test_get_groups_view_dict_ReturnsObj_Scenario0_Empty():
 #     assert yao_bowl_dict.get(fund_take_readable_key) == expected_fund_take_readable
 
 #     # sue_believer = personunit_shop(exx.sue)
-#     # exx.yao = "Yao"
+#     # exx.yao = exx.yao
 #     # bob_str = "Bob"
 #     # yao_cred_lumen = 110
 #     # yao_debt_lumen = 130

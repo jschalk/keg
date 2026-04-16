@@ -64,7 +64,7 @@ def test_make_persondelta_Arg_ii00021_person_contactunit_v0_0_0():
 # def test_make_persondelta_Arg_ii00020_person_contact_membership_v0_0_0():
 #     # ESTABLISH
 #     exx.bob = "Bob"
-#     exx.yao = "Yao"
+#     exx.yao = exx.yao
 #     amy_moment_rope = create_rope("amy56")
 #     sue_personunit = personunit_shop(exx.sue, amy_moment_rope)
 #     sue_personunit.add_contactunit(exx.sue)

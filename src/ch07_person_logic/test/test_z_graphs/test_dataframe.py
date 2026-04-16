@@ -98,7 +98,7 @@ def test_get_person_agenda_dataframe_ReturnsDataFrame():
 
 def test_get_person_agenda_dataframe_ReturnsEmptyDataFrame():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     assert len(yao_person.get_agenda_dict()) == 0
 
     # WHEN

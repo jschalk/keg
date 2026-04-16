@@ -392,7 +392,7 @@ def test_split_excel_into_dirs_SavesToCorrectFileNames(temp3_fs):
 
 def test_if_nan_return_None_ReturnsObj(temp3_fs):
     # ESTABLISH
-    ex1_df = DataFrame([["Yao", None]], columns=[kw.spark_face, "example_col"])
+    ex1_df = DataFrame([[exx.yao, None]], columns=[kw.spark_face, "example_col"])
     ex1_sheet_name = "ex1"
     ex1_filename = "ex1.xlsx"
     ex1_path = create_path(str(temp3_fs), ex1_filename)

@@ -5,7 +5,7 @@ from src.ref.keywords import ExampleStrs as exx
 
 def test_PersonUnit_get_plan_ranged_kids_ReturnsAllChildren():
     # ESTABLISH
-    yao_personunit = personunit_shop("Yao")
+    yao_personunit = personunit_shop(exx.yao)
     ziet_rope = yao_personunit.make_l1_rope("ziet")
     tech_rope = yao_personunit.make_rope(ziet_rope, "tech")
     wk_rope = yao_personunit.make_rope(tech_rope, exx.wk)
@@ -42,7 +42,7 @@ def test_PersonUnit_get_plan_ranged_kids_ReturnsAllChildren():
 
 def test_PersonUnit_get_plan_ranged_kids_ReturnsSomeChildrenScenario1():
     # ESTABLISH
-    yao_personunit = personunit_shop("Yao")
+    yao_personunit = personunit_shop(exx.yao)
     ziet_rope = yao_personunit.make_l1_rope("ziet")
     tech_rope = yao_personunit.make_rope(ziet_rope, "tech")
     wk_rope = yao_personunit.make_rope(tech_rope, exx.wk)
@@ -87,7 +87,7 @@ def test_PersonUnit_get_plan_ranged_kids_ReturnsSomeChildrenScenario1():
 
 def test_PersonUnit_get_plan_ranged_kids_ReturnsSomeChildrenScenario2():
     # ESTABLISH
-    yao_personunit = personunit_shop("Yao")
+    yao_personunit = personunit_shop(exx.yao)
     ziet_rope = yao_personunit.make_l1_rope("ziet")
     tech_rope = yao_personunit.make_rope(ziet_rope, "tech")
     wk_rope = yao_personunit.make_rope(tech_rope, exx.wk)
@@ -123,7 +123,7 @@ def test_PersonUnit_get_plan_ranged_kids_ReturnsSomeChildrenScenario2():
 
 def test_PersonUnit_get_plan_ranged_kids_ReturnsSomeChildrenScenario3():
     # ESTABLISH
-    yao_personunit = personunit_shop("Yao")
+    yao_personunit = personunit_shop(exx.yao)
     ziet_rope = yao_personunit.make_l1_rope("ziet")
     tech_rope = yao_personunit.make_rope(ziet_rope, "tech")
     wk_rope = yao_personunit.make_rope(tech_rope, exx.wk)

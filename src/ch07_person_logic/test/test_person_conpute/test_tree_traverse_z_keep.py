@@ -33,7 +33,9 @@ def test_PersonUnit_conpute_Sets_keeps_justified_WhenThereAreNotAny():
 def test_PersonUnit_conpute_Sets_keeps_justified_WhenSinglePlanUnit_healerunit_any_group_title_exists_IsTrue():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
-    sue_person.set_l1_plan(planunit_shop("Texas", healerunit=healerunit_shop({"Yao"})))
+    sue_person.set_l1_plan(
+        planunit_shop("Texas", healerunit=healerunit_shop({exx.yao}))
+    )
     assert sue_person.keeps_justified is False
 
     # WHEN
@@ -87,7 +89,7 @@ def test_PersonUnit_conpute_Sets_keeps_justified_WhenKeepIsLevelBelowProblem():
     sue_person = personunit_shop("Sue")
     texas_str = "Texas"
     texas_rope = sue_person.make_l1_rope(texas_str)
-    yao_healerunit = healerunit_shop({"Yao"})
+    yao_healerunit = healerunit_shop({exx.yao})
     sue_person.set_l1_plan(planunit_shop(texas_str, healerunit=yao_healerunit))
     sue_person.set_plan_obj(planunit_shop("El Paso", problem_bool=True), texas_rope)
     assert sue_person.keeps_justified is False
@@ -104,7 +106,7 @@ def test_PersonUnit_conpute_RaisesErrorWhenKeepIsLevelBelowProblem():
     sue_person = personunit_shop("Sue")
     texas_str = "Texas"
     texas_rope = sue_person.make_l1_rope(texas_str)
-    yao_healerunit = healerunit_shop({"Yao"})
+    yao_healerunit = healerunit_shop({exx.yao})
     texas_plan = planunit_shop(texas_str, healerunit=yao_healerunit)
     sue_person.set_l1_plan(texas_plan)
     elpaso_plan = planunit_shop("El Paso", problem_bool=True)
@@ -125,7 +127,7 @@ def test_PersonUnit_conpute_RaisesErrorWhenKeepIsLevelBelowProblem():
 def test_PersonUnit_conpute_Sets_keeps_justified_WhenTwoKeepsAre_OnTheEqualLine():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
-    yao_healerunit = healerunit_shop({"Yao"})
+    yao_healerunit = healerunit_shop({exx.yao})
     texas_str = "Texas"
     texas_rope = sue_person.make_l1_rope(texas_str)
     texas_plan = planunit_shop(texas_str, healerunit=yao_healerunit, problem_bool=True)
@@ -144,7 +146,7 @@ def test_PersonUnit_conpute_Sets_keeps_justified_WhenTwoKeepsAre_OnTheEqualLine(
 def test_PersonUnit_get_plan_dict_RaisesErrorWhen_keeps_justified_IsFalse():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
-    yao_healerunit = healerunit_shop({"Yao"})
+    yao_healerunit = healerunit_shop({exx.yao})
     texas_str = "Texas"
     texas_rope = sue_person.make_l1_rope(texas_str)
     texas_plan = planunit_shop(texas_str, healerunit=yao_healerunit, problem_bool=True)

@@ -8,7 +8,7 @@ def test_PersonUnit_conpute_Sets_planroot_workforceheirFrom_planroot_workforceun
     # ESTABLISH
     sue_workforceunit = workforceunit_shop()
     sue_workforceunit.add_labor(exx.sue)
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     root_rope = yao_person.planroot.get_plan_rope()
     yao_person.edit_plan_attr(root_rope, workforceunit=sue_workforceunit)
     assert yao_person.planroot.workforceunit == sue_workforceunit

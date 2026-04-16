@@ -135,7 +135,7 @@ def test_PersonUnit_conpute_ClearsDescendantAttributes():
 
 def test_PersonUnit_conpute_RootOnlySetsDescendantAttributes():
     # ESTABLISH
-    yao_person = personunit_shop(person_name="Yao")
+    yao_person = personunit_shop(person_name=exx.yao)
     assert yao_person.planroot.descendant_pledge_count is None
     assert yao_person.planroot.all_contact_cred is None
     assert yao_person.planroot.all_contact_debt is None
@@ -383,7 +383,7 @@ def test_PersonUnit_get_plan_tree_ordered_rope_list_ReturnsObj_Scenario1():
 
 def test_PersonUnit_get_plan_tree_ordered_rope_list_Scenario2_CleansRangedPlanRopeTerms():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
 
     # WHEN
     ziet_str = "zietline"

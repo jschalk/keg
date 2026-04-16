@@ -627,8 +627,8 @@ def test_get_nested_dict_keys_by_level_ReturnsObj():
     assert get_nested_dict_keys_by_level(x2_dict) == {0: {ex0.sue, ex0.bob}}
     x3_dict = {"bowl": 155, ex0.sue: {}, ex0.bob: {}}
     assert get_nested_dict_keys_by_level(x3_dict) == {0: {ex0.sue, ex0.bob}}
-    x4_dict = {"bowl": 155, ex0.sue: {ex0.zia: {}}, ex0.bob: {"Yao": {}}}
-    expected_x4_dict = {0: {ex0.sue, ex0.bob}, 1: {ex0.zia, "Yao"}}
+    x4_dict = {"bowl": 155, ex0.sue: {ex0.zia: {}}, ex0.bob: {ex0.yao: {}}}
+    expected_x4_dict = {0: {ex0.sue, ex0.bob}, 1: {ex0.zia, ex0.yao}}
     assert get_nested_dict_keys_by_level(x4_dict) == expected_x4_dict
 
 
@@ -698,8 +698,8 @@ def test_get_nested_dict_key_by_level_ReturnsObj():
     # ESTABLISH /  WHEN / THEN
     assert get_nested_dict_key_by_level({}) == []
     assert get_nested_dict_key_by_level({ex0.sue: {}}) == [ex0.sue]
-    x4_dict = {"bowl": 155, ex0.sue: {ex0.bob: {"Yao": {}}}}
-    assert get_nested_dict_key_by_level(x4_dict) == [ex0.sue, ex0.bob, "Yao"]
+    x4_dict = {"bowl": 155, ex0.sue: {ex0.bob: {ex0.yao: {}}}}
+    assert get_nested_dict_key_by_level(x4_dict) == [ex0.sue, ex0.bob, ex0.yao]
 
 
 def test_create_2d_array_from_dict_RaisesError_is_2d_with_unique_keys_IsFalse():
@@ -865,14 +865,14 @@ def test_get_sorted_list_of_dict_keys_ReturnsObj_WhenValues():
     x_dict = {
         ex0.sue: {"name": ex0.sue, "age": 55, "city": "NYC"},
         ex0.bob: {"name": ex0.bob, "age": 30, "city": "Dallas"},
-        "Yao": {"name": "Yao", "age": 35, "city": "Paris"},
+        ex0.yao: {"name": ex0.yao, "age": 35, "city": "Paris"},
     }
 
     # WHEN
     x_list = get_sorted_list_of_dict_keys(x_dict, "age")
 
     # THEN
-    assert x_list == [ex0.bob, "Yao", ex0.sue]
+    assert x_list == [ex0.bob, ex0.yao, ex0.sue]
 
 
 def test_get_sorted_list_of_dict_keys_ReturnsObj_WithValues():
@@ -880,14 +880,14 @@ def test_get_sorted_list_of_dict_keys_ReturnsObj_WithValues():
     x_dict = {
         ex0.sue: {"name": ex0.sue, "age": 55, "city": "NYC"},
         ex0.bob: {"name": ex0.bob, "age": 30, "city": "Dallas"},
-        "Yao": {"name": "Yao", "age": 35, "city": "Paris"},
+        ex0.yao: {"name": ex0.yao, "age": 35, "city": "Paris"},
     }
 
     # WHEN
     x_list = get_sorted_list_of_dict_keys(x_dict, "age", include_sort_values=True)
 
     # THEN
-    assert x_list == [[ex0.bob, 30], ["Yao", 35], [ex0.sue, 55]]
+    assert x_list == [[ex0.bob, 30], [ex0.yao, 35], [ex0.sue, 55]]
 
 
 def test_get_max_key_ReturnsObj_Scenario0_Empty():

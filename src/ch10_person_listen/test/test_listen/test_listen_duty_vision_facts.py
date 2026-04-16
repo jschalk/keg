@@ -384,7 +384,7 @@ def test_listen_to_facts_duty_vision_ConfirmNoFactfact_stateedFromPersonsSpeaker
 
 # def test_listen_to_facts_duty_vision_SetsFact(temp3_fs):
 #     # ESTABLISH
-#     exx.yao = "Yao"
+#     exx.yao = exx.yao
 #     sue_speaker = personunit_shop(exx.yao)
 #     casa_rope = sue_speaker.make_l1_rope(casa_str)
 #     situation_str = "situation"
@@ -431,7 +431,7 @@ def test_listen_to_facts_duty_vision_ConfirmNoFactfact_stateedFromPersonsSpeaker
 
 # def test_listen_to_facts_duty_vision_DoesNotOverrideFact():
 #     # ESTABLISH
-#     exx.yao = "Yao"
+#     exx.yao = exx.yao
 #     yao_duty = personunit_shop(exx.yao)
 #     yao_duty.add_contactunit(exx.yao)
 #     yao_duty.set_contact_respect(20)

@@ -55,7 +55,7 @@ def test_RiverRun_rivergrade_exists_ReturnsObj(temp3_dir):
     mstr_dir = temp3_dir
     yao_number = 8
     yao_riverrun = riverrun_shop(mstr_dir, exx.a23, exx.yao, yao_number)
-    yao_riverrun.set_initial_rivergrade("Yao")
+    yao_riverrun.set_initial_rivergrade(exx.yao)
 
     assert yao_riverrun.rivergrade_exists(exx.bob) is False
     assert yao_riverrun.rivergrades_is_empty() is False

@@ -71,7 +71,7 @@ def test_budunit_shop_ReturnsObjWith_bud_contact_net():
 
 def test_BudUnit_set_bud_contact_net_SetsAttr():
     # ESTABLISH
-    yao_budunit = budunit_shop("Yao", 33)
+    yao_budunit = budunit_shop(exx.yao, 33)
     assert yao_budunit.bud_contact_nets == {}
 
     # WHEN
@@ -85,7 +85,7 @@ def test_BudUnit_set_bud_contact_net_SetsAttr():
 
 def test_BudUnit_bud_contact_net_exists_ReturnsObj():
     # ESTABLISH
-    yao_budunit = budunit_shop("Yao", 33)
+    yao_budunit = budunit_shop(exx.yao, 33)
     sue_bud_contact_net = -44
     assert yao_budunit.bud_contact_net_exists(exx.sue) is False
 
@@ -98,7 +98,7 @@ def test_BudUnit_bud_contact_net_exists_ReturnsObj():
 
 def test_BudUnit_get_bud_contact_net_ReturnsObj():
     # ESTABLISH
-    yao_budunit = budunit_shop("Yao", 33)
+    yao_budunit = budunit_shop(exx.yao, 33)
     sue_bud_contact_net = -44
     yao_budunit.set_bud_contact_net(exx.sue, sue_bud_contact_net)
 
@@ -109,7 +109,7 @@ def test_BudUnit_get_bud_contact_net_ReturnsObj():
 
 def test_BudUnit_del_bud_contact_net_SetsAttr():
     # ESTABLISH
-    yao_budunit = budunit_shop("Yao", 33)
+    yao_budunit = budunit_shop(exx.yao, 33)
     sue_bud_contact_net = -44
     yao_budunit.set_bud_contact_net(exx.sue, sue_bud_contact_net)
     assert yao_budunit.bud_contact_net_exists(exx.sue)
@@ -150,7 +150,7 @@ def test_BudUnit_calc_magnitude_SetsAttr_Scenario0():
 def test_BudUnit_calc_magnitude_SetsAttr_Scenario1():
     # ESTABLISH
     t4_bud_time = 4
-    t4_bud_contact_nets = {"Sue": -4, "Yao": 2, "Zia": 2}
+    t4_bud_contact_nets = {"Sue": -4, exx.yao: 2, "Zia": 2}
 
     t4_budunit = budunit_shop(t4_bud_time, bud_contact_nets=t4_bud_contact_nets)
     assert t4_budunit.magnitude == 0
@@ -165,7 +165,7 @@ def test_BudUnit_calc_magnitude_SetsAttr_Scenario1():
 def test_BudUnit_calc_magnitude_SetsAttr_Scenario2():
     # ESTABLISH
     t4_bud_time = 4
-    t4_bud_contact_nets = {"Bob": -13, "Sue": -7, "Yao": 18, "Zia": 2}
+    t4_bud_contact_nets = {"Bob": -13, "Sue": -7, exx.yao: 18, "Zia": 2}
 
     t4_budunit = budunit_shop(t4_bud_time, bud_contact_nets=t4_bud_contact_nets)
     assert t4_budunit.magnitude == 0
@@ -186,7 +186,7 @@ def test_BudUnit_calc_magnitude_SetsAttr_Scenario3_RaisesError():
     t4_bud_contact_nets = {
         "Bob": bob_bud_contact_net,
         "Sue": sue_bud_contact_net,
-        "Yao": yao_bud_contact_net,
+        exx.yao: yao_bud_contact_net,
     }
     t4_budunit = budunit_shop(t4_bud_time, bud_contact_nets=t4_bud_contact_nets)
 

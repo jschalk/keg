@@ -328,7 +328,7 @@ def test_get_contacts_view_dict_ReturnsObj_Scenario2_memberships():
     assert yao_bowl_dict.get(fund_take_readable_key) == expected_fund_take_readable
 
     # sue_believer = personunit_shop(exx.sue)
-    # exx.yao = "Yao"
+    # exx.yao = exx.yao
     # exx.bob = "Bob"
     # yao_cred_lumen = 110
     # yao_debt_lumen = 130

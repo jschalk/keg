@@ -1,5 +1,6 @@
 from pandas import DataFrame
 from src.ch17_idea.idea_db_tool import dataframe_to_dict
+from src.ref.keywords import ExampleStrs as exx
 
 
 def test_dataframe_to_dict_ReturnsObj_Empty():
@@ -20,7 +21,7 @@ def test_dataframe_to_dict_ReturnsObj_WithValues():
     # ESTABLISH
     data = {
         "id": [1, 2, 3],
-        "name": ["Sue", "Bob", "Yao"],
+        "name": ["Sue", "Bob", exx.yao],
         "age": [25, 30, 35],
         "city": ["NYC", "Dallas", "Paris"],
     }
@@ -33,7 +34,7 @@ def test_dataframe_to_dict_ReturnsObj_WithValues():
     expected_dict = {
         "Sue": {"name": "Sue", "age": 25, "city": "NYC"},
         "Bob": {"name": "Bob", "age": 30, "city": "Dallas"},
-        "Yao": {"name": "Yao", "age": 35, "city": "Paris"},
+        exx.yao: {"name": exx.yao, "age": 35, "city": "Paris"},
     }
     assert_exception_str = f"Expected {expected_dict}, but got {result_dict}"
     assert result_dict == expected_dict, assert_exception_str
@@ -42,7 +43,7 @@ def test_dataframe_to_dict_ReturnsObj_WithValues():
 def test_dataframe_to_dict_ReturnsObj_WithOutIndex():
     # ESTABLISH
     data = {
-        "name": ["Sue", "Bob", "Yao"],
+        "name": ["Sue", "Bob", exx.yao],
         "age": [25, 30, 35],
         "city": ["NYC", "Dallas", "Paris"],
     }
@@ -55,7 +56,7 @@ def test_dataframe_to_dict_ReturnsObj_WithOutIndex():
     expected_dict = {
         "Sue": {"name": "Sue", "age": 25, "city": "NYC"},
         "Bob": {"name": "Bob", "age": 30, "city": "Dallas"},
-        "Yao": {"name": "Yao", "age": 35, "city": "Paris"},
+        exx.yao: {"name": exx.yao, "age": 35, "city": "Paris"},
     }
     assert_exception_str = f"Expected {expected_dict}, but got {result_dict}"
     assert result_dict == expected_dict, assert_exception_str
@@ -65,7 +66,7 @@ def test_dataframe_to_dict_ReturnsObj_TwoKeyColumns():
     # ESTABLISH
     data = {
         "id": [1, 2, 3, 4],
-        "name": ["Sue", "Sue", "Bob", "Yao"],
+        "name": ["Sue", "Sue", "Bob", exx.yao],
         "age": [25, 46, 30, 35],
         "city": ["NYC", "Boston", "Dallas", "Paris"],
     }
@@ -81,7 +82,7 @@ def test_dataframe_to_dict_ReturnsObj_TwoKeyColumns():
             46: {"name": "Sue", "age": 46, "city": "Boston"},
         },
         "Bob": {30: {"name": "Bob", "age": 30, "city": "Dallas"}},
-        "Yao": {35: {"name": "Yao", "age": 35, "city": "Paris"}},
+        exx.yao: {35: {"name": exx.yao, "age": 35, "city": "Paris"}},
     }
     assert_exception_str = f"Expected {expected_dict}, but got {result_dict}"
     assert result_dict == expected_dict, assert_exception_str
@@ -91,7 +92,7 @@ def test_dataframe_to_dict_ReturnsObj_ThreeKeyColumns():
     # ESTABLISH
     data = {
         "id": [1, 2, 3, 4, 5],
-        "name": ["Sue", "Sue", "Sue", "Bob", "Yao"],
+        "name": ["Sue", "Sue", "Sue", "Bob", exx.yao],
         "age": [25, 46, 46, 30, 35],
         "city": ["NYC", "Boston", "ElPaso", "Dallas", "Paris"],
         "sport": ["run", "bowl", "tennis", "run", "bowl"],
@@ -137,10 +138,10 @@ def test_dataframe_to_dict_ReturnsObj_ThreeKeyColumns():
                 }
             }
         },
-        "Yao": {
+        exx.yao: {
             35: {
                 "Paris": {
-                    "name": "Yao",
+                    "name": exx.yao,
                     "age": 35,
                     "city": "Paris",
                     "sport": "bowl",

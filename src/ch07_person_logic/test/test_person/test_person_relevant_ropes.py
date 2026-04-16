@@ -181,7 +181,7 @@ def test_PersonUnit_get_relevant_ropes_ReturnSimple():
 
 def test_PersonUnit_get_inheritor_plan_list_ReturnsObj_Scenario0():
     # ESTABLISH
-    yao_personunit = personunit_shop("Yao")
+    yao_personunit = personunit_shop(exx.yao)
     tech_rope = yao_personunit.make_l1_rope("tech")
     wk_rope = yao_personunit.make_rope(tech_rope, exx.wk)
     yao_personunit.set_plan_obj(planunit_shop(exx.wk, begin=0, close=10800), tech_rope)

@@ -47,7 +47,7 @@ def test_treemetrics_shop_ReturnsObj():
 
 def test_PersonUnit_set_plan_dict_Scenario0():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     root_rope = yao_person.planroot.get_plan_rope()
     root_plan = yao_person.get_plan_obj(root_rope)
     assert not root_plan.begin
@@ -71,7 +71,7 @@ def test_PersonUnit_set_plan_dict_Scenario0():
 
 def test_PersonUnit_set_plan_dict_Scenario1():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     ziet0_begin = 7
     ziet0_close = 31
     root_rope = yao_person.planroot.get_plan_rope()

@@ -4,7 +4,7 @@ from pytest import fixture as pytest_fixture
 from sqlite3 import Connection as sqlite3_Connection, connect as sqlite3_connect
 from src.ch17_idea.idea_config import get_idea_sqlite_types
 from src.ch17_idea.idea_db_tool import create_idea_table_from_csv, insert_idea_csv
-from src.ref.keywords import Ch17Keywords as kw
+from src.ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
 
 
 @pytest_fixture
@@ -120,7 +120,7 @@ def test_insert_idea_csv_ChangesDBState_add_to_empty_table(
     rows = cursor.fetchall()
     expected_data = [
         (3, "Sue", "Amy43", "Bob", "Bob", ";runners", 6.5),
-        (3, "Sue", "Amy43", "Yao", "Bob", ";runners", 7.5),
+        (3, "Sue", "Amy43", exx.yao, "Bob", ";runners", 7.5),
     ]
     assert rows == expected_data
 
@@ -145,7 +145,7 @@ def test_insert_idea_csv_ChangesDBState_Inserts(
     insert_idea_csv(test_csv_filepath, conn, ii_tablename)
     before_table_data = [
         (3, "Sue", "Amy43", "Bob", "Bob", ";runners", 6.5),
-        (3, "Sue", "Amy43", "Yao", "Bob", ";runners", 7.5),
+        (3, "Sue", "Amy43", exx.yao, "Bob", ";runners", 7.5),
     ]
     cursor = conn.cursor()
     cursor.execute(f"SELECT * FROM {ii_tablename}")
@@ -157,8 +157,8 @@ def test_insert_idea_csv_ChangesDBState_Inserts(
     # THEN
     expected_table_data = [
         (3, "Sue", "Amy43", "Bob", "Bob", ";runners", 6.5),
-        (3, "Sue", "Amy43", "Yao", "Bob", ";runners", 7.5),
-        (7, "Zia", "Amy55", "Yao", "Zia", ";bowlers", 10.2),
+        (3, "Sue", "Amy43", exx.yao, "Bob", ";runners", 7.5),
+        (7, "Zia", "Amy55", exx.yao, "Zia", ";bowlers", 10.2),
         (8, "Zia", "Amy43", "Zia", "Bob", ";runners", 11.1),
     ]
     cursor = conn.cursor()
@@ -195,7 +195,7 @@ def test_insert_idea_csv_ChangesDBState_CanCreateTable(
 
     # THEN
     expected_table_data = [
-        (7, "Zia", "Amy55", "Yao", "Zia", ";bowlers", 10.2),
+        (7, "Zia", "Amy55", exx.yao, "Zia", ";bowlers", 10.2),
         (8, "Zia", "Amy43", "Zia", "Bob", ";runners", 11.1),
     ]
     cursor = conn.cursor()
@@ -216,7 +216,7 @@ def test_create_idea_table_from_csv_NolessonableExists(
     insert_idea_csv(test_csv_filepath, conn, ii_tablename)
     before_table_data = [
         (3, "Sue", "Amy43", "Bob", "Bob", ";runners", 6.5),
-        (3, "Sue", "Amy43", "Yao", "Bob", ";runners", 7.5),
+        (3, "Sue", "Amy43", exx.yao, "Bob", ";runners", 7.5),
     ]
     cursor = conn.cursor()
     cursor.execute(f"SELECT * FROM {ii_tablename}")

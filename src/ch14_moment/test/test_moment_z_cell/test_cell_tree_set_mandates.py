@@ -193,7 +193,7 @@ def test_set_cell_tree_cell_mandates_SetsRootAttr_Scenario0_Depth0NoFacts(
 #     tp5 = 5
 #     exx.bob = "Bob"
 
-#     exx.yao = "Yao"
+#     exx.yao = exx.yao
 #     exx.zia = "Zia"
 #     bob_ancs = []
 #     b_sue_ancs = [exx.sue]
@@ -256,7 +256,7 @@ def test_set_cell_tree_cell_mandates_SetsRootAttr_Scenario0_Depth0NoFacts(
 #     tp5 = 5
 #     exx.bob = "Bob"
 
-#     exx.yao = "Yao"
+#     exx.yao = exx.yao
 #     exx.zia = "Zia"
 #     bob_ancs = []
 #     b_sue_ancs = [exx.sue]
@@ -319,7 +319,7 @@ def test_set_cell_tree_cell_mandates_SetsRootAttr_Scenario0_Depth0NoFacts(
 #     tp5 = 5
 #     exx.bob = "Bob"
 
-#     exx.yao = "Yao"
+#     exx.yao = exx.yao
 #     exx.zia = "Zia"
 #     bob_ancs = []
 #     b_sue_ancs = [exx.sue]
@@ -386,7 +386,7 @@ def test_set_cell_tree_cell_mandates_SetsRootAttr_Scenario0_Depth0NoFacts(
 #     tp5 = 5
 #     exx.bob = "Bob"
 
-#     exx.yao = "Yao"
+#     exx.yao = exx.yao
 #     exx.zia = "Zia"
 #     bob_ancs = []
 #     b_sue_ancs = [exx.sue]

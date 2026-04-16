@@ -80,7 +80,7 @@ def test_MomentUnit_set_paypurchase_RaisesErrorWhen_BudUnitHas_tran_time():
     x_moment.offi_time_max = 0
     t55_t = 5505
     t55_quota = 100
-    x_moment.add_budunit("Yao", t55_t, t55_quota)
+    x_moment.add_budunit(exx.yao, t55_t, t55_quota)
     t55_amount = 37
     t6606_offi_time_max = 6606
     x_moment.offi_time_max = t6606_offi_time_max

@@ -88,7 +88,7 @@ VALUES
     assert cursor0.fetchall() == [
         (translate_rope_s_agg_tablename, "Sue", None, None, None, None),
         (translate_rope_s_agg_tablename, "Sue", ":", ":", "Unknown", None),
-        (translate_rope_s_agg_tablename, "Yao", ":", ":", "Unknown", None),
+        (translate_rope_s_agg_tablename, exx.yao, ":", ":", "Unknown", None),
     ]
 
 
@@ -207,7 +207,7 @@ VALUES
         (translate_name_s_agg_tablename, "Bob", ":", ":", "Unknown", None),
         (translate_name_s_agg_tablename, "Sue", None, None, None, None),
         (translate_rope_s_agg_tablename, "Sue", None, None, None, None),
-        (translate_rope_s_agg_tablename, "Yao", ":", ":", "Unknown", None),
+        (translate_rope_s_agg_tablename, exx.yao, ":", ":", "Unknown", None),
     ]
 
 
@@ -264,7 +264,7 @@ VALUES
         (translate_name_s_agg_tablename, "Bob", ":", ":", "Unknown", None),
         (translate_name_s_agg_tablename, "Sue", None, None, ":", error_data_str),
         (translate_rope_s_agg_tablename, "Sue", None, None, "/", error_data_str),
-        (translate_rope_s_agg_tablename, "Yao", ":", ":", "Unknown", None),
+        (translate_rope_s_agg_tablename, exx.yao, ":", ":", "Unknown", None),
     ]
 
 

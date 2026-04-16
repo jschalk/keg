@@ -26,7 +26,7 @@ def test_PersonUnit_set_contactunit_SetsAttr():
 def test_PersonUnit_set_contact_DoesNotSet_contact_name_membership():
     # ESTABLISH
     x_respect_grain = 5
-    yao_person = personunit_shop("Yao", respect_grain=x_respect_grain)
+    yao_person = personunit_shop(exx.yao, respect_grain=x_respect_grain)
 
     # WHEN
     yao_person.set_contactunit(contactunit_shop(exx.zia), auto_set_membership=False)
@@ -38,7 +38,7 @@ def test_PersonUnit_set_contact_DoesNotSet_contact_name_membership():
 def test_PersonUnit_set_contact_DoesSet_contact_name_membership():
     # ESTABLISH
     x_respect_grain = 5
-    yao_person = personunit_shop("Yao", respect_grain=x_respect_grain)
+    yao_person = personunit_shop(exx.yao, respect_grain=x_respect_grain)
 
     # WHEN
     yao_person.set_contactunit(contactunit_shop(exx.zia))
@@ -53,7 +53,7 @@ def test_PersonUnit_set_contact_DoesSet_contact_name_membership():
 def test_PersonUnit_set_contact_DoesNotOverRide_contact_name_membership():
     # ESTABLISH
     x_respect_grain = 5
-    yao_person = personunit_shop("Yao", respect_grain=x_respect_grain)
+    yao_person = personunit_shop(exx.yao, respect_grain=x_respect_grain)
     ohio_str = ";Ohio"
     zia_ohio_credit_w = 33
     zia_ohio_debt_w = 44
@@ -75,7 +75,7 @@ def test_PersonUnit_set_contact_DoesNotOverRide_contact_name_membership():
 def test_PersonUnit_add_contactunit_Sets_contacts():
     # ESTABLISH
     x_respect_grain = 6
-    yao_person = personunit_shop("Yao", respect_grain=x_respect_grain)
+    yao_person = personunit_shop(exx.yao, respect_grain=x_respect_grain)
 
     # WHEN
     yao_person.add_contactunit(exx.zia, contact_cred_lumen=13, contact_debt_lumen=8)
@@ -107,7 +107,7 @@ def test_PersonUnit_contact_exists_ReturnsObj():
 def test_PersonUnit_set_contact_Creates_membership():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     before_zia_credit = 7
     before_zia_debt = 17
     yao_person.add_contactunit(exx.zia, before_zia_credit, before_zia_debt)
@@ -134,7 +134,7 @@ def test_PersonUnit_set_contact_Creates_membership():
 
 def test_PersonUnit_edit_contact_RaiseExceptionWhenContactDoesNotExist():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     zia_contact_cred_lumen = 55
 
     # WHEN
@@ -147,7 +147,7 @@ def test_PersonUnit_edit_contact_RaiseExceptionWhenContactDoesNotExist():
 
 def test_PersonUnit_edit_contact_UpdatesObj():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     old_zia_contact_cred_lumen = 55
     old_zia_contact_debt_lumen = 66
     yao_person.set_contactunit(
@@ -177,7 +177,7 @@ def test_PersonUnit_edit_contact_UpdatesObj():
 
 def test_PersonUnit_get_contact_ReturnsObj():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     yao_person.add_contactunit(exx.zia)
     yao_person.add_contactunit(exx.sue)
 

@@ -613,7 +613,7 @@ reason_case:    {incorrect_wed_rope}"""
 
 def test_PersonUnit_edit_plan_attr_RaisesError_Scenario15_When_healerunit_healer_names_DoNotExist():
     # ESTABLISH
-    yao_person = personunit_shop("Yao")
+    yao_person = personunit_shop(exx.yao)
     casa_rope = yao_person.make_l1_rope(exx.casa)
     yao_person.set_l1_plan(planunit_shop(exx.casa))
     jour_str = "jour_range"

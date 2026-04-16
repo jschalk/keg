@@ -156,7 +156,7 @@ def get_ex2_ii00001_df() -> DataFrame:
     )
     x_df.loc[0] = [exx.a23_slash, "Bob", 332, 999, 3, exx.slash]
     x_df.loc[1] = [exx.a23_slash, "Sue", 445, 777, 3, exx.slash]
-    x_df.loc[2] = [exx.a23_slash, "Yao", 700, 222, 3, exx.slash]
+    x_df.loc[2] = [exx.a23_slash, exx.yao, 700, 222, 3, exx.slash]
     x_df.loc[3] = [J45_ROPE, "Xio", 332, 999, 3, exx.slash]
     x_df.loc[4] = [J45_ROPE, "Zia", 700, 222, 3, exx.slash]
     return x_df
@@ -177,8 +177,8 @@ def get_ex2_ii00002_df() -> DataFrame:
     )
     x_df.loc[0] = ["Zia", 888, exx.a23_slash, "Bob", 777, exx.slash]
     x_df.loc[1] = ["Zia", 234, exx.a23_slash, "Sue", 999, exx.slash]
-    x_df.loc[2] = ["Zia", 234, exx.a23_slash, "Yao", 999, exx.slash]
-    x_df.loc[3] = ["Zia", 234, J45_ROPE, "Yao", 999, exx.slash]
+    x_df.loc[2] = ["Zia", 234, exx.a23_slash, exx.yao, 999, exx.slash]
+    x_df.loc[3] = ["Zia", 234, J45_ROPE, exx.yao, 999, exx.slash]
     x_df.loc[4] = ["Bob", 888, exx.a23_slash, "Zia", 777, exx.slash]
     return x_df
 

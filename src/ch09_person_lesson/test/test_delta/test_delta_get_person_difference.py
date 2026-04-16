@@ -92,7 +92,7 @@ def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_contactuni
 def test_PersonDelta_add_all_different_personatoms_Creates_PersonAtom_contactunit_delete():
     # ESTABLISH
     before_sue_person = personunit_shop(exx.sue)
-    before_sue_person.add_contactunit("Yao")
+    before_sue_person.add_contactunit(exx.yao)
     before_sue_person.add_contactunit("Zia")
 
     after_sue_person = copy_deepcopy(before_sue_person)

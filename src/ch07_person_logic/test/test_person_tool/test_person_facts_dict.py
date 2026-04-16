@@ -81,7 +81,7 @@ def test_get_person_root_facts_dict_ReturnsObj_Scenario2_factunits_Exist():
 
 def test_set_factunits_to_person_ReturnsObj_Scenario0_PersonEmptyNoFacts():
     # ESTABLISH
-    yao_person = personunit_shop("Yao", exx.a23)
+    yao_person = personunit_shop(exx.yao, exx.a23)
     before_yao_person = copy_deepcopy(yao_person)
     facts_dict = {}
     assert yao_person.to_dict() == before_yao_person.to_dict()
