@@ -1,3 +1,10 @@
+## [0.83.8](https://github.com/jschalk/keg/compare/v0.83.7...v0.83.8) (2026-04-18)
+
+
+### Bug Fixes
+
+* [#1128](https://github.com/jschalk/keg/issues/1128) found bug with save_to_split_csvs, change plan_rope to moment_rope. brittle solution ([0439363](https://github.com/jschalk/keg/commit/0439363d501487fb77b842ffba4b911430fc7bec))
+
 ## [0.83.7](https://github.com/jschalk/keg/compare/v0.83.6...v0.83.7) (2026-04-13)
 
 
