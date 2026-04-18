@@ -1549,14 +1549,14 @@ def get_idea_stageble_put_dimens() -> dict[str, list[str]]:
         "ii00104": ["moment_epoch_month", "momentunit"],
         "ii00105": ["moment_epoch_weekday", "momentunit"],
         "ii00106": ["moment_timeoffi", "momentunit"],
-        "ii00111": ["person_contactunit", "personunit", "momentunit"],
+        "ii00001": ["person_contactunit", "personunit", "momentunit"],
         "ii00112": [
             "person_contact_membership",
             "person_contactunit",
             "personunit",
             "momentunit",
         ],
-        "ii00113": ["person_planunit", "personunit", "momentunit"],
+        "ii00002": ["person_planunit", "personunit", "momentunit"],
         "ii00119": ["person_planunit", "personunit", "momentunit"],
         "ii00120": [
             "person_contact_membership",

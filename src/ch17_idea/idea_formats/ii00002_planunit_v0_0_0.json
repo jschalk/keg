@@ -9,5 +9,5 @@
     "star"       : { "otx_key": false }
   }, 
   "dimens": ["momentunit", "personunit", "person_planunit"], 
-  "idea_type": "ii00113"
+  "idea_type": "ii00002"
 }

@@ -1,5 +1,7 @@
 # Idea Manifest
 
+- [`ii00001`](idea_formats\ii00001.md): spark_num, spark_face, moment_rope, person_name, contact_name
+- [`ii00002`](idea_formats\ii00002.md): spark_num, spark_face, moment_rope, person_name, plan_rope, star, pledge
 - [`ii00100`](idea_formats\ii00100.md): spark_num, spark_face, moment_rope, epoch_label, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations
 - [`ii00101`](idea_formats\ii00101.md): spark_num, spark_face, moment_rope, person_name, bud_time, knot, quota, celldepth
 - [`ii00102`](idea_formats\ii00102.md): spark_num, spark_face, moment_rope, person_name, contact_name, tran_time, amount, knot
@@ -7,9 +9,7 @@
 - [`ii00104`](idea_formats\ii00104.md): spark_num, spark_face, moment_rope, cumulative_day, month_label, knot
 - [`ii00105`](idea_formats\ii00105.md): spark_num, spark_face, moment_rope, weekday_order, weekday_label, knot
 - [`ii00106`](idea_formats\ii00106.md): spark_num, spark_face, moment_rope, offi_time, knot
-- [`ii00111`](idea_formats\ii00111.md): spark_num, spark_face, moment_rope, person_name, contact_name
 - [`ii00112`](idea_formats\ii00112.md): spark_num, spark_face, moment_rope, person_name, contact_name, group_title
-- [`ii00113`](idea_formats\ii00113.md): spark_num, spark_face, moment_rope, person_name, plan_rope, star, pledge
 - [`ii00119`](idea_formats\ii00119.md): spark_num, spark_face, moment_rope, person_name, plan_rope, begin, close, addin, numor, denom, morph, gogo_want, stop_want
 - [`ii00120`](idea_formats\ii00120.md): spark_num, spark_face, moment_rope, person_name, contact_name, group_title, group_cred_lumen, group_debt_lumen, knot
 - [`ii00121`](idea_formats\ii00121.md): spark_num, spark_face, moment_rope, person_name, contact_name, contact_cred_lumen, contact_debt_lumen, knot

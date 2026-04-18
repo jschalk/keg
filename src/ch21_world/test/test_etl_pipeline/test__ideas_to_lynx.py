@@ -29,7 +29,7 @@ from src.ch18_etl_config._ref.ch18_path import (
     create_moment_ote1_csv_path,
 )
 from src.ch18_etl_config.etl_sqlstr import create_prime_tablename as prime_tbl
-from src.ch21_world.test._util.ch21_examples import ii00113_example
+from src.ch21_world.test._util.ch21_examples import ii00002_example
 from src.ch21_world.world import (
     idea_sheets_to_lynx_mstr,
     idea_sheets_to_lynx_with_cursor,
@@ -412,16 +412,16 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario3_WhenNoMomentIdeas_ote1_IsStil
     spark2 = 2
     ex_filename = "Faybob.xlsx"
     i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
-    ii00111_columns = [
+    ii00001_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.contact_name,
     ]
-    ii00111_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
-    ii00111_df = DataFrame(ii00111_rows, columns=ii00111_columns)
-    save_sheet(i_src_dir_file_path, "ii00111_ex3", ii00111_df)
+    ii00001_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
+    ii00001_df = DataFrame(ii00001_rows, columns=ii00001_columns)
+    save_sheet(i_src_dir_file_path, "ii00001_ex3", ii00001_df)
     moment_mstr = fay_wdir.moment_mstr_dir
     a23_lasso = lassounit_shop(exx.a23)
     a23_ote1_csv_path = create_moment_ote1_csv_path(moment_mstr, a23_lasso)
@@ -515,16 +515,16 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
     ii00103_ex3_str = "example3_ii00103"
     save_sheet(i_src_dir_file_path, ii00103_ex1_str, ii00103_1df)
     save_sheet(i_src_dir_file_path, ii00103_ex3_str, ii00103_3df)
-    ii00111_columns = [
+    ii00001_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.contact_name,
     ]
-    ii00111_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
-    ii00111_df = DataFrame(ii00111_rows, columns=ii00111_columns)
-    save_sheet(i_src_dir_file_path, "ii00111_ex3", ii00111_df)
+    ii00001_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
+    ii00001_df = DataFrame(ii00001_rows, columns=ii00001_columns)
+    save_sheet(i_src_dir_file_path, "ii00001_ex3", ii00001_df)
     mstr_dir = fay_wdir.moment_mstr_dir
     wrong_a23_moment_dir = create_path(mstr_dir, exx.a23)
     assert os_path_exists(wrong_a23_moment_dir) is False
@@ -678,12 +678,12 @@ def test_idea_sheets_to_lynx_mstr_Scenario1_Creates_job_Files(temp3_fs):
         kw.star,
         kw.pledge,
     ]
-    ii00113_example = pandas_DataFrame(data, columns=cols)
+    ii00002_example = pandas_DataFrame(data, columns=cols)
 
     here_wdir = worlddir_shop("HereNow", str(temp3_fs))
-    ii00113_example_path = create_path(here_wdir.ideas_src_dir, "example.xlsx")
-    save_sheet(ii00113_example_path, "ii00113_ex1", ii00113_example)
-    # print(ii00113_example().to_dict())
+    ii00002_example_path = create_path(here_wdir.ideas_src_dir, "example.xlsx")
+    save_sheet(ii00002_example_path, "ii00002_ex1", ii00002_example)
+    # print(ii00002_example().to_dict())
     mmt_dir = here_wdir.moment_mstr_dir
     hn_red_lasso = lassounit_shop(exx.hn_red)
     hn_red_mmt_json_path = create_moment_json_path(mmt_dir, hn_red_lasso)

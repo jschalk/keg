@@ -9,7 +9,7 @@ from src.ch17_idea.idea_config import (
     get_idea_format_headers,
     get_idea_formats_dir,
     get_idearef_from_file,
-    ii00113_planunit_v0_0_0,
+    ii00002_planunit_v0_0_0,
     ii00119_planunit_v0_0_0,
     ii00120_person_contact_membership_v0_0_0,
     ii00121_person_contactunit_v0_0_0,
@@ -29,8 +29,8 @@ def test_config_str_functions_ReturnsObj():
     assert ii00121_person_contactunit_v0_0_0() == x00021_idea
     x00020_idea = "ii00120_person_contact_membership_v0_0_0"
     assert ii00120_person_contact_membership_v0_0_0() == x00020_idea
-    x0003_idea = "ii00113_planunit_v0_0_0"
-    assert ii00113_planunit_v0_0_0() == x0003_idea
+    x0003_idea = "ii00002_planunit_v0_0_0"
+    assert ii00002_planunit_v0_0_0() == x0003_idea
 
 
 def test_get_idea_formats_dir_ReturnsObj():
@@ -210,9 +210,9 @@ def test_get_idearef_obj_HasAttrs_ii00120_person_contact_membership_v0_0_0():
     assert headers_list[8] == kw.knot
 
 
-def test_get_idearef_obj_HasAttrs_ii00113_planunit_v0_0_0():
+def test_get_idearef_obj_HasAttrs_ii00002_planunit_v0_0_0():
     # ESTABLISH
-    idea_name = ii00113_planunit_v0_0_0()
+    idea_name = ii00002_planunit_v0_0_0()
 
     # WHEN
     format_00003_idearef = get_idearef_obj(idea_name)

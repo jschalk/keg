@@ -8,7 +8,7 @@ from src.ch13_time.test._util.ch13_examples import (
     add_time_five_planunit,
 )
 from src.ch17_idea.idea_config import (
-    ii00113_planunit_v0_0_0,
+    ii00002_planunit_v0_0_0,
     ii00119_planunit_v0_0_0,
     ii00120_person_contact_membership_v0_0_0,
     ii00121_person_contactunit_v0_0_0,
@@ -131,7 +131,7 @@ def test_create_idea_df_Arg_ii00120_person_contact_membership_v0_0_0():
     assert len(membership_dataframe) == 10
 
 
-def test_create_idea_df_Arg_ii00113_planunit_v0_0_0():
+def test_create_idea_df_Arg_ii00002_planunit_v0_0_0():
     # ESTABLISH
     amy_moment_rope = create_rope("amy56")
     sue_personunit = personunit_shop(exx.sue, amy_moment_rope)
@@ -142,7 +142,7 @@ def test_create_idea_df_Arg_ii00113_planunit_v0_0_0():
     sue_personunit.set_plan_obj(planunit_shop(exx.clean, pledge=True), casa_rope)
 
     # WHEN
-    x_idea_name = ii00113_planunit_v0_0_0()
+    x_idea_name = ii00002_planunit_v0_0_0()
     planunit_format = create_idea_df(sue_personunit, x_idea_name)
 
     # THEN
@@ -240,7 +240,7 @@ def test_save_idea_csv_Arg_ii00121_person_contactunit_v0_0_0_SaveToCSV(
     assert open_file(str(temp3_fs), name_filename) == sue2_contact_example_csv
 
 
-def test_save_idea_csv_Arg_ii00113_planunit_v0_0_0(
+def test_save_idea_csv_Arg_ii00002_planunit_v0_0_0(
     temp3_fs,
 ):
     # ESTABLISH
@@ -251,7 +251,7 @@ def test_save_idea_csv_Arg_ii00113_planunit_v0_0_0(
     sue_personunit.set_l1_plan(planunit_shop(exx.casa, star=casa_star))
     clean_rope = sue_personunit.make_rope(casa_rope, exx.clean)
     sue_personunit.set_plan_obj(planunit_shop(exx.clean, pledge=True), casa_rope)
-    x_idea_name = ii00113_planunit_v0_0_0()
+    x_idea_name = ii00002_planunit_v0_0_0()
     planunit_format = create_idea_df(sue_personunit, x_idea_name)
     name_filename = f"{exx.sue}_planunit_example_000.csv"
     csv_example_path = create_path(str(temp3_fs), name_filename)

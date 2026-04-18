@@ -7,5 +7,5 @@
     "spark_num"   : { "otx_key": true }
   }, 
   "dimens": ["momentunit", "personunit", "person_contactunit"], 
-  "idea_type": "ii00111"
+  "idea_type": "ii00001"
 }

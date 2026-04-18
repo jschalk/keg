@@ -42,7 +42,7 @@ from src.ch17_idea.idea_config import (
     get_idearef_from_file,
     get_quick_ideas_column_ref,
     idea_config_path,
-    ii00113_planunit_v0_0_0,
+    ii00002_planunit_v0_0_0,
     ii00120_person_contact_membership_v0_0_0,
     ii00121_person_contactunit_v0_0_0,
 )
@@ -597,7 +597,7 @@ def test_get_idea_format_filenames_ReturnsObj_CheckSome_idea_format_filesnames_E
     # WHEN / THEN
     assert ii00121_person_contactunit_v0_0_0() in idea_filenames_set
     assert ii00120_person_contact_membership_v0_0_0() in idea_filenames_set
-    assert ii00113_planunit_v0_0_0() in idea_filenames_set
+    assert ii00002_planunit_v0_0_0() in idea_filenames_set
 
 
 def change_erase_attrs(idea_attrs: set):
@@ -703,17 +703,17 @@ def test_get_idea_format_filename_ReturnsObj():
     # ESTABLISH
     ii00121_str = "ii00121"
     ii00120_str = "ii00120"
-    ii00113_str = "ii00113"
+    ii00002_str = "ii00002"
 
     # WHEN
     ii00121_filename = get_idea_format_filename(ii00121_str)
     ii00120_filename = get_idea_format_filename(ii00120_str)
-    ii00113_filename = get_idea_format_filename(ii00113_str)
+    ii00002_filename = get_idea_format_filename(ii00002_str)
 
     # THEN
     assert ii00121_filename == ii00121_person_contactunit_v0_0_0()
     assert ii00120_filename == ii00120_person_contact_membership_v0_0_0()
-    assert ii00113_filename == ii00113_planunit_v0_0_0()
+    assert ii00002_filename == ii00002_planunit_v0_0_0()
 
     all_set = {get_idea_format_filename(idea_type) for idea_type in get_idea_types()}
     assert all_set == get_idea_format_filenames()
