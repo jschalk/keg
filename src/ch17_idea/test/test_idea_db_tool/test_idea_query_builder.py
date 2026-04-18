@@ -12,7 +12,7 @@ def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario0_person_plan_laboruni
     cursor0: Cursor,
 ):
     # ESTABLISH
-    idea_type = "ii000XX"
+    idea_type = "ii001XX"
     idea_cols = [
         kw.spark_num,
         kw.spark_face,
@@ -62,7 +62,7 @@ def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario1_person_contactunit(
     cursor0: Cursor,
 ):
     # ESTABLISH
-    idea_type = "ii000XX"
+    idea_type = "ii001XX"
     idea_cols = [
         kw.spark_num,
         kw.spark_face,
@@ -112,7 +112,7 @@ def test_get_idea_into_dimen_raw_query_ReturnsObj_Scenario2_person_contactunit(
     cursor0: Cursor,
 ):
     # ESTABLISH
-    idea_type = "ii000XX"
+    idea_type = "ii001XX"
     idea_cols = [
         kw.spark_num,
         kw.spark_face,

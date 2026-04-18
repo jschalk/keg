@@ -24,8 +24,8 @@ def test_etl_ideax_vld_tables_to_sound_raw_tables_PopulatesValidTable_Scenario0_
     spark5 = 5
     spark7 = 7
 
-    ii00074_valid_tablename = f"ii00074_{kw.ideax_vld}"
-    ii00074_columns = [
+    ii00174_valid_tablename = f"ii00174_{kw.ideax_vld}"
+    ii00174_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
@@ -35,8 +35,8 @@ def test_etl_ideax_vld_tables_to_sound_raw_tables_PopulatesValidTable_Scenario0_
         kw.inx_rope,
         kw.knot,
     ]
-    create_idea_sorted_table(cursor0, ii00074_valid_tablename, set(ii00074_columns))
-    insert_into_clause = f"""INSERT INTO {ii00074_valid_tablename} (
+    create_idea_sorted_table(cursor0, ii00174_valid_tablename, set(ii00174_columns))
+    insert_into_clause = f"""INSERT INTO {ii00174_valid_tablename} (
   {kw.spark_num}
 , {kw.spark_face}
 , {kw.moment_rope}
@@ -54,8 +54,8 @@ VALUES
 """
     cursor0.execute(f"{insert_into_clause} {values_clause}")
 
-    ii00045_valid_tablename = f"ii00045_{kw.ideax_vld}"
-    ii00045_columns = [
+    ii00145_valid_tablename = f"ii00145_{kw.ideax_vld}"
+    ii00145_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.otx_rope,
@@ -65,8 +65,8 @@ VALUES
         kw.knot,
         kw.unknown_str,
     ]
-    create_idea_sorted_table(cursor0, ii00045_valid_tablename, ii00045_columns)
-    insert_into_clause = f"""INSERT INTO {ii00045_valid_tablename} (
+    create_idea_sorted_table(cursor0, ii00145_valid_tablename, ii00145_columns)
+    insert_into_clause = f"""INSERT INTO {ii00145_valid_tablename} (
   {kw.spark_num}
 , {kw.spark_face}
 , {kw.otx_rope}
@@ -84,8 +84,8 @@ VALUES
 ;
 """
     cursor0.execute(f"{insert_into_clause} {values_clause}")
-    assert get_row_count(cursor0, ii00074_valid_tablename) == 2
-    assert get_row_count(cursor0, ii00045_valid_tablename) == 3
+    assert get_row_count(cursor0, ii00174_valid_tablename) == 2
+    assert get_row_count(cursor0, ii00145_valid_tablename) == 3
     trlrope_s_raw_tablename = create_prime_tablename("TRLROPE", kw.s_raw)
     prncont_put_s_raw_tblname = create_prime_tablename("PRNCONT", kw.s_raw, "put")
     assert not db_table_exists(cursor0, trlrope_s_raw_tablename)
@@ -97,8 +97,8 @@ VALUES
     # THEN
     assert get_row_count(cursor0, trlrope_s_raw_tablename) == 5
     assert get_row_count(cursor0, prncont_put_s_raw_tblname) == 2
-    b117 = "ii00074"
-    b045 = "ii00045"
+    b117 = "ii00174"
+    b045 = "ii00145"
     ex_row0 = (b117, spark1, exx.sue, exx.yao, yao_inx, None, None, None, None)
     ex_row1 = (b117, spark1, exx.sue, exx.bob, bob_inx, None, None, None, None)
     ex_row2 = (b045, spark2, exx.sue, exx.sue, exx.sue, rdx, rdx, ukx, None)

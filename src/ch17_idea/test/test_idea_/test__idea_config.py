@@ -42,9 +42,9 @@ from src.ch17_idea.idea_config import (
     get_idearef_from_file,
     get_quick_ideas_column_ref,
     idea_config_path,
-    ii00013_planunit_v0_0_0,
-    ii00020_person_contact_membership_v0_0_0,
-    ii00021_person_contactunit_v0_0_0,
+    ii00113_planunit_v0_0_0,
+    ii00120_person_contact_membership_v0_0_0,
+    ii00121_person_contactunit_v0_0_0,
 )
 from src.ref.keywords import Ch17Keywords as kw
 
@@ -595,9 +595,9 @@ def test_get_idea_format_filenames_ReturnsObj_CheckSome_idea_format_filesnames_E
     idea_filenames_set = get_idea_format_filenames()
 
     # WHEN / THEN
-    assert ii00021_person_contactunit_v0_0_0() in idea_filenames_set
-    assert ii00020_person_contact_membership_v0_0_0() in idea_filenames_set
-    assert ii00013_planunit_v0_0_0() in idea_filenames_set
+    assert ii00121_person_contactunit_v0_0_0() in idea_filenames_set
+    assert ii00120_person_contact_membership_v0_0_0() in idea_filenames_set
+    assert ii00113_planunit_v0_0_0() in idea_filenames_set
 
 
 def change_erase_attrs(idea_attrs: set):
@@ -701,19 +701,19 @@ def test_get_idea_format_filenames_ReturnsObj_Validate_idea_format_files():
 
 def test_get_idea_format_filename_ReturnsObj():
     # ESTABLISH
-    ii00021_str = "ii00021"
-    ii00020_str = "ii00020"
-    ii00013_str = "ii00013"
+    ii00121_str = "ii00121"
+    ii00120_str = "ii00120"
+    ii00113_str = "ii00113"
 
     # WHEN
-    ii00021_filename = get_idea_format_filename(ii00021_str)
-    ii00020_filename = get_idea_format_filename(ii00020_str)
-    ii00013_filename = get_idea_format_filename(ii00013_str)
+    ii00121_filename = get_idea_format_filename(ii00121_str)
+    ii00120_filename = get_idea_format_filename(ii00120_str)
+    ii00113_filename = get_idea_format_filename(ii00113_str)
 
     # THEN
-    assert ii00021_filename == ii00021_person_contactunit_v0_0_0()
-    assert ii00020_filename == ii00020_person_contact_membership_v0_0_0()
-    assert ii00013_filename == ii00013_planunit_v0_0_0()
+    assert ii00121_filename == ii00121_person_contactunit_v0_0_0()
+    assert ii00120_filename == ii00120_person_contact_membership_v0_0_0()
+    assert ii00113_filename == ii00113_planunit_v0_0_0()
 
     all_set = {get_idea_format_filename(idea_type) for idea_type in get_idea_types()}
     assert all_set == get_idea_format_filenames()
@@ -832,7 +832,7 @@ def test_get_quick_ideas_column_ref_ReturnsObj():
 
     # THEN
     assert len(x_idea_quick_column_ref) == len(get_idea_types())
-    assert x_idea_quick_column_ref.get("ii00000") == {
+    assert x_idea_quick_column_ref.get("ii00100") == {
         kw.spark_num,
         kw.spark_face,
         kw.c400_number,

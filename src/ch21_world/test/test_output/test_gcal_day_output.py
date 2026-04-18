@@ -12,7 +12,7 @@ from src.ch13_time.epoch_main import add_epoch_planunit, get_default_epoch_confi
 from src.ch14_moment.moment_main import momentunit_shop, save_moment_file
 from src.ch17_idea.idea_db_tool import save_sheet
 from src.ch20_kpi._ref.ch20_path import create_day_punch_txt_path as day_punch_path
-from src.ch21_world.test._util.ch21_examples import ii00013_example
+from src.ch21_world.test._util.ch21_examples import ii00113_example
 from src.ch21_world.world import (
     belief_sheets_to_gcal_day_punchs,
     create_today_punchs,
@@ -54,29 +54,29 @@ def test_belief_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueRepor
     hb_brush = init_rope(["herenow_blu", "family", exx.casa, exx.clean, "brush"])
     spark0, spark2, spark3, spark4 = (0, 2, 3, 4)
     # create connections between sue and yao and themselves
-    ii00011_data = [
+    ii00111_data = [
         (spark0, exx.bob, exx.hn_blu, exx.sue, exx.sue),
         (spark0, exx.bob, exx.hn_blu, exx.sue, exx.yao),
         (spark0, exx.bob, exx.hn_blu, exx.yao, exx.yao),
         (spark0, exx.bob, exx.hn_blu, exx.yao, exx.sue),
     ]
-    ii00011_cols = [
+    ii00111_cols = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.contact_name,
     ]
-    ii00011_df = pandas_DataFrame(ii00011_data, columns=ii00011_cols)
+    ii00111_df = pandas_DataFrame(ii00111_data, columns=ii00111_cols)
     # create tasks for sue, yao, others
-    ii00013_data = [
+    ii00113_data = [
         (spark0, exx.bob, exx.zia, exx.hn_red, hr_mop, 1, True),
         (spark0, exx.bob, exx.yao, exx.hn_red, hr_tools, 2, True),
         (spark2, exx.bob, exx.sue, exx.hn_blu, hb_mop, 8, True),
         (spark3, exx.bob, exx.sue, exx.hn_blu, hb_sweep, 3, True),
         (spark4, exx.bob, exx.xio, exx.hn_blu, hb_brush, 1, True),
     ]
-    ii00013_cols = [
+    ii00113_cols = [
         kw.spark_num,
         kw.spark_face,
         kw.person_name,
@@ -85,16 +85,16 @@ def test_belief_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueRepor
         kw.star,
         kw.pledge,
     ]
-    ii00013_df = pandas_DataFrame(ii00013_data, columns=ii00013_cols)
+    ii00113_df = pandas_DataFrame(ii00113_data, columns=ii00113_cols)
     here_wdir = worlddir_shop("HereNow", str(temp3_fs))
     ideas01_path = create_path(here_wdir.ideas_src_dir, "example.xlsx")
     # unrelated to this test
-    # ii00013_export_dir = create_path("C:\dev\_temp_working_dir", "ii00013_example.xlsx")
-    # ii00011_export_dir = create_path("C:\dev\_temp_working_dir", "ii00011_example.xlsx")
-    # ii00013_df.to_excel(ii00013_export_dir, sheet_name="ii00013_ex1", index=False)
-    # ii00011_df.to_excel(ii00011_export_dir, sheet_name="ii00011_ex1", index=False)
-    save_sheet(ideas01_path, "ii00013_ex1", ii00013_df)
-    save_sheet(ideas01_path, "ii00011_ex1", ii00011_df)
+    # ii00113_export_dir = create_path("C:\dev\_temp_working_dir", "ii00113_example.xlsx")
+    # ii00111_export_dir = create_path("C:\dev\_temp_working_dir", "ii00111_example.xlsx")
+    # ii00113_df.to_excel(ii00113_export_dir, sheet_name="ii00113_ex1", index=False)
+    # ii00111_df.to_excel(ii00111_export_dir, sheet_name="ii00111_ex1", index=False)
+    save_sheet(ideas01_path, "ii00113_ex1", ii00113_df)
+    save_sheet(ideas01_path, "ii00111_ex1", ii00111_df)
     mmt_dir = here_wdir.moment_mstr_dir
     hn_red_lasso = lassounit_shop(exx.hn_red)
     hn_blu_lasso = lassounit_shop(exx.hn_blu)
@@ -148,22 +148,22 @@ def test_create_today_punchs_SavesFiles_Scenario0_PopulatedSueReport(
     hb_brush = init_rope(["herenow_blu", "family", exx.casa, exx.clean, "brush"])
     spark0, spark2, spark3, spark4 = (0, 2, 3, 4)
     # create connections between sue and yao and themselves
-    ii00011_cols = [
+    ii00111_cols = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.contact_name,
     ]
-    ii00011_data = [
+    ii00111_data = [
         (spark0, exx.bob, exx.hn_blu, exx.sue, exx.sue),
         (spark0, exx.bob, exx.hn_blu, exx.sue, exx.yao),
         (spark0, exx.bob, exx.hn_blu, exx.yao, exx.yao),
         (spark0, exx.bob, exx.hn_blu, exx.yao, exx.sue),
     ]
-    ii00011_df = pandas_DataFrame(ii00011_data, columns=ii00011_cols)
+    ii00111_df = pandas_DataFrame(ii00111_data, columns=ii00111_cols)
     # create tasks for sue, yao, others
-    ii00013_cols = [
+    ii00113_cols = [
         kw.spark_num,
         kw.spark_face,
         kw.person_name,
@@ -172,24 +172,24 @@ def test_create_today_punchs_SavesFiles_Scenario0_PopulatedSueReport(
         kw.star,
         kw.pledge,
     ]
-    ii00013_data = [
+    ii00113_data = [
         (spark0, exx.bob, exx.zia, exx.hn_red, hr_mop, 1, True),
         (spark0, exx.bob, exx.yao, exx.hn_red, hr_tools, 2, True),
         (spark2, exx.bob, exx.sue, exx.hn_blu, hb_mop, 8, True),
         (spark3, exx.bob, exx.sue, exx.hn_blu, hb_sweep, 3, True),
         (spark4, exx.bob, exx.xio, exx.hn_blu, hb_brush, 1, True),
     ]
-    ii00013_df = pandas_DataFrame(ii00013_data, columns=ii00013_cols)
+    ii00113_df = pandas_DataFrame(ii00113_data, columns=ii00113_cols)
     # external_dir = "C:dev/_temp_working_dir"
     here_wdir = worlddir_shop("HereNow", str(temp3_fs))
     ideas01_path = create_path(here_wdir.ideas_src_dir, "example.xlsx")
     # unrelated to this test
-    # ii00013_export_dir = create_path("C:\dev\_temp_working_dir", "ii00013_example.xlsx")
-    # ii00011_export_dir = create_path("C:\dev\_temp_working_dir", "ii00011_example.xlsx")
-    # ii00013_df.to_excel(ii00013_export_dir, sheet_name="ii00013_ex1", index=False)
-    # ii00011_df.to_excel(ii00011_export_dir, sheet_name="ii00011_ex1", index=False)
-    save_sheet(ideas01_path, "ii00013_ex1", ii00013_df)
-    save_sheet(ideas01_path, "ii00011_ex1", ii00011_df)
+    # ii00113_export_dir = create_path("C:\dev\_temp_working_dir", "ii00113_example.xlsx")
+    # ii00111_export_dir = create_path("C:\dev\_temp_working_dir", "ii00111_example.xlsx")
+    # ii00113_df.to_excel(ii00113_export_dir, sheet_name="ii00113_ex1", index=False)
+    # ii00111_df.to_excel(ii00111_export_dir, sheet_name="ii00111_ex1", index=False)
+    save_sheet(ideas01_path, "ii00113_ex1", ii00113_df)
+    save_sheet(ideas01_path, "ii00111_ex1", ii00111_df)
     mmt_dir = here_wdir.moment_mstr_dir
     hn_red_lasso = lassounit_shop(exx.hn_red)
     hn_blu_lasso = lassounit_shop(exx.hn_blu)

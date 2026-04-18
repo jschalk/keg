@@ -18,8 +18,8 @@ def test_etl_ideax_raw_tables_to_ideax_agg_tables_PopulatesAggTable_Scenario0_Gr
     minute_420 = 420
     hour6am = "6am"
     hour7am = "7am"
-    raw_ii00003_tablename = f"ii00003_{kw.ideax_raw}"
-    raw_ii00003_columns = [
+    raw_ii00103_tablename = f"ii00103_{kw.ideax_raw}"
+    raw_ii00103_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
@@ -28,8 +28,8 @@ def test_etl_ideax_raw_tables_to_ideax_agg_tables_PopulatesAggTable_Scenario0_Gr
         kw.knot,
         kw.error_message,
     ]
-    create_idea_sorted_table(cursor0, raw_ii00003_tablename, raw_ii00003_columns)
-    insert_into_clause = f"""INSERT INTO {raw_ii00003_tablename} (
+    create_idea_sorted_table(cursor0, raw_ii00103_tablename, raw_ii00103_columns)
+    insert_into_clause = f"""INSERT INTO {raw_ii00103_tablename} (
   {kw.spark_num}
 , {kw.spark_face}
 , {kw.moment_rope}
@@ -47,27 +47,27 @@ VALUES
 """
     insert_sqlstr = f"{insert_into_clause} {values_clause}"
     cursor0.execute(insert_sqlstr)
-    agg_ii00003_tablename = f"ii00003_{kw.ideax_agg}"
-    assert get_row_count(cursor0, raw_ii00003_tablename) == 3
-    assert not db_table_exists(cursor0, agg_ii00003_tablename)
+    agg_ii00103_tablename = f"ii00103_{kw.ideax_agg}"
+    assert get_row_count(cursor0, raw_ii00103_tablename) == 3
+    assert not db_table_exists(cursor0, agg_ii00103_tablename)
 
     # WHEN
     etl_ideax_raw_tables_to_ideax_agg_tables(cursor0)
 
     # THEN
-    assert db_table_exists(cursor0, agg_ii00003_tablename)
-    assert get_row_count(cursor0, agg_ii00003_tablename) == 2
+    assert db_table_exists(cursor0, agg_ii00103_tablename)
+    assert get_row_count(cursor0, agg_ii00103_tablename) == 2
 
-    ii00003_table_cols = get_table_columns(cursor0, agg_ii00003_tablename)
+    ii00103_table_cols = get_table_columns(cursor0, agg_ii00103_tablename)
     file_dir_str = "file_dir"
     filename_str = "filename"
     sheet_name_str = "sheet_name"
-    assert file_dir_str not in set(ii00003_table_cols[0])
-    assert filename_str not in set(ii00003_table_cols[1])
-    assert sheet_name_str not in set(ii00003_table_cols[2])
+    assert file_dir_str not in set(ii00103_table_cols[0])
+    assert filename_str not in set(ii00103_table_cols[1])
+    assert sheet_name_str not in set(ii00103_table_cols[2])
     select_agg_sqlstr = f"""
 SELECT * 
-FROM {agg_ii00003_tablename} 
+FROM {agg_ii00103_tablename} 
 ORDER BY {kw.spark_num}, {kw.cumulative_minute};"""
     cursor0.execute(select_agg_sqlstr)
 
@@ -95,8 +95,8 @@ def test_etl_ideax_raw_tables_to_ideax_agg_tables_PopulatesAggTable_Scenario1_Gr
     hour7am = "7am"
     hour8am = "8am"
 
-    raw_ii00003_tablename = f"ii00003_{kw.ideax_raw}"
-    raw_ii00003_columns = [
+    raw_ii00103_tablename = f"ii00103_{kw.ideax_raw}"
+    raw_ii00103_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
@@ -105,8 +105,8 @@ def test_etl_ideax_raw_tables_to_ideax_agg_tables_PopulatesAggTable_Scenario1_Gr
         kw.knot,
         kw.error_message,
     ]
-    create_idea_sorted_table(cursor0, raw_ii00003_tablename, raw_ii00003_columns)
-    insert_into_clause = f"""INSERT INTO {raw_ii00003_tablename} (
+    create_idea_sorted_table(cursor0, raw_ii00103_tablename, raw_ii00103_columns)
+    insert_into_clause = f"""INSERT INTO {raw_ii00103_tablename} (
   {kw.spark_num}
 , {kw.spark_face}
 , {kw.moment_rope}
@@ -124,25 +124,25 @@ VALUES
 """
     insert_sqlstr = f"{insert_into_clause} {values_clause}"
     cursor0.execute(insert_sqlstr)
-    agg_ii00003_tablename = f"ii00003_{kw.ideax_agg}"
-    assert get_row_count(cursor0, raw_ii00003_tablename) == 3
-    assert not db_table_exists(cursor0, agg_ii00003_tablename)
+    agg_ii00103_tablename = f"ii00103_{kw.ideax_agg}"
+    assert get_row_count(cursor0, raw_ii00103_tablename) == 3
+    assert not db_table_exists(cursor0, agg_ii00103_tablename)
 
     # WHEN
     etl_ideax_raw_tables_to_ideax_agg_tables(cursor0)
 
     # THEN
-    assert db_table_exists(cursor0, agg_ii00003_tablename)
-    assert get_row_count(cursor0, agg_ii00003_tablename) == 1
+    assert db_table_exists(cursor0, agg_ii00103_tablename)
+    assert get_row_count(cursor0, agg_ii00103_tablename) == 1
 
-    ii00003_table_cols = get_table_columns(cursor0, agg_ii00003_tablename)
+    ii00103_table_cols = get_table_columns(cursor0, agg_ii00103_tablename)
     file_dir_str = "file_dir"
     filename_str = "filename"
     sheet_name_str = "sheet_name"
-    assert file_dir_str not in set(ii00003_table_cols[0])
-    assert filename_str not in set(ii00003_table_cols[1])
-    assert sheet_name_str not in set(ii00003_table_cols[2])
-    select_agg_sqlstr = f"""SELECT * FROM {agg_ii00003_tablename};"""
+    assert file_dir_str not in set(ii00103_table_cols[0])
+    assert filename_str not in set(ii00103_table_cols[1])
+    assert sheet_name_str not in set(ii00103_table_cols[2])
+    select_agg_sqlstr = f"""SELECT * FROM {agg_ii00103_tablename};"""
     cursor0.execute(select_agg_sqlstr)
 
     rows = cursor0.fetchall()
@@ -166,8 +166,8 @@ def test_etl_ideax_raw_tables_to_ideax_agg_tables_PopulatesAggTable_Scenario2_Gr
     hour6am = "6am"
     hour7am = "7am"
     hour8am = "8am"
-    raw_ii00003_tablename = f"ii00003_{kw.ideax_raw}"
-    raw_ii00003_columns = [
+    raw_ii00103_tablename = f"ii00103_{kw.ideax_raw}"
+    raw_ii00103_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
@@ -176,8 +176,8 @@ def test_etl_ideax_raw_tables_to_ideax_agg_tables_PopulatesAggTable_Scenario2_Gr
         kw.knot,
         kw.error_message,
     ]
-    create_idea_sorted_table(cursor0, raw_ii00003_tablename, raw_ii00003_columns)
-    insert_into_clause = f"""INSERT INTO {raw_ii00003_tablename} (
+    create_idea_sorted_table(cursor0, raw_ii00103_tablename, raw_ii00103_columns)
+    insert_into_clause = f"""INSERT INTO {raw_ii00103_tablename} (
   {kw.spark_num}
 , {kw.spark_face}
 , {kw.moment_rope}
@@ -196,9 +196,9 @@ VALUES
 """
     insert_sqlstr = f"{insert_into_clause} {values_clause}"
     cursor0.execute(insert_sqlstr)
-    agg_ii00003_tablename = f"ii00003_{kw.ideax_agg}"
-    assert get_row_count(cursor0, raw_ii00003_tablename) == 4
-    assert not db_table_exists(cursor0, agg_ii00003_tablename)
+    agg_ii00103_tablename = f"ii00103_{kw.ideax_agg}"
+    assert get_row_count(cursor0, raw_ii00103_tablename) == 4
+    assert not db_table_exists(cursor0, agg_ii00103_tablename)
 
     # WHEN
     etl_ideax_raw_tables_to_ideax_agg_tables(cursor0)
@@ -206,7 +206,7 @@ VALUES
     # THEN
     select_agg_sqlstr = f"""
 SELECT * 
-FROM {agg_ii00003_tablename} 
+FROM {agg_ii00103_tablename} 
 ORDER BY {kw.spark_num}, {kw.cumulative_minute};"""
     cursor0.execute(select_agg_sqlstr)
 
@@ -222,15 +222,15 @@ ORDER BY {kw.spark_num}, {kw.cumulative_minute};"""
 
 def test_get_max_idea_sparks_spark_num_ReturnsObj_Scenario0_NoTables(cursor0: Cursor):
     # ESTABLISH
-    agg_ii00003_tablename = f"ii00003_{kw.ideax_agg}"
-    agg_ii00003_columns = [
+    agg_ii00103_tablename = f"ii00103_{kw.ideax_agg}"
+    agg_ii00103_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
         kw.cumulative_minute,
         kw.hour_label,
     ]
-    create_idea_sorted_table(cursor0, agg_ii00003_tablename, agg_ii00003_columns)
+    create_idea_sorted_table(cursor0, agg_ii00103_tablename, agg_ii00103_columns)
 
     # WHEN / THEN
     assert get_max_ideax_agg_spark_num(cursor0) == 1
@@ -245,16 +245,16 @@ def test_get_max_idea_sparks_spark_num_ReturnsObj_Scenario1_OneTable(cursor0: Cu
     minute_420 = 420
     hour6am = "6am"
     hour7am = "7am"
-    agg_ii00003_tablename = f"ii00003_{kw.ideax_agg}"
-    agg_ii00003_columns = [
+    agg_ii00103_tablename = f"ii00103_{kw.ideax_agg}"
+    agg_ii00103_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
         kw.cumulative_minute,
         kw.hour_label,
     ]
-    create_idea_sorted_table(cursor0, agg_ii00003_tablename, agg_ii00003_columns)
-    insert_into_clause = f"""INSERT INTO {agg_ii00003_tablename} (
+    create_idea_sorted_table(cursor0, agg_ii00103_tablename, agg_ii00103_columns)
+    insert_into_clause = f"""INSERT INTO {agg_ii00103_tablename} (
   {kw.spark_num}
 , {kw.spark_face}
 , {kw.moment_rope}
@@ -289,21 +289,21 @@ def test_get_max_idea_sparks_spark_num_ReturnsObj_Scenario2_MultipleTable(
     spark3 = 3
     spark9 = 9
     create_sound_and_heard_tables(cursor0)
-    agg_ii00003_tablename = f"ii00003_{kw.ideax_agg}"
-    agg_ii00003_columns = [kw.spark_num]
-    create_idea_sorted_table(cursor0, agg_ii00003_tablename, agg_ii00003_columns)
-    agg_ii00003_insert_sqlstr = f"""
-INSERT INTO {agg_ii00003_tablename} ({kw.spark_num})
+    agg_ii00103_tablename = f"ii00103_{kw.ideax_agg}"
+    agg_ii00103_columns = [kw.spark_num]
+    create_idea_sorted_table(cursor0, agg_ii00103_tablename, agg_ii00103_columns)
+    agg_ii00103_insert_sqlstr = f"""
+INSERT INTO {agg_ii00103_tablename} ({kw.spark_num})
 VALUES ('{spark1}'), ('{spark1}'), ('{spark9}');"""
-    cursor0.execute(agg_ii00003_insert_sqlstr)
+    cursor0.execute(agg_ii00103_insert_sqlstr)
 
-    agg_ii00044_tablename = f"ii00044_{kw.ideax_agg}"
-    agg_ii00044_columns = [kw.spark_num]
-    create_idea_sorted_table(cursor0, agg_ii00044_tablename, agg_ii00044_columns)
-    agg_ii00044_insert_sqlstr = f"""
-INSERT INTO {agg_ii00044_tablename} ({kw.spark_num})
+    agg_ii00144_tablename = f"ii00144_{kw.ideax_agg}"
+    agg_ii00144_columns = [kw.spark_num]
+    create_idea_sorted_table(cursor0, agg_ii00144_tablename, agg_ii00144_columns)
+    agg_ii00144_insert_sqlstr = f"""
+INSERT INTO {agg_ii00144_tablename} ({kw.spark_num})
 VALUES ('{spark3}');"""
-    cursor0.execute(agg_ii00044_insert_sqlstr)
+    cursor0.execute(agg_ii00144_insert_sqlstr)
 
     # WHEN
     max_spark_num = get_max_ideax_agg_spark_num(cursor0)

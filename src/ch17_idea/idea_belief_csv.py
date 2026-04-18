@@ -8,27 +8,27 @@ from src.ch17_idea.idea_config import get_idea_format_filename, get_idea_format_
 def create_init_belief_idea_csv_strs() -> dict[str, str]:
     """Returns strings of csv headers with comma delimiter"""
     belief_idea_types = [
-        "ii00000",
-        "ii00001",
-        "ii00002",
-        "ii00003",
-        "ii00004",
-        "ii00005",
-        # "ii00006",
-        "ii00020",
-        "ii00021",
-        "ii00022",
-        "ii00023",
-        "ii00024",
-        "ii00025",
-        "ii00026",
-        "ii00027",
-        "ii00028",
-        "ii00029",
-        "ii00042",
-        "ii00043",
-        "ii00044",
-        "ii00045",
+        "ii00100",
+        "ii00101",
+        "ii00102",
+        "ii00103",
+        "ii00104",
+        "ii00105",
+        # "ii00106",
+        "ii00120",
+        "ii00121",
+        "ii00122",
+        "ii00123",
+        "ii00124",
+        "ii00125",
+        "ii00126",
+        "ii00127",
+        "ii00128",
+        "ii00129",
+        "ii00142",
+        "ii00143",
+        "ii00144",
+        "ii00145",
     ]
     idea_format_headers = get_idea_format_headers()
 
@@ -53,24 +53,24 @@ def add_momentunits_to_belief_csv_strs(
 def add_momentunit_to_belief_csv_strs(
     x_moment: MomentUnit, moment_csv_strs: dict[str, str], csv_delimiter: str
 ) -> dict[str, str]:
-    ii00000_csv = moment_csv_strs.get("ii00000")
-    ii00001_csv = moment_csv_strs.get("ii00001")
-    ii00002_csv = moment_csv_strs.get("ii00002")
-    ii00003_csv = moment_csv_strs.get("ii00003")
-    ii00004_csv = moment_csv_strs.get("ii00004")
-    ii00005_csv = moment_csv_strs.get("ii00005")
-    ii00000_csv = _add_momentunit_to_ii00000_csv(ii00000_csv, x_moment, csv_delimiter)
-    ii00001_csv = _add_budunit_to_ii00001_csv(ii00001_csv, x_moment, csv_delimiter)
-    ii00002_csv = _add_paybook_to_ii00002_csv(ii00002_csv, x_moment, csv_delimiter)
-    ii00003_csv = _add_hours_to_ii00003_csv(ii00003_csv, x_moment, csv_delimiter)
-    ii00004_csv = _add_months_to_ii00004_csv(ii00004_csv, x_moment, csv_delimiter)
-    ii00005_csv = _add_weekdays_to_ii00005_csv(ii00005_csv, x_moment, csv_delimiter)
-    moment_csv_strs["ii00000"] = ii00000_csv
-    moment_csv_strs["ii00001"] = ii00001_csv
-    moment_csv_strs["ii00002"] = ii00002_csv
-    moment_csv_strs["ii00003"] = ii00003_csv
-    moment_csv_strs["ii00004"] = ii00004_csv
-    moment_csv_strs["ii00005"] = ii00005_csv
+    ii00100_csv = moment_csv_strs.get("ii00100")
+    ii00101_csv = moment_csv_strs.get("ii00101")
+    ii00102_csv = moment_csv_strs.get("ii00102")
+    ii00103_csv = moment_csv_strs.get("ii00103")
+    ii00104_csv = moment_csv_strs.get("ii00104")
+    ii00105_csv = moment_csv_strs.get("ii00105")
+    ii00100_csv = _add_momentunit_to_ii00100_csv(ii00100_csv, x_moment, csv_delimiter)
+    ii00101_csv = _add_budunit_to_ii00101_csv(ii00101_csv, x_moment, csv_delimiter)
+    ii00102_csv = _add_paybook_to_ii00102_csv(ii00102_csv, x_moment, csv_delimiter)
+    ii00103_csv = _add_hours_to_ii00103_csv(ii00103_csv, x_moment, csv_delimiter)
+    ii00104_csv = _add_months_to_ii00104_csv(ii00104_csv, x_moment, csv_delimiter)
+    ii00105_csv = _add_weekdays_to_ii00105_csv(ii00105_csv, x_moment, csv_delimiter)
+    moment_csv_strs["ii00100"] = ii00100_csv
+    moment_csv_strs["ii00101"] = ii00101_csv
+    moment_csv_strs["ii00102"] = ii00102_csv
+    moment_csv_strs["ii00103"] = ii00103_csv
+    moment_csv_strs["ii00104"] = ii00104_csv
+    moment_csv_strs["ii00105"] = ii00105_csv
 
 
 def get_csv_compatible_knot(knot: KnotTerm, csv_delimiter: str) -> KnotTerm:
@@ -79,7 +79,7 @@ def get_csv_compatible_knot(knot: KnotTerm, csv_delimiter: str) -> KnotTerm:
     return knot
 
 
-def _add_momentunit_to_ii00000_csv(
+def _add_momentunit_to_ii00100_csv(
     x_csv: str,
     x_moment: MomentUnit,
     csv_delimiter: str,
@@ -106,7 +106,7 @@ def _add_momentunit_to_ii00000_csv(
     return x_csv
 
 
-def _add_budunit_to_ii00001_csv(
+def _add_budunit_to_ii00101_csv(
     x_csv: str,
     x_moment: MomentUnit,
     csv_delimiter: str,
@@ -131,7 +131,7 @@ def _add_budunit_to_ii00001_csv(
     return x_csv
 
 
-def _add_paybook_to_ii00002_csv(
+def _add_paybook_to_ii00102_csv(
     x_csv: str,
     x_moment: MomentUnit,
     csv_delimiter: str,
@@ -158,7 +158,7 @@ def _add_paybook_to_ii00002_csv(
     return x_csv
 
 
-def _add_hours_to_ii00003_csv(
+def _add_hours_to_ii00103_csv(
     x_csv: str,
     x_moment: MomentUnit,
     csv_delimiter: str,
@@ -180,7 +180,7 @@ def _add_hours_to_ii00003_csv(
     return x_csv
 
 
-def _add_months_to_ii00004_csv(
+def _add_months_to_ii00104_csv(
     x_csv: str,
     x_moment: MomentUnit,
     csv_delimiter: str,
@@ -202,7 +202,7 @@ def _add_months_to_ii00004_csv(
     return x_csv
 
 
-def _add_weekdays_to_ii00005_csv(
+def _add_weekdays_to_ii00105_csv(
     x_csv: str,
     x_moment: MomentUnit,
     csv_delimiter: str,
@@ -224,7 +224,7 @@ def _add_weekdays_to_ii00005_csv(
     return x_csv
 
 
-def add_person_to_ii00020_csv(
+def add_person_to_ii00120_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
@@ -250,7 +250,7 @@ def add_person_to_ii00020_csv(
     return x_csv
 
 
-def add_person_to_ii00021_csv(
+def add_person_to_ii00121_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
@@ -274,7 +274,7 @@ def add_person_to_ii00021_csv(
     return x_csv
 
 
-def add_person_to_ii00022_csv(
+def add_person_to_ii00122_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
@@ -299,7 +299,7 @@ def add_person_to_ii00022_csv(
     return x_csv
 
 
-def add_person_to_ii00023_csv(
+def add_person_to_ii00123_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
@@ -324,7 +324,7 @@ def add_person_to_ii00023_csv(
     return x_csv
 
 
-def add_person_to_ii00024_csv(
+def add_person_to_ii00124_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
@@ -347,7 +347,7 @@ def add_person_to_ii00024_csv(
     return x_csv
 
 
-def add_person_to_ii00025_csv(
+def add_person_to_ii00125_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
@@ -370,7 +370,7 @@ def add_person_to_ii00025_csv(
     return x_csv
 
 
-def add_person_to_ii00026_csv(
+def add_person_to_ii00126_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
@@ -398,7 +398,7 @@ def add_person_to_ii00026_csv(
     return x_csv
 
 
-def add_person_to_ii00027_csv(
+def add_person_to_ii00127_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
@@ -422,7 +422,7 @@ def add_person_to_ii00027_csv(
     return x_csv
 
 
-def add_person_to_ii00028_csv(
+def add_person_to_ii00128_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
@@ -455,7 +455,7 @@ def add_person_to_ii00028_csv(
     return x_csv
 
 
-def add_person_to_ii00029_csv(
+def add_person_to_ii00129_csv(
     x_csv: str,
     x_person: PersonUnit,
     csv_delimiter: str,
@@ -486,33 +486,33 @@ def add_personunit_to_belief_csv_strs(
     x_person: PersonUnit, moment_csv_strs: dict[str, str], csv_delimiter: str
 ) -> str:
     """PersonUnit must be to be conputed."""
-    ii00020_csv = moment_csv_strs.get("ii00020")
-    ii00021_csv = moment_csv_strs.get("ii00021")
-    ii00022_csv = moment_csv_strs.get("ii00022")
-    ii00023_csv = moment_csv_strs.get("ii00023")
-    ii00024_csv = moment_csv_strs.get("ii00024")
-    ii00025_csv = moment_csv_strs.get("ii00025")
-    ii00026_csv = moment_csv_strs.get("ii00026")
-    ii00027_csv = moment_csv_strs.get("ii00027")
-    ii00028_csv = moment_csv_strs.get("ii00028")
-    ii00029_csv = moment_csv_strs.get("ii00029")
-    ii00020_csv = add_person_to_ii00020_csv(ii00020_csv, x_person, csv_delimiter)
-    ii00021_csv = add_person_to_ii00021_csv(ii00021_csv, x_person, csv_delimiter)
-    ii00022_csv = add_person_to_ii00022_csv(ii00022_csv, x_person, csv_delimiter)
-    ii00023_csv = add_person_to_ii00023_csv(ii00023_csv, x_person, csv_delimiter)
-    ii00024_csv = add_person_to_ii00024_csv(ii00024_csv, x_person, csv_delimiter)
-    ii00025_csv = add_person_to_ii00025_csv(ii00025_csv, x_person, csv_delimiter)
-    ii00026_csv = add_person_to_ii00026_csv(ii00026_csv, x_person, csv_delimiter)
-    ii00027_csv = add_person_to_ii00027_csv(ii00027_csv, x_person, csv_delimiter)
-    ii00028_csv = add_person_to_ii00028_csv(ii00028_csv, x_person, csv_delimiter)
-    ii00029_csv = add_person_to_ii00029_csv(ii00029_csv, x_person, csv_delimiter)
-    moment_csv_strs["ii00020"] = ii00020_csv
-    moment_csv_strs["ii00021"] = ii00021_csv
-    moment_csv_strs["ii00022"] = ii00022_csv
-    moment_csv_strs["ii00023"] = ii00023_csv
-    moment_csv_strs["ii00024"] = ii00024_csv
-    moment_csv_strs["ii00025"] = ii00025_csv
-    moment_csv_strs["ii00026"] = ii00026_csv
-    moment_csv_strs["ii00027"] = ii00027_csv
-    moment_csv_strs["ii00028"] = ii00028_csv
-    moment_csv_strs["ii00029"] = ii00029_csv
+    ii00120_csv = moment_csv_strs.get("ii00120")
+    ii00121_csv = moment_csv_strs.get("ii00121")
+    ii00122_csv = moment_csv_strs.get("ii00122")
+    ii00123_csv = moment_csv_strs.get("ii00123")
+    ii00124_csv = moment_csv_strs.get("ii00124")
+    ii00125_csv = moment_csv_strs.get("ii00125")
+    ii00126_csv = moment_csv_strs.get("ii00126")
+    ii00127_csv = moment_csv_strs.get("ii00127")
+    ii00128_csv = moment_csv_strs.get("ii00128")
+    ii00129_csv = moment_csv_strs.get("ii00129")
+    ii00120_csv = add_person_to_ii00120_csv(ii00120_csv, x_person, csv_delimiter)
+    ii00121_csv = add_person_to_ii00121_csv(ii00121_csv, x_person, csv_delimiter)
+    ii00122_csv = add_person_to_ii00122_csv(ii00122_csv, x_person, csv_delimiter)
+    ii00123_csv = add_person_to_ii00123_csv(ii00123_csv, x_person, csv_delimiter)
+    ii00124_csv = add_person_to_ii00124_csv(ii00124_csv, x_person, csv_delimiter)
+    ii00125_csv = add_person_to_ii00125_csv(ii00125_csv, x_person, csv_delimiter)
+    ii00126_csv = add_person_to_ii00126_csv(ii00126_csv, x_person, csv_delimiter)
+    ii00127_csv = add_person_to_ii00127_csv(ii00127_csv, x_person, csv_delimiter)
+    ii00128_csv = add_person_to_ii00128_csv(ii00128_csv, x_person, csv_delimiter)
+    ii00129_csv = add_person_to_ii00129_csv(ii00129_csv, x_person, csv_delimiter)
+    moment_csv_strs["ii00120"] = ii00120_csv
+    moment_csv_strs["ii00121"] = ii00121_csv
+    moment_csv_strs["ii00122"] = ii00122_csv
+    moment_csv_strs["ii00123"] = ii00123_csv
+    moment_csv_strs["ii00124"] = ii00124_csv
+    moment_csv_strs["ii00125"] = ii00125_csv
+    moment_csv_strs["ii00126"] = ii00126_csv
+    moment_csv_strs["ii00127"] = ii00127_csv
+    moment_csv_strs["ii00128"] = ii00128_csv
+    moment_csv_strs["ii00129"] = ii00129_csv

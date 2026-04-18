@@ -73,4 +73,4 @@ def test_save_idea_formats_CreatesFile(temp3_fs):
     # THEN
     assert os_path_exists(idea_formats_path)
     idea_formats_md = open_file(idea_formats_path)
-    assert idea_formats_md.find("ii00004") > 0
+    assert idea_formats_md.find("ii00104") > 0
