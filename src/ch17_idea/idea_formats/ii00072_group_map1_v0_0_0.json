@@ -1,13 +1,13 @@
 {
   "attributes": {
     "contact_name": { "otx_key": true  }, 
-    "inx_rope"    : { "otx_key": false }, 
+    "inx_title"   : { "otx_key": false }, 
     "moment_rope" : { "otx_key": true  }, 
-    "otx_rope"    : { "otx_key": true  }, 
+    "otx_title"   : { "otx_key": true  }, 
     "person_name" : { "otx_key": true  }, 
     "spark_face"  : { "otx_key": true  }, 
     "spark_num"   : { "otx_key": true  }
   }, 
-  "dimens": ["translate_rope", "person_contactunit", "personunit", "momentunit"], 
-  "idea_type": "ii00117"
+  "dimens": ["translate_title", "person_contactunit", "personunit", "momentunit"], 
+  "idea_type": "ii00072"
 }

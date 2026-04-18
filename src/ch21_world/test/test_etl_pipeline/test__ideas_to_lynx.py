@@ -38,7 +38,7 @@ from src.ch21_world.world import (
 from src.ref.keywords import Ch21Keywords as kw, ExampleStrs as exx
 
 
-def test_idea_sheets_to_lynx_with_cursor_Scenario0_ii000113PopulatesTables(
+def test_idea_sheets_to_lynx_with_cursor_Scenario0_ii000071PopulatesTables(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH:
@@ -49,7 +49,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario0_ii000113PopulatesTables(
     e3 = 3
     ex_filename = "Faybob.xlsx"
     i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
-    ii00113_columns = [
+    ii00071_columns = [
         kw.spark_face,
         kw.spark_num,
         kw.moment_rope,
@@ -58,14 +58,14 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario0_ii000113PopulatesTables(
         kw.otx_name,
         kw.inx_name,
     ]
-    ii00113_str = "ii00113"
-    ii00113row0 = [exx.sue, e3, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
-    ii00113_df = DataFrame([ii00113row0], columns=ii00113_columns)
-    ii00113_ex0_str = f"example0_{ii00113_str}"
-    save_sheet(i_src_dir_file_path, ii00113_ex0_str, ii00113_df)
-    ii00113_raw = f"{ii00113_str}_ideax_raw"
-    ii00113_agg = f"{ii00113_str}_ideax_agg"
-    ii00113_valid = f"{ii00113_str}_ideax_vld"
+    ii00071_str = "ii00071"
+    ii00071row0 = [exx.sue, e3, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
+    ii00071_df = DataFrame([ii00071row0], columns=ii00071_columns)
+    ii00071_ex0_str = f"example0_{ii00071_str}"
+    save_sheet(i_src_dir_file_path, ii00071_ex0_str, ii00071_df)
+    ii00071_raw = f"{ii00071_str}_ideax_raw"
+    ii00071_agg = f"{ii00071_str}_ideax_agg"
+    ii00071_valid = f"{ii00071_str}_ideax_vld"
     sparks_ideax_vld_tablename = kw.sparks_ideax_vld
     trlname_sound_raw = prime_tbl(kw.trlname, kw.s_raw)
     trlname_sound_agg = prime_tbl(kw.trlname, "s_agg")
@@ -101,11 +101,11 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario0_ii000113PopulatesTables(
     prncont_job = prime_tbl(kw.prncont, "job", None)
     last_run_metrics_path = create_last_run_metrics_path(mstr_dir)
 
-    assert not db_table_exists(cursor0, ii00113_raw)
-    assert not db_table_exists(cursor0, ii00113_agg)
+    assert not db_table_exists(cursor0, ii00071_raw)
+    assert not db_table_exists(cursor0, ii00071_agg)
     assert not db_table_exists(cursor0, kw.sparks_ideax_agg)
     assert not db_table_exists(cursor0, sparks_ideax_vld_tablename)
-    assert not db_table_exists(cursor0, ii00113_valid)
+    assert not db_table_exists(cursor0, ii00071_valid)
     assert not db_table_exists(cursor0, trlname_sound_raw)
     assert not db_table_exists(cursor0, trlname_sound_agg)
     assert not db_table_exists(cursor0, momentunit_sound_raw)
@@ -159,11 +159,11 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario0_ii000113PopulatesTables(
     # print(f"{cursor.execute(select_momentunit_put_raw).fetchall()=}")
     # print(f"{cursor.execute(select_momentunit_put_agg).fetchall()=}")
 
-    assert get_row_count(cursor0, ii00113_raw) == 1
-    assert get_row_count(cursor0, ii00113_agg) == 1
+    assert get_row_count(cursor0, ii00071_raw) == 1
+    assert get_row_count(cursor0, ii00071_agg) == 1
     assert get_row_count(cursor0, kw.sparks_ideax_agg) == 1
     assert get_row_count(cursor0, sparks_ideax_vld_tablename) == 1
-    assert get_row_count(cursor0, ii00113_valid) == 1
+    assert get_row_count(cursor0, ii00071_valid) == 1
     assert get_row_count(cursor0, trlname_sound_raw) == 1
     assert get_row_count(cursor0, momentunit_sound_raw) == 1
     assert get_row_count(cursor0, prnunit_put_sound_raw) == 1
@@ -214,7 +214,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     e3 = 3
     ex_filename = "Faybob.xlsx"
     i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
-    ii00113_columns = [
+    ii00071_columns = [
         kw.spark_face,
         kw.spark_num,
         kw.moment_rope,
@@ -224,11 +224,11 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
         kw.inx_name,
     ]
     tp37 = 37
-    ii00113_str = "ii00113"
-    ii00113row0 = [exx.sue, e3, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
-    ii00113_df = DataFrame([ii00113row0], columns=ii00113_columns)
-    ii00113_ex0_str = f"example0_{ii00113_str}"
-    save_sheet(i_src_dir_file_path, ii00113_ex0_str, ii00113_df)
+    ii00071_str = "ii00071"
+    ii00071row0 = [exx.sue, e3, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
+    ii00071_df = DataFrame([ii00071row0], columns=ii00071_columns)
+    ii00071_ex0_str = f"example0_{ii00071_str}"
+    save_sheet(i_src_dir_file_path, ii00071_ex0_str, ii00071_df)
 
     ii00001_columns = [
         kw.spark_num,
@@ -249,9 +249,9 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     save_sheet(i_src_dir_file_path, ii00001_ex0_str, ii00001_1df)
 
     # Names of tables
-    ii00113_raw = f"{ii00113_str}_ideax_raw"
-    ii00113_agg = f"{ii00113_str}_ideax_agg"
-    ii00113_valid = f"{ii00113_str}_ideax_vld"
+    ii00071_raw = f"{ii00071_str}_ideax_raw"
+    ii00071_agg = f"{ii00071_str}_ideax_agg"
+    ii00071_valid = f"{ii00071_str}_ideax_vld"
     sparks_ideax_vld_tablename = kw.sparks_ideax_vld
     trlname_sound_raw = prime_tbl(kw.trlname, kw.s_raw)
     trlname_sound_agg = prime_tbl(kw.trlname, "s_agg")
@@ -282,11 +282,11 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     a23_sue_job_path = create_job_path(mstr_dir, a23_lasso, sue_inx)
     sue37_mandate_path = bud_mandate(mstr_dir, a23_lasso, sue_inx, tp37)
 
-    assert not db_table_exists(cursor0, ii00113_raw)
-    assert not db_table_exists(cursor0, ii00113_agg)
+    assert not db_table_exists(cursor0, ii00071_raw)
+    assert not db_table_exists(cursor0, ii00071_agg)
     assert not db_table_exists(cursor0, kw.sparks_ideax_agg)
     assert not db_table_exists(cursor0, sparks_ideax_vld_tablename)
-    assert not db_table_exists(cursor0, ii00113_valid)
+    assert not db_table_exists(cursor0, ii00071_valid)
     assert not db_table_exists(cursor0, trlname_sound_raw)
     assert not db_table_exists(cursor0, trlname_sound_agg)
     assert not db_table_exists(cursor0, momentunit_sound_raw)
@@ -328,12 +328,12 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     )
 
     # THEN
-    assert get_row_count(cursor0, ii00113_raw) == 1
-    assert get_row_count(cursor0, ii00113_agg) == 1
+    assert get_row_count(cursor0, ii00071_raw) == 1
+    assert get_row_count(cursor0, ii00071_agg) == 1
     print(cursor0.execute(f"SELECT * FROM {kw.sparks_ideax_agg}").fetchall())
     assert get_row_count(cursor0, kw.sparks_ideax_agg) == 2
     assert get_row_count(cursor0, sparks_ideax_vld_tablename) == 2
-    assert get_row_count(cursor0, ii00113_valid) == 2
+    assert get_row_count(cursor0, ii00071_valid) == 2
     assert get_row_count(cursor0, trlname_sound_raw) == 2
     assert get_row_count(cursor0, momentunit_sound_raw) == 4
     assert get_row_count(cursor0, prnunit_put_sound_raw) == 4
@@ -567,7 +567,7 @@ def test_idea_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     e3 = 3
     ex_filename = "Faybob.xlsx"
     i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
-    ii00113_columns = [
+    ii00071_columns = [
         kw.spark_face,
         kw.spark_num,
         kw.moment_rope,
@@ -577,11 +577,11 @@ def test_idea_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
         kw.inx_name,
     ]
     tp37 = 37
-    ii00113_str = "ii00113"
-    ii00113row0 = [exx.sue, e3, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
-    ii00113_df = DataFrame([ii00113row0], columns=ii00113_columns)
-    ii00113_ex0_str = f"example0_{ii00113_str}"
-    save_sheet(i_src_dir_file_path, ii00113_ex0_str, ii00113_df)
+    ii00071_str = "ii00071"
+    ii00071row0 = [exx.sue, e3, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
+    ii00071_df = DataFrame([ii00071row0], columns=ii00071_columns)
+    ii00071_ex0_str = f"example0_{ii00071_str}"
+    save_sheet(i_src_dir_file_path, ii00071_ex0_str, ii00071_df)
 
     ii00001_columns = [
         kw.spark_num,
@@ -609,9 +609,9 @@ def test_idea_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     # THEN
     assert os_path_exists(fay_db_path)
     with sqlite3_connect(fay_db_path) as db_conn:
-        ii00113_raw = f"{ii00113_str}_ideax_raw"
-        ii00113_agg = f"{ii00113_str}_ideax_agg"
-        ii00113_valid = f"{ii00113_str}_ideax_vld"
+        ii00071_raw = f"{ii00071_str}_ideax_raw"
+        ii00071_agg = f"{ii00071_str}_ideax_agg"
+        ii00071_valid = f"{ii00071_str}_ideax_vld"
         sparks_ideax_vld_tablename = kw.sparks_ideax_vld
         trlname_sound_raw = prime_tbl("trlname", kw.s_raw)
         trlname_sound_agg = prime_tbl("trlname", "s_agg")
@@ -633,11 +633,11 @@ def test_idea_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
         prncont_put_heard_agg = prime_tbl("prncont", kw.h_vld, "put")
 
         cursor = db_conn.cursor()
-        assert get_row_count(cursor, ii00113_raw) == 1
-        assert get_row_count(cursor, ii00113_agg) == 1
+        assert get_row_count(cursor, ii00071_raw) == 1
+        assert get_row_count(cursor, ii00071_agg) == 1
         assert get_row_count(cursor, kw.sparks_ideax_agg) == 2
         assert get_row_count(cursor, sparks_ideax_vld_tablename) == 2
-        assert get_row_count(cursor, ii00113_valid) == 2
+        assert get_row_count(cursor, ii00071_valid) == 2
         assert get_row_count(cursor, trlname_sound_raw) == 2
         assert get_row_count(cursor, momentunit_sound_raw) == 4
         assert get_row_count(cursor, prnunit_put_sound_raw) == 4

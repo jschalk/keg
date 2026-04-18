@@ -1630,10 +1630,10 @@ def get_idea_stageble_put_dimens() -> dict[str, list[str]]:
         "ii00058": ["personunit", "momentunit"],
         "ii00059": ["momentunit"],
         "ii00070": ["momentunit", "nabu_timenum"],
-        "ii00113": ["person_contactunit", "personunit", "momentunit"],
-        "ii00115": ["person_contactunit", "personunit", "momentunit"],
-        "ii00116": ["person_contactunit", "personunit", "momentunit"],
-        "ii00117": ["person_contactunit", "personunit", "momentunit"],
+        "ii00071": ["person_contactunit", "personunit", "momentunit"],
+        "ii00072": ["person_contactunit", "personunit", "momentunit"],
+        "ii00073": ["person_contactunit", "personunit", "momentunit"],
+        "ii00074": ["person_contactunit", "personunit", "momentunit"],
     }
 
 

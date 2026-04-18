@@ -641,20 +641,20 @@ def ii00070_nabu_epochtime_v0_0_0() -> str:
     return "ii00070_nabu_epochtime_v0_0_0"
 
 
-def ii00113_contact_map1_v0_0_0() -> str:
-    return "ii00113_contact_map1_v0_0_0"
+def ii00071_contact_map1_v0_0_0() -> str:
+    return "ii00071_contact_map1_v0_0_0"
 
 
-def ii00115_group_map1_v0_0_0() -> str:
-    return "ii00115_group_map1_v0_0_0"
+def ii00072_group_map1_v0_0_0() -> str:
+    return "ii00072_group_map1_v0_0_0"
 
 
-def ii00116_label_map1_v0_0_0() -> str:
-    return "ii00116_label_map1_v0_0_0"
+def ii00073_label_map1_v0_0_0() -> str:
+    return "ii00073_label_map1_v0_0_0"
 
 
-def ii00117_rope_map1_v0_0_0() -> str:
-    return "ii00117_rope_map1_v0_0_0"
+def ii00074_rope_map1_v0_0_0() -> str:
+    return "ii00074_rope_map1_v0_0_0"
 
 
 def get_idea_format_filenames() -> set[str]:
@@ -696,10 +696,10 @@ def get_idea_format_filenames() -> set[str]:
         ii00058_delete_person_planunit_v0_0_0(),
         ii00059_delete_personunit_v0_0_0(),
         ii00070_nabu_epochtime_v0_0_0(),
-        ii00113_contact_map1_v0_0_0(),
-        ii00115_group_map1_v0_0_0(),
-        ii00116_label_map1_v0_0_0(),
-        ii00117_rope_map1_v0_0_0(),
+        ii00071_contact_map1_v0_0_0(),
+        ii00072_group_map1_v0_0_0(),
+        ii00073_label_map1_v0_0_0(),
+        ii00074_rope_map1_v0_0_0(),
     }
 
 
@@ -742,10 +742,10 @@ def get_idea_types() -> set[str]:
         "ii00058",
         "ii00059",
         "ii00070",
-        "ii00113",
-        "ii00115",
-        "ii00116",
-        "ii00117",
+        "ii00071",
+        "ii00072",
+        "ii00073",
+        "ii00074",
     }
 
 
@@ -795,10 +795,10 @@ def get_idea_format_headers() -> dict[str, list[str]]:
         "person_name,plan_rope_ERASE": ii00058_delete_person_planunit_v0_0_0(),
         "moment_rope,person_name_ERASE": ii00059_delete_personunit_v0_0_0(),
         "moment_rope,otx_time,inx_time": ii00070_nabu_epochtime_v0_0_0(),
-        "moment_rope,person_name,contact_name,otx_name,inx_name": ii00113_contact_map1_v0_0_0(),
-        "moment_rope,person_name,contact_name,otx_title,inx_title": ii00115_group_map1_v0_0_0(),
-        "moment_rope,person_name,contact_name,otx_label,inx_label": ii00116_label_map1_v0_0_0(),
-        "moment_rope,person_name,contact_name,otx_rope,inx_rope": ii00117_rope_map1_v0_0_0(),
+        "moment_rope,person_name,contact_name,otx_name,inx_name": ii00071_contact_map1_v0_0_0(),
+        "moment_rope,person_name,contact_name,otx_title,inx_title": ii00072_group_map1_v0_0_0(),
+        "moment_rope,person_name,contact_name,otx_label,inx_label": ii00073_label_map1_v0_0_0(),
+        "moment_rope,person_name,contact_name,otx_rope,inx_rope": ii00074_rope_map1_v0_0_0(),
     }
 
 
@@ -845,10 +845,10 @@ def get_idea_dimen_ref() -> dict[str, set[str]]:
             "ii00051",
             "ii00059",
             "ii00070",
-            "ii00113",
-            "ii00115",
-            "ii00116",
-            "ii00117",
+            "ii00071",
+            "ii00072",
+            "ii00073",
+            "ii00074",
         },
         "nabu_timenum": {"ii00070"},
         "person_contact_membership": {"ii00012", "ii00020", "ii00050"},
@@ -860,10 +860,10 @@ def get_idea_dimen_ref() -> dict[str, set[str]]:
             "ii00021",
             "ii00050",
             "ii00051",
-            "ii00113",
-            "ii00115",
-            "ii00116",
-            "ii00117",
+            "ii00071",
+            "ii00072",
+            "ii00073",
+            "ii00074",
         },
         "person_plan_awardunit": {"ii00022", "ii00052"},
         "person_plan_factunit": {"ii00023", "ii00053"},
@@ -904,15 +904,15 @@ def get_idea_dimen_ref() -> dict[str, set[str]]:
             "ii00050",
             "ii00051",
             "ii00059",
-            "ii00113",
-            "ii00115",
-            "ii00116",
-            "ii00117",
+            "ii00071",
+            "ii00072",
+            "ii00073",
+            "ii00074",
         },
-        "translate_label": {"ii00044", "ii00116"},
-        "translate_name": {"ii00043", "ii00113"},
-        "translate_rope": {"ii00045", "ii00117"},
-        "translate_title": {"ii00042", "ii00115"},
+        "translate_label": {"ii00044", "ii00073"},
+        "translate_name": {"ii00043", "ii00071"},
+        "translate_rope": {"ii00045", "ii00074"},
+        "translate_title": {"ii00042", "ii00072"},
     }
 
 

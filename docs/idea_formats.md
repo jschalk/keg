@@ -37,7 +37,7 @@
 - [`ii00058`](idea_formats\ii00058.md): spark_num, spark_face, person_name, plan_rope_ERASE
 - [`ii00059`](idea_formats\ii00059.md): spark_num, spark_face, moment_rope, person_name_ERASE
 - [`ii00070`](idea_formats\ii00070.md): spark_num, spark_face, moment_rope, otx_time, inx_time
-- [`ii00113`](idea_formats\ii00113.md): spark_num, spark_face, moment_rope, person_name, contact_name, otx_name, inx_name
-- [`ii00115`](idea_formats\ii00115.md): spark_num, spark_face, moment_rope, person_name, contact_name, otx_title, inx_title
-- [`ii00116`](idea_formats\ii00116.md): spark_num, spark_face, moment_rope, person_name, contact_name, otx_label, inx_label
-- [`ii00117`](idea_formats\ii00117.md): spark_num, spark_face, moment_rope, person_name, contact_name, otx_rope, inx_rope
+- [`ii00071`](idea_formats\ii00071.md): spark_num, spark_face, moment_rope, person_name, contact_name, otx_name, inx_name
+- [`ii00072`](idea_formats\ii00072.md): spark_num, spark_face, moment_rope, person_name, contact_name, otx_title, inx_title
+- [`ii00073`](idea_formats\ii00073.md): spark_num, spark_face, moment_rope, person_name, contact_name, otx_label, inx_label
+- [`ii00074`](idea_formats\ii00074.md): spark_num, spark_face, moment_rope, person_name, contact_name, otx_rope, inx_rope

@@ -41,7 +41,7 @@ def test_create_sound_raw_update_inconsist_error_message_sqlstr_ExecutedSqlUpdat
 , {kw.unknown_str}
 , {kw.error_message}
 )"""
-    b117 = "ii00117"
+    b117 = "ii00074"
     b045 = "ii00045"
     b077 = "ii00077"
     values_clause = f"""
@@ -92,7 +92,7 @@ def test_set_sound_raw_tables_error_message_UpdatesTable_Scenario0(cursor0: Curs
 , {kw.unknown_str}
 , {kw.error_message}
 )"""
-    b117 = "ii00117"
+    b117 = "ii00074"
     b045 = "ii00045"
     b077 = "ii00077"
     values_clause = f"""
@@ -116,7 +116,7 @@ VALUES
     assert cursor0.execute(error_count_sqlstr).fetchone()[0] == 2
     error_select_sqlstr = f"SELECT idea_type, spark_num FROM {trlrope_s_raw_tablename} WHERE {kw.error_message} IS NOT NULL"
     cursor0.execute(error_select_sqlstr)
-    assert cursor0.fetchall() == [("ii00117", 1), ("ii00077", 1)]
+    assert cursor0.fetchall() == [("ii00074", 1), ("ii00077", 1)]
 
 
 def test_set_sound_raw_tables_error_message_UpdatesTable_Scenario1_person_raw_del(
@@ -142,7 +142,7 @@ def test_set_sound_raw_tables_error_message_UpdatesTable_Scenario1_person_raw_de
 , {kw.person_name}
 , {kw.contact_name}_ERASE
 )"""
-    b117 = "ii00117"
+    b117 = "ii00074"
     b045 = "ii00045"
     b077 = "ii00077"
     values_clause = f"""
@@ -192,7 +192,7 @@ def test_insert_sound_raw_selects_into_sound_agg_tables_PopulatesValidTable_Scen
 , {kw.unknown_str}
 , {kw.error_message}
 )"""
-    b117 = "ii00117"
+    b117 = "ii00074"
     b020 = "ii00020"
     b045 = "ii00045"
     inconsistent_data_str = "Inconsistent data"
@@ -271,7 +271,7 @@ def test_insert_sound_raw_selects_into_sound_agg_tables_PopulatesValidTable_Scen
 ):
     # ESTABLISH
     spark1 = 1
-    b117 = "ii00117"
+    b117 = "ii00074"
     b020 = "ii00020"
     create_sound_and_heard_tables(cursor0)
     prncont_del_s_raw_tblname = create_prime_tablename("PRNCONT", kw.s_raw, "del")
@@ -341,7 +341,7 @@ def test_etl_sound_raw_tables_to_sound_agg_tables_PopulatesValidTable_Scenario0(
 , {kw.unknown_str}
 , {kw.error_message}
 )"""
-    b117 = "ii00117"
+    b117 = "ii00074"
     b020 = "ii00020"
     b045 = "ii00045"
     inconsistent_data_str = "Inconsistent data"
