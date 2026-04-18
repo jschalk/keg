@@ -484,79 +484,12 @@ def is_column_type_valid(df: DataFrame, column: str, sqlite_data_type: str) -> b
     return str(actual_dtype) == expected_data_type
 
 
-def prettify_excel_files(x_dir: str, zoom: int = 120) -> None:
+def prettify_excel_files(x_dir: str) -> None:
     """Reads all sheets in a directory, applies formatting improvements to each"""
     for relative_dir, filename in get_all_excel_files(x_dir):
         file_dir = create_path(x_dir, relative_dir)
         file_path = create_path(file_dir, filename)
         prettify_excel_file(file_path)
-
-
-# def prettify_excel_file(file_path: str, zoom: int = 120) -> None:
-#     """
-#     Reads all sheets from an Excel file, applies formatting improvements to each,
-#     and overwrites the original file. Safely handles sheets with only headers and no data.
-
-#     Args:
-#         file_path (str): Path to the Excel file to overwrite.
-#         zoom (int): Zoom level for each worksheet.
-#     """
-#     # Load all sheets
-#     sheet_data = pandas_read_excel(file_path, sheet_name=None)
-
-#     with ExcelWriter(file_path, engine="xlsxwriter") as writer:
-#         for sheet_name, df in sheet_data.items():
-#             df.to_excel(writer, sheet_name=sheet_name, index=False)
-#             workbook = writer.book
-#             worksheet = writer.sheets[sheet_name]
-
-#             worksheet.freeze_panes(1, 0)
-#             worksheet.set_zoom(zoom)
-
-#             # Format header
-#             header_format = workbook.add_format(
-#                 {
-#                     "bold": True,
-#                     "text_wrap": True,
-#                     "valign": "top",
-#                     "fg_color": "#D7E4BC",
-#                     "border": 1,
-#                 }
-#             )
-#             for col_num, value in enumerate(df.columns.values):
-#                 worksheet.write(0, col_num, value, header_format)
-
-#             # Format columns and set widths
-#             for i, col in enumerate(df.columns):
-#                 col_data = df[col]
-#                 width = (
-#                     max(
-#                         (0 if col_data.empty else col_data.astype(str).map(len).max()),
-#                         len(str(col)),
-#                     )
-#                     + 2
-#                 )
-
-#                 if pandas_api_types_is_numeric_dtype(col_data):
-#                     if "salary" in col.lower() or "amount" in col.lower():
-#                         fmt = workbook.add_format({"num_format": "$#,##0", "border": 1})
-#                     else:
-#                         fmt = workbook.add_format({"num_format": "0.00", "border": 1})
-#                 else:
-#                     fmt = workbook.add_format({"border": 1})
-#                 worksheet.set_column(i, i, width, fmt)
-#             # Add table only if DataFrame has at least one row
-#             if not df.empty:
-#                 worksheet.add_table(
-#                     0,
-#                     0,
-#                     len(df),
-#                     len(df.columns) - 1,
-#                     {
-#                         "columns": [{"header": col} for col in df.columns],
-#                         "style": "Table Style Medium 9",
-#                     },
-#                 )
 
 
 def prettify_excel_file(file_path: str, output_path: str = None) -> str:

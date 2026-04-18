@@ -1,12 +1,14 @@
 from src.ch30_etl_app.etl_gui_tool import (
     create_elpaso_time_config_file,
     create_emmanuel_belief_file,
+    create_emmanuel_lovemaking_belief_file,
     create_example_moment_budget_file,
     create_example_moment_ledger_file,
     create_five_time_config_file,
     create_simple_1m2p2pledges_belief_csvs,
     create_simple_1m2p2pledges_belief_file,
     create_simple_1m2p5pledges_belief_file,
+    create_simple_2m2p5pledges_belief_file,
     get_option_table_options,
 )
 
@@ -25,6 +27,8 @@ def test_get_option_table_options_ReturnsObj():
     expected_func_objs = {
         create_simple_1m2p2pledges_belief_file,
         create_simple_1m2p5pledges_belief_file,
+        create_simple_2m2p5pledges_belief_file,
+        create_emmanuel_lovemaking_belief_file,
         create_five_time_config_file,
         create_elpaso_time_config_file,
         create_emmanuel_belief_file,

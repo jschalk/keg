@@ -392,7 +392,7 @@ def create_simple_1m2p5pledges_belief_file(dest_dir: str):
 
 
 def create_simple_2m2p5pledges_belief_file(dest_dir: str):
-    dest_filename = "simple_2p5pledges_example.xlsx"
+    dest_filename = "simple_2m2p5pledges_example.xlsx"
     belief_csvs = create_simple_2m2p5pledges_belief_csvs()
     save_and_prettify_excel_file(belief_csvs, dest_dir, dest_filename)
 
@@ -438,7 +438,7 @@ def get_option_table_options() -> dict[str, Callable]:
         "2 persons, 2 tasks example": create_simple_1m2p2pledges_belief_file,
         "2 persons, 5 tasks example": create_simple_1m2p5pledges_belief_file,
         "2 moments, 2 persons, 5 tasks example": create_simple_2m2p5pledges_belief_file,
-        "lovemaking example example": create_emmanuel_lovemaking_belief_file,
+        "lovemaking example": create_emmanuel_lovemaking_belief_file,
         "Create TeamFive Moment with Five time": create_five_time_config_file,
         "Create El Paso Moment with standard time.": create_elpaso_time_config_file,
         "create_emmanuel_belief_file": create_emmanuel_belief_file,

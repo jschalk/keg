@@ -35,6 +35,7 @@ def test_ETLAppSettings_Exists():
         mono=x_mono,
         bg=x_bg,
         bg_card=x_bg_card,
+        bg_red=x_bg_card,
         border=x_border,
         accent=x_accent,
         accent_dim=x_accent_dim,
@@ -50,6 +51,7 @@ def test_ETLAppSettings_Exists():
     assert app_settings.mono
     assert app_settings.bg
     assert app_settings.bg_card
+    assert app_settings.bg_red
     assert app_settings.border
     assert app_settings.accent
     assert app_settings.accent_dim
@@ -69,6 +71,7 @@ def test_get_app_glb_attrs_ReturnsObj():
         "mono",
         "bg",
         "bg_card",
+        "bg_red",
         "border",
         "accent",
         "accent_dim",
@@ -88,6 +91,7 @@ def test_get_app_glb_attrs_ReturnsObj():
         mono=("Courier New", 9) if platform_system() == "Windows" else ("Menlo", 10),
         bg="#1a1a1f",
         bg_card="#22222a",
+        bg_red="#ff5f57",
         border="#33333d",
         accent="#e8c547",
         accent_dim="#b89a2f",

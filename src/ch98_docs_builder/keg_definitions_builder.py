@@ -1,5 +1,7 @@
+from re import search as re_search
 from src.ch00_py.chapter_desc_main import get_chapter_desc_prefix, get_chapter_descs
 from src.ch00_py.file_toolbox import create_path, open_json, save_json
+from src.ch00_py.keyword_class_builder import get_keywords_src_config
 from src.ch07_person_logic.person_config import (
     get_all_person_calc_args,
     get_person_calc_dimen_args,
@@ -77,14 +79,26 @@ def get_keg_exam() -> dict[str, dict]:
     return open_json(create_src_keg_exam_path("src"))
 
 
-def get_keg_ch_sorted_terms(keywords_main: dict) -> list[str]:
-    def parse_init_ch(value):
-        return float("inf") if value == "" else int(value[2:4])
+def get_ch_sorted_keywords(keywords_src_config: dict) -> list[str]:
+    def parse_chapter(ch):
+        if not ch:
+            return float("inf")  # push empty to front
+        match = re_search(r"\d+", ch)
+        return int(match.group()) if match else -1
 
     return sorted(
-        keywords_main.keys(),
-        key=lambda term: (-parse_init_ch(keywords_main[term]["init_chapter"]), term),
+        keywords_src_config.keys(),
+        key=lambda k: (
+            -keywords_src_config[k].get("exam_tier", float("inf")),
+            -parse_chapter(keywords_src_config[k].get("init_chapter", "")),
+            k.lower(),
+        ),
     )
+
+
+def get_keywords_by_importance() -> dict:
+    x_list = get_ch_sorted_keywords(get_keywords_src_config())
+    return dict(enumerate(x_list))
 
 
 def get_kegology_exam_grade(answers: dict[str, str]) -> int:
