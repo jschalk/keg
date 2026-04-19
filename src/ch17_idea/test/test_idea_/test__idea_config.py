@@ -1,5 +1,6 @@
 from copy import copy as copy_copy
 from os import getcwd as os_getcwd
+from src.ch00_py.dict_toolbox import normalize_obj
 from src.ch00_py.file_toolbox import create_path, save_json
 from src.ch07_person_logic.person_config import (
     get_all_person_calc_args,
@@ -895,7 +896,7 @@ def test_get_idea_dimen_ref_ReturnsObj():
     # ESTABLISH
     expected_idea_dimen_ref = _create_expected_idea_dimen_ref()
     # print(f"{expected_idea_dimen_ref=}")
-    print_sorted(expected_idea_dimen_ref)
+    print_sorted(normalize_obj(expected_idea_dimen_ref))
 
     # WHEN / THEN
     assert get_idea_dimen_ref() == expected_idea_dimen_ref

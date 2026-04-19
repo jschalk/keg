@@ -1,0 +1,13 @@
+{
+  "attributes": {
+    "fact_context": { "otx_key": true  }, 
+    "fact_state"  : { "otx_key": false }, 
+    "moment_rope" : { "otx_key": true  }, 
+    "person_name" : { "otx_key": true  }, 
+    "plan_rope"   : { "otx_key": true  }, 
+    "spark_face"  : { "otx_key": true  }, 
+    "spark_num"   : { "otx_key": true  }
+  }, 
+  "dimens": ["momentunit", "personunit", "person_planunit", "person_plan_factunit"], 
+  "idea_type": "ii00007"
+}
