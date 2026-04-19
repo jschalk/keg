@@ -20,7 +20,7 @@ license = {text = "MIT"}
 name = "keg2"
 readme = "README.md"
 requires-python = ">=3.7"
-version = "0.83.11"
+version = "0.83.13"
 
 [project.optional-dependencies]
 test = [
