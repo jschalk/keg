@@ -1,12 +1,10 @@
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch07_person_logic.person_report import (
+from ch07_person_logic.person_main import personunit_shop
+from ch07_person_logic.person_report import (
     get_person_agenda_dataframe,
     get_person_contactunits_dataframe,
 )
-from src.ch07_person_logic.test._util.ch07_examples import (
-    personunit_v001_with_large_agenda,
-)
-from src.ref.keywords import Ch07Keywords as kw, ExampleStrs as exx
+from ch07_person_logic.test._util.ch07_examples import personunit_v001_with_large_agenda
+from ref.keywords import Ch07Keywords as kw, ExampleStrs as exx
 
 
 def test_get_person_contactunits_dataframe_ReturnsDataFrame():

@@ -1,11 +1,11 @@
-from inspect import getdoc as inspect_getdoc
-from pytest import mark as pytest_mark
-from src.ch00_py.file_toolbox import create_path, get_json_filename
-from src.ch98_docs_builder._ref.ch98_path import (
+from ch00_py.file_toolbox import create_path, get_json_filename
+from ch98_docs_builder._ref.ch98_path import (
     create_chapter_ref_path,
     create_src_keg_definitions_path,
     create_src_keg_exam_path,
 )
+from inspect import getdoc as inspect_getdoc
+from pytest import mark as pytest_mark
 
 
 def test_create_src_keg_definitions_path_ReturnsObj(temp3_dir):

@@ -1,11 +1,11 @@
-from src.ch03_workforce._ref.ch03_semantic_types import GroupTitle
-from src.ch03_workforce.workforce import (
+from ch03_workforce._ref.ch03_semantic_types import GroupTitle
+from ch03_workforce.workforce import (
     get_workforceunit_from_dict,
     laborunit_get_from_dict,
     laborunit_shop,
     workforceunit_shop,
 )
-from src.ref.keywords import Ch03Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch03Keywords as kw, ExampleStrs as exx
 
 
 def test_LaborUnit_to_dict_ReturnsObj_Scenario0_solo_IsTrue():

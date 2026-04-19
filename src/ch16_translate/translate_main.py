@@ -1,12 +1,11 @@
-from dataclasses import dataclass
-from src.ch00_py.dict_toolbox import get_0_if_None
-from src.ch16_translate._ref.ch16_semantic_types import (
+from ch00_py.dict_toolbox import get_0_if_None
+from ch16_translate._ref.ch16_semantic_types import (
     KnotTerm,
     PersonName,
     SparkInt,
     default_knot_if_None,
 )
-from src.ch16_translate.map_term import (
+from ch16_translate.map_term import (
     LabelMap,
     MapCore,
     NameMap,
@@ -25,7 +24,8 @@ from src.ch16_translate.map_term import (
     ropemap_shop,
     titlemap_shop,
 )
-from src.ch16_translate.translate_config import default_unknown_str_if_None
+from ch16_translate.translate_config import default_unknown_str_if_None
+from dataclasses import dataclass
 
 
 class CheckAttrError(Exception):

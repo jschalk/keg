@@ -1,28 +1,28 @@
-from csv import reader as csv_reader
-from dataclasses import dataclass
-from pandas import DataFrame
-from src.ch00_py.dict_toolbox import (
+from ch00_py.dict_toolbox import (
     create_l2nested_csv_dict,
     extract_csv_headers,
     get_csv_column1_column2_metrics,
     get_positional_dict,
 )
-from src.ch07_person_logic.person_main import PersonUnit
-from src.ch08_person_atom.atom_main import PersonAtom, atomrow_shop
-from src.ch09_person_lesson.delta import (
+from ch07_person_logic.person_main import PersonUnit
+from ch08_person_atom.atom_main import PersonAtom, atomrow_shop
+from ch09_person_lesson.delta import (
     PersonDelta,
     get_dimens_cruds_persondelta,
     persondelta_shop,
 )
-from src.ch13_time.epoch_main import epochunit_shop
-from src.ch14_moment.moment_main import MomentUnit, momentunit_shop
-from src.ch17_idea._ref.ch17_semantic_types import MomentRope, PersonName
-from src.ch17_idea.idea_config import get_idea_format_headers, get_idearef_from_file
-from src.ch17_idea.idea_db_tool import (
+from ch13_time.epoch_main import epochunit_shop
+from ch14_moment.moment_main import MomentUnit, momentunit_shop
+from ch17_idea._ref.ch17_semantic_types import MomentRope, PersonName
+from ch17_idea.idea_config import get_idea_format_headers, get_idearef_from_file
+from ch17_idea.idea_db_tool import (
     get_default_sorted_list,
     if_nan_return_None,
     save_dataframe_to_csv,
 )
+from csv import reader as csv_reader
+from dataclasses import dataclass
+from pandas import DataFrame
 
 
 @dataclass

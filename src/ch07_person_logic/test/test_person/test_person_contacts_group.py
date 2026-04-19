@@ -1,6 +1,6 @@
-from src.ch02_contact.group import groupunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ref.keywords import ExampleStrs as exx
+from ch02_contact.group import groupunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ref.keywords import ExampleStrs as exx
 
 
 def test_PersonUnit_get_contactunit_group_titles_dict_ReturnsObj():

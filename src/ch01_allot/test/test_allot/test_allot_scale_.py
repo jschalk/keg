@@ -1,11 +1,11 @@
-from pytest import raises as pytest_raises
-from src.ch01_allot.allot import (
+from ch01_allot.allot import (
     _allot_missing_scale,
     _create_allot_dict,
     _get_missing_scale_list,
     allot_scale,
 )
-from src.ref.keywords import ExampleStrs as exx
+from pytest import raises as pytest_raises
+from ref.keywords import ExampleStrs as exx
 
 
 def test_create_missing_distribution_list_ReturnsObj_Scenario00():

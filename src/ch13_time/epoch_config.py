@@ -1,5 +1,5 @@
-from src.ch00_py.file_toolbox import open_json
-from src.ch13_time._ref.ch13_semantic_types import LabelTerm
+from ch00_py.file_toolbox import open_json
+from ch13_time._ref.ch13_semantic_types import LabelTerm
 
 
 def get_custom_epoch_config(epoch_label: LabelTerm) -> dict:

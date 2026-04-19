@@ -1,6 +1,6 @@
-from src.ch12_keep.rivercycle import rivergrade_shop
-from src.ch12_keep.riverrun import riverrun_shop
-from src.ref.keywords import ExampleStrs as exx
+from ch12_keep.rivercycle import rivergrade_shop
+from ch12_keep.riverrun import riverrun_shop
+from ref.keywords import ExampleStrs as exx
 
 
 def test_RiverRun_set_initial_rivergrade_SetsAttr(temp3_dir):

@@ -1,12 +1,12 @@
-from copy import deepcopy as copy_deepcopy
-from src.ch04_rope.rope import create_rope
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch07_person_logic.person_tool import (
+from ch04_rope.rope import create_rope
+from ch07_person_logic.person_main import personunit_shop
+from ch07_person_logic.person_tool import (
     clear_factunits_from_person,
     get_person_root_facts_dict,
     set_factunits_to_person,
 )
-from src.ref.keywords import Ch07Keywords as kw, ExampleStrs as exx
+from copy import deepcopy as copy_deepcopy
+from ref.keywords import Ch07Keywords as kw, ExampleStrs as exx
 
 
 def test_get_person_root_facts_dict_ReturnsObj_Scenario0_No_factunits():

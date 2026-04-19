@@ -1,19 +1,16 @@
-from copy import copy as copy_copy
-from os import getcwd as os_getcwd
-from src.ch00_py.db_toolbox import get_create_table_sqlstr
-from src.ch00_py.dict_toolbox import get_empty_set_if_None, get_from_nested_dict
-from src.ch00_py.file_toolbox import create_path, open_json
-from src.ch08_person_atom.atom_config import get_delete_key_name
-from src.ch15_nabu.nabu_config import (
-    get_context_nabuable_args,
-    set_nabuable_otx_inx_args,
-)
-from src.ch16_translate.translate_config import set_translateable_otx_inx_args
-from src.ch17_idea.idea_config import (
+from ch00_py.db_toolbox import get_create_table_sqlstr
+from ch00_py.dict_toolbox import get_empty_set_if_None, get_from_nested_dict
+from ch00_py.file_toolbox import create_path, open_json
+from ch08_person_atom.atom_config import get_delete_key_name
+from ch15_nabu.nabu_config import get_context_nabuable_args, set_nabuable_otx_inx_args
+from ch16_translate.translate_config import set_translateable_otx_inx_args
+from ch17_idea.idea_config import (
     get_default_sorted_list,
     get_idea_config_dict,
     get_idea_sqlite_types,
 )
+from copy import copy as copy_copy
+from os import getcwd as os_getcwd
 
 ALL_DIMEN_ABBV7 = {
     "MMTPAYY",

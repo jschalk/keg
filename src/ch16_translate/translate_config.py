@@ -1,7 +1,7 @@
+from ch00_py.dict_toolbox import get_from_nested_dict
+from ch00_py.file_toolbox import create_path, open_json
+from ch08_person_atom.atom_config import get_all_person_dimen_delete_keys
 from os import getcwd as os_getcwd
-from src.ch00_py.dict_toolbox import get_from_nested_dict
-from src.ch00_py.file_toolbox import create_path, open_json
-from src.ch08_person_atom.atom_config import get_all_person_dimen_delete_keys
 
 
 def translate_config_path() -> str:

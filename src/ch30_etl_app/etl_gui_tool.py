@@ -1,3 +1,25 @@
+from ch00_py.csv_toolbox import (
+    delete_column_from_csv_string,
+    replace_csv_column_from_string,
+)
+from ch00_py.file_toolbox import create_path, delete_dir
+from ch04_rope.rope import create_rope, default_knot_if_None
+from ch07_person_logic.person_main import personunit_shop
+from ch13_time.epoch_config import get_creg_config, get_five_config
+from ch13_time.epoch_main import epochunit_shop
+from ch14_moment.moment_main import momentunit_shop
+from ch17_idea.idea_belief_csv import (
+    add_momentunits_to_belief_csv_strs,
+    add_personunit_to_belief_csv_strs,
+    create_init_belief_idea_csv_strs,
+)
+from ch17_idea.idea_db_tool import (
+    csv_dict_to_excel,
+    prettify_excel_file,
+    prettify_excel_files,
+    remove_empty_sheets,
+)
+from ch21_world.world import worlddir_shop
 from dataclasses import dataclass
 from io import StringIO
 import pandas as pd
@@ -9,27 +31,6 @@ from pandas import (
 )
 from pathlib import Path
 from platform import system as platform_system
-from src.ch00_py.csv_toolbox import (
-    delete_column_from_csv_string,
-    replace_csv_column_from_string,
-)
-from src.ch00_py.file_toolbox import create_path, delete_dir
-from src.ch04_rope.rope import create_rope, default_knot_if_None
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch13_time.epoch_config import get_creg_config, get_five_config
-from src.ch13_time.epoch_main import epochunit_shop
-from src.ch14_moment.moment_main import momentunit_shop
-from src.ch17_idea.idea_belief_csv import (
-    add_momentunits_to_belief_csv_strs,
-    add_personunit_to_belief_csv_strs,
-    create_init_belief_idea_csv_strs,
-)
-from src.ch17_idea.idea_db_tool import (
-    csv_dict_to_excel,
-    prettify_excel_file,
-    remove_empty_sheets,
-)
-from src.ch21_world.world import worlddir_shop
 from sys import platform
 from typing import Callable
 
@@ -433,6 +434,12 @@ def create_example_moment_budget_file(file_path: str):
     pass
 
 
+def create_monopoly_belief_file(file_path: str):
+    # TODO dict[str, str]s and save to file
+    # prnt("create_example_moment_budget_file...")
+    pass
+
+
 def get_option_table_options() -> dict[str, Callable]:
     return {
         "2 persons, 2 tasks example": create_simple_1m2p2pledges_belief_file,
@@ -444,17 +451,5 @@ def get_option_table_options() -> dict[str, Callable]:
         "create_emmanuel_belief_file": create_emmanuel_belief_file,
         "create_example_moment_ledger_file": create_example_moment_ledger_file,
         "create_example_moment_budget_file": create_example_moment_budget_file,
+        "Monopoly Example": create_monopoly_belief_file,
     }
-
-
-# def add_title1_label(title_frame):
-#     ax = get_app_glb_attrs()
-#     app1_str = "Keg Listening App#1"
-#     tk.Label(
-#         title_frame,
-#         text=app1_str,
-#         font=ax.platform_font,
-#         bg=ax.bg,
-#         fg=ax.accent,
-#         anchor="w",
-#     ).pack(side="left")

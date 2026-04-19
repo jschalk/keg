@@ -1,5 +1,5 @@
-from src.ch04_rope.rope import create_rope
-from src.ch05_reason.reason_main import (
+from ch04_rope.rope import create_rope
+from ch05_reason.reason_main import (
     FactCore,
     FactUnit,
     factheir_shop,
@@ -7,7 +7,7 @@ from src.ch05_reason.reason_main import (
     get_factunit_from_tuple,
     get_factunits_from_dict,
 )
-from src.ref.keywords import Ch05Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch05Keywords as kw, ExampleStrs as exx
 
 
 def test_FactUnit_Exists():

@@ -1,26 +1,26 @@
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import count_dirs_files, create_path, open_json, save_json
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch09_person_lesson._ref.ch09_path import (
+from ch00_py.file_toolbox import count_dirs_files, create_path, open_json, save_json
+from ch07_person_logic.person_main import personunit_shop
+from ch09_person_lesson._ref.ch09_path import (
     create_moment_json_path,
     create_moment_persons_dir_path,
 )
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch11_bud._ref.ch11_path import create_personspark_path
-from src.ch14_moment._ref.ch14_path import (
+from ch09_person_lesson.lasso import lassounit_shop
+from ch11_bud._ref.ch11_path import create_personspark_path
+from ch14_moment._ref.ch14_path import (
     create_bud_contact_mandate_ledger_path as bud_mandate_path,
 )
-from src.ch14_moment.moment_main import get_momentunit_from_dict, momentunit_shop
-from src.ch14_moment.test._util.ch14_examples import example_casa_floor_clean_factunit
-from src.ch18_etl_config._ref.ch18_path import (
+from ch14_moment.moment_main import get_momentunit_from_dict, momentunit_shop
+from ch14_moment.test._util.ch14_examples import example_casa_floor_clean_factunit
+from ch18_etl_config._ref.ch18_path import (
     create_moment_mstr_path,
     create_moment_ote1_json_path,
 )
-from src.ch19_etl_steps.etl_main import calc_moment_bud_contact_mandate_net_ledgers
-from src.ch19_etl_steps.test._util.ch19_examples import (
+from ch19_etl_steps.etl_main import calc_moment_bud_contact_mandate_net_ledgers
+from ch19_etl_steps.test._util.ch19_examples import (
     get_bob_mop_reason_personunit_example,
 )
-from src.ref.keywords import ExampleStrs as exx
+from os.path import exists as os_path_exists
+from ref.keywords import ExampleStrs as exx
 
 
 def test_calc_moment_bud_contact_mandate_net_ledgers_Scenaro0_BudEmpty(

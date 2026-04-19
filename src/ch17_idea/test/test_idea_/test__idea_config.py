@@ -1,35 +1,33 @@
-from copy import copy as copy_copy
-from os import getcwd as os_getcwd
-from src.ch00_py.dict_toolbox import normalize_obj
-from src.ch00_py.file_toolbox import create_path, save_json
-from src.ch07_person_logic.person_config import (
+from ch00_py.dict_toolbox import normalize_obj
+from ch00_py.file_toolbox import create_path, save_json
+from ch07_person_logic.person_config import (
     get_all_person_calc_args,
     get_person_calc_args_sqlite_datatype_dict,
 )
-from src.ch08_person_atom.atom_config import (
+from ch08_person_atom.atom_config import (
     get_all_person_dimen_delete_keys,
     get_atom_args_dimen_mapping,
     get_atom_config_dict,
     get_person_dimens,
 )
-from src.ch14_moment.moment_config import (
+from ch14_moment.moment_config import (
     get_moment_args_dimen_mapping,
     get_moment_config_dict,
     get_moment_dimens,
 )
-from src.ch15_nabu.nabu_config import (
+from ch15_nabu.nabu_config import (
     get_nabu_args,
     get_nabu_config_dict,
     get_nabu_dimens,
     get_nabuable_args,
 )
-from src.ch16_translate.translate_config import (
+from ch16_translate.translate_config import (
     get_translate_args_dimen_mapping,
     get_translate_config_dict,
     get_translate_dimens,
     get_translateable_args,
 )
-from src.ch17_idea.idea_config import (
+from ch17_idea.idea_config import (
     get_allowed_curds,
     get_default_sorted_list,
     get_dimens_with_idea_element,
@@ -47,7 +45,9 @@ from src.ch17_idea.idea_config import (
     ii00120_person_contact_membership_v0_0_0,
     ii00121_person_contactunit_v0_0_0,
 )
-from src.ref.keywords import Ch17Keywords as kw
+from copy import copy as copy_copy
+from os import getcwd as os_getcwd
+from ref.keywords import Ch17Keywords as kw
 
 
 def test_get_idea_elements_sort_order_ReturnsObj():

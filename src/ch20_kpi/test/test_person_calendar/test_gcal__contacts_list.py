@@ -1,11 +1,11 @@
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
-from src.ch20_kpi.gcalendar import (
+from ch07_person_logic.person_main import personunit_shop
+from ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
+from ch20_kpi.gcalendar import (
     gcal_readable_percent,
     get_gcal_contacts_str,
     get_gcal_memberships_str,
 )
-from src.ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
 
 
 def test_get_gcal_contacts_str_ReturnsObj_Scenario1_TwoContacts():

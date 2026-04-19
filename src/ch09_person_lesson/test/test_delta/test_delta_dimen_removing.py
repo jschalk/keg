@@ -1,7 +1,7 @@
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch09_person_lesson.delta import get_dimens_cruds_persondelta, persondelta_shop
-from src.ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch09_person_lesson.delta import get_dimens_cruds_persondelta, persondelta_shop
+from ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
 
 
 def test_PersonDelta_get_dimens_cruds_persondelta_ReturnsObjWithCorrectDimensAndCRUDsBy_contactunit_insert():

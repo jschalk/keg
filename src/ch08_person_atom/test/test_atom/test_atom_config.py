@@ -1,7 +1,7 @@
-from src.ch00_py.dict_toolbox import get_from_nested_dict
-from src.ch07_person_logic.person_config import get_person_config_dict
-from src.ch08_person_atom._ref.ch08_semantic_types import CRUD_command
-from src.ch08_person_atom.atom_config import (
+from ch00_py.dict_toolbox import get_from_nested_dict
+from ch07_person_logic.person_config import get_person_config_dict
+from ch08_person_atom._ref.ch08_semantic_types import CRUD_command
+from ch08_person_atom.atom_config import (
     get_all_person_dimen_delete_keys,
     get_all_person_dimen_keys,
     get_allowed_class_types,
@@ -17,7 +17,7 @@ from src.ch08_person_atom.atom_config import (
     is_person_dimen,
     set_mog,
 )
-from src.ref.keywords import Ch08Keywords as kw
+from ref.keywords import Ch08Keywords as kw
 
 
 def test_CRUD_command_Exists():

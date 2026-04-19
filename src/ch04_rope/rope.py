@@ -1,13 +1,13 @@
-from collections import Counter
-from pathlib import Path as pathlib_Path
-from src.ch00_py.file_toolbox import is_path_valid
-from src.ch04_rope._ref.ch04_semantic_types import (
+from ch00_py.file_toolbox import is_path_valid
+from ch04_rope._ref.ch04_semantic_types import (
     FirstLabel,
     KnotTerm,
     LabelTerm,
     RopeTerm,
     default_knot_if_None,
 )
+from collections import Counter
+from pathlib import Path as pathlib_Path
 
 
 def get_default_rope(knot=None) -> FirstLabel:

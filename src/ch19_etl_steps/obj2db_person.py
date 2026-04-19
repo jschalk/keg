@@ -1,15 +1,12 @@
-from copy import deepcopy as copy_deepcopy
-from dataclasses import dataclass
-from sqlite3 import Cursor as sqlite3_Cursor
-from src.ch00_py.db_toolbox import sqlite_obj_str
-from src.ch02_contact.contact import ContactUnit
-from src.ch02_contact.group import AwardHeir, GroupUnit, MemberShip
-from src.ch03_workforce.workforce import WorkforceHeir
-from src.ch05_reason.reason_main import CaseUnit, FactHeir, ReasonHeir
-from src.ch06_plan.plan import HealerUnit, PlanUnit
-from src.ch07_person_logic.person_main import PersonUnit
-from src.ch11_bud.bud_main import MomentRope
-from src.ch19_etl_steps._ref.ch19_semantic_types import (
+from ch00_py.db_toolbox import sqlite_obj_str
+from ch02_contact.contact import ContactUnit
+from ch02_contact.group import AwardHeir, GroupUnit, MemberShip
+from ch03_workforce.workforce import WorkforceHeir
+from ch05_reason.reason_main import CaseUnit, FactHeir, ReasonHeir
+from ch06_plan.plan import HealerUnit, PlanUnit
+from ch07_person_logic.person_main import PersonUnit
+from ch11_bud.bud_main import MomentRope
+from ch19_etl_steps._ref.ch19_semantic_types import (
     ContactName,
     FaceName,
     GroupTitle,
@@ -18,6 +15,9 @@ from src.ch19_etl_steps._ref.ch19_semantic_types import (
     RopeTerm,
     SparkInt,
 )
+from copy import deepcopy as copy_deepcopy
+from dataclasses import dataclass
+from sqlite3 import Cursor as sqlite3_Cursor
 
 
 def create_prnmemb_metrics_insert_sqlstr(values_dict: dict[str,]):

@@ -1,6 +1,6 @@
-from src.ch00_py.file_toolbox import create_path, save_file
-from src.ch00_py.notebook_toolbox import get_imports_from_source
-from src.ref.keywords import Ch00Keywords as kw, ExampleStrs as exx
+from ch00_py.file_toolbox import create_path, save_file
+from ch00_py.notebook_toolbox import get_imports_from_source
+from ref.keywords import Ch00Keywords as kw, ExampleStrs as exx
 
 
 def test_get_imports_from_source_ReturnsObj_Scenario0_empty_file_returns_empty_list():

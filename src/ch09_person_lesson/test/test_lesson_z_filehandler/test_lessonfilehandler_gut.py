@@ -1,16 +1,16 @@
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import create_path, delete_dir
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch09_person_lesson.lesson_filehandler import (
+from ch00_py.file_toolbox import create_path, delete_dir
+from ch09_person_lesson.lasso import lassounit_shop
+from ch09_person_lesson.lesson_filehandler import (
     create_gut_path,
     gut_file_exists,
     lessonfilehandler_shop,
     open_gut_file,
     save_gut_file,
 )
-from src.ch09_person_lesson.lesson_main import init_lesson_id
-from src.ch09_person_lesson.test._util.ch09_examples import sue_2personatoms_lessonunit
-from src.ref.keywords import ExampleStrs as exx
+from ch09_person_lesson.lesson_main import init_lesson_id
+from ch09_person_lesson.test._util.ch09_examples import sue_2personatoms_lessonunit
+from os.path import exists as os_path_exists
+from ref.keywords import ExampleStrs as exx
 
 
 def test_LessonFileHandler_default_gut_person_ReturnsObj(temp3_fs):

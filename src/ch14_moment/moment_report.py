@@ -1,13 +1,13 @@
-from pandas import DataFrame, concat as pandas_concat
-from plotly.graph_objects import Figure as plotly_Figure, Table as plotly_Table
-from src.ch07_person_logic.person_report import (
+from ch07_person_logic.person_report import (
     get_person_agenda_dataframe,
     get_person_contactunits_dataframe,
 )
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch09_person_lesson.lesson_filehandler import open_gut_file
-from src.ch10_person_listen.keep_tool import open_job_file
-from src.ch14_moment.moment_main import MomentUnit
+from ch09_person_lesson.lasso import lassounit_shop
+from ch09_person_lesson.lesson_filehandler import open_gut_file
+from ch10_person_listen.keep_tool import open_job_file
+from ch14_moment.moment_main import MomentUnit
+from pandas import DataFrame, concat as pandas_concat
+from plotly.graph_objects import Figure as plotly_Figure, Table as plotly_Table
 
 
 def get_moment_guts_contacts_dataframe(x_moment: MomentUnit) -> DataFrame:

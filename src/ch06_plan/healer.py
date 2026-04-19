@@ -1,6 +1,6 @@
+from ch00_py.dict_toolbox import get_empty_set_if_None
+from ch06_plan._ref.ch06_semantic_types import GroupTitle
 from dataclasses import dataclass
-from src.ch00_py.dict_toolbox import get_empty_set_if_None
-from src.ch06_plan._ref.ch06_semantic_types import GroupTitle
 
 
 @dataclass

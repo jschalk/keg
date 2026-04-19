@@ -1,21 +1,21 @@
-from src.ch00_py.dict_toolbox import (
+from ch00_py.dict_toolbox import (
     get_1_if_None,
     get_empty_str_if_None,
     get_False_if_None,
     modular_addition,
 )
-from src.ch04_rope.rope import is_sub_rope
-from src.ch05_reason.reason_main import CaseUnit, FactUnit, ReasonUnit
-from src.ch06_plan.plan import PlanUnit
-from src.ch07_person_logic.person_main import PersonUnit
-from src.ch07_person_logic.person_tool import (
+from ch04_rope.rope import is_sub_rope
+from ch05_reason.reason_main import CaseUnit, FactUnit, ReasonUnit
+from ch06_plan.plan import PlanUnit
+from ch07_person_logic.person_main import PersonUnit
+from ch07_person_logic.person_tool import (
     add_frame_to_personunit,
     person_plan_reason_caseunit_set_obj,
     person_planunit_exists,
     person_planunit_get_obj,
 )
-from src.ch13_time._ref.ch13_semantic_types import LabelTerm, RopeTerm, TimeNum
-from src.ch13_time.epoch_main import (
+from ch13_time._ref.ch13_semantic_types import LabelTerm, RopeTerm, TimeNum
+from ch13_time.epoch_main import (
     get_day_rope,
     get_epoch_rope,
     get_week_rope,

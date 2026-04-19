@@ -1,6 +1,6 @@
-from src.ch00_py.file_toolbox import create_path
-from src.ch21_world.world import WorldName
-from src.ch22_lobby._ref.ch22_semantic_types import LobbyID
+from ch00_py.file_toolbox import create_path
+from ch21_world.world import WorldName
+from ch22_lobby._ref.ch22_semantic_types import LobbyID
 
 
 def create_lobby_dir_path(lobby_mstr_dir: str, lobby_id: LobbyID) -> str:

@@ -1,13 +1,9 @@
-from copy import copy as copy_copy
-from dataclasses import dataclass
-from os import sep as os_sep, walk as os_walk
-from os.path import exists as os_path_exists, join as os_path_join
-from src.ch00_py.file_toolbox import create_path, get_level1_dirs, save_json
-from src.ch01_allot.allot import allot_nested_scale
-from src.ch05_reason.reason_main import get_dict_from_factunits
-from src.ch09_person_lesson._ref.ch09_path import create_moment_persons_dir_path
-from src.ch09_person_lesson.lasso import LassoUnit
-from src.ch11_bud._ref.ch11_path import (
+from ch00_py.file_toolbox import create_path, get_level1_dirs, save_json
+from ch01_allot.allot import allot_nested_scale
+from ch05_reason.reason_main import get_dict_from_factunits
+from ch09_person_lesson._ref.ch09_path import create_moment_persons_dir_path
+from ch09_person_lesson.lasso import LassoUnit
+from ch11_bud._ref.ch11_path import (
     CELL_MANDATE_FILENAME,
     CELLNODE_FILENAME,
     create_bud_dir_path,
@@ -15,7 +11,7 @@ from src.ch11_bud._ref.ch11_path import (
     create_cell_json_path,
     create_personspark_path,
 )
-from src.ch11_bud.bud_filehandler import (
+from ch11_bud.bud_filehandler import (
     cellunit_get_from_dir,
     cellunit_save_to_dir,
     collect_person_spark_dir_sets,
@@ -24,12 +20,16 @@ from src.ch11_bud.bud_filehandler import (
     get_personspark_obj,
     open_person_file,
 )
-from src.ch11_bud.cell_main import CellUnit, cellunit_shop
-from src.ch11_bud.weighted_facts_tool import get_nodes_with_weighted_facts
-from src.ch13_time.epoch_main import TimeNum
-from src.ch14_moment._ref.ch14_path import BUD_MANDATE_FILENAME
-from src.ch14_moment._ref.ch14_semantic_types import FundNum, PersonName, RopeTerm
-from src.ch14_moment.moment_main import open_moment_file, save_moment_file
+from ch11_bud.cell_main import CellUnit, cellunit_shop
+from ch11_bud.weighted_facts_tool import get_nodes_with_weighted_facts
+from ch13_time.epoch_main import TimeNum
+from ch14_moment._ref.ch14_path import BUD_MANDATE_FILENAME
+from ch14_moment._ref.ch14_semantic_types import FundNum, PersonName, RopeTerm
+from ch14_moment.moment_main import open_moment_file, save_moment_file
+from copy import copy as copy_copy
+from dataclasses import dataclass
+from os import sep as os_sep, walk as os_walk
+from os.path import exists as os_path_exists, join as os_path_join
 
 
 def create_moment_persons_cell_trees(moment_mstr_dir, moment_lasso: LassoUnit):

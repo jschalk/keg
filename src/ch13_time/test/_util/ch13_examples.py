@@ -1,23 +1,23 @@
-from datetime import datetime
-from enum import Enum
-from plotly.graph_objects import Figure as plotly_Figure, Scatter as plotly_Scatter
-from src.ch00_py.plotly_toolbox import conditional_fig_show
-from src.ch06_plan.plan import PlanUnit
-from src.ch07_person_logic.person_main import PersonUnit, personunit_shop
-from src.ch13_time.epoch_config import (
+from ch00_py.plotly_toolbox import conditional_fig_show
+from ch06_plan.plan import PlanUnit
+from ch07_person_logic.person_main import PersonUnit, personunit_shop
+from ch13_time.epoch_config import (
     get_creg_config,
     get_five_config,
     get_lizzy9_config,
     get_squirt_config,
 )
-from src.ch13_time.epoch_main import (
+from ch13_time.epoch_main import (
     add_epoch_planunit,
     create_weekday_planunits,
     epochholder_shop,
     get_min_from_dt_offset,
     new_epoch_planunit,
 )
-from src.ref.keywords import Ch13Keywords as kw, ExampleStrs as exx
+from datetime import datetime
+from enum import Enum
+from plotly.graph_objects import Figure as plotly_Figure, Scatter as plotly_Scatter
+from ref.keywords import Ch13Keywords as kw, ExampleStrs as exx
 
 DIRTYNESS_STR = "dirtyness"
 FIVE_STR = "five"

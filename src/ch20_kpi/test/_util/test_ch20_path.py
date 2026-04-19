@@ -1,14 +1,14 @@
-from inspect import getdoc as inspect_getdoc
-from pytest import mark as pytest_mark
-from src.ch00_py.file_toolbox import create_path
-from src.ch04_rope.rope import create_rope
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch20_kpi._ref.ch20_path import (
+from ch00_py.file_toolbox import create_path
+from ch04_rope.rope import create_rope
+from ch09_person_lesson.lasso import lassounit_shop
+from ch20_kpi._ref.ch20_path import (
     create_day_punch_txt_path,
     create_dst_person_punch_path,
     create_moments_dir_path,
 )
-from src.ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
+from inspect import getdoc as inspect_getdoc
+from pytest import mark as pytest_mark
+from ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
 
 
 def test_create_day_punch_txt_path_ReturnsObj(temp3_dir):

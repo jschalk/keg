@@ -11,13 +11,11 @@ To integrate your CLI logic, replace the `create_today_punchs()` call inside
 `_run()` with your actual ETL function / subprocess call.
 """
 
-from os.path import isdir as os_path_isdir
-from platform import system as platform_system
-from src.ch00_py.file_toolbox import delete_dir, set_dir
-from src.ch17_idea.idea_db_tool import prettify_excel_files
-from src.ch20_kpi.gcalendar import lynx_to_person_gcal_day_punchs
-from src.ch21_world.world import create_today_punchs
-from src.ch30_etl_app.etl_gui_tool import (
+from ch00_py.file_toolbox import delete_dir, set_dir
+from ch17_idea.idea_db_tool import prettify_excel_files
+from ch20_kpi.gcalendar import lynx_to_person_gcal_day_punchs
+from ch21_world.world import create_today_punchs
+from ch30_etl_app.etl_gui_tool import (
     fill_spark_face_in_directory,
     get_app_default_dir,
     get_app_default_dirs,
@@ -26,6 +24,8 @@ from src.ch30_etl_app.etl_gui_tool import (
     get_app_glb_attrs,
     get_option_table_options,
 )
+from os.path import isdir as os_path_isdir
+from platform import system as platform_system
 from subprocess import Popen as subprocess_Popen
 import tkinter as tk
 from tkinter import (
@@ -60,7 +60,8 @@ class OptionTable(tk.Frame):
         )
         scrollbar.config(command=self.tree.yview)
 
-        self.tree.heading("action", text="Click to add Beliefs to Beliefs Directory")
+        action_str = "Click to add Example Beliefs to Beliefs Directory"
+        self.tree.heading("action", text=action_str)
         self.tree.column("action", anchor=tk.W)
 
         for description in self.options:
@@ -106,7 +107,7 @@ class ETLAppMissingDefaultError(Exception):
 class ETLApp(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Listening using Keg2 — ETL Launcher")
+        self.title("Listening using Keg2")
         self.resizable(False, False)
         ax = get_app_glb_attrs()
         self.configure(bg=ax.bg)
@@ -198,7 +199,7 @@ class ETLApp(tk.Tk):
             },
             "5": {
                 "row_type": "dir",
-                "title": "OUTPUT DIR ",
+                "title": "AGENDAS DIR",
                 "var": self._output,
                 "required": True,
                 "tip": "Destination for results (opened on finish)",
@@ -369,7 +370,7 @@ class ETLApp(tk.Tk):
 
         tk.Label(
             title_frame,
-            text="Keg Listening App#1",
+            text="Listening using Keg2",
             font=ax.platform_font,
             bg=ax.bg,
             fg=ax.accent,
@@ -399,7 +400,7 @@ class ETLApp(tk.Tk):
 
         self._run_btn = tk.Button(
             btn_frame,
-            text="▶  CREATE DAILY AGENDA",
+            text="▶  CREATE AGENDAS FOR TODAY",
             font=ax.platform_font,
             bg=ax.accent,
             fg=ax.fg_black,
@@ -517,9 +518,8 @@ class ETLApp(tk.Tk):
             self._status.set(f"✘  Error: {exc}")
             tkinter_messagebox.showerror("Pipeline error", str(exc))
         finally:
-            self._run_btn.configure(
-                state="normal", text="▶  RUN PIPELINE", bg=ax.accent
-            )
+            _run_btn_str = "▶  CREATE AGENDAS FROM BELIEFS/IDEAS"
+            self._run_btn.configure(state="normal", text=_run_btn_str, bg=ax.accent)
 
         # Open output directory if one was given
         if output and os_path_isdir(output):

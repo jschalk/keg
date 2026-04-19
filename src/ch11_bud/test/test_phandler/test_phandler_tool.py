@@ -1,19 +1,13 @@
-from os.path import exists as os_path_exists
-from pytest import raises as pytest_raises
-from src.ch00_py.file_toolbox import create_path, open_json, set_dir
-from src.ch04_rope.rope import create_rope
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch07_person_logic.test._util.ch07_examples import (
+from ch00_py.file_toolbox import create_path, open_json, set_dir
+from ch04_rope.rope import create_rope
+from ch07_person_logic.person_main import personunit_shop
+from ch07_person_logic.test._util.ch07_examples import (
     get_personunit_irrational_example,
     get_personunit_with_4_levels,
 )
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch10_person_listen.keep_tool import (
-    job_file_exists,
-    open_job_file,
-    save_job_file,
-)
-from src.ch11_bud._ref.ch11_path import (
+from ch09_person_lesson.lasso import lassounit_shop
+from ch10_person_listen.keep_tool import job_file_exists, open_job_file, save_job_file
+from ch11_bud._ref.ch11_path import (
     create_budunit_json_path,
     create_cell_contact_mandate_ledger_path,
     create_cell_dir_path,
@@ -22,7 +16,7 @@ from src.ch11_bud._ref.ch11_path import (
     create_personspark_path,
     create_persontime_path,
 )
-from src.ch11_bud.bud_filehandler import (
+from ch11_bud.bud_filehandler import (
     bud_file_exists,
     cellunit_add_json_file,
     cellunit_get_from_dir,
@@ -41,15 +35,17 @@ from src.ch11_bud.bud_filehandler import (
     save_person_file,
     save_persontime_file,
 )
-from src.ch11_bud.cell_main import CELLNODE_QUOTA_DEFAULT, cellunit_shop
-from src.ch11_bud.test._util.ch11_examples import (
+from ch11_bud.cell_main import CELLNODE_QUOTA_DEFAULT, cellunit_shop
+from ch11_bud.test._util.ch11_examples import (
     example_casa_clean_factunit as clean_factunit,
     example_casa_dirty_factunit as dirty_factunit,
     example_sky_blue_factunit as sky_blue_factunit,
     get_budunit_55_example,
     get_budunit_invalid_example,
 )
-from src.ref.keywords import Ch11Keywords as kw, ExampleStrs as exx
+from os.path import exists as os_path_exists
+from pytest import raises as pytest_raises
+from ref.keywords import Ch11Keywords as kw, ExampleStrs as exx
 
 
 def test_save_person_file_SetsFile(temp3_fs):

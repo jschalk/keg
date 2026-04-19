@@ -1,5 +1,5 @@
+from ch02_contact.contact import calc_give_take_net
 from pytest import raises as pytest_raises
-from src.ch02_contact.contact import calc_give_take_net
 
 
 def test_calc_give_take_net_ReturnsObj():

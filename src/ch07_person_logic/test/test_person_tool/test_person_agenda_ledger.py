@@ -1,12 +1,12 @@
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch07_person_logic.person_tool import (
+from ch07_person_logic.person_main import personunit_shop
+from ch07_person_logic.person_tool import (
     get_contact_agenda_net_ledger,
     get_contact_mandate_ledger,
     get_credit_ledger,
     get_person_contact_agenda_award_array,
     get_person_contact_agenda_award_csv,
 )
-from src.ref.keywords import ExampleStrs as exx
+from ref.keywords import ExampleStrs as exx
 
 
 def test_get_person_contact_agenda_award_array_ReturnsObj_ScenarioZeroContactUnits():

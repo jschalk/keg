@@ -1,10 +1,10 @@
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import create_path, open_file, save_file
-from src.ch00_py.notebook_toolbox import (
+from ch00_py.file_toolbox import create_path, open_file, save_file
+from ch00_py.notebook_toolbox import (
     create_marimo_notebook_from_test_str,
     save_marimo_notebook_from_test_file,
 )
-from src.ref.keywords import Ch00Keywords as kw, ExampleStrs as exx
+from os.path import exists as os_path_exists
+from ref.keywords import Ch00Keywords as kw, ExampleStrs as exx
 
 
 def test_create_marimo_notebook_from_test_str_ReturnsObj_Scenario0_simple_example(
@@ -78,7 +78,9 @@ if __name__ == "__main__":
 def test_create_marimo_notebook_from_test_str_ReturnsObj_Scenario1(temp3_fs, temp3_dir):
     # ESTABLISH
     test_file_path = create_path(temp3_dir, "test_sql_inserts.py")
-    example_import_str = "from sqlite3 import Cursor\nfrom src.ch00_py.test._util.ch00_envv import cursor0"
+    example_import_str = (
+        "from sqlite3 import Cursor\nfrom ch00_py.test._util.ch00_envv import cursor0"
+    )
     save_file(test_file_path, None, example_import_str)
     # source test name: test_custom_insert_ModifiesTable_Scenario0
     test_func_str = '''
@@ -136,7 +138,7 @@ with app.setup(hide_code=True):"""
     expected_marimo_back_str = '''
     # source test name: test_custom_insert_ModifiesTable_Scenario0
     from sqlite3 import Cursor
-    from src.ch00_py.test._util.ch00_envv import cursor0
+    from ch00_py.test._util.ch00_envv import cursor0
     from sqlite3 import connect as sqlite3_connect
 
     conn = sqlite3_connect(":memory:")
@@ -236,8 +238,8 @@ def test_insert_color_casa_into_casa_agg_PopulatesTable_Scenario1(
     assert rows == [("Blue", 2), ("Red", 1)]
 """
     # create test file so that imports and be collected
-    example_color_import_str = "from src.color import insert_color_casa_into_casa_agg"
-    example_cursor0_import_str = "from src.ch00_py.test._util.ch00_envv import cursor0"
+    example_color_import_str = "from color import insert_color_casa_into_casa_agg"
+    example_cursor0_import_str = "from ch00_py.test._util.ch00_envv import cursor0"
     example_import_str = f"{example_color_import_str}\n{example_cursor0_import_str}"
     test_file_str = f"{example_import_str}\n\n\n{test_function_str}"
     test_file_path = create_path(temp3_dir, "test_color_sql.py")
@@ -262,8 +264,8 @@ app = marimo.App()
 with app.setup(hide_code=True):"""
     expected2_str = """
     # source test name: test_insert_color_casa_into_casa_agg_PopulatesTable_Scenario1
-    from src.color import insert_color_casa_into_casa_agg
-    from src.ch00_py.test._util.ch00_envv import cursor0
+    from color import insert_color_casa_into_casa_agg
+    from ch00_py.test._util.ch00_envv import cursor0
     from sqlite3 import connect as sqlite3_connect"""
     assert marimo_file_str.find(expected1_str) == 0
     assert marimo_file_str.find(expected2_str) > 0
@@ -298,8 +300,8 @@ def test_insert_color_casa_into_casa_agg_PopulatesTable_Scenario1(
     assert rows == [("Blue", 2), ("Red", 1)]
 """
     # create test file so that imports and be collected
-    example_color_import_str = "from src.color import insert_color_casa_into_casa_agg"
-    example_cursor0_import_str = "from src.ch00_py.test._util.ch00_envv import cursor0"
+    example_color_import_str = "from color import insert_color_casa_into_casa_agg"
+    example_cursor0_import_str = "from ch00_py.test._util.ch00_envv import cursor0"
     example_import_str = f"{example_color_import_str}\n{example_cursor0_import_str}"
     test_file_str = f"{example_import_str}\n\n\n{test_function_str}"
     test_file_path = create_path(temp3_dir, "test_color_sql.py")
@@ -330,8 +332,8 @@ app = marimo.App()
 with app.setup(hide_code=True):"""
     expected2_str = """
     # source test name: test_insert_color_casa_into_casa_agg_PopulatesTable_Scenario1
-    from src.color import insert_color_casa_into_casa_agg
-    from src.ch00_py.test._util.ch00_envv import cursor0
+    from color import insert_color_casa_into_casa_agg
+    from ch00_py.test._util.ch00_envv import cursor0
     from sqlite3 import connect as sqlite3_connect"""
     assert marimo_file_str.find(expected1_str) == 0
     assert marimo_file_str.find(expected2_str) > 0

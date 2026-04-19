@@ -1,31 +1,27 @@
-from os.path import exists as os_path_exists, isdir as os_path_isdir
-from src.ch00_py.file_toolbox import create_path, get_json_filename, set_dir
-from src.ch01_allot.allot import default_grain_num_if_None
-from src.ch04_rope.rope import default_knot_if_None
-from src.ch06_plan.healer import healerunit_shop
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch09_person_lesson._ref.ch09_path import create_person_dir_path
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch09_person_lesson.lesson_filehandler import (
+from ch00_py.file_toolbox import create_path, get_json_filename, set_dir
+from ch01_allot.allot import default_grain_num_if_None
+from ch04_rope.rope import default_knot_if_None
+from ch06_plan.healer import healerunit_shop
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch09_person_lesson._ref.ch09_path import create_person_dir_path
+from ch09_person_lesson.lasso import lassounit_shop
+from ch09_person_lesson.lesson_filehandler import (
     gut_file_exists,
     open_gut_file,
     save_gut_file,
 )
-from src.ch10_person_listen._ref.ch10_path import create_keep_dutys_path, create_path
-from src.ch10_person_listen.keep_tool import (
-    job_file_exists,
-    open_job_file,
-    save_job_file,
-)
-from src.ch11_bud.bud_main import tranbook_shop
-from src.ch13_time.epoch_main import epochunit_shop
-from src.ch14_moment.moment_main import (
+from ch10_person_listen._ref.ch10_path import create_keep_dutys_path, create_path
+from ch10_person_listen.keep_tool import job_file_exists, open_job_file, save_job_file
+from ch11_bud.bud_main import tranbook_shop
+from ch13_time.epoch_main import epochunit_shop
+from ch14_moment.moment_main import (
     MomentUnit,
     get_default_job_listen_count,
     momentunit_shop,
 )
-from src.ref.keywords import Ch14Keywords as kw, ExampleStrs as exx
+from os.path import exists as os_path_exists, isdir as os_path_isdir
+from ref.keywords import Ch14Keywords as kw, ExampleStrs as exx
 
 
 def test_get_default_job_listen_count_ReturnsObj():

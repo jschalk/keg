@@ -1,9 +1,7 @@
-from inspect import getdoc as inspect_getdoc
-from pytest import mark as pytest_mark
-from src.ch00_py.file_toolbox import create_path
-from src.ch04_rope.rope import create_rope
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch18_etl_config._ref.ch18_path import (
+from ch00_py.file_toolbox import create_path
+from ch04_rope.rope import create_rope
+from ch09_person_lesson.lasso import lassounit_shop
+from ch18_etl_config._ref.ch18_path import (
     create_belief0001_path,
     create_beliefs_dir_path,
     create_beliefs_person_dir_path,
@@ -13,7 +11,9 @@ from src.ch18_etl_config._ref.ch18_path import (
     create_moment_ote1_json_path,
     create_world_db_path,
 )
-from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
+from inspect import getdoc as inspect_getdoc
+from pytest import mark as pytest_mark
+from ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
 BELIEF0001_FILENAME = "belief0001.xlsx"
 MOMENT_OTE1_AGG_CSV_FILENAME = "moment_ote1_agg.csv"

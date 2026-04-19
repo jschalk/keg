@@ -1,7 +1,7 @@
-from src.ch04_rope.rope import create_rope, to_rope
-from src.ch08_person_atom.atom_config import get_atom_args_class_types
-from src.ch08_person_atom.atom_main import AtomRow, atomrow_shop, personatom_shop
-from src.ref.keywords import Ch08Keywords as kw
+from ch04_rope.rope import create_rope, to_rope
+from ch08_person_atom.atom_config import get_atom_args_class_types
+from ch08_person_atom.atom_main import AtomRow, atomrow_shop, personatom_shop
+from ref.keywords import Ch08Keywords as kw
 
 
 def test_AtomRow_Exists():

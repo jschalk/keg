@@ -1,13 +1,13 @@
-from sqlite3 import Connection as sqlite3_Connection
-from src.ch00_py.db_toolbox import (
+from ch00_py.db_toolbox import (
     create_table2table_agg_insert_query,
     create_update_inconsistency_error_query,
 )
-from src.ch13_time.epoch_main import DEFAULT_EPOCH_LENGTH, get_c400_constants
-from src.ch17_idea.idea_config import get_idea_config_dict, get_quick_ideas_column_ref
-from src.ch17_idea.idea_db_tool import create_idea_sorted_table, get_default_sorted_list
-from src.ch18_etl_config._ref.ch18_semantic_types import KnotTerm
-from src.ch18_etl_config.etl_config import create_prime_tablename
+from ch13_time.epoch_main import DEFAULT_EPOCH_LENGTH, get_c400_constants
+from ch17_idea.idea_config import get_idea_config_dict, get_quick_ideas_column_ref
+from ch17_idea.idea_db_tool import create_idea_sorted_table, get_default_sorted_list
+from ch18_etl_config._ref.ch18_semantic_types import KnotTerm
+from ch18_etl_config.etl_config import create_prime_tablename
+from sqlite3 import Connection as sqlite3_Connection
 
 CREATE_MMTBUDD_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_budunit_h_agg (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, bud_time_otx INTEGER, bud_time_inx INTEGER, knot TEXT, quota REAL, celldepth INTEGER)"""
 CREATE_MMTBUDD_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_budunit_h_raw (spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, bud_time INTEGER, knot TEXT, quota REAL, celldepth INTEGER, error_message TEXT)"""

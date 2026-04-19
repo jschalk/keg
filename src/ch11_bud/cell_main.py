@@ -1,35 +1,35 @@
-from copy import deepcopy as copy_deepcopy
-from dataclasses import dataclass
-from src.ch00_py.dict_toolbox import (
+from ch00_py.dict_toolbox import (
     get_0_if_None,
     get_1_if_None,
     get_empty_dict_if_None,
     get_empty_list_if_None,
 )
-from src.ch01_allot.allot import allot_scale
-from src.ch05_reason.reason_main import (
+from ch01_allot.allot import allot_scale
+from ch05_reason.reason_main import (
     FactUnit,
     get_dict_from_factunits,
     get_factunits_from_dict,
 )
-from src.ch07_person_logic.person_main import (
+from ch07_person_logic.person_main import (
     PersonUnit,
     get_personunit_from_dict,
     personunit_shop,
 )
-from src.ch07_person_logic.person_tool import (
+from ch07_person_logic.person_tool import (
     clear_factunits_from_person,
     get_contact_mandate_ledger,
     get_credit_ledger,
     get_person_root_facts_dict as get_facts_dict,
 )
-from src.ch11_bud._ref.ch11_semantic_types import (
+from ch11_bud._ref.ch11_semantic_types import (
     FundNum,
     ManaGrain,
     PersonName,
     RopeTerm,
     SparkInt,
 )
+from copy import deepcopy as copy_deepcopy
+from dataclasses import dataclass
 
 CELLNODE_QUOTA_DEFAULT = 1000
 

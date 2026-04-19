@@ -1,20 +1,20 @@
-from plotly.graph_objects import (
-    Figure as plotly_Figure,
-    Scatter as plotly_Scatter,
-    Table as plotly_Table,
-)
-from src.ch00_py.plotly_toolbox import (
+from ch00_py.plotly_toolbox import (
     add_keep__rect,
     add_rect_arrow,
     add_simp_rect,
     conditional_fig_show,
 )
-from src.ch04_rope.rope import RopeTerm, get_parent_rope, is_sub_rope
-from src.ch06_plan.plan import PlanUnit
-from src.ch07_person_logic.person_main import PersonUnit
-from src.ch07_person_logic.person_report import (
+from ch04_rope.rope import RopeTerm, get_parent_rope, is_sub_rope
+from ch06_plan.plan import PlanUnit
+from ch07_person_logic.person_main import PersonUnit
+from ch07_person_logic.person_report import (
     get_person_agenda_dataframe,
     get_person_contactunits_dataframe,
+)
+from plotly.graph_objects import (
+    Figure as plotly_Figure,
+    Scatter as plotly_Scatter,
+    Table as plotly_Table,
 )
 
 

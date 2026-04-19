@@ -1,12 +1,12 @@
-from src.ch07_person_logic.person_main import get_sorted_plan_list, personunit_shop
-from src.ch07_person_logic.person_tool import (
+from ch07_person_logic.person_main import get_sorted_plan_list, personunit_shop
+from ch07_person_logic.person_tool import (
     get_person_root_facts_dict,
     person_plan_reason_caseunit_exists,
     person_plan_reason_caseunit_get_obj,
     person_plan_reasonunit_exists,
     person_plan_reasonunit_get_obj,
 )
-from src.ch13_time.epoch_reason import (
+from ch13_time.epoch_reason import (
     set_epoch_base_case_dayly,
     set_epoch_base_case_monthday,
     set_epoch_base_case_monthly,
@@ -15,11 +15,11 @@ from src.ch13_time.epoch_reason import (
     set_epoch_base_case_xdays,
     set_epoch_base_case_xweeks,
 )
-from src.ch13_time.test._util.ch13_examples import (
+from ch13_time.test._util.ch13_examples import (
     Ch13ExampleStrs as wx,
     get_bob_five_person,
 )
-from src.ref.keywords import Ch13Keywords as kw
+from ref.keywords import Ch13Keywords as kw
 
 
 def test_set_epoch_base_case_dayly_SetsAttr_Scenario0_NoWarppingParameters():

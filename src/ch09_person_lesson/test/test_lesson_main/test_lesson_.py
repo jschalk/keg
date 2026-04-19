@@ -1,25 +1,22 @@
-from pytest import raises as pytest_raises
-from src.ch00_py.dict_toolbox import get_json_from_dict
-from src.ch02_contact.contact import contactunit_shop
-from src.ch07_person_logic.person_main import get_default_rope, personunit_shop
-from src.ch08_person_atom.atom_main import personatom_shop
-from src.ch09_person_lesson._ref.ch09_semantic_types import (
-    FaceName,
-    default_knot_if_None,
-)
-from src.ch09_person_lesson.delta import persondelta_shop
-from src.ch09_person_lesson.lesson_main import (
+from ch00_py.dict_toolbox import get_json_from_dict
+from ch02_contact.contact import contactunit_shop
+from ch07_person_logic.person_main import get_default_rope, personunit_shop
+from ch08_person_atom.atom_main import personatom_shop
+from ch09_person_lesson._ref.ch09_semantic_types import FaceName, default_knot_if_None
+from ch09_person_lesson.delta import persondelta_shop
+from ch09_person_lesson.lesson_main import (
     LessonUnit,
     get_init_lesson_id_if_None,
     get_lessonunit_from_dict,
     init_lesson_id,
     lessonunit_shop,
 )
-from src.ch09_person_lesson.test._util.ch09_examples import (
+from ch09_person_lesson.test._util.ch09_examples import (
     get_atom_example_planunit_sports,
     get_persondelta_sue_example,
 )
-from src.ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
+from pytest import raises as pytest_raises
+from ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
 
 
 def test_FaceName_Exists():

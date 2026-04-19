@@ -1,18 +1,13 @@
-from dataclasses import dataclass
-from src.ch00_py.dict_toolbox import (
+from ch00_py.dict_toolbox import (
     get_0_if_None,
     get_empty_dict_if_None,
     get_positive_int,
     set_in_nested_dict,
 )
-from src.ch00_py.file_toolbox import save_json
-from src.ch01_allot.allot import (
-    allot_scale,
-    default_grain_num_if_None,
-    validate_pool_num,
-)
-from src.ch10_person_listen._ref.ch10_path import create_keep_grade_path
-from src.ch12_keep._ref.ch12_semantic_types import (
+from ch00_py.file_toolbox import save_json
+from ch01_allot.allot import allot_scale, default_grain_num_if_None, validate_pool_num
+from ch10_person_listen._ref.ch10_path import create_keep_grade_path
+from ch12_keep._ref.ch12_semantic_types import (
     ContactName,
     KnotTerm,
     LabelTerm,
@@ -22,12 +17,13 @@ from src.ch12_keep._ref.ch12_semantic_types import (
     RopeTerm,
     default_knot_if_None,
 )
-from src.ch12_keep.rivercycle import (
+from ch12_keep.rivercycle import (
     RiverGrade,
     create_init_rivercycle,
     create_next_rivercycle,
     rivergrade_shop,
 )
+from dataclasses import dataclass
 
 
 @dataclass

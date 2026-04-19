@@ -1,6 +1,4 @@
-from copy import deepcopy as copy_deepcopy
-from pytest import raises as pytest_raises
-from src.ch00_py.file_toolbox import (
+from ch00_py.file_toolbox import (
     create_path,
     delete_dir,
     get_dir_file_strs,
@@ -10,14 +8,14 @@ from src.ch00_py.file_toolbox import (
     save_file,
     set_dir,
 )
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch09_person_lesson.lesson_filehandler import (
+from ch09_person_lesson.lasso import lassounit_shop
+from ch09_person_lesson.lesson_filehandler import (
     lessonfilehandler_shop,
     open_gut_file,
     save_gut_file,
 )
-from src.ch09_person_lesson.lesson_main import init_lesson_id, lessonunit_shop
-from src.ch09_person_lesson.test._util.ch09_examples import (
+from ch09_person_lesson.lesson_main import init_lesson_id, lessonunit_shop
+from ch09_person_lesson.test._util.ch09_examples import (
     get_atom_example_planunit_knee,
     get_sue_lessonunit,
     sue_1personatoms_lessonunit,
@@ -25,7 +23,9 @@ from src.ch09_person_lesson.test._util.ch09_examples import (
     sue_3personatoms_lessonunit,
     sue_4personatoms_lessonunit,
 )
-from src.ref.keywords import ExampleStrs as exx
+from copy import deepcopy as copy_deepcopy
+from pytest import raises as pytest_raises
+from ref.keywords import ExampleStrs as exx
 
 
 def test_LessonFileHandler_get_max_lesson_file_number_ReturnsObj(temp3_fs):

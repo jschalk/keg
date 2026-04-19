@@ -1,8 +1,8 @@
+from ch04_rope.rope import create_rope, create_rope_from_labels as init_rope
+from ch07_person_logic.person_main import PersonUnit, personunit_shop
+from ch13_time.epoch_main import add_epoch_planunit
 from pandas import DataFrame as pandas_DataFrame
-from src.ch04_rope.rope import create_rope, create_rope_from_labels as init_rope
-from src.ch07_person_logic.person_main import PersonUnit, personunit_shop
-from src.ch13_time.epoch_main import add_epoch_planunit
-from src.ref.keywords import Ch21Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch21Keywords as kw, ExampleStrs as exx
 
 
 def ii00002_example() -> pandas_DataFrame:

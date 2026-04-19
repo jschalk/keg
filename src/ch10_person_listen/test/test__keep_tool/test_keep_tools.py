@@ -1,15 +1,13 @@
-from inspect import getdoc as inspect_getdoc
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import delete_dir, open_file, save_file
-from src.ch04_rope.rope import create_rope
-from src.ch07_person_logic.test._util.ch07_examples import get_personunit_with_4_levels
-from src.ch10_person_listen._ref.ch10_path import (
+from ch00_py.file_toolbox import delete_dir, open_file, save_file
+from ch04_rope.rope import create_rope
+from ch07_person_logic.test._util.ch07_examples import get_personunit_with_4_levels
+from ch10_person_listen._ref.ch10_path import (
     create_job_path,
     create_keep_duty_path,
     create_keep_rope_path,
     create_treasury_db_path,
 )
-from src.ch10_person_listen.keep_tool import (
+from ch10_person_listen.keep_tool import (
     create_keep_path_dir_if_missing,
     create_treasury_db_file,
     get_duty_person,
@@ -17,8 +15,10 @@ from src.ch10_person_listen.keep_tool import (
     save_duty_person,
     treasury_db_file_exists,
 )
-from src.ch10_person_listen.test._util.ch10_examples import ch10_example_moment_rope
-from src.ref.keywords import ExampleStrs as exx
+from ch10_person_listen.test._util.ch10_examples import ch10_example_moment_rope
+from inspect import getdoc as inspect_getdoc
+from os.path import exists as os_path_exists
+from ref.keywords import ExampleStrs as exx
 
 
 def test_create_keep_path_dir_if_missing_CreatesDirectory(temp3_fs):

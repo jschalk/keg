@@ -1,6 +1,6 @@
-from src.ch07_person_logic.person_main import get_personunit_from_dict, personunit_shop
-from src.ch13_time.epoch_main import add_epoch_planunit
-from src.ref.keywords import Ch13Keywords as kw, ExampleStrs as exx
+from ch07_person_logic.person_main import get_personunit_from_dict, personunit_shop
+from ch13_time.epoch_main import add_epoch_planunit
+from ref.keywords import Ch13Keywords as kw, ExampleStrs as exx
 
 
 def test_get_personunit_from_dict_ReturnsObj_TracksEpochUnitAttributes():

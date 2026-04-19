@@ -1,12 +1,12 @@
-from src.ch04_rope.rope import create_rope, default_knot_if_None
-from src.ch07_person_logic.test._util.ch07_examples import get_personunit_with_4_levels
-from src.ch10_person_listen.keep_tool import (
+from ch04_rope.rope import create_rope, default_knot_if_None
+from ch07_person_logic.test._util.ch07_examples import get_personunit_with_4_levels
+from ch10_person_listen.keep_tool import (
     get_vision_person,
     save_vision_person,
     vision_file_exists,
 )
-from src.ch10_person_listen.test._util.ch10_examples import ch10_example_moment_rope
-from src.ref.keywords import ExampleStrs as exx
+from ch10_person_listen.test._util.ch10_examples import ch10_example_moment_rope
+from ref.keywords import ExampleStrs as exx
 
 
 def test_save_vision_person_SavesFile(temp3_fs):

@@ -1,14 +1,14 @@
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import (
+from ch00_py.file_toolbox import (
     count_dirs_files,
     create_path,
     delete_dir,
     get_dir_filenames,
     get_level1_dirs,
 )
-from src.ch20_kpi.kpi_mstr import create_kpi_csvs
-from src.ch21_world.world import create_beliefs, idea_sheets_to_lynx_mstr, worlddir_shop
-from src.ref.keywords import ExampleStrs as exx
+from ch20_kpi.kpi_mstr import create_kpi_csvs
+from ch21_world.world import create_beliefs, idea_sheets_to_lynx_mstr, worlddir_shop
+from os.path import exists as os_path_exists
+from ref.keywords import ExampleStrs as exx
 
 
 def test_idea_sheets_to_lynx_mstr_Examples(temp3_fs, run_big_tests):

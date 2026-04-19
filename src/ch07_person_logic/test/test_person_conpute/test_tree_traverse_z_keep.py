@@ -1,9 +1,9 @@
+from ch06_plan.healer import healerunit_shop
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch07_person_logic.test._util.ch07_examples import get_personunit_with_4_levels
 from pytest import raises as pytest_raises
-from src.ch06_plan.healer import healerunit_shop
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch07_person_logic.test._util.ch07_examples import get_personunit_with_4_levels
-from src.ref.keywords import ExampleStrs as exx
+from ref.keywords import ExampleStrs as exx
 
 
 def test_PersonUnit_conpute_Sets_keeps_justified_WhenPersonUnit_Empty():

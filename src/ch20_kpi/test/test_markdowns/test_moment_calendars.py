@@ -1,23 +1,18 @@
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import (
-    count_files,
-    create_path,
-    get_level1_dirs,
-    save_json,
-)
-from src.ch09_person_lesson._ref.ch09_path import (
+from ch00_py.file_toolbox import count_files, create_path, get_level1_dirs, save_json
+from ch09_person_lesson._ref.ch09_path import (
     create_moment_json_path,
     create_moments_dir_path,
 )
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch13_time.epoch_main import epochunit_shop
-from src.ch13_time.test._util.ch13_examples import (
+from ch09_person_lesson.lasso import lassounit_shop
+from ch13_time.epoch_main import epochunit_shop
+from ch13_time.test._util.ch13_examples import (
     get_creg_config,
     get_expected_creg_year0_markdown,
 )
-from src.ch14_moment.moment_main import momentunit_shop
-from src.ch20_kpi.kpi_mstr import create_calendar_markdown_files
-from src.ref.keywords import ExampleStrs as exx
+from ch14_moment.moment_main import momentunit_shop
+from ch20_kpi.kpi_mstr import create_calendar_markdown_files
+from os.path import exists as os_path_exists
+from ref.keywords import ExampleStrs as exx
 
 
 def test_create_calendar_markdown_files_Senario0_NoFileIfWorldIsEmpty(temp3_fs):

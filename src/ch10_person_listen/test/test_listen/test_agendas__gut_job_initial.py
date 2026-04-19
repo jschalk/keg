@@ -1,18 +1,14 @@
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import delete_dir
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch09_person_lesson._ref.ch09_path import create_gut_path
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch09_person_lesson.lesson_filehandler import (
-    lessonfilehandler_shop,
-    save_gut_file,
-)
-from src.ch10_person_listen.listen_main import (
+from ch00_py.file_toolbox import delete_dir
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch09_person_lesson._ref.ch09_path import create_gut_path
+from ch09_person_lesson.lasso import lassounit_shop
+from ch09_person_lesson.lesson_filehandler import lessonfilehandler_shop, save_gut_file
+from ch10_person_listen.listen_main import (
     create_listen_basis,
     listen_to_agendas_create_init_job_from_guts,
 )
-from src.ch10_person_listen.test._util.ch10_examples import (
+from ch10_person_listen.test._util.ch10_examples import (
     a23_casa_rope,
     a23_clean_rope,
     a23_cuisine_rope,
@@ -22,7 +18,8 @@ from src.ch10_person_listen.test._util.ch10_examples import (
     get_example_yao_speaker,
     get_example_zia_speaker,
 )
-from src.ref.keywords import ExampleStrs as exx
+from os.path import exists as os_path_exists
+from ref.keywords import ExampleStrs as exx
 
 
 def test_listen_to_agendas_create_init_job_from_guts_Addscase_tasksToPersonWhenNo_laborunitIsSet(

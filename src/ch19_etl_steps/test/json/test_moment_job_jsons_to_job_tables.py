@@ -1,19 +1,19 @@
+from ch00_py.db_toolbox import db_table_exists, get_row_count
+from ch00_py.file_toolbox import save_json
+from ch02_contact.group import awardunit_shop
+from ch03_workforce.workforce import workforceunit_shop
+from ch06_plan.healer import healerunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch09_person_lesson._ref.ch09_path import create_moment_json_path
+from ch09_person_lesson.lasso import lassounit_shop
+from ch10_person_listen._ref.ch10_path import create_job_path
+from ch10_person_listen.keep_tool import save_job_file
+from ch14_moment.moment_main import momentunit_shop
+from ch18_etl_config.etl_sqlstr import create_prime_tablename as prime_table
+from ch19_etl_steps.etl_main import etl_moment_job_jsons_to_job_tables
 from os.path import exists as os_path_exists
+from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
-from src.ch00_py.db_toolbox import db_table_exists, get_row_count
-from src.ch00_py.file_toolbox import save_json
-from src.ch02_contact.group import awardunit_shop
-from src.ch03_workforce.workforce import workforceunit_shop
-from src.ch06_plan.healer import healerunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch09_person_lesson._ref.ch09_path import create_moment_json_path
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch10_person_listen._ref.ch10_path import create_job_path
-from src.ch10_person_listen.keep_tool import save_job_file
-from src.ch14_moment.moment_main import momentunit_shop
-from src.ch18_etl_config.etl_sqlstr import create_prime_tablename as prime_table
-from src.ch19_etl_steps.etl_main import etl_moment_job_jsons_to_job_tables
-from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 
 def test_etl_moment_job_jsons_to_job_tables_PopulatesTables_Scenario0(

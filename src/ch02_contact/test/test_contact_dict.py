@@ -1,10 +1,10 @@
-from src.ch02_contact.contact import (
+from ch02_contact.contact import (
     contactunit_get_from_dict,
     contactunit_shop,
     contactunits_get_from_dict,
 )
-from src.ch02_contact.group import membership_shop
-from src.ref.keywords import Ch02Keywords as kw, ExampleStrs as exx
+from ch02_contact.group import membership_shop
+from ref.keywords import Ch02Keywords as kw, ExampleStrs as exx
 
 
 def test_ContactUnit_get_memberships_dict_ReturnsObj():

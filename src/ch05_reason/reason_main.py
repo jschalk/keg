@@ -1,7 +1,5 @@
-from copy import deepcopy as copy_deepcopy
-from dataclasses import dataclass
-from src.ch00_py.dict_toolbox import get_empty_dict_if_None
-from src.ch04_rope.rope import (
+from ch00_py.dict_toolbox import get_empty_dict_if_None
+from ch04_rope.rope import (
     KnotTerm,
     RopeTerm,
     default_knot_if_None,
@@ -10,7 +8,9 @@ from src.ch04_rope.rope import (
     rebuild_rope,
     replace_knot,
 )
-from src.ch05_reason._ref.ch05_semantic_types import FactNum, ReasonNum
+from ch05_reason._ref.ch05_semantic_types import FactNum, ReasonNum
+from copy import deepcopy as copy_deepcopy
+from dataclasses import dataclass
 
 
 class InvalidReasonError(Exception):

@@ -1,11 +1,11 @@
-from pytest import raises as pytest_raises
-from src.ch05_reason.reason_main import factheir_shop, factunit_shop
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch07_person_logic.test._util.ch07_examples import (
+from ch05_reason.reason_main import factheir_shop, factunit_shop
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch07_person_logic.test._util.ch07_examples import (
     get_personunit_1case_task_1ceo_minutes_reason_1fact,
 )
-from src.ref.keywords import ExampleStrs as exx
+from pytest import raises as pytest_raises
+from ref.keywords import ExampleStrs as exx
 
 
 def test_PersonUnit_conpute_ChangesPlanUnit_pledge_case_task():

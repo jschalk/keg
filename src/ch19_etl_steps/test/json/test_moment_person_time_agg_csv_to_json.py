@@ -1,13 +1,13 @@
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import open_json, save_file
-from src.ch04_rope.rope import create_rope
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch18_etl_config._ref.ch18_path import (
+from ch00_py.file_toolbox import open_json, save_file
+from ch04_rope.rope import create_rope
+from ch09_person_lesson.lasso import lassounit_shop
+from ch18_etl_config._ref.ch18_path import (
     create_moment_ote1_csv_path,
     create_moment_ote1_json_path,
 )
-from src.ch19_etl_steps.etl_main import etl_moment_ote1_agg_csvs_to_jsons
-from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ch19_etl_steps.etl_main import etl_moment_ote1_agg_csvs_to_jsons
+from os.path import exists as os_path_exists
+from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 
 def test_etl_moment_ote1_agg_csvs_to_jsons_CreatesFile_Scenaro0(

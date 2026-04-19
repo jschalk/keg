@@ -1,7 +1,7 @@
-from src.ch00_py.file_toolbox import create_path
-from src.ch09_person_lesson._ref.ch09_path import create_moments_dir_path
-from src.ch09_person_lesson.lasso import LassoUnit
-from src.ch18_etl_config._ref.ch18_semantic_types import PersonName
+from ch00_py.file_toolbox import create_path
+from ch09_person_lesson._ref.ch09_path import create_moments_dir_path
+from ch09_person_lesson.lasso import LassoUnit
+from ch18_etl_config._ref.ch18_semantic_types import PersonName
 
 
 def create_moment_mstr_path(world_dir: str) -> str:

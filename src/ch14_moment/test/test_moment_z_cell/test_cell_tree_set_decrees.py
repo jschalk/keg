@@ -1,23 +1,23 @@
-from src.ch07_person_logic.person_main import PersonUnit, personunit_shop
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch11_bud._ref.ch11_path import (
+from ch07_person_logic.person_main import PersonUnit, personunit_shop
+from ch09_person_lesson.lasso import lassounit_shop
+from ch11_bud._ref.ch11_path import (
     create_cell_dir_path as cell_dir,
     create_personspark_path,
 )
-from src.ch11_bud.bud_filehandler import (
+from ch11_bud.bud_filehandler import (
     cellunit_get_from_dir,
     cellunit_save_to_dir,
     save_person_file,
 )
-from src.ch11_bud.cell_main import cellunit_shop
-from src.ch14_moment.moment_cell import DecreeUnit, set_cell_trees_decrees
-from src.ch14_moment.test._util.ch14_examples import (
+from ch11_bud.cell_main import cellunit_shop
+from ch14_moment.moment_cell import DecreeUnit, set_cell_trees_decrees
+from ch14_moment.test._util.ch14_examples import (
     example_casa_floor_clean_factunit,
     example_casa_floor_dirty_factunit,
     get_bob_mop_with_reason_personunit_example,
     get_bob_mop_without_reason_personunit_example,
 )
-from src.ref.keywords import ExampleStrs as exx
+from ref.keywords import ExampleStrs as exx
 
 
 def test_DecreeUnit_Exists():

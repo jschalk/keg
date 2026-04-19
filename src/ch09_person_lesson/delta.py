@@ -1,19 +1,17 @@
-from copy import deepcopy as copy_deepcopy
-from dataclasses import dataclass
-from src.ch00_py.dict_toolbox import (
+from ch00_py.dict_toolbox import (
     get_0_if_None,
     get_all_nondictionary_objs,
     get_empty_dict_if_None,
     get_from_nested_dict,
     set_in_nested_dict,
 )
-from src.ch02_contact.contact import ContactName, ContactUnit, MemberShip
-from src.ch02_contact.group import MemberShip
-from src.ch05_reason.reason_main import FactUnit, ReasonUnit
-from src.ch06_plan.plan import PlanUnit
-from src.ch07_person_logic.person_main import PersonUnit, personunit_shop
-from src.ch08_person_atom.atom_config import CRUD_command
-from src.ch08_person_atom.atom_main import (
+from ch02_contact.contact import ContactName, ContactUnit, MemberShip
+from ch02_contact.group import MemberShip
+from ch05_reason.reason_main import FactUnit, ReasonUnit
+from ch06_plan.plan import PlanUnit
+from ch07_person_logic.person_main import PersonUnit, personunit_shop
+from ch08_person_atom.atom_config import CRUD_command
+from ch08_person_atom.atom_main import (
     PersonAtom,
     get_personatom_from_dict,
     jvalues_different,
@@ -21,7 +19,9 @@ from src.ch08_person_atom.atom_main import (
     personatom_shop,
     sift_personatom,
 )
-from src.ch09_person_lesson._ref.ch09_semantic_types import RopeTerm, TitleTerm
+from ch09_person_lesson._ref.ch09_semantic_types import RopeTerm, TitleTerm
+from copy import deepcopy as copy_deepcopy
+from dataclasses import dataclass
 
 
 class InvalidPersonAtomError(Exception):

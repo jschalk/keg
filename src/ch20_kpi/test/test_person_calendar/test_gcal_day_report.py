@@ -1,16 +1,14 @@
-from datetime import datetime
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import create_path, open_file, save_file
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch10_person_listen.keep_tool import save_job_file
-from src.ch13_time.epoch_main import add_epoch_planunit, get_default_epoch_config_dict
-from src.ch14_moment.moment_main import momentunit_shop, save_moment_file
-from src.ch20_kpi._ref.ch20_path import (
+from ch00_py.file_toolbox import create_path, open_file, save_file
+from ch07_person_logic.person_main import personunit_shop
+from ch09_person_lesson.lasso import lassounit_shop
+from ch10_person_listen.keep_tool import save_job_file
+from ch13_time.epoch_main import add_epoch_planunit, get_default_epoch_config_dict
+from ch14_moment.moment_main import momentunit_shop, save_moment_file
+from ch20_kpi._ref.ch20_path import (
     create_day_punch_txt_path as day_punch_path,
     create_dst_person_punch_path as dst_punch_path,
 )
-from src.ch20_kpi.gcalendar import (
+from ch20_kpi.gcalendar import (
     copy_person_day_punches_to_dst_dir,
     gcal_readable_percent,
     get_gcal_day_punch_from_job_file,
@@ -18,12 +16,14 @@ from src.ch20_kpi.gcalendar import (
     get_person_gcal_day_punchs,
     lynx_to_person_gcal_day_punchs,
 )
-from src.ch20_kpi.test._util.ch20_examples import (
+from ch20_kpi.test._util.ch20_examples import (
     get_a23_sue_clean_example,
     get_ep8_sue_clean_example,
     get_ep8_yao_clean_example,
 )
-from src.ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
+from datetime import datetime
+from os.path import exists as os_path_exists
+from ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
 
 
 def test_get_gcal_day_punch_from_personunit_ReturnsObj_Scenario0_EmptyPerson():

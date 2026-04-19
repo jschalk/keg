@@ -1,6 +1,6 @@
-from src.ch01_allot.allot import default_grain_num_if_None
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch12_keep.rivercycle import (
+from ch01_allot.allot import default_grain_num_if_None
+from ch07_person_logic.person_main import personunit_shop
+from ch12_keep.rivercycle import (
     RiverCycle,
     create_init_rivercycle,
     create_next_rivercycle,
@@ -8,12 +8,12 @@ from src.ch12_keep.rivercycle import (
     get_patientledger,
     rivercycle_shop,
 )
-from src.ch12_keep.test._util.ch12_examples import (
+from ch12_keep.test._util.ch12_examples import (
     example_bob_patientledger,
     example_yao_patientledger,
     example_zia_patientledger,
 )
-from src.ref.keywords import Ch12Keywords as wk, ExampleStrs as exx
+from ref.keywords import Ch12Keywords as wk, ExampleStrs as exx
 
 
 def test_RiverCylce_Exists():

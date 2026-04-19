@@ -1,6 +1,6 @@
+from ch07_person_logic.person_main import personunit_shop
 from pytest import raises as pytest_raises
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ref.keywords import ExampleStrs as exx
+from ref.keywords import ExampleStrs as exx
 
 
 def test_PersonUnit_set_credor_respect_SetsAttr():

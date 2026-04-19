@@ -1,11 +1,10 @@
-from copy import deepcopy as copy_deepcopy
-from src.ch00_py.file_toolbox import create_path
-from src.ch02_contact.group import awardunit_shop
-from src.ch04_rope.rope import to_rope
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch09_person_lesson.delta import persondelta_shop
-from src.ch09_person_lesson.lesson_main import lessonunit_shop
-from src.ch17_idea.idea_belief_csv import (
+from ch00_py.file_toolbox import create_path
+from ch02_contact.group import awardunit_shop
+from ch04_rope.rope import to_rope
+from ch07_person_logic.person_main import personunit_shop
+from ch09_person_lesson.delta import persondelta_shop
+from ch09_person_lesson.lesson_main import lessonunit_shop
+from ch17_idea.idea_belief_csv import (
     add_momentunit_to_belief_csv_strs,
     add_momentunits_to_belief_csv_strs,
     add_person_to_ii00120_csv,
@@ -21,9 +20,9 @@ from src.ch17_idea.idea_belief_csv import (
     add_personunit_to_belief_csv_strs,
     create_init_belief_idea_csv_strs,
 )
-from src.ch17_idea.idea_db_tool import get_ordered_csv
-from src.ch17_idea.idea_main import moment_build_from_df
-from src.ch17_idea.test._util.ch17_examples import (  # get_ex2_ii00106_df,
+from ch17_idea.idea_db_tool import get_ordered_csv
+from ch17_idea.idea_main import moment_build_from_df
+from ch17_idea.test._util.ch17_examples import (  # get_ex2_ii00106_df,
     J45_ROPE,
     get_ex2_ii00100_df,
     get_ex2_ii00101_df,
@@ -32,7 +31,8 @@ from src.ch17_idea.test._util.ch17_examples import (  # get_ex2_ii00106_df,
     get_ex2_ii00104_df,
     get_ex2_ii00105_df,
 )
-from src.ref.keywords import ExampleStrs as exx
+from copy import deepcopy as copy_deepcopy
+from ref.keywords import ExampleStrs as exx
 
 
 def test_create_init_belief_idea_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(

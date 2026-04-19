@@ -1,11 +1,11 @@
-from pytest import raises as pytest_raises
-from src.ch05_reason.reason_main import caseunit_shop, reasonheir_shop, reasonunit_shop
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.test._util.ch07_examples import (
+from ch05_reason.reason_main import caseunit_shop, reasonheir_shop, reasonunit_shop
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.test._util.ch07_examples import (
     get_personunit_irrational_example,
     get_personunit_with_4_levels,
 )
-from src.ref.keywords import ExampleStrs as exx
+from pytest import raises as pytest_raises
+from ref.keywords import ExampleStrs as exx
 
 
 def test_agenda_returned_WhenNoReasonsExist():

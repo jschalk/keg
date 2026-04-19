@@ -1,12 +1,12 @@
-from random import random as random_random
-from src.ch00_py.keyword_class_builder import save_keywords_by_chapter_md
-from src.ch98_docs_builder.doc_builder import (
+from ch00_py.keyword_class_builder import save_keywords_by_chapter_md
+from ch98_docs_builder.doc_builder import (
     resave_chapter_and_keyword_json_files,
     save_chapter_blurbs_md,
     save_idea_formats_md,
     save_idea_mds,
     save_ropeterm_description_md,
 )
+from random import random as random_random
 
 
 def test_SpecialTestThatBuildsDocs(rebuild_jsons):

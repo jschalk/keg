@@ -1,15 +1,12 @@
+from ch00_py.file_toolbox import open_json, save_json
+from ch07_person_logic.person_main import get_personunit_from_dict, personunit_shop
+from ch09_person_lesson._ref.ch09_path import create_gut_path, create_moment_json_path
+from ch09_person_lesson.lasso import lassounit_shop
+from ch10_person_listen._ref.ch10_path import create_job_path
+from ch14_moment.moment_main import momentunit_shop
+from ch19_etl_steps.etl_main import etl_moment_guts_to_moment_jobs
 from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import open_json, save_json
-from src.ch07_person_logic.person_main import get_personunit_from_dict, personunit_shop
-from src.ch09_person_lesson._ref.ch09_path import (
-    create_gut_path,
-    create_moment_json_path,
-)
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch10_person_listen._ref.ch10_path import create_job_path
-from src.ch14_moment.moment_main import momentunit_shop
-from src.ch19_etl_steps.etl_main import etl_moment_guts_to_moment_jobs
-from src.ref.keywords import ExampleStrs as exx
+from ref.keywords import ExampleStrs as exx
 
 
 def test_etl_moment_guts_to_moment_jobs_SetsFiles_Scenario0(temp3_fs):

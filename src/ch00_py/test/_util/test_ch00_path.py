@@ -1,11 +1,11 @@
-from inspect import getdoc as inspect_getdoc
-from pytest import mark as pytest_mark
-from src.ch00_py._ref.ch00_path import (
+from ch00_py._ref.ch00_path import (
     create_keywords_classes_file_path,
     create_src_example_strs_path,
     create_src_keywords_main_path,
 )
-from src.ch00_py.file_toolbox import create_path, get_json_filename
+from ch00_py.file_toolbox import create_path, get_json_filename
+from inspect import getdoc as inspect_getdoc
+from pytest import mark as pytest_mark
 
 
 def test_create_src_example_strs_path_ReturnsObj(temp3_dir):

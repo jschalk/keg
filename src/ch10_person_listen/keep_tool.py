@@ -1,33 +1,33 @@
-from os.path import exists as os_path_exists
-from sqlite3 import connect as sqlite3_connect
-from src.ch00_py.dict_toolbox import get_empty_set_if_None
-from src.ch00_py.file_toolbox import (
+from ch00_py.dict_toolbox import get_empty_set_if_None
+from ch00_py.file_toolbox import (
     create_path,
     get_json_filename,
     open_json,
     save_json,
     set_dir,
 )
-from src.ch07_person_logic.person_main import PersonUnit, get_personunit_from_dict
-from src.ch09_person_lesson.lasso import LassoUnit, lassounit_shop
-from src.ch09_person_lesson.lesson_filehandler import (
+from ch07_person_logic.person_main import PersonUnit, get_personunit_from_dict
+from ch09_person_lesson.lasso import LassoUnit, lassounit_shop
+from ch09_person_lesson.lesson_filehandler import (
     open_gut_file,
     open_person_file,
     save_person_file,
 )
-from src.ch10_person_listen._ref.ch10_path import (
+from ch10_person_listen._ref.ch10_path import (
     create_job_path,
     create_keep_duty_path,
     create_keep_rope_path,
     create_keep_visions_path,
     create_treasury_db_path,
 )
-from src.ch10_person_listen._ref.ch10_semantic_types import (
+from ch10_person_listen._ref.ch10_semantic_types import (
     KnotTerm,
     MomentRope,
     PersonName,
     RopeTerm,
 )
+from os.path import exists as os_path_exists
+from sqlite3 import connect as sqlite3_connect
 
 
 def job_file_exists(

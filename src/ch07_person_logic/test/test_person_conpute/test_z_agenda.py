@@ -1,8 +1,8 @@
-from src.ch03_workforce.workforce import workforceunit_shop
-from src.ch04_rope.rope import RopeTerm
-from src.ch06_plan.plan import PlanUnit, planunit_shop
-from src.ch07_person_logic.person_main import get_personunit_from_dict, personunit_shop
-from src.ch07_person_logic.test._util.ch07_examples import (
+from ch03_workforce.workforce import workforceunit_shop
+from ch04_rope.rope import RopeTerm
+from ch06_plan.plan import PlanUnit, planunit_shop
+from ch07_person_logic.person_main import get_personunit_from_dict, personunit_shop
+from ch07_person_logic.test._util.ch07_examples import (
     get_personunit_with7am_clean_table_reason,
     get_personunit_with_4_levels,
     get_personunit_with_4_levels_and_2reasons,
@@ -11,7 +11,7 @@ from src.ch07_person_logic.test._util.ch07_examples import (
     personunit_v001_with_large_agenda,
     personunit_v002,
 )
-from src.ref.keywords import ExampleStrs as exx
+from ref.keywords import ExampleStrs as exx
 
 
 def get_case_tasks_count(agenda_dict: dict[RopeTerm, PlanUnit]) -> int:

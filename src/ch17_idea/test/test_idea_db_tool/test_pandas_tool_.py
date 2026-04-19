@@ -1,12 +1,10 @@
-from os.path import exists as os_path_exists
-from pandas import DataFrame
-from src.ch00_py.file_toolbox import create_path, open_file
-from src.ch17_idea.idea_db_tool import (
+from ch00_py.file_toolbox import create_path, open_file
+from ch17_idea.idea_db_tool import (
     get_ordered_csv,
     get_relevant_columns_dataframe,
     save_dataframe_to_csv,
 )
-from src.ch17_idea.test._util.ch17_examples import (
+from ch17_idea.test._util.ch17_examples import (
     get_empty_dataframe,
     get_ex01_dataframe,
     get_ex01_ordered_by_count_bob_csv,
@@ -19,7 +17,9 @@ from src.ch17_idea.test._util.ch17_examples import (
     get_small_example01_csv,
     get_small_example01_dataframe,
 )
-from src.ref.keywords import Ch17Keywords as kw
+from os.path import exists as os_path_exists
+from pandas import DataFrame
+from ref.keywords import Ch17Keywords as kw
 
 
 def test_get_ordered_csv_ReturnsObj():

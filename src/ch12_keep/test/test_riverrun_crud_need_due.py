@@ -1,7 +1,7 @@
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch12_keep.rivercycle import get_doctorledger, get_patientledger
-from src.ch12_keep.riverrun import riverrun_shop
-from src.ref.keywords import ExampleStrs as exx
+from ch07_person_logic.person_main import personunit_shop
+from ch12_keep.rivercycle import get_doctorledger, get_patientledger
+from ch12_keep.riverrun import riverrun_shop
+from ref.keywords import ExampleStrs as exx
 
 
 def test_get_patientledger_ReturnsObj():

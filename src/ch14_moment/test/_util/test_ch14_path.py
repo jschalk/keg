@@ -1,13 +1,13 @@
-from inspect import getdoc as inspect_getdoc
-from pytest import mark as pytest_mark
-from src.ch00_py.file_toolbox import create_path
-from src.ch04_rope.rope import create_rope
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch14_moment._ref.ch14_path import (
+from ch00_py.file_toolbox import create_path
+from ch04_rope.rope import create_rope
+from ch09_person_lesson.lasso import lassounit_shop
+from ch14_moment._ref.ch14_path import (
     BUD_MANDATE_FILENAME,
     create_bud_contact_mandate_ledger_path,
 )
-from src.ref.keywords import Ch14Keywords as kw, ExampleStrs as exx
+from inspect import getdoc as inspect_getdoc
+from pytest import mark as pytest_mark
+from ref.keywords import Ch14Keywords as kw, ExampleStrs as exx
 
 
 def test_create_bud_contact_mandate_ledger_path_ReturnsObj(temp3_dir):

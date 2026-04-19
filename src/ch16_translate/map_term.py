@@ -1,6 +1,4 @@
-from copy import copy as copy_copy
-from dataclasses import dataclass
-from src.ch00_py.dict_toolbox import (
+from ch00_py.dict_toolbox import (
     get_0_if_None,
     get_empty_dict_if_None,
     get_str_in_sub_dict,
@@ -10,14 +8,14 @@ from src.ch00_py.dict_toolbox import (
     str_in_dict_keys,
     str_in_dict_values,
 )
-from src.ch04_rope.rope import (
+from ch04_rope.rope import (
     create_rope,
     create_rope_from_labels,
     get_all_rope_labels,
     get_parent_rope,
     get_tail_label,
 )
-from src.ch16_translate._ref.ch16_semantic_types import (
+from ch16_translate._ref.ch16_semantic_types import (
     FaceName,
     KnotTerm,
     LabelTerm,
@@ -25,7 +23,9 @@ from src.ch16_translate._ref.ch16_semantic_types import (
     SparkInt,
     default_knot_if_None,
 )
-from src.ch16_translate.translate_config import default_unknown_str_if_None
+from ch16_translate.translate_config import default_unknown_str_if_None
+from copy import copy as copy_copy
+from dataclasses import dataclass
 
 
 class SetAllotx2inxError(Exception):

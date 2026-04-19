@@ -1,12 +1,4 @@
-from pandas import NA as pandas_NA
-from pytest import raises as pytest_raises
-from sqlite3 import (
-    Connection as sqlite3_Connection,
-    Cursor,
-    connect as sqlite3_connect,
-    sqlite_version as sqlite3_sqlite_version,
-)
-from src.ch00_py.db_toolbox import (
+from ch00_py.db_toolbox import (
     RowData,
     _get_grouping_groupby_clause,
     _get_grouping_select_clause,
@@ -31,8 +23,16 @@ from src.ch00_py.db_toolbox import (
     rowdata_shop,
     sqlite_obj_str,
 )
-from src.ch00_py.file_toolbox import create_path, delete_dir, set_dir
-from src.ref.keywords import ExampleStrs as exx
+from ch00_py.file_toolbox import create_path, delete_dir, set_dir
+from pandas import NA as pandas_NA
+from pytest import raises as pytest_raises
+from ref.keywords import ExampleStrs as exx
+from sqlite3 import (
+    Connection as sqlite3_Connection,
+    Cursor,
+    connect as sqlite3_connect,
+    sqlite_version as sqlite3_sqlite_version,
+)
 
 
 def test_sqlite_obj_str_ReturnsObj():

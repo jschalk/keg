@@ -1,6 +1,5 @@
-from pytest import raises as pytest_raises
-from src.ch16_translate.map_term import namemap_shop, ropemap_shop
-from src.ch16_translate.test._util.ch16_examples import (
+from ch16_translate.map_term import namemap_shop, ropemap_shop
+from ch16_translate.test._util.ch16_examples import (
     get_bowl_titlemap,
     get_clean_ropemap,
     get_invalid_namemap,
@@ -8,8 +7,9 @@ from src.ch16_translate.test._util.ch16_examples import (
     get_invalid_titlemap,
     get_suita_namemap,
 )
-from src.ch16_translate.translate_main import translateunit_shop
-from src.ref.keywords import Ch16Keywords as kw, ExampleStrs as exx
+from ch16_translate.translate_main import translateunit_shop
+from pytest import raises as pytest_raises
+from ref.keywords import Ch16Keywords as kw, ExampleStrs as exx
 
 
 def test_TranslateUnit_set_mapunit_SetsAttr():

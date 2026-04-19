@@ -1,7 +1,6 @@
-from os import getcwd as os_getcwd
-from src.ch00_py.file_toolbox import create_path
-from src.ch17_idea.idea_config import get_idea_config_dict
-from src.ch18_etl_config.etl_config import (
+from ch00_py.file_toolbox import create_path
+from ch17_idea.idea_config import get_idea_config_dict
+from ch18_etl_config.etl_config import (
     ALL_DIMEN_ABBV2,
     ALL_DIMEN_ABBV7,
     create_prime_table_sqlstr,
@@ -23,7 +22,8 @@ from src.ch18_etl_config.etl_config import (
     remove_otx_columns,
     remove_staging_columns,
 )
-from src.ref.keywords import Ch18Keywords as kw
+from os import getcwd as os_getcwd
+from ref.keywords import Ch18Keywords as kw
 
 
 def test_remove_otx_columns_ReturnsObj():

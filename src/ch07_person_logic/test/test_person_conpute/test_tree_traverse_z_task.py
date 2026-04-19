@@ -1,17 +1,17 @@
-from src.ch01_allot.allot import default_pool_num
-from src.ch04_rope.rope import to_rope
-from src.ch05_reason.reason_main import caseunit_shop, reasonheir_shop, reasonunit_shop
-from src.ch06_plan.healer import healerunit_shop
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_graphic import display_plantree
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch07_person_logic.test._util.ch07_examples import (
+from ch01_allot.allot import default_pool_num
+from ch04_rope.rope import to_rope
+from ch05_reason.reason_main import caseunit_shop, reasonheir_shop, reasonunit_shop
+from ch06_plan.healer import healerunit_shop
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_graphic import display_plantree
+from ch07_person_logic.person_main import personunit_shop
+from ch07_person_logic.test._util.ch07_examples import (
     from_list_get_active,
     get_personunit_with7am_clean_table_reason,
     get_personunit_with_4_levels_and_2reasons,
     personunit_v001,
 )
-from src.ref.keywords import ExampleStrs as exx
+from ref.keywords import ExampleStrs as exx
 
 
 def test_PersonUnit_conpute_Sets_active_WhenFactSaysNo():

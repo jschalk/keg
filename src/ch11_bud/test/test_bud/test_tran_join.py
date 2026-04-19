@@ -1,5 +1,5 @@
-from src.ch11_bud.bud_main import tranbook_shop, tranunit_shop
-from src.ref.keywords import ExampleStrs as exx
+from ch11_bud.bud_main import tranbook_shop, tranunit_shop
+from ref.keywords import ExampleStrs as exx
 
 
 def test_TranBook_join_SetsAttr():

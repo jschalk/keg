@@ -1,5 +1,4 @@
-from inspect import getdoc as inspect_getdoc
-from src.ch02_contact._ref.ch02_semantic_types import (
+from ch02_contact._ref.ch02_semantic_types import (
     BreakTerm,
     ContactName,
     FundGrain,
@@ -13,7 +12,8 @@ from src.ch02_contact._ref.ch02_semantic_types import (
     TitleTerm,
     default_groupmark_if_None,
 )
-from src.ref.keywords import Ch02Keywords as kw, ExampleStrs as exx
+from inspect import getdoc as inspect_getdoc
+from ref.keywords import Ch02Keywords as kw, ExampleStrs as exx
 
 
 def test_BreakTerm_Exists():

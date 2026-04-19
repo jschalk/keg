@@ -1,6 +1,5 @@
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import create_path, get_dir_file_strs
-from src.ch16_translate.test._util.ch16_examples import (  # get_casa_maison_translateunit_set_by_epoch,
+from ch00_py.file_toolbox import create_path, get_dir_file_strs
+from ch16_translate.test._util.ch16_examples import (  # get_casa_maison_translateunit_set_by_epoch,
     get_casa_maison_label_dt,
     get_casa_maison_rope_otx2inx_dt,
     get_casa_maison_translateunit_set_by_label,
@@ -8,12 +7,12 @@ from src.ch16_translate.test._util.ch16_examples import (  # get_casa_maison_tra
     get_slash_namemap,
     get_sue_translateunit,
 )
-from src.ch16_translate.translate_main import translateunit_shop
-from src.ch17_idea.idea_db_tool import (
+from ch16_translate.translate_main import translateunit_shop
+from ch17_idea.idea_db_tool import (
     get_idea_elements_sort_order as sorting_columns,
     get_ordered_csv,
 )
-from src.ch17_idea.translate_toolbox import (
+from ch17_idea.translate_toolbox import (
     _load_labelmap_from_csv,
     _load_namemap_from_csv,
     _load_ropemap_from_csv,
@@ -31,7 +30,8 @@ from src.ch17_idea.translate_toolbox import (
     init_translateunit_from_dir,
     save_all_csvs_from_translateunit,
 )
-from src.ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
+from os.path import exists as os_path_exists
+from ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
 
 
 def test_get_translate_name_dt_columns_ReturnsObj():

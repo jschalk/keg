@@ -1,7 +1,7 @@
+from ch00_py.dict_toolbox import get_empty_dict_if_None, get_False_if_None
+from ch02_contact.contact import ContactName
+from ch02_contact.group import GroupTitle, GroupUnit
 from dataclasses import dataclass
-from src.ch00_py.dict_toolbox import get_empty_dict_if_None, get_False_if_None
-from src.ch02_contact.contact import ContactName
-from src.ch02_contact.group import GroupTitle, GroupUnit
 
 
 @dataclass

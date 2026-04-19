@@ -1,6 +1,6 @@
+from ch04_rope.rope import RopeTerm
+from ch07_person_logic.person_main import PersonUnit
 from pandas import DataFrame
-from src.ch04_rope.rope import RopeTerm
-from src.ch07_person_logic.person_main import PersonUnit
 
 
 def get_person_contactunits_dataframe(x_person: PersonUnit) -> DataFrame:

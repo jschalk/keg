@@ -1,16 +1,16 @@
-from src.ch04_rope.rope import default_knot_if_None
-from src.ch08_person_atom.atom_config import (
+from ch04_rope.rope import default_knot_if_None
+from ch08_person_atom.atom_config import (
     get_all_person_dimen_delete_keys,
     get_atom_args_class_types,
 )
-from src.ch14_moment.moment_config import get_moment_args_class_types
-from src.ch16_translate.map_term import (
+from ch14_moment.moment_config import get_moment_args_class_types
+from ch16_translate.map_term import (
     labelmap_shop,
     namemap_shop,
     ropemap_shop,
     titlemap_shop,
 )
-from src.ch16_translate.translate_config import (
+from ch16_translate.translate_config import (
     default_unknown_str_if_None,
     get_translate_args_class_types,
     get_translate_labelterm_args,
@@ -21,8 +21,8 @@ from src.ch16_translate.translate_config import (
     set_translateable_otx_inx_args,
     translateable_class_types,
 )
-from src.ch16_translate.translate_main import TranslateUnit, translateunit_shop
-from src.ref.keywords import Ch16Keywords as kw, ExampleStrs as exx
+from ch16_translate.translate_main import TranslateUnit, translateunit_shop
+from ref.keywords import Ch16Keywords as kw, ExampleStrs as exx
 
 
 def test_get_translate_args_class_types_ReturnsObj():

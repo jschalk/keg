@@ -1,31 +1,28 @@
-from os.path import exists as os_path_exists
-from pandas import read_excel as pandas_read_excel
-from sqlite3 import connect as sqlite3_connect
-from src.ch00_py.file_toolbox import create_path, set_dir
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch09_person_lesson.lesson_filehandler import save_gut_file
-from src.ch14_moment.moment_main import momentunit_shop, save_moment_file
-from src.ch17_idea.idea_belief_csv import (
+from ch00_py.file_toolbox import create_path, set_dir
+from ch07_person_logic.person_main import personunit_shop
+from ch09_person_lesson.lasso import lassounit_shop
+from ch09_person_lesson.lesson_filehandler import save_gut_file
+from ch14_moment.moment_main import momentunit_shop, save_moment_file
+from ch17_idea.idea_belief_csv import (
     add_momentunit_to_belief_csv_strs,
     add_personunit_to_belief_csv_strs,
     create_init_belief_idea_csv_strs,
 )
-from src.ch17_idea.idea_db_tool import get_sheet_names
-from src.ch18_etl_config._ref.ch18_path import (
+from ch17_idea.idea_db_tool import get_sheet_names
+from ch18_etl_config._ref.ch18_path import (
     create_belief0001_path,
     create_moment_mstr_path,
     create_world_db_path,
 )
-from src.ch18_etl_config.belief_tool import (
-    collect_belief_csv_strs,
-    create_belief0001_file,
-)
-from src.ch18_etl_config.etl_sqlstr import (
+from ch18_etl_config.belief_tool import collect_belief_csv_strs, create_belief0001_file
+from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
 )
-from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
+from os.path import exists as os_path_exists
+from pandas import read_excel as pandas_read_excel
+from ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
+from sqlite3 import connect as sqlite3_connect
 
 
 def test_collect_belief_csv_strs_ReturnsObj_Scenario0_NoMomentUnits(

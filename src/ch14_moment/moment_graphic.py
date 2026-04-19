@@ -1,11 +1,11 @@
-from plotly.graph_objects import Figure as plotly_Figure, Scatter as plotly_Scatter
-from src.ch00_py.plotly_toolbox import conditional_fig_show
-from src.ch12_keep.keep_graphic import (
+from ch00_py.plotly_toolbox import conditional_fig_show
+from ch12_keep.keep_graphic import (
     add_keep_str,
     get_light_sea_green_str,
     green_str,
     purple_str,
 )
+from plotly.graph_objects import Figure as plotly_Figure, Scatter as plotly_Scatter
 
 
 def add_moment_river_rect(

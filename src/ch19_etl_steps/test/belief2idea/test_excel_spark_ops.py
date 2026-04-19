@@ -1,16 +1,6 @@
-from openpyxl import Workbook as openpyxl_Workbook
-from os.path import exists as os_path_exists, join as os_path_join
-from pandas import (
-    DataFrame,
-    ExcelWriter as pandas_ExcelWriter,
-    isna as pandas_isna,
-    read_excel as pandas_read_excel,
-)
-from pathlib import Path
-from pytest import fixture as pytest_fixture, raises as pytest_raises
-from src.ch00_py.file_toolbox import count_dirs_files, create_path
-from src.ch17_idea.idea_db_tool import sheet_exists
-from src.ch19_etl_steps.belief2idea import (
+from ch00_py.file_toolbox import count_dirs_files, create_path
+from ch17_idea.idea_db_tool import sheet_exists
+from ch19_etl_steps.belief2idea import (
     add_spark_num_column,
     beliefs_sheets_to_idea_sheets,
     create_spark_face_spark_nums,
@@ -21,7 +11,17 @@ from src.ch19_etl_steps.belief2idea import (
     get_spark_faces_from_files,
     get_validated_b_src_idea_type_sheets,
 )
-from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from openpyxl import Workbook as openpyxl_Workbook
+from os.path import exists as os_path_exists, join as os_path_join
+from pandas import (
+    DataFrame,
+    ExcelWriter as pandas_ExcelWriter,
+    isna as pandas_isna,
+    read_excel as pandas_read_excel,
+)
+from pathlib import Path
+from pytest import fixture as pytest_fixture, raises as pytest_raises
+from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 
 def test_get_spark_faces_from_df_ReturnsObj_Scenario0_Basic():

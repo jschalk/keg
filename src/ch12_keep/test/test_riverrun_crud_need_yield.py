@@ -1,7 +1,7 @@
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch12_keep.rivercycle import get_doctorledger
-from src.ch12_keep.riverrun import riverrun_shop
-from src.ref.keywords import ExampleStrs as exx
+from ch07_person_logic.person_main import personunit_shop
+from ch12_keep.rivercycle import get_doctorledger
+from ch12_keep.riverrun import riverrun_shop
+from ref.keywords import ExampleStrs as exx
 
 
 def test_RiverRun_set_contact_need_yield_SetsAttr(temp3_dir):

@@ -1,11 +1,11 @@
-from src.ch06_plan.plan import planunit_shop
-from src.ch20_kpi.gcalendar import (
+from ch06_plan.plan import planunit_shop
+from ch20_kpi.gcalendar import (
     DayEvent,
     gcal_readable_percent,
     get_gcal_priorities_schedule_str,
     get_inflection_points_dict,
 )
-from src.ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
 
 
 def test_get_inflection_points_dict_ReturnsObj_Scenario0_EmptyList():

@@ -1,6 +1,6 @@
-from src.ch02_contact.contact import contactunit_shop
-from src.ch08_person_atom.atom_main import PersonAtom, personatom_shop
-from src.ref.keywords import Ch08Keywords as kw, ExampleStrs as exx
+from ch02_contact.contact import contactunit_shop
+from ch08_person_atom.atom_main import PersonAtom, personatom_shop
+from ref.keywords import Ch08Keywords as kw, ExampleStrs as exx
 
 
 def test_PersonAtom_Exists():

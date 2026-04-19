@@ -1,18 +1,18 @@
-from src.ch13_time.calendar_markdown import (
+from ch13_time.calendar_markdown import (
     CalendarMarkDown,
     MonthMarkDownRow,
     MonthMarkDownUnit,
     centered_to_len,
     get_calendarmarkdown_str,
 )
-from src.ch13_time.epoch_main import epochunit_shop, get_default_epoch_config_dict
-from src.ch13_time.test._util.ch13_examples import (
+from ch13_time.epoch_main import epochunit_shop, get_default_epoch_config_dict
+from ch13_time.test._util.ch13_examples import (
     get_expected_creg_2024_markdown,
     get_expected_creg_year0_markdown,
     get_expected_five_5524_markdown,
     get_five_config,
 )
-from src.ref.keywords import Ch13Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch13Keywords as kw, ExampleStrs as exx
 
 
 def test_centered_to_len_ReturnsObj():

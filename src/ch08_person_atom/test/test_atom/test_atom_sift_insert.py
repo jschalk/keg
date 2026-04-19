@@ -1,9 +1,9 @@
-from src.ch02_contact.group import awardunit_shop
-from src.ch04_rope.rope import to_rope
-from src.ch05_reason.reason_main import factunit_shop, reasonunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch08_person_atom.atom_main import personatom_shop, sift_personatom
-from src.ref.keywords import Ch08Keywords as kw, ExampleStrs as exx
+from ch02_contact.group import awardunit_shop
+from ch04_rope.rope import to_rope
+from ch05_reason.reason_main import factunit_shop, reasonunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch08_person_atom.atom_main import personatom_shop, sift_personatom
+from ref.keywords import Ch08Keywords as kw, ExampleStrs as exx
 
 
 def test_sift_atom_ReturnsObj_PersonAtom_INSERT_person_contactunit():

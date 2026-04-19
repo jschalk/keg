@@ -1,5 +1,5 @@
+from ch06_plan.plan import PlanUnit
 from dataclasses import dataclass
-from src.ch06_plan.plan import PlanUnit
 
 
 @dataclass

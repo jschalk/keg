@@ -1,5 +1,4 @@
-from sqlite3 import Cursor
-from src.ch00_py.db_toolbox import (
+from ch00_py.db_toolbox import (
     create_insert_into_clause_str as get_insert_sql,
     create_select_query as get_select_sql,
     create_table2table_agg_insert_query,
@@ -8,21 +7,21 @@ from src.ch00_py.db_toolbox import (
     get_db_tables,
     get_table_columns,
 )
-from src.ch08_person_atom.atom_config import get_person_dimens
-from src.ch14_moment.moment_config import get_moment_dimens
-from src.ch15_nabu.nabu_config import get_nabu_dimens
-from src.ch16_translate.translate_config import (
+from ch08_person_atom.atom_config import get_person_dimens
+from ch14_moment.moment_config import get_moment_dimens
+from ch15_nabu.nabu_config import get_nabu_dimens
+from ch16_translate.translate_config import (
     get_translate_dimens,
     set_translateable_otx_inx_args,
 )
-from src.ch17_idea.idea_config import get_default_sorted_list, get_idea_config_dict
-from src.ch18_etl_config.etl_config import (
+from ch17_idea.idea_config import get_default_sorted_list, get_idea_config_dict
+from ch18_etl_config.etl_config import (
     create_prime_table_sqlstr,
     get_dimen_abbv7,
     get_etl_category_stages_dict,
     get_etl_stage_types_config_dict,
 )
-from src.ch18_etl_config.etl_sqlstr import (
+from ch18_etl_config.etl_sqlstr import (
     create_insert_into_translate_core_raw_sqlstr,
     create_insert_missing_spark_face_into_translate_core_vld_sqlstr,
     create_insert_translate_core_agg_into_vld_sqlstr,
@@ -38,7 +37,8 @@ from src.ch18_etl_config.etl_sqlstr import (
     get_person_heard_vld_tablenames,
     get_prime_create_table_sqlstrs,
 )
-from src.ref.keywords import Ch18Keywords as kw
+from ref.keywords import Ch18Keywords as kw
+from sqlite3 import Cursor
 
 
 def test_get_prime_create_table_sqlstrs_ReturnsObj():

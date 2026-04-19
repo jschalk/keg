@@ -1,12 +1,12 @@
-from src.ch01_allot.allot import default_grain_num_if_None
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch12_keep.rivercycle import (
+from ch01_allot.allot import default_grain_num_if_None
+from ch07_person_logic.person_main import personunit_shop
+from ch12_keep.rivercycle import (
     RiverBook,
     create_riverbook,
     get_patientledger,
     riverbook_shop,
 )
-from src.ref.keywords import Ch12Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch12Keywords as kw, ExampleStrs as exx
 
 
 def test_RiverBook_Exists():

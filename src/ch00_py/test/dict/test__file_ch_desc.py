@@ -1,12 +1,12 @@
+from ch00_py.chapter_desc_main import get_chapter_descs, valid_chapter_numbers
 from pytest import raises as pytest_raises
-from src.ch00_py.chapter_desc_main import get_chapter_descs, valid_chapter_numbers
 from unittest.mock import patch
 
 
 def test_get_chapter_descs_Scenario0_RemovesLinterAndRef():
     # ESTABLISH
-    with patch("src.ch00_py.chapter_desc_main.get_level1_dirs") as mock_get_dirs, patch(
-        "src.ch00_py.chapter_desc_main.create_path"
+    with patch("ch00_py.chapter_desc_main.get_level1_dirs") as mock_get_dirs, patch(
+        "ch00_py.chapter_desc_main.create_path"
     ) as mock_create_path:
         mock_get_dirs.return_value = [
             "intro",
@@ -19,10 +19,11 @@ def test_get_chapter_descs_Scenario0_RemovesLinterAndRef():
         mock_create_path.side_effect = lambda src, d: f"{src}/{d}"
 
         # WHEN
-        result = get_chapter_descs()
+        chapter_descs = get_chapter_descs()
 
         # THEN
-        assert result == {
+        print(f"{chapter_descs}")
+        assert chapter_descs == {
             "intro": "src/intro",
             "chapter1": "src/chapter1",
             "chapter2": "src/chapter2",
@@ -31,8 +32,8 @@ def test_get_chapter_descs_Scenario0_RemovesLinterAndRef():
 
 def test_get_chapter_descs_Scenario1_GetsLevel1Directories():
     # ESTABLISH
-    with patch("src.ch00_py.chapter_desc_main.get_level1_dirs") as mock_get_dirs, patch(
-        "src.ch00_py.chapter_desc_main.create_path"
+    with patch("ch00_py.chapter_desc_main.get_level1_dirs") as mock_get_dirs, patch(
+        "ch00_py.chapter_desc_main.create_path"
     ):
         mock_get_dirs.return_value = ["chapter1", "linter", "ref"]
 
@@ -49,7 +50,7 @@ def test_get_chapter_descs_Scenario2_RaisesErrorIf_linterIsMissing():
     if 'linter' or 'ref' are not present.
     """
     # ESTABLISH / WHEN / THEN
-    with patch("src.ch00_py.chapter_desc_main.get_level1_dirs") as mock_get_dirs:
+    with patch("ch00_py.chapter_desc_main.get_level1_dirs") as mock_get_dirs:
         mock_get_dirs.return_value = ["chapter1", "chapter2"]
 
         with pytest_raises(ValueError):

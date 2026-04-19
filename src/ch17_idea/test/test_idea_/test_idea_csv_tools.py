@@ -1,9 +1,9 @@
-from src.ch04_rope.rope import create_rope
-from src.ch17_idea.idea_main import (
+from ch04_rope.rope import create_rope
+from ch17_idea.idea_main import (
     get_csv_moment_rope_person_name_metrics,
     moment_rope_person_name_nested_csv_dict,
 )
-from src.ref.keywords import ExampleStrs as exx
+from ref.keywords import ExampleStrs as exx
 
 
 def test_get_csv_moment_rope_person_name_metrics_ReturnsObj_Scenario2():

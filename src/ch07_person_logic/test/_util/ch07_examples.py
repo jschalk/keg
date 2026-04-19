@@ -1,19 +1,19 @@
-from enum import Enum
-from src.ch00_py.file_toolbox import open_json
-from src.ch03_workforce.workforce import workforceunit_shop
-from src.ch04_rope.rope import RopeTerm, create_rope
-from src.ch05_reason.reason_main import factunit_shop, reasonunit_shop
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import (
+from ch00_py.file_toolbox import open_json
+from ch03_workforce.workforce import workforceunit_shop
+from ch04_rope.rope import RopeTerm, create_rope
+from ch05_reason.reason_main import factunit_shop, reasonunit_shop
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import (
     PersonUnit,
     get_personunit_from_dict,
     personunit_shop,
 )
-from src.ref.keywords import ExampleStrs as exx
+from enum import Enum
+from ref.keywords import ExampleStrs as exx
 
-# from src.ch00_py.file_toolbox import save_file
-# from src.ch07_person_logic.test._util.ch07_env import get_person_examples_dir as env_dir
-# from src.ch07_person_logic.test._util.example_persons import personunit_v001, personunit_v002
+# from ch00_py.file_toolbox import save_file
+# from ch07_person_logic.test._util.ch07_env import get_person_examples_dir as env_dir
+# from ch07_person_logic.test._util.example_persons import personunit_v001, personunit_v002
 
 # save_json(env_dir(), "example_person3.json", personunit_v001().to_dict())
 # save_json(env_dir(), "example_person4.json", personunit_v002().to_dict())

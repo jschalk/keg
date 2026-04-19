@@ -1,15 +1,15 @@
+from ch00_py.file_toolbox import create_path, get_dir_file_strs, save_file
+from linter.chapter_migration_tools import (
+    delete_if_empty_or_pycache_only,
+    first_level_dirs_with_prefix,
+    rename_files_and_dirs,
+    rename_files_and_dirs_4times,
+)
 from os import mkdir as os_mkdir
 from os.path import (
     basename as os_path_basename,
     exists as os_path_exists,
     join as os_path_join,
-)
-from src.ch00_py.file_toolbox import create_path, get_dir_file_strs, save_file
-from src.linter.chapter_migration_tools import (
-    delete_if_empty_or_pycache_only,
-    first_level_dirs_with_prefix,
-    rename_files_and_dirs,
-    rename_files_and_dirs_4times,
 )
 from tempfile import TemporaryDirectory as tempfile_TemporaryDirectory
 

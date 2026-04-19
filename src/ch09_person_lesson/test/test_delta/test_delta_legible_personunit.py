@@ -1,8 +1,8 @@
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch08_person_atom.atom_main import personatom_shop
-from src.ch09_person_lesson.delta import persondelta_shop
-from src.ch09_person_lesson.legible import create_legible_list
-from src.ref.keywords import Ch09Keywords as kw
+from ch07_person_logic.person_main import personunit_shop
+from ch08_person_atom.atom_main import personatom_shop
+from ch09_person_lesson.delta import persondelta_shop
+from ch09_person_lesson.legible import create_legible_list
+from ref.keywords import Ch09Keywords as kw
 
 
 def test_create_legible_list_ReturnsObjEstablishWithEmptyPersonDelta():

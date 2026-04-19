@@ -1,6 +1,6 @@
-from src.ch07_person_logic.person_main import PersonUnit
-from src.ch14_moment.test._util.ch14_examples import _example_empty_bob_personunit
-from src.ref.keywords import ExampleStrs as exx
+from ch07_person_logic.person_main import PersonUnit
+from ch14_moment.test._util.ch14_examples import _example_empty_bob_personunit
+from ref.keywords import ExampleStrs as exx
 
 
 def get_bob_mop_reason_personunit_example() -> PersonUnit:

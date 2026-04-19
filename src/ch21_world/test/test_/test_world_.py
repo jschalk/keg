@@ -1,7 +1,7 @@
+from ch00_py.file_toolbox import create_path, save_file
+from ch21_world.world import WorldDir, WorldName, worlddir_shop
 from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import create_path, save_file
-from src.ch21_world.world import WorldDir, WorldName, worlddir_shop
-from src.ref.keywords import Ch21Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch21Keywords as kw, ExampleStrs as exx
 
 
 def test_WorldName_Exists():

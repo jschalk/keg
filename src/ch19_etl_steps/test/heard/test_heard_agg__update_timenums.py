@@ -1,29 +1,29 @@
-from sqlite3 import Cursor
-from src.ch13_time.epoch_main import DEFAULT_EPOCH_LENGTH, get_c400_constants
-from src.ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
-from src.ch18_etl_config.etl_sqlstr import (
+from ch13_time.epoch_main import DEFAULT_EPOCH_LENGTH, get_c400_constants
+from ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
+from ch18_etl_config.etl_sqlstr import (
     create_sound_and_heard_tables,
     update_heard_agg_timenum_columns,
 )
-from src.ch19_etl_steps.test.heard.test_heard_agg__update_casenum_pchapx import (
+from ch19_etl_steps.test.heard.test_heard_agg__update_casenum_pchapx import (
     pchapx_insert_nabtime,
     pchapx_insert_prncase,
     pchapx_insert_prnplan,
     pchapx_select_prncase,
 )
-from src.ch19_etl_steps.test.heard.test_heard_agg__update_factnum_pfhapx import (
+from ch19_etl_steps.test.heard.test_heard_agg__update_factnum_pfhapx import (
     pfhapx_insert_nabtime,
     pfhapx_insert_prnfact,
     pfhapx_insert_prnplan,
     pfhapx_select_prnfact,
 )
-from src.ch19_etl_steps.test.heard.test_heard_agg__update_moment_time_mxhap0 import (
+from ch19_etl_steps.test.heard.test_heard_agg__update_moment_time_mxhap0 import (
     mxhap0_insert_mmtoffi,
     mxhap0_insert_mmtunit,
     mxhap0_insert_nabtime,
     mxhap0_select_mmtoffi,
 )
-from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from sqlite3 import Cursor
 
 
 def test_update_heard_agg_timenum_columns_SQLTEST_Scenario0_TwoRecordsAndDoesModularMath(

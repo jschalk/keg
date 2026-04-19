@@ -1,14 +1,14 @@
-from pytest import raises as pytest_raises
-from src.ch01_allot.allot import default_grain_num_if_None
-from src.ch02_contact._ref.ch02_semantic_types import NameTerm
-from src.ch02_contact.contact import (
+from ch01_allot.allot import default_grain_num_if_None
+from ch02_contact._ref.ch02_semantic_types import NameTerm
+from ch02_contact.contact import (
     ContactUnit,
     contactunit_shop,
     default_groupmark_if_None,
     is_nameterm,
     validate_nameterm,
 )
-from src.ref.keywords import Ch02Keywords as kw, ExampleStrs as exx
+from pytest import raises as pytest_raises
+from ref.keywords import Ch02Keywords as kw, ExampleStrs as exx
 
 
 def test_is_nameterm_ReturnsObj():

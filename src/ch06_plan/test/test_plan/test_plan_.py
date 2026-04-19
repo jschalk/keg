@@ -1,10 +1,10 @@
-from src.ch01_allot.allot import default_grain_num_if_None
-from src.ch02_contact.group import awardunit_shop
-from src.ch03_workforce.workforce import workforceunit_shop
-from src.ch04_rope.rope import create_rope, default_knot_if_None
-from src.ch06_plan.healer import healerunit_shop
-from src.ch06_plan.plan import PlanUnit, planunit_shop
-from src.ref.keywords import Ch06Keywords as kw, ExampleStrs as exx
+from ch01_allot.allot import default_grain_num_if_None
+from ch02_contact.group import awardunit_shop
+from ch03_workforce.workforce import workforceunit_shop
+from ch04_rope.rope import create_rope, default_knot_if_None
+from ch06_plan.healer import healerunit_shop
+from ch06_plan.plan import PlanUnit, planunit_shop
+from ref.keywords import Ch06Keywords as kw, ExampleStrs as exx
 
 
 def test_PlanUnit_Exists():
@@ -101,9 +101,9 @@ def test_PlanUnit_Exists():
     }
 
 
+from ch06_plan.plan import planunit_shop
 from pytest import raises as pytest_raises
-from src.ch06_plan.plan import planunit_shop
-from src.ref.keywords import ExampleStrs as exx
+from ref.keywords import ExampleStrs as exx
 
 
 def test_PlanUnit_set_plan_label_Scenario0_SetsAttr():

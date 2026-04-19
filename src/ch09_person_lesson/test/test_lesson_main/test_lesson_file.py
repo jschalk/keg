@@ -1,16 +1,13 @@
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import create_path, open_json
-from src.ch09_person_lesson.delta import persondelta_shop
-from src.ch09_person_lesson.lesson_main import (
-    create_lessonunit_from_files,
-    lessonunit_shop,
-)
-from src.ch09_person_lesson.test._util.ch09_examples import (
+from ch00_py.file_toolbox import create_path, open_json
+from ch09_person_lesson.delta import persondelta_shop
+from ch09_person_lesson.lesson_main import create_lessonunit_from_files, lessonunit_shop
+from ch09_person_lesson.test._util.ch09_examples import (
     get_atom_example_planunit_ball,
     get_atom_example_planunit_knee,
     get_atom_example_planunit_sports,
 )
-from src.ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
+from os.path import exists as os_path_exists
+from ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
 
 
 def test_LessonUnit_save_atom_file_SavesCorrectFile(temp3_fs):

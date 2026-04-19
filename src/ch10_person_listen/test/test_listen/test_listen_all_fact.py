@@ -1,12 +1,12 @@
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch10_person_listen.listen_main import (
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch10_person_listen.listen_main import (
     get_debtors_roll,
     get_ordered_debtors_roll,
     listen_to_speaker_fact,
     migrate_all_facts,
 )
-from src.ref.keywords import ExampleStrs as exx
+from ref.keywords import ExampleStrs as exx
 
 
 def test_get_debtors_roll_ReturnsObj():

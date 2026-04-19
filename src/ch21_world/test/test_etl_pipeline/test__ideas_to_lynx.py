@@ -1,41 +1,38 @@
-from os.path import exists as os_path_exists
-from pandas import DataFrame, DataFrame as pandas_DataFrame
-from sqlite3 import Cursor, connect as sqlite3_connect
-from src.ch00_py.db_toolbox import db_table_exists, get_row_count
-from src.ch00_py.file_toolbox import (
+from ch00_py.db_toolbox import db_table_exists, get_row_count
+from ch00_py.file_toolbox import (
     count_dirs_files,
     create_path,
     get_level1_dirs,
     save_file,
 )
-from src.ch04_rope.rope import create_rope_from_labels as init_rope
-from src.ch09_person_lesson._ref.ch09_path import (
-    create_gut_path,
-    create_moment_json_path,
-)
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch09_person_lesson.lesson_filehandler import open_gut_file
-from src.ch10_person_listen._ref.ch10_path import create_job_path
-from src.ch11_bud._ref.ch11_path import (
+from ch04_rope.rope import create_rope_from_labels as init_rope
+from ch09_person_lesson._ref.ch09_path import create_gut_path, create_moment_json_path
+from ch09_person_lesson.lasso import lassounit_shop
+from ch09_person_lesson.lesson_filehandler import open_gut_file
+from ch10_person_listen._ref.ch10_path import create_job_path
+from ch11_bud._ref.ch11_path import (
     create_spark_all_lesson_path,
     create_spark_expressed_lesson_path as expressed_path,
 )
-from src.ch14_moment._ref.ch14_path import (
+from ch14_moment._ref.ch14_path import (
     create_bud_contact_mandate_ledger_path as bud_mandate,
 )
-from src.ch17_idea.idea_db_tool import save_sheet
-from src.ch18_etl_config._ref.ch18_path import (
+from ch17_idea.idea_db_tool import save_sheet
+from ch18_etl_config._ref.ch18_path import (
     create_last_run_metrics_path,
     create_moment_ote1_csv_path,
 )
-from src.ch18_etl_config.etl_sqlstr import create_prime_tablename as prime_tbl
-from src.ch21_world.test._util.ch21_examples import ii00002_example
-from src.ch21_world.world import (
+from ch18_etl_config.etl_sqlstr import create_prime_tablename as prime_tbl
+from ch21_world.test._util.ch21_examples import ii00002_example
+from ch21_world.world import (
     idea_sheets_to_lynx_mstr,
     idea_sheets_to_lynx_with_cursor,
     worlddir_shop,
 )
-from src.ref.keywords import Ch21Keywords as kw, ExampleStrs as exx
+from os.path import exists as os_path_exists
+from pandas import DataFrame, DataFrame as pandas_DataFrame
+from ref.keywords import Ch21Keywords as kw, ExampleStrs as exx
+from sqlite3 import Cursor, connect as sqlite3_connect
 
 
 def test_idea_sheets_to_lynx_with_cursor_Scenario0_ii001071PopulatesTables(

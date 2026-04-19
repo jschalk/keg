@@ -1,16 +1,16 @@
-from src.ch06_plan.test._util.ch06_examples import get_range_attrs
-from src.ch07_person_logic.person_main import PersonUnit, PlanUnit, RopeTerm
-from src.ch13_time._ref.ch13_semantic_types import FactNum, ReasonNum
-from src.ch13_time.epoch_reason import (
+from ch06_plan.test._util.ch06_examples import get_range_attrs
+from ch07_person_logic.person_main import PersonUnit, PlanUnit, RopeTerm
+from ch13_time._ref.ch13_semantic_types import FactNum, ReasonNum
+from ch13_time.epoch_reason import (
     set_epoch_base_case_dayly,
     set_epoch_cases_for_monthly,
     set_epoch_cases_for_yearly_monthday,
 )
-from src.ch13_time.test._util.ch13_examples import (
+from ch13_time.test._util.ch13_examples import (
     Ch13ExampleStrs as wx,
     get_bob_five_person,
 )
-from src.ref.keywords import Ch13Keywords as kw
+from ref.keywords import Ch13Keywords as kw
 
 
 def test_set_epoch_base_case_dayly_ChangesPersonUnit_agenda():

@@ -1,5 +1,5 @@
-from src.ch07_person_logic.person_main import PersonUnit, personunit_shop
-from src.ch10_person_listen._ref.ch10_semantic_types import PersonName
+from ch07_person_logic.person_main import PersonUnit, personunit_shop
+from ch10_person_listen._ref.ch10_semantic_types import PersonName
 
 
 def create_empty_person_from_person(

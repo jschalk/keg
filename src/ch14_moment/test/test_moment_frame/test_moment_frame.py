@@ -1,16 +1,12 @@
-from src.ch11_bud.bud_main import personbudhistory_shop
-from src.ch13_time.epoch_main import (
-    DEFAULT_EPOCH_LENGTH,
-    epochunit_shop,
-    get_epoch_length,
-)
-from src.ch13_time.test._util.ch13_examples import get_creg_config
-from src.ch14_moment.moment_frame import (
+from ch11_bud.bud_main import personbudhistory_shop
+from ch13_time.epoch_main import DEFAULT_EPOCH_LENGTH, epochunit_shop, get_epoch_length
+from ch13_time.test._util.ch13_examples import get_creg_config
+from ch14_moment.moment_frame import (
     add_epoch_frame_to_momentunit,
     get_moment_epochholder,
 )
-from src.ch14_moment.moment_main import momentunit_shop
-from src.ref.keywords import ExampleStrs as exx
+from ch14_moment.moment_main import momentunit_shop
+from ref.keywords import ExampleStrs as exx
 
 
 def test_get_moment_epochholder_ReturnsObj_Scenario0_Empty_offi_time(temp3_dir):

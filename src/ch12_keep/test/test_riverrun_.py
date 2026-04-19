@@ -1,11 +1,11 @@
-from src.ch01_allot.allot import default_grain_num_if_None, validate_pool_num
-from src.ch12_keep._ref.ch12_semantic_types import default_knot_if_None
-from src.ch12_keep.riverrun import RiverRun, riverrun_shop
-from src.ch12_keep.test._util.ch12_examples import (
+from ch01_allot.allot import default_grain_num_if_None, validate_pool_num
+from ch12_keep._ref.ch12_semantic_types import default_knot_if_None
+from ch12_keep.riverrun import RiverRun, riverrun_shop
+from ch12_keep.test._util.ch12_examples import (
     example_yao_bob_zia_need_dues,
     example_yao_bob_zia_patientledgers,
 )
-from src.ref.keywords import Ch12Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch12Keywords as kw, ExampleStrs as exx
 
 
 def test_RiverRun_Exists():

@@ -1,8 +1,8 @@
-from src.ch02_contact.group import awardunit_shop
-from src.ch04_rope.rope import to_rope
-from src.ch05_reason.reason_main import factunit_shop, reasonunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch07_person_logic.person_tool import (
+from ch02_contact.group import awardunit_shop
+from ch04_rope.rope import to_rope
+from ch05_reason.reason_main import factunit_shop, reasonunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch07_person_logic.person_tool import (
     person_attr_exists,
     person_contact_membership_exists,
     person_contactunit_exists,
@@ -15,7 +15,7 @@ from src.ch07_person_logic.person_tool import (
     person_planunit_exists,
     personunit_exists,
 )
-from src.ref.keywords import Ch07Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch07Keywords as kw, ExampleStrs as exx
 
 
 def test_personunit_exists_ReturnsObj():

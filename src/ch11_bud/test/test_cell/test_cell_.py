@@ -1,19 +1,19 @@
-from copy import deepcopy as copy_deepcopy
-from src.ch05_reason.reason_main import factunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch11_bud.cell_main import (
+from ch05_reason.reason_main import factunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch11_bud.cell_main import (
     CELLNODE_QUOTA_DEFAULT,
     CellUnit,
     cellunit_shop,
     create_child_cellunits,
 )
-from src.ch11_bud.test._util.ch11_examples import (
+from ch11_bud.test._util.ch11_examples import (
     example_casa_clean_factunit as clean_factunit,
     example_casa_dirty_factunit as dirty_factunit,
     example_casa_grimy_factunit as grimy_factunit,
     example_sky_blue_factunit as sky_blue_factunit,
 )
-from src.ref.keywords import Ch11Keywords as kw, ExampleStrs as exx
+from copy import deepcopy as copy_deepcopy
+from ref.keywords import Ch11Keywords as kw, ExampleStrs as exx
 
 SUE_PERSON = personunit_shop(exx.sue, exx.a23)
 CASA_ROPE = SUE_PERSON.make_l1_rope(exx.casa)

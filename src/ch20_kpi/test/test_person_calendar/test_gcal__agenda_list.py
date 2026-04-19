@@ -1,15 +1,15 @@
-from datetime import datetime
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch13_time.epoch_main import add_epoch_planunit, get_default_epoch_config_dict
-from src.ch13_time.epoch_reason import set_epoch_base_case_dayly
-from src.ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
-from src.ch20_kpi.gcalendar import (
+from ch07_person_logic.person_main import personunit_shop
+from ch13_time.epoch_main import add_epoch_planunit, get_default_epoch_config_dict
+from ch13_time.epoch_reason import set_epoch_base_case_dayly
+from ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
+from ch20_kpi.gcalendar import (
     DayEvent,
     gcal_readable_percent,
     get_dayevents,
     get_gcal_all_agenda_str,
 )
-from src.ref.keywords import Ch20Keywords as kw
+from datetime import datetime
+from ref.keywords import Ch20Keywords as kw
 
 
 def test_DayEvents_Exists():

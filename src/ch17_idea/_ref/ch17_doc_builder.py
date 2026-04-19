@@ -1,6 +1,6 @@
+from ch00_py.file_toolbox import create_path, open_json
+from ch17_idea.idea_config import get_default_sorted_list, get_idea_formats_dir
 from pathlib import Path
-from src.ch00_py.file_toolbox import create_path, open_json
-from src.ch17_idea.idea_config import get_default_sorted_list, get_idea_formats_dir
 
 
 def get_idea_md(idea_config) -> str:

@@ -7,19 +7,19 @@ from ast import (
     parse as ast_parse,
     walk as ast_walk,
 )
+from ch00_py.dict_toolbox import is_camel_case, uppercase_in_str
+from ch00_py.file_toolbox import create_path, get_dir_filenames, open_file
+from ch00_py.keyword_class_builder import get_example_strs_config
+from ch98_docs_builder.doc_builder import (
+    get_chapter_desc_prefix,
+    get_chapter_descs,
+    get_func_names_and_class_bases_from_file,
+)
 from dataclasses import dataclass
 from os import walk as os_walk
 from os.path import exists as os_path_exists, join as os_path_join
 from pathlib import Path as pathlib_Path
 from re import compile as re_compile, search as re_search
-from src.ch00_py.dict_toolbox import is_camel_case, uppercase_in_str
-from src.ch00_py.file_toolbox import create_path, get_dir_filenames, open_file
-from src.ch00_py.keyword_class_builder import get_example_strs_config
-from src.ch98_docs_builder.doc_builder import (
-    get_chapter_desc_prefix,
-    get_chapter_descs,
-    get_func_names_and_class_bases_from_file,
-)
 from typing import Dict, List, Set, Tuple
 
 
@@ -430,7 +430,7 @@ def check_all_test_functions_are_formatted(all_test_functions: dict[str, str]):
             assert declare_str not in test_function_str, fail2_str
 
 
-_CH_PATTERN = re_compile(r"^src\.ch(\d+)(?:[._]|$)")
+_CH_PATTERN = re_compile(r"^.ch(\d+)(?:[._]|$)")
 _CH_STR_PATTERN = re_compile(r"ch(\d{2})_str(?:[._]|$)")
 
 

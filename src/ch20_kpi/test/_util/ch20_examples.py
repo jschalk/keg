@@ -1,6 +1,6 @@
-from src.ch07_person_logic.person_main import PersonUnit, personunit_shop
-from src.ch13_time.epoch_main import add_epoch_planunit
-from src.ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
+from ch07_person_logic.person_main import PersonUnit, personunit_shop
+from ch13_time.epoch_main import add_epoch_planunit
+from ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
 
 
 def get_a23_sue_clean_example() -> PersonUnit:

@@ -1,5 +1,5 @@
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ref.keywords import ExampleStrs as exx
+from ch07_person_logic.person_main import personunit_shop
+from ref.keywords import ExampleStrs as exx
 
 
 def test_create_groupunits_metrics_SetsAttrScenario0():

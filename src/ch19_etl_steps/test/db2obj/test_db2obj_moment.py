@@ -1,11 +1,11 @@
-from sqlite3 import Cursor
-from src.ch14_moment.moment_main import get_momentunit_from_dict
-from src.ch18_etl_config.etl_sqlstr import (
+from ch14_moment.moment_main import get_momentunit_from_dict
+from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename,
     create_sound_and_heard_tables,
 )
-from src.ch19_etl_steps.obj2db_moment import get_moment_dict_from_heard_tables
-from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ch19_etl_steps.obj2db_moment import get_moment_dict_from_heard_tables
+from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from sqlite3 import Cursor
 
 
 def test_get_moment_dict_from_heard_tables_ReturnsObj_Scenario0_With_momentunit_Attrs(

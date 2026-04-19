@@ -1,4 +1,4 @@
-from src.ch12_keep.keep_graphic import (
+from ch12_keep.keep_graphic import (
     get_protect_structures0_fig,
     get_protect_structures1_fig,
     get_protect_structures2_fig,

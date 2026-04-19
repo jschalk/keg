@@ -5,24 +5,22 @@ from ast import (
     parse as ast_parse,
     walk as ast_walk,
 )
-from src.ch00_py.chapter_desc_main import get_chapter_desc_prefix, get_chapter_descs
-from src.ch00_py.file_toolbox import (
+from ch00_py.chapter_desc_main import get_chapter_desc_prefix, get_chapter_descs
+from ch00_py.file_toolbox import (
     create_path,
     get_dir_filenames,
     open_json,
     save_file,
     save_json,
 )
-from src.ch00_py.keyword_class_builder import (
+from ch00_py.keyword_class_builder import (
     create_src_example_strs_path,
     create_src_keywords_main_path,
 )
-from src.ch04_rope._ref.ch04_doc_builder import get_ropeterm_description_md
-from src.ch17_idea._ref.ch17_doc_builder import get_idea_formats_md, get_idea_mds
-from src.ch98_docs_builder._ref.ch98_path import create_chapter_ref_path
-from src.ch98_docs_builder.keg_definitions_builder import (
-    rebuild_keg_definitions_contents,
-)
+from ch04_rope._ref.ch04_doc_builder import get_ropeterm_description_md
+from ch17_idea._ref.ch17_doc_builder import get_idea_formats_md, get_idea_mds
+from ch98_docs_builder._ref.ch98_path import create_chapter_ref_path
+from ch98_docs_builder.keg_definitions_builder import rebuild_keg_definitions_contents
 
 
 def get_func_names_and_class_bases_from_file(

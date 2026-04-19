@@ -1,8 +1,8 @@
-from src.ch04_rope.rope import RopeTerm, create_rope_from_labels
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch12_keep._ref.ch12_semantic_types import ContactName, PersonName
-from src.ch12_keep.rivercycle import get_patientledger
-from src.ref.keywords import ExampleStrs as exx
+from ch04_rope.rope import RopeTerm, create_rope_from_labels
+from ch07_person_logic.person_main import personunit_shop
+from ch12_keep._ref.ch12_semantic_types import ContactName, PersonName
+from ch12_keep.rivercycle import get_patientledger
+from ref.keywords import ExampleStrs as exx
 
 
 def get_nation_texas_rope() -> RopeTerm:

@@ -1,7 +1,4 @@
-from copy import deepcopy as copy_deepcopy
-from numpy import int64 as numpy_int64
-from pytest import raises as pytest_raises
-from src.ch00_py.dict_toolbox import (
+from ch00_py.dict_toolbox import (
     add_headers_to_csv,
     add_nested_dict_if_missing,
     change_nested_key,
@@ -41,7 +38,10 @@ from src.ch00_py.dict_toolbox import (
     uppercase_in_str,
     uppercase_is_first,
 )
-from src.ch00_py.test._util.ch00_examples import DictToolExampleStrs as ex0
+from ch00_py.test._util.ch00_examples import DictToolExampleStrs as ex0
+from copy import deepcopy as copy_deepcopy
+from numpy import int64 as numpy_int64
+from pytest import raises as pytest_raises
 
 
 def test_uppercase_in_str_ReturnsObj():

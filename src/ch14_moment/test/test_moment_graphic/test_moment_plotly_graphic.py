@@ -1,4 +1,4 @@
-from src.ch14_moment.moment_graphic import (  # get_moment_structures5_fig,
+from ch14_moment.moment_graphic import (  # get_moment_structures5_fig,
     get_moment_structures0_fig,
 )
 

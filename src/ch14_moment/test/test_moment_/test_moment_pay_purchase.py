@@ -1,7 +1,7 @@
+from ch11_bud.bud_main import tranbook_shop, tranunit_shop
+from ch14_moment.moment_main import momentunit_shop
 from pytest import raises as pytest_raises
-from src.ch11_bud.bud_main import tranbook_shop, tranunit_shop
-from src.ch14_moment.moment_main import momentunit_shop
-from src.ref.keywords import ExampleStrs as exx
+from ref.keywords import ExampleStrs as exx
 
 
 def test_MomentUnit_set_paypurchase_SetsAttr():

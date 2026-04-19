@@ -1,20 +1,18 @@
-from inspect import getdoc as inspect_getdoc
-from re import fullmatch as re_fullmatch
-from src.ch00_py.keyword_class_builder import get_keywords_src_config
-from src.ch07_person_logic.person_config import (
+from ch00_py.keyword_class_builder import get_keywords_src_config
+from ch07_person_logic.person_config import (
     get_all_person_calc_args,
     get_person_config_dict,
 )
-from src.ch13_time.epoch_main import get_c400_constants, get_default_epoch_config_dict
-from src.ch14_moment.moment_config import get_moment_config_args
-from src.ch15_nabu.nabu_config import get_nabu_args, get_nabuable_args
-from src.ch16_translate.translate_config import (
+from ch13_time.epoch_main import get_c400_constants, get_default_epoch_config_dict
+from ch14_moment.moment_config import get_moment_config_args
+from ch15_nabu.nabu_config import get_nabu_args, get_nabuable_args
+from ch16_translate.translate_config import (
     get_translate_config_args,
     get_translate_config_dict,
 )
-from src.ch18_etl_config.etl_config import get_etl_stage_types_config_dict
-from src.ch19_etl_steps.etl_main import etl_heard_raw_tables_to_moment_ote1_agg
-from src.ch98_docs_builder._ref.ch98_semantic_types import (
+from ch18_etl_config.etl_config import get_etl_stage_types_config_dict
+from ch19_etl_steps.etl_main import etl_heard_raw_tables_to_moment_ote1_agg
+from ch98_docs_builder._ref.ch98_semantic_types import (
     BreakTerm,
     ContactName,
     CRUD_command,
@@ -47,7 +45,7 @@ from src.ch98_docs_builder._ref.ch98_semantic_types import (
     WeightNum,
     WorldName,
 )
-from src.ch98_docs_builder.keg_definitions_builder import (
+from ch98_docs_builder.keg_definitions_builder import (
     get_ch_sorted_keywords,
     get_chxx_prefix_path_dict,
     get_chxx_ref_blurb,
@@ -57,7 +55,9 @@ from src.ch98_docs_builder.keg_definitions_builder import (
     get_keywords_by_importance,
     get_person_dimen_config,
 )
-from src.ref.keywords import Ch98Keywords as kw
+from inspect import getdoc as inspect_getdoc
+from re import fullmatch as re_fullmatch
+from ref.keywords import Ch98Keywords as kw
 
 
 def test_get_ch_sorted_keywords_ReturnsObj_Scenario0_basic_sorting():
@@ -308,7 +308,7 @@ def test_get_keg_exam_HasAll_keywords_DefinitionQuestions():
 #     }
 
 #     # WHEN
-#     from src.ch98_docs_builder.keg_definitions_builder import (
+#     from ch98_docs_builder.keg_definitions_builder import (
 #         get_kegology_exam_grade,
 #     )
 
@@ -329,7 +329,7 @@ def test_get_keg_exam_HasAll_keywords_DefinitionQuestions():
 #     }
 
 #     # WHEN
-#     from src.ch98_docs_builder.keg_definitions_builder import (
+#     from ch98_docs_builder.keg_definitions_builder import (
 #         get_kegology_exam_grade,
 #     )
 
@@ -349,7 +349,7 @@ def test_get_keg_exam_HasAll_keywords_DefinitionQuestions():
 #     answers = {}
 
 #     # WHEN
-#     from src.ch98_docs_builder.keg_definitions_builder import (
+#     from ch98_docs_builder.keg_definitions_builder import (
 #         get_kegology_exam_grade,
 #     )
 

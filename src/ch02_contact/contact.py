@@ -1,7 +1,6 @@
-from dataclasses import dataclass
-from src.ch00_py.dict_toolbox import get_0_if_None, get_1_if_None
-from src.ch01_allot.allot import allot_scale, default_grain_num_if_None
-from src.ch02_contact._ref.ch02_semantic_types import (
+from ch00_py.dict_toolbox import get_0_if_None, get_1_if_None
+from ch01_allot.allot import allot_scale, default_grain_num_if_None
+from ch02_contact._ref.ch02_semantic_types import (
     ContactName,
     FundNum,
     GroupMark,
@@ -10,12 +9,13 @@ from src.ch02_contact._ref.ch02_semantic_types import (
     RespectNum,
     default_groupmark_if_None,
 )
-from src.ch02_contact.group import (
+from ch02_contact.group import (
     GroupTitle,
     MemberShip,
     membership_shop,
     memberships_get_from_dict,
 )
+from dataclasses import dataclass
 
 
 def is_nameterm(x_nameterm: NameTerm, groupmark: GroupMark):

@@ -1,15 +1,5 @@
-from numpy import float64, nan as numpy_nan
-from openpyxl import (
-    Workbook as openpyxl_Workbook,
-    load_workbook as openpyxl_load_workbook,
-)
-from os.path import exists as os_path_exists
-from pandas import DataFrame, read_excel as pandas_read_excel
-from pandas.testing import assert_frame_equal as pandas_testing_assert_frame_equal
-from pathlib import Path
-from pytest import fixture as pytest_fixture, raises as pytest_raises
-from src.ch00_py.file_toolbox import create_path, set_dir
-from src.ch17_idea.idea_db_tool import (
+from ch00_py.file_toolbox import create_path, set_dir
+from ch17_idea.idea_db_tool import (
     append_df_to_excel,
     check_dataframe_column_names,
     delete_sheet,
@@ -21,7 +11,17 @@ from src.ch17_idea.idea_db_tool import (
     split_excel_into_dirs,
     update_all_spark_face_spark_num_columns,
 )
-from src.ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
+from numpy import float64, nan as numpy_nan
+from openpyxl import (
+    Workbook as openpyxl_Workbook,
+    load_workbook as openpyxl_load_workbook,
+)
+from os.path import exists as os_path_exists
+from pandas import DataFrame, read_excel as pandas_read_excel
+from pandas.testing import assert_frame_equal as pandas_testing_assert_frame_equal
+from pathlib import Path
+from pytest import fixture as pytest_fixture, raises as pytest_raises
+from ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
 
 
 def test_append_df_to_excel_CreatesSheet(temp3_fs):

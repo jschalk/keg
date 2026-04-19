@@ -1,5 +1,5 @@
+from ch00_py.file_toolbox import get_level1_dirs, set_dir
 from pathlib import Path
-from src.ch00_py.file_toolbox import get_level1_dirs, set_dir
 
 
 def test_get_level1_dirs_EmptyDirectory(temp3_fs, temp3_dir):

@@ -1,13 +1,13 @@
+from ch00_py.dict_toolbox import get_empty_list_if_None, get_from_nested_dict
+from ch02_contact.contact import contactunit_shop
+from ch02_contact.group import awardunit_shop
+from ch05_reason.reason_main import factunit_shop
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch07_person_logic.test._util.ch07_examples import get_personunit_with_4_levels
+from ch09_person_lesson.delta import PersonDelta, persondelta_shop
 from copy import deepcopy as copy_deepcopy
-from src.ch00_py.dict_toolbox import get_empty_list_if_None, get_from_nested_dict
-from src.ch02_contact.contact import contactunit_shop
-from src.ch02_contact.group import awardunit_shop
-from src.ch05_reason.reason_main import factunit_shop
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch07_person_logic.test._util.ch07_examples import get_personunit_with_4_levels
-from src.ch09_person_lesson.delta import PersonDelta, persondelta_shop
-from src.ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
 
 
 def print_personatom_keys(x_persondelta: PersonDelta):

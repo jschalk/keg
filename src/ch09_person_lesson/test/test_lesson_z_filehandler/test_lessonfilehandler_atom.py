@@ -1,15 +1,15 @@
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import create_path, get_dir_file_strs
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch09_person_lesson.lesson_filehandler import lessonfilehandler_shop
-from src.ch09_person_lesson.test._util.ch09_examples import (
+from ch00_py.file_toolbox import create_path, get_dir_file_strs
+from ch09_person_lesson.lasso import lassounit_shop
+from ch09_person_lesson.lesson_filehandler import lessonfilehandler_shop
+from ch09_person_lesson.test._util.ch09_examples import (
     get_atom_example_factunit_knee,
     get_atom_example_planunit_ball,
     get_atom_example_planunit_knee,
     get_atom_example_planunit_sports,
     get_ch09_example_moment_lasso as moment_lasso,
 )
-from src.ref.keywords import ExampleStrs as exx
+from os.path import exists as os_path_exists
+from ref.keywords import ExampleStrs as exx
 
 
 def test_LessonFileHandler_atom_filename_ReturnsObj(temp3_fs):

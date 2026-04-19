@@ -1,9 +1,7 @@
-from inspect import getdoc as inspect_getdoc
-from pytest import mark as pytest_mark, raises as pytest_raises
-from src.ch00_py.file_toolbox import create_path, get_json_filename
-from src.ch04_rope.rope import create_rope, create_rope_from_labels
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch10_person_listen._ref.ch10_path import (
+from ch00_py.file_toolbox import create_path, get_json_filename
+from ch04_rope.rope import create_rope, create_rope_from_labels
+from ch09_person_lesson.lasso import lassounit_shop
+from ch10_person_listen._ref.ch10_path import (
     create_job_path,
     create_keep_duty_path,
     create_keep_dutys_path,
@@ -15,7 +13,9 @@ from src.ch10_person_listen._ref.ch10_path import (
     create_treasury_db_path,
     treasury_filename,
 )
-from src.ref.keywords import Ch10Keywords as kw, ExampleStrs as exx
+from inspect import getdoc as inspect_getdoc
+from pytest import mark as pytest_mark, raises as pytest_raises
+from ref.keywords import Ch10Keywords as kw, ExampleStrs as exx
 
 A23_LASSO = lassounit_shop(exx.a23)
 

@@ -1,13 +1,12 @@
-from sqlite3 import Cursor, connect as sqlite3_connect
-from src.ch00_py.db_toolbox import create_insert_query
-from src.ch18_etl_config.etl_config import (
+from ch00_py.db_toolbox import create_insert_query
+from ch18_etl_config.etl_config import (
     etl_idea_category_config_dict as get_etl_config,
     get_prime_columns,
     remove_inx_columns,
     remove_staging_columns,
 )
-from src.ch18_etl_config.etl_sqlstr import create_sound_and_heard_tables
-from src.ch19_etl_steps.obj2db_person import (
+from ch18_etl_config.etl_sqlstr import create_sound_and_heard_tables
+from ch19_etl_steps.obj2db_person import (
     create_prnawar_put_h_agg_insert_sqlstr,
     create_prncase_put_h_agg_insert_sqlstr,
     create_prncont_put_h_agg_insert_sqlstr,
@@ -20,7 +19,8 @@ from src.ch19_etl_steps.obj2db_person import (
     create_prnreas_put_h_agg_insert_sqlstr,
     create_prnunit_put_h_agg_insert_sqlstr,
 )
-from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from sqlite3 import Cursor, connect as sqlite3_connect
 
 
 def test_create_prnunit_put_h_agg_insert_sqlstr_ReturnsObj(cursor0: Cursor):

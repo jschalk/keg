@@ -1,6 +1,6 @@
-from src.ch00_py.file_toolbox import create_path
-from src.ch09_person_lesson._ref.ch09_semantic_types import PersonName
-from src.ch09_person_lesson.lasso import LassoUnit
+from ch00_py.file_toolbox import create_path
+from ch09_person_lesson._ref.ch09_semantic_types import PersonName
+from ch09_person_lesson.lasso import LassoUnit
 
 MOMENT_FILENAME = "moment.json"
 

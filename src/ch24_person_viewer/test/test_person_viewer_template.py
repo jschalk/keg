@@ -1,5 +1,5 @@
-from src.ch24_person_viewer.person_viewer_app import get_person_viewer_template
-from src.ref.keywords import Ch24Keywords as kw
+from ch24_person_viewer.person_viewer_app import get_person_viewer_template
+from ref.keywords import Ch24Keywords as kw
 
 
 def test_get_person_viewer_template_ReturnsObj():

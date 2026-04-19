@@ -1,5 +1,5 @@
+from ch00_py.file_toolbox import create_path, open_json
 from os import getcwd as os_getcwd
-from src.ch00_py.file_toolbox import create_path, open_json
 
 
 def max_tree_traverse_default() -> int:

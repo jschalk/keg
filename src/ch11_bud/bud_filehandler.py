@@ -1,18 +1,16 @@
-from os import listdir as os_listdir
-from os.path import exists as os_path_exists, isdir as os_path_isdir
-from src.ch00_py.dict_toolbox import get_empty_list_if_None
-from src.ch00_py.file_toolbox import (
+from ch00_py.dict_toolbox import get_empty_list_if_None
+from ch00_py.file_toolbox import (
     create_path,
     get_dir_file_strs,
     open_json,
     save_json,
     set_dir,
 )
-from src.ch07_person_logic.person_main import PersonUnit, personunit_shop
-from src.ch09_person_lesson._ref.ch09_path import create_moment_persons_dir_path
-from src.ch09_person_lesson.lasso import LassoUnit, lassounit_shop
-from src.ch09_person_lesson.lesson_filehandler import open_person_file, save_person_file
-from src.ch11_bud._ref.ch11_path import (
+from ch07_person_logic.person_main import PersonUnit, personunit_shop
+from ch09_person_lesson._ref.ch09_path import create_moment_persons_dir_path
+from ch09_person_lesson.lasso import LassoUnit, lassounit_shop
+from ch09_person_lesson.lesson_filehandler import open_person_file, save_person_file
+from ch11_bud._ref.ch11_path import (
     CELLNODE_FILENAME,
     create_buds_dir_path,
     create_budunit_json_path,
@@ -20,14 +18,11 @@ from src.ch11_bud._ref.ch11_path import (
     create_personspark_path,
     create_persontime_path,
 )
-from src.ch11_bud._ref.ch11_semantic_types import (
-    PersonName,
-    RopeTerm,
-    SparkInt,
-    TimeNum,
-)
-from src.ch11_bud.bud_main import BudUnit, get_budunit_from_dict
-from src.ch11_bud.cell_main import CellUnit, cellunit_get_from_dict, cellunit_shop
+from ch11_bud._ref.ch11_semantic_types import PersonName, RopeTerm, SparkInt, TimeNum
+from ch11_bud.bud_main import BudUnit, get_budunit_from_dict
+from ch11_bud.cell_main import CellUnit, cellunit_get_from_dict, cellunit_shop
+from os import listdir as os_listdir
+from os.path import exists as os_path_exists, isdir as os_path_isdir
 
 
 def get_personspark_obj(

@@ -1,5 +1,4 @@
-from sqlite3 import Cursor
-from src.ch18_etl_config.etl_sqlstr import (
+from ch18_etl_config.etl_sqlstr import (
     CREATE_MMTMONT_SOUND_AGG_SQLSTR,
     CREATE_PRNCONT_PUT_SOUND_AGG_SQLSTR,
     CREATE_TRLCORE_SOUND_VLD_SQLSTR,
@@ -7,8 +6,9 @@ from src.ch18_etl_config.etl_sqlstr import (
     create_knot_exists_in_name_error_update_sqlstr,
     create_prime_tablename,
 )
-from src.ch19_etl_steps.etl_main import set_moment_person_sound_agg_knot_errors
-from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ch19_etl_steps.etl_main import set_moment_person_sound_agg_knot_errors
+from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from sqlite3 import Cursor
 
 
 def test_create_knot_exists_in_name_error_update_sqlstr_ReturnsObj_PopulatesTable_Scenario0(

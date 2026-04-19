@@ -1,13 +1,13 @@
-from src.ch01_allot.allot import default_pool_num, validate_pool_num
-from src.ch02_contact.contact import RespectNum
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch10_person_listen.basis_person import (
+from ch01_allot.allot import default_pool_num, validate_pool_num
+from ch02_contact.contact import RespectNum
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch10_person_listen.basis_person import (
     create_empty_person_from_person,
     create_listen_basis,
     get_default_job,
 )
-from src.ref.keywords import ExampleStrs as exx
+from ref.keywords import ExampleStrs as exx
 
 
 def test_create_empty_person_from_person_ReturnsObj():

@@ -1,14 +1,13 @@
-from dataclasses import dataclass
-from src.ch00_py.db_toolbox import RowData, create_type_reference_insert_sqlstr
-from src.ch00_py.dict_toolbox import get_empty_dict_if_None
-from src.ch02_contact.contact import contactunit_shop
-from src.ch02_contact.group import awardunit_shop
-from src.ch04_rope.rope import create_rope, get_parent_rope, get_tail_label
-from src.ch05_reason.reason_main import factunit_shop
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import PersonUnit
-from src.ch07_person_logic.person_tool import person_attr_exists, person_get_obj
-from src.ch08_person_atom._ref.ch08_semantic_types import (
+from ch00_py.db_toolbox import RowData, create_type_reference_insert_sqlstr
+from ch00_py.dict_toolbox import get_empty_dict_if_None
+from ch02_contact.contact import contactunit_shop
+from ch02_contact.group import awardunit_shop
+from ch04_rope.rope import create_rope, get_parent_rope, get_tail_label
+from ch05_reason.reason_main import factunit_shop
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import PersonUnit
+from ch07_person_logic.person_tool import person_attr_exists, person_get_obj
+from ch08_person_atom._ref.ch08_semantic_types import (
     ContactName,
     FactNum,
     LabelTerm,
@@ -16,7 +15,7 @@ from src.ch08_person_atom._ref.ch08_semantic_types import (
     RopeTerm,
     TitleTerm,
 )
-from src.ch08_person_atom.atom_config import (
+from ch08_person_atom.atom_config import (
     CRUD_command,
     get_atom_args_class_types,
     get_atom_config_args,
@@ -27,6 +26,7 @@ from src.ch08_person_atom.atom_config import (
     get_sorted_jkey_keys,
     is_person_dimen,
 )
+from dataclasses import dataclass
 
 
 class PersonAtomDescriptionError(Exception):
