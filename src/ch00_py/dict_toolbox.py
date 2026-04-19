@@ -504,3 +504,17 @@ def set_modular_dict_values(x_dict: dict[int, int]) -> dict[int, int]:
         x_key: x_value % x_key if x_key else x_value
         for x_key, x_value in x_dict.items()
     }
+
+
+def normalize_obj(obj: dict | set | list):
+    """Use recursion to return ordered dictionary"""
+    if isinstance(obj, dict):
+        return {
+            k: normalize_obj(v) for k, v in sorted(obj.items(), key=lambda kv: kv[0])
+        }
+    elif isinstance(obj, list):
+        return sorted((normalize_obj(x) for x in obj), key=repr)
+    elif isinstance(obj, set):
+        return {normalize_obj(x) for x in sorted(obj, key=repr)}  # stays a set
+    else:
+        return obj

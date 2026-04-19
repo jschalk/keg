@@ -11,7 +11,7 @@ from src.ref.keywords import Ch17Keywords as kw
 
 def create_dimens_idea_format_dict() -> dict:
     idea_format_files_dict = {}
-    x_count = 20
+    x_count = 120
     for idea_dimen, dimen_dict in get_idea_config_dict().items():
         if dimen_dict.get(kw.idea_category) == "person":
             idea_filename = f"ii{x_count:05}_{idea_dimen}_v0_0_0.json"
@@ -33,7 +33,7 @@ def test_create_dimens_idea_format_dict_ReturnsObj(rebuild_jsons):
     for idea_format in sorted(dimens_idea_format_dict.keys()):
         print(f"{idea_format=}")
     assert len(dimens_idea_format_dict) == 10
-    person_planunit_filename = f"ii00028_{kw.person_planunit}_v0_0_0.json"
+    person_planunit_filename = f"ii00128_{kw.person_planunit}_v0_0_0.json"
     print(f"{person_planunit_filename=}")
     assert dimens_idea_format_dict.get(person_planunit_filename)
     person_planunit_dict = dimens_idea_format_dict.get(person_planunit_filename)
@@ -63,7 +63,7 @@ def test_get_idea_md_ReturnsObj():
             kw.epoch_label: {kw.otx_key: False},
             kw.yr1_jan1_offset: {kw.otx_key: False},
         },
-        kw.idea_type: "ii00000",
+        kw.idea_type: "ii00100",
         kw.dimens: ["momentunit"],
     }
 
@@ -72,7 +72,7 @@ def test_get_idea_md_ReturnsObj():
 
     # THEN
     print(idea_md)
-    expected_idea_md = f"""# Idea `ii00000`
+    expected_idea_md = f"""# Idea `ii00100`
 
 ## Dimens `['momentunit']`
 
@@ -96,7 +96,7 @@ def test_get_idea_md_ReturnsObj():
 def test_get_idea_mds_ReturnsObj(temp3_fs):
     # ESTABLISH
     temp_dir = str(temp3_fs)
-    ii00000_str = "ii00000"
+    ii00100_str = "ii00100"
     idea_config = {
         "attributes": {
             kw.knot: {kw.otx_key: False},
@@ -112,16 +112,16 @@ def test_get_idea_mds_ReturnsObj(temp3_fs):
             kw.epoch_label: {kw.otx_key: False},
             kw.yr1_jan1_offset: {kw.otx_key: False},
         },
-        kw.idea_type: ii00000_str,
+        kw.idea_type: ii00100_str,
         kw.dimens: ["momentunit"],
     }
-    save_json(temp_dir, f"{ii00000_str}.json", idea_config)
+    save_json(temp_dir, f"{ii00100_str}.json", idea_config)
 
     # WHEN
     idea_mds = get_idea_mds(temp_dir)
 
     # THEN
-    expected_idea_md = f"""# Idea `ii00000`
+    expected_idea_md = f"""# Idea `ii00100`
 
 ## Dimens `['momentunit']`
 
@@ -139,8 +139,8 @@ def test_get_idea_mds_ReturnsObj(temp3_fs):
 - `{kw.knot}`
 - `{kw.job_listen_rotations}`
 """
-    assert set(idea_mds.keys()) == {ii00000_str}
-    assert idea_mds == {ii00000_str: expected_idea_md}
+    assert set(idea_mds.keys()) == {ii00100_str}
+    assert idea_mds == {ii00100_str: expected_idea_md}
 
 
 def test_get_idea_formats_md_ReturnsObj():
@@ -149,4 +149,4 @@ def test_get_idea_formats_md_ReturnsObj():
 
     # THEN
     assert idea_formats_md
-    assert idea_formats_md.find("ii00004") > 0
+    assert idea_formats_md.find("ii00104") > 0

@@ -20,16 +20,16 @@ def test_etl_ideax_agg_tables_to_sparks_ideax_agg_table_PopulatesTables_Scenario
     minute_420 = 420
     hour6am = "6am"
     hour7am = "7am"
-    agg_ii00003_tablename = f"ii00003_{kw.ideax_agg}"
-    agg_ii00003_columns = [
+    agg_ii00103_tablename = f"ii00103_{kw.ideax_agg}"
+    agg_ii00103_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
         kw.cumulative_minute,
         kw.hour_label,
     ]
-    create_idea_sorted_table(cursor0, agg_ii00003_tablename, agg_ii00003_columns)
-    insert_into_clause = f"""INSERT INTO {agg_ii00003_tablename} (
+    create_idea_sorted_table(cursor0, agg_ii00103_tablename, agg_ii00103_columns)
+    insert_into_clause = f"""INSERT INTO {agg_ii00103_tablename} (
   {kw.spark_num}
 , {kw.spark_face}
 , {kw.moment_rope}
@@ -47,7 +47,7 @@ VALUES
     insert_sqlstr = f"{insert_into_clause} {values_clause}"
     cursor0.execute(insert_sqlstr)
     idea_sparks_tablename = kw.sparks_ideax_agg
-    assert get_row_count(cursor0, agg_ii00003_tablename) == 4
+    assert get_row_count(cursor0, agg_ii00103_tablename) == 4
     assert not db_table_exists(cursor0, idea_sparks_tablename)
 
     # WHEN
@@ -70,9 +70,9 @@ ORDER BY {kw.spark_num}, {kw.spark_face};"""
 
     rows = cursor0.fetchall()
     assert len(rows) == 3
-    sue_r = ("ii00003", spark1, exx.sue, None)
-    yao3_r = ("ii00003", spark3, exx.yao, None)
-    yao9_r = ("ii00003", spark9, exx.yao, None)
+    sue_r = ("ii00103", spark1, exx.sue, None)
+    yao3_r = ("ii00103", spark3, exx.yao, None)
+    yao9_r = ("ii00103", spark9, exx.yao, None)
     print(f"{rows[0]=}")
     assert rows[0] == sue_r
     assert rows[1] == yao3_r
@@ -90,16 +90,16 @@ def test_etl_ideax_agg_tables_to_sparks_ideax_agg_table_PopulatesTables_Scenario
     minute_420 = 420
     hour6am = "6am"
     hour7am = "7am"
-    agg_ii00003_tablename = f"ii00003_{kw.ideax_agg}"
-    agg_ii00003_columns = [
+    agg_ii00103_tablename = f"ii00103_{kw.ideax_agg}"
+    agg_ii00103_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
         kw.cumulative_minute,
         kw.hour_label,
     ]
-    create_idea_sorted_table(cursor0, agg_ii00003_tablename, agg_ii00003_columns)
-    insert_into_clause = f"""INSERT INTO {agg_ii00003_tablename} (
+    create_idea_sorted_table(cursor0, agg_ii00103_tablename, agg_ii00103_columns)
+    insert_into_clause = f"""INSERT INTO {agg_ii00103_tablename} (
   {kw.spark_num}
 , {kw.spark_face}
 , {kw.moment_rope}
@@ -118,7 +118,7 @@ VALUES
     insert_sqlstr = f"{insert_into_clause} {values_clause}"
     cursor0.execute(insert_sqlstr)
     idea_sparks_tablename = kw.sparks_ideax_agg
-    assert get_row_count(cursor0, agg_ii00003_tablename) == 5
+    assert get_row_count(cursor0, agg_ii00103_tablename) == 5
     assert not db_table_exists(cursor0, idea_sparks_tablename)
 
     # WHEN
@@ -136,10 +136,10 @@ ORDER BY {kw.spark_num}, {kw.spark_face};"""
     rows = cursor0.fetchall()
     assert len(rows) == 4
     invalid_str = "invalid because of conflicting spark_num"
-    bob_row = ("ii00003", spark3, exx.bob, None)
-    sue_row = ("ii00003", spark1, exx.sue, invalid_str)
-    yao1_row = ("ii00003", spark1, exx.yao, invalid_str)
-    yao9_row = ("ii00003", spark9, exx.yao, None)
+    bob_row = ("ii00103", spark3, exx.bob, None)
+    sue_row = ("ii00103", spark1, exx.sue, invalid_str)
+    yao1_row = ("ii00103", spark1, exx.yao, invalid_str)
+    yao9_row = ("ii00103", spark9, exx.yao, None)
 
     assert rows[0] == sue_row
     assert rows[1] == yao1_row
@@ -171,10 +171,10 @@ def test_etl_sparks_ideax_agg_table_to_sparks_ideax_vld_table_PopulatesTables_Sc
     invalid_str = "invalid because of conflicting spark_num"
     values_clause = f"""
 VALUES
-  ('ii00003', {spark3}, '{exx.bob}', NULL)
-, ('ii00003', {spark1}, '{exx.sue}', '{invalid_str}')
-, ('ii00003', {spark1}, '{exx.yao}', '{invalid_str}')
-, ('ii00003', {spark9}, '{exx.yao}', NULL)  
+  ('ii00103', {spark3}, '{exx.bob}', NULL)
+, ('ii00103', {spark1}, '{exx.sue}', '{invalid_str}')
+, ('ii00103', {spark1}, '{exx.yao}', '{invalid_str}')
+, ('ii00103', {spark9}, '{exx.yao}', NULL)  
 ;
 """
     insert_sqlstr = f"{insert_into_clause} {values_clause}"

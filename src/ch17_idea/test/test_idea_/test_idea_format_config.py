@@ -9,10 +9,10 @@ from src.ch17_idea.idea_config import (
     get_idea_format_headers,
     get_idea_formats_dir,
     get_idearef_from_file,
-    ii00013_planunit_v0_0_0,
-    ii00019_planunit_v0_0_0,
-    ii00020_person_contact_membership_v0_0_0,
-    ii00021_person_contactunit_v0_0_0,
+    ii00002_planunit_v0_0_0,
+    ii00119_planunit_v0_0_0,
+    ii00120_person_contact_membership_v0_0_0,
+    ii00121_person_contactunit_v0_0_0,
 )
 from src.ch17_idea.idea_main import (
     _generate_idea_dataframe,
@@ -25,12 +25,12 @@ from src.ref.keywords import Ch17Keywords as kw
 
 def test_config_str_functions_ReturnsObj():
     # ESTABLISH / WHEN / THEN
-    x00021_idea = "ii00021_person_contactunit_v0_0_0"
-    assert ii00021_person_contactunit_v0_0_0() == x00021_idea
-    x00020_idea = "ii00020_person_contact_membership_v0_0_0"
-    assert ii00020_person_contact_membership_v0_0_0() == x00020_idea
-    x0003_idea = "ii00013_planunit_v0_0_0"
-    assert ii00013_planunit_v0_0_0() == x0003_idea
+    x00021_idea = "ii00121_person_contactunit_v0_0_0"
+    assert ii00121_person_contactunit_v0_0_0() == x00021_idea
+    x00020_idea = "ii00120_person_contact_membership_v0_0_0"
+    assert ii00120_person_contact_membership_v0_0_0() == x00020_idea
+    x0003_idea = "ii00002_planunit_v0_0_0"
+    assert ii00002_planunit_v0_0_0() == x0003_idea
 
 
 def test_get_idea_formats_dir_ReturnsObj():
@@ -45,7 +45,7 @@ def test_get_idea_formats_dir_ReturnsObj():
 
 def test_get_idearef_obj_ReturnsObj():
     # ESTABLISH
-    idea_name_00021 = ii00021_person_contactunit_v0_0_0()
+    idea_name_00021 = ii00121_person_contactunit_v0_0_0()
 
     # WHEN
     x_idearef = get_idearef_obj(idea_name_00021)
@@ -63,10 +63,9 @@ def test_get_idearef_obj_ReturnsObj():
 
 def test_get_headers_list_ReturnsObj():
     # ESTABLISH / WHEN
-    format_00021_headers = _get_headers_list(ii00021_person_contactunit_v0_0_0())
+    format_00021_headers = _get_headers_list(ii00121_person_contactunit_v0_0_0())
 
     # THEN
-    # print(f"{format_00001_headers=}")
     assert format_00021_headers == [
         kw.spark_num,
         kw.spark_face,
@@ -95,24 +94,24 @@ def get_sorted_headers_str(idea_filename):
 
 def test_get_sorted_headers_str_ReturnsObj_Scenario0_SingleExample():
     # ESTABLISH
-    filebasename = ii00021_person_contactunit_v0_0_0()
+    filebasename = ii00121_person_contactunit_v0_0_0()
 
     # WHEN
-    ii00021_headers = get_sorted_headers_str(filebasename)
+    ii00121_headers = get_sorted_headers_str(filebasename)
 
     # THEN
-    expected_ii00021_headers_str = f"{kw.moment_rope},{kw.person_name},{kw.contact_name},{kw.contact_cred_lumen},{kw.contact_debt_lumen},{kw.knot}"
-    assert ii00021_headers == expected_ii00021_headers_str
+    expected_ii00121_headers_str = f"{kw.moment_rope},{kw.person_name},{kw.contact_name},{kw.contact_cred_lumen},{kw.contact_debt_lumen},{kw.knot}"
+    assert ii00121_headers == expected_ii00121_headers_str
 
 
 def test_get_sorted_headers_str_ReturnsObj_Scenario1_SingleExample():
     # ESTABLISH / WHEN
-    ii00019_headers = get_sorted_headers_str(ii00019_planunit_v0_0_0())
+    ii00119_headers = get_sorted_headers_str(ii00119_planunit_v0_0_0())
 
     # THEN
-    print(f"{ii00019_headers=}")
+    print(f"{ii00119_headers=}")
     expected_plan_headers_str = f"{kw.moment_rope},{kw.person_name},{kw.plan_rope},{kw.begin},{kw.close},{kw.addin},{kw.numor},{kw.denom},{kw.morph},{kw.gogo_want},{kw.stop_want}"
-    assert ii00019_headers == expected_plan_headers_str
+    assert ii00119_headers == expected_plan_headers_str
 
 
 def check_sorted_headers_exist(idea_format_filename: str, x_headers: dict):
@@ -141,9 +140,9 @@ def test__generate_idea_dataframe_ReturnsObj():
     # ESTABLISH
     empty_d2 = []
     # WHEN
-    x_df = _generate_idea_dataframe(empty_d2, ii00021_person_contactunit_v0_0_0())
+    x_df = _generate_idea_dataframe(empty_d2, ii00121_person_contactunit_v0_0_0())
     # THEN
-    headers_list = _get_headers_list(ii00021_person_contactunit_v0_0_0())
+    headers_list = _get_headers_list(ii00121_person_contactunit_v0_0_0())
     assert list(x_df.columns) == headers_list
 
 
@@ -161,16 +160,16 @@ def test_idea_FilesExist():
     assert len(idea_filenames) == len(get_idea_format_filenames())
 
 
-def test_get_idearef_obj_HasAttrs_ii00021_person_contactunit_v0_0_0():
+def test_get_idearef_obj_HasAttrs_ii00121_person_contactunit_v0_0_0():
     # ESTABLISH
-    idea_name = ii00021_person_contactunit_v0_0_0()
+    idea_name = ii00121_person_contactunit_v0_0_0()
 
     # WHEN
-    format_00001_idearef = get_idearef_obj(idea_name)
+    format_00121_idearef = get_idearef_obj(idea_name)
 
     # THEN
-    assert len(format_00001_idearef.attributes) == 8
-    assert format_00001_idearef.attributes == {
+    assert len(format_00121_idearef.attributes) == 8
+    assert format_00121_idearef.attributes == {
         kw.contact_name: {kw.otx_key: True},
         kw.contact_cred_lumen: {kw.otx_key: False},
         kw.contact_debt_lumen: {kw.otx_key: False},
@@ -180,7 +179,7 @@ def test_get_idearef_obj_HasAttrs_ii00021_person_contactunit_v0_0_0():
         kw.person_name: {kw.otx_key: True},
         kw.knot: {kw.otx_key: False},
     }
-    headers_list = format_00001_idearef.get_headers_list()
+    headers_list = format_00121_idearef.get_headers_list()
     assert headers_list[0] == kw.spark_num
     assert headers_list[1] == kw.spark_face
     assert headers_list[2] == kw.moment_rope
@@ -190,9 +189,9 @@ def test_get_idearef_obj_HasAttrs_ii00021_person_contactunit_v0_0_0():
     assert headers_list[6] == kw.contact_debt_lumen
 
 
-def test_get_idearef_obj_HasAttrs_ii00020_person_contact_membership_v0_0_0():
+def test_get_idearef_obj_HasAttrs_ii00120_person_contact_membership_v0_0_0():
     # ESTABLISH
-    idea_name = ii00020_person_contact_membership_v0_0_0()
+    idea_name = ii00120_person_contact_membership_v0_0_0()
 
     # WHEN
     format_00020_idearef = get_idearef_obj(idea_name)
@@ -211,9 +210,9 @@ def test_get_idearef_obj_HasAttrs_ii00020_person_contact_membership_v0_0_0():
     assert headers_list[8] == kw.knot
 
 
-def test_get_idearef_obj_HasAttrs_ii00013_planunit_v0_0_0():
+def test_get_idearef_obj_HasAttrs_ii00002_planunit_v0_0_0():
     # ESTABLISH
-    idea_name = ii00013_planunit_v0_0_0()
+    idea_name = ii00002_planunit_v0_0_0()
 
     # WHEN
     format_00003_idearef = get_idearef_obj(idea_name)
@@ -230,9 +229,9 @@ def test_get_idearef_obj_HasAttrs_ii00013_planunit_v0_0_0():
     assert headers_list[6] == kw.pledge
 
 
-def test_get_idearef_obj_HasAttrs_ii00019_planunit_v0_0_0():
+def test_get_idearef_obj_HasAttrs_ii00119_planunit_v0_0_0():
     # ESTABLISH
-    idea_name = ii00019_planunit_v0_0_0()
+    idea_name = ii00119_planunit_v0_0_0()
 
     # WHEN
     format_00019_idearef = get_idearef_obj(idea_name)

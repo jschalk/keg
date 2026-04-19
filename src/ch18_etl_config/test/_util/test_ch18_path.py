@@ -97,8 +97,8 @@ def test_create_belief0001_path_ReturnsObj(temp3_dir):
     gen_belief0001_xlsx_path = create_belief0001_path(output_dir)
 
     # THEN
-    expected_belief000001_path = create_path(output_dir, BELIEF0001_FILENAME)
-    assert gen_belief0001_xlsx_path == expected_belief000001_path
+    expected_belief0001_path = create_path(output_dir, BELIEF0001_FILENAME)
+    assert gen_belief0001_xlsx_path == expected_belief0001_path
 
 
 @pytest_mark.skip_on_linux

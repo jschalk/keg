@@ -29,7 +29,7 @@ from src.ch18_etl_config._ref.ch18_path import (
     create_moment_ote1_csv_path,
 )
 from src.ch18_etl_config.etl_sqlstr import create_prime_tablename as prime_tbl
-from src.ch21_world.test._util.ch21_examples import ii00013_example
+from src.ch21_world.test._util.ch21_examples import ii00002_example
 from src.ch21_world.world import (
     idea_sheets_to_lynx_mstr,
     idea_sheets_to_lynx_with_cursor,
@@ -38,7 +38,7 @@ from src.ch21_world.world import (
 from src.ref.keywords import Ch21Keywords as kw, ExampleStrs as exx
 
 
-def test_idea_sheets_to_lynx_with_cursor_Scenario0_ii000113PopulatesTables(
+def test_idea_sheets_to_lynx_with_cursor_Scenario0_ii001071PopulatesTables(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH:
@@ -49,7 +49,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario0_ii000113PopulatesTables(
     e3 = 3
     ex_filename = "Faybob.xlsx"
     i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
-    ii00113_columns = [
+    ii00171_columns = [
         kw.spark_face,
         kw.spark_num,
         kw.moment_rope,
@@ -58,14 +58,14 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario0_ii000113PopulatesTables(
         kw.otx_name,
         kw.inx_name,
     ]
-    ii00113_str = "ii00113"
-    ii00113row0 = [exx.sue, e3, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
-    ii00113_df = DataFrame([ii00113row0], columns=ii00113_columns)
-    ii00113_ex0_str = f"example0_{ii00113_str}"
-    save_sheet(i_src_dir_file_path, ii00113_ex0_str, ii00113_df)
-    ii00113_raw = f"{ii00113_str}_ideax_raw"
-    ii00113_agg = f"{ii00113_str}_ideax_agg"
-    ii00113_valid = f"{ii00113_str}_ideax_vld"
+    ii00171_str = "ii00171"
+    ii00171row0 = [exx.sue, e3, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
+    ii00171_df = DataFrame([ii00171row0], columns=ii00171_columns)
+    ii00171_ex0_str = f"example0_{ii00171_str}"
+    save_sheet(i_src_dir_file_path, ii00171_ex0_str, ii00171_df)
+    ii00171_raw = f"{ii00171_str}_ideax_raw"
+    ii00171_agg = f"{ii00171_str}_ideax_agg"
+    ii00171_valid = f"{ii00171_str}_ideax_vld"
     sparks_ideax_vld_tablename = kw.sparks_ideax_vld
     trlname_sound_raw = prime_tbl(kw.trlname, kw.s_raw)
     trlname_sound_agg = prime_tbl(kw.trlname, "s_agg")
@@ -101,11 +101,11 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario0_ii000113PopulatesTables(
     prncont_job = prime_tbl(kw.prncont, "job", None)
     last_run_metrics_path = create_last_run_metrics_path(mstr_dir)
 
-    assert not db_table_exists(cursor0, ii00113_raw)
-    assert not db_table_exists(cursor0, ii00113_agg)
+    assert not db_table_exists(cursor0, ii00171_raw)
+    assert not db_table_exists(cursor0, ii00171_agg)
     assert not db_table_exists(cursor0, kw.sparks_ideax_agg)
     assert not db_table_exists(cursor0, sparks_ideax_vld_tablename)
-    assert not db_table_exists(cursor0, ii00113_valid)
+    assert not db_table_exists(cursor0, ii00171_valid)
     assert not db_table_exists(cursor0, trlname_sound_raw)
     assert not db_table_exists(cursor0, trlname_sound_agg)
     assert not db_table_exists(cursor0, momentunit_sound_raw)
@@ -159,11 +159,11 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario0_ii000113PopulatesTables(
     # print(f"{cursor.execute(select_momentunit_put_raw).fetchall()=}")
     # print(f"{cursor.execute(select_momentunit_put_agg).fetchall()=}")
 
-    assert get_row_count(cursor0, ii00113_raw) == 1
-    assert get_row_count(cursor0, ii00113_agg) == 1
+    assert get_row_count(cursor0, ii00171_raw) == 1
+    assert get_row_count(cursor0, ii00171_agg) == 1
     assert get_row_count(cursor0, kw.sparks_ideax_agg) == 1
     assert get_row_count(cursor0, sparks_ideax_vld_tablename) == 1
-    assert get_row_count(cursor0, ii00113_valid) == 1
+    assert get_row_count(cursor0, ii00171_valid) == 1
     assert get_row_count(cursor0, trlname_sound_raw) == 1
     assert get_row_count(cursor0, momentunit_sound_raw) == 1
     assert get_row_count(cursor0, prnunit_put_sound_raw) == 1
@@ -214,7 +214,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     e3 = 3
     ex_filename = "Faybob.xlsx"
     i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
-    ii00113_columns = [
+    ii00171_columns = [
         kw.spark_face,
         kw.spark_num,
         kw.moment_rope,
@@ -224,13 +224,13 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
         kw.inx_name,
     ]
     tp37 = 37
-    ii00113_str = "ii00113"
-    ii00113row0 = [exx.sue, e3, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
-    ii00113_df = DataFrame([ii00113row0], columns=ii00113_columns)
-    ii00113_ex0_str = f"example0_{ii00113_str}"
-    save_sheet(i_src_dir_file_path, ii00113_ex0_str, ii00113_df)
+    ii00171_str = "ii00171"
+    ii00171row0 = [exx.sue, e3, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
+    ii00171_df = DataFrame([ii00171row0], columns=ii00171_columns)
+    ii00171_ex0_str = f"example0_{ii00171_str}"
+    save_sheet(i_src_dir_file_path, ii00171_ex0_str, ii00171_df)
 
-    ii00001_columns = [
+    ii00101_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
@@ -244,14 +244,14 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     sue_quota = 235
     sue_celldepth = 3
     ii1row0 = [e3, exx.sue, exx.a23, exx.sue, tp37, ";", sue_quota, sue_celldepth]
-    ii00001_1df = DataFrame([ii1row0], columns=ii00001_columns)
-    ii00001_ex0_str = "example0_ii00001"
-    save_sheet(i_src_dir_file_path, ii00001_ex0_str, ii00001_1df)
+    ii00101_1df = DataFrame([ii1row0], columns=ii00101_columns)
+    ii00101_ex0_str = "example0_ii00101"
+    save_sheet(i_src_dir_file_path, ii00101_ex0_str, ii00101_1df)
 
     # Names of tables
-    ii00113_raw = f"{ii00113_str}_ideax_raw"
-    ii00113_agg = f"{ii00113_str}_ideax_agg"
-    ii00113_valid = f"{ii00113_str}_ideax_vld"
+    ii00171_raw = f"{ii00171_str}_ideax_raw"
+    ii00171_agg = f"{ii00171_str}_ideax_agg"
+    ii00171_valid = f"{ii00171_str}_ideax_vld"
     sparks_ideax_vld_tablename = kw.sparks_ideax_vld
     trlname_sound_raw = prime_tbl(kw.trlname, kw.s_raw)
     trlname_sound_agg = prime_tbl(kw.trlname, "s_agg")
@@ -282,11 +282,11 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     a23_sue_job_path = create_job_path(mstr_dir, a23_lasso, sue_inx)
     sue37_mandate_path = bud_mandate(mstr_dir, a23_lasso, sue_inx, tp37)
 
-    assert not db_table_exists(cursor0, ii00113_raw)
-    assert not db_table_exists(cursor0, ii00113_agg)
+    assert not db_table_exists(cursor0, ii00171_raw)
+    assert not db_table_exists(cursor0, ii00171_agg)
     assert not db_table_exists(cursor0, kw.sparks_ideax_agg)
     assert not db_table_exists(cursor0, sparks_ideax_vld_tablename)
-    assert not db_table_exists(cursor0, ii00113_valid)
+    assert not db_table_exists(cursor0, ii00171_valid)
     assert not db_table_exists(cursor0, trlname_sound_raw)
     assert not db_table_exists(cursor0, trlname_sound_agg)
     assert not db_table_exists(cursor0, momentunit_sound_raw)
@@ -328,12 +328,12 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     )
 
     # THEN
-    assert get_row_count(cursor0, ii00113_raw) == 1
-    assert get_row_count(cursor0, ii00113_agg) == 1
+    assert get_row_count(cursor0, ii00171_raw) == 1
+    assert get_row_count(cursor0, ii00171_agg) == 1
     print(cursor0.execute(f"SELECT * FROM {kw.sparks_ideax_agg}").fetchall())
     assert get_row_count(cursor0, kw.sparks_ideax_agg) == 2
     assert get_row_count(cursor0, sparks_ideax_vld_tablename) == 2
-    assert get_row_count(cursor0, ii00113_valid) == 2
+    assert get_row_count(cursor0, ii00171_valid) == 2
     assert get_row_count(cursor0, trlname_sound_raw) == 2
     assert get_row_count(cursor0, momentunit_sound_raw) == 4
     assert get_row_count(cursor0, prnunit_put_sound_raw) == 4
@@ -374,7 +374,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario2_PopulateMomentTranBook(
     e3 = 3
     ex_filename = "Faybob.xlsx"
     i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
-    ii00002_columns = [
+    ii00102_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
@@ -384,13 +384,13 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario2_PopulateMomentTranBook(
         kw.amount,
         kw.knot,
     ]
-    ii00002_str = "ii00002"
+    ii00102_str = "ii00102"
     tp37 = 37
     sue_to_bob_amount = 200
-    ii00002row0 = [e3, exx.sue, exx.a23, exx.sue, exx.bob, tp37, sue_to_bob_amount, ";"]
-    ii00002_df = DataFrame([ii00002row0], columns=ii00002_columns)
-    ii00002_ex0_str = f"example0_{ii00002_str}"
-    save_sheet(i_src_dir_file_path, ii00002_ex0_str, ii00002_df)
+    ii00102row0 = [e3, exx.sue, exx.a23, exx.sue, exx.bob, tp37, sue_to_bob_amount, ";"]
+    ii00102_df = DataFrame([ii00102row0], columns=ii00102_columns)
+    ii00102_ex0_str = f"example0_{ii00102_str}"
+    save_sheet(i_src_dir_file_path, ii00102_ex0_str, ii00102_df)
 
     assert not db_table_exists(cursor0, kw.moment_contact_nets)
 
@@ -412,16 +412,16 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario3_WhenNoMomentIdeas_ote1_IsStil
     spark2 = 2
     ex_filename = "Faybob.xlsx"
     i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
-    ii00011_columns = [
+    ii00001_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.contact_name,
     ]
-    ii00011_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
-    ii00011_df = DataFrame(ii00011_rows, columns=ii00011_columns)
-    save_sheet(i_src_dir_file_path, "ii00011_ex3", ii00011_df)
+    ii00001_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
+    ii00001_df = DataFrame(ii00001_rows, columns=ii00001_columns)
+    save_sheet(i_src_dir_file_path, "ii00001_ex3", ii00001_df)
     moment_mstr = fay_wdir.moment_mstr_dir
     a23_lasso = lassounit_shop(exx.a23)
     a23_ote1_csv_path = create_moment_ote1_csv_path(moment_mstr, a23_lasso)
@@ -480,7 +480,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
     hour7am = "7am"
     ex_filename = "Faybob.xlsx"
     i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
-    ii00003_columns = [
+    ii00103_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.cumulative_minute,
@@ -488,7 +488,7 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
         kw.hour_label,
         kw.knot,
     ]
-    ii00001_columns = [
+    ii00101_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
@@ -502,29 +502,29 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
     sue_quota = 235
     sue_celldepth = 3
     ii1row0 = [spark2, exx.sue, exx.a23, exx.sue, tp37, ";", sue_quota, sue_celldepth]
-    ii00001_1df = DataFrame([ii1row0], columns=ii00001_columns)
-    ii00001_ex0_str = "example0_ii00001"
-    save_sheet(i_src_dir_file_path, ii00001_ex0_str, ii00001_1df)
+    ii00101_1df = DataFrame([ii1row0], columns=ii00101_columns)
+    ii00101_ex0_str = "example0_ii00101"
+    save_sheet(i_src_dir_file_path, ii00101_ex0_str, ii00101_1df)
 
     ii3row0 = [spark1, exx.sue, minute_360, exx.a23, hour6am, ";"]
     ii3row1 = [spark1, exx.sue, minute_420, exx.a23, hour7am, ";"]
     ii3row2 = [spark2, exx.sue, minute_420, exx.a23, hour7am, ";"]
-    ii00003_1df = DataFrame([ii3row0, ii3row1], columns=ii00003_columns)
-    ii00003_3df = DataFrame([ii3row1, ii3row0, ii3row2], columns=ii00003_columns)
-    ii00003_ex1_str = "example1_ii00003"
-    ii00003_ex3_str = "example3_ii00003"
-    save_sheet(i_src_dir_file_path, ii00003_ex1_str, ii00003_1df)
-    save_sheet(i_src_dir_file_path, ii00003_ex3_str, ii00003_3df)
-    ii00011_columns = [
+    ii00103_1df = DataFrame([ii3row0, ii3row1], columns=ii00103_columns)
+    ii00103_3df = DataFrame([ii3row1, ii3row0, ii3row2], columns=ii00103_columns)
+    ii00103_ex1_str = "example1_ii00103"
+    ii00103_ex3_str = "example3_ii00103"
+    save_sheet(i_src_dir_file_path, ii00103_ex1_str, ii00103_1df)
+    save_sheet(i_src_dir_file_path, ii00103_ex3_str, ii00103_3df)
+    ii00001_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.contact_name,
     ]
-    ii00011_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
-    ii00011_df = DataFrame(ii00011_rows, columns=ii00011_columns)
-    save_sheet(i_src_dir_file_path, "ii00011_ex3", ii00011_df)
+    ii00001_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
+    ii00001_df = DataFrame(ii00001_rows, columns=ii00001_columns)
+    save_sheet(i_src_dir_file_path, "ii00001_ex3", ii00001_df)
     mstr_dir = fay_wdir.moment_mstr_dir
     wrong_a23_moment_dir = create_path(mstr_dir, exx.a23)
     assert os_path_exists(wrong_a23_moment_dir) is False
@@ -567,7 +567,7 @@ def test_idea_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     e3 = 3
     ex_filename = "Faybob.xlsx"
     i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
-    ii00113_columns = [
+    ii00171_columns = [
         kw.spark_face,
         kw.spark_num,
         kw.moment_rope,
@@ -577,13 +577,13 @@ def test_idea_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
         kw.inx_name,
     ]
     tp37 = 37
-    ii00113_str = "ii00113"
-    ii00113row0 = [exx.sue, e3, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
-    ii00113_df = DataFrame([ii00113row0], columns=ii00113_columns)
-    ii00113_ex0_str = f"example0_{ii00113_str}"
-    save_sheet(i_src_dir_file_path, ii00113_ex0_str, ii00113_df)
+    ii00171_str = "ii00171"
+    ii00171row0 = [exx.sue, e3, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
+    ii00171_df = DataFrame([ii00171row0], columns=ii00171_columns)
+    ii00171_ex0_str = f"example0_{ii00171_str}"
+    save_sheet(i_src_dir_file_path, ii00171_ex0_str, ii00171_df)
 
-    ii00001_columns = [
+    ii00101_columns = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
@@ -597,9 +597,9 @@ def test_idea_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     sue_quota = 235
     sue_celldepth = 3
     ii1row0 = [e3, exx.sue, exx.a23, exx.sue, tp37, ";", sue_quota, sue_celldepth]
-    ii00001_1df = DataFrame([ii1row0], columns=ii00001_columns)
-    ii00001_ex0_str = "example0_ii00001"
-    save_sheet(i_src_dir_file_path, ii00001_ex0_str, ii00001_1df)
+    ii00101_1df = DataFrame([ii1row0], columns=ii00101_columns)
+    ii00101_ex0_str = "example0_ii00101"
+    save_sheet(i_src_dir_file_path, ii00101_ex0_str, ii00101_1df)
     fay_db_path = fay_wdir.get_world_db_path()
     assert not os_path_exists(fay_db_path)
 
@@ -609,9 +609,9 @@ def test_idea_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     # THEN
     assert os_path_exists(fay_db_path)
     with sqlite3_connect(fay_db_path) as db_conn:
-        ii00113_raw = f"{ii00113_str}_ideax_raw"
-        ii00113_agg = f"{ii00113_str}_ideax_agg"
-        ii00113_valid = f"{ii00113_str}_ideax_vld"
+        ii00171_raw = f"{ii00171_str}_ideax_raw"
+        ii00171_agg = f"{ii00171_str}_ideax_agg"
+        ii00171_valid = f"{ii00171_str}_ideax_vld"
         sparks_ideax_vld_tablename = kw.sparks_ideax_vld
         trlname_sound_raw = prime_tbl("trlname", kw.s_raw)
         trlname_sound_agg = prime_tbl("trlname", "s_agg")
@@ -633,11 +633,11 @@ def test_idea_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
         prncont_put_heard_agg = prime_tbl("prncont", kw.h_vld, "put")
 
         cursor = db_conn.cursor()
-        assert get_row_count(cursor, ii00113_raw) == 1
-        assert get_row_count(cursor, ii00113_agg) == 1
+        assert get_row_count(cursor, ii00171_raw) == 1
+        assert get_row_count(cursor, ii00171_agg) == 1
         assert get_row_count(cursor, kw.sparks_ideax_agg) == 2
         assert get_row_count(cursor, sparks_ideax_vld_tablename) == 2
-        assert get_row_count(cursor, ii00113_valid) == 2
+        assert get_row_count(cursor, ii00171_valid) == 2
         assert get_row_count(cursor, trlname_sound_raw) == 2
         assert get_row_count(cursor, momentunit_sound_raw) == 4
         assert get_row_count(cursor, prnunit_put_sound_raw) == 4
@@ -678,12 +678,12 @@ def test_idea_sheets_to_lynx_mstr_Scenario1_Creates_job_Files(temp3_fs):
         kw.star,
         kw.pledge,
     ]
-    ii00013_example = pandas_DataFrame(data, columns=cols)
+    ii00002_example = pandas_DataFrame(data, columns=cols)
 
     here_wdir = worlddir_shop("HereNow", str(temp3_fs))
-    ii00013_example_path = create_path(here_wdir.ideas_src_dir, "example.xlsx")
-    save_sheet(ii00013_example_path, "ii00013_ex1", ii00013_example)
-    # print(ii00013_example().to_dict())
+    ii00002_example_path = create_path(here_wdir.ideas_src_dir, "example.xlsx")
+    save_sheet(ii00002_example_path, "ii00002_ex1", ii00002_example)
+    # print(ii00002_example().to_dict())
     mmt_dir = here_wdir.moment_mstr_dir
     hn_red_lasso = lassounit_shop(exx.hn_red)
     hn_red_mmt_json_path = create_moment_json_path(mmt_dir, hn_red_lasso)

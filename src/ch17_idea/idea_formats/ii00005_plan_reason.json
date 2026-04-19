@@ -1,0 +1,18 @@
+{
+  "attributes": {
+    "moment_rope"   : { "otx_key": true  }, 
+    "person_name"   : { "otx_key": true  }, 
+    "plan_rope"     : { "otx_key": true  }, 
+    "pledge"        : { "otx_key": false }, 
+    "reason_context": { "otx_key": true  }, 
+    "reason_state"  : { "otx_key": true  }, 
+    "spark_face"    : { "otx_key": true  }, 
+    "spark_num"     : { "otx_key": true  }, 
+    "star"          : { "otx_key": false }
+  }, 
+  "dimens": [
+    "momentunit", "personunit", "person_planunit", "person_plan_reasonunit", 
+    "person_plan_reason_caseunit"
+  ], 
+  "idea_type": "ii00005"
+}

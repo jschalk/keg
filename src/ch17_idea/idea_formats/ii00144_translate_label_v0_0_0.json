@@ -1,0 +1,13 @@
+{
+  "attributes": {
+    "inx_knot"   : { "otx_key": false }, 
+    "inx_label"  : { "otx_key": false }, 
+    "otx_knot"   : { "otx_key": false }, 
+    "otx_label"  : { "otx_key": true  }, 
+    "spark_face" : { "otx_key": true  }, 
+    "spark_num"  : { "otx_key": true  }, 
+    "unknown_str": { "otx_key": false }
+  }, 
+  "dimens": ["translate_label"], 
+  "idea_type": "ii00144"
+}

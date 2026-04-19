@@ -5,7 +5,7 @@ from src.ch13_time.epoch_main import add_epoch_planunit
 from src.ref.keywords import Ch21Keywords as kw, ExampleStrs as exx
 
 
-def ii00013_example() -> pandas_DataFrame:
+def ii00002_example() -> pandas_DataFrame:
     """All rows valid. pledge=True throughout. Covers varied names."""
 
     hr_mop = init_rope(["herenow_red", "family", exx.casa, exx.clean, exx.mop])

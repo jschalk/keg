@@ -4,14 +4,14 @@ from src.ch07_person_logic.person_main import personunit_shop
 from src.ch07_person_logic.test._util.ch07_examples import personunit_v001
 from src.ch08_person_atom.atom_main import personatom_shop
 from src.ch17_idea.idea_config import (
-    ii00013_planunit_v0_0_0,
-    ii00021_person_contactunit_v0_0_0,
+    ii00002_planunit_v0_0_0,
+    ii00121_person_contactunit_v0_0_0,
 )
 from src.ch17_idea.idea_main import create_idea_df, get_idearef_obj, make_persondelta
 from src.ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
 
 
-def test_make_persondelta_Arg_ii00021_person_contactunit_v0_0_0():
+def test_make_persondelta_Arg_ii00121_person_contactunit_v0_0_0():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     sue_contact_cred_lumen = 11
@@ -31,7 +31,7 @@ def test_make_persondelta_Arg_ii00021_person_contactunit_v0_0_0():
     sue_personunit.add_contactunit(
         exx.yao, yao_contact_cred_lumen, yao_contact_debt_lumen
     )
-    x_idea_name = ii00021_person_contactunit_v0_0_0()
+    x_idea_name = ii00121_person_contactunit_v0_0_0()
     contact_dataframe = create_idea_df(sue_personunit, x_idea_name)
     print(f"{contact_dataframe.columns=}")
     contact_csv = contact_dataframe.to_csv(index=False)
@@ -61,7 +61,7 @@ def test_make_persondelta_Arg_ii00021_person_contactunit_v0_0_0():
     assert len(sue_contact_persondelta.get_ordered_personatoms()) == 3
 
 
-# def test_make_persondelta_Arg_ii00020_person_contact_membership_v0_0_0():
+# def test_make_persondelta_Arg_ii00120_person_contact_membership_v0_0_0():
 #     # ESTABLISH
 #     exx.bob = "Bob"
 #     exx.yao = exx.yao
@@ -87,7 +87,7 @@ def test_make_persondelta_Arg_ii00021_person_contactunit_v0_0_0():
 #     bob_contactunit.add_membership(iowa_str, bob_iowa_group_cred_lumen, bob_iowa_group_debt_lumen)
 #     yao_contactunit.add_membership(iowa_str, yao_iowa_group_cred_lumen, yao_iowa_group_debt_lumen)
 #     yao_contactunit.add_membership(ohio_str, yao_ohio_group_cred_lumen, yao_ohio_group_debt_lumen)
-#     x_idea_name = ii00020_person_contact_membership_v0_0_0()
+#     x_idea_name = ii00120_person_contact_membership_v0_0_0()
 #     membership_dataframe = create_idea_df(sue_personunit, x_idea_name)
 #     assert len(membership_dataframe) == 10
 #     print(membership_dataframe)
@@ -131,7 +131,7 @@ def test_make_persondelta_Arg_ii00021_person_contactunit_v0_0_0():
 #     assert len(membership_changunit.get_ordered_personatoms()) == 10
 
 
-def test_make_persondelta_Arg_ii00013_planunit_v0_0_0():
+def test_make_persondelta_Arg_ii00002_planunit_v0_0_0():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     amy_moment_rope = create_rope("amy56")
@@ -141,7 +141,7 @@ def test_make_persondelta_Arg_ii00013_planunit_v0_0_0():
     sue_personunit.set_l1_plan(planunit_shop(exx.casa, star=casa_star))
     clean_rope = sue_personunit.make_rope(casa_rope, exx.clean)
     sue_personunit.set_plan_obj(planunit_shop(exx.clean, pledge=True), casa_rope)
-    x_idea_name = ii00013_planunit_v0_0_0()
+    x_idea_name = ii00002_planunit_v0_0_0()
     planunit_dataframe = create_idea_df(sue_personunit, x_idea_name)
     planunit_csv = planunit_dataframe.to_csv(index=False)
 
@@ -164,13 +164,13 @@ def test_make_persondelta_Arg_ii00013_planunit_v0_0_0():
     assert len(planunit_changunit.get_ordered_personatoms()) == 2
 
 
-def test_create_idea_df_Arg_ii00013_planunit_v0_0_0_Scenario_personunit_v001(
+def test_create_idea_df_Arg_ii00002_planunit_v0_0_0_Scenario_personunit_v001(
     run_big_tests,
 ):
     # sourcery skip: no-conditionals-in-tests
     if run_big_tests:
         # ESTABLISH / WHEN
-        x_idea_name = ii00013_planunit_v0_0_0()
+        x_idea_name = ii00002_planunit_v0_0_0()
 
         # WHEN
         planunit_format = create_idea_df(personunit_v001(), x_idea_name)

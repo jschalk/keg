@@ -24,21 +24,21 @@ def test_get_all_excel_ideasheets_ReturnsObj_Scenario0_SheetNames(temp3_fs):
     ex_file_path = create_path(x_dir, ex_filename)
     df1 = DataFrame([["AAA", "BBB"]], columns=["spam", "egg"])
     df2 = DataFrame([["ABC", "XYZ"]], columns=["Foo", "Bar"])
-    ii00000_str = "ii00000"
-    ii00001_str = "ii00001"
-    ii00002_str = "ii00002"
-    save_sheet(ex_file_path, ii00000_str, df1)
-    save_sheet(ex_file_path, ii00001_str, df2)
-    save_sheet(ex_file_path, ii00002_str, df2)
+    ii00100_str = "ii00100"
+    ii00101_str = "ii00101"
+    ii00102_str = "ii00102"
+    save_sheet(ex_file_path, ii00100_str, df1)
+    save_sheet(ex_file_path, ii00101_str, df2)
+    save_sheet(ex_file_path, ii00102_str, df2)
 
     # WHEN
     x_sheet_names = get_all_excel_ideasheets(env_dir)
 
     # THEN
     assert x_sheet_names
-    assert (x_dir, ex_filename, ii00000_str) in x_sheet_names
-    assert (x_dir, ex_filename, ii00001_str) in x_sheet_names
-    assert (x_dir, ex_filename, ii00002_str) in x_sheet_names
+    assert (x_dir, ex_filename, ii00100_str) in x_sheet_names
+    assert (x_dir, ex_filename, ii00101_str) in x_sheet_names
+    assert (x_dir, ex_filename, ii00102_str) in x_sheet_names
     assert len(x_sheet_names) == 3
 
 
@@ -63,13 +63,13 @@ def test_IdeaFileRef_get_csv_filename_ReturnsObj_Scenario0():
 
 def test_IdeaFileRef_get_csv_filename_ReturnsObj_Scenario1():
     # ESTABLISH
-    ii00003_str = "ii00003"
+    ii00103_str = "ii00103"
 
     # WHEN
-    x_ideafileref = IdeaFileRef(idea_type=ii00003_str)
+    x_ideafileref = IdeaFileRef(idea_type=ii00103_str)
 
     # THEN
-    assert x_ideafileref.get_csv_filename() == f"{ii00003_str}.csv"
+    assert x_ideafileref.get_csv_filename() == f"{ii00103_str}.csv"
 
 
 def test_get_all_ideafilerefs_ReturnsObj_Scenario0_TranslateSheetNames(
@@ -97,18 +97,18 @@ def test_get_all_ideafilerefs_ReturnsObj_Scenario0_TranslateSheetNames(
     row2 = [spark1, exx.sue, minute_420, exx.a23, hour7am, ";"]
 
     df1 = DataFrame([row1, row2], columns=idea_columns)
-    ii00003_str = "example_ii00003"
-    ii00003_str = "example_ii00003"
-    save_sheet(ex_file_path, ii00003_str, df1)
+    ii00103_str = "example_ii00103"
+    ii00103_str = "example_ii00103"
+    save_sheet(ex_file_path, ii00103_str, df1)
 
     # WHEN
     x_ideasheets = get_all_ideafilerefs(env_dir)
 
     # THEN
     assert x_ideasheets
-    ii3_ideafileref = IdeaFileRef(x_dir, ex_filename, ii00003_str, "ii00003")
+    ii3_ideafileref = IdeaFileRef(x_dir, ex_filename, ii00103_str, "ii00103")
     assert x_ideasheets == [ii3_ideafileref]
-    # assert (x_dir, ex_filename, ii00003_str) in x_ideasheets
+    # assert (x_dir, ex_filename, ii00103_str) in x_ideasheets
     assert len(x_ideasheets) == 1
 
 
@@ -144,18 +144,18 @@ def test_get_all_ideafilerefs_ReturnsObj_Scenario1_OneSheets(temp3_fs):
 
     df1 = DataFrame([row1, row2], columns=idea_columns)
     df2 = DataFrame([incom_row1, incom_row2], columns=incomplete_idea_columns)
-    ii00003_ex1_str = "example1_ii00003"
-    ii00003_ex2_str = "example2_ii00003"
-    save_sheet(ex_file_path, ii00003_ex1_str, df1)
-    save_sheet(ex_file_path, ii00003_ex2_str, df2)
+    ii00103_ex1_str = "example1_ii00103"
+    ii00103_ex2_str = "example2_ii00103"
+    save_sheet(ex_file_path, ii00103_ex1_str, df1)
+    save_sheet(ex_file_path, ii00103_ex2_str, df2)
 
     # WHEN
     x_ideasheets = get_all_ideafilerefs(env_dir)
 
     # THEN
     assert x_ideasheets
-    ex1_ideafileref = IdeaFileRef(x_dir, ex_filename, ii00003_ex1_str, "ii00003")
-    ex2_ideafileref = IdeaFileRef(x_dir, ex_filename, ii00003_ex2_str, "ii00003")
+    ex1_ideafileref = IdeaFileRef(x_dir, ex_filename, ii00103_ex1_str, "ii00103")
+    ex2_ideafileref = IdeaFileRef(x_dir, ex_filename, ii00103_ex2_str, "ii00103")
 
     assert x_ideasheets == [ex1_ideafileref]
     assert len(x_ideasheets) == 1
@@ -195,18 +195,18 @@ def test_get_all_ideafilerefs_ReturnsObj_Scenario2_TwoSheets(temp3_fs):
 
     df1 = DataFrame([ex1_row1, ex1_row2], columns=ex1_idea_columns)
     df2 = DataFrame([ex2_row1, ex2_row2], columns=ex2_idea_columns)
-    ii00003_ex1_str = "example1_ii00003"
-    ii00003_ex2_str = "example2_ii00003"
-    save_sheet(ex_file_path, ii00003_ex1_str, df1)
-    save_sheet(ex_file_path, ii00003_ex2_str, df2)
+    ii00103_ex1_str = "example1_ii00103"
+    ii00103_ex2_str = "example2_ii00103"
+    save_sheet(ex_file_path, ii00103_ex1_str, df1)
+    save_sheet(ex_file_path, ii00103_ex2_str, df2)
 
     # WHEN
     x_ideasheets = get_all_ideafilerefs(env_dir)
 
     # THEN
     assert x_ideasheets
-    ex1_ideafileref = IdeaFileRef(x_dir, ex_filename, ii00003_ex1_str, "ii00003")
-    ex2_ideafileref = IdeaFileRef(x_dir, ex_filename, ii00003_ex2_str, "ii00003")
+    ex1_ideafileref = IdeaFileRef(x_dir, ex_filename, ii00103_ex1_str, "ii00103")
+    ex2_ideafileref = IdeaFileRef(x_dir, ex_filename, ii00103_ex2_str, "ii00103")
 
     assert x_ideasheets == [ex1_ideafileref, ex2_ideafileref]
     assert len(x_ideasheets) == 2

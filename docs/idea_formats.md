@@ -1,43 +1,45 @@
 # Idea Manifest
 
-- [`ii00000`](idea_formats\ii00000.md): spark_num, spark_face, moment_rope, epoch_label, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations
-- [`ii00001`](idea_formats\ii00001.md): spark_num, spark_face, moment_rope, person_name, bud_time, knot, quota, celldepth
-- [`ii00002`](idea_formats\ii00002.md): spark_num, spark_face, moment_rope, person_name, contact_name, tran_time, amount, knot
-- [`ii00003`](idea_formats\ii00003.md): spark_num, spark_face, moment_rope, cumulative_minute, hour_label, knot
-- [`ii00004`](idea_formats\ii00004.md): spark_num, spark_face, moment_rope, cumulative_day, month_label, knot
-- [`ii00005`](idea_formats\ii00005.md): spark_num, spark_face, moment_rope, weekday_order, weekday_label, knot
-- [`ii00006`](idea_formats\ii00006.md): spark_num, spark_face, moment_rope, offi_time, knot
-- [`ii00011`](idea_formats\ii00011.md): spark_num, spark_face, moment_rope, person_name, contact_name
-- [`ii00012`](idea_formats\ii00012.md): spark_num, spark_face, moment_rope, person_name, contact_name, group_title
-- [`ii00013`](idea_formats\ii00013.md): spark_num, spark_face, moment_rope, person_name, plan_rope, star, pledge
-- [`ii00019`](idea_formats\ii00019.md): spark_num, spark_face, moment_rope, person_name, plan_rope, begin, close, addin, numor, denom, morph, gogo_want, stop_want
-- [`ii00020`](idea_formats\ii00020.md): spark_num, spark_face, moment_rope, person_name, contact_name, group_title, group_cred_lumen, group_debt_lumen, knot
-- [`ii00021`](idea_formats\ii00021.md): spark_num, spark_face, moment_rope, person_name, contact_name, contact_cred_lumen, contact_debt_lumen, knot
-- [`ii00022`](idea_formats\ii00022.md): spark_num, spark_face, person_name, plan_rope, awardee_title, give_force, take_force, knot
-- [`ii00023`](idea_formats\ii00023.md): spark_num, spark_face, person_name, plan_rope, fact_context, fact_state, fact_lower, fact_upper, knot
-- [`ii00024`](idea_formats\ii00024.md): spark_num, spark_face, person_name, plan_rope, labor_title, solo, knot
-- [`ii00025`](idea_formats\ii00025.md): spark_num, spark_face, person_name, plan_rope, healer_name, knot
-- [`ii00026`](idea_formats\ii00026.md): spark_num, spark_face, person_name, plan_rope, reason_context, reason_state, reason_lower, reason_upper, reason_divisor, knot
-- [`ii00027`](idea_formats\ii00027.md): spark_num, spark_face, person_name, plan_rope, reason_context, active_requisite, knot
-- [`ii00028`](idea_formats\ii00028.md): spark_num, spark_face, person_name, plan_rope, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool, knot
-- [`ii00029`](idea_formats\ii00029.md): spark_num, spark_face, moment_rope, person_name, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain, knot
-- [`ii00036`](idea_formats\ii00036.md): spark_num, spark_face, moment_rope, person_name, plan_rope, healer_name, problem_bool
-- [`ii00042`](idea_formats\ii00042.md): spark_num, spark_face, otx_title, inx_title, otx_knot, inx_knot, unknown_str
-- [`ii00043`](idea_formats\ii00043.md): spark_num, spark_face, otx_name, inx_name, otx_knot, inx_knot, unknown_str
-- [`ii00044`](idea_formats\ii00044.md): spark_num, spark_face, otx_label, inx_label, otx_knot, inx_knot, unknown_str
-- [`ii00045`](idea_formats\ii00045.md): spark_num, spark_face, otx_rope, inx_rope, otx_knot, inx_knot, unknown_str
-- [`ii00050`](idea_formats\ii00050.md): spark_num, spark_face, moment_rope, person_name, contact_name, group_title_ERASE
-- [`ii00051`](idea_formats\ii00051.md): spark_num, spark_face, moment_rope, person_name, contact_name_ERASE
-- [`ii00052`](idea_formats\ii00052.md): spark_num, spark_face, person_name, plan_rope, awardee_title_ERASE
-- [`ii00053`](idea_formats\ii00053.md): spark_num, spark_face, person_name, plan_rope, fact_context_ERASE
-- [`ii00054`](idea_formats\ii00054.md): spark_num, spark_face, person_name, plan_rope, labor_title_ERASE
-- [`ii00055`](idea_formats\ii00055.md): spark_num, spark_face, person_name, plan_rope, healer_name_ERASE
-- [`ii00056`](idea_formats\ii00056.md): spark_num, spark_face, person_name, plan_rope, reason_context, reason_state_ERASE
-- [`ii00057`](idea_formats\ii00057.md): spark_num, spark_face, person_name, plan_rope, reason_context_ERASE
-- [`ii00058`](idea_formats\ii00058.md): spark_num, spark_face, person_name, plan_rope_ERASE
-- [`ii00059`](idea_formats\ii00059.md): spark_num, spark_face, moment_rope, person_name_ERASE
-- [`ii00070`](idea_formats\ii00070.md): spark_num, spark_face, moment_rope, otx_time, inx_time
-- [`ii00113`](idea_formats\ii00113.md): spark_num, spark_face, moment_rope, person_name, contact_name, otx_name, inx_name
-- [`ii00115`](idea_formats\ii00115.md): spark_num, spark_face, moment_rope, person_name, contact_name, otx_title, inx_title
-- [`ii00116`](idea_formats\ii00116.md): spark_num, spark_face, moment_rope, person_name, contact_name, otx_label, inx_label
-- [`ii00117`](idea_formats\ii00117.md): spark_num, spark_face, moment_rope, person_name, contact_name, otx_rope, inx_rope
+- [`ii00001`](idea_formats\ii00001.md): spark_num, spark_face, moment_rope, person_name, contact_name
+- [`ii00002`](idea_formats\ii00002.md): spark_num, spark_face, moment_rope, person_name, plan_rope, star, pledge
+- [`ii00005`](idea_formats\ii00005.md): spark_num, spark_face, moment_rope, person_name, plan_rope, reason_context, reason_state, star, pledge
+- [`ii00007`](idea_formats\ii00007.md): spark_num, spark_face, moment_rope, person_name, plan_rope, fact_context, fact_state
+- [`ii00100`](idea_formats\ii00100.md): spark_num, spark_face, moment_rope, epoch_label, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations
+- [`ii00101`](idea_formats\ii00101.md): spark_num, spark_face, moment_rope, person_name, bud_time, knot, quota, celldepth
+- [`ii00102`](idea_formats\ii00102.md): spark_num, spark_face, moment_rope, person_name, contact_name, tran_time, amount, knot
+- [`ii00103`](idea_formats\ii00103.md): spark_num, spark_face, moment_rope, cumulative_minute, hour_label, knot
+- [`ii00104`](idea_formats\ii00104.md): spark_num, spark_face, moment_rope, cumulative_day, month_label, knot
+- [`ii00105`](idea_formats\ii00105.md): spark_num, spark_face, moment_rope, weekday_order, weekday_label, knot
+- [`ii00106`](idea_formats\ii00106.md): spark_num, spark_face, moment_rope, offi_time, knot
+- [`ii00112`](idea_formats\ii00112.md): spark_num, spark_face, moment_rope, person_name, contact_name, group_title
+- [`ii00119`](idea_formats\ii00119.md): spark_num, spark_face, moment_rope, person_name, plan_rope, begin, close, addin, numor, denom, morph, gogo_want, stop_want
+- [`ii00120`](idea_formats\ii00120.md): spark_num, spark_face, moment_rope, person_name, contact_name, group_title, group_cred_lumen, group_debt_lumen, knot
+- [`ii00121`](idea_formats\ii00121.md): spark_num, spark_face, moment_rope, person_name, contact_name, contact_cred_lumen, contact_debt_lumen, knot
+- [`ii00122`](idea_formats\ii00122.md): spark_num, spark_face, person_name, plan_rope, awardee_title, give_force, take_force, knot
+- [`ii00123`](idea_formats\ii00123.md): spark_num, spark_face, person_name, plan_rope, fact_context, fact_state, fact_lower, fact_upper, knot
+- [`ii00124`](idea_formats\ii00124.md): spark_num, spark_face, person_name, plan_rope, labor_title, solo, knot
+- [`ii00125`](idea_formats\ii00125.md): spark_num, spark_face, person_name, plan_rope, healer_name, knot
+- [`ii00126`](idea_formats\ii00126.md): spark_num, spark_face, person_name, plan_rope, reason_context, reason_state, reason_lower, reason_upper, reason_divisor, knot
+- [`ii00127`](idea_formats\ii00127.md): spark_num, spark_face, person_name, plan_rope, reason_context, active_requisite, knot
+- [`ii00128`](idea_formats\ii00128.md): spark_num, spark_face, person_name, plan_rope, begin, close, addin, numor, denom, morph, gogo_want, stop_want, star, pledge, problem_bool, knot
+- [`ii00129`](idea_formats\ii00129.md): spark_num, spark_face, moment_rope, person_name, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain, knot
+- [`ii00136`](idea_formats\ii00136.md): spark_num, spark_face, moment_rope, person_name, plan_rope, healer_name, problem_bool
+- [`ii00142`](idea_formats\ii00142.md): spark_num, spark_face, otx_title, inx_title, otx_knot, inx_knot, unknown_str
+- [`ii00143`](idea_formats\ii00143.md): spark_num, spark_face, otx_name, inx_name, otx_knot, inx_knot, unknown_str
+- [`ii00144`](idea_formats\ii00144.md): spark_num, spark_face, otx_label, inx_label, otx_knot, inx_knot, unknown_str
+- [`ii00145`](idea_formats\ii00145.md): spark_num, spark_face, otx_rope, inx_rope, otx_knot, inx_knot, unknown_str
+- [`ii00150`](idea_formats\ii00150.md): spark_num, spark_face, moment_rope, person_name, contact_name, group_title_ERASE
+- [`ii00151`](idea_formats\ii00151.md): spark_num, spark_face, moment_rope, person_name, contact_name_ERASE
+- [`ii00152`](idea_formats\ii00152.md): spark_num, spark_face, person_name, plan_rope, awardee_title_ERASE
+- [`ii00153`](idea_formats\ii00153.md): spark_num, spark_face, person_name, plan_rope, fact_context_ERASE
+- [`ii00154`](idea_formats\ii00154.md): spark_num, spark_face, person_name, plan_rope, labor_title_ERASE
+- [`ii00155`](idea_formats\ii00155.md): spark_num, spark_face, person_name, plan_rope, healer_name_ERASE
+- [`ii00156`](idea_formats\ii00156.md): spark_num, spark_face, person_name, plan_rope, reason_context, reason_state_ERASE
+- [`ii00157`](idea_formats\ii00157.md): spark_num, spark_face, person_name, plan_rope, reason_context_ERASE
+- [`ii00158`](idea_formats\ii00158.md): spark_num, spark_face, person_name, plan_rope_ERASE
+- [`ii00159`](idea_formats\ii00159.md): spark_num, spark_face, moment_rope, person_name_ERASE
+- [`ii00170`](idea_formats\ii00170.md): spark_num, spark_face, moment_rope, otx_time, inx_time
+- [`ii00171`](idea_formats\ii00171.md): spark_num, spark_face, moment_rope, person_name, contact_name, otx_name, inx_name
+- [`ii00172`](idea_formats\ii00172.md): spark_num, spark_face, moment_rope, person_name, contact_name, otx_title, inx_title
+- [`ii00173`](idea_formats\ii00173.md): spark_num, spark_face, moment_rope, person_name, contact_name, otx_label, inx_label
+- [`ii00174`](idea_formats\ii00174.md): spark_num, spark_face, moment_rope, person_name, contact_name, otx_rope, inx_rope

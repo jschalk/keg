@@ -50,6 +50,7 @@ def test_save_ropeterm_description_md_CreatesFile(temp3_fs):
 
 
 def test_save_idea_mds_CreatesFiles(temp3_fs):
+    """brittle sanity test to make function saves correct number of files"""
     # ESTABLISH
     temp_dir = str(temp3_fs)
     assert count_dirs_files(temp_dir) == 0
@@ -58,7 +59,7 @@ def test_save_idea_mds_CreatesFiles(temp3_fs):
     save_idea_mds(temp_dir)
 
     # THEN
-    assert count_dirs_files(temp_dir) == 42
+    assert count_dirs_files(temp_dir) == 44
 
 
 def test_save_idea_formats_CreatesFile(temp3_fs):
@@ -73,4 +74,4 @@ def test_save_idea_formats_CreatesFile(temp3_fs):
     # THEN
     assert os_path_exists(idea_formats_path)
     idea_formats_md = open_file(idea_formats_path)
-    assert idea_formats_md.find("ii00004") > 0
+    assert idea_formats_md.find("ii00104") > 0
