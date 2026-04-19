@@ -1,3 +1,10 @@
+## [0.83.12](https://github.com/jschalk/keg/compare/v0.83.11...v0.83.12) (2026-04-19)
+
+
+### Bug Fixes
+
+* correct pyproject toml version ([64928be](https://github.com/jschalk/keg/commit/64928beca76c8f086a6f92d52cba26c890a143ec))
+
 ## [0.83.11](https://github.com/jschalk/keg/compare/v0.83.10...v0.83.11) (2026-04-19)
 
 
