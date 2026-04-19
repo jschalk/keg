@@ -16,6 +16,7 @@ from ch17_idea.idea_belief_csv import (
 from ch17_idea.idea_db_tool import (
     csv_dict_to_excel,
     prettify_excel_file,
+    prettify_excel_files,
     remove_empty_sheets,
 )
 from ch21_world.world import worlddir_shop
@@ -376,7 +377,6 @@ def save_and_prettify_excel_file(
     delete_dir(dest_file_path)
     csv_dict_to_excel(belief_csvs, dest_dir, dest_filename)
     remove_empty_sheets(dest_file_path)
-    print(f"Prettify {dest_file_path}")
     prettify_excel_file(dest_file_path)
 
 

@@ -29,7 +29,7 @@ from ch17_idea.idea_config import (
     get_idea_sqlite_types,
 )
 from contextlib import suppress as contextlib_suppress
-from io import StringIO as io_StringIO
+from io import BytesIO as io_BytesIO, StringIO as io_StringIO
 from numpy import float64
 from openpyxl import Workbook, load_workbook, load_workbook as openpyxl_load_workbook
 from openpyxl.styles import Alignment, Border, Font, GradientFill, PatternFill, Side
@@ -514,96 +514,109 @@ def prettify_excel_file(file_path: str, output_path: str = None) -> str:
     if output_path is None:
         output_path = file_path
 
-    # --- Style constants ---
-    HEADER_BG = "2F5496"  # Dark blue
-    HEADER_FONT = "FFFFFF"  # White text
-    ROW_ALT_BG = "DCE6F1"  # Light blue alternating rows
-    ROW_BASE_BG = "FFFFFF"  # White base rows
-    BORDER_COLOR = "B8CCE4"  # Subtle blue-grey border
-    FONT_NAME = "Arial"
-    NA_DISPLAY = ""  # Replacement for empty / NA cells
+    # Read the file into memory first so the original file handle is released
+    with open(file_path, "rb") as f:
+        file_bytes = io_BytesIO(f.read())
 
-    thin_side = Side(style="thin", color=BORDER_COLOR)
-    thick_side = Side(style="medium", color="2F5496")
-    cell_border = Border(
-        left=thin_side,
-        right=thin_side,
-        top=thin_side,
-        bottom=thin_side,
-    )
-    header_border = Border(
-        left=thick_side,
-        right=thick_side,
-        top=thick_side,
-        bottom=thick_side,
-    )
+        wb = load_workbook(file_bytes)  # ← load from bytes, not the path
 
-    def _is_blank(value) -> bool:
-        """Return True for None, NaN, 'NA', 'N/A', 'nan', or empty strings."""
-        if value is None:
-            return True
-        if isinstance(value, float) and pandas_isna(value):
-            return True
-        none_strs = {"", "na", "n/a", "nan", "none"}
-        return isinstance(value, str) and value.strip().lower() in none_strs
+        # --- Style constants ---
+        HEADER_BG = "2F5496"  # Dark blue
+        HEADER_FONT = "FFFFFF"  # White text
+        ROW_ALT_BG = "DCE6F1"  # Light blue alternating rows
+        ROW_BASE_BG = "FFFFFF"  # White base rows
+        BORDER_COLOR = "B8CCE4"  # Subtle blue-grey border
+        FONT_NAME = "Arial"
+        NA_DISPLAY = ""  # Replacement for empty / NA cells
 
-    wb = load_workbook(file_path)
+        thin_side = Side(style="thin", color=BORDER_COLOR)
+        thick_side = Side(style="medium", color="2F5496")
+        cell_border = Border(
+            left=thin_side,
+            right=thin_side,
+            top=thin_side,
+            bottom=thin_side,
+        )
+        header_border = Border(
+            left=thick_side,
+            right=thick_side,
+            top=thick_side,
+            bottom=thick_side,
+        )
 
-    for ws in wb.worksheets:
-        if ws.max_row == 0 or ws.max_column == 0:
-            continue  # Skip empty sheets
+        def _is_blank(value) -> bool:
+            """Return True for None, NaN, 'NA', 'N/A', 'nan', or empty strings."""
+            if value is None:
+                return True
+            if isinstance(value, float) and pandas_isna(value):
+                return True
+            none_strs = {"", "na", "n/a", "nan", "none"}
+            return isinstance(value, str) and value.strip().lower() in none_strs
 
-        # ── 1. Style every cell ──────────────────────────────────────────────
-        # Build a set of 0-based column indices that should be left-aligned,
-        # derived from the header names in row 1.
-        header_names = [cell.value for cell in next(ws.iter_rows(min_row=1, max_row=1))]
-        left_align_columns = {"plan_rope"}
-        ws_left_align_cols = {
-            idx
-            for idx, name in enumerate(header_names)
-            if isinstance(name, str) and name.strip() in left_align_columns
-        }
+        wb = load_workbook(file_path)
 
-        for row_idx, row in enumerate(ws.iter_rows(), start=1):
-            is_header = row_idx == 1
-            use_alt = (row_idx % 2 == 0) and not is_header
+        for ws in wb.worksheets:
+            if ws.max_row == 0 or ws.max_column == 0:
+                continue  # Skip empty sheets
 
-            bg_color = (
-                HEADER_BG if is_header else (ROW_ALT_BG if use_alt else ROW_BASE_BG)
-            )
-            fill = PatternFill("solid", fgColor=bg_color)
+            # ── 1. Style every cell ──────────────────────────────────────────────
+            # Build a set of 0-based column indices that should be left-aligned,
+            # derived from the header names in row 1.
+            header_names = [
+                cell.value for cell in next(ws.iter_rows(min_row=1, max_row=1))
+            ]
+            left_align_columns = {"plan_rope"}
+            ws_left_align_cols = {
+                idx
+                for idx, name in enumerate(header_names)
+                if isinstance(name, str) and name.strip() in left_align_columns
+            }
 
-            for col_idx, cell in enumerate(row):
-                # Replace blank / NA values
-                if not is_header and _is_blank(cell.value):
-                    cell.value = NA_DISPLAY
+            for row_idx, row in enumerate(ws.iter_rows(), start=1):
+                is_header = row_idx == 1
+                use_alt = (row_idx % 2 == 0) and not is_header
 
-                h_align = "left" if col_idx in ws_left_align_cols else "center"
-                cell.fill = fill
-                cell.border = header_border if is_header else cell_border
-                cell.alignment = Alignment(h_align, vertical="center", wrap_text=True)
-                x_color = HEADER_FONT if is_header else "000000"
-                cell.font = Font(name=FONT_NAME, bold=is_header, color=x_color, size=10)
+                bg_color = (
+                    HEADER_BG if is_header else (ROW_ALT_BG if use_alt else ROW_BASE_BG)
+                )
+                fill = PatternFill("solid", fgColor=bg_color)
 
-        # ── 2. Auto-fit column widths ────────────────────────────────────────
-        for col_idx, col_cells in enumerate(ws.iter_cols(), start=1):
-            col_letter = get_column_letter(col_idx)
-            max_len = 0
-            for cell in col_cells:
-                with contextlib_suppress(Exception):
-                    cell_len = len(str(cell.value)) if cell.value is not None else 0
-                    max_len = max(max_len, cell_len)
-            # Clamp width: min 8, max 50 characters wide
-            ws.column_dimensions[col_letter].width = min(max(max_len + 4, 8), 50)
+                for col_idx, cell in enumerate(row):
+                    # Replace blank / NA values
+                    if not is_header and _is_blank(cell.value):
+                        cell.value = NA_DISPLAY
 
-        # ── 3. Freeze header row ─────────────────────────────────────────────
-        ws.freeze_panes = "A2"
+                    h_align = "left" if col_idx in ws_left_align_cols else "center"
+                    cell.fill = fill
+                    cell.border = header_border if is_header else cell_border
+                    cell.alignment = Alignment(
+                        h_align, vertical="center", wrap_text=True
+                    )
+                    x_color = HEADER_FONT if is_header else "000000"
+                    cell.font = Font(
+                        name=FONT_NAME, bold=is_header, color=x_color, size=10
+                    )
 
-        # ── 4. Auto-filter on header row ─────────────────────────────────────
-        if ws.max_row > 1:
-            ws.auto_filter.ref = ws.dimensions
+            # ── 2. Auto-fit column widths ────────────────────────────────────────
+            for col_idx, col_cells in enumerate(ws.iter_cols(), start=1):
+                col_letter = get_column_letter(col_idx)
+                max_len = 0
+                for cell in col_cells:
+                    with contextlib_suppress(Exception):
+                        cell_len = len(str(cell.value)) if cell.value is not None else 0
+                        max_len = max(max_len, cell_len)
+                # Clamp width: min 8, max 50 characters wide
+                ws.column_dimensions[col_letter].width = min(max(max_len + 4, 8), 50)
 
-    wb.save(output_path)
+            # ── 3. Freeze header row ─────────────────────────────────────────────
+            ws.freeze_panes = "A2"
+
+            # ── 4. Auto-filter on header row ─────────────────────────────────────
+            if ws.max_row > 1:
+                ws.auto_filter.ref = ws.dimensions
+
+        wb.save(output_path)
+        # wb.close()
     return output_path
 
 

@@ -52,11 +52,13 @@ def test_prettify_excel_file_SetsAttrs(temp3_fs):
     with pandas_ExcelWriter(file_path, engine="xlsxwriter") as writer:
         df1.to_excel(writer, sheet_name="Employees", index=False)
         df2.to_excel(writer, sheet_name="Supplies", index=False)
+    print(f"{file_path=}")
 
     # WHEN
     prettify_excel_file(file_path)
 
     # THEN: Verify formatting changes
+    print(f"{file_path=}")
     wb = load_workbook(file_path)
 
     # Check headers in both sheets
