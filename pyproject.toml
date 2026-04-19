@@ -29,7 +29,7 @@ test = [
 ]
 
 [project.scripts]
-listen = "listen:main"
+keg2_app = "listen:main"
 
 [tool.commitizen]
 name = "cz_conventional_commits"

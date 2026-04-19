@@ -446,16 +446,3 @@ def get_option_table_options() -> dict[str, Callable]:
         "create_example_moment_ledger_file": create_example_moment_ledger_file,
         "create_example_moment_budget_file": create_example_moment_budget_file,
     }
-
-
-# def add_title1_label(title_frame):
-#     ax = get_app_glb_attrs()
-#     app1_str = "Keg Listening App#1"
-#     tk.Label(
-#         title_frame,
-#         text=app1_str,
-#         font=ax.platform_font,
-#         bg=ax.bg,
-#         fg=ax.accent,
-#         anchor="w",
-#     ).pack(side="left")

@@ -107,7 +107,7 @@ class ETLAppMissingDefaultError(Exception):
 class ETLApp(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Listening using Keg2 — ETL Launcher")
+        self.title("Listening using Keg2")
         self.resizable(False, False)
         ax = get_app_glb_attrs()
         self.configure(bg=ax.bg)
@@ -370,7 +370,7 @@ class ETLApp(tk.Tk):
 
         tk.Label(
             title_frame,
-            text="Keg Listening App#1",
+            text="Listening using Keg2",
             font=ax.platform_font,
             bg=ax.bg,
             fg=ax.accent,
