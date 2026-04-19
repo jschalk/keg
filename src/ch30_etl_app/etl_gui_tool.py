@@ -434,6 +434,12 @@ def create_example_moment_budget_file(file_path: str):
     pass
 
 
+def create_monopoly_belief_file(file_path: str):
+    # TODO dict[str, str]s and save to file
+    # prnt("create_example_moment_budget_file...")
+    pass
+
+
 def get_option_table_options() -> dict[str, Callable]:
     return {
         "2 persons, 2 tasks example": create_simple_1m2p2pledges_belief_file,
@@ -445,4 +451,5 @@ def get_option_table_options() -> dict[str, Callable]:
         "create_emmanuel_belief_file": create_emmanuel_belief_file,
         "create_example_moment_ledger_file": create_example_moment_ledger_file,
         "create_example_moment_budget_file": create_example_moment_budget_file,
+        "Monopoly Example": create_monopoly_belief_file,
     }

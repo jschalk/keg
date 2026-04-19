@@ -5,6 +5,7 @@ from ch30_etl_app.etl_gui_tool import (
     create_example_moment_budget_file,
     create_example_moment_ledger_file,
     create_five_time_config_file,
+    create_monopoly_belief_file,
     create_simple_1m2p2pledges_belief_csvs,
     create_simple_1m2p2pledges_belief_file,
     create_simple_1m2p5pledges_belief_file,
@@ -34,6 +35,7 @@ def test_get_option_table_options_ReturnsObj():
         create_emmanuel_belief_file,
         create_example_moment_ledger_file,
         create_example_moment_budget_file,
+        create_monopoly_belief_file,
     }
 
     for func_desc, func_obj in result.items():
