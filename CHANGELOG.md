@@ -1,3 +1,13 @@
+## [0.83.16](https://github.com/jschalk/keg/compare/v0.83.15...v0.83.16) (2026-04-19)
+
+
+### Bug Fixes
+
+* [#1124](https://github.com/jschalk/keg/issues/1124) add scaffolding for new etl_gui app example ([fa384d5](https://github.com/jschalk/keg/commit/fa384d5e073721dfc4b382796862250cd64758e5))
+* [#1124](https://github.com/jschalk/keg/issues/1124) issue where belief file was not prettified ([925b069](https://github.com/jschalk/keg/commit/925b06966216f8982665cfbf6edcdbc8a427d35c))
+* [#1124](https://github.com/jschalk/keg/issues/1124) replace all "src.ch" imports with "ch" ([213948a](https://github.com/jschalk/keg/commit/213948aeb12073855df4ee48fe7f76e0c34965ee))
+* [#1167](https://github.com/jschalk/keg/issues/1167), close [#1168](https://github.com/jschalk/keg/issues/1168), close [#1169](https://github.com/jschalk/keg/issues/1169) ([477240c](https://github.com/jschalk/keg/commit/477240c06e8889e6d160f97d29ad5f421ca4eeec))
+
 ## [0.83.14](https://github.com/jschalk/keg/compare/v0.83.13...v0.83.14) (2026-04-19)
 
 
