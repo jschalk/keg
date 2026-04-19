@@ -1,3 +1,10 @@
+## [0.83.14](https://github.com/jschalk/keg/compare/v0.83.13...v0.83.14) (2026-04-19)
+
+
+### Bug Fixes
+
+* [#1124](https://github.com/jschalk/keg/issues/1124) changed publish.yaml to automatically set version number when releasing to pypi ([e0ef71d](https://github.com/jschalk/keg/commit/e0ef71dbfe0556fa0974bdfd7c57899c0d36e93c))
+
 ## [0.83.12](https://github.com/jschalk/keg/compare/v0.83.11...v0.83.12) (2026-04-19)
 
 
