@@ -50,6 +50,7 @@ def test_save_ropeterm_description_md_CreatesFile(temp3_fs):
 
 
 def test_save_idea_mds_CreatesFiles(temp3_fs):
+    """brittle test to make sure files"""
     # ESTABLISH
     temp_dir = str(temp3_fs)
     assert count_dirs_files(temp_dir) == 0
@@ -58,7 +59,7 @@ def test_save_idea_mds_CreatesFiles(temp3_fs):
     save_idea_mds(temp_dir)
 
     # THEN
-    assert count_dirs_files(temp_dir) == 42
+    assert count_dirs_files(temp_dir) == 43
 
 
 def test_save_idea_formats_CreatesFile(temp3_fs):

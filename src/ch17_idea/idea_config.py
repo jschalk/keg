@@ -442,7 +442,6 @@ def get_idea_sqlite_types() -> dict[str, str]:
         "inallocable_contact_debt_lumen": "REAL",
         "irrational_contact_debt_lumen": "REAL",
         "reason_active": "INTEGER",
-        "case_task": "INTEGER",
         "case_active": "INTEGER",
         "person_name_is_workforce": "INTEGER",
         "plan_active": "INTEGER",
@@ -477,6 +476,18 @@ def get_idea_sqlite_types() -> dict[str, str]:
 # def ii00105_moment_epoch_weekday_v0_0_0()->str: return "ii00105_moment_epoch_weekday_v0_0_0"
 
 
+def ii00001_contact_v0_0_0() -> str:
+    return "ii00001_contact_v0_0_0"
+
+
+def ii00002_planunit_v0_0_0() -> str:
+    return "ii00002_planunit_v0_0_0"
+
+
+def ii00005_plan_reason() -> str:
+    return "ii00005_plan_reason"
+
+
 def ii00100_momentunit_v0_0_0() -> str:
     return "ii00100_momentunit_v0_0_0"
 
@@ -505,16 +516,8 @@ def ii00106_moment_timeoffi_v0_0_0() -> str:
     return "ii00106_moment_timeoffi_v0_0_0"
 
 
-def ii00001_contact_v0_0_0() -> str:
-    return "ii00001_contact_v0_0_0"
-
-
 def ii00112_membership_v0_0_0() -> str:
     return "ii00112_membership_v0_0_0"
-
-
-def ii00002_planunit_v0_0_0() -> str:
-    return "ii00002_planunit_v0_0_0"
 
 
 def ii00119_planunit_v0_0_0() -> str:
@@ -659,6 +662,9 @@ def ii00174_rope_map1_v0_0_0() -> str:
 
 def get_idea_format_filenames() -> set[str]:
     return {
+        ii00001_contact_v0_0_0(),
+        ii00002_planunit_v0_0_0(),
+        ii00005_plan_reason(),
         ii00100_momentunit_v0_0_0(),
         ii00101_moment_budunit_v0_0_0(),
         ii00102_moment_paybook_v0_0_0(),
@@ -666,9 +672,7 @@ def get_idea_format_filenames() -> set[str]:
         ii00104_moment_epoch_month_v0_0_0(),
         ii00105_moment_epoch_weekday_v0_0_0(),
         ii00106_moment_timeoffi_v0_0_0(),
-        ii00001_contact_v0_0_0(),
         ii00112_membership_v0_0_0(),
-        ii00002_planunit_v0_0_0(),
         ii00119_planunit_v0_0_0(),
         ii00120_person_contact_membership_v0_0_0(),
         ii00121_person_contactunit_v0_0_0(),
@@ -705,6 +709,9 @@ def get_idea_format_filenames() -> set[str]:
 
 def get_idea_types() -> set[str]:
     return {
+        "ii00001",
+        "ii00002",
+        "ii00005",
         "ii00100",
         "ii00101",
         "ii00102",
@@ -712,9 +719,7 @@ def get_idea_types() -> set[str]:
         "ii00104",
         "ii00105",
         "ii00106",
-        "ii00001",
         "ii00112",
-        "ii00002",
         "ii00119",
         "ii00120",
         "ii00121",
@@ -758,6 +763,9 @@ def get_idea_format_filename(idea_type: str) -> str:
 
 def get_idea_format_headers() -> dict[str, list[str]]:
     return {
+        "moment_rope,person_name,contact_name": ii00001_contact_v0_0_0(),
+        "moment_rope,person_name,plan_rope,star,pledge": ii00002_planunit_v0_0_0(),
+        "moment_rope,person_name,plan_rope,reason_context,reason_state,star,pledge": ii00005_plan_reason(),
         "moment_rope,epoch_label,c400_number,yr1_jan1_offset,monthday_index,fund_grain,mana_grain,respect_grain,knot,job_listen_rotations": ii00100_momentunit_v0_0_0(),
         "moment_rope,person_name,bud_time,knot,quota,celldepth": ii00101_moment_budunit_v0_0_0(),
         "moment_rope,person_name,contact_name,tran_time,amount,knot": ii00102_moment_paybook_v0_0_0(),
@@ -765,9 +773,7 @@ def get_idea_format_headers() -> dict[str, list[str]]:
         "moment_rope,cumulative_day,month_label,knot": ii00104_moment_epoch_month_v0_0_0(),
         "moment_rope,weekday_order,weekday_label,knot": ii00105_moment_epoch_weekday_v0_0_0(),
         "moment_rope,offi_time,knot": ii00106_moment_timeoffi_v0_0_0(),
-        "moment_rope,person_name,contact_name": ii00001_contact_v0_0_0(),
         "moment_rope,person_name,contact_name,group_title": ii00112_membership_v0_0_0(),
-        "moment_rope,person_name,plan_rope,star,pledge": ii00002_planunit_v0_0_0(),
         "moment_rope,person_name,plan_rope,begin,close,addin,numor,denom,morph,gogo_want,stop_want": ii00119_planunit_v0_0_0(),
         "moment_rope,person_name,contact_name,group_title,group_cred_lumen,group_debt_lumen,knot": ii00120_person_contact_membership_v0_0_0(),
         "moment_rope,person_name,contact_name,contact_cred_lumen,contact_debt_lumen,knot": ii00121_person_contactunit_v0_0_0(),
@@ -826,6 +832,9 @@ def get_idea_dimen_ref() -> dict[str, set[str]]:
         "moment_paybook": {"ii00102"},
         "moment_timeoffi": {"ii00106"},
         "momentunit": {
+            "ii00001",
+            "ii00002",
+            "ii00005",
             "ii00100",
             "ii00101",
             "ii00102",
@@ -833,9 +842,7 @@ def get_idea_dimen_ref() -> dict[str, set[str]]:
             "ii00104",
             "ii00105",
             "ii00106",
-            "ii00001",
             "ii00112",
-            "ii00002",
             "ii00119",
             "ii00120",
             "ii00121",
@@ -869,10 +876,17 @@ def get_idea_dimen_ref() -> dict[str, set[str]]:
         "person_plan_factunit": {"ii00123", "ii00153"},
         "person_plan_healerunit": {"ii00125", "ii00136", "ii00155"},
         "person_plan_laborunit": {"ii00124", "ii00154"},
-        "person_plan_reason_caseunit": {"ii00126", "ii00156"},
-        "person_plan_reasonunit": {"ii00126", "ii00127", "ii00156", "ii00157"},
+        "person_plan_reason_caseunit": {"ii00126", "ii00156", "ii00005"},
+        "person_plan_reasonunit": {
+            "ii00126",
+            "ii00127",
+            "ii00156",
+            "ii00157",
+            "ii00005",
+        },
         "person_planunit": {
             "ii00002",
+            "ii00005",
             "ii00119",
             "ii00122",
             "ii00123",
@@ -891,11 +905,12 @@ def get_idea_dimen_ref() -> dict[str, set[str]]:
             "ii00158",
         },
         "personunit": {
+            "ii00001",
+            "ii00002",
+            "ii00005",
             "ii00101",
             "ii00102",
-            "ii00001",
             "ii00112",
-            "ii00002",
             "ii00119",
             "ii00120",
             "ii00121",
