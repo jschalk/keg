@@ -13,19 +13,19 @@ dependencies = [
   "plotly",
   "openpyxl",
   "sqlalchemy",
-  "xlsxwriter"
+  "xlsxwriter",
 ]
 description = "A Python package for communicating across cultures."
 license = {text = "MIT"}
 name = "keg2"
 readme = "README.md"
 requires-python = ">=3.7"
-version = "0.1.0"
+version = " v0.83.10"
 
 [project.optional-dependencies]
 test = [
   "pytest",
-  "pytest-cov"
+  "pytest-cov",
 ]
 
 [project.scripts]
@@ -48,7 +48,7 @@ build_command = ""
 changelog_file = "CHANGELOG.md"
 plugins = [
   "semantic_release.hooks.commit_parser",
-  "semantic_release.hooks.tag_formatter"
+  "semantic_release.hooks.tag_formatter",
 ]
 tag_format = "v{version}"
 upload_to_pypi = false
