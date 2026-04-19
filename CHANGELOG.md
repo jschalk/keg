@@ -1,3 +1,10 @@
+## [0.83.11](https://github.com/jschalk/keg/compare/v0.83.10...v0.83.11) (2026-04-19)
+
+
+### Bug Fixes
+
+* toml version was incorrect [#1124](https://github.com/jschalk/keg/issues/1124) ([e699379](https://github.com/jschalk/keg/commit/e69937994ec3f37fec008bd31020ac5c2bbdb44d))
+
 ## [0.83.9](https://github.com/jschalk/keg/compare/v0.83.8...v0.83.9) (2026-04-18)
 
 
