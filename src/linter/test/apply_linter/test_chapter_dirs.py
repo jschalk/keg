@@ -1,14 +1,14 @@
-from os import listdir as os_listdir, walk as os_walk
-from os.path import basename as os_path_basename, exists as os_path_exists
-from pathlib import Path as pathlib_Path
-from src.ch00_py.chapter_desc_main import get_chapter_desc_str_number
-from src.ch00_py.file_toolbox import create_path, get_level1_dirs, open_json
-from src.ch98_docs_builder.doc_builder import get_chapter_desc_prefix
-from src.linter.style import (
+from ch00_py.chapter_desc_main import get_chapter_desc_str_number
+from ch00_py.file_toolbox import create_path, get_level1_dirs, open_json
+from ch98_docs_builder.doc_builder import get_chapter_desc_prefix
+from linter.style import (
     get_chapter_descs,
     get_python_files_with_flag,
     get_semantic_types_filename,
 )
+from os import listdir as os_listdir, walk as os_walk
+from os.path import basename as os_path_basename, exists as os_path_exists
+from pathlib import Path as pathlib_Path
 
 
 def path_contains_subpath(full_path: str, sub_path: str):

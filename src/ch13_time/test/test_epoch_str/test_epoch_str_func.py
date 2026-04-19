@@ -1,13 +1,13 @@
-from src.ch04_rope.rope import create_rope, default_knot_if_None
-from src.ch05_reason.reason_main import factunit_shop, reasonunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch13_time.epoch_main import add_epoch_planunit
-from src.ch13_time.epoch_str_func import (
+from ch04_rope.rope import create_rope, default_knot_if_None
+from ch05_reason.reason_main import factunit_shop, reasonunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch13_time.epoch_main import add_epoch_planunit
+from ch13_time.epoch_str_func import (
     get_fact_state_readable_str,
     get_reason_case_readable_str,
 )
-from src.ch13_time.test._util.ch13_examples import get_creg_config, get_thu
-from src.ref.keywords import Ch13Keywords as kw, ExampleStrs as exx
+from ch13_time.test._util.ch13_examples import get_creg_config, get_thu
+from ref.keywords import Ch13Keywords as kw, ExampleStrs as exx
 
 
 def test_get_reason_case_readable_str_ReturnsObj_Scenario0_Level1():

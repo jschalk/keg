@@ -1,15 +1,15 @@
-from datetime import datetime
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import PersonUnit, personunit_shop
-from src.ch13_time.epoch_main import get_year_rope
-from src.ch13_time.test._util.ch13_examples import (
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import PersonUnit, personunit_shop
+from ch13_time.epoch_main import get_year_rope
+from ch13_time.test._util.ch13_examples import (
     add_time_creg_planunit,
     creg_weekday_planunits,
     get_creg_min_from_dt,
     get_thu,
     get_wed,
 )
-from src.ref.keywords import Ch13Keywords as kw, ExampleStrs as exx
+from datetime import datetime
+from ref.keywords import Ch13Keywords as kw, ExampleStrs as exx
 
 
 def test_PersonUnit_get_agenda_dict_ReturnsDictWith_day_plan_Scenario0():

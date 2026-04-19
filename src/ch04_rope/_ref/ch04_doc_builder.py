@@ -1,4 +1,4 @@
-from src.ch04_rope.rope import create_rope
+from ch04_rope.rope import create_rope
 
 
 def get_ropeterm_description_md() -> str:

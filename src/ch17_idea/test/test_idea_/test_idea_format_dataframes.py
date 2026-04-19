@@ -1,20 +1,20 @@
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import create_path, open_file
-from src.ch04_rope.rope import create_rope
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch13_time.test._util.ch13_examples import (
+from ch00_py.file_toolbox import create_path, open_file
+from ch04_rope.rope import create_rope
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch13_time.test._util.ch13_examples import (
     add_time_creg_planunit,
     add_time_five_planunit,
 )
-from src.ch17_idea.idea_config import (
+from ch17_idea.idea_config import (
     ii00002_planunit_v0_0_0,
     ii00119_planunit_v0_0_0,
     ii00120_person_contact_membership_v0_0_0,
     ii00121_person_contactunit_v0_0_0,
 )
-from src.ch17_idea.idea_main import create_idea_df, get_idearef_obj, save_idea_csv
-from src.ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
+from ch17_idea.idea_main import create_idea_df, get_idearef_obj, save_idea_csv
+from os.path import exists as os_path_exists
+from ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
 
 
 def test_create_idea_df_Arg_ii00121_person_contactunit_v0_0_0():

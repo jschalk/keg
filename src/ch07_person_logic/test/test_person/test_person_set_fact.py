@@ -1,9 +1,9 @@
+from ch05_reason.reason_main import factunit_shop
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch07_person_logic.test._util.ch07_examples import get_personunit_with_4_levels
 from pytest import raises as pytest_raises
-from src.ch05_reason.reason_main import factunit_shop
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch07_person_logic.test._util.ch07_examples import get_personunit_with_4_levels
-from src.ref.keywords import ExampleStrs as exx
+from ref.keywords import ExampleStrs as exx
 
 
 def test_PersonUnit_set_fact_ModifiesAttr_1():

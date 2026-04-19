@@ -1,17 +1,16 @@
-from datetime import datetime
-from src.ch00_py.plotly_toolbox import conditional_fig_show
-from src.ch02_contact.group import awardunit_shop
-from src.ch05_reason.reason_main import reasonunit_shop
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch13_time.epoch_main import (
+from ch00_py.plotly_toolbox import conditional_fig_show
+from ch02_contact.group import awardunit_shop
+from ch05_reason.reason_main import reasonunit_shop
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch13_time.epoch_main import (
     add_epoch_planunit,
     get_c400_constants,
     get_epoch_min_difference,
     get_epoch_min_from_dt,
     get_year_rope,
 )
-from src.ch13_time.test._util.ch13_examples import (
+from ch13_time.test._util.ch13_examples import (
     add_time_creg_planunit,
     add_time_five_planunit,
     creg_hour_int_label,
@@ -30,7 +29,8 @@ from src.ch13_time.test._util.ch13_examples import (
     get_tue,
     get_wed,
 )
-from src.ref.keywords import Ch13Keywords as kw, ExampleStrs as exx
+from datetime import datetime
+from ref.keywords import Ch13Keywords as kw, ExampleStrs as exx
 
 
 def test_get_creg_config_ReturnsObj():

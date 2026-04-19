@@ -1,9 +1,9 @@
-from src.ch04_rope.rope import create_rope
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch17_idea.idea_config import ii00121_person_contactunit_v0_0_0
-from src.ch17_idea.idea_db_tool import open_csv
-from src.ch17_idea.idea_main import get_idearef_obj, save_idea_csv
-from src.ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
+from ch04_rope.rope import create_rope
+from ch07_person_logic.person_main import personunit_shop
+from ch17_idea.idea_config import ii00121_person_contactunit_v0_0_0
+from ch17_idea.idea_db_tool import open_csv
+from ch17_idea.idea_main import get_idearef_obj, save_idea_csv
+from ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
 
 
 def test_open_csv_ReturnsObjWhenFileExists(temp3_fs):

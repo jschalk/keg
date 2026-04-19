@@ -1,4 +1,4 @@
-from src.ch00_py.dict_toolbox import sort_keys_case_insensitive
+from ch00_py.dict_toolbox import sort_keys_case_insensitive
 
 
 def test_sort_keys_case_insensitive_ReturnsObj_Scenario0_FlatDictCaseInsensitiveSort():

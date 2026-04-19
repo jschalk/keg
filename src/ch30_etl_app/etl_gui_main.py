@@ -11,13 +11,11 @@ To integrate your CLI logic, replace the `create_today_punchs()` call inside
 `_run()` with your actual ETL function / subprocess call.
 """
 
-from os.path import isdir as os_path_isdir
-from platform import system as platform_system
-from src.ch00_py.file_toolbox import delete_dir, set_dir
-from src.ch17_idea.idea_db_tool import prettify_excel_files
-from src.ch20_kpi.gcalendar import lynx_to_person_gcal_day_punchs
-from src.ch21_world.world import create_today_punchs
-from src.ch30_etl_app.etl_gui_tool import (
+from ch00_py.file_toolbox import delete_dir, set_dir
+from ch17_idea.idea_db_tool import prettify_excel_files
+from ch20_kpi.gcalendar import lynx_to_person_gcal_day_punchs
+from ch21_world.world import create_today_punchs
+from ch30_etl_app.etl_gui_tool import (
     fill_spark_face_in_directory,
     get_app_default_dir,
     get_app_default_dirs,
@@ -26,6 +24,8 @@ from src.ch30_etl_app.etl_gui_tool import (
     get_app_glb_attrs,
     get_option_table_options,
 )
+from os.path import isdir as os_path_isdir
+from platform import system as platform_system
 from subprocess import Popen as subprocess_Popen
 import tkinter as tk
 from tkinter import (

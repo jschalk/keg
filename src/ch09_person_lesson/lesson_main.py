@@ -1,23 +1,14 @@
-from dataclasses import dataclass
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import (
-    create_path,
-    get_json_filename,
-    open_json,
-    save_json,
-)
-from src.ch07_person_logic.person_main import PersonUnit, get_default_rope
-from src.ch08_person_atom.atom_main import PersonAtom, get_personatom_from_dict
-from src.ch09_person_lesson._ref.ch09_semantic_types import (
-    FaceName,
-    MomentRope,
-    PersonName,
-)
-from src.ch09_person_lesson.delta import (
+from ch00_py.file_toolbox import create_path, get_json_filename, open_json, save_json
+from ch07_person_logic.person_main import PersonUnit, get_default_rope
+from ch08_person_atom.atom_main import PersonAtom, get_personatom_from_dict
+from ch09_person_lesson._ref.ch09_semantic_types import FaceName, MomentRope, PersonName
+from ch09_person_lesson.delta import (
     PersonDelta,
     get_persondelta_from_ordered_dict,
     persondelta_shop,
 )
+from dataclasses import dataclass
+from os.path import exists as os_path_exists
 
 
 class LessonPersonConflictError(Exception):

@@ -1,12 +1,12 @@
-from numpy import int64 as numpy_int64
-from pytest import raises as pytest_raises
-from src.ch15_nabu.nabu_epoch import (
+from ch15_nabu.nabu_epoch import (
     NabuTime,
     get_timenabu_from_dict,
     inherit_timenabu,
     timenabu_shop,
 )
-from src.ref.keywords import Ch15Keywords as kw, ExampleStrs as exx
+from numpy import int64 as numpy_int64
+from pytest import raises as pytest_raises
+from ref.keywords import Ch15Keywords as kw, ExampleStrs as exx
 
 # def test_NabuTime_Exists():
 #     # ESTABLISH

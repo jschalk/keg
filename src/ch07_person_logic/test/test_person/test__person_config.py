@@ -1,8 +1,6 @@
-# from src.ch00_py.dict_toolbox import get_from_nested_dict
-from os import getcwd as os_getcwd
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import create_path
-from src.ch07_person_logic.person_config import (
+# from ch00_py.dict_toolbox import get_from_nested_dict
+from ch00_py.file_toolbox import create_path
+from ch07_person_logic.person_config import (
     get_all_person_calc_args,
     get_person_calc_args_sqlite_datatype_dict,
     get_person_calc_args_type_dict,
@@ -12,8 +10,10 @@ from src.ch07_person_logic.person_config import (
     max_tree_traverse_default,
     person_config_path,
 )
-from src.ch07_person_logic.person_main import ContactUnit, PersonUnit
-from src.ref.keywords import Ch07Keywords as kw
+from ch07_person_logic.person_main import ContactUnit, PersonUnit
+from os import getcwd as os_getcwd
+from os.path import exists as os_path_exists
+from ref.keywords import Ch07Keywords as kw
 
 
 def test_max_tree_traverse_default_ReturnsObj() -> str:

@@ -1,7 +1,5 @@
-from dataclasses import dataclass
-from pytest import mark as pytest_mark, raises as pytest_raises
-from src.ch04_rope._ref.ch04_semantic_types import default_knot_if_None
-from src.ch04_rope.rope import (
+from ch04_rope._ref.ch04_semantic_types import default_knot_if_None
+from ch04_rope.rope import (
     RopeTerm,
     all_ropes_between,
     create_rope,
@@ -25,7 +23,9 @@ from src.ch04_rope.rope import (
     to_rope,
     validate_labelterm,
 )
-from src.ref.keywords import ExampleStrs as exx
+from dataclasses import dataclass
+from pytest import mark as pytest_mark, raises as pytest_raises
+from ref.keywords import ExampleStrs as exx
 
 
 def test_get_default_rope_ReturnsObj_Scenario0_NoKnotTerm():

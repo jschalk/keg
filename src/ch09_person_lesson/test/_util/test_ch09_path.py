@@ -1,8 +1,6 @@
-from inspect import getdoc as inspect_getdoc
-from pytest import mark as pytest_mark
-from src.ch00_py.file_toolbox import create_path
-from src.ch04_rope.rope import create_rope
-from src.ch09_person_lesson._ref.ch09_path import (
+from ch00_py.file_toolbox import create_path
+from ch04_rope.rope import create_rope
+from ch09_person_lesson._ref.ch09_path import (
     MOMENT_FILENAME,
     create_atoms_dir_path,
     create_gut_path,
@@ -13,8 +11,10 @@ from src.ch09_person_lesson._ref.ch09_path import (
     create_moments_dir_path,
     create_person_dir_path,
 )
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
+from ch09_person_lesson.lasso import lassounit_shop
+from inspect import getdoc as inspect_getdoc
+from pytest import mark as pytest_mark
+from ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
 
 A23_LASSO = lassounit_shop(exx.a23)
 

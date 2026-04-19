@@ -1,10 +1,10 @@
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch09_person_lesson.lesson_filehandler import open_gut_file, save_gut_file
-from src.ch13_time.epoch_main import epochunit_shop, get_default_epoch_config_dict
-from src.ch13_time.test._util.ch13_examples import get_five_config
-from src.ch14_moment.moment_main import momentunit_shop
-from src.ref.keywords import Ch14Keywords as kw, ExampleStrs as exx
+from ch07_person_logic.person_main import personunit_shop
+from ch09_person_lesson.lasso import lassounit_shop
+from ch09_person_lesson.lesson_filehandler import open_gut_file, save_gut_file
+from ch13_time.epoch_main import epochunit_shop, get_default_epoch_config_dict
+from ch13_time.test._util.ch13_examples import get_five_config
+from ch14_moment.moment_main import momentunit_shop
+from ref.keywords import Ch14Keywords as kw, ExampleStrs as exx
 
 
 def test_MomentUnit_get_epoch_config_ReturnsObj_Scenario0(temp3_dir):

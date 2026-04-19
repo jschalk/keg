@@ -1,12 +1,12 @@
-from src.ch00_py.file_toolbox import save_json
-from src.ch08_person_atom.atom_config import get_atom_config_args
-from src.ch17_idea._ref.ch17_doc_builder import (
+from ch00_py.file_toolbox import save_json
+from ch08_person_atom.atom_config import get_atom_config_args
+from ch17_idea._ref.ch17_doc_builder import (
     get_idea_formats_md,
     get_idea_md,
     get_idea_mds,
 )
-from src.ch17_idea.idea_config import get_idea_config_dict
-from src.ref.keywords import Ch17Keywords as kw
+from ch17_idea.idea_config import get_idea_config_dict
+from ref.keywords import Ch17Keywords as kw
 
 
 def create_dimens_idea_format_dict() -> dict:

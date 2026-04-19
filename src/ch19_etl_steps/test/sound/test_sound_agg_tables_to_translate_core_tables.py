@@ -1,10 +1,9 @@
-from sqlite3 import Cursor
-from src.ch00_py.db_toolbox import get_row_count
-from src.ch16_translate.translate_main import (
+from ch00_py.db_toolbox import get_row_count
+from ch16_translate.translate_main import (
     default_knot_if_None,
     default_unknown_str_if_None,
 )
-from src.ch18_etl_config.etl_sqlstr import (
+from ch18_etl_config.etl_sqlstr import (
     CREATE_TRLCORE_SOUND_AGG_SQLSTR,
     CREATE_TRLCORE_SOUND_RAW_SQLSTR,
     CREATE_TRLCORE_SOUND_VLD_SQLSTR,
@@ -22,7 +21,7 @@ from src.ch18_etl_config.etl_sqlstr import (
     create_update_trlrope_sound_agg_knot_error_sqlstr,
     create_update_trltitl_sound_agg_knot_error_sqlstr,
 )
-from src.ch19_etl_steps.etl_main import (
+from ch19_etl_steps.etl_main import (
     etl_translate_sound_agg_tables_to_translate_sound_vld_tables,
     insert_translate_core_agg_to_translate_core_vld_table,
     insert_translate_core_raw_to_translate_core_agg_table,
@@ -33,7 +32,8 @@ from src.ch19_etl_steps.etl_main import (
     update_translate_sound_agg_inconsist_errors,
     update_translate_sound_agg_knot_errors,
 )
-from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from sqlite3 import Cursor
 
 
 def test_create_insert_into_translate_core_raw_sqlstr_ReturnsObj_PopulatesTable_Scenario0(

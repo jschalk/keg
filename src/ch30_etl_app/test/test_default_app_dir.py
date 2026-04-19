@@ -1,10 +1,5 @@
-from os import name as os_name
-from pathlib import Path
-import platform
-from platform import system as platform_system
-from pytest import MonkeyPatch
-from src.ch21_world.world import worlddir_shop
-from src.ch30_etl_app.etl_gui_tool import (
+from ch21_world.world import worlddir_shop
+from ch30_etl_app.etl_gui_tool import (
     ETLAppSettings,
     get_app_default_dir,
     get_app_default_dirs,
@@ -13,6 +8,11 @@ from src.ch30_etl_app.etl_gui_tool import (
     get_app_default_you_personname,
     get_app_glb_attrs,
 )
+from os import name as os_name
+from pathlib import Path
+import platform
+from platform import system as platform_system
+from pytest import MonkeyPatch
 import sys
 
 
@@ -133,7 +133,7 @@ def test_get_app_default_world_name_ReturnsObj():
 def test_get_app_default_dir_ReturnsObj_UnixPath(monkeypatch):
     # ESTABLISH
     fake_home = Path("/home/testuser")
-    monkeypatch.setattr("src.ch30_etl_app.etl_gui_tool.Path.home", lambda: fake_home)
+    monkeypatch.setattr("ch30_etl_app.etl_gui_tool.Path.home", lambda: fake_home)
     # WHEN
     path = get_app_default_dir(is_windows=False)
     # THEN

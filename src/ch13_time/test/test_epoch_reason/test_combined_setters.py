@@ -1,21 +1,21 @@
-from src.ch07_person_logic.person_tool import (
+from ch07_person_logic.person_tool import (
     person_plan_reason_caseunit_exists,
     person_plan_reason_caseunit_get_obj,
     person_plan_reasonunit_exists,
     person_plan_reasonunit_get_obj,
 )
-from src.ch13_time.epoch_reason import (
+from ch13_time.epoch_reason import (
     set_epoch_cases_by_args_dict,
     set_epoch_cases_for_dayly,
     set_epoch_cases_for_monthly,
     set_epoch_cases_for_weekly,
     set_epoch_cases_for_yearly_monthday,
 )
-from src.ch13_time.test._util.ch13_examples import (
+from ch13_time.test._util.ch13_examples import (
     Ch13ExampleStrs as wx,
     get_bob_five_person,
 )
-from src.ref.keywords import Ch13Keywords as kw
+from ref.keywords import Ch13Keywords as kw
 
 
 def test_set_epoch_cases_for_dayly_SetsAttr_Scenario0_MiddleDayEvery3Days():

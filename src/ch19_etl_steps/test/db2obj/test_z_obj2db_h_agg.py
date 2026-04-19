@@ -1,24 +1,23 @@
-from sqlite3 import Cursor, connect as sqlite3_connect
-from src.ch00_py.db_toolbox import get_row_count, get_table_columns
-from src.ch02_contact.contact import contactunit_shop
-from src.ch02_contact.group import (
+from ch00_py.db_toolbox import get_row_count, get_table_columns
+from ch02_contact.contact import contactunit_shop
+from ch02_contact.group import (
     awardheir_shop,
     awardunit_shop,
     groupunit_shop,
     membership_shop,
 )
-from src.ch03_workforce.workforce import (
+from ch03_workforce.workforce import (
     laborheir_shop,
     workforceheir_shop,
     workforceunit_shop,
 )
-from src.ch04_rope.rope import create_rope
-from src.ch05_reason.reason_main import caseunit_shop, factheir_shop, reasonheir_shop
-from src.ch06_plan.healer import healerunit_shop
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch18_etl_config.etl_sqlstr import create_sound_and_heard_tables
-from src.ch19_etl_steps.obj2db_person import (
+from ch04_rope.rope import create_rope
+from ch05_reason.reason_main import caseunit_shop, factheir_shop, reasonheir_shop
+from ch06_plan.healer import healerunit_shop
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch18_etl_config.etl_sqlstr import create_sound_and_heard_tables
+from ch19_etl_steps.obj2db_person import (
     ObjKeysHolder,
     insert_h_agg_obj,
     insert_h_agg_prnawar,
@@ -33,7 +32,8 @@ from src.ch19_etl_steps.obj2db_person import (
     insert_h_agg_prnreas,
     insert_h_agg_prnunit,
 )
-from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from sqlite3 import Cursor, connect as sqlite3_connect
 
 
 def test_insert_h_agg_prnunit_CreatesTableRowsFor_personunit_h_agg(cursor0: Cursor):

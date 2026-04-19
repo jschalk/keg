@@ -1,6 +1,6 @@
+from ch09_person_lesson._ref.ch09_semantic_types import MomentRope
 from inspect import getdoc as inspect_getdoc
-from src.ch09_person_lesson._ref.ch09_semantic_types import MomentRope
-from src.ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
 
 
 def test_MomentRope_Exists():

@@ -1,6 +1,5 @@
-from os import getcwd as os_getcwd
-from src.ch00_py.file_toolbox import create_path
-from src.ch16_translate.translate_config import (
+from ch00_py.file_toolbox import create_path
+from ch16_translate.translate_config import (
     default_unknown_str,
     default_unknown_str_if_None,
     get_translate_args_dimen_mapping,
@@ -10,7 +9,8 @@ from src.ch16_translate.translate_config import (
     get_translates_column_ref,
     translate_config_path,
 )
-from src.ref.keywords import Ch16Keywords as kw
+from os import getcwd as os_getcwd
+from ref.keywords import Ch16Keywords as kw
 
 
 def test_get_translate_filename_ReturnsObj():

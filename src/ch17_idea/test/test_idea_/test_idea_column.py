@@ -1,5 +1,5 @@
-from src.ch17_idea.idea_main import IdeaRef, idearef_shop
-from src.ref.keywords import Ch17Keywords as kw
+from ch17_idea.idea_main import IdeaRef, idearef_shop
+from ref.keywords import Ch17Keywords as kw
 
 
 def test_IdeaRef_Exists():

@@ -1,4 +1,4 @@
-from src.linter.style import (
+from linter.style import (
     filename_style_is_correct,
     function_name_style_is_correct,
     get_filenames_with_wrong_style,

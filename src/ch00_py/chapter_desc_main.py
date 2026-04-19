@@ -1,4 +1,4 @@
-from src.ch00_py.file_toolbox import create_path, get_level1_dirs
+from ch00_py.file_toolbox import create_path, get_level1_dirs
 
 
 def get_chapter_descs() -> dict[str, str]:

@@ -1,8 +1,8 @@
-from src.ch00_py.dict_toolbox import get_empty_str_if_None as if_none_str
-from src.ch07_person_logic.person_main import PersonUnit
-from src.ch14_moment.moment_main import MomentUnit
-from src.ch17_idea._ref.ch17_semantic_types import FaceName, KnotTerm, MomentRope
-from src.ch17_idea.idea_config import get_idea_format_filename, get_idea_format_headers
+from ch00_py.dict_toolbox import get_empty_str_if_None as if_none_str
+from ch07_person_logic.person_main import PersonUnit
+from ch14_moment.moment_main import MomentUnit
+from ch17_idea._ref.ch17_semantic_types import FaceName, KnotTerm, MomentRope
+from ch17_idea.idea_config import get_idea_format_filename, get_idea_format_headers
 
 
 def create_init_belief_idea_csv_strs() -> dict[str, str]:

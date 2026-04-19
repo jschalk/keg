@@ -1,23 +1,22 @@
-from dataclasses import dataclass
-from src.ch00_py.dict_toolbox import (
+from ch00_py.dict_toolbox import (
     get_0_if_None,
     get_empty_dict_if_None,
     get_False_if_None,
 )
-from src.ch01_allot.allot import (
+from ch01_allot.allot import (
     allot_scale,
     default_grain_num_if_None as grain_num,
     valid_allotment_ratio,
     validate_pool_num,
 )
-from src.ch02_contact.contact import (
+from ch02_contact.contact import (
     ContactUnit,
     contactunit_shop,
     contactunits_get_from_dict,
 )
-from src.ch02_contact.group import AwardUnit, GroupUnit, groupunit_shop, membership_shop
-from src.ch03_workforce.workforce import WorkforceUnit
-from src.ch04_rope.rope import (
+from ch02_contact.group import AwardUnit, GroupUnit, groupunit_shop, membership_shop
+from ch03_workforce.workforce import WorkforceUnit
+from ch04_rope.rope import (
     all_ropes_between,
     create_rope,
     default_knot_if_None,
@@ -35,16 +34,16 @@ from src.ch04_rope.rope import (
     rope_is_valid_dir_path,
     to_rope,
 )
-from src.ch05_reason.reason_main import FactUnit, ReasonUnit, RopeTerm, factunit_shop
-from src.ch06_plan.healer import HealerUnit
-from src.ch06_plan.plan import (
+from ch05_reason.reason_main import FactUnit, ReasonUnit, RopeTerm, factunit_shop
+from ch06_plan.healer import HealerUnit
+from ch06_plan.plan import (
     PlanAttrHolder,
     PlanUnit,
     get_obj_from_plan_dict,
     planattrholder_shop,
     planunit_shop,
 )
-from src.ch07_person_logic._ref.ch07_semantic_types import (
+from ch07_person_logic._ref.ch07_semantic_types import (
     ContactName,
     FactNum,
     FundGrain,
@@ -60,8 +59,9 @@ from src.ch07_person_logic._ref.ch07_semantic_types import (
     RespectNum,
     RopeTerm,
 )
-from src.ch07_person_logic.person_config import max_tree_traverse_default
-from src.ch07_person_logic.tree_metric import TreeMetrics, treemetrics_shop
+from ch07_person_logic.person_config import max_tree_traverse_default
+from ch07_person_logic.tree_metric import TreeMetrics, treemetrics_shop
+from dataclasses import dataclass
 
 
 class InvalidPersonError(Exception):

@@ -1,13 +1,13 @@
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch09_person_lesson.lesson_filehandler import lessonfilehandler_shop
-from src.ch10_person_listen.keep_tool import save_duty_person, save_vision_person
-from src.ch10_person_listen.listen_main import (
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch09_person_lesson.lasso import lassounit_shop
+from ch09_person_lesson.lesson_filehandler import lessonfilehandler_shop
+from ch10_person_listen.keep_tool import save_duty_person, save_vision_person
+from ch10_person_listen.listen_main import (
     create_listen_basis,
     listen_to_agendas_duty_vision,
 )
-from src.ch10_person_listen.test._util.ch10_examples import (
+from ch10_person_listen.test._util.ch10_examples import (
     a23_casa_rope,
     a23_clean_rope,
     a23_cuisine_rope,
@@ -21,7 +21,7 @@ from src.ch10_person_listen.test._util.ch10_examples import (
     get_example_zia_speaker,
     run_str,
 )
-from src.ref.keywords import ExampleStrs as exx
+from ref.keywords import ExampleStrs as exx
 
 
 def test_listen_to_agenda_duty_vision_agenda_Addscase_tasksTovision_PersonWhenNo_laborunitIsSet(

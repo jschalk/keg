@@ -1,11 +1,11 @@
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch07_person_logic.person_tool import (
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch07_person_logic.person_tool import (
     person_plan_reason_caseunit_exists,
     person_plan_reason_caseunit_get_obj,
     person_plan_reason_caseunit_set_obj,
 )
-from src.ref.keywords import Ch07Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch07Keywords as kw, ExampleStrs as exx
 
 
 def test_person_plan_reason_caseunit_set_obj_SetAttr_Scenario0_Pass_reason_case():

@@ -1,7 +1,7 @@
-from src.ch03_workforce.workforce import workforceheir_shop, workforceunit_shop
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ref.keywords import ExampleStrs as exx
+from ch03_workforce.workforce import workforceheir_shop, workforceunit_shop
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ref.keywords import ExampleStrs as exx
 
 
 def test_PersonUnit_conpute_Sets_planroot_workforceheirFrom_planroot_workforceunit():

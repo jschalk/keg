@@ -1,7 +1,7 @@
+from ch00_py.dict_toolbox import get_1_if_None
+from ch01_allot.allot import allot_scale, default_grain_num_if_None
+from ch02_contact._ref.ch02_semantic_types import ContactName, FundGrain, GroupTitle
 from dataclasses import dataclass
-from src.ch00_py.dict_toolbox import get_1_if_None
-from src.ch01_allot.allot import allot_scale, default_grain_num_if_None
-from src.ch02_contact._ref.ch02_semantic_types import ContactName, FundGrain, GroupTitle
 
 
 class MembershipGroupTitleError(Exception):

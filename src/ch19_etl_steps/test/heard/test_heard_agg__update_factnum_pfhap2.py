@@ -1,13 +1,13 @@
-from sqlite3 import Cursor
-from src.ch00_py.db_toolbox import create_type_reference_insert_sqlstr
-from src.ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
-from src.ch18_etl_config.etl_config import create_prime_tablename
-from src.ch18_etl_config.etl_sqlstr import (
+from ch00_py.db_toolbox import create_type_reference_insert_sqlstr
+from ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
+from ch18_etl_config.etl_config import create_prime_tablename
+from ch18_etl_config.etl_sqlstr import (
     create_prime_db_table,
     create_prime_tablename as prime_tbl,
     get_update_prnfact_range_sqlstr,
 )
-from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from sqlite3 import Cursor
 
 
 def pfhap2_insert_prnfact(cursor0: Cursor, x_values: list[list]) -> str:

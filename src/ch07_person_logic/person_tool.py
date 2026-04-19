@@ -1,27 +1,27 @@
-from src.ch00_py.dict_toolbox import (
+from ch00_py.dict_toolbox import (
     create_csv,
     get_1_if_None,
     get_empty_str_if_None,
     modular_addition,
 )
-from src.ch01_allot.allot import allot_scale
-from src.ch02_contact.contact import ContactUnit, calc_give_take_net
-from src.ch02_contact.group import AwardUnit, MemberShip
-from src.ch04_rope.rope import get_unique_short_ropes, is_sub_rope
-from src.ch05_reason.reason_main import (
+from ch01_allot.allot import allot_scale
+from ch02_contact.contact import ContactUnit, calc_give_take_net
+from ch02_contact.group import AwardUnit, MemberShip
+from ch04_rope.rope import get_unique_short_ropes, is_sub_rope
+from ch05_reason.reason_main import (
     CaseUnit,
     FactUnit,
     ReasonUnit,
     get_factunits_from_dict,
 )
-from src.ch06_plan.plan import PlanUnit
-from src.ch07_person_logic._ref.ch07_semantic_types import (
+from ch06_plan.plan import PlanUnit
+from ch07_person_logic._ref.ch07_semantic_types import (
     ContactName,
     FundNum,
     RespectNum,
     RopeTerm,
 )
-from src.ch07_person_logic.person_main import PersonUnit
+from ch07_person_logic.person_main import PersonUnit
 
 
 def personunit_exists(x_person: PersonUnit) -> bool:

@@ -1,6 +1,6 @@
-from src.ch06_plan.plan import get_rangeunit_from_lineage_of_plans, planunit_shop
-from src.ch06_plan.range_toolbox import RangeUnit
-from src.ref.keywords import ExampleStrs as exx
+from ch06_plan.plan import get_rangeunit_from_lineage_of_plans, planunit_shop
+from ch06_plan.range_toolbox import RangeUnit
+from ref.keywords import ExampleStrs as exx
 
 
 def test_get_rangeunit_from_lineage_of_plans_ReturnsObj_Scenario0_EmptyList():

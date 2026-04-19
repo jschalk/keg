@@ -1,11 +1,11 @@
-from os import chdir as os_chdir
-from os.path import join as os_path_join
-from pathlib import Path
-from src.linter.chapter_migration_tools import (
+from linter.chapter_migration_tools import (
     replace_in_tracked_python_files,
     string_exists_in_directory,
     string_exists_in_filepaths,
 )
+from os import chdir as os_chdir
+from os.path import join as os_path_join
+from pathlib import Path
 from subprocess import run as subprocess_run
 
 # replace with your actual module name

@@ -1,13 +1,13 @@
+from ch02_contact.group import awardunit_shop
+from ch03_workforce.workforce import workforceunit_shop
+from ch04_rope.rope import create_rope, default_knot_if_None, is_sub_rope, to_rope
+from ch05_reason.reason_main import caseunit_shop, factunit_shop, reasonunit_shop
+from ch06_plan.healer import healerunit_shop
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch07_person_logic.test._util.ch07_examples import get_personunit_with_4_levels
 from pytest import raises as pytest_raises
-from src.ch02_contact.group import awardunit_shop
-from src.ch03_workforce.workforce import workforceunit_shop
-from src.ch04_rope.rope import create_rope, default_knot_if_None, is_sub_rope, to_rope
-from src.ch05_reason.reason_main import caseunit_shop, factunit_shop, reasonunit_shop
-from src.ch06_plan.healer import healerunit_shop
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch07_person_logic.test._util.ch07_examples import get_personunit_with_4_levels
-from src.ref.keywords import ExampleStrs as exx
+from ref.keywords import ExampleStrs as exx
 
 
 def test_PersonUnit_set_plan_ScenarioXX_RaisesErrorWhen_parent_rope_IsInvalid():

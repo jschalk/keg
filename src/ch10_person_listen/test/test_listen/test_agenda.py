@@ -1,12 +1,12 @@
-from copy import deepcopy as copy_deepcopy
-from pytest import raises as pytest_raises
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch10_person_listen.listen_main import (
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch10_person_listen.listen_main import (
     create_empty_person_from_person,
     listen_to_speaker_agenda,
 )
-from src.ref.keywords import ExampleStrs as exx
+from copy import deepcopy as copy_deepcopy
+from pytest import raises as pytest_raises
+from ref.keywords import ExampleStrs as exx
 
 
 def test_listen_to_speaker_agenda_RaisesErrorIfPoolIsNotSet():

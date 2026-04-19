@@ -1,5 +1,5 @@
-from src.ch00_py.file_toolbox import open_file
-from src.ch04_rope._ref.ch04_doc_builder import get_ropeterm_description_md
+from ch00_py.file_toolbox import open_file
+from ch04_rope._ref.ch04_doc_builder import get_ropeterm_description_md
 
 
 def test_get_ropeterm_description_md_ReturnsObj():

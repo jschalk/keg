@@ -1,18 +1,18 @@
-from dataclasses import dataclass
-from pytest import raises as pytest_raises
-from src.ch01_allot.allot import default_pool_num
-from src.ch02_contact.contact import contactunit_shop
-from src.ch02_contact.group import awardline_shop, awardunit_shop
-from src.ch04_rope.rope import RopeTerm, to_rope
-from src.ch06_plan.plan import PlanUnit, planunit_shop
-from src.ch07_person_logic.person_main import PersonUnit, personunit_shop
-from src.ch07_person_logic.test._util.ch07_examples import (
+from ch01_allot.allot import default_pool_num
+from ch02_contact.contact import contactunit_shop
+from ch02_contact.group import awardline_shop, awardunit_shop
+from ch04_rope.rope import RopeTerm, to_rope
+from ch06_plan.plan import PlanUnit, planunit_shop
+from ch07_person_logic.person_main import PersonUnit, personunit_shop
+from ch07_person_logic.test._util.ch07_examples import (
     get_personunit_with7am_clean_table_reason,
     get_personunit_with_4_levels,
     personunit_v001,
     personunit_v001_with_large_agenda,
 )
-from src.ref.keywords import ExampleStrs as exx
+from dataclasses import dataclass
+from pytest import raises as pytest_raises
+from ref.keywords import ExampleStrs as exx
 
 
 def test_PersonUnit_conpute_Sets_planunit_fund_onset_fund_cease_Scenario0():

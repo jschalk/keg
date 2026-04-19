@@ -1,5 +1,4 @@
-from dataclasses import dataclass
-from src.ch00_py.dict_toolbox import (
+from ch00_py.dict_toolbox import (
     create_csv,
     del_in_nested_dict,
     exists_in_nested_dict,
@@ -9,14 +8,15 @@ from src.ch00_py.dict_toolbox import (
     get_from_nested_dict,
     set_in_nested_dict,
 )
-from src.ch01_allot.allot import default_pool_num
-from src.ch11_bud._ref.ch11_semantic_types import (
+from ch01_allot.allot import default_pool_num
+from ch11_bud._ref.ch11_semantic_types import (
     ContactName,
     FundNum,
     MomentRope,
     PersonName,
     TimeNum,
 )
+from dataclasses import dataclass
 
 
 class CalcMagnitudeError(Exception):

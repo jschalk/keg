@@ -1,12 +1,12 @@
-from sqlite3 import Cursor
-from src.ch00_py.db_toolbox import db_table_exists, get_row_count, get_table_columns
-from src.ch17_idea.idea_db_tool import create_idea_sorted_table
-from src.ch19_etl_steps.etl_main import (
+from ch00_py.db_toolbox import db_table_exists, get_row_count, get_table_columns
+from ch17_idea.idea_db_tool import create_idea_sorted_table
+from ch19_etl_steps.etl_main import (
     etl_ideax_agg_tables_to_sparks_ideax_agg_table,
     etl_sparks_ideax_agg_db_to_spark_dict,
     etl_sparks_ideax_agg_table_to_sparks_ideax_vld_table,
 )
-from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from sqlite3 import Cursor
 
 
 def test_etl_ideax_agg_tables_to_sparks_ideax_agg_table_PopulatesTables_Scenario0(

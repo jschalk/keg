@@ -1,3 +1,4 @@
+from ch00_py.dict_toolbox import get_dict_from_json, get_json_from_dict
 from copy import deepcopy as copy_deepcopy
 from errno import ENAMETOOLONG as errno_ENAMETOOLONG, ERANGE as errno_ERANGE
 from os import (
@@ -27,7 +28,6 @@ from os.path import (
 )
 from pathlib import Path as pathlib_Path
 from shutil import copytree as shutil_copytree, rmtree as shutil_rmtree
-from src.ch00_py.dict_toolbox import get_dict_from_json, get_json_from_dict
 from tempfile import TemporaryFile as tempfile_TemporaryFile
 
 

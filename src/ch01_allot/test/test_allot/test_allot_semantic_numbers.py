@@ -1,11 +1,11 @@
-from inspect import getdoc as inspect_getdoc
-from src.ch01_allot._ref.ch01_semantic_types import GrainNum, PoolNum
-from src.ch01_allot.allot import (
+from ch01_allot._ref.ch01_semantic_types import GrainNum, PoolNum
+from ch01_allot.allot import (
     default_grain_num_if_None,
     default_pool_num,
     valid_allotment_ratio,
     validate_pool_num,
 )
+from inspect import getdoc as inspect_getdoc
 
 
 def test_GrainNum_Exists():

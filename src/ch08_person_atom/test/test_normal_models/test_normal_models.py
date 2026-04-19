@@ -1,6 +1,5 @@
-from sqlalchemy import inspect
-from src.ch08_person_atom.atom_config import get_normalized_person_table_build
-from src.ch08_person_atom.normal_model import (
+from ch08_person_atom.atom_config import get_normalized_person_table_build
+from ch08_person_atom.normal_model import (
     AwardUnitTable,
     CaseTable,
     ContactUnitTable,
@@ -12,7 +11,8 @@ from src.ch08_person_atom.normal_model import (
     ReasonTable,
     WorkforceLinkTable,
 )
-from src.ref.keywords import Ch08Keywords as kw
+from ref.keywords import Ch08Keywords as kw
+from sqlalchemy import inspect
 
 
 def get_config_table_name(config_dimen) -> str:

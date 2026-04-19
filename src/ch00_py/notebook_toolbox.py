@@ -8,8 +8,8 @@ from ast import (
     parse as ast_parse,
     walk as ast_walk,
 )
+from ch00_py.file_toolbox import open_file, save_file
 from pathlib import Path
-from src.ch00_py.file_toolbox import open_file, save_file
 from textwrap import dedent as textwrap_dedent
 from typing import List
 

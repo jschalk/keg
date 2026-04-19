@@ -1,17 +1,17 @@
-from src.ch04_rope.rope import default_knot_if_None
-from src.ch16_translate.test._util.ch16_examples import (
+from ch04_rope.rope import default_knot_if_None
+from ch16_translate.test._util.ch16_examples import (
     get_slash_labelmap,
     get_slash_namemap,
     get_slash_ropemap,
     get_slash_titlemap,
 )
-from src.ch16_translate.translate_config import default_unknown_str_if_None
-from src.ch16_translate.translate_main import (
+from ch16_translate.translate_config import default_unknown_str_if_None
+from ch16_translate.translate_main import (
     _get_rid_of_translate_core_keys,
     get_translateunit_from_dict,
     translateunit_shop,
 )
-from src.ref.keywords import Ch16Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch16Keywords as kw, ExampleStrs as exx
 
 
 def test_TranslateUnit_to_dict_ReturnsObj_Scenario0():

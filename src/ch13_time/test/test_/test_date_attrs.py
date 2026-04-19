@@ -1,7 +1,6 @@
-from datetime import datetime
-from src.ch07_person_logic.person_main import PersonUnit, personunit_shop
-from src.ch13_time.epoch_main import EpochHolder, TimeNum, epochholder_shop
-from src.ch13_time.test._util.ch13_examples import (
+from ch07_person_logic.person_main import PersonUnit, personunit_shop
+from ch13_time.epoch_main import EpochHolder, TimeNum, epochholder_shop
+from ch13_time.test._util.ch13_examples import (
     add_time_creg_planunit,
     add_time_five_planunit,
     display_creg_five_squirt_time_attrs,
@@ -9,7 +8,8 @@ from src.ch13_time.test._util.ch13_examples import (
     get_creg_min_from_dt,
     get_five_min_from_dt,
 )
-from src.ref.keywords import Ch13Keywords as kw, ExampleStrs as exx
+from datetime import datetime
+from ref.keywords import Ch13Keywords as kw, ExampleStrs as exx
 
 
 def test_TimeNum_Exists():

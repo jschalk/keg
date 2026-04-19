@@ -1,14 +1,14 @@
-from pytest import raises as pytest_raises
-from src.ch04_rope.rope import create_rope, default_knot_if_None, to_rope
-from src.ch16_translate.map_term import (
+from ch04_rope.rope import create_rope, default_knot_if_None, to_rope
+from ch16_translate.map_term import (
     RopeMap,
     get_ropemap_from_dict,
     inherit_ropemap,
     labelmap_shop,
     ropemap_shop,
 )
-from src.ch16_translate.translate_config import default_unknown_str_if_None
-from src.ref.keywords import Ch16Keywords as kw, ExampleStrs as exx
+from ch16_translate.translate_config import default_unknown_str_if_None
+from pytest import raises as pytest_raises
+from ref.keywords import Ch16Keywords as kw, ExampleStrs as exx
 
 
 def test_RopeMap_Exists():

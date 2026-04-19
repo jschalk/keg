@@ -1,12 +1,9 @@
+from ch00_py.db_toolbox import db_table_exists, get_row_count, get_table_columns
+from ch04_rope.rope import create_rope
+from ch18_etl_config.etl_sqlstr import CREATE_JOB_PRNPLAN_SQLSTR, create_prime_tablename
+from ch20_kpi.kpi_mstr import create_populate_kpi002_table
+from ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
-from src.ch00_py.db_toolbox import db_table_exists, get_row_count, get_table_columns
-from src.ch04_rope.rope import create_rope
-from src.ch18_etl_config.etl_sqlstr import (
-    CREATE_JOB_PRNPLAN_SQLSTR,
-    create_prime_tablename,
-)
-from src.ch20_kpi.kpi_mstr import create_populate_kpi002_table
-from src.ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
 
 
 def test_create_populate_kpi002_table_PopulatesTable_Scenario0_NoPledges(

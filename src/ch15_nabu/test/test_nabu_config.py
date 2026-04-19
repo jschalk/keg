@@ -1,7 +1,6 @@
-from os import getcwd as os_getcwd
-from src.ch00_py.file_toolbox import create_path
-from src.ch15_nabu._ref.ch15_semantic_types import TimeNum
-from src.ch15_nabu.nabu_config import (
+from ch00_py.file_toolbox import create_path
+from ch15_nabu._ref.ch15_semantic_types import TimeNum
+from ch15_nabu.nabu_config import (
     get_context_nabuable_args,
     get_nabu_args,
     get_nabu_config_dict,
@@ -10,7 +9,8 @@ from src.ch15_nabu.nabu_config import (
     nabu_config_path,
     set_nabuable_otx_inx_args,
 )
-from src.ref.keywords import Ch15Keywords as kw
+from os import getcwd as os_getcwd
+from ref.keywords import Ch15Keywords as kw
 
 
 def test_nabu_config_path_ReturnsObj_Nabu() -> str:

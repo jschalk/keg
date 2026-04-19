@@ -1,12 +1,12 @@
-from sqlite3 import Cursor, connect as sqlite3_connect
-from src.ch00_py.db_toolbox import get_row_count, get_table_columns
-from src.ch18_etl_config.etl_sqlstr import (
+from ch00_py.db_toolbox import get_row_count, get_table_columns
+from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
     get_insert_into_heard_raw_sqlstrs,
 )
-from src.ch19_etl_steps.etl_main import etl_sound_vld_tables_to_heard_raw_tables
-from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ch19_etl_steps.etl_main import etl_sound_vld_tables_to_heard_raw_tables
+from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from sqlite3 import Cursor, connect as sqlite3_connect
 
 
 def test_get_insert_into_heard_raw_sqlstrs_ReturnsObj_PopulatesTable_Scenario0(

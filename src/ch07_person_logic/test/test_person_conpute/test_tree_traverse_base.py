@@ -1,14 +1,14 @@
-from pytest import raises as pytest_raises
-from src.ch02_contact.group import awardunit_shop
-from src.ch04_rope.rope import to_rope
-from src.ch05_reason.reason_main import factheir_shop
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch07_person_logic.test._util.ch07_examples import (
+from ch02_contact.group import awardunit_shop
+from ch04_rope.rope import to_rope
+from ch05_reason.reason_main import factheir_shop
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch07_person_logic.test._util.ch07_examples import (
     get_personunit_with_4_levels,
     get_personunit_with_4_levels_and_2reasons,
 )
-from src.ref.keywords import ExampleStrs as exx
+from pytest import raises as pytest_raises
+from ref.keywords import ExampleStrs as exx
 
 
 def test_PersonUnit_clear_plan_dict_and_person_obj_settle_attrs_SetsAttrs_Scenario0():

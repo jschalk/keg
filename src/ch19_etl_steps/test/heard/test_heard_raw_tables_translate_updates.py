@@ -1,13 +1,13 @@
-from sqlite3 import Cursor
-from src.ch00_py.db_toolbox import get_table_columns
-from src.ch18_etl_config.etl_sqlstr import (
+from ch00_py.db_toolbox import get_table_columns
+from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
     create_update_heard_raw_empty_inx_col_sqlstr,
     create_update_heard_raw_existing_inx_col_sqlstr,
 )
-from src.ch19_etl_steps.etl_main import set_all_heard_raw_inx_columns
-from src.ref.keywords import Ch19Keywords as kw
+from ch19_etl_steps.etl_main import set_all_heard_raw_inx_columns
+from ref.keywords import Ch19Keywords as kw
+from sqlite3 import Cursor
 
 
 def test_create_update_heard_raw_existing_inx_col_sqlstr_UpdatesTable_Scenario0_FullTranslateTables(

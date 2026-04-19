@@ -1,7 +1,7 @@
+from ch08_person_atom.atom_config import get_normal_table_name
+from ch08_person_atom.atom_main import PersonAtom, personatom_shop
 from dataclasses import dataclass
 from plotly.graph_objects import Figure as plotly_Figure, Scatter as plotly_Scatter
-from src.ch08_person_atom.atom_config import get_normal_table_name
-from src.ch08_person_atom.atom_main import PersonAtom, personatom_shop
 
 
 @dataclass

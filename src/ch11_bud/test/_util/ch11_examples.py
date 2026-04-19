@@ -1,7 +1,7 @@
-from src.ch04_rope.rope import create_rope
-from src.ch05_reason.reason_main import FactUnit, factunit_shop
-from src.ch11_bud.bud_main import BudUnit, budunit_shop
-from src.ref.keywords import ExampleStrs as exx
+from ch04_rope.rope import create_rope
+from ch05_reason.reason_main import FactUnit, factunit_shop
+from ch11_bud.bud_main import BudUnit, budunit_shop
+from ref.keywords import ExampleStrs as exx
 
 
 def get_ch11_example_moment_rope() -> str:

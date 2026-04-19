@@ -1,6 +1,6 @@
+from ch07_person_logic._ref.ch07_semantic_types import ManaGrain, PersonName
 from inspect import getdoc as inspect_getdoc
-from src.ch07_person_logic._ref.ch07_semantic_types import ManaGrain, PersonName
-from src.ref.keywords import Ch07Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch07Keywords as kw, ExampleStrs as exx
 
 
 def test_PersonName_Exists():

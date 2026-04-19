@@ -1,14 +1,14 @@
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import open_json
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch11_bud._ref.ch11_path import (
+from ch00_py.file_toolbox import open_json
+from ch09_person_lesson.lasso import lassounit_shop
+from ch11_bud._ref.ch11_path import (
     create_cell_contact_mandate_ledger_path as mandate_path,
     create_cell_dir_path as cell_dir,
 )
-from src.ch11_bud.bud_filehandler import cellunit_save_to_dir
-from src.ch11_bud.cell_main import cellunit_shop
-from src.ch14_moment.moment_cell import set_cell_tree_cell_mandates
-from src.ref.keywords import ExampleStrs as exx
+from ch11_bud.bud_filehandler import cellunit_save_to_dir
+from ch11_bud.cell_main import cellunit_shop
+from ch14_moment.moment_cell import set_cell_tree_cell_mandates
+from os.path import exists as os_path_exists
+from ref.keywords import ExampleStrs as exx
 
 
 def test_set_cell_tree_cell_mandates_SetsRootAttr_Scenario0_Depth0NoFacts(

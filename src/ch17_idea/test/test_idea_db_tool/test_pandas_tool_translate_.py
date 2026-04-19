@@ -1,21 +1,21 @@
-from copy import deepcopy as copy_deepcopy
-from pandas import DataFrame
-from pandas.testing import assert_frame_equal as pandas_assert_frame_equal
-from src.ch04_rope.rope import create_rope, to_rope
-from src.ch16_translate.map_term import namemap_shop
-from src.ch16_translate.test._util.ch16_examples import (
+from ch04_rope.rope import create_rope, to_rope
+from ch16_translate.map_term import namemap_shop
+from ch16_translate.test._util.ch16_examples import (
     get_casa_maison_rope_inx_dt,
     get_casa_maison_rope_otx_dt,
     get_casa_maison_translateunit_set_by_label,
     get_casa_maison_translateunit_set_by_otx2inx,
 )
-from src.ch16_translate.translate_main import translateunit_shop
-from src.ch17_idea.idea_db_tool import (
+from ch16_translate.translate_main import translateunit_shop
+from ch17_idea.idea_db_tool import (
     get_dataframe_translateable_columns,
     translate_all_columns_dataframe,
     translate_single_column_dataframe,
 )
-from src.ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
+from copy import deepcopy as copy_deepcopy
+from pandas import DataFrame
+from pandas.testing import assert_frame_equal as pandas_assert_frame_equal
+from ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
 
 
 def test_get_dataframe_translateable_columns_ReturnsObj():

@@ -1,6 +1,6 @@
+from ch04_rope.rope import create_rope
 from pandas import DataFrame
-from src.ch04_rope.rope import create_rope
-from src.ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
 
 J45_ROPE = create_rope("jeffy45", knot=exx.slash)
 

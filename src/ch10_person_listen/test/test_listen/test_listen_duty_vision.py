@@ -1,24 +1,24 @@
-from src.ch04_rope.rope import LabelTerm, RopeTerm, create_rope
-from src.ch07_person_logic.person_main import PersonUnit, personunit_shop, planunit_shop
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch09_person_lesson.lesson_filehandler import (
+from ch04_rope.rope import LabelTerm, RopeTerm, create_rope
+from ch07_person_logic.person_main import PersonUnit, personunit_shop, planunit_shop
+from ch09_person_lesson.lasso import lassounit_shop
+from ch09_person_lesson.lesson_filehandler import (
     LessonFileHandler,
     gut_file_exists,
     lessonfilehandler_shop,
     save_gut_file,
 )
-from src.ch10_person_listen.keep_tool import (
+from ch10_person_listen.keep_tool import (
     get_vision_person,
     job_file_exists,
     open_job_file,
     save_duty_person,
     vision_file_exists,
 )
-from src.ch10_person_listen.listen_main import (
+from ch10_person_listen.listen_main import (
     create_vision_file_from_duty_file,
     listen_to_person_visions,
 )
-from src.ch10_person_listen.test._util.ch10_examples import (
+from ch10_person_listen.test._util.ch10_examples import (
     ch10_example_moment_rope,
     eat_str,
     full_str,
@@ -27,7 +27,7 @@ from src.ch10_person_listen.test._util.ch10_examples import (
     hungry_str,
     run_str,
 )
-from src.ref.keywords import Ch10Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch10Keywords as kw, ExampleStrs as exx
 
 
 def sanitation_str() -> str:

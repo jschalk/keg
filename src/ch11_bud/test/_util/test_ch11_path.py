@@ -1,9 +1,7 @@
-from inspect import getdoc as inspect_getdoc
-from pytest import mark as pytest_mark
-from src.ch00_py.file_toolbox import create_path
-from src.ch04_rope.rope import create_rope
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch11_bud._ref.ch11_path import (
+from ch00_py.file_toolbox import create_path
+from ch04_rope.rope import create_rope
+from ch09_person_lesson.lasso import lassounit_shop
+from ch11_bud._ref.ch11_path import (
     BUDUNIT_FILENAME,
     CELL_MANDATE_FILENAME,
     CELLNODE_FILENAME,
@@ -24,7 +22,9 @@ from src.ch11_bud._ref.ch11_path import (
     create_spark_all_lesson_path,
     create_spark_expressed_lesson_path,
 )
-from src.ref.keywords import Ch11Keywords as kw, ExampleStrs as exx
+from inspect import getdoc as inspect_getdoc
+from pytest import mark as pytest_mark
+from ref.keywords import Ch11Keywords as kw, ExampleStrs as exx
 
 
 def test_create_buds_dir_path_ReturnsObj(temp3_dir):

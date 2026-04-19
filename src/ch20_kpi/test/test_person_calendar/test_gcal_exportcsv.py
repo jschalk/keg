@@ -1,23 +1,20 @@
-from csv import DictReader as csv_DictReader
-from datetime import datetime, timedelta
-from io import StringIO as io_StringIO
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch13_time.epoch_main import (
+from ch07_person_logic.person_main import personunit_shop
+from ch13_time.epoch_main import (
     add_epoch_planunit,
     get_default_epoch_config_dict,
     get_epoch_rope,
 )
-from src.ch13_time.epoch_reason import (
-    set_epoch_base_case_dayly,
-    set_epoch_base_case_weekly,
-)
-from src.ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
-from src.ch20_kpi.gcalendar import (
+from ch13_time.epoch_reason import set_epoch_base_case_dayly, set_epoch_base_case_weekly
+from ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
+from ch20_kpi.gcalendar import (
     create_gcalendar_csv_from_list,
     create_gcalendar_csv_from_person,
     create_gcalendar_events_list,
 )
-from src.ref.keywords import Ch20Keywords as kw
+from csv import DictReader as csv_DictReader
+from datetime import datetime, timedelta
+from io import StringIO as io_StringIO
+from ref.keywords import Ch20Keywords as kw
 
 
 def test_create_gcalendar_events_list_ReturnsObj_Scenario0_Empty():

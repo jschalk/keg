@@ -1,25 +1,23 @@
-from inspect import getdoc as inspect_getdoc
-from re import fullmatch as re_fullmatch
-from src.ch00_py.keyword_class_builder import (
+from ch00_py.keyword_class_builder import (
     get_example_strs_config,
     get_keywords_src_config,
 )
-from src.ch07_person_logic.person_config import (
+from ch07_person_logic.person_config import (
     get_all_person_calc_args,
     get_person_config_dict,
 )
-from src.ch11_bud.cell_main import cellunit_shop
-from src.ch13_time.epoch_main import get_c400_constants, get_default_epoch_config_dict
-from src.ch14_moment.moment_config import get_moment_config_args
-from src.ch15_nabu.nabu_config import get_nabu_args, get_nabuable_args
-from src.ch16_translate.translate_config import (
+from ch11_bud.cell_main import cellunit_shop
+from ch13_time.epoch_main import get_c400_constants, get_default_epoch_config_dict
+from ch14_moment.moment_config import get_moment_config_args
+from ch15_nabu.nabu_config import get_nabu_args, get_nabuable_args
+from ch16_translate.translate_config import (
     get_translate_config_args,
     get_translate_config_dict,
 )
-from src.ch17_idea.idea_config import get_idea_config_dict
-from src.ch18_etl_config.etl_config import get_etl_stage_types_config_dict
-from src.ch19_etl_steps.etl_main import etl_heard_raw_tables_to_moment_ote1_agg
-from src.ch98_docs_builder._ref.ch98_semantic_types import (
+from ch17_idea.idea_config import get_idea_config_dict
+from ch18_etl_config.etl_config import get_etl_stage_types_config_dict
+from ch19_etl_steps.etl_main import etl_heard_raw_tables_to_moment_ote1_agg
+from ch98_docs_builder._ref.ch98_semantic_types import (
     BreakTerm,
     ContactName,
     CRUD_command,
@@ -52,13 +50,15 @@ from src.ch98_docs_builder._ref.ch98_semantic_types import (
     WeightNum,
     WorldName,
 )
-from src.ch98_docs_builder.keg_definitions_builder import (
+from ch98_docs_builder.keg_definitions_builder import (
     get_chxx_prefix_path_dict,
     get_chxx_ref_blurb,
     get_keg_definitions,
     get_person_dimen_config,
 )
-from src.ref.keywords import Ch98Keywords as kw, ExampleStrs as exx
+from inspect import getdoc as inspect_getdoc
+from re import fullmatch as re_fullmatch
+from ref.keywords import Ch98Keywords as kw, ExampleStrs as exx
 
 
 def python_keywords() -> set:

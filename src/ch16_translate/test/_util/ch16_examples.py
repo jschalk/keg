@@ -1,6 +1,5 @@
-from pandas import DataFrame
-from src.ch04_rope.rope import create_rope, default_knot_if_None, to_rope
-from src.ch16_translate.map_term import (
+from ch04_rope.rope import create_rope, default_knot_if_None, to_rope
+from ch16_translate.map_term import (
     LabelMap,
     NameMap,
     RopeMap,
@@ -10,9 +9,10 @@ from src.ch16_translate.map_term import (
     ropemap_shop,
     titlemap_shop,
 )
-from src.ch16_translate.translate_config import default_unknown_str_if_None
-from src.ch16_translate.translate_main import TranslateUnit, translateunit_shop
-from src.ref.keywords import Ch16Keywords as kw, ExampleStrs as exx
+from ch16_translate.translate_config import default_unknown_str_if_None
+from ch16_translate.translate_main import TranslateUnit, translateunit_shop
+from pandas import DataFrame
+from ref.keywords import Ch16Keywords as kw, ExampleStrs as exx
 
 
 def get_clean_labelmap() -> LabelMap:

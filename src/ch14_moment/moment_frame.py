@@ -1,13 +1,13 @@
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch11_bud.bud_main import personbudhistory_shop, tranbook_shop
-from src.ch13_time.epoch_main import (
+from ch07_person_logic.person_main import personunit_shop
+from ch11_bud.bud_main import personbudhistory_shop, tranbook_shop
+from ch13_time.epoch_main import (
     EpochHolder,
     add_epoch_planunit,
     epochholder_shop,
     get_epoch_length,
     get_epoch_rope,
 )
-from src.ch14_moment.moment_main import MomentUnit
+from ch14_moment.moment_main import MomentUnit
 
 
 def get_moment_epochholder(momentunit: MomentUnit) -> EpochHolder:

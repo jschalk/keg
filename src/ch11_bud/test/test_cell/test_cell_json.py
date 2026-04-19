@@ -1,11 +1,11 @@
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch11_bud.cell_main import cellunit_get_from_dict, cellunit_shop
-from src.ch11_bud.test._util.ch11_examples import (
+from ch07_person_logic.person_main import personunit_shop
+from ch11_bud.cell_main import cellunit_get_from_dict, cellunit_shop
+from ch11_bud.test._util.ch11_examples import (
     example_casa_clean_factunit as clean_factunit,
     example_casa_dirty_factunit as dirty_factunit,
     example_sky_blue_factunit as sky_blue_factunit,
 )
-from src.ref.keywords import Ch11Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch11Keywords as kw, ExampleStrs as exx
 
 
 def test_CellUnit_to_dict_ReturnsObj_Scenario0():

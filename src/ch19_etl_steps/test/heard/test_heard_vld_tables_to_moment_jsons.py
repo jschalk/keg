@@ -1,22 +1,22 @@
-from os.path import exists as os_path_exists
-from sqlite3 import Cursor
-from src.ch00_py.db_toolbox import create_select_query, db_table_exists, get_row_count
-from src.ch00_py.file_toolbox import open_json
-from src.ch04_rope.rope import create_rope
-from src.ch09_person_lesson._ref.ch09_path import create_moment_json_path
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch14_moment.moment_config import get_moment_dimens
-from src.ch14_moment.moment_main import get_momentunit_from_dict
-from src.ch18_etl_config.etl_config import get_dimen_abbv7
-from src.ch18_etl_config.etl_sqlstr import (
+from ch00_py.db_toolbox import create_select_query, db_table_exists, get_row_count
+from ch00_py.file_toolbox import open_json
+from ch04_rope.rope import create_rope
+from ch09_person_lesson._ref.ch09_path import create_moment_json_path
+from ch09_person_lesson.lasso import lassounit_shop
+from ch14_moment.moment_config import get_moment_dimens
+from ch14_moment.moment_main import get_momentunit_from_dict
+from ch18_etl_config.etl_config import get_dimen_abbv7
+from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename,
     get_moment_heard_select1_sqlstrs,
 )
-from src.ch19_etl_steps.etl_main import (
+from ch19_etl_steps.etl_main import (
     create_sound_and_heard_tables,
     etl_heard_vld_tables_to_moment_jsons,
 )
-from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from os.path import exists as os_path_exists
+from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from sqlite3 import Cursor
 
 
 def test_get_moment_heard_select1_sqlstrs_ReturnsObj_HasAllKeys():

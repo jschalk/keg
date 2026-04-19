@@ -1,6 +1,6 @@
+from ch05_reason._ref.ch05_semantic_types import FactNum, ReasonNum
 from inspect import getdoc as inspect_getdoc
-from src.ch05_reason._ref.ch05_semantic_types import FactNum, ReasonNum
-from src.ref.keywords import Ch05Keywords as kw
+from ref.keywords import Ch05Keywords as kw
 
 
 def test_ReasonNum_Exists():

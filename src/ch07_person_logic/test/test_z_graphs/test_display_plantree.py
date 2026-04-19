@@ -1,19 +1,19 @@
-from src.ch00_py.plotly_toolbox import conditional_fig_show
-from src.ch07_person_logic.person_graphic import (
+from ch00_py.plotly_toolbox import conditional_fig_show
+from ch07_person_logic.person_graphic import (
     display_plantree,
     fund_graph0,
     get_person_agenda_plotly_fig,
     get_person_contacts_plotly_fig,
 )
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch07_person_logic.test._util.ch07_examples import (
+from ch07_person_logic.person_main import personunit_shop
+from ch07_person_logic.test._util.ch07_examples import (
     get_personunit_laundry_example1,
     get_personunit_with_4_levels,
     get_personunit_with_4_levels_and_2reasons,
     get_personunit_x1_3levels_1reason_1facts,
     personunit_v001_with_large_agenda,
 )
-from src.ref.keywords import Ch07Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch07Keywords as kw, ExampleStrs as exx
 
 
 def test_display_plantree_Scenario0(graphics_bool):

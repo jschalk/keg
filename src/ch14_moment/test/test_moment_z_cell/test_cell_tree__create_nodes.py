@@ -1,18 +1,18 @@
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import create_path
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch11_bud._ref.ch11_path import (
+from ch00_py.file_toolbox import create_path
+from ch09_person_lesson.lasso import lassounit_shop
+from ch11_bud._ref.ch11_path import (
     create_cell_dir_path as cell_dir,
     create_cell_json_path as node_path,
 )
-from src.ch11_bud.bud_filehandler import (
+from ch11_bud.bud_filehandler import (
     cellunit_get_from_dir,
     cellunit_save_to_dir,
     save_arbitrary_personspark as save_personspark,
 )
-from src.ch11_bud.cell_main import cellunit_shop
-from src.ch14_moment.moment_cell import create_cell_tree
-from src.ref.keywords import ExampleStrs as exx
+from ch11_bud.cell_main import cellunit_shop
+from ch14_moment.moment_cell import create_cell_tree
+from os.path import exists as os_path_exists
+from ref.keywords import ExampleStrs as exx
 
 
 def test_create_cell_tree_Scenaro0_timenum_Empty(temp3_fs):

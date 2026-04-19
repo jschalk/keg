@@ -1,17 +1,17 @@
-from os.path import exists as os_path_exists
-from pytest import raises as pytest_raises
-from src.ch06_plan.healer import healerunit_shop
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_graphic import display_plantree
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch09_person_lesson.lesson_filehandler import (
+from ch06_plan.healer import healerunit_shop
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_graphic import display_plantree
+from ch09_person_lesson.lasso import lassounit_shop
+from ch09_person_lesson.lesson_filehandler import (
     lessonfilehandler_shop,
     open_gut_file,
     save_gut_file,
 )
-from src.ch10_person_listen._ref.ch10_path import create_keep_duty_path
-from src.ch10_person_listen.keep_tool import get_keep_ropes, save_all_gut_dutys
-from src.ref.keywords import ExampleStrs as exx
+from ch10_person_listen._ref.ch10_path import create_keep_duty_path
+from ch10_person_listen.keep_tool import get_keep_ropes, save_all_gut_dutys
+from os.path import exists as os_path_exists
+from pytest import raises as pytest_raises
+from ref.keywords import ExampleStrs as exx
 
 
 def test_get_keep_ropes_RaisesErrorWhen_keeps_justified_IsFalse(

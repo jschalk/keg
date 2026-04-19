@@ -1,6 +1,6 @@
-from src.ch00_py.dict_toolbox import get_max_key
-from src.ch05_reason.reason_main import FactUnit, get_factunit_from_tuple
-from src.ch11_bud._ref.ch11_semantic_types import PersonName, RopeTerm
+from ch00_py.dict_toolbox import get_max_key
+from ch05_reason.reason_main import FactUnit, get_factunit_from_tuple
+from ch11_bud._ref.ch11_semantic_types import PersonName, RopeTerm
 
 
 def get_nodes_with_weighted_facts(

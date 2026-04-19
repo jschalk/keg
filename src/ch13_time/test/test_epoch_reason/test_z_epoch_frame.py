@@ -1,5 +1,5 @@
-from src.ch06_plan.test._util.ch06_examples import get_range_attrs
-from src.ch07_person_logic.person_tool import (
+from ch06_plan.test._util.ch06_examples import get_range_attrs
+from ch07_person_logic.person_tool import (
     add_frame_to_caseunit,
     add_frame_to_factunit,
     add_frame_to_personunit,
@@ -11,18 +11,18 @@ from src.ch07_person_logic.person_tool import (
     person_plan_reasonunit_get_obj,
     person_planunit_get_obj,
 )
-from src.ch13_time.epoch_main import add_epoch_planunit, get_epoch_rope
-from src.ch13_time.epoch_reason import (
+from ch13_time.epoch_main import add_epoch_planunit, get_epoch_rope
+from ch13_time.epoch_reason import (
     add_epoch_frame_to_personunit,
     set_epoch_cases_by_args_dict,
     set_epoch_fact,
 )
-from src.ch13_time.test._util.ch13_examples import (
+from ch13_time.test._util.ch13_examples import (
     Ch13ExampleStrs as wx,
     get_bob_five_person,
     get_lizzy9_config,
 )
-from src.ref.keywords import Ch13Keywords as kw
+from ref.keywords import Ch13Keywords as kw
 
 
 def test_add_frame_to_caseunit_SetsAttr_Scenario0_NoWrap_dayly():

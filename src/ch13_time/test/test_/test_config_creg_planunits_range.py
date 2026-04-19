@@ -1,5 +1,5 @@
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch13_time.test._util.ch13_examples import (
+from ch07_person_logic.person_main import personunit_shop
+from ch13_time.test._util.ch13_examples import (
     add_time_creg_planunit,
     get_fri,
     get_mon,
@@ -9,7 +9,7 @@ from src.ch13_time.test._util.ch13_examples import (
     get_tue,
     get_wed,
 )
-from src.ref.keywords import Ch13Keywords as kw
+from ref.keywords import Ch13Keywords as kw
 
 
 def test_PersonUnit_set_plan_dict_SetsAll_range_inheritors():

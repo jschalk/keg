@@ -1,9 +1,8 @@
-from sqlite3 import Cursor
-from src.ch00_py.db_toolbox import get_row_count, get_table_columns
-from src.ch00_py.dict_toolbox import get_empty_set_if_None
-from src.ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
-from src.ch17_idea.idea_config import get_default_sorted_list, get_idea_config_dict
-from src.ch18_etl_config.etl_config import (
+from ch00_py.db_toolbox import get_row_count, get_table_columns
+from ch00_py.dict_toolbox import get_empty_set_if_None
+from ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
+from ch17_idea.idea_config import get_default_sorted_list, get_idea_config_dict
+from ch18_etl_config.etl_config import (
     etl_idea_category_config_dict,
     get_dimen_abbv7,
     get_etl_category_stages_dict,
@@ -12,19 +11,20 @@ from src.ch18_etl_config.etl_config import (
     remove_otx_columns,
     remove_staging_columns,
 )
-from src.ch18_etl_config.etl_sqlstr import (
+from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
     get_insert_heard_agg_sqlstrs,
 )
-from src.ch19_etl_steps.etl_main import etl_heard_raw_tables_to_heard_agg_tables
-from src.ch19_etl_steps.test.heard.test_heard_agg__update_factnum_pfhapx import (
+from ch19_etl_steps.etl_main import etl_heard_raw_tables_to_heard_agg_tables
+from ch19_etl_steps.test.heard.test_heard_agg__update_factnum_pfhapx import (
     pfhapx_insert_nabtime,
     pfhapx_insert_prnfact,
     pfhapx_insert_prnplan,
     pfhapx_select_prnfact,
 )
-from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from sqlite3 import Cursor
 
 
 def check_insert_sqlstr_exists(

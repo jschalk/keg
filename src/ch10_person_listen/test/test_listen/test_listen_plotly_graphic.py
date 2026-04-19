@@ -1,12 +1,12 @@
-from src.ch10_person_listen.test._util.ch10_examples import get_fund_breakdown_person
-from src.ch10_person_listen.test.test_listen.listen_graphic import (
+from ch10_person_listen.test._util.ch10_examples import get_fund_breakdown_person
+from ch10_person_listen.test.test_listen.listen_graphic import (
     fund_graph13,
     get_listen_structures0_fig,
     get_listen_structures1_fig,
     get_listen_structures2_fig,
     get_listen_structures3_fig,
 )
-from src.ref.keywords import Ch10Keywords as kw
+from ref.keywords import Ch10Keywords as kw
 
 
 def test_listen_structures0_ShowsGraphs(graphics_bool):

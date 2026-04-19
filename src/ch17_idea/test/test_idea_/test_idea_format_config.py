@@ -1,5 +1,5 @@
-from src.ch00_py.file_toolbox import create_path, get_dir_file_strs
-from src.ch17_idea.idea_config import (
+from ch00_py.file_toolbox import create_path, get_dir_file_strs
+from ch17_idea.idea_config import (
     get_default_sorted_list,
     get_dimen_minimum_del_idea_names,
     get_dimen_minimum_put_idea_names,
@@ -14,13 +14,13 @@ from src.ch17_idea.idea_config import (
     ii00120_person_contact_membership_v0_0_0,
     ii00121_person_contactunit_v0_0_0,
 )
-from src.ch17_idea.idea_main import (
+from ch17_idea.idea_main import (
     _generate_idea_dataframe,
     _get_headers_list,
     get_idearef_obj,
 )
-from src.ch17_idea.test.test_idea_.test__idea_config import change_erase_attrs
-from src.ref.keywords import Ch17Keywords as kw
+from ch17_idea.test.test_idea_.test__idea_config import change_erase_attrs
+from ref.keywords import Ch17Keywords as kw
 
 
 def test_config_str_functions_ReturnsObj():

@@ -1,14 +1,12 @@
-from copy import deepcopy
-from dataclasses import dataclass
-from src.ch00_py.dict_toolbox import (
+from ch00_py.dict_toolbox import (
     get_0_if_None,
     get_1_if_None,
     get_empty_dict_if_None,
     get_False_if_None,
     get_positive_int,
 )
-from src.ch01_allot.allot import allot_scale, default_grain_num_if_None
-from src.ch02_contact.group import (
+from ch01_allot.allot import allot_scale, default_grain_num_if_None
+from ch02_contact.group import (
     AwardHeir,
     AwardLine,
     AwardUnit,
@@ -17,14 +15,14 @@ from src.ch02_contact.group import (
     awardline_shop,
     get_awardunits_from_dict,
 )
-from src.ch03_workforce.workforce import (
+from ch03_workforce.workforce import (
     WorkforceHeir,
     WorkforceUnit,
     get_workforceunit_from_dict,
     workforceheir_shop,
     workforceunit_shop,
 )
-from src.ch04_rope.rope import (
+from ch04_rope.rope import (
     all_ropes_between,
     create_rope,
     find_replace_rope_key_dict,
@@ -32,7 +30,7 @@ from src.ch04_rope.rope import (
     rebuild_rope,
     replace_knot,
 )
-from src.ch05_reason.reason_main import (
+from ch05_reason.reason_main import (
     FactCore,
     FactHeir,
     FactUnit,
@@ -48,7 +46,7 @@ from src.ch05_reason.reason_main import (
     reasonheir_shop,
     reasonunit_shop,
 )
-from src.ch06_plan._ref.ch06_semantic_types import (
+from ch06_plan._ref.ch06_semantic_types import (
     ContactName,
     FundGrain,
     FundNum,
@@ -59,8 +57,10 @@ from src.ch06_plan._ref.ch06_semantic_types import (
     RopeTerm,
     default_knot_if_None,
 )
-from src.ch06_plan.healer import HealerUnit, get_healerunit_from_dict, healerunit_shop
-from src.ch06_plan.range_toolbox import RangeUnit, get_morphed_rangeunit
+from ch06_plan.healer import HealerUnit, get_healerunit_from_dict, healerunit_shop
+from ch06_plan.range_toolbox import RangeUnit, get_morphed_rangeunit
+from copy import deepcopy
+from dataclasses import dataclass
 
 
 class InvalidPlanError(Exception):

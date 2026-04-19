@@ -1,5 +1,5 @@
+from ch12_keep._ref.ch12_semantic_types import ManaNum
 from inspect import getdoc as inspect_getdoc
-from src.ch12_keep._ref.ch12_semantic_types import ManaNum
 
 
 def test_ManaNum_Exists():

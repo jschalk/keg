@@ -1,14 +1,14 @@
-from numpy import int64 as numpy_int64
-from pytest import raises as pytest_raises
-from src.ch04_rope.rope import default_knot_if_None
-from src.ch16_translate.map_term import (
+from ch04_rope.rope import default_knot_if_None
+from ch16_translate.map_term import (
     NameMap,
     get_namemap_from_dict,
     inherit_namemap,
     namemap_shop,
 )
-from src.ch16_translate.translate_config import default_unknown_str_if_None
-from src.ref.keywords import Ch16Keywords as kw, ExampleStrs as exx
+from ch16_translate.translate_config import default_unknown_str_if_None
+from numpy import int64 as numpy_int64
+from pytest import raises as pytest_raises
+from ref.keywords import Ch16Keywords as kw, ExampleStrs as exx
 
 
 def test_NameMap_Exists():

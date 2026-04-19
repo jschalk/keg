@@ -1,15 +1,11 @@
-from src.ch00_py.file_toolbox import (
-    create_directory_path,
-    create_path,
-    get_json_filename,
-)
-from src.ch04_rope.rope import get_all_rope_labels, rebuild_rope
-from src.ch09_person_lesson._ref.ch09_path import (
+from ch00_py.file_toolbox import create_directory_path, create_path, get_json_filename
+from ch04_rope.rope import get_all_rope_labels, rebuild_rope
+from ch09_person_lesson._ref.ch09_path import (
     create_moment_persons_dir_path,
     create_moments_dir_path,
 )
-from src.ch09_person_lesson.lasso import LassoUnit
-from src.ch10_person_listen._ref.ch10_semantic_types import (
+from ch09_person_lesson.lasso import LassoUnit
+from ch10_person_listen._ref.ch10_semantic_types import (
     KnotTerm,
     MomentRope,
     PersonName,

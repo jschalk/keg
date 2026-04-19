@@ -1,7 +1,7 @@
-from src.ch00_py.file_toolbox import create_path
-from src.ch09_person_lesson._ref.ch09_path import create_moment_persons_dir_path
-from src.ch09_person_lesson.lasso import LassoUnit
-from src.ch11_bud._ref.ch11_semantic_types import PersonName
+from ch00_py.file_toolbox import create_path
+from ch09_person_lesson._ref.ch09_path import create_moment_persons_dir_path
+from ch09_person_lesson.lasso import LassoUnit
+from ch11_bud._ref.ch11_semantic_types import PersonName
 
 MOMENT_FILENAME = "moment.json"
 BUDUNIT_FILENAME = "budunit.json"

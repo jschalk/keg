@@ -1,10 +1,10 @@
-from src.ch00_py.file_toolbox import create_path
-from src.ch04_rope.rope import default_knot_if_None
-from src.ch13_time.epoch_main import epochunit_shop, get_default_epoch_config_dict
-from src.ch13_time.test._util.ch13_examples import get_five_config
-from src.ch14_moment.moment_main import momentunit_shop
-from src.ch17_idea.idea_main import moment_build_from_df
-from src.ch17_idea.test._util.ch17_examples import (
+from ch00_py.file_toolbox import create_path
+from ch04_rope.rope import default_knot_if_None
+from ch13_time.epoch_main import epochunit_shop, get_default_epoch_config_dict
+from ch13_time.test._util.ch13_examples import get_five_config
+from ch14_moment.moment_main import momentunit_shop
+from ch17_idea.idea_main import moment_build_from_df
+from ch17_idea.test._util.ch17_examples import (
     J45_ROPE,
     get_ex1_ii00100_df,
     get_ex1_ii00101_df,
@@ -19,7 +19,7 @@ from src.ch17_idea.test._util.ch17_examples import (
     get_ex2_ii00104_df,
     get_ex2_ii00105_df,
 )
-from src.ref.keywords import ExampleStrs as exx
+from ref.keywords import ExampleStrs as exx
 
 
 # ESTABLISH a dataframe, build a moment unit

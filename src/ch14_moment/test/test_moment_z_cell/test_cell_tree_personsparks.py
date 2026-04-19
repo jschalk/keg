@@ -1,14 +1,11 @@
+from ch00_py.file_toolbox import open_json
+from ch09_person_lesson.lasso import lassounit_shop
+from ch11_bud._ref.ch11_path import create_cell_json_path, create_personspark_path
+from ch11_bud.bud_filehandler import cellunit_add_json_file, save_arbitrary_personspark
+from ch14_moment.moment_cell import load_cells_personspark
+from ch14_moment.test._util.ch14_examples import example_casa_floor_clean_factunit
 from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import open_json
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch11_bud._ref.ch11_path import create_cell_json_path, create_personspark_path
-from src.ch11_bud.bud_filehandler import (
-    cellunit_add_json_file,
-    save_arbitrary_personspark,
-)
-from src.ch14_moment.moment_cell import load_cells_personspark
-from src.ch14_moment.test._util.ch14_examples import example_casa_floor_clean_factunit
-from src.ref.keywords import Ch14Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch14Keywords as kw, ExampleStrs as exx
 
 
 def test_load_cells_personspark_SetsFiles_Scenario0_NoFacts(

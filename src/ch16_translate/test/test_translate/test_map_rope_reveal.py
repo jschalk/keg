@@ -1,6 +1,6 @@
-from src.ch04_rope.rope import create_rope, to_rope
-from src.ch16_translate.map_term import ropemap_shop
-from src.ref.keywords import ExampleStrs as exx
+from ch04_rope.rope import create_rope, to_rope
+from ch16_translate.map_term import ropemap_shop
+from ref.keywords import ExampleStrs as exx
 
 
 def test_RopeMap_reveal_inx_ReturnsObjAndSetsAttr_rope_Scenario0():

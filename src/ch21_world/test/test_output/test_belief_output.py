@@ -1,15 +1,15 @@
-from os.path import exists as os_path_exists
-from pandas import DataFrame, read_excel as pandas_read_excel
-from pandas.testing import assert_frame_equal
-from shutil import copy2 as shutil_copy2
-from src.ch00_py.file_toolbox import create_path, set_dir
-from src.ch17_idea.idea_db_tool import get_sheet_names, save_sheet
-from src.ch18_etl_config._ref.ch18_path import (
+from ch00_py.file_toolbox import create_path, set_dir
+from ch17_idea.idea_db_tool import get_sheet_names, save_sheet
+from ch18_etl_config._ref.ch18_path import (
     create_belief0001_path,
     create_beliefs_dir_path,
 )
-from src.ch21_world.world import create_beliefs, idea_sheets_to_lynx_mstr, worlddir_shop
-from src.ref.keywords import Ch21Keywords as kw, ExampleStrs as exx
+from ch21_world.world import create_beliefs, idea_sheets_to_lynx_mstr, worlddir_shop
+from os.path import exists as os_path_exists
+from pandas import DataFrame, read_excel as pandas_read_excel
+from pandas.testing import assert_frame_equal
+from ref.keywords import Ch21Keywords as kw, ExampleStrs as exx
+from shutil import copy2 as shutil_copy2
 
 
 def test_create_beliefs_CreatesFile_Senario0_EmptyWorld(temp3_fs):

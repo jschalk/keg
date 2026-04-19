@@ -1,11 +1,11 @@
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch10_person_listen.listen_main import (
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch10_person_listen.listen_main import (
     _allocate_irrational_contact_debt_lumen,
     generate_ingest_list,
     generate_perspective_agenda,
 )
-from src.ref.keywords import ExampleStrs as exx
+from ref.keywords import ExampleStrs as exx
 
 
 def test_allocate_irrational_contact_debt_lumen_SetsPersonAttr():

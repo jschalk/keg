@@ -1,8 +1,7 @@
-from sqlite3 import Cursor, connect as sqlite3_connect
-from src.ch00_py.db_toolbox import create_insert_query
-from src.ch07_person_logic.person_config import get_person_calc_dimen_args
-from src.ch18_etl_config.etl_sqlstr import create_job_tables
-from src.ch19_etl_steps.obj2db_person import (
+from ch00_py.db_toolbox import create_insert_query
+from ch07_person_logic.person_config import get_person_calc_dimen_args
+from ch18_etl_config.etl_sqlstr import create_job_tables
+from ch19_etl_steps.obj2db_person import (
     create_personunit_metrics_insert_sqlstr,
     create_prnawar_metrics_insert_sqlstr,
     create_prncase_metrics_insert_sqlstr,
@@ -15,7 +14,8 @@ from src.ch19_etl_steps.obj2db_person import (
     create_prnplan_metrics_insert_sqlstr,
     create_prnreas_metrics_insert_sqlstr,
 )
-from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from sqlite3 import Cursor, connect as sqlite3_connect
 
 
 def test_create_personunit_metrics_insert_sqlstr_ReturnsObj(cursor0: Cursor):

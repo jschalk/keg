@@ -1,15 +1,15 @@
-from src.ch02_contact.group import awardunit_shop
-from src.ch03_workforce.workforce import workforceunit_shop
-from src.ch04_rope.rope import create_rope
-from src.ch05_reason.reason_main import (
+from ch02_contact.group import awardunit_shop
+from ch03_workforce.workforce import workforceunit_shop
+from ch04_rope.rope import create_rope
+from ch05_reason.reason_main import (
     caseunit_shop,
     factunit_shop,
     reasonheir_shop,
     reasonunit_shop,
 )
-from src.ch06_plan.healer import healerunit_shop
-from src.ch06_plan.plan import get_obj_from_plan_dict, planunit_shop
-from src.ref.keywords import Ch06Keywords as kw, ExampleStrs as exx
+from ch06_plan.healer import healerunit_shop
+from ch06_plan.plan import get_obj_from_plan_dict, planunit_shop
+from ref.keywords import Ch06Keywords as kw, ExampleStrs as exx
 
 
 def test_get_obj_from_plan_dict_ReturnsObj():

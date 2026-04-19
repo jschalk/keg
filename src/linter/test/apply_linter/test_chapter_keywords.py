@@ -1,14 +1,14 @@
-from importlib import import_module as importlib_import_module
-from inspect import getsource as inspect_getsource
-from src.ch00_py.file_toolbox import create_path, get_dir_file_strs, open_file
-from src.ch00_py.keyword_class_builder import (
+from ch00_py.file_toolbox import create_path, get_dir_file_strs, open_file
+from ch00_py.keyword_class_builder import (
     get_chapter_keyword_classes,
     get_cumlative_keywords_main_dict,
     get_keywords_by_chapter,
     get_keywords_src_config,
 )
-from src.ch98_docs_builder.doc_builder import get_chapter_desc_prefix, get_chapter_descs
-from src.linter.style import (
+from ch98_docs_builder.doc_builder import get_chapter_desc_prefix, get_chapter_descs
+from importlib import import_module as importlib_import_module
+from inspect import getsource as inspect_getsource
+from linter.style import (
     check_custom_exception_classes_style,
     find_matching_tests,
     function_name_style_is_correct,
@@ -18,7 +18,7 @@ from src.linter.style import (
     get_python_files_with_flag,
     get_semantic_types_filename,
 )
-from src.ref.keywords import Ch98Keywords as kw
+from ref.keywords import Ch98Keywords as kw
 
 
 def get_semantic_types_dict() -> dict[str, str]:

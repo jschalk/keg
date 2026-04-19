@@ -1,5 +1,5 @@
-from src.ch04_rope.rope import create_rope, default_knot_if_None
-from src.ch05_reason.reason_main import (
+from ch04_rope.rope import create_rope, default_knot_if_None
+from ch05_reason.reason_main import (
     ReasonCore,
     ReasonHeir,
     ReasonUnit,
@@ -10,7 +10,7 @@ from src.ch05_reason.reason_main import (
     reasonheir_shop,
     reasonunit_shop,
 )
-from src.ref.keywords import Ch05Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch05Keywords as kw, ExampleStrs as exx
 
 
 def test_ReasonCore_Exists():

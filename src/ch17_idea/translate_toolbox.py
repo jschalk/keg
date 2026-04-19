@@ -1,7 +1,5 @@
-from os.path import exists as os_path_exists
-from pandas import DataFrame
-from src.ch00_py.file_toolbox import create_path, get_dir_file_strs, save_file
-from src.ch16_translate.translate_main import (
+from ch00_py.file_toolbox import create_path, get_dir_file_strs, save_file
+from ch16_translate.translate_main import (
     LabelMap,
     NameMap,
     RopeMap,
@@ -9,7 +7,9 @@ from src.ch16_translate.translate_main import (
     TranslateUnit,
     translateunit_shop,
 )
-from src.ch17_idea.idea_db_tool import get_ordered_csv, open_csv
+from ch17_idea.idea_db_tool import get_ordered_csv, open_csv
+from os.path import exists as os_path_exists
+from pandas import DataFrame
 
 
 def get_translate_name_dt_columns() -> list[str]:

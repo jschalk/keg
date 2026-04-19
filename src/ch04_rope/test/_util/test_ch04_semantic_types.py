@@ -1,12 +1,12 @@
-from inspect import getdoc as inspect_getdoc
-from src.ch04_rope._ref.ch04_semantic_types import (
+from ch04_rope._ref.ch04_semantic_types import (
     FirstLabel,
     KnotTerm,
     LabelTerm,
     RopeTerm,
     default_knot_if_None,
 )
-from src.ref.keywords import Ch04Keywords as kw, ExampleStrs as exx
+from inspect import getdoc as inspect_getdoc
+from ref.keywords import Ch04Keywords as kw, ExampleStrs as exx
 
 
 def test_KnotTerm_Exists():

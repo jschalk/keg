@@ -1,6 +1,6 @@
-from src.ch04_rope.rope import create_rope
-from src.ch08_person_atom.atom_main import get_personatom_from_dict, personatom_shop
-from src.ref.keywords import Ch08Keywords as kw
+from ch04_rope.rope import create_rope
+from ch08_person_atom.atom_main import get_personatom_from_dict, personatom_shop
+from ref.keywords import Ch08Keywords as kw
 
 
 def test_PersonAtom_to_dict_ReturnsObj():

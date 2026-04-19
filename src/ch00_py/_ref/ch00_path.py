@@ -1,4 +1,4 @@
-from src.ch00_py.file_toolbox import create_path
+from ch00_py.file_toolbox import create_path
 
 
 def create_src_example_strs_path(src_dir: str) -> str:

@@ -1,11 +1,11 @@
-from src.ch02_contact.group import awardunit_shop
-from src.ch05_reason.reason_main import factunit_shop
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch08_person_atom.atom_main import personatom_shop
-from src.ch09_person_lesson.delta import persondelta_shop
-from src.ch09_person_lesson.test._util.ch09_examples import get_persondelta_example1
-from src.ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
+from ch02_contact.group import awardunit_shop
+from ch05_reason.reason_main import factunit_shop
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch08_person_atom.atom_main import personatom_shop
+from ch09_person_lesson.delta import persondelta_shop
+from ch09_person_lesson.test._util.ch09_examples import get_persondelta_example1
+from ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
 
 
 def test_PersonDelta_get_edited_person_ReturnsObj_SimplestScenario():

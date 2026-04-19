@@ -1,11 +1,11 @@
-from dataclasses import dataclass
-from src.ch00_py.file_toolbox import create_directory_path
-from src.ch04_rope.rope import get_all_rope_labels, get_default_rope
-from src.ch09_person_lesson._ref.ch09_semantic_types import (
+from ch00_py.file_toolbox import create_directory_path
+from ch04_rope.rope import get_all_rope_labels, get_default_rope
+from ch09_person_lesson._ref.ch09_semantic_types import (
     KnotTerm,
     MomentRope,
     default_knot_if_None,
 )
+from dataclasses import dataclass
 
 
 class LassoInitKnotNotPresentError(Exception):

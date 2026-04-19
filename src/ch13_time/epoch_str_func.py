@@ -1,13 +1,13 @@
-from src.ch04_rope.rope import (
+from ch04_rope.rope import (
     LabelTerm,
     RopeTerm,
     create_rope,
     get_first_label_from_rope,
     get_tail_label,
 )
-from src.ch05_reason.reason_main import CaseUnit, FactUnit
-from src.ch07_person_logic.person_main import PersonUnit
-from src.ch13_time.epoch_main import epochholder_shop
+from ch05_reason.reason_main import CaseUnit, FactUnit
+from ch07_person_logic.person_main import PersonUnit
+from ch13_time.epoch_main import epochholder_shop
 
 
 def get_reason_case_readable_str(

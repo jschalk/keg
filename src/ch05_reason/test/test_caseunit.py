@@ -1,11 +1,11 @@
-from src.ch04_rope.rope import create_rope, find_replace_rope_key_dict
-from src.ch05_reason.reason_main import (
+from ch04_rope.rope import create_rope, find_replace_rope_key_dict
+from ch05_reason.reason_main import (
     CaseUnit,
     cases_get_from_dict,
     caseunit_shop,
     factheir_shop,
 )
-from src.ref.keywords import Ch05Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch05Keywords as kw, ExampleStrs as exx
 
 
 def test_CaseUnit_Exists():

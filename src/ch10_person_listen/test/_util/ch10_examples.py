@@ -1,12 +1,12 @@
-from src.ch04_rope.rope import RopeTerm, create_rope, create_rope_from_labels
-from src.ch07_person_logic.person_main import PersonUnit, personunit_shop, planunit_shop
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch09_person_lesson.lesson_filehandler import (
+from ch04_rope.rope import RopeTerm, create_rope, create_rope_from_labels
+from ch07_person_logic.person_main import PersonUnit, personunit_shop, planunit_shop
+from ch09_person_lesson.lasso import lassounit_shop
+from ch09_person_lesson.lesson_filehandler import (
     LessonFileHandler,
     lessonfilehandler_shop,
 )
-from src.ch09_person_lesson.test._util.ch09_examples import get_texas_rope
-from src.ref.keywords import Ch10Keywords as kw, ExampleStrs as exx
+from ch09_person_lesson.test._util.ch09_examples import get_texas_rope
+from ref.keywords import Ch10Keywords as kw, ExampleStrs as exx
 
 
 def ch10_example_moment_rope() -> str:

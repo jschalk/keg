@@ -1,17 +1,15 @@
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import create_path, open_json, save_json
-from src.ch07_person_logic.person_main import get_personunit_from_dict, personunit_shop
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch09_person_lesson.lesson_main import get_lessonunit_from_dict, lessonunit_shop
-from src.ch11_bud._ref.ch11_path import (
+from ch00_py.file_toolbox import create_path, open_json, save_json
+from ch07_person_logic.person_main import get_personunit_from_dict, personunit_shop
+from ch09_person_lesson.lasso import lassounit_shop
+from ch09_person_lesson.lesson_main import get_lessonunit_from_dict, lessonunit_shop
+from ch11_bud._ref.ch11_path import (
     create_person_spark_dir_path,
     create_spark_all_lesson_path,
     create_spark_expressed_lesson_path,
 )
-from src.ch19_etl_steps.etl_main import (
-    etl_spark_lesson_json_to_spark_inherited_personunits,
-)
-from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ch19_etl_steps.etl_main import etl_spark_lesson_json_to_spark_inherited_personunits
+from os.path import exists as os_path_exists
+from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 
 def test_etl_spark_lesson_json_to_spark_inherited_personunits_SetsFiles_person_json(

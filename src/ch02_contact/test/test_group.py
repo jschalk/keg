@@ -1,7 +1,7 @@
+from ch01_allot.allot import default_grain_num_if_None
+from ch02_contact.group import GroupUnit, groupunit_shop, membership_shop
 from pytest import raises as pytest_raises
-from src.ch01_allot.allot import default_grain_num_if_None
-from src.ch02_contact.group import GroupUnit, groupunit_shop, membership_shop
-from src.ref.keywords import Ch02Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch02Keywords as kw, ExampleStrs as exx
 
 
 def test_GroupUnit_Exists():

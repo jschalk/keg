@@ -1,21 +1,21 @@
-from pytest import raises as pytest_raises
-from src.ch03_workforce.workforce import laborunit_shop, workforceunit_shop
-from src.ch04_rope.rope import default_knot_if_None
-from src.ch05_reason.reason_main import factunit_shop
-from src.ch06_plan.healer import healerunit_shop
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import (
+from ch03_workforce.workforce import laborunit_shop, workforceunit_shop
+from ch04_rope.rope import default_knot_if_None
+from ch05_reason.reason_main import factunit_shop
+from ch06_plan.healer import healerunit_shop
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import (
     get_dict_of_person_from_dict,
     get_personunit_from_dict,
     personunit_shop,
 )
-from src.ch07_person_logic.test._util.ch07_examples import (
+from ch07_person_logic.test._util.ch07_examples import (
     get_personunit_laundry_example1,
     get_personunit_reason_context_ziet_example,
     get_personunit_x1_3levels_1reason_1facts,
     personunit_v001,
 )
-from src.ref.keywords import Ch07Keywords as kw, ExampleStrs as exx
+from pytest import raises as pytest_raises
+from ref.keywords import Ch07Keywords as kw, ExampleStrs as exx
 
 
 def test_PersonUnit_to_dict_ReturnsObj_Scenario0():

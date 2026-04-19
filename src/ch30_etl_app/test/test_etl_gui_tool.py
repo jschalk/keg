@@ -1,4 +1,4 @@
-from src.ch30_etl_app.etl_gui_tool import (
+from ch30_etl_app.etl_gui_tool import (
     create_elpaso_time_config_file,
     create_emmanuel_belief_file,
     create_emmanuel_lovemaking_belief_file,

@@ -1,7 +1,7 @@
-from src.ch00_py.dict_toolbox import get_from_nested_dict
-from src.ch07_person_logic.person_main import PersonUnit
-from src.ch08_person_atom.atom_main import PersonAtom
-from src.ch09_person_lesson.delta import PersonDelta
+from ch00_py.dict_toolbox import get_from_nested_dict
+from ch07_person_logic.person_main import PersonUnit
+from ch08_person_atom.atom_main import PersonAtom
+from ch09_person_lesson.delta import PersonDelta
 
 
 def get_leg_obj(x_dict: dict, x_keylist) -> any:

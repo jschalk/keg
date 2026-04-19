@@ -1,6 +1,6 @@
+from ch09_person_lesson.lesson_main import LessonUnit
+from ch21_world.world import WorldName
 from dataclasses import dataclass
-from src.ch09_person_lesson.lesson_main import LessonUnit
-from src.ch21_world.world import WorldName
 
 
 @dataclass

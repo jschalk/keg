@@ -1,12 +1,7 @@
-from dataclasses import dataclass
-from src.ch00_py.dict_toolbox import get_0_if_None, get_empty_dict_if_None
-from src.ch01_allot.allot import (
-    allot_scale,
-    default_grain_num_if_None,
-    validate_pool_num,
-)
-from src.ch07_person_logic.person_main import PersonUnit
-from src.ch12_keep._ref.ch12_semantic_types import (
+from ch00_py.dict_toolbox import get_0_if_None, get_empty_dict_if_None
+from ch01_allot.allot import allot_scale, default_grain_num_if_None, validate_pool_num
+from ch07_person_logic.person_main import PersonUnit
+from ch12_keep._ref.ch12_semantic_types import (
     ContactName,
     ManaGrain,
     ManaNum,
@@ -15,6 +10,7 @@ from src.ch12_keep._ref.ch12_semantic_types import (
     RespectNum,
     RopeTerm,
 )
+from dataclasses import dataclass
 
 
 def get_patientledger(x_person: PersonUnit) -> dict[ContactName, RespectNum]:

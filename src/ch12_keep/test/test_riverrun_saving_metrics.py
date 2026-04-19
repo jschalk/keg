@@ -1,9 +1,9 @@
+from ch00_py.file_toolbox import delete_dir
+from ch10_person_listen._ref.ch10_path import create_keep_grade_path
+from ch12_keep.riverrun import riverrun_shop
+from ch12_keep.test._util.ch12_examples import get_nation_texas_rope
 from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import delete_dir
-from src.ch10_person_listen._ref.ch10_path import create_keep_grade_path
-from src.ch12_keep.riverrun import riverrun_shop
-from src.ch12_keep.test._util.ch12_examples import get_nation_texas_rope
-from src.ref.keywords import ExampleStrs as exx
+from ref.keywords import ExampleStrs as exx
 
 
 def test_RiverRun_save_rivergrade_file_SavesFile(temp3_fs):

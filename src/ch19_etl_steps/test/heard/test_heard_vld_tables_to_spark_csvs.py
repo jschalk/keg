@@ -1,16 +1,16 @@
-from os.path import exists as os_path_exists
-from sqlite3 import Cursor
-from src.ch00_py.db_toolbox import get_table_columns
-from src.ch00_py.file_toolbox import create_path, open_file
-from src.ch04_rope.rope import create_rope
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch11_bud._ref.ch11_path import create_person_spark_dir_path
-from src.ch18_etl_config.etl_sqlstr import (
+from ch00_py.db_toolbox import get_table_columns
+from ch00_py.file_toolbox import create_path, open_file
+from ch04_rope.rope import create_rope
+from ch09_person_lesson.lasso import lassounit_shop
+from ch11_bud._ref.ch11_path import create_person_spark_dir_path
+from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename,
     create_sound_and_heard_tables,
 )
-from src.ch19_etl_steps.etl_main import etl_heard_vld_to_spark_person_csvs
-from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ch19_etl_steps.etl_main import etl_heard_vld_to_spark_person_csvs
+from os.path import exists as os_path_exists
+from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from sqlite3 import Cursor
 
 
 def test_etl_heard_vld_to_spark_person_csvs_CreatesCSVs_Scenario0_person_contactunit(

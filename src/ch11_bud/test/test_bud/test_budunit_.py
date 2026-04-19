@@ -1,12 +1,12 @@
-from pytest import raises as pytest_raises
-from src.ch01_allot.allot import default_pool_num
-from src.ch11_bud.bud_main import (
+from ch01_allot.allot import default_pool_num
+from ch11_bud.bud_main import (
     DEFAULT_CELLDEPTH,
     BudUnit,
     budunit_shop,
     get_budunit_from_dict,
 )
-from src.ref.keywords import Ch11Keywords as kw, ExampleStrs as exx
+from pytest import raises as pytest_raises
+from ref.keywords import Ch11Keywords as kw, ExampleStrs as exx
 
 
 def test_DEFAULT_CELLDEPTH():

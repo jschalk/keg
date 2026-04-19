@@ -1,9 +1,9 @@
+from ch00_py.csv_toolbox import open_csv_with_types
+from ch00_py.file_toolbox import create_path
+from ch18_etl_config.etl_csv import save_to_split_csvs
 from os.path import exists as os_path_exists
+from ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
-from src.ch00_py.csv_toolbox import open_csv_with_types
-from src.ch00_py.file_toolbox import create_path
-from src.ch18_etl_config.etl_csv import save_to_split_csvs
-from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
 
 def test_save_to_split_csvs_CreatesFiles_Scenario0(temp3_fs, cursor0: Cursor):

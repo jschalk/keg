@@ -1,14 +1,14 @@
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import count_dirs_files, open_json, save_json
-from src.ch09_person_lesson._ref.ch09_path import (
+from ch00_py.file_toolbox import count_dirs_files, open_json, save_json
+from ch09_person_lesson._ref.ch09_path import (
     create_moment_json_path,
     create_moment_persons_dir_path,
 )
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch11_bud._ref.ch11_path import create_cell_json_path
-from src.ch11_bud.bud_main import DEFAULT_CELLDEPTH
-from src.ch14_moment.moment_main import _get_ote1_max_past_spark_num, momentunit_shop
-from src.ref.keywords import Ch14Keywords as kw, ExampleStrs as exx
+from ch09_person_lesson.lasso import lassounit_shop
+from ch11_bud._ref.ch11_path import create_cell_json_path
+from ch11_bud.bud_main import DEFAULT_CELLDEPTH
+from ch14_moment.moment_main import _get_ote1_max_past_spark_num, momentunit_shop
+from os.path import exists as os_path_exists
+from ref.keywords import Ch14Keywords as kw, ExampleStrs as exx
 
 
 def test_get_ote1_max_past_spark_num_ReturnsObj_Scenaro0(

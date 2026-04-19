@@ -1,14 +1,14 @@
-from src.ch04_rope.rope import create_rope
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch07_person_logic.test._util.ch07_examples import personunit_v001
-from src.ch08_person_atom.atom_main import personatom_shop
-from src.ch17_idea.idea_config import (
+from ch04_rope.rope import create_rope
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch07_person_logic.test._util.ch07_examples import personunit_v001
+from ch08_person_atom.atom_main import personatom_shop
+from ch17_idea.idea_config import (
     ii00002_planunit_v0_0_0,
     ii00121_person_contactunit_v0_0_0,
 )
-from src.ch17_idea.idea_main import create_idea_df, get_idearef_obj, make_persondelta
-from src.ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
+from ch17_idea.idea_main import create_idea_df, get_idearef_obj, make_persondelta
+from ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
 
 
 def test_make_persondelta_Arg_ii00121_person_contactunit_v0_0_0():

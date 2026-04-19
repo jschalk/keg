@@ -1,4 +1,4 @@
-from src.linter.style import find_matching_tests
+from linter.style import find_matching_tests
 
 
 def test_matches_any_function_name_with_same_scenario():

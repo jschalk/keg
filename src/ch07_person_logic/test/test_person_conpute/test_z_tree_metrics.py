@@ -1,10 +1,10 @@
-from src.ch02_contact.contact import contactunit_shop
-from src.ch02_contact.group import awardunit_shop
-from src.ch04_rope.rope import create_rope_from_labels
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch07_person_logic.test._util.ch07_examples import personunit_v001
-from src.ref.keywords import ExampleStrs as exx
+from ch02_contact.contact import contactunit_shop
+from ch02_contact.group import awardunit_shop
+from ch04_rope.rope import create_rope_from_labels
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ch07_person_logic.test._util.ch07_examples import personunit_v001
+from ref.keywords import ExampleStrs as exx
 
 
 def test_PersonUnit_get_tree_metrics_Exists():

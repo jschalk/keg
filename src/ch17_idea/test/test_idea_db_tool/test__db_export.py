@@ -1,10 +1,10 @@
+from ch17_idea.idea_db_tool import export_db_to_excel
 from openpyxl import (
     Workbook as openpyxl_Workbook,
     load_workbook as openpyxl_load_workbook,
 )
 import pytest
 import sqlite3
-from src.ch17_idea.idea_db_tool import export_db_to_excel
 
 
 @pytest.fixture

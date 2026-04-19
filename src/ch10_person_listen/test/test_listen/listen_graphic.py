@@ -1,5 +1,4 @@
-from plotly.graph_objects import Figure as plotly_Figure, Scatter as plotly_Scatter
-from src.ch00_py.plotly_toolbox import (
+from ch00_py.plotly_toolbox import (
     add_2_curve,
     add_direc_rect,
     add_keep__rect,
@@ -7,10 +6,11 @@ from src.ch00_py.plotly_toolbox import (
     add_simp_rect,
     conditional_fig_show,
 )
-from src.ch01_allot.allot import default_pool_num
-from src.ch07_person_logic.person_graphic import display_plantree
-from src.ch07_person_logic.person_main import PersonUnit
-from src.ref.keywords import ExampleStrs as exx
+from ch01_allot.allot import default_pool_num
+from ch07_person_logic.person_graphic import display_plantree
+from ch07_person_logic.person_main import PersonUnit
+from plotly.graph_objects import Figure as plotly_Figure, Scatter as plotly_Scatter
+from ref.keywords import ExampleStrs as exx
 
 
 def get_lessonfilehandler_base_fig() -> plotly_Figure:

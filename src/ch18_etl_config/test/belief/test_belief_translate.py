@@ -1,17 +1,17 @@
-from sqlite3 import Cursor, connect as sqlite3_connect
-from src.ch17_idea.idea_belief_csv import create_init_belief_idea_csv_strs
-from src.ch18_etl_config.belief_tool import (
+from ch17_idea.idea_belief_csv import create_init_belief_idea_csv_strs
+from ch18_etl_config.belief_tool import (
     add_to_ii00142_csv,
     add_to_ii00143_csv,
     add_to_ii00144_csv,
     add_to_ii00145_csv,
     add_translate_rows_to_belief_csv_strs,
 )
-from src.ch18_etl_config.etl_sqlstr import (
+from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
 )
-from src.ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
+from sqlite3 import Cursor, connect as sqlite3_connect
 
 
 def test_add_to_ii00142_csv_ReturnsObj(cursor0: Cursor):

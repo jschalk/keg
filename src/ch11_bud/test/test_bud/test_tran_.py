@@ -1,12 +1,12 @@
-from pytest import raises as pytest_raises
-from src.ch11_bud.bud_main import (
+from ch11_bud.bud_main import (
     TranBook,
     TranUnit,
     get_tranbook_from_dict,
     tranbook_shop,
     tranunit_shop,
 )
-from src.ref.keywords import Ch11Keywords as kw, ExampleStrs as exx
+from pytest import raises as pytest_raises
+from ref.keywords import Ch11Keywords as kw, ExampleStrs as exx
 
 
 def test_TranUnit_Exists():

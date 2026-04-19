@@ -1,7 +1,7 @@
+from ch02_contact.contact import contactunit_shop
+from ch02_contact.group import membership_shop
 from pytest import raises as pytest_raises
-from src.ch02_contact.contact import contactunit_shop
-from src.ch02_contact.group import membership_shop
-from src.ref.keywords import ExampleStrs as exx
+from ref.keywords import ExampleStrs as exx
 
 
 def test_ContactUnit_set_membership_SetsAttr_memberships():

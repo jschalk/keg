@@ -1,12 +1,9 @@
+from ch00_py.db_toolbox import db_table_exists, get_db_tables, get_row_count
+from ch18_etl_config.etl_sqlstr import CREATE_JOB_PRNPLAN_SQLSTR, create_prime_tablename
+from ch19_etl_steps.etl_main import CREATE_MOMENT_CONTACT_NETS_SQLSTR
+from ch20_kpi.kpi_mstr import populate_kpi_bundle
+from ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
-from src.ch00_py.db_toolbox import db_table_exists, get_db_tables, get_row_count
-from src.ch18_etl_config.etl_sqlstr import (
-    CREATE_JOB_PRNPLAN_SQLSTR,
-    create_prime_tablename,
-)
-from src.ch19_etl_steps.etl_main import CREATE_MOMENT_CONTACT_NETS_SQLSTR
-from src.ch20_kpi.kpi_mstr import populate_kpi_bundle
-from src.ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
 
 
 def test_populate_kpi_bundle_PopulatesTable_Scenario0_WithDefaultBundleID(

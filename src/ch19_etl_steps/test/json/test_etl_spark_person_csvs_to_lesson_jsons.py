@@ -1,14 +1,14 @@
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import open_file, open_json, save_file
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch09_person_lesson.lesson_main import get_lessonunit_from_dict, lessonunit_shop
-from src.ch11_bud._ref.ch11_path import (
+from ch00_py.file_toolbox import open_file, open_json, save_file
+from ch09_person_lesson.lasso import lassounit_shop
+from ch09_person_lesson.lesson_main import get_lessonunit_from_dict, lessonunit_shop
+from ch11_bud._ref.ch11_path import (
     create_person_spark_dir_path as person_spark_dir,
     create_spark_all_lesson_path as all_lesson_path,
 )
-from src.ch18_etl_config.etl_sqlstr import create_prime_tablename
-from src.ch19_etl_steps.etl_main import etl_spark_person_csvs_to_lesson_json
-from src.ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ch18_etl_config.etl_sqlstr import create_prime_tablename
+from ch19_etl_steps.etl_main import etl_spark_person_csvs_to_lesson_json
+from os.path import exists as os_path_exists
+from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
 
 
 def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario0_IgnoresCSV_personunit(

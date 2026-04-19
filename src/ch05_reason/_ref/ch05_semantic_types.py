@@ -1,5 +1,5 @@
-from src.ch01_allot._ref.ch01_semantic_types import GrainNum, PoolNum, WeightNum
-from src.ch02_contact._ref.ch02_semantic_types import (
+from ch01_allot._ref.ch01_semantic_types import GrainNum, PoolNum, WeightNum
+from ch02_contact._ref.ch02_semantic_types import (
     ContactName,
     FundGrain,
     FundNum,
@@ -11,7 +11,7 @@ from src.ch02_contact._ref.ch02_semantic_types import (
     RespectNum,
     TitleTerm,
 )
-from src.ch04_rope._ref.ch04_semantic_types import (
+from ch04_rope._ref.ch04_semantic_types import (
     FirstLabel,
     KnotTerm,
     LabelTerm,

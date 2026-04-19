@@ -1,17 +1,15 @@
-from copy import deepcopy as copy_deepcopy
-from dataclasses import dataclass
-from src.ch01_allot.allot import allot_scale
-from src.ch04_rope.rope import get_ancestor_ropes, get_first_label_from_rope
-from src.ch06_plan.plan import PlanUnit
-from src.ch07_person_logic.person_main import ContactUnit, PersonUnit
-from src.ch09_person_lesson.lasso import LassoUnit, lassounit_shop
-from src.ch09_person_lesson.lesson_filehandler import LessonFileHandler, open_gut_file
-from src.ch10_person_listen._ref.ch10_semantic_types import PersonName, RopeTerm
-from src.ch10_person_listen.basis_person import (
+from ch01_allot.allot import allot_scale
+from ch04_rope.rope import get_ancestor_ropes, get_first_label_from_rope
+from ch06_plan.plan import PlanUnit
+from ch07_person_logic.person_main import ContactUnit, PersonUnit
+from ch09_person_lesson.lasso import LassoUnit, lassounit_shop
+from ch09_person_lesson.lesson_filehandler import LessonFileHandler, open_gut_file
+from ch10_person_listen._ref.ch10_semantic_types import PersonName, RopeTerm
+from ch10_person_listen.basis_person import (
     create_empty_person_from_person,
     create_listen_basis,
 )
-from src.ch10_person_listen.keep_tool import (
+from ch10_person_listen.keep_tool import (
     get_duty_person,
     get_perspective_person,
     get_vision_person,
@@ -21,6 +19,8 @@ from src.ch10_person_listen.keep_tool import (
     save_vision_person,
     vision_file_exists,
 )
+from copy import deepcopy as copy_deepcopy
+from dataclasses import dataclass
 
 
 class MissingDebtorRespectError(Exception):

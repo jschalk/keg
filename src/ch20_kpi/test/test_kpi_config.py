@@ -1,11 +1,11 @@
-from src.ch20_kpi.kpi_mstr import (
+from ch20_kpi.kpi_mstr import (
     create_populate_kpi001_table,
     create_populate_kpi002_table,
     get_all_kpi_functions,
     get_bundles_config,
     get_kpi_set_from_bundle,
 )
-from src.ref.keywords import Ch20Keywords as kw
+from ref.keywords import Ch20Keywords as kw
 
 
 def test_get_all_kpi_functions_ReturnsObj():

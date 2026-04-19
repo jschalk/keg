@@ -1,4 +1,4 @@
-from src.ch02_contact._ref.ch02_semantic_types import (
+from ch02_contact._ref.ch02_semantic_types import (
     ContactName,
     FundGrain,
     FundNum,

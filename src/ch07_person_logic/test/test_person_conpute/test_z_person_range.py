@@ -1,6 +1,6 @@
-from src.ch06_plan.plan import planunit_shop
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ref.keywords import ExampleStrs as exx
+from ch06_plan.plan import planunit_shop
+from ch07_person_logic.person_main import personunit_shop
+from ref.keywords import ExampleStrs as exx
 
 
 def test_PersonUnit_get_plan_ranged_kids_ReturnsAllChildren():

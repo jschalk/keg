@@ -1,14 +1,12 @@
-from copy import deepcopy as copy_deepcopy
-from inspect import getdoc as inspect_getdoc
-from src.ch04_rope.rope import create_rope, default_knot_if_None
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch13_time._ref.ch13_semantic_types import EpochLabel
-from src.ch13_time.epoch_config import (
+from ch04_rope.rope import create_rope, default_knot_if_None
+from ch07_person_logic.person_main import personunit_shop
+from ch13_time._ref.ch13_semantic_types import EpochLabel
+from ch13_time.epoch_config import (
     get_creg_config,
     get_custom_epoch_config,
     get_squirt_config,
 )
-from src.ch13_time.epoch_main import (
+from ch13_time.epoch_main import (
     DEFAULT_EPOCH_LENGTH,
     C400Constants,
     EpochUnit,
@@ -24,7 +22,9 @@ from src.ch13_time.epoch_main import (
     get_year_rope,
     validate_epoch_config,
 )
-from src.ref.keywords import Ch13Keywords as kw, ExampleStrs as exx
+from copy import deepcopy as copy_deepcopy
+from inspect import getdoc as inspect_getdoc
+from ref.keywords import Ch13Keywords as kw, ExampleStrs as exx
 
 
 def test_EpochLabel_Exists():

@@ -1,16 +1,16 @@
-from pytest import raises as pytest_raises
-from src.ch02_contact.contact import contactunit_shop
-from src.ch04_rope.rope import create_rope, to_rope
-from src.ch07_person_logic.person_main import personunit_shop
-from src.ch08_person_atom.atom_main import personatom_shop
-from src.ch09_person_lesson.delta import (
+from ch02_contact.contact import contactunit_shop
+from ch04_rope.rope import create_rope, to_rope
+from ch07_person_logic.person_main import personunit_shop
+from ch08_person_atom.atom_main import personatom_shop
+from ch09_person_lesson.delta import (
     PersonDelta,
     get_persondelta_from_ordered_dict,
     person_built_from_delta_is_valid,
     persondelta_shop,
 )
-from src.ch09_person_lesson.test._util.ch09_examples import get_persondelta_example1
-from src.ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
+from ch09_person_lesson.test._util.ch09_examples import get_persondelta_example1
+from pytest import raises as pytest_raises
+from ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
 
 
 def test_PersonDelta_Exists():

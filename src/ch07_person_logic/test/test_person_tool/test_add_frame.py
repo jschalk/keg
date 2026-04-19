@@ -1,6 +1,6 @@
-# from src.ch06_plan.test._util.ch06_examples import get_range_attrs
-# from src.ch07_person_logic.person_main import personunit_shop
-# from src.ch07_person_logic.person_tool import (
+# from ch06_plan.test._util.ch06_examples import get_range_attrs
+# from ch07_person_logic.person_main import personunit_shop
+# from ch07_person_logic.person_tool import (
 #     add_frame_to_personunit,
 #     add_frame_to_caseunit,
 #     add_frame_to_factunit,
@@ -13,8 +13,8 @@
 #     person_planunit_get_obj,
 # )
 
-# # from src.ch07_person_logic.test._util.ch07_examples import
-# from src.ref.keywords import Ch07Keywords as kw, ExampleStrs as exx
+# # from ch07_person_logic.test._util.ch07_examples import
+# from ref.keywords import Ch07Keywords as kw, ExampleStrs as exx
 
 
 # def test_add_frame_to_caseunit_SetsAttr_Scenario0_NoWrap_jourly():

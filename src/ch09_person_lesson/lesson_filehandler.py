@@ -1,7 +1,4 @@
-from copy import deepcopy as copy_deepcopy
-from dataclasses import dataclass
-from os.path import exists as os_path_exists
-from src.ch00_py.file_toolbox import (
+from ch00_py.file_toolbox import (
     create_path,
     delete_dir,
     get_dict_from_json,
@@ -12,32 +9,35 @@ from src.ch00_py.file_toolbox import (
     open_json,
     save_json,
 )
-from src.ch01_allot.allot import default_grain_num_if_None, validate_pool_num
-from src.ch04_rope.rope import get_parent_rope, get_tail_label, validate_labelterm
-from src.ch07_person_logic.person_main import (
+from ch01_allot.allot import default_grain_num_if_None, validate_pool_num
+from ch04_rope.rope import get_parent_rope, get_tail_label, validate_labelterm
+from ch07_person_logic.person_main import (
     PersonUnit,
     get_personunit_from_dict,
     personunit_shop,
 )
-from src.ch08_person_atom.atom_main import (
+from ch08_person_atom.atom_main import (
     PersonAtom,
     get_personatom_from_dict,
     modify_person_with_personatom,
 )
-from src.ch09_person_lesson._ref.ch09_path import (
+from ch09_person_lesson._ref.ch09_path import (
     create_atoms_dir_path,
     create_gut_path,
     create_lessons_dir_path,
 )
-from src.ch09_person_lesson._ref.ch09_semantic_types import PersonName
-from src.ch09_person_lesson.lasso import LassoUnit, lassounit_shop
-from src.ch09_person_lesson.lesson_main import (
+from ch09_person_lesson._ref.ch09_semantic_types import PersonName
+from ch09_person_lesson.lasso import LassoUnit, lassounit_shop
+from ch09_person_lesson.lesson_main import (
     LessonUnit,
     create_lessonunit_from_files,
     get_init_lesson_id_if_None,
     init_lesson_id,
     lessonunit_shop,
 )
+from copy import deepcopy as copy_deepcopy
+from dataclasses import dataclass
+from os.path import exists as os_path_exists
 
 
 def save_person_file(

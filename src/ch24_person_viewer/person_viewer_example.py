@@ -1,10 +1,8 @@
-from src.ch02_contact.group import awardunit_shop
-from src.ch03_workforce.workforce import workforceunit_shop
-from src.ch07_person_logic.person_main import PersonUnit, personunit_shop
-from src.ch07_person_logic.person_tool import person_plan_reason_caseunit_set_obj
-from src.ch07_person_logic.test._util.ch07_examples import (
-    get_personunit_irrational_example,
-)
+from ch02_contact.group import awardunit_shop
+from ch03_workforce.workforce import workforceunit_shop
+from ch07_person_logic.person_main import PersonUnit, personunit_shop
+from ch07_person_logic.person_tool import person_plan_reason_caseunit_set_obj
+from ch07_person_logic.test._util.ch07_examples import get_personunit_irrational_example
 
 
 def sue2_str() -> str:

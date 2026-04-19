@@ -1,18 +1,18 @@
-from re import search as re_search
-from src.ch00_py.chapter_desc_main import get_chapter_desc_prefix, get_chapter_descs
-from src.ch00_py.file_toolbox import create_path, open_json, save_json
-from src.ch00_py.keyword_class_builder import get_keywords_src_config
-from src.ch07_person_logic.person_config import (
+from ch00_py.chapter_desc_main import get_chapter_desc_prefix, get_chapter_descs
+from ch00_py.file_toolbox import create_path, open_json, save_json
+from ch00_py.keyword_class_builder import get_keywords_src_config
+from ch07_person_logic.person_config import (
     get_all_person_calc_args,
     get_person_calc_dimen_args,
     get_person_config_dict,
 )
-from src.ch18_etl_config.etl_config import get_etl_stage_types_config_dict
-from src.ch98_docs_builder._ref.ch98_path import (
+from ch18_etl_config.etl_config import get_etl_stage_types_config_dict
+from ch98_docs_builder._ref.ch98_path import (
     create_chapter_ref_path,
     create_src_keg_definitions_path,
     create_src_keg_exam_path,
 )
+from re import search as re_search
 
 
 def get_keg_definitions() -> dict[str, dict]:

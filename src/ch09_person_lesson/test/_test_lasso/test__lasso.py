@@ -1,9 +1,9 @@
+from ch00_py.file_toolbox import create_path
+from ch04_rope.rope import create_rope, get_default_rope
+from ch09_person_lesson._ref.ch09_semantic_types import default_knot_if_None
+from ch09_person_lesson.lasso import LassoUnit, default_knot_if_None, lassounit_shop
 from pytest import raises as pytest_raises
-from src.ch00_py.file_toolbox import create_path
-from src.ch04_rope.rope import create_rope, get_default_rope
-from src.ch09_person_lesson._ref.ch09_semantic_types import default_knot_if_None
-from src.ch09_person_lesson.lasso import LassoUnit, default_knot_if_None, lassounit_shop
-from src.ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch09Keywords as kw, ExampleStrs as exx
 
 
 def test_LassoUnit_Exists():

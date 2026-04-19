@@ -1,14 +1,14 @@
-from pytest import raises as pytest_raises
-from src.ch00_py.file_toolbox import create_path
-from src.ch01_allot.allot import default_grain_num_if_None, validate_pool_num
-from src.ch04_rope.rope import create_rope, default_knot_if_None
-from src.ch09_person_lesson._ref.ch09_path import create_person_dir_path
-from src.ch09_person_lesson.lasso import lassounit_shop
-from src.ch09_person_lesson.lesson_filehandler import (
+from ch00_py.file_toolbox import create_path
+from ch01_allot.allot import default_grain_num_if_None, validate_pool_num
+from ch04_rope.rope import create_rope, default_knot_if_None
+from ch09_person_lesson._ref.ch09_path import create_person_dir_path
+from ch09_person_lesson.lasso import lassounit_shop
+from ch09_person_lesson.lesson_filehandler import (
     LessonFileHandler,
     lessonfilehandler_shop,
 )
-from src.ref.keywords import ExampleStrs as exx
+from pytest import raises as pytest_raises
+from ref.keywords import ExampleStrs as exx
 
 
 def test_LessonFileHandler_Exists():

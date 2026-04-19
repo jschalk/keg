@@ -1,10 +1,10 @@
-from src.ch11_bud.test._util.ch11_examples import (
+from ch11_bud.test._util.ch11_examples import (
     example_casa_clean_factunit,
     example_casa_dirty_factunit,
     example_sky_blue_factunit,
 )
-from src.ch11_bud.weighted_facts_tool import get_nodes_with_weighted_facts
-from src.ref.keywords import ExampleStrs as exx
+from ch11_bud.weighted_facts_tool import get_nodes_with_weighted_facts
+from ref.keywords import ExampleStrs as exx
 
 
 def test_get_nodes_with_weighted_facts_ReturnsObj_Scenario00_RootOnly_NoFacts():

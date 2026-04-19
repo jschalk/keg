@@ -1,6 +1,6 @@
-from src.ch02_contact.group import groupunit_shop, membership_shop
-from src.ch03_workforce._ref.ch03_semantic_types import GroupTitle
-from src.ch03_workforce.workforce import (
+from ch02_contact.group import groupunit_shop, membership_shop
+from ch03_workforce._ref.ch03_semantic_types import GroupTitle
+from ch03_workforce.workforce import (
     LaborHeir,
     LaborUnit,
     WorkforceHeir,
@@ -10,7 +10,7 @@ from src.ch03_workforce.workforce import (
     workforceheir_shop,
     workforceunit_shop,
 )
-from src.ref.keywords import Ch03Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch03Keywords as kw, ExampleStrs as exx
 
 
 def test_LaborUnit_Exists():
