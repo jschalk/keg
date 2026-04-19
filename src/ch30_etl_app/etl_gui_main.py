@@ -60,7 +60,8 @@ class OptionTable(tk.Frame):
         )
         scrollbar.config(command=self.tree.yview)
 
-        self.tree.heading("action", text="Click to add Beliefs to Beliefs Directory")
+        action_str = "Click to add Example Beliefs to Beliefs Directory"
+        self.tree.heading("action", text=action_str)
         self.tree.column("action", anchor=tk.W)
 
         for description in self.options:
@@ -198,7 +199,7 @@ class ETLApp(tk.Tk):
             },
             "5": {
                 "row_type": "dir",
-                "title": "OUTPUT DIR ",
+                "title": "AGENDAS DIR",
                 "var": self._output,
                 "required": True,
                 "tip": "Destination for results (opened on finish)",
@@ -399,7 +400,7 @@ class ETLApp(tk.Tk):
 
         self._run_btn = tk.Button(
             btn_frame,
-            text="▶  CREATE DAILY AGENDA",
+            text="▶  CREATE AGENDAS FOR TODAY",
             font=ax.platform_font,
             bg=ax.accent,
             fg=ax.fg_black,
@@ -517,9 +518,8 @@ class ETLApp(tk.Tk):
             self._status.set(f"✘  Error: {exc}")
             tkinter_messagebox.showerror("Pipeline error", str(exc))
         finally:
-            self._run_btn.configure(
-                state="normal", text="▶  RUN PIPELINE", bg=ax.accent
-            )
+            _run_btn_str = "▶  CREATE AGENDAS FROM BELIEFS/IDEAS"
+            self._run_btn.configure(state="normal", text=_run_btn_str, bg=ax.accent)
 
         # Open output directory if one was given
         if output and os_path_isdir(output):

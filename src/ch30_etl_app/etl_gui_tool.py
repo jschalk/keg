@@ -376,6 +376,7 @@ def save_and_prettify_excel_file(
     delete_dir(dest_file_path)
     csv_dict_to_excel(belief_csvs, dest_dir, dest_filename)
     remove_empty_sheets(dest_file_path)
+    print(f"Prettify {dest_file_path}")
     prettify_excel_file(dest_file_path)
 
 
