@@ -88,7 +88,7 @@ def test_gcal_readable_percent_ReturnsObj():
     assert gcal_readable_percent(0.00123456, precision=4) == "0.1235%"
     assert gcal_readable_percent(0.0000123456, precision=4) == "1.23e-03%"
     assert gcal_readable_percent(0.000123456) == "0.01%"
-    assert gcal_readable_percent(None) == "0%"
+    assert gcal_readable_percent(None) == "0% (None)"
 
 
 def test_get_gcal_all_agenda_str_ReturnsObj_Scenario1_1AllDayPledge():

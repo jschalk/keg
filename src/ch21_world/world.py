@@ -1,7 +1,7 @@
 from ch00_py.file_toolbox import create_path, delete_dir, set_dir
 from ch17_idea.idea_db_tool import export_db_to_excel
 from ch18_etl_config._ref.ch18_path import create_moment_mstr_path, create_world_db_path
-from ch18_etl_config.belief_tool import create_belief0001_file
+from ch18_etl_config.belief_tool import create_belief0001_file, prettify_excel_file
 from ch18_etl_config.idea_collector import reorder_etl_db_sheets
 from ch19_etl_steps.belief2idea import beliefs_sheets_to_idea_sheets
 from ch19_etl_steps.etl_main import (
@@ -165,6 +165,7 @@ def idea_sheets_to_lynx_mstr(worlddir: WorldDir, export_db: bool = False):
             excel_path = create_path(worlddir.output_dir, "db_export.xlsx")
             export_db_to_excel(cursor, excel_path, True)
             reorder_etl_db_sheets(excel_path)
+            prettify_excel_file(excel_path)
 
         db_conn.commit()
     db_conn.close()
