@@ -48,7 +48,7 @@ def gcal_readable_percent(value: float, precision=2):
     Handles very small and large values gracefully.
     """
     if value is None:
-        return "0%"
+        return "0% (None)"
 
     percent = value * 100
 
