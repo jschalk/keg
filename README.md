@@ -1,6 +1,6 @@
 repo: https://github.com/jschalk/keg
 
-![keg logo](https://github.com/jschalk/keg/tree/main/logo/keg_64.png) keg
+![keg logo](https://raw.githubusercontent.com/user/repo/main/logo.png) keg
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
