@@ -260,7 +260,6 @@ def create_gcalendar_events_list(x_person: PersonUnit, day: datetime) -> list[di
     x_person = copy_deepcopy(x_person)
     default_epoch_config = get_default_epoch_config_dict()
     epoch_label = default_epoch_config.get("epoch_label")
-
     gcal_agenda_list_str = ""
     day_events = []
     dayevent_objs = get_dayevents(x_person, epoch_label, day)

@@ -644,8 +644,8 @@ def ii00159_delete_personunit_v0_0_0() -> str:
     return "ii00159_delete_personunit_v0_0_0"
 
 
-def ii00170_nabu_epochtime_v0_0_0() -> str:
-    return "ii00170_nabu_epochtime_v0_0_0"
+def ii00170_nabu_time_v0_0_0() -> str:
+    return "ii00170_nabu_time_v0_0_0"
 
 
 def ii00171_contact_map1_v0_0_0() -> str:
@@ -704,7 +704,7 @@ def get_idea_format_filenames() -> set[str]:
         ii00157_delete_person_plan_reasonunit_v0_0_0(),
         ii00158_delete_person_planunit_v0_0_0(),
         ii00159_delete_personunit_v0_0_0(),
-        ii00170_nabu_epochtime_v0_0_0(),
+        ii00170_nabu_time_v0_0_0(),
         ii00171_contact_map1_v0_0_0(),
         ii00172_group_map1_v0_0_0(),
         ii00173_label_map1_v0_0_0(),
@@ -807,7 +807,7 @@ def get_idea_format_headers() -> dict[str, list[str]]:
         "person_name,plan_rope,reason_context_ERASE": ii00157_delete_person_plan_reasonunit_v0_0_0(),
         "person_name,plan_rope_ERASE": ii00158_delete_person_planunit_v0_0_0(),
         "moment_rope,person_name_ERASE": ii00159_delete_personunit_v0_0_0(),
-        "moment_rope,otx_time,inx_time": ii00170_nabu_epochtime_v0_0_0(),
+        "moment_rope,otx_time,inx_time": ii00170_nabu_time_v0_0_0(),
         "moment_rope,person_name,contact_name,otx_name,inx_name": ii00171_contact_map1_v0_0_0(),
         "moment_rope,person_name,contact_name,otx_title,inx_title": ii00172_group_map1_v0_0_0(),
         "moment_rope,person_name,contact_name,otx_label,inx_label": ii00173_label_map1_v0_0_0(),
@@ -962,7 +962,7 @@ def get_dimen_minimum_put_idea_names() -> dict[str, str]:
         "moment_paybook": ii00102_moment_paybook_v0_0_0(),
         "moment_timeoffi": ii00106_moment_timeoffi_v0_0_0(),
         "momentunit": ii00100_momentunit_v0_0_0(),
-        "nabu_timenum": ii00170_nabu_epochtime_v0_0_0(),
+        "nabu_timenum": ii00170_nabu_time_v0_0_0(),
         "person_contact_membership": ii00120_person_contact_membership_v0_0_0(),
         "person_contactunit": ii00121_person_contactunit_v0_0_0(),
         "person_plan_awardunit": ii00122_person_plan_awardunit_v0_0_0(),
