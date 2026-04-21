@@ -208,10 +208,15 @@ def create_contacts_only_list_str(contacts_list: list[ContactUnit], x_str: str) 
 
     for contact in contacts_list:
         give_left = contact.fund_agenda_ratio_give - contact.fund_agenda_ratio_take
-        agenda_relative_give = gcal_readable_percent(give_left)
-        if agenda_relative_give == "0%":
-            agenda_relative_give += " (even give/take)"
-        x_str += f"\n{agenda_relative_give} {contact.contact_name}"
+        agenda_relative_give = f" ({gcal_readable_percent(give_left)})"
+        agenda_ratio_give = gcal_readable_percent(contact.fund_agenda_ratio_give)
+        agenda_ratio_take = gcal_readable_percent(contact.fund_agenda_ratio_take)
+        agenda_ratios_str = f"give: {agenda_ratio_give}, take: {agenda_ratio_take}"
+        if agenda_relative_give == " (0%)":
+            agenda_relative_give = " (even give/take)"
+        x_str += (
+            f"\n{contact.contact_name:10} {agenda_ratios_str} {agenda_relative_give}"
+        )
     return x_str
 
 

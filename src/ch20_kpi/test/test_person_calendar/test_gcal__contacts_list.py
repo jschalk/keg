@@ -24,8 +24,8 @@ def test_get_gcal_contacts_str_ReturnsObj_Scenario1_TwoContacts():
     # THEN
     assert gcal_contacts_str
     expected_gcal_contacts_str = f"""Person Contacts
-16.67% {exx.bob}
--16.67% {exx.sue}"""
+{exx.bob}        give: 66.67%, take: 50%  (16.67%)
+{exx.sue}        give: 33.33%, take: 50%  (-16.67%)"""
     assert gcal_contacts_str == expected_gcal_contacts_str
 
 
@@ -45,8 +45,8 @@ def test_get_gcal_contacts_str_ReturnsObj_Scenario2_TwoContactsCorrectOrder():
     # THEN
     assert gcal_contacts_str
     expected_gcal_contacts_str = f"""Person Contacts
-16.67% {exx.sue}
--16.67% {exx.bob}"""
+{exx.sue}        give: 66.67%, take: 50%  (16.67%)
+{exx.bob}        give: 33.33%, take: 50%  (-16.67%)"""
     assert gcal_contacts_str == expected_gcal_contacts_str
 
 
@@ -80,5 +80,5 @@ def test_get_gcal_memberships_str_ReturnsObj_Scenario1_TwoContacts():
     # THEN
     assert run_memberships_str
     expected_run_memberships_str = f"""{exx.run} Group
--16.67% {exx.sue}"""
+{exx.sue}        give: 33.33%, take: 50%  (-16.67%)"""
     assert run_memberships_str == expected_run_memberships_str
