@@ -227,7 +227,7 @@ def test_CellUnit_eval_personspark_SetsAttr_Scenario1():
     assert len(yao_cellunit.reason_contexts) == 1
     expected_adjust_person = copy_deepcopy(yao_person)
     expected_adjust_person.del_fact(clean_fact.fact_context)
-    expected_adjust_person.conpute()
+    expected_adjust_person.thinkout()
     expected_planroot = expected_adjust_person.planroot
     generated_planroot = yao_cellunit.personadjust.planroot
     assert yao_cellunit.personadjust.to_dict() != yao_person.to_dict()

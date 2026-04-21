@@ -274,7 +274,7 @@ def get_personunit_irrational_example() -> PersonUnit:
     # Step 2: if chicken.plan_active is False, egg.plan_active is set to True
     # Step 3: if egg.plan_active is True, chicken.plan_active is set to True
     # Step 4: back to step 0.
-    # after hatter_person.conpute these should be true:
+    # after hatter_person.thinkout these should be true:
     # 1. hatter_person._irrational is True
     # 2. hatter_person.tree_traverse_count = hatter_person.max_tree_traverse
 

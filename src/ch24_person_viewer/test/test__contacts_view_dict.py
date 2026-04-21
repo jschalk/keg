@@ -6,7 +6,7 @@ from ref.keywords import Ch24Keywords as kw, ExampleStrs as exx
 def test_get_contacts_view_dict_ReturnsObj_Scenario0_Empty():
     # ESTABLISH
     sue_believer = personunit_shop(exx.sue)
-    sue_believer.conpute()
+    sue_believer.thinkout()
 
     # WHEN
     contacts_view_dict = get_contacts_view_dict(sue_believer)
@@ -28,7 +28,7 @@ def test_get_contacts_view_dict_ReturnsObj_Scenario1_contacts():
     bob_debt_lumen = 290
     sue_believer.add_contactunit(exx.yao, yao_cred_lumen, yao_debt_lumen)
     sue_believer.add_contactunit(exx.bob, bob_cred_lumen, bob_debt_lumen)
-    sue_believer.conpute()
+    sue_believer.thinkout()
 
     # WHEN
     contacts_view_dict = get_contacts_view_dict(sue_believer)
@@ -177,7 +177,7 @@ def test_get_contacts_view_dict_ReturnsObj_Scenario2_memberships():
     yao_contactunit.add_membership(
         bowlers_str, yao_bowl_cred_lumen, yao_bowl_debt_lumen
     )
-    sue_believer.conpute()
+    sue_believer.thinkout()
 
     # WHEN
     contacts_view_dict = get_contacts_view_dict(sue_believer)

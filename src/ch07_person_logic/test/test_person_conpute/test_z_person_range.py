@@ -31,7 +31,7 @@ def test_PersonUnit_get_plan_ranged_kids_ReturnsAllChildren():
     yao_personunit.set_plan_obj(fri_plan, wk_rope)
     yao_personunit.set_plan_obj(sat_plan, wk_rope)
     yao_personunit.set_plan_obj(sun_plan, wk_rope)
-    yao_personunit.conpute()
+    yao_personunit.thinkout()
 
     # WHEN
     ranged_plans = yao_personunit.get_plan_ranged_kids(plan_rope=wk_rope)
@@ -68,7 +68,7 @@ def test_PersonUnit_get_plan_ranged_kids_ReturnsSomeChildrenScenario1():
     yao_personunit.set_plan_obj(fri_plan, wk_rope)
     yao_personunit.set_plan_obj(sat_plan, wk_rope)
     yao_personunit.set_plan_obj(sun_plan, wk_rope)
-    yao_personunit.conpute()
+    yao_personunit.thinkout()
 
     # WHEN
     x_begin = 1440
@@ -113,7 +113,7 @@ def test_PersonUnit_get_plan_ranged_kids_ReturnsSomeChildrenScenario2():
     yao_personunit.set_plan_obj(fri_plan, wk_rope)
     yao_personunit.set_plan_obj(sat_plan, wk_rope)
     yao_personunit.set_plan_obj(sun_plan, wk_rope)
-    yao_personunit.conpute()
+    yao_personunit.thinkout()
 
     # WHEN / THEN
     assert len(yao_personunit.get_plan_ranged_kids(wk_rope, 0, 1440)) == 1
@@ -149,7 +149,7 @@ def test_PersonUnit_get_plan_ranged_kids_ReturnsSomeChildrenScenario3():
     yao_personunit.set_plan_obj(fri_plan, wk_rope)
     yao_personunit.set_plan_obj(sat_plan, wk_rope)
     yao_personunit.set_plan_obj(sun_plan, wk_rope)
-    yao_personunit.conpute()
+    yao_personunit.thinkout()
 
     # WHEN / THEN
     assert len(yao_personunit.get_plan_ranged_kids(wk_rope, 0)) == 1
@@ -160,7 +160,7 @@ def test_PersonUnit_get_plan_ranged_kids_ReturnsSomeChildrenScenario3():
     yao_personunit.set_plan_obj(wks_plan, wk_rope)
 
     # WHEN
-    yao_personunit.conpute()
+    yao_personunit.thinkout()
 
     # THEN
     assert len(yao_personunit.get_plan_ranged_kids(wk_rope, 1440)) == 2

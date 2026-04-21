@@ -34,6 +34,12 @@ def pytest_addoption(parser):
         action="store_true",
         help="Rebuild JSON files during the test run",
     )
+    parser.addoption(
+        "--check-pip",
+        action="store_true",
+        default=False,
+        help="Run tests that download packages from pip",
+    )
 
 
 def pytest_generate_tests(metafunc):
@@ -47,6 +53,11 @@ def pytest_generate_tests(metafunc):
     run_big_tests_value = run_big_tests_value == "True"
     if "run_big_tests" in metafunc.fixturenames and run_big_tests_value is not None:
         metafunc.parametrize("run_big_tests", [run_big_tests_value])
+
+
+@pytest.fixture
+def check_pip(request):
+    return request.config.getoption("--check-pip")
 
 
 @pytest.fixture
@@ -85,5 +96,3 @@ def pytest_runtest_logreport(report):
     """Called after each test phase (setup, call, teardown). If the test failed and --clip is set, copies the test name to clipboard."""
     if report.failed and _config.getoption("--clip"):
         test_name = report.nodeid.split("::")[-1]
-        print(f"\n📋 Copied to clipboard: {test_name}")
-        pyperclip_copy(test_name)

@@ -485,7 +485,7 @@ def add_person_to_ii00129_csv(
 def add_personunit_to_belief_csv_strs(
     x_person: PersonUnit, moment_csv_strs: dict[str, str], csv_delimiter: str
 ) -> str:
-    """PersonUnit must be to be conputed."""
+    """PersonUnit must be to be thinkoutd."""
     ii00120_csv = moment_csv_strs.get("ii00120")
     ii00121_csv = moment_csv_strs.get("ii00121")
     ii00122_csv = moment_csv_strs.get("ii00122")

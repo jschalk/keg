@@ -4,7 +4,7 @@ from ch07_person_logic.person_main import personunit_shop
 from ref.keywords import ExampleStrs as exx
 
 
-def test_PersonUnit_conpute_Sets_planroot_workforceheirFrom_planroot_workforceunit():
+def test_PersonUnit_thinkout_Sets_planroot_workforceheirFrom_planroot_workforceunit():
     # ESTABLISH
     sue_workforceunit = workforceunit_shop()
     sue_workforceunit.add_labor(exx.sue)
@@ -15,7 +15,7 @@ def test_PersonUnit_conpute_Sets_planroot_workforceheirFrom_planroot_workforceun
     assert not yao_person.planroot.workforceheir
 
     # WHEN
-    yao_person.conpute()
+    yao_person.thinkout()
 
     # THEN
     assert yao_person.planroot.workforceheir is not None
@@ -26,7 +26,7 @@ def test_PersonUnit_conpute_Sets_planroot_workforceheirFrom_planroot_workforceun
     assert yao_person.planroot.workforceheir == expected_workforceheir
 
 
-def test_PersonUnit_conpute_Set_child_plan_workforceheir_FromParent_workforceunit():
+def test_PersonUnit_thinkout_Set_child_plan_workforceheir_FromParent_workforceunit():
     # ESTABLISH
     x_workforceunit = workforceunit_shop()
     bob_person = personunit_shop(exx.bob)
@@ -40,7 +40,7 @@ def test_PersonUnit_conpute_Set_child_plan_workforceheir_FromParent_workforceuni
     assert not run_plan.workforceheir
 
     # WHEN
-    bob_person.conpute()
+    bob_person.thinkout()
 
     # THEN
     assert run_plan.workforceheir
@@ -63,7 +63,7 @@ def test_PersonUnit_conpute_Set_child_plan_workforceheir_FromParent_workforceuni
     assert run_plan.workforceheir == expected_workforceheir
 
 
-def test_PersonUnit_conpute_Set_grandchild_plan_workforceheir_From_plankid_workforceunit_Scenario0():
+def test_PersonUnit_thinkout_Set_grandchild_plan_workforceheir_From_plankid_workforceunit_Scenario0():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     bowl_rope = sue_person.make_l1_rope(exx.bowl)
@@ -89,7 +89,7 @@ def test_PersonUnit_conpute_Set_grandchild_plan_workforceheir_From_plankid_workf
     assert four_plan.workforceheir is None
 
     # WHEN
-    sue_person.conpute()
+    sue_person.thinkout()
 
     # THEN
     x_workforceheir = workforceheir_shop()
@@ -102,7 +102,7 @@ def test_PersonUnit_conpute_Set_grandchild_plan_workforceheir_From_plankid_workf
     assert four_plan.workforceheir == x_workforceheir
 
 
-def test_PersonUnit_conpute_Set_grandchild_plan_workforceheir_From_plankid_workforceunit_Scenario1_solo_AttrIsPassed():
+def test_PersonUnit_thinkout_Set_grandchild_plan_workforceheir_From_plankid_workforceunit_Scenario1_solo_AttrIsPassed():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     bowl_rope = sue_person.make_l1_rope(exx.bowl)
@@ -129,7 +129,7 @@ def test_PersonUnit_conpute_Set_grandchild_plan_workforceheir_From_plankid_workf
     assert not four_plan.workforceheir
 
     # WHEN
-    sue_person.conpute()
+    sue_person.thinkout()
 
     # THEN
     expected_workforceheir = workforceheir_shop()

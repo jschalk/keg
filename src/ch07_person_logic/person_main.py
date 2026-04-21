@@ -122,7 +122,7 @@ class PersonUnit:
     debtor_respect: RespectNum = None  # mostly set by default
     max_tree_traverse: int = None  # mostly set by default
     last_lesson_id: int = None  #
-    # fields calculated by conpute
+    # fields calculated by thinkout
     _plan_dict: dict[RopeTerm, PlanUnit] = None
     _keep_dict: dict[RopeTerm, PlanUnit] = None
     _healers_dict: dict[HealerName, dict[RopeTerm, PlanUnit]] = None
@@ -185,7 +185,7 @@ class PersonUnit:
         return self.make_rope(self.planroot.plan_label, l1_label)
 
     def set_knot(self, new_knot: KnotTerm):
-        self.conpute()
+        self.thinkout()
         if self.knot != new_knot:
             for x_plan_rope in self._plan_dict.keys():
                 if is_string_in_rope(new_knot, x_plan_rope):
@@ -480,7 +480,7 @@ class PersonUnit:
         self.planroot.del_factunit(fact_context)
 
     def get_plan_dict(self, problem: bool = None) -> dict[RopeTerm, PlanUnit]:
-        self.conpute()
+        self.thinkout()
         if not problem:
             return self._plan_dict
         if self.keeps_justified is False:
@@ -493,7 +493,7 @@ class PersonUnit:
         }
 
     def get_tree_metrics(self) -> TreeMetrics:
-        self.conpute()
+        self.thinkout()
         tree_metrics = treemetrics_shop()
         tree_metrics.evaluate_label(
             tree_level=self.planroot.tree_level,
@@ -683,7 +683,7 @@ class PersonUnit:
                 self._shift_plan_kids(x_rope=rope)
             parent_plan = self.get_plan_obj(parent_rope)
             parent_plan.del_kid(get_tail_label(rope, self.knot))
-        self.conpute()
+        self.thinkout()
 
     def _shift_plan_kids(self, x_rope: RopeTerm):
         parent_rope = get_parent_rope(x_rope)
@@ -853,7 +853,7 @@ reason_case:    {reason_case}"""
     def get_agenda_dict(
         self, necessary_reason_context: RopeTerm = None
     ) -> dict[RopeTerm, PlanUnit]:
-        self.conpute()
+        self.thinkout()
         return {
             x_plan.get_plan_rope(): x_plan
             for x_plan in self._plan_dict.values()
@@ -861,7 +861,7 @@ reason_case:    {reason_case}"""
         }
 
     def get_all_pledges(self) -> dict[RopeTerm, PlanUnit]:
-        self.conpute()
+        self.thinkout()
         all_plans = self._plan_dict.values()
         return {x_plan.get_plan_rope(): x_plan for x_plan in all_plans if x_plan.pledge}
 
@@ -1234,7 +1234,7 @@ reason_case:    {reason_case}"""
                 x_plan.inherit_awardheirs(parent_plan.awardheirs)
             x_plan.set_awardheirs_fund_give_fund_take()
 
-    def conpute(self, keep_exceptions: bool = False):
+    def thinkout(self, keep_exceptions: bool = False):
         self._clear_plan_dict_and_person_obj_settle_attrs()
         self._set_plan_dict()
         self._set_plantree_range_attrs()

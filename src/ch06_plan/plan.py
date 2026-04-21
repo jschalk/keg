@@ -224,7 +224,7 @@ class PlanUnit:
     problem_bool : bool that describes if the plan is a problem.
     is_expanded : bool flag that can be used by UI to display or high tree branch.
 
-    active : bool that describes if the plan pledge is plan_active, conpute.
+    active : bool that describes if the plan pledge is plan_active, thinkout.
     active_hx : dict[int, bool] Historical record of active state, used to track changes between tree_traverses
     all_contact_cred : bool Flag indicating there are not explicitley defined awardunits
     all_contact_debt : bool Flag indicating there are not explicitley defined awardunits
@@ -234,8 +234,8 @@ class PlanUnit:
     factheirs : dict[RopeTerm, FactHeir] parent plan provided facts.
     fund_ratio : float
     fund_grain : FundGrain Smallest indivisible funding component.
-    fund_onset : FundNum number at which funding onsets inside master funding range, conpute
-    fund_cease : FundNum number at which funding ceases inside master funding range, conpute
+    fund_onset : FundNum number at which funding onsets inside master funding range, thinkout
+    fund_cease : FundNum number at which funding ceases inside master funding range, thinkout
     healerunit_ratio : float
     tree_level : int that describes Depth tree_level in plan hierarchy.
     range_evaluated : bool Flag indicating whether range has been evaluated.

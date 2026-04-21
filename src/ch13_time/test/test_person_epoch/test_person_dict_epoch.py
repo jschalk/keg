@@ -13,7 +13,7 @@ def test_get_personunit_from_dict_ReturnsObj_TracksEpochUnitAttributes():
     clean_rope = sue_person.make_rope(casa_rope, exx.clean)
     sue_person.add_plan(clean_rope, 1, pledge=True)
     sue_person.get_contact(exx.sue).add_membership(exx.run)
-    sue_person.conpute()
+    sue_person.thinkout()
     yr1_jan1_offset_rope = ";Amy23;time;creg;yr1_jan1_offset;"
     before_yr1_jan1_offset_plan = sue_person.get_plan_obj(yr1_jan1_offset_rope)
     # print(x_person.get_plan_obj(";Amy23;time;creg;yr1_jan1_offset;"))

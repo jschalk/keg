@@ -50,9 +50,9 @@ def test_TranBook_Exists():
 
 def test_tranbook_shop_WithParametersReturnsObj():
     # ESTABLISH
-    x_TimeNum = 5505
+    x_timenum = 5505
     x_fundnum = -45
-    x_tranunits = {exx.sue: {exx.yao: {x_TimeNum: x_fundnum}}}
+    x_tranunits = {exx.sue: {exx.yao: {x_timenum: x_fundnum}}}
 
     # WHEN
     x_tranbook = tranbook_shop(exx.a23, x_tranunits)
@@ -537,9 +537,9 @@ def test_TranBook_get_contacts_csv_ReturnsObj():
 
 def test_TranBook_to_dict_ReturnsObj():
     # ESTABLISH
-    x_TimeNum = 5505
+    x_timenum = 5505
     x_fundnum = -45
-    all_tranunits = {exx.sue: {exx.yao: {x_TimeNum: x_fundnum}}}
+    all_tranunits = {exx.sue: {exx.yao: {x_timenum: x_fundnum}}}
     x_tranbook = tranbook_shop(exx.a23, all_tranunits)
 
     # WHEN
@@ -555,7 +555,7 @@ def test_TranBook_to_dict_ReturnsObj():
     assert tranunits_dict.get(exx.sue)
     sue_trans_dict = tranunits_dict.get(exx.sue)
     assert sue_trans_dict.get(exx.yao)
-    assert sue_trans_dict.get(exx.yao) == {x_TimeNum: x_fundnum}
+    assert sue_trans_dict.get(exx.yao) == {x_timenum: x_fundnum}
     assert tranunits_dict == all_tranunits
 
 

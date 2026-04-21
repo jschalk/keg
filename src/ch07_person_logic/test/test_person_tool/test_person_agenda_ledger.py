@@ -92,7 +92,7 @@ def test_get_person_contact_agenda_award_csv_ReturnsObj_ScenarioMultipleContactU
     assert person_contact_agenda_award_csv_str == example_csv_str
 
 
-def test_get_person_contact_agenda_award_csv_ReturnsObj_conpute_True():
+def test_get_person_contact_agenda_award_csv_ReturnsObj_thinkout_True():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     sue_person.add_contactunit(exx.yao)
@@ -109,7 +109,7 @@ def test_get_person_contact_agenda_award_csv_ReturnsObj_conpute_True():
 
     # WHEN
     person_contact_agenda_award_csv_str = get_person_contact_agenda_award_csv(
-        sue_person, conpute=True
+        sue_person, thinkout=True
     )
 
     # THEN
@@ -157,7 +157,7 @@ def test_get_contact_mandate_ledger_ReturnsObj_Scenario0_MultipleContactUnit():
     assert example_bud_net_dict == person_bud_net_dict
 
 
-def test_get_contact_mandate_ledger_ReturnsObj_Scenario1_conpute_True():
+def test_get_contact_mandate_ledger_ReturnsObj_Scenario1_thinkout_True():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     sue_person.add_contactunit(exx.yao, 13, 5)
@@ -174,7 +174,7 @@ def test_get_contact_mandate_ledger_ReturnsObj_Scenario1_conpute_True():
     assert get_contact_mandate_ledger(sue_person) == pre_settle_contact_mandate_ledger
 
     # WHEN
-    sue_person_settle_net_dict = get_contact_mandate_ledger(sue_person, conpute=True)
+    sue_person_settle_net_dict = get_contact_mandate_ledger(sue_person, thinkout=True)
 
     # THEN
     assert sue_person_settle_net_dict != pre_settle_contact_mandate_ledger
@@ -225,7 +225,7 @@ def test_get_contact_mandate_ledger_ReturnsObj_Scenario4_MandateSumEqual_fund_po
     assert get_contact_mandate_ledger(sue_person) == pre_settle_contact_mandate_ledger
 
     # WHEN
-    sue_person_settle_net_dict = get_contact_mandate_ledger(sue_person, conpute=True)
+    sue_person_settle_net_dict = get_contact_mandate_ledger(sue_person, thinkout=True)
 
     # THEN
     assert sue_person_settle_net_dict != pre_settle_contact_mandate_ledger
@@ -267,7 +267,7 @@ def test_get_contact_mandate_ledger_ReturnsObj_Scenario5_Zero_fund_agenda_give()
     sue_person.add_contactunit(exx.yao, 13, 5)
 
     # WHEN
-    sue_person_settle_net_dict = get_contact_mandate_ledger(sue_person, conpute=True)
+    sue_person_settle_net_dict = get_contact_mandate_ledger(sue_person, thinkout=True)
 
     # THEN
     assert sue_person_settle_net_dict == {exx.yao: sue_fund_pool}
@@ -302,7 +302,7 @@ def test_get_contact_agenda_net_ledger_ReturnsObj_ScenarioMultipleContactUnit():
     assert example_bud_net_dict == person_bud_net_dict
 
 
-def test_get_contact_agenda_net_ledger_ReturnsObj_conpute_True():
+def test_get_contact_agenda_net_ledger_ReturnsObj_thinkout_True():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     sue_person.add_contactunit(exx.yao, 13, 5)
@@ -312,7 +312,9 @@ def test_get_contact_agenda_net_ledger_ReturnsObj_conpute_True():
     assert get_contact_agenda_net_ledger(sue_person) == {}
 
     # WHEN
-    sue_person_settle_net_dict = get_contact_agenda_net_ledger(sue_person, conpute=True)
+    sue_person_settle_net_dict = get_contact_agenda_net_ledger(
+        sue_person, thinkout=True
+    )
 
     # THEN
     print(f"{sue_person_settle_net_dict=}")

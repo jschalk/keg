@@ -205,7 +205,7 @@ def person_config_jvalues(person_config: dict[str, dict], dimen: str) -> set[str
     """Return expected atom_config jvalues from person_config"""
     expected_jvalues = set()
     for jvalue_arg, jvalue_dict in person_config.get(dimen).get(kw.jvalues).items():
-        if jvalue_dict.get("calc_by_conpute") == False:
+        if jvalue_dict.get("calc_by_thinkout") == False:
             expected_jvalues.add(jvalue_arg)
     if kw.knot in expected_jvalues:
         expected_jvalues.remove(kw.knot)

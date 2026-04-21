@@ -66,7 +66,7 @@ class CellUnit:
         self.personspark_facts = get_factunits_from_dict(get_facts_dict(x_person))
         y_person = copy_deepcopy(x_person)
         clear_factunits_from_person(y_person)
-        y_person.conpute()
+        y_person.thinkout()
         self.personadjust = y_person
 
     def get_personsparks_credit_ledger(self) -> dict[PersonName, float]:

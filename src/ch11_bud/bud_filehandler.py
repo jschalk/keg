@@ -203,7 +203,7 @@ def save_persontime_file(
     x_persontime: PersonUnit,
     x_bud_time: TimeNum = None,
 ):
-    x_persontime.conpute()
+    x_persontime.thinkout()
     if x_persontime.rational is False:
         raise SaveValidPersontimeError(
             "persontime could not be saved PersonUnit.rational is False"

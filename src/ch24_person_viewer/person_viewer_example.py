@@ -105,7 +105,7 @@ def get_sue_personunit() -> PersonUnit:
     sue_person.edit_plan_attr(root_rope, awardunit=casa_team_awardunit)
     sue_person.edit_plan_attr(casa_rope, awardunit=casa_devloper_awardunit)
     sue_person.edit_plan_attr(casa_rope, awardunit=casa_jundevloper_awardunit)
-    sue_person.conpute()
+    sue_person.thinkout()
     return sue_person
 
 
@@ -173,5 +173,5 @@ def get_sue_person_with_facts_and_reasons() -> PersonUnit:
     person_plan_reason_caseunit_set_obj(sue_person, bowl_bowl_jkeys)
     person_plan_reason_caseunit_set_obj(sue_person, bowl_tidy_jkeys)
     person_plan_reason_caseunit_set_obj(sue_person, run_run_jkeys)
-    sue_person.conpute()
+    sue_person.thinkout()
     return sue_person

@@ -208,10 +208,15 @@ def create_contacts_only_list_str(contacts_list: list[ContactUnit], x_str: str) 
 
     for contact in contacts_list:
         give_left = contact.fund_agenda_ratio_give - contact.fund_agenda_ratio_take
-        agenda_relative_give = gcal_readable_percent(give_left)
-        if agenda_relative_give == "0%":
-            agenda_relative_give += " (even give/take)"
-        x_str += f"\n{agenda_relative_give} {contact.contact_name}"
+        agenda_relative_give = f" ({gcal_readable_percent(give_left)})"
+        agenda_ratio_give = gcal_readable_percent(contact.fund_agenda_ratio_give)
+        agenda_ratio_take = gcal_readable_percent(contact.fund_agenda_ratio_take)
+        agenda_ratios_str = f"give: {agenda_ratio_give}, take: {agenda_ratio_take}"
+        if agenda_relative_give == " (0%)":
+            agenda_relative_give = " (even give/take)"
+        x_str += (
+            f"\n{contact.contact_name:10} {agenda_ratios_str} {agenda_relative_give}"
+        )
     return x_str
 
 
@@ -237,7 +242,7 @@ def get_gcal_day_punch_from_personunit(
     epoch_label: LabelTerm = None,
     group_title: GroupTitle = None,
 ) -> str:
-    """parameter x_person is assumed to have already conputed."""
+    """parameter x_person is assumed to have already thinkoutd."""
     moment_rope = x_person.planroot.get_plan_rope()
     x_str = f"Day Report for {x_person.person_name} in the {moment_rope} Moment\n"
     if not epoch_label:
@@ -255,7 +260,6 @@ def create_gcalendar_events_list(x_person: PersonUnit, day: datetime) -> list[di
     x_person = copy_deepcopy(x_person)
     default_epoch_config = get_default_epoch_config_dict()
     epoch_label = default_epoch_config.get("epoch_label")
-
     gcal_agenda_list_str = ""
     day_events = []
     dayevent_objs = get_dayevents(x_person, epoch_label, day)

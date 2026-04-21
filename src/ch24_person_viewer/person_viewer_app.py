@@ -112,7 +112,7 @@ def get_personunit_view():
     # return jsonify(root.to_dict())
     sue_person = get_sue_person_with_facts_and_reasons()
     add_epoch_planunit(sue_person, get_default_epoch_config_dict())
-    sue_person.conpute()
+    sue_person.thinkout()
     person_view_dict = get_person_view_dict(sue_person)
     return jsonify(person_view_dict)
 

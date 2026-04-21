@@ -180,7 +180,7 @@ def get_keep_ropes(
     moment_mstr_dir, moment_lasso: LassoUnit, person_name
 ) -> set[RopeTerm]:
     x_gut_person = open_gut_file(moment_mstr_dir, moment_lasso, person_name)
-    x_gut_person.conpute()
+    x_gut_person.thinkout()
     if x_gut_person.keeps_justified is False:
         x_str = f"Cannot get_keep_ropes from '{person_name}' gut person because 'PersonUnit.keeps_justified' is False."
         raise GetKeepRopesError(x_str)
@@ -200,7 +200,7 @@ def get_perspective_person(
     # get copy of person without any metrics
     perspective_person = get_personunit_from_dict(speaker.to_dict())
     perspective_person.set_person_name(listener_name)
-    perspective_person.conpute()
+    perspective_person.thinkout()
     return perspective_person
 
 

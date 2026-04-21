@@ -3,5 +3,5 @@
   "chapter_content": "A person is a personunit, made of contacts and plans. All plans are connected to the planroot, which is given all the funds in a personunit.", 
   "chapter_description": "ch07_person_logic", 
   "chapter_number": 7, 
-  "ontology summary": "A PersonUnit is a single planroot and Contacts. conpute awards fund debts and creds to Contacts and defines the PersonUnit's agenda."
+  "ontology summary": "A PersonUnit is a single planroot and Contacts. thinkout awards fund debts and creds to Contacts and defines the PersonUnit's agenda."
 }

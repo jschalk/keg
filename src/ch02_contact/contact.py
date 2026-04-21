@@ -64,7 +64,7 @@ class ContactUnit:
     debtor_pool: RespectNum = None
     irrational_contact_debt_lumen: int = None  # set by listening process
     inallocable_contact_debt_lumen: int = None  # set by listening process
-    # set by conpute()
+    # set by thinkout()
     fund_give: FundNum = None
     fund_take: FundNum = None
     fund_agenda_give: FundNum = None

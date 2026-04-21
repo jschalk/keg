@@ -21,7 +21,6 @@ jobs:
           python -m pip install plotly
           python -m pip install pytest-cov
           python -m pip install openpyxl
-          python -m pip install sqlalchemy
           python -m pip install xlsxwriter
           python -m pip install flask
           python -m pip install flask_cors

@@ -334,8 +334,8 @@ def listen_to_person_visions(
     )
     new_job = create_listen_basis(gut)
     pre_job_dict = new_job.to_dict()
-    gut.conpute()
-    new_job.conpute()
+    gut.thinkout()
+    new_job.thinkout()
 
     for x_healer_name, keep_dict in gut._healers_dict.items():
         listener_id = listener_lessonfilehandler.person_name
@@ -407,7 +407,7 @@ def listen_to_vision_agenda(listener: PersonUnit, vision: PersonUnit):
             listener.set_plan_obj(x_plan, x_plan.parent_rope)
     for x_fact_rope, x_fact_unit in vision.planroot.factunits.items():
         listener.planroot.set_factunit(x_fact_unit)
-    listener.conpute()
+    listener.thinkout()
 
 
 def create_vision_file_from_duty_file(

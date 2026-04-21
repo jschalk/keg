@@ -58,7 +58,7 @@ def test_set_epoch_base_case_dayly_SetsAttr_Scenario0_NoWarppingParameters():
 def test_set_epoch_base_case_dayly_SetsAttr_Scenario1_WarppingParameters():
     # ESTABLISH
     bob_person = get_bob_five_person()
-    bob_person.conpute()
+    bob_person.thinkout()
     mop_dayly_args = {
         kw.plan_rope: wx.mop_rope,
         kw.reason_context: wx.day_rope,
@@ -94,7 +94,7 @@ def test_set_epoch_base_case_dayly_SetsAttr_Scenario1_WarppingParameters():
 def test_set_epoch_base_case_dayly_SetsAttr_Scenario2_ParametersAreNone():
     # ESTABLISH
     bob_person = get_bob_five_person()
-    bob_person.conpute()
+    bob_person.thinkout()
     mop_dayly_args = {
         kw.plan_rope: wx.mop_rope,
         kw.reason_context: wx.day_rope,
@@ -130,7 +130,7 @@ def test_set_epoch_base_case_xdays_SetsAttr_Scenario0_NoWarppingParameters():
     mop_days_upper_day = 5
     assert bob_person.plan_exists(wx.five_rope)
     assert not person_plan_reason_caseunit_exists(bob_person, mop_xdays_args)
-    bob_person.conpute()
+    bob_person.thinkout()
     for x_plan in get_sorted_plan_list(bob_person._plan_dict):
         print(f"{x_plan.get_plan_rope()=}")
 
@@ -510,7 +510,7 @@ def test_set_epoch_base_case_monthday_SetsAttr_Scenario0_NoWrapingParameters():
     mop_monthday = 3
     mop_length_days = 4
     print(f"geo rope  ='{month_geo_rope}")
-    # bob_person.conpute()
+    # bob_person.thinkout()
     # for x_plan in get_sorted_plan_list(bob_person._plan_dict):
     #     print(f"{x_plan.get_plan_rope()=}")
     assert bob_person.plan_exists(wx.five_rope)

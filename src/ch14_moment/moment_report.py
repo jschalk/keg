@@ -18,7 +18,7 @@ def get_moment_guts_contacts_dataframe(x_moment: MomentUnit) -> DataFrame:
     for person_name in moment_person_names:
         moment_lasso = lassounit_shop(x_moment.moment_rope)
         gut_person = open_gut_file(x_moment.moment_mstr_dir, moment_lasso, person_name)
-        gut_person.conpute()
+        gut_person.thinkout()
         df = get_person_contactunits_dataframe(gut_person)
         df.insert(0, "person_name", gut_person.person_name)
         gut_dfs.append(df)
@@ -73,7 +73,7 @@ def get_moment_jobs_contacts_dataframe(x_moment: MomentUnit) -> DataFrame:
     for person_name in moment_person_names:
         moment_lasso = lassounit_shop(x_moment.moment_rope, x_moment.knot)
         job = open_job_file(x_moment.moment_mstr_dir, moment_lasso, person_name)
-        job.conpute()
+        job.thinkout()
         job_df = get_person_contactunits_dataframe(job)
         job_df.insert(0, "person_name", job.person_name)
         job_dfs.append(job_df)
@@ -127,7 +127,7 @@ def get_moment_guts_agenda_dataframe(x_moment: MomentUnit) -> DataFrame:
     for person_name in moment_person_names:
         moment_lasso = lassounit_shop(x_moment.moment_rope, x_moment.knot)
         gut_person = open_gut_file(x_moment.moment_mstr_dir, moment_lasso, person_name)
-        gut_person.conpute()
+        gut_person.thinkout()
         df = get_person_agenda_dataframe(gut_person)
         gut_dfs.append(df)
     return pandas_concat(gut_dfs, ignore_index=True)
@@ -182,7 +182,7 @@ def get_moment_jobs_agenda_dataframe(x_moment: MomentUnit) -> DataFrame:
     for x_person_name in x_moment._get_person_dir_names():
         moment_lasso = lassounit_shop(x_moment.moment_rope, x_moment.knot)
         job = open_job_file(x_moment.moment_mstr_dir, moment_lasso, x_person_name)
-        job.conpute()
+        job.thinkout()
         job_df = get_person_agenda_dataframe(job)
         job_dfs.append(job_df)
     return pandas_concat(job_dfs, ignore_index=True)

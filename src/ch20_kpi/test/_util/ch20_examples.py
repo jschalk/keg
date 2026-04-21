@@ -12,7 +12,7 @@ def get_a23_sue_clean_example() -> PersonUnit:
     clean_rope = sue_person.make_rope(casa_rope, exx.clean)
     sue_person.add_plan(clean_rope, 1, pledge=True)
     sue_person.get_contact(exx.sue).add_membership(exx.run)
-    sue_person.conpute()
+    sue_person.thinkout()
     return sue_person
 
 
@@ -26,7 +26,7 @@ def get_ep8_sue_clean_example() -> PersonUnit:
     mop_rope = sue_person.make_rope(casa_rope, exx.mop)
     sue_person.add_plan(mop_rope, 1, pledge=True)
     sue_person.get_contact(exx.sue).add_membership(exx.run)
-    sue_person.conpute()
+    sue_person.thinkout()
     return sue_person
 
 
@@ -40,5 +40,5 @@ def get_ep8_yao_clean_example() -> PersonUnit:
     bowl_rope = yao_person.make_rope(casa_rope, exx.bowl)
     yao_person.add_plan(bowl_rope, 1, pledge=True)
     yao_person.get_contact(exx.yao).add_membership(exx.run)
-    yao_person.conpute()
+    yao_person.thinkout()
     return yao_person

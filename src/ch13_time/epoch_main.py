@@ -579,7 +579,7 @@ class EpochHolder:
         self._year_num += self._year_count
 
     def calc_epoch(self):
-        self.x_personunit.conpute()
+        self.x_personunit.thinkout()
         self._set_epoch_plan()
         self._set_weekday()
         self._set_month()
