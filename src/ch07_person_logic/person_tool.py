@@ -210,10 +210,10 @@ def person_get_obj(x_dimen: str, x_person: PersonUnit, jkeys: dict[str, any]) ->
 
 
 def get_person_contact_agenda_award_array(
-    x_person: PersonUnit, conpute: bool = None
+    x_person: PersonUnit, thinkout: bool = None
 ) -> list[list]:
-    if conpute:
-        x_person.conpute()
+    if thinkout:
+        x_person.thinkout()
 
     x_list = [
         [
@@ -228,25 +228,25 @@ def get_person_contact_agenda_award_array(
 
 
 def get_person_contact_agenda_award_csv(
-    x_person: PersonUnit, conpute: bool = None
+    x_person: PersonUnit, thinkout: bool = None
 ) -> str:
     x_contact_agenda_award_array = get_person_contact_agenda_award_array(
-        x_person, conpute
+        x_person, thinkout
     )
     x_headers = ["contact_name", "fund_agenda_take", "fund_agenda_give"]
     return create_csv(x_headers, x_contact_agenda_award_array)
 
 
 def get_contact_mandate_ledger(
-    x_person: PersonUnit, conpute: bool = None
+    x_person: PersonUnit, thinkout: bool = None
 ) -> dict[ContactName, FundNum]:
     if not x_person:
         return {}
     if len(x_person.contacts) == 0:
         return {x_person.person_name: x_person.fund_pool}
 
-    if conpute:
-        x_person.conpute()
+    if thinkout:
+        x_person.thinkout()
     person_contacts = x_person.contacts.values()
     mandates = {
         x_contact.contact_name: x_contact.fund_agenda_give
@@ -272,10 +272,10 @@ def reset_mandates_to_minimum(
 
 
 def get_contact_agenda_net_ledger(
-    x_person: PersonUnit, conpute: bool = None
+    x_person: PersonUnit, thinkout: bool = None
 ) -> dict[ContactName, FundNum]:
-    if conpute:
-        x_person.conpute()
+    if thinkout:
+        x_person.thinkout()
 
     x_dict = {}
     for x_contact in x_person.contacts.values():

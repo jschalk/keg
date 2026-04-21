@@ -9,7 +9,7 @@ from ref.keywords import Ch24Keywords as kw, ExampleStrs as exx
 def test_get_person_view_dict_ReturnsObj_Scenario0_Empty():
     # ESTABLISH
     sue_believer = personunit_shop(exx.sue)
-    sue_believer.conpute()
+    sue_believer.thinkout()
 
     # WHEN
     sue_person_view_dict = get_person_view_dict(sue_believer)

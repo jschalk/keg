@@ -61,7 +61,7 @@ def test_EpochHolder_set_epoch_plan_SetsAttr():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     sue_person = add_time_creg_planunit(sue_person)
-    sue_person.conpute()
+    sue_person.thinkout()
     x_TimeNum = epochholder_shop(sue_person, kw.creg, 10000000)
     assert not x_TimeNum._epoch_plan
 
@@ -76,7 +76,7 @@ def test_EpochHolder_set_weekday_SetsAttr():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     sue_person = add_time_creg_planunit(sue_person)
-    sue_person.conpute()
+    sue_person.thinkout()
     x_TimeNum = epochholder_shop(sue_person, kw.creg, 10001440)
     x_TimeNum._set_epoch_plan()
     assert not x_TimeNum._weekday
@@ -92,7 +92,7 @@ def test_EpochHolder_set_month_SetsAttr():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     sue_person = add_time_creg_planunit(sue_person)
-    sue_person.conpute()
+    sue_person.thinkout()
     x_TimeNum = epochholder_shop(sue_person, kw.creg, 10060000)
     x_TimeNum._set_epoch_plan()
     assert not x_TimeNum._month
@@ -111,7 +111,7 @@ def test_EpochHolder_set_hour_SetsAttr():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     sue_person = add_time_creg_planunit(sue_person)
-    sue_person.conpute()
+    sue_person.thinkout()
     x_TimeNum = epochholder_shop(sue_person, kw.creg, 10000001)
     x_TimeNum._set_epoch_plan()
     assert not x_TimeNum._hour
@@ -130,7 +130,7 @@ def test_EpochHolder_set_year_SetsAttr():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     sue_person = add_time_creg_planunit(sue_person)
-    sue_person.conpute()
+    sue_person.thinkout()
     x_TimeNum = epochholder_shop(sue_person, kw.creg, 1030600100)
     x_TimeNum._set_epoch_plan()
     assert not x_TimeNum._c400_number

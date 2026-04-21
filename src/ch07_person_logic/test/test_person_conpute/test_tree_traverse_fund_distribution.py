@@ -15,7 +15,7 @@ from pytest import raises as pytest_raises
 from ref.keywords import ExampleStrs as exx
 
 
-def test_PersonUnit_conpute_Sets_planunit_fund_onset_fund_cease_Scenario0():
+def test_PersonUnit_thinkout_Sets_planunit_fund_onset_fund_cease_Scenario0():
     # ESTABLISH
     x_personunit = get_personunit_with7am_clean_table_reason()
     casa_rope = x_personunit.make_l1_rope("casa")
@@ -40,7 +40,7 @@ def test_PersonUnit_conpute_Sets_planunit_fund_onset_fund_cease_Scenario0():
     assert x_personunit.get_plan_obj(wk_rope).fund_cease == 13
 
     # WHEN
-    x_personunit.conpute()
+    x_personunit.thinkout()
 
     # THEN
     assert x_personunit.planroot.fund_onset != 13
@@ -53,7 +53,7 @@ def test_PersonUnit_conpute_Sets_planunit_fund_onset_fund_cease_Scenario0():
     assert x_personunit.get_plan_obj(wk_rope).fund_cease != 13
 
 
-def test_PersonUnit_conpute_Sets_planunit_fund_onset_fund_cease_Scenario1():
+def test_PersonUnit_thinkout_Sets_planunit_fund_onset_fund_cease_Scenario1():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     yao_personunit = personunit_shop(exx.yao)
@@ -97,7 +97,7 @@ def test_PersonUnit_conpute_Sets_planunit_fund_onset_fund_cease_Scenario1():
     assert duck_before.fund_cease is None
 
     # WHEN
-    yao_personunit.conpute()
+    yao_personunit.thinkout()
 
     # THEN
     assert yao_personunit.planroot.fund_onset == 0.0
@@ -117,7 +117,7 @@ def test_PersonUnit_conpute_Sets_planunit_fund_onset_fund_cease_Scenario1():
     assert lamb_after.fund_cease == default_pool_num() * 0.7
 
 
-def test_PersonUnit_conpute_Sets_planunit_fund_onset_fund_cease_Scenario2_DifferentOrderOfPlans():
+def test_PersonUnit_thinkout_Sets_planunit_fund_onset_fund_cease_Scenario2_DifferentOrderOfPlans():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     yao_personunit = personunit_shop(exx.yao)
@@ -161,7 +161,7 @@ def test_PersonUnit_conpute_Sets_planunit_fund_onset_fund_cease_Scenario2_Differ
     assert duck_before.fund_cease is None
 
     # WHEN
-    yao_personunit.conpute()
+    yao_personunit.thinkout()
 
     # THEN
     assert yao_personunit.planroot.fund_onset == 0.0
@@ -181,7 +181,7 @@ def test_PersonUnit_conpute_Sets_planunit_fund_onset_fund_cease_Scenario2_Differ
     assert lamb_after.fund_cease == default_pool_num() * 1.0
 
 
-def test_PersonUnit_conpute_Sets_fund_ratio_WithSomePlansOfZero_starScenario0():
+def test_PersonUnit_thinkout_Sets_fund_ratio_WithSomePlansOfZero_starScenario0():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     casa_rope = sue_person.make_l1_rope(exx.casa)
@@ -210,7 +210,7 @@ def test_PersonUnit_conpute_Sets_fund_ratio_WithSomePlansOfZero_starScenario0():
     assert sue_person.get_plan_obj(yes_rope).fund_ratio is None
 
     # WHEN
-    sue_person.conpute()
+    sue_person.thinkout()
 
     # THEN
     print(f"{sue_person.fund_pool=}")
@@ -222,7 +222,7 @@ def test_PersonUnit_conpute_Sets_fund_ratio_WithSomePlansOfZero_starScenario0():
     assert sue_person.get_plan_obj(yes_rope).fund_ratio == 0.0
 
 
-def test_PersonUnit_conpute_Sets_fund_ratio_WithSomePlansOfZero_starScenario1():
+def test_PersonUnit_thinkout_Sets_fund_ratio_WithSomePlansOfZero_starScenario1():
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     casa_rope = sue_person.make_l1_rope(exx.casa)
@@ -262,7 +262,7 @@ def test_PersonUnit_conpute_Sets_fund_ratio_WithSomePlansOfZero_starScenario1():
     assert sue_person.get_plan_obj(dirty_rope).fund_ratio is None
 
     # WHEN
-    sue_person.conpute()
+    sue_person.thinkout()
 
     # THEN
     print(f"{sue_person.fund_pool=}")
@@ -275,7 +275,7 @@ def test_PersonUnit_conpute_Sets_fund_ratio_WithSomePlansOfZero_starScenario1():
     assert sue_person.get_plan_obj(dirty_rope).fund_ratio == 0
 
 
-def test_PersonUnit_conpute_WhenPlanUnitHasFundsBut_kidsHaveNostarDistributeFundsToContactUnits_Scenario0():
+def test_PersonUnit_thinkout_WhenPlanUnitHasFundsBut_kidsHaveNostarDistributeFundsToContactUnits_Scenario0():
     # ESTABLISH
     sue_personunit = personunit_shop("Sue")
     sue_personunit.add_contactunit(exx.yao)
@@ -314,7 +314,7 @@ def test_PersonUnit_conpute_WhenPlanUnitHasFundsBut_kidsHaveNostarDistributeFund
     assert sue_personunit.get_contact(exx.yao).fund_take == 0
 
     # WHEN
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
 
     # THEN
     print(f"{sue_personunit.fund_pool=}")
@@ -332,10 +332,10 @@ def test_PersonUnit_conpute_WhenPlanUnitHasFundsBut_kidsHaveNostarDistributeFund
     assert sue_personunit.get_contact(exx.yao).fund_take == default_pool_num()
 
 
-def test_PersonUnit_conpute_TreeTraverseSetsAwardLine_fundFromRoot():
+def test_PersonUnit_thinkout_TreeTraverseSetsAwardLine_fundFromRoot():
     # ESTABLISH
     sue_person = get_personunit_with_4_levels()
-    sue_person.conpute()
+    sue_person.thinkout()
     # plan tree has no awardunits
     assert sue_person.planroot.awardlines == {}
     wk_str = "sem_jours"
@@ -347,7 +347,7 @@ def test_PersonUnit_conpute_TreeTraverseSetsAwardLine_fundFromRoot():
     assert sue_person.planroot.awardheirs.get(exx.sue) is None
 
     # WHEN
-    sue_person.conpute()
+    sue_person.thinkout()
 
     # THEN
     assert sue_person.planroot.awardheirs.get(exx.sue) is not None
@@ -387,10 +387,10 @@ def test_PersonUnit_conpute_TreeTraverseSetsAwardLine_fundFromRoot():
     assert sue_person.planroot.awardlines == {x_awardline.awardee_title: x_awardline}
 
 
-def test_PersonUnit_conpute_TreeTraverseSets_awardlines_To_planroot_FromNon_planroot_PlanUnit():
+def test_PersonUnit_thinkout_TreeTraverseSets_awardlines_To_planroot_FromNon_planroot_PlanUnit():
     # ESTABLISH
     sue_person = get_personunit_with_4_levels()
-    sue_person.conpute()
+    sue_person.thinkout()
     sue_person.add_contactunit(exx.sue)
     casa_rope = sue_person.make_l1_rope("casa")
     sue_person.get_plan_obj(casa_rope).set_awardunit(
@@ -399,7 +399,7 @@ def test_PersonUnit_conpute_TreeTraverseSets_awardlines_To_planroot_FromNon_plan
     assert sue_person.planroot.awardlines == {}
 
     # WHEN
-    sue_person.conpute()
+    sue_person.thinkout()
 
     # THEN
     assert sue_person.planroot.awardlines != {}
@@ -415,7 +415,7 @@ def test_PersonUnit_conpute_TreeTraverseSets_awardlines_To_planroot_FromNon_plan
     assert casa_planunit.awardlines == {x_awardline.awardee_title: x_awardline}
 
 
-def test_PersonUnit_conpute_WithRootLevelAwardUnitSetsGroupUnit_fund_give_fund_take():
+def test_PersonUnit_thinkout_WithRootLevelAwardUnitSetsGroupUnit_fund_give_fund_take():
     # ESTABLISH
     sue_person = personunit_shop(exx.sue)
     sue_person.set_contactunit(contactunit_shop(exx.yao))
@@ -432,7 +432,7 @@ def test_PersonUnit_conpute_WithRootLevelAwardUnitSetsGroupUnit_fund_give_fund_t
     assert len(sue_person.get_contactunit_group_titles_dict()) == 3
 
     # WHEN
-    sue_person.conpute()
+    sue_person.thinkout()
 
     # THEN
     yao_groupunit = sue_person.get_groupunit(exx.yao)
@@ -459,7 +459,7 @@ def test_PersonUnit_conpute_WithRootLevelAwardUnitSetsGroupUnit_fund_give_fund_t
     assert len(sue_person.get_contactunit_group_titles_dict()) == 4
 
     # WHEN
-    sue_person.conpute()
+    sue_person.thinkout()
 
     # THEN
     yao_groupunit = sue_person.get_groupunit(exx.yao)
@@ -482,7 +482,7 @@ def test_PersonUnit_conpute_WithRootLevelAwardUnitSetsGroupUnit_fund_give_fund_t
     assert round(debt_sum1) == 1 * default_pool_num()
 
 
-def test_PersonUnit_conpute_WithLevel3AwardUnitSetsGroupUnit_fund_give_fund_take():
+def test_PersonUnit_thinkout_WithLevel3AwardUnitSetsGroupUnit_fund_give_fund_take():
     # ESTABLISH
     x_person = personunit_shop(exx.bob)
     bowl_rope = x_person.make_l1_rope(exx.bowl)
@@ -501,7 +501,7 @@ def test_PersonUnit_conpute_WithLevel3AwardUnitSetsGroupUnit_fund_give_fund_take
     assert len(x_person.get_contactunit_group_titles_dict()) == 3
 
     # WHEN
-    x_person.conpute()
+    x_person.thinkout()
 
     # THEN
     yao_groupunit = x_person.get_groupunit(exx.yao)
@@ -523,7 +523,7 @@ def test_PersonUnit_conpute_WithLevel3AwardUnitSetsGroupUnit_fund_give_fund_take
     assert groupunit_fund_take_sum == 1 * default_pool_num()
 
 
-def test_PersonUnit_conpute_CreatesNewGroupUnitAndSetsGroup_fund_give_fund_take():
+def test_PersonUnit_thinkout_CreatesNewGroupUnitAndSetsGroup_fund_give_fund_take():
     # ESTABLISH
     x_person = personunit_shop(exx.yao)
     bowl_rope = x_person.make_l1_rope(exx.bowl)
@@ -542,7 +542,7 @@ def test_PersonUnit_conpute_CreatesNewGroupUnitAndSetsGroup_fund_give_fund_take(
     assert len(x_person.get_contactunit_group_titles_dict()) == 2
 
     # WHEN
-    x_person.conpute()
+    x_person.thinkout()
 
     # THEN
     yao_groupunit = x_person.get_groupunit(exx.yao)
@@ -565,7 +565,7 @@ def test_PersonUnit_conpute_CreatesNewGroupUnitAndSetsGroup_fund_give_fund_take(
     assert groupunit_fund_take_sum == 1 * default_pool_num()
 
 
-def test_PersonUnit_conpute_WithLevel3AwardUnitAndEmptyAncestorsSetsGroupUnit_fund_give_fund_take():
+def test_PersonUnit_thinkout_WithLevel3AwardUnitAndEmptyAncestorsSetsGroupUnit_fund_give_fund_take():
     # ESTABLISH
     x_person = personunit_shop(exx.yao)
     bowl_rope = x_person.make_l1_rope(exx.bowl)
@@ -586,7 +586,7 @@ def test_PersonUnit_conpute_WithLevel3AwardUnitAndEmptyAncestorsSetsGroupUnit_fu
     x_person.set_l1_plan(planunit_shop("hunt", star=3))
 
     # WHEN
-    x_person.conpute()
+    x_person.thinkout()
 
     # THEN
     x_planroot = x_person.get_plan_obj(x_person.planroot.get_plan_rope())
@@ -685,7 +685,7 @@ def test_PersonUnit_set_awardunit_CalculatesInheritedAwardUnitPersonFund():
     # assert fund_take_sum == 1
 
 
-def test_PersonUnit_conpute_SetsGroupLinkPersonCredAndDebt():
+def test_PersonUnit_thinkout_SetsGroupLinkPersonCredAndDebt():
     # ESTABLISH
     yao_person = personunit_shop(exx.yao)
     yao_person.set_contactunit(contactunit_shop(exx.sue))
@@ -713,7 +713,7 @@ def test_PersonUnit_conpute_SetsGroupLinkPersonCredAndDebt():
     assert zia_zia_membership.fund_take is None
 
     # WHEN
-    yao_person.conpute()
+    yao_person.thinkout()
 
     # THEN
     assert sue_sue_membership.fund_give == 0.5 * default_pool_num()
@@ -741,7 +741,7 @@ def test_PersonUnit_conpute_SetsGroupLinkPersonCredAndDebt():
     yao_person.planroot.set_awardunit(awardunit_shop(exx.xio, 20, take_force=13))
 
     # WHEN
-    yao_person.conpute()
+    yao_person.thinkout()
 
     # THEN
     xio_groupunit = yao_person.get_groupunit(exx.xio)
@@ -778,7 +778,7 @@ def test_PersonUnit_conpute_SetsGroupLinkPersonCredAndDebt():
     assert x_fund_take_sum == 1.0 * default_pool_num()
 
 
-def test_PersonUnit_conpute_SetsContactUnitPerson_fund():
+def test_PersonUnit_thinkout_SetsContactUnitPerson_fund():
     # ESTABLISH
     yao_person = personunit_shop(exx.yao)
     bowl_rope = yao_person.make_l1_rope(exx.bowl)
@@ -805,7 +805,7 @@ def test_PersonUnit_conpute_SetsContactUnitPerson_fund():
     assert zia_contactunit.fund_take == 0
 
     # WHEN
-    yao_person.conpute()
+    yao_person.thinkout()
 
     # THEN
     assert sue_contactunit.fund_give == 0.5 * default_pool_num()
@@ -831,7 +831,7 @@ def test_PersonUnit_conpute_SetsContactUnitPerson_fund():
     # WHEN another pledge, check metrics are as expected
     yao_person.set_contactunit(contactunit_shop(exx.xio))
     yao_person.planroot.set_awardunit(awardunit_shop(exx.xio, 20, take_force=10))
-    yao_person.conpute()
+    yao_person.thinkout()
 
     # THEN
     xio_contactunit = yao_person.get_contact(exx.xio)
@@ -873,7 +873,7 @@ def test_PersonUnit_conpute_SetsContactUnitPerson_fund():
     )
 
 
-def test_PersonUnit_conpute_SetsPartGroupedLWContactUnitPerson_fund():
+def test_PersonUnit_thinkout_SetsPartGroupedLWContactUnitPerson_fund():
     # ESTABLISH
     yao_person = personunit_shop(exx.yao)
     bowl_rope = yao_person.make_l1_rope(exx.bowl)
@@ -894,7 +894,7 @@ def test_PersonUnit_conpute_SetsPartGroupedLWContactUnitPerson_fund():
     yao_person.set_l1_plan(planunit_shop(hunt_str, star=3))
 
     # WHEN
-    yao_person.conpute()
+    yao_person.thinkout()
 
     # THEN
     sue_groupunit = yao_person.get_groupunit(exx.sue)
@@ -940,7 +940,7 @@ def test_PersonUnit_conpute_SetsPartGroupedLWContactUnitPerson_fund():
     )
 
 
-def test_PersonUnit_conpute_CreatesNewGroupUnitAndSetsContact_fund_give_fund_take():
+def test_PersonUnit_thinkout_CreatesNewGroupUnitAndSetsContact_fund_give_fund_take():
     # ESTABLISH
     bob_person = personunit_shop(exx.bob)
     bowl_rope = bob_person.make_l1_rope(exx.bowl)
@@ -959,7 +959,7 @@ def test_PersonUnit_conpute_CreatesNewGroupUnitAndSetsContact_fund_give_fund_tak
     assert len(bob_person.get_contactunit_group_titles_dict()) == 2
 
     # WHEN
-    bob_person.conpute()
+    bob_person.thinkout()
 
     # THEN
     assert len(bob_person.get_contactunit_group_titles_dict()) != len(
@@ -974,7 +974,7 @@ def test_PersonUnit_conpute_CreatesNewGroupUnitAndSetsContact_fund_give_fund_tak
     assert contactunit_fund_take_sum == default_pool_num()
 
 
-def test_PersonUnit_conpute_SetsContactUnit_fund_give_fund_take():
+def test_PersonUnit_thinkout_SetsContactUnit_fund_give_fund_take():
     # ESTABLISH
     yao_person = personunit_shop(exx.yao)
     yao_person.set_l1_plan(planunit_shop("bowl"))
@@ -992,7 +992,7 @@ def test_PersonUnit_conpute_SetsContactUnit_fund_give_fund_take():
     assert zia_contactunit.fund_take == 0
 
     # WHEN
-    yao_person.conpute()
+    yao_person.thinkout()
 
     # THEN
     fund_give_sum = (
@@ -1184,7 +1184,7 @@ def are_equal(x1: float, x2: float):
     return abs(x1 - x2) < e10
 
 
-def test_PersonUnit_conpute_SetsAttrsWhenNoFactUnitsNoReasonUnitsEmpty_agenda_ratio_cred_debt():
+def test_PersonUnit_thinkout_SetsAttrsWhenNoFactUnitsNoReasonUnitsEmpty_agenda_ratio_cred_debt():
     # ESTABLISH
     yao_person = personunit_shop(exx.yao)
     sue_contactunit = contactunit_shop(exx.sue, 0.5, contact_debt_lumen=2)
@@ -1217,7 +1217,7 @@ def test_PersonUnit_conpute_SetsAttrsWhenNoFactUnitsNoReasonUnitsEmpty_agenda_ra
     assert not zia_contact.fund_agenda_ratio_take
 
     # WHEN
-    yao_person.conpute()
+    yao_person.thinkout()
 
     # THEN
     assert yao_person.reason_contexts == set()
@@ -1247,10 +1247,10 @@ def test_PersonUnit_conpute_SetsAttrsWhenNoFactUnitsNoReasonUnitsEmpty_agenda_ra
     assert zia_contact.fund_agenda_ratio_take == 0.5
 
 
-def test_PersonUnit_conpute_CreatesGroupUnitWith_personunit_v001():
+def test_PersonUnit_thinkout_CreatesGroupUnitWith_personunit_v001():
     # ESTABLISH / WHEN
     yao_person = personunit_v001()
-    yao_person.conpute()
+    yao_person.thinkout()
 
     # THEN
     assert yao_person.groupunits is not None
@@ -1261,7 +1261,7 @@ def test_PersonUnit_conpute_CreatesGroupUnitWith_personunit_v001():
     assert everyone_contacts_len == 22
 
     # WHEN
-    yao_person.conpute()
+    yao_person.thinkout()
     plan_dict = yao_person._plan_dict
 
     # THEN

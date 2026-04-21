@@ -7,7 +7,7 @@ from ref.keywords import Ch24Keywords as kw, ExampleStrs as exx
 def test_get_groups_view_dict_ReturnsObj_Scenario0_Empty():
     # ESTABLISH
     sue_believer = personunit_shop(exx.sue)
-    sue_believer.conpute()
+    sue_believer.thinkout()
 
     # WHEN
     groups_view_dict = get_groups_view_dict(sue_believer)
@@ -36,7 +36,7 @@ def test_get_groups_view_dict_ReturnsObj_Scenario0_Empty():
 #     bob_contact = sue_believer.get_contact(bob_str)
 #     yao_contact.add_membership(bowlers_str, yao_bowl_cred_lumen, yao_bowl_debt_lumen)
 #     bob_contact.add_membership(bowlers_str, bob_bowl_cred_lumen, bob_bowl_debt_lumen)
-#     sue_believer.conpute()
+#     sue_believer.thinkout()
 
 #     # WHEN
 #     groups_view_dict = get_groups_view_dict(sue_believer)
@@ -116,7 +116,7 @@ def test_get_groups_view_dict_ReturnsObj_Scenario0_Empty():
 #     yao_bowl_debt_lumen = 313
 #     yao_contactunit = sue_believer.get_contact(exx.yao)
 #     yao_contactunit.add_membership(bowlers_str, yao_bowl_cred_lumen, yao_bowl_debt_lumen)
-#     sue_believer.conpute()
+#     sue_believer.thinkout()
 
 #     # WHEN
 #     groups_view_dict = get_groups_view_dict(sue_believer)

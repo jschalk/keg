@@ -256,7 +256,7 @@ def test_listen_to_person_visions_Pipeline_Scenario1_yao_gut_CanOnlyReferenceIts
     assert yao_gut0._keep_dict.get(get_iowa_rope())
     assert yao_gut0._keep_dict.get(get_ohio_rope())
     assert yao_gut0._keep_dict.get(get_utah_rope())
-    yao_gut0.conpute()
+    yao_gut0.thinkout()
     assert len(yao_gut0._keep_dict) == 3
     # print(f"{yao_gut0._plan_dict.keys()=}")
 
@@ -346,7 +346,7 @@ def test_listen_to_person_visions_Pipeline_Scenario1_yao_gut_CanOnlyReferenceIts
     assert job_file_exists(moment_mstr_dir, moment_lasso, exx.yao)
 
     yao_job = open_job_file(moment_mstr_dir, moment_lasso, exx.yao)
-    yao_job.conpute()
+    yao_job.thinkout()
     assert yao_job.contacts.keys() == yao_gut0.contacts.keys()
     assert yao_job.get_contact(exx.yao).irrational_contact_debt_lumen == 0
     yao_job_contacts = yao_job.to_dict().get(kw.contacts)

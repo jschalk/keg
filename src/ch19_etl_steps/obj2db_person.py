@@ -546,7 +546,7 @@ def insert_job_prnunit(
 
 
 def insert_job_obj(cursor: sqlite3_Cursor, job_person: PersonUnit):
-    job_person.conpute()
+    job_person.thinkout()
     x_objkeysholder = ObjKeysHolder(
         moment_rope=job_person.planroot.get_plan_rope(),
         person_name=job_person.person_name,
@@ -1228,7 +1228,7 @@ def insert_h_agg_obj(
     spark_face: FaceName,
 ):
     """Given database cursor and PersonUnit obj insert obj attributes into h_agg tables"""
-    job_person.conpute()
+    job_person.thinkout()
     x_objkeysholder = ObjKeysHolder(
         spark_num=spark_num,
         spark_face=spark_face,

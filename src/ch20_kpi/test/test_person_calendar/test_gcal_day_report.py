@@ -31,7 +31,7 @@ def test_get_gcal_day_punch_from_personunit_ReturnsObj_Scenario0_EmptyPerson():
     sue_person = personunit_shop(exx.sue, exx.a23)
     add_epoch_planunit(sue_person)
     apr7 = datetime(2010, 4, 7)
-    sue_person.conpute()
+    sue_person.thinkout()
 
     # WHEN
     sue_day_punch_str = get_gcal_day_punch_from_personunit(sue_person, apr7)
@@ -71,7 +71,7 @@ def test_get_gcal_day_punch_from_job_file_ReturnsObj_Scenario1_NonEmptyPerson(te
     epoch_config = get_default_epoch_config_dict()
     x_epoch_label = epoch_config.get("epoch_label")
     add_epoch_planunit(sue_person, epoch_config)
-    sue_person.conpute()
+    sue_person.thinkout()
     apr7 = datetime(2010, 4, 7)
     # save momentunit json
     mmt_mstr_dir = str(temp3_fs)
@@ -125,8 +125,8 @@ def test_get_person_gcal_day_punchs_ReturnsObj_Scenario1_Two_day_punchs(
     x_epoch_label = epoch_config.get("epoch_label")
     add_epoch_planunit(sue_a23_person, epoch_config)
     add_epoch_planunit(sue_ep8_person, epoch_config)
-    sue_a23_person.conpute()
-    sue_ep8_person.conpute()
+    sue_a23_person.thinkout()
+    sue_ep8_person.thinkout()
     apr7 = datetime(2010, 4, 7)
     # save momentunit json
     mmt_mstr_dir = str(temp3_fs)
@@ -169,9 +169,9 @@ def test_get_person_gcal_day_punchs_ReturnsObj_Scenario2_OnlySueReports(
     add_epoch_planunit(sue_a23_person, epoch_config)
     add_epoch_planunit(sue_ep8_person, epoch_config)
     add_epoch_planunit(yao_ep8_person, epoch_config)
-    sue_a23_person.conpute()
-    sue_ep8_person.conpute()
-    yao_ep8_person.conpute()
+    sue_a23_person.thinkout()
+    sue_ep8_person.thinkout()
+    yao_ep8_person.thinkout()
     apr7 = datetime(2010, 4, 7)
     # save momentunit json
     mmt_mstr_dir = str(temp3_fs)
@@ -223,9 +223,9 @@ def test_lynx_to_person_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     add_epoch_planunit(sue_a23_person, epoch_config)
     add_epoch_planunit(sue_ep8_person, epoch_config)
     add_epoch_planunit(yao_ep8_person, epoch_config)
-    sue_a23_person.conpute()
-    sue_ep8_person.conpute()
-    yao_ep8_person.conpute()
+    sue_a23_person.thinkout()
+    sue_ep8_person.thinkout()
+    yao_ep8_person.thinkout()
     apr7 = datetime(2010, 4, 7)
     # save momentunit json
     mmt_mstr_dir = str(temp3_fs)

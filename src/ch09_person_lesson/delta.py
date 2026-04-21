@@ -127,8 +127,8 @@ class PersonDelta:
     def add_all_different_personatoms(
         self, before_person: PersonUnit, after_person: PersonUnit
     ):
-        before_person.conpute()
-        after_person.conpute()
+        before_person.thinkout()
+        after_person.thinkout()
         self.add_personatoms_personunit_simple_attrs(before_person, after_person)
         self.add_personatoms_contacts(before_person, after_person)
         self.add_personatoms_plans(before_person, after_person)
@@ -886,7 +886,7 @@ def person_built_from_delta_is_valid(
     x_person = personunit_shop() if x_person is None else x_person
     x_person = x_delta.get_atom_edited_person(x_person)
     try:
-        x_person.conpute()
+        x_person.thinkout()
     except Exception:
         return False
     return True

@@ -36,7 +36,7 @@ def test_set_epoch_base_case_dayly_ChangesPersonUnit_agenda():
     bob_person.add_fact(wx.five_rope, wx.five_rope, 500, 1000)
 
     # THEN
-    bob_person.conpute()
+    bob_person.thinkout()
     print(f"{bob_person.planroot.factheirs.keys()=}")
     mop_plan = bob_person.get_plan_obj(wx.mop_rope)
     day_factheir = mop_plan.factheirs.get(wx.day_rope)
@@ -78,7 +78,7 @@ def test_set_epoch_cases_for_yearly_monthday_ChangesPersonUnit_agenda():
 
     # THEN 2
     print("epoch fact changed")
-    bob_person.conpute()
+    bob_person.thinkout()
     mop_plan = bob_person.get_plan_obj(wx.mop_rope)
     day_reasonheir = mop_plan.reasonheirs.get(wx.day_rope)
     day_caseunit = day_reasonheir.cases.get(wx.day_rope)
@@ -102,7 +102,7 @@ def expected_ag_count_fact_set(
     expected: int,
 ) -> dict[RopeTerm, PlanUnit]:
     x_person.add_fact(wx.five_rope, wx.five_rope, fact_lower, fact_upper)
-    x_person.conpute()
+    x_person.thinkout()
     is_as_expected = expected == len(x_person.get_agenda_dict())
     if not is_as_expected:
         display_out_factheir_attrs(mop_plan)

@@ -25,7 +25,7 @@ def test_display_plantree_Scenario0(graphics_bool):
     # a_person = get_7labelJroot_person()
     a_person = get_personunit_with_4_levels()
     # a_person = personunit_v001()
-    a_person.conpute()
+    a_person.thinkout()
     print(f"Person {a_person.planroot.plan_label}: Labels ({len(a_person._plan_dict)})")
 
     # WHEN / THEN
@@ -41,7 +41,7 @@ def test_display_plantree_Scenario1_shows_case_tasks(graphics_bool):
     # a_person = get_7labelJroot_person()
     a_person = get_personunit_laundry_example1()
     # a_person = personunit_v001()
-    a_person.conpute()
+    a_person.thinkout()
     print(f"Person {a_person.planroot.plan_label}: Labels ({len(a_person._plan_dict)})")
 
     # WHEN / THEN

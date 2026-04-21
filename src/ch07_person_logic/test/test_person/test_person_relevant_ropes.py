@@ -188,7 +188,7 @@ def test_PersonUnit_get_inheritor_plan_list_ReturnsObj_Scenario0():
     mon_str = "Mon"
     mon_rope = yao_personunit.make_rope(wk_rope, mon_str)
     yao_personunit.set_plan_obj(planunit_shop(mon_str), wk_rope)
-    yao_personunit.conpute()
+    yao_personunit.thinkout()
 
     # WHEN
     x_inheritor_plan_list = yao_personunit.get_inheritor_plan_list(wk_rope, mon_rope)

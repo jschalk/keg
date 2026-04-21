@@ -13,7 +13,7 @@ def test_agenda_returned_WhenNoReasonsExist():
     sue_person = get_personunit_with_4_levels()
 
     # WHEN
-    sue_person.conpute()
+    sue_person.thinkout()
 
     # THEN
     casa_rope = sue_person.make_l1_rope("casa")
@@ -38,7 +38,7 @@ def test_PersonUnit_reasonheirs_AreInherited_v1():
     assert not casa_plan.get_reasonheir(wk_rope)
 
     # WHEN
-    sue_person.conpute()
+    sue_person.thinkout()
 
     # THEN
     assert casa_plan.get_reasonheir(wk_rope)
@@ -93,7 +93,7 @@ def test_PersonUnit_reasonheirs_AreInheritedTo4LevelsFromRoot():
     cost_str = "cost_quantification"
     cost_rope = a4_person.make_rope(rla_rope, cost_str)
     a4_person.set_plan_obj(planunit_shop(cost_str), parent_rope=cost_rope)
-    a4_person.conpute()
+    a4_person.thinkout()
 
     # THEN
     casa_plan = a4_person.planroot.kids[exx.casa]
@@ -167,7 +167,7 @@ def test_PersonUnit_reasonheirs_AreInheritedTo4LevelsFromLevel2():
     assert cost_plan.reasonheirs == {}
 
     # WHEN
-    a4_person.conpute()
+    a4_person.thinkout()
 
     # THEN
     assert a4_person.planroot.reasonheirs == {}  # casa_wk_built_reasonheir
@@ -402,7 +402,7 @@ def test_PersonUnit_edit_plan_attr_personIsAbleToEdit_active_requisite_AnyPlanIf
     run_rope = sue_person.make_l1_rope(run_str)
     root_rope = sue_person.planroot.get_plan_rope()
     sue_person.set_plan_obj(planunit_shop(run_str), root_rope)
-    sue_person.conpute()  # set tree metrics
+    sue_person.thinkout()  # set tree metrics
     run_plan = sue_person.get_plan_obj(run_rope)
     assert len(run_plan.reasonunits) == 0
 
@@ -471,7 +471,7 @@ def test_PersonUnit_ReasonUnits_PlanUnit_active_InfluencesReasonUnit_reason_acti
         reason_context=sem_jours_rope,
         reason_case=thu_rope,
     )
-    sue_person.conpute()  # set tree metrics
+    sue_person.thinkout()  # set tree metrics
     casa_plan = sue_person.get_plan_obj(casa_rope)
     assert casa_plan.plan_active is False
 
@@ -488,12 +488,12 @@ def test_PersonUnit_ReasonUnits_PlanUnit_active_InfluencesReasonUnit_reason_acti
         reason_requisite_active=True,
     )
     run_plan = sue_person.get_plan_obj(run_rope)
-    sue_person.conpute()
+    sue_person.thinkout()
     assert run_plan.plan_active is False
 
     # Fact: reason_context: (...,sem_jours) fact_state: (...,sem_jours,wed)
     sue_person.add_fact(fact_context=sem_jours_rope, fact_state=wed_rope)
-    sue_person.conpute()
+    sue_person.thinkout()
 
     assert casa_plan.plan_active is False
     assert run_plan.plan_active is False
@@ -502,25 +502,25 @@ def test_PersonUnit_ReasonUnits_PlanUnit_active_InfluencesReasonUnit_reason_acti
     print("before changing fact")
     sue_person.add_fact(fact_context=sem_jours_rope, fact_state=thu_rope)
     print("after changing fact")
-    sue_person.conpute()
+    sue_person.thinkout()
     assert casa_plan.plan_active is True
 
     # THEN
     assert run_plan.plan_active is True
 
 
-def test_PersonUnit_conpute_SetsRationalAttrToFalseWhen_max_tree_traverse_Is1():
+def test_PersonUnit_thinkout_SetsRationalAttrToFalseWhen_max_tree_traverse_Is1():
     # ESTABLISH
     sue_person = get_personunit_with_4_levels()
     assert sue_person.rational is False
-    # sue_person.conpute()
+    # sue_person.thinkout()
     sue_person.rational = True
     assert sue_person.rational
 
     # WHEN
     # hack person to set _max_tree_traverse = 1 (not allowed, should be 2 or more)
     sue_person.max_tree_traverse = 1
-    sue_person.conpute()
+    sue_person.thinkout()
 
     # THEN
     assert not sue_person.rational
@@ -532,7 +532,7 @@ def test_PersonUnit_tree_traverse_count_SetByTotalNumberOfTreeTraversesEndsIsDet
     assert sue_person.max_tree_traverse != 2
 
     # WHEN
-    sue_person.conpute()
+    sue_person.thinkout()
     # for plan_key in sue_person._plan_dict.keys():
     #     print(f"{plan_key=}")
 
@@ -543,12 +543,12 @@ def test_PersonUnit_tree_traverse_count_SetByTotalNumberOfTreeTraversesEndsIsDet
 def test_PersonUnit_tree_traverse_count_CountsTreeTraversesForIrrationalPersons():
     # ESTABLISH irrational person
     sue_person = get_personunit_irrational_example()
-    sue_person.conpute()
+    sue_person.thinkout()
     assert sue_person.tree_traverse_count == 3
 
     # WHEN
     sue_person.set_max_tree_traverse(21)
-    sue_person.conpute()
+    sue_person.thinkout()
 
     # THEN
     assert sue_person.tree_traverse_count == 21

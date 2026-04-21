@@ -323,7 +323,7 @@ def test_add_person_to_ii00122_csv_ReturnsObj():
     print(f"{csv_header=}")
 
     # WHEN
-    bob_person.conpute()
+    bob_person.thinkout()
     x_csv = add_person_to_ii00122_csv(csv_header, bob_person, csv_delimiter)
 
     # THEN
@@ -371,7 +371,7 @@ def test_add_person_to_ii00124_csv_ReturnsObj():
     print(f"{csv_header=}")
 
     # WHEN
-    bob_person.conpute()
+    bob_person.thinkout()
     x_csv = add_person_to_ii00124_csv(csv_header, bob_person, csv_delimiter)
 
     # THEN
@@ -393,7 +393,7 @@ def test_add_person_to_ii00125_csv_ReturnsObj():
     print(f"{csv_header=}")
 
     # WHEN
-    bob_person.conpute()
+    bob_person.thinkout()
     x_csv = add_person_to_ii00125_csv(csv_header, bob_person, csv_delimiter)
 
     # THEN
@@ -427,7 +427,7 @@ def test_add_person_to_ii00126_csv_ReturnsObj():
     print(f"{csv_header=}")
 
     # WHEN
-    bob_person.conpute()
+    bob_person.thinkout()
     x_csv = add_person_to_ii00126_csv(csv_header, bob_person, csv_delimiter)
 
     # THEN
@@ -453,7 +453,7 @@ def test_add_person_to_ii00127_csv_ReturnsObj():
     print(f"{csv_header=}")
 
     # WHEN
-    bob_person.conpute()
+    bob_person.thinkout()
     x_csv = add_person_to_ii00127_csv(csv_header, bob_person, csv_delimiter)
 
     # THEN
@@ -500,7 +500,7 @@ def test_add_person_to_ii00128_csv_ReturnsObj():
     print(f"{csv_header=}")
 
     # WHEN
-    bob_person.conpute()
+    bob_person.thinkout()
     x_csv = add_person_to_ii00128_csv(csv_header, bob_person, csv_delimiter)
 
     # THEN
@@ -568,7 +568,7 @@ def test_add_personunit_to_belief_csv_strs_ReturnsObj():
     ii00129_header = x_ideas.get("ii00129")
 
     # WHEN
-    bob_person.conpute()
+    bob_person.thinkout()
     add_personunit_to_belief_csv_strs(bob_person, x_ideas, csv_delimiter)
 
     # THEN

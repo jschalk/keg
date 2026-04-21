@@ -407,14 +407,14 @@ def test_PersonUnit_add_time_creg_planunit_SyncsWeekDayAndYear_Wednesday_March1_
     print(f"{wed_gogo_want()+1440=}")
     clean_plan = sue_personunit.get_plan_obj(clean_rope)
     sue_personunit.add_fact(creg_rope, creg_rope, yr2000_mar6day, yr2000_mar7day)
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     print(f"{clean_plan.factheirs.get(year_rope).fact_lower=}")
     print(f"{clean_plan.factheirs.get(year_rope).fact_upper=}")
     print(f"{clean_plan.get_reasonheir(year_rope).reason_active=} \n")
 
     # WHEN / THEN
     sue_personunit.add_fact(creg_rope, creg_rope, yr2000_mar6day, yr2000_mar7day)
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     print(f"{clean_plan.factheirs.get(wed_rope).fact_lower=}")
     print(f"{clean_plan.factheirs.get(wed_rope).fact_upper=}")
     print(f"{clean_plan.get_reasonheir(wed_rope).reason_active=}")
@@ -424,7 +424,7 @@ def test_PersonUnit_add_time_creg_planunit_SyncsWeekDayAndYear_Wednesday_March1_
 
     # WHEN / THEN
     sue_personunit.add_fact(creg_rope, creg_rope, yr2000_mar7day, yr2000_mar8day)
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     print(f"{clean_plan.factheirs.get(wed_rope).fact_lower=}")
     print(f"{clean_plan.factheirs.get(wed_rope).fact_upper=}")
     print(f"{clean_plan.get_reasonheir(wed_rope).reason_active=}")
@@ -434,7 +434,7 @@ def test_PersonUnit_add_time_creg_planunit_SyncsWeekDayAndYear_Wednesday_March1_
 
     # WHEN / THEN
     sue_personunit.add_fact(creg_rope, creg_rope, yr2000_mar1day, yr2000_mar2day)
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     print(f"{clean_plan.factheirs.get(wed_rope).fact_lower=}")
     print(f"{clean_plan.factheirs.get(wed_rope).fact_upper=}")
     print(f"{clean_plan.get_reasonheir(wed_rope).reason_active=}")
@@ -444,7 +444,7 @@ def test_PersonUnit_add_time_creg_planunit_SyncsWeekDayAndYear_Wednesday_March1_
 
     # WHEN / THEN
     sue_personunit.add_fact(creg_rope, creg_rope, yr2000_mar2day, yr2000_mar3day)
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     print(f"{clean_plan.factheirs.get(wed_rope).fact_lower=}")
     print(f"{clean_plan.factheirs.get(wed_rope).fact_upper=}")
     print(f"{clean_plan.get_reasonheir(wed_rope).reason_active=}")
@@ -454,7 +454,7 @@ def test_PersonUnit_add_time_creg_planunit_SyncsWeekDayAndYear_Wednesday_March1_
 
     # WHEN / THEN
     sue_personunit.add_fact(creg_rope, creg_rope, yr2000_mar3day, yr2000_mar4day)
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     print(f"{clean_plan.factheirs.get(wed_rope).fact_lower=}")
     print(f"{clean_plan.factheirs.get(wed_rope).fact_upper=}")
     print(f"{clean_plan.get_reasonheir(wed_rope).reason_active=}")
@@ -464,7 +464,7 @@ def test_PersonUnit_add_time_creg_planunit_SyncsWeekDayAndYear_Wednesday_March1_
 
     # WHEN / THEN
     sue_personunit.add_fact(creg_rope, creg_rope, yr2000_mar4day, yr2000_mar5day)
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     print(f"{clean_plan.factheirs.get(wed_rope).fact_lower=}")
     print(f"{clean_plan.factheirs.get(wed_rope).fact_upper=}")
     print(f"{clean_plan.get_reasonheir(wed_rope).reason_active=}")
@@ -474,7 +474,7 @@ def test_PersonUnit_add_time_creg_planunit_SyncsWeekDayAndYear_Wednesday_March1_
 
     # WHEN / THEN
     sue_personunit.add_fact(creg_rope, creg_rope, yr2000_mar5day, yr2000_mar6day)
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     print(f"{clean_plan.factheirs.get(wed_rope).fact_lower=}")
     print(f"{clean_plan.factheirs.get(wed_rope).fact_upper=}")
     print(f"{clean_plan.get_reasonheir(wed_rope).reason_active=}")
@@ -493,7 +493,7 @@ def change_fact_print_attrs(x_personunit: PersonUnit, x_lower: float, x_upper: f
     week_rope = x_personunit.make_rope(creg_rope, kw.week)
     wed_rope = x_personunit.make_rope(week_rope, get_wed())
     x_personunit.add_fact(creg_rope, creg_rope, x_lower, x_upper)
-    x_personunit.conpute()
+    x_personunit.thinkout()
 
     print(f"{clean_plan.factheirs.get(wed_rope).fact_lower=}")
     print(f"{clean_plan.factheirs.get(wed_rope).fact_upper=}")
@@ -551,7 +551,7 @@ def test_PersonUnit_add_time_creg_planunit_SyncsWeekDayAndYear_Thursday_March2_2
     print(f"{wed_gogo_want()+1440=}")
     clean_plan = sue_personunit.get_plan_obj(clean_rope)
     sue_personunit.add_fact(creg_rope, creg_rope, yr2000_mar6day, yr2000_mar7day)
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     print(f"{clean_plan.factheirs.get(year_rope).fact_lower=}")
     print(f"{clean_plan.factheirs.get(year_rope).fact_upper=}")
     print(f"{clean_plan.get_reasonheir(year_rope).reason_active=} \n")

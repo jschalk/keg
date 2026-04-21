@@ -514,7 +514,7 @@ def test_get_plan_view_dict_ReturnsObj_Scenario10_active_hx():
     # ESTABLISH
     hatter_person = get_personunit_irrational_example()
     hatter_person.set_max_tree_traverse(8)
-    hatter_person.conpute()
+    hatter_person.thinkout()
     egg_str = "egg first"
     egg_rope = hatter_person.make_l1_rope(egg_str)
     chicken_str = "chicken first"

@@ -3,211 +3,211 @@
     "abbreviation": "prnmemb", 
     "description": "A person dimen representing Membership data. Keys: person_name, contact_name, group_title. person seed.", 
     "jkeys": {
-      "contact_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
-      "group_title": {"calc_by_conpute": false, "class_type": "TitleTerm", "sqlite_datatype": "TEXT"}, 
-      "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}
+      "contact_name": {"calc_by_thinkout": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
+      "group_title": {"calc_by_thinkout": false, "class_type": "TitleTerm", "sqlite_datatype": "TEXT"}, 
+      "person_name": {"calc_by_thinkout": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}
     }, 
     "jvalues": {
-      "credor_pool"           : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "debtor_pool"           : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "fund_agenda_give"      : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "fund_agenda_ratio_give": { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "fund_agenda_ratio_take": { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "fund_agenda_take"      : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "fund_give"             : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "fund_take"             : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "group_cred_lumen"      : { "calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "group_debt_lumen"      : { "calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL" }
+      "credor_pool"           : { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "debtor_pool"           : { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "fund_agenda_give"      : { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "fund_agenda_ratio_give": { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "fund_agenda_ratio_take": { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "fund_agenda_take"      : { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "fund_give"             : { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "fund_take"             : { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "group_cred_lumen"      : { "calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "group_debt_lumen"      : { "calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "REAL" }
     }
   }, 
   "person_contactunit": {
     "abbreviation": "prncont", 
     "description": "A person dimen representing ParterUnit data. Keys: person_name, contact_name. person seed.", 
     "jkeys": {
-      "contact_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
-      "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}
+      "contact_name": {"calc_by_thinkout": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
+      "person_name": {"calc_by_thinkout": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}
     }, 
     "jvalues": {
-      "contact_cred_lumen"            : { "calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "contact_debt_lumen"            : { "calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "credor_pool"                   : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "debtor_pool"                   : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "fund_agenda_give"              : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "fund_agenda_ratio_give"        : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "fund_agenda_ratio_take"        : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "fund_agenda_take"              : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "fund_give"                     : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "fund_take"                     : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "groupmark"                     : { "calc_by_conpute": true , "class_type": "str"  , "sqlite_datatype": "TEXT" }, 
-      "inallocable_contact_debt_lumen": { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "irrational_contact_debt_lumen" : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }
+      "contact_cred_lumen"            : { "calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "contact_debt_lumen"            : { "calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "credor_pool"                   : { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "debtor_pool"                   : { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "fund_agenda_give"              : { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "fund_agenda_ratio_give"        : { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "fund_agenda_ratio_take"        : { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "fund_agenda_take"              : { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "fund_give"                     : { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "fund_take"                     : { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "groupmark"                     : { "calc_by_thinkout": true , "class_type": "str"  , "sqlite_datatype": "TEXT" }, 
+      "inallocable_contact_debt_lumen": { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "irrational_contact_debt_lumen" : { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }
     }
   }, 
   "person_groupunit": {
     "abbreviation": "prngrou", 
-    "description": "A person dimen representing GroupUnit data. Keys: person_name, group_title. person conpute.", 
+    "description": "A person dimen representing GroupUnit data. Keys: person_name, group_title. person thinkout.", 
     "jkeys": {
-      "group_title": {"calc_by_conpute": true, "class_type": "TitleTerm", "sqlite_datatype": "TEXT"}, 
-      "person_name": {"calc_by_conpute": true, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}
+      "group_title": {"calc_by_thinkout": true, "class_type": "TitleTerm", "sqlite_datatype": "TEXT"}, 
+      "person_name": {"calc_by_thinkout": true, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}
     }, 
     "jvalues": {
-      "credor_pool"     : { "calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "debtor_pool"     : { "calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "fund_agenda_give": { "calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "fund_agenda_take": { "calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "fund_give"       : { "calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "fund_grain"      : { "calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "fund_take"       : { "calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL" }
+      "credor_pool"     : { "calc_by_thinkout": true, "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "debtor_pool"     : { "calc_by_thinkout": true, "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "fund_agenda_give": { "calc_by_thinkout": true, "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "fund_agenda_take": { "calc_by_thinkout": true, "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "fund_give"       : { "calc_by_thinkout": true, "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "fund_grain"      : { "calc_by_thinkout": true, "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "fund_take"       : { "calc_by_thinkout": true, "class_type": "float", "sqlite_datatype": "REAL" }
     }
   }, 
   "person_plan_awardunit": {
     "abbreviation": "prnawar", 
     "description": "A person dimen representing AwardUnit data. Keys: person_name, plan_rope, awardee_title. person seed.", 
     "jkeys": {
-      "awardee_title": {"calc_by_conpute": false, "class_type": "TitleTerm", "sqlite_datatype": "TEXT"}, 
-      "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
-      "plan_rope": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
+      "awardee_title": {"calc_by_thinkout": false, "class_type": "TitleTerm", "sqlite_datatype": "TEXT"}, 
+      "person_name": {"calc_by_thinkout": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
+      "plan_rope": {"calc_by_thinkout": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
     }, 
     "jvalues": {
-      "fund_give" : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "fund_take" : { "calc_by_conpute": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "give_force": { "calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL" }, 
-      "knot"      : { "calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "TEXT" }, 
-      "take_force": { "calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL" }
+      "fund_give" : { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "fund_take" : { "calc_by_thinkout": true , "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "give_force": { "calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "REAL" }, 
+      "knot"      : { "calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "TEXT" }, 
+      "take_force": { "calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "REAL" }
     }
   }, 
   "person_plan_factunit": {
     "abbreviation": "prnfact", 
     "description": "A person dimen representing FactUnit data. Keys: person_name, plan_rope, fact_context. person seed.", 
     "jkeys": {
-      "fact_context": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}, 
-      "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
-      "plan_rope": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
+      "fact_context": {"calc_by_thinkout": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}, 
+      "person_name": {"calc_by_thinkout": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
+      "plan_rope": {"calc_by_thinkout": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
     }, 
     "jvalues": {
-      "fact_lower": {"calc_by_conpute": false, "class_type": "FactNum", "sqlite_datatype": "REAL"}, 
-      "fact_state": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}, 
-      "fact_upper": {"calc_by_conpute": false, "class_type": "FactNum", "sqlite_datatype": "REAL"}, 
-      "knot": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "TEXT"}
+      "fact_lower": {"calc_by_thinkout": false, "class_type": "FactNum", "sqlite_datatype": "REAL"}, 
+      "fact_state": {"calc_by_thinkout": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}, 
+      "fact_upper": {"calc_by_thinkout": false, "class_type": "FactNum", "sqlite_datatype": "REAL"}, 
+      "knot": {"calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "TEXT"}
     }
   }, 
   "person_plan_healerunit": {
     "abbreviation": "prnheal", 
     "description": "A person dimen representing HealerUnit data. Keys: person_name, plan_rope, healer_name. person seed.", 
     "jkeys": {
-      "healer_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
-      "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
-      "plan_rope": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
+      "healer_name": {"calc_by_thinkout": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
+      "person_name": {"calc_by_thinkout": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
+      "plan_rope": {"calc_by_thinkout": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
     }, 
     "jvalues": {
-      "knot": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "TEXT"}
+      "knot": {"calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "TEXT"}
     }
   }, 
   "person_plan_laborunit": {
     "abbreviation": "prnlabo", 
     "description": "A person dimen representing HealerUnit data. Keys: person_name, plan_rope, labor_title. person seed.", 
     "jkeys": {
-      "labor_title": {"calc_by_conpute": false, "class_type": "TitleTerm", "sqlite_datatype": "TEXT"}, 
-      "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
-      "plan_rope": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
+      "labor_title": {"calc_by_thinkout": false, "class_type": "TitleTerm", "sqlite_datatype": "TEXT"}, 
+      "person_name": {"calc_by_thinkout": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
+      "plan_rope": {"calc_by_thinkout": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
     }, 
     "jvalues": {
-      "knot": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "TEXT"}, 
-      "person_name_is_workforce": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
-      "solo": {"calc_by_conpute": false, "class_type": "int", "sqlite_datatype": "INTEGER"}
+      "knot": {"calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "TEXT"}, 
+      "person_name_is_workforce": {"calc_by_thinkout": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "solo": {"calc_by_thinkout": false, "class_type": "int", "sqlite_datatype": "INTEGER"}
     }
   }, 
   "person_plan_reason_caseunit": {
     "abbreviation": "prncase", 
     "description": "A person dimen representing CaseUnit data. Keys: person_name, plan_rope, reason_context, reason_state. person seed.", 
     "jkeys": {
-      "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
-      "plan_rope": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}, 
-      "reason_context": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}, 
-      "reason_state": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
+      "person_name": {"calc_by_thinkout": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
+      "plan_rope": {"calc_by_thinkout": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}, 
+      "reason_context": {"calc_by_thinkout": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}, 
+      "reason_state": {"calc_by_thinkout": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
     }, 
     "jvalues": {
-      "case_active": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
-      "case_task": {"calc_by_conpute": true, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
-      "knot": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "TEXT"}, 
-      "reason_divisor": {"calc_by_conpute": false, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
-      "reason_lower": {"calc_by_conpute": false, "class_type": "ReasonNum", "sqlite_datatype": "REAL"}, 
-      "reason_upper": {"calc_by_conpute": false, "class_type": "ReasonNum", "sqlite_datatype": "REAL"}
+      "case_active": {"calc_by_thinkout": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "case_task": {"calc_by_thinkout": true, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
+      "knot": {"calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "TEXT"}, 
+      "reason_divisor": {"calc_by_thinkout": false, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "reason_lower": {"calc_by_thinkout": false, "class_type": "ReasonNum", "sqlite_datatype": "REAL"}, 
+      "reason_upper": {"calc_by_thinkout": false, "class_type": "ReasonNum", "sqlite_datatype": "REAL"}
     }
   }, 
   "person_plan_reasonunit": {
     "abbreviation": "prnreas", 
     "description": "A person dimen representing ReasonUnit data. Keys: person_name, plan_rope, reason_context. person seed.", 
     "jkeys": {
-      "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
-      "plan_rope": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}, 
-      "reason_context": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
+      "person_name": {"calc_by_thinkout": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
+      "plan_rope": {"calc_by_thinkout": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}, 
+      "reason_context": {"calc_by_thinkout": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
     }, 
     "jvalues": {
-      "active_requisite": {"calc_by_conpute": false, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
-      "knot": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "TEXT"}, 
-      "parent_heir_active": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
-      "reason_active": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
-      "reason_task": {"calc_by_conpute": true, "class_type": "bool", "sqlite_datatype": "INTEGER"}
+      "active_requisite": {"calc_by_thinkout": false, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
+      "knot": {"calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "TEXT"}, 
+      "parent_heir_active": {"calc_by_thinkout": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "reason_active": {"calc_by_thinkout": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "reason_task": {"calc_by_thinkout": true, "class_type": "bool", "sqlite_datatype": "INTEGER"}
     }
   }, 
   "person_planunit": {
     "abbreviation": "prnplan", 
     "description": "A person dimen representing PlanUnit data. Keys: person_name, plan_rope. person seed.", 
     "jkeys": {
-      "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
-      "plan_rope": {"calc_by_conpute": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
+      "person_name": {"calc_by_thinkout": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
+      "plan_rope": {"calc_by_thinkout": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
     }, 
     "jvalues": {
-      "addin": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "all_contact_cred": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
-      "all_contact_debt": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
-      "begin": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "close": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "denom": {"calc_by_conpute": false, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
-      "descendant_pledge_count": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
-      "fund_cease": {"calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "fund_grain": {"calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "fund_onset": {"calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "fund_ratio": {"calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "gogo_calc": {"calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "gogo_want": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "healerunit_ratio": {"calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "knot": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "TEXT"}, 
-      "morph": {"calc_by_conpute": false, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
-      "numor": {"calc_by_conpute": false, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
-      "plan_active": {"calc_by_conpute": true, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
-      "plan_task": {"calc_by_conpute": true, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
-      "pledge": {"calc_by_conpute": false, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
-      "problem_bool": {"calc_by_conpute": false, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
-      "range_evaluated": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
-      "star": {"calc_by_conpute": false, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
-      "stop_calc": {"calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "stop_want": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "tree_level": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}
+      "addin": {"calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "all_contact_cred": {"calc_by_thinkout": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "all_contact_debt": {"calc_by_thinkout": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "begin": {"calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "close": {"calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "denom": {"calc_by_thinkout": false, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "descendant_pledge_count": {"calc_by_thinkout": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "fund_cease": {"calc_by_thinkout": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "fund_grain": {"calc_by_thinkout": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "fund_onset": {"calc_by_thinkout": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "fund_ratio": {"calc_by_thinkout": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "gogo_calc": {"calc_by_thinkout": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "gogo_want": {"calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "healerunit_ratio": {"calc_by_thinkout": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "knot": {"calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "TEXT"}, 
+      "morph": {"calc_by_thinkout": false, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
+      "numor": {"calc_by_thinkout": false, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "plan_active": {"calc_by_thinkout": true, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
+      "plan_task": {"calc_by_thinkout": true, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
+      "pledge": {"calc_by_thinkout": false, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
+      "problem_bool": {"calc_by_thinkout": false, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
+      "range_evaluated": {"calc_by_thinkout": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "star": {"calc_by_thinkout": false, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "stop_calc": {"calc_by_thinkout": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "stop_want": {"calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "tree_level": {"calc_by_thinkout": true, "class_type": "int", "sqlite_datatype": "INTEGER"}
     }
   }, 
   "personunit": {
     "abbreviation": "prnunit", 
     "description": "A person dimen representing PersonUnit data. Keys: person_name. person seed.", 
     "jkeys": {
-      "person_name": {"calc_by_conpute": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}
+      "person_name": {"calc_by_thinkout": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}
     }, 
     "jvalues": {
-      "credor_respect": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "debtor_respect": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "fund_grain": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "fund_pool": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "keeps_buildable": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
-      "keeps_justified": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
-      "knot": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "TEXT"}, 
-      "mana_grain": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "max_tree_traverse": {"calc_by_conpute": false, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
-      "offtrack_fund": {"calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "rational": {"calc_by_conpute": true, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
-      "respect_grain": {"calc_by_conpute": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "sum_healerunit_plans_fund_total": {"calc_by_conpute": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
-      "tree_traverse_count": {"calc_by_conpute": true, "class_type": "int", "sqlite_datatype": "INTEGER"}
+      "credor_respect": {"calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "debtor_respect": {"calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "fund_grain": {"calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "fund_pool": {"calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "keeps_buildable": {"calc_by_thinkout": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "keeps_justified": {"calc_by_thinkout": true, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "knot": {"calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "TEXT"}, 
+      "mana_grain": {"calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "max_tree_traverse": {"calc_by_thinkout": false, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
+      "offtrack_fund": {"calc_by_thinkout": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "rational": {"calc_by_thinkout": true, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
+      "respect_grain": {"calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "sum_healerunit_plans_fund_total": {"calc_by_thinkout": true, "class_type": "float", "sqlite_datatype": "REAL"}, 
+      "tree_traverse_count": {"calc_by_thinkout": true, "class_type": "int", "sqlite_datatype": "INTEGER"}
     }
   }
 }

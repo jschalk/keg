@@ -237,7 +237,7 @@ def get_gcal_day_punch_from_personunit(
     epoch_label: LabelTerm = None,
     group_title: GroupTitle = None,
 ) -> str:
-    """parameter x_person is assumed to have already conputed."""
+    """parameter x_person is assumed to have already thinkoutd."""
     moment_rope = x_person.planroot.get_plan_rope()
     x_str = f"Day Report for {x_person.person_name} in the {moment_rope} Moment\n"
     if not epoch_label:

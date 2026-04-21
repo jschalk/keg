@@ -327,17 +327,17 @@ def check_person_desc_str(
 ):
     if keyword in config_args:
         keyword_config = config_args.get(keyword)
-        calc_by_conpute_value = keyword_config.get(kw.calc_by_conpute)
-        assert_fail_str = f"{keyword=} {description=} {calc_by_conpute_value=} "
+        calc_by_thinkout_value = keyword_config.get(kw.calc_by_thinkout)
+        assert_fail_str = f"{keyword=} {description=} {calc_by_thinkout_value=} "
         # print(f"{keyword} {assert_fail_str=}")
-        conpute_str = f", {src_label} {kw.conpute}"
+        thinkout_str = f", {src_label} {kw.thinkout}"
         seed_str = f", {src_label} seed"
-        if keyword_config.get(kw.calc_by_conpute):
-            assert conpute_str in description, assert_fail_str
+        if keyword_config.get(kw.calc_by_thinkout):
+            assert thinkout_str in description, assert_fail_str
             assert seed_str not in description, assert_fail_str
         else:
             assert seed_str in description, assert_fail_str
-            assert conpute_str not in description, assert_fail_str
+            assert thinkout_str not in description, assert_fail_str
 
 
 def check_mmtunit_desc_str(

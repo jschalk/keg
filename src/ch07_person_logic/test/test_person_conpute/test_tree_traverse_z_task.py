@@ -14,7 +14,7 @@ from ch07_person_logic.test._util.ch07_examples import (
 from ref.keywords import ExampleStrs as exx
 
 
-def test_PersonUnit_conpute_Sets_active_WhenFactSaysNo():
+def test_PersonUnit_thinkout_Sets_active_WhenFactSaysNo():
     # ESTABLISH
     sue_personunit = get_personunit_with_4_levels_and_2reasons()
     wk_str = "sem_jours"
@@ -29,7 +29,7 @@ def test_PersonUnit_conpute_Sets_active_WhenFactSaysNo():
 
     # WHEN
     sue_personunit.add_fact(fact_context=wk_rope, fact_state=sun_rope)
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
 
     # THEN
     assert sue_personunit._plan_dict != {}
@@ -39,7 +39,7 @@ def test_PersonUnit_conpute_Sets_active_WhenFactSaysNo():
     assert sue_personunit.get_plan_obj(casa_rope).plan_active is False
 
 
-def test_PersonUnit_conpute_Sets_active_WhenFactModifies():
+def test_PersonUnit_thinkout_Sets_active_WhenFactModifies():
     # ESTABLISH
     sue_personunit = get_personunit_with_4_levels_and_2reasons()
     wk_str = "sem_jours"
@@ -52,7 +52,7 @@ def test_PersonUnit_conpute_Sets_active_WhenFactModifies():
     sue_personunit.add_fact(fact_context=wk_rope, fact_state=sun_rope)
 
     # THEN
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     assert sue_personunit._plan_dict
     assert len(sue_personunit._plan_dict) == 17
     assert sue_personunit._plan_dict.get(casa_rope).plan_active is False
@@ -65,7 +65,7 @@ def test_PersonUnit_conpute_Sets_active_WhenFactModifies():
     sue_personunit.add_fact(fact_context=nation_rope, fact_state=usa_rope)
 
     # THEN
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     assert sue_personunit._plan_dict
     assert len(sue_personunit._plan_dict) == 17
     assert sue_personunit._plan_dict.get(casa_rope).plan_active
@@ -76,13 +76,13 @@ def test_PersonUnit_conpute_Sets_active_WhenFactModifies():
     sue_personunit.add_fact(fact_context=nation_rope, fact_state=france_rope)
 
     # THEN
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     assert sue_personunit._plan_dict
     assert len(sue_personunit._plan_dict) == 17
     assert sue_personunit._plan_dict.get(casa_rope).plan_active is False
 
 
-def test_PersonUnit_conpute_Sets_plan_dict():
+def test_PersonUnit_thinkout_Sets_plan_dict():
     # ESTABLISH
     sue_personunit = get_personunit_with_4_levels_and_2reasons()
     wk_str = "sem_jours"
@@ -102,7 +102,7 @@ def test_PersonUnit_conpute_Sets_plan_dict():
     print(f"{sue_personunit.person_name=} {len(sue_personunit.planroot.factunits)=}")
     # print(f"{sue_personunit.planroot.factunits=}")
 
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     assert sue_personunit._plan_dict
     assert len(sue_personunit._plan_dict) == 17
 
@@ -146,7 +146,7 @@ def test_PersonUnit_conpute_Sets_plan_dict():
 
     # WHEN
     sue_personunit.add_fact(fact_context=nation_rope, fact_state=oregon_rope)
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
 
     # THEN
     casa_plan = sue_personunit._plan_dict.get(casa_rope)
@@ -213,10 +213,10 @@ def test_PersonUnit_conpute_Sets_plan_dict():
 #     return bool_x
 
 
-def test_PersonUnit_conpute_CalculatesRangeAttributes():
+def test_PersonUnit_thinkout_CalculatesRangeAttributes():
     # ESTABLISH
     sue_personunit = get_personunit_with7am_clean_table_reason()
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     house_str = "houseadministration"
     house_rope = sue_personunit.make_l1_rope(house_str)
     clean_str = "clean table"
@@ -242,7 +242,7 @@ def test_PersonUnit_conpute_CalculatesRangeAttributes():
     )
 
     # THEN
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     assert sue_personunit._plan_dict.get(clean_rope).plan_active
 
     # WHEN
@@ -261,7 +261,7 @@ def test_PersonUnit_conpute_CalculatesRangeAttributes():
     # sue_personunit.planroot.kids["houseadministration"].kids[clean_str].plan_active = None
 
     # THEN
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     assert sue_personunit._plan_dict.get(clean_rope).plan_active is False
 
 
@@ -278,7 +278,7 @@ def test_PersonUnit_get_agenda_dict_ReturnsObj_WithSinglePledge():
     assert len(pledge_plans) == 1
 
 
-def test_PersonUnit_conpute_SetsData_personunit_v001():
+def test_PersonUnit_thinkout_SetsData_personunit_v001():
     # ESTABLISH
     yao_personunit = personunit_v001()
     print(f"{yao_personunit.get_reason_contexts()=}")
@@ -316,7 +316,7 @@ def test_PersonUnit_conpute_SetsData_personunit_v001():
     #     print(f"{fact=}")
 
     # WHEN
-    yao_personunit.conpute()
+    yao_personunit.thinkout()
 
     # THEN
     # print(f"{str(type(plan))=}")
@@ -344,13 +344,13 @@ def test_PersonUnit_conpute_SetsData_personunit_v001():
     mon_str = "Mon"
     mon_rope = yao_personunit.make_rope(wk_rope, mon_str)
     yao_personunit.add_fact(fact_context=wk_rope, fact_state=mon_rope)
-    yao_personunit.conpute()
+    yao_personunit.thinkout()
 
     # THEN
     assert yao_personunit._plan_dict.get(laundry_rope).plan_active is False
 
 
-def test_PersonUnit_conpute_OptionWeekJoursReturnsObj_personunit_v001():
+def test_PersonUnit_thinkout_OptionWeekJoursReturnsObj_personunit_v001():
     # ESTABLISH
     yao_personunit = personunit_v001()
     hr_number_str = "hr_number"
@@ -390,7 +390,7 @@ def test_PersonUnit_conpute_OptionWeekJoursReturnsObj_personunit_v001():
         fact_context=yr_mon_rope, fact_state=yr_mon_rope, fact_lower=0, fact_upper=1000
     )
 
-    yao_personunit.conpute()
+    yao_personunit.thinkout()
     missing_facts = yao_personunit.get_missing_fact_reason_contexts()
     # for missing_fact, count in missing_facts.items():
     #     print(f"{missing_fact=} {count=}")
@@ -445,7 +445,7 @@ def test_PersonUnit_conpute_OptionWeekJoursReturnsObj_personunit_v001():
     assert from_list_get_active(bird_rope, plan_dict) is False
 
 
-def test_PersonUnit_conpute_SetsPlanUnitsActiveWithEvery6WeeksReason_personunit_v001():
+def test_PersonUnit_thinkout_SetsPlanUnitsActiveWithEvery6WeeksReason_personunit_v001():
     # ESTABLISH
     yao_personunit = personunit_v001()
     hr_num_str = "hr_number"
@@ -460,7 +460,7 @@ def test_PersonUnit_conpute_SetsPlanUnitsActiveWithEvery6WeeksReason_personunit_
     yao_personunit.add_fact(
         fact_context=min_rope, fact_state=min_rope, fact_lower=0, fact_upper=59
     )
-    yao_personunit.conpute()
+    yao_personunit.thinkout()
 
     # THEN
     ced_wk_reason_context = yao_personunit.make_l1_rope("ced_wk")
@@ -514,7 +514,7 @@ def test_PersonUnit_conpute_SetsPlanUnitsActiveWithEvery6WeeksReason_personunit_
         f"Nation set and also fact set: {ced_wk_reason_context=} with {ced_wk_reason_lower=} and {ced_wk_reason_lower=}"
     )
     print(f"{yao_personunit.planroot.factunits=}")
-    yao_personunit.conpute()
+    yao_personunit.thinkout()
 
     # THEN
     wk_str = "ced_wk"
@@ -530,12 +530,12 @@ def test_PersonUnit_conpute_SetsPlanUnitsActiveWithEvery6WeeksReason_personunit_
     assert wk_case.reason_divisor == 6 and wk_case.reason_lower == 1
 
 
-def test_PersonUnit_conpute_SetsAttr_PlanUnits_active_personunit_v001():
+def test_PersonUnit_thinkout_SetsAttr_PlanUnits_active_personunit_v001():
     # ESTABLISH
     yao_personunit = personunit_v001()
 
     # WHEN
-    yao_personunit.conpute()
+    yao_personunit.thinkout()
 
     # THEN
     print(f"{len(yao_personunit._plan_dict)=}")
@@ -571,7 +571,7 @@ def test_PersonUnit_conpute_SetsAttr_PlanUnits_active_personunit_v001():
     )
 
 
-def test_PersonUnit_conpute_EveryTwoMonthReturnsObj_personunit_v001():
+def test_PersonUnit_thinkout_EveryTwoMonthReturnsObj_personunit_v001():
     # ESTABLISH
     yao_personunit = personunit_v001()
     minute_str = "jour_minute"
@@ -621,7 +621,7 @@ def test_PersonUnit_conpute_EveryTwoMonthReturnsObj_personunit_v001():
     yao_personunit.add_fact(
         fact_context=ced_wk, fact_state=ced_wk, fact_lower=0, fact_upper=4
     )
-    yao_personunit.conpute()
+    yao_personunit.thinkout()
 
     # THEN
     print(f"{len(plan_dict)=}")
@@ -629,25 +629,25 @@ def test_PersonUnit_conpute_EveryTwoMonthReturnsObj_personunit_v001():
     assert from_list_get_active(mat_rope, yao_personunit._plan_dict)
 
 
-def test_PersonUnit_conpute_SetsEmpty_sum_healerunit_plans_fund_total():
+def test_PersonUnit_thinkout_SetsEmpty_sum_healerunit_plans_fund_total():
     # ESTABLISH
     sue_personunit = personunit_shop("Sue")
     assert sue_personunit.sum_healerunit_plans_fund_total == 0
     assert sue_personunit._keep_dict == {}
 
     # WHEN
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
 
     # THEN
     assert sue_personunit.sum_healerunit_plans_fund_total == 0
     assert sue_personunit._keep_dict == {}
 
 
-def test_PersonUnit_conpute_Sets_sum_healerunit_plans_fund_total(graphics_bool):
+def test_PersonUnit_thinkout_Sets_sum_healerunit_plans_fund_total(graphics_bool):
     # ESTABLISH
     sue_personunit = get_personunit_with_4_levels_and_2reasons()
     sue_personunit.add_contactunit("Sue")
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     nation_rope = sue_personunit.make_l1_rope("nation")
     usa_rope = sue_personunit.make_rope(nation_rope, "USA")
     oregon_rope = sue_personunit.make_rope(usa_rope, "Oregon")
@@ -661,7 +661,7 @@ def test_PersonUnit_conpute_Sets_sum_healerunit_plans_fund_total(graphics_bool):
     assert oregon_plan.healerunit_ratio == 0
 
     # WHEN
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     # THEN
     assert (
         sue_personunit.sum_healerunit_plans_fund_total
@@ -676,7 +676,7 @@ def test_PersonUnit_conpute_Sets_sum_healerunit_plans_fund_total(graphics_bool):
     sue_personunit.edit_plan_attr(mon_rope, healerunit=sue_healerunit)
     mon_plan = sue_personunit.get_plan_obj(mon_rope)
     # print(f"{mon_plan.problem_bool=} {mon_plan.fund_ratio=}")
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     # THEN
     assert (
         sue_personunit.sum_healerunit_plans_fund_total
@@ -697,7 +697,7 @@ def test_PersonUnit_conpute_Sets_sum_healerunit_plans_fund_total(graphics_bool):
     # sat_rope = sue_personunit.make_rope(wk_rope, "Sat")
     # sat_plan = sue_personunit.get_plan_obj(sat_rope)
     # print(f"{sat_plan.problem_bool=} {sat_plan.fund_ratio=}")
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
 
     # THEN
     assert (
@@ -716,7 +716,7 @@ def test_PersonUnit_conpute_Sets_sum_healerunit_plans_fund_total(graphics_bool):
     sue_personunit.edit_plan_attr(wk_rope, healerunit=sue_healerunit)
     wk_plan = sue_personunit.get_plan_obj(wk_rope)
     print(f"{wk_plan.plan_label=} {wk_plan.problem_bool=} {wk_plan.fund_ratio=}")
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     # THEN
     display_plantree(sue_personunit, "Keep", graphics_bool)
     assert sue_personunit.sum_healerunit_plans_fund_total == 0
@@ -725,11 +725,11 @@ def test_PersonUnit_conpute_Sets_sum_healerunit_plans_fund_total(graphics_bool):
     assert tue_plan.healerunit_ratio == 0
 
 
-def test_PersonUnit_conpute_Sets_keep_dict_v1(graphics_bool):
+def test_PersonUnit_thinkout_Sets_keep_dict_v1(graphics_bool):
     # ESTABLISH
     sue_personunit = get_personunit_with_4_levels_and_2reasons()
     sue_personunit.add_contactunit("Sue")
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     nation_rope = sue_personunit.make_l1_rope("nation")
     usa_rope = sue_personunit.make_rope(nation_rope, "USA")
     oregon_rope = sue_personunit.make_rope(usa_rope, "Oregon")
@@ -741,7 +741,7 @@ def test_PersonUnit_conpute_Sets_keep_dict_v1(graphics_bool):
     assert sue_personunit._keep_dict.get(oregon_rope) is None
 
     # WHEN
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     # THEN
     assert len(sue_personunit._keep_dict) == 1
     assert sue_personunit._keep_dict.get(oregon_rope) is not None
@@ -753,7 +753,7 @@ def test_PersonUnit_conpute_Sets_keep_dict_v1(graphics_bool):
     sue_personunit.edit_plan_attr(mon_rope, healerunit=sue_healerunit)
     # mon_plan = sue_personunit.get_plan_obj(mon_rope)
     # print(f"{mon_plan.problem_bool=} {mon_plan.fund_ratio=}")
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     # THEN
     assert len(sue_personunit._keep_dict) == 2
     assert sue_personunit._keep_dict.get(oregon_rope) is not None
@@ -767,7 +767,7 @@ def test_PersonUnit_conpute_Sets_keep_dict_v1(graphics_bool):
     # sat_rope = sue_personunit.make_rope(wk_rope, "Sat")
     # sat_plan = sue_personunit.get_plan_obj(sat_rope)
     # print(f"{sat_plan.problem_bool=} {sat_plan.fund_ratio=}")
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
 
     # THEN
     assert len(sue_personunit._keep_dict) == 3
@@ -779,14 +779,14 @@ def test_PersonUnit_conpute_Sets_keep_dict_v1(graphics_bool):
     sue_personunit.edit_plan_attr(wk_rope, healerunit=sue_healerunit)
     wk_plan = sue_personunit.get_plan_obj(wk_rope)
     print(f"{wk_plan.plan_label=} {wk_plan.problem_bool=} {wk_plan.fund_ratio=}")
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     # THEN
     display_plantree(sue_personunit, "Keep", graphics_bool)
     assert len(sue_personunit._keep_dict) == 0
     assert sue_personunit._keep_dict == {}
 
 
-def test_PersonUnit_conpute_Sets_healers_dict():
+def test_PersonUnit_thinkout_Sets_healers_dict():
     # ESTABLISH
     sue_personunit = get_personunit_with_4_levels_and_2reasons()
     sue_personunit.add_contactunit(exx.sue)
@@ -794,7 +794,7 @@ def test_PersonUnit_conpute_Sets_healers_dict():
     assert sue_personunit._healers_dict == {}
 
     # WHEN
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     # THEN
     assert sue_personunit._healers_dict == {}
 
@@ -813,7 +813,7 @@ def test_PersonUnit_conpute_Sets_healers_dict():
     assert sue_personunit._healers_dict == {}
 
     # WHEN
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
 
     # THEN
     assert len(sue_personunit._healers_dict) == 2
@@ -823,7 +823,7 @@ def test_PersonUnit_conpute_Sets_healers_dict():
     assert sue_personunit._healers_dict.get(exx.sue) == {oregon_keep_rope: oregon_plan}
 
 
-def test_PersonUnit_conpute_Sets_keeps_buildable_True():
+def test_PersonUnit_thinkout_Sets_keeps_buildable_True():
     # ESTABLISH
     sue_personunit = get_personunit_with_4_levels_and_2reasons()
     sue_personunit.add_contactunit(exx.sue)
@@ -831,7 +831,7 @@ def test_PersonUnit_conpute_Sets_keeps_buildable_True():
     assert sue_personunit.keeps_buildable is False
 
     # WHEN
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     # THEN
     assert sue_personunit.keeps_buildable
 
@@ -849,12 +849,12 @@ def test_PersonUnit_conpute_Sets_keeps_buildable_True():
     sue_personunit.edit_plan_attr(wk_rope, problem_bool=True, healerunit=bob_healerunit)
 
     # WHEN
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     # THEN
     assert sue_personunit.keeps_buildable
 
 
-def test_PersonUnit_conpute_Sets_keeps_buildable_False():
+def test_PersonUnit_thinkout_Sets_keeps_buildable_False():
     # ESTABLISH
     sue_personunit = get_personunit_with_4_levels_and_2reasons()
     sue_personunit.add_contactunit(exx.sue)
@@ -862,7 +862,7 @@ def test_PersonUnit_conpute_Sets_keeps_buildable_False():
     assert sue_personunit.keeps_buildable is False
 
     # WHEN
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     # THEN
     assert sue_personunit.keeps_buildable
 
@@ -880,6 +880,6 @@ def test_PersonUnit_conpute_Sets_keeps_buildable_False():
     assert sue_personunit.keeps_buildable
 
     # WHEN
-    sue_personunit.conpute()
+    sue_personunit.thinkout()
     # THEN
     assert sue_personunit.keeps_buildable is False

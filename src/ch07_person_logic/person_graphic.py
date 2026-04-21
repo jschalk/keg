@@ -122,7 +122,7 @@ def display_plantree(
 ) -> plotly_Figure:
     """Mode can be None, case_task, Keep"""
 
-    x_person.conpute()
+    x_person.thinkout()
     x_fig = plotly_Figure()
     source_y = 0
     trace_list = []
