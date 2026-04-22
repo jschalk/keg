@@ -1,5 +1,10 @@
 from ch07_person_logic.person_main import personunit_shop
-from ch13_time.epoch_main import add_epoch_planunit, get_default_epoch_config_dict
+from ch13_time.epoch_main import (
+    add_epoch_planunit,
+    get_default_epoch_config_dict,
+    get_epoch_min_from_dt,
+    timeshoe_shop,
+)
 from ch13_time.epoch_reason import set_epoch_base_case_dayly
 from ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
 from ch20_kpi.gcalendar import (
@@ -20,11 +25,15 @@ def test_DayEvents_Exists():
     assert not x_dayevent.item_rank
     assert not x_dayevent.day_min_lower
     assert not x_dayevent.day_min_upper
+    assert not x_dayevent.clock_lower
+    assert not x_dayevent.clock_upper
     assert set(x_dayevent.__dict__.keys()) == {
-        "plan",
+        kw.plan,
         "item_rank",
         "day_min_lower",
         "day_min_upper",
+        f"{kw.clock}_lower",
+        f"{kw.clock}_upper",
     }
 
 
@@ -69,6 +78,8 @@ def test_get_dayevents_ReturnsObj_Scenario1_OneElementList():
     assert mop_dayevent.item_rank == 1
     assert mop_dayevent.day_min_lower == 600
     assert mop_dayevent.day_min_upper == 690
+    assert mop_dayevent.clock_lower == "10:00am"
+    assert mop_dayevent.clock_upper == "11:30am"
 
 
 def test_gcal_readable_percent_ReturnsObj():
@@ -98,11 +109,11 @@ def test_get_gcal_all_agenda_str_ReturnsObj_Scenario1_1AllDayPledge():
     epoch_label = default_epoch_config.get(kw.epoch_label)
     add_epoch_planunit(bob_person, default_epoch_config)
     bob_person.add_plan(wx.mop_rope, pledge=True, star=1)
-    apr7 = datetime(2010, 5, 7, 9)
-    print(f"{apr7=}")
+    apr7_dt = datetime(2010, 5, 7, 9)
+    print(f"{apr7_dt=}")
 
     # WHEN
-    bob_agenda_str = get_gcal_all_agenda_str(bob_person, epoch_label, day=apr7)
+    bob_agenda_str = get_gcal_all_agenda_str(bob_person, epoch_label, apr7_dt)
 
     # THEN
     expected_gcal_agenda_list_str = f"""All Agenda Items\n1. {wx.mop_str} (100%)"""
@@ -118,11 +129,11 @@ def test_get_gcal_all_agenda_str_ReturnsObj_Scenario2_3AllDayPledge():
     bob_person.add_plan(wx.mop_rope, pledge=True, star=2)
     bob_person.add_plan(wx.sweep_rope, pledge=True, star=1)
     bob_person.add_plan(wx.scrub_rope, pledge=True, star=1)
-    apr7 = datetime(2010, 5, 7, 9)
-    print(f"{apr7=}")
+    apr7_dt = datetime(2010, 5, 7, 9)
+    print(f"{apr7_dt=}")
 
     # WHEN
-    bob_agenda_str = get_gcal_all_agenda_str(bob_person, epoch_label, day=apr7)
+    bob_agenda_str = get_gcal_all_agenda_str(bob_person, epoch_label, apr7_dt)
 
     # THEN
     expected_gcal_agenda_list_str = f"""All Agenda Items\n1. {wx.mop_str} (50%)
@@ -142,14 +153,14 @@ def test_get_gcal_all_agenda_str_ReturnsObj_Scenario3_OneEpoch_pledge():
     default_epoch_label = default_epoch_config.get(kw.epoch_label)
     add_epoch_planunit(bob_person, default_epoch_config)
     set_epoch_base_case_dayly(bob_person, wx.mop_rope, default_epoch_label, 600, 90)
-    apr7 = datetime(2010, 5, 7)
-    print(f"{apr7=}")
+    apr7_dt = datetime(2010, 5, 7)
+    print(f"{apr7_dt=}")
 
     # WHEN
-    bob_agenda_str = get_gcal_all_agenda_str(bob_person, default_epoch_label, apr7)
+    bob_agenda_str = get_gcal_all_agenda_str(bob_person, default_epoch_label, apr7_dt)
 
     # THEN
-    expected_gcal_agenda_list_str = f"""All Agenda Items\n1. {wx.mop_str} (66.67%) 10:00 AM-11:30 AM
+    expected_gcal_agenda_list_str = f"""All Agenda Items\n1. {wx.mop_str} (66.67%) 10:00am-11:30am
 2. {wx.sweep_str} (33.33%)"""
     print(f"{bob_agenda_str=}")
     assert bob_agenda_str == expected_gcal_agenda_list_str

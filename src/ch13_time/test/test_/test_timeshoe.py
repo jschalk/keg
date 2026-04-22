@@ -38,6 +38,7 @@ def test_split_first_number_ReturnsObj():
 
 def test_ordinal_suffix_ReturnsObj():
     # ESTABLISH / WHEN / THEN
+    assert ordinal_suffix(None) == ""
     assert ordinal_suffix(1) == "st"
     assert ordinal_suffix(2) == "nd"
     assert ordinal_suffix(3) == "rd"
@@ -61,7 +62,7 @@ def test_TimeShoe_Exists():
     # THEN
     assert not x_timeshoe.person
     assert not x_timeshoe.epoch_label
-    assert not x_timeshoe.shoe_min
+    assert not x_timeshoe.epoch_min
     assert not x_timeshoe._epoch_plan
     assert not x_timeshoe._weekday
     assert not x_timeshoe._monthday
@@ -77,7 +78,7 @@ def test_TimeShoe_Exists():
     assert set(x_timeshoe.__dict__.keys()) == {
         "person",
         "epoch_label",
-        "shoe_min",
+        "epoch_min",
         "_epoch_plan",
         "_weekday",
         "_monthday",
@@ -93,31 +94,37 @@ def test_TimeShoe_Exists():
     }
 
 
-def test_timeshoe_shop_ReturnsObj():
+def test_timeshoe_shop_ReturnsObj_Scenario0_auto_calc_epoch_IsFalse():
     # ESTABLISH
     x_epoch_label = "Fay07"
     x_epoch_min = 890000
-    sue_person = personunit_shop("Sue")
+    sue_person = personunit_shop(exx.sue)
 
     # WHEN
     x_timeshoe = timeshoe_shop(
-        shoe_person=sue_person,
+        person=sue_person,
         epoch_label=x_epoch_label,
-        shoe_min=x_epoch_min,
+        epoch_min=x_epoch_min,
+        auto_calc_epoch=False,
     )
 
     # THEN
     assert x_timeshoe.person == sue_person
     assert x_timeshoe.epoch_label == x_epoch_label
-    assert x_timeshoe.shoe_min == x_epoch_min
+    assert x_timeshoe.epoch_min == x_epoch_min
+    assert not x_timeshoe._c400_number
+    assert not x_timeshoe._c100_count
+    assert not x_timeshoe._yr4_count
+    assert not x_timeshoe._year_count
+    assert not x_timeshoe._year_num
 
 
 def test_TimeShoe_set_epoch_plan_SetsAttr():
     # ESTABLISH
-    sue_person = personunit_shop("Sue")
+    sue_person = personunit_shop(exx.sue)
     sue_person = add_time_creg_planunit(sue_person)
     sue_person.thinkout()
-    x_timeshoe = timeshoe_shop(sue_person, kw.creg, 10000000)
+    x_timeshoe = timeshoe_shop(sue_person, kw.creg, 10000000, False)
     assert not x_timeshoe._epoch_plan
 
     # WHEN
@@ -129,10 +136,10 @@ def test_TimeShoe_set_epoch_plan_SetsAttr():
 
 def test_TimeShoe_set_weekday_SetsAttr():
     # ESTABLISH
-    sue_person = personunit_shop("Sue")
+    sue_person = personunit_shop(exx.sue)
     sue_person = add_time_creg_planunit(sue_person)
     sue_person.thinkout()
-    x_timeshoe = timeshoe_shop(sue_person, kw.creg, 10001440)
+    x_timeshoe = timeshoe_shop(sue_person, kw.creg, 10001440, False)
     x_timeshoe._set_epoch_plan()
     assert not x_timeshoe._weekday
 
@@ -145,10 +152,10 @@ def test_TimeShoe_set_weekday_SetsAttr():
 
 def test_TimeShoe_set_month_SetsAttr():
     # ESTABLISH
-    sue_person = personunit_shop("Sue")
+    sue_person = personunit_shop(exx.sue)
     sue_person = add_time_creg_planunit(sue_person)
     sue_person.thinkout()
-    x_timeshoe = timeshoe_shop(sue_person, kw.creg, 10060000)
+    x_timeshoe = timeshoe_shop(sue_person, kw.creg, 10060000, False)
     x_timeshoe._set_epoch_plan()
     assert not x_timeshoe._month
     assert not x_timeshoe._monthday
@@ -164,10 +171,10 @@ def test_TimeShoe_set_month_SetsAttr():
 
 def test_TimeShoe_set_hour_SetsAttr():
     # ESTABLISH
-    sue_person = personunit_shop("Sue")
+    sue_person = personunit_shop(exx.sue)
     sue_person = add_time_creg_planunit(sue_person)
     sue_person.thinkout()
-    x_timeshoe = timeshoe_shop(sue_person, kw.creg, 10000761)
+    x_timeshoe = timeshoe_shop(sue_person, kw.creg, 10000761, False)
     x_timeshoe._set_epoch_plan()
     assert not x_timeshoe._hour_label
     assert not x_timeshoe._minute
@@ -182,10 +189,10 @@ def test_TimeShoe_set_hour_SetsAttr():
 
 def test_TimeShoe_set_year_SetsAttr():
     # ESTABLISH
-    sue_person = personunit_shop("Sue")
+    sue_person = personunit_shop(exx.sue)
     sue_person = add_time_creg_planunit(sue_person)
     sue_person.thinkout()
-    x_timeshoe = timeshoe_shop(sue_person, kw.creg, 1030600100)
+    x_timeshoe = timeshoe_shop(sue_person, kw.creg, 1030600100, False)
     x_timeshoe._set_epoch_plan()
     assert not x_timeshoe._c400_number
     assert not x_timeshoe._c100_count
@@ -207,11 +214,11 @@ def test_TimeShoe_set_year_SetsAttr():
 
 def test_TimeShoe_set_datetime_SetsAttr_Scenario0():
     # ESTABLISH
-    sue_person = personunit_shop("Sue")
+    sue_person = personunit_shop(exx.sue)
     sue_person = add_time_creg_planunit(sue_person)
     sue_person.thinkout()
-    x_shoe_min = 1030600100
-    creg_timeshoe = timeshoe_shop(sue_person, kw.creg, x_shoe_min)
+    x_epoch_min = 1030600100
+    creg_timeshoe = timeshoe_shop(sue_person, kw.creg, x_epoch_min, False)
     creg_timeshoe._set_epoch_plan()
     assert not creg_timeshoe._datetime
     # WHEN
@@ -228,9 +235,9 @@ def test_TimeShoe_set_datetime_SetsAttr_Scenario0():
 
 def test_TimeShoe_calc_epoch_SetsAttrs_Scenario0():
     # ESTABLISH
-    sue_person = personunit_shop("Sue")
+    sue_person = personunit_shop(exx.sue)
     sue_person = add_time_creg_planunit(sue_person)
-    x_timeshoe = timeshoe_shop(sue_person, kw.creg, 1030600102)
+    x_timeshoe = timeshoe_shop(sue_person, kw.creg, 1030600102, False)
     assert not x_timeshoe._epoch_plan
     assert not x_timeshoe._weekday
     assert not x_timeshoe._monthday
@@ -254,14 +261,14 @@ def test_TimeShoe_calc_epoch_SetsAttrs_Scenario0():
 
 def test_TimeShoe_calc_epoch_SetsAttrs_Scenario1_FiveEpoch(graphics_bool):
     # ESTABLISH
-    sue_person = personunit_shop("Sue")
+    sue_person = personunit_shop(exx.sue)
     sue_person = add_time_creg_planunit(sue_person)
     sue_person = add_time_five_planunit(sue_person)
     mar1_2000_datetime = datetime(2000, 3, 1)
     creg_min = get_creg_min_from_dt(mar1_2000_datetime)
     five_min = get_five_min_from_dt(mar1_2000_datetime)
-    creg_timeshoe = timeshoe_shop(sue_person, kw.creg, creg_min)
-    five_timeshoe = timeshoe_shop(sue_person, kw.five, five_min)
+    creg_timeshoe = timeshoe_shop(sue_person, kw.creg, creg_min, False)
+    five_timeshoe = timeshoe_shop(sue_person, kw.five, five_min, False)
     assert not creg_timeshoe._weekday
     assert not creg_timeshoe._monthday
     assert not creg_timeshoe._month
@@ -281,7 +288,7 @@ def test_TimeShoe_calc_epoch_SetsAttrs_Scenario1_FiveEpoch(graphics_bool):
 
     # THEN
     assert creg_timeshoe._weekday == exx.Wednesday
-    assert creg_timeshoe._month == "March"
+    assert creg_timeshoe._month == exx.March
     assert creg_timeshoe._monthday == 1
     assert creg_timeshoe._hour_label == "12am"
     assert creg_timeshoe._minute == 0
@@ -299,7 +306,7 @@ def test_TimeShoe_calc_epoch_SetsAttrs_Scenario1_FiveEpoch(graphics_bool):
 
 def check_creg_epoch_attr(x_person: PersonUnit, x_datetime: datetime):
     creg_min = get_creg_min_from_dt(x_datetime)
-    creg_timeshoe = timeshoe_shop(x_person, kw.creg, creg_min)
+    creg_timeshoe = timeshoe_shop(x_person, kw.creg, creg_min, False)
     creg_timeshoe.calc_epoch()
     dt_hour = x_datetime.strftime("%H")
     dt_minute = x_datetime.strftime("%M")
@@ -331,7 +338,7 @@ def check_creg_epoch_attr(x_person: PersonUnit, x_datetime: datetime):
 
 def test_TimeShoe_calc_epoch_SetsAttr_Scenario1():
     # ESTABLISH
-    sue_person = personunit_shop("Sue")
+    sue_person = personunit_shop(exx.sue)
     sue_person = add_time_creg_planunit(sue_person)
     # WHEN / THEN
     check_creg_epoch_attr(sue_person, datetime(2000, 3, 1, 0, 21))
@@ -352,9 +359,9 @@ def test_TimeShoe_calc_epoch_SetsAttr_Scenario1():
 
 def test_TimeShoe_calc_epoch_SetsAttrs_Scenario2_five():
     # ESTABLISH
-    sue_person = personunit_shop("Sue")
+    sue_person = personunit_shop(exx.sue)
     sue_person = add_time_five_planunit(sue_person)
-    five_timeshoe = timeshoe_shop(sue_person, kw.five, 1030600102)
+    five_timeshoe = timeshoe_shop(sue_person, kw.five, 1030600102, False)
     assert not five_timeshoe._epoch_plan
     assert not five_timeshoe._weekday
     assert not five_timeshoe._monthday
@@ -384,9 +391,9 @@ def test_TimeShoe_calc_epoch_SetsAttrs_Scenario2_five():
 
 def test_TimeShoe_calc_epoch_SetsAttrs_Scenario3_creg_datetime():
     # ESTABLISH
-    sue_person = personunit_shop("Sue")
+    sue_person = personunit_shop(exx.sue)
     sue_person = add_time_creg_planunit(sue_person)
-    creg_timeshoe = timeshoe_shop(sue_person, kw.creg, 1030600102)
+    creg_timeshoe = timeshoe_shop(sue_person, kw.creg, 1030600102, False)
     creg_timeshoe.calc_epoch()
     assert creg_timeshoe._datetime == datetime(1959, 9, 2, 12, 22)
     new_show_min = 1030600102 + 600
@@ -400,16 +407,36 @@ def test_TimeShoe_calc_epoch_SetsAttrs_Scenario3_creg_datetime():
     print(f"{creg_timeshoe._hour_label=}")
     print(f"{creg_timeshoe._minute=}")
     print(f"{creg_timeshoe._year_num=}")
-    assert creg_timeshoe.shoe_min == new_show_min
+    assert creg_timeshoe.epoch_min == new_show_min
     assert creg_timeshoe._datetime == datetime(1959, 9, 2, 22, 22)
+
+
+def test_timeshoe_shop_ReturnsObj_Scenario1_auto_calc_epoch_IsTrue():
+    # ESTABLISH
+    x_epoch_label = kw.creg
+    x_epoch_min = 11890000
+    sue_person = personunit_shop(exx.sue)
+    sue_person = add_time_creg_planunit(sue_person)
+
+    # WHEN
+    x_timeshoe = timeshoe_shop(sue_person, x_epoch_label, x_epoch_min)
+
+    # THEN
+    assert x_timeshoe.person == sue_person
+    assert x_timeshoe.epoch_label == x_epoch_label
+    assert x_timeshoe.epoch_min == x_epoch_min
+    assert x_timeshoe._c400_number == 0
+    assert x_timeshoe._c100_count == 0
+    assert x_timeshoe._yr4_count
+    assert x_timeshoe._year_count
+    assert x_timeshoe._year_num
 
 
 def test_TimeShoe_get_full_blurb_ReturnsObj_Scenario0():
     # ESTABLISH
-    sue_person = personunit_shop("Sue")
+    sue_person = personunit_shop(exx.sue)
     sue_person = add_time_creg_planunit(sue_person)
     x_timeshoe = timeshoe_shop(sue_person, kw.creg, 1030600102)
-    x_timeshoe.calc_epoch()
     assert x_timeshoe._epoch_plan
     assert x_timeshoe._weekday
     assert x_timeshoe._monthday
@@ -433,8 +460,8 @@ def test_TimeShoe_get_full_blurb_ReturnsObj_Scenario0():
 
 def test_TimeShoe_clock_ReturnsObj_Scenario0():
     # ESTABLISH
-    sue_person = personunit_shop("Sue")
-    x_timeshoe = timeshoe_shop(sue_person, kw.creg, 1030600102)
+    sue_person = personunit_shop(exx.sue)
+    x_timeshoe = timeshoe_shop(sue_person, kw.creg, 1030600102, False)
     assert not x_timeshoe._hour_label
     # WHEN / THEN
     assert x_timeshoe.clock() == ""
@@ -444,18 +471,18 @@ def test_TimeShoe_clock_ReturnsObj_Scenario0():
     assert x_timeshoe.clock() == f"12:{x_timeshoe._minute}pm"
     # WHEN / THEN
     x_timeshoe._hour_label = "1pm"
-    assert x_timeshoe.clock() == f"1:{x_timeshoe._minute}pm"
+    x_timeshoe._minute = 8
+    assert x_timeshoe.clock() == "1:08pm"
     # WHEN / THEN
     x_timeshoe._hour_label = "hr1up"
-    assert x_timeshoe.clock() == f"1:{x_timeshoe._minute}hrup"
+    assert x_timeshoe.clock() == f"1:0{x_timeshoe._minute}hrup"
 
 
 def test_TimeShoe_get_long_date_blurb_ReturnsObj_Scenario0():
     # ESTABLISH
-    sue_person = personunit_shop("Sue")
+    sue_person = personunit_shop(exx.sue)
     sue_person = add_time_creg_planunit(sue_person)
     x_timeshoe = timeshoe_shop(sue_person, kw.creg, 1030600102)
-    x_timeshoe.calc_epoch()
 
     # WHEN
     date_blurb = x_timeshoe.get_long_date_blurb()

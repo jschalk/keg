@@ -17,8 +17,8 @@ def test_get_moment_timeshoe_ReturnsObj_Scenario0_Empty_offi_time(temp3_dir):
 
     # THEN
     assert a23_momentunit.offi_time_max == 0
-    assert a23_timeshoe.shoe_min == 0
-    # assert a23_timeshoe.shoe_min == a23_offi_time_max
+    assert a23_timeshoe.epoch_min == 0
+    # assert a23_timeshoe.epoch_min == a23_offi_time_max
     assert a23_timeshoe
     assert a23_timeshoe._month == "March"
     assert a23_timeshoe._hour_label == "12am"
@@ -51,10 +51,10 @@ def test_get_moment_timeshoe_ReturnsObj_Scenario1_MomentUnit_NonDefaultAttrs(
 
     # THEN
     assert a23_momentunit.offi_time_max == 0
-    assert a23_timeshoe.shoe_min == 0
+    assert a23_timeshoe.epoch_min == 0
 
     assert a23_timeshoe
-    # assert a23_timeshoe.shoe_min == a23_offi_time_max
+    # assert a23_timeshoe.epoch_min == a23_offi_time_max
     assert a23_timeshoe.person.person_name == "for_TimeShoe_calculation"
     assert a23_timeshoe.person.planroot.get_plan_rope() == a23_momentunit.moment_rope
     assert a23_timeshoe.person.knot == a23_momentunit.knot

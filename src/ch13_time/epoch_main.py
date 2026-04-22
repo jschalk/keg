@@ -181,7 +181,7 @@ def get_default_epoch_config_dict() -> dict:
     return open_json(epoch_config_path())
 
 
-def add_epoch_planunit(shoe_person: PersonUnit, epoch_config: dict = None):
+def add_epoch_planunit(person: PersonUnit, epoch_config: dict = None):
     """Add epoch plan to PersonUnit from epoch_config. epoch_config defaults to creg epoch_config"""
     if epoch_config is None:
         epoch_config = get_default_epoch_config_dict()
@@ -195,104 +195,104 @@ def add_epoch_planunit(shoe_person: PersonUnit, epoch_config: dict = None):
     x_yr1_jan1_offset = epoch_config.get("yr1_jan1_offset")
 
     planroot_label = get_first_label_from_rope(
-        rope=shoe_person.planroot.get_plan_rope(), knot=shoe_person.knot
+        rope=person.planroot.get_plan_rope(), knot=person.knot
     )
     epoch_rope = get_epoch_rope(
         moment_rope=planroot_label,
         epoch_label=x_plan_label,
-        knot=shoe_person.knot,
+        knot=person.knot,
     )
-    day_rope = shoe_person.make_rope(epoch_rope, "day")
-    week_rope = shoe_person.make_rope(epoch_rope, "week")
-    year_rope = get_year_rope(shoe_person, x_plan_label)
+    day_rope = person.make_rope(epoch_rope, "day")
+    week_rope = person.make_rope(epoch_rope, "week")
+    year_rope = get_year_rope(person, x_plan_label)
 
-    add_stan_planunits(shoe_person, x_plan_label, x_c400_number)
-    add_planunits(shoe_person, day_rope, create_hour_planunits(x_hours_list))
-    add_planunits(shoe_person, epoch_rope, create_week_planunits(x_weekdays_list))
-    add_planunits(shoe_person, week_rope, create_weekday_planunits(x_weekdays_list))
-    add_planunits(shoe_person, year_rope, create_month_planunits(x_months, x_mday))
+    add_stan_planunits(person, x_plan_label, x_c400_number)
+    add_planunits(person, day_rope, create_hour_planunits(x_hours_list))
+    add_planunits(person, epoch_rope, create_week_planunits(x_weekdays_list))
+    add_planunits(person, week_rope, create_weekday_planunits(x_weekdays_list))
+    add_planunits(person, year_rope, create_month_planunits(x_months, x_mday))
     offset_plan = planunit_shop("yr1_jan1_offset", addin=x_yr1_jan1_offset)
-    shoe_person.set_plan_obj(offset_plan, epoch_rope)
-    time_rope = shoe_person.make_l1_rope("time")
-    shoe_person.edit_plan_attr(time_rope, star=0)
+    person.set_plan_obj(offset_plan, epoch_rope)
+    time_rope = person.make_l1_rope("time")
+    person.edit_plan_attr(time_rope, star=0)
 
 
 def add_planunits(
-    shoe_person: PersonUnit,
+    person: PersonUnit,
     parent_rope: RopeTerm,
     config_dict: dict[str, PlanUnit],
 ):
     for x_time_planunit in config_dict.values():
-        shoe_person.set_plan_obj(x_time_planunit, parent_rope)
+        person.set_plan_obj(x_time_planunit, parent_rope)
 
 
 def add_stan_planunits(
-    shoe_person: PersonUnit,
+    person: PersonUnit,
     epoch_label: EpochLabel,
     epoch_c400_number: int,
 ):
-    time_rope = shoe_person.make_l1_rope("time")
+    time_rope = person.make_l1_rope("time")
     planroot_label = get_first_label_from_rope(
-        rope=shoe_person.planroot.get_plan_rope(), knot=shoe_person.knot
+        rope=person.planroot.get_plan_rope(), knot=person.knot
     )
     epoch_rope = get_epoch_rope(
         moment_rope=planroot_label,
         epoch_label=epoch_label,
-        knot=shoe_person.knot,
+        knot=person.knot,
     )
-    c400_leap_rope = shoe_person.make_rope(epoch_rope, "c400_leap")
-    c400_core_rope = shoe_person.make_rope(c400_leap_rope, "c400_core")
-    c100_rope = shoe_person.make_rope(c400_core_rope, "c100")
-    yr4_leap_rope = shoe_person.make_rope(c100_rope, "yr4_leap")
-    yr4_core_rope = shoe_person.make_rope(yr4_leap_rope, "yr4_core")
+    c400_leap_rope = person.make_rope(epoch_rope, "c400_leap")
+    c400_core_rope = person.make_rope(c400_leap_rope, "c400_core")
+    c100_rope = person.make_rope(c400_core_rope, "c100")
+    yr4_leap_rope = person.make_rope(c100_rope, "yr4_leap")
+    yr4_core_rope = person.make_rope(yr4_leap_rope, "yr4_core")
 
-    if not shoe_person.plan_exists(time_rope):
-        shoe_person.set_l1_plan(planunit_shop("time"))
+    if not person.plan_exists(time_rope):
+        person.set_l1_plan(planunit_shop("time"))
     epoch_planunit = new_epoch_planunit(epoch_label, epoch_c400_number)
-    shoe_person.set_plan_obj(epoch_planunit, time_rope)
-    shoe_person.set_plan_obj(stan_c400_leap_planunit(), epoch_rope)
-    shoe_person.set_plan_obj(stan_c400_core_planunit(), c400_leap_rope)
-    shoe_person.set_plan_obj(stan_c100_planunit(), c400_core_rope)
-    shoe_person.set_plan_obj(stan_yr4_leap_planunit(), c100_rope)
-    shoe_person.set_plan_obj(stan_yr4_core_planunit(), yr4_leap_rope)
-    shoe_person.set_plan_obj(stan_year_planunit(), yr4_core_rope)
-    shoe_person.set_plan_obj(stan_day_planunit(), epoch_rope)
-    shoe_person.set_plan_obj(stan_days_planunit(), epoch_rope)
+    person.set_plan_obj(epoch_planunit, time_rope)
+    person.set_plan_obj(stan_c400_leap_planunit(), epoch_rope)
+    person.set_plan_obj(stan_c400_core_planunit(), c400_leap_rope)
+    person.set_plan_obj(stan_c100_planunit(), c400_core_rope)
+    person.set_plan_obj(stan_yr4_leap_planunit(), c100_rope)
+    person.set_plan_obj(stan_yr4_core_planunit(), yr4_leap_rope)
+    person.set_plan_obj(stan_year_planunit(), yr4_core_rope)
+    person.set_plan_obj(stan_day_planunit(), epoch_rope)
+    person.set_plan_obj(stan_days_planunit(), epoch_rope)
 
 
-def get_c400_core_rope(shoe_person: PersonUnit, epoch_label: LabelTerm) -> RopeTerm:
-    root_plan_rope = shoe_person.planroot.get_plan_rope()
-    epoch_rope = get_epoch_rope(root_plan_rope, epoch_label, shoe_person.knot)
-    c400_leap_rope = shoe_person.make_rope(epoch_rope, "c400_leap")
-    return shoe_person.make_rope(c400_leap_rope, "c400_core")
+def get_c400_core_rope(person: PersonUnit, epoch_label: LabelTerm) -> RopeTerm:
+    root_plan_rope = person.planroot.get_plan_rope()
+    epoch_rope = get_epoch_rope(root_plan_rope, epoch_label, person.knot)
+    c400_leap_rope = person.make_rope(epoch_rope, "c400_leap")
+    return person.make_rope(c400_leap_rope, "c400_core")
 
 
-def get_c100_rope(shoe_person: PersonUnit, epoch_label: LabelTerm) -> RopeTerm:
-    c400_core_rope = get_c400_core_rope(shoe_person, epoch_label)
-    return shoe_person.make_rope(c400_core_rope, "c100")
+def get_c100_rope(person: PersonUnit, epoch_label: LabelTerm) -> RopeTerm:
+    c400_core_rope = get_c400_core_rope(person, epoch_label)
+    return person.make_rope(c400_core_rope, "c100")
 
 
-def get_yr4_core_rope(shoe_person: PersonUnit, epoch_label: LabelTerm) -> RopeTerm:
-    c100_rope = get_c100_rope(shoe_person, epoch_label)
-    yr4_leap_rope = shoe_person.make_rope(c100_rope, "yr4_leap")
-    return shoe_person.make_rope(yr4_leap_rope, "yr4_core")
+def get_yr4_core_rope(person: PersonUnit, epoch_label: LabelTerm) -> RopeTerm:
+    c100_rope = get_c100_rope(person, epoch_label)
+    yr4_leap_rope = person.make_rope(c100_rope, "yr4_leap")
+    return person.make_rope(yr4_leap_rope, "yr4_core")
 
 
-def get_year_rope(shoe_person: PersonUnit, epoch_label: LabelTerm) -> RopeTerm:
-    yr4_core_rope = get_yr4_core_rope(shoe_person, epoch_label)
-    return shoe_person.make_rope(yr4_core_rope, "year")
+def get_year_rope(person: PersonUnit, epoch_label: LabelTerm) -> RopeTerm:
+    yr4_core_rope = get_yr4_core_rope(person, epoch_label)
+    return person.make_rope(yr4_core_rope, "year")
 
 
-def get_week_rope(shoe_person: PersonUnit, epoch_label: LabelTerm) -> RopeTerm:
-    root_plan_rope = shoe_person.planroot.get_plan_rope()
-    epoch_rope = get_epoch_rope(root_plan_rope, epoch_label, shoe_person.knot)
-    return shoe_person.make_rope(epoch_rope, "week")
+def get_week_rope(person: PersonUnit, epoch_label: LabelTerm) -> RopeTerm:
+    root_plan_rope = person.planroot.get_plan_rope()
+    epoch_rope = get_epoch_rope(root_plan_rope, epoch_label, person.knot)
+    return person.make_rope(epoch_rope, "week")
 
 
-def get_day_rope(shoe_person: PersonUnit, epoch_label: LabelTerm) -> RopeTerm:
-    root_plan_rope = shoe_person.planroot.get_plan_rope()
-    epoch_rope = get_epoch_rope(root_plan_rope, epoch_label, shoe_person.knot)
-    return shoe_person.make_rope(epoch_rope, "day")
+def get_day_rope(person: PersonUnit, epoch_label: LabelTerm) -> RopeTerm:
+    root_plan_rope = person.planroot.get_plan_rope()
+    epoch_rope = get_epoch_rope(root_plan_rope, epoch_label, person.knot)
+    return person.make_rope(epoch_rope, "day")
 
 
 def validate_epoch_config(config_dict: dict) -> bool:
@@ -486,6 +486,8 @@ def split_first_number(hour_label: str) -> Tuple[str, str]:
 
 
 def ordinal_suffix(monthday: int) -> str:
+    if monthday is None:
+        return ""
     monthday = abs(monthday)  # handle negatives safely
 
     if 10 <= monthday % 100 <= 13:
@@ -520,7 +522,7 @@ class TimeShoe:
 
     person: PersonUnit = None
     epoch_label: LabelTerm = None
-    shoe_min: TimeNum = None
+    epoch_min: TimeNum = None
     # calculated fields
     _epoch_plan: PlanUnit = None
     _weekday: LabelTerm = None
@@ -547,7 +549,7 @@ class TimeShoe:
         week_rope = get_week_rope(self.person, self.epoch_label)
         week_plan = self.person.get_plan_obj(week_rope)
         x_plan_list = [self._epoch_plan, week_plan]
-        reason_lower_rangeunit = calc_range(x_plan_list, self.shoe_min, self.shoe_min)
+        reason_lower_rangeunit = calc_range(x_plan_list, self.epoch_min, self.epoch_min)
         reason_lower_weekday_dict = week_plan.get_kids_in_range(
             reason_lower_rangeunit.gogo
         )
@@ -562,7 +564,7 @@ class TimeShoe:
         epoch_rope = get_epoch_rope(moment_rope, self.epoch_label, x_knot)
         x_plan_dict = self.person._plan_dict
         plan_list = all_plans_between(x_plan_dict, epoch_rope, year_rope, x_knot)
-        reason_lower_rangeunit = calc_range(plan_list, self.shoe_min, self.shoe_min)
+        reason_lower_rangeunit = calc_range(plan_list, self.epoch_min, self.epoch_min)
         gogo_month_dict = year_plan.get_kids_in_range(reason_lower_rangeunit.gogo)
         month_plan = None
         for x_monthname, month_plan in gogo_month_dict.items():
@@ -578,7 +580,7 @@ class TimeShoe:
         day_rope = get_day_rope(self.person, self.epoch_label)
         day_plan = self.person.get_plan_obj(day_rope)
         x_plan_list = [self._epoch_plan, day_plan]
-        rangeunit = calc_range(x_plan_list, self.shoe_min, self.shoe_min)
+        rangeunit = calc_range(x_plan_list, self.epoch_min, self.epoch_min)
         hour_dict = day_plan.get_kids_in_range(rangeunit.gogo)
         for x_hour, hour_plan in hour_dict.items():
             self._hour_label = x_hour
@@ -591,21 +593,23 @@ class TimeShoe:
         x_time_rope = self.person.make_l1_rope("time")
         x_plan_dict = self.person._plan_dict
         # count 400 year blocks
-        self._c400_number = self.shoe_min // c400_constants.c400_leap_length
+        self._c400_number = self.epoch_min // c400_constants.c400_leap_length
 
         # count 100 year blocks
         c400_core_rope = get_c400_core_rope(self.person, self.epoch_label)
         c400_core_plan_list = all_plans_between(
             x_plan_dict, x_time_rope, c400_core_rope, knot=self.person.knot
         )
-        c400_core_range = calc_range(c400_core_plan_list, self.shoe_min, self.shoe_min)
+        c400_core_range = calc_range(
+            c400_core_plan_list, self.epoch_min, self.epoch_min
+        )
         self._c100_count = c400_core_range.gogo // c400_constants.c100_length
         # count 4 year blocks
         c100_rope = get_c100_rope(self.person, self.epoch_label)
         c100_plan_list = all_plans_between(
             x_plan_dict, x_time_rope, c100_rope, knot=self.person.knot
         )
-        c100_range = calc_range(c100_plan_list, self.shoe_min, self.shoe_min)
+        c100_range = calc_range(c100_plan_list, self.epoch_min, self.epoch_min)
         self._yr4_count = c100_range.gogo // c400_constants.yr4_leap_length
 
         # count 1 year blocks
@@ -613,7 +617,7 @@ class TimeShoe:
         yr4_core_plans = all_plans_between(
             x_plan_dict, x_time_rope, yr4_core_rope, knot=self.person.knot
         )
-        yr4_core_range = calc_range(yr4_core_plans, self.shoe_min, self.shoe_min)
+        yr4_core_range = calc_range(yr4_core_plans, self.epoch_min, self.epoch_min)
         self._year_count = yr4_core_range.gogo // c400_constants.year_length
 
         self._year_num = self._c400_number * 400
@@ -627,11 +631,11 @@ class TimeShoe:
         offset_rope = self.person.make_rope(epoch_rope, "yr1_jan1_offset")
         offset_plan = self.person.get_plan_obj(offset_rope)
         epoch_yr1_jan1_offset = offset_plan.addin
-        self._datetime = get_dt_from_min_offset(self.shoe_min, epoch_yr1_jan1_offset)
+        self._datetime = get_dt_from_min_offset(self.epoch_min, epoch_yr1_jan1_offset)
 
-    def calc_epoch(self, shoe_min: int = None):
-        if shoe_min:
-            self.shoe_min = shoe_min
+    def calc_epoch(self, epoch_min: int = None):
+        if epoch_min:
+            self.epoch_min = epoch_min
         self.person.thinkout()
         self._set_epoch_plan()
         self._set_weekday()
@@ -654,15 +658,23 @@ class TimeShoe:
         if not self._hour_label:
             return ""
         hour_num, hour_rest = split_first_number(self._hour_label)
-        return f"{hour_num}:{self._minute}{hour_rest}"
+        return f"{hour_num}:{self._minute:02}{hour_rest}"
 
     def get_long_date_blurb(self) -> str:
         monthday_str = f"{self._monthday}{ordinal_suffix(self._monthday)}"
         return f"{self._month} {monthday_str} {self._year_num}"
 
 
-def timeshoe_shop(shoe_person: PersonUnit, epoch_label: LabelTerm, shoe_min: int):
-    return TimeShoe(shoe_person, epoch_label, shoe_min=shoe_min)
+def timeshoe_shop(
+    person: PersonUnit,
+    epoch_label: LabelTerm,
+    epoch_min: int,
+    auto_calc_epoch: bool = True,
+) -> TimeShoe:
+    x_timeshoe = TimeShoe(person, epoch_label, epoch_min=epoch_min)
+    if auto_calc_epoch is True:
+        x_timeshoe.calc_epoch()
+    return x_timeshoe
 
 
 @dataclass

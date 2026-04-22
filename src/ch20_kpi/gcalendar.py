@@ -15,10 +15,12 @@ from ch09_person_lesson.lasso import LassoUnit, lassounit_shop
 from ch10_person_listen._ref.ch10_path import create_job_path
 from ch10_person_listen.keep_tool import open_job_file
 from ch13_time.epoch_main import (
+    TimeShoe,
     add_epoch_planunit,
     get_default_epoch_config_dict,
     get_epoch_min_from_dt,
     get_epoch_rope,
+    timeshoe_shop,
 )
 from ch13_time.epoch_reason import set_epoch_fact
 from ch14_moment.moment_main import open_moment_file
@@ -34,7 +36,7 @@ from ch20_kpi._ref.ch20_semantic_types import (
     PersonName,
     RopeTerm,
 )
-from copy import deepcopy as copy_deepcopy
+from copy import copy as copy_copy, deepcopy as copy_deepcopy
 from csv import DictWriter as csv_DictWriter
 from dataclasses import dataclass
 from datetime import datetime, timedelta
@@ -65,6 +67,8 @@ class DayEvent:
     item_rank: int = None
     day_min_lower: int = None
     day_min_upper: int = None
+    clock_lower: str = None  # TimeShoe.clock() for day_min_lower
+    clock_upper: str = None  # TimeShoe.clock() for day_min_upper
 
 
 def planunit_is_scheduled_in_day(reasonheir: ReasonHeir, epoch_rope) -> bool:
@@ -96,17 +100,46 @@ def get_dayevents(
         for reason_context, reasonheir in agenda_item.reasonheirs.items():
             if planunit_is_scheduled_in_day(reasonheir, epoch_rope):
                 if epoch_reasonheir := agenda_item.get_reasonheir(reason_context):
-                    epoch_case = epoch_reasonheir.get_case(reason_context)
-                    day_reason_lower = epoch_case.reason_lower % 1440
-                    day_reason_upper = epoch_case.reason_upper % 1440
-                    x_dayevent = DayEvent(
-                        agenda_item,
-                        item_rank,
-                        day_min_lower=day_reason_lower,
-                        day_min_upper=day_reason_upper,
+                    add_dayevent(
+                        person=person,
+                        epoch_reasonheir=epoch_reasonheir,
+                        reason_context=reason_context,
+                        epoch_label=epoch_label,
+                        day=day,
+                        agenda_item=agenda_item,
+                        item_rank=item_rank,
+                        dayevents=dayevents,
                     )
-                    dayevents.append(x_dayevent)
     return dayevents
+
+
+def add_dayevent(
+    person: PersonUnit,
+    epoch_reasonheir: ReasonHeir,
+    reason_context: RopeTerm,
+    epoch_label: LabelTerm,
+    day: datetime,
+    agenda_item: PlanUnit,
+    item_rank: int,
+    dayevents: list[DayEvent],
+):
+    epoch_case = epoch_reasonheir.get_case(reason_context)
+    day_reason_lower = epoch_case.reason_lower % 1440
+    day_reason_upper = epoch_case.reason_upper % 1440
+    midnight_epoch_min = get_epoch_min_from_dt(person, epoch_label, day)
+    epoch_min_lower = midnight_epoch_min + day_reason_lower
+    epoch_min_upper = midnight_epoch_min + day_reason_upper
+    lower_shoe = timeshoe_shop(person, epoch_label, epoch_min_lower)
+    upper_shoe = timeshoe_shop(person, epoch_label, epoch_min_upper)
+    x_dayevent = DayEvent(
+        agenda_item,
+        item_rank,
+        day_min_lower=day_reason_lower,
+        day_min_upper=day_reason_upper,
+        clock_lower=lower_shoe.clock(),
+        clock_upper=upper_shoe.clock(),
+    )
+    dayevents.append(x_dayevent)
 
 
 def get_inflection_points_dict(dayevents: list[DayEvent]) -> dict[int, DayEvent | None]:
@@ -138,16 +171,10 @@ def get_inflection_points_dict(dayevents: list[DayEvent]) -> dict[int, DayEvent 
     return inflection_points
 
 
-def minute_to_clock_time(minute: int) -> str:
-    """
-    Converts a minute of the day (0-1439) to a clock time string.
-    e.g. 0 -> "12:00 AM", 120 -> "2:00 AM", 780 -> "1:00 PM"
-    """
-    minute %= 1440
-    hours, mins = divmod(minute, 60)
-    period = "AM" if hours < 12 else "PM"
-    hours_12 = hours % 12 or 12  # convert 0 -> 12
-    return f"{hours_12}:{mins:02d} {period}"
+def minute_to_clock_time(minute: int, midnight_shoe: TimeShoe) -> str:
+    local_shoe = copy_copy(midnight_shoe)
+    local_shoe.calc_epoch(local_shoe.epoch_min + minute)
+    return local_shoe.clock()
 
 
 def get_gcal_priorities_schedule_str(dayevents: list[DayEvent]) -> str:
@@ -155,18 +182,22 @@ def get_gcal_priorities_schedule_str(dayevents: list[DayEvent]) -> str:
     x_str = "Schedule Priorities"
     for inflection_minute in sorted(list(inflections_dict.keys())):
         dayevent = inflections_dict.get(inflection_minute)
-        clock_time = minute_to_clock_time(inflection_minute)
         if dayevent:
             precent_str = gcal_readable_percent(dayevent.plan.fund_ratio)
-            x_str += f"\n{clock_time} {dayevent.item_rank}. {dayevent.plan.plan_label} {precent_str}"
+            x_str += f"\n{dayevent.clock_lower} {dayevent.item_rank}. {dayevent.plan.plan_label} {precent_str}"
+            previous_dayevent = dayevent
         else:
-            x_str += f"\n{clock_time} Nothing scheduled."
+            if previous_dayevent:
+                x_str += f"\n{previous_dayevent.clock_upper} Nothing scheduled."
     return x_str
 
 
 def get_gcal_all_agenda_str(
     x_person: PersonUnit, epoch_label: LabelTerm, day: datetime
 ) -> str:
+    day = day.replace(hour=0, minute=0, second=0, microsecond=0)
+    epoch_min = get_epoch_min_from_dt(x_person, epoch_label, day)
+    midnight_shoe = timeshoe_shop(x_person, epoch_label, epoch_min)
     set_day_epoch_fact(x_person, epoch_label, day)
 
     agenda_plans_dict = x_person.get_agenda_dict()
@@ -184,8 +215,8 @@ def get_gcal_all_agenda_str(
                 epoch_case = epoch_reasonheir.get_case(reason_context)
                 day_reason_lower = epoch_case.reason_lower % 1440
                 day_reason_upper = epoch_case.reason_upper % 1440
-                clock_lower = minute_to_clock_time(day_reason_lower)
-                clock_upper = minute_to_clock_time(day_reason_upper)
+                clock_lower = minute_to_clock_time(day_reason_lower, midnight_shoe)
+                clock_upper = minute_to_clock_time(day_reason_upper, midnight_shoe)
                 clock_range = f" {clock_lower}-{clock_upper}"
                 event_subject += clock_range
         gcal_agenda_list_str += f"\n{event_subject}"
@@ -242,11 +273,13 @@ def get_gcal_day_punch_from_personunit(
     epoch_label: LabelTerm = None,
     group_title: GroupTitle = None,
 ) -> str:
-    """parameter x_person is assumed to have already thinkoutd."""
+    """parameter x_person is assumed to have already thinkouted."""
     moment_rope = x_person.planroot.get_plan_rope()
-    x_str = f"Day Report for {x_person.person_name} in the {moment_rope} Moment\n"
     if not epoch_label:
         epoch_label = get_default_epoch_config_dict().get("epoch_label")
+    epoch_min = get_epoch_min_from_dt(x_person, epoch_label, day)
+    timeshoe = timeshoe_shop(x_person, epoch_label, epoch_min)
+    x_str = f"{timeshoe.get_long_date_blurb()} Agenda for {x_person.person_name} in the '{moment_rope}' Moment\n"
     x_dayevents = get_dayevents(x_person, epoch_label, day)
     x_str += f"\n{get_gcal_priorities_schedule_str(x_dayevents)}"
     x_str += f"\n{get_gcal_all_agenda_str(x_person, epoch_label, day)}"

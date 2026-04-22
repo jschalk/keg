@@ -99,8 +99,12 @@ def test_get_gcal_priorities_schedule_str_ReturnsObj_Scenario1_Same_fund_ratio_D
     x2_fund_ratio = 0.1
     assert x1_fund_ratio == x2_fund_ratio
     x2_plan = planunit_shop(exx.casa, fund_ratio=x2_fund_ratio)
-    y60_dayevent = DayEvent(x1_plan, 1, 0, day_min_upper=60)
-    y90_dayevent = DayEvent(x2_plan, 2, 30, day_min_upper=90)
+    x1_clock_lower = "12:00am"
+    x1_clock_upper = "1:00am"
+    x2_clock_lower = "1:00am"
+    x2_clock_upper = "1:30am"
+    y60_dayevent = DayEvent(x1_plan, 1, 0, 60, x1_clock_lower, x1_clock_upper)
+    y90_dayevent = DayEvent(x2_plan, 2, 30, 90, x2_clock_lower, x2_clock_upper)
 
     # WHEN
     inflection_points_str = get_gcal_priorities_schedule_str(
@@ -112,7 +116,7 @@ def test_get_gcal_priorities_schedule_str_ReturnsObj_Scenario1_Same_fund_ratio_D
     y60_readable_fund_ratio = gcal_readable_percent(y60_dayevent.plan.fund_ratio)
     y90_readable_fund_ratio = gcal_readable_percent(y90_dayevent.plan.fund_ratio)
     expected_str = f"""Schedule Priorities
-12:00 AM 1. {exx.mop} {y60_readable_fund_ratio}
-1:00 AM 2. {exx.casa} {y90_readable_fund_ratio}
-1:30 AM Nothing scheduled."""
+12:00am 1. {exx.mop} {y60_readable_fund_ratio}
+1:00am 2. {exx.casa} {y90_readable_fund_ratio}
+1:30am Nothing scheduled."""
     assert inflection_points_str == expected_str

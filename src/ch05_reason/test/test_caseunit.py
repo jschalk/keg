@@ -410,12 +410,12 @@ def test_CaseUnit_set_case_active_SetsAttr_Scenario5():
     assert wed_sun_case.case_active is False
 
 
-def test_CaseUnit_set_case_active_SetsAttr_Scenario6_Clock():
+def test_CaseUnit_set_case_active_SetsAttr_Scenario6_Watch():
     # ESTABLISH
-    clock_str = "clock"
-    clock_rope = create_rope(exx.a23, clock_str)
+    watch_str = "watch"
+    watch_rope = create_rope(exx.a23, watch_str)
     hr24_str = "24hr"
-    hr24_rope = create_rope(clock_rope, hr24_str)
+    hr24_rope = create_rope(watch_rope, hr24_str)
     hr24_case = caseunit_shop(hr24_rope, reason_lower=7, reason_upper=7)
     assert hr24_case.case_active is None
 
@@ -594,10 +594,10 @@ def test_CaseUnit_set_case_active_SetAttrs_Scenario02():
 
 def test_CaseUnit_set_case_active_SetAttrs_Scenario03():
     # ESTABLISH
-    clock_str = "clock"
-    clock_rope = create_rope(exx.a23, clock_str)
+    watch_str = "watch"
+    watch_rope = create_rope(exx.a23, watch_str)
     hr24_str = "24hr"
-    hr24_rope = create_rope(clock_rope, hr24_str)
+    hr24_rope = create_rope(watch_rope, hr24_str)
     hr24_case = caseunit_shop(hr24_rope, reason_lower=7, reason_upper=7)
     assert hr24_case.case_active is None
 
@@ -611,10 +611,10 @@ def test_CaseUnit_set_case_active_SetAttrs_Scenario03():
 
 def test_CaseUnit_set_case_active_SetAttrs_Scenario4_CEDWeek_case_active_False():
     # ESTABLISH
-    clock_str = "clock"
-    clock_rope = create_rope(exx.a23, clock_str)
+    watch_str = "watch"
+    watch_rope = create_rope(exx.a23, watch_str)
     wk_str = "ced_wk"
-    wk_rope = create_rope(clock_rope, wk_str)
+    wk_rope = create_rope(watch_rope, wk_str)
     o1_n1_d6_case = caseunit_shop(
         reason_state=wk_rope, reason_divisor=6, reason_lower=1, reason_upper=1
     )
@@ -630,10 +630,10 @@ def test_CaseUnit_set_case_active_SetAttrs_Scenario4_CEDWeek_case_active_False()
 
 def test_CaseUnit_set_case_active_SetAttrs_Scenario5_CEDWeek_case_active_True():
     # ESTABLISH
-    clock_str = "clock"
-    clock_rope = create_rope(exx.a23, clock_str)
+    watch_str = "watch"
+    watch_rope = create_rope(exx.a23, watch_str)
     wk_str = "ced_wk"
-    wk_rope = create_rope(clock_rope, wk_str)
+    wk_rope = create_rope(watch_rope, wk_str)
     wk_case = caseunit_shop(
         reason_state=wk_rope, reason_divisor=6, reason_lower=1, reason_upper=1
     )
@@ -649,10 +649,10 @@ def test_CaseUnit_set_case_active_SetAttrs_Scenario5_CEDWeek_case_active_True():
 
 def test_CaseUnit_to_dict_ReturnsObj_Scenario0_With_divisor_reason_lower_reason_upper():
     # ESTABLISH
-    clock_str = "clock"
-    clock_rope = create_rope(exx.a23, clock_str)
+    watch_str = "watch"
+    watch_rope = create_rope(exx.a23, watch_str)
     wk_str = "ced_wk"
-    wk_rope = create_rope(clock_rope, wk_str)
+    wk_rope = create_rope(watch_rope, wk_str)
     wk_case = caseunit_shop(
         reason_state=wk_rope, reason_divisor=6, reason_lower=1, reason_upper=1
     )
@@ -673,10 +673,10 @@ def test_CaseUnit_to_dict_ReturnsObj_Scenario0_With_divisor_reason_lower_reason_
 
 def test_CaseUnit_to_dict_ReturnsObj_Scenario1_With_reason_lower_reason_upper_WithOut_divisor():
     # ESTABLISH
-    clock_str = "clock"
-    clock_rope = create_rope(exx.a23, clock_str)
+    watch_str = "watch"
+    watch_rope = create_rope(exx.a23, watch_str)
     wk_str = "ced_wk"
-    wk_rope = create_rope(clock_rope, wk_str)
+    wk_rope = create_rope(watch_rope, wk_str)
     wk_case = caseunit_shop(wk_rope, reason_lower=1, reason_upper=4)
 
     # WHEN
@@ -690,10 +690,10 @@ def test_CaseUnit_to_dict_ReturnsObj_Scenario1_With_reason_lower_reason_upper_Wi
 
 def test_CaseUnit_to_dict_ReturnsObj_Scenario2_WithOnlyRopeTerms():
     # ESTABLISH
-    clock_str = "clock"
-    clock_rope = create_rope(exx.a23, clock_str)
+    watch_str = "watch"
+    watch_rope = create_rope(exx.a23, watch_str)
     wk_str = "ced_wk"
-    wk_rope = create_rope(clock_rope, wk_str)
+    wk_rope = create_rope(watch_rope, wk_str)
     wk_case = caseunit_shop(wk_rope)
 
     # WHEN
@@ -707,10 +707,10 @@ def test_CaseUnit_to_dict_ReturnsObj_Scenario2_WithOnlyRopeTerms():
 
 def test_CaseUnit_get_obj_key():
     # ESTABLISH
-    clock_str = "clock"
-    clock_rope = create_rope(exx.a23, clock_str)
+    watch_str = "watch"
+    watch_rope = create_rope(exx.a23, watch_str)
     wk_str = "ced_wk"
-    wk_rope = create_rope(clock_rope, wk_str)
+    wk_rope = create_rope(watch_rope, wk_str)
     wk_case = caseunit_shop(wk_rope)
 
     # WHEN / THEN

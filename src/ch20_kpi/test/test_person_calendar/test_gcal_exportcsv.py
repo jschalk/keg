@@ -124,7 +124,7 @@ def test_create_gcalendar_events_list_ReturnsObj_Scenario3_OneEpoch_pledge():
     bob_gcal_events = create_gcalendar_events_list(bob_person, apr7)
 
     # THEN
-    gcal_agenda_list_str = f"""All Agenda Items\n1. {wx.mop_str} (66.67%) 10:00 AM-11:30 AM
+    gcal_agenda_list_str = f"""All Agenda Items\n1. {wx.mop_str} (66.67%) 10:00am-11:30am
 2. {wx.sweep_str} (33.33%)"""
     description_str = "Description"
     start_date_str = "Start Date"
@@ -221,7 +221,7 @@ def test_create_gcalendar_csv_from_person_ReturnsObj_Scenario0_OneEpoch_pledge()
     expected_csv_line2 = (
         "1. mop (66.67%),05/07/2010,10:00 AM,05/07/2010,11:30 AM,False,;YY;mop;"
     )
-    expected_csv_line3 = """Pledges,05/07/2010,,05/07/2010,,True,"All Agenda Items\n1. mop (66.67%) 10:00 AM-11:30 AM\n2. sweep (33.33%)"""
+    expected_csv_line3 = """Pledges,05/07/2010,,05/07/2010,,True,"All Agenda Items\n1. mop (66.67%) 10:00am-11:30am\n2. sweep (33.33%)"""
     assert expected_csv_line1 in bob_gcal_csv
     assert expected_csv_line2 in bob_gcal_csv
     assert expected_csv_line3 in bob_gcal_csv
