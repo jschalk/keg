@@ -21,7 +21,7 @@ def test_get_moment_timeshoe_ReturnsObj_Scenario0_Empty_offi_time(temp3_dir):
     # assert a23_timeshoe.shoe_min == a23_offi_time_max
     assert a23_timeshoe
     assert a23_timeshoe._month == "March"
-    assert a23_timeshoe._hour == "12am"
+    assert a23_timeshoe._hour_label == "12am"
     assert a23_timeshoe._minute == 0
     assert a23_timeshoe._monthday == 1
     assert a23_timeshoe._c400_number == 0
@@ -62,7 +62,7 @@ def test_get_moment_timeshoe_ReturnsObj_Scenario1_MomentUnit_NonDefaultAttrs(
     assert a23_timeshoe.person.respect_grain == a23_momentunit.respect_grain
     assert a23_timeshoe.person.mana_grain == a23_momentunit.mana_grain
     assert a23_timeshoe._month == "March"
-    assert a23_timeshoe._hour == "12am"
+    assert a23_timeshoe._hour_label == "12am"
     assert a23_timeshoe._minute == 0
     assert a23_timeshoe._monthday == 1
     assert a23_timeshoe._c400_number == 0

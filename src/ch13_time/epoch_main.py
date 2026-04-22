@@ -18,6 +18,8 @@ from ch13_time._ref.ch13_semantic_types import (
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from os import getcwd as os_getcwd
+from re import search as re_search
+from typing import Tuple
 
 DEFAULT_EPOCH_LENGTH = 1472657760
 
@@ -472,6 +474,34 @@ def get_epoch_min_difference(epoch_config0: dict, epoch_config1: dict) -> int:
     return offset_x0 - offset_x1
 
 
+def split_first_number(hour_label: str) -> Tuple[str, str]:
+    match = re_search(r"\d+", hour_label)
+    if not match:
+        empty_str = ""
+        return empty_str, hour_label  # no number found
+
+    number = match.group(0)
+    remainder = hour_label[: match.start()] + hour_label[match.end() :]
+    return number, remainder
+
+
+def ordinal_suffix(monthday: int) -> str:
+    monthday = abs(monthday)  # handle negatives safely
+
+    if 10 <= monthday % 100 <= 13:
+        return "th"
+
+    last_digit = monthday % 10
+    if last_digit == 1:
+        return "st"
+    elif last_digit == 2:
+        return "nd"
+    elif last_digit == 3:
+        return "rd"
+    else:
+        return "th"
+
+
 @dataclass
 class TimeShoe:
     """Given person, epoch_rope, and TimeNum, returns time technology attrs
@@ -493,16 +523,16 @@ class TimeShoe:
     shoe_min: TimeNum = None
     # calculated fields
     _epoch_plan: PlanUnit = None
-    _weekday: str = None
+    _weekday: LabelTerm = None
     _monthday: str = None
-    _month: str = None
-    _hour: str = None
-    _minute: str = None
-    _c400_number: str = None
-    _c100_count: str = None
-    _yr4_count: str = None
-    _year_count: str = None
-    _year_num: str = None
+    _month: LabelTerm = None
+    _hour_label: LabelTerm = None
+    _minute: TimeNum = None
+    _c400_number: int = None
+    _c100_count: int = None
+    _yr4_count: int = None
+    _year_count: int = None
+    _year_num: int = None
     _datetime: datetime = None
 
     def _set_epoch_plan(self):
@@ -551,7 +581,7 @@ class TimeShoe:
         rangeunit = calc_range(x_plan_list, self.shoe_min, self.shoe_min)
         hour_dict = day_plan.get_kids_in_range(rangeunit.gogo)
         for x_hour, hour_plan in hour_dict.items():
-            self._hour = x_hour
+            self._hour_label = x_hour
             hour_plan = hour_plan
 
         self._minute = rangeunit.gogo - hour_plan.gogo_calc
@@ -610,14 +640,25 @@ class TimeShoe:
         self._set_year()
         self._set_datetime()
 
-    def get_blurb(self) -> str:
-        x_str = f"{self._hour}"
+    def get_full_blurb(self) -> str:
+        x_str = f"{self._hour_label}"
         x_str += f":{self._minute}"
         x_str += f", {self._weekday}"
         x_str += f", {self._monthday}"
         x_str += f" {self._month}"
         x_str += f", {self._year_num}"
         return x_str
+
+    def clock(self) -> str:
+        """Returns str of clock time"""
+        if not self._hour_label:
+            return ""
+        hour_num, hour_rest = split_first_number(self._hour_label)
+        return f"{hour_num}:{self._minute}{hour_rest}"
+
+    def get_long_date_blurb(self) -> str:
+        monthday_str = f"{self._monthday}{ordinal_suffix(self._monthday)}"
+        return f"{self._month} {monthday_str} {self._year_num}"
 
 
 def timeshoe_shop(shoe_person: PersonUnit, epoch_label: LabelTerm, shoe_min: int):

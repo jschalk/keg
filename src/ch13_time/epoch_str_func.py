@@ -69,4 +69,4 @@ def get_fact_state_readable_str(
 def get_timenum_blurb(personunit: PersonUnit, epoch_rope: RopeTerm, x_min: int) -> str:
     lower_btlp = timeshoe_shop(personunit, epoch_rope, x_min)
     lower_btlp.calc_epoch()
-    return lower_btlp.get_blurb()
+    return lower_btlp.get_full_blurb()

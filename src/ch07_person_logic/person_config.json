@@ -4,7 +4,11 @@
     "description": "A person dimen representing Membership data. Keys: person_name, contact_name, group_title. person seed.", 
     "jkeys": {
       "contact_name": {"calc_by_thinkout": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
-      "group_title": {"calc_by_thinkout": false, "class_type": "TitleTerm", "sqlite_datatype": "TEXT"}, 
+      "group_title": {
+        "calc_by_thinkout": false, 
+        "class_type": "TitleTerm", 
+        "sqlite_datatype": "TEXT"
+      }, 
       "person_name": {"calc_by_thinkout": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}
     }, 
     "jvalues": {
@@ -64,7 +68,11 @@
     "abbreviation": "prnawar", 
     "description": "A person dimen representing AwardUnit data. Keys: person_name, plan_rope, awardee_title. person seed.", 
     "jkeys": {
-      "awardee_title": {"calc_by_thinkout": false, "class_type": "TitleTerm", "sqlite_datatype": "TEXT"}, 
+      "awardee_title": {
+        "calc_by_thinkout": false, 
+        "class_type": "TitleTerm", 
+        "sqlite_datatype": "TEXT"
+      }, 
       "person_name": {"calc_by_thinkout": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
       "plan_rope": {"calc_by_thinkout": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
     }, 
@@ -107,7 +115,11 @@
     "abbreviation": "prnlabo", 
     "description": "A person dimen representing HealerUnit data. Keys: person_name, plan_rope, labor_title. person seed.", 
     "jkeys": {
-      "labor_title": {"calc_by_thinkout": false, "class_type": "TitleTerm", "sqlite_datatype": "TEXT"}, 
+      "labor_title": {
+        "calc_by_thinkout": false, 
+        "class_type": "TitleTerm", 
+        "sqlite_datatype": "TEXT"
+      }, 
       "person_name": {"calc_by_thinkout": false, "class_type": "NameTerm", "sqlite_datatype": "TEXT"}, 
       "plan_rope": {"calc_by_thinkout": false, "class_type": "RopeTerm", "sqlite_datatype": "TEXT"}
     }, 
@@ -131,8 +143,16 @@
       "case_task": {"calc_by_thinkout": true, "class_type": "bool", "sqlite_datatype": "INTEGER"}, 
       "knot": {"calc_by_thinkout": false, "class_type": "float", "sqlite_datatype": "TEXT"}, 
       "reason_divisor": {"calc_by_thinkout": false, "class_type": "int", "sqlite_datatype": "INTEGER"}, 
-      "reason_lower": {"calc_by_thinkout": false, "class_type": "ReasonNum", "sqlite_datatype": "REAL"}, 
-      "reason_upper": {"calc_by_thinkout": false, "class_type": "ReasonNum", "sqlite_datatype": "REAL"}
+      "reason_lower": {
+        "calc_by_thinkout": false, 
+        "class_type": "ReasonNum", 
+        "sqlite_datatype": "REAL"
+      }, 
+      "reason_upper": {
+        "calc_by_thinkout": false, 
+        "class_type": "ReasonNum", 
+        "sqlite_datatype": "REAL"
+      }
     }
   }, 
   "person_plan_reasonunit": {

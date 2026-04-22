@@ -222,8 +222,8 @@ def display_current_creg_five_time_attrs(graphics_bool: bool):
         five_timeshoe = timeshoe_shop(sue_person, kw.five, five_min)
         creg_timeshoe.calc_epoch()
         five_timeshoe.calc_epoch()
-        creg_blurb = f"<b>{creg_timeshoe.get_blurb()}</b>"
-        five_blurb = f"<b>{five_timeshoe.get_blurb()}</b>"
+        creg_blurb = f"<b>{creg_timeshoe.get_full_blurb()}</b>"
+        five_blurb = f"<b>{five_timeshoe.get_full_blurb()}</b>"
 
         datetime_str = current_datetime.strftime("%H:%M, %A, %d %B, %Y")
         dt_str = f"python : {datetime_str}"
@@ -262,9 +262,9 @@ def display_creg_five_squirt_time_attrs(graphics_bool: bool):
         creg_timeshoe.calc_epoch()
         five_timeshoe.calc_epoch()
         squirt_timeshoe.calc_epoch()
-        creg_blurb = f"<b>{creg_timeshoe.get_blurb()}</b>"
-        five_blurb = f"<b>{five_timeshoe.get_blurb()}</b>"
-        squirt_blurb = f"<b>{squirt_timeshoe.get_blurb()}</b>"
+        creg_blurb = f"<b>{creg_timeshoe.get_full_blurb()}</b>"
+        five_blurb = f"<b>{five_timeshoe.get_full_blurb()}</b>"
+        squirt_blurb = f"<b>{squirt_timeshoe.get_full_blurb()}</b>"
 
         datetime_str = current_datetime.strftime("%H:%M, %A, %d %B, %Y")
         dt_str = f"python : {datetime_str}"

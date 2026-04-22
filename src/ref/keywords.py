@@ -2056,6 +2056,7 @@ class Ch13Keywords(str, Enum):
     healerunit = "healerunit"
     healerunit_ratio = "healerunit_ratio"
     hour = "hour"
+    hour_label = "hour_label"
     hours_config = "hours_config"
     inallocable_contact_debt_lumen = "inallocable_contact_debt_lumen"
     init_chapter = "init_chapter"
