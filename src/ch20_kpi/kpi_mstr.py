@@ -4,7 +4,7 @@ from ch04_rope.rope import create_rope
 from ch09_person_lesson._ref.ch09_path import create_moments_dir_path
 from ch09_person_lesson.lasso import lassounit_shop
 from ch13_time.calendar_markdown import get_calendarmarkdown_str
-from ch14_moment.moment_frame import get_moment_epochholder
+from ch14_moment.moment_frame import get_moment_timeshoe
 from ch14_moment.moment_main import open_moment_file
 from ch17_idea.idea_db_tool import save_table_to_csv
 from ch20_kpi.kpi_sqlstr import get_create_kpi001_sqlstr, get_create_kpi002_sqlstr
@@ -81,8 +81,8 @@ def create_calendar_markdown_files(moment_mstr_dir: str, output_dir: str):
         moment_calendar_md_path = create_path(output_dir, f"{moment_label}_calendar.md")
         moment_lasso = lassounit_shop(create_rope(moment_label))
         x_momentunit = open_moment_file(moment_mstr_dir, moment_lasso)
-        moment_epochholder = get_moment_epochholder(x_momentunit)
-        moment_year_num = moment_epochholder._year_num
+        moment_timeshoe = get_moment_timeshoe(x_momentunit)
+        moment_year_num = moment_timeshoe._year_num
         moment_epoch_config = x_momentunit.epoch.to_dict()
         x_calendarmarkdown = get_calendarmarkdown_str(
             moment_epoch_config, moment_year_num

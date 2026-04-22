@@ -1,6 +1,7 @@
 from ch00_py.plotly_toolbox import conditional_fig_show
 from ch06_plan.plan import PlanUnit
 from ch07_person_logic.person_main import PersonUnit, personunit_shop
+from ch13_time._ref.ch13_semantic_types import TimeNum
 from ch13_time.epoch_config import (
     get_creg_config,
     get_five_config,
@@ -10,9 +11,10 @@ from ch13_time.epoch_config import (
 from ch13_time.epoch_main import (
     add_epoch_planunit,
     create_weekday_planunits,
-    epochholder_shop,
+    get_dt_from_min_offset,
     get_min_from_dt_offset,
     new_epoch_planunit,
+    timeshoe_shop,
 )
 from datetime import datetime
 from enum import Enum
@@ -168,6 +170,10 @@ def get_creg_min_from_dt(dt: datetime) -> int:
     return get_min_from_dt_offset(dt, get_creg_config().get(kw.yr1_jan1_offset))
 
 
+def get_dt_from_creg_min(creg_min: TimeNum) -> datetime:
+    return get_dt_from_min_offset(creg_min, get_creg_config().get(kw.yr1_jan1_offset))
+
+
 def get_five_min_from_dt(dt: datetime) -> int:
     return get_min_from_dt_offset(dt, get_five_config().get(kw.yr1_jan1_offset))
 
@@ -212,12 +218,12 @@ def display_current_creg_five_time_attrs(graphics_bool: bool):
         sue_person = add_time_five_planunit(sue_person)
         creg_min = get_creg_min_from_dt(current_datetime)
         five_min = get_five_min_from_dt(current_datetime)
-        creg_epochholder = epochholder_shop(sue_person, kw.creg, creg_min)
-        five_epochholder = epochholder_shop(sue_person, kw.five, five_min)
-        creg_epochholder.calc_epoch()
-        five_epochholder.calc_epoch()
-        creg_blurb = f"<b>{creg_epochholder.get_blurb()}</b>"
-        five_blurb = f"<b>{five_epochholder.get_blurb()}</b>"
+        creg_timeshoe = timeshoe_shop(sue_person, kw.creg, creg_min)
+        five_timeshoe = timeshoe_shop(sue_person, kw.five, five_min)
+        creg_timeshoe.calc_epoch()
+        five_timeshoe.calc_epoch()
+        creg_blurb = f"<b>{creg_timeshoe.get_blurb()}</b>"
+        five_blurb = f"<b>{five_timeshoe.get_blurb()}</b>"
 
         datetime_str = current_datetime.strftime("%H:%M, %A, %d %B, %Y")
         dt_str = f"python : {datetime_str}"
@@ -250,15 +256,15 @@ def display_creg_five_squirt_time_attrs(graphics_bool: bool):
         creg_min = get_creg_min_from_dt(current_datetime)
         five_min = get_five_min_from_dt(current_datetime)
         squirt_min = get_squirt_min_from_dt(current_datetime)
-        creg_epochholder = epochholder_shop(sue_person, kw.creg, creg_min)
-        five_epochholder = epochholder_shop(sue_person, kw.five, five_min)
-        squirt_epochholder = epochholder_shop(sue_person, "squirt", squirt_min)
-        creg_epochholder.calc_epoch()
-        five_epochholder.calc_epoch()
-        squirt_epochholder.calc_epoch()
-        creg_blurb = f"<b>{creg_epochholder.get_blurb()}</b>"
-        five_blurb = f"<b>{five_epochholder.get_blurb()}</b>"
-        squirt_blurb = f"<b>{squirt_epochholder.get_blurb()}</b>"
+        creg_timeshoe = timeshoe_shop(sue_person, kw.creg, creg_min)
+        five_timeshoe = timeshoe_shop(sue_person, kw.five, five_min)
+        squirt_timeshoe = timeshoe_shop(sue_person, "squirt", squirt_min)
+        creg_timeshoe.calc_epoch()
+        five_timeshoe.calc_epoch()
+        squirt_timeshoe.calc_epoch()
+        creg_blurb = f"<b>{creg_timeshoe.get_blurb()}</b>"
+        five_blurb = f"<b>{five_timeshoe.get_blurb()}</b>"
+        squirt_blurb = f"<b>{squirt_timeshoe.get_blurb()}</b>"
 
         datetime_str = current_datetime.strftime("%H:%M, %A, %d %B, %Y")
         dt_str = f"python : {datetime_str}"

@@ -19,6 +19,7 @@ from ch13_time.test._util.ch13_examples import (
     display_current_creg_five_min,
     get_creg_config,
     get_creg_min_from_dt,
+    get_dt_from_creg_min,
     get_five_config,
     get_five_min_from_dt,
     get_fri,
@@ -872,6 +873,31 @@ def test_get_creg_min_from_dt_ReturnsObj():
     assert get_creg_min_from_dt(datetime(2022, 10, 29, 0, 0)) == x_minutes
     x_next_day = x_minutes + 1440
     assert get_creg_min_from_dt(datetime(2022, 10, 30, 0, 0)) == x_next_day
+
+
+def check_get_dt_from_creg_min(x_datetime: datetime) -> bool:
+    from_dt_min = get_creg_min_from_dt(x_datetime)
+    from_creg_min_dt = get_dt_from_creg_min(from_dt_min)
+    print(f"{from_creg_min_dt=}")
+    print(f"      {x_datetime=}")
+    if from_creg_min_dt == x_datetime:
+        return True
+    return False
+
+
+def test_get_dt_from_creg_min_ReturnsObj():
+    # ESTABLISH / WHEN /THEN
+    assert check_get_dt_from_creg_min(datetime(1938, 11, 10))
+    assert check_get_dt_from_creg_min(datetime(1, 1, 1))
+    assert check_get_dt_from_creg_min(datetime(1, 1, 2))
+    assert check_get_dt_from_creg_min(datetime(1938, 11, 10))
+    # assert g_lw.get_time_dt_from_min(
+    #     min=g_lw.get_creg_min_from_dt(dt=datetime(2000, 1, 1, 0, 0))
+    # ) == datetime(2000, 1, 1, 0, 0)
+    assert check_get_dt_from_creg_min(datetime(800, 1, 1, 0, 0))
+    assert check_get_dt_from_creg_min(datetime(1200, 1, 1, 0, 0))
+    assert check_get_dt_from_creg_min(datetime(1201, 3, 1, 0, 0))
+    assert check_get_dt_from_creg_min(datetime(1201, 3, 1, 0, 20))
 
 
 def test_get_epoch_min_from_dt_ReturnsObj():
