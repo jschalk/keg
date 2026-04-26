@@ -1,37 +1,34 @@
 from ch11_bud.bud_main import personbudhistory_shop
 from ch13_time.epoch_main import DEFAULT_EPOCH_LENGTH, epochunit_shop, get_epoch_length
 from ch13_time.test._util.ch13_examples import get_creg_config
-from ch14_moment.moment_frame import (
-    add_epoch_frame_to_momentunit,
-    get_moment_epochholder,
-)
+from ch14_moment.moment_frame import add_epoch_frame_to_momentunit, get_moment_timeshoe
 from ch14_moment.moment_main import momentunit_shop
 from ref.keywords import ExampleStrs as exx
 
 
-def test_get_moment_epochholder_ReturnsObj_Scenario0_Empty_offi_time(temp3_dir):
+def test_get_moment_timeshoe_ReturnsObj_Scenario0_Empty_offi_time(temp3_dir):
     # ESTABLISH
     a23_momentunit = momentunit_shop(exx.a23, temp3_dir)
     assert a23_momentunit.epoch == epochunit_shop(get_creg_config())
     assert not a23_momentunit.offi_time_max
 
     # WHEN
-    a23_epochholder = get_moment_epochholder(a23_momentunit)
+    a23_timeshoe = get_moment_timeshoe(a23_momentunit)
 
     # THEN
     assert a23_momentunit.offi_time_max == 0
-    assert a23_epochholder.x_min == 0
-    # assert a23_epochholder.x_min == a23_offi_time_max
-    assert a23_epochholder
-    assert a23_epochholder._month == "March"
-    assert a23_epochholder._hour == "12am"
-    assert a23_epochholder._minute == 0
-    assert a23_epochholder._monthday == 1
-    assert a23_epochholder._c400_number == 0
-    assert a23_epochholder._year_num == 0
+    assert a23_timeshoe.epoch_min == 0
+    # assert a23_timeshoe.epoch_min == a23_offi_time_max
+    assert a23_timeshoe
+    assert a23_timeshoe._month == "March"
+    assert a23_timeshoe._hour_label == "12am"
+    assert a23_timeshoe._minute == 0
+    assert a23_timeshoe._monthday == 1
+    assert a23_timeshoe._c400_number == 0
+    assert a23_timeshoe._year_num == 0
 
 
-def test_get_moment_epochholder_ReturnsObj_Scenario1_MomentUnit_NonDefaultAttrs(
+def test_get_moment_timeshoe_ReturnsObj_Scenario1_MomentUnit_NonDefaultAttrs(
     temp3_dir,
 ):
     # ESTABLISH
@@ -50,29 +47,28 @@ def test_get_moment_epochholder_ReturnsObj_Scenario1_MomentUnit_NonDefaultAttrs(
     assert not a23_momentunit.offi_time_max
 
     # WHEN
-    a23_epochholder = get_moment_epochholder(a23_momentunit)
+    a23_timeshoe = get_moment_timeshoe(a23_momentunit)
 
     # THEN
     assert a23_momentunit.offi_time_max == 0
-    assert a23_epochholder.x_min == 0
+    assert a23_timeshoe.epoch_min == 0
 
-    assert a23_epochholder
-    # assert a23_epochholder.x_min == a23_offi_time_max
-    a23_personunit = a23_epochholder.x_personunit
-    assert a23_personunit.person_name == "for_EpochHolder_calculation"
-    assert a23_personunit.planroot.get_plan_rope() == a23_momentunit.moment_rope
-    assert a23_personunit.knot == a23_momentunit.knot
-    assert a23_personunit.fund_grain == a23_momentunit.fund_grain
-    assert a23_personunit.respect_grain == a23_momentunit.respect_grain
-    assert a23_personunit.mana_grain == a23_momentunit.mana_grain
-    assert a23_epochholder._month == "March"
-    assert a23_epochholder._hour == "12am"
-    assert a23_epochholder._minute == 0
-    assert a23_epochholder._monthday == 1
-    assert a23_epochholder._c400_number == 0
-    assert a23_epochholder._year_num == 0
+    assert a23_timeshoe
+    # assert a23_timeshoe.epoch_min == a23_offi_time_max
+    assert a23_timeshoe.person.person_name == "for_TimeShoe_calculation"
+    assert a23_timeshoe.person.planroot.get_plan_rope() == a23_momentunit.moment_rope
+    assert a23_timeshoe.person.knot == a23_momentunit.knot
+    assert a23_timeshoe.person.fund_grain == a23_momentunit.fund_grain
+    assert a23_timeshoe.person.respect_grain == a23_momentunit.respect_grain
+    assert a23_timeshoe.person.mana_grain == a23_momentunit.mana_grain
+    assert a23_timeshoe._month == "March"
+    assert a23_timeshoe._hour_label == "12am"
+    assert a23_timeshoe._minute == 0
+    assert a23_timeshoe._monthday == 1
+    assert a23_timeshoe._c400_number == 0
+    assert a23_timeshoe._year_num == 0
     #  personunit_shop()
-    #  epochholder_shop()
+    #  timeshoe_shop()
 
 
 def test_add_epoch_frame_to_momentunit_SetsAttr_Scenario0_tran_time(temp3_dir):

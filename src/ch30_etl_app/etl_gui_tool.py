@@ -16,13 +16,11 @@ from ch17_idea.idea_belief_csv import (
 from ch17_idea.idea_db_tool import (
     csv_dict_to_excel,
     prettify_excel_file,
-    prettify_excel_files,
     remove_empty_sheets,
 )
 from ch21_world.world import worlddir_shop
 from dataclasses import dataclass
 from io import StringIO
-import pandas as pd
 from pandas import (
     DataFrame as pandas_DataFrame,
     ExcelWriter as pandas_ExcelWriter,
@@ -31,7 +29,6 @@ from pandas import (
 )
 from pathlib import Path
 from platform import system as platform_system
-from sys import platform
 from typing import Callable
 
 

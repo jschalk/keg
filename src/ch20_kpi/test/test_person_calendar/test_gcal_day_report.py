@@ -2,7 +2,12 @@ from ch00_py.file_toolbox import create_path, open_file, save_file
 from ch07_person_logic.person_main import personunit_shop
 from ch09_person_lesson.lasso import lassounit_shop
 from ch10_person_listen.keep_tool import save_job_file
-from ch13_time.epoch_main import add_epoch_planunit, get_default_epoch_config_dict
+from ch13_time.epoch_main import (
+    add_epoch_planunit,
+    get_default_epoch_config_dict,
+    get_epoch_min_from_dt,
+    timeshoe_shop,
+)
 from ch14_moment.moment_main import momentunit_shop, save_moment_file
 from ch20_kpi._ref.ch20_path import (
     create_day_punch_txt_path as day_punch_path,
@@ -38,7 +43,10 @@ def test_get_gcal_day_punch_from_personunit_ReturnsObj_Scenario0_EmptyPerson():
 
     # THEN
     assert sue_day_punch_str
-    assert f"Day Report for {exx.sue}" in sue_day_punch_str
+    ap7_epoch_min = get_epoch_min_from_dt(sue_person, kw.creg, apr7)
+    ap7_timeshoe = timeshoe_shop(sue_person, kw.creg, ap7_epoch_min)
+    expected_str = f"{ap7_timeshoe.get_long_date_blurb()} Agenda for {exx.sue}"
+    assert expected_str in sue_day_punch_str
     assert "Schedule Priorities" in sue_day_punch_str
     assert "All Agenda Items" in sue_day_punch_str
     assert "Contacts" in sue_day_punch_str
@@ -57,7 +65,7 @@ def test_get_gcal_day_punch_from_personunit_ReturnsObj_Scenario1_NonEmptyPerson(
 
     # THEN
     assert sue_day_punch_str
-    assert f"Day Report for {exx.sue}" in sue_day_punch_str
+    assert f"Agenda for {exx.sue}" in sue_day_punch_str
     assert "Schedule Priorities" in sue_day_punch_str
     assert "All Agenda Items" in sue_day_punch_str
     assert "Contacts" in sue_day_punch_str
@@ -203,8 +211,8 @@ def test_get_person_gcal_day_punchs_ReturnsObj_Scenario2_OnlySueReports(
     sue_ep8_dict = sue_day_punchs.get(exx.ep8)
     assert "Schedule Priorities" in sue_a23_dict.get("day_punch")
     assert "Schedule Priorities" in sue_ep8_dict.get("day_punch")
-    assert f"Day Report for {exx.sue}" in sue_a23_dict.get("day_punch")
-    assert f"Day Report for {exx.sue}" in sue_ep8_dict.get("day_punch")
+    assert f"Agenda for {exx.sue}" in sue_a23_dict.get("day_punch")
+    assert f"Agenda for {exx.sue}" in sue_ep8_dict.get("day_punch")
     sue_a23_day_punch_path = day_punch_path(mmt_mstr_dir, a23_lasso, exx.sue)
     sue_ep8_day_punch_path = day_punch_path(mmt_mstr_dir, ep8_lasso, exx.sue)
     assert sue_a23_day_punch_path == sue_a23_dict.get("file_path")
@@ -260,8 +268,8 @@ def test_lynx_to_person_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     sue_a23_day_punch_str = open_file(sue_a23_day_punch_path)
     sue_ep8_day_punch_str = open_file(sue_ep8_day_punch_path)
     assert "Schedule Priorities" in sue_ep8_day_punch_str
-    assert f"Day Report for {exx.sue}" in sue_a23_day_punch_str
-    assert f"Day Report for {exx.sue}" in sue_ep8_day_punch_str
+    assert f"Agenda for {exx.sue}" in sue_a23_day_punch_str
+    assert f"Agenda for {exx.sue}" in sue_ep8_day_punch_str
 
 
 def test_copy_person_day_punches_to_dst_dir_SavesFiles_Scenario0_TwoSueReports(

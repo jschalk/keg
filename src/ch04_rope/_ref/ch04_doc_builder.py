@@ -37,12 +37,12 @@ def get_ropeterm_description_md() -> str:
     usa_texas_dallas_rope = create_rope(usa_texas_rope, dallas_str)
     usa_texas_paris_rope = create_rope(usa_texas_rope, paris_str)
 
-    football_str = "Football"
-    football_place_love_rope = create_rope(football_str, "Places that love football")
-    football_place_love_midwest_rope = create_rope(football_place_love_rope, "Midwest")
-    fb_love_thesouth_rope = create_rope(football_place_love_rope, "The South")
+    soccer_str = "Soccer"
+    soccer_place_love_rope = create_rope(soccer_str, "Places that love soccer")
+    soccer_place_love_midwest_rope = create_rope(soccer_place_love_rope, "Midwest")
+    fb_love_thesouth_rope = create_rope(soccer_place_love_rope, "The South")
     fb_love_thesouth_texas_rope = create_rope(fb_love_thesouth_rope, texas_str)
-    fb_no_love_rope = create_rope(football_str, "Places that do not love football")
+    fb_no_love_rope = create_rope(soccer_str, "Places that do not love soccer")
     fb_no_love_france_rope = create_rope(fb_no_love_rope, france_str)
     fb_no_love_berlin_rope = create_rope(fb_no_love_rope, berlin_str)
     compelling_str = "Compelling things"
@@ -50,17 +50,17 @@ def get_ropeterm_description_md() -> str:
     i_formation_str = "i formation"
     metaethics_str = "metaethics philosophy"
     baking_str = "baking"
-    fb_compelling_rope = create_rope(football_str, compelling_str)
-    fb_not_compelling_rope = create_rope(football_str, not_compelling_str)
+    fb_compelling_rope = create_rope(soccer_str, compelling_str)
+    fb_not_compelling_rope = create_rope(soccer_str, not_compelling_str)
     fb_i_formation_rope = create_rope(fb_compelling_rope, i_formation_str)
     fb_metaethics_rope = create_rope(fb_not_compelling_rope, metaethics_str)
     fb_baking_rope = create_rope(fb_not_compelling_rope, baking_str)
-    fb_like_things_rope = create_rope(football_str, "Things I like to do")
+    fb_like_things_rope = create_rope(soccer_str, "Things I like to do")
     fb_recruit_rope = create_rope(
         fb_like_things_rope, "tell players to play at my favorite team"
     )
     fb_demps_rope = create_rope(fb_like_things_rope, "tell stories about Quetin Demps")
-    # football_ ;Football;my favorite;tell players to play there;
+    # soccer_ ;Soccer;my favorite;tell players to play there;
 
     return f"""# Ropes
 

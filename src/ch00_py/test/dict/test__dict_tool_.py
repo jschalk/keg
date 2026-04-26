@@ -584,11 +584,8 @@ Yao,41,37
 
     # THEN
     assert gen_csv
-    assert (
-        gen_csv
-        == f"""{ex0.bowl},{six_str},{seven_str}
+    assert gen_csv == f"""{ex0.bowl},{six_str},{seven_str}
 {headerless_csv}"""
-    )
 
 
 def test_is_2d_with_unique_keys_ReturnsObj():

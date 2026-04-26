@@ -168,7 +168,7 @@ def add_translate_rows_to_belief_csv_strs(
     moment_csv_strs["ii00145"] = ii00145_csv
 
 
-def collect_belief_csv_strs(world_dir: str) -> dict[str, str]:
+def collect_full_world_belief_csv_strs(world_dir: str) -> dict[str, str]:
     moment_mstr_dir = create_moment_mstr_path(world_dir)
     x_csv_strs = create_init_belief_idea_csv_strs()
     moments_dir = create_moments_dir_path(moment_mstr_dir)
@@ -203,7 +203,8 @@ def create_belief0001_file(
     world_name: str,
     prettify_excel_bool: bool = True,
 ):
-    belief_csv_strs = collect_belief_csv_strs(world_dir)
+    """Returns belief file of every moment and gut in world_dir"""
+    belief_csv_strs = collect_full_world_belief_csv_strs(world_dir)
     with_spark_face_csvs = {}
     for csv_key, csv_str in belief_csv_strs.items():
         csv_str = replace_csv_column_from_string(csv_str, "spark_face", world_name)

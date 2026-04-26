@@ -1,21 +1,21 @@
 from ch07_person_logic.person_main import personunit_shop
 from ch11_bud.bud_main import personbudhistory_shop, tranbook_shop
 from ch13_time.epoch_main import (
-    EpochHolder,
+    TimeShoe,
     add_epoch_planunit,
-    epochholder_shop,
     get_epoch_length,
     get_epoch_rope,
+    timeshoe_shop,
 )
 from ch14_moment.moment_main import MomentUnit
 
 
-def get_moment_epochholder(momentunit: MomentUnit) -> EpochHolder:
-    """Returns EpochHolder from MomentUnit attrs."""
+def get_moment_timeshoe(momentunit: MomentUnit) -> TimeShoe:
+    """Returns TimeShoe from MomentUnit attrs."""
     momentunit.set_offi_time_max(0)
     # create empty personunit
     x_personunit = personunit_shop(
-        person_name="for_EpochHolder_calculation",
+        person_name="for_TimeShoe_calculation",
         planroot_rope=momentunit.moment_rope,
         knot=momentunit.knot,
         fund_grain=momentunit.fund_grain,
@@ -26,9 +26,9 @@ def get_moment_epochholder(momentunit: MomentUnit) -> EpochHolder:
     moment_epoch_config = momentunit.epoch.to_dict()
     # create epoch plan from momentunit.epoch_config
     add_epoch_planunit(x_personunit, moment_epoch_config)
-    x_epochholder = epochholder_shop(x_personunit, moment_epoch_label, 0)
-    x_epochholder.calc_epoch()
-    return x_epochholder
+    x_timeshoe = timeshoe_shop(x_personunit, moment_epoch_label, 0)
+    x_timeshoe.calc_epoch()
+    return x_timeshoe
 
 
 def add_epoch_frame_to_momentunit(momentunit: MomentUnit, epoch_frame_min: int):

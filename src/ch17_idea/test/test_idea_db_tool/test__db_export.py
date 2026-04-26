@@ -1,15 +1,12 @@
 from ch17_idea.idea_db_tool import export_db_to_excel
-from openpyxl import (
-    Workbook as openpyxl_Workbook,
-    load_workbook as openpyxl_load_workbook,
-)
-import pytest
-import sqlite3
+from openpyxl import load_workbook as openpyxl_load_workbook
+from pytest import fixture as pytest_fixture, raises as pytest_raises
+from sqlite3 import connect as sqlite3_connect
 
 
-@pytest.fixture
+@pytest_fixture
 def db():
-    conn = sqlite3.connect(":memory:")
+    conn = sqlite3_connect(":memory:")
     cursor = conn.cursor()
     cursor.execute("CREATE TABLE users (id INTEGER, name TEXT, age INTEGER)")
     cursor.executemany(
@@ -93,9 +90,9 @@ def test_export_db_to_excel_CreatesFile_empty_table(db, tmp_path):
 
 def test_export_db_to_excel_CreatesFile_no_tables_raises(tmp_path):
     # ESTABLISH
-    conn = sqlite3.connect(":memory:")
+    conn = sqlite3_connect(":memory:")
     cursor = conn.cursor()
     # WHEN / THEN
-    with pytest.raises(ValueError, match="No tables found"):
+    with pytest_raises(ValueError, match="No tables found"):
         export_db_to_excel(cursor, str(tmp_path / "output.xlsx"))
     conn.close()

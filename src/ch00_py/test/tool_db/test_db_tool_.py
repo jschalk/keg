@@ -635,14 +635,12 @@ def test_table_exists_ReturnsObjWhenPassedConnectionObj(cursor0: Cursor):
     assert db_table_exists(cursor0, users_tablename) is False
 
     # WHEN
-    cursor0.execute(
-        """
+    cursor0.execute("""
         CREATE TABLE users (
             id INTEGER PRIMARY KEY,
             name TEXT NOT NULL
         )
-    """
-    )
+    """)
 
     # THEN
     assert db_table_exists(cursor0, users_tablename)
@@ -654,14 +652,12 @@ def test_table_exists_ReturnsObjWhenPassedCusorObj(cursor0: Cursor):
     assert db_table_exists(cursor0, users_tablename) is False
 
     # WHEN
-    cursor0.execute(
-        """
+    cursor0.execute("""
         CREATE TABLE users (
             id INTEGER PRIMARY KEY,
             name TEXT NOT NULL
         )
-    """
-    )
+    """)
 
     # THEN
     assert db_table_exists(cursor0, users_tablename)

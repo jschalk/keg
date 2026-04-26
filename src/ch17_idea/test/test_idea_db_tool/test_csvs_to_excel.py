@@ -1,7 +1,6 @@
 from ch00_py.file_toolbox import create_path
 from ch17_idea.idea_db_tool import (
     csv_dict_to_excel,
-    get_idea_sqlite_types,
     prettify_excel_file,
     prettify_excel_files,
     set_df_idea_column_types,
@@ -14,9 +13,7 @@ from pandas import (
     read_excel as pandas_read_excel,
 )
 from pandas.testing import assert_frame_equal as pandas_testing_assert_frame_equal
-import pytest
 from ref.keywords import Ch17Keywords as kw
-from unittest.mock import MagicMock, patch
 
 
 def test_csv_dict_to_excel_SavesFile(temp3_fs):

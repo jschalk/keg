@@ -63,7 +63,7 @@ def test_Chapters_NonTestFilesDoNotHaveStringFunctionsImports():
         for file_path, file_imports in get_python_files_with_flag(chapter_dir).items():
             filename = str(os_path_basename(file_path))
             file_path = str(file_path)
-            print(f"{file_path=}")
+            # print(f"{file_path=}")
             if not filename.startswith("test") and "_util" not in file_path:
                 for file_import in file_imports:
                     if str(file_import[0]).endswith("_str"):
