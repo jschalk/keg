@@ -7,7 +7,6 @@ from os import listdir as os_listdir
 from os.path import join as os_path_join
 from pandas import (
     DataFrame,
-    ExcelWriter,
     read_excel as pandas_read_excel,
     to_numeric as pandas_to_numeric,
 )

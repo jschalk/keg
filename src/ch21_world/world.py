@@ -1,7 +1,6 @@
 from ch00_py.file_toolbox import create_path, delete_dir, set_dir
 from ch17_idea.idea_db_tool import export_db_to_excel
 from ch18_etl_config._ref.ch18_path import create_moment_mstr_path, create_world_db_path
-from ch18_etl_config.belief_tool import create_belief0001_file, prettify_excel_file
 from ch18_etl_config.idea_collector import reorder_etl_db_sheets
 from ch19_etl_steps.belief2idea import beliefs_sheets_to_idea_sheets
 from ch19_etl_steps.etl_main import (
@@ -33,6 +32,7 @@ from ch19_etl_steps.etl_main import (
     etl_translate_sound_agg_tables_to_translate_sound_vld_tables,
     get_max_ideax_agg_spark_num,
 )
+from ch20_kpi.belief_output_tool import create_belief0001_file, prettify_excel_file
 from ch20_kpi.gcalendar import (
     copy_person_day_punches_to_dst_dir,
     lynx_to_person_gcal_day_punchs,

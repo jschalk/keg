@@ -308,7 +308,7 @@
   "momentunit": "TODO", 
   "Monday": "Example key with value 'Monday' used for tests throughout codebase.", 
   "month_label": ", mmtmont arg", 
-  "monthday_index": "Epoch config: Changes MonthDay displayed day number. Months' day numbers are assumed to start with 0. The first day of the month is #0. The 3rd day of the month would be Day #2 of month. Most audiences prefer The first day of the month to be 1 even though this makes divisor difficult. If monthday_index=1 then the 3rd day of the month is #3, Moment arg", 
+  "monthday_index": "Epoch config: Changes MonthDay displayed day number. Months' day numbers are assumed to start with 0. The first day of the month is #0. The 3rd day of the month would be Day #2 of month. Most prefer The first day of the month to be 1 even though this makes divisor difficult. If monthday_index=1 then the 3rd day of the month is #3, Moment arg", 
   "monthly_duration_days": "Required fields for creating Epoch monthly cases.", 
   "monthly_monthday_lower": "Required fields for creating Epoch monthly cases.", 
   "months_config": "Epoch config: List of lists that contain two elements: month name and the year's day when it ends. Last item list must contain year's day equal 365 because it is the last day of the year. [['March', 31], ['February', 365]]", 

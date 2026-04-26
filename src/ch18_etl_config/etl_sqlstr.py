@@ -2,7 +2,6 @@ from ch00_py.db_toolbox import (
     create_table2table_agg_insert_query,
     create_update_inconsistency_error_query,
 )
-from ch13_time.epoch_main import DEFAULT_EPOCH_LENGTH, get_c400_constants
 from ch17_idea.idea_config import get_idea_config_dict, get_quick_ideas_column_ref
 from ch17_idea.idea_db_tool import create_idea_sorted_table, get_default_sorted_list
 from ch18_etl_config._ref.ch18_semantic_types import KnotTerm

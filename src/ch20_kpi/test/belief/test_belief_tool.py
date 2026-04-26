@@ -14,32 +14,35 @@ from ch18_etl_config._ref.ch18_path import (
     create_moment_mstr_path,
     create_world_db_path,
 )
-from ch18_etl_config.belief_tool import collect_belief_csv_strs, create_belief0001_file
 from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
 )
+from ch20_kpi.belief_output_tool import (
+    collect_full_world_belief_csv_strs,
+    create_belief0001_file,
+)
 from os.path import exists as os_path_exists
 from pandas import read_excel as pandas_read_excel
-from ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
 from sqlite3 import connect as sqlite3_connect
 
 
-def test_collect_belief_csv_strs_ReturnsObj_Scenario0_NoMomentUnits(
+def test_collect_full_world_belief_csv_strs_ReturnsObj_Scenario0_NoMomentUnits(
     temp3_fs,
 ):
     # ESTABLISH
     world_dir = str(temp3_fs)
 
     # WHEN
-    gen_belief_csv_strs = collect_belief_csv_strs(world_dir)
+    gen_belief_csv_strs = collect_full_world_belief_csv_strs(world_dir)
 
     # THEN
     expected_belief_csv_strs = create_init_belief_idea_csv_strs()
     assert gen_belief_csv_strs == expected_belief_csv_strs
 
 
-def test_collect_belief_csv_strs_ReturnsObj_Scenario1_SingleMomentUnit_NoPersonUnits(
+def test_collect_full_world_belief_csv_strs_ReturnsObj_Scenario1_SingleMomentUnit_NoPersonUnits(
     temp3_fs,
 ):
     # ESTABLISH
@@ -50,7 +53,7 @@ def test_collect_belief_csv_strs_ReturnsObj_Scenario1_SingleMomentUnit_NoPersonU
     save_moment_file(a23_moment, a23_lasso)
 
     # WHEN
-    gen_belief_csv_strs = collect_belief_csv_strs(world_dir)
+    gen_belief_csv_strs = collect_full_world_belief_csv_strs(world_dir)
 
     # THEN
     expected_belief_csv_strs = create_init_belief_idea_csv_strs()
@@ -58,7 +61,7 @@ def test_collect_belief_csv_strs_ReturnsObj_Scenario1_SingleMomentUnit_NoPersonU
     assert gen_belief_csv_strs == expected_belief_csv_strs
 
 
-def test_collect_belief_csv_strs_ReturnsObj_Scenario2_gut_PersonUnits(
+def test_collect_full_world_belief_csv_strs_ReturnsObj_Scenario2_gut_PersonUnits(
     temp3_fs,
 ):
     # ESTABLISH
@@ -75,7 +78,7 @@ def test_collect_belief_csv_strs_ReturnsObj_Scenario2_gut_PersonUnits(
     save_gut_file(moment_mstr_dir, bob_gut)
 
     # WHEN
-    gen_belief_csv_strs = collect_belief_csv_strs(world_dir)
+    gen_belief_csv_strs = collect_full_world_belief_csv_strs(world_dir)
 
     # THEN
     expected_belief_csv_strs = create_init_belief_idea_csv_strs()
@@ -89,7 +92,7 @@ def test_collect_belief_csv_strs_ReturnsObj_Scenario2_gut_PersonUnits(
     assert gen_belief_csv_strs == expected_belief_csv_strs
 
 
-def test_collect_belief_csv_strs_ReturnsObj_Scenario3_TranslateRowsInDB(
+def test_collect_full_world_belief_csv_strs_ReturnsObj_Scenario3_TranslateRowsInDB(
     temp3_fs,
 ):
     # ESTABLISH database with translate data
@@ -135,7 +138,7 @@ def test_collect_belief_csv_strs_ReturnsObj_Scenario3_TranslateRowsInDB(
     db_conn.close()
 
     # WHEN
-    gen_belief_csv_strs = collect_belief_csv_strs(world_dir)
+    gen_belief_csv_strs = collect_full_world_belief_csv_strs(world_dir)
 
     # THEN
     assert gen_belief_csv_strs
@@ -171,8 +174,8 @@ def test_collect_belief_csv_strs_ReturnsObj_Scenario3_TranslateRowsInDB(
     assert ii00145_csv == expected_ii00145_csv
 
 
-# TODO change collect_belief_csv_strs so that if it's passed a person_name it only collects that person's beliefs
-def test_collect_belief_csv_strs_ReturnsObj_Scenario4_TranslateRowsInDB(
+# TODO change collect_full_world_belief_csv_strs so that if it's passed a person_name it only collects that person's beliefs
+def test_collect_full_world_belief_csv_strs_ReturnsObj_Scenario4_TranslateRowsInDB(
     temp3_fs,
 ):
     # ESTABLISH database with translate data
@@ -218,7 +221,7 @@ def test_collect_belief_csv_strs_ReturnsObj_Scenario4_TranslateRowsInDB(
     db_conn.close()
 
     # WHEN
-    gen_belief_csv_strs = collect_belief_csv_strs(world_dir)
+    gen_belief_csv_strs = collect_full_world_belief_csv_strs(world_dir)
 
     # THEN
     assert gen_belief_csv_strs

@@ -1,7 +1,7 @@
 # test_pip_version.py
+from ch00_py.version_reader import get_version
 import importlib
 import pytest
-from src.ch00_py.version_reader import get_version
 import subprocess
 import sys
 

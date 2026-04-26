@@ -1,3 +1,5 @@
+from typing import Literal
+
 from ch00_py.file_toolbox import create_path, get_dir_file_strs, open_file
 from ch00_py.keyword_class_builder import (
     get_chapter_keyword_classes,
@@ -170,7 +172,7 @@ def test_Chapters_KeywordsAppearWhereTheyShould():
             check_not_allowed_keywords(
                 not_allowed_keywords, file_str, chapter_prefix, file_path
             )
-            # print(f"{file_path=}")
+            assert does_not_allowed_from_src_import_exist(file_str, file_path)
             excessive_imports_str = f"{file_path} has too many Keywords class imports"
             ch_class_name = f"C{chapter_prefix[1:]}Keywords"
             is_doc_builder_file = "doc_builder.py" in file_path
@@ -228,6 +230,14 @@ def test_Chapters_KeywordsAppearWhereTheyShould():
             #     print()
             if keyword not in {"semantic_type"}:
                 assert min_chapter_count != 1, ch_count_fail_str
+
+
+def does_not_allowed_from_src_import_exist(
+    file_str: str, file_path
+) -> tuple[Literal[False]] | Literal[True]:
+    if "from " in file_str:
+        return False, f"file {file_path} should not have 'from '"
+    return True, ""
 
 
 def check_not_allowed_keywords(
