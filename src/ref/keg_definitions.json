@@ -390,6 +390,7 @@
   "pledge": ", Plan seed", 
   "pledges_count": "TODO", 
   "PoolNum": "float first used in ch01. PoolNum represents any possible subset of the sum of numbers in the pool.", 
+  "power": "Not used in codebase.", 
   "prnawar": "abbv for person_plan_awardunit", 
   "prncase": "abbv for person_plan_reason_caseunit", 
   "prncont": "abbv for person_contactunit", 

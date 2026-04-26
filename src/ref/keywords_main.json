@@ -366,6 +366,7 @@
   "planroot": {"exam_tier": 0, "init_chapter": "ch07"}, 
   "pledge": {"exam_tier": 0, "init_chapter": "ch06"}, 
   "pledges_count": {"exam_tier": 0, "init_chapter": "ch17"}, 
+  "power": {"exam_tier": 0, "init_chapter": ""}, 
   "prnawar": {"exam_tier": 0, "init_chapter": "ch07"}, 
   "prncase": {"exam_tier": 0, "init_chapter": "ch07"}, 
   "prncont": {"exam_tier": 0, "init_chapter": "ch07"}, 
