@@ -18,7 +18,7 @@ from ch17_idea.idea_db_tool import (
     prettify_excel_file,
     remove_empty_sheets,
 )
-from ch21_world.world import worlddir_shop
+from ch26_world.world import worlddir_shop
 from dataclasses import dataclass
 from io import StringIO
 from pandas import (

@@ -1,9 +1,5 @@
 import pytest
-import shutil
-import subprocess
-from pathlib import Path
 from platform import system
-from pyperclip import copy as pyperclip_copy
 from pytest import mark as pytest_mark
 from sqlite3 import Cursor, connect as sqlite3_connect
 from typing import Any, Generator
@@ -28,10 +24,22 @@ def pytest_collection_modifyitems(items):
 def pytest_addoption(parser):
     parser.addoption("--graphics_bool", action="store", default=False)
     parser.addoption("--run_big_tests", action="store", default=False)
-    parser.addoption("--clip", action="store_true", default=False)
+    parser.addoption(
+        "--tk_app",
+        action="store_true",
+        default=False,
+        help="run slow tkinter tests",
+    )
+    parser.addoption(
+        "--clip",
+        action="store_true",
+        default=False,
+        help="copies test function name to clipboard",
+    )
     parser.addoption(
         "--rebuild_jsons",
         action="store_true",
+        default=False,
         help="Rebuild JSON files during the test run",
     )
     parser.addoption(
@@ -64,6 +72,12 @@ def check_pip(request):
 def rebuild_jsons(request):
     """Fixture to access the flag value in tests"""
     return request.config.getoption("--rebuild_jsons")
+
+
+@pytest.fixture
+def tk_app(request):
+    """Fixture to access the flag value in tests"""
+    return request.config.getoption("--tk_app")
 
 
 # Create an isolated scratch directory for every test and switch cwd into it.

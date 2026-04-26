@@ -23,10 +23,11 @@ What does each one do?
 - **ch17_idea**: Defines how to build Ideas using Ideas. Moments and Persons are built by Ideas.
 - **ch18_etl_config**: Defines the tools that use Ideas to build MomentUnits.
 - **ch19_etl_steps**: Defines the tools that report from core world data.
-- **ch20_kpi**: Defines the analytics outcomes of completed MomentUnits.
-- **ch21_world**: Defines WorldDirs that admin MomentUnits input data and outcomes
-- **ch22_lobby**: Defines Lobby Tools for gifts, World Scenarios.
-- **ch23_finance**: Defines Finance Tools for 
-- **ch24_person_viewer**: Tools for Visualizing PersonUnits
+- **ch24_etl_otb**: Defines how beliefs for outside audiences are created.
+- **ch25_kpi**: Defines the analytics outcomes of completed MomentUnits.
+- **ch26_world**: Defines WorldDirs that admin MomentUnits input data and outcomes
+- **ch27_lobby**: Defines Lobby Tools for gifts, World Scenarios.
+- **ch28_finance**: Defines Finance Tools for 
+- **ch29_person_viewer**: Tools for Visualizing PersonUnits
 - **ch30_etl_app**: ETL app to create day punches from excel files.
 - **ch98_docs_builder**: Defines Tools that create documentation.

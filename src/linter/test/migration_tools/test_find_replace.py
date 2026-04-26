@@ -1,4 +1,4 @@
-from linter.chapter_migration_tools import (
+from linter.chapter_move_tools import (
     replace_in_tracked_python_files,
     string_exists_in_directory,
     string_exists_in_filepaths,
