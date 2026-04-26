@@ -42,7 +42,7 @@ version = "0.1.0"
 
 [tool.isort]
 combine_as_imports = true
-line_length = 120
+line_length = 88
 no_sections = true
 profile = "black"
 

@@ -73,6 +73,7 @@
   "ch17": "Defines how to build Ideas using Ideas. Moments and Persons are built by Ideas.", 
   "ch18": "Defines the tools that use Ideas to build MomentUnits.", 
   "ch19": "Defines the tools that report from core world data.", 
+  "ch24": "Defines how beliefs for outside audiences are created.", 
   "ch25": "Defines the analytics outcomes of completed MomentUnits.", 
   "ch26": "Defines WorldDirs that admin MomentUnits input data and outcomes", 
   "ch27": "Defines Lobby Tools for gifts, World Scenarios.", 

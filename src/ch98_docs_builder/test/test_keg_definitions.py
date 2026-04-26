@@ -55,6 +55,7 @@ from ch98_docs_builder.keg_definitions_builder import (
     get_chxx_ref_blurb,
     get_keg_definitions,
     get_person_dimen_config,
+    save_keywords_descrition_json,
 )
 from inspect import getdoc as inspect_getdoc
 from re import fullmatch as re_fullmatch
@@ -63,6 +64,27 @@ from ref.keywords import Ch98Keywords as kw, ExampleStrs as exx
 
 def python_keywords() -> set:
     return {"self", "class", "assert", "import", "global", "yield", "break", "match"}
+
+
+def test_SpecialUpdate_keg_definitions_file():
+    """special test that checks attributes of keg_definitions.
+    If any are incorrect. Rewrites them and asserts false"""
+    # ESTABLISH
+    keg_definitions = get_keg_definitions()
+    ch_dict = get_chxx_prefix_path_dict()
+    chapter_changes_needed = []
+    for chxx_prefix, ch_ref_path in ch_dict.items():
+        ch_blurb = get_chxx_ref_blurb(ch_dict, chxx_prefix)
+        ch_desc = keg_definitions.get(chxx_prefix)
+        print(f"{chxx_prefix=} {ch_blurb=}")
+        if not ch_blurb == ch_desc:
+            chapter_changes_needed.append((chxx_prefix, ch_blurb))
+    for chxx_prefix, ch_blurb in chapter_changes_needed:
+        print(f"update {chxx_prefix} to {ch_blurb}")
+        keg_definitions[chxx_prefix] = ch_blurb
+    save_keywords_descrition_json("src", keg_definitions)
+    # WHEN / THEN
+    assert chapter_changes_needed == []
 
 
 def test_get_keg_definitions_ReturnsObj_Check_python_keywords():

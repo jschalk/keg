@@ -18,13 +18,13 @@ from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
 )
-from ch25_kpi.belief_output_tool import (
+from ch24_etl_otb.belief_output_tool import (
     collect_full_world_belief_csv_strs,
     create_belief0001_file,
 )
 from os.path import exists as os_path_exists
 from pandas import read_excel as pandas_read_excel
-from ref.keywords import Ch25Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch24Keywords as kw, ExampleStrs as exx
 from sqlite3 import connect as sqlite3_connect
 
 

@@ -32,7 +32,7 @@ from ch19_etl_steps.etl_main import (
     etl_translate_sound_agg_tables_to_translate_sound_vld_tables,
     get_max_ideax_agg_spark_num,
 )
-from ch25_kpi.belief_output_tool import create_belief0001_file, prettify_excel_file
+from ch24_etl_otb.belief_output_tool import create_belief0001_file, prettify_excel_file
 from ch25_kpi.gcalendar import (
     copy_person_day_punches_to_dst_dir,
     lynx_to_person_gcal_day_punchs,

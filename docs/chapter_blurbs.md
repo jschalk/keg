@@ -23,6 +23,7 @@ What does each one do?
 - **ch17_idea**: Defines how to build Ideas using Ideas. Moments and Persons are built by Ideas.
 - **ch18_etl_config**: Defines the tools that use Ideas to build MomentUnits.
 - **ch19_etl_steps**: Defines the tools that report from core world data.
+- **ch24_etl_otb**: Defines how beliefs for outside audiences are created.
 - **ch25_kpi**: Defines the analytics outcomes of completed MomentUnits.
 - **ch26_world**: Defines WorldDirs that admin MomentUnits input data and outcomes
 - **ch27_lobby**: Defines Lobby Tools for gifts, World Scenarios.

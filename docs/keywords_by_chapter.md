@@ -21,6 +21,7 @@
 - ch17_idea: Excel, allowed_crud, attributes, belief, build_order, ch17, delete_insert, delete_insert_update, delete_update, error_message, excel, fund_rank, idea, idea_category, idea_type, ii, insert_multiple, insert_one_time, insert_update, net_funds, otx_key, pledges_count, sheet, source_dimen, translate_spark_num, world_name
 - ch18_etl_config: b_dst, b_src, belve_dst, belve_src, ch18, h_agg, h_raw, h_vld, heard_agg, heard_raw, heard_vld, i_agg, i_raw, i_src, i_vld, ideax_agg, ideax_raw, ideax_src, ideax_vld, lynx, lynxx_mst, mmtbudd, mmthour, mmtmont, mmtoffi, mmtpayy, mmtunit, mmtweek, moment_ote1_agg, nabtime, person_net_amount, s_agg, s_raw, s_vld, sound_agg, sound_raw, sound_vld, sparks_ideax_agg, sparks_ideax_vld, trlcore, trllabe, trlname, trlrope, trltitl
 - ch19_etl_steps: ch19, day_punch, moment_contact_nets
+- ch24_etl_otb: ch24
 - ch25_kpi: DayEvent, Event, ch25, default_kpi_bundle, gcal, moment_kpi001_contact_nets, moment_kpi002_person_pledges
 - ch26_world: WorldName, ch26, today
 - ch27_lobby: LobbyID, ch27, lobby_id, lobbys
