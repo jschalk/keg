@@ -28,6 +28,7 @@ from ch16_translate.translate_config import (
     get_translateable_args,
 )
 from ch17_idea.idea_config import (
+    IdeaFormatsEnum,
     get_allowed_curds,
     get_default_sorted_list,
     get_dimens_with_idea_element,
@@ -41,9 +42,6 @@ from ch17_idea.idea_config import (
     get_idearef_from_file,
     get_quick_ideas_column_ref,
     idea_config_path,
-    ii00002_planunit_v0_0_0,
-    ii00120_person_contact_membership_v0_0_0,
-    ii00121_person_contactunit_v0_0_0,
 )
 from copy import copy as copy_copy
 from os import getcwd as os_getcwd
@@ -596,9 +594,10 @@ def test_get_idea_format_filenames_ReturnsObj_CheckSome_idea_format_filesnames_E
     idea_filenames_set = get_idea_format_filenames()
 
     # WHEN / THEN
-    assert ii00121_person_contactunit_v0_0_0() in idea_filenames_set
-    assert ii00120_person_contact_membership_v0_0_0() in idea_filenames_set
-    assert ii00002_planunit_v0_0_0() in idea_filenames_set
+    ifx = IdeaFormatsEnum
+    assert ifx.ii00121_person_contactunit_v0_0_0 in idea_filenames_set
+    assert ifx.ii00120_person_contact_membership_v0_0_0 in idea_filenames_set
+    assert ifx.ii00002_planunit_v0_0_0 in idea_filenames_set
 
 
 def change_erase_attrs(idea_attrs: set):
@@ -712,9 +711,10 @@ def test_get_idea_format_filename_ReturnsObj():
     ii00002_filename = get_idea_format_filename(ii00002_str)
 
     # THEN
-    assert ii00121_filename == ii00121_person_contactunit_v0_0_0()
-    assert ii00120_filename == ii00120_person_contact_membership_v0_0_0()
-    assert ii00002_filename == ii00002_planunit_v0_0_0()
+    ifx = IdeaFormatsEnum
+    assert ii00121_filename == ifx.ii00121_person_contactunit_v0_0_0
+    assert ii00120_filename == ifx.ii00120_person_contact_membership_v0_0_0
+    assert ii00002_filename == ifx.ii00002_planunit_v0_0_0
 
     all_set = {get_idea_format_filename(idea_type) for idea_type in get_idea_types()}
     assert all_set == get_idea_format_filenames()

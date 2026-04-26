@@ -1,5 +1,6 @@
 from ch00_py.db_toolbox import get_sorted_cols_only_list
 from ch00_py.file_toolbox import create_path, get_json_filename, open_json
+from enum import Enum
 from os import getcwd as os_getcwd
 
 
@@ -468,247 +469,122 @@ def get_idea_sqlite_types() -> dict[str, str]:
     }
 
 
-# def ii00100_momentunit_v0_0_0()->str: return "ii00100_momentunit_v0_0_0"
-# def ii00101_moment_budunit_v0_0_0()->str: return "ii00101_moment_budunit_v0_0_0"
-# def ii00102_moment_paybook_v0_0_0()->str: return "ii00102_moment_paybook_v0_0_0"
-# def ii00103_moment_epoch_hour_v0_0_0()->str: return "ii00103_moment_epoch_hour_v0_0_0"
-# def ii00104_moment_epoch_month_v0_0_0()->str: return "ii00104_moment_epoch_month_v0_0_0"
-# def ii00105_moment_epoch_weekday_v0_0_0()->str: return "ii00105_moment_epoch_weekday_v0_0_0"
-
-
-def ii00001_contact_v0_0_0() -> str:
-    return "ii00001_contact_v0_0_0"
-
-
-def ii00002_planunit_v0_0_0() -> str:
-    return "ii00002_planunit_v0_0_0"
-
-
-def ii00005_plan_reason() -> str:
-    return "ii00005_plan_reason"
-
-
-def ii00007_moment_fact() -> str:
-    return "ii00007_moment_fact"
-
-
-def ii00100_momentunit_v0_0_0() -> str:
-    return "ii00100_momentunit_v0_0_0"
-
-
-def ii00101_moment_budunit_v0_0_0() -> str:
-    return "ii00101_moment_budunit_v0_0_0"
-
-
-def ii00102_moment_paybook_v0_0_0() -> str:
-    return "ii00102_moment_paybook_v0_0_0"
-
-
-def ii00103_moment_epoch_hour_v0_0_0() -> str:
-    return "ii00103_moment_epoch_hour_v0_0_0"
-
-
-def ii00104_moment_epoch_month_v0_0_0() -> str:
-    return "ii00104_moment_epoch_month_v0_0_0"
-
-
-def ii00105_moment_epoch_weekday_v0_0_0() -> str:
-    return "ii00105_moment_epoch_weekday_v0_0_0"
-
-
-def ii00106_moment_timeoffi_v0_0_0() -> str:
-    return "ii00106_moment_timeoffi_v0_0_0"
-
-
-def ii00112_membership_v0_0_0() -> str:
-    return "ii00112_membership_v0_0_0"
-
-
-def ii00119_planunit_v0_0_0() -> str:
-    return "ii00119_planunit_v0_0_0"
-
-
-# def ii00120_person_contact_membership_v0_0_0()-> str: return "ii00120_person_contact_membership_v0_0_0"
-# def ii00121_person_contactunit_v0_0_0()-> str: return "ii00121_person_contactunit_v0_0_0"
-# def ii00122_person_plan_awardunit_v0_0_0()-> str: return "ii00122_person_plan_awardunit_v0_0_0"
-# def ii00123_person_plan_factunit_v0_0_0()-> str: return "ii00123_person_plan_factunit_v0_0_0"
-# def ii00124_person_plan_laborunit_v0_0_0()-> str: return "ii00124_person_plan_laborunit_v0_0_0"
-# def ii00125_person_plan_healerunit_v0_0_0()-> str: return "ii00125_person_plan_healerunit_v0_0_0"
-# def ii00126_person_plan_reason_caseunit_v0_0_0()-> str: return "ii00126_person_plan_reason_caseunit_v0_0_0"
-# def ii00127_person_plan_reasonunit_v0_0_0()-> str: return "ii00127_person_plan_reasonunit_v0_0_0"
-# def ii00128_person_planunit_v0_0_0()-> str: return "ii00128_person_planunit_v0_0_0"
-# def ii00129_personunit_v0_0_0()-> str: return "ii00129_personunit_v0_0_0"
-
-
-def ii00120_person_contact_membership_v0_0_0() -> str:
-    return "ii00120_person_contact_membership_v0_0_0"
-
-
-def ii00121_person_contactunit_v0_0_0() -> str:
-    return "ii00121_person_contactunit_v0_0_0"
-
-
-def ii00122_person_plan_awardunit_v0_0_0() -> str:
-    return "ii00122_person_plan_awardunit_v0_0_0"
-
-
-def ii00123_person_plan_factunit_v0_0_0() -> str:
-    return "ii00123_person_plan_factunit_v0_0_0"
-
-
-def ii00124_person_plan_laborunit_v0_0_0() -> str:
-    return "ii00124_person_plan_laborunit_v0_0_0"
-
-
-def ii00125_person_plan_healerunit_v0_0_0() -> str:
-    return "ii00125_person_plan_healerunit_v0_0_0"
-
-
-def ii00126_person_plan_reason_caseunit_v0_0_0() -> str:
-    return "ii00126_person_plan_reason_caseunit_v0_0_0"
-
-
-def ii00127_person_plan_reasonunit_v0_0_0() -> str:
-    return "ii00127_person_plan_reasonunit_v0_0_0"
-
-
-def ii00128_person_planunit_v0_0_0() -> str:
-    return "ii00128_person_planunit_v0_0_0"
-
-
-def ii00129_personunit_v0_0_0() -> str:
-    return "ii00129_personunit_v0_0_0"
-
-
-def ii00136_problem_healer_v0_0_0() -> str:
-    return "ii00136_problem_healer_v0_0_0"
-
-
-def ii00140_map_otx2inx_v0_0_0() -> str:
-    return "ii00140_map_otx2inx_v0_0_0"
-
-
-def ii00142_translate_title_v0_0_0() -> str:
-    return "ii00142_translate_title_v0_0_0"
-
-
-def ii00143_translate_name_v0_0_0() -> str:
-    return "ii00143_translate_name_v0_0_0"
-
-
-def ii00144_translate_label_v0_0_0() -> str:
-    return "ii00144_translate_label_v0_0_0"
-
-
-def ii00145_translate_rope_v0_0_0() -> str:
-    return "ii00145_translate_rope_v0_0_0"
-
-
-def ii00150_delete_person_contact_membership_v0_0_0() -> str:
-    return "ii00150_delete_person_contact_membership_v0_0_0"
-
-
-def ii00151_delete_person_contactunit_v0_0_0() -> str:
-    return "ii00151_delete_person_contactunit_v0_0_0"
-
-
-def ii00152_delete_person_plan_awardunit_v0_0_0() -> str:
-    return "ii00152_delete_person_plan_awardunit_v0_0_0"
-
-
-def ii00153_delete_person_plan_factunit_v0_0_0() -> str:
-    return "ii00153_delete_person_plan_factunit_v0_0_0"
-
-
-def ii00154_delete_person_plan_laborunit_v0_0_0() -> str:
-    return "ii00154_delete_person_plan_laborunit_v0_0_0"
-
-
-def ii00155_delete_person_plan_healerunit_v0_0_0() -> str:
-    return "ii00155_delete_person_plan_healerunit_v0_0_0"
-
-
-def ii00156_delete_person_plan_reason_caseunit_v0_0_0() -> str:
-    return "ii00156_delete_person_plan_reason_caseunit_v0_0_0"
-
-
-def ii00157_delete_person_plan_reasonunit_v0_0_0() -> str:
-    return "ii00157_delete_person_plan_reasonunit_v0_0_0"
-
-
-def ii00158_delete_person_planunit_v0_0_0() -> str:
-    return "ii00158_delete_person_planunit_v0_0_0"
-
-
-def ii00159_delete_personunit_v0_0_0() -> str:
-    return "ii00159_delete_personunit_v0_0_0"
-
-
-def ii00170_nabu_time_v0_0_0() -> str:
-    return "ii00170_nabu_time_v0_0_0"
-
-
-def ii00171_contact_map1_v0_0_0() -> str:
-    return "ii00171_contact_map1_v0_0_0"
-
-
-def ii00172_group_map1_v0_0_0() -> str:
-    return "ii00172_group_map1_v0_0_0"
-
-
-def ii00173_label_map1_v0_0_0() -> str:
-    return "ii00173_label_map1_v0_0_0"
-
-
-def ii00174_rope_map1_v0_0_0() -> str:
-    return "ii00174_rope_map1_v0_0_0"
+class IdeaFormatsEnum(str, Enum):
+    ii00001_contact_v0_0_0 = "ii00001_contact_v0_0_0"
+    ii00002_planunit_v0_0_0 = "ii00002_planunit_v0_0_0"
+    ii00005_plan_reason = "ii00005_plan_reason"
+    ii00007_moment_fact = "ii00007_moment_fact"
+    ii00100_momentunit_v0_0_0 = "ii00100_momentunit_v0_0_0"
+    ii00101_moment_budunit_v0_0_0 = "ii00101_moment_budunit_v0_0_0"
+    ii00102_moment_paybook_v0_0_0 = "ii00102_moment_paybook_v0_0_0"
+    ii00103_moment_epoch_hour_v0_0_0 = "ii00103_moment_epoch_hour_v0_0_0"
+    ii00104_moment_epoch_month_v0_0_0 = "ii00104_moment_epoch_month_v0_0_0"
+    ii00105_moment_epoch_weekday_v0_0_0 = "ii00105_moment_epoch_weekday_v0_0_0"
+    ii00106_moment_timeoffi_v0_0_0 = "ii00106_moment_timeoffi_v0_0_0"
+    ii00112_membership_v0_0_0 = "ii00112_membership_v0_0_0"
+    ii00119_planunit_v0_0_0 = "ii00119_planunit_v0_0_0"
+    ii00120_person_contact_membership_v0_0_0 = (
+        "ii00120_person_contact_membership_v0_0_0"
+    )
+    ii00121_person_contactunit_v0_0_0 = "ii00121_person_contactunit_v0_0_0"
+    ii00122_person_plan_awardunit_v0_0_0 = "ii00122_person_plan_awardunit_v0_0_0"
+    ii00123_person_plan_factunit_v0_0_0 = "ii00123_person_plan_factunit_v0_0_0"
+    ii00124_person_plan_laborunit_v0_0_0 = "ii00124_person_plan_laborunit_v0_0_0"
+    ii00125_person_plan_healerunit_v0_0_0 = "ii00125_person_plan_healerunit_v0_0_0"
+    ii00126_person_plan_reason_caseunit_v0_0_0 = (
+        "ii00126_person_plan_reason_caseunit_v0_0_0"
+    )
+    ii00127_person_plan_reasonunit_v0_0_0 = "ii00127_person_plan_reasonunit_v0_0_0"
+    ii00128_person_planunit_v0_0_0 = "ii00128_person_planunit_v0_0_0"
+    ii00129_personunit_v0_0_0 = "ii00129_personunit_v0_0_0"
+    ii00136_problem_healer_v0_0_0 = "ii00136_problem_healer_v0_0_0"
+    ii00140_map_otx2inx_v0_0_0 = "ii00140_map_otx2inx_v0_0_0"
+    ii00142_translate_title_v0_0_0 = "ii00142_translate_title_v0_0_0"
+    ii00143_translate_name_v0_0_0 = "ii00143_translate_name_v0_0_0"
+    ii00144_translate_label_v0_0_0 = "ii00144_translate_label_v0_0_0"
+    ii00145_translate_rope_v0_0_0 = "ii00145_translate_rope_v0_0_0"
+    ii00150_delete_person_contact_membership_v0_0_0 = (
+        "ii00150_delete_person_contact_membership_v0_0_0"
+    )
+    ii00151_delete_person_contactunit_v0_0_0 = (
+        "ii00151_delete_person_contactunit_v0_0_0"
+    )
+    ii00152_delete_person_plan_awardunit_v0_0_0 = (
+        "ii00152_delete_person_plan_awardunit_v0_0_0"
+    )
+    ii00153_delete_person_plan_factunit_v0_0_0 = (
+        "ii00153_delete_person_plan_factunit_v0_0_0"
+    )
+    ii00154_delete_person_plan_laborunit_v0_0_0 = (
+        "ii00154_delete_person_plan_laborunit_v0_0_0"
+    )
+    ii00155_delete_person_plan_healerunit_v0_0_0 = (
+        "ii00155_delete_person_plan_healerunit_v0_0_0"
+    )
+    ii00156_delete_person_plan_reason_caseunit_v0_0_0 = (
+        "ii00156_delete_person_plan_reason_caseunit_v0_0_0"
+    )
+    ii00157_delete_person_plan_reasonunit_v0_0_0 = (
+        "ii00157_delete_person_plan_reasonunit_v0_0_0"
+    )
+    ii00158_delete_person_planunit_v0_0_0 = "ii00158_delete_person_planunit_v0_0_0"
+    ii00159_delete_personunit_v0_0_0 = "ii00159_delete_personunit_v0_0_0"
+    ii00170_nabu_time_v0_0_0 = "ii00170_nabu_time_v0_0_0"
+    ii00171_contact_map1_v0_0_0 = "ii00171_contact_map1_v0_0_0"
+    ii00172_group_map1_v0_0_0 = "ii00172_group_map1_v0_0_0"
+    ii00173_label_map1_v0_0_0 = "ii00173_label_map1_v0_0_0"
+    ii00174_rope_map1_v0_0_0 = "ii00174_rope_map1_v0_0_0"
+
+    def __str__(self):
+        return self.value
 
 
 def get_idea_format_filenames() -> set[str]:
+    ifx = IdeaFormatsEnum
     return {
-        ii00001_contact_v0_0_0(),
-        ii00002_planunit_v0_0_0(),
-        ii00005_plan_reason(),
-        ii00007_moment_fact(),
-        ii00100_momentunit_v0_0_0(),
-        ii00101_moment_budunit_v0_0_0(),
-        ii00102_moment_paybook_v0_0_0(),
-        ii00103_moment_epoch_hour_v0_0_0(),
-        ii00104_moment_epoch_month_v0_0_0(),
-        ii00105_moment_epoch_weekday_v0_0_0(),
-        ii00106_moment_timeoffi_v0_0_0(),
-        ii00112_membership_v0_0_0(),
-        ii00119_planunit_v0_0_0(),
-        ii00120_person_contact_membership_v0_0_0(),
-        ii00121_person_contactunit_v0_0_0(),
-        ii00122_person_plan_awardunit_v0_0_0(),
-        ii00123_person_plan_factunit_v0_0_0(),
-        ii00124_person_plan_laborunit_v0_0_0(),
-        ii00125_person_plan_healerunit_v0_0_0(),
-        ii00126_person_plan_reason_caseunit_v0_0_0(),
-        ii00127_person_plan_reasonunit_v0_0_0(),
-        ii00128_person_planunit_v0_0_0(),
-        ii00129_personunit_v0_0_0(),
-        ii00136_problem_healer_v0_0_0(),
-        ii00142_translate_title_v0_0_0(),
-        ii00143_translate_name_v0_0_0(),
-        ii00144_translate_label_v0_0_0(),
-        ii00145_translate_rope_v0_0_0(),
-        ii00150_delete_person_contact_membership_v0_0_0(),
-        ii00151_delete_person_contactunit_v0_0_0(),
-        ii00152_delete_person_plan_awardunit_v0_0_0(),
-        ii00153_delete_person_plan_factunit_v0_0_0(),
-        ii00154_delete_person_plan_laborunit_v0_0_0(),
-        ii00155_delete_person_plan_healerunit_v0_0_0(),
-        ii00156_delete_person_plan_reason_caseunit_v0_0_0(),
-        ii00157_delete_person_plan_reasonunit_v0_0_0(),
-        ii00158_delete_person_planunit_v0_0_0(),
-        ii00159_delete_personunit_v0_0_0(),
-        ii00170_nabu_time_v0_0_0(),
-        ii00171_contact_map1_v0_0_0(),
-        ii00172_group_map1_v0_0_0(),
-        ii00173_label_map1_v0_0_0(),
-        ii00174_rope_map1_v0_0_0(),
+        ifx.ii00001_contact_v0_0_0,
+        ifx.ii00002_planunit_v0_0_0,
+        ifx.ii00005_plan_reason,
+        ifx.ii00007_moment_fact,
+        ifx.ii00100_momentunit_v0_0_0,
+        ifx.ii00101_moment_budunit_v0_0_0,
+        ifx.ii00102_moment_paybook_v0_0_0,
+        ifx.ii00103_moment_epoch_hour_v0_0_0,
+        ifx.ii00104_moment_epoch_month_v0_0_0,
+        ifx.ii00105_moment_epoch_weekday_v0_0_0,
+        ifx.ii00106_moment_timeoffi_v0_0_0,
+        ifx.ii00112_membership_v0_0_0,
+        ifx.ii00119_planunit_v0_0_0,
+        ifx.ii00120_person_contact_membership_v0_0_0,
+        ifx.ii00121_person_contactunit_v0_0_0,
+        ifx.ii00122_person_plan_awardunit_v0_0_0,
+        ifx.ii00123_person_plan_factunit_v0_0_0,
+        ifx.ii00124_person_plan_laborunit_v0_0_0,
+        ifx.ii00125_person_plan_healerunit_v0_0_0,
+        ifx.ii00126_person_plan_reason_caseunit_v0_0_0,
+        ifx.ii00127_person_plan_reasonunit_v0_0_0,
+        ifx.ii00128_person_planunit_v0_0_0,
+        ifx.ii00129_personunit_v0_0_0,
+        ifx.ii00136_problem_healer_v0_0_0,
+        ifx.ii00142_translate_title_v0_0_0,
+        ifx.ii00143_translate_name_v0_0_0,
+        ifx.ii00144_translate_label_v0_0_0,
+        ifx.ii00145_translate_rope_v0_0_0,
+        ifx.ii00150_delete_person_contact_membership_v0_0_0,
+        ifx.ii00151_delete_person_contactunit_v0_0_0,
+        ifx.ii00152_delete_person_plan_awardunit_v0_0_0,
+        ifx.ii00153_delete_person_plan_factunit_v0_0_0,
+        ifx.ii00154_delete_person_plan_laborunit_v0_0_0,
+        ifx.ii00155_delete_person_plan_healerunit_v0_0_0,
+        ifx.ii00156_delete_person_plan_reason_caseunit_v0_0_0,
+        ifx.ii00157_delete_person_plan_reasonunit_v0_0_0,
+        ifx.ii00158_delete_person_planunit_v0_0_0,
+        ifx.ii00159_delete_personunit_v0_0_0,
+        ifx.ii00170_nabu_time_v0_0_0,
+        ifx.ii00171_contact_map1_v0_0_0,
+        ifx.ii00172_group_map1_v0_0_0,
+        ifx.ii00173_label_map1_v0_0_0,
+        ifx.ii00174_rope_map1_v0_0_0,
     }
 
 
@@ -768,50 +644,51 @@ def get_idea_format_filename(idea_type: str) -> str:
 
 
 def get_idea_format_headers() -> dict[str, list[str]]:
+    ifx = IdeaFormatsEnum
     return {
-        "moment_rope,person_name,contact_name": ii00001_contact_v0_0_0(),
-        "moment_rope,person_name,plan_rope,star,pledge": ii00002_planunit_v0_0_0(),
-        "moment_rope,person_name,plan_rope,reason_context,reason_state,star,pledge": ii00005_plan_reason(),
-        "moment_rope,person_name,plan_rope,fact_context,fact_state": ii00007_moment_fact(),
-        "moment_rope,epoch_label,c400_number,yr1_jan1_offset,monthday_index,fund_grain,mana_grain,respect_grain,knot,job_listen_rotations": ii00100_momentunit_v0_0_0(),
-        "moment_rope,person_name,bud_time,knot,quota,celldepth": ii00101_moment_budunit_v0_0_0(),
-        "moment_rope,person_name,contact_name,tran_time,amount,knot": ii00102_moment_paybook_v0_0_0(),
-        "moment_rope,cumulative_minute,hour_label,knot": ii00103_moment_epoch_hour_v0_0_0(),
-        "moment_rope,cumulative_day,month_label,knot": ii00104_moment_epoch_month_v0_0_0(),
-        "moment_rope,weekday_order,weekday_label,knot": ii00105_moment_epoch_weekday_v0_0_0(),
-        "moment_rope,offi_time,knot": ii00106_moment_timeoffi_v0_0_0(),
-        "moment_rope,person_name,contact_name,group_title": ii00112_membership_v0_0_0(),
-        "moment_rope,person_name,plan_rope,begin,close,addin,numor,denom,morph,gogo_want,stop_want": ii00119_planunit_v0_0_0(),
-        "moment_rope,person_name,contact_name,group_title,group_cred_lumen,group_debt_lumen,knot": ii00120_person_contact_membership_v0_0_0(),
-        "moment_rope,person_name,contact_name,contact_cred_lumen,contact_debt_lumen,knot": ii00121_person_contactunit_v0_0_0(),
-        "person_name,plan_rope,awardee_title,give_force,take_force,knot": ii00122_person_plan_awardunit_v0_0_0(),
-        "person_name,plan_rope,fact_context,fact_state,fact_lower,fact_upper,knot": ii00123_person_plan_factunit_v0_0_0(),
-        "person_name,plan_rope,labor_title,solo,knot": ii00124_person_plan_laborunit_v0_0_0(),
-        "person_name,plan_rope,healer_name,knot": ii00125_person_plan_healerunit_v0_0_0(),
-        "person_name,plan_rope,reason_context,reason_state,reason_lower,reason_upper,reason_divisor,knot": ii00126_person_plan_reason_caseunit_v0_0_0(),
-        "person_name,plan_rope,reason_context,active_requisite,knot": ii00127_person_plan_reasonunit_v0_0_0(),
-        "person_name,plan_rope,begin,close,addin,numor,denom,morph,gogo_want,stop_want,star,pledge,problem_bool,knot": ii00128_person_planunit_v0_0_0(),
-        "moment_rope,person_name,credor_respect,debtor_respect,fund_pool,max_tree_traverse,fund_grain,mana_grain,respect_grain,knot": ii00129_personunit_v0_0_0(),
-        "moment_rope,person_name,plan_rope,healer_name,problem_bool": ii00136_problem_healer_v0_0_0(),
-        "otx_title,inx_title,otx_knot,inx_knot,unknown_str": ii00142_translate_title_v0_0_0(),
-        "otx_name,inx_name,otx_knot,inx_knot,unknown_str": ii00143_translate_name_v0_0_0(),
-        "otx_label,inx_label,otx_knot,inx_knot,unknown_str": ii00144_translate_label_v0_0_0(),
-        "otx_rope,inx_rope,otx_knot,inx_knot,unknown_str": ii00145_translate_rope_v0_0_0(),
-        "moment_rope,person_name,contact_name,group_title_ERASE": ii00150_delete_person_contact_membership_v0_0_0(),
-        "moment_rope,person_name,contact_name_ERASE": ii00151_delete_person_contactunit_v0_0_0(),
-        "person_name,plan_rope,awardee_title_ERASE": ii00152_delete_person_plan_awardunit_v0_0_0(),
-        "person_name,plan_rope,fact_context_ERASE": ii00153_delete_person_plan_factunit_v0_0_0(),
-        "person_name,plan_rope,labor_title_ERASE": ii00154_delete_person_plan_laborunit_v0_0_0(),
-        "person_name,plan_rope,healer_name_ERASE": ii00155_delete_person_plan_healerunit_v0_0_0(),
-        "person_name,plan_rope,reason_context,reason_state_ERASE": ii00156_delete_person_plan_reason_caseunit_v0_0_0(),
-        "person_name,plan_rope,reason_context_ERASE": ii00157_delete_person_plan_reasonunit_v0_0_0(),
-        "person_name,plan_rope_ERASE": ii00158_delete_person_planunit_v0_0_0(),
-        "moment_rope,person_name_ERASE": ii00159_delete_personunit_v0_0_0(),
-        "moment_rope,otx_time,inx_time": ii00170_nabu_time_v0_0_0(),
-        "moment_rope,person_name,contact_name,otx_name,inx_name": ii00171_contact_map1_v0_0_0(),
-        "moment_rope,person_name,contact_name,otx_title,inx_title": ii00172_group_map1_v0_0_0(),
-        "moment_rope,person_name,contact_name,otx_label,inx_label": ii00173_label_map1_v0_0_0(),
-        "moment_rope,person_name,contact_name,otx_rope,inx_rope": ii00174_rope_map1_v0_0_0(),
+        "moment_rope,person_name,contact_name": ifx.ii00001_contact_v0_0_0,
+        "moment_rope,person_name,plan_rope,star,pledge": ifx.ii00002_planunit_v0_0_0,
+        "moment_rope,person_name,plan_rope,reason_context,reason_state,star,pledge": ifx.ii00005_plan_reason,
+        "moment_rope,person_name,plan_rope,fact_context,fact_state": ifx.ii00007_moment_fact,
+        "moment_rope,epoch_label,c400_number,yr1_jan1_offset,monthday_index,fund_grain,mana_grain,respect_grain,knot,job_listen_rotations": ifx.ii00100_momentunit_v0_0_0,
+        "moment_rope,person_name,bud_time,knot,quota,celldepth": ifx.ii00101_moment_budunit_v0_0_0,
+        "moment_rope,person_name,contact_name,tran_time,amount,knot": ifx.ii00102_moment_paybook_v0_0_0,
+        "moment_rope,cumulative_minute,hour_label,knot": ifx.ii00103_moment_epoch_hour_v0_0_0,
+        "moment_rope,cumulative_day,month_label,knot": ifx.ii00104_moment_epoch_month_v0_0_0,
+        "moment_rope,weekday_order,weekday_label,knot": ifx.ii00105_moment_epoch_weekday_v0_0_0,
+        "moment_rope,offi_time,knot": ifx.ii00106_moment_timeoffi_v0_0_0,
+        "moment_rope,person_name,contact_name,group_title": ifx.ii00112_membership_v0_0_0,
+        "moment_rope,person_name,plan_rope,begin,close,addin,numor,denom,morph,gogo_want,stop_want": ifx.ii00119_planunit_v0_0_0,
+        "moment_rope,person_name,contact_name,group_title,group_cred_lumen,group_debt_lumen,knot": ifx.ii00120_person_contact_membership_v0_0_0,
+        "moment_rope,person_name,contact_name,contact_cred_lumen,contact_debt_lumen,knot": ifx.ii00121_person_contactunit_v0_0_0,
+        "person_name,plan_rope,awardee_title,give_force,take_force,knot": ifx.ii00122_person_plan_awardunit_v0_0_0,
+        "person_name,plan_rope,fact_context,fact_state,fact_lower,fact_upper,knot": ifx.ii00123_person_plan_factunit_v0_0_0,
+        "person_name,plan_rope,labor_title,solo,knot": ifx.ii00124_person_plan_laborunit_v0_0_0,
+        "person_name,plan_rope,healer_name,knot": ifx.ii00125_person_plan_healerunit_v0_0_0,
+        "person_name,plan_rope,reason_context,reason_state,reason_lower,reason_upper,reason_divisor,knot": ifx.ii00126_person_plan_reason_caseunit_v0_0_0,
+        "person_name,plan_rope,reason_context,active_requisite,knot": ifx.ii00127_person_plan_reasonunit_v0_0_0,
+        "person_name,plan_rope,begin,close,addin,numor,denom,morph,gogo_want,stop_want,star,pledge,problem_bool,knot": ifx.ii00128_person_planunit_v0_0_0,
+        "moment_rope,person_name,credor_respect,debtor_respect,fund_pool,max_tree_traverse,fund_grain,mana_grain,respect_grain,knot": ifx.ii00129_personunit_v0_0_0,
+        "moment_rope,person_name,plan_rope,healer_name,problem_bool": ifx.ii00136_problem_healer_v0_0_0,
+        "otx_title,inx_title,otx_knot,inx_knot,unknown_str": ifx.ii00142_translate_title_v0_0_0,
+        "otx_name,inx_name,otx_knot,inx_knot,unknown_str": ifx.ii00143_translate_name_v0_0_0,
+        "otx_label,inx_label,otx_knot,inx_knot,unknown_str": ifx.ii00144_translate_label_v0_0_0,
+        "otx_rope,inx_rope,otx_knot,inx_knot,unknown_str": ifx.ii00145_translate_rope_v0_0_0,
+        "moment_rope,person_name,contact_name,group_title_ERASE": ifx.ii00150_delete_person_contact_membership_v0_0_0,
+        "moment_rope,person_name,contact_name_ERASE": ifx.ii00151_delete_person_contactunit_v0_0_0,
+        "person_name,plan_rope,awardee_title_ERASE": ifx.ii00152_delete_person_plan_awardunit_v0_0_0,
+        "person_name,plan_rope,fact_context_ERASE": ifx.ii00153_delete_person_plan_factunit_v0_0_0,
+        "person_name,plan_rope,labor_title_ERASE": ifx.ii00154_delete_person_plan_laborunit_v0_0_0,
+        "person_name,plan_rope,healer_name_ERASE": ifx.ii00155_delete_person_plan_healerunit_v0_0_0,
+        "person_name,plan_rope,reason_context,reason_state_ERASE": ifx.ii00156_delete_person_plan_reason_caseunit_v0_0_0,
+        "person_name,plan_rope,reason_context_ERASE": ifx.ii00157_delete_person_plan_reasonunit_v0_0_0,
+        "person_name,plan_rope_ERASE": ifx.ii00158_delete_person_planunit_v0_0_0,
+        "moment_rope,person_name_ERASE": ifx.ii00159_delete_personunit_v0_0_0,
+        "moment_rope,otx_time,inx_time": ifx.ii00170_nabu_time_v0_0_0,
+        "moment_rope,person_name,contact_name,otx_name,inx_name": ifx.ii00171_contact_map1_v0_0_0,
+        "moment_rope,person_name,contact_name,otx_title,inx_title": ifx.ii00172_group_map1_v0_0_0,
+        "moment_rope,person_name,contact_name,otx_label,inx_label": ifx.ii00173_label_map1_v0_0_0,
+        "moment_rope,person_name,contact_name,otx_rope,inx_rope": ifx.ii00174_rope_map1_v0_0_0,
     }
 
 
@@ -953,45 +830,45 @@ def get_dimens_with_idea_element(x_arg: str) -> set[str]:
 
 def get_dimen_minimum_put_idea_names() -> dict[str, str]:
     """Returns all dimens and the idea format with only the args for that dimen."""
-
+    ifx = IdeaFormatsEnum
     return {
-        "moment_budunit": ii00101_moment_budunit_v0_0_0(),
-        "moment_epoch_hour": ii00103_moment_epoch_hour_v0_0_0(),
-        "moment_epoch_month": ii00104_moment_epoch_month_v0_0_0(),
-        "moment_epoch_weekday": ii00105_moment_epoch_weekday_v0_0_0(),
-        "moment_paybook": ii00102_moment_paybook_v0_0_0(),
-        "moment_timeoffi": ii00106_moment_timeoffi_v0_0_0(),
-        "momentunit": ii00100_momentunit_v0_0_0(),
-        "nabu_timenum": ii00170_nabu_time_v0_0_0(),
-        "person_contact_membership": ii00120_person_contact_membership_v0_0_0(),
-        "person_contactunit": ii00121_person_contactunit_v0_0_0(),
-        "person_plan_awardunit": ii00122_person_plan_awardunit_v0_0_0(),
-        "person_plan_factunit": ii00123_person_plan_factunit_v0_0_0(),
-        "person_plan_healerunit": ii00125_person_plan_healerunit_v0_0_0(),
-        "person_plan_laborunit": ii00124_person_plan_laborunit_v0_0_0(),
-        "person_plan_reason_caseunit": ii00126_person_plan_reason_caseunit_v0_0_0(),
-        "person_plan_reasonunit": ii00127_person_plan_reasonunit_v0_0_0(),
-        "person_planunit": ii00128_person_planunit_v0_0_0(),
-        "personunit": ii00129_personunit_v0_0_0(),
-        "translate_label": ii00144_translate_label_v0_0_0(),
-        "translate_name": ii00143_translate_name_v0_0_0(),
-        "translate_title": ii00142_translate_title_v0_0_0(),
-        "translate_rope": ii00145_translate_rope_v0_0_0(),
+        "moment_budunit": ifx.ii00101_moment_budunit_v0_0_0,
+        "moment_epoch_hour": ifx.ii00103_moment_epoch_hour_v0_0_0,
+        "moment_epoch_month": ifx.ii00104_moment_epoch_month_v0_0_0,
+        "moment_epoch_weekday": ifx.ii00105_moment_epoch_weekday_v0_0_0,
+        "moment_paybook": ifx.ii00102_moment_paybook_v0_0_0,
+        "moment_timeoffi": ifx.ii00106_moment_timeoffi_v0_0_0,
+        "momentunit": ifx.ii00100_momentunit_v0_0_0,
+        "nabu_timenum": ifx.ii00170_nabu_time_v0_0_0,
+        "person_contact_membership": ifx.ii00120_person_contact_membership_v0_0_0,
+        "person_contactunit": ifx.ii00121_person_contactunit_v0_0_0,
+        "person_plan_awardunit": ifx.ii00122_person_plan_awardunit_v0_0_0,
+        "person_plan_factunit": ifx.ii00123_person_plan_factunit_v0_0_0,
+        "person_plan_healerunit": ifx.ii00125_person_plan_healerunit_v0_0_0,
+        "person_plan_laborunit": ifx.ii00124_person_plan_laborunit_v0_0_0,
+        "person_plan_reason_caseunit": ifx.ii00126_person_plan_reason_caseunit_v0_0_0,
+        "person_plan_reasonunit": ifx.ii00127_person_plan_reasonunit_v0_0_0,
+        "person_planunit": ifx.ii00128_person_planunit_v0_0_0,
+        "personunit": ifx.ii00129_personunit_v0_0_0,
+        "translate_label": ifx.ii00144_translate_label_v0_0_0,
+        "translate_name": ifx.ii00143_translate_name_v0_0_0,
+        "translate_title": ifx.ii00142_translate_title_v0_0_0,
+        "translate_rope": ifx.ii00145_translate_rope_v0_0_0,
     }
 
 
 def get_dimen_minimum_del_idea_names() -> dict[str, str]:
     """Returns all dimens and the idea format with only the args for that dimen."""
-
+    ifx = IdeaFormatsEnum
     return {
-        "person_contact_membership": ii00150_delete_person_contact_membership_v0_0_0(),
-        "person_contactunit": ii00151_delete_person_contactunit_v0_0_0(),
-        "person_plan_awardunit": ii00152_delete_person_plan_awardunit_v0_0_0(),
-        "person_plan_factunit": ii00153_delete_person_plan_factunit_v0_0_0(),
-        "person_plan_healerunit": ii00155_delete_person_plan_healerunit_v0_0_0(),
-        "person_plan_laborunit": ii00154_delete_person_plan_laborunit_v0_0_0(),
-        "person_plan_reason_caseunit": ii00156_delete_person_plan_reason_caseunit_v0_0_0(),
-        "person_plan_reasonunit": ii00157_delete_person_plan_reasonunit_v0_0_0(),
-        "person_planunit": ii00158_delete_person_planunit_v0_0_0(),
-        "personunit": ii00159_delete_personunit_v0_0_0(),
+        "person_contact_membership": ifx.ii00150_delete_person_contact_membership_v0_0_0,
+        "person_contactunit": ifx.ii00151_delete_person_contactunit_v0_0_0,
+        "person_plan_awardunit": ifx.ii00152_delete_person_plan_awardunit_v0_0_0,
+        "person_plan_factunit": ifx.ii00153_delete_person_plan_factunit_v0_0_0,
+        "person_plan_healerunit": ifx.ii00155_delete_person_plan_healerunit_v0_0_0,
+        "person_plan_laborunit": ifx.ii00154_delete_person_plan_laborunit_v0_0_0,
+        "person_plan_reason_caseunit": ifx.ii00156_delete_person_plan_reason_caseunit_v0_0_0,
+        "person_plan_reasonunit": ifx.ii00157_delete_person_plan_reasonunit_v0_0_0,
+        "person_planunit": ifx.ii00158_delete_person_planunit_v0_0_0,
+        "personunit": ifx.ii00159_delete_personunit_v0_0_0,
     }

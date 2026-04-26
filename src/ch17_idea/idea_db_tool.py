@@ -24,7 +24,6 @@ from ch16_translate.translate_main import TranslateUnit, get_translateunit_from_
 from ch17_idea._ref.ch17_semantic_types import FaceName, SparkInt
 from ch17_idea.idea_config import (
     get_default_sorted_list,
-    get_idea_dimen_ref,
     get_idea_elements_sort_order,
     get_idea_sqlite_types,
 )
@@ -32,14 +31,9 @@ from contextlib import suppress as contextlib_suppress
 from io import BytesIO as io_BytesIO, StringIO as io_StringIO
 from numpy import float64
 from openpyxl import Workbook, load_workbook, load_workbook as openpyxl_load_workbook
-from openpyxl.styles import Alignment, Border, Font, GradientFill, PatternFill, Side
+from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils import get_column_letter
-from os import listdir as os_listdir
-from os.path import (
-    dirname as os_path_dirname,
-    exists as os_path_exists,
-    join as os_path_join,
-)
+from os.path import dirname as os_path_dirname, exists as os_path_exists
 from pandas import (
     DataFrame,
     ExcelWriter,
@@ -49,7 +43,6 @@ from pandas import (
     to_datetime as pandas_to_datetime,
     to_numeric as pandas_to_numeric,
 )
-from pandas.api.types import is_numeric_dtype as pandas_api_types_is_numeric_dtype
 from sqlite3 import Connection as sqlite3_Connection, Cursor as sqlite3_Cursor
 
 
