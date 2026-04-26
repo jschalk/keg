@@ -3,7 +3,7 @@ from ch13_time.epoch_str_func import (
     get_fact_state_readable_str,
     get_reason_case_readable_str,
 )
-from ch24_person_viewer.person_viewer_example import (
+from ch29_person_viewer.person_viewer_example import (
     best_bowl_str,
     best_run_str,
     best_soccer_str,
@@ -16,8 +16,8 @@ from ch24_person_viewer.person_viewer_example import (
     play_soccer_str,
     play_str,
 )
-from ch24_person_viewer.person_viewer_tool import add_small_dot, get_plan_view_dict
-from ref.keywords import Ch24Keywords as kw, ExampleStrs as exx
+from ch29_person_viewer.person_viewer_tool import add_small_dot, get_plan_view_dict
+from ref.keywords import Ch29Keywords as kw, ExampleStrs as exx
 
 
 def test_get_plan_view_dict_ReturnsObj_Scenario0_EmptyPlan():

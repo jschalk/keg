@@ -1,9 +1,9 @@
 from ch07_person_logic.person_main import personunit_shop
-from ch24_person_viewer.person_viewer_tool import (
+from ch29_person_viewer.person_viewer_tool import (
     get_person_view_dict,
     get_plan_view_dict,
 )
-from ref.keywords import Ch24Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch29Keywords as kw, ExampleStrs as exx
 
 
 def test_get_person_view_dict_ReturnsObj_Scenario0_Empty():

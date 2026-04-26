@@ -25,6 +25,6 @@
 - ch21_world: WorldName, ch21, today
 - ch22_lobby: LobbyID, ch22, lobby_id, lobbys
 - ch23_finance: ch23, finance, financial
-- ch24_person_viewer: ch24
+- ch29_person_viewer: ch29
 - ch30_etl_app: ch30
 - ch98_docs_builder: ch98

@@ -6430,7 +6430,7 @@ class Ch23Keywords(str, Enum):
         return self.value
 
 
-class Ch24Keywords(str, Enum):
+class Ch29Keywords(str, Enum):
     Anaday = "Anaday"
     Baileyday = "Baileyday"
     BreakTerm = "BreakTerm"
@@ -6545,7 +6545,7 @@ class Ch24Keywords(str, Enum):
     ch21 = "ch21"
     ch22 = "ch22"
     ch23 = "ch23"
-    ch24 = "ch24"
+    ch29 = "ch29"
     class_type = "class_type"
     clock = "clock"
     close = "close"
@@ -7012,7 +7012,7 @@ class Ch30Keywords(str, Enum):
     ch21 = "ch21"
     ch22 = "ch22"
     ch23 = "ch23"
-    ch24 = "ch24"
+    ch29 = "ch29"
     ch30 = "ch30"
     class_type = "class_type"
     clock = "clock"
@@ -7480,7 +7480,7 @@ class Ch98Keywords(str, Enum):
     ch21 = "ch21"
     ch22 = "ch22"
     ch23 = "ch23"
-    ch24 = "ch24"
+    ch29 = "ch29"
     ch30 = "ch30"
     ch98 = "ch98"
     class_type = "class_type"

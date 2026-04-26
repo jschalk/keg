@@ -1,4 +1,4 @@
-from linter.chapter_migration_tools import (
+from linter.chapter_move_tools import (
     rename_files_and_dirs_4times,
     string_exists_in_filepaths,
 )

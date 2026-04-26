@@ -27,6 +27,6 @@ What does each one do?
 - **ch21_world**: Defines WorldDirs that admin MomentUnits input data and outcomes
 - **ch22_lobby**: Defines Lobby Tools for gifts, World Scenarios.
 - **ch23_finance**: Defines Finance Tools for 
-- **ch24_person_viewer**: Tools for Visualizing PersonUnits
+- **ch29_person_viewer**: Tools for Visualizing PersonUnits
 - **ch30_etl_app**: ETL app to create day punches from excel files.
 - **ch98_docs_builder**: Defines Tools that create documentation.
