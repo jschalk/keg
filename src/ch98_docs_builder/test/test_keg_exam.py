@@ -78,12 +78,12 @@ def test_get_ch_sorted_keywords_ReturnsObj_Scenario1_empty_chapter_goes_first_wi
     data = {
         "Excel": {kw.exam_tier: 0, kw.init_chapter: kw.ch17},
         "Word": {kw.exam_tier: 0, kw.init_chapter: ""},
-        "PowerPoint": {kw.exam_tier: 0, kw.init_chapter: kw.ch02},
+        "Access": {kw.exam_tier: 0, kw.init_chapter: kw.ch02},
     }
     # WHEN
     result = get_ch_sorted_keywords(data)
     # THEN
-    assert result == ["Word", "Excel", "PowerPoint"]
+    assert result == ["Word", "Excel", "Access"]
 
 
 def test_get_ch_sorted_keywords_ReturnsObj_Scenario2_empty_vs_other_tiers():
