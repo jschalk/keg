@@ -20,8 +20,7 @@ def test_save_to_split_csvs_CreatesFiles_Scenario0(temp3_fs, cursor0: Cursor):
     cursor0.execute(
         f"""CREATE TABLE {x_tablename} (hair INTEGER,user TEXT,y_int INTEGER, {kw.knot} TEXT)"""
     )
-    cursor0.execute(
-        f"""INSERT INTO {x_tablename} (hair, user, y_int, {kw.knot})
+    cursor0.execute(f"""INSERT INTO {x_tablename} (hair, user, y_int, {kw.knot})
 VALUES
 (1, "-A-", 100, "{exx.dash}"),
 (2, "-A-", 200, "{exx.dash}"),
@@ -29,8 +28,7 @@ VALUES
 (4, "-C-", 400, "{exx.dash}"),
 (4, "-C-", 500, "{exx.dash}")
 ;
-"""
-    )
+""")
     x_dir = str(temp3_fs)
     A_dir = create_path(x_dir, "A")
     B_dir = create_path(x_dir, "B")

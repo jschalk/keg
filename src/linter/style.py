@@ -539,3 +539,21 @@ def find_matching_tests(test_names: Set[str]) -> List[str]:
             result.extend(names)
 
     return result
+
+
+def py_file_has_from_imports_only(py_code: str, file_path: str) -> tuple[bool, str]:
+    try:
+        tree = ast_parse(py_code)
+    except SyntaxError:
+        return False
+
+    for node in ast_walk(tree):
+        if isinstance(node, ast_Import):
+            return False
+
+        if isinstance(node, ast_ImportFrom):
+            # forbid "from x import *"
+            for alias in node.names:
+                if alias.name == "*":
+                    return False
+    return True

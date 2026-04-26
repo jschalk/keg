@@ -8,12 +8,8 @@ from ch30_etl_app.etl_gui_tool import (
     get_app_default_you_personname,
     get_app_glb_attrs,
 )
-from os import name as os_name
 from pathlib import Path
-import platform
 from platform import system as platform_system
-from pytest import MonkeyPatch
-import sys
 
 
 def test_ETLAppSettings_Exists():

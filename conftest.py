@@ -1,11 +1,11 @@
+import pytest
+import shutil
+import subprocess
 from pathlib import Path
 from platform import system
 from pyperclip import copy as pyperclip_copy
-import pytest
 from pytest import mark as pytest_mark
-import shutil
 from sqlite3 import Cursor, connect as sqlite3_connect
-import subprocess
 from typing import Any, Generator
 from uuid import uuid4
 

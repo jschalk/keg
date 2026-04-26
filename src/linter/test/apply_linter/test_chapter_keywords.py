@@ -1,5 +1,3 @@
-from typing import Literal
-
 from ch00_py.file_toolbox import create_path, get_dir_file_strs, open_file
 from ch00_py.keyword_class_builder import (
     get_chapter_keyword_classes,
@@ -19,8 +17,10 @@ from linter.style import (
     get_json_files,
     get_python_files_with_flag,
     get_semantic_types_filename,
+    py_file_has_from_imports_only,
 )
 from ref.keywords import Ch98Keywords as kw
+from typing import Literal
 
 
 def get_semantic_types_dict() -> dict[str, str]:
@@ -173,6 +173,7 @@ def test_Chapters_KeywordsAppearWhereTheyShould():
                 not_allowed_keywords, file_str, chapter_prefix, file_path
             )
             assert does_not_allowed_from_src_import_exist(file_str, file_path)
+            assert py_file_has_from_imports_only(file_str, file_path), file_path
             excessive_imports_str = f"{file_path} has too many Keywords class imports"
             ch_class_name = f"C{chapter_prefix[1:]}Keywords"
             is_doc_builder_file = "doc_builder.py" in file_path
@@ -275,7 +276,7 @@ def test_Chapters_FirstLevelFilesDoNotImportKeywords():
         for filename in chapter_files:
             file_path = create_path(chapter_dir, filename)
             file_str = open_file(file_path)
-            print(f"{file_path=}")
+            # print(f"{file_path=}")
             # THEN
             assert "Keywords" not in file_str, f"Keywords reference in {file_path}"
             failure_example_str = f"ExampleStrs reference in {file_path}"

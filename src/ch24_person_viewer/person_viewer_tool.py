@@ -8,7 +8,7 @@ from ch13_time.epoch_str_func import (
     get_fact_state_readable_str,
     get_reason_case_readable_str,
 )
-import dataclasses
+from dataclasses import fields as dataclasses_fields, is_dataclass
 from typing import Any
 
 
@@ -36,13 +36,13 @@ def person_objs_asdict(
     Convert a dataclass-like object to dict,
     including extra keys defined in a custom attribute.
     """
-    if dataclasses.is_dataclass(obj):
+    if is_dataclass(obj):
         if isinstance(obj, PersonUnit):
             current_person = obj
         elif isinstance(obj, (ReasonUnit, ReasonHeir)):
             current_reason = obj
         result = {}
-        for field in dataclasses.fields(obj):
+        for field in dataclasses_fields(obj):
             value = getattr(obj, field.name)
             result[field.name] = person_objs_asdict(
                 value, current_person, current_reason
