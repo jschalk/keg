@@ -1,10 +1,9 @@
 {
   "b_dst": {
     "abbv9": "belve_dst", 
-    "description": "Belief (Idea formats without SparkNum) Destination. Person Job Beliefs, ", 
+    "description": "Belief (Idea formats without SparkNum) Destination. Filtered Job, Moment data.", 
     "stage_type_order": 14
   }, 
-
   "b_src": {
     "abbv9": "belve_src", 
     "description": "Belief Source files. Idea formats without SparkNum.", 
