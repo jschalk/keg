@@ -1,7 +1,0 @@
-{
-  "chapter_blurb": "Defines WorldDirs that admin MomentUnits input data and outcomes", 
-  "chapter_content": "WorldDirs create and admin MomentUnits", 
-  "chapter_description": "ch21_world", 
-  "chapter_number": 21, 
-  "ontology summary": "WorldUnits can hold multiple disjoint MomentUnits, because every moment is independent."
-}

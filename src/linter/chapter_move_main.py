@@ -226,10 +226,11 @@ def main():
         print(f"❌ The new string '{dst_chxx_prefix}' already exists in file contents.")
         return
 
-    # change ref json
+    # file contents
     change_ref_json(src_dir, src_chxx_prefix, x_prefix_dir, dst_chxx_int)
     replace_in_tracked_python_files(src_chxx_prefix, replace_text=dst_chxx_prefix)
     replace_in_tracked_python_files(src_uppercase_chxx, dst_uppercase_chxx)
+    # change file paths
     rename_files_and_dirs_4times(src_dir, src_chxx_prefix, dst_chxx_prefix)
     print("✅ Replacement complete.")
 

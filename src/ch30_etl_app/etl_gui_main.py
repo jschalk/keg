@@ -14,8 +14,8 @@ To integrate your CLI logic, replace the `create_today_punchs()` call inside
 from ch00_py.file_toolbox import delete_dir, set_dir
 from ch00_py.version_reader import get_version
 from ch17_idea.idea_db_tool import prettify_excel_files
-from ch20_kpi.gcalendar import lynx_to_person_gcal_day_punchs
-from ch21_world.world import create_today_punchs
+from ch25_kpi.gcalendar import lynx_to_person_gcal_day_punchs
+from ch26_world.world import create_today_punchs
 from ch30_etl_app.etl_gui_tool import (
     fill_spark_face_in_directory,
     get_app_default_dir,
