@@ -23,6 +23,7 @@ What does each one do?
 - **ch17_idea**: Defines how to build Ideas using Ideas. Moments and Persons are built by Ideas.
 - **ch18_etl_config**: Defines the tools that use Ideas to build MomentUnits.
 - **ch19_etl_steps**: Defines the tools that report from core world data.
+- **ch20_etl_ideas**: Defines the 'Etl Ideas' process. From 'Source Beliefs' to 'Sound'.
 - **ch21_sound**: Defines the 'Sound' process. From 'Ideas' to 'Heard'.
 - **ch22_heard**: Defines the 'Heard' process. From 'Sound' to 'Lynx'.
 - **ch23_lynx**: Defines the Lynx stage of data. Source of Job Persons, complete Moment data.

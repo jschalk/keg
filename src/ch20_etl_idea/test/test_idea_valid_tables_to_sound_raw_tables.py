@@ -1,8 +1,8 @@
 from ch00_py.db_toolbox import db_table_exists, get_row_count
 from ch17_idea.idea_db_tool import create_idea_sorted_table
 from ch18_etl_config.etl_sqlstr import create_prime_tablename
-from ch19_etl_steps.etl_main import etl_ideax_vld_tables_to_sound_raw_tables
-from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ch20_etl_idea.etl_idea_main import etl_ideax_vld_tables_to_sound_raw_tables
+from ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 
 # get examples from tests from etl_ideax_agg_dfs_to_translate_title_raw

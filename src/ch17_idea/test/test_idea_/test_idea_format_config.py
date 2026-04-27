@@ -11,7 +11,7 @@ from ch17_idea.idea_config import (
     get_idea_formats_dir,
     get_idearef_from_file,
 )
-from ch17_idea.idea_main import (
+from ch17_idea.idea_dataframe import (
     _generate_idea_dataframe,
     _get_headers_list,
     get_idearef_obj,

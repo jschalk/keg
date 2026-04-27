@@ -73,6 +73,7 @@
   "ch17": "Defines how to build Ideas using Ideas. Moments and Persons are built by Ideas.", 
   "ch18": "Defines the tools that use Ideas to build MomentUnits.", 
   "ch19": "Defines the tools that report from core world data.", 
+  "ch20": "Defines the 'Etl Ideas' process. From 'Source Beliefs' to 'Sound'.", 
   "ch21": "Defines the 'Sound' process. From 'Ideas' to 'Heard'.", 
   "ch22": "Defines the 'Heard' process. From 'Sound' to 'Lynx'.", 
   "ch23": "Defines the Lynx stage of data. Source of Job Persons, complete Moment data.", 

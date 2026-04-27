@@ -1,9 +1,9 @@
 from ch00_py.db_toolbox import db_table_exists, get_row_count, get_table_columns
 from ch00_py.file_toolbox import create_path
 from ch17_idea.idea_db_tool import save_sheet
-from ch19_etl_steps.etl_main import etl_idea_dfs_to_ideax_raw_tables
+from ch20_etl_idea.etl_idea_main import etl_idea_dfs_to_ideax_raw_tables
 from pandas import NA as pandas_NA, DataFrame
-from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 
 

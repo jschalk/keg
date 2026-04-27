@@ -3,7 +3,7 @@ from ch17_idea.idea_db_tool import export_db_to_excel
 from ch18_etl_config._ref.ch18_path import create_moment_mstr_path, create_world_db_path
 from ch18_etl_config.idea_collector import reorder_etl_db_sheets
 from ch19_etl_steps.belief2idea import beliefs_sheets_to_idea_sheets
-from ch19_etl_steps.etl_main import (
+from ch20_etl_idea.etl_idea_main import (
     etl_idea_dfs_to_ideax_raw_tables,
     etl_ideax_agg_tables_to_ideax_vld_tables,
     etl_ideax_agg_tables_to_sparks_ideax_agg_table,

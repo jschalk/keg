@@ -4,7 +4,7 @@ from ch07_person_logic.person_main import personunit_shop
 from ch07_person_logic.test._util.ch07_examples import personunit_v001
 from ch08_person_atom.atom_main import personatom_shop
 from ch17_idea.idea_config import IdeaFormatsEnum
-from ch17_idea.idea_main import create_idea_df, get_idearef_obj, make_persondelta
+from ch17_idea.idea_dataframe import create_idea_df, get_idearef_obj, make_persondelta
 from ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
 
 

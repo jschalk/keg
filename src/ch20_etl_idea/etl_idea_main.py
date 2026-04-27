@@ -3,7 +3,6 @@ from ch00_py.db_toolbox import (
     create_select_query,
     create_table_from_columns,
     create_type_reference_insert_sqlstr,
-    create_update_inconsistency_error_query,
     db_table_exists,
     get_create_table_sqlstr,
     get_db_tables,
@@ -12,47 +11,20 @@ from ch00_py.db_toolbox import (
     get_table_columns,
 )
 from ch00_py.file_toolbox import create_path
-from ch04_rope.rope import default_knot_if_None
-from ch16_translate.translate_config import (
-    get_translate_labelterm_args,
-    get_translate_nameterm_args,
-    get_translate_ropeterm_args,
-    get_translate_titleterm_args,
-    get_translates_column_ref,
-)
-from ch16_translate.translate_main import default_unknown_str_if_None
 from ch17_idea.idea_config import (
-    get_idea_dimen_ref,
     get_idea_format_filename,
     get_idea_sqlite_types,
     get_idea_types,
     get_idearef_from_file,
 )
+from ch17_idea.idea_dataframe import get_idearef_obj
 from ch17_idea.idea_db_tool import create_idea_sorted_table, get_default_sorted_list
-from ch17_idea.idea_main import get_idearef_obj
 from ch18_etl_config.etl_sqlstr import (
-    create_insert_into_translate_core_raw_sqlstr,
-    create_insert_missing_spark_face_into_translate_core_vld_sqlstr,
-    create_insert_translate_core_agg_into_vld_sqlstr,
-    create_insert_translate_sound_vld_table_sqlstr,
-    create_knot_exists_in_label_error_update_sqlstr,
-    create_knot_exists_in_name_error_update_sqlstr,
     create_prime_tablename,
-    create_sound_agg_insert_sqlstrs,
     create_sound_and_heard_tables,
-    create_sound_raw_update_inconsist_error_message_sqlstr,
-    create_update_translate_sound_agg_inconsist_sqlstr,
-    create_update_trllabe_sound_agg_knot_error_sqlstr,
-    create_update_trlname_sound_agg_knot_error_sqlstr,
-    create_update_trlrope_sound_agg_knot_error_sqlstr,
-    create_update_trltitl_sound_agg_knot_error_sqlstr,
-    get_insert_into_heard_raw_sqlstrs,
-    get_insert_into_sound_vld_sqlstrs,
-    get_moment_person_sound_agg_tablenames,
 )
 from ch18_etl_config.idea_collector import IdeaFileRef, get_all_ideafilerefs
-from ch19_etl_steps._ref.ch19_semantic_types import FaceName, SparkInt
-from copy import copy as copy_copy
+from ch20_etl_idea._ref.ch20_semantic_types import FaceName, SparkInt
 from os.path import exists as os_path_exists
 from pandas import read_excel as pandas_read_excel
 from sqlite3 import Connection as sqlite3_Connection, Cursor as sqlite3_Cursor
