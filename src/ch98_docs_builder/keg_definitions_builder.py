@@ -19,7 +19,7 @@ def get_keg_definitions() -> dict[str, dict]:
     return open_json(create_src_keg_definitions_path("src"))
 
 
-def save_keywords_descrition_json(src_dir: str, x_dict: dict[str, dict]):
+def save_keg_descriptions_json(src_dir: str, x_dict: dict[str, dict]):
     file_path = create_src_keg_definitions_path(src_dir)
     save_json(file_path, None, x_dict, keys_case_insensitive=True)
 
@@ -58,7 +58,7 @@ def rebuild_keg_definitions_contents():
         #     else:
         #         rebuilt_kw_desc[keyword] = f"Plan seed data"
 
-    save_keywords_descrition_json("src", rebuilt_kw_desc)
+    save_keg_descriptions_json("src", rebuilt_kw_desc)
 
 
 def get_chxx_prefix_path_dict() -> dict[str, str]:

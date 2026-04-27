@@ -487,7 +487,7 @@ def prettify_excel_files(x_dir: str) -> None:
 
 def prettify_excel_file(file_path: str, output_path: str = None) -> str:
     """
-    Prettifies an Excel file with professional formatting.
+    Prettifies an Excel file with formatting.
 
     Applies:
     - Styled header row (bold, colored background)

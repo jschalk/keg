@@ -134,7 +134,7 @@ def test_Chapters_DoNotHaveEmptyDirectories():
     # ESTABLISH
     excluded_dirs = {
         "src/ch26_world/test/test_world_examples/worlds",
-        "src/ch19_etl_steps/test/z_notebooks",
+        "src/ch19_belief_src/test/z_notebooks",
     }
 
     # WHEN / THEN

@@ -1,6 +1,6 @@
 from ch30_etl_app.etl_gui_main import ETLApp
 from os import environ as os_environ
-from pytest import mark as pytest_mark
+from pytest import fail as pytest_fail
 
 
 def test_ETLApp_ApplicationInitRunsWithoutError(tk_app):
@@ -14,4 +14,4 @@ def test_ETLApp_ApplicationInitRunsWithoutError(tk_app):
         try:
             root.mainloop()
         except Exception as e:
-            assert False, f"Tkinter app crashed: {e}"
+            pytest_fail(f"Tkinter app crashed: {e}")

@@ -1,4 +1,4 @@
-from ch17_idea.idea_main import IdeaRef, idearef_shop
+from ch17_idea.idea_dataframe import IdeaRef, idearef_shop
 from ref.keywords import Ch17Keywords as kw
 
 

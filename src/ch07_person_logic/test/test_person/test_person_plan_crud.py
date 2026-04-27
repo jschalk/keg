@@ -185,7 +185,7 @@ def test_PersonUnit_set_plan_ScenarioXX_CanCreateMissingPlanUnits():
     assert sue_person.plan_exists(coralsea_rope)
 
 
-def test_PersonUnit_del_plan_obj_Level0CannotBeDeleted():
+def test_PersonUnit_del_plan_obj_Level0CanBeDeleted():
     # ESTABLISH
     sue_person = get_personunit_with_4_levels()
     root_rope = sue_person.planroot.get_plan_rope()

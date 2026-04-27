@@ -1,0 +1,7 @@
+{
+  "chapter_blurb": "Defines the 'Etl Ideas' process. From 'Source Beliefs' to 'Sound'.", 
+  "chapter_content": "Defines the 'Etl Ideas' process. Where valid 'Idea' data is translated into clean 'Sound' data.", 
+  "chapter_description": "ch20_etl_idea", 
+  "chapter_number": 20, 
+  "ontology summary": "Ideas have data type validations and then are turned into Sound data."
+}

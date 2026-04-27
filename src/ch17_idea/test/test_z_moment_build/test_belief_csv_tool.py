@@ -20,8 +20,8 @@ from ch17_idea.idea_belief_csv import (
     add_personunit_to_belief_csv_strs,
     create_init_belief_idea_csv_strs,
 )
+from ch17_idea.idea_dataframe import moment_build_from_df
 from ch17_idea.idea_db_tool import get_ordered_csv
-from ch17_idea.idea_main import moment_build_from_df
 from ch17_idea.test._util.ch17_examples import (  # get_ex2_ii00106_df,
     J45_ROPE,
     get_ex2_ii00100_df,

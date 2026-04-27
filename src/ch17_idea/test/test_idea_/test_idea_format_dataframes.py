@@ -7,7 +7,7 @@ from ch13_time.test._util.ch13_examples import (
     add_time_five_planunit,
 )
 from ch17_idea.idea_config import IdeaFormatsEnum
-from ch17_idea.idea_main import create_idea_df, get_idearef_obj, save_idea_csv
+from ch17_idea.idea_dataframe import create_idea_df, get_idearef_obj, save_idea_csv
 from os.path import exists as os_path_exists
 from ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
 

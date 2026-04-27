@@ -1,7 +1,7 @@
 from ch00_py.db_toolbox import db_table_exists, get_row_count, get_table_columns
 from ch04_rope.rope import create_rope
 from ch18_etl_config.etl_sqlstr import CREATE_JOB_PRNPLAN_SQLSTR, create_prime_tablename
-from ch19_etl_steps.etl_main import CREATE_MOMENT_CONTACT_NETS_SQLSTR
+from ch23_lynx.lynx import CREATE_MOMENT_CONTACT_NETS_SQLSTR
 from ch25_kpi.kpi_mstr import create_populate_kpi001_table
 from ref.keywords import Ch25Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor

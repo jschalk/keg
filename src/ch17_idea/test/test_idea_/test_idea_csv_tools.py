@@ -1,5 +1,5 @@
 from ch04_rope.rope import create_rope
-from ch17_idea.idea_main import (
+from ch17_idea.idea_dataframe import (
     get_csv_moment_rope_person_name_metrics,
     moment_rope_person_name_nested_csv_dict,
 )
