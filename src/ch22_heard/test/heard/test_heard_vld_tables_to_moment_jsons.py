@@ -13,7 +13,7 @@ from ch18_etl_config.etl_sqlstr import (
 from ch19_etl_steps.etl_main import create_sound_and_heard_tables
 from ch22_heard.heard import etl_heard_vld_tables_to_moment_jsons
 from os.path import exists as os_path_exists
-from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch22Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 
 

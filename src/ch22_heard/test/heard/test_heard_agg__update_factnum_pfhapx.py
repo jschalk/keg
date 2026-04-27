@@ -5,7 +5,7 @@ from ch18_etl_config.etl_sqlstr import (
     create_prime_db_table,
     update_factunit_heard_agg_timenum_columns,
 )
-from ref.keywords import Ch19Keywords as kw
+from ref.keywords import Ch22Keywords as kw
 from sqlite3 import Cursor
 
 

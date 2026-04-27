@@ -6,7 +6,7 @@ from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     get_update_prnfact_inx_epoch_diff_sqlstr,
 )
-from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch22Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 
 
