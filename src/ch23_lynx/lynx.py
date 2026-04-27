@@ -47,7 +47,7 @@ from ch18_etl_config._ref.ch18_path import (
     create_moment_ote1_json_path,
 )
 from ch18_etl_config.etl_sqlstr import create_job_tables, create_prime_tablename
-from ch19_etl_steps.obj2db_person import insert_job_obj
+from ch19_belief_src.obj2db_person import insert_job_obj
 from copy import deepcopy as copy_deepcopy
 from os.path import exists as os_path_exists
 from sqlite3 import Cursor as sqlite3_Cursor

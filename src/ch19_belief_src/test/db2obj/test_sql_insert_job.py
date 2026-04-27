@@ -1,7 +1,7 @@
 from ch00_py.db_toolbox import create_insert_query
 from ch07_person_logic.person_config import get_person_calc_dimen_args
 from ch18_etl_config.etl_sqlstr import create_job_tables
-from ch19_etl_steps.obj2db_person import (
+from ch19_belief_src.obj2db_person import (
     create_personunit_metrics_insert_sqlstr,
     create_prnawar_metrics_insert_sqlstr,
     create_prncase_metrics_insert_sqlstr,

@@ -23,7 +23,7 @@ from ch18_etl_config.etl_sqlstr import (
     get_person_heard_vld_tablenames,
     update_heard_agg_timenum_columns,
 )
-from ch19_etl_steps.obj2db_moment import get_moment_dict_from_heard_tables
+from ch19_belief_src.obj2db_moment import get_moment_dict_from_heard_tables
 from copy import copy as copy_copy
 from sqlite3 import Connection as sqlite3_Connection, Cursor as sqlite3_Cursor
 

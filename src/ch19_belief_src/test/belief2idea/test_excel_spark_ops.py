@@ -1,6 +1,6 @@
 from ch00_py.file_toolbox import count_dirs_files, create_path
 from ch17_idea.idea_db_tool import sheet_exists
-from ch19_etl_steps.belief2idea import (
+from ch19_belief_src.belief2idea import (
     add_spark_num_column,
     beliefs_sheets_to_idea_sheets,
     create_spark_face_spark_nums,

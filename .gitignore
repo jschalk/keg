@@ -136,12 +136,10 @@ cython_debug/
 
 # local testing
 *.xlsx#
+src/ch19_belief_src/test/z_notebooks/__marimo__
 src/ch25_world_apex/test/test_world_examples/output
 src/ch26_world/test/test_world_examples/output
 src/ch25_world_apex/test/test_world_examples/worlds
-# src/ch19_etl_steps/test/z_notebooks
-src/ch19_etl_steps/test/z_notebooks/__marimo__
-
 src/ch26_world/test/test_world_examples/example.xlsx
 docs/essays/
 .vscode/settings.json

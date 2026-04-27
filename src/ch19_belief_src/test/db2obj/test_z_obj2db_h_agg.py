@@ -17,7 +17,7 @@ from ch06_plan.healer import healerunit_shop
 from ch06_plan.plan import planunit_shop
 from ch07_person_logic.person_main import personunit_shop
 from ch18_etl_config.etl_sqlstr import create_sound_and_heard_tables
-from ch19_etl_steps.obj2db_person import (
+from ch19_belief_src.obj2db_person import (
     ObjKeysHolder,
     insert_h_agg_obj,
     insert_h_agg_prnawar,

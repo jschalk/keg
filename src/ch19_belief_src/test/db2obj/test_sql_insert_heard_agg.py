@@ -6,7 +6,7 @@ from ch18_etl_config.etl_config import (
     remove_staging_columns,
 )
 from ch18_etl_config.etl_sqlstr import create_sound_and_heard_tables
-from ch19_etl_steps.obj2db_person import (
+from ch19_belief_src.obj2db_person import (
     create_prnawar_put_h_agg_insert_sqlstr,
     create_prncase_put_h_agg_insert_sqlstr,
     create_prncont_put_h_agg_insert_sqlstr,
