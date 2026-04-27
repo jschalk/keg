@@ -4,7 +4,7 @@ from ch09_person_lesson._ref.ch09_path import create_moment_json_path
 from ch09_person_lesson.lasso import lassounit_shop
 from ch11_bud.bud_main import tranbook_shop
 from ch14_moment.moment_main import momentunit_shop
-from ch23_lynx.lynx_main import (
+from ch23_lynx.lynx import (
     CREATE_MOMENT_CONTACT_NETS_SQLSTR,
     etl_moment_json_contact_nets_to_moment_contact_nets_table,
     insert_tranunit_contacts_net,

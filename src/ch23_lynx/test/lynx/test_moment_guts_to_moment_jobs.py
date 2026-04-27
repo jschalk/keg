@@ -4,7 +4,7 @@ from ch09_person_lesson._ref.ch09_path import create_gut_path, create_moment_jso
 from ch09_person_lesson.lasso import lassounit_shop
 from ch10_person_listen._ref.ch10_path import create_job_path
 from ch14_moment.moment_main import momentunit_shop
-from ch23_lynx.lynx_main import etl_lynx_guts_to_lynx_jobs
+from ch23_lynx.lynx import etl_lynx_guts_to_lynx_jobs
 from os.path import exists as os_path_exists
 from ref.keywords import ExampleStrs as exx
 

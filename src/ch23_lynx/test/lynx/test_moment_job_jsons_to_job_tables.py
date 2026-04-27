@@ -10,7 +10,7 @@ from ch10_person_listen._ref.ch10_path import create_job_path
 from ch10_person_listen.keep_tool import save_job_file
 from ch14_moment.moment_main import momentunit_shop
 from ch18_etl_config.etl_sqlstr import create_prime_tablename as prime_table
-from ch23_lynx.lynx_main import etl_lynx_job_jsons_to_job_tables
+from ch23_lynx.lynx import etl_lynx_job_jsons_to_job_tables
 from os.path import exists as os_path_exists
 from ref.keywords import Ch23Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor

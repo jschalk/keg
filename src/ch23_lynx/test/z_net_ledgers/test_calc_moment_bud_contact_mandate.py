@@ -18,7 +18,7 @@ from ch18_etl_config._ref.ch18_path import (
 from ch19_etl_steps.test._util.ch19_examples import (
     get_bob_mop_reason_personunit_example,
 )
-from ch23_lynx.lynx_main import calc_moment_bud_contact_mandate_net_ledgers
+from ch23_lynx.lynx import calc_moment_bud_contact_mandate_net_ledgers
 from os.path import exists as os_path_exists
 from ref.keywords import ExampleStrs as exx
 

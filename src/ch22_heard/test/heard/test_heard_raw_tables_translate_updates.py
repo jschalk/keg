@@ -5,7 +5,7 @@ from ch18_etl_config.etl_sqlstr import (
     create_update_heard_raw_empty_inx_col_sqlstr,
     create_update_heard_raw_existing_inx_col_sqlstr,
 )
-from ch19_etl_steps.etl_main import set_all_heard_raw_inx_columns
+from ch22_heard.heard import set_all_heard_raw_inx_columns
 from ref.keywords import Ch19Keywords as kw
 from sqlite3 import Cursor
 

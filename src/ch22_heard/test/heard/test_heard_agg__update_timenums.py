@@ -4,19 +4,19 @@ from ch18_etl_config.etl_sqlstr import (
     create_sound_and_heard_tables,
     update_heard_agg_timenum_columns,
 )
-from ch19_etl_steps.test.heard.test_heard_agg__update_casenum_pchapx import (
+from ch22_heard.test.heard.test_heard_agg__update_casenum_pchapx import (
     pchapx_insert_nabtime,
     pchapx_insert_prncase,
     pchapx_insert_prnplan,
     pchapx_select_prncase,
 )
-from ch19_etl_steps.test.heard.test_heard_agg__update_factnum_pfhapx import (
+from ch22_heard.test.heard.test_heard_agg__update_factnum_pfhapx import (
     pfhapx_insert_nabtime,
     pfhapx_insert_prnfact,
     pfhapx_insert_prnplan,
     pfhapx_select_prnfact,
 )
-from ch19_etl_steps.test.heard.test_heard_agg__update_moment_time_mxhap0 import (
+from ch22_heard.test.heard.test_heard_agg__update_moment_time_mxhap0 import (
     mxhap0_insert_mmtoffi,
     mxhap0_insert_mmtunit,
     mxhap0_insert_nabtime,

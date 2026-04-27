@@ -194,8 +194,15 @@ FROM {prncont_h_raw_put_tablename}
     rows = cursor0.fetchall()
     print(rows)
     assert rows == [
-        (1, exx.sue, exx.a23, exx.yao, exx.yao, 44.0, 22.0),
-        (2, exx.yao, exx.a23, exx.bob, exx.bob, 55.0, 22.0),
-        (5, exx.sue, exx.a23, exx.bob, exx.bob, 55.0, 22.0),
-        (7, exx.bob, exx.a23, exx.bob, exx.bob, 55.0, 66.0),
+        (1, None, None, None, None, 44.0, 22.0),
+        (2, None, None, None, None, 55.0, 22.0),
+        (5, None, None, None, None, 55.0, 22.0),
+        (7, None, None, None, None, 55.0, 66.0),
     ]
+    # otx to inx process moved to heard_raw to heard_agg function
+    # assert rows == [
+    #     (1, exx.sue, exx.a23, exx.yao, exx.yao, 44.0, 22.0),
+    #     (2, exx.yao, exx.a23, exx.bob, exx.bob, 55.0, 22.0),
+    #     (5, exx.sue, exx.a23, exx.bob, exx.bob, 55.0, 22.0),
+    #     (7, exx.bob, exx.a23, exx.bob, exx.bob, 55.0, 66.0),
+    # ]

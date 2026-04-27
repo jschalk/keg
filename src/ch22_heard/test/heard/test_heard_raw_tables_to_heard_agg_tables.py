@@ -16,8 +16,8 @@ from ch18_etl_config.etl_sqlstr import (
     create_sound_and_heard_tables,
     get_insert_heard_agg_sqlstrs,
 )
-from ch19_etl_steps.etl_main import etl_heard_raw_tables_to_heard_agg_tables
-from ch19_etl_steps.test.heard.test_heard_agg__update_factnum_pfhapx import (
+from ch22_heard.heard import etl_heard_raw_tables_to_heard_agg_tables
+from ch22_heard.test.heard.test_heard_agg__update_factnum_pfhapx import (
     pfhapx_insert_nabtime,
     pfhapx_insert_prnfact,
     pfhapx_insert_prnplan,
@@ -190,10 +190,10 @@ def test_etl_heard_raw_tables_to_heard_agg_tables_PopulatesTable_Scenario0(
     print(f"{get_table_columns(cursor0, prncont_h_raw_put_tablename)=}")
     insert_into_clause = f"""INSERT INTO {prncont_h_raw_put_tablename} (
   {kw.spark_num}
-, {kw.spark_face}_inx
-, {kw.moment_rope}_inx
-, {kw.person_name}_inx
-, {kw.contact_name}_inx
+, {kw.spark_face}_otx
+, {kw.moment_rope}_otx
+, {kw.person_name}_otx
+, {kw.contact_name}_otx
 , {kw.contact_cred_lumen}
 , {kw.contact_debt_lumen}
 )

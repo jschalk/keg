@@ -6,7 +6,7 @@ from ch09_person_lesson.lesson_filehandler import open_gut_file, save_gut_file
 from ch13_time.epoch_main import epochunit_shop
 from ch13_time.test._util.ch13_examples import get_five_config
 from ch14_moment.moment_main import momentunit_shop
-from ch23_lynx.lynx_main import add_lynx_epoch_to_lynx_guts
+from ch23_lynx.lynx import add_lynx_epoch_to_lynx_guts
 from os.path import exists as os_path_exists
 from ref.keywords import Ch23Keywords as kw, ExampleStrs as exx
 

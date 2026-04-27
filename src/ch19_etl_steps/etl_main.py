@@ -350,6 +350,27 @@ def get_sound_raw_tablenames(
     return s_raw_tables
 
 
+def etl_ideax_vld_table_into_prime_table(
+    cursor: sqlite3_Cursor,
+    ideax_vld_table: str,
+    raw_tablename: str,
+    idea_type: str,
+):
+    lab_columns = set(get_table_columns(cursor, raw_tablename))
+    valid_columns = set(get_table_columns(cursor, ideax_vld_table))
+    common_cols = lab_columns & (valid_columns)
+    common_cols = get_default_sorted_list(common_cols)
+    select_str = create_select_query(cursor, ideax_vld_table, common_cols)
+    select_str = select_str.replace("SELECT", f"SELECT '{idea_type}',")
+    common_cols = set(common_cols)
+    common_cols.add("idea_type")
+    common_cols = get_default_sorted_list(common_cols)
+    c_cols = set(common_cols)
+    insert_clause_str = create_insert_into_clause_str(cursor, raw_tablename, c_cols)
+    insert_select_sqlstr = f"{insert_clause_str}\n{select_str};"
+    cursor.execute(insert_select_sqlstr)
+
+
 def etl_ideax_vld_tables_to_sound_raw_tables(cursor: sqlite3_Cursor):
     create_sound_and_heard_tables(cursor)
     ideax_vld_tablenames = get_db_tables(cursor, "_ideax_vld", "ii")
@@ -513,137 +534,3 @@ def etl_sound_agg_tables_to_sound_vld_tables(cursor: sqlite3_Cursor):
 def etl_sound_vld_tables_to_heard_raw_tables(cursor: sqlite3_Cursor):
     for sqlstr in get_insert_into_heard_raw_sqlstrs().values():
         cursor.execute(sqlstr)
-    set_all_heard_raw_inx_columns(cursor)
-
-
-def set_all_heard_raw_inx_columns(cursor: sqlite3_Cursor):
-    translate_args = get_translate_args_class_types()
-    for heard_raw_tablename, otx_columnname in get_all_heard_raw_otx_columns(cursor):
-        columnname_without_otx = otx_columnname[:-4]
-        x_arg = copy_copy(columnname_without_otx)
-        if x_arg[-5:] == "ERASE":
-            x_arg = x_arg[:-6]
-        arg_class_type = translate_args.get(x_arg)
-        set_heard_raw_inx_column(
-            cursor, heard_raw_tablename, columnname_without_otx, arg_class_type
-        )
-
-
-def get_all_heard_raw_otx_columns(cursor: sqlite3_Cursor) -> set[tuple[str, str]]:
-    """Returns tuple of all columns ending in 'otx'. Tuple: (TableName, ColumnName)"""
-
-    otx_tble_columns = set()
-    for heard_raw_tablename in get_insert_into_heard_raw_sqlstrs().keys():
-        for columnname in get_table_columns(cursor, heard_raw_tablename):
-            if columnname[-3:] in {"otx"}:
-                otx_tble_columns.add((heard_raw_tablename, columnname))
-    return otx_tble_columns
-
-
-def set_heard_raw_inx_column(
-    cursor: sqlite3_Cursor,
-    heard_raw_tablename: str,
-    column_without_otx: str,
-    arg_class_type: str,
-):
-    if arg_class_type in translateable_class_types():
-        translate_type_abbv = None
-        if arg_class_type == "NameTerm":
-            translate_type_abbv = "name"
-        elif arg_class_type == "TitleTerm":
-            translate_type_abbv = "title"
-        elif arg_class_type == "LabelTerm":
-            translate_type_abbv = "label"
-        elif arg_class_type == "RopeTerm":
-            translate_type_abbv = "rope"
-        update_calc_inx_sqlstr = create_update_heard_raw_existing_inx_col_sqlstr(
-            translate_type_abbv, heard_raw_tablename, column_without_otx
-        )
-        cursor.execute(update_calc_inx_sqlstr)
-    update_empty_inx_sqlstr = create_update_heard_raw_empty_inx_col_sqlstr(
-        heard_raw_tablename, column_without_otx
-    )
-    cursor.execute(update_empty_inx_sqlstr)
-
-
-def etl_heard_raw_tables_to_heard_agg_tables(cursor: sqlite3_Cursor):
-    for insert_heard_agg_sqlstr in get_insert_heard_agg_sqlstrs().values():
-        cursor.execute(insert_heard_agg_sqlstr)
-    update_heard_agg_timenum_columns(cursor)
-
-
-def etl_heard_agg_tables_to_heard_vld_tables(cursor: sqlite3_Cursor):
-    for insert_heard_vld_sqlstr in get_insert_heard_vld_sqlstrs().values():
-        cursor.execute(insert_heard_vld_sqlstr)
-
-
-def etl_heard_vld_tables_to_moment_jsons(cursor: sqlite3_Cursor, moment_mstr_dir: str):
-    select_moment_rope_sqlstr = """SELECT moment_rope FROM momentunit_h_vld;"""
-    cursor.execute(select_moment_rope_sqlstr)
-    for moment_label_set in cursor.fetchall():
-        moment_label = moment_label_set[0]
-        moment_dict = get_moment_dict_from_heard_tables(cursor, moment_label)
-        moment_lasso = lassounit_shop(create_rope(moment_label))
-        moment_json_path = create_moment_json_path(moment_mstr_dir, moment_lasso)
-        save_json(moment_json_path, None, moment_dict)
-
-
-def etl_ideax_vld_table_into_prime_table(
-    cursor: sqlite3_Cursor,
-    ideax_vld_table: str,
-    raw_tablename: str,
-    idea_type: str,
-):
-    lab_columns = set(get_table_columns(cursor, raw_tablename))
-    valid_columns = set(get_table_columns(cursor, ideax_vld_table))
-    common_cols = lab_columns & (valid_columns)
-    common_cols = get_default_sorted_list(common_cols)
-    select_str = create_select_query(cursor, ideax_vld_table, common_cols)
-    select_str = select_str.replace("SELECT", f"SELECT '{idea_type}',")
-    common_cols = set(common_cols)
-    common_cols.add("idea_type")
-    common_cols = get_default_sorted_list(common_cols)
-    c_cols = set(common_cols)
-    insert_clause_str = create_insert_into_clause_str(cursor, raw_tablename, c_cols)
-    insert_select_sqlstr = f"{insert_clause_str}\n{select_str};"
-    cursor.execute(insert_select_sqlstr)
-
-
-def etl_heard_raw_tables_to_moment_ote1_agg(conn_or_cursor: sqlite3_Connection):
-    """Create Database Table that holds all spark_num to bud_time pairs. Include moment_rope and person_name"""
-    conn_or_cursor.execute(CREATE_MOMENT_OTE1_AGG_SQLSTR)
-    conn_or_cursor.execute(INSERT_MOMENT_OTE1_AGG_FROM_HEARD_SQLSTR)
-
-
-def etl_moment_ote1_agg_table_to_moment_ote1_agg_csvs(
-    conn_or_cursor: sqlite3_Connection, moment_mstr_dir: str
-):
-    empty_ote1_csv_str = """moment_rope,person_name,spark_num,bud_time,error_message
-"""
-    moments_dir = create_moments_dir_path(moment_mstr_dir)
-    for moment_label in get_level1_dirs(moments_dir):
-        moment_lasso = lassounit_shop(create_rope(moment_label))
-        ote1_csv_path = create_moment_ote1_csv_path(moment_mstr_dir, moment_lasso)
-        save_file(ote1_csv_path, None, empty_ote1_csv_str)
-
-    save_to_split_csvs(conn_or_cursor, "moment_ote1_agg", ["moment_rope"], moments_dir)
-
-
-def etl_heard_vld_to_spark_person_csvs(
-    conn_or_cursor: sqlite3_Connection, moment_mstr_dir: str
-):
-    moments_dir = create_moments_dir_path(moment_mstr_dir)
-    for person_table in get_person_heard_vld_tablenames():
-        if get_row_count(conn_or_cursor, person_table) > 0:
-            table_columns = set(get_table_columns(conn_or_cursor, person_table))
-            key_columns = ["moment_rope", "person_name", "spark_num"]
-            if "moment_rope" not in table_columns:
-                key_columns = ["plan_rope", "person_name", "spark_num"]
-            save_to_split_csvs(
-                conn_or_cursor=conn_or_cursor,
-                tablename=person_table,
-                key_columns=key_columns,
-                dst_dir=moments_dir,
-                col1_prefix="persons",
-                col2_prefix="sparks",
-            )

@@ -1,6 +1,6 @@
 from ch17_idea.idea_db_tool import create_idea_sorted_table
 from ch18_etl_config.etl_sqlstr import create_sound_and_heard_tables
-from ch23_lynx.lynx_main import get_max_ideax_agg_spark_num
+from ch23_lynx.lynx import get_max_ideax_agg_spark_num
 from ref.keywords import Ch23Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 

@@ -16,7 +16,7 @@ from ch16_translate.translate_config import (
 )
 from ch17_idea.idea_config import get_idea_config_dict
 from ch18_etl_config.etl_config import get_etl_stage_types_config_dict
-from ch19_etl_steps.etl_main import etl_heard_raw_tables_to_moment_ote1_agg
+from ch22_heard.heard import etl_heard_raw_tables_to_moment_ote1_agg
 from ch98_docs_builder._ref.ch98_semantic_types import (
     BreakTerm,
     ContactName,

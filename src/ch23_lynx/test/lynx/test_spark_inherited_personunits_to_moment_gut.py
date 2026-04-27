@@ -3,7 +3,7 @@ from ch07_person_logic.person_main import get_personunit_from_dict, personunit_s
 from ch09_person_lesson._ref.ch09_path import create_gut_path
 from ch09_person_lesson.lasso import lassounit_shop
 from ch11_bud._ref.ch11_path import create_person_spark_dir_path
-from ch23_lynx.lynx_main import etl_spark_inherited_personunits_to_lynx_gut
+from ch23_lynx.lynx import etl_spark_inherited_personunits_to_lynx_gut
 from os.path import exists as os_path_exists
 from ref.keywords import ExampleStrs as exx
 

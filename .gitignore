@@ -144,3 +144,4 @@ src/ch19_etl_steps/test/z_notebooks/__marimo__
 
 src/ch26_world/test/test_world_examples/example.xlsx
 docs/essays/
+.vscode/settings.json
