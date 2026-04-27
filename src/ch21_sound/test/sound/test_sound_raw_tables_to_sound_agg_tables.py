@@ -5,12 +5,12 @@ from ch18_etl_config.etl_sqlstr import (
     create_sound_and_heard_tables,
     create_sound_raw_update_inconsist_error_message_sqlstr,
 )
-from ch19_etl_steps.etl_main import (
+from ch21_sound.sound import (
     etl_sound_raw_tables_to_sound_agg_tables,
     insert_sound_raw_selects_into_sound_agg_tables,
     set_sound_raw_tables_error_message,
 )
-from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch21Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor, connect as sqlite3_connect
 
 

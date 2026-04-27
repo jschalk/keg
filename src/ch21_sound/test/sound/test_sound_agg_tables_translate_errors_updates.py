@@ -6,8 +6,8 @@ from ch18_etl_config.etl_sqlstr import (
     create_knot_exists_in_name_error_update_sqlstr,
     create_prime_tablename,
 )
-from ch19_etl_steps.etl_main import set_moment_person_sound_agg_knot_errors
-from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ch21_sound.sound import set_moment_person_sound_agg_knot_errors
+from ref.keywords import Ch21Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 
 

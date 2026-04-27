@@ -9,10 +9,12 @@ from ch19_etl_steps.etl_main import (
     etl_ideax_agg_tables_to_sparks_ideax_agg_table,
     etl_ideax_raw_tables_to_ideax_agg_tables,
     etl_ideax_vld_tables_to_sound_raw_tables,
+    etl_sparks_ideax_agg_table_to_sparks_ideax_vld_table,
+)
+from ch21_sound.sound import (
     etl_sound_agg_tables_to_sound_vld_tables,
     etl_sound_raw_tables_to_sound_agg_tables,
     etl_sound_vld_tables_to_heard_raw_tables,
-    etl_sparks_ideax_agg_table_to_sparks_ideax_vld_table,
     etl_translate_sound_agg_tables_to_translate_sound_vld_tables,
 )
 from ch22_heard.heard import (
