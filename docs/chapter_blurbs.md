@@ -27,7 +27,7 @@ What does each one do?
 - **ch21_sound**: Defines the 'Sound' process. From 'Ideas' to 'Heard'.
 - **ch22_heard**: Defines the 'Heard' process. From 'Sound' to 'Lynx'.
 - **ch23_lynx**: Defines the Lynx stage of data. Source of Job Persons, complete Moment data.
-- **ch24_etl_vow**: Defines how beliefs for outside audiences are created.
+- **ch24_belief_dst**: Defines how beliefs for outside audiences are created.
 - **ch25_kpi**: Defines the analytics outcomes of completed MomentUnits.
 - **ch26_world**: Defines WorldDirs that admin MomentUnits input data and outcomes
 - **ch27_lobby**: Defines Lobby Tools for gifts, World Scenarios.

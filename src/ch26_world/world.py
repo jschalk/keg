@@ -38,7 +38,7 @@ from ch23_lynx.lynx import (
     etl_spark_person_csvs_to_lesson_json,
     get_max_ideax_agg_spark_num,
 )
-from ch24_etl_vow.belief_output_tool import create_belief0001_file, prettify_excel_file
+from ch24_belief_dst.vow_db2df import create_belief0001_file, prettify_excel_file
 from ch25_kpi.gcalendar import (
     copy_person_day_punches_to_dst_dir,
     lynx_to_person_gcal_day_punchs,
