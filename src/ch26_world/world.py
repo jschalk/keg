@@ -14,14 +14,10 @@ from ch19_etl_steps.etl_main import (
     etl_ideax_agg_tables_to_sparks_ideax_agg_table,
     etl_ideax_raw_tables_to_ideax_agg_tables,
     etl_ideax_vld_tables_to_sound_raw_tables,
-    etl_moment_ote1_agg_csvs_to_jsons,
     etl_moment_ote1_agg_table_to_moment_ote1_agg_csvs,
     etl_sound_agg_tables_to_sound_vld_tables,
     etl_sound_raw_tables_to_sound_agg_tables,
     etl_sound_vld_tables_to_heard_raw_tables,
-    etl_spark_inherited_personunits_to_lynx_gut,
-    etl_spark_lesson_json_to_spark_inherited_personunits,
-    etl_spark_person_csvs_to_lesson_json,
     etl_sparks_ideax_agg_table_to_sparks_ideax_vld_table,
     etl_translate_sound_agg_tables_to_translate_sound_vld_tables,
 )
@@ -32,6 +28,10 @@ from ch23_lynx.lynx_main import (
     etl_lynx_guts_to_lynx_jobs,
     etl_lynx_job_jsons_to_job_tables,
     etl_moment_json_contact_nets_to_moment_contact_nets_table,
+    etl_moment_ote1_agg_csvs_to_jsons,
+    etl_spark_inherited_personunits_to_lynx_gut,
+    etl_spark_lesson_json_to_spark_inherited_personunits,
+    etl_spark_person_csvs_to_lesson_json,
     get_max_ideax_agg_spark_num,
 )
 from ch24_etl_vow.belief_output_tool import create_belief0001_file, prettify_excel_file

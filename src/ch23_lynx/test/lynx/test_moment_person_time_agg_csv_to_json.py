@@ -5,7 +5,7 @@ from ch18_etl_config._ref.ch18_path import (
     create_moment_ote1_csv_path,
     create_moment_ote1_json_path,
 )
-from ch19_etl_steps.etl_main import etl_moment_ote1_agg_csvs_to_jsons
+from ch23_lynx.lynx_main import etl_moment_ote1_agg_csvs_to_jsons
 from os.path import exists as os_path_exists
 from ref.keywords import Ch23Keywords as kw, ExampleStrs as exx
 

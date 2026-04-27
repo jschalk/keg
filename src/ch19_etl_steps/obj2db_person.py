@@ -20,6 +20,7 @@ from dataclasses import dataclass
 from sqlite3 import Cursor as sqlite3_Cursor
 
 
+# TODO move to lynx chapter all job insert
 def create_prnmemb_metrics_insert_sqlstr(values_dict: dict[str,]):
     moment_rope = values_dict.get("moment_rope")
     person_name = values_dict.get("person_name")
