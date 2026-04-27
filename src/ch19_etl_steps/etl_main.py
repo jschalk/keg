@@ -331,27 +331,6 @@ def get_ideax_vld_tables(cursor: sqlite3_Cursor) -> dict[str, str]:
     }
 
 
-def ideax_vld_tables_to_translate_prime_raw_tables(cursor: sqlite3_Cursor):
-    ideax_vld_tables = get_ideax_vld_tables(cursor)
-    idea_dimen_ref = {
-        translate_dimen: idea_types
-        for translate_dimen, idea_types in get_idea_dimen_ref().items()
-        if translate_dimen[:6] == "translate"
-    }
-    translate_raw_tables = {}
-    for translate_dimen in idea_dimen_ref:
-        idea_types = idea_dimen_ref.get(translate_dimen)
-        raw_tablename = f"{translate_dimen}_raw"
-        translate_raw_tables[raw_tablename] = idea_types
-
-    for ideax_vld_table, idea_type in ideax_vld_tables.items():
-        for raw_tablename, idea_types in translate_raw_tables.items():
-            if idea_type in idea_types:
-                etl_ideax_vld_table_into_old_prime_table(
-                    cursor, ideax_vld_table, raw_tablename, idea_type
-                )
-
-
 def get_sound_raw_tablenames(
     cursor: sqlite3_Cursor, dimens: list[str], ideax_vld_tablename: str
 ) -> set[str]:
@@ -628,41 +607,6 @@ def etl_ideax_vld_table_into_prime_table(
     insert_clause_str = create_insert_into_clause_str(cursor, raw_tablename, c_cols)
     insert_select_sqlstr = f"{insert_clause_str}\n{select_str};"
     cursor.execute(insert_select_sqlstr)
-
-
-def etl_ideax_vld_table_into_old_prime_table(
-    cursor: sqlite3_Cursor,
-    ideax_vld_table: str,
-    raw_tablename: str,
-    idea_type: str,
-):
-    lab_columns = set(get_table_columns(cursor, raw_tablename))
-    valid_columns = set(get_table_columns(cursor, ideax_vld_table))
-    common_cols = lab_columns & (valid_columns)
-    common_cols = get_default_sorted_list(common_cols)
-    select_str = create_select_query(cursor, ideax_vld_table, common_cols)
-    select_str = select_str.replace("SELECT", f"SELECT '{idea_type}',")
-    group_by_clause_str = _get_grouping_groupby_clause(common_cols)
-    # tension
-    common_cols.append("idea_type")
-    common_cols = get_default_sorted_list(common_cols)
-    x_dict = {common_col: None for common_col in common_cols}
-    insert_clause_str = create_insert_into_clause_str(cursor, raw_tablename, x_dict)
-    insert_select_sqlstr = f"{insert_clause_str}\n{select_str}{group_by_clause_str}"
-    cursor.execute(insert_select_sqlstr)
-
-
-def split_excel_into_sparks_dirs(translate_file: str, face_dir: str, sheet_name: str):
-    split_excel_into_dirs(
-        translate_file, face_dir, "spark_num", "translate", sheet_name
-    )
-
-
-def get_most_recent_spark_num(
-    spark_set: set[SparkInt], max_spark_num: SparkInt
-) -> SparkInt:
-    recent_spark_nums = [e_id for e_id in spark_set if e_id <= max_spark_num]
-    return max(recent_spark_nums, default=None)
 
 
 def etl_heard_raw_tables_to_moment_ote1_agg(conn_or_cursor: sqlite3_Connection):
