@@ -18,7 +18,7 @@ from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
 )
-from ch24_etl_otb.belief_output_tool import (
+from ch24_etl_vow.belief_output_tool import (
     collect_full_world_belief_csv_strs,
     create_belief0001_file,
 )

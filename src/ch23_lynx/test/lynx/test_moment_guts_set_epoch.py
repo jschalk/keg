@@ -6,12 +6,12 @@ from ch09_person_lesson.lesson_filehandler import open_gut_file, save_gut_file
 from ch13_time.epoch_main import epochunit_shop
 from ch13_time.test._util.ch13_examples import get_five_config
 from ch14_moment.moment_main import momentunit_shop
-from ch19_etl_steps.etl_main import add_moment_epoch_to_guts
+from ch23_lynx.lynx_main import add_lynx_epoch_to_lynx_guts
 from os.path import exists as os_path_exists
-from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch23Keywords as kw, ExampleStrs as exx
 
 
-def test_add_moment_epoch_to_guts_SetsFiles_Scenario0(temp3_fs):
+def test_add_lynx_epoch_to_lynx_guts_SetsFiles_Scenario0(temp3_fs):
     # ESTABLISH
     moment_mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
@@ -27,7 +27,7 @@ def test_add_moment_epoch_to_guts_SetsFiles_Scenario0(temp3_fs):
     assert not init_sue_gut.plan_exists(five_rope)
 
     # WHEN
-    add_moment_epoch_to_guts(moment_mstr_dir)
+    add_lynx_epoch_to_lynx_guts(moment_mstr_dir)
 
     # THEN
     post_sue_gut = open_gut_file(moment_mstr_dir, a23_lasso, exx.sue)

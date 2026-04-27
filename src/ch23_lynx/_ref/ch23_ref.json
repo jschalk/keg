@@ -1,0 +1,7 @@
+{
+  "chapter_blurb": "Defines the Lynx stage of data. Source of Job Persons, complete Moment data.", 
+  "chapter_content": "Defines the Lynx stage of data. Source of Job Persons, complete Moment data.", 
+  "chapter_description": "ch23_lynx", 
+  "chapter_number": 23, 
+  "ontology summary": "The most stable and clear of all etl stages. Everything has been calculated except for audience belief."
+}

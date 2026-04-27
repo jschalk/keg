@@ -1,7 +1,7 @@
 from ch00_py.file_toolbox import create_path
 from ch09_person_lesson._ref.ch09_path import create_moments_dir_path
 from ch09_person_lesson.lasso import LassoUnit
-from ch24_etl_otb._ref.ch24_semantic_types import PersonName
+from ch24_etl_vow._ref.ch24_semantic_types import PersonName
 
 # def create_placeholder_txt_path(
 #     moment_mstr_dir: str, moment_lasso: LassoUnit, person_name: PersonName

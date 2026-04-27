@@ -3,7 +3,7 @@ from ch07_person_logic.person_main import get_personunit_from_dict, personunit_s
 from ch09_person_lesson._ref.ch09_path import create_gut_path
 from ch09_person_lesson.lasso import lassounit_shop
 from ch11_bud._ref.ch11_path import create_person_spark_dir_path
-from ch19_etl_steps.etl_main import etl_spark_inherited_personunits_to_moment_gut
+from ch19_etl_steps.etl_main import etl_spark_inherited_personunits_to_lynx_gut
 from os.path import exists as os_path_exists
 from ref.keywords import ExampleStrs as exx
 
@@ -12,7 +12,7 @@ from ref.keywords import ExampleStrs as exx
 # test that budunit with depth 1 is able to create nested personunits directories and populate with spark relevant
 
 
-def test_etl_spark_inherited_personunits_to_moment_gut_SetsFiles_Scenario0(
+def test_etl_spark_inherited_personunits_to_lynx_gut_SetsFiles_Scenario0(
     temp3_fs,
 ):
     # ESTABLISH
@@ -48,7 +48,7 @@ def test_etl_spark_inherited_personunits_to_moment_gut_SetsFiles_Scenario0(
     assert os_path_exists(a23_bob_gut_path) is False
 
     # WHEN
-    etl_spark_inherited_personunits_to_moment_gut(mstr_dir)
+    etl_spark_inherited_personunits_to_lynx_gut(mstr_dir)
 
     # THEN
     assert os_path_exists(a23_bob_gut_path)

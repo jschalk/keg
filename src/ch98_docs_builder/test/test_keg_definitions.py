@@ -55,7 +55,7 @@ from ch98_docs_builder.keg_definitions_builder import (
     get_chxx_ref_blurb,
     get_keg_definitions,
     get_person_dimen_config,
-    save_keywords_descrition_json,
+    save_keg_descriptions_json,
 )
 from inspect import getdoc as inspect_getdoc
 from re import fullmatch as re_fullmatch
@@ -71,6 +71,8 @@ def test_SpecialUpdate_keg_definitions_file():
     If any are incorrect. Rewrites them and asserts false"""
     # ESTABLISH
     keg_definitions = get_keg_definitions()
+
+    # check all chapter descriptions are correct
     ch_dict = get_chxx_prefix_path_dict()
     chapter_changes_needed = []
     for chxx_prefix, ch_ref_path in ch_dict.items():
@@ -82,7 +84,9 @@ def test_SpecialUpdate_keg_definitions_file():
     for chxx_prefix, ch_blurb in chapter_changes_needed:
         print(f"update {chxx_prefix} to {ch_blurb}")
         keg_definitions[chxx_prefix] = ch_blurb
-    save_keywords_descrition_json("src", keg_definitions)
+
+    # Special action, test mutates keg_descriptions.json
+    save_keg_descriptions_json("src", keg_definitions)
     # WHEN / THEN
     assert chapter_changes_needed == []
 

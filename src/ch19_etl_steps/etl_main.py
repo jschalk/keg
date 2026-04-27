@@ -38,7 +38,6 @@ from ch09_person_lesson.lesson_main import (
     get_lessonunit_from_dict,
     lessonunit_shop,
 )
-from ch10_person_listen.keep_tool import open_job_file
 from ch11_bud._ref.ch11_path import (
     create_person_spark_dir_path,
     create_personspark_path,
@@ -49,15 +48,6 @@ from ch11_bud.bud_filehandler import (
     get_persons_downhill_spark_nums,
     open_person_file,
 )
-from ch11_bud.bud_main import TranBook
-from ch14_moment.moment_cell import (
-    create_bud_mandate_ledgers,
-    create_moment_persons_cell_trees,
-    set_cell_tree_cell_mandates,
-    set_cell_trees_decrees,
-    set_cell_trees_found_facts,
-)
-from ch14_moment.moment_main import open_moment_file
 from ch16_translate.translate_config import (
     get_translate_args_class_types,
     get_translate_labelterm_args,
@@ -82,7 +72,6 @@ from ch17_idea.idea_db_tool import (
 )
 from ch17_idea.idea_main import get_idearef_obj
 from ch18_etl_config._ref.ch18_path import (
-    create_last_run_metrics_path,
     create_moment_ote1_csv_path,
     create_moment_ote1_json_path,
 )
@@ -94,7 +83,6 @@ from ch18_etl_config.etl_sqlstr import (
     create_insert_missing_spark_face_into_translate_core_vld_sqlstr,
     create_insert_translate_core_agg_into_vld_sqlstr,
     create_insert_translate_sound_vld_table_sqlstr,
-    create_job_tables,
     create_knot_exists_in_label_error_update_sqlstr,
     create_knot_exists_in_name_error_update_sqlstr,
     create_prime_tablename,
@@ -119,7 +107,6 @@ from ch18_etl_config.etl_sqlstr import (
 from ch18_etl_config.idea_collector import IdeaFileRef, get_all_ideafilerefs
 from ch19_etl_steps._ref.ch19_semantic_types import FaceName, SparkInt
 from ch19_etl_steps.obj2db_moment import get_moment_dict_from_heard_tables
-from ch19_etl_steps.obj2db_person import insert_job_obj
 from copy import copy as copy_copy, deepcopy as copy_deepcopy
 from os.path import exists as os_path_exists
 from pandas import read_excel as pandas_read_excel
@@ -181,18 +168,6 @@ def _insert_row_into_ideax_raw_table(
         x_tablename, column_names, [row_values]
     )
     cursor.execute(insert_sqlstr)
-
-
-def get_max_ideax_agg_spark_num(cursor: sqlite3_Cursor) -> int:
-    agg_tables = get_db_tables(cursor, "ideax_agg")
-    ideax_aggs_max_spark_num = 0
-    for agg_table in agg_tables:
-        if agg_table.startswith("ii") and agg_table.endswith("ideax_agg"):
-            sqlstr = f"SELECT MAX(spark_num) FROM {agg_table}"
-            table_max_spark_num = cursor.execute(sqlstr).fetchone()[0] or 1
-            if table_max_spark_num > ideax_aggs_max_spark_num:
-                ideax_aggs_max_spark_num = table_max_spark_num
-    return ideax_aggs_max_spark_num
 
 
 def get_existing_excel_idea_file_refs(x_dir: str) -> list[IdeaFileRef]:
@@ -731,53 +706,6 @@ def etl_moment_ote1_agg_csvs_to_jsons(moment_mstr_dir: str):
         save_json(json_path, None, x_dict)
 
 
-def etl_create_buds_root_cells(moment_mstr_dir: str):
-    moments_dir = create_moments_dir_path(moment_mstr_dir)
-    for moment_label in get_level1_dirs(moments_dir):
-        moment_dir = create_path(moments_dir, moment_label)
-        moment_lasso = lassounit_shop(create_rope(moment_label))
-        ote1_json_path = create_path(moment_dir, "moment_ote1_agg.json")
-        if os_path_exists(ote1_json_path):
-            ote1_dict = open_json(ote1_json_path)
-            x_momentunit = open_moment_file(moment_mstr_dir, moment_lasso)
-            x_momentunit.create_buds_root_cells(ote1_dict)
-
-
-def etl_create_moment_cell_trees(moment_mstr_dir: str):
-    moments_dir = create_moments_dir_path(moment_mstr_dir)
-    for moment_label in get_level1_dirs(moments_dir):
-        moment_lasso = lassounit_shop(create_rope(moment_label))
-        create_moment_persons_cell_trees(moment_mstr_dir, moment_lasso)
-
-
-def etl_set_cell_trees_found_facts(moment_mstr_dir: str):
-    moments_dir = create_moments_dir_path(moment_mstr_dir)
-    for moment_label in get_level1_dirs(moments_dir):
-        moment_lasso = lassounit_shop(create_rope(moment_label))
-        set_cell_trees_found_facts(moment_mstr_dir, moment_lasso)
-
-
-def etl_set_cell_trees_decrees(moment_mstr_dir: str):
-    moments_dir = create_moments_dir_path(moment_mstr_dir)
-    for moment_label in get_level1_dirs(moments_dir):
-        moment_lasso = lassounit_shop(create_rope(moment_label))
-        set_cell_trees_decrees(moment_mstr_dir, moment_lasso)
-
-
-def etl_set_cell_tree_cell_mandates(moment_mstr_dir: str):
-    moments_dir = create_moments_dir_path(moment_mstr_dir)
-    for moment_label in get_level1_dirs(moments_dir):
-        moment_lasso = lassounit_shop(create_rope(moment_label))
-        set_cell_tree_cell_mandates(moment_mstr_dir, moment_lasso)
-
-
-def etl_create_bud_mandate_ledgers(moment_mstr_dir: str):
-    moments_dir = create_moments_dir_path(moment_mstr_dir)
-    for moment_label in get_level1_dirs(moments_dir):
-        moment_lasso = lassounit_shop(create_rope(moment_label))
-        create_bud_mandate_ledgers(moment_mstr_dir, moment_lasso)
-
-
 def etl_heard_vld_to_spark_person_csvs(
     conn_or_cursor: sqlite3_Connection, moment_mstr_dir: str
 ):
@@ -932,7 +860,7 @@ def _get_prev_spark_num_personunit(
     return open_person_file(prev_personspark_path)
 
 
-def etl_spark_inherited_personunits_to_moment_gut(moment_mstr_dir: str):
+def etl_spark_inherited_personunits_to_lynx_gut(moment_mstr_dir: str):
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):
         moment_lasso = lassounit_shop(create_rope(moment_label))
@@ -945,78 +873,3 @@ def etl_spark_inherited_personunits_to_moment_gut(moment_mstr_dir: str):
             max_spark_person_json = open_file(max_personspark_path)
             gut_path = create_gut_path(moment_mstr_dir, moment_lasso, person_name)
             save_file(gut_path, None, max_spark_person_json)
-
-
-def add_moment_epoch_to_guts(moment_mstr_dir: str):
-    moments_dir = create_moments_dir_path(moment_mstr_dir)
-    for moment_label in get_level1_dirs(moments_dir):
-        moment_lasso = lassounit_shop(create_rope(moment_label))
-        x_momentunit = open_moment_file(moment_mstr_dir, moment_lasso)
-        x_momentunit.add_epoch_to_guts()
-
-
-def etl_moment_guts_to_moment_jobs(moment_mstr_dir: str):
-    moments_dir = create_moments_dir_path(moment_mstr_dir)
-    for moment_label in get_level1_dirs(moments_dir):
-        moment_lasso = lassounit_shop(create_rope(moment_label))
-        x_momentunit = open_moment_file(moment_mstr_dir, moment_lasso)
-        x_momentunit.generate_all_jobs()
-
-
-def etl_moment_job_jsons_to_job_tables(cursor: sqlite3_Cursor, moment_mstr_dir: str):
-    create_job_tables(cursor)
-    moments_dir = create_moments_dir_path(moment_mstr_dir)
-    for moment_label in get_level1_dirs(moments_dir):
-        moment_rope = create_rope(moment_label)
-        moment_lasso = lassounit_shop(moment_rope)
-        moment_path = create_path(moments_dir, moment_label)
-        persons_dir = create_path(moment_path, "persons")
-        for person_name in get_level1_dirs(persons_dir):
-            job_obj = open_job_file(moment_mstr_dir, moment_lasso, person_name)
-            insert_job_obj(cursor, job_obj)
-
-
-CREATE_MOMENT_CONTACT_NETS_SQLSTR = "CREATE TABLE IF NOT EXISTS moment_contact_nets (moment_rope TEXT, person_name TEXT, person_net_amount REAL)"
-
-
-def insert_tranunit_contacts_net(cursor: sqlite3_Cursor, tranbook: TranBook):
-    """
-    Insert the net amounts for each contact in the tranbook into the specified table.
-
-    :param cursor: SQLite cursor object
-    :param tranbook: TranBook object containing transaction units
-    :param dst_tablename: Name of the destination table
-    """
-    contacts_net_array = tranbook._get_contacts_net_array()
-    cursor.executemany(
-        f"INSERT INTO moment_contact_nets (moment_rope, person_name, person_net_amount) VALUES ('{tranbook.moment_rope}', ?, ?)",
-        contacts_net_array,
-    )
-
-
-def etl_moment_json_contact_nets_to_moment_contact_nets_table(
-    cursor: sqlite3_Cursor, moment_mstr_dir: str
-):
-    cursor.execute(CREATE_MOMENT_CONTACT_NETS_SQLSTR)
-    moments_dir = create_moments_dir_path(moment_mstr_dir)
-    for moment_label in get_level1_dirs(moments_dir):
-        moment_lasso = lassounit_shop(create_rope(moment_label))
-        x_momentunit = open_moment_file(moment_mstr_dir, moment_lasso)
-        x_momentunit.set_all_tranbook()
-        insert_tranunit_contacts_net(cursor, x_momentunit.all_tranbook)
-
-
-def create_last_run_metrics_json(cursor: sqlite3_Cursor, moment_mstr_dir: str):
-    max_ideax_agg_spark_num = get_max_ideax_agg_spark_num(cursor)
-    last_run_metrics_path = create_last_run_metrics_path(moment_mstr_dir)
-    last_run_metrics_dict = {"max_ideax_agg_spark_num": max_ideax_agg_spark_num}
-    save_json(last_run_metrics_path, None, last_run_metrics_dict)
-
-
-def calc_moment_bud_contact_mandate_net_ledgers(moment_mstr_dir: str):
-    etl_create_buds_root_cells(moment_mstr_dir)
-    etl_create_moment_cell_trees(moment_mstr_dir)
-    etl_set_cell_trees_found_facts(moment_mstr_dir)
-    etl_set_cell_trees_decrees(moment_mstr_dir)
-    etl_set_cell_tree_cell_mandates(moment_mstr_dir)
-    etl_create_bud_mandate_ledgers(moment_mstr_dir)
