@@ -1,3 +1,10 @@
+## [0.83.19](https://github.com/jschalk/keg/compare/v0.83.18...v0.83.19) (2026-04-30)
+
+
+### Bug Fixes
+
+* replace get_version func that caused package command to crash ([e986cd2](https://github.com/jschalk/keg/commit/e986cd293695790dccad5c062f74a82b3faa4231))
+
 ## [0.83.18](https://github.com/jschalk/keg/compare/v0.83.17...v0.83.18) (2026-04-21)
 
 
