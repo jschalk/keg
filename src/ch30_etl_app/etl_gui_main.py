@@ -613,24 +613,16 @@ class ETLApp(tk_Tk):
         self._set_punch_text("")
         if names:
             self._person_combo.current(0)
-            print(f"before {names=}")
             self._on_person_selected(None)
-            print(f"after3 {names=}")
             self._viewer_hint.place_forget()
 
     def _on_person_selected(self, _event):
-        print("huh3")
         person = self._person_var.get()
-        print("huh4")
         moments = self._persons_punchs_data.get(person, [])
-        print(f"{moments=}")
         moment_names = [str(m) for m, _paths in moments.items()]
-        print("huh6")
         self._moment_combo["values"] = moment_names
-        print("huh7")
         self._moment_var.set("")
         self._set_punch_text("")
-        print("huh9")
         if moment_names:
             self._moment_combo.current(0)
             self._on_moment_selected(None)
@@ -743,7 +735,6 @@ class ETLApp(tk_Tk):
             beliefs_src_dir=self._b_src_dir.get(),
         )
         self._status.set("✔  Pipeline completed successfully.")
-        print("create_today_punchs complete")
         self._populate_viewer(persons_punchs)
         prettify_excel_files(self._b_src_dir.get())
         prettify_excel_files(self._i_src_dir.get())
