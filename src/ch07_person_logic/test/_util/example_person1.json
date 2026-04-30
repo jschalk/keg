@@ -120,7 +120,7 @@
         ";ACME DevOps" : { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": ";ACME DevOps"  }, 
         ";ACME General": { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": ";ACME General" }, 
         ";Everyone"    : { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": ";Everyone"     }, 
-        "Martha Tanner" : { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "Martha Tanner"  }
+        "Martha Tanner": { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "Martha Tanner" }
       }
     }, 
     "Mikayla": {
