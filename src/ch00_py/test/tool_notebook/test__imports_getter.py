@@ -85,7 +85,7 @@ def test_get_imports_from_source_ReturnsObj_Scenario8_relative_import():
     assert result == ["from .utils import helper"]
 
 
-def test_get_imports_from_source_ReturnsObj_Scenario9_double_relative_import():
+def test_get_imports_from_source_ReturnsObj_Scenario9_two_relative_import():
     # ESTABLISH
     source = "from ..core import value"
     # WHEN
