@@ -135,7 +135,7 @@ class ETLApp(tk_Tk):
         x = (self.winfo_screenwidth() - app_width) // 2
         y = (self.winfo_screenheight() - app_height) // 2
         self.geometry(f"{app_width}x{app_height}+{x}+{y}")
-        self.resizable(True, True)
+        self.resizable(False, False)
 
         # Holds data after a run: {person: [(moment, [paths])]}
         self._persons_punchs_data: dict = {}
@@ -265,7 +265,7 @@ class ETLApp(tk_Tk):
             relief="flat",
             bd=0,
             width=32,
-            highlightthickness=1,
+            highlightthickness=0,
             highlightbackground=ax.border,
             highlightcolor=ax.accent,
         )
@@ -435,7 +435,6 @@ class ETLApp(tk_Tk):
         # LEFT PANEL ─────────────────────────────
         left = tk_Frame(body, bg=ax.bg, width=640)
         left.grid(row=0, column=0, sticky="nsew")
-        left.pack_propagate(False)
 
         card = tk_Frame(left, bg=ax.bg_card, bd=0, padx=24, pady=20)
         card.pack(fill="x", padx=28, pady=(16, 0))
@@ -462,12 +461,7 @@ class ETLApp(tk_Tk):
         self._run_btn.pack()
 
         options = get_option_table_options()
-        table = OptionTable(
-            left,
-            options,
-            b_src_dir=self._b_src_dir.get,
-            me_personname=self._me_personname.get,
-        )
+        table = OptionTable(left, options, self._b_src_dir.get, self._me_personname.get)
         table.pack(fill=tk_BOTH, expand=True, padx=10, pady=10)
 
         self._run_btn.bind(
@@ -592,14 +586,12 @@ class ETLApp(tk_Tk):
         self._punch_text.pack(side=tk_LEFT, fill=tk_BOTH, expand=True)
 
         # Hint label when empty
+        punch_files_str = "Run the pipeline to load punch files."
         self._viewer_hint = tk_Label(
-            parent,
-            text="Run the pipeline to load punch files.",
-            font=ax.mono,
-            bg=ax.bg_card,
-            fg=ax.fg_dim,
+            parent, text=punch_files_str, font=ax.mono, bg=ax.bg_card, fg=ax.fg_dim
         )
-        self._viewer_hint.place(relx=0.5, rely=0.55, anchor="center")
+        # self._viewer_hint.place(relx=0.5, rely=0.55, anchor="center")
+        self._viewer_hint.pack(pady=20)
 
     # ── viewer helpers ─────────────────────────
     def _populate_viewer(self, persons_punchs: dict):
@@ -614,7 +606,8 @@ class ETLApp(tk_Tk):
         if names:
             self._person_combo.current(0)
             self._on_person_selected(None)
-            self._viewer_hint.place_forget()
+            # self._viewer_hint.place_forget()
+            self._viewer_hint.pack_forget()
 
     def _on_person_selected(self, _event):
         person = self._person_var.get()

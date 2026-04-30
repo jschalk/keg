@@ -10,6 +10,7 @@ from ch30_etl_app.etl_gui_tool import (
 )
 from pathlib import Path
 from platform import system as platform_system
+from src.ref.keywords import Ch30Keywords as kw
 
 
 def test_ETLAppSettings_Exists():
@@ -159,7 +160,7 @@ def test_get_app_default_dir_ReturnsObj_Scenari0_app_default_dir():
     default_dir = get_app_default_dir()
     example_worlddir = worlddir_shop(example_world_name, worlds_dir=default_dir)
     assert x_default_dirs == {
-        "world_name": example_worlddir.world_name,
+        kw.world_name: example_worlddir.world_name,
         "working": example_worlddir.worlds_dir,
         "beliefs_src": example_worlddir.beliefs_src_dir,
         "ideas_src": example_worlddir.ideas_src_dir,
