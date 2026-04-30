@@ -35,22 +35,22 @@ def test_add_to_ii00142_csv_ReturnsObj(cursor0: Cursor):
     trltitl_dimen = kw.translate_title
     trltitl_s_vld_tablename = prime_tbl(trltitl_dimen, kw.s_vld)
     insert_trltitl_sqlstr = f"""INSERT INTO {trltitl_s_vld_tablename}
-    ({kw.spark_num}, {kw.spark_face}, {kw.otx_title}, {kw.inx_title})
-    VALUES
-      ({spark1}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
-    , ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx}')
-    ;
-    """
+  ({kw.spark_num}, {kw.spark_face}, {kw.otx_title}, {kw.inx_title})
+  VALUES
+    ({spark1}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
+  , ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx}')
+  ;
+  """
     cursor0.execute(insert_trltitl_sqlstr)
 
     trlcore_s_vld_tablename = prime_tbl("TRLCORE", kw.s_vld)
     insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename}
-    ({kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
-    VALUES
-      ('{sue_otx}', '{sue_otx_knot}', '{sue_inx_knot}', '{sue_unknown_str}')
-    , ('{bob_otx}', '{bob_otx_knot}', '{bob_inx_knot}', '{bob_unknown_str}')
-    ;
-    """
+  ({kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+  VALUES
+    ('{sue_otx}', '{sue_otx_knot}', '{sue_inx_knot}', '{sue_unknown_str}')
+  , ('{bob_otx}', '{bob_otx_knot}', '{bob_inx_knot}', '{bob_unknown_str}')
+  ;
+  """
     cursor0.execute(insert_trlcore_sqlstr)
 
     csv_delimiter = ","
@@ -275,12 +275,12 @@ def test_add_translate_rows_to_belief_csv_strs_ReturnsObj(cursor0: Cursor):
     trltitl_dimen = kw.translate_title
     trltitl_s_vld_tablename = prime_tbl(trltitl_dimen, kw.s_vld)
     insert_trltitl_sqlstr = f"""INSERT INTO {trltitl_s_vld_tablename}
-    ({kw.spark_num}, {kw.spark_face}, {kw.otx_title}, {kw.inx_title})
-    VALUES
-      ({spark1}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
-    , ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx}')
-    ;
-    """
+  ({kw.spark_num}, {kw.spark_face}, {kw.otx_title}, {kw.inx_title})
+  VALUES
+    ({spark1}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
+  , ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx}')
+  ;
+  """
     cursor0.execute(insert_trltitl_sqlstr)
 
     # insert translate_name records
@@ -333,12 +333,12 @@ VALUES
     # insert translate_core records
     trlcore_s_vld_tablename = prime_tbl("TRLCORE", kw.s_vld)
     insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename}
-    ({kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
-    VALUES
-      ('{sue_otx}', '{sue_otx_knot}', '{sue_inx_knot}', '{sue_unknown_str}')
-    , ('{bob_otx}', '{bob_otx_knot}', '{bob_inx_knot}', '{bob_unknown_str}')
-    ;
-    """
+  ({kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+  VALUES
+    ('{sue_otx}', '{sue_otx_knot}', '{sue_inx_knot}', '{sue_unknown_str}')
+  , ('{bob_otx}', '{bob_otx_knot}', '{bob_inx_knot}', '{bob_unknown_str}')
+  ;
+  """
     cursor0.execute(insert_trlcore_sqlstr)
 
     csv_delimiter = ","

@@ -29,26 +29,26 @@ def test_create_update_heard_raw_existing_inx_col_sqlstr_UpdatesTable_Scenario0_
     prnawar_h_raw_put_tablename = prime_tbl(prnawar_dimen, kw.h_raw, "put")
     # print(f"{get_table_columns(cursor0, prnawar_h_raw_put_tablename)=}")
     insert_spark_face_only_sqlstr = f"""INSERT INTO {prnawar_h_raw_put_tablename} 
-    ({kw.spark_num}, {kw.spark_face}_otx, {kw.spark_face}_inx)
-    VALUES
-      ({spark1}, '{sue_otx}', NULL)
-    , ({spark2}, '{yao_otx}', NULL)
-    , ({spark5}, '{sue_otx}', NULL)
-    , ({spark7}, '{bob_otx}', NULL)
-    ;
-    """
+({kw.spark_num}, {kw.spark_face}_otx, {kw.spark_face}_inx)
+VALUES
+    ({spark1}, '{sue_otx}', NULL)
+, ({spark2}, '{yao_otx}', NULL)
+, ({spark5}, '{sue_otx}', NULL)
+, ({spark7}, '{bob_otx}', NULL)
+;
+"""
     cursor0.execute(insert_spark_face_only_sqlstr)
 
     trlname_dimen = kw.translate_name
     trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
     print(f"{trlname_s_vld_tablename=}")
     insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename} 
-    ({kw.spark_num}, {kw.spark_face}, {kw.otx_name}, {kw.inx_name})
-    VALUES
-      ({spark1}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
-    , ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx}')
-    ;
-    """
+({kw.spark_num}, {kw.spark_face}, {kw.otx_name}, {kw.inx_name})
+VALUES
+    ({spark1}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
+, ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx}')
+;
+"""
     cursor0.execute(insert_trlname_sqlstr)
 
     spark_face_inx_count_sql = f"SELECT COUNT(*) FROM {prnawar_h_raw_put_tablename} WHERE {kw.spark_face}_inx IS NOT NULL"
@@ -93,24 +93,24 @@ def test_create_update_heard_raw_existing_inx_col_sqlstr_UpdatesTable_Scenario1_
     prnawar_dimen = kw.person_plan_awardunit
     prnawar_h_raw_put_tablename = prime_tbl(prnawar_dimen, kw.h_raw, "put")
     insert_spark_face_only_sqlstr = f"""INSERT INTO {prnawar_h_raw_put_tablename}
-    ({kw.spark_num}, {kw.spark_face}_otx, {kw.spark_face}_inx)
-    VALUES
-      ({spark1}, '{sue_otx}', NULL)
-    , ({spark2}, '{yao_otx}', NULL)
-    , ({spark5}, '{bob_otx}', NULL)
-    ;
-    """
+({kw.spark_num}, {kw.spark_face}_otx, {kw.spark_face}_inx)
+VALUES
+  ({spark1}, '{sue_otx}', NULL)
+, ({spark2}, '{yao_otx}', NULL)
+, ({spark5}, '{bob_otx}', NULL)
+;
+"""
     cursor0.execute(insert_spark_face_only_sqlstr)
     trlname_dimen = kw.translate_name
     trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
     print(f"{trlname_s_vld_tablename=}")
     insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename}
-    ({kw.spark_num}, {kw.spark_face}, {kw.otx_name}, {kw.inx_name})
-    VALUES
-      ({spark1}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
-    , ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx}')
-    ;
-    """
+({kw.spark_num}, {kw.spark_face}, {kw.otx_name}, {kw.inx_name})
+VALUES
+  ({spark1}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
+, ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx}')
+;
+"""
     cursor0.execute(insert_trlname_sqlstr)
 
     spark_face_inx_count_sql = f"SELECT COUNT(*) FROM {prnawar_h_raw_put_tablename} WHERE {kw.spark_face}_inx IS NOT NULL"
@@ -161,31 +161,31 @@ def test_create_update_heard_raw_existing_inx_col_sqlstr_UpdatesTable_Scenario2_
     prnawar_h_raw_put_tablename = prime_tbl(prnawar_dimen, kw.h_raw, "put")
     print(f"{get_table_columns(cursor0, prnawar_h_raw_put_tablename)=}")
     insert_spark_face_only_sqlstr = f"""INSERT INTO {prnawar_h_raw_put_tablename}
-    ({kw.spark_num}, {kw.spark_face}_otx, {kw.spark_face}_inx)
-    VALUES
-      ({spark0}, '{bob_otx}', NULL)
-    , ({spark1}, '{bob_otx}', NULL)
-    , ({spark2}, '{yao_otx}', NULL)
-    , ({spark5}, '{bob_otx}', NULL)
-    , ({spark7}, '{bob_otx}', NULL)
-    , ({spark9}, '{bob_otx}', NULL)
-    ;
-    """
+({kw.spark_num}, {kw.spark_face}_otx, {kw.spark_face}_inx)
+VALUES
+  ({spark0}, '{bob_otx}', NULL)
+, ({spark1}, '{bob_otx}', NULL)
+, ({spark2}, '{yao_otx}', NULL)
+, ({spark5}, '{bob_otx}', NULL)
+, ({spark7}, '{bob_otx}', NULL)
+, ({spark9}, '{bob_otx}', NULL)
+;
+"""
     cursor0.execute(insert_spark_face_only_sqlstr)
 
     trlname_dimen = kw.translate_name
     trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
     print(f"{trlname_s_vld_tablename=}")
     insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename}
-    ({kw.spark_num}, {kw.spark_face}, {kw.otx_name}, {kw.inx_name})
-    VALUES
-      ({spark1}, '{bob_otx}', '{bob_otx}', '{bob_inx0}')
-    , ({spark2}, '{yao_otx}', '{yao_otx}', '{yao_inx}')
-    , ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx7}')
-    , ({spark7}, '{bob_otx}', '{sue_otx}', '{bob_sue_inx}')
-    , ({spark8}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
-    ;
-    """
+({kw.spark_num}, {kw.spark_face}, {kw.otx_name}, {kw.inx_name})
+VALUES
+  ({spark1}, '{bob_otx}', '{bob_otx}', '{bob_inx0}')
+, ({spark2}, '{yao_otx}', '{yao_otx}', '{yao_inx}')
+, ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx7}')
+, ({spark7}, '{bob_otx}', '{sue_otx}', '{bob_sue_inx}')
+, ({spark8}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
+;
+"""
     cursor0.execute(insert_trlname_sqlstr)
 
     spark_face_inx_count_sql = f"SELECT COUNT(*) FROM {prnawar_h_raw_put_tablename} WHERE {kw.spark_face}_inx IS NOT NULL"
@@ -236,7 +236,8 @@ def test_create_update_heard_raw_empty_inx_col_sqlstr_UpdatesTable_Scenario0_Emp
     prnawar_dimen = kw.person_plan_awardunit
     prnawar_h_raw_put_tablename = prime_tbl(prnawar_dimen, kw.h_raw, "put")
     print(f"{get_table_columns(cursor0, prnawar_h_raw_put_tablename)=}")
-    insert_spark_face_only_sqlstr = f"""INSERT INTO {prnawar_h_raw_put_tablename} ({kw.spark_num}, {kw.spark_face}_otx, {kw.spark_face}_inx)
+    insert_spark_face_only_sqlstr = f"""
+INSERT INTO {prnawar_h_raw_put_tablename} ({kw.spark_num}, {kw.spark_face}_otx, {kw.spark_face}_inx)
 VALUES
   ({spark1}, '{sue_otx}', '{sue_inx}')
 , ({spark2}, '{yao_otx}', NULL)
@@ -291,32 +292,33 @@ def test_set_all_heard_raw_inx_columns_Scenario0_empty_tables(cursor0: Cursor):
     prnawar_dimen = kw.person_plan_awardunit
     prnawar_h_raw_put_tablename = prime_tbl(prnawar_dimen, kw.h_raw, "put")
     print(f"{get_table_columns(cursor0, prnawar_h_raw_put_tablename)=}")
-    insert_spark_face_only_sqlstr = f"""INSERT INTO {prnawar_h_raw_put_tablename}
-    ({kw.spark_num}, {kw.spark_face}_otx, {kw.spark_face}_inx)
-    VALUES
-      ({spark0}, '{bob_otx}', NULL)
-    , ({spark1}, '{bob_otx}', NULL)
-    , ({spark2}, '{yao_otx}', NULL)
-    , ({spark5}, '{bob_otx}', NULL)
-    , ({spark7}, '{bob_otx}', NULL)
-    , ({spark9}, '{bob_otx}', NULL)
-    ;
-    """
+    insert_spark_face_only_sqlstr = f"""
+INSERT INTO {prnawar_h_raw_put_tablename}
+({kw.spark_num}, {kw.spark_face}_otx, {kw.spark_face}_inx)
+VALUES
+    ({spark0}, '{bob_otx}', NULL)
+, ({spark1}, '{bob_otx}', NULL)
+, ({spark2}, '{yao_otx}', NULL)
+, ({spark5}, '{bob_otx}', NULL)
+, ({spark7}, '{bob_otx}', NULL)
+, ({spark9}, '{bob_otx}', NULL)
+;
+"""
     cursor0.execute(insert_spark_face_only_sqlstr)
 
     trlname_dimen = kw.translate_name
     trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
     print(f"{trlname_s_vld_tablename=}")
     insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename}
-    ({kw.spark_num}, {kw.spark_face}, {kw.otx_name}, {kw.inx_name})
-    VALUES
-      ({spark1}, '{bob_otx}', '{bob_otx}', '{bob_inx0}')
-    , ({spark2}, '{yao_otx}', '{yao_otx}', '{yao_inx}')
-    , ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx7}')
-    , ({spark7}, '{bob_otx}', '{sue_otx}', '{bob_sue_inx}')
-    , ({spark8}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
-    ;
-    """
+({kw.spark_num}, {kw.spark_face}, {kw.otx_name}, {kw.inx_name})
+VALUES
+    ({spark1}, '{bob_otx}', '{bob_otx}', '{bob_inx0}')
+, ({spark2}, '{yao_otx}', '{yao_otx}', '{yao_inx}')
+, ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx7}')
+, ({spark7}, '{bob_otx}', '{sue_otx}', '{bob_sue_inx}')
+, ({spark8}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
+;
+"""
     cursor0.execute(insert_trlname_sqlstr)
 
     spark_face_inx_count_sql = f"SELECT COUNT(*) FROM {prnawar_h_raw_put_tablename} WHERE {kw.spark_face}_inx IS NOT NULL"
