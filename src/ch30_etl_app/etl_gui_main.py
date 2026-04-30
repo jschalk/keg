@@ -12,7 +12,6 @@ To integrate your CLI logic, replace the `create_today_punchs()` call inside
 """
 
 from ch00_py.file_toolbox import delete_dir, set_dir
-from ch00_py.version_reader import get_version
 from ch17_idea.idea_db_tool import prettify_excel_files
 from ch25_kpi.gcalendar import lynx_to_person_gcal_day_punchs
 from ch26_world.world import create_today_punchs
@@ -25,6 +24,7 @@ from ch30_etl_app.etl_gui_tool import (
     get_app_glb_attrs,
     get_option_table_options,
 )
+from importlib.metadata import version as metadata_version
 from os.path import isdir as os_path_isdir
 from platform import system as platform_system
 from subprocess import Popen as subprocess_Popen
@@ -120,7 +120,7 @@ class ETLAppMissingDefaultError(Exception):
 class ETLApp(tk_Tk):
     def __init__(self):
         super().__init__()
-        self.title(f"Listening using Keg2 (v{get_version()})")
+        self.title(f"Listening using Keg2 (v{metadata_version})")
         self.resizable(False, False)
         ax = get_app_glb_attrs()
         self.configure(bg=ax.bg)

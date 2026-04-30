@@ -3,7 +3,6 @@ import importlib
 import pytest
 import subprocess
 import sys
-from ch00_py.version_reader import get_version
 
 # # TODO reactivate this test and get it working
 # def test_download_and_check_version(tmp_path, check_pip):

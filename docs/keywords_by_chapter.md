@@ -25,7 +25,7 @@
 - ch21_sound: ch21
 - ch22_heard: ch22
 - ch23_lynx: ch23
-- ch24_etl_vow: ch24, vow
+- ch24_belief_dst: ch24, vow
 - ch25_kpi: DayEvent, Event, ch25, default_kpi_bundle, gcal, moment_kpi001_contact_nets, moment_kpi002_person_pledges
 - ch26_world: WorldName, ch26, today
 - ch27_lobby: LobbyID, ch27, lobby_id, lobbys
