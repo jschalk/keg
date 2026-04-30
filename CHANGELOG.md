@@ -1,3 +1,10 @@
+## [0.83.21](https://github.com/jschalk/keg/compare/v0.83.20...v0.83.21) (2026-04-30)
+
+
+### Bug Fixes
+
+* display day punchs ([8ad992f](https://github.com/jschalk/keg/commit/8ad992faffe4cb0ed01f05701e644ade6f6ffd0a))
+
 ## [0.83.19](https://github.com/jschalk/keg/compare/v0.83.18...v0.83.19) (2026-04-30)
 
 
