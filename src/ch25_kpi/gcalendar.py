@@ -181,14 +181,12 @@ def get_gcal_priorities_schedule_str(dayevents: list[DayEvent]) -> str:
     inflections_dict = get_inflection_points_dict(dayevents)
     x_str = "Schedule Priorities"
     for inflection_minute in sorted(list(inflections_dict.keys())):
-        dayevent = inflections_dict.get(inflection_minute)
-        if dayevent:
+        if dayevent := inflections_dict.get(inflection_minute):
             precent_str = gcal_readable_percent(dayevent.plan.fund_ratio)
             x_str += f"\n{dayevent.clock_lower} {dayevent.item_rank}. {dayevent.plan.plan_label} {precent_str}"
             previous_dayevent = dayevent
-        else:
-            if previous_dayevent:
-                x_str += f"\n{previous_dayevent.clock_upper} Nothing scheduled."
+        elif previous_dayevent:
+            x_str += f"\n{previous_dayevent.clock_upper} Nothing scheduled."
     return x_str
 
 
@@ -432,7 +430,8 @@ def lynx_to_person_gcal_day_punchs(
 
 def copy_person_day_punches_to_dst_dir(
     moment_mstr_dir: str, dst_dir: str, person_name: PersonName
-):
+) -> set[str]:
+    dst_person_punch_paths = {}
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):
         moment_lasso = lassounit_shop(create_rope(moment_label))
@@ -446,3 +445,8 @@ def copy_person_day_punches_to_dst_dir(
                 )
                 day_punch_file_path = create_path(day_punchs_path, person_filename)
                 save_file(dst_person_punch_path, None, open_file(day_punch_file_path))
+                if dst_person_punch_paths.get(moment_lasso.moment_rope) is None:
+                    dst_person_punch_paths[moment_lasso.moment_rope] = set()
+                paths_set = dst_person_punch_paths.get(moment_lasso.moment_rope)
+                paths_set.add(dst_person_punch_path)
+    return dst_person_punch_paths

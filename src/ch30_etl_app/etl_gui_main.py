@@ -11,7 +11,7 @@ To integrate your CLI logic, replace the `create_today_punchs()` call inside
 `_run()` with your actual ETL function / subprocess call.
 """
 
-from ch00_py.file_toolbox import delete_dir, set_dir
+from ch00_py.file_toolbox import delete_dir, open_file, set_dir
 from ch17_idea.idea_db_tool import prettify_excel_files
 from ch25_kpi.gcalendar import lynx_to_person_gcal_day_punchs
 from ch26_world.world import create_today_punchs
@@ -515,18 +515,7 @@ class ETLApp(tk_Tk):
         self.update_idletasks()
 
         try:
-            create_today_punchs(
-                person_names={me_person, you_person},
-                world_name=self._world_name.get(),
-                worlds_dir=self._working.get(),
-                output_dir=self._output.get(),
-                ideas_src_dir=self._i_src_dir.get(),
-                beliefs_src_dir=self._b_src_dir.get(),
-            )
-            self._status.set("✔  Pipeline completed successfully.")
-            prettify_excel_files(self._i_src_dir.get())
-            tkinter_messagebox.showinfo("Done", "ETL pipeline finished successfully.")
-
+            self.create_me_you_today_punchs_and_display(me_person, you_person)
         except Exception as exc:  # noqa: BLE001
             self._status.set(f"✘  Error: {exc}")
             tkinter_messagebox.showerror("Pipeline error", str(exc))
@@ -537,6 +526,24 @@ class ETLApp(tk_Tk):
         # Open output directory if one was given
         if output and os_path_isdir(output):
             open_directory(output)
+
+    def create_me_you_today_punchs_and_display(self, me_person: str, you_person: str):
+        persons_punchs = create_today_punchs(
+            person_names={me_person, you_person},
+            world_name=self._world_name.get(),
+            worlds_dir=self._working.get(),
+            output_dir=self._output.get(),
+            ideas_src_dir=self._i_src_dir.get(),
+            beliefs_src_dir=self._b_src_dir.get(),
+        )
+        self._status.set("✔  Pipeline completed successfully.")
+        for person_name, moment_day_punch_paths in persons_punchs.items():
+            for moment_rope, day_punch_paths in moment_day_punch_paths:
+                for day_punch_path in day_punch_paths:
+                    punch_str = open_file(day_punch_path)
+        prettify_excel_files(self._b_src_dir.get())
+        prettify_excel_files(self._i_src_dir.get())
+        tkinter_messagebox.showinfo("Done", "ETL pipeline finished successfully.")
 
 
 # ──────────────────────────────────────────────
