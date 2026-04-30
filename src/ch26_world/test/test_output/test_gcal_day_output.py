@@ -1,14 +1,14 @@
 from ch00_py.file_toolbox import create_path, open_file
-from ch04_rope.rope import create_rope, create_rope_from_labels as init_rope
+from ch04_rope.rope import create_rope_from_labels as init_rope
 from ch09_person_lesson._ref.ch09_path import create_moment_json_path
 from ch09_person_lesson.lasso import lassounit_shop
 from ch10_person_listen._ref.ch10_path import create_job_path
-from ch10_person_listen.keep_tool import open_job_file, save_job_file
-from ch13_time.epoch_main import add_epoch_planunit, get_default_epoch_config_dict
-from ch14_moment.moment_main import momentunit_shop, save_moment_file
+from ch10_person_listen.keep_tool import open_job_file
 from ch17_idea.idea_db_tool import save_sheet
-from ch25_kpi._ref.ch25_path import create_day_punch_txt_path as day_punch_path
-from ch26_world.test._util.ch26_examples import ii00002_example
+from ch25_kpi._ref.ch25_path import (
+    create_day_punch_txt_path as day_punch_path,
+    create_dst_person_punch_path,
+)
 from ch26_world.world import (
     belief_sheets_to_gcal_day_punchs,
     create_today_punchs,
@@ -17,7 +17,6 @@ from ch26_world.world import (
 from datetime import datetime
 from os.path import exists as os_path_exists
 from pandas import DataFrame as pandas_DataFrame
-from pytest import fixture as pytest_fixture
 from ref.keywords import Ch26Keywords as kw, ExampleStrs as exx
 
 
@@ -211,7 +210,7 @@ def test_create_today_punchs_SavesFiles_Scenario0_PopulatedSueReport(
     assert not os_path_exists(sue_hn_blu_day_punch_path)
 
     # WHEN
-    create_today_punchs(
+    gen_dst_persons_punch_paths = create_today_punchs(
         person_names={exx.sue},
         world_name=here_wdir.world_name,
         worlds_dir=here_wdir.worlds_dir,
@@ -236,3 +235,17 @@ def test_create_today_punchs_SavesFiles_Scenario0_PopulatedSueReport(
     sue_hn_blu_punch_str = open_file(sue_hn_blu_day_punch_path)
     # print(sue_hn_blu_punch_str)
     assert exx.sweep in sue_hn_blu_punch_str
+    sue_dst_person_punch_path = create_dst_person_punch_path(
+        here_wdir.output_dir, hn_blu_lasso, exx.sue
+    )
+    print(f"{exx.sue=} {sue_dst_person_punch_path=}")
+    expected_dst_persons_punch_paths = {
+        exx.sue: {hn_blu_lasso.moment_rope: {sue_dst_person_punch_path}}
+    }
+    for person_name, gen_dst_file_paths in gen_dst_persons_punch_paths.items():
+        print(f"{person_name=} {gen_dst_file_paths=}")
+    assert gen_dst_persons_punch_paths.keys() == expected_dst_persons_punch_paths.keys()
+    gen_sue_punch_paths = gen_dst_persons_punch_paths.get(exx.sue)
+    expected_sue_punch_paths = expected_dst_persons_punch_paths.get(exx.sue)
+    assert gen_sue_punch_paths == expected_sue_punch_paths
+    assert gen_dst_persons_punch_paths == expected_dst_persons_punch_paths

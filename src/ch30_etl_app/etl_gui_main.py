@@ -11,7 +11,7 @@ To integrate your CLI logic, replace the `create_today_punchs()` call inside
 `_run()` with your actual ETL function / subprocess call.
 """
 
-from ch00_py.file_toolbox import delete_dir, set_dir
+from ch00_py.file_toolbox import delete_dir, open_file, set_dir
 from ch17_idea.idea_db_tool import prettify_excel_files
 from ch25_kpi.gcalendar import lynx_to_person_gcal_day_punchs
 from ch26_world.world import create_today_punchs
@@ -34,11 +34,13 @@ from tkinter import (
     LEFT as tk_LEFT,
     RIGHT as tk_RIGHT,
     VERTICAL as tk_VERTICAL,
+    WORD as tk_WORD,
     Button as tk_Button,
     Entry as tk_Entry,
     Frame as tk_Frame,
     Label as tk_Label,
     StringVar as tk_StringVar,
+    Text as tk_Text,
     Tk as tk_Tk,
     W as tk_W,
     Y as tk_Y,
@@ -46,6 +48,7 @@ from tkinter import (
     messagebox as tkinter_messagebox,
     ttk as tkinter_ttk,
 )
+from tkinter.scrolledtext import ScrolledText as tk_ScrolledText
 
 
 class OptionTable(tk_Frame):
@@ -120,17 +123,22 @@ class ETLAppMissingDefaultError(Exception):
 class ETLApp(tk_Tk):
     def __init__(self):
         super().__init__()
-        self.title(f"Listening using Keg2 (v{metadata_version})")
+        keg_version = metadata_version("keg2")
+        self.title(f"Listening using Keg2 (v{keg_version})")
         self.resizable(False, False)
         ax = get_app_glb_attrs()
         self.configure(bg=ax.bg)
 
         # Set a reasonable minimum size and centre on screen
         self.update_idletasks()
-        app_width, app_height = 640, 640
+        app_width, app_height = 1280, 760
         x = (self.winfo_screenwidth() - app_width) // 2
         y = (self.winfo_screenheight() - app_height) // 2
-        self.geometry(f"{app_width}x{app_height+120}+{x}+{y}")
+        self.geometry(f"{app_width}x{app_height}+{x}+{y}")
+        self.resizable(True, True)
+
+        # Holds data after a run: {person: [(moment, [paths])]}
+        self._persons_punchs_data: dict = {}
 
         # String vars ─ empty string = "not set" (optional dirs stay None)
         self._world_name = tk_StringVar()
@@ -373,8 +381,9 @@ class ETLApp(tk_Tk):
             self._placeholder(entry, var, tip)
 
     def _build_ui(self):
-        # ── header bar ──────────────────────────
         ax = get_app_glb_attrs()
+
+        # ── header bar ──────────────────────────
         header = tk_Frame(self, bg=ax.accent, height=4)
         header.pack(fill="x")
 
@@ -402,13 +411,37 @@ class ETLApp(tk_Tk):
         # ── divider ─────────────────────────────
         tk_Frame(self, bg=ax.border, height=1).pack(fill="x", padx=28)
 
-        # ── directory pickers ───────────────────
-        card = tk_Frame(self, bg=ax.bg_card, bd=0, padx=24, pady=20)
+        # ── status bar (packed to bottom first) ─
+        self._status = tk_StringVar(value="Ready.")
+        tk_Frame(self, bg=ax.border, height=1).pack(fill="x", side="bottom")
+        tk_Label(
+            self,
+            textvariable=self._status,
+            font=ax.mono,
+            bg=ax.bg,
+            fg=ax.fg_dim,
+            anchor="w",
+            padx=28,
+            pady=6,
+        ).pack(fill="x", side="bottom")
+
+        # ── two-column body ──────────────────────
+        body = tk_Frame(self, bg=ax.bg)
+        body.pack(fill=tk_BOTH, expand=True)
+        body.columnconfigure(0, weight=0, minsize=640)
+        body.columnconfigure(1, weight=1)
+        body.rowconfigure(0, weight=1)
+
+        # LEFT PANEL ─────────────────────────────
+        left = tk_Frame(body, bg=ax.bg, width=640)
+        left.grid(row=0, column=0, sticky="nsew")
+        left.pack_propagate(False)
+
+        card = tk_Frame(left, bg=ax.bg_card, bd=0, padx=24, pady=20)
         card.pack(fill="x", padx=28, pady=(16, 0))
         self._create_dir_rows(card)
 
-        # ── run button ──────────────────────────
-        btn_frame = tk_Frame(self, bg=ax.bg, pady=22)
+        btn_frame = tk_Frame(left, bg=ax.bg, pady=22)
         btn_frame.pack()
 
         self._run_btn = tk_Button(
@@ -427,36 +460,209 @@ class ETLApp(tk_Tk):
             command=self._run,
         )
         self._run_btn.pack()
+
         options = get_option_table_options()
         table = OptionTable(
-            self,
+            left,
             options,
             b_src_dir=self._b_src_dir.get,
             me_personname=self._me_personname.get,
         )
         table.pack(fill=tk_BOTH, expand=True, padx=10, pady=10)
 
-        # hover effect
         self._run_btn.bind(
             "<Enter>", lambda _: self._run_btn.configure(bg=ax.btn_active)
         )
         self._run_btn.bind("<Leave>", lambda _: self._run_btn.configure(bg=ax.accent))
 
-        # ── status bar ──────────────────────────
-        self._status = tk_StringVar(value="Ready.")
-        status_bar = tk_Label(
-            self,
-            textvariable=self._status,
-            font=ax.mono,
-            bg=ax.bg,
-            fg=ax.fg_dim,
-            anchor="w",
-            padx=28,
-            pady=6,
-        )
-        status_bar.pack(fill="x", side="bottom")
+        # VERTICAL DIVIDER ───────────────────────
+        tk_Frame(body, bg=ax.border, width=1).grid(row=0, column=0, sticky="nse")
 
-        tk_Frame(self, bg=ax.border, height=1).pack(fill="x", side="bottom")
+        # RIGHT PANEL ────────────────────────────
+        right = tk_Frame(body, bg=ax.bg_card)
+        right.grid(row=0, column=1, sticky="nsew")
+        self._build_viewer_panel(right)
+
+    def _build_viewer_panel(self, parent):
+        """Build the right-side punch file viewer."""
+        ax = get_app_glb_attrs()
+
+        # ── header ──────────────────────────────
+        hdr = tk_Frame(parent, bg=ax.bg_card, pady=12)
+        hdr.pack(fill="x", padx=16)
+
+        tk_Label(
+            hdr,
+            text="PUNCH VIEWER",
+            font=ax.mono,
+            bg=ax.bg_card,
+            fg=ax.accent,
+            anchor="w",
+        ).pack(side="left")
+
+        self._copy_btn = tk_Button(
+            hdr,
+            text="⧉  Copy",
+            font=ax.mono,
+            bg=ax.border,
+            fg=ax.fg,
+            activebackground=ax.accent,
+            activeforeground=ax.fg_black,
+            relief="flat",
+            bd=0,
+            padx=10,
+            pady=4,
+            cursor="hand2",
+            command=self._copy_punch_text,
+        )
+        self._copy_btn.pack(side="right")
+
+        tk_Frame(parent, bg=ax.border, height=1).pack(fill="x", padx=16)
+
+        # ── selectors ───────────────────────────
+        sel_frame = tk_Frame(parent, bg=ax.bg_card, pady=10)
+        sel_frame.pack(fill="x", padx=16)
+
+        tk_Label(
+            sel_frame,
+            text="Person",
+            font=ax.mono,
+            bg=ax.bg_card,
+            fg=ax.fg_dim,
+            width=8,
+            anchor="w",
+        ).grid(row=0, column=0, padx=(0, 8), pady=4, sticky="w")
+
+        self._person_var = tk_StringVar()
+        self._person_combo = tkinter_ttk.Combobox(
+            sel_frame,
+            textvariable=self._person_var,
+            state="readonly",
+            font=ax.mono,
+            width=20,
+        )
+        self._person_combo.grid(row=0, column=1, pady=4, sticky="ew")
+        self._person_combo.bind("<<ComboboxSelected>>", self._on_person_selected)
+
+        tk_Label(
+            sel_frame,
+            text="Moment",
+            font=ax.mono,
+            bg=ax.bg_card,
+            fg=ax.fg_dim,
+            width=8,
+            anchor="w",
+        ).grid(row=1, column=0, padx=(0, 8), pady=4, sticky="w")
+
+        self._moment_var = tk_StringVar()
+        self._moment_combo = tkinter_ttk.Combobox(
+            sel_frame,
+            textvariable=self._moment_var,
+            state="readonly",
+            font=ax.mono,
+            width=20,
+        )
+        self._moment_combo.grid(row=1, column=1, pady=4, sticky="ew")
+        self._moment_combo.bind("<<ComboboxSelected>>", self._on_moment_selected)
+        sel_frame.columnconfigure(1, weight=1)
+
+        tk_Frame(parent, bg=ax.border, height=1).pack(fill="x", padx=16)
+
+        # ── text display ────────────────────────
+        text_frame = tk_Frame(parent, bg=ax.bg_card)
+        text_frame.pack(fill=tk_BOTH, expand=True, padx=16, pady=(8, 16))
+
+        v_scroll = tkinter_ttk.Scrollbar(text_frame, orient=tk_VERTICAL)
+        self._punch_text = tk_Text(
+            text_frame,
+            font=ax.mono,
+            bg=ax.entry_bg,
+            fg=ax.fg,
+            insertbackground=ax.accent,
+            relief="flat",
+            bd=0,
+            wrap=tk_WORD,
+            state="disabled",
+            yscrollcommand=v_scroll.set,
+            highlightthickness=1,
+            highlightbackground=ax.border,
+        )
+        v_scroll.config(command=self._punch_text.yview)
+        v_scroll.pack(side=tk_RIGHT, fill=tk_Y)
+        self._punch_text.pack(side=tk_LEFT, fill=tk_BOTH, expand=True)
+
+        # Hint label when empty
+        self._viewer_hint = tk_Label(
+            parent,
+            text="Run the pipeline to load punch files.",
+            font=ax.mono,
+            bg=ax.bg_card,
+            fg=ax.fg_dim,
+        )
+        self._viewer_hint.place(relx=0.5, rely=0.55, anchor="center")
+
+    # ── viewer helpers ─────────────────────────
+    def _populate_viewer(self, persons_punchs: dict):
+        """Store data and populate the person combobox."""
+        self._persons_punchs_data = persons_punchs
+        names = list(persons_punchs.keys())
+        self._person_combo["values"] = names
+        self._moment_combo["values"] = []
+        self._moment_var.set("")
+        self._person_var.set("")
+        self._set_punch_text("")
+        if names:
+            self._person_combo.current(0)
+            print(f"before {names=}")
+            self._on_person_selected(None)
+            print(f"after3 {names=}")
+            self._viewer_hint.place_forget()
+
+    def _on_person_selected(self, _event):
+        print("huh3")
+        person = self._person_var.get()
+        print("huh4")
+        moments = self._persons_punchs_data.get(person, [])
+        print(f"{moments=}")
+        moment_names = [str(m) for m, _paths in moments.items()]
+        print("huh6")
+        self._moment_combo["values"] = moment_names
+        print("huh7")
+        self._moment_var.set("")
+        self._set_punch_text("")
+        print("huh9")
+        if moment_names:
+            self._moment_combo.current(0)
+            self._on_moment_selected(None)
+
+    def _on_moment_selected(self, _event):
+        person = self._person_var.get()
+        moment_label = self._moment_var.get()
+        moments = self._persons_punchs_data.get(person, [])
+        for moment_rope, day_punch_paths in moments.items():
+            if str(moment_rope) == moment_label:
+                combined = []
+                for path in day_punch_paths:
+                    try:
+                        combined.append(open_file(path))
+                    except Exception as exc:
+                        combined.append(f"[Error reading {path}: {exc}]")
+                self._set_punch_text("\n\n".join(combined))
+                return
+
+    def _set_punch_text(self, text: str):
+        self._punch_text.configure(state="normal")
+        self._punch_text.delete("1.0", tk_END)
+        if text:
+            self._punch_text.insert("1.0", text)
+        self._punch_text.configure(state="disabled")
+
+    def _copy_punch_text(self):
+        if text := self._punch_text.get("1.0", tk_END).strip():
+            self.clipboard_clear()
+            self.clipboard_append(text)
+            self._copy_btn.configure(text="✔  Copied!")
+            self.after(1500, lambda: self._copy_btn.configure(text="⧉  Copy"))
 
     @staticmethod
     def _placeholder(entry, var, tip):
@@ -515,18 +721,7 @@ class ETLApp(tk_Tk):
         self.update_idletasks()
 
         try:
-            create_today_punchs(
-                person_names={me_person, you_person},
-                world_name=self._world_name.get(),
-                worlds_dir=self._working.get(),
-                output_dir=self._output.get(),
-                ideas_src_dir=self._i_src_dir.get(),
-                beliefs_src_dir=self._b_src_dir.get(),
-            )
-            self._status.set("✔  Pipeline completed successfully.")
-            prettify_excel_files(self._i_src_dir.get())
-            tkinter_messagebox.showinfo("Done", "ETL pipeline finished successfully.")
-
+            self.create_me_you_today_punchs_and_display(me_person, you_person)
         except Exception as exc:  # noqa: BLE001
             self._status.set(f"✘  Error: {exc}")
             tkinter_messagebox.showerror("Pipeline error", str(exc))
@@ -537,6 +732,22 @@ class ETLApp(tk_Tk):
         # Open output directory if one was given
         if output and os_path_isdir(output):
             open_directory(output)
+
+    def create_me_you_today_punchs_and_display(self, me_person: str, you_person: str):
+        persons_punchs = create_today_punchs(
+            person_names={me_person, you_person},
+            world_name=self._world_name.get(),
+            worlds_dir=self._working.get(),
+            output_dir=self._output.get(),
+            ideas_src_dir=self._i_src_dir.get(),
+            beliefs_src_dir=self._b_src_dir.get(),
+        )
+        self._status.set("✔  Pipeline completed successfully.")
+        print("create_today_punchs complete")
+        self._populate_viewer(persons_punchs)
+        prettify_excel_files(self._b_src_dir.get())
+        prettify_excel_files(self._i_src_dir.get())
+        tkinter_messagebox.showinfo("Done", "ETL pipeline finished successfully.")
 
 
 # ──────────────────────────────────────────────

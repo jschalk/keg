@@ -295,7 +295,7 @@ def test_copy_person_day_punches_to_dst_dir_SavesFiles_Scenario0_TwoSueReports(
     assert not os_path_exists(sue_ep8_dst_punch_path)
 
     # WHEN
-    copy_person_day_punches_to_dst_dir(
+    dst_person_punch_paths = copy_person_day_punches_to_dst_dir(
         moment_mstr_dir=mmt_mstr_dir,
         dst_dir=dst_dir,
         person_name=exx.sue,
@@ -304,3 +304,11 @@ def test_copy_person_day_punches_to_dst_dir_SavesFiles_Scenario0_TwoSueReports(
     # THEN
     assert os_path_exists(sue_a23_dst_punch_path)
     assert os_path_exists(sue_ep8_dst_punch_path)
+    for dst_person_punch_path in dst_person_punch_paths:
+        print(f"{dst_person_punch_path=}")
+    print(f"{sue_a23_dst_punch_path=}")
+    print(f"{sue_ep8_dst_punch_path=}")
+    assert dst_person_punch_paths == {
+        exx.a23: {sue_a23_dst_punch_path},
+        exx.ep8: {sue_ep8_dst_punch_path},
+    }

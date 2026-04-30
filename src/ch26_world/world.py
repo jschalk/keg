@@ -214,7 +214,7 @@ def create_today_punchs(
     ideas_src_dir: str = None,
     beliefs_src_dir: str = None,
     focus_group_title: GroupTitle = None,
-):
+) -> dict[PersonName, set]:
     worlddir = worlddir_shop(
         world_name=world_name,
         worlds_dir=worlds_dir,
@@ -228,7 +228,10 @@ def create_today_punchs(
         day=datetime.now(),
         focus_group_title=focus_group_title,
     )
+    dst_persons_punch_paths = {}
     for person_name in person_names:
-        copy_person_day_punches_to_dst_dir(
+        dst_person_punch_paths = copy_person_day_punches_to_dst_dir(
             worlddir.moment_mstr_dir, worlddir.output_dir, person_name
         )
+        dst_persons_punch_paths[person_name] = dst_person_punch_paths
+    return dst_persons_punch_paths
