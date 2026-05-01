@@ -4,12 +4,12 @@ from ch00_py.db_toolbox import (
     create_table_from_columns,
     create_type_reference_insert_sqlstr,
     db_table_exists,
+    delete_all_duplicate_rows,
     get_create_table_sqlstr,
     get_db_tables,
     get_grouping_with_all_values_equal_sql_query,
     get_nonconvertible_columns,
     get_table_columns,
-    delete_all_duplicate_rows,
 )
 from ch00_py.file_toolbox import create_path
 from ch17_idea.idea_config import (
@@ -171,21 +171,16 @@ def etl_ideax_agg_tables_to_ideax_vld_tables(conn_or_cursor: sqlite3_Connection)
 {select_sqlstr}{join_clause_str}
 """
             conn_or_cursor.execute(insert_select_into_sqlstr)
+            delete_all_duplicate_rows(conn_or_cursor, valid_tablename)
+
+
+def get_create_sparks_ideax_agg_sqlstr() -> str:
+    return "CREATE TABLE IF NOT EXISTS sparks_ideax_agg (idea_type TEXT, spark_num INTEGER, spark_face TEXT, error_message TEXT)"
 
 
 def etl_ideax_agg_tables_to_sparks_ideax_agg_table(conn_or_cursor: sqlite3_Cursor):
+    conn_or_cursor.execute(get_create_sparks_ideax_agg_sqlstr())
     idea_sparks_tablename = "sparks_ideax_agg"
-    if not db_table_exists(conn_or_cursor, idea_sparks_tablename):
-        idea_sparks_columns = [
-            "idea_type",
-            "spark_face",
-            "spark_num",
-            "error_message",
-        ]
-        create_idea_sorted_table(
-            conn_or_cursor, idea_sparks_tablename, idea_sparks_columns
-        )
-
     ideax_agg_tables = {f"{idea}_ideax_agg": idea for idea in get_idea_types()}
     for agg_tablename in get_db_tables(conn_or_cursor):
         if agg_tablename in ideax_agg_tables:
@@ -214,15 +209,15 @@ WHERE spark_num IN (
     delete_all_duplicate_rows(conn_or_cursor, idea_sparks_tablename)
 
 
+def get_create_sparks_ideax_vld_sqlstr() -> str:
+    return "CREATE TABLE IF NOT EXISTS sparks_ideax_vld (spark_num INTEGER, spark_face TEXT)"
+
+
 def etl_sparks_ideax_agg_table_to_sparks_ideax_vld_table(
     conn_or_cursor: sqlite3_Cursor,
 ):
+    conn_or_cursor.execute(get_create_sparks_ideax_vld_sqlstr())
     valid_sparks_tablename = "sparks_ideax_vld"
-    if not db_table_exists(conn_or_cursor, valid_sparks_tablename):
-        idea_sparks_columns = ["spark_num", "spark_face"]
-        create_idea_sorted_table(
-            conn_or_cursor, valid_sparks_tablename, idea_sparks_columns
-        )
     insert_select_sqlstr = f"""
 INSERT INTO {valid_sparks_tablename} (spark_num, spark_face)
 SELECT spark_num, spark_face 

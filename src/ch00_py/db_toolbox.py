@@ -1,8 +1,8 @@
 from csv import reader as csv_reader
 from dataclasses import dataclass
 from pandas import isna as pandas_isna
-from sqlite3 import Connection as sqlite3_Connection, Error as sqlite3_Error
 from re import compile as re_compile
+from sqlite3 import Connection as sqlite3_Connection, Error as sqlite3_Error
 
 
 def sqlite_obj_str(x_obj: any, sqlite_datatype: str):

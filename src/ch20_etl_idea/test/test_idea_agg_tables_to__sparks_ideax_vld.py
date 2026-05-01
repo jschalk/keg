@@ -4,9 +4,27 @@ from ch20_etl_idea.etl_idea_main import (
     etl_ideax_agg_tables_to_sparks_ideax_agg_table,
     etl_sparks_ideax_agg_db_to_spark_dict,
     etl_sparks_ideax_agg_table_to_sparks_ideax_vld_table,
+    get_create_sparks_ideax_agg_sqlstr,
+    get_create_sparks_ideax_vld_sqlstr,
 )
 from ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
+
+
+def test_get_create_sparks_ideax_agg_sqlstr_ReturnsObj():
+    # ESTABLISH / WHEN
+    create_sparks_ideax_agg_sqlstr = get_create_sparks_ideax_agg_sqlstr()
+    # THEN
+    expected_create_sparks_ideax_agg_sqlstr = "CREATE TABLE IF NOT EXISTS sparks_ideax_agg (idea_type TEXT, spark_num INTEGER, spark_face TEXT, error_message TEXT)"
+    assert create_sparks_ideax_agg_sqlstr == expected_create_sparks_ideax_agg_sqlstr
+
+
+def test_get_create_sparks_ideax_vld_sqlstr_ReturnsObj():
+    # ESTABLISH / WHEN
+    create_sparks_ideax_vld_sqlstr = get_create_sparks_ideax_vld_sqlstr()
+    # THEN
+    expected_create_sparks_ideax_vld_sqlstr = "CREATE TABLE IF NOT EXISTS sparks_ideax_vld (spark_num INTEGER, spark_face TEXT)"
+    assert create_sparks_ideax_vld_sqlstr == expected_create_sparks_ideax_vld_sqlstr
 
 
 def test_etl_ideax_agg_tables_to_sparks_ideax_agg_table_PopulatesTables_Scenario0(
