@@ -1,5 +1,6 @@
 from ch00_py.db_toolbox import (
     create_update_inconsistency_error_query,
+    delete_all_duplicate_rows,
     get_table_columns,
 )
 from ch04_rope.rope import default_knot_if_None
@@ -30,6 +31,7 @@ from ch18_etl_config.etl_sqlstr import (
     get_insert_into_heard_raw_sqlstrs,
     get_insert_into_sound_vld_sqlstrs,
     get_moment_person_sound_agg_tablenames,
+    get_prime_create_table_sqlstrs,
 )
 from copy import copy as copy_copy
 from sqlite3 import Cursor as sqlite3_Cursor
@@ -46,6 +48,13 @@ def insert_sound_raw_selects_into_sound_agg_tables(cursor: sqlite3_Cursor):
         sqlstrs = create_sound_agg_insert_sqlstrs(cursor, dimen)
         for sqlstr in sqlstrs:
             cursor.execute(sqlstr)
+    _delete_all_duplicate_rows_in_s_agg_tables(cursor)
+
+
+def _delete_all_duplicate_rows_in_s_agg_tables(cursor: sqlite3_Cursor):
+    for prime_tablename in get_prime_create_table_sqlstrs().keys():
+        if prime_tablename.endswith("s_agg"):
+            delete_all_duplicate_rows(cursor, prime_tablename)
 
 
 def etl_sound_raw_tables_to_sound_agg_tables(cursor: sqlite3_Cursor):
