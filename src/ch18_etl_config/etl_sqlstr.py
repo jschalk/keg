@@ -1709,5 +1709,8 @@ def get_job_create_table_sqlstrs() -> dict[str, str]:
 
 
 def create_job_tables(conn_or_cursor: sqlite3_Connection):
-    for create_table_sqlstr in get_job_create_table_sqlstrs().values():
+    job_tablenames = set()
+    for job_tablename, create_table_sqlstr in get_job_create_table_sqlstrs().items():
         conn_or_cursor.execute(create_table_sqlstr)
+        job_tablenames.add(job_tablename)
+    return job_tablenames

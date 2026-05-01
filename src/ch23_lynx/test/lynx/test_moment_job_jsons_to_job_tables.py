@@ -176,3 +176,38 @@ def test_etl_lynx_job_jsons_to_job_tables_PopulatesTables_Scenario1(
             0.0,
         ),
     ]
+
+
+def test_etl_lynx_job_jsons_to_job_tables_PopulatesTables_Scenario2_NoDuplicates(
+    temp3_fs, cursor0: Cursor
+):
+    # ESTABLISH
+    sue_inx = "Suzy"
+    bob_inx = "Bobby"
+    yao_inx = "Yaoe"
+    credit44 = 44
+    credit77 = 77
+    credit88 = 88
+    moment_mstr_dir = str(temp3_fs)
+    bob_job = personunit_shop(bob_inx, exx.a23)
+    bob_job.add_contactunit(bob_inx, credit77)
+    bob_job.add_contactunit(yao_inx, credit44)
+    bob_job.add_contactunit(bob_inx, credit77)
+    bob_job.add_contactunit(sue_inx, credit88)
+    bob_job.add_contactunit(yao_inx, credit44)
+    save_job_file(moment_mstr_dir, bob_job)
+    a23_lasso = lassounit_shop(exx.a23)
+    moment_json_path = create_moment_json_path(moment_mstr_dir, a23_lasso)
+    moment_dict = momentunit_shop(exx.a23, moment_mstr_dir).to_dict()
+    save_json(moment_json_path, None, moment_dict)
+    a23_bob_job_path = create_job_path(moment_mstr_dir, a23_lasso, bob_inx)
+    assert os_path_exists(moment_json_path)
+    assert os_path_exists(a23_bob_job_path)
+    prncont_job_tablename = prime_table("prncont", kw.job, None)
+    assert not db_table_exists(cursor0, prncont_job_tablename)
+    etl_lynx_job_jsons_to_job_tables(cursor0, moment_mstr_dir)
+    assert get_row_count(cursor0, prncont_job_tablename) == 3
+    # WHEN
+    etl_lynx_job_jsons_to_job_tables(cursor0, moment_mstr_dir)
+    # THEN
+    assert get_row_count(cursor0, prncont_job_tablename) == 3

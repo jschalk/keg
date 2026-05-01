@@ -48,7 +48,7 @@ def test_create_job_tables_CreatesTables(cursor0: Cursor):
     prnfact_job_table = prime_table(kw.person_plan_factunit, kw.job, None)
     prnheal_job_table = prime_table(kw.person_plan_healerunit, kw.job, None)
     prncase_job_table = prime_table(kw.person_plan_reason_caseunit, kw.job, None)
-    personares_job_table = prime_table(kw.person_plan_reasonunit, kw.job, None)
+    prnreas_job_table = prime_table(kw.person_plan_reasonunit, kw.job, None)
     prnlabo_job_table = prime_table(kw.person_plan_laborunit, kw.job, None)
     prnplan_job_table = prime_table(kw.person_planunit, kw.job, None)
     prnunit_job_table = prime_table(kw.personunit, kw.job, None)
@@ -59,7 +59,7 @@ def test_create_job_tables_CreatesTables(cursor0: Cursor):
     # prnfact_job_table = f"{kw.person_plan_factunit}_job"
     # prnheal_job_table = f"{kw.person_plan_healerunit}_job"
     # prncase_job_table = f"{kw.person_plan_reason_caseunit}_job"
-    # personares_job_table = f"{kw.person_plan_reasonunit}_job"
+    # prnreas_job_table = f"{kw.person_plan_reasonunit}_job"
     # prnlabo_job_table = f"{kw.person_plan_laborunit}_job"
     # prnplan_job_table = f"{kw.person_planunit}_job"
     # prnunit_job_table = f"{kw.personunit}_job"
@@ -71,7 +71,7 @@ def test_create_job_tables_CreatesTables(cursor0: Cursor):
     assert db_table_exists(cursor0, prnfact_job_table) is False
     assert db_table_exists(cursor0, prnheal_job_table) is False
     assert db_table_exists(cursor0, prncase_job_table) is False
-    assert db_table_exists(cursor0, personares_job_table) is False
+    assert db_table_exists(cursor0, prnreas_job_table) is False
     assert db_table_exists(cursor0, prnlabo_job_table) is False
     assert db_table_exists(cursor0, prnplan_job_table) is False
     assert db_table_exists(cursor0, prnunit_job_table) is False
@@ -93,8 +93,39 @@ def test_create_job_tables_CreatesTables(cursor0: Cursor):
     assert db_table_exists(cursor0, prnfact_job_table)
     assert db_table_exists(cursor0, prnheal_job_table)
     assert db_table_exists(cursor0, prncase_job_table)
-    assert db_table_exists(cursor0, personares_job_table)
+    assert db_table_exists(cursor0, prnreas_job_table)
     assert db_table_exists(cursor0, prnlabo_job_table)
     assert db_table_exists(cursor0, prnplan_job_table)
     assert db_table_exists(cursor0, prnunit_job_table)
     assert len(get_db_tables(cursor0)) == 11
+
+
+def test_create_job_tables_ReturnsObj_SetOfTablenames(cursor0: Cursor):
+    # ESTABLISH / WHEN
+    job_tablenames = create_job_tables(cursor0)
+
+    # THEN
+    job_tablenames
+    prnmemb_job_table = prime_table(kw.person_contact_membership, kw.job, None)
+    prncont_job_table = prime_table(kw.person_contactunit, kw.job, None)
+    prngrou_job_table = prime_table(kw.person_groupunit, kw.job, None)
+    prnawar_job_table = prime_table(kw.person_plan_awardunit, kw.job, None)
+    prnfact_job_table = prime_table(kw.person_plan_factunit, kw.job, None)
+    prnheal_job_table = prime_table(kw.person_plan_healerunit, kw.job, None)
+    prncase_job_table = prime_table(kw.person_plan_reason_caseunit, kw.job, None)
+    prnreas_job_table = prime_table(kw.person_plan_reasonunit, kw.job, None)
+    prnlabo_job_table = prime_table(kw.person_plan_laborunit, kw.job, None)
+    prnplan_job_table = prime_table(kw.person_planunit, kw.job, None)
+    prnunit_job_table = prime_table(kw.personunit, kw.job, None)
+
+    assert prnmemb_job_table in job_tablenames
+    assert prncont_job_table in job_tablenames
+    assert prngrou_job_table in job_tablenames
+    assert prnawar_job_table in job_tablenames
+    assert prnfact_job_table in job_tablenames
+    assert prnheal_job_table in job_tablenames
+    assert prncase_job_table in job_tablenames
+    assert prnreas_job_table in job_tablenames
+    assert prnlabo_job_table in job_tablenames
+    assert prnplan_job_table in job_tablenames
+    assert prnunit_job_table in job_tablenames
