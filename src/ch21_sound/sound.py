@@ -64,8 +64,8 @@ def etl_sound_raw_tables_to_sound_agg_tables(cursor: sqlite3_Cursor):
 
 def insert_translate_sound_agg_into_translate_core_raw_table(cursor: sqlite3_Cursor):
     for dimen in get_translates_column_ref():
-        if dimen != "translate_epoch":
-            cursor.execute(create_insert_into_translate_core_raw_sqlstr(dimen))
+        cursor.execute(create_insert_into_translate_core_raw_sqlstr(dimen))
+    delete_all_duplicate_rows(cursor, create_prime_tablename("trlcore", "s_raw"))
 
 
 def insert_translate_core_agg_to_translate_core_vld_table(cursor: sqlite3_Cursor):
@@ -73,6 +73,7 @@ def insert_translate_core_agg_to_translate_core_vld_table(cursor: sqlite3_Cursor
     unknown = default_unknown_str_if_None()
     insert_sqlstr = create_insert_translate_core_agg_into_vld_sqlstr(knot, unknown)
     cursor.execute(insert_sqlstr)
+    delete_all_duplicate_rows(cursor, create_prime_tablename("trlcore", "s_vld"))
 
 
 def update_inconsistency_translate_core_raw_table(cursor: sqlite3_Cursor):
@@ -100,6 +101,7 @@ WHERE error_message IS NULL
 GROUP BY spark_face
 """
     cursor.execute(sqlstr)
+    delete_all_duplicate_rows(cursor, translate_core_s_agg_tablename)
 
 
 def update_translate_sound_agg_inconsist_errors(cursor: sqlite3_Cursor):
@@ -118,8 +120,8 @@ def insert_translate_sound_agg_tables_to_translate_sound_vld_table(
     cursor: sqlite3_Cursor,
 ):
     for dimen in get_translates_column_ref():
-        if dimen != "translate_epoch":
-            cursor.execute(create_insert_translate_sound_vld_table_sqlstr(dimen))
+        cursor.execute(create_insert_translate_sound_vld_table_sqlstr(dimen))
+        delete_all_duplicate_rows(cursor, create_prime_tablename(dimen, "s_vld"))
 
 
 def set_moment_person_sound_agg_knot_errors(cursor: sqlite3_Cursor):

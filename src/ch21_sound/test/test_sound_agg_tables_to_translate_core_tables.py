@@ -92,49 +92,7 @@ VALUES
     ]
 
 
-# def test_insert_translate_sound_agg_into_translate_core_raw_table_PopulatesTable_Scenario0_IgnoresDimen_translate_epoch():
-#     # ESTABLISH
-#     sue1_otx_time = 100
-#     sue1_inx_time = 200
-#     sue7_otx_time = 111
-#     sue7_inx_time = 222
-#     yao7_otx_time = 700
-#     yao7_inx_time = 701
-#     spark1 = 1
-#     spark7 = 7
-
-#     cursor0.execute(CREATE_TRLEPOC_SOUND_AGG_SQLSTR)
-#     trlepoc_dimen = kw.translate_epoch
-#     translate_epoc_s_agg_tablename = create_prime_tablename(
-#         trlepoc_dimen, "s_agg"
-#     )
-#     insert_into_clause = f"""INSERT INTO {translate_epoc_s_agg_tablename} (
-#   {kw.spark_num}
-# , {kw.spark_face}
-# , {kw.otx_epoch_length}
-# , {kw.inx_epoch_diff}
-# )"""
-#     values_clause = f"""
-# VALUES
-#   ({spark1}, '{exx.sue}', {sue1_otx_time}, {sue1_inx_time})
-# , ({spark7}, '{exx.sue}', {sue7_otx_time}, {sue7_inx_time})
-# , ({spark7}, '{exx.yao}', {yao7_otx_time}, {yao7_inx_time})
-# ;
-# """
-#     cursor0.execute(f"{insert_into_clause} {values_clause}")
-#     create_sound_and_heard_tables(cursor0)
-#     translate_core_s_raw_tablename = create_prime_tablename("trlcore", kw.s_raw)
-#     assert get_row_count(cursor0, translate_epoc_s_agg_tablename) == 3
-#     assert get_row_count(cursor0, translate_core_s_raw_tablename) == 0
-
-#     # WHEN
-#     insert_translate_sound_agg_into_translate_core_raw_table(cursor0)
-
-#     # THEN
-#     assert get_row_count(cursor0, translate_core_s_raw_tablename) == 0
-
-
-def test_insert_translate_sound_agg_into_translate_core_raw_table_PopulatesTable_Scenario1(
+def test_insert_translate_sound_agg_into_translate_core_raw_table_PopulatesTable_Scenario0(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -211,6 +169,58 @@ VALUES
     ]
 
 
+def test_insert_translate_sound_agg_into_translate_core_raw_table_PopulatesTable_Scenario1_NoDuplicates(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    yao_inx = "Yaoito"
+    bob_inx = "Bobito"
+    rdx = ":"
+    ukx = "Unknown"
+    spark1 = 1
+    spark7 = 7
+
+    cursor0.execute(CREATE_TRLROPE_SOUND_AGG_SQLSTR)
+    trlrope_dimen = kw.translate_rope
+    translate_rope_s_agg_tablename = create_prime_tablename(trlrope_dimen, "s_agg")
+    insert_into_clause = f"""INSERT INTO {translate_rope_s_agg_tablename} (
+  {kw.spark_num}
+, {kw.spark_face}
+, {kw.otx_rope}
+, {kw.inx_rope}
+, {kw.otx_knot}
+, {kw.inx_knot}
+, {kw.unknown_str}
+)"""
+    values_clause = f"""
+VALUES
+  ({spark1}, '{exx.sue}', '{exx.yao}', '{yao_inx}', NULL, NULL, NULL)
+, ({spark7}, '{exx.sue}', '{exx.yao}', '{yao_inx}', NULL, NULL, NULL)
+, ({spark7}, '{exx.yao}', '{exx.yao}', '{yao_inx}', '{rdx}', '{rdx}', '{ukx}')
+;
+"""
+    cursor0.execute(f"{insert_into_clause} {values_clause}")
+    create_sound_and_heard_tables(cursor0)
+    translate_core_s_raw_tablename = create_prime_tablename("trlcore", kw.s_raw)
+    assert get_row_count(cursor0, translate_core_s_raw_tablename) == 0
+    insert_translate_sound_agg_into_translate_core_raw_table(cursor0)
+    assert get_row_count(cursor0, translate_core_s_raw_tablename) == 2
+    # WHEN
+    insert_translate_sound_agg_into_translate_core_raw_table(cursor0)
+    # THEN
+    assert get_row_count(cursor0, translate_core_s_raw_tablename) == 2
+    # select_core_raw_sqlstr = f"SELECT * FROM {translate_core_s_raw_tablename}"
+    # cursor0.execute(select_core_raw_sqlstr)
+    # rows = cursor0.fetchall()
+    # print(f"{rows=}")
+    # assert rows == [
+    #     (translate_name_s_agg_tablename, "Bob", ":", ":", "Unknown", None),
+    #     (translate_name_s_agg_tablename, "Sue", None, None, None, None),
+    #     (translate_rope_s_agg_tablename, "Sue", None, None, None, None),
+    #     (translate_rope_s_agg_tablename, exx.yao, ":", ":", "Unknown", None),
+    # ]
+
+
 def test_update_inconsistency_translate_core_raw_table_UpdatesTable_Scenario0(
     cursor0: Cursor,
 ):
@@ -272,8 +282,6 @@ def test_insert_translate_core_raw_to_translate_core_agg_table_PopulatesTable_Sc
     cursor0: Cursor,
 ):
     # ESTABLISH
-    yao_inx = "Yaoito"
-    bob_inx = "Bobito"
     rdx = ":"
     other_knot = "/"
     ukx = "Unknown"
@@ -318,6 +326,58 @@ VALUES
     rows = cursor0.fetchall()
     print(f"{rows=}")
     assert rows == [(exx.bob, rdx, rdx, ukx), (exx.yao, rdx, rdx, ukx)]
+
+
+def test_insert_translate_core_raw_to_translate_core_agg_table_PopulatesTable_Scenario1_NoDuplicates(
+    cursor0: Cursor,
+):  # sourcery skip: extract-duplicate-method
+    # ESTABLISH
+    rdx = ":"
+    other_knot = "/"
+    ukx = "Unknown"
+    error_data_str = "Inconsistent data"
+
+    cursor0.execute(CREATE_TRLCORE_SOUND_RAW_SQLSTR)
+    trlrope_dimen = kw.translate_rope
+    translate_rope_s_agg_tablename = create_prime_tablename(trlrope_dimen, "s_agg")
+    trlname_dimen = kw.translate_name
+    translate_name_s_agg_tablename = create_prime_tablename(trlname_dimen, "s_agg")
+    trlcore_dimen = kw.translate_core
+    translate_core_s_raw_tablename = create_prime_tablename(trlcore_dimen, kw.s_raw)
+    insert_into_clause = f"""INSERT INTO {translate_core_s_raw_tablename} (
+  source_dimen
+, {kw.spark_face}
+, {kw.otx_knot}
+, {kw.inx_knot}
+, {kw.unknown_str}
+, {kw.error_message}
+)"""
+    values_clause = f"""
+VALUES
+  ('{translate_name_s_agg_tablename}', "{exx.bob}", "{rdx}", "{rdx}", "{ukx}", NULL)
+, ('{translate_name_s_agg_tablename}', "{exx.sue}", NULL, NULL, '{rdx}', '{error_data_str}')
+, ('{translate_rope_s_agg_tablename}', "{exx.sue}", NULL, NULL, '{other_knot}', '{error_data_str}')
+, ('{translate_rope_s_agg_tablename}', "{exx.yao}", "{rdx}", "{rdx}", "{ukx}", NULL)
+;
+"""
+    cursor0.execute(f"{insert_into_clause} {values_clause}")
+
+    create_sound_and_heard_tables(cursor0)
+    translate_core_s_agg_tablename = create_prime_tablename(trlcore_dimen, "s_agg")
+    assert get_row_count(cursor0, translate_core_s_agg_tablename) == 0
+    insert_translate_core_raw_to_translate_core_agg_table(cursor0)
+    assert get_row_count(cursor0, translate_core_s_agg_tablename) == 2
+    values2_clause = f"""
+VALUES
+  ('{translate_name_s_agg_tablename}', "{exx.zia}", "{rdx}", "{rdx}", "{ukx}", NULL)
+;
+"""
+    cursor0.execute(f"{insert_into_clause} {values2_clause}")
+    assert get_row_count(cursor0, translate_core_s_agg_tablename) == 2
+    # WHEN
+    insert_translate_core_raw_to_translate_core_agg_table(cursor0)
+    # THEN
+    assert get_row_count(cursor0, translate_core_s_agg_tablename) == 3
 
 
 def test_insert_translate_core_agg_to_translate_core_vld_table_PopulatesTable_Scenario0(
@@ -369,6 +429,47 @@ VALUES
         (exx.yao, default_knot, colon_knot, ex_uknown_str),
         (exx.zia, colon_knot, colon_knot, ex_uknown_str),
     ]
+
+
+def test_insert_translate_core_agg_to_translate_core_vld_table_PopulatesTable_Scenario1_NoDuplicates(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    colon_knot = ":"
+    slash_knot = "/"
+    other_knot = "="
+    unknown_str = "Unknown"
+    ex_uknown_str = "ex_uknown_str"
+    default_knot = default_knot_if_None()
+    default_unknown = default_unknown_str_if_None()
+
+    cursor0.execute(CREATE_TRLCORE_SOUND_AGG_SQLSTR)
+    trlcore_dimen = kw.translate_core
+    translate_core_s_agg_tablename = create_prime_tablename(trlcore_dimen, "s_agg")
+    insert_into_clause = f"""INSERT INTO {translate_core_s_agg_tablename} (
+  {kw.spark_face}
+, {kw.otx_knot}
+, {kw.inx_knot}
+, {kw.unknown_str}
+)"""
+    values_clause = f"""
+VALUES
+  ("{exx.bob}", "{colon_knot}", "{slash_knot}", "{unknown_str}")
+, ("{exx.sue}", NULL, NULL, NULL)
+, ("{exx.yao}", NULL, '{colon_knot}', '{ex_uknown_str}')
+, ("{exx.zia}", "{colon_knot}", "{colon_knot}", "{ex_uknown_str}")
+;
+"""
+    cursor0.execute(f"{insert_into_clause} {values_clause}")
+    cursor0.execute(CREATE_TRLCORE_SOUND_VLD_SQLSTR)
+    translate_core_s_vld_tablename = create_prime_tablename(trlcore_dimen, kw.s_vld)
+    assert get_row_count(cursor0, translate_core_s_vld_tablename) == 0
+    insert_translate_core_agg_to_translate_core_vld_table(cursor0)
+    assert get_row_count(cursor0, translate_core_s_vld_tablename) == 4
+    # WHEN
+    insert_translate_core_agg_to_translate_core_vld_table(cursor0)
+    # THEN
+    assert get_row_count(cursor0, translate_core_s_vld_tablename) == 4
 
 
 def test_create_update_translate_sound_agg_inconsist_sqlstr_PopulatesTable_Scenario0(
@@ -1090,6 +1191,58 @@ VALUES
     ]
 
 
+def test_insert_translate_sound_agg_tables_to_translate_sound_vld_table_PopulatesTable_Scenario1_NoDuplicates(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    yao_inx = "Yaoito"
+    bob_inx = "Bobito"
+    rdx = ":"
+    other_knot = "/"
+    ukx = "Unknown"
+    spark1 = 1
+    spark2 = 2
+    spark5 = 5
+    spark7 = 7
+    error_translate_str = "Inconsistent translate core data"
+
+    create_sound_and_heard_tables(cursor0)
+    trlrope_dimen = kw.translate_rope
+    translate_rope_s_agg_tablename = create_prime_tablename(trlrope_dimen, "s_agg")
+    insert_into_clause = f"""INSERT INTO {translate_rope_s_agg_tablename} (
+  {kw.spark_num}
+, {kw.spark_face}
+, {kw.otx_rope}
+, {kw.inx_rope}
+, {kw.otx_knot}
+, {kw.inx_knot}
+, {kw.unknown_str}
+, {kw.error_message}
+)"""
+    values_clause = f"""
+VALUES
+  ({spark1}, '{exx.sue}', '{exx.yao}', '{yao_inx}', NULL, NULL, NULL, '{error_translate_str}')
+, ({spark1}, '{exx.sue}', '{exx.bob}', '{bob_inx}', NULL, NULL, NULL, '{error_translate_str}')
+, ({spark1}, '{exx.sue}', '{exx.bob}', '{exx.bob}', NULL, '{other_knot}', NULL, '{error_translate_str}')
+, ({spark2}, '{exx.sue}', '{exx.sue}', '{exx.sue}', '{rdx}', '{rdx}', '{ukx}', '{error_translate_str}')
+, ({spark5}, '{exx.sue}', '{exx.bob}', '{bob_inx}', '{rdx}', '{rdx}', '{ukx}', '{error_translate_str}')
+, ({spark1}, '{exx.yao}', '{exx.yao}', '{exx.yao}', '{rdx}', '{rdx}', '{ukx}', NULL)
+, ({spark7}, '{exx.yao}', '{exx.yao}', '{yao_inx}', '{rdx}', '{rdx}', '{ukx}', NULL)
+, ({spark7}, '{exx.bob}', '{exx.bob}', '{bob_inx}', NULL, NULL, '{ukx}', NULL)
+;
+"""
+    cursor0.execute(f"{insert_into_clause} {values_clause}")
+    translate_rope_s_vld_tablename = create_prime_tablename("trlrope", kw.s_vld)
+    assert get_row_count(cursor0, translate_rope_s_agg_tablename) == 8
+    assert get_row_count(cursor0, translate_rope_s_vld_tablename) == 0
+    insert_translate_sound_agg_tables_to_translate_sound_vld_table(cursor0)
+    assert get_row_count(cursor0, translate_rope_s_vld_tablename) == 3
+    # WHEN
+    insert_translate_sound_agg_tables_to_translate_sound_vld_table(cursor0)
+    # THEN
+    assert get_row_count(cursor0, translate_rope_s_vld_tablename) == 3
+
+
 def test_etl_translate_sound_agg_tables_to_translate_sound_vld_tables_Scenario0_PopulatesTable(
     cursor0: Cursor,
 ):
@@ -1293,6 +1446,36 @@ VALUES ('{exx.bob}', '{rdx}', '{rdx}', '{ukx}');"""
     assert rows[0] == exp_row0
     assert rows[1] == exp_row1
     assert rows == [exp_row0, exp_row1]
+
+
+def test_populate_translate_core_vld_with_missing_spark_faces_Scenario2_NoDuplicates(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    rdx = ":"
+    ukx = "Unknown"
+    spark1 = 1
+
+    create_sound_and_heard_tables(cursor0)
+    prncont_str = kw.person_contactunit
+    prncont_s_agg_tablename = create_prime_tablename(prncont_str, "s_agg", "put")
+    insert_prncont_sqlstr = f"""
+INSERT INTO {prncont_s_agg_tablename} ({kw.spark_num}, {kw.spark_face}, {kw.person_name}, {kw.contact_name})
+VALUES ({spark1}, '{exx.bob}', '{exx.bob}', '{exx.bob}'), ({spark1}, '{exx.yao}', '{exx.yao}', '{exx.yao}');"""
+    cursor0.execute(insert_prncont_sqlstr)
+
+    trlcore_s_vld_tablename = create_prime_tablename("trlcore", kw.s_vld)
+    insert_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename} (
+{kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+VALUES ('{exx.bob}', '{rdx}', '{rdx}', '{ukx}');"""
+    cursor0.execute(insert_sqlstr)
+    assert get_row_count(cursor0, trlcore_s_vld_tablename) == 1
+    populate_translate_core_vld_with_missing_spark_faces(cursor0)
+    assert get_row_count(cursor0, trlcore_s_vld_tablename) == 2
+    # WHEN
+    populate_translate_core_vld_with_missing_spark_faces(cursor0)
+    # THEN
+    assert get_row_count(cursor0, trlcore_s_vld_tablename) == 2
 
 
 def test_etl_translate_sound_agg_tables_to_translate_sound_vld_tables_Scenario2_Populates1MissingTranslateCoreRow(
