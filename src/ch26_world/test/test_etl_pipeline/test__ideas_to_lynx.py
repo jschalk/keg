@@ -1,8 +1,4 @@
-from ch00_py.db_toolbox import (
-    db_table_exists,
-    get_all_tables_with_duplicates,
-    get_row_count,
-)
+from ch00_py.db_toolbox import db_table_exists, get_row_count
 from ch00_py.file_toolbox import (
     count_dirs_files,
     create_path,

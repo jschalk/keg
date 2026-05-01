@@ -187,10 +187,12 @@ def etl_translate_sound_agg_tables_to_translate_sound_vld_tables(
 
 
 def etl_sound_agg_tables_to_sound_vld_tables(cursor: sqlite3_Cursor):
-    for sqlstr in get_insert_into_sound_vld_sqlstrs().values():
+    for sound_vld_tablename, sqlstr in get_insert_into_sound_vld_sqlstrs().items():
         cursor.execute(sqlstr)
+        delete_all_duplicate_rows(cursor, sound_vld_tablename)
 
 
 def etl_sound_vld_tables_to_heard_raw_tables(cursor: sqlite3_Cursor):
-    for sqlstr in get_insert_into_heard_raw_sqlstrs().values():
+    for heard_raw_tablename, sqlstr in get_insert_into_heard_raw_sqlstrs().items():
         cursor.execute(sqlstr)
+        delete_all_duplicate_rows(cursor, heard_raw_tablename)

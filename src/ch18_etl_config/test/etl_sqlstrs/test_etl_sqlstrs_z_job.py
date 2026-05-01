@@ -8,7 +8,7 @@ from ch18_etl_config.etl_sqlstr import (
     get_job_create_table_sqlstrs,
 )
 from ref.keywords import Ch18Keywords as kw
-from sqlite3 import Cursor, connect as sqlite3_connect
+from sqlite3 import Cursor
 
 
 def test_get_job_create_table_sqlstrs_ReturnsObj():
