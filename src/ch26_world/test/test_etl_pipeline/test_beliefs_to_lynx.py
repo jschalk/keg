@@ -94,12 +94,12 @@ def test_belief_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
         assert get_row_count(cursor, ii00171_raw) == 1
         assert get_row_count(cursor, ii00171_agg) == 1
         assert get_row_count(cursor, kw.sparks_ideax_agg) == 2
-        assert get_row_count(cursor, sparks_ideax_vld_tablename) == 2
-        assert get_row_count(cursor, ii00171_valid) == 2
-        assert get_row_count(cursor, trlname_sound_raw) == 2
-        assert get_row_count(cursor, momentunit_sound_raw) == 4
-        assert get_row_count(cursor, prnunit_put_sound_raw) == 4
-        assert get_row_count(cursor, prncont_put_sound_raw) == 2
+        assert get_row_count(cursor, sparks_ideax_vld_tablename) == 1
+        assert get_row_count(cursor, ii00171_valid) == 1
+        assert get_row_count(cursor, trlname_sound_raw) == 1
+        assert get_row_count(cursor, momentunit_sound_raw) == 2
+        assert get_row_count(cursor, prnunit_put_sound_raw) == 2
+        assert get_row_count(cursor, prncont_put_sound_raw) == 1
         assert get_row_count(cursor, trlname_sound_agg) == 1
         assert get_row_count(cursor, momentunit_sound_agg) == 1
         assert get_row_count(cursor, prnunit_put_sound_agg) == 1

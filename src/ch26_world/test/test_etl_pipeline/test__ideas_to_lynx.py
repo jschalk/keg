@@ -329,12 +329,12 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     assert get_row_count(cursor0, ii00171_agg) == 1
     print(cursor0.execute(f"SELECT * FROM {kw.sparks_ideax_agg}").fetchall())
     assert get_row_count(cursor0, kw.sparks_ideax_agg) == 2
-    assert get_row_count(cursor0, sparks_ideax_vld_tablename) == 2
-    assert get_row_count(cursor0, ii00171_valid) == 2
-    assert get_row_count(cursor0, trlname_sound_raw) == 2
-    assert get_row_count(cursor0, momentunit_sound_raw) == 4
-    assert get_row_count(cursor0, prnunit_put_sound_raw) == 4
-    assert get_row_count(cursor0, prncont_put_sound_raw) == 2
+    assert get_row_count(cursor0, sparks_ideax_vld_tablename) == 1
+    assert get_row_count(cursor0, ii00171_valid) == 1
+    assert get_row_count(cursor0, trlname_sound_raw) == 1
+    assert get_row_count(cursor0, momentunit_sound_raw) == 2
+    assert get_row_count(cursor0, prnunit_put_sound_raw) == 2
+    assert get_row_count(cursor0, prncont_put_sound_raw) == 1
     assert get_row_count(cursor0, trlname_sound_agg) == 1
     assert get_row_count(cursor0, momentunit_sound_agg) == 1
     assert get_row_count(cursor0, prnunit_put_sound_agg) == 1
@@ -633,12 +633,12 @@ def test_idea_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
         assert get_row_count(cursor, ii00171_raw) == 1
         assert get_row_count(cursor, ii00171_agg) == 1
         assert get_row_count(cursor, kw.sparks_ideax_agg) == 2
-        assert get_row_count(cursor, sparks_ideax_vld_tablename) == 2
-        assert get_row_count(cursor, ii00171_valid) == 2
-        assert get_row_count(cursor, trlname_sound_raw) == 2
-        assert get_row_count(cursor, momentunit_sound_raw) == 4
-        assert get_row_count(cursor, prnunit_put_sound_raw) == 4
-        assert get_row_count(cursor, prncont_put_sound_raw) == 2
+        assert get_row_count(cursor, sparks_ideax_vld_tablename) == 1
+        assert get_row_count(cursor, ii00171_valid) == 1
+        assert get_row_count(cursor, trlname_sound_raw) == 1
+        assert get_row_count(cursor, momentunit_sound_raw) == 2
+        assert get_row_count(cursor, prnunit_put_sound_raw) == 2
+        assert get_row_count(cursor, prncont_put_sound_raw) == 1
         assert get_row_count(cursor, trlname_sound_agg) == 1
         assert get_row_count(cursor, momentunit_sound_agg) == 1
         assert get_row_count(cursor, prnunit_put_sound_agg) == 1

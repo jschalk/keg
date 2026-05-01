@@ -211,6 +211,7 @@ WHERE spark_num IN (
 ;
 """
     conn_or_cursor.execute(update_error_message_sqlstr)
+    delete_all_duplicate_rows(conn_or_cursor, idea_sparks_tablename)
 
 
 def etl_sparks_ideax_agg_table_to_sparks_ideax_vld_table(
@@ -230,6 +231,7 @@ WHERE error_message IS NULL
 ;
 """
     conn_or_cursor.execute(insert_select_sqlstr)
+    delete_all_duplicate_rows(conn_or_cursor, valid_sparks_tablename)
 
 
 def etl_sparks_ideax_agg_db_to_spark_dict(
@@ -242,16 +244,6 @@ FROM sparks_ideax_vld
 """
     conn_or_cursor.execute(select_sqlstr)
     return {int(row[0]): row[1] for row in conn_or_cursor.fetchall()}
-
-
-def get_ideax_vld_tables(cursor: sqlite3_Cursor) -> dict[str, str]:
-    possible_ideax_vld_tables = {f"ideax_vld_{idea}": idea for idea in get_idea_types()}
-    active_tables = get_db_tables(cursor)
-    return {
-        active_table: possible_ideax_vld_tables.get(active_table)
-        for active_table in active_tables
-        if active_table in possible_ideax_vld_tables
-    }
 
 
 def get_sound_raw_tablenames(
