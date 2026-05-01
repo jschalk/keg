@@ -252,3 +252,53 @@ VALUES
     etl_sound_vld_tables_to_heard_raw_tables(cursor0)
     # THEN
     assert get_row_count(cursor0, prncont_h_raw_put_tablename) == 4
+
+
+def test_etl_sound_vld_tables_to_heard_raw_tables_Scenario3_NoDuplicatesUse_exclude_postfix_ToExclude_otx_FromCalculation(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    yao_inx = "Yaoito"
+    spark1 = 1
+    spark2 = 2
+    spark5 = 5
+    spark7 = 7
+    x44_credit = 44
+    x55_credit = 55
+    x22_debt = 22
+    x66_debt = 66
+
+    create_sound_and_heard_tables(cursor0)
+    prncont_s_vld_put_tablename = prime_tbl(kw.person_contactunit, kw.s_vld, "put")
+    print(f"{get_table_columns(cursor0, prncont_s_vld_put_tablename)=}")
+    insert_into_clause = f"""INSERT INTO {prncont_s_vld_put_tablename} (
+  {kw.spark_num}
+, {kw.spark_face}
+, {kw.moment_rope}
+, {kw.person_name}
+, {kw.contact_name}
+, {kw.contact_cred_lumen}
+, {kw.contact_debt_lumen}
+)"""
+    values_clause = f"""
+VALUES
+  ({spark1}, '{exx.sue}', '{exx.a23}','{exx.yao}', '{yao_inx}', {x44_credit}, {x22_debt})
+, ({spark2}, '{exx.yao}', '{exx.a23}','{exx.bob}', '{exx.bob}', {x55_credit}, {x22_debt})
+, ({spark5}, '{exx.sue}', '{exx.a23}','{exx.bob}', '{exx.bob}', {x55_credit}, {x22_debt})
+, ({spark7}, '{exx.bob}', '{exx.a23}','{exx.bob}', '{exx.bob}', {x55_credit}, {x66_debt})
+;
+"""
+    cursor0.execute(f"{insert_into_clause} {values_clause}")
+    assert get_row_count(cursor0, prncont_s_vld_put_tablename) == 4
+    prncont_h_raw_put_tablename = prime_tbl(kw.person_contactunit, kw.h_raw, "put")
+    assert get_row_count(cursor0, prncont_h_raw_put_tablename) == 0
+    etl_sound_vld_tables_to_heard_raw_tables(cursor0)
+    # simulate changes made to otx columns
+    cursor0.execute(
+        f"UPDATE {prncont_h_raw_put_tablename} SET person_name_inx='placeholder'"
+    )
+    assert get_row_count(cursor0, prncont_h_raw_put_tablename) == 4
+    # WHEN
+    etl_sound_vld_tables_to_heard_raw_tables(cursor0)
+    # THEN
+    assert get_row_count(cursor0, prncont_h_raw_put_tablename) == 4

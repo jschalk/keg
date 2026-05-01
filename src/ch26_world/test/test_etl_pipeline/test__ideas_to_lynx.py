@@ -1,10 +1,15 @@
-from ch00_py.db_toolbox import db_table_exists, get_row_count
+from ch00_py.db_toolbox import (
+    db_table_exists,
+    get_all_tables_with_duplicates,
+    get_row_count,
+)
 from ch00_py.file_toolbox import (
     count_dirs_files,
     create_path,
     get_level1_dirs,
     save_file,
 )
+from ch00_py.test.tool_db.test_db_tool_ import print_table
 from ch04_rope.rope import create_rope_from_labels as init_rope
 from ch09_person_lesson._ref.ch09_path import create_gut_path, create_moment_json_path
 from ch09_person_lesson.lasso import lassounit_shop
@@ -553,51 +558,53 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
 
 
 # TODO reactivate this test, maybe add person_plan data so more tables are covered
-# def test_idea_sheets_to_lynx_with_cursor_Scenario6_NoDuplicates(
-#     temp3_fs, cursor0: Cursor
-# ):
-#     # ESTABLISH
-#     fay_str = "Fay"
-#     fay_wdir = worlddir_shop(fay_str, str(temp3_fs))
-#     # delete_dir(fay_wdir.worlds_dir)
-#     spark1 = 1
-#     spark2 = 2
-#     minute_360 = 360
-#     minute_420 = 420
-#     hour6am = "6am"
-#     hour7am = "7am"
-#     ex_filename = "Faybob.xlsx"
-#     i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
-#     ii00103_columns = [
-#         kw.spark_num,
-#         kw.spark_face,
-#         kw.cumulative_minute,
-#         kw.moment_rope,
-#         kw.hour_label,
-#         kw.knot,
-#     ]
-#     ii3row0 = [spark1, exx.sue, minute_360, exx.a23, hour6am, ";"]
-#     ii3row1 = [spark1, exx.sue, minute_420, exx.a23, hour7am, ";"]
-#     ii3row2 = [spark2, exx.sue, minute_420, exx.a23, hour7am, ";"]
-#     ii00103_1df = DataFrame([ii3row0, ii3row1], columns=ii00103_columns)
-#     ii00103_3df = DataFrame([ii3row1, ii3row0, ii3row2], columns=ii00103_columns)
-#     ii00103_ex1_str = "example1_ii00103"
-#     ii00103_ex3_str = "example3_ii00103"
-#     save_sheet(i_src_dir_file_path, ii00103_ex1_str, ii00103_1df)
-#     save_sheet(i_src_dir_file_path, ii00103_ex3_str, ii00103_3df)
-#     idea_sheets_to_lynx_with_cursor(
-#         cursor0, fay_wdir.ideas_src_dir, fay_wdir.moment_mstr_dir
-#     )
-#     assert [] == get_all_tables_with_duplicates(cursor0)
-#     # WHEN
-#     idea_sheets_to_lynx_with_cursor(
-#         cursor0, fay_wdir.ideas_src_dir, fay_wdir.moment_mstr_dir
-#     )
-#     # THEN
-#     all_tables_with_duplicates_after_2nd_run = get_all_tables_with_duplicates(cursor0)
-#     for tablename in all_tables_with_duplicates_after_2nd_run:
-#         print(f"Table with duplicate '{tablename}'")
-#     assert [] == all_tables_with_duplicates_after_2nd_run
+def test_idea_sheets_to_lynx_with_cursor_Scenario6_NoDuplicates(
+    temp3_fs, cursor0: Cursor
+):
+    # ESTABLISH
+    fay_str = "Fay"
+    fay_wdir = worlddir_shop(fay_str, str(temp3_fs))
+    # delete_dir(fay_wdir.worlds_dir)
+    spark1 = 1
+    spark2 = 2
+    minute_360 = 360
+    minute_420 = 420
+    hour6am = "6am"
+    hour7am = "7am"
+    ex_filename = "Faybob.xlsx"
+    i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
+    ii00103_columns = [
+        kw.spark_num,
+        kw.spark_face,
+        kw.cumulative_minute,
+        kw.moment_rope,
+        kw.hour_label,
+        kw.knot,
+    ]
+    ii3row0 = [spark1, exx.sue, minute_360, exx.a23, hour6am, ";"]
+    ii3row1 = [spark1, exx.sue, minute_420, exx.a23, hour7am, ";"]
+    ii3row2 = [spark2, exx.sue, minute_420, exx.a23, hour7am, ";"]
+    ii00103_1df = DataFrame([ii3row0, ii3row1], columns=ii00103_columns)
+    ii00103_3df = DataFrame([ii3row1, ii3row0, ii3row2], columns=ii00103_columns)
+    ii00103_ex1_str = "example1_ii00103"
+    ii00103_ex3_str = "example3_ii00103"
+    save_sheet(i_src_dir_file_path, ii00103_ex1_str, ii00103_1df)
+    save_sheet(i_src_dir_file_path, ii00103_ex3_str, ii00103_3df)
+    idea_sheets_to_lynx_with_cursor(
+        cursor0, fay_wdir.ideas_src_dir, fay_wdir.moment_mstr_dir
+    )
+    assert [] == get_all_tables_with_duplicates(cursor0)
+    # WHEN
+    idea_sheets_to_lynx_with_cursor(
+        cursor0, fay_wdir.ideas_src_dir, fay_wdir.moment_mstr_dir
+    )
+    # THEN
+    all_tables_with_duplicates_after_2nd_run = get_all_tables_with_duplicates(cursor0)
+    # for tablename in all_tables_with_duplicates_after_2nd_run:
+    #     table_count = get_row_count(cursor0, tablename)
+    #     print(f"Table with duplicate '{tablename}' {table_count=}")
+    #     print_table(cursor0, tablename)
+    assert [] == all_tables_with_duplicates_after_2nd_run
 
 
 def test_idea_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(

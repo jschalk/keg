@@ -110,13 +110,17 @@ def test_get_translate_args_class_types_ReturnsObj():
     # assert translate_args_class_types.keys() == get_atom_args_dimen_mapping().keys()
     # assert all_atom_args_class_types_are_correct(x_class_types)
 
+    for translate_arg in translate_args_class_types.keys():
+        assert not translate_arg.endswith("_otx"), f"Error with '{translate_arg}'"
+        assert not translate_arg.endswith("_inx"), f"Error with '{translate_arg}'"
+
 
 def check_class_types_are_correct() -> bool:
     translate_args_class_types = get_translate_args_class_types()
     atom_args_class_types = get_atom_args_class_types()
     moment_args_class_types = get_moment_args_class_types()
     for translate_arg, translate_type in translate_args_class_types.items():
-        print(f"check {translate_arg=} {translate_type=}")
+        # print(f"check {translate_arg=} {translate_type=}")
         if atom_args_class_types.get(translate_arg) not in [None, translate_type]:
             print(
                 f"{translate_arg=} {translate_type=} {atom_args_class_types.get(translate_arg)=}"

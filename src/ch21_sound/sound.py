@@ -193,6 +193,6 @@ def etl_sound_agg_tables_to_sound_vld_tables(cursor: sqlite3_Cursor):
 
 
 def etl_sound_vld_tables_to_heard_raw_tables(cursor: sqlite3_Cursor):
-    for heard_raw_tablename, sqlstr in get_insert_into_heard_raw_sqlstrs().items():
+    for h_raw_tablename, sqlstr in get_insert_into_heard_raw_sqlstrs().items():
         cursor.execute(sqlstr)
-        delete_all_duplicate_rows(cursor, heard_raw_tablename)
+        delete_all_duplicate_rows(cursor, h_raw_tablename, exclude_postfix="_inx")

@@ -577,18 +577,35 @@ def _validate_identifier(name: str):
         raise ValueError(f"Invalid SQL identifier: {name}")
 
 
-def delete_all_duplicate_rows(cursor: sqlite3_Connection, table_name: str):
+def delete_all_duplicate_rows(
+    cursor: sqlite3_Connection,
+    table_name: str,
+    exclude_postfix: str | None = None,
+):
     """
     Deletes duplicate rows from a SQLite table based on ALL columns,
     keeping the row with the smallest rowid.
+
+    If exclude_postfix is provided, columns ending with that postfix
+    are ignored when determining duplicates.
     """
     _validate_identifier(table_name)
 
-    columns = get_table_columns(cursor, table_name)
-    if not columns:
+    columns_list = get_table_columns(cursor, table_name)
+    if not columns_list:
         raise ValueError(f"Table does not exist or has no columns: {table_name}")
 
-    cols = ", ".join(columns)
+    if exclude_postfix:
+        group_columns = [
+            col for col in columns_list if not col.endswith(exclude_postfix)
+        ]
+    else:
+        group_columns = columns_list
+
+    if not group_columns:
+        raise ValueError("No columns left to group by after applying exclude_postfix")
+
+    columns_str = ", ".join(group_columns)
 
     query = f"""
     DELETE FROM {table_name}
@@ -596,7 +613,7 @@ def delete_all_duplicate_rows(cursor: sqlite3_Connection, table_name: str):
         SELECT rowid FROM (
             SELECT MIN(rowid) AS rowid
             FROM {table_name}
-            GROUP BY {cols}
+            GROUP BY {columns_str}
         )
     );
     """

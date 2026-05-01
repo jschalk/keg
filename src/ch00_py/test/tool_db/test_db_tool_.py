@@ -37,6 +37,23 @@ from sqlite3 import (
 )
 
 
+def print_table(cursor: Cursor, table_name: str) -> None:
+    # Get column names
+    cursor.execute(f"PRAGMA table_info({table_name})")
+    columns_info = cursor.fetchall()
+    column_names = [col[1] for col in columns_info]
+
+    # Print column headers
+    print(" | ".join(column_names))
+
+    # Fetch and print rows
+    cursor.execute(f"SELECT * FROM {table_name}")
+    rows = cursor.fetchall()
+
+    for row in rows:
+        print(" | ".join(str(value) for value in row))
+
+
 def test_sqlite_obj_str_ReturnsObj():
     # ESTABLISH / WHEN / THEN
     assert sqlite_obj_str(True, sqlite_datatype="TEXT") == "'TRUE'"
@@ -1354,6 +1371,70 @@ def test_delete_all_duplicate_rows_Scenario4_NonexistentTable(
     # WHEN / THEN
     with pytest_raises(ValueError):
         delete_all_duplicate_rows(cursor0, "does_not_exist")
+
+
+def test_delete_all_duplicate_rows_ReturnsNone_Scenario5_IgnorePostfix_RemovesDuplicatesBasedOnRemainingColumns(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    cursor0.execute(
+        """CREATE TABLE test_table (col1 TEXT, col2 TEXT, col3_ignore TEXT);"""
+    )
+    # col3_ignore differs, but should be ignored → duplicates collapse
+    rows = [
+        ("a", "b", "x"),
+        ("a", "b", "y"),  # duplicate when ignoring postfix column
+        ("c", "d", "z"),
+    ]
+    insert_sqlstr = "INSERT INTO test_table (col1, col2, col3_ignore) VALUES (?, ?, ?);"
+    cursor0.executemany(insert_sqlstr, rows)
+    # WHEN
+    delete_all_duplicate_rows(cursor0, "test_table", exclude_postfix="_ignore")
+    # THEN
+    cursor0.execute("SELECT col1, col2, col3_ignore FROM test_table ORDER BY rowid;")
+    result = cursor0.fetchall()
+    assert len(result) == 2
+    assert ("a", "b", "x") in result or ("a", "b", "y") in result
+    assert ("c", "d", "z") in result
+
+
+def test_delete_all_duplicate_rows_ReturnsNone_Scenario6_IgnorePostfix_KeepsDistinctRowsWhenCoreColumnsDiffer(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    cursor0.execute(
+        """CREATE TABLE test_table (col1 TEXT, col2 TEXT, col3_ignore TEXT);"""
+    )
+    # col1 differs → NOT duplicates even if postfix column matches
+    rows = [
+        ("a", "b", "x"),
+        ("c", "b", "x"),
+    ]
+    insert_sqlstr = "INSERT INTO test_table (col1, col2, col3_ignore) VALUES (?, ?, ?);"
+    cursor0.executemany(insert_sqlstr, rows)
+    # WHEN
+    delete_all_duplicate_rows(cursor0, "test_table", exclude_postfix="_ignore")
+    # THEN
+    cursor0.execute("SELECT col1, col2, col3_ignore FROM test_table ORDER BY rowid;")
+    result = cursor0.fetchall()
+    assert len(result) == 2
+    assert ("a", "b", "x") in result
+    assert ("c", "b", "x") in result
+
+
+def test_delete_all_duplicate_rows_ReturnsNone_Scenario7_IgnorePostfix_AllColumnsExcluded_RaisesValueError(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    cursor0.execute("""
+        CREATE TABLE test_table (
+            col1_ignore TEXT,
+            col2_ignore TEXT
+        );
+        """)
+    # WHEN / THEN
+    with pytest_raises(ValueError, match="No columns left to group by"):
+        delete_all_duplicate_rows(cursor0, "test_table", exclude_postfix="_ignore")
 
 
 def test_table_has_duplicates_ReturnsObj_Scenario1_EmptyTable(cursor0: Cursor):
