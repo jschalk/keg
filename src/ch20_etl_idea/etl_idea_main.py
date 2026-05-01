@@ -9,6 +9,7 @@ from ch00_py.db_toolbox import (
     get_grouping_with_all_values_equal_sql_query,
     get_nonconvertible_columns,
     get_table_columns,
+    delete_all_duplicate_rows,
 )
 from ch00_py.file_toolbox import create_path
 from ch17_idea.idea_config import (
@@ -32,8 +33,8 @@ from sqlite3 import Connection as sqlite3_Connection, Cursor as sqlite3_Cursor
 
 def etl_idea_dfs_to_ideax_raw_tables(cursor: sqlite3_Cursor, ideas_src_dir: str):
     idea_sqlite_types = get_idea_sqlite_types()
-
-    for ref in get_all_ideafilerefs(ideas_src_dir):
+    ideafilerefs = get_all_ideafilerefs(ideas_src_dir)
+    for ref in ideafilerefs:
         x_file_path = create_path(ref.file_dir, ref.filename)
         df = pandas_read_excel(x_file_path, ref.sheet_name)
         idea_sorting_columns = get_default_sorted_list(set(df.columns))
@@ -56,6 +57,10 @@ def etl_idea_dfs_to_ideax_raw_tables(cursor: sqlite3_Cursor, ideas_src_dir: str)
             _insert_row_into_ideax_raw_table(
                 cursor, x_tablename, column_names, row, idea_sqlite_types
             )
+
+    for ref in ideafilerefs:
+        x_tablename = f"{ref.idea_type}_ideax_raw"
+        delete_all_duplicate_rows(cursor, x_tablename)
 
 
 def _insert_row_into_ideax_raw_table(
@@ -132,6 +137,7 @@ def etl_ideax_raw_tables_to_ideax_agg_tables(conn_or_cursor: sqlite3_Connection)
 {insert_clause_sqlstr}
 {select_sqlstr};"""
             conn_or_cursor.execute(insert_from_select_sqlstr)
+            delete_all_duplicate_rows(conn_or_cursor, agg_tablename)
 
 
 def etl_ideax_agg_tables_to_ideax_vld_tables(conn_or_cursor: sqlite3_Connection):

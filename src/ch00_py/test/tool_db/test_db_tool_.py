@@ -22,6 +22,7 @@ from ch00_py.db_toolbox import (
     required_columns_exist,
     rowdata_shop,
     sqlite_obj_str,
+    delete_all_duplicate_rows,
 )
 from ch00_py.file_toolbox import create_path, delete_dir, set_dir
 from pandas import NA as pandas_NA
@@ -1248,3 +1249,107 @@ def test_get_db_tables_ReturnsObj_Scenario2_TablenamesStartWithString(cursor0: C
     # WHEN / THEN
     assert get_db_tables(cursor0, "2") == {x_table2: 1, x_table3: 1}
     assert get_db_tables(cursor0, "2", "side") == {x_table2: 1}
+
+
+def test_delete_all_duplicate_rows_Scenario0_DeleteAllDuplicateRowsBasic(
+    cursor0: Cursor,
+):
+    # ESTABLISH:
+    cursor0.execute("""
+        CREATE TABLE side1 (
+            name TEXT,
+            age INTEGER
+        )
+    """)
+    cursor0.executemany(
+        "INSERT INTO side1 (name, age) VALUES (?, ?)",
+        [
+            ("Alice", 30),
+            ("Alice", 30),
+            ("Bob", 25),
+            ("Bob", 25),
+        ],
+    )
+    # WHEN
+    delete_all_duplicate_rows(cursor0, "side1")
+    # THEN
+    cursor0.execute("SELECT name, age FROM side1")
+    rows = sorted(cursor0.fetchall())
+
+    assert rows == [("Alice", 30), ("Bob", 25)]
+
+
+def test_delete_all_duplicate_rows_Scenario1_PartialDuplicatesNotRemoved(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    cursor0.execute("""
+        CREATE TABLE side1 (
+            name TEXT,
+            age INTEGER
+        )
+    """)
+    cursor0.executemany(
+        "INSERT INTO side1 (name, age) VALUES (?, ?)",
+        [
+            ("Alice", 30),
+            ("Alice", 31),  # different row → should stay
+        ],
+    )
+    # WHEN
+    delete_all_duplicate_rows(cursor0, "side1")
+    # THEN
+    cursor0.execute("SELECT COUNT(*) FROM side1")
+    count = cursor0.fetchone()[0]
+
+    assert count == 2
+
+
+def test_delete_all_duplicate_rows_Scenario2_SingleRowUnchanged(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    # DELETE
+    cursor0.execute("""
+        CREATE TABLE side1 (
+            name TEXT,
+            age INTEGER
+        )
+    """)
+
+    cursor0.execute("INSERT INTO side1 (name, age) VALUES (?, ?)", ("Alice", 30))
+    # WHEN
+    delete_all_duplicate_rows(cursor0, "side1")
+    # THEN
+    cursor0.execute("SELECT COUNT(*) FROM side1")
+    assert cursor0.fetchone()[0] == 1
+
+
+def test_delete_all_duplicate_rows_Scenario3_InvalidTableName(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    cursor0.execute("""
+        CREATE TABLE side1 (
+            name TEXT,
+            age INTEGER
+        )
+    """)
+    # WHEN / THEN
+    with pytest_raises(ValueError):
+        delete_all_duplicate_rows(cursor0, "bad;drop table x;")
+
+
+def test_delete_all_duplicate_rows_Scenario4_NonexistentTable(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    cursor0.execute("""
+        CREATE TABLE side1 (
+            name TEXT,
+            age INTEGER
+        )
+    """)
+    # WHEN / THEN
+    with pytest_raises(ValueError):
+        delete_all_duplicate_rows(cursor0, "does_not_exist")

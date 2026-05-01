@@ -240,3 +240,44 @@ ORDER BY sheet_name, {kw.spark_num}, {kw.cumulative_minute};"""
     assert rows[0] == e_r0
     assert rows[1] == e_r1
     assert rows[2] == e_r2
+
+
+def test_etl_idea_dfs_to_ideax_raw_tables_PopulatesTables_Scenario3_DeletesTableBeforeLoad(
+    temp3_fs, cursor0: Cursor
+):
+    # ESTABLISH
+    spark1 = 1
+    spark2 = 2
+    spark3 = 3
+    minute_360 = 360
+    minute_420 = 420
+    hour6am = "6am"
+    hour7am = "7am"
+    ex_filename = "Faybob.xlsx"
+    i_src_dir = create_path(str(temp3_fs), kw.i_src)
+    i_src_file_path = create_path(i_src_dir, ex_filename)
+    ii3_columns = [
+        kw.spark_num,
+        kw.spark_face,
+        kw.cumulative_minute,
+        kw.moment_rope,
+        kw.hour_label,
+        kw.knot,
+    ]
+    row0 = [spark1, exx.sue, minute_360, exx.a23_dash, hour6am, exx.dash]
+    row1 = [spark1, exx.sue, minute_420, exx.a23_dash, hour7am, exx.dash]
+    row2 = [spark2, exx.sue, minute_420, exx.a23_dash, hour7am, exx.dash]
+    row3 = [spark3, exx.sue, "num55", exx.a23_dash, hour7am, exx.dash]
+    row4 = ["spark3", exx.sue, "num55", exx.a23_dash, hour7am, exx.dash]
+
+    df1 = DataFrame([row0, row1, row2, row3, row4], columns=ii3_columns)
+    ii00103_ex1_str = "example1_ii00103"
+    save_sheet(i_src_file_path, ii00103_ex1_str, df1)
+    ii00103_tablename = f"ii00103_{kw.ideax_raw}"
+    assert not db_table_exists(cursor0, ii00103_tablename)
+    etl_idea_dfs_to_ideax_raw_tables(cursor0, i_src_dir)
+    assert get_row_count(cursor0, ii00103_tablename) == 5
+    # WHEN
+    etl_idea_dfs_to_ideax_raw_tables(cursor0, i_src_dir)
+    # THEN
+    assert get_row_count(cursor0, ii00103_tablename) == 5

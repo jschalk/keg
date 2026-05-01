@@ -56,6 +56,7 @@ class ExampleStrs(str, Enum):
 
 
 class Ch00Keywords(str, Enum):
+    DELETE = "DELETE"
     INSERT = "INSERT"
     Keyword = "Keyword"
     UPDATE = "UPDATE"
@@ -73,6 +74,7 @@ class Ch00Keywords(str, Enum):
 
 
 class Ch01Keywords(str, Enum):
+    DELETE = "DELETE"
     GrainNum = "GrainNum"
     INSERT = "INSERT"
     Keyword = "Keyword"
@@ -96,6 +98,7 @@ class Ch01Keywords(str, Enum):
 class Ch02Keywords(str, Enum):
     BreakTerm = "BreakTerm"
     ContactName = "ContactName"
+    DELETE = "DELETE"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     GrainNum = "GrainNum"
@@ -162,6 +165,7 @@ class Ch02Keywords(str, Enum):
 class Ch03Keywords(str, Enum):
     BreakTerm = "BreakTerm"
     ContactName = "ContactName"
+    DELETE = "DELETE"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     GrainNum = "GrainNum"
@@ -234,6 +238,7 @@ class Ch03Keywords(str, Enum):
 class Ch04Keywords(str, Enum):
     BreakTerm = "BreakTerm"
     ContactName = "ContactName"
+    DELETE = "DELETE"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
     FundGrain = "FundGrain"
@@ -318,6 +323,7 @@ class Ch04Keywords(str, Enum):
 class Ch05Keywords(str, Enum):
     BreakTerm = "BreakTerm"
     ContactName = "ContactName"
+    DELETE = "DELETE"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
     FundGrain = "FundGrain"
@@ -422,6 +428,7 @@ class Ch05Keywords(str, Enum):
 class Ch06Keywords(str, Enum):
     BreakTerm = "BreakTerm"
     ContactName = "ContactName"
+    DELETE = "DELETE"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
     FundGrain = "FundGrain"
@@ -567,6 +574,7 @@ class Ch06Keywords(str, Enum):
 class Ch07Keywords(str, Enum):
     BreakTerm = "BreakTerm"
     ContactName = "ContactName"
+    DELETE = "DELETE"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
     FundGrain = "FundGrain"
