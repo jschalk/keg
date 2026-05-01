@@ -276,3 +276,51 @@ def test_etl_heard_raw_tables_to_heard_agg_tables_SQLTEST_Scenario1_FactUnit_Tim
         (fact_lower_otx, fact_lower_inx, fact_upper_otx, fact_upper_inx)
     ]
     assert pfhapx_select_prnfact(cursor0) == [(7777, 7877, 8000, 8100)]
+
+
+def test_etl_heard_raw_tables_to_heard_agg_tables_PopulatesTable_Scenario2_NoDuplicates(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    yao_inx = "Yaoito"
+    spark1 = 1
+    spark2 = 2
+    spark5 = 5
+    spark7 = 7
+    x44_credit = 44
+    x55_credit = 55
+    x22_debt = 22
+    x66_debt = 66
+
+    create_sound_and_heard_tables(cursor0)
+    prncont_h_raw_put_tablename = prime_tbl(kw.person_contactunit, kw.h_raw, "put")
+    print(f"{get_table_columns(cursor0, prncont_h_raw_put_tablename)=}")
+    insert_into_clause = f"""INSERT INTO {prncont_h_raw_put_tablename} (
+  {kw.spark_num}
+, {kw.spark_face}_otx
+, {kw.moment_rope}_otx
+, {kw.person_name}_otx
+, {kw.contact_name}_otx
+, {kw.contact_cred_lumen}
+, {kw.contact_debt_lumen}
+)
+VALUES
+  ({spark1}, '{exx.sue}', '{exx.a23}','{exx.yao}', '{yao_inx}', {x44_credit}, {x22_debt})
+, ({spark2}, '{exx.yao}', '{exx.a23}','{exx.bob}', '{exx.bob}', {x55_credit}, {x22_debt})
+, ({spark5}, '{exx.sue}', '{exx.a23}','{exx.bob}', '{exx.bob}', {x55_credit}, {x22_debt})
+, ({spark7}, '{exx.bob}', '{exx.a23}','{exx.bob}', '{exx.bob}', {x55_credit}, {x66_debt})
+, ({spark7}, '{exx.bob}', '{exx.a23}','{exx.bob}', '{exx.bob}', {x55_credit}, {x66_debt})
+;
+"""
+    cursor0.execute(insert_into_clause)
+    assert get_row_count(cursor0, prncont_h_raw_put_tablename) == 5
+    prncont_h_agg_put_tablename = prime_tbl(kw.person_contactunit, kw.h_agg, "put")
+    assert get_row_count(cursor0, prncont_h_agg_put_tablename) == 0
+    etl_heard_raw_tables_to_heard_agg_tables(cursor0)
+    assert get_row_count(cursor0, prncont_h_agg_put_tablename) == 4
+
+    # WHEN
+    etl_heard_raw_tables_to_heard_agg_tables(cursor0)
+
+    # THEN
+    assert get_row_count(cursor0, prncont_h_agg_put_tablename) == 4
