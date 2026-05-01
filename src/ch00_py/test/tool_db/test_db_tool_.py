@@ -12,6 +12,7 @@ from ch00_py.db_toolbox import (
     create_type_reference_insert_sqlstr,
     create_update_inconsistency_error_query,
     db_table_exists,
+    delete_all_duplicate_rows,
     dict_shop,
     get_db_tables,
     get_groupby_sql_query,
@@ -22,7 +23,7 @@ from ch00_py.db_toolbox import (
     required_columns_exist,
     rowdata_shop,
     sqlite_obj_str,
-    delete_all_duplicate_rows,
+    table_has_duplicates,
 )
 from ch00_py.file_toolbox import create_path, delete_dir, set_dir
 from pandas import NA as pandas_NA
@@ -1353,3 +1354,98 @@ def test_delete_all_duplicate_rows_Scenario4_NonexistentTable(
     # WHEN / THEN
     with pytest_raises(ValueError):
         delete_all_duplicate_rows(cursor0, "does_not_exist")
+
+
+def test_table_has_duplicates_ReturnsObj_Scenario1_EmptyTable(cursor0: Cursor):
+    # ESTABLISH
+    cursor0.execute("CREATE TABLE test (a INTEGER, b TEXT)")
+    # WHEN / THEN
+    assert table_has_duplicates(cursor0, "test") is False
+
+
+def test_table_has_duplicates_ReturnsObj_Scenario2_SingleRow(cursor0: Cursor):
+    # ESTABLISH
+    cursor0.execute("CREATE TABLE test (a INTEGER, b TEXT)")
+    cursor0.execute("INSERT INTO test (a, b) VALUES (1, 'x')")
+    # WHEN / THEN
+    assert table_has_duplicates(cursor0, "test") is False
+
+
+def test_table_has_duplicates_ReturnsObj_Scenario3_MultipleUniqueRows(cursor0: Cursor):
+    # ESTABLISH
+    cursor0.execute("CREATE TABLE test (a INTEGER, b TEXT)")
+    cursor0.executemany(
+        "INSERT INTO test (a, b) VALUES (?, ?)",
+        [(1, "x"), (2, "y"), (3, "z")],
+    )
+    # WHEN / THEN
+    assert table_has_duplicates(cursor0, "test") is False
+
+
+def test_table_has_duplicates_ReturnsObj_Scenario4_ExactDuplicateRows(cursor0: Cursor):
+    # ESTABLISH
+    cursor0.execute("CREATE TABLE test (a INTEGER, b TEXT)")
+    cursor0.executemany(
+        "INSERT INTO test (a, b) VALUES (?, ?)",
+        [(1, "x"), (1, "x")],
+    )
+    # WHEN / THEN
+    assert table_has_duplicates(cursor0, "test") is True
+
+
+def test_table_has_duplicates_ReturnsObj_Scenario5_PartialDuplicateRows(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    cursor0.execute("CREATE TABLE test (a INTEGER, b TEXT)")
+    cursor0.executemany(
+        "INSERT INTO test (a, b) VALUES (?, ?)",
+        [(1, "x"), (1, "y")],
+    )
+    # WHEN / THEN
+    assert table_has_duplicates(cursor0, "test") is False
+
+
+def test_table_has_duplicates_ReturnsObj_Scenario6_MultipleDuplicateGroups(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    cursor0.execute("CREATE TABLE test (a INTEGER, b TEXT)")
+    cursor0.executemany(
+        "INSERT INTO test (a, b) VALUES (?, ?)",
+        [
+            (1, "x"),
+            (1, "x"),
+            (2, "y"),
+            (2, "y"),
+        ],
+    )
+    # WHEN / THEN
+    assert table_has_duplicates(cursor0, "test") is True
+
+
+def test_table_has_duplicates_ReturnsObj_Scenario7_NullValueDuplicates(cursor0: Cursor):
+    # ESTABLISH
+    cursor0.execute("CREATE TABLE test (a INTEGER, b TEXT)")
+    cursor0.executemany(
+        "INSERT INTO test (a, b) VALUES (?, ?)",
+        [
+            (None, "x"),
+            (None, "x"),
+        ],
+    )
+    # WHEN / THEN
+    assert table_has_duplicates(cursor0, "test") is True
+
+
+def test_table_has_duplicates_ReturnsObj_Scenario8_SingleColumnDuplicates(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    cursor0.execute("CREATE TABLE test (a INTEGER)")
+    cursor0.executemany(
+        "INSERT INTO test (a) VALUES (?)",
+        [(1,), (2,), (2,)],
+    )
+    # WHEN / THEN
+    assert table_has_duplicates(cursor0, "test") is True

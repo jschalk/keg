@@ -601,3 +601,29 @@ def delete_all_duplicate_rows(cursor: sqlite3_Connection, table_name: str):
     );
     """
     cursor.execute(query)
+
+
+def table_has_duplicates(cursor: sqlite3_Connection, table_name: str) -> bool:
+    cursor.execute(f"PRAGMA table_info({table_name})")
+    columns = [row[1] for row in cursor.fetchall()]
+
+    if not columns:
+        return False  # or raise, depending on your preference
+
+    cols = ", ".join(columns)
+
+    query = f"""
+        SELECT 1
+        FROM {table_name}
+        GROUP BY {cols}
+        HAVING COUNT(*) > 1
+        LIMIT 1;
+    """
+    cursor.execute(query)
+    return cursor.fetchone() is not None
+
+
+def get_all_tables_with_duplicates(cursor: sqlite3_Connection):
+    return [
+        table for table in get_db_tables(cursor) if table_has_duplicates(cursor, table)
+    ]
