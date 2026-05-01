@@ -282,6 +282,7 @@ def etl_ideax_vld_table_into_prime_table(
 
 
 def etl_ideax_vld_tables_to_sound_raw_tables(cursor: sqlite3_Cursor):
+    all_touched_sound_raw_tables = set()
     create_sound_and_heard_tables(cursor)
     ideax_vld_tablenames = get_db_tables(cursor, "_ideax_vld", "ii")
     for ideax_vld_tablename in ideax_vld_tablenames:
@@ -290,7 +291,11 @@ def etl_ideax_vld_tables_to_sound_raw_tables(cursor: sqlite3_Cursor):
         idearef = get_idearef_from_file(idearef_filename)
         dimens = idearef.get("dimens")
         s_raw_tables = get_sound_raw_tablenames(cursor, dimens, ideax_vld_tablename)
+        all_touched_sound_raw_tables.update(s_raw_tables)
         for sound_raw_table in s_raw_tables:
             etl_ideax_vld_table_into_prime_table(
                 cursor, ideax_vld_tablename, sound_raw_table, idea_type
             )
+
+    for x_sound_raw_table in all_touched_sound_raw_tables:
+        delete_all_duplicate_rows(cursor, x_sound_raw_table)
