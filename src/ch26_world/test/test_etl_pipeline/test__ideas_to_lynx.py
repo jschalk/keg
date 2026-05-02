@@ -606,9 +606,6 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario6_NoDuplicates(
     assert [] == all_tables_with_duplicates_after_2nd_run
 
 
-# TODO reactivate this test, maybe add person_plan data so more tables are covered
-# Idea_type `ii00170`
-# Attributes:,spark_num,spark_face,moment_rope,otx_time,inx_time
 def test_idea_sheets_to_lynx_with_cursor_Scenario7_NoDuplicates_ii00170(
     temp3_fs, cursor0: Cursor
 ):
