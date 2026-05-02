@@ -276,3 +276,107 @@ def test_etl_heard_raw_tables_to_heard_agg_tables_SQLTEST_Scenario1_FactUnit_Tim
         (fact_lower_otx, fact_lower_inx, fact_upper_otx, fact_upper_inx)
     ]
     assert pfhapx_select_prnfact(cursor0) == [(7777, 7877, 8000, 8100)]
+
+
+def test_etl_heard_raw_tables_to_heard_agg_tables_PopulatesTable_Scenario2_NoDuplicates(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    yao_inx = "Yaoito"
+    spark1 = 1
+    spark2 = 2
+    spark5 = 5
+    spark7 = 7
+    x44_credit = 44
+    x55_credit = 55
+    x22_debt = 22
+    x66_debt = 66
+
+    create_sound_and_heard_tables(cursor0)
+    prncont_h_raw_put_tablename = prime_tbl(kw.person_contactunit, kw.h_raw, "put")
+    print(f"{get_table_columns(cursor0, prncont_h_raw_put_tablename)=}")
+    insert_into_clause = f"""INSERT INTO {prncont_h_raw_put_tablename} (
+  {kw.spark_num}
+, {kw.spark_face}_inx
+, {kw.moment_rope}_inx
+, {kw.person_name}_inx
+, {kw.contact_name}_inx
+, {kw.contact_cred_lumen}
+, {kw.contact_debt_lumen}
+)
+VALUES
+  ({spark1}, '{exx.sue}', '{exx.a23}','{exx.yao}', '{yao_inx}', {x44_credit}, {x22_debt})
+, ({spark2}, '{exx.yao}', '{exx.a23}','{exx.bob}', '{exx.bob}', {x55_credit}, {x22_debt})
+, ({spark5}, '{exx.sue}', '{exx.a23}','{exx.bob}', '{exx.bob}', {x55_credit}, {x22_debt})
+, ({spark7}, '{exx.bob}', '{exx.a23}','{exx.bob}', '{exx.bob}', {x55_credit}, {x66_debt})
+, ({spark7}, '{exx.bob}', '{exx.a23}','{exx.bob}', '{exx.bob}', {x55_credit}, {x66_debt})
+;
+"""
+    cursor0.execute(insert_into_clause)
+    assert get_row_count(cursor0, prncont_h_raw_put_tablename) == 5
+    prncont_h_agg_put_tablename = prime_tbl(kw.person_contactunit, kw.h_agg, "put")
+    assert get_row_count(cursor0, prncont_h_agg_put_tablename) == 0
+    etl_heard_raw_tables_to_heard_agg_tables(cursor0)
+    assert get_row_count(cursor0, prncont_h_agg_put_tablename) == 4
+
+    # WHEN
+    etl_heard_raw_tables_to_heard_agg_tables(cursor0)
+
+    # THEN
+    assert get_row_count(cursor0, prncont_h_agg_put_tablename) == 4
+
+
+def test_etl_heard_raw_tables_to_heard_agg_tables_PopulatesTable_Scenario3_NoDuplicates_NabuableColumns(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    yao_inx = "Yaoito"
+    spark1 = 1
+    spark2 = 2
+    spark5 = 5
+    spark7 = 7
+    x44_quota = 44
+    x55_quota = 55
+    x22_cell_depth = 22
+    btime1 = 777
+    btime2 = 888
+
+    create_sound_and_heard_tables(cursor0)
+    mmtbudd_h_raw_tablename = prime_tbl(kw.moment_budunit, kw.h_raw)
+    print(f"{get_table_columns(cursor0, mmtbudd_h_raw_tablename)=}")
+    insert_into_clause = f"""INSERT INTO {mmtbudd_h_raw_tablename} (
+  {kw.spark_num}
+, {kw.spark_face}_inx
+, {kw.moment_rope}_inx
+, {kw.person_name}_inx
+, {kw.bud_time}
+, {kw.knot}
+, {kw.quota}
+, {kw.celldepth}
+)"""
+    values1_clause = f"""
+VALUES
+  ({spark1}, '{exx.sue}', '{exx.a23}','{exx.yao}', {btime1}, ';', {x44_quota}, {x22_cell_depth})
+, ({spark2}, '{exx.yao}', '{exx.a23}','{exx.bob}', {btime2}, ';', {x55_quota}, {x22_cell_depth})
+;
+"""
+    cursor0.execute(f"{insert_into_clause} {values1_clause}")
+    assert get_row_count(cursor0, mmtbudd_h_raw_tablename) == 2
+    mmtbudd_h_agg_tablename = prime_tbl(kw.moment_budunit, kw.h_agg)
+    assert get_row_count(cursor0, mmtbudd_h_agg_tablename) == 0
+    etl_heard_raw_tables_to_heard_agg_tables(cursor0)
+    cursor0.execute(f"UPDATE {mmtbudd_h_agg_tablename} SET {kw.bud_time}_inx = -333")
+    btime5 = 999
+    values2_clause = f"""
+VALUES
+  ({spark1}, '{exx.sue}', '{exx.a23}','{exx.zia}', {btime5}, ';', {x44_quota}, {x22_cell_depth})
+;
+"""
+    cursor0.execute(f"{insert_into_clause} {values2_clause}")
+    assert get_row_count(cursor0, mmtbudd_h_agg_tablename) == 2
+
+    # WHEN
+    etl_heard_raw_tables_to_heard_agg_tables(cursor0)
+
+    # THEN
+    assert get_row_count(cursor0, mmtbudd_h_agg_tablename) == 3

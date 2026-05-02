@@ -4,6 +4,7 @@ from ch00_py.db_toolbox import (
     create_table_from_columns,
     create_type_reference_insert_sqlstr,
     db_table_exists,
+    delete_all_duplicate_rows,
     get_create_table_sqlstr,
     get_db_tables,
     get_grouping_with_all_values_equal_sql_query,
@@ -32,8 +33,8 @@ from sqlite3 import Connection as sqlite3_Connection, Cursor as sqlite3_Cursor
 
 def etl_idea_dfs_to_ideax_raw_tables(cursor: sqlite3_Cursor, ideas_src_dir: str):
     idea_sqlite_types = get_idea_sqlite_types()
-
-    for ref in get_all_ideafilerefs(ideas_src_dir):
+    ideafilerefs = get_all_ideafilerefs(ideas_src_dir)
+    for ref in ideafilerefs:
         x_file_path = create_path(ref.file_dir, ref.filename)
         df = pandas_read_excel(x_file_path, ref.sheet_name)
         idea_sorting_columns = get_default_sorted_list(set(df.columns))
@@ -56,6 +57,10 @@ def etl_idea_dfs_to_ideax_raw_tables(cursor: sqlite3_Cursor, ideas_src_dir: str)
             _insert_row_into_ideax_raw_table(
                 cursor, x_tablename, column_names, row, idea_sqlite_types
             )
+
+    for ref in ideafilerefs:
+        x_tablename = f"{ref.idea_type}_ideax_raw"
+        delete_all_duplicate_rows(cursor, x_tablename)
 
 
 def _insert_row_into_ideax_raw_table(
@@ -132,6 +137,7 @@ def etl_ideax_raw_tables_to_ideax_agg_tables(conn_or_cursor: sqlite3_Connection)
 {insert_clause_sqlstr}
 {select_sqlstr};"""
             conn_or_cursor.execute(insert_from_select_sqlstr)
+            delete_all_duplicate_rows(conn_or_cursor, agg_tablename)
 
 
 def etl_ideax_agg_tables_to_ideax_vld_tables(conn_or_cursor: sqlite3_Connection):
@@ -165,21 +171,16 @@ def etl_ideax_agg_tables_to_ideax_vld_tables(conn_or_cursor: sqlite3_Connection)
 {select_sqlstr}{join_clause_str}
 """
             conn_or_cursor.execute(insert_select_into_sqlstr)
+            delete_all_duplicate_rows(conn_or_cursor, valid_tablename)
+
+
+def get_create_sparks_ideax_agg_sqlstr() -> str:
+    return "CREATE TABLE IF NOT EXISTS sparks_ideax_agg (idea_type TEXT, spark_num INTEGER, spark_face TEXT, error_message TEXT)"
 
 
 def etl_ideax_agg_tables_to_sparks_ideax_agg_table(conn_or_cursor: sqlite3_Cursor):
+    conn_or_cursor.execute(get_create_sparks_ideax_agg_sqlstr())
     idea_sparks_tablename = "sparks_ideax_agg"
-    if not db_table_exists(conn_or_cursor, idea_sparks_tablename):
-        idea_sparks_columns = [
-            "idea_type",
-            "spark_face",
-            "spark_num",
-            "error_message",
-        ]
-        create_idea_sorted_table(
-            conn_or_cursor, idea_sparks_tablename, idea_sparks_columns
-        )
-
     ideax_agg_tables = {f"{idea}_ideax_agg": idea for idea in get_idea_types()}
     for agg_tablename in get_db_tables(conn_or_cursor):
         if agg_tablename in ideax_agg_tables:
@@ -205,17 +206,18 @@ WHERE spark_num IN (
 ;
 """
     conn_or_cursor.execute(update_error_message_sqlstr)
+    delete_all_duplicate_rows(conn_or_cursor, idea_sparks_tablename)
+
+
+def get_create_sparks_ideax_vld_sqlstr() -> str:
+    return "CREATE TABLE IF NOT EXISTS sparks_ideax_vld (spark_num INTEGER, spark_face TEXT)"
 
 
 def etl_sparks_ideax_agg_table_to_sparks_ideax_vld_table(
     conn_or_cursor: sqlite3_Cursor,
 ):
+    conn_or_cursor.execute(get_create_sparks_ideax_vld_sqlstr())
     valid_sparks_tablename = "sparks_ideax_vld"
-    if not db_table_exists(conn_or_cursor, valid_sparks_tablename):
-        idea_sparks_columns = ["spark_num", "spark_face"]
-        create_idea_sorted_table(
-            conn_or_cursor, valid_sparks_tablename, idea_sparks_columns
-        )
     insert_select_sqlstr = f"""
 INSERT INTO {valid_sparks_tablename} (spark_num, spark_face)
 SELECT spark_num, spark_face 
@@ -224,6 +226,7 @@ WHERE error_message IS NULL
 ;
 """
     conn_or_cursor.execute(insert_select_sqlstr)
+    delete_all_duplicate_rows(conn_or_cursor, valid_sparks_tablename)
 
 
 def etl_sparks_ideax_agg_db_to_spark_dict(
@@ -236,16 +239,6 @@ FROM sparks_ideax_vld
 """
     conn_or_cursor.execute(select_sqlstr)
     return {int(row[0]): row[1] for row in conn_or_cursor.fetchall()}
-
-
-def get_ideax_vld_tables(cursor: sqlite3_Cursor) -> dict[str, str]:
-    possible_ideax_vld_tables = {f"ideax_vld_{idea}": idea for idea in get_idea_types()}
-    active_tables = get_db_tables(cursor)
-    return {
-        active_table: possible_ideax_vld_tables.get(active_table)
-        for active_table in active_tables
-        if active_table in possible_ideax_vld_tables
-    }
 
 
 def get_sound_raw_tablenames(
@@ -289,6 +282,7 @@ def etl_ideax_vld_table_into_prime_table(
 
 
 def etl_ideax_vld_tables_to_sound_raw_tables(cursor: sqlite3_Cursor):
+    all_touched_sound_raw_tables = set()
     create_sound_and_heard_tables(cursor)
     ideax_vld_tablenames = get_db_tables(cursor, "_ideax_vld", "ii")
     for ideax_vld_tablename in ideax_vld_tablenames:
@@ -297,7 +291,11 @@ def etl_ideax_vld_tables_to_sound_raw_tables(cursor: sqlite3_Cursor):
         idearef = get_idearef_from_file(idearef_filename)
         dimens = idearef.get("dimens")
         s_raw_tables = get_sound_raw_tablenames(cursor, dimens, ideax_vld_tablename)
+        all_touched_sound_raw_tables.update(s_raw_tables)
         for sound_raw_table in s_raw_tables:
             etl_ideax_vld_table_into_prime_table(
                 cursor, ideax_vld_tablename, sound_raw_table, idea_type
             )
+
+    for x_sound_raw_table in all_touched_sound_raw_tables:
+        delete_all_duplicate_rows(cursor, x_sound_raw_table)

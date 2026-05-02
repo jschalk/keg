@@ -25,7 +25,12 @@ from ch30_etl_app.etl_gui_tool import (
     get_option_table_options,
 )
 from importlib.metadata import version as metadata_version
-from os.path import isdir as os_path_isdir
+from os import listdir as os_listdir
+from os.path import (
+    isdir as os_path_isdir,
+    isfile as os_path_isfile,
+    join as os_path_join,
+)
 from platform import system as platform_system
 from subprocess import Popen as subprocess_Popen
 from tkinter import (
@@ -131,11 +136,11 @@ class ETLApp(tk_Tk):
 
         # Set a reasonable minimum size and centre on screen
         self.update_idletasks()
-        app_width, app_height = 1280, 760
+        app_width, app_height = 1720, 760
         x = (self.winfo_screenwidth() - app_width) // 2
         y = (self.winfo_screenheight() - app_height) // 2
         self.geometry(f"{app_width}x{app_height}+{x}+{y}")
-        self.resizable(True, True)
+        self.resizable(False, False)
 
         # Holds data after a run: {person: [(moment, [paths])]}
         self._persons_punchs_data: dict = {}
@@ -265,7 +270,7 @@ class ETLApp(tk_Tk):
             relief="flat",
             bd=0,
             width=32,
-            highlightthickness=1,
+            highlightthickness=0,
             highlightbackground=ax.border,
             highlightcolor=ax.accent,
         )
@@ -425,17 +430,17 @@ class ETLApp(tk_Tk):
             pady=6,
         ).pack(fill="x", side="bottom")
 
-        # ── two-column body ──────────────────────
+        # ── three-column body ──────────────────────
         body = tk_Frame(self, bg=ax.bg)
         body.pack(fill=tk_BOTH, expand=True)
         body.columnconfigure(0, weight=0, minsize=640)
-        body.columnconfigure(1, weight=1)
+        body.columnconfigure(1, weight=0, minsize=320)
+        body.columnconfigure(2, weight=1)
         body.rowconfigure(0, weight=1)
 
         # LEFT PANEL ─────────────────────────────
         left = tk_Frame(body, bg=ax.bg, width=640)
         left.grid(row=0, column=0, sticky="nsew")
-        left.pack_propagate(False)
 
         card = tk_Frame(left, bg=ax.bg_card, bd=0, padx=24, pady=20)
         card.pack(fill="x", padx=28, pady=(16, 0))
@@ -462,12 +467,7 @@ class ETLApp(tk_Tk):
         self._run_btn.pack()
 
         options = get_option_table_options()
-        table = OptionTable(
-            left,
-            options,
-            b_src_dir=self._b_src_dir.get,
-            me_personname=self._me_personname.get,
-        )
+        table = OptionTable(left, options, self._b_src_dir.get, self._me_personname.get)
         table.pack(fill=tk_BOTH, expand=True, padx=10, pady=10)
 
         self._run_btn.bind(
@@ -475,13 +475,127 @@ class ETLApp(tk_Tk):
         )
         self._run_btn.bind("<Leave>", lambda _: self._run_btn.configure(bg=ax.accent))
 
-        # VERTICAL DIVIDER ───────────────────────
+        # DIVIDER left|middle ─────────────────────
         tk_Frame(body, bg=ax.border, width=1).grid(row=0, column=0, sticky="nse")
+
+        # MIDDLE PANEL ───────────────────────────
+        middle = tk_Frame(body, bg=ax.bg, width=320)
+        middle.grid(row=0, column=1, sticky="nsew")
+        self._build_excel_panel(middle)
+
+        # DIVIDER middle|right ────────────────────
+        tk_Frame(body, bg=ax.border, width=1).grid(row=0, column=1, sticky="nse")
 
         # RIGHT PANEL ────────────────────────────
         right = tk_Frame(body, bg=ax.bg_card)
-        right.grid(row=0, column=1, sticky="nsew")
+        right.grid(row=0, column=2, sticky="nsew")
         self._build_viewer_panel(right)
+
+    def _build_excel_panel(self, parent):
+        """Middle panel: scrollable list of .xlsx files in the Ideas directory."""
+        ax = get_app_glb_attrs()
+
+        # Header
+        hdr = tk_Frame(parent, bg=ax.bg, pady=12)
+        hdr.pack(fill="x", padx=16)
+
+        tk_Label(
+            hdr,
+            text="IDEAS (xlsx)",
+            font=ax.mono,
+            bg=ax.bg,
+            fg=ax.accent,
+            anchor="w",
+        ).pack(side="left")
+
+        refresh_btn = tk_Button(
+            hdr,
+            text="↺",
+            font=ax.mono,
+            bg=ax.border,
+            fg=ax.fg,
+            activebackground=ax.accent,
+            activeforeground=ax.fg_black,
+            relief="flat",
+            bd=0,
+            padx=8,
+            pady=2,
+            cursor="hand2",
+            command=self._refresh_excel_list,
+        )
+        refresh_btn.pack(side="right")
+
+        tk_Frame(parent, bg=ax.border, height=1).pack(fill="x", padx=16)
+
+        # Treeview
+        tree_frame = tk_Frame(parent, bg=ax.bg)
+        tree_frame.pack(fill=tk_BOTH, expand=True, padx=8, pady=8)
+
+        scrollbar = tkinter_ttk.Scrollbar(tree_frame, orient=tk_VERTICAL)
+        self._excel_tree = tkinter_ttk.Treeview(
+            tree_frame,
+            columns=("filename",),
+            show="headings",
+            selectmode="browse",
+            yscrollcommand=scrollbar.set,
+        )
+        scrollbar.config(command=self._excel_tree.yview)
+        self._excel_tree.heading("filename", text="File")
+        self._excel_tree.column("filename", anchor=tk_W)
+        self._excel_tree.pack(side=tk_LEFT, fill=tk_BOTH, expand=True)
+        scrollbar.pack(side=tk_RIGHT, fill=tk_Y)
+
+        self._excel_tree.bind("<Double-1>", self._on_excel_double_click)
+
+        # Hint
+        self._excel_hint = tk_Label(
+            parent,
+            text="Set IDEAS_DIR then click ↺",
+            font=ax.mono,
+            bg=ax.bg,
+            fg=ax.fg_dim,
+        )
+        self._excel_hint.pack(pady=8)
+
+        # Populate immediately if dir is already set
+        self._i_src_dir.trace_add("write", lambda *_: self._refresh_excel_list())
+        self._refresh_excel_list()
+
+    def _refresh_excel_list(self):
+        """Scan IDEAS_DIR for .xlsx files and populate the tree."""
+        self._excel_tree.delete(*self._excel_tree.get_children())
+        self._excel_paths = {}
+        ideas_dir = self._i_src_dir.get().strip()
+        if not ideas_dir or not os_path_isdir(ideas_dir):
+            self._excel_hint.pack(pady=8)
+            return
+        try:
+            files = sorted(
+                f
+                for f in os_listdir(ideas_dir)
+                if f.lower().endswith(".xlsx")
+                and os_path_isfile(os_path_join(ideas_dir, f))
+            )
+        except OSError:
+            self._excel_hint.pack(pady=8)
+            return
+        if not files:
+            self._excel_hint.configure(text="No .xlsx files found.")
+            self._excel_hint.pack(pady=8)
+            return
+        self._excel_hint.pack_forget()
+        for fname in files:
+            iid = self._excel_tree.insert("", tk_END, values=(fname,))
+            self._excel_paths[iid] = os_path_join(ideas_dir, fname)
+
+    def _on_excel_double_click(self, _event):
+        """Open the selected Excel file with the default application."""
+        selected = self._excel_tree.selection()
+        if not selected:
+            return
+        path = self._excel_paths.get(selected[0])
+        if path and os_path_isfile(path):
+            subprocess_Popen(["cmd", "/c", "start", "", path], shell=False)
 
     def _build_viewer_panel(self, parent):
         """Build the right-side punch file viewer."""
@@ -592,14 +706,12 @@ class ETLApp(tk_Tk):
         self._punch_text.pack(side=tk_LEFT, fill=tk_BOTH, expand=True)
 
         # Hint label when empty
+        punch_files_str = "Run the pipeline to load punch files."
         self._viewer_hint = tk_Label(
-            parent,
-            text="Run the pipeline to load punch files.",
-            font=ax.mono,
-            bg=ax.bg_card,
-            fg=ax.fg_dim,
+            parent, text=punch_files_str, font=ax.mono, bg=ax.bg_card, fg=ax.fg_dim
         )
-        self._viewer_hint.place(relx=0.5, rely=0.55, anchor="center")
+        # self._viewer_hint.place(relx=0.5, rely=0.55, anchor="center")
+        self._viewer_hint.pack(pady=20)
 
     # ── viewer helpers ─────────────────────────
     def _populate_viewer(self, persons_punchs: dict):
@@ -614,7 +726,8 @@ class ETLApp(tk_Tk):
         if names:
             self._person_combo.current(0)
             self._on_person_selected(None)
-            self._viewer_hint.place_forget()
+            # self._viewer_hint.place_forget()
+            self._viewer_hint.pack_forget()
 
     def _on_person_selected(self, _event):
         person = self._person_var.get()

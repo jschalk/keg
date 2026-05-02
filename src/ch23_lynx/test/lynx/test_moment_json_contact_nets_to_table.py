@@ -45,7 +45,7 @@ def test_insert_tranunit_contacts_net_PopulatesDatabase(cursor0: Cursor):
     ]
 
 
-def test_etl_moment_json_contact_nets_to_moment_contact_nets_table_PopulatesDatabase(
+def test_etl_moment_json_contact_nets_to_moment_contact_nets_table_Scenario0_Basic(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -81,3 +81,34 @@ def test_etl_moment_json_contact_nets_to_moment_contact_nets_table_PopulatesData
         (exx.a23, exx.bob, t55_bob_amount),
         (exx.a23, exx.yao, t55_yao_amount + t66_yao_amount + t77_yao_amount),
     ]
+
+
+def test_etl_moment_json_contact_nets_to_moment_contact_nets_table_Scenario1_NoDuplicates(
+    temp3_fs, cursor0: Cursor
+):
+    # ESTABLISH
+    mstr_dir = str(temp3_fs)
+    a23_moment = momentunit_shop(exx.a23, mstr_dir)
+    t55_tran_time = 5505
+    t55_yao_amount = -55
+    t55_bob_amount = 600
+    t66_tran_time = 6606
+    t66_yao_amount = -66
+    t77_tran_time = 7707
+    t77_yao_amount = -77
+    a23_moment.add_paypurchase(exx.sue, exx.yao, t55_tran_time, t55_yao_amount)
+    a23_moment.add_paypurchase(exx.sue, exx.yao, t66_tran_time, t66_yao_amount)
+    a23_moment.add_paypurchase(exx.sue, exx.bob, t55_tran_time, t55_bob_amount)
+    a23_moment.add_paypurchase(exx.yao, exx.yao, t77_tran_time, t77_yao_amount)
+    a23_lasso = lassounit_shop(exx.a23)
+    a23_json_path = create_moment_json_path(mstr_dir, a23_lasso)
+    save_json(a23_json_path, None, a23_moment.to_dict())
+
+    moment_contact_nets_tablename = kw.moment_contact_nets
+    assert not db_table_exists(cursor0, moment_contact_nets_tablename)
+    etl_moment_json_contact_nets_to_moment_contact_nets_table(cursor0, mstr_dir)
+    assert get_row_count(cursor0, moment_contact_nets_tablename) == 2
+    # WHEN
+    etl_moment_json_contact_nets_to_moment_contact_nets_table(cursor0, mstr_dir)
+    # THEN
+    assert get_row_count(cursor0, moment_contact_nets_tablename) == 2

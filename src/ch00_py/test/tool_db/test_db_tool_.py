@@ -12,6 +12,7 @@ from ch00_py.db_toolbox import (
     create_type_reference_insert_sqlstr,
     create_update_inconsistency_error_query,
     db_table_exists,
+    delete_all_duplicate_rows,
     dict_shop,
     get_db_tables,
     get_groupby_sql_query,
@@ -22,6 +23,7 @@ from ch00_py.db_toolbox import (
     required_columns_exist,
     rowdata_shop,
     sqlite_obj_str,
+    table_has_duplicates,
 )
 from ch00_py.file_toolbox import create_path, delete_dir, set_dir
 from pandas import NA as pandas_NA
@@ -33,6 +35,23 @@ from sqlite3 import (
     connect as sqlite3_connect,
     sqlite_version as sqlite3_sqlite_version,
 )
+
+
+def print_table(cursor: Cursor, table_name: str) -> None:
+    # Get column names
+    cursor.execute(f"PRAGMA table_info({table_name})")
+    columns_info = cursor.fetchall()
+    column_names = [col[1] for col in columns_info]
+
+    # Print column headers
+    print(" | ".join(column_names))
+
+    # Fetch and print rows
+    cursor.execute(f"SELECT * FROM {table_name}")
+    rows = cursor.fetchall()
+
+    for row in rows:
+        print(" | ".join(str(value) for value in row))
 
 
 def test_sqlite_obj_str_ReturnsObj():
@@ -1248,3 +1267,266 @@ def test_get_db_tables_ReturnsObj_Scenario2_TablenamesStartWithString(cursor0: C
     # WHEN / THEN
     assert get_db_tables(cursor0, "2") == {x_table2: 1, x_table3: 1}
     assert get_db_tables(cursor0, "2", "side") == {x_table2: 1}
+
+
+def test_delete_all_duplicate_rows_Scenario0_DeleteAllDuplicateRowsBasic(
+    cursor0: Cursor,
+):
+    # ESTABLISH:
+    cursor0.execute("""
+        CREATE TABLE side1 (
+            name TEXT,
+            age INTEGER
+        )
+    """)
+    cursor0.executemany(
+        "INSERT INTO side1 (name, age) VALUES (?, ?)",
+        [
+            ("Alice", 30),
+            ("Alice", 30),
+            ("Bob", 25),
+            ("Bob", 25),
+        ],
+    )
+    # WHEN
+    delete_all_duplicate_rows(cursor0, "side1")
+    # THEN
+    cursor0.execute("SELECT name, age FROM side1")
+    rows = sorted(cursor0.fetchall())
+
+    assert rows == [("Alice", 30), ("Bob", 25)]
+
+
+def test_delete_all_duplicate_rows_Scenario1_PartialDuplicatesNotRemoved(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    cursor0.execute("""
+        CREATE TABLE side1 (
+            name TEXT,
+            age INTEGER
+        )
+    """)
+    cursor0.executemany(
+        "INSERT INTO side1 (name, age) VALUES (?, ?)",
+        [
+            ("Alice", 30),
+            ("Alice", 31),  # different row → should stay
+        ],
+    )
+    # WHEN
+    delete_all_duplicate_rows(cursor0, "side1")
+    # THEN
+    cursor0.execute("SELECT COUNT(*) FROM side1")
+    count = cursor0.fetchone()[0]
+
+    assert count == 2
+
+
+def test_delete_all_duplicate_rows_Scenario2_SingleRowUnchanged(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    # DELETE
+    cursor0.execute("""
+        CREATE TABLE side1 (
+            name TEXT,
+            age INTEGER
+        )
+    """)
+
+    cursor0.execute("INSERT INTO side1 (name, age) VALUES (?, ?)", ("Alice", 30))
+    # WHEN
+    delete_all_duplicate_rows(cursor0, "side1")
+    # THEN
+    cursor0.execute("SELECT COUNT(*) FROM side1")
+    assert cursor0.fetchone()[0] == 1
+
+
+def test_delete_all_duplicate_rows_Scenario3_InvalidTableName(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    cursor0.execute("""
+        CREATE TABLE side1 (
+            name TEXT,
+            age INTEGER
+        )
+    """)
+    # WHEN / THEN
+    with pytest_raises(ValueError):
+        delete_all_duplicate_rows(cursor0, "bad;drop table x;")
+
+
+def test_delete_all_duplicate_rows_Scenario4_NonexistentTable(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    cursor0.execute("""
+        CREATE TABLE side1 (
+            name TEXT,
+            age INTEGER
+        )
+    """)
+    # WHEN / THEN
+    with pytest_raises(ValueError):
+        delete_all_duplicate_rows(cursor0, "does_not_exist")
+
+
+def test_delete_all_duplicate_rows_ReturnsNone_Scenario5_IgnorePostfix_RemovesDuplicatesBasedOnRemainingColumns(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    cursor0.execute(
+        """CREATE TABLE test_table (col1 TEXT, col2 TEXT, col3_ignore TEXT);"""
+    )
+    # col3_ignore differs, but should be ignored → duplicates collapse
+    rows = [
+        ("a", "b", "x"),
+        ("a", "b", "y"),  # duplicate when ignoring postfix column
+        ("c", "d", "z"),
+    ]
+    insert_sqlstr = "INSERT INTO test_table (col1, col2, col3_ignore) VALUES (?, ?, ?);"
+    cursor0.executemany(insert_sqlstr, rows)
+    # WHEN
+    delete_all_duplicate_rows(cursor0, "test_table", exclude_postfix="_ignore")
+    # THEN
+    cursor0.execute("SELECT col1, col2, col3_ignore FROM test_table ORDER BY rowid;")
+    result = cursor0.fetchall()
+    assert len(result) == 2
+    assert ("a", "b", "x") in result or ("a", "b", "y") in result
+    assert ("c", "d", "z") in result
+
+
+def test_delete_all_duplicate_rows_ReturnsNone_Scenario6_IgnorePostfix_KeepsDistinctRowsWhenCoreColumnsDiffer(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    cursor0.execute(
+        """CREATE TABLE test_table (col1 TEXT, col2 TEXT, col3_ignore TEXT);"""
+    )
+    # col1 differs → NOT duplicates even if postfix column matches
+    rows = [
+        ("a", "b", "x"),
+        ("c", "b", "x"),
+    ]
+    insert_sqlstr = "INSERT INTO test_table (col1, col2, col3_ignore) VALUES (?, ?, ?);"
+    cursor0.executemany(insert_sqlstr, rows)
+    # WHEN
+    delete_all_duplicate_rows(cursor0, "test_table", exclude_postfix="_ignore")
+    # THEN
+    cursor0.execute("SELECT col1, col2, col3_ignore FROM test_table ORDER BY rowid;")
+    result = cursor0.fetchall()
+    assert len(result) == 2
+    assert ("a", "b", "x") in result
+    assert ("c", "b", "x") in result
+
+
+def test_delete_all_duplicate_rows_ReturnsNone_Scenario7_IgnorePostfix_AllColumnsExcluded_RaisesValueError(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    cursor0.execute("""
+        CREATE TABLE test_table (
+            col1_ignore TEXT,
+            col2_ignore TEXT
+        );
+        """)
+    # WHEN / THEN
+    with pytest_raises(ValueError, match="No columns left to group by"):
+        delete_all_duplicate_rows(cursor0, "test_table", exclude_postfix="_ignore")
+
+
+def test_table_has_duplicates_ReturnsObj_Scenario1_EmptyTable(cursor0: Cursor):
+    # ESTABLISH
+    cursor0.execute("CREATE TABLE test (a INTEGER, b TEXT)")
+    # WHEN / THEN
+    assert table_has_duplicates(cursor0, "test") is False
+
+
+def test_table_has_duplicates_ReturnsObj_Scenario2_SingleRow(cursor0: Cursor):
+    # ESTABLISH
+    cursor0.execute("CREATE TABLE test (a INTEGER, b TEXT)")
+    cursor0.execute("INSERT INTO test (a, b) VALUES (1, 'x')")
+    # WHEN / THEN
+    assert table_has_duplicates(cursor0, "test") is False
+
+
+def test_table_has_duplicates_ReturnsObj_Scenario3_MultipleUniqueRows(cursor0: Cursor):
+    # ESTABLISH
+    cursor0.execute("CREATE TABLE test (a INTEGER, b TEXT)")
+    cursor0.executemany(
+        "INSERT INTO test (a, b) VALUES (?, ?)",
+        [(1, "x"), (2, "y"), (3, "z")],
+    )
+    # WHEN / THEN
+    assert table_has_duplicates(cursor0, "test") is False
+
+
+def test_table_has_duplicates_ReturnsObj_Scenario4_ExactDuplicateRows(cursor0: Cursor):
+    # ESTABLISH
+    cursor0.execute("CREATE TABLE test (a INTEGER, b TEXT)")
+    cursor0.executemany(
+        "INSERT INTO test (a, b) VALUES (?, ?)",
+        [(1, "x"), (1, "x")],
+    )
+    # WHEN / THEN
+    assert table_has_duplicates(cursor0, "test") is True
+
+
+def test_table_has_duplicates_ReturnsObj_Scenario5_PartialDuplicateRows(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    cursor0.execute("CREATE TABLE test (a INTEGER, b TEXT)")
+    cursor0.executemany(
+        "INSERT INTO test (a, b) VALUES (?, ?)",
+        [(1, "x"), (1, "y")],
+    )
+    # WHEN / THEN
+    assert table_has_duplicates(cursor0, "test") is False
+
+
+def test_table_has_duplicates_ReturnsObj_Scenario6_MultipleDuplicateGroups(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    cursor0.execute("CREATE TABLE test (a INTEGER, b TEXT)")
+    cursor0.executemany(
+        "INSERT INTO test (a, b) VALUES (?, ?)",
+        [
+            (1, "x"),
+            (1, "x"),
+            (2, "y"),
+            (2, "y"),
+        ],
+    )
+    # WHEN / THEN
+    assert table_has_duplicates(cursor0, "test") is True
+
+
+def test_table_has_duplicates_ReturnsObj_Scenario7_NullValueDuplicates(cursor0: Cursor):
+    # ESTABLISH
+    cursor0.execute("CREATE TABLE test (a INTEGER, b TEXT)")
+    cursor0.executemany(
+        "INSERT INTO test (a, b) VALUES (?, ?)",
+        [
+            (None, "x"),
+            (None, "x"),
+        ],
+    )
+    # WHEN / THEN
+    assert table_has_duplicates(cursor0, "test") is True
+
+
+def test_table_has_duplicates_ReturnsObj_Scenario8_SingleColumnDuplicates(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    cursor0.execute("CREATE TABLE test (a INTEGER)")
+    cursor0.executemany(
+        "INSERT INTO test (a) VALUES (?)",
+        [(1,), (2,), (2,)],
+    )
+    # WHEN / THEN
+    assert table_has_duplicates(cursor0, "test") is True

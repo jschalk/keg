@@ -2,7 +2,6 @@ from ch00_py.file_toolbox import create_path
 from ch04_rope.rope import create_rope
 from ch09_person_lesson.lasso import lassounit_shop
 from ch18_etl_config._ref.ch18_path import (
-    create_belief0001_path,
     create_beliefs_dir_path,
     create_beliefs_person_dir_path,
     create_last_run_metrics_path,
@@ -15,19 +14,17 @@ from inspect import getdoc as inspect_getdoc
 from pytest import mark as pytest_mark
 from ref.keywords import Ch18Keywords as kw, ExampleStrs as exx
 
-BELIEF0001_FILENAME = "belief0001.xlsx"
 MOMENT_OTE1_AGG_CSV_FILENAME = "moment_ote1_agg.csv"
 MOMENT_OTE1_AGG_JSON_FILENAME = "moment_ote1_agg.json"
 LAST_RUN_METRICS_JSON_FILENAME = "last_run_metrics.json"
 WORLD_DB_FILENAME = "world.db"
 
 
-def test_a18_path_constants_ReturnsObj():
+def test_ch18_path_constants_ReturnsObj():
     # ESTABLISH / WHEN / THEN
     assert MOMENT_OTE1_AGG_CSV_FILENAME == "moment_ote1_agg.csv"
     assert MOMENT_OTE1_AGG_JSON_FILENAME == "moment_ote1_agg.json"
     assert LAST_RUN_METRICS_JSON_FILENAME == "last_run_metrics.json"
-    assert BELIEF0001_FILENAME == "belief0001.xlsx"
     assert WORLD_DB_FILENAME == "world.db"
 
 
@@ -89,18 +86,6 @@ def test_create_beliefs_person_dir_path_ReturnsObj(temp3_dir):
     assert gen_bob_belief_dir == expected_bob_belief_dir
 
 
-def test_create_belief0001_path_ReturnsObj(temp3_dir):
-    # ESTABLISH
-    output_dir = temp3_dir
-
-    # WHEN
-    gen_belief0001_xlsx_path = create_belief0001_path(output_dir)
-
-    # THEN
-    expected_belief0001_path = create_path(output_dir, BELIEF0001_FILENAME)
-    assert gen_belief0001_xlsx_path == expected_belief0001_path
-
-
 @pytest_mark.skip_on_linux
 def test_create_last_run_metrics_path_HasDocString():
     # ESTABLISH
@@ -128,15 +113,6 @@ def test_create_beliefs_person_dir_path_HasDocString():
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
     assert inspect_getdoc(create_beliefs_person_dir_path) == doc_str
-
-
-@pytest_mark.skip_on_linux
-def test_create_belief0001_path_HasDocString():
-    # ESTABLISH
-    doc_str = create_belief0001_path(output_dir="output_dir")
-    doc_str = f"Returns path: {doc_str}"
-    # WHEN / THEN
-    assert inspect_getdoc(create_belief0001_path) == doc_str
 
 
 def test_create_moment_ote1_csv_path_ReturnsObj(temp3_dir):

@@ -11,7 +11,7 @@ from sqlite3 import Cursor
 # get examples from tests from etl_ideax_agg_dfs_to_translate_rope_raw
 
 
-def test_etl_ideax_vld_tables_to_sound_raw_tables_PopulatesValidTable_Scenario0_Only_valid_sparks(
+def test_etl_ideax_vld_tables_to_sound_raw_tables_PopulatesTable_Scenario0_Only_valid_sparks(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -127,3 +127,61 @@ VALUES
     ex_row_b1 = (b117, 1, exx.sue, exx.a23, exx.bob, exx.bob, None, None, ";", None)
     assert rows[0] == ex_row_b0
     assert rows == [ex_row_b0, ex_row_b1]
+
+
+def test_etl_ideax_vld_tables_to_sound_raw_tables_PopulatesTable_Scenario1_NoDuplicates(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    yao_inx = "Yaoito"
+    bob_inx = "Bobito"
+    spark1 = 1
+    ii00174_valid_tablename = f"ii00174_{kw.ideax_vld}"
+    ii00174_columns = [
+        kw.spark_num,
+        kw.spark_face,
+        kw.moment_rope,
+        kw.person_name,
+        kw.contact_name,
+        kw.otx_rope,
+        kw.inx_rope,
+        kw.knot,
+    ]
+    create_idea_sorted_table(cursor0, ii00174_valid_tablename, set(ii00174_columns))
+    insert_into_clause = f"""INSERT INTO {ii00174_valid_tablename} (
+  {kw.spark_num}
+, {kw.spark_face}
+, {kw.moment_rope}
+, {kw.person_name}
+, {kw.contact_name}
+, {kw.otx_rope}
+, {kw.inx_rope}
+, {kw.knot}
+)"""
+    values_clause = f"""
+VALUES
+  ({spark1}, '{exx.sue}', '{exx.a23}', '{exx.bob}', '{exx.yao}', '{exx.yao}', '{yao_inx}', ';')
+, ({spark1}, '{exx.sue}', '{exx.a23}', '{exx.bob}', '{exx.bob}', '{exx.bob}', '{bob_inx}', ';')
+;
+"""
+    cursor0.execute(f"{insert_into_clause} {values_clause}")
+    assert get_row_count(cursor0, ii00174_valid_tablename) == 2
+    trlrope_s_raw_tablename = create_prime_tablename("TRLROPE", kw.s_raw)
+    prncont_put_s_raw_tblname = create_prime_tablename("PRNCONT", kw.s_raw, "put")
+    etl_ideax_vld_tables_to_sound_raw_tables(cursor0)
+    spark2 = 2
+    values2_clause = f"""
+VALUES
+  ({spark2}, '{exx.sue}', '{exx.a23}', '{exx.bob}', '{exx.yao}', '{exx.yao}', '{yao_inx}', ';')
+;
+"""
+    cursor0.execute(f"{insert_into_clause} {values2_clause}")
+    assert get_row_count(cursor0, trlrope_s_raw_tablename) == 2
+    assert get_row_count(cursor0, prncont_put_s_raw_tblname) == 2
+
+    # WHEN
+    etl_ideax_vld_tables_to_sound_raw_tables(cursor0)
+
+    # THEN
+    assert get_row_count(cursor0, trlrope_s_raw_tablename) == 3
+    assert get_row_count(cursor0, prncont_put_s_raw_tblname) == 3

@@ -5,7 +5,7 @@
   "CRUD_command": {"exam_tier": 0, "init_chapter": "ch08", "semantic_type": "str"}, 
   "Chiday": {"exam_tier": 0, "init_chapter": "ch13"}, 
   "ContactName": {"exam_tier": 0, "init_chapter": "ch02", "semantic_type": "str"}, 
-  "DELETE": {"exam_tier": 0, "init_chapter": "ch08"}, 
+  "DELETE": {"exam_tier": 0, "init_chapter": "ch00"}, 
   "Danceday": {"exam_tier": 0, "init_chapter": "ch13"}, 
   "DayEvent": {"exam_tier": 3, "init_chapter": "ch25"}, 
   "Eastday": {"exam_tier": 0, "init_chapter": "ch13"}, 

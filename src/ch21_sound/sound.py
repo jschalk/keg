@@ -1,5 +1,6 @@
 from ch00_py.db_toolbox import (
     create_update_inconsistency_error_query,
+    delete_all_duplicate_rows,
     get_table_columns,
 )
 from ch04_rope.rope import default_knot_if_None
@@ -30,6 +31,7 @@ from ch18_etl_config.etl_sqlstr import (
     get_insert_into_heard_raw_sqlstrs,
     get_insert_into_sound_vld_sqlstrs,
     get_moment_person_sound_agg_tablenames,
+    get_prime_create_table_sqlstrs,
 )
 from copy import copy as copy_copy
 from sqlite3 import Cursor as sqlite3_Cursor
@@ -46,6 +48,13 @@ def insert_sound_raw_selects_into_sound_agg_tables(cursor: sqlite3_Cursor):
         sqlstrs = create_sound_agg_insert_sqlstrs(cursor, dimen)
         for sqlstr in sqlstrs:
             cursor.execute(sqlstr)
+    _delete_all_duplicate_rows_in_s_agg_tables(cursor)
+
+
+def _delete_all_duplicate_rows_in_s_agg_tables(cursor: sqlite3_Cursor):
+    for prime_tablename in get_prime_create_table_sqlstrs().keys():
+        if prime_tablename.endswith("s_agg"):
+            delete_all_duplicate_rows(cursor, prime_tablename)
 
 
 def etl_sound_raw_tables_to_sound_agg_tables(cursor: sqlite3_Cursor):
@@ -55,8 +64,8 @@ def etl_sound_raw_tables_to_sound_agg_tables(cursor: sqlite3_Cursor):
 
 def insert_translate_sound_agg_into_translate_core_raw_table(cursor: sqlite3_Cursor):
     for dimen in get_translates_column_ref():
-        if dimen != "translate_epoch":
-            cursor.execute(create_insert_into_translate_core_raw_sqlstr(dimen))
+        cursor.execute(create_insert_into_translate_core_raw_sqlstr(dimen))
+    delete_all_duplicate_rows(cursor, create_prime_tablename("trlcore", "s_raw"))
 
 
 def insert_translate_core_agg_to_translate_core_vld_table(cursor: sqlite3_Cursor):
@@ -64,6 +73,7 @@ def insert_translate_core_agg_to_translate_core_vld_table(cursor: sqlite3_Cursor
     unknown = default_unknown_str_if_None()
     insert_sqlstr = create_insert_translate_core_agg_into_vld_sqlstr(knot, unknown)
     cursor.execute(insert_sqlstr)
+    delete_all_duplicate_rows(cursor, create_prime_tablename("trlcore", "s_vld"))
 
 
 def update_inconsistency_translate_core_raw_table(cursor: sqlite3_Cursor):
@@ -91,6 +101,7 @@ WHERE error_message IS NULL
 GROUP BY spark_face
 """
     cursor.execute(sqlstr)
+    delete_all_duplicate_rows(cursor, translate_core_s_agg_tablename)
 
 
 def update_translate_sound_agg_inconsist_errors(cursor: sqlite3_Cursor):
@@ -109,8 +120,8 @@ def insert_translate_sound_agg_tables_to_translate_sound_vld_table(
     cursor: sqlite3_Cursor,
 ):
     for dimen in get_translates_column_ref():
-        if dimen != "translate_epoch":
-            cursor.execute(create_insert_translate_sound_vld_table_sqlstr(dimen))
+        cursor.execute(create_insert_translate_sound_vld_table_sqlstr(dimen))
+        delete_all_duplicate_rows(cursor, create_prime_tablename(dimen, "s_vld"))
 
 
 def set_moment_person_sound_agg_knot_errors(cursor: sqlite3_Cursor):
@@ -176,10 +187,12 @@ def etl_translate_sound_agg_tables_to_translate_sound_vld_tables(
 
 
 def etl_sound_agg_tables_to_sound_vld_tables(cursor: sqlite3_Cursor):
-    for sqlstr in get_insert_into_sound_vld_sqlstrs().values():
+    for sound_vld_tablename, sqlstr in get_insert_into_sound_vld_sqlstrs().items():
         cursor.execute(sqlstr)
+        delete_all_duplicate_rows(cursor, sound_vld_tablename)
 
 
 def etl_sound_vld_tables_to_heard_raw_tables(cursor: sqlite3_Cursor):
-    for sqlstr in get_insert_into_heard_raw_sqlstrs().values():
+    for h_raw_tablename, sqlstr in get_insert_into_heard_raw_sqlstrs().items():
         cursor.execute(sqlstr)
+        delete_all_duplicate_rows(cursor, h_raw_tablename, exclude_postfix="_inx")

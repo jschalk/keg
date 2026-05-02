@@ -1,9 +1,7 @@
 from ch00_py.file_toolbox import create_path, set_dir
 from ch17_idea.idea_db_tool import get_sheet_names, save_sheet
-from ch18_etl_config._ref.ch18_path import (
-    create_belief0001_path,
-    create_beliefs_dir_path,
-)
+from ch18_etl_config._ref.ch18_path import create_beliefs_dir_path
+from ch24_belief_dst._ref.ch24_path import create_belief0001_path
 from ch26_world.world import create_beliefs, idea_sheets_to_lynx_mstr, worlddir_shop
 from os.path import exists as os_path_exists
 from pandas import DataFrame, read_excel as pandas_read_excel

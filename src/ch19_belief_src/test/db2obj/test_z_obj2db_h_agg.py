@@ -33,7 +33,7 @@ from ch19_belief_src.obj2db_person import (
     insert_h_agg_prnunit,
 )
 from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
-from sqlite3 import Cursor, connect as sqlite3_connect
+from sqlite3 import Cursor
 
 
 def test_insert_h_agg_prnunit_CreatesTableRowsFor_personunit_h_agg(cursor0: Cursor):

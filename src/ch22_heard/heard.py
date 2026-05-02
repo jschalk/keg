@@ -1,4 +1,8 @@
-from ch00_py.db_toolbox import get_row_count, get_table_columns
+from ch00_py.db_toolbox import (
+    delete_all_duplicate_rows,
+    get_row_count,
+    get_table_columns,
+)
 from ch00_py.file_toolbox import get_level1_dirs, save_file, save_json
 from ch04_rope.rope import create_rope
 from ch09_person_lesson._ref.ch09_path import (
@@ -80,14 +84,16 @@ def set_heard_raw_inx_column(
 
 def etl_heard_raw_tables_to_heard_agg_tables(cursor: sqlite3_Cursor):
     set_all_heard_raw_inx_columns(cursor)
-    for insert_heard_agg_sqlstr in get_insert_heard_agg_sqlstrs().values():
-        cursor.execute(insert_heard_agg_sqlstr)
+    for h_agg_tablename, insert_h_agg_sqlstr in get_insert_heard_agg_sqlstrs().items():
+        cursor.execute(insert_h_agg_sqlstr)
+        delete_all_duplicate_rows(cursor, h_agg_tablename, exclude_postfix="_inx")
     update_heard_agg_timenum_columns(cursor)
 
 
 def etl_heard_agg_tables_to_heard_vld_tables(cursor: sqlite3_Cursor):
-    for insert_heard_vld_sqlstr in get_insert_heard_vld_sqlstrs().values():
-        cursor.execute(insert_heard_vld_sqlstr)
+    for h_vld_tablename, insert_h_vld_sqlstr in get_insert_heard_vld_sqlstrs().items():
+        cursor.execute(insert_h_vld_sqlstr)
+        delete_all_duplicate_rows(cursor, h_vld_tablename)
 
 
 def etl_heard_vld_tables_to_moment_jsons(cursor: sqlite3_Cursor, moment_mstr_dir: str):
@@ -105,6 +111,7 @@ def etl_heard_raw_tables_to_moment_ote1_agg(conn_or_cursor: sqlite3_Connection):
     """Create Database Table that holds all spark_num to bud_time pairs. Include moment_rope and person_name"""
     conn_or_cursor.execute(CREATE_MOMENT_OTE1_AGG_SQLSTR)
     conn_or_cursor.execute(INSERT_MOMENT_OTE1_AGG_FROM_HEARD_SQLSTR)
+    delete_all_duplicate_rows(conn_or_cursor, "moment_ote1_agg")
 
 
 def etl_moment_ote1_agg_table_to_moment_ote1_agg_csvs(

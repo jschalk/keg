@@ -1,5 +1,5 @@
 from ch00_py.csv_toolbox import open_csv_with_types
-from ch00_py.db_toolbox import get_db_tables
+from ch00_py.db_toolbox import delete_all_duplicate_rows, get_db_tables
 from ch00_py.file_toolbox import (
     create_path,
     get_level1_dirs,
@@ -252,7 +252,7 @@ def etl_lynx_guts_to_lynx_jobs(moment_mstr_dir: str):
 
 
 def etl_lynx_job_jsons_to_job_tables(cursor: sqlite3_Cursor, moment_mstr_dir: str):
-    create_job_tables(cursor)
+    job_tablenames = create_job_tables(cursor)
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):
         moment_rope = create_rope(moment_label)
@@ -262,6 +262,8 @@ def etl_lynx_job_jsons_to_job_tables(cursor: sqlite3_Cursor, moment_mstr_dir: st
         for person_name in get_level1_dirs(persons_dir):
             job_obj = open_job_file(moment_mstr_dir, moment_lasso, person_name)
             insert_job_obj(cursor, job_obj)
+    for job_tablename in job_tablenames:
+        delete_all_duplicate_rows(cursor, job_tablename)
 
 
 CREATE_MOMENT_CONTACT_NETS_SQLSTR = "CREATE TABLE IF NOT EXISTS moment_contact_nets (moment_rope TEXT, person_name TEXT, person_net_amount REAL)"
@@ -292,6 +294,7 @@ def etl_moment_json_contact_nets_to_moment_contact_nets_table(
         x_momentunit = open_moment_file(moment_mstr_dir, moment_lasso)
         x_momentunit.set_all_tranbook()
         insert_tranunit_contacts_net(cursor, x_momentunit.all_tranbook)
+    delete_all_duplicate_rows(cursor, "moment_contact_nets")
 
 
 def create_last_run_metrics_json(cursor: sqlite3_Cursor, moment_mstr_dir: str):

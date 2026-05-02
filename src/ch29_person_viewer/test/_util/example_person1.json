@@ -112,15 +112,15 @@
         "Maria Reynolds": {"group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "Maria Reynolds"}
       }
     }, 
-    "Martha Doubs": {
+    "Martha Tanner": {
       "contact_cred_lumen": 1, 
       "contact_debt_lumen": 1, 
-      "contact_name": "Martha Doubs", 
+      "contact_name": "Martha Tanner", 
       "memberships": {
         ";ACME DevOps" : { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": ";ACME DevOps"  }, 
         ";ACME General": { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": ";ACME General" }, 
         ";Everyone"    : { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": ";Everyone"     }, 
-        "Martha Doubs" : { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "Martha Doubs"  }
+        "Martha Tanner": { "group_cred_lumen": 1, "group_debt_lumen": 1, "group_title": "Martha Tanner" }
       }
     }, 
     "Mikayla": {

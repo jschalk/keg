@@ -5,7 +5,7 @@ from ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 
 
-def test_etl_ideax_raw_tables_to_ideax_agg_tables_PopulatesAggTable_Scenario0_GroupByWorks(
+def test_etl_ideax_raw_tables_to_ideax_agg_tables_PopulatesAggTable_Scenario0_GroupByWorks_ii00103(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -214,3 +214,80 @@ ORDER BY {kw.spark_num}, {kw.cumulative_minute};"""
     print(f"   {row0=}")
     assert rows[0] == row0
     assert rows[1] == row1
+
+
+def test_etl_ideax_raw_tables_to_ideax_agg_tables_PopulatesAggTable_Scenario3_TableDeleteBeforeLoad(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    spark1 = 1
+    raw_ii00105_tablename = f"ii00105_{kw.ideax_raw}"
+    raw_ii00105_columns = [
+        kw.spark_num,
+        kw.spark_face,
+        kw.moment_rope,
+        kw.weekday_order,
+        kw.weekday_label,
+        kw.knot,
+        kw.error_message,
+    ]
+    create_idea_sorted_table(cursor0, raw_ii00105_tablename, raw_ii00105_columns)
+    insert_into_clause = f"""INSERT INTO {raw_ii00105_tablename} (
+  {kw.spark_num}
+, {kw.spark_face}
+, {kw.moment_rope}
+, {kw.weekday_order}
+, {kw.weekday_label}
+, {kw.knot}
+, {kw.error_message}
+)"""
+    values_clause = f"""
+VALUES     
+  ('{spark1}', '{exx.sue}', '{exx.a23}', 0, '{exx.Wednesday}', ';', NULL)
+, ('{spark1}', '{exx.sue}', '{exx.a23}', 0, '{exx.Wednesday}', ';', NULL)
+, ('{spark1}', '{exx.sue}', '{exx.a23}', 1, '{exx.Thursday}', ';', NULL)
+, ('{spark1}', '{exx.sue}', '{exx.a23}', 3, '{exx.Saturday}', ';', NULL)
+;
+"""
+    insert_sqlstr = f"{insert_into_clause} {values_clause}"
+    cursor0.execute(insert_sqlstr)
+    agg_ii00105_tablename = f"ii00105_{kw.ideax_agg}"
+    assert get_row_count(cursor0, raw_ii00105_tablename) == 4
+    assert not db_table_exists(cursor0, agg_ii00105_tablename)
+    etl_ideax_raw_tables_to_ideax_agg_tables(cursor0)
+    assert get_row_count(cursor0, agg_ii00105_tablename) == 3
+    values2_clause = f"""
+VALUES     
+  ('{spark1}', '{exx.sue}', '{exx.a23}', 0, '{exx.Wednesday}', ';', NULL)
+, ('{spark1}', '{exx.sue}', '{exx.a23}', 0, '{exx.Wednesday}', ';', NULL)
+, ('{spark1}', '{exx.sue}', '{exx.a23}', 1, '{exx.Thursday}', ';', NULL)
+, ('{spark1}', '{exx.sue}', '{exx.a23}', 2, '{exx.Friday}', ';', NULL)
+;
+"""
+    cursor0.execute(f"{insert_into_clause} {values2_clause}")
+    assert get_row_count(cursor0, agg_ii00105_tablename) == 3
+
+    # WHEN
+    etl_ideax_raw_tables_to_ideax_agg_tables(cursor0)
+
+    # THEN
+    select_agg_sqlstr = f"""
+SELECT * 
+FROM {agg_ii00105_tablename} 
+ORDER BY {kw.spark_num}, {kw.weekday_order};"""
+    cursor0.execute(select_agg_sqlstr)
+
+    rows = cursor0.fetchall()
+    for x_row in rows:
+        print(f"{x_row=}")
+    row0 = (spark1, exx.sue, exx.a23, 0, f'{exx.Wednesday}', ";")
+    row1 = (spark1, exx.sue, exx.a23, 1, f'{exx.Thursday}', ";")
+    row2 = (spark1, exx.sue, exx.a23, 2, f'{exx.Friday}', ";")
+    row3 = (spark1, exx.sue, exx.a23, 3, f'{exx.Saturday}', ";")
+    print(f"{rows[0]=}")
+    print(f"   {row0=}")
+    assert rows[0] == row0
+    assert rows[1] == row1
+    assert rows[2] == row2
+    assert rows[3] == row3
+    assert get_row_count(cursor0, agg_ii00105_tablename) == 4

@@ -1,6 +1,7 @@
 from csv import reader as csv_reader
 from dataclasses import dataclass
 from pandas import isna as pandas_isna
+from re import compile as re_compile
 from sqlite3 import Connection as sqlite3_Connection, Error as sqlite3_Error
 
 
@@ -389,7 +390,10 @@ def db_table_exists(conn_or_cursor: sqlite3_Connection, tablename: str) -> bool:
 
 
 def get_table_columns(conn_or_cursor: sqlite3_Connection, tablename: str) -> list[str]:
-    db_columns = conn_or_cursor.execute(f"PRAGMA table_info({tablename})").fetchall()
+    conn_or_cursor.execute(f"PRAGMA table_info({tablename})")
+    db_columns = conn_or_cursor.fetchall()
+    # if not (db_columns := conn_or_cursor.fetchall()):
+    #     raise ValueError(f"Table does not exist or has no columns: {tablename}")
     if db_columns and isinstance(db_columns[0], dict):
         return [db_column.get("name") for db_column in db_columns]
     return [db_column[1] for db_column in db_columns]
@@ -563,3 +567,80 @@ def required_columns_exist(
 ):
     src_columns = set(get_table_columns(conn_or_cursor, src_table))
     return required_columns.issubset(src_columns)
+
+
+_VALID_IDENTIFIER = re_compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
+
+
+def _validate_identifier(name: str):
+    if not _VALID_IDENTIFIER.match(name):
+        raise ValueError(f"Invalid SQL identifier: {name}")
+
+
+def delete_all_duplicate_rows(
+    cursor: sqlite3_Connection,
+    table_name: str,
+    exclude_postfix: str | None = None,
+):
+    """
+    Deletes duplicate rows from a SQLite table based on ALL columns,
+    keeping the row with the smallest rowid.
+
+    If exclude_postfix is provided, columns ending with that postfix
+    are ignored when determining duplicates.
+    """
+    _validate_identifier(table_name)
+
+    columns_list = get_table_columns(cursor, table_name)
+    if not columns_list:
+        raise ValueError(f"Table does not exist or has no columns: {table_name}")
+
+    if exclude_postfix:
+        group_columns = [
+            col for col in columns_list if not col.endswith(exclude_postfix)
+        ]
+    else:
+        group_columns = columns_list
+
+    if not group_columns:
+        raise ValueError("No columns left to group by after applying exclude_postfix")
+
+    columns_str = ", ".join(group_columns)
+
+    query = f"""
+    DELETE FROM {table_name}
+    WHERE rowid NOT IN (
+        SELECT rowid FROM (
+            SELECT MIN(rowid) AS rowid
+            FROM {table_name}
+            GROUP BY {columns_str}
+        )
+    );
+    """
+    cursor.execute(query)
+
+
+def table_has_duplicates(cursor: sqlite3_Connection, table_name: str) -> bool:
+    cursor.execute(f"PRAGMA table_info({table_name})")
+    columns = [row[1] for row in cursor.fetchall()]
+
+    if not columns:
+        return False  # or raise, depending on your preference
+
+    cols = ", ".join(columns)
+
+    query = f"""
+        SELECT 1
+        FROM {table_name}
+        GROUP BY {cols}
+        HAVING COUNT(*) > 1
+        LIMIT 1;
+    """
+    cursor.execute(query)
+    return cursor.fetchone() is not None
+
+
+def get_all_tables_with_duplicates(cursor: sqlite3_Connection):
+    return [
+        table for table in get_db_tables(cursor) if table_has_duplicates(cursor, table)
+    ]

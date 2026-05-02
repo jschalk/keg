@@ -9,15 +9,12 @@ from ch17_idea.idea_belief_csv import (
     create_init_belief_idea_csv_strs,
 )
 from ch17_idea.idea_db_tool import get_sheet_names
-from ch18_etl_config._ref.ch18_path import (
-    create_belief0001_path,
-    create_moment_mstr_path,
-    create_world_db_path,
-)
+from ch18_etl_config._ref.ch18_path import create_moment_mstr_path, create_world_db_path
 from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
 )
+from ch24_belief_dst._ref.ch24_path import create_belief0001_path
 from ch24_belief_dst.vow_db2df import (
     collect_full_world_belief_csv_strs,
     create_belief0001_file,

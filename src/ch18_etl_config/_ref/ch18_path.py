@@ -36,11 +36,6 @@ def create_beliefs_person_dir_path(
     return create_path(beliefs_dir, person_name)
 
 
-def create_belief0001_path(output_dir: str) -> str:
-    """Returns path: output_dir\\belief0001.xlsx"""
-    return create_path(output_dir, "belief0001.xlsx")
-
-
 def create_last_run_metrics_path(world_dir: str) -> str:
     """Returns path: world_dir\\last_run_metrics.json"""
     return create_path(world_dir, "last_run_metrics.json")
