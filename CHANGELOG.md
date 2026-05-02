@@ -1,3 +1,10 @@
+## [0.83.23](https://github.com/jschalk/keg/compare/v0.83.22...v0.83.23) (2026-05-02)
+
+
+### Bug Fixes
+
+* [#1192](https://github.com/jschalk/keg/issues/1192) previous commits corrected duplciate row issue ([a856a19](https://github.com/jschalk/keg/commit/a856a19f0145b37e751f328aaecf172cfb814265))
+
 ## [0.83.21](https://github.com/jschalk/keg/compare/v0.83.20...v0.83.21) (2026-04-30)
 
 
