@@ -294,6 +294,7 @@ def etl_moment_json_contact_nets_to_moment_contact_nets_table(
         x_momentunit = open_moment_file(moment_mstr_dir, moment_lasso)
         x_momentunit.set_all_tranbook()
         insert_tranunit_contacts_net(cursor, x_momentunit.all_tranbook)
+    delete_all_duplicate_rows(cursor, "moment_contact_nets")
 
 
 def create_last_run_metrics_json(cursor: sqlite3_Cursor, moment_mstr_dir: str):

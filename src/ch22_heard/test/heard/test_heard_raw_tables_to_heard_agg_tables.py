@@ -297,10 +297,10 @@ def test_etl_heard_raw_tables_to_heard_agg_tables_PopulatesTable_Scenario2_NoDup
     print(f"{get_table_columns(cursor0, prncont_h_raw_put_tablename)=}")
     insert_into_clause = f"""INSERT INTO {prncont_h_raw_put_tablename} (
   {kw.spark_num}
-, {kw.spark_face}_otx
-, {kw.moment_rope}_otx
-, {kw.person_name}_otx
-, {kw.contact_name}_otx
+, {kw.spark_face}_inx
+, {kw.moment_rope}_inx
+, {kw.person_name}_inx
+, {kw.contact_name}_inx
 , {kw.contact_cred_lumen}
 , {kw.contact_debt_lumen}
 )
@@ -324,3 +324,59 @@ VALUES
 
     # THEN
     assert get_row_count(cursor0, prncont_h_agg_put_tablename) == 4
+
+
+def test_etl_heard_raw_tables_to_heard_agg_tables_PopulatesTable_Scenario3_NoDuplicates_NabuableColumns(
+    cursor0: Cursor,
+):
+    # ESTABLISH
+    yao_inx = "Yaoito"
+    spark1 = 1
+    spark2 = 2
+    spark5 = 5
+    spark7 = 7
+    x44_quota = 44
+    x55_quota = 55
+    x22_cell_depth = 22
+    btime1 = 777
+    btime2 = 888
+
+    create_sound_and_heard_tables(cursor0)
+    mmtbudd_h_raw_tablename = prime_tbl(kw.moment_budunit, kw.h_raw)
+    print(f"{get_table_columns(cursor0, mmtbudd_h_raw_tablename)=}")
+    insert_into_clause = f"""INSERT INTO {mmtbudd_h_raw_tablename} (
+  {kw.spark_num}
+, {kw.spark_face}_inx
+, {kw.moment_rope}_inx
+, {kw.person_name}_inx
+, {kw.bud_time}
+, {kw.knot}
+, {kw.quota}
+, {kw.celldepth}
+)"""
+    values1_clause = f"""
+VALUES
+  ({spark1}, '{exx.sue}', '{exx.a23}','{exx.yao}', {btime1}, ';', {x44_quota}, {x22_cell_depth})
+, ({spark2}, '{exx.yao}', '{exx.a23}','{exx.bob}', {btime2}, ';', {x55_quota}, {x22_cell_depth})
+;
+"""
+    cursor0.execute(f"{insert_into_clause} {values1_clause}")
+    assert get_row_count(cursor0, mmtbudd_h_raw_tablename) == 2
+    mmtbudd_h_agg_tablename = prime_tbl(kw.moment_budunit, kw.h_agg)
+    assert get_row_count(cursor0, mmtbudd_h_agg_tablename) == 0
+    etl_heard_raw_tables_to_heard_agg_tables(cursor0)
+    cursor0.execute(f"UPDATE {mmtbudd_h_agg_tablename} SET {kw.bud_time}_inx = -333")
+    btime5 = 999
+    values2_clause = f"""
+VALUES
+  ({spark1}, '{exx.sue}', '{exx.a23}','{exx.zia}', {btime5}, ';', {x44_quota}, {x22_cell_depth})
+;
+"""
+    cursor0.execute(f"{insert_into_clause} {values2_clause}")
+    assert get_row_count(cursor0, mmtbudd_h_agg_tablename) == 2
+
+    # WHEN
+    etl_heard_raw_tables_to_heard_agg_tables(cursor0)
+
+    # THEN
+    assert get_row_count(cursor0, mmtbudd_h_agg_tablename) == 3

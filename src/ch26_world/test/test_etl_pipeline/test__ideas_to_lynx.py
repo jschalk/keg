@@ -557,7 +557,6 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
     assert count_dirs_files(fay_wdir.worlds_dir) == 42
 
 
-# TODO reactivate this test, maybe add person_plan data so more tables are covered
 def test_idea_sheets_to_lynx_with_cursor_Scenario6_NoDuplicates(
     temp3_fs, cursor0: Cursor
 ):
@@ -604,6 +603,69 @@ def test_idea_sheets_to_lynx_with_cursor_Scenario6_NoDuplicates(
     #     table_count = get_row_count(cursor0, tablename)
     #     print(f"Table with duplicate '{tablename}' {table_count=}")
     #     print_table(cursor0, tablename)
+    assert [] == all_tables_with_duplicates_after_2nd_run
+
+
+# TODO reactivate this test, maybe add person_plan data so more tables are covered
+# Idea_type `ii00170`
+# Attributes:,spark_num,spark_face,moment_rope,otx_time,inx_time
+def test_idea_sheets_to_lynx_with_cursor_Scenario7_NoDuplicates_ii00170(
+    temp3_fs, cursor0: Cursor
+):
+    # ESTABLISH
+    fay_str = "Fay"
+    fay_wdir = worlddir_shop(fay_str, str(temp3_fs))
+
+    spark1 = 1
+    spark2 = 2
+    otx_360 = 360
+    otx_420 = 420
+    inx_400 = 400
+    inx_500 = 500
+    ex_filename = "Faybob.xlsx"
+    i_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
+    ii00170_columns = [
+        kw.spark_num,
+        kw.spark_face,
+        kw.moment_rope,
+        kw.otx_time,
+        kw.inx_time,
+    ]
+    ii70row0 = [spark1, exx.sue, exx.a23, otx_360, inx_400]
+    ii70row1 = [spark1, exx.sue, exx.a23, otx_420, inx_500]
+    ii70row2 = [spark2, exx.sue, exx.a23, otx_420, inx_500]
+    ii00170_1df = DataFrame([ii70row0, ii70row1], columns=ii00170_columns)
+    ii00170_3df = DataFrame([ii70row1, ii70row0, ii70row2], columns=ii00170_columns)
+    ii00170_ex1_str = "example1_ii00170"
+    ii00170_ex3_str = "example3_ii00170"
+    save_sheet(i_src_dir_file_path, ii00170_ex1_str, ii00170_1df)
+    save_sheet(i_src_dir_file_path, ii00170_ex3_str, ii00170_3df)
+
+    ii00101_columns = [
+        kw.spark_num,
+        kw.spark_face,
+        kw.moment_rope,
+        kw.person_name,
+        kw.bud_time,
+        kw.knot,
+        kw.quota,
+        kw.celldepth,
+    ]
+    row0 = [1, exx.sue, exx.a23, "Alice", 360, ";", 10, 1]
+    row1 = [1, exx.sue, exx.a23, "Alice", 420, ";", 15, 2]
+    row2 = [2, exx.sue, exx.a23, "Bob", 420, ";", 20, 1]
+    ii00101_df = DataFrame([row0, row1, row2], columns=ii00101_columns)
+    save_sheet(i_src_dir_file_path, "example_ii00101", ii00101_df)
+
+    i_src_dir = fay_wdir.ideas_src_dir
+    idea_sheets_to_lynx_with_cursor(cursor0, i_src_dir, fay_wdir.moment_mstr_dir)
+    assert [] == get_all_tables_with_duplicates(cursor0)
+
+    # WHEN
+    idea_sheets_to_lynx_with_cursor(cursor0, i_src_dir, fay_wdir.moment_mstr_dir)
+
+    # THEN
+    all_tables_with_duplicates_after_2nd_run = get_all_tables_with_duplicates(cursor0)
     assert [] == all_tables_with_duplicates_after_2nd_run
 
 
