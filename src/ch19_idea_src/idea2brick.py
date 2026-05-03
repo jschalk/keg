@@ -175,7 +175,7 @@ def get_validated_i_src_brick_type_sheets(
     Raises a ValueError if any of those brick_type sheets also exist in b_src_dir.
 
     Args:
-        i_src_dir: Path to the BELE source directory.
+        i_src_dir: Path to the IDEA source directory.
         b_src_dir: Path to the BRICK source directory.
 
     Returns:
@@ -186,16 +186,16 @@ def get_validated_i_src_brick_type_sheets(
         ValueError: If any brick_type sheet found in i_src_dir also exists
                     in b_src_dir (matched on sheet_name alone).
     """
-    bele_bk_sheets = get_sheets_with_brick_types(i_src_dir)
+    idea_bk_sheets = get_sheets_with_brick_types(i_src_dir)
     brick_bk_sheets = get_sheets_with_brick_types(b_src_dir)
-    bele_bk_sheets_set = set(bele_bk_sheets)
+    idea_bk_sheets_set = set(idea_bk_sheets)
     brick_bk_sheets_set = set(brick_bk_sheets)
 
-    if overlapping := brick_bk_sheets_set.intersection(bele_bk_sheets_set):
+    if overlapping := brick_bk_sheets_set.intersection(idea_bk_sheets_set):
         exception_str = "brick_type sheets found in both i_src_dir and b_src_dir: "
         raise ValueError(exception_str, f"{sorted(overlapping)}")
 
-    return bele_bk_sheets
+    return idea_bk_sheets
 
 
 def ideas_sheets_to_brick_sheets(
@@ -207,27 +207,27 @@ def ideas_sheets_to_brick_sheets(
     preserving values and structure for downstream pandas operations.
 
     Args:
-        i_src_dir: Path to the BELE source directory.
+        i_src_dir: Path to the IDEA source directory.
         b_src_dir: Path to the BRICK source directory.
 
     Returns:
         Sorted list of (new_filename, sheet_name) tuples for every sheet copied.
 
     Raises:
-        ValueError: (propagated from get_bele_bk_sheets_validated) if any BR
+        ValueError: (propagated from get_idea_bk_sheets_validated) if any BR
                     sheet name exists in both directories before the copy.
     """
-    bele_spark_faces = get_spark_faces_from_files(i_src_dir)
+    idea_spark_faces = get_spark_faces_from_files(i_src_dir)
     brick_max_spark_num = get_0_if_None(get_max_spark_num_from_files(b_src_dir))
     general_max_spark_num = max(brick_max_spark_num, get_0_if_None(db_max_spark_num))
     spark_face_spark_nums = create_spark_face_spark_nums(
-        bele_spark_faces, general_max_spark_num
+        idea_spark_faces, general_max_spark_num
     )
 
-    bele_bk_sheets = get_validated_i_src_brick_type_sheets(i_src_dir, b_src_dir)
+    idea_bk_sheets = get_validated_i_src_brick_type_sheets(i_src_dir, b_src_dir)
     # Group sheet names by their source file
     file_to_sheets: dict[str, List[str]] = {}
-    for filename, sheet_name in bele_bk_sheets:
+    for filename, sheet_name in idea_bk_sheets:
         file_to_sheets.setdefault(filename, []).append(sheet_name)
 
     copied: List[Tuple[str, str]] = []
