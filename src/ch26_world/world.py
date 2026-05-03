@@ -41,6 +41,7 @@ from ch23_mind.mind import (
 from ch24_idea_dst.vow_db2df import create_idea0001_file, prettify_excel_file
 from ch25_kpi.gcalendar import (
     copy_person_day_punches_to_dst_dir,
+    get_day_punchs_persons,
     mind_to_person_gcal_day_punchs,
 )
 from ch25_kpi.kpi_mstr import create_calendar_markdown_files, populate_kpi_bundle
@@ -228,8 +229,9 @@ def create_today_punchs(
         day=datetime.now(),
         focus_group_title=focus_group_title,
     )
+    all_persons = get_day_punchs_persons(worlddir.moment_mstr_dir)
     dst_persons_punch_paths = {}
-    for person_name in person_names:
+    for person_name in all_persons:
         dst_person_punch_paths = copy_person_day_punches_to_dst_dir(
             worlddir.moment_mstr_dir, worlddir.output_dir, person_name
         )

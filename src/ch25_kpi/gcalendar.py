@@ -539,3 +539,19 @@ def copy_person_day_punches_to_dst_dir(
                 paths_set = dst_person_punch_paths.get(moment_lasso.moment_rope)
                 paths_set.add(dst_person_punch_path)
     return dst_person_punch_paths
+
+
+def get_day_punchs_persons(moment_mstr_dir: str) -> set[str]:
+    """Get all person names that have day punch files in the moment master directory."""
+    available_persons = set()
+    moments_dir = create_moments_dir_path(moment_mstr_dir)
+    for moment_label in get_level1_dirs(moments_dir):
+        moment_lasso = lassounit_shop(create_rope(moment_label))
+        moment_path = create_path(moments_dir, moment_lasso.make_path())
+        day_punchs_path = create_path(moment_path, "day_punchs")
+
+        for sub_dir, person_filename in get_dir_filenames(day_punchs_path):
+            if person_filename.endswith(".txt"):
+                person_name = person_filename.replace(".txt", "")
+                available_persons.add(person_name)
+    return available_persons
