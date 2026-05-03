@@ -1,6 +1,6 @@
 from ch00_py.db_toolbox import db_table_exists, get_db_tables, get_row_count
 from ch18_etl_config.etl_sqlstr import CREATE_JOB_PRNPLAN_SQLSTR, create_prime_tablename
-from ch23_mind.mind import CREATE_MOMENT_CONTACT_NETS_SQLSTR
+from ch23_mind.mind import CREATE_MOMENT_TRANBOOK_NETS_SQLSTR
 from ch25_kpi.kpi_mstr import populate_kpi_bundle
 from ref.keywords import Ch25Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
@@ -14,17 +14,17 @@ def test_populate_kpi_bundle_PopulatesTable_Scenario0_WithDefaultBundleID(
     bob_contact_net = 600
 
     cursor0.execute(CREATE_JOB_PRNPLAN_SQLSTR)
-    cursor0.execute(CREATE_MOMENT_CONTACT_NETS_SQLSTR)
-    moment_contact_nets_tablename = kw.moment_contact_nets
+    cursor0.execute(CREATE_MOMENT_TRANBOOK_NETS_SQLSTR)
+    moment_tranbook_nets_tablename = kw.moment_tranbook_nets
     prnplan_job_tablename = create_prime_tablename("PRNPLAN", "job", None)
-    insert_sqlstr = f"""INSERT INTO {moment_contact_nets_tablename} ({kw.moment_rope}, {kw.person_name}, {kw.person_net_amount})
+    insert_sqlstr = f"""INSERT INTO {moment_tranbook_nets_tablename} ({kw.moment_rope}, {kw.person_name}, {kw.person_net_amount})
 VALUES
   ('{exx.a23}', '{exx.bob}', {bob_contact_net})
 , ('{exx.a23}', '{exx.yao}', {yao_contact_net})
 """
     cursor0.execute(insert_sqlstr)
     assert db_table_exists(cursor0, prnplan_job_tablename)
-    assert get_row_count(cursor0, moment_contact_nets_tablename) == 2
+    assert get_row_count(cursor0, moment_tranbook_nets_tablename) == 2
     moment_kpi001_tablename = kw.moment_kpi001_contact_nets
     moment_kpi002_tablename = kw.moment_kpi002_person_pledges
     assert not db_table_exists(cursor0, moment_kpi001_tablename)
@@ -41,7 +41,7 @@ VALUES
     assert set(get_db_tables(cursor0).keys()) == {
         kw.moment_kpi001_contact_nets,
         kw.moment_kpi002_person_pledges,
-        moment_contact_nets_tablename,
+        moment_tranbook_nets_tablename,
         prnplan_job_tablename,
     }
 
@@ -52,15 +52,15 @@ def test_populate_kpi_bundle_PopulatesTable_Scenario1_WithNoBundleID(cursor0: Cu
     bob_contact_net = 600
 
     cursor0.execute(CREATE_JOB_PRNPLAN_SQLSTR)
-    cursor0.execute(CREATE_MOMENT_CONTACT_NETS_SQLSTR)
-    moment_contact_nets_tablename = kw.moment_contact_nets
-    insert_sqlstr = f"""INSERT INTO {moment_contact_nets_tablename} ({kw.moment_rope}, {kw.person_name}, {kw.person_net_amount})
+    cursor0.execute(CREATE_MOMENT_TRANBOOK_NETS_SQLSTR)
+    moment_tranbook_nets_tablename = kw.moment_tranbook_nets
+    insert_sqlstr = f"""INSERT INTO {moment_tranbook_nets_tablename} ({kw.moment_rope}, {kw.person_name}, {kw.person_net_amount})
 VALUES
   ('{exx.a23}', '{exx.bob}', {bob_contact_net})
 , ('{exx.a23}', '{exx.yao}', {yao_contact_net})
 """
     cursor0.execute(insert_sqlstr)
-    assert get_row_count(cursor0, moment_contact_nets_tablename) == 2
+    assert get_row_count(cursor0, moment_tranbook_nets_tablename) == 2
     moment_kpi001_contact_nets_tablename = kw.moment_kpi001_contact_nets
     assert not db_table_exists(cursor0, moment_kpi001_contact_nets_tablename)
 
@@ -73,6 +73,6 @@ VALUES
     assert set(get_db_tables(cursor0).keys()) == {
         kw.moment_kpi001_contact_nets,
         kw.moment_kpi002_person_pledges,
-        moment_contact_nets_tablename,
+        moment_tranbook_nets_tablename,
         prnplan_job_tablename,
     }

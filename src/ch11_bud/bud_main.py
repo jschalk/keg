@@ -46,9 +46,14 @@ def tranunit_shop(
 
 @dataclass
 class TranBook:
+    """Holds TranUnits data built from BudUnits.
+    person_contacts_net is calculated from loaded TranUnits data. It holds the calculated net output for each PersonName, ContactName tuple.
+    """
+
     moment_rope: MomentRope = None
     tranunits: dict[PersonName, dict[ContactName, dict[TimeNum, FundNum]]] = None
-    _contacts_net: dict[PersonName, dict[ContactName, FundNum]] = None
+    # calculated from tranunits
+    person_contacts_net: dict[PersonName, dict[ContactName, FundNum]] = None
 
     def set_tranunit(
         self,
@@ -175,7 +180,7 @@ def tranbook_shop(
     return TranBook(
         moment_rope=x_moment_rope,
         tranunits=get_empty_dict_if_None(x_tranunits),
-        _contacts_net={},
+        person_contacts_net={},
     )
 
 

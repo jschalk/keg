@@ -15,16 +15,16 @@ def test_get_create_kpi001_sqlstr_ReturnsObj():
     expected_kpi001_sqlstr = f"""
 CREATE TABLE {kw.moment_kpi001_contact_nets} AS
 SELECT
-  {kw.moment_contact_nets}.{kw.moment_rope}
-, {kw.moment_contact_nets}.{kw.person_name}
+  {kw.moment_tranbook_nets}.{kw.moment_rope}
+, {kw.moment_tranbook_nets}.{kw.person_name}
 , {kw.person_net_amount} AS {kw.net_funds}
 , RANK() OVER (ORDER BY {kw.person_net_amount} DESC) AS {kw.fund_rank}
 , IFNULL(SUM({prnplan_job}.{kw.pledge}), 0) AS {kw.pledges_count}
-FROM {kw.moment_contact_nets}
+FROM {kw.moment_tranbook_nets}
 LEFT JOIN {prnplan_job} ON
-  {prnplan_job}.{kw.moment_rope} = {kw.moment_contact_nets}.{kw.moment_rope}
-  AND {prnplan_job}.{kw.person_name} = {kw.moment_contact_nets}.{kw.person_name}
-GROUP BY {kw.moment_contact_nets}.{kw.moment_rope}, {kw.moment_contact_nets}.{kw.person_name}
+  {prnplan_job}.{kw.moment_rope} = {kw.moment_tranbook_nets}.{kw.moment_rope}
+  AND {prnplan_job}.{kw.person_name} = {kw.moment_tranbook_nets}.{kw.person_name}
+GROUP BY {kw.moment_tranbook_nets}.{kw.moment_rope}, {kw.moment_tranbook_nets}.{kw.person_name}
 ;
 """
     assert kpi001_sqlstr == expected_kpi001_sqlstr

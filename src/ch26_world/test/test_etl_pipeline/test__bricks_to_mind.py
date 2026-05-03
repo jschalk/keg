@@ -134,7 +134,7 @@ def test_brick_sheets_to_mind_with_cursor_Scenario0_bk001071PopulatesTables(
     assert not os_path_exists(a23_sue_job_path)
     assert not db_table_exists(cursor0, kw.moment_ote1_agg)
     assert not db_table_exists(cursor0, prncont_job)
-    assert not db_table_exists(cursor0, kw.moment_contact_nets)
+    assert not db_table_exists(cursor0, kw.moment_tranbook_nets)
     assert not db_table_exists(cursor0, kw.moment_kpi001_contact_nets)
     assert not os_path_exists(last_run_metrics_path)
 
@@ -199,7 +199,7 @@ def test_brick_sheets_to_mind_with_cursor_Scenario0_bk001071PopulatesTables(
     assert sue_gut.plan_exists(creg_rope)
     assert os_path_exists(a23_sue_job_path)
     assert get_row_count(cursor0, prncont_job) == 1
-    assert get_row_count(cursor0, kw.moment_contact_nets) == 0
+    assert get_row_count(cursor0, kw.moment_tranbook_nets) == 0
     # assert get_row_count(cursor, moment_ote1_agg_tablename) == 0
     assert get_row_count(cursor0, kw.moment_kpi001_contact_nets) == 0
     assert os_path_exists(last_run_metrics_path)
@@ -312,7 +312,7 @@ def test_brick_sheets_to_mind_with_cursor_Scenario1_PopulateBudPayRows(
     assert not os_path_exists(a23_sue_job_path)
     assert not db_table_exists(cursor0, kw.moment_ote1_agg)
     assert not os_path_exists(sue37_mandate_path)
-    assert not db_table_exists(cursor0, kw.moment_contact_nets)
+    assert not db_table_exists(cursor0, kw.moment_tranbook_nets)
     assert not db_table_exists(cursor0, kw.moment_kpi001_contact_nets)
     # self.moment_agg_tables_to_moment_ote1_agg(cursor)
     moments_dir = create_path(mstr_dir, "moments")
@@ -362,7 +362,7 @@ def test_brick_sheets_to_mind_with_cursor_Scenario1_PopulateBudPayRows(
     assert get_row_count(cursor0, kw.moment_ote1_agg) == 1
     print(f"{sue37_mandate_path=}")
     assert os_path_exists(sue37_mandate_path)
-    assert get_row_count(cursor0, kw.moment_contact_nets) == 1
+    assert get_row_count(cursor0, kw.moment_tranbook_nets) == 1
     assert get_row_count(cursor0, kw.moment_kpi001_contact_nets) == 1
 
 
@@ -394,7 +394,7 @@ def test_brick_sheets_to_mind_with_cursor_Scenario2_PopulateMomentTranBook(
     bk00102_ex0_str = f"example0_{bk00102_str}"
     save_sheet(b_src_dir_file_path, bk00102_ex0_str, bk00102_df)
 
-    assert not db_table_exists(cursor0, kw.moment_contact_nets)
+    assert not db_table_exists(cursor0, kw.moment_tranbook_nets)
 
     # WHEN
     brick_sheets_to_mind_with_cursor(
@@ -402,7 +402,7 @@ def test_brick_sheets_to_mind_with_cursor_Scenario2_PopulateMomentTranBook(
     )
 
     # THEN
-    assert get_row_count(cursor0, kw.moment_contact_nets) == 1
+    assert get_row_count(cursor0, kw.moment_tranbook_nets) == 1
 
 
 def test_brick_sheets_to_mind_with_cursor_Scenario3_WhenNoMomentBricks_ote1_IsStillCreated(

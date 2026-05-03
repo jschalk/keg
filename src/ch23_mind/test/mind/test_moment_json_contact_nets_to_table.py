@@ -5,8 +5,8 @@ from ch09_person_lesson.lasso import lassounit_shop
 from ch11_bud.bud_main import tranbook_shop
 from ch14_moment.moment_main import momentunit_shop
 from ch23_mind.mind import (
-    CREATE_MOMENT_CONTACT_NETS_SQLSTR,
-    etl_moment_json_contact_nets_to_moment_contact_nets_table,
+    CREATE_MOMENT_TRANBOOK_NETS_SQLSTR,
+    etl_moment_json_contact_nets_to_moment_tranbook_nets_table,
     insert_tranunit_contacts_net,
 )
 from ref.keywords import Ch23Keywords as kw, ExampleStrs as exx
@@ -27,16 +27,16 @@ def test_insert_tranunit_contacts_net_PopulatesDatabase(cursor0: Cursor):
     a23_tranbook.add_tranunit(exx.sue, exx.yao, t66_tran_time, t66_yao_amount)
     a23_tranbook.add_tranunit(exx.sue, exx.bob, t55_tran_time, t55_bob_amount)
     a23_tranbook.add_tranunit(exx.yao, exx.yao, t77_tran_time, t77_yao_amount)
-    moment_contact_nets_tablename = kw.moment_contact_nets
-    cursor0.execute(CREATE_MOMENT_CONTACT_NETS_SQLSTR)
-    assert get_row_count(cursor0, moment_contact_nets_tablename) == 0
+    moment_tranbook_nets_tablename = kw.moment_tranbook_nets
+    cursor0.execute(CREATE_MOMENT_TRANBOOK_NETS_SQLSTR)
+    assert get_row_count(cursor0, moment_tranbook_nets_tablename) == 0
 
     # WHEN
     insert_tranunit_contacts_net(cursor0, a23_tranbook)
 
     # THEN
-    assert get_row_count(cursor0, moment_contact_nets_tablename) == 2
-    select_sqlstr = f"SELECT moment_rope, person_name, {kw.person_net_amount} FROM {moment_contact_nets_tablename}"
+    assert get_row_count(cursor0, moment_tranbook_nets_tablename) == 2
+    select_sqlstr = f"SELECT moment_rope, person_name, {kw.person_net_amount} FROM {moment_tranbook_nets_tablename}"
     cursor0.execute(select_sqlstr)
     rows = cursor0.fetchall()
     assert rows == [
@@ -45,7 +45,7 @@ def test_insert_tranunit_contacts_net_PopulatesDatabase(cursor0: Cursor):
     ]
 
 
-def test_etl_moment_json_contact_nets_to_moment_contact_nets_table_Scenario0_Basic(
+def test_etl_moment_json_contact_nets_to_moment_tranbook_nets_table_Scenario0_Basic(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -66,15 +66,15 @@ def test_etl_moment_json_contact_nets_to_moment_contact_nets_table_Scenario0_Bas
     a23_json_path = create_moment_json_path(mstr_dir, a23_lasso)
     save_json(a23_json_path, None, a23_moment.to_dict())
 
-    moment_contact_nets_tablename = kw.moment_contact_nets
-    assert not db_table_exists(cursor0, moment_contact_nets_tablename)
+    moment_tranbook_nets_tablename = kw.moment_tranbook_nets
+    assert not db_table_exists(cursor0, moment_tranbook_nets_tablename)
 
     # WHEN
-    etl_moment_json_contact_nets_to_moment_contact_nets_table(cursor0, mstr_dir)
+    etl_moment_json_contact_nets_to_moment_tranbook_nets_table(cursor0, mstr_dir)
 
     # THEN
-    assert get_row_count(cursor0, moment_contact_nets_tablename) == 2
-    select_sqlstr = f"SELECT moment_rope, person_name, {kw.person_net_amount} FROM {moment_contact_nets_tablename}"
+    assert get_row_count(cursor0, moment_tranbook_nets_tablename) == 2
+    select_sqlstr = f"SELECT moment_rope, person_name, {kw.person_net_amount} FROM {moment_tranbook_nets_tablename}"
     cursor0.execute(select_sqlstr)
     rows = cursor0.fetchall()
     assert rows == [
@@ -83,7 +83,7 @@ def test_etl_moment_json_contact_nets_to_moment_contact_nets_table_Scenario0_Bas
     ]
 
 
-def test_etl_moment_json_contact_nets_to_moment_contact_nets_table_Scenario1_NoDuplicates(
+def test_etl_moment_json_contact_nets_to_moment_tranbook_nets_table_Scenario1_NoDuplicates(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -104,11 +104,11 @@ def test_etl_moment_json_contact_nets_to_moment_contact_nets_table_Scenario1_NoD
     a23_json_path = create_moment_json_path(mstr_dir, a23_lasso)
     save_json(a23_json_path, None, a23_moment.to_dict())
 
-    moment_contact_nets_tablename = kw.moment_contact_nets
-    assert not db_table_exists(cursor0, moment_contact_nets_tablename)
-    etl_moment_json_contact_nets_to_moment_contact_nets_table(cursor0, mstr_dir)
-    assert get_row_count(cursor0, moment_contact_nets_tablename) == 2
+    moment_tranbook_nets_tablename = kw.moment_tranbook_nets
+    assert not db_table_exists(cursor0, moment_tranbook_nets_tablename)
+    etl_moment_json_contact_nets_to_moment_tranbook_nets_table(cursor0, mstr_dir)
+    assert get_row_count(cursor0, moment_tranbook_nets_tablename) == 2
     # WHEN
-    etl_moment_json_contact_nets_to_moment_contact_nets_table(cursor0, mstr_dir)
+    etl_moment_json_contact_nets_to_moment_tranbook_nets_table(cursor0, mstr_dir)
     # THEN
-    assert get_row_count(cursor0, moment_contact_nets_tablename) == 2
+    assert get_row_count(cursor0, moment_tranbook_nets_tablename) == 2

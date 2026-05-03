@@ -31,7 +31,7 @@ from ch23_mind.mind import (
     create_last_run_metrics_json,
     etl_mind_guts_to_mind_jobs,
     etl_mind_job_jsons_to_job_tables,
-    etl_moment_json_contact_nets_to_moment_contact_nets_table,
+    etl_moment_json_contact_nets_to_moment_tranbook_nets_table,
     etl_moment_ote1_agg_csvs_to_jsons,
     etl_spark_inherited_personunits_to_mind_gut,
     etl_spark_lesson_json_to_spark_inherited_personunits,
@@ -96,7 +96,7 @@ def brick_sheets_to_mind_with_cursor(
     etl_moment_ote1_agg_csvs_to_jsons(moment_mstr_dir)
     calc_moment_bud_contact_mandate_net_ledgers(moment_mstr_dir)
     etl_mind_job_jsons_to_job_tables(cursor, moment_mstr_dir)
-    etl_moment_json_contact_nets_to_moment_contact_nets_table(cursor, moment_mstr_dir)
+    etl_moment_json_contact_nets_to_moment_tranbook_nets_table(cursor, moment_mstr_dir)
     populate_kpi_bundle(cursor)
     create_last_run_metrics_json(cursor, moment_mstr_dir)
 

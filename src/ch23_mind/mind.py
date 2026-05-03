@@ -266,7 +266,7 @@ def etl_mind_job_jsons_to_job_tables(cursor: sqlite3_Cursor, moment_mstr_dir: st
         delete_all_duplicate_rows(cursor, job_tablename)
 
 
-CREATE_MOMENT_CONTACT_NETS_SQLSTR = "CREATE TABLE IF NOT EXISTS moment_contact_nets (moment_rope TEXT, person_name TEXT, person_net_amount REAL)"
+CREATE_MOMENT_TRANBOOK_NETS_SQLSTR = "CREATE TABLE IF NOT EXISTS moment_tranbook_nets (moment_rope TEXT, person_name TEXT, person_net_amount REAL)"
 
 
 def insert_tranunit_contacts_net(cursor: sqlite3_Cursor, tranbook: TranBook):
@@ -279,22 +279,22 @@ def insert_tranunit_contacts_net(cursor: sqlite3_Cursor, tranbook: TranBook):
     """
     contacts_net_array = tranbook._get_contacts_net_array()
     cursor.executemany(
-        f"INSERT INTO moment_contact_nets (moment_rope, person_name, person_net_amount) VALUES ('{tranbook.moment_rope}', ?, ?)",
+        f"INSERT INTO moment_tranbook_nets (moment_rope, person_name, person_net_amount) VALUES ('{tranbook.moment_rope}', ?, ?)",
         contacts_net_array,
     )
 
 
-def etl_moment_json_contact_nets_to_moment_contact_nets_table(
+def etl_moment_json_contact_nets_to_moment_tranbook_nets_table(
     cursor: sqlite3_Cursor, moment_mstr_dir: str
 ):
-    cursor.execute(CREATE_MOMENT_CONTACT_NETS_SQLSTR)
+    cursor.execute(CREATE_MOMENT_TRANBOOK_NETS_SQLSTR)
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):
         moment_lasso = lassounit_shop(create_rope(moment_label))
         x_momentunit = open_moment_file(moment_mstr_dir, moment_lasso)
         x_momentunit.set_all_tranbook()
         insert_tranunit_contacts_net(cursor, x_momentunit.all_tranbook)
-    delete_all_duplicate_rows(cursor, "moment_contact_nets")
+    delete_all_duplicate_rows(cursor, "moment_tranbook_nets")
 
 
 def create_last_run_metrics_json(cursor: sqlite3_Cursor, moment_mstr_dir: str):

@@ -45,7 +45,12 @@ def test_TranBook_Exists():
     assert x_tranbook
     assert not x_tranbook.moment_rope
     assert not x_tranbook.tranunits
-    assert not x_tranbook._contacts_net
+    assert not x_tranbook.person_contacts_net
+    assert set(x_tranbook.__dict__.keys()) == {
+        kw.moment_rope,
+        "tranunits",
+        kw.person_contacts_net,
+    }
 
 
 def test_tranbook_shop_WithParametersReturnsObj():
@@ -61,7 +66,7 @@ def test_tranbook_shop_WithParametersReturnsObj():
     assert x_tranbook
     assert x_tranbook.moment_rope == exx.a23
     assert x_tranbook.tranunits == x_tranunits
-    assert x_tranbook._contacts_net == {}
+    assert x_tranbook.person_contacts_net == {}
 
 
 def test_tranbook_shop_WithoutParametersReturnsObj():
@@ -74,7 +79,7 @@ def test_tranbook_shop_WithoutParametersReturnsObj():
     assert x_tranbook
     assert x_tranbook.moment_rope == exx.a23
     assert x_tranbook.tranunits == {}
-    assert x_tranbook._contacts_net == {}
+    assert x_tranbook.person_contacts_net == {}
 
 
 def test_TranBook_set_tranunit_SetsAttr():
