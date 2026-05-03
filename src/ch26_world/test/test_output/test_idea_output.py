@@ -1,7 +1,7 @@
 from ch00_py.file_toolbox import create_path, set_dir
 from ch17_brick.brick_db_tool import get_sheet_names, save_sheet
 from ch18_etl_config._ref.ch18_path import create_ideas_dir_path
-from ch24_idea_dst._ref.ch24_path import create_idea0001_path
+from ch24_idea_dst._ref.ch24_path import create_mind0001_path
 from ch26_world.world import brick_sheets_to_mind_mstr, create_ideas, worlddir_shop
 from os.path import exists as os_path_exists
 from pandas import DataFrame, read_excel as pandas_read_excel
@@ -16,8 +16,8 @@ def test_create_ideas_CreatesFile_Senario0_EmptyWorld(temp3_fs):
     output_dir = create_path(str(temp3_fs), "output")
     fay_wdir = worlddir_shop(fay_str, str(temp3_fs), output_dir)
     brick_sheets_to_mind_mstr(fay_wdir)
-    fay_idea0001_path = create_idea0001_path(fay_wdir.output_dir)
-    assert os_path_exists(fay_idea0001_path) is False
+    fay_mind0001_path = create_mind0001_path(fay_wdir.output_dir)
+    assert os_path_exists(fay_mind0001_path) is False
 
     # WHEN
     create_ideas(
@@ -29,7 +29,7 @@ def test_create_ideas_CreatesFile_Senario0_EmptyWorld(temp3_fs):
     )
 
     # THEN
-    assert os_path_exists(fay_idea0001_path)
+    assert os_path_exists(fay_mind0001_path)
 
 
 def test_create_ideas_CreatesFile_Senario1_SingleSmallSpark(temp3_fs):
@@ -51,8 +51,8 @@ def test_create_ideas_CreatesFile_Senario1_SingleSmallSpark(temp3_fs):
     bk00001_df = DataFrame(bk00001_rows, columns=bk00001_columns)
     save_sheet(b_src_dir_file_path, "bk00001_ex3", bk00001_df)
     brick_sheets_to_mind_mstr(fay_wdir)
-    fay_idea0001_path = create_idea0001_path(fay_wdir.output_dir)
-    assert os_path_exists(fay_idea0001_path) is False
+    fay_mind0001_path = create_mind0001_path(fay_wdir.output_dir)
+    assert os_path_exists(fay_mind0001_path) is False
 
     # WHEN
     create_ideas(
@@ -64,9 +64,9 @@ def test_create_ideas_CreatesFile_Senario1_SingleSmallSpark(temp3_fs):
     )
 
     # THEN
-    assert os_path_exists(fay_idea0001_path)
-    print(get_sheet_names(fay_idea0001_path))
-    bk00121_sheet_df = pandas_read_excel(fay_idea0001_path, "bk00121")
+    assert os_path_exists(fay_mind0001_path)
+    print(get_sheet_names(fay_mind0001_path))
+    bk00121_sheet_df = pandas_read_excel(fay_mind0001_path, "bk00121")
     print(f"{bk00121_sheet_df=}")
     assert bk00121_sheet_df.iloc[0][kw.spark_face] == "Fay"
 
@@ -93,7 +93,7 @@ def test_create_ideas_CreatesFile_Senario2_CreatedIdeaCanBeBricksForOtherWorldDi
     bk00001_df = DataFrame(bk00001_rows, columns=bk00001_columns)
     save_sheet(b_src_dir_file_path, "bk00001_ex3", bk00001_df)
     brick_sheets_to_mind_mstr(fay_wdir)
-    fay_idea0001_path = create_idea0001_path(fay_wdir.output_dir)
+    fay_mind0001_path = create_mind0001_path(fay_wdir.output_dir)
     create_ideas(
         world_dir=fay_wdir.world_dir,
         output_dir=fay_wdir.output_dir,
@@ -107,14 +107,14 @@ def test_create_ideas_CreatesFile_Senario2_CreatedIdeaCanBeBricksForOtherWorldDi
         bob_wdir.moment_mstr_dir, "Bob_b_src_dir.xlsx"
     )
     set_dir(create_ideas_dir_path(bob_wdir.moment_mstr_dir))
-    shutil_copy2(fay_idea0001_path, dst=bob_b_src_dir_st0001_path)
-    # print(f" {pandas_read_excel(fay_idea0001_path)=}")
+    shutil_copy2(fay_mind0001_path, dst=bob_b_src_dir_st0001_path)
+    # print(f" {pandas_read_excel(fay_mind0001_path)=}")
     # print(f"{pandas_read_excel(bob_b_src_dir_st0001_path)=}")
     print(f"{bob_b_src_dir_st0001_path=}")
     print(f"{get_sheet_names(bob_b_src_dir_st0001_path)=}")
     brick_sheets_to_mind_mstr(fay_wdir)
-    bob_idea0001_path = create_idea0001_path(bob_wdir.output_dir)
-    assert os_path_exists(bob_idea0001_path) is False
+    bob_mind0001_path = create_mind0001_path(bob_wdir.output_dir)
+    assert os_path_exists(bob_mind0001_path) is False
 
     # WHEN
     create_ideas(
@@ -126,12 +126,12 @@ def test_create_ideas_CreatesFile_Senario2_CreatedIdeaCanBeBricksForOtherWorldDi
     )
 
     # THEN
-    assert os_path_exists(bob_idea0001_path)
-    print(f"{get_sheet_names(bob_idea0001_path)=}")
-    for sheetname in get_sheet_names(bob_idea0001_path):
+    assert os_path_exists(bob_mind0001_path)
+    print(f"{get_sheet_names(bob_mind0001_path)=}")
+    for sheetname in get_sheet_names(bob_mind0001_path):
         print(f"comparing {sheetname=}...")
-        fay_sheet_df = pandas_read_excel(fay_idea0001_path, sheetname)
-        bob_sheet_df = pandas_read_excel(fay_idea0001_path, sheetname)
+        fay_sheet_df = pandas_read_excel(fay_mind0001_path, sheetname)
+        bob_sheet_df = pandas_read_excel(fay_mind0001_path, sheetname)
         # if sheetname == "bk00121":
         #     print(f"{fay_sheet_df=}")
         #     print(f"{bob_sheet_df=}")

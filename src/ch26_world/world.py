@@ -38,7 +38,7 @@ from ch23_mind.mind import (
     etl_spark_person_csvs_to_lesson_json,
     get_max_brixk_agg_spark_num,
 )
-from ch24_idea_dst.vow_db2df import create_idea0001_file, prettify_excel_file
+from ch24_idea_dst.vow_db2df import create_mind0001_file, prettify_excel_file
 from ch25_kpi.gcalendar import (
     copy_person_day_punches_to_dst_dir,
     get_day_punchs_persons,
@@ -59,7 +59,7 @@ def create_ideas(
     moment_mstr_dir: str,
     prettify_excel_bool=True,
 ):
-    create_idea0001_file(world_dir, output_dir, world_name, prettify_excel_bool)
+    create_mind0001_file(world_dir, output_dir, world_name, prettify_excel_bool)
     create_calendar_markdown_files(moment_mstr_dir, output_dir)
 
 

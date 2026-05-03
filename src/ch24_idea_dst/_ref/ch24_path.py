@@ -4,6 +4,6 @@ from ch09_person_lesson.lasso import LassoUnit
 from ch24_idea_dst._ref.ch24_semantic_types import PersonName
 
 
-def create_idea0001_path(output_dir: str) -> str:
-    """Returns path: output_dir\\idea0001.xlsx"""
-    return create_path(output_dir, "idea0001.xlsx")
+def create_mind0001_path(output_dir: str) -> str:
+    """Returns path: output_dir\\mind0001.xlsx"""
+    return create_path(output_dir, "mind0001.xlsx")

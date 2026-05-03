@@ -19,7 +19,7 @@ from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
 )
-from ch24_idea_dst._ref.ch24_path import create_idea0001_path
+from ch24_idea_dst._ref.ch24_path import create_mind0001_path
 from os.path import exists as os_path_exists
 from sqlite3 import Cursor as sqlite3_Cursor, connect as sqlite3_connect
 
@@ -194,7 +194,7 @@ def collect_full_world_idea_csv_strs(world_dir: str) -> dict[str, str]:
     return x_csv_strs
 
 
-def create_idea0001_file(
+def create_mind0001_file(
     world_dir: str,
     output_dir: str,
     world_name: str,
@@ -208,9 +208,9 @@ def create_idea0001_file(
         csv_str = delete_column_from_csv_string(csv_str, "spark_num")
         with_spark_face_csvs[csv_key] = csv_str
 
-    csv_dict_to_excel(with_spark_face_csvs, output_dir, "idea0001.xlsx")
+    csv_dict_to_excel(with_spark_face_csvs, output_dir, "mind0001.xlsx")
 
     # Hard to test function to prettify the excel file
     if prettify_excel_bool:
-        idea0001_path = create_idea0001_path(output_dir)
-        prettify_excel_file(idea0001_path)
+        mind0001_path = create_mind0001_path(output_dir)
+        prettify_excel_file(mind0001_path)
