@@ -231,12 +231,12 @@ def create_simple_2m2p5pledges_idea_csvs() -> dict[str, str]:
     add_personunit_to_idea_csv_strs(m1_steve_person, idea_csv_strs, ",")
     add_personunit_to_idea_csv_strs(m1_emman_person, idea_csv_strs, ",")
 
-    # add heart moment
-    heart01_rope = create_rope("heart01")
+    # add sport moment
+    sport01_rope = create_rope("sport01")
     steve_name = "Steve"
     emman_name = "Emmanuel"
-    h1_steve_person = personunit_shop(steve_name, heart01_rope)
-    h1_emman_person = personunit_shop(emman_name, heart01_rope)
+    h1_steve_person = personunit_shop(steve_name, sport01_rope)
+    h1_emman_person = personunit_shop(emman_name, sport01_rope)
     h1_steve_person.add_contactunit(steve_name)
     h1_steve_person.add_contactunit(emman_name)
     h1_emman_person.add_contactunit(emman_name)
@@ -252,7 +252,7 @@ def create_simple_2m2p5pledges_idea_csvs() -> dict[str, str]:
     h1_emman_person.thinkout()
     add_personunit_to_idea_csv_strs(h1_steve_person, idea_csv_strs, ",")
     add_personunit_to_idea_csv_strs(h1_emman_person, idea_csv_strs, ",")
-    return transform_bk00129_into_bk00002_in_csvs(idea_csv_strs, heart01_rope)
+    return transform_bk00129_into_bk00002_in_csvs(idea_csv_strs, sport01_rope)
 
 
 def create_emmanuel_lovemaking_idea_csvs() -> dict[str, str]:

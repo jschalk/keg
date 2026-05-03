@@ -23,6 +23,7 @@
   "GroupTitle": {"exam_tier": 0, "init_chapter": "ch02", "semantic_type": "str"}, 
   "HealerName": {"exam_tier": 0, "init_chapter": "ch02", "semantic_type": "str"}, 
   "INSERT": {"exam_tier": 0, "init_chapter": "ch00"}, 
+  "heart": {"exam_tier": 0, "init_chapter": ""}, 
   "Keyword": {"exam_tier": 0, "init_chapter": "ch00"}, 
   "KnotTerm": {"exam_tier": 0, "init_chapter": "ch04", "semantic_type": "str"}, 
   "LabelTerm": {"exam_tier": 0, "init_chapter": "ch04", "semantic_type": "str"}, 

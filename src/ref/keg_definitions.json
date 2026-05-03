@@ -217,6 +217,7 @@
   "heard_agg": "stage_type_order=11 Populated by aggregated Heard Raw tables. Nabu number conversions take place here.", 
   "heard_raw": "stage_type_order=10 Populated by Sound Valid tables", 
   "heard_vld": "stage_type_order=12 Populated by aggregated and Nabu changed Heard Agg tables", 
+  "heart": "Not used in codebase.", 
   "hn_blu": "Example key with value ';herenow_blu;' used for tests throughout codebase.", 
   "hn_red": "Example key with value ';herenow_red;' used for tests throughout codebase.", 
   "hn_yel": "Example key with value ';herenow_yel;' used for tests throughout codebase.", 
