@@ -194,6 +194,8 @@
   "FundGrain": "float first used in ch02. Smallest Unit of fund_num", 
   "FundNum": "float first used in ch02. FundNum inherits from float class", 
   "gcal": "TODO", 
+  "Gift": "TODO", 
+  "gift": "TODO", 
   "give_force": ", Award seed.", 
   "global": "Used so often in Python that it cannot be given any kegology meaning.", 
   "gogo_calc": ", Plan thinkout", 

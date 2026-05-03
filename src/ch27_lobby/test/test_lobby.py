@@ -27,3 +27,6 @@ def test_lobbyunit_shop_ReturnsObj():
 
 
 # def test_LobbyUnit_CreateOptionLessons():
+# The lobby process model is as follows
+# 1. offer gift. Gifts are Ideas that are meant to appeal to the audience
+# 2. Describe possible future Gifts. From you, from me.
