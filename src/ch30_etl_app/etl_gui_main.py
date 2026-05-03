@@ -57,12 +57,20 @@ from tkinter.scrolledtext import ScrolledText as tk_ScrolledText
 
 
 class OptionTable(tk_Frame):
-    def __init__(self, parent, options: dict, i_src_dir: str, me_personname, **kwargs):
+    def __init__(
+        self,
+        parent,
+        options: dict,
+        i_src_dir: str,
+        me_personname,
+        on_select_callback=None,
+        **kwargs,
+    ):
         super().__init__(parent, **kwargs)
         self.options = options
         self.i_src_dir = i_src_dir
         self.me_personname = me_personname
-        # self.you_personname = you_personname
+        self.on_select_callback = on_select_callback
         self._build()
 
     def _build(self):
@@ -102,7 +110,8 @@ class OptionTable(tk_Frame):
         if callable(fn):
             fn(self.i_src_dir())  # ← call it to get the current string value
         fill_spark_face_in_directory(self.i_src_dir(), self.me_personname())
-        # prettify_excel_files(self.i_src_dir())
+        if self.on_select_callback:
+            self.on_select_callback()
 
 
 def open_directory(path: str) -> None:
@@ -350,6 +359,8 @@ class ETLApp(tk_Tk):
         if self._output:
             set_dir(self._output.get())
         self._status.set(f"✔  Deleted contents of {path}")
+        self._refresh_ideas_list()
+        self._refresh_bricks_list()
 
     def _text_row(self, parent, row, label, var, *, required, tip):
         """Render one label + plain text entry row (no browse button)."""
@@ -467,7 +478,17 @@ class ETLApp(tk_Tk):
         self._run_btn.pack()
 
         options = get_option_table_options()
-        table = OptionTable(left, options, self._i_src_dir.get, self._me_personname.get)
+        refresh_callback = lambda: (
+            self._refresh_ideas_list(),
+            self._refresh_bricks_list(),
+        )
+        table = OptionTable(
+            left,
+            options,
+            self._i_src_dir.get,
+            self._me_personname.get,
+            on_select_callback=refresh_callback,
+        )
         table.pack(fill=tk_BOTH, expand=True, padx=10, pady=10)
 
         self._run_btn.bind(
@@ -481,7 +502,7 @@ class ETLApp(tk_Tk):
         # MIDDLE PANEL ───────────────────────────
         middle = tk_Frame(body, bg=ax.bg, width=320)
         middle.grid(row=0, column=1, sticky="nsew")
-        self._build_excel_panel(middle)
+        self._build_files_panel(middle)
 
         # DIVIDER middle|right ────────────────────
         tk_Frame(body, bg=ax.border, width=1).grid(row=0, column=1, sticky="nse")
@@ -491,25 +512,26 @@ class ETLApp(tk_Tk):
         right.grid(row=0, column=2, sticky="nsew")
         self._build_viewer_panel(right)
 
-    def _build_excel_panel(self, parent):
-        """Middle panel: scrollable list of .xlsx files in the Bricks directory."""
+    def _build_files_panel(self, parent):
+        """Middle panel: scrollable lists of .xlsx files in Ideas and Bricks directories."""
         ax = get_app_glb_attrs()
 
+        # ─── IDEAS SECTION ───────────────────────
         # Header
-        hdr = tk_Frame(parent, bg=ax.bg, pady=12)
-        hdr.pack(fill="x", padx=16)
+        ideas_hdr = tk_Frame(parent, bg=ax.bg, pady=12)
+        ideas_hdr.pack(fill="x", padx=16)
 
         tk_Label(
-            hdr,
-            text="BRICKS (xlsx)",
+            ideas_hdr,
+            text="IDEAS (xlsx)",
             font=ax.mono,
             bg=ax.bg,
             fg=ax.accent,
             anchor="w",
         ).pack(side="left")
 
-        refresh_btn = tk_Button(
-            hdr,
+        ideas_refresh_btn = tk_Button(
+            ideas_hdr,
             text="↺",
             font=ax.mono,
             bg=ax.border,
@@ -521,53 +543,145 @@ class ETLApp(tk_Tk):
             padx=8,
             pady=2,
             cursor="hand2",
-            command=self._refresh_excel_list,
+            command=self._refresh_ideas_list,
         )
-        refresh_btn.pack(side="right")
+        ideas_refresh_btn.pack(side="right")
 
         tk_Frame(parent, bg=ax.border, height=1).pack(fill="x", padx=16)
 
-        # Treeview
-        tree_frame = tk_Frame(parent, bg=ax.bg)
-        tree_frame.pack(fill=tk_BOTH, expand=True, padx=8, pady=8)
+        # Ideas Treeview
+        ideas_tree_frame = tk_Frame(parent, bg=ax.bg)
+        ideas_tree_frame.pack(fill=tk_BOTH, expand=True, padx=8, pady=8)
 
-        scrollbar = tkinter_ttk.Scrollbar(tree_frame, orient=tk_VERTICAL)
-        self._excel_tree = tkinter_ttk.Treeview(
-            tree_frame,
+        ideas_scrollbar = tkinter_ttk.Scrollbar(ideas_tree_frame, orient=tk_VERTICAL)
+        self._ideas_tree = tkinter_ttk.Treeview(
+            ideas_tree_frame,
             columns=("filename",),
             show="headings",
             selectmode="browse",
-            yscrollcommand=scrollbar.set,
+            yscrollcommand=ideas_scrollbar.set,
         )
-        scrollbar.config(command=self._excel_tree.yview)
-        self._excel_tree.heading("filename", text="File")
-        self._excel_tree.column("filename", anchor=tk_W)
-        self._excel_tree.pack(side=tk_LEFT, fill=tk_BOTH, expand=True)
-        scrollbar.pack(side=tk_RIGHT, fill=tk_Y)
+        ideas_scrollbar.config(command=self._ideas_tree.yview)
+        self._ideas_tree.heading("filename", text="File")
+        self._ideas_tree.column("filename", anchor=tk_W)
+        self._ideas_tree.pack(side=tk_LEFT, fill=tk_BOTH, expand=True)
+        ideas_scrollbar.pack(side=tk_RIGHT, fill=tk_Y)
 
-        self._excel_tree.bind("<Double-1>", self._on_excel_double_click)
+        self._ideas_tree.bind("<Double-1>", self._on_ideas_double_click)
 
-        # Hint
-        self._excel_hint = tk_Label(
+        # Ideas Hint
+        self._ideas_hint = tk_Label(
+            parent,
+            text="Set IDEAS_DIR then click ↺",
+            font=ax.mono,
+            bg=ax.bg,
+            fg=ax.fg_dim,
+        )
+        self._ideas_hint.pack(pady=8)
+
+        # ─── BRICKS SECTION ──────────────────────
+        # Header
+        bricks_hdr = tk_Frame(parent, bg=ax.bg, pady=12)
+        bricks_hdr.pack(fill="x", padx=16)
+
+        tk_Label(
+            bricks_hdr,
+            text="BRICKS (Ideas ordered by Spark Numbers)",
+            font=ax.mono,
+            bg=ax.bg,
+            fg=ax.accent,
+            anchor="w",
+        ).pack(side="left")
+
+        bricks_refresh_btn = tk_Button(
+            bricks_hdr,
+            text="↺",
+            font=ax.mono,
+            bg=ax.border,
+            fg=ax.fg,
+            activebackground=ax.accent,
+            activeforeground=ax.fg_black,
+            relief="flat",
+            bd=0,
+            padx=8,
+            pady=2,
+            cursor="hand2",
+            command=self._refresh_bricks_list,
+        )
+        bricks_refresh_btn.pack(side="right")
+
+        tk_Frame(parent, bg=ax.border, height=1).pack(fill="x", padx=16)
+
+        # Bricks Treeview
+        bricks_tree_frame = tk_Frame(parent, bg=ax.bg)
+        bricks_tree_frame.pack(fill=tk_BOTH, expand=True, padx=8, pady=8)
+
+        bricks_scrollbar = tkinter_ttk.Scrollbar(bricks_tree_frame, orient=tk_VERTICAL)
+        self._bricks_tree = tkinter_ttk.Treeview(
+            bricks_tree_frame,
+            columns=("filename",),
+            show="headings",
+            selectmode="browse",
+            yscrollcommand=bricks_scrollbar.set,
+        )
+        bricks_scrollbar.config(command=self._bricks_tree.yview)
+        self._bricks_tree.heading("filename", text="File")
+        self._bricks_tree.column("filename", anchor=tk_W)
+        self._bricks_tree.pack(side=tk_LEFT, fill=tk_BOTH, expand=True)
+        bricks_scrollbar.pack(side=tk_RIGHT, fill=tk_Y)
+
+        self._bricks_tree.bind("<Double-1>", self._on_bricks_double_click)
+
+        # Bricks Hint
+        self._bricks_hint = tk_Label(
             parent,
             text="Set BRICKS_DIR then click ↺",
             font=ax.mono,
             bg=ax.bg,
             fg=ax.fg_dim,
         )
-        self._excel_hint.pack(pady=8)
+        self._bricks_hint.pack(pady=8)
 
-        # Populate immediately if dir is already set
-        self._b_src_dir.trace_add("write", lambda *_: self._refresh_excel_list())
-        self._refresh_excel_list()
+        # Populate immediately if dirs are already set
+        self._i_src_dir.trace_add("write", lambda *_: self._refresh_ideas_list())
+        self._b_src_dir.trace_add("write", lambda *_: self._refresh_bricks_list())
+        self._refresh_ideas_list()
+        self._refresh_bricks_list()
 
-    def _refresh_excel_list(self):
+    def _refresh_ideas_list(self):
+        """Scan IDEAS_DIR for .xlsx files and populate the tree."""
+        self._ideas_tree.delete(*self._ideas_tree.get_children())
+        self._ideas_paths = {}
+        ideas_dir = self._i_src_dir.get().strip()
+        if not ideas_dir or not os_path_isdir(ideas_dir):
+            self._ideas_hint.pack(pady=8)
+            return
+        try:
+            files = sorted(
+                f
+                for f in os_listdir(ideas_dir)
+                if f.lower().endswith(".xlsx")
+                and os_path_isfile(os_path_join(ideas_dir, f))
+            )
+        except OSError:
+            self._ideas_hint.pack(pady=8)
+            return
+        if not files:
+            self._ideas_hint.configure(text="No .xlsx files found.")
+            self._ideas_hint.pack(pady=8)
+            return
+        self._ideas_hint.pack_forget()
+        for fname in files:
+            item_id = self._ideas_tree.insert("", tk_END, values=(fname,))
+            self._ideas_paths[item_id] = os_path_join(ideas_dir, fname)
+
+    def _refresh_bricks_list(self):
         """Scan BRICKS_DIR for .xlsx files and populate the tree."""
-        self._excel_tree.delete(*self._excel_tree.get_children())
-        self._excel_paths = {}
+        self._bricks_tree.delete(*self._bricks_tree.get_children())
+        self._bricks_paths = {}
         bricks_dir = self._b_src_dir.get().strip()
         if not bricks_dir or not os_path_isdir(bricks_dir):
-            self._excel_hint.pack(pady=8)
+            self._bricks_hint.pack(pady=8)
             return
         try:
             files = sorted(
@@ -577,23 +691,32 @@ class ETLApp(tk_Tk):
                 and os_path_isfile(os_path_join(bricks_dir, f))
             )
         except OSError:
-            self._excel_hint.pack(pady=8)
+            self._bricks_hint.pack(pady=8)
             return
         if not files:
-            self._excel_hint.configure(text="No .xlsx files found.")
-            self._excel_hint.pack(pady=8)
+            self._bricks_hint.configure(text="No .xlsx files found.")
+            self._bricks_hint.pack(pady=8)
             return
-        self._excel_hint.pack_forget()
+        self._bricks_hint.pack_forget()
         for fname in files:
-            bkd = self._excel_tree.insert("", tk_END, values=(fname,))
-            self._excel_paths[bkd] = os_path_join(bricks_dir, fname)
+            item_id = self._bricks_tree.insert("", tk_END, values=(fname,))
+            self._bricks_paths[item_id] = os_path_join(bricks_dir, fname)
 
-    def _on_excel_double_click(self, _event):
-        """Open the selected Excel file with the default application."""
-        selected = self._excel_tree.selection()
+    def _on_ideas_double_click(self, _event):
+        """Open the selected Ideas file with the default application."""
+        selected = self._ideas_tree.selection()
         if not selected:
             return
-        path = self._excel_paths.get(selected[0])
+        path = self._ideas_paths.get(selected[0])
+        if path and os_path_isfile(path):
+            subprocess_Popen(["cmd", "/c", "start", "", path], shell=False)
+
+    def _on_bricks_double_click(self, _event):
+        """Open the selected Bricks file with the default application."""
+        selected = self._bricks_tree.selection()
+        if not selected:
+            return
+        path = self._bricks_paths.get(selected[0])
         if path and os_path_isfile(path):
             subprocess_Popen(["cmd", "/c", "start", "", path], shell=False)
 
@@ -851,6 +974,8 @@ class ETLApp(tk_Tk):
         self._populate_viewer(persons_punchs)
         prettify_excel_files(self._i_src_dir.get())
         prettify_excel_files(self._b_src_dir.get())
+        self._refresh_ideas_list()
+        self._refresh_bricks_list()
         tkinter_messagebox.showinfo("Done", "ETL pipeline finished successfully.")
 
 
