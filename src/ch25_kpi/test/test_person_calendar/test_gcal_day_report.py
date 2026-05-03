@@ -9,7 +9,7 @@ from ch13_time.epoch_main import (
     timeshoe_shop,
 )
 from ch14_moment.moment_main import momentunit_shop, save_moment_file
-from ch18_etl_config._ref.ch18_path import create_world_db_path
+from ch18_etl_config._ref.ch18_path import create_moment_mstr_path, create_world_db_path
 from ch23_mind.mind import CREATE_MOMENT_TRANBOOK_NETS_SQLSTR
 from ch25_kpi._ref.ch25_path import (
     create_day_punch_txt_path as day_punch_path,
@@ -107,7 +107,9 @@ def test_get_gcal_day_punch_from_job_file_ReturnsObj_Scenario1_NonEmptyPerson(te
     sue_person.thinkout()
     apr7 = datetime(2010, 4, 7)
     # save momentunit json
-    mmt_mstr_dir = str(temp3_fs)
+    world_dir = str(temp3_fs)
+    mmt_mstr_dir = create_moment_mstr_path(world_dir)
+
     a23_moment = momentunit_shop(exx.a23, mmt_mstr_dir)
     a23_lasso = lassounit_shop(a23_moment.moment_rope, a23_moment.knot)
     assert a23_moment.epoch.epoch_label == x_epoch_label
@@ -133,12 +135,12 @@ def test_get_person_gcal_day_punchs_ReturnsObj_Scenario0_NoData(
     temp3_fs,
 ):
     # ESTABLISH
-    mmt_mstr_dir = str(temp3_fs)
+    world_dir = str(temp3_fs)
     apr7 = datetime(2010, 4, 7)
 
     # WHEN
     sue_day_punchs = get_person_gcal_day_punchs(
-        moment_mstr_dir=mmt_mstr_dir,
+        world_dir=world_dir,
         person_name=exx.sue,
         day=apr7,
         focus_group_title=exx.run,
@@ -162,7 +164,8 @@ def test_get_person_gcal_day_punchs_ReturnsObj_Scenario1_Two_day_punchs(
     sue_ep8_person.thinkout()
     apr7 = datetime(2010, 4, 7)
     # save momentunit json
-    mmt_mstr_dir = str(temp3_fs)
+    world_dir = str(temp3_fs)
+    mmt_mstr_dir = create_moment_mstr_path(world_dir)
     a23_moment = momentunit_shop(exx.a23, mmt_mstr_dir)
     ep8_moment = momentunit_shop(exx.ep8, mmt_mstr_dir)
     a23_lasso = lassounit_shop(a23_moment.moment_rope, a23_moment.knot)
@@ -177,7 +180,7 @@ def test_get_person_gcal_day_punchs_ReturnsObj_Scenario1_Two_day_punchs(
 
     # WHEN
     sue_day_punchs = get_person_gcal_day_punchs(
-        moment_mstr_dir=mmt_mstr_dir,
+        world_dir=world_dir,
         person_name=exx.sue,
         day=apr7,
         focus_group_title=exx.run,
@@ -207,7 +210,8 @@ def test_get_person_gcal_day_punchs_ReturnsObj_Scenario2_OnlySueReports(
     yao_ep8_person.thinkout()
     apr7 = datetime(2010, 4, 7)
     # save momentunit json
-    mmt_mstr_dir = str(temp3_fs)
+    world_dir = str(temp3_fs)
+    mmt_mstr_dir = create_moment_mstr_path(world_dir)
     a23_moment = momentunit_shop(exx.a23, mmt_mstr_dir)
     ep8_moment = momentunit_shop(exx.ep8, mmt_mstr_dir)
     a23_lasso = lassounit_shop(a23_moment.moment_rope, a23_moment.knot)
@@ -223,7 +227,7 @@ def test_get_person_gcal_day_punchs_ReturnsObj_Scenario2_OnlySueReports(
 
     # WHEN
     sue_day_punchs = get_person_gcal_day_punchs(
-        moment_mstr_dir=mmt_mstr_dir,
+        world_dir=world_dir,
         person_name=exx.sue,
         day=apr7,
         focus_group_title=exx.run,
@@ -261,7 +265,9 @@ def test_mind_to_person_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     yao_ep8_person.thinkout()
     apr7 = datetime(2010, 4, 7)
     # save momentunit json
-    mmt_mstr_dir = str(temp3_fs)
+    world_dir = str(temp3_fs)
+    mmt_mstr_dir = create_moment_mstr_path(world_dir)
+
     a23_moment = momentunit_shop(exx.a23, mmt_mstr_dir)
     ep8_moment = momentunit_shop(exx.ep8, mmt_mstr_dir)
     a23_lasso = lassounit_shop(a23_moment.moment_rope, a23_moment.knot)
@@ -281,7 +287,7 @@ def test_mind_to_person_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
 
     # WHEN
     mind_to_person_gcal_day_punchs(
-        moment_mstr_dir=mmt_mstr_dir,
+        world_dir=world_dir,
         person_name=exx.sue,
         day=apr7,
         focus_group_title=exx.run,
@@ -306,7 +312,9 @@ def test_mind_to_person_gcal_day_punchs_SavesFiles_Scenario1_IncludesTranBook(te
     sue_a23_person.thinkout()
     apr7 = datetime(2010, 4, 7)
     # save momentunit json
-    mmt_mstr_dir = str(temp3_fs)
+    world_dir = str(temp3_fs)
+    mmt_mstr_dir = create_moment_mstr_path(world_dir)
+
     a23_moment = momentunit_shop(exx.a23, mmt_mstr_dir)
     a23_lasso = lassounit_shop(a23_moment.moment_rope, a23_moment.knot)
     assert a23_moment.epoch.epoch_label == x_epoch_label
@@ -330,7 +338,7 @@ VALUES
 
     # WHEN
     mind_to_person_gcal_day_punchs(
-        moment_mstr_dir=mmt_mstr_dir,
+        world_dir=world_dir,
         person_name=exx.sue,
         day=apr7,
         focus_group_title=exx.run,
@@ -350,7 +358,9 @@ def test_copy_person_day_punches_to_dst_dir_SavesFiles_Scenario0_TwoSueReports(
 ):
     # ESTABLISH
     # save momentunit json
-    mmt_mstr_dir = str(temp3_fs)
+    world_dir = str(temp3_fs)
+    mmt_mstr_dir = create_moment_mstr_path(world_dir)
+
     a23_moment = momentunit_shop(exx.a23, mmt_mstr_dir)
     ep8_moment = momentunit_shop(exx.ep8, mmt_mstr_dir)
     a23_lasso = lassounit_shop(a23_moment.moment_rope, a23_moment.knot)

@@ -200,7 +200,7 @@ def idea_sheets_to_gcal_day_punchs(
     idea_sheets_to_mind_mstr(worlddir, export_db=True)
     for person_name in sorted(person_names):
         mind_to_person_gcal_day_punchs(
-            moment_mstr_dir=worlddir.moment_mstr_dir,
+            world_dir=worlddir.world_dir,
             person_name=person_name,
             day=day,
             focus_group_title=focus_group_title,

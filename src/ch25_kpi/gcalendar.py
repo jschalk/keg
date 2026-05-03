@@ -25,7 +25,7 @@ from ch13_time.epoch_main import (
 )
 from ch13_time.epoch_reason import set_epoch_fact
 from ch14_moment.moment_main import open_moment_file
-from ch18_etl_config._ref.ch18_path import create_world_db_path
+from ch18_etl_config._ref.ch18_path import create_moment_mstr_path, create_world_db_path
 from ch25_kpi._ref.ch25_path import (
     create_day_punch_txt_path,
     create_dst_person_punch_path,
@@ -446,10 +446,10 @@ def add_gcal_day_punch_to_dict(
 
 
 def get_persontranbookmetrics(
-    moment_mstr_dir,
+    world_dir,
 ) -> dict[tuple[MomentRope, PersonName], PersonTranBookMetric]:
     # sourcery skip: extract-method
-    world_db_path = create_world_db_path(moment_mstr_dir)
+    world_db_path = create_world_db_path(world_dir)
     persontranbookmetrics = {}
     if os_path_exists(world_db_path):
         with sqlite3_connect(world_db_path) as conn:
@@ -474,13 +474,14 @@ def get_persontranbookmetrics(
 
 
 def get_person_gcal_day_punchs(
-    moment_mstr_dir: str,
+    world_dir: str,
     person_name: PersonName,
     day: datetime,
     focus_group_title: GroupTitle = None,
 ) -> dict[PersonName, dict[str, str]]:
-    persontranbookmetrics = get_persontranbookmetrics(moment_mstr_dir)
+    persontranbookmetrics = get_persontranbookmetrics(world_dir)
     day_punchs = {}
+    moment_mstr_dir = create_moment_mstr_path(world_dir)
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):
         moment_lasso = lassounit_shop(create_rope(moment_label))
@@ -503,13 +504,13 @@ def get_person_gcal_day_punchs(
 
 
 def mind_to_person_gcal_day_punchs(
-    moment_mstr_dir: str,
+    world_dir: str,
     person_name: PersonName,
     day: datetime,
     focus_group_title: GroupTitle = None,
 ):
     day_punchs = get_person_gcal_day_punchs(
-        moment_mstr_dir, person_name, day, focus_group_title
+        world_dir, person_name, day, focus_group_title
     )
     for person_name, report_dict in day_punchs.items():
         file_path = report_dict.get("file_path")
