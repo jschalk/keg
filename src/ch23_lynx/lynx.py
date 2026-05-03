@@ -40,7 +40,7 @@ from ch14_moment.moment_cell import (
     set_cell_trees_found_facts,
 )
 from ch14_moment.moment_main import open_moment_file
-from ch17_idea.idea_config import get_idea_sqlite_types
+from ch17_brick.brick_config import get_brick_sqlite_types
 from ch18_etl_config._ref.ch18_path import (
     create_last_run_metrics_path,
     create_moment_ote1_csv_path,
@@ -54,12 +54,12 @@ from sqlite3 import Cursor as sqlite3_Cursor
 
 
 def etl_moment_ote1_agg_csvs_to_jsons(moment_mstr_dir: str):
-    idea_types = get_idea_sqlite_types()
+    brick_types = get_brick_sqlite_types()
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):
         moment_lasso = lassounit_shop(create_rope(moment_label))
         csv_path = create_moment_ote1_csv_path(moment_mstr_dir, moment_lasso)
-        csv_arrays = open_csv_with_types(csv_path, idea_types)
+        csv_arrays = open_csv_with_types(csv_path, brick_types)
         x_dict = {}
         header_row = csv_arrays.pop(0)
         for row in csv_arrays:
@@ -108,7 +108,7 @@ def save_spark_lesson_json(
 
 
 def add_personatoms_from_csv(spark_lesson: LessonUnit, spark_dir: str):
-    idea_sqlite_types = get_idea_sqlite_types()
+    brick_sqlite_types = get_brick_sqlite_types()
     person_dimens = get_person_dimens()
     person_dimens.remove("personunit")
     for person_dimen in person_dimens:
@@ -123,7 +123,7 @@ def add_personatoms_from_csv(spark_lesson: LessonUnit, spark_dir: str):
         put_path = create_path(spark_dir, person_dimen_put_csv)
         del_path = create_path(spark_dir, person_dimen_del_csv)
         if os_path_exists(put_path):
-            put_rows = open_csv_with_types(put_path, idea_sqlite_types)
+            put_rows = open_csv_with_types(put_path, brick_sqlite_types)
             headers = put_rows.pop(0)
             for put_row in put_rows:
                 x_atom = personatom_shop(person_dimen, "INSERT")
@@ -138,7 +138,7 @@ def add_personatoms_from_csv(spark_lesson: LessonUnit, spark_dir: str):
                 spark_lesson.persondelta.set_personatom(x_atom)
 
         if os_path_exists(del_path):
-            del_rows = open_csv_with_types(del_path, idea_sqlite_types)
+            del_rows = open_csv_with_types(del_path, brick_sqlite_types)
             headers = del_rows.pop(0)
             for del_row in del_rows:
                 x_atom = personatom_shop(person_dimen, "DELETE")
@@ -223,16 +223,16 @@ def etl_spark_inherited_personunits_to_lynx_gut(moment_mstr_dir: str):
             save_file(gut_path, None, max_spark_person_json)
 
 
-def get_max_ideax_agg_spark_num(cursor: sqlite3_Cursor) -> int:
-    agg_tables = get_db_tables(cursor, "ideax_agg")
-    ideax_aggs_max_spark_num = 0
+def get_max_brixk_agg_spark_num(cursor: sqlite3_Cursor) -> int:
+    agg_tables = get_db_tables(cursor, "brixk_agg")
+    brixk_aggs_max_spark_num = 0
     for agg_table in agg_tables:
-        if agg_table.startswith("ii") and agg_table.endswith("ideax_agg"):
+        if agg_table.startswith("bk") and agg_table.endswith("brixk_agg"):
             sqlstr = f"SELECT MAX(spark_num) FROM {agg_table}"
             table_max_spark_num = cursor.execute(sqlstr).fetchone()[0] or 1
-            if table_max_spark_num > ideax_aggs_max_spark_num:
-                ideax_aggs_max_spark_num = table_max_spark_num
-    return ideax_aggs_max_spark_num
+            if table_max_spark_num > brixk_aggs_max_spark_num:
+                brixk_aggs_max_spark_num = table_max_spark_num
+    return brixk_aggs_max_spark_num
 
 
 def add_lynx_epoch_to_lynx_guts(moment_mstr_dir: str):
@@ -298,9 +298,9 @@ def etl_moment_json_contact_nets_to_moment_contact_nets_table(
 
 
 def create_last_run_metrics_json(cursor: sqlite3_Cursor, moment_mstr_dir: str):
-    max_ideax_agg_spark_num = get_max_ideax_agg_spark_num(cursor)
+    max_brixk_agg_spark_num = get_max_brixk_agg_spark_num(cursor)
     last_run_metrics_path = create_last_run_metrics_path(moment_mstr_dir)
-    last_run_metrics_dict = {"max_ideax_agg_spark_num": max_ideax_agg_spark_num}
+    last_run_metrics_dict = {"max_brixk_agg_spark_num": max_brixk_agg_spark_num}
     save_json(last_run_metrics_path, None, last_run_metrics_dict)
 
 

@@ -18,10 +18,10 @@
 - ch14_moment: all_tranbook, ch14, cumulative_minute, job_listen_rotations, moment_budunit, moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, moment_paybook, moment_static, moment_timeoffi, momentunit, offi_times, paybook, personbudhistorys, weekday_label, weekday_order
 - ch15_nabu: Nabu, NabuTime, ch15, inx_epoch_diff, inx_time, nabu, nabu_timenum, otx2inx, otx_epoch_length, otx_time, timenabu
 - ch16_translate: ch16, inx_knot, inx_label, inx_name, inx_rope, inx_title, labelmap, namemap, otx_knot, otx_label, otx_name, otx_rope, otx_title, ropemap, titlemap, translate, translate_core, translate_label, translate_name, translate_rope, translate_title, translateunit, unknown_str
-- ch17_idea: Excel, allowed_crud, attributes, belief, build_order, ch17, delete_insert, delete_insert_update, delete_update, error_message, excel, fund_rank, idea, idea_category, idea_type, ii, insert_multiple, insert_one_time, insert_update, net_funds, otx_key, pledges_count, sheet, source_dimen, translate_spark_num, world_name
-- ch18_etl_config: b_dst, b_src, belve_dst, belve_src, ch18, h_agg, h_raw, h_vld, heard_agg, heard_raw, heard_vld, i_agg, i_raw, i_src, i_vld, ideax_agg, ideax_raw, ideax_src, ideax_vld, lynx, lynxx_mst, mmtbudd, mmthour, mmtmont, mmtoffi, mmtpayy, mmtunit, mmtweek, moment_ote1_agg, nabtime, person_net_amount, s_agg, s_raw, s_vld, sound_agg, sound_raw, sound_vld, sparks_ideax_agg, sparks_ideax_vld, trlcore, trllabe, trlname, trlrope, trltitl
+- ch17_brick: Excel, allowed_crud, attributes, belief, bk, brick, brick_category, brick_type, build_order, ch17, delete_insert, delete_insert_update, delete_update, error_message, excel, fund_rank, insert_multiple, insert_one_time, insert_update, net_funds, otx_key, pledges_count, sheet, source_dimen, translate_spark_num, world_name
+- ch18_etl_config: b_dst, b_src, belve_dst, belve_src, brixk_agg, brixk_raw, brixk_src, brixk_vld, ch18, h_agg, h_raw, h_vld, heard_agg, heard_raw, heard_vld, k_agg, k_raw, k_src, k_vld, lynx, lynxx_mst, mmtbudd, mmthour, mmtmont, mmtoffi, mmtpayy, mmtunit, mmtweek, moment_ote1_agg, nabtime, person_net_amount, s_agg, s_raw, s_vld, sound_agg, sound_raw, sound_vld, sparks_brixk_agg, sparks_brixk_vld, trlcore, trllabe, trlname, trlrope, trltitl
 - ch19_belief_src: ch19, day_punch, moment_contact_nets
-- ch20_etl_idea: ch20
+- ch20_etl_brick: ch20
 - ch21_sound: ch21
 - ch22_heard: ch22
 - ch23_lynx: ch23

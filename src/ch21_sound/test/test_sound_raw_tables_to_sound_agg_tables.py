@@ -31,7 +31,7 @@ def test_create_sound_raw_update_inconsist_error_message_sqlstr_ExecutedSqlUpdat
     trlrope_str = "translate_rope"
     trlrope_s_raw_tablename = create_prime_tablename(trlrope_str, kw.s_raw)
     insert_into_clause = f"""INSERT INTO {trlrope_s_raw_tablename} (
-  {kw.idea_type}
+  {kw.brick_type}
 , {kw.spark_num}
 , {kw.spark_face}
 , {kw.otx_rope}
@@ -41,9 +41,9 @@ def test_create_sound_raw_update_inconsist_error_message_sqlstr_ExecutedSqlUpdat
 , {kw.unknown_str}
 , {kw.error_message}
 )"""
-    b117 = "ii00174"
-    b045 = "ii00145"
-    b077 = "ii00177"
+    b117 = "bk00174"
+    b045 = "bk00145"
+    b077 = "bk00177"
     values_clause = f"""
 VALUES
   ('{b117}', {spark1}, '{exx.sue}', '{exx.yao}', '{yao_inx}', NULL, NULL, NULL, NULL)
@@ -82,7 +82,7 @@ def test_set_sound_raw_tables_error_message_UpdatesTable_Scenario0(cursor0: Curs
     create_sound_and_heard_tables(cursor0)
     trlrope_s_raw_tablename = create_prime_tablename(kw.translate_rope, kw.s_raw)
     insert_into_clause = f"""INSERT INTO {trlrope_s_raw_tablename} (
-  {kw.idea_type}
+  {kw.brick_type}
 , {kw.spark_num}
 , {kw.spark_face}
 , {kw.otx_rope}
@@ -92,9 +92,9 @@ def test_set_sound_raw_tables_error_message_UpdatesTable_Scenario0(cursor0: Curs
 , {kw.unknown_str}
 , {kw.error_message}
 )"""
-    b117 = "ii00174"
-    b045 = "ii00145"
-    b077 = "ii00177"
+    b117 = "bk00174"
+    b045 = "bk00145"
+    b077 = "bk00177"
     values_clause = f"""
 VALUES
   ('{b117}', {spark1}, '{exx.sue}', '{exx.yao}', '{yao_inx}', NULL, NULL, NULL, NULL)
@@ -114,9 +114,9 @@ VALUES
 
     # THEN
     assert cursor0.execute(error_count_sqlstr).fetchone()[0] == 2
-    error_select_sqlstr = f"SELECT idea_type, spark_num FROM {trlrope_s_raw_tablename} WHERE {kw.error_message} IS NOT NULL"
+    error_select_sqlstr = f"SELECT brick_type, spark_num FROM {trlrope_s_raw_tablename} WHERE {kw.error_message} IS NOT NULL"
     cursor0.execute(error_select_sqlstr)
-    assert cursor0.fetchall() == [("ii00174", 1), ("ii00177", 1)]
+    assert cursor0.fetchall() == [("bk00174", 1), ("bk00177", 1)]
 
 
 def test_set_sound_raw_tables_error_message_UpdatesTable_Scenario1_person_raw_del(
@@ -135,16 +135,16 @@ def test_set_sound_raw_tables_error_message_UpdatesTable_Scenario1_person_raw_de
     create_sound_and_heard_tables(cursor0)
     persona_s_raw_del = create_prime_tablename(kw.person_contactunit, kw.s_raw, "del")
     insert_into_clause = f"""INSERT INTO {persona_s_raw_del} (
-  {kw.idea_type}
+  {kw.brick_type}
 , {kw.spark_num}
 , {kw.spark_face}
 , {kw.moment_rope}
 , {kw.person_name}
 , {kw.contact_name}_ERASE
 )"""
-    b117 = "ii00174"
-    b045 = "ii00145"
-    b077 = "ii00177"
+    b117 = "bk00174"
+    b045 = "bk00145"
+    b077 = "bk00177"
     values_clause = f"""
 VALUES
   ('{b117}', {spark1}, '{exx.sue}', '{exx.a23}','{exx.yao}', '{yao_inx}')
@@ -182,7 +182,7 @@ def test_insert_sound_raw_selects_into_sound_agg_tables_PopulatesTable_Scenario0
     create_sound_and_heard_tables(cursor0)
     trlrope_s_raw_tablename = create_prime_tablename("TRLROPE", kw.s_raw)
     insert_into_clause = f"""INSERT INTO {trlrope_s_raw_tablename} (
-  {kw.idea_type}
+  {kw.brick_type}
 , {kw.spark_num}
 , {kw.spark_face}
 , {kw.otx_rope}
@@ -192,9 +192,9 @@ def test_insert_sound_raw_selects_into_sound_agg_tables_PopulatesTable_Scenario0
 , {kw.unknown_str}
 , {kw.error_message}
 )"""
-    b117 = "ii00174"
-    b020 = "ii00120"
-    b045 = "ii00145"
+    b117 = "bk00174"
+    b020 = "bk00120"
+    b045 = "bk00145"
     inconsistent_data_str = "Inconsistent data"
     values_clause = f"""
 VALUES
@@ -210,7 +210,7 @@ VALUES
     cursor0.execute(f"{insert_into_clause} {values_clause}")
     prncont_put_s_raw_tblname = create_prime_tablename("PRNCONT", kw.s_raw, "put")
     insert_into_clause = f"""INSERT INTO {prncont_put_s_raw_tblname} (
-  {kw.idea_type}
+  {kw.brick_type}
 , {kw.spark_num}
 , {kw.spark_face}
 , {kw.moment_rope}
@@ -271,12 +271,12 @@ def test_insert_sound_raw_selects_into_sound_agg_tables_PopulatesTable_Scenario1
 ):
     # ESTABLISH
     spark1 = 1
-    b117 = "ii00174"
-    b020 = "ii00120"
+    b117 = "bk00174"
+    b020 = "bk00120"
     create_sound_and_heard_tables(cursor0)
     prncont_del_s_raw_tblname = create_prime_tablename("PRNCONT", kw.s_raw, "del")
     insert_into_clause = f"""INSERT INTO {prncont_del_s_raw_tblname} (
-  {kw.idea_type}
+  {kw.brick_type}
 , {kw.spark_num}
 , {kw.spark_face}
 , {kw.moment_rope}
@@ -331,7 +331,7 @@ def test_etl_sound_raw_tables_to_sound_agg_tables_PopulatesTable_Scenario0(
     create_sound_and_heard_tables(cursor0)
     trlrope_s_raw_tablename = create_prime_tablename("TRLROPE", kw.s_raw)
     insert_into_clause = f"""INSERT INTO {trlrope_s_raw_tablename} (
-  {kw.idea_type}
+  {kw.brick_type}
 , {kw.spark_num}
 , {kw.spark_face}
 , {kw.otx_rope}
@@ -341,9 +341,9 @@ def test_etl_sound_raw_tables_to_sound_agg_tables_PopulatesTable_Scenario0(
 , {kw.unknown_str}
 , {kw.error_message}
 )"""
-    b117 = "ii00174"
-    b020 = "ii00120"
-    b045 = "ii00145"
+    b117 = "bk00174"
+    b020 = "bk00120"
+    b045 = "bk00145"
     inconsistent_data_str = "Inconsistent data"
     values_clause = f"""
 VALUES
@@ -360,7 +360,7 @@ VALUES
     cursor0.execute(f"{insert_into_clause} {values_clause}")
     prncont_put_s_raw_tblname = create_prime_tablename("PRNCONT", kw.s_raw, "put")
     insert_into_clause = f"""INSERT INTO {prncont_put_s_raw_tblname} (
-  {kw.idea_type}
+  {kw.brick_type}
 , {kw.spark_num}
 , {kw.spark_face}
 , {kw.moment_rope}
@@ -435,7 +435,7 @@ def test_etl_sound_raw_tables_to_sound_agg_tables_PopulatesTable_Scenario1_NoDup
     create_sound_and_heard_tables(cursor0)
     trlrope_s_raw_tablename = create_prime_tablename("TRLROPE", kw.s_raw)
     insert_into_clause = f"""INSERT INTO {trlrope_s_raw_tablename} (
-  {kw.idea_type}
+  {kw.brick_type}
 , {kw.spark_num}
 , {kw.spark_face}
 , {kw.otx_rope}
@@ -445,9 +445,9 @@ def test_etl_sound_raw_tables_to_sound_agg_tables_PopulatesTable_Scenario1_NoDup
 , {kw.unknown_str}
 , {kw.error_message}
 )"""
-    b117 = "ii00174"
-    b020 = "ii00120"
-    b045 = "ii00145"
+    b117 = "bk00174"
+    b020 = "bk00120"
+    b045 = "bk00145"
     values_clause = f"""
 VALUES
   ('{b117}', {spark1}, '{exx.sue}', '{exx.yao}', '{yao_inx}', NULL, NULL, NULL, NULL)
@@ -463,7 +463,7 @@ VALUES
     cursor0.execute(f"{insert_into_clause} {values_clause}")
     prncont_put_s_raw_tblname = create_prime_tablename("PRNCONT", kw.s_raw, "put")
     insert_into_clause = f"""INSERT INTO {prncont_put_s_raw_tblname} (
-  {kw.idea_type}
+  {kw.brick_type}
 , {kw.spark_num}
 , {kw.spark_face}
 , {kw.moment_rope}

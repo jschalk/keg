@@ -8,12 +8,12 @@ from ch09_person_lesson._ref.ch09_path import create_moments_dir_path
 from ch09_person_lesson.lasso import lassounit_shop
 from ch11_bud.bud_filehandler import open_person_file
 from ch14_moment.moment_main import open_moment_file
-from ch17_idea.idea_belief_csv import (
+from ch17_brick.brick_belief_csv import (
     add_momentunit_to_belief_csv_strs,
     add_personunit_to_belief_csv_strs,
-    create_init_belief_idea_csv_strs,
+    create_init_belief_brick_csv_strs,
 )
-from ch17_idea.idea_db_tool import csv_dict_to_excel, prettify_excel_file
+from ch17_brick.brick_db_tool import csv_dict_to_excel, prettify_excel_file
 from ch18_etl_config._ref.ch18_path import create_moment_mstr_path, create_world_db_path
 from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
@@ -24,7 +24,7 @@ from os.path import exists as os_path_exists
 from sqlite3 import Cursor as sqlite3_Cursor, connect as sqlite3_connect
 
 
-def add_to_ii00142_csv(x_csv: str, cursor: sqlite3_Cursor, csv_delimiter: str) -> str:
+def add_to_bk00142_csv(x_csv: str, cursor: sqlite3_Cursor, csv_delimiter: str) -> str:
     trltitl_s_vld_tablename = prime_tbl("TRLTITL", "s_vld")
     trlcore_s_vld_tablename = prime_tbl("TRLCORE", "s_vld")
 
@@ -56,7 +56,7 @@ ORDER BY
     return x_csv
 
 
-def add_to_ii00143_csv(x_csv: str, cursor: sqlite3_Cursor, csv_delimiter: str) -> str:
+def add_to_bk00143_csv(x_csv: str, cursor: sqlite3_Cursor, csv_delimiter: str) -> str:
     trlname_s_vld_tablename = prime_tbl("TRLNAME", "s_vld")
     trlcore_s_vld_tablename = prime_tbl("TRLCORE", "s_vld")
     select_sqlstr = f"""
@@ -86,7 +86,7 @@ ORDER BY
     return x_csv
 
 
-def add_to_ii00144_csv(x_csv: str, cursor: sqlite3_Cursor, csv_delimiter: str) -> str:
+def add_to_bk00144_csv(x_csv: str, cursor: sqlite3_Cursor, csv_delimiter: str) -> str:
     trllabe_s_vld_tablename = prime_tbl("TRLLABE", "s_vld")
     trlcore_s_vld_tablename = prime_tbl("TRLCORE", "s_vld")
 
@@ -117,7 +117,7 @@ ORDER BY
     return x_csv
 
 
-def add_to_ii00145_csv(x_csv: str, cursor: sqlite3_Cursor, csv_delimiter: str) -> str:
+def add_to_bk00145_csv(x_csv: str, cursor: sqlite3_Cursor, csv_delimiter: str) -> str:
     trlrope_s_vld_tablename = prime_tbl("TRLROPE", "s_vld")
     trlcore_s_vld_tablename = prime_tbl("TRLCORE", "s_vld")
 
@@ -151,23 +151,23 @@ ORDER BY
 def add_translate_rows_to_belief_csv_strs(
     cursor: sqlite3_Cursor, moment_csv_strs: dict[str, str], csv_delimiter: str
 ):
-    ii00142_csv = moment_csv_strs.get("ii00142")
-    ii00143_csv = moment_csv_strs.get("ii00143")
-    ii00144_csv = moment_csv_strs.get("ii00144")
-    ii00145_csv = moment_csv_strs.get("ii00145")
-    ii00142_csv = add_to_ii00142_csv(ii00142_csv, cursor, csv_delimiter)
-    ii00143_csv = add_to_ii00143_csv(ii00143_csv, cursor, csv_delimiter)
-    ii00144_csv = add_to_ii00144_csv(ii00144_csv, cursor, csv_delimiter)
-    ii00145_csv = add_to_ii00145_csv(ii00145_csv, cursor, csv_delimiter)
-    moment_csv_strs["ii00142"] = ii00142_csv
-    moment_csv_strs["ii00143"] = ii00143_csv
-    moment_csv_strs["ii00144"] = ii00144_csv
-    moment_csv_strs["ii00145"] = ii00145_csv
+    bk00142_csv = moment_csv_strs.get("bk00142")
+    bk00143_csv = moment_csv_strs.get("bk00143")
+    bk00144_csv = moment_csv_strs.get("bk00144")
+    bk00145_csv = moment_csv_strs.get("bk00145")
+    bk00142_csv = add_to_bk00142_csv(bk00142_csv, cursor, csv_delimiter)
+    bk00143_csv = add_to_bk00143_csv(bk00143_csv, cursor, csv_delimiter)
+    bk00144_csv = add_to_bk00144_csv(bk00144_csv, cursor, csv_delimiter)
+    bk00145_csv = add_to_bk00145_csv(bk00145_csv, cursor, csv_delimiter)
+    moment_csv_strs["bk00142"] = bk00142_csv
+    moment_csv_strs["bk00143"] = bk00143_csv
+    moment_csv_strs["bk00144"] = bk00144_csv
+    moment_csv_strs["bk00145"] = bk00145_csv
 
 
 def collect_full_world_belief_csv_strs(world_dir: str) -> dict[str, str]:
     moment_mstr_dir = create_moment_mstr_path(world_dir)
-    x_csv_strs = create_init_belief_idea_csv_strs()
+    x_csv_strs = create_init_belief_brick_csv_strs()
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):
         x_knot = default_knot_if_None()

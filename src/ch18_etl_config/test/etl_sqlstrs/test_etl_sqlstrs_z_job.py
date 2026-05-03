@@ -1,7 +1,7 @@
 from ch00_py.db_toolbox import db_table_exists, get_create_table_sqlstr, get_db_tables
 from ch07_person_logic.person_config import get_person_config_dict
-from ch17_idea.idea_config import get_idea_sqlite_types
-from ch17_idea.idea_db_tool import get_default_sorted_list
+from ch17_brick.brick_config import get_brick_sqlite_types
+from ch17_brick.brick_db_tool import get_default_sorted_list
 from ch18_etl_config.etl_sqlstr import (
     create_job_tables,
     create_prime_tablename as prime_table,
@@ -17,7 +17,7 @@ def test_get_job_create_table_sqlstrs_ReturnsObj():
     create_table_sqlstrs = get_job_create_table_sqlstrs()
 
     # THEN
-    s_types = get_idea_sqlite_types()
+    s_types = get_brick_sqlite_types()
     person_config = get_person_config_dict()
     for x_dimen in person_config.keys():
         # print(f"{x_dimen} checking...")

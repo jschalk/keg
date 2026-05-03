@@ -1,5 +1,5 @@
 from ch00_py.file_toolbox import count_files, create_path, set_dir
-from ch17_idea.idea_db_tool import open_csv
+from ch17_brick.brick_db_tool import open_csv
 from ch25_kpi.kpi_mstr import create_kpi_csvs
 from os.path import exists as os_path_exists
 from pandas import DataFrame

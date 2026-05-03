@@ -19,7 +19,7 @@ def test_WorldDir_Exists():
     assert not x_wdir.worlds_dir
     assert not x_wdir.output_dir
     assert not x_wdir.world_dir
-    assert not x_wdir.ideas_src_dir
+    assert not x_wdir.bricks_src_dir
     assert not x_wdir.beliefs_src_dir
     assert not x_wdir.db_path
     assert not x_wdir.moment_mstr_dir
@@ -29,54 +29,54 @@ def test_WorldDir_Exists():
         "output_dir",
         "world_dir",
         "beliefs_src_dir",
-        "ideas_src_dir",
+        "bricks_src_dir",
         "db_path",
         kw.moment_mstr_dir,
     }
 
 
-def test_WorldDir_set_ideas_src_dir_SetsDirsAndFiles(temp3_fs):
+def test_WorldDir_set_bricks_src_dir_SetsDirsAndFiles(temp3_fs):
     # ESTABLISH
     fay_wdir = WorldDir("Fay")
     x_example_dir = create_path(str(temp3_fs), "example_dir")
-    x_ideas_src_dir = create_path(x_example_dir, kw.i_src)
+    x_bricks_src_dir = create_path(x_example_dir, kw.k_src)
     assert not fay_wdir.world_dir
-    assert not fay_wdir.ideas_src_dir
+    assert not fay_wdir.bricks_src_dir
     assert not fay_wdir.beliefs_src_dir
     assert not fay_wdir.db_path
     assert not fay_wdir.moment_mstr_dir
-    assert os_path_exists(x_ideas_src_dir) is False
+    assert os_path_exists(x_bricks_src_dir) is False
 
     # WHEN
-    fay_wdir.set_ideas_src_dir(x_ideas_src_dir)
+    fay_wdir.set_bricks_src_dir(x_bricks_src_dir)
 
     # THEN
     assert not fay_wdir.world_dir
-    assert fay_wdir.ideas_src_dir == x_ideas_src_dir
+    assert fay_wdir.bricks_src_dir == x_bricks_src_dir
     assert not fay_wdir.beliefs_src_dir
     assert not fay_wdir.db_path
     assert not fay_wdir.moment_mstr_dir
-    assert os_path_exists(x_ideas_src_dir)
+    assert os_path_exists(x_bricks_src_dir)
 
 
 def test_WorldDir_set_beliefs_src_dir_SetsDirsAndFiles(temp3_fs):
     # ESTABLISH
     fay_wdir = WorldDir("Fay")
     x_example_dir = create_path(str(temp3_fs), "example_dir")
-    x_ideas_src_dir = create_path(x_example_dir, kw.i_src)
+    x_bricks_src_dir = create_path(x_example_dir, kw.k_src)
     x_beliefs_src_dir = create_path(x_example_dir, kw.b_src)
     assert not fay_wdir.world_dir
-    assert not fay_wdir.ideas_src_dir
+    assert not fay_wdir.bricks_src_dir
     assert not fay_wdir.beliefs_src_dir
     assert not fay_wdir.moment_mstr_dir
-    assert os_path_exists(x_ideas_src_dir) is False
+    assert os_path_exists(x_bricks_src_dir) is False
 
     # WHEN
     fay_wdir.set_beliefs_src_dir(x_beliefs_src_dir)
 
     # THEN
     assert not fay_wdir.world_dir
-    assert not fay_wdir.ideas_src_dir
+    assert not fay_wdir.bricks_src_dir
     assert fay_wdir.beliefs_src_dir == x_beliefs_src_dir
     assert not fay_wdir.moment_mstr_dir
     assert os_path_exists(x_beliefs_src_dir)
@@ -87,16 +87,16 @@ def test_WorldDir_set_world_dirs_SetsDirsAndFiles(temp3_fs):
     fay_str = "Fay"
     fay_wdir = WorldDir(world_name=fay_str, worlds_dir=str(temp3_fs))
     x_world_dir = create_path(str(temp3_fs), fay_str)
-    x_ideas_src_dir = create_path(x_world_dir, kw.i_src)
+    x_bricks_src_dir = create_path(x_world_dir, kw.k_src)
     x_beliefs_src_dir = create_path(x_world_dir, kw.b_src)
     x_moment_mstr_dir = create_path(x_world_dir, "moment_mstr")
 
     assert not fay_wdir.world_dir
-    assert not fay_wdir.ideas_src_dir
+    assert not fay_wdir.bricks_src_dir
     assert not fay_wdir.beliefs_src_dir
     assert not fay_wdir.moment_mstr_dir
     assert os_path_exists(x_world_dir) is False
-    assert os_path_exists(x_ideas_src_dir) is False
+    assert os_path_exists(x_bricks_src_dir) is False
     assert os_path_exists(x_beliefs_src_dir) is False
     assert os_path_exists(x_moment_mstr_dir) is False
 
@@ -105,9 +105,9 @@ def test_WorldDir_set_world_dirs_SetsDirsAndFiles(temp3_fs):
 
     # THEN
     assert fay_wdir.world_dir == x_world_dir
-    assert not fay_wdir.ideas_src_dir
+    assert not fay_wdir.bricks_src_dir
     assert os_path_exists(x_world_dir)
-    assert os_path_exists(x_ideas_src_dir) is False
+    assert os_path_exists(x_bricks_src_dir) is False
     assert os_path_exists(x_beliefs_src_dir) is False
     assert os_path_exists(x_moment_mstr_dir)
 
@@ -115,7 +115,7 @@ def test_WorldDir_set_world_dirs_SetsDirsAndFiles(temp3_fs):
 def test_worlddir_shop_ReturnsObj_Scenario0_WithParameters(temp3_fs):
     # ESTABLISH
     worlds2_dir = create_path(str(temp3_fs), "worlds2")
-    example_ideas_src_dir = create_path(str(temp3_fs), "example_ideas_src_dir")
+    example_bricks_src_dir = create_path(str(temp3_fs), "example_bricks_src_dir")
     example_beliefs_src_dir = create_path(str(temp3_fs), "example_beliefs_src_dir")
     output_dir = create_path(str(temp3_fs), "output")
     five_world_name = "five"
@@ -125,7 +125,7 @@ def test_worlddir_shop_ReturnsObj_Scenario0_WithParameters(temp3_fs):
         world_name=five_world_name,
         worlds_dir=worlds2_dir,
         output_dir=output_dir,
-        ideas_src_dir=example_ideas_src_dir,
+        bricks_src_dir=example_bricks_src_dir,
         beliefs_src_dir=example_beliefs_src_dir,
     )
 
@@ -133,7 +133,7 @@ def test_worlddir_shop_ReturnsObj_Scenario0_WithParameters(temp3_fs):
     assert x_wdir.world_name == five_world_name
     assert x_wdir.worlds_dir == worlds2_dir
     assert x_wdir.output_dir == output_dir
-    assert x_wdir.ideas_src_dir == example_ideas_src_dir
+    assert x_wdir.bricks_src_dir == example_bricks_src_dir
     assert x_wdir.beliefs_src_dir == example_beliefs_src_dir
     world_db_path = create_path(x_wdir.world_dir, "world.db")
     assert x_wdir.db_path == world_db_path
@@ -149,7 +149,7 @@ def test_worlddir_shop_ReturnsObj_Scenario1_WithoutParameters(temp3_fs):
     assert x_wdir.world_name == exx.a23
     assert x_wdir.worlds_dir == str(temp3_fs)
     assert x_wdir.output_dir == create_path(x_wdir.world_dir, "output")
-    assert x_wdir.ideas_src_dir == create_path(x_wdir.world_dir, "ideas_src")
+    assert x_wdir.bricks_src_dir == create_path(x_wdir.world_dir, "bricks_src")
     assert x_wdir.beliefs_src_dir == create_path(x_wdir.world_dir, "beliefs_src")
     assert x_wdir.db_path == create_path(x_wdir.world_dir, "world.db")
 

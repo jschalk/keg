@@ -1,6 +1,6 @@
 from ch00_py.db_toolbox import create_insert_query
 from ch18_etl_config.etl_config import (
-    etl_idea_category_config_dict as get_etl_config,
+    etl_brick_category_config_dict as get_etl_config,
     get_prime_columns,
     remove_inx_columns,
     remove_staging_columns,

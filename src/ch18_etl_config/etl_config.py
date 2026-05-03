@@ -4,10 +4,10 @@ from ch00_py.file_toolbox import create_path, open_json
 from ch08_person_atom.atom_config import get_delete_key_name
 from ch15_nabu.nabu_config import get_context_nabuable_args, set_nabuable_otx_inx_args
 from ch16_translate.translate_config import set_translateable_otx_inx_args
-from ch17_idea.idea_config import (
+from ch17_brick.brick_config import (
+    get_brick_config_dict,
+    get_brick_sqlite_types,
     get_default_sorted_list,
-    get_idea_config_dict,
-    get_idea_sqlite_types,
 )
 from copy import copy as copy_copy
 from os import getcwd as os_getcwd
@@ -125,7 +125,7 @@ class PrimeTablenameError(Exception):
 
 
 def create_prime_tablename(
-    idea_dimen_or_abbv7: str, stage_type: str, put_del: str = None
+    brick_dimen_or_abbv7: str, stage_type: str, put_del: str = None
 ) -> str:
     """
     stage examples 's_raw', 'h_agg', 'job'
@@ -160,9 +160,9 @@ def create_prime_tablename(
         "trllabe": "translate_label",
         "trlcore": "translate_core",
     }
-    tablename = idea_dimen_or_abbv7
-    if abbv_references.get(idea_dimen_or_abbv7.lower()):
-        tablename = abbv_references.get(idea_dimen_or_abbv7.lower())
+    tablename = brick_dimen_or_abbv7
+    if abbv_references.get(brick_dimen_or_abbv7.lower()):
+        tablename = abbv_references.get(brick_dimen_or_abbv7.lower())
 
     return (
         f"{tablename}_{put_del}_{stage_type}"
@@ -192,113 +192,113 @@ def get_ordered_stage_types() -> list[str]:
     return [order_dict[key] for key in sorted(order_dict)]
 
 
-def etl_idea_category_config_path() -> str:
-    "Returns path: ch18_etl_config/etl_idea_category_config.json"
+def etl_brick_category_config_path() -> str:
+    "Returns path: ch18_etl_config/etl_brick_category_config.json"
     src_dir = create_path(os_getcwd(), "src")
     chapter_dir = create_path(src_dir, "ch18_etl_config")
-    return create_path(chapter_dir, "etl_idea_category_config.json")
+    return create_path(chapter_dir, "etl_brick_category_config.json")
 
 
-def etl_idea_category_config_dict() -> dict:
+def etl_brick_category_config_dict() -> dict:
     """Config data for etl dimenensions (translate, moment, person...) including required columns per stage"""
-    return open_json(etl_idea_category_config_path())
+    return open_json(etl_brick_category_config_path())
 
 
 def get_etl_category_stages_dict() -> dict:
     return {
         "person_h_agg_put": {
-            "idea_category": "person",
+            "brick_category": "person",
             "stage_type": "h_agg",
             "put_del": "put",
         },
         "person_h_agg_del": {
-            "idea_category": "person",
+            "brick_category": "person",
             "stage_type": "h_agg",
             "put_del": "del",
         },
         "person_h_raw_put": {
-            "idea_category": "person",
+            "brick_category": "person",
             "stage_type": "h_raw",
             "put_del": "put",
         },
         "person_h_raw_del": {
-            "idea_category": "person",
+            "brick_category": "person",
             "stage_type": "h_raw",
             "put_del": "del",
         },
         "person_h_vld_put": {
-            "idea_category": "person",
+            "brick_category": "person",
             "stage_type": "h_vld",
             "put_del": "put",
         },
         "person_h_vld_del": {
-            "idea_category": "person",
+            "brick_category": "person",
             "stage_type": "h_vld",
             "put_del": "del",
         },
         "person_s_agg_put": {
-            "idea_category": "person",
+            "brick_category": "person",
             "stage_type": "s_agg",
             "put_del": "put",
         },
         "person_s_agg_del": {
-            "idea_category": "person",
+            "brick_category": "person",
             "stage_type": "s_agg",
             "put_del": "del",
         },
         "person_s_raw_put": {
-            "idea_category": "person",
+            "brick_category": "person",
             "stage_type": "s_raw",
             "put_del": "put",
         },
         "person_s_raw_del": {
-            "idea_category": "person",
+            "brick_category": "person",
             "stage_type": "s_raw",
             "put_del": "del",
         },
         "person_s_vld_put": {
-            "idea_category": "person",
+            "brick_category": "person",
             "stage_type": "s_vld",
             "put_del": "put",
         },
         "person_s_vld_del": {
-            "idea_category": "person",
+            "brick_category": "person",
             "stage_type": "s_vld",
             "put_del": "del",
         },
-        "moment_h_agg": {"idea_category": "moment", "stage_type": "h_agg"},
-        "moment_h_raw": {"idea_category": "moment", "stage_type": "h_raw"},
-        "moment_h_vld": {"idea_category": "moment", "stage_type": "h_vld"},
-        "moment_s_agg": {"idea_category": "moment", "stage_type": "s_agg"},
-        "moment_s_raw": {"idea_category": "moment", "stage_type": "s_raw"},
-        "moment_s_vld": {"idea_category": "moment", "stage_type": "s_vld"},
-        "nabu_h_agg": {"idea_category": "nabu", "stage_type": "h_agg"},
-        "nabu_h_raw": {"idea_category": "nabu", "stage_type": "h_raw"},
-        "nabu_s_agg": {"idea_category": "nabu", "stage_type": "s_agg"},
-        "nabu_s_raw": {"idea_category": "nabu", "stage_type": "s_raw"},
-        "nabu_s_vld": {"idea_category": "nabu", "stage_type": "s_vld"},
+        "moment_h_agg": {"brick_category": "moment", "stage_type": "h_agg"},
+        "moment_h_raw": {"brick_category": "moment", "stage_type": "h_raw"},
+        "moment_h_vld": {"brick_category": "moment", "stage_type": "h_vld"},
+        "moment_s_agg": {"brick_category": "moment", "stage_type": "s_agg"},
+        "moment_s_raw": {"brick_category": "moment", "stage_type": "s_raw"},
+        "moment_s_vld": {"brick_category": "moment", "stage_type": "s_vld"},
+        "nabu_h_agg": {"brick_category": "nabu", "stage_type": "h_agg"},
+        "nabu_h_raw": {"brick_category": "nabu", "stage_type": "h_raw"},
+        "nabu_s_agg": {"brick_category": "nabu", "stage_type": "s_agg"},
+        "nabu_s_raw": {"brick_category": "nabu", "stage_type": "s_raw"},
+        "nabu_s_vld": {"brick_category": "nabu", "stage_type": "s_vld"},
         "translate_s_agg": {
-            "idea_category": "translate",
+            "brick_category": "translate",
             "stage_type": "s_agg",
         },
         "translate_s_raw": {
-            "idea_category": "translate",
+            "brick_category": "translate",
             "stage_type": "s_raw",
         },
         "translate_s_vld": {
-            "idea_category": "translate",
+            "brick_category": "translate",
             "stage_type": "s_vld",
         },
         "translate_core_s_agg": {
-            "idea_category": "translate_core",
+            "brick_category": "translate_core",
             "stage_type": "s_agg",
         },
         "translate_core_s_raw": {
-            "idea_category": "translate_core",
+            "brick_category": "translate_core",
             "stage_type": "s_raw",
         },
         "translate_core_s_vld": {
-            "idea_category": "translate_core",
+            "brick_category": "translate_core",
             "stage_type": "s_vld",
         },
     }
@@ -328,16 +328,16 @@ def remove_staging_columns(columns_set: set) -> set:
 
 def get_all_dimen_columns_set(x_dimen: str) -> set[str]:
     if x_dimen == "translate_core":
-        translate_core_dict = etl_idea_category_config_dict().get("translate_core")
+        translate_core_dict = etl_brick_category_config_dict().get("translate_core")
         return set(translate_core_dict.get("override_columns"))
-    x_config = get_idea_config_dict().get(x_dimen)
+    x_config = get_brick_config_dict().get(x_dimen)
     columns = set(x_config.get("jkeys").keys())
     columns.update(set(x_config.get("jvalues").keys()))
     return columns
 
 
 def get_del_dimen_columns_set(x_dimen: str) -> set[str]:
-    x_config = get_idea_config_dict().get(x_dimen)
+    x_config = get_brick_config_dict().get(x_dimen)
     columns_set = set(x_config.get("jkeys").keys())
     columns_list = get_default_sorted_list(columns_set)
     columns_list[-1] = get_delete_key_name(columns_list[-1])
@@ -346,8 +346,8 @@ def get_del_dimen_columns_set(x_dimen: str) -> set[str]:
 
 def get_stages_order_general() -> list[str]:
     return [
-        "ideax_raw",
-        "ideax_agg",
+        "brixk_raw",
+        "brixk_agg",
         "sound_raw",
         "sound_agg",
         "sound_vld",
@@ -371,12 +371,12 @@ def get_stage_abbv5(stage_name: str) -> str:
 
 
 def get_prime_columns(
-    x_dimen: str, table_keylist: list[str], etl_idea_category_config: dict
+    x_dimen: str, table_keylist: list[str], etl_brick_category_config: dict
 ) -> set[str]:
     """Given dimen and config_keylist (ala ["s_agg", put_del] )
     Return list of columns for that prime table"""
 
-    if not table_keylist or not etl_idea_category_config:
+    if not table_keylist or not etl_brick_category_config:
         return set()
 
     columns = get_all_dimen_columns_set(x_dimen)
@@ -384,25 +384,25 @@ def get_prime_columns(
         columns = get_del_dimen_columns_set(x_dimen)
 
     if x_dimen == "translate_core":
-        idea_category = "translate_core"
+        brick_category = "translate_core"
     elif x_dimen.find("translate") == 0:
-        idea_category = "translate"
+        brick_category = "translate"
     elif x_dimen.find("nabu") == 0:
-        idea_category = "nabu"
+        brick_category = "nabu"
     elif x_dimen.find("moment") == 0:
-        idea_category = "moment"
+        brick_category = "moment"
     elif x_dimen.find("person") == 0:
-        idea_category = "person"
-    config_keylist = [idea_category, "stages", *table_keylist]
+        brick_category = "person"
+    config_keylist = [brick_category, "stages", *table_keylist]
 
     otx_keylist = copy_copy(config_keylist)
     otx_keylist.append("set_translateable_otx_inx_args")
-    if get_from_nested_dict(etl_idea_category_config, otx_keylist, True):
+    if get_from_nested_dict(etl_brick_category_config, otx_keylist, True):
         columns = set_translateable_otx_inx_args(columns)
 
     nabuable_keylist = copy_copy(config_keylist)
     nabuable_keylist.append("set_nabuable_otx_inx_args")
-    if get_from_nested_dict(etl_idea_category_config, nabuable_keylist, True):
+    if get_from_nested_dict(etl_brick_category_config, nabuable_keylist, True):
         context_nabuable_args = get_context_nabuable_args()
 
         if any(c_arg in columns for c_arg in context_nabuable_args):
@@ -412,12 +412,12 @@ def get_prime_columns(
 
     update_keylist = copy_copy(config_keylist)
     update_keylist.append("add")
-    update_cols = get_from_nested_dict(etl_idea_category_config, update_keylist, True)
+    update_cols = get_from_nested_dict(etl_brick_category_config, update_keylist, True)
     columns.update(get_empty_set_if_None(update_cols))
 
     update_keylist = copy_copy(config_keylist)
     update_keylist.append("remove")
-    remove_cols = get_from_nested_dict(etl_idea_category_config, update_keylist, True)
+    remove_cols = get_from_nested_dict(etl_brick_category_config, update_keylist, True)
     columns -= set(get_empty_set_if_None(remove_cols))
 
     return columns
@@ -431,7 +431,7 @@ def create_prime_table_sqlstr(
     """
     tablename = create_prime_tablename(x_dimen, stage_type, put_del)
     table_keylist = [stage_type, put_del] if put_del else [stage_type]
-    etl_idea_category_config = etl_idea_category_config_dict()
-    columns_set = get_prime_columns(x_dimen, table_keylist, etl_idea_category_config)
+    etl_brick_category_config = etl_brick_category_config_dict()
+    columns_set = get_prime_columns(x_dimen, table_keylist, etl_brick_category_config)
     columns_list = get_default_sorted_list(columns_set)
-    return get_create_table_sqlstr(tablename, columns_list, get_idea_sqlite_types())
+    return get_create_table_sqlstr(tablename, columns_list, get_brick_sqlite_types())

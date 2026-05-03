@@ -1,0 +1,313 @@
+from ch00_py.dict_toolbox import (
+    create_l2nested_csv_dict,
+    extract_csv_headers,
+    get_csv_column1_column2_metrics,
+    get_positional_dict,
+)
+from ch07_person_logic.person_main import PersonUnit
+from ch08_person_atom.atom_main import PersonAtom, atomrow_shop
+from ch09_person_lesson.delta import (
+    PersonDelta,
+    get_dimens_cruds_persondelta,
+    persondelta_shop,
+)
+from ch13_time.epoch_main import epochunit_shop
+from ch14_moment.moment_main import MomentUnit, momentunit_shop
+from ch17_brick._ref.ch17_semantic_types import MomentRope, PersonName
+from ch17_brick.brick_config import get_brick_format_headers, get_brickref_from_file
+from ch17_brick.brick_db_tool import (
+    get_default_sorted_list,
+    if_nan_return_None,
+    save_dataframe_to_csv,
+)
+from csv import reader as csv_reader
+from dataclasses import dataclass
+from pandas import DataFrame
+
+
+@dataclass
+class BrickRef:
+    brick_name: str = None
+    dimens: list[str] = None
+    attributes: dict[str, dict[str, bool]] = None
+
+    def set_attribute(self, x_attribute: str, otx_key: bool):
+        self.attributes[x_attribute] = {"otx_key": otx_key}
+
+    def get_headers_list(self) -> list[str]:
+        return get_default_sorted_list(set(self.attributes.keys()))
+
+    def get_otx_keys_list(self) -> list[str]:
+        x_set = {
+            x_attr
+            for x_attr, otx_dict in self.attributes.items()
+            if otx_dict.get("otx_key") is True
+        }
+        return get_default_sorted_list(x_set)
+
+    def get_otx_values_list(self) -> list[str]:
+        x_set = {
+            x_attr
+            for x_attr, otx_dict in self.attributes.items()
+            if otx_dict.get("otx_key") is False
+        }
+        return get_default_sorted_list(x_set)
+
+
+def brickref_shop(x_brick_name: str, x_dimens: list[str]) -> BrickRef:
+    return BrickRef(brick_name=x_brick_name, dimens=x_dimens, attributes={})
+
+
+def get_brickref_obj(brick_name: str) -> BrickRef:
+    brickref_dict = get_brickref_from_file(brick_name)
+    x_brickref = brickref_shop(brick_name, brickref_dict.get("dimens"))
+    x_brickref.attributes = brickref_dict.get("attributes")
+    return x_brickref
+
+
+def get_ascending_bools(sorting_attributes: list[str]) -> list[bool]:
+    return [True for _ in sorting_attributes]
+
+
+def _get_headers_list(brick_name: str) -> list[str]:
+    return get_brickref_obj(brick_name).get_headers_list()
+
+
+def _generate_brick_dataframe(d2_list: list[list[str]], brick_name: str) -> DataFrame:
+    return DataFrame(d2_list, columns=_get_headers_list(brick_name))
+
+
+def create_brick_df(x_personunit: PersonUnit, brick_name: str) -> DataFrame:
+    x_persondelta = persondelta_shop()
+    x_persondelta.add_all_personatoms(x_personunit)
+    x_brickref = get_brickref_obj(brick_name)
+    x_moment_rope = x_personunit.planroot.get_plan_rope()
+    x_person_name = x_personunit.person_name
+    sorted_personatoms = _get_sorted_insert_str_personatoms(x_persondelta, x_brickref)
+    d2_list = _create_d2_list(
+        sorted_personatoms, x_brickref, x_moment_rope, x_person_name
+    )
+    d2_list = _delta_all_pledge_values(d2_list, x_brickref)
+    x_brick = _generate_brick_dataframe(d2_list, brick_name)
+    sorting_columns = x_brickref.get_headers_list()
+    return _sort_dataframe(x_brick, sorting_columns)
+
+
+def _get_sorted_insert_str_personatoms(
+    x_persondelta: PersonDelta, x_brickref: BrickRef
+) -> list[PersonAtom]:
+    dimen_set = set(x_brickref.dimens)
+    curd_set = {"INSERT"}
+    limited_delta = get_dimens_cruds_persondelta(x_persondelta, dimen_set, curd_set)
+    return limited_delta.get_dimen_sorted_personatoms_list()
+
+
+def _create_d2_list(
+    sorted_personatoms: list[PersonAtom],
+    x_brickref: BrickRef,
+    x_moment_rope: MomentRope,
+    x_person_name: PersonName,
+):
+    d2_list = []
+    for x_personatom in sorted_personatoms:
+        d1_list = []
+        for x_attribute in x_brickref.get_headers_list():
+            if x_attribute == "moment_rope":
+                d1_list.append(x_moment_rope)
+            elif x_attribute == "person_name":
+                d1_list.append(x_person_name)
+            else:
+                d1_list.append(x_personatom.get_value(x_attribute))
+        d2_list.append(d1_list)
+    return d2_list
+
+
+def _delta_all_pledge_values(d2_list: list[list], x_brickref: BrickRef) -> list[list]:
+    if "pledge" in x_brickref.attributes:
+        for x_count, x_header in enumerate(x_brickref.get_headers_list()):
+            if x_header == "pledge":
+                pledge_column_number = x_count
+        for x_row in d2_list:
+            if x_row[pledge_column_number] is True:
+                x_row[pledge_column_number] = "Yes"
+            else:
+                x_row[pledge_column_number] = ""
+    return d2_list
+
+
+def _sort_dataframe(x_brick: DataFrame, sorting_columns: list[str]) -> DataFrame:
+    ascending_bools = get_ascending_bools(sorting_columns)
+    x_brick.sort_values(sorting_columns, ascending=ascending_bools, inplace=True)
+    x_brick.reset_index(inplace=True)
+    x_brick.drop(columns=["index"], inplace=True)
+    return x_brick
+
+
+def save_brick_csv(
+    x_brickname: str, x_personunit: PersonUnit, x_dir: str, x_filename: str
+):
+    x_dataframe = create_brick_df(x_personunit, x_brickname)
+    save_dataframe_to_csv(x_dataframe, x_dir, x_filename)
+
+
+def get_csv_brickref(header_row: list[str]) -> BrickRef:
+    header_row = get_default_sorted_list(set(header_row))
+    headers_str = "".join(f",{x_header}" for x_header in header_row)
+    headers_str = headers_str[1:]
+    headers_str = headers_str.replace("spark_face,", "")
+    headers_str = headers_str.replace("spark_num,", "")
+    x_brickname = get_brick_format_headers().get(headers_str)
+    return get_brickref_obj(x_brickname)
+
+
+def _remove_non_person_dimens_from_brickref(x_brickref: BrickRef) -> BrickRef:
+    to_delete_dimen_set = {
+        dimen for dimen in x_brickref.dimens if not dimen.startswith("person")
+    }
+    dimens_set = set(x_brickref.dimens)
+    for to_delete_dimen in to_delete_dimen_set:
+        if to_delete_dimen in dimens_set:
+            dimens_set.remove(to_delete_dimen)
+    x_brickref.dimens = list(dimens_set)
+    return x_brickref
+
+
+def make_persondelta(x_csv: str) -> PersonDelta:
+    header_row, headerless_csv = extract_csv_headers(x_csv)
+    x_brickref = get_csv_brickref(header_row)
+    _remove_non_person_dimens_from_brickref(x_brickref)
+    x_reader = csv_reader(headerless_csv.splitlines(), delimiter=",")
+    x_dict = get_positional_dict(header_row)
+    x_persondelta = persondelta_shop()
+
+    for row in x_reader:
+        x_atomrow = atomrow_shop(x_brickref.dimens, "INSERT")
+        for x_header in header_row:
+            if header_index := x_dict.get(x_header):
+                x_atomrow.__dict__[x_header] = row[header_index]
+
+        for x_personatom in x_atomrow.get_personatoms():
+            x_persondelta.set_personatom(x_personatom)
+    return x_persondelta
+
+
+def get_csv_moment_rope_person_name_metrics(
+    headerless_csv: str, delimiter: str = None
+) -> dict[MomentRope, dict[PersonName, int]]:
+    return get_csv_column1_column2_metrics(headerless_csv, delimiter)
+
+
+def moment_rope_person_name_nested_csv_dict(
+    headerless_csv: str, delimiter: str = None
+) -> dict[MomentRope, dict[PersonName, str]]:
+    return create_l2nested_csv_dict(headerless_csv, delimiter)
+
+
+def moment_build_from_df(
+    bk00100_df: DataFrame,
+    bk00101_df: DataFrame,
+    bk00102_df: DataFrame,
+    bk00103_df: DataFrame,
+    bk00104_df: DataFrame,
+    bk00105_df: DataFrame,
+    x_fund_grain: float,
+    x_respect_grain: float,
+    x_mana_grain: float,
+    x_moments_dir: str,
+) -> dict[MomentRope, MomentUnit]:
+    moment_hours_dict = _get_moment_hours_dict(bk00103_df)
+    moment_months_dict = _get_moment_months_dict(bk00104_df)
+    moment_weekdays_dict = _get_moment_weekdays_dict(bk00105_df)
+
+    momentunit_dict = {}
+    for index, row in bk00100_df.iterrows():
+        x_moment_rope = row["moment_rope"]
+        x_epoch_config = {
+            "c400_number": row["c400_number"],
+            "hours_config": moment_hours_dict.get(x_moment_rope),
+            "months_config": moment_months_dict.get(x_moment_rope),
+            "monthday_index": row["monthday_index"],
+            "epoch_label": row["epoch_label"],
+            "weekdays_config": moment_weekdays_dict.get(x_moment_rope),
+            "yr1_jan1_offset": row["yr1_jan1_offset"],
+        }
+        x_epoch = epochunit_shop(x_epoch_config)
+        x_momentunit = momentunit_shop(
+            moment_rope=x_moment_rope,
+            moment_mstr_dir=x_moments_dir,
+            epoch=x_epoch,
+            knot=row["knot"],
+            fund_grain=x_fund_grain,
+            respect_grain=x_respect_grain,
+            mana_grain=x_mana_grain,
+            job_listen_rotations=row["job_listen_rotations"],
+        )
+        momentunit_dict[x_momentunit.moment_rope] = x_momentunit
+        _add_budunits_from_df(x_momentunit, bk00101_df)
+        _add_paypurchases_from_df(x_momentunit, bk00102_df)
+    return momentunit_dict
+
+
+def _get_moment_hours_dict(bk00103_df: DataFrame) -> dict[str, list[str, str]]:
+    moment_hours_dict = {}
+    for y_moment_rope in bk00103_df.moment_rope.unique():
+        query_str = f"moment_rope == '{y_moment_rope}'"
+        x_hours_list = [
+            [row["hour_label"], row["cumulative_minute"]]
+            for index, row in bk00103_df.query(query_str).iterrows()
+        ]
+        moment_hours_dict[y_moment_rope] = x_hours_list
+    return moment_hours_dict
+
+
+def _get_moment_months_dict(bk00104_df: DataFrame) -> dict[str, list[str, str]]:
+    moment_months_dict = {}
+    for y_moment_rope in bk00104_df.moment_rope.unique():
+        query_str = f"moment_rope == '{y_moment_rope}'"
+        x_months_list = [
+            [row["month_label"], row["cumulative_day"]]
+            for index, row in bk00104_df.query(query_str).iterrows()
+        ]
+        moment_months_dict[y_moment_rope] = x_months_list
+    return moment_months_dict
+
+
+def _get_moment_weekdays_dict(bk00105_df: DataFrame) -> dict[str, list[str, str]]:
+    moment_weekdays_dict = {}
+    for y_moment_rope in bk00105_df.moment_rope.unique():
+        query_str = f"moment_rope == '{y_moment_rope}'"
+        x_weekdays_list = [
+            row["weekday_label"]
+            for index, row in bk00105_df.query(query_str).iterrows()
+        ]
+        moment_weekdays_dict[y_moment_rope] = x_weekdays_list
+    return moment_weekdays_dict
+
+
+def _add_budunits_from_df(x_momentunit: MomentUnit, bk00101_df: DataFrame):
+    query_str = f"moment_rope == '{x_momentunit.moment_rope}'"
+    for index, row in bk00101_df.query(query_str).iterrows():
+        x_momentunit.add_budunit(
+            person_name=row["person_name"],
+            bud_time=row["bud_time"],
+            quota=row["quota"],
+            celldepth=if_nan_return_None(row["celldepth"]),
+            allow_prev_to_offi_time_max_entry=True,
+        )
+
+
+def _add_paypurchases_from_df(x_momentunit: MomentUnit, bk00102_df: DataFrame):
+    query_str = f"moment_rope == '{x_momentunit.moment_rope}'"
+    for index, row in bk00102_df.query(query_str).iterrows():
+        x_momentunit.add_paypurchase(
+            person_name=row["person_name"],
+            contact_name=row["contact_name"],
+            tran_time=row["tran_time"],
+            amount=row["amount"],
+        )
+
+
+def _add_time_offi_units_from_df(x_momentunit: MomentUnit, bk00106_df: DataFrame):
+    query_str = f"moment_rope == '{x_momentunit.moment_rope}'"
+    for index, row in bk00106_df.query(query_str).iterrows():
+        x_momentunit.offi_times.add(row["offi_time"])

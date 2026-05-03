@@ -1,7 +1,7 @@
 from ch00_py.db_toolbox import get_row_count, get_table_columns
 from ch14_moment.moment_config import get_moment_dimens
 from ch15_nabu.nabu_config import get_nabu_dimens
-from ch17_idea.idea_config import get_default_sorted_list, get_idea_config_dict
+from ch17_brick.brick_config import get_brick_config_dict, get_default_sorted_list
 from ch18_etl_config.etl_config import get_dimen_abbv7
 from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
@@ -25,10 +25,10 @@ def test_get_insert_heard_vld_sqlstrs_ReturnsObj_CheckMomentDimen(cursor0: Curso
     # print(f"{gen_heard_vld_tablenames=}")
     # print(f"     {get_moment_dimens()=}")
     assert moment_vld_tablenames.issubset(gen_heard_vld_tablenames)
-    idea_config = get_idea_config_dict({kw.moment})
+    brick_config = get_brick_config_dict({kw.moment})
     create_sound_and_heard_tables(cursor0)
 
-    for x_dimen in idea_config:
+    for x_dimen in brick_config:
         # print(f"{x_dimen} checking...")
         agg_tablename = prime_tbl(x_dimen, kw.h_agg)
         vld_tablename = prime_tbl(x_dimen, kw.h_vld)
@@ -71,7 +71,7 @@ def remove_otx_and_excluded_cols(cols: set) -> set:
 def test_get_insert_heard_vld_sqlstrs_ReturnsObj_PersonDimensRequired(cursor0: Cursor):
     # sourcery skip: no-loop-in-tests
     # ESTABLISH
-    person_dimens_config = get_idea_config_dict({kw.person})
+    person_dimens_config = get_brick_config_dict({kw.person})
 
     # WHEN
     insert_heard_vld_sqlstrs = get_insert_heard_vld_sqlstrs()

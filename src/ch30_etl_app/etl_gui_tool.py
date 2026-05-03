@@ -8,12 +8,12 @@ from ch07_person_logic.person_main import personunit_shop
 from ch13_time.epoch_config import get_creg_config, get_five_config
 from ch13_time.epoch_main import epochunit_shop
 from ch14_moment.moment_main import momentunit_shop
-from ch17_idea.idea_belief_csv import (
+from ch17_brick.brick_belief_csv import (
     add_momentunits_to_belief_csv_strs,
     add_personunit_to_belief_csv_strs,
-    create_init_belief_idea_csv_strs,
+    create_init_belief_brick_csv_strs,
 )
-from ch17_idea.idea_db_tool import (
+from ch17_brick.brick_db_tool import (
     csv_dict_to_excel,
     prettify_excel_file,
     remove_empty_sheets,
@@ -94,7 +94,7 @@ def get_app_default_dirs(default_root: Path) -> dict[str, Path]:
         "world_name": x_world_name,
         "working": x_worlddir.worlds_dir,
         "beliefs_src": x_worlddir.beliefs_src_dir,
-        "ideas_src": x_worlddir.ideas_src_dir,
+        "bricks_src": x_worlddir.bricks_src_dir,
         "output": x_worlddir.output_dir,
     }
 
@@ -154,12 +154,12 @@ def create_simple_1m2p2pledges_belief_csvs() -> dict[str, str]:
     golf_rope = emman_person.make_l1_rope("play disc golf")
     steve_person.add_plan(music_rope, 1, True)
     emman_person.add_plan(golf_rope, 1, True)
-    belief_csv_strs = create_init_belief_idea_csv_strs()
+    belief_csv_strs = create_init_belief_brick_csv_strs()
     steve_person.thinkout()
     emman_person.thinkout()
     add_personunit_to_belief_csv_strs(steve_person, belief_csv_strs, ",")
     add_personunit_to_belief_csv_strs(emman_person, belief_csv_strs, ",")
-    return transform_ii00129_into_ii00002_in_csvs(belief_csv_strs, mmt01_rope)
+    return transform_bk00129_into_bk00002_in_csvs(belief_csv_strs, mmt01_rope)
 
 
 def create_simple_1m2p5pledges_belief_csvs() -> dict[str, str]:
@@ -188,12 +188,12 @@ def create_simple_1m2p5pledges_belief_csvs() -> dict[str, str]:
     steve_person.add_plan(handout_rope, 20, True)
     steve_person.add_plan(ask_rope, 3, True)
     emman_person.add_plan(music_rope, 10, True)
-    belief_csv_strs = create_init_belief_idea_csv_strs()
+    belief_csv_strs = create_init_belief_brick_csv_strs()
     steve_person.thinkout()
     emman_person.thinkout()
     add_personunit_to_belief_csv_strs(steve_person, belief_csv_strs, ",")
     add_personunit_to_belief_csv_strs(emman_person, belief_csv_strs, ",")
-    return transform_ii00129_into_ii00002_in_csvs(belief_csv_strs, mmt01_rope)
+    return transform_bk00129_into_bk00002_in_csvs(belief_csv_strs, mmt01_rope)
 
 
 def create_simple_2m2p5pledges_belief_csvs() -> dict[str, str]:
@@ -225,7 +225,7 @@ def create_simple_2m2p5pledges_belief_csvs() -> dict[str, str]:
     m1_steve_person.add_plan(handout_rope, 20, True)
     m1_steve_person.add_plan(ask_rope, 3, True)
     m1_emman_person.add_plan(music_rope, 10, True)
-    belief_csv_strs = create_init_belief_idea_csv_strs()
+    belief_csv_strs = create_init_belief_brick_csv_strs()
     m1_steve_person.thinkout()
     m1_emman_person.thinkout()
     add_personunit_to_belief_csv_strs(m1_steve_person, belief_csv_strs, ",")
@@ -252,7 +252,7 @@ def create_simple_2m2p5pledges_belief_csvs() -> dict[str, str]:
     h1_emman_person.thinkout()
     add_personunit_to_belief_csv_strs(h1_steve_person, belief_csv_strs, ",")
     add_personunit_to_belief_csv_strs(h1_emman_person, belief_csv_strs, ",")
-    return transform_ii00129_into_ii00002_in_csvs(belief_csv_strs, heart01_rope)
+    return transform_bk00129_into_bk00002_in_csvs(belief_csv_strs, heart01_rope)
 
 
 def create_emmanuel_lovemaking_belief_csvs() -> dict[str, str]:
@@ -267,26 +267,26 @@ def create_emmanuel_lovemaking_belief_csvs() -> dict[str, str]:
     mlove_person.add_contactunit(emman_name)
     mlove_rope = emman_person.make_l1_rope("make love")
     emman_person.add_plan(mlove_rope, 1, True)
-    belief_csv_strs = create_init_belief_idea_csv_strs()
+    belief_csv_strs = create_init_belief_brick_csv_strs()
     emman_person.thinkout()
     add_personunit_to_belief_csv_strs(emman_person, belief_csv_strs, ",")
-    return transform_ii00129_into_ii00002_in_csvs(belief_csv_strs, mlove01_rope)
+    return transform_bk00129_into_bk00002_in_csvs(belief_csv_strs, mlove01_rope)
 
 
-def transform_ii00129_into_ii00002_in_csvs(belief_csv_strs, moment_rope) -> dict:
-    ii00002_csv = ""
+def transform_bk00129_into_bk00002_in_csvs(belief_csv_strs, moment_rope) -> dict:
+    bk00002_csv = ""
     for sheetname_key, csv_str in belief_csv_strs.items():
-        if sheetname_key == "ii00128":
-            ii00002_csv = transform_ii00129_into_ii00002_csv(csv_str, moment_rope)
-    belief_csv_strs["ii00002"] = ii00002_csv
+        if sheetname_key == "bk00128":
+            bk00002_csv = transform_bk00129_into_bk00002_csv(csv_str, moment_rope)
+    belief_csv_strs["bk00002"] = bk00002_csv
     return {
         sheetname_key: csv_str
         for sheetname_key, csv_str in belief_csv_strs.items()
-        if sheetname_key not in {"ii00120", "ii00129", "ii00128"}
+        if sheetname_key not in {"bk00120", "bk00129", "bk00128"}
     }
 
 
-def transform_ii00129_into_ii00002_csv(csv_str: str, moment_rope: str):
+def transform_bk00129_into_bk00002_csv(csv_str: str, moment_rope: str):
     # Load CSV into DataFrame
     # String → DataFrame
     df = pandas_read_csv(StringIO(csv_str))
@@ -321,7 +321,7 @@ def create_five_time_config_belief_csvs() -> dict[str, str]:
     five_epochunit = epochunit_shop(get_five_config())
     five_moment = momentunit_shop(team_five_rope, None, five_epochunit)
     moments = {five_moment.moment_rope: five_moment}
-    belief_csv_strs = create_init_belief_idea_csv_strs()
+    belief_csv_strs = create_init_belief_brick_csv_strs()
     add_momentunits_to_belief_csv_strs(moments, belief_csv_strs, ",")
 
     with_spark_face_csvs = {}
@@ -337,7 +337,7 @@ def create_elpaso_time_config_belief_csvs() -> dict[str, str]:
     creg_epochunit = epochunit_shop(get_creg_config())
     elpaso_moment = momentunit_shop(elpaso_rope, None, creg_epochunit)
     moments = {elpaso_moment.moment_rope: elpaso_moment}
-    belief_csv_strs = create_init_belief_idea_csv_strs()
+    belief_csv_strs = create_init_belief_brick_csv_strs()
     add_momentunits_to_belief_csv_strs(moments, belief_csv_strs, ",")
 
     with_spark_face_csvs = {}

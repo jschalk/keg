@@ -20,11 +20,11 @@ What does each one do?
 - **ch14_moment**: Defines MomentUnits: common time tech, ledger, ContactNames, history of PersonUnits.
 - **ch15_nabu**: Defines NabuUnit tools that interpret numeric values into inside accounting.
 - **ch16_translate**: Defines TranslateUnit tools that translate MomentUnits into inside language.
-- **ch17_idea**: Defines how to build Ideas using Ideas. Moments and Persons are built by Ideas.
-- **ch18_etl_config**: Defines the tools that use Ideas to build MomentUnits.
-- **ch19_belief_src**: Defines the 'Belief Src' process. Data going to 'Ideas'.
-- **ch20_etl_idea**: Defines the 'Etl Ideas' process. From 'Source Beliefs' to 'Sound'.
-- **ch21_sound**: Defines the 'Sound' process. From 'Ideas' to 'Heard'.
+- **ch17_brick**: Defines how to build Bricks using Bricks. Moments and Persons are built by Bricks.
+- **ch18_etl_config**: Defines the tools that use Bricks to build MomentUnits.
+- **ch19_belief_src**: Defines the 'Belief Src' process. Data going to 'Bricks'.
+- **ch20_etl_brick**: Defines the 'Etl Bricks' process. From 'Source Beliefs' to 'Sound'.
+- **ch21_sound**: Defines the 'Sound' process. From 'Bricks' to 'Heard'.
 - **ch22_heard**: Defines the 'Heard' process. From 'Sound' to 'Lynx'.
 - **ch23_lynx**: Defines the Lynx stage of data. Source of Job Persons, complete Moment data.
 - **ch24_belief_dst**: Defines how beliefs for outside audiences are created.

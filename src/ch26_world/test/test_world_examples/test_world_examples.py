@@ -6,12 +6,12 @@ from ch00_py.file_toolbox import (
     get_level1_dirs,
 )
 from ch25_kpi.kpi_mstr import create_kpi_csvs
-from ch26_world.world import create_beliefs, idea_sheets_to_lynx_mstr, worlddir_shop
+from ch26_world.world import brick_sheets_to_lynx_mstr, create_beliefs, worlddir_shop
 from os.path import exists as os_path_exists
 from ref.keywords import ExampleStrs as exx
 
 
-def test_idea_sheets_to_lynx_mstr_Examples(temp3_fs, run_big_tests):
+def test_brick_sheets_to_lynx_mstr_Examples(temp3_fs, run_big_tests):
     """Find examples in a example directory and run them through the pipeline."""
     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
     # ESTABLISH
@@ -35,20 +35,20 @@ def test_idea_sheets_to_lynx_mstr_Examples(temp3_fs, run_big_tests):
         output_dir = create_path(parent_output_dir, example_name)
         delete_dir(output_dir)  # Clean up output directory before test
 
-        i_src_dir = create_path(examples_dir, example_name)
-        print(f"{i_src_dir=} {get_dir_filenames(i_src_dir)}")
+        k_src_dir = create_path(examples_dir, example_name)
+        print(f"{k_src_dir=} {get_dir_filenames(k_src_dir)}")
         example_worlddir = worlddir_shop(
             world_name=example_name,
             worlds_dir=worlds_dir,
-            i_src_dir=i_src_dir,
+            k_src_dir=k_src_dir,
             output_dir=output_dir,
         )
         example_worlddir.delete_world_db()
         assert count_dirs_files(output_dir) == 0
-        print(f"before WHEN {os_path_exists(i_src_dir)=}")
+        print(f"before WHEN {os_path_exists(k_src_dir)=}")
 
         # WHEN
-        idea_sheets_to_lynx_mstr(example_worlddir)
+        brick_sheets_to_lynx_mstr(example_worlddir)
         create_beliefs(
             example_worlddir.world_dir,
             example_worlddir.output_dir,
@@ -61,7 +61,7 @@ def test_idea_sheets_to_lynx_mstr_Examples(temp3_fs, run_big_tests):
         )
 
         # THEN
-        print(f"after WHEN {os_path_exists(i_src_dir)=}")
+        print(f"after WHEN {os_path_exists(k_src_dir)=}")
         # print(f"{count_dirs_files(output_dir)=}")
         assert count_dirs_files(output_dir) > 0
-        assert count_dirs_files(i_src_dir) > 0
+        assert count_dirs_files(k_src_dir) > 0

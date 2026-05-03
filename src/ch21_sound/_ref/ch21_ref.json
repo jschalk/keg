@@ -1,7 +1,7 @@
 {
-  "chapter_blurb": "Defines the 'Sound' process. From 'Ideas' to 'Heard'.", 
-  "chapter_content": "Defines the 'Sound' process. Where valid 'Idea' data is translated into clean 'Heard' data.", 
+  "chapter_blurb": "Defines the 'Sound' process. From 'Bricks' to 'Heard'.", 
+  "chapter_content": "Defines the 'Sound' process. Where valid 'Brick' data is translated into clean 'Heard' data.", 
   "chapter_description": "ch21_sound", 
   "chapter_number": 21, 
-  "ontology summary": "Ideas are turned into Sound concepts, Translation is applied and produces Heard data."
+  "ontology summary": "Bricks are turned into Sound concepts, Translation is applied and produces Heard data."
 }

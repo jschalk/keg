@@ -5,7 +5,7 @@ from pandas import DataFrame as pandas_DataFrame
 from ref.keywords import Ch26Keywords as kw, ExampleStrs as exx
 
 
-def ii00002_example() -> pandas_DataFrame:
+def bk00002_example() -> pandas_DataFrame:
     """All rows valid. pledge=True throughout. Covers varied names."""
 
     hr_mop = init_rope(["herenow_red", "family", exx.casa, exx.clean, exx.mop])

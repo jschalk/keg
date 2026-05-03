@@ -12,7 +12,7 @@ The design focuses on **traceability, auditability, and simplicity** — every s
 Data in this system originates from **Excel sources**.
 It goes through a series of **structured stages** that progressively clean, validate, and transform the data into consistent, meaningful tables.
 
-The process starts in **ideas** tables and ends in **Sound** and **Heard** tables, where the data is finalized and ready for analysis or downstream logic.
+The process starts in **bricks** tables and ends in **Sound** and **Heard** tables, where the data is finalized and ready for analysis or downstream logic.
 
 ---
 
@@ -20,9 +20,9 @@ The process starts in **ideas** tables and ends in **Sound** and **Heard** table
 
 ```mermaid
 flowchart LR
-    A[Excel Source] --> B[Idea Raw]
-    B --> C[Idea Agg]
-    C --> D[Idea Vld]
+    A[Excel Source] --> B[Brick Raw]
+    B --> C[Brick Agg]
+    C --> D[Brick Vld]
     D --> E[Sound Raw]
     E --> F[Sound Agg]
     F --> G[Sound Vld]
@@ -33,7 +33,7 @@ flowchart LR
 
 At a high level:
 
-* **ideas** tables (`Idea Raw`, `Idea Agg`, `Idea Vld`) capture raw and aggregated source data.
+* **bricks** tables (`Brick Raw`, `Brick Agg`, `Brick Vld`) capture raw and aggregated source data.
 * **Sound** tables interpret and translate that data into structured, meaningful forms.
 * **Heard** tables finalize transformations involving numeric and time-based data.
 
@@ -84,15 +84,15 @@ Each dimension advances through a fixed set of stages (Sound and Heard) with cle
 
 ## 6. Section Roles
 
-### **ideas Section**
+### **bricks Section**
 
 * Receives Excel data directly.
-* Tables: `Idea Raw`, `Idea Agg`, `Idea Vld`.
+* Tables: `Brick Raw`, `Brick Agg`, `Brick Vld`.
 * Focus: Collect, aggregate, and validate input with minimal transformation.
 
 ### **Sound Section**
 
-* Converts `ideas` outputs into structured, interpretable data.
+* Converts `bricks` outputs into structured, interpretable data.
 * Applies translation and text-based transformations.
 * Uses `translate` and `translate_core` data to update all **nabu**, **moment**, and **person** tables that require translatable content.
 
@@ -118,7 +118,7 @@ Each dimension advances through a fixed set of stages (Sound and Heard) with cle
 | Property                  | Description                                     |
 | ------------------------- | ----------------------------------------------- |
 | **Source**                | Excel workbooks                                 |
-| **Initial Landing Zone**  | ideas tables                              |
+| **Initial Landing Zone**  | bricks tables                              |
 | **Core Processing Zones** | Sound and Heard                                 |
 | **Auditable by**          | Any user with Excel/SQL skills                  |
 | **ETL Constraints**       | 1 insert + 1 update per table per run           |
