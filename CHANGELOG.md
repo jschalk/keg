@@ -1,3 +1,10 @@
+## [0.83.25](https://github.com/jschalk/keg/compare/v0.83.24...v0.83.25) (2026-05-03)
+
+
+### Bug Fixes
+
+* [#1196](https://github.com/jschalk/keg/issues/1196) added ideas_dir view, enhanced automatic refresh ([02a5909](https://github.com/jschalk/keg/commit/02a59099138450973f1e621e4a8c07a63f1334ce))
+
 ## [0.83.23](https://github.com/jschalk/keg/compare/v0.83.22...v0.83.23) (2026-05-02)
 
 
