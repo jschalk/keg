@@ -25,8 +25,8 @@ What does each one do?
 - **ch19_idea_src**: Defines the 'Idea Src' process. Data going to 'Bricks'.
 - **ch20_etl_brick**: Defines the 'Etl Bricks' process. From 'Source Ideas' to 'Sound'.
 - **ch21_sound**: Defines the 'Sound' process. From 'Bricks' to 'Heard'.
-- **ch22_heard**: Defines the 'Heard' process. From 'Sound' to 'Lynx'.
-- **ch23_lynx**: Defines the Lynx stage of data. Source of Job Persons, complete Moment data.
+- **ch22_heard**: Defines the 'Heard' process. From 'Sound' to 'mind'.
+- **ch23_mind**: Defines the mind stage of data. Source of Job Persons, complete Moment data.
 - **ch24_idea_dst**: Defines how ideas for outside audiences are created.
 - **ch25_kpi**: Defines the analytics outcomes of completed MomentUnits.
 - **ch26_world**: Defines WorldDirs that admin MomentUnits input data and outcomes

@@ -413,7 +413,7 @@ def get_person_gcal_day_punchs(
     return day_punchs
 
 
-def lynx_to_person_gcal_day_punchs(
+def mind_to_person_gcal_day_punchs(
     moment_mstr_dir: str,
     person_name: PersonName,
     day: datetime,

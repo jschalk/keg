@@ -208,7 +208,7 @@ def _get_prev_spark_num_personunit(
     return open_person_file(prev_personspark_path)
 
 
-def etl_spark_inherited_personunits_to_lynx_gut(moment_mstr_dir: str):
+def etl_spark_inherited_personunits_to_mind_gut(moment_mstr_dir: str):
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):
         moment_lasso = lassounit_shop(create_rope(moment_label))
@@ -235,7 +235,7 @@ def get_max_brixk_agg_spark_num(cursor: sqlite3_Cursor) -> int:
     return brixk_aggs_max_spark_num
 
 
-def add_lynx_epoch_to_lynx_guts(moment_mstr_dir: str):
+def add_mind_epoch_to_mind_guts(moment_mstr_dir: str):
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):
         moment_lasso = lassounit_shop(create_rope(moment_label))
@@ -243,7 +243,7 @@ def add_lynx_epoch_to_lynx_guts(moment_mstr_dir: str):
         x_momentunit.add_epoch_to_guts()
 
 
-def etl_lynx_guts_to_lynx_jobs(moment_mstr_dir: str):
+def etl_mind_guts_to_mind_jobs(moment_mstr_dir: str):
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):
         moment_lasso = lassounit_shop(create_rope(moment_label))
@@ -251,7 +251,7 @@ def etl_lynx_guts_to_lynx_jobs(moment_mstr_dir: str):
         x_momentunit.generate_all_jobs()
 
 
-def etl_lynx_job_jsons_to_job_tables(cursor: sqlite3_Cursor, moment_mstr_dir: str):
+def etl_mind_job_jsons_to_job_tables(cursor: sqlite3_Cursor, moment_mstr_dir: str):
     job_tablenames = create_job_tables(cursor)
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):

@@ -220,16 +220,16 @@ def test_get_etl_db_sheets_tier2_order_ReturnsObj():
     assert tier2_postfixs == [
         "i_src",
         "b_src",
-        "brixk_raw",
-        "brixk_agg",
-        "brixk_vld",
+        "b_raw",
+        "b_agg",
+        "b_vld",
         "s_raw",
         "s_agg",
         "s_vld",
         "h_raw",
         "h_agg",
         "h_vld",
-        "lynx",
+        "mind",
         "i_dst",
     ]
 
@@ -260,12 +260,12 @@ def test_reorder_etl_db_sheets_SortsSheets_Scenario1_PostfixPriority(tmp_path):
     # ESTABLISH
     filepath = tmp_path / "test.xlsx"
 
-    create_excel(filepath, ["misc", "report_done_brixk_raw", "zzz_final_brixk_vld"])
+    create_excel(filepath, ["misc", "report_done_b_raw", "zzz_final_b_vld"])
     # WHEN
     reorder_etl_db_sheets(filepath)
     # THEN
     result = get_sheet_order(filepath)
-    assert result == ["report_done_brixk_raw", "zzz_final_brixk_vld", "misc"]
+    assert result == ["report_done_b_raw", "zzz_final_b_vld", "misc"]
 
 
 def test_reorder_etl_db_sheets_SortsSheets_Scenario2_FallbackIgnoresOriginalOrder(
@@ -273,26 +273,26 @@ def test_reorder_etl_db_sheets_SortsSheets_Scenario2_FallbackIgnoresOriginalOrde
 ):
     # ESTABLISH
     filepath = tmp_path / "test.xlsx"
-    original = ["sheet3_s_vld", "sheet7_brixk_vld", "sheet2"]
+    original = ["sheet3_s_vld", "sheet7_b_vld", "sheet2"]
     create_excel(filepath, original)
     # WHEN
     reorder_etl_db_sheets(filepath)
     # THEN
     result = get_sheet_order(filepath)
-    expected_sheet_order = ["sheet7_brixk_vld", "sheet3_s_vld", "sheet2"]
+    expected_sheet_order = ["sheet7_b_vld", "sheet3_s_vld", "sheet2"]
     assert result == expected_sheet_order
 
 
-def test_reorder_etl_db_sheets_SortsSheets_Scenario3_brixk_raw_brixk_agg_AreSorted(
+def test_reorder_etl_db_sheets_SortsSheets_Scenario3_b_raw_b_agg_AreSorted(
     tmp_path,
 ):
     # ESTABLISH
     filepath = tmp_path / "test.xlsx"
-    original = ["sheet3_s_vld", "bksheet2brixk_agg", "bksheet3brixk_raw"]
+    original = ["sheet3_s_vld", "bksheet2b_agg", "bksheet3b_raw"]
     create_excel(filepath, original)
     # WHEN
     reorder_etl_db_sheets(filepath)
     # THEN
     result = get_sheet_order(filepath)
-    expected_sheet_order = ["bksheet3brixk_raw", "bksheet2brixk_agg", "sheet3_s_vld"]
+    expected_sheet_order = ["bksheet3b_raw", "bksheet2b_agg", "sheet3_s_vld"]
     assert result == expected_sheet_order

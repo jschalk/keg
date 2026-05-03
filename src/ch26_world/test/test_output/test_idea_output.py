@@ -2,7 +2,7 @@ from ch00_py.file_toolbox import create_path, set_dir
 from ch17_brick.brick_db_tool import get_sheet_names, save_sheet
 from ch18_etl_config._ref.ch18_path import create_ideas_dir_path
 from ch24_idea_dst._ref.ch24_path import create_idea0001_path
-from ch26_world.world import brick_sheets_to_lynx_mstr, create_ideas, worlddir_shop
+from ch26_world.world import brick_sheets_to_mind_mstr, create_ideas, worlddir_shop
 from os.path import exists as os_path_exists
 from pandas import DataFrame, read_excel as pandas_read_excel
 from pandas.testing import assert_frame_equal
@@ -15,7 +15,7 @@ def test_create_ideas_CreatesFile_Senario0_EmptyWorld(temp3_fs):
     fay_str = "Fay"
     output_dir = create_path(str(temp3_fs), "output")
     fay_wdir = worlddir_shop(fay_str, str(temp3_fs), output_dir)
-    brick_sheets_to_lynx_mstr(fay_wdir)
+    brick_sheets_to_mind_mstr(fay_wdir)
     fay_idea0001_path = create_idea0001_path(fay_wdir.output_dir)
     assert os_path_exists(fay_idea0001_path) is False
 
@@ -50,7 +50,7 @@ def test_create_ideas_CreatesFile_Senario1_SingleSmallSpark(temp3_fs):
     bk00001_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
     bk00001_df = DataFrame(bk00001_rows, columns=bk00001_columns)
     save_sheet(b_src_dir_file_path, "bk00001_ex3", bk00001_df)
-    brick_sheets_to_lynx_mstr(fay_wdir)
+    brick_sheets_to_mind_mstr(fay_wdir)
     fay_idea0001_path = create_idea0001_path(fay_wdir.output_dir)
     assert os_path_exists(fay_idea0001_path) is False
 
@@ -92,7 +92,7 @@ def test_create_ideas_CreatesFile_Senario2_CreatedIdeaCanBeBricksForOtherWorldDi
     bk00001_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
     bk00001_df = DataFrame(bk00001_rows, columns=bk00001_columns)
     save_sheet(b_src_dir_file_path, "bk00001_ex3", bk00001_df)
-    brick_sheets_to_lynx_mstr(fay_wdir)
+    brick_sheets_to_mind_mstr(fay_wdir)
     fay_idea0001_path = create_idea0001_path(fay_wdir.output_dir)
     create_ideas(
         world_dir=fay_wdir.world_dir,
@@ -112,7 +112,7 @@ def test_create_ideas_CreatesFile_Senario2_CreatedIdeaCanBeBricksForOtherWorldDi
     # print(f"{pandas_read_excel(bob_b_src_dir_st0001_path)=}")
     print(f"{bob_b_src_dir_st0001_path=}")
     print(f"{get_sheet_names(bob_b_src_dir_st0001_path)=}")
-    brick_sheets_to_lynx_mstr(fay_wdir)
+    brick_sheets_to_mind_mstr(fay_wdir)
     bob_idea0001_path = create_idea0001_path(bob_wdir.output_dir)
     assert os_path_exists(bob_idea0001_path) is False
 
@@ -158,7 +158,7 @@ def test_create_ideas_CreatesFile_Senario3_Create_calendar_markdown(
     bk00001_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
     bk00001_df = DataFrame(bk00001_rows, columns=bk00001_columns)
     save_sheet(b_src_dir_file_path, "bk00001_ex3", bk00001_df)
-    brick_sheets_to_lynx_mstr(fay_wdir)
+    brick_sheets_to_mind_mstr(fay_wdir)
     a23_calendar_md_path = create_path(output_dir, "Amy23_calendar.md")
     print(f"      {a23_calendar_md_path=}")
     assert not os_path_exists(a23_calendar_md_path)
@@ -176,7 +176,7 @@ def test_create_ideas_CreatesFile_Senario3_Create_calendar_markdown(
     assert os_path_exists(a23_calendar_md_path)
 
 
-# def test_WorldDir_sheets_b_src_dir_to_lynx_CreatesFiles(temp3_fs):
+# def test_WorldDir_sheets_b_src_dir_to_mind_CreatesFiles(temp3_fs):
 #     # ESTABLISH
 #     fay_str = "Fay"
 #     fay_wdir = worlddir_shop(fay_str, str(temp3_fs))
@@ -248,7 +248,7 @@ def test_create_ideas_CreatesFile_Senario3_Create_calendar_markdown(
 #     assert count_dirs_files(fay_wdir.worlds_dir) == 7
 
 #     # WHEN
-# brick_sheets_to_lynx_mstr(
+# brick_sheets_to_mind_mstr(
 #     world_db_path=fay_wdir.get_world_db_path(),
 #     b_src_dir=fay_wdir.bricks_src_dir,
 #     moment_mstr_dir=fay_wdir.moment_mstr_dir,

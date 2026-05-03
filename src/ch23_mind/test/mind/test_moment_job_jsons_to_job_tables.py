@@ -10,13 +10,13 @@ from ch10_person_listen._ref.ch10_path import create_job_path
 from ch10_person_listen.keep_tool import save_job_file
 from ch14_moment.moment_main import momentunit_shop
 from ch18_etl_config.etl_sqlstr import create_prime_tablename as prime_table
-from ch23_lynx.lynx import etl_lynx_job_jsons_to_job_tables
+from ch23_mind.mind import etl_mind_job_jsons_to_job_tables
 from os.path import exists as os_path_exists
 from ref.keywords import Ch23Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 
 
-def test_etl_lynx_job_jsons_to_job_tables_PopulatesTables_Scenario0(
+def test_etl_mind_job_jsons_to_job_tables_PopulatesTables_Scenario0(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -69,7 +69,7 @@ def test_etl_lynx_job_jsons_to_job_tables_PopulatesTables_Scenario0(
     assert not db_table_exists(cursor0, prnlabo_job_table)
 
     # WHEN
-    etl_lynx_job_jsons_to_job_tables(cursor0, moment_mstr_dir)
+    etl_mind_job_jsons_to_job_tables(cursor0, moment_mstr_dir)
 
     # THEN
     assert get_row_count(cursor0, prnunit_job_table) == 1
@@ -85,7 +85,7 @@ def test_etl_lynx_job_jsons_to_job_tables_PopulatesTables_Scenario0(
     assert get_row_count(cursor0, prnlabo_job_table) == 1
 
 
-def test_etl_lynx_job_jsons_to_job_tables_PopulatesTables_Scenario1(
+def test_etl_mind_job_jsons_to_job_tables_PopulatesTables_Scenario1(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -114,7 +114,7 @@ def test_etl_lynx_job_jsons_to_job_tables_PopulatesTables_Scenario1(
     assert not db_table_exists(cursor0, prncont_job_tablename)
 
     # WHEN
-    etl_lynx_job_jsons_to_job_tables(cursor0, moment_mstr_dir)
+    etl_mind_job_jsons_to_job_tables(cursor0, moment_mstr_dir)
 
     # THEN
     assert get_row_count(cursor0, prncont_job_tablename) == 3
@@ -178,7 +178,7 @@ def test_etl_lynx_job_jsons_to_job_tables_PopulatesTables_Scenario1(
     ]
 
 
-def test_etl_lynx_job_jsons_to_job_tables_PopulatesTables_Scenario2_NoDuplicates(
+def test_etl_mind_job_jsons_to_job_tables_PopulatesTables_Scenario2_NoDuplicates(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -205,9 +205,9 @@ def test_etl_lynx_job_jsons_to_job_tables_PopulatesTables_Scenario2_NoDuplicates
     assert os_path_exists(a23_bob_job_path)
     prncont_job_tablename = prime_table("prncont", kw.job, None)
     assert not db_table_exists(cursor0, prncont_job_tablename)
-    etl_lynx_job_jsons_to_job_tables(cursor0, moment_mstr_dir)
+    etl_mind_job_jsons_to_job_tables(cursor0, moment_mstr_dir)
     assert get_row_count(cursor0, prncont_job_tablename) == 3
     # WHEN
-    etl_lynx_job_jsons_to_job_tables(cursor0, moment_mstr_dir)
+    etl_mind_job_jsons_to_job_tables(cursor0, moment_mstr_dir)
     # THEN
     assert get_row_count(cursor0, prncont_job_tablename) == 3

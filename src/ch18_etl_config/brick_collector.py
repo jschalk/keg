@@ -49,7 +49,7 @@ def get_etl_db_sheets_tier2_order() -> list:
     etl_config = get_etl_stage_types_config_dict()
     x_list = sorted(etl_config.keys(), key=lambda k: etl_config[k]["stage_type_order"])
     final_list = x_list[:2]
-    final_list.extend(["brixk_raw", "brixk_agg", "brixk_vld"])
+    final_list.extend(["b_raw", "b_agg", "b_vld"])
     final_list.extend(x_list[5:])
     return final_list
 

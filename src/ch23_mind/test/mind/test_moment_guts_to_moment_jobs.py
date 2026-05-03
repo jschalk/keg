@@ -4,12 +4,12 @@ from ch09_person_lesson._ref.ch09_path import create_gut_path, create_moment_jso
 from ch09_person_lesson.lasso import lassounit_shop
 from ch10_person_listen._ref.ch10_path import create_job_path
 from ch14_moment.moment_main import momentunit_shop
-from ch23_lynx.lynx import etl_lynx_guts_to_lynx_jobs
+from ch23_mind.mind import etl_mind_guts_to_mind_jobs
 from os.path import exists as os_path_exists
 from ref.keywords import ExampleStrs as exx
 
 
-def test_etl_lynx_guts_to_lynx_jobs_SetsFiles_Scenario0(temp3_fs):
+def test_etl_mind_guts_to_mind_jobs_SetsFiles_Scenario0(temp3_fs):
     # ESTABLISH
     sue_inx = "Suzy"
     bob_inx = "Bobby"
@@ -38,7 +38,7 @@ def test_etl_lynx_guts_to_lynx_jobs_SetsFiles_Scenario0(temp3_fs):
     assert os_path_exists(a23_bob_job_path) is False
 
     # WHEN
-    etl_lynx_guts_to_lynx_jobs(moment_mstr_dir)
+    etl_mind_guts_to_mind_jobs(moment_mstr_dir)
 
     # THEN
     assert os_path_exists(a23_bob_job_path)

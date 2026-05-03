@@ -30,8 +30,8 @@ from ch18_etl_config._ref.ch18_path import (
 from ch18_etl_config.etl_sqlstr import create_prime_tablename as prime_tbl
 from ch26_world.test._util.ch26_examples import bk00002_example
 from ch26_world.world import (
-    brick_sheets_to_lynx_mstr,
-    brick_sheets_to_lynx_with_cursor,
+    brick_sheets_to_mind_mstr,
+    brick_sheets_to_mind_with_cursor,
     worlddir_shop,
 )
 from os.path import exists as os_path_exists
@@ -40,7 +40,7 @@ from ref.keywords import Ch26Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor, connect as sqlite3_connect
 
 
-def test_brick_sheets_to_lynx_with_cursor_Scenario0_bk001071PopulatesTables(
+def test_brick_sheets_to_mind_with_cursor_Scenario0_bk001071PopulatesTables(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH:
@@ -145,7 +145,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario0_bk001071PopulatesTables(
     # calc_moment_bud_contact_mandate_net_ledgers(moment_mstr_dir)
 
     # WHEN
-    brick_sheets_to_lynx_with_cursor(
+    brick_sheets_to_mind_with_cursor(
         cursor0, fay_wdir.bricks_src_dir, fay_wdir.moment_mstr_dir
     )
 
@@ -205,7 +205,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario0_bk001071PopulatesTables(
     assert os_path_exists(last_run_metrics_path)
 
 
-def test_brick_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
+def test_brick_sheets_to_mind_with_cursor_Scenario1_PopulateBudPayRows(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH:
@@ -325,7 +325,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     # calc_moment_bud_contact_mandate_net_ledgers(moment_mstr_dir)
 
     # WHEN
-    brick_sheets_to_lynx_with_cursor(
+    brick_sheets_to_mind_with_cursor(
         cursor0, fay_wdir.bricks_src_dir, fay_wdir.moment_mstr_dir
     )
 
@@ -366,7 +366,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     assert get_row_count(cursor0, kw.moment_kpi001_contact_nets) == 1
 
 
-def test_brick_sheets_to_lynx_with_cursor_Scenario2_PopulateMomentTranBook(
+def test_brick_sheets_to_mind_with_cursor_Scenario2_PopulateMomentTranBook(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH:
@@ -397,7 +397,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario2_PopulateMomentTranBook(
     assert not db_table_exists(cursor0, kw.moment_contact_nets)
 
     # WHEN
-    brick_sheets_to_lynx_with_cursor(
+    brick_sheets_to_mind_with_cursor(
         cursor0, fay_wdir.bricks_src_dir, fay_wdir.moment_mstr_dir
     )
 
@@ -405,7 +405,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario2_PopulateMomentTranBook(
     assert get_row_count(cursor0, kw.moment_contact_nets) == 1
 
 
-def test_brick_sheets_to_lynx_with_cursor_Scenario3_WhenNoMomentBricks_ote1_IsStillCreated(
+def test_brick_sheets_to_mind_with_cursor_Scenario3_WhenNoMomentBricks_ote1_IsStillCreated(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -430,7 +430,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario3_WhenNoMomentBricks_ote1_IsSt
     assert os_path_exists(a23_ote1_csv_path) is False
 
     # WHEN
-    brick_sheets_to_lynx_with_cursor(
+    brick_sheets_to_mind_with_cursor(
         cursor0, fay_wdir.bricks_src_dir, fay_wdir.moment_mstr_dir
     )
 
@@ -438,7 +438,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario3_WhenNoMomentBricks_ote1_IsSt
     assert os_path_exists(a23_ote1_csv_path)
 
 
-def test_brick_sheets_to_lynx_with_cursor_Scenario4_DeletesPreviousFiles(
+def test_brick_sheets_to_mind_with_cursor_Scenario4_DeletesPreviousFiles(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -458,7 +458,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario4_DeletesPreviousFiles(
     print(f"{testing3_path=}")
 
     # WHEN
-    brick_sheets_to_lynx_with_cursor(
+    brick_sheets_to_mind_with_cursor(
         cursor0, fay_wdir.bricks_src_dir, fay_wdir.moment_mstr_dir
     )
 
@@ -467,7 +467,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario4_DeletesPreviousFiles(
     assert os_path_exists(testing3_path) is False
 
 
-def test_brick_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
+def test_brick_sheets_to_mind_with_cursor_Scenario5_CreatesFiles(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -543,7 +543,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
     assert count_dirs_files(fay_wdir.worlds_dir) == 5
 
     # WHEN
-    brick_sheets_to_lynx_with_cursor(
+    brick_sheets_to_mind_with_cursor(
         cursor0, fay_wdir.bricks_src_dir, fay_wdir.moment_mstr_dir
     )
 
@@ -557,7 +557,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
     assert count_dirs_files(fay_wdir.worlds_dir) == 42
 
 
-def test_brick_sheets_to_lynx_with_cursor_Scenario6_NoDuplicates(
+def test_brick_sheets_to_mind_with_cursor_Scenario6_NoDuplicates(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -589,12 +589,12 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario6_NoDuplicates(
     bk00103_ex3_str = "example3_bk00103"
     save_sheet(b_src_dir_file_path, bk00103_ex1_str, bk00103_1df)
     save_sheet(b_src_dir_file_path, bk00103_ex3_str, bk00103_3df)
-    brick_sheets_to_lynx_with_cursor(
+    brick_sheets_to_mind_with_cursor(
         cursor0, fay_wdir.bricks_src_dir, fay_wdir.moment_mstr_dir
     )
     assert [] == get_all_tables_with_duplicates(cursor0)
     # WHEN
-    brick_sheets_to_lynx_with_cursor(
+    brick_sheets_to_mind_with_cursor(
         cursor0, fay_wdir.bricks_src_dir, fay_wdir.moment_mstr_dir
     )
     # THEN
@@ -606,7 +606,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario6_NoDuplicates(
     assert [] == all_tables_with_duplicates_after_2nd_run
 
 
-def test_brick_sheets_to_lynx_with_cursor_Scenario7_NoDuplicates_bk00170(
+def test_brick_sheets_to_mind_with_cursor_Scenario7_NoDuplicates_bk00170(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -655,18 +655,18 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario7_NoDuplicates_bk00170(
     save_sheet(b_src_dir_file_path, "example_bk00101", bk00101_df)
 
     b_src_dir = fay_wdir.bricks_src_dir
-    brick_sheets_to_lynx_with_cursor(cursor0, b_src_dir, fay_wdir.moment_mstr_dir)
+    brick_sheets_to_mind_with_cursor(cursor0, b_src_dir, fay_wdir.moment_mstr_dir)
     assert [] == get_all_tables_with_duplicates(cursor0)
 
     # WHEN
-    brick_sheets_to_lynx_with_cursor(cursor0, b_src_dir, fay_wdir.moment_mstr_dir)
+    brick_sheets_to_mind_with_cursor(cursor0, b_src_dir, fay_wdir.moment_mstr_dir)
 
     # THEN
     all_tables_with_duplicates_after_2nd_run = get_all_tables_with_duplicates(cursor0)
     assert [] == all_tables_with_duplicates_after_2nd_run
 
 
-def test_brick_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
+def test_brick_sheets_to_mind_mstr_Scenario0_CreatesDatabaseFile(
     temp3_fs,
 ):
     # sourcery skip: extract-method, move-assign-in-block
@@ -715,7 +715,7 @@ def test_brick_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     assert not os_path_exists(fay_db_path)
 
     # WHEN
-    brick_sheets_to_lynx_mstr(fay_wdir)
+    brick_sheets_to_mind_mstr(fay_wdir)
 
     # THEN
     assert os_path_exists(fay_db_path)
@@ -771,7 +771,7 @@ def test_brick_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     db_conn.close()
 
 
-def test_brick_sheets_to_lynx_mstr_Scenario1_Creates_job_Files(temp3_fs):
+def test_brick_sheets_to_mind_mstr_Scenario1_Creates_job_Files(temp3_fs):
     # ESTABLISH
     hr_mop = init_rope(["herenow_red", "family", exx.casa, exx.clean, exx.mop])
     hr_tools = init_rope(["herenow_red", "family", exx.casa, exx.clean, exx.scrub])
@@ -805,7 +805,7 @@ def test_brick_sheets_to_lynx_mstr_Scenario1_Creates_job_Files(temp3_fs):
     assert not os_path_exists(hn_red_zia_job_path)
 
     # WHEN
-    brick_sheets_to_lynx_mstr(here_wdir)
+    brick_sheets_to_mind_mstr(here_wdir)
 
     # THEN
     # world_test_ex_dir = "src\ch26_world\test\test_world_examples"
