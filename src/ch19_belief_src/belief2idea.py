@@ -82,15 +82,12 @@ def get_max_spark_num_from_df(df: DataFrame, max_val: int) -> int:
 
     # Convert to numeric, coerce errors to NaN
     numeric_series = pandas_to_numeric(df["spark_num"], errors="coerce").dropna()
-
     if numeric_series.empty:
         return max_val
 
     # Convert floats to ints
     numeric_series = numeric_series.astype(int)
-
     current_max = numeric_series.max()
-
     if max_val is None or current_max > max_val:
         max_val = int(current_max)
     return max_val
@@ -171,8 +168,7 @@ def get_sheets_with_idea_types(directory: str) -> List[Tuple[str, str]]:
 
 
 def get_validated_b_src_idea_type_sheets(
-    b_src_dir: str,
-    i_src_dir: str,
+    b_src_dir: str, i_src_dir: str
 ) -> List[Tuple[str, str]]:
     """
     Returns all idea_type sheets found in b_src_dir.
@@ -196,10 +192,8 @@ def get_validated_b_src_idea_type_sheets(
     idea_ii_sheets_set = set(idea_ii_sheets)
 
     if overlapping := idea_ii_sheets_set.intersection(bele_ii_sheets_set):
-        raise ValueError(
-            f"idea_type sheets found in both b_src_dir and i_src_dir: "
-            f"{sorted(overlapping)}"
-        )
+        exception_str = "idea_type sheets found in both b_src_dir and i_src_dir: "
+        raise ValueError(exception_str, f"{sorted(overlapping)}")
 
     return bele_ii_sheets
 

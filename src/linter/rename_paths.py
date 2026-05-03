@@ -1,7 +1,4 @@
-from linter.chapter_move_tools import (
-    rename_files_and_dirs_4times,
-    string_exists_in_filepaths,
-)
+from linter.chapter_move_tools import rename_files_and_dirs_4times
 from os import getcwd as os_getcwd
 from os.path import isdir as os_path_isdir
 
