@@ -147,13 +147,13 @@ def test_create_moment_ote1_json_path_ReturnsObj(temp3_dir):
 
 def test_create_world_db_path_ReturnsObj(temp3_dir):
     # ESTABLISH
-    x_moment_mstr_dir = temp3_dir
+    world_dir = temp3_dir
 
     # WHEN
-    gen_world_db_path = create_world_db_path(x_moment_mstr_dir)
+    gen_world_db_path = create_world_db_path(world_dir)
 
     # THEN
-    expected_path = create_path(x_moment_mstr_dir, WORLD_DB_FILENAME)
+    expected_path = create_path(world_dir, WORLD_DB_FILENAME)
     assert gen_world_db_path == expected_path
 
 
@@ -180,7 +180,7 @@ def test_create_moment_ote1_json_path_HasDocString():
 @pytest_mark.skip_on_linux
 def test_create_world_db_path_HasDocString():
     # ESTABLISH
-    doc_str = create_world_db_path("moment_mstr_dir")
+    doc_str = create_world_db_path("world_dir")
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
     assert inspect_getdoc(create_world_db_path) == doc_str
