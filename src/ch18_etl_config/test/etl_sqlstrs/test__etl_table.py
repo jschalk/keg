@@ -1,12 +1,12 @@
 from ch00_py.file_toolbox import create_path
-from ch17_idea.idea_config import get_idea_config_dict
+from ch17_brick.brick_config import get_brick_config_dict
 from ch18_etl_config.etl_config import (
     ALL_DIMEN_ABBV2,
     ALL_DIMEN_ABBV7,
     create_prime_table_sqlstr,
     create_prime_tablename,
-    etl_idea_category_config_dict,
-    etl_idea_category_config_path,
+    etl_brick_category_config_dict,
+    etl_brick_category_config_path,
     etl_stage_types_config_path,
     get_all_dimen_columns_set,
     get_del_dimen_columns_set,
@@ -49,17 +49,17 @@ def test_remove_staging_columns_ReturnsObj():
 
 def test_ALL_DIMEN_ABBV7_has_all_dimens():
     # ESTABLISH
-    idea_config_keys = set(get_idea_config_dict().keys())
-    idea_config_keys.add("translate_core")
+    brick_config_keys = set(get_brick_config_dict().keys())
+    brick_config_keys.add("translate_core")
 
     # WHEN / THEN
-    assert len(ALL_DIMEN_ABBV7) == len(idea_config_keys)
+    assert len(ALL_DIMEN_ABBV7) == len(brick_config_keys)
 
 
 def test_get_dimen_abbv7_HasAll_dimens():
     # ESTABLISH / WHEN / THEN
-    for idea_dimen in get_idea_config_dict().keys():
-        assert get_dimen_abbv7(idea_dimen) in ALL_DIMEN_ABBV7
+    for brick_dimen in get_brick_config_dict().keys():
+        assert get_dimen_abbv7(brick_dimen) in ALL_DIMEN_ABBV7
 
 
 def test_get_dimen_abbv2_HasAll_dimens():
@@ -68,10 +68,10 @@ def test_get_dimen_abbv2_HasAll_dimens():
 
     # THEN
     expected_abbv2_set = set()
-    idea_config_keys = set(get_idea_config_dict().keys())
-    idea_config_keys.add("translate_core")
-    for idea_dimen in idea_config_keys:
-        abbv2 = get_dimen_abbv2(idea_dimen)
+    brick_config_keys = set(get_brick_config_dict().keys())
+    brick_config_keys.add("translate_core")
+    for brick_dimen in brick_config_keys:
+        abbv2 = get_dimen_abbv2(brick_dimen)
         print(f"{abbv2=}")
         assert abbv2
         expected_abbv2_set.add(abbv2)
@@ -87,8 +87,8 @@ def test_get_stages_order_general_ReturnsObj():
     # THEN
     assert stages_order_general
     assert stages_order_general == [
-        kw.ideax_raw,
-        kw.ideax_agg,
+        kw.brixk_raw,
+        kw.brixk_agg,
         kw.sound_raw,
         kw.sound_agg,
         kw.sound_vld,
@@ -100,8 +100,8 @@ def test_get_stages_order_general_ReturnsObj():
 
 def test_get_stage_abbv5_ReturnsObj():
     # ESTABLISH / WHEN / THEN
-    assert get_stage_abbv5(kw.ideax_raw) == kw.ideax_raw
-    assert get_stage_abbv5(kw.ideax_agg) == kw.ideax_agg
+    assert get_stage_abbv5(kw.brixk_raw) == kw.brixk_raw
+    assert get_stage_abbv5(kw.brixk_agg) == kw.brixk_agg
     assert get_stage_abbv5(kw.sound_raw) == kw.s_raw
     assert get_stage_abbv5(kw.sound_agg) == kw.s_agg
     assert get_stage_abbv5(kw.sound_vld) == kw.s_vld
@@ -180,16 +180,16 @@ def test_create_prime_tablename_ReturnsObj_Scenario0_ExpectedReturns():
     assert prngrou_job_table == f"{kw.person_groupunit}_job"
 
 
-def test_get_all_dimen_columns_set_ReturnsObj_Scenario0_idea_config_Dimens():
+def test_get_all_dimen_columns_set_ReturnsObj_Scenario0_brick_config_Dimens():
     # ESTABLISH
-    for x_dimen in get_idea_config_dict().keys():
+    for x_dimen in get_brick_config_dict().keys():
         # WHEN
         dimen_columns = get_all_dimen_columns_set(x_dimen)
 
         # THEN
-        dimen_idea_config = get_idea_config_dict().get(x_dimen)
-        expected_columns = set(dimen_idea_config.get(kw.jkeys).keys())
-        expected_columns.update(set(dimen_idea_config.get(kw.jvalues).keys()))
+        dimen_brick_config = get_brick_config_dict().get(x_dimen)
+        expected_columns = set(dimen_brick_config.get(kw.jkeys).keys())
+        expected_columns.update(set(dimen_brick_config.get(kw.jvalues).keys()))
         assert dimen_columns == expected_columns
 
 
@@ -226,13 +226,13 @@ def test_get_etl_stage_types_config_dict_ReturnsObj_Scenario0_IsFullyPopulated()
         kw.s_agg,
         kw.s_raw,
         kw.s_vld,
-        kw.i_agg,
-        kw.i_raw,
-        kw.i_vld,
-        kw.b_src,
-        kw.b_dst,
+        kw.b_agg,
+        kw.b_raw,
+        kw.k_vld,
         kw.i_src,
-        kw.lynx,
+        kw.i_dst,
+        kw.b_src,
+        kw.mind,
     }
     expected_abbv9_stage_types = {
         kw.heard_agg,
@@ -241,13 +241,13 @@ def test_get_etl_stage_types_config_dict_ReturnsObj_Scenario0_IsFullyPopulated()
         kw.sound_agg,
         kw.sound_raw,
         kw.sound_vld,
-        kw.ideax_agg,
-        kw.ideax_raw,
-        kw.ideax_vld,
-        kw.belve_dst,
-        kw.belve_src,
+        kw.brixk_agg,
+        kw.brixk_raw,
+        kw.brixk_vld,
+        kw.ideax_dst,
         kw.ideax_src,
-        kw.lynxx_mst,
+        kw.brixk_src,
+        kw.mindx_mst,
     }
     track_stage_type_orders = {}
     for stage_type, stage_type_dict in etl_stage_types_config.items():
@@ -262,6 +262,7 @@ def test_get_etl_stage_types_config_dict_ReturnsObj_Scenario0_IsFullyPopulated()
         general_order_int = stage_type_dict.get("stage_type_order")
         assert abbv9_str in expected_abbv9_stage_types
         print(abbv9_str)
+        assert len(abbv9_str) == 9
         assert abbv9_str[5:6] == "_"
         assert general_order_int > 0, stage_type
         track_stage_type_orders[general_order_int] = stage_type
@@ -277,49 +278,49 @@ def test_get_ordered_stage_types_ReturnsObj():
     assert ordered_stage_types
     print(ordered_stage_types)
     expected_ordered_stage_types = [
-        kw.b_src,
         kw.i_src,
-        kw.i_raw,
-        kw.i_agg,
-        kw.i_vld,
+        kw.b_src,
+        kw.b_raw,
+        kw.b_agg,
+        kw.k_vld,
         kw.s_raw,
         kw.s_agg,
         kw.s_vld,
         kw.h_raw,
         kw.h_agg,
         kw.h_vld,
-        kw.lynx,
-        kw.b_dst,
+        kw.mind,
+        kw.i_dst,
     ]
     print(expected_ordered_stage_types)
     assert ordered_stage_types == expected_ordered_stage_types
 
 
-def test_etl_idea_category_config_path_ReturnsObj():
+def test_etl_brick_category_config_path_ReturnsObj():
     # ESTABLISH / WHEN / THEN
     src_dir = create_path(os_getcwd(), "src")
     chapter_dir = create_path(src_dir, "ch18_etl_config")
-    assert etl_idea_category_config_path() == create_path(
-        chapter_dir, "etl_idea_category_config.json"
+    assert etl_brick_category_config_path() == create_path(
+        chapter_dir, "etl_brick_category_config.json"
     )
 
 
-def test_get_etl_idea_category_config_dict_ReturnsObj_Scenario0_IsFullyPopulated():
+def test_get_etl_brick_category_config_dict_ReturnsObj_Scenario0_IsFullyPopulated():
     # ESTABLISH / WHEN
-    etl_idea_category_config = etl_idea_category_config_dict()
+    etl_brick_category_config = etl_brick_category_config_dict()
 
     # THEN
-    assert etl_idea_category_config
-    etl_idea_category_config_dimens = set(etl_idea_category_config.keys())
-    assert kw.moment in etl_idea_category_config_dimens
-    assert kw.translate_core in etl_idea_category_config_dimens
-    assert kw.translate in etl_idea_category_config_dimens
-    assert kw.person in etl_idea_category_config_dimens
-    assert kw.nabu in etl_idea_category_config_dimens
-    assert len(etl_idea_category_config_dimens) == 5
+    assert etl_brick_category_config
+    etl_brick_category_config_dimens = set(etl_brick_category_config.keys())
+    assert kw.moment in etl_brick_category_config_dimens
+    assert kw.translate_core in etl_brick_category_config_dimens
+    assert kw.translate in etl_brick_category_config_dimens
+    assert kw.person in etl_brick_category_config_dimens
+    assert kw.nabu in etl_brick_category_config_dimens
+    assert len(etl_brick_category_config_dimens) == 5
 
     etl_stage_types = set(get_etl_stage_types_config_dict().keys())
-    for idea_category, cat_dict in etl_idea_category_config.items():
+    for brick_category, cat_dict in etl_brick_category_config.items():
         for stage_type, stage_dict in cat_dict.get("stages").items():
             assert stage_type in etl_stage_types
             print(f"{stage_type=}")
@@ -333,30 +334,30 @@ def test_get_etl_category_stages_dict_ReturnsObj():
     # THEN
     expected_dict = {}
     expected_count = 0
-    etl_idea_category_config = etl_idea_category_config_dict()
-    for idea_category, dimen_dict in etl_idea_category_config.items():
+    etl_brick_category_config = etl_brick_category_config_dict()
+    for brick_category, dimen_dict in etl_brick_category_config.items():
         for stage_type, stages_dict in dimen_dict.get("stages").items():
             expected_count += 1
             if set(stages_dict.keys()) == {"del", "put"}:
-                stage_key_put = f"{idea_category}_{stage_type}_put"
-                stage_key_del = f"{idea_category}_{stage_type}_del"
+                stage_key_put = f"{brick_category}_{stage_type}_put"
+                stage_key_del = f"{brick_category}_{stage_type}_del"
                 # print(f"{expected_count} {stage_key_put=}")
                 expected_count += 1
                 expected_dict[stage_key_put] = {
-                    kw.idea_category: idea_category,
+                    kw.brick_category: brick_category,
                     "stage_type": stage_type,
                     "put_del": "put",
                 }
                 expected_dict[stage_key_del] = {
-                    kw.idea_category: idea_category,
+                    kw.brick_category: brick_category,
                     "stage_type": stage_type,
                     "put_del": "del",
                 }
                 # print(f"{expected_count} {stage_key_del=}")
             else:
-                stage_key = f"{idea_category}_{stage_type}"
+                stage_key = f"{brick_category}_{stage_type}"
                 expected_dict[stage_key] = {
-                    kw.idea_category: idea_category,
+                    kw.brick_category: brick_category,
                     "stage_type": stage_type,
                 }
                 # print(f"{expected_count} {stage_key=} ")
@@ -385,7 +386,7 @@ def test_get_prime_columns_ReturnsObj_Scenario2_moment_epoch_month():
     # ESTABLISH
     x_dimen = kw.moment_epoch_month
     table_keylist = [kw.h_agg]
-    config_dict = get_idea_config_dict()
+    config_dict = get_brick_config_dict()
 
     # WHEN
     mmtunit_h_agg_columns = get_prime_columns(x_dimen, table_keylist, config_dict)
@@ -406,7 +407,7 @@ def test_get_prime_columns_ReturnsObj_Scenario3_h_raw_set_translateable_otx_inx_
     # ESTABLISH
     x_dimen = kw.moment_epoch_month
     table_keylist = [kw.h_raw]
-    config_dict = etl_idea_category_config_dict()
+    config_dict = etl_brick_category_config_dict()
 
     # WHEN
     mmtepoc_h_raw_columns = get_prime_columns(x_dimen, table_keylist, config_dict)
@@ -431,7 +432,7 @@ def test_get_prime_columns_ReturnsObj_Scenario4_h_agg_set_nabuable_otx_inx_args(
     # ESTABLISH
     x_dimen = kw.moment_timeoffi
     table_keylist = [kw.h_agg]
-    config_dict = etl_idea_category_config_dict()
+    config_dict = etl_brick_category_config_dict()
 
     # WHEN
     mmtoffi_h_agg_columns = get_prime_columns(x_dimen, table_keylist, config_dict)
@@ -452,7 +453,7 @@ def test_get_prime_columns_ReturnsObj_Scenario5_h_agg_set_nabuable_otx_inx_args_
     # ESTABLISH
     x_dimen = kw.person_plan_reason_caseunit
     table_keylist = [kw.h_agg, "put"]
-    config_dict = etl_idea_category_config_dict()
+    config_dict = etl_brick_category_config_dict()
 
     # WHEN
     prncase_h_agg_columns = get_prime_columns(x_dimen, table_keylist, config_dict)
@@ -511,5 +512,5 @@ def test_create_prime_table_sqlstr_ReturnsObj_Scenario0_CaseUnit():
     # THEN
     assert table_sqlstr
     print(table_sqlstr)
-    expected_sqlstr = "CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_put_s_raw (idea_type TEXT, spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, knot TEXT, error_message TEXT)"
+    expected_sqlstr = "CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_put_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, knot TEXT, error_message TEXT)"
     assert table_sqlstr == expected_sqlstr

@@ -18,7 +18,7 @@ from ch00_py.keyword_class_builder import (
     create_src_keywords_main_path,
 )
 from ch04_rope._ref.ch04_doc_builder import get_ropeterm_description_md
-from ch17_idea._ref.ch17_doc_builder import get_idea_formats_md, get_idea_mds
+from ch17_brick._ref.ch17_doc_builder import get_brick_formats_md, get_brick_mds
 from ch98_docs_builder._ref.ch98_path import create_chapter_ref_path
 from ch98_docs_builder.keg_definitions_builder import rebuild_keg_definitions_contents
 
@@ -70,17 +70,17 @@ def save_ropeterm_description_md(x_dir: str):
     save_file(x_dir, "ropeterm_breakdown.md", get_ropeterm_description_md())
 
 
-def save_idea_mds(dest_dir: str):
-    idea_mds = get_idea_mds()
-    dest_dir = create_path(dest_dir, "ch17_idea_formats")
+def save_brick_mds(dest_dir: str):
+    brick_mds = get_brick_mds()
+    dest_dir = create_path(dest_dir, "ch17_brick_formats")
 
-    for idea_type, idea_md in idea_mds.items():
-        save_file(dest_dir, f"{idea_type}.md", idea_md)
+    for brick_type, brick_md in brick_mds.items():
+        save_file(dest_dir, f"{brick_type}.md", brick_md)
 
 
-def save_idea_formats_md(dest_dir: str):
-    idea_formats_md = get_idea_formats_md()
-    save_file(dest_dir, "idea_formats.md", idea_formats_md)
+def save_brick_formats_md(dest_dir: str):
+    brick_formats_md = get_brick_formats_md()
+    save_file(dest_dir, "brick_formats.md", brick_formats_md)
 
 
 def resave_chapter_and_keyword_json_files():

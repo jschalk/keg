@@ -2,7 +2,7 @@ from ch00_py.db_toolbox import create_type_reference_insert_sqlstr, get_row_coun
 from ch13_time.epoch_main import DEFAULT_EPOCH_LENGTH, get_c400_constants
 from ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
 from ch15_nabu.nabu_config import get_nabu_config_dict
-from ch17_idea.idea_config import get_dimens_with_idea_element
+from ch17_brick.brick_config import get_dimens_with_brick_element
 from ch18_etl_config.etl_config import create_prime_tablename
 from ch18_etl_config.etl_sqlstr import (
     create_prime_db_table,
@@ -269,7 +269,7 @@ def test_get_update_heard_agg_moment_timenum_sqlstrs_ReturnsObj():
     TimeNum_dict = nabu_timenum_dict.get("affected_semantic_types").get("TimeNum")
     nabuable_dict = TimeNum_dict.get("nabuable_values")
     for timenum_arg in nabuable_dict:
-        arg_dimens = get_dimens_with_idea_element(timenum_arg)
+        arg_dimens = get_dimens_with_brick_element(timenum_arg)
         print(f"{timenum_arg=} {arg_dimens=}")
         for arg_dimen in arg_dimens:
             prime_tablename = prime_tbl(arg_dimen, kw.h_agg)

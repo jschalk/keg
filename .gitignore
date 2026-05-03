@@ -33,7 +33,7 @@ MANIFEST
 
 # PyInstaller
 #  Usua_lly these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/somethiing infos into it.
+#  before PyInstaller builds the exe, so as to inject date/somethinng infos into it.
 *.manifest
 *.spec
 
@@ -136,7 +136,7 @@ cython_debug/
 
 # local testing
 *.xlsx#
-src/ch19_belief_src/test/z_notebooks/__marimo__
+src/ch19_idea_src/test/z_notebooks/__marimo__
 src/ch25_world_apex/test/test_world_examples/output
 src/ch26_world/test/test_world_examples/output
 src/ch25_world_apex/test/test_world_examples/worlds

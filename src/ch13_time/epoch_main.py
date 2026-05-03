@@ -672,7 +672,7 @@ def timeshoe_shop(
     auto_calc_epoch: bool = True,
 ) -> TimeShoe:
     x_timeshoe = TimeShoe(person, epoch_label, epoch_min=epoch_min)
-    if auto_calc_epoch is True:
+    if auto_calc_epoch:
         x_timeshoe.calc_epoch()
     return x_timeshoe
 

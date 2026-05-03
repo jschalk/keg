@@ -1,9 +1,9 @@
 from ch00_py.db_toolbox import get_row_count, get_table_columns
 from ch00_py.dict_toolbox import get_empty_set_if_None
 from ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
-from ch17_idea.idea_config import get_default_sorted_list, get_idea_config_dict
+from ch17_brick.brick_config import get_brick_config_dict, get_default_sorted_list
 from ch18_etl_config.etl_config import (
-    etl_idea_category_config_dict,
+    etl_brick_category_config_dict,
     get_dimen_abbv7,
     get_etl_category_stages_dict,
     get_prime_columns,
@@ -38,7 +38,7 @@ def check_insert_sqlstr_exists(
 
     print(f"{raw_tablename=} {agg_tablename=}")
     # print(f"{stage_dict=}")
-    config_dict = etl_idea_category_config_dict()
+    config_dict = etl_brick_category_config_dict()
     raw_keylist = [kw.h_raw, put_del] if put_del else [kw.h_raw]
     agg_keylist = [kw.h_agg, put_del] if put_del else [kw.h_agg]
     p_agg_columns = get_prime_columns(dimen, agg_keylist, config_dict)
@@ -84,12 +84,12 @@ def test_get_insert_heard_agg_sqlstrs_ReturnsObj(cursor0: Cursor):
 
     # THEN
     agg_sqlstrs = insert_heard_agg_sqlstrs
-    etl_idea_category_config = etl_idea_category_config_dict()
+    etl_brick_category_config = etl_brick_category_config_dict()
     create_sound_and_heard_tables(cursor0)
-    for idea_category, category_dict in etl_idea_category_config.items():
-        category_config = get_idea_config_dict(idea_category)
+    for brick_category, category_dict in etl_brick_category_config.items():
+        category_config = get_brick_config_dict(brick_category)
         if agg_dict := category_dict.get("stages").get(kw.h_agg):
-            # print(f"{idea_category=}")
+            # print(f"{brick_category=}")
             if agg_dict.get("del") is None:
                 for dimen in sorted(category_config.keys()):
                     check_insert_sqlstr_exists(dimen, agg_sqlstrs, agg_dict)

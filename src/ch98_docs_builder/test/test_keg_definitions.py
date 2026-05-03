@@ -14,7 +14,7 @@ from ch16_translate.translate_config import (
     get_translate_config_args,
     get_translate_config_dict,
 )
-from ch17_idea.idea_config import get_idea_config_dict
+from ch17_brick.brick_config import get_brick_config_dict
 from ch18_etl_config.etl_config import get_etl_stage_types_config_dict
 from ch22_heard.heard import etl_heard_raw_tables_to_moment_ote1_agg
 from ch98_docs_builder._ref.ch98_semantic_types import (
@@ -178,7 +178,7 @@ def test_get_keg_definitions_ReturnsObj_Check_semantic_types():
         assert class_doc_str in semantic_description
 
 
-def test_get_keg_definitions_ReturnsObj_Check_src_config_keywords():
+def test_get_keg_definitions_ReturnsObj_Checb_src_config_keywords():
     # sourcery skip: no-conditionals-in-tests
     # ESTABLISH / WHEN
     keg_definitions = get_keg_definitions()
@@ -433,20 +433,20 @@ def test_get_keg_definitions_ReturnsObj_get_all_person_calc_args():
         assert py_key_description, person_calc_arg
 
 
-def test_get_keg_definitions_ReturnsObj_get_idea_config_dict():
+def test_get_keg_definitions_ReturnsObj_get_brick_config_dict():
     # ESTABLISH
-    idea_config_dict = get_idea_config_dict()
-    # print(f"{idea_config_dict.keys()=}")
+    brick_config_dict = get_brick_config_dict()
+    # print(f"{brick_config_dict.keys()=}")
     allowed_cruds = set()
     cruds_dimen = {}
-    for idea_dimen, idea_dict in idea_config_dict.items():
-        curr_allowed_crud = idea_dict.get(kw.allowed_crud)
-        # print(f"{idea_dimen=} {curr_allowed_crud=}")
+    for brick_dimen, brick_dict in brick_config_dict.items():
+        curr_allowed_crud = brick_dict.get(kw.allowed_crud)
+        # print(f"{brick_dimen=} {curr_allowed_crud=}")
         allowed_cruds.add(curr_allowed_crud)
         if cruds_dimen.get(curr_allowed_crud):
-            cruds_dimen.get(curr_allowed_crud).add(idea_dimen)
+            cruds_dimen.get(curr_allowed_crud).add(brick_dimen)
         else:
-            cruds_dimen[curr_allowed_crud] = {idea_dimen}
+            cruds_dimen[curr_allowed_crud] = {brick_dimen}
     print(f"{allowed_cruds}")
     print(f"{cruds_dimen}")
     delete_insert_update_desc = ", ".join(
@@ -476,5 +476,5 @@ def test_get_keg_definitions_ReturnsObj_get_idea_config_dict():
         # print(f"    {expected_str=}")
         assert expected_str in crud_description, allowed_crud
 
-    expected_allowed_crud_desc = "Each idea config dimen has an allowed_crud that describes whether the data may be updated/deleted/inserted more than one."
+    expected_allowed_crud_desc = "Each brick config dimen has an allowed_crud that describes whether the data may be updated/deleted/inserted more than one."
     assert keg_definitions.get(kw.allowed_crud) == expected_allowed_crud_desc

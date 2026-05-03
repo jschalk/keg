@@ -1,0 +1,11 @@
+{
+  "attributes": {
+    "contact_name": { "otx_key": true }, 
+    "moment_rope" : { "otx_key": true }, 
+    "person_name" : { "otx_key": true }, 
+    "spark_face"  : { "otx_key": true }, 
+    "spark_num"   : { "otx_key": true }
+  }, 
+  "brick_type": "bk00001", 
+  "dimens": ["momentunit", "personunit", "person_contactunit"]
+}

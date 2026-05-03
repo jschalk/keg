@@ -12,7 +12,7 @@ from ch16_translate.translate_config import (
     get_translates_column_ref,
 )
 from ch16_translate.translate_main import default_unknown_str_if_None
-from ch17_idea.idea_config import get_idea_dimen_ref
+from ch17_brick.brick_config import get_brick_dimen_ref
 from ch18_etl_config.etl_sqlstr import (
     create_insert_into_translate_core_raw_sqlstr,
     create_insert_missing_spark_face_into_translate_core_vld_sqlstr,
@@ -38,13 +38,13 @@ from sqlite3 import Cursor as sqlite3_Cursor
 
 
 def set_sound_raw_tables_error_message(cursor: sqlite3_Cursor):
-    for dimen in get_idea_dimen_ref().keys():
+    for dimen in get_brick_dimen_ref().keys():
         sqlstr = create_sound_raw_update_inconsist_error_message_sqlstr(cursor, dimen)
         cursor.execute(sqlstr)
 
 
 def insert_sound_raw_selects_into_sound_agg_tables(cursor: sqlite3_Cursor):
-    for dimen in get_idea_dimen_ref().keys():
+    for dimen in get_brick_dimen_ref().keys():
         sqlstrs = create_sound_agg_insert_sqlstrs(cursor, dimen)
         for sqlstr in sqlstrs:
             cursor.execute(sqlstr)

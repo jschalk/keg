@@ -23,17 +23,15 @@ def create_moment_ote1_json_path(moment_mstr_dir: str, moment_lasso: LassoUnit) 
     return create_path(moment_path, "moment_ote1_agg.json")
 
 
-def create_beliefs_dir_path(moment_mstr_dir: str) -> str:
-    """Returns path: moment_mstr_dir\\beliefs"""
-    return create_path(moment_mstr_dir, "beliefs")
+def create_ideas_dir_path(moment_mstr_dir: str) -> str:
+    """Returns path: moment_mstr_dir\\ideas"""
+    return create_path(moment_mstr_dir, "ideas")
 
 
-def create_beliefs_person_dir_path(
-    moment_mstr_dir: str, person_name: PersonName
-) -> str:
-    """Returns path: moment_mstr_dir\\beliefs\\person_name"""
-    beliefs_dir = create_path(moment_mstr_dir, "beliefs")
-    return create_path(beliefs_dir, person_name)
+def create_ideas_person_dir_path(moment_mstr_dir: str, person_name: PersonName) -> str:
+    """Returns path: moment_mstr_dir\\ideas\\person_name"""
+    ideas_dir = create_path(moment_mstr_dir, "ideas")
+    return create_path(ideas_dir, person_name)
 
 
 def create_last_run_metrics_path(world_dir: str) -> str:

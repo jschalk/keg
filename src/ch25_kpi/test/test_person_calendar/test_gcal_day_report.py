@@ -9,17 +9,19 @@ from ch13_time.epoch_main import (
     timeshoe_shop,
 )
 from ch14_moment.moment_main import momentunit_shop, save_moment_file
+from ch18_etl_config._ref.ch18_path import create_world_db_path
+from ch23_mind.mind import CREATE_MOMENT_TRANBOOK_NETS_SQLSTR
 from ch25_kpi._ref.ch25_path import (
     create_day_punch_txt_path as day_punch_path,
     create_dst_person_punch_path as dst_punch_path,
 )
 from ch25_kpi.gcalendar import (
     copy_person_day_punches_to_dst_dir,
-    gcal_readable_percent,
     get_gcal_day_punch_from_job_file,
     get_gcal_day_punch_from_personunit,
     get_person_gcal_day_punchs,
-    lynx_to_person_gcal_day_punchs,
+    mind_to_person_gcal_day_punchs,
+    persontranbookmetric_shop,
 )
 from ch25_kpi.test._util.ch25_examples import (
     get_a23_sue_clean_example,
@@ -29,6 +31,7 @@ from ch25_kpi.test._util.ch25_examples import (
 from datetime import datetime
 from os.path import exists as os_path_exists
 from ref.keywords import Ch25Keywords as kw, ExampleStrs as exx
+from sqlite3 import Cursor, connect as sqlite3_connect
 
 
 def test_get_gcal_day_punch_from_personunit_ReturnsObj_Scenario0_EmptyPerson():
@@ -71,6 +74,28 @@ def test_get_gcal_day_punch_from_personunit_ReturnsObj_Scenario1_NonEmptyPerson(
     assert "Contacts" in sue_day_punch_str
     assert "Group" in sue_day_punch_str
     assert exx.run in sue_day_punch_str
+
+
+def test_get_gcal_day_punch_from_personunit_ReturnsObj_Scenario2_PersonTranBookMetric_Passed():
+    # ESTABLISH
+    sue_person = get_a23_sue_clean_example()
+    apr7 = datetime(2010, 4, 7)
+    sue_net = 70
+    a23_circulation_total = 5000
+    sue_tranmetric = persontranbookmetric_shop(
+        exx.a23, exx.sue, net=sue_net, circulation_total=a23_circulation_total
+    )
+
+    # WHEN
+    sue_day_punch_str = get_gcal_day_punch_from_personunit(
+        sue_person, apr7, group_title=exx.run, persontranbookmetric=sue_tranmetric
+    )
+
+    # THEN
+    print(sue_day_punch_str)
+    assert sue_day_punch_str
+    assert str(sue_net) in sue_day_punch_str
+    assert str(a23_circulation_total) in sue_day_punch_str
 
 
 def test_get_gcal_day_punch_from_job_file_ReturnsObj_Scenario1_NonEmptyPerson(temp3_fs):
@@ -219,7 +244,7 @@ def test_get_person_gcal_day_punchs_ReturnsObj_Scenario2_OnlySueReports(
     assert sue_ep8_day_punch_path == sue_ep8_dict.get("file_path")
 
 
-def test_lynx_to_person_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
+def test_mind_to_person_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     temp3_fs,
 ):
     # ESTABLISH
@@ -255,7 +280,7 @@ def test_lynx_to_person_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     assert not os_path_exists(sue_ep8_day_punch_path)
 
     # WHEN
-    lynx_to_person_gcal_day_punchs(
+    mind_to_person_gcal_day_punchs(
         moment_mstr_dir=mmt_mstr_dir,
         person_name=exx.sue,
         day=apr7,
@@ -270,6 +295,54 @@ def test_lynx_to_person_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     assert "Schedule Priorities" in sue_ep8_day_punch_str
     assert f"Agenda for {exx.sue}" in sue_a23_day_punch_str
     assert f"Agenda for {exx.sue}" in sue_ep8_day_punch_str
+
+
+def test_mind_to_person_gcal_day_punchs_SavesFiles_Scenario1_IncludesTranBook(temp3_fs):
+    # ESTABLISH
+    sue_a23_person = get_a23_sue_clean_example()
+    epoch_config = get_default_epoch_config_dict()
+    x_epoch_label = epoch_config.get("epoch_label")
+    add_epoch_planunit(sue_a23_person, epoch_config)
+    sue_a23_person.thinkout()
+    apr7 = datetime(2010, 4, 7)
+    # save momentunit json
+    mmt_mstr_dir = str(temp3_fs)
+    a23_moment = momentunit_shop(exx.a23, mmt_mstr_dir)
+    a23_lasso = lassounit_shop(a23_moment.moment_rope, a23_moment.knot)
+    assert a23_moment.epoch.epoch_label == x_epoch_label
+    save_moment_file(a23_moment, a23_lasso)
+    # save personunit json as job file
+    save_job_file(mmt_mstr_dir, sue_a23_person)
+    sue_a23_day_punch_path = day_punch_path(mmt_mstr_dir, a23_lasso, exx.sue)
+    world_db_path = create_world_db_path(str(temp3_fs))
+    with sqlite3_connect(world_db_path) as conn:
+        conn.execute(CREATE_MOMENT_TRANBOOK_NETS_SQLSTR)
+        sue_funds = 55
+        insert_sqlstr = f"""
+INSERT INTO {kw.moment_tranbook_nets} ({kw.moment_rope}, {kw.person_name}, {kw.person_net_amount}) 
+VALUES 
+  ('{exx.a23}', '{exx.sue}', {sue_funds})
+, ('{exx.a23}', '{exx.yao}', {3000 - sue_funds})
+;
+"""
+        conn.execute(insert_sqlstr)
+    assert not os_path_exists(sue_a23_day_punch_path)
+
+    # WHEN
+    mind_to_person_gcal_day_punchs(
+        moment_mstr_dir=mmt_mstr_dir,
+        person_name=exx.sue,
+        day=apr7,
+        focus_group_title=exx.run,
+    )
+
+    # THEN
+    assert os_path_exists(sue_a23_day_punch_path)
+    sue_a23_day_punch_str = open_file(sue_a23_day_punch_path)
+    print(sue_a23_day_punch_str)
+    assert "funds" in sue_a23_day_punch_str
+    assert str(sue_funds) in sue_a23_day_punch_str
+    assert str(3000) in sue_a23_day_punch_str
 
 
 def test_copy_person_day_punches_to_dst_dir_SavesFiles_Scenario0_TwoSueReports(

@@ -13,7 +13,7 @@ KEG Version 0.0.0
 
 'keg' is a tool that helps me listen to the people important to me in my life.  I hope it can help you too. Let's assume I want to listen to you. If you give me a list of things that are important to you I want to be able to take your list, combine it with the lists of all the others I am about and get a output of a list of things I should do and metrics that describe my ability to do things . keg does this for all   
 
-'keg' is based on the philosohpy of Emmanuel Levinas (1906-1995) as expressed in his book "Totality and Infinity: An Essay on Exteriority" (translated by Lingis, 1969) and taught to me by Jules Simon PhD (born 1959) Philosopher at The University of Texas at El Paso (UTEP). I took Jules's course "Levinas: Phenomenology of the Ethical" in 2014 and am still working through the implications. The most important idea that motivated keg was how Levinas describes murder as the act of not listening. It is painful to really listen, to listen in such a rope as to not know what is going to be said. To take in the suffering of the Other and bring them into myself and change myself in ropes that are by definition imaginable. Because if I could imagine them then they would not be a change. By definition I'm only listening if it changes me in ropes I can't predict. 
+'keg' is based on the philosohpy of Emmanuel Levinas (1906-1995) as expressed in his book "Totality and Infinity: An Essay on Exteriority" (translated by Lingis, 1969) and taught to me by Jules Simon PhD (born 1959) Philosopher at The University of Texas at El Paso (UTEP). I took Jules's course "Levinas: Phenomenology of the Ethical" in 2014 and am still working through the implications. The most important brick that motivated keg was how Levinas describes murder as the act of not listening. It is painful to really listen, to listen in such a rope as to not know what is going to be said. To take in the suffering of the Other and bring them into myself and change myself in ropes that are by definition imaginable. Because if I could imagine them then they would not be a change. By definition I'm only listening if it changes me in ropes I can't predict. 
 
 So how do I listen? keg has an engine for converting the declarations (as data) into pledge lists. How to input the data? The most accessible method is using excel sheets. 
 
@@ -27,7 +27,7 @@ For keg all data must have *spark_num*, *spark_face*, and a rope, either *moment
   
 ## 0.1 Short introduction to keg excel sheets
 
-`keg` is a python library for listening to the needs of my neighbors and in turn letting them know what I need. Needs can be expressed in Excel sheets that range in complexity from a simple five column single row (example below) to 10+ columns that include configuration options that are usually set to defaults. Each row is translated and used to build the "lynx" data set. Even sheet with a single row like the example 0.1.0 below can be processed by keg. 
+`keg` is a python library for listening to the needs of my neighbors and in turn letting them know what I need. Needs can be expressed in Excel sheets that range in complexity from a simple five column single row (example below) to 10+ columns that include configuration options that are usually set to defaults. Each row is translated and used to build the "mind" data set. Even sheet with a single row like the example 0.1.0 below can be processed by keg. 
 
 # Input Example Excel file 0.1.0: fizz0.xlsx with sheet "br00000_buzz" 
 | spark_num | spark_face | moment_rope | person_name | contact_name | tran_time | amount |
@@ -41,7 +41,7 @@ When keg processes example 0.1.0 it creates a Moment labeled "OxboxDean" that co
 |  OxboxDean   |      Dean     |        7000        |         1        |       0      |
 
 
-Output belief: emmanuel_belief.xlsx, sheet "br00000"
+Output idea: emmanuel_idea.xlsx, sheet "br00000"
 | spark_num | spark_face | moment_rope | person_name | contact_name | tran_time | amount |
 |-----------|-----------|--------------|---------------|-----------|-----------|--------|
 |    77     | Emmanuel  |   OxboxDean  |    Emmanuel   |    Dean   |    891    |  7000  |

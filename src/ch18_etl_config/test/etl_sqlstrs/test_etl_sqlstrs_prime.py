@@ -14,7 +14,7 @@ from ch16_translate.translate_config import (
     get_translate_dimens,
     set_translateable_otx_inx_args,
 )
-from ch17_idea.idea_config import get_default_sorted_list, get_idea_config_dict
+from ch17_brick.brick_config import get_brick_config_dict, get_default_sorted_list
 from ch18_etl_config.etl_config import (
     create_prime_table_sqlstr,
     get_dimen_abbv7,
@@ -55,12 +55,12 @@ def test_get_prime_create_table_sqlstrs_ReturnsObj():
     expected_sql_refs = set()
     for stage_name in sorted(etl_category_stages_dict.keys(), reverse=True):
         stage_dict = etl_category_stages_dict.get(stage_name)
-        x_idea_category = stage_dict.get("idea_category")
+        x_brick_category = stage_dict.get("brick_category")
         stage_type = stage_dict.get("stage_type")
         x_put_del = stage_dict.get("put_del")
-        # if x_idea_category == kw.moment:
-        # print(f"{x_idea_category=}")
-        for x_dimen in sorted(get_idea_config_dict(x_idea_category)):
+        # if x_brick_category == kw.moment:
+        # print(f"{x_brick_category=}")
+        for x_dimen in sorted(get_brick_config_dict(x_brick_category)):
             add_dimen_to_agg_variables(
                 x_dimen,
                 stage_type,
@@ -95,7 +95,7 @@ def test_get_prime_create_table_sqlstrs_ReturnsObj():
         assert gen_sqlstr == expected_sqlstr
     assert create_table_sqlstrs == expected_sqlstrs_dict
 
-    # translate_dimens_config = get_idea_config_dict({kw.translate})
+    # translate_dimens_config = get_brick_config_dict({kw.translate})
     # for x_dimen in translate_dimens_config:
     #     s_vld_tablename = prime_tbl(abbv7(x_dimen), kw.s_vld)
     #     expected_s_vld_sqlstr = create_prime_table_sqlstr(x_dimen, kw.s_vld)
@@ -303,9 +303,9 @@ def test_create_sound_raw_update_inconsist_error_message_sqlstr_ReturnsObj_Scena
 
     # THEN
     x_tablename = prime_tbl(dimen, kw.s_raw)
-    dimen_config = get_idea_config_dict().get(dimen)
+    dimen_config = get_brick_config_dict().get(dimen)
     dimen_focus_columns = set(dimen_config.get(kw.jkeys).keys())
-    exclude_cols = {kw.idea_type, kw.error_message}
+    exclude_cols = {kw.brick_type, kw.error_message}
     expected_update_sqlstr = create_update_inconsistency_error_query(
         cursor0,
         x_tablename,
@@ -351,10 +351,10 @@ def test_create_sound_raw_update_inconsist_error_message_sqlstr_ReturnsObj_Scena
 
     # THEN
     x_tablename = prime_tbl(dimen, kw.s_raw)
-    dimen_config = get_idea_config_dict().get(dimen)
+    dimen_config = get_brick_config_dict().get(dimen)
     dimen_focus_columns = set(dimen_config.get(kw.jkeys).keys())
     exclude_cols = {
-        kw.idea_type,
+        kw.brick_type,
         kw.spark_num,
         kw.spark_face,
         kw.error_message,
@@ -402,10 +402,10 @@ def test_create_sound_raw_update_inconsist_error_message_sqlstr_ReturnsObj_Scena
 
     # THEN
     x_tablename = prime_tbl(dimen, kw.s_raw)
-    dimen_config = get_idea_config_dict().get(dimen)
+    dimen_config = get_brick_config_dict().get(dimen)
     dimen_focus_columns = set(dimen_config.get(kw.jkeys).keys())
     exclude_cols = {
-        kw.idea_type,
+        kw.brick_type,
         kw.spark_num,
         kw.spark_face,
         kw.error_message,
@@ -452,9 +452,9 @@ def test_create_sound_raw_update_inconsist_error_message_sqlstr_ReturnsObj_Scena
 
     # THEN
     x_tablename = prime_tbl(dimen, kw.s_raw, "put")
-    dimen_config = get_idea_config_dict().get(dimen)
+    dimen_config = get_brick_config_dict().get(dimen)
     dimen_focus_columns = set(dimen_config.get(kw.jkeys).keys())
-    exclude_cols = {kw.idea_type, kw.error_message}
+    exclude_cols = {kw.brick_type, kw.error_message}
     expected_update_sqlstr = create_update_inconsistency_error_query(
         cursor0,
         x_tablename,
@@ -501,9 +501,9 @@ def test_create_sound_agg_insert_sqlstrs_ReturnsObj_Scenario0_TranslateDimen(
     # THEN
     raw_tablename = prime_tbl(dimen, kw.s_raw)
     agg_tablename = prime_tbl(dimen, "s_agg")
-    dimen_config = get_idea_config_dict().get(dimen)
+    dimen_config = get_brick_config_dict().get(dimen)
     dimen_focus_columns = set(dimen_config.get(kw.jkeys).keys())
-    exclude_cols = {kw.idea_type, kw.error_message}
+    exclude_cols = {kw.brick_type, kw.error_message}
     expected_insert_sqlstr = create_table2table_agg_insert_query(
         cursor0,
         src_table=raw_tablename,
@@ -539,10 +539,10 @@ def test_create_sound_agg_insert_sqlstrs_ReturnsObj_Scenario1_MomentDimen(
     # THEN
     raw_tablename = prime_tbl(dimen, kw.s_raw)
     agg_tablename = prime_tbl(dimen, "s_agg")
-    dimen_config = get_idea_config_dict().get(dimen)
+    dimen_config = get_brick_config_dict().get(dimen)
     dimen_focus_columns = set(dimen_config.get(kw.jkeys).keys())
     dimen_focus_columns = get_default_sorted_list(dimen_focus_columns)
-    exclude_cols = {kw.idea_type, kw.error_message}
+    exclude_cols = {kw.brick_type, kw.error_message}
     print("yeah")
     expected_insert_sqlstr = create_table2table_agg_insert_query(
         cursor0,
@@ -579,10 +579,10 @@ def test_create_sound_agg_insert_sqlstrs_ReturnsObj_Scenario2_NabuDimen(
     # THEN
     raw_tablename = prime_tbl(dimen, kw.s_raw)
     agg_tablename = prime_tbl(dimen, "s_agg")
-    dimen_config = get_idea_config_dict().get(dimen)
+    dimen_config = get_brick_config_dict().get(dimen)
     dimen_focus_columns = set(dimen_config.get(kw.jkeys).keys())
     dimen_focus_columns = get_default_sorted_list(dimen_focus_columns)
-    exclude_cols = {kw.idea_type, kw.error_message}
+    exclude_cols = {kw.brick_type, kw.error_message}
     print("yeah")
     expected_insert_sqlstr = create_table2table_agg_insert_query(
         cursor0,
@@ -619,9 +619,9 @@ def test_create_sound_agg_insert_sqlstrs_ReturnsObj_Scenario3_PersonDimen(
     # THEN
     put_raw_tablename = prime_tbl(dimen, kw.s_raw, "put")
     put_agg_tablename = prime_tbl(dimen, "s_agg", "put")
-    put_dimen_config = get_idea_config_dict().get(dimen)
+    put_dimen_config = get_brick_config_dict().get(dimen)
     put_dimen_focus_columns = set(put_dimen_config.get(kw.jkeys).keys())
-    put_exclude_cols = {kw.idea_type, kw.error_message}
+    put_exclude_cols = {kw.brick_type, kw.error_message}
     put_expected_insert_sqlstr = create_table2table_agg_insert_query(
         cursor0,
         src_table=put_raw_tablename,
@@ -651,7 +651,7 @@ GROUP BY spark_num, spark_face, person_name, plan_rope, awardee_title
     last_element = del_dimen_focus_columns.pop(-1)
     del_dimen_focus_columns.append(f"{last_element}_ERASE")
     print(f"{del_dimen_focus_columns=} {last_element}")
-    del_exclude_cols = {kw.idea_type, kw.error_message}
+    del_exclude_cols = {kw.brick_type, kw.error_message}
     del_expected_insert_sqlstr = create_table2table_agg_insert_query(
         cursor0,
         src_table=del_raw_tablename,
@@ -792,7 +792,7 @@ GROUP BY spark_num, spark_face
 def test_get_insert_into_sound_vld_sqlstrs_ReturnsObj_PersonDimens(cursor0: Cursor):
     # sourcery skip: no-loop-in-tests
     # ESTABLISH
-    person_dimens_config = get_idea_config_dict({kw.person})
+    person_dimens_config = get_brick_config_dict({kw.person})
 
     # WHEN
     insert_s_vld_sqlstrs = get_insert_into_sound_vld_sqlstrs()
@@ -849,7 +849,7 @@ def test_get_insert_into_sound_vld_sqlstrs_ReturnsObj_Moment_Nabu_Dimens(
 ):
     # sourcery skip: no-loop-in-tests
     # ESTABLISH
-    moment_dimens_config = get_idea_config_dict({kw.moment, kw.nabu})
+    moment_dimens_config = get_brick_config_dict({kw.moment, kw.nabu})
     print(f"{moment_dimens_config.keys()=}")
 
     # WHEN
@@ -886,7 +886,7 @@ def test_get_insert_into_sound_vld_sqlstrs_ReturnsObj_Moment_Nabu_Dimens(
 def test_get_insert_into_heard_raw_sqlstrs_ReturnsObj_PersonDimens(cursor0: Cursor):
     # sourcery skip: no-loop-in-tests
     # ESTABLISH
-    person_dimens_config = get_idea_config_dict({kw.person})
+    person_dimens_config = get_brick_config_dict({kw.person})
 
     # WHEN
     insert_h_raw_sqlstrs = get_insert_into_heard_raw_sqlstrs()
@@ -943,7 +943,7 @@ def test_get_insert_into_heard_raw_sqlstrs_ReturnsObj_Moment_Nabu_Dimens(
 ):
     # sourcery skip: no-loop-in-tests
     # ESTABLISH
-    moment_dimens_config = get_idea_config_dict({kw.moment, kw.nabu})
+    moment_dimens_config = get_brick_config_dict({kw.moment, kw.nabu})
 
     # WHEN
     insert_h_raw_sqlstrs = get_insert_into_heard_raw_sqlstrs()

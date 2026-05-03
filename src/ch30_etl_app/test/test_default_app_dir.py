@@ -162,7 +162,7 @@ def test_get_app_default_dir_ReturnsObj_Scenari0_app_default_dir():
     assert x_default_dirs == {
         kw.world_name: example_worlddir.world_name,
         "working": example_worlddir.worlds_dir,
-        "beliefs_src": example_worlddir.beliefs_src_dir,
         "ideas_src": example_worlddir.ideas_src_dir,
+        "bricks_src": example_worlddir.bricks_src_dir,
         "output": example_worlddir.output_dir,
     }

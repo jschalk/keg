@@ -12,8 +12,8 @@ To integrate your CLI logic, replace the `create_today_punchs()` call inside
 """
 
 from ch00_py.file_toolbox import delete_dir, open_file, set_dir
-from ch17_idea.idea_db_tool import prettify_excel_files
-from ch25_kpi.gcalendar import lynx_to_person_gcal_day_punchs
+from ch17_brick.brick_db_tool import prettify_excel_files
+from ch25_kpi.gcalendar import mind_to_person_gcal_day_punchs
 from ch26_world.world import create_today_punchs
 from ch30_etl_app.etl_gui_tool import (
     fill_spark_face_in_directory,
@@ -57,10 +57,10 @@ from tkinter.scrolledtext import ScrolledText as tk_ScrolledText
 
 
 class OptionTable(tk_Frame):
-    def __init__(self, parent, options: dict, b_src_dir: str, me_personname, **kwargs):
+    def __init__(self, parent, options: dict, i_src_dir: str, me_personname, **kwargs):
         super().__init__(parent, **kwargs)
         self.options = options
-        self.b_src_dir = b_src_dir
+        self.i_src_dir = i_src_dir
         self.me_personname = me_personname
         # self.you_personname = you_personname
         self._build()
@@ -81,7 +81,7 @@ class OptionTable(tk_Frame):
         )
         scrollbar.config(command=self.tree.yview)
 
-        action_str = "Click to add Example Beliefs to Beliefs Directory"
+        action_str = "Click to add Example Ideas to Ideas Directory"
         self.tree.heading("action", text=action_str)
         self.tree.column("action", anchor=tk_W)
 
@@ -100,9 +100,9 @@ class OptionTable(tk_Frame):
         description = self.tree.item(selected[0], "values")[0]
         fn = self.options.get(description)
         if callable(fn):
-            fn(self.b_src_dir())  # ← call it to get the current string value
-        fill_spark_face_in_directory(self.b_src_dir(), self.me_personname())
-        # prettify_excel_files(self.b_src_dir())
+            fn(self.i_src_dir())  # ← call it to get the current string value
+        fill_spark_face_in_directory(self.i_src_dir(), self.me_personname())
+        # prettify_excel_files(self.i_src_dir())
 
 
 def open_directory(path: str) -> None:
@@ -150,8 +150,8 @@ class ETLApp(tk_Tk):
         self._me_personname = tk_StringVar()
         self._you_personname = tk_StringVar()
         self._working = tk_StringVar()
-        self._b_src_dir = tk_StringVar()
         self._i_src_dir = tk_StringVar()
+        self._b_src_dir = tk_StringVar()
         self._output = tk_StringVar()
 
         # Your config: description -> function
@@ -162,8 +162,8 @@ class ETLApp(tk_Tk):
         vars_map = {
             "world_name": self._world_name,
             "working": self._working,
-            "beliefs_src": self._b_src_dir,
             "ideas_src": self._i_src_dir,
+            "bricks_src": self._b_src_dir,
             "output": self._output,
             "me_personname": self._me_personname,
             "you_personname": self._you_personname,
@@ -204,17 +204,17 @@ class ETLApp(tk_Tk):
             },
             "2": {
                 "row_type": "dir",
-                "title": "BELIEFS_DIR",
-                "var": self._b_src_dir,
+                "title": "IDEAS_DIR",
+                "var": self._i_src_dir,
                 "required": True,
-                "tip": "Source of Beliefs. Non-sparked Ideas.",
+                "tip": "Source of Ideas. Non-sparked Bricks.",
             },
             "3": {
                 "row_type": "dir",
-                "title": "IDEAS_DIR  ",
-                "var": self._i_src_dir,
+                "title": "BRICKS_DIR  ",
+                "var": self._b_src_dir,
                 "required": True,
-                "tip": "Source of Ideas files. Beliefs that have been sparked.",
+                "tip": "Source of Bricks files. Ideas that have been sparked.",
             },
             "4": {
                 "row_type": "dir",
@@ -343,10 +343,10 @@ class ETLApp(tk_Tk):
         delete_dir(path)
         if len(self._working.get()) > 0:
             set_dir(self._working.get())
-        if self._b_src_dir:
-            set_dir(self._b_src_dir.get())
         if self._i_src_dir:
             set_dir(self._i_src_dir.get())
+        if self._b_src_dir:
+            set_dir(self._b_src_dir.get())
         if self._output:
             set_dir(self._output.get())
         self._status.set(f"✔  Deleted contents of {path}")
@@ -467,7 +467,7 @@ class ETLApp(tk_Tk):
         self._run_btn.pack()
 
         options = get_option_table_options()
-        table = OptionTable(left, options, self._b_src_dir.get, self._me_personname.get)
+        table = OptionTable(left, options, self._i_src_dir.get, self._me_personname.get)
         table.pack(fill=tk_BOTH, expand=True, padx=10, pady=10)
 
         self._run_btn.bind(
@@ -492,7 +492,7 @@ class ETLApp(tk_Tk):
         self._build_viewer_panel(right)
 
     def _build_excel_panel(self, parent):
-        """Middle panel: scrollable list of .xlsx files in the Ideas directory."""
+        """Middle panel: scrollable list of .xlsx files in the Bricks directory."""
         ax = get_app_glb_attrs()
 
         # Header
@@ -501,7 +501,7 @@ class ETLApp(tk_Tk):
 
         tk_Label(
             hdr,
-            text="IDEAS (xlsx)",
+            text="BRICKS (xlsx)",
             font=ax.mono,
             bg=ax.bg,
             fg=ax.accent,
@@ -550,7 +550,7 @@ class ETLApp(tk_Tk):
         # Hint
         self._excel_hint = tk_Label(
             parent,
-            text="Set IDEAS_DIR then click ↺",
+            text="Set BRICKS_DIR then click ↺",
             font=ax.mono,
             bg=ax.bg,
             fg=ax.fg_dim,
@@ -558,23 +558,23 @@ class ETLApp(tk_Tk):
         self._excel_hint.pack(pady=8)
 
         # Populate immediately if dir is already set
-        self._i_src_dir.trace_add("write", lambda *_: self._refresh_excel_list())
+        self._b_src_dir.trace_add("write", lambda *_: self._refresh_excel_list())
         self._refresh_excel_list()
 
     def _refresh_excel_list(self):
-        """Scan IDEAS_DIR for .xlsx files and populate the tree."""
+        """Scan BRICKS_DIR for .xlsx files and populate the tree."""
         self._excel_tree.delete(*self._excel_tree.get_children())
         self._excel_paths = {}
-        ideas_dir = self._i_src_dir.get().strip()
-        if not ideas_dir or not os_path_isdir(ideas_dir):
+        bricks_dir = self._b_src_dir.get().strip()
+        if not bricks_dir or not os_path_isdir(bricks_dir):
             self._excel_hint.pack(pady=8)
             return
         try:
             files = sorted(
                 f
-                for f in os_listdir(ideas_dir)
+                for f in os_listdir(bricks_dir)
                 if f.lower().endswith(".xlsx")
-                and os_path_isfile(os_path_join(ideas_dir, f))
+                and os_path_isfile(os_path_join(bricks_dir, f))
             )
         except OSError:
             self._excel_hint.pack(pady=8)
@@ -585,8 +585,8 @@ class ETLApp(tk_Tk):
             return
         self._excel_hint.pack_forget()
         for fname in files:
-            iid = self._excel_tree.insert("", tk_END, values=(fname,))
-            self._excel_paths[iid] = os_path_join(ideas_dir, fname)
+            bkd = self._excel_tree.insert("", tk_END, values=(fname,))
+            self._excel_paths[bkd] = os_path_join(bricks_dir, fname)
 
     def _on_excel_double_click(self, _event):
         """Open the selected Excel file with the default application."""
@@ -802,13 +802,13 @@ class ETLApp(tk_Tk):
         me_person = self._me_personname.get().strip()
         you_person = self._you_personname.get().strip()
         working = self._working.get().strip()
-        b_src_dir_ = self._b_src_dir.get().strip()
         i_src_dir_ = self._i_src_dir.get().strip()
+        b_src_dir_ = self._b_src_dir.get().strip()
         output = self._output.get().strip()
 
         # Treat placeholder text as empty
-        b_src_dir_ = b_src_dir_ if os_path_isdir(b_src_dir_) else None
         i_src_dir_ = i_src_dir_ if os_path_isdir(i_src_dir_) else None
+        b_src_dir_ = b_src_dir_ if os_path_isdir(b_src_dir_) else None
         output = output if os_path_isdir(output) else None
         # person = person if person and not person.startswith("Filter ") else None
 
@@ -831,7 +831,7 @@ class ETLApp(tk_Tk):
             self._status.set(f"✘  Error: {exc}")
             tkinter_messagebox.showerror("Pipeline error", str(exc))
         finally:
-            _run_btn_str = "▶  CREATE AGENDAS FROM BELIEFS/IDEAS"
+            _run_btn_str = "▶  CREATE AGENDAS FROM IDEAS/BRICKS"
             self._run_btn.configure(state="normal", text=_run_btn_str, bg=ax.accent)
 
         # Open output directory if one was given
@@ -844,13 +844,13 @@ class ETLApp(tk_Tk):
             world_name=self._world_name.get(),
             worlds_dir=self._working.get(),
             output_dir=self._output.get(),
+            bricks_src_dir=self._b_src_dir.get(),
             ideas_src_dir=self._i_src_dir.get(),
-            beliefs_src_dir=self._b_src_dir.get(),
         )
         self._status.set("✔  Pipeline completed successfully.")
         self._populate_viewer(persons_punchs)
-        prettify_excel_files(self._b_src_dir.get())
         prettify_excel_files(self._i_src_dir.get())
+        prettify_excel_files(self._b_src_dir.get())
         tkinter_messagebox.showinfo("Done", "ETL pipeline finished successfully.")
 
 

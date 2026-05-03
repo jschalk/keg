@@ -1,0 +1,10 @@
+{
+  "attributes": {
+    "person_name"    : { "otx_key": true }, 
+    "plan_rope_ERASE": { "otx_key": true }, 
+    "spark_face"     : { "otx_key": true }, 
+    "spark_num"      : { "otx_key": true }
+  }, 
+  "brick_type": "bk00158", 
+  "dimens": ["person_planunit"]
+}

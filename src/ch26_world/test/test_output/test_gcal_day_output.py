@@ -4,14 +4,14 @@ from ch09_person_lesson._ref.ch09_path import create_moment_json_path
 from ch09_person_lesson.lasso import lassounit_shop
 from ch10_person_listen._ref.ch10_path import create_job_path
 from ch10_person_listen.keep_tool import open_job_file
-from ch17_idea.idea_db_tool import save_sheet
+from ch17_brick.brick_db_tool import save_sheet
 from ch25_kpi._ref.ch25_path import (
     create_day_punch_txt_path as day_punch_path,
     create_dst_person_punch_path,
 )
 from ch26_world.world import (
-    belief_sheets_to_gcal_day_punchs,
     create_today_punchs,
+    idea_sheets_to_gcal_day_punchs,
     worlddir_shop,
 )
 from datetime import datetime
@@ -20,7 +20,7 @@ from pandas import DataFrame as pandas_DataFrame
 from ref.keywords import Ch26Keywords as kw, ExampleStrs as exx
 
 
-def test_belief_sheets_to_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
+def test_idea_sheets_to_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     temp3_fs,
 ):
     # ESTABLISH
@@ -35,14 +35,14 @@ def test_belief_sheets_to_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     assert not os_path_exists(sue_ep8_day_punch_path)
 
     # WHEN
-    belief_sheets_to_gcal_day_punchs(worlddir, {exx.sue}, apr7)
+    idea_sheets_to_gcal_day_punchs(worlddir, {exx.sue}, apr7)
 
     # THEN
     assert not os_path_exists(sue_a23_day_punch_path)
     assert not os_path_exists(sue_ep8_day_punch_path)
 
 
-def test_belief_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueReport(
+def test_idea_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueReport(
     temp3_fs,
 ):
     # ESTABLISH
@@ -53,29 +53,29 @@ def test_belief_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueRepor
     hb_brush = init_rope(["herenow_blu", "family", exx.casa, exx.clean, "brush"])
     spark0, spark2, spark3, spark4 = (0, 2, 3, 4)
     # create connections between sue and yao and themselves
-    ii00001_data = [
+    bk00001_data = [
         (spark0, exx.bob, exx.hn_blu, exx.sue, exx.sue),
         (spark0, exx.bob, exx.hn_blu, exx.sue, exx.yao),
         (spark0, exx.bob, exx.hn_blu, exx.yao, exx.yao),
         (spark0, exx.bob, exx.hn_blu, exx.yao, exx.sue),
     ]
-    ii00001_cols = [
+    bk00001_cols = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.contact_name,
     ]
-    ii00001_df = pandas_DataFrame(ii00001_data, columns=ii00001_cols)
+    bk00001_df = pandas_DataFrame(bk00001_data, columns=bk00001_cols)
     # create tasks for sue, yao, others
-    ii00002_data = [
+    bk00002_data = [
         (spark0, exx.bob, exx.zia, exx.hn_red, hr_mop, 1, True),
         (spark0, exx.bob, exx.yao, exx.hn_red, hr_tools, 2, True),
         (spark2, exx.bob, exx.sue, exx.hn_blu, hb_mop, 8, True),
         (spark3, exx.bob, exx.sue, exx.hn_blu, hb_sweep, 3, True),
         (spark4, exx.bob, exx.xio, exx.hn_blu, hb_brush, 1, True),
     ]
-    ii00002_cols = [
+    bk00002_cols = [
         kw.spark_num,
         kw.spark_face,
         kw.person_name,
@@ -84,16 +84,16 @@ def test_belief_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueRepor
         kw.star,
         kw.pledge,
     ]
-    ii00002_df = pandas_DataFrame(ii00002_data, columns=ii00002_cols)
+    bk00002_df = pandas_DataFrame(bk00002_data, columns=bk00002_cols)
     here_wdir = worlddir_shop("HereNow", str(temp3_fs))
-    ideas01_path = create_path(here_wdir.ideas_src_dir, "example.xlsx")
+    bricks01_path = create_path(here_wdir.bricks_src_dir, "example.xlsx")
     # unrelated to this test
-    # ii00002_export_dir = create_path("C:\dev\_temp_working_dir", "ii00002_example.xlsx")
-    # ii00001_export_dir = create_path("C:\dev\_temp_working_dir", "ii00001_example.xlsx")
-    # ii00002_df.to_excel(ii00002_export_dir, sheet_name="ii00002_ex1", index=False)
-    # ii00001_df.to_excel(ii00001_export_dir, sheet_name="ii00001_ex1", index=False)
-    save_sheet(ideas01_path, "ii00002_ex1", ii00002_df)
-    save_sheet(ideas01_path, "ii00001_ex1", ii00001_df)
+    # bk00002_export_dir = create_path("C:\dev\_temp_working_dir", "bk00002_example.xlsx")
+    # bk00001_export_dir = create_path("C:\dev\_temp_working_dir", "bk00001_example.xlsx")
+    # bk00002_df.to_excel(bk00002_export_dir, sheet_name="bk00002_ex1", index=False)
+    # bk00001_df.to_excel(bk00001_export_dir, sheet_name="bk00001_ex1", index=False)
+    save_sheet(bricks01_path, "bk00002_ex1", bk00002_df)
+    save_sheet(bricks01_path, "bk00001_ex1", bk00001_df)
     mmt_dir = here_wdir.moment_mstr_dir
     hn_red_lasso = lassounit_shop(exx.hn_red)
     hn_blu_lasso = lassounit_shop(exx.hn_blu)
@@ -116,7 +116,7 @@ def test_belief_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueRepor
 
     # WHEN
     apr7 = datetime(2010, 5, 7)
-    belief_sheets_to_gcal_day_punchs(here_wdir, {exx.sue}, apr7)
+    idea_sheets_to_gcal_day_punchs(here_wdir, {exx.sue}, apr7)
 
     # THEN
     assert os_path_exists(hn_red_mmt_json_path)
@@ -147,22 +147,22 @@ def test_create_today_punchs_SavesFiles_Scenario0_PopulatedSueReport(
     hb_brush = init_rope(["herenow_blu", "family", exx.casa, exx.clean, "brush"])
     spark0, spark2, spark3, spark4 = (0, 2, 3, 4)
     # create connections between sue and yao and themselves
-    ii00001_cols = [
+    bk00001_cols = [
         kw.spark_num,
         kw.spark_face,
         kw.moment_rope,
         kw.person_name,
         kw.contact_name,
     ]
-    ii00001_data = [
+    bk00001_data = [
         (spark0, exx.bob, exx.hn_blu, exx.sue, exx.sue),
         (spark0, exx.bob, exx.hn_blu, exx.sue, exx.yao),
         (spark0, exx.bob, exx.hn_blu, exx.yao, exx.yao),
         (spark0, exx.bob, exx.hn_blu, exx.yao, exx.sue),
     ]
-    ii00001_df = pandas_DataFrame(ii00001_data, columns=ii00001_cols)
+    bk00001_df = pandas_DataFrame(bk00001_data, columns=bk00001_cols)
     # create tasks for sue, yao, others
-    ii00002_cols = [
+    bk00002_cols = [
         kw.spark_num,
         kw.spark_face,
         kw.person_name,
@@ -171,24 +171,24 @@ def test_create_today_punchs_SavesFiles_Scenario0_PopulatedSueReport(
         kw.star,
         kw.pledge,
     ]
-    ii00002_data = [
+    bk00002_data = [
         (spark0, exx.bob, exx.zia, exx.hn_red, hr_mop, 1, True),
         (spark0, exx.bob, exx.yao, exx.hn_red, hr_tools, 2, True),
         (spark2, exx.bob, exx.sue, exx.hn_blu, hb_mop, 8, True),
         (spark3, exx.bob, exx.sue, exx.hn_blu, hb_sweep, 3, True),
         (spark4, exx.bob, exx.xio, exx.hn_blu, hb_brush, 1, True),
     ]
-    ii00002_df = pandas_DataFrame(ii00002_data, columns=ii00002_cols)
+    bk00002_df = pandas_DataFrame(bk00002_data, columns=bk00002_cols)
     # external_dir = "C:dev/_temp_working_dir"
     here_wdir = worlddir_shop("HereNow", str(temp3_fs))
-    ideas01_path = create_path(here_wdir.ideas_src_dir, "example.xlsx")
+    bricks01_path = create_path(here_wdir.bricks_src_dir, "example.xlsx")
     # unrelated to this test
-    # ii00002_export_dir = create_path("C:\dev\_temp_working_dir", "ii00002_example.xlsx")
-    # ii00001_export_dir = create_path("C:\dev\_temp_working_dir", "ii00001_example.xlsx")
-    # ii00002_df.to_excel(ii00002_export_dir, sheet_name="ii00002_ex1", index=False)
-    # ii00001_df.to_excel(ii00001_export_dir, sheet_name="ii00001_ex1", index=False)
-    save_sheet(ideas01_path, "ii00002_ex1", ii00002_df)
-    save_sheet(ideas01_path, "ii00001_ex1", ii00001_df)
+    # bk00002_export_dir = create_path("C:\dev\_temp_working_dir", "bk00002_example.xlsx")
+    # bk00001_export_dir = create_path("C:\dev\_temp_working_dir", "bk00001_example.xlsx")
+    # bk00002_df.to_excel(bk00002_export_dir, sheet_name="bk00002_ex1", index=False)
+    # bk00001_df.to_excel(bk00001_export_dir, sheet_name="bk00001_ex1", index=False)
+    save_sheet(bricks01_path, "bk00002_ex1", bk00002_df)
+    save_sheet(bricks01_path, "bk00001_ex1", bk00001_df)
     mmt_dir = here_wdir.moment_mstr_dir
     hn_red_lasso = lassounit_shop(exx.hn_red)
     hn_blu_lasso = lassounit_shop(exx.hn_blu)
@@ -215,8 +215,8 @@ def test_create_today_punchs_SavesFiles_Scenario0_PopulatedSueReport(
         world_name=here_wdir.world_name,
         worlds_dir=here_wdir.worlds_dir,
         output_dir=here_wdir.output_dir,
+        bricks_src_dir=here_wdir.bricks_src_dir,
         ideas_src_dir=here_wdir.ideas_src_dir,
-        beliefs_src_dir=here_wdir.beliefs_src_dir,
     )
 
     # THEN

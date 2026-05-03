@@ -1,0 +1,344 @@
+from ch00_py.file_toolbox import create_path, set_dir
+from ch07_person_logic.person_main import personunit_shop
+from ch09_person_lesson.lasso import lassounit_shop
+from ch09_person_lesson.lesson_filehandler import save_gut_file
+from ch14_moment.moment_main import momentunit_shop, save_moment_file
+from ch17_brick.brick_db_tool import get_sheet_names
+from ch17_brick.brick_idea_csv import (
+    add_momentunit_to_idea_csv_strs,
+    add_personunit_to_idea_csv_strs,
+    create_init_idea_brick_csv_strs,
+)
+from ch18_etl_config._ref.ch18_path import create_moment_mstr_path, create_world_db_path
+from ch18_etl_config.etl_sqlstr import (
+    create_prime_tablename as prime_tbl,
+    create_sound_and_heard_tables,
+)
+from ch24_idea_dst._ref.ch24_path import create_idea0001_path
+from ch24_idea_dst.vow_db2df import (
+    collect_full_world_idea_csv_strs,
+    create_idea0001_file,
+)
+from os.path import exists as os_path_exists
+from pandas import read_excel as pandas_read_excel
+from ref.keywords import Ch24Keywords as kw, ExampleStrs as exx
+from sqlite3 import connect as sqlite3_connect
+
+
+def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario0_NoMomentUnits(
+    temp3_fs,
+):
+    # ESTABLISH
+    world_dir = str(temp3_fs)
+
+    # WHEN
+    gen_idea_csv_strs = collect_full_world_idea_csv_strs(world_dir)
+
+    # THEN
+    expected_idea_csv_strs = create_init_idea_brick_csv_strs()
+    assert gen_idea_csv_strs == expected_idea_csv_strs
+
+
+def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario1_SingleMomentUnit_NoPersonUnits(
+    temp3_fs,
+):
+    # ESTABLISH
+    world_dir = str(temp3_fs)
+    moment_mstr_dir = create_moment_mstr_path(world_dir)
+    a23_moment = momentunit_shop(exx.a23, moment_mstr_dir)
+    a23_lasso = lassounit_shop(exx.a23)
+    save_moment_file(a23_moment, a23_lasso)
+
+    # WHEN
+    gen_idea_csv_strs = collect_full_world_idea_csv_strs(world_dir)
+
+    # THEN
+    expected_idea_csv_strs = create_init_idea_brick_csv_strs()
+    add_momentunit_to_idea_csv_strs(a23_moment, expected_idea_csv_strs, ",")
+    assert gen_idea_csv_strs == expected_idea_csv_strs
+
+
+def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario2_gut_PersonUnits(
+    temp3_fs,
+):
+    # ESTABLISH
+    world_dir = str(temp3_fs)
+    moment_mstr_dir = create_moment_mstr_path(world_dir)
+    a23_moment = momentunit_shop(exx.a23, moment_mstr_dir)
+    a23_lasso = lassounit_shop(exx.a23)
+    save_moment_file(a23_moment, a23_lasso)
+    # create two gut file
+    bob_gut = personunit_shop(exx.bob, exx.a23)
+    yao_gut = personunit_shop(exx.yao, exx.a23)
+    bob_gut.add_contactunit(exx.yao, 44, 55)
+    bob_gut.add_contactunit(exx.yao, 44, 55)
+    save_gut_file(moment_mstr_dir, bob_gut)
+
+    # WHEN
+    gen_idea_csv_strs = collect_full_world_idea_csv_strs(world_dir)
+
+    # THEN
+    expected_idea_csv_strs = create_init_idea_brick_csv_strs()
+    add_momentunit_to_idea_csv_strs(a23_moment, expected_idea_csv_strs, ",")
+    add_personunit_to_idea_csv_strs(bob_gut, expected_idea_csv_strs, ",")
+    expected_bk00120_csv_str = expected_idea_csv_strs.get("bk00120")
+    gen_bk00120_csv_str = gen_idea_csv_strs.get("bk00120")
+    print(f"{expected_bk00120_csv_str=}")
+    print(f"     {gen_bk00120_csv_str=}")
+    assert gen_bk00120_csv_str == expected_bk00120_csv_str
+    assert gen_idea_csv_strs == expected_idea_csv_strs
+
+
+def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario3_TranslateRowsInDB(
+    temp3_fs,
+):
+    # ESTABLISH database with translate data
+    bob_otx = "Bob"
+    bob_inx = "Bobby"
+    sue_otx = "Sue"
+    sue_inx = "Suzy"
+    spark1 = 1
+    spark7 = 7
+    colon_str = ":"
+    sue_unknown_str = "SueUnknown"
+    bob_unknown_str = "BobUnknown"
+    world_dir = str(temp3_fs)
+    output_dir = create_path(str(temp3_fs), "output")
+    world_db_path = create_world_db_path(world_dir)
+    print(f"{world_db_path=}")
+    set_dir(world_dir)
+
+    with sqlite3_connect(world_db_path) as db_conn:
+        cursor = db_conn.cursor()
+        create_sound_and_heard_tables(cursor)
+        trlname_dimen = kw.translate_name
+        trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
+        print(f"{trlname_s_vld_tablename=}")
+        insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename}
+        ({kw.spark_num}, {kw.spark_face}, {kw.otx_name}, {kw.inx_name})
+        VALUES
+          ({spark1}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
+        , ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx}')
+        ;
+        """
+        cursor.execute(insert_trlname_sqlstr)
+
+        trlcore_s_vld_tablename = prime_tbl("TRLCORE", kw.s_vld)
+        insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename}
+        ({kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+        VALUES
+          ('{sue_otx}', '{exx.slash}', '{colon_str}', '{sue_unknown_str}')
+        , ('{bob_otx}', '{exx.slash}', '{colon_str}', '{bob_unknown_str}')
+        ;
+        """
+        cursor.execute(insert_trlcore_sqlstr)
+    db_conn.close()
+
+    # WHEN
+    gen_idea_csv_strs = collect_full_world_idea_csv_strs(world_dir)
+
+    # THEN
+    assert gen_idea_csv_strs
+    generated_idea_csv_keys = set(gen_idea_csv_strs.keys())
+    print(f"{generated_idea_csv_keys=}")
+    idea_csv_strs = create_init_idea_brick_csv_strs()
+    assert generated_idea_csv_keys == set(idea_csv_strs.keys())
+    bk00142_str = "bk00142"
+    bk00143_str = "bk00143"
+    bk00144_str = "bk00144"
+    bk00145_str = "bk00145"
+    bk00142_csv = gen_idea_csv_strs.get(bk00142_str)
+    bk00143_csv = gen_idea_csv_strs.get(bk00143_str)
+    bk00144_csv = gen_idea_csv_strs.get(bk00144_str)
+    bk00145_csv = gen_idea_csv_strs.get(bk00145_str)
+
+    expected_bk00142_csv = (
+        "spark_num,spark_face,otx_title,inx_title,otx_knot,inx_knot,unknown_str\n"
+    )
+    expected_bk00143_csv = f"""spark_num,spark_face,otx_name,inx_name,otx_knot,inx_knot,unknown_str
+,{bob_otx},{bob_otx},{bob_inx},{exx.slash},{colon_str},{bob_unknown_str}
+,{sue_otx},{sue_otx},{sue_inx},{exx.slash},{colon_str},{sue_unknown_str}
+"""
+    expected_bk00144_csv = (
+        "spark_num,spark_face,otx_label,inx_label,otx_knot,inx_knot,unknown_str\n"
+    )
+    expected_bk00145_csv = (
+        "spark_num,spark_face,otx_rope,inx_rope,otx_knot,inx_knot,unknown_str\n"
+    )
+    assert bk00142_csv == expected_bk00142_csv
+    assert bk00143_csv == expected_bk00143_csv
+    assert bk00144_csv == expected_bk00144_csv
+    assert bk00145_csv == expected_bk00145_csv
+
+
+# TODO change collect_full_world_idea_csv_strs so that if it's passed a person_name it only collects that person's ideas
+def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario4_TranslateRowsInDB(
+    temp3_fs,
+):
+    # ESTABLISH database with translate data
+    bob_otx = "Bob"
+    bob_inx = "Bobby"
+    sue_otx = "Sue"
+    sue_inx = "Suzy"
+    spark1 = 1
+    spark7 = 7
+    colon_str = ":"
+    sue_unknown_str = "SueUnknown"
+    bob_unknown_str = "BobUnknown"
+    world_dir = str(temp3_fs)
+    output_dir = create_path(str(temp3_fs), "output")
+    world_db_path = create_world_db_path(world_dir)
+    print(f"{world_db_path=}")
+    set_dir(world_dir)
+
+    with sqlite3_connect(world_db_path) as db_conn:
+        cursor = db_conn.cursor()
+        create_sound_and_heard_tables(cursor)
+        trlname_dimen = kw.translate_name
+        trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
+        print(f"{trlname_s_vld_tablename=}")
+        insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename}
+        ({kw.spark_num}, {kw.spark_face}, {kw.otx_name}, {kw.inx_name})
+        VALUES
+          ({spark1}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
+        , ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx}')
+        ;
+        """
+        cursor.execute(insert_trlname_sqlstr)
+
+        trlcore_s_vld_tablename = prime_tbl("TRLCORE", kw.s_vld)
+        insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename}
+        ({kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+        VALUES
+          ('{sue_otx}', '{exx.slash}', '{colon_str}', '{sue_unknown_str}')
+        , ('{bob_otx}', '{exx.slash}', '{colon_str}', '{bob_unknown_str}')
+        ;
+        """
+        cursor.execute(insert_trlcore_sqlstr)
+    db_conn.close()
+
+    # WHEN
+    gen_idea_csv_strs = collect_full_world_idea_csv_strs(world_dir)
+
+    # THEN
+    assert gen_idea_csv_strs
+    generated_idea_csv_keys = set(gen_idea_csv_strs.keys())
+    print(f"{generated_idea_csv_keys=}")
+    idea_csv_strs = create_init_idea_brick_csv_strs()
+    assert generated_idea_csv_keys == set(idea_csv_strs.keys())
+    bk00142_str = "bk00142"
+    bk00143_str = "bk00143"
+    bk00144_str = "bk00144"
+    bk00145_str = "bk00145"
+    bk00142_csv = gen_idea_csv_strs.get(bk00142_str)
+    bk00143_csv = gen_idea_csv_strs.get(bk00143_str)
+    bk00144_csv = gen_idea_csv_strs.get(bk00144_str)
+    bk00145_csv = gen_idea_csv_strs.get(bk00145_str)
+
+    expected_bk00142_csv = (
+        "spark_num,spark_face,otx_title,inx_title,otx_knot,inx_knot,unknown_str\n"
+    )
+    expected_bk00143_csv = f"""spark_num,spark_face,otx_name,inx_name,otx_knot,inx_knot,unknown_str
+,{bob_otx},{bob_otx},{bob_inx},{exx.slash},{colon_str},{bob_unknown_str}
+,{sue_otx},{sue_otx},{sue_inx},{exx.slash},{colon_str},{sue_unknown_str}
+"""
+    expected_bk00144_csv = (
+        "spark_num,spark_face,otx_label,inx_label,otx_knot,inx_knot,unknown_str\n"
+    )
+    expected_bk00145_csv = (
+        "spark_num,spark_face,otx_rope,inx_rope,otx_knot,inx_knot,unknown_str\n"
+    )
+    assert bk00142_csv == expected_bk00142_csv
+    assert bk00143_csv == expected_bk00143_csv
+    assert bk00144_csv == expected_bk00144_csv
+    assert bk00145_csv == expected_bk00145_csv
+
+
+def test_create_idea0001_file_CreatesFile_Scenario0_NoMomentUnits(
+    temp3_fs,
+):
+    # ESTABLISH
+    world_dir = str(temp3_fs)
+    output_dir = create_path(world_dir, "output")
+    idea0001_path = create_idea0001_path(output_dir)
+    assert os_path_exists(idea0001_path) is False
+
+    # WHEN
+    create_idea0001_file(world_dir, output_dir, exx.sue)
+
+    # THEN
+    assert os_path_exists(idea0001_path)
+    bob_idea0001_sheetnames = get_sheet_names(idea0001_path)
+    idea_csv_strs = create_init_idea_brick_csv_strs()
+    assert set(bob_idea0001_sheetnames) == set(idea_csv_strs.keys())
+
+
+def test_create_idea0001_file_CreatesFile_Scenario1_TranslateRowsInDB(
+    temp3_fs,
+):
+    # ESTABLISH database with translate data
+    bob_otx = "Bob"
+    bob_inx = "Bobby"
+    sue_otx = "Sue"
+    sue_inx = "Suzy"
+    spark1 = 1
+    spark7 = 7
+    colon_str = ":"
+    sue_unknown_str = "SueUnknown"
+    bob_unknown_str = "BobUnknown"
+    world_dir = str(temp3_fs)
+    output_dir = create_path(str(temp3_fs), "output")
+    world_db_path = create_world_db_path(world_dir)
+    print(f"{world_db_path=}")
+    set_dir(world_dir)
+
+    with sqlite3_connect(world_db_path) as db_conn:
+        cursor = db_conn.cursor()
+        create_sound_and_heard_tables(cursor)
+        trlname_dimen = kw.translate_name
+        trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
+        print(f"{trlname_s_vld_tablename=}")
+        insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename}
+        ({kw.spark_num}, {kw.spark_face}, {kw.otx_name}, {kw.inx_name})
+        VALUES
+          ({spark1}, '{sue_otx}', '{sue_otx}', '{sue_inx}')
+        , ({spark7}, '{bob_otx}', '{bob_otx}', '{bob_inx}')
+        ;
+        """
+        cursor.execute(insert_trlname_sqlstr)
+
+        trlcore_s_vld_tablename = prime_tbl("TRLCORE", kw.s_vld)
+        insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename}
+        ({kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
+        VALUES
+          ('{sue_otx}', '{exx.slash}', '{colon_str}', '{sue_unknown_str}')
+        , ('{bob_otx}', '{exx.slash}', '{colon_str}', '{bob_unknown_str}')
+        ;
+        """
+        cursor.execute(insert_trlcore_sqlstr)
+    db_conn.close()
+
+    idea0001_path = create_idea0001_path(output_dir)
+    assert os_path_exists(idea0001_path) is False
+
+    # WHEN
+    create_idea0001_file(world_dir, output_dir, exx.yao, False)
+
+    # THEN
+    assert os_path_exists(idea0001_path)
+    bob_idea0001_sheetnames = get_sheet_names(idea0001_path)
+    print(f"{bob_idea0001_sheetnames=}")
+    idea_csv_strs = create_init_idea_brick_csv_strs()
+    assert set(bob_idea0001_sheetnames) == set(idea_csv_strs.keys())
+    bk00142_str = "bk00142"
+    bk00143_str = "bk00143"
+    bk00144_str = "bk00144"
+    bk00145_str = "bk00145"
+    bk00142_df = pandas_read_excel(idea0001_path, bk00142_str)
+    bk00143_df = pandas_read_excel(idea0001_path, bk00143_str)
+    bk00144_df = pandas_read_excel(idea0001_path, bk00144_str)
+    bk00145_df = pandas_read_excel(idea0001_path, bk00145_str)
+    assert len(bk00142_df) == 0
+    assert len(bk00143_df) == 2
+    assert len(bk00144_df) == 0
+    assert len(bk00145_df) == 0
