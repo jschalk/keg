@@ -226,12 +226,12 @@ def test_get_etl_stage_types_config_dict_ReturnsObj_Scenario0_IsFullyPopulated()
         kw.s_agg,
         kw.s_raw,
         kw.s_vld,
-        kw.k_agg,
-        kw.k_raw,
+        kw.b_agg,
+        kw.b_raw,
         kw.k_vld,
+        kw.i_src,
+        kw.i_dst,
         kw.b_src,
-        kw.b_dst,
-        kw.k_src,
         kw.lynx,
     }
     expected_abbv9_stage_types = {
@@ -244,8 +244,8 @@ def test_get_etl_stage_types_config_dict_ReturnsObj_Scenario0_IsFullyPopulated()
         kw.brixk_agg,
         kw.brixk_raw,
         kw.brixk_vld,
-        kw.belve_dst,
-        kw.belve_src,
+        kw.ideax_dst,
+        kw.ideax_src,
         kw.brixk_src,
         kw.lynxx_mst,
     }
@@ -278,10 +278,10 @@ def test_get_ordered_stage_types_ReturnsObj():
     assert ordered_stage_types
     print(ordered_stage_types)
     expected_ordered_stage_types = [
+        kw.i_src,
         kw.b_src,
-        kw.k_src,
-        kw.k_raw,
-        kw.k_agg,
+        kw.b_raw,
+        kw.b_agg,
         kw.k_vld,
         kw.s_raw,
         kw.s_agg,
@@ -290,7 +290,7 @@ def test_get_ordered_stage_types_ReturnsObj():
         kw.h_agg,
         kw.h_vld,
         kw.lynx,
-        kw.b_dst,
+        kw.i_dst,
     ]
     print(expected_ordered_stage_types)
     assert ordered_stage_types == expected_ordered_stage_types

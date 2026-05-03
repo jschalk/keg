@@ -1,13 +1,18 @@
 {
-  "b_dst": {
-    "abbv9": "belve_dst", 
-    "description": "Belief (Brick formats without SparkNum) Destination. Filtered Job, Moment data.", 
-    "stage_type_order": 14
+  "b_agg": {
+    "abbv9": "brixk_agg", 
+    "description": "Brick Agg: The Brick Raw tables are aggregated to elimanate duplicates.", 
+    "stage_type_order": 4
+  }, 
+  "b_raw": {
+    "abbv9": "brixk_raw", 
+    "description": "Brick Raw: The importable Excel Sheets entering the database", 
+    "stage_type_order": 3
   }, 
   "b_src": {
-    "abbv9": "belve_src", 
-    "description": "Belief Source files. Brick formats without SparkNum.", 
-    "stage_type_order": 1
+    "abbv9": "brixk_src", 
+    "description": "Brick files. Brick formats with SparkNum.", 
+    "stage_type_order": 2
   }, 
   "h_agg": {
     "abbv9": "heard_agg", 
@@ -24,20 +29,15 @@
     "description": "Populated by aggregated and Nabu changed Heard Agg tables", 
     "stage_type_order": 12
   }, 
-  "k_agg": {
-    "abbv9": "brixk_agg", 
-    "description": "Brick Agg: The Brick Raw tables are aggregated to elimanate duplicates.", 
-    "stage_type_order": 4
+  "i_dst": {
+    "abbv9": "ideax_dst", 
+    "description": "Idea (Brick formats without SparkNum) Destination. Filtered Job, Moment data.", 
+    "stage_type_order": 14
   }, 
-  "k_raw": {
-    "abbv9": "brixk_raw", 
-    "description": "Brick Raw: The importable Excel Sheets entering the database", 
-    "stage_type_order": 3
-  }, 
-  "k_src": {
-    "abbv9": "brixk_src", 
-    "description": "Brick files. Brick formats with SparkNum.", 
-    "stage_type_order": 2
+  "i_src": {
+    "abbv9": "ideax_src", 
+    "description": "Idea Source files. Brick formats without SparkNum.", 
+    "stage_type_order": 1
   }, 
   "k_vld": {
     "abbv9": "brixk_vld", 

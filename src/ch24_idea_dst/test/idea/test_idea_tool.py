@@ -3,21 +3,21 @@ from ch07_person_logic.person_main import personunit_shop
 from ch09_person_lesson.lasso import lassounit_shop
 from ch09_person_lesson.lesson_filehandler import save_gut_file
 from ch14_moment.moment_main import momentunit_shop, save_moment_file
-from ch17_brick.brick_belief_csv import (
-    add_momentunit_to_belief_csv_strs,
-    add_personunit_to_belief_csv_strs,
-    create_init_belief_brick_csv_strs,
-)
 from ch17_brick.brick_db_tool import get_sheet_names
+from ch17_brick.brick_idea_csv import (
+    add_momentunit_to_idea_csv_strs,
+    add_personunit_to_idea_csv_strs,
+    create_init_idea_brick_csv_strs,
+)
 from ch18_etl_config._ref.ch18_path import create_moment_mstr_path, create_world_db_path
 from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
 )
-from ch24_belief_dst._ref.ch24_path import create_belief0001_path
-from ch24_belief_dst.vow_db2df import (
-    collect_full_world_belief_csv_strs,
-    create_belief0001_file,
+from ch24_idea_dst._ref.ch24_path import create_idea0001_path
+from ch24_idea_dst.vow_db2df import (
+    collect_full_world_idea_csv_strs,
+    create_idea0001_file,
 )
 from os.path import exists as os_path_exists
 from pandas import read_excel as pandas_read_excel
@@ -25,21 +25,21 @@ from ref.keywords import Ch24Keywords as kw, ExampleStrs as exx
 from sqlite3 import connect as sqlite3_connect
 
 
-def test_collect_full_world_belief_csv_strs_ReturnsObj_Scenario0_NoMomentUnits(
+def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario0_NoMomentUnits(
     temp3_fs,
 ):
     # ESTABLISH
     world_dir = str(temp3_fs)
 
     # WHEN
-    gen_belief_csv_strs = collect_full_world_belief_csv_strs(world_dir)
+    gen_idea_csv_strs = collect_full_world_idea_csv_strs(world_dir)
 
     # THEN
-    expected_belief_csv_strs = create_init_belief_brick_csv_strs()
-    assert gen_belief_csv_strs == expected_belief_csv_strs
+    expected_idea_csv_strs = create_init_idea_brick_csv_strs()
+    assert gen_idea_csv_strs == expected_idea_csv_strs
 
 
-def test_collect_full_world_belief_csv_strs_ReturnsObj_Scenario1_SingleMomentUnit_NoPersonUnits(
+def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario1_SingleMomentUnit_NoPersonUnits(
     temp3_fs,
 ):
     # ESTABLISH
@@ -50,15 +50,15 @@ def test_collect_full_world_belief_csv_strs_ReturnsObj_Scenario1_SingleMomentUni
     save_moment_file(a23_moment, a23_lasso)
 
     # WHEN
-    gen_belief_csv_strs = collect_full_world_belief_csv_strs(world_dir)
+    gen_idea_csv_strs = collect_full_world_idea_csv_strs(world_dir)
 
     # THEN
-    expected_belief_csv_strs = create_init_belief_brick_csv_strs()
-    add_momentunit_to_belief_csv_strs(a23_moment, expected_belief_csv_strs, ",")
-    assert gen_belief_csv_strs == expected_belief_csv_strs
+    expected_idea_csv_strs = create_init_idea_brick_csv_strs()
+    add_momentunit_to_idea_csv_strs(a23_moment, expected_idea_csv_strs, ",")
+    assert gen_idea_csv_strs == expected_idea_csv_strs
 
 
-def test_collect_full_world_belief_csv_strs_ReturnsObj_Scenario2_gut_PersonUnits(
+def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario2_gut_PersonUnits(
     temp3_fs,
 ):
     # ESTABLISH
@@ -75,21 +75,21 @@ def test_collect_full_world_belief_csv_strs_ReturnsObj_Scenario2_gut_PersonUnits
     save_gut_file(moment_mstr_dir, bob_gut)
 
     # WHEN
-    gen_belief_csv_strs = collect_full_world_belief_csv_strs(world_dir)
+    gen_idea_csv_strs = collect_full_world_idea_csv_strs(world_dir)
 
     # THEN
-    expected_belief_csv_strs = create_init_belief_brick_csv_strs()
-    add_momentunit_to_belief_csv_strs(a23_moment, expected_belief_csv_strs, ",")
-    add_personunit_to_belief_csv_strs(bob_gut, expected_belief_csv_strs, ",")
-    expected_bk00120_csv_str = expected_belief_csv_strs.get("bk00120")
-    gen_bk00120_csv_str = gen_belief_csv_strs.get("bk00120")
+    expected_idea_csv_strs = create_init_idea_brick_csv_strs()
+    add_momentunit_to_idea_csv_strs(a23_moment, expected_idea_csv_strs, ",")
+    add_personunit_to_idea_csv_strs(bob_gut, expected_idea_csv_strs, ",")
+    expected_bk00120_csv_str = expected_idea_csv_strs.get("bk00120")
+    gen_bk00120_csv_str = gen_idea_csv_strs.get("bk00120")
     print(f"{expected_bk00120_csv_str=}")
     print(f"     {gen_bk00120_csv_str=}")
     assert gen_bk00120_csv_str == expected_bk00120_csv_str
-    assert gen_belief_csv_strs == expected_belief_csv_strs
+    assert gen_idea_csv_strs == expected_idea_csv_strs
 
 
-def test_collect_full_world_belief_csv_strs_ReturnsObj_Scenario3_TranslateRowsInDB(
+def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario3_TranslateRowsInDB(
     temp3_fs,
 ):
     # ESTABLISH database with translate data
@@ -135,22 +135,22 @@ def test_collect_full_world_belief_csv_strs_ReturnsObj_Scenario3_TranslateRowsIn
     db_conn.close()
 
     # WHEN
-    gen_belief_csv_strs = collect_full_world_belief_csv_strs(world_dir)
+    gen_idea_csv_strs = collect_full_world_idea_csv_strs(world_dir)
 
     # THEN
-    assert gen_belief_csv_strs
-    generated_belief_csv_keys = set(gen_belief_csv_strs.keys())
-    print(f"{generated_belief_csv_keys=}")
-    belief_csv_strs = create_init_belief_brick_csv_strs()
-    assert generated_belief_csv_keys == set(belief_csv_strs.keys())
+    assert gen_idea_csv_strs
+    generated_idea_csv_keys = set(gen_idea_csv_strs.keys())
+    print(f"{generated_idea_csv_keys=}")
+    idea_csv_strs = create_init_idea_brick_csv_strs()
+    assert generated_idea_csv_keys == set(idea_csv_strs.keys())
     bk00142_str = "bk00142"
     bk00143_str = "bk00143"
     bk00144_str = "bk00144"
     bk00145_str = "bk00145"
-    bk00142_csv = gen_belief_csv_strs.get(bk00142_str)
-    bk00143_csv = gen_belief_csv_strs.get(bk00143_str)
-    bk00144_csv = gen_belief_csv_strs.get(bk00144_str)
-    bk00145_csv = gen_belief_csv_strs.get(bk00145_str)
+    bk00142_csv = gen_idea_csv_strs.get(bk00142_str)
+    bk00143_csv = gen_idea_csv_strs.get(bk00143_str)
+    bk00144_csv = gen_idea_csv_strs.get(bk00144_str)
+    bk00145_csv = gen_idea_csv_strs.get(bk00145_str)
 
     expected_bk00142_csv = (
         "spark_num,spark_face,otx_title,inx_title,otx_knot,inx_knot,unknown_str\n"
@@ -171,8 +171,8 @@ def test_collect_full_world_belief_csv_strs_ReturnsObj_Scenario3_TranslateRowsIn
     assert bk00145_csv == expected_bk00145_csv
 
 
-# TODO change collect_full_world_belief_csv_strs so that if it's passed a person_name it only collects that person's beliefs
-def test_collect_full_world_belief_csv_strs_ReturnsObj_Scenario4_TranslateRowsInDB(
+# TODO change collect_full_world_idea_csv_strs so that if it's passed a person_name it only collects that person's ideas
+def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario4_TranslateRowsInDB(
     temp3_fs,
 ):
     # ESTABLISH database with translate data
@@ -218,22 +218,22 @@ def test_collect_full_world_belief_csv_strs_ReturnsObj_Scenario4_TranslateRowsIn
     db_conn.close()
 
     # WHEN
-    gen_belief_csv_strs = collect_full_world_belief_csv_strs(world_dir)
+    gen_idea_csv_strs = collect_full_world_idea_csv_strs(world_dir)
 
     # THEN
-    assert gen_belief_csv_strs
-    generated_belief_csv_keys = set(gen_belief_csv_strs.keys())
-    print(f"{generated_belief_csv_keys=}")
-    belief_csv_strs = create_init_belief_brick_csv_strs()
-    assert generated_belief_csv_keys == set(belief_csv_strs.keys())
+    assert gen_idea_csv_strs
+    generated_idea_csv_keys = set(gen_idea_csv_strs.keys())
+    print(f"{generated_idea_csv_keys=}")
+    idea_csv_strs = create_init_idea_brick_csv_strs()
+    assert generated_idea_csv_keys == set(idea_csv_strs.keys())
     bk00142_str = "bk00142"
     bk00143_str = "bk00143"
     bk00144_str = "bk00144"
     bk00145_str = "bk00145"
-    bk00142_csv = gen_belief_csv_strs.get(bk00142_str)
-    bk00143_csv = gen_belief_csv_strs.get(bk00143_str)
-    bk00144_csv = gen_belief_csv_strs.get(bk00144_str)
-    bk00145_csv = gen_belief_csv_strs.get(bk00145_str)
+    bk00142_csv = gen_idea_csv_strs.get(bk00142_str)
+    bk00143_csv = gen_idea_csv_strs.get(bk00143_str)
+    bk00144_csv = gen_idea_csv_strs.get(bk00144_str)
+    bk00145_csv = gen_idea_csv_strs.get(bk00145_str)
 
     expected_bk00142_csv = (
         "spark_num,spark_face,otx_title,inx_title,otx_knot,inx_knot,unknown_str\n"
@@ -254,26 +254,26 @@ def test_collect_full_world_belief_csv_strs_ReturnsObj_Scenario4_TranslateRowsIn
     assert bk00145_csv == expected_bk00145_csv
 
 
-def test_create_belief0001_file_CreatesFile_Scenario0_NoMomentUnits(
+def test_create_idea0001_file_CreatesFile_Scenario0_NoMomentUnits(
     temp3_fs,
 ):
     # ESTABLISH
     world_dir = str(temp3_fs)
     output_dir = create_path(world_dir, "output")
-    belief0001_path = create_belief0001_path(output_dir)
-    assert os_path_exists(belief0001_path) is False
+    idea0001_path = create_idea0001_path(output_dir)
+    assert os_path_exists(idea0001_path) is False
 
     # WHEN
-    create_belief0001_file(world_dir, output_dir, exx.sue)
+    create_idea0001_file(world_dir, output_dir, exx.sue)
 
     # THEN
-    assert os_path_exists(belief0001_path)
-    bob_belief0001_sheetnames = get_sheet_names(belief0001_path)
-    belief_csv_strs = create_init_belief_brick_csv_strs()
-    assert set(bob_belief0001_sheetnames) == set(belief_csv_strs.keys())
+    assert os_path_exists(idea0001_path)
+    bob_idea0001_sheetnames = get_sheet_names(idea0001_path)
+    idea_csv_strs = create_init_idea_brick_csv_strs()
+    assert set(bob_idea0001_sheetnames) == set(idea_csv_strs.keys())
 
 
-def test_create_belief0001_file_CreatesFile_Scenario1_TranslateRowsInDB(
+def test_create_idea0001_file_CreatesFile_Scenario1_TranslateRowsInDB(
     temp3_fs,
 ):
     # ESTABLISH database with translate data
@@ -318,26 +318,26 @@ def test_create_belief0001_file_CreatesFile_Scenario1_TranslateRowsInDB(
         cursor.execute(insert_trlcore_sqlstr)
     db_conn.close()
 
-    belief0001_path = create_belief0001_path(output_dir)
-    assert os_path_exists(belief0001_path) is False
+    idea0001_path = create_idea0001_path(output_dir)
+    assert os_path_exists(idea0001_path) is False
 
     # WHEN
-    create_belief0001_file(world_dir, output_dir, exx.yao, False)
+    create_idea0001_file(world_dir, output_dir, exx.yao, False)
 
     # THEN
-    assert os_path_exists(belief0001_path)
-    bob_belief0001_sheetnames = get_sheet_names(belief0001_path)
-    print(f"{bob_belief0001_sheetnames=}")
-    belief_csv_strs = create_init_belief_brick_csv_strs()
-    assert set(bob_belief0001_sheetnames) == set(belief_csv_strs.keys())
+    assert os_path_exists(idea0001_path)
+    bob_idea0001_sheetnames = get_sheet_names(idea0001_path)
+    print(f"{bob_idea0001_sheetnames=}")
+    idea_csv_strs = create_init_idea_brick_csv_strs()
+    assert set(bob_idea0001_sheetnames) == set(idea_csv_strs.keys())
     bk00142_str = "bk00142"
     bk00143_str = "bk00143"
     bk00144_str = "bk00144"
     bk00145_str = "bk00145"
-    bk00142_df = pandas_read_excel(belief0001_path, bk00142_str)
-    bk00143_df = pandas_read_excel(belief0001_path, bk00143_str)
-    bk00144_df = pandas_read_excel(belief0001_path, bk00144_str)
-    bk00145_df = pandas_read_excel(belief0001_path, bk00145_str)
+    bk00142_df = pandas_read_excel(idea0001_path, bk00142_str)
+    bk00143_df = pandas_read_excel(idea0001_path, bk00143_str)
+    bk00144_df = pandas_read_excel(idea0001_path, bk00144_str)
+    bk00145_df = pandas_read_excel(idea0001_path, bk00145_str)
     assert len(bk00142_df) == 0
     assert len(bk00143_df) == 2
     assert len(bk00144_df) == 0

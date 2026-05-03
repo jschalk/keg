@@ -5,9 +5,9 @@ from ch17_brick._ref.ch17_semantic_types import FaceName, KnotTerm, MomentRope
 from ch17_brick.brick_config import get_brick_format_filename, get_brick_format_headers
 
 
-def create_init_belief_brick_csv_strs() -> dict[str, str]:
+def create_init_idea_brick_csv_strs() -> dict[str, str]:
     """Returns strings of csv headers with comma delimiter"""
-    belief_brick_types = [
+    idea_brick_types = [
         "bk00100",
         "bk00101",
         "bk00102",
@@ -33,7 +33,7 @@ def create_init_belief_brick_csv_strs() -> dict[str, str]:
     brick_format_headers = get_brick_format_headers()
 
     moment_csv_strs = {}
-    for brick_type in belief_brick_types:
+    for brick_type in idea_brick_types:
         brick_format_filename = get_brick_format_filename(brick_type)
         for brick_columns, brick_filename in brick_format_headers.items():
             if brick_filename == brick_format_filename:
@@ -41,16 +41,16 @@ def create_init_belief_brick_csv_strs() -> dict[str, str]:
     return moment_csv_strs
 
 
-def add_momentunits_to_belief_csv_strs(
+def add_momentunits_to_idea_csv_strs(
     moments_dict: dict[MomentRope, MomentUnit],
     moment_csv_strs: dict[str, str],
     csv_delimiter: str,
 ):
     for x_moment in moments_dict.values():
-        add_momentunit_to_belief_csv_strs(x_moment, moment_csv_strs, csv_delimiter)
+        add_momentunit_to_idea_csv_strs(x_moment, moment_csv_strs, csv_delimiter)
 
 
-def add_momentunit_to_belief_csv_strs(
+def add_momentunit_to_idea_csv_strs(
     x_moment: MomentUnit, moment_csv_strs: dict[str, str], csv_delimiter: str
 ) -> dict[str, str]:
     bk00100_csv = moment_csv_strs.get("bk00100")
@@ -482,7 +482,7 @@ def add_person_to_bk00129_csv(
     return x_csv
 
 
-def add_personunit_to_belief_csv_strs(
+def add_personunit_to_idea_csv_strs(
     x_person: PersonUnit, moment_csv_strs: dict[str, str], csv_delimiter: str
 ) -> str:
     """PersonUnit must be to be thinkouted."""

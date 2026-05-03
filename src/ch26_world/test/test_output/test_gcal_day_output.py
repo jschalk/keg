@@ -10,8 +10,8 @@ from ch25_kpi._ref.ch25_path import (
     create_dst_person_punch_path,
 )
 from ch26_world.world import (
-    belief_sheets_to_gcal_day_punchs,
     create_today_punchs,
+    idea_sheets_to_gcal_day_punchs,
     worlddir_shop,
 )
 from datetime import datetime
@@ -20,7 +20,7 @@ from pandas import DataFrame as pandas_DataFrame
 from ref.keywords import Ch26Keywords as kw, ExampleStrs as exx
 
 
-def test_belief_sheets_to_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
+def test_idea_sheets_to_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     temp3_fs,
 ):
     # ESTABLISH
@@ -35,14 +35,14 @@ def test_belief_sheets_to_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     assert not os_path_exists(sue_ep8_day_punch_path)
 
     # WHEN
-    belief_sheets_to_gcal_day_punchs(worlddir, {exx.sue}, apr7)
+    idea_sheets_to_gcal_day_punchs(worlddir, {exx.sue}, apr7)
 
     # THEN
     assert not os_path_exists(sue_a23_day_punch_path)
     assert not os_path_exists(sue_ep8_day_punch_path)
 
 
-def test_belief_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueReport(
+def test_idea_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueReport(
     temp3_fs,
 ):
     # ESTABLISH
@@ -116,7 +116,7 @@ def test_belief_sheets_to_gcal_day_punchs_SavesFiles_Scenario1_PopulatedSueRepor
 
     # WHEN
     apr7 = datetime(2010, 5, 7)
-    belief_sheets_to_gcal_day_punchs(here_wdir, {exx.sue}, apr7)
+    idea_sheets_to_gcal_day_punchs(here_wdir, {exx.sue}, apr7)
 
     # THEN
     assert os_path_exists(hn_red_mmt_json_path)
@@ -216,7 +216,7 @@ def test_create_today_punchs_SavesFiles_Scenario0_PopulatedSueReport(
         worlds_dir=here_wdir.worlds_dir,
         output_dir=here_wdir.output_dir,
         bricks_src_dir=here_wdir.bricks_src_dir,
-        beliefs_src_dir=here_wdir.beliefs_src_dir,
+        ideas_src_dir=here_wdir.ideas_src_dir,
     )
 
     # THEN

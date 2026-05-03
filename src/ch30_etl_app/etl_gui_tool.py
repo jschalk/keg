@@ -8,15 +8,15 @@ from ch07_person_logic.person_main import personunit_shop
 from ch13_time.epoch_config import get_creg_config, get_five_config
 from ch13_time.epoch_main import epochunit_shop
 from ch14_moment.moment_main import momentunit_shop
-from ch17_brick.brick_belief_csv import (
-    add_momentunits_to_belief_csv_strs,
-    add_personunit_to_belief_csv_strs,
-    create_init_belief_brick_csv_strs,
-)
 from ch17_brick.brick_db_tool import (
     csv_dict_to_excel,
     prettify_excel_file,
     remove_empty_sheets,
+)
+from ch17_brick.brick_idea_csv import (
+    add_momentunits_to_idea_csv_strs,
+    add_personunit_to_idea_csv_strs,
+    create_init_idea_brick_csv_strs,
 )
 from ch26_world.world import worlddir_shop
 from dataclasses import dataclass
@@ -93,7 +93,7 @@ def get_app_default_dirs(default_root: Path) -> dict[str, Path]:
     return {
         "world_name": x_world_name,
         "working": x_worlddir.worlds_dir,
-        "beliefs_src": x_worlddir.beliefs_src_dir,
+        "ideas_src": x_worlddir.ideas_src_dir,
         "bricks_src": x_worlddir.bricks_src_dir,
         "output": x_worlddir.output_dir,
     }
@@ -140,7 +140,7 @@ def fill_spark_face_in_directory(directory: str, face_name: str) -> None:
                     df.to_excel(writer, sheet_name=sheet_name, index=False)
 
 
-def create_simple_1m2p2pledges_belief_csvs() -> dict[str, str]:
+def create_simple_1m2p2pledges_idea_csvs() -> dict[str, str]:
     mmt01_rope = create_rope("mmt01")
     steve_name = "Steve"
     emman_name = "Emmanuel"
@@ -154,15 +154,15 @@ def create_simple_1m2p2pledges_belief_csvs() -> dict[str, str]:
     golf_rope = emman_person.make_l1_rope("play disc golf")
     steve_person.add_plan(music_rope, 1, True)
     emman_person.add_plan(golf_rope, 1, True)
-    belief_csv_strs = create_init_belief_brick_csv_strs()
+    idea_csv_strs = create_init_idea_brick_csv_strs()
     steve_person.thinkout()
     emman_person.thinkout()
-    add_personunit_to_belief_csv_strs(steve_person, belief_csv_strs, ",")
-    add_personunit_to_belief_csv_strs(emman_person, belief_csv_strs, ",")
-    return transform_bk00129_into_bk00002_in_csvs(belief_csv_strs, mmt01_rope)
+    add_personunit_to_idea_csv_strs(steve_person, idea_csv_strs, ",")
+    add_personunit_to_idea_csv_strs(emman_person, idea_csv_strs, ",")
+    return transform_bk00129_into_bk00002_in_csvs(idea_csv_strs, mmt01_rope)
 
 
-def create_simple_1m2p5pledges_belief_csvs() -> dict[str, str]:
+def create_simple_1m2p5pledges_idea_csvs() -> dict[str, str]:
     mmt01_rope = create_rope("mmt01")
     steve_name = "Steve"
     emman_name = "Emmanuel"
@@ -188,15 +188,15 @@ def create_simple_1m2p5pledges_belief_csvs() -> dict[str, str]:
     steve_person.add_plan(handout_rope, 20, True)
     steve_person.add_plan(ask_rope, 3, True)
     emman_person.add_plan(music_rope, 10, True)
-    belief_csv_strs = create_init_belief_brick_csv_strs()
+    idea_csv_strs = create_init_idea_brick_csv_strs()
     steve_person.thinkout()
     emman_person.thinkout()
-    add_personunit_to_belief_csv_strs(steve_person, belief_csv_strs, ",")
-    add_personunit_to_belief_csv_strs(emman_person, belief_csv_strs, ",")
-    return transform_bk00129_into_bk00002_in_csvs(belief_csv_strs, mmt01_rope)
+    add_personunit_to_idea_csv_strs(steve_person, idea_csv_strs, ",")
+    add_personunit_to_idea_csv_strs(emman_person, idea_csv_strs, ",")
+    return transform_bk00129_into_bk00002_in_csvs(idea_csv_strs, mmt01_rope)
 
 
-def create_simple_2m2p5pledges_belief_csvs() -> dict[str, str]:
+def create_simple_2m2p5pledges_idea_csvs() -> dict[str, str]:
     # sourcery skip: extract-duplicate-method
     mmt01_rope = create_rope("mmt01")
     steve_name = "Steve"
@@ -225,11 +225,11 @@ def create_simple_2m2p5pledges_belief_csvs() -> dict[str, str]:
     m1_steve_person.add_plan(handout_rope, 20, True)
     m1_steve_person.add_plan(ask_rope, 3, True)
     m1_emman_person.add_plan(music_rope, 10, True)
-    belief_csv_strs = create_init_belief_brick_csv_strs()
+    idea_csv_strs = create_init_idea_brick_csv_strs()
     m1_steve_person.thinkout()
     m1_emman_person.thinkout()
-    add_personunit_to_belief_csv_strs(m1_steve_person, belief_csv_strs, ",")
-    add_personunit_to_belief_csv_strs(m1_emman_person, belief_csv_strs, ",")
+    add_personunit_to_idea_csv_strs(m1_steve_person, idea_csv_strs, ",")
+    add_personunit_to_idea_csv_strs(m1_emman_person, idea_csv_strs, ",")
 
     # add heart moment
     heart01_rope = create_rope("heart01")
@@ -250,12 +250,12 @@ def create_simple_2m2p5pledges_belief_csvs() -> dict[str, str]:
     h1_steve_person.add_plan(tango_rope, 3, True)
     h1_steve_person.thinkout()
     h1_emman_person.thinkout()
-    add_personunit_to_belief_csv_strs(h1_steve_person, belief_csv_strs, ",")
-    add_personunit_to_belief_csv_strs(h1_emman_person, belief_csv_strs, ",")
-    return transform_bk00129_into_bk00002_in_csvs(belief_csv_strs, heart01_rope)
+    add_personunit_to_idea_csv_strs(h1_steve_person, idea_csv_strs, ",")
+    add_personunit_to_idea_csv_strs(h1_emman_person, idea_csv_strs, ",")
+    return transform_bk00129_into_bk00002_in_csvs(idea_csv_strs, heart01_rope)
 
 
-def create_emmanuel_lovemaking_belief_csvs() -> dict[str, str]:
+def create_emmanuel_lovemaking_idea_csvs() -> dict[str, str]:
     mlove01_rope = create_rope("loving moment")
     emman_name = "Emmanuel"
     mlove_name = "MyLove"
@@ -267,21 +267,21 @@ def create_emmanuel_lovemaking_belief_csvs() -> dict[str, str]:
     mlove_person.add_contactunit(emman_name)
     mlove_rope = emman_person.make_l1_rope("make love")
     emman_person.add_plan(mlove_rope, 1, True)
-    belief_csv_strs = create_init_belief_brick_csv_strs()
+    idea_csv_strs = create_init_idea_brick_csv_strs()
     emman_person.thinkout()
-    add_personunit_to_belief_csv_strs(emman_person, belief_csv_strs, ",")
-    return transform_bk00129_into_bk00002_in_csvs(belief_csv_strs, mlove01_rope)
+    add_personunit_to_idea_csv_strs(emman_person, idea_csv_strs, ",")
+    return transform_bk00129_into_bk00002_in_csvs(idea_csv_strs, mlove01_rope)
 
 
-def transform_bk00129_into_bk00002_in_csvs(belief_csv_strs, moment_rope) -> dict:
+def transform_bk00129_into_bk00002_in_csvs(idea_csv_strs, moment_rope) -> dict:
     bk00002_csv = ""
-    for sheetname_key, csv_str in belief_csv_strs.items():
+    for sheetname_key, csv_str in idea_csv_strs.items():
         if sheetname_key == "bk00128":
             bk00002_csv = transform_bk00129_into_bk00002_csv(csv_str, moment_rope)
-    belief_csv_strs["bk00002"] = bk00002_csv
+    idea_csv_strs["bk00002"] = bk00002_csv
     return {
         sheetname_key: csv_str
-        for sheetname_key, csv_str in belief_csv_strs.items()
+        for sheetname_key, csv_str in idea_csv_strs.items()
         if sheetname_key not in {"bk00120", "bk00129", "bk00128"}
     }
 
@@ -316,106 +316,106 @@ def transform_bk00129_into_bk00002_csv(csv_str: str, moment_rope: str):
     return output.getvalue()
 
 
-def create_five_time_config_belief_csvs() -> dict[str, str]:
+def create_five_time_config_idea_csvs() -> dict[str, str]:
     team_five_rope = create_rope("teamfive")
     five_epochunit = epochunit_shop(get_five_config())
     five_moment = momentunit_shop(team_five_rope, None, five_epochunit)
     moments = {five_moment.moment_rope: five_moment}
-    belief_csv_strs = create_init_belief_brick_csv_strs()
-    add_momentunits_to_belief_csv_strs(moments, belief_csv_strs, ",")
+    idea_csv_strs = create_init_idea_brick_csv_strs()
+    add_momentunits_to_idea_csv_strs(moments, idea_csv_strs, ",")
 
     with_spark_face_csvs = {}
-    for csv_key, csv_str in belief_csv_strs.items():
+    for csv_key, csv_str in idea_csv_strs.items():
         csv_str = replace_csv_column_from_string(csv_str, "spark_face", "ESchalk")
         csv_str = delete_column_from_csv_string(csv_str, "spark_num")
         with_spark_face_csvs[csv_key] = csv_str
     return with_spark_face_csvs
 
 
-def create_elpaso_time_config_belief_csvs() -> dict[str, str]:
+def create_elpaso_time_config_idea_csvs() -> dict[str, str]:
     elpaso_rope = create_rope("ElPaso")
     creg_epochunit = epochunit_shop(get_creg_config())
     elpaso_moment = momentunit_shop(elpaso_rope, None, creg_epochunit)
     moments = {elpaso_moment.moment_rope: elpaso_moment}
-    belief_csv_strs = create_init_belief_brick_csv_strs()
-    add_momentunits_to_belief_csv_strs(moments, belief_csv_strs, ",")
+    idea_csv_strs = create_init_idea_brick_csv_strs()
+    add_momentunits_to_idea_csv_strs(moments, idea_csv_strs, ",")
 
     with_spark_face_csvs = {}
-    for csv_key, csv_str in belief_csv_strs.items():
+    for csv_key, csv_str in idea_csv_strs.items():
         csv_str = replace_csv_column_from_string(csv_str, "spark_face", "ESchalk")
         csv_str = delete_column_from_csv_string(csv_str, "spark_num")
         with_spark_face_csvs[csv_key] = csv_str
     return with_spark_face_csvs
 
 
-def create_emmanuel_belief_belief_csvs() -> dict[str, str]:
+def create_emmanuel_idea_idea_csvs() -> dict[str, str]:
     # TODO dict[str, str]s and save to file
-    # prnt("create_emmanuel_belief_file...")
+    # prnt("create_emmanuel_idea_file...")
     pass
 
 
-def create_example_moment_ledger_belief_csvs() -> dict[str, str]:
+def create_example_moment_ledger_idea_csvs() -> dict[str, str]:
     # TODO dict[str, str]s and save to file
     # prnt("create_example_moment_ledger_file...")
     pass
 
 
-def create_example_moment_budget_belief_csvs() -> dict[str, str]:
+def create_example_moment_budget_idea_csvs() -> dict[str, str]:
     # TODO dict[str, str]s and save to file
     # prnt("create_example_moment_budget_file...")
     pass
 
 
 def save_and_prettify_excel_file(
-    belief_csvs: dict[str, str], dest_dir, dest_filename: str
+    idea_csvs: dict[str, str], dest_dir, dest_filename: str
 ):
     dest_dir = str(dest_dir)
     dest_file_path = create_path(dest_dir, dest_filename)
     delete_dir(dest_file_path)
-    csv_dict_to_excel(belief_csvs, dest_dir, dest_filename)
+    csv_dict_to_excel(idea_csvs, dest_dir, dest_filename)
     remove_empty_sheets(dest_file_path)
     prettify_excel_file(dest_file_path)
 
 
-def create_simple_1m2p2pledges_belief_file(dest_dir: str):
+def create_simple_1m2p2pledges_idea_file(dest_dir: str):
     dest_filename = "simple_2p2pledges_example.xlsx"
-    belief_csvs = create_simple_1m2p2pledges_belief_csvs()
-    save_and_prettify_excel_file(belief_csvs, dest_dir, dest_filename)
+    idea_csvs = create_simple_1m2p2pledges_idea_csvs()
+    save_and_prettify_excel_file(idea_csvs, dest_dir, dest_filename)
 
 
-def create_simple_1m2p5pledges_belief_file(dest_dir: str):
+def create_simple_1m2p5pledges_idea_file(dest_dir: str):
     dest_filename = "simple_2p5pledges_example.xlsx"
-    belief_csvs = create_simple_1m2p5pledges_belief_csvs()
-    save_and_prettify_excel_file(belief_csvs, dest_dir, dest_filename)
+    idea_csvs = create_simple_1m2p5pledges_idea_csvs()
+    save_and_prettify_excel_file(idea_csvs, dest_dir, dest_filename)
 
 
-def create_simple_2m2p5pledges_belief_file(dest_dir: str):
+def create_simple_2m2p5pledges_idea_file(dest_dir: str):
     dest_filename = "simple_2m2p5pledges_example.xlsx"
-    belief_csvs = create_simple_2m2p5pledges_belief_csvs()
-    save_and_prettify_excel_file(belief_csvs, dest_dir, dest_filename)
+    idea_csvs = create_simple_2m2p5pledges_idea_csvs()
+    save_and_prettify_excel_file(idea_csvs, dest_dir, dest_filename)
 
 
-def create_emmanuel_lovemaking_belief_file(dest_dir: str):
+def create_emmanuel_lovemaking_idea_file(dest_dir: str):
     dest_filename = "emmanuel_lovemaking_example.xlsx"
-    belief_csvs = create_emmanuel_lovemaking_belief_csvs()
-    save_and_prettify_excel_file(belief_csvs, dest_dir, dest_filename)
+    idea_csvs = create_emmanuel_lovemaking_idea_csvs()
+    save_and_prettify_excel_file(idea_csvs, dest_dir, dest_filename)
 
 
 def create_five_time_config_file(dest_dir: str):
-    dest_filename = "five_belief.xlsx"
-    belief_csvs = create_five_time_config_belief_csvs()
-    save_and_prettify_excel_file(belief_csvs, dest_dir, dest_filename)
+    dest_filename = "five_idea.xlsx"
+    idea_csvs = create_five_time_config_idea_csvs()
+    save_and_prettify_excel_file(idea_csvs, dest_dir, dest_filename)
 
 
 def create_elpaso_time_config_file(dest_dir: str):
-    dest_filename = "elpaso_belief.xlsx"
-    belief_csvs = create_elpaso_time_config_belief_csvs()
-    save_and_prettify_excel_file(belief_csvs, dest_dir, dest_filename)
+    dest_filename = "elpaso_idea.xlsx"
+    idea_csvs = create_elpaso_time_config_idea_csvs()
+    save_and_prettify_excel_file(idea_csvs, dest_dir, dest_filename)
 
 
-def create_emmanuel_belief_file(file_path: str):
+def create_emmanuel_idea_file(file_path: str):
     # TODO dict[str, str]s and save to file
-    # prnt("create_emmanuel_belief_file...")
+    # prnt("create_emmanuel_idea_file...")
     pass
 
 
@@ -431,7 +431,7 @@ def create_example_moment_budget_file(file_path: str):
     pass
 
 
-def create_monopoly_belief_file(file_path: str):
+def create_monopoly_idea_file(file_path: str):
     # TODO dict[str, str]s and save to file
     # prnt("create_example_moment_budget_file...")
     pass
@@ -439,14 +439,14 @@ def create_monopoly_belief_file(file_path: str):
 
 def get_option_table_options() -> dict[str, Callable]:
     return {
-        "2 persons, 2 tasks example": create_simple_1m2p2pledges_belief_file,
-        "2 persons, 5 tasks example": create_simple_1m2p5pledges_belief_file,
-        "2 moments, 2 persons, 5 tasks example": create_simple_2m2p5pledges_belief_file,
-        "lovemaking example": create_emmanuel_lovemaking_belief_file,
+        "2 persons, 2 tasks example": create_simple_1m2p2pledges_idea_file,
+        "2 persons, 5 tasks example": create_simple_1m2p5pledges_idea_file,
+        "2 moments, 2 persons, 5 tasks example": create_simple_2m2p5pledges_idea_file,
+        "lovemaking example": create_emmanuel_lovemaking_idea_file,
         "Create TeamFive Moment with Five time": create_five_time_config_file,
         "Create El Paso Moment with standard time.": create_elpaso_time_config_file,
-        "create_emmanuel_belief_file": create_emmanuel_belief_file,
+        "create_emmanuel_idea_file": create_emmanuel_idea_file,
         "create_example_moment_ledger_file": create_example_moment_ledger_file,
         "create_example_moment_budget_file": create_example_moment_budget_file,
-        "Monopoly Example": create_monopoly_belief_file,
+        "Monopoly Example": create_monopoly_idea_file,
     }

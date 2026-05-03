@@ -4,14 +4,14 @@ from ch04_rope.rope import create_rope
 from ch17_brick.brick_db_tool import create_brick_sorted_table, save_sheet
 from ch18_etl_config.etl_sqlstr import create_prime_tablename
 from ch23_lynx.lynx import get_max_brixk_agg_spark_num
-from ch26_world.world import WorldDir, belief_sheets_to_lynx_mstr, worlddir_shop
+from ch26_world.world import WorldDir, idea_sheets_to_lynx_mstr, worlddir_shop
 from os.path import exists as os_path_exists
 from pandas import DataFrame
 from ref.keywords import Ch26Keywords as kw, ExampleStrs as exx
 from sqlite3 import connect as sqlite3_connect
 
 
-def test_belief_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
+def test_idea_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     temp3_fs,
 ):  # sourcery skip: extract-method
     # ESTABLISH:
@@ -19,8 +19,8 @@ def test_belief_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     fay_wdir = worlddir_shop(fay_str, str(temp3_fs))
     # delete_dir(fay_wdir.worlds_dir)
     sue_inx = "Suzy"
-    ex_filename = "belief_Faybob.xlsx"
-    beliefs_src_dir_file_path = create_path(fay_wdir.beliefs_src_dir, ex_filename)
+    ex_filename = "idea_Faybob.xlsx"
+    ideas_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
     bk00171_columns = [
         kw.spark_face,
         kw.moment_rope,
@@ -34,7 +34,7 @@ def test_belief_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     bk00171row0 = [exx.sue, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
     bk00171_df = DataFrame([bk00171row0], columns=bk00171_columns)
     bk00171_ex0_str = f"example0_{bk00171_str}"
-    save_sheet(beliefs_src_dir_file_path, bk00171_ex0_str, bk00171_df)
+    save_sheet(ideas_src_dir_file_path, bk00171_ex0_str, bk00171_df)
 
     bk00101_columns = [
         kw.spark_face,
@@ -51,19 +51,19 @@ def test_belief_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     bk1row0 = [exx.sue, exx.a23, exx.sue, tp37, ";", sue_quota, sue_celldepth]
     bk00101_1df = DataFrame([bk1row0], columns=bk00101_columns)
     bk00101_ex0_str = "example0_bk00101"
-    save_sheet(beliefs_src_dir_file_path, bk00101_ex0_str, bk00101_1df)
+    save_sheet(ideas_src_dir_file_path, bk00101_ex0_str, bk00101_1df)
     fay_db_path = fay_wdir.get_world_db_path()
     assert not os_path_exists(fay_db_path)
-    assert os_path_exists(beliefs_src_dir_file_path)
-    k_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
-    assert not os_path_exists(k_src_dir_file_path)
+    assert os_path_exists(ideas_src_dir_file_path)
+    b_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
+    assert not os_path_exists(b_src_dir_file_path)
 
     # WHEN
-    belief_sheets_to_lynx_mstr(fay_wdir)
+    idea_sheets_to_lynx_mstr(fay_wdir)
 
     # THEN
-    assert not os_path_exists(beliefs_src_dir_file_path)
-    assert os_path_exists(k_src_dir_file_path)
+    assert not os_path_exists(ideas_src_dir_file_path)
+    assert os_path_exists(b_src_dir_file_path)
 
     assert os_path_exists(fay_db_path)
     with sqlite3_connect(fay_db_path) as db_conn:
@@ -145,7 +145,7 @@ def create_brixk_agg_record(wdir: WorldDir, spark_num: int):
     db_conn.close()
 
 
-def test_belief_sheets_to_lynx_mstr_Scenario1_DatabaseFileExists(
+def test_idea_sheets_to_lynx_mstr_Scenario1_DatabaseFileExists(
     temp3_fs,
 ):  # sourcery skip: extract-method
     # ESTABLISH:
@@ -155,8 +155,8 @@ def test_belief_sheets_to_lynx_mstr_Scenario1_DatabaseFileExists(
     create_brixk_agg_record(fay_wdir, spark5)
     # delete_dir(fay_wdir.worlds_dir)
     sue_inx = "Suzy"
-    ex_filename = "belief_Faybob.xlsx"
-    beliefs_src_dir_file_path = create_path(fay_wdir.beliefs_src_dir, ex_filename)
+    ex_filename = "idea_Faybob.xlsx"
+    ideas_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
     bk00171_columns = [
         kw.spark_face,
         kw.moment_rope,
@@ -170,19 +170,19 @@ def test_belief_sheets_to_lynx_mstr_Scenario1_DatabaseFileExists(
     bk00171row0 = [exx.sue, a23_rope, exx.sue, exx.sue, exx.sue, sue_inx]
     bk00171_df = DataFrame([bk00171row0], columns=bk00171_columns)
     bk00171_ex0_str = f"example0_{bk00171_str}"
-    save_sheet(beliefs_src_dir_file_path, bk00171_ex0_str, bk00171_df)
+    save_sheet(ideas_src_dir_file_path, bk00171_ex0_str, bk00171_df)
     fay_db_path = fay_wdir.get_world_db_path()
     assert os_path_exists(fay_db_path)
     with sqlite3_connect(fay_db_path) as db_conn0:
         cursor0 = db_conn0.cursor()
         assert get_max_brixk_agg_spark_num(cursor0) == spark5
     db_conn0.close()
-    assert os_path_exists(beliefs_src_dir_file_path)
-    k_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
-    assert not os_path_exists(k_src_dir_file_path)
+    assert os_path_exists(ideas_src_dir_file_path)
+    b_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
+    assert not os_path_exists(b_src_dir_file_path)
 
     # WHEN
-    belief_sheets_to_lynx_mstr(fay_wdir)
+    idea_sheets_to_lynx_mstr(fay_wdir)
 
     # THEN
     assert os_path_exists(fay_db_path)
@@ -195,5 +195,5 @@ def test_belief_sheets_to_lynx_mstr_Scenario1_DatabaseFileExists(
         rows = cursor1.fetchall()
         assert len(rows) == 2
     db_conn1.close()
-    assert os_path_exists(k_src_dir_file_path)
-    assert not os_path_exists(beliefs_src_dir_file_path)
+    assert os_path_exists(b_src_dir_file_path)
+    assert not os_path_exists(ideas_src_dir_file_path)

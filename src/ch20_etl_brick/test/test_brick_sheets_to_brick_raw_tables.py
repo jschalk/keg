@@ -19,8 +19,8 @@ def test_etl_brick_dfs_to_brixk_raw_tables_PopulatesTables_Scenario0(
     hour6am = "6am"
     hour7am = "7am"
     ex_filename = "Faybob.xlsx"
-    k_src_dir = create_path(str(temp3_fs), kw.k_src)
-    k_src_file_path = create_path(k_src_dir, ex_filename)
+    b_src_dir = create_path(str(temp3_fs), kw.b_src)
+    b_src_file_path = create_path(b_src_dir, ex_filename)
     bk3_columns = [
         kw.spark_num,
         kw.spark_face,
@@ -37,12 +37,12 @@ def test_etl_brick_dfs_to_brixk_raw_tables_PopulatesTables_Scenario0(
 
     df1 = DataFrame([row0, row1, row2, row3, row4], columns=bk3_columns)
     bk00103_ex1_str = "example1_bk00103"
-    save_sheet(k_src_file_path, bk00103_ex1_str, df1)
+    save_sheet(b_src_file_path, bk00103_ex1_str, df1)
     bk00103_tablename = f"bk00103_{kw.brixk_raw}"
     assert not db_table_exists(cursor0, bk00103_tablename)
 
     # WHEN
-    etl_brick_dfs_to_brixk_raw_tables(cursor0, k_src_dir)
+    etl_brick_dfs_to_brixk_raw_tables(cursor0, b_src_dir)
 
     # THEN
     assert db_table_exists(cursor0, bk00103_tablename)
@@ -67,7 +67,7 @@ ORDER BY sheet_name, {kw.spark_num}, {kw.cumulative_minute};"""
     e1 = spark1
     e2 = spark2
     e3 = spark3
-    s_dir = create_path(k_src_dir, ".")
+    s_dir = create_path(b_src_dir, ".")
     m_360 = minute_360
     m_420 = minute_420
     bk3_str = bk00103_ex1_str
@@ -98,8 +98,8 @@ def test_etl_brick_dfs_to_brixk_raw_tables_PopulatesTables_Scenario1(
     hour6am = "6am"
     hour7am = "7am"
     ex_filename = "Faybob.xlsx"
-    k_src_dir = create_path(str(temp3_fs), kw.k_src)
-    k_src_file_path = create_path(k_src_dir, ex_filename)
+    b_src_dir = create_path(str(temp3_fs), kw.b_src)
+    b_src_file_path = create_path(b_src_dir, ex_filename)
     brick_columns = [
         kw.spark_num,
         kw.spark_face,
@@ -127,14 +127,14 @@ def test_etl_brick_dfs_to_brixk_raw_tables_PopulatesTables_Scenario1(
     bk00103_ex1_str = "example1_bk00103"
     bk00103_ex2_str = "example2_bk00103"
     bk00103_ex3_str = "example3_bk00103"
-    save_sheet(k_src_file_path, bk00103_ex1_str, df1)
-    save_sheet(k_src_file_path, bk00103_ex2_str, df2)
-    save_sheet(k_src_file_path, bk00103_ex3_str, df3)
+    save_sheet(b_src_file_path, bk00103_ex1_str, df1)
+    save_sheet(b_src_file_path, bk00103_ex2_str, df2)
+    save_sheet(b_src_file_path, bk00103_ex3_str, df3)
     bk00103_tablename = f"bk00103_{kw.brixk_raw}"
     assert not db_table_exists(cursor0, bk00103_tablename)
 
     # WHEN
-    etl_brick_dfs_to_brixk_raw_tables(cursor0, k_src_dir)
+    etl_brick_dfs_to_brixk_raw_tables(cursor0, b_src_dir)
 
     # THEN
     assert db_table_exists(cursor0, bk00103_tablename)
@@ -158,7 +158,7 @@ ORDER BY sheet_name, {kw.spark_num}, {kw.cumulative_minute};"""
     file = ex_filename
     e1 = spark1
     e2 = spark2
-    s_dir = create_path(k_src_dir, ".")
+    s_dir = create_path(b_src_dir, ".")
     m_360 = minute_360
     m_420 = minute_420
     b1_str = bk00103_ex1_str
@@ -189,8 +189,8 @@ def test_etl_brick_dfs_to_brixk_raw_tables_PopulatesTables_Scenario2_NanValuesCo
     hour6am = "6am"
     hour7am = "7am"
     ex_filename = "Faybob.xlsx"
-    k_src_dir = create_path(str(temp3_fs), kw.k_src)
-    k_src_file_path = create_path(k_src_dir, ex_filename)
+    b_src_dir = create_path(str(temp3_fs), kw.b_src)
+    b_src_file_path = create_path(b_src_dir, ex_filename)
     bk3_columns = [
         kw.spark_num,
         kw.spark_face,
@@ -204,12 +204,12 @@ def test_etl_brick_dfs_to_brixk_raw_tables_PopulatesTables_Scenario2_NanValuesCo
     row2 = [spark2, exx.sue, minute_420, exx.a23_dash, pandas_NA, exx.dash]
     df1 = DataFrame([row0, row1, row2], columns=bk3_columns)
     bk00103_ex1_str = "example1_bk00103"
-    save_sheet(k_src_file_path, bk00103_ex1_str, df1)
+    save_sheet(b_src_file_path, bk00103_ex1_str, df1)
     bk00103_tablename = f"bk00103_{kw.brixk_raw}"
     assert not db_table_exists(cursor0, bk00103_tablename)
 
     # WHEN
-    etl_brick_dfs_to_brixk_raw_tables(cursor0, k_src_dir)
+    etl_brick_dfs_to_brixk_raw_tables(cursor0, b_src_dir)
 
     # THEN
     assert db_table_exists(cursor0, bk00103_tablename)
@@ -228,7 +228,7 @@ ORDER BY sheet_name, {kw.spark_num}, {kw.cumulative_minute};"""
     e1 = spark1
     e2 = spark2
     e3 = spark3
-    s_dir = create_path(k_src_dir, ".")
+    s_dir = create_path(b_src_dir, ".")
     m_360 = minute_360
     m_420 = minute_420
     bk3_str = bk00103_ex1_str
@@ -254,8 +254,8 @@ def test_etl_brick_dfs_to_brixk_raw_tables_PopulatesTables_Scenario3_DeletesTabl
     hour6am = "6am"
     hour7am = "7am"
     ex_filename = "Faybob.xlsx"
-    k_src_dir = create_path(str(temp3_fs), kw.k_src)
-    k_src_file_path = create_path(k_src_dir, ex_filename)
+    b_src_dir = create_path(str(temp3_fs), kw.b_src)
+    b_src_file_path = create_path(b_src_dir, ex_filename)
     bk3_columns = [
         kw.spark_num,
         kw.spark_face,
@@ -272,12 +272,12 @@ def test_etl_brick_dfs_to_brixk_raw_tables_PopulatesTables_Scenario3_DeletesTabl
 
     df1 = DataFrame([row0, row1, row2, row3, row4], columns=bk3_columns)
     bk00103_ex1_str = "example1_bk00103"
-    save_sheet(k_src_file_path, bk00103_ex1_str, df1)
+    save_sheet(b_src_file_path, bk00103_ex1_str, df1)
     bk00103_tablename = f"bk00103_{kw.brixk_raw}"
     assert not db_table_exists(cursor0, bk00103_tablename)
-    etl_brick_dfs_to_brixk_raw_tables(cursor0, k_src_dir)
+    etl_brick_dfs_to_brixk_raw_tables(cursor0, b_src_dir)
     assert get_row_count(cursor0, bk00103_tablename) == 5
     # WHEN
-    etl_brick_dfs_to_brixk_raw_tables(cursor0, k_src_dir)
+    etl_brick_dfs_to_brixk_raw_tables(cursor0, b_src_dir)
     # THEN
     assert get_row_count(cursor0, bk00103_tablename) == 5

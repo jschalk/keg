@@ -178,7 +178,7 @@ def test_get_keg_definitions_ReturnsObj_Check_semantic_types():
         assert class_doc_str in semantic_description
 
 
-def test_get_keg_definitions_ReturnsObj_Check_src_config_keywords():
+def test_get_keg_definitions_ReturnsObj_Checb_src_config_keywords():
     # sourcery skip: no-conditionals-in-tests
     # ESTABLISH / WHEN
     keg_definitions = get_keg_definitions()

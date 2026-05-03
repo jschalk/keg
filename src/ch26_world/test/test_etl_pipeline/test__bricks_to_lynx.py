@@ -50,7 +50,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario0_bk001071PopulatesTables(
     sue_inx = "Suzy"
     e3 = 3
     ex_filename = "Faybob.xlsx"
-    k_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
+    b_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
     bk00171_columns = [
         kw.spark_face,
         kw.spark_num,
@@ -64,7 +64,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario0_bk001071PopulatesTables(
     bk00171row0 = [exx.sue, e3, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
     bk00171_df = DataFrame([bk00171row0], columns=bk00171_columns)
     bk00171_ex0_str = f"example0_{bk00171_str}"
-    save_sheet(k_src_dir_file_path, bk00171_ex0_str, bk00171_df)
+    save_sheet(b_src_dir_file_path, bk00171_ex0_str, bk00171_df)
     bk00171_raw = f"{bk00171_str}_brixk_raw"
     bk00171_agg = f"{bk00171_str}_brixk_agg"
     bk00171_valid = f"{bk00171_str}_brixk_vld"
@@ -215,7 +215,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     sue_inx = "Suzy"
     e3 = 3
     ex_filename = "Faybob.xlsx"
-    k_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
+    b_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
     bk00171_columns = [
         kw.spark_face,
         kw.spark_num,
@@ -230,7 +230,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     bk00171row0 = [exx.sue, e3, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
     bk00171_df = DataFrame([bk00171row0], columns=bk00171_columns)
     bk00171_ex0_str = f"example0_{bk00171_str}"
-    save_sheet(k_src_dir_file_path, bk00171_ex0_str, bk00171_df)
+    save_sheet(b_src_dir_file_path, bk00171_ex0_str, bk00171_df)
 
     bk00101_columns = [
         kw.spark_num,
@@ -248,7 +248,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario1_PopulateBudPayRows(
     bk1row0 = [e3, exx.sue, exx.a23, exx.sue, tp37, ";", sue_quota, sue_celldepth]
     bk00101_1df = DataFrame([bk1row0], columns=bk00101_columns)
     bk00101_ex0_str = "example0_bk00101"
-    save_sheet(k_src_dir_file_path, bk00101_ex0_str, bk00101_1df)
+    save_sheet(b_src_dir_file_path, bk00101_ex0_str, bk00101_1df)
 
     # Names of tables
     bk00171_raw = f"{bk00171_str}_brixk_raw"
@@ -375,7 +375,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario2_PopulateMomentTranBook(
     # delete_dir(fay_wdir.worlds_dir)
     e3 = 3
     ex_filename = "Faybob.xlsx"
-    k_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
+    b_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
     bk00102_columns = [
         kw.spark_num,
         kw.spark_face,
@@ -392,7 +392,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario2_PopulateMomentTranBook(
     bk00102row0 = [e3, exx.sue, exx.a23, exx.sue, exx.bob, tp37, sue_to_bob_amount, ";"]
     bk00102_df = DataFrame([bk00102row0], columns=bk00102_columns)
     bk00102_ex0_str = f"example0_{bk00102_str}"
-    save_sheet(k_src_dir_file_path, bk00102_ex0_str, bk00102_df)
+    save_sheet(b_src_dir_file_path, bk00102_ex0_str, bk00102_df)
 
     assert not db_table_exists(cursor0, kw.moment_contact_nets)
 
@@ -413,7 +413,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario3_WhenNoMomentBricks_ote1_IsSt
     fay_wdir = worlddir_shop(fay_str, str(temp3_fs))
     spark2 = 2
     ex_filename = "Faybob.xlsx"
-    k_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
+    b_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
     bk00001_columns = [
         kw.spark_num,
         kw.spark_face,
@@ -423,7 +423,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario3_WhenNoMomentBricks_ote1_IsSt
     ]
     bk00001_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
     bk00001_df = DataFrame(bk00001_rows, columns=bk00001_columns)
-    save_sheet(k_src_dir_file_path, "bk00001_ex3", bk00001_df)
+    save_sheet(b_src_dir_file_path, "bk00001_ex3", bk00001_df)
     moment_mstr = fay_wdir.moment_mstr_dir
     a23_lasso = lassounit_shop(exx.a23)
     a23_ote1_csv_path = create_moment_ote1_csv_path(moment_mstr, a23_lasso)
@@ -481,7 +481,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
     hour6am = "6am"
     hour7am = "7am"
     ex_filename = "Faybob.xlsx"
-    k_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
+    b_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
     bk00103_columns = [
         kw.spark_num,
         kw.spark_face,
@@ -506,7 +506,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
     bk1row0 = [spark2, exx.sue, exx.a23, exx.sue, tp37, ";", sue_quota, sue_celldepth]
     bk00101_1df = DataFrame([bk1row0], columns=bk00101_columns)
     bk00101_ex0_str = "example0_bk00101"
-    save_sheet(k_src_dir_file_path, bk00101_ex0_str, bk00101_1df)
+    save_sheet(b_src_dir_file_path, bk00101_ex0_str, bk00101_1df)
 
     bk3row0 = [spark1, exx.sue, minute_360, exx.a23, hour6am, ";"]
     bk3row1 = [spark1, exx.sue, minute_420, exx.a23, hour7am, ";"]
@@ -515,8 +515,8 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
     bk00103_3df = DataFrame([bk3row1, bk3row0, bk3row2], columns=bk00103_columns)
     bk00103_ex1_str = "example1_bk00103"
     bk00103_ex3_str = "example3_bk00103"
-    save_sheet(k_src_dir_file_path, bk00103_ex1_str, bk00103_1df)
-    save_sheet(k_src_dir_file_path, bk00103_ex3_str, bk00103_3df)
+    save_sheet(b_src_dir_file_path, bk00103_ex1_str, bk00103_1df)
+    save_sheet(b_src_dir_file_path, bk00103_ex3_str, bk00103_3df)
     bk00001_columns = [
         kw.spark_num,
         kw.spark_face,
@@ -526,7 +526,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
     ]
     bk00001_rows = [[spark2, exx.sue, exx.a23, exx.sue, exx.sue]]
     bk00001_df = DataFrame(bk00001_rows, columns=bk00001_columns)
-    save_sheet(k_src_dir_file_path, "bk00001_ex3", bk00001_df)
+    save_sheet(b_src_dir_file_path, "bk00001_ex3", bk00001_df)
     mstr_dir = fay_wdir.moment_mstr_dir
     wrong_a23_moment_dir = create_path(mstr_dir, exx.a23)
     assert os_path_exists(wrong_a23_moment_dir) is False
@@ -535,7 +535,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
     a23_sue_gut_path = create_gut_path(mstr_dir, a23_lasso, exx.sue)
     a23_sue_job_path = create_job_path(mstr_dir, a23_lasso, exx.sue)
     sue37_mandate_path = bud_mandate(mstr_dir, a23_lasso, exx.sue, tp37)
-    assert os_path_exists(k_src_dir_file_path)
+    assert os_path_exists(b_src_dir_file_path)
     assert not os_path_exists(a23_json_path)
     assert not os_path_exists(a23_sue_gut_path)
     assert not os_path_exists(a23_sue_job_path)
@@ -549,7 +549,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario5_CreatesFiles(
 
     # THEN
     assert os_path_exists(wrong_a23_moment_dir) is False
-    assert os_path_exists(k_src_dir_file_path)
+    assert os_path_exists(b_src_dir_file_path)
     assert os_path_exists(a23_json_path)
     assert os_path_exists(a23_sue_gut_path)
     assert os_path_exists(a23_sue_job_path)
@@ -571,7 +571,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario6_NoDuplicates(
     hour6am = "6am"
     hour7am = "7am"
     ex_filename = "Faybob.xlsx"
-    k_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
+    b_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
     bk00103_columns = [
         kw.spark_num,
         kw.spark_face,
@@ -587,8 +587,8 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario6_NoDuplicates(
     bk00103_3df = DataFrame([bk3row1, bk3row0, bk3row2], columns=bk00103_columns)
     bk00103_ex1_str = "example1_bk00103"
     bk00103_ex3_str = "example3_bk00103"
-    save_sheet(k_src_dir_file_path, bk00103_ex1_str, bk00103_1df)
-    save_sheet(k_src_dir_file_path, bk00103_ex3_str, bk00103_3df)
+    save_sheet(b_src_dir_file_path, bk00103_ex1_str, bk00103_1df)
+    save_sheet(b_src_dir_file_path, bk00103_ex3_str, bk00103_3df)
     brick_sheets_to_lynx_with_cursor(
         cursor0, fay_wdir.bricks_src_dir, fay_wdir.moment_mstr_dir
     )
@@ -620,7 +620,7 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario7_NoDuplicates_bk00170(
     inx_400 = 400
     inx_500 = 500
     ex_filename = "Faybob.xlsx"
-    k_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
+    b_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
     bk00170_columns = [
         kw.spark_num,
         kw.spark_face,
@@ -635,8 +635,8 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario7_NoDuplicates_bk00170(
     bk00170_3df = DataFrame([bk70row1, bk70row0, bk70row2], columns=bk00170_columns)
     bk00170_ex1_str = "example1_bk00170"
     bk00170_ex3_str = "example3_bk00170"
-    save_sheet(k_src_dir_file_path, bk00170_ex1_str, bk00170_1df)
-    save_sheet(k_src_dir_file_path, bk00170_ex3_str, bk00170_3df)
+    save_sheet(b_src_dir_file_path, bk00170_ex1_str, bk00170_1df)
+    save_sheet(b_src_dir_file_path, bk00170_ex3_str, bk00170_3df)
 
     bk00101_columns = [
         kw.spark_num,
@@ -652,14 +652,14 @@ def test_brick_sheets_to_lynx_with_cursor_Scenario7_NoDuplicates_bk00170(
     row1 = [1, exx.sue, exx.a23, "Alice", 420, ";", 15, 2]
     row2 = [2, exx.sue, exx.a23, "Bob", 420, ";", 20, 1]
     bk00101_df = DataFrame([row0, row1, row2], columns=bk00101_columns)
-    save_sheet(k_src_dir_file_path, "example_bk00101", bk00101_df)
+    save_sheet(b_src_dir_file_path, "example_bk00101", bk00101_df)
 
-    k_src_dir = fay_wdir.bricks_src_dir
-    brick_sheets_to_lynx_with_cursor(cursor0, k_src_dir, fay_wdir.moment_mstr_dir)
+    b_src_dir = fay_wdir.bricks_src_dir
+    brick_sheets_to_lynx_with_cursor(cursor0, b_src_dir, fay_wdir.moment_mstr_dir)
     assert [] == get_all_tables_with_duplicates(cursor0)
 
     # WHEN
-    brick_sheets_to_lynx_with_cursor(cursor0, k_src_dir, fay_wdir.moment_mstr_dir)
+    brick_sheets_to_lynx_with_cursor(cursor0, b_src_dir, fay_wdir.moment_mstr_dir)
 
     # THEN
     all_tables_with_duplicates_after_2nd_run = get_all_tables_with_duplicates(cursor0)
@@ -677,7 +677,7 @@ def test_brick_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     sue_inx = "Suzy"
     e3 = 3
     ex_filename = "Faybob.xlsx"
-    k_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
+    b_src_dir_file_path = create_path(fay_wdir.bricks_src_dir, ex_filename)
     bk00171_columns = [
         kw.spark_face,
         kw.spark_num,
@@ -692,7 +692,7 @@ def test_brick_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     bk00171row0 = [exx.sue, e3, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
     bk00171_df = DataFrame([bk00171row0], columns=bk00171_columns)
     bk00171_ex0_str = f"example0_{bk00171_str}"
-    save_sheet(k_src_dir_file_path, bk00171_ex0_str, bk00171_df)
+    save_sheet(b_src_dir_file_path, bk00171_ex0_str, bk00171_df)
 
     bk00101_columns = [
         kw.spark_num,
@@ -710,7 +710,7 @@ def test_brick_sheets_to_lynx_mstr_Scenario0_CreatesDatabaseFile(
     bk1row0 = [e3, exx.sue, exx.a23, exx.sue, tp37, ";", sue_quota, sue_celldepth]
     bk00101_1df = DataFrame([bk1row0], columns=bk00101_columns)
     bk00101_ex0_str = "example0_bk00101"
-    save_sheet(k_src_dir_file_path, bk00101_ex0_str, bk00101_1df)
+    save_sheet(b_src_dir_file_path, bk00101_ex0_str, bk00101_1df)
     fay_db_path = fay_wdir.get_world_db_path()
     assert not os_path_exists(fay_db_path)
 

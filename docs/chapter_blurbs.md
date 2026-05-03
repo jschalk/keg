@@ -22,12 +22,12 @@ What does each one do?
 - **ch16_translate**: Defines TranslateUnit tools that translate MomentUnits into inside language.
 - **ch17_brick**: Defines how to build Bricks using Bricks. Moments and Persons are built by Bricks.
 - **ch18_etl_config**: Defines the tools that use Bricks to build MomentUnits.
-- **ch19_belief_src**: Defines the 'Belief Src' process. Data going to 'Bricks'.
-- **ch20_etl_brick**: Defines the 'Etl Bricks' process. From 'Source Beliefs' to 'Sound'.
+- **ch19_idea_src**: Defines the 'Idea Src' process. Data going to 'Bricks'.
+- **ch20_etl_brick**: Defines the 'Etl Bricks' process. From 'Source Ideas' to 'Sound'.
 - **ch21_sound**: Defines the 'Sound' process. From 'Bricks' to 'Heard'.
 - **ch22_heard**: Defines the 'Heard' process. From 'Sound' to 'Lynx'.
 - **ch23_lynx**: Defines the Lynx stage of data. Source of Job Persons, complete Moment data.
-- **ch24_belief_dst**: Defines how beliefs for outside audiences are created.
+- **ch24_idea_dst**: Defines how ideas for outside audiences are created.
 - **ch25_kpi**: Defines the analytics outcomes of completed MomentUnits.
 - **ch26_world**: Defines WorldDirs that admin MomentUnits input data and outcomes
 - **ch27_lobby**: Defines Lobby Tools for gifts, World Scenarios.

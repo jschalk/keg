@@ -4,9 +4,11 @@ from ch04_rope.rope import to_rope
 from ch07_person_logic.person_main import personunit_shop
 from ch09_person_lesson.delta import persondelta_shop
 from ch09_person_lesson.lesson_main import lessonunit_shop
-from ch17_brick.brick_belief_csv import (
-    add_momentunit_to_belief_csv_strs,
-    add_momentunits_to_belief_csv_strs,
+from ch17_brick.brick_dataframe import moment_build_from_df
+from ch17_brick.brick_db_tool import get_ordered_csv
+from ch17_brick.brick_idea_csv import (
+    add_momentunit_to_idea_csv_strs,
+    add_momentunits_to_idea_csv_strs,
     add_person_to_bk00120_csv,
     add_person_to_bk00121_csv,
     add_person_to_bk00122_csv,
@@ -17,11 +19,9 @@ from ch17_brick.brick_belief_csv import (
     add_person_to_bk00127_csv,
     add_person_to_bk00128_csv,
     add_person_to_bk00129_csv,
-    add_personunit_to_belief_csv_strs,
-    create_init_belief_brick_csv_strs,
+    add_personunit_to_idea_csv_strs,
+    create_init_idea_brick_csv_strs,
 )
-from ch17_brick.brick_dataframe import moment_build_from_df
-from ch17_brick.brick_db_tool import get_ordered_csv
 from ch17_brick.test._util.ch17_examples import (  # get_ex2_bk00106_df,
     J45_ROPE,
     get_ex2_bk00100_df,
@@ -35,17 +35,17 @@ from copy import deepcopy as copy_deepcopy
 from ref.keywords import ExampleStrs as exx
 
 
-def test_create_init_belief_brick_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
+def test_create_init_idea_brick_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
     temp3_fs,
 ):
     # ESTABLISH
     csv_delimiter = ","
 
     # WHEN
-    x_bricks = create_init_belief_brick_csv_strs()
+    x_bricks = create_init_idea_brick_csv_strs()
 
     # THEN
-    expected_belief_csv_strs = {
+    expected_idea_csv_strs = {
         "bk00100": "moment_rope,epoch_label,c400_number,yr1_jan1_offset,monthday_index,fund_grain,mana_grain,respect_grain,knot,job_listen_rotations\n",
         "bk00101": "moment_rope,person_name,bud_time,knot,quota,celldepth\n",
         "bk00102": "moment_rope,person_name,contact_name,tran_time,amount,knot\n",
@@ -68,27 +68,27 @@ def test_create_init_belief_brick_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
         "bk00144": "otx_label,inx_label,otx_knot,inx_knot,unknown_str\n",
         "bk00145": "otx_rope,inx_rope,otx_knot,inx_knot,unknown_str\n",
     }
-    expected_bk00100_csv = expected_belief_csv_strs.get("bk00100")
-    expected_bk00101_csv = expected_belief_csv_strs.get("bk00101")
-    expected_bk00102_csv = expected_belief_csv_strs.get("bk00102")
-    expected_bk00103_csv = expected_belief_csv_strs.get("bk00103")
-    expected_bk00104_csv = expected_belief_csv_strs.get("bk00104")
-    expected_bk00105_csv = expected_belief_csv_strs.get("bk00105")
-    # expected_bk00106_csv = expected_belief_csv_strs.get("bk00106")
-    expected_bk00120_csv = expected_belief_csv_strs.get("bk00120")
-    expected_bk00121_csv = expected_belief_csv_strs.get("bk00121")
-    expected_bk00122_csv = expected_belief_csv_strs.get("bk00122")
-    expected_bk00123_csv = expected_belief_csv_strs.get("bk00123")
-    expected_bk00124_csv = expected_belief_csv_strs.get("bk00124")
-    expected_bk00125_csv = expected_belief_csv_strs.get("bk00125")
-    expected_bk00126_csv = expected_belief_csv_strs.get("bk00126")
-    expected_bk00127_csv = expected_belief_csv_strs.get("bk00127")
-    expected_bk00128_csv = expected_belief_csv_strs.get("bk00128")
-    expected_bk00129_csv = expected_belief_csv_strs.get("bk00129")
-    expected_bk00142_csv = expected_belief_csv_strs.get("bk00142")
-    expected_bk00143_csv = expected_belief_csv_strs.get("bk00143")
-    expected_bk00144_csv = expected_belief_csv_strs.get("bk00144")
-    expected_bk00145_csv = expected_belief_csv_strs.get("bk00145")
+    expected_bk00100_csv = expected_idea_csv_strs.get("bk00100")
+    expected_bk00101_csv = expected_idea_csv_strs.get("bk00101")
+    expected_bk00102_csv = expected_idea_csv_strs.get("bk00102")
+    expected_bk00103_csv = expected_idea_csv_strs.get("bk00103")
+    expected_bk00104_csv = expected_idea_csv_strs.get("bk00104")
+    expected_bk00105_csv = expected_idea_csv_strs.get("bk00105")
+    # expected_bk00106_csv = expected_idea_csv_strs.get("bk00106")
+    expected_bk00120_csv = expected_idea_csv_strs.get("bk00120")
+    expected_bk00121_csv = expected_idea_csv_strs.get("bk00121")
+    expected_bk00122_csv = expected_idea_csv_strs.get("bk00122")
+    expected_bk00123_csv = expected_idea_csv_strs.get("bk00123")
+    expected_bk00124_csv = expected_idea_csv_strs.get("bk00124")
+    expected_bk00125_csv = expected_idea_csv_strs.get("bk00125")
+    expected_bk00126_csv = expected_idea_csv_strs.get("bk00126")
+    expected_bk00127_csv = expected_idea_csv_strs.get("bk00127")
+    expected_bk00128_csv = expected_idea_csv_strs.get("bk00128")
+    expected_bk00129_csv = expected_idea_csv_strs.get("bk00129")
+    expected_bk00142_csv = expected_idea_csv_strs.get("bk00142")
+    expected_bk00143_csv = expected_idea_csv_strs.get("bk00143")
+    expected_bk00144_csv = expected_idea_csv_strs.get("bk00144")
+    expected_bk00145_csv = expected_idea_csv_strs.get("bk00145")
     print(f"{expected_bk00101_csv=}")
 
     face_spark_str = "spark_num,spark_face,"
@@ -118,7 +118,7 @@ def test_create_init_belief_brick_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
     assert len(x_bricks) == 20
 
 
-def test_add_momentunit_to_belief_csv_strs_ReturnsObj_Scenario0_OneMomentUnit(
+def test_add_momentunit_to_idea_csv_strs_ReturnsObj_Scenario0_OneMomentUnit(
     temp3_fs,
 ):
     # ESTABLISH
@@ -147,7 +147,7 @@ def test_add_momentunit_to_belief_csv_strs_ReturnsObj_Scenario0_OneMomentUnit(
         x_moments_dir,
     )
     csv_delimiter = ","
-    x_csvs = create_init_belief_brick_csv_strs()
+    x_csvs = create_init_idea_brick_csv_strs()
     bk00_csv_header = x_csvs.get("bk00100")
     bk01_csv_header = x_csvs.get("bk00101")
     bk02_csv_header = x_csvs.get("bk00102")
@@ -158,7 +158,7 @@ def test_add_momentunit_to_belief_csv_strs_ReturnsObj_Scenario0_OneMomentUnit(
     a23_momentunit = x_momentunits.get(exx.a23_slash)
 
     # WHEN
-    add_momentunit_to_belief_csv_strs(a23_momentunit, x_csvs, csv_delimiter)
+    add_momentunit_to_idea_csv_strs(a23_momentunit, x_csvs, csv_delimiter)
 
     # THEN
     gen_bk00100_csv = x_csvs.get("bk00100")
@@ -190,7 +190,7 @@ def test_add_momentunit_to_belief_csv_strs_ReturnsObj_Scenario0_OneMomentUnit(
     # assert gen_bk00106_csv == f"{bk06_csv_header}{expected_bk00106_csv}"
 
 
-def test_add_momentunits_to_belief_csv_strs_ReturnsObj_Scenario1_TwoMomentUnits(
+def test_add_momentunits_to_idea_csv_strs_ReturnsObj_Scenario1_TwoMomentUnits(
     temp3_fs,
 ):
     # ESTABLISH
@@ -217,10 +217,10 @@ def test_add_momentunits_to_belief_csv_strs_ReturnsObj_Scenario1_TwoMomentUnits(
         x_moments_dir,
     )
     csv_delimiter = ","
-    x_bricks = create_init_belief_brick_csv_strs()
+    x_bricks = create_init_idea_brick_csv_strs()
 
     # WHEN
-    add_momentunits_to_belief_csv_strs(x_momentunits, x_bricks, csv_delimiter)
+    add_momentunits_to_idea_csv_strs(x_momentunits, x_bricks, csv_delimiter)
 
     # THEN
     expected_bk00100_csv = get_ordered_csv(get_ex2_bk00100_df())
@@ -269,7 +269,7 @@ def test_add_momentunits_to_belief_csv_strs_ReturnsObj_Scenario1_TwoMomentUnits(
 def test_add_person_to_bk00120_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_bricks = create_init_belief_brick_csv_strs()
+    x_bricks = create_init_idea_brick_csv_strs()
     bob_person = personunit_shop(exx.bob, exx.a23)
     bob_person.add_contactunit(exx.yao)
     run_credit = 33
@@ -293,7 +293,7 @@ def test_add_person_to_bk00120_csv_ReturnsObj():
 def test_add_person_to_bk00121_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_bricks = create_init_belief_brick_csv_strs()
+    x_bricks = create_init_idea_brick_csv_strs()
     yao_credit = 33
     yao_debt = 55
     bob_person = personunit_shop(exx.bob, exx.a23)
@@ -311,7 +311,7 @@ def test_add_person_to_bk00121_csv_ReturnsObj():
 def test_add_person_to_bk00122_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_bricks = create_init_belief_brick_csv_strs()
+    x_bricks = create_init_idea_brick_csv_strs()
     bob_person = personunit_shop(exx.bob, exx.a23)
     casa_rope = bob_person.make_l1_rope("casa")
     yao_give_force = 55
@@ -336,7 +336,7 @@ def test_add_person_to_bk00122_csv_ReturnsObj():
 def test_add_person_to_bk00123_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_bricks = create_init_belief_brick_csv_strs()
+    x_bricks = create_init_idea_brick_csv_strs()
     a23_rope = to_rope(exx.a23)
     bob_person = personunit_shop(exx.bob, exx.a23)
     casa_rope = bob_person.make_l1_rope("casa")
@@ -360,7 +360,7 @@ def test_add_person_to_bk00123_csv_ReturnsObj():
 def test_add_person_to_bk00124_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_bricks = create_init_belief_brick_csv_strs()
+    x_bricks = create_init_idea_brick_csv_strs()
     bob_person = personunit_shop(exx.bob, exx.a23)
     casa_rope = bob_person.make_l1_rope("casa")
     bob_person.add_plan(casa_rope)
@@ -382,7 +382,7 @@ def test_add_person_to_bk00124_csv_ReturnsObj():
 def test_add_person_to_bk00125_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_bricks = create_init_belief_brick_csv_strs()
+    x_bricks = create_init_idea_brick_csv_strs()
     bob_person = personunit_shop(exx.bob, exx.a23)
     casa_rope = bob_person.make_l1_rope("casa")
     bob_person.add_plan(casa_rope)
@@ -404,7 +404,7 @@ def test_add_person_to_bk00125_csv_ReturnsObj():
 def test_add_person_to_bk00126_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_bricks = create_init_belief_brick_csv_strs()
+    x_bricks = create_init_idea_brick_csv_strs()
     bob_person = personunit_shop(exx.bob, exx.a23)
     mop_rope = bob_person.make_l1_rope("mop")
     casa_rope = bob_person.make_l1_rope("casa")
@@ -438,7 +438,7 @@ def test_add_person_to_bk00126_csv_ReturnsObj():
 def test_add_person_to_bk00127_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_bricks = create_init_belief_brick_csv_strs()
+    x_bricks = create_init_idea_brick_csv_strs()
     bob_person = personunit_shop(exx.bob, exx.a23)
     mop_rope = bob_person.make_l1_rope("mop")
     casa_rope = bob_person.make_l1_rope("casa")
@@ -464,7 +464,7 @@ def test_add_person_to_bk00127_csv_ReturnsObj():
 def test_add_person_to_bk00128_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_bricks = create_init_belief_brick_csv_strs()
+    x_bricks = create_init_idea_brick_csv_strs()
     a23_rope = to_rope(exx.a23)
     bob_person = personunit_shop(exx.bob, exx.a23)
     mop_rope = bob_person.make_l1_rope("mop")
@@ -517,7 +517,7 @@ def test_add_person_to_bk00128_csv_ReturnsObj():
 def test_add_person_to_bk00129_csv_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_bricks = create_init_belief_brick_csv_strs()
+    x_bricks = create_init_idea_brick_csv_strs()
     bob_person = personunit_shop(exx.bob, exx.a23)
     bob_person.credor_respect = 444
     bob_person.debtor_respect = 555
@@ -537,10 +537,10 @@ def test_add_person_to_bk00129_csv_ReturnsObj():
     assert x_csv == f"{csv_header}{person_row}"
 
 
-def test_add_personunit_to_belief_csv_strs_ReturnsObj():
+def test_add_personunit_to_idea_csv_strs_ReturnsObj():
     # ESTABLISH
     csv_delimiter = ","
-    x_bricks = create_init_belief_brick_csv_strs()
+    x_bricks = create_init_idea_brick_csv_strs()
     bob_person = personunit_shop(exx.bob, exx.a23)
     bob_person.add_contactunit(exx.yao)
     mop_rope = bob_person.make_l1_rope("mop")
@@ -569,7 +569,7 @@ def test_add_personunit_to_belief_csv_strs_ReturnsObj():
 
     # WHEN
     bob_person.thinkout()
-    add_personunit_to_belief_csv_strs(bob_person, x_bricks, csv_delimiter)
+    add_personunit_to_idea_csv_strs(bob_person, x_bricks, csv_delimiter)
 
     # THEN
     assert x_bricks.get("bk00120") != bk00120_header

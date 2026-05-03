@@ -2,8 +2,8 @@ from ch00_py.file_toolbox import create_path
 from ch04_rope.rope import create_rope
 from ch09_person_lesson.lasso import lassounit_shop
 from ch18_etl_config._ref.ch18_path import (
-    create_beliefs_dir_path,
-    create_beliefs_person_dir_path,
+    create_ideas_dir_path,
+    create_ideas_person_dir_path,
     create_last_run_metrics_path,
     create_moment_mstr_path,
     create_moment_ote1_csv_path,
@@ -61,29 +61,29 @@ def test_create_last_run_metrics_path_ReturnsObj(temp3_dir):
     assert gen_last_run_metrics_path == expected_path
 
 
-def test_create_beliefs_dir_path_ReturnsObj(temp3_dir):
+def test_create_ideas_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
     x_moment_mstr_dir = temp3_dir
 
     # WHEN
-    gen_bob_belief_dir = create_beliefs_dir_path(x_moment_mstr_dir)
+    gen_bob_idea_dir = create_ideas_dir_path(x_moment_mstr_dir)
 
     # THEN
-    expected_beliefs_dir = create_path(x_moment_mstr_dir, "beliefs")
-    assert gen_bob_belief_dir == expected_beliefs_dir
+    expected_ideas_dir = create_path(x_moment_mstr_dir, "ideas")
+    assert gen_bob_idea_dir == expected_ideas_dir
 
 
-def test_create_beliefs_person_dir_path_ReturnsObj(temp3_dir):
+def test_create_ideas_person_dir_path_ReturnsObj(temp3_dir):
     # ESTABLISH
     x_moment_mstr_dir = temp3_dir
 
     # WHEN
-    gen_bob_belief_dir = create_beliefs_person_dir_path(x_moment_mstr_dir, exx.bob)
+    gen_bob_idea_dir = create_ideas_person_dir_path(x_moment_mstr_dir, exx.bob)
 
     # THEN
-    beliefs_dir = create_beliefs_dir_path(x_moment_mstr_dir)
-    expected_bob_belief_dir = create_path(beliefs_dir, exx.bob)
-    assert gen_bob_belief_dir == expected_bob_belief_dir
+    ideas_dir = create_ideas_dir_path(x_moment_mstr_dir)
+    expected_bob_idea_dir = create_path(ideas_dir, exx.bob)
+    assert gen_bob_idea_dir == expected_bob_idea_dir
 
 
 @pytest_mark.skip_on_linux
@@ -96,23 +96,23 @@ def test_create_last_run_metrics_path_HasDocString():
 
 
 @pytest_mark.skip_on_linux
-def test_create_beliefs_dir_path_HasDocString():
+def test_create_ideas_dir_path_HasDocString():
     # ESTABLISH
-    doc_str = create_beliefs_dir_path(moment_mstr_dir="moment_mstr_dir")
+    doc_str = create_ideas_dir_path(moment_mstr_dir="moment_mstr_dir")
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    assert inspect_getdoc(create_beliefs_dir_path) == doc_str
+    assert inspect_getdoc(create_ideas_dir_path) == doc_str
 
 
 @pytest_mark.skip_on_linux
-def test_create_beliefs_person_dir_path_HasDocString():
+def test_create_ideas_person_dir_path_HasDocString():
     # ESTABLISH
-    doc_str = create_beliefs_person_dir_path(
+    doc_str = create_ideas_person_dir_path(
         moment_mstr_dir="moment_mstr_dir", person_name=kw.person_name
     )
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    assert inspect_getdoc(create_beliefs_person_dir_path) == doc_str
+    assert inspect_getdoc(create_ideas_person_dir_path) == doc_str
 
 
 def test_create_moment_ote1_csv_path_ReturnsObj(temp3_dir):

@@ -41,7 +41,7 @@ When keg processes example 0.1.0 it creates a Moment labeled "OxboxDean" that co
 |  OxboxDean   |      Dean     |        7000        |         1        |       0      |
 
 
-Output belief: emmanuel_belief.xlsx, sheet "br00000"
+Output idea: emmanuel_idea.xlsx, sheet "br00000"
 | spark_num | spark_face | moment_rope | person_name | contact_name | tran_time | amount |
 |-----------|-----------|--------------|---------------|-----------|-----------|--------|
 |    77     | Emmanuel  |   OxboxDean  |    Emmanuel   |    Dean   |    891    |  7000  |

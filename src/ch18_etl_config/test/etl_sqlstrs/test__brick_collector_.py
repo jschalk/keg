@@ -218,8 +218,8 @@ def test_get_etl_db_sheets_tier2_order_ReturnsObj():
     # WHEN / THEN
     assert tier2_postfixs
     assert tier2_postfixs == [
+        "i_src",
         "b_src",
-        "k_src",
         "brixk_raw",
         "brixk_agg",
         "brixk_vld",
@@ -230,7 +230,7 @@ def test_get_etl_db_sheets_tier2_order_ReturnsObj():
         "h_agg",
         "h_vld",
         "lynx",
-        "b_dst",
+        "i_dst",
     ]
 
 
