@@ -38,7 +38,7 @@ from ch23_mind.mind import (
     etl_spark_person_csvs_to_lesson_json,
     get_max_brixk_agg_spark_num,
 )
-from ch24_idea_dst.vow_db2df import create_mind0001_file, prettify_excel_file
+from ch24_idea_dst.mind_db2df import create_mind0001_file, prettify_excel_file
 from ch25_kpi.gcalendar import (
     copy_person_day_punches_to_dst_dir,
     get_day_punchs_persons,

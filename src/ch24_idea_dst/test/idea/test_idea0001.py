@@ -15,7 +15,7 @@ from ch18_etl_config.etl_sqlstr import (
     create_sound_and_heard_tables,
 )
 from ch24_idea_dst._ref.ch24_path import create_mind0001_path
-from ch24_idea_dst.vow_db2df import (
+from ch24_idea_dst.mind_db2df import (
     collect_full_world_idea_csv_strs,
     create_mind0001_file,
 )
