@@ -1,3 +1,4 @@
+from ch00_py.db_toolbox import db_table_exists
 from ch00_py.file_toolbox import (
     create_path,
     get_dir_filenames,
@@ -24,17 +25,20 @@ from ch13_time.epoch_main import (
 )
 from ch13_time.epoch_reason import set_epoch_fact
 from ch14_moment.moment_main import open_moment_file
+from ch18_etl_config._ref.ch18_path import create_world_db_path
 from ch25_kpi._ref.ch25_path import (
     create_day_punch_txt_path,
     create_dst_person_punch_path,
 )
 from ch25_kpi._ref.ch25_semantic_types import (
+    FundNum,
     GroupTitle,
     KnotTerm,
     LabelTerm,
     MomentRope,
     PersonName,
     RopeTerm,
+    TimeNum,
 )
 from copy import copy as copy_copy, deepcopy as copy_deepcopy
 from csv import DictWriter as csv_DictWriter
@@ -42,6 +46,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta
 from io import StringIO as io_StringIO
 from os.path import exists as os_path_exists
+from sqlite3 import connect as sqlite3_connect
 
 
 def gcal_readable_percent(value: float, precision=2):
@@ -59,6 +64,41 @@ def gcal_readable_percent(value: float, precision=2):
 
     formatted = f"{percent:.{precision}f}".rstrip("0").rstrip(".")
     return f"{formatted}%"
+
+
+@dataclass
+class PersonTranBookMetric:
+    moment_rope: MomentRope = None
+    person_name: PersonName = None
+    offi_time: TimeNum = None
+    last_tran_time: TimeNum = None
+    net: FundNum = None
+    circulation_total: FundNum = None
+
+    def get_circulation_str(self) -> str:
+        if self.circulation_total is None and self.offi_time is None:
+            return f"{self.net} funds"
+        elif self.offi_time is None:
+            return f"{self.net} funds out of {self.circulation_total}"
+        return f"{self.net} funds out of {self.circulation_total} at {self.offi_time}"
+
+
+def persontranbookmetric_shop(
+    moment_rope: MomentRope,
+    person_name: PersonName,
+    offi_time: TimeNum = None,
+    last_tran_time: TimeNum = None,
+    net: TimeNum = None,
+    circulation_total: TimeNum = None,
+) -> PersonTranBookMetric:
+    return PersonTranBookMetric(
+        moment_rope=moment_rope,
+        person_name=person_name,
+        offi_time=offi_time,
+        last_tran_time=last_tran_time,
+        net=net,
+        circulation_total=circulation_total,
+    )
 
 
 @dataclass
@@ -270,6 +310,7 @@ def get_gcal_day_punch_from_personunit(
     day: datetime,
     epoch_label: LabelTerm = None,
     group_title: GroupTitle = None,
+    persontranbookmetric: PersonTranBookMetric = None,
 ) -> str:
     """parameter x_person is assumed to have already thinkouted."""
     moment_rope = x_person.planroot.get_plan_rope()
@@ -278,6 +319,9 @@ def get_gcal_day_punch_from_personunit(
     epoch_min = get_epoch_min_from_dt(x_person, epoch_label, day)
     timeshoe = timeshoe_shop(x_person, epoch_label, epoch_min)
     x_str = f"{timeshoe.get_long_date_blurb()} Agenda for {x_person.person_name} in the '{moment_rope}' Moment\n"
+    if persontranbookmetric:
+        x_str += f"\n{persontranbookmetric.get_circulation_str()}"
+
     x_dayevents = get_dayevents(x_person, epoch_label, day)
     x_str += f"\n{get_gcal_priorities_schedule_str(x_dayevents)}"
     x_str += f"\n{get_gcal_all_agenda_str(x_person, epoch_label, day)}"
@@ -356,6 +400,7 @@ def get_gcal_day_punch_from_job_file(
     person_name: PersonName,
     day: datetime,
     focus_group_title: GroupTitle = None,
+    persontranbookmetric: PersonTranBookMetric = None,
 ) -> str:
     momentunit = open_moment_file(moment_mstr_dir, moment_lasso)
     epoch_label = momentunit.epoch.epoch_label
@@ -363,7 +408,13 @@ def get_gcal_day_punch_from_job_file(
     epoch_rope = get_epoch_rope(momentunit.moment_rope, epoch_label, momentunit.knot)
     if not job.plan_exists(epoch_rope):
         add_epoch_planunit(job, momentunit.get_epoch_config())
-    return get_gcal_day_punch_from_personunit(job, day, epoch_label, focus_group_title)
+    return get_gcal_day_punch_from_personunit(
+        x_person=job,
+        day=day,
+        epoch_label=epoch_label,
+        group_title=focus_group_title,
+        persontranbookmetric=persontranbookmetric,
+    )
 
 
 def add_gcal_day_punch_to_dict(
@@ -373,11 +424,17 @@ def add_gcal_day_punch_to_dict(
     person_name: PersonName,
     day: datetime,
     focus_group_title: GroupTitle,
+    persontranbookmetric: PersonTranBookMetric = None,
 ):
     mmt_job_path = create_job_path(moment_mstr_dir, moment_lasso, person_name)
     if os_path_exists(mmt_job_path):
         day_punch_str = get_gcal_day_punch_from_job_file(
-            moment_mstr_dir, moment_lasso, person_name, day, focus_group_title
+            moment_mstr_dir,
+            moment_lasso,
+            person_name,
+            day,
+            focus_group_title,
+            persontranbookmetric,
         )
         report_path = create_day_punch_txt_path(
             moment_mstr_dir, moment_lasso, person_name
@@ -388,12 +445,41 @@ def add_gcal_day_punch_to_dict(
         }
 
 
+def get_persontranbookmetrics(
+    moment_mstr_dir,
+) -> dict[tuple[MomentRope, PersonName], PersonTranBookMetric]:
+    # sourcery skip: extract-method
+    world_db_path = create_world_db_path(moment_mstr_dir)
+    persontranbookmetrics = {}
+    if os_path_exists(world_db_path):
+        with sqlite3_connect(world_db_path) as conn:
+            if db_table_exists(conn, "moment_tranbook_nets"):
+                select_sql = "SELECT moment_rope, person_name, person_net_amount FROM moment_tranbook_nets;"
+                cursor = conn.cursor()
+                cursor.execute(select_sql)
+                rows = cursor.fetchall()
+                moment_circulation_total = sum(row[2] for row in rows)
+                for row in rows:
+                    row_moment_rope = row[0]
+                    row_person_name = row[1]
+                    persontranbookmetric = persontranbookmetric_shop(
+                        moment_rope=row_moment_rope,
+                        person_name=row_person_name,
+                        net=row[2],
+                        circulation_total=moment_circulation_total,
+                    )
+                    moment_person_tuple = (row_moment_rope, row_person_name)
+                    persontranbookmetrics[moment_person_tuple] = persontranbookmetric
+    return persontranbookmetrics
+
+
 def get_person_gcal_day_punchs(
     moment_mstr_dir: str,
     person_name: PersonName,
     day: datetime,
     focus_group_title: GroupTitle = None,
 ) -> dict[PersonName, dict[str, str]]:
+    persontranbookmetrics = get_persontranbookmetrics(moment_mstr_dir)
     day_punchs = {}
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):
@@ -402,6 +488,8 @@ def get_person_gcal_day_punchs(
         persons_path = create_path(moment_path, "persons")
         for dir_person in get_level1_dirs(persons_path):
             if dir_person == person_name:
+                moment_person_tuple = (moment_lasso.moment_rope, person_name)
+                persontranbookmetric = persontranbookmetrics.get(moment_person_tuple)
                 add_gcal_day_punch_to_dict(
                     day_punchs,
                     moment_mstr_dir,
@@ -409,6 +497,7 @@ def get_person_gcal_day_punchs(
                     person_name,
                     day,
                     focus_group_title,
+                    persontranbookmetric,
                 )
     return day_punchs
 

@@ -1,10 +1,5 @@
 from ch07_person_logic.person_main import personunit_shop
-from ch13_time.epoch_main import (
-    add_epoch_planunit,
-    get_default_epoch_config_dict,
-    get_epoch_min_from_dt,
-    timeshoe_shop,
-)
+from ch13_time.epoch_main import add_epoch_planunit, get_default_epoch_config_dict
 from ch13_time.epoch_reason import set_epoch_base_case_dayly
 from ch13_time.test._util.ch13_examples import Ch13ExampleStrs as wx
 from ch25_kpi.gcalendar import (
@@ -15,6 +10,26 @@ from ch25_kpi.gcalendar import (
 )
 from datetime import datetime
 from ref.keywords import Ch25Keywords as kw
+
+
+def test_gcal_readable_percent_ReturnsObj():
+    # ESTABLISH / WHEN / THEN
+    assert gcal_readable_percent(1.0) == "100%"
+    """Ensure trailing zeros and decimal points are removed properly."""
+    assert gcal_readable_percent(0.5) == "50%"
+    assert gcal_readable_percent(0.505) == "50.5%"
+    assert gcal_readable_percent(0.5001) == "50.01%"
+    """Ensure extremely small numbers use scientific notation."""
+    result = gcal_readable_percent(1e-10)
+    assert "e" in result
+    assert result.endswith("%")
+    """Ensure custom precision works correctly."""
+    assert gcal_readable_percent(0.123456, precision=1) == "12.3%"
+    assert gcal_readable_percent(0.123456, precision=4) == "12.3456%"
+    assert gcal_readable_percent(0.00123456, precision=4) == "0.1235%"
+    assert gcal_readable_percent(0.0000123456, precision=4) == "1.23e-03%"
+    assert gcal_readable_percent(0.000123456) == "0.01%"
+    assert gcal_readable_percent(None) == "0% (None)"
 
 
 def test_DayEvents_Exists():
@@ -80,26 +95,6 @@ def test_get_dayevents_ReturnsObj_Scenario1_OneElementList():
     assert mop_dayevent.day_min_upper == 690
     assert mop_dayevent.clock_lower == "10:00am"
     assert mop_dayevent.clock_upper == "11:30am"
-
-
-def test_gcal_readable_percent_ReturnsObj():
-    # ESTABLISH / WHEN / THEN
-    assert gcal_readable_percent(1.0) == "100%"
-    """Ensure trailing zeros and decimal points are removed properly."""
-    assert gcal_readable_percent(0.5) == "50%"
-    assert gcal_readable_percent(0.505) == "50.5%"
-    assert gcal_readable_percent(0.5001) == "50.01%"
-    """Ensure extremely small numbers use scientific notation."""
-    result = gcal_readable_percent(1e-10)
-    assert "e" in result
-    assert result.endswith("%")
-    """Ensure custom precision works correctly."""
-    assert gcal_readable_percent(0.123456, precision=1) == "12.3%"
-    assert gcal_readable_percent(0.123456, precision=4) == "12.3456%"
-    assert gcal_readable_percent(0.00123456, precision=4) == "0.1235%"
-    assert gcal_readable_percent(0.0000123456, precision=4) == "1.23e-03%"
-    assert gcal_readable_percent(0.000123456) == "0.01%"
-    assert gcal_readable_percent(None) == "0% (None)"
 
 
 def test_get_gcal_all_agenda_str_ReturnsObj_Scenario1_1AllDayPledge():
