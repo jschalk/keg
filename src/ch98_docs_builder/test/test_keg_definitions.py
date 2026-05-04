@@ -70,6 +70,7 @@ def python_keywords() -> set:
 def test_SpecialUpdate_keg_definitions_file():
     """special test that checks attributes of keg_definitions.
     If any are incorrect. Rewrites them and asserts false"""
+    # sourcery skip: no-conditionals-in-tests
     # ESTABLISH
     keg_definitions = get_keg_definitions()
 
@@ -80,7 +81,7 @@ def test_SpecialUpdate_keg_definitions_file():
         ch_blurb = get_chxx_ref_blurb(ch_dict, chxx_prefix)
         ch_desc = keg_definitions.get(chxx_prefix)
         print(f"{chxx_prefix=} {ch_blurb=}")
-        if not ch_blurb == ch_desc:
+        if ch_blurb != ch_desc:
             chapter_changes_needed.append((chxx_prefix, ch_blurb))
     for chxx_prefix, ch_blurb in chapter_changes_needed:
         print(f"update {chxx_prefix} to {ch_blurb}")
@@ -89,7 +90,7 @@ def test_SpecialUpdate_keg_definitions_file():
     # Special action, test mutates keg_descriptions.json
     save_keg_descriptions_json("src", keg_definitions)
     # WHEN / THEN
-    assert chapter_changes_needed == []
+    assert not chapter_changes_needed
 
 
 def test_get_keg_definitions_ReturnsObj_Check_python_keywords():
