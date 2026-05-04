@@ -33,5 +33,5 @@ What does each one do?
 - **ch27_pitch**: Defines Pitch Tools for gifts, World Scenarios.
 - **ch28_finance**: Defines Finance Tools for 
 - **ch29_person_viewer**: Tools for Visualizing PersonUnits
-- **ch30_etl_app**: ETL app to create day punches from excel files.
+- **ch30_world_app**: ETL app to create day punches from excel files.
 - **ch98_docs_builder**: Defines Tools that create documentation.
