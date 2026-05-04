@@ -30,7 +30,7 @@ What does each one do?
 - **ch24_idea_dst**: Defines how ideas for outside audiences are created.
 - **ch25_kpi**: Defines the analytics outcomes of completed MomentUnits.
 - **ch26_world**: Defines WorldDirs that admin MomentUnits input data and outcomes
-- **ch27_lobby**: Defines Lobby Tools for gifts, World Scenarios.
+- **ch27_pitch**: Defines Pitch Tools for gifts, World Scenarios.
 - **ch28_finance**: Defines Finance Tools for 
 - **ch29_person_viewer**: Tools for Visualizing PersonUnits
 - **ch30_etl_app**: ETL app to create day punches from excel files.

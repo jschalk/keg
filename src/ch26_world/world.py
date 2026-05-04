@@ -25,7 +25,7 @@ from ch22_heard.heard import (
     etl_heard_vld_to_spark_person_csvs,
     etl_moment_ote1_agg_table_to_moment_ote1_agg_csvs,
 )
-from ch23_mind.mind import (
+from ch23_mind.mind_core import (
     add_mind_epoch_to_mind_guts,
     calc_moment_bud_contact_mandate_net_ledgers,
     create_last_run_metrics_json,
@@ -38,9 +38,10 @@ from ch23_mind.mind import (
     etl_spark_person_csvs_to_lesson_json,
     get_max_brixk_agg_spark_num,
 )
-from ch24_idea_dst.vow_db2df import create_idea0001_file, prettify_excel_file
+from ch24_idea_dst.mind_db2df import create_mind0001_file, prettify_excel_file
 from ch25_kpi.gcalendar import (
     copy_person_day_punches_to_dst_dir,
+    get_day_punchs_persons,
     mind_to_person_gcal_day_punchs,
 )
 from ch25_kpi.kpi_mstr import create_calendar_markdown_files, populate_kpi_bundle
@@ -58,7 +59,7 @@ def create_ideas(
     moment_mstr_dir: str,
     prettify_excel_bool=True,
 ):
-    create_idea0001_file(world_dir, output_dir, world_name, prettify_excel_bool)
+    create_mind0001_file(world_dir, output_dir, world_name, prettify_excel_bool)
     create_calendar_markdown_files(moment_mstr_dir, output_dir)
 
 
@@ -199,7 +200,7 @@ def idea_sheets_to_gcal_day_punchs(
     idea_sheets_to_mind_mstr(worlddir, export_db=True)
     for person_name in sorted(person_names):
         mind_to_person_gcal_day_punchs(
-            moment_mstr_dir=worlddir.moment_mstr_dir,
+            world_dir=worlddir.world_dir,
             person_name=person_name,
             day=day,
             focus_group_title=focus_group_title,
@@ -228,8 +229,9 @@ def create_today_punchs(
         day=datetime.now(),
         focus_group_title=focus_group_title,
     )
+    all_persons = get_day_punchs_persons(worlddir.moment_mstr_dir)
     dst_persons_punch_paths = {}
-    for person_name in person_names:
+    for person_name in all_persons:
         dst_person_punch_paths = copy_person_day_punches_to_dst_dir(
             worlddir.moment_mstr_dir, worlddir.output_dir, person_name
         )

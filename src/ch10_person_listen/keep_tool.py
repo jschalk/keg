@@ -40,6 +40,7 @@ def job_file_exists(
 def save_job_file(moment_mstr_dir: str, personunit: PersonUnit):
     moment_lasso = lassounit_shop(personunit.planroot.get_plan_rope(), personunit.knot)
     job_path = create_job_path(moment_mstr_dir, moment_lasso, personunit.person_name)
+    print(f"save {job_path=}")
     save_person_file(job_path, None, personunit)
 
 

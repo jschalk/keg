@@ -3,7 +3,7 @@ from ch00_py.file_toolbox import create_path
 from ch04_rope.rope import create_rope
 from ch17_brick.brick_db_tool import create_brick_sorted_table, save_sheet
 from ch18_etl_config.etl_sqlstr import create_prime_tablename
-from ch23_mind.mind import get_max_brixk_agg_spark_num
+from ch23_mind.mind_core import get_max_brixk_agg_spark_num
 from ch26_world.world import WorldDir, idea_sheets_to_mind_mstr, worlddir_shop
 from os.path import exists as os_path_exists
 from pandas import DataFrame

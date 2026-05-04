@@ -8,7 +8,11 @@ from ch09_person_lesson._ref.ch09_path import create_moments_dir_path
 from ch09_person_lesson.lasso import lassounit_shop
 from ch11_bud.bud_filehandler import open_person_file
 from ch14_moment.moment_main import open_moment_file
-from ch17_brick.brick_db_tool import csv_dict_to_excel, prettify_excel_file
+from ch17_brick.brick_db_tool import (
+    csv_dict_to_excel,
+    prettify_excel_file,
+    remove_empty_sheets,
+)
 from ch17_brick.brick_idea_csv import (
     add_momentunit_to_idea_csv_strs,
     add_personunit_to_idea_csv_strs,
@@ -19,7 +23,8 @@ from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
 )
-from ch24_idea_dst._ref.ch24_path import create_idea0001_path
+from ch24_idea_dst._ref.ch24_path import create_mind0001_path, create_mind0002_path
+from ch24_idea_dst._ref.ch24_semantic_types import PersonName
 from os.path import exists as os_path_exists
 from sqlite3 import Cursor as sqlite3_Cursor, connect as sqlite3_connect
 
@@ -194,13 +199,13 @@ def collect_full_world_idea_csv_strs(world_dir: str) -> dict[str, str]:
     return x_csv_strs
 
 
-def create_idea0001_file(
+def create_mind0001_file(
     world_dir: str,
     output_dir: str,
     world_name: str,
     prettify_excel_bool: bool = True,
 ):
-    """Returns idea file of every moment and gut in world_dir"""
+    """Returns idea file of every moment, gut, translation table in world_dir"""
     idea_csv_strs = collect_full_world_idea_csv_strs(world_dir)
     with_spark_face_csvs = {}
     for csv_key, csv_str in idea_csv_strs.items():
@@ -208,9 +213,58 @@ def create_idea0001_file(
         csv_str = delete_column_from_csv_string(csv_str, "spark_num")
         with_spark_face_csvs[csv_key] = csv_str
 
-    csv_dict_to_excel(with_spark_face_csvs, output_dir, "idea0001.xlsx")
+    csv_dict_to_excel(with_spark_face_csvs, output_dir, "mind0001.xlsx")
 
     # Hard to test function to prettify the excel file
     if prettify_excel_bool:
-        idea0001_path = create_idea0001_path(output_dir)
-        prettify_excel_file(idea0001_path)
+        mind0001_path = create_mind0001_path(output_dir)
+        prettify_excel_file(mind0001_path)
+
+
+def collect_mind0002_idea_csv_strs(
+    world_dir: str, person_name: PersonName
+) -> dict[str, str]:
+    """Returns idea file of a person's moment, job data in world_dir"""
+    moment_mstr_dir = create_moment_mstr_path(world_dir)
+    x_csv_strs = create_init_idea_brick_csv_strs()
+    moments_dir = create_moments_dir_path(moment_mstr_dir)
+    print(f"{moments_dir=}")
+    for moment_label in get_level1_dirs(moments_dir):
+        x_knot = default_knot_if_None()
+        moment_rope = create_rope(moment_label, None, x_knot)
+        moment_lasso = lassounit_shop(moment_rope, x_knot)
+        moment_dir = create_path(moments_dir, moment_lasso.make_path())
+        persons_dir = create_path(moment_dir, "persons")
+        person_dir = create_path(persons_dir, person_name)
+        job_dir = create_path(person_dir, "job")
+        job_person_path = create_path(job_dir, f"{person_name}.json")
+        print(f"{job_person_path=}")
+        if os_path_exists(job_person_path):
+            x_momentunit = open_moment_file(moment_mstr_dir, moment_lasso)
+            add_momentunit_to_idea_csv_strs(x_momentunit, x_csv_strs, ",")
+            job_person = open_person_file(job_person_path)
+            add_personunit_to_idea_csv_strs(job_person, x_csv_strs, ",")
+    return x_csv_strs
+
+
+def create_mind0002_file(
+    world_dir: str,
+    output_dir: str,
+    person_name: str,
+    prettify_excel_bool: bool = True,
+):
+    """Returns idea file of a person's moment, job data in world_dir"""
+    idea_csv_strs = collect_mind0002_idea_csv_strs(world_dir, person_name)
+    with_spark_face_csvs = {}
+    for csv_key, csv_str in idea_csv_strs.items():
+        csv_str = delete_column_from_csv_string(csv_str, "spark_num")
+        csv_str = delete_column_from_csv_string(csv_str, "spark_face")
+        with_spark_face_csvs[csv_key] = csv_str
+
+    person_dir = create_path(output_dir, person_name)
+    csv_dict_to_excel(with_spark_face_csvs, person_dir, f"{person_name}_ideas.xlsx")
+    # Hard to test function to prettify the excel file
+    if prettify_excel_bool:
+        mind0002_path = create_mind0002_path(output_dir, person_name)
+        remove_empty_sheets(mind0002_path)
+        prettify_excel_file(mind0002_path)

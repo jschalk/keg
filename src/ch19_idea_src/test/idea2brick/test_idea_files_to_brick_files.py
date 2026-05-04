@@ -1,5 +1,6 @@
 from ch00_py.file_toolbox import count_dirs_files, create_path
 from ch19_idea_src.idea2brick import (
+    IdeaBook,
     add_spark_num_column,
     create_spark_face_spark_nums,
     get_excel_sheet_tuples,
@@ -21,6 +22,14 @@ from pandas import (
 from pathlib import Path
 from pytest import fixture as pytest_fixture, raises as pytest_raises
 from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+
+
+def test_IdeaBook_Exists():
+    # ESTABLISH / WHEN
+    ideabook = IdeaBook()
+    # THEN
+    assert not ideabook.ideas
+    assert set(ideabook.__dict__.keys()) == {f"{kw.idea}s"}
 
 
 def test_get_spark_faces_from_df_ReturnsObj_Scenario0_Basic():

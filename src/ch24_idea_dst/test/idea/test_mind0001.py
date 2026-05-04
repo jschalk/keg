@@ -14,10 +14,10 @@ from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
 )
-from ch24_idea_dst._ref.ch24_path import create_idea0001_path
-from ch24_idea_dst.vow_db2df import (
+from ch24_idea_dst._ref.ch24_path import create_mind0001_path
+from ch24_idea_dst.mind_db2df import (
     collect_full_world_idea_csv_strs,
-    create_idea0001_file,
+    create_mind0001_file,
 )
 from os.path import exists as os_path_exists
 from pandas import read_excel as pandas_read_excel
@@ -254,26 +254,26 @@ def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario4_TranslateRowsInDB
     assert bk00145_csv == expected_bk00145_csv
 
 
-def test_create_idea0001_file_CreatesFile_Scenario0_NoMomentUnits(
+def test_create_mind0001_file_CreatesFile_Scenario0_NoMomentUnits(
     temp3_fs,
 ):
     # ESTABLISH
     world_dir = str(temp3_fs)
     output_dir = create_path(world_dir, "output")
-    idea0001_path = create_idea0001_path(output_dir)
-    assert os_path_exists(idea0001_path) is False
+    mind0001_path = create_mind0001_path(output_dir)
+    assert os_path_exists(mind0001_path) is False
 
     # WHEN
-    create_idea0001_file(world_dir, output_dir, exx.sue)
+    create_mind0001_file(world_dir, output_dir, exx.sue)
 
     # THEN
-    assert os_path_exists(idea0001_path)
-    bob_idea0001_sheetnames = get_sheet_names(idea0001_path)
+    assert os_path_exists(mind0001_path)
+    bob_mind0001_sheetnames = get_sheet_names(mind0001_path)
     idea_csv_strs = create_init_idea_brick_csv_strs()
-    assert set(bob_idea0001_sheetnames) == set(idea_csv_strs.keys())
+    assert set(bob_mind0001_sheetnames) == set(idea_csv_strs.keys())
 
 
-def test_create_idea0001_file_CreatesFile_Scenario1_TranslateRowsInDB(
+def test_create_mind0001_file_CreatesFile_Scenario1_TranslateRowsInDB(
     temp3_fs,
 ):
     # ESTABLISH database with translate data
@@ -318,26 +318,26 @@ def test_create_idea0001_file_CreatesFile_Scenario1_TranslateRowsInDB(
         cursor.execute(insert_trlcore_sqlstr)
     db_conn.close()
 
-    idea0001_path = create_idea0001_path(output_dir)
-    assert os_path_exists(idea0001_path) is False
+    mind0001_path = create_mind0001_path(output_dir)
+    assert os_path_exists(mind0001_path) is False
 
     # WHEN
-    create_idea0001_file(world_dir, output_dir, exx.yao, False)
+    create_mind0001_file(world_dir, output_dir, exx.yao, False)
 
     # THEN
-    assert os_path_exists(idea0001_path)
-    bob_idea0001_sheetnames = get_sheet_names(idea0001_path)
-    print(f"{bob_idea0001_sheetnames=}")
+    assert os_path_exists(mind0001_path)
+    bob_mind0001_sheetnames = get_sheet_names(mind0001_path)
+    print(f"{bob_mind0001_sheetnames=}")
     idea_csv_strs = create_init_idea_brick_csv_strs()
-    assert set(bob_idea0001_sheetnames) == set(idea_csv_strs.keys())
+    assert set(bob_mind0001_sheetnames) == set(idea_csv_strs.keys())
     bk00142_str = "bk00142"
     bk00143_str = "bk00143"
     bk00144_str = "bk00144"
     bk00145_str = "bk00145"
-    bk00142_df = pandas_read_excel(idea0001_path, bk00142_str)
-    bk00143_df = pandas_read_excel(idea0001_path, bk00143_str)
-    bk00144_df = pandas_read_excel(idea0001_path, bk00144_str)
-    bk00145_df = pandas_read_excel(idea0001_path, bk00145_str)
+    bk00142_df = pandas_read_excel(mind0001_path, bk00142_str)
+    bk00143_df = pandas_read_excel(mind0001_path, bk00143_str)
+    bk00144_df = pandas_read_excel(mind0001_path, bk00144_str)
+    bk00145_df = pandas_read_excel(mind0001_path, bk00145_str)
     assert len(bk00142_df) == 0
     assert len(bk00143_df) == 2
     assert len(bk00144_df) == 0

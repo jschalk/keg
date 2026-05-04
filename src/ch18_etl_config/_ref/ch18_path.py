@@ -40,5 +40,5 @@ def create_last_run_metrics_path(world_dir: str) -> str:
 
 
 def create_world_db_path(world_dir: str) -> str:
-    "Returns path: moment_mstr_dir\\world.db"
+    "Returns path: world_dir\\world.db"
     return create_path(world_dir, "world.db")

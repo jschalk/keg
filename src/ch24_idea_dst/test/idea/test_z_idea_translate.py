@@ -3,7 +3,7 @@ from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
 )
-from ch24_idea_dst.vow_db2df import (
+from ch24_idea_dst.mind_db2df import (
     add_to_bk00142_csv,
     add_to_bk00143_csv,
     add_to_bk00144_csv,
