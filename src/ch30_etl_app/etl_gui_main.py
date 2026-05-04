@@ -971,16 +971,8 @@ class ETLApp(tk_Tk):
             ideas_src_dir=self._i_src_dir.get(),
         )
         world_dir = create_path(self._working.get(), self._world_name.get())
-        create_mind0002_file(
-            world_dir=world_dir,
-            output_dir=self._output.get(),
-            person_name=me_person,
-        )
-        create_mind0002_file(
-            world_dir=self._working.get(),
-            output_dir=self._output.get(),
-            person_name=you_person,
-        )
+        create_mind0002_file(world_dir, self._output.get(), person_name=me_person)
+        create_mind0002_file(world_dir, self._output.get(), person_name=you_person)
         self._status.set("✔  Pipeline completed successfully.")
         self._populate_viewer(persons_punchs)
         prettify_excel_files(self._i_src_dir.get())
