@@ -9,7 +9,7 @@ from os.path import isdir as os_path_isdir
 
 def main():
     src_dir = os_getcwd()
-    find_str = input("Find string: ").strip()
+    find_str = input("Find string:    ").strip()
     replace_str = input("Replace string: ").strip()
     print(f"Goal is to move {find_str} to {replace_str}")
 
