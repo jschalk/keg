@@ -1,3 +1,10 @@
+## [0.83.26](https://github.com/jschalk/keg/compare/v0.83.25...v0.83.26) (2026-05-04)
+
+
+### Bug Fixes
+
+* [#1198](https://github.com/jschalk/keg/issues/1198) enable save of output ideas ([c9516ea](https://github.com/jschalk/keg/commit/c9516ea429a348d056e4b174d0c1dba4b78f468a))
+
 ## [0.83.25](https://github.com/jschalk/keg/compare/v0.83.24...v0.83.25) (2026-05-03)
 
 
