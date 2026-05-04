@@ -1,3 +1,4 @@
+from ch00_py.dict_toolbox import get_0_if_None
 from ch09_person_lesson.lesson_main import LessonUnit
 from ch19_idea_src.idea2brick import IdeaBook
 from ch26_world.world import WorldName
@@ -20,12 +21,21 @@ class PitchUnit:
     offer_spark_num: SparkInt = None
 
     def validate_spark_nums(self):
-        if self.gift_spark_num and self.request_spark_num and self.offer_spark_num:
-            if self.gift_spark_num >= self.request_spark_num:
-                return False
-            elif self.request_spark_num >= self.offer_spark_num:
-                return False
-        return True
+        if self.gift_spark_num is None and (
+            self.request_spark_num is not None or self.offer_spark_num is not None
+        ):
+            return False
+        elif self.request_spark_num == 0 or self.offer_spark_num == 0:
+            return False
+
+        gift_spark_num = get_0_if_None(self.gift_spark_num)
+        request_spark_num = get_0_if_None(self.request_spark_num)
+        offer_spark_num = get_0_if_None(self.offer_spark_num)
+        return (
+            gift_spark_num < request_spark_num
+            and gift_spark_num < offer_spark_num
+            and request_spark_num < offer_spark_num
+        )
 
 
 def pitchunit_shop(
