@@ -28,7 +28,7 @@
 - ch24_idea_dst: ch24, vow
 - ch25_kpi: DayEvent, Event, ch25, default_kpi_bundle, gcal, moment_kpi001_contact_nets, moment_kpi002_person_pledges
 - ch26_world: WorldName, ch26, today
-- ch27_lobby: Gift, LobbyID, ch27, gift, lobby_id, lobbys
+- ch27_pitch: Gift, PitchID, ch27, gift, pitch_id, pitchs
 - ch28_finance: ch28, finance, financial
 - ch29_person_viewer: ch29
 - ch30_etl_app: ch30

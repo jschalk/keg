@@ -3,25 +3,25 @@ from ch26_world.world import WorldName
 from dataclasses import dataclass
 
 
-# TODO replace "lobby" with "pitch"
+# TODO replace "pitch" with "pitch"
 # TODO add "Deal" to keywords
 @dataclass
-class LobbyUnit:
-    lobby_id: str = None
+class PitchUnit:
+    pitch_id: str = None
     option_lessons: list[LessonUnit] = None
     selected_lesson: LessonUnit = None
     worlds: list[WorldName] = None
 
 
-def lobbyunit_shop(
-    lobby_id: str,
+def pitchunit_shop(
+    pitch_id: str,
     option_lessons: list[LessonUnit] = None,
     selected_lesson: LessonUnit = None,
     worlds: list[WorldName] = None,
-) -> LobbyUnit:
-    return LobbyUnit(lobby_id=lobby_id)
+) -> PitchUnit:
+    return PitchUnit(pitch_id=pitch_id)
 
 
-# The lobby process model is as follows
-# 1. offer gift. Gifts are Ideas that are meant to appeal to the audience
+# The pitch process model is as follows
+# 1. offer gift. Gifts are Ideas at the pitcher is vowing to make into a brick. Are meant to appeal to the audience
 # 2. Describe possible future Gifts. From you, from me.

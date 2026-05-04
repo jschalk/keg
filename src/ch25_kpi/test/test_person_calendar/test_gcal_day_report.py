@@ -10,7 +10,7 @@ from ch13_time.epoch_main import (
 )
 from ch14_moment.moment_main import momentunit_shop, save_moment_file
 from ch18_etl_config._ref.ch18_path import create_moment_mstr_path, create_world_db_path
-from ch23_mind.mind import CREATE_MOMENT_TRANBOOK_NETS_SQLSTR
+from ch23_mind.mind_core import CREATE_MOMENT_TRANBOOK_NETS_SQLSTR
 from ch25_kpi._ref.ch25_path import (
     create_day_punch_txt_path as day_punch_path,
     create_dst_person_punch_path as dst_punch_path,

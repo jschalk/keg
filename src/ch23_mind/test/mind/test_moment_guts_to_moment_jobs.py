@@ -4,7 +4,7 @@ from ch09_person_lesson._ref.ch09_path import create_gut_path, create_moment_jso
 from ch09_person_lesson.lasso import lassounit_shop
 from ch10_person_listen._ref.ch10_path import create_job_path
 from ch14_moment.moment_main import momentunit_shop
-from ch23_mind.mind import etl_mind_guts_to_mind_jobs
+from ch23_mind.mind_core import etl_mind_guts_to_mind_jobs
 from os.path import exists as os_path_exists
 from ref.keywords import ExampleStrs as exx
 

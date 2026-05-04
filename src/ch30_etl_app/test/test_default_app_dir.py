@@ -10,7 +10,7 @@ from ch30_etl_app.etl_gui_tool import (
 )
 from pathlib import Path
 from platform import system as platform_system
-from src.ref.keywords import Ch30Keywords as kw
+from ref.keywords import Ch30Keywords as kw
 
 
 def test_ETLAppSettings_Exists():

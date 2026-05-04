@@ -1,5 +1,5 @@
-from src.ch25_kpi.gcalendar import PersonTranBookMetric, persontranbookmetric_shop
-from src.ref.keywords import Ch25Keywords as kw, ExampleStrs as exx
+from ch25_kpi.gcalendar import PersonTranBookMetric, persontranbookmetric_shop
+from ref.keywords import Ch25Keywords as kw, ExampleStrs as exx
 
 
 def test_PersonTranBookMetric_Exists():

@@ -27,7 +27,7 @@ from ch13_time._ref.ch13_semantic_types import EpochLabel
 from ch26_world._ref.ch26_semantic_types import WorldName
 
 
-class LobbyID(str):
-    """str used to name LobbyUnit"""
+class PitchID(str):
+    """str used to name PitchUnit"""
 
     pass

@@ -27,4 +27,4 @@ from ch11_bud._ref.ch11_semantic_types import SparkInt, TimeNum
 from ch12_keep._ref.ch12_semantic_types import ManaNum
 from ch13_time._ref.ch13_semantic_types import EpochLabel
 from ch26_world._ref.ch26_semantic_types import WorldName
-from ch28_finance._ref.ch28_semantic_types import LobbyID
+from ch28_finance._ref.ch28_semantic_types import PitchID
