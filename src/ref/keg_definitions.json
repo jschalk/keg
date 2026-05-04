@@ -387,6 +387,7 @@
   "personspark_facts": ", used with Budget Cells", 
   "PersonUnit": "TODO", 
   "personunit": "A person dimen representing PersonUnit data. Keys: person_name. person seed.", 
+  "pitch": "TODO", 
   "pitch_id": "TODO", 
   "pitcher_name": "Ch27 TODO", 
   "PitchID": "str first used in ch27. str used to name PitchUnit", 

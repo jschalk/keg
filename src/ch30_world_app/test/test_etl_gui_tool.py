@@ -1,4 +1,4 @@
-from ch30_world_app.world1_tool import (
+from ch30_world_app.w1_tool import (
     create_elpaso_time_config_file,
     create_emmanuel_idea_file,
     create_emmanuel_lovemaking_idea_file,

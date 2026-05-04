@@ -28,8 +28,8 @@
 - ch24_idea_dst: ch24, vow
 - ch25_kpi: DayEvent, Event, ch25, default_kpi_bundle, gcal, moment_kpi001_contact_nets, moment_kpi002_person_pledges
 - ch26_world: WorldName, ch26, today
-- ch27_pitch: Gift, Peer, PitchID, PitchUnit, ch27, gift, offer, peer, pitch_id, pitcher_name, pitchs, request
+- ch27_pitch: Gift, Peer, PitchID, PitchUnit, ch27, gift, offer, peer, pitch, pitch_id, pitcher_name, pitchs, request
 - ch28_finance: ch28, finance, financial
 - ch29_person_viewer: ch29
-- ch30_etl_app: ch30
+- ch30_world_app: ch30
 - ch98_docs_builder: ch98

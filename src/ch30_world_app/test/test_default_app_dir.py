@@ -1,5 +1,5 @@
 from ch26_world.world import worlddir_shop
-from ch30_world_app.world1_tool import (
+from ch30_world_app.w1_tool import (
     ETLAppSettings,
     get_app_default_dir,
     get_app_default_dirs,
