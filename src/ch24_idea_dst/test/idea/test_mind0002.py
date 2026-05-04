@@ -147,4 +147,3 @@ def test_create_mind0002_file_CreatesFile_Scenario1_Basic(
     bk00120_worksheet = sue_wb["bk00120"]
     # for row in bk00120_worksheet.iter_rows(values_only=True):
     #     print(row)
-    assert 1 == 2
