@@ -1,9 +1,10 @@
-from ch30_etl_app.etl_gui_main import ETLApp
+from ch30_world_app.world1_app import ETLApp
 from os import environ as os_environ
 from pytest import fail as pytest_fail
 
 
 def test_ETLApp_ApplicationInitRunsWithoutError(tk_app):
+    # sourcery skip: no-conditionals-in-tests
     if tk_app:
         # ESTABLISH / WHEN
         root = ETLApp()
