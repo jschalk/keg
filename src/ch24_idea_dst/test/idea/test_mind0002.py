@@ -3,7 +3,7 @@ from ch07_person_logic.person_main import personunit_shop
 from ch09_person_lesson.lasso import lassounit_shop
 from ch10_person_listen.keep_tool import save_job_file
 from ch14_moment.moment_main import momentunit_shop, save_moment_file
-from ch17_brick.brick_db_tool import get_sheet_names
+from ch17_brick.brick_db_tool import get_sheet_names, openpyxl_load_workbook
 from ch17_brick.brick_idea_csv import (
     add_momentunit_to_idea_csv_strs,
     add_personunit_to_idea_csv_strs,
@@ -107,4 +107,44 @@ def test_create_mind0002_file_CreatesFile_Scenario0_NoMomentUnits(
     assert os_path_exists(sue_mind0002_path)
     sue_mind0002_sheetnames = get_sheet_names(sue_mind0002_path)
     idea_csv_strs = create_init_idea_brick_csv_strs()
-    assert set(sue_mind0002_sheetnames) == set(idea_csv_strs.keys())
+    assert len(sue_mind0002_sheetnames) > 0
+    assert set(sue_mind0002_sheetnames).issubset(set(idea_csv_strs.keys()))
+
+
+def test_create_mind0002_file_CreatesFile_Scenario1_Basic(
+    temp3_fs,
+):
+    # ESTABLISH
+    world_dir = str(temp3_fs)
+    moment_mstr_dir = create_moment_mstr_path(world_dir)
+    a23_moment = momentunit_shop(exx.a23, moment_mstr_dir)
+    a23_lasso = lassounit_shop(exx.a23)
+    save_moment_file(a23_moment, a23_lasso)
+    # create sue job file
+    sue_job = personunit_shop(exx.sue, exx.a23)
+    sue_job.add_contactunit(exx.yao, 44, 55)
+    sue_job.add_contactunit(exx.yao, 44, 55)
+    save_job_file(moment_mstr_dir, sue_job)
+    output_dir = create_path(world_dir, "output")
+    sue_mind0002_path = create_mind0002_path(output_dir, exx.sue)
+    assert os_path_exists(sue_mind0002_path) is False
+
+    # WHEN
+    create_mind0002_file(world_dir, output_dir, exx.sue)
+
+    # THEN
+    assert os_path_exists(sue_mind0002_path)
+    expected_idea_csv_strs = create_init_idea_brick_csv_strs()
+    add_momentunit_to_idea_csv_strs(a23_moment, expected_idea_csv_strs, ",")
+    add_personunit_to_idea_csv_strs(sue_job, expected_idea_csv_strs, ",")
+    expected_bk00120_csv_str = expected_idea_csv_strs.get("bk00120")
+    # print(f"{expected_bk00120_csv_str=}")
+    sue_mind0002_sheetnames = get_sheet_names(sue_mind0002_path)
+    idea_csv_strs = create_init_idea_brick_csv_strs()
+    assert len(sue_mind0002_sheetnames) > 0
+    assert set(sue_mind0002_sheetnames).issubset(set(idea_csv_strs.keys()))
+    sue_wb = openpyxl_load_workbook(sue_mind0002_path)
+    bk00120_worksheet = sue_wb["bk00120"]
+    # for row in bk00120_worksheet.iter_rows(values_only=True):
+    #     print(row)
+    assert 1 == 2

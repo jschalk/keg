@@ -8,7 +8,11 @@ from ch09_person_lesson._ref.ch09_path import create_moments_dir_path
 from ch09_person_lesson.lasso import lassounit_shop
 from ch11_bud.bud_filehandler import open_person_file
 from ch14_moment.moment_main import open_moment_file
-from ch17_brick.brick_db_tool import csv_dict_to_excel, prettify_excel_file
+from ch17_brick.brick_db_tool import (
+    csv_dict_to_excel,
+    prettify_excel_file,
+    remove_empty_sheets,
+)
 from ch17_brick.brick_idea_csv import (
     add_momentunit_to_idea_csv_strs,
     add_personunit_to_idea_csv_strs,
@@ -224,6 +228,7 @@ def collect_mind0002_idea_csv_strs(
     moment_mstr_dir = create_moment_mstr_path(world_dir)
     x_csv_strs = create_init_idea_brick_csv_strs()
     moments_dir = create_moments_dir_path(moment_mstr_dir)
+    print(f"{moments_dir=}")
     for moment_label in get_level1_dirs(moments_dir):
         x_knot = default_knot_if_None()
         moment_rope = create_rope(moment_label, None, x_knot)
@@ -233,6 +238,7 @@ def collect_mind0002_idea_csv_strs(
         person_dir = create_path(persons_dir, person_name)
         job_dir = create_path(person_dir, "job")
         job_person_path = create_path(job_dir, f"{person_name}.json")
+        print(f"{job_person_path=}")
         if os_path_exists(job_person_path):
             x_momentunit = open_moment_file(moment_mstr_dir, moment_lasso)
             add_momentunit_to_idea_csv_strs(x_momentunit, x_csv_strs, ",")
@@ -257,8 +263,8 @@ def create_mind0002_file(
 
     person_dir = create_path(output_dir, person_name)
     csv_dict_to_excel(with_spark_face_csvs, person_dir, f"{person_name}_ideas.xlsx")
-
     # Hard to test function to prettify the excel file
     if prettify_excel_bool:
         mind0002_path = create_mind0002_path(output_dir, person_name)
+        remove_empty_sheets(mind0002_path)
         prettify_excel_file(mind0002_path)
