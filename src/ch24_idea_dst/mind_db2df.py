@@ -228,7 +228,6 @@ def collect_mind0002_idea_csv_strs(
     moment_mstr_dir = create_moment_mstr_path(world_dir)
     x_csv_strs = create_init_idea_brick_csv_strs()
     moments_dir = create_moments_dir_path(moment_mstr_dir)
-    print(f"{moments_dir=}")
     for moment_label in get_level1_dirs(moments_dir):
         x_knot = default_knot_if_None()
         moment_rope = create_rope(moment_label, None, x_knot)
@@ -238,7 +237,6 @@ def collect_mind0002_idea_csv_strs(
         person_dir = create_path(persons_dir, person_name)
         job_dir = create_path(person_dir, "job")
         job_person_path = create_path(job_dir, f"{person_name}.json")
-        print(f"{job_person_path=}")
         if os_path_exists(job_person_path):
             x_momentunit = open_moment_file(moment_mstr_dir, moment_lasso)
             add_momentunit_to_idea_csv_strs(x_momentunit, x_csv_strs, ",")
