@@ -2,6 +2,8 @@ from ch00_py.dict_toolbox import get_0_if_None
 from ch00_py.file_toolbox import delete_dir, set_dir
 from ch17_brick.brick_config import get_brick_types
 from ch17_brick.brick_db_tool import save_sheet
+from ch19_idea_src._ref.ch19_semantic_types import SheetName
+from dataclasses import dataclass
 from openpyxl import load_workbook
 from os import listdir as os_listdir
 from os.path import join as os_path_join
@@ -12,6 +14,11 @@ from pandas import (
 )
 from pathlib import Path
 from typing import List, Tuple
+
+
+@dataclass
+class IdeaBook:
+    ideas: dict[str, DataFrame] = None
 
 
 def get_spark_faces_from_df(df: DataFrame) -> set:

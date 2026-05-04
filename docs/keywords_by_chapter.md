@@ -18,7 +18,7 @@
 - ch14_moment: all_tranbook, ch14, cumulative_minute, job_listen_rotations, moment_budunit, moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, moment_paybook, moment_static, moment_timeoffi, momentunit, offi_times, paybook, personbudhistorys, weekday_label, weekday_order
 - ch15_nabu: Nabu, NabuTime, ch15, inx_epoch_diff, inx_time, nabu, nabu_timenum, otx2inx, otx_epoch_length, otx_time, timenabu
 - ch16_translate: ch16, inx_knot, inx_label, inx_name, inx_rope, inx_title, labelmap, namemap, otx_knot, otx_label, otx_name, otx_rope, otx_title, ropemap, titlemap, translate, translate_core, translate_label, translate_name, translate_rope, translate_title, translateunit, unknown_str
-- ch17_brick: Excel, allowed_crud, attributes, bk, brick, brick_category, brick_type, build_order, ch17, delete_insert, delete_insert_update, delete_update, error_message, excel, fund_rank, idea, insert_multiple, insert_one_time, insert_update, net_funds, otx_key, pledges_count, sheet, source_dimen, translate_spark_num, world_name
+- ch17_brick: Excel, SheetName, allowed_crud, attributes, bk, brick, brick_category, brick_type, build_order, ch17, delete_insert, delete_insert_update, delete_update, error_message, excel, fund_rank, idea, insert_multiple, insert_one_time, insert_update, net_funds, otx_key, pledges_count, sheet, source_dimen, translate_spark_num, world_name
 - ch18_etl_config: b_agg, b_raw, b_src, brixk_agg, brixk_raw, brixk_src, brixk_vld, ch18, h_agg, h_raw, h_vld, heard_agg, heard_raw, heard_vld, i_dst, i_src, ideax_dst, ideax_src, k_vld, mind, mindx_mst, mmtbudd, mmthour, mmtmont, mmtoffi, mmtpayy, mmtunit, mmtweek, moment_ote1_agg, nabtime, person_net_amount, s_agg, s_raw, s_vld, sound_agg, sound_raw, sound_vld, sparks_brixk_agg, sparks_brixk_vld, trlcore, trllabe, trlname, trlrope, trltitl
 - ch19_idea_src: ch19, day_punch, moment_tranbook_nets
 - ch20_etl_brick: ch20
@@ -28,7 +28,7 @@
 - ch24_idea_dst: ch24, vow
 - ch25_kpi: DayEvent, Event, ch25, default_kpi_bundle, gcal, moment_kpi001_contact_nets, moment_kpi002_person_pledges
 - ch26_world: WorldName, ch26, today
-- ch27_pitch: Gift, PitchID, ch27, gift, pitch_id, pitchs
+- ch27_pitch: Gift, Peer, PitchID, PitchUnit, ch27, gift, offer, peer, pitch_id, pitcher_name, pitchs, request
 - ch28_finance: ch28, finance, financial
 - ch29_person_viewer: ch29
 - ch30_etl_app: ch30
