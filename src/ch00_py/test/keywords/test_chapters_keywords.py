@@ -4,12 +4,13 @@ from ch00_py.chapter_desc_main import (
     get_chapter_desc_str_number,
     valid_chapter_numbers,
 )
-from ch00_py.file_toolbox import open_file, save_file
+from ch00_py.file_toolbox import open_file, save_file, save_json
 from ch00_py.keyword_class_builder import (
     check_relative_order,
     create_all_enum_keyword_classes_str,
     create_examplestrs_class_str,
     create_keywords_enum_class_file_str,
+    create_src_keywords_main_path,
     get_chapter_descs,
     get_cumlative_keywords_main_dict,
     get_example_strs_config,
@@ -63,6 +64,7 @@ def test_get_possible_keyword_config_keys_ReturnsObj():
     # ESTABLISH / WHEN
     req_config_keys = get_possible_keyword_config_keys()
     # THEN
+    # TODO add sort_ordinal to keywords
     assert req_config_keys == {
         kw.init_chapter,
         kw.semantic_type,
@@ -325,20 +327,40 @@ def test_get_keg_elements_sort_order_Scenario0_AllElementsAre_keywords():
     assert set(get_keg_elements_sort_order()).issubset(keywords_set)
 
 
-# def test_get_keg_elements_sort_order_Scenario0_AllElementsAre_keywords():
-#     # sourcery skip: no-conditionals-in-tests
-#     # ESTABLISH
-#     keywords_src_config = get_keywords_src_config()
-#     # WHEN / THEN
-#     missing_elements = {
-#         keyword
-#         for keyword in get_keg_elements_sort_order()
-#         if keyword not in keywords_set
-#     }
-#     ch_num = 17
-#     x_count = 0
-#     for missing_element in sorted(missing_elements):
-#         x_count += 1
-#         print(f""""{missing_element}": {{"exam_tier": 0, "init_chapter": "ch{ch_num}"}},""")
-#     print(f"{x_count} elements")
-#     assert set(get_keg_elements_sort_order()).issubset(keywords_set)
+def test_get_keg_elements_sort_order_Scenario1_Check_sort_ordinal():
+    # sourcery skip: no-conditionals-in-tests
+    # ESTABLISH
+    keywords_src_config = get_keywords_src_config()
+    clean_keywords_src_config = {}
+    for keyword, kw_config in keywords_src_config.items():
+        new_kw_config = {
+            kw.exam_tier: kw_config.get(kw.exam_tier),
+            kw.init_chapter: kw_config.get(kw.init_chapter),
+        }
+        if kw_config.get(kw.semantic_type):
+            new_kw_config[kw.semantic_type] = kw_config.get(kw.semantic_type)
+        clean_keywords_src_config[keyword] = new_kw_config
+
+    for sort_index, sorting_keyword in enumerate(get_keg_elements_sort_order()):
+        clean_keywords_src_config[sorting_keyword]["sort_ordinal"] = sort_index
+    # Uncomment to save over current keywords_src_config
+    # if keywords_src_config != clean_keywords_src_config:
+    #     save_json(create_src_keywords_main_path("src"), None, clean_keywords_src_config)
+    # WHEN / THEN
+    assert get_keywords_src_config() == clean_keywords_src_config
+
+    # # WHEN / THEN
+    # missing_elements = {
+    #     keyword
+    #     for keyword in get_keg_elements_sort_order()
+    #     if keyword not in keywords_set
+    # }
+    # ch_num = 17
+    # x_count = 0
+    # for missing_element in sorted(missing_elements):
+    #     x_count += 1
+    #     print(
+    #         f""""{missing_element}": {{"exam_tier": 0, "init_chapter": "ch{ch_num}"}},"""
+    #     )
+    # print(f"{x_count} elements")
+    # assert set(get_keg_elements_sort_order()).issubset(keywords_set)
