@@ -5,10 +5,10 @@ from ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
 
 def test_SheetName_Exists():
     # ESTABLISH
-    ii00104_str = "ii00104"
+    br00104_str = "br00104"
     # WHEN
-    ii00104_sheetname = SheetName(ii00104_str)
+    br00104_sheetname = SheetName(br00104_str)
     # THEN
-    assert ii00104_sheetname == ii00104_str
+    assert br00104_sheetname == br00104_str
     doc_str = f"A string used as {kw.SheetName} for SpreadSheet files."
-    assert inspect_getdoc(ii00104_sheetname) == doc_str
+    assert inspect_getdoc(br00104_sheetname) == doc_str

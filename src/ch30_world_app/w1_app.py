@@ -1,8 +1,8 @@
 """
-etl_gui.py  —  Simple GUI launcher for the Excel ETL pipeline.
+w1_app.py  —  Simple GUI launcher for the Excel ETL pipeline.
 
 Usage:
-    python etl_gui.py
+    python w1_app.py
 
 Requires:
     Python 3.8+ (tkinter is included in the standard library)
