@@ -6,7 +6,7 @@ from ref.sorter import get_keg_elements_sort_order
 
 
 def brick_config_path() -> str:
-    "Returns path: ch17_brick_logic/brick_config.json"
+    "Returns path: ch17_brick/brick_config.json"
     src_dir = create_path(os_getcwd(), "src")
     chapter_dir = create_path(src_dir, "ch17_brick")
     return create_path(chapter_dir, "brick_config.json")

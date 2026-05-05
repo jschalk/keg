@@ -270,6 +270,7 @@
   "idea": "A collection of bricks (currently only in brick format) with a spark_face but no spark_num.", 
   "ideax_dst": "stage_type_order=14 Idea (Brick formats without SparkNum) Destination. Filtered Job, Moment data.", 
   "ideax_src": "stage_type_order=1 Idea Source files. Brick formats without SparkNum.", 
+  "ii": "Idea Format Identifier. Every idea_type format starts with 'ii' and then 5 numbers. Every brick_type has a mirrored idea_type. Multiple idea_types can map to single brick_type", 
   "import": "Used so often in Python that it cannot be given any kegology meaning.", 
   "inallocable_contact_debt_lumen": ", Contact thinkout", 
   "infinity": "As described in Totality and Infinity. Not used in codebase.", 

@@ -276,6 +276,7 @@
   "idea": {"exam_tier": 0, "init_ch": "ch17"}, 
   "ideax_dst": {"exam_tier": 0, "init_ch": "ch18"}, 
   "ideax_src": {"exam_tier": 0, "init_ch": "ch18"}, 
+  "ii": {"exam_tier": 0, "init_ch": "ch19"}, 
   "inallocable_contact_debt_lumen": {"exam_tier": 0, "init_ch": "ch02", "sort_ordinal": 179}, 
   "infinity": {"exam_tier": 0, "init_ch": ""}, 
   "init_ch": {"exam_tier": 0, "init_ch": "ch00"}, 
