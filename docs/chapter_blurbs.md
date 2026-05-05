@@ -28,10 +28,10 @@ What does each one do?
 - **ch22_heard**: Defines the 'Heard' process. From 'Sound' to 'mind'.
 - **ch23_mind**: Defines the mind stage of data. Source of Job Persons, complete Moment data.
 - **ch24_idea_dst**: Defines how ideas for outside audiences are created.
-- **ch25_kpi**: Defines the analytics outcomes of completed MomentUnits.
-- **ch26_world**: Defines WorldDirs that admin MomentUnits input data and outcomes
-- **ch27_pitch**: Defines Pitch Tools for gifts, World Scenarios.
-- **ch28_finance**: Defines Finance Tools for 
-- **ch29_person_viewer**: Tools for Visualizing PersonUnits
-- **ch30_world_app**: ETL app to create day punches from excel files.
+- **ch31_kpi**: Defines the analytics outcomes of completed MomentUnits.
+- **ch32_world**: Defines WorldDirs that admin MomentUnits input data and outcomes
+- **ch33_pitch**: Defines Pitch Tools for gifts, World Scenarios.
+- **ch34_finance**: Defines Finance Tools for 
+- **ch35_person_viewer**: Tools for Visualizing PersonUnits
+- **ch36_world_app**: ETL app to create day punches from excel files.
 - **ch98_docs_builder**: Defines Tools that create documentation.

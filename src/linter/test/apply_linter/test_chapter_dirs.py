@@ -133,7 +133,7 @@ def test_Chapters_DoNotHaveEmptyDirectories():
     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
     # ESTABLISH
     excluded_dirs = {
-        "src/ch26_world/test/test_world_examples/worlds",
+        "src/ch32_world/test/test_world_examples/worlds",
         "src/ch19_idea_src/test/z_notebooks",
     }
 

@@ -26,10 +26,10 @@
 - ch22_heard: ch22
 - ch23_mind: ch23
 - ch24_idea_dst: ch24, vow
-- ch25_kpi: DayEvent, Event, ch25, default_kpi_bundle, gcal, moment_kpi001_contact_nets, moment_kpi002_person_pledges
-- ch26_world: WorldName, ch26, today
-- ch27_pitch: Gift, Peer, PitchID, PitchUnit, ch27, gift, offer, peer, pitch, pitch_id, pitcher_name, pitchs, request
-- ch28_finance: ch28, finance, financial
-- ch29_person_viewer: ch29
-- ch30_world_app: ch30
+- ch31_kpi: DayEvent, Event, ch31, default_kpi_bundle, gcal, moment_kpi001_contact_nets, moment_kpi002_person_pledges
+- ch32_world: WorldName, ch32, today
+- ch33_pitch: Gift, Peer, PitchID, PitchUnit, ch33, gift, offer, peer, pitch, pitch_id, pitcher_name, pitchs, request
+- ch34_finance: ch34, finance, financial
+- ch35_person_viewer: ch35
+- ch36_world_app: ch36
 - ch98_docs_builder: ch98
