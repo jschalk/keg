@@ -8,10 +8,7 @@ from ch16_translate.test._util.ch16_examples import (  # get_casa_maison_transla
     get_sue_translateunit,
 )
 from ch16_translate.translate_main import translateunit_shop
-from ch17_brick.brick_db_tool import (
-    get_brick_elements_sort_order as sorting_columns,
-    get_ordered_csv,
-)
+from ch17_brick.brick_db_tool import get_ordered_csv
 from ch17_brick.translate_toolbox import (
     _load_labelmap_from_csv,
     _load_namemap_from_csv,
@@ -32,6 +29,7 @@ from ch17_brick.translate_toolbox import (
 )
 from os.path import exists as os_path_exists
 from ref.keywords import Ch17Keywords as kw, ExampleStrs as exx
+from ref.sorter import get_keg_elements_sort_order as sorting_columns
 
 
 def test_get_translate_name_dt_columns_ReturnsObj():

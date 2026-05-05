@@ -41,7 +41,7 @@ class RiverRun:
     cycle_max: int = None
     # calculated fields
     cares: dict[ContactName, float] = None
-    need_yields: dict[ContactName, float] = None
+    need_results: dict[ContactName, float] = None
     need_got_prev: float = None
     need_got_curr: float = None
     cycle_count: int = None
@@ -122,39 +122,41 @@ class RiverRun:
         if x_need_due > carer_points:
             left_over_care = x_need_due - carer_points
             self.set_contact_need_due(x_contact_name, left_over_care)
-            self.add_contact_need_yield(x_contact_name, carer_points)
+            self.add_contact_need_result(x_contact_name, carer_points)
             return 0, carer_points
         else:
             self.delete_need_due(x_contact_name)
-            self.add_contact_need_yield(x_contact_name, x_need_due)
+            self.add_contact_need_result(x_contact_name, x_need_due)
             return carer_points - x_need_due, x_need_due
 
     def get_ledger_dict(self) -> dict[ContactName, float]:
         return self.need_dues
 
-    def set_contact_need_yield(self, x_contact_name: ContactName, need_yield: float):
-        self.need_yields[x_contact_name] = need_yield
+    def set_contact_need_result(self, x_contact_name: ContactName, need_result: float):
+        self.need_results[x_contact_name] = need_result
 
-    def need_yields_is_empty(self) -> bool:
-        return len(self.need_yields) == 0
+    def need_results_is_empty(self) -> bool:
+        return len(self.need_results) == 0
 
-    def reset_need_yields(self):
-        self.need_yields = {}
+    def reset_need_results(self):
+        self.need_results = {}
 
-    def contact_has_need_yield(self, x_contact_name: ContactName) -> bool:
-        return self.need_yields.get(x_contact_name) is not None
+    def contact_has_need_result(self, x_contact_name: ContactName) -> bool:
+        return self.need_results.get(x_contact_name) is not None
 
-    def get_contact_need_yield(self, x_contact_name: ContactName) -> float:
-        x_need_yield = self.need_yields.get(x_contact_name)
-        return 0 if x_need_yield is None else x_need_yield
+    def get_contact_need_result(self, x_contact_name: ContactName) -> float:
+        x_need_result = self.need_results.get(x_contact_name)
+        return 0 if x_need_result is None else x_need_result
 
-    def delete_need_yield(self, x_contact_name: ContactName):
-        self.need_yields.pop(x_contact_name)
+    def delete_need_result(self, x_contact_name: ContactName):
+        self.need_results.pop(x_contact_name)
 
-    def add_contact_need_yield(self, x_contact_name: ContactName, x_need_yield: float):
-        if self.contact_has_need_yield(x_contact_name):
-            x_need_yield = self.get_contact_need_yield(x_contact_name) + x_need_yield
-        self.set_contact_need_yield(x_contact_name, x_need_yield)
+    def add_contact_need_result(
+        self, x_contact_name: ContactName, x_need_result: float
+    ):
+        if self.contact_has_need_result(x_contact_name):
+            x_need_result = self.get_contact_need_result(x_contact_name) + x_need_result
+        self.set_contact_need_result(x_contact_name, x_need_result)
 
     def get_rivergrade(self, contact_name: ContactName) -> RiverGrade:
         return self.rivergrades.get(contact_name)
@@ -190,7 +192,7 @@ class RiverRun:
     def _set_post_loop_rivergrade_attrs(self):
         for x_contact_name, contact_rivergrade in self.rivergrades.items():
             need_due_leftover = self.get_contact_need_due(x_contact_name)
-            need_due_paid = self.get_contact_need_yield(x_contact_name)
+            need_due_paid = self.get_contact_need_result(x_contact_name)
             contact_rivergrade.set_need_bill_amount(need_due_paid + need_due_leftover)
             contact_rivergrade.set_need_paid_amount(need_due_paid)
 
@@ -219,8 +221,8 @@ class RiverRun:
 
     def _set_doctor_count_patient_count(self):
         need_dues_contacts = set(self.need_dues.keys())
-        need_yields_contacts = set(self.need_yields.keys())
-        self.doctor_count = len(need_dues_contacts.union(need_yields_contacts))
+        need_results_contacts = set(self.need_results.keys())
+        self.doctor_count = len(need_dues_contacts.union(need_results_contacts))
         self.patient_count = len(self.keep_patientledgers.get(self.person_name))
 
     def _set_cares(self):
@@ -287,7 +289,7 @@ def riverrun_shop(
         need_dues=get_empty_dict_if_None(need_dues),
         rivergrades={},
         cares={},
-        need_yields={},
+        need_results={},
     )
     x_riverun.cycle_count = 0
     x_riverun.cycle_carees_prev = set()

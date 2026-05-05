@@ -55,7 +55,7 @@ def get_moment_args_dimen_mapping() -> dict[str, str]:
     return x_dict
 
 
-def get_moment_args_class_types() -> dict[str, str]:
+def get_moment_args_obj_types() -> dict[str, str]:
     return {
         "contact_name": "NameTerm",
         "amount": "float",

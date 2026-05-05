@@ -130,7 +130,7 @@ def test_get_app_default_world_name_ReturnsObj():
 def test_get_app_default_dir_ReturnsObj_UnixPath(monkeypatch):
     # ESTABLISH
     fake_home = Path("/home/testuser")
-    monkeypatch.setattr("ch30_etl_app.etl_gui_tool.Path.home", lambda: fake_home)
+    monkeypatch.setattr("ch30_world_app.w1_tool.Path.home", lambda: fake_home)
     # WHEN
     path = get_app_default_dir(is_windows=False)
     # THEN

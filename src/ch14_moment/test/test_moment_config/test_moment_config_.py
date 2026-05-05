@@ -1,8 +1,8 @@
 from ch00_py.file_toolbox import create_path
-from ch08_person_atom.atom_config import get_allowed_class_types
+from ch08_person_atom.atom_config import get_allowed_obj_types
 from ch14_moment.moment_config import (
-    get_moment_args_class_types,
     get_moment_args_dimen_mapping,
+    get_moment_args_obj_types,
     get_moment_args_set,
     get_moment_config_dict,
     get_moment_dimens,
@@ -74,9 +74,9 @@ def test_get_moment_config_dict_ReturnsObj():
 
 
 def _validate_moment_config(moment_config: dict):
-    accepted_class_typees = get_allowed_class_types()
-    accepted_class_typees.add("str")
-    accepted_class_typees.add(kw.TimeNum)
+    accepted_obj_typees = get_allowed_obj_types()
+    accepted_obj_typees.add("str")
+    accepted_obj_typees.add(kw.TimeNum)
 
     # for every moment_format file there exists a unique moment_number with leading zeros to make 5 digits
     for moment_dimen, dimen_dict in moment_config.items():
@@ -97,13 +97,13 @@ def _validate_moment_config(moment_config: dict):
             jkey_dict = dimen_dict.get(kw.jkeys)
             print(f"_validate_moment_config {moment_dimen=} {jkey_key=} ")
             arg_dict = jkey_dict.get(jkey_key)
-            assert arg_dict.get(kw.class_type) in accepted_class_typees
+            assert arg_dict.get(kw.obj_type) in accepted_obj_typees
         moment_jvalues_keys = set(dimen_dict.get(kw.jvalues).keys())
         for jvalue_key in moment_jvalues_keys:
             jvalue_dict = dimen_dict.get(kw.jvalues)
             print(f"_validate_moment_config {moment_dimen=} {jvalue_key=} ")
             arg_dict = jvalue_dict.get(jvalue_key)
-            assert arg_dict.get(kw.class_type) in accepted_class_typees
+            assert arg_dict.get(kw.obj_type) in accepted_obj_typees
 
 
 def test_get_moment_dimens_ReturnsObj():
@@ -138,7 +138,7 @@ def test_get_moment_args_dimen_mapping_ReturnsObj():
     assert len(x_moment_args_dimen_mapping) == 24
 
 
-def get_moment_class_type(x_dimen: str, x_arg: str) -> str:
+def get_moment_obj_type(x_dimen: str, x_arg: str) -> str:
     moment_config_dict = get_moment_config_dict()
     dimen_dict = moment_config_dict.get(x_dimen)
     jvalues_dict = dimen_dict.get(kw.jvalues)
@@ -148,33 +148,33 @@ def get_moment_class_type(x_dimen: str, x_arg: str) -> str:
         arg_dict = dimen_dict.get(kw.jvalues).get(x_arg)
     if jkeys_dict.get(x_arg):
         arg_dict = jkeys_dict.get(x_arg)
-    return arg_dict.get(kw.class_type)
+    return arg_dict.get(kw.obj_type)
 
 
-def all_args_class_types_are_correct(x_class_types) -> bool:
+def all_args_obj_types_are_correct(x_obj_types) -> bool:
     x_moment_args_dimen_mapping = get_moment_args_dimen_mapping()
-    x_sorted_class_types = sorted(list(x_class_types.keys()))
-    for x_moment_arg in x_sorted_class_types:
+    x_sorted_obj_types = sorted(list(x_obj_types.keys()))
+    for x_moment_arg in x_sorted_obj_types:
         x_dimens = list(x_moment_args_dimen_mapping.get(x_moment_arg))
         x_dimen = x_dimens[0]
-        x_class_type = get_moment_class_type(x_dimen, x_moment_arg)
+        x_obj_type = get_moment_obj_type(x_dimen, x_moment_arg)
         print(
-            f"assert x_class_types.get({x_moment_arg}) == {x_class_type} {x_class_types.get(x_moment_arg)=}"
+            f"assert x_obj_types.get({x_moment_arg}) == {x_obj_type} {x_obj_types.get(x_moment_arg)=}"
         )
-        if x_class_types.get(x_moment_arg) != x_class_type:
+        if x_obj_types.get(x_moment_arg) != x_obj_type:
             return False
     return True
 
 
-def test_get_moment_args_class_types_ReturnsObj():
+def test_get_moment_args_obj_types_ReturnsObj():
     # ESTABLISH / WHEN
-    moment_args_class_types = get_moment_args_class_types()
+    moment_args_obj_types = get_moment_args_obj_types()
 
     # THEN
     moment_args_from_dimens = set(get_moment_args_dimen_mapping().keys())
     print(f"{moment_args_from_dimens=}")
-    assert set(moment_args_class_types.keys()) == moment_args_from_dimens
-    assert all_args_class_types_are_correct(moment_args_class_types)
+    assert set(moment_args_obj_types.keys()) == moment_args_from_dimens
+    assert all_args_obj_types_are_correct(moment_args_obj_types)
 
 
 def test_get_moment_args_set_ReturnsObj():

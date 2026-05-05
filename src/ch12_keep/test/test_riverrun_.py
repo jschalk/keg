@@ -27,7 +27,7 @@ def test_RiverRun_Exists():
     # calculated fields
     assert not x_riverrun.rivergrades
     assert not x_riverrun.cares
-    assert not x_riverrun.need_yields
+    assert not x_riverrun.need_results
     assert not x_riverrun.need_got_prev
     assert not x_riverrun.need_got_curr
     assert not x_riverrun.cycle_count
@@ -49,7 +49,7 @@ def test_RiverRun_Exists():
         kw.cycle_max,
         kw.rivergrades,
         kw.cares,
-        kw.need_yields,
+        kw.need_results,
         kw.need_got_prev,
         kw.need_got_curr,
         kw.cycle_count,
@@ -123,7 +123,7 @@ def test_riverrun_shop_ReturnsObj_Scenario0_WithArgs(temp3_dir):
     assert x_riverrun.cycle_max == x_cycle_max
     assert x_riverrun.rivergrades == {}
     assert x_riverrun.cares == {}
-    assert x_riverrun.need_yields == {}
+    assert x_riverrun.need_results == {}
     assert x_riverrun.need_got_prev == 0
     assert x_riverrun.need_got_curr == 0
     assert x_riverrun.cycle_count == 0
@@ -155,7 +155,7 @@ def test_riverrun_shop_ReturnsObj_Scenario1_WithoutArgs(temp3_dir):
     assert x_riverrun.need_dues == {}
     assert x_riverrun.rivergrades == {}
     assert x_riverrun.cares == {}
-    assert x_riverrun.need_yields == {}
+    assert x_riverrun.need_results == {}
     assert x_riverrun.cycle_count == 0
     assert x_riverrun.cycle_max == 10
 

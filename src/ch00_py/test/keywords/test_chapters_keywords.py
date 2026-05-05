@@ -6,6 +6,7 @@ from ch00_py.chapter_desc_main import (
 )
 from ch00_py.file_toolbox import open_file, save_file
 from ch00_py.keyword_class_builder import (
+    check_relative_order,
     create_all_enum_keyword_classes_str,
     create_examplestrs_class_str,
     create_keywords_enum_class_file_str,
@@ -17,6 +18,7 @@ from ch00_py.keyword_class_builder import (
     get_possible_keyword_config_keys,
 )
 from ref.keywords import Ch00Keywords as kw
+from ref.sorter import get_keg_elements_sort_order
 
 
 def test_get_chapter_desc_prefix_ReturnsObj():
@@ -61,7 +63,12 @@ def test_get_possible_keyword_config_keys_ReturnsObj():
     # ESTABLISH / WHEN
     req_config_keys = get_possible_keyword_config_keys()
     # THEN
-    assert req_config_keys == {kw.init_chapter, kw.semantic_type, kw.exam_tier}
+    assert req_config_keys == {
+        kw.init_chapter,
+        kw.semantic_type,
+        kw.exam_tier,
+        "sort_ordinal",
+    }
 
 
 def test_get_keywords_src_config_ReturnsObj():
@@ -216,3 +223,122 @@ def test_SpecialTestThatBuildsKeywordEnumClasses():
     prev_and_curr_classes_file_are_same = enum_classes_str == current_classes_file_str
     assertion_failure_str = "Special case: keywords.py was changed. Run test again."
     assert prev_and_curr_classes_file_are_same, assertion_failure_str
+
+
+def test_check_relative_order_ReturnsTuple_ScenarioValidOrder_PreservesRelativeOrdering():
+    # ESTABLISH
+    full = ['a', 'b', 'c', 'd', 'e']
+    subset = ['a', 'c', 'e']
+
+    # WHEN
+    ok, msg = check_relative_order(subset, full)
+
+    # THEN
+    assert ok is True
+    assert msg == ""
+
+
+def test_check_relative_order_ReturnsTuple_ScenarioInvalidOrder_ReturnsExpectedOrderingMessage():
+    # ESTABLISH
+    full = ['a', 'b', 'c', 'd', 'e']
+    subset = ['b', 'e', 'c']
+
+    # WHEN
+    ok, msg = check_relative_order(subset, full)
+
+    # THEN
+    assert ok is False
+    assert "Incorrect order" in msg
+    assert "['b', 'c', 'e']" in msg
+
+
+def test_check_relative_order_ReturnsTuple_ScenarioSingleElementSubset_AlwaysValid():
+    # ESTABLISH
+    full = ['a', 'b', 'c']
+    subset = ['b']
+
+    # WHEN
+    ok, msg = check_relative_order(subset, full)
+
+    # THEN
+    assert ok is True
+    assert msg == ""
+
+
+def test_check_relative_order_ReturnsTuple_ScenarioEmptySubset_AlwaysValid():
+    # ESTABLISH
+    full = ['a', 'b', 'c']
+    subset = []
+
+    # WHEN
+    ok, msg = check_relative_order(subset, full)
+
+    # THEN
+    assert ok is True
+    assert msg == ""
+
+
+def test_check_relative_order_ReturnsTuple_ScenarioElementMissing_ReturnsErrorMessage():
+    # ESTABLISH
+    full = ['a', 'b', 'c']
+    subset = ['a', 'x']
+
+    # WHEN
+    ok, msg = check_relative_order(subset, full)
+
+    # THEN
+    assert ok is False
+    assert "not found in full list" in msg
+    assert "'x'" in msg
+
+
+def test_check_relative_order_ReturnsTuple_ScenarioSubsetEqualsFullList_OrderIsValid():
+    # ESTABLISH
+    full = ['a', 'b', 'c']
+    subset = ['a', 'b', 'c']
+
+    # WHEN
+    ok, msg = check_relative_order(subset, full)
+
+    # THEN
+    assert ok is True
+    assert msg == ""
+
+
+def test_get_keg_elements_sort_order_Scenario0_AllElementsAre_keywords():
+    # sourcery skip: no-conditionals-in-tests
+    # ESTABLISH / WHEN / THEN
+    keywords_set = set(get_keywords_src_config())
+    missing_elements = {
+        keyword
+        for keyword in get_keg_elements_sort_order()
+        if keyword not in keywords_set
+    }
+    x_count = 0
+    ch_num = "17"
+    for missing_element in sorted(missing_elements):
+        x_count += 1
+        print(
+            f""""{missing_element}": {{"{kw.exam_tier}": 0, "{kw.init_chapter}": "ch{ch_num}"}},"""
+        )
+    print(f"{x_count} elements")
+    assert set(get_keg_elements_sort_order()).issubset(keywords_set)
+
+
+# def test_get_keg_elements_sort_order_Scenario0_AllElementsAre_keywords():
+#     # sourcery skip: no-conditionals-in-tests
+#     # ESTABLISH
+#     keywords_src_config = get_keywords_src_config()
+#     # WHEN / THEN
+#     missing_elements = {
+#         keyword
+#         for keyword in get_keg_elements_sort_order()
+#         if keyword not in keywords_set
+#     }
+#     ch_num = 17
+#     x_count = 0
+#     for missing_element in sorted(missing_elements):
+#         x_count += 1
+#         print(f""""{missing_element}": {{"exam_tier": 0, "init_chapter": "ch{ch_num}"}},""")
+#     print(f"{x_count} elements")
+#     assert set(get_keg_elements_sort_order()).issubset(keywords_set)

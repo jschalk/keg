@@ -11,8 +11,8 @@ from ch09_person_lesson._ref.ch09_path import (
 )
 from ch09_person_lesson.lasso import LassoUnit, lassounit_shop
 from ch16_translate.translate_config import (
-    get_translate_args_class_types,
-    translateable_class_types,
+    get_translate_args_obj_types,
+    translateable_obj_types,
 )
 from ch18_etl_config._ref.ch18_path import create_moment_ote1_csv_path
 from ch18_etl_config.etl_csv import save_to_split_csvs
@@ -33,15 +33,15 @@ from sqlite3 import Connection as sqlite3_Connection, Cursor as sqlite3_Cursor
 
 
 def set_all_heard_raw_inx_columns(cursor: sqlite3_Cursor):
-    translate_args = get_translate_args_class_types()
+    translate_args = get_translate_args_obj_types()
     for heard_raw_tablename, otx_columnname in get_all_heard_raw_otx_columns(cursor):
         columnname_without_otx = otx_columnname[:-4]
         x_arg = copy_copy(columnname_without_otx)
         if x_arg[-5:] == "ERASE":
             x_arg = x_arg[:-6]
-        arg_class_type = translate_args.get(x_arg)
+        arg_obj_type = translate_args.get(x_arg)
         set_heard_raw_inx_column(
-            cursor, heard_raw_tablename, columnname_without_otx, arg_class_type
+            cursor, heard_raw_tablename, columnname_without_otx, arg_obj_type
         )
 
 
@@ -60,17 +60,17 @@ def set_heard_raw_inx_column(
     cursor: sqlite3_Cursor,
     heard_raw_tablename: str,
     column_without_otx: str,
-    arg_class_type: str,
+    arg_obj_type: str,
 ):
-    if arg_class_type in translateable_class_types():
+    if arg_obj_type in translateable_obj_types():
         translate_type_abbv = None
-        if arg_class_type == "NameTerm":
+        if arg_obj_type == "NameTerm":
             translate_type_abbv = "name"
-        elif arg_class_type == "TitleTerm":
+        elif arg_obj_type == "TitleTerm":
             translate_type_abbv = "title"
-        elif arg_class_type == "LabelTerm":
+        elif arg_obj_type == "LabelTerm":
             translate_type_abbv = "label"
-        elif arg_class_type == "RopeTerm":
+        elif arg_obj_type == "RopeTerm":
             translate_type_abbv = "rope"
         update_calc_inx_sqlstr = create_update_heard_raw_existing_inx_col_sqlstr(
             translate_type_abbv, heard_raw_tablename, column_without_otx

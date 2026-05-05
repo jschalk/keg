@@ -1,11 +1,7 @@
 from ch00_py.file_toolbox import create_path, save_json
 from ch04_rope.rope import create_rope, to_rope
 from ch16_translate.test._util.ch16_examples import (
-    get_casa_maison_rope_inx_dt,
-    get_casa_maison_rope_otx_dt,
     get_casa_maison_translateunit_set_by_label,
-    get_suita_contact_name_inx_dt,
-    get_suita_contact_name_otx_dt,
     get_suita_namemap,
 )
 from ch16_translate.translate_config import get_translate_filename
@@ -14,6 +10,12 @@ from ch17_brick.brick_db_tool import (
     move_otx_csvs_to_translate_inx,
     open_csv,
     save_dataframe_to_csv,
+)
+from ch17_brick.test._util.ch17_examples import (
+    get_casa_maison_rope_inx_dt,
+    get_casa_maison_rope_otx_dt,
+    get_suita_contact_name_inx_dt,
+    get_suita_contact_name_otx_dt,
 )
 from os.path import exists as os_path_exists
 from pandas import DataFrame

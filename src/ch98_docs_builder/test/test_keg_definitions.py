@@ -413,8 +413,10 @@ def test_get_keg_definitions_ReturnsObj_HasAllkeywords():
     description_keywords = set(keg_definitions.keys())
     expected_keg_keys = set(keywords_config.keys())
     expected_keg_keys.update(python_keywords())
-    print(f"{expected_keg_keys.difference(description_keywords)=}")
-    print(f"{description_keywords.difference(expected_keg_keys)=}")
+    missing_keg_definitions = expected_keg_keys.difference(description_keywords)
+    for missing_keg_definition in sorted(missing_keg_definitions):
+        print(f""""{missing_keg_definition}": "TODO",""")
+    # print(f"{description_keywords.difference(expected_keg_keys)=}")
     expected_keg_keys.update(set(get_example_strs_config().keys()))
     assert set(keg_definitions.keys()) == expected_keg_keys
     for keyword, description in keg_definitions.items():

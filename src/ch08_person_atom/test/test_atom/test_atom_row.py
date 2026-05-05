@@ -1,5 +1,5 @@
 from ch04_rope.rope import create_rope, to_rope
-from ch08_person_atom.atom_config import get_atom_args_class_types
+from ch08_person_atom.atom_config import get_atom_args_obj_types
 from ch08_person_atom.atom_main import AtomRow, atomrow_shop, personatom_shop
 from ref.keywords import Ch08Keywords as kw
 
@@ -52,11 +52,11 @@ def test_AtomRow_Exists():
     assert x_atomrow.take_force is None
 
     print(f"{set(x_atomrow.__dict__.keys())=}")
-    print(f"{set(get_atom_args_class_types().keys())=}")
+    print(f"{set(get_atom_args_obj_types().keys())=}")
     atomrow_args_set = set(x_atomrow.__dict__.keys())
     atomrow_args_set.remove("_atom_dimens")
     atomrow_args_set.remove("_crud_command")
-    config_args_set = set(get_atom_args_class_types().keys())
+    config_args_set = set(get_atom_args_obj_types().keys())
     assert atomrow_args_set == config_args_set
 
 
@@ -114,7 +114,7 @@ def test_AtomRow_delete_atom_dimen_SetsAttr():
     assert not x_atomrow.atom_dimen_exists(kw.person_contact_membership)
 
 
-def test_AtomRow_set_class_types_SetsAttr():
+def test_AtomRow_set_obj_types_SetsAttr():
     # ESTABLISH
     x_atomrow = atomrow_shop({}, kw.INSERT)
     x_atomrow.close = "4"
@@ -131,7 +131,7 @@ def test_AtomRow_set_class_types_SetsAttr():
     assert x_atomrow.morph == x_morph_str
 
     # WHEN
-    x_atomrow._set_class_types()
+    x_atomrow._set_obj_types()
 
     # THEN
     assert x_atomrow.close == four_int

@@ -2,7 +2,6 @@ from ch00_py.file_toolbox import create_path, get_dir_file_strs
 from ch17_brick.brick_config import (
     BrickFormatsEnum,
     get_brick_config_dict,
-    get_brick_elements_sort_order,
     get_brick_format_filenames,
     get_brick_format_headers,
     get_brick_formats_dir,
@@ -18,6 +17,7 @@ from ch17_brick.brick_dataframe import (
 )
 from ch17_brick.test.test_brick_.test__brick_config import change_erase_attrs
 from ref.keywords import Ch17Keywords as kw
+from ref.sorter import get_keg_elements_sort_order
 
 
 def test_config_str_functions_ReturnsObj():
@@ -85,7 +85,7 @@ def get_sorted_headers_str(brick_filename):
     brick_attributes.remove(kw.spark_face)
     brick_attributes.remove(kw.spark_num)
     # print(f"{brick_attributes=}")
-    attr_sort = get_brick_elements_sort_order()
+    attr_sort = get_keg_elements_sort_order()
     brick_attributes = get_default_sorted_list(brick_attributes, attr_sort)
     # print(f"{brick_attributes=}")
     header_str = "".join(f",{x_header}" for x_header in brick_attributes)

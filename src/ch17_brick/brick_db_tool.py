@@ -17,13 +17,12 @@ from ch00_py.file_toolbox import (
 )
 from ch16_translate.map_term import MapCore
 from ch16_translate.translate_config import (
-    get_translate_args_class_types,
+    get_translate_args_obj_types,
     get_translateable_args,
 )
 from ch16_translate.translate_main import TranslateUnit, get_translateunit_from_dict
 from ch17_brick._ref.ch17_semantic_types import FaceName, SparkInt
 from ch17_brick.brick_config import (
-    get_brick_elements_sort_order,
     get_brick_sqlite_types,
     get_default_sorted_list,
 )
@@ -43,6 +42,7 @@ from pandas import (
     to_datetime as pandas_to_datetime,
     to_numeric as pandas_to_numeric,
 )
+from ref.sorter import get_keg_elements_sort_order
 from sqlite3 import Connection as sqlite3_Connection, Cursor as sqlite3_Cursor
 
 
@@ -98,7 +98,7 @@ def get_relevant_columns_dataframe(
     src_df: DataFrame, relevant_columns: list[str] = None
 ) -> DataFrame:
     if relevant_columns is None:
-        relevant_columns = get_brick_elements_sort_order()
+        relevant_columns = get_keg_elements_sort_order()
     current_columns = set(src_df.columns.to_list())
     relevant_columns_set = set(relevant_columns)
     current_relevant_columns = current_columns & (relevant_columns_set)
@@ -133,8 +133,8 @@ def translate_all_columns_dataframe(x_df: DataFrame, x_translateunit: TranslateU
     column_names = set(x_df.columns)
     translateable_columns = column_names & (get_translateable_args())
     for translateable_column in translateable_columns:
-        class_type = get_translate_args_class_types().get(translateable_column)
-        x_mapunit = x_translateunit.get_mapunit(class_type)
+        obj_type = get_translate_args_obj_types().get(translateable_column)
+        x_mapunit = x_translateunit.get_mapunit(obj_type)
         translate_single_column_dataframe(x_df, x_mapunit, translateable_column)
 
 

@@ -157,7 +157,7 @@ def test_RiverRun_calc_metrics_SetsAttrsScenario04(temp3_dir):
     assert x_riverrun.get_contact_need_due(exx.yao) == 0
     assert x_riverrun.get_contact_need_due(exx.bob) == keep_mana_amount * 0.25
     assert x_riverrun.get_contact_need_due(exx.sue) == 0
-    assert x_riverrun.get_contact_need_yield(exx.sue) == keep_mana_amount * 0.75
+    assert x_riverrun.get_contact_need_result(exx.sue) == keep_mana_amount * 0.75
     assert x_riverrun.cycle_count == 2
     assert x_riverrun.doctor_count == 2
     assert x_riverrun.patient_count == 2
@@ -189,14 +189,14 @@ def test_RiverRun_calc_metrics_SetsAttrsScenario05(temp3_dir):
     x_riverrun.set_need_dues({exx.yao: 1})
     keep_mana_amount = x_riverrun.keep_point_magnitude
     assert x_riverrun.get_contact_need_due(exx.yao) == keep_mana_amount
-    assert x_riverrun.get_contact_need_yield(exx.yao) == 0
+    assert x_riverrun.get_contact_need_result(exx.yao) == 0
 
     # WHEN
     x_riverrun.calc_metrics()
 
     # THEN
     assert x_riverrun.get_contact_need_due(exx.yao) == 0
-    assert x_riverrun.get_contact_need_yield(exx.yao) == keep_mana_amount
+    assert x_riverrun.get_contact_need_result(exx.yao) == keep_mana_amount
     assert x_riverrun.cycle_count == 2
     assert x_riverrun.doctor_count == 1
     assert x_riverrun.patient_count == 1
@@ -212,7 +212,7 @@ def test_RiverRun_calc_metrics_SetsAttrsScenario05(temp3_dir):
     assert yao_rivergrade.need_paid_bool
 
 
-def test_RiverRun_calc_metrics_Resets_need_yield(temp3_dir):
+def test_RiverRun_calc_metrics_Resets_need_result(temp3_dir):
     # ESTABLISH / WHEN
     mstr_dir = temp3_dir
     yao_contact_cred_lumen = 500
@@ -222,14 +222,14 @@ def test_RiverRun_calc_metrics_Resets_need_yield(temp3_dir):
     keep_mana_amount = x_riverrun.keep_point_magnitude
     x_riverrun.calc_metrics()
     assert x_riverrun.get_contact_need_due(exx.yao) == 0
-    assert x_riverrun.get_contact_need_yield(exx.yao) == keep_mana_amount
+    assert x_riverrun.get_contact_need_result(exx.yao) == keep_mana_amount
 
     # WHEN
     x_riverrun.calc_metrics()
 
     # THEN
     assert x_riverrun.get_contact_need_due(exx.yao) == 0
-    assert x_riverrun.get_contact_need_yield(exx.yao) == keep_mana_amount
+    assert x_riverrun.get_contact_need_result(exx.yao) == keep_mana_amount
 
 
 def test_RiverRun_calc_metrics_EndsRiverCycleLoopIfNoDifferencesBetweenCycles(

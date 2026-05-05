@@ -632,7 +632,9 @@
 
 
 # def test_add_frame_to_factunit_SetsAttr__Scenario1_Wrap():
-#     # ESTABLISH
+# context_plan_denom
+# context_plan_morph
+#      # ESTABLISH
 #     bob_person = get_bob_two_person()
 #     x_lower_min = 7777
 #     x_upper_min = 8000
@@ -651,7 +653,7 @@
 #     assert root_two_fact.fact_upper == x_upper_min
 
 #     # WHEN
-#     add_frame_to_factunit(root_two_fact, x__frame_min, _plan.close)
+#     add_frame_to_factunit(root_two_fact, x__frame_min, context_plan_close=_plan.close)
 
 #     # THEN
 #     assert root_two_fact.fact_lower != x_lower_min

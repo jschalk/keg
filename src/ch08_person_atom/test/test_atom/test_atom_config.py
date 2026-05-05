@@ -4,9 +4,9 @@ from ch08_person_atom._ref.ch08_semantic_types import CRUD_command
 from ch08_person_atom.atom_config import (
     get_all_person_dimen_delete_keys,
     get_all_person_dimen_keys,
-    get_allowed_class_types,
-    get_atom_args_class_types,
+    get_allowed_obj_types,
     get_atom_args_dimen_mapping,
+    get_atom_args_obj_types,
     get_atom_config_dict,
     get_atom_order as q_order,
     get_delete_key_name,
@@ -71,6 +71,19 @@ def test_get_all_person_dimen_delete_keys_ReturnsObj():
     }
     print(f"{expected_person_delete_keys=}")
     assert all_person_dimen_delete_keys == expected_person_delete_keys
+    expected_enum_keywords = {
+        kw.contact_name_ERASE,
+        kw.awardee_title_ERASE,
+        kw.reason_context_ERASE,
+        kw.fact_context_ERASE,
+        kw.group_title_ERASE,
+        kw.healer_name_ERASE,
+        kw.reason_state_ERASE,
+        kw.person_name_ERASE,
+        kw.plan_rope_ERASE,
+        kw.labor_title_ERASE,
+    }
+    assert all_person_dimen_delete_keys == expected_enum_keywords
 
 
 def test_get_atom_config_dict_ReturnsObj_Mirrors_person_config():
@@ -203,10 +216,12 @@ def person_config_jkeys(person_config: dict[str, dict], dimen: str) -> set[str]:
 
 def person_config_jvalues(person_config: dict[str, dict], dimen: str) -> set[str]:
     """Return expected atom_config jvalues from person_config"""
-    expected_jvalues = set()
-    for jvalue_arg, jvalue_dict in person_config.get(dimen).get(kw.jvalues).items():
-        if jvalue_dict.get("calc_by_thinkout") == False:
-            expected_jvalues.add(jvalue_arg)
+    dimen_jvalues = person_config.get(dimen).get(kw.jvalues)
+    expected_jvalues = {
+        jvalue_arg
+        for jvalue_arg, jvalue_dict in dimen_jvalues.items()
+        if jvalue_dict.get("calc_by_thinkout") == False
+    }
     if kw.knot in expected_jvalues:
         expected_jvalues.remove(kw.knot)
     return expected_jvalues
@@ -304,7 +319,7 @@ def test_get_atom_config_dict_CheckEachDimenArgCount():
 
 
 def _has_every_element(x_arg, x_dict) -> bool:
-    arg_elements = {kw.class_type, kw.sqlite_datatype, kw.column_ordinal}
+    arg_elements = {kw.obj_type, kw.sqlite_datatype, kw.column_ordinal}
     for arg_element in arg_elements:
         if x_dict.get(arg_element) is None:
             print(f"{arg_element} failed for {x_arg=}")
@@ -330,7 +345,7 @@ def check_every_arg_dict_has_elements(atom_config_dict):
     return True
 
 
-def test_atom_config_AllArgsHave_class_type_sqlite_datatype():
+def test_atom_config_AllArgsHave_obj_type_sqlite_datatype():
     # ESTABLISH / WHEN / THEN
     assert check_every_arg_dict_has_elements(get_atom_config_dict())
 
@@ -598,7 +613,7 @@ def test_get_atom_args_dimen_mapping_ReturnsObj():
     assert len(x_atom_args_dimen_mapping) == 41
 
 
-def get_class_type(x_dimen: str, x_arg: str) -> str:
+def get_obj_type(x_dimen: str, x_arg: str) -> str:
     atom_config_dict = get_atom_config_dict()
     dimen_dict = atom_config_dict.get(x_dimen)
     optional_dict = dimen_dict.get(kw.jvalues)
@@ -608,18 +623,18 @@ def get_class_type(x_dimen: str, x_arg: str) -> str:
         arg_dict = dimen_dict.get(kw.jvalues).get(x_arg)
     if required_dict.get(x_arg):
         arg_dict = required_dict.get(x_arg)
-    return arg_dict.get(kw.class_type)
+    return arg_dict.get(kw.obj_type)
 
 
-def test_get_class_type_ReturnsObj():
+def test_get_obj_type_ReturnsObj():
     # ESTABLISH / WHEN / THEN
-    assert get_class_type(kw.person_contactunit, kw.contact_name) == kw.NameTerm
-    assert get_class_type(kw.person_planunit, kw.gogo_want) == "float"
+    assert get_obj_type(kw.person_contactunit, kw.contact_name) == kw.NameTerm
+    assert get_obj_type(kw.person_planunit, kw.gogo_want) == "float"
 
 
-def test_get_allowed_class_types_ReturnsObj():
+def test_get_allowed_obj_types_ReturnsObj():
     # ESTABLISH
-    x_allowed_class_types = {
+    x_allowed_obj_types = {
         "int",
         kw.ReasonNum,
         kw.FactNum,
@@ -633,96 +648,96 @@ def test_get_allowed_class_types_ReturnsObj():
     }
 
     # WHEN / THEN
-    assert get_allowed_class_types() == x_allowed_class_types
+    assert get_allowed_obj_types() == x_allowed_obj_types
 
 
 def test_get_atom_config_dict_ValidatePythonTypes():
     # make sure all atom config python types are valid and repeated args are the same
     # ESTABLISH WHEN / THEN
-    assert all_atom_config_class_types_are_valid(get_allowed_class_types())
+    assert all_atom_config_obj_types_are_valid(get_allowed_obj_types())
 
 
-def all_atom_config_class_types_are_valid(allowed_class_types):
+def all_atom_config_obj_types_are_valid(allowed_obj_types):
     x_atom_args_dimen_mapping = get_atom_args_dimen_mapping()
     for x_atom_arg, dimens in x_atom_args_dimen_mapping.items():
-        old_class_type = None
-        x_class_type = ""
+        old_obj_type = None
+        x_obj_type = ""
         for x_dimen in dimens:
-            x_class_type = get_class_type(x_dimen, x_atom_arg)
-            # print(f"{x_class_type=} {x_atom_arg=} {x_dimen=}")
-            if x_class_type not in allowed_class_types:
+            x_obj_type = get_obj_type(x_dimen, x_atom_arg)
+            # print(f"{x_obj_type=} {x_atom_arg=} {x_dimen=}")
+            if x_obj_type not in allowed_obj_types:
                 return False
 
-            if old_class_type is None:
-                old_class_type = x_class_type
+            if old_obj_type is None:
+                old_obj_type = x_obj_type
             # confirm each atom_arg has same data type in all dimens
-            print(f"{x_class_type=} {old_class_type=} {x_atom_arg=} {x_dimen=}")
-            if x_class_type != old_class_type:
+            print(f"{x_obj_type=} {old_obj_type=} {x_atom_arg=} {x_dimen=}")
+            if x_obj_type != old_obj_type:
                 return False
-            old_class_type = x_class_type
+            old_obj_type = x_obj_type
     return True
 
 
-def all_atom_args_class_types_are_correct(x_class_types) -> bool:
+def all_atom_args_obj_types_are_correct(x_obj_types) -> bool:
     x_atom_args_dimen_mapping = get_atom_args_dimen_mapping()
-    x_sorted_class_types = sorted(list(x_class_types.keys()))
-    for x_atom_arg in x_sorted_class_types:
+    x_sorted_obj_types = sorted(list(x_obj_types.keys()))
+    for x_atom_arg in x_sorted_obj_types:
         x_dimens = list(x_atom_args_dimen_mapping.get(x_atom_arg))
         x_dimen = x_dimens[0]
-        x_class_type = get_class_type(x_dimen, x_atom_arg)
+        x_obj_type = get_obj_type(x_dimen, x_atom_arg)
         print(
-            f"assert x_class_types.get({x_atom_arg}) == {x_class_type} {x_class_types.get(x_atom_arg)=}"
+            f"assert x_obj_types.get({x_atom_arg}) == {x_obj_type} {x_obj_types.get(x_atom_arg)=}"
         )
-        if x_class_types.get(x_atom_arg) != x_class_type:
+        if x_obj_types.get(x_atom_arg) != x_obj_type:
             return False
     return True
 
 
-def test_get_atom_args_class_types_ReturnsObj():
+def test_get_atom_args_obj_types_ReturnsObj():
     # ESTABLISH / WHEN
-    x_class_types = get_atom_args_class_types()
+    x_obj_types = get_atom_args_obj_types()
 
     # THEN
-    assert x_class_types.get(kw.contact_name) == kw.NameTerm
-    assert x_class_types.get(kw.addin) == "float"
-    assert x_class_types.get(kw.awardee_title) == kw.TitleTerm
-    assert x_class_types.get(kw.reason_context) == kw.RopeTerm
-    assert x_class_types.get(kw.active_requisite) == "bool"
-    assert x_class_types.get(kw.begin) == "float"
-    assert x_class_types.get(kw.respect_grain) == "float"
-    assert x_class_types.get(kw.close) == "float"
-    assert x_class_types.get(kw.contact_cred_lumen) == "float"
-    assert x_class_types.get(kw.group_cred_lumen) == "float"
-    assert x_class_types.get(kw.credor_respect) == "float"
-    assert x_class_types.get(kw.contact_debt_lumen) == "float"
-    assert x_class_types.get(kw.group_debt_lumen) == "float"
-    assert x_class_types.get(kw.debtor_respect) == "float"
-    assert x_class_types.get(kw.denom) == "int"
-    assert x_class_types.get(kw.reason_divisor) == "int"
-    assert x_class_types.get(kw.fact_context) == kw.RopeTerm
-    assert x_class_types.get(kw.fact_upper) == kw.FactNum
-    assert x_class_types.get(kw.fact_lower) == kw.FactNum
-    assert x_class_types.get(kw.fund_grain) == "float"
-    assert x_class_types.get(kw.fund_pool) == "float"
-    assert x_class_types.get(kw.give_force) == "float"
-    assert x_class_types.get(kw.gogo_want) == "float"
-    assert x_class_types.get(kw.group_title) == kw.TitleTerm
-    assert x_class_types.get(kw.healer_name) == kw.NameTerm
-    assert x_class_types.get(kw.star) == "int"
-    assert x_class_types.get(kw.max_tree_traverse) == "int"
-    assert x_class_types.get(kw.morph) == "bool"
-    assert x_class_types.get(kw.reason_state) == kw.RopeTerm
-    assert x_class_types.get(kw.reason_upper) == kw.ReasonNum
-    assert x_class_types.get(kw.numor) == "int"
-    assert x_class_types.get(kw.reason_lower) == kw.ReasonNum
-    assert x_class_types.get(kw.mana_grain) == "float"
-    assert x_class_types.get(kw.fact_state) == kw.RopeTerm
-    assert x_class_types.get(kw.pledge) == "bool"
-    assert x_class_types.get(kw.problem_bool) == "bool"
-    assert x_class_types.get(kw.plan_rope) == kw.RopeTerm
-    assert x_class_types.get(kw.solo) == "int"
-    assert x_class_types.get(kw.stop_want) == "float"
-    assert x_class_types.get(kw.take_force) == "float"
-    assert x_class_types.get(kw.labor_title) == kw.TitleTerm
-    assert x_class_types.keys() == get_atom_args_dimen_mapping().keys()
-    assert all_atom_args_class_types_are_correct(x_class_types)
+    assert x_obj_types.get(kw.contact_name) == kw.NameTerm
+    assert x_obj_types.get(kw.addin) == "float"
+    assert x_obj_types.get(kw.awardee_title) == kw.TitleTerm
+    assert x_obj_types.get(kw.reason_context) == kw.RopeTerm
+    assert x_obj_types.get(kw.active_requisite) == "bool"
+    assert x_obj_types.get(kw.begin) == "float"
+    assert x_obj_types.get(kw.respect_grain) == "float"
+    assert x_obj_types.get(kw.close) == "float"
+    assert x_obj_types.get(kw.contact_cred_lumen) == "float"
+    assert x_obj_types.get(kw.group_cred_lumen) == "float"
+    assert x_obj_types.get(kw.credor_respect) == "float"
+    assert x_obj_types.get(kw.contact_debt_lumen) == "float"
+    assert x_obj_types.get(kw.group_debt_lumen) == "float"
+    assert x_obj_types.get(kw.debtor_respect) == "float"
+    assert x_obj_types.get(kw.denom) == "int"
+    assert x_obj_types.get(kw.reason_divisor) == "int"
+    assert x_obj_types.get(kw.fact_context) == kw.RopeTerm
+    assert x_obj_types.get(kw.fact_upper) == kw.FactNum
+    assert x_obj_types.get(kw.fact_lower) == kw.FactNum
+    assert x_obj_types.get(kw.fund_grain) == "float"
+    assert x_obj_types.get(kw.fund_pool) == "float"
+    assert x_obj_types.get(kw.give_force) == "float"
+    assert x_obj_types.get(kw.gogo_want) == "float"
+    assert x_obj_types.get(kw.group_title) == kw.TitleTerm
+    assert x_obj_types.get(kw.healer_name) == kw.NameTerm
+    assert x_obj_types.get(kw.star) == "int"
+    assert x_obj_types.get(kw.max_tree_traverse) == "int"
+    assert x_obj_types.get(kw.morph) == "bool"
+    assert x_obj_types.get(kw.reason_state) == kw.RopeTerm
+    assert x_obj_types.get(kw.reason_upper) == kw.ReasonNum
+    assert x_obj_types.get(kw.numor) == "int"
+    assert x_obj_types.get(kw.reason_lower) == kw.ReasonNum
+    assert x_obj_types.get(kw.mana_grain) == "float"
+    assert x_obj_types.get(kw.fact_state) == kw.RopeTerm
+    assert x_obj_types.get(kw.pledge) == "bool"
+    assert x_obj_types.get(kw.problem_bool) == "bool"
+    assert x_obj_types.get(kw.plan_rope) == kw.RopeTerm
+    assert x_obj_types.get(kw.solo) == "int"
+    assert x_obj_types.get(kw.stop_want) == "float"
+    assert x_obj_types.get(kw.take_force) == "float"
+    assert x_obj_types.get(kw.labor_title) == kw.TitleTerm
+    assert x_obj_types.keys() == get_atom_args_dimen_mapping().keys()
+    assert all_atom_args_obj_types_are_correct(x_obj_types)

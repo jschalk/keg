@@ -45,7 +45,7 @@ def get_atom_args_dimen_mapping() -> dict[str, set[str]]:
     return x_dict
 
 
-def get_allowed_class_types() -> set[str]:
+def get_allowed_obj_types() -> set[str]:
     return {
         "NameTerm",
         "bool",
@@ -60,7 +60,7 @@ def get_allowed_class_types() -> set[str]:
     }
 
 
-def get_atom_args_class_types() -> dict[str, str]:
+def get_atom_args_obj_types() -> dict[str, str]:
     return {
         "contact_name": "NameTerm",
         "addin": "float",

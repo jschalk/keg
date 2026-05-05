@@ -65,7 +65,7 @@ def get_translate_args_dimen_mapping() -> dict[str, str]:
     return x_dict
 
 
-def get_translate_args_class_types() -> dict[str, str]:
+def get_translate_args_obj_types() -> dict[str, str]:
     return {
         "active_requisite": "bool",
         "addin": "float",
@@ -166,7 +166,7 @@ def get_translates_column_ref() -> dict[str, set[str]]:
     }
 
 
-def translateable_class_types() -> set:
+def translateable_obj_types() -> set:
     return {"NameTerm", "TitleTerm", "LabelTerm", "RopeTerm"}
 
 

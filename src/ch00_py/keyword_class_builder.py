@@ -7,6 +7,7 @@ from ch00_py.file_toolbox import create_path, open_json, save_file
 from copy import copy as copy_copy
 from enum import Enum
 from re import fullmatch as re_fullmatch
+from typing import Any, List, Tuple
 
 
 def get_example_strs_config() -> dict[str, dict]:
@@ -18,7 +19,7 @@ def get_keywords_src_config() -> dict[str, dict]:
 
 
 def get_possible_keyword_config_keys() -> set:
-    return {"init_chapter", "semantic_type", "exam_tier"}
+    return {"init_chapter", "semantic_type", "exam_tier", "sort_ordinal"}
 
 
 def get_keywords_by_chapter(keywords_dict: dict[str, dict[str]]) -> dict:
@@ -121,3 +122,18 @@ def get_keywords_by_chapter_md() -> str:
 def save_keywords_by_chapter_md(x_dir: str):
     keywords_by_chapter_md_path = create_path(x_dir, "keywords_by_chapter.md")
     save_file(keywords_by_chapter_md_path, None, get_keywords_by_chapter_md())
+
+
+def check_relative_order(subset: List[Any], full: List[Any]) -> Tuple[bool, str]:
+    index_map = {value: i for i, value in enumerate(full)}
+
+    try:
+        subset_indices = [index_map[x] for x in subset]
+    except KeyError as e:
+        return False, f"Element {e.args[0]!r} not found in full list"
+
+    for i in range(len(subset_indices) - 1):
+        if subset_indices[i] > subset_indices[i + 1]:
+            correct_order = sorted(subset, key=lambda x: index_map[x])
+            return (False, f"Incorrect order. Expected order: {correct_order}")
+    return True, ""

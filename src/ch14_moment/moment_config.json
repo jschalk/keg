@@ -1,67 +1,67 @@
 {
   "moment_budunit": {
     "jkeys": {
-      "bud_time"   : { "class_type": "TimeNum"  }, 
-      "moment_rope": { "class_type": "RopeTerm" }, 
-      "person_name": { "class_type": "NameTerm" }
+      "bud_time"   : { "obj_type": "TimeNum"  }, 
+      "moment_rope": { "obj_type": "RopeTerm" }, 
+      "person_name": { "obj_type": "NameTerm" }
     }, 
-    "jvalues": { "celldepth": {"class_type": "int"}, "quota": {"class_type": "int"} }, 
+    "jvalues": { "celldepth": {"obj_type": "int"}, "quota": {"obj_type": "int"} }, 
     "moment_static": "True"
   }, 
   "moment_epoch_hour": {
     "jkeys": {
-      "cumulative_minute": { "class_type": "int"      }, 
-      "moment_rope"      : { "class_type": "RopeTerm" }
+      "cumulative_minute": { "obj_type": "int"      }, 
+      "moment_rope"      : { "obj_type": "RopeTerm" }
     }, 
-    "jvalues": { "hour_label": {"class_type": "LabelTerm"} }, 
+    "jvalues": { "hour_label": {"obj_type": "LabelTerm"} }, 
     "moment_static": "True"
   }, 
   "moment_epoch_month": {
     "jkeys": {
-      "cumulative_day": { "class_type": "int"      }, 
-      "moment_rope"   : { "class_type": "RopeTerm" }
+      "cumulative_day": { "obj_type": "int"      }, 
+      "moment_rope"   : { "obj_type": "RopeTerm" }
     }, 
-    "jvalues": { "month_label": {"class_type": "LabelTerm"} }, 
+    "jvalues": { "month_label": {"obj_type": "LabelTerm"} }, 
     "moment_static": "True"
   }, 
   "moment_epoch_weekday": {
     "jkeys": {
-      "moment_rope"  : { "class_type": "RopeTerm" }, 
-      "weekday_order": { "class_type": "int"      }
+      "moment_rope"  : { "obj_type": "RopeTerm" }, 
+      "weekday_order": { "obj_type": "int"      }
     }, 
-    "jvalues": { "weekday_label": {"class_type": "LabelTerm"} }, 
+    "jvalues": { "weekday_label": {"obj_type": "LabelTerm"} }, 
     "moment_static": "True"
   }, 
   "moment_paybook": {
     "jkeys": {
-      "contact_name": { "class_type": "NameTerm" }, 
-      "moment_rope" : { "class_type": "RopeTerm" }, 
-      "person_name" : { "class_type": "NameTerm" }, 
-      "tran_time"   : { "class_type": "TimeNum"  }
+      "contact_name": { "obj_type": "NameTerm" }, 
+      "moment_rope" : { "obj_type": "RopeTerm" }, 
+      "person_name" : { "obj_type": "NameTerm" }, 
+      "tran_time"   : { "obj_type": "TimeNum"  }
     }, 
-    "jvalues": { "amount": {"class_type": "float"} }, 
+    "jvalues": { "amount": {"obj_type": "float"} }, 
     "moment_static": "True"
   }, 
   "moment_timeoffi": {
     "jkeys": {
-      "moment_rope": { "class_type": "RopeTerm" }, 
-      "offi_time"  : { "class_type": "TimeNum"  }
+      "moment_rope": { "obj_type": "RopeTerm" }, 
+      "offi_time"  : { "obj_type": "TimeNum"  }
     }, 
     "jvalues": {}, 
     "moment_static": "False"
   }, 
   "momentunit": {
-    "jkeys": { "moment_rope": {"class_type": "RopeTerm"} }, 
+    "jkeys": { "moment_rope": {"obj_type": "RopeTerm"} }, 
     "jvalues": {
-      "c400_number"         : { "class_type": "int"       }, 
-      "epoch_label"         : { "class_type": "LabelTerm" }, 
-      "fund_grain"          : { "class_type": "float"     }, 
-      "job_listen_rotations": { "class_type": "int"       }, 
-      "knot"                : { "class_type": "str"       }, 
-      "mana_grain"          : { "class_type": "float"     }, 
-      "monthday_index"      : { "class_type": "int"       }, 
-      "respect_grain"       : { "class_type": "float"     }, 
-      "yr1_jan1_offset"     : { "class_type": "int"       }
+      "c400_number"         : { "obj_type": "int"       }, 
+      "epoch_label"         : { "obj_type": "LabelTerm" }, 
+      "fund_grain"          : { "obj_type": "float"     }, 
+      "job_listen_rotations": { "obj_type": "int"       }, 
+      "knot"                : { "obj_type": "str"       }, 
+      "mana_grain"          : { "obj_type": "float"     }, 
+      "monthday_index"      : { "obj_type": "int"       }, 
+      "respect_grain"       : { "obj_type": "float"     }, 
+      "yr1_jan1_offset"     : { "obj_type": "int"       }
     }, 
     "moment_static": "True"
   }

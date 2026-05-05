@@ -590,7 +590,9 @@ def test_add_frame_to_factunit_SetsAttr_epoch_Scenario0_NoWrap():
     assert root_five_fact.fact_upper == x_upper_min
 
     # WHEN
-    add_frame_to_factunit(root_five_fact, x_epoch_frame_min, epoch_plan.close)
+    add_frame_to_factunit(
+        root_five_fact, x_epoch_frame_min, context_plan_close=epoch_plan.close
+    )
 
     # THEN
     assert root_five_fact.fact_lower != x_lower_min

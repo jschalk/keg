@@ -17,7 +17,7 @@ from ch08_person_atom._ref.ch08_semantic_types import (
 )
 from ch08_person_atom.atom_config import (
     CRUD_command,
-    get_atom_args_class_types,
+    get_atom_args_obj_types,
     get_atom_config_args,
     get_atom_config_dict,
     get_atom_config_jkeys,
@@ -640,29 +640,29 @@ class AtomRow:
     def delete_atom_dimen(self, atom_dimen: str):
         self._atom_dimens.remove(atom_dimen)
 
-    def _set_class_types(self):
-        for x_arg, class_type in get_atom_args_class_types().items():
+    def _set_obj_types(self):
+        for x_arg, obj_type in get_atom_args_obj_types().items():
             x_value = self.__dict__.get(x_arg)
             if x_value != None:
-                if class_type == "NameTerm":
+                if obj_type == "NameTerm":
                     self.__dict__[x_arg] = ContactName(x_value)
-                elif class_type == "TitleTerm":
+                elif obj_type == "TitleTerm":
                     self.__dict__[x_arg] = TitleTerm(x_value)
-                elif class_type == "RopeTerm":
+                elif obj_type == "RopeTerm":
                     self.__dict__[x_arg] = RopeTerm(x_value)
-                elif class_type == "LabelTerm":
+                elif obj_type == "LabelTerm":
                     self.__dict__[x_arg] = LabelTerm(x_value)
-                elif class_type == "str":
+                elif obj_type == "str":
                     self.__dict__[x_arg] = str(x_value)
-                elif class_type == "bool":
+                elif obj_type == "bool":
                     self.__dict__[x_arg] = bool(x_value)
-                elif class_type == "int":
+                elif obj_type == "int":
                     self.__dict__[x_arg] = int(x_value)
-                elif class_type == "float":
+                elif obj_type == "float":
                     self.__dict__[x_arg] = float(x_value)
 
     def get_personatoms(self) -> list[PersonAtom]:
-        self._set_class_types()
+        self._set_obj_types()
         x_list = []
         for x_dimen in self._atom_dimens:
             x_atom = personatom_shop(x_dimen, self._crud_command)

@@ -1,8 +1,6 @@
 from ch04_rope.rope import create_rope, to_rope
 from ch16_translate.map_term import namemap_shop
 from ch16_translate.test._util.ch16_examples import (
-    get_casa_maison_rope_inx_dt,
-    get_casa_maison_rope_otx_dt,
     get_casa_maison_translateunit_set_by_label,
     get_casa_maison_translateunit_set_by_otx2inx,
 )
@@ -11,6 +9,10 @@ from ch17_brick.brick_db_tool import (
     get_dataframe_translateable_columns,
     translate_all_columns_dataframe,
     translate_single_column_dataframe,
+)
+from ch17_brick.test._util.ch17_examples import (
+    get_casa_maison_rope_inx_dt,
+    get_casa_maison_rope_otx_dt,
 )
 from copy import deepcopy as copy_deepcopy
 from pandas import DataFrame

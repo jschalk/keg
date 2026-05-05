@@ -69,14 +69,14 @@ class TranslateUnit:
     def del_titleterm(self, otx_title: str):
         return self.titlemap.del_otx2inx(otx_title)
 
-    def get_mapunit(self, x_class_type: str):
-        if x_class_type == "NameTerm":
+    def get_mapunit(self, x_obj_type: str):
+        if x_obj_type == "NameTerm":
             return self.namemap
-        elif x_class_type == "TitleTerm":
+        elif x_obj_type == "TitleTerm":
             return self.titlemap
-        elif x_class_type == "LabelTerm":
+        elif x_obj_type == "LabelTerm":
             return self.labelmap
-        elif x_class_type == "RopeTerm":
+        elif x_obj_type == "RopeTerm":
             return self.ropemap
         else:
             return None
@@ -147,48 +147,48 @@ class TranslateUnit:
             and self.ropemap.is_valid()
         )
 
-    def set_otx2inx(self, x_class_type: str, x_otx: str, x_inx: str):
-        """class_type: NameTerm, TitleTerm, LabelTerm, RopeTerm"""
-        if x_class_type == "NameTerm":
+    def set_otx2inx(self, x_obj_type: str, x_otx: str, x_inx: str):
+        """obj_type: NameTerm, TitleTerm, LabelTerm, RopeTerm"""
+        if x_obj_type == "NameTerm":
             self.namemap.set_otx2inx(x_otx, x_inx)
-        elif x_class_type == "TitleTerm":
+        elif x_obj_type == "TitleTerm":
             self.titlemap.set_otx2inx(x_otx, x_inx)
-        elif x_class_type == "LabelTerm":
+        elif x_obj_type == "LabelTerm":
             self.labelmap.set_otx2inx(x_otx, x_inx)
-        elif x_class_type == "RopeTerm":
+        elif x_obj_type == "RopeTerm":
             self.ropemap.set_otx2inx(x_otx, x_inx)
 
-    def get_inx_value(self, x_class_type: str, x_otx: str) -> str:
-        """class_type: NameTerm, TitleTerm, LabelTerm, RopeTerm"""
-        if x_class_type == "NameTerm":
+    def get_inx_value(self, x_obj_type: str, x_otx: str) -> str:
+        """obj_type: NameTerm, TitleTerm, LabelTerm, RopeTerm"""
+        if x_obj_type == "NameTerm":
             return self.namemap.get_inx_value(x_otx)
-        elif x_class_type == "TitleTerm":
+        elif x_obj_type == "TitleTerm":
             return self.titlemap.get_inx_value(x_otx)
-        elif x_class_type == "LabelTerm":
+        elif x_obj_type == "LabelTerm":
             return self.labelmap.get_inx_value(x_otx)
-        elif x_class_type == "RopeTerm":
+        elif x_obj_type == "RopeTerm":
             return self.ropemap.get_inx_value(x_otx)
 
-    def otx2inx_exists(self, x_class_type: str, x_otx: str, x_inx: str) -> bool:
-        """class_type: NameTerm, TitleTerm, LabelTerm, RopeTerm"""
-        if x_class_type == "NameTerm":
+    def otx2inx_exists(self, x_obj_type: str, x_otx: str, x_inx: str) -> bool:
+        """obj_type: NameTerm, TitleTerm, LabelTerm, RopeTerm"""
+        if x_obj_type == "NameTerm":
             return self.namemap.otx2inx_exists(x_otx, x_inx)
-        elif x_class_type == "TitleTerm":
+        elif x_obj_type == "TitleTerm":
             return self.titlemap.otx2inx_exists(x_otx, x_inx)
-        elif x_class_type == "LabelTerm":
+        elif x_obj_type == "LabelTerm":
             return self.labelmap.otx2inx_exists(x_otx, x_inx)
-        elif x_class_type == "RopeTerm":
+        elif x_obj_type == "RopeTerm":
             return self.ropemap.otx2inx_exists(x_otx, x_inx)
 
-    def del_otx2inx(self, x_class_type: str, x_otx: str):
-        """class_type: NameTerm, TitleTerm, LabelTerm, RopeTerm"""
-        if x_class_type == "NameTerm":
+    def del_otx2inx(self, x_obj_type: str, x_otx: str):
+        """obj_type: NameTerm, TitleTerm, LabelTerm, RopeTerm"""
+        if x_obj_type == "NameTerm":
             self.namemap.del_otx2inx(x_otx)
-        elif x_class_type == "TitleTerm":
+        elif x_obj_type == "TitleTerm":
             self.titlemap.del_otx2inx(x_otx)
-        elif x_class_type == "LabelTerm":
+        elif x_obj_type == "LabelTerm":
             self.labelmap.del_otx2inx(x_otx)
-        elif x_class_type == "RopeTerm":
+        elif x_obj_type == "RopeTerm":
             self.ropemap.del_otx2inx(x_otx)
 
     def set_roadmap_label(self, x_otx: str, x_inx: str):

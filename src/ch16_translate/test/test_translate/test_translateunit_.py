@@ -1,9 +1,9 @@
 from ch04_rope.rope import default_knot_if_None
 from ch08_person_atom.atom_config import (
     get_all_person_dimen_delete_keys,
-    get_atom_args_class_types,
+    get_atom_args_obj_types,
 )
-from ch14_moment.moment_config import get_moment_args_class_types
+from ch14_moment.moment_config import get_moment_args_obj_types
 from ch16_translate.map_term import (
     labelmap_shop,
     namemap_shop,
@@ -12,90 +12,90 @@ from ch16_translate.map_term import (
 )
 from ch16_translate.translate_config import (
     default_unknown_str_if_None,
-    get_translate_args_class_types,
+    get_translate_args_obj_types,
     get_translate_labelterm_args,
     get_translate_nameterm_args,
     get_translate_ropeterm_args,
     get_translate_titleterm_args,
     get_translateable_args,
     set_translateable_otx_inx_args,
-    translateable_class_types,
+    translateable_obj_types,
 )
 from ch16_translate.translate_main import TranslateUnit, translateunit_shop
 from ref.keywords import Ch16Keywords as kw, ExampleStrs as exx
 
 
-def test_get_translate_args_class_types_ReturnsObj():
+def test_get_translate_args_obj_types_ReturnsObj():
     # ESTABLISH / WHEN
-    translate_args_class_types = get_translate_args_class_types()
+    translate_args_obj_types = get_translate_args_obj_types()
 
     # THEN
-    assert translate_args_class_types.get(kw.contact_name) == kw.NameTerm
-    assert translate_args_class_types.get(kw.addin) == "float"
-    assert translate_args_class_types.get(kw.amount) == "float"
-    assert translate_args_class_types.get(kw.awardee_title) == kw.TitleTerm
-    assert translate_args_class_types.get(kw.reason_context) == kw.RopeTerm
-    assert translate_args_class_types.get(kw.active_requisite) == "bool"
-    assert translate_args_class_types.get(kw.begin) == "float"
-    assert translate_args_class_types.get(kw.c400_number) == "int"
-    assert translate_args_class_types.get(kw.close) == "float"
-    assert translate_args_class_types.get(kw.contact_cred_lumen) == "float"
-    assert translate_args_class_types.get(kw.group_cred_lumen) == "float"
-    assert translate_args_class_types.get(kw.credor_respect) == "float"
-    assert translate_args_class_types.get(kw.cumulative_day) == "int"
-    assert translate_args_class_types.get(kw.cumulative_minute) == "int"
-    assert translate_args_class_types.get(kw.contact_debt_lumen) == "float"
-    assert translate_args_class_types.get(kw.group_debt_lumen) == "float"
-    assert translate_args_class_types.get(kw.debtor_respect) == "float"
-    assert translate_args_class_types.get(kw.denom) == "int"
-    assert translate_args_class_types.get(kw.reason_divisor) == "int"
-    assert translate_args_class_types.get(kw.spark_face) == kw.NameTerm
-    assert translate_args_class_types.get(kw.fact_context) == kw.RopeTerm
-    assert translate_args_class_types.get(kw.moment_rope) == kw.RopeTerm
-    assert translate_args_class_types.get(kw.fact_upper) == kw.FactNum
-    assert translate_args_class_types.get(kw.fact_lower) == kw.FactNum
-    assert translate_args_class_types.get(kw.fund_grain) == "float"
-    assert translate_args_class_types.get(kw.fund_pool) == "float"
-    assert translate_args_class_types.get(kw.give_force) == "float"
-    assert translate_args_class_types.get(kw.gogo_want) == "float"
-    assert translate_args_class_types.get(kw.group_title) == kw.TitleTerm
-    assert translate_args_class_types.get(kw.healer_name) == kw.NameTerm
-    assert translate_args_class_types.get(kw.hour_label) == kw.LabelTerm
-    assert translate_args_class_types.get(kw.star) == "int"
-    assert translate_args_class_types.get(kw.max_tree_traverse) == "int"
-    assert translate_args_class_types.get(kw.month_label) == kw.LabelTerm
-    assert translate_args_class_types.get(kw.monthday_index) == "int"
-    assert translate_args_class_types.get(kw.morph) == "bool"
-    assert translate_args_class_types.get(kw.reason_state) == kw.RopeTerm
-    assert translate_args_class_types.get(kw.reason_upper) == kw.ReasonNum
-    assert translate_args_class_types.get(kw.numor) == "int"
-    assert translate_args_class_types.get(kw.offi_time) == kw.TimeNum
-    assert translate_args_class_types.get(kw.person_name) == kw.NameTerm
-    assert translate_args_class_types.get(kw.reason_lower) == kw.ReasonNum
-    assert translate_args_class_types.get(kw.mana_grain) == "float"
-    assert translate_args_class_types.get(kw.fact_state) == kw.RopeTerm
-    assert translate_args_class_types.get(kw.pledge) == "bool"
-    assert translate_args_class_types.get(kw.problem_bool) == "bool"
-    assert translate_args_class_types.get(kw.quota) == "int"
-    assert translate_args_class_types.get(kw.respect_grain) == "float"
-    assert translate_args_class_types.get(kw.plan_rope) == kw.RopeTerm
-    assert translate_args_class_types.get(kw.celldepth) == "int"
-    assert translate_args_class_types.get(kw.stop_want) == "float"
-    assert translate_args_class_types.get(kw.take_force) == "float"
-    assert translate_args_class_types.get(kw.labor_title) == kw.TitleTerm
-    assert translate_args_class_types.get(kw.bud_time) == kw.TimeNum
-    assert translate_args_class_types.get(kw.tran_time) == kw.TimeNum
-    assert translate_args_class_types.get(kw.epoch_label) == kw.LabelTerm
-    assert translate_args_class_types.get(kw.weekday_label) == kw.LabelTerm
-    assert translate_args_class_types.get(kw.weekday_order) == "int"
-    assert translate_args_class_types.get(kw.knot) == "str"
-    assert translate_args_class_types.get(kw.yr1_jan1_offset) == "int"
-    assert translate_args_class_types.get(kw.solo) == "int"
+    assert translate_args_obj_types.get(kw.contact_name) == kw.NameTerm
+    assert translate_args_obj_types.get(kw.addin) == "float"
+    assert translate_args_obj_types.get(kw.amount) == "float"
+    assert translate_args_obj_types.get(kw.awardee_title) == kw.TitleTerm
+    assert translate_args_obj_types.get(kw.reason_context) == kw.RopeTerm
+    assert translate_args_obj_types.get(kw.active_requisite) == "bool"
+    assert translate_args_obj_types.get(kw.begin) == "float"
+    assert translate_args_obj_types.get(kw.c400_number) == "int"
+    assert translate_args_obj_types.get(kw.close) == "float"
+    assert translate_args_obj_types.get(kw.contact_cred_lumen) == "float"
+    assert translate_args_obj_types.get(kw.group_cred_lumen) == "float"
+    assert translate_args_obj_types.get(kw.credor_respect) == "float"
+    assert translate_args_obj_types.get(kw.cumulative_day) == "int"
+    assert translate_args_obj_types.get(kw.cumulative_minute) == "int"
+    assert translate_args_obj_types.get(kw.contact_debt_lumen) == "float"
+    assert translate_args_obj_types.get(kw.group_debt_lumen) == "float"
+    assert translate_args_obj_types.get(kw.debtor_respect) == "float"
+    assert translate_args_obj_types.get(kw.denom) == "int"
+    assert translate_args_obj_types.get(kw.reason_divisor) == "int"
+    assert translate_args_obj_types.get(kw.spark_face) == kw.NameTerm
+    assert translate_args_obj_types.get(kw.fact_context) == kw.RopeTerm
+    assert translate_args_obj_types.get(kw.moment_rope) == kw.RopeTerm
+    assert translate_args_obj_types.get(kw.fact_upper) == kw.FactNum
+    assert translate_args_obj_types.get(kw.fact_lower) == kw.FactNum
+    assert translate_args_obj_types.get(kw.fund_grain) == "float"
+    assert translate_args_obj_types.get(kw.fund_pool) == "float"
+    assert translate_args_obj_types.get(kw.give_force) == "float"
+    assert translate_args_obj_types.get(kw.gogo_want) == "float"
+    assert translate_args_obj_types.get(kw.group_title) == kw.TitleTerm
+    assert translate_args_obj_types.get(kw.healer_name) == kw.NameTerm
+    assert translate_args_obj_types.get(kw.hour_label) == kw.LabelTerm
+    assert translate_args_obj_types.get(kw.star) == "int"
+    assert translate_args_obj_types.get(kw.max_tree_traverse) == "int"
+    assert translate_args_obj_types.get(kw.month_label) == kw.LabelTerm
+    assert translate_args_obj_types.get(kw.monthday_index) == "int"
+    assert translate_args_obj_types.get(kw.morph) == "bool"
+    assert translate_args_obj_types.get(kw.reason_state) == kw.RopeTerm
+    assert translate_args_obj_types.get(kw.reason_upper) == kw.ReasonNum
+    assert translate_args_obj_types.get(kw.numor) == "int"
+    assert translate_args_obj_types.get(kw.offi_time) == kw.TimeNum
+    assert translate_args_obj_types.get(kw.person_name) == kw.NameTerm
+    assert translate_args_obj_types.get(kw.reason_lower) == kw.ReasonNum
+    assert translate_args_obj_types.get(kw.mana_grain) == "float"
+    assert translate_args_obj_types.get(kw.fact_state) == kw.RopeTerm
+    assert translate_args_obj_types.get(kw.pledge) == "bool"
+    assert translate_args_obj_types.get(kw.problem_bool) == "bool"
+    assert translate_args_obj_types.get(kw.quota) == "int"
+    assert translate_args_obj_types.get(kw.respect_grain) == "float"
+    assert translate_args_obj_types.get(kw.plan_rope) == kw.RopeTerm
+    assert translate_args_obj_types.get(kw.celldepth) == "int"
+    assert translate_args_obj_types.get(kw.stop_want) == "float"
+    assert translate_args_obj_types.get(kw.take_force) == "float"
+    assert translate_args_obj_types.get(kw.labor_title) == kw.TitleTerm
+    assert translate_args_obj_types.get(kw.bud_time) == kw.TimeNum
+    assert translate_args_obj_types.get(kw.tran_time) == kw.TimeNum
+    assert translate_args_obj_types.get(kw.epoch_label) == kw.LabelTerm
+    assert translate_args_obj_types.get(kw.weekday_label) == kw.LabelTerm
+    assert translate_args_obj_types.get(kw.weekday_order) == "int"
+    assert translate_args_obj_types.get(kw.knot) == "str"
+    assert translate_args_obj_types.get(kw.yr1_jan1_offset) == "int"
+    assert translate_args_obj_types.get(kw.solo) == "int"
 
-    # make sure it translate_arg_class_types has all moment and all atom args
-    translate_args = set(translate_args_class_types.keys())
-    atom_args = set(get_atom_args_class_types().keys())
-    moment_args = set(get_moment_args_class_types().keys())
+    # make sure it translate_arg_obj_types has all moment and all atom args
+    translate_args = set(translate_args_obj_types.keys())
+    atom_args = set(get_atom_args_obj_types().keys())
+    moment_args = set(get_moment_args_obj_types().keys())
     assert atom_args.issubset(translate_args)
     assert moment_args.issubset(translate_args)
     assert atom_args & (moment_args) == {
@@ -106,64 +106,64 @@ def test_get_translate_args_class_types_ReturnsObj():
     }
     assert atom_args.union(moment_args) != translate_args
     assert atom_args.union(moment_args).union({kw.spark_face}) == translate_args
-    assert check_class_types_are_correct()
-    # assert translate_args_class_types.keys() == get_atom_args_dimen_mapping().keys()
-    # assert all_atom_args_class_types_are_correct(x_class_types)
+    assert check_obj_types_are_correct()
+    # assert translate_args_obj_types.keys() == get_atom_args_dimen_mapping().keys()
+    # assert all_atom_args_obj_types_are_correct(x_obj_types)
 
-    for translate_arg in translate_args_class_types.keys():
+    for translate_arg in translate_args_obj_types.keys():
         assert not translate_arg.endswith("_otx"), f"Error with '{translate_arg}'"
         assert not translate_arg.endswith("_inx"), f"Error with '{translate_arg}'"
 
 
-def check_class_types_are_correct() -> bool:
-    translate_args_class_types = get_translate_args_class_types()
-    atom_args_class_types = get_atom_args_class_types()
-    moment_args_class_types = get_moment_args_class_types()
-    for translate_arg, translate_type in translate_args_class_types.items():
+def check_obj_types_are_correct() -> bool:
+    translate_args_obj_types = get_translate_args_obj_types()
+    atom_args_obj_types = get_atom_args_obj_types()
+    moment_args_obj_types = get_moment_args_obj_types()
+    for translate_arg, translate_type in translate_args_obj_types.items():
         # print(f"check {translate_arg=} {translate_type=}")
-        if atom_args_class_types.get(translate_arg) not in [None, translate_type]:
+        if atom_args_obj_types.get(translate_arg) not in [None, translate_type]:
             print(
-                f"{translate_arg=} {translate_type=} {atom_args_class_types.get(translate_arg)=}"
+                f"{translate_arg=} {translate_type=} {atom_args_obj_types.get(translate_arg)=}"
             )
             return False
-        if moment_args_class_types.get(translate_arg) not in [None, translate_type]:
+        if moment_args_obj_types.get(translate_arg) not in [None, translate_type]:
             print(
-                f"{translate_arg=} {translate_type=} {moment_args_class_types.get(translate_arg)=}"
+                f"{translate_arg=} {translate_type=} {moment_args_obj_types.get(translate_arg)=}"
             )
             return False
     return True
 
 
-def test_translateable_class_types_ReturnsObj():
+def test_translateable_obj_types_ReturnsObj():
     # ESTABLISH / WHEN
-    x_translateable_class_types = translateable_class_types()
+    x_translateable_obj_types = translateable_obj_types()
 
     # THEN
-    assert len(x_translateable_class_types) == 4
-    assert x_translateable_class_types == {
+    assert len(x_translateable_obj_types) == 4
+    assert x_translateable_obj_types == {
         kw.NameTerm,
         kw.TitleTerm,
         kw.LabelTerm,
         kw.RopeTerm,
     }
-    print(f"{set(get_atom_args_class_types().values())=}")
-    all_atom_class_types = set(get_atom_args_class_types().values())
-    all_atom_class_types.add(kw.LabelTerm)
-    all_atom_class_types.add(kw.TimeNum)
-    x_cL_tyep = set(all_atom_class_types) & (x_translateable_class_types)
-    assert x_cL_tyep == x_translateable_class_types
+    print(f"{set(get_atom_args_obj_types().values())=}")
+    all_atom_obj_types = set(get_atom_args_obj_types().values())
+    all_atom_obj_types.add(kw.LabelTerm)
+    all_atom_obj_types.add(kw.TimeNum)
+    x_cL_tyep = set(all_atom_obj_types) & (x_translateable_obj_types)
+    assert x_cL_tyep == x_translateable_obj_types
 
 
 def test_get_translateable_args_ReturnsObj():
     # ESTABLISH / WHEN / THEN
-    print(f"{translateable_class_types()=}")
-    all_translate_args = set(get_translate_args_class_types().keys())
+    print(f"{translateable_obj_types()=}")
+    all_translate_args = set(get_translate_args_obj_types().keys())
     print(f"{get_translateable_args().difference(all_translate_args)}")
     assert get_translateable_args().issubset(all_translate_args)
     static_get_translateable_args = {
         x_arg
-        for x_arg, class_type in get_translate_args_class_types().items()
-        if class_type in translateable_class_types()
+        for x_arg, obj_type in get_translate_args_obj_types().items()
+        if obj_type in translateable_obj_types()
     }
     assert get_translateable_args() == static_get_translateable_args
 
@@ -276,8 +276,8 @@ def test_get_translate_nameterm_args_ReturnsObj():
     }
     expected_args = {
         x_arg
-        for x_arg, class_type in get_translate_args_class_types().items()
-        if class_type == kw.NameTerm
+        for x_arg, obj_type in get_translate_args_obj_types().items()
+        if obj_type == kw.NameTerm
     }
     assert translate_NameTerm_args == expected_args
 
@@ -294,8 +294,8 @@ def test_get_translate_titleterm_args_ReturnsObj():
     }
     expected_args = {
         x_arg
-        for x_arg, class_type in get_translate_args_class_types().items()
-        if class_type == kw.TitleTerm
+        for x_arg, obj_type in get_translate_args_obj_types().items()
+        if obj_type == kw.TitleTerm
     }
     assert translate_TitleTerm_args == expected_args
 
@@ -313,8 +313,8 @@ def test_get_translate_labelterm_args_ReturnsObj():
     }
     expected_args = {
         x_arg
-        for x_arg, class_type in get_translate_args_class_types().items()
-        if class_type == kw.LabelTerm
+        for x_arg, obj_type in get_translate_args_obj_types().items()
+        if obj_type == kw.LabelTerm
     }
     assert translate_LabelTerm_args == expected_args
 
@@ -334,8 +334,8 @@ def test_get_translate_ropeterm_args_ReturnsObj():
     }
     expected_args = {
         x_arg
-        for x_arg, class_type in get_translate_args_class_types().items()
-        if class_type == kw.RopeTerm
+        for x_arg, obj_type in get_translate_args_obj_types().items()
+        if obj_type == kw.RopeTerm
     }
     assert translate_RopeTerm_args == expected_args
 
