@@ -90,7 +90,7 @@ def get_ch_sorted_keywords(keywords_src_config: dict) -> list[str]:
         keywords_src_config.keys(),
         key=lambda k: (
             -keywords_src_config[k].get("exam_tier", float("inf")),
-            -parse_chapter(keywords_src_config[k].get("init_chapter", "")),
+            -parse_chapter(keywords_src_config[k].get("init_ch", "")),
             k.lower(),
         ),
     )

@@ -63,9 +63,9 @@ from ref.keywords import Ch98Keywords as kw
 def test_get_ch_sorted_keywords_ReturnsObj_Scenario0_basic_sorting():
     # ESTABLISH
     data = {
-        "Excel": {kw.exam_tier: 0, kw.init_chapter: kw.ch17},
-        "Word": {kw.exam_tier: 0, kw.init_chapter: kw.ch02},
-        "Access": {kw.exam_tier: 1, kw.init_chapter: kw.ch01},
+        "Excel": {kw.exam_tier: 0, kw.init_ch: kw.ch17},
+        "Word": {kw.exam_tier: 0, kw.init_ch: kw.ch02},
+        "Access": {kw.exam_tier: 1, kw.init_ch: kw.ch01},
     }
     # WHEN
     result = get_ch_sorted_keywords(data)
@@ -76,9 +76,9 @@ def test_get_ch_sorted_keywords_ReturnsObj_Scenario0_basic_sorting():
 def test_get_ch_sorted_keywords_ReturnsObj_Scenario1_empty_chapter_goes_first_within_tier():
     # ESTABLISH
     data = {
-        "Excel": {kw.exam_tier: 0, kw.init_chapter: kw.ch17},
-        "Word": {kw.exam_tier: 0, kw.init_chapter: ""},
-        "Access": {kw.exam_tier: 0, kw.init_chapter: kw.ch02},
+        "Excel": {kw.exam_tier: 0, kw.init_ch: kw.ch17},
+        "Word": {kw.exam_tier: 0, kw.init_ch: ""},
+        "Access": {kw.exam_tier: 0, kw.init_ch: kw.ch02},
     }
     # WHEN
     result = get_ch_sorted_keywords(data)
@@ -89,9 +89,9 @@ def test_get_ch_sorted_keywords_ReturnsObj_Scenario1_empty_chapter_goes_first_wi
 def test_get_ch_sorted_keywords_ReturnsObj_Scenario2_empty_vs_other_tiers():
     # ESTABLISH
     data = {
-        "A": {kw.exam_tier: 1, kw.init_chapter: ""},
-        "B": {kw.exam_tier: 0, kw.init_chapter: kw.ch01},
-        "C": {kw.exam_tier: 0, kw.init_chapter: ""},
+        "A": {kw.exam_tier: 1, kw.init_ch: ""},
+        "B": {kw.exam_tier: 0, kw.init_ch: kw.ch01},
+        "C": {kw.exam_tier: 0, kw.init_ch: ""},
     }
     # WHEN
     result = get_ch_sorted_keywords(data)
@@ -103,9 +103,9 @@ def test_get_ch_sorted_keywords_ReturnsObj_Scenario2_empty_vs_other_tiers():
 def test_get_ch_sorted_keywords_ReturnsObj_Scenario3_malformed_chapter_treated_like_empty():
     # ESTABLISH
     data = {
-        "A": {kw.exam_tier: 0, kw.init_chapter: "foo"},
-        "B": {kw.exam_tier: 0, kw.init_chapter: kw.ch02},
-        "C": {kw.exam_tier: 0, kw.init_chapter: ""},
+        "A": {kw.exam_tier: 0, kw.init_ch: "foo"},
+        "B": {kw.exam_tier: 0, kw.init_ch: kw.ch02},
+        "C": {kw.exam_tier: 0, kw.init_ch: ""},
     }
     # WHEN
     result = get_ch_sorted_keywords(data)
@@ -117,9 +117,9 @@ def test_get_ch_sorted_keywords_ReturnsObj_Scenario3_malformed_chapter_treated_l
 def test_get_ch_sorted_keywords_ReturnsObj_Scenario4_alphabetical_tiebreaker():
     # ESTABLISH
     data = {
-        "beta": {kw.exam_tier: 0, kw.init_chapter: kw.ch01},
-        "Alpha": {kw.exam_tier: 0, kw.init_chapter: kw.ch01},
-        "gamma": {kw.exam_tier: 0, kw.init_chapter: kw.ch01},
+        "beta": {kw.exam_tier: 0, kw.init_ch: kw.ch01},
+        "Alpha": {kw.exam_tier: 0, kw.init_ch: kw.ch01},
+        "gamma": {kw.exam_tier: 0, kw.init_ch: kw.ch01},
     }
     # WHEN
     result = get_ch_sorted_keywords(data)
@@ -132,7 +132,7 @@ def test_get_ch_sorted_keywords_ReturnsObj_Scenario5_missing_fields():
     data = {
         "A": {},  # missing both fields
         "B": {kw.exam_tier: 0},
-        "C": {kw.init_chapter: kw.ch01},
+        "C": {kw.init_ch: kw.ch01},
     }
     # WHEN
     result = get_ch_sorted_keywords(data)
@@ -157,9 +157,9 @@ def test_get_keywords_by_importance_ReturnsObj_Scenario0():
     for kw_index, kw_with_i in kws_by_importance.items():
         kw_src_config = keywords_src_config.get(kw_with_i)
         tier_str = kw_src_config.get(kw.exam_tier)
-        init_chapter_str = kw_src_config.get(kw.init_chapter)
+        init_ch_str = kw_src_config.get(kw.init_ch)
         # if kw_index < 30:
-        #     print(f"{kw_index} {tier_str} {init_chapter_str} {kw_with_i=}")
+        #     print(f"{kw_index} {tier_str} {init_ch_str} {kw_with_i=}")
 
 
 def test_get_keg_exam_ReturnsObj_ObjExists():

@@ -66,7 +66,7 @@ def test_get_possible_keyword_config_keys_ReturnsObj():
     # THEN
     # TODO add sort_ordinal to keywords
     assert req_config_keys == {
-        kw.init_chapter,
+        kw.init_ch,
         kw.semantic_type,
         kw.exam_tier,
         "sort_ordinal",
@@ -321,7 +321,7 @@ def test_get_keg_elements_sort_order_Scenario0_AllElementsAre_keywords():
     for missing_element in sorted(missing_elements):
         x_count += 1
         print(
-            f""""{missing_element}": {{"{kw.exam_tier}": 0, "{kw.init_chapter}": "ch{ch_num}"}},"""
+            f""""{missing_element}": {{"{kw.exam_tier}": 0, "{kw.init_ch}": "ch{ch_num}"}},"""
         )
     print(f"{x_count} elements")
     assert set(get_keg_elements_sort_order()).issubset(keywords_set)
@@ -335,7 +335,7 @@ def test_get_keg_elements_sort_order_Scenario1_Check_sort_ordinal():
     for keyword, kw_config in keywords_src_config.items():
         new_kw_config = {
             kw.exam_tier: kw_config.get(kw.exam_tier),
-            kw.init_chapter: kw_config.get(kw.init_chapter),
+            kw.init_ch: kw_config.get(kw.init_ch),
         }
         if kw_config.get(kw.semantic_type):
             new_kw_config[kw.semantic_type] = kw_config.get(kw.semantic_type)
@@ -360,7 +360,7 @@ def test_get_keg_elements_sort_order_Scenario1_Check_sort_ordinal():
     # for missing_element in sorted(missing_elements):
     #     x_count += 1
     #     print(
-    #         f""""{missing_element}": {{"exam_tier": 0, "init_chapter": "ch{ch_num}"}},"""
+    #         f""""{missing_element}": {{"exam_tier": 0, "init_ch": "ch{ch_num}"}},"""
     #     )
     # print(f"{x_count} elements")
     # assert set(get_keg_elements_sort_order()).issubset(keywords_set)

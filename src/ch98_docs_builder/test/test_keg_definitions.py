@@ -125,9 +125,9 @@ def test_get_keg_definitions_ReturnsObj_CheckNoChapter_keywords():
     keg_definitions = get_keg_definitions()
     # THEN
     for keyword, kw_config in get_keywords_src_config().items():
-        x_init_chapter = kw_config.get(kw.init_chapter)
-        assert kw.init_chapter in set(kw_config.keys()), keyword
-        if not bool(re_fullmatch(r"ch\d{2}", x_init_chapter)):
+        x_init_ch = kw_config.get(kw.init_ch)
+        assert kw.init_ch in set(kw_config.keys()), keyword
+        if not bool(re_fullmatch(r"ch\d{2}", x_init_ch)):
             config_description = keg_definitions.get(keyword)
             assert "Not used in codebase." in config_description, keyword
         assert "exam_tier" in set(kw_config.keys()), keyword
@@ -191,8 +191,8 @@ def test_get_keg_definitions_ReturnsObj_Checb_src_config_keywords():
     for keyword, kw_config in get_keywords_src_config().items():
         if semantic_type := kw_config.get("semantic_type"):
             # print(f"{keyword} {kw_config=}")
-            x_init_chapter = kw_config.get("init_chapter")
-            kw_desc = f"{semantic_type} first used in {x_init_chapter}"
+            x_init_ch = kw_config.get("init_ch")
+            kw_desc = f"{semantic_type} first used in {x_init_ch}"
             config_description = keg_definitions.get(keyword)
             assert kw_desc in config_description, keyword
             assert keyword in doc_str_semantic_types

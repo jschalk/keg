@@ -19,16 +19,16 @@ def get_keywords_src_config() -> dict[str, dict]:
 
 
 def get_possible_keyword_config_keys() -> set:
-    return {"init_chapter", "semantic_type", "exam_tier", "sort_ordinal"}
+    return {"init_ch", "semantic_type", "exam_tier", "sort_ordinal"}
 
 
 def get_keywords_by_chapter(keywords_dict: dict[str, dict[str]]) -> dict:
     chapter_descs = get_chapter_descs().keys()
     chapters_keywords = {get_chapter_desc_prefix(chxx): set() for chxx in chapter_descs}
     for x_keyword, ref_dict in keywords_dict.items():
-        keyworld_init_chapter_num = ref_dict.get("init_chapter")
-        if bool(re_fullmatch(r"ch\d{2}", keyworld_init_chapter_num)):
-            chapter_set = chapters_keywords.get(keyworld_init_chapter_num)
+        keyworld_init_ch_num = ref_dict.get("init_ch")
+        if bool(re_fullmatch(r"ch\d{2}", keyworld_init_ch_num)):
+            chapter_set = chapters_keywords.get(keyworld_init_ch_num)
             chapter_set.add(x_keyword)
     return chapters_keywords
 
