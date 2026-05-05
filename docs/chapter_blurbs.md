@@ -26,8 +26,8 @@ What does each one do?
 - **ch20_etl_brick**: Defines the 'Etl Bricks' process. From 'Source Ideas' to 'Sound'.
 - **ch21_sound**: Defines the 'Sound' process. From 'Bricks' to 'Heard'.
 - **ch22_heard**: Defines the 'Heard' process. From 'Sound' to 'mind'.
-- **ch23_mind**: Defines the mind stage of data. Source of Job Persons, complete Moment data.
-- **ch24_idea_dst**: Defines how ideas for outside audiences are created.
+- **ch27_mind**: Defines the mind stage of data. Source of Job Persons, complete Moment data.
+- **ch30_idea_dst**: Defines how ideas for outside audiences are created.
 - **ch31_kpi**: Defines the analytics outcomes of completed MomentUnits.
 - **ch32_world**: Defines WorldDirs that admin MomentUnits input data and outcomes
 - **ch33_pitch**: Defines Pitch Tools for gifts, World Scenarios.

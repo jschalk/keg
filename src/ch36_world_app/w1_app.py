@@ -13,7 +13,7 @@ To integrate your CLI logic, replace the `create_today_punchs()` call inside
 
 from ch00_py.file_toolbox import create_path, delete_dir, open_file, set_dir
 from ch17_brick.brick_db_tool import prettify_excel_files
-from ch24_idea_dst.mind_db2df import create_mind0002_file
+from ch30_idea_dst.mind_db2df import create_mind0002_file
 from ch32_world.world import create_today_punchs
 from ch36_world_app.w1_tool import (
     fill_spark_face_in_directory,

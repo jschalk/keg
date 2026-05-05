@@ -24,8 +24,8 @@
 - ch20_etl_brick: ch20
 - ch21_sound: ch21
 - ch22_heard: ch22
-- ch23_mind: ch23
-- ch24_idea_dst: ch24, vow
+- ch27_mind: ch27
+- ch30_idea_dst: ch30, vow
 - ch31_kpi: DayEvent, Event, ch31, default_kpi_bundle, gcal, moment_kpi001_contact_nets, moment_kpi002_person_pledges
 - ch32_world: WorldName, ch32, today
 - ch33_pitch: Gift, Peer, PitchID, PitchUnit, ch33, gift, offer, peer, pitch, pitch_id, pitcher_name, pitchs, request

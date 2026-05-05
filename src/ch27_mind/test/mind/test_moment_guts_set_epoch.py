@@ -6,9 +6,9 @@ from ch09_person_lesson.lesson_filehandler import open_gut_file, save_gut_file
 from ch13_time.epoch_main import epochunit_shop
 from ch13_time.test._util.ch13_examples import get_five_config
 from ch14_moment.moment_main import momentunit_shop
-from ch23_mind.mind_core import add_mind_epoch_to_mind_guts
+from ch27_mind.mind_core import add_mind_epoch_to_mind_guts
 from os.path import exists as os_path_exists
-from ref.keywords import Ch23Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch27Keywords as kw, ExampleStrs as exx
 
 
 def test_add_mind_epoch_to_mind_guts_SetsFiles_Scenario0(temp3_fs):

@@ -1,6 +1,6 @@
 from ch00_py.db_toolbox import db_table_exists, get_db_tables, get_row_count
 from ch18_etl_config.etl_sqlstr import CREATE_JOB_PRNPLAN_SQLSTR, create_prime_tablename
-from ch23_mind.mind_core import CREATE_MOMENT_TRANBOOK_NETS_SQLSTR
+from ch27_mind.mind_core import CREATE_MOMENT_TRANBOOK_NETS_SQLSTR
 from ch31_kpi.kpi_mstr import populate_kpi_bundle
 from ref.keywords import Ch31Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor

@@ -5,9 +5,9 @@ from ch18_etl_config._ref.ch18_path import (
     create_moment_ote1_csv_path,
     create_moment_ote1_json_path,
 )
-from ch23_mind.mind_core import etl_moment_ote1_agg_csvs_to_jsons
+from ch27_mind.mind_core import etl_moment_ote1_agg_csvs_to_jsons
 from os.path import exists as os_path_exists
-from ref.keywords import Ch23Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch27Keywords as kw, ExampleStrs as exx
 
 
 def test_etl_moment_ote1_agg_csvs_to_jsons_CreatesFile_Scenaro0(

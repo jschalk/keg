@@ -23,8 +23,8 @@ from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
 )
-from ch24_idea_dst._ref.ch24_path import create_mind0001_path, create_mind0002_path
-from ch24_idea_dst._ref.ch24_semantic_types import PersonName
+from ch30_idea_dst._ref.ch30_path import create_mind0001_path, create_mind0002_path
+from ch30_idea_dst._ref.ch30_semantic_types import PersonName
 from os.path import exists as os_path_exists
 from sqlite3 import Cursor as sqlite3_Cursor, connect as sqlite3_connect
 

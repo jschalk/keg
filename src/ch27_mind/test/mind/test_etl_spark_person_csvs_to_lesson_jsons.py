@@ -6,9 +6,9 @@ from ch11_bud._ref.ch11_path import (
     create_spark_all_lesson_path as all_lesson_path,
 )
 from ch18_etl_config.etl_sqlstr import create_prime_tablename
-from ch23_mind.mind_core import etl_spark_person_csvs_to_lesson_json
+from ch27_mind.mind_core import etl_spark_person_csvs_to_lesson_json
 from os.path import exists as os_path_exists
-from ref.keywords import Ch23Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch27Keywords as kw, ExampleStrs as exx
 
 
 def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario0_IgnoresCSV_personunit(

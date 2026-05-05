@@ -14,14 +14,14 @@ from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
 )
-from ch24_idea_dst._ref.ch24_path import create_mind0002_path
-from ch24_idea_dst.mind_db2df import (
+from ch30_idea_dst._ref.ch30_path import create_mind0002_path
+from ch30_idea_dst.mind_db2df import (
     collect_mind0002_idea_csv_strs,
     create_mind0002_file,
 )
 from os.path import exists as os_path_exists
 from pandas import read_excel as pandas_read_excel
-from ref.keywords import Ch24Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch30Keywords as kw, ExampleStrs as exx
 from sqlite3 import connect as sqlite3_connect
 
 

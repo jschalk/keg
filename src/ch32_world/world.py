@@ -25,7 +25,7 @@ from ch22_heard.heard import (
     etl_heard_vld_to_spark_person_csvs,
     etl_moment_ote1_agg_table_to_moment_ote1_agg_csvs,
 )
-from ch23_mind.mind_core import (
+from ch27_mind.mind_core import (
     add_mind_epoch_to_mind_guts,
     calc_moment_bud_contact_mandate_net_ledgers,
     create_last_run_metrics_json,
@@ -38,7 +38,7 @@ from ch23_mind.mind_core import (
     etl_spark_person_csvs_to_lesson_json,
     get_max_brixk_agg_spark_num,
 )
-from ch24_idea_dst.mind_db2df import create_mind0001_file, prettify_excel_file
+from ch30_idea_dst.mind_db2df import create_mind0001_file, prettify_excel_file
 from ch31_kpi.gcalendar import (
     copy_person_day_punches_to_dst_dir,
     get_day_punchs_persons,

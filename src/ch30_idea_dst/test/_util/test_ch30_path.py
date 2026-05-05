@@ -1,13 +1,13 @@
 from ch00_py.file_toolbox import create_path
-from ch24_idea_dst._ref.ch24_path import create_mind0001_path, create_mind0002_path
+from ch30_idea_dst._ref.ch30_path import create_mind0001_path, create_mind0002_path
 from inspect import getdoc as inspect_getdoc
 from pytest import mark as pytest_mark
-from ref.keywords import Ch24Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch30Keywords as kw, ExampleStrs as exx
 
 MIND0001_FILENAME = "mind0001.xlsx"
 
 
-def test_ch24_path_constants_ReturnsObj():
+def test_ch30_path_constants_ReturnsObj():
     # ESTABLISH / WHEN / THEN
     assert MIND0001_FILENAME == "mind0001.xlsx"
 

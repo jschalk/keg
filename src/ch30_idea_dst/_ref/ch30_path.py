@@ -1,5 +1,5 @@
 from ch00_py.file_toolbox import create_path
-from ch24_idea_dst._ref.ch24_semantic_types import PersonName
+from ch30_idea_dst._ref.ch30_semantic_types import PersonName
 
 
 def create_mind0001_path(output_dir: str) -> str:

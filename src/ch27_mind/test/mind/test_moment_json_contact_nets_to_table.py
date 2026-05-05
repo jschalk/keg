@@ -4,12 +4,12 @@ from ch09_person_lesson._ref.ch09_path import create_moment_json_path
 from ch09_person_lesson.lasso import lassounit_shop
 from ch11_bud.bud_main import tranbook_shop
 from ch14_moment.moment_main import momentunit_shop
-from ch23_mind.mind_core import (
+from ch27_mind.mind_core import (
     CREATE_MOMENT_TRANBOOK_NETS_SQLSTR,
     etl_moment_json_contact_nets_to_moment_tranbook_nets_table,
     insert_tranunit_contacts_net,
 )
-from ref.keywords import Ch23Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch27Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 
 
