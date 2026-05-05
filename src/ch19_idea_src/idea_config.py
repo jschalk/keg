@@ -14,3 +14,8 @@ def idea_config_path() -> str:
 
 def get_idea_config_dict() -> dict:
     return open_json(idea_config_path())
+
+
+# # TODO change so all idea_types are returned
+# def get_idea_types()->set:
+#     return set()

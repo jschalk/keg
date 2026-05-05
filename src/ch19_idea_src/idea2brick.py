@@ -174,6 +174,7 @@ def get_sheets_with_brick_types(directory: str) -> List[Tuple[str, str]]:
     ]
 
 
+# TODO change so idea_type sheets are pulled from idea_src, not brick_type
 def get_validated_i_src_brick_type_sheets(
     i_src_dir: str, b_src_dir: str
 ) -> List[Tuple[str, str]]:
@@ -205,6 +206,7 @@ def get_validated_i_src_brick_type_sheets(
     return idea_bk_sheets
 
 
+# TODO #1138 change this so that it pulls from ii format sheets and upserts into bk format sheets
 def ideas_sheets_to_brick_sheets(
     i_src_dir: str, b_src_dir: str, db_max_spark_num: int = None
 ) -> List[Tuple[str, str]]:

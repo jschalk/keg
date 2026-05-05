@@ -56,22 +56,36 @@ def test_idea_config_path_ReturnsObj_Brick() -> str:
     assert idea_config_path() == create_path(chapter_dir, "idea_config.json")
 
 
-def test_get_idea_config_dict_ReturnsObj_Scenario0_IsFullyPopulated():
+def test_get_idea_config_dict_ReturnsObj_Scenario0_AllBrickTypesRepresented():
     # ESTABLISH / WHEN
     x_idea_config = get_idea_config_dict()
     config_idea_types = set(x_idea_config.keys())
-    # # THEN
+    # THEN
     assert x_idea_config
     # Confirm every brick_type is mirrored
-    # TODO add "ii" to keywords
     for brick_type in get_brick_types():
-        idea_type = brick_type.replace(kw.bk, "ii")
+        idea_type = brick_type.replace(kw.bk, kw.ii)
         # print(f""""{idea_type}": {{"brick_type": "{brick_type}"}}""")
         assert idea_type in config_idea_types
         config_dict = x_idea_config.get(idea_type)
         assert config_dict == {kw.brick_type: brick_type}
 
-    # assert 1 == 2
+
+def test_get_idea_config_dict_ReturnsObj_Scenario1_NonMirrored_idea_type_Format():
+    # ESTABLISH / WHEN
+    x_idea_config = get_idea_config_dict()
+    config_idea_types = set(x_idea_config.keys())
+    mirrored_brick_types = {bt.replace(kw.bk, kw.ii) for bt in get_brick_types()}
+    # THEN
+    non_mirror_idea_types = config_idea_types.difference(mirrored_brick_types)
+    assert non_mirror_idea_types
+    # Confirm every brick_type is mirrored
+    for idea_type in non_mirror_idea_types:
+        print(f""""{idea_type}": """)
+        assert idea_type in config_idea_types
+        config_dict = x_idea_config.get(idea_type)
+        config_keys = set(config_dict.keys())
+        assert config_keys == {kw.brick_type, "columns", "description"}
 
 
 #     # THEN

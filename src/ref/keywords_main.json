@@ -274,6 +274,7 @@
   "i_dst": {"exam_tier": 0, "init_ch": "ch18"}, 
   "i_src": {"exam_tier": 0, "init_ch": "ch18"}, 
   "idea": {"exam_tier": 0, "init_ch": "ch17"}, 
+  "idea_type": {"exam_tier": 0, "init_ch": "ch19"}, 
   "ideax_dst": {"exam_tier": 0, "init_ch": "ch18"}, 
   "ideax_src": {"exam_tier": 0, "init_ch": "ch18"}, 
   "ii": {"exam_tier": 0, "init_ch": "ch19"}, 
