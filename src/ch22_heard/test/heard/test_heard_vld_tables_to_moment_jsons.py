@@ -11,7 +11,7 @@ from ch18_etl_config.etl_sqlstr import (
     get_moment_heard_select1_sqlstrs,
 )
 from ch20_etl_brick.etl_brick_main import create_sound_and_heard_tables
-from ch22_heard.heard import etl_heard_vld_tables_to_moment_jsons
+from ch22_heard.heard import etl_heard_vld_tables_to_mind_moment_jsons
 from os.path import exists as os_path_exists
 from ref.keywords import Ch22Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
@@ -96,7 +96,7 @@ def test_get_moment_heard_select1_sqlstrs_ReturnsObj(cursor0: Cursor):
     assert gen_momentunit_sqlstr == static_example_sqlstr
 
 
-def test_etl_heard_vld_tables_to_moment_jsons_Scenario0_CreateFilesWithOnlyMomentRope(
+def test_etl_heard_vld_tables_to_mind_moment_jsons_Scenario0_CreateFilesWithOnlyMomentRope(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -125,7 +125,7 @@ VALUES ('{exx.a23}'), ('{amy45_rope}')
     assert os_path_exists(amy45_json_path) is False
 
     # WHEN
-    etl_heard_vld_tables_to_moment_jsons(cursor0, moment_mstr_dir)
+    etl_heard_vld_tables_to_mind_moment_jsons(cursor0, moment_mstr_dir)
 
     # THEN
     assert os_path_exists(amy23_json_path)

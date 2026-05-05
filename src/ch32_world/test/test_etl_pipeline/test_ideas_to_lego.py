@@ -3,15 +3,15 @@ from ch00_py.file_toolbox import create_path
 from ch04_rope.rope import create_rope
 from ch17_brick.brick_db_tool import create_brick_sorted_table, save_sheet
 from ch18_etl_config.etl_sqlstr import create_prime_tablename
-from ch27_mind.mind_core import get_max_brixk_agg_spark_num
-from ch32_world.world import WorldDir, idea_sheets_to_mind_mstr, worlddir_shop
+from ch27_lego.lego_core import get_max_brixk_agg_spark_num
+from ch32_world.world import WorldDir, idea_sheets_to_lego_mstr, worlddir_shop
 from os.path import exists as os_path_exists
 from pandas import DataFrame
 from ref.keywords import Ch32Keywords as kw, ExampleStrs as exx
 from sqlite3 import connect as sqlite3_connect
 
 
-def test_idea_sheets_to_mind_mstr_Scenario0_CreatesDatabaseFile(
+def test_idea_sheets_to_lego_mstr_Scenario0_CreatesDatabaseFile(
     temp3_fs,
 ):  # sourcery skip: extract-method
     # ESTABLISH:
@@ -59,7 +59,7 @@ def test_idea_sheets_to_mind_mstr_Scenario0_CreatesDatabaseFile(
     assert not os_path_exists(b_src_dir_file_path)
 
     # WHEN
-    idea_sheets_to_mind_mstr(fay_wdir)
+    idea_sheets_to_lego_mstr(fay_wdir)
 
     # THEN
     assert not os_path_exists(ideas_src_dir_file_path)
@@ -145,7 +145,7 @@ def create_brixk_agg_record(wdir: WorldDir, spark_num: int):
     db_conn.close()
 
 
-def test_idea_sheets_to_mind_mstr_Scenario1_DatabaseFileExists(
+def test_idea_sheets_to_lego_mstr_Scenario1_DatabaseFileExists(
     temp3_fs,
 ):  # sourcery skip: extract-method
     # ESTABLISH:
@@ -182,7 +182,7 @@ def test_idea_sheets_to_mind_mstr_Scenario1_DatabaseFileExists(
     assert not os_path_exists(b_src_dir_file_path)
 
     # WHEN
-    idea_sheets_to_mind_mstr(fay_wdir)
+    idea_sheets_to_lego_mstr(fay_wdir)
 
     # THEN
     assert os_path_exists(fay_db_path)

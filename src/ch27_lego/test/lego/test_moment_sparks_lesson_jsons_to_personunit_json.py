@@ -7,12 +7,14 @@ from ch11_bud._ref.ch11_path import (
     create_spark_all_lesson_path,
     create_spark_expressed_lesson_path,
 )
-from ch27_mind.mind_core import etl_spark_lesson_json_to_spark_inherited_personunits
+from ch27_lego.lego_core import (
+    etl_lego_spark_lesson_json_to_spark_inherited_personunits,
+)
 from os.path import exists as os_path_exists
 from ref.keywords import Ch27Keywords as kw, ExampleStrs as exx
 
 
-def test_etl_spark_lesson_json_to_spark_inherited_personunits_SetsFiles_person_json(
+def test_etl_lego_spark_lesson_json_to_spark_inherited_personunits_SetsFiles_person_json(
     temp3_fs,
 ):
     # ESTABLISH
@@ -54,7 +56,7 @@ def test_etl_spark_lesson_json_to_spark_inherited_personunits_SetsFiles_person_j
     assert os_path_exists(e7_person_path) is False
 
     # WHEN
-    etl_spark_lesson_json_to_spark_inherited_personunits(x_dir)
+    etl_lego_spark_lesson_json_to_spark_inherited_personunits(x_dir)
 
     # THEN
     assert os_path_exists(e3_person_path)
@@ -75,7 +77,7 @@ def test_etl_spark_lesson_json_to_spark_inherited_personunits_SetsFiles_person_j
     assert generated_e7_person.to_dict() == expected_e7_bob_person.to_dict()
 
 
-def test_etl_spark_lesson_json_to_spark_inherited_personunits_SetsFiles_expressed_lesson(
+def test_etl_lego_spark_lesson_json_to_spark_inherited_personunits_SetsFiles_expressed_lesson(
     temp3_fs,
 ):
     # ESTABLISH
@@ -127,7 +129,7 @@ def test_etl_spark_lesson_json_to_spark_inherited_personunits_SetsFiles_expresse
     assert os_path_exists(e7_expressed_lesson_path) is False
 
     # WHEN
-    etl_spark_lesson_json_to_spark_inherited_personunits(mstr_dir)
+    etl_lego_spark_lesson_json_to_spark_inherited_personunits(mstr_dir)
 
     # THEN
     assert os_path_exists(e3_expressed_lesson_path)

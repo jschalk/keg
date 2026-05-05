@@ -229,7 +229,7 @@ def test_get_etl_db_sheets_tier2_order_ReturnsObj():
         "h_raw",
         "h_agg",
         "h_vld",
-        "mind",
+        "lego",
         "i_dst",
     ]
 

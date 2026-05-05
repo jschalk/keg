@@ -1,12 +1,12 @@
 from ch00_py.db_toolbox import db_table_exists, get_row_count
 from ch18_etl_config.etl_sqlstr import create_prime_tablename
 from ch20_etl_brick.etl_brick_main import create_sound_and_heard_tables
-from ch22_heard.heard import etl_heard_raw_tables_to_moment_ote1_agg
+from ch22_heard.heard import etl_heard_raw_tables_to_lego_moment_ote1_agg
 from ref.keywords import Ch22Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 
 
-def test_etl_heard_raw_tables_to_moment_ote1_agg_Scenario0_Basic(cursor0: Cursor):
+def test_etl_heard_raw_tables_to_lego_moment_ote1_agg_Scenario0_Basic(cursor0: Cursor):
     # ESTABLISH
     spark3 = 3
     spark7 = 7
@@ -30,7 +30,7 @@ VALUES
     assert db_table_exists(cursor0, kw.moment_ote1_agg) is False
 
     # WHEN
-    etl_heard_raw_tables_to_moment_ote1_agg(cursor0)
+    etl_heard_raw_tables_to_lego_moment_ote1_agg(cursor0)
 
     # THEN
     assert db_table_exists(cursor0, kw.moment_ote1_agg)
@@ -47,7 +47,7 @@ VALUES
     assert momentunit_agg_rows == [ex_row0, ex_row1, ex_row2]
 
 
-def test_etl_heard_raw_tables_to_moment_ote1_agg_Scenario1_NoDuplicates(
+def test_etl_heard_raw_tables_to_lego_moment_ote1_agg_Scenario1_NoDuplicates(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -70,9 +70,9 @@ VALUES
 """
     cursor0.execute(insert_raw_sqlstr)
     assert get_row_count(cursor0, momentbud_h_raw_table) == 4
-    etl_heard_raw_tables_to_moment_ote1_agg(cursor0)
+    etl_heard_raw_tables_to_lego_moment_ote1_agg(cursor0)
     assert get_row_count(cursor0, kw.moment_ote1_agg) == 3
     # WHEN
-    etl_heard_raw_tables_to_moment_ote1_agg(cursor0)
+    etl_heard_raw_tables_to_lego_moment_ote1_agg(cursor0)
     # THEN
     assert get_row_count(cursor0, kw.moment_ote1_agg) == 3

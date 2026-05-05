@@ -6,12 +6,12 @@ from ch09_person_lesson.lesson_filehandler import open_gut_file, save_gut_file
 from ch13_time.epoch_main import epochunit_shop
 from ch13_time.test._util.ch13_examples import get_five_config
 from ch14_moment.moment_main import momentunit_shop
-from ch27_mind.mind_core import add_mind_epoch_to_mind_guts
+from ch27_lego.lego_core import add_lego_epoch_to_mind_guts
 from os.path import exists as os_path_exists
 from ref.keywords import Ch27Keywords as kw, ExampleStrs as exx
 
 
-def test_add_mind_epoch_to_mind_guts_SetsFiles_Scenario0(temp3_fs):
+def test_add_lego_epoch_to_mind_guts_SetsFiles_Scenario0(temp3_fs):
     # ESTABLISH
     moment_mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
@@ -27,7 +27,7 @@ def test_add_mind_epoch_to_mind_guts_SetsFiles_Scenario0(temp3_fs):
     assert not init_sue_gut.plan_exists(five_rope)
 
     # WHEN
-    add_mind_epoch_to_mind_guts(moment_mstr_dir)
+    add_lego_epoch_to_mind_guts(moment_mstr_dir)
 
     # THEN
     post_sue_gut = open_gut_file(moment_mstr_dir, a23_lasso, exx.sue)

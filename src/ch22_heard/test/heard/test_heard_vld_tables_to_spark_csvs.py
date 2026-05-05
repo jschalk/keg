@@ -7,13 +7,13 @@ from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename,
     create_sound_and_heard_tables,
 )
-from ch22_heard.heard import etl_heard_vld_to_spark_person_csvs
+from ch22_heard.heard import etl_heard_vld_to_lego_spark_person_csvs
 from os.path import exists as os_path_exists
 from ref.keywords import Ch22Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 
 
-def test_etl_heard_vld_to_spark_person_csvs_CreatesCSVs_Scenario0_person_contactunit(
+def test_etl_heard_vld_to_lego_spark_person_csvs_CreatesCSVs_Scenario0_person_contactunit(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -50,7 +50,7 @@ VALUES
     assert os_path_exists(a23_e7_prncont_put_path) is False
 
     # WHEN
-    etl_heard_vld_to_spark_person_csvs(cursor0, x_dir)
+    etl_heard_vld_to_lego_spark_person_csvs(cursor0, x_dir)
 
     # THEN
     assert os_path_exists(a23_e3_prncont_put_path)
@@ -70,7 +70,7 @@ VALUES
     assert e7_put_csv == expected_e7_put_csv
 
 
-def test_etl_heard_vld_to_spark_person_csvs_CreatesCSVs_Scenario1_person_plan_reasonunit(
+def test_etl_heard_vld_to_lego_spark_person_csvs_CreatesCSVs_Scenario1_person_plan_reasonunit(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -112,7 +112,7 @@ VALUES
     assert os_path_exists(a23_e7_prncont_put_path) is False
 
     # WHEN
-    etl_heard_vld_to_spark_person_csvs(cursor0, x_dir)
+    etl_heard_vld_to_lego_spark_person_csvs(cursor0, x_dir)
 
     # THEN
     assert os_path_exists(a23_e3_prncont_put_path)
@@ -133,7 +133,7 @@ VALUES
 
 
 # Once this test passes add integration test to
-def test_etl_heard_vld_to_spark_person_csvs_CreatesCSVs_Scenario2_person_planunit(
+def test_etl_heard_vld_to_lego_spark_person_csvs_CreatesCSVs_Scenario2_person_planunit(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -174,7 +174,7 @@ VALUES
     assert os_path_exists(a23_e3_prnplan_put_path) is False
 
     # WHEN
-    etl_heard_vld_to_spark_person_csvs(cursor0, x_dir)
+    etl_heard_vld_to_lego_spark_person_csvs(cursor0, x_dir)
 
     # THEN
     assert os_path_exists(a23_e3_prnplan_put_path)

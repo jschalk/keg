@@ -232,7 +232,7 @@ def test_get_etl_stage_types_config_dict_ReturnsObj_Scenario0_IsFullyPopulated()
         kw.i_src,
         kw.i_dst,
         kw.b_src,
-        kw.mind,
+        kw.lego,
     }
     expected_abbv9_stage_types = {
         kw.heard_agg,
@@ -247,7 +247,7 @@ def test_get_etl_stage_types_config_dict_ReturnsObj_Scenario0_IsFullyPopulated()
         kw.ideax_dst,
         kw.ideax_src,
         kw.brixk_src,
-        kw.mindx_mst,
+        kw.legox_mst,
     }
     track_stage_type_orders = {}
     for stage_type, stage_type_dict in etl_stage_types_config.items():
@@ -289,7 +289,7 @@ def test_get_ordered_stage_types_ReturnsObj():
         kw.h_raw,
         kw.h_agg,
         kw.h_vld,
-        kw.mind,
+        kw.lego,
         kw.i_dst,
     ]
     print(expected_ordered_stage_types)

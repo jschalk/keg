@@ -1,55 +1,55 @@
 from ch00_py.file_toolbox import create_path
-from ch30_idea_dst._ref.ch30_path import create_mind0001_path, create_mind0002_path
+from ch30_idea_dst._ref.ch30_path import create_lego0001_path, create_lego0002_path
 from inspect import getdoc as inspect_getdoc
 from pytest import mark as pytest_mark
 from ref.keywords import Ch30Keywords as kw, ExampleStrs as exx
 
-MIND0001_FILENAME = "mind0001.xlsx"
+LEGO0001_FILENAME = "lego0001.xlsx"
 
 
 def test_ch30_path_constants_ReturnsObj():
     # ESTABLISH / WHEN / THEN
-    assert MIND0001_FILENAME == "mind0001.xlsx"
+    assert LEGO0001_FILENAME == "lego0001.xlsx"
 
 
-def test_create_mind0001_path_ReturnsObj(temp3_dir):
+def test_create_lego0001_path_ReturnsObj(temp3_dir):
     # ESTABLISH
     output_dir = temp3_dir
 
     # WHEN
-    gen_mind0001_xlsx_path = create_mind0001_path(output_dir)
+    gen_lego0001_xlsx_path = create_lego0001_path(output_dir)
 
     # THEN
-    expected_mind0001_path = create_path(output_dir, MIND0001_FILENAME)
-    assert gen_mind0001_xlsx_path == expected_mind0001_path
+    expected_lego0001_path = create_path(output_dir, LEGO0001_FILENAME)
+    assert gen_lego0001_xlsx_path == expected_lego0001_path
 
 
 @pytest_mark.skip_on_linux
-def test_create_mind0001_path_HasDocString():
+def test_create_lego0001_path_HasDocString():
     # ESTABLISH
-    doc_str = create_mind0001_path(output_dir="output_dir")
+    doc_str = create_lego0001_path(output_dir="output_dir")
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    assert inspect_getdoc(create_mind0001_path) == doc_str
+    assert inspect_getdoc(create_lego0001_path) == doc_str
 
 
-def test_create_mind0002_path_ReturnsObj(temp3_dir):
+def test_create_lego0002_path_ReturnsObj(temp3_dir):
     # ESTABLISH
     output_dir = temp3_dir
 
     # WHEN
-    gen_sue_mind0002_xlsx_path = create_mind0002_path(output_dir, exx.sue)
+    gen_sue_lego0002_xlsx_path = create_lego0002_path(output_dir, exx.sue)
 
     # THEN
     output_person_dir = create_path(output_dir, exx.sue)
-    expected_mind0002_path = create_path(output_person_dir, f"{exx.sue}_ideas.xlsx")
-    assert gen_sue_mind0002_xlsx_path == expected_mind0002_path
+    expected_lego0002_path = create_path(output_person_dir, f"{exx.sue}_ideas.xlsx")
+    assert gen_sue_lego0002_xlsx_path == expected_lego0002_path
 
 
 @pytest_mark.skip_on_linux
-def test_create_mind0002_path_HasDocString():
+def test_create_lego0002_path_HasDocString():
     # ESTABLISH
-    doc_str = create_mind0002_path(output_dir="output_dir", person_name="person_name")
+    doc_str = create_lego0002_path(output_dir="output_dir", person_name="person_name")
     doc_str = f"Returns path: {doc_str}"
     # WHEN / THEN
-    assert inspect_getdoc(create_mind0002_path) == doc_str
+    assert inspect_getdoc(create_lego0002_path) == doc_str

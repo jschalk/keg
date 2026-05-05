@@ -20,29 +20,29 @@ from ch21_sound.sound import (
 from ch22_heard.heard import (
     etl_heard_agg_tables_to_heard_vld_tables,
     etl_heard_raw_tables_to_heard_agg_tables,
-    etl_heard_raw_tables_to_moment_ote1_agg,
-    etl_heard_vld_tables_to_moment_jsons,
-    etl_heard_vld_to_spark_person_csvs,
+    etl_heard_raw_tables_to_lego_moment_ote1_agg,
+    etl_heard_vld_tables_to_mind_moment_jsons,
+    etl_heard_vld_to_lego_spark_person_csvs,
     etl_moment_ote1_agg_table_to_moment_ote1_agg_csvs,
 )
-from ch27_mind.mind_core import (
-    add_mind_epoch_to_mind_guts,
+from ch27_lego.lego_core import (
+    add_lego_epoch_to_mind_guts,
     calc_moment_bud_contact_mandate_net_ledgers,
     create_last_run_metrics_json,
+    etl_lego_spark_lesson_json_to_spark_inherited_personunits,
+    etl_lego_spark_person_csvs_to_lesson_json,
     etl_mind_guts_to_mind_jobs,
     etl_mind_job_jsons_to_job_tables,
     etl_moment_json_contact_nets_to_moment_tranbook_nets_table,
     etl_moment_ote1_agg_csvs_to_jsons,
     etl_spark_inherited_personunits_to_mind_gut,
-    etl_spark_lesson_json_to_spark_inherited_personunits,
-    etl_spark_person_csvs_to_lesson_json,
     get_max_brixk_agg_spark_num,
 )
-from ch30_idea_dst.mind_db2df import create_mind0001_file, prettify_excel_file
+from ch30_idea_dst.lego_db2df import create_lego0001_file, prettify_excel_file
 from ch31_kpi.gcalendar import (
     copy_person_day_punches_to_dst_dir,
     get_day_punchs_persons,
-    mind_to_person_gcal_day_punchs,
+    lego_to_person_gcal_day_punchs,
 )
 from ch31_kpi.kpi_mstr import create_calendar_markdown_files, populate_kpi_bundle
 from ch32_world._ref.ch32_semantic_types import GroupTitle, PersonName, WorldName
@@ -59,11 +59,11 @@ def create_ideas(
     moment_mstr_dir: str,
     prettify_excel_bool=True,
 ):
-    create_mind0001_file(world_dir, output_dir, world_name, prettify_excel_bool)
+    create_lego0001_file(world_dir, output_dir, world_name, prettify_excel_bool)
     create_calendar_markdown_files(moment_mstr_dir, output_dir)
 
 
-def brick_sheets_to_mind_with_cursor(
+def brick_sheets_to_lego_with_cursor(
     cursor: sqlite3_Cursor, bricks_src_dir: str, moment_mstr_dir: str
 ):
     delete_dir(moment_mstr_dir)
@@ -84,15 +84,15 @@ def brick_sheets_to_mind_with_cursor(
     # heard raw stage to sparkized stage: moment/person jsons files
     etl_heard_raw_tables_to_heard_agg_tables(cursor)
     etl_heard_agg_tables_to_heard_vld_tables(cursor)
-    etl_heard_vld_tables_to_moment_jsons(cursor, moment_mstr_dir)
-    etl_heard_vld_to_spark_person_csvs(cursor, moment_mstr_dir)
-    etl_spark_person_csvs_to_lesson_json(moment_mstr_dir)
-    etl_spark_lesson_json_to_spark_inherited_personunits(moment_mstr_dir)
-    # Sparkized files to mind stage
+    etl_heard_vld_tables_to_mind_moment_jsons(cursor, moment_mstr_dir)
+    etl_heard_vld_to_lego_spark_person_csvs(cursor, moment_mstr_dir)
+    etl_lego_spark_person_csvs_to_lesson_json(moment_mstr_dir)
+    etl_lego_spark_lesson_json_to_spark_inherited_personunits(moment_mstr_dir)
+    # Sparkized files to lego stage
     etl_spark_inherited_personunits_to_mind_gut(moment_mstr_dir)
-    add_mind_epoch_to_mind_guts(moment_mstr_dir)
+    add_lego_epoch_to_mind_guts(moment_mstr_dir)
     etl_mind_guts_to_mind_jobs(moment_mstr_dir)
-    etl_heard_raw_tables_to_moment_ote1_agg(cursor)
+    etl_heard_raw_tables_to_lego_moment_ote1_agg(cursor)
     etl_moment_ote1_agg_table_to_moment_ote1_agg_csvs(cursor, moment_mstr_dir)
     etl_moment_ote1_agg_csvs_to_jsons(moment_mstr_dir)
     calc_moment_bud_contact_mandate_net_ledgers(moment_mstr_dir)
@@ -161,10 +161,10 @@ def worlddir_shop(
     return x_worlddir
 
 
-def brick_sheets_to_mind_mstr(worlddir: WorldDir, export_db: bool = False):
+def brick_sheets_to_lego_mstr(worlddir: WorldDir, export_db: bool = False):
     with sqlite3_connect(worlddir.db_path) as db_conn:
         cursor = db_conn.cursor()
-        brick_sheets_to_mind_with_cursor(
+        brick_sheets_to_lego_with_cursor(
             cursor, worlddir.bricks_src_dir, worlddir.moment_mstr_dir
         )
         if export_db and worlddir.output_dir:
@@ -178,7 +178,7 @@ def brick_sheets_to_mind_mstr(worlddir: WorldDir, export_db: bool = False):
     db_conn.close()
 
 
-def idea_sheets_to_mind_mstr(worlddir: WorldDir, export_db: bool = False):
+def idea_sheets_to_lego_mstr(worlddir: WorldDir, export_db: bool = False):
     max_brixk_agg_spark_num = 0
     if os_path_exists(worlddir.db_path):
         with sqlite3_connect(worlddir.db_path) as db_conn0:
@@ -188,7 +188,7 @@ def idea_sheets_to_mind_mstr(worlddir: WorldDir, export_db: bool = False):
     ideas_sheets_to_brick_sheets(
         worlddir.ideas_src_dir, worlddir.bricks_src_dir, max_brixk_agg_spark_num
     )
-    brick_sheets_to_mind_mstr(worlddir, export_db)
+    brick_sheets_to_lego_mstr(worlddir, export_db)
 
 
 def idea_sheets_to_gcal_day_punchs(
@@ -197,9 +197,9 @@ def idea_sheets_to_gcal_day_punchs(
     day: datetime,
     focus_group_title: GroupTitle = None,
 ):
-    idea_sheets_to_mind_mstr(worlddir, export_db=True)
+    idea_sheets_to_lego_mstr(worlddir, export_db=True)
     for person_name in sorted(person_names):
-        mind_to_person_gcal_day_punchs(
+        lego_to_person_gcal_day_punchs(
             world_dir=worlddir.world_dir,
             person_name=person_name,
             day=day,

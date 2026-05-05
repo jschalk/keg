@@ -1,6 +1,6 @@
 {
-  "chapter_blurb": "Defines the 'Heard' process. From 'Sound' to 'mind'.", 
-  "chapter_content": "Defines the 'Heard' process. Where valid 'Sound' data is aggregated into clean 'mind' data.", 
+  "chapter_blurb": "Defines the 'Heard' process. From 'Sound' to 'lego'.", 
+  "chapter_content": "Defines the 'Heard' process. Where valid 'Sound' data is aggregated into clean 'lego' data.", 
   "chapter_description": "ch22_heard", 
   "chapter_number": 22, 
   "ontology summary": "Sounds are turned into trusted concepts, Nabu interpreted (time conversion included) and produces Moment and Person objects."

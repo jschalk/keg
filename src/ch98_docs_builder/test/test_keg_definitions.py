@@ -16,7 +16,7 @@ from ch16_translate.translate_config import (
 )
 from ch17_brick.brick_config import get_brick_config_dict
 from ch18_etl_config.etl_config import get_etl_stage_types_config_dict
-from ch22_heard.heard import etl_heard_raw_tables_to_moment_ote1_agg
+from ch22_heard.heard import etl_heard_raw_tables_to_lego_moment_ote1_agg
 from ch98_docs_builder._ref.ch98_semantic_types import (
     BreakTerm,
     ContactName,
@@ -115,7 +115,7 @@ def test_get_keg_definitions_ReturnsObj_Check_moment_ote1_agg():
     keg_definitions = get_keg_definitions()
 
     # THEN
-    moment_ote1_agg_desc = inspect_getdoc(etl_heard_raw_tables_to_moment_ote1_agg)
+    moment_ote1_agg_desc = inspect_getdoc(etl_heard_raw_tables_to_lego_moment_ote1_agg)
     assert moment_ote1_agg_desc in keg_definitions.get(kw.moment_ote1_agg)
 
 

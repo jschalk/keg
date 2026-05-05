@@ -6,12 +6,12 @@ from ch11_bud._ref.ch11_path import (
     create_spark_all_lesson_path as all_lesson_path,
 )
 from ch18_etl_config.etl_sqlstr import create_prime_tablename
-from ch27_mind.mind_core import etl_spark_person_csvs_to_lesson_json
+from ch27_lego.lego_core import etl_lego_spark_person_csvs_to_lesson_json
 from os.path import exists as os_path_exists
 from ref.keywords import Ch27Keywords as kw, ExampleStrs as exx
 
 
-def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario0_IgnoresCSV_personunit(
+def test_etl_lego_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario0_IgnoresCSV_personunit(
     temp3_fs,
 ):
     # ESTABLISH
@@ -34,7 +34,7 @@ def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario0_IgnoresCSV_
     assert os_path_exists(e3_all_lesson_path) is False
 
     # WHEN
-    etl_spark_person_csvs_to_lesson_json(moment_mstr_dir)
+    etl_lego_spark_person_csvs_to_lesson_json(moment_mstr_dir)
 
     # THEN
     assert os_path_exists(e3_all_lesson_path)
@@ -48,7 +48,7 @@ def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario0_IgnoresCSV_
     assert e3_lessonunit == expected_e3_lesson
 
 
-def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario1(
+def test_etl_lego_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario1(
     temp3_fs,
 ):
     # ESTABLISH
@@ -88,7 +88,7 @@ def test_etl_spark_person_csvs_to_lesson_json_CreatesFiles_Scenario1(
     assert os_path_exists(e7_all_lesson_path) is False
 
     # WHEN
-    etl_spark_person_csvs_to_lesson_json(moment_mstr_dir)
+    etl_lego_spark_person_csvs_to_lesson_json(moment_mstr_dir)
 
     # THEN
     assert os_path_exists(e3_all_lesson_path)

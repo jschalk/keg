@@ -96,7 +96,10 @@ def etl_heard_agg_tables_to_heard_vld_tables(cursor: sqlite3_Cursor):
         delete_all_duplicate_rows(cursor, h_vld_tablename)
 
 
-def etl_heard_vld_tables_to_moment_jsons(cursor: sqlite3_Cursor, moment_mstr_dir: str):
+# TODO consider saving moment_json to sqlite database, maybe "moment_lego_json"
+def etl_heard_vld_tables_to_mind_moment_jsons(
+    cursor: sqlite3_Cursor, moment_mstr_dir: str
+):
     select_moment_rope_sqlstr = """SELECT moment_rope FROM momentunit_h_vld;"""
     cursor.execute(select_moment_rope_sqlstr)
     for moment_label_set in cursor.fetchall():
@@ -107,13 +110,14 @@ def etl_heard_vld_tables_to_moment_jsons(cursor: sqlite3_Cursor, moment_mstr_dir
         save_json(moment_json_path, None, moment_dict)
 
 
-def etl_heard_raw_tables_to_moment_ote1_agg(conn_or_cursor: sqlite3_Connection):
+def etl_heard_raw_tables_to_lego_moment_ote1_agg(conn_or_cursor: sqlite3_Connection):
     """Create Database Table that holds all spark_num to bud_time pairs. Include moment_rope and person_name"""
     conn_or_cursor.execute(CREATE_MOMENT_OTE1_AGG_SQLSTR)
     conn_or_cursor.execute(INSERT_MOMENT_OTE1_AGG_FROM_HEARD_SQLSTR)
     delete_all_duplicate_rows(conn_or_cursor, "moment_ote1_agg")
 
 
+# TODO consider getting rid of this step and having downstream moment_ote1_agg_csv users go to database
 def etl_moment_ote1_agg_table_to_moment_ote1_agg_csvs(
     conn_or_cursor: sqlite3_Connection, moment_mstr_dir: str
 ):
@@ -128,19 +132,21 @@ def etl_moment_ote1_agg_table_to_moment_ote1_agg_csvs(
     save_to_split_csvs(conn_or_cursor, "moment_ote1_agg", ["moment_rope"], moments_dir)
 
 
-def etl_heard_vld_to_spark_person_csvs(
+# TODO consider getting rid of this step and having downstream lego_spark_person_csvs users go to database
+# would fix save to split csv issue that's annoying
+def etl_heard_vld_to_lego_spark_person_csvs(
     conn_or_cursor: sqlite3_Connection, moment_mstr_dir: str
 ):
     moments_dir = create_moments_dir_path(moment_mstr_dir)
-    for person_table in get_person_heard_vld_tablenames():
-        if get_row_count(conn_or_cursor, person_table) > 0:
-            table_columns = set(get_table_columns(conn_or_cursor, person_table))
+    for prnxxxx_table in get_person_heard_vld_tablenames():
+        if get_row_count(conn_or_cursor, prnxxxx_table) > 0:
+            table_columns = set(get_table_columns(conn_or_cursor, prnxxxx_table))
             key_columns = ["moment_rope", "person_name", "spark_num"]
             if "moment_rope" not in table_columns:
                 key_columns = ["plan_rope", "person_name", "spark_num"]
             save_to_split_csvs(
                 conn_or_cursor=conn_or_cursor,
-                tablename=person_table,
+                tablename=prnxxxx_table,
                 key_columns=key_columns,
                 dst_dir=moments_dir,
                 col1_prefix="persons",

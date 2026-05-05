@@ -27,7 +27,7 @@ For keg all data must have *spark_num*, *spark_face*, and a rope, either *moment
   
 ## 0.1 Short introduction to keg excel sheets
 
-`keg` is a python library for listening to the needs of my neighbors and in turn letting them know what I need. Needs can be expressed in Excel sheets that range in complexity from a simple five column single row (example below) to 10+ columns that include configuration options that are usually set to defaults. Each row is translated and used to build the "mind" data set. Even sheet with a single row like the example 0.1.0 below can be processed by keg. 
+`keg` is a python library for listening to the needs of my neighbors and in turn letting them know what I need. Needs can be expressed in Excel sheets that range in complexity from a simple five column single row (example below) to 10+ columns that include configuration options that are usually set to defaults. Each row is translated and used to build the "lego" data set. Even sheet with a single row like the example 0.1.0 below can be processed by keg. 
 
 # Input Example Excel file 0.1.0: fizz0.xlsx with sheet "br00000_buzz" 
 | spark_num | spark_face | moment_rope | person_name | contact_name | tran_time | amount |

@@ -10,7 +10,7 @@ from ch13_time.epoch_main import (
 )
 from ch14_moment.moment_main import momentunit_shop, save_moment_file
 from ch18_etl_config._ref.ch18_path import create_moment_mstr_path, create_world_db_path
-from ch27_mind.mind_core import CREATE_MOMENT_TRANBOOK_NETS_SQLSTR
+from ch27_lego.lego_core import CREATE_MOMENT_TRANBOOK_NETS_SQLSTR
 from ch31_kpi._ref.ch31_path import (
     create_day_punch_txt_path as day_punch_path,
     create_dst_person_punch_path as dst_punch_path,
@@ -20,7 +20,7 @@ from ch31_kpi.gcalendar import (
     get_gcal_day_punch_from_job_file,
     get_gcal_day_punch_from_personunit,
     get_person_gcal_day_punchs,
-    mind_to_person_gcal_day_punchs,
+    lego_to_person_gcal_day_punchs,
     persontranbookmetric_shop,
 )
 from ch31_kpi.test._util.ch31_examples import (
@@ -248,7 +248,7 @@ def test_get_person_gcal_day_punchs_ReturnsObj_Scenario2_OnlySueReports(
     assert sue_ep8_day_punch_path == sue_ep8_dict.get("file_path")
 
 
-def test_mind_to_person_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
+def test_lego_to_person_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     temp3_fs,
 ):
     # ESTABLISH
@@ -286,7 +286,7 @@ def test_mind_to_person_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     assert not os_path_exists(sue_ep8_day_punch_path)
 
     # WHEN
-    mind_to_person_gcal_day_punchs(
+    lego_to_person_gcal_day_punchs(
         world_dir=world_dir,
         person_name=exx.sue,
         day=apr7,
@@ -303,7 +303,7 @@ def test_mind_to_person_gcal_day_punchs_SavesFiles_Scenario0_TwoSueReports(
     assert f"Agenda for {exx.sue}" in sue_ep8_day_punch_str
 
 
-def test_mind_to_person_gcal_day_punchs_SavesFiles_Scenario1_IncludesTranBook(temp3_fs):
+def test_lego_to_person_gcal_day_punchs_SavesFiles_Scenario1_IncludesTranBook(temp3_fs):
     # ESTABLISH
     sue_a23_person = get_a23_sue_clean_example()
     epoch_config = get_default_epoch_config_dict()
@@ -337,7 +337,7 @@ VALUES
     assert not os_path_exists(sue_a23_day_punch_path)
 
     # WHEN
-    mind_to_person_gcal_day_punchs(
+    lego_to_person_gcal_day_punchs(
         world_dir=world_dir,
         person_name=exx.sue,
         day=apr7,

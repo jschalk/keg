@@ -74,7 +74,8 @@ def etl_moment_ote1_agg_csvs_to_jsons(moment_mstr_dir: str):
         save_json(json_path, None, x_dict)
 
 
-def etl_spark_person_csvs_to_lesson_json(moment_mstr_dir: str):
+# TODO consider changing source of these sparks to database
+def etl_lego_spark_person_csvs_to_lesson_json(moment_mstr_dir: str):
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):
         moment_lasso = lassounit_shop(create_rope(moment_label))
@@ -84,40 +85,36 @@ def etl_spark_person_csvs_to_lesson_json(moment_mstr_dir: str):
             person_path = create_path(persons_path, person_name)
             sparks_path = create_path(person_path, "sparks")
             for spark_num in get_level1_dirs(sparks_path):
-                save_spark_lesson_json(
+                save_lego_spark_lesson_json(
                     moment_mstr_dir, moment_lasso, person_name, spark_num, sparks_path
                 )
 
 
-def save_spark_lesson_json(
+def save_lego_spark_lesson_json(
     moment_mstr_dir, moment_lasso, person_name, spark_num, sparks_path
 ):
-    spark_lesson = lessonunit_shop(
+    lego_spark_lesson = lessonunit_shop(
         person_name=person_name,
         spark_face=None,
         moment_rope=moment_lasso.moment_rope,
         spark_num=spark_num,
     )
     spark_dir = create_path(sparks_path, spark_num)
-    add_personatoms_from_csv(spark_lesson, spark_dir)
+    add_personatoms_from_csv(lego_spark_lesson, spark_dir)
     spark_all_lesson_path = create_spark_all_lesson_path(
         moment_mstr_dir, moment_lasso, person_name, spark_num
     )
-    spark_lesson_json = spark_lesson.get_serializable_step_dict()
-    save_json(spark_all_lesson_path, None, spark_lesson_json)
+    lego_spark_lesson_json = lego_spark_lesson.get_serializable_step_dict()
+    save_json(spark_all_lesson_path, None, lego_spark_lesson_json)
 
 
-def add_personatoms_from_csv(spark_lesson: LessonUnit, spark_dir: str):
+def add_personatoms_from_csv(lego_spark_lesson: LessonUnit, spark_dir: str):
     brick_sqlite_types = get_brick_sqlite_types()
     person_dimens = get_person_dimens()
     person_dimens.remove("personunit")
-    for person_dimen in person_dimens:
-        person_dimen_put_tablename = create_prime_tablename(
-            person_dimen, "h_vld", "put"
-        )
-        person_dimen_del_tablename = create_prime_tablename(
-            person_dimen, "h_vld", "del"
-        )
+    for dimen in person_dimens:
+        person_dimen_put_tablename = create_prime_tablename(dimen, "h_vld", "put")
+        person_dimen_del_tablename = create_prime_tablename(dimen, "h_vld", "del")
         person_dimen_put_csv = f"{person_dimen_put_tablename}.csv"
         person_dimen_del_csv = f"{person_dimen_del_tablename}.csv"
         put_path = create_path(spark_dir, person_dimen_put_csv)
@@ -126,7 +123,7 @@ def add_personatoms_from_csv(spark_lesson: LessonUnit, spark_dir: str):
             put_rows = open_csv_with_types(put_path, brick_sqlite_types)
             headers = put_rows.pop(0)
             for put_row in put_rows:
-                x_atom = personatom_shop(person_dimen, "INSERT")
+                x_atom = personatom_shop(dimen, "INSERT")
                 for col_name, row_value in zip(headers, put_row):
                     if col_name not in {
                         "spark_face",
@@ -135,13 +132,13 @@ def add_personatoms_from_csv(spark_lesson: LessonUnit, spark_dir: str):
                         "person_name",
                     }:
                         x_atom.set_arg(col_name, row_value)
-                spark_lesson.persondelta.set_personatom(x_atom)
+                lego_spark_lesson.persondelta.set_personatom(x_atom)
 
         if os_path_exists(del_path):
             del_rows = open_csv_with_types(del_path, brick_sqlite_types)
             headers = del_rows.pop(0)
             for del_row in del_rows:
-                x_atom = personatom_shop(person_dimen, "DELETE")
+                x_atom = personatom_shop(dimen, "DELETE")
                 for col_name, row_value in zip(headers, del_row):
                     if col_name not in {
                         "spark_face",
@@ -150,10 +147,10 @@ def add_personatoms_from_csv(spark_lesson: LessonUnit, spark_dir: str):
                         "person_name",
                     }:
                         x_atom.set_arg(col_name, row_value)
-                spark_lesson.persondelta.set_personatom(x_atom)
+                lego_spark_lesson.persondelta.set_personatom(x_atom)
 
 
-def etl_spark_lesson_json_to_spark_inherited_personunits(moment_mstr_dir: str):
+def etl_lego_spark_lesson_json_to_spark_inherited_personunits(moment_mstr_dir: str):
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):
         moment_path = create_path(moments_dir, moment_label)
@@ -186,11 +183,11 @@ def create_lesson_json_and_get_spark_num(
     personspark_path = create_personspark_path(m_dir, m_lasso, p_name, spark_num)
     spark_dir = create_person_spark_dir_path(m_dir, m_lasso, p_name, spark_num)
     all_lesson_path = create_spark_all_lesson_path(m_dir, m_lasso, p_name, spark_num)
-    spark_lesson = get_lessonunit_from_dict(open_json(all_lesson_path))
-    sift_delta = get_minimal_persondelta(spark_lesson.persondelta, prev_person)
-    curr_person = spark_lesson.get_lesson_edited_person(prev_person)
+    lego_spark_lesson = get_lessonunit_from_dict(open_json(all_lesson_path))
+    sift_delta = get_minimal_persondelta(lego_spark_lesson.persondelta, prev_person)
+    curr_person = lego_spark_lesson.get_lesson_edited_person(prev_person)
     save_json(personspark_path, None, curr_person.to_dict())
-    expressed_lesson = copy_deepcopy(spark_lesson)
+    expressed_lesson = copy_deepcopy(lego_spark_lesson)
     expressed_lesson.set_persondelta(sift_delta)
     expressed_lesson_json = expressed_lesson.get_serializable_step_dict()
     save_json(spark_dir, "expressed_lesson.json", expressed_lesson_json)
@@ -223,19 +220,7 @@ def etl_spark_inherited_personunits_to_mind_gut(moment_mstr_dir: str):
             save_file(gut_path, None, max_spark_person_json)
 
 
-def get_max_brixk_agg_spark_num(cursor: sqlite3_Cursor) -> int:
-    agg_tables = get_db_tables(cursor, "brixk_agg")
-    brixk_aggs_max_spark_num = 0
-    for agg_table in agg_tables:
-        if agg_table.startswith("bk") and agg_table.endswith("brixk_agg"):
-            sqlstr = f"SELECT MAX(spark_num) FROM {agg_table}"
-            table_max_spark_num = cursor.execute(sqlstr).fetchone()[0] or 1
-            if table_max_spark_num > brixk_aggs_max_spark_num:
-                brixk_aggs_max_spark_num = table_max_spark_num
-    return brixk_aggs_max_spark_num
-
-
-def add_mind_epoch_to_mind_guts(moment_mstr_dir: str):
+def add_lego_epoch_to_mind_guts(moment_mstr_dir: str):
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):
         moment_lasso = lassounit_shop(create_rope(moment_label))
@@ -295,6 +280,18 @@ def etl_moment_json_contact_nets_to_moment_tranbook_nets_table(
         x_momentunit.set_all_tranbook()
         insert_tranunit_contacts_net(cursor, x_momentunit.all_tranbook)
     delete_all_duplicate_rows(cursor, "moment_tranbook_nets")
+
+
+def get_max_brixk_agg_spark_num(cursor: sqlite3_Cursor) -> int:
+    agg_tables = get_db_tables(cursor, "brixk_agg")
+    brixk_aggs_max_spark_num = 0
+    for agg_table in agg_tables:
+        if agg_table.startswith("bk") and agg_table.endswith("brixk_agg"):
+            sqlstr = f"SELECT MAX(spark_num) FROM {agg_table}"
+            table_max_spark_num = cursor.execute(sqlstr).fetchone()[0] or 1
+            if table_max_spark_num > brixk_aggs_max_spark_num:
+                brixk_aggs_max_spark_num = table_max_spark_num
+    return brixk_aggs_max_spark_num
 
 
 def create_last_run_metrics_json(cursor: sqlite3_Cursor, moment_mstr_dir: str):

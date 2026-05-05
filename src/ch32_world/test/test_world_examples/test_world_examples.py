@@ -6,12 +6,12 @@ from ch00_py.file_toolbox import (
     get_level1_dirs,
 )
 from ch31_kpi.kpi_mstr import create_kpi_csvs
-from ch32_world.world import brick_sheets_to_mind_mstr, create_ideas, worlddir_shop
+from ch32_world.world import brick_sheets_to_lego_mstr, create_ideas, worlddir_shop
 from os.path import exists as os_path_exists
 from ref.keywords import ExampleStrs as exx
 
 
-def test_brick_sheets_to_mind_mstr_Examples(temp3_fs, run_big_tests):
+def test_brick_sheets_to_lego_mstr_Examples(temp3_fs, run_big_tests):
     """Find examples in a example directory and run them through the pipeline."""
     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
     # ESTABLISH
@@ -48,7 +48,7 @@ def test_brick_sheets_to_mind_mstr_Examples(temp3_fs, run_big_tests):
         print(f"before WHEN {os_path_exists(b_src_dir)=}")
 
         # WHEN
-        brick_sheets_to_mind_mstr(example_worlddir)
+        brick_sheets_to_lego_mstr(example_worlddir)
         create_ideas(
             example_worlddir.world_dir,
             example_worlddir.output_dir,

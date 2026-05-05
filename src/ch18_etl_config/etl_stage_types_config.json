@@ -44,8 +44,8 @@
     "description": "Brick Valid: The Brick Agg tables filtered to correct datatypes. ", 
     "stage_type_order": 6
   }, 
-  "mind": {
-    "abbv9": "mindx_mst", 
+  "lego": {
+    "abbv9": "legox_mst", 
     "description": "File buildout of Moments and PersonUnits", 
     "stage_type_order": 13
   }, 

@@ -23,7 +23,7 @@ from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
 )
-from ch30_idea_dst._ref.ch30_path import create_mind0001_path, create_mind0002_path
+from ch30_idea_dst._ref.ch30_path import create_lego0001_path, create_lego0002_path
 from ch30_idea_dst._ref.ch30_semantic_types import PersonName
 from os.path import exists as os_path_exists
 from sqlite3 import Cursor as sqlite3_Cursor, connect as sqlite3_connect
@@ -199,7 +199,7 @@ def collect_full_world_idea_csv_strs(world_dir: str) -> dict[str, str]:
     return x_csv_strs
 
 
-def create_mind0001_file(
+def create_lego0001_file(
     world_dir: str,
     output_dir: str,
     world_name: str,
@@ -213,15 +213,15 @@ def create_mind0001_file(
         csv_str = delete_column_from_csv_string(csv_str, "spark_num")
         with_spark_face_csvs[csv_key] = csv_str
 
-    csv_dict_to_excel(with_spark_face_csvs, output_dir, "mind0001.xlsx")
+    csv_dict_to_excel(with_spark_face_csvs, output_dir, "lego0001.xlsx")
 
     # Hard to test function to prettify the excel file
     if prettify_excel_bool:
-        mind0001_path = create_mind0001_path(output_dir)
-        prettify_excel_file(mind0001_path)
+        lego0001_path = create_lego0001_path(output_dir)
+        prettify_excel_file(lego0001_path)
 
 
-def collect_mind0002_idea_csv_strs(
+def collect_lego0002_idea_csv_strs(
     world_dir: str, person_name: PersonName
 ) -> dict[str, str]:
     """Returns idea file of a person's moment, job data in world_dir"""
@@ -245,14 +245,14 @@ def collect_mind0002_idea_csv_strs(
     return x_csv_strs
 
 
-def create_mind0002_file(
+def create_lego0002_file(
     world_dir: str,
     output_dir: str,
     person_name: str,
     prettify_excel_bool: bool = True,
 ):
     """Returns idea file of a person's moment, job data in world_dir"""
-    idea_csv_strs = collect_mind0002_idea_csv_strs(world_dir, person_name)
+    idea_csv_strs = collect_lego0002_idea_csv_strs(world_dir, person_name)
     with_spark_face_csvs = {}
     for csv_key, csv_str in idea_csv_strs.items():
         csv_str = delete_column_from_csv_string(csv_str, "spark_num")
@@ -263,6 +263,6 @@ def create_mind0002_file(
     csv_dict_to_excel(with_spark_face_csvs, person_dir, f"{person_name}_ideas.xlsx")
     # Hard to test function to prettify the excel file
     if prettify_excel_bool:
-        mind0002_path = create_mind0002_path(output_dir, person_name)
-        remove_empty_sheets(mind0002_path)
-        prettify_excel_file(mind0002_path)
+        lego0002_path = create_lego0002_path(output_dir, person_name)
+        remove_empty_sheets(lego0002_path)
+        prettify_excel_file(lego0002_path)
