@@ -21,7 +21,7 @@ def test_idea_sheets_to_lego_mstr_Scenario0_CreatesDatabaseFile(
     sue_inx = "Suzy"
     ex_filename = "idea_Faybob.xlsx"
     ideas_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
-    bk00171_columns = [
+    ii00171_columns = [
         kw.spark_face,
         kw.moment_rope,
         kw.person_name,
@@ -30,13 +30,13 @@ def test_idea_sheets_to_lego_mstr_Scenario0_CreatesDatabaseFile(
         kw.inx_name,
     ]
     tp37 = 37
-    bk00171_str = "bk00171"
-    bk00171row0 = [exx.sue, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
-    bk00171_df = DataFrame([bk00171row0], columns=bk00171_columns)
-    bk00171_ex0_str = f"example0_{bk00171_str}"
-    save_sheet(ideas_src_dir_file_path, bk00171_ex0_str, bk00171_df)
+    ii00171_str = "ii00171"
+    ii00171row0 = [exx.sue, exx.a23, exx.sue, exx.sue, exx.sue, sue_inx]
+    ii00171_df = DataFrame([ii00171row0], columns=ii00171_columns)
+    ii00171_ex0_str = f"example0_{ii00171_str}"
+    save_sheet(ideas_src_dir_file_path, ii00171_ex0_str, ii00171_df)
 
-    bk00101_columns = [
+    ii00101_columns = [
         kw.spark_face,
         kw.moment_rope,
         kw.person_name,
@@ -48,10 +48,10 @@ def test_idea_sheets_to_lego_mstr_Scenario0_CreatesDatabaseFile(
     tp37 = 37
     sue_quota = 235
     sue_celldepth = 3
-    bk1row0 = [exx.sue, exx.a23, exx.sue, tp37, ";", sue_quota, sue_celldepth]
-    bk00101_1df = DataFrame([bk1row0], columns=bk00101_columns)
-    bk00101_ex0_str = "example0_bk00101"
-    save_sheet(ideas_src_dir_file_path, bk00101_ex0_str, bk00101_1df)
+    ii1row0 = [exx.sue, exx.a23, exx.sue, tp37, ";", sue_quota, sue_celldepth]
+    ii00101_1df = DataFrame([ii1row0], columns=ii00101_columns)
+    ii00101_ex0_str = "example0_ii00101"
+    save_sheet(ideas_src_dir_file_path, ii00101_ex0_str, ii00101_1df)
     fay_db_path = fay_wdir.get_world_db_path()
     assert not os_path_exists(fay_db_path)
     assert os_path_exists(ideas_src_dir_file_path)
@@ -67,6 +67,7 @@ def test_idea_sheets_to_lego_mstr_Scenario0_CreatesDatabaseFile(
 
     assert os_path_exists(fay_db_path)
     with sqlite3_connect(fay_db_path) as db_conn:
+        bk00171_str = "bk00171"
         bk00171_raw = f"{bk00171_str}_brixk_raw"
         bk00171_agg = f"{bk00171_str}_brixk_agg"
         bk00171_valid = f"{bk00171_str}_brixk_vld"
@@ -157,7 +158,7 @@ def test_idea_sheets_to_lego_mstr_Scenario1_DatabaseFileExists(
     sue_inx = "Suzy"
     ex_filename = "idea_Faybob.xlsx"
     ideas_src_dir_file_path = create_path(fay_wdir.ideas_src_dir, ex_filename)
-    bk00171_columns = [
+    ii00171_columns = [
         kw.spark_face,
         kw.moment_rope,
         kw.person_name,
@@ -166,11 +167,11 @@ def test_idea_sheets_to_lego_mstr_Scenario1_DatabaseFileExists(
         kw.inx_name,
     ]
     a23_rope = create_rope("amy2345")
-    bk00171_str = "bk00171"
-    bk00171row0 = [exx.sue, a23_rope, exx.sue, exx.sue, exx.sue, sue_inx]
-    bk00171_df = DataFrame([bk00171row0], columns=bk00171_columns)
-    bk00171_ex0_str = f"example0_{bk00171_str}"
-    save_sheet(ideas_src_dir_file_path, bk00171_ex0_str, bk00171_df)
+    ii00171_str = "ii00171"
+    ii00171row0 = [exx.sue, a23_rope, exx.sue, exx.sue, exx.sue, sue_inx]
+    ii00171_df = DataFrame([ii00171row0], columns=ii00171_columns)
+    ii00171_ex0_str = f"example0_{ii00171_str}"
+    save_sheet(ideas_src_dir_file_path, ii00171_ex0_str, ii00171_df)
     fay_db_path = fay_wdir.get_world_db_path()
     assert os_path_exists(fay_db_path)
     with sqlite3_connect(fay_db_path) as db_conn0:

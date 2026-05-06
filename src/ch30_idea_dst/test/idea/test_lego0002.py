@@ -4,15 +4,15 @@ from ch09_person_lesson.lasso import lassounit_shop
 from ch10_person_listen.keep_tool import save_job_file
 from ch14_moment.moment_main import momentunit_shop, save_moment_file
 from ch17_brick.brick_db_tool import get_sheet_names, openpyxl_load_workbook
-from ch17_brick.brick_idea_csv import (
-    add_momentunit_to_idea_csv_strs,
-    add_personunit_to_idea_csv_strs,
-    create_init_idea_brick_csv_strs,
-)
 from ch18_etl_config._ref.ch18_path import create_moment_mstr_path, create_world_db_path
 from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
+)
+from ch19_idea_src.brick_idea_csv import (
+    add_momentunit_to_idea_csv_strs,
+    add_personunit_to_idea_csv_strs,
+    create_init_idea_csv_strs,
 )
 from ch30_idea_dst._ref.ch30_path import create_lego0002_path
 from ch30_idea_dst.lego_db2df import (
@@ -33,7 +33,7 @@ def test_collect_lego0002_idea_csv_strs_ReturnsObj_Scenario0_NoMomentUnits(
     # WHEN
     gen_idea_csv_strs = collect_lego0002_idea_csv_strs(world_dir, exx.sue)
     # THEN
-    expected_idea_csv_strs = create_init_idea_brick_csv_strs()
+    expected_idea_csv_strs = create_init_idea_csv_strs()
     assert gen_idea_csv_strs == expected_idea_csv_strs
 
 
@@ -56,7 +56,7 @@ def test_collect_lego0002_idea_csv_strs_ReturnsObj_Scenario1_MomentUnitsDoesNotH
     gen_idea_csv_strs = collect_lego0002_idea_csv_strs(world_dir, exx.sue)
     # THEN
     # empty because Sue is not associated with any moment
-    expected_idea_csv_strs = create_init_idea_brick_csv_strs()
+    expected_idea_csv_strs = create_init_idea_csv_strs()
     assert gen_idea_csv_strs == expected_idea_csv_strs
 
 
@@ -79,7 +79,7 @@ def test_collect_lego0002_idea_csv_strs_ReturnsObj_Scenario2_SingleMomentUnitHas
     gen_idea_csv_strs = collect_lego0002_idea_csv_strs(world_dir, exx.sue)
 
     # THEN
-    expected_idea_csv_strs = create_init_idea_brick_csv_strs()
+    expected_idea_csv_strs = create_init_idea_csv_strs()
     add_momentunit_to_idea_csv_strs(a23_moment, expected_idea_csv_strs, ",")
     add_personunit_to_idea_csv_strs(sue_job, expected_idea_csv_strs, ",")
     expected_bk00120_csv_str = expected_idea_csv_strs.get("bk00120")
@@ -106,7 +106,7 @@ def test_create_lego0002_file_CreatesFile_Scenario0_NoMomentUnits(
     # THEN
     assert os_path_exists(sue_lego0002_path)
     sue_lego0002_sheetnames = get_sheet_names(sue_lego0002_path)
-    idea_csv_strs = create_init_idea_brick_csv_strs()
+    idea_csv_strs = create_init_idea_csv_strs()
     assert len(sue_lego0002_sheetnames) > 0
     assert set(sue_lego0002_sheetnames).issubset(set(idea_csv_strs.keys()))
 
@@ -134,16 +134,16 @@ def test_create_lego0002_file_CreatesFile_Scenario1_Basic(
 
     # THEN
     assert os_path_exists(sue_lego0002_path)
-    expected_idea_csv_strs = create_init_idea_brick_csv_strs()
+    expected_idea_csv_strs = create_init_idea_csv_strs()
     add_momentunit_to_idea_csv_strs(a23_moment, expected_idea_csv_strs, ",")
     add_personunit_to_idea_csv_strs(sue_job, expected_idea_csv_strs, ",")
-    expected_bk00120_csv_str = expected_idea_csv_strs.get("bk00120")
+    expected_bk00120_csv_str = expected_idea_csv_strs.get("ii00120")
     # print(f"{expected_bk00120_csv_str=}")
     sue_lego0002_sheetnames = get_sheet_names(sue_lego0002_path)
-    idea_csv_strs = create_init_idea_brick_csv_strs()
+    idea_csv_strs = create_init_idea_csv_strs()
     assert len(sue_lego0002_sheetnames) > 0
     assert set(sue_lego0002_sheetnames).issubset(set(idea_csv_strs.keys()))
     sue_wb = openpyxl_load_workbook(sue_lego0002_path)
-    bk00120_worksheet = sue_wb["bk00120"]
+    ii00120_worksheet = sue_wb["ii00120"]
     # for row in bk00120_worksheet.iter_rows(values_only=True):
     #     print(row)

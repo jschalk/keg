@@ -58,7 +58,7 @@ def test_create_simple_1m2p2pledges_idea_csvs_ReturnsObj(temp3_fs):
 
     # THEN
     assert idea_csvs
-    assert "bk00102" in set(idea_csvs.keys())
-    assert "bk00002" in set(idea_csvs.keys())
+    assert "ii00102" in set(idea_csvs.keys())
+    assert "ii00002" in set(idea_csvs.keys())
     # bk00128_df = idea_csvs.get("bk00002")
     # print(bk00128_df)

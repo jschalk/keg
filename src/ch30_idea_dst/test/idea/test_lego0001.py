@@ -4,15 +4,17 @@ from ch09_person_lesson.lasso import lassounit_shop
 from ch09_person_lesson.lesson_filehandler import save_gut_file
 from ch14_moment.moment_main import momentunit_shop, save_moment_file
 from ch17_brick.brick_db_tool import get_sheet_names
-from ch17_brick.brick_idea_csv import (
-    add_momentunit_to_idea_csv_strs,
-    add_personunit_to_idea_csv_strs,
-    create_init_idea_brick_csv_strs,
-)
 from ch18_etl_config._ref.ch18_path import create_moment_mstr_path, create_world_db_path
 from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
+)
+
+# TODO rename brick_idea_csv to "idea_csv"
+from ch19_idea_src.brick_idea_csv import (
+    add_momentunit_to_idea_csv_strs,
+    add_personunit_to_idea_csv_strs,
+    create_init_idea_csv_strs,
 )
 from ch30_idea_dst._ref.ch30_path import create_lego0001_path
 from ch30_idea_dst.lego_db2df import (
@@ -35,7 +37,7 @@ def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario0_NoMomentUnits(
     gen_idea_csv_strs = collect_full_world_idea_csv_strs(world_dir)
 
     # THEN
-    expected_idea_csv_strs = create_init_idea_brick_csv_strs()
+    expected_idea_csv_strs = create_init_idea_csv_strs()
     assert gen_idea_csv_strs == expected_idea_csv_strs
 
 
@@ -53,7 +55,7 @@ def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario1_SingleMomentUnit_
     gen_idea_csv_strs = collect_full_world_idea_csv_strs(world_dir)
 
     # THEN
-    expected_idea_csv_strs = create_init_idea_brick_csv_strs()
+    expected_idea_csv_strs = create_init_idea_csv_strs()
     add_momentunit_to_idea_csv_strs(a23_moment, expected_idea_csv_strs, ",")
     assert gen_idea_csv_strs == expected_idea_csv_strs
 
@@ -78,14 +80,14 @@ def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario2_gut_PersonUnits(
     gen_idea_csv_strs = collect_full_world_idea_csv_strs(world_dir)
 
     # THEN
-    expected_idea_csv_strs = create_init_idea_brick_csv_strs()
+    expected_idea_csv_strs = create_init_idea_csv_strs()
     add_momentunit_to_idea_csv_strs(a23_moment, expected_idea_csv_strs, ",")
     add_personunit_to_idea_csv_strs(bob_gut, expected_idea_csv_strs, ",")
-    expected_bk00120_csv_str = expected_idea_csv_strs.get("bk00120")
-    gen_bk00120_csv_str = gen_idea_csv_strs.get("bk00120")
-    print(f"{expected_bk00120_csv_str=}")
-    print(f"     {gen_bk00120_csv_str=}")
-    assert gen_bk00120_csv_str == expected_bk00120_csv_str
+    expected_ii00120_csv_str = expected_idea_csv_strs.get("ii00120")
+    gen_ii00120_csv_str = gen_idea_csv_strs.get("ii00120")
+    print(f"{expected_ii00120_csv_str=}")
+    print(f"     {gen_ii00120_csv_str=}")
+    assert gen_ii00120_csv_str == expected_ii00120_csv_str
     assert gen_idea_csv_strs == expected_idea_csv_strs
 
 
@@ -141,34 +143,34 @@ def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario3_TranslateRowsInDB
     assert gen_idea_csv_strs
     generated_idea_csv_keys = set(gen_idea_csv_strs.keys())
     print(f"{generated_idea_csv_keys=}")
-    idea_csv_strs = create_init_idea_brick_csv_strs()
+    idea_csv_strs = create_init_idea_csv_strs()
     assert generated_idea_csv_keys == set(idea_csv_strs.keys())
-    bk00142_str = "bk00142"
-    bk00143_str = "bk00143"
-    bk00144_str = "bk00144"
-    bk00145_str = "bk00145"
-    bk00142_csv = gen_idea_csv_strs.get(bk00142_str)
-    bk00143_csv = gen_idea_csv_strs.get(bk00143_str)
-    bk00144_csv = gen_idea_csv_strs.get(bk00144_str)
-    bk00145_csv = gen_idea_csv_strs.get(bk00145_str)
+    ii00142_str = "ii00142"
+    ii00143_str = "ii00143"
+    ii00144_str = "ii00144"
+    ii00145_str = "ii00145"
+    ii00142_csv = gen_idea_csv_strs.get(ii00142_str)
+    ii00143_csv = gen_idea_csv_strs.get(ii00143_str)
+    ii00144_csv = gen_idea_csv_strs.get(ii00144_str)
+    ii00145_csv = gen_idea_csv_strs.get(ii00145_str)
 
-    expected_bk00142_csv = (
+    expected_ii00142_csv = (
         "spark_num,spark_face,otx_title,inx_title,otx_knot,inx_knot,unknown_str\n"
     )
-    expected_bk00143_csv = f"""spark_num,spark_face,otx_name,inx_name,otx_knot,inx_knot,unknown_str
+    expected_ii00143_csv = f"""spark_num,spark_face,otx_name,inx_name,otx_knot,inx_knot,unknown_str
 ,{bob_otx},{bob_otx},{bob_inx},{exx.slash},{colon_str},{bob_unknown_str}
 ,{sue_otx},{sue_otx},{sue_inx},{exx.slash},{colon_str},{sue_unknown_str}
 """
-    expected_bk00144_csv = (
+    expected_ii00144_csv = (
         "spark_num,spark_face,otx_label,inx_label,otx_knot,inx_knot,unknown_str\n"
     )
-    expected_bk00145_csv = (
+    expected_ii00145_csv = (
         "spark_num,spark_face,otx_rope,inx_rope,otx_knot,inx_knot,unknown_str\n"
     )
-    assert bk00142_csv == expected_bk00142_csv
-    assert bk00143_csv == expected_bk00143_csv
-    assert bk00144_csv == expected_bk00144_csv
-    assert bk00145_csv == expected_bk00145_csv
+    assert ii00142_csv == expected_ii00142_csv
+    assert ii00143_csv == expected_ii00143_csv
+    assert ii00144_csv == expected_ii00144_csv
+    assert ii00145_csv == expected_ii00145_csv
 
 
 # TODO change collect_full_world_idea_csv_strs so that if it's passed a person_name it only collects that person's ideas
@@ -224,34 +226,34 @@ def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario4_TranslateRowsInDB
     assert gen_idea_csv_strs
     generated_idea_csv_keys = set(gen_idea_csv_strs.keys())
     print(f"{generated_idea_csv_keys=}")
-    idea_csv_strs = create_init_idea_brick_csv_strs()
+    idea_csv_strs = create_init_idea_csv_strs()
     assert generated_idea_csv_keys == set(idea_csv_strs.keys())
-    bk00142_str = "bk00142"
-    bk00143_str = "bk00143"
-    bk00144_str = "bk00144"
-    bk00145_str = "bk00145"
-    bk00142_csv = gen_idea_csv_strs.get(bk00142_str)
-    bk00143_csv = gen_idea_csv_strs.get(bk00143_str)
-    bk00144_csv = gen_idea_csv_strs.get(bk00144_str)
-    bk00145_csv = gen_idea_csv_strs.get(bk00145_str)
+    ii00142_str = "ii00142"
+    ii00143_str = "ii00143"
+    ii00144_str = "ii00144"
+    ii00145_str = "ii00145"
+    ii00142_csv = gen_idea_csv_strs.get(ii00142_str)
+    ii00143_csv = gen_idea_csv_strs.get(ii00143_str)
+    ii00144_csv = gen_idea_csv_strs.get(ii00144_str)
+    ii00145_csv = gen_idea_csv_strs.get(ii00145_str)
 
-    expected_bk00142_csv = (
+    expected_ii00142_csv = (
         "spark_num,spark_face,otx_title,inx_title,otx_knot,inx_knot,unknown_str\n"
     )
-    expected_bk00143_csv = f"""spark_num,spark_face,otx_name,inx_name,otx_knot,inx_knot,unknown_str
+    expected_ii00143_csv = f"""spark_num,spark_face,otx_name,inx_name,otx_knot,inx_knot,unknown_str
 ,{bob_otx},{bob_otx},{bob_inx},{exx.slash},{colon_str},{bob_unknown_str}
 ,{sue_otx},{sue_otx},{sue_inx},{exx.slash},{colon_str},{sue_unknown_str}
 """
-    expected_bk00144_csv = (
+    expected_ii00144_csv = (
         "spark_num,spark_face,otx_label,inx_label,otx_knot,inx_knot,unknown_str\n"
     )
-    expected_bk00145_csv = (
+    expected_ii00145_csv = (
         "spark_num,spark_face,otx_rope,inx_rope,otx_knot,inx_knot,unknown_str\n"
     )
-    assert bk00142_csv == expected_bk00142_csv
-    assert bk00143_csv == expected_bk00143_csv
-    assert bk00144_csv == expected_bk00144_csv
-    assert bk00145_csv == expected_bk00145_csv
+    assert ii00142_csv == expected_ii00142_csv
+    assert ii00143_csv == expected_ii00143_csv
+    assert ii00144_csv == expected_ii00144_csv
+    assert ii00145_csv == expected_ii00145_csv
 
 
 def test_create_lego0001_file_CreatesFile_Scenario0_NoMomentUnits(
@@ -269,7 +271,7 @@ def test_create_lego0001_file_CreatesFile_Scenario0_NoMomentUnits(
     # THEN
     assert os_path_exists(lego0001_path)
     bob_lego0001_sheetnames = get_sheet_names(lego0001_path)
-    idea_csv_strs = create_init_idea_brick_csv_strs()
+    idea_csv_strs = create_init_idea_csv_strs()
     assert set(bob_lego0001_sheetnames) == set(idea_csv_strs.keys())
 
 
@@ -328,17 +330,17 @@ def test_create_lego0001_file_CreatesFile_Scenario1_TranslateRowsInDB(
     assert os_path_exists(lego0001_path)
     bob_lego0001_sheetnames = get_sheet_names(lego0001_path)
     print(f"{bob_lego0001_sheetnames=}")
-    idea_csv_strs = create_init_idea_brick_csv_strs()
+    idea_csv_strs = create_init_idea_csv_strs()
     assert set(bob_lego0001_sheetnames) == set(idea_csv_strs.keys())
-    bk00142_str = "bk00142"
-    bk00143_str = "bk00143"
-    bk00144_str = "bk00144"
-    bk00145_str = "bk00145"
-    bk00142_df = pandas_read_excel(lego0001_path, bk00142_str)
-    bk00143_df = pandas_read_excel(lego0001_path, bk00143_str)
-    bk00144_df = pandas_read_excel(lego0001_path, bk00144_str)
-    bk00145_df = pandas_read_excel(lego0001_path, bk00145_str)
-    assert len(bk00142_df) == 0
-    assert len(bk00143_df) == 2
-    assert len(bk00144_df) == 0
-    assert len(bk00145_df) == 0
+    ii00142_str = "ii00142"
+    ii00143_str = "ii00143"
+    ii00144_str = "ii00144"
+    ii00145_str = "ii00145"
+    ii00142_df = pandas_read_excel(lego0001_path, ii00142_str)
+    ii00143_df = pandas_read_excel(lego0001_path, ii00143_str)
+    ii00144_df = pandas_read_excel(lego0001_path, ii00144_str)
+    ii00145_df = pandas_read_excel(lego0001_path, ii00145_str)
+    assert len(ii00142_df) == 0
+    assert len(ii00143_df) == 2
+    assert len(ii00144_df) == 0
+    assert len(ii00145_df) == 0

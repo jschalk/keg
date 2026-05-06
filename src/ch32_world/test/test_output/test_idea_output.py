@@ -66,9 +66,9 @@ def test_create_ideas_CreatesFile_Senario1_SingleSmallSpark(temp3_fs):
     # THEN
     assert os_path_exists(fay_lego0001_path)
     print(get_sheet_names(fay_lego0001_path))
-    bk00121_sheet_df = pandas_read_excel(fay_lego0001_path, "bk00121")
-    print(f"{bk00121_sheet_df=}")
-    assert bk00121_sheet_df.iloc[0][kw.spark_face] == "Fay"
+    ii00121_sheet_df = pandas_read_excel(fay_lego0001_path, "ii00121")
+    print(f"{ii00121_sheet_df=}")
+    assert ii00121_sheet_df.iloc[0][kw.spark_face] == "Fay"
 
 
 def test_create_ideas_CreatesFile_Senario2_CreatedIdeaCanBeBricksForOtherWorldDir(

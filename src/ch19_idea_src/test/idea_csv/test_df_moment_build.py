@@ -4,7 +4,7 @@ from ch13_time.epoch_main import epochunit_shop, get_default_epoch_config_dict
 from ch13_time.test._util.ch13_examples import get_five_config
 from ch14_moment.moment_main import momentunit_shop
 from ch17_brick.brick_dataframe import moment_build_from_df
-from ch17_brick.test._util.ch17_examples import (
+from ch19_idea_src.test._util.ch19_examples import (
     J45_ROPE,
     get_ex1_bk00100_df,
     get_ex1_bk00101_df,
@@ -12,12 +12,12 @@ from ch17_brick.test._util.ch17_examples import (
     get_ex1_bk00103_df,
     get_ex1_bk00104_df,
     get_ex1_bk00105_df,
-    get_ex2_bk00100_df,
-    get_ex2_bk00101_df,
-    get_ex2_bk00102_df,
-    get_ex2_bk00103_df,
-    get_ex2_bk00104_df,
-    get_ex2_bk00105_df,
+    get_ex2_ii00100_df,
+    get_ex2_ii00101_df,
+    get_ex2_ii00102_df,
+    get_ex2_ii00103_df,
+    get_ex2_ii00104_df,
+    get_ex2_ii00105_df,
 )
 from ref.keywords import ExampleStrs as exx
 
@@ -104,12 +104,12 @@ def test_moment_build_from_df_ReturnsObj_Scenario1_TwoMomentRopes(
     temp3_fs,
 ):
     # ESTABLISH
-    bk00100_df = get_ex2_bk00100_df()
-    bk00101_df = get_ex2_bk00101_df()
-    bk00102_df = get_ex2_bk00102_df()
-    bk00103_df = get_ex2_bk00103_df()
-    bk00104_df = get_ex2_bk00104_df()
-    bk00105_df = get_ex2_bk00105_df()
+    bk00100_df = get_ex2_ii00100_df()
+    bk00101_df = get_ex2_ii00101_df()
+    bk00102_df = get_ex2_ii00102_df()
+    bk00103_df = get_ex2_ii00103_df()
+    bk00104_df = get_ex2_ii00104_df()
+    bk00105_df = get_ex2_ii00105_df()
     x_fund_grain = 55
     x_respect_grain = 66
     x_mana_grain = 77
