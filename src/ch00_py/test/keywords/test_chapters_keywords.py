@@ -64,7 +64,6 @@ def test_get_possible_keyword_config_keys_ReturnsObj():
     # ESTABLISH / WHEN
     req_config_keys = get_possible_keyword_config_keys()
     # THEN
-    # TODO add sort_ordinal to keywords
     assert req_config_keys == {
         kw.init_ch,
         kw.semantic_type,

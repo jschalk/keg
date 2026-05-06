@@ -42,7 +42,11 @@ from ch17_brick.brick_config import (
     get_dimens_with_brick_element,
     get_quick_bricks_column_ref,
 )
-from ch19_idea_src.idea_config import get_idea_config_dict, idea_config_path
+from ch19_idea_src.idea_config import (
+    get_idea_config_dict,
+    get_idea_types,
+    idea_config_path,
+)
 from copy import copy as copy_copy
 from os import getcwd as os_getcwd
 from ref.keywords import Ch19Keywords as kw
@@ -88,42 +92,16 @@ def test_get_idea_config_dict_ReturnsObj_Scenario1_NonMirrored_idea_type_Format(
         assert config_keys == {kw.brick_type, "columns", "description"}
 
 
-#     # THEN
-#     assert x_brick_config
-#     brick_config_dimens = set(x_brick_config.keys())
-#     assert kw.momentunit in brick_config_dimens
-#     assert kw.moment_budunit in brick_config_dimens
-#     assert kw.moment_paybook in brick_config_dimens
-#     assert kw.moment_epoch_hour in brick_config_dimens
-#     assert kw.moment_epoch_month in brick_config_dimens
-#     assert kw.moment_epoch_weekday in brick_config_dimens
-#     assert kw.moment_timeoffi in brick_config_dimens
-#     assert kw.person_contact_membership in brick_config_dimens
-#     assert kw.person_contactunit in brick_config_dimens
-#     assert kw.person_plan_awardunit in brick_config_dimens
-#     assert kw.person_plan_factunit in brick_config_dimens
-#     assert kw.person_plan_laborunit in brick_config_dimens
-#     assert kw.person_plan_healerunit in brick_config_dimens
-#     assert kw.person_plan_reason_caseunit in brick_config_dimens
-#     assert kw.person_plan_reasonunit in brick_config_dimens
-#     assert kw.person_planunit in brick_config_dimens
-#     assert kw.personunit in brick_config_dimens
-#     assert kw.nabu_timenum in brick_config_dimens
-#     assert kw.translate_name in brick_config_dimens
-#     assert kw.translate_title in brick_config_dimens
-#     assert kw.translate_label in brick_config_dimens
-#     assert kw.translate_rope in brick_config_dimens
-#     assert get_person_dimens().issubset(brick_config_dimens)
-#     assert get_moment_dimens().issubset(brick_config_dimens)
-#     assert get_nabu_dimens().issubset(brick_config_dimens)
-#     assert get_translate_dimens().issubset(brick_config_dimens)
-#     gen_all_dimens = get_person_dimens()
-#     gen_all_dimens.update(get_moment_dimens())
-#     gen_all_dimens.update(get_nabu_dimens())
-#     gen_all_dimens.update(get_translate_dimens())
-#     assert gen_all_dimens == brick_config_dimens
-#     assert len(x_brick_config) == 22
-#     _validate_brick_config(x_brick_config)
+def test_get_idea_types_ReturnsObj():
+    # ESTABLISH / WHEN
+    idea_types = get_idea_types()
+    # THEN
+    assert idea_types
+    x_idea_config = get_idea_config_dict()
+    config_idea_types = set(x_idea_config.keys())
+    for config_idea_type in sorted(config_idea_types):
+        print(f""""{config_idea_type}",""")
+    assert idea_types == config_idea_types
 
 
 # def get_brick_categorys():
