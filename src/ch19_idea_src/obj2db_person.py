@@ -546,14 +546,14 @@ def insert_job_prnunit(
     cursor.execute(insert_sqlstr)
 
 
-def insert_job_obj(cursor: sqlite3_Cursor, job_person: PersonUnit):
-    job_person.thinkout()
+def insert_job_obj(cursor: sqlite3_Cursor, job: PersonUnit):
+    job.thinkout()
     x_objkeysholder = ObjKeysHolder(
-        moment_rope=job_person.planroot.get_plan_rope(),
-        person_name=job_person.person_name,
+        moment_rope=job.planroot.get_plan_rope(),
+        person_name=job.person_name,
     )
-    insert_job_prnunit(cursor, x_objkeysholder, job_person)
-    for x_plan in job_person.get_plan_dict().values():
+    insert_job_prnunit(cursor, x_objkeysholder, job)
+    for x_plan in job.get_plan_dict().values():
         x_objkeysholder.rope = x_plan.get_plan_rope()
         healerunit = x_plan.healerunit
         workforceheir = x_plan.workforceheir
@@ -568,16 +568,16 @@ def insert_job_obj(cursor: sqlite3_Cursor, job_person: PersonUnit):
             for prem in reasonheir.cases.values():
                 insert_job_prncase(cursor, x_objkeysholder, prem)
 
-    for x_contact in job_person.contacts.values():
+    for x_contact in job.contacts.values():
         insert_job_prncont(cursor, x_objkeysholder, x_contact)
         for x_membership in x_contact.memberships.values():
             insert_job_prnmemb(cursor, x_objkeysholder, x_membership)
 
-    for x_groupunit in job_person.groupunits.values():
+    for x_groupunit in job.groupunits.values():
         insert_job_prngrou(cursor, x_objkeysholder, x_groupunit)
 
-    for x_factheir in job_person.planroot.factheirs.values():
-        x_objkeysholder.fact_rope = job_person.planroot.get_plan_rope()
+    for x_factheir in job.planroot.factheirs.values():
+        x_objkeysholder.fact_rope = job.planroot.get_plan_rope()
         insert_job_prnfact(cursor, x_objkeysholder, x_factheir)
 
 

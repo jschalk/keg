@@ -2,7 +2,7 @@ from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
 )
-from ch19_idea_src.brick_idea_csv import create_init_idea_csv_strs
+from ch19_idea_src.idea_csv import create_init_idea_csv_strs
 from ch30_idea_dst.lego_db2df import (
     add_to_ii00142_csv,
     add_to_ii00143_csv,

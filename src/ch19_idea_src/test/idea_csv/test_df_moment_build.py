@@ -102,7 +102,7 @@ def test_moment_build_from_df_ReturnsObj_Scenario0_OneMomentRope(
 # ESTABLISH a dataframe, build a moment unit
 def test_moment_build_from_df_ReturnsObj_Scenario1_TwoMomentRopes(
     temp3_fs,
-):
+):  # sourcery skip: extract-duplicate-method
     # ESTABLISH
     bk00100_df = get_ex2_ii00100_df()
     bk00101_df = get_ex2_ii00101_df()

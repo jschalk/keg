@@ -32,7 +32,7 @@ from ch19_idea_src.obj2db_person import (
     insert_job_prnreas,
     insert_job_prnunit,
 )
-from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch27Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 
 

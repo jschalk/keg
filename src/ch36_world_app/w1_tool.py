@@ -13,7 +13,7 @@ from ch17_brick.brick_db_tool import (
     prettify_excel_file,
     remove_empty_sheets,
 )
-from ch19_idea_src.brick_idea_csv import (
+from ch19_idea_src.idea_csv import (
     add_momentunits_to_idea_csv_strs,
     add_personunit_to_idea_csv_strs,
     create_init_idea_csv_strs,
