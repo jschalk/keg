@@ -142,6 +142,8 @@
   "days": "TODO", 
   "days_lower_day": "Required fields for creating Epoch every_xdays cases.", 
   "days_upper_day": "Required fields for creating Epoch every_xdays cases.", 
+  "Deal": "TODO ch33", 
+  "deal": "TODO ch33", 
   "debtor_pool": ", Contact thinkout, Member thinkout data", 
   "debtor_respect": ", Person seed.", 
   "December": "Example key with value 'December' used for tests throughout codebase.", 

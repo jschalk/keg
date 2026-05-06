@@ -80,3 +80,4 @@ def test_PitchUnit_validate_spark_nums_ReturnsObj_Scenario2_False():
 # The pitch process model is as follows from Pitcher to Peer
 # 1. offer gift. Gifts are Ideas at the pitcher is vowing to make into a brick. Are meant to appeal to the audience
 # 2. Describe possible future Gifts. From you, from me.
+# Deal deal needs to be added here so the word isn't used anywhere else.

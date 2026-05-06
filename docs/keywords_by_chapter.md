@@ -28,7 +28,7 @@
 - ch30_idea_dst: ch30, vow
 - ch31_kpi: DayEvent, Event, ch31, default_kpi_bundle, gcal, moment_kpi001_contact_nets, moment_kpi002_person_pledges
 - ch32_world: WorldName, ch32, today
-- ch33_pitch: Gift, Peer, PitchID, PitchUnit, ch33, gift, offer, peer, pitch, pitch_id, pitcher_name, pitchs, request
+- ch33_pitch: Deal, Gift, Peer, PitchID, PitchUnit, ch33, deal, gift, offer, peer, pitch, pitch_id, pitcher_name, pitchs, request
 - ch34_finance: ch34, finance, financial
 - ch35_person_viewer: ch35
 - ch36_world_app: ch36

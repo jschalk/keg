@@ -243,10 +243,15 @@ def get_moment_dict_from_heard_tables(
     return get_moment_dict_from_sqlstrs(cursor, fu1_sqlstrs, moment_rope)
 
 
-# TODO consider saving moment_json to sqlite database, maybe "moment_lego_json"
 def etl_heard_vld_tables_to_mind_moment_jsons(
     cursor: sqlite3_Cursor, moment_mstr_dir: str
 ):
+    """One reason file architecture is used instead of database is because it scales well and
+    demonstrates how and where domains of data exist. However because of the difficulties in
+    using moment_rope to create file paths Database may be the way to go. Maybe hashing moment_ropes
+    to uids that can be used as folders. Then store in the hash folder a file like moment_data.json
+    that contains the moment_rope. Then a mapping of moment_ropes to hashs can be created by walking
+    through folders and reading moment_data.json"""
     select_moment_rope_sqlstr = """SELECT moment_rope FROM momentunit_h_vld;"""
     cursor.execute(select_moment_rope_sqlstr)
     for moment_label_set in cursor.fetchall():
@@ -264,10 +269,15 @@ def etl_heard_raw_tables_to_lego_moment_ote1_agg(conn_or_cursor: sqlite3_Connect
     delete_all_duplicate_rows(conn_or_cursor, "moment_ote1_agg")
 
 
-# TODO consider getting rid of this step and having downstream moment_ote1_agg_csv users go to database
 def etl_moment_ote1_agg_table_to_moment_ote1_agg_csvs(
     conn_or_cursor: sqlite3_Connection, moment_mstr_dir: str
 ):
+    """One reason file architecture is used instead of database is because it scales well and
+    demonstrates how and where domains of data exist. However because of the difficulties in
+    using moment_rope to create file paths Database may be the way to go. Maybe hashing moment_ropes
+    to uids that can be used as folders. Then store in the hash folder a file like moment_data.json
+    that contains the moment_rope. Then a mapping of moment_ropes to hashs can be created by walking
+    through folders and reading moment_data.json"""
     empty_ote1_csv_str = """moment_rope,person_name,spark_num,bud_time,error_message
 """
     moments_dir = create_moments_dir_path(moment_mstr_dir)
@@ -279,11 +289,17 @@ def etl_moment_ote1_agg_table_to_moment_ote1_agg_csvs(
     save_to_split_csvs(conn_or_cursor, "moment_ote1_agg", ["moment_rope"], moments_dir)
 
 
-# TODO consider getting rid of this step and having downstream lego_spark_person_csvs users go to database
-# would fix save to split csv issue that's annoying
 def etl_heard_vld_to_lego_spark_person_csvs(
     conn_or_cursor: sqlite3_Connection, moment_mstr_dir: str
 ):
+    """consider getting rid of this step and having downstream lego_spark_person_csvs users go to database
+    would fix save to split csv issue that's annoying
+    One reason file architecture is used instead of database is because it scales well and
+    demonstrates how and where domains of data exist. However because of the difficulties in
+    using moment_rope to create file paths Database may be the way to go. Maybe hashing moment_ropes
+    to uids that can be used as folders. Then store in the hash folder a file like moment_data.json
+    that contains the moment_rope. Then a mapping of moment_ropes to hashs can be created by walking
+    through folders and reading moment_data.json"""
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for prnxxxx_table in get_person_heard_vld_tablenames():
         if get_row_count(conn_or_cursor, prnxxxx_table) > 0:

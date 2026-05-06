@@ -6,7 +6,6 @@ from ch05_reason.reason_main import CaseUnit, FactHeir, ReasonHeir
 from ch06_plan.plan import HealerUnit, PlanUnit
 from ch07_person_logic.person_main import PersonUnit
 from ch11_bud.bud_main import MomentRope
-from ch19_idea_src.obj2db_person import ObjKeysHolder
 from ch27_lego._ref.ch27_semantic_types import (
     ContactName,
     FaceName,
@@ -21,7 +20,21 @@ from dataclasses import dataclass
 from sqlite3 import Cursor as sqlite3_Cursor
 
 
-# TODO move to lego chapter all job insert
+@dataclass
+class ObjKeysHolder:
+    spark_num: SparkInt = None
+    spark_face: FaceName = None
+    moment_rope: MomentRope = None
+    person_name: PersonName = None
+    rope: RopeTerm = None
+    reason_context: RopeTerm = None
+    contact_name: ContactName = None
+    membership: GroupTitle = None
+    group_title: GroupTitle = None
+    fact_rope: RopeTerm = None
+    knot: KnotTerm = None
+
+
 def create_prnmemb_metrics_insert_sqlstr(values_dict: dict[str,]):
     moment_rope = values_dict.get("moment_rope")
     person_name = values_dict.get("person_name")

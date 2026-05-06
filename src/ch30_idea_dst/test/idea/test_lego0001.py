@@ -9,8 +9,6 @@ from ch18_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
 )
-
-# TODO rename brick_idea_csv to "idea_csv"
 from ch19_idea_src.idea_csv import (
     add_momentunit_to_idea_csv_strs,
     add_personunit_to_idea_csv_strs,
