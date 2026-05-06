@@ -1,7 +1,7 @@
 from ch00_py.db_toolbox import create_insert_query
 from ch07_person_logic.person_config import get_person_calc_dimen_args
 from ch18_etl_config.etl_sqlstr import create_job_tables
-from ch19_idea_src.obj2db_person import (
+from ch27_lego.lego_job2db import (
     create_personunit_metrics_insert_sqlstr,
     create_prnawar_metrics_insert_sqlstr,
     create_prncase_metrics_insert_sqlstr,
@@ -14,7 +14,7 @@ from ch19_idea_src.obj2db_person import (
     create_prnplan_metrics_insert_sqlstr,
     create_prnreas_metrics_insert_sqlstr,
 )
-from ref.keywords import Ch19Keywords as kw, ExampleStrs as exx
+from ref.keywords import Ch27Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 
 

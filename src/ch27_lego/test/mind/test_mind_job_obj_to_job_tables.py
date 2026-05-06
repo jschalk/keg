@@ -17,7 +17,7 @@ from ch06_plan.healer import healerunit_shop
 from ch06_plan.plan import planunit_shop
 from ch07_person_logic.person_main import personunit_shop
 from ch18_etl_config.etl_sqlstr import create_job_tables
-from ch19_idea_src.obj2db_person import (
+from ch27_lego.lego_job2db import (
     ObjKeysHolder,
     insert_job_obj,
     insert_job_prnawar,

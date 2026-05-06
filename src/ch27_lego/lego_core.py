@@ -47,7 +47,7 @@ from ch18_etl_config._ref.ch18_path import (
     create_moment_ote1_json_path,
 )
 from ch18_etl_config.etl_sqlstr import create_job_tables, create_prime_tablename
-from ch19_idea_src.obj2db_person import insert_job_obj
+from ch27_lego.lego_job2db import insert_job_obj
 from copy import deepcopy as copy_deepcopy
 from os.path import exists as os_path_exists
 from sqlite3 import Cursor as sqlite3_Cursor
@@ -74,8 +74,13 @@ def etl_moment_ote1_agg_csvs_to_jsons(moment_mstr_dir: str):
         save_json(json_path, None, x_dict)
 
 
-# TODO consider changing source of these sparks to database
 def etl_lego_spark_person_csvs_to_lesson_json(moment_mstr_dir: str):
+    """One reason file architecture is used instead of database is because it scales well and
+    demonstrates how and where domains of data exist. However because of the difficulties in
+    using moment_rope to create file paths Database may be the way to go. Maybe hashing moment_ropes
+    to uids that can be used as folders. Then store in the hash folder a file like moment_data.json
+    that contains the moment_rope. Then a mapping of moment_ropes to hashs can be created by walking
+    through folders and reading moment_data.json"""
     moments_dir = create_moments_dir_path(moment_mstr_dir)
     for moment_label in get_level1_dirs(moments_dir):
         moment_lasso = lassounit_shop(create_rope(moment_label))
