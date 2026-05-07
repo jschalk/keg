@@ -7,7 +7,7 @@ from ch00_py.file_toolbox import create_path, open_json, save_file
 from copy import copy as copy_copy
 from enum import Enum
 from re import fullmatch as re_fullmatch
-from typing import Any, List, Tuple
+from typing import Any, List, Set, Tuple
 
 
 def get_example_strs_config() -> dict[str, dict]:
@@ -22,32 +22,65 @@ def get_possible_keyword_config_keys() -> set:
     return {"valid_ch", "semantic_type", "exam_tier", "sort_ordinal"}
 
 
+def parse_valid_ch_str(
+    all_chapters: Set[int],
+    selection_str: str,
+) -> Set[int]:
+    """
+    Examples:
+        "" -> set()
+        "0:" -> all chapters from 0 upward that exist in all_chapters
+        "0, 1, 98" -> {0, 1, 98}
+        "3:" -> all chapters >= 3
+    """
+    selection_str = selection_str.strip()
+    if not selection_str:
+        return set()
+    result: Set[int] = set()
+    for part in selection_str.split(","):
+        part = part.strip()
+
+        # Range syntax: "N:"
+        if part.endswith(":"):
+            split_str = part[:-1].strip()
+            if not split_str.isdigit():
+                raise ValueError(f"Invalid range split: {part}")
+            split_int = int(split_str)
+            result.update(chapter for chapter in all_chapters if chapter >= split_int)
+        elif part.isdigit():
+            result.add(int(part))
+        else:
+            raise ValueError(f"Invalid chapter: {part}")
+    return result
+
+
 def get_keywords_by_chapter(keywords_dict: dict[str, dict[str]]) -> dict:
     chapter_descs = get_chapter_descs().keys()
-    chapters_keywords = {get_chapter_desc_prefix(chxx): set() for chxx in chapter_descs}
-    for x_keyword, ref_dict in keywords_dict.items():
-        keyworld_valid_ch_num = ref_dict.get("valid_ch")
-        if bool(re_fullmatch(r"ch\d{2}", keyworld_valid_ch_num)):
-            chapter_set = chapters_keywords.get(keyworld_valid_ch_num)
+    ch_ints = {int(chapter_desc[2:4]) for chapter_desc in chapter_descs}
+    chapters_keywords = {ch_int: set() for ch_int in ch_ints}
+    for x_keyword, config_dict in keywords_dict.items():
+        valid_ch_str = config_dict.get("valid_ch")
+        keyword_valid_chs = parse_valid_ch_str(ch_ints, valid_ch_str)
+        for valid_ch_int in keyword_valid_chs:
+            chapter_set = chapters_keywords.get(valid_ch_int)
             chapter_set.add(x_keyword)
     return chapters_keywords
 
 
 def get_cumlative_keywords_main_dict(keywords_by_chapter: dict[int, set[str]]) -> dict:
-    allowed_keywords_set = set()
     cumlative_keywords_main_dict = {}
     for chapter_num in sorted(list(keywords_by_chapter.keys())):
         keywords_main_set = keywords_by_chapter.get(chapter_num)
-        allowed_keywords_set.update(keywords_main_set)
-        cumlative_keywords_main_dict[chapter_num] = copy_copy(allowed_keywords_set)
+        cumlative_keywords_main_dict[chapter_num] = copy_copy(keywords_main_set)
     return cumlative_keywords_main_dict
 
 
 def get_chapter_keyword_classes(cumlative_keywords_main_dict: dict) -> dict[int,]:
     chXX_keyword_classes = {}
     word_str = "word"
-    for chapter_prefix in sorted(list(cumlative_keywords_main_dict.keys())):
-        keywords_main = cumlative_keywords_main_dict.get(chapter_prefix)
+    for chapter_int in sorted(list(cumlative_keywords_main_dict.keys())):
+        keywords_main = cumlative_keywords_main_dict.get(chapter_int)
+        chapter_prefix = f"Ch{chapter_int:02d}"
         class_name = f"C{chapter_prefix[1:]}Key{word_str}s"
         ExpectedClass = Enum(class_name, {t: t for t in keywords_main}, type=str)
         chXX_keyword_classes[chapter_prefix] = ExpectedClass
@@ -98,7 +131,8 @@ def create_all_enum_keyword_classes_str() -> str:
     classes_str = copy_copy(import_enum_line)
     for chapter_desc, chapter_dir in get_chapter_descs().items():
         ch_prefix = get_chapter_desc_prefix(chapter_desc)
-        keywords_main = cumlative_keywords.get(ch_prefix)
+        ch_int = int(chapter_desc[2:4])
+        keywords_main = cumlative_keywords.get(ch_int)
         enum_class_str = create_keywords_enum_class_file_str(ch_prefix, keywords_main)
         classes_str += enum_class_str
     return classes_str
@@ -108,11 +142,20 @@ def get_keywords_by_chapter_md() -> str:
     words_str = "words"
     keywords_title_str = f"Key{words_str} by Chapter"
     func_lines = [f"## {keywords_title_str}"]
-    keywords_src_config = get_keywords_src_config()
-    keywords_by_chapter = get_keywords_by_chapter(keywords_src_config)
-    for chapter_desc in get_chapter_descs().keys():
-        chapter_prefix = get_chapter_desc_prefix(chapter_desc)
-        chapter_keywords = keywords_by_chapter.get(chapter_prefix)
+    chapter_descs = get_chapter_descs().keys()
+    ch_ints = {int(chapter_desc[2:4]) for chapter_desc in chapter_descs}
+    keywords_init_ch = {int(ch_desc[2:4]): set() for ch_desc in chapter_descs}
+    keywords_init_ch["No Chapter"] = set()
+    for keyword_str, kw_config in get_keywords_src_config().items():
+        if ch_list := parse_valid_ch_str(ch_ints, kw_config.get("valid_ch")):
+            first_ch = sorted(ch_list)[0]
+            keywords_init_ch.get(first_ch).add(keyword_str)
+        else:
+            keywords_init_ch.get("No Chapter").add(keyword_str)
+
+    for chapter_desc in chapter_descs:
+        ch_int = int(chapter_desc[2:4])
+        chapter_keywords = keywords_init_ch.get(ch_int)
         chapter_keywords = sorted(list(chapter_keywords))
         _line = f"- {chapter_desc}: " + ", ".join(chapter_keywords)
         func_lines.append(_line)

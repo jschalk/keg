@@ -17,6 +17,7 @@ from ch00_py.keyword_class_builder import (
     get_keywords_by_chapter,
     get_keywords_src_config,
     get_possible_keyword_config_keys,
+    parse_valid_ch_str,
 )
 from ref.keywords import Ch00Keywords as kw
 from ref.sorter import get_keg_elements_sort_order
@@ -32,6 +33,50 @@ def test_get_chapter_desc_prefix_ReturnsObj():
     assert get_chapter_desc_prefix(f"{ch_str}99") == f"{ch_str}99"
     assert get_chapter_desc_prefix(f"{ch_str}XX") == f"{ch_str}XX"
     assert get_chapter_desc_prefix(f"{ch_str}a01") != f"{ch_str}02"
+
+
+def test_parse_valid_ch_str_ReturnsEmptySet_EmptyString():
+    # ESTABLISH
+    chapters = {0, 1, 2, 5, 10, 98}
+    # WHEN
+    result = parse_valid_ch_str(chapters, "")
+    # THEN
+    assert result == set()
+
+
+def test_parse_valid_ch_str_ReturnsAllChapters_RangeFromZero():
+    # ESTABLISH
+    chapters = {0, 1, 2, 5, 10, 98}
+    # WHEN
+    result = parse_valid_ch_str(chapters, "0:")
+    # THEN
+    assert result == {0, 1, 2, 5, 10, 98}
+
+
+def test_parse_valid_ch_str_ReturnsExplicitChapterSet_CommaSeparatedIntegers():
+    # ESTABLISH
+    chapters = {0, 1, 2, 5, 10, 98}
+    # WHEN
+    result = parse_valid_ch_str(chapters, "0, 1, 98")
+    # THEN
+    assert result == {0, 1, 98}
+
+
+def test_parse_valid_ch_str_ReturnsChaptersGreaterThanOrEqualTo_RangeSelection():
+    # ESTABLISH
+    chapters = {0, 1, 2, 5, 10, 98}
+    # WHEN
+    result = parse_valid_ch_str(chapters, "5:")
+    # THEN
+    assert result == {5, 10, 98}
+
+
+def test_get_keywords_by_chapter_ReturnsObj():
+    # ESTABLISH / WHEN
+    keywords_by_chapter = get_keywords_by_chapter(get_keywords_src_config())
+    # THEN
+    print(f"{len(keywords_by_chapter)=}")
+    assert len(keywords_by_chapter.get(0)) > 0
 
 
 def test_get_chapter_desc_str_number_ReturnsObj():
@@ -191,7 +236,8 @@ def test_create_all_enum_keyword_classes_str_ReturnsObj():
 """
     for chapter_desc, chapter_dir in get_chapter_descs().items():
         ch_prefix = get_chapter_desc_prefix(chapter_desc)
-        keywords_main = cumlative_keywords.get(ch_prefix)
+        ch_int = int(chapter_desc[2:4])
+        keywords_main = cumlative_keywords.get(ch_int)
         enum_class_str = create_keywords_enum_class_file_str(ch_prefix, keywords_main)
         expected_classes_str += enum_class_str
     assert expected_classes_str == classes_str

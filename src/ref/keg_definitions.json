@@ -595,7 +595,7 @@
   "Tuesday": "Example key with value 'Tuesday' used for tests throughout codebase.", 
   "unknown_str": ", TRANSLATE_LABEL arg, TRANSLATE_NAME arg, TRANSLATE_ROPE arg, TRANSLATE_TITLE arg", 
   "UPDATE": "CRUD_COMMAND to update records for a table. 'Associated dimens: personunit' in 'CRUD_COMMAND to update records for a table'", 
-  "valid_ch": "Every keyword must have an valid_ch that describes the first chapter the keyword is allowed to appear in.", 
+  "valid_ch": "Describes which chapters a keyword is allowed to be in. Format is '0:' for all chapters, '5:' for all chapters after ch05, '3,7' for only 3 and 7. Empty string for not allowed in any chapter.", 
   "vow": "ideas created for audience", 
   "wed": "Example key with value 'Wed' used for tests throughout codebase.", 
   "Wednesday": "Example key with value 'Wednesday' used for tests throughout codebase.", 

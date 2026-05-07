@@ -154,7 +154,8 @@ def test_Chapters_KeywordsAppearWhereTheyShould():
     # all_file_count = 0
     for chapter_desc, chapter_dir in get_chapter_descs().items():
         chapter_prefix = get_chapter_desc_prefix(chapter_desc)
-        allowed_chapter_keywords = cumlative_keywords_main_dict.get(chapter_prefix)
+        chapter_int = int(chapter_desc[2:4])
+        allowed_chapter_keywords = cumlative_keywords_main_dict.get(chapter_int)
         not_allowed_keywords = all_keywords_set.difference(allowed_chapter_keywords)
         not_allowed_keywords = not_allowed_keywords.difference(excluded_strs)
         # print(f"{chapter_prefix} {len(not_allowed_keywords)=}")
