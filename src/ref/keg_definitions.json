@@ -542,6 +542,7 @@
   "shop": "The factory method in programming is very important. However because I want 'fact' only to refer to the Keg concept I don't use the word 'factory', instead I use 'shop'.", 
   "slash": "Example key with value '/' used for tests throughout codebase.", 
   "solo": "I can't figure out what this is for. Where in the codebase is it necessary for a LaborUnit to know if it the only LaborUnit in a WorkforceUnit, Workforce seed.", 
+  "sort_ordinal": "Int that represents where the keyword is indexed in the general sorting order.", 
   "sound_agg": "stage_type_order=8 Populated by aggregated Sound Raw dimen data (elimanate duplicates). Translate Core data is validated then used to translate non-Translate dimen data", 
   "sound_raw": "stage_type_order=7 The Brick Valid data is seperated by column into dimen data such as person_planunit and moment_budunit", 
   "sound_vld": "stage_type_order=9 The Translated Sound Agg data is aggregated to elimanate duplicates into Sound Valid", 

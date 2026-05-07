@@ -61,6 +61,7 @@ from ch98_docs_builder.keg_definitions_builder import (
 from inspect import getdoc as inspect_getdoc
 from re import fullmatch as re_fullmatch
 from ref.keywords import Ch98Keywords as kw, ExampleStrs as exx
+from ref.sorter import get_keg_elements_sort_order
 
 
 def python_keywords() -> set:

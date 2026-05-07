@@ -198,26 +198,26 @@ def get_sheets_with_idea_types(directory: str) -> List[Tuple[str, str]]:
     ]
 
 
-def get_validated_i_src_idea_type_sheets(
-    i_src_dir: str, b_src_dir: str
-) -> List[Tuple[str, str]]:
-    """
-    Returns all brick_type sheets found in i_src_dir.
-    Raises a ValueError if any of those brick_type sheets also exist in b_src_dir.
+# def get_validated_i_src_idea_type_sheets(
+#     i_src_dir: str, b_src_dir: str
+# ) -> List[Tuple[str, str]]:
+#     """
+#     Returns all brick_type sheets found in i_src_dir.
+#     Raises a ValueError if any of those brick_type sheets also exist in b_src_dir.
 
-    Args:
-        i_src_dir: Path to the IDEA source directory.
-        b_src_dir: Path to the BRICK source directory.
+#     Args:
+#         i_src_dir: Path to the IDEA source directory.
+#         b_src_dir: Path to the BRICK source directory.
 
-    Returns:
-        Sorted list of (filename, sheet_name) tuples from i_src_dir
-        whose sheet_name contains a brick_type string.
+#     Returns:
+#         Sorted list of (filename, sheet_name) tuples from i_src_dir
+#         whose sheet_name contains a brick_type string.
 
-    Raises:
-        ValueError: If any brick_type sheet found in i_src_dir also exists
-                    in b_src_dir (matched on sheet_name alone).
-    """
-    return set(get_sheets_with_idea_types(i_src_dir))
+#     Raises:
+#         ValueError: If any brick_type sheet found in i_src_dir also exists
+#                     in b_src_dir (matched on sheet_name alone).
+#     """
+#     return set(get_sheets_with_idea_types(i_src_dir))
 
 
 def ideas_sheets_to_brick_sheets(
@@ -247,7 +247,7 @@ def ideas_sheets_to_brick_sheets(
     )
 
     idea_config = get_idea_config_dict()
-    idea_ii_sheets = get_validated_i_src_idea_type_sheets(i_src_dir, b_src_dir)
+    idea_ii_sheets = set(get_sheets_with_idea_types(i_src_dir))
     etl_sheets = []
     for ii_sheet_tuple in idea_ii_sheets:
         src_file_path = ii_sheet_tuple[0]

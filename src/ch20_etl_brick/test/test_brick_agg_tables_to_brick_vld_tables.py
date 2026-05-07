@@ -7,9 +7,6 @@ from ch20_etl_brick.etl_brick_main import (
 from ref.keywords import Ch20Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 
-# TODO create insert from vld tests for etl_brixk_vld_tables_to_brixk_vld_tables
-# TODO create insert from vld does not accumlate over time test for etl_brixk_vld_tables_to_brixk_vld_tables
-
 
 def test_etl_brixk_agg_tables_to_brixk_vld_tables_PopulatesVldTable_Scenario0_valid_spark_nums(
     cursor0: Cursor,

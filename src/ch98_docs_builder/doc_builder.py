@@ -16,11 +16,13 @@ from ch00_py.file_toolbox import (
 from ch00_py.keyword_class_builder import (
     create_src_example_strs_path,
     create_src_keywords_main_path,
+    get_keywords_src_config,
 )
 from ch04_rope._ref.ch04_doc_builder import get_ropeterm_description_md
 from ch17_brick._ref.ch17_doc_builder import get_brick_formats_md, get_brick_mds
 from ch98_docs_builder._ref.ch98_path import create_chapter_ref_path
 from ch98_docs_builder.keg_definitions_builder import rebuild_keg_definitions_contents
+from ref.sorter import get_keg_elements_sort_order
 
 
 def get_func_names_and_class_bases_from_file(
@@ -83,6 +85,23 @@ def save_brick_formats_md(dest_dir: str):
     save_file(dest_dir, "brick_formats.md", brick_formats_md)
 
 
+def get_rebuilt_keywords_src_config() -> dict:
+    keywords_src_config = get_keywords_src_config()
+    rebuilt_keywords_src_config = {}
+    for keyword, kw_config in keywords_src_config.items():
+        new_kw_config = {
+            "exam_tier": kw_config.get("exam_tier"),
+            "init_ch": kw_config.get("init_ch"),
+        }
+        if kw_config.get("semantic_type"):
+            new_kw_config["semantic_type"] = kw_config.get("semantic_type")
+        rebuilt_keywords_src_config[keyword] = new_kw_config
+
+    for sort_index, sorting_keyword in enumerate(get_keg_elements_sort_order()):
+        rebuilt_keywords_src_config[sorting_keyword]["sort_ordinal"] = sort_index
+    return rebuilt_keywords_src_config
+
+
 def resave_chapter_and_keyword_json_files():
     for chapter_dir in get_chapter_descs().values():
         json_file_tuples = get_dir_filenames(chapter_dir, {"json"})
@@ -91,6 +110,8 @@ def resave_chapter_and_keyword_json_files():
             save_json(json_dir, x_filename, open_json(json_dir, x_filename))
     keywords_main_json_path = create_src_keywords_main_path("src")
     ex_strs_json_path = create_src_example_strs_path("src")
-    save_json(keywords_main_json_path, None, open_json(keywords_main_json_path))
+    rebuilt_keywords_src_config = get_rebuilt_keywords_src_config()
+    save_json(keywords_main_json_path, None, rebuilt_keywords_src_config)
+    # save_json(keywords_main_json_path, None, open_json(keywords_main_json_path))
     save_json(ex_strs_json_path, None, open_json(ex_strs_json_path))
     rebuild_keg_definitions_contents()

@@ -9,7 +9,6 @@ from ch19_idea_src.idea2brick import (
     get_sheets_with_idea_types,
     get_spark_faces_from_df,
     get_spark_faces_from_files,
-    get_validated_i_src_idea_type_sheets,
     ideas_sheets_to_brick_sheets,
 )
 from openpyxl import Workbook as openpyxl_Workbook
@@ -326,30 +325,29 @@ def test_get_sheets_with_idea_types_ReturnsObj_Scenario0_MatchingTuples(
     assert ("report.xlsx", "Summary") not in result
 
 
-def test_get_validated_i_src_idea_type_sheets_ReturnsObj_Scenario0_IdeaBrSheets(
-    tmp_path: Path,
-):
-    """Returns only brick_type sheet tuples from i_src_dir when there is no overlap."""
-    # ESTABLISH
-    idea_dir = tmp_path / kw.idea
-    idea_dir.mkdir()
-    b_src_dir = tmp_path / "bricks"
-    b_src_dir.mkdir()
-    wb = openpyxl_Workbook()
-    wb.active.title = "ii00105_Sales"
-    wb.create_sheet("Revenue")
-    wb.create_sheet("ii00142_Costs")
-    wb.save(idea_dir / "x300reports.xlsx")
+# def test_get_validated_i_src_idea_type_sheets_ReturnsObj_Scenario0_IdeaBrSheets(
+#     tmp_path: Path,
+# ):
+#     """Returns only brick_type sheet tuples from i_src_dir when there is no overlap."""
+#     # ESTABLISH
+#     idea_dir = tmp_path / kw.idea
+#     idea_dir.mkdir()
+#     b_src_dir = tmp_path / "bricks"
+#     b_src_dir.mkdir()
+#     wb = openpyxl_Workbook()
+#     wb.active.title = "ii00105_Sales"
+#     wb.create_sheet("Revenue")
+#     wb.create_sheet("ii00142_Costs")
+#     wb.save(idea_dir / "x300reports.xlsx")
 
-    # WHEN
-    result = get_validated_i_src_idea_type_sheets(idea_dir, b_src_dir)
-    # THEN
-    assert ("x300reports.xlsx", "ii00105_Sales") in result
-    assert ("x300reports.xlsx", "ii00142_Costs") in result
-    assert ("x300reports.xlsx", "Revenue") not in result
+#     # WHEN
+#     result = get_validated_i_src_idea_type_sheets(idea_dir, b_src_dir)
+#     # THEN
+#     assert ("x300reports.xlsx", "ii00105_Sales") in result
+#     assert ("x300reports.xlsx", "ii00142_Costs") in result
+#     assert ("x300reports.xlsx", "Revenue") not in result
 
 
-# TODO reactive and change test so idea_type sheets are added to bk sheets
 # def test_get_validated_i_src_idea_type_sheets_Scenario1_RaisesOnOverlap(
 #     tmp_path: Path,
 # ):  # sourcery skip: extract-duplicate-method
@@ -374,7 +372,7 @@ def test_get_validated_i_src_idea_type_sheets_ReturnsObj_Scenario0_IdeaBrSheets(
 #     with pytest_raises(ValueError, match="bk00105_Sales"):
 #         get_validated_i_src_idea_type_sheets(idea_dir, b_src_dir)
 
-# TODO figure out if test or function is needed
+
 # def test_get_validated_i_src_idea_type_sheets_Scenario2_DoesNotRaiseError(
 #     tmp_path: Path,
 # ):  # sourcery skip: extract-duplicate-method
@@ -406,7 +404,6 @@ def test_get_validated_i_src_idea_type_sheets_ReturnsObj_Scenario0_IdeaBrSheets(
 #     print(f"{sheet_tuples=}")
 #     assert (x3_filename, bk42_sheetname) in sheet_tuples
 
-# # TODO figure out if test or function is needed
 # def test_get_validated_i_src_idea_type_sheets_ReturnsObj_Scenario2_EmptyWhenNoIdeaBrSheets(
 #     tmp_path: Path,
 # ):

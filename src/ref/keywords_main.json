@@ -506,6 +506,7 @@
   "sheet": {"exam_tier": 0, "init_ch": "ch17"}, 
   "shop": {"exam_tier": 0, "init_ch": "ch00"}, 
   "solo": {"exam_tier": 0, "init_ch": "ch02", "sort_ordinal": 83}, 
+  "sort_ordinal": {"exam_tier": 0, "init_ch": "ch00"}, 
   "sound_agg": {"exam_tier": 0, "init_ch": "ch18"}, 
   "sound_raw": {"exam_tier": 0, "init_ch": "ch18"}, 
   "sound_vld": {"exam_tier": 0, "init_ch": "ch18"}, 
