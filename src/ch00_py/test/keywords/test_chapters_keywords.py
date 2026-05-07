@@ -65,7 +65,7 @@ def test_get_possible_keyword_config_keys_ReturnsObj():
     req_config_keys = get_possible_keyword_config_keys()
     # THEN
     assert req_config_keys == {
-        kw.init_ch,
+        kw.valid_ch,
         kw.semantic_type,
         kw.exam_tier,
         "sort_ordinal",
@@ -320,7 +320,7 @@ def test_get_keg_elements_sort_order_Scenario0_AllElementsAre_keywords():
     for missing_element in sorted(missing_elements):
         x_count += 1
         print(
-            f""""{missing_element}": {{"{kw.exam_tier}": 0, "{kw.init_ch}": "ch{ch_num}"}},"""
+            f""""{missing_element}": {{"{kw.exam_tier}": 0, "{kw.valid_ch}": "ch{ch_num}"}},"""
         )
     print(f"{x_count} elements")
     assert set(get_keg_elements_sort_order()).issubset(keywords_set)

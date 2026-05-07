@@ -23,7 +23,7 @@ def test_recreate_keyword_src_config_Scenario0_Includes_sort_ordinal():
     for keyword, kw_config in keywords_src_config.items():
         new_kw_config = {
             kw.exam_tier: kw_config.get(kw.exam_tier),
-            kw.init_ch: kw_config.get(kw.init_ch),
+            kw.valid_ch: kw_config.get(kw.valid_ch),
         }
         if kw_config.get(kw.semantic_type):
             new_kw_config[kw.semantic_type] = kw_config.get(kw.semantic_type)
@@ -46,7 +46,7 @@ def test_recreate_keyword_src_config_Scenario0_Includes_sort_ordinal():
     # for missing_element in sorted(missing_elements):
     #     x_count += 1
     #     print(
-    #         f""""{missing_element}": {{"exam_tier": 0, "init_ch": "ch{ch_num}"}},"""
+    #         f""""{missing_element}": {{"exam_tier": 0, "valid_ch": "ch{ch_num}"}},"""
     #     )
     # print(f"{x_count} elements")
     # assert set(get_keg_elements_sort_order()).issubset(keywords_set)

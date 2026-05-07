@@ -446,7 +446,7 @@
 "444": {"question_type": "Keyword Definition", "question_str": "Have you read the Kegology definition of 'UPDATE'?", "keyword": "UPDATE"},
 "445": {"question_type": "Keyword Definition", "question_str": "Have you read the Kegology definition of 'ch00'?", "keyword": "ch00"},
 "446": {"question_type": "Keyword Definition", "question_str": "Have you read the Kegology definition of 'filename'?", "keyword": "filename"},
-"447": {"question_type": "Keyword Definition", "question_str": "Have you read the Kegology definition of 'init_ch'?", "keyword": "init_ch"},
+"447": {"question_type": "Keyword Definition", "question_str": "Have you read the Kegology definition of 'valid_ch'?", "keyword": "valid_ch"},
 "448": {"question_type": "Keyword Definition", "question_str": "Have you read the Kegology definition of 'keyword'?", "keyword": "keyword"},
 "449": {"question_type": "Keyword Definition", "question_str": "Have you read the Kegology definition of 'semantic_type'?", "keyword": "semantic_type"},
 "450": {"question_type": "Keyword Definition", "question_str": "Have you read the Kegology definition of 'sqlite_datatype'?", "keyword": "sqlite_datatype"}

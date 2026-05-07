@@ -221,8 +221,8 @@ def test_Chapters_KeywordsAppearWhereTheyShould():
             f"The Keyword '{keyword}' is never used in the chapters"
         )
         if not chapters_dict.keys():
-            init_ch = keywords_dict[keyword][kw.init_ch]
-            assert init_ch == "", never_used_assertion_fail_str
+            valid_ch = keywords_dict[keyword][kw.valid_ch]
+            assert valid_ch == "", never_used_assertion_fail_str
         else:
             min_chapter_prefix = min(chapters_dict.keys())
             min_chapter_count = chapters_dict.get(min_chapter_prefix)

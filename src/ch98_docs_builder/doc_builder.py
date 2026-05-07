@@ -91,7 +91,7 @@ def get_rebuilt_keywords_src_config() -> dict:
     for keyword, kw_config in keywords_src_config.items():
         new_kw_config = {
             "exam_tier": kw_config.get("exam_tier"),
-            "init_ch": kw_config.get("init_ch"),
+            "valid_ch": kw_config.get("valid_ch"),
         }
         if kw_config.get("semantic_type"):
             new_kw_config["semantic_type"] = kw_config.get("semantic_type")

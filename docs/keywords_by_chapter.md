@@ -1,7 +1,7 @@
 # Keywords by Chapter
 
 ## Keywords by Chapter
-- ch00_py: DELETE, INSERT, Keyword, UPDATE, ch00, exam_tier, filename, init_ch, keyword, semantic_type, shop, sort_ordinal, sqlite_datatype
+- ch00_py: DELETE, INSERT, Keyword, UPDATE, ch00, exam_tier, filename, keyword, semantic_type, shop, sort_ordinal, sqlite_datatype, valid_ch
 - ch01_allot: GrainNum, PoolNum, WeightNum, ch01
 - ch02_contact: BreakTerm, ContactName, FundGrain, FundNum, GroupMark, GroupTitle, HealerName, NameTerm, RespectGrain, RespectNum, TitleTerm, awardee_title, awardunits, ch02, contact_cred_lumen, contact_debt_lumen, contact_name, credor_pool, debtor_pool, fund_agenda_give, fund_agenda_ratio_give, fund_agenda_ratio_take, fund_agenda_take, fund_give, fund_grain, fund_take, give_force, group_cred_lumen, group_debt_lumen, group_title, groupmark, groupunits, inallocable_contact_debt_lumen, irrational_contact_debt_lumen, labor_title, labors, memberships, parent_solo, rational, respect_grain, solo, take_force, thinkout, workforceheir, workforceunit
 - ch03_workforce: LaborHeir, ch03, laborheir, person, person_name, person_name_is_workforce
