@@ -415,7 +415,7 @@ def test_get_keg_definitions_ReturnsObj_HasAllkeywords():
     expected_keg_keys.update(python_keywords())
     missing_keg_definitions = expected_keg_keys.difference(description_keywords)
     for missing_keg_definition in sorted(missing_keg_definitions):
-        print(f""""{missing_keg_definition}": "TODO",""")
+        print(f""""{missing_keg_definition}": "Definition needed.",""")
     # print(f"{description_keywords.difference(expected_keg_keys)=}")
     expected_keg_keys.update(set(get_example_strs_config().keys()))
     assert set(keg_definitions.keys()) == expected_keg_keys
@@ -483,3 +483,37 @@ def test_get_keg_definitions_ReturnsObj_get_brick_config_dict():
 
     expected_allowed_crud_desc = "Each brick config dimen has an allowed_crud that describes whether the data may be updated/deleted/inserted more than one."
     assert keg_definitions.get(kw.allowed_crud) == expected_allowed_crud_desc
+
+
+def test_get_keg_definitions_ReturnsObj_inx_otx_ContainTranslateReference():
+    # sourcery skip: no-conditionals-in-tests
+    # ESTABLISH / WHEN
+    keg_definitions = get_keg_definitions()
+
+    # THEN
+    # to_save_keg_definitions = get_keg_definitions()
+    # for keg_term, definition_str in keg_definitions.items():
+    #     expected_inx_str = (
+    #         f"The '{keg_term.replace("_inx", "")}' value after Translate."
+    #     )
+    #     if keg_term.endswith("_inx") and expected_inx_str not in definition_str:
+    #         # print(f""""{keg_term}": "{expected_inx_str}",""")
+    #         to_save_keg_definitions[keg_term] = expected_inx_str
+    # for keg_term, definition_str in keg_definitions.items():
+    #     expected_otx_str = (
+    #         f"The '{keg_term.replace("_otx", "")}' value after Translate."
+    #     )
+    #     if keg_term.endswith("_otx") and expected_otx_str not in definition_str:
+    #         # print(f""""{keg_term}": "{expected_otx_str}",""")
+    #         to_save_keg_definitions[keg_term] = expected_otx_str
+    # save_keg_descriptions_json("src", to_save_keg_definitions)
+
+    for keg_term, definition_str in keg_definitions.items():
+        if keg_term.endswith("_inx"):
+            base_keg_term = keg_term.replace("_inx", "")
+            expected_inx_str = f"The '{base_keg_term}' value after Translate."
+            assert expected_inx_str in definition_str, keg_term
+        if keg_term.endswith("_otx"):
+            base_keg_term = keg_term.replace("_otx", "")
+            expected_otx_str = f"The '{base_keg_term}' value after Translate."
+            assert expected_otx_str in definition_str, keg_term

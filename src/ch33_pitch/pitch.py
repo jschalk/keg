@@ -6,7 +6,6 @@ from ch33_pitch._ref.ch33_semantic_types import PersonName, SparkInt
 from dataclasses import dataclass
 
 
-# TODO add "Deal" to keywords
 @dataclass
 class PitchUnit:
     pitcher_name: PersonName = None
