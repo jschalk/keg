@@ -9002,6 +9002,7 @@ class Ch54Keywords(str, Enum):
     PitchID = "PitchID"
     PitchUnit = "PitchUnit"
     PoolNum = "PoolNum"
+    Purpil = "Purpil"
     ReasonNum = "ReasonNum"
     RespectGrain = "RespectGrain"
     RespectNum = "RespectNum"

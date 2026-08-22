@@ -25,7 +25,6 @@ Loser,10,
 Oil,10,
 Palm,10,
 Pump,10,
-Purpil,10,
 Pyramid,10,
 Revenge,10,
 Rider,10,
@@ -790,6 +789,7 @@ stable,0,41
 valor,0,41
 wheel,0,"41, 98"
 wheelers,0,"41, 98"
+Purpil,0,54
 Puncher,0,90
 Team,0,90
 puncher,0,"90, 98"

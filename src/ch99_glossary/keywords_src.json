@@ -90,7 +90,7 @@
   "Prestige": {"valid_ch": "41"}, 
   "Pump": {"valid_ch": ""}, 
   "Puncher": {"valid_ch": "90"}, 
-  "Purpil": {"valid_ch": ""}, 
+  "Purpil": {"valid_ch": "54"}, 
   "Pyramid": {"valid_ch": ""}, 
   "ReasonNum": {"semantic_type": "float", "valid_ch": "5:"}, 
   "RespectGrain": {"semantic_type": "float", "valid_ch": "3:"}, 
