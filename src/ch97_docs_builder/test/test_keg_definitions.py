@@ -121,21 +121,25 @@ def test_get_keg_definitions_ReturnsObj_Check_moment_ote1_agg():
     assert moment_ote1_agg_desc in keg_definitions.get(kw.moment_ote1_agg)
 
 
-# def test_get_keg_definitions_ReturnsObj_CheckNoChapter_keywords():
-#     # sourcery skip: no-conditionals-in-tests
-#     # ESTABLISH / WHEN
-#     keg_definitions = get_keg_definitions()
-#     # THEN
-#     chapter_descs = get_chapter_descs().keys()
-#     ch_ints = {get_ch_int(chapter_desc) for chapter_desc in chapter_descs}
-#     for keyword, kw_config in get_keywords_src_config().items():
-#         assert keg_definitions.get(keyword), f"{keyword} missing from keg_definitions"
-#         assert kw.valid_ch in set(kw_config.keys()), keyword
-#         valid_chs = parse_valid_ch_str(ch_ints, kw_config.get(kw.valid_ch))
-#         if not valid_chs:
-#             config_description = keg_definitions.get(keyword)
-#             assert "Not used in codebase." in config_description, keyword
-# TODO find way to confirm "Not used in codebase." only appears for keg terms without valid chapters
+def test_get_keg_definitions_ReturnsObj_CheckNoChapter_keywords():
+    # sourcery skip: no-conditionals-in-tests
+    # ESTABLISH / WHEN
+    keg_definitions = get_keg_definitions()
+    # THEN
+    chapter_descs = get_chapter_descs().keys()
+    ch_ints = {get_ch_int(chapter_desc) for chapter_desc in chapter_descs}
+    for keyword, kw_config in get_keywords_src_config().items():
+        assert keg_definitions.get(keyword), f"{keyword} missing from keg_definitions"
+        assert kw.valid_ch in set(kw_config.keys()), keyword
+        valid_chs = parse_valid_ch_str(ch_ints, kw_config.get(kw.valid_ch))
+        config_description = keg_definitions.get(keyword)
+        assertion_failure_str = f"{keyword} {valid_chs=} {config_description}"
+        if valid_chs:
+            used_str = "Not used in codebase."
+            assert used_str not in config_description, assertion_failure_str
+        # else:
+        #     print(f"{keyword=}")
+        #     assert used_str in config_description, assertion_failure_str
 
 
 def test_get_keg_definitions_ReturnsObj_Check_person_dimen():
