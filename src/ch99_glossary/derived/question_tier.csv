@@ -36,6 +36,7 @@ Target,10,
 Tower,10,
 Trek,10,
 Trooper,10,
+Tsar,10,
 Vertical,10,
 Winner,10,
 Yard,10,
@@ -64,6 +65,7 @@ stilt,10,
 swim,10,
 target,10,
 trek,10,
+tsar,10,
 vertical,10,
 yard,10,
 ch00,6,0:
@@ -761,6 +763,7 @@ winning,0,"40, 41"
 Climb,0,41
 Discipline,0,41
 Fall,0,41
+Honor,0,41
 KegWheel,0,41
 Losing,0,41
 Pay,0,41
@@ -776,6 +779,7 @@ cling,0,41
 discipline,0,41
 drag,0,41
 fall,0,41
+honor,0,41
 jump,0,41
 kneeler,0,41
 lift,0,41

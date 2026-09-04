@@ -31,7 +31,7 @@ def test_find_chapter_dir_ReturnsPath_Scenario0_FindsMatchingParent():
     assert not find_chapter_dir(file_path)
 
 
-def test_Chapters_AllImportsAreFromLibrariesInLessThanEqual_aXX():
+def test_Chapters_AllImports_AreFromLibrariesInLessThanEqual_aXX():
     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
     # ESTABLISH
     chapter_descs = get_chapter_descs()

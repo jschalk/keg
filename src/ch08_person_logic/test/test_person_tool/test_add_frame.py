@@ -555,7 +555,7 @@
 #     assert _case.reason_upper == expected_upper
 
 
-# def test_add_frame_to_reasonunit_SetsAttr_Scenario0_AllCaseUnitsAre_():
+# def test_add_frame_to_reasonunit_SetsAttr_Scenario0_AllCaseUnitsExist_():
 #     # ESTABLISH
 #     bob_person = get_bob_two_person()
 #     x_rge_lower_min = 7777

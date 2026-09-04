@@ -21,7 +21,7 @@ def path_contains_subpath(full_path: str, sub_path: str):
         return False
 
 
-def test_Chapters_test_TestsAreInCorrectDirStructure():
+def test_Chapters_test_Tests_AreInCorrectDirStructure():
     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
     # ESTABLISH / WHEN / THEN
     for chapter_desc, chapter_dir in get_chapter_descs().items():

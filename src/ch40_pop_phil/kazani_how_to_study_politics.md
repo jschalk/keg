@@ -91,17 +91,17 @@ Take for example, the poetic lines of Alexander Pushkin that every educated Russ
 
 > “We shall amuse good citizens
 And on the pilar of shame
-We shall strangle the last tsar
+We shall strangle the last king
 With the intestine of the last cleric”
 >
 >(Alexander Pushkin, 1819)
 
-These lines are quite representative of how much of the highly privileged youth in St Petersburg felt, in the wake of Napoleonic Wars. Kill, kill, kill, kill the Tsar. Kill the royal family. Kill them all.
+These lines are quite representative of how much of the highly privileged youth in St Petersburg felt, in the wake of Napoleonic Wars. Kill, kill, kill, kill the King. Kill the royal family. Kill them all.
 
 <div align="center"><img src="images/russian_calvary_painting.webp" alt="Painting of Russian army in St. Petersburg 1825" width="600"></div>
 
 
-*That provides lots of historical context, on the intellectual & ideological atmosphere just before the Decembrist revolt of 1825. By that point, the murder of Tsar, and the extermination of the royals, became a fashionable conversation topic between the posh youth, many of whom served as officers in the imperial guard regiments, garrisoned in St Petersburg.*
+*That provides lots of historical context, on the intellectual & ideological atmosphere just before the Decembrist revolt of 1825. By that point, the murder of King, and the extermination of the royals, became a fashionable conversation topic between the posh youth, many of whom served as officers in the imperial guard regiments, garrisoned in St Petersburg.*
 
 
 All of that, a reasonably educated Russian does know

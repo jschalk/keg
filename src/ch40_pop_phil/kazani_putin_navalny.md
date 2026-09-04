@@ -49,7 +49,7 @@ Ivan the Terrible reigned for 50 full years. Nobody in the entire Russian histor
 
 <div align="center"><img src="images/ivan_terrible.webp" alt="Painting of suspicious King Ivan" width="300"></div>
 
-If Ivan the Terrible ruled longer than any other Tsar, Stalin ruled longer than any other dictator. Keeping the power for 26 years, he remains the longest sitting longest non hereditary ruler in the Russian history.
+If Ivan the Terrible ruled longer than any other King, Stalin ruled longer than any other dictator. Keeping the power for 26 years, he remains the longest sitting longest non hereditary ruler in the Russian history.
 
 <div align="center"><img src="images/stalin_smiling.webp" alt="photo of stalin smiling" width="300"></div>
 

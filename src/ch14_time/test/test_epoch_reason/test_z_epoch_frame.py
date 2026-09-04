@@ -529,7 +529,7 @@ def test_add_frame_to_caseunit_SetsAttr_Scenario14_adds_epoch_frame_Wraps_range(
     assert epoch_case.reason_upper == expected_upper
 
 
-def test_add_frame_to_reasonunit_SetsAttr_Scenario0_AllCaseUnitsAre_epoch():
+def test_add_frame_to_reasonunit_SetsAttr_Scenario0_AllCaseUnits_Are_epoch():
     # ESTABLISH
     bob_person = get_bob_five_person()
     x_range_lower_min = 7777
