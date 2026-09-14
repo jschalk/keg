@@ -25,7 +25,7 @@ from ch01_keyword.keyword_class_builder import (
 from ch05_rope._ref.ch05_doc_builder import get_ropeterm_description_md
 from ch20_brick._ref.ch20_doc_builder import get_brick_formats_md, get_brick_mds
 from ch97_docs_builder._ref.ch97_path import create_chapter_ref_path
-from ch97_docs_builder.glossary_definition import rebuild_keg_definitions_contents
+from ch97_docs_builder.glossary_definition import rebuild_keywords_definitions_contents
 from ch97_docs_builder.glossary_ranking import (
     rebuild_keg_exam_questions,
     rebuild_keg_rank_csv,
@@ -106,7 +106,7 @@ def resave_chapter_and_keyword_json_files():
     # save_json(keywords_src_json_path, None, rebuilt_keywords_src_config)
     # save_json(keywords_src_json_path, None, open_json(keywords_src_json_path))
     save_json(ex_strs_json_path, None, open_json(ex_strs_json_path))
-    rebuild_keg_definitions_contents()
+    rebuild_keywords_definitions_contents()
     rebuild_keg_rank_csv()
     rebuild_keg_exam_questions()
 

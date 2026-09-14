@@ -1766,12 +1766,12 @@ Ontology note:
 - `get_chapter_blurbs_md()` — iterates all chapter directories via `get_chapter_descs`, reads each chapter's `_ref/chXX_ref.json`, and assembles a markdown document listing each chapter number, description, and blurb. This produces the repo's high-level "what does each chapter do" reference.
 - `get_ropeterm_description_md()` — delegates to ch05's own doc-builder helper for the RopeTerm concept description.
 - `get_brick_formats_md()` / `get_brick_mds()` — produce markdown tables and descriptions of all brick format schemas, pulling from `brick_config.json` and the `brick_formats/` JSON files.
-- `rebuild_keg_definitions_contents()` (from `glossary_definition.py`) — reads `keg_definitions.json` and rebuilds its contents from the keyword source files, keeping definitions in sync with the glossary.
+- `rebuild_keywords_definitions_contents()` (from `glossary_definition.py`) — reads `keywords_definitions.json` and rebuilds its contents from the keyword source files, keeping definitions in sync with the glossary.
 
 **`glossary_ranking.py`**
 
-- `QuestionUnit` — a dataclass representing a single study question about a keg term: `keg_term`, `keg_definition`, `init_ch` (the chapter where the term is first introduced), `question_tier`, `did_you_read_order`, and optionally a `complete_question` arbitary setting.
-- `get_keg_definition_questionunits()` — iterates all keywords in `keywords_src.json`, parses their `valid_ch` range to determine `init_ch`, looks up their definition, and constructs a `QuestionUnit` for each. Default questions follow the pattern: "Did you read that the keg_definition of '{term}' is '{definition}'."
+- `QuestionUnit` — a dataclass representing a single study question about a keg term: `keg_term`, `keyword_definition`, `init_ch` (the chapter where the term is first introduced), `question_tier`, `did_you_read_order`, and optionally a `complete_question` arbitary setting.
+- `get_keyword_definition_questionunits()` — iterates all keywords in `keywords_src.json`, parses their `valid_ch` range to determine `init_ch`, looks up their definition, and constructs a `QuestionUnit` for each. Default questions follow the pattern: "Did you read that the keyword_definition of '{term}' is '{definition}'."
 - `rebuild_keg_exam_questions(dst_path)` — writes all questions to a CSV file, sorted by `did_you_read_order`, suitable for use as flash cards or onboarding material.
 - `rebuild_keg_rank_csv(dst_path)` — writes a JSON ranking of all keg terms ordered by chapter of introduction, providing a structured learning path through the system's vocabulary.
 

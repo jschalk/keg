@@ -1,7 +1,7 @@
 from ch97_docs_builder.glossary_definition import (
     get_count_keg_terms_by_chapters,
     get_count_strs_by_dirs,
-    get_keg_definitions,
+    get_keywords_definitions,
     get_focus_keyword_frequency,
 )
 from ch99_glossary.ch_keyword import Ch97Keywords as kw
@@ -136,7 +136,7 @@ def test_get_count_keg_terms_by_chapters_CountsTerms_Scenario0_SrcDir():
     keg_terms_by_chapters = get_count_keg_terms_by_chapters()
 
     # THEN
-    keg_terms = set(get_keg_definitions().keys())
+    keg_terms = set(get_keywords_definitions().keys())
     assert set(keg_terms_by_chapters.keys()) == keg_terms
     focus_keyword_count_set = {"huh"}
     focus_keyword_frequency = get_focus_keyword_frequency(focus_keyword_count_set)

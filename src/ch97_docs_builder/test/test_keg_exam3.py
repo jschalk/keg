@@ -51,7 +51,7 @@ def test_rebuild_keg_rank_csv_SavesFile_Scenario0_NoFileExists(temp3_fs):
 #     keywords_src_config = get_keywords_src_config()
 #     chapter_descs = get_chapter_descs().keys()
 #     ch_ints = {get_ch_int(chapter_desc) for chapter_desc in chapter_descs}
-#     keg_questionunits = get_keg_definition_questionunits()
+#     keg_questionunits = get_keyword_definition_questionunits()
 #     expected_keg_tiers = {}
 #     for keg_term, keg_qu in keg_questionunits.items():
 #         kw_config = keywords_src_config.get(keg_term)

@@ -10,7 +10,7 @@ from ch97_docs_builder._ref.ch97_path import (
     create_keg_exam_questions_path,
     create_question_tier_path,
 )
-from ch97_docs_builder.glossary_definition import get_keg_definitions
+from ch97_docs_builder.glossary_definition import get_keywords_definitions
 from csv import writer as csv_writer
 from dataclasses import dataclass
 from json import dumps as json_dumps
@@ -23,7 +23,7 @@ from pandas import read_excel as pandas_read_excel, DataFrame
 @dataclass
 class QuestionUnit:
     keg_term: str = None
-    keg_definition: str = None
+    keyword_definition: str = None
     init_ch: int = None
     question_tier: int = None
     did_you_read_order: int = None
@@ -32,19 +32,19 @@ class QuestionUnit:
     def get_question(self) -> str:
         if self.complete_question:
             return self.complete_question
-        return f"Did you read that the keg_definition of '{self.keg_term}' is '{self.keg_definition}'."
+        return f"Did you read that the keyword_definition of '{self.keg_term}' is '{self.keyword_definition}'."
 
 
-def get_keg_definition_questionunits() -> dict[str, QuestionUnit]:
+def get_keyword_definition_questionunits() -> dict[str, QuestionUnit]:
     chapter_descs = get_chapter_descs().keys()
     ch_ints = {get_ch_int(chapter_desc) for chapter_desc in chapter_descs}
     keywords_src_config = get_keywords_src_config()
 
-    keg_definitions = get_keg_definitions()
+    keywords_definitions = get_keywords_definitions()
     keg_questions = {}
-    for keg_term, keg_definition in keg_definitions.items():
+    for keg_term, keyword_definition in keywords_definitions.items():
         kw_config = keywords_src_config.get(keg_term)
-        questionunit = QuestionUnit(keg_term, keg_definition)
+        questionunit = QuestionUnit(keg_term, keyword_definition)
         if kw_config:
             valid_chs = parse_valid_ch_str(ch_ints, kw_config.get("valid_ch"))
             init_ch = sorted(valid_chs)[0] if valid_chs else None
@@ -57,7 +57,7 @@ def get_keg_definition_questionunits() -> dict[str, QuestionUnit]:
 def get_tiered_questionunits() -> dict[str, QuestionUnit]:
     keywords_src_config = get_keywords_src_config()
     keywords_set = set(keywords_src_config.keys())
-    keg_qus = get_keg_definition_questionunits()
+    keg_qus = get_keyword_definition_questionunits()
     for keg_term, keg_qu in keg_qus.items():
         # check chxx terms
         if len(keg_term) == 4 and keg_term.startswith("ch"):
