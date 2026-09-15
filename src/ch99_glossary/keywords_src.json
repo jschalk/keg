@@ -48,6 +48,7 @@
   "Honor": {"valid_ch": "41"}, 
   "Hose": {"valid_ch": ""}, 
   "INSERT": {"valid_ch": "9:"}, 
+  "IdeaBook": {"valid_ch": "33:"}, 
   "Impression": {"valid_ch": ""}, 
   "Infinity": {"valid_ch": "39, 41"}, 
   "Invite": {"valid_ch": ""}, 

@@ -326,6 +326,7 @@
   "i_src": "5 character abbreviation of ideax_src. stage_type_order=1 Idea Source files. Brick formats without SparkNum.", 
   "idea": "A collection of bricks (currently only in brick format) with a spark_face but no spark_num. Conceptually ideas are things that represent direct promises to the soul. People are made of ideas and share them.", 
   "idea_type": "Definition needed.", 
+  "IdeaBook": "Contains a set Ideas that can be converted into Atoms.", 
   "ideax_dst": "stage_type_order=14 Idea (Brick formats without SparkNum) Destination. Filtered Job, Moment data.", 
   "ideax_src": "stage_type_order=1 Idea Source files. Brick formats without SparkNum.", 
   "ii": "Idea Format Identifier. Every idea_type format starts with 'ii' and then 5 numbers. Every brick_type has a mirrored idea_type. Multiple idea_types can map to single brick_type", 

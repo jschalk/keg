@@ -1064,7 +1064,6 @@ Ontology note:
 
 **`idea2brick.py`** — the main orchestration layer:
 
-- `IdeaBook` — a dataclass holding a dict of sheet-name → DataFrame, representing all sheets from one Excel idea file.
 - `get_spark_faces_from_df(df)` / `get_spark_faces_from_files(directory)` — extract the set of distinct `spark_face` values present in idea files, used to validate provenance before loading.
 - `get_max_spark_num_from_files(directory)` — finds the highest `spark_num` across all idea files, used to sequence the next ingestion spark.
 - The main pipeline function (not fully read) reads each Excel idea file, applies fission steps per sheet, validates column presence against the brick schema, and writes valid rows to brick-format CSV/Excel outputs.
