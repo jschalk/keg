@@ -399,7 +399,7 @@ Items that may be traded:
 - Utilities
 - Get Out of Jail Free cards
 
-Promises of future actions are not enforceable.
+Agreements of future actions are not enforceable.
 
 ---
 

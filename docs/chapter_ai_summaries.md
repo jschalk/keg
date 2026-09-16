@@ -1531,7 +1531,7 @@ Ontology note:
 
 - **ch00_py**: `get_0_if_None` — used in `validate_spark_nums` to default None spark nums to 0.
 - **ch10_person_lesson**: `LessonUnit` — a pitch carries lessons as its exchange medium.
-- **ch23_idea_src**: `IdeaBook` — the data container for each of the three pitch components (gift, request, offer).
+- **ch23_idea_src**: `PromiseBook` — the data container for each of the three pitch components (gift, request, offer).
 - **ch32_world**: `WorldName` — imported but not yet used in the current stub implementation.
 
 `ch33_semantic_types.py` re-exports through ch22 with no additions.
@@ -1545,7 +1545,7 @@ Ch33 is an **early-stage design stub** — its ref file's `chapter_blurb` is inc
 **`PitchUnit`** is the dataclass representing a negotiation between two persons:
 - `pitcher_name` / `peer_name` — the two parties.
 - `pitch_id` / `pitch_active` — identifier and current status of the negotiation.
-- Three `IdeaBook` slots with associated `SparkInt` sequence numbers:
+- Three `PromiseBook` slots with associated `SparkInt` sequence numbers:
   - `gift_ideabook` / `gift_spark_num` — ideas the pitcher is committing to (already bricked).
   - `request_ideabook` / `request_spark_num` — ideas the pitcher is asking the peer to commit to.
   - `offer_ideabook` / `offer_spark_num` — ideas the pitcher is offering conditionally (if the request is accepted).
