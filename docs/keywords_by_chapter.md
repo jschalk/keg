@@ -30,7 +30,7 @@
 - ch30_idea_dst: ch30, vow
 - ch31_kpi: DayEvent, Event, ch31, default_kpi_bundle, gcal, moment_kpi001_contact_nets, moment_kpi002_person_pledges
 - ch32_world: WorldName, ch32, today
-- ch33_pitch: Deal, Gift, Peer, PitchID, PitchUnit, Promise, PromiseBook, ch33, deal, gift, offer, peer, pitch, pitch_id, pitcher_name, pitchs, promise, request
+- ch33_pitch: Deal, Gift, Peer, PitchID, PitchUnit, Promise, PromiseUnit, ch33, deal, gift, offer, peer, pitch, pitch_id, pitcher_name, pitchs, promise, request
 - ch34_finance: ch34, finance, financial
 - ch35_person_viewer: ch35
 - ch39_levinas_phil: American, Infinity, Pillar, Totality, Water, Wheel, bearing, ch39, ch90, gravity, hose, infinity, invite, land, power, totality, water, welcome

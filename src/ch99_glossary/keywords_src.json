@@ -90,7 +90,7 @@
   "PoolNum": {"semantic_type": "float", "valid_ch": "2:"}, 
   "Prestige": {"valid_ch": "41"}, 
   "Promise": {"valid_ch": "33"}, 
-  "PromiseBook": {"valid_ch": "33:"}, 
+  "PromiseUnit": {"valid_ch": "33:"}, 
   "Pump": {"valid_ch": ""}, 
   "Puncher": {"valid_ch": "90"}, 
   "Purpil": {"valid_ch": "54"}, 

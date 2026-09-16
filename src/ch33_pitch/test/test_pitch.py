@@ -9,9 +9,9 @@ def test_PitchUnit_Exists():
     # THEN
     assert not x_pitchunit.pitcher_name
     assert not x_pitchunit.peer_name
-    assert not x_pitchunit.gift_ideabook
-    assert not x_pitchunit.request_ideabook
-    assert not x_pitchunit.offer_ideabook
+    assert not x_pitchunit.gift_promiseunit
+    assert not x_pitchunit.request_promiseunit
+    assert not x_pitchunit.offer_promiseunit
     assert not x_pitchunit.pitch_id
     assert not x_pitchunit.pitch_active
     assert set(x_pitchunit.__dict__.keys()) == {
@@ -19,11 +19,11 @@ def test_PitchUnit_Exists():
         "pitch_active",
         kw.pitch_id,
         "peer_name",
-        "gift_ideabook",
+        "gift_promiseunit",
         "gift_spark_num",
-        "request_ideabook",
+        "request_promiseunit",
         "request_spark_num",
-        "offer_ideabook",
+        "offer_promiseunit",
         "offer_spark_num",
     }
 
@@ -35,9 +35,9 @@ def test_pitchunit_shop_ReturnsObj():
     # THEN
     assert sue_pitchunit.pitcher_name == exx.sue
     assert not sue_pitchunit.peer_name
-    assert not sue_pitchunit.gift_ideabook
-    assert not sue_pitchunit.request_ideabook
-    assert not sue_pitchunit.offer_ideabook
+    assert not sue_pitchunit.gift_promiseunit
+    assert not sue_pitchunit.request_promiseunit
+    assert not sue_pitchunit.offer_promiseunit
     assert not sue_pitchunit.pitch_id
 
 

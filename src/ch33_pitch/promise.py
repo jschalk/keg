@@ -52,9 +52,9 @@ PITCH_NUMERICAL_ARGS = {
 
 
 @dataclass
-class PromiseBook:
+class PromiseUnit:
     ideas: dict[str,] = None
 
 
-def ideabook_shop() -> PromiseBook:
-    return PromiseBook(ideas={})
+def promiseunit_shop() -> PromiseUnit:
+    return PromiseUnit(ideas={})

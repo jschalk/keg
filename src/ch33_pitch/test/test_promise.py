@@ -1,6 +1,6 @@
 from ch20_brick.brick_config import get_brick_sqlite_types, get_default_sorted_list
 from ch22_etl_config.etl_config import get_brick_config_dict
-from ch33_pitch.ideabook import PITCH_NUMERICAL_ARGS, PromiseBook, ideabook_shop
+from ch33_pitch.promise import PITCH_NUMERICAL_ARGS, PromiseUnit, promiseunit_shop
 from ch99_glossary.ch_keyword import Ch23Keywords as kw, ExampleStrs as exx
 from ch99_glossary.sorter import get_keg_elements_sort_order
 
@@ -81,26 +81,26 @@ def test_PITCH_NUMERICAL_ARGS_Exists():
 #     assert 1 == 2
 
 
-def test_PromiseBook_Exists():
+def test_PromiseUnit_Exists():
     # ESTABLISH / WHEN
-    ideabook = PromiseBook()
+    promiseunit = PromiseUnit()
     # THEN
-    assert not ideabook.ideas
-    assert set(ideabook.__dict__.keys()) == {f"{kw.idea}s"}
+    assert not promiseunit.ideas
+    assert set(promiseunit.__dict__.keys()) == {f"{kw.idea}s"}
 
 
-def test_ideabook_shop_ReturnsObj():
+def test_promiseunit_shop_ReturnsObj():
     # ESTABLISH / WHEN
-    x_ideabook = ideabook_shop()
+    x_promiseunit = promiseunit_shop()
     # THEN
-    assert x_ideabook
-    assert x_ideabook.ideas == {}
+    assert x_promiseunit
+    assert x_promiseunit.ideas == {}
 
 
-# def test_PromiseBook_add_IdeaPrime():
+# def test_PromiseUnit_add_IdeaPrime():
 #     # ESTABLISH / WHEN
-#     x_ideabook = ideabook_shop()
+#     x_promiseunit = promiseunit_shop()
 #     # THEN
-#     assert x_ideabook
-#     assert x_ideabook.ideas == {}
+#     assert x_promiseunit
+#     assert x_promiseunit.ideas == {}
 #     # assert 1 == 2
