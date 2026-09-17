@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+# TODO create a linter test that checks file names follow keyword chapter rules
 PITCH_NUMERICAL_ARGS = {
     'active_requisite': {'sqlite_datatype': 'INTEGER'},
     'addin': {'sqlite_datatype': 'REAL'},

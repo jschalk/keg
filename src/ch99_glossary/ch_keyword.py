@@ -2990,6 +2990,7 @@ class Ch18Keywords(str, Enum):
     descendant_pledge_count = "descendant_pledge_count"
     dimen = "dimen"
     dimens = "dimens"
+    duck = "duck"
     epoch = "epoch"
     epoch_label = "epoch_label"
     fact = "fact"

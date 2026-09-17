@@ -71,10 +71,10 @@ def test_PersonUnit_thinkout_Sets_planunit_fund_onset_fund_cease_Scenario1():
     lamb_rope = yao_personunit.make_rope(carn_rope, lamb_str)
     lamb_plan = planunit_shop(lamb_str, poynt=1)
     yao_personunit.set_plan_obj(lamb_plan, parent_rope=carn_rope)
-    duck_str = "ducks"
-    duck_rope = yao_personunit.make_rope(carn_rope, duck_str)
-    duck_plan = planunit_shop(duck_str, poynt=2)
-    yao_personunit.set_plan_obj(duck_plan, parent_rope=carn_rope)
+    dolphin_str = "dolphins"
+    dolphin_rope = yao_personunit.make_rope(carn_rope, dolphin_str)
+    dolphin_plan = planunit_shop(dolphin_str, poynt=2)
+    yao_personunit.set_plan_obj(dolphin_plan, parent_rope=carn_rope)
 
     coal_str = "coal"
     coal_rope = yao_personunit.make_l1_rope(coal_str)
@@ -92,9 +92,9 @@ def test_PersonUnit_thinkout_Sets_planunit_fund_onset_fund_cease_Scenario1():
     lamb_before = yao_personunit.get_plan_obj(rope=lamb_rope)
     assert lamb_before.fund_onset is None
     assert lamb_before.fund_cease is None
-    duck_before = yao_personunit.get_plan_obj(rope=duck_rope)
-    assert duck_before.fund_onset is None
-    assert duck_before.fund_cease is None
+    dolphin_before = yao_personunit.get_plan_obj(rope=dolphin_rope)
+    assert dolphin_before.fund_onset is None
+    assert dolphin_before.fund_cease is None
 
     # WHEN
     yao_personunit.thinkout()
@@ -109,9 +109,9 @@ def test_PersonUnit_thinkout_Sets_planunit_fund_onset_fund_cease_Scenario1():
     assert yao_personunit.get_plan_obj(coal_rope).fund_onset == default_pool_num() * 0.7
     assert yao_personunit.get_plan_obj(coal_rope).fund_cease == default_pool_num() * 1.0
 
-    duck_after = yao_personunit.get_plan_obj(rope=duck_rope)
-    assert duck_after.fund_onset == default_pool_num() * 0.1
-    assert duck_after.fund_cease == default_pool_num() * 0.5
+    dolphin_after = yao_personunit.get_plan_obj(rope=dolphin_rope)
+    assert dolphin_after.fund_onset == default_pool_num() * 0.1
+    assert dolphin_after.fund_cease == default_pool_num() * 0.5
     lamb_after = yao_personunit.get_plan_obj(rope=lamb_rope)
     assert lamb_after.fund_onset == default_pool_num() * 0.5
     assert lamb_after.fund_cease == default_pool_num() * 0.7
@@ -135,10 +135,10 @@ def test_PersonUnit_thinkout_Sets_planunit_fund_onset_fund_cease_Scenario2_Diffe
     lamb_rope = yao_personunit.make_rope(yarn_rope, lamb_str)
     lamb_plan = planunit_shop(lamb_str, poynt=1)
     yao_personunit.set_plan_obj(lamb_plan, parent_rope=yarn_rope)
-    duck_str = "ducks"
-    duck_rope = yao_personunit.make_rope(yarn_rope, duck_str)
-    duck_plan = planunit_shop(duck_str, poynt=2)
-    yao_personunit.set_plan_obj(duck_plan, parent_rope=yarn_rope)
+    dolphin_str = "dolphins"
+    dolphin_rope = yao_personunit.make_rope(yarn_rope, dolphin_str)
+    dolphin_plan = planunit_shop(dolphin_str, poynt=2)
+    yao_personunit.set_plan_obj(dolphin_plan, parent_rope=yarn_rope)
 
     coal_str = "coal"
     coal_rope = yao_personunit.make_l1_rope(coal_str)
@@ -156,9 +156,9 @@ def test_PersonUnit_thinkout_Sets_planunit_fund_onset_fund_cease_Scenario2_Diffe
     lamb_before = yao_personunit.get_plan_obj(rope=lamb_rope)
     assert lamb_before.fund_onset is None
     assert lamb_before.fund_cease is None
-    duck_before = yao_personunit.get_plan_obj(rope=duck_rope)
-    assert duck_before.fund_onset is None
-    assert duck_before.fund_cease is None
+    dolphin_before = yao_personunit.get_plan_obj(rope=dolphin_rope)
+    assert dolphin_before.fund_onset is None
+    assert dolphin_before.fund_cease is None
 
     # WHEN
     yao_personunit.thinkout()
@@ -173,9 +173,9 @@ def test_PersonUnit_thinkout_Sets_planunit_fund_onset_fund_cease_Scenario2_Diffe
     assert yao_personunit.get_plan_obj(yarn_rope).fund_onset == default_pool_num() * 0.4
     assert yao_personunit.get_plan_obj(yarn_rope).fund_cease == default_pool_num() * 1.0
 
-    duck_after = yao_personunit.get_plan_obj(rope=duck_rope)
-    assert duck_after.fund_onset == default_pool_num() * 0.4
-    assert duck_after.fund_cease == default_pool_num() * 0.8
+    dolphin_after = yao_personunit.get_plan_obj(rope=dolphin_rope)
+    assert dolphin_after.fund_onset == default_pool_num() * 0.4
+    assert dolphin_after.fund_cease == default_pool_num() * 0.8
     lamb_after = yao_personunit.get_plan_obj(rope=lamb_rope)
     assert lamb_after.fund_onset == default_pool_num() * 0.8
     assert lamb_after.fund_cease == default_pool_num() * 1.0

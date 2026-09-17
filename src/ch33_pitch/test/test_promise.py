@@ -97,7 +97,11 @@ def test_promiseunit_shop_ReturnsObj():
     assert x_promiseunit.ideas == {}
 
 
-# def test_PromiseUnit_add_IdeaPrime():
+# def test_PromiseUnit_set_FactAdd_Sets():
+# def test_PromiseUnit_set_ReasonAdd_Sets():
+# def test_PromiseUnit_set_OffiAdd_Sets():
+# def test_PromiseUnit_set_ContactAdd_Sets():
+# def test_PromiseUnit_set_GroupAdd_Sets():
 #     # ESTABLISH / WHEN
 #     x_promiseunit = promiseunit_shop()
 #     # THEN

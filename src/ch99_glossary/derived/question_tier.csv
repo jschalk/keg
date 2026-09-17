@@ -8,6 +8,7 @@ Closer,10,
 Cow,10,
 Drag,10,
 Drift,10,
+Duck,10,
 Gravity,10,
 Hive,10,
 Hose,10,
@@ -543,6 +544,7 @@ translate_rope,0,17:
 translate_title,0,17:
 translateunit,0,"17, 20, 97"
 unknown_str,0,17:
+duck,0,18
 Border,0,"20, 39"
 Excel,0,20:
 SheetName,0,20:
