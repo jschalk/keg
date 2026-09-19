@@ -27,7 +27,7 @@ I have been recently reading *The Defence of the Realm*. Somewhere around the MI
 
 One story that particularly grasped my attention, was the story of William Le Queux
 
-<div align="center"><img src="images/mi5_william_le_queux.webp" alt="William Le Queux protrait" width="500"></div>
+<div align="center"><img src="images/mi5_william_le_queux.webp" alt="William Le Queux protrait" width="300"></div>
 
 He was a highly commercially successful author of the absolutely absurd, pathetic spy novels in the early 20th c Britain. In the magic world of his novels, England was swarmed by the foreign spies: French, Russian, but - most of all - German. All of whom were single-handedly outfoxed and defeated by the heroic British agent Duuckworth Drew who was - as an individual - ‘one of the most powerful and important contributers of England’s supremacy’. A sort of James Bond, except of the cosmic scale.
 
