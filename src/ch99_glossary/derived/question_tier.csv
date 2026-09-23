@@ -23,7 +23,6 @@ Ladder,10,
 Lift,10,
 Linchpin,10,
 Loser,10,
-News,10,
 Oil,10,
 Palm,10,
 Pump,10,
@@ -102,8 +101,9 @@ ch32,6,32:
 ch33,6,33:
 ch34,6,34:
 ch35,6,35:
-ch39,6,39:
+ch36,6,36:
 ch90,6,36:
+ch39,6,39:
 ch40,6,40:
 ch41,6,41:
 ch54,6,54:
@@ -719,6 +719,8 @@ promise,0,"33, 39, 40, 41"
 request,0,33:
 finance,0,34:
 financial,0,34:
+News,0,36
+news,0,"36, 39, 40"
 American,0,"39, 40, 41"
 Infinity,0,"39, 41"
 Pillar,0,"39, 41"
@@ -731,7 +733,6 @@ hose,0,"39, 40, 41, 54"
 infinity,0,"39, 41"
 invite,0,"39, 40, 41"
 land,0,"39, 40, 41"
-news,0,"39, 40"
 power,0,"39, 40, 41"
 totality,0,39
 water,0,"39, 40, 41"

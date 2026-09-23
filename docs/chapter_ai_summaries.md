@@ -1653,6 +1653,7 @@ This chapter is a debugging and demonstration tool — it makes the complexity o
 
 
 
+
 # ch90_puncher_app — Chapter Summary
 
 *This summary is authored by AI 5-26-2026.*

@@ -27,7 +27,6 @@ Did you read that the keyword_definition of 'Ladder' is 'A pillar that bears the
 Did you read that the keyword_definition of 'Lift' is 'The act of a FamilyUnit lifting another FamilyUnit above them. Ala 'I believe you'll go far!''.
 Did you read that the keyword_definition of 'Linchpin' is 'A required part of a pillar. If a linchpin stops supporting the pillar it is destoryed.'.
 Did you read that the keyword_definition of 'Loser' is 'A FamilyUnit getting less Prestige.'.
-Did you read that the keyword_definition of 'News' is 'Definition needed.'.
 Did you read that the keyword_definition of 'Oil' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'Palm' is 'A way of holding Moment in your mind. If you can only see the world one way, one palm. If you have see the world 5 ways, 5 palms.'."
 Did you read that the keyword_definition of 'Pump' is 'Definition needed.'.
@@ -106,8 +105,9 @@ Did you read that the keyword_definition of 'ch32' is 'Defines WorldDirs that ad
 "Did you read that the keyword_definition of 'ch33' is 'Defines Pitch Tools for gifts, World Scenarios.'."
 Did you read that the keyword_definition of 'ch34' is 'Defines Finance Tools for '.
 Did you read that the keyword_definition of 'ch35' is 'Tools for Visualizing PersonUnits'.
-Did you read that the keyword_definition of 'ch39' is 'Levinas Philosophy'.
+Did you read that the keyword_definition of 'ch36' is 'Defines News Tools'.
 Did you read that the keyword_definition of 'ch90' is 'ETL app to create day punches from excel files.'.
+Did you read that the keyword_definition of 'ch39' is 'Levinas Philosophy'.
 Did you read that the keyword_definition of 'ch40' is 'Essays pop_phil'.
 Did you read that the keyword_definition of 'ch41' is 'Essays pop_phil'.
 Did you read that the keyword_definition of 'ch54' is 'Short stories'.
@@ -725,6 +725,8 @@ Did you read that the keyword_definition of 'promise' is 'Definition needed.'.
 Did you read that the keyword_definition of 'request' is 'Ch33 Definition needed.'.
 Did you read that the keyword_definition of 'finance' is 'Definition needed.'.
 Did you read that the keyword_definition of 'financial' is 'Definition needed.'.
+Did you read that the keyword_definition of 'News' is 'Definition needed.'.
+Did you read that the keyword_definition of 'news' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'American' is 'Defined by Joell Ortiz 'Be American, express yourself and take the credit' Notice also what he says about 'you join 'em'. Also relating to the lands, peoples, societies, and governments of the Americas'."
 Did you read that the keyword_definition of 'Infinity' is 'As described in Totality and Infinity.'.
 Did you read that the keyword_definition of 'Pillar' is 'A load-bearing support for a family with prestige. Built of non-prestige families.'.
@@ -737,7 +739,6 @@ Did you read that the keyword_definition of 'hose' is 'Definition needed.'.
 Did you read that the keyword_definition of 'infinity' is 'As described in Totality and Infinity.'.
 Did you read that the keyword_definition of 'invite' is 'The giving of prestige from a FamilyUnit with it to a FamilyUnit without it.'.
 "Did you read that the keyword_definition of 'land' is 'When referenced in context of KegWheel, the root source of all wheel_size (Power).'."
-Did you read that the keyword_definition of 'news' is 'Definition needed.'.
 Did you read that the keyword_definition of 'power' is 'Defintion needed.'.
 Did you read that the keyword_definition of 'totality' is 'As described in Totality and Infinity.'.
 Did you read that the keyword_definition of 'water' is 'Definition needed.'.
