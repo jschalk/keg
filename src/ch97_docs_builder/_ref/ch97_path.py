@@ -1,11 +1,11 @@
 from ch00_py.file_toolbox import create_path
 
 
-def create_src_keg_definitions_path(src_dir: str) -> str:
-    """Returns path: src\\ch99_glossary\\keg_definitions.json"""
+def create_src_keywords_definitions_path(src_dir: str) -> str:
+    """Returns path: src\\ch99_glossary\\keywords_definitions.json"""
 
     ref_dir = create_path(src_dir, "ch99_glossary")
-    return create_path(ref_dir, "keg_definitions.json")
+    return create_path(ref_dir, "keywords_definitions.json")
 
 
 def create_keg_exam_questions_path(src_dir: str) -> str:

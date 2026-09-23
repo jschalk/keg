@@ -882,7 +882,7 @@ def get_wheel_fig1_02(face_title_str: str) -> Drawing:
     smiths_str = "Smiths"
     duvals_str = "Duvals"
     gomezs_str = "Gomezs"
-    flores_str = "Flores"
+    flores_str = "Fabelas"
     fig_width = 700
     fig_obj = get_standard_drawing(fig_width, 450)
     trapunits = [
@@ -907,7 +907,7 @@ def get_wheel_fig1_03(face_title_str: str) -> Drawing:
     smiths_str = "Smiths"
     duvals_str = "Duvals"
     gomezs_str = "Gomezs"
-    flores_str = "Flores"
+    flores_str = "Fabelas"
     fig_width = 800
     fig_obj = get_standard_drawing(fig_width, 550)
     trapunits = [
@@ -953,7 +953,7 @@ def get_wheel_fig1_04(face_title_str: str) -> Drawing:
     ]
     draw_trapezoid_stack(fig_obj, trapunits)
     add_title_to_drawing(fig_obj, face_title_str, 30, fig_width, 10)
-    desc_str = f"""TODO add sub-title better"""
+    desc_str = """F1 is lifted up by F2, F3. Doesn't know the rest."""
     add_title_to_drawing(fig_obj, desc_str, 20, fig_width, 50)
     draw_land(fig_obj, 75, 330, 410, "Land", stroke_width=4, font_size=20)
     return fig_obj

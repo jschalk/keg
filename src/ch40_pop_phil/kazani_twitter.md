@@ -177,7 +177,7 @@ Responding to popular media figure asking why one politician is continually aske
 >
 > (it is very telling that all these media figures don’t understand this basic fact)
 > 
-> How do you think Machiavelli became the No 1 political philosopher of the West? Was it all the fans’ job? No, of course not. It was all the haters, all of it.
+> How do you think Machiavelli became the No 1 political philosopher of the West? Was it all the fans’ doing? No, of course not. It was all the haters, all of it.
 > 
 > They kept talking how awful, atrocious, unacceptable and completely wrong all of it is, and turned him into the star
 > 

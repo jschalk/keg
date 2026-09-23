@@ -371,7 +371,7 @@ def test_check_relative_order_ReturnsTuple_ScenarioSubsetEqualsFullList_OrderIsV
     assert msg == ""
 
 
-def test_get_keg_elements_sort_order_Scenario0_AllElementsAre_keywords():
+def test_get_keg_elements_sort_order_Scenario0_AllElementsExistAs_keywords():
     # sourcery skip: no-conditionals-in-tests
     # ESTABLISH / WHEN / THEN
     keywords_set = set(get_keywords_src_config())

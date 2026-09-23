@@ -121,6 +121,8 @@ The moths are easily washed off. But they're basically everywhere outside. They'
 
 Aerosolized silicon - the first comment
 when you really look at someone the eyeball vibrates - when you're not defensive
+
+The purple sky is called The Purpil, it's a medium by which one person, when looking at another person in the eyes can really hear what they are saying. They can hear was  
 --> 
 
 

@@ -5,7 +5,7 @@
 </defs>
 <rect x="0" y="0" width="800" height="600" fill="white" />
 <path d="M180.0,160 L260.0,160 L270,232 L170,232 Z" fill="#D9F2D9" stroke="black" stroke-width="2" />
-<text x="220.0" y="203.2" font-size="18" fill="black" text-anchor="middle" dominant-baseline="central">Flores</text>
+<text x="220.0" y="203.2" font-size="18" fill="black" text-anchor="middle" dominant-baseline="central">Fabelas</text>
 <path d="M155.0,240 L275.0,240 L290,312 L140,312 Z" fill="#D9F2D9" stroke="black" stroke-width="2" />
 <text x="215.0" y="283.2" font-size="18" fill="black" text-anchor="middle" dominant-baseline="central">Gomezs</text>
 <path d="M129.0,320 L201.0,320 L210,392.0 L120,392.0 Z" fill="#D9F2D9" stroke="black" stroke-width="2" />
@@ -15,13 +15,13 @@
 <path d="M485.0,120 L605.0,120 L620,205 L470,205 Z" fill="#D9F2D9" stroke="black" stroke-width="2" />
 <text x="545.0" y="169.7" font-size="18" fill="black" text-anchor="middle" dominant-baseline="central">Gomezs</text>
 <path d="M461.0,215 L629.0,215 L650,300 L440,300 Z" fill="#D9F2D9" stroke="black" stroke-width="2" />
-<text x="545.0" y="264.7" font-size="18" fill="black" text-anchor="middle" dominant-baseline="central">Flores</text>
+<text x="545.0" y="264.7" font-size="18" fill="black" text-anchor="middle" dominant-baseline="central">Fabelas</text>
 <path d="M414.0,310 L526.0,310 L540,395 L400,395 Z" fill="#D9F2D9" stroke="black" stroke-width="2" />
 <text x="470.0" y="359.7" font-size="18" fill="black" text-anchor="middle" dominant-baseline="central">Smiths</text>
 <path d="M564.0,310 L676.0,310 L690,395 L550,395 Z" fill="#D9F2D9" stroke="black" stroke-width="2" />
 <text x="620.0" y="359.7" font-size="18" fill="black" text-anchor="middle" dominant-baseline="central">Duvals</text>
 <text x="400.0" y="40" font-size="30" fill="black" font-weight="bold" text-anchor="middle" dominant-baseline="central">Families on the Land</text>
-<text x="400.0" y="70" font-size="20" fill="black" font-weight="bold" text-anchor="middle" dominant-baseline="central">Gomezs is lifted up because Flores thinks things will be better</text>
+<text x="400.0" y="70" font-size="20" fill="black" font-weight="bold" text-anchor="middle" dominant-baseline="central">Gomezs is lifted up because Fabelas thinks things will be better</text>
 <path d="M75,410 L725,410" stroke="black" stroke-width="4" />
 <text x="400.0" y="436" font-size="20" text-anchor="middle" dominant-baseline="central">Land</text>
 </svg>

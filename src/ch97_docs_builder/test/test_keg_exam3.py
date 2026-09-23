@@ -35,31 +35,6 @@ def test_rebuild_keg_rank_csv_SavesFile_Scenario0_NoFileExists(temp3_fs):
     rebuild_keg_rank_csv(src_dir)
     # THEN
     assert os_path_exists(question_tier_path)
-    # TODO reactivate this part of test
-    # question_tier_dict = open_json(question_tier_path)
-
-    # keywords_src_config = get_keywords_src_config()
-    # chapter_descs = get_chapter_descs().keys()
-    # ch_ints = {get_ch_int(chapter_desc) for chapter_desc in chapter_descs}
-    # keg_questionunits = get_tiered_questionunits()
-    # set_did_you_read_orders(keg_questionunits)
-    # expected_keg_tiers = {}
-    # for keg_term, keg_qu in keg_questionunits.items():
-    #     kw_config = keywords_src_config.get(keg_term)
-    #     # if kw_config:
-    #     #     ch_list = parse_valid_ch_str(ch_ints, kw_config.get("valid_ch"))
-    #     # else:
-    #     #     ch_list = set(ch_ints)
-    #     valid_ch = kw_config.get("valid_ch") if kw_config else "0:"
-    #     expected_keg_tiers[keg_qu.keg_term] = {
-    #         "keg_rank": keg_qu.did_you_read_order,
-    #         "question_tier": keg_qu.question_tier,
-    #         "chs": valid_ch,
-    #     }
-    # # for keg_term, exam_dict in expected_keg_tiers.items():
-    # #     print(f"{keg_term=} {exam_dict=}")
-    # assert question_tier_dict == expected_keg_tiers
-    # assert 1 == 2
 
 
 # def test_rebuild_keg_rank_csv_SavesFile_Scenario1_NoFileExists(temp3_fs):
@@ -76,7 +51,7 @@ def test_rebuild_keg_rank_csv_SavesFile_Scenario0_NoFileExists(temp3_fs):
 #     keywords_src_config = get_keywords_src_config()
 #     chapter_descs = get_chapter_descs().keys()
 #     ch_ints = {get_ch_int(chapter_desc) for chapter_desc in chapter_descs}
-#     keg_questionunits = get_keg_definition_questionunits()
+#     keg_questionunits = get_keyword_definition_questionunits()
 #     expected_keg_tiers = {}
 #     for keg_term, keg_qu in keg_questionunits.items():
 #         kw_config = keywords_src_config.get(keg_term)

@@ -171,7 +171,6 @@ def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario3_TranslateRowsInDB
     assert ii00145_csv == expected_ii00145_csv
 
 
-# TODO change collect_full_world_idea_csv_strs so that if it's passed a person_name it only collects that person's ideas
 def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario4_TranslateRowsInDB(
     temp3_fs,
 ):

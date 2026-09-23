@@ -1,7 +1,7 @@
 from ch97_docs_builder.glossary_ranking import (
     QuestionUnit,
-    get_keg_definition_questionunits,
-    get_keg_definitions,
+    get_keyword_definition_questionunits,
+    get_keywords_definitions,
     set_did_you_read_orders,
 )
 from ch99_glossary.ch_keyword import Ch97Keywords as kw
@@ -12,7 +12,7 @@ def test_QuestionUnit_Exists():
     questionunit = QuestionUnit()
     # THEN
     assert not QuestionUnit.keg_term
-    assert not QuestionUnit.keg_definition
+    assert not QuestionUnit.keyword_definition
     assert not QuestionUnit.init_ch
     assert not QuestionUnit.question_tier
     assert not QuestionUnit.did_you_read_order
@@ -20,7 +20,7 @@ def test_QuestionUnit_Exists():
     assert set(questionunit.__dict__.keys()) == {
         "keg_term",
         kw.question_tier,
-        "keg_definition",
+        "keyword_definition",
         "init_ch",
         "did_you_read_order",
         "complete_question",
@@ -35,9 +35,7 @@ def test_QuestionUnit_get_question_ReturnsObj_Scenario0():
     did_you_read_question_str = poynt_questionunit.get_question()
     # THEN
     assert did_you_read_question_str
-    expected_did_you_read_question_str = (
-        f"Did you read that the keg_definition of '{kw.poynt}' is '{poynt_definition}'."
-    )
+    expected_did_you_read_question_str = f"Did you read that the keyword_definition of '{kw.poynt}' is '{poynt_definition}'."
     assert did_you_read_question_str == expected_did_you_read_question_str
 
 
@@ -52,15 +50,15 @@ def test_QuestionUnit_get_question_ReturnsObj_Scenario1_complete_question_Exists
     assert a_question_str == expected_question_str
 
 
-def test_get_keg_definition_questionunits_ReturnsObj():
+def test_get_keyword_definition_questionunits_ReturnsObj():
     # ESTABLISH / WHEN
-    keg_questions1 = get_keg_definition_questionunits()
+    keg_questions1 = get_keyword_definition_questionunits()
     # THEN
-    keg_definitions = get_keg_definitions()
-    assert set(keg_definitions.keys()) == set(keg_questions1.keys())
+    keywords_definitions = get_keywords_definitions()
+    assert set(keywords_definitions.keys()) == set(keg_questions1.keys())
     expected_trlcore_questionunit = QuestionUnit(
         keg_term=kw.trlcore,
-        keg_definition=keg_definitions.get(kw.trlcore),
+        keyword_definition=keywords_definitions.get(kw.trlcore),
         init_ch=22,
         question_tier=0,
     )
@@ -84,7 +82,7 @@ def test_set_did_you_read_orders_SetAttrs_Scenario1_SingleQuestion_WhenSingleTer
         keg_term=kw.poynt,
         question_tier=0,
         init_ch=4,
-        keg_definition="Used to measure weight of plan",
+        keyword_definition="Used to measure weight of plan",
     )
     keg_questions = {kw.poynt: poynt_questionunit}
     assert poynt_questionunit.did_you_read_order is None
@@ -99,13 +97,22 @@ def test_set_did_you_read_orders_SetAttrs_Scenario1_SingleQuestion_WhenSingleTer
 def test_set_did_you_read_orders_SetAttrs_Scenario2_AssignsSequential_Order():
     # ESTABLISH
     alpha_questionunit = QuestionUnit(
-        keg_term="alpha", question_tier=0, init_ch=1, keg_definition="Alpha definition"
+        keg_term="alpha",
+        question_tier=0,
+        init_ch=1,
+        keyword_definition="Alpha definition",
     )
     beta_questionunit = QuestionUnit(
-        keg_term="beta", question_tier=1, init_ch=10, keg_definition="Beta definition"
+        keg_term="beta",
+        question_tier=1,
+        init_ch=10,
+        keyword_definition="Beta definition",
     )
     gamma_questionunit = QuestionUnit(
-        keg_term="gamma", question_tier=1, init_ch=5, keg_definition="Gamma definition"
+        keg_term="gamma",
+        question_tier=1,
+        init_ch=5,
+        keyword_definition="Gamma definition",
     )
     keg_questions = {
         "gamma": gamma_questionunit,
@@ -125,10 +132,16 @@ def test_set_did_you_read_orders_SetAttrs_Scenario2_AssignsSequential_Order():
 def test_set_did_you_read_orders_SetAttrs_Scenario3_SortsAlphabetically_WhenOtherFieldsMatch():
     # ESTABLISH
     zebra_questionunit = QuestionUnit(
-        keg_term="zebra", question_tier=1, init_ch=5, keg_definition="Zebra definition"
+        keg_term="zebra",
+        question_tier=1,
+        init_ch=5,
+        keyword_definition="Zebra definition",
     )
     alpha_questionunit = QuestionUnit(
-        keg_term="alpha", question_tier=1, init_ch=5, keg_definition="Alpha definition"
+        keg_term="alpha",
+        question_tier=1,
+        init_ch=5,
+        keyword_definition="Alpha definition",
     )
     keg_questions = {"zebra": zebra_questionunit, "alpha": alpha_questionunit}
 
@@ -146,14 +159,14 @@ def test_set_did_you_read_orders_SetAttrs_Scenario4_SortsNoneInitChAheadOfNumeri
         keg_term="alpha",
         question_tier=0,
         init_ch=None,
-        keg_definition="Alpha definition",
+        keyword_definition="Alpha definition",
     )
 
     numeric_init_ch_questionunit = QuestionUnit(
         keg_term="beta",
         question_tier=0,
         init_ch=99,
-        keg_definition="Beta definition",
+        keyword_definition="Beta definition",
     )
 
     keg_questions = {

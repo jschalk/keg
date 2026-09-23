@@ -3,38 +3,38 @@ from ch97_docs_builder._ref.ch97_path import (
     create_chapter_ref_path,
     create_keg_exam_questions_path,
     create_question_tier_path,
-    create_src_keg_definitions_path,
+    create_src_keywords_definitions_path,
 )
 from inspect import getdoc as inspect_getdoc
 from pytest import mark as pytest_mark
 
 
-def test_create_src_keg_definitions_path_ReturnsObj(temp3_dir):
+def test_create_src_keywords_definitions_path_ReturnsObj(temp3_dir):
     # ESTABLISH
     src_dir = temp3_dir
 
     # WHEN
-    keywords_class_file_path = create_src_keg_definitions_path(src_dir)
+    keywords_class_file_path = create_src_keywords_definitions_path(src_dir)
 
     # THEN
     assert keywords_class_file_path
     # ref_dir = create_path(chapter_dir, "_ref")
     ref_dir = create_path(src_dir, "ch99_glossary")
-    expected_filename = get_json_filename("keg_definitions")
+    expected_filename = get_json_filename("keywords_definitions")
     expected_file_path = create_path(ref_dir, expected_filename)
     assert keywords_class_file_path == expected_file_path
 
 
 @pytest_mark.skip_on_linux
-def test_create_src_keg_definitions_path_HasDocString():
+def test_create_src_keywords_definitions_path_HasDocString():
     # ESTABLISH
     src_dir = "src"
     ref_dir = create_path(src_dir, "ch99_glossary")
-    doc_str = create_path(ref_dir, get_json_filename("keg_definitions"))
+    doc_str = create_path(ref_dir, get_json_filename("keywords_definitions"))
     doc_str = f"Returns path: {doc_str}"
     print(f"{doc_str=}")
     # WHEN / THEN
-    assert inspect_getdoc(create_src_keg_definitions_path) == doc_str
+    assert inspect_getdoc(create_src_keywords_definitions_path) == doc_str
 
 
 def test_create_chapter_ref_path_ReturnsObj(temp3_dir):

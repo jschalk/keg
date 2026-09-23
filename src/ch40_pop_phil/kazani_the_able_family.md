@@ -103,7 +103,7 @@ Astrakhan was a seaport, located in the mouth of Volga where it meets the Caspia
 
 It was naturally a place, where it was easy to get lost. Perhaps even more importantly, it was a place where it was easy to legalise.
 
-Far off from the population centres of Russian Empire, Astrakhan suffered from the lack of manpower. Local authorities needed the labor for all sorts of jobs. They wanted to populate and expand the agglomeration, settling the Lower Volga steppe. The problem, however, was that pretty much all of the manpower available was either foreigners or runaway serfs flocking there from the upstream country[^6].
+Far off from the population centres of Russian Empire, Astrakhan suffered from the lack of manpower. Local authorities needed the labor for all sorts of vocations. They wanted to populate and expand the agglomeration, settling the Lower Volga steppe. The problem, however, was that pretty much all of the manpower available was either foreigners or runaway serfs flocking there from the upstream country[^6].
 
 This created a conflict of interest between the noblemen of Central Russian who wanted their serfs back and the Astrakhan regional government who wanted more people on the ground. Landowners lobbied for the hardline approach, regional government wanted a softer, more liberal policy towards the fugitives.
 

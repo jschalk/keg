@@ -22,7 +22,7 @@ And, of course, nobody gets powerful by accident[^2]
 
 Should you ever get powerful by accident, you will lose your power even faster than you got it. (Many such cases). **That is because staying in power required a constant effort.** To remain in power, you will have to guard you position from all sorts of hungry pretenders.
 
-Guarding power is all about kicking away the ladders. Guarding power = identifying competitors and eliminating them before they could eliminate you. Now once you got the power, **guarding the power becomes your main job.** That is most of what you do.
+Guarding power is all about kicking away the ladders. Guarding power = identifying competitors and eliminating them before they could eliminate you. Now once you got the power, **guarding the power becomes your main role.** That is most of what you do.
 
 *(All the other stuff is just the busywork)*
 
@@ -49,7 +49,7 @@ Ivan the Terrible reigned for 50 full years. Nobody in the entire Russian histor
 
 <div align="center"><img src="images/ivan_terrible.webp" alt="Painting of suspicious King Ivan" width="300"></div>
 
-If Ivan the Terrible ruled longer than any other Tsar, Stalin ruled longer than any other dictator. Keeping the power for 26 years, he remains the longest sitting longest non hereditary ruler in the Russian history.
+If Ivan the Terrible ruled longer than any other King, Stalin ruled longer than any other dictator. Keeping the power for 26 years, he remains the longest sitting longest non hereditary ruler in the Russian history.
 
 <div align="center"><img src="images/stalin_smiling.webp" alt="photo of stalin smiling" width="300"></div>
 

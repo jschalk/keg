@@ -177,7 +177,7 @@ Logically this invitation should only be extended when the prestigious family ha
 
 <div align="center"><img src="images/wheel01_intro.webp" alt="Intro to KegWheel with Power, Families, Prestige going up and down." width="300"></div>
 
-Any system of centralized power can be represented as a Wheel. A wheel that turns. Families go up in prestige, families go down in prestige. New famlies can enter power and gain maximum prestige and old families can exit power and lose all prestige. Most of the time the oligarchy is remarkable stable. The advantages of prestige are considerable. There is the endless multitude without prestige who will do absolutely any service for a chance of getting prestige[6]. Promises don't even have to be made, the implication is obvious.
+Any system of centralized power can be represented as a Wheel. A wheel that turns. Families go up in prestige, families go down in prestige. New famlies can enter power and gain maximum prestige and old families can exit power and lose all prestige. Most of the time the oligarchy is remarkable stable. The advantages of prestige are considerable. There is the endless multitude without prestige who will do absolutely any service for a chance of getting prestige[6]. And promises don't even have to be made, the implication is obvious.
 
 <div align="center"><img src="images/wheel02_falling.webp" alt="Wheel diagram with the Falling" width="300"></div>
 

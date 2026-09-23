@@ -18,11 +18,6 @@ from re import search as re_search
 from typing import List, Tuple
 
 
-@dataclass
-class IdeaBook:
-    ideas: dict[str, DataFrame] = None
-
-
 def get_spark_faces_from_df(df: DataFrame) -> set:
     """
     Returns a set of distinct values from the 'spark_face' column.

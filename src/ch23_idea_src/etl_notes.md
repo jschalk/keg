@@ -1,6 +1,5 @@
-# TODO rewrite this readme draft
-
 # ETL Module Overview
+*Authored by AI, reviewed by Emmanuel Schalk 2026-08-16*
 
 This document describes how the ETL (Extract–Transform–Load) module organizes and processes data across multiple dimensions and transformation stages.
 The design focuses on **traceability, auditability, and simplicity** — every step can be inspected and verified using only basic SQL or Excel skills.

@@ -11,7 +11,7 @@
 
 I grew up in El Paso, went to UTEP and became friends with the Physics people. They told me that a Nobel Prize recipient was coming to El Paso and was going to give a talk. I went to go see him and he said he liked the Marty Robins song "Rosa's Cantina" and wanted to go to Rosa's Cantina himself. Rosa's Cantina is still around, I've eaten there once and had a very very good chile relleno. I do recommend. 
 
-Anyway, this guy, probably [Dr. Anthony Leggett](https://en.wikipedia.org/wiki/Anthony_Leggett), as a Nobel Prize guy has a special status in the world and at least some people want to hear him talk. So he gives talks. It's part of the job of being a Nobel guy. And here was the dramatic thin I took away from his presentation 
+Anyway, this guy, probably [Dr. Anthony Leggett](https://en.wikipedia.org/wiki/Anthony_Leggett), as a Nobel Prize guy has a special status in the world and at least some people want to hear him talk. So he gives talks. It's part of the responsiblities of being a Nobel guy. And here was the dramatic thin I took away from his presentation 
 
 <div align="center">
 

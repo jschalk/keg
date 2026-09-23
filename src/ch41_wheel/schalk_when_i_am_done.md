@@ -7,7 +7,7 @@
 
 ---
 
-I want to be a good dad. To do that I want to stop climate change. Lots of other people want to stop climate change too. However they aren't doing a good job. Their solutions aren't working. Things are getting better but far too slowly. 
+I want to be a good dad. To do that I want to stop climate change. Lots of other people want to stop climate change too. However they aren't doing good enough. Their solutions aren't working. Things are getting better but far too slowly. 
 
 I'm building a solution called Kegology. It's a philosophy that says instead of trying to tell others what to do the way to make good change is to listen to others more. It's taking a lot of work. My oldest asked me yesterday when I'll be done with the project so I can play more. Here's what I will tell my kid.
 

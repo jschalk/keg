@@ -1064,7 +1064,6 @@ Ontology note:
 
 **`idea2brick.py`** — the main orchestration layer:
 
-- `IdeaBook` — a dataclass holding a dict of sheet-name → DataFrame, representing all sheets from one Excel idea file.
 - `get_spark_faces_from_df(df)` / `get_spark_faces_from_files(directory)` — extract the set of distinct `spark_face` values present in idea files, used to validate provenance before loading.
 - `get_max_spark_num_from_files(directory)` — finds the highest `spark_num` across all idea files, used to sequence the next ingestion spark.
 - The main pipeline function (not fully read) reads each Excel idea file, applies fission steps per sheet, validates column presence against the brick schema, and writes valid rows to brick-format CSV/Excel outputs.
@@ -1532,7 +1531,7 @@ Ontology note:
 
 - **ch00_py**: `get_0_if_None` — used in `validate_spark_nums` to default None spark nums to 0.
 - **ch10_person_lesson**: `LessonUnit` — a pitch carries lessons as its exchange medium.
-- **ch23_idea_src**: `IdeaBook` — the data container for each of the three pitch components (gift, request, offer).
+- **ch23_idea_src**: `PromiseUnit` — the data container for each of the three pitch components (gift, request, offer).
 - **ch32_world**: `WorldName` — imported but not yet used in the current stub implementation.
 
 `ch33_semantic_types.py` re-exports through ch22 with no additions.
@@ -1546,17 +1545,17 @@ Ch33 is an **early-stage design stub** — its ref file's `chapter_blurb` is inc
 **`PitchUnit`** is the dataclass representing a negotiation between two persons:
 - `pitcher_name` / `peer_name` — the two parties.
 - `pitch_id` / `pitch_active` — identifier and current status of the negotiation.
-- Three `IdeaBook` slots with associated `SparkInt` sequence numbers:
-  - `gift_ideabook` / `gift_spark_num` — ideas the pitcher is committing to (already bricked).
-  - `request_ideabook` / `request_spark_num` — ideas the pitcher is asking the peer to commit to.
-  - `offer_ideabook` / `offer_spark_num` — ideas the pitcher is offering conditionally (if the request is accepted).
+- Three `PromiseUnit` slots with associated `SparkInt` sequence numbers:
+  - `gift_promiseunit` / `gift_spark_num` — ideas the pitcher is committing to (already bricked).
+  - `request_promiseunit` / `request_spark_num` — ideas the pitcher is asking the peer to commit to.
+  - `offer_promiseunit` / `offer_spark_num` — ideas the pitcher is offering conditionally (if the request is accepted).
 
 **`validate_spark_nums()`** enforces the sequencing constraint: `gift_spark_num < request_spark_num < offer_spark_num`. The gift must be established first (it's already committed), the request comes next, and the offer is the final conditional commitment. If `gift_spark_num` is None and either of the others is set, validation fails.
 
 The inline design comments in `pitch.py` reveal the intended model:
 - A pitch begins with a gift — concrete ideas the pitcher vows to make into bricks, demonstrating good faith.
 - The pitch then describes possible future gifts from both parties.
-- If accepted, the deal (explicitly noted as "needs to be added here so the word isn't used anywhere else") translates the offer ideabook into bricks.
+- If accepted, the deal (explicitly noted as "needs to be added here so the word isn't used anywhere else") translates the offer promiseunit into bricks.
 
 The `pitchunit_shop` function is a placeholder — it accepts all parameters but currently only sets `pitcher_name`. The chapter represents keg's planned mechanism for structured peer-to-peer negotiation, grounding agreement in concrete idea commitments rather than verbal promises. The ontology note's phrase "here are the possible Worlds" indicates this chapter is also intended to support scenario comparison across different `WorldDir` configurations.
 
@@ -1649,6 +1648,7 @@ Ontology note:
 The HTML template is extensive — it renders ~30 checkbox controls for toggling visibility of individual contact fields (`fund_give`, `fund_agenda_ratio_take`, `irrational_contact_debt_mass`, membership details, etc.) and ~20 plan-level fields (`pledge`, `plan_active`, `plan_task`, `descendant_pledge_count`, reason/fact/award/workforce subtrees). A `static/style.css` file handles layout.
 
 This chapter is a debugging and demonstration tool — it makes the complexity of a post-`thinkout()` `PersonUnit` inspectable by a human without reading raw JSON. The calendar-readable strings from ch14 are what make it genuinely useful: instead of seeing `fact_lower=525600`, a user sees "Monday 8:00 AM".
+
 
 
 
@@ -1766,12 +1766,12 @@ Ontology note:
 - `get_chapter_blurbs_md()` — iterates all chapter directories via `get_chapter_descs`, reads each chapter's `_ref/chXX_ref.json`, and assembles a markdown document listing each chapter number, description, and blurb. This produces the repo's high-level "what does each chapter do" reference.
 - `get_ropeterm_description_md()` — delegates to ch05's own doc-builder helper for the RopeTerm concept description.
 - `get_brick_formats_md()` / `get_brick_mds()` — produce markdown tables and descriptions of all brick format schemas, pulling from `brick_config.json` and the `brick_formats/` JSON files.
-- `rebuild_keg_definitions_contents()` (from `glossary_definition.py`) — reads `keg_definitions.json` and rebuilds its contents from the keyword source files, keeping definitions in sync with the glossary.
+- `rebuild_keywords_definitions_contents()` (from `glossary_definition.py`) — reads `keywords_definitions.json` and rebuilds its contents from the keyword source files, keeping definitions in sync with the glossary.
 
 **`glossary_ranking.py`**
 
-- `QuestionUnit` — a dataclass representing a single study question about a keg term: `keg_term`, `keg_definition`, `init_ch` (the chapter where the term is first introduced), `question_tier`, `did_you_read_order`, and optionally a `complete_question` arbitary setting.
-- `get_keg_definition_questionunits()` — iterates all keywords in `keywords_src.json`, parses their `valid_ch` range to determine `init_ch`, looks up their definition, and constructs a `QuestionUnit` for each. Default questions follow the pattern: "Did you read that the keg_definition of '{term}' is '{definition}'."
+- `QuestionUnit` — a dataclass representing a single study question about a keg term: `keg_term`, `keyword_definition`, `init_ch` (the chapter where the term is first introduced), `question_tier`, `did_you_read_order`, and optionally a `complete_question` arbitary setting.
+- `get_keyword_definition_questionunits()` — iterates all keywords in `keywords_src.json`, parses their `valid_ch` range to determine `init_ch`, looks up their definition, and constructs a `QuestionUnit` for each. Default questions follow the pattern: "Did you read that the keyword_definition of '{term}' is '{definition}'."
 - `rebuild_keg_exam_questions(dst_path)` — writes all questions to a CSV file, sorted by `did_you_read_order`, suitable for use as flash cards or onboarding material.
 - `rebuild_keg_rank_csv(dst_path)` — writes a JSON ranking of all keg terms ordered by chapter of introduction, providing a structured learning path through the system's vocabulary.
 

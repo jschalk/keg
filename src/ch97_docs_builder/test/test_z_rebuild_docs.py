@@ -10,12 +10,12 @@ from ch97_docs_builder.doc_builder import (
 from random import random as random_random
 
 
-def test_SpecialTestThatBuildsDocs(rebuild_jsons):
+def test_SpecialTestThatBuildsDocs(rebuild_docs):
     """
     Intended to be the last test before the style checker (linter) tests.
     Should only create documentation and/or sort json files
     """
-    print(f"{rebuild_jsons=}")
+    print(f"{rebuild_docs=}")
     # sourcery skip: no-conditionals-in-tests
     # ESTABLISH / WHEN / THEN
     destination_dir = "docs"
@@ -28,5 +28,5 @@ def test_SpecialTestThatBuildsDocs(rebuild_jsons):
     save_keywords_by_chapter_md(destination_dir)  # docs\keywords_by_chapter.md
     save_chapters_ai_summary(destination_dir)  # docs\keywords_by_chapter.md
     # 4% of stances resave all json files so that they are ordered alphabetically
-    if random_random() < 0.04 or rebuild_jsons:
+    if random_random() < 0.04 or rebuild_docs:
         resave_chapter_and_keyword_json_files()

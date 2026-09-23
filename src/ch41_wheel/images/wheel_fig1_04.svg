@@ -23,7 +23,7 @@
 <path d="M206.0,270 L254.0,270 L260,320 L200,320 Z" fill="#D9F2D9" stroke="black" stroke-width="2" />
 <text x="230.0" y="302.2" font-size="18" fill="black" text-anchor="middle" dominant-baseline="central">F9</text>
 <text x="300.0" y="40" font-size="30" fill="black" font-weight="bold" text-anchor="middle" dominant-baseline="central">Families on the Land</text>
-<text x="300.0" y="70" font-size="20" fill="black" font-weight="bold" text-anchor="middle" dominant-baseline="central">TODO add sub-title better</text>
+<text x="300.0" y="70" font-size="20" fill="black" font-weight="bold" text-anchor="middle" dominant-baseline="central">F1 is lifted up by F2, F3. Doesn't know the rest.</text>
 <path d="M75,330 L485,330" stroke="black" stroke-width="4" />
 <text x="280.0" y="356" font-size="20" text-anchor="middle" dominant-baseline="central">Land</text>
 </svg>

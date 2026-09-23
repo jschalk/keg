@@ -29,7 +29,7 @@ How could Lenin do it? Well, he did not hypnotise everybody, nor did he activate
 
 By and large, he just always got the vote he wanted, whatever the others wanted.
 
-Now to always get the vote he wanted, he manipulated the internal politics of the party, most importantly, its electoral processes. Managing and manipulating them constituted his main job as a party leader.
+Now to always get the vote he wanted, he manipulated the internal politics of the party, most importantly, its electoral processes. Managing and manipulating them constituted his main work as a party leader.
 
 All other stuff was just busywork.
 

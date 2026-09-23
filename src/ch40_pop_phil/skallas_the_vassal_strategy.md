@@ -11,7 +11,7 @@ I was reading last week that SpaceX, Musk’s private space company, is close to
 
 It immediately made me think of an ex-coworker of mine who put a large share of his savings into Tesla about eight years ago.
 
-He was just a normal guy with a normal job. He was not some great investor or engineer. He wasn’t even really into batteries or electric cars. He just believed in Elon Musk. He thought Musk was a visionary, the real-life Iron Man, and that investing in him would give a good return.
+He was just a normal guy with a normal career. He was not some great investor or engineer. He wasn’t even really into batteries or electric cars. He just believed in Elon Musk. He thought Musk was a visionary, the real-life Iron Man, and that investing in him would give a good return.
 
 <div align="center">
 
@@ -27,7 +27,7 @@ Most modern industries are illegible to outsiders. If you want to understand the
 
 Most people can’t do that. They do not have the time, the access, or the technical knowledge. So instead of trying to understand the whole machine, they judge the person operating inside it.
 
-Besides, there are not many winners in life. A small number of people capture a wildly disproportionate share of the rewards. Many domains are winner-take-all, or close to it. And often the same people keep winning.
+Besides, there are not many winners in life. A small number of people capture a wildly disproportionate share of the rewards. Many domains are winner-take-all, or close to it. And often the same people keep succeeding.
 
 *link to tiktok of Peter Thiel talking about never betting against Elon Musk.*
 
@@ -57,7 +57,7 @@ Attachment rewards people who will deform themselves for proximity. It rewards d
 
 In a normal organization, attachment is one path among others. In politics, it is the main one. No market test can save you. No independent scoreboard can rescue you. Power flows through proximity. So the people who rise fastest are often the ones most willing to suppress their judgment, absorb humiliation, and say or do whatever the patron demands.
 
-And it carries them into jobs they never would have reached on ordinary merit.
+And it carries them into employments they never would have reached on ordinary merit.
 
 Nick Adams is a good example of the type. He made himself into a public Trump loyalist and was nominated to be ambassador to Malaysia.
 
@@ -122,7 +122,7 @@ Older societies too, took this kind of judgment much more seriously than we do t
 
 If you are trying to spot trajectory early, there are usually a few signs you can notice. A man who is going nowhere rarely has enemies. Upward motion creates friction. It irritates rivals.
 
-You can also see it in how he takes a hit. For the rising, a setback is often just part of the climb. He gets hit, but the motion remains.
+You can also see it in how he takes a hit. For the rising, a setback is often just part of the prevailing. He gets hit, but the motion remains.
 
 Rising people also tend to look a little unfinished. Their current life has not fully caught up to their direction. If someone seems perfectly settled he may already have reached his ceiling.
 

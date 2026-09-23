@@ -4,25 +4,29 @@ from ch01_keyword.chapter_desc_main import (
     get_chapter_desc_prefix,
     get_chapter_descs,
 )
-from ch01_keyword.keyword_class_builder import get_chapter_descs
+from ch01_keyword.keyword_class_builder import (
+    get_chapter_descs,
+    get_keywords_src_config,
+    parse_valid_ch_str,
+)
 from ch08_person_logic.person_config import (
     get_all_person_calc_args,
     get_person_config_dict,
 )
 from ch97_docs_builder._ref.ch97_path import (
     create_chapter_ref_path,
-    create_src_keg_definitions_path,
+    create_src_keywords_definitions_path,
 )
 from collections import defaultdict
 from pathlib import Path
 
 
-def get_keg_definitions() -> dict[str, dict]:
-    return open_json(create_src_keg_definitions_path("src"))
+def get_keywords_definitions() -> dict[str, dict]:
+    return open_json(create_src_keywords_definitions_path("src"))
 
 
 def save_keg_descriptions_json(src_dir: str, x_dict: dict[str, dict]):
-    file_path = create_src_keg_definitions_path(src_dir)
+    file_path = create_src_keywords_definitions_path(src_dir)
     save_json(file_path, None, x_dict, keys_case_insensitive=True)
 
 
@@ -34,14 +38,14 @@ def get_person_dimen_config(dimen: str) -> dict:
     return x_config_args
 
 
-def rebuild_keg_definitions_contents():
+def rebuild_keywords_definitions_contents():
     ch_dict = get_chxx_prefix_path_dict()
     person_config_args = get_person_dimen_config("personunit")
     plan_config_args = get_person_dimen_config("person_planunit")
     all_person_calc_args = get_all_person_calc_args()
 
     rebuilt_kw_desc = {}
-    for keyword, description in get_keg_definitions().items():
+    for keyword, description in get_keywords_definitions().items():
         rebuilt_kw_desc[keyword] = description
         if keyword in ch_dict:
             rebuilt_kw_desc[keyword] = get_chxx_ref_blurb(ch_dict, keyword)
@@ -138,10 +142,36 @@ def get_count_keg_terms_by_chapters():
         ch_int = get_ch_int(ch_desc)
         if ch_int != 99:
             ch_dirs[ch_int] = ch_dir
-    keg_terms = set(get_keg_definitions().keys())
+    keg_terms = set(get_keywords_definitions().keys())
     excluded_substrs = {"semantic"}
     count_strs_by_dirs = get_count_strs_by_dirs(ch_dirs, keg_terms, excluded_substrs)
     return {
         keg_term: {ch_int: count for ch_int, count in ch_counts.items() if count != 0}
         for keg_term, ch_counts in count_strs_by_dirs.items()
     }
+
+
+def get_focus_keyword_frequency(focus_keywords: set) -> dict[str, tuple[list, list]]:
+    focus_keyword_frequency = {}
+    # This part finds all keg_terms used only in one chapter and changes
+    # valid_ch from range to single chapter
+    chapter_descs = get_chapter_descs().keys()
+    ch_ints = {get_ch_int(chapter_desc) for chapter_desc in chapter_descs}
+    keywords_src_config = get_keywords_src_config()
+    keg_terms_by_chapters = get_count_keg_terms_by_chapters()
+
+    for keg_term in sorted(keg_terms_by_chapters.keys()):
+        ch_dir_dict = keg_terms_by_chapters.get(keg_term)
+        # if len(ch_dir_dict) == 2:
+        if keyword_config := keywords_src_config.get(keg_term):
+            if len(ch_dir_dict) > 0:
+                lone_ch = list(ch_dir_dict.keys())[0]
+                x_valid_ch = keyword_config.get("valid_ch")
+                valid_chapters = sorted(parse_valid_ch_str(ch_ints, x_valid_ch))
+                if str(lone_ch) != x_valid_ch:
+                    # if len(valid_chapters) - len(ch_dir_dict) > 20:
+                    if keg_term in focus_keywords:
+                        term_current_and_allowed_chs = (ch_dir_dict, valid_chapters)
+                        focus_keyword_frequency[keg_term] = term_current_and_allowed_chs
+                    keyword_config["valid_ch"] = str(lone_ch)
+    return focus_keyword_frequency

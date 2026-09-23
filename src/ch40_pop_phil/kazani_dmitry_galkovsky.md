@@ -38,7 +38,7 @@ Let's consider one of Galkovsky's key concepts: the Cryptocolony. In 1917 Russia
 
 <div align="center"><img src="images/stalin_churchhill_kissing_sword.webp" alt="Stalin kissing sword in front of Churchhill." width="500"></div>
 
-How did it happen? Well, in 1917 the Russian Empire was close to winning the WWI and getting the immense territorial gains. It would fulfil it's ancient dream of capturing the Istanbul, establishing dominance in Balkans and in Slavic Central Europe. The West wouldn't allow that
+How did it happen? Well, in 1917 the Russian Empire was close to victory the WWI and getting the immense territorial gains. It would fulfil it's ancient dream of capturing the Istanbul, establishing dominance in Balkans and in Slavic Central Europe. The West wouldn't allow that
 
 <div align="center"><img src="images/old_photo_crowd_and_mosque.webp" alt="Crowd in front of Mosque. Blue Mosque?" width="500"></div>
 

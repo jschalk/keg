@@ -2,791 +2,813 @@ question
 Have you heard of 'Kegology'?
 Have you heard the word 'Philosophy'?
 Do you believe listening is important?
-Did you read that the keg_definition of 'Alien' is 'A bordering Wheel.'.
-Did you read that the keg_definition of 'Apex' is 'The top of the Pyramid. From the perspective of the FamilyUnits in Power it is the Face of the Pyramid.'.
-Did you read that the keg_definition of 'Axle' is 'The part of the Wheel that load-bears the most. Only Pillars.'.
-Did you read that the keg_definition of 'Booster' is 'A Rider for a good person.'.
-Did you read that the keg_definition of 'Cling' is 'To connote the action a FamilyUnit takes to avoids losing Prestige.'.
-Did you read that the keg_definition of 'Closer' is 'Do not use this term so there is no confusion with 'Loser'.'.
-Did you read that the keg_definition of 'Cow' is 'A FamilyUnit without Prestige. Consider whether it's a useful term.'.
+Did you read that the keyword_definition of 'Alien' is 'A bordering Wheel.'.
+Did you read that the keyword_definition of 'Apex' is 'The top of the Pyramid. From the perspective of the FamilyUnits in Power it is the Face of the Pyramid.'.
+Did you read that the keyword_definition of 'Axle' is 'The part of the Wheel that load-bears the most. Only Pillars.'.
+Did you read that the keyword_definition of 'Booster' is 'A Rider for a good person.'.
+Did you read that the keyword_definition of 'Cling' is 'To connote the action a FamilyUnit takes to avoids losing Prestige.'.
+Did you read that the keyword_definition of 'Closer' is 'Do not use this term so there is no confusion with 'Loser'.'.
+Did you read that the keyword_definition of 'Cow' is 'A FamilyUnit without Prestige. Consider whether it's a useful term.'.
 Have you heard of Excel spreadsheet application?
-Did you read that the keg_definition of 'Drag' is 'Opposite of Lift. When a FamilyUnit shuts off support to bring a FamilyUnit down.'.
-Did you read that the keg_definition of 'Drift' is 'To move from one Moment to another Moment. Giving all concentration to the new moment.'.
-Did you read that the keg_definition of 'Gravity' is 'In Wheel Theory gravity is the natural process of returning FamilyUnits to the Land. Levinas used the term.'.
-Did you read that the keg_definition of 'Hive' is 'A community of FamilyUnits unified by a purpose'.
-Did you read that the keg_definition of 'Hose' is 'Definition needed.'.
-"Did you read that the keg_definition of 'Impression' is 'The motivation of any decisions. Example 'Governed by the impressions of French and English revolutions, they expected to be overthrown by a military putsch.' Can be synchronic or diachronic.'."
-Did you read that the keg_definition of 'Invite' is 'The giving of prestige from a FamilyUnit with it to a FamilyUnit without it.'.
-Did you read that the keg_definition of 'Joachim' is 'Fairly common name. Also name of Init Kegology Philosopher. Lots of different prounoucations possible.'.
-Did you read that the keg_definition of 'Jump' is 'To use keg requires a human to jump and try. Not easy. Not used in codebase.'.
-"Did you read that the keg_definition of 'Knee' is ', used with Budget Cells'."
-Did you read that the keg_definition of 'Ladder' is 'A pillar that bears the load required but also extra so Families can move up. A requirement for an invitation. The FamilyUnit out of power must have one to get prestige.'.
-Did you read that the keg_definition of 'Lift' is 'The act of a FamilyUnit lifting another FamilyUnit above them. Ala 'I believe you'll go far!''.
-Did you read that the keg_definition of 'Linchpin' is 'A required part of a pillar. If a linchpin stops supporting the pillar it is destoryed.'.
-Did you read that the keg_definition of 'Loser' is 'A FamilyUnit getting less Prestige.'.
-Did you read that the keg_definition of 'Oil' is 'Definition needed.'.
-Did you read that the keg_definition of 'Pump' is 'Definition needed.'.
-Did you read that the keg_definition of 'Pyramid' is 'The load bearing support for any FamilyUnit in Power'.
-Did you read that the keg_definition of 'Revenge' is 'Definition needed or maybe not.'.
-"Did you read that the keg_definition of 'Rider' is 'Synonmous with Vassal as a neutral term. Someone who recognizes authority, leadership. 'I ride with that person.''."
-Did you read that the keg_definition of 'Rival' is 'A different FamilyUnit within a Wheel that is in open competition.'.
-Did you read that the keg_definition of 'Scaffold' is 'The only way to get to a wheel if not welcomed.'.
-Did you read that the keg_definition of 'Soldier' is 'As defined by Busta Rhymes in song 'My Shot''.
-Did you read that the keg_definition of 'Stilt' is 'A ladder load-bearing support of a Wheel.'.
-Did you read that the keg_definition of 'Target' is 'A FamilyUnit with prestige.'.
-Did you read that the keg_definition of 'Tower' is 'Definition needed.'.
-Did you read that the keg_definition of 'Trooper' is 'A professional member of the armed services of a Nation-State.'.
-"Did you read that the keg_definition of 'Vertical' is 'The height of a Pillar, Ladder, Stilt, or Scaffold. Is it enough to reach?'."
-Did you read that the keg_definition of 'Winner' is 'A FamilyUnit getting more Prestige.'.
-Did you read that the keg_definition of 'Yard' is 'Definition needed.'.
-Did you read that the keg_definition of 'apex' is 'The top of the Pyramid. From the perspective of the FamilyUnits in Power it is the Face of the Pyramid.'.
-Did you read that the keg_definition of 'axle' is 'The part of the Wheel that load-bears the most. Only Pillars.'.
-Did you read that the keg_definition of 'booster' is 'A Rider for a good person.'.
-Did you read that the keg_definition of 'closer' is 'Do not use this term so there is no confusion with 'loser'.'.
-Did you read that the keg_definition of 'crawl' is 'The opposite of 'swim'. To be slave to one. To live in one moment as it allows.'.
-Did you read that the keg_definition of 'dive' is 'To go from living on land to swimming with fearlessness. Not used in codebase.'.
-Did you read that the keg_definition of 'drift' is 'To move from one Moment to another Moment. Giving all concentration to the new moment.'.
-"Did you read that the keg_definition of 'factory' is 'Not used in codebase. The factory method in programming is very important. However because I want 'fact' only to refer to the Keg concept I don't use the word 'factory', instead I use 'shop'.'."
-Did you read that the keg_definition of 'heart' is 'Not used in codebase.'.
-"Did you read that the keg_definition of 'keg_wheel' is 'A instance of KegWheel, within a single MomentUnit. Not used in codebase.'."
-Did you read that the keg_definition of 'kegbox' is 'Anything that holds Keg worlds. Usually a computer thought it's possible to work with paper.'.
-Did you read that the keg_definition of 'lumen' is 'To be defined later'.
-Did you read that the keg_definition of 'pandas_DataFrame' is 'Not used in codebase. Added as keyword it is confirmed never to appear.'.
-Did you read that the keg_definition of 'pump' is 'Definition needed.'.
-Did you read that the keg_definition of 'pyramid' is 'The load bearing support for any FamilyUnit in Power'.
-"Did you read that the keg_definition of 'rider' is 'Synonmous with Vassal as a neutral term. Someone who recognizes authority, leadership. 'I ride with that person.''."
-Did you read that the keg_definition of 'scaffold' is 'The only way to get to a wheel if not welcomed.'.
-Did you read that the keg_definition of 'stilt' is 'A ladder load-bearing support of a Wheel.'.
-Did you read that the keg_definition of 'swim' is 'To live with faith. To be slave to many masters instead of a slave to one. To live in many moments. Not used in codebase.'.
-Did you read that the keg_definition of 'target' is 'A FamilyUnit with prestige.'.
-"Did you read that the keg_definition of 'vertical' is 'The height of a Pillar, Ladder, Stilt, or Scaffold. Is it enough to reach?'."
-Did you read that the keg_definition of 'yard' is 'Definition needed.'.
-Did you read that the keg_definition of 'ch00' is 'Creates helper tools for OS and python data manipulation.'.
-Did you read that the keg_definition of 'ch01' is 'Create keyword glossary tools for all chapters.'.
-Did you read that the keg_definition of 'ch02' is 'Defines how to allot a pool number to a weighted ledger.'.
-"Did you read that the keg_definition of 'ch03' is 'Defines Contacts, Groups, Memberships, Awardees debt and cred.'."
-"Did you read that the keg_definition of 'ch04' is 'Defines Workforce, LaborUnit. How tasks are assigned to labor.'."
-"Did you read that the keg_definition of 'ch05' is 'Defines Term Classes: Knots, Labels, RopeTerms, FirstLabels'."
-"Did you read that the keg_definition of 'ch06' is 'Defines ReasonUnits, FactUnits, and Facts decide if a Reason is Active'."
-"Did you read that the keg_definition of 'ch07' is 'Defines PlanUnits with sub-plans, Awardees, Workforce, Reasons, Facts, etc.'."
-Did you read that the keg_definition of 'ch08' is 'Defines a PersonUnit as a PlanUnit and ContactUnits capable of producing an agenda.'.
-Did you read that the keg_definition of 'ch09' is 'Defines PersonAtoms: Irreducible units of change for a PersonUnit.'.
-Did you read that the keg_definition of 'ch10' is 'Defines lessons which are collections of PersonAtoms by FaceName'.
-Did you read that the keg_definition of 'ch11' is 'These tools describe how one PersonUnit listens to another.'.
-"Did you read that the keg_definition of 'ch12' is 'Defines PersonBudHistory: PersonName, BudUnits (TimeNum, quota, celldepth)'."
-Did you read that the keg_definition of 'ch13' is 'Builds a simulation that describes how much credit a healer has earned.'.
-Did you read that the keg_definition of 'ch14' is 'Defines how time is handled by PersonUnits. Allows for arbitrary time structures.'.
-"Did you read that the keg_definition of 'ch15' is 'Defines MomentUnits: common time tech, ledger, ContactNames, history of PersonUnits.'."
-Did you read that the keg_definition of 'ch16' is 'Defines NabuUnit tools that interpret numeric values into inside accounting.'.
-Did you read that the keg_definition of 'ch17' is 'Defines TranslateUnit tools that translate MomentUnits into inside language.'.
-Did you read that the keg_definition of 'ch18' is 'Creates helper tools for database admin.'.
-Did you read that the keg_definition of 'ch20' is 'Defines how to build Bricks using Bricks. Moments and Persons are built by Bricks.'.
-Did you read that the keg_definition of 'ch22' is 'Defines the tools that use Bricks to build MomentUnits.'.
-Did you read that the keg_definition of 'ch23' is 'Defines the 'Idea Src' process. Data going to 'Bricks'.'.
-Did you read that the keg_definition of 'ch24' is 'Defines the 'Etl Bricks' process. From 'Source Ideas' to 'Sound'.'.
-Did you read that the keg_definition of 'ch25' is 'Defines the 'Sound' process. From 'Bricks' to 'Heard'.'.
-Did you read that the keg_definition of 'ch26' is 'Defines the 'Heard' process. From 'Sound' to 'lego'.'.
-"Did you read that the keg_definition of 'ch27' is 'Defines the lego stage of data. Source of Job Persons, complete Moment data.'."
-Did you read that the keg_definition of 'ch30' is 'Defines how ideas for outside audiences are created.'.
-Did you read that the keg_definition of 'ch31' is 'Defines the analytics outcomes of completed MomentUnits.'.
-Did you read that the keg_definition of 'ch32' is 'Defines WorldDirs that admin MomentUnits input data and outcomes'.
-"Did you read that the keg_definition of 'ch33' is 'Defines Pitch Tools for gifts, World Scenarios.'."
-Did you read that the keg_definition of 'ch34' is 'Defines Finance Tools for '.
-Did you read that the keg_definition of 'ch35' is 'Tools for Visualizing PersonUnits'.
-Did you read that the keg_definition of 'ch39' is 'Levinas Philosophy'.
-Did you read that the keg_definition of 'ch90' is 'ETL app to create day punches from excel files.'.
-Did you read that the keg_definition of 'ch40' is 'Essays pop_phil'.
-Did you read that the keg_definition of 'ch41' is 'Essays pop_phil'.
-Did you read that the keg_definition of 'ch54' is 'Short stories'.
-Did you read that the keg_definition of 'ch96' is 'Exams that return KPIs of Kegology knowledge.'.
-Did you read that the keg_definition of 'ch97' is 'Defines Tools that create documentation.'.
-Did you read that the keg_definition of 'ch98' is 'Linter for repo.'.
-"Did you read that the keg_definition of 'ch99' is 'Where keg terms will be defined, described, ranked.'."
-Did you read that the keg_definition of 'April' is 'Example key with value 'April' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'August' is 'Example key with value 'August' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'December' is 'Example key with value 'December' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'February' is 'Example key with value 'February' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'Friday' is 'Example key with value 'Friday' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'January' is 'Example key with value 'January' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'July' is 'Example key with value 'July' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'June' is 'Example key with value 'June' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'March' is 'Example key with value 'March' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'May' is 'Example key with value 'May' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'Monday' is 'Example key with value 'Monday' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'November' is 'Example key with value 'November' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'October' is 'Example key with value 'October' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'Saturday' is 'Example key with value 'Saturday' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'September' is 'Example key with value 'September' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'Sunday' is 'Example key with value 'Sunday' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'Thursday' is 'Example key with value 'Thursday' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'Tuesday' is 'Example key with value 'Tuesday' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'Wednesday' is 'Example key with value 'Wednesday' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'a23' is 'Example key with value ';Amy23;' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'a23_dash' is 'Example key with value '-Amy23-' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'a23_slash' is 'Example key with value '/Amy23/' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'assert' is 'Used so often in Python that it cannot be a kegology keyword.'.
-Did you read that the keg_definition of 'blue' is 'Example key with value 'blue' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'bob' is 'Example key with value 'Bob' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'bowl' is 'Example key with value 'bowl' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'break' is 'Used so often in Python that it cannot be a kegology keyword.'.
-Did you read that the keg_definition of 'casa' is 'Example key with value 'casa' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'class' is 'Used so often in Python that it cannot be a kegology keyword.'.
-Did you read that the keg_definition of 'clean' is 'Example key with value 'clean' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'cuisine' is 'Example key with value 'cuisine' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'dash' is 'Example key with value '-' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'dirtyness' is 'Example key with value 'dirtyness' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'ep8' is 'Example key with value ';ep8;' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'global' is 'Used so often in Python that it cannot be a kegology keyword.'.
-Did you read that the keg_definition of 'hn_blu' is 'Example key with value ';herenow_blu;' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'hn_red' is 'Example key with value ';herenow_red;' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'hn_yel' is 'Example key with value ';herenow_yel;' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'import' is 'Used so often in Python that it cannot be a kegology keyword.'.
-Did you read that the keg_definition of 'match' is 'Used so often in Python that it cannot be a kegology keyword.'.
-Did you read that the keg_definition of 'mop' is 'Example key with value 'mop' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'red' is 'Example key with value 'red' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'run' is 'Example key with value ';runners' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'run_dash' is 'Example key with value '-runners' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'scrub' is 'Example key with value 'scrub' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'self' is 'Used so often in Python that it cannot be a kegology keyword.'.
-Did you read that the keg_definition of 'slash' is 'Example key with value '/' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'square' is 'Example key with value 'square' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'sue' is 'Example key with value 'Sue' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'sweep' is 'Example key with value 'sweep' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'wed' is 'Example key with value 'Wed' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'wk' is 'Example key with value 'wk' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'xio' is 'Example key with value 'Xio' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'yao' is 'Example key with value 'Yao' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'yield' is 'Used so often in Python that it cannot be a kegology keyword.'.
-Did you read that the keg_definition of 'zia' is 'Example key with value 'Zia' used for tests throughout codebase.'.
-Did you read that the keg_definition of 'Keyword' is 'Reserved word that is supposed to have one meaning.'.
-Did you read that the keg_definition of 'filename' is 'Should always include extension ala filebasename + '.' + extension'.
-Did you read that the keg_definition of 'glossary' is 'Definition needed.'.
-Did you read that the keg_definition of 'keyword' is 'Reserved word that is supposed to have one meaning.'.
-"Did you read that the keg_definition of 'semantic_type' is 'A datatype that is fundamentally int, str, or float'."
-"Did you read that the keg_definition of 'shop' is 'The factory method in programming is very important. However because I want 'fact' only to refer to the Keg concept I don't use the word 'factory', instead I use 'shop'.'."
-"Did you read that the keg_definition of 'src' is 'Abbrevation for the word 'source', used in different ways. All chapters are in directory named 'src'.'."
-Did you read that the keg_definition of 'question_tier' is 'Every Keyword has an question_tier. The highter the question_tier the more relatively important the keyword.'.
-Did you read that the keg_definition of 'sort_ordinal' is 'Int that represents where the keyword is indexed in the general sorting order.'.
-"Did you read that the keg_definition of 'valid_ch' is 'Describes which chapters a keyword is allowed to be in. Format is '0:' for all chapters, '5:' for all chapters after ch06, '3,7' for only 3 and 7. Empty string for not allowed in any chapter.'."
-Did you read that the keg_definition of 'GrainNum' is 'float first used in ch02. GrainNum represents the smallest fraction allowed'.
-Did you read that the keg_definition of 'PoolNum' is 'float first used in ch02. PoolNum represents any possible subset of the sum of numbers in the pool.'.
-Did you read that the keg_definition of 'WeightNum' is 'float first used in ch02. WeightNum represents the unnormalized value of a ledger key. The sum of all WeightNum values in a ledger is not defined.'.
-Did you read that the keg_definition of 'Boss' is 'definition needed'.
-"Did you read that the keg_definition of 'BossMass' is 'Number that represents how much a Person is expects loyality from a ContactUnit, how much a ContactUnit is expects loyality from a GroupTitle, BossMass inherits from float class float first used in ch03.'."
-Did you read that the keg_definition of 'BreakTerm' is 'str first used in ch03. All str separator classes are BreakTerms. Exists because of the necessity to break experience reality into things so they can be understood.'.
-"Did you read that the keg_definition of 'ContactName' is 'str first used in ch03. Every ContactName object is NameTerm, must follow NameTerm format.'."
-Did you read that the keg_definition of 'FundGrain' is 'float first used in ch03. Smallest Unit of fund_num'.
-Did you read that the keg_definition of 'FundNum' is 'float first used in ch03. FundNum inherits from float class'.
-"Did you read that the keg_definition of 'GroupMark' is 'str first used in ch03. GroupMark(s) exist in TitleTerms to indicate its a group, no GroupMark indicates it is a ContactName.'."
-Did you read that the keg_definition of 'GroupTitle' is 'str first used in ch03. If contains SepartorTerms(s) it represents a group otherwise its a ContactName.'.
-Did you read that the keg_definition of 'HealerName' is 'str first used in ch03. A NameTerm used to identify a Problem's Healer'.
-Did you read that the keg_definition of 'Lord' is 'Definition needed.'.
-Did you read that the keg_definition of 'Loyal' is 'Definition needed.'.
-Did you read that the keg_definition of 'NameTerm' is 'str first used in ch03. All Name string classes should inherit from this class'.
-Did you read that the keg_definition of 'RespectGrain' is 'float first used in ch03. Smallest Unit of score (RespectNum) ala 'the slightest bit of respect!''.
-Did you read that the keg_definition of 'RespectNum' is 'float first used in ch03. RespectNum inherits from float class'.
-Did you read that the keg_definition of 'TitleTerm' is 'str first used in ch03. If a TitleTerm contains SepartorTerms(s) it represents a group otherwise its a single member group of an ContactName.'.
-"Did you read that the keg_definition of 'TrustMass' is 'Number that represents how much a Person is loyal to a ContactUnit, how much a ContactUnit is loyal to a GroupTitle, TrustMass inherits from float class float first used in ch03.'."
-"Did you read that the keg_definition of 'awardee_title' is ', Award seed.'."
-"Did you read that the keg_definition of 'awardunits' is 'Every PlanUnit has AwardUnits that represent who is awarded give_fund and take_fund, Plan seed'."
-"Did you read that the keg_definition of 'contact_cred_mass' is ', Contact seed.'."
-"Did you read that the keg_definition of 'contact_debt_mass' is ', Contact seed.'."
-"Did you read that the keg_definition of 'contact_name' is ', ceckbook arg, Contact seed, Member seed'."
-"Did you read that the keg_definition of 'credor_pool' is ', Contact thinkout, Member thinkout data'."
-"Did you read that the keg_definition of 'debtor_pool' is ', Contact thinkout, Member thinkout data'."
-"Did you read that the keg_definition of 'fund_agenda_give' is ', Contact thinkout, Member thinkout data'."
-"Did you read that the keg_definition of 'fund_agenda_ratio_give' is ', Contact thinkout, Member thinkout data'."
-"Did you read that the keg_definition of 'fund_agenda_ratio_take' is ', Contact thinkout, Member thinkout data'."
-"Did you read that the keg_definition of 'fund_agenda_take' is ', Contact thinkout, Member thinkout data'."
-"Did you read that the keg_definition of 'fund_give' is ', Contact thinkout, Award thinkout, Member thinkout data'."
-"Did you read that the keg_definition of 'fund_grain' is ', Moment arg, Person seed, Plan thinkout.'."
-"Did you read that the keg_definition of 'fund_take' is ', Contact thinkout, Award thinkout, Member thinkout data'."
-"Did you read that the keg_definition of 'give_force' is ', Award seed.'."
-"Did you read that the keg_definition of 'group_cred_mass' is ', Member seed.'."
-"Did you read that the keg_definition of 'group_debt_mass' is ', Member seed.'."
-"Did you read that the keg_definition of 'group_title' is ', Member seed.'."
-"Did you read that the keg_definition of 'groupmark' is ', Contact thinkout, Member thinkout data.'."
-Did you read that the keg_definition of 'groupunits' is 'Definition needed.'.
-"Did you read that the keg_definition of 'inallocable_contact_debt_mass' is ', Contact thinkout'."
-"Did you read that the keg_definition of 'irrational_contact_debt_mass' is ', Contact thinkout'."
-"Did you read that the keg_definition of 'labor_title' is ', Workforce seed.'."
-Did you read that the keg_definition of 'labors' is 'Definition needed.'.
-Did you read that the keg_definition of 'memberships' is 'Definition needed.'.
-"Did you read that the keg_definition of 'rational' is 'If a PersonUnit's agenda is deterministic (always the same after thinkout) then value is True, Person thinkout'."
-"Did you read that the keg_definition of 'respect_grain' is ', Moment arg, Person seed.'."
-"Did you read that the keg_definition of 'solo' is 'I can't figure out what this is for. Where in the codebase is it necessary for a LaborUnit to know if it the only LaborUnit in a WorkforceUnit, Workforce seed.'."
-"Did you read that the keg_definition of 'take_force' is ', Workforce seed, Award seed'."
-Did you read that the keg_definition of 'thinkout' is 'The process by which a PersonUnit creates all it's output metrics from file-stored data. Meant to invoke contemplation and computation. The PersonUnit contemplates what is important to them (their plans) and decides what they want to do. They compute their rules and create their agenda. If the PersonUnit plans are trusted with a currency quota they can be used as an Budget. Each Contact is assigned a FundNum. It may be negative.'.
-Did you read that the keg_definition of 'workforceheir' is 'Definition needed.'.
-Did you read that the keg_definition of 'workforceunit' is 'Definition needed.'.
-Did you read that the keg_definition of 'LaborHeir' is 'Definition needed.'.
-Did you read that the keg_definition of 'laborheir' is 'Definition needed.'.
-Did you read that the keg_definition of 'parent_solo' is 'The parent PlanUnit's LaborUnit's solo value for that labor_title'.
-Did you read that the keg_definition of 'person' is 'Definition needed.'.
-"Did you read that the keg_definition of 'person_name' is ', ceckbook arg, bud arg, Person seed, Plan seed, Reason seed, Case seed, Fact seed, Award seed, Workforce seed, Healer seed, Contact seed, Member seed.'."
-"Did you read that the keg_definition of 'person_name_is_workforce' is ', Workforce thinkout'."
-Did you read that the keg_definition of 'FactNum' is 'float first used in ch05. A numeric value that may converted to other Semantic Types by an external process driven by context.'.
-Did you read that the keg_definition of 'FirstLabel' is 'str first used in ch05. The first LabelTerm in a RopeTerm. FirstLabel cannot contain knot. Not called RootLabel to avoid confission.'.
-Did you read that the keg_definition of 'KnotTerm' is 'str first used in ch05. A string to used as a delimiter in RopeTerms.'.
-Did you read that the keg_definition of 'LabelTerm' is 'str first used in ch05. A string representation of a tree node. Nodes cannot contain RopeTerm knot'.
-Did you read that the keg_definition of 'ManaGrain' is 'float first used in ch05. Smallest Unit of Mana.'.
-Did you read that the keg_definition of 'ReasonNum' is 'float first used in ch05. A numeric value that may converted to other Semantic Types by an external process driven by context.'.
-Did you read that the keg_definition of 'RopeTerm' is 'str first used in ch05. A string representation of a tree path. LabelTerms are seperated by knots.'.
-Did you read that the keg_definition of 'fact' is 'Facts are very important concept in Kegology. I tried never to use these 4 letters anywhere that didn't refer exactly to that concept.'.
-"Did you read that the keg_definition of 'knot' is ', Moment arg, Person seed, Plan seed, Reason seed, Case seed, Fact seed, Award seed, Workforce seed, Healer seed'."
-"Did you read that the keg_definition of 'mana_grain' is ', Moment arg, used with Budget Cells, Person seed.'."
-Did you read that the keg_definition of 'meaning' is 'A term specifically used to describe how defining Ropes creates meaning. Ropes with the same start and end points can have different meaning based on the Labels in between. Only referenced in ch05'.
-Did you read that the keg_definition of 'parent_rope' is 'A parent_rope of rope is created by removing the last label. For PlanUnits the parent_rope is the key for their parent PlanUnit.'.
-"Did you read that the keg_definition of 'active_requisite' is 'Represents the expected boolean of the PlanUnit with address reason_context. If None, no check. If False expected Active bool of reason_context PlanUnit is false. If True expected contest_plan.active is True, Reason seed'."
-"Did you read that the keg_definition of 'case_active' is ', Case thinkout'."
-"Did you read that the keg_definition of 'case_task' is ', Case thinkout'."
-Did you read that the keg_definition of 'cases' is 'Definition needed.'.
-"Did you read that the keg_definition of 'fact_context' is 'All facts have a foundational context, Fact seed.'."
-"Did you read that the keg_definition of 'fact_lower' is ', Fact seed, Nabuable arg.'."
-"Did you read that the keg_definition of 'fact_state' is 'A fact can have a state different from its context, a different branch of the context where all other branches are not in fact, Fact seed.'."
-"Did you read that the keg_definition of 'fact_upper' is ', Fact seed, Nabuable arg.'."
-Did you read that the keg_definition of 'factheirs' is 'Definition needed.'.
-Did you read that the keg_definition of 'factunits' is 'PlanUnit holds all it's factunits in an attribute called factunits.'.
-"Did you read that the keg_definition of 'parent_heir_active' is ', Reason thinkout'."
-"Did you read that the keg_definition of 'reason_active' is ', Reason thinkout'."
-"Did you read that the keg_definition of 'reason_context' is ', Reason seed, Case seed'."
-"Did you read that the keg_definition of 'reason_divisor' is ', Case seed.'."
-"Did you read that the keg_definition of 'reason_lower' is ', Case seed, Nabuable arg.'."
-"Did you read that the keg_definition of 'reason_state' is ', Case seed.'."
-"Did you read that the keg_definition of 'reason_task' is ', Reason thinkout'."
-"Did you read that the keg_definition of 'reason_upper' is ', Case seed, Nabuable arg.'."
-Did you read that the keg_definition of 'reasonunits' is 'Definition needed.'.
-"Did you read that the keg_definition of 'addin' is 'float that describes addition to parent range calculations, Plan seed'."
-"Did you read that the keg_definition of 'all_contact_cred' is ', Plan thinkout'."
-"Did you read that the keg_definition of 'all_contact_debt' is ', Plan thinkout'."
-"Did you read that the keg_definition of 'awardheirs' is 'Every PlanUnit has AwardHeirs that represent who is awarded give_fund and take_fund. AwardHeirs have every AwardUnit group_title for every PlanUnit Ancestor back to root, Plan thinkout'."
-"Did you read that the keg_definition of 'awardlines' is 'Every PlanUnit has AwardLines that represent who is awarded give_fund and take_fund. AwardLines have every AwardUnit group_title for every PlanUnit Descedant starting at the childless PlanUnit, Plan thinkout'."
-"Did you read that the keg_definition of 'begin' is 'float that describes the begin of a numerical range if it exists, Plan seed'."
-"Did you read that the keg_definition of 'close' is 'float that describes the close of a numerical range if it exists, Plan seed'."
-"Did you read that the keg_definition of 'denom' is 'int that describes denominator to parent range calculations, Plan seed'."
-"Did you read that the keg_definition of 'descendant_pledge_count' is ', Plan thinkout'."
-"Did you read that the keg_definition of 'fund_cease' is 'FundNum number at which funding ceases inside master funding range, Plan thinkout'."
-"Did you read that the keg_definition of 'fund_onset' is 'FundNum number at which funding onsets inside master funding range, Plan thinkout'."
-"Did you read that the keg_definition of 'fund_pool' is ', Person seed.'."
-"Did you read that the keg_definition of 'fund_ratio' is ', Plan thinkout'."
-"Did you read that the keg_definition of 'gogo_calc' is ', Plan thinkout'."
-"Did you read that the keg_definition of 'gogo_want' is ', Plan seed'."
-"Did you read that the keg_definition of 'healer_name' is ', Healer seed.'."
-Did you read that the keg_definition of 'healerunit' is 'Definition needed.'.
-"Did you read that the keg_definition of 'healerunit_ratio' is ', Plan thinkout'."
-Did you read that the keg_definition of 'is_expanded' is 'If A '.
-Did you read that the keg_definition of 'kids' is 'Definition needed.'.
-"Did you read that the keg_definition of 'morph' is 'bool that describes how to change parent range in calculations, Plan seed'."
-"Did you read that the keg_definition of 'numor' is 'int that describes numerator to parent range calculations, Plan seed'."
-Did you read that the keg_definition of 'plan' is 'Definition needed.'.
-"Did you read that the keg_definition of 'plan_active' is ', Plan thinkout'."
-Did you read that the keg_definition of 'plan_active_hx' is 'Definition needed.'.
-Did you read that the keg_definition of 'plan_fund_total' is 'Definition needed.'.
-Did you read that the keg_definition of 'plan_label' is 'Every planunit has a plan_label. Every other sibling planunit must have a different plan label.'.
-"Did you read that the keg_definition of 'plan_rope' is ', Plan seed, Reason seed, Case seed, Fact seed, Award seed, Workforce seed, Healer seed.'."
-"Did you read that the keg_definition of 'plan_task' is 'A plan_task planUnit can change a FactUnit and change Active Plan without plan_task, Plan thinkout'."
-Did you read that the keg_definition of 'plan_uid' is 'A uniqueidentifier for a planunit. Currently at the person level. Perhaps at a global level in the future.'.
-"Did you read that the keg_definition of 'pledge' is ', Plan seed'."
-"Did you read that the keg_definition of 'poynt' is ', Plan seed'."
-"Did you read that the keg_definition of 'problem_bool' is ', Plan seed'."
-"Did you read that the keg_definition of 'range_evaluated' is ', Plan thinkout'."
-"Did you read that the keg_definition of 'range_inheritors' is '# range_inheritors key: plan_rope for any Plan that inherits from a range_plan
+Did you read that the keyword_definition of 'Drag' is 'Opposite of Lift. When a FamilyUnit shuts off support to bring a FamilyUnit down.'.
+Did you read that the keyword_definition of 'Drift' is 'To move from one Moment to another Moment. Giving all concentration to the new moment.'.
+"Did you read that the keyword_definition of 'Duck' is 'Definition needed. Maybe someone who can dive, swim, walk, knee, and fly. All the things.'."
+Did you read that the keyword_definition of 'Gravity' is 'In Wheel Theory gravity is the natural process of returning FamilyUnits to the Land. Levinas used the term.'.
+Did you read that the keyword_definition of 'Hive' is 'A community of FamilyUnits unified by a purpose'.
+Did you read that the keyword_definition of 'Hose' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'Impression' is 'The motivation of any decisions. Example 'Governed by the impressions of French and English revolutions, they expected to be overthrown by a military putsch.' Can be synchronic or diachronic.'."
+Did you read that the keyword_definition of 'Invite' is 'The giving of prestige from a FamilyUnit with it to a FamilyUnit without it.'.
+Did you read that the keyword_definition of 'Joachim' is 'Fairly common name. Also name of Init Kegology Philosopher. Lots of different prounoucations possible.'.
+Did you read that the keyword_definition of 'Juggle' is 'To change moments from one Palm to another.'.
+Did you read that the keyword_definition of 'Juggling' is 'To change moments from one Palm to another.'.
+Did you read that the keyword_definition of 'Jump' is 'To use keg requires a human to jump and try. Not easy. Not used in codebase.'.
+"Did you read that the keyword_definition of 'Knee' is ', used with Budget Cells'."
+Did you read that the keyword_definition of 'Ladder' is 'A pillar that bears the load required but also extra so Families can move up. A requirement for an invitation. The FamilyUnit out of power must have one to get prestige.'.
+Did you read that the keyword_definition of 'Lift' is 'The act of a FamilyUnit lifting another FamilyUnit above them. Ala 'I believe you'll go far!''.
+Did you read that the keyword_definition of 'Linchpin' is 'A required part of a pillar. If a linchpin stops supporting the pillar it is destoryed.'.
+Did you read that the keyword_definition of 'Loser' is 'A FamilyUnit getting less Prestige.'.
+Did you read that the keyword_definition of 'Oil' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'Palm' is 'A way of holding Moment in your mind. If you can only see the world one way, one palm. If you have see the world 5 ways, 5 palms.'."
+Did you read that the keyword_definition of 'Pump' is 'Definition needed.'.
+Did you read that the keyword_definition of 'Pyramid' is 'The load bearing support for any FamilyUnit in Power'.
+Did you read that the keyword_definition of 'Revenge' is 'Definition needed or maybe not.'.
+"Did you read that the keyword_definition of 'Rider' is 'Synonmous with Vassal as a neutral term. Someone who recognizes authority, leadership. 'I ride with that person.''."
+Did you read that the keyword_definition of 'Rival' is 'A different FamilyUnit within a Wheel that is in open competition.'.
+Did you read that the keyword_definition of 'Scaffold' is 'The only way to get to a wheel if not welcomed.'.
+Did you read that the keyword_definition of 'Soldier' is 'As defined by Busta Rhymes in song 'My Shot''.
+Did you read that the keyword_definition of 'Stilt' is 'A ladder load-bearing support of a Wheel.'.
+Did you read that the keyword_definition of 'Target' is 'A FamilyUnit with prestige.'.
+Did you read that the keyword_definition of 'Tower' is 'Definition needed.'.
+Did you read that the keyword_definition of 'Trek' is 'To juggle from one Palm to a new Palm.'.
+Did you read that the keyword_definition of 'Trooper' is 'A professional member of the armed services of a Nation-State.'.
+"Did you read that the keyword_definition of 'Tsar' is 'I don't like this word, just use the word 'King'.'."
+"Did you read that the keyword_definition of 'Vertical' is 'The height of a Pillar, Ladder, Stilt, or Scaffold. Is it enough to reach?'."
+Did you read that the keyword_definition of 'Winner' is 'A FamilyUnit getting more Prestige.'.
+Did you read that the keyword_definition of 'Yard' is 'Definition needed.'.
+Did you read that the keyword_definition of 'apex' is 'The top of the Pyramid. From the perspective of the FamilyUnits in Power it is the Face of the Pyramid.'.
+Did you read that the keyword_definition of 'axle' is 'The part of the Wheel that load-bears the most. Only Pillars.'.
+Did you read that the keyword_definition of 'booster' is 'A Rider for a good person.'.
+Did you read that the keyword_definition of 'closer' is 'Do not use this term so there is no confusion with 'loser'.'.
+Did you read that the keyword_definition of 'crawl' is 'The opposite of 'swim'. To be slave to one. To live in one moment as it allows.'.
+Did you read that the keyword_definition of 'dive' is 'To go from living on land to swimming with fearlessness. Not used in codebase.'.
+Did you read that the keyword_definition of 'drift' is 'To move from one Moment to another Moment. Giving all concentration to the new moment.'.
+"Did you read that the keyword_definition of 'factory' is 'Not used in codebase. The factory method in programming is very important. However because I want 'fact' only to refer to the Keg concept I don't use the word 'factory', instead I use 'shop'.'."
+Did you read that the keyword_definition of 'heart' is 'Not used in codebase.'.
+Did you read that the keyword_definition of 'juggle' is 'To change moments from one Palm to another.'.
+Did you read that the keyword_definition of 'juggling' is 'To change moments from one Palm to another.'.
+"Did you read that the keyword_definition of 'keg_wheel' is 'A instance of KegWheel, within a single MomentUnit. Not used in codebase.'."
+Did you read that the keyword_definition of 'kegbox' is 'Anything that holds Keg worlds. Usually a computer thought it's possible to work with paper.'.
+Did you read that the keyword_definition of 'lumen' is 'To be defined later'.
+"Did you read that the keyword_definition of 'palm' is 'A way of holding Moment in your mind. If you can only see the world one way, one palm. If you have see the world 5 ways, 5 palms.'."
+Did you read that the keyword_definition of 'pandas_DataFrame' is 'Not used in codebase. Added as keyword it is confirmed never to appear.'.
+Did you read that the keyword_definition of 'pump' is 'Definition needed.'.
+Did you read that the keyword_definition of 'purpil' is 'Fable term: the medium where moments are shared'.
+Did you read that the keyword_definition of 'pyramid' is 'The load bearing support for any FamilyUnit in Power'.
+"Did you read that the keyword_definition of 'rider' is 'Synonmous with Vassal as a neutral term. Someone who recognizes authority, leadership. 'I ride with that person.''."
+Did you read that the keyword_definition of 'scaffold' is 'The only way to get to a wheel if not welcomed.'.
+Did you read that the keyword_definition of 'stilt' is 'A ladder load-bearing support of a Wheel.'.
+Did you read that the keyword_definition of 'swim' is 'To live with faith. To be slave to many masters instead of a slave to one. To live in many moments. Not used in codebase.'.
+Did you read that the keyword_definition of 'target' is 'A FamilyUnit with prestige.'.
+Did you read that the keyword_definition of 'trek' is 'To juggle from one Palm to a new Palm.'.
+"Did you read that the keyword_definition of 'tsar' is 'I don't like this word, just use the word 'king'.'."
+"Did you read that the keyword_definition of 'vertical' is 'The height of a Pillar, Ladder, Stilt, or Scaffold. Is it enough to reach?'."
+Did you read that the keyword_definition of 'yard' is 'Definition needed.'.
+Did you read that the keyword_definition of 'ch00' is 'Creates helper tools for OS and python data manipulation.'.
+Did you read that the keyword_definition of 'ch01' is 'Create keyword glossary tools for all chapters.'.
+Did you read that the keyword_definition of 'ch02' is 'Defines how to allot a pool number to a weighted ledger.'.
+"Did you read that the keyword_definition of 'ch03' is 'Defines Contacts, Groups, Memberships, Awardees debt and cred.'."
+"Did you read that the keyword_definition of 'ch04' is 'Defines Workforce, LaborUnit. How tasks are assigned to labor.'."
+"Did you read that the keyword_definition of 'ch05' is 'Defines Term Classes: Knots, Labels, RopeTerms, FirstLabels'."
+"Did you read that the keyword_definition of 'ch06' is 'Defines ReasonUnits, FactUnits, and Facts decide if a Reason is Active'."
+"Did you read that the keyword_definition of 'ch07' is 'Defines PlanUnits with sub-plans, Awardees, Workforce, Reasons, Facts, etc.'."
+Did you read that the keyword_definition of 'ch08' is 'Defines a PersonUnit as a PlanUnit and ContactUnits capable of producing an agenda.'.
+Did you read that the keyword_definition of 'ch09' is 'Defines PersonAtoms: Irreducible units of change for a PersonUnit.'.
+Did you read that the keyword_definition of 'ch10' is 'Defines lessons which are collections of PersonAtoms by FaceName'.
+Did you read that the keyword_definition of 'ch11' is 'These tools describe how one PersonUnit listens to another.'.
+"Did you read that the keyword_definition of 'ch12' is 'Defines PersonBudHistory: PersonName, BudUnits (TimeNum, quota, celldepth)'."
+Did you read that the keyword_definition of 'ch13' is 'Builds a simulation that describes how much credit a healer has earned.'.
+Did you read that the keyword_definition of 'ch14' is 'Defines how time is handled by PersonUnits. Allows for arbitrary time structures.'.
+"Did you read that the keyword_definition of 'ch15' is 'Defines MomentUnits: common time tech, ledger, ContactNames, history of PersonUnits.'."
+Did you read that the keyword_definition of 'ch16' is 'Defines NabuUnit tools that interpret numeric values into inside accounting.'.
+Did you read that the keyword_definition of 'ch17' is 'Defines TranslateUnit tools that translate MomentUnits into inside language.'.
+Did you read that the keyword_definition of 'ch18' is 'Creates helper tools for database admin.'.
+Did you read that the keyword_definition of 'ch20' is 'Defines how to build Bricks using Bricks. Moments and Persons are built by Bricks.'.
+Did you read that the keyword_definition of 'ch22' is 'Defines the tools that use Bricks to build MomentUnits.'.
+Did you read that the keyword_definition of 'ch23' is 'Defines the 'Idea Src' process. Data going to 'Bricks'.'.
+Did you read that the keyword_definition of 'ch24' is 'Defines the 'Etl Bricks' process. From 'Source Ideas' to 'Sound'.'.
+Did you read that the keyword_definition of 'ch25' is 'Defines the 'Sound' process. From 'Bricks' to 'Heard'.'.
+Did you read that the keyword_definition of 'ch26' is 'Defines the 'Heard' process. From 'Sound' to 'lego'.'.
+"Did you read that the keyword_definition of 'ch27' is 'Defines the lego stage of data. Source of Job Persons, complete Moment data.'."
+Did you read that the keyword_definition of 'ch30' is 'Defines how ideas for outside audiences are created.'.
+Did you read that the keyword_definition of 'ch31' is 'Defines the analytics outcomes of completed MomentUnits.'.
+Did you read that the keyword_definition of 'ch32' is 'Defines WorldDirs that admin MomentUnits input data and outcomes'.
+"Did you read that the keyword_definition of 'ch33' is 'Defines Pitch Tools for gifts, World Scenarios.'."
+Did you read that the keyword_definition of 'ch34' is 'Defines Finance Tools for '.
+Did you read that the keyword_definition of 'ch35' is 'Tools for Visualizing PersonUnits'.
+Did you read that the keyword_definition of 'ch36' is 'Defines News Tools'.
+Did you read that the keyword_definition of 'ch90' is 'ETL app to create day punches from excel files.'.
+Did you read that the keyword_definition of 'ch39' is 'Levinas Philosophy'.
+Did you read that the keyword_definition of 'ch40' is 'Essays pop_phil'.
+Did you read that the keyword_definition of 'ch41' is 'Essays pop_phil'.
+Did you read that the keyword_definition of 'ch54' is 'Short stories'.
+Did you read that the keyword_definition of 'ch96' is 'Exams that return KPIs of Kegology knowledge.'.
+Did you read that the keyword_definition of 'ch97' is 'Defines Tools that create documentation.'.
+Did you read that the keyword_definition of 'ch98' is 'Linter for repo.'.
+"Did you read that the keyword_definition of 'ch99' is 'Where keg terms will be defined, described, ranked.'."
+Did you read that the keyword_definition of 'April' is 'Example key with value 'April' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'August' is 'Example key with value 'August' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'December' is 'Example key with value 'December' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'February' is 'Example key with value 'February' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'Friday' is 'Example key with value 'Friday' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'January' is 'Example key with value 'January' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'July' is 'Example key with value 'July' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'June' is 'Example key with value 'June' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'March' is 'Example key with value 'March' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'May' is 'Example key with value 'May' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'Monday' is 'Example key with value 'Monday' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'November' is 'Example key with value 'November' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'October' is 'Example key with value 'October' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'Saturday' is 'Example key with value 'Saturday' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'September' is 'Example key with value 'September' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'Sunday' is 'Example key with value 'Sunday' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'Thursday' is 'Example key with value 'Thursday' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'Tuesday' is 'Example key with value 'Tuesday' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'Wednesday' is 'Example key with value 'Wednesday' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'a23' is 'Example key with value ';Amy23;' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'a23_dash' is 'Example key with value '-Amy23-' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'a23_slash' is 'Example key with value '/Amy23/' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'assert' is 'Used so often in Python that it cannot be a kegology keyword.'.
+Did you read that the keyword_definition of 'blue' is 'Example key with value 'blue' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'bob' is 'Example key with value 'Bob' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'bowl' is 'Example key with value 'bowl' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'break' is 'Used so often in Python that it cannot be a kegology keyword.'.
+Did you read that the keyword_definition of 'casa' is 'Example key with value 'casa' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'class' is 'Used so often in Python that it cannot be a kegology keyword.'.
+Did you read that the keyword_definition of 'clean' is 'Example key with value 'clean' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'cuisine' is 'Example key with value 'cuisine' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'dash' is 'Example key with value '-' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'dirtyness' is 'Example key with value 'dirtyness' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'ep8' is 'Example key with value ';ep8;' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'global' is 'Used so often in Python that it cannot be a kegology keyword.'.
+Did you read that the keyword_definition of 'hn_blu' is 'Example key with value ';herenow_blu;' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'hn_red' is 'Example key with value ';herenow_red;' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'hn_yel' is 'Example key with value ';herenow_yel;' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'import' is 'Used so often in Python that it cannot be a kegology keyword.'.
+Did you read that the keyword_definition of 'match' is 'Used so often in Python that it cannot be a kegology keyword.'.
+Did you read that the keyword_definition of 'mop' is 'Example key with value 'mop' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'red' is 'Example key with value 'red' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'run' is 'Example key with value ';runners' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'run_dash' is 'Example key with value '-runners' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'scrub' is 'Example key with value 'scrub' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'self' is 'Used so often in Python that it cannot be a kegology keyword.'.
+Did you read that the keyword_definition of 'slash' is 'Example key with value '/' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'square' is 'Example key with value 'square' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'sue' is 'Example key with value 'Sue' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'sweep' is 'Example key with value 'sweep' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'wed' is 'Example key with value 'Wed' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'wk' is 'Example key with value 'wk' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'xio' is 'Example key with value 'Xio' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'yao' is 'Example key with value 'Yao' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'yield' is 'Used so often in Python that it cannot be a kegology keyword.'.
+Did you read that the keyword_definition of 'zia' is 'Example key with value 'Zia' used for tests throughout codebase.'.
+Did you read that the keyword_definition of 'Keyword' is 'Reserved word that is supposed to have one meaning.'.
+Did you read that the keyword_definition of 'filename' is 'Should always include extension ala filebasename + '.' + extension'.
+Did you read that the keyword_definition of 'glossary' is 'Definition needed.'.
+Did you read that the keyword_definition of 'keyword' is 'Reserved word that is supposed to have one meaning.'.
+"Did you read that the keyword_definition of 'semantic_type' is 'A datatype that is fundamentally int, str, or float'."
+"Did you read that the keyword_definition of 'shop' is 'The factory method in programming is very important. However because I want 'fact' only to refer to the Keg concept I don't use the word 'factory', instead I use 'shop'.'."
+"Did you read that the keyword_definition of 'src' is 'Abbrevation for the word 'source', used in different ways. All chapters are in directory named 'src'.'."
+Did you read that the keyword_definition of 'question_tier' is 'Every Keyword has an question_tier. The highter the question_tier the more relatively important the keyword.'.
+Did you read that the keyword_definition of 'sort_ordinal' is 'Int that represents where the keyword is indexed in the general sorting order.'.
+"Did you read that the keyword_definition of 'valid_ch' is 'Describes which chapters a keyword is allowed to be in. Format is '0:' for all chapters, '5:' for all chapters after ch06, '3,7' for only 3 and 7. Empty string for not allowed in any chapter.'."
+Did you read that the keyword_definition of 'GrainNum' is 'float first used in ch02. GrainNum represents the smallest fraction allowed'.
+Did you read that the keyword_definition of 'PoolNum' is 'float first used in ch02. PoolNum represents any possible subset of the sum of numbers in the pool.'.
+Did you read that the keyword_definition of 'WeightNum' is 'float first used in ch02. WeightNum represents the unnormalized value of a ledger key. The sum of all WeightNum values in a ledger is not defined.'.
+Did you read that the keyword_definition of 'Boss' is 'definition needed'.
+"Did you read that the keyword_definition of 'BossMass' is 'Number that represents how much a Person is expects loyality from a ContactUnit, how much a ContactUnit is expects loyality from a GroupTitle, BossMass inherits from float class float first used in ch03.'."
+Did you read that the keyword_definition of 'BreakTerm' is 'str first used in ch03. All str separator classes are BreakTerms. Exists because of the necessity to break experience reality into things so they can be understood.'.
+"Did you read that the keyword_definition of 'ContactName' is 'str first used in ch03. Every ContactName object is NameTerm, must follow NameTerm format.'."
+Did you read that the keyword_definition of 'FundGrain' is 'float first used in ch03. Smallest Unit of fund_num'.
+Did you read that the keyword_definition of 'FundNum' is 'float first used in ch03. FundNum inherits from float class'.
+"Did you read that the keyword_definition of 'GroupMark' is 'str first used in ch03. GroupMark(s) exist in TitleTerms to indicate its a group, no GroupMark indicates it is a ContactName.'."
+Did you read that the keyword_definition of 'GroupTitle' is 'str first used in ch03. If contains SepartorTerms(s) it represents a group otherwise its a ContactName.'.
+Did you read that the keyword_definition of 'HealerName' is 'str first used in ch03. A NameTerm used to identify a Problem's Healer'.
+Did you read that the keyword_definition of 'Lord' is 'Definition needed.'.
+Did you read that the keyword_definition of 'Loyal' is 'Definition needed.'.
+Did you read that the keyword_definition of 'NameTerm' is 'str first used in ch03. All Name string classes should inherit from this class'.
+Did you read that the keyword_definition of 'RespectGrain' is 'float first used in ch03. Smallest Unit of score (RespectNum) ala 'the slightest bit of respect!''.
+Did you read that the keyword_definition of 'RespectNum' is 'float first used in ch03. RespectNum inherits from float class'.
+Did you read that the keyword_definition of 'TitleTerm' is 'str first used in ch03. If a TitleTerm contains SepartorTerms(s) it represents a group otherwise its a single member group of an ContactName.'.
+"Did you read that the keyword_definition of 'TrustMass' is 'Number that represents how much a Person is loyal to a ContactUnit, how much a ContactUnit is loyal to a GroupTitle, TrustMass inherits from float class float first used in ch03.'."
+"Did you read that the keyword_definition of 'awardee_title' is ', Award seed.'."
+"Did you read that the keyword_definition of 'awardunits' is 'Every PlanUnit has AwardUnits that represent who is awarded give_fund and take_fund, Plan seed'."
+"Did you read that the keyword_definition of 'contact_cred_mass' is ', Contact seed.'."
+"Did you read that the keyword_definition of 'contact_debt_mass' is ', Contact seed.'."
+"Did you read that the keyword_definition of 'contact_name' is ', ceckbook arg, Contact seed, Member seed'."
+"Did you read that the keyword_definition of 'credor_pool' is ', Contact thinkout, Member thinkout data'."
+"Did you read that the keyword_definition of 'debtor_pool' is ', Contact thinkout, Member thinkout data'."
+"Did you read that the keyword_definition of 'fund_agenda_give' is ', Contact thinkout, Member thinkout data'."
+"Did you read that the keyword_definition of 'fund_agenda_ratio_give' is ', Contact thinkout, Member thinkout data'."
+"Did you read that the keyword_definition of 'fund_agenda_ratio_take' is ', Contact thinkout, Member thinkout data'."
+"Did you read that the keyword_definition of 'fund_agenda_take' is ', Contact thinkout, Member thinkout data'."
+"Did you read that the keyword_definition of 'fund_give' is ', Contact thinkout, Award thinkout, Member thinkout data'."
+"Did you read that the keyword_definition of 'fund_grain' is ', Moment arg, Person seed, Plan thinkout.'."
+"Did you read that the keyword_definition of 'fund_take' is ', Contact thinkout, Award thinkout, Member thinkout data'."
+"Did you read that the keyword_definition of 'give_force' is ', Award seed.'."
+"Did you read that the keyword_definition of 'group_cred_mass' is ', Member seed.'."
+"Did you read that the keyword_definition of 'group_debt_mass' is ', Member seed.'."
+"Did you read that the keyword_definition of 'group_title' is ', Member seed.'."
+"Did you read that the keyword_definition of 'groupmark' is ', Contact thinkout, Member thinkout data.'."
+Did you read that the keyword_definition of 'groupunits' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'inallocable_contact_debt_mass' is ', Contact thinkout'."
+"Did you read that the keyword_definition of 'irrational_contact_debt_mass' is ', Contact thinkout'."
+"Did you read that the keyword_definition of 'labor_title' is ', Workforce seed.'."
+Did you read that the keyword_definition of 'labors' is 'Definition needed.'.
+Did you read that the keyword_definition of 'memberships' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'rational' is 'If a PersonUnit's agenda is deterministic (always the same after thinkout) then value is True, Person thinkout'."
+"Did you read that the keyword_definition of 'respect_grain' is ', Moment arg, Person seed.'."
+"Did you read that the keyword_definition of 'solo' is 'I can't figure out what this is for. Where in the codebase is it necessary for a LaborUnit to know if it the only LaborUnit in a WorkforceUnit, Workforce seed.'."
+"Did you read that the keyword_definition of 'take_force' is ', Workforce seed, Award seed'."
+Did you read that the keyword_definition of 'thinkout' is 'The process by which a PersonUnit creates all it's output metrics from file-stored data. Meant to invoke contemplation and computation. The PersonUnit contemplates what is important to them (their plans) and decides what they want to do. They compute their rules and create their agenda. If the PersonUnit plans are trusted with a currency quota they can be used as an Budget. Each Contact is assigned a FundNum. It may be negative.'.
+Did you read that the keyword_definition of 'LaborHeir' is 'Definition needed.'.
+Did you read that the keyword_definition of 'laborheir' is 'Definition needed.'.
+Did you read that the keyword_definition of 'parent_solo' is 'The parent PlanUnit's LaborUnit's solo value for that labor_title'.
+Did you read that the keyword_definition of 'person' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'person_name' is ', ceckbook arg, bud arg, Person seed, Plan seed, Reason seed, Case seed, Fact seed, Award seed, Workforce seed, Healer seed, Contact seed, Member seed.'."
+"Did you read that the keyword_definition of 'person_name_is_workforce' is ', Workforce thinkout'."
+Did you read that the keyword_definition of 'workforceheir' is 'Definition needed.'.
+Did you read that the keyword_definition of 'workforceunit' is 'Definition needed.'.
+Did you read that the keyword_definition of 'FactNum' is 'float first used in ch05. A numeric value that may converted to other Semantic Types by an external process driven by context.'.
+Did you read that the keyword_definition of 'FirstLabel' is 'str first used in ch05. The first LabelTerm in a RopeTerm. FirstLabel cannot contain knot. Not called RootLabel to avoid confission.'.
+Did you read that the keyword_definition of 'KnotTerm' is 'str first used in ch05. A string to used as a delimiter in RopeTerms.'.
+Did you read that the keyword_definition of 'LabelTerm' is 'str first used in ch05. A string representation of a tree node. Nodes cannot contain RopeTerm knot'.
+Did you read that the keyword_definition of 'ManaGrain' is 'float first used in ch05. Smallest Unit of Mana.'.
+Did you read that the keyword_definition of 'ReasonNum' is 'float first used in ch05. A numeric value that may converted to other Semantic Types by an external process driven by context.'.
+Did you read that the keyword_definition of 'RopeTerm' is 'str first used in ch05. A string representation of a tree path. LabelTerms are seperated by knots.'.
+Did you read that the keyword_definition of 'fact' is 'Facts are very important concept in Kegology. I tried never to use these 4 letters anywhere that didn't refer exactly to that concept.'.
+"Did you read that the keyword_definition of 'knot' is ', Moment arg, Person seed, Plan seed, Reason seed, Case seed, Fact seed, Award seed, Workforce seed, Healer seed'."
+"Did you read that the keyword_definition of 'mana_grain' is ', Moment arg, used with Budget Cells, Person seed.'."
+Did you read that the keyword_definition of 'meaning' is 'A term specifically used to describe how defining Ropes creates meaning. Ropes with the same start and end points can have different meaning based on the Labels in between. Only referenced in ch05'.
+Did you read that the keyword_definition of 'parent_rope' is 'A parent_rope of rope is created by removing the last label. For PlanUnits the parent_rope is the key for their parent PlanUnit.'.
+"Did you read that the keyword_definition of 'active_requisite' is 'Represents the expected boolean of the PlanUnit with address reason_context. If None, no check. If False expected Active bool of reason_context PlanUnit is false. If True expected contest_plan.active is True, Reason seed'."
+"Did you read that the keyword_definition of 'case_active' is ', Case thinkout'."
+"Did you read that the keyword_definition of 'case_task' is ', Case thinkout'."
+Did you read that the keyword_definition of 'cases' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'fact_context' is 'All facts have a foundational context, Fact seed.'."
+"Did you read that the keyword_definition of 'fact_lower' is ', Fact seed, Nabuable arg.'."
+"Did you read that the keyword_definition of 'fact_state' is 'A fact can have a state different from its context, a different branch of the context where all other branches are not in fact, Fact seed.'."
+"Did you read that the keyword_definition of 'fact_upper' is ', Fact seed, Nabuable arg.'."
+Did you read that the keyword_definition of 'factheirs' is 'Definition needed.'.
+Did you read that the keyword_definition of 'factunits' is 'PlanUnit holds all it's factunits in an attribute called factunits.'.
+"Did you read that the keyword_definition of 'parent_heir_active' is ', Reason thinkout'."
+"Did you read that the keyword_definition of 'reason_active' is ', Reason thinkout'."
+"Did you read that the keyword_definition of 'reason_context' is ', Reason seed, Case seed'."
+"Did you read that the keyword_definition of 'reason_divisor' is ', Case seed.'."
+"Did you read that the keyword_definition of 'reason_lower' is ', Case seed, Nabuable arg.'."
+"Did you read that the keyword_definition of 'reason_state' is ', Case seed.'."
+"Did you read that the keyword_definition of 'reason_task' is ', Reason thinkout'."
+"Did you read that the keyword_definition of 'reason_upper' is ', Case seed, Nabuable arg.'."
+Did you read that the keyword_definition of 'reasonunits' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'addin' is 'float that describes addition to parent range calculations, Plan seed'."
+"Did you read that the keyword_definition of 'all_contact_cred' is ', Plan thinkout'."
+"Did you read that the keyword_definition of 'all_contact_debt' is ', Plan thinkout'."
+"Did you read that the keyword_definition of 'awardheirs' is 'Every PlanUnit has AwardHeirs that represent who is awarded give_fund and take_fund. AwardHeirs have every AwardUnit group_title for every PlanUnit Ancestor back to root, Plan thinkout'."
+"Did you read that the keyword_definition of 'awardlines' is 'Every PlanUnit has AwardLines that represent who is awarded give_fund and take_fund. AwardLines have every AwardUnit group_title for every PlanUnit Descedant starting at the childless PlanUnit, Plan thinkout'."
+"Did you read that the keyword_definition of 'begin' is 'float that describes the begin of a numerical range if it exists, Plan seed'."
+"Did you read that the keyword_definition of 'close' is 'float that describes the close of a numerical range if it exists, Plan seed'."
+"Did you read that the keyword_definition of 'denom' is 'int that describes denominator to parent range calculations, Plan seed'."
+"Did you read that the keyword_definition of 'descendant_pledge_count' is ', Plan thinkout'."
+"Did you read that the keyword_definition of 'fund_cease' is 'FundNum number at which funding ceases inside master funding range, Plan thinkout'."
+"Did you read that the keyword_definition of 'fund_onset' is 'FundNum number at which funding onsets inside master funding range, Plan thinkout'."
+"Did you read that the keyword_definition of 'fund_pool' is ', Person seed.'."
+"Did you read that the keyword_definition of 'fund_ratio' is ', Plan thinkout'."
+"Did you read that the keyword_definition of 'gogo_calc' is ', Plan thinkout'."
+"Did you read that the keyword_definition of 'gogo_want' is ', Plan seed'."
+"Did you read that the keyword_definition of 'healer_name' is ', Healer seed.'."
+Did you read that the keyword_definition of 'healerunit' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'healerunit_ratio' is ', Plan thinkout'."
+Did you read that the keyword_definition of 'is_expanded' is 'If A '.
+Did you read that the keyword_definition of 'kids' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'morph' is 'bool that describes how to change parent range in calculations, Plan seed'."
+"Did you read that the keyword_definition of 'numor' is 'int that describes numerator to parent range calculations, Plan seed'."
+Did you read that the keyword_definition of 'plan' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'plan_active' is ', Plan thinkout'."
+Did you read that the keyword_definition of 'plan_active_hx' is 'Definition needed.'.
+Did you read that the keyword_definition of 'plan_fund_total' is 'Definition needed.'.
+Did you read that the keyword_definition of 'plan_label' is 'Every planunit has a plan_label. Every other sibling planunit must have a different plan label.'.
+"Did you read that the keyword_definition of 'plan_rope' is ', Plan seed, Reason seed, Case seed, Fact seed, Award seed, Workforce seed, Healer seed.'."
+"Did you read that the keyword_definition of 'plan_task' is 'A plan_task planUnit can change a FactUnit and change Active Plan without plan_task, Plan thinkout'."
+Did you read that the keyword_definition of 'plan_uid' is 'A uniqueidentifier for a planunit. Currently at the person level. Perhaps at a global level in the future.'.
+"Did you read that the keyword_definition of 'pledge' is ', Plan seed'."
+"Did you read that the keyword_definition of 'poynt' is ', Plan seed'."
+"Did you read that the keyword_definition of 'problem_bool' is ', Plan seed'."
+"Did you read that the keyword_definition of 'range_evaluated' is ', Plan thinkout'."
+"Did you read that the keyword_definition of 'range_inheritors' is '# range_inheritors key: plan_rope for any Plan that inherits from a range_plan
     # range_inheritors value: plan_rope for the range_plan
     # During the thinkout process range_inheritors defines when range_inheritors factheirs need to be created'."
-Did you read that the keg_definition of 'reasonheirs' is 'Definition needed.'.
-"Did you read that the keg_definition of 'stop_calc' is ', Plan thinkout'."
-"Did you read that the keg_definition of 'stop_want' is ', Plan seed'."
-"Did you read that the keg_definition of 'tree_level' is ', Plan thinkout'."
-"Did you read that the keg_definition of 'tree_traverse_count' is ', Person thinkout'."
-Did you read that the keg_definition of 'PersonName' is 'str first used in ch08. The LabelTerm used to identify a PersonUnit. Must be a LabelTerm/NameTerm because when identifying if a PlanUnit is an active pledge the PersonName will be compared against ContactNames. If they match the pledge will be active.'.
-Did you read that the keg_definition of 'PersonUnit' is 'Definition needed.'.
-"Did you read that the keg_definition of 'ancestors' is ', used with Budget Cells'."
-Did you read that the keg_definition of 'calc_by_thinkout' is 'Describes when data is defined by thinkout process. Not required seed data.'.
-"Did you read that the keg_definition of 'contact_mandate_ledger' is ', used with Budget Cells'."
-Did you read that the keg_definition of 'contact_pool' is 'Definition needed.'.
-Did you read that the keg_definition of 'contacts' is 'Definition needed.'.
-Did you read that the keg_definition of 'context_plan_close' is 'Definition needed.'.
-Did you read that the keg_definition of 'context_plan_denom' is 'Definition needed.'.
-Did you read that the keg_definition of 'context_plan_morph' is 'Definition needed.'.
-"Did you read that the keg_definition of 'credor_respect' is ', Person seed.'."
-"Did you read that the keg_definition of 'debtor_respect' is ', Person seed.'."
-Did you read that the keg_definition of 'dimen' is 'Definition needed.'.
-Did you read that the keg_definition of 'dimens' is 'Definition needed.'.
-Did you read that the keg_definition of 'jkeys' is 'The term 'keys' was too generic. 'jkeys' is less generic.'.
-Did you read that the keg_definition of 'jvalues' is 'Definition needed.'.
-Did you read that the keg_definition of 'keep_rope' is 'Definition needed.'.
-"Did you read that the keg_definition of 'keeps_buildable' is ', Person thinkout'."
-"Did you read that the keg_definition of 'keeps_justified' is ', Person thinkout'."
-Did you read that the keg_definition of 'last_lesson_id' is 'Definition needed.'.
-"Did you read that the keg_definition of 'mandate' is ', used with Budget Cells'."
-"Did you read that the keg_definition of 'max_tree_traverse' is ', Person seed.'."
-Did you read that the keg_definition of 'obj_type' is 'Used idenify an attribute's object class. Usually in config files.'.
-"Did you read that the keg_definition of 'offtrack_fund' is ', Person thinkout'."
-Did you read that the keg_definition of 'offtrack_kids_poynt_set' is 'Definition needed.'.
-"Did you read that the keg_definition of 'person_contact_membership' is 'A person dimen representing Membership data. Keys: person_name, contact_name, group_title. person seed.'."
-"Did you read that the keg_definition of 'person_contactunit' is 'A person dimen representing ParterUnit data. Keys: person_name, contact_name. person seed.'."
-"Did you read that the keg_definition of 'person_groupunit' is 'A person dimen representing GroupUnit data. Keys: person_name, group_title. person thinkout.'."
-"Did you read that the keg_definition of 'person_plan_awardunit' is 'A person dimen representing AwardUnit data. Keys: person_name, plan_rope, awardee_title. person seed.'."
-"Did you read that the keg_definition of 'person_plan_factunit' is 'A person dimen representing FactUnit data. Keys: person_name, plan_rope, fact_context. person seed.'."
-"Did you read that the keg_definition of 'person_plan_healerunit' is 'A person dimen representing HealerUnit data. Keys: person_name, plan_rope, healer_name. person seed.'."
-"Did you read that the keg_definition of 'person_plan_laborunit' is 'A person dimen representing HealerUnit data. Keys: person_name, plan_rope, labor_title. person seed.'."
-"Did you read that the keg_definition of 'person_plan_reason_caseunit' is 'A person dimen representing CaseUnit data. Keys: person_name, plan_rope, reason_context, reason_state. person seed.'."
-"Did you read that the keg_definition of 'person_plan_reasonunit' is 'A person dimen representing ReasonUnit data. Keys: person_name, plan_rope, reason_context. person seed.'."
-"Did you read that the keg_definition of 'person_planunit' is 'A person dimen representing PlanUnit data. Keys: person_name, plan_rope. person seed.'."
-Did you read that the keg_definition of 'personunit' is 'A person dimen representing PersonUnit data. Keys: person_name. person seed.'.
-"Did you read that the keg_definition of 'planroot' is 'Every PersonUnit has one planunit called the planroot. It can have child planunits and each of them can have child planunits, etc.'."
-Did you read that the keg_definition of 'prnawar' is 'abbv for person_plan_awardunit'.
-Did you read that the keg_definition of 'prncase' is 'abbv for person_plan_reason_caseunit'.
-Did you read that the keg_definition of 'prncont' is 'abbv for person_contactunit'.
-Did you read that the keg_definition of 'prnfact' is 'abbv for person_plan_factunit'.
-Did you read that the keg_definition of 'prngrou' is 'abbv for person_groupunit'.
-Did you read that the keg_definition of 'prnheal' is 'abbv for person_plan_healerunit'.
-Did you read that the keg_definition of 'prnlabo' is 'abbv for person_plan_laborunit'.
-Did you read that the keg_definition of 'prnmemb' is 'abbv for person_contact_membership'.
-Did you read that the keg_definition of 'prnplan' is 'abbv for person_planunit'.
-Did you read that the keg_definition of 'prnreas' is 'abbv for person_plan_reasonunit'.
-Did you read that the keg_definition of 'prnunit' is 'abbv for personunit'.
-"Did you read that the keg_definition of 'reason_contexts' is ', used with Budget Cells'."
-Did you read that the keg_definition of 'sqlite_datatype' is 'Definition needed.'.
-"Did you read that the keg_definition of 'sum_healerunit_plans_fund_total' is ', Person thinkout'."
-Did you read that the keg_definition of 'CRUD_command' is 'str first used in ch09 that represents database CRUD commands'.
-Did you read that the keg_definition of 'DELETE' is 'CRUD_COMMAND to delete records for a table'.
-Did you read that the keg_definition of 'INSERT' is 'CRUD_COMMAND to delete records for a table'.
-Did you read that the keg_definition of 'UPDATE' is 'CRUD_COMMAND to update records for a table. 'Associated dimens: personunit' in 'CRUD_COMMAND to update records for a table''.
-Did you read that the keg_definition of 'atom' is 'Smallest possible unit of a PersonUnit'.
-Did you read that the keg_definition of 'awardee_title_ERASE' is 'Definition needed.'.
-Did you read that the keg_definition of 'column_ordinal' is 'Describes which column in a table the attribute should have. The number '2' would be 3rd column because of starting at 0 index.'.
-Did you read that the keg_definition of 'contact_name_ERASE' is 'Definition needed.'.
-"Did you read that the keg_definition of 'crud' is 'Create, Read, Update, Delete. The main things that can be done in a database.'."
-Did you read that the keg_definition of 'fact_context_ERASE' is 'Definition needed.'.
-Did you read that the keg_definition of 'group_title_ERASE' is 'Definition needed.'.
-Did you read that the keg_definition of 'healer_name_ERASE' is 'Definition needed.'.
-Did you read that the keg_definition of 'labor_title_ERASE' is 'Definition needed.'.
-Did you read that the keg_definition of 'nesting_order' is 'Definition needed.'.
-Did you read that the keg_definition of 'normal_specs' is 'Definition needed.'.
-Did you read that the keg_definition of 'normal_table_name' is 'Definition needed.'.
-Did you read that the keg_definition of 'person_name_ERASE' is 'Definition needed.'.
-Did you read that the keg_definition of 'plan_rope_ERASE' is 'Definition needed.'.
-Did you read that the keg_definition of 'reason_context_ERASE' is 'Definition needed.'.
-Did you read that the keg_definition of 'reason_state_ERASE' is 'Definition needed.'.
-Did you read that the keg_definition of 'FaceName' is 'str first used in ch10. The Face is the source of all outside data.'.
-Did you read that the keg_definition of 'Lasso' is 'Definition needed.'.
-Did you read that the keg_definition of 'MomentRope' is 'str first used in ch10. The RopeTerm for a Moment. Must contain knots.'.
-Did you read that the keg_definition of 'gut' is 'Definition needed.'.
-Did you read that the keg_definition of 'job' is 'Definition needed.'.
-Did you read that the keg_definition of 'lasso' is 'Definition needed.'.
-Did you read that the keg_definition of 'moment' is 'Definition needed.'.
-Did you read that the keg_definition of 'moment_mstr_dir' is 'starting point for most lego file structue. Moment functions usually refernce this directory as root.'.
-"Did you read that the keg_definition of 'moment_rope' is ', Moment arg, offi_time arg, ceckbook arg, mmtweek arg, mmtmont arg, mmthour arg, bud arg, Person seed, Plan seed, Reason seed, Case seed, Fact seed, Award seed, Workforce seed, Healer seed, Contact seed, Member seed, nabu arg.'."
-Did you read that the keg_definition of 'spark_face' is 'Every spark has a spark_face that identifies which Face it belongs to. The Face is the source of all outside data. In theory a spark_face can be any data type. In practice it is currently a string data type.'.
-"Did you read that the keg_definition of 'spark_num' is 'Every spark has a spark_num that identifies its order of ingestion. Sparks are orderd but not necessarily sequential. Spark_num is an int. , used with Budget Cells'."
-Did you read that the keg_definition of 'listener' is 'Definition needed. Only referenced in ch11.'.
-Did you read that the keg_definition of 'speaker' is 'Definition needed. Only referenced in ch11.'.
-Did you read that the keg_definition of 'Epoch' is 'Definition needed.'.
-Did you read that the keg_definition of 'SparkInt' is 'int first used in ch12. Each Spark is a int that describes the order of data ingestion'.
-Did you read that the keg_definition of 'TimeNum' is 'int first used in ch12. An Integar that can represent a instant on the TimeNumLine'.
-"Did you read that the keg_definition of 'amount' is ', ceckbook arg'."
-Did you read that the keg_definition of 'boss' is 'definition needed'.
-"Did you read that the keg_definition of 'boss_facts' is ', used with Budget Cells'."
-"Did you read that the keg_definition of 'bud_contact_nets' is 'ledger of bud outcome. The PersonUnit that embodies the Budget distrubutes the funds per the PersonUnit contacts. dict[ContactName, FundNum]. FundNum can be negative.'."
-"Did you read that the keg_definition of 'bud_person_name' is ', used with Budget Cells'."
-"Did you read that the keg_definition of 'bud_time' is 'When a budget adds to the supply, bud arg, Nabuable arg'."
-"Did you read that the keg_definition of 'celldepth' is ', used with Budget Cells, bud arg'."
-Did you read that the keg_definition of 'epoch' is 'Definition needed.'.
-"Did you read that the keg_definition of 'found_facts' is ', used with Budget Cells'."
-Did you read that the keg_definition of 'magnitude' is 'Definition needed.'.
-"Did you read that the keg_definition of 'offi_time' is ', offi_time arg, Nabuable arg'."
-Did you read that the keg_definition of 'offi_time_max' is 'Definition needed.'.
-"Did you read that the keg_definition of 'person_contacts_net' is 'calculated from loaded TranUnits data. It holds the calculated net output for each PersonName, ContactName tuple.'."
-"Did you read that the keg_definition of 'personadjust' is ', used with Budget Cells'."
-"Did you read that the keg_definition of 'personspark_facts' is ', used with Budget Cells'."
-"Did you read that the keg_definition of 'quota' is 'The importance of a BudUnit. The currency given to the BudUnit to be distributed to Contacts. The magnitude number will always be less then quote because its the sum of how much of the quota is distributed, bud arg, used with Budget Cells'."
-Did you read that the keg_definition of 'time' is 'Definition needed.'.
-"Did you read that the keg_definition of 'tran_time' is ', ceckbook arg, Nabuable arg'."
-Did you read that the keg_definition of 'ManaNum' is 'float first used in ch13. ManaNum inherits from float class'.
-Did you read that the keg_definition of 'care_amount' is 'Definition needed.'.
-Did you read that the keg_definition of 'cares' is 'Definition needed.'.
-Did you read that the keg_definition of 'cycle_carees_curr' is 'Definition needed.'.
-Did you read that the keg_definition of 'cycle_carees_prev' is 'Definition needed.'.
-Did you read that the keg_definition of 'cycle_count' is 'Definition needed.'.
-Did you read that the keg_definition of 'cycle_max' is 'Definition needed.'.
-Did you read that the keg_definition of 'doctor_count' is 'Definition needed.'.
-Did you read that the keg_definition of 'doctor_rank_num' is 'Definition needed.'.
-Did you read that the keg_definition of 'doctor_rank_percent' is 'Definition needed.'.
-Did you read that the keg_definition of 'keep_patientledgers' is 'Definition needed.'.
-Did you read that the keg_definition of 'keep_point_magnitude' is 'Definition needed.'.
-Did you read that the keg_definition of 'need_bill_amount' is 'Definition needed.'.
-Did you read that the keg_definition of 'need_dues' is 'Definition needed.'.
-Did you read that the keg_definition of 'need_got_curr' is 'Definition needed.'.
-Did you read that the keg_definition of 'need_got_prev' is 'Definition needed.'.
-Did you read that the keg_definition of 'need_paid_amount' is 'Definition needed.'.
-Did you read that the keg_definition of 'need_paid_bool' is 'Definition needed.'.
-Did you read that the keg_definition of 'need_paid_rank_num' is 'Definition needed.'.
-Did you read that the keg_definition of 'need_paid_rank_percent' is 'Definition needed.'.
-Did you read that the keg_definition of 'need_results' is 'Definition needed.'.
-Did you read that the keg_definition of 'patient_count' is 'Definition needed.'.
-Did you read that the keg_definition of 'patient_rank_num' is 'Definition needed.'.
-Did you read that the keg_definition of 'patient_rank_percent' is 'Definition needed.'.
-Did you read that the keg_definition of 'rewards_count' is 'Definition needed.'.
-Did you read that the keg_definition of 'rewards_magnitude' is 'Definition needed.'.
-Did you read that the keg_definition of 'riverbooks' is 'Definition needed.'.
-Did you read that the keg_definition of 'rivercares' is 'Definition needed.'.
-Did you read that the keg_definition of 'rivergrades' is 'Definition needed.'.
-Did you read that the keg_definition of 'Anaday' is 'First Day of 5 day week of 'Five' Epoch'.
-Did you read that the keg_definition of 'Baileyday' is 'Second Day of 5 day week of 'Five' Epoch'.
-Did you read that the keg_definition of 'Chiday' is 'Third Day of 5 day week of 'Five' Epoch'.
-Did you read that the keg_definition of 'Danceday' is 'Fourth Day of 5 day week of 'Five' Epoch'.
-Did you read that the keg_definition of 'Eastday' is 'Fifth Day of 5 day week of 'Five' Epoch'.
-Did you read that the keg_definition of 'EpochLabel' is 'str first used in ch14. EpochLabel is required for every EpochUnit. It is a LabelTerm that must not contain the knot.'.
-Did you read that the keg_definition of 'TimeShoe' is 'Definition needed.'.
-"Did you read that the keg_definition of 'c100' is '100 years, sub part of c400_core'."
-"Did you read that the keg_definition of 'c100_length' is 'A C400Constant for building Epochs: 52,594,560 minutes in 100 year cycle'."
-Did you read that the keg_definition of 'c400_core' is '400 years without the extra leap day.'.
-"Did you read that the keg_definition of 'c400_core_length' is 'A C400Constant for building Epochs: 210,378,240 minutes in 400 year cycle without last leap-day'."
-Did you read that the keg_definition of 'c400_leap' is '400 years with the extra leap day.'.
-"Did you read that the keg_definition of 'c400_leap_length' is 'A C400Constant for building Epochs: 210,379,680 minutes in 400 year cycle'."
-"Did you read that the keg_definition of 'c400_number' is 'Epoch config Integer that represents number of 400 year cycles. Defines the range of years in epoch c400_number=7 means 2800 years, Moment arg'."
-Did you read that the keg_definition of 'clock' is 'String representation of the time during the day. '10:00am' or '0:15hr'.
-"Did you read that the keg_definition of 'creg' is 'Gregorian time does not have year zero. It was necessary to have year zero so the default epoch technology is Cregorian time, Gregorian time with year 0.'."
-"Did you read that the keg_definition of 'cumulative_day' is ', mmtmont arg'."
-Did you read that the keg_definition of 'day' is 'A fundamental structure of time for Keg2. Always assumed to be a 1440 minutes long.'.
-"Did you read that the keg_definition of 'day_length' is 'A C400Constant for building Epochs: 1,440 minutes in day'."
-Did you read that the keg_definition of 'dayly_duration_min' is 'Required fields for creating Epoch dayly cases.'.
-Did you read that the keg_definition of 'dayly_lower_min' is 'Required fields for creating Epoch dayly cases.'.
-Did you read that the keg_definition of 'days' is 'Definition needed.'.
-Did you read that the keg_definition of 'days_lower_day' is 'Required fields for creating Epoch every_xdays cases.'.
-Did you read that the keg_definition of 'days_upper_day' is 'Required fields for creating Epoch every_xdays cases.'.
-Did you read that the keg_definition of 'duration' is 'Definition needed.'.
-"Did you read that the keg_definition of 'epoch_label' is 'Epoch config: Name of epoch. Persons may have multiple epochs, they are differentiated by this LabelTerm, Moment arg'."
-Did you read that the keg_definition of 'epoch_length' is 'Total number of minutes in a Epoch. Calculated by number of minutes in C400_leap times Epoch's c400_number'.
-Did you read that the keg_definition of 'epoch_min' is 'Definition needed.'.
-Did you read that the keg_definition of 'every_xdays' is 'Required fields for creating Epoch every_xdays cases.'.
-Did you read that the keg_definition of 'every_xweeks' is 'Required fields for creating Epoch weekly cases.'.
-"Did you read that the keg_definition of 'five' is 'An Epoch. A structure for time often used in the codebase. Starts about 5000 years ago, has 16 months, 15 of which are 25 days. Week is 5 days long.'."
-Did you read that the keg_definition of 'hour' is 'Definition needed.'.
-"Did you read that the keg_definition of 'hour_label' is ', mmthour arg'."
-"Did you read that the keg_definition of 'hours_config' is 'Epoch config List of Lists that contain two elements: hour name and the day's minute when it ends. Last item list must contain hour name and 1440 because that is the last minute of the day, partial example: [['12am', 60], ['11pm', 1440]]'."
-"Did you read that the keg_definition of 'month_label' is ', mmtmont arg'."
-"Did you read that the keg_definition of 'monthday_index' is 'Epoch config: Changes MonthDay displayed day number. Months' day numbers are assumed to start with 0. The first day of the month is #0. The 3rd day of the month would be Day #2 of month. Most prefer The first day of the month to be 1 even though this makes divisor difficult. If monthday_index=1 then the 3rd day of the month is #3, Moment arg'."
-Did you read that the keg_definition of 'monthly_duration_days' is 'Required fields for creating Epoch monthly cases.'.
-Did you read that the keg_definition of 'monthly_monthday_lower' is 'Required fields for creating Epoch monthly cases.'.
-"Did you read that the keg_definition of 'months_config' is 'Epoch config: List of lists that contain two elements: month name and the year's day when it ends. Last item list must contain year's day equal 365 because it is the last day of the year. [['March', 31], ['February', 365]]'."
-Did you read that the keg_definition of 'range_duration' is 'Required fields for creating Epoch ranged cases.'.
-Did you read that the keg_definition of 'range_lower_min' is 'Required fields for creating Epoch ranged cases.'.
-Did you read that the keg_definition of 'readable' is 'Human readable text. Often for time.'.
-Did you read that the keg_definition of 'week' is 'A fundamental structure of time for Keg2. Always assumed to be a days long. Never partial days.'.
-"Did you read that the keg_definition of 'weekdays_config' is 'Epoch config, List of Weekday names. When the Epoch begins the first Weekday in the list is the first day of the Epoch. ['Wednesday', ...'Tuesday'],'."
-Did you read that the keg_definition of 'weekly_duration_min' is 'Required fields for creating Epoch weekly cases.'.
-Did you read that the keg_definition of 'weekly_lower_min' is 'Required fields for creating Epoch weekly cases.'.
-Did you read that the keg_definition of 'weeks' is 'Definition needed.'.
-Did you read that the keg_definition of 'weeks_lower_week' is 'Required fields for creating Epoch weekly cases.'.
-Did you read that the keg_definition of 'weeks_upper_week' is 'Required fields for creating Epoch weekly cases.'.
-Did you read that the keg_definition of 'year' is 'A fundamental structure of time for Keg2. Always 365 days. The leap day is a special other thing in Keg2.'.
-"Did you read that the keg_definition of 'year_length' is 'A C400Constant for building Epochs: 525,600 minutes in year without leap-day'."
-Did you read that the keg_definition of 'year_monthday_duration_days' is 'Required fields for creating Epoch year_monthday cases.'.
-Did you read that the keg_definition of 'year_monthday_lower' is 'Required fields for creating Epoch year_monthday cases.'.
-"Did you read that the keg_definition of 'yr1_jan1_offset' is 'Epoch config: Number of minutes the calendar is different from March 1, year 1 where Gregorian calendar is projected to year 1. Example 440640 is almost 10 months, Moment arg'."
-"Did you read that the keg_definition of 'yr4_core' is 'A fundamental structure of time for Keg2. Includes 4 years of 365 days, plan_label for Epoch'."
-"Did you read that the keg_definition of 'yr4_core_length' is 'A C400Constant for building Epochs: 2,102,400 minutes in 4 year cycle without leap-day'."
-Did you read that the keg_definition of 'yr4_leap' is 'A fundamental structure of time for Keg2. Includes 4 years of 365 days (yr4_core) and a leap day. The leap day is the last day.'.
-"Did you read that the keg_definition of 'yr4_leap_length' is 'A C400Constant for building Epochs: 2,103,840 minutes in 4 year cycle'."
-Did you read that the keg_definition of 'all_tranbook' is 'Definition needed.'.
-Did you read that the keg_definition of 'ceckbook' is 'Definition needed.'.
-"Did you read that the keg_definition of 'cumulative_minute' is ', mmthour argDefinition needed.'."
-"Did you read that the keg_definition of 'job_listen_rotations' is ', Moment arg'."
-Did you read that the keg_definition of 'moment_budunit' is 'Definition needed.'.
-Did you read that the keg_definition of 'moment_ceckbook' is 'Definition needed.'.
-Did you read that the keg_definition of 'moment_epoch_hour' is 'Definition needed.'.
-Did you read that the keg_definition of 'moment_epoch_month' is 'Definition needed.'.
-Did you read that the keg_definition of 'moment_epoch_weekday' is 'Definition needed.'.
-Did you read that the keg_definition of 'moment_static' is 'Used to identify if the data can change or must be identify when the Moment of instantization.'.
-Did you read that the keg_definition of 'moment_timeoffi' is 'Definition needed.'.
-Did you read that the keg_definition of 'momentunit' is 'Definition needed.'.
-Did you read that the keg_definition of 'offi_times' is 'Definition needed.'.
-Did you read that the keg_definition of 'personbudhistorys' is 'Definition needed.'.
-"Did you read that the keg_definition of 'weekday_label' is ', mmtweek arg'."
-"Did you read that the keg_definition of 'weekday_order' is ', mmtweek arg'."
-Did you read that the keg_definition of 'Nabu' is 'Definition needed.'.
-Did you read that the keg_definition of 'NabuTime' is 'Definition needed.'.
-Did you read that the keg_definition of 'inx_epoch_diff' is 'Definition needed.'.
-"Did you read that the keg_definition of 'inx_time' is ', nabu arg'."
-Did you read that the keg_definition of 'nabu' is 'Definition needed.'.
-Did you read that the keg_definition of 'nabu_timenum' is 'Definition needed.'.
-Did you read that the keg_definition of 'otx2inx' is 'Definition needed.'.
-Did you read that the keg_definition of 'otx_epoch_length' is 'Definition needed.'.
-"Did you read that the keg_definition of 'otx_time' is ', nabu arg'."
-Did you read that the keg_definition of 'timenabu' is 'Definition needed.'.
-"Did you read that the keg_definition of 'inx_knot' is ', TRANSLATE_LABEL arg, TRANSLATE_NAME arg, TRANSLATE_ROPE arg, TRANSLATE_TITLE arg'."
-"Did you read that the keg_definition of 'inx_label' is ', TRANSLATE_LABEL arg'."
-"Did you read that the keg_definition of 'inx_name' is ', TRANSLATE_NAME arg'."
-"Did you read that the keg_definition of 'inx_rope' is ', TRANSLATE_ROPE arg'."
-"Did you read that the keg_definition of 'inx_title' is ', TRANSLATE_TITLE arg'."
-Did you read that the keg_definition of 'labelmap' is 'Definition needed.'.
-Did you read that the keg_definition of 'namemap' is 'Definition needed.'.
-"Did you read that the keg_definition of 'otx_knot' is ', TRANSLATE_LABEL arg, TRANSLATE_NAME arg, TRANSLATE_ROPE arg, TRANSLATE_TITLE arg'."
-"Did you read that the keg_definition of 'otx_label' is ', TRANSLATE_LABEL arg'."
-"Did you read that the keg_definition of 'otx_name' is ', TRANSLATE_NAME arg'."
-"Did you read that the keg_definition of 'otx_rope' is ', TRANSLATE_ROPE arg'."
-"Did you read that the keg_definition of 'otx_title' is ', TRANSLATE_TITLE arg'."
-Did you read that the keg_definition of 'ropemap' is 'Definition needed.'.
-Did you read that the keg_definition of 'titlemap' is 'Definition needed.'.
-Did you read that the keg_definition of 'translate' is 'Definition needed.'.
-Did you read that the keg_definition of 'translate_core' is 'Definition needed.'.
-"Did you read that the keg_definition of 'translate_label' is ''translate_label' is a translation dimen where otx_label is translated by inx_knot, inx_label, otx_knot, unknown_str'."
-"Did you read that the keg_definition of 'translate_name' is ''translate_name' is a translation dimen where otx_name is translated by inx_knot, inx_name, otx_knot, unknown_str'."
-"Did you read that the keg_definition of 'translate_rope' is ''translate_rope' is a translation dimen where otx_rope is translated by inx_knot, inx_rope, otx_knot, unknown_str'."
-"Did you read that the keg_definition of 'translate_title' is ''translate_title' is a translation dimen where otx_title is translated by inx_knot, inx_title, otx_knot, unknown_str'."
-Did you read that the keg_definition of 'translateunit' is 'Definition needed.'.
-"Did you read that the keg_definition of 'unknown_str' is ', TRANSLATE_LABEL arg, TRANSLATE_NAME arg, TRANSLATE_ROPE arg, TRANSLATE_TITLE arg'."
-Did you read that the keg_definition of 'Border' is 'Defines line of influence between two Wheels. Also used by graphics and apps.'.
-Did you read that the keg_definition of 'Excel' is 'A spreadsheet format.'.
-Did you read that the keg_definition of 'SheetName' is 'A string used as SheetName for SpreadSheet files. str first used in ch20'.
-Did you read that the keg_definition of 'allowed_crud' is 'Each brick config dimen has an allowed_crud that describes whether the data may be updated/deleted/inserted more than one.'.
-Did you read that the keg_definition of 'attributes' is 'General term used to describe things about another thing'.
-Did you read that the keg_definition of 'awardee_title_ERASE_inx' is 'The 'awardee_title_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'awardee_title_ERASE_otx' is 'The 'awardee_title_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'awardee_title_inx' is 'The 'awardee_title' value after Translate.'.
-Did you read that the keg_definition of 'awardee_title_otx' is 'The 'awardee_title' value after Translate.'.
-Did you read that the keg_definition of 'bk' is 'Brick Format Identifier. Every brick_type format starts with 'bk' and then 5 numbers.'.
-Did you read that the keg_definition of 'border' is 'Defines line of influence between two Wheels. Also used by graphics and apps.'.
-Did you read that the keg_definition of 'brick' is 'Definition needed.'.
-Did you read that the keg_definition of 'brick_category' is 'Definition needed.'.
-Did you read that the keg_definition of 'brick_type' is 'Definition needed.'.
-Did you read that the keg_definition of 'bud_time_inx' is 'The 'bud_time' value after Translate.'.
-Did you read that the keg_definition of 'bud_time_otx' is 'The 'bud_time' value after Translate.'.
-Did you read that the keg_definition of 'build_order' is 'When building a world the order of dimen data implementation must be deterministic. build_order defines the order dimens are evaluated for a World.'.
-Did you read that the keg_definition of 'contact_name_ERASE_inx' is 'The 'contact_name_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'contact_name_ERASE_otx' is 'The 'contact_name_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'contact_name_inx' is 'The 'contact_name' value after Translate.'.
-Did you read that the keg_definition of 'contact_name_otx' is 'The 'contact_name' value after Translate.'.
-"Did you read that the keg_definition of 'delete_insert' is 'Associated dimens: person_plan_healerunit, person_plan_laborunit'."
-"Did you read that the keg_definition of 'delete_insert_update' is 'Associated dimens: person_contact_membership, person_contactunit, person_plan_awardunit, person_plan_factunit, person_plan_reason_caseunit, person_plan_reasonunit, person_planunit' in 'Associated dimens: person_planunit, person_contactunit, person_plan_reasonunit, person_plan_factunit, person_plan_awardunit, person_contact_membership, person_plan_reason_caseunit'."
-"Did you read that the keg_definition of 'delete_update' is 'Associated dimens: person_plan_healerunit, person_plan_laborunit'."
-Did you read that the keg_definition of 'epoch_label_inx' is 'The 'epoch_label' value after Translate.'.
-Did you read that the keg_definition of 'epoch_label_otx' is 'The 'epoch_label' value after Translate.'.
-Did you read that the keg_definition of 'error_message' is 'Definition needed.'.
-Did you read that the keg_definition of 'excel' is 'A spreadsheet format.'.
-Did you read that the keg_definition of 'fact_context_ERASE_inx' is 'The 'fact_context_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'fact_context_ERASE_otx' is 'The 'fact_context_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'fact_context_inx' is 'The 'fact_context' value after Translate.'.
-Did you read that the keg_definition of 'fact_context_otx' is 'The 'fact_context' value after Translate.'.
-Did you read that the keg_definition of 'fact_lower_inx' is 'The 'fact_lower' value after Translate.'.
-Did you read that the keg_definition of 'fact_lower_otx' is 'The 'fact_lower' value after Translate.'.
-Did you read that the keg_definition of 'fact_state_inx' is 'The 'fact_state' value after Translate.'.
-Did you read that the keg_definition of 'fact_state_otx' is 'The 'fact_state' value after Translate.'.
-Did you read that the keg_definition of 'fact_upper_inx' is 'The 'fact_upper' value after Translate.'.
-Did you read that the keg_definition of 'fact_upper_otx' is 'The 'fact_upper' value after Translate.'.
-Did you read that the keg_definition of 'fund_rank' is 'Definition needed.'.
-Did you read that the keg_definition of 'group_title_ERASE_inx' is 'The 'group_title_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'group_title_ERASE_otx' is 'The 'group_title_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'group_title_inx' is 'The 'group_title' value after Translate.'.
-Did you read that the keg_definition of 'group_title_otx' is 'The 'group_title' value after Translate.'.
-Did you read that the keg_definition of 'healer_name_ERASE_inx' is 'The 'healer_name_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'healer_name_ERASE_otx' is 'The 'healer_name_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'healer_name_inx' is 'The 'healer_name' value after Translate.'.
-Did you read that the keg_definition of 'healer_name_otx' is 'The 'healer_name' value after Translate.'.
-Did you read that the keg_definition of 'hour_label_inx' is 'The 'hour_label' value after Translate.'.
-Did you read that the keg_definition of 'hour_label_otx' is 'The 'hour_label' value after Translate.'.
-"Did you read that the keg_definition of 'insert_multiple' is 'Associated dimens: moment_budunit, moment_ceckbook, moment_timeoffi'."
-"Did you read that the keg_definition of 'insert_one_time' is 'Associated dimens: moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, momentunit, nabu_timenum, translate_label, translate_name, translate_rope, translate_title'."
-Did you read that the keg_definition of 'insert_update' is 'Definition needed.'.
-Did you read that the keg_definition of 'labor_title_ERASE_inx' is 'The 'labor_title_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'labor_title_ERASE_otx' is 'The 'labor_title_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'labor_title_inx' is 'The 'labor_title' value after Translate.'.
-Did you read that the keg_definition of 'labor_title_otx' is 'The 'labor_title' value after Translate.'.
-Did you read that the keg_definition of 'moment_rope_inx' is 'The 'moment_rope' value after Translate.'.
-Did you read that the keg_definition of 'moment_rope_otx' is 'The 'moment_rope' value after Translate.'.
-Did you read that the keg_definition of 'month_label_inx' is 'The 'month_label' value after Translate.'.
-Did you read that the keg_definition of 'month_label_otx' is 'The 'month_label' value after Translate.'.
-Did you read that the keg_definition of 'net_funds' is 'Definition needed.'.
-Did you read that the keg_definition of 'offi_time_inx' is 'The 'offi_time' value after Translate.'.
-Did you read that the keg_definition of 'offi_time_otx' is 'The 'offi_time' value after Translate.'.
-Did you read that the keg_definition of 'otx_key' is 'Definition needed.'.
-Did you read that the keg_definition of 'person_name_ERASE_inx' is 'The 'person_name_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'person_name_ERASE_otx' is 'The 'person_name_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'person_name_inx' is 'The 'person_name' value after Translate.'.
-Did you read that the keg_definition of 'person_name_otx' is 'The 'person_name' value after Translate.'.
-Did you read that the keg_definition of 'plan_rope_ERASE_inx' is 'The 'plan_rope_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'plan_rope_ERASE_otx' is 'The 'plan_rope_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'plan_rope_inx' is 'The 'plan_rope' value after Translate.'.
-Did you read that the keg_definition of 'plan_rope_otx' is 'The 'plan_rope' value after Translate.'.
-Did you read that the keg_definition of 'pledges_count' is 'Definition needed.'.
-Did you read that the keg_definition of 'reason_context_ERASE_inx' is 'The 'reason_context_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'reason_context_ERASE_otx' is 'The 'reason_context_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'reason_context_inx' is 'The 'reason_context' value after Translate.'.
-Did you read that the keg_definition of 'reason_context_otx' is 'The 'reason_context' value after Translate.'.
-Did you read that the keg_definition of 'reason_lower_inx' is 'The 'reason_lower' value after Translate.'.
-Did you read that the keg_definition of 'reason_lower_otx' is 'The 'reason_lower' value after Translate.'.
-Did you read that the keg_definition of 'reason_state_ERASE_inx' is 'The 'reason_state_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'reason_state_ERASE_otx' is 'The 'reason_state_ERASE' value after Translate.'.
-Did you read that the keg_definition of 'reason_state_inx' is 'The 'reason_state' value after Translate.'.
-Did you read that the keg_definition of 'reason_state_otx' is 'The 'reason_state' value after Translate.'.
-Did you read that the keg_definition of 'reason_upper_inx' is 'The 'reason_upper' value after Translate.'.
-Did you read that the keg_definition of 'reason_upper_otx' is 'The 'reason_upper' value after Translate.'.
-"Did you read that the keg_definition of 'sheet' is 'Object that represents a spreadsheet. It has attributes like filename, table_name, and data.'."
-Did you read that the keg_definition of 'source_dimen' is 'Definition needed.'.
-Did you read that the keg_definition of 'spark_face_inx' is 'The 'spark_face' value after Translate.'.
-Did you read that the keg_definition of 'spark_face_otx' is 'The 'spark_face' value after Translate.'.
-Did you read that the keg_definition of 'tran_time_inx' is 'The 'tran_time' value after Translate.'.
-Did you read that the keg_definition of 'tran_time_otx' is 'The 'tran_time' value after Translate.'.
-Did you read that the keg_definition of 'translate_spark_num' is 'Definition needed.'.
-Did you read that the keg_definition of 'weekday_label_inx' is 'The 'weekday_label' value after Translate.'.
-Did you read that the keg_definition of 'weekday_label_otx' is 'The 'weekday_label' value after Translate.'.
-Did you read that the keg_definition of 'world_name' is 'Definition needed.'.
-Did you read that the keg_definition of 'b_agg' is '5 character abbreviation of brixk_agg. stage_type_order=4 Brick Agg: The Brick Raw tables are aggregated to elimanate duplicates.'.
-Did you read that the keg_definition of 'b_raw' is '5 character abbreviation of brixk_raw. stage_type_order=3 Brick Raw: The importable Excel Sheets entering the database'.
-Did you read that the keg_definition of 'b_src' is '5 character abbreviation of brixk_src. stage_type_order=2 Brick files. Brick formats with SparkNum.'.
-Did you read that the keg_definition of 'b_vld' is '5 character abbreviation of brixk_vld. stage_type_order=4 Brick Vld: .'.
-Did you read that the keg_definition of 'brixk_agg' is 'stage_type_order=4 Brick Agg: The Brick Raw tables are aggregated to elimanate duplicates.'.
-Did you read that the keg_definition of 'brixk_raw' is 'stage_type_order=3 Brick Raw: The importable Excel Sheets entering the database'.
-Did you read that the keg_definition of 'brixk_src' is 'stage_type_order=2 Brick files. Brick formats with SparkNum.'.
-Did you read that the keg_definition of 'brixk_vld' is 'stage_type_order=6 Brick Valid: The Brick Agg tables filtered to correct datatypes. '.
-Did you read that the keg_definition of 'h_agg' is '5 character abbreviation of heard_agg. stage_type_order=11 Populated by aggregated Heard Raw tables. Nabu number conversions take place here.'.
-Did you read that the keg_definition of 'h_raw' is '5 character abbreviation of heard_raw. stage_type_order=10 Populated by Sound Valid tables'.
-Did you read that the keg_definition of 'h_vld' is '5 character abbreviation of heard_vld. stage_type_order=12 Populated by aggregated and Nabu changed Heard Agg tables'.
-Did you read that the keg_definition of 'heard_agg' is 'stage_type_order=11 Populated by aggregated Heard Raw tables. Nabu number conversions take place here.'.
-Did you read that the keg_definition of 'heard_raw' is 'stage_type_order=10 Populated by Sound Valid tables'.
-Did you read that the keg_definition of 'heard_vld' is 'stage_type_order=12 Populated by aggregated and Nabu changed Heard Agg tables'.
-"Did you read that the keg_definition of 'i_dst' is '5 character abbreviation of ideax_dst. stage_type_order=14 Idea (Brick formats without SparkNum) Destination. Filtered Job, Moment data.'."
-Did you read that the keg_definition of 'i_src' is '5 character abbreviation of ideax_src. stage_type_order=1 Idea Source files. Brick formats without SparkNum.'.
-Did you read that the keg_definition of 'idea' is 'A collection of bricks (currently only in brick format) with a spark_face but no spark_num. Conceptually ideas are things that represent direct promises to the soul. People are made of ideas and share them.'.
-"Did you read that the keg_definition of 'ideax_dst' is 'stage_type_order=14 Idea (Brick formats without SparkNum) Destination. Filtered Job, Moment data.'."
-Did you read that the keg_definition of 'ideax_src' is 'stage_type_order=1 Idea Source files. Brick formats without SparkNum.'.
-Did you read that the keg_definition of 'k_vld' is '5 character abbreviation of brixk_vld. stage_type_order=6 Brick Valid: The Brick Agg tables filtered to correct datatypes. '.
-Did you read that the keg_definition of 'lego' is '5 character abbreviation of legox_mst. stage_type_order=13 File buildout of Moments and PersonUnits. Word used to describe the end state of the core ETL pipeline. All core data should be in the database. Files may still be accessible. KPIs should all be sourced from it.'.
-Did you read that the keg_definition of 'legox_mst' is 'stage_type_order=13 File buildout of Moments and PersonUnits'.
-Did you read that the keg_definition of 'mmtbudd' is 'abbv for moment_budunit'.
-Did you read that the keg_definition of 'mmtceck' is 'abbv for moment_ceckbook'.
-Did you read that the keg_definition of 'mmthour' is 'abbv for moment_epoch_hour'.
-Did you read that the keg_definition of 'mmtmont' is 'abbv for moment_epoch_month'.
-Did you read that the keg_definition of 'mmtoffi' is 'abbv for moment_timeoffi'.
-Did you read that the keg_definition of 'mmtunit' is 'abbv for momentunit'.
-Did you read that the keg_definition of 'mmtweek' is 'abbv for moment_epoch_weekday'.
-Did you read that the keg_definition of 'moment_ote1_agg' is 'Create Database Table that holds all spark_num to bud_time pairs. Include moment_rope and person_name'.
-Did you read that the keg_definition of 'nabtime' is 'abbv for nabu_timenum'.
-Did you read that the keg_definition of 'person_net_amount' is 'Definition needed.'.
-Did you read that the keg_definition of 's_agg' is '5 character abbreviation of sound_agg. stage_type_order=8 Populated by aggregated Sound Raw dimen data (elimanate duplicates). Translate Core data is validated then used to translate non-Translate dimen data'.
-Did you read that the keg_definition of 's_raw' is '5 character abbreviation of sound_raw. stage_type_order=7 The Brick Valid data is seperated by column into dimen data such as person_planunit and moment_budunit'.
-Did you read that the keg_definition of 's_vld' is '5 character abbreviation of sound_vld. stage_type_order=9 The Translated Sound Agg data is aggregated to elimanate duplicates into Sound Valid'.
-Did you read that the keg_definition of 'sound_agg' is 'stage_type_order=8 Populated by aggregated Sound Raw dimen data (elimanate duplicates). Translate Core data is validated then used to translate non-Translate dimen data'.
-Did you read that the keg_definition of 'sound_raw' is 'stage_type_order=7 The Brick Valid data is seperated by column into dimen data such as person_planunit and moment_budunit'.
-Did you read that the keg_definition of 'sound_vld' is 'stage_type_order=9 The Translated Sound Agg data is aggregated to elimanate duplicates into Sound Valid'.
-Did you read that the keg_definition of 'trlcore' is 'abbv for translate_core'.
-Did you read that the keg_definition of 'trllabe' is 'abbv for translate_label'.
-Did you read that the keg_definition of 'trlname' is 'abbv for translate_name'.
-Did you read that the keg_definition of 'trlrope' is 'abbv for translate_rope'.
-Did you read that the keg_definition of 'trltitl' is 'abbv for translate_title'.
-Did you read that the keg_definition of 'day_punch' is 'A report that summarizes the tasks of a person for a day.'.
-Did you read that the keg_definition of 'fission' is 'Any complicated step changing idea_type to brick_type. Each fission_step makes a single type of change. Can be simple (set value to X) or complicated (add missing rows with relative values). Only referenced in ch23'.
-Did you read that the keg_definition of 'idea_type' is 'Definition needed.'.
-Did you read that the keg_definition of 'ii' is 'Idea Format Identifier. Every idea_type format starts with 'ii' and then 5 numbers. Every brick_type has a mirrored idea_type. Multiple idea_types can map to single brick_type'.
-Did you read that the keg_definition of 'moment_tranbook_nets' is 'Definition needed.'.
-Did you read that the keg_definition of 'sparks_b_agg' is 'Definition needed.'.
-Did you read that the keg_definition of 'sparks_b_vld' is 'Definition needed.'.
-Did you read that the keg_definition of 'vow' is 'ideas created for audience'.
-Did you read that the keg_definition of 'DayEvent' is 'Definition needed.'.
-Did you read that the keg_definition of 'Event' is 'Definition needed.'.
-Did you read that the keg_definition of 'default_kpi_bundle' is 'Definition needed.'.
-Did you read that the keg_definition of 'gcal' is 'Definition needed.'.
-Did you read that the keg_definition of 'moment_kpi001_contact_nets' is 'Definition needed.'.
-Did you read that the keg_definition of 'moment_kpi002_person_pledges' is 'Definition needed.'.
-Did you read that the keg_definition of 'WorldName' is 'str first used in ch32. Name of WorldDir'.
-"Did you read that the keg_definition of 'today' is 'Refences the computer's current date, used to create a day_punch.'."
-Did you read that the keg_definition of 'Deal' is 'Definition needed. ch33'.
-Did you read that the keg_definition of 'Gift' is 'Definition needed.'.
-Did you read that the keg_definition of 'Peer' is 'Ch33 Definition needed.'.
-Did you read that the keg_definition of 'PitchID' is 'str first used in ch33. str used to name PitchUnit'.
-Did you read that the keg_definition of 'PitchUnit' is 'Ch33 Definition needed.'.
-Did you read that the keg_definition of 'deal' is 'Definition needed. ch33'.
-Did you read that the keg_definition of 'gift' is 'Definition needed.'.
-Did you read that the keg_definition of 'offer' is 'Ch33 Definition needed.'.
-Did you read that the keg_definition of 'peer' is 'Ch33 Definition needed.'.
-Did you read that the keg_definition of 'pitch' is 'Definition needed.'.
-Did you read that the keg_definition of 'pitch_id' is 'Definition needed.'.
-Did you read that the keg_definition of 'pitcher_name' is 'Ch33 Definition needed.'.
-Did you read that the keg_definition of 'pitchs' is 'Definition needed.'.
-Did you read that the keg_definition of 'request' is 'Ch33 Definition needed.'.
-Did you read that the keg_definition of 'finance' is 'Definition needed.'.
-Did you read that the keg_definition of 'financial' is 'Definition needed.'.
-"Did you read that the keg_definition of 'American' is 'Defined by Joell Ortiz 'Be American, express yourself and take the credit' Notice also what he says about 'you join 'em'. Also relating to the lands, peoples, societies, and governments of the Americas'."
-Did you read that the keg_definition of 'Infinity' is 'As described in Totality and Infinity. Not used in codebase.'.
-Did you read that the keg_definition of 'Pillar' is 'A load-bearing support for a family with prestige. Built of non-prestige families.'.
-Did you read that the keg_definition of 'Totality' is 'As described in Totality and Infinity. Not used in codebase.'.
-Did you read that the keg_definition of 'Water' is 'Definition needed.'.
-Did you read that the keg_definition of 'Wheel' is 'Refers to the KegWheel concept or Randolph C. Wheeler'.
-Did you read that the keg_definition of 'bearing' is 'Concerns load bearing of a Wheel by families under the Wheel.'.
-Did you read that the keg_definition of 'gravity' is 'In Wheel Theory gravity is the natural process of returning FamilyUnits to the Land. Levinas used the term.'.
-Did you read that the keg_definition of 'hose' is 'Definition needed.'.
-Did you read that the keg_definition of 'infinity' is 'As described in Totality and Infinity. Not used in codebase.'.
-Did you read that the keg_definition of 'invite' is 'The giving of prestige from a FamilyUnit with it to a FamilyUnit without it.'.
-"Did you read that the keg_definition of 'land' is 'When referenced in context of KegWheel, the root source of all wheel_size (Power).'."
-Did you read that the keg_definition of 'power' is 'Not used in codebase.'.
-Did you read that the keg_definition of 'totality' is 'As described in Totality and Infinity. Not used in codebase.'.
-Did you read that the keg_definition of 'water' is 'Definition needed.'.
-Did you read that the keg_definition of 'welcome' is 'For a FamilyUnit outside a wheel to get into the Wheel it must be invited.'.
-"Did you read that the keg_definition of 'Faction' is 'A community of FamilyUnits unified by a political loyality. Power is never exercised (or won) by individuals. It is always exercised (or won) by factions. Power is always collective, factional. In the centre of it, there is always a group of individuals, tied with strong informal connections with each other. I call it, a faction.'."
-"Did you read that the keg_definition of 'Hayek' is 'Fredrich Hayek, philosopher. Often incorrectly interpreted and since he's dead he can't refute them.'."
-Did you read that the keg_definition of 'Hobbit' is 'Part of Kazani theory 'The Hobbit Theory of Man' that our grandparents accepted evil within us. Not so now.'.
-Did you read that the keg_definition of 'Kronos' is 'Greek God of War and Time. Known for eating his children.'.
-"Did you read that the keg_definition of 'Land' is 'When referenced in context of KegWheel, the root source of all wheel_size (Power).'."
-"Did you read that the keg_definition of 'Monopoly' is 'One of the most popular boardgames ever created. Published 1935, based on The PropertyOwner's Game by Lizzie Magie.'."
-"Did you read that the keg_definition of 'Ride' is 'The act of recognizing authority, leadership. 'Who do I ride with?''."
-Did you read that the keg_definition of 'Shill' is 'A Rider for a bad person.'.
-Did you read that the keg_definition of 'Soil' is 'Definition needed.'.
-Did you read that the keg_definition of 'climb' is 'To connote the action a FamilyUnit takes to gain Prestige.'.
-Did you read that the keg_definition of 'cow' is 'A FamilyUnit without Prestige. Consider whether it's a useful term.'.
-"Did you read that the keg_definition of 'faction' is 'A community of FamilyUnits unified by a political loyality. Power is never exercised (or won) by individuals. It is always exercised (or won) by factions. Power is always collective, factional. In the centre of it, there is always a group of individuals, tied with strong informal connections with each other. I call it, a faction.'."
-Did you read that the keg_definition of 'hive' is 'A community of FamilyUnits unified by a purpose'.
-"Did you read that the keg_definition of 'impression' is 'The motivation of any decisions. Example 'Governed by the impressions of French and English revolutions, they expected to be overthrown by a military putsch.' Can be synchronic or diachronic.'."
-"Did you read that the keg_definition of 'invitation' is 'From KegWheel theory, describes the act of a FamilyUnit giving another prestige. Or bringing a family outside of Power into Power.'."
-Did you read that the keg_definition of 'knee' is 'Knee and Kneel used to conote a FamilyUnit without Prestige. At least within a wheel's moment. In another moment the FamilyUnit may have prestige.'.
-Did you read that the keg_definition of 'kronosmax' is 'To proactively elimanate not just current threats but potential threats to one's prestige.'.
-Did you read that the keg_definition of 'ladder' is 'A pillar that bears the load required but also extra so Families can move up. A requirement for an invitation. The FamilyUnit out of power must have one to get prestige.'.
-Did you read that the keg_definition of 'lord' is 'Definition needed.'.
-Did you read that the keg_definition of 'losing' is 'The act of a FamilyUnit getting less Prestige.'.
-Did you read that the keg_definition of 'loyal' is 'Definition needed.'.
-Did you read that the keg_definition of 'oil' is 'Definition needed.'.
-Did you read that the keg_definition of 'pay' is 'If you want something you have to pay for it.'.
-Did you read that the keg_definition of 'prestige' is 'An instance of Prestige.'.
-"Did you read that the keg_definition of 'ride' is 'The act of recognizing authority, leadership. 'Who do I ride with?''."
-Did you read that the keg_definition of 'rival' is 'A different FamilyUnit within a Wheel that is in open competition.'.
-Did you read that the keg_definition of 'shill' is 'A Rider for a bad person.'.
-Did you read that the keg_definition of 'soil' is 'Definition needed.'.
-Did you read that the keg_definition of 'tower' is 'Definition needed.'.
-Did you read that the keg_definition of 'trooper' is 'A professional member of the armed services of a Nation-State.'.
-Did you read that the keg_definition of 'winner' is 'A FamilyUnit getting more Prestige.'.
-Did you read that the keg_definition of 'winning' is 'The act of a FamilyUnit getting more Prestige.'.
-Did you read that the keg_definition of 'Climb' is 'To connote the action a FamilyUnit takes to gain Prestige.'.
-"Did you read that the keg_definition of 'Discipline' is 'Moments that have an active budget and ledger, and for which some people crawl has Discipline. A government that exists and is important.'."
-Did you read that the keg_definition of 'Fall' is 'When a FamilyUnit loses all Prestige and exits power.'.
-Did you read that the keg_definition of 'KegWheel' is 'Theory of Political Power learned from Kamil Kazani. The political world changing is represented as a wheel where some people are going up in Prestige and some are going down. The ones going down are incentized to cause chaos to try to get back up.'.
-Did you read that the keg_definition of 'Losing' is 'The act of a FamilyUnit getting less Prestige.'.
-Did you read that the keg_definition of 'Pay' is 'If you want something you have to pay for it.'.
-Did you read that the keg_definition of 'Prestige' is 'Within KegWheel Theory Prestige is the measure of the zero-sum game of power. Any Prestige gained is by definition someone else's lost. Within a MomentUnit. Not used in codebase.'.
-Did you read that the keg_definition of 'Rise' is 'Defined by Busta Rhymes in 'My Shot''.
-Did you read that the keg_definition of 'Shot' is 'I'm not throwing away my shot.'.
-Did you read that the keg_definition of 'Stable' is 'FamilyUnit with prestige and not winning or losing.'.
-Did you read that the keg_definition of 'Welcome' is 'For a FamilyUnit outside a wheel to get into the Wheel it must be invited.'.
-Did you read that the keg_definition of 'Winning' is 'The act of a FamilyUnit getting more Prestige.'.
-Did you read that the keg_definition of 'alien' is 'A bordering Wheel.'.
-Did you read that the keg_definition of 'cling' is 'To connote the action a FamilyUnit takes to avoids losing Prestige.'.
-Did you read that the keg_definition of 'discipline' is 'A moment that has Discipline. Check 'Discipline' definition.'.
-Did you read that the keg_definition of 'drag' is 'Opposite of Lift. When a FamilyUnit shuts off support to bring a FamilyUnit down.'.
-Did you read that the keg_definition of 'fall' is 'When a FamilyUnit loses all Prestige and exits power.'.
-Did you read that the keg_definition of 'jump' is 'To use keg requires a human to jump and try. Not easy. Not used in codebase.'.
-Did you read that the keg_definition of 'kneeler' is 'A FamilyUnit that sets all it's BossMass to one different FamilyUnit.'.
-Did you read that the keg_definition of 'lift' is 'The act of a FamilyUnit lifting another FamilyUnit above them. Ala 'I believe you'll go far!''.
-Did you read that the keg_definition of 'linchpin' is 'A required part of a pillar. If a linchpin stops supporting the pillar it is destoryed.'.
-Did you read that the keg_definition of 'loser' is 'A FamilyUnit getting less Prestige.'.
-Did you read that the keg_definition of 'pillar' is 'A load-bearing support for a family with prestige. Built of non-prestige families.'.
-Did you read that the keg_definition of 'revenge' is 'Definition needed or maybe not.'.
-Did you read that the keg_definition of 'shot' is 'I'm not throwing away my shot.'.
-Did you read that the keg_definition of 'soldier' is 'As defined by Busta Rhymes in song 'My Shot''.
-Did you read that the keg_definition of 'stable' is 'FamilyUnit with prestige and not winning or losing.'.
-Did you read that the keg_definition of 'valor' is 'As defined in 'From Valor to Pedigree' book.'.
-Did you read that the keg_definition of 'wheel' is 'Refers to the KegWheel concept or the wheel concept in library distribution.'.
-Did you read that the keg_definition of 'wheelers' is 'FamilyUnits with Prestige and thus part of the Wheel'.
-Did you read that the keg_definition of 'Puncher' is 'Reserved for use with Puncher app.'.
-Did you read that the keg_definition of 'Team' is 'Definition needed.'.
-Did you read that the keg_definition of 'puncher' is 'Reserved for use with Puncher app.'.
-Did you read that the keg_definition of 'team' is 'Definition needed.'.
+Did you read that the keyword_definition of 'reasonheirs' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'stop_calc' is ', Plan thinkout'."
+"Did you read that the keyword_definition of 'stop_want' is ', Plan seed'."
+"Did you read that the keyword_definition of 'tree_level' is ', Plan thinkout'."
+"Did you read that the keyword_definition of 'tree_traverse_count' is ', Person thinkout'."
+Did you read that the keyword_definition of 'PersonName' is 'str first used in ch08. The LabelTerm used to identify a PersonUnit. Must be a LabelTerm/NameTerm because when identifying if a PlanUnit is an active pledge the PersonName will be compared against ContactNames. If they match the pledge will be active.'.
+Did you read that the keyword_definition of 'PersonUnit' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'ancestors' is ', used with Budget Cells'."
+Did you read that the keyword_definition of 'calc_by_thinkout' is 'Describes when data is defined by thinkout process. Not required seed data.'.
+"Did you read that the keyword_definition of 'contact_mandate_ledger' is ', used with Budget Cells'."
+Did you read that the keyword_definition of 'contact_pool' is 'Definition needed.'.
+Did you read that the keyword_definition of 'contacts' is 'Definition needed.'.
+Did you read that the keyword_definition of 'context_plan_close' is 'Definition needed.'.
+Did you read that the keyword_definition of 'context_plan_denom' is 'Definition needed.'.
+Did you read that the keyword_definition of 'context_plan_morph' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'credor_respect' is ', Person seed.'."
+"Did you read that the keyword_definition of 'debtor_respect' is ', Person seed.'."
+Did you read that the keyword_definition of 'dimen' is 'Definition needed.'.
+Did you read that the keyword_definition of 'dimens' is 'Definition needed.'.
+Did you read that the keyword_definition of 'jkeys' is 'The term 'keys' was too generic. 'jkeys' is less generic.'.
+Did you read that the keyword_definition of 'jvalues' is 'Definition needed.'.
+Did you read that the keyword_definition of 'keep_rope' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'keeps_buildable' is ', Person thinkout'."
+"Did you read that the keyword_definition of 'keeps_justified' is ', Person thinkout'."
+Did you read that the keyword_definition of 'last_lesson_id' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'mandate' is ', used with Budget Cells'."
+"Did you read that the keyword_definition of 'max_tree_traverse' is ', Person seed.'."
+Did you read that the keyword_definition of 'obj_type' is 'Used idenify an attribute's object class. Usually in config files.'.
+"Did you read that the keyword_definition of 'offtrack_fund' is ', Person thinkout'."
+Did you read that the keyword_definition of 'offtrack_kids_poynt_set' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'person_contact_membership' is 'A person dimen representing Membership data. Keys: person_name, contact_name, group_title. person seed.'."
+"Did you read that the keyword_definition of 'person_contactunit' is 'A person dimen representing ParterUnit data. Keys: person_name, contact_name. person seed.'."
+"Did you read that the keyword_definition of 'person_groupunit' is 'A person dimen representing GroupUnit data. Keys: person_name, group_title. person thinkout.'."
+"Did you read that the keyword_definition of 'person_plan_awardunit' is 'A person dimen representing AwardUnit data. Keys: person_name, plan_rope, awardee_title. person seed.'."
+"Did you read that the keyword_definition of 'person_plan_factunit' is 'A person dimen representing FactUnit data. Keys: person_name, plan_rope, fact_context. person seed.'."
+"Did you read that the keyword_definition of 'person_plan_healerunit' is 'A person dimen representing HealerUnit data. Keys: person_name, plan_rope, healer_name. person seed.'."
+"Did you read that the keyword_definition of 'person_plan_laborunit' is 'A person dimen representing HealerUnit data. Keys: person_name, plan_rope, labor_title. person seed.'."
+"Did you read that the keyword_definition of 'person_plan_reason_caseunit' is 'A person dimen representing CaseUnit data. Keys: person_name, plan_rope, reason_context, reason_state. person seed.'."
+"Did you read that the keyword_definition of 'person_plan_reasonunit' is 'A person dimen representing ReasonUnit data. Keys: person_name, plan_rope, reason_context. person seed.'."
+"Did you read that the keyword_definition of 'person_planunit' is 'A person dimen representing PlanUnit data. Keys: person_name, plan_rope. person seed.'."
+Did you read that the keyword_definition of 'personunit' is 'A person dimen representing PersonUnit data. Keys: person_name. person seed.'.
+"Did you read that the keyword_definition of 'planroot' is 'Every PersonUnit has one planunit called the planroot. It can have child planunits and each of them can have child planunits, etc.'."
+Did you read that the keyword_definition of 'prnawar' is 'abbv for person_plan_awardunit'.
+Did you read that the keyword_definition of 'prncase' is 'abbv for person_plan_reason_caseunit'.
+Did you read that the keyword_definition of 'prncont' is 'abbv for person_contactunit'.
+Did you read that the keyword_definition of 'prnfact' is 'abbv for person_plan_factunit'.
+Did you read that the keyword_definition of 'prngrou' is 'abbv for person_groupunit'.
+Did you read that the keyword_definition of 'prnheal' is 'abbv for person_plan_healerunit'.
+Did you read that the keyword_definition of 'prnlabo' is 'abbv for person_plan_laborunit'.
+Did you read that the keyword_definition of 'prnmemb' is 'abbv for person_contact_membership'.
+Did you read that the keyword_definition of 'prnplan' is 'abbv for person_planunit'.
+Did you read that the keyword_definition of 'prnreas' is 'abbv for person_plan_reasonunit'.
+Did you read that the keyword_definition of 'prnunit' is 'abbv for personunit'.
+"Did you read that the keyword_definition of 'reason_contexts' is ', used with Budget Cells'."
+Did you read that the keyword_definition of 'sqlite_datatype' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'sum_healerunit_plans_fund_total' is ', Person thinkout'."
+Did you read that the keyword_definition of 'CRUD_command' is 'str first used in ch09 that represents database CRUD commands'.
+Did you read that the keyword_definition of 'DELETE' is 'CRUD_COMMAND to delete records for a table'.
+Did you read that the keyword_definition of 'INSERT' is 'CRUD_COMMAND to delete records for a table'.
+Did you read that the keyword_definition of 'UPDATE' is 'CRUD_COMMAND to update records for a table. 'Associated dimens: personunit' in 'CRUD_COMMAND to update records for a table''.
+Did you read that the keyword_definition of 'atom' is 'Smallest possible unit of a PersonUnit'.
+Did you read that the keyword_definition of 'awardee_title_ERASE' is 'Definition needed.'.
+Did you read that the keyword_definition of 'column_ordinal' is 'Describes which column in a table the attribute should have. The number '2' would be 3rd column because of starting at 0 index.'.
+Did you read that the keyword_definition of 'contact_name_ERASE' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'crud' is 'Create, Read, Update, Delete. The main things that can be done in a database.'."
+Did you read that the keyword_definition of 'fact_context_ERASE' is 'Definition needed.'.
+Did you read that the keyword_definition of 'group_title_ERASE' is 'Definition needed.'.
+Did you read that the keyword_definition of 'healer_name_ERASE' is 'Definition needed.'.
+Did you read that the keyword_definition of 'labor_title_ERASE' is 'Definition needed.'.
+Did you read that the keyword_definition of 'nesting_order' is 'Definition needed.'.
+Did you read that the keyword_definition of 'normal_specs' is 'Definition needed.'.
+Did you read that the keyword_definition of 'normal_table_name' is 'Definition needed.'.
+Did you read that the keyword_definition of 'person_name_ERASE' is 'Definition needed.'.
+Did you read that the keyword_definition of 'plan_rope_ERASE' is 'Definition needed.'.
+Did you read that the keyword_definition of 'reason_context_ERASE' is 'Definition needed.'.
+Did you read that the keyword_definition of 'reason_state_ERASE' is 'Definition needed.'.
+Did you read that the keyword_definition of 'FaceName' is 'str first used in ch10. The Face is the source of all outside data.'.
+Did you read that the keyword_definition of 'Lasso' is 'Definition needed.'.
+Did you read that the keyword_definition of 'MomentRope' is 'str first used in ch10. The RopeTerm for a Moment. Must contain knots.'.
+Did you read that the keyword_definition of 'gut' is 'Definition needed.'.
+Did you read that the keyword_definition of 'lasso' is 'Definition needed.'.
+Did you read that the keyword_definition of 'moment' is 'Definition needed.'.
+Did you read that the keyword_definition of 'moment_mstr_dir' is 'starting point for most lego file structue. Moment functions usually refernce this directory as root.'.
+"Did you read that the keyword_definition of 'moment_rope' is ', Moment arg, offi_time arg, ceckbook arg, mmtweek arg, mmtmont arg, mmthour arg, bud arg, Person seed, Plan seed, Reason seed, Case seed, Fact seed, Award seed, Workforce seed, Healer seed, Contact seed, Member seed, nabu arg.'."
+Did you read that the keyword_definition of 'spark_face' is 'Every spark has a spark_face that identifies which Face it belongs to. The Face is the source of all outside data. In theory a spark_face can be any data type. In practice it is currently a string data type.'.
+"Did you read that the keyword_definition of 'spark_num' is 'Every spark has a spark_num that identifies its order of ingestion. Sparks are orderd but not necessarily sequential. Spark_num is an int. , used with Budget Cells'."
+Did you read that the keyword_definition of 'job' is 'Definition needed.'.
+Did you read that the keyword_definition of 'listener' is 'Definition needed. Only referenced in ch11.'.
+Did you read that the keyword_definition of 'speaker' is 'Definition needed. Only referenced in ch11.'.
+Did you read that the keyword_definition of 'Epoch' is 'Definition needed.'.
+Did you read that the keyword_definition of 'SparkInt' is 'int first used in ch12. Each Spark is a int that describes the order of data ingestion'.
+Did you read that the keyword_definition of 'TimeNum' is 'int first used in ch12. An Integar that can represent a instant on the TimeNumLine'.
+"Did you read that the keyword_definition of 'amount' is ', ceckbook arg'."
+Did you read that the keyword_definition of 'boss' is 'definition needed'.
+"Did you read that the keyword_definition of 'boss_facts' is ', used with Budget Cells'."
+"Did you read that the keyword_definition of 'bud_contact_nets' is 'ledger of bud outcome. The PersonUnit that embodies the Budget distrubutes the funds per the PersonUnit contacts. dict[ContactName, FundNum]. FundNum can be negative.'."
+"Did you read that the keyword_definition of 'bud_person_name' is ', used with Budget Cells'."
+"Did you read that the keyword_definition of 'bud_time' is 'When a budget adds to the supply, bud arg, Nabuable arg'."
+"Did you read that the keyword_definition of 'celldepth' is ', used with Budget Cells, bud arg'."
+Did you read that the keyword_definition of 'epoch' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'found_facts' is ', used with Budget Cells'."
+Did you read that the keyword_definition of 'magnitude' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'offi_time' is ', offi_time arg, Nabuable arg'."
+Did you read that the keyword_definition of 'offi_time_max' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'person_contacts_net' is 'calculated from loaded TranUnits data. It holds the calculated net output for each PersonName, ContactName tuple.'."
+"Did you read that the keyword_definition of 'personadjust' is ', used with Budget Cells'."
+"Did you read that the keyword_definition of 'personspark_facts' is ', used with Budget Cells'."
+"Did you read that the keyword_definition of 'quota' is 'The importance of a BudUnit. The currency given to the BudUnit to be distributed to Contacts. The magnitude number will always be less then quote because its the sum of how much of the quota is distributed, bud arg, used with Budget Cells'."
+Did you read that the keyword_definition of 'time' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'tran_time' is ', ceckbook arg, Nabuable arg'."
+Did you read that the keyword_definition of 'ManaNum' is 'float first used in ch13. ManaNum inherits from float class'.
+Did you read that the keyword_definition of 'care_amount' is 'Definition needed.'.
+Did you read that the keyword_definition of 'cares' is 'Definition needed.'.
+Did you read that the keyword_definition of 'cycle_carees_curr' is 'Definition needed.'.
+Did you read that the keyword_definition of 'cycle_carees_prev' is 'Definition needed.'.
+Did you read that the keyword_definition of 'cycle_count' is 'Definition needed.'.
+Did you read that the keyword_definition of 'cycle_max' is 'Definition needed.'.
+Did you read that the keyword_definition of 'doctor_count' is 'Definition needed.'.
+Did you read that the keyword_definition of 'doctor_rank_num' is 'Definition needed.'.
+Did you read that the keyword_definition of 'doctor_rank_percent' is 'Definition needed.'.
+Did you read that the keyword_definition of 'keep_patientledgers' is 'Definition needed.'.
+Did you read that the keyword_definition of 'keep_point_magnitude' is 'Definition needed.'.
+Did you read that the keyword_definition of 'need_bill_amount' is 'Definition needed.'.
+Did you read that the keyword_definition of 'need_dues' is 'Definition needed.'.
+Did you read that the keyword_definition of 'need_got_curr' is 'Definition needed.'.
+Did you read that the keyword_definition of 'need_got_prev' is 'Definition needed.'.
+Did you read that the keyword_definition of 'need_paid_amount' is 'Definition needed.'.
+Did you read that the keyword_definition of 'need_paid_bool' is 'Definition needed.'.
+Did you read that the keyword_definition of 'need_paid_rank_num' is 'Definition needed.'.
+Did you read that the keyword_definition of 'need_paid_rank_percent' is 'Definition needed.'.
+Did you read that the keyword_definition of 'need_results' is 'Definition needed.'.
+Did you read that the keyword_definition of 'patient_count' is 'Definition needed.'.
+Did you read that the keyword_definition of 'patient_rank_num' is 'Definition needed.'.
+Did you read that the keyword_definition of 'patient_rank_percent' is 'Definition needed.'.
+Did you read that the keyword_definition of 'rewards_count' is 'Definition needed.'.
+Did you read that the keyword_definition of 'rewards_magnitude' is 'Definition needed.'.
+Did you read that the keyword_definition of 'riverbooks' is 'Definition needed.'.
+Did you read that the keyword_definition of 'rivercares' is 'Definition needed.'.
+Did you read that the keyword_definition of 'rivergrades' is 'Definition needed.'.
+Did you read that the keyword_definition of 'Anaday' is 'First Day of 5 day week of 'Five' Epoch'.
+Did you read that the keyword_definition of 'Baileyday' is 'Second Day of 5 day week of 'Five' Epoch'.
+Did you read that the keyword_definition of 'Chiday' is 'Third Day of 5 day week of 'Five' Epoch'.
+Did you read that the keyword_definition of 'Danceday' is 'Fourth Day of 5 day week of 'Five' Epoch'.
+Did you read that the keyword_definition of 'Eastday' is 'Fifth Day of 5 day week of 'Five' Epoch'.
+Did you read that the keyword_definition of 'EpochLabel' is 'str first used in ch14. EpochLabel is required for every EpochUnit. It is a LabelTerm that must not contain the knot.'.
+Did you read that the keyword_definition of 'TimeShoe' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'c100' is '100 years, sub part of c400_core'."
+"Did you read that the keyword_definition of 'c100_length' is 'A C400Constant for building Epochs: 52,594,560 minutes in 100 year cycle'."
+Did you read that the keyword_definition of 'c400_core' is '400 years without the extra leap day.'.
+"Did you read that the keyword_definition of 'c400_core_length' is 'A C400Constant for building Epochs: 210,378,240 minutes in 400 year cycle without last leap-day'."
+Did you read that the keyword_definition of 'c400_leap' is '400 years with the extra leap day.'.
+"Did you read that the keyword_definition of 'c400_leap_length' is 'A C400Constant for building Epochs: 210,379,680 minutes in 400 year cycle'."
+"Did you read that the keyword_definition of 'c400_number' is 'Epoch config Integer that represents number of 400 year cycles. Defines the range of years in epoch c400_number=7 means 2800 years, Moment arg'."
+Did you read that the keyword_definition of 'clock' is 'String representation of the time during the day. '10:00am' or '0:15hr'.
+"Did you read that the keyword_definition of 'creg' is 'Gregorian time does not have year zero. It was necessary to have year zero so the default epoch technology is Cregorian time, Gregorian time with year 0.'."
+"Did you read that the keyword_definition of 'cumulative_day' is ', mmtmont arg'."
+Did you read that the keyword_definition of 'day' is 'A fundamental structure of time for Keg2. Always assumed to be a 1440 minutes long.'.
+"Did you read that the keyword_definition of 'day_length' is 'A C400Constant for building Epochs: 1,440 minutes in day'."
+Did you read that the keyword_definition of 'dayly_duration_min' is 'Required fields for creating Epoch dayly cases.'.
+Did you read that the keyword_definition of 'dayly_lower_min' is 'Required fields for creating Epoch dayly cases.'.
+Did you read that the keyword_definition of 'days' is 'Definition needed.'.
+Did you read that the keyword_definition of 'days_lower_day' is 'Required fields for creating Epoch every_xdays cases.'.
+Did you read that the keyword_definition of 'days_upper_day' is 'Required fields for creating Epoch every_xdays cases.'.
+Did you read that the keyword_definition of 'duration' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'epoch_label' is 'Epoch config: Name of epoch. Persons may have multiple epochs, they are differentiated by this LabelTerm, Moment arg'."
+Did you read that the keyword_definition of 'epoch_length' is 'Total number of minutes in a Epoch. Calculated by number of minutes in C400_leap times Epoch's c400_number'.
+Did you read that the keyword_definition of 'epoch_min' is 'Definition needed.'.
+Did you read that the keyword_definition of 'every_xdays' is 'Required fields for creating Epoch every_xdays cases.'.
+Did you read that the keyword_definition of 'every_xweeks' is 'Required fields for creating Epoch weekly cases.'.
+"Did you read that the keyword_definition of 'five' is 'An Epoch. A structure for time often used in the codebase. Starts about 5000 years ago, has 16 months, 15 of which are 25 days. Week is 5 days long.'."
+Did you read that the keyword_definition of 'hour' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'hour_label' is ', mmthour arg'."
+"Did you read that the keyword_definition of 'hours_config' is 'Epoch config List of Lists that contain two elements: hour name and the day's minute when it ends. Last item list must contain hour name and 1440 because that is the last minute of the day, partial example: [['12am', 60], ['11pm', 1440]]'."
+"Did you read that the keyword_definition of 'month_label' is ', mmtmont arg'."
+"Did you read that the keyword_definition of 'monthday_index' is 'Epoch config: Changes MonthDay displayed day number. Months' day numbers are assumed to start with 0. The first day of the month is #0. The 3rd day of the month would be Day #2 of month. Most prefer The first day of the month to be 1 even though this makes divisor difficult. If monthday_index=1 then the 3rd day of the month is #3, Moment arg'."
+Did you read that the keyword_definition of 'monthly_duration_days' is 'Required fields for creating Epoch monthly cases.'.
+Did you read that the keyword_definition of 'monthly_monthday_lower' is 'Required fields for creating Epoch monthly cases.'.
+"Did you read that the keyword_definition of 'months_config' is 'Epoch config: List of lists that contain two elements: month name and the year's day when it ends. Last item list must contain year's day equal 365 because it is the last day of the year. [['March', 31], ['February', 365]]'."
+Did you read that the keyword_definition of 'range_duration' is 'Required fields for creating Epoch ranged cases.'.
+Did you read that the keyword_definition of 'range_lower_min' is 'Required fields for creating Epoch ranged cases.'.
+Did you read that the keyword_definition of 'readable' is 'Human readable text. Often for time.'.
+Did you read that the keyword_definition of 'week' is 'A fundamental structure of time for Keg2. Always assumed to be a days long. Never partial days.'.
+"Did you read that the keyword_definition of 'weekdays_config' is 'Epoch config, List of Weekday names. When the Epoch begins the first Weekday in the list is the first day of the Epoch. ['Wednesday', ...'Tuesday'],'."
+Did you read that the keyword_definition of 'weekly_duration_min' is 'Required fields for creating Epoch weekly cases.'.
+Did you read that the keyword_definition of 'weekly_lower_min' is 'Required fields for creating Epoch weekly cases.'.
+Did you read that the keyword_definition of 'weeks' is 'Definition needed.'.
+Did you read that the keyword_definition of 'weeks_lower_week' is 'Required fields for creating Epoch weekly cases.'.
+Did you read that the keyword_definition of 'weeks_upper_week' is 'Required fields for creating Epoch weekly cases.'.
+Did you read that the keyword_definition of 'year' is 'A fundamental structure of time for Keg2. Always 365 days. The leap day is a special other thing in Keg2.'.
+"Did you read that the keyword_definition of 'year_length' is 'A C400Constant for building Epochs: 525,600 minutes in year without leap-day'."
+Did you read that the keyword_definition of 'year_monthday_duration_days' is 'Required fields for creating Epoch year_monthday cases.'.
+Did you read that the keyword_definition of 'year_monthday_lower' is 'Required fields for creating Epoch year_monthday cases.'.
+"Did you read that the keyword_definition of 'yr1_jan1_offset' is 'Epoch config: Number of minutes the calendar is different from March 1, year 1 where Gregorian calendar is projected to year 1. Example 440640 is almost 10 months, Moment arg'."
+"Did you read that the keyword_definition of 'yr4_core' is 'A fundamental structure of time for Keg2. Includes 4 years of 365 days, plan_label for Epoch'."
+"Did you read that the keyword_definition of 'yr4_core_length' is 'A C400Constant for building Epochs: 2,102,400 minutes in 4 year cycle without leap-day'."
+Did you read that the keyword_definition of 'yr4_leap' is 'A fundamental structure of time for Keg2. Includes 4 years of 365 days (yr4_core) and a leap day. The leap day is the last day.'.
+"Did you read that the keyword_definition of 'yr4_leap_length' is 'A C400Constant for building Epochs: 2,103,840 minutes in 4 year cycle'."
+Did you read that the keyword_definition of 'all_tranbook' is 'Definition needed.'.
+Did you read that the keyword_definition of 'ceckbook' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'cumulative_minute' is ', mmthour argDefinition needed.'."
+"Did you read that the keyword_definition of 'job_listen_rotations' is ', Moment arg'."
+Did you read that the keyword_definition of 'moment_budunit' is 'Definition needed.'.
+Did you read that the keyword_definition of 'moment_ceckbook' is 'Definition needed.'.
+Did you read that the keyword_definition of 'moment_epoch_hour' is 'Definition needed.'.
+Did you read that the keyword_definition of 'moment_epoch_month' is 'Definition needed.'.
+Did you read that the keyword_definition of 'moment_epoch_weekday' is 'Definition needed.'.
+Did you read that the keyword_definition of 'moment_static' is 'Used to identify if the data can change or must be identify when the Moment of instantization.'.
+Did you read that the keyword_definition of 'moment_timeoffi' is 'Definition needed.'.
+Did you read that the keyword_definition of 'momentunit' is 'Definition needed.'.
+Did you read that the keyword_definition of 'offi_times' is 'Definition needed.'.
+Did you read that the keyword_definition of 'personbudhistorys' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'weekday_label' is ', mmtweek arg'."
+"Did you read that the keyword_definition of 'weekday_order' is ', mmtweek arg'."
+Did you read that the keyword_definition of 'Nabu' is 'Definition needed.'.
+Did you read that the keyword_definition of 'NabuTime' is 'Definition needed.'.
+Did you read that the keyword_definition of 'inx_epoch_diff' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'inx_time' is ', nabu arg'."
+Did you read that the keyword_definition of 'nabu' is 'Definition needed.'.
+Did you read that the keyword_definition of 'nabu_timenum' is 'Definition needed.'.
+Did you read that the keyword_definition of 'otx2inx' is 'Definition needed.'.
+Did you read that the keyword_definition of 'otx_epoch_length' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'otx_time' is ', nabu arg'."
+Did you read that the keyword_definition of 'timenabu' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'inx_knot' is ', TRANSLATE_LABEL arg, TRANSLATE_NAME arg, TRANSLATE_ROPE arg, TRANSLATE_TITLE arg'."
+"Did you read that the keyword_definition of 'inx_label' is ', TRANSLATE_LABEL arg'."
+"Did you read that the keyword_definition of 'inx_name' is ', TRANSLATE_NAME arg'."
+"Did you read that the keyword_definition of 'inx_rope' is ', TRANSLATE_ROPE arg'."
+"Did you read that the keyword_definition of 'inx_title' is ', TRANSLATE_TITLE arg'."
+Did you read that the keyword_definition of 'labelmap' is 'Definition needed.'.
+Did you read that the keyword_definition of 'namemap' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'otx_knot' is ', TRANSLATE_LABEL arg, TRANSLATE_NAME arg, TRANSLATE_ROPE arg, TRANSLATE_TITLE arg'."
+"Did you read that the keyword_definition of 'otx_label' is ', TRANSLATE_LABEL arg'."
+"Did you read that the keyword_definition of 'otx_name' is ', TRANSLATE_NAME arg'."
+"Did you read that the keyword_definition of 'otx_rope' is ', TRANSLATE_ROPE arg'."
+"Did you read that the keyword_definition of 'otx_title' is ', TRANSLATE_TITLE arg'."
+Did you read that the keyword_definition of 'ropemap' is 'Definition needed.'.
+Did you read that the keyword_definition of 'titlemap' is 'Definition needed.'.
+Did you read that the keyword_definition of 'translate' is 'Definition needed.'.
+Did you read that the keyword_definition of 'translate_core' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'translate_label' is ''translate_label' is a translation dimen where otx_label is translated by inx_knot, inx_label, otx_knot, unknown_str'."
+"Did you read that the keyword_definition of 'translate_name' is ''translate_name' is a translation dimen where otx_name is translated by inx_knot, inx_name, otx_knot, unknown_str'."
+"Did you read that the keyword_definition of 'translate_rope' is ''translate_rope' is a translation dimen where otx_rope is translated by inx_knot, inx_rope, otx_knot, unknown_str'."
+"Did you read that the keyword_definition of 'translate_title' is ''translate_title' is a translation dimen where otx_title is translated by inx_knot, inx_title, otx_knot, unknown_str'."
+Did you read that the keyword_definition of 'translateunit' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'unknown_str' is ', TRANSLATE_LABEL arg, TRANSLATE_NAME arg, TRANSLATE_ROPE arg, TRANSLATE_TITLE arg'."
+"Did you read that the keyword_definition of 'duck' is 'Definition needed. Maybe someone who can dive, swim, walk, knee, and fly. All the things.'."
+Did you read that the keyword_definition of 'Border' is 'Defines line of influence between two Wheels. Also used by graphics and apps.'.
+Did you read that the keyword_definition of 'Excel' is 'A spreadsheet format.'.
+Did you read that the keyword_definition of 'SheetName' is 'A string used as SheetName for SpreadSheet files. str first used in ch20'.
+Did you read that the keyword_definition of 'allowed_crud' is 'Each brick config dimen has an allowed_crud that describes whether the data may be updated/deleted/inserted more than one.'.
+Did you read that the keyword_definition of 'attributes' is 'General term used to describe things about another thing'.
+Did you read that the keyword_definition of 'awardee_title_ERASE_inx' is 'The 'awardee_title_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'awardee_title_ERASE_otx' is 'The 'awardee_title_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'awardee_title_inx' is 'The 'awardee_title' value after Translate.'.
+Did you read that the keyword_definition of 'awardee_title_otx' is 'The 'awardee_title' value after Translate.'.
+Did you read that the keyword_definition of 'bk' is 'Brick Format Identifier. Every brick_type format starts with 'bk' and then 5 numbers.'.
+Did you read that the keyword_definition of 'border' is 'Defines line of influence between two Wheels. Also used by graphics and apps.'.
+Did you read that the keyword_definition of 'brick' is 'Definition needed.'.
+Did you read that the keyword_definition of 'brick_category' is 'Definition needed.'.
+Did you read that the keyword_definition of 'brick_type' is 'Definition needed.'.
+Did you read that the keyword_definition of 'bud_time_inx' is 'The 'bud_time' value after Translate.'.
+Did you read that the keyword_definition of 'bud_time_otx' is 'The 'bud_time' value after Translate.'.
+Did you read that the keyword_definition of 'build_order' is 'When building a world the order of dimen data implementation must be deterministic. build_order defines the order dimens are evaluated for a World.'.
+Did you read that the keyword_definition of 'contact_name_ERASE_inx' is 'The 'contact_name_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'contact_name_ERASE_otx' is 'The 'contact_name_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'contact_name_inx' is 'The 'contact_name' value after Translate.'.
+Did you read that the keyword_definition of 'contact_name_otx' is 'The 'contact_name' value after Translate.'.
+"Did you read that the keyword_definition of 'delete_insert' is 'Associated dimens: person_plan_healerunit, person_plan_laborunit'."
+"Did you read that the keyword_definition of 'delete_insert_update' is 'Associated dimens: person_contact_membership, person_contactunit, person_plan_awardunit, person_plan_factunit, person_plan_reason_caseunit, person_plan_reasonunit, person_planunit' in 'Associated dimens: person_planunit, person_contactunit, person_plan_reasonunit, person_plan_factunit, person_plan_awardunit, person_contact_membership, person_plan_reason_caseunit'."
+"Did you read that the keyword_definition of 'delete_update' is 'Associated dimens: person_plan_healerunit, person_plan_laborunit'."
+Did you read that the keyword_definition of 'epoch_label_inx' is 'The 'epoch_label' value after Translate.'.
+Did you read that the keyword_definition of 'epoch_label_otx' is 'The 'epoch_label' value after Translate.'.
+Did you read that the keyword_definition of 'error_message' is 'Definition needed.'.
+Did you read that the keyword_definition of 'excel' is 'A spreadsheet format.'.
+Did you read that the keyword_definition of 'fact_context_ERASE_inx' is 'The 'fact_context_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'fact_context_ERASE_otx' is 'The 'fact_context_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'fact_context_inx' is 'The 'fact_context' value after Translate.'.
+Did you read that the keyword_definition of 'fact_context_otx' is 'The 'fact_context' value after Translate.'.
+Did you read that the keyword_definition of 'fact_lower_inx' is 'The 'fact_lower' value after Translate.'.
+Did you read that the keyword_definition of 'fact_lower_otx' is 'The 'fact_lower' value after Translate.'.
+Did you read that the keyword_definition of 'fact_state_inx' is 'The 'fact_state' value after Translate.'.
+Did you read that the keyword_definition of 'fact_state_otx' is 'The 'fact_state' value after Translate.'.
+Did you read that the keyword_definition of 'fact_upper_inx' is 'The 'fact_upper' value after Translate.'.
+Did you read that the keyword_definition of 'fact_upper_otx' is 'The 'fact_upper' value after Translate.'.
+Did you read that the keyword_definition of 'fund_rank' is 'Definition needed.'.
+Did you read that the keyword_definition of 'group_title_ERASE_inx' is 'The 'group_title_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'group_title_ERASE_otx' is 'The 'group_title_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'group_title_inx' is 'The 'group_title' value after Translate.'.
+Did you read that the keyword_definition of 'group_title_otx' is 'The 'group_title' value after Translate.'.
+Did you read that the keyword_definition of 'healer_name_ERASE_inx' is 'The 'healer_name_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'healer_name_ERASE_otx' is 'The 'healer_name_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'healer_name_inx' is 'The 'healer_name' value after Translate.'.
+Did you read that the keyword_definition of 'healer_name_otx' is 'The 'healer_name' value after Translate.'.
+Did you read that the keyword_definition of 'hour_label_inx' is 'The 'hour_label' value after Translate.'.
+Did you read that the keyword_definition of 'hour_label_otx' is 'The 'hour_label' value after Translate.'.
+"Did you read that the keyword_definition of 'insert_multiple' is 'Associated dimens: moment_budunit, moment_ceckbook, moment_timeoffi'."
+"Did you read that the keyword_definition of 'insert_one_time' is 'Associated dimens: moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, momentunit, nabu_timenum, translate_label, translate_name, translate_rope, translate_title'."
+Did you read that the keyword_definition of 'insert_update' is 'Definition needed.'.
+Did you read that the keyword_definition of 'labor_title_ERASE_inx' is 'The 'labor_title_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'labor_title_ERASE_otx' is 'The 'labor_title_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'labor_title_inx' is 'The 'labor_title' value after Translate.'.
+Did you read that the keyword_definition of 'labor_title_otx' is 'The 'labor_title' value after Translate.'.
+Did you read that the keyword_definition of 'moment_rope_inx' is 'The 'moment_rope' value after Translate.'.
+Did you read that the keyword_definition of 'moment_rope_otx' is 'The 'moment_rope' value after Translate.'.
+Did you read that the keyword_definition of 'month_label_inx' is 'The 'month_label' value after Translate.'.
+Did you read that the keyword_definition of 'month_label_otx' is 'The 'month_label' value after Translate.'.
+Did you read that the keyword_definition of 'net_funds' is 'Definition needed.'.
+Did you read that the keyword_definition of 'offi_time_inx' is 'The 'offi_time' value after Translate.'.
+Did you read that the keyword_definition of 'offi_time_otx' is 'The 'offi_time' value after Translate.'.
+Did you read that the keyword_definition of 'otx_key' is 'Definition needed.'.
+Did you read that the keyword_definition of 'person_name_ERASE_inx' is 'The 'person_name_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'person_name_ERASE_otx' is 'The 'person_name_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'person_name_inx' is 'The 'person_name' value after Translate.'.
+Did you read that the keyword_definition of 'person_name_otx' is 'The 'person_name' value after Translate.'.
+Did you read that the keyword_definition of 'plan_rope_ERASE_inx' is 'The 'plan_rope_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'plan_rope_ERASE_otx' is 'The 'plan_rope_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'plan_rope_inx' is 'The 'plan_rope' value after Translate.'.
+Did you read that the keyword_definition of 'plan_rope_otx' is 'The 'plan_rope' value after Translate.'.
+Did you read that the keyword_definition of 'pledges_count' is 'Definition needed.'.
+Did you read that the keyword_definition of 'reason_context_ERASE_inx' is 'The 'reason_context_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'reason_context_ERASE_otx' is 'The 'reason_context_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'reason_context_inx' is 'The 'reason_context' value after Translate.'.
+Did you read that the keyword_definition of 'reason_context_otx' is 'The 'reason_context' value after Translate.'.
+Did you read that the keyword_definition of 'reason_lower_inx' is 'The 'reason_lower' value after Translate.'.
+Did you read that the keyword_definition of 'reason_lower_otx' is 'The 'reason_lower' value after Translate.'.
+Did you read that the keyword_definition of 'reason_state_ERASE_inx' is 'The 'reason_state_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'reason_state_ERASE_otx' is 'The 'reason_state_ERASE' value after Translate.'.
+Did you read that the keyword_definition of 'reason_state_inx' is 'The 'reason_state' value after Translate.'.
+Did you read that the keyword_definition of 'reason_state_otx' is 'The 'reason_state' value after Translate.'.
+Did you read that the keyword_definition of 'reason_upper_inx' is 'The 'reason_upper' value after Translate.'.
+Did you read that the keyword_definition of 'reason_upper_otx' is 'The 'reason_upper' value after Translate.'.
+"Did you read that the keyword_definition of 'sheet' is 'Object that represents a spreadsheet. It has attributes like filename, table_name, and data.'."
+Did you read that the keyword_definition of 'source_dimen' is 'Definition needed.'.
+Did you read that the keyword_definition of 'spark_face_inx' is 'The 'spark_face' value after Translate.'.
+Did you read that the keyword_definition of 'spark_face_otx' is 'The 'spark_face' value after Translate.'.
+Did you read that the keyword_definition of 'tran_time_inx' is 'The 'tran_time' value after Translate.'.
+Did you read that the keyword_definition of 'tran_time_otx' is 'The 'tran_time' value after Translate.'.
+Did you read that the keyword_definition of 'translate_spark_num' is 'Definition needed.'.
+Did you read that the keyword_definition of 'weekday_label_inx' is 'The 'weekday_label' value after Translate.'.
+Did you read that the keyword_definition of 'weekday_label_otx' is 'The 'weekday_label' value after Translate.'.
+Did you read that the keyword_definition of 'world_name' is 'Definition needed.'.
+Did you read that the keyword_definition of 'b_agg' is '5 character abbreviation of brixk_agg. stage_type_order=4 Brick Agg: The Brick Raw tables are aggregated to elimanate duplicates.'.
+Did you read that the keyword_definition of 'b_raw' is '5 character abbreviation of brixk_raw. stage_type_order=3 Brick Raw: The importable Excel Sheets entering the database'.
+Did you read that the keyword_definition of 'b_src' is '5 character abbreviation of brixk_src. stage_type_order=2 Brick files. Brick formats with SparkNum.'.
+Did you read that the keyword_definition of 'b_vld' is '5 character abbreviation of brixk_vld. stage_type_order=4 Brick Vld: .'.
+Did you read that the keyword_definition of 'brixk_agg' is 'stage_type_order=4 Brick Agg: The Brick Raw tables are aggregated to elimanate duplicates.'.
+Did you read that the keyword_definition of 'brixk_raw' is 'stage_type_order=3 Brick Raw: The importable Excel Sheets entering the database'.
+Did you read that the keyword_definition of 'brixk_src' is 'stage_type_order=2 Brick files. Brick formats with SparkNum.'.
+Did you read that the keyword_definition of 'brixk_vld' is 'stage_type_order=6 Brick Valid: The Brick Agg tables filtered to correct datatypes. '.
+Did you read that the keyword_definition of 'h_agg' is '5 character abbreviation of heard_agg. stage_type_order=11 Populated by aggregated Heard Raw tables. Nabu number conversions take place here.'.
+Did you read that the keyword_definition of 'h_raw' is '5 character abbreviation of heard_raw. stage_type_order=10 Populated by Sound Valid tables'.
+Did you read that the keyword_definition of 'h_vld' is '5 character abbreviation of heard_vld. stage_type_order=12 Populated by aggregated and Nabu changed Heard Agg tables'.
+Did you read that the keyword_definition of 'heard_agg' is 'stage_type_order=11 Populated by aggregated Heard Raw tables. Nabu number conversions take place here.'.
+Did you read that the keyword_definition of 'heard_raw' is 'stage_type_order=10 Populated by Sound Valid tables'.
+Did you read that the keyword_definition of 'heard_vld' is 'stage_type_order=12 Populated by aggregated and Nabu changed Heard Agg tables'.
+"Did you read that the keyword_definition of 'i_dst' is '5 character abbreviation of ideax_dst. stage_type_order=14 Idea (Brick formats without SparkNum) Destination. Filtered Job, Moment data.'."
+Did you read that the keyword_definition of 'i_src' is '5 character abbreviation of ideax_src. stage_type_order=1 Idea Source files. Brick formats without SparkNum.'.
+Did you read that the keyword_definition of 'idea' is 'A collection of bricks (currently only in brick format) with a spark_face but no spark_num. Conceptually ideas are things that represent direct promises to the soul. People are made of ideas and share them.'.
+"Did you read that the keyword_definition of 'ideax_dst' is 'stage_type_order=14 Idea (Brick formats without SparkNum) Destination. Filtered Job, Moment data.'."
+Did you read that the keyword_definition of 'ideax_src' is 'stage_type_order=1 Idea Source files. Brick formats without SparkNum.'.
+Did you read that the keyword_definition of 'k_vld' is '5 character abbreviation of brixk_vld. stage_type_order=6 Brick Valid: The Brick Agg tables filtered to correct datatypes. '.
+Did you read that the keyword_definition of 'lego' is '5 character abbreviation of legox_mst. stage_type_order=13 File buildout of Moments and PersonUnits. Word used to describe the end state of the core ETL pipeline. All core data should be in the database. Files may still be accessible. KPIs should all be sourced from it.'.
+Did you read that the keyword_definition of 'legox_mst' is 'stage_type_order=13 File buildout of Moments and PersonUnits'.
+Did you read that the keyword_definition of 'mmtbudd' is 'abbv for moment_budunit'.
+Did you read that the keyword_definition of 'mmtceck' is 'abbv for moment_ceckbook'.
+Did you read that the keyword_definition of 'mmthour' is 'abbv for moment_epoch_hour'.
+Did you read that the keyword_definition of 'mmtmont' is 'abbv for moment_epoch_month'.
+Did you read that the keyword_definition of 'mmtoffi' is 'abbv for moment_timeoffi'.
+Did you read that the keyword_definition of 'mmtunit' is 'abbv for momentunit'.
+Did you read that the keyword_definition of 'mmtweek' is 'abbv for moment_epoch_weekday'.
+Did you read that the keyword_definition of 'moment_ote1_agg' is 'Create Database Table that holds all spark_num to bud_time pairs. Include moment_rope and person_name'.
+Did you read that the keyword_definition of 'nabtime' is 'abbv for nabu_timenum'.
+Did you read that the keyword_definition of 'person_net_amount' is 'Definition needed.'.
+Did you read that the keyword_definition of 's_agg' is '5 character abbreviation of sound_agg. stage_type_order=8 Populated by aggregated Sound Raw dimen data (elimanate duplicates). Translate Core data is validated then used to translate non-Translate dimen data'.
+Did you read that the keyword_definition of 's_raw' is '5 character abbreviation of sound_raw. stage_type_order=7 The Brick Valid data is seperated by column into dimen data such as person_planunit and moment_budunit'.
+Did you read that the keyword_definition of 's_vld' is '5 character abbreviation of sound_vld. stage_type_order=9 The Translated Sound Agg data is aggregated to elimanate duplicates into Sound Valid'.
+Did you read that the keyword_definition of 'sound_agg' is 'stage_type_order=8 Populated by aggregated Sound Raw dimen data (elimanate duplicates). Translate Core data is validated then used to translate non-Translate dimen data'.
+Did you read that the keyword_definition of 'sound_raw' is 'stage_type_order=7 The Brick Valid data is seperated by column into dimen data such as person_planunit and moment_budunit'.
+Did you read that the keyword_definition of 'sound_vld' is 'stage_type_order=9 The Translated Sound Agg data is aggregated to elimanate duplicates into Sound Valid'.
+Did you read that the keyword_definition of 'trlcore' is 'abbv for translate_core'.
+Did you read that the keyword_definition of 'trllabe' is 'abbv for translate_label'.
+Did you read that the keyword_definition of 'trlname' is 'abbv for translate_name'.
+Did you read that the keyword_definition of 'trlrope' is 'abbv for translate_rope'.
+Did you read that the keyword_definition of 'trltitl' is 'abbv for translate_title'.
+Did you read that the keyword_definition of 'day_punch' is 'A report that summarizes the tasks of a person for a day.'.
+Did you read that the keyword_definition of 'fission' is 'Any complicated step changing idea_type to brick_type. Each fission_step makes a single type of change. Can be simple (set value to X) or complicated (add missing rows with relative values). Only referenced in ch23'.
+Did you read that the keyword_definition of 'idea_type' is 'Definition needed.'.
+Did you read that the keyword_definition of 'ii' is 'Idea Format Identifier. Every idea_type format starts with 'ii' and then 5 numbers. Every brick_type has a mirrored idea_type. Multiple idea_types can map to single brick_type'.
+Did you read that the keyword_definition of 'moment_tranbook_nets' is 'Definition needed.'.
+Did you read that the keyword_definition of 'sparks_b_agg' is 'Definition needed.'.
+Did you read that the keyword_definition of 'sparks_b_vld' is 'Definition needed.'.
+Did you read that the keyword_definition of 'vow' is 'ideas created for audience'.
+Did you read that the keyword_definition of 'DayEvent' is 'Definition needed.'.
+Did you read that the keyword_definition of 'Event' is 'Definition needed.'.
+Did you read that the keyword_definition of 'default_kpi_bundle' is 'Definition needed.'.
+Did you read that the keyword_definition of 'gcal' is 'Definition needed.'.
+Did you read that the keyword_definition of 'moment_kpi001_contact_nets' is 'Definition needed.'.
+Did you read that the keyword_definition of 'moment_kpi002_person_pledges' is 'Definition needed.'.
+Did you read that the keyword_definition of 'WorldName' is 'str first used in ch32. Name of WorldDir'.
+"Did you read that the keyword_definition of 'today' is 'Refences the computer's current date, used to create a day_punch.'."
+Did you read that the keyword_definition of 'Deal' is 'Definition needed. ch33'.
+Did you read that the keyword_definition of 'Gift' is 'Definition needed.'.
+Did you read that the keyword_definition of 'Peer' is 'Ch33 Definition needed.'.
+Did you read that the keyword_definition of 'PitchID' is 'str first used in ch33. str used to name PitchUnit'.
+Did you read that the keyword_definition of 'PitchUnit' is 'Ch33 Definition needed.'.
+Did you read that the keyword_definition of 'Promise' is 'Definition needed.'.
+Did you read that the keyword_definition of 'PromiseUnit' is 'Contains a set Ideas that can be converted into Atoms.'.
+Did you read that the keyword_definition of 'deal' is 'Definition needed. ch33'.
+Did you read that the keyword_definition of 'gift' is 'Definition needed.'.
+Did you read that the keyword_definition of 'offer' is 'Ch33 Definition needed.'.
+Did you read that the keyword_definition of 'peer' is 'Ch33 Definition needed.'.
+Did you read that the keyword_definition of 'pitch' is 'Definition needed.'.
+Did you read that the keyword_definition of 'pitch_id' is 'Definition needed.'.
+Did you read that the keyword_definition of 'pitcher_name' is 'Ch33 Definition needed.'.
+Did you read that the keyword_definition of 'pitchs' is 'Definition needed.'.
+Did you read that the keyword_definition of 'promise' is 'Definition needed.'.
+Did you read that the keyword_definition of 'request' is 'Ch33 Definition needed.'.
+Did you read that the keyword_definition of 'finance' is 'Definition needed.'.
+Did you read that the keyword_definition of 'financial' is 'Definition needed.'.
+Did you read that the keyword_definition of 'News' is 'Definition needed.'.
+Did you read that the keyword_definition of 'news' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'American' is 'Defined by Joell Ortiz 'Be American, express yourself and take the credit' Notice also what he says about 'you join 'em'. Also relating to the lands, peoples, societies, and governments of the Americas'."
+Did you read that the keyword_definition of 'Infinity' is 'As described in Totality and Infinity.'.
+Did you read that the keyword_definition of 'Pillar' is 'A load-bearing support for a family with prestige. Built of non-prestige families.'.
+Did you read that the keyword_definition of 'Totality' is 'As described in Totality and Infinity.'.
+Did you read that the keyword_definition of 'Water' is 'Definition needed.'.
+Did you read that the keyword_definition of 'Wheel' is 'Refers to the KegWheel concept or Randolph C. Wheeler'.
+Did you read that the keyword_definition of 'bearing' is 'Concerns load bearing of a Wheel by families under the Wheel.'.
+Did you read that the keyword_definition of 'gravity' is 'In Wheel Theory gravity is the natural process of returning FamilyUnits to the Land. Levinas used the term.'.
+Did you read that the keyword_definition of 'hose' is 'Definition needed.'.
+Did you read that the keyword_definition of 'infinity' is 'As described in Totality and Infinity.'.
+Did you read that the keyword_definition of 'invite' is 'The giving of prestige from a FamilyUnit with it to a FamilyUnit without it.'.
+"Did you read that the keyword_definition of 'land' is 'When referenced in context of KegWheel, the root source of all wheel_size (Power).'."
+Did you read that the keyword_definition of 'power' is 'Defintion needed.'.
+Did you read that the keyword_definition of 'totality' is 'As described in Totality and Infinity.'.
+Did you read that the keyword_definition of 'water' is 'Definition needed.'.
+Did you read that the keyword_definition of 'welcome' is 'For a FamilyUnit outside a wheel to get into the Wheel it must be invited.'.
+"Did you read that the keyword_definition of 'Faction' is 'A community of FamilyUnits unified by a political loyality. Power is never exercised (or won) by individuals. It is always exercised (or won) by factions. Power is always collective, factional. In the centre of it, there is always a group of individuals, tied with strong informal connections with each other. I call it, a faction.'."
+"Did you read that the keyword_definition of 'Hayek' is 'Fredrich Hayek, philosopher. Often incorrectly interpreted and since he's dead he can't refute them.'."
+Did you read that the keyword_definition of 'Hobbit' is 'Part of Kazani theory 'The Hobbit Theory of Man' that our grandparents accepted evil within us. Not so now.'.
+Did you read that the keyword_definition of 'Kronos' is 'Greek God of War and Time. Known for eating his children.'.
+"Did you read that the keyword_definition of 'Land' is 'When referenced in context of KegWheel, the root source of all wheel_size (Power).'."
+"Did you read that the keyword_definition of 'Monopoly' is 'One of the most popular boardgames ever created. Published 1935, based on The PropertyOwner's Game by Lizzie Magie.'."
+"Did you read that the keyword_definition of 'Ride' is 'The act of recognizing authority, leadership. 'Who do I ride with?''."
+Did you read that the keyword_definition of 'Shill' is 'A Rider for a bad person.'.
+Did you read that the keyword_definition of 'Soil' is 'Definition needed.'.
+Did you read that the keyword_definition of 'cow' is 'A FamilyUnit without Prestige. Consider whether it's a useful term.'.
+"Did you read that the keyword_definition of 'faction' is 'A community of FamilyUnits unified by a political loyality. Power is never exercised (or won) by individuals. It is always exercised (or won) by factions. Power is always collective, factional. In the centre of it, there is always a group of individuals, tied with strong informal connections with each other. I call it, a faction.'."
+Did you read that the keyword_definition of 'hive' is 'A community of FamilyUnits unified by a purpose'.
+"Did you read that the keyword_definition of 'impression' is 'The motivation of any decisions. Example 'Governed by the impressions of French and English revolutions, they expected to be overthrown by a military putsch.' Can be synchronic or diachronic.'."
+"Did you read that the keyword_definition of 'invitation' is 'From KegWheel theory, describes the act of a FamilyUnit giving another prestige. Or bringing a family outside of Power into Power.'."
+Did you read that the keyword_definition of 'knee' is 'Knee and Kneel used to conote a FamilyUnit without Prestige. At least within a wheel's moment. In another moment the FamilyUnit may have prestige.'.
+Did you read that the keyword_definition of 'kronosmax' is 'To proactively elimanate not just current threats but potential threats to one's prestige.'.
+Did you read that the keyword_definition of 'ladder' is 'A pillar that bears the load required but also extra so Families can move up. A requirement for an invitation. The FamilyUnit out of power must have one to get prestige.'.
+Did you read that the keyword_definition of 'lord' is 'Definition needed.'.
+Did you read that the keyword_definition of 'losing' is 'The act of a FamilyUnit getting less Prestige.'.
+Did you read that the keyword_definition of 'loyal' is 'Definition needed.'.
+Did you read that the keyword_definition of 'oil' is 'Definition needed.'.
+Did you read that the keyword_definition of 'pay' is 'If you want something you have to pay for it.'.
+Did you read that the keyword_definition of 'prestige' is 'An instance of Prestige.'.
+"Did you read that the keyword_definition of 'ride' is 'The act of recognizing authority, leadership. 'Who do I ride with?''."
+Did you read that the keyword_definition of 'rival' is 'A different FamilyUnit within a Wheel that is in open competition.'.
+Did you read that the keyword_definition of 'shill' is 'A Rider for a bad person.'.
+Did you read that the keyword_definition of 'soil' is 'Definition needed.'.
+Did you read that the keyword_definition of 'tower' is 'Definition needed.'.
+Did you read that the keyword_definition of 'trooper' is 'A professional member of the armed services of a Nation-State.'.
+Did you read that the keyword_definition of 'winner' is 'A FamilyUnit getting more Prestige.'.
+Did you read that the keyword_definition of 'winning' is 'The act of a FamilyUnit getting more Prestige.'.
+Did you read that the keyword_definition of 'Climb' is 'To connote the action a FamilyUnit takes to gain Prestige.'.
+"Did you read that the keyword_definition of 'Discipline' is 'Moments that have an active budget and ledger, and for which some people crawl has Discipline. A government that exists and is important.'."
+Did you read that the keyword_definition of 'Fall' is 'When a FamilyUnit loses all Prestige and exits power.'.
+Did you read that the keyword_definition of 'Honor' is 'Definition Needed.'.
+Did you read that the keyword_definition of 'KegWheel' is 'Theory of Political Power learned from Kamil Kazani. The political world changing is represented as a wheel where some people are going up in Prestige and some are going down. The ones going down are incentized to cause chaos to try to get back up.'.
+Did you read that the keyword_definition of 'Losing' is 'The act of a FamilyUnit getting less Prestige.'.
+Did you read that the keyword_definition of 'Pay' is 'If you want something you have to pay for it.'.
+Did you read that the keyword_definition of 'Prestige' is 'Within KegWheel Theory Prestige is the measure of the zero-sum game of power. Any Prestige gained is by definition someone else's lost. Within a MomentUnit.'.
+Did you read that the keyword_definition of 'Rise' is 'Defined by Busta Rhymes in 'My Shot''.
+Did you read that the keyword_definition of 'Shot' is 'I'm not throwing away my shot.'.
+Did you read that the keyword_definition of 'Stable' is 'FamilyUnit with prestige and not winning or losing.'.
+Did you read that the keyword_definition of 'Welcome' is 'For a FamilyUnit outside a wheel to get into the Wheel it must be invited.'.
+Did you read that the keyword_definition of 'Winning' is 'The act of a FamilyUnit getting more Prestige.'.
+Did you read that the keyword_definition of 'alien' is 'A bordering Wheel.'.
+Did you read that the keyword_definition of 'climb' is 'To connote the action a FamilyUnit takes to gain Prestige.'.
+Did you read that the keyword_definition of 'cling' is 'To connote the action a FamilyUnit takes to avoids losing Prestige.'.
+Did you read that the keyword_definition of 'discipline' is 'A moment that has Discipline. Check 'Discipline' definition.'.
+Did you read that the keyword_definition of 'drag' is 'Opposite of Lift. When a FamilyUnit shuts off support to bring a FamilyUnit down.'.
+Did you read that the keyword_definition of 'fall' is 'When a FamilyUnit loses all Prestige and exits power.'.
+Did you read that the keyword_definition of 'honor' is 'Definition Needed.'.
+Did you read that the keyword_definition of 'jump' is 'To use keg requires a human to jump and try. Not easy.'.
+Did you read that the keyword_definition of 'kneeler' is 'A FamilyUnit that sets all it's BossMass to one different FamilyUnit.'.
+Did you read that the keyword_definition of 'lift' is 'The act of a FamilyUnit lifting another FamilyUnit above them. Ala 'I believe you'll go far!''.
+Did you read that the keyword_definition of 'linchpin' is 'A required part of a pillar. If a linchpin stops supporting the pillar it is destoryed.'.
+Did you read that the keyword_definition of 'loser' is 'A FamilyUnit getting less Prestige.'.
+Did you read that the keyword_definition of 'pillar' is 'A load-bearing support for a family with prestige. Built of non-prestige families.'.
+Did you read that the keyword_definition of 'revenge' is 'Definition needed or maybe not.'.
+Did you read that the keyword_definition of 'shot' is 'I'm not throwing away my shot.'.
+Did you read that the keyword_definition of 'soldier' is 'As defined by Busta Rhymes in song 'My Shot''.
+Did you read that the keyword_definition of 'stable' is 'FamilyUnit with prestige and not winning or losing.'.
+Did you read that the keyword_definition of 'valor' is 'As defined in 'From Valor to Pedigree' book.'.
+Did you read that the keyword_definition of 'wheel' is 'Refers to the KegWheel concept or the wheel concept in library distribution.'.
+Did you read that the keyword_definition of 'wheelers' is 'FamilyUnits with Prestige and thus part of the Wheel'.
+Did you read that the keyword_definition of 'Purpil' is 'Fable term: the medium where moments are shared'.
+Did you read that the keyword_definition of 'Puncher' is 'Reserved for use with Puncher app.'.
+Did you read that the keyword_definition of 'Team' is 'Definition needed.'.
+Did you read that the keyword_definition of 'puncher' is 'Reserved for use with Puncher app.'.
+Did you read that the keyword_definition of 'team' is 'Definition needed.'.

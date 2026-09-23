@@ -8,12 +8,15 @@ Closer,10,
 Cow,10,
 Drag,10,
 Drift,10,
+Duck,10,
 Gravity,10,
 Hive,10,
 Hose,10,
 Impression,10,
 Invite,10,
 Joachim,10,
+Juggle,10,
+Juggling,10,
 Jump,10,
 Knee,10,
 Ladder,10,
@@ -21,6 +24,7 @@ Lift,10,
 Linchpin,10,
 Loser,10,
 Oil,10,
+Palm,10,
 Pump,10,
 Pyramid,10,
 Revenge,10,
@@ -31,7 +35,9 @@ Soldier,10,
 Stilt,10,
 Target,10,
 Tower,10,
+Trek,10,
 Trooper,10,
+Tsar,10,
 Vertical,10,
 Winner,10,
 Yard,10,
@@ -44,17 +50,23 @@ dive,10,
 drift,10,
 factory,10,
 heart,10,
+juggle,10,
+juggling,10,
 keg_wheel,10,
 kegbox,10,
 lumen,10,
+palm,10,
 pandas_DataFrame,10,
 pump,10,
+purpil,10,
 pyramid,10,
 rider,10,
 scaffold,10,
 stilt,10,
 swim,10,
 target,10,
+trek,10,
+tsar,10,
 vertical,10,
 yard,10,
 ch00,6,0:
@@ -89,8 +101,9 @@ ch32,6,32:
 ch33,6,33:
 ch34,6,34:
 ch35,6,35:
-ch39,6,39:
+ch36,6,36:
 ch90,6,36:
+ch39,6,39:
 ch40,6,40:
 ch41,6,41:
 ch54,6,54:
@@ -213,14 +226,14 @@ respect_grain,0,3:
 solo,0,3:
 take_force,0,3:
 thinkout,0,3:
-workforceheir,0,3:
-workforceunit,0,3:
 LaborHeir,0,4:
 laborheir,0,4:
 parent_solo,0,4
 person,0,4:
 person_name,0,4:
 person_name_is_workforce,0,4:
+workforceheir,0,"4, 7, 8, 27, 35"
+workforceunit,0,"4, 7, 8, 9, 10, 11, 15, 23, 27, 35, 97"
 FactNum,0,5:
 FirstLabel,0,5:
 KnotTerm,0,5:
@@ -291,7 +304,7 @@ reasonheirs,0,7:
 stop_calc,0,7:
 stop_want,0,7:
 tree_level,0,7:
-tree_traverse_count,0,7:
+tree_traverse_count,0,"7, 8, 20, 22, 27, 97"
 PersonName,0,8:
 PersonUnit,0,8:
 ancestors,0,8:
@@ -348,38 +361,38 @@ DELETE,0,9:
 INSERT,0,9:
 UPDATE,0,9:
 atom,0,9:
-awardee_title_ERASE,0,"9, 20, 22, 97"
+awardee_title_ERASE,0,"9, 20, 22"
 column_ordinal,0,9
-contact_name_ERASE,0,9:
+contact_name_ERASE,0,"9, 20, 22"
 crud,0,"9, 10, 20, 22, 23, 24, 97"
-fact_context_ERASE,0,"9, 20, 22, 97"
-group_title_ERASE,0,9:
-healer_name_ERASE,0,9:
-labor_title_ERASE,0,9:
+fact_context_ERASE,0,"9, 20, 22"
+group_title_ERASE,0,"9, 20, 22"
+healer_name_ERASE,0,"9, 17, 20, 22"
+labor_title_ERASE,0,"9, 20, 22"
 nesting_order,0,"9, 10"
 normal_specs,0,9:
 normal_table_name,0,9
-person_name_ERASE,0,9:
-plan_rope_ERASE,0,9:
-reason_context_ERASE,0,9:
-reason_state_ERASE,0,9:
+person_name_ERASE,0,"9, 20, 22"
+plan_rope_ERASE,0,"9, 20, 22"
+reason_context_ERASE,0,"9, 20, 22"
+reason_state_ERASE,0,"9, 20, 22"
 FaceName,0,10:
 Lasso,0,10:
 MomentRope,0,10:
 gut,0,10:
-job,0,10:
 lasso,0,10:
 moment,0,10:
 moment_mstr_dir,0,10:
 moment_rope,0,10:
 spark_face,0,10:
 spark_num,0,10:
+job,0,"11, 15, 17, 20, 22, 23, 26, 27, 30, 31, 32, 33, 39, 40"
 listener,0,11
 speaker,0,11
 Epoch,0,12:
 SparkInt,0,12:
 TimeNum,0,12:
-amount,0,"12, 13, 15, 17, 20, 22, 23, 26, 27, 31, 32, 35, 97"
+amount,0,"12, 13, 15, 17, 20, 22, 23, 26, 27, 31, 32, 33, 35, 97"
 boss,0,"12, 15, 41, 54"
 boss_facts,0,"12, 15"
 bud_contact_nets,0,12:
@@ -488,11 +501,11 @@ all_tranbook,0,"15, 27, 97"
 ceckbook,0,15:
 cumulative_minute,0,15:
 job_listen_rotations,0,15:
-moment_budunit,0,15:
-moment_ceckbook,0,15:
-moment_epoch_hour,0,15:
-moment_epoch_month,0,15:
-moment_epoch_weekday,0,15:
+moment_budunit,0,"15, 20, 22, 23, 26, 97"
+moment_ceckbook,0,"15, 20, 22, 23, 26, 97"
+moment_epoch_hour,0,"15, 20, 22, 23, 26, 97"
+moment_epoch_month,0,"15, 20, 22, 23, 26, 97"
+moment_epoch_weekday,0,"15, 20, 22, 23, 26, 97"
 moment_static,0,15
 moment_timeoffi,0,15:
 momentunit,0,15:
@@ -530,8 +543,9 @@ translate_label,0,17:
 translate_name,0,17:
 translate_rope,0,17:
 translate_title,0,17:
-translateunit,0,17:
+translateunit,0,"17, 20, 97"
 unknown_str,0,17:
+duck,0,18
 Border,0,"20, 39"
 Excel,0,20:
 SheetName,0,20:
@@ -623,7 +637,7 @@ spark_face_inx,0,"20, 22, 26"
 spark_face_otx,0,"20, 22, 26"
 tran_time_inx,0,"20, 22"
 tran_time_otx,0,"20, 22"
-translate_spark_num,0,20:
+translate_spark_num,0,"20, 22, 97"
 weekday_label_inx,0,"20, 22"
 weekday_label_otx,0,"20, 22"
 world_name,0,20:
@@ -656,7 +670,7 @@ mmtmont,0,"22, 25, 26, 97"
 mmtoffi,0,"22, 26, 97"
 mmtunit,0,"22, 26, 97"
 mmtweek,0,"22, 26, 97"
-moment_ote1_agg,0,22:
+moment_ote1_agg,0,"22, 26, 27, 32, 97"
 nabtime,0,22:
 person_net_amount,0,22:
 s_agg,0,"22, 24, 25, 32"
@@ -665,11 +679,11 @@ s_vld,0,"22, 24, 25, 26, 30, 32"
 sound_agg,0,"22, 25, 32"
 sound_raw,0,"22, 24, 25, 32"
 sound_vld,0,"22, 25, 32"
-trlcore,0,22:
-trllabe,0,22:
-trlname,0,22:
-trlrope,0,22:
-trltitl,0,22:
+trlcore,0,"22, 25, 30, 32, 97"
+trllabe,0,"22, 25, 30, 97"
+trlname,0,"22, 25, 26, 30, 32, 97"
+trlrope,0,"22, 24, 25, 30, 97"
+trltitl,0,"22, 25, 30, 97"
 day_punch,0,23:
 fission,0,23
 idea_type,0,23:
@@ -682,8 +696,8 @@ DayEvent,0,31
 Event,0,31:
 default_kpi_bundle,0,31:
 gcal,0,31:
-moment_kpi001_contact_nets,0,31:
-moment_kpi002_person_pledges,0,31:
+moment_kpi001_contact_nets,0,"31, 32, 97"
+moment_kpi002_person_pledges,0,"31, 97"
 WorldName,0,32:
 today,0,32:
 Deal,0,33:
@@ -691,6 +705,8 @@ Gift,0,33:
 Peer,0,33:
 PitchID,0,33:
 PitchUnit,0,33:
+Promise,0,33
+PromiseUnit,0,33:
 deal,0,33:
 gift,0,"33, 39, 40"
 offer,0,33:
@@ -699,9 +715,12 @@ pitch,0,33:
 pitch_id,0,33:
 pitcher_name,0,33:
 pitchs,0,33:
+promise,0,"33, 39, 40, 41"
 request,0,33:
 finance,0,34:
 financial,0,34:
+News,0,36
+news,0,"36, 39, 40"
 American,0,"39, 40, 41"
 Infinity,0,"39, 41"
 Pillar,0,"39, 41"
@@ -727,7 +746,6 @@ Monopoly,0,"40, 41, 90"
 Ride,0,40
 Shill,0,40
 Soil,0,40
-climb,0,"40, 41"
 cow,0,40
 faction,0,40
 hive,0,40
@@ -753,6 +771,7 @@ winning,0,"40, 41"
 Climb,0,41
 Discipline,0,41
 Fall,0,41
+Honor,0,41
 KegWheel,0,41
 Losing,0,41
 Pay,0,41
@@ -763,10 +782,12 @@ Stable,0,41
 Welcome,0,41
 Winning,0,41
 alien,0,41
+climb,0,41
 cling,0,41
 discipline,0,41
 drag,0,41
 fall,0,41
+honor,0,41
 jump,0,41
 kneeler,0,41
 lift,0,41
@@ -780,6 +801,7 @@ stable,0,41
 valor,0,41
 wheel,0,"41, 98"
 wheelers,0,"41, 98"
+Purpil,0,54
 Puncher,0,90
 Team,0,90
 puncher,0,"90, 98"

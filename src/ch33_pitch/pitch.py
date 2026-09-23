@@ -1,8 +1,8 @@
 from ch00_py.dict_toolbox import get_0_if_None
 from ch10_person_lesson.lesson_main import LessonUnit
-from ch23_idea_src.idea2brick import IdeaBook
 from ch32_world.world import WorldName
 from ch33_pitch._ref.ch33_semantic_types import PersonName, SparkInt
+from ch33_pitch.promise import PromiseUnit
 from dataclasses import dataclass
 
 
@@ -12,11 +12,11 @@ class PitchUnit:
     pitch_id: str = None
     pitch_active: bool = None
     peer_name: PersonName = None
-    gift_ideabook: IdeaBook = None
+    gift_promiseunit: PromiseUnit = None
     gift_spark_num: SparkInt = None
-    request_ideabook: IdeaBook = None
+    request_promiseunit: PromiseUnit = None
     request_spark_num: SparkInt = None
-    offer_ideabook: IdeaBook = None
+    offer_promiseunit: PromiseUnit = None
     offer_spark_num: SparkInt = None
 
     def validate_spark_nums(self):
@@ -40,9 +40,9 @@ class PitchUnit:
 def pitchunit_shop(
     pitcher_name: PersonName,
     peer_name: PersonName = None,
-    gift_ideas: IdeaBook = None,
-    request_ideas: IdeaBook = None,
-    offer_ideas: IdeaBook = None,
+    gift_ideas: PromiseUnit = None,
+    request_ideas: PromiseUnit = None,
+    offer_ideas: PromiseUnit = None,
     pitch_id: str = None,
     pitch_active: bool = None,
 ) -> PitchUnit:

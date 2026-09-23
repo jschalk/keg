@@ -37,7 +37,7 @@ Long story short, revolution can only happen in a country where all the politica
 
 Third. High level of political centralisation in the country plus political instability in the capital city is the necessary, yet insufficient condition for the revolutionary change. For in practice we can observe examples of the opposite: long sequences of coups in the capital of a highly centralised state, that do not result in any kind of deep political transformation whatsoever.
 
-Example: 18th c. Russia. The Russian eighteenths century is often referred to as “an era of palace coups”, for they are indeed happening very, very often. Once in a while, you are having a a coup; a Tsar or a dynasty, or a royal favourite is getting overthrown, always by the force of arms, and the composition of government and the court changes. That, however, does not produce a “revolution” in a modern sense, that is a deep, and fundamental change in well, everything.
+Example: 18th c. Russia. The Russian eighteenths century is often referred to as “an era of palace coups”, for they are indeed happening very, very often. Once in a while, you are having a a coup; a King or a dynasty, or a royal favourite is getting overthrown, always by the force of arms, and the composition of government and the court changes. That, however, does not produce a “revolution” in a modern sense, that is a deep, and fundamental change in well, everything.
 
 Why? Well, again, part of the reason is that all of these coups are happening within a very, very narrow circle of the high society. The court aristocracy of St Petersburg. The high officials of St Petersburg. The imperial guards officers of St Petersburg. That is it, basically.
 
@@ -47,7 +47,7 @@ All of these endless Russian coups never ever involve anyone outside of this nar
 
 (Like, if you are not a high nobleman physically located in the capital you may as well not exist, for you will be playing absolutely no role in all of these court politics, nor in any of these coup-events)
 
-Interestingly enough, the army - that is the huuuuuuuuuuuuge number of troops garrisoned all around the Russian empire, does not participate either. Like, the imperial guards can kill a Tsar and put another Tsar on his place. But some troops from let’s say Riga marching on St Petersburg to put someone else on the throne, is completely unthinkable, unheard of. That just never happens in reality.
+Interestingly enough, the army - that is the huuuuuuuuuuuuge number of troops garrisoned all around the Russian empire, does not participate either. Like, the imperial guards can kill a King and put another King on his place. But some troops from let’s say Riga marching on St Petersburg to put someone else on the throne, is completely unthinkable, unheard of. That just never happens in reality.
 
 All of these endless palace coups, and counter-coups, and coup-events are executed by only a handful of the ultra-privileged in the imperial capital, and no one else. Notice, how the great majority of the country, is not even trying to participate in all these internal havocs of St Petersburg, which is deposing and imposing emperors upon the country.
 
@@ -78,7 +78,7 @@ So, basically the reason - and the primary factor of involving outsiders - and i
 
 What is political entreneurship?
 
-Let’s recall Joseph Schumpeter’s classic definition of a “normal”, business entrepreneurship. From Schumpeter’s perspective, the job on an innovator (= that is entrepreneur) consists in introducing new factors of production into the production process, or making a new combination out of the existing factors.
+Let’s recall Joseph Schumpeter’s classic definition of a “normal”, business entrepreneurship. From Schumpeter’s perspective, the purpose of an innovator (= that is entrepreneur) consists in introducing new factors of production into the production process, or making a new combination out of the existing factors.
 
 (Like, for example, you wanna create a new data centre. You can either build it all from scratch - long, and costly, or you can buy an existing industial building, with the power generation capacity and stuff, and it will be super cheap, and will give you an upper hand over the competitors. So, what you did is that you introduced a new factor, and that gave you a competitive advantage)
 

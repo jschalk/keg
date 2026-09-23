@@ -45,7 +45,7 @@ def test_draw_contacts_row_SetsAttr_Scenario0_4People():
     # save_example_image(drawing)
 
 
-def test_draw_infinity_contact_SetsAttr_Scenario0_ContactWithFace(rebuild_images):
+def test_draw_infinity_contact_SetsAttr_Scenario0_ContactWithFace(rebuild_docs):
     # ESTABLISH
     # drawing = Drawing(2 * x_margin + 2 * radius, 2 * y_margin + radius, origin=(0, 0))
     drawing = get_standard_drawing()
@@ -71,7 +71,7 @@ def test_draw_infinity_contact_SetsAttr_Scenario0_ContactWithFace(rebuild_images
 
     # THEN
     assert drawing.__dict__ != d0_old.__dict__
-    # if rebuild_images:
+    # if rebuild_docs:
     #     save_example_image(drawing)
 
 
@@ -232,12 +232,14 @@ def test_draw_contact_rows_SetsAttr_Scenario0_2Rows():
     # save_example_image(drawing)
 
 
-def test_rebuild_markdown_wheel_theory_images_SpecialCreateImages(rebuild_images):
+def test_rebuild_markdown_wheel_theory_images_SpecialCreateImages(rebuild_docs):
     # ESTABLISH / WHEN / THEN
-    if rebuild_images:
+    # sourcery skip: no-conditionals-in-tests
+    if rebuild_docs:
         svg_image_paths = rebuild_markdown_wheel_theory_images()
-        # for svg_image_path in svg_image_paths:
-        #     print(f"Saved {svg_image_path}")
+        for svg_image_path in svg_image_paths:
+            print(f"Saved {svg_image_path}")
+        # assert False, f"Special Images Rebuilt {len(svg_image_paths)} images built."
 
 
 _NUMBER_RE = re_compile(r"-?\d+\.\d+")

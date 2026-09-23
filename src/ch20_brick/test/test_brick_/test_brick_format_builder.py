@@ -25,7 +25,7 @@ def create_dimens_brick_format_dict() -> dict:
     return brick_format_files_dict
 
 
-def test_create_dimens_brick_format_dict_ReturnsObj(rebuild_jsons):
+def test_create_dimens_brick_format_dict_ReturnsObj(rebuild_docs):
     # ESTABLISH / WHEN
     dimens_brick_format_dict = create_dimens_brick_format_dict()
 

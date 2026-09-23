@@ -1,7 +1,6 @@
 from ch00_py.file_toolbox import count_dirs_files, create_path
 from ch05_rope.rope import create_rope
 from ch23_idea_src.idea2brick import (
-    IdeaBook,
     SheetRef,
     create_spark_face_spark_nums,
     get_idea_config_dict,
@@ -23,15 +22,7 @@ from pandas import (
     read_excel as pandas_read_excel,
 )
 from pathlib import Path
-from pytest import fixture as pytest_fixture, raises as pytest_raises
-
-
-def test_IdeaBook_Exists():
-    # ESTABLISH / WHEN
-    ideabook = IdeaBook()
-    # THEN
-    assert not ideabook.ideas
-    assert set(ideabook.__dict__.keys()) == {f"{kw.idea}s"}
+from pytest import raises as pytest_raises
 
 
 def test_get_spark_faces_from_df_ReturnsObj_Scenario0_Basic():

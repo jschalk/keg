@@ -1,13 +1,8 @@
-from ch01_keyword.keyword_class_builder import (
-    get_keywords_src_config,
-    parse_valid_ch_str,
-    get_chapter_descs,
-    get_ch_int,
-)
 from ch97_docs_builder.glossary_definition import (
     get_count_keg_terms_by_chapters,
     get_count_strs_by_dirs,
-    get_keg_definitions,
+    get_keywords_definitions,
+    get_focus_keyword_frequency,
 )
 from ch99_glossary.ch_keyword import Ch97Keywords as kw
 
@@ -137,60 +132,28 @@ def test_get_count_strs_by_dirs_ReturnsEmpty_Scenario6_EmptyKegTerms(
 
 
 def test_get_count_keg_terms_by_chapters_CountsTerms_Scenario0_SrcDir():
-    # sourcery skip: no-conditionals-in-tests
     # GIVEN / WHEN
     keg_terms_by_chapters = get_count_keg_terms_by_chapters()
 
     # THEN
-    keg_terms = set(get_keg_definitions().keys())
+    keg_terms = set(get_keywords_definitions().keys())
     assert set(keg_terms_by_chapters.keys()) == keg_terms
-    # TODO move this to function in glossary_definition.py
-    # This part finds all keg_terms used only in one chapter and changes
-    # valid_ch from range to single chapter
-    chapter_descs = get_chapter_descs().keys()
-    ch_ints = {get_ch_int(chapter_desc) for chapter_desc in chapter_descs}
-    keywords_src_config = get_keywords_src_config()
-    print_keyword_count_set = {
-        "fact_context_ERASE",
-        "fact_context_inx",
-        "fact_context_otx",
-        "fact_lower",
-        "fact_lower_inx",
-        "fact_lower_otx",
-        "fact_state",
-        "fact_state_inx",
-        "fact_state_otx",
-        "fact_upper",
-        "fact_upper_inx",
-        "fact_upper_otx",
-    }
-    for keg_term in sorted(keg_terms_by_chapters.keys()):
-        ch_dir_dict = keg_terms_by_chapters.get(keg_term)
-        # if len(ch_dir_dict) == 2:
-        if keyword_config := keywords_src_config.get(keg_term):
-            if len(ch_dir_dict) > 0:
-                lone_ch = list(ch_dir_dict.keys())[0]
-                x_valid_ch = keyword_config.get(kw.valid_ch)
-                valid_chapters = sorted(parse_valid_ch_str(ch_ints, x_valid_ch))
-                if str(lone_ch) != x_valid_ch:
-                    # print(f"{set(ch_dir_dict.keys())=}")
-                    # print(f"{keg_term} {ch_dir_dict=} {lone_ch=} {x_valid_ch=}")
-                    # if len(valid_chapters) - len(ch_dir_dict) > 20:
-                    if (
-                        keg_term in print_keyword_count_set
-                        or keg_term.endswith("agg")
-                        or keg_term.endswith("raw")
-                        or keg_term.endswith("vld")
-                    ):
-                        print(
-                            f"{keg_term:<20} {str(sorted(set(ch_dir_dict.keys()))):<40} {valid_chapters[:20]=}"
-                        )
-                    # print(f"{x_valid_ch=}")
-                    keyword_config[kw.valid_ch] = str(lone_ch)
+    focus_keyword_count_set = {"huh"}
+    focus_keyword_frequency = get_focus_keyword_frequency(focus_keyword_count_set)
+
+    for x_keg_term, term_curr_allowed_tup in focus_keyword_frequency.items():
+        actual_ch_use = term_curr_allowed_tup[0]
+        allowed_ch_use = term_curr_allowed_tup[1]
+        print(
+            f"{x_keg_term:<20} {str(sorted(set(actual_ch_use.keys()))):<40} {allowed_ch_use[:20]=}"
+        )
+
     # src_keywords_src_path = create_src_keywords_src_path(kw.src)
     # save_json(src_keywords_src_path, None, keywords_src_config)
     # assert 1 == 2
-    # TODO consider adapting this to ch01
-    # TODO consider finding all terms used twice and change keyword src.
-    # TODO consider replacing all range with individual listed
-    # TODO consider removing 'Only referenced in ch if not single entry
+    # TODO keyword valid ch setting
+    # ### consider following ###
+    # finding all terms used twice and change keyword src.
+    # replacing all range with individual listed
+    # removing 'Only referenced in ch if not single entry
+    # creating pytest tripper that saves changes when activated, otherwise allows failed tests
