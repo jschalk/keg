@@ -38,7 +38,7 @@
   "FundGrain": {"semantic_type": "float", "valid_ch": "3:"}, 
   "FundNum": {"semantic_type": "float", "valid_ch": "3:"}, 
   "Gift": {"valid_ch": "33:"}, 
-  "God": {"valid_ch": "39, 40, 41"}, 
+  "God": {"valid_ch": "39, 40, 41, 54"}, 
   "GrainNum": {"semantic_type": "float", "valid_ch": "2:"}, 
   "Gravity": {"valid_ch": ""}, 
   "GroupMark": {"semantic_type": "str", "valid_ch": "3:"}, 

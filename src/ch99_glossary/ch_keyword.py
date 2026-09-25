@@ -9429,6 +9429,7 @@ class Ch54Keywords(str, Enum):
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     Gift = "Gift"
+    God = "God"
     GrainNum = "GrainNum"
     GroupMark = "GroupMark"
     GroupTitle = "GroupTitle"
