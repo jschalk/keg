@@ -773,7 +773,7 @@ Ontology note:
 
 `ch16_nabu` addresses a problem that arises in any multi-party system: different participants may use different time reference points. An external face might report times relative to their own epoch (e.g. "day 5 of my calendar") while the internal system tracks absolute `TimeNum` minutes. Nabu is the translation bridge.
 
-The name "Nabu" is the ancient Mesopotamian god of writing and wisdom — an appropriate name for a chapter that interprets and transcribes numeric values across reference frames.
+The name "Nabu" is the ancient Mesopotamian diety of writing and wisdom — an appropriate name for a chapter that interprets and transcribes numeric values across reference frames.
 
 **`NabuTime`** is the core object, keyed by `(spark_face, spark_num)` — the same provenance identifiers used in lessons. It holds an `otx2inx` dictionary mapping:
 - Key: `otx_epoch_length` — the cycle length of the external time system (e.g. 525,600 minutes = 1 year).

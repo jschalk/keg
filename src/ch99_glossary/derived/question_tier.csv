@@ -167,9 +167,11 @@ xio,0,0:
 yao,0,0:
 yield,0,0:
 zia,0,0:
+Kegology,0,0:
 Keyword,0,0:
 filename,0,0:
 glossary,0,0:
+kegology,0,0:
 keyword,0,0:
 semantic_type,0,0:
 shop,0,0:
@@ -722,12 +724,14 @@ financial,0,34:
 News,0,36
 news,0,"36, 39, 40"
 American,0,"39, 40, 41"
+God,0,"39, 40, 41"
 Infinity,0,"39, 41"
 Pillar,0,"39, 41"
 Totality,0,"39, 41"
 Water,0,"39, 40, 41"
 Wheel,0,"39, 41"
 bearing,0,"39, 41"
+god,0,"39, 40, 41, 54"
 gravity,0,39
 hose,0,"39, 40, 41, 54"
 infinity,0,"39, 41"

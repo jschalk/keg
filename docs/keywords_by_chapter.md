@@ -1,7 +1,7 @@
 # Keywords by Chapter
 
 ## Keywords by Chapter
-- ch00_py: Keyword, ch00, filename, glossary, keyword, semantic_type, shop, src
+- ch00_py: Kegology, Keyword, ch00, filename, glossary, kegology, keyword, semantic_type, shop, src
 - ch01_keyword: ch01, question_tier, sort_ordinal, valid_ch
 - ch02_allot: GrainNum, PoolNum, WeightNum, ch02
 - ch03_contact: Boss, BossMass, BreakTerm, ContactName, FundGrain, FundNum, GroupMark, GroupTitle, HealerName, Lord, Loyal, NameTerm, RespectGrain, RespectNum, TitleTerm, TrustMass, awardee_title, awardunits, ch03, contact_cred_mass, contact_debt_mass, contact_name, credor_pool, debtor_pool, fund_agenda_give, fund_agenda_ratio_give, fund_agenda_ratio_take, fund_agenda_take, fund_give, fund_grain, fund_take, give_force, group_cred_mass, group_debt_mass, group_title, groupmark, groupunits, inallocable_contact_debt_mass, irrational_contact_debt_mass, labor_title, labors, memberships, rational, respect_grain, solo, take_force, thinkout
@@ -34,7 +34,7 @@
 - ch34_finance: ch34, finance, financial
 - ch35_person_viewer: ch35
 - ch36_news: News, ch36, ch90, news
-- ch39_levinas_phil: American, Infinity, Pillar, Totality, Water, Wheel, bearing, ch39, gravity, hose, infinity, invite, land, power, totality, water, welcome
+- ch39_levinas_phil: American, God, Infinity, Pillar, Totality, Water, Wheel, bearing, ch39, god, gravity, hose, infinity, invite, land, power, totality, water, welcome
 - ch40_pop_phil: Faction, Hayek, Hobbit, Kronos, Land, Monopoly, Ride, Shill, Soil, ch40, cow, faction, hive, impression, invitation, knee, kronosmax, ladder, lord, losing, loyal, oil, pay, prestige, ride, rival, shill, soil, tower, trooper, winner, winning
 - ch41_wheel: Climb, Discipline, Fall, Honor, KegWheel, Losing, Pay, Prestige, Rise, Shot, Stable, Welcome, Winning, alien, ch41, climb, cling, discipline, drag, fall, honor, jump, kneeler, lift, linchpin, loser, pillar, revenge, shot, soldier, stable, valor, wheel, wheelers
 - ch54_fable: Purpil, ch54
