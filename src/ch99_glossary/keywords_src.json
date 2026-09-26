@@ -611,7 +611,7 @@
   "prnunit": {"valid_ch": "8, 9, 22, 26, 27, 31, 32, 97"}, 
   "problem_bool": {"sort_ordinal": 135, "valid_ch": "7:"}, 
   "promise": {"valid_ch": "33, 39, 40, 41"}, 
-  "pump": {"valid_ch": ""}, 
+  "pump": {"valid_ch": "41"}, 
   "puncher": {"valid_ch": "90, 98"}, 
   "purpil": {"valid_ch": ""}, 
   "pyramid": {"valid_ch": ""}, 

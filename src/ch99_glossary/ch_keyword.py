@@ -9340,6 +9340,7 @@ class Ch41Keywords(str, Enum):
     prestige = "prestige"
     problem_bool = "problem_bool"
     promise = "promise"
+    pump = "pump"
     quota = "quota"
     range_evaluated = "range_evaluated"
     readable = "readable"
