@@ -9207,6 +9207,7 @@ class Ch41Keywords(str, Enum):
     healer_name = "healer_name"
     healerunit = "healerunit"
     healerunit_ratio = "healerunit_ratio"
+    heart = "heart"
     honor = "honor"
     hose = "hose"
     hour = "hour"

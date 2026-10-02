@@ -53,7 +53,6 @@ Did you read that the keyword_definition of 'crawl' is 'The opposite of 'swim'. 
 Did you read that the keyword_definition of 'dive' is 'To go from living on land to swimming with fearlessness. Not used in codebase.'.
 Did you read that the keyword_definition of 'drift' is 'To move from one Moment to another Moment. Giving all concentration to the new moment.'.
 "Did you read that the keyword_definition of 'factory' is 'Not used in codebase. The factory method in programming is very important. However because I want 'fact' only to refer to the Keg concept I don't use the word 'factory', instead I use 'shop'.'."
-Did you read that the keyword_definition of 'heart' is 'Not used in codebase.'.
 Did you read that the keyword_definition of 'juggle' is 'To change moments from one Palm to another.'.
 Did you read that the keyword_definition of 'juggling' is 'To change moments from one Palm to another.'.
 "Did you read that the keyword_definition of 'keg_wheel' is 'A instance of KegWheel, within a single MomentUnit. Not used in codebase.'."
@@ -796,6 +795,7 @@ Did you read that the keyword_definition of 'cling' is 'To connote the action a 
 Did you read that the keyword_definition of 'discipline' is 'A moment that has Discipline. Check 'Discipline' definition.'.
 Did you read that the keyword_definition of 'drag' is 'Opposite of Lift. When a FamilyUnit shuts off support to bring a FamilyUnit down.'.
 Did you read that the keyword_definition of 'fall' is 'When a FamilyUnit loses all Prestige and exits power.'.
+Did you read that the keyword_definition of 'heart' is 'Definition needed.'.
 Did you read that the keyword_definition of 'honor' is 'Definition Needed.'.
 Did you read that the keyword_definition of 'jump' is 'To use keg requires a human to jump and try. Not easy.'.
 Did you read that the keyword_definition of 'kneeler' is 'A FamilyUnit that sets all it's BossMass to one different FamilyUnit.'.

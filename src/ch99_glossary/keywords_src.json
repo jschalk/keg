@@ -386,7 +386,7 @@
   "heard_agg": {"valid_ch": "22, 25, 26, 32, 98"}, 
   "heard_raw": {"valid_ch": "22, 25, 26, 32, 97"}, 
   "heard_vld": {"valid_ch": "22, 26, 32"}, 
-  "heart": {"valid_ch": ""}, 
+  "heart": {"valid_ch": "41"}, 
   "hive": {"valid_ch": "40"}, 
   "honor": {"valid_ch": "41"}, 
   "hose": {"valid_ch": "39, 40, 41, 54"}, 

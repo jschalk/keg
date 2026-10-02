@@ -49,7 +49,6 @@ crawl,10,
 dive,10,
 drift,10,
 factory,10,
-heart,10,
 juggle,10,
 juggling,10,
 keg_wheel,10,
@@ -790,6 +789,7 @@ cling,0,41
 discipline,0,41
 drag,0,41
 fall,0,41
+heart,0,41
 honor,0,41
 jump,0,41
 kneeler,0,41
