@@ -14,6 +14,11 @@ In response to someone making fun of Economists for being divorced from reality.
 > 
 > Over the time, the gap only grows, resulting in a collapse
 
+**Sep 3, 2025**  
+In response to an attack on a politican accusing him of having too many women in his leadership Kazani does not refute the accusation, he writes:
+> When the French royal family was debating whether a King's or a Queen's government is better, theoretically speaking, Louis XIV's daughter in law Marie Adelaide opinionated that a Queen's rule is obviously better:
+> 
+> "For a Queen is governed by men, and a King by women"
 
 **Oct 29, 2025**  
 In response to question about Ukraine being able to give Russia a symbolic vistory:

@@ -246,6 +246,8 @@
   "factunits": "PlanUnit holds all it's factunits in an attribute called factunits.", 
   "Fall": "When a FamilyUnit loses all Prestige and exits power.", 
   "fall": "When a FamilyUnit loses all Prestige and exits power.", 
+  "Fealty": "Definition needed.", 
+  "fealty": "Definition needed.", 
   "February": "Example key with value 'February' used for tests throughout codebase.", 
   "filename": "Should always include extension ala filebasename + '.' + extension", 
   "finance": "Definition needed.", 
