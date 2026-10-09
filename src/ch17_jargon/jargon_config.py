@@ -5,7 +5,7 @@ from os.path import join as os_path_join
 
 
 def jargon_config_path() -> str:
-    "Returns path: c16_jargon/jargon_config.json"
+    "Returns path: c17_jargon/jargon_config.json"
     return create_path("src", "ch17_jargon", "jargon_config.json")
 
 
