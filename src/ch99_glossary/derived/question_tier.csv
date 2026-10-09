@@ -87,6 +87,7 @@ ch14,6,14:
 ch15,6,15:
 ch16,6,16:
 ch17,6,17:
+ch18,6,18:
 ch19,6,19:
 ch20,6,20:
 ch22,6,22:
@@ -547,6 +548,8 @@ translate_rope,0,17:
 translate_title,0,17:
 translateunit,0,"17, 20, 97"
 unknown_str,0,17:
+Lingo,0,18
+lingo,0,18
 duck,0,19
 Border,0,"20, 39"
 Excel,0,20:

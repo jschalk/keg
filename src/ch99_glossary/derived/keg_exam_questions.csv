@@ -91,6 +91,7 @@ Did you read that the keyword_definition of 'ch14' is 'Defines how time is handl
 "Did you read that the keyword_definition of 'ch15' is 'Defines MomentUnits: common time tech, ledger, ContactNames, history of PersonUnits.'."
 Did you read that the keyword_definition of 'ch16' is 'Defines NabuUnit tools that interpret numeric values into inside accounting.'.
 Did you read that the keyword_definition of 'ch17' is 'Defines TranslateUnit tools that translate MomentUnits into inside language.'.
+Did you read that the keyword_definition of 'ch18' is 'Defines LingoUnit tools that translate MomentUnits into audience language.'.
 Did you read that the keyword_definition of 'ch19' is 'Creates helper tools for database admin.'.
 Did you read that the keyword_definition of 'ch20' is 'Defines how to build Bricks using Bricks. Moments and Persons are built by Bricks.'.
 Did you read that the keyword_definition of 'ch22' is 'Defines the tools that use Bricks to build MomentUnits.'.
@@ -553,6 +554,8 @@ Did you read that the keyword_definition of 'translate_core' is 'Definition need
 "Did you read that the keyword_definition of 'translate_title' is ''translate_title' is a translation dimen where otx_title is translated by inx_knot, inx_title, otx_knot, unknown_str'."
 Did you read that the keyword_definition of 'translateunit' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'unknown_str' is ', TRANSLATE_LABEL arg, TRANSLATE_NAME arg, TRANSLATE_ROPE arg, TRANSLATE_TITLE arg'."
+Did you read that the keyword_definition of 'Lingo' is 'Definition needed.'.
+Did you read that the keyword_definition of 'lingo' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'duck' is 'Definition needed. Maybe someone who can dive, swim, walk, knee, and fly. All the things.'."
 Did you read that the keyword_definition of 'Border' is 'Defines line of influence between two Wheels. Also used by graphics and apps.'.
 Did you read that the keyword_definition of 'Excel' is 'A spreadsheet format.'.

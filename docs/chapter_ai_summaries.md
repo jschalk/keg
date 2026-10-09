@@ -849,6 +849,7 @@ The "outside" (`otx`) / "inside" (`inx`) distinction is fundamental: an external
 
 Together ch16 (numeric translation) and ch17 (string translation) form the complete "outside-to-inside" interface layer. All data arriving from external faces passes through these two chapters before being processed by the internal keg machinery.
 
+
 # ch19_db_tool — Chapter Summary
 
 *This summary is authored by AI 5-26-2026.*
