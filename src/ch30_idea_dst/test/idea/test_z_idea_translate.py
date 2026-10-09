@@ -8,14 +8,14 @@ from ch30_idea_dst.lego_db2df import (
     add_to_ii00143_csv,
     add_to_ii00144_csv,
     add_to_ii00145_csv,
-    add_translate_rows_to_idea_csv_strs,
+    add_jargon_rows_to_idea_csv_strs,
 )
 from ch99_glossary.ch_keyword import Ch30Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 
 
 def test_add_to_ii00142_csv_ReturnsObj(cursor0: Cursor):
-    # ESTABLISH database with translate data
+    # ESTABLISH database with jargon data
     # - [`ii00142`](bricks/ii00142.md): spark_num, spark_face, otx_title, inx_title, otx_knot, inx_knot, unknown_str
     bob_otx = "Bob"
     bob_inx = "Bobby"
@@ -30,9 +30,9 @@ def test_add_to_ii00142_csv_ReturnsObj(cursor0: Cursor):
     spark1 = 1
     spark7 = 7
 
-    # Create database with manually entered translate data in the validated tables
+    # Create database with manually entered jargon data in the validated tables
     create_sound_and_heard_tables(cursor0)
-    trltitl_dimen = kw.translate_title
+    trltitl_dimen = kw.jargon_title
     trltitl_s_vld_tablename = prime_tbl(trltitl_dimen, kw.s_vld)
     insert_trltitl_sqlstr = f"""INSERT INTO {trltitl_s_vld_tablename}
   ({kw.spark_num}, {kw.spark_face}, {kw.otx_title}, {kw.inx_title})
@@ -73,7 +73,7 @@ def test_add_to_ii00142_csv_ReturnsObj(cursor0: Cursor):
 
 
 def test_add_to_ii00143_csv_ReturnsObj(cursor0: Cursor):
-    # ESTABLISH database with translate data
+    # ESTABLISH database with jargon data
     # - [`ii00143`](bricks/ii00143.md): spark_num, spark_face, otx_name, inx_name, otx_knot, inx_knot, unknown_str
     bob_otx = "Bob"
     bob_inx = "Bobby"
@@ -88,9 +88,9 @@ def test_add_to_ii00143_csv_ReturnsObj(cursor0: Cursor):
     spark1 = 1
     spark7 = 7
 
-    # Create database with manually entered translate data in the validated tables
+    # Create database with manually entered jargon data in the validated tables
     create_sound_and_heard_tables(cursor0)
-    trlname_dimen = kw.translate_name
+    trlname_dimen = kw.jargon_name
     trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
     insert_trlname_sqlstr = f"""
 INSERT INTO {trlname_s_vld_tablename}
@@ -133,7 +133,7 @@ VALUES
 
 
 def test_add_to_ii00144_csv_ReturnsObj(cursor0: Cursor):
-    # ESTABLISH database with translate data
+    # ESTABLISH database with jargon data
     # - [`ii00144`](bricks/ii00144.md): spark_num, spark_face, otx_label, inx_label, otx_knot, inx_knot, unknown_str
     bob_otx_knot = ";"
     bob_inx_knot = "/"
@@ -148,9 +148,9 @@ def test_add_to_ii00144_csv_ReturnsObj(cursor0: Cursor):
     spark1 = 1
     spark7 = 7
 
-    # Create database with manually entered translate data in the validated tables
+    # Create database with manually entered jargon data in the validated tables
     create_sound_and_heard_tables(cursor0)
-    trllabe_dimen = kw.translate_label
+    trllabe_dimen = kw.jargon_label
     trllabe_s_vld_tablename = prime_tbl(trllabe_dimen, kw.s_vld)
     insert_trllabe_sqlstr = f"""
 INSERT INTO {trllabe_s_vld_tablename}
@@ -193,7 +193,7 @@ VALUES
 
 
 def test_add_to_ii00145_csv_ReturnsObj(cursor0: Cursor):
-    # ESTABLISH database with translate data
+    # ESTABLISH database with jargon data
     # - [`ii00145`](bricks/ii00145.md): spark_num, spark_face, otx_rope, inx_rope, otx_knot, inx_knot, unknown_str
     bob_otx_knot = ";"
     bob_inx_knot = "/"
@@ -208,9 +208,9 @@ def test_add_to_ii00145_csv_ReturnsObj(cursor0: Cursor):
     spark1 = 1
     spark7 = 7
 
-    # Create database with manually entered translate data in the validated tables
+    # Create database with manually entered jargon data in the validated tables
     create_sound_and_heard_tables(cursor0)
-    trlrope_dimen = kw.translate_rope
+    trlrope_dimen = kw.jargon_rope
     trlrope_s_vld_tablename = prime_tbl(trlrope_dimen, kw.s_vld)
     insert_trlrope_sqlstr = f"""
 INSERT INTO {trlrope_s_vld_tablename}
@@ -252,8 +252,8 @@ VALUES
     assert gen_csv == expected_csv
 
 
-def test_add_translate_rows_to_idea_csv_strs_ReturnsObj(cursor0: Cursor):
-    # ESTABLISH database with translate data
+def test_add_jargon_rows_to_idea_csv_strs_ReturnsObj(cursor0: Cursor):
+    # ESTABLISH database with jargon data
     # - [`ii00142`](bricks/ii00142.md): spark_num, spark_face, otx_title, inx_title, otx_knot, inx_knot, unknown_str
     bob_otx = "Bob"
     bob_inx = "Bobby"
@@ -268,11 +268,11 @@ def test_add_translate_rows_to_idea_csv_strs_ReturnsObj(cursor0: Cursor):
     spark1 = 1
     spark7 = 7
 
-    # Create database with manually entered translate data in the validated tables
+    # Create database with manually entered jargon data in the validated tables
     create_sound_and_heard_tables(cursor0)
 
-    # insert translate_title records
-    trltitl_dimen = kw.translate_title
+    # insert jargon_title records
+    trltitl_dimen = kw.jargon_title
     trltitl_s_vld_tablename = prime_tbl(trltitl_dimen, kw.s_vld)
     insert_trltitl_sqlstr = f"""INSERT INTO {trltitl_s_vld_tablename}
   ({kw.spark_num}, {kw.spark_face}, {kw.otx_title}, {kw.inx_title})
@@ -283,8 +283,8 @@ def test_add_translate_rows_to_idea_csv_strs_ReturnsObj(cursor0: Cursor):
   """
     cursor0.execute(insert_trltitl_sqlstr)
 
-    # insert translate_name records
-    trlname_dimen = kw.translate_name
+    # insert jargon_name records
+    trlname_dimen = kw.jargon_name
     trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
     insert_trlname_sqlstr = f"""
 INSERT INTO {trlname_s_vld_tablename}
@@ -296,12 +296,12 @@ VALUES
 """
     cursor0.execute(insert_trlname_sqlstr)
 
-    # insert translate_label records
+    # insert jargon_label records
     sue_clean_otx = "clean"
     sue_clean_inx = "limpia"
     bob_clean_otx = "very clean"
     bob_clean_inx = "very limpia"
-    trllabe_dimen = kw.translate_label
+    trllabe_dimen = kw.jargon_label
     trllabe_s_vld_tablename = prime_tbl(trllabe_dimen, kw.s_vld)
     insert_trllabe_sqlstr = f"""
 INSERT INTO {trllabe_s_vld_tablename}
@@ -313,12 +313,12 @@ VALUES
 """
     cursor0.execute(insert_trllabe_sqlstr)
 
-    # insert translate_rope records
+    # insert jargon_rope records
     sue_clean_otx = "?casa?clean?"
     sue_clean_inx = ".casa.limpia."
     bob_clean_otx = ";casa;very clean;"
     bob_clean_inx = "/casa/very limpia/"
-    trlrope_dimen = kw.translate_rope
+    trlrope_dimen = kw.jargon_rope
     trlrope_s_vld_tablename = prime_tbl(trlrope_dimen, kw.s_vld)
     insert_trlrope_sqlstr = f"""
 INSERT INTO {trlrope_s_vld_tablename}
@@ -330,7 +330,7 @@ VALUES
 """
     cursor0.execute(insert_trlrope_sqlstr)
 
-    # insert translate_core records
+    # insert jargon_core records
     trlcore_s_vld_tablename = prime_tbl("TRLCORE", kw.s_vld)
     insert_trlcore_sqlstr = f"""INSERT INTO {trlcore_s_vld_tablename}
   ({kw.spark_face}, {kw.otx_knot}, {kw.inx_knot}, {kw.unknown_str})
@@ -349,7 +349,7 @@ VALUES
     ii00145_header = x_bricks.get("ii00145")
 
     # WHEN
-    add_translate_rows_to_idea_csv_strs(cursor0, x_bricks, csv_delimiter)
+    add_jargon_rows_to_idea_csv_strs(cursor0, x_bricks, csv_delimiter)
 
     # THEN
     assert x_bricks.get("ii00142") != ii00142_header

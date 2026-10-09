@@ -5,10 +5,10 @@ from ch24_etl_brick.etl_brick_main import etl_brixk_vld_tables_to_sound_raw_tabl
 from ch99_glossary.ch_keyword import Ch24Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 
-# get examples from tests from etl_brixk_agg_dfs_to_translate_title_raw
-# get examples from tests from etl_brixk_agg_dfs_to_translate_rope_raw
-# get examples from tests from etl_brixk_agg_dfs_to_translate__raw
-# get examples from tests from etl_brixk_agg_dfs_to_translate_rope_raw
+# get examples from tests from etl_brixk_agg_dfs_to_jargon_title_raw
+# get examples from tests from etl_brixk_agg_dfs_to_jargon_rope_raw
+# get examples from tests from etl_brixk_agg_dfs_to_jargon__raw
+# get examples from tests from etl_brixk_agg_dfs_to_jargon_rope_raw
 
 
 def test_etl_brixk_vld_tables_to_sound_raw_tables_PopulatesTable_Scenario0_Only_valid_sparks(

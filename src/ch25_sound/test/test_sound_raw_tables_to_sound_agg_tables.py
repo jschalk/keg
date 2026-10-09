@@ -28,7 +28,7 @@ def test_create_sound_raw_update_inconsist_error_message_sqlstr_ExecutedSqlUpdat
     spark7 = 7
 
     cursor0.execute(CREATE_TRLROPE_SOUND_RAW_SQLSTR)
-    trlrope_str = "translate_rope"
+    trlrope_str = "jargon_rope"
     trlrope_s_raw_tablename = create_prime_tablename(trlrope_str, kw.s_raw)
     insert_into_clause = f"""INSERT INTO {trlrope_s_raw_tablename} (
   {kw.brick_type}
@@ -80,7 +80,7 @@ def test_set_sound_raw_tables_error_message_UpdatesTable_Scenario0(cursor0: Curs
     spark7 = 7
 
     create_sound_and_heard_tables(cursor0)
-    trlrope_s_raw_tablename = create_prime_tablename(kw.translate_rope, kw.s_raw)
+    trlrope_s_raw_tablename = create_prime_tablename(kw.jargon_rope, kw.s_raw)
     insert_into_clause = f"""INSERT INTO {trlrope_s_raw_tablename} (
   {kw.brick_type}
 , {kw.spark_num}

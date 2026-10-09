@@ -1,0 +1,22 @@
+{
+  "jargon_label": {
+    "description": "'jargon_label' is a translation dimen where otx_label is translated by inx_knot, inx_label, otx_knot, unknown_str", 
+    "jkeys": {"otx_label": {}}, 
+    "jvalues": {"inx_knot": {}, "inx_label": {}, "otx_knot": {}, "unknown_str": {}}
+  }, 
+  "jargon_name": {
+    "description": "'jargon_name' is a translation dimen where otx_name is translated by inx_knot, inx_name, otx_knot, unknown_str", 
+    "jkeys": {"otx_name": {}}, 
+    "jvalues": {"inx_knot": {}, "inx_name": {}, "otx_knot": {}, "unknown_str": {}}
+  }, 
+  "jargon_rope": {
+    "description": "'jargon_rope' is a translation dimen where otx_rope is translated by inx_knot, inx_rope, otx_knot, unknown_str", 
+    "jkeys": {"otx_rope": {}}, 
+    "jvalues": {"inx_knot": {}, "inx_rope": {}, "otx_knot": {}, "unknown_str": {}}
+  }, 
+  "jargon_title": {
+    "description": "'jargon_title' is a translation dimen where otx_title is translated by inx_knot, inx_title, otx_knot, unknown_str", 
+    "jkeys": {"otx_title": {}}, 
+    "jvalues": {"inx_knot": {}, "inx_title": {}, "otx_knot": {}, "unknown_str": {}}
+  }
+}

@@ -150,12 +150,12 @@ def test_brick_sheets_to_lego_with_cursor_Scenario0_bk001071PopulatesTables(
     )
 
     # THEN
-    # select_translate_core = f"SELECT * FROM {trlcore_sound_vld}"
+    # select_jargon_core = f"SELECT * FROM {trlcore_sound_vld}"
     # select_personunit_put = f"SELECT * FROM {prnunit_put_sound_agg}"
     # select_prncont_put = f"SELECT * FROM {prncont_put_sound_agg}"
     # select_momentunit_put_raw = f"SELECT * FROM {momentunit_sound_raw}"
     # select_momentunit_put_agg = f"SELECT * FROM {momentunit_sound_agg}"
-    # print(f"{cursor.execute(select_translate_core).fetchall()=}")
+    # print(f"{cursor.execute(select_jargon_core).fetchall()=}")
     # print(f"{cursor.execute(select_personunit_put).fetchall()=}")
     # print(f"{cursor.execute(select_prncont_put).fetchall()=}")
     # print(f"{cursor.execute(select_momentunit_put_raw).fetchall()=}")

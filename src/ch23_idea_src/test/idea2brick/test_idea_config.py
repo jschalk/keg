@@ -96,7 +96,7 @@ def test_is_non_mirror_ReturnsObj():
 
 
 # def get_brick_categorys():
-#     return {kw.person, kw.moment, kw.translate, kw.nabu}
+#     return {kw.person, kw.moment, kw.jargon, kw.nabu}
 
 
 # def _validate_brick_config(x_brick_config: dict):
@@ -104,7 +104,7 @@ def test_is_non_mirror_ReturnsObj():
 #     atom_config_dict = get_atom_config_dict()
 #     moment_config_dict = get_moment_config_dict()
 #     nabu_config_dict = get_nabu_config_dict()
-#     translate_config_dict = get_translate_config_dict()
+#     jargon_config_dict = get_jargon_config_dict()
 #     # for every brick_format file there exists a unique brick_type with leading zeros to make 5 digits
 #     for brick_dimen, brick_dict in x_brick_config.items():
 #         print(f"{brick_dimen=}")
@@ -122,8 +122,8 @@ def test_is_non_mirror_ReturnsObj():
 #             sub_dimen = moment_config_dict.get(brick_dimen)
 #         elif brick_dict.get(kw.brick_category) == kw.nabu:
 #             sub_dimen = nabu_config_dict.get(brick_dimen)
-#         elif brick_dict.get(kw.brick_category) == kw.translate:
-#             sub_dimen = translate_config_dict.get(brick_dimen)
+#         elif brick_dict.get(kw.brick_category) == kw.jargon:
+#             sub_dimen = jargon_config_dict.get(brick_dimen)
 
 #         assert brick_dict.get(kw.allowed_crud) in get_allowed_curds()
 
@@ -141,10 +141,10 @@ def test_is_non_mirror_ReturnsObj():
 #             kw.momentunit,
 #             "map_otx2inx",
 #             kw.nabu_timenum,
-#             kw.translate_title,
-#             kw.translate_name,
-#             kw.translate_label,
-#             kw.translate_rope,
+#             kw.jargon_title,
+#             kw.jargon_name,
+#             kw.jargon_label,
+#             kw.jargon_rope,
 #         }:
 #             assert brick_allowed_crud == kw.insert_one_time
 #         elif brick_dimen in {kw.moment_budunit, kw.moment_ceckbook, kw.moment_timeoffi}:
@@ -239,7 +239,7 @@ def test_is_non_mirror_ReturnsObj():
 #     valid_brick_dimens.update(get_person_dimens())
 #     valid_brick_dimens.update(get_moment_dimens())
 #     valid_brick_dimens.update(get_nabu_dimens())
-#     valid_brick_dimens.update(get_translate_dimens())
+#     valid_brick_dimens.update(get_jargon_dimens())
 #     print("get_brick_config_dict")
 #     config_dict = get_brick_config_dict()
 
@@ -345,10 +345,10 @@ def test_is_non_mirror_ReturnsObj():
 # def test_get_brick_config_dict_ReturnsObj_Scenario1_Check_build_order():
 #     # ESTABLISH / WHEN
 #     bo = kw.build_order
-#     # set_brick_config_json(kw.translate_name, 0)
-#     # set_brick_config_json(kw.translate_title, 1)
-#     # set_brick_config_json(kw.translate_label, 2)
-#     # set_brick_config_json(kw.translate_rope, 3)
+#     # set_brick_config_json(kw.jargon_name, 0)
+#     # set_brick_config_json(kw.jargon_title, 1)
+#     # set_brick_config_json(kw.jargon_label, 2)
+#     # set_brick_config_json(kw.jargon_rope, 3)
 #     # set_brick_config_json(kw.momentunit, 5)
 #     # set_brick_config_json(kw.moment_epoch_hour, 6)
 #     # set_brick_config_json(kw.moment_epoch_month, 7)
@@ -369,10 +369,10 @@ def test_is_non_mirror_ReturnsObj():
 #     x_brick_config = get_brick_config_dict()
 
 #     # THEN
-#     assert x_brick_config.get(kw.translate_name).get(bo) == 0
-#     assert x_brick_config.get(kw.translate_title).get(bo) == 1
-#     assert x_brick_config.get(kw.translate_label).get(bo) == 2
-#     assert x_brick_config.get(kw.translate_rope).get(bo) == 3
+#     assert x_brick_config.get(kw.jargon_name).get(bo) == 0
+#     assert x_brick_config.get(kw.jargon_title).get(bo) == 1
+#     assert x_brick_config.get(kw.jargon_label).get(bo) == 2
+#     assert x_brick_config.get(kw.jargon_rope).get(bo) == 3
 #     assert x_brick_config.get(kw.nabu_timenum).get(bo) == 4
 #     assert x_brick_config.get(kw.momentunit).get(bo) == 5
 #     assert x_brick_config.get(kw.moment_epoch_hour).get(bo) == 6
@@ -408,10 +408,10 @@ def test_is_non_mirror_ReturnsObj():
 #     person_brick_config = get_brick_config_dict(kw.person)
 
 #     # THEN
-#     assert not person_brick_config.get(kw.translate_name)
-#     assert not person_brick_config.get(kw.translate_title)
-#     assert not person_brick_config.get(kw.translate_label)
-#     assert not person_brick_config.get(kw.translate_rope)
+#     assert not person_brick_config.get(kw.jargon_name)
+#     assert not person_brick_config.get(kw.jargon_title)
+#     assert not person_brick_config.get(kw.jargon_label)
+#     assert not person_brick_config.get(kw.jargon_rope)
 #     assert not person_brick_config.get(kw.nabu_timenum)
 #     assert not person_brick_config.get(kw.momentunit)
 #     assert not person_brick_config.get(kw.moment_epoch_hour)
@@ -437,8 +437,8 @@ def test_is_non_mirror_ReturnsObj():
 #     assert len(get_brick_config_dict(brick_categorys={kw.person})) == 10
 #     assert len(get_brick_config_dict(brick_categorys={kw.moment})) == 7
 #     assert len(get_brick_config_dict(brick_categorys={kw.nabu})) == 1
-#     assert len(get_brick_config_dict(brick_categorys={kw.translate})) == 4
-#     assert len(get_brick_config_dict({kw.nabu, kw.translate})) == 5
+#     assert len(get_brick_config_dict(brick_categorys={kw.jargon})) == 4
+#     assert len(get_brick_config_dict({kw.nabu, kw.jargon})) == 5
 
 
 # def test_get_quick_bricks_column_ref_ReturnsObj():

@@ -1,14 +1,14 @@
 from ch05_rope.rope import create_rope, to_rope
-from ch17_translate.map_term import namemap_shop
-from ch17_translate.test._util.ch17_examples import (
-    get_casa_maison_translateunit_set_by_label,
-    get_casa_maison_translateunit_set_by_otx2inx,
+from ch17_jargon.map_term import namemap_shop
+from ch17_jargon.test._util.ch17_examples import (
+    get_casa_maison_jargonunit_set_by_label,
+    get_casa_maison_jargonunit_set_by_otx2inx,
 )
-from ch17_translate.translate_main import translateunit_shop
+from ch17_jargon.jargon_main import jargonunit_shop
 from ch20_brick.brick_db_tool import (
-    get_dataframe_translateable_columns,
-    translate_all_columns_dataframe,
-    translate_single_column_dataframe,
+    get_dataframe_jargonable_columns,
+    jargon_all_columns_dataframe,
+    jargon_single_column_dataframe,
 )
 from ch20_brick.test._util.ch20_examples import (
     get_casa_maison_rope_inx_dt,
@@ -20,30 +20,30 @@ from pandas import DataFrame
 from pandas.testing import assert_frame_equal as pandas_assert_frame_equal
 
 
-def test_get_dataframe_translateable_columns_ReturnsObj():
+def test_get_dataframe_jargonable_columns_ReturnsObj():
     # ESTABLISH / WHEN / THEN
     x_dt = DataFrame()
-    assert get_dataframe_translateable_columns(x_dt) == set()
+    assert get_dataframe_jargonable_columns(x_dt) == set()
     x_dt = DataFrame(columns=[kw.contact_name])
-    assert get_dataframe_translateable_columns(x_dt) == {kw.contact_name}
+    assert get_dataframe_jargonable_columns(x_dt) == {kw.contact_name}
     x_dt = DataFrame(columns=[kw.contact_name, kw.contact_cred_mass])
-    assert get_dataframe_translateable_columns(x_dt) == {kw.contact_name}
+    assert get_dataframe_jargonable_columns(x_dt) == {kw.contact_name}
     x_dt = DataFrame(columns=[kw.reason_context, kw.contact_name, kw.contact_cred_mass])
-    assert get_dataframe_translateable_columns(x_dt) == {
+    assert get_dataframe_jargonable_columns(x_dt) == {
         kw.contact_name,
         kw.reason_context,
     }
     x_dt = DataFrame(columns=["calc_bowl", kw.contact_name, kw.contact_cred_mass])
-    assert get_dataframe_translateable_columns(x_dt) == {kw.contact_name}
+    assert get_dataframe_jargonable_columns(x_dt) == {kw.contact_name}
 
 
-def test_translate_single_column_dataframe_ReturnsObj_Scenario0_ContactName_EmptyDataFrame():
+def test_jargon_single_column_dataframe_ReturnsObj_Scenario0_ContactName_EmptyDataFrame():
     # ESTABLISH
     contact_name_mapunit = namemap_shop()
     empty_dt = DataFrame(columns=[kw.contact_name])
 
     # WHEN
-    gen_dt = translate_single_column_dataframe(
+    gen_dt = jargon_single_column_dataframe(
         empty_dt, contact_name_mapunit, kw.contact_name
     )
 
@@ -51,7 +51,7 @@ def test_translate_single_column_dataframe_ReturnsObj_Scenario0_ContactName_Empt
     pandas_assert_frame_equal(gen_dt, empty_dt)
 
 
-def test_translate_single_column_dataframe_SetsParameterAttrs_Scenario0_ContactName_5rows():
+def test_jargon_single_column_dataframe_SetsParameterAttrs_Scenario0_ContactName_5rows():
     # ESTABLISH
     xio_otx = "Xio"
     sue_otx = "Sue"
@@ -74,7 +74,7 @@ def test_translate_single_column_dataframe_SetsParameterAttrs_Scenario0_ContactN
     print(f"{otx_dt=}")
 
     # WHEN
-    translate_single_column_dataframe(otx_dt, contact_name_mapunit, kw.contact_name)
+    jargon_single_column_dataframe(otx_dt, contact_name_mapunit, kw.contact_name)
 
     # THEN
     assert otx_dt.iloc[0][kw.contact_name] == zia_otx
@@ -91,7 +91,7 @@ def test_translate_single_column_dataframe_SetsParameterAttrs_Scenario0_ContactN
     assert otx_dt.to_csv() == inx_dt.to_csv()
 
 
-def test_translate_single_column_dataframe_SetsParameterAttrs_Scenario1_ContactName_5rowsMultipleColumns():
+def test_jargon_single_column_dataframe_SetsParameterAttrs_Scenario1_ContactName_5rowsMultipleColumns():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     xio_otx = "Xio"
@@ -115,7 +115,7 @@ def test_translate_single_column_dataframe_SetsParameterAttrs_Scenario1_ContactN
     print(f"{otx_dt=}")
 
     # WHEN
-    translate_single_column_dataframe(otx_dt, contact_name_mapunit, kw.contact_name)
+    jargon_single_column_dataframe(otx_dt, contact_name_mapunit, kw.contact_name)
 
     # THEN
     assert otx_dt.iloc[0][kw.contact_name] == zia_otx
@@ -132,7 +132,7 @@ def test_translate_single_column_dataframe_SetsParameterAttrs_Scenario1_ContactN
     pandas_assert_frame_equal(otx_dt, inx_dt)
 
 
-def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario0_ContactName():
+def test_jargon_all_columns_dataframe_SetsParameterAttrs_Scenario0_ContactName():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     xio_otx = "Xio"
@@ -149,7 +149,7 @@ def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario0_ContactNam
     print(f"{otx_dt=}")
 
     # WHEN
-    translate_all_columns_dataframe(otx_dt, None)
+    jargon_all_columns_dataframe(otx_dt, None)
 
     # THEN
     assert otx_dt.iloc[0][kw.contact_name] == zia_otx
@@ -166,7 +166,7 @@ def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario0_ContactNam
     pandas_assert_frame_equal(otx_dt, inx_dt)
 
 
-def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario1_ContactName():
+def test_jargon_all_columns_dataframe_SetsParameterAttrs_Scenario1_ContactName():
     # sourcery skip: extract-duplicate-method
     # ESTABLISH
     xio_otx = "Xio"
@@ -176,10 +176,10 @@ def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario1_ContactNam
     xio_inx = "Xioita"
     sue_inx = "Suita"
     bob_inx = "Bobita"
-    yao_translateunit = translateunit_shop(exx.yao)
-    yao_translateunit.set_otx2inx(kw.NameTerm, xio_otx, xio_inx)
-    yao_translateunit.set_otx2inx(kw.NameTerm, sue_otx, sue_inx)
-    yao_translateunit.set_otx2inx(kw.NameTerm, bob_otx, bob_inx)
+    yao_jargonunit = jargonunit_shop(exx.yao)
+    yao_jargonunit.set_otx2inx(kw.NameTerm, xio_otx, xio_inx)
+    yao_jargonunit.set_otx2inx(kw.NameTerm, sue_otx, sue_inx)
+    yao_jargonunit.set_otx2inx(kw.NameTerm, bob_otx, bob_inx)
     otx_dt = DataFrame(columns=[kw.moment_rope, kw.contact_name, kw.contact_cred_mass])
     otx_dt.loc[0] = [exx.a23, zia_otx, 12]
     otx_dt.loc[1] = [exx.a23, sue_otx, 12]
@@ -190,7 +190,7 @@ def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario1_ContactNam
     print(f"{otx_dt=}")
 
     # WHEN
-    translate_all_columns_dataframe(otx_dt, yao_translateunit)
+    jargon_all_columns_dataframe(otx_dt, yao_jargonunit)
 
     # THEN
     assert otx_dt.iloc[0][kw.contact_name] == zia_otx
@@ -207,7 +207,7 @@ def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario1_ContactNam
     pandas_assert_frame_equal(otx_dt, inx_dt)
 
 
-def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario2_RodeUnit_get_casa_maison_translateunit_set_by_otx2inx():
+def test_jargon_all_columns_dataframe_SetsParameterAttrs_Scenario2_RodeUnit_get_casa_maison_jargonunit_set_by_otx2inx():
     # ESTABLISH
     otx_amy45_str = "amy45"
     inx_amy87_str = "amy87"
@@ -224,7 +224,7 @@ def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario2_RodeUnit_g
 
     sweep_otx_rope = create_rope(clean_otx_rope, exx.sweep)
     sweep_inx_rope = create_rope(clean_inx_rope, exx.sweep)
-    yao_translateunit = get_casa_maison_translateunit_set_by_otx2inx()
+    yao_jargonunit = get_casa_maison_jargonunit_set_by_otx2inx()
     otx_dt = get_casa_maison_rope_otx_dt()
     old_otx_dt = copy_deepcopy(otx_dt)
     assert otx_dt.iloc[0][kw.reason_context] == otx_amy45_rope
@@ -234,7 +234,7 @@ def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario2_RodeUnit_g
     print(f"{otx_dt=}")
 
     # WHEN
-    translate_all_columns_dataframe(otx_dt, yao_translateunit)
+    jargon_all_columns_dataframe(otx_dt, yao_jargonunit)
 
     # THEN
     assert otx_dt.iloc[0][kw.reason_context] == inx_amy87_rope
@@ -249,7 +249,7 @@ def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario2_RodeUnit_g
     pandas_assert_frame_equal(otx_dt, inx_dt)
 
 
-def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario3_RodeUnit_get_casa_maison_translateunit_set_by_label():
+def test_jargon_all_columns_dataframe_SetsParameterAttrs_Scenario3_RodeUnit_get_casa_maison_jargonunit_set_by_label():
     # ESTABLISH
     otx_amy45_str = "amy45"
     inx_amy87_str = "amy87"
@@ -266,8 +266,8 @@ def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario3_RodeUnit_g
 
     sweep_otx_rope = create_rope(clean_otx_rope, exx.sweep)
     sweep_inx_rope = create_rope(clean_inx_rope, exx.sweep)
-    yao_translateunit = get_casa_maison_translateunit_set_by_label()
-    # print(f"{yao_translateunit=}")
+    yao_jargonunit = get_casa_maison_jargonunit_set_by_label()
+    # print(f"{yao_jargonunit=}")
     otx_dt = get_casa_maison_rope_otx_dt()
     old_otx_dt = copy_deepcopy(otx_dt)
     assert otx_dt.iloc[0][kw.reason_context] == otx_amy45_rope
@@ -278,7 +278,7 @@ def test_translate_all_columns_dataframe_SetsParameterAttrs_Scenario3_RodeUnit_g
     print("")
 
     # WHEN
-    translate_all_columns_dataframe(otx_dt, yao_translateunit)
+    jargon_all_columns_dataframe(otx_dt, yao_jargonunit)
 
     # THEN
     print("")

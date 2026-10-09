@@ -41,7 +41,7 @@ Ch30 is the **output inverse of ch23** — where ch23 reads human-authored idea 
 **`collect_full_world_idea_csv_strs(world_dir)`** — the main data-collection function:
 1. Walks all moment directories, loads each `MomentUnit` via `open_moment_file`, and calls `add_momentunit_to_idea_csv_strs` to serialize moment-level fields (budget units, epoch config, ceckbook, offi_times) into the idea CSV string dict.
 2. For each person within each moment, loads the **gut** `PersonUnit` (the person's own belief system, not the job) and calls `add_personunit_to_idea_csv_strs` to serialize their full plan tree, contacts, reasons, facts, etc.
-3. Opens the world SQLite database, creates sound/heard tables if absent, then calls `add_translate_rows_to_idea_csv_strs` to append validated translation mappings (from `trltitl_s_vld`, `trlname_s_vld`, `trllabe_s_vld`, `trlrope_s_vld` joined with `trlcore_s_vld`) into the four translation idea sheets (`ii00142`–`ii00145`).
+3. Opens the world SQLite database, creates sound/heard tables if absent, then calls `add_jargon_rows_to_idea_csv_strs` to append validated translation mappings (from `trltitl_s_vld`, `trlname_s_vld`, `trllabe_s_vld`, `trlrope_s_vld` joined with `trlcore_s_vld`) into the four translation idea sheets (`ii00142`–`ii00145`).
 
 **`create_lego0001_file(world_dir, output_dir, world_name)`** — produces the **world-level** output Excel:
 - Calls `collect_full_world_idea_csv_strs`.

@@ -90,8 +90,8 @@ Did you read that the keyword_definition of 'ch13' is 'Builds a simulation that 
 Did you read that the keyword_definition of 'ch14' is 'Defines how time is handled by PersonUnits. Allows for arbitrary time structures.'.
 "Did you read that the keyword_definition of 'ch15' is 'Defines MomentUnits: common time tech, ledger, ContactNames, history of PersonUnits.'."
 Did you read that the keyword_definition of 'ch16' is 'Defines NabuUnit tools that interpret numeric values into inside accounting.'.
-Did you read that the keyword_definition of 'ch17' is 'Defines TranslateUnit tools that translate MomentUnits into inside language.'.
-Did you read that the keyword_definition of 'ch18' is 'Defines LingoUnit tools that translate MomentUnits into audience language.'.
+Did you read that the keyword_definition of 'ch17' is 'Defines JargonUnit tools that jargon MomentUnits into inside language.'.
+Did you read that the keyword_definition of 'ch18' is 'Defines LingoUnit tools that jargon MomentUnits into audience language.'.
 Did you read that the keyword_definition of 'ch19' is 'Creates helper tools for database admin.'.
 Did you read that the keyword_definition of 'ch20' is 'Defines how to build Bricks using Bricks. Moments and Persons are built by Bricks.'.
 Did you read that the keyword_definition of 'ch22' is 'Defines the tools that use Bricks to build MomentUnits.'.
@@ -532,28 +532,28 @@ Did you read that the keyword_definition of 'otx2inx' is 'Definition needed.'.
 Did you read that the keyword_definition of 'otx_epoch_length' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'otx_time' is ', nabu arg'."
 Did you read that the keyword_definition of 'timenabu' is 'Definition needed.'.
-"Did you read that the keyword_definition of 'inx_knot' is ', TRANSLATE_LABEL arg, TRANSLATE_NAME arg, TRANSLATE_ROPE arg, TRANSLATE_TITLE arg'."
-"Did you read that the keyword_definition of 'inx_label' is ', TRANSLATE_LABEL arg'."
-"Did you read that the keyword_definition of 'inx_name' is ', TRANSLATE_NAME arg'."
-"Did you read that the keyword_definition of 'inx_rope' is ', TRANSLATE_ROPE arg'."
-"Did you read that the keyword_definition of 'inx_title' is ', TRANSLATE_TITLE arg'."
+"Did you read that the keyword_definition of 'inx_knot' is ', JARGON_LABEL arg, JARGON_NAME arg, JARGON_ROPE arg, JARGON_TITLE arg'."
+"Did you read that the keyword_definition of 'inx_label' is ', JARGON_LABEL arg'."
+"Did you read that the keyword_definition of 'inx_name' is ', JARGON_NAME arg'."
+"Did you read that the keyword_definition of 'inx_rope' is ', JARGON_ROPE arg'."
+"Did you read that the keyword_definition of 'inx_title' is ', JARGON_TITLE arg'."
+Did you read that the keyword_definition of 'jargon' is 'Definition needed.'.
+Did you read that the keyword_definition of 'jargon_core' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'jargon_label' is ''jargon_label' is a translation dimen where otx_label is translated by inx_knot, inx_label, otx_knot, unknown_str'."
+"Did you read that the keyword_definition of 'jargon_name' is ''jargon_name' is a translation dimen where otx_name is translated by inx_knot, inx_name, otx_knot, unknown_str'."
+"Did you read that the keyword_definition of 'jargon_rope' is ''jargon_rope' is a translation dimen where otx_rope is translated by inx_knot, inx_rope, otx_knot, unknown_str'."
+"Did you read that the keyword_definition of 'jargon_title' is ''jargon_title' is a translation dimen where otx_title is translated by inx_knot, inx_title, otx_knot, unknown_str'."
+Did you read that the keyword_definition of 'jargonunit' is 'Definition needed.'.
 Did you read that the keyword_definition of 'labelmap' is 'Definition needed.'.
 Did you read that the keyword_definition of 'namemap' is 'Definition needed.'.
-"Did you read that the keyword_definition of 'otx_knot' is ', TRANSLATE_LABEL arg, TRANSLATE_NAME arg, TRANSLATE_ROPE arg, TRANSLATE_TITLE arg'."
-"Did you read that the keyword_definition of 'otx_label' is ', TRANSLATE_LABEL arg'."
-"Did you read that the keyword_definition of 'otx_name' is ', TRANSLATE_NAME arg'."
-"Did you read that the keyword_definition of 'otx_rope' is ', TRANSLATE_ROPE arg'."
-"Did you read that the keyword_definition of 'otx_title' is ', TRANSLATE_TITLE arg'."
+"Did you read that the keyword_definition of 'otx_knot' is ', JARGON_LABEL arg, JARGON_NAME arg, JARGON_ROPE arg, JARGON_TITLE arg'."
+"Did you read that the keyword_definition of 'otx_label' is ', JARGON_LABEL arg'."
+"Did you read that the keyword_definition of 'otx_name' is ', JARGON_NAME arg'."
+"Did you read that the keyword_definition of 'otx_rope' is ', JARGON_ROPE arg'."
+"Did you read that the keyword_definition of 'otx_title' is ', JARGON_TITLE arg'."
 Did you read that the keyword_definition of 'ropemap' is 'Definition needed.'.
 Did you read that the keyword_definition of 'titlemap' is 'Definition needed.'.
-Did you read that the keyword_definition of 'translate' is 'Definition needed.'.
-Did you read that the keyword_definition of 'translate_core' is 'Definition needed.'.
-"Did you read that the keyword_definition of 'translate_label' is ''translate_label' is a translation dimen where otx_label is translated by inx_knot, inx_label, otx_knot, unknown_str'."
-"Did you read that the keyword_definition of 'translate_name' is ''translate_name' is a translation dimen where otx_name is translated by inx_knot, inx_name, otx_knot, unknown_str'."
-"Did you read that the keyword_definition of 'translate_rope' is ''translate_rope' is a translation dimen where otx_rope is translated by inx_knot, inx_rope, otx_knot, unknown_str'."
-"Did you read that the keyword_definition of 'translate_title' is ''translate_title' is a translation dimen where otx_title is translated by inx_knot, inx_title, otx_knot, unknown_str'."
-Did you read that the keyword_definition of 'translateunit' is 'Definition needed.'.
-"Did you read that the keyword_definition of 'unknown_str' is ', TRANSLATE_LABEL arg, TRANSLATE_NAME arg, TRANSLATE_ROPE arg, TRANSLATE_TITLE arg'."
+"Did you read that the keyword_definition of 'unknown_str' is ', JARGON_LABEL arg, JARGON_NAME arg, JARGON_ROPE arg, JARGON_TITLE arg'."
 Did you read that the keyword_definition of 'Lingo' is 'Definition needed.'.
 Did you read that the keyword_definition of 'lingo' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'duck' is 'Definition needed. Maybe someone who can dive, swim, walk, knee, and fly. All the things.'."
@@ -562,95 +562,95 @@ Did you read that the keyword_definition of 'Excel' is 'A spreadsheet format.'.
 Did you read that the keyword_definition of 'SheetName' is 'A string used as SheetName for SpreadSheet files. str first used in ch20'.
 Did you read that the keyword_definition of 'allowed_crud' is 'Each brick config dimen has an allowed_crud that describes whether the data may be updated/deleted/inserted more than one.'.
 Did you read that the keyword_definition of 'attributes' is 'General term used to describe things about another thing'.
-Did you read that the keyword_definition of 'awardee_title_ERASE_inx' is 'The 'awardee_title_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'awardee_title_ERASE_otx' is 'The 'awardee_title_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'awardee_title_inx' is 'The 'awardee_title' value after Translate.'.
-Did you read that the keyword_definition of 'awardee_title_otx' is 'The 'awardee_title' value after Translate.'.
+Did you read that the keyword_definition of 'awardee_title_ERASE_inx' is 'The 'awardee_title_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'awardee_title_ERASE_otx' is 'The 'awardee_title_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'awardee_title_inx' is 'The 'awardee_title' value after Jargon.'.
+Did you read that the keyword_definition of 'awardee_title_otx' is 'The 'awardee_title' value after Jargon.'.
 Did you read that the keyword_definition of 'bk' is 'Brick Format Identifier. Every brick_type format starts with 'bk' and then 5 numbers.'.
 Did you read that the keyword_definition of 'border' is 'Defines line of influence between two Wheels. Also used by graphics and apps.'.
 Did you read that the keyword_definition of 'brick' is 'Definition needed.'.
 Did you read that the keyword_definition of 'brick_category' is 'Definition needed.'.
 Did you read that the keyword_definition of 'brick_type' is 'Definition needed.'.
-Did you read that the keyword_definition of 'bud_time_inx' is 'The 'bud_time' value after Translate.'.
-Did you read that the keyword_definition of 'bud_time_otx' is 'The 'bud_time' value after Translate.'.
+Did you read that the keyword_definition of 'bud_time_inx' is 'The 'bud_time' value after Jargon.'.
+Did you read that the keyword_definition of 'bud_time_otx' is 'The 'bud_time' value after Jargon.'.
 Did you read that the keyword_definition of 'build_order' is 'When building a world the order of dimen data implementation must be deterministic. build_order defines the order dimens are evaluated for a World.'.
-Did you read that the keyword_definition of 'contact_name_ERASE_inx' is 'The 'contact_name_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'contact_name_ERASE_otx' is 'The 'contact_name_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'contact_name_inx' is 'The 'contact_name' value after Translate.'.
-Did you read that the keyword_definition of 'contact_name_otx' is 'The 'contact_name' value after Translate.'.
+Did you read that the keyword_definition of 'contact_name_ERASE_inx' is 'The 'contact_name_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'contact_name_ERASE_otx' is 'The 'contact_name_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'contact_name_inx' is 'The 'contact_name' value after Jargon.'.
+Did you read that the keyword_definition of 'contact_name_otx' is 'The 'contact_name' value after Jargon.'.
 "Did you read that the keyword_definition of 'delete_insert' is 'Associated dimens: person_plan_healerunit, person_plan_laborunit'."
 "Did you read that the keyword_definition of 'delete_insert_update' is 'Associated dimens: person_contact_membership, person_contactunit, person_plan_awardunit, person_plan_factunit, person_plan_reason_caseunit, person_plan_reasonunit, person_planunit' in 'Associated dimens: person_planunit, person_contactunit, person_plan_reasonunit, person_plan_factunit, person_plan_awardunit, person_contact_membership, person_plan_reason_caseunit'."
 "Did you read that the keyword_definition of 'delete_update' is 'Associated dimens: person_plan_healerunit, person_plan_laborunit'."
-Did you read that the keyword_definition of 'epoch_label_inx' is 'The 'epoch_label' value after Translate.'.
-Did you read that the keyword_definition of 'epoch_label_otx' is 'The 'epoch_label' value after Translate.'.
+Did you read that the keyword_definition of 'epoch_label_inx' is 'The 'epoch_label' value after Jargon.'.
+Did you read that the keyword_definition of 'epoch_label_otx' is 'The 'epoch_label' value after Jargon.'.
 Did you read that the keyword_definition of 'error_message' is 'Definition needed.'.
 Did you read that the keyword_definition of 'excel' is 'A spreadsheet format.'.
-Did you read that the keyword_definition of 'fact_context_ERASE_inx' is 'The 'fact_context_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'fact_context_ERASE_otx' is 'The 'fact_context_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'fact_context_inx' is 'The 'fact_context' value after Translate.'.
-Did you read that the keyword_definition of 'fact_context_otx' is 'The 'fact_context' value after Translate.'.
-Did you read that the keyword_definition of 'fact_lower_inx' is 'The 'fact_lower' value after Translate.'.
-Did you read that the keyword_definition of 'fact_lower_otx' is 'The 'fact_lower' value after Translate.'.
-Did you read that the keyword_definition of 'fact_state_inx' is 'The 'fact_state' value after Translate.'.
-Did you read that the keyword_definition of 'fact_state_otx' is 'The 'fact_state' value after Translate.'.
-Did you read that the keyword_definition of 'fact_upper_inx' is 'The 'fact_upper' value after Translate.'.
-Did you read that the keyword_definition of 'fact_upper_otx' is 'The 'fact_upper' value after Translate.'.
+Did you read that the keyword_definition of 'fact_context_ERASE_inx' is 'The 'fact_context_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'fact_context_ERASE_otx' is 'The 'fact_context_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'fact_context_inx' is 'The 'fact_context' value after Jargon.'.
+Did you read that the keyword_definition of 'fact_context_otx' is 'The 'fact_context' value after Jargon.'.
+Did you read that the keyword_definition of 'fact_lower_inx' is 'The 'fact_lower' value after Jargon.'.
+Did you read that the keyword_definition of 'fact_lower_otx' is 'The 'fact_lower' value after Jargon.'.
+Did you read that the keyword_definition of 'fact_state_inx' is 'The 'fact_state' value after Jargon.'.
+Did you read that the keyword_definition of 'fact_state_otx' is 'The 'fact_state' value after Jargon.'.
+Did you read that the keyword_definition of 'fact_upper_inx' is 'The 'fact_upper' value after Jargon.'.
+Did you read that the keyword_definition of 'fact_upper_otx' is 'The 'fact_upper' value after Jargon.'.
 Did you read that the keyword_definition of 'fund_rank' is 'Definition needed.'.
-Did you read that the keyword_definition of 'group_title_ERASE_inx' is 'The 'group_title_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'group_title_ERASE_otx' is 'The 'group_title_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'group_title_inx' is 'The 'group_title' value after Translate.'.
-Did you read that the keyword_definition of 'group_title_otx' is 'The 'group_title' value after Translate.'.
-Did you read that the keyword_definition of 'healer_name_ERASE_inx' is 'The 'healer_name_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'healer_name_ERASE_otx' is 'The 'healer_name_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'healer_name_inx' is 'The 'healer_name' value after Translate.'.
-Did you read that the keyword_definition of 'healer_name_otx' is 'The 'healer_name' value after Translate.'.
-Did you read that the keyword_definition of 'hour_label_inx' is 'The 'hour_label' value after Translate.'.
-Did you read that the keyword_definition of 'hour_label_otx' is 'The 'hour_label' value after Translate.'.
+Did you read that the keyword_definition of 'group_title_ERASE_inx' is 'The 'group_title_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'group_title_ERASE_otx' is 'The 'group_title_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'group_title_inx' is 'The 'group_title' value after Jargon.'.
+Did you read that the keyword_definition of 'group_title_otx' is 'The 'group_title' value after Jargon.'.
+Did you read that the keyword_definition of 'healer_name_ERASE_inx' is 'The 'healer_name_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'healer_name_ERASE_otx' is 'The 'healer_name_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'healer_name_inx' is 'The 'healer_name' value after Jargon.'.
+Did you read that the keyword_definition of 'healer_name_otx' is 'The 'healer_name' value after Jargon.'.
+Did you read that the keyword_definition of 'hour_label_inx' is 'The 'hour_label' value after Jargon.'.
+Did you read that the keyword_definition of 'hour_label_otx' is 'The 'hour_label' value after Jargon.'.
 "Did you read that the keyword_definition of 'insert_multiple' is 'Associated dimens: moment_budunit, moment_ceckbook, moment_timeoffi'."
-"Did you read that the keyword_definition of 'insert_one_time' is 'Associated dimens: moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, momentunit, nabu_timenum, translate_label, translate_name, translate_rope, translate_title'."
+"Did you read that the keyword_definition of 'insert_one_time' is 'Associated dimens: jargon_label, jargon_name, jargon_rope, jargon_title, moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, momentunit, nabu_timenum'."
 Did you read that the keyword_definition of 'insert_update' is 'Definition needed.'.
-Did you read that the keyword_definition of 'labor_title_ERASE_inx' is 'The 'labor_title_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'labor_title_ERASE_otx' is 'The 'labor_title_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'labor_title_inx' is 'The 'labor_title' value after Translate.'.
-Did you read that the keyword_definition of 'labor_title_otx' is 'The 'labor_title' value after Translate.'.
-Did you read that the keyword_definition of 'moment_rope_inx' is 'The 'moment_rope' value after Translate.'.
-Did you read that the keyword_definition of 'moment_rope_otx' is 'The 'moment_rope' value after Translate.'.
-Did you read that the keyword_definition of 'month_label_inx' is 'The 'month_label' value after Translate.'.
-Did you read that the keyword_definition of 'month_label_otx' is 'The 'month_label' value after Translate.'.
+Did you read that the keyword_definition of 'jargon_spark_num' is 'Definition needed.'.
+Did you read that the keyword_definition of 'labor_title_ERASE_inx' is 'The 'labor_title_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'labor_title_ERASE_otx' is 'The 'labor_title_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'labor_title_inx' is 'The 'labor_title' value after Jargon.'.
+Did you read that the keyword_definition of 'labor_title_otx' is 'The 'labor_title' value after Jargon.'.
+Did you read that the keyword_definition of 'moment_rope_inx' is 'The 'moment_rope' value after Jargon.'.
+Did you read that the keyword_definition of 'moment_rope_otx' is 'The 'moment_rope' value after Jargon.'.
+Did you read that the keyword_definition of 'month_label_inx' is 'The 'month_label' value after Jargon.'.
+Did you read that the keyword_definition of 'month_label_otx' is 'The 'month_label' value after Jargon.'.
 Did you read that the keyword_definition of 'net_funds' is 'Definition needed.'.
-Did you read that the keyword_definition of 'offi_time_inx' is 'The 'offi_time' value after Translate.'.
-Did you read that the keyword_definition of 'offi_time_otx' is 'The 'offi_time' value after Translate.'.
+Did you read that the keyword_definition of 'offi_time_inx' is 'The 'offi_time' value after Jargon.'.
+Did you read that the keyword_definition of 'offi_time_otx' is 'The 'offi_time' value after Jargon.'.
 Did you read that the keyword_definition of 'otx_key' is 'Definition needed.'.
-Did you read that the keyword_definition of 'person_name_ERASE_inx' is 'The 'person_name_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'person_name_ERASE_otx' is 'The 'person_name_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'person_name_inx' is 'The 'person_name' value after Translate.'.
-Did you read that the keyword_definition of 'person_name_otx' is 'The 'person_name' value after Translate.'.
-Did you read that the keyword_definition of 'plan_rope_ERASE_inx' is 'The 'plan_rope_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'plan_rope_ERASE_otx' is 'The 'plan_rope_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'plan_rope_inx' is 'The 'plan_rope' value after Translate.'.
-Did you read that the keyword_definition of 'plan_rope_otx' is 'The 'plan_rope' value after Translate.'.
+Did you read that the keyword_definition of 'person_name_ERASE_inx' is 'The 'person_name_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'person_name_ERASE_otx' is 'The 'person_name_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'person_name_inx' is 'The 'person_name' value after Jargon.'.
+Did you read that the keyword_definition of 'person_name_otx' is 'The 'person_name' value after Jargon.'.
+Did you read that the keyword_definition of 'plan_rope_ERASE_inx' is 'The 'plan_rope_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'plan_rope_ERASE_otx' is 'The 'plan_rope_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'plan_rope_inx' is 'The 'plan_rope' value after Jargon.'.
+Did you read that the keyword_definition of 'plan_rope_otx' is 'The 'plan_rope' value after Jargon.'.
 Did you read that the keyword_definition of 'pledges_count' is 'Definition needed.'.
-Did you read that the keyword_definition of 'reason_context_ERASE_inx' is 'The 'reason_context_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'reason_context_ERASE_otx' is 'The 'reason_context_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'reason_context_inx' is 'The 'reason_context' value after Translate.'.
-Did you read that the keyword_definition of 'reason_context_otx' is 'The 'reason_context' value after Translate.'.
-Did you read that the keyword_definition of 'reason_lower_inx' is 'The 'reason_lower' value after Translate.'.
-Did you read that the keyword_definition of 'reason_lower_otx' is 'The 'reason_lower' value after Translate.'.
-Did you read that the keyword_definition of 'reason_state_ERASE_inx' is 'The 'reason_state_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'reason_state_ERASE_otx' is 'The 'reason_state_ERASE' value after Translate.'.
-Did you read that the keyword_definition of 'reason_state_inx' is 'The 'reason_state' value after Translate.'.
-Did you read that the keyword_definition of 'reason_state_otx' is 'The 'reason_state' value after Translate.'.
-Did you read that the keyword_definition of 'reason_upper_inx' is 'The 'reason_upper' value after Translate.'.
-Did you read that the keyword_definition of 'reason_upper_otx' is 'The 'reason_upper' value after Translate.'.
+Did you read that the keyword_definition of 'reason_context_ERASE_inx' is 'The 'reason_context_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'reason_context_ERASE_otx' is 'The 'reason_context_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'reason_context_inx' is 'The 'reason_context' value after Jargon.'.
+Did you read that the keyword_definition of 'reason_context_otx' is 'The 'reason_context' value after Jargon.'.
+Did you read that the keyword_definition of 'reason_lower_inx' is 'The 'reason_lower' value after Jargon.'.
+Did you read that the keyword_definition of 'reason_lower_otx' is 'The 'reason_lower' value after Jargon.'.
+Did you read that the keyword_definition of 'reason_state_ERASE_inx' is 'The 'reason_state_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'reason_state_ERASE_otx' is 'The 'reason_state_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'reason_state_inx' is 'The 'reason_state' value after Jargon.'.
+Did you read that the keyword_definition of 'reason_state_otx' is 'The 'reason_state' value after Jargon.'.
+Did you read that the keyword_definition of 'reason_upper_inx' is 'The 'reason_upper' value after Jargon.'.
+Did you read that the keyword_definition of 'reason_upper_otx' is 'The 'reason_upper' value after Jargon.'.
 "Did you read that the keyword_definition of 'sheet' is 'Object that represents a spreadsheet. It has attributes like filename, table_name, and data.'."
 Did you read that the keyword_definition of 'source_dimen' is 'Definition needed.'.
-Did you read that the keyword_definition of 'spark_face_inx' is 'The 'spark_face' value after Translate.'.
-Did you read that the keyword_definition of 'spark_face_otx' is 'The 'spark_face' value after Translate.'.
-Did you read that the keyword_definition of 'tran_time_inx' is 'The 'tran_time' value after Translate.'.
-Did you read that the keyword_definition of 'tran_time_otx' is 'The 'tran_time' value after Translate.'.
-Did you read that the keyword_definition of 'translate_spark_num' is 'Definition needed.'.
-Did you read that the keyword_definition of 'weekday_label_inx' is 'The 'weekday_label' value after Translate.'.
-Did you read that the keyword_definition of 'weekday_label_otx' is 'The 'weekday_label' value after Translate.'.
+Did you read that the keyword_definition of 'spark_face_inx' is 'The 'spark_face' value after Jargon.'.
+Did you read that the keyword_definition of 'spark_face_otx' is 'The 'spark_face' value after Jargon.'.
+Did you read that the keyword_definition of 'tran_time_inx' is 'The 'tran_time' value after Jargon.'.
+Did you read that the keyword_definition of 'tran_time_otx' is 'The 'tran_time' value after Jargon.'.
+Did you read that the keyword_definition of 'weekday_label_inx' is 'The 'weekday_label' value after Jargon.'.
+Did you read that the keyword_definition of 'weekday_label_otx' is 'The 'weekday_label' value after Jargon.'.
 Did you read that the keyword_definition of 'world_name' is 'Definition needed.'.
 Did you read that the keyword_definition of 'b_agg' is '5 character abbreviation of brixk_agg. stage_type_order=4 Brick Agg: The Brick Raw tables are aggregated to elimanate duplicates.'.
 Did you read that the keyword_definition of 'b_raw' is '5 character abbreviation of brixk_raw. stage_type_order=3 Brick Raw: The importable Excel Sheets entering the database'.
@@ -684,17 +684,17 @@ Did you read that the keyword_definition of 'mmtweek' is 'abbv for moment_epoch_
 Did you read that the keyword_definition of 'moment_ote1_agg' is 'Create Database Table that holds all spark_num to bud_time pairs. Include moment_rope and person_name'.
 Did you read that the keyword_definition of 'nabtime' is 'abbv for nabu_timenum'.
 Did you read that the keyword_definition of 'person_net_amount' is 'Definition needed.'.
-Did you read that the keyword_definition of 's_agg' is '5 character abbreviation of sound_agg. stage_type_order=8 Populated by aggregated Sound Raw dimen data (elimanate duplicates). Translate Core data is validated then used to translate non-Translate dimen data'.
+Did you read that the keyword_definition of 's_agg' is '5 character abbreviation of sound_agg. stage_type_order=8 Populated by aggregated Sound Raw dimen data (elimanate duplicates). Jargon Core data is validated then used to jargon non-Jargon dimen data'.
 Did you read that the keyword_definition of 's_raw' is '5 character abbreviation of sound_raw. stage_type_order=7 The Brick Valid data is seperated by column into dimen data such as person_planunit and moment_budunit'.
 Did you read that the keyword_definition of 's_vld' is '5 character abbreviation of sound_vld. stage_type_order=9 The Translated Sound Agg data is aggregated to elimanate duplicates into Sound Valid'.
-Did you read that the keyword_definition of 'sound_agg' is 'stage_type_order=8 Populated by aggregated Sound Raw dimen data (elimanate duplicates). Translate Core data is validated then used to translate non-Translate dimen data'.
+Did you read that the keyword_definition of 'sound_agg' is 'stage_type_order=8 Populated by aggregated Sound Raw dimen data (elimanate duplicates). Jargon Core data is validated then used to jargon non-Jargon dimen data'.
 Did you read that the keyword_definition of 'sound_raw' is 'stage_type_order=7 The Brick Valid data is seperated by column into dimen data such as person_planunit and moment_budunit'.
 Did you read that the keyword_definition of 'sound_vld' is 'stage_type_order=9 The Translated Sound Agg data is aggregated to elimanate duplicates into Sound Valid'.
-Did you read that the keyword_definition of 'trlcore' is 'abbv for translate_core'.
-Did you read that the keyword_definition of 'trllabe' is 'abbv for translate_label'.
-Did you read that the keyword_definition of 'trlname' is 'abbv for translate_name'.
-Did you read that the keyword_definition of 'trlrope' is 'abbv for translate_rope'.
-Did you read that the keyword_definition of 'trltitl' is 'abbv for translate_title'.
+Did you read that the keyword_definition of 'trlcore' is 'abbv for jargon_core'.
+Did you read that the keyword_definition of 'trllabe' is 'abbv for jargon_label'.
+Did you read that the keyword_definition of 'trlname' is 'abbv for jargon_name'.
+Did you read that the keyword_definition of 'trlrope' is 'abbv for jargon_rope'.
+Did you read that the keyword_definition of 'trltitl' is 'abbv for jargon_title'.
 Did you read that the keyword_definition of 'day_punch' is 'A report that summarizes the tasks of a person for a day.'.
 Did you read that the keyword_definition of 'fission' is 'Any complicated step changing idea_type to brick_type. Each fission_step makes a single type of change. Can be simple (set value to X) or complicated (add missing rows with relative values). Only referenced in ch23'.
 Did you read that the keyword_definition of 'idea_type' is 'Definition needed.'.

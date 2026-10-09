@@ -50,7 +50,7 @@ def test_remove_staging_columns_ReturnsObj():
 def test_ALL_DIMEN_ABBV7_has_all_dimens():
     # ESTABLISH
     brick_config_keys = set(get_brick_config_dict().keys())
-    brick_config_keys.add("translate_core")
+    brick_config_keys.add("jargon_core")
 
     # WHEN / THEN
     assert len(ALL_DIMEN_ABBV7) == len(brick_config_keys)
@@ -69,7 +69,7 @@ def test_get_dimen_abbv2_HasAll_dimens():
     # THEN
     expected_abbv2_set = set()
     brick_config_keys = set(get_brick_config_dict().keys())
-    brick_config_keys.add("translate_core")
+    brick_config_keys.add("jargon_core")
     for brick_dimen in brick_config_keys:
         abbv2 = get_dimen_abbv2(brick_dimen)
         print(f"{abbv2=}")
@@ -167,15 +167,15 @@ def test_create_prime_tablename_ReturnsObj_Scenario0_ExpectedReturns():
     assert mmtweek_s_agg_table == f"{kw.moment_epoch_weekday}_{kw.s_agg}"
     assert mmtoffi_s_agg_table == f"{kw.moment_timeoffi}_{kw.s_agg}"
     assert nabtime_s_agg_table == f"{kw.nabu_timenum}_{kw.s_agg}"
-    assert trlname_s_agg_table == f"{kw.translate_name}_{kw.s_agg}"
-    assert trllabe_s_agg_table == f"{kw.translate_label}_{kw.s_agg}"
-    assert trlrope_s_agg_table == f"{kw.translate_rope}_{kw.s_agg}"
-    assert trltitl_s_agg_table == f"{kw.translate_title}_{kw.s_agg}"
-    assert trltitl_h_vld_table == f"{kw.translate_title}_{kw.h_vld}"
-    assert trltitl_s_raw_table == f"{kw.translate_title}_{kw.s_raw}"
-    assert trltitl_s_val_table == f"{kw.translate_title}_{kw.s_vld}"
-    assert trlcore_s_raw_table == f"{kw.translate_core}_{kw.s_raw}"
-    assert trlcore_s_agg_table == f"{kw.translate_core}_{kw.s_agg}"
+    assert trlname_s_agg_table == f"{kw.jargon_name}_{kw.s_agg}"
+    assert trllabe_s_agg_table == f"{kw.jargon_label}_{kw.s_agg}"
+    assert trlrope_s_agg_table == f"{kw.jargon_rope}_{kw.s_agg}"
+    assert trltitl_s_agg_table == f"{kw.jargon_title}_{kw.s_agg}"
+    assert trltitl_h_vld_table == f"{kw.jargon_title}_{kw.h_vld}"
+    assert trltitl_s_raw_table == f"{kw.jargon_title}_{kw.s_raw}"
+    assert trltitl_s_val_table == f"{kw.jargon_title}_{kw.s_vld}"
+    assert trlcore_s_raw_table == f"{kw.jargon_core}_{kw.s_raw}"
+    assert trlcore_s_agg_table == f"{kw.jargon_core}_{kw.s_agg}"
     assert prncont_job_table == f"{kw.person_contactunit}_job"
     assert prngrou_job_table == f"{kw.person_groupunit}_job"
 
@@ -193,13 +193,13 @@ def test_get_all_dimen_columns_set_ReturnsObj_Scenario0_brick_config_Dimens():
         assert dimen_columns == expected_columns
 
 
-def test_get_all_dimen_columns_set_ReturnsObj_Scenario1_translate_core_Dimens():
+def test_get_all_dimen_columns_set_ReturnsObj_Scenario1_jargon_core_Dimens():
     # ESTABLISH / WHEN
-    translate_core_columns = get_all_dimen_columns_set(kw.translate_core)
+    jargon_core_columns = get_all_dimen_columns_set(kw.jargon_core)
 
     # THEN
     expected_columns = {kw.spark_face, kw.otx_knot, kw.inx_knot, kw.unknown_str}
-    assert translate_core_columns == expected_columns
+    assert jargon_core_columns == expected_columns
 
 
 def test_etl_stage_types_config_path_ReturnsObj():
@@ -311,8 +311,8 @@ def test_get_etl_brick_category_config_dict_ReturnsObj_Scenario0_IsFullyPopulate
     assert etl_brick_category_config
     etl_brick_category_config_dimens = set(etl_brick_category_config.keys())
     assert kw.moment in etl_brick_category_config_dimens
-    assert kw.translate_core in etl_brick_category_config_dimens
-    assert kw.translate in etl_brick_category_config_dimens
+    assert kw.jargon_core in etl_brick_category_config_dimens
+    assert kw.jargon in etl_brick_category_config_dimens
     assert kw.person in etl_brick_category_config_dimens
     assert kw.nabu in etl_brick_category_config_dimens
     assert len(etl_brick_category_config_dimens) == 5
@@ -401,7 +401,7 @@ def test_get_prime_columns_ReturnsObj_Scenario2_moment_epoch_month():
     }
 
 
-def test_get_prime_columns_ReturnsObj_Scenario3_h_raw_set_translateable_otx_inx_args():
+def test_get_prime_columns_ReturnsObj_Scenario3_h_raw_set_jargonable_otx_inx_args():
     # ESTABLISH
     x_dimen = kw.moment_epoch_month
     table_keylist = [kw.h_raw]

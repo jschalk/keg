@@ -21,11 +21,11 @@ from ch16_nabu.nabu_config import (
     get_nabu_dimens,
     get_nabuable_args,
 )
-from ch17_translate.translate_config import (
-    get_translate_args_dimen_mapping,
-    get_translate_config_dict,
-    get_translate_dimens,
-    get_translateable_args,
+from ch17_jargon.jargon_config import (
+    get_jargon_args_dimen_mapping,
+    get_jargon_config_dict,
+    get_jargon_dimens,
+    get_jargonable_args,
 )
 from ch20_brick.brick_config import (
     BrickFormatsEnum,
@@ -62,10 +62,10 @@ def test_get_keg_elements_sort_order_ReturnsObj():
     assert moment_args.issubset(set(table_sorting_priority))
     nabu_args = get_nabu_args()
     assert nabu_args.issubset(set(table_sorting_priority))
-    translate_args = set(get_translate_args_dimen_mapping().keys())
+    jargon_args = set(get_jargon_args_dimen_mapping().keys())
     # print(f"{moment_args=}")
-    # print(f"{translate_args.difference(set(table_sorting_priority))=}")
-    assert translate_args.issubset(set(table_sorting_priority))
+    # print(f"{jargon_args.difference(set(table_sorting_priority))=}")
+    assert jargon_args.issubset(set(table_sorting_priority))
     all_person_dimen_delete_keys = get_all_person_dimen_delete_keys()
     # print(f"missing {all_person_dimen_delete_keys.difference(table_sorting_priority)}")
     assert all_person_dimen_delete_keys.issubset(table_sorting_priority)
@@ -74,19 +74,19 @@ def test_get_keg_elements_sort_order_ReturnsObj():
     #     print(f"{person_calc_arg=}")
     print(f"{person_calc_args.difference(table_sorting_priority)=}")
     assert person_calc_args.issubset(table_sorting_priority)
-    translateable_otx_cols = {f"{trl_arg}_otx" for trl_arg in get_translateable_args()}
-    translateable_inx_cols = {f"{trl_arg}_inx" for trl_arg in get_translateable_args()}
-    # print(f"{translateable_otx_cols=}")
-    # print(f"{translateable_inx_cols=}")
-    assert translateable_otx_cols.issubset(table_sorting_priority)
-    assert translateable_inx_cols.issubset(table_sorting_priority)
+    jargonable_otx_cols = {f"{trl_arg}_otx" for trl_arg in get_jargonable_args()}
+    jargonable_inx_cols = {f"{trl_arg}_inx" for trl_arg in get_jargonable_args()}
+    # print(f"{jargonable_otx_cols=}")
+    # print(f"{jargonable_inx_cols=}")
+    assert jargonable_otx_cols.issubset(table_sorting_priority)
+    assert jargonable_inx_cols.issubset(table_sorting_priority)
     x_delete_keys = all_person_dimen_delete_keys
-    translateable_delete_otx_cols = {f"{trl_arg}_otx" for trl_arg in x_delete_keys}
-    translateable_delete_inx_cols = {f"{trl_arg}_inx" for trl_arg in x_delete_keys}
-    # print(f"{translateable_delete_otx_cols=}")
-    # print(f"{translateable_delete_inx_cols=}")
-    assert translateable_delete_otx_cols.issubset(table_sorting_priority)
-    assert translateable_delete_inx_cols.issubset(table_sorting_priority)
+    jargonable_delete_otx_cols = {f"{trl_arg}_otx" for trl_arg in x_delete_keys}
+    jargonable_delete_inx_cols = {f"{trl_arg}_inx" for trl_arg in x_delete_keys}
+    # print(f"{jargonable_delete_otx_cols=}")
+    # print(f"{jargonable_delete_inx_cols=}")
+    assert jargonable_delete_otx_cols.issubset(table_sorting_priority)
+    assert jargonable_delete_inx_cols.issubset(table_sorting_priority)
     nabuable_otx_cols = {f"{nabu_arg}_otx" for nabu_arg in get_nabuable_args()}
     nabuable_inx_cols = {f"{nabu_arg}_inx" for nabu_arg in get_nabuable_args()}
     assert nabuable_otx_cols.issubset(table_sorting_priority)
@@ -96,7 +96,7 @@ def test_get_keg_elements_sort_order_ReturnsObj():
     assert table_sorting_priority[0] == kw.world_name
     assert table_sorting_priority[1] == kw.brick_type
     assert table_sorting_priority[2] == kw.source_dimen
-    assert table_sorting_priority[3] == kw.translate_spark_num
+    assert table_sorting_priority[3] == kw.jargon_spark_num
     assert table_sorting_priority[4] == kw.spark_num
     assert table_sorting_priority[5] == kw.spark_face
     assert table_sorting_priority[6] == f"{kw.spark_face}_otx"
@@ -300,13 +300,13 @@ def test_get_keg_elements_sort_order_ReturnsObj():
     all_args = copy_copy(atom_args)
     all_args.update(all_person_dimen_delete_keys)
     all_args.update(moment_args)
-    all_args.update(translate_args)
+    all_args.update(jargon_args)
     all_args.update(person_calc_args)
     all_args.update(nabu_args)
-    all_args.update(translateable_otx_cols)
-    all_args.update(translateable_inx_cols)
-    all_args.update(translateable_delete_otx_cols)
-    all_args.update(translateable_delete_inx_cols)
+    all_args.update(jargonable_otx_cols)
+    all_args.update(jargonable_inx_cols)
+    all_args.update(jargonable_delete_otx_cols)
+    all_args.update(jargonable_delete_inx_cols)
     all_args.update(nabuable_otx_cols)
     all_args.update(nabuable_inx_cols)
     all_args.update()
@@ -314,7 +314,7 @@ def test_get_keg_elements_sort_order_ReturnsObj():
     all_args.add(kw.spark_num)
     all_args.add(kw.spark_face)
     all_args.add(kw.source_dimen)
-    all_args.add(kw.translate_spark_num)
+    all_args.add(kw.jargon_spark_num)
     all_args.add(kw.error_message)
     all_args.add(kw.world_name)
     all_args.add(kw.net_funds)  # kpi columns
@@ -537,7 +537,7 @@ def test_get_brick_sqlite_types_ReturnsObj():
     assert sqlite_types.get(kw.tran_time) == "INTEGER"
     assert sqlite_types.get(kw.tran_time_inx) == "INTEGER"
     assert sqlite_types.get(kw.tran_time_otx) == "INTEGER"
-    assert sqlite_types.get(kw.translate_spark_num) == "INTEGER"
+    assert sqlite_types.get(kw.jargon_spark_num) == "INTEGER"
     assert sqlite_types.get(kw.tree_level) == "INTEGER"
     assert sqlite_types.get(kw.tree_traverse_count) == "INTEGER"
     assert sqlite_types.get(kw.unknown_str) == "TEXT"
@@ -644,25 +644,25 @@ def test_get_brick_config_dict_ReturnsObj_Scenario0_IsFullyPopulated():
     assert kw.person_planunit in brick_config_dimens
     assert kw.personunit in brick_config_dimens
     assert kw.nabu_timenum in brick_config_dimens
-    assert kw.translate_name in brick_config_dimens
-    assert kw.translate_title in brick_config_dimens
-    assert kw.translate_label in brick_config_dimens
-    assert kw.translate_rope in brick_config_dimens
+    assert kw.jargon_name in brick_config_dimens
+    assert kw.jargon_title in brick_config_dimens
+    assert kw.jargon_label in brick_config_dimens
+    assert kw.jargon_rope in brick_config_dimens
     assert get_person_dimens().issubset(brick_config_dimens)
     assert get_moment_dimens().issubset(brick_config_dimens)
     assert get_nabu_dimens().issubset(brick_config_dimens)
-    assert get_translate_dimens().issubset(brick_config_dimens)
+    assert get_jargon_dimens().issubset(brick_config_dimens)
     gen_all_dimens = get_person_dimens()
     gen_all_dimens.update(get_moment_dimens())
     gen_all_dimens.update(get_nabu_dimens())
-    gen_all_dimens.update(get_translate_dimens())
+    gen_all_dimens.update(get_jargon_dimens())
     assert gen_all_dimens == brick_config_dimens
     assert len(x_brick_config) == 22
     _validate_brick_config(x_brick_config)
 
 
 def get_brick_categorys():
-    return {kw.person, kw.moment, kw.translate, kw.nabu}
+    return {kw.person, kw.moment, kw.jargon, kw.nabu}
 
 
 def _validate_brick_config(x_brick_config: dict):
@@ -670,7 +670,7 @@ def _validate_brick_config(x_brick_config: dict):
     atom_config_dict = get_atom_config_dict()
     moment_config_dict = get_moment_config_dict()
     nabu_config_dict = get_nabu_config_dict()
-    translate_config_dict = get_translate_config_dict()
+    jargon_config_dict = get_jargon_config_dict()
     # for every brick_format file there exists a unique brick_type with leading zeros to make 5 digits
     for brick_dimen, brick_dict in x_brick_config.items():
         print(f"{brick_dimen=}")
@@ -688,8 +688,8 @@ def _validate_brick_config(x_brick_config: dict):
             sub_dimen = moment_config_dict.get(brick_dimen)
         elif brick_dict.get(kw.brick_category) == kw.nabu:
             sub_dimen = nabu_config_dict.get(brick_dimen)
-        elif brick_dict.get(kw.brick_category) == kw.translate:
-            sub_dimen = translate_config_dict.get(brick_dimen)
+        elif brick_dict.get(kw.brick_category) == kw.jargon:
+            sub_dimen = jargon_config_dict.get(brick_dimen)
 
         assert brick_dict.get(kw.allowed_crud) in get_allowed_curds()
 
@@ -707,10 +707,10 @@ def _validate_brick_config(x_brick_config: dict):
             kw.momentunit,
             "map_otx2inx",
             kw.nabu_timenum,
-            kw.translate_title,
-            kw.translate_name,
-            kw.translate_label,
-            kw.translate_rope,
+            kw.jargon_title,
+            kw.jargon_name,
+            kw.jargon_label,
+            kw.jargon_rope,
         }:
             assert brick_allowed_crud == kw.insert_one_time
         elif brick_dimen in {kw.moment_budunit, kw.moment_ceckbook, kw.moment_timeoffi}:
@@ -805,7 +805,7 @@ def test_get_brick_format_filenames_ReturnsObj_Validate_brick_format_files():
     valid_brick_dimens.update(get_person_dimens())
     valid_brick_dimens.update(get_moment_dimens())
     valid_brick_dimens.update(get_nabu_dimens())
-    valid_brick_dimens.update(get_translate_dimens())
+    valid_brick_dimens.update(get_jargon_dimens())
     print("get_brick_config_dict")
     config_dict = get_brick_config_dict()
 
@@ -911,10 +911,10 @@ def set_brick_config_json(dimen: str, build_order: int):
 def test_get_brick_config_dict_ReturnsObj_Scenario1_Check_build_order():
     # ESTABLISH / WHEN
     bo = kw.build_order
-    # set_brick_config_json(kw.translate_name, 0)
-    # set_brick_config_json(kw.translate_title, 1)
-    # set_brick_config_json(kw.translate_label, 2)
-    # set_brick_config_json(kw.translate_rope, 3)
+    # set_brick_config_json(kw.jargon_name, 0)
+    # set_brick_config_json(kw.jargon_title, 1)
+    # set_brick_config_json(kw.jargon_label, 2)
+    # set_brick_config_json(kw.jargon_rope, 3)
     # set_brick_config_json(kw.momentunit, 5)
     # set_brick_config_json(kw.moment_epoch_hour, 6)
     # set_brick_config_json(kw.moment_epoch_month, 7)
@@ -935,10 +935,10 @@ def test_get_brick_config_dict_ReturnsObj_Scenario1_Check_build_order():
     x_brick_config = get_brick_config_dict()
 
     # THEN
-    assert x_brick_config.get(kw.translate_name).get(bo) == 0
-    assert x_brick_config.get(kw.translate_title).get(bo) == 1
-    assert x_brick_config.get(kw.translate_label).get(bo) == 2
-    assert x_brick_config.get(kw.translate_rope).get(bo) == 3
+    assert x_brick_config.get(kw.jargon_name).get(bo) == 0
+    assert x_brick_config.get(kw.jargon_title).get(bo) == 1
+    assert x_brick_config.get(kw.jargon_label).get(bo) == 2
+    assert x_brick_config.get(kw.jargon_rope).get(bo) == 3
     assert x_brick_config.get(kw.nabu_timenum).get(bo) == 4
     assert x_brick_config.get(kw.momentunit).get(bo) == 5
     assert x_brick_config.get(kw.moment_epoch_hour).get(bo) == 6
@@ -974,10 +974,10 @@ def test_get_brick_config_dict_ReturnsObj_Scenario2_Person():
     person_brick_config = get_brick_config_dict(kw.person)
 
     # THEN
-    assert not person_brick_config.get(kw.translate_name)
-    assert not person_brick_config.get(kw.translate_title)
-    assert not person_brick_config.get(kw.translate_label)
-    assert not person_brick_config.get(kw.translate_rope)
+    assert not person_brick_config.get(kw.jargon_name)
+    assert not person_brick_config.get(kw.jargon_title)
+    assert not person_brick_config.get(kw.jargon_label)
+    assert not person_brick_config.get(kw.jargon_rope)
     assert not person_brick_config.get(kw.nabu_timenum)
     assert not person_brick_config.get(kw.momentunit)
     assert not person_brick_config.get(kw.moment_epoch_hour)
@@ -1003,8 +1003,8 @@ def test_get_brick_config_dict_ReturnsObj_Scenario3_CountDimens():
     assert len(get_brick_config_dict(brick_categorys={kw.person})) == 10
     assert len(get_brick_config_dict(brick_categorys={kw.moment})) == 7
     assert len(get_brick_config_dict(brick_categorys={kw.nabu})) == 1
-    assert len(get_brick_config_dict(brick_categorys={kw.translate})) == 4
-    assert len(get_brick_config_dict({kw.nabu, kw.translate})) == 5
+    assert len(get_brick_config_dict(brick_categorys={kw.jargon})) == 4
+    assert len(get_brick_config_dict({kw.nabu, kw.jargon})) == 5
 
 
 def test_get_quick_bricks_column_ref_ReturnsObj():

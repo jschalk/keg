@@ -531,6 +531,13 @@ inx_label,0,17:
 inx_name,0,17:
 inx_rope,0,17:
 inx_title,0,17:
+jargon,0,17:
+jargon_core,0,17:
+jargon_label,0,17:
+jargon_name,0,17:
+jargon_rope,0,17:
+jargon_title,0,17:
+jargonunit,0,"17, 20, 97"
 labelmap,0,17:
 namemap,0,17:
 otx_knot,0,17:
@@ -540,13 +547,6 @@ otx_rope,0,17:
 otx_title,0,17:
 ropemap,0,17:
 titlemap,0,17:
-translate,0,17:
-translate_core,0,17:
-translate_label,0,17:
-translate_name,0,17:
-translate_rope,0,17:
-translate_title,0,17:
-translateunit,0,"17, 20, 97"
 unknown_str,0,17:
 Lingo,0,18
 lingo,0,18
@@ -603,6 +603,7 @@ hour_label_otx,0,"20, 22"
 insert_multiple,0,20:
 insert_one_time,0,20:
 insert_update,0,20:
+jargon_spark_num,0,"20, 22, 97"
 labor_title_ERASE_inx,0,"20, 22"
 labor_title_ERASE_otx,0,"20, 22"
 labor_title_inx,0,"20, 22"
@@ -642,7 +643,6 @@ spark_face_inx,0,"20, 22, 26"
 spark_face_otx,0,"20, 22, 26"
 tran_time_inx,0,"20, 22"
 tran_time_otx,0,"20, 22"
-translate_spark_num,0,"20, 22, 97"
 weekday_label_inx,0,"20, 22"
 weekday_label_otx,0,"20, 22"
 world_name,0,20:

@@ -10,7 +10,7 @@ from ch99_glossary.ch_keyword import Ch26Keywords as kw
 from sqlite3 import Cursor
 
 
-def test_create_update_heard_raw_existing_inx_col_sqlstr_UpdatesTable_Scenario0_FullTranslateTables(
+def test_create_update_heard_raw_existing_inx_col_sqlstr_UpdatesTable_Scenario0_FullJargonTables(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -39,7 +39,7 @@ VALUES
 """
     cursor0.execute(insert_spark_face_only_sqlstr)
 
-    trlname_dimen = kw.translate_name
+    trlname_dimen = kw.jargon_name
     trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
     print(f"{trlname_s_vld_tablename=}")
     insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename} 
@@ -75,7 +75,7 @@ VALUES
     ]
 
 
-def test_create_update_heard_raw_existing_inx_col_sqlstr_UpdatesTable_Scenario1_PartialTranslateTables(
+def test_create_update_heard_raw_existing_inx_col_sqlstr_UpdatesTable_Scenario1_PartialJargonTables(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -101,7 +101,7 @@ VALUES
 ;
 """
     cursor0.execute(insert_spark_face_only_sqlstr)
-    trlname_dimen = kw.translate_name
+    trlname_dimen = kw.jargon_name
     trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
     print(f"{trlname_s_vld_tablename=}")
     insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename}
@@ -128,7 +128,7 @@ VALUES
     cursor0.execute(select_spark_face_only_sqlstr)
     rows = cursor0.fetchall()
     print(rows)
-    # spark5 does not link to spark7 translate record's
+    # spark5 does not link to spark7 jargon record's
     assert rows == [
         (spark1, sue_otx, sue_inx),
         (spark2, yao_otx, None),
@@ -136,7 +136,7 @@ VALUES
     ]
 
 
-def test_create_update_heard_raw_existing_inx_col_sqlstr_UpdatesTable_Scenario2_Different_spark_num_TranslateMappings(
+def test_create_update_heard_raw_existing_inx_col_sqlstr_UpdatesTable_Scenario2_Different_spark_num_JargonMappings(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -173,7 +173,7 @@ VALUES
 """
     cursor0.execute(insert_spark_face_only_sqlstr)
 
-    trlname_dimen = kw.translate_name
+    trlname_dimen = kw.jargon_name
     trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
     print(f"{trlname_s_vld_tablename=}")
     insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename}
@@ -203,7 +203,7 @@ VALUES
     cursor0.execute(select_spark_face_only_sqlstr)
     rows = cursor0.fetchall()
     print(rows)
-    # spark5 does not link to spark7 translate record's
+    # spark5 does not link to spark7 jargon record's
     assert rows == [
         (0, bob_otx, None),
         (1, bob_otx, bob_inx0),
@@ -214,7 +214,7 @@ VALUES
     ]
 
 
-def test_create_update_heard_raw_empty_inx_col_sqlstr_UpdatesTable_Scenario0_EmptyTranslateTables(
+def test_create_update_heard_raw_empty_inx_col_sqlstr_UpdatesTable_Scenario0_EmptyJargonTables(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -229,7 +229,7 @@ def test_create_update_heard_raw_empty_inx_col_sqlstr_UpdatesTable_Scenario0_Emp
     spark7 = 7
 
     create_sound_and_heard_tables(cursor0)
-    trlname_s_vld_tablename = prime_tbl(kw.translate_name, kw.s_vld)
+    trlname_s_vld_tablename = prime_tbl(kw.jargon_name, kw.s_vld)
     print(f"{trlname_s_vld_tablename=}")
     print(f"{get_table_columns(cursor0, trlname_s_vld_tablename)=}")
 
@@ -306,7 +306,7 @@ VALUES
 """
     cursor0.execute(insert_spark_face_only_sqlstr)
 
-    trlname_dimen = kw.translate_name
+    trlname_dimen = kw.jargon_name
     trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
     print(f"{trlname_s_vld_tablename=}")
     insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename}
@@ -332,7 +332,7 @@ VALUES
     cursor0.execute(select_spark_face_only_sqlstr)
     rows = cursor0.fetchall()
     print(rows)
-    # spark5 does not link to spark7 translate record's
+    # spark5 does not link to spark7 jargon record's
     assert rows == [
         (0, bob_otx, bob_otx),
         (1, bob_otx, bob_inx0),

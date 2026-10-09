@@ -8,12 +8,12 @@ from ch00_py.file_toolbox import (
     save_file,
     set_dir,
 )
-from ch17_translate.map_term import MapCore
-from ch17_translate.translate_config import (
-    get_translate_args_obj_types,
-    get_translateable_args,
+from ch17_jargon.map_term import MapCore
+from ch17_jargon.jargon_config import (
+    get_jargon_args_obj_types,
+    get_jargonable_args,
 )
-from ch17_translate.translate_main import TranslateUnit, get_translateunit_from_dict
+from ch17_jargon.jargon_main import JargonUnit, get_jargonunit_from_dict
 from ch19_db_tool.db_toolbox import (
     create_table_from_columns,
     create_table_from_csv,
@@ -219,13 +219,11 @@ def get_relevant_columns_dataframe(
     return src_df[relevant_cols_in_order]
 
 
-def get_dataframe_translateable_columns(x_df: DataFrame) -> set[str]:
-    return {
-        x_column for x_column in x_df.columns if x_column in get_translateable_args()
-    }
+def get_dataframe_jargonable_columns(x_df: DataFrame) -> set[str]:
+    return {x_column for x_column in x_df.columns if x_column in get_jargonable_args()}
 
 
-def translate_single_column_dataframe(
+def jargon_single_column_dataframe(
     x_df: DataFrame, x_mapunit: MapCore, column_name: str
 ) -> DataFrame:
     if column_name in x_df:
@@ -237,28 +235,28 @@ def translate_single_column_dataframe(
     return x_df
 
 
-def translate_all_columns_dataframe(x_df: DataFrame, x_translateunit: TranslateUnit):
-    if x_translateunit is None:
+def jargon_all_columns_dataframe(x_df: DataFrame, x_jargonunit: JargonUnit):
+    if x_jargonunit is None:
         return None
 
     column_names = set(x_df.columns)
-    translateable_columns = column_names & (get_translateable_args())
-    for translateable_column in translateable_columns:
-        obj_type = get_translate_args_obj_types().get(translateable_column)
-        x_mapunit = x_translateunit.get_mapunit(obj_type)
-        translate_single_column_dataframe(x_df, x_mapunit, translateable_column)
+    jargonable_columns = column_names & (get_jargonable_args())
+    for jargonable_column in jargonable_columns:
+        obj_type = get_jargon_args_obj_types().get(jargonable_column)
+        x_mapunit = x_jargonunit.get_mapunit(obj_type)
+        jargon_single_column_dataframe(x_df, x_mapunit, jargonable_column)
 
 
-def move_otx_csvs_to_translate_inx(face_dir: str):
+def move_otx_csvs_to_jargon_inx(face_dir: str):
     otx_dir = create_path(face_dir, "otx")
     inx_dir = create_path(face_dir, "inx")
-    translate_filename = "translate.json"
-    translate_dict = open_json(face_dir, translate_filename)
-    face_translateunit = get_translateunit_from_dict(translate_dict)
+    jargon_filename = "jargon.json"
+    jargon_dict = open_json(face_dir, jargon_filename)
+    face_jargonunit = get_jargonunit_from_dict(jargon_dict)
     otx_dir_files = get_dir_file_strs(otx_dir, delete_extensions=False)
     for x_filename in otx_dir_files.keys():
         x_df = open_csv(otx_dir, x_filename)
-        translate_all_columns_dataframe(x_df, face_translateunit)
+        jargon_all_columns_dataframe(x_df, face_jargonunit)
         save_dataframe_to_csv(x_df, inx_dir, x_filename)
 
 

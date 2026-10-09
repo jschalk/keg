@@ -1,7 +1,7 @@
 {
-  "chapter_blurb": "Defines LingoUnit tools that translate MomentUnits into audience language.", 
+  "chapter_blurb": "Defines LingoUnit tools that jargon MomentUnits into audience language.", 
   "chapter_content": "A tool that translates persons from inside language to audience language.", 
   "chapter_description": "ch18_lingo", 
   "chapter_number": 18, 
-  "ontology summary": "Uses the Ontological structure of translation to translate to an   audience LabelTerms, RopeTerms, NameTerms, GroupTerms"
+  "ontology summary": "Uses the Ontological structure of translation to jargon to an   audience LabelTerms, RopeTerms, NameTerms, GroupTerms"
 }

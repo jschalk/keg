@@ -1,13 +1,13 @@
 from ch00_py.file_toolbox import create_path, save_json
 from ch05_rope.rope import create_rope, to_rope
-from ch17_translate.test._util.ch17_examples import (
-    get_casa_maison_translateunit_set_by_label,
+from ch17_jargon.test._util.ch17_examples import (
+    get_casa_maison_jargonunit_set_by_label,
     get_suita_namemap,
 )
-from ch17_translate.translate_config import get_translate_filename
-from ch17_translate.translate_main import translateunit_shop
+from ch17_jargon.jargon_config import get_jargon_filename
+from ch17_jargon.jargon_main import jargonunit_shop
 from ch20_brick.brick_db_tool import (
-    move_otx_csvs_to_translate_inx,
+    move_otx_csvs_to_jargon_inx,
     open_csv,
     save_dataframe_to_csv,
 )
@@ -22,7 +22,7 @@ from os.path import exists as os_path_exists
 from pandas import DataFrame
 
 
-def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario0_SingleFile(
+def test_move_otx_csvs_to_jargon_inx_CreatesJargonedFiles_Scenario0_SingleFile(
     temp3_fs,
 ):
     # ESTABLISH
@@ -33,12 +33,12 @@ def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario0_Single
     bob_inx = "Bobita"
     sue_inx = "Suita"
     xio_inx = "Xioita"
-    sue_translateunit = translateunit_shop(sue_otx)
-    sue_translateunit.set_namemap(get_suita_namemap())
+    sue_jargonunit = jargonunit_shop(sue_otx)
+    sue_jargonunit.set_namemap(get_suita_namemap())
     sue_dir = create_path(str(temp3_fs), sue_otx)
-    translateunit_file_path = create_path(sue_dir, get_translate_filename())
+    jargonunit_file_path = create_path(sue_dir, get_jargon_filename())
     print(f"{sue_dir=}")
-    save_json(sue_dir, get_translate_filename(), sue_translateunit.to_dict())
+    save_json(sue_dir, get_jargon_filename(), sue_jargonunit.to_dict())
     sue_otx_dt = get_suita_contact_name_otx_dt()
     sue_inx_dt = get_suita_contact_name_inx_dt()
     otx_dir = create_path(sue_dir, "otx")
@@ -48,15 +48,15 @@ def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario0_Single
     otx_file_path = create_path(otx_dir, example_filename)
     inx_file_path = create_path(inx_dir, example_filename)
     save_dataframe_to_csv(sue_otx_dt, otx_dir, example_filename)
-    assert os_path_exists(translateunit_file_path)
+    assert os_path_exists(jargonunit_file_path)
     assert os_path_exists(otx_file_path)
     assert os_path_exists(inx_file_path) is False
 
     # WHEN
-    move_otx_csvs_to_translate_inx(sue_dir)
+    move_otx_csvs_to_jargon_inx(sue_dir)
 
     # THEN
-    assert os_path_exists(translateunit_file_path)
+    assert os_path_exists(jargonunit_file_path)
     assert os_path_exists(otx_file_path)
     assert os_path_exists(inx_file_path)
     gen_inx_dt = open_csv(inx_dir, example_filename)
@@ -79,8 +79,8 @@ def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario0_Single
     assert gen_inx_dt.to_csv() == static_inx_dt.to_csv()
 
 
-# save two dataframes to be translateed: two files in otx, two files in inx
-def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario1_SingleFile_RopeTerm(
+# save two dataframes to be jargoned: two files in otx, two files in inx
+def test_move_otx_csvs_to_jargon_inx_CreatesJargonedFiles_Scenario1_SingleFile_RopeTerm(
     temp3_fs,
 ):
     # ESTABLISH
@@ -100,9 +100,9 @@ def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario1_Single
     sweep_otx_rope = create_rope(clean_otx_rope, exx.sweep)
     sweep_inx_rope = create_rope(clean_inx_rope, exx.sweep)
 
-    sue_translateunit = get_casa_maison_translateunit_set_by_label()
-    sue_dir = create_path(str(temp3_fs), sue_translateunit.spark_face)
-    save_json(sue_dir, get_translate_filename(), sue_translateunit.to_dict())
+    sue_jargonunit = get_casa_maison_jargonunit_set_by_label()
+    sue_dir = create_path(str(temp3_fs), sue_jargonunit.spark_face)
+    save_json(sue_dir, get_jargon_filename(), sue_jargonunit.to_dict())
     sue_otx_dt = get_casa_maison_rope_otx_dt()
     sue_inx_dt = get_casa_maison_rope_inx_dt()
     otx_dir = create_path(sue_dir, "otx")
@@ -116,7 +116,7 @@ def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario1_Single
     assert os_path_exists(inx_file_path) is False
 
     # WHEN
-    move_otx_csvs_to_translate_inx(sue_dir)
+    move_otx_csvs_to_jargon_inx(sue_dir)
 
     # THEN
     assert os_path_exists(otx_file_path)
@@ -146,17 +146,17 @@ def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario1_Single
     assert gen_inx_dt.to_csv() == sue_inx_dt.to_csv()
 
 
-# save two dataframes to be translateed: two files in otx, two files in inx
-def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario2_TwoFile(
+# save two dataframes to be jargoned: two files in otx, two files in inx
+def test_move_otx_csvs_to_jargon_inx_CreatesJargonedFiles_Scenario2_TwoFile(
     temp3_fs,
 ):
     # ESTABLISH
-    sue_translateunit = get_casa_maison_translateunit_set_by_label()
-    sue_translateunit.set_namemap(get_suita_namemap())
-    sue_dir = create_path(str(temp3_fs), sue_translateunit.spark_face)
-    translateunit_file_path = create_path(sue_dir, get_translate_filename())
+    sue_jargonunit = get_casa_maison_jargonunit_set_by_label()
+    sue_jargonunit.set_namemap(get_suita_namemap())
+    sue_dir = create_path(str(temp3_fs), sue_jargonunit.spark_face)
+    jargonunit_file_path = create_path(sue_dir, get_jargon_filename())
     print(f"{sue_dir=}")
-    save_json(sue_dir, get_translate_filename(), sue_translateunit.to_dict())
+    save_json(sue_dir, get_jargon_filename(), sue_jargonunit.to_dict())
     sue_otx_dt = get_suita_contact_name_otx_dt()
     otx_dir = create_path(sue_dir, "otx")
     inx_dir = create_path(sue_dir, "inx")
@@ -172,17 +172,17 @@ def test_move_otx_csvs_to_translate_inx_CreatesTranslateedFiles_Scenario2_TwoFil
     save_dataframe_to_csv(sue_otx_dt, otx_dir, contact_name_filename)
     assert os_path_exists(rope1_otx_file_path)
     assert os_path_exists(rope1_inx_file_path) is False
-    assert os_path_exists(translateunit_file_path)
+    assert os_path_exists(jargonunit_file_path)
     assert os_path_exists(contact_name_otx_file_path)
     assert os_path_exists(contact_name_inx_file_path) is False
 
     # WHEN
-    move_otx_csvs_to_translate_inx(sue_dir)
+    move_otx_csvs_to_jargon_inx(sue_dir)
 
     # THEN
     assert os_path_exists(rope1_otx_file_path)
     assert os_path_exists(rope1_inx_file_path)
-    assert os_path_exists(translateunit_file_path)
+    assert os_path_exists(jargonunit_file_path)
     assert os_path_exists(contact_name_otx_file_path)
     assert os_path_exists(contact_name_inx_file_path)
     contact_inx_dt = open_csv(inx_dir, contact_name_filename)

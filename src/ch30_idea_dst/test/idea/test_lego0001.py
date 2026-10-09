@@ -89,10 +89,10 @@ def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario2_gut_PersonUnits(
     assert gen_idea_csv_strs == expected_idea_csv_strs
 
 
-def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario3_TranslateRowsInDB(
+def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario3_JargonRowsInDB(
     temp3_fs,
 ):
-    # ESTABLISH database with translate data
+    # ESTABLISH database with jargon data
     bob_otx = "Bob"
     bob_inx = "Bobby"
     sue_otx = "Sue"
@@ -111,7 +111,7 @@ def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario3_TranslateRowsInDB
     with sqlite3_connect(world_db_path) as db_conn:
         cursor = db_conn.cursor()
         create_sound_and_heard_tables(cursor)
-        trlname_dimen = kw.translate_name
+        trlname_dimen = kw.jargon_name
         trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
         print(f"{trlname_s_vld_tablename=}")
         insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename}
@@ -171,10 +171,10 @@ def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario3_TranslateRowsInDB
     assert ii00145_csv == expected_ii00145_csv
 
 
-def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario4_TranslateRowsInDB(
+def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario4_JargonRowsInDB(
     temp3_fs,
 ):
-    # ESTABLISH database with translate data
+    # ESTABLISH database with jargon data
     bob_otx = "Bob"
     bob_inx = "Bobby"
     sue_otx = "Sue"
@@ -193,7 +193,7 @@ def test_collect_full_world_idea_csv_strs_ReturnsObj_Scenario4_TranslateRowsInDB
     with sqlite3_connect(world_db_path) as db_conn:
         cursor = db_conn.cursor()
         create_sound_and_heard_tables(cursor)
-        trlname_dimen = kw.translate_name
+        trlname_dimen = kw.jargon_name
         trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
         print(f"{trlname_s_vld_tablename=}")
         insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename}
@@ -272,10 +272,10 @@ def test_create_lego0001_file_CreatesFile_Scenario0_NoMomentUnits(
     assert set(bob_lego0001_sheetnames) == set(idea_csv_strs.keys())
 
 
-def test_create_lego0001_file_CreatesFile_Scenario1_TranslateRowsInDB(
+def test_create_lego0001_file_CreatesFile_Scenario1_JargonRowsInDB(
     temp3_fs,
 ):
-    # ESTABLISH database with translate data
+    # ESTABLISH database with jargon data
     bob_otx = "Bob"
     bob_inx = "Bobby"
     sue_otx = "Sue"
@@ -294,7 +294,7 @@ def test_create_lego0001_file_CreatesFile_Scenario1_TranslateRowsInDB(
     with sqlite3_connect(world_db_path) as db_conn:
         cursor = db_conn.cursor()
         create_sound_and_heard_tables(cursor)
-        trlname_dimen = kw.translate_name
+        trlname_dimen = kw.jargon_name
         trlname_s_vld_tablename = prime_tbl(trlname_dimen, kw.s_vld)
         print(f"{trlname_s_vld_tablename=}")
         insert_trlname_sqlstr = f"""INSERT INTO {trlname_s_vld_tablename}

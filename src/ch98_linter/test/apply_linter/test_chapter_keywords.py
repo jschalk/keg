@@ -54,20 +54,20 @@ def test_Chapters_CheckStringMetricsFromEveryFile():
     excluded_functions = {
         "__init__",
         "__str__",
-        "get_inx_value",  # used in Nabu/Translate
-        "_is_inx_knot_inclusion_correct",  # used in Nabu/Translate
-        "_is_otx_knot_inclusion_correct",  # used in Nabu/Translate
+        "get_inx_value",  # used in Nabu/Jargon
+        "_is_inx_knot_inclusion_correct",  # used in Nabu/Jargon
+        "_is_otx_knot_inclusion_correct",  # used in Nabu/Jargon
         "unknown_str_in_otx2inx",  # RopeMap replaces the inherited MapCore implementation
-        "del_otx2inx",  # used in Nabu/Translate
+        "del_otx2inx",  # used in Nabu/Jargon
         "find_replace_rope",  # used by ReasonUnit, CaseUnit, FactUnit classes
         "get_obj_key",
         "is_valid",
-        "otx_exists",  # used in Nabu/Translate
-        "otx2inx_exists",  # used in Nabu/Translate
-        "reveal_inx",  # used in Nabu/Translate
+        "otx_exists",  # used in Nabu/Jargon
+        "otx2inx_exists",  # used in Nabu/Jargon
+        "reveal_inx",  # used in Nabu/Jargon
         "set_all_otx2inx",  # RopeMap replaces the inherited MapCore implementation
         "set_knot",
-        "set_otx2inx",  # used in Nabu/Translate
+        "set_otx2inx",  # used in Nabu/Jargon
         "to_dict",  # used to return class custom dictionary, usually for json file storage
         # "_run",  # exists in etl app and used in pip install tests
         '_state_path',  # exists in etl app and must be recreated in tests
