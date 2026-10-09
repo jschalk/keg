@@ -1,6 +1,6 @@
 from ch15_moment.moment_config import get_moment_dimens
 from ch16_nabu.nabu_config import get_nabu_dimens
-from ch18_db_tool.db_toolbox import get_row_count, get_table_columns
+from ch19_db_tool.db_toolbox import get_row_count, get_table_columns
 from ch20_brick.brick_config import get_brick_config_dict, get_default_sorted_list
 from ch22_etl_config.etl_config import get_dimen_abbv7
 from ch22_etl_config.etl_sqlstr import (

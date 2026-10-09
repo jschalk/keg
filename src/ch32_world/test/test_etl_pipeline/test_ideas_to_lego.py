@@ -1,6 +1,6 @@
 from ch00_py.file_toolbox import create_path
 from ch05_rope.rope import create_rope
-from ch18_db_tool.db_toolbox import get_row_count
+from ch19_db_tool.db_toolbox import get_row_count
 from ch20_brick.brick_db_tool import create_brick_sorted_table, save_sheet
 from ch22_etl_config.etl_sqlstr import create_prime_tablename
 from ch27_lego.lego_core import get_max_b_agg_spark_num

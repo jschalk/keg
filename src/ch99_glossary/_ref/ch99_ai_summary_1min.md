@@ -26,7 +26,7 @@ Ch99 is the **most unusual chapter in the inductive chain**: it is numbered 99 a
 The resolution: ch99 contains only data files and simple utility functions with no imports from any other keg chapter. It is dependency-free despite its high number, making it safe to import from ch01 onward. Ch99 is numbered 99 not because it depends on everything before it, but because it is the *conceptual capstone* — the place where all terms are finally defined, ranked, and described in full.
 
 - **ch01_keyword** imports `keywords_src.json` from ch99 to generate all chapter keyword Enum classes.
-- **ch18_db_tool** / **ch20_brick** / **ch22_etl_config** import `get_keg_elements_sort_order` from `sorter.py` to enforce consistent column ordering across all DataFrames and SQL tables.
+- **ch19_db_tool** / **ch20_brick** / **ch22_etl_config** import `get_keg_elements_sort_order` from `sorter.py` to enforce consistent column ordering across all DataFrames and SQL tables.
 - **ch97_docs_builder** imports from ch99 for documentation generation.
 - **ch98_linter** imports from ch99 indirectly through ch97.
 

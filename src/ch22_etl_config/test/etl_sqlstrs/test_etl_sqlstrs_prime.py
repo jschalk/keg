@@ -5,7 +5,7 @@ from ch17_translate.translate_config import (
     get_translate_dimens,
     set_translateable_otx_inx_args,
 )
-from ch18_db_tool.db_toolbox import (
+from ch19_db_tool.db_toolbox import (
     create_insert_into_clause_str as get_insert_sql,
     create_select_query as get_select_sql,
     create_table2table_agg_insert_query,

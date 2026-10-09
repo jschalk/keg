@@ -2,7 +2,7 @@ from ch17_translate.translate_main import (
     default_knot_if_None,
     default_unknown_str_if_None,
 )
-from ch18_db_tool.db_toolbox import get_row_count
+from ch19_db_tool.db_toolbox import get_row_count
 from ch22_etl_config.etl_sqlstr import (
     CREATE_TRLCORE_SOUND_AGG_SQLSTR,
     CREATE_TRLCORE_SOUND_RAW_SQLSTR,

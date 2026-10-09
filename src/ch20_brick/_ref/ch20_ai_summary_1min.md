@@ -27,7 +27,7 @@ Ontology note:
 - **ch10_person_lesson**: `PersonDelta`, `get_dimens_cruds_persondelta` — bricks can represent a full delta of changes.
 - **ch14_time**: `epochunit_shop` — epoch plans are a category of brick data.
 - **ch15_moment**: `MomentUnit`, `momentunit_shop` — bricks build both persons and moments.
-- **ch18_db_tool**: `get_sorted_cols_only_list` — used to enforce consistent column ordering across all brick DataFrames.
+- **ch19_db_tool**: `get_sorted_cols_only_list` — used to enforce consistent column ordering across all brick DataFrames.
 
 New semantic type: `SheetName` (a `str`) — identifies a named sheet within an Excel workbook, since bricks are primarily authored in `.xlsx` files.
 

@@ -1,17 +1,17 @@
-# ch18_db_tool — Chapter Summary
+# ch19_db_tool — Chapter Summary
 
 *This summary is authored by AI 5-26-2026.*
 
 ## 1. Title and Summary Declaration
 
-**Chapter 18 — `ch18_db_tool`**
+**Chapter 18 — `ch19_db_tool`**
 **"Database Toolbox — SQLite helper utilities for creating tables, inserting CSVs, and querying keg data from relational storage"**
 
 ---
 
 ## 2. Prompt Used to Build This
 
-From `ch18_ref.json`:
+From `ch19_ref.json`:
 > "Create some standard tools for creating sqlite sql statements. Some are complicated."
 
 Ontology note:
@@ -21,16 +21,16 @@ Ontology note:
 
 ## 3. Summary of Previous Relevant Chapters
 
-- **ch00_py**: `ch18_db_tool` is structurally parallel to ch00 — it is a pure utility chapter with no domain logic, just as ch00 provided Python/file toolboxes. The main difference is ch18 uses SQLite rather than the file system.
-- All prior semantic types are re-exported through `ch18_semantic_types.py` (the full chain through ch14) — but ch18's own code imports only from Python's `sqlite3`, `csv`, `pandas`, `re`, and `dataclasses` standard/third-party libraries. It does not import from any prior keg chapter in `db_toolbox.py` itself.
+- **ch00_py**: `ch19_db_tool` is structurally parallel to ch00 — it is a pure utility chapter with no domain logic, just as ch00 provided Python/file toolboxes. The main difference is ch19 uses SQLite rather than the file system.
+- All prior semantic types are re-exported through `ch19_semantic_types.py` (the full chain through ch14) — but ch19's own code imports only from Python's `sqlite3`, `csv`, `pandas`, `re`, and `dataclasses` standard/third-party libraries. It does not import from any prior keg chapter in `db_toolbox.py` itself.
 
-This is a deliberate design: ch18 is a low-level database infrastructure chapter — like ch00, it intentionally avoids domain dependencies so it can be used freely by all higher chapters.
+This is a deliberate design: ch19 is a low-level database infrastructure chapter — like ch00, it intentionally avoids domain dependencies so it can be used freely by all higher chapters.
 
 ---
 
 ## 4. Summary of What This Chapter Does
 
-`ch18_db_tool` provides two files of SQLite utility functions that later chapters use to persist and query keg data in relational databases.
+`ch19_db_tool` provides two files of SQLite utility functions that later chapters use to persist and query keg data in relational databases.
 
 **`db_toolbox.py`** — the main utility library:
 
@@ -48,4 +48,4 @@ This is a deliberate design: ch18 is a low-level database infrastructure chapter
 
 **`notebook_toolbox.py`** provides Jupyter-notebook-oriented utilities — helpers for displaying query results and database state in an interactive analysis context.
 
-Ch18 is the "ch00 of persistence" — a deliberately dependency-free utility layer. It carries the full semantic type chain in its `_ref` file as preparation for the ETL chapters that will use both these database tools and the domain objects to build the full data pipeline.
+Ch19 is the "ch00 of persistence" — a deliberately dependency-free utility layer. It carries the full semantic type chain in its `_ref` file as preparation for the ETL chapters that will use both these database tools and the domain objects to build the full data pipeline.

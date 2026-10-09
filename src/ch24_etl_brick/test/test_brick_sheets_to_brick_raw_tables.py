@@ -1,5 +1,5 @@
 from ch00_py.file_toolbox import create_path
-from ch18_db_tool.db_toolbox import db_table_exists, get_row_count, get_table_columns
+from ch19_db_tool.db_toolbox import db_table_exists, get_row_count, get_table_columns
 from ch20_brick.brick_db_tool import save_sheet
 from ch24_etl_brick.etl_brick_main import etl_brick_dfs_to_brixk_raw_tables
 from ch99_glossary.ch_keyword import Ch24Keywords as kw, ExampleStrs as exx

@@ -11,7 +11,7 @@ from ch17_translate.translate_config import (
     get_translate_args_obj_types,
     translateable_obj_types,
 )
-from ch18_db_tool.db_toolbox import (
+from ch19_db_tool.db_toolbox import (
     delete_all_duplicate_rows,
     get_row_count,
     get_table_columns,

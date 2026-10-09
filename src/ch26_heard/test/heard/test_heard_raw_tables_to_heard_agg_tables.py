@@ -1,6 +1,6 @@
 from ch00_py.dict_toolbox import get_empty_set_if_None
 from ch14_time.test._util.ch14_examples import Ch14ExampleStrs as wx
-from ch18_db_tool.db_toolbox import get_row_count, get_table_columns
+from ch19_db_tool.db_toolbox import get_row_count, get_table_columns
 from ch20_brick.brick_config import get_brick_config_dict, get_default_sorted_list
 from ch22_etl_config.etl_config import (
     etl_brick_category_config_dict,

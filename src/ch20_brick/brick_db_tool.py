@@ -14,7 +14,7 @@ from ch17_translate.translate_config import (
     get_translateable_args,
 )
 from ch17_translate.translate_main import TranslateUnit, get_translateunit_from_dict
-from ch18_db_tool.db_toolbox import (
+from ch19_db_tool.db_toolbox import (
     create_table_from_columns,
     create_table_from_csv,
     db_table_exists,

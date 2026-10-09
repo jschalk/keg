@@ -7,7 +7,7 @@ from ch17_translate.translate_config import (
     get_translates_column_ref,
 )
 from ch17_translate.translate_main import default_unknown_str_if_None
-from ch18_db_tool.db_toolbox import (
+from ch19_db_tool.db_toolbox import (
     create_update_inconsistency_error_query,
     delete_all_duplicate_rows,
     get_table_columns,

@@ -1,4 +1,4 @@
-from ch18_db_tool.db_toolbox import get_row_count, get_table_columns
+from ch19_db_tool.db_toolbox import get_row_count, get_table_columns
 from ch22_etl_config.etl_sqlstr import (
     CREATE_TRLROPE_SOUND_RAW_SQLSTR,
     create_prime_tablename,

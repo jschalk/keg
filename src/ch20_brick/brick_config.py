@@ -1,5 +1,5 @@
 from ch00_py.file_toolbox import create_path, get_json_filename, open_json
-from ch18_db_tool.db_toolbox import get_sorted_cols_only_list
+from ch19_db_tool.db_toolbox import get_sorted_cols_only_list
 from ch99_glossary.sorter import get_keg_elements_sort_order
 from enum import Enum
 from os.path import exists as os_path_exists, join as os_path_join

@@ -4,7 +4,7 @@ from ch10_person_lesson._ref.ch10_path import create_moment_json_path
 from ch10_person_lesson.lasso import lassounit_shop
 from ch15_moment.moment_config import get_moment_dimens
 from ch15_moment.moment_main import get_momentunit_from_dict
-from ch18_db_tool.db_toolbox import create_select_query, db_table_exists, get_row_count
+from ch19_db_tool.db_toolbox import create_select_query, db_table_exists, get_row_count
 from ch22_etl_config.etl_config import get_dimen_abbv7
 from ch22_etl_config.etl_sqlstr import (
     create_prime_tablename,

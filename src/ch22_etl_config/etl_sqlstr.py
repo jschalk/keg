@@ -1,4 +1,4 @@
-from ch18_db_tool.db_toolbox import (
+from ch19_db_tool.db_toolbox import (
     create_table2table_agg_insert_query,
     create_update_inconsistency_error_query,
 )

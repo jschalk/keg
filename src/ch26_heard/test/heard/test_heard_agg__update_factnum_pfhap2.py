@@ -1,5 +1,5 @@
 from ch14_time.test._util.ch14_examples import Ch14ExampleStrs as wx
-from ch18_db_tool.db_toolbox import create_type_reference_insert_sqlstr
+from ch19_db_tool.db_toolbox import create_type_reference_insert_sqlstr
 from ch22_etl_config.etl_config import create_prime_tablename
 from ch22_etl_config.etl_sqlstr import (
     create_prime_db_table,

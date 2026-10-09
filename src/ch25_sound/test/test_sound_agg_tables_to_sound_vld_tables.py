@@ -1,4 +1,4 @@
-from ch18_db_tool.db_toolbox import get_row_count, get_table_columns
+from ch19_db_tool.db_toolbox import get_row_count, get_table_columns
 from ch22_etl_config.etl_sqlstr import (
     create_prime_tablename as prime_tbl,
     create_sound_and_heard_tables,
