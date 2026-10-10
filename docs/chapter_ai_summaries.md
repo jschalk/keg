@@ -773,7 +773,7 @@ Ontology note:
 
 `ch16_nabu` addresses a problem that arises in any multi-party system: different participants may use different time reference points. An external face might report times relative to their own epoch (e.g. "day 5 of my calendar") while the internal system tracks absolute `TimeNum` minutes. Nabu is the translation bridge.
 
-The name "Nabu" is the ancient Mesopotamian god of writing and wisdom — an appropriate name for a chapter that interprets and transcribes numeric values across reference frames.
+The name "Nabu" is the ancient Mesopotamian diety of writing and wisdom — an appropriate name for a chapter that interprets and transcribes numeric values across reference frames.
 
 **`NabuTime`** is the core object, keyed by `(spark_face, spark_num)` — the same provenance identifiers used in lessons. It holds an `otx2inx` dictionary mapping:
 - Key: `otx_epoch_length` — the cycle length of the external time system (e.g. 525,600 minutes = 1 year).
@@ -793,14 +793,14 @@ The config also defines the `nabu_timenum` dimension for atom-style CRUD operati
 
 Ch16 completes the "outside → inside" translation infrastructure. Ch17 handles word/string translation; ch16 handles number/time translation. Together they ensure that external data from any face can be faithfully and consistently interpreted in the internal coordinate system.
 
-# ch17_translate — Chapter Summary
+# ch17_jargon — Chapter Summary
 
 *This summary is authored by AI 5-26-2026.*
 
 ## 1. Title and Summary Declaration
 
-**Chapter 17 — `ch17_translate`**
-**"TranslateUnit — string-level translation layer mapping external (otx) terms to internal (inx) terms across all string types"**
+**Chapter 17 — `ch17_jargon`**
+**"JargonUnit — string-level translation layer mapping external (otx) terms to internal (inx) terms across all string types"**
 
 ---
 
@@ -817,8 +817,8 @@ Ontology note:
 ## 3. Summary of Previous Relevant Chapters
 
 - **ch00_py**: `dict_toolbox` string-search utilities (`str_in_dict`, `str_in_dict_keys`, `str_in_dict_values`, `get_str_in_sub_dict`) — used in `MapCore` to validate that the `unknown_str` sentinel does not appear in translation mappings.
-- **ch05_rope**: `create_rope`, `create_rope_from_labels`, `get_all_rope_labels`, `get_parent_rope`, `get_tail_label` — `RopeMap` uses these to translate ropes label-by-label, applying the `LabelMap` to each segment of a path.
-- **ch10_person_lesson**: `FaceName` — each map and `TranslateUnit` is attributed to a specific face and `spark_num`, maintaining provenance.
+- **ch05_rope**: `create_rope`, `create_rope_from_labels`, `get_all_rope_labels`, `get_parent_rope`, `get_tail_label` — `RopeMap` uses these to jargon ropes label-by-label, applying the `LabelMap` to each segment of a path.
+- **ch10_person_lesson**: `FaceName` — each map and `JargonUnit` is attributed to a specific face and `spark_num`, maintaining provenance.
 - **ch12_bud**: `SparkInt` — the ordering integer for inheritance resolution.
 
 `ch17_semantic_types.py` re-exports through ch12/ch10 with no new types. The chapter introduces one configuration constant: `unknown_str` (default `"UNKNOWN"`) — the sentinel value used when a translation mapping cannot be found.
@@ -827,7 +827,7 @@ Ontology note:
 
 ## 4. Summary of What This Chapter Does
 
-`ch17_translate` implements the **string translation system** — the counterpart to ch16's numeric translation. Where ch16 converts external time numbers to internal `TimeNum` values, ch17 converts external string terms (names, labels, rope paths, group titles) to their internal equivalents.
+`ch17_jargon` implements the **string translation system** — the counterpart to ch16's numeric translation. Where ch16 converts external time numbers to internal `TimeNum` values, ch17 converts external string terms (names, labels, rope paths, group titles) to their internal equivalents.
 
 The "outside" (`otx`) / "inside" (`inx`) distinction is fundamental: an external face might use the name `"Bob"` for a contact that the internal system calls `"Robert_Smith"`, or use a rope path `";work;tasks;"` where the internal system uses `";job;pledges;"`. Translation enables data from any face to be correctly integrated.
 
@@ -843,26 +843,27 @@ The "outside" (`otx`) / "inside" (`inx`) distinction is fundamental: an external
 - `LabelMap` — translates `LabelTerm`s (single rope node names). Validates that neither `otx` nor `inx` contains the knot character.
 - `RopeMap` — translates full `RopeTerm` paths. It splits the external rope into labels, applies `LabelMap` to each label, replaces the `otx_knot` with the `inx_knot`, and reassembles. Backup to `unknown_str` if any label cannot be translated.
 
-**`TranslateUnit`** composes all four maps into a single per-face translation object. It exposes unified methods (`set_titleterm`, `set_nameterm`, `set_labelterm`, `set_ropeterm`) and a `get_mapunit(obj_type)` dispatcher. It also holds top-level `otx_knot`/`inx_knot` and `unknown_str` settings that are propagated to all child maps via `_check_all_core_attrs_match`.
+**`JargonUnit`** composes all four maps into a single per-face translation object. It exposes unified methods (`set_titleterm`, `set_nameterm`, `set_labelterm`, `set_ropeterm`) and a `get_mapunit(obj_type)` dispatcher. It also holds top-level `otx_knot`/`inx_knot` and `unknown_str` settings that are propagated to all child maps via `_check_all_core_attrs_match`.
 
 **`inherit_*` functions** (`inherit_labelmap`, `inherit_namemap`, etc.) merge an older map into a newer one — the same ordered-inheritance pattern used in ch10 lessons and ch16 nabu, ensuring that more recent translations from the same face supersede older ones.
 
 Together ch16 (numeric translation) and ch17 (string translation) form the complete "outside-to-inside" interface layer. All data arriving from external faces passes through these two chapters before being processed by the internal keg machinery.
 
-# ch18_db_tool — Chapter Summary
+
+# ch19_db_tool — Chapter Summary
 
 *This summary is authored by AI 5-26-2026.*
 
 ## 1. Title and Summary Declaration
 
-**Chapter 18 — `ch18_db_tool`**
+**Chapter 18 — `ch19_db_tool`**
 **"Database Toolbox — SQLite helper utilities for creating tables, inserting CSVs, and querying keg data from relational storage"**
 
 ---
 
 ## 2. Prompt Used to Build This
 
-From `ch18_ref.json`:
+From `ch19_ref.json`:
 > "Create some standard tools for creating sqlite sql statements. Some are complicated."
 
 Ontology note:
@@ -872,16 +873,16 @@ Ontology note:
 
 ## 3. Summary of Previous Relevant Chapters
 
-- **ch00_py**: `ch18_db_tool` is structurally parallel to ch00 — it is a pure utility chapter with no domain logic, just as ch00 provided Python/file toolboxes. The main difference is ch18 uses SQLite rather than the file system.
-- All prior semantic types are re-exported through `ch18_semantic_types.py` (the full chain through ch14) — but ch18's own code imports only from Python's `sqlite3`, `csv`, `pandas`, `re`, and `dataclasses` standard/third-party libraries. It does not import from any prior keg chapter in `db_toolbox.py` itself.
+- **ch00_py**: `ch19_db_tool` is structurally parallel to ch00 — it is a pure utility chapter with no domain logic, just as ch00 provided Python/file toolboxes. The main difference is ch19 uses SQLite rather than the file system.
+- All prior semantic types are re-exported through `ch19_semantic_types.py` (the full chain through ch14) — but ch19's own code imports only from Python's `sqlite3`, `csv`, `pandas`, `re`, and `dataclasses` standard/third-party libraries. It does not import from any prior keg chapter in `db_toolbox.py` itself.
 
-This is a deliberate design: ch18 is a low-level database infrastructure chapter — like ch00, it intentionally avoids domain dependencies so it can be used freely by all higher chapters.
+This is a deliberate design: ch19 is a low-level database infrastructure chapter — like ch00, it intentionally avoids domain dependencies so it can be used freely by all higher chapters.
 
 ---
 
 ## 4. Summary of What This Chapter Does
 
-`ch18_db_tool` provides two files of SQLite utility functions that later chapters use to persist and query keg data in relational databases.
+`ch19_db_tool` provides two files of SQLite utility functions that later chapters use to persist and query keg data in relational databases.
 
 **`db_toolbox.py`** — the main utility library:
 
@@ -899,7 +900,7 @@ This is a deliberate design: ch18 is a low-level database infrastructure chapter
 
 **`notebook_toolbox.py`** provides Jupyter-notebook-oriented utilities — helpers for displaying query results and database state in an interactive analysis context.
 
-Ch18 is the "ch00 of persistence" — a deliberately dependency-free utility layer. It carries the full semantic type chain in its `_ref` file as preparation for the ETL chapters that will use both these database tools and the domain objects to build the full data pipeline.
+Ch19 is the "ch00 of persistence" — a deliberately dependency-free utility layer. It carries the full semantic type chain in its `_ref` file as preparation for the ETL chapters that will use both these database tools and the domain objects to build the full data pipeline.
 
 # ch20_brick — Chapter Summary
 
@@ -930,7 +931,7 @@ Ontology note:
 - **ch10_person_lesson**: `PersonDelta`, `get_dimens_cruds_persondelta` — bricks can represent a full delta of changes.
 - **ch14_time**: `epochunit_shop` — epoch plans are a category of brick data.
 - **ch15_moment**: `MomentUnit`, `momentunit_shop` — bricks build both persons and moments.
-- **ch18_db_tool**: `get_sorted_cols_only_list` — used to enforce consistent column ordering across all brick DataFrames.
+- **ch19_db_tool**: `get_sorted_cols_only_list` — used to enforce consistent column ordering across all brick DataFrames.
 
 New semantic type: `SheetName` (a `str`) — identifies a named sheet within an Excel workbook, since bricks are primarily authored in `.xlsx` files.
 
@@ -947,13 +948,13 @@ New semantic type: `SheetName` (a `str`) — identifies a named sheet within an 
 
 `get_otx_keys_list()` and `get_otx_values_list()` split attributes into the key columns (used for deduplication and joining) and value columns.
 
-**`brick_config.json`** is the master schema registry — a dictionary of all brick types, each with their `brick_category`, `dimens`, and column definitions. Categories include `"person"`, `"moment"`, `"translate"`, `"nabu"`, and `"spark"`.
+**`brick_config.json`** is the master schema registry — a dictionary of all brick types, each with their `brick_category`, `dimens`, and column definitions. Categories include `"person"`, `"moment"`, `"jargon"`, `"nabu"`, and `"spark"`.
 
 **`brick_dataframe.py`** provides `create_brick_df(person, brick_name)` — which introspects a `PersonUnit` and extracts a pandas `DataFrame` matching the brick schema. Each row corresponds to one atom-level record (a plan, a contact, a reason, etc.) in the person's current state.
 
 **`brick_db_tool.py`** handles Excel I/O: `get_all_excel_sheet_names` scans a directory for `.xlsx` files and returns all sheet names; `save_sheet` writes a DataFrame to a named sheet; `create_brick_df_from_file` reads a brick sheet back into a DataFrame.
 
-**`translate_toolbox.py`** provides `add_otx_inx_columns` — given a brick DataFrame with `otx`-valued key columns, it appends matching `_otx` and `_inx` column pairs for use by the translation pipeline (ch17).
+**`jargon_toolbox.py`** provides `add_otx_inx_columns` — given a brick DataFrame with `otx`-valued key columns, it appends matching `_otx` and `_inx` column pairs for use by the translation pipeline (ch17).
 
 **`brick_formats/`** is a directory of per-brick JSON schema files (e.g. `br00031.json`), each specifying the `dimens` and `attributes` for that brick type. These are loaded by `get_brickref_from_file`.
 
@@ -985,8 +986,8 @@ Ontology note:
 - **ch00_py**: `create_path`, `open_json` — config files are loaded via file toolbox.
 - **ch09_person_atom**: `get_delete_key_name` — used when constructing DELETE-type SQL stage queries to identify the correct key column.
 - **ch16_nabu**: `get_context_nabuable_args`, `set_nabuable_otx_inx_args` — ETL config expands nabuable columns into `_otx`/`_inx` pairs in SQL table definitions.
-- **ch17_translate**: `set_translateable_otx_inx_args` — same expansion for translateable string columns.
-- **ch18_db_tool**: `get_create_table_sqlstr` — used to generate CREATE TABLE statements for each pipeline stage.
+- **ch17_jargon**: `set_jargonable_otx_inx_args` — same expansion for jargonable string columns.
+- **ch19_db_tool**: `get_create_table_sqlstr` — used to generate CREATE TABLE statements for each pipeline stage.
 - **ch20_brick**: `get_brick_config_dict`, `get_brick_sqlite_types`, `get_default_sorted_list`, `get_brick_types`, `get_quick_bricks_column_ref` — all brick schema information flows through ch22.
 
 ---
@@ -1096,7 +1097,7 @@ Ontology note:
 ## 3. Summary of Previous Relevant Chapters
 
 - **ch00_py**: `create_path` for file path construction.
-- **ch18_db_tool**: `create_insert_into_clause_str`, `create_select_query`, `create_table_from_columns`, `create_type_reference_insert_sqlstr`, `db_table_exists`, `delete_all_duplicate_rows`, `get_create_table_sqlstr`, `get_db_tables`, `get_grouping_with_all_values_equal_sql_query`, `get_nonconvertible_columns`, `get_table_columns` — ch24 is the primary consumer of ch18's full SQL utility library.
+- **ch19_db_tool**: `create_insert_into_clause_str`, `create_select_query`, `create_table_from_columns`, `create_type_reference_insert_sqlstr`, `db_table_exists`, `delete_all_duplicate_rows`, `get_create_table_sqlstr`, `get_db_tables`, `get_grouping_with_all_values_equal_sql_query`, `get_nonconvertible_columns`, `get_table_columns` — ch24 is the primary consumer of ch19's full SQL utility library.
 - **ch20_brick**: `get_brick_format_filename`, `get_brick_sqlite_types`, `get_brick_types`, `get_brickref_from_file`, `get_brickref_obj`, `create_brick_df_from_file`, `create_brick_sorted_table`, `get_default_sorted_list` — all brick schema operations.
 - **ch22_etl_config**: `BrickFileRef`, `get_all_brickfilerefs`, `create_prime_tablename`, `create_sound_and_heard_tables`, `etl_sqlstr` — stage naming and table creation helper tools.
 
@@ -1112,7 +1113,7 @@ Ontology note:
 Discovers all brick Excel files in the source directory via `get_all_brickfilerefs`, reads each sheet into a DataFrame, sorts columns to the canonical order, prepends `file_dir`/`filename`/`sheet_name` provenance columns, creates a `{brick_type}_b_raw` SQLite table, and inserts each row. On insertion, `get_nonconvertible_columns` checks every cell against the expected SQLite type — any row with type errors has the offending columns nulled and an `error_message` written. Duplicate rows are deleted at the end.
 
 **Stage 2 — `etl_brixk_raw_tables_to_brixk_agg_tables(conn)`**
-For each `_b_raw` table, produces a `{brick_type}_b_agg` table. Uses `get_grouping_with_all_values_equal_sql_query` (from ch18) to GROUP BY the brick's key columns and filter to only rows where all value columns are consistent across duplicates — i.e. rows where the same key has conflicting values are excluded. Only rows with no `error_message` from stage 1 are considered. This is the **deduplication and consistency check** stage.
+For each `_b_raw` table, produces a `{brick_type}_b_agg` table. Uses `get_grouping_with_all_values_equal_sql_query` (from ch19) to GROUP BY the brick's key columns and filter to only rows where all value columns are consistent across duplicates — i.e. rows where the same key has conflicting values are excluded. Only rows with no `error_message` from stage 1 are considered. This is the **deduplication and consistency check** stage.
 
 **Stage 3 — Spark validation (`etl_brixk_agg_tables_to_sparks_b_agg_table` + `etl_sparks_b_agg_table_to_sparks_b_vld_table`)**
 Aggregates all `spark_num`/`spark_face` pairs from every `_b_agg` table into a `sparks_b_agg` table. Flags any `spark_num` that maps to more than one `spark_face` as invalid (a spark number must belong to exactly one face). Valid sparks are written to `sparks_b_vld`. This enforces the provenance rule: a single spark event cannot be attributed to two different faces.
@@ -1149,8 +1150,8 @@ Ontology note:
 ## 3. Summary of Previous Relevant Chapters
 
 - **ch05_rope**: `default_knot_if_None` — used when validating that label/name/rope columns in sound-agg tables do not contain the knot character.
-- **ch17_translate**: `get_translate_labelterm_args`, `get_translate_nameterm_args`, `get_translate_ropeterm_args`, `get_translate_titleterm_args`, `get_translates_column_ref`, `default_unknown_str_if_None` — the full translation type registry drives which sound-agg columns need knot-error checking and which need `otx → inx` resolution.
-- **ch18_db_tool**: `create_update_inconsistency_error_query`, `delete_all_duplicate_rows`, `get_table_columns` — SQL-level data quality tools.
+- **ch17_jargon**: `get_jargon_labelterm_args`, `get_jargon_nameterm_args`, `get_jargon_ropeterm_args`, `get_jargon_titleterm_args`, `get_jargon_column_ref`, `default_unknown_str_if_None` — the full translation type registry drives which sound-agg columns need knot-error checking and which need `otx → inx` resolution.
+- **ch19_db_tool**: `create_update_inconsistency_error_query`, `delete_all_duplicate_rows`, `get_table_columns` — SQL-level data quality tools.
 - **ch20_brick**: `get_brick_dimen_ref` — the master brick dimension registry drives which `s_raw` and `s_agg` tables exist and need processing.
 - **ch22_etl_config**: `etl_sqlstr` — nearly all SQL strings used in ch25 are generated by ch22's SQL-string generation functions. Ch25 is the executor; ch22 is the generator.
 
@@ -1166,15 +1167,15 @@ Ontology note:
 1. `set_sound_raw_tables_error_message` — for each dimension, runs an inconsistency-detection query against its `s_raw` table; any row where non-key columns conflict across identical key groups gets an `error_message`.
 2. `insert_sound_raw_selects_into_sound_agg_tables` — copies error-free rows from `s_raw` into `s_agg`, deduplicating afterward.
 
-**Translation pipeline** (`etl_translate_sound_agg_tables_to_translate_sound_vld_tables`):
+**Translation pipeline** (`etl_jargon_sound_agg_tables_to_jargon_sound_vld_tables`):
 This is the most complex function in ch25. It processes the four translation dimensions (`trlname`, `trltitl`, `trllabe`, `trlrope`) plus the shared `trlcore` (which holds `otx_knot`, `inx_knot`, `unknown_str` per face) through their own `s_raw → s_agg → s_vld` cycle:
-1. Aggregates all four translate dimensions' `s_agg` rows into a unified `trlcore_s_raw` table.
+1. Aggregates all four jargon dimensions' `s_agg` rows into a unified `trlcore_s_raw` table.
 2. Flags inconsistencies (same `spark_face` with conflicting `otx_knot`/`inx_knot`) in `trlcore_s_raw`.
 3. Promotes consistent rows to `trlcore_s_agg` (MAX aggregation on knot/unknown columns per face).
 4. Promotes to `trlcore_s_vld`, filtering on valid knot/unknown_str values.
 5. Fills in `trlcore_s_vld` entries for any `spark_face` that appears in moment/person sound-agg tables but has no explicit translation core — assigning default knot and unknown values.
 6. Runs knot-error checks on each translation dimension's `s_agg` table — flagging rows where the `otx` value contains the knot character (which would make it an invalid label/name).
-7. Promotes valid rows from each translate `s_agg` to `s_vld`.
+7. Promotes valid rows from each jargon `s_agg` to `s_vld`.
 
 **`etl_sound_agg_tables_to_sound_vld_tables(cursor)`** — promotes all moment/person dimension rows from `s_agg` to `s_vld` by running the pre-generated `get_insert_into_sound_vld_sqlstrs` queries and deduplicating.
 
@@ -1209,8 +1210,8 @@ Ontology note:
 - **ch05_rope**: `create_rope` — used when constructing `LassoUnit` objects to navigate moment directory paths.
 - **ch10_person_lesson**: `create_moment_json_path`, `create_moments_dir_path`, `LassoUnit`, `lassounit_shop` — the moment file system layout is defined in ch10 path helpers.
 - **ch12_bud**: `MomentRope` — scopes all heard table queries.
-- **ch17_translate**: `get_translate_args_obj_types`, `translateable_obj_types` — drives which `h_raw` columns need `_inx` values populated via translation lookups.
-- **ch18_db_tool**: `delete_all_duplicate_rows`, `get_row_count`, `get_table_columns` — SQL utilities.
+- **ch17_jargon**: `get_jargon_args_obj_types`, `jargonable_obj_types` — drives which `h_raw` columns need `_inx` values populated via translation lookups.
+- **ch19_db_tool**: `delete_all_duplicate_rows`, `get_row_count`, `get_table_columns` — SQL utilities.
 - **ch22_etl_config**: `etl_sqlstr` functions — `create_update_heard_raw_empty_inx_col_sqlstr`, `create_update_heard_raw_existing_inx_col_sqlstr`, `get_insert_heard_agg_sqlstrs`, `get_insert_heard_vld_sqlstrs`, `update_heard_agg_timenum_columns`, `get_moment_heard_select1_sqlstrs`, `get_person_heard_vld_tablenames`, `save_to_split_csvs` — all SQL generation delegated to ch22.
 
 ---
@@ -1220,7 +1221,7 @@ Ontology note:
 `ch26_heard` is the final ETL stage before data becomes usable `PersonUnit` and `MomentUnit` objects. It advances data through `h_raw → h_agg → h_vld` and then reconstructs structured files from the validated heard tables.
 
 **`etl_heard_raw_tables_to_heard_agg_tables(cursor)`** — three steps:
-1. `set_all_heard_raw_inx_columns` — for every `_otx`-suffixed column in every `h_raw` table, determines the translation type (`NameTerm`, `TitleTerm`, `LabelTerm`, or `RopeTerm`) from the ch17 translate-args registry. If the column's base type is translateable, runs an UPDATE query that JOINs against the validated `trl{type}_s_vld` table to fill in the `_inx` value. For rows where no translation mapping exists, goes back to copying the `_otx` value into `_inx` directly (pass-through for untranslated terms).
+1. `set_all_heard_raw_inx_columns` — for every `_otx`-suffixed column in every `h_raw` table, determines the translation type (`NameTerm`, `TitleTerm`, `LabelTerm`, or `RopeTerm`) from the ch17 jargon-args registry. If the column's base type is jargonable, runs an UPDATE query that JOINs against the validated `trl{type}_s_vld` table to fill in the `_inx` value. For rows where no translation mapping exists, goes back to copying the `_otx` value into `_inx` directly (pass-through for untranslated terms).
 2. INSERT into `h_agg` tables from `h_raw`, deduplicating while excluding `_inx` columns from duplicate comparison.
 3. `update_heard_agg_timenum_columns` — applies NabuTime conversion to all time-numeric columns (`bud_time`, `fact_lower`, `fact_upper`, `reason_lower`, `reason_upper`, `tran_time`, `offi_time`) in `h_agg` tables: reads the `_otx` value, applies the epoch-length modular offset from the validated nabu table, and writes the result to the `_inx` column. This is where ch16's numeric translation is finally executed against real data.
 
@@ -1228,7 +1229,7 @@ Ontology note:
 
 **`get_moment_dict_from_heard_tables(cursor, moment_rope)`** — the reconstruction function. Runs a series of SELECT queries against the fully validated `h_vld` tables for a given `moment_rope` and assembles a nested Python dict representing the complete `MomentUnit` state: `momentunit` row for top-level attributes, `moment_ceckbook` rows for `TranUnit`s (nested `person_name → contact_name → tran_time → amount`), `moment_budunit` rows for `BudUnit`s, and epoch configuration rows (hours, months, weekdays, offi_times).
 
-**`etl_heard_vld_tables_to_mind_moment_jsons(cursor, moment_mstr_dir)`** — iterates all `moment_rope`s from `momentunit_h_vld`, calls `get_moment_dict_from_heard_tables` for each, and writes the result as a `moment.json` file to the appropriate directory. The inline comment notes a known architectural tension: using rope-based file paths is idiomatic but problematic when `moment_rope` contains characters that don't translate to valid OS paths — a hash-based directory scheme is suggested as an alternative.
+**`etl_heard_vld_tables_to_mind_moment_jsons(cursor, moment_mstr_dir)`** — iterates all `moment_rope`s from `momentunit_h_vld`, calls `get_moment_dict_from_heard_tables` for each, and writes the result as a `moment.json` file to the appropriate directory. The inline comment notes a known architectural tension: using rope-based file paths is idiomatic but problematic when `moment_rope` contains characters that don't jargon to valid OS paths — a hash-based directory scheme is suggested as an alternative.
 
 **`etl_heard_raw_tables_to_lego_moment_ote1_agg`** — builds the `moment_ote1_agg` table: a mapping of `(moment_rope, person_name, spark_num) → bud_time`, which tells later chapters which spark to apply at which budget time.
 
@@ -1267,7 +1268,7 @@ Ch27 is the final integration point of the entire ETL pipeline. It imports from 
 - **ch11_person_listen**: `open_job_file` — job files are loaded for DB insertion.
 - **ch12_bud**: Path helpers, `TranBook`, `collect_person_spark_dir_sets`, `get_persons_downhill_spark_nums`, `open_person_file`.
 - **ch15_moment**: `create_moment_persons_cell_trees`, `set_cell_tree_cell_mandates`, `set_cell_trees_decrees`, `set_cell_trees_found_facts`, `create_bud_mandate_ledgers`, `open_moment_file`.
-- **ch18_db_tool**: `delete_all_duplicate_rows`, `get_db_tables`.
+- **ch19_db_tool**: `delete_all_duplicate_rows`, `get_db_tables`.
 - **ch20_brick**: `get_brick_sqlite_types` for type-aware CSV parsing.
 - **ch22_etl_config**: Path helpers, `create_job_tables`, `create_prime_tablename`, `save_to_split_csvs`.
 - **ch27_lego.lego_job2db**: `insert_job_obj` — inserts a fully evaluated job `PersonUnit` into all job-tracking SQLite tables.
@@ -1349,7 +1350,7 @@ Ch30 is the **output inverse of ch23** — where ch23 reads human-authored idea 
 **`collect_full_world_idea_csv_strs(world_dir)`** — the main data-collection function:
 1. Walks all moment directories, loads each `MomentUnit` via `open_moment_file`, and calls `add_momentunit_to_idea_csv_strs` to serialize moment-level fields (budget units, epoch config, ceckbook, offi_times) into the idea CSV string dict.
 2. For each person within each moment, loads the **gut** `PersonUnit` (the person's own belief system, not the job) and calls `add_personunit_to_idea_csv_strs` to serialize their full plan tree, contacts, reasons, facts, etc.
-3. Opens the world SQLite database, creates sound/heard tables if absent, then calls `add_translate_rows_to_idea_csv_strs` to append validated translation mappings (from `trltitl_s_vld`, `trlname_s_vld`, `trllabe_s_vld`, `trlrope_s_vld` joined with `trlcore_s_vld`) into the four translation idea sheets (`ii00142`–`ii00145`).
+3. Opens the world SQLite database, creates sound/heard tables if absent, then calls `add_jargon_rows_to_idea_csv_strs` to append validated translation mappings (from `trltitl_s_vld`, `trlname_s_vld`, `trllabe_s_vld`, `trlrope_s_vld` joined with `trlcore_s_vld`) into the four translation idea sheets (`ii00142`–`ii00145`).
 
 **`create_lego0001_file(world_dir, output_dir, world_name)`** — produces the **world-level** output Excel:
 - Calls `collect_full_world_idea_csv_strs`.
@@ -1396,7 +1397,7 @@ Ontology note:
 - **ch11_person_listen**: `open_job_file` — job files are the input for calendar and KPI computations.
 - **ch14_time**: `TimeShoe`, `add_epoch_planunit`, `get_default_epoch_config_dict`, `get_epoch_min_from_dt`, `get_epoch_rope`, `timeshoe_shop`, `set_epoch_fact` — the epoch system is used to evaluate which plans are active at a specific real-world datetime.
 - **ch15_moment**: `open_moment_file`, `get_moment_timeshoe` — the moment's epoch configuration drives the time coordinate system.
-- **ch18_db_tool**: `db_table_exists`, `get_db_tables` — KPI tables are checked before creation.
+- **ch19_db_tool**: `db_table_exists`, `get_db_tables` — KPI tables are checked before creation.
 - **ch20_brick**: `save_table_to_csv` — KPI tables are exported to CSV.
 - **ch22_etl_config**: `create_moment_mstr_path`, `create_world_db_path` — path helpers.
 

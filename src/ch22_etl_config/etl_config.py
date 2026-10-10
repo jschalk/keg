@@ -2,8 +2,8 @@ from ch00_py.dict_toolbox import get_empty_set_if_None, get_from_nested_dict
 from ch00_py.file_toolbox import create_path, open_json
 from ch09_person_atom.atom_config import get_delete_key_name
 from ch16_nabu.nabu_config import get_context_nabuable_args, set_nabuable_otx_inx_args
-from ch17_translate.translate_config import set_translateable_otx_inx_args
-from ch18_db_tool.db_toolbox import get_create_table_sqlstr
+from ch17_jargon.jargon_config import set_jargonable_otx_inx_args
+from ch19_db_tool.db_toolbox import get_create_table_sqlstr
 from ch20_brick.brick_config import (
     get_brick_config_dict,
     get_brick_sqlite_types,
@@ -84,11 +84,11 @@ def get_dimen_abbv7(dimen: str) -> str:
         "person_planunit": "PRNPLAN",
         "personunit": "PRNUNIT",
         "nabu_timenum": "NABTIME",
-        "translate_title": "TRLTITL",
-        "translate_name": "TRLNAME",
-        "translate_rope": "TRLROPE",
-        "translate_label": "TRLLABE",
-        "translate_core": "TRLCORE",
+        "jargon_title": "TRLTITL",
+        "jargon_name": "TRLNAME",
+        "jargon_rope": "TRLROPE",
+        "jargon_label": "TRLLABE",
+        "jargon_core": "TRLCORE",
     }.get(dimen)
 
 
@@ -112,11 +112,11 @@ def get_dimen_abbv2(dimen: str) -> str:
         "person_planunit": "PP",
         "personunit": "PU",
         "nabu_timenum": "NT",
-        "translate_title": "TT",
-        "translate_name": "TN",
-        "translate_rope": "TR",
-        "translate_label": "TL",
-        "translate_core": "TC",
+        "jargon_title": "TT",
+        "jargon_name": "TN",
+        "jargon_rope": "TR",
+        "jargon_label": "TL",
+        "jargon_core": "TC",
     }.get(dimen)
 
 
@@ -154,11 +154,11 @@ def create_prime_tablename(
         "prnplan": "person_planunit",
         "prnunit": "personunit",
         "nabtime": "nabu_timenum",
-        "trltitl": "translate_title",
-        "trlname": "translate_name",
-        "trlrope": "translate_rope",
-        "trllabe": "translate_label",
-        "trlcore": "translate_core",
+        "trltitl": "jargon_title",
+        "trlname": "jargon_name",
+        "trlrope": "jargon_rope",
+        "trllabe": "jargon_label",
+        "trlcore": "jargon_core",
     }
     tablename = brick_dimen_or_abbv7
     if abbv_references.get(brick_dimen_or_abbv7.lower()):
@@ -177,7 +177,7 @@ def etl_stage_types_config_path() -> str:
 
 
 def get_etl_stage_types_config_dict() -> dict:
-    """Config data for etl dimenensions (translate, moment, person...) including required columns per stage"""
+    """Config data for etl dimenensions (jargon, moment, person...) including required columns per stage"""
     return open_json(etl_stage_types_config_path())
 
 
@@ -196,7 +196,7 @@ def etl_brick_category_config_path() -> str:
 
 
 def etl_brick_category_config_dict() -> dict:
-    """Config data for etl dimenensions (translate, moment, person...) including required columns per stage"""
+    """Config data for etl dimenensions (jargon, moment, person...) including required columns per stage"""
     return open_json(etl_brick_category_config_path())
 
 
@@ -273,28 +273,28 @@ def get_etl_category_stages_dict() -> dict:
         "nabu_s_agg": {"brick_category": "nabu", "stage_type": "s_agg"},
         "nabu_s_raw": {"brick_category": "nabu", "stage_type": "s_raw"},
         "nabu_s_vld": {"brick_category": "nabu", "stage_type": "s_vld"},
-        "translate_s_agg": {
-            "brick_category": "translate",
+        "jargon_s_agg": {
+            "brick_category": "jargon",
             "stage_type": "s_agg",
         },
-        "translate_s_raw": {
-            "brick_category": "translate",
+        "jargon_s_raw": {
+            "brick_category": "jargon",
             "stage_type": "s_raw",
         },
-        "translate_s_vld": {
-            "brick_category": "translate",
+        "jargon_s_vld": {
+            "brick_category": "jargon",
             "stage_type": "s_vld",
         },
-        "translate_core_s_agg": {
-            "brick_category": "translate_core",
+        "jargon_core_s_agg": {
+            "brick_category": "jargon_core",
             "stage_type": "s_agg",
         },
-        "translate_core_s_raw": {
-            "brick_category": "translate_core",
+        "jargon_core_s_raw": {
+            "brick_category": "jargon_core",
             "stage_type": "s_raw",
         },
-        "translate_core_s_vld": {
-            "brick_category": "translate_core",
+        "jargon_core_s_vld": {
+            "brick_category": "jargon_core",
             "stage_type": "s_vld",
         },
     }
@@ -323,9 +323,9 @@ def remove_staging_columns(columns_set: set) -> set:
 
 
 def get_all_dimen_columns_set(x_dimen: str) -> set[str]:
-    if x_dimen == "translate_core":
-        translate_core_dict = etl_brick_category_config_dict().get("translate_core")
-        return set(translate_core_dict.get("core_columns"))
+    if x_dimen == "jargon_core":
+        jargon_core_dict = etl_brick_category_config_dict().get("jargon_core")
+        return set(jargon_core_dict.get("core_columns"))
     x_config = get_brick_config_dict().get(x_dimen)
     columns = set(x_config.get("jkeys").keys())
     columns.update(set(x_config.get("jvalues").keys()))
@@ -379,10 +379,10 @@ def get_prime_columns(
     if table_keylist[-1] == "del":
         columns = get_del_dimen_columns_set(x_dimen)
 
-    if x_dimen == "translate_core":
-        brick_category = "translate_core"
-    elif x_dimen.find("translate") == 0:
-        brick_category = "translate"
+    if x_dimen == "jargon_core":
+        brick_category = "jargon_core"
+    elif x_dimen.find("jargon") == 0:
+        brick_category = "jargon"
     elif x_dimen.find("nabu") == 0:
         brick_category = "nabu"
     elif x_dimen.find("moment") == 0:
@@ -392,9 +392,9 @@ def get_prime_columns(
     config_keylist = [brick_category, "stages", *table_keylist]
 
     otx_keylist = copy_copy(config_keylist)
-    otx_keylist.append("set_translateable_otx_inx_args")
+    otx_keylist.append("set_jargonable_otx_inx_args")
     if get_from_nested_dict(etl_brick_category_config, otx_keylist, True):
-        columns = set_translateable_otx_inx_args(columns)
+        columns = set_jargonable_otx_inx_args(columns)
 
     nabuable_keylist = copy_copy(config_keylist)
     nabuable_keylist.append("set_nabuable_otx_inx_args")

@@ -1,11 +1,11 @@
 from ch09_person_atom.atom_config import get_person_dimens
 from ch15_moment.moment_config import get_moment_dimens
 from ch16_nabu.nabu_config import get_nabu_dimens
-from ch17_translate.translate_config import (
-    get_translate_dimens,
-    set_translateable_otx_inx_args,
+from ch17_jargon.jargon_config import (
+    get_jargon_dimens,
+    set_jargonable_otx_inx_args,
 )
-from ch18_db_tool.db_toolbox import (
+from ch19_db_tool.db_toolbox import (
     create_insert_into_clause_str as get_insert_sql,
     create_select_query as get_select_sql,
     create_table2table_agg_insert_query,
@@ -22,10 +22,10 @@ from ch22_etl_config.etl_config import (
     get_etl_stage_types_config_dict,
 )
 from ch22_etl_config.etl_sqlstr import (
-    create_insert_into_translate_core_raw_sqlstr,
-    create_insert_missing_spark_face_into_translate_core_vld_sqlstr,
-    create_insert_translate_core_agg_into_vld_sqlstr,
-    create_insert_translate_sound_vld_table_sqlstr,
+    create_insert_into_jargon_core_raw_sqlstr,
+    create_insert_missing_spark_face_into_jargon_core_vld_sqlstr,
+    create_insert_jargon_core_agg_into_vld_sqlstr,
+    create_insert_jargon_sound_vld_table_sqlstr,
     create_prime_db_table,
     create_prime_tablename as prime_tbl,
     create_sound_agg_insert_sqlstrs,
@@ -72,7 +72,7 @@ def test_get_prime_create_table_sqlstrs_ReturnsObj():
             )
     for trlcore_stage_type in {kw.s_raw, "s_agg", kw.s_vld}:
         add_dimen_to_agg_variables(
-            x_dimen="translate_core",
+            x_dimen="jargon_core",
             stage_type=trlcore_stage_type,
             x_put_del=None,
             expected_tablenames=expected_tablenames,
@@ -95,8 +95,8 @@ def test_get_prime_create_table_sqlstrs_ReturnsObj():
         assert gen_sqlstr == expected_sqlstr
     assert create_table_sqlstrs == expected_sqlstrs_dict
 
-    # translate_dimens_config = get_brick_config_dict({kw.translate})
-    # for x_dimen in translate_dimens_config:
+    # jargon_dimens_config = get_brick_config_dict({kw.jargon})
+    # for x_dimen in jargon_dimens_config:
     #     s_vld_tablename = prime_tbl(abbv7(x_dimen), kw.s_vld)
     #     expected_s_vld_sqlstr = create_prime_table_sqlstr(x_dimen, kw.s_vld)
 
@@ -153,22 +153,22 @@ def test_get_prime_create_table_sqlstrs_ReturnsObj_HasAllKeys():
 
     # THEN
     assert create_table_sqlstrs
-    translate_dimens_count = len(get_translate_dimens()) * 3
+    jargon_dimens_count = len(get_jargon_dimens()) * 3
     nabu_dimens_count = len(get_nabu_dimens()) * 5
     moment_dimens_count = len(get_moment_dimens()) * 6
     person_dimens_count = len(get_person_dimens()) * 12
-    print(f"{translate_dimens_count=}")
+    print(f"{jargon_dimens_count=}")
     print(f"{nabu_dimens_count=}")
     print(f"{moment_dimens_count=}")
     print(f"{person_dimens_count=}")
     all_dimens_count = (
-        translate_dimens_count
+        jargon_dimens_count
         + nabu_dimens_count
         + moment_dimens_count
         + person_dimens_count
     )
-    translate_core_count = 3
-    all_dimens_count += translate_core_count
+    jargon_core_count = 3
+    all_dimens_count += jargon_core_count
     assert len(create_table_sqlstrs) == all_dimens_count
 
 
@@ -289,11 +289,11 @@ def test_create_prime_db_table_CreatesSingleTable(cursor0: Cursor):
     assert gen_tablename == prnunit_put_s_agg_table
 
 
-def test_create_sound_raw_update_inconsist_error_message_sqlstr_ReturnsObj_Scenario0_TranslateDimen(
+def test_create_sound_raw_update_inconsist_error_message_sqlstr_ReturnsObj_Scenario0_Translatedimen(
     cursor0: Cursor,
 ):
     # ESTABLISH
-    dimen = kw.translate_title
+    dimen = kw.jargon_title
     create_sound_and_heard_tables(cursor0)
 
     # WHEN
@@ -318,19 +318,19 @@ def test_create_sound_raw_update_inconsist_error_message_sqlstr_ReturnsObj_Scena
 
     static_example_sqlstr = """WITH inconsistency_rows AS (
 SELECT spark_num, spark_face, otx_title
-FROM translate_title_s_raw
+FROM jargon_title_s_raw
 GROUP BY spark_num, spark_face, otx_title
 HAVING MIN(inx_title) != MAX(inx_title)
     OR MIN(otx_knot) != MAX(otx_knot)
     OR MIN(inx_knot) != MAX(inx_knot)
     OR MIN(unknown_str) != MAX(unknown_str)
 )
-UPDATE translate_title_s_raw
+UPDATE jargon_title_s_raw
 SET error_message = 'Inconsistent data'
 FROM inconsistency_rows
-WHERE inconsistency_rows.spark_num = translate_title_s_raw.spark_num
-    AND inconsistency_rows.spark_face = translate_title_s_raw.spark_face
-    AND inconsistency_rows.otx_title = translate_title_s_raw.otx_title
+WHERE inconsistency_rows.spark_num = jargon_title_s_raw.spark_num
+    AND inconsistency_rows.spark_face = jargon_title_s_raw.spark_face
+    AND inconsistency_rows.otx_title = jargon_title_s_raw.otx_title
 ;
 """
     print(update_sqlstr)
@@ -488,11 +488,11 @@ WHERE inconsistency_rows.spark_num = person_plan_awardunit_put_s_raw.spark_num
     assert update_sqlstr == static_example_sqlstr
 
 
-def test_create_sound_agg_insert_sqlstrs_ReturnsObj_Scenario0_TranslateDimen(
+def test_create_sound_agg_insert_sqlstrs_ReturnsObj_Scenario0_Translatedimen(
     cursor0: Cursor,
 ):
     # ESTABLISH
-    dimen = kw.translate_title
+    dimen = kw.jargon_title
     create_sound_and_heard_tables(cursor0)
 
     # WHEN
@@ -515,9 +515,9 @@ def test_create_sound_agg_insert_sqlstrs_ReturnsObj_Scenario0_TranslateDimen(
     # print(expected_insert_sqlstr)
     assert update_sqlstrs[0] == expected_insert_sqlstr
 
-    static_example_sqlstr = """INSERT INTO translate_title_s_agg (spark_num, spark_face, otx_title, inx_title, otx_knot, inx_knot, unknown_str)
+    static_example_sqlstr = """INSERT INTO jargon_title_s_agg (spark_num, spark_face, otx_title, inx_title, otx_knot, inx_knot, unknown_str)
 SELECT spark_num, spark_face, otx_title, MAX(inx_title), MAX(otx_knot), MAX(inx_knot), MAX(unknown_str)
-FROM translate_title_s_raw
+FROM jargon_title_s_raw
 WHERE error_message IS NULL
 GROUP BY spark_num, spark_face, otx_title
 ;
@@ -673,74 +673,74 @@ GROUP BY spark_num, spark_face, person_name, plan_rope, awardee_title_ERASE
     assert update_sqlstrs[1] == static_example_del_sqlstr
 
 
-def test_create_insert_into_translate_core_raw_sqlstr_ReturnsObj():
+def test_create_insert_into_jargon_core_raw_sqlstr_ReturnsObj():
     # ESTABLISH
-    dimen = kw.translate_rope
+    dimen = kw.jargon_rope
     # WHEN
-    rope_sqlstr = create_insert_into_translate_core_raw_sqlstr(dimen)
+    rope_sqlstr = create_insert_into_jargon_core_raw_sqlstr(dimen)
 
     # THEN
-    translate_s_agg_tablename = prime_tbl(dimen, "s_agg")
-    translate_core_s_raw_tablename = prime_tbl("TRLCORE", kw.s_raw)
-    expected_sqlstr = f"""INSERT INTO {translate_core_s_raw_tablename} (source_dimen, spark_face, otx_knot, inx_knot, unknown_str)
-SELECT '{translate_s_agg_tablename}', spark_face, otx_knot, inx_knot, unknown_str
-FROM {translate_s_agg_tablename}
+    jargon_s_agg_tablename = prime_tbl(dimen, "s_agg")
+    jargon_core_s_raw_tablename = prime_tbl("TRLCORE", kw.s_raw)
+    expected_sqlstr = f"""INSERT INTO {jargon_core_s_raw_tablename} (source_dimen, spark_face, otx_knot, inx_knot, unknown_str)
+SELECT '{jargon_s_agg_tablename}', spark_face, otx_knot, inx_knot, unknown_str
+FROM {jargon_s_agg_tablename}
 GROUP BY spark_face, otx_knot, inx_knot, unknown_str
 ;
 """
     assert rope_sqlstr == expected_sqlstr
 
 
-def test_create_insert_translate_core_agg_into_vld_sqlstr_ReturnsObj():
+def test_create_insert_jargon_core_agg_into_vld_sqlstr_ReturnsObj():
     # ESTABLISH
     default_knot = "|"
     default_unknown_str = "unknown2"
 
     # WHEN
-    insert_sqlstr = create_insert_translate_core_agg_into_vld_sqlstr(
+    insert_sqlstr = create_insert_jargon_core_agg_into_vld_sqlstr(
         default_knot, default_unknown_str
     )
 
     # THEN
     trlcore_dimen = "TRLCORE"
-    translate_core_s_agg_tablename = prime_tbl(trlcore_dimen, "s_agg")
-    translate_core_s_vld_tablename = prime_tbl(trlcore_dimen, kw.s_vld)
-    expected_sqlstr = f"""INSERT INTO {translate_core_s_vld_tablename} (spark_face, otx_knot, inx_knot, unknown_str)
+    jargon_core_s_agg_tablename = prime_tbl(trlcore_dimen, "s_agg")
+    jargon_core_s_vld_tablename = prime_tbl(trlcore_dimen, kw.s_vld)
+    expected_sqlstr = f"""INSERT INTO {jargon_core_s_vld_tablename} (spark_face, otx_knot, inx_knot, unknown_str)
 SELECT
   spark_face
 , IFNULL(otx_knot, '{default_knot}')
 , IFNULL(inx_knot, '{default_knot}')
 , IFNULL(unknown_str, '{default_unknown_str}')
-FROM {translate_core_s_agg_tablename}
+FROM {jargon_core_s_agg_tablename}
 ;
 """
     print(expected_sqlstr)
     assert insert_sqlstr == expected_sqlstr
 
 
-def test_create_insert_missing_spark_face_into_translate_core_vld_sqlstr_ReturnsObj():
+def test_create_insert_missing_spark_face_into_jargon_core_vld_sqlstr_ReturnsObj():
     # ESTABLISH
     default_knot = "|"
     default_unknown_str = "unknown2"
     prncont_s_agg_tablename = prime_tbl(kw.person_contactunit, "s_agg")
 
     # WHEN
-    insert_sqlstr = create_insert_missing_spark_face_into_translate_core_vld_sqlstr(
+    insert_sqlstr = create_insert_missing_spark_face_into_jargon_core_vld_sqlstr(
         default_knot, default_unknown_str, prncont_s_agg_tablename
     )
 
     # THEN
     trlcore_dimen = "TRLCORE"
-    translate_core_s_vld_tablename = prime_tbl(trlcore_dimen, kw.s_vld)
-    expected_sqlstr = f"""INSERT INTO {translate_core_s_vld_tablename} (spark_face, otx_knot, inx_knot, unknown_str)
+    jargon_core_s_vld_tablename = prime_tbl(trlcore_dimen, kw.s_vld)
+    expected_sqlstr = f"""INSERT INTO {jargon_core_s_vld_tablename} (spark_face, otx_knot, inx_knot, unknown_str)
 SELECT
   {prncont_s_agg_tablename}.spark_face
 , '{default_knot}'
 , '{default_knot}'
 , '{default_unknown_str}'
 FROM {prncont_s_agg_tablename} 
-LEFT JOIN translate_core_s_vld ON translate_core_s_vld.spark_face = {prncont_s_agg_tablename}.spark_face
-WHERE translate_core_s_vld.spark_face IS NULL
+LEFT JOIN jargon_core_s_vld ON jargon_core_s_vld.spark_face = {prncont_s_agg_tablename}.spark_face
+WHERE jargon_core_s_vld.spark_face IS NULL
 GROUP BY {prncont_s_agg_tablename}.spark_face
 ;
 """
@@ -748,19 +748,19 @@ GROUP BY {prncont_s_agg_tablename}.spark_face
     assert insert_sqlstr == expected_sqlstr
 
 
-def test_create_insert_translate_sound_vld_table_sqlstr_ReturnsObj_translate_rope():
+def test_create_insert_jargon_sound_vld_table_sqlstr_ReturnsObj_jargon_rope():
     # ESTABLISH
-    dimen = kw.translate_rope
+    dimen = kw.jargon_rope
     # WHEN
-    rope_sqlstr = create_insert_translate_sound_vld_table_sqlstr(dimen)
+    rope_sqlstr = create_insert_jargon_sound_vld_table_sqlstr(dimen)
 
     # THEN
-    translate_dimen_s_agg_tablename = prime_tbl(dimen, "s_agg")
-    translate_dimen_s_vld_tablename = prime_tbl(dimen, kw.s_vld)
+    jargon_dimen_s_agg_tablename = prime_tbl(dimen, "s_agg")
+    jargon_dimen_s_vld_tablename = prime_tbl(dimen, kw.s_vld)
     expected_rope_sqlstr = f"""
-INSERT INTO {translate_dimen_s_vld_tablename} (spark_num, spark_face, otx_rope, inx_rope)
+INSERT INTO {jargon_dimen_s_vld_tablename} (spark_num, spark_face, otx_rope, inx_rope)
 SELECT spark_num, spark_face, MAX(otx_rope), MAX(inx_rope)
-FROM {translate_dimen_s_agg_tablename}
+FROM {jargon_dimen_s_agg_tablename}
 WHERE error_message IS NULL
 GROUP BY spark_num, spark_face
 ;
@@ -769,19 +769,19 @@ GROUP BY spark_num, spark_face
     assert rope_sqlstr == expected_rope_sqlstr
 
 
-def test_create_insert_translate_sound_vld_table_sqlstr_ReturnsObj_translate_label():
+def test_create_insert_jargon_sound_vld_table_sqlstr_ReturnsObj_jargon_label():
     # ESTABLISH
-    dimen = kw.translate_label
+    dimen = kw.jargon_label
     # WHEN
-    label_sqlstr = create_insert_translate_sound_vld_table_sqlstr(dimen)
+    label_sqlstr = create_insert_jargon_sound_vld_table_sqlstr(dimen)
 
     # THEN
-    translate_label_s_agg_tablename = prime_tbl(dimen, "s_agg")
-    translate_label_s_vld_tablename = prime_tbl(dimen, kw.s_vld)
+    jargon_label_s_agg_tablename = prime_tbl(dimen, "s_agg")
+    jargon_label_s_vld_tablename = prime_tbl(dimen, kw.s_vld)
     expected_label_sqlstr = f"""
-INSERT INTO {translate_label_s_vld_tablename} (spark_num, spark_face, otx_label, inx_label)
+INSERT INTO {jargon_label_s_vld_tablename} (spark_num, spark_face, otx_label, inx_label)
 SELECT spark_num, spark_face, MAX(otx_label), MAX(inx_label)
-FROM {translate_label_s_agg_tablename}
+FROM {jargon_label_s_agg_tablename}
 WHERE error_message IS NULL
 GROUP BY spark_num, spark_face
 ;
@@ -906,10 +906,10 @@ def test_get_insert_into_heard_raw_sqlstrs_ReturnsObj_PersonDimens(cursor0: Curs
         # s_del_cols = set(s_del_cols).remove(kw.error_message)
         put_h_raw_cols = set(get_table_columns(cursor0, put_h_raw_tablename))
         del_h_raw_cols = set(get_table_columns(cursor0, del_h_raw_tablename))
-        put_h_cols = set_translateable_otx_inx_args(put_h_raw_cols)
-        h_del_cols = set_translateable_otx_inx_args(del_h_raw_cols)
-        put_h_cols.remove(kw.translate_spark_num)
-        h_del_cols.remove(kw.translate_spark_num)
+        put_h_cols = set_jargonable_otx_inx_args(put_h_raw_cols)
+        h_del_cols = set_jargonable_otx_inx_args(del_h_raw_cols)
+        put_h_cols.remove(kw.jargon_spark_num)
+        h_del_cols.remove(kw.jargon_spark_num)
         put_h_cols = {col for col in put_h_cols if col[-3:] != "inx"}
         h_del_cols = {col for col in h_del_cols if col[-3:] != "inx"}
         put_h_raw_tbl = put_h_raw_tablename
@@ -958,7 +958,7 @@ def test_get_insert_into_heard_raw_sqlstrs_ReturnsObj_Moment_Nabu_Dimens(
         s_cols = set(get_table_columns(cursor0, s_vld_tablename))
         h_raw_cols = get_table_columns(cursor0, h_raw_tablename)
         h_raw_cols.remove(kw.error_message)
-        v_cols = set_translateable_otx_inx_args(h_raw_cols)
+        v_cols = set_jargonable_otx_inx_args(h_raw_cols)
         v_cols = {col for col in v_cols if col[-3:] != "inx"}
         h_raw_tbl = h_raw_tablename
         s_vld_tbl = s_vld_tablename

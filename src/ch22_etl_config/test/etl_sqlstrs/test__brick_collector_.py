@@ -72,7 +72,7 @@ def test_BrickFileRef_get_csv_filename_ReturnsObj_Scenario1():
     assert x_brickfileref.get_csv_filename() == f"{bk00103_str}.csv"
 
 
-def test_get_all_brickfilerefs_ReturnsObj_Scenario0_TranslateSheetNames(
+def test_get_all_brickfilerefs_ReturnsObj_Scenario0_TranslatesheetNames(
     temp3_fs,
 ):
     # ESTABLISH

@@ -31,7 +31,7 @@ Ch27 is the final integration point of the entire ETL pipeline. It imports from 
 - **ch11_person_listen**: `open_job_file` — job files are loaded for DB insertion.
 - **ch12_bud**: Path helpers, `TranBook`, `collect_person_spark_dir_sets`, `get_persons_downhill_spark_nums`, `open_person_file`.
 - **ch15_moment**: `create_moment_persons_cell_trees`, `set_cell_tree_cell_mandates`, `set_cell_trees_decrees`, `set_cell_trees_found_facts`, `create_bud_mandate_ledgers`, `open_moment_file`.
-- **ch18_db_tool**: `delete_all_duplicate_rows`, `get_db_tables`.
+- **ch19_db_tool**: `delete_all_duplicate_rows`, `get_db_tables`.
 - **ch20_brick**: `get_brick_sqlite_types` for type-aware CSV parsing.
 - **ch22_etl_config**: Path helpers, `create_job_tables`, `create_prime_tablename`, `save_to_split_csvs`.
 - **ch27_lego.lego_job2db**: `insert_job_obj` — inserts a fully evaluated job `PersonUnit` into all job-tracking SQLite tables.

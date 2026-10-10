@@ -1,7 +1,7 @@
 from ch14_time.epoch_main import DEFAULT_EPOCH_LENGTH, get_c400_constants
 from ch14_time.test._util.ch14_examples import Ch14ExampleStrs as wx
 from ch16_nabu.nabu_config import get_nabu_config_dict
-from ch18_db_tool.db_toolbox import create_type_reference_insert_sqlstr, get_row_count
+from ch19_db_tool.db_toolbox import create_type_reference_insert_sqlstr, get_row_count
 from ch20_brick.brick_config import get_dimens_with_brick_element
 from ch22_etl_config.etl_config import create_prime_tablename
 from ch22_etl_config.etl_sqlstr import (

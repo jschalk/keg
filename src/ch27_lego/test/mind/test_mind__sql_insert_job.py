@@ -1,5 +1,5 @@
 from ch08_person_logic.person_config import get_person_calc_dimen_args
-from ch18_db_tool.db_toolbox import create_insert_query
+from ch19_db_tool.db_toolbox import create_insert_query
 from ch22_etl_config.etl_sqlstr import create_job_tables
 from ch27_lego.lego_job2db import (
     create_personunit_metrics_insert_sqlstr,

@@ -51,7 +51,7 @@
   }, 
   "s_agg": {
     "abbv9": "sound_agg", 
-    "description": "Populated by aggregated Sound Raw dimen data (elimanate duplicates). Translate Core data is validated then used to translate non-Translate dimen data", 
+    "description": "Populated by aggregated Sound Raw dimen data (elimanate duplicates). Jargon Core data is validated then used to jargon non-Jargon dimen data", 
     "stage_type_order": 8
   }, 
   "s_raw": {

@@ -16,12 +16,12 @@ from ch12_bud._ref.ch12_path import (
 from ch15_moment._ref.ch15_path import (
     create_bud_contact_mandate_ledger_path as bud_mandate,
 )
-from ch18_db_tool.db_toolbox import (
+from ch19_db_tool.db_toolbox import (
     db_table_exists,
     get_all_tables_with_duplicates,
     get_row_count,
 )
-from ch18_db_tool.test.tool_db.test_db_tool_ import print_table
+from ch19_db_tool.test.tool_db.test_db_tool_ import print_table
 from ch20_brick.brick_db_tool import save_sheet
 from ch22_etl_config._ref.ch22_path import (
     create_last_run_metrics_path,
@@ -150,12 +150,12 @@ def test_brick_sheets_to_lego_with_cursor_Scenario0_bk001071PopulatesTables(
     )
 
     # THEN
-    # select_translate_core = f"SELECT * FROM {trlcore_sound_vld}"
+    # select_jargon_core = f"SELECT * FROM {trlcore_sound_vld}"
     # select_personunit_put = f"SELECT * FROM {prnunit_put_sound_agg}"
     # select_prncont_put = f"SELECT * FROM {prncont_put_sound_agg}"
     # select_momentunit_put_raw = f"SELECT * FROM {momentunit_sound_raw}"
     # select_momentunit_put_agg = f"SELECT * FROM {momentunit_sound_agg}"
-    # print(f"{cursor.execute(select_translate_core).fetchall()=}")
+    # print(f"{cursor.execute(select_jargon_core).fetchall()=}")
     # print(f"{cursor.execute(select_personunit_put).fetchall()=}")
     # print(f"{cursor.execute(select_prncont_put).fetchall()=}")
     # print(f"{cursor.execute(select_momentunit_put_raw).fetchall()=}")

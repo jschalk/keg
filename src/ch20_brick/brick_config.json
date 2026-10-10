@@ -1,4 +1,32 @@
 {
+  "jargon_label": {
+    "allowed_crud": "insert_one_time", 
+    "brick_category": "jargon", 
+    "build_order": 2, 
+    "jkeys": {"otx_label": {}, "spark_face": {}, "spark_num": {}}, 
+    "jvalues": {"inx_knot": {}, "inx_label": {}, "otx_knot": {}, "unknown_str": {}}
+  }, 
+  "jargon_name": {
+    "allowed_crud": "insert_one_time", 
+    "brick_category": "jargon", 
+    "build_order": 0, 
+    "jkeys": {"otx_name": {}, "spark_face": {}, "spark_num": {}}, 
+    "jvalues": {"inx_knot": {}, "inx_name": {}, "otx_knot": {}, "unknown_str": {}}
+  }, 
+  "jargon_rope": {
+    "allowed_crud": "insert_one_time", 
+    "brick_category": "jargon", 
+    "build_order": 3, 
+    "jkeys": {"otx_rope": {}, "spark_face": {}, "spark_num": {}}, 
+    "jvalues": {"inx_knot": {}, "inx_rope": {}, "otx_knot": {}, "unknown_str": {}}
+  }, 
+  "jargon_title": {
+    "allowed_crud": "insert_one_time", 
+    "brick_category": "jargon", 
+    "build_order": 1, 
+    "jkeys": {"otx_title": {}, "spark_face": {}, "spark_num": {}}, 
+    "jvalues": {"inx_knot": {}, "inx_title": {}, "otx_knot": {}, "unknown_str": {}}
+  }, 
   "moment_budunit": {
     "allowed_crud": "insert_multiple", 
     "brick_category": "moment", 
@@ -219,33 +247,5 @@
       "max_tree_traverse": {}, 
       "respect_grain": {}
     }
-  }, 
-  "translate_label": {
-    "allowed_crud": "insert_one_time", 
-    "brick_category": "translate", 
-    "build_order": 2, 
-    "jkeys": {"otx_label": {}, "spark_face": {}, "spark_num": {}}, 
-    "jvalues": {"inx_knot": {}, "inx_label": {}, "otx_knot": {}, "unknown_str": {}}
-  }, 
-  "translate_name": {
-    "allowed_crud": "insert_one_time", 
-    "brick_category": "translate", 
-    "build_order": 0, 
-    "jkeys": {"otx_name": {}, "spark_face": {}, "spark_num": {}}, 
-    "jvalues": {"inx_knot": {}, "inx_name": {}, "otx_knot": {}, "unknown_str": {}}
-  }, 
-  "translate_rope": {
-    "allowed_crud": "insert_one_time", 
-    "brick_category": "translate", 
-    "build_order": 3, 
-    "jkeys": {"otx_rope": {}, "spark_face": {}, "spark_num": {}}, 
-    "jvalues": {"inx_knot": {}, "inx_rope": {}, "otx_knot": {}, "unknown_str": {}}
-  }, 
-  "translate_title": {
-    "allowed_crud": "insert_one_time", 
-    "brick_category": "translate", 
-    "build_order": 1, 
-    "jkeys": {"otx_title": {}, "spark_face": {}, "spark_num": {}}, 
-    "jvalues": {"inx_knot": {}, "inx_title": {}, "otx_knot": {}, "unknown_str": {}}
   }
 }

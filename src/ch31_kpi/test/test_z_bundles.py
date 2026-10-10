@@ -1,4 +1,4 @@
-from ch18_db_tool.db_toolbox import db_table_exists, get_db_tables, get_row_count
+from ch19_db_tool.db_toolbox import db_table_exists, get_db_tables, get_row_count
 from ch22_etl_config.etl_sqlstr import CREATE_JOB_PRNPLAN_SQLSTR, create_prime_tablename
 from ch27_lego.lego_core import CREATE_MOMENT_TRANBOOK_NETS_SQLSTR
 from ch31_kpi.kpi_mstr import populate_kpi_bundle

@@ -2,7 +2,7 @@ from ch00_py.file_toolbox import create_path, open_file
 from ch05_rope.rope import create_rope
 from ch10_person_lesson.lasso import lassounit_shop
 from ch12_bud._ref.ch12_path import create_person_spark_dir_path
-from ch18_db_tool.db_toolbox import get_table_columns
+from ch19_db_tool.db_toolbox import get_table_columns
 from ch22_etl_config.etl_sqlstr import (
     create_prime_tablename,
     create_sound_and_heard_tables,

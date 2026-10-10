@@ -14,6 +14,11 @@ In response to someone making fun of Economists for being divorced from reality.
 > 
 > Over the time, the gap only grows, resulting in a collapse
 
+**Sep 3, 2025**  
+In response to an attack on a politican accusing him of having too many women in his leadership Kazani does not refute the accusation, he writes:
+> When the French royal family was debating whether a King's or a Queen's government is better, theoretically speaking, Louis XIV's daughter in law Marie Adelaide opinionated that a Queen's rule is obviously better:
+> 
+> "For a Queen is governed by men, and a King by women"
 
 **Oct 29, 2025**  
 In response to question about Ukraine being able to give Russia a symbolic vistory:
@@ -199,3 +204,24 @@ Repsonding to Joe McReynolds @McReynoldsJoe<br>
 > If Chinese are seen as “enemies”, then they are a different biological species entirely, and we have absolutely nothing in common
 > 
 > (In this, and in other cases, people ascribe some profound eternal wisdom to what is basically just war propaganda)
+
+**September 27, 2026**
+Responding to this tweet: Zinoviev & Kamenev had a really insane arc. From very important figures in the early USSR to getting clipped then dumped in an unmarked grave and erased from history/forgotten.
+> I find the history of intra-party struggle in the 20s a very positive, optimistic story. Everyone got what they wanted
+> 
+> Zinoviev & Kamenev wanted to destroy Trotsky. Trotsky wanted to take vengeance against these two. Stalin wanted to get on top of them all
+> 
+> Everyone’s wishes were fulfilled
+
+**September 30, 2026**
+> Marxism relies upon the labour theory of value
+> 
+> Neoliberalism is based on the suffering theory of value
+> 
+> Economy depends upon the people suffering, and the more they suffer, the economier it is
+>
+> That is the primary reason university attracts public scrutiny (and wrath), in a way corporation does not
+> 
+> People suspect they may be secretly having good time in the university. *That* is unacceptable
+> 
+> In a corporation, they at least suffer, which makes the economy economier

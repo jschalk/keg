@@ -7,11 +7,11 @@ from ch10_person_lesson._ref.ch10_path import (
 )
 from ch10_person_lesson.lasso import LassoUnit, lassounit_shop
 from ch12_bud.bud_main import MomentRope
-from ch17_translate.translate_config import (
-    get_translate_args_obj_types,
-    translateable_obj_types,
+from ch17_jargon.jargon_config import (
+    get_jargon_args_obj_types,
+    jargonable_obj_types,
 )
-from ch18_db_tool.db_toolbox import (
+from ch19_db_tool.db_toolbox import (
     delete_all_duplicate_rows,
     get_row_count,
     get_table_columns,
@@ -35,13 +35,13 @@ from sqlite3 import Connection as sqlite3_Connection, Cursor as sqlite3_Cursor
 
 
 def set_all_heard_raw_inx_columns(cursor: sqlite3_Cursor):
-    translate_args = get_translate_args_obj_types()
+    jargon_args = get_jargon_args_obj_types()
     for heard_raw_tablename, otx_columnname in get_all_heard_raw_otx_columns(cursor):
         columnname_without_otx = otx_columnname[:-4]
         x_arg = copy_copy(columnname_without_otx)
         if x_arg[-5:] == "ERASE":
             x_arg = x_arg[:-6]
-        arg_obj_type = translate_args.get(x_arg)
+        arg_obj_type = jargon_args.get(x_arg)
         set_heard_raw_inx_column(
             cursor, heard_raw_tablename, columnname_without_otx, arg_obj_type
         )
@@ -64,18 +64,18 @@ def set_heard_raw_inx_column(
     column_without_otx: str,
     arg_obj_type: str,
 ):
-    if arg_obj_type in translateable_obj_types():
-        translate_type_abbv = None
+    if arg_obj_type in jargonable_obj_types():
+        jargon_type_abbv = None
         if arg_obj_type == "NameTerm":
-            translate_type_abbv = "name"
+            jargon_type_abbv = "name"
         elif arg_obj_type == "TitleTerm":
-            translate_type_abbv = "title"
+            jargon_type_abbv = "title"
         elif arg_obj_type == "LabelTerm":
-            translate_type_abbv = "label"
+            jargon_type_abbv = "label"
         elif arg_obj_type == "RopeTerm":
-            translate_type_abbv = "rope"
+            jargon_type_abbv = "rope"
         update_calc_inx_sqlstr = create_update_heard_raw_existing_inx_col_sqlstr(
-            translate_type_abbv, heard_raw_tablename, column_without_otx
+            jargon_type_abbv, heard_raw_tablename, column_without_otx
         )
         cursor.execute(update_calc_inx_sqlstr)
     update_empty_inx_sqlstr = create_update_heard_raw_empty_inx_col_sqlstr(

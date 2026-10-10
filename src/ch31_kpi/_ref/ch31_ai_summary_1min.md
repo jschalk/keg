@@ -30,7 +30,7 @@ Ontology note:
 - **ch11_person_listen**: `open_job_file` — job files are the input for calendar and KPI computations.
 - **ch14_time**: `TimeShoe`, `add_epoch_planunit`, `get_default_epoch_config_dict`, `get_epoch_min_from_dt`, `get_epoch_rope`, `timeshoe_shop`, `set_epoch_fact` — the epoch system is used to evaluate which plans are active at a specific real-world datetime.
 - **ch15_moment**: `open_moment_file`, `get_moment_timeshoe` — the moment's epoch configuration drives the time coordinate system.
-- **ch18_db_tool**: `db_table_exists`, `get_db_tables` — KPI tables are checked before creation.
+- **ch19_db_tool**: `db_table_exists`, `get_db_tables` — KPI tables are checked before creation.
 - **ch20_brick**: `save_table_to_csv` — KPI tables are exported to CSV.
 - **ch22_etl_config**: `create_moment_mstr_path`, `create_world_db_path` — path helpers.
 

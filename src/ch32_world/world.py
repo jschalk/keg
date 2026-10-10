@@ -15,7 +15,7 @@ from ch25_sound.sound import (
     etl_sound_agg_tables_to_sound_vld_tables,
     etl_sound_raw_tables_to_sound_agg_tables,
     etl_sound_vld_tables_to_heard_raw_tables,
-    etl_translate_sound_agg_tables_to_translate_sound_vld_tables,
+    etl_jargon_sound_agg_tables_to_jargon_sound_vld_tables,
 )
 from ch26_heard.heard import (
     etl_heard_agg_tables_to_heard_vld_tables,
@@ -78,7 +78,7 @@ def brick_sheets_to_lego_with_cursor(
     etl_brixk_vld_tables_to_sound_raw_tables(cursor)
     # sound raw to heard raw, filter through translates
     etl_sound_raw_tables_to_sound_agg_tables(cursor)
-    etl_translate_sound_agg_tables_to_translate_sound_vld_tables(cursor)
+    etl_jargon_sound_agg_tables_to_jargon_sound_vld_tables(cursor)
     etl_sound_agg_tables_to_sound_vld_tables(cursor)
     etl_sound_vld_tables_to_heard_raw_tables(cursor)
     # heard raw stage to sparkized stage: moment/person jsons files

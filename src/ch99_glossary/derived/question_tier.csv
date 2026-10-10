@@ -9,6 +9,7 @@ Cow,10,
 Drag,10,
 Drift,10,
 Duck,10,
+Fealty,10,
 Gravity,10,
 Hive,10,
 Hose,10,
@@ -49,7 +50,7 @@ crawl,10,
 dive,10,
 drift,10,
 factory,10,
-heart,10,
+fealty,10,
 juggle,10,
 juggling,10,
 keg_wheel,10,
@@ -57,7 +58,6 @@ kegbox,10,
 lumen,10,
 palm,10,
 pandas_DataFrame,10,
-pump,10,
 purpil,10,
 pyramid,10,
 rider,10,
@@ -88,6 +88,7 @@ ch15,6,15:
 ch16,6,16:
 ch17,6,17:
 ch18,6,18:
+ch19,6,19:
 ch20,6,20:
 ch22,6,22:
 ch23,6,23:
@@ -167,9 +168,11 @@ xio,0,0:
 yao,0,0:
 yield,0,0:
 zia,0,0:
+Kegology,0,0:
 Keyword,0,0:
 filename,0,0:
 glossary,0,0:
+kegology,0,0:
 keyword,0,0:
 semantic_type,0,0:
 shop,0,0:
@@ -528,6 +531,13 @@ inx_label,0,17:
 inx_name,0,17:
 inx_rope,0,17:
 inx_title,0,17:
+jargon,0,17:
+jargon_core,0,17:
+jargon_label,0,17:
+jargon_name,0,17:
+jargon_rope,0,17:
+jargon_title,0,17:
+jargonunit,0,"17, 20, 97"
 labelmap,0,17:
 namemap,0,17:
 otx_knot,0,17:
@@ -537,15 +547,26 @@ otx_rope,0,17:
 otx_title,0,17:
 ropemap,0,17:
 titlemap,0,17:
-translate,0,17:
-translate_core,0,17:
-translate_label,0,17:
-translate_name,0,17:
-translate_rope,0,17:
-translate_title,0,17:
-translateunit,0,"17, 20, 97"
 unknown_str,0,17:
-duck,0,18
+Lingo,0,18
+aux,0,18
+aux_knot,0,18
+aux_label,0,18
+aux_name,0,18
+aux_rope,0,18
+aux_title,0,18
+iux,0,18
+iux_knot,0,18
+iux_label,0,18
+iux_name,0,18
+iux_rope,0,18
+iux_title,0,18
+lingo,0,18
+lingo_label,0,18
+lingo_name,0,18
+lingo_rope,0,18
+lingo_title,0,18
+duck,0,19
 Border,0,"20, 39"
 Excel,0,20:
 SheetName,0,20:
@@ -598,6 +619,7 @@ hour_label_otx,0,"20, 22"
 insert_multiple,0,20:
 insert_one_time,0,20:
 insert_update,0,20:
+jargon_spark_num,0,"20, 22, 97"
 labor_title_ERASE_inx,0,"20, 22"
 labor_title_ERASE_otx,0,"20, 22"
 labor_title_inx,0,"20, 22"
@@ -637,7 +659,6 @@ spark_face_inx,0,"20, 22, 26"
 spark_face_otx,0,"20, 22, 26"
 tran_time_inx,0,"20, 22"
 tran_time_otx,0,"20, 22"
-translate_spark_num,0,"20, 22, 97"
 weekday_label_inx,0,"20, 22"
 weekday_label_otx,0,"20, 22"
 world_name,0,20:
@@ -722,12 +743,14 @@ financial,0,34:
 News,0,36
 news,0,"36, 39, 40"
 American,0,"39, 40, 41"
+God,0,"39, 40, 41, 54"
 Infinity,0,"39, 41"
 Pillar,0,"39, 41"
 Totality,0,"39, 41"
 Water,0,"39, 40, 41"
 Wheel,0,"39, 41"
 bearing,0,"39, 41"
+god,0,"39, 40, 41, 54"
 gravity,0,39
 hose,0,"39, 40, 41, 54"
 infinity,0,"39, 41"
@@ -787,6 +810,7 @@ cling,0,41
 discipline,0,41
 drag,0,41
 fall,0,41
+heart,0,41
 honor,0,41
 jump,0,41
 kneeler,0,41
@@ -794,6 +818,7 @@ lift,0,41
 linchpin,0,41
 loser,0,41
 pillar,0,41
+pump,0,41
 revenge,0,41
 shot,0,41
 soldier,0,41

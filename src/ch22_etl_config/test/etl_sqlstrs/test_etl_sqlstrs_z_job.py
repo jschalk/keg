@@ -1,5 +1,5 @@
 from ch08_person_logic.person_config import get_person_config_dict
-from ch18_db_tool.db_toolbox import (
+from ch19_db_tool.db_toolbox import (
     db_table_exists,
     get_create_table_sqlstr,
     get_db_tables,

@@ -12,7 +12,7 @@
 
 
 from ch00_py.file_toolbox import create_path
-from ch18_db_tool.notebook_toolbox import save_marimo_notebook_from_test_file
+from ch19_db_tool.notebook_toolbox import save_marimo_notebook_from_test_file
 
 # HOW TO USE:
 # Open up CMD, change directory to repo

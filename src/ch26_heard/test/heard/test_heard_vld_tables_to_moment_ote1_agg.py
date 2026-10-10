@@ -1,4 +1,4 @@
-from ch18_db_tool.db_toolbox import db_table_exists, get_row_count
+from ch19_db_tool.db_toolbox import db_table_exists, get_row_count
 from ch22_etl_config.etl_sqlstr import create_prime_tablename
 from ch24_etl_brick.etl_brick_main import create_sound_and_heard_tables
 from ch26_heard.heard import etl_heard_raw_tables_to_lego_moment_ote1_agg

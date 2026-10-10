@@ -153,7 +153,7 @@ ORDER BY
     return x_csv
 
 
-def add_translate_rows_to_idea_csv_strs(
+def add_jargon_rows_to_idea_csv_strs(
     cursor: sqlite3_Cursor, moment_csv_strs: dict[str, str], csv_delimiter: str
 ):
     ii00142_csv = moment_csv_strs.get("ii00142")
@@ -193,7 +193,7 @@ def collect_full_world_idea_csv_strs(world_dir: str) -> dict[str, str]:
     with sqlite3_connect(world_db_path) as db_conn:
         cursor = db_conn.cursor()
         create_sound_and_heard_tables(cursor)
-        add_translate_rows_to_idea_csv_strs(cursor, x_csv_strs, ",")
+        add_jargon_rows_to_idea_csv_strs(cursor, x_csv_strs, ",")
     db_conn.close()
 
     return x_csv_strs

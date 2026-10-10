@@ -14,7 +14,7 @@ def get_keg_elements_sort_order() -> list[str]:
         "world_name",
         "brick_type",
         "source_dimen",
-        "translate_spark_num",
+        "jargon_spark_num",
         "spark_num",
         "spark_face",
         "spark_face_otx",

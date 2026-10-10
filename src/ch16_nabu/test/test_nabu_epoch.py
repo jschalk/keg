@@ -104,7 +104,7 @@ from pytest import raises as pytest_raises
 #     assert sue_timenabu.otx2inx == {500: 219}
 
 
-# def test_timenabu_shop_ReturnsObj_Scenario3_TranslateCoreAttrAreDefaultWhenGiven_float_nan():
+# def test_timenabu_shop_ReturnsObj_Scenario3_JargonCoreAttrAreDefaultWhenGiven_float_nan():
 #     # ESTABLISH
 #     spark7 = numpy_int64(7)
 #     sue_epoch_length = 123

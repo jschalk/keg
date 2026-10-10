@@ -1,4 +1,4 @@
-from ch18_db_tool.db_toolbox import (
+from ch19_db_tool.db_toolbox import (
     create_table2table_agg_insert_query,
     create_update_inconsistency_error_query,
 )
@@ -56,10 +56,10 @@ CREATE_NABTIME_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS nabu_timenum_s_a
 CREATE_NABTIME_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS nabu_timenum_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, moment_rope TEXT, otx_time INTEGER, inx_time INTEGER, error_message TEXT)"""
 CREATE_NABTIME_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS nabu_timenum_s_vld (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, otx_time INTEGER, inx_time INTEGER)"""
 CREATE_PRNAWAR_DEL_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_del_h_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, awardee_title_ERASE TEXT)"""
-CREATE_PRNAWAR_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_del_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, awardee_title_ERASE_otx TEXT, awardee_title_ERASE_inx TEXT)"""
+CREATE_PRNAWAR_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_del_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, awardee_title_ERASE_otx TEXT, awardee_title_ERASE_inx TEXT)"""
 CREATE_PRNAWAR_DEL_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_del_h_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, awardee_title_ERASE TEXT)"""
 CREATE_PRNAWAR_PUT_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_put_h_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, awardee_title TEXT, give_force REAL, take_force REAL, knot TEXT)"""
-CREATE_PRNAWAR_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_put_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, awardee_title_otx TEXT, awardee_title_inx TEXT, give_force REAL, take_force REAL, knot TEXT)"""
+CREATE_PRNAWAR_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_put_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, awardee_title_otx TEXT, awardee_title_inx TEXT, give_force REAL, take_force REAL, knot TEXT)"""
 CREATE_PRNAWAR_PUT_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_put_h_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, awardee_title TEXT, give_force REAL, take_force REAL, knot TEXT)"""
 CREATE_PRNAWAR_DEL_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_del_s_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, awardee_title_ERASE TEXT, error_message TEXT)"""
 CREATE_PRNAWAR_DEL_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_del_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, awardee_title_ERASE TEXT)"""
@@ -68,10 +68,10 @@ CREATE_PRNAWAR_PUT_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_
 CREATE_PRNAWAR_PUT_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_put_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, awardee_title TEXT, give_force REAL, take_force REAL, knot TEXT, error_message TEXT)"""
 CREATE_PRNAWAR_PUT_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_put_s_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, awardee_title TEXT, give_force REAL, take_force REAL, knot TEXT)"""
 CREATE_PRNCASE_DEL_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_del_h_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state_ERASE TEXT)"""
-CREATE_PRNCASE_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_del_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, reason_context_otx TEXT, reason_context_inx TEXT, reason_state_ERASE_otx TEXT, reason_state_ERASE_inx TEXT)"""
+CREATE_PRNCASE_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_del_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, reason_context_otx TEXT, reason_context_inx TEXT, reason_state_ERASE_otx TEXT, reason_state_ERASE_inx TEXT)"""
 CREATE_PRNCASE_DEL_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_del_h_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state_ERASE TEXT)"""
 CREATE_PRNCASE_PUT_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_put_h_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower_otx REAL, reason_lower_inx REAL, reason_upper_otx REAL, reason_upper_inx REAL, reason_divisor INTEGER, knot TEXT, context_plan_close REAL, context_plan_denom REAL, context_plan_morph REAL, inx_epoch_diff INTEGER)"""
-CREATE_PRNCASE_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_put_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, reason_context_otx TEXT, reason_context_inx TEXT, reason_state_otx TEXT, reason_state_inx TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, knot TEXT)"""
+CREATE_PRNCASE_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_put_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, reason_context_otx TEXT, reason_context_inx TEXT, reason_state_otx TEXT, reason_state_inx TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, knot TEXT)"""
 CREATE_PRNCASE_PUT_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_put_h_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, knot TEXT)"""
 CREATE_PRNCASE_DEL_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_del_s_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state_ERASE TEXT, error_message TEXT)"""
 CREATE_PRNCASE_DEL_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_del_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state_ERASE TEXT)"""
@@ -80,10 +80,10 @@ CREATE_PRNCASE_PUT_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_
 CREATE_PRNCASE_PUT_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_put_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, knot TEXT, error_message TEXT)"""
 CREATE_PRNCASE_PUT_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reason_caseunit_put_s_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, reason_state TEXT, reason_lower REAL, reason_upper REAL, reason_divisor INTEGER, knot TEXT)"""
 CREATE_PRNFACT_DEL_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_del_h_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, fact_context_ERASE TEXT)"""
-CREATE_PRNFACT_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_del_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, fact_context_ERASE_otx TEXT, fact_context_ERASE_inx TEXT)"""
+CREATE_PRNFACT_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_del_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, fact_context_ERASE_otx TEXT, fact_context_ERASE_inx TEXT)"""
 CREATE_PRNFACT_DEL_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_del_h_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, fact_context_ERASE TEXT)"""
 CREATE_PRNFACT_PUT_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_put_h_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower_otx REAL, fact_lower_inx REAL, fact_upper_otx REAL, fact_upper_inx REAL, knot TEXT, context_plan_close REAL, context_plan_denom REAL, context_plan_morph REAL, inx_epoch_diff INTEGER)"""
-CREATE_PRNFACT_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_put_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, fact_context_otx TEXT, fact_context_inx TEXT, fact_state_otx TEXT, fact_state_inx TEXT, fact_lower REAL, fact_upper REAL, knot TEXT)"""
+CREATE_PRNFACT_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_put_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, fact_context_otx TEXT, fact_context_inx TEXT, fact_state_otx TEXT, fact_state_inx TEXT, fact_lower REAL, fact_upper REAL, knot TEXT)"""
 CREATE_PRNFACT_PUT_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_put_h_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower REAL, fact_upper REAL, knot TEXT)"""
 CREATE_PRNFACT_DEL_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_del_s_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, fact_context_ERASE TEXT, error_message TEXT)"""
 CREATE_PRNFACT_DEL_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_del_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, fact_context_ERASE TEXT)"""
@@ -92,10 +92,10 @@ CREATE_PRNFACT_PUT_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_
 CREATE_PRNFACT_PUT_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_put_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower REAL, fact_upper REAL, knot TEXT, error_message TEXT)"""
 CREATE_PRNFACT_PUT_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_factunit_put_s_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, fact_context TEXT, fact_state TEXT, fact_lower REAL, fact_upper REAL, knot TEXT)"""
 CREATE_PRNHEAL_DEL_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_del_h_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, healer_name_ERASE TEXT)"""
-CREATE_PRNHEAL_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_del_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, healer_name_ERASE_otx TEXT, healer_name_ERASE_inx TEXT)"""
+CREATE_PRNHEAL_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_del_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, healer_name_ERASE_otx TEXT, healer_name_ERASE_inx TEXT)"""
 CREATE_PRNHEAL_DEL_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_del_h_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, healer_name_ERASE TEXT)"""
 CREATE_PRNHEAL_PUT_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_put_h_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT, knot TEXT)"""
-CREATE_PRNHEAL_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_put_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, healer_name_otx TEXT, healer_name_inx TEXT, knot TEXT)"""
+CREATE_PRNHEAL_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_put_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, healer_name_otx TEXT, healer_name_inx TEXT, knot TEXT)"""
 CREATE_PRNHEAL_PUT_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_put_h_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT, knot TEXT)"""
 CREATE_PRNHEAL_DEL_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_del_s_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, healer_name_ERASE TEXT, error_message TEXT)"""
 CREATE_PRNHEAL_DEL_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_del_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, healer_name_ERASE TEXT)"""
@@ -104,10 +104,10 @@ CREATE_PRNHEAL_PUT_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_
 CREATE_PRNHEAL_PUT_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_put_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT, knot TEXT, error_message TEXT)"""
 CREATE_PRNHEAL_PUT_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_healerunit_put_s_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, healer_name TEXT, knot TEXT)"""
 CREATE_PRNLABO_DEL_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_del_h_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, labor_title_ERASE TEXT)"""
-CREATE_PRNLABO_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_del_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, labor_title_ERASE_otx TEXT, labor_title_ERASE_inx TEXT)"""
+CREATE_PRNLABO_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_del_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, labor_title_ERASE_otx TEXT, labor_title_ERASE_inx TEXT)"""
 CREATE_PRNLABO_DEL_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_del_h_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, labor_title_ERASE TEXT)"""
 CREATE_PRNLABO_PUT_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_put_h_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, labor_title TEXT, solo INTEGER, knot TEXT)"""
-CREATE_PRNLABO_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_put_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, labor_title_otx TEXT, labor_title_inx TEXT, solo INTEGER, knot TEXT)"""
+CREATE_PRNLABO_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_put_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, labor_title_otx TEXT, labor_title_inx TEXT, solo INTEGER, knot TEXT)"""
 CREATE_PRNLABO_PUT_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_put_h_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, labor_title TEXT, solo INTEGER, knot TEXT)"""
 CREATE_PRNLABO_DEL_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_del_s_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, labor_title_ERASE TEXT, error_message TEXT)"""
 CREATE_PRNLABO_DEL_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_del_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, labor_title_ERASE TEXT)"""
@@ -116,10 +116,10 @@ CREATE_PRNLABO_PUT_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_
 CREATE_PRNLABO_PUT_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_put_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, labor_title TEXT, solo INTEGER, knot TEXT, error_message TEXT)"""
 CREATE_PRNLABO_PUT_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_laborunit_put_s_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, labor_title TEXT, solo INTEGER, knot TEXT)"""
 CREATE_PRNMEMB_DEL_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contact_membership_del_h_agg (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, contact_name TEXT, group_title_ERASE TEXT)"""
-CREATE_PRNMEMB_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contact_membership_del_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, contact_name_otx TEXT, contact_name_inx TEXT, group_title_ERASE_otx TEXT, group_title_ERASE_inx TEXT)"""
+CREATE_PRNMEMB_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contact_membership_del_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, contact_name_otx TEXT, contact_name_inx TEXT, group_title_ERASE_otx TEXT, group_title_ERASE_inx TEXT)"""
 CREATE_PRNMEMB_DEL_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contact_membership_del_h_vld (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, contact_name TEXT, group_title_ERASE TEXT)"""
 CREATE_PRNMEMB_PUT_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contact_membership_put_h_agg (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, contact_name TEXT, group_title TEXT, group_cred_mass REAL, group_debt_mass REAL, knot TEXT)"""
-CREATE_PRNMEMB_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contact_membership_put_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, contact_name_otx TEXT, contact_name_inx TEXT, group_title_otx TEXT, group_title_inx TEXT, group_cred_mass REAL, group_debt_mass REAL, knot TEXT)"""
+CREATE_PRNMEMB_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contact_membership_put_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, contact_name_otx TEXT, contact_name_inx TEXT, group_title_otx TEXT, group_title_inx TEXT, group_cred_mass REAL, group_debt_mass REAL, knot TEXT)"""
 CREATE_PRNMEMB_PUT_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contact_membership_put_h_vld (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, contact_name TEXT, group_title TEXT, group_cred_mass REAL, group_debt_mass REAL, knot TEXT)"""
 CREATE_PRNMEMB_DEL_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contact_membership_del_s_agg (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, contact_name TEXT, group_title_ERASE TEXT, error_message TEXT)"""
 CREATE_PRNMEMB_DEL_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contact_membership_del_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, contact_name TEXT, group_title_ERASE TEXT)"""
@@ -128,10 +128,10 @@ CREATE_PRNMEMB_PUT_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_conta
 CREATE_PRNMEMB_PUT_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contact_membership_put_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, contact_name TEXT, group_title TEXT, group_cred_mass REAL, group_debt_mass REAL, knot TEXT, error_message TEXT)"""
 CREATE_PRNMEMB_PUT_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contact_membership_put_s_vld (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, contact_name TEXT, group_title TEXT, group_cred_mass REAL, group_debt_mass REAL, knot TEXT)"""
 CREATE_PRNPLAN_DEL_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_del_h_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope_ERASE TEXT)"""
-CREATE_PRNPLAN_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_del_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_ERASE_otx TEXT, plan_rope_ERASE_inx TEXT)"""
+CREATE_PRNPLAN_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_del_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_ERASE_otx TEXT, plan_rope_ERASE_inx TEXT)"""
 CREATE_PRNPLAN_DEL_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_del_h_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope_ERASE TEXT)"""
 CREATE_PRNPLAN_PUT_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_put_h_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, poynt INTEGER, pledge INTEGER, problem_bool INTEGER, knot TEXT)"""
-CREATE_PRNPLAN_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_put_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, poynt INTEGER, pledge INTEGER, problem_bool INTEGER, knot TEXT)"""
+CREATE_PRNPLAN_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_put_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, poynt INTEGER, pledge INTEGER, problem_bool INTEGER, knot TEXT)"""
 CREATE_PRNPLAN_PUT_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_put_h_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, poynt INTEGER, pledge INTEGER, problem_bool INTEGER, knot TEXT)"""
 CREATE_PRNPLAN_DEL_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_del_s_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope_ERASE TEXT, error_message TEXT)"""
 CREATE_PRNPLAN_DEL_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_del_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope_ERASE TEXT)"""
@@ -140,10 +140,10 @@ CREATE_PRNPLAN_PUT_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planu
 CREATE_PRNPLAN_PUT_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_put_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, poynt INTEGER, pledge INTEGER, problem_bool INTEGER, knot TEXT, error_message TEXT)"""
 CREATE_PRNPLAN_PUT_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_planunit_put_s_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, begin REAL, close REAL, addin REAL, numor INTEGER, denom INTEGER, morph INTEGER, gogo_want REAL, stop_want REAL, poynt INTEGER, pledge INTEGER, problem_bool INTEGER, knot TEXT)"""
 CREATE_PRNCONT_DEL_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contactunit_del_h_agg (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, contact_name_ERASE TEXT)"""
-CREATE_PRNCONT_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contactunit_del_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, contact_name_ERASE_otx TEXT, contact_name_ERASE_inx TEXT)"""
+CREATE_PRNCONT_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contactunit_del_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, contact_name_ERASE_otx TEXT, contact_name_ERASE_inx TEXT)"""
 CREATE_PRNCONT_DEL_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contactunit_del_h_vld (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, contact_name_ERASE TEXT)"""
 CREATE_PRNCONT_PUT_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contactunit_put_h_agg (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, contact_name TEXT, contact_cred_mass REAL, contact_debt_mass REAL, knot TEXT)"""
-CREATE_PRNCONT_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contactunit_put_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, contact_name_otx TEXT, contact_name_inx TEXT, contact_cred_mass REAL, contact_debt_mass REAL, knot TEXT)"""
+CREATE_PRNCONT_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contactunit_put_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, contact_name_otx TEXT, contact_name_inx TEXT, contact_cred_mass REAL, contact_debt_mass REAL, knot TEXT)"""
 CREATE_PRNCONT_PUT_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contactunit_put_h_vld (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, contact_name TEXT, contact_cred_mass REAL, contact_debt_mass REAL, knot TEXT)"""
 CREATE_PRNCONT_DEL_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contactunit_del_s_agg (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, contact_name_ERASE TEXT, error_message TEXT)"""
 CREATE_PRNCONT_DEL_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contactunit_del_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, contact_name_ERASE TEXT)"""
@@ -152,10 +152,10 @@ CREATE_PRNCONT_PUT_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_conta
 CREATE_PRNCONT_PUT_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contactunit_put_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, contact_name TEXT, contact_cred_mass REAL, contact_debt_mass REAL, knot TEXT, error_message TEXT)"""
 CREATE_PRNCONT_PUT_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_contactunit_put_s_vld (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, contact_name TEXT, contact_cred_mass REAL, contact_debt_mass REAL, knot TEXT)"""
 CREATE_PRNREAS_DEL_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_del_h_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, reason_context_ERASE TEXT)"""
-CREATE_PRNREAS_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_del_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, reason_context_ERASE_otx TEXT, reason_context_ERASE_inx TEXT)"""
+CREATE_PRNREAS_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_del_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, reason_context_ERASE_otx TEXT, reason_context_ERASE_inx TEXT)"""
 CREATE_PRNREAS_DEL_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_del_h_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, reason_context_ERASE TEXT)"""
 CREATE_PRNREAS_PUT_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_put_h_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, active_requisite INTEGER, knot TEXT)"""
-CREATE_PRNREAS_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_put_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, reason_context_otx TEXT, reason_context_inx TEXT, active_requisite INTEGER, knot TEXT)"""
+CREATE_PRNREAS_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_put_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, reason_context_otx TEXT, reason_context_inx TEXT, active_requisite INTEGER, knot TEXT)"""
 CREATE_PRNREAS_PUT_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_put_h_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, active_requisite INTEGER, knot TEXT)"""
 CREATE_PRNREAS_DEL_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_del_s_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, reason_context_ERASE TEXT, error_message TEXT)"""
 CREATE_PRNREAS_DEL_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_del_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, reason_context_ERASE TEXT)"""
@@ -164,10 +164,10 @@ CREATE_PRNREAS_PUT_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_
 CREATE_PRNREAS_PUT_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_put_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, active_requisite INTEGER, knot TEXT, error_message TEXT)"""
 CREATE_PRNREAS_PUT_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_reasonunit_put_s_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, reason_context TEXT, active_requisite INTEGER, knot TEXT)"""
 CREATE_PRNUNIT_DEL_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_del_h_agg (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name_ERASE TEXT)"""
-CREATE_PRNUNIT_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_del_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_ERASE_otx TEXT, person_name_ERASE_inx TEXT)"""
+CREATE_PRNUNIT_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_del_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_ERASE_otx TEXT, person_name_ERASE_inx TEXT)"""
 CREATE_PRNUNIT_DEL_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_del_h_vld (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name_ERASE TEXT)"""
 CREATE_PRNUNIT_PUT_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_put_h_agg (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT)"""
-CREATE_PRNUNIT_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_put_h_raw (translate_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT)"""
+CREATE_PRNUNIT_PUT_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_put_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT)"""
 CREATE_PRNUNIT_PUT_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_put_h_vld (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT)"""
 CREATE_PRNUNIT_DEL_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_del_s_agg (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name_ERASE TEXT, error_message TEXT)"""
 CREATE_PRNUNIT_DEL_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_del_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name_ERASE TEXT)"""
@@ -175,21 +175,21 @@ CREATE_PRNUNIT_DEL_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_d
 CREATE_PRNUNIT_PUT_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_put_s_agg (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT, error_message TEXT)"""
 CREATE_PRNUNIT_PUT_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_put_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT, error_message TEXT)"""
 CREATE_PRNUNIT_PUT_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS personunit_put_s_vld (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, person_name TEXT, credor_respect REAL, debtor_respect REAL, fund_pool REAL, max_tree_traverse INTEGER, fund_grain REAL, mana_grain REAL, respect_grain REAL, knot TEXT)"""
-CREATE_TRLCORE_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS translate_core_s_agg (spark_face TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT)"""
-CREATE_TRLCORE_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS translate_core_s_raw (source_dimen TEXT, spark_face TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT, error_message TEXT)"""
-CREATE_TRLCORE_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS translate_core_s_vld (spark_face TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT)"""
-CREATE_TRLLABE_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS translate_label_s_agg (spark_num INTEGER, spark_face TEXT, otx_label TEXT, inx_label TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT, error_message TEXT)"""
-CREATE_TRLLABE_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS translate_label_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, otx_label TEXT, inx_label TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT, error_message TEXT)"""
-CREATE_TRLLABE_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS translate_label_s_vld (spark_num INTEGER, spark_face TEXT, otx_label TEXT, inx_label TEXT)"""
-CREATE_TRLNAME_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS translate_name_s_agg (spark_num INTEGER, spark_face TEXT, otx_name TEXT, inx_name TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT, error_message TEXT)"""
-CREATE_TRLNAME_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS translate_name_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, otx_name TEXT, inx_name TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT, error_message TEXT)"""
-CREATE_TRLNAME_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS translate_name_s_vld (spark_num INTEGER, spark_face TEXT, otx_name TEXT, inx_name TEXT)"""
-CREATE_TRLROPE_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS translate_rope_s_agg (spark_num INTEGER, spark_face TEXT, otx_rope TEXT, inx_rope TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT, error_message TEXT)"""
-CREATE_TRLROPE_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS translate_rope_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, otx_rope TEXT, inx_rope TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT, error_message TEXT)"""
-CREATE_TRLROPE_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS translate_rope_s_vld (spark_num INTEGER, spark_face TEXT, otx_rope TEXT, inx_rope TEXT)"""
-CREATE_TRLTITL_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS translate_title_s_agg (spark_num INTEGER, spark_face TEXT, otx_title TEXT, inx_title TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT, error_message TEXT)"""
-CREATE_TRLTITL_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS translate_title_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, otx_title TEXT, inx_title TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT, error_message TEXT)"""
-CREATE_TRLTITL_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS translate_title_s_vld (spark_num INTEGER, spark_face TEXT, otx_title TEXT, inx_title TEXT)"""
+CREATE_TRLCORE_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS jargon_core_s_agg (spark_face TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT)"""
+CREATE_TRLCORE_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS jargon_core_s_raw (source_dimen TEXT, spark_face TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT, error_message TEXT)"""
+CREATE_TRLCORE_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS jargon_core_s_vld (spark_face TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT)"""
+CREATE_TRLLABE_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS jargon_label_s_agg (spark_num INTEGER, spark_face TEXT, otx_label TEXT, inx_label TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT, error_message TEXT)"""
+CREATE_TRLLABE_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS jargon_label_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, otx_label TEXT, inx_label TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT, error_message TEXT)"""
+CREATE_TRLLABE_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS jargon_label_s_vld (spark_num INTEGER, spark_face TEXT, otx_label TEXT, inx_label TEXT)"""
+CREATE_TRLNAME_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS jargon_name_s_agg (spark_num INTEGER, spark_face TEXT, otx_name TEXT, inx_name TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT, error_message TEXT)"""
+CREATE_TRLNAME_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS jargon_name_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, otx_name TEXT, inx_name TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT, error_message TEXT)"""
+CREATE_TRLNAME_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS jargon_name_s_vld (spark_num INTEGER, spark_face TEXT, otx_name TEXT, inx_name TEXT)"""
+CREATE_TRLROPE_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS jargon_rope_s_agg (spark_num INTEGER, spark_face TEXT, otx_rope TEXT, inx_rope TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT, error_message TEXT)"""
+CREATE_TRLROPE_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS jargon_rope_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, otx_rope TEXT, inx_rope TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT, error_message TEXT)"""
+CREATE_TRLROPE_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS jargon_rope_s_vld (spark_num INTEGER, spark_face TEXT, otx_rope TEXT, inx_rope TEXT)"""
+CREATE_TRLTITL_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS jargon_title_s_agg (spark_num INTEGER, spark_face TEXT, otx_title TEXT, inx_title TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT, error_message TEXT)"""
+CREATE_TRLTITL_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS jargon_title_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, otx_title TEXT, inx_title TEXT, otx_knot TEXT, inx_knot TEXT, unknown_str TEXT, error_message TEXT)"""
+CREATE_TRLTITL_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS jargon_title_s_vld (spark_num INTEGER, spark_face TEXT, otx_title TEXT, inx_title TEXT)"""
 
 
 def get_prime_create_table_sqlstrs() -> dict[str, str]:
@@ -361,21 +361,21 @@ def get_prime_create_table_sqlstrs() -> dict[str, str]:
         "nabu_timenum_s_agg": CREATE_NABTIME_SOUND_AGG_SQLSTR,
         "nabu_timenum_s_raw": CREATE_NABTIME_SOUND_RAW_SQLSTR,
         "nabu_timenum_s_vld": CREATE_NABTIME_SOUND_VLD_SQLSTR,
-        "translate_core_s_agg": CREATE_TRLCORE_SOUND_AGG_SQLSTR,
-        "translate_core_s_raw": CREATE_TRLCORE_SOUND_RAW_SQLSTR,
-        "translate_core_s_vld": CREATE_TRLCORE_SOUND_VLD_SQLSTR,
-        "translate_label_s_agg": CREATE_TRLLABE_SOUND_AGG_SQLSTR,
-        "translate_label_s_raw": CREATE_TRLLABE_SOUND_RAW_SQLSTR,
-        "translate_label_s_vld": CREATE_TRLLABE_SOUND_VLD_SQLSTR,
-        "translate_name_s_agg": CREATE_TRLNAME_SOUND_AGG_SQLSTR,
-        "translate_name_s_raw": CREATE_TRLNAME_SOUND_RAW_SQLSTR,
-        "translate_name_s_vld": CREATE_TRLNAME_SOUND_VLD_SQLSTR,
-        "translate_rope_s_agg": CREATE_TRLROPE_SOUND_AGG_SQLSTR,
-        "translate_rope_s_raw": CREATE_TRLROPE_SOUND_RAW_SQLSTR,
-        "translate_rope_s_vld": CREATE_TRLROPE_SOUND_VLD_SQLSTR,
-        "translate_title_s_agg": CREATE_TRLTITL_SOUND_AGG_SQLSTR,
-        "translate_title_s_raw": CREATE_TRLTITL_SOUND_RAW_SQLSTR,
-        "translate_title_s_vld": CREATE_TRLTITL_SOUND_VLD_SQLSTR,
+        "jargon_core_s_agg": CREATE_TRLCORE_SOUND_AGG_SQLSTR,
+        "jargon_core_s_raw": CREATE_TRLCORE_SOUND_RAW_SQLSTR,
+        "jargon_core_s_vld": CREATE_TRLCORE_SOUND_VLD_SQLSTR,
+        "jargon_label_s_agg": CREATE_TRLLABE_SOUND_AGG_SQLSTR,
+        "jargon_label_s_raw": CREATE_TRLLABE_SOUND_RAW_SQLSTR,
+        "jargon_label_s_vld": CREATE_TRLLABE_SOUND_VLD_SQLSTR,
+        "jargon_name_s_agg": CREATE_TRLNAME_SOUND_AGG_SQLSTR,
+        "jargon_name_s_raw": CREATE_TRLNAME_SOUND_RAW_SQLSTR,
+        "jargon_name_s_vld": CREATE_TRLNAME_SOUND_VLD_SQLSTR,
+        "jargon_rope_s_agg": CREATE_TRLROPE_SOUND_AGG_SQLSTR,
+        "jargon_rope_s_raw": CREATE_TRLROPE_SOUND_RAW_SQLSTR,
+        "jargon_rope_s_vld": CREATE_TRLROPE_SOUND_VLD_SQLSTR,
+        "jargon_title_s_agg": CREATE_TRLTITL_SOUND_AGG_SQLSTR,
+        "jargon_title_s_raw": CREATE_TRLTITL_SOUND_RAW_SQLSTR,
+        "jargon_title_s_vld": CREATE_TRLTITL_SOUND_VLD_SQLSTR,
     }
 
 
@@ -493,7 +493,7 @@ def create_sound_agg_insert_sqlstrs(
         raw_tablename = create_prime_tablename(dimen, "s_raw")
         agg_tablename = create_prime_tablename(dimen, "s_agg")
 
-    translate_moment_person_put_sqlstr = create_table2table_agg_insert_query(
+    jargon_moment_person_put_sqlstr = create_table2table_agg_insert_query(
         conn_or_cursor,
         src_table=raw_tablename,
         dst_table=agg_tablename,
@@ -501,7 +501,7 @@ def create_sound_agg_insert_sqlstrs(
         exclude_cols=exclude_cols,
         where_block="WHERE error_message IS NULL",
     )
-    sqlstrs = [translate_moment_person_put_sqlstr]
+    sqlstrs = [jargon_moment_person_put_sqlstr]
     if dimen.lower().startswith("person"):
         del_raw_tablename = create_prime_tablename(dimen, "s_raw", "del")
         del_agg_tablename = create_prime_tablename(dimen, "s_agg", "del")
@@ -521,58 +521,58 @@ def create_sound_agg_insert_sqlstrs(
     return sqlstrs
 
 
-def create_insert_into_translate_core_raw_sqlstr(dimen: str) -> str:
-    translate_core_s_raw_tablename = create_prime_tablename("trlcore", "s_raw")
-    translate_s_agg_tablename = create_prime_tablename(dimen, "s_agg")
-    return f"""INSERT INTO {translate_core_s_raw_tablename} (source_dimen, spark_face, otx_knot, inx_knot, unknown_str)
-SELECT '{translate_s_agg_tablename}', spark_face, otx_knot, inx_knot, unknown_str
-FROM {translate_s_agg_tablename}
+def create_insert_into_jargon_core_raw_sqlstr(dimen: str) -> str:
+    jargon_core_s_raw_tablename = create_prime_tablename("trlcore", "s_raw")
+    jargon_s_agg_tablename = create_prime_tablename(dimen, "s_agg")
+    return f"""INSERT INTO {jargon_core_s_raw_tablename} (source_dimen, spark_face, otx_knot, inx_knot, unknown_str)
+SELECT '{jargon_s_agg_tablename}', spark_face, otx_knot, inx_knot, unknown_str
+FROM {jargon_s_agg_tablename}
 GROUP BY spark_face, otx_knot, inx_knot, unknown_str
 ;
 """
 
 
-def create_insert_translate_core_agg_into_vld_sqlstr(
+def create_insert_jargon_core_agg_into_vld_sqlstr(
     default_knot: KnotTerm, default_unknown: str
 ):
-    return f"""INSERT INTO translate_core_s_vld (spark_face, otx_knot, inx_knot, unknown_str)
+    return f"""INSERT INTO jargon_core_s_vld (spark_face, otx_knot, inx_knot, unknown_str)
 SELECT
   spark_face
 , IFNULL(otx_knot, '{default_knot}')
 , IFNULL(inx_knot, '{default_knot}')
 , IFNULL(unknown_str, '{default_unknown}')
-FROM translate_core_s_agg
+FROM jargon_core_s_agg
 ;
 """
 
 
-def create_insert_missing_spark_face_into_translate_core_vld_sqlstr(
+def create_insert_missing_spark_face_into_jargon_core_vld_sqlstr(
     default_knot: KnotTerm, default_unknown: str, moment_person_sound_agg_tablename: str
 ):
-    return f"""INSERT INTO translate_core_s_vld (spark_face, otx_knot, inx_knot, unknown_str)
+    return f"""INSERT INTO jargon_core_s_vld (spark_face, otx_knot, inx_knot, unknown_str)
 SELECT
   {moment_person_sound_agg_tablename}.spark_face
 , '{default_knot}'
 , '{default_knot}'
 , '{default_unknown}'
 FROM {moment_person_sound_agg_tablename} 
-LEFT JOIN translate_core_s_vld ON translate_core_s_vld.spark_face = {moment_person_sound_agg_tablename}.spark_face
-WHERE translate_core_s_vld.spark_face IS NULL
+LEFT JOIN jargon_core_s_vld ON jargon_core_s_vld.spark_face = {moment_person_sound_agg_tablename}.spark_face
+WHERE jargon_core_s_vld.spark_face IS NULL
 GROUP BY {moment_person_sound_agg_tablename}.spark_face
 ;
 """
 
 
-def create_update_translate_sound_agg_inconsist_sqlstr(dimen: str) -> str:
-    translate_core_s_vld_tablename = create_prime_tablename("trlcore", "s_vld")
-    translate_s_agg_tablename = create_prime_tablename(dimen, "s_agg")
-    return f"""UPDATE {translate_s_agg_tablename}
-SET error_message = 'Inconsistent translate core data'
+def create_update_jargon_sound_agg_inconsist_sqlstr(dimen: str) -> str:
+    jargon_core_s_vld_tablename = create_prime_tablename("trlcore", "s_vld")
+    jargon_s_agg_tablename = create_prime_tablename(dimen, "s_agg")
+    return f"""UPDATE {jargon_s_agg_tablename}
+SET error_message = 'Inconsistent jargon core data'
 WHERE spark_face IN (
-    SELECT {translate_s_agg_tablename}.spark_face
-    FROM {translate_s_agg_tablename} 
-    LEFT JOIN {translate_core_s_vld_tablename} ON {translate_core_s_vld_tablename}.spark_face = {translate_s_agg_tablename}.spark_face
-    WHERE {translate_core_s_vld_tablename}.spark_face IS NULL
+    SELECT {jargon_s_agg_tablename}.spark_face
+    FROM {jargon_s_agg_tablename} 
+    LEFT JOIN {jargon_core_s_vld_tablename} ON {jargon_core_s_vld_tablename}.spark_face = {jargon_s_agg_tablename}.spark_face
+    WHERE {jargon_core_s_vld_tablename}.spark_face IS NULL
 )
 ;
 """
@@ -647,21 +647,21 @@ WHERE rowid IN (
 """
 
 
-def create_insert_translate_sound_vld_table_sqlstr(dimen: str) -> str:
-    translate_s_agg_tablename = create_prime_tablename(dimen, "s_agg")
-    translate_s_vld_tablename = create_prime_tablename(dimen, "s_vld")
+def create_insert_jargon_sound_vld_table_sqlstr(dimen: str) -> str:
+    jargon_s_agg_tablename = create_prime_tablename(dimen, "s_agg")
+    jargon_s_vld_tablename = create_prime_tablename(dimen, "s_vld")
     dimen_otx_inx_obj_names = {
-        "translate_name": "name",
-        "translate_title": "title",
-        "translate_label": "label",
-        "translate_rope": "rope",
+        "jargon_name": "name",
+        "jargon_title": "title",
+        "jargon_label": "label",
+        "jargon_rope": "rope",
     }
     otx_str = f"otx_{dimen_otx_inx_obj_names.get(dimen, dimen)}"
     inx_str = f"inx_{dimen_otx_inx_obj_names.get(dimen, dimen)}"
     return f"""
-INSERT INTO {translate_s_vld_tablename} (spark_num, spark_face, {otx_str}, {inx_str})
+INSERT INTO {jargon_s_vld_tablename} (spark_num, spark_face, {otx_str}, {inx_str})
 SELECT spark_num, spark_face, MAX({otx_str}), MAX({inx_str})
-FROM {translate_s_agg_tablename}
+FROM {jargon_s_agg_tablename}
 WHERE error_message IS NULL
 GROUP BY spark_num, spark_face
 ;
@@ -828,7 +828,7 @@ def get_insert_into_heard_raw_sqlstrs() -> dict[str, str]:
 
 
 def create_update_heard_raw_existing_inx_col_sqlstr(
-    translate_type_abbv: str, table: str, column_prefix: str
+    jargon_type_abbv: str, table: str, column_prefix: str
 ) -> str:
     return f"""
 WITH trl_face_otx_spark AS (
@@ -837,10 +837,10 @@ WITH trl_face_otx_spark AS (
     , raw_dim.spark_num
     , raw_dim.spark_face_otx
     , raw_dim.{column_prefix}_otx
-    , MAX(trl.spark_num) translate_spark_num
+    , MAX(trl.spark_num) jargon_spark_num
     FROM {table} raw_dim
-    LEFT JOIN translate_{translate_type_abbv}_s_vld trl ON trl.spark_face = raw_dim.spark_face_otx
-        AND trl.otx_{translate_type_abbv} = raw_dim.{column_prefix}_otx
+    LEFT JOIN jargon_{jargon_type_abbv}_s_vld trl ON trl.spark_face = raw_dim.spark_face_otx
+        AND trl.otx_{jargon_type_abbv} = raw_dim.{column_prefix}_otx
         AND raw_dim.spark_num >= trl.spark_num
     GROUP BY 
       raw_dim.rowid
@@ -849,16 +849,16 @@ WITH trl_face_otx_spark AS (
     , raw_dim.{column_prefix}_otx
 ),
 trl_inx_strs AS (
-    SELECT trl_foe.raw_rowid, trl_vld.inx_{translate_type_abbv}
+    SELECT trl_foe.raw_rowid, trl_vld.inx_{jargon_type_abbv}
     FROM trl_face_otx_spark trl_foe
-    LEFT JOIN translate_{translate_type_abbv}_s_vld trl_vld
+    LEFT JOIN jargon_{jargon_type_abbv}_s_vld trl_vld
         ON trl_vld.spark_face = trl_foe.spark_face_otx
-        AND trl_vld.otx_{translate_type_abbv} = trl_foe.{column_prefix}_otx
-        AND trl_vld.spark_num = trl_foe.translate_spark_num
+        AND trl_vld.otx_{jargon_type_abbv} = trl_foe.{column_prefix}_otx
+        AND trl_vld.spark_num = trl_foe.jargon_spark_num
 )
 UPDATE {table} as dim_h_raw
 SET {column_prefix}_inx = (
-    SELECT trl_inx_strs.inx_{translate_type_abbv}
+    SELECT trl_inx_strs.inx_{jargon_type_abbv}
     FROM trl_inx_strs
     WHERE dim_h_raw.rowid = trl_inx_strs.raw_rowid
 )

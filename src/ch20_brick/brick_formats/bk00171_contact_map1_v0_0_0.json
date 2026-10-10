@@ -9,5 +9,5 @@
     "spark_num"   : { "otx_key": true  }
   }, 
   "brick_type": "bk00171", 
-  "dimens": ["translate_name", "person_contactunit", "momentunit", "personunit"]
+  "dimens": ["jargon_name", "person_contactunit", "momentunit", "personunit"]
 }

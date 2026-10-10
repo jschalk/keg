@@ -1,7 +1,0 @@
-{
-  "chapter_blurb": "Creates helper tools for database admin.", 
-  "chapter_content": "Create some standard tools for creating sqlite sql statements. Some are complicated.", 
-  "chapter_description": "ch18_db_tool", 
-  "chapter_number": 18, 
-  "ontology summary": "Beginning of a mapping from objects to relational databases."
-}

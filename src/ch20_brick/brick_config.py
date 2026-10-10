@@ -1,5 +1,5 @@
 from ch00_py.file_toolbox import create_path, get_json_filename, open_json
-from ch18_db_tool.db_toolbox import get_sorted_cols_only_list
+from ch19_db_tool.db_toolbox import get_sorted_cols_only_list
 from ch99_glossary.sorter import get_keg_elements_sort_order
 from enum import Enum
 from os.path import exists as os_path_exists, join as os_path_join
@@ -247,7 +247,7 @@ def get_brick_sqlite_types() -> dict[str, str]:
         "tran_time": "INTEGER",
         "tran_time_inx": "INTEGER",
         "tran_time_otx": "INTEGER",
-        "translate_spark_num": "INTEGER",
+        "jargon_spark_num": "INTEGER",
         "tree_level": "INTEGER",
         "tree_traverse_count": "INTEGER",
         "unknown_str": "TEXT",
@@ -290,10 +290,10 @@ class BrickFormatsEnum(str, Enum):
     bk00129_personunit_v0_0_0 = "bk00129_personunit_v0_0_0"
     bk00136_problem_healer_v0_0_0 = "bk00136_problem_healer_v0_0_0"
     bk00140_map_otx2inx_v0_0_0 = "bk00140_map_otx2inx_v0_0_0"
-    bk00142_translate_title_v0_0_0 = "bk00142_translate_title_v0_0_0"
-    bk00143_translate_name_v0_0_0 = "bk00143_translate_name_v0_0_0"
-    bk00144_translate_label_v0_0_0 = "bk00144_translate_label_v0_0_0"
-    bk00145_translate_rope_v0_0_0 = "bk00145_translate_rope_v0_0_0"
+    bk00142_jargon_title_v0_0_0 = "bk00142_jargon_title_v0_0_0"
+    bk00143_jargon_name_v0_0_0 = "bk00143_jargon_name_v0_0_0"
+    bk00144_jargon_label_v0_0_0 = "bk00144_jargon_label_v0_0_0"
+    bk00145_jargon_rope_v0_0_0 = "bk00145_jargon_rope_v0_0_0"
     bk00150_delete_person_contact_membership_v0_0_0 = (
         "bk00150_delete_person_contact_membership_v0_0_0"
     )
@@ -357,10 +357,10 @@ def get_brick_format_filenames() -> set[str]:
         ifx.bk00128_person_planunit_v0_0_0,
         ifx.bk00129_personunit_v0_0_0,
         ifx.bk00136_problem_healer_v0_0_0,
-        ifx.bk00142_translate_title_v0_0_0,
-        ifx.bk00143_translate_name_v0_0_0,
-        ifx.bk00144_translate_label_v0_0_0,
-        ifx.bk00145_translate_rope_v0_0_0,
+        ifx.bk00142_jargon_title_v0_0_0,
+        ifx.bk00143_jargon_name_v0_0_0,
+        ifx.bk00144_jargon_label_v0_0_0,
+        ifx.bk00145_jargon_rope_v0_0_0,
         ifx.bk00150_delete_person_contact_membership_v0_0_0,
         ifx.bk00151_delete_person_contactunit_v0_0_0,
         ifx.bk00152_delete_person_plan_awardunit_v0_0_0,
@@ -461,10 +461,10 @@ def get_brick_format_headers() -> dict[str, list[str]]:
         "person_name,plan_rope,begin,close,addin,numor,denom,morph,gogo_want,stop_want,poynt,pledge,problem_bool,knot": ifx.bk00128_person_planunit_v0_0_0,
         "moment_rope,person_name,credor_respect,debtor_respect,fund_pool,max_tree_traverse,fund_grain,mana_grain,respect_grain,knot": ifx.bk00129_personunit_v0_0_0,
         "moment_rope,person_name,plan_rope,healer_name,problem_bool": ifx.bk00136_problem_healer_v0_0_0,
-        "otx_title,inx_title,otx_knot,inx_knot,unknown_str": ifx.bk00142_translate_title_v0_0_0,
-        "otx_name,inx_name,otx_knot,inx_knot,unknown_str": ifx.bk00143_translate_name_v0_0_0,
-        "otx_label,inx_label,otx_knot,inx_knot,unknown_str": ifx.bk00144_translate_label_v0_0_0,
-        "otx_rope,inx_rope,otx_knot,inx_knot,unknown_str": ifx.bk00145_translate_rope_v0_0_0,
+        "otx_title,inx_title,otx_knot,inx_knot,unknown_str": ifx.bk00142_jargon_title_v0_0_0,
+        "otx_name,inx_name,otx_knot,inx_knot,unknown_str": ifx.bk00143_jargon_name_v0_0_0,
+        "otx_label,inx_label,otx_knot,inx_knot,unknown_str": ifx.bk00144_jargon_label_v0_0_0,
+        "otx_rope,inx_rope,otx_knot,inx_knot,unknown_str": ifx.bk00145_jargon_rope_v0_0_0,
         "moment_rope,person_name,contact_name,group_title_ERASE": ifx.bk00150_delete_person_contact_membership_v0_0_0,
         "moment_rope,person_name,contact_name_ERASE": ifx.bk00151_delete_person_contactunit_v0_0_0,
         "person_name,plan_rope,awardee_title_ERASE": ifx.bk00152_delete_person_plan_awardunit_v0_0_0,
@@ -603,10 +603,10 @@ def get_brick_dimen_ref() -> dict[str, set[str]]:
             "bk00173",
             "bk00174",
         },
-        "translate_label": {"bk00144", "bk00173"},
-        "translate_name": {"bk00143", "bk00171"},
-        "translate_rope": {"bk00145", "bk00174"},
-        "translate_title": {"bk00142", "bk00172"},
+        "jargon_label": {"bk00144", "bk00173"},
+        "jargon_name": {"bk00143", "bk00171"},
+        "jargon_rope": {"bk00145", "bk00174"},
+        "jargon_title": {"bk00142", "bk00172"},
     }
 
 
@@ -642,10 +642,10 @@ def get_dimen_minimum_put_brick_names() -> dict[str, str]:
         "person_plan_reasonunit": ifx.bk00127_person_plan_reasonunit_v0_0_0,
         "person_planunit": ifx.bk00128_person_planunit_v0_0_0,
         "personunit": ifx.bk00129_personunit_v0_0_0,
-        "translate_label": ifx.bk00144_translate_label_v0_0_0,
-        "translate_name": ifx.bk00143_translate_name_v0_0_0,
-        "translate_title": ifx.bk00142_translate_title_v0_0_0,
-        "translate_rope": ifx.bk00145_translate_rope_v0_0_0,
+        "jargon_label": ifx.bk00144_jargon_label_v0_0_0,
+        "jargon_name": ifx.bk00143_jargon_name_v0_0_0,
+        "jargon_title": ifx.bk00142_jargon_title_v0_0_0,
+        "jargon_rope": ifx.bk00145_jargon_rope_v0_0_0,
     }
 
 

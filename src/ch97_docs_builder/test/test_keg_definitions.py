@@ -13,9 +13,9 @@ from ch12_bud.cell_main import cellunit_shop
 from ch14_time.epoch_main import get_c400_constants, get_default_epoch_config_dict
 from ch15_moment.moment_config import get_moment_config_args
 from ch16_nabu.nabu_config import get_nabu_args, get_nabuable_args
-from ch17_translate.translate_config import (
-    get_translate_config_args,
-    get_translate_config_dict,
+from ch17_jargon.jargon_config import (
+    get_jargon_config_args,
+    get_jargon_config_dict,
 )
 from ch20_brick.brick_config import get_brick_config_dict
 from ch22_etl_config.etl_config import get_etl_stage_types_config_dict
@@ -293,10 +293,10 @@ def test_get_keywords_definitions_ReturnsObj_CheckConfigArgs():
     contact_args = get_person_dimen_config(kw.person_contactunit)
     member_args = get_person_dimen_config(kw.person_contact_membership)
 
-    trllabe_args = get_translate_config_args(kw.translate_label)
-    trlname_args = get_translate_config_args(kw.translate_name)
-    trlrope_args = get_translate_config_args(kw.translate_rope)
-    trltitl_args = get_translate_config_args(kw.translate_title)
+    trllabe_args = get_jargon_config_args(kw.jargon_label)
+    trlname_args = get_jargon_config_args(kw.jargon_name)
+    trlrope_args = get_jargon_config_args(kw.jargon_rope)
+    trltitl_args = get_jargon_config_args(kw.jargon_title)
 
     mmtbudd_args = get_moment_config_args(kw.moment_budunit)
     mmthour_args = get_moment_config_args(kw.moment_epoch_hour)
@@ -318,10 +318,10 @@ def test_get_keywords_definitions_ReturnsObj_CheckConfigArgs():
         check_person_desc_str(healer_args, keyword, desc, "Healer")
         check_person_desc_str(contact_args, keyword, desc, "Contact")
         check_person_desc_str(member_args, keyword, desc, "Member")
-        check_translate_desc_str(trllabe_args, keyword, desc, kw.translate_label)
-        check_translate_desc_str(trlname_args, keyword, desc, kw.translate_name)
-        check_translate_desc_str(trlrope_args, keyword, desc, kw.translate_rope)
-        check_translate_desc_str(trltitl_args, keyword, desc, kw.translate_title)
+        check_jargon_desc_str(trllabe_args, keyword, desc, kw.jargon_label)
+        check_jargon_desc_str(trlname_args, keyword, desc, kw.jargon_name)
+        check_jargon_desc_str(trlrope_args, keyword, desc, kw.jargon_rope)
+        check_jargon_desc_str(trltitl_args, keyword, desc, kw.jargon_title)
         check_mmtunit_desc_str(mmtbudd_args, keyword, desc, "bud")
         check_mmtunit_desc_str(mmthour_args, keyword, desc, kw.mmthour)
         check_mmtunit_desc_str(mmtmont_args, keyword, desc, kw.mmtmont)
@@ -333,15 +333,15 @@ def test_get_keywords_definitions_ReturnsObj_CheckConfigArgs():
         check_mmtunit_desc_str(nabuable_args, keyword, desc, "Nabuable")
 
 
-def test_get_keywords_definitions_ReturnsObj_CheckTranslate_dimen():
+def test_get_keywords_definitions_ReturnsObj_CheckJargon_dimen():
     # sourcery skip: no-conditionals-in-tests
     # ESTABLISH / WHEN
     keywords_definitions = get_keywords_definitions()
     # THEN
-    for translate_dimen, translate_dict in get_translate_config_dict().items():
-        translate_description = translate_dict.get("description")
-        print(translate_description)
-        assert keywords_definitions.get(translate_dimen) == translate_description
+    for jargon_dimen, jargon_dict in get_jargon_config_dict().items():
+        jargon_description = jargon_dict.get("description")
+        print(jargon_description)
+        assert keywords_definitions.get(jargon_dimen) == jargon_description
 
 
 def get_all_semantic_types_with_doc_strs() -> dict[str, str]:
@@ -414,7 +414,7 @@ def check_mmtunit_desc_str(
         assert f", {src_label} arg" in description, assert_fail_str
 
 
-def check_translate_desc_str(
+def check_jargon_desc_str(
     config_args: dict, keyword: str, description: str, src_label: str
 ):
     if keyword in config_args:
@@ -512,15 +512,15 @@ def test_get_keywords_definitions_ReturnsObj_get_brick_config_dict():
     for allowed_crud, expected_str in expected_crud_dimens.items():
         print(f"{allowed_crud=}")
         crud_description = keywords_definitions.get(allowed_crud)
-        # print(f"{crud_description=}")
-        # print(f"    {expected_str=}")
+        print(f"{crud_description=}")
+        print(f"    {expected_str=}")
         assert expected_str in crud_description, allowed_crud
 
     expected_allowed_crud_desc = "Each brick config dimen has an allowed_crud that describes whether the data may be updated/deleted/inserted more than one."
     assert keywords_definitions.get(kw.allowed_crud) == expected_allowed_crud_desc
 
 
-def test_get_keywords_definitions_ReturnsObj_inx_otx_ContainTranslateReference():
+def test_get_keywords_definitions_ReturnsObj_inx_otx_ContainJargonReference():
     # sourcery skip: no-conditionals-in-tests
     # ESTABLISH / WHEN
     keywords_definitions = get_keywords_definitions()
@@ -529,14 +529,14 @@ def test_get_keywords_definitions_ReturnsObj_inx_otx_ContainTranslateReference()
     # to_save_keywords_definitions = get_keywords_definitions()
     # for keg_term, definition_str in keywords_definitions.items():
     #     expected_inx_str = (
-    #         f"The '{keg_term.replace("_inx", "")}' value after Translate."
+    #         f"The '{keg_term.replace("_inx", "")}' value after Jargon."
     #     )
     #     if keg_term.endswith("_inx") and expected_inx_str not in definition_str:
     #         # print(f""""{keg_term}": "{expected_inx_str}",""")
     #         to_save_keywords_definitions[keg_term] = expected_inx_str
     # for keg_term, definition_str in keywords_definitions.items():
     #     expected_otx_str = (
-    #         f"The '{keg_term.replace("_otx", "")}' value after Translate."
+    #         f"The '{keg_term.replace("_otx", "")}' value after Jargon."
     #     )
     #     if keg_term.endswith("_otx") and expected_otx_str not in definition_str:
     #         # print(f""""{keg_term}": "{expected_otx_str}",""")
@@ -546,9 +546,9 @@ def test_get_keywords_definitions_ReturnsObj_inx_otx_ContainTranslateReference()
     for keg_term, definition_str in keywords_definitions.items():
         if keg_term.endswith("_inx"):
             base_keg_term = keg_term.replace("_inx", "")
-            expected_inx_str = f"The '{base_keg_term}' value after Translate."
+            expected_inx_str = f"The '{base_keg_term}' value after Jargon."
             assert expected_inx_str in definition_str, keg_term
         if keg_term.endswith("_otx"):
             base_keg_term = keg_term.replace("_otx", "")
-            expected_otx_str = f"The '{base_keg_term}' value after Translate."
+            expected_otx_str = f"The '{base_keg_term}' value after Jargon."
             assert expected_otx_str in definition_str, keg_term
