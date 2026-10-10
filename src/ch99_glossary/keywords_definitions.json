@@ -20,6 +20,8 @@
   "assert": "Used so often in Python that it cannot be a kegology keyword.", 
   "atom": "Smallest possible unit of a PersonUnit", 
   "attributes": "General term used to describe things about another thing", 
+  "Audie": "Short for Audience. TitleTerm, can be NameTerm or GroupTitle.", 
+  "audie": "Short for audience. TitleTerm, can be NameTerm or GroupTitle.", 
   "August": "Example key with value 'August' used for tests throughout codebase.", 
   "aux": "In Lingo context: iux is the internal concept, aux is the audience's concept", 
   "aux_knot": "Lingo module. Definition needed.", 

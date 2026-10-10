@@ -548,9 +548,11 @@ otx_title,0,17:
 ropemap,0,17:
 titlemap,0,17:
 unknown_str,0,17:
+Audie,0,"18, 41"
 Flare,0,18
 Lingo,0,18
 Yap,0,18
+audie,0,"18, 27, 30, 33, 39, 40, 41"
 aux,0,18
 aux_knot,0,18
 aux_label,0,18
