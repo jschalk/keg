@@ -555,7 +555,23 @@ Did you read that the keyword_definition of 'ropemap' is 'Definition needed.'.
 Did you read that the keyword_definition of 'titlemap' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'unknown_str' is ', JARGON_LABEL arg, JARGON_NAME arg, JARGON_ROPE arg, JARGON_TITLE arg'."
 Did you read that the keyword_definition of 'Lingo' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'aux' is 'In Lingo context: iux is the internal concept, aux is the audience's concept'."
+Did you read that the keyword_definition of 'aux_knot' is 'Lingo module. Definition needed.'.
+Did you read that the keyword_definition of 'aux_label' is 'Lingo module. Definition needed.'.
+Did you read that the keyword_definition of 'aux_name' is 'Lingo module. Definition needed.'.
+Did you read that the keyword_definition of 'aux_rope' is 'Lingo module. Definition needed.'.
+Did you read that the keyword_definition of 'aux_title' is 'Lingo module. Definition needed.'.
+"Did you read that the keyword_definition of 'iux' is 'In Lingo context: iux is the internal concept, aux is the audience's concept'."
+Did you read that the keyword_definition of 'iux_knot' is 'Lingo module. Definition needed.'.
+Did you read that the keyword_definition of 'iux_label' is 'Lingo module. Definition needed.'.
+Did you read that the keyword_definition of 'iux_name' is 'Lingo module. Definition needed.'.
+Did you read that the keyword_definition of 'iux_rope' is 'Lingo module. Definition needed.'.
+Did you read that the keyword_definition of 'iux_title' is 'Lingo module. Definition needed.'.
 Did you read that the keyword_definition of 'lingo' is 'Definition needed.'.
+Did you read that the keyword_definition of 'lingo_label' is 'Lingo module. Definition needed.'.
+Did you read that the keyword_definition of 'lingo_name' is 'Lingo module. Definition needed.'.
+Did you read that the keyword_definition of 'lingo_rope' is 'Lingo module. Definition needed.'.
+Did you read that the keyword_definition of 'lingo_title' is 'Lingo module. Definition needed.'.
 "Did you read that the keyword_definition of 'duck' is 'Definition needed. Maybe someone who can dive, swim, walk, knee, and fly. All the things.'."
 Did you read that the keyword_definition of 'Border' is 'Defines line of influence between two Wheels. Also used by graphics and apps.'.
 Did you read that the keyword_definition of 'Excel' is 'A spreadsheet format.'.
