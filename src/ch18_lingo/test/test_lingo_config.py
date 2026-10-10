@@ -4,8 +4,8 @@ from ch18_lingo.lingo_config import (
     get_lingo_filename,
     lingo_config_path,
     get_lingo_config_dict,
+    get_lingo_column_ref,
 )
-from os.path import exists as os_path_exists
 from ch99_glossary.ch_keyword import Ch18Keywords as kw
 
 
@@ -46,8 +46,32 @@ def test_get_lingo_config_dict_ReturnsObj():
         lingo_iux = expected_lingo_key.replace("lingo_", "iux_")
         assert {lingo_iux} == set(lingo_dict.get(kw.jkeys).keys())
         lingo_aux = expected_lingo_key.replace("lingo_", "aux_")
-        expected_jvalues_keys = {kw.aux_knot, kw.inx_knot, lingo_aux}
+        expected_jvalues_keys = {kw.aux_knot, kw.iux_knot, lingo_aux}
         print(f"{expected_jvalues_keys=}")
         assert expected_jvalues_keys == set(lingo_dict.get(kw.jvalues).keys())
 
     assert len(lingo_config_dict) == len(jargon_config_dict)
+
+
+def _get_all_lingo_config_attrs() -> dict[str, set[str]]:
+    lingo_config = get_lingo_config_dict()
+    x_lingo_attrs = {}
+    for lingo_dimen, jkeys_jvalues_dict in lingo_config.items():
+        attrs_set = set(jkeys_jvalues_dict.get(kw.jkeys).keys())
+        attrs_set.update(set(jkeys_jvalues_dict.get(kw.jvalues).keys()))
+        x_lingo_attrs[lingo_dimen] = attrs_set
+    return x_lingo_attrs
+
+
+def test_get_lingo_column_ref_ReturnsObj():
+    # ESTABLISH
+    all_lingo_config_attrs = _get_all_lingo_config_attrs()
+    print(f"{all_lingo_config_attrs=}")
+    print(f"{get_lingo_column_ref()=}")
+    print(f"{all_lingo_config_attrs.get(kw.lingo_name)=}")
+    print(f"{get_lingo_column_ref().get(kw.lingo_name)=}")
+
+    # WHEN / THEN
+    assert kw.lingo_rope in set(get_lingo_column_ref().keys())
+    assert len(get_lingo_column_ref().keys()) == 4
+    assert get_lingo_column_ref() == all_lingo_config_attrs

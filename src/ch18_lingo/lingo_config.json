@@ -2,21 +2,21 @@
   "lingo_label": {
     "description": "'lingo_label' is a lingo dimen where iux_label is translated by iux_knot, aux_label, aux_knot", 
     "jkeys": {"iux_label": {}}, 
-    "jvalues": {"aux_knot": {}, "aux_label": {}, "inx_knot": {}}
+    "jvalues": {"aux_knot": {}, "aux_label": {}, "iux_knot": {}}
   }, 
   "lingo_name": {
     "description": "'lingo_name' is a lingo dimen where iux_name is translated by iux_knot, aux_name, aux_knot", 
     "jkeys": {"iux_name": {}}, 
-    "jvalues": {"aux_knot": {}, "aux_name": {}, "inx_knot": {}}
+    "jvalues": {"aux_knot": {}, "aux_name": {}, "iux_knot": {}}
   }, 
   "lingo_rope": {
     "description": "'lingo_rope' is a lingo dimen where iux_rope is translated by iux_knot, aux_rope, aux_knot", 
     "jkeys": {"iux_rope": {}}, 
-    "jvalues": {"aux_knot": {}, "aux_rope": {}, "inx_knot": {}}
+    "jvalues": {"aux_knot": {}, "aux_rope": {}, "iux_knot": {}}
   }, 
   "lingo_title": {
     "description": "'lingo_title' is a lingo dimen where iux_title is translated by iux_knot, aux_title, aux_knot", 
     "jkeys": {"iux_title": {}}, 
-    "jvalues": {"aux_knot": {}, "aux_title": {}, "inx_knot": {}}
+    "jvalues": {"aux_knot": {}, "aux_title": {}, "iux_knot": {}}
   }
 }
