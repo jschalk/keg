@@ -818,6 +818,8 @@
   "WorldName": "str first used in ch32. Name of WorldDir", 
   "xio": "Example key with value 'Xio' used for tests throughout codebase.", 
   "yao": "Example key with value 'Yao' used for tests throughout codebase.", 
+  "Yap": "In the Jargon module there is 'map', in the Lingo module there is 'yap'.", 
+  "yap": "In the Jargon module there is 'map', in the Lingo module there is 'yap'.", 
   "Yard": "Definition needed.", 
   "yard": "Definition needed.", 
   "year": "A fundamental structure of time for Keg2. Always 365 days. The leap day is a special other thing in Keg2.", 

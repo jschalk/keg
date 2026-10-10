@@ -2968,6 +2968,7 @@ class Ch18Keywords(str, Enum):
     TitleTerm = "TitleTerm"
     UPDATE = "UPDATE"
     WeightNum = "WeightNum"
+    Yap = "Yap"
     active_requisite = "active_requisite"
     addin = "addin"
     ancestors = "ancestors"
@@ -3214,6 +3215,7 @@ class Ch18Keywords(str, Enum):
     weekday_order = "weekday_order"
     weekdays_config = "weekdays_config"
     weeks = "weeks"
+    yap = "yap"
     year = "year"
     yr1_jan1_offset = "yr1_jan1_offset"
 

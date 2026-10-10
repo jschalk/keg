@@ -549,6 +549,7 @@ ropemap,0,17:
 titlemap,0,17:
 unknown_str,0,17:
 Lingo,0,18
+Yap,0,18
 aux,0,18
 aux_knot,0,18
 aux_label,0,18
@@ -566,6 +567,7 @@ lingo_label,0,18
 lingo_name,0,18
 lingo_rope,0,18
 lingo_title,0,18
+yap,0,18
 duck,0,19
 Border,0,"20, 39"
 Excel,0,20:
