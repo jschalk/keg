@@ -262,6 +262,8 @@
   "FirstLabel": "str first used in ch05. The first LabelTerm in a RopeTerm. FirstLabel cannot contain knot. Not called RootLabel to avoid confission.", 
   "fission": "Any complicated step changing idea_type to brick_type. Each fission_step makes a single type of change. Can be simple (set value to X) or complicated (add missing rows with relative values). Only referenced in ch23", 
   "five": "An Epoch. A structure for time often used in the codebase. Starts about 5000 years ago, has 16 months, 15 of which are 25 days. Week is 5 days long.", 
+  "Flare": "The instance of giving ideas to an audience. Usually there is an intended audience.", 
+  "flare": "The instance of giving ideas to an audience. Usually there is an intended audience.", 
   "found_facts": ", used with Budget Cells", 
   "Friday": "Example key with value 'Friday' used for tests throughout codebase.", 
   "fund_agenda_give": ", Contact thinkout, Member thinkout data", 

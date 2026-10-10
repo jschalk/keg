@@ -1,22 +1,21 @@
-# from ch05_rope.rope import default_knot_if_None
-# from ch18_lingo.yap_term import (
-#     NameYap,
-#     get_nameyap_from_dict,
-#     inherit_nameyap,
-#     nameyap_shop,
-# )
-# from ch99_glossary.ch_keyword import Ch17Keywords as kw, ExampleStrs as exx
-# from numpy import int64 as numpy_int64
-# from pytest import raises as pytest_raises
-
+from ch05_rope.rope import default_knot_if_None
+from ch18_lingo.yap_term import (
+    NameYap,
+    # get_nameyap_from_dict,
+    # inherit_nameyap,
+    # nameyap_shop,
+)
+from ch99_glossary.ch_keyword import Ch17Keywords as kw, ExampleStrs as exx
+from numpy import int64 as numpy_int64
+from pytest import raises as pytest_raises
 
 # def test_NameYap_Exists():
 #     # ESTABLISH
 #     x_nameyap = NameYap()
 
 #     # WHEN / THEN
-#     assert not x_nameyap.spark_face
-#     assert not x_nameyap.spark_num
+#     assert not x_nameyap.flare_face
+#     assert not x_nameyap.flare_num
 #     assert not x_nameyap.otx2inx
 #     assert not x_nameyap.unknown_str
 #     assert not x_nameyap.otx_knot
@@ -28,8 +27,8 @@
 #     x_nameyap = nameyap_shop()
 
 #     # THEN
-#     assert not x_nameyap.spark_face
-#     assert x_nameyap.spark_num == 0
+#     assert not x_nameyap.flare_face
+#     assert x_nameyap.flare_num == 0
 #     assert x_nameyap.otx2inx == {}
 #     assert x_nameyap.unknown_str == default_unknown_str_if_None()
 #     assert x_nameyap.otx_knot == default_knot_if_None()
@@ -38,7 +37,7 @@
 
 # def test_nameyap_shop_ReturnsObj_Scenario1_WithParameters():
 #     # ESTABLISH
-#     spark7 = 7
+#     flare7 = 7
 #     otx2inx = {exx.xio: exx.sue}
 #     x_unknown_str = "UnknownTerm"
 #     slash_otx_knot = "/"
@@ -46,8 +45,8 @@
 
 #     # WHEN
 #     x_nameyap = nameyap_shop(
-#         spark_face=exx.bob,
-#         spark_num=spark7,
+#         flare_face=exx.bob,
+#         flare_num=flare7,
 #         otx2inx=otx2inx,
 #         unknown_str=x_unknown_str,
 #         otx_knot=slash_otx_knot,
@@ -55,8 +54,8 @@
 #     )
 
 #     # THEN
-#     assert x_nameyap.spark_face == exx.bob
-#     assert x_nameyap.spark_num == spark7
+#     assert x_nameyap.flare_face == exx.bob
+#     assert x_nameyap.flare_num == flare7
 #     assert x_nameyap.otx2inx == otx2inx
 #     assert x_nameyap.unknown_str == x_unknown_str
 #     assert x_nameyap.otx_knot == slash_otx_knot
@@ -65,14 +64,14 @@
 
 # def test_nameyap_shop_ReturnsObj_Scenario2_LingoCoreAttrAreDefaultWhenGiven_float_nan():
 #     # ESTABLISH
-#     spark7 = numpy_int64(7)
+#     flare7 = numpy_int64(7)
 #     otx2inx = {exx.xio: exx.sue}
 #     x_nan = float("nan")
 
 #     # WHEN
 #     x_nameyap = nameyap_shop(
-#         spark_face=exx.bob,
-#         spark_num=numpy_int64(spark7),
+#         flare_face=exx.bob,
+#         flare_num=numpy_int64(flare7),
 #         otx2inx=otx2inx,
 #         unknown_str=x_nan,
 #         otx_knot=x_nan,
@@ -80,10 +79,10 @@
 #     )
 
 #     # THEN
-#     assert x_nameyap.spark_face == exx.bob
-#     assert x_nameyap.spark_num == spark7
-#     assert str(type(x_nameyap.spark_num)) != "<class 'numpy.int64'>"
-#     assert str(type(x_nameyap.spark_num)) == "<class 'int'>"
+#     assert x_nameyap.flare_face == exx.bob
+#     assert x_nameyap.flare_num == flare7
+#     assert str(type(x_nameyap.flare_num)) != "<class 'numpy.int64'>"
+#     assert str(type(x_nameyap.flare_num)) == "<class 'int'>"
 #     assert x_nameyap.otx2inx == otx2inx
 #     assert x_nameyap.unknown_str == default_unknown_str_if_None()
 #     assert x_nameyap.otx_knot == default_knot_if_None()
@@ -266,22 +265,22 @@
 #     # ESTABLISH
 #     clean_otx = "clean"
 #     clean_inx = "propre"
-#     spark7 = 7
+#     flare7 = 7
 #     slash_otx_knot = "/"
 #     colon_inx_knot = ":"
 #     x_nameyap = nameyap_shop(
 #         otx_knot=slash_otx_knot,
 #         inx_knot=colon_inx_knot,
-#         spark_face=exx.sue,
-#         spark_num=spark7,
+#         flare_face=exx.sue,
+#         flare_num=flare7,
 #     )
 #     x1_rope_yap_dict = {
 #         kw.otx_knot: x_nameyap.otx_knot,
 #         kw.inx_knot: x_nameyap.inx_knot,
 #         kw.unknown_str: x_nameyap.unknown_str,
 #         kw.otx2inx: {},
-#         kw.spark_face: x_nameyap.spark_face,
-#         kw.spark_num: x_nameyap.spark_num,
+#         kw.flare_face: x_nameyap.flare_face,
+#         kw.flare_num: x_nameyap.flare_num,
 #     }
 #     assert x_nameyap.to_dict() == x1_rope_yap_dict
 
@@ -293,8 +292,8 @@
 #         kw.inx_knot: x_nameyap.inx_knot,
 #         kw.unknown_str: x_nameyap.unknown_str,
 #         kw.otx2inx: {clean_otx: clean_inx},
-#         kw.spark_face: exx.sue,
-#         kw.spark_num: spark7,
+#         kw.flare_face: exx.sue,
+#         kw.flare_num: flare7,
 #     }
 #     assert x_nameyap.to_dict() == x2_rope_yap_dict
 
@@ -304,17 +303,17 @@
 #     clean_otx = "clean"
 #     clean_inx = "propre"
 #     slash_otx_knot = "/"
-#     spark7 = 7
-#     x_nameyap = nameyap_shop(exx.sue, spark7, otx_knot=slash_otx_knot)
+#     flare7 = 7
+#     x_nameyap = nameyap_shop(exx.sue, flare7, otx_knot=slash_otx_knot)
 #     x_nameyap.set_otx2inx(clean_otx, clean_inx)
 
 #     # WHEN
 #     gen_nameyap = get_nameyap_from_dict(x_nameyap.to_dict())
 
 #     # THEN
-#     assert gen_nameyap.spark_face == x_nameyap.spark_face
-#     assert gen_nameyap.spark_num == x_nameyap.spark_num
-#     assert gen_nameyap.spark_num == spark7
+#     assert gen_nameyap.flare_face == x_nameyap.flare_face
+#     assert gen_nameyap.flare_num == x_nameyap.flare_num
+#     assert gen_nameyap.flare_num == flare7
 #     assert gen_nameyap == x_nameyap
 
 
@@ -440,7 +439,7 @@
 #     assert str(excinfo.value) == "Core attrs in conflict"
 
 
-# def test_inherit_nameyap_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_spark_face():
+# def test_inherit_nameyap_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_flare_face():
 #     # ESTABLISH
 #     old_nameyap = nameyap_shop(exx.sue, 0)
 #     new_nameyap = nameyap_shop(exx.bob, 1)
@@ -453,7 +452,7 @@
 #     assert str(excinfo.value) == "Core attrs in conflict"
 
 
-# def test_inherit_nameyap_ReturnsObj_Scenario5_RaiseErrorWhenSparkIntsOutOfOrder():
+# def test_inherit_nameyap_ReturnsObj_Scenario5_RaiseErrorWhenFlareIntsOutOfOrder():
 #     # ESTABLISH
 #     old_nameyap = nameyap_shop(exx.sue, 5)
 #     new_nameyap = nameyap_shop(exx.sue, 1)

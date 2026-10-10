@@ -548,6 +548,7 @@ otx_title,0,17:
 ropemap,0,17:
 titlemap,0,17:
 unknown_str,0,17:
+Flare,0,18
 Lingo,0,18
 Yap,0,18
 aux,0,18
@@ -556,6 +557,7 @@ aux_label,0,18
 aux_name,0,18
 aux_rope,0,18
 aux_title,0,18
+flare,0,18
 iux,0,18
 iux_knot,0,18
 iux_label,0,18
