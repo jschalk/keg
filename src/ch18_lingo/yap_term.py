@@ -16,11 +16,11 @@ from ch05_rope.rope import (
     get_tail_label,
 )
 from ch18_lingo._ref.ch18_semantic_types import (
-    FaceName,
+    AudieTitle,
     KnotTerm,
     LabelTerm,
     RopeTerm,
-    SparkInt,
+    FlareInt,
     default_knot_if_None,
 )
 from copy import copy as copy_copy
@@ -38,12 +38,11 @@ class SetLabelError(Exception):
 @dataclass
 class YapCore:
     pass
-    # spark_face: FaceName = None
-    # spark_num: SparkInt = None
-    # iux2aux: dict[str, str] = None
-    # unknown_str: str = None
-    # iux_knot: KnotTerm = None
-    # aux_knot: KnotTerm = None
+    flare_audie: AudieTitle = None
+    flare_num: FlareInt = None
+    iux2aux: dict[str, str] = None
+    iux_knot: KnotTerm = None
+    aux_knot: KnotTerm = None
 
     # def unknown_str_in_iux2aux(self) -> bool:
     #     return str_in_dict(self.unknown_str, self.iux2aux)
@@ -61,8 +60,8 @@ class YapCore:
     #     """Returns dict that is serializable to JSON."""
 
     #     return {
-    #         "spark_face": self.spark_face,
-    #         "spark_num": self.spark_num,
+    #         "flare_audie": self.flare_audie,
+    #         "flare_num": self.flare_num,
     #         "iux_knot": self.iux_knot,
     #         "aux_knot": self.aux_knot,
     #         "unknown_str": self.unknown_str,
@@ -113,8 +112,8 @@ class NameYap(YapCore):
 
 
 # def nameyap_shop(
-#     spark_face: FaceName = None,
-#     spark_num: SparkInt = None,
+#     flare_audie: AudieTitle = None,
+#     flare_num: FlareInt = None,
 #     iux_knot: KnotTerm = None,
 #     aux_knot: KnotTerm = None,
 #     iux2aux: dict = None,
@@ -125,8 +124,8 @@ class NameYap(YapCore):
 #     aux_knot = default_knot_if_None(aux_knot)
 
 #     return NameYap(
-#         spark_face=spark_face,
-#         spark_num=get_0_if_None(spark_num),
+#         flare_audie=flare_audie,
+#         flare_num=get_0_if_None(flare_num),
 #         iux_knot=iux_knot,
 #         aux_knot=aux_knot,
 #         unknown_str=unknown_str,
@@ -136,8 +135,8 @@ class NameYap(YapCore):
 
 # def get_nameyap_from_dict(x_dict: dict) -> NameYap:
 #     return nameyap_shop(
-#         spark_face=x_dict.get("spark_face"),
-#         spark_num=x_dict.get("spark_num"),
+#         flare_audie=x_dict.get("flare_audie"),
+#         flare_num=x_dict.get("flare_num"),
 #         iux_knot=x_dict.get("iux_knot"),
 #         aux_knot=x_dict.get("aux_knot"),
 #         iux2aux=x_dict.get("iux2aux"),
@@ -187,8 +186,8 @@ class NameYap(YapCore):
 
 
 # def titleyap_shop(
-#     spark_face: FaceName = None,
-#     spark_num: SparkInt = None,
+#     flare_audie: AudieTitle = None,
+#     flare_num: FlareInt = None,
 #     iux_knot: KnotTerm = None,
 #     aux_knot: KnotTerm = None,
 #     iux2aux: dict = None,
@@ -199,8 +198,8 @@ class NameYap(YapCore):
 #     aux_knot = default_knot_if_None(aux_knot)
 
 #     return TitleYap(
-#         spark_face=spark_face,
-#         spark_num=get_0_if_None(spark_num),
+#         flare_audie=flare_audie,
+#         flare_num=get_0_if_None(flare_num),
 #         iux_knot=iux_knot,
 #         aux_knot=aux_knot,
 #         unknown_str=unknown_str,
@@ -210,8 +209,8 @@ class NameYap(YapCore):
 
 # def get_titleyap_from_dict(x_dict: dict) -> TitleYap:
 #     return titleyap_shop(
-#         spark_face=x_dict.get("spark_face"),
-#         spark_num=x_dict.get("spark_num"),
+#         flare_audie=x_dict.get("flare_audie"),
+#         flare_num=x_dict.get("flare_num"),
 #         iux_knot=x_dict.get("iux_knot"),
 #         aux_knot=x_dict.get("aux_knot"),
 #         iux2aux=x_dict.get("iux2aux"),
@@ -261,8 +260,8 @@ class NameYap(YapCore):
 
 
 # def labelyap_shop(
-#     spark_face: FaceName = None,
-#     spark_num: SparkInt = None,
+#     flare_audie: AudieTitle = None,
+#     flare_num: FlareInt = None,
 #     iux_knot: KnotTerm = None,
 #     aux_knot: KnotTerm = None,
 #     iux2aux: dict = None,
@@ -273,8 +272,8 @@ class NameYap(YapCore):
 #     aux_knot = default_knot_if_None(aux_knot)
 
 #     return LabelYap(
-#         spark_face=spark_face,
-#         spark_num=get_0_if_None(spark_num),
+#         flare_audie=flare_audie,
+#         flare_num=get_0_if_None(flare_num),
 #         iux_knot=iux_knot,
 #         aux_knot=aux_knot,
 #         unknown_str=unknown_str,
@@ -284,8 +283,8 @@ class NameYap(YapCore):
 
 # def get_labelyap_from_dict(x_dict: dict) -> LabelYap:
 #     return labelyap_shop(
-#         spark_face=x_dict.get("spark_face"),
-#         spark_num=x_dict.get("spark_num"),
+#         flare_audie=x_dict.get("flare_audie"),
+#         flare_num=x_dict.get("flare_num"),
 #         iux_knot=x_dict.get("iux_knot"),
 #         aux_knot=x_dict.get("aux_knot"),
 #         iux2aux=x_dict.get("iux2aux"),
@@ -295,8 +294,8 @@ class NameYap(YapCore):
 
 # @dataclass
 # class RopeYap:
-#     spark_face: FaceName = None
-#     spark_num: SparkInt = None
+#     flare_audie: AudieTitle = None
+#     flare_num: FlareInt = None
 #     iux2aux: dict = None
 #     unknown_str: str = None
 #     iux_knot: KnotTerm = None
@@ -398,8 +397,8 @@ class NameYap(YapCore):
 #         """Returns dict that is serializable to JSON."""
 
 #         return {
-#             "spark_face": self.spark_face,
-#             "spark_num": self.spark_num,
+#             "flare_audie": self.flare_audie,
+#             "flare_num": self.flare_num,
 #             "iux_knot": self.iux_knot,
 #             "aux_knot": self.aux_knot,
 #             "unknown_str": self.unknown_str,
@@ -408,8 +407,8 @@ class NameYap(YapCore):
 
 
 # def ropeyap_shop(
-#     spark_face: FaceName = None,
-#     spark_num: SparkInt = None,
+#     flare_audie: AudieTitle = None,
+#     flare_num: FlareInt = None,
 #     iux_knot: KnotTerm = None,
 #     aux_knot: KnotTerm = None,
 #     x_labelyap: LabelYap = None,
@@ -425,8 +424,8 @@ class NameYap(YapCore):
 #             iux_knot=iux_knot,
 #             aux_knot=aux_knot,
 #             unknown_str=unknown_str,
-#             spark_face=spark_face,
-#             spark_num=spark_num,
+#             flare_audie=flare_audie,
+#             flare_num=flare_num,
 #         )
 
 #     return RopeYap(
@@ -435,15 +434,15 @@ class NameYap(YapCore):
 #         iux_knot=iux_knot,
 #         aux_knot=aux_knot,
 #         labelyap=x_labelyap,
-#         spark_face=spark_face,
-#         spark_num=get_0_if_None(spark_num),
+#         flare_audie=flare_audie,
+#         flare_num=get_0_if_None(flare_num),
 #     )
 
 
 # def get_ropeyap_from_dict(x_dict: dict) -> RopeYap:
 #     return ropeyap_shop(
-#         spark_face=x_dict.get("spark_face"),
-#         spark_num=x_dict.get("spark_num"),
+#         flare_audie=x_dict.get("flare_audie"),
+#         flare_num=x_dict.get("flare_num"),
 #         iux_knot=x_dict.get("iux_knot"),
 #         aux_knot=x_dict.get("aux_knot"),
 #         iux2aux=x_dict.get("iux2aux"),
@@ -457,13 +456,13 @@ class NameYap(YapCore):
 
 # def _check_core_attrs_match(new_obj: YapCore, old_obj: YapCore):
 #     if (
-#         old_obj.spark_face != new_obj.spark_face
+#         old_obj.flare_audie != new_obj.flare_audie
 #         or old_obj.iux_knot != new_obj.iux_knot
 #         or old_obj.aux_knot != new_obj.aux_knot
 #         or old_obj.unknown_str != new_obj.unknown_str
 #     ):
 #         raise YapCoreAttrConflictError("Core attrs in conflict")
-#     if old_obj.spark_num >= new_obj.spark_num:
+#     if old_obj.flare_num >= new_obj.flare_num:
 #         raise YapCoreAttrConflictError("older yapunit is not older")
 
 

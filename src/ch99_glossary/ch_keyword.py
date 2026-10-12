@@ -2926,6 +2926,7 @@ class Ch17Keywords(str, Enum):
 class Ch18Keywords(str, Enum):
     Anaday = "Anaday"
     Audie = "Audie"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -2939,6 +2940,7 @@ class Ch18Keywords(str, Enum):
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
     Flare = "Flare"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     GrainNum = "GrainNum"
@@ -3229,6 +3231,7 @@ class Ch18Keywords(str, Enum):
 
 class Ch19Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -3241,6 +3244,7 @@ class Ch19Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     GrainNum = "GrainNum"
@@ -3511,6 +3515,7 @@ class Ch19Keywords(str, Enum):
 
 class Ch20Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     Border = "Border"
     CRUD_command = "CRUD_command"
@@ -3525,6 +3530,7 @@ class Ch20Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     GrainNum = "GrainNum"
@@ -3918,6 +3924,7 @@ class Ch20Keywords(str, Enum):
 
 class Ch22Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -3931,6 +3938,7 @@ class Ch22Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     GrainNum = "GrainNum"
@@ -4368,6 +4376,7 @@ class Ch22Keywords(str, Enum):
 
 class Ch23Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -4381,6 +4390,7 @@ class Ch23Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     GrainNum = "GrainNum"
@@ -4699,6 +4709,7 @@ class Ch23Keywords(str, Enum):
 
 class Ch24Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -4712,6 +4723,7 @@ class Ch24Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     GrainNum = "GrainNum"
@@ -5035,6 +5047,7 @@ class Ch24Keywords(str, Enum):
 
 class Ch25Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -5048,6 +5061,7 @@ class Ch25Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     GrainNum = "GrainNum"
@@ -5373,6 +5387,7 @@ class Ch25Keywords(str, Enum):
 
 class Ch26Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -5386,6 +5401,7 @@ class Ch26Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     GrainNum = "GrainNum"
@@ -5745,6 +5761,7 @@ class Ch26Keywords(str, Enum):
 
 class Ch27Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -5758,6 +5775,7 @@ class Ch27Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     GrainNum = "GrainNum"
@@ -6092,6 +6110,7 @@ class Ch27Keywords(str, Enum):
 
 class Ch30Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -6105,6 +6124,7 @@ class Ch30Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     GrainNum = "GrainNum"
@@ -6423,6 +6443,7 @@ class Ch30Keywords(str, Enum):
 
 class Ch31Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -6438,6 +6459,7 @@ class Ch31Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     GrainNum = "GrainNum"
@@ -6768,6 +6790,7 @@ class Ch31Keywords(str, Enum):
 
 class Ch32Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -6782,6 +6805,7 @@ class Ch32Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     GrainNum = "GrainNum"
@@ -7129,6 +7153,7 @@ class Ch32Keywords(str, Enum):
 
 class Ch33Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -7144,6 +7169,7 @@ class Ch33Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     Gift = "Gift"
@@ -7480,6 +7506,7 @@ class Ch33Keywords(str, Enum):
 
 class Ch34Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -7495,6 +7522,7 @@ class Ch34Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     Gift = "Gift"
@@ -7827,6 +7855,7 @@ class Ch34Keywords(str, Enum):
 
 class Ch35Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -7842,6 +7871,7 @@ class Ch35Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     Gift = "Gift"
@@ -8185,6 +8215,7 @@ class Ch35Keywords(str, Enum):
 
 class Ch36Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -8200,6 +8231,7 @@ class Ch36Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     Gift = "Gift"
@@ -8538,6 +8570,7 @@ class Ch36Keywords(str, Enum):
 class Ch39Keywords(str, Enum):
     American = "American"
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     Border = "Border"
     CRUD_command = "CRUD_command"
@@ -8554,6 +8587,7 @@ class Ch39Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     Gift = "Gift"
@@ -8917,6 +8951,7 @@ class Ch39Keywords(str, Enum):
 class Ch40Keywords(str, Enum):
     American = "American"
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -8933,6 +8968,7 @@ class Ch40Keywords(str, Enum):
     FactNum = "FactNum"
     Faction = "Faction"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     Gift = "Gift"
@@ -9320,6 +9356,7 @@ class Ch41Keywords(str, Enum):
     American = "American"
     Anaday = "Anaday"
     Audie = "Audie"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     Boss = "Boss"
     CRUD_command = "CRUD_command"
@@ -9339,6 +9376,7 @@ class Ch41Keywords(str, Enum):
     FactNum = "FactNum"
     Fall = "Fall"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     Gift = "Gift"
@@ -9742,6 +9780,7 @@ class Ch41Keywords(str, Enum):
 
 class Ch54Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -9757,6 +9796,7 @@ class Ch54Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     Gift = "Gift"
@@ -10103,6 +10143,7 @@ class Ch54Keywords(str, Enum):
 
 class Ch90Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -10118,6 +10159,7 @@ class Ch90Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     Gift = "Gift"
@@ -10465,6 +10507,7 @@ class Ch90Keywords(str, Enum):
 
 class Ch96Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -10480,6 +10523,7 @@ class Ch96Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     Gift = "Gift"
@@ -10820,6 +10864,8 @@ class Ch96Keywords(str, Enum):
 
 class Ch97Keywords(str, Enum):
     Anaday = "Anaday"
+    Audie = "Audie"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     Boss = "Boss"
     BossMass = "BossMass"
@@ -10838,6 +10884,8 @@ class Ch97Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    Flare = "Flare"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     Gift = "Gift"
@@ -11084,6 +11132,7 @@ class Ch97Keywords(str, Enum):
     lasso = "lasso"
     last_lesson_id = "last_lesson_id"
     lego = "lego"
+    lingo = "lingo"
     magnitude = "magnitude"
     mana_grain = "mana_grain"
     mandate = "mandate"
@@ -11255,6 +11304,7 @@ class Ch97Keywords(str, Enum):
 
 class Ch98Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -11270,6 +11320,7 @@ class Ch98Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     Gift = "Gift"
@@ -11619,6 +11670,7 @@ class Ch98Keywords(str, Enum):
 
 class Ch99Keywords(str, Enum):
     Anaday = "Anaday"
+    AudieTitle = "AudieTitle"
     Baileyday = "Baileyday"
     CRUD_command = "CRUD_command"
     Chiday = "Chiday"
@@ -11634,6 +11686,7 @@ class Ch99Keywords(str, Enum):
     FaceName = "FaceName"
     FactNum = "FactNum"
     FirstLabel = "FirstLabel"
+    FlareInt = "FlareInt"
     FundGrain = "FundGrain"
     FundNum = "FundNum"
     Gift = "Gift"

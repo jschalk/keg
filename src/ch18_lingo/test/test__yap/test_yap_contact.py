@@ -9,17 +9,17 @@ from ch99_glossary.ch_keyword import Ch17Keywords as kw, ExampleStrs as exx
 from numpy import int64 as numpy_int64
 from pytest import raises as pytest_raises
 
-# def test_NameYap_Exists():
-#     # ESTABLISH
-#     x_nameyap = NameYap()
 
-#     # WHEN / THEN
-#     assert not x_nameyap.flare_audie
-#     assert not x_nameyap.flare_num
-#     assert not x_nameyap.iux2aux
-#     assert not x_nameyap.unknown_str
-#     assert not x_nameyap.iux_knot
-#     assert not x_nameyap.aux_knot
+def test_NameYap_Exists():
+    # ESTABLISH
+    x_nameyap = NameYap()
+
+    # WHEN / THEN
+    assert not x_nameyap.flare_audie
+    assert not x_nameyap.flare_num
+    assert not x_nameyap.iux2aux
+    assert not x_nameyap.iux_knot
+    assert not x_nameyap.aux_knot
 
 
 # def test_nameyap_shop_ReturnsObj_Scenario0():
