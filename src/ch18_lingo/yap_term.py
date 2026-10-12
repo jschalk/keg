@@ -44,104 +44,91 @@ class YapCore:
     iux_knot: KnotTerm = None
     aux_knot: KnotTerm = None
 
-    # def unknown_str_in_iux2aux(self) -> bool:
-    #     return str_in_dict(self.unknown_str, self.iux2aux)
+    def set_all_iux2aux(
+        self, x_iux2aux: dict, raise_exception_if_invalid: bool = False
+    ):
+        self.iux2aux = x_iux2aux
 
-    # def set_all_iux2aux(
-    #     self, x_iux2aux: dict, raise_exception_if_invalid: bool = False
-    # ):
-    #     if raise_exception_if_invalid and str_in_dict(self.unknown_str, x_iux2aux):
-    #         error_dict = get_str_in_sub_dict(self.unknown_str, x_iux2aux)
-    #         exception_str = f"iux2aux cannot have unknown_str '{self.unknown_str}' in any str. Affected keys include {list(error_dict.keys())}."
-    #         raise SetAlliux2auxError(exception_str)
-    #     self.iux2aux = x_iux2aux
+    def to_dict(self) -> dict:
+        """Returns dict that is serializable to JSON."""
 
-    # def to_dict(self) -> dict:
-    #     """Returns dict that is serializable to JSON."""
-
-    #     return {
-    #         "flare_audie": self.flare_audie,
-    #         "flare_num": self.flare_num,
-    #         "iux_knot": self.iux_knot,
-    #         "aux_knot": self.aux_knot,
-    #         "unknown_str": self.unknown_str,
-    #         "iux2aux": self.iux2aux,
-    #     }
+        return {
+            "flare_audie": self.flare_audie,
+            "flare_num": self.flare_num,
+            "iux_knot": self.iux_knot,
+            "aux_knot": self.aux_knot,
+            "iux2aux": self.iux2aux,
+        }
 
 
 class NameYap(YapCore):
-    pass
-    # def set_iux2aux(self, iux_name: str, aux_name: str):
-    #     self.iux2aux[iux_name] = aux_name
+    def set_iux2aux(self, iux_name: str, aux_name: str):
+        self.iux2aux[iux_name] = aux_name
 
-    # def get_aux_value(self, iux_name: str) -> str:
-    #     return self.iux2aux.get(iux_name)
+    def get_aux_value(self, iux_name: str) -> str:
+        return self.iux2aux.get(iux_name)
 
-    # def iux2aux_exists(self, iux_name: str, aux_name: str) -> bool:
-    #     return self.get_aux_value(iux_name) == aux_name
+    def iux2aux_exists(self, iux_name: str, aux_name: str) -> bool:
+        return self.get_aux_value(iux_name) == aux_name
 
-    # def iux_exists(self, iux_name: str) -> bool:
-    #     return self.get_aux_value(iux_name) != None
+    def iux_exists(self, iux_name: str) -> bool:
+        return self.get_aux_value(iux_name) != None
 
-    # def del_iux2aux(self, iux_name: str):
-    #     self.iux2aux.pop(iux_name)
+    def del_iux2aux(self, iux_name: str):
+        self.iux2aux.pop(iux_name)
 
-    # def reveal_aux(self, iux_name: str, missing_add: bool = True) -> str:
-    #     if missing_add and self.iux_exists(iux_name) is False:
-    #         aux_name = copy_copy(iux_name)
-    #         if self.aux_knot in iux_name:
-    #             return None
-    #         iux_r_knot = self.iux_knot
-    #         aux_r_knot = self.aux_knot
-    #         aux_name = aux_name.replace(iux_r_knot, aux_r_knot)
-    #         self.set_iux2aux(iux_name, aux_name)
+    def reveal_aux(self, iux_name: str, missing_add: bool = True) -> str:
+        if missing_add and self.iux_exists(iux_name) is False:
+            aux_name = copy_copy(iux_name)
+            if self.aux_knot in iux_name:
+                return None
+            iux_r_knot = self.iux_knot
+            aux_r_knot = self.aux_knot
+            aux_name = aux_name.replace(iux_r_knot, aux_r_knot)
+            self.set_iux2aux(iux_name, aux_name)
 
-    #     return self.get_aux_value(iux_name)
+        return self.get_aux_value(iux_name)
 
-    # def _is_aux_knot_inclusion_correct(self) -> bool:
-    #     return not str_in_dict_values(self.aux_knot, self.iux2aux)
+    def _is_aux_knot_inclusion_correct(self) -> bool:
+        return not str_in_dict_values(self.aux_knot, self.iux2aux)
 
-    # def _is_iux_knot_inclusion_correct(self) -> bool:
-    #     return not str_in_dict_keys(self.iux_knot, self.iux2aux)
+    def _is_iux_knot_inclusion_correct(self) -> bool:
+        return not str_in_dict_keys(self.iux_knot, self.iux2aux)
 
-    # def is_valid(self) -> bool:
-    #     return (
-    #         self._is_aux_knot_inclusion_correct()
-    #         and self._is_iux_knot_inclusion_correct()
-    #     )
-
-
-# def nameyap_shop(
-#     flare_audie: AudieTitle = None,
-#     flare_num: FlareInt = None,
-#     iux_knot: KnotTerm = None,
-#     aux_knot: KnotTerm = None,
-#     iux2aux: dict = None,
-#     unknown_str: str = None,
-# ) -> NameYap:
-#     unknown_str = default_unknown_str_if_None(unknown_str)
-#     iux_knot = default_knot_if_None(iux_knot)
-#     aux_knot = default_knot_if_None(aux_knot)
-
-#     return NameYap(
-#         flare_audie=flare_audie,
-#         flare_num=get_0_if_None(flare_num),
-#         iux_knot=iux_knot,
-#         aux_knot=aux_knot,
-#         unknown_str=unknown_str,
-#         iux2aux=get_empty_dict_if_None(iux2aux),
-#     )
+    def is_valid(self) -> bool:
+        return (
+            self._is_aux_knot_inclusion_correct()
+            and self._is_iux_knot_inclusion_correct()
+        )
 
 
-# def get_nameyap_from_dict(x_dict: dict) -> NameYap:
-#     return nameyap_shop(
-#         flare_audie=x_dict.get("flare_audie"),
-#         flare_num=x_dict.get("flare_num"),
-#         iux_knot=x_dict.get("iux_knot"),
-#         aux_knot=x_dict.get("aux_knot"),
-#         iux2aux=x_dict.get("iux2aux"),
-#         unknown_str=x_dict.get("unknown_str"),
-#     )
+def nameyap_shop(
+    flare_audie: AudieTitle = None,
+    flare_num: FlareInt = None,
+    iux_knot: KnotTerm = None,
+    aux_knot: KnotTerm = None,
+    iux2aux: dict = None,
+) -> NameYap:
+    iux_knot = default_knot_if_None(iux_knot)
+    aux_knot = default_knot_if_None(aux_knot)
+
+    return NameYap(
+        flare_audie=flare_audie,
+        flare_num=get_0_if_None(flare_num),
+        iux_knot=iux_knot,
+        aux_knot=aux_knot,
+        iux2aux=get_empty_dict_if_None(iux2aux),
+    )
+
+
+def get_nameyap_from_dict(x_dict: dict) -> NameYap:
+    return nameyap_shop(
+        flare_audie=x_dict.get("flare_audie"),
+        flare_num=x_dict.get("flare_num"),
+        iux_knot=x_dict.get("iux_knot"),
+        aux_knot=x_dict.get("aux_knot"),
+        iux2aux=x_dict.get("iux2aux"),
+    )
 
 
 # class TitleYap(YapCore):
@@ -450,32 +437,31 @@ class NameYap(YapCore):
 #     )
 
 
-# class YapCoreAttrConflictError(Exception):
-#     pass
+class YapCoreAttrConflictError(Exception):
+    pass
 
 
-# def _check_core_attrs_match(new_obj: YapCore, old_obj: YapCore):
-#     if (
-#         old_obj.flare_audie != new_obj.flare_audie
-#         or old_obj.iux_knot != new_obj.iux_knot
-#         or old_obj.aux_knot != new_obj.aux_knot
-#         or old_obj.unknown_str != new_obj.unknown_str
-#     ):
-#         raise YapCoreAttrConflictError("Core attrs in conflict")
-#     if old_obj.flare_num >= new_obj.flare_num:
-#         raise YapCoreAttrConflictError("older yapunit is not older")
+def _check_core_attrs_match(new_obj: YapCore, old_obj: YapCore):
+    if (
+        old_obj.flare_audie != new_obj.flare_audie
+        or old_obj.iux_knot != new_obj.iux_knot
+        or old_obj.aux_knot != new_obj.aux_knot
+    ):
+        raise YapCoreAttrConflictError("Core attrs in conflict")
+    if old_obj.flare_num >= new_obj.flare_num:
+        raise YapCoreAttrConflictError("older yapunit is not older")
 
 
-# def _inherit_yapunit(new: YapCore, old: YapCore):
-#     _check_core_attrs_match(new, old)
-#     for iux2aux_key, old_aux in old.iux2aux.items():
-#         if new.iux_exists(iux2aux_key) is False:
-#             new.set_iux2aux(iux2aux_key, old_aux)
-#     return new
+def _inherit_yapunit(new: YapCore, old: YapCore):
+    _check_core_attrs_match(new, old)
+    for iux2aux_key, old_aux in old.iux2aux.items():
+        if new.iux_exists(iux2aux_key) is False:
+            new.set_iux2aux(iux2aux_key, old_aux)
+    return new
 
 
-# def inherit_nameyap(new: NameYap, old: NameYap) -> NameYap:
-#     return _inherit_yapunit(new, old)
+def inherit_nameyap(new: NameYap, old: NameYap) -> NameYap:
+    return _inherit_yapunit(new, old)
 
 
 # def inherit_titleyap(new: TitleYap, old: TitleYap) -> TitleYap:

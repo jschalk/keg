@@ -562,7 +562,10 @@ aux_name,0,18
 aux_rope,0,18
 aux_title,0,18
 flare,0,18
+flare_audie,0,18
+flare_num,0,18
 iux,0,18
+iux2aux,0,18
 iux_knot,0,18
 iux_label,0,18
 iux_name,0,18
