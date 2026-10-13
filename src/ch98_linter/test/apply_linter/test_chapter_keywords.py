@@ -57,6 +57,7 @@ def test_Chapters_CheckStringMetricsFromEveryFile():
         "get_inx_value",  # used in Nabu/Jargon
         "_is_inx_knot_inclusion_correct",  # used in Nabu/Jargon
         "_is_otx_knot_inclusion_correct",  # used in Nabu/Jargon
+        "_check_core_attrs_match",
         "unknown_str_in_otx2inx",  # RopeMap replaces the inherited MapCore implementation
         "del_otx2inx",  # used in Nabu/Jargon
         "find_replace_rope",  # used by ReasonUnit, CaseUnit, FactUnit classes
