@@ -2,19 +2,21 @@
 
 **Date:** 2026-10-13  
 **Author:** Emmanuel Schalk  
-**Description:** Kazani wrote 'People cannot lie'. Was he lying? No, so what's the implication for political advancement?
+**Description:** Kazani wrote 'People cannot lie'. Was he lying? No, so what's the implication for political advancement?  
+**Note:** Article is incomplete: #TODO: Complete article   
+
 
 *Who succeeds when lying is advantageous?*
 
 ---
 
-Kamil Kazani wrote the article [People cannot lie](../ch40_pop_phil/kazani_people_cannot_lie.md) where he described a theory of lying where he claimed most people a incapable of lying about things they are truly attached to. 
+Kamil Kazani wrote the article [People cannot lie](../ch40_pop_phil/kazani_people_cannot_lie.md) where he described a theory of lying where he claimed most people are incapable of lying about things they are truly attached to. 
 
 This is a tautology: if someone lies about someting that means they aren't really attached to it. And if someone tells the truth then they could be attached or not. The internal state of someone, whether they are lying or not is not a simple yes/no switch you can observe in someone's brain. Lie-detectors don't detect lies, they detect stress. 
 
 Still there is someone deeply interesting about Kazani's claim. I asked friends of mine for a response to this hug claim expecting responses that would be dismissive or clearly expose a failure in it's logic. I got no response. 
 
-So either my friends have more important things to do (likely) or/and they, ilke me, are intrigued by how simple this idea is an now difficult it is to plug holes in it. 
+So either my friends have more important things to do (likely) or/and they, like me, are intrigued by how simple this idea is and now difficult it is to refute it. 
 
 Every theory fails to represent reality because reality is infinitily complex. But theories can be useful. What is the use of 'People cannot lie'?
 
