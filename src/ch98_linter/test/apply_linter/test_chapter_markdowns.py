@@ -325,3 +325,33 @@ def test_markdown_ImageDescriptionsAreUniqueAcrossCodebase_Scenario1_NoDuplicate
         for alt_text, paths in sorted(duplicates.items())
     )
     assert not duplicates, assertion_fail_str
+
+
+SKIPPED_DIR_NAMES = {".git", ".venv", "node_modules"}
+
+
+def get_markdown_bold_line_br_failures(src_dir: Path) -> list[str]:
+    failures = []
+    for chapter_dir in sorted(src_dir.glob("ch[0-9][0-9]_*")):
+        if not chapter_dir.is_dir():
+            continue
+        for md_path in sorted(chapter_dir.glob("*.md")):
+            lines = md_path.read_text(encoding="utf-8").splitlines()
+            for line_number, line in enumerate(lines, start=1):
+                if line.strip() == "***":
+                    continue
+                if line.startswith("**") and not line.endswith("<br>"):
+                    failures.append(f"{md_path}:{line_number}: {line!r}")
+    return failures
+
+
+def test_MarkdownLinesStartingWithBoldEndWithBr() -> None:
+    # GIVEN
+    src_dir = Path(__file__).resolve().parents[3]
+
+    # WHEN
+    failures = get_markdown_bold_line_br_failures(src_dir)
+
+    # THEN
+    print(f"{len(failures)=}")
+    assert not failures, "\n".join(failures)

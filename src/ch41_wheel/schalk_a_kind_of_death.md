@@ -1,7 +1,7 @@
 # A kind of death
 
-**Date:** 2026-10-05  
-**Author:** Emmanuel Schalk      
+**Date:** 2026-10-05<br>
+**Author:** Emmanuel Schalk<br>
 
 > getting what you want all the time
 
@@ -23,8 +23,8 @@ In a real way, you're going to die.
 
 [^1]: Film 
 
-**Date:** 2015  
-**Author:** David Lipsky  
-**Source:** The End of the Tour movie script (2015)    
-**Copied to Keg:** 2026-09-27   
-**Notes:** The Interviewer, David Lipsky, wrote this dialogue from a conversation with David Foster Wallace in 1996. When the internet was just beginning. 
+**Date:** 2015<br>
+**Author:** David Lipsky<br>
+**Source:** The End of the Tour movie script (2015)  <br>
+**Copied to Keg:** 2026-09-27 <br>
+**Notes:** The Interviewer, David Lipsky, wrote this dialogue from a conversation with David Foster Wallace in 1996. When the internet was just beginning.<br>

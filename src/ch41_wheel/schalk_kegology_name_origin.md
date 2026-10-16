@@ -1,7 +1,7 @@
 # Kegology Name Origin
 
-**Date:** 2026-07-06  
-**Author:** Emmanuel Schalk
+**Date:** 2026-07-06<br>
+**Author:** Emmanuel Schalk<br>
 
 Words can mean new things
 
@@ -78,7 +78,7 @@ In conclusion
 
 Sidenote: That's right, I was a insane neoliberal economist before I took up philosophy. I can never really let go of that way of thinking: wanting to objectively find the most efficient solution to make all parties happy is part of who I am. Even though I've seen it's failure every year of my life its hard to let go of what I liked in my formative years. 
 
-**All these articles and the code stored in the github repo are an Introduction to Kegology.**
+**All these articles and the code stored in the github repo are an Introduction to Kegology.**<br>
 
 ---
 

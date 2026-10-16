@@ -1,8 +1,8 @@
 # My Shot [Rise Up Remix]
 
-**Date:** 2016  
-**Author:** Lin Manuel-Miranda, Busta Rhymes, Joell Ortiz & Nate Ruess  
-**Performers:** Lin Manuel-Miranda, Busta Rhymes, Joell Ortiz & Nate Ruess  
+**Date:** 2016<br>
+**Author:** Lin Manuel-Miranda, Busta Rhymes, Joell Ortiz & Nate Ruess<br>
+**Performers:** Lin Manuel-Miranda, Busta Rhymes, Joell Ortiz & Nate Ruess<br>
 
 <div align="center">
 

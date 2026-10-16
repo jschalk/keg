@@ -1,14 +1,14 @@
 # No seriously, I don't give a fuck.
 
-**Date:** 2010-09-08  
-**Author:** Emmanuel Schalk
-**Source:** Emmanuel Schalk personal files   
-**Copied to Keg:** 2026-08-15   
-**Notes:**: This document was found in my personal files. It was written during the first month of my Philosophical career. I still feel this way.
+**Date:** 2010-09-08<br>
+**Author:** Emmanuel Schalk<br>
+**Source:** Emmanuel Schalk personal files <br>
+**Copied to Keg:** 2026-08-15 <br>
+**Notes:**: This document was found in my personal files. It was written during the first month of my Philosophical career. I still feel this way.<br>
 
 ---
 
-**No seriously, I don't give a fuck.<br>Just tell me how to protect me and my family.**
+**No seriously, I don't give a fuck.<br>Just tell me how to protect me and my family.**<br>
 
 So you want to protect your family.
 

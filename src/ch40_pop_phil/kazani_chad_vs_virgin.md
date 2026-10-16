@@ -1,9 +1,9 @@
 # Chad vs Virgin
 
-**Date:** 2025-09-16  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/chad-vs-virgin   
-**Copied to Keg:** 2026-06-26 
+**Date:** 2025-09-16<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/chad-vs-virgin <br>
+**Copied to Keg:** 2026-06-26<br>
 
 ---
 

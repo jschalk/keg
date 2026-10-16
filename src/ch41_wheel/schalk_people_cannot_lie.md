@@ -1,9 +1,9 @@
 # People cannot lie
 
-**Date:** 2026-10-13  
-**Author:** Emmanuel Schalk  
-**Description:** Kazani wrote 'People cannot lie'. Was he lying? No, so what's the implication for political advancement?  
-**Note:** Article is incomplete: #TODO: Complete article   
+**Date:** 2026-10-13<br>
+**Author:** Emmanuel Schalk<br>
+**Description:** Kazani wrote 'People cannot lie'. Was he lying? No, so what's the implication for political advancement?<br>
+**Note:** Article is incomplete: #TODO: Complete article<br>
 
 
 *Who succeeds when lying is advantageous?*

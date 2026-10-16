@@ -1,9 +1,9 @@
 # Why does Russia attack?
 
-**Date:** 2026-02-08  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/why-did-yeltsin-destroy-chechnya  
-**Copied to Keg:** 2026-06-30   
+**Date:** 2026-02-08<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/why-did-yeltsin-destroy-chechnya<br>
+**Copied to Keg:** 2026-06-30<br>
 
 ---
 

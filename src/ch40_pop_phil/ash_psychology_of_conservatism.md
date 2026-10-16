@@ -1,10 +1,10 @@
 # The Psychology of Conservatism: Why Do People Keep Voting for Republicans?
 
-**Date:** 2026-09-13  
-**Author:** Dr. Ash?  
-**Source:** https://www.dailykos.com/stories/2026/9/13/800079546/community/the-psychology-of-conservatism-why-do-people-keep-voting-for-republicans/  
-**Copied to Keg:** 2026-09-14   
-**Notes:** I didn't read the whole thing but the parts I did read were interesting. I don't know if I agree but at least it wasn't trash. 
+**Date:** 2026-09-13<br>
+**Author:** Dr. Ash?<br>
+**Source:** https://www.dailykos.com/stories/2026/9/13/800079546/community/the-psychology-of-conservatism-why-do-people-keep-voting-for-republicans/<br>
+**Copied to Keg:** 2026-09-14 <br>
+**Notes:** I didn't read the whole thing but the parts I did read were interesting. I don't know if I agree but at least it wasn't trash.<br>
 
 
 ---
@@ -21,7 +21,7 @@ I imagine the first word that popped into your head was “racism”. And you’
 
 ### Social Dominance Orientation
 
-**Social dominance orientation**, or SDO, describes the degree to which a person prefers a world sorted into groups on top and groups underneath. Before you say, “that’s just a fancy way of saying racism”—no, it isn’t. Because the sorting criterion isn’t always race; it can be religious affiliation, caste, nationality, gender, or, honestly, any measure by which people can be separated into groups.
+**Social dominance orientation**, or SDO, describes the degree to which a person prefers a world sorted into groups on top and groups underneath. Before you say, “that’s just a fancy way of saying racism”—no, it isn’t. Because the sorting criterion isn’t always race; it can be religious affiliation, caste, nationality, gender, or, honestly, any measure by which people can be separated into groups.<br>
 
 The measure of SDO comes out of work by Felicia Pratto, Jim Sidanius and their colleagues in the 1990s (Pratto et al., 1994; Sidanius & Pratto, 1999). What it’s actually measuring is a belief about **structure**. Not a belief about Black people or immigrants or the poor (which is why so many will deny being bigots and genuinely believe it), but a belief that some arrangement of above-and-below is natural and necessary, and that flattening it produces disorder rather than justice. High-SDO people aren’t necessarily hostile to anyone in particular. They’re uneasy about social engineering efforts to promote equality in principle.
 
@@ -33,7 +33,7 @@ SDO is a value premise, and everyone sits somewhere on that spectrum. Given a st
 
 But hierarchy doesn’t tell the whole story. Because before you can worry about which groups should be above which other groups, you have to decide something even more fundamental:
 
-**Who are my people?**
+**Who are my people?**<br>
 
 ### Politics as Group Identity
 
@@ -131,7 +131,7 @@ And underneath that concern is often a zero-sum assumption: power gained by *the
 
 Authoritarianism helps explain why supposedly bedrock principles can become flexible when social order feels threatened. But that leaves another question:
 
-**How does someone make that switch without experiencing themselves as a hypocrite?**
+**How does someone make that switch without experiencing themselves as a hypocrite?**<br>
 
 This is where *motivated reasoning comes in.*
 
@@ -141,7 +141,7 @@ Charles Taber and Milton Lodge (2006) found that people judged arguments support
 
 And this isn’t uniquely conservative. Liberals do it, too. A meta-analysis by Peter Ditto and colleagues (2019) found roughly equivalent partisan bias on the left and right. The psychological vulnerability is bipartisan, my brothers and sisters. We need to remember that.
 
-**But the political environment in which that vulnerability operates isn’t symmetrical.**
+**But the political environment in which that vulnerability operates isn’t symmetrical.**<br>
 
 Yochai Benkler, Robert Faris and Hal Roberts (2018), analyzing millions of political stories and social-media posts, described a particularly insular right-wing media ecosystem in which partisan sources repeatedly reinforced one another while teaching audiences to distrust outside institutions that might correct false claims.
 

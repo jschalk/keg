@@ -1,7 +1,7 @@
 # All the Monolopy Game required parts
 
-**Date:** 2026-06-21  
-**Author:** chatgpt.com
+**Date:** 2026-06-21<br>
+**Author:** chatgpt.com<br>
 
 ## Homemade Monopoly Set Construction Guide (created by chatgpt)
 

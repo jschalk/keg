@@ -1,9 +1,9 @@
 # Against the brainrot
 
-**Date:** 2025-11-07  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/against-the-brainrot  
-**Copied to Keg:** 2026-06-09 
+**Date:** 2025-11-07<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/against-the-brainrot<br>
+**Copied to Keg:** 2026-06-09<br>
 
 ---
 

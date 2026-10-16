@@ -1,7 +1,7 @@
 # Sean called
 
-**Date:** 2026-09-25  
-**Author:** Emmanuel Schalk       
+**Date:** 2026-09-25<br>
+**Author:** Emmanuel Schalk<br>
 
 > *They are the best managed companies in America*
 

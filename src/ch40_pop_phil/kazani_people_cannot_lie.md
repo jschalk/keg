@@ -1,9 +1,9 @@
 # People cannot lie
 
-**Date:** 2026-03-06  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/people-cannot-lie?utm_source=publication-search   
-**Copied to Keg:** 2026-10-13 
+**Date:** 2026-03-06<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/people-cannot-lie <br>
+**Copied to Keg:** 2026-10-13<br>
 
 
 ---

@@ -1,9 +1,9 @@
 # Jules Simon's Emmanuel Levinas Class Protocol 
 
-**Date:** 2014-3-18  
-**Author:** Guillermo Estrada  
-**Source:** Shared file from Guillermo
-**Copied to Keg:** 2026-08-14   
+**Date:** 2014-3-18<br>
+**Author:** Guillermo Estrada<br>
+**Source:** Shared file from Guillermo<br>
+**Copied to Keg:** 2026-08-14<br>
 
 ---
 

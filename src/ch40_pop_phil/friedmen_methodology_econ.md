@@ -1,8 +1,8 @@
 # The Methodology of Positive Economics
 
-**Date:** 1953  
-**Author:** Milton Friedmen  
-**Source:** In Essays In Positive Economics (Chicago: Univ. of Chicago Press, 1966), pp. 3-16, 30-43.  
+**Date:** 1953<br>
+**Author:** Milton Friedmen<br>
+**Source:** In Essays In Positive Economics (Chicago: Univ. of Chicago Press, 1966), pp. 3-16, 30-43.<br>
 **Copied to Keg:** 2026-08-09<br>
 **Copy Note:** This conversion was done quickly, it could easily be improved.<br>
 

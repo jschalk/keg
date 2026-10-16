@@ -1,9 +1,9 @@
 # The Old Regime and the Revolution
 
-**Date:** 2025-08-02  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/the-old-regime-and-the-revolution   
-**Copied to Keg:** 2025-10-11 
+**Date:** 2025-08-02<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/the-old-regime-and-the-revolution <br>
+**Copied to Keg:** 2025-10-11<br>
 
 
 ---
@@ -160,7 +160,7 @@ But how? Like how you do that, practically speaking? You have just said that the
 
 Well, Louis XIV’s decision was more cunning than that. He did not strip the noble governors from their offices, and he in fact kept appointing the noblemen to that particular position, maintaining its purely noble, aristocratic status. What he did was more interesting
 
-**Instead of abolishing the old office, he created a new one, and transferred all the real power, and all the real decision making there.** He kept the prestige, the status and the pomp with the old guy, but he gave all the real practical power to the new guy
+Instead of abolishing the old office, **he created a new one, and transferred all the real power, and all the real decision making there.** He kept the prestige, the status and the pomp with the old guy, but he gave all the real practical power to the new guy
 
 The old guy was called “governor”, the new guy was called “intendant”
 

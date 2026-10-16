@@ -1,9 +1,9 @@
 # On fascination by Tudors
 
-**Date:** 2025-09-13  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/on-fascination-by-tudors  
-**Copied to Keg:** 2026-10-15
+**Date:** 2025-09-13<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/on-fascination-by-tudors<br>
+**Copied to Keg:** 2026-10-15<br>
 
 
 ---

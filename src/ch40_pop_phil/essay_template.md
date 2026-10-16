@@ -1,9 +1,9 @@
 # Document Title
 
-**Date:** YYYY-MM-DD  
-**Author:** Author Name
-**Source:** www.source_url.com
-**Copied to Keg:** 2026-06-24 
+**Date:** YYYY-MM-DD<br>
+**Author:** Author Name<br>
+**Source:** www.source_url.com<br>
+**Copied to Keg:** 2026-06-24<br>
 
 One-line tagline
 

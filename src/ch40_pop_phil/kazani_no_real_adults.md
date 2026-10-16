@@ -1,9 +1,9 @@
 # No real adults
 
-**Date:** 2026-09-18  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/no-real-adults  
-**Copied to Keg:** 2026-09-18 
+**Date:** 2026-09-18<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/no-real-adults<br>
+**Copied to Keg:** 2026-09-18<br>
 
 ---
 

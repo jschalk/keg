@@ -1,10 +1,10 @@
 # The Procedurality
 
-**Date:** 2022-5-24  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/the-procedurality  
-**Copied to Keg:** 2022-06-24   
-**Copier Note:** Ends with either ruthless meanness or black humor   
+**Date:** 2022-5-24<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/the-procedurality<br>
+**Copied to Keg:** 2022-06-24 <br>
+**Copier Note:** Ends with either ruthless meanness or black humor<br>
 
 
 ---

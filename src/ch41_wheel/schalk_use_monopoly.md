@@ -1,9 +1,9 @@
 # Monopoly the Game and Understanding Money Supply
 
-**Date:** 2026-06-21  
-**Author:** Emmanuel Schalk
-**Status:** Currently just a draft
-**Date complete:**   
+**Date:** 2026-06-21<br>
+**Author:** Emmanuel Schalk<br>
+**Status:** Currently just a draft<br>
+**Date complete:**<br>
 
 > Use Monopoly to create your Disciplined Moment
 

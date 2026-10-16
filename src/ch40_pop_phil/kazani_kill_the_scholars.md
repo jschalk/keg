@@ -1,9 +1,9 @@
 # Kill the Scholars
 
-**Date:** 2025-08-02  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/kill-the-scholars  
-**Copied to Keg:** 2026-06-09 
+**Date:** 2025-08-02<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/kill-the-scholars<br>
+**Copied to Keg:** 2026-06-09<br>
 
 > First thing you must understand about the fabric of social reality is that intellectuals matter
 

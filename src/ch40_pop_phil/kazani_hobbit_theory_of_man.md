@@ -1,9 +1,9 @@
 # The Hobbit Theory of Man
 
-**Date:** 2026-06-14  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/the-hobbit-theory-of-man  
-**Copied to Keg:** 2026-06-14 
+**Date:** 2026-06-14<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/the-hobbit-theory-of-man<br>
+**Copied to Keg:** 2026-06-14<br>
 
 
 ---
@@ -103,7 +103,7 @@ The lack of enthusiasm in hounding the outgroup exposes yourself as a hidden age
 
 Which brings us to our last point. The Theory of Conflict.
 
-**
+***
 
 People fight. They fight constantly, and in many different ways. Why do they fight?
 

@@ -1,7 +1,7 @@
 # On Writing Slogans or Lectures or Books
 
-**Date:** 2026-06-14  
-**Author:** Emmanuel Schalk
+**Date:** 2026-06-14<br>
+**Author:** Emmanuel Schalk<br>
 
 `As a Philosopher you must be trained to write to your audience.`
 

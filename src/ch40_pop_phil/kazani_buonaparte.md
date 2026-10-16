@@ -1,10 +1,10 @@
 # Buonaparte
 
-**Date:** 2025-08-21  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/buonaparte  
-**Copied to Keg:** 2026-08-21  
-**Note:** A story about how gratitude works in high politics  
+**Date:** 2025-08-21<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/buonaparte<br>
+**Copied to Keg:** 2026-08-21<br>
+**Note:** A story about how gratitude works in high politics<br>
 
 ---
 

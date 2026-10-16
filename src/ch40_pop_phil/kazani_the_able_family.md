@@ -1,9 +1,9 @@
  # The Able Family
 
-**Date:** 2024-09-07  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/the-able-family  
-**Copied to Keg:** 2026-06-14
+**Date:** 2024-09-07<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/the-able-family<br>
+**Copied to Keg:** 2026-06-14<br>
 
 > On the Social Origins of Vladimir Lenin.
 
@@ -32,7 +32,7 @@ And, perhaps, no family can illustrate this principle better than the family of 
 
 That was, beyond any doubt, an extraordinary family; a brilliant example of meritocracy, of upward social mobility, and of the socio-political effects they produce.
 
-**Grandfather**
+**Grandfather**<br>
 
 Nikolay Ulyanov was born in 1768[^3], as a serf.
 
@@ -54,7 +54,7 @@ To understand the history, you need to understand geography. And to understand t
 
 <div align="center"><img src="images/black_soils.webp" alt="Blacks Soils vs Non Black Soils" width="700"></div>
 
-**Blacks Soils vs Non Black Soils**. Which means the Fertile South vs Infertile North.
+ **Blacks Soils vs Non Black Soils**. Which means the Fertile South vs Infertile North.
 
 The south of what is now European Russia is classified as the “Black Soils” area. Historically, a part of the Eurasian Steppe, it was highly fertile producing amazing crop yields. This area ranged from the good to great for grain farming.
 

@@ -1,10 +1,10 @@
 # The Magic Worlds of Dmitry Galkovsky
 
-**Date:** 2023-10-22  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/the-magic-worlds-of-dmitry-galkovsky  
-**Copied to Keg:** 2026-08-03   
-**Subtitle:** From June 4, 2022 Twitter thread  
+**Date:** 2023-10-22<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/the-magic-worlds-of-dmitry-galkovsky<br>
+**Copied to Keg:** 2026-08-03 <br>
+**Subtitle:** From June 4, 2022 Twitter thread<br>
 
 ---
 

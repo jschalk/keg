@@ -1,9 +1,9 @@
 # On fertility
 
-**Date:** 2025-08-02  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/on-fertility  
-**Copied to Keg:** 2026-06-09 
+**Date:** 2025-08-02<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/on-fertility<br>
+**Copied to Keg:** 2026-06-09<br>
 
 
 ---
