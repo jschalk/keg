@@ -21,6 +21,13 @@ def test_NameYap_Exists():
     assert not x_nameyap.iux2aux
     assert not x_nameyap.iux_knot
     assert not x_nameyap.aux_knot
+    assert set(x_nameyap.__dict__.keys()) == {
+        kw.flare_audie,
+        kw.flare_num,
+        kw.iux2aux,
+        kw.iux_knot,
+        kw.aux_knot,
+    }
 
 
 def test_nameyap_shop_ReturnsObj_Scenario0():

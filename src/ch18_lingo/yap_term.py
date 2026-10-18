@@ -131,78 +131,74 @@ def get_nameyap_from_dict(x_dict: dict) -> NameYap:
     )
 
 
-# class TitleYap(YapCore):
-#     def set_iux2aux(self, iux_title: str, aux_title: str):
-#         self.iux2aux[iux_title] = aux_title
+class TitleYap(YapCore):
+    def set_iux2aux(self, iux_title: str, aux_title: str):
+        self.iux2aux[iux_title] = aux_title
 
-#     def get_aux_value(self, iux_title: str) -> str:
-#         return self.iux2aux.get(iux_title)
+    def get_aux_value(self, iux_title: str) -> str:
+        return self.iux2aux.get(iux_title)
 
-#     def iux2aux_exists(self, iux_title: str, aux_title: str) -> bool:
-#         return self.get_aux_value(iux_title) == aux_title
+    def iux2aux_exists(self, iux_title: str, aux_title: str) -> bool:
+        return self.get_aux_value(iux_title) == aux_title
 
-#     def iux_exists(self, iux_title: str) -> bool:
-#         return self.get_aux_value(iux_title) != None
+    def iux_exists(self, iux_title: str) -> bool:
+        return self.get_aux_value(iux_title) != None
 
-#     def del_iux2aux(self, iux_title: str):
-#         self.iux2aux.pop(iux_title)
+    def del_iux2aux(self, iux_title: str):
+        self.iux2aux.pop(iux_title)
 
-#     def reveal_aux(self, iux_title: str, missing_add: bool = True) -> str:
-#         if missing_add and self.iux_exists(iux_title) is False:
-#             aux_title = copy_copy(iux_title)
-#             if self.aux_knot in iux_title:
-#                 return None
-#             iux_r_knot = self.iux_knot
-#             aux_r_knot = self.aux_knot
-#             aux_title = aux_title.replace(iux_r_knot, aux_r_knot)
-#             self.set_iux2aux(iux_title, aux_title)
+    def reveal_aux(self, iux_title: str, missing_add: bool = True) -> str:
+        if missing_add and self.iux_exists(iux_title) is False:
+            aux_title = copy_copy(iux_title)
+            if self.aux_knot in iux_title:
+                return None
+            iux_r_knot = self.iux_knot
+            aux_r_knot = self.aux_knot
+            aux_title = aux_title.replace(iux_r_knot, aux_r_knot)
+            self.set_iux2aux(iux_title, aux_title)
 
-#         return self.get_aux_value(iux_title)
+        return self.get_aux_value(iux_title)
 
-#     def _is_aux_knot_inclusion_correct(self):
-#         return str_in_all_dict_values(self.aux_knot, self.iux2aux)
+    def _is_aux_knot_inclusion_correct(self):
+        return str_in_all_dict_values(self.aux_knot, self.iux2aux)
 
-#     def _is_iux_knot_inclusion_correct(self):
-#         return str_in_all_dict_keys(self.iux_knot, self.iux2aux)
+    def _is_iux_knot_inclusion_correct(self):
+        return str_in_all_dict_keys(self.iux_knot, self.iux2aux)
 
-#     def is_valid(self):
-#         return (
-#             self._is_iux_knot_inclusion_correct()
-#             and self._is_aux_knot_inclusion_correct()
-#         )
-
-
-# def titleyap_shop(
-#     flare_audie: AudieTitle = None,
-#     flare_num: FlareInt = None,
-#     iux_knot: KnotTerm = None,
-#     aux_knot: KnotTerm = None,
-#     iux2aux: dict = None,
-#     unknown_str: str = None,
-# ) -> TitleYap:
-#     unknown_str = default_unknown_str_if_None(unknown_str)
-#     iux_knot = default_knot_if_None(iux_knot)
-#     aux_knot = default_knot_if_None(aux_knot)
-
-#     return TitleYap(
-#         flare_audie=flare_audie,
-#         flare_num=get_0_if_None(flare_num),
-#         iux_knot=iux_knot,
-#         aux_knot=aux_knot,
-#         unknown_str=unknown_str,
-#         iux2aux=get_empty_dict_if_None(iux2aux),
-#     )
+    def is_valid(self):
+        return (
+            self._is_iux_knot_inclusion_correct()
+            and self._is_aux_knot_inclusion_correct()
+        )
 
 
-# def get_titleyap_from_dict(x_dict: dict) -> TitleYap:
-#     return titleyap_shop(
-#         flare_audie=x_dict.get("flare_audie"),
-#         flare_num=x_dict.get("flare_num"),
-#         iux_knot=x_dict.get("iux_knot"),
-#         aux_knot=x_dict.get("aux_knot"),
-#         iux2aux=x_dict.get("iux2aux"),
-#         unknown_str=x_dict.get("unknown_str"),
-#     )
+def titleyap_shop(
+    flare_audie: AudieTitle = None,
+    flare_num: FlareInt = None,
+    iux_knot: KnotTerm = None,
+    aux_knot: KnotTerm = None,
+    iux2aux: dict = None,
+) -> TitleYap:
+    iux_knot = default_knot_if_None(iux_knot)
+    aux_knot = default_knot_if_None(aux_knot)
+
+    return TitleYap(
+        flare_audie=flare_audie,
+        flare_num=get_0_if_None(flare_num),
+        iux_knot=iux_knot,
+        aux_knot=aux_knot,
+        iux2aux=get_empty_dict_if_None(iux2aux),
+    )
+
+
+def get_titleyap_from_dict(x_dict: dict) -> TitleYap:
+    return titleyap_shop(
+        flare_audie=x_dict.get("flare_audie"),
+        flare_num=x_dict.get("flare_num"),
+        iux_knot=x_dict.get("iux_knot"),
+        aux_knot=x_dict.get("aux_knot"),
+        iux2aux=x_dict.get("iux2aux"),
+    )
 
 
 # class LabelYap(YapCore):
@@ -252,9 +248,7 @@ def get_nameyap_from_dict(x_dict: dict) -> NameYap:
 #     iux_knot: KnotTerm = None,
 #     aux_knot: KnotTerm = None,
 #     iux2aux: dict = None,
-#     unknown_str: str = None,
 # ) -> LabelYap:
-#     unknown_str = default_unknown_str_if_None(unknown_str)
 #     iux_knot = default_knot_if_None(iux_knot)
 #     aux_knot = default_knot_if_None(aux_knot)
 
@@ -263,7 +257,6 @@ def get_nameyap_from_dict(x_dict: dict) -> NameYap:
 #         flare_num=get_0_if_None(flare_num),
 #         iux_knot=iux_knot,
 #         aux_knot=aux_knot,
-#         unknown_str=unknown_str,
 #         iux2aux=get_empty_dict_if_None(iux2aux),
 #     )
 
@@ -275,7 +268,6 @@ def get_nameyap_from_dict(x_dict: dict) -> NameYap:
 #         iux_knot=x_dict.get("iux_knot"),
 #         aux_knot=x_dict.get("aux_knot"),
 #         iux2aux=x_dict.get("iux2aux"),
-#         unknown_str=x_dict.get("unknown_str"),
 #     )
 
 
@@ -284,18 +276,13 @@ def get_nameyap_from_dict(x_dict: dict) -> NameYap:
 #     flare_audie: AudieTitle = None
 #     flare_num: FlareInt = None
 #     iux2aux: dict = None
-#     unknown_str: str = None
 #     iux_knot: KnotTerm = None
 #     aux_knot: KnotTerm = None
 #     labelyap: LabelYap = None
 
 #     def set_all_iux2aux(
-#         self, x_iux2aux: dict, raise_exception_if_invalid: bool = False
+#         self, x_iux2aux: dict
 #     ):
-#         if raise_exception_if_invalid and str_in_dict(self.unknown_str, x_iux2aux):
-#             error_dict = get_str_in_sub_dict(self.unknown_str, x_iux2aux)
-#             exception_str = f"iux2aux cannot have unknown_str '{self.unknown_str}' in any str. Affected keys include {list(error_dict.keys())}."
-#             raise SetAlliux2auxError(exception_str)
 #         self.iux2aux = x_iux2aux
 
 #     def set_iux2aux(self, iux_rope: str, aux_rope: str):
@@ -367,8 +354,6 @@ def get_nameyap_from_dict(x_dict: dict) -> NameYap:
 #     def del_label(self, iux_label: LabelTerm) -> bool:
 #         self.labelyap.del_iux2aux(iux_label)
 
-#     def unknown_str_in_iux2aux(self) -> bool:
-#         return str_in_dict(self.unknown_str, self.iux2aux)
 
 #     def all_iux_parent_ropes_exist(self) -> bool:
 #         for x_rope in self.iux2aux.keys():
@@ -388,7 +373,6 @@ def get_nameyap_from_dict(x_dict: dict) -> NameYap:
 #             "flare_num": self.flare_num,
 #             "iux_knot": self.iux_knot,
 #             "aux_knot": self.aux_knot,
-#             "unknown_str": self.unknown_str,
 #             "iux2aux": self.iux2aux,
 #         }
 
@@ -400,9 +384,7 @@ def get_nameyap_from_dict(x_dict: dict) -> NameYap:
 #     aux_knot: KnotTerm = None,
 #     x_labelyap: LabelYap = None,
 #     iux2aux: dict = None,
-#     unknown_str: str = None,
 # ) -> RopeYap:
-#     unknown_str = default_unknown_str_if_None(unknown_str)
 #     iux_knot = default_knot_if_None(iux_knot)
 #     aux_knot = default_knot_if_None(aux_knot)
 
@@ -410,14 +392,12 @@ def get_nameyap_from_dict(x_dict: dict) -> NameYap:
 #         x_labelyap = labelyap_shop(
 #             iux_knot=iux_knot,
 #             aux_knot=aux_knot,
-#             unknown_str=unknown_str,
 #             flare_audie=flare_audie,
 #             flare_num=flare_num,
 #         )
 
 #     return RopeYap(
 #         iux2aux=get_empty_dict_if_None(iux2aux),
-#         unknown_str=unknown_str,
 #         iux_knot=iux_knot,
 #         aux_knot=aux_knot,
 #         labelyap=x_labelyap,
@@ -433,7 +413,6 @@ def get_nameyap_from_dict(x_dict: dict) -> NameYap:
 #         iux_knot=x_dict.get("iux_knot"),
 #         aux_knot=x_dict.get("aux_knot"),
 #         iux2aux=x_dict.get("iux2aux"),
-#         unknown_str=x_dict.get("unknown_str"),
 #     )
 
 
@@ -464,8 +443,8 @@ def inherit_nameyap(new: NameYap, old: NameYap) -> NameYap:
     return _inherit_yapunit(new, old)
 
 
-# def inherit_titleyap(new: TitleYap, old: TitleYap) -> TitleYap:
-#     return _inherit_yapunit(new, old)
+def inherit_titleyap(new: TitleYap, old: TitleYap) -> TitleYap:
+    return _inherit_yapunit(new, old)
 
 
 # def inherit_labelyap(new: LabelYap, old: LabelYap) -> LabelYap:
