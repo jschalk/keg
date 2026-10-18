@@ -271,149 +271,146 @@ def get_labelyap_from_dict(x_dict: dict) -> LabelYap:
     )
 
 
-# @dataclass
-# class RopeYap:
-#     flare_audie: AudieTitle = None
-#     flare_num: FlareInt = None
-#     iux2aux: dict = None
-#     iux_knot: KnotTerm = None
-#     aux_knot: KnotTerm = None
-#     labelyap: LabelYap = None
+@dataclass
+class RopeYap:
+    flare_audie: AudieTitle = None
+    flare_num: FlareInt = None
+    iux2aux: dict = None
+    iux_knot: KnotTerm = None
+    aux_knot: KnotTerm = None
+    labelyap: LabelYap = None
 
-#     def set_all_iux2aux(
-#         self, x_iux2aux: dict
-#     ):
-#         self.iux2aux = x_iux2aux
+    def set_all_iux2aux(self, x_iux2aux: dict):
+        self.iux2aux = x_iux2aux
 
-#     def set_iux2aux(self, iux_rope: str, aux_rope: str):
-#         self.iux2aux[iux_rope] = aux_rope
+    def set_iux2aux(self, iux_rope: str, aux_rope: str):
+        self.iux2aux[iux_rope] = aux_rope
 
-#     def get_aux_value(self, iux_rope: str) -> str:
-#         return self.iux2aux.get(iux_rope)
+    def get_aux_value(self, iux_rope: str) -> str:
+        return self.iux2aux.get(iux_rope)
 
-#     def reveal_aux(self, iux_rope: str, missing_add: bool = True) -> str:
-#         if missing_add and self.iux_exists(iux_rope) is False:
-#             aux_rope = copy_copy(iux_rope)
-#             aux_rope = self._reveal_rope_aux(iux_rope)
-#             self.set_iux2aux(iux_rope, aux_rope)
+    #     def reveal_aux(self, iux_rope: str, missing_add: bool = True) -> str:
+    #         if missing_add and self.iux_exists(iux_rope) is False:
+    #             aux_rope = copy_copy(iux_rope)
+    #             aux_rope = self._reveal_rope_aux(iux_rope)
+    #             self.set_iux2aux(iux_rope, aux_rope)
 
-#         return self.get_aux_value(iux_rope)
+    #         return self.get_aux_value(iux_rope)
 
-#     def _reveal_rope_aux(self, iux_rope) -> RopeTerm:
-#         iux_parent_rope = get_parent_rope(iux_rope, self.iux_knot)
-#         if self.iux_exists(iux_parent_rope) is False and iux_parent_rope != "":
-#             return None
-#         iux_tail = get_tail_label(iux_rope, self.iux_knot)
-#         iux_tail = self._get_labelyap_labelterm(iux_tail)
-#         if iux_parent_rope == "":
-#             aux_parent_rope = ""
-#         else:
-#             aux_parent_rope = self.get_aux_value(iux_parent_rope)
-#         return create_rope(aux_parent_rope, iux_tail, self.aux_knot)
+    #     def _reveal_rope_aux(self, iux_rope) -> RopeTerm:
+    #         iux_parent_rope = get_parent_rope(iux_rope, self.iux_knot)
+    #         if self.iux_exists(iux_parent_rope) is False and iux_parent_rope != "":
+    #             return None
+    #         iux_tail = get_tail_label(iux_rope, self.iux_knot)
+    #         iux_tail = self._get_labelyap_labelterm(iux_tail)
+    #         if iux_parent_rope == "":
+    #             aux_parent_rope = ""
+    #         else:
+    #             aux_parent_rope = self.get_aux_value(iux_parent_rope)
+    #         return create_rope(aux_parent_rope, iux_tail, self.aux_knot)
 
-#     def _get_labelyap_labelterm(self, x_labelTerm: LabelTerm) -> LabelTerm:
-#         if self.iux_label_exists(x_labelTerm):
-#             return self.labelyap.reveal_aux(x_labelTerm)
-#         return x_labelTerm
+    #     def _get_labelyap_labelterm(self, x_labelTerm: LabelTerm) -> LabelTerm:
+    #         if self.iux_label_exists(x_labelTerm):
+    #             return self.labelyap.reveal_aux(x_labelTerm)
+    #         return x_labelTerm
 
-#     def iux2aux_exists(self, iux_rope: str, aux_rope: str) -> bool:
-#         return self.get_aux_value(iux_rope) == aux_rope
+    def iux2aux_exists(self, iux_rope: str, aux_rope: str) -> bool:
+        return self.get_aux_value(iux_rope) == aux_rope
 
-#     def iux_exists(self, iux_rope: str) -> bool:
-#         return self.get_aux_value(iux_rope) != None
+    def iux_exists(self, iux_rope: str) -> bool:
+        return self.get_aux_value(iux_rope) != None
 
-#     def del_iux2aux(self, iux_rope: str):
-#         self.iux2aux.pop(iux_rope)
+    def del_iux2aux(self, iux_rope: str):
+        self.iux2aux.pop(iux_rope)
 
-#     def set_label(self, iux_label: LabelTerm, aux_label: LabelTerm):
-#         if self.iux_knot in iux_label:
-#             exception_str = f"label cannot have iux_label '{iux_label}'. It must be not have knot {self.iux_knot}."
-#             raise SetLabelError(exception_str)
-#         if self.aux_knot in aux_label:
-#             exception_str = f"label cannot have aux_label '{aux_label}'. It must be not have knot {self.aux_knot}."
-#             raise SetLabelError(exception_str)
+    def set_label(self, iux_label: LabelTerm, aux_label: LabelTerm):
+        if self.iux_knot in iux_label:
+            exception_str = f"label cannot have iux_label '{iux_label}'. It must be not have knot {self.iux_knot}."
+            raise SetLabelError(exception_str)
+        if self.aux_knot in aux_label:
+            exception_str = f"label cannot have aux_label '{aux_label}'. It must be not have knot {self.aux_knot}."
+            raise SetLabelError(exception_str)
 
-#         self.labelyap.set_iux2aux(iux_label, aux_label)
-#         self._set_new_label_to_iux_aux(iux_label, aux_label)
+        self.labelyap.set_iux2aux(iux_label, aux_label)
+        self._set_new_label_to_iux_aux(iux_label, aux_label)
 
-#     def _set_new_label_to_iux_aux(self, iux_label, aux_label):
-#         for iux_rope, aux_rope in self.iux2aux.items():
-#             iux_labelterms = get_all_rope_labels(iux_rope, self.iux_knot)
-#             aux_labelterms = get_all_rope_labels(aux_rope, self.aux_knot)
-#             for x_count, iux_labelterm in enumerate(iux_labelterms):
-#                 if iux_labelterm == iux_label:
-#                     aux_labelterms[x_count] = aux_label
-#             self.set_iux2aux(iux_rope, create_rope_from_labels(aux_labelterms))
+    def _set_new_label_to_iux_aux(self, iux_label, aux_label):
+        for iux_rope, aux_rope in self.iux2aux.items():
+            iux_labelterms = get_all_rope_labels(iux_rope, self.iux_knot)
+            aux_labelterms = get_all_rope_labels(aux_rope, self.aux_knot)
+            for x_count, iux_labelterm in enumerate(iux_labelterms):
+                if iux_labelterm == iux_label:
+                    aux_labelterms[x_count] = aux_label
+            self.set_iux2aux(iux_rope, create_rope_from_labels(aux_labelterms))
 
-#     def label_exists(self, iux_label: LabelTerm, aux_label: LabelTerm) -> bool:
-#         return self.labelyap.iux2aux_exists(iux_label, aux_label)
+    def label_exists(self, iux_label: LabelTerm, aux_label: LabelTerm) -> bool:
+        return self.labelyap.iux2aux_exists(iux_label, aux_label)
 
-#     def iux_label_exists(self, iux_label: LabelTerm) -> bool:
-#         return self.labelyap.iux_exists(iux_label)
+    def iux_label_exists(self, iux_label: LabelTerm) -> bool:
+        return self.labelyap.iux_exists(iux_label)
 
-#     def del_label(self, iux_label: LabelTerm) -> bool:
-#         self.labelyap.del_iux2aux(iux_label)
+    def del_label(self, iux_label: LabelTerm) -> bool:
+        self.labelyap.del_iux2aux(iux_label)
 
+    def all_iux_parent_ropes_exist(self) -> bool:
+        for x_rope in self.iux2aux.keys():
+            parent_rope = get_parent_rope(x_rope, self.iux_knot)
+            if parent_rope and self.iux_exists(parent_rope) is False:
+                return False
+        return True
 
-#     def all_iux_parent_ropes_exist(self) -> bool:
-#         for x_rope in self.iux2aux.keys():
-#             parent_rope = get_parent_rope(x_rope, self.iux_knot)
-#             if parent_rope and self.iux_exists(parent_rope) is False:
-#                 return False
-#         return True
+    def is_valid(self) -> bool:
+        return self.all_iux_parent_ropes_exist()
 
-#     def is_valid(self) -> bool:
-#         return self.all_iux_parent_ropes_exist()
+    def to_dict(self) -> dict:
+        """Returns dict that is serializable to JSON."""
 
-#     def to_dict(self) -> dict:
-#         """Returns dict that is serializable to JSON."""
-
-#         return {
-#             "flare_audie": self.flare_audie,
-#             "flare_num": self.flare_num,
-#             "iux_knot": self.iux_knot,
-#             "aux_knot": self.aux_knot,
-#             "iux2aux": self.iux2aux,
-#         }
+        return {
+            "flare_audie": self.flare_audie,
+            "flare_num": self.flare_num,
+            "iux_knot": self.iux_knot,
+            "aux_knot": self.aux_knot,
+            "iux2aux": self.iux2aux,
+        }
 
 
-# def ropeyap_shop(
-#     flare_audie: AudieTitle = None,
-#     flare_num: FlareInt = None,
-#     iux_knot: KnotTerm = None,
-#     aux_knot: KnotTerm = None,
-#     x_labelyap: LabelYap = None,
-#     iux2aux: dict = None,
-# ) -> RopeYap:
-#     iux_knot = default_knot_if_None(iux_knot)
-#     aux_knot = default_knot_if_None(aux_knot)
+def ropeyap_shop(
+    flare_audie: AudieTitle = None,
+    flare_num: FlareInt = None,
+    iux_knot: KnotTerm = None,
+    aux_knot: KnotTerm = None,
+    x_labelyap: LabelYap = None,
+    iux2aux: dict = None,
+) -> RopeYap:
+    iux_knot = default_knot_if_None(iux_knot)
+    aux_knot = default_knot_if_None(aux_knot)
 
-#     if x_labelyap is None:
-#         x_labelyap = labelyap_shop(
-#             iux_knot=iux_knot,
-#             aux_knot=aux_knot,
-#             flare_audie=flare_audie,
-#             flare_num=flare_num,
-#         )
+    if x_labelyap is None:
+        x_labelyap = labelyap_shop(
+            iux_knot=iux_knot,
+            aux_knot=aux_knot,
+            flare_audie=flare_audie,
+            flare_num=flare_num,
+        )
 
-#     return RopeYap(
-#         iux2aux=get_empty_dict_if_None(iux2aux),
-#         iux_knot=iux_knot,
-#         aux_knot=aux_knot,
-#         labelyap=x_labelyap,
-#         flare_audie=flare_audie,
-#         flare_num=get_0_if_None(flare_num),
-#     )
+    return RopeYap(
+        iux2aux=get_empty_dict_if_None(iux2aux),
+        iux_knot=iux_knot,
+        aux_knot=aux_knot,
+        labelyap=x_labelyap,
+        flare_audie=flare_audie,
+        flare_num=get_0_if_None(flare_num),
+    )
 
 
-# def get_ropeyap_from_dict(x_dict: dict) -> RopeYap:
-#     return ropeyap_shop(
-#         flare_audie=x_dict.get("flare_audie"),
-#         flare_num=x_dict.get("flare_num"),
-#         iux_knot=x_dict.get("iux_knot"),
-#         aux_knot=x_dict.get("aux_knot"),
-#         iux2aux=x_dict.get("iux2aux"),
-#     )
+def get_ropeyap_from_dict(x_dict: dict) -> RopeYap:
+    return ropeyap_shop(
+        flare_audie=x_dict.get("flare_audie"),
+        flare_num=x_dict.get("flare_num"),
+        iux_knot=x_dict.get("iux_knot"),
+        aux_knot=x_dict.get("aux_knot"),
+        iux2aux=x_dict.get("iux2aux"),
+    )
 
 
 class YapCoreAttrConflictError(Exception):
@@ -451,5 +448,5 @@ def inherit_labelyap(new: LabelYap, old: LabelYap) -> LabelYap:
     return _inherit_yapunit(new, old)
 
 
-# def inherit_ropeyap(new: RopeYap, old: RopeYap) -> RopeYap:
-#     return _inherit_yapunit(new, old)
+def inherit_ropeyap(new: RopeYap, old: RopeYap) -> RopeYap:
+    return _inherit_yapunit(new, old)
