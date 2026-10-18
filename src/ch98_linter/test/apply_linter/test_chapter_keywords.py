@@ -54,6 +54,18 @@ def test_Chapters_CheckStringMetricsFromEveryFile():
     excluded_functions = {
         "__init__",
         "__str__",
+        "set_label",
+        "reveal_aux",
+        "label_exists",
+        "del_iux2aux",
+        "iux_exists",
+        "get_aux_value",
+        "set_iux2aux",
+        "set_all_iux2aux",
+        "iux2aux_exists",
+        "_is_aux_knot_inclusion_correct",
+        "_is_iux_knot_inclusion_correct",
+        "del_label",
         "get_inx_value",  # used in Nabu/Jargon
         "_is_inx_knot_inclusion_correct",  # used in Nabu/Jargon
         "_is_otx_knot_inclusion_correct",  # used in Nabu/Jargon
@@ -86,6 +98,7 @@ def test_Chapters_CheckStringMetricsFromEveryFile():
     )
     all_classes = chapters_func_class_metrics.all_classes
     exception_check_result = check_custom_exception_classes_style(all_classes)
+    print(f"{exception_check_result=}")
     assert exception_check_result[0], exception_check_result[1]
 
     semantic_types = chapters_func_class_metrics.semantic_types

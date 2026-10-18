@@ -27,10 +27,6 @@ from copy import copy as copy_copy
 from dataclasses import dataclass
 
 
-class SetAlliux2auxError(Exception):
-    pass
-
-
 class SetLabelError(Exception):
     pass
 

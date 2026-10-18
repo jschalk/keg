@@ -236,8 +236,8 @@ def check_custom_exception_classes_style(all_classes: dict[str, str]):
             if not os_path_exists(file_path):
                 raise AssertionError("File does not exist")
             file_str = open_file(file_path)
-            exception_assert_fail_str = f"Exception #{x_count}: {x_class} {class_str}"
             if file_str.count(x_class) < 2:
+                exception_assert_fail_str = f"Exception #{x_count}:{x_class} {class_str}. Exception class is not used in file."
                 return False, exception_assert_fail_str
             if "Exception" in x_class:
                 return False, f"{x_class} should not have Exception in it."
