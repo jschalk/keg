@@ -289,30 +289,30 @@ class RopeYap:
     def get_aux_value(self, iux_rope: str) -> str:
         return self.iux2aux.get(iux_rope)
 
-    #     def reveal_aux(self, iux_rope: str, missing_add: bool = True) -> str:
-    #         if missing_add and self.iux_exists(iux_rope) is False:
-    #             aux_rope = copy_copy(iux_rope)
-    #             aux_rope = self._reveal_rope_aux(iux_rope)
-    #             self.set_iux2aux(iux_rope, aux_rope)
+    def reveal_aux(self, iux_rope: str, missing_add: bool = True) -> str:
+        if missing_add and self.iux_exists(iux_rope) is False:
+            aux_rope = copy_copy(iux_rope)
+            aux_rope = self._reveal_rope_aux(iux_rope)
+            self.set_iux2aux(iux_rope, aux_rope)
 
-    #         return self.get_aux_value(iux_rope)
+        return self.get_aux_value(iux_rope)
 
-    #     def _reveal_rope_aux(self, iux_rope) -> RopeTerm:
-    #         iux_parent_rope = get_parent_rope(iux_rope, self.iux_knot)
-    #         if self.iux_exists(iux_parent_rope) is False and iux_parent_rope != "":
-    #             return None
-    #         iux_tail = get_tail_label(iux_rope, self.iux_knot)
-    #         iux_tail = self._get_labelyap_labelterm(iux_tail)
-    #         if iux_parent_rope == "":
-    #             aux_parent_rope = ""
-    #         else:
-    #             aux_parent_rope = self.get_aux_value(iux_parent_rope)
-    #         return create_rope(aux_parent_rope, iux_tail, self.aux_knot)
+    def _reveal_rope_aux(self, iux_rope) -> RopeTerm:
+        iux_parent_rope = get_parent_rope(iux_rope, self.iux_knot)
+        if self.iux_exists(iux_parent_rope) is False and iux_parent_rope != "":
+            return None
+        iux_tail = get_tail_label(iux_rope, self.iux_knot)
+        iux_tail = self._get_labelyap_labelterm(iux_tail)
+        if iux_parent_rope == "":
+            aux_parent_rope = ""
+        else:
+            aux_parent_rope = self.get_aux_value(iux_parent_rope)
+        return create_rope(aux_parent_rope, iux_tail, self.aux_knot)
 
-    #     def _get_labelyap_labelterm(self, x_labelTerm: LabelTerm) -> LabelTerm:
-    #         if self.iux_label_exists(x_labelTerm):
-    #             return self.labelyap.reveal_aux(x_labelTerm)
-    #         return x_labelTerm
+    def _get_labelyap_labelterm(self, x_labelTerm: LabelTerm) -> LabelTerm:
+        if self.iux_label_exists(x_labelTerm):
+            return self.labelyap.reveal_aux(x_labelTerm)
+        return x_labelTerm
 
     def iux2aux_exists(self, iux_rope: str, aux_rope: str) -> bool:
         return self.get_aux_value(iux_rope) == aux_rope
