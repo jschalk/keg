@@ -1,4 +1,4 @@
-# On the art of not understanding things
+# How to make a coup
 
 **Date:** 2026-10-16<br>
 **Author:** Kamil Kazani<br>
