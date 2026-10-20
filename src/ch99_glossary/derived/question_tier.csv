@@ -37,6 +37,7 @@ Soldier,10,
 Stilt,10,
 Target,10,
 Tower,10,
+Trash,10,
 Trek,10,
 Trooper,10,
 Tsar,10,
@@ -801,6 +802,7 @@ rival,0,40
 shill,0,40
 soil,0,40
 tower,0,"40, 41"
+trash,0,40
 trooper,0,40
 winner,0,"40, 41"
 winning,0,"40, 41"

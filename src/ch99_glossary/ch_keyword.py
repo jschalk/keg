@@ -9335,6 +9335,7 @@ class Ch40Keywords(str, Enum):
     today = "today"
     tower = "tower"
     tran_time = "tran_time"
+    trash = "trash"
     tree_level = "tree_level"
     trooper = "trooper"
     unknown_str = "unknown_str"
