@@ -329,6 +329,8 @@
   "heard_raw": "stage_type_order=10 Populated by Sound Valid tables", 
   "heard_vld": "stage_type_order=12 Populated by aggregated and Nabu changed Heard Agg tables", 
   "heart": "Definition needed.", 
+  "Herd": "Definition needed.", 
+  "herd": "Definition needed.", 
   "Hive": "A community of FamilyUnits unified by a purpose", 
   "hive": "A community of FamilyUnits unified by a purpose", 
   "hn_blu": "Example key with value ';herenow_blu;' used for tests throughout codebase.", 

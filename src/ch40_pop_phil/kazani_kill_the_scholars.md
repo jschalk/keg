@@ -57,7 +57,7 @@ If you look at the Keynes’ quote, you will see that his description is perfect
 
 And it is the last part, I disagree upon
 
-<div align="center"><img src="images/shepherd.webp" alt="Shepherd with flock" width="700"></div>
+<div align="center"><img src="images/drover.webp" alt="Drover with flock" width="700"></div>
 
 The idea of some lofty intellectual class, leading the flock-like-mankind from their tower of ivory is not quite true.
 
