@@ -1,5 +1,5 @@
 from ch05_rope.rope import default_knot_if_None
-from ch18_lingo.yap_term import (
+from ch18_speech.yap_term import (
     NameYap,
     get_nameyap_from_dict,
     inherit_nameyap,
@@ -66,7 +66,7 @@ def test_nameyap_shop_ReturnsObj_Scenario1_WithParameters():
     assert x_nameyap.aux_knot == colon_aux_knot
 
 
-def test_nameyap_shop_ReturnsObj_Scenario2_LingoCoreAttrAreDefaultWhenGiven_float_nan():
+def test_nameyap_shop_ReturnsObj_Scenario2_SpeechCoreAttrAreDefaultWhenGiven_float_nan():
     # ESTABLISH
     flare7 = numpy_int64(7)
     iux2aux = {exx.xio: exx.sue}

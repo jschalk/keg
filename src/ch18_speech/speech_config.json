@@ -1,0 +1,22 @@
+{
+  "speech_label": {
+    "description": "'speech_label' is a speech dimen where iux_label is translated by iux_knot, aux_label, aux_knot", 
+    "jkeys": {"iux_label": {}}, 
+    "jvalues": {"aux_knot": {}, "aux_label": {}, "iux_knot": {}}
+  }, 
+  "speech_name": {
+    "description": "'speech_name' is a speech dimen where iux_name is translated by iux_knot, aux_name, aux_knot", 
+    "jkeys": {"iux_name": {}}, 
+    "jvalues": {"aux_knot": {}, "aux_name": {}, "iux_knot": {}}
+  }, 
+  "speech_rope": {
+    "description": "'speech_rope' is a speech dimen where iux_rope is translated by iux_knot, aux_rope, aux_knot", 
+    "jkeys": {"iux_rope": {}}, 
+    "jvalues": {"aux_knot": {}, "aux_rope": {}, "iux_knot": {}}
+  }, 
+  "speech_title": {
+    "description": "'speech_title' is a speech dimen where iux_title is translated by iux_knot, aux_title, aux_knot", 
+    "jkeys": {"iux_title": {}}, 
+    "jvalues": {"aux_knot": {}, "aux_title": {}, "iux_knot": {}}
+  }
+}

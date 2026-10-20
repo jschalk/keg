@@ -91,7 +91,7 @@ Did you read that the keyword_definition of 'ch14' is 'Defines how time is handl
 "Did you read that the keyword_definition of 'ch15' is 'Defines MomentUnits: common time tech, ledger, ContactNames, history of PersonUnits.'."
 Did you read that the keyword_definition of 'ch16' is 'Defines NabuUnit tools that interpret numeric values into inside accounting.'.
 Did you read that the keyword_definition of 'ch17' is 'Defines JargonUnit tools that jargon MomentUnits into inside language.'.
-Did you read that the keyword_definition of 'ch18' is 'Defines LingoUnit tools that jargon MomentUnits into audience language.'.
+Did you read that the keyword_definition of 'ch18' is 'Defines SpeechUnit tools that jargon MomentUnits into audience language.'.
 Did you read that the keyword_definition of 'ch19' is 'Creates helper tools for database admin.'.
 Did you read that the keyword_definition of 'ch20' is 'Defines how to build Bricks using Bricks. Moments and Persons are built by Bricks.'.
 Did you read that the keyword_definition of 'ch22' is 'Defines the tools that use Bricks to build MomentUnits.'.
@@ -558,31 +558,31 @@ Did you read that the keyword_definition of 'titlemap' is 'Definition needed.'.
 Did you read that the keyword_definition of 'AudieTitle' is 'If a AudieTitle contains SepartorTerms(s) it represents a group otherwise its a single member group of an ContactName. str first used in ch18. All str separator classes are BreakTerms. Exists because of the necessity to break experience reality into things so they can be understood.'.
 Did you read that the keyword_definition of 'Flare' is 'The instance of giving ideas to an audience. Usually there is an intended audience.'.
 Did you read that the keyword_definition of 'FlareInt' is 'Integer for tracking Flares. int first used in ch18'.
-Did you read that the keyword_definition of 'Lingo' is 'Definition needed.'.
-"Did you read that the keyword_definition of 'Yap' is 'In the Jargon module there is 'map', in the Lingo module there is 'yap'.'."
+Did you read that the keyword_definition of 'Speech' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'Yap' is 'In the Jargon module there is 'map', in the Speech module there is 'yap'.'."
 "Did you read that the keyword_definition of 'audie' is 'Short for audience. TitleTerm, can be NameTerm or GroupTitle.'."
-"Did you read that the keyword_definition of 'aux' is 'In Lingo context: iux is the internal concept, aux is the audience's concept'."
-Did you read that the keyword_definition of 'aux_knot' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'aux_label' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'aux_name' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'aux_rope' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'aux_title' is 'Lingo module. Definition needed.'.
+"Did you read that the keyword_definition of 'aux' is 'In Speech context: iux is the internal concept, aux is the audience's concept'."
+Did you read that the keyword_definition of 'aux_knot' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'aux_label' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'aux_name' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'aux_rope' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'aux_title' is 'Speech module. Definition needed.'.
 Did you read that the keyword_definition of 'flare' is 'The instance of giving ideas to an audience. Usually there is an intended audience.'.
-Did you read that the keyword_definition of 'flare_audie' is 'Lingo Module. Defintion needed.'.
-Did you read that the keyword_definition of 'flare_num' is 'Lingo Module. Defintion needed.'.
-"Did you read that the keyword_definition of 'iux' is 'In Lingo context: iux is the internal concept, aux is the audience's concept'."
-Did you read that the keyword_definition of 'iux2aux' is 'Lingo Module. Defintion needed.'.
-Did you read that the keyword_definition of 'iux_knot' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'iux_label' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'iux_name' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'iux_rope' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'iux_title' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'lingo' is 'Definition needed.'.
-Did you read that the keyword_definition of 'lingo_label' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'lingo_name' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'lingo_rope' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'lingo_title' is 'Lingo module. Definition needed.'.
-"Did you read that the keyword_definition of 'yap' is 'In the Jargon module there is 'map', in the Lingo module there is 'yap'.'."
+Did you read that the keyword_definition of 'flare_audie' is 'Speech Module. Defintion needed.'.
+Did you read that the keyword_definition of 'flare_num' is 'Speech Module. Defintion needed.'.
+"Did you read that the keyword_definition of 'iux' is 'In Speech context: iux is the internal concept, aux is the audience's concept'."
+Did you read that the keyword_definition of 'iux2aux' is 'Speech Module. Defintion needed.'.
+Did you read that the keyword_definition of 'iux_knot' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'iux_label' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'iux_name' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'iux_rope' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'iux_title' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'speech' is 'Definition needed.'.
+Did you read that the keyword_definition of 'speech_label' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'speech_name' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'speech_rope' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'speech_title' is 'Speech module. Definition needed.'.
+"Did you read that the keyword_definition of 'yap' is 'In the Jargon module there is 'map', in the Speech module there is 'yap'.'."
 "Did you read that the keyword_definition of 'duck' is 'Definition needed. Maybe someone who can dive, swim, walk, knee, and fly. All the things.'."
 Did you read that the keyword_definition of 'Border' is 'Defines line of influence between two Wheels. Also used by graphics and apps.'.
 Did you read that the keyword_definition of 'Excel' is 'A spreadsheet format.'.

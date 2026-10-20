@@ -1,5 +1,5 @@
 from ch05_rope.rope import create_rope, default_knot_if_None, to_rope
-from ch18_lingo.yap_term import (
+from ch18_speech.yap_term import (
     RopeYap,
     get_ropeyap_from_dict,
     inherit_ropeyap,
@@ -78,7 +78,7 @@ def test_ropeyap_shop_ReturnsObj_Scenario2():
     )
 
 
-def test_ropeyap_shop_ReturnsObj_Scenario3_LingoCoreAttrAreDefaultWhenGiven_float_nan():
+def test_ropeyap_shop_ReturnsObj_Scenario3_SpeechCoreAttrAreDefaultWhenGiven_float_nan():
     # ESTABLISH
     spark7 = 7
     iux2aux = {exx.xio: exx.sue}
@@ -245,7 +245,7 @@ def test_RopeYap_set_label_RaisesExceptionWhen_knot_In_aux_label():
     assert str(excinfo.value) == exception_str
 
 
-def test_RopeLingo_label_exists_ReturnsObj():
+def test_RopeSpeech_label_exists_ReturnsObj():
     # ESTABLISH
     x_ropeyap = ropeyap_shop(None)
     assert x_ropeyap.label_exists(exx.xio, exx.sue) is False

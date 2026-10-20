@@ -324,13 +324,13 @@ They are loyal to the legislature, whom are appointed to guard
 
 In fact, many of them, may view him with suspicion and will certainly not follow any command of his
 
-So, Napoleon comes out to these troops of the legislature, makes a speech
+So, Napoleon comes out to these troops of the legislature, making a pep talk
 
 It does not produce any effect
 
-(That he can't stay on his horse while making a speech does not help)
+(That he can't stay on his horse while making the pep talk does not help)
 
-He enters the legislature, makes a speech there, and faces extreme hostility from the deputies. They shout at him, calling him a traitor, an outlaw. They propose to declare an emergency law
+He enters the legislature, makes a address there, and faces extreme hostility from the deputies. They shout at him, calling him a traitor, an outlaw. They propose to declare an emergency law
 
 Napoleon faints away
 

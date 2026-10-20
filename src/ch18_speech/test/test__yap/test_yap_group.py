@@ -1,5 +1,5 @@
 from ch05_rope.rope import default_knot_if_None
-from ch18_lingo.yap_term import (
+from ch18_speech.yap_term import (
     TitleYap,
     get_titleyap_from_dict,
     inherit_titleyap,
@@ -65,7 +65,7 @@ def test_titleyap_shop_ReturnsObj_Scenario1_WithParameters():
     assert x_titleyap.aux_knot == colon_aux_knot
 
 
-def test_titleyap_shop_ReturnsObj_Scenario2_lingoCoreAttrAreDefaultWhenGiven_float_nan():
+def test_titleyap_shop_ReturnsObj_Scenario2_speechCoreAttrAreDefaultWhenGiven_float_nan():
     # ESTABLISH
     spark7 = 7
     iux2aux = {exx.xio: exx.sue}

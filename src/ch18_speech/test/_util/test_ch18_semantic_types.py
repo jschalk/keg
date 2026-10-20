@@ -1,4 +1,4 @@
-from ch18_lingo._ref.ch18_semantic_types import AudieTitle, FlareInt
+from ch18_speech._ref.ch18_semantic_types import AudieTitle, FlareInt
 from ch99_glossary.ch_keyword import Ch03Keywords as kw, ExampleStrs as exx
 from inspect import getdoc as inspect_getdoc
 
