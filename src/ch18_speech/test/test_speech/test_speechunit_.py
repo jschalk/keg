@@ -4,7 +4,11 @@ from ch09_person_atom.atom_config import (
     get_atom_args_obj_types,
 )
 from ch15_moment.moment_config import get_moment_args_obj_types
-from ch17_jargon.jargon_config import get_jargon_args_obj_types, jargonable_obj_types
+from ch17_jargon.jargon_config import (
+    get_jargon_args_obj_types,
+    jargonable_obj_types,
+    get_jargonable_args,
+)
 from ch18_speech.yap_term import (
     labelyap_shop,
     nameyap_shop,
@@ -17,7 +21,7 @@ from ch18_speech.speech_config import (
     # get_speech_nameterm_args,
     # get_speech_ropeterm_args,
     # get_speech_titleterm_args,
-    # get_speechable_args,
+    get_speechable_args,
     # set_speechable_otx_inx_args,
     speechable_obj_types,
 )
@@ -42,118 +46,32 @@ def test_speechable_obj_types_ReturnsObj():
     assert x_speechable_obj_types == jargonable_obj_types()
 
 
-# def test_get_speechable_args_ReturnsObj():
-#     # ESTABLISH / WHEN / THEN
-#     print(f"{speechable_obj_types()=}")
-#     all_speech_args = set(get_speech_args_obj_types().keys())
-#     print(f"{get_speechable_args().difference(all_speech_args)}")
-#     assert get_speechable_args().issubset(all_speech_args)
-#     static_get_speechable_args = {
-#         x_arg
-#         for x_arg, obj_type in get_speech_args_obj_types().items()
-#         if obj_type in speechable_obj_types()
-#     }
-#     assert get_speechable_args() == static_get_speechable_args
+def test_get_speechable_args_ReturnsObj():
+    # ESTABLISH / WHEN
+    speechable_args = get_speechable_args()
 
-#     assert len(get_speechable_args()) == 17
-#     assert get_speechable_args() == {
-#         kw.awardee_title,
-#         kw.person_name,
-#         kw.epoch_label,
-#         kw.spark_face,
-#         kw.fact_context,
-#         kw.fact_state,
-#         kw.group_title,
-#         kw.healer_name,
-#         kw.hour_label,
-#         kw.moment_rope,
-#         kw.month_label,
-#         kw.plan_rope,
-#         kw.labor_title,
-#         kw.reason_context,
-#         kw.reason_state,
-#         kw.contact_name,
-#         kw.weekday_label,
-#     }
-
-
-# def test_set_speechable_otx_inx_args_ReturnsObj_Scenario0_All_speechable_args():
-#     # sourcery skip: no-loop-in-tests
-#     # ESTABLISH
-#     speechable_args = get_speechable_args()
-
-# def check_obj_types_are_correct() -> bool:
-#     speech_args_obj_types = get_speech_args_obj_types()
-#     atom_args_obj_types = get_atom_args_obj_types()
-#     moment_args_obj_types = get_moment_args_obj_types()
-#     for speech_arg, speech_type in speech_args_obj_types.items():
-#         # print(f"check {speech_arg=} {speech_type=}")
-#         if atom_args_obj_types.get(speech_arg) not in [None, speech_type]:
-#             print(
-#                 f"{speech_arg=} {speech_type=} {atom_args_obj_types.get(speech_arg)=}"
-#             )
-#             return False
-#         if moment_args_obj_types.get(speech_arg) not in [None, speech_type]:
-#             print(
-#                 f"{speech_arg=} {speech_type=} {moment_args_obj_types.get(speech_arg)=}"
-#             )
-#             return False
-#     return True
-
-
-# def test_speechable_obj_types_ReturnsObj():
-#     # ESTABLISH / WHEN
-#     x_speechable_obj_types = speechable_obj_types()
-
-#     # THEN
-#     assert len(x_speechable_obj_types) == 4
-#     assert x_speechable_obj_types == {
-#         kw.NameTerm,
-#         kw.TitleTerm,
-#         kw.LabelTerm,
-#         kw.RopeTerm,
-#     }
-#     print(f"{set(get_atom_args_obj_types().values())=}")
-#     all_atom_obj_types = set(get_atom_args_obj_types().values())
-#     all_atom_obj_types.add(kw.LabelTerm)
-#     all_atom_obj_types.add(kw.TimeNum)
-#     x_cL_tyep = set(all_atom_obj_types) & (x_speechable_obj_types)
-#     assert x_cL_tyep == x_speechable_obj_types
-
-
-# def test_get_speechable_args_ReturnsObj():
-#     # ESTABLISH / WHEN / THEN
-#     print(f"{speechable_obj_types()=}")
-#     all_speech_args = set(get_speech_args_obj_types().keys())
-#     print(f"{get_speechable_args().difference(all_speech_args)}")
-#     assert get_speechable_args().issubset(all_speech_args)
-#     static_get_speechable_args = {
-#         x_arg
-#         for x_arg, obj_type in get_speech_args_obj_types().items()
-#         if obj_type in speechable_obj_types()
-#     }
-#     assert get_speechable_args() == static_get_speechable_args
-
-#     assert len(get_speechable_args()) == 17
-#     assert get_speechable_args() == {
-#         kw.awardee_title,
-#         kw.person_name,
-#         kw.epoch_label,
-#         kw.spark_face,
-#         kw.fact_context,
-#         kw.fact_state,
-#         kw.group_title,
-#         kw.healer_name,
-#         kw.hour_label,
-#         kw.moment_rope,
-#         kw.month_label,
-#         kw.plan_rope,
-#         kw.labor_title,
-#         kw.reason_context,
-#         kw.reason_state,
-#         kw.contact_name,
-#         kw.weekday_label,
-#     }
+    # THEN
+    print(f"{speechable_obj_types()=}")
+    assert speechable_args == get_jargonable_args()
+    assert speechable_args == {
+        kw.awardee_title,
+        kw.person_name,
+        kw.epoch_label,
+        kw.spark_face,
+        kw.fact_context,
+        kw.fact_state,
+        kw.group_title,
+        kw.healer_name,
+        kw.hour_label,
+        kw.moment_rope,
+        kw.month_label,
+        kw.plan_rope,
+        kw.labor_title,
+        kw.reason_context,
+        kw.reason_state,
+        kw.contact_name,
+        kw.weekday_label,
+    }
 
 
 # def test_set_speechable_otx_inx_args_ReturnsObj_Scenario0_All_speechable_args():

@@ -113,3 +113,25 @@ def get_speech_args_obj_types() -> dict[str, str]:
 
 def speechable_obj_types() -> set:
     return {"NameTerm", "TitleTerm", "LabelTerm", "RopeTerm"}
+
+
+def get_speechable_args() -> set:
+    return {
+        "awardee_title",
+        "person_name",
+        "epoch_label",
+        "spark_face",
+        "fact_context",
+        "fact_state",
+        "group_title",
+        "healer_name",
+        "hour_label",
+        "moment_rope",
+        "month_label",
+        "labor_title",
+        "plan_rope",
+        "reason_context",
+        "reason_state",
+        "contact_name",
+        "weekday_label",
+    }
