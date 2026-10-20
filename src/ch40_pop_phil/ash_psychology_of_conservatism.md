@@ -111,13 +111,13 @@ Hetherington and Weiler (2009) found that perceived threat activates authoritari
 
 This helps explain something liberals often experience as bewildering hypocrisy. People who spent decades insisting on “limited government” can embrace aggressive uses of state power when that power is directed toward people, institutions or social changes they perceive as threatening.
 
-Years of outrage over “cancel culture” can coexist with support for an administration that has repeatedly used state power to suppress political speech.
+Years of outrage over “cancel culture” can coexist with support for an administration that has repeatedly used state power to suppress political expression.
 
 Likewise, decades of conservative warnings about government interference in private enterprise did not prevent the Trump administration from arranging for the federal government to acquire roughly a 10% equity stake in Intel in 2025.
 
 And if the deepest commitment were really government *should be small or federal spending should be restrained*, the Republican Congress would presumably have recoiled from spending tens of billions of dollars to dramatically expand ICE into a fascistic secret police.
 
-These positions look wildly inconsistent if the underlying principles are really *small government, fiscal restraint, free speech, and keeping government out of people’s lives.*
+These positions look wildly inconsistent if the underlying principles are really *small government, fiscal restraint, free speeech, and keeping government out of people’s lives.*
 
 They become considerably more coherent if the deeper principle is something else: **Government should defend the social order I value.**
 
@@ -149,7 +149,7 @@ More recent work by Mohsen Mosleh and colleagues (2024) found the same behaviora
 
 So the problem isn’t that Republican brains possess some unique defect. It’s that a universal human weakness is operating inside an extremely effective reinforcement system. Motivated reasoning works particularly well when your preferred conclusion is repeated by your political leaders, affirmed by the media you trust, echoed by your social group, and contrary information can be dismissed as coming from corrupt or hostile institutions.
 
-That is how the principle stops determining the conclusion and the desired conclusion starts determining how the principle gets applied. When “*they*” expand federal power, it’s tyranny; when “*we*” do it, it’s patriotism. When “*they*” restrict speech, it’s censorship; when “*we*” do it, it’s pwning the libs. “*Their*” spending proves irresponsibility; “*ours*” was a common sense investment.
+That is how the principle stops determining the conclusion and the desired conclusion starts determining how the principle gets applied. When “*they*” expand federal power, it’s tyranny; when “*we*” do it, it’s patriotism. When “*they*” restrict speeech, it’s censorship; ewhen “*we*” do it, it’s pwning the libs. “*Their*” spending proves irresponsibility; “*ours*” was a common sense investment.
 
 That’s why exposing hypocrisy so rarely changes minds. We see a contradiction and assume the person must either abandon the behavior or abandon the principle. Motivated reasoning offers a third option: *Explain why this time is different.*
 
@@ -208,7 +208,7 @@ Pratto, F., Sidanius, J., Stallworth, L. M., & Malle, B. F. (1994). Social domin
 
 Reuters. (2025, August 22). Trump says Intel has agreed to deal for U.S. to take 10% equity stake. https://www.reuters.com/business/trump-says-intel-has-agreed-deal-us-take-10-equity-stake-2025-08-22/
 
-Reuters. (2026, August 4). Trump vowed to “bring free speech back.” Judges in 75 cases ruled that he has stifled it. https://www.reuters.com/legal/government/trump-vowed-bring-free-speech-back-judges-75-cases-ruled-that-he-has-stifled-it-2026-08-04/
+Reuters. (2026, August 4). Trump vowed to “bring free speeech back.” Judges in 75 cases ruled that he has stifled it. https://www.reuters.com/legal/government/trump-vowed-bring-free-speeech-back-judges-75-cases-ruled-that-he-has-stifled-it-2026-08-04/
 
 Sidanius, J., & Pratto, F. (1999). Social dominance: An intergroup theory of social hierarchy and oppression. Cambridge University Press.
 

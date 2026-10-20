@@ -64,7 +64,7 @@ So the unusual insight I have stumbled upon lately is that,
 ### All of that is very similar to the behaviour of victims of political persecution in Tudor England
 </div>
 
-It literally feels like something happening in the age of Henry VIII. Made up accusation, clearly false one. Unfair, cruel prosecution, aimed to extract confession at any cost. Inevitable verdict of guilt, inevitable sentence, and inevitable execution. Before an execution, the victim reads a short speech - how much he loves the king and long live the king - and off with his head.
+It literally feels like something happening in the age of Henry VIII. Made up accusation, clearly false one. Unfair, cruel prosecution, aimed to extract confession at any cost. Inevitable verdict of guilt, inevitable sentence, and inevitable execution. Before an execution, the victim reads a short address - how much he loves the king and long live the king - and off with his head.
 
 Then the next person comes, and next one, and next.
 
