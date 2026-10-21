@@ -93,16 +93,16 @@
 #     # THEN
 #     assert merged_speechunit
 #     merged_contactbridge = get_suita_nameyap()
-#     merged_contactbridge.spark_num = spark1
+#     merged_contactbridge.flare_num = spark1
 #     assert merged_speechunit.nameyap == merged_contactbridge
 #     merged_groupbridge = get_bowl_titleyap()
-#     merged_groupbridge.spark_num = spark1
+#     merged_groupbridge.flare_num = spark1
 #     assert merged_speechunit.titleyap == merged_groupbridge
 #     merged_labelbridge = get_clean_labelyap()
-#     merged_labelbridge.spark_num = spark1
+#     merged_labelbridge.flare_num = spark1
 #     assert merged_speechunit.labelyap == merged_labelbridge
 #     merged_ropebridge = get_clean_ropeyap()
-#     merged_ropebridge.spark_num = spark1
+#     merged_ropebridge.flare_num = spark1
 #     merged_ropebridge.labelyap = merged_labelbridge
 #     assert merged_speechunit.ropeyap == merged_ropebridge
 
@@ -127,9 +127,9 @@
 #     assert merged_speechunit
 #     assert new_speechunit.nameterm_exists(bob_iux, bob_aux)
 #     merged_contactbridge = get_suita_nameyap()
-#     merged_contactbridge.spark_num = spark1
+#     merged_contactbridge.flare_num = spark1
 #     merged_contactbridge.set_iux2aux(bob_iux, bob_aux)
 #     assert merged_speechunit.nameyap == merged_contactbridge
 #     merged_groupbridge = get_bowl_titleyap()
-#     merged_groupbridge.spark_num = spark1
+#     merged_groupbridge.flare_num = spark1
 #     assert merged_speechunit.titleyap == merged_groupbridge

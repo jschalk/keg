@@ -198,25 +198,24 @@ class SpeechUnit:
         elif x_obj_type == "RopeTerm":
             self.ropeyap.del_iux2aux(x_iux)
 
+    def to_dict(self) -> dict:
+        """Returns dict that is serializable to JSON."""
 
-#     def to_dict(self) -> dict:
-#         """Returns dict that is serializable to JSON."""
+        x_nameyap = _get_rid_of_speech_core_keys(self.nameyap.to_dict())
+        x_titleyap = _get_rid_of_speech_core_keys(self.titleyap.to_dict())
+        x_labelyap = _get_rid_of_speech_core_keys(self.labelyap.to_dict())
+        x_ropeyap = _get_rid_of_speech_core_keys(self.ropeyap.to_dict())
 
-#         x_nameyap = _get_rid_of_speech_core_keys(self.nameyap.to_dict())
-#         x_titleyap = _get_rid_of_speech_core_keys(self.titleyap.to_dict())
-#         x_labelyap = _get_rid_of_speech_core_keys(self.labelyap.to_dict())
-#         x_ropeyap = _get_rid_of_speech_core_keys(self.ropeyap.to_dict())
-
-#         return {
-#             "flare_audie": self.flare_audie,
-#             "flare_num": self.flare_num,
-#             "iux_knot": self.iux_knot,
-#             "aux_knot": self.aux_knot,
-#             "nameyap": x_nameyap,
-#             "labelyap": x_labelyap,
-#             "titleyap": x_titleyap,
-#             "ropeyap": x_ropeyap,
-#         }
+        return {
+            "flare_audie": self.flare_audie,
+            "flare_num": self.flare_num,
+            "iux_knot": self.iux_knot,
+            "aux_knot": self.aux_knot,
+            "nameyap": x_nameyap,
+            "labelyap": x_labelyap,
+            "titleyap": x_titleyap,
+            "ropeyap": x_ropeyap,
+        }
 
 
 def speechunit_shop(
@@ -266,80 +265,80 @@ def speechunit_shop(
     )
 
 
-# def get_speechunit_from_dict(x_dict: dict) -> SpeechUnit:
-#     x_flare_num = x_dict.get("flare_num")
-#     x_flare_audie = x_dict.get("flare_audie")
-#     x_iux_knot = x_dict.get("iux_knot")
-#     x_aux_knot = x_dict.get("aux_knot")
-#     nameyap_dict = x_dict.get("nameyap")
-#     titleyap_dict = x_dict.get("titleyap")
-#     labelyap_dict = x_dict.get("labelyap")
-#     ropeyap_dict = x_dict.get("ropeyap")
-#     nameyap_dict = _add_speech_core_keys(
-#         nameyap_dict,
-#         x_flare_num,
-#         x_flare_audie,
-#         x_iux_knot,
-#         x_aux_knot,
-#     )
-#     titleyap_dict = _add_speech_core_keys(
-#         titleyap_dict,
-#         x_flare_num,
-#         x_flare_audie,
-#         x_iux_knot,
-#         x_aux_knot,
-#     )
-#     labelyap_dict = _add_speech_core_keys(
-#         labelyap_dict,
-#         x_flare_num,
-#         x_flare_audie,
-#         x_iux_knot,
-#         x_aux_knot,
-#     )
-#     ropeyap_dict = _add_speech_core_keys(
-#         ropeyap_dict,
-#         x_flare_num,
-#         x_flare_audie,
-#         x_iux_knot,
-#         x_aux_knot,
-#     )
-#     x_nameyap = get_nameyap_from_dict(nameyap_dict)
-#     x_titleyap = get_titleyap_from_dict(titleyap_dict)
-#     x_labelyap = get_labelyap_from_dict(labelyap_dict)
-#     x_ropeyap = get_ropeyap_from_dict(ropeyap_dict)
-#     x_ropeyap.labelyap = x_labelyap
-#     return SpeechUnit(
-#         flare_audie=x_flare_audie,
-#         flare_num=x_flare_num,
-#         iux_knot=x_iux_knot,
-#         aux_knot=x_aux_knot,
-#         nameyap=x_nameyap,
-#         titleyap=x_titleyap,
-#         labelyap=x_labelyap,
-#         ropeyap=x_ropeyap,
-#     )
+def _get_rid_of_speech_core_keys(yap_dict: dict) -> dict:
+    # yap_dict.pop("flare_num")
+    # yap_dict.pop("flare_audie")
+    # yap_dict.pop("iux_knot")
+    # yap_dict.pop("aux_knot")
+    return yap_dict
 
 
-# def _get_rid_of_speech_core_keys(yap_dict: dict) -> dict:
-#     yap_dict.pop("flare_num")
-#     yap_dict.pop("flare_audie")
-#     yap_dict.pop("iux_knot")
-#     yap_dict.pop("aux_knot")
-#     return yap_dict
+def _add_speech_core_keys(
+    yap_dict: dict,
+    flare_num: int,
+    flare_audie: str,
+    iux_knot: KnotTerm,
+    aux_knot: KnotTerm,
+) -> dict:
+    yap_dict["flare_num"] = flare_num
+    yap_dict["flare_audie"] = flare_audie
+    yap_dict["iux_knot"] = iux_knot
+    yap_dict["aux_knot"] = aux_knot
+    return yap_dict
 
 
-# def _add_speech_core_keys(
-#     yap_dict: dict,
-#     flare_num: int,
-#     flare_audie: str,
-#     iux_knot: KnotTerm,
-#     aux_knot: KnotTerm,
-# ) -> dict:
-#     yap_dict["flare_num"] = flare_num
-#     yap_dict["flare_audie"] = flare_audie
-#     yap_dict["iux_knot"] = iux_knot
-#     yap_dict["aux_knot"] = aux_knot
-#     return yap_dict
+def get_speechunit_from_dict(x_dict: dict) -> SpeechUnit:
+    x_flare_num = x_dict.get("flare_num")
+    x_flare_audie = x_dict.get("flare_audie")
+    x_iux_knot = x_dict.get("iux_knot")
+    x_aux_knot = x_dict.get("aux_knot")
+    nameyap_dict = x_dict.get("nameyap")
+    titleyap_dict = x_dict.get("titleyap")
+    labelyap_dict = x_dict.get("labelyap")
+    ropeyap_dict = x_dict.get("ropeyap")
+    nameyap_dict = _add_speech_core_keys(
+        nameyap_dict,
+        x_flare_num,
+        x_flare_audie,
+        x_iux_knot,
+        x_aux_knot,
+    )
+    titleyap_dict = _add_speech_core_keys(
+        titleyap_dict,
+        x_flare_num,
+        x_flare_audie,
+        x_iux_knot,
+        x_aux_knot,
+    )
+    labelyap_dict = _add_speech_core_keys(
+        labelyap_dict,
+        x_flare_num,
+        x_flare_audie,
+        x_iux_knot,
+        x_aux_knot,
+    )
+    ropeyap_dict = _add_speech_core_keys(
+        ropeyap_dict,
+        x_flare_num,
+        x_flare_audie,
+        x_iux_knot,
+        x_aux_knot,
+    )
+    x_nameyap = get_nameyap_from_dict(nameyap_dict)
+    x_titleyap = get_titleyap_from_dict(titleyap_dict)
+    x_labelyap = get_labelyap_from_dict(labelyap_dict)
+    x_ropeyap = get_ropeyap_from_dict(ropeyap_dict)
+    x_ropeyap.labelyap = x_labelyap
+    return SpeechUnit(
+        flare_audie=x_flare_audie,
+        flare_num=x_flare_num,
+        iux_knot=x_iux_knot,
+        aux_knot=x_aux_knot,
+        nameyap=x_nameyap,
+        titleyap=x_titleyap,
+        labelyap=x_labelyap,
+        ropeyap=x_ropeyap,
+    )
 
 
 # class SpeechCoreAttrConflictError(Exception):
