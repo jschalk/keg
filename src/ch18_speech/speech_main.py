@@ -99,28 +99,25 @@ class SpeechUnit:
     def del_titleterm(self, iux_title: str):
         return self.titleyap.del_iux2aux(iux_title)
 
-    #     def get_yapunit(self, x_obj_type: str):
-    #         if x_obj_type == "NameTerm":
-    #             return self.nameyap
-    #         elif x_obj_type == "TitleTerm":
-    #             return self.titleyap
-    #         elif x_obj_type == "LabelTerm":
-    #             return self.labelyap
-    #         elif x_obj_type == "RopeTerm":
-    #             return self.ropeyap
-    #         else:
-    #             return None
+    def set_labelyap(self, x_labelyap: LabelYap):
+        self._check_speech_core_attrs_match(x_labelyap)
+        self.labelyap = x_labelyap
 
-    #     def set_labelyap(self, x_labelyap: LabelYap):
-    #         self._check_speech_core_attrs_match(x_labelyap)
-    #         self.labelyap = x_labelyap
+    def get_labelyap(self) -> LabelYap:
+        return self.labelyap
 
-    #     def get_labelyap(self) -> LabelYap:
-    #         return self.labelyap
+    def set_ropeyap(self, x_ropeyap: RopeYap):
+        self._check_speech_core_attrs_match(x_ropeyap)
+        self.ropeyap = x_ropeyap
 
-    #     def set_ropeyap(self, x_ropeyap: RopeYap):
-    #         self._check_speech_core_attrs_match(x_ropeyap)
-    #         self.ropeyap = x_ropeyap
+    def set_roadyap_label(self, x_iux: str, x_aux: str):
+        self.ropeyap.set_label(x_iux, x_aux)
+
+    def roadyap_label_exists(self, x_iux: str, x_aux: str) -> bool:
+        return self.ropeyap.label_exists(x_iux, x_aux)
+
+    def del_roadyap_label(self, x_iux: str):
+        self.ropeyap.del_label(x_iux)
 
     #     def get_ropeyap(self) -> RopeYap:
     #         return self.ropeyap
@@ -190,14 +187,17 @@ class SpeechUnit:
 #         elif x_obj_type == "RopeTerm":
 #             self.ropeyap.del_iux2aux(x_iux)
 
-#     def set_roadyap_label(self, x_iux: str, x_aux: str):
-#         self.ropeyap.set_label(x_iux, x_aux)
-
-#     def roadyap_label_exists(self, x_iux: str, x_aux: str) -> bool:
-#         return self.ropeyap.label_exists(x_iux, x_aux)
-
-#     def del_roadyap_label(self, x_iux: str):
-#         self.ropeyap.del_label(x_iux)
+#     def get_yapunit(self, x_obj_type: str):
+#         if x_obj_type == "NameTerm":
+#             return self.nameyap
+#         elif x_obj_type == "TitleTerm":
+#             return self.titleyap
+#         elif x_obj_type == "LabelTerm":
+#             return self.labelyap
+#         elif x_obj_type == "RopeTerm":
+#             return self.ropeyap
+#         else:
+#             return None
 
 #     def to_dict(self) -> dict:
 #         """Returns dict that is serializable to JSON."""
