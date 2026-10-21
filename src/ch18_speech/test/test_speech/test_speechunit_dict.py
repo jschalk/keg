@@ -24,7 +24,7 @@
 #     # THEN
 #     print(sue_dict)
 #     assert sue_dict
-#     assert sue_dict.get(kw.spark_face) == exx.sue
+#     assert sue_dict.get(kw.flare_audie) == exx.sue
 #     assert sue_dict.get(kw.spark_num) == sue_jargonunit.spark_num
 #     assert sue_dict.get(kw.iux_knot) == default_knot_if_None()
 #     assert sue_dict.get(kw.aux_knot) == default_knot_if_None()
@@ -57,7 +57,7 @@
 #     sue_dict = sue_jargonunit.to_dict()
 
 #     # THEN
-#     assert sue_dict.get(kw.spark_face) == exx.sue
+#     assert sue_dict.get(kw.flare_audie) == exx.sue
 #     assert sue_dict.get(kw.iux_knot) == slash_iux_knot
 #     assert sue_dict.get(kw.aux_knot) == colon_aux_knot
 #     assert sue_dict.get(kw.unknown_str) == x_unknown_str
@@ -94,7 +94,7 @@
 
 #     # THEN
 #     assert gen_jargonunit
-#     assert gen_jargonunit.spark_face == exx.sue
+#     assert gen_jargonunit.flare_audie == exx.sue
 #     assert gen_jargonunit.spark_num == sue_spark_num
 #     assert gen_jargonunit.iux_knot == slash_iux_knot
 #     assert gen_jargonunit.aux_knot == colon_aux_knot

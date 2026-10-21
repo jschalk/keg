@@ -63,7 +63,7 @@ def get_speech_args_obj_types() -> dict[str, str]:
         "debtor_respect": "float",
         "denom": "int",
         "epoch_label": "LabelTerm",
-        "spark_face": "NameTerm",
+        "flare_audie": "TitleTerm",
         "fact_context": "RopeTerm",
         "fact_state": "RopeTerm",
         "fact_upper": "FactNum",
@@ -121,7 +121,7 @@ def get_speechable_args() -> set:
         "awardee_title",
         "person_name",
         "epoch_label",
-        "spark_face",
+        "flare_audie",
         "fact_context",
         "fact_state",
         "group_title",
@@ -155,7 +155,6 @@ def set_speechable_iux_aux_args(args: set) -> set:
 def get_speech_nameterm_args() -> set[str]:
     return {
         "contact_name",
-        "spark_face",
         "healer_name",
         "person_name",
     }
@@ -164,6 +163,7 @@ def get_speech_nameterm_args() -> set[str]:
 def get_speech_titleterm_args() -> set[str]:
     return {
         "awardee_title",
+        "flare_audie",
         "group_title",
         "labor_title",
     }

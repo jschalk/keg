@@ -64,7 +64,7 @@
 #     assert str(excinfo.value) == "Core attrs in conflict"
 
 
-# def test_JargonUnit_inherit_jargonunit_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_spark_face():
+# def test_JargonUnit_inherit_jargonunit_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_flare_audie():
 #     # ESTABLISH
 #     old_jargonunit = jargonunit_shop(exx.sue, 0)
 #     new_jargonunit = jargonunit_shop(exx.bob, 1)

@@ -29,9 +29,8 @@ from ch18_speech.speech_config import (
     set_speechable_iux_aux_args,
     speechable_obj_types,
 )
-
-# from ch18_speech.speech_main import SpeechUnit, speechunit_shop
-from ch99_glossary.ch_keyword import Ch17Keywords as kw, ExampleStrs as exx
+from ch18_speech.speech_main import SpeechUnit, speechunit_shop
+from ch99_glossary.ch_keyword import Ch18Keywords as kw, ExampleStrs as exx
 
 
 def test_get_speech_args_obj_types_ReturnsObj():
@@ -39,7 +38,10 @@ def test_get_speech_args_obj_types_ReturnsObj():
     speech_args_obj_types = get_speech_args_obj_types()
 
     # THEN
-    assert speech_args_obj_types == get_jargon_args_obj_types()
+    expected_speech_args_obj_types = get_jargon_args_obj_types()
+    expected_speech_args_obj_types.pop(kw.spark_face)
+    expected_speech_args_obj_types[kw.flare_audie] = kw.TitleTerm
+    assert speech_args_obj_types == expected_speech_args_obj_types
 
 
 def test_speechable_obj_types_ReturnsObj():
@@ -56,12 +58,12 @@ def test_get_speechable_args_ReturnsObj():
 
     # THEN
     print(f"{speechable_obj_types()=}")
-    assert speechable_args == get_jargonable_args()
+    # assert speechable_args == get_jargonable_args()
     assert speechable_args == {
         kw.awardee_title,
         kw.person_name,
         kw.epoch_label,
-        kw.spark_face,
+        kw.flare_audie,
         kw.fact_context,
         kw.fact_state,
         kw.group_title,
@@ -159,7 +161,6 @@ def test_get_speech_nameterm_args_ReturnsObj():
     # THEN
     assert speech_NameTerm_args == {
         kw.contact_name,
-        kw.spark_face,
         kw.healer_name,
         kw.person_name,
     }
@@ -177,6 +178,7 @@ def test_get_speech_titleterm_args_ReturnsObj():
 
     # THEN
     assert speech_TitleTerm_args == {
+        kw.flare_audie,
         kw.awardee_title,
         kw.group_title,
         kw.labor_title,
@@ -229,141 +231,126 @@ def test_get_speech_ropeterm_args_ReturnsObj():
     assert speech_RopeTerm_args == expected_args
 
 
-# def test_SpeechUnit_Exists():
-#     # ESTABLISH
-#     x_speechunit = SpeechUnit()
+def test_SpeechUnit_Exists():
+    # ESTABLISH
+    x_speechunit = SpeechUnit()
 
-#     # WHEN / THEN
-#     assert not x_speechunit.spark_face
-#     assert not x_speechunit.spark_num
-#     assert not x_speechunit.titleyap
-#     assert not x_speechunit.nameyap
-#     assert not x_speechunit.labelyap
-#     assert not x_speechunit.ropeyap
-#     assert not x_speechunit.unknown_str
-#     assert not x_speechunit.iux_knot
-#     assert not x_speechunit.aux_knot
-#     assert set(x_speechunit.__dict__.keys()) == {
-#         kw.spark_face,
-#         kw.spark_num,
-#         kw.titleyap,
-#         kw.nameyap,
-#         kw.labelyap,
-#         kw.ropeyap,
-#         kw.unknown_str,
-#         kw.iux_knot,
-#         kw.aux_knot,
-#     }
-
-
-# def test_speechunit_shop_ReturnsObj_Scenario0():
-#     # ESTABLISH
-
-#     # WHEN
-#     sue_speechunit = speechunit_shop(exx.sue)
-
-#     # THEN
-#     assert sue_speechunit.spark_face == exx.sue
-#     assert sue_speechunit.spark_num == 0
-#     assert sue_speechunit.unknown_str == default_unknown_str_if_None()
-#     assert sue_speechunit.iux_knot == default_knot_if_None()
-#     assert sue_speechunit.aux_knot == default_knot_if_None()
-#     assert sue_speechunit.titleyap == titleyap_shop(spark_face=exx.sue)
-#     assert sue_speechunit.nameyap == nameyap_shop(spark_face=exx.sue)
-#     assert sue_speechunit.labelyap == labelyap_shop(spark_face=exx.sue)
-#     assert sue_speechunit.ropeyap == ropeyap_shop(spark_face=exx.sue)
-#     assert sue_speechunit.nameyap.spark_num == 0
-#     assert sue_speechunit.nameyap.unknown_str == default_unknown_str_if_None()
-#     assert sue_speechunit.nameyap.iux_knot == default_knot_if_None()
-#     assert sue_speechunit.nameyap.aux_knot == default_knot_if_None()
-#     assert sue_speechunit.titleyap.spark_num == 0
-#     assert sue_speechunit.titleyap.unknown_str == default_unknown_str_if_None()
-#     assert sue_speechunit.titleyap.iux_knot == default_knot_if_None()
-#     assert sue_speechunit.titleyap.aux_knot == default_knot_if_None()
-#     assert sue_speechunit.labelyap.spark_num == 0
-#     assert sue_speechunit.labelyap.unknown_str == default_unknown_str_if_None()
-#     assert sue_speechunit.labelyap.iux_knot == default_knot_if_None()
-#     assert sue_speechunit.labelyap.aux_knot == default_knot_if_None()
-#     assert sue_speechunit.ropeyap.spark_num == 0
-#     assert sue_speechunit.ropeyap.unknown_str == default_unknown_str_if_None()
-#     assert sue_speechunit.ropeyap.iux_knot == default_knot_if_None()
-#     assert sue_speechunit.ropeyap.aux_knot == default_knot_if_None()
+    # WHEN / THEN
+    assert not x_speechunit.flare_audie
+    assert not x_speechunit.flare_num
+    assert not x_speechunit.titleyap
+    assert not x_speechunit.nameyap
+    assert not x_speechunit.labelyap
+    assert not x_speechunit.ropeyap
+    assert not x_speechunit.iux_knot
+    assert not x_speechunit.aux_knot
+    print(f"{set(x_speechunit.__dict__.keys())=}")
+    assert set(x_speechunit.__dict__.keys()) == {
+        kw.flare_audie,
+        kw.flare_num,
+        kw.titleyap,
+        kw.nameyap,
+        kw.labelyap,
+        kw.ropeyap,
+        kw.iux_knot,
+        kw.aux_knot,
+    }
 
 
-# def test_speechunit_shop_ReturnsObj_Scenario1():
-#     # ESTABLISH
-#     five_spark_num = 5
-#     y_uk = "UnknownTerm"
-#     slash_iux_knot = "/"
-#     colon_aux_knot = ":"
+def test_speechunit_shop_ReturnsObj_Scenario0():
+    # ESTABLISH
 
-#     # WHEN
-#     sue_speechunit = speechunit_shop(
-#         spark_face=exx.sue,
-#         spark_num=five_spark_num,
-#         iux_knot=slash_iux_knot,
-#         aux_knot=colon_aux_knot,
-#         unknown_str=y_uk,
-#     )
+    # WHEN
+    sue_speechunit = speechunit_shop(exx.sue)
 
-#     # THEN
-#     assert sue_speechunit.spark_num == five_spark_num
-#     assert sue_speechunit.unknown_str == y_uk
-#     assert sue_speechunit.iux_knot == slash_iux_knot
-#     assert sue_speechunit.aux_knot == colon_aux_knot
-
-#     # x_titleyap = titleyap_shop(
-#     #     slash_iux_knot, colon_aux_knot, {}, y_uk, exx.sue, five_spark_num
-#     # )
-#     # x_nameyap = nameyap_shop(
-#     #     slash_iux_knot, colon_aux_knot, {}, y_uk, exx.sue, five_spark_num
-#     # )
-#     # x_ropeyap = ropeyap_shop(
-#     #     slash_iux_knot, colon_aux_knot, None, {}, y_uk, exx.sue, five_spark_num
-#     # )
-#     # assert sue_speechunit.titleyap == x_titleyap
-#     # assert sue_speechunit.nameyap == x_nameyap
-#     # assert sue_speechunit.ropeyap == x_ropeyap
-
-#     assert sue_speechunit.nameyap.spark_face == exx.sue
-#     assert sue_speechunit.nameyap.spark_num == five_spark_num
-#     assert sue_speechunit.nameyap.unknown_str == y_uk
-#     assert sue_speechunit.nameyap.iux_knot == slash_iux_knot
-#     assert sue_speechunit.nameyap.aux_knot == colon_aux_knot
-#     assert sue_speechunit.titleyap.spark_face == exx.sue
-#     assert sue_speechunit.titleyap.spark_num == five_spark_num
-#     assert sue_speechunit.titleyap.unknown_str == y_uk
-#     assert sue_speechunit.titleyap.iux_knot == slash_iux_knot
-#     assert sue_speechunit.titleyap.aux_knot == colon_aux_knot
-#     assert sue_speechunit.labelyap.spark_face == exx.sue
-#     assert sue_speechunit.labelyap.spark_num == five_spark_num
-#     assert sue_speechunit.labelyap.unknown_str == y_uk
-#     assert sue_speechunit.labelyap.iux_knot == slash_iux_knot
-#     assert sue_speechunit.labelyap.aux_knot == colon_aux_knot
-#     assert sue_speechunit.ropeyap.spark_face == exx.sue
-#     assert sue_speechunit.ropeyap.spark_num == five_spark_num
-#     assert sue_speechunit.ropeyap.unknown_str == y_uk
-#     assert sue_speechunit.ropeyap.iux_knot == slash_iux_knot
-#     assert sue_speechunit.ropeyap.aux_knot == colon_aux_knot
+    # THEN
+    assert sue_speechunit.flare_audie == exx.sue
+    assert sue_speechunit.flare_num == 0
+    assert sue_speechunit.iux_knot == default_knot_if_None()
+    assert sue_speechunit.aux_knot == default_knot_if_None()
+    assert sue_speechunit.titleyap == titleyap_shop(flare_audie=exx.sue)
+    assert sue_speechunit.nameyap == nameyap_shop(flare_audie=exx.sue)
+    assert sue_speechunit.labelyap == labelyap_shop(flare_audie=exx.sue)
+    assert sue_speechunit.ropeyap == ropeyap_shop(flare_audie=exx.sue)
+    assert sue_speechunit.nameyap.flare_num == 0
+    assert sue_speechunit.nameyap.iux_knot == default_knot_if_None()
+    assert sue_speechunit.nameyap.aux_knot == default_knot_if_None()
+    assert sue_speechunit.titleyap.flare_num == 0
+    assert sue_speechunit.titleyap.iux_knot == default_knot_if_None()
+    assert sue_speechunit.titleyap.aux_knot == default_knot_if_None()
+    assert sue_speechunit.labelyap.flare_num == 0
+    assert sue_speechunit.labelyap.iux_knot == default_knot_if_None()
+    assert sue_speechunit.labelyap.aux_knot == default_knot_if_None()
+    assert sue_speechunit.ropeyap.flare_num == 0
+    assert sue_speechunit.ropeyap.iux_knot == default_knot_if_None()
+    assert sue_speechunit.ropeyap.aux_knot == default_knot_if_None()
 
 
-# def test_speechunit_shop_ReturnsObj_Scenario2_SpeechCoreAttrAreDefaultWhenGiven_float_nan():
-#     # ESTABLISH
-#     spark7 = 7
-#     x_nan = float("nan")
+def test_speechunit_shop_ReturnsObj_Scenario1():
+    # ESTABLISH
+    five_flare_num = 5
+    slash_iux_knot = "/"
+    colon_aux_knot = ":"
 
-#     # WHEN
-#     x_speechunit = speechunit_shop(
-#         spark_face=exx.bob,
-#         spark_num=spark7,
-#         unknown_str=x_nan,
-#         iux_knot=x_nan,
-#         aux_knot=x_nan,
-#     )
+    # WHEN
+    sue_speechunit = speechunit_shop(
+        flare_audie=exx.sue,
+        flare_num=five_flare_num,
+        iux_knot=slash_iux_knot,
+        aux_knot=colon_aux_knot,
+    )
 
-#     # THEN
-#     assert x_speechunit.spark_face == exx.bob
-#     assert x_speechunit.spark_num == spark7
-#     assert x_speechunit.unknown_str == default_unknown_str_if_None()
-#     assert x_speechunit.iux_knot == default_knot_if_None()
-#     assert x_speechunit.aux_knot == default_knot_if_None()
+    # THEN
+    assert sue_speechunit.flare_num == five_flare_num
+    assert sue_speechunit.iux_knot == slash_iux_knot
+    assert sue_speechunit.aux_knot == colon_aux_knot
+
+    # x_titleyap = titleyap_shop(
+    #     slash_iux_knot, colon_aux_knot, {}, y_uk, exx.sue, five_flare_num
+    # )
+    # x_nameyap = nameyap_shop(
+    #     slash_iux_knot, colon_aux_knot, {}, y_uk, exx.sue, five_flare_num
+    # )
+    # x_ropeyap = ropeyap_shop(
+    #     slash_iux_knot, colon_aux_knot, None, {}, y_uk, exx.sue, five_flare_num
+    # )
+    # assert sue_speechunit.titleyap == x_titleyap
+    # assert sue_speechunit.nameyap == x_nameyap
+    # assert sue_speechunit.ropeyap == x_ropeyap
+
+    assert sue_speechunit.nameyap.flare_audie == exx.sue
+    assert sue_speechunit.nameyap.flare_num == five_flare_num
+    assert sue_speechunit.nameyap.iux_knot == slash_iux_knot
+    assert sue_speechunit.nameyap.aux_knot == colon_aux_knot
+    assert sue_speechunit.titleyap.flare_audie == exx.sue
+    assert sue_speechunit.titleyap.flare_num == five_flare_num
+    assert sue_speechunit.titleyap.iux_knot == slash_iux_knot
+    assert sue_speechunit.titleyap.aux_knot == colon_aux_knot
+    assert sue_speechunit.labelyap.flare_audie == exx.sue
+    assert sue_speechunit.labelyap.flare_num == five_flare_num
+    assert sue_speechunit.labelyap.iux_knot == slash_iux_knot
+    assert sue_speechunit.labelyap.aux_knot == colon_aux_knot
+    assert sue_speechunit.ropeyap.flare_audie == exx.sue
+    assert sue_speechunit.ropeyap.flare_num == five_flare_num
+    assert sue_speechunit.ropeyap.iux_knot == slash_iux_knot
+    assert sue_speechunit.ropeyap.aux_knot == colon_aux_knot
+
+
+def test_speechunit_shop_ReturnsObj_Scenario2_SpeechCoreAttrAreDefaultWhenGiven_float_nan():
+    # ESTABLISH
+    flare7 = 7
+    x_nan = float("nan")
+
+    # WHEN
+    x_speechunit = speechunit_shop(
+        flare_audie=exx.bob,
+        flare_num=flare7,
+        iux_knot=x_nan,
+        aux_knot=x_nan,
+    )
+
+    # THEN
+    assert x_speechunit.flare_audie == exx.bob
+    assert x_speechunit.flare_num == flare7
+    assert x_speechunit.iux_knot == default_knot_if_None()
+    assert x_speechunit.aux_knot == default_knot_if_None()

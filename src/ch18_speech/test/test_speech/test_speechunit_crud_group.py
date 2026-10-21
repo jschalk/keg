@@ -7,7 +7,7 @@
 # def test_JargonUnit_set_titleyap_SetsAttr():
 #     # ESTABLISH
 #     sue_jargonunit = jargonunit_shop(exx.sue)
-#     x_titleyap = titleyap_shop(spark_face=exx.sue)
+#     x_titleyap = titleyap_shop(flare_audie=exx.sue)
 #     x_titleyap.set_iux2aux("Bob", "Bob of Salem")
 #     assert sue_jargonunit.titleyap != x_titleyap
 
@@ -22,7 +22,7 @@
 #     # ESTABLISH
 #     sue_jargonunit = jargonunit_shop(exx.sue)
 #     slash_iux_knot = "/"
-#     x_titleyap = titleyap_shop(iux_knot=slash_iux_knot, spark_face=exx.sue)
+#     x_titleyap = titleyap_shop(iux_knot=slash_iux_knot, flare_audie=exx.sue)
 #     assert sue_jargonunit.iux_knot != x_titleyap.iux_knot
 #     assert sue_jargonunit.titleyap != x_titleyap
 
@@ -37,7 +37,7 @@
 #     # ESTABLISH
 #     sue_jargonunit = jargonunit_shop(exx.sue)
 #     slash_aux_knot = "/"
-#     x_titleyap = titleyap_shop(aux_knot=slash_aux_knot, spark_face=exx.sue)
+#     x_titleyap = titleyap_shop(aux_knot=slash_aux_knot, flare_audie=exx.sue)
 #     assert sue_jargonunit.aux_knot != x_titleyap.aux_knot
 #     assert sue_jargonunit.titleyap != x_titleyap
 
@@ -52,7 +52,7 @@
 #     # ESTABLISH
 #     sue_jargonunit = jargonunit_shop(exx.sue)
 #     casa_unknown_str = "Unknown_casa"
-#     x_titleyap = titleyap_shop(unknown_str=casa_unknown_str, spark_face=exx.sue)
+#     x_titleyap = titleyap_shop(unknown_str=casa_unknown_str, flare_audie=exx.sue)
 #     assert sue_jargonunit.unknown_str != x_titleyap.unknown_str
 #     assert sue_jargonunit.titleyap != x_titleyap
 
@@ -63,24 +63,24 @@
 #     assert str(excinfo.value) == exception_str
 
 
-# def test_JargonUnit_set_titleyap_RaisesErrorIf_titleyap_spark_face_IsNotSame():
+# def test_JargonUnit_set_titleyap_RaisesErrorIf_titleyap_flare_audie_IsNotSame():
 #     # ESTABLISH
 #     sue_jargonunit = jargonunit_shop(exx.sue)
-#     x_titleyap = titleyap_shop(spark_face=exx.yao)
-#     assert sue_jargonunit.spark_face != x_titleyap.spark_face
+#     x_titleyap = titleyap_shop(flare_audie=exx.yao)
+#     assert sue_jargonunit.flare_audie != x_titleyap.flare_audie
 #     assert sue_jargonunit.titleyap != x_titleyap
 
 #     # WHEN / THEN
 #     with pytest_raises(Exception) as excinfo:
 #         sue_jargonunit.set_titleyap(x_titleyap)
-#     exception_str = f"set_yapcore Error: JargonUnit spark_face is '{sue_jargonunit.spark_face}', YapCore is '{exx.yao}'."
+#     exception_str = f"set_yapcore Error: JargonUnit flare_audie is '{sue_jargonunit.flare_audie}', YapCore is '{exx.yao}'."
 #     assert str(excinfo.value) == exception_str
 
 
 # def test_JargonUnit_get_titleyap_ReturnsObj():
 #     # ESTABLISH
 #     sue_jargonunit = jargonunit_shop(exx.sue)
-#     static_x_titleyap = titleyap_shop(spark_face=exx.sue)
+#     static_x_titleyap = titleyap_shop(flare_audie=exx.sue)
 #     static_x_titleyap.set_iux2aux("Bob", "Bob of Salem")
 #     sue_jargonunit.set_titleyap(static_x_titleyap)
 

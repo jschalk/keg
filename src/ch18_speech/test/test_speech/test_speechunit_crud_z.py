@@ -15,7 +15,7 @@
 # def test_JargonUnit_set_yapunit_SetsAttr():
 #     # ESTABLISH
 #     sue_jargonunit = jargonunit_shop(exx.sue)
-#     nameyap = nameyap_shop(spark_face=exx.sue)
+#     nameyap = nameyap_shop(flare_audie=exx.sue)
 #     nameyap.set_iux2aux("Bob", "Bob of Salem")
 #     assert sue_jargonunit.nameyap != nameyap
 #     # WHEN
@@ -28,7 +28,7 @@
 # def test_JargonUnit_set_yapunit_SetsAttr_SpecialSituation_RopeTerm():
 #     # ESTABLISH
 #     sue_jargonunit = jargonunit_shop(exx.sue)
-#     ropeyap = ropeyap_shop(spark_face=exx.sue)
+#     ropeyap = ropeyap_shop(flare_audie=exx.sue)
 #     ropeyap.set_iux2aux("Bob", "Bob of Salem")
 #     assert sue_jargonunit.ropeyap != ropeyap
 
@@ -43,7 +43,7 @@
 #     # ESTABLISH
 #     sue_jargonunit = jargonunit_shop(exx.sue)
 #     slash_iux_knot = "/"
-#     nameyap = nameyap_shop(iux_knot=slash_iux_knot, spark_face=exx.sue)
+#     nameyap = nameyap_shop(iux_knot=slash_iux_knot, flare_audie=exx.sue)
 #     assert sue_jargonunit.iux_knot != nameyap.iux_knot
 #     assert sue_jargonunit.nameyap != nameyap
 
@@ -58,7 +58,7 @@
 #     # ESTABLISH
 #     sue_jargonunit = jargonunit_shop(exx.sue)
 #     slash_aux_knot = "/"
-#     nameyap = nameyap_shop(aux_knot=slash_aux_knot, spark_face=exx.sue)
+#     nameyap = nameyap_shop(aux_knot=slash_aux_knot, flare_audie=exx.sue)
 #     assert sue_jargonunit.aux_knot != nameyap.aux_knot
 #     assert sue_jargonunit.nameyap != nameyap
 
@@ -73,7 +73,7 @@
 #     # ESTABLISH
 #     sue_jargonunit = jargonunit_shop(exx.sue)
 #     casa_unknown_str = "Unknown_casa"
-#     nameyap = nameyap_shop(unknown_str=casa_unknown_str, spark_face=exx.sue)
+#     nameyap = nameyap_shop(unknown_str=casa_unknown_str, flare_audie=exx.sue)
 #     assert sue_jargonunit.unknown_str != nameyap.unknown_str
 #     assert sue_jargonunit.nameyap != nameyap
 
@@ -84,24 +84,24 @@
 #     assert str(excinfo.value) == exception_str
 
 
-# def test_JargonUnit_set_yapunit_RaisesErrorIf_yapunit_spark_face_IsNotSame():
+# def test_JargonUnit_set_yapunit_RaisesErrorIf_yapunit_flare_audie_IsNotSame():
 #     # ESTABLISH
 #     sue_jargonunit = jargonunit_shop(exx.sue)
-#     nameyap = nameyap_shop(spark_face=exx.yao)
-#     assert sue_jargonunit.spark_face != nameyap.spark_face
+#     nameyap = nameyap_shop(flare_audie=exx.yao)
+#     assert sue_jargonunit.flare_audie != nameyap.flare_audie
 #     assert sue_jargonunit.nameyap != nameyap
 
 #     # WHEN / THEN
 #     with pytest_raises(Exception) as excinfo:
 #         sue_jargonunit.set_nameyap(nameyap)
-#     exception_str = f"set_yapcore Error: JargonUnit spark_face is '{sue_jargonunit.spark_face}', YapCore is '{exx.yao}'."
+#     exception_str = f"set_yapcore Error: JargonUnit flare_audie is '{sue_jargonunit.flare_audie}', YapCore is '{exx.yao}'."
 #     assert str(excinfo.value) == exception_str
 
 
 # def test_JargonUnit_get_yapunit_ReturnsObj():
 #     # ESTABLISH
 #     sue_pu = jargonunit_shop(exx.sue)
-#     static_nameyap = nameyap_shop(spark_face=exx.sue)
+#     static_nameyap = nameyap_shop(flare_audie=exx.sue)
 #     static_nameyap.set_iux2aux("Bob", "Bob of Salem")
 #     sue_pu.set_nameyap(static_nameyap)
 
