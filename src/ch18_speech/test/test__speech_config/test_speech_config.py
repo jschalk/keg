@@ -5,6 +5,7 @@ from ch18_speech.speech_config import (
     speech_config_path,
     get_speech_config_dict,
     get_speech_column_ref,
+    get_speech_args_dimen_mapping,
 )
 from ch99_glossary.ch_keyword import Ch18Keywords as kw
 
@@ -75,3 +76,19 @@ def test_get_speech_column_ref_ReturnsObj():
     assert kw.speech_rope in set(get_speech_column_ref().keys())
     assert len(get_speech_column_ref().keys()) == 4
     assert get_speech_column_ref() == all_speech_config_attrs
+
+
+def test_get_speech_args_dimen_mapping_ReturnsObj():
+    # ESTABLISH / WHEN
+    x_speech_args_dimen_mapping = get_speech_args_dimen_mapping()
+    print(f"{x_speech_args_dimen_mapping=}")
+
+    # THEN
+    assert x_speech_args_dimen_mapping
+    assert x_speech_args_dimen_mapping.get(kw.iux_rope)
+    rope_dimens = {kw.speech_rope}
+    assert x_speech_args_dimen_mapping.get(kw.iux_rope) == rope_dimens
+    assert x_speech_args_dimen_mapping.get(kw.aux_knot)
+    aux_knot_dimens = x_speech_args_dimen_mapping.get(kw.aux_knot)
+    assert len(aux_knot_dimens) == 4
+    assert len(x_speech_args_dimen_mapping) == 10

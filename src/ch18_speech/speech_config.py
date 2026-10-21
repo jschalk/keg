@@ -1,4 +1,5 @@
 from ch00_py.file_toolbox import create_path, open_json
+from ch00_py.dict_toolbox import get_from_nested_dict
 from ch09_person_atom.atom_config import get_all_person_dimen_delete_keys
 
 
@@ -187,3 +188,33 @@ def get_speech_ropeterm_args() -> set[str]:
         "reason_state",
         "reason_context",
     }
+
+
+def get_speech_config_jkeys(x_dimen: str) -> dict:
+    jkeys_key_list = [x_dimen, "jkeys"]
+    return get_from_nested_dict(get_speech_config_dict(), jkeys_key_list)
+
+
+def get_speech_config_jvalues(x_dimen: str) -> dict:
+    jvalues_key_list = [x_dimen, "jvalues"]
+    return get_from_nested_dict(get_speech_config_dict(), jvalues_key_list)
+
+
+def get_speech_config_args(x_dimen: str) -> dict[str, dict]:
+    args_dict = get_speech_config_jkeys(x_dimen)
+    args_dict.update(get_speech_config_jvalues(x_dimen))
+    return args_dict
+
+
+def get_speech_args_dimen_mapping() -> dict[str, str]:
+    x_dict = {}
+    for speech_dimen in get_speech_config_dict().keys():
+        args_set = set(get_speech_config_args(speech_dimen))
+        for x_arg in args_set:
+            if x_dict.get(x_arg) is None:
+                x_dict[x_arg] = {speech_dimen}
+            else:
+                x_dimen_set = x_dict.get(x_arg)
+                x_dimen_set.add(speech_dimen)
+                x_dict[x_arg] = x_dimen_set
+    return x_dict

@@ -3903,6 +3903,7 @@ class Ch20Keywords(str, Enum):
     spark_face_inx = "spark_face_inx"
     spark_face_otx = "spark_face_otx"
     spark_num = "spark_num"
+    speech = "speech"
     sqlite_datatype = "sqlite_datatype"
     src = "src"
     stop_calc = "stop_calc"

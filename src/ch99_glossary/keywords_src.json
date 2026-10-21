@@ -726,7 +726,7 @@
   "sparks_b_agg": {"valid_ch": "24, 32"}, 
   "sparks_b_vld": {"valid_ch": "24, 32"}, 
   "speaker": {"valid_ch": "11"}, 
-  "speech": {"valid_ch": "18, 97"}, 
+  "speech": {"valid_ch": "18, 20, 97"}, 
   "speech_label": {"valid_ch": "18"}, 
   "speech_name": {"valid_ch": "18"}, 
   "speech_rope": {"valid_ch": "18"}, 

@@ -190,34 +190,6 @@ def get_casa_maison_rope_iux2aux_dt() -> DataFrame:
     return aux_dt
 
 
-def get_casa_maison_label_dt() -> DataFrame:
-    aux_amy87_str = "amy87"
-    casa_aux_str = "maison"
-    clean_aux_str = "propre"
-    sweep_aux_str = "sweep"
-    iux_amy45_str = "amy45"
-    casa_iux_str = "casa"
-    clean_iux_str = "clean"
-    sweep_iux_str = "sweep"
-    x_rd = default_knot_if_None()
-    e7 = 7
-
-    aux_dt = DataFrame(
-        columns=[
-            kw.flare_audie,
-            kw.flare_num,
-            kw.iux_knot,
-            kw.aux_knot,
-            kw.iux_label,
-            kw.aux_label,
-        ]
-    )
-    aux_dt.loc[0] = ["Sue", e7, x_rd, x_rd, iux_amy45_str, aux_amy87_str]
-    aux_dt.loc[1] = ["Sue", e7, x_rd, x_rd, casa_iux_str, casa_aux_str]
-    aux_dt.loc[2] = ["Sue", e7, x_rd, x_rd, clean_iux_str, clean_aux_str]
-    return aux_dt
-
-
 def get_invalid_nameyap() -> NameYap:
     sue_iux = f"Xio{default_knot_if_None()}"
     sue_aux = "Sue"

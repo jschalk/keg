@@ -27,6 +27,13 @@ from ch17_jargon.jargon_config import (
     get_jargon_dimens,
     get_jargonable_args,
 )
+from ch18_speech.speech_config import (
+    # get_speech_args_dimen_mapping,
+    get_speech_config_dict,
+    # get_speech_dimens,
+    get_speechable_args,
+    get_speech_args_dimen_mapping,
+)
 from ch20_brick.brick_config import (
     BrickFormatsEnum,
     brick_config_path,
@@ -56,24 +63,31 @@ def test_get_keg_elements_sort_order_ReturnsObj():
     # THEN
     atom_args = set(get_atom_args_dimen_mapping().keys())
     assert atom_args.issubset(set(table_sorting_priority))
+
+    # Moment args
     moment_args = set(get_moment_args_dimen_mapping().keys())
     # print(f"{moment_args=}")
     # print(f"{moment_args.difference(set(table_sorting_priority))=}")
     assert moment_args.issubset(set(table_sorting_priority))
+
+    # dimen_delete_keys args
+    all_person_dimen_delete_keys = get_all_person_dimen_delete_keys()
+    # print(f"missing {all_person_dimen_delete_keys.difference(table_sorting_priority)}")
+    assert all_person_dimen_delete_keys.issubset(table_sorting_priority)
+
+    # nabo args
     nabu_args = get_nabu_args()
     assert nabu_args.issubset(set(table_sorting_priority))
+    nabuable_otx_cols = {f"{nabu_arg}_otx" for nabu_arg in get_nabuable_args()}
+    nabuable_inx_cols = {f"{nabu_arg}_inx" for nabu_arg in get_nabuable_args()}
+    assert nabuable_otx_cols.issubset(table_sorting_priority)
+    assert nabuable_inx_cols.issubset(table_sorting_priority)
+
+    # jargon args
     jargon_args = set(get_jargon_args_dimen_mapping().keys())
     # print(f"{moment_args=}")
     # print(f"{jargon_args.difference(set(table_sorting_priority))=}")
     assert jargon_args.issubset(set(table_sorting_priority))
-    all_person_dimen_delete_keys = get_all_person_dimen_delete_keys()
-    # print(f"missing {all_person_dimen_delete_keys.difference(table_sorting_priority)}")
-    assert all_person_dimen_delete_keys.issubset(table_sorting_priority)
-    person_calc_args = set(get_all_person_calc_args().keys())
-    # for person_calc_arg in person_calc_args.difference(table_sorting_priority):
-    #     print(f"{person_calc_arg=}")
-    print(f"{person_calc_args.difference(table_sorting_priority)=}")
-    assert person_calc_args.issubset(table_sorting_priority)
     jargonable_otx_cols = {f"{trl_arg}_otx" for trl_arg in get_jargonable_args()}
     jargonable_inx_cols = {f"{trl_arg}_inx" for trl_arg in get_jargonable_args()}
     # print(f"{jargonable_otx_cols=}")
@@ -87,10 +101,32 @@ def test_get_keg_elements_sort_order_ReturnsObj():
     # print(f"{jargonable_delete_inx_cols=}")
     assert jargonable_delete_otx_cols.issubset(table_sorting_priority)
     assert jargonable_delete_inx_cols.issubset(table_sorting_priority)
-    nabuable_otx_cols = {f"{nabu_arg}_otx" for nabu_arg in get_nabuable_args()}
-    nabuable_inx_cols = {f"{nabu_arg}_inx" for nabu_arg in get_nabuable_args()}
-    assert nabuable_otx_cols.issubset(table_sorting_priority)
-    assert nabuable_inx_cols.issubset(table_sorting_priority)
+
+    # # speech args
+    # speech_args = set(get_speech_args_dimen_mapping().keys())
+    # # print(f"{moment_args=}")
+    # # print(f"{speech_args.difference(set(table_sorting_priority))=}")
+    # assert speech_args.issubset(set(table_sorting_priority))
+    # speechable_otx_cols = {f"{trl_arg}_otx" for trl_arg in get_speechable_args()}
+    # speechable_inx_cols = {f"{trl_arg}_inx" for trl_arg in get_speechable_args()}
+    # # print(f"{speechable_otx_cols=}")
+    # # print(f"{speechable_inx_cols=}")
+    # assert speechable_otx_cols.issubset(table_sorting_priority)
+    # assert speechable_inx_cols.issubset(table_sorting_priority)
+    # x_delete_keys = all_person_dimen_delete_keys
+    # speechable_delete_otx_cols = {f"{trl_arg}_otx" for trl_arg in x_delete_keys}
+    # speechable_delete_inx_cols = {f"{trl_arg}_inx" for trl_arg in x_delete_keys}
+    # # print(f"{speechable_delete_otx_cols=}")
+    # # print(f"{speechable_delete_inx_cols=}")
+    # assert speechable_delete_otx_cols.issubset(table_sorting_priority)
+    # assert speechable_delete_inx_cols.issubset(table_sorting_priority)
+
+    # person calculated args
+    person_calc_args = set(get_all_person_calc_args().keys())
+    # for person_calc_arg in person_calc_args.difference(table_sorting_priority):
+    #     print(f"{person_calc_arg=}")
+    print(f"{person_calc_args.difference(table_sorting_priority)=}")
+    assert person_calc_args.issubset(table_sorting_priority)
 
     # all the suffix otx/inx columns are only used in one
     assert table_sorting_priority[0] == kw.world_name
