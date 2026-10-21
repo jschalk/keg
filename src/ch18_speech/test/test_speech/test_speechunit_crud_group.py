@@ -8,7 +8,7 @@
 #     # ESTABLISH
 #     sue_jargonunit = jargonunit_shop(exx.sue)
 #     x_titleyap = titleyap_shop(spark_face=exx.sue)
-#     x_titleyap.set_otx2inx("Bob", "Bob of Salem")
+#     x_titleyap.set_iux2aux("Bob", "Bob of Salem")
 #     assert sue_jargonunit.titleyap != x_titleyap
 
 #     # WHEN
@@ -18,33 +18,33 @@
 #     assert sue_jargonunit.titleyap == x_titleyap
 
 
-# def test_JargonUnit_set_titleyap_RaisesErrorIf_titleyap_otx_knot_IsNotSame():
+# def test_JargonUnit_set_titleyap_RaisesErrorIf_titleyap_iux_knot_IsNotSame():
 #     # ESTABLISH
 #     sue_jargonunit = jargonunit_shop(exx.sue)
-#     slash_otx_knot = "/"
-#     x_titleyap = titleyap_shop(otx_knot=slash_otx_knot, spark_face=exx.sue)
-#     assert sue_jargonunit.otx_knot != x_titleyap.otx_knot
+#     slash_iux_knot = "/"
+#     x_titleyap = titleyap_shop(iux_knot=slash_iux_knot, spark_face=exx.sue)
+#     assert sue_jargonunit.iux_knot != x_titleyap.iux_knot
 #     assert sue_jargonunit.titleyap != x_titleyap
 
 #     # WHEN / THEN
 #     with pytest_raises(Exception) as excinfo:
 #         sue_jargonunit.set_titleyap(x_titleyap)
-#     exception_str = f"set_yapcore Error: JargonUnit otx_knot is '{sue_jargonunit.otx_knot}', YapCore is '{slash_otx_knot}'."
+#     exception_str = f"set_yapcore Error: JargonUnit iux_knot is '{sue_jargonunit.iux_knot}', YapCore is '{slash_iux_knot}'."
 #     assert str(excinfo.value) == exception_str
 
 
-# def test_JargonUnit_set_titleyap_RaisesErrorIf_titleyap_inx_knot_IsNotSame():
+# def test_JargonUnit_set_titleyap_RaisesErrorIf_titleyap_aux_knot_IsNotSame():
 #     # ESTABLISH
 #     sue_jargonunit = jargonunit_shop(exx.sue)
-#     slash_inx_knot = "/"
-#     x_titleyap = titleyap_shop(inx_knot=slash_inx_knot, spark_face=exx.sue)
-#     assert sue_jargonunit.inx_knot != x_titleyap.inx_knot
+#     slash_aux_knot = "/"
+#     x_titleyap = titleyap_shop(aux_knot=slash_aux_knot, spark_face=exx.sue)
+#     assert sue_jargonunit.aux_knot != x_titleyap.aux_knot
 #     assert sue_jargonunit.titleyap != x_titleyap
 
 #     # WHEN / THEN
 #     with pytest_raises(Exception) as excinfo:
 #         sue_jargonunit.set_titleyap(x_titleyap)
-#     exception_str = f"set_yapcore Error: JargonUnit inx_knot is '{sue_jargonunit.inx_knot}', YapCore is '{slash_inx_knot}'."
+#     exception_str = f"set_yapcore Error: JargonUnit aux_knot is '{sue_jargonunit.aux_knot}', YapCore is '{slash_aux_knot}'."
 #     assert str(excinfo.value) == exception_str
 
 
@@ -81,7 +81,7 @@
 #     # ESTABLISH
 #     sue_jargonunit = jargonunit_shop(exx.sue)
 #     static_x_titleyap = titleyap_shop(spark_face=exx.sue)
-#     static_x_titleyap.set_otx2inx("Bob", "Bob of Salem")
+#     static_x_titleyap.set_iux2aux("Bob", "Bob of Salem")
 #     sue_jargonunit.set_titleyap(static_x_titleyap)
 
 #     # WHEN
@@ -93,62 +93,62 @@
 
 # def test_JargonUnit_set_titleterm_SetsAttr_Scenario0():
 #     # ESTABLISH
-#     sue_otx = "Sue"
-#     sue_inx = "Suita"
+#     sue_iux = "Sue"
+#     sue_aux = "Suita"
 #     zia_jargonunit = jargonunit_shop(exx.zia)
 #     contact_name_titleyap = zia_jargonunit.get_titleyap()
-#     assert contact_name_titleyap.otx2inx_exists(sue_otx, sue_inx) is False
+#     assert contact_name_titleyap.iux2aux_exists(sue_iux, sue_aux) is False
 
 #     # WHEN
-#     zia_jargonunit.set_titleterm(sue_otx, sue_inx)
+#     zia_jargonunit.set_titleterm(sue_iux, sue_aux)
 
 #     # THEN
-#     assert contact_name_titleyap.otx2inx_exists(sue_otx, sue_inx)
+#     assert contact_name_titleyap.iux2aux_exists(sue_iux, sue_aux)
 
 
 # def test_JargonUnit_titleterm_exists_ReturnsObj():
 #     # ESTABLISH
-#     sue_otx = "Sue"
-#     sue_inx = "Suita"
+#     sue_iux = "Sue"
+#     sue_aux = "Suita"
 #     zia_jargonunit = jargonunit_shop(exx.zia)
 
-#     assert zia_jargonunit.titleterm_exists(sue_otx, sue_inx) is False
+#     assert zia_jargonunit.titleterm_exists(sue_iux, sue_aux) is False
 
 #     # WHEN
-#     zia_jargonunit.set_titleterm(sue_otx, sue_inx)
+#     zia_jargonunit.set_titleterm(sue_iux, sue_aux)
 
 #     # THEN
-#     assert zia_jargonunit.titleterm_exists(sue_otx, sue_inx)
+#     assert zia_jargonunit.titleterm_exists(sue_iux, sue_aux)
 
 
-# def test_JargonUnit_get_inx_title_ReturnsObj():
+# def test_JargonUnit_get_aux_title_ReturnsObj():
 #     # ESTABLISH
-#     sue_otx = "Sue"
-#     sue_inx = "Suita"
+#     sue_iux = "Sue"
+#     sue_aux = "Suita"
 #     zia_jargonunit = jargonunit_shop(exx.zia)
-#     assert zia_jargonunit._get_inx_title(sue_otx) != sue_inx
+#     assert zia_jargonunit._get_aux_title(sue_iux) != sue_aux
 
 #     # WHEN
-#     zia_jargonunit.set_titleterm(sue_otx, sue_inx)
+#     zia_jargonunit.set_titleterm(sue_iux, sue_aux)
 
 #     # THEN
-#     assert zia_jargonunit._get_inx_title(sue_otx) == sue_inx
+#     assert zia_jargonunit._get_aux_title(sue_iux) == sue_aux
 
 
 # def test_JargonUnit_del_titleterm_ReturnsObj():
 #     # ESTABLISH
-#     sue_otx = "Sue"
-#     sue_inx = "Suita"
+#     sue_iux = "Sue"
+#     sue_aux = "Suita"
 #     zia_jargonunit = jargonunit_shop(exx.zia)
 
-#     zia_jargonunit.set_titleterm(sue_otx, sue_inx)
+#     zia_jargonunit.set_titleterm(sue_iux, sue_aux)
 #     zia_jargonunit.set_titleterm(exx.zia, exx.zia)
-#     assert zia_jargonunit.titleterm_exists(sue_otx, sue_inx)
+#     assert zia_jargonunit.titleterm_exists(sue_iux, sue_aux)
 #     assert zia_jargonunit.titleterm_exists(exx.zia, exx.zia)
 
 #     # WHEN
-#     zia_jargonunit.del_titleterm(sue_otx)
+#     zia_jargonunit.del_titleterm(sue_iux)
 
 #     # THEN
-#     assert zia_jargonunit.titleterm_exists(sue_otx, sue_inx) is False
+#     assert zia_jargonunit.titleterm_exists(sue_iux, sue_aux) is False
 #     assert zia_jargonunit.titleterm_exists(exx.zia, exx.zia)

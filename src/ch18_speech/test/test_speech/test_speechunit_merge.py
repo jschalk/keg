@@ -22,10 +22,10 @@
 #     assert merged_jargonunit == new_jargonunit
 
 
-# def test_JargonUnit_inherit_jargonunit_ReturnsObj_Scenario1_RaiseErrorWhenDifferent_otx_knot():
+# def test_JargonUnit_inherit_jargonunit_ReturnsObj_Scenario1_RaiseErrorWhenDifferent_iux_knot():
 #     # ESTABLISH
-#     slash_otx_knot = "/"
-#     old_jargonunit = jargonunit_shop(exx.sue, 0, otx_knot=slash_otx_knot)
+#     slash_iux_knot = "/"
+#     old_jargonunit = jargonunit_shop(exx.sue, 0, iux_knot=slash_iux_knot)
 #     new_jargonunit = jargonunit_shop(exx.sue, 1)
 
 #     # WHEN
@@ -36,10 +36,10 @@
 #     assert str(excinfo.value) == "Core attrs in conflict"
 
 
-# def test_JargonUnit_inherit_jargonunit_ReturnsObj_Scenario2_RaiseErrorWhenDifferent_inx_knot():
+# def test_JargonUnit_inherit_jargonunit_ReturnsObj_Scenario2_RaiseErrorWhenDifferent_aux_knot():
 #     # ESTABLISH
-#     slash_otx_knot = "/"
-#     old_jargonunit = jargonunit_shop(exx.sue, 0, inx_knot=slash_otx_knot)
+#     slash_iux_knot = "/"
+#     old_jargonunit = jargonunit_shop(exx.sue, 0, aux_knot=slash_iux_knot)
 #     new_jargonunit = jargonunit_shop(exx.sue, 1)
 
 #     # WHEN
@@ -128,21 +128,21 @@
 #     old_jargonunit.set_nameyap(get_suita_nameyap())
 #     old_jargonunit.set_titleyap(get_bowl_titleyap())
 #     new_jargonunit = jargonunit_shop(exx.sue, spark1)
-#     bob_otx = "Bob"
-#     bob_inx = "Bobby"
-#     new_jargonunit.set_otx2inx(kw.NameTerm, bob_otx, bob_inx)
+#     bob_iux = "Bob"
+#     bob_aux = "Bobby"
+#     new_jargonunit.set_iux2aux(kw.NameTerm, bob_iux, bob_aux)
 #     assert new_jargonunit.nameyap != get_suita_nameyap()
-#     assert new_jargonunit.nameterm_exists(bob_otx, bob_inx)
+#     assert new_jargonunit.nameterm_exists(bob_iux, bob_aux)
 
 #     # WHEN
 #     merged_jargonunit = inherit_jargonunit(old_jargonunit, new_jargonunit)
 
 #     # THEN
 #     assert merged_jargonunit
-#     assert new_jargonunit.nameterm_exists(bob_otx, bob_inx)
+#     assert new_jargonunit.nameterm_exists(bob_iux, bob_aux)
 #     merged_contactbridge = get_suita_nameyap()
 #     merged_contactbridge.spark_num = spark1
-#     merged_contactbridge.set_otx2inx(bob_otx, bob_inx)
+#     merged_contactbridge.set_iux2aux(bob_iux, bob_aux)
 #     assert merged_jargonunit.nameyap == merged_contactbridge
 #     merged_groupbridge = get_bowl_titleyap()
 #     merged_groupbridge.spark_num = spark1

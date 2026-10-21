@@ -1,4 +1,5 @@
 from ch00_py.file_toolbox import create_path, open_json
+from ch09_person_atom.atom_config import get_all_person_dimen_delete_keys
 
 
 def get_speech_filename():
@@ -135,3 +136,17 @@ def get_speechable_args() -> set:
         "contact_name",
         "weekday_label",
     }
+
+
+def set_speechable_iux_aux_args(args: set) -> set:
+    """Receives set of args, returns a set with all "Jargonable" args replaced with "_otx" and "_inx" """
+    all_jargonable = get_speechable_args()
+    all_jargonable.update(get_all_person_dimen_delete_keys())
+    transformed_args = set()
+    for arg in args:
+        if arg in all_jargonable:
+            transformed_args.add(f"{arg}_iux")
+            transformed_args.add(f"{arg}_aux")
+        else:
+            transformed_args.add(arg)
+    return transformed_args

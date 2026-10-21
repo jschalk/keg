@@ -22,7 +22,7 @@ from ch18_speech.speech_config import (
     # get_speech_ropeterm_args,
     # get_speech_titleterm_args,
     get_speechable_args,
-    # set_speechable_otx_inx_args,
+    set_speechable_iux_aux_args,
     speechable_obj_types,
 )
 
@@ -74,41 +74,41 @@ def test_get_speechable_args_ReturnsObj():
     }
 
 
-# def test_set_speechable_otx_inx_args_ReturnsObj_Scenario0_All_speechable_args():
-#     # sourcery skip: no-loop-in-tests
-#     # ESTABLISH
-#     speechable_args = get_speechable_args()
+def test_set_speechable_iux_aux_args_ReturnsObj_Scenario0_All_speechable_args():
+    # sourcery skip: no-loop-in-tests
+    # ESTABLISH
+    speechable_args = get_speechable_args()
 
-#     # WHEN
-#     otx_inx_args = set_speechable_otx_inx_args(speechable_args)
+    # WHEN
+    iux_aux_args = set_speechable_iux_aux_args(speechable_args)
 
-#     # THEN
-#     expected_otx_inx_args = set()
-#     for speechable_arg in speechable_args:
-#         expected_otx_inx_args.add(f"{speechable_arg}_otx")
-#         expected_otx_inx_args.add(f"{speechable_arg}_inx")
-#     print(f"{otx_inx_args=}")
-#     assert otx_inx_args == expected_otx_inx_args
+    # THEN
+    expected_iux_aux_args = set()
+    for speechable_arg in speechable_args:
+        expected_iux_aux_args.add(f"{speechable_arg}_iux")
+        expected_iux_aux_args.add(f"{speechable_arg}_aux")
+    print(f"{iux_aux_args=}")
+    assert iux_aux_args == expected_iux_aux_args
 
 
-# def test_set_speechable_otx_inx_args_ReturnsObj_Scenario1_person_dimen_delete_keys():
+# def test_set_speechable_iux_aux_args_ReturnsObj_Scenario1_person_dimen_delete_keys():
 #     # sourcery skip: no-loop-in-tests
 #     # ESTABLISH
 #     person_dimen_delete_keys = get_all_person_dimen_delete_keys()
 
 #     # WHEN
-#     otx_inx_args = set_speechable_otx_inx_args(person_dimen_delete_keys)
+#     iux_aux_args = set_speechable_iux_aux_args(person_dimen_delete_keys)
 
 #     # THEN
-#     expected_otx_inx_args = set()
+#     expected_iux_aux_args = set()
 #     for speechable_arg in person_dimen_delete_keys:
-#         expected_otx_inx_args.add(f"{speechable_arg}_otx")
-#         expected_otx_inx_args.add(f"{speechable_arg}_inx")
-#     print(f"{otx_inx_args=}")
-#     assert otx_inx_args == expected_otx_inx_args
+#         expected_iux_aux_args.add(f"{speechable_arg}_iux")
+#         expected_iux_aux_args.add(f"{speechable_arg}_aux")
+#     print(f"{iux_aux_args=}")
+#     assert iux_aux_args == expected_iux_aux_args
 
 
-# def test_set_speechable_otx_inx_args_ReturnsObj_Scenario2_OtherArgsAreUntouched():
+# def test_set_speechable_iux_aux_args_ReturnsObj_Scenario2_OtherArgsAreUntouched():
 #     # sourcery skip: no-loop-in-tests
 #     # ESTABLISH
 #     run_str = "run"
@@ -116,36 +116,36 @@ def test_get_speechable_args_ReturnsObj():
 #     given_person_dimen_delete_keys.add(run_str)
 
 #     # WHEN
-#     otx_inx_args = set_speechable_otx_inx_args(given_person_dimen_delete_keys)
+#     iux_aux_args = set_speechable_iux_aux_args(given_person_dimen_delete_keys)
 
 #     # THEN
-#     expected_otx_inx_args = set()
+#     expected_iux_aux_args = set()
 #     for speechable_arg in get_all_person_dimen_delete_keys():
-#         expected_otx_inx_args.add(f"{speechable_arg}_otx")
-#         expected_otx_inx_args.add(f"{speechable_arg}_inx")
-#     expected_otx_inx_args.add(run_str)
-#     print(f"{otx_inx_args=}")
-#     assert otx_inx_args == expected_otx_inx_args
+#         expected_iux_aux_args.add(f"{speechable_arg}_iux")
+#         expected_iux_aux_args.add(f"{speechable_arg}_aux")
+#     expected_iux_aux_args.add(run_str)
+#     print(f"{iux_aux_args=}")
+#     assert iux_aux_args == expected_iux_aux_args
 
 
-# def test_set_speechable_otx_inx_args_ReturnsObj_Scenario3_PartialSets():
+# def test_set_speechable_iux_aux_args_ReturnsObj_Scenario3_PartialSets():
 #     # ESTABLISH
 #     healer_name_ERASE_str = f"{kw.healer_name}_ERASE"
 #     run_str = "run"
 #     given_person_dimen_delete_keys = {run_str, healer_name_ERASE_str}
 
 #     # WHEN
-#     otx_inx_args = set_speechable_otx_inx_args(given_person_dimen_delete_keys)
+#     iux_aux_args = set_speechable_iux_aux_args(given_person_dimen_delete_keys)
 
 #     # THEN
 #     healer_name_ERASE_str = f"{kw.healer_name}_ERASE"
-#     expected_otx_inx_args = {
-#         f"{healer_name_ERASE_str}_otx",
-#         f"{healer_name_ERASE_str}_inx",
+#     expected_iux_aux_args = {
+#         f"{healer_name_ERASE_str}_iux",
+#         f"{healer_name_ERASE_str}_aux",
 #         run_str,
 #     }
-#     print(f"{otx_inx_args=}")
-#     assert otx_inx_args == expected_otx_inx_args
+#     print(f"{iux_aux_args=}")
+#     assert iux_aux_args == expected_iux_aux_args
 
 
 # def test_get_speech_nameterm_args_ReturnsObj():
@@ -237,8 +237,8 @@ def test_get_speechable_args_ReturnsObj():
 #     assert not x_speechunit.labelyap
 #     assert not x_speechunit.ropeyap
 #     assert not x_speechunit.unknown_str
-#     assert not x_speechunit.otx_knot
-#     assert not x_speechunit.inx_knot
+#     assert not x_speechunit.iux_knot
+#     assert not x_speechunit.aux_knot
 #     assert set(x_speechunit.__dict__.keys()) == {
 #         kw.spark_face,
 #         kw.spark_num,
@@ -247,8 +247,8 @@ def test_get_speechable_args_ReturnsObj():
 #         kw.labelyap,
 #         kw.ropeyap,
 #         kw.unknown_str,
-#         kw.otx_knot,
-#         kw.inx_knot,
+#         kw.iux_knot,
+#         kw.aux_knot,
 #     }
 
 
@@ -262,60 +262,60 @@ def test_get_speechable_args_ReturnsObj():
 #     assert sue_speechunit.spark_face == exx.sue
 #     assert sue_speechunit.spark_num == 0
 #     assert sue_speechunit.unknown_str == default_unknown_str_if_None()
-#     assert sue_speechunit.otx_knot == default_knot_if_None()
-#     assert sue_speechunit.inx_knot == default_knot_if_None()
+#     assert sue_speechunit.iux_knot == default_knot_if_None()
+#     assert sue_speechunit.aux_knot == default_knot_if_None()
 #     assert sue_speechunit.titleyap == titleyap_shop(spark_face=exx.sue)
 #     assert sue_speechunit.nameyap == nameyap_shop(spark_face=exx.sue)
 #     assert sue_speechunit.labelyap == labelyap_shop(spark_face=exx.sue)
 #     assert sue_speechunit.ropeyap == ropeyap_shop(spark_face=exx.sue)
 #     assert sue_speechunit.nameyap.spark_num == 0
 #     assert sue_speechunit.nameyap.unknown_str == default_unknown_str_if_None()
-#     assert sue_speechunit.nameyap.otx_knot == default_knot_if_None()
-#     assert sue_speechunit.nameyap.inx_knot == default_knot_if_None()
+#     assert sue_speechunit.nameyap.iux_knot == default_knot_if_None()
+#     assert sue_speechunit.nameyap.aux_knot == default_knot_if_None()
 #     assert sue_speechunit.titleyap.spark_num == 0
 #     assert sue_speechunit.titleyap.unknown_str == default_unknown_str_if_None()
-#     assert sue_speechunit.titleyap.otx_knot == default_knot_if_None()
-#     assert sue_speechunit.titleyap.inx_knot == default_knot_if_None()
+#     assert sue_speechunit.titleyap.iux_knot == default_knot_if_None()
+#     assert sue_speechunit.titleyap.aux_knot == default_knot_if_None()
 #     assert sue_speechunit.labelyap.spark_num == 0
 #     assert sue_speechunit.labelyap.unknown_str == default_unknown_str_if_None()
-#     assert sue_speechunit.labelyap.otx_knot == default_knot_if_None()
-#     assert sue_speechunit.labelyap.inx_knot == default_knot_if_None()
+#     assert sue_speechunit.labelyap.iux_knot == default_knot_if_None()
+#     assert sue_speechunit.labelyap.aux_knot == default_knot_if_None()
 #     assert sue_speechunit.ropeyap.spark_num == 0
 #     assert sue_speechunit.ropeyap.unknown_str == default_unknown_str_if_None()
-#     assert sue_speechunit.ropeyap.otx_knot == default_knot_if_None()
-#     assert sue_speechunit.ropeyap.inx_knot == default_knot_if_None()
+#     assert sue_speechunit.ropeyap.iux_knot == default_knot_if_None()
+#     assert sue_speechunit.ropeyap.aux_knot == default_knot_if_None()
 
 
 # def test_speechunit_shop_ReturnsObj_Scenario1():
 #     # ESTABLISH
 #     five_spark_num = 5
 #     y_uk = "UnknownTerm"
-#     slash_otx_knot = "/"
-#     colon_inx_knot = ":"
+#     slash_iux_knot = "/"
+#     colon_aux_knot = ":"
 
 #     # WHEN
 #     sue_speechunit = speechunit_shop(
 #         spark_face=exx.sue,
 #         spark_num=five_spark_num,
-#         otx_knot=slash_otx_knot,
-#         inx_knot=colon_inx_knot,
+#         iux_knot=slash_iux_knot,
+#         aux_knot=colon_aux_knot,
 #         unknown_str=y_uk,
 #     )
 
 #     # THEN
 #     assert sue_speechunit.spark_num == five_spark_num
 #     assert sue_speechunit.unknown_str == y_uk
-#     assert sue_speechunit.otx_knot == slash_otx_knot
-#     assert sue_speechunit.inx_knot == colon_inx_knot
+#     assert sue_speechunit.iux_knot == slash_iux_knot
+#     assert sue_speechunit.aux_knot == colon_aux_knot
 
 #     # x_titleyap = titleyap_shop(
-#     #     slash_otx_knot, colon_inx_knot, {}, y_uk, exx.sue, five_spark_num
+#     #     slash_iux_knot, colon_aux_knot, {}, y_uk, exx.sue, five_spark_num
 #     # )
 #     # x_nameyap = nameyap_shop(
-#     #     slash_otx_knot, colon_inx_knot, {}, y_uk, exx.sue, five_spark_num
+#     #     slash_iux_knot, colon_aux_knot, {}, y_uk, exx.sue, five_spark_num
 #     # )
 #     # x_ropeyap = ropeyap_shop(
-#     #     slash_otx_knot, colon_inx_knot, None, {}, y_uk, exx.sue, five_spark_num
+#     #     slash_iux_knot, colon_aux_knot, None, {}, y_uk, exx.sue, five_spark_num
 #     # )
 #     # assert sue_speechunit.titleyap == x_titleyap
 #     # assert sue_speechunit.nameyap == x_nameyap
@@ -324,23 +324,23 @@ def test_get_speechable_args_ReturnsObj():
 #     assert sue_speechunit.nameyap.spark_face == exx.sue
 #     assert sue_speechunit.nameyap.spark_num == five_spark_num
 #     assert sue_speechunit.nameyap.unknown_str == y_uk
-#     assert sue_speechunit.nameyap.otx_knot == slash_otx_knot
-#     assert sue_speechunit.nameyap.inx_knot == colon_inx_knot
+#     assert sue_speechunit.nameyap.iux_knot == slash_iux_knot
+#     assert sue_speechunit.nameyap.aux_knot == colon_aux_knot
 #     assert sue_speechunit.titleyap.spark_face == exx.sue
 #     assert sue_speechunit.titleyap.spark_num == five_spark_num
 #     assert sue_speechunit.titleyap.unknown_str == y_uk
-#     assert sue_speechunit.titleyap.otx_knot == slash_otx_knot
-#     assert sue_speechunit.titleyap.inx_knot == colon_inx_knot
+#     assert sue_speechunit.titleyap.iux_knot == slash_iux_knot
+#     assert sue_speechunit.titleyap.aux_knot == colon_aux_knot
 #     assert sue_speechunit.labelyap.spark_face == exx.sue
 #     assert sue_speechunit.labelyap.spark_num == five_spark_num
 #     assert sue_speechunit.labelyap.unknown_str == y_uk
-#     assert sue_speechunit.labelyap.otx_knot == slash_otx_knot
-#     assert sue_speechunit.labelyap.inx_knot == colon_inx_knot
+#     assert sue_speechunit.labelyap.iux_knot == slash_iux_knot
+#     assert sue_speechunit.labelyap.aux_knot == colon_aux_knot
 #     assert sue_speechunit.ropeyap.spark_face == exx.sue
 #     assert sue_speechunit.ropeyap.spark_num == five_spark_num
 #     assert sue_speechunit.ropeyap.unknown_str == y_uk
-#     assert sue_speechunit.ropeyap.otx_knot == slash_otx_knot
-#     assert sue_speechunit.ropeyap.inx_knot == colon_inx_knot
+#     assert sue_speechunit.ropeyap.iux_knot == slash_iux_knot
+#     assert sue_speechunit.ropeyap.aux_knot == colon_aux_knot
 
 
 # def test_speechunit_shop_ReturnsObj_Scenario2_SpeechCoreAttrAreDefaultWhenGiven_float_nan():
@@ -353,13 +353,13 @@ def test_get_speechable_args_ReturnsObj():
 #         spark_face=exx.bob,
 #         spark_num=spark7,
 #         unknown_str=x_nan,
-#         otx_knot=x_nan,
-#         inx_knot=x_nan,
+#         iux_knot=x_nan,
+#         aux_knot=x_nan,
 #     )
 
 #     # THEN
 #     assert x_speechunit.spark_face == exx.bob
 #     assert x_speechunit.spark_num == spark7
 #     assert x_speechunit.unknown_str == default_unknown_str_if_None()
-#     assert x_speechunit.otx_knot == default_knot_if_None()
-#     assert x_speechunit.inx_knot == default_knot_if_None()
+#     assert x_speechunit.iux_knot == default_knot_if_None()
+#     assert x_speechunit.aux_knot == default_knot_if_None()
