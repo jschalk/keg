@@ -48,21 +48,6 @@
 #     assert str(excinfo.value) == exception_str
 
 
-# def test_SpeechUnit_set_ropeyap_RaisesErrorIf_ropeyap_unknown_str_IsNotSame():
-#     # ESTABLISH
-#     sue_speechunit = speechunit_shop(exx.sue)
-#     casa_unknown_str = "Unknown_casa"
-#     x_ropeyap = ropeyap_shop(unknown_str=casa_unknown_str, flare_audie=exx.sue)
-#     assert sue_speechunit.unknown_str != x_ropeyap.unknown_str
-#     assert sue_speechunit.ropeyap != x_ropeyap
-
-#     # WHEN / THEN
-#     with pytest_raises(Exception) as excinfo:
-#         sue_speechunit.set_ropeyap(x_ropeyap)
-#     exception_str = f"set_yapcore Error: SpeechUnit unknown_str is '{sue_speechunit.unknown_str}', YapCore is '{casa_unknown_str}'."
-#     assert str(excinfo.value) == exception_str
-
-
 # def test_SpeechUnit_set_ropeyap_RaisesErrorIf_ropeyap_flare_audie_IsNotSame():
 #     # ESTABLISH
 #     sue_speechunit = speechunit_shop(exx.sue)

@@ -80,24 +80,24 @@ class SpeechUnit:
     def del_nameterm(self, iux_name: str):
         return self.nameyap.del_iux2aux(iux_name)
 
-    #     def set_titleyap(self, x_titleyap: TitleYap):
-    #         self._check_speech_core_attrs_match(x_titleyap)
-    #         self.titleyap = x_titleyap
+    def set_titleyap(self, x_titleyap: TitleYap):
+        self._check_speech_core_attrs_match(x_titleyap)
+        self.titleyap = x_titleyap
 
-    #     def get_titleyap(self) -> TitleYap:
-    #         return self.titleyap
+    def get_titleyap(self) -> TitleYap:
+        return self.titleyap
 
-    #     def set_titleterm(self, iux_title: str, aux_title: str):
-    #         self.titleyap.set_iux2aux(iux_title, aux_title)
+    def set_titleterm(self, iux_title: str, aux_title: str):
+        self.titleyap.set_iux2aux(iux_title, aux_title)
 
-    #     def titleterm_exists(self, iux_title: str, aux_title: str):
-    #         return self.titleyap.iux2aux_exists(iux_title, aux_title)
+    def titleterm_exists(self, iux_title: str, aux_title: str):
+        return self.titleyap.iux2aux_exists(iux_title, aux_title)
 
-    #     def _get_aux_title(self, iux_title: str):
-    #         return self.titleyap.get_aux_value(iux_title)
+    def _get_aux_title(self, iux_title: str):
+        return self.titleyap.get_aux_value(iux_title)
 
-    #     def del_titleterm(self, iux_title: str):
-    #         return self.titleyap.del_iux2aux(iux_title)
+    def del_titleterm(self, iux_title: str):
+        return self.titleyap.del_iux2aux(iux_title)
 
     #     def get_yapunit(self, x_obj_type: str):
     #         if x_obj_type == "NameTerm":

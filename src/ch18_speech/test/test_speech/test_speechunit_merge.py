@@ -50,20 +50,6 @@
 #     assert str(excinfo.value) == "Core attrs in conflict"
 
 
-# def test_SpeechUnit_inherit_speechunit_ReturnsObj_Scenario3_RaiseErrorWhenDifferent_x_unknown_str():
-#     # ESTABLISH
-#     x_unknown_str = "UnknownTerm"
-#     old_speechunit = speechunit_shop(exx.sue, 0, unknown_str=x_unknown_str)
-#     new_speechunit = speechunit_shop(exx.sue, 1)
-
-#     # WHEN
-#     with pytest_raises(Exception) as excinfo:
-#         inherit_speechunit(old_speechunit, new_speechunit)
-
-#     # THEN
-#     assert str(excinfo.value) == "Core attrs in conflict"
-
-
 # def test_SpeechUnit_inherit_speechunit_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_flare_audie():
 #     # ESTABLISH
 #     old_speechunit = speechunit_shop(exx.sue, 0)
