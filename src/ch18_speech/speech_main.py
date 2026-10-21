@@ -119,20 +119,20 @@ class SpeechUnit:
     def del_roadyap_label(self, x_iux: str):
         self.ropeyap.del_label(x_iux)
 
-    #     def get_ropeyap(self) -> RopeYap:
-    #         return self.ropeyap
+    def get_ropeyap(self) -> RopeYap:
+        return self.ropeyap
 
-    #     def set_rope(self, iux_rope: str, aux_rope: str):
-    #         self.ropeyap.set_iux2aux(iux_rope, aux_rope)
+    def set_rope(self, iux_rope: str, aux_rope: str):
+        self.ropeyap.set_iux2aux(iux_rope, aux_rope)
 
-    #     def rope_exists(self, iux_rope: str, aux_rope: str):
-    #         return self.ropeyap.iux2aux_exists(iux_rope, aux_rope)
+    def rope_exists(self, iux_rope: str, aux_rope: str):
+        return self.ropeyap.iux2aux_exists(iux_rope, aux_rope)
 
-    #     def _get_aux_rope(self, iux_rope: str):
-    #         return self.ropeyap.get_aux_value(iux_rope)
+    def _get_aux_rope(self, iux_rope: str):
+        return self.ropeyap.get_aux_value(iux_rope)
 
-    #     def del_rope(self, iux_rope: str):
-    #         return self.ropeyap.del_iux2aux(iux_rope)
+    def del_rope(self, iux_rope: str):
+        return self.ropeyap.del_iux2aux(iux_rope)
 
 
 #     def is_valid(self) -> bool:
