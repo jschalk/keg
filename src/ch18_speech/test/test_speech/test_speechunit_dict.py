@@ -10,7 +10,7 @@
 #     get_speechunit_from_dict,
 #     speechunit_shop,
 # )
-# from ch99_glossary.ch_keyword import Ch17Keywords as kw, ExampleStrs as exx
+# from ch99_glossary.ch_keyword import Ch18Keywords as kw, ExampleStrs as exx
 
 
 # def test_SpeechUnit_to_dict_ReturnsObj_Scenario0():

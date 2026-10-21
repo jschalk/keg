@@ -134,70 +134,70 @@ class SpeechUnit:
     def del_rope(self, iux_rope: str):
         return self.ropeyap.del_iux2aux(iux_rope)
 
+    def get_yapunit(self, x_obj_type: str):
+        if x_obj_type == "NameTerm":
+            return self.nameyap
+        elif x_obj_type == "TitleTerm":
+            return self.titleyap
+        elif x_obj_type == "LabelTerm":
+            return self.labelyap
+        elif x_obj_type == "RopeTerm":
+            return self.ropeyap
+        else:
+            return None
 
-#     def is_valid(self) -> bool:
-#         return (
-#             self.nameyap.is_valid()
-#             and self.titleyap.is_valid()
-#             and self.labelyap.is_valid()
-#             and self.ropeyap.is_valid()
-#         )
+    def is_valid(self) -> bool:
+        return (
+            self.nameyap.is_valid()
+            and self.titleyap.is_valid()
+            and self.labelyap.is_valid()
+            and self.ropeyap.is_valid()
+        )
 
-#     def set_iux2aux(self, x_obj_type: str, x_iux: str, x_aux: str):
-#         """obj_type: NameTerm, TitleTerm, LabelTerm, RopeTerm"""
-#         if x_obj_type == "NameTerm":
-#             self.nameyap.set_iux2aux(x_iux, x_aux)
-#         elif x_obj_type == "TitleTerm":
-#             self.titleyap.set_iux2aux(x_iux, x_aux)
-#         elif x_obj_type == "LabelTerm":
-#             self.labelyap.set_iux2aux(x_iux, x_aux)
-#         elif x_obj_type == "RopeTerm":
-#             self.ropeyap.set_iux2aux(x_iux, x_aux)
+    def set_iux2aux(self, x_obj_type: str, x_iux: str, x_aux: str):
+        """obj_type: NameTerm, TitleTerm, LabelTerm, RopeTerm"""
+        if x_obj_type == "NameTerm":
+            self.nameyap.set_iux2aux(x_iux, x_aux)
+        elif x_obj_type == "TitleTerm":
+            self.titleyap.set_iux2aux(x_iux, x_aux)
+        elif x_obj_type == "LabelTerm":
+            self.labelyap.set_iux2aux(x_iux, x_aux)
+        elif x_obj_type == "RopeTerm":
+            self.ropeyap.set_iux2aux(x_iux, x_aux)
 
-#     def get_aux_value(self, x_obj_type: str, x_iux: str) -> str:
-#         """obj_type: NameTerm, TitleTerm, LabelTerm, RopeTerm"""
-#         if x_obj_type == "NameTerm":
-#             return self.nameyap.get_aux_value(x_iux)
-#         elif x_obj_type == "TitleTerm":
-#             return self.titleyap.get_aux_value(x_iux)
-#         elif x_obj_type == "LabelTerm":
-#             return self.labelyap.get_aux_value(x_iux)
-#         elif x_obj_type == "RopeTerm":
-#             return self.ropeyap.get_aux_value(x_iux)
+    def iux2aux_exists(self, x_obj_type: str, x_iux: str, x_aux: str) -> bool:
+        """obj_type: NameTerm, TitleTerm, LabelTerm, RopeTerm"""
+        if x_obj_type == "NameTerm":
+            return self.nameyap.iux2aux_exists(x_iux, x_aux)
+        elif x_obj_type == "TitleTerm":
+            return self.titleyap.iux2aux_exists(x_iux, x_aux)
+        elif x_obj_type == "LabelTerm":
+            return self.labelyap.iux2aux_exists(x_iux, x_aux)
+        elif x_obj_type == "RopeTerm":
+            return self.ropeyap.iux2aux_exists(x_iux, x_aux)
 
-#     def iux2aux_exists(self, x_obj_type: str, x_iux: str, x_aux: str) -> bool:
-#         """obj_type: NameTerm, TitleTerm, LabelTerm, RopeTerm"""
-#         if x_obj_type == "NameTerm":
-#             return self.nameyap.iux2aux_exists(x_iux, x_aux)
-#         elif x_obj_type == "TitleTerm":
-#             return self.titleyap.iux2aux_exists(x_iux, x_aux)
-#         elif x_obj_type == "LabelTerm":
-#             return self.labelyap.iux2aux_exists(x_iux, x_aux)
-#         elif x_obj_type == "RopeTerm":
-#             return self.ropeyap.iux2aux_exists(x_iux, x_aux)
+    def get_aux_value(self, x_obj_type: str, x_iux: str) -> str:
+        """obj_type: NameTerm, TitleTerm, LabelTerm, RopeTerm"""
+        if x_obj_type == "NameTerm":
+            return self.nameyap.get_aux_value(x_iux)
+        elif x_obj_type == "TitleTerm":
+            return self.titleyap.get_aux_value(x_iux)
+        elif x_obj_type == "LabelTerm":
+            return self.labelyap.get_aux_value(x_iux)
+        elif x_obj_type == "RopeTerm":
+            return self.ropeyap.get_aux_value(x_iux)
 
-#     def del_iux2aux(self, x_obj_type: str, x_iux: str):
-#         """obj_type: NameTerm, TitleTerm, LabelTerm, RopeTerm"""
-#         if x_obj_type == "NameTerm":
-#             self.nameyap.del_iux2aux(x_iux)
-#         elif x_obj_type == "TitleTerm":
-#             self.titleyap.del_iux2aux(x_iux)
-#         elif x_obj_type == "LabelTerm":
-#             self.labelyap.del_iux2aux(x_iux)
-#         elif x_obj_type == "RopeTerm":
-#             self.ropeyap.del_iux2aux(x_iux)
+    def del_iux2aux(self, x_obj_type: str, x_iux: str):
+        """obj_type: NameTerm, TitleTerm, LabelTerm, RopeTerm"""
+        if x_obj_type == "NameTerm":
+            self.nameyap.del_iux2aux(x_iux)
+        elif x_obj_type == "TitleTerm":
+            self.titleyap.del_iux2aux(x_iux)
+        elif x_obj_type == "LabelTerm":
+            self.labelyap.del_iux2aux(x_iux)
+        elif x_obj_type == "RopeTerm":
+            self.ropeyap.del_iux2aux(x_iux)
 
-#     def get_yapunit(self, x_obj_type: str):
-#         if x_obj_type == "NameTerm":
-#             return self.nameyap
-#         elif x_obj_type == "TitleTerm":
-#             return self.titleyap
-#         elif x_obj_type == "LabelTerm":
-#             return self.labelyap
-#         elif x_obj_type == "RopeTerm":
-#             return self.ropeyap
-#         else:
-#             return None
 
 #     def to_dict(self) -> dict:
 #         """Returns dict that is serializable to JSON."""
