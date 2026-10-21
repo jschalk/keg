@@ -91,7 +91,7 @@ def test_SpeechUnit_get_nameyap_ReturnsObj():
     assert gen_x_nameyap == static_x_nameyap
 
 
-def test_SpeechUnit_set_nameterm_SetsAttr_Scenario0():
+def test_SpeechUnit_set_speech_nameterm_SetsAttr_Scenario0():
     # ESTABLISH
     sue_iux = "Sue"
     sue_aux = "Suita"
@@ -100,25 +100,25 @@ def test_SpeechUnit_set_nameterm_SetsAttr_Scenario0():
     assert contact_name_nameyap.iux2aux_exists(sue_iux, sue_aux) is False
 
     # WHEN
-    zia_speechunit.set_nameterm(sue_iux, sue_aux)
+    zia_speechunit.set_speech_nameterm(sue_iux, sue_aux)
 
     # THEN
     assert contact_name_nameyap.iux2aux_exists(sue_iux, sue_aux)
 
 
-def test_SpeechUnit_nameterm_exists_ReturnsObj():
+def test_SpeechUnit_nameterm_speech_exists_ReturnsObj():
     # ESTABLISH
     sue_iux = "Sue"
     sue_aux = "Suita"
     zia_speechunit = speechunit_shop(exx.zia)
 
-    assert zia_speechunit.nameterm_exists(sue_iux, sue_aux) is False
+    assert zia_speechunit.nameterm_speech_exists(sue_iux, sue_aux) is False
 
     # WHEN
-    zia_speechunit.set_nameterm(sue_iux, sue_aux)
+    zia_speechunit.set_speech_nameterm(sue_iux, sue_aux)
 
     # THEN
-    assert zia_speechunit.nameterm_exists(sue_iux, sue_aux)
+    assert zia_speechunit.nameterm_speech_exists(sue_iux, sue_aux)
 
 
 def test_SpeechUnit_get_aux_name_ReturnsObj():
@@ -129,26 +129,26 @@ def test_SpeechUnit_get_aux_name_ReturnsObj():
     assert zia_speechunit._get_aux_name(sue_iux) != sue_aux
 
     # WHEN
-    zia_speechunit.set_nameterm(sue_iux, sue_aux)
+    zia_speechunit.set_speech_nameterm(sue_iux, sue_aux)
 
     # THEN
     assert zia_speechunit._get_aux_name(sue_iux) == sue_aux
 
 
-def test_SpeechUnit_del_nameterm_ReturnsObj():
+def test_SpeechUnit_del_speech_nameterm_ReturnsObj():
     # ESTABLISH
     sue_iux = "Sue"
     sue_aux = "Suita"
     zia_speechunit = speechunit_shop(exx.zia)
 
-    zia_speechunit.set_nameterm(sue_iux, sue_aux)
-    zia_speechunit.set_nameterm(exx.zia, exx.zia)
-    assert zia_speechunit.nameterm_exists(sue_iux, sue_aux)
-    assert zia_speechunit.nameterm_exists(exx.zia, exx.zia)
+    zia_speechunit.set_speech_nameterm(sue_iux, sue_aux)
+    zia_speechunit.set_speech_nameterm(exx.zia, exx.zia)
+    assert zia_speechunit.nameterm_speech_exists(sue_iux, sue_aux)
+    assert zia_speechunit.nameterm_speech_exists(exx.zia, exx.zia)
 
     # WHEN
-    zia_speechunit.del_nameterm(sue_iux)
+    zia_speechunit.del_speech_nameterm(sue_iux)
 
     # THEN
-    assert zia_speechunit.nameterm_exists(sue_iux, sue_aux) is False
-    assert zia_speechunit.nameterm_exists(exx.zia, exx.zia)
+    assert zia_speechunit.nameterm_speech_exists(sue_iux, sue_aux) is False
+    assert zia_speechunit.nameterm_speech_exists(exx.zia, exx.zia)

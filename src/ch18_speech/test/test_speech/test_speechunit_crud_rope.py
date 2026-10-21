@@ -76,7 +76,7 @@ def test_SpeechUnit_get_ropeyap_ReturnsObj():
     assert gen_x_ropeyap == static_x_ropeyap
 
 
-def test_SpeechUnit_set_rope_SetsAttr_Scenario0():
+def test_SpeechUnit_set_speech_rope_SetsAttr_Scenario0():
     # ESTABLISH
     sue_iux = "Sue"
     sue_aux = "Suita"
@@ -85,25 +85,25 @@ def test_SpeechUnit_set_rope_SetsAttr_Scenario0():
     assert ropeid_ropeyap.iux2aux_exists(sue_iux, sue_aux) is False
 
     # WHEN
-    zia_speechunit.set_rope(sue_iux, sue_aux)
+    zia_speechunit.set_speech_rope(sue_iux, sue_aux)
 
     # THEN
     assert ropeid_ropeyap.iux2aux_exists(sue_iux, sue_aux)
 
 
-def test_SpeechUnit_rope_exists_ReturnsObj():
+def test_SpeechUnit_rope_speech_exists_ReturnsObj():
     # ESTABLISH
     sue_iux = "Sue"
     sue_aux = "Suita"
     zia_speechunit = speechunit_shop(exx.zia)
 
-    assert zia_speechunit.rope_exists(sue_iux, sue_aux) is False
+    assert zia_speechunit.rope_speech_exists(sue_iux, sue_aux) is False
 
     # WHEN
-    zia_speechunit.set_rope(sue_iux, sue_aux)
+    zia_speechunit.set_speech_rope(sue_iux, sue_aux)
 
     # THEN
-    assert zia_speechunit.rope_exists(sue_iux, sue_aux)
+    assert zia_speechunit.rope_speech_exists(sue_iux, sue_aux)
 
 
 def test_SpeechUnit_get_aux_rope_ReturnsObj():
@@ -114,26 +114,26 @@ def test_SpeechUnit_get_aux_rope_ReturnsObj():
     assert zia_speechunit._get_aux_rope(sue_iux) != sue_aux
 
     # WHEN
-    zia_speechunit.set_rope(sue_iux, sue_aux)
+    zia_speechunit.set_speech_rope(sue_iux, sue_aux)
 
     # THEN
     assert zia_speechunit._get_aux_rope(sue_iux) == sue_aux
 
 
-def test_SpeechUnit_del_rope_ReturnsObj():
+def test_SpeechUnit_del_speech_rope_ReturnsObj():
     # ESTABLISH
     sue_iux = "Sue"
     sue_aux = "Suita"
     zia_speechunit = speechunit_shop(exx.zia)
 
-    zia_speechunit.set_rope(sue_iux, sue_aux)
-    zia_speechunit.set_rope(exx.zia, exx.zia)
-    assert zia_speechunit.rope_exists(sue_iux, sue_aux)
-    assert zia_speechunit.rope_exists(exx.zia, exx.zia)
+    zia_speechunit.set_speech_rope(sue_iux, sue_aux)
+    zia_speechunit.set_speech_rope(exx.zia, exx.zia)
+    assert zia_speechunit.rope_speech_exists(sue_iux, sue_aux)
+    assert zia_speechunit.rope_speech_exists(exx.zia, exx.zia)
 
     # WHEN
-    zia_speechunit.del_rope(sue_iux)
+    zia_speechunit.del_speech_rope(sue_iux)
 
     # THEN
-    assert zia_speechunit.rope_exists(sue_iux, sue_aux) is False
-    assert zia_speechunit.rope_exists(exx.zia, exx.zia)
+    assert zia_speechunit.rope_speech_exists(sue_iux, sue_aux) is False
+    assert zia_speechunit.rope_speech_exists(exx.zia, exx.zia)

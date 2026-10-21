@@ -76,7 +76,7 @@ def test_SpeechUnit_get_titleyap_ReturnsObj():
     assert gen_x_titleyap == static_x_titleyap
 
 
-def test_SpeechUnit_set_titleterm_SetsAttr_Scenario0():
+def test_SpeechUnit_set_speech_titleterm_SetsAttr_Scenario0():
     # ESTABLISH
     sue_iux = "Sue"
     sue_aux = "Suita"
@@ -85,25 +85,25 @@ def test_SpeechUnit_set_titleterm_SetsAttr_Scenario0():
     assert contact_name_titleyap.iux2aux_exists(sue_iux, sue_aux) is False
 
     # WHEN
-    zia_speechunit.set_titleterm(sue_iux, sue_aux)
+    zia_speechunit.set_speech_titleterm(sue_iux, sue_aux)
 
     # THEN
     assert contact_name_titleyap.iux2aux_exists(sue_iux, sue_aux)
 
 
-def test_SpeechUnit_titleterm_exists_ReturnsObj():
+def test_SpeechUnit_titleterm_speech_exists_ReturnsObj():
     # ESTABLISH
     sue_iux = "Sue"
     sue_aux = "Suita"
     zia_speechunit = speechunit_shop(exx.zia)
 
-    assert zia_speechunit.titleterm_exists(sue_iux, sue_aux) is False
+    assert zia_speechunit.titleterm_speech_exists(sue_iux, sue_aux) is False
 
     # WHEN
-    zia_speechunit.set_titleterm(sue_iux, sue_aux)
+    zia_speechunit.set_speech_titleterm(sue_iux, sue_aux)
 
     # THEN
-    assert zia_speechunit.titleterm_exists(sue_iux, sue_aux)
+    assert zia_speechunit.titleterm_speech_exists(sue_iux, sue_aux)
 
 
 def test_SpeechUnit_get_aux_title_ReturnsObj():
@@ -114,26 +114,26 @@ def test_SpeechUnit_get_aux_title_ReturnsObj():
     assert zia_speechunit._get_aux_title(sue_iux) != sue_aux
 
     # WHEN
-    zia_speechunit.set_titleterm(sue_iux, sue_aux)
+    zia_speechunit.set_speech_titleterm(sue_iux, sue_aux)
 
     # THEN
     assert zia_speechunit._get_aux_title(sue_iux) == sue_aux
 
 
-def test_SpeechUnit_del_titleterm_ReturnsObj():
+def test_SpeechUnit_del_speech_titleterm_ReturnsObj():
     # ESTABLISH
     sue_iux = "Sue"
     sue_aux = "Suita"
     zia_speechunit = speechunit_shop(exx.zia)
 
-    zia_speechunit.set_titleterm(sue_iux, sue_aux)
-    zia_speechunit.set_titleterm(exx.zia, exx.zia)
-    assert zia_speechunit.titleterm_exists(sue_iux, sue_aux)
-    assert zia_speechunit.titleterm_exists(exx.zia, exx.zia)
+    zia_speechunit.set_speech_titleterm(sue_iux, sue_aux)
+    zia_speechunit.set_speech_titleterm(exx.zia, exx.zia)
+    assert zia_speechunit.titleterm_speech_exists(sue_iux, sue_aux)
+    assert zia_speechunit.titleterm_speech_exists(exx.zia, exx.zia)
 
     # WHEN
-    zia_speechunit.del_titleterm(sue_iux)
+    zia_speechunit.del_speech_titleterm(sue_iux)
 
     # THEN
-    assert zia_speechunit.titleterm_exists(sue_iux, sue_aux) is False
-    assert zia_speechunit.titleterm_exists(exx.zia, exx.zia)
+    assert zia_speechunit.titleterm_speech_exists(sue_iux, sue_aux) is False
+    assert zia_speechunit.titleterm_speech_exists(exx.zia, exx.zia)

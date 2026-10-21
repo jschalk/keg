@@ -68,16 +68,16 @@ class SpeechUnit:
     def get_nameyap(self) -> NameYap:
         return self.nameyap
 
-    def set_nameterm(self, iux_name: str, aux_name: str):
+    def set_speech_nameterm(self, iux_name: str, aux_name: str):
         self.nameyap.set_iux2aux(iux_name, aux_name)
 
-    def nameterm_exists(self, iux_name: str, aux_name: str):
+    def nameterm_speech_exists(self, iux_name: str, aux_name: str):
         return self.nameyap.iux2aux_exists(iux_name, aux_name)
 
     def _get_aux_name(self, iux_name: str):
         return self.nameyap.get_aux_value(iux_name)
 
-    def del_nameterm(self, iux_name: str):
+    def del_speech_nameterm(self, iux_name: str):
         return self.nameyap.del_iux2aux(iux_name)
 
     def set_titleyap(self, x_titleyap: TitleYap):
@@ -87,16 +87,16 @@ class SpeechUnit:
     def get_titleyap(self) -> TitleYap:
         return self.titleyap
 
-    def set_titleterm(self, iux_title: str, aux_title: str):
+    def set_speech_titleterm(self, iux_title: str, aux_title: str):
         self.titleyap.set_iux2aux(iux_title, aux_title)
 
-    def titleterm_exists(self, iux_title: str, aux_title: str):
+    def titleterm_speech_exists(self, iux_title: str, aux_title: str):
         return self.titleyap.iux2aux_exists(iux_title, aux_title)
 
     def _get_aux_title(self, iux_title: str):
         return self.titleyap.get_aux_value(iux_title)
 
-    def del_titleterm(self, iux_title: str):
+    def del_speech_titleterm(self, iux_title: str):
         return self.titleyap.del_iux2aux(iux_title)
 
     def set_labelyap(self, x_labelyap: LabelYap):
@@ -122,16 +122,16 @@ class SpeechUnit:
     def get_ropeyap(self) -> RopeYap:
         return self.ropeyap
 
-    def set_rope(self, iux_rope: str, aux_rope: str):
+    def set_speech_rope(self, iux_rope: str, aux_rope: str):
         self.ropeyap.set_iux2aux(iux_rope, aux_rope)
 
-    def rope_exists(self, iux_rope: str, aux_rope: str):
+    def rope_speech_exists(self, iux_rope: str, aux_rope: str):
         return self.ropeyap.iux2aux_exists(iux_rope, aux_rope)
 
     def _get_aux_rope(self, iux_rope: str):
         return self.ropeyap.get_aux_value(iux_rope)
 
-    def del_rope(self, iux_rope: str):
+    def del_speech_rope(self, iux_rope: str):
         return self.ropeyap.del_iux2aux(iux_rope)
 
     def get_yapunit(self, x_obj_type: str):
@@ -265,6 +265,7 @@ def speechunit_shop(
     )
 
 
+# TODO figure out why the pop functions are not required to pass tests
 def _get_rid_of_speech_core_keys(yap_dict: dict) -> dict:
     # yap_dict.pop("flare_num")
     # yap_dict.pop("flare_audie")
@@ -341,22 +342,23 @@ def get_speechunit_from_dict(x_dict: dict) -> SpeechUnit:
     )
 
 
-# class SpeechCoreAttrConflictError(Exception):
-#     pass
+class SpeechCoreAttrConflictError(Exception):
+    pass
 
 
-# def inherit_speechunit(older: SpeechUnit, newer: SpeechUnit) -> SpeechUnit:
-#     if (
-#         older.flare_audie != newer.flare_audie
-#         or older.iux_knot != newer.iux_knot
-#         or older.aux_knot != newer.aux_knot
-#     ):
-#         raise SpeechCoreAttrConflictError("Core attrs in conflict")
-#     if older.flare_num >= newer.flare_num:
-#         raise SpeechCoreAttrConflictError("older speechunit is not older")
-#     newer.set_nameyap(inherit_nameyap(newer.nameyap, older.nameyap))
-#     newer.set_titleyap(inherit_titleyap(newer.titleyap, older.titleyap))
-#     newer.set_labelyap(inherit_labelyap(newer.labelyap, older.labelyap))
-#     newer.set_ropeyap(inherit_ropeyap(newer.ropeyap, older.ropeyap))
+# TODO find out why no tests trip without "Core attrs in conflict"
+def inherit_speechunit(older: SpeechUnit, newer: SpeechUnit) -> SpeechUnit:
+    # if (
+    #     older.flare_audie != newer.flare_audie
+    #     or older.iux_knot != newer.iux_knot
+    #     or older.aux_knot != newer.aux_knot
+    # ):
+    #     raise SpeechCoreAttrConflictError("Core attrs in conflict")
+    if older.flare_num >= newer.flare_num:
+        raise SpeechCoreAttrConflictError("older speechunit is not older")
+    newer.set_nameyap(inherit_nameyap(newer.nameyap, older.nameyap))
+    newer.set_titleyap(inherit_titleyap(newer.titleyap, older.titleyap))
+    newer.set_labelyap(inherit_labelyap(newer.labelyap, older.labelyap))
+    newer.set_ropeyap(inherit_ropeyap(newer.ropeyap, older.ropeyap))
 
-#     return newer
+    return newer
