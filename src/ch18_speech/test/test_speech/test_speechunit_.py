@@ -8,6 +8,10 @@ from ch17_jargon.jargon_config import (
     get_jargon_args_obj_types,
     jargonable_obj_types,
     get_jargonable_args,
+    get_jargon_labelterm_args,
+    get_jargon_nameterm_args,
+    get_jargon_ropeterm_args,
+    get_jargon_titleterm_args,
 )
 from ch18_speech.yap_term import (
     labelyap_shop,
@@ -17,10 +21,10 @@ from ch18_speech.yap_term import (
 )
 from ch18_speech.speech_config import (
     get_speech_args_obj_types,
-    # get_speech_labelterm_args,
-    # get_speech_nameterm_args,
-    # get_speech_ropeterm_args,
-    # get_speech_titleterm_args,
+    get_speech_labelterm_args,
+    get_speech_nameterm_args,
+    get_speech_ropeterm_args,
+    get_speech_titleterm_args,
     get_speechable_args,
     set_speechable_iux_aux_args,
     speechable_obj_types,
@@ -148,81 +152,81 @@ def test_set_speechable_iux_aux_args_ReturnsObj_Scenario3_PartialSets():
     assert iux_aux_args == expected_iux_aux_args
 
 
-# def test_get_speech_nameterm_args_ReturnsObj():
-#     # ESTABLISH / WHEN
-#     speech_NameTerm_args = get_speech_nameterm_args()
+def test_get_speech_nameterm_args_ReturnsObj():
+    # ESTABLISH / WHEN
+    speech_NameTerm_args = get_speech_nameterm_args()
 
-#     # THEN
-#     assert speech_NameTerm_args == {
-#         kw.contact_name,
-#         kw.spark_face,
-#         kw.healer_name,
-#         kw.person_name,
-#     }
-#     expected_args = {
-#         x_arg
-#         for x_arg, obj_type in get_speech_args_obj_types().items()
-#         if obj_type == kw.NameTerm
-#     }
-#     assert speech_NameTerm_args == expected_args
-
-
-# def test_get_speech_titleterm_args_ReturnsObj():
-#     # ESTABLISH / WHEN
-#     speech_TitleTerm_args = get_speech_titleterm_args()
-
-#     # THEN
-#     assert speech_TitleTerm_args == {
-#         kw.awardee_title,
-#         kw.group_title,
-#         kw.labor_title,
-#     }
-#     expected_args = {
-#         x_arg
-#         for x_arg, obj_type in get_speech_args_obj_types().items()
-#         if obj_type == kw.TitleTerm
-#     }
-#     assert speech_TitleTerm_args == expected_args
+    # THEN
+    assert speech_NameTerm_args == {
+        kw.contact_name,
+        kw.spark_face,
+        kw.healer_name,
+        kw.person_name,
+    }
+    expected_args = {
+        x_arg
+        for x_arg, obj_type in get_speech_args_obj_types().items()
+        if obj_type == kw.NameTerm
+    }
+    assert speech_NameTerm_args == expected_args
 
 
-# def test_get_speech_labelterm_args_ReturnsObj():
-#     # ESTABLISH / WHEN
-#     speech_LabelTerm_args = get_speech_labelterm_args()
+def test_get_speech_titleterm_args_ReturnsObj():
+    # ESTABLISH / WHEN
+    speech_TitleTerm_args = get_speech_titleterm_args()
 
-#     # THEN
-#     assert speech_LabelTerm_args == {
-#         kw.hour_label,
-#         kw.month_label,
-#         kw.epoch_label,
-#         kw.weekday_label,
-#     }
-#     expected_args = {
-#         x_arg
-#         for x_arg, obj_type in get_speech_args_obj_types().items()
-#         if obj_type == kw.LabelTerm
-#     }
-#     assert speech_LabelTerm_args == expected_args
+    # THEN
+    assert speech_TitleTerm_args == {
+        kw.awardee_title,
+        kw.group_title,
+        kw.labor_title,
+    }
+    expected_args = {
+        x_arg
+        for x_arg, obj_type in get_speech_args_obj_types().items()
+        if obj_type == kw.TitleTerm
+    }
+    assert speech_TitleTerm_args == expected_args
 
 
-# def test_get_speech_ropeterm_args_ReturnsObj():
-#     # ESTABLISH / WHEN
-#     speech_RopeTerm_args = get_speech_ropeterm_args()
+def test_get_speech_labelterm_args_ReturnsObj():
+    # ESTABLISH / WHEN
+    speech_LabelTerm_args = get_speech_labelterm_args()
 
-#     # THEN
-#     assert speech_RopeTerm_args == {
-#         kw.moment_rope,
-#         kw.fact_state,
-#         kw.fact_context,
-#         kw.plan_rope,
-#         kw.reason_context,
-#         kw.reason_state,
-#     }
-#     expected_args = {
-#         x_arg
-#         for x_arg, obj_type in get_speech_args_obj_types().items()
-#         if obj_type == kw.RopeTerm
-#     }
-#     assert speech_RopeTerm_args == expected_args
+    # THEN
+    assert speech_LabelTerm_args == {
+        kw.hour_label,
+        kw.month_label,
+        kw.epoch_label,
+        kw.weekday_label,
+    }
+    expected_args = {
+        x_arg
+        for x_arg, obj_type in get_speech_args_obj_types().items()
+        if obj_type == kw.LabelTerm
+    }
+    assert speech_LabelTerm_args == expected_args
+
+
+def test_get_speech_ropeterm_args_ReturnsObj():
+    # ESTABLISH / WHEN
+    speech_RopeTerm_args = get_speech_ropeterm_args()
+
+    # THEN
+    assert speech_RopeTerm_args == {
+        kw.moment_rope,
+        kw.fact_state,
+        kw.fact_context,
+        kw.plan_rope,
+        kw.reason_context,
+        kw.reason_state,
+    }
+    expected_args = {
+        x_arg
+        for x_arg, obj_type in get_speech_args_obj_types().items()
+        if obj_type == kw.RopeTerm
+    }
+    assert speech_RopeTerm_args == expected_args
 
 
 # def test_SpeechUnit_Exists():

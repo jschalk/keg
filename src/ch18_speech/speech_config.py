@@ -150,3 +150,40 @@ def set_speechable_iux_aux_args(args: set) -> set:
         else:
             transformed_args.add(arg)
     return transformed_args
+
+
+def get_speech_nameterm_args() -> set[str]:
+    return {
+        "contact_name",
+        "spark_face",
+        "healer_name",
+        "person_name",
+    }
+
+
+def get_speech_titleterm_args() -> set[str]:
+    return {
+        "awardee_title",
+        "group_title",
+        "labor_title",
+    }
+
+
+def get_speech_labelterm_args() -> set[str]:
+    return {
+        "hour_label",
+        "month_label",
+        "epoch_label",
+        "weekday_label",
+    }
+
+
+def get_speech_ropeterm_args() -> set[str]:
+    return {
+        "moment_rope",
+        "fact_state",
+        "fact_context",
+        "plan_rope",
+        "reason_state",
+        "reason_context",
+    }
