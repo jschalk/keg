@@ -102,24 +102,25 @@ def test_get_keg_elements_sort_order_ReturnsObj():
     assert jargonable_delete_otx_cols.issubset(table_sorting_priority)
     assert jargonable_delete_inx_cols.issubset(table_sorting_priority)
 
-    # # speech args
-    # speech_args = set(get_speech_args_dimen_mapping().keys())
-    # # print(f"{moment_args=}")
-    # # print(f"{speech_args.difference(set(table_sorting_priority))=}")
-    # assert speech_args.issubset(set(table_sorting_priority))
-    # speechable_otx_cols = {f"{trl_arg}_otx" for trl_arg in get_speechable_args()}
-    # speechable_inx_cols = {f"{trl_arg}_inx" for trl_arg in get_speechable_args()}
-    # # print(f"{speechable_otx_cols=}")
-    # # print(f"{speechable_inx_cols=}")
-    # assert speechable_otx_cols.issubset(table_sorting_priority)
-    # assert speechable_inx_cols.issubset(table_sorting_priority)
-    # x_delete_keys = all_person_dimen_delete_keys
-    # speechable_delete_otx_cols = {f"{trl_arg}_otx" for trl_arg in x_delete_keys}
-    # speechable_delete_inx_cols = {f"{trl_arg}_inx" for trl_arg in x_delete_keys}
-    # # print(f"{speechable_delete_otx_cols=}")
-    # # print(f"{speechable_delete_inx_cols=}")
-    # assert speechable_delete_otx_cols.issubset(table_sorting_priority)
-    # assert speechable_delete_inx_cols.issubset(table_sorting_priority)
+    # speech args
+    speech_args = set(get_speech_args_dimen_mapping().keys())
+    # print(f"{moment_args=}")
+    # print(f"{speech_args.difference(set(table_sorting_priority))=}")
+    assert speech_args.issubset(set(table_sorting_priority))
+    speechable_iux_cols = {f"{trl_arg}_iux" for trl_arg in get_speechable_args()}
+    speechable_aux_cols = {f"{trl_arg}_aux" for trl_arg in get_speechable_args()}
+    # print(f"{sorted(speechable_iux_cols.union(speechable_aux_cols))=}")
+    # print(f"{speechable_aux_cols=}")
+    assert speechable_iux_cols.issubset(table_sorting_priority)
+    assert speechable_aux_cols.issubset(table_sorting_priority)
+    x_delete_keys = all_person_dimen_delete_keys
+    speechable_delete_iux_cols = {f"{trl_arg}_iux" for trl_arg in x_delete_keys}
+    speechable_delete_aux_cols = {f"{trl_arg}_aux" for trl_arg in x_delete_keys}
+    # print(f"{sorted(speechable_delete_iux_cols.union(speechable_delete_aux_cols))=}")
+    # print(f"{speechable_delete_aux_cols=}")
+    print(f"{speechable_delete_iux_cols.difference(table_sorting_priority)=}")
+    assert speechable_delete_iux_cols.issubset(table_sorting_priority)
+    assert speechable_delete_aux_cols.issubset(table_sorting_priority)
 
     # person calculated args
     person_calc_args = set(get_all_person_calc_args().keys())
@@ -137,212 +138,281 @@ def test_get_keg_elements_sort_order_ReturnsObj():
     assert table_sorting_priority[5] == kw.spark_face
     assert table_sorting_priority[6] == f"{kw.spark_face}_otx"
     assert table_sorting_priority[7] == f"{kw.spark_face}_inx"
-    assert table_sorting_priority[8] == kw.moment_rope
-    assert table_sorting_priority[9] == f"{kw.moment_rope}_otx"
-    assert table_sorting_priority[10] == f"{kw.moment_rope}_inx"
-    assert table_sorting_priority[11] == kw.epoch_label
-    assert table_sorting_priority[12] == f"{kw.epoch_label}_otx"
-    assert table_sorting_priority[13] == f"{kw.epoch_label}_inx"
-    assert table_sorting_priority[14] == kw.offi_time
-    assert table_sorting_priority[15] == f"{kw.offi_time}_otx"
-    assert table_sorting_priority[16] == f"{kw.offi_time}_inx"
-    assert table_sorting_priority[17] == kw.c400_number
-    assert table_sorting_priority[18] == kw.yr1_jan1_offset
-    assert table_sorting_priority[19] == kw.monthday_index
-    assert table_sorting_priority[20] == kw.cumulative_day
-    assert table_sorting_priority[21] == kw.month_label
-    assert table_sorting_priority[22] == f"{kw.month_label}_otx"
-    assert table_sorting_priority[23] == f"{kw.month_label}_inx"
-    assert table_sorting_priority[24] == kw.cumulative_minute
-    assert table_sorting_priority[25] == f"{kw.hour_label}"
-    assert table_sorting_priority[26] == f"{kw.hour_label}_otx"
-    assert table_sorting_priority[27] == f"{kw.hour_label}_inx"
-    assert table_sorting_priority[28] == kw.weekday_order
-    assert table_sorting_priority[29] == kw.weekday_label
-    assert table_sorting_priority[30] == f"{kw.weekday_label}_otx"
-    assert table_sorting_priority[31] == f"{kw.weekday_label}_inx"
-    assert table_sorting_priority[32] == kw.person_name
-    assert table_sorting_priority[33] == f"{kw.person_name}_otx"
-    assert table_sorting_priority[34] == f"{kw.person_name}_inx"
-    assert table_sorting_priority[35] == f"{kw.person_name}_ERASE"
-    assert table_sorting_priority[36] == f"{kw.person_name}_ERASE_otx"
-    assert table_sorting_priority[37] == f"{kw.person_name}_ERASE_inx"
-    assert table_sorting_priority[38] == kw.contact_name
-    assert table_sorting_priority[39] == f"{kw.contact_name}_otx"
-    assert table_sorting_priority[40] == f"{kw.contact_name}_inx"
-    assert table_sorting_priority[41] == f"{kw.contact_name}_ERASE"
-    assert table_sorting_priority[42] == f"{kw.contact_name}_ERASE_otx"
-    assert table_sorting_priority[43] == f"{kw.contact_name}_ERASE_inx"
-    assert table_sorting_priority[44] == kw.group_title
-    assert table_sorting_priority[45] == f"{kw.group_title}_otx"
-    assert table_sorting_priority[46] == f"{kw.group_title}_inx"
-    assert table_sorting_priority[47] == f"{kw.group_title}_ERASE"
-    assert table_sorting_priority[48] == f"{kw.group_title}_ERASE_otx"
-    assert table_sorting_priority[49] == f"{kw.group_title}_ERASE_inx"
-    assert table_sorting_priority[50] == kw.plan_rope
-    assert table_sorting_priority[51] == f"{kw.plan_rope}_otx"
-    assert table_sorting_priority[52] == f"{kw.plan_rope}_inx"
-    assert table_sorting_priority[53] == f"{kw.plan_rope}_ERASE"
-    assert table_sorting_priority[54] == f"{kw.plan_rope}_ERASE_otx"
-    assert table_sorting_priority[55] == f"{kw.plan_rope}_ERASE_inx"
-    assert table_sorting_priority[56] == kw.reason_context
-    assert table_sorting_priority[57] == f"{kw.reason_context}_otx"
-    assert table_sorting_priority[58] == f"{kw.reason_context}_inx"
-    assert table_sorting_priority[59] == f"{kw.reason_context}_ERASE"
-    assert table_sorting_priority[60] == f"{kw.reason_context}_ERASE_otx"
-    assert table_sorting_priority[61] == f"{kw.reason_context}_ERASE_inx"
-    assert table_sorting_priority[62] == kw.fact_context
-    assert table_sorting_priority[63] == f"{kw.fact_context}_otx"
-    assert table_sorting_priority[64] == f"{kw.fact_context}_inx"
-    assert table_sorting_priority[65] == f"{kw.fact_context}_ERASE"
-    assert table_sorting_priority[66] == f"{kw.fact_context}_ERASE_otx"
-    assert table_sorting_priority[67] == f"{kw.fact_context}_ERASE_inx"
-    assert table_sorting_priority[68] == kw.reason_state
-    assert table_sorting_priority[69] == f"{kw.reason_state}_otx"
-    assert table_sorting_priority[70] == f"{kw.reason_state}_inx"
-    assert table_sorting_priority[71] == f"{kw.reason_state}_ERASE"
-    assert table_sorting_priority[72] == f"{kw.reason_state}_ERASE_otx"
-    assert table_sorting_priority[73] == f"{kw.reason_state}_ERASE_inx"
-    assert table_sorting_priority[74] == kw.fact_state
-    assert table_sorting_priority[75] == f"{kw.fact_state}_otx"
-    assert table_sorting_priority[76] == f"{kw.fact_state}_inx"
-    assert table_sorting_priority[77] == kw.labor_title
-    assert table_sorting_priority[78] == f"{kw.labor_title}_otx"
-    assert table_sorting_priority[79] == f"{kw.labor_title}_inx"
-    assert table_sorting_priority[80] == f"{kw.labor_title}_ERASE"
-    assert table_sorting_priority[81] == f"{kw.labor_title}_ERASE_otx"
-    assert table_sorting_priority[82] == f"{kw.labor_title}_ERASE_inx"
-    assert table_sorting_priority[83] == kw.solo
-    assert table_sorting_priority[84] == kw.awardee_title
-    assert table_sorting_priority[85] == f"{kw.awardee_title}_otx"
-    assert table_sorting_priority[86] == f"{kw.awardee_title}_inx"
-    assert table_sorting_priority[87] == f"{kw.awardee_title}_ERASE"
-    assert table_sorting_priority[88] == f"{kw.awardee_title}_ERASE_otx"
-    assert table_sorting_priority[89] == f"{kw.awardee_title}_ERASE_inx"
-    assert table_sorting_priority[90] == kw.healer_name
-    assert table_sorting_priority[91] == f"{kw.healer_name}_otx"
-    assert table_sorting_priority[92] == f"{kw.healer_name}_inx"
-    assert table_sorting_priority[93] == f"{kw.healer_name}_ERASE"
-    assert table_sorting_priority[94] == f"{kw.healer_name}_ERASE_otx"
-    assert table_sorting_priority[95] == f"{kw.healer_name}_ERASE_inx"
-    assert table_sorting_priority[96] == kw.bud_time
-    assert table_sorting_priority[97] == f"{kw.bud_time}_otx"
-    assert table_sorting_priority[98] == f"{kw.bud_time}_inx"
-    assert table_sorting_priority[99] == kw.tran_time
-    assert table_sorting_priority[100] == f"{kw.tran_time}_otx"
-    assert table_sorting_priority[101] == f"{kw.tran_time}_inx"
-    assert table_sorting_priority[102] == kw.begin
-    assert table_sorting_priority[103] == kw.close
-    assert table_sorting_priority[104] == kw.addin
-    assert table_sorting_priority[105] == kw.numor
-    assert table_sorting_priority[106] == kw.denom
-    assert table_sorting_priority[107] == kw.morph
-    assert table_sorting_priority[108] == kw.gogo_want
-    assert table_sorting_priority[109] == kw.stop_want
-    assert table_sorting_priority[110] == kw.active_requisite
-    assert table_sorting_priority[111] == kw.contact_cred_mass
-    assert table_sorting_priority[112] == kw.contact_debt_mass
-    assert table_sorting_priority[113] == kw.group_cred_mass
-    assert table_sorting_priority[114] == kw.group_debt_mass
-    assert table_sorting_priority[115] == kw.credor_respect
-    assert table_sorting_priority[116] == kw.debtor_respect
-    assert table_sorting_priority[117] == kw.fact_lower
-    assert table_sorting_priority[118] == f"{kw.fact_lower}_otx"
-    assert table_sorting_priority[119] == f"{kw.fact_lower}_inx"
-    assert table_sorting_priority[120] == kw.fact_upper
-    assert table_sorting_priority[121] == f"{kw.fact_upper}_otx"
-    assert table_sorting_priority[122] == f"{kw.fact_upper}_inx"
-    assert table_sorting_priority[123] == kw.fund_pool
-    assert table_sorting_priority[124] == kw.give_force
-    assert table_sorting_priority[125] == kw.poynt
-    assert table_sorting_priority[126] == kw.max_tree_traverse
-    assert table_sorting_priority[127] == kw.reason_lower
-    assert table_sorting_priority[128] == f"{kw.reason_lower}_otx"
-    assert table_sorting_priority[129] == f"{kw.reason_lower}_inx"
-    assert table_sorting_priority[130] == kw.reason_upper
-    assert table_sorting_priority[131] == f"{kw.reason_upper}_otx"
-    assert table_sorting_priority[132] == f"{kw.reason_upper}_inx"
-    assert table_sorting_priority[133] == kw.reason_divisor
-    assert table_sorting_priority[134] == kw.pledge
-    assert table_sorting_priority[135] == kw.problem_bool
-    assert table_sorting_priority[136] == kw.take_force
-    assert table_sorting_priority[137] == kw.fund_grain
-    assert table_sorting_priority[138] == kw.mana_grain
-    assert table_sorting_priority[139] == kw.respect_grain
-    assert table_sorting_priority[140] == kw.amount
-    assert table_sorting_priority[141] == kw.otx_label
-    assert table_sorting_priority[142] == kw.inx_label
-    assert table_sorting_priority[143] == kw.otx_rope
-    assert table_sorting_priority[144] == kw.inx_rope
-    assert table_sorting_priority[145] == kw.otx_name
-    assert table_sorting_priority[146] == kw.inx_name
-    assert table_sorting_priority[147] == kw.otx_title
-    assert table_sorting_priority[148] == kw.inx_title
-    assert table_sorting_priority[149] == kw.otx_knot
-    assert table_sorting_priority[150] == kw.inx_knot
-    assert table_sorting_priority[151] == kw.otx_time
-    assert table_sorting_priority[152] == kw.inx_time
-    assert table_sorting_priority[153] == kw.knot
-    assert table_sorting_priority[154] == kw.groupmark
-    assert table_sorting_priority[155] == kw.unknown_str
-    assert table_sorting_priority[156] == kw.quota
-    assert table_sorting_priority[157] == kw.celldepth
-    assert table_sorting_priority[158] == kw.job_listen_rotations
-    assert table_sorting_priority[159] == kw.error_message
-    assert table_sorting_priority[160] == kw.person_name_is_workforce
-    assert table_sorting_priority[161] == kw.plan_active
-    assert table_sorting_priority[162] == kw.plan_task
-    assert table_sorting_priority[163] == kw.case_task
-    assert table_sorting_priority[164] == kw.reason_active
-    assert table_sorting_priority[165] == kw.reason_task
-    assert table_sorting_priority[166] == kw.case_active
-    assert table_sorting_priority[167] == kw.credor_pool
-    assert table_sorting_priority[168] == kw.debtor_pool
-    assert table_sorting_priority[169] == kw.rational
-    assert table_sorting_priority[170] == kw.fund_give
-    assert table_sorting_priority[171] == kw.fund_take
-    assert table_sorting_priority[172] == kw.fund_onset
-    assert table_sorting_priority[173] == kw.fund_cease
-    assert table_sorting_priority[174] == kw.fund_ratio
-    assert table_sorting_priority[175] == kw.fund_agenda_give
-    assert table_sorting_priority[176] == kw.fund_agenda_take
-    assert table_sorting_priority[177] == kw.fund_agenda_ratio_give
-    assert table_sorting_priority[178] == kw.fund_agenda_ratio_take
-    assert table_sorting_priority[179] == kw.inallocable_contact_debt_mass
-    assert table_sorting_priority[180] == kw.gogo_calc
-    assert table_sorting_priority[181] == kw.stop_calc
-    assert table_sorting_priority[182] == kw.tree_level
-    assert table_sorting_priority[183] == kw.range_evaluated
-    assert table_sorting_priority[184] == kw.descendant_pledge_count
-    assert table_sorting_priority[185] == kw.healerunit_ratio
-    assert table_sorting_priority[186] == kw.all_contact_cred
-    assert table_sorting_priority[187] == kw.keeps_justified
-    assert table_sorting_priority[188] == kw.offtrack_fund
-    assert table_sorting_priority[189] == kw.parent_heir_active
-    assert table_sorting_priority[190] == kw.irrational_contact_debt_mass
-    assert table_sorting_priority[191] == kw.sum_healerunit_plans_fund_total
-    assert table_sorting_priority[192] == kw.keeps_buildable
-    assert table_sorting_priority[193] == kw.all_contact_debt
-    assert table_sorting_priority[194] == kw.tree_traverse_count
-    assert table_sorting_priority[195] == kw.net_funds
-    assert table_sorting_priority[196] == kw.fund_rank
-    assert table_sorting_priority[197] == kw.pledges_count
-    assert table_sorting_priority[198] == f"context_plan_{kw.close}"
-    assert table_sorting_priority[199] == f"context_plan_{kw.denom}"
-    assert table_sorting_priority[200] == f"context_plan_{kw.morph}"
-    assert table_sorting_priority[201] == kw.inx_epoch_diff
+    assert table_sorting_priority[8] == 'flare_audie_aux'
+    assert table_sorting_priority[9] == 'flare_audie_iux'
+    assert table_sorting_priority[10] == kw.moment_rope
+    assert table_sorting_priority[11] == f"{kw.moment_rope}_otx"
+    assert table_sorting_priority[12] == f"{kw.moment_rope}_inx"
+    assert table_sorting_priority[13] == 'moment_rope_aux'
+    assert table_sorting_priority[14] == 'moment_rope_iux'
+    assert table_sorting_priority[15] == kw.epoch_label
+    assert table_sorting_priority[16] == f"{kw.epoch_label}_otx"
+    assert table_sorting_priority[17] == f"{kw.epoch_label}_inx"
+    assert table_sorting_priority[18] == f"{kw.epoch_label}_aux"
+    assert table_sorting_priority[19] == f"{kw.epoch_label}_iux"
+    assert table_sorting_priority[20] == kw.offi_time
+    assert table_sorting_priority[21] == f"{kw.offi_time}_otx"
+    assert table_sorting_priority[22] == f"{kw.offi_time}_inx"
+    assert table_sorting_priority[23] == kw.c400_number
+    assert table_sorting_priority[24] == kw.yr1_jan1_offset
+    assert table_sorting_priority[25] == kw.monthday_index
+    assert table_sorting_priority[26] == kw.cumulative_day
+    assert table_sorting_priority[27] == kw.month_label
+    assert table_sorting_priority[28] == f"{kw.month_label}_otx"
+    assert table_sorting_priority[29] == f"{kw.month_label}_inx"
+    assert table_sorting_priority[30] == f"{kw.month_label}_aux"
+    assert table_sorting_priority[31] == f"{kw.month_label}_iux"
+    assert table_sorting_priority[32] == kw.cumulative_minute
+    assert table_sorting_priority[33] == f"{kw.hour_label}"
+    assert table_sorting_priority[34] == f"{kw.hour_label}_otx"
+    assert table_sorting_priority[35] == f"{kw.hour_label}_inx"
+    assert table_sorting_priority[36] == f"{kw.hour_label}_aux"
+    assert table_sorting_priority[37] == f"{kw.hour_label}_iux"
+    assert table_sorting_priority[38] == kw.weekday_order
+    assert table_sorting_priority[39] == kw.weekday_label
+    assert table_sorting_priority[40] == f"{kw.weekday_label}_otx"
+    assert table_sorting_priority[41] == f"{kw.weekday_label}_inx"
+    assert table_sorting_priority[42] == f"{kw.weekday_label}_aux"
+    assert table_sorting_priority[43] == f"{kw.weekday_label}_iux"
+    assert table_sorting_priority[44] == kw.person_name
+    assert table_sorting_priority[45] == f"{kw.person_name}_otx"
+    assert table_sorting_priority[46] == f"{kw.person_name}_inx"
+    assert table_sorting_priority[47] == f"{kw.person_name}_ERASE"
+    assert table_sorting_priority[48] == f"{kw.person_name}_ERASE_otx"
+    assert table_sorting_priority[49] == f"{kw.person_name}_ERASE_inx"
+    assert table_sorting_priority[50] == f"{kw.person_name}_aux"
+    assert table_sorting_priority[51] == f"{kw.person_name}_iux"
+    assert table_sorting_priority[52] == f"{kw.person_name}_ERASE_aux"
+    assert table_sorting_priority[53] == f"{kw.person_name}_ERASE_iux"
+    assert table_sorting_priority[54] == kw.contact_name
+    assert table_sorting_priority[55] == f"{kw.contact_name}_otx"
+    assert table_sorting_priority[56] == f"{kw.contact_name}_inx"
+    assert table_sorting_priority[57] == f"{kw.contact_name}_ERASE"
+    assert table_sorting_priority[58] == f"{kw.contact_name}_ERASE_otx"
+    assert table_sorting_priority[59] == f"{kw.contact_name}_ERASE_inx"
+    assert table_sorting_priority[60] == f"{kw.contact_name}_aux"
+    assert table_sorting_priority[61] == f"{kw.contact_name}_iux"
+    assert table_sorting_priority[62] == f"{kw.contact_name}_ERASE_aux"
+    assert table_sorting_priority[63] == f"{kw.contact_name}_ERASE_iux"
+    assert table_sorting_priority[64] == kw.group_title
+    assert table_sorting_priority[65] == f"{kw.group_title}_otx"
+    assert table_sorting_priority[66] == f"{kw.group_title}_inx"
+    assert table_sorting_priority[67] == f"{kw.group_title}_ERASE"
+    assert table_sorting_priority[68] == f"{kw.group_title}_ERASE_otx"
+    assert table_sorting_priority[69] == f"{kw.group_title}_ERASE_inx"
+    assert table_sorting_priority[70] == f"{kw.group_title}_aux"
+    assert table_sorting_priority[71] == f"{kw.group_title}_iux"
+    assert table_sorting_priority[72] == f"{kw.group_title}_ERASE_aux"
+    assert table_sorting_priority[73] == f"{kw.group_title}_ERASE_iux"
+    assert table_sorting_priority[74] == kw.plan_rope
+    assert table_sorting_priority[75] == f"{kw.plan_rope}_otx"
+    assert table_sorting_priority[76] == f"{kw.plan_rope}_inx"
+    assert table_sorting_priority[77] == f"{kw.plan_rope}_ERASE"
+    assert table_sorting_priority[78] == f"{kw.plan_rope}_ERASE_otx"
+    assert table_sorting_priority[79] == f"{kw.plan_rope}_ERASE_inx"
+    assert table_sorting_priority[80] == f"{kw.plan_rope}_aux"
+    assert table_sorting_priority[81] == f"{kw.plan_rope}_iux"
+    assert table_sorting_priority[82] == f"{kw.plan_rope}_ERASE_aux"
+    assert table_sorting_priority[83] == f"{kw.plan_rope}_ERASE_iux"
+    assert table_sorting_priority[84] == kw.reason_context
+    assert table_sorting_priority[85] == f"{kw.reason_context}_otx"
+    assert table_sorting_priority[86] == f"{kw.reason_context}_inx"
+    assert table_sorting_priority[87] == f"{kw.reason_context}_ERASE"
+    assert table_sorting_priority[88] == f"{kw.reason_context}_ERASE_otx"
+    assert table_sorting_priority[89] == f"{kw.reason_context}_ERASE_inx"
+    assert table_sorting_priority[90] == f"{kw.reason_context}_aux"
+    assert table_sorting_priority[91] == f"{kw.reason_context}_iux"
+    assert table_sorting_priority[92] == f"{kw.reason_context}_ERASE_aux"
+    assert table_sorting_priority[93] == f"{kw.reason_context}_ERASE_iux"
+    assert table_sorting_priority[94] == kw.fact_context
+    assert table_sorting_priority[95] == f"{kw.fact_context}_otx"
+    assert table_sorting_priority[96] == f"{kw.fact_context}_inx"
+    assert table_sorting_priority[97] == f"{kw.fact_context}_ERASE"
+    assert table_sorting_priority[98] == f"{kw.fact_context}_ERASE_otx"
+    assert table_sorting_priority[99] == f"{kw.fact_context}_ERASE_inx"
+    assert table_sorting_priority[100] == f"{kw.fact_context}_aux"
+    assert table_sorting_priority[101] == f"{kw.fact_context}_iux"
+    assert table_sorting_priority[102] == f"{kw.fact_context}_ERASE_aux"
+    assert table_sorting_priority[103] == f"{kw.fact_context}_ERASE_iux"
+    assert table_sorting_priority[104] == kw.reason_state
+    assert table_sorting_priority[105] == f"{kw.reason_state}_otx"
+    assert table_sorting_priority[106] == f"{kw.reason_state}_inx"
+    assert table_sorting_priority[107] == f"{kw.reason_state}_ERASE"
+    assert table_sorting_priority[108] == f"{kw.reason_state}_ERASE_otx"
+    assert table_sorting_priority[109] == f"{kw.reason_state}_ERASE_inx"
+    assert table_sorting_priority[110] == f"{kw.reason_state}_aux"
+    assert table_sorting_priority[111] == f"{kw.reason_state}_iux"
+    assert table_sorting_priority[112] == f"{kw.reason_state}_ERASE_aux"
+    assert table_sorting_priority[113] == f"{kw.reason_state}_ERASE_iux"
+    assert table_sorting_priority[114] == kw.fact_state
+    assert table_sorting_priority[115] == f"{kw.fact_state}_otx"
+    assert table_sorting_priority[116] == f"{kw.fact_state}_inx"
+    assert table_sorting_priority[117] == f"{kw.fact_state}_aux"
+    assert table_sorting_priority[118] == f"{kw.fact_state}_iux"
+    assert table_sorting_priority[119] == kw.labor_title
+    assert table_sorting_priority[120] == f"{kw.labor_title}_otx"
+    assert table_sorting_priority[121] == f"{kw.labor_title}_inx"
+    assert table_sorting_priority[122] == f"{kw.labor_title}_ERASE"
+    assert table_sorting_priority[123] == f"{kw.labor_title}_ERASE_otx"
+    assert table_sorting_priority[124] == f"{kw.labor_title}_ERASE_inx"
+    assert table_sorting_priority[125] == f"{kw.labor_title}_aux"
+    assert table_sorting_priority[126] == f"{kw.labor_title}_iux"
+    assert table_sorting_priority[127] == f"{kw.labor_title}_ERASE_aux"
+    assert table_sorting_priority[128] == f"{kw.labor_title}_ERASE_iux"
+    assert table_sorting_priority[129] == kw.solo
+    assert table_sorting_priority[130] == kw.awardee_title
+    assert table_sorting_priority[131] == f"{kw.awardee_title}_otx"
+    assert table_sorting_priority[132] == f"{kw.awardee_title}_inx"
+    assert table_sorting_priority[133] == f"{kw.awardee_title}_ERASE"
+    assert table_sorting_priority[134] == f"{kw.awardee_title}_ERASE_otx"
+    assert table_sorting_priority[135] == f"{kw.awardee_title}_ERASE_inx"
+    assert table_sorting_priority[136] == f"{kw.awardee_title}_aux"
+    assert table_sorting_priority[137] == f"{kw.awardee_title}_iux"
+    assert table_sorting_priority[138] == f"{kw.awardee_title}_ERASE_aux"
+    assert table_sorting_priority[139] == f"{kw.awardee_title}_ERASE_iux"
+    assert table_sorting_priority[140] == kw.healer_name
+    assert table_sorting_priority[141] == f"{kw.healer_name}_otx"
+    assert table_sorting_priority[142] == f"{kw.healer_name}_inx"
+    assert table_sorting_priority[143] == f"{kw.healer_name}_ERASE"
+    assert table_sorting_priority[144] == f"{kw.healer_name}_ERASE_otx"
+    assert table_sorting_priority[145] == f"{kw.healer_name}_ERASE_inx"
+    assert table_sorting_priority[146] == f"{kw.healer_name}_aux"
+    assert table_sorting_priority[147] == f"{kw.healer_name}_iux"
+    assert table_sorting_priority[148] == f"{kw.healer_name}_ERASE_aux"
+    assert table_sorting_priority[149] == f"{kw.healer_name}_ERASE_iux"
+    assert table_sorting_priority[150] == kw.bud_time
+    assert table_sorting_priority[151] == f"{kw.bud_time}_otx"
+    assert table_sorting_priority[152] == f"{kw.bud_time}_inx"
+    assert table_sorting_priority[153] == kw.tran_time
+    assert table_sorting_priority[154] == f"{kw.tran_time}_otx"
+    assert table_sorting_priority[155] == f"{kw.tran_time}_inx"
+    assert table_sorting_priority[156] == kw.begin
+    assert table_sorting_priority[157] == kw.close
+    assert table_sorting_priority[158] == kw.addin
+    assert table_sorting_priority[159] == kw.numor
+    assert table_sorting_priority[160] == kw.denom
+    assert table_sorting_priority[161] == kw.morph
+    assert table_sorting_priority[162] == kw.gogo_want
+    assert table_sorting_priority[163] == kw.stop_want
+    assert table_sorting_priority[164] == kw.active_requisite
+    assert table_sorting_priority[165] == kw.contact_cred_mass
+    assert table_sorting_priority[166] == kw.contact_debt_mass
+    assert table_sorting_priority[167] == kw.group_cred_mass
+    assert table_sorting_priority[168] == kw.group_debt_mass
+    assert table_sorting_priority[169] == kw.credor_respect
+    assert table_sorting_priority[170] == kw.debtor_respect
+    assert table_sorting_priority[171] == kw.fact_lower
+    assert table_sorting_priority[172] == f"{kw.fact_lower}_otx"
+    assert table_sorting_priority[173] == f"{kw.fact_lower}_inx"
+    assert table_sorting_priority[174] == kw.fact_upper
+    assert table_sorting_priority[175] == f"{kw.fact_upper}_otx"
+    assert table_sorting_priority[176] == f"{kw.fact_upper}_inx"
+    assert table_sorting_priority[177] == kw.fund_pool
+    assert table_sorting_priority[178] == kw.give_force
+    assert table_sorting_priority[179] == kw.poynt
+    assert table_sorting_priority[180] == kw.max_tree_traverse
+    assert table_sorting_priority[181] == kw.reason_lower
+    assert table_sorting_priority[182] == f"{kw.reason_lower}_otx"
+    assert table_sorting_priority[183] == f"{kw.reason_lower}_inx"
+    assert table_sorting_priority[184] == kw.reason_upper
+    assert table_sorting_priority[185] == f"{kw.reason_upper}_otx"
+    assert table_sorting_priority[186] == f"{kw.reason_upper}_inx"
+    assert table_sorting_priority[187] == kw.reason_divisor
+    assert table_sorting_priority[188] == kw.pledge
+    assert table_sorting_priority[189] == kw.problem_bool
+    assert table_sorting_priority[190] == kw.take_force
+    assert table_sorting_priority[191] == kw.fund_grain
+    assert table_sorting_priority[192] == kw.mana_grain
+    assert table_sorting_priority[193] == kw.respect_grain
+    assert table_sorting_priority[194] == kw.amount
+    assert table_sorting_priority[195] == kw.otx_label
+    assert table_sorting_priority[196] == kw.inx_label
+    assert table_sorting_priority[197] == kw.otx_rope
+    assert table_sorting_priority[198] == kw.inx_rope
+    assert table_sorting_priority[199] == kw.otx_name
+    assert table_sorting_priority[200] == kw.inx_name
+    assert table_sorting_priority[201] == kw.otx_title
+    assert table_sorting_priority[202] == kw.inx_title
+    assert table_sorting_priority[203] == kw.otx_knot
+    assert table_sorting_priority[204] == kw.inx_knot
+    assert table_sorting_priority[205] == kw.otx_time
+    assert table_sorting_priority[206] == kw.inx_time
+    assert table_sorting_priority[207] == "iux_name"
+    assert table_sorting_priority[208] == "aux_name"
+    assert table_sorting_priority[209] == "iux_title"
+    assert table_sorting_priority[210] == "aux_title"
+    assert table_sorting_priority[211] == "iux_label"
+    assert table_sorting_priority[212] == "aux_label"
+    assert table_sorting_priority[213] == "iux_rope"
+    assert table_sorting_priority[214] == "aux_rope"
+    assert table_sorting_priority[215] == "iux_knot"
+    assert table_sorting_priority[216] == "aux_knot"
+    assert table_sorting_priority[217] == kw.knot
+    assert table_sorting_priority[218] == kw.groupmark
+    assert table_sorting_priority[219] == kw.unknown_str
+    assert table_sorting_priority[220] == kw.quota
+    assert table_sorting_priority[221] == kw.celldepth
+    assert table_sorting_priority[222] == kw.job_listen_rotations
+    assert table_sorting_priority[223] == kw.error_message
+    assert table_sorting_priority[224] == kw.person_name_is_workforce
+    assert table_sorting_priority[225] == kw.plan_active
+    assert table_sorting_priority[226] == kw.plan_task
+    assert table_sorting_priority[227] == kw.case_task
+    assert table_sorting_priority[228] == kw.reason_active
+    assert table_sorting_priority[229] == kw.reason_task
+    assert table_sorting_priority[230] == kw.case_active
+    assert table_sorting_priority[231] == kw.credor_pool
+    assert table_sorting_priority[232] == kw.debtor_pool
+    assert table_sorting_priority[233] == kw.rational
+    assert table_sorting_priority[234] == kw.fund_give
+    assert table_sorting_priority[235] == kw.fund_take
+    assert table_sorting_priority[236] == kw.fund_onset
+    assert table_sorting_priority[237] == kw.fund_cease
+    assert table_sorting_priority[238] == kw.fund_ratio
+    assert table_sorting_priority[239] == kw.fund_agenda_give
+    assert table_sorting_priority[240] == kw.fund_agenda_take
+    assert table_sorting_priority[241] == kw.fund_agenda_ratio_give
+    assert table_sorting_priority[242] == kw.fund_agenda_ratio_take
+    assert table_sorting_priority[243] == kw.inallocable_contact_debt_mass
+    assert table_sorting_priority[244] == kw.gogo_calc
+    assert table_sorting_priority[245] == kw.stop_calc
+    assert table_sorting_priority[246] == kw.tree_level
+    assert table_sorting_priority[247] == kw.range_evaluated
+    assert table_sorting_priority[248] == kw.descendant_pledge_count
+    assert table_sorting_priority[249] == kw.healerunit_ratio
+    assert table_sorting_priority[250] == kw.all_contact_cred
+    assert table_sorting_priority[251] == kw.keeps_justified
+    assert table_sorting_priority[252] == kw.offtrack_fund
+    assert table_sorting_priority[253] == kw.parent_heir_active
+    assert table_sorting_priority[254] == kw.irrational_contact_debt_mass
+    assert table_sorting_priority[255] == kw.sum_healerunit_plans_fund_total
+    assert table_sorting_priority[256] == kw.keeps_buildable
+    assert table_sorting_priority[257] == kw.all_contact_debt
+    assert table_sorting_priority[258] == kw.tree_traverse_count
+    assert table_sorting_priority[259] == kw.net_funds
+    assert table_sorting_priority[260] == kw.fund_rank
+    assert table_sorting_priority[261] == kw.pledges_count
+    assert table_sorting_priority[262] == f"context_plan_{kw.close}"
+    assert table_sorting_priority[263] == f"context_plan_{kw.denom}"
+    assert table_sorting_priority[264] == f"context_plan_{kw.morph}"
+    assert table_sorting_priority[265] == kw.inx_epoch_diff
 
-    assert len(table_sorting_priority) == 202
+    assert len(table_sorting_priority) == 266
     all_args = copy_copy(atom_args)
     all_args.update(all_person_dimen_delete_keys)
     all_args.update(moment_args)
-    all_args.update(jargon_args)
     all_args.update(person_calc_args)
     all_args.update(nabu_args)
+    all_args.update(jargon_args)
     all_args.update(jargonable_otx_cols)
     all_args.update(jargonable_inx_cols)
     all_args.update(jargonable_delete_otx_cols)
     all_args.update(jargonable_delete_inx_cols)
+    all_args.update(speech_args)
+    all_args.update(speechable_iux_cols)
+    all_args.update(speechable_aux_cols)
+    all_args.update(speechable_delete_iux_cols)
+    all_args.update(speechable_delete_aux_cols)
     all_args.update(nabuable_otx_cols)
     all_args.update(nabuable_inx_cols)
     all_args.update()
@@ -378,21 +448,35 @@ def test_get_brick_sqlite_types_ReturnsObj():
     sqlite_types = get_brick_sqlite_types()
 
     # THEN
+    # for arg in sorted(get_keg_elements_sort_order()):
+    #     sqlite_type = sqlite_types.get(arg)
+    #     print(f""" "{arg}": "{sqlite_type}", """)
+
     for arg, sqlite_type in sqlite_types.items():
         print(f"""assert sqlite_types.get(kw.{arg}) == "{sqlite_type}" """)
-    assert set(sqlite_types.keys()) == set(get_keg_elements_sort_order())
+
     assert sqlite_types.get(kw.active_requisite) == "INTEGER"
     assert sqlite_types.get(kw.addin) == "REAL"
     assert sqlite_types.get(kw.all_contact_cred) == "INTEGER"
     assert sqlite_types.get(kw.all_contact_debt) == "INTEGER"
     assert sqlite_types.get(kw.amount) == "REAL"
+    assert sqlite_types.get(kw.aux_knot) == "TEXT"
+    assert sqlite_types.get(kw.aux_label) == "TEXT"
+    assert sqlite_types.get(kw.aux_name) == "TEXT"
+    assert sqlite_types.get(kw.aux_rope) == "TEXT"
+    assert sqlite_types.get(kw.aux_title) == "TEXT"
     assert sqlite_types.get(kw.awardee_title) == "TEXT"
     assert sqlite_types.get(kw.awardee_title_ERASE) == "TEXT"
+    assert sqlite_types.get(kw.awardee_title_ERASE_aux) == "TEXT"
     assert sqlite_types.get(kw.awardee_title_ERASE_inx) == "TEXT"
+    assert sqlite_types.get(kw.awardee_title_ERASE_iux) == "TEXT"
     assert sqlite_types.get(kw.awardee_title_ERASE_otx) == "TEXT"
+    assert sqlite_types.get(kw.awardee_title_aux) == "TEXT"
     assert sqlite_types.get(kw.awardee_title_inx) == "TEXT"
+    assert sqlite_types.get(kw.awardee_title_iux) == "TEXT"
     assert sqlite_types.get(kw.awardee_title_otx) == "TEXT"
     assert sqlite_types.get(kw.begin) == "REAL"
+    assert sqlite_types.get(kw.brick_type) == "TEXT"
     assert sqlite_types.get(kw.bud_time) == "INTEGER"
     assert sqlite_types.get(kw.bud_time_inx) == "INTEGER"
     assert sqlite_types.get(kw.bud_time_otx) == "INTEGER"
@@ -405,9 +489,13 @@ def test_get_brick_sqlite_types_ReturnsObj():
     assert sqlite_types.get(kw.contact_debt_mass) == "REAL"
     assert sqlite_types.get(kw.contact_name) == "TEXT"
     assert sqlite_types.get(kw.contact_name_ERASE) == "TEXT"
+    assert sqlite_types.get(kw.contact_name_ERASE_aux) == "TEXT"
     assert sqlite_types.get(kw.contact_name_ERASE_inx) == "TEXT"
+    assert sqlite_types.get(kw.contact_name_ERASE_iux) == "TEXT"
     assert sqlite_types.get(kw.contact_name_ERASE_otx) == "TEXT"
+    assert sqlite_types.get(kw.contact_name_aux) == "TEXT"
     assert sqlite_types.get(kw.contact_name_inx) == "TEXT"
+    assert sqlite_types.get(kw.contact_name_iux) == "TEXT"
     assert sqlite_types.get(kw.contact_name_otx) == "TEXT"
     assert sqlite_types.get(kw.context_plan_close) == "REAL"
     assert sqlite_types.get(kw.context_plan_denom) == "REAL"
@@ -421,24 +509,34 @@ def test_get_brick_sqlite_types_ReturnsObj():
     assert sqlite_types.get(kw.denom) == "INTEGER"
     assert sqlite_types.get(kw.descendant_pledge_count) == "INTEGER"
     assert sqlite_types.get(kw.epoch_label) == "TEXT"
+    assert sqlite_types.get(kw.epoch_label_aux) == "TEXT"
     assert sqlite_types.get(kw.epoch_label_inx) == "TEXT"
+    assert sqlite_types.get(kw.epoch_label_iux) == "TEXT"
     assert sqlite_types.get(kw.epoch_label_otx) == "TEXT"
     assert sqlite_types.get(kw.error_message) == "TEXT"
     assert sqlite_types.get(kw.fact_context) == "TEXT"
     assert sqlite_types.get(kw.fact_context_ERASE) == "TEXT"
+    assert sqlite_types.get(kw.fact_context_ERASE_aux) == "TEXT"
     assert sqlite_types.get(kw.fact_context_ERASE_inx) == "TEXT"
+    assert sqlite_types.get(kw.fact_context_ERASE_iux) == "TEXT"
     assert sqlite_types.get(kw.fact_context_ERASE_otx) == "TEXT"
+    assert sqlite_types.get(kw.fact_context_aux) == "TEXT"
     assert sqlite_types.get(kw.fact_context_inx) == "TEXT"
+    assert sqlite_types.get(kw.fact_context_iux) == "TEXT"
     assert sqlite_types.get(kw.fact_context_otx) == "TEXT"
     assert sqlite_types.get(kw.fact_lower) == "REAL"
     assert sqlite_types.get(kw.fact_lower_inx) == "REAL"
     assert sqlite_types.get(kw.fact_lower_otx) == "REAL"
     assert sqlite_types.get(kw.fact_state) == "TEXT"
+    assert sqlite_types.get(kw.fact_state_aux) == "TEXT"
     assert sqlite_types.get(kw.fact_state_inx) == "TEXT"
+    assert sqlite_types.get(kw.fact_state_iux) == "TEXT"
     assert sqlite_types.get(kw.fact_state_otx) == "TEXT"
     assert sqlite_types.get(kw.fact_upper) == "REAL"
     assert sqlite_types.get(kw.fact_upper_inx) == "REAL"
     assert sqlite_types.get(kw.fact_upper_otx) == "REAL"
+    assert sqlite_types.get(kw.flare_audie_aux) == "TEXT"
+    assert sqlite_types.get(kw.flare_audie_iux) == "TEXT"
     assert sqlite_types.get(kw.fund_agenda_give) == "REAL"
     assert sqlite_types.get(kw.fund_agenda_ratio_give) == "REAL"
     assert sqlite_types.get(kw.fund_agenda_ratio_take) == "REAL"
@@ -458,22 +556,31 @@ def test_get_brick_sqlite_types_ReturnsObj():
     assert sqlite_types.get(kw.group_debt_mass) == "REAL"
     assert sqlite_types.get(kw.group_title) == "TEXT"
     assert sqlite_types.get(kw.group_title_ERASE) == "TEXT"
+    assert sqlite_types.get(kw.group_title_ERASE_aux) == "TEXT"
     assert sqlite_types.get(kw.group_title_ERASE_inx) == "TEXT"
+    assert sqlite_types.get(kw.group_title_ERASE_iux) == "TEXT"
     assert sqlite_types.get(kw.group_title_ERASE_otx) == "TEXT"
+    assert sqlite_types.get(kw.group_title_aux) == "TEXT"
     assert sqlite_types.get(kw.group_title_inx) == "TEXT"
+    assert sqlite_types.get(kw.group_title_iux) == "TEXT"
     assert sqlite_types.get(kw.group_title_otx) == "TEXT"
     assert sqlite_types.get(kw.groupmark) == "TEXT"
     assert sqlite_types.get(kw.healer_name) == "TEXT"
     assert sqlite_types.get(kw.healer_name_ERASE) == "TEXT"
+    assert sqlite_types.get(kw.healer_name_ERASE_aux) == "TEXT"
     assert sqlite_types.get(kw.healer_name_ERASE_inx) == "TEXT"
+    assert sqlite_types.get(kw.healer_name_ERASE_iux) == "TEXT"
     assert sqlite_types.get(kw.healer_name_ERASE_otx) == "TEXT"
+    assert sqlite_types.get(kw.healer_name_aux) == "TEXT"
     assert sqlite_types.get(kw.healer_name_inx) == "TEXT"
+    assert sqlite_types.get(kw.healer_name_iux) == "TEXT"
     assert sqlite_types.get(kw.healer_name_otx) == "TEXT"
     assert sqlite_types.get(kw.healerunit_ratio) == "REAL"
     assert sqlite_types.get(kw.hour_label) == "TEXT"
+    assert sqlite_types.get(kw.hour_label_aux) == "TEXT"
     assert sqlite_types.get(kw.hour_label_inx) == "TEXT"
+    assert sqlite_types.get(kw.hour_label_iux) == "TEXT"
     assert sqlite_types.get(kw.hour_label_otx) == "TEXT"
-    assert sqlite_types.get(kw.brick_type) == "TEXT"
     assert sqlite_types.get(kw.inallocable_contact_debt_mass) == "REAL"
     assert sqlite_types.get(kw.inx_epoch_diff) == "INTEGER"
     assert sqlite_types.get(kw.inx_knot) == "TEXT"
@@ -483,23 +590,37 @@ def test_get_brick_sqlite_types_ReturnsObj():
     assert sqlite_types.get(kw.inx_time) == "INTEGER"
     assert sqlite_types.get(kw.inx_title) == "TEXT"
     assert sqlite_types.get(kw.irrational_contact_debt_mass) == "REAL"
+    assert sqlite_types.get(kw.iux_knot) == "TEXT"
+    assert sqlite_types.get(kw.iux_label) == "TEXT"
+    assert sqlite_types.get(kw.iux_name) == "TEXT"
+    assert sqlite_types.get(kw.iux_rope) == "TEXT"
+    assert sqlite_types.get(kw.iux_title) == "TEXT"
+    assert sqlite_types.get(kw.jargon_spark_num) == "INTEGER"
     assert sqlite_types.get(kw.job_listen_rotations) == "INTEGER"
     assert sqlite_types.get(kw.keeps_buildable) == "INTEGER"
     assert sqlite_types.get(kw.keeps_justified) == "INTEGER"
     assert sqlite_types.get(kw.knot) == "TEXT"
     assert sqlite_types.get(kw.labor_title) == "TEXT"
     assert sqlite_types.get(kw.labor_title_ERASE) == "TEXT"
+    assert sqlite_types.get(kw.labor_title_ERASE_aux) == "TEXT"
     assert sqlite_types.get(kw.labor_title_ERASE_inx) == "TEXT"
+    assert sqlite_types.get(kw.labor_title_ERASE_iux) == "TEXT"
     assert sqlite_types.get(kw.labor_title_ERASE_otx) == "TEXT"
+    assert sqlite_types.get(kw.labor_title_aux) == "TEXT"
     assert sqlite_types.get(kw.labor_title_inx) == "TEXT"
+    assert sqlite_types.get(kw.labor_title_iux) == "TEXT"
     assert sqlite_types.get(kw.labor_title_otx) == "TEXT"
     assert sqlite_types.get(kw.mana_grain) == "REAL"
     assert sqlite_types.get(kw.max_tree_traverse) == "INTEGER"
     assert sqlite_types.get(kw.moment_rope) == "TEXT"
+    assert sqlite_types.get(kw.moment_rope_aux) == "TEXT"
     assert sqlite_types.get(kw.moment_rope_inx) == "TEXT"
+    assert sqlite_types.get(kw.moment_rope_iux) == "TEXT"
     assert sqlite_types.get(kw.moment_rope_otx) == "TEXT"
     assert sqlite_types.get(kw.month_label) == "TEXT"
+    assert sqlite_types.get(kw.month_label_aux) == "TEXT"
     assert sqlite_types.get(kw.month_label_inx) == "TEXT"
+    assert sqlite_types.get(kw.month_label_iux) == "TEXT"
     assert sqlite_types.get(kw.month_label_otx) == "TEXT"
     assert sqlite_types.get(kw.monthday_index) == "INTEGER"
     assert sqlite_types.get(kw.morph) == "INTEGER"
@@ -518,21 +639,30 @@ def test_get_brick_sqlite_types_ReturnsObj():
     assert sqlite_types.get(kw.parent_heir_active) == "INTEGER"
     assert sqlite_types.get(kw.person_name) == "TEXT"
     assert sqlite_types.get(kw.person_name_ERASE) == "TEXT"
+    assert sqlite_types.get(kw.person_name_ERASE_aux) == "TEXT"
     assert sqlite_types.get(kw.person_name_ERASE_inx) == "TEXT"
+    assert sqlite_types.get(kw.person_name_ERASE_iux) == "TEXT"
     assert sqlite_types.get(kw.person_name_ERASE_otx) == "TEXT"
+    assert sqlite_types.get(kw.person_name_aux) == "TEXT"
     assert sqlite_types.get(kw.person_name_inx) == "TEXT"
     assert sqlite_types.get(kw.person_name_is_workforce) == "INTEGER"
+    assert sqlite_types.get(kw.person_name_iux) == "TEXT"
     assert sqlite_types.get(kw.person_name_otx) == "TEXT"
     assert sqlite_types.get(kw.plan_active) == "INTEGER"
     assert sqlite_types.get(kw.plan_rope) == "TEXT"
     assert sqlite_types.get(kw.plan_rope_ERASE) == "TEXT"
+    assert sqlite_types.get(kw.plan_rope_ERASE_aux) == "TEXT"
     assert sqlite_types.get(kw.plan_rope_ERASE_inx) == "TEXT"
+    assert sqlite_types.get(kw.plan_rope_ERASE_iux) == "TEXT"
     assert sqlite_types.get(kw.plan_rope_ERASE_otx) == "TEXT"
+    assert sqlite_types.get(kw.plan_rope_aux) == "TEXT"
     assert sqlite_types.get(kw.plan_rope_inx) == "TEXT"
+    assert sqlite_types.get(kw.plan_rope_iux) == "TEXT"
     assert sqlite_types.get(kw.plan_rope_otx) == "TEXT"
     assert sqlite_types.get(kw.plan_task) == "INTEGER"
     assert sqlite_types.get(kw.pledge) == "INTEGER"
     assert sqlite_types.get(kw.pledges_count) == "INTEGER"
+    assert sqlite_types.get(kw.poynt) == "INTEGER"
     assert sqlite_types.get(kw.problem_bool) == "INTEGER"
     assert sqlite_types.get(kw.quota) == "REAL"
     assert sqlite_types.get(kw.range_evaluated) == "INTEGER"
@@ -540,9 +670,13 @@ def test_get_brick_sqlite_types_ReturnsObj():
     assert sqlite_types.get(kw.reason_active) == "INTEGER"
     assert sqlite_types.get(kw.reason_context) == "TEXT"
     assert sqlite_types.get(kw.reason_context_ERASE) == "TEXT"
+    assert sqlite_types.get(kw.reason_context_ERASE_aux) == "TEXT"
     assert sqlite_types.get(kw.reason_context_ERASE_inx) == "TEXT"
+    assert sqlite_types.get(kw.reason_context_ERASE_iux) == "TEXT"
     assert sqlite_types.get(kw.reason_context_ERASE_otx) == "TEXT"
+    assert sqlite_types.get(kw.reason_context_aux) == "TEXT"
     assert sqlite_types.get(kw.reason_context_inx) == "TEXT"
+    assert sqlite_types.get(kw.reason_context_iux) == "TEXT"
     assert sqlite_types.get(kw.reason_context_otx) == "TEXT"
     assert sqlite_types.get(kw.reason_divisor) == "INTEGER"
     assert sqlite_types.get(kw.reason_lower) == "REAL"
@@ -550,9 +684,13 @@ def test_get_brick_sqlite_types_ReturnsObj():
     assert sqlite_types.get(kw.reason_lower_otx) == "REAL"
     assert sqlite_types.get(kw.reason_state) == "TEXT"
     assert sqlite_types.get(kw.reason_state_ERASE) == "TEXT"
+    assert sqlite_types.get(kw.reason_state_ERASE_aux) == "TEXT"
     assert sqlite_types.get(kw.reason_state_ERASE_inx) == "TEXT"
+    assert sqlite_types.get(kw.reason_state_ERASE_iux) == "TEXT"
     assert sqlite_types.get(kw.reason_state_ERASE_otx) == "TEXT"
+    assert sqlite_types.get(kw.reason_state_aux) == "TEXT"
     assert sqlite_types.get(kw.reason_state_inx) == "TEXT"
+    assert sqlite_types.get(kw.reason_state_iux) == "TEXT"
     assert sqlite_types.get(kw.reason_state_otx) == "TEXT"
     assert sqlite_types.get(kw.reason_task) == "INTEGER"
     assert sqlite_types.get(kw.reason_upper) == "REAL"
@@ -565,7 +703,6 @@ def test_get_brick_sqlite_types_ReturnsObj():
     assert sqlite_types.get(kw.spark_face_inx) == "TEXT"
     assert sqlite_types.get(kw.spark_face_otx) == "TEXT"
     assert sqlite_types.get(kw.spark_num) == "INTEGER"
-    assert sqlite_types.get(kw.poynt) == "INTEGER"
     assert sqlite_types.get(kw.stop_calc) == "REAL"
     assert sqlite_types.get(kw.stop_want) == "REAL"
     assert sqlite_types.get(kw.sum_healerunit_plans_fund_total) == "REAL"
@@ -573,12 +710,13 @@ def test_get_brick_sqlite_types_ReturnsObj():
     assert sqlite_types.get(kw.tran_time) == "INTEGER"
     assert sqlite_types.get(kw.tran_time_inx) == "INTEGER"
     assert sqlite_types.get(kw.tran_time_otx) == "INTEGER"
-    assert sqlite_types.get(kw.jargon_spark_num) == "INTEGER"
     assert sqlite_types.get(kw.tree_level) == "INTEGER"
     assert sqlite_types.get(kw.tree_traverse_count) == "INTEGER"
     assert sqlite_types.get(kw.unknown_str) == "TEXT"
     assert sqlite_types.get(kw.weekday_label) == "TEXT"
+    assert sqlite_types.get(kw.weekday_label_aux) == "TEXT"
     assert sqlite_types.get(kw.weekday_label_inx) == "TEXT"
+    assert sqlite_types.get(kw.weekday_label_iux) == "TEXT"
     assert sqlite_types.get(kw.weekday_label_otx) == "TEXT"
     assert sqlite_types.get(kw.weekday_order) == "INTEGER"
     assert sqlite_types.get(kw.world_name) == "TEXT"

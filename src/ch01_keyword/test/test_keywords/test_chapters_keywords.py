@@ -384,8 +384,6 @@ def test_get_keg_elements_sort_order_Scenario0_AllElementsExistAs_keywords():
     ch_num = "17"
     for missing_element in sorted(missing_elements):
         x_count += 1
-        print(
-            f""""{missing_element}": {{"{kw.question_tier}": 0, "{kw.valid_ch}": "ch{ch_num}"}},"""
-        )
+        print(f""""{missing_element}": {{"{kw.valid_ch}": "18,20"}},""")
     print(f"{x_count} elements")
     assert set(get_keg_elements_sort_order()).issubset(keywords_set)
