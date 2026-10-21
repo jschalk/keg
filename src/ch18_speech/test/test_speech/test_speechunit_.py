@@ -91,61 +91,61 @@ def test_set_speechable_iux_aux_args_ReturnsObj_Scenario0_All_speechable_args():
     assert iux_aux_args == expected_iux_aux_args
 
 
-# def test_set_speechable_iux_aux_args_ReturnsObj_Scenario1_person_dimen_delete_keys():
-#     # sourcery skip: no-loop-in-tests
-#     # ESTABLISH
-#     person_dimen_delete_keys = get_all_person_dimen_delete_keys()
+def test_set_speechable_iux_aux_args_ReturnsObj_Scenario1_person_dimen_delete_keys():
+    # sourcery skip: no-loop-in-tests
+    # ESTABLISH
+    person_dimen_delete_keys = get_all_person_dimen_delete_keys()
 
-#     # WHEN
-#     iux_aux_args = set_speechable_iux_aux_args(person_dimen_delete_keys)
+    # WHEN
+    iux_aux_args = set_speechable_iux_aux_args(person_dimen_delete_keys)
 
-#     # THEN
-#     expected_iux_aux_args = set()
-#     for speechable_arg in person_dimen_delete_keys:
-#         expected_iux_aux_args.add(f"{speechable_arg}_iux")
-#         expected_iux_aux_args.add(f"{speechable_arg}_aux")
-#     print(f"{iux_aux_args=}")
-#     assert iux_aux_args == expected_iux_aux_args
-
-
-# def test_set_speechable_iux_aux_args_ReturnsObj_Scenario2_OtherArgsAreUntouched():
-#     # sourcery skip: no-loop-in-tests
-#     # ESTABLISH
-#     run_str = "run"
-#     given_person_dimen_delete_keys = get_all_person_dimen_delete_keys()
-#     given_person_dimen_delete_keys.add(run_str)
-
-#     # WHEN
-#     iux_aux_args = set_speechable_iux_aux_args(given_person_dimen_delete_keys)
-
-#     # THEN
-#     expected_iux_aux_args = set()
-#     for speechable_arg in get_all_person_dimen_delete_keys():
-#         expected_iux_aux_args.add(f"{speechable_arg}_iux")
-#         expected_iux_aux_args.add(f"{speechable_arg}_aux")
-#     expected_iux_aux_args.add(run_str)
-#     print(f"{iux_aux_args=}")
-#     assert iux_aux_args == expected_iux_aux_args
+    # THEN
+    expected_iux_aux_args = set()
+    for speechable_arg in person_dimen_delete_keys:
+        expected_iux_aux_args.add(f"{speechable_arg}_iux")
+        expected_iux_aux_args.add(f"{speechable_arg}_aux")
+    print(f"{iux_aux_args=}")
+    assert iux_aux_args == expected_iux_aux_args
 
 
-# def test_set_speechable_iux_aux_args_ReturnsObj_Scenario3_PartialSets():
-#     # ESTABLISH
-#     healer_name_ERASE_str = f"{kw.healer_name}_ERASE"
-#     run_str = "run"
-#     given_person_dimen_delete_keys = {run_str, healer_name_ERASE_str}
+def test_set_speechable_iux_aux_args_ReturnsObj_Scenario2_OtherArgsAreUntouched():
+    # sourcery skip: no-loop-in-tests
+    # ESTABLISH
+    run_str = "run"
+    given_person_dimen_delete_keys = get_all_person_dimen_delete_keys()
+    given_person_dimen_delete_keys.add(run_str)
 
-#     # WHEN
-#     iux_aux_args = set_speechable_iux_aux_args(given_person_dimen_delete_keys)
+    # WHEN
+    iux_aux_args = set_speechable_iux_aux_args(given_person_dimen_delete_keys)
 
-#     # THEN
-#     healer_name_ERASE_str = f"{kw.healer_name}_ERASE"
-#     expected_iux_aux_args = {
-#         f"{healer_name_ERASE_str}_iux",
-#         f"{healer_name_ERASE_str}_aux",
-#         run_str,
-#     }
-#     print(f"{iux_aux_args=}")
-#     assert iux_aux_args == expected_iux_aux_args
+    # THEN
+    expected_iux_aux_args = set()
+    for speechable_arg in get_all_person_dimen_delete_keys():
+        expected_iux_aux_args.add(f"{speechable_arg}_iux")
+        expected_iux_aux_args.add(f"{speechable_arg}_aux")
+    expected_iux_aux_args.add(run_str)
+    print(f"{iux_aux_args=}")
+    assert iux_aux_args == expected_iux_aux_args
+
+
+def test_set_speechable_iux_aux_args_ReturnsObj_Scenario3_PartialSets():
+    # ESTABLISH
+    healer_name_ERASE_str = f"{kw.healer_name}_ERASE"
+    run_str = "run"
+    given_person_dimen_delete_keys = {run_str, healer_name_ERASE_str}
+
+    # WHEN
+    iux_aux_args = set_speechable_iux_aux_args(given_person_dimen_delete_keys)
+
+    # THEN
+    healer_name_ERASE_str = f"{kw.healer_name}_ERASE"
+    expected_iux_aux_args = {
+        f"{healer_name_ERASE_str}_iux",
+        f"{healer_name_ERASE_str}_aux",
+        run_str,
+    }
+    print(f"{iux_aux_args=}")
+    assert iux_aux_args == expected_iux_aux_args
 
 
 # def test_get_speech_nameterm_args_ReturnsObj():
