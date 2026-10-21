@@ -27,8 +27,9 @@ from ch18_speech.yap_term import (
 )
 from dataclasses import dataclass
 
-# class CheckAttrError(Exception):
-#     pass
+
+class CheckSpeechAttrError(Exception):
+    pass
 
 
 @dataclass
@@ -48,94 +49,94 @@ class SpeechUnit:
     iux_knot: KnotTerm = None  # speechunit
     aux_knot: KnotTerm = None  # speechunit
 
+    def _check_speech_attr_match(self, attr: str, yapcore):
+        self_attr = getattr(self, attr)
+        unit_attr = getattr(yapcore, attr)
+        if self_attr != unit_attr:
+            exception_str = f"set_yapcore Error: SpeechUnit {attr} is '{self_attr}', YapCore is '{unit_attr}'."
+            raise CheckSpeechAttrError(exception_str)
 
-#     def set_titleyap(self, x_titleyap: TitleYap):
-#         self._check_all_core_attrs_match(x_titleyap)
-#         self.titleyap = x_titleyap
+    def _check_speech_core_attrs_match(self, x_yapcore: YapCore):
+        self._check_speech_attr_match("flare_audie", x_yapcore)
+        self._check_speech_attr_match("iux_knot", x_yapcore)
+        self._check_speech_attr_match("aux_knot", x_yapcore)
 
-#     def get_titleyap(self) -> TitleYap:
-#         return self.titleyap
+    def set_nameyap(self, x_nameyap: NameYap):
+        self._check_speech_core_attrs_match(x_nameyap)
+        self.nameyap = x_nameyap
 
-#     def set_titleterm(self, iux_title: str, aux_title: str):
-#         self.titleyap.set_iux2aux(iux_title, aux_title)
+    def get_nameyap(self) -> NameYap:
+        return self.nameyap
 
-#     def titleterm_exists(self, iux_title: str, aux_title: str):
-#         return self.titleyap.iux2aux_exists(iux_title, aux_title)
+    def set_nameterm(self, iux_name: str, aux_name: str):
+        self.nameyap.set_iux2aux(iux_name, aux_name)
 
-#     def _get_aux_title(self, iux_title: str):
-#         return self.titleyap.get_aux_value(iux_title)
+    def nameterm_exists(self, iux_name: str, aux_name: str):
+        return self.nameyap.iux2aux_exists(iux_name, aux_name)
 
-#     def del_titleterm(self, iux_title: str):
-#         return self.titleyap.del_iux2aux(iux_title)
+    def _get_aux_name(self, iux_name: str):
+        return self.nameyap.get_aux_value(iux_name)
 
-#     def get_yapunit(self, x_obj_type: str):
-#         if x_obj_type == "NameTerm":
-#             return self.nameyap
-#         elif x_obj_type == "TitleTerm":
-#             return self.titleyap
-#         elif x_obj_type == "LabelTerm":
-#             return self.labelyap
-#         elif x_obj_type == "RopeTerm":
-#             return self.ropeyap
-#         else:
-#             return None
+    def del_nameterm(self, iux_name: str):
+        return self.nameyap.del_iux2aux(iux_name)
 
-#     def set_nameyap(self, x_nameyap: NameYap):
-#         self._check_all_core_attrs_match(x_nameyap)
-#         self.nameyap = x_nameyap
+    #     def set_titleyap(self, x_titleyap: TitleYap):
+    #         self._check_speech_core_attrs_match(x_titleyap)
+    #         self.titleyap = x_titleyap
 
-#     def get_nameyap(self) -> NameYap:
-#         return self.nameyap
+    #     def get_titleyap(self) -> TitleYap:
+    #         return self.titleyap
 
-#     def set_nameterm(self, iux_name: str, aux_name: str):
-#         self.nameyap.set_iux2aux(iux_name, aux_name)
+    #     def set_titleterm(self, iux_title: str, aux_title: str):
+    #         self.titleyap.set_iux2aux(iux_title, aux_title)
 
-#     def nameterm_exists(self, iux_name: str, aux_name: str):
-#         return self.nameyap.iux2aux_exists(iux_name, aux_name)
+    #     def titleterm_exists(self, iux_title: str, aux_title: str):
+    #         return self.titleyap.iux2aux_exists(iux_title, aux_title)
 
-#     def _get_aux_name(self, iux_name: str):
-#         return self.nameyap.get_aux_value(iux_name)
+    #     def _get_aux_title(self, iux_title: str):
+    #         return self.titleyap.get_aux_value(iux_title)
 
-#     def del_nameterm(self, iux_name: str):
-#         return self.nameyap.del_iux2aux(iux_name)
+    #     def del_titleterm(self, iux_title: str):
+    #         return self.titleyap.del_iux2aux(iux_title)
 
-#     def set_labelyap(self, x_labelyap: LabelYap):
-#         self._check_all_core_attrs_match(x_labelyap)
-#         self.labelyap = x_labelyap
+    #     def get_yapunit(self, x_obj_type: str):
+    #         if x_obj_type == "NameTerm":
+    #             return self.nameyap
+    #         elif x_obj_type == "TitleTerm":
+    #             return self.titleyap
+    #         elif x_obj_type == "LabelTerm":
+    #             return self.labelyap
+    #         elif x_obj_type == "RopeTerm":
+    #             return self.ropeyap
+    #         else:
+    #             return None
 
-#     def get_labelyap(self) -> LabelYap:
-#         return self.labelyap
+    #     def set_labelyap(self, x_labelyap: LabelYap):
+    #         self._check_speech_core_attrs_match(x_labelyap)
+    #         self.labelyap = x_labelyap
 
-#     def set_ropeyap(self, x_ropeyap: RopeYap):
-#         self._check_all_core_attrs_match(x_ropeyap)
-#         self.ropeyap = x_ropeyap
+    #     def get_labelyap(self) -> LabelYap:
+    #         return self.labelyap
 
-#     def get_ropeyap(self) -> RopeYap:
-#         return self.ropeyap
+    #     def set_ropeyap(self, x_ropeyap: RopeYap):
+    #         self._check_speech_core_attrs_match(x_ropeyap)
+    #         self.ropeyap = x_ropeyap
 
-#     def set_rope(self, iux_rope: str, aux_rope: str):
-#         self.ropeyap.set_iux2aux(iux_rope, aux_rope)
+    #     def get_ropeyap(self) -> RopeYap:
+    #         return self.ropeyap
 
-#     def rope_exists(self, iux_rope: str, aux_rope: str):
-#         return self.ropeyap.iux2aux_exists(iux_rope, aux_rope)
+    #     def set_rope(self, iux_rope: str, aux_rope: str):
+    #         self.ropeyap.set_iux2aux(iux_rope, aux_rope)
 
-#     def _get_aux_rope(self, iux_rope: str):
-#         return self.ropeyap.get_aux_value(iux_rope)
+    #     def rope_exists(self, iux_rope: str, aux_rope: str):
+    #         return self.ropeyap.iux2aux_exists(iux_rope, aux_rope)
 
-#     def del_rope(self, iux_rope: str):
-#         return self.ropeyap.del_iux2aux(iux_rope)
+    #     def _get_aux_rope(self, iux_rope: str):
+    #         return self.ropeyap.get_aux_value(iux_rope)
 
-#     def _check_all_core_attrs_match(self, x_yapcore: YapCore):
-#         self._check_attr_match("flare_audie", x_yapcore)
-#         self._check_attr_match("iux_knot", x_yapcore)
-#         self._check_attr_match("aux_knot", x_yapcore)
+    #     def del_rope(self, iux_rope: str):
+    #         return self.ropeyap.del_iux2aux(iux_rope)
 
-#     def _check_attr_match(self, attr: str, yapcore):
-#         self_attr = getattr(self, attr)
-#         unit_attr = getattr(yapcore, attr)
-#         if self_attr != unit_attr:
-#             exception_str = f"set_yapcore Error: SpeechUnit {attr} is '{self_attr}', YapCore is '{unit_attr}'."
-#             raise CheckAttrError(exception_str)
 
 #     def is_valid(self) -> bool:
 #         return (
