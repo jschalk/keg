@@ -72,49 +72,49 @@ trek,10,
 tsar,10,
 vertical,10,
 yard,10,
-ch00,6,0:
-ch01,6,1:
-ch02,6,2:
-ch03,6,3:
-ch04,6,4:
-ch05,6,5:
-ch06,6,6:
-ch07,6,7:
-ch08,6,8:
-ch09,6,9:
-ch10,6,10:
-ch11,6,11:
-ch12,6,12:
-ch13,6,13:
-ch14,6,14:
-ch15,6,15:
-ch16,6,16:
-ch17,6,17:
-ch18,6,18:
-ch19,6,19:
-ch20,6,20:
-ch22,6,22:
-ch23,6,23:
-ch24,6,24:
-ch25,6,25:
-ch26,6,26:
-ch27,6,27:
-ch30,6,30:
-ch31,6,31:
-ch32,6,32:
-ch33,6,33:
-ch34,6,34:
-ch35,6,35:
-ch36,6,36:
-ch90,6,36:
-ch39,6,39:
-ch40,6,40:
-ch41,6,41:
-ch54,6,54:
-ch96,6,96:
-ch97,6,97:
-ch98,6,98:
-ch99,6,99:
+ch00,6,"0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 90, 97, 98"
+ch01,6,"1, 2, 97, 98"
+ch02,6,"2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+ch03,6,"3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 90, 96, 97, 98"
+ch04,6,"4, 7, 8, 27, 35, 98"
+ch05,6,"5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+ch06,6,"6, 7, 8, 9, 10, 12, 14, 15, 16, 22, 23, 27, 31, 35, 97"
+ch07,6,"7, 8, 9, 10, 11, 14, 15, 20, 27, 31, 35"
+ch08,6,"8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 90, 96, 97"
+ch09,6,"9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+ch10,6,"10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+ch11,6,"11, 13, 15, 27, 30, 31, 32"
+ch12,6,"12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+ch13,6,"13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+ch14,6,"14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 90, 96, 97"
+ch15,6,"15, 17, 18, 20, 22, 23, 26, 27, 30, 31, 32, 90, 97"
+ch16,6,"16, 17, 20, 22, 26, 97"
+ch17,6,"17, 18, 20, 22, 25, 26, 97"
+ch18,6,"18, 20, 97"
+ch19,6,"19, 20, 22, 24, 25, 26, 27, 31, 32, 98"
+ch20,6,"20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97, 98"
+ch22,6,"22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 35, 90, 97, 98"
+ch23,6,"23, 27, 30, 32, 33, 90, 98"
+ch24,6,"24, 25, 26, 32"
+ch25,6,"25, 32"
+ch26,6,"26, 27, 32, 97"
+ch27,6,"27, 31, 32"
+ch30,6,"30, 32, 90"
+ch31,6,"31, 32"
+ch32,6,"32, 33, 34, 36, 90, 96, 97, 98"
+ch33,6,"33, 34, 36, 90, 96"
+ch34,6,"34, 36, 97"
+ch35,6,35
+ch36,6,36
+ch39,6,39
+ch40,6,"40, 41"
+ch41,6,41
+ch54,6,"54, 98"
+ch90,6,90
+ch96,6,96
+ch97,6,"97, 98"
+ch98,6,98
+ch99,6,
 April,0,0:
 August,0,0:
 December,0,0:
@@ -171,202 +171,198 @@ xio,0,0:
 yao,0,0:
 yield,0,0:
 zia,0,0:
-Kegology,0,0:
-Keyword,0,0:
-filename,0,0:
-glossary,0,0:
-kegology,0,0:
-keyword,0,0:
-semantic_type,0,0:
-shop,0,0:
-src,0,0:
+filename,0,"0, 1, 2, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 24, 27, 31, 32, 41, 90, 96, 97, 98"
+glossary,0,"0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 41, 90, 97, 98"
+keyword,0,"0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 40, 41, 54, 90, 97, 98"
+src,0,"0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 27, 30, 32, 33, 34, 35, 40, 41, 90, 97, 98"
+Keyword,0,"1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 41, 90, 97, 98"
 question_tier,0,"1, 97"
-sort_ordinal,0,1
-valid_ch,0,"1,97,98"
-GrainNum,0,2:
-PoolNum,0,2:
-WeightNum,0,2:
+semantic_type,0,"1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 90, 96, 97, 98"
+sort_ordinal,0,"1, 98"
+valid_ch,0,"1, 97, 98"
+GrainNum,0,"2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+PoolNum,0,"2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+WeightNum,0,"2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
 Boss,0,"3, 8, 9, 41, 97"
 BossMass,0,"3, 8, 9, 97"
 BreakTerm,0,"3, 5, 97"
-ContactName,0,3:
-FundGrain,0,3:
-FundNum,0,3:
-GroupMark,0,3:
-GroupTitle,0,3:
-HealerName,0,3:
-Lord,0,"3, 8, 9, 40, 97"
-Loyal,0,"3, 8, 9, 40, 97"
-NameTerm,0,3:
-RespectGrain,0,3:
-RespectNum,0,3:
-TitleTerm,0,3:
-TrustMass,0,"3, 8, 9, 40, 97"
-awardee_title,0,3:
-awardunits,0,3:
-contact_cred_mass,0,3:
-contact_debt_mass,0,3:
-contact_name,0,3:
-credor_pool,0,3:
-debtor_pool,0,3:
-fund_agenda_give,0,3:
-fund_agenda_ratio_give,0,3:
-fund_agenda_ratio_take,0,3:
-fund_agenda_take,0,3:
-fund_give,0,3:
-fund_grain,0,3:
-fund_take,0,3:
-give_force,0,3:
-group_cred_mass,0,3:
-group_debt_mass,0,3:
-group_title,0,3:
-groupmark,0,3:
-groupunits,0,3:
-inallocable_contact_debt_mass,0,3:
-irrational_contact_debt_mass,0,3:
-labor_title,0,3:
-labors,0,3:
-memberships,0,3:
-rational,0,"3, 6, 8, 11, 12, 13, 15, 20, 22, 27, 31, 35, 97"
-respect_grain,0,3:
-solo,0,3:
-take_force,0,3:
-thinkout,0,3:
-LaborHeir,0,4:
-laborheir,0,4:
+ContactName,0,"3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+FundGrain,0,"3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+FundNum,0,"3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+GroupMark,0,"3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+GroupTitle,0,"3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+HealerName,0,"3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+NameTerm,0,"3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+RespectGrain,0,"3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+RespectNum,0,"3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+TitleTerm,0,"3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+TrustMass,0,"3, 8, 9, 97"
+awardee_title,0,"3, 7, 8, 9, 10, 14, 17, 18, 20, 22, 23, 27, 35"
+awardunits,0,"3, 7, 8, 9, 10, 23, 35"
+contact_cred_mass,0,"3, 8, 9, 10, 11, 12, 13, 15, 17, 18, 20, 22, 23, 25, 26, 27, 33, 35"
+contact_debt_mass,0,"3, 8, 9, 10, 11, 13, 15, 17, 18, 20, 22, 23, 25, 26, 27, 33, 35"
+contact_name,0,"3, 4, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 20, 22, 23, 24, 25, 26, 27, 31, 32, 35, 41"
+credor_pool,0,"3, 8, 11, 20, 22, 27, 35"
+debtor_pool,0,"3, 8, 10, 11, 20, 22, 27, 35"
+fund_agenda_give,0,"3, 8, 15, 20, 22, 27, 35"
+fund_agenda_ratio_give,0,"3, 8, 15, 20, 22, 27, 31, 35"
+fund_agenda_ratio_take,0,"3, 8, 15, 20, 22, 27, 31, 35"
+fund_agenda_take,0,"3, 8, 15, 20, 22, 27, 35"
+fund_give,0,"3, 7, 8, 15, 20, 22, 27, 35"
+fund_grain,0,"3, 7, 8, 9, 10, 11, 15, 17, 18, 20, 22, 23, 26, 27, 33, 35"
+fund_take,0,"3, 7, 8, 15, 20, 22, 27, 35"
+give_force,0,"3, 7, 8, 9, 10, 17, 18, 20, 22, 23, 27, 33, 35"
+group_cred_mass,0,"3, 8, 9, 10, 17, 18, 20, 22, 23, 27, 33, 35"
+group_debt_mass,0,"3, 8, 9, 10, 17, 18, 20, 22, 23, 27, 33, 35"
+group_title,0,"3, 4, 7, 8, 9, 10, 14, 17, 18, 20, 22, 23, 27, 31, 32, 35"
+groupmark,0,"3, 8, 20, 22, 27"
+inallocable_contact_debt_mass,0,"3, 8, 11, 15, 20, 22, 27, 35"
+irrational_contact_debt_mass,0,"3, 8, 11, 20, 22, 27, 35"
+memberships,0,"3, 4, 8, 9, 10, 15, 23, 27, 31, 35"
+rational,0,"3, 6, 8, 11, 12, 13, 15, 20, 22, 27, 31, 35"
+respect_grain,0,"3, 8, 9, 10, 11, 15, 17, 18, 20, 22, 23, 26, 27, 33, 35"
+shop,0,"3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 26, 27, 30, 31, 32, 33, 35, 39, 40, 41, 90, 97, 98"
+take_force,0,"3, 7, 8, 9, 10, 17, 18, 20, 22, 23, 27, 33, 35"
+thinkout,0,"3, 7, 8, 9, 10, 11, 12, 14, 15, 23, 27, 31, 35, 90, 97"
+LaborHeir,0,"4, 35"
+groupunits,0,"4, 7, 8, 9, 27, 35"
+labor_title,0,"4, 7, 8, 9, 10, 17, 18, 20, 22, 23, 27, 35"
+laborheir,0,"4, 27"
+labors,0,"4, 7, 8, 10, 23, 27, 35"
 parent_solo,0,4
-person,0,4:
-person_name,0,4:
-person_name_is_workforce,0,4:
+person,0,"4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 39, 40, 41, 54, 90, 96, 97"
+person_name,0,"4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 35, 90"
+person_name_is_workforce,0,"4, 7, 8, 20, 22, 27"
+solo,0,"4, 8, 9, 17, 18, 20, 22, 23, 27, 33, 35"
 workforceheir,0,"4, 7, 8, 27, 35"
-workforceunit,0,"4, 7, 8, 9, 10, 11, 15, 23, 27, 35, 97"
-FactNum,0,5:
-FirstLabel,0,5:
-KnotTerm,0,5:
-LabelTerm,0,5:
-ManaGrain,0,5:
-ReasonNum,0,5:
-RopeTerm,0,5:
-fact,0,5:
-knot,0,5:
-mana_grain,0,5:
+workforceunit,0,"4, 7, 8, 9, 10, 11, 15, 23, 27, 35"
+FirstLabel,0,"5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+KnotTerm,0,"5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+LabelTerm,0,"5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+RopeTerm,0,"5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+knot,0,"5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 40, 90, 96, 97, 98"
 meaning,0,"5, 39"
-parent_rope,0,5:
-active_requisite,0,6:
-case_active,0,6:
-case_task,0,6:
-cases,0,6:
-fact_context,0,6:
-fact_lower,0,6:
-fact_state,0,6:
-fact_upper,0,6:
-factheirs,0,6:
-factunits,0,6:
-parent_heir_active,0,6:
-reason_active,0,6:
-reason_context,0,6:
-reason_divisor,0,6:
-reason_lower,0,6:
-reason_state,0,6:
-reason_task,0,6:
-reason_upper,0,6:
-reasonunits,0,6:
-addin,0,7:
-all_contact_cred,0,"7, 8, 20, 22, 27, 35, 97"
-all_contact_debt,0,"7, 8, 20, 22, 27, 35, 97"
-awardheirs,0,7:
-awardlines,0,7:
-begin,0,7:
-close,0,7:
-denom,0,7:
-descendant_pledge_count,0,7:
-fund_cease,0,7:
-fund_onset,0,7:
-fund_pool,0,7:
-fund_ratio,0,7:
-gogo_calc,0,7:
-gogo_want,0,7:
-healer_name,0,7:
-healerunit,0,7:
-healerunit_ratio,0,7:
-is_expanded,0,7:
+parent_rope,0,"5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 27, 35"
+FactNum,0,"6, 7, 8, 9, 14, 16, 17, 18, 20, 22, 23, 97"
+ReasonNum,0,"6, 7, 8, 9, 14, 16, 17, 18, 20, 22, 23, 97"
+active_requisite,0,"6, 7, 8, 9, 10, 17, 18, 20, 22, 23, 26, 27, 33"
+case_active,0,"6, 7, 8, 14, 20, 22, 27"
+case_task,0,"6, 8, 11, 20, 22, 27, 35"
+cases,0,"6, 7, 8, 10, 14, 16, 23, 27, 35, 39, 40, 41"
+fact,0,"6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 22, 23, 26, 27, 30, 31, 33, 35, 39, 40, 41, 97, 98"
+fact_context,0,"6, 7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 26, 27, 35"
+fact_lower,0,"6, 7, 8, 9, 10, 11, 12, 14, 16, 17, 18, 20, 22, 23, 26, 27, 33, 35"
+fact_state,0,"6, 7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 27, 35"
+fact_upper,0,"6, 7, 8, 9, 10, 11, 12, 14, 16, 17, 18, 20, 22, 23, 26, 27, 33, 35"
+factheirs,0,"6, 7, 8, 14, 27, 35"
+factunits,0,"6, 7, 8, 9, 10, 11, 12, 14, 15, 23, 35"
+parent_heir_active,0,"6, 8, 20, 22, 27"
+reason_active,0,"6, 7, 8, 14, 20, 22, 27"
+reason_context,0,"6, 7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 26, 27, 31, 35"
+reason_divisor,0,"6, 7, 8, 9, 10, 14, 17, 18, 20, 22, 23, 26, 27, 31, 33, 35"
+reason_lower,0,"6, 7, 8, 9, 10, 11, 14, 16, 17, 18, 20, 22, 23, 26, 27, 31, 33, 35"
+reason_state,0,"6, 7, 8, 9, 10, 11, 14, 17, 18, 20, 22, 23, 27, 35"
+reason_task,0,"6, 7, 8, 20, 22, 27"
+reason_upper,0,"6, 7, 8, 9, 10, 14, 16, 17, 18, 20, 22, 23, 26, 27, 31, 33, 35"
+reasonunits,0,"6, 7, 8, 10, 11, 14, 23, 35"
+addin,0,"7, 8, 9, 10, 14, 15, 17, 18, 20, 22, 23, 26, 27, 33, 35, 40, 41, 90"
+all_contact_cred,0,"7, 8, 20, 22, 27, 35"
+all_contact_debt,0,"7, 8, 20, 22, 27, 35"
+awardheirs,0,"7, 8, 27, 35"
+awardlines,0,"7, 8, 35"
+begin,0,"7, 8, 9, 10, 14, 15, 17, 18, 20, 22, 23, 26, 27, 33, 35, 39, 40, 41, 90"
+close,0,"7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20, 22, 23, 26, 27, 30, 31, 32, 33, 34, 35, 39, 40, 41, 54, 90, 98"
+denom,0,"7, 8, 9, 10, 14, 15, 16, 17, 18, 20, 22, 23, 26, 27, 33, 35, 39, 90"
+descendant_pledge_count,0,"7, 8, 20, 22, 27, 35"
+fund_cease,0,"7, 8, 12, 20, 22, 27, 35"
+fund_onset,0,"7, 8, 12, 20, 22, 27, 35"
+fund_pool,0,"7, 8, 9, 10, 11, 12, 17, 18, 20, 22, 23, 27, 33"
+fund_ratio,0,"7, 8, 15, 20, 22, 27, 31, 35"
+gogo_calc,0,"7, 8, 14, 20, 22, 27, 35"
+gogo_want,0,"7, 8, 9, 10, 14, 17, 18, 20, 22, 23, 26, 27, 33, 35, 90"
+healer_name,0,"7, 8, 9, 10, 11, 13, 15, 17, 18, 20, 22, 23, 27, 35"
+healerunit,0,"7, 8, 9, 10, 11, 15, 20, 22, 23, 27, 35, 97"
+healerunit_ratio,0,"7, 8, 20, 22, 27, 35"
+is_expanded,0,"7, 8, 35"
 kids,0,"7, 8, 14, 35"
-morph,0,7:
-numor,0,7:
-plan,0,7:
-plan_active,0,7:
-plan_active_hx,0,7:
-plan_fund_total,0,7:
-plan_label,0,7:
-plan_rope,0,7:
-plan_task,0,7:
+morph,0,"7, 8, 9, 10, 14, 15, 17, 18, 20, 22, 23, 26, 27, 33, 35, 90"
+numor,0,"7, 8, 9, 10, 15, 17, 18, 20, 22, 23, 26, 27, 33, 35, 90"
+plan,0,"7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 26, 27, 30, 31, 32, 33, 35, 39, 40, 41, 54, 90, 97, 98"
+plan_active,0,"7, 8, 14, 20, 22, 27, 31, 35"
+plan_active_hx,0,"7, 8, 35"
+plan_fund_total,0,"7, 8, 35"
+plan_label,0,"7, 8, 9, 10, 14, 15, 17, 18, 20, 27, 31, 35"
+plan_rope,0,"7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 26, 27, 31, 32, 35"
+plan_task,0,"7, 8, 20, 22, 27, 31, 35"
 plan_uid,0,"7, 8, 9, 35"
-pledge,0,7:
-poynt,0,7:
-problem_bool,0,7:
-range_evaluated,0,7:
+pledge,0,"7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 26, 27, 31, 32, 33, 35, 40, 90"
+poynt,0,"7, 8, 9, 10, 11, 14, 17, 18, 20, 22, 23, 26, 27, 31, 32, 33, 35, 41, 97"
+problem_bool,0,"7, 8, 9, 10, 11, 15, 17, 18, 20, 22, 23, 26, 27, 33, 35, 90"
+range_evaluated,0,"7, 8, 20, 22, 27, 35"
 range_inheritors,0,"7, 8, 14"
-reasonheirs,0,7:
-stop_calc,0,7:
-stop_want,0,7:
-tree_level,0,7:
-tree_traverse_count,0,"7, 8, 20, 22, 27, 97"
-PersonName,0,8:
-PersonUnit,0,8:
-ancestors,0,8:
+reasonheirs,0,"7, 8, 14, 27, 31, 35"
+stop_calc,0,"7, 8, 14, 20, 22, 27, 35"
+stop_want,0,"7, 8, 9, 10, 14, 17, 18, 20, 22, 23, 26, 27, 33, 35, 90"
+tree_level,0,"7, 8, 9, 20, 22, 27, 35"
+tree_traverse_count,0,"7, 8, 20, 22, 27"
+ManaGrain,0,"8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+PersonName,0,"8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+PersonUnit,0,"8, 9, 10, 11, 12, 13, 14, 15, 20, 22, 23, 24, 26, 27, 30, 31, 32, 35, 40, 41, 90"
+ancestors,0,"8, 9, 12, 15, 23"
 calc_by_thinkout,0,"8, 9, 97"
-contact_mandate_ledger,0,8:
-contact_pool,0,8:
-contacts,0,8:
-context_plan_close,0,8:
-context_plan_denom,0,8:
-context_plan_morph,0,8:
-credor_respect,0,8:
-debtor_respect,0,8:
-dimen,0,8:
-dimens,0,8:
-jkeys,0,8:
-jvalues,0,8:
-keep_rope,0,8:
-keeps_buildable,0,8:
-keeps_justified,0,8:
-last_lesson_id,0,8:
-mandate,0,8:
-max_tree_traverse,0,8:
-obj_type,0,8:
-offtrack_fund,0,8:
-offtrack_kids_poynt_set,0,8:
-person_contact_membership,0,8:
-person_contactunit,0,8:
-person_groupunit,0,8:
-person_plan_awardunit,0,8:
-person_plan_factunit,0,8:
-person_plan_healerunit,0,8:
-person_plan_laborunit,0,8:
-person_plan_reason_caseunit,0,8:
-person_plan_reasonunit,0,8:
-person_planunit,0,8:
-personunit,0,8:
-planroot,0,8:
-prnawar,0,"8, 9, 20, 22, 25, 26, 27, 31, 97"
-prncase,0,"8, 9, 22, 26, 27, 31, 97, 98"
-prncont,0,"8, 9, 20, 22, 24, 25, 26, 27, 31, 32, 97"
-prnfact,0,"8, 9, 20, 22, 26, 27, 31, 97"
-prngrou,0,"8, 9, 20, 22, 26, 27, 31, 97"
-prnheal,0,"8, 9, 20, 22, 26, 27, 31, 97"
-prnlabo,0,"8, 9, 20, 22, 26, 27, 31, 97"
-prnmemb,0,"8, 9, 20, 22, 26, 27, 31, 97"
-prnplan,0,"8, 9, 22, 26, 27, 31, 97"
-prnreas,0,"8, 9, 22, 26, 27, 31, 97"
-prnunit,0,"8, 9, 22, 26, 27, 31, 32, 97"
-reason_contexts,0,8:
-sqlite_datatype,0,8:
-sum_healerunit_plans_fund_total,0,8:
-CRUD_command,0,9:
-DELETE,0,9:
-INSERT,0,9:
-UPDATE,0,9:
-atom,0,9:
+contact_mandate_ledger,0,"8, 12, 15, 27, 32"
+contact_pool,0,"8, 10, 11"
+contacts,0,"8, 9, 10, 11, 12, 13, 14, 15, 23, 27, 30, 31, 35, 40, 41"
+context_plan_close,0,"8, 14, 20, 22, 26"
+context_plan_denom,0,"8, 20, 22, 26"
+context_plan_morph,0,"8, 20, 22, 26"
+credor_respect,0,"8, 9, 10, 11, 15, 17, 18, 20, 22, 23, 27, 33"
+debtor_respect,0,"8, 9, 10, 11, 15, 17, 18, 20, 22, 23, 27, 33"
+dimen,0,"8, 9, 10, 12, 15, 16, 17, 18, 20, 22, 23, 24, 25, 26, 27, 30, 33, 39, 40, 41, 97"
+dimens,0,"8, 9, 10, 12, 15, 16, 17, 18, 20, 22, 23, 24, 25, 26, 27, 39, 41, 97"
+jkeys,0,"8, 9, 10, 15, 16, 17, 18, 20, 22, 23, 27, 33, 35, 97"
+jvalues,0,"8, 9, 10, 15, 16, 17, 18, 20, 22, 23, 27, 33, 97"
+keep_rope,0,"8, 11, 13, 15"
+keeps_buildable,0,"8, 11, 20, 22, 27"
+keeps_justified,0,"8, 11, 20, 22, 27"
+last_lesson_id,0,"8, 10, 11"
+mana_grain,0,"8, 9, 10, 11, 12, 13, 15, 17, 18, 20, 22, 23, 26, 27, 33, 35"
+mandate,0,"8, 12, 15, 27, 32, 39"
+max_tree_traverse,0,"8, 9, 10, 11, 17, 18, 20, 22, 23, 27, 33, 35"
+obj_type,0,"8, 9, 15, 17, 18, 20, 26"
+offtrack_fund,0,"8, 20, 22, 27"
+offtrack_kids_poynt_set,0,8
+person_contact_membership,0,"8, 9, 10, 20, 22, 23, 27, 97"
+person_contactunit,0,"8, 9, 10, 15, 20, 22, 23, 25, 26, 27, 97"
+person_groupunit,0,"8, 9, 22, 27"
+person_plan_awardunit,0,"8, 9, 10, 20, 22, 23, 26, 27, 97"
+person_plan_factunit,0,"8, 9, 10, 14, 20, 22, 23, 26, 27, 97"
+person_plan_healerunit,0,"8, 9, 10, 20, 22, 23, 27, 97"
+person_plan_laborunit,0,"8, 9, 10, 20, 22, 23, 27, 97"
+person_plan_reason_caseunit,0,"8, 9, 10, 14, 20, 22, 23, 26, 27, 35, 97"
+person_plan_reasonunit,0,"8, 9, 10, 14, 20, 22, 23, 26, 27, 97"
+person_planunit,0,"8, 9, 10, 14, 20, 22, 23, 26, 27, 31, 97"
+personunit,0,"8, 9, 10, 11, 12, 13, 14, 15, 20, 22, 23, 27, 30, 31, 32, 35, 90, 97"
+planroot,0,"8, 9, 10, 11, 12, 14, 15, 20, 23, 27, 31, 35"
+prnawar,0,"8, 9, 22, 25, 26, 27"
+prncase,0,"8, 9, 22, 26, 27, 98"
+prncont,0,"8, 9, 20, 22, 24, 25, 26, 27, 32"
+prnfact,0,"8, 9, 22, 26, 27"
+prngrou,0,"8, 22, 27"
+prnheal,0,"8, 9, 22, 27"
+prnlabo,0,"8, 20, 22, 27"
+prnmemb,0,"8, 9, 22, 27"
+prnplan,0,"8, 9, 22, 26, 27, 31"
+prnreas,0,"8, 9, 22, 26, 27"
+prnunit,0,"8, 9, 22, 27, 32"
+reason_contexts,0,"8, 10, 11, 12"
+sqlite_datatype,0,"8, 9, 19, 20, 33"
+sum_healerunit_plans_fund_total,0,"8, 20, 22, 27"
+CRUD_command,0,"9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+DELETE,0,"9, 10, 15, 16, 17, 19, 20, 22, 23, 27, 90"
+INSERT,0,"9, 10, 15, 16, 17, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32"
+UPDATE,0,"9, 10, 15, 16, 17, 19, 20, 22, 23, 24, 25, 26, 97"
+atom,0,"9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 40, 41, 90, 96, 97"
 awardee_title_ERASE,0,"9, 20, 22"
 column_ordinal,0,9
 contact_name_ERASE,0,"9, 20, 22"
@@ -376,47 +372,45 @@ group_title_ERASE,0,"9, 20, 22"
 healer_name_ERASE,0,"9, 17, 18, 20, 22"
 labor_title_ERASE,0,"9, 20, 22"
 nesting_order,0,"9, 10"
-normal_specs,0,9:
+normal_specs,0,"9, 15, 16, 17, 20, 23"
 normal_table_name,0,9
 person_name_ERASE,0,"9, 20, 22"
 plan_rope_ERASE,0,"9, 20, 22"
 reason_context_ERASE,0,"9, 20, 22"
 reason_state_ERASE,0,"9, 20, 22"
-FaceName,0,10:
-Lasso,0,10:
-MomentRope,0,10:
-gut,0,10:
-lasso,0,10:
-moment,0,10:
-moment_mstr_dir,0,10:
-moment_rope,0,10:
-spark_face,0,10:
-spark_num,0,10:
-job,0,"11, 15, 17, 18, 20, 22, 23, 26, 27, 30, 31, 32, 33, 39, 40"
+FaceName,0,"10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+Lasso,0,"10, 11, 12, 15, 22, 26, 27, 31"
+MomentRope,0,"10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+gut,0,"10, 11, 13, 15, 27, 30, 32, 40, 41"
+lasso,0,"10, 11, 12, 15, 22, 26, 27, 30, 31, 32"
+moment,0,"10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 35, 39, 40, 41, 90, 97"
+moment_mstr_dir,0,"10, 11, 12, 13, 15, 20, 22, 23, 26, 27, 30, 31, 32, 33"
+moment_rope,0,"10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 35, 90"
+spark_face,0,"10, 16, 17, 18, 20, 22, 23, 24, 25, 26, 27, 30, 32, 90"
+spark_num,0,"10, 12, 15, 16, 17, 20, 22, 23, 24, 25, 26, 27, 30, 32, 33, 90, 97"
+job,0,"11, 15, 17, 18, 20, 22, 23, 26, 27, 30, 31, 32, 33, 40"
 listener,0,11
 speaker,0,11
-Epoch,0,12:
-SparkInt,0,12:
-TimeNum,0,12:
-amount,0,"12, 13, 15, 17, 18, 20, 22, 23, 26, 27, 31, 32, 33, 35, 97"
+SparkInt,0,"12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+TimeNum,0,"12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 90, 96, 97"
+amount,0,"12, 13, 15, 17, 18, 20, 22, 23, 26, 27, 31, 32, 33, 35"
 boss,0,"12, 15, 41, 54"
 boss_facts,0,"12, 15"
-bud_contact_nets,0,12:
+bud_contact_nets,0,"12, 15, 27"
 bud_person_name,0,"12, 15"
-bud_time,0,12:
-celldepth,0,12:
-epoch,0,12:
+bud_time,0,"12, 15, 16, 17, 18, 20, 22, 23, 26, 27, 32, 33"
+celldepth,0,"12, 15, 17, 18, 20, 22, 23, 26, 27, 32, 33"
 found_facts,0,"12, 15, 27"
-magnitude,0,12:
-offi_time,0,12:
-offi_time_max,0,12:
-person_contacts_net,0,12:
-personadjust,0,12:
-personspark_facts,0,12:
-quota,0,12:
-time,0,12:
-tran_time,0,12:
-ManaNum,0,13:
+magnitude,0,"12, 13, 40"
+offi_time,0,"12, 15, 16, 17, 18, 20, 22, 23, 26, 30, 31, 33, 97"
+offi_time_max,0,"12, 15, 20, 23"
+person_contacts_net,0,12
+personadjust,0,"12, 15"
+personspark_facts,0,"12, 15"
+quota,0,"12, 15, 17, 18, 20, 22, 23, 26, 27, 32, 33, 40"
+time,0,"12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 39, 40, 41, 54, 90, 96, 97, 98"
+tran_time,0,"12, 15, 16, 17, 18, 20, 22, 23, 26, 27, 31, 32, 33"
+ManaNum,0,"13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
 care_amount,0,13
 cares,0,13
 cycle_carees_curr,0,13
@@ -445,12 +439,13 @@ rewards_magnitude,0,13
 riverbooks,0,13
 rivercares,0,13
 rivergrades,0,13
-Anaday,0,14:
-Baileyday,0,14:
-Chiday,0,14:
-Danceday,0,14:
-Eastday,0,14:
-EpochLabel,0,14:
+Anaday,0,"14, 23"
+Baileyday,0,"14, 23"
+Chiday,0,"14, 23"
+Danceday,0,"14, 23"
+Eastday,0,"14, 23"
+Epoch,0,"14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+EpochLabel,0,"14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
 TimeShoe,0,"14, 15, 31"
 c100,0,14
 c100_length,0,14
@@ -458,103 +453,104 @@ c400_core,0,14
 c400_core_length,0,14
 c400_leap,0,"14, 26"
 c400_leap_length,0,"14, 26"
-c400_number,0,14:
-clock,0,14:
-creg,0,14:
-cumulative_day,0,14:
-day,0,14:
+c400_number,0,"14, 15, 17, 18, 20, 22, 23, 26, 33"
+clock,0,"14, 31, 41"
+creg,0,"14, 15, 20, 23, 31, 32, 90"
+cumulative_day,0,"14, 15, 17, 18, 20, 22, 23, 25, 26, 33"
+day,0,"14, 15, 16, 17, 18, 20, 22, 23, 24, 25, 26, 31, 32, 33, 35, 39, 40, 41, 54, 90, 97"
 day_length,0,14
 dayly_duration_min,0,14
 dayly_lower_min,0,14
-days,0,14:
+days,0,"14, 20, 23, 26, 31, 39, 40, 41, 54"
 days_lower_day,0,14
 days_upper_day,0,14
 duration,0,"14, 39"
-epoch_label,0,14:
-epoch_length,0,"14, 15, 16, 26, 97"
-epoch_min,0,"14, 15, 16, 31, 97"
+epoch,0,"14, 15, 16, 17, 18, 20, 22, 23, 26, 27, 30, 31, 32, 35, 39, 40, 90, 97, 98"
+epoch_label,0,"14, 15, 17, 18, 20, 22, 23, 26, 31, 35"
+epoch_length,0,"14, 15, 16, 26"
+epoch_min,0,"14, 15, 16, 31"
 every_xdays,0,14
-every_xweeks,0,"14, 26, 97"
-five,0,14:
-hour,0,14:
-hour_label,0,14:
-hours_config,0,14:
-month_label,0,14:
-monthday_index,0,14:
+every_xweeks,0,"14, 26"
+five,0,"14, 15, 17, 18, 20, 23, 27, 32, 39, 40, 41, 90, 97"
+hour,0,"14, 15, 17, 18, 20, 22, 23, 24, 26, 27, 31, 32, 39, 40, 41, 97"
+hour_label,0,"14, 15, 17, 18, 20, 22, 23, 24, 26, 27, 32"
+hours_config,0,"14, 20, 23, 26"
+month_label,0,"14, 15, 17, 18, 20, 22, 23, 25, 26, 97"
+monthday_index,0,"14, 15, 17, 18, 20, 22, 23, 26, 33"
 monthly_duration_days,0,14
 monthly_monthday_lower,0,14
-months_config,0,14:
+months_config,0,"14, 20, 23, 26"
 range_duration,0,14
 range_lower_min,0,14
-readable,0,14:
-week,0,14:
-weekdays_config,0,14:
+readable,0,"14, 31, 35, 41, 98"
+week,0,"14, 15, 17, 18, 20, 22, 23, 24, 26, 31, 33, 39, 40, 41, 97"
+weekdays_config,0,"14, 20, 23, 26"
 weekly_duration_min,0,14
 weekly_lower_min,0,14
-weeks,0,14:
+weeks,0,"14, 26, 39, 40, 41"
 weeks_lower_week,0,14
 weeks_upper_week,0,14
-year,0,14:
+year,0,"14, 15, 16, 31, 39, 40, 41"
 year_length,0,14
 year_monthday_duration_days,0,14
 year_monthday_lower,0,14
-yr1_jan1_offset,0,14:
+yr1_jan1_offset,0,"14, 15, 17, 18, 20, 22, 23, 26, 33"
 yr4_core,0,14
 yr4_core_length,0,14
 yr4_leap,0,14
 yr4_leap_length,0,14
-all_tranbook,0,"15, 27, 97"
-ceckbook,0,15:
-cumulative_minute,0,15:
-job_listen_rotations,0,15:
+all_tranbook,0,"15, 27"
+ceckbook,0,"15, 20, 22, 23, 26, 30, 97"
+cumulative_minute,0,"15, 17, 18, 20, 22, 23, 24, 26, 27, 32, 33"
+job_listen_rotations,0,"15, 17, 18, 20, 22, 23, 26, 33"
 moment_budunit,0,"15, 20, 22, 23, 26, 97"
 moment_ceckbook,0,"15, 20, 22, 23, 26, 97"
 moment_epoch_hour,0,"15, 20, 22, 23, 26, 97"
 moment_epoch_month,0,"15, 20, 22, 23, 26, 97"
 moment_epoch_weekday,0,"15, 20, 22, 23, 26, 97"
 moment_static,0,15
-moment_timeoffi,0,15:
-momentunit,0,15:
-offi_times,0,15:
-personbudhistorys,0,15:
-weekday_label,0,15:
-weekday_order,0,15:
-Nabu,0,16:
-NabuTime,0,"16, 26, 97"
-inx_epoch_diff,0,16:
-inx_time,0,16:
-nabu,0,16:
-nabu_timenum,0,16:
-otx2inx,0,16:
+moment_timeoffi,0,"15, 20, 22, 23, 26, 97"
+momentunit,0,"15, 20, 22, 23, 26, 27, 30, 31, 32, 33, 90, 97"
+offi_times,0,"15, 20, 26, 30"
+personbudhistorys,0,"15, 23, 26"
+weekday_label,0,"15, 17, 18, 20, 22, 23, 24, 26"
+weekday_order,0,"15, 17, 18, 20, 22, 23, 24, 26, 33"
+Nabu,0,"16, 22, 26, 97, 98"
+NabuTime,0,"16, 26"
+inx_epoch_diff,0,"16, 20, 22, 26, 98"
+inx_time,0,"16, 20, 22, 26, 32, 33"
+nabu,0,"16, 17, 20, 22, 23, 26, 97"
+nabu_timenum,0,"16, 20, 22, 23, 26"
+otx2inx,0,"16, 17, 20, 23, 98"
 otx_epoch_length,0,16
-otx_time,0,16:
+otx_time,0,"16, 20, 22, 26, 32, 33"
 timenabu,0,16
-inx_knot,0,17:
-inx_label,0,17:
-inx_name,0,17:
-inx_rope,0,17:
-inx_title,0,17:
-jargon,0,17:
-jargon_core,0,17:
-jargon_label,0,17:
-jargon_name,0,17:
-jargon_rope,0,17:
-jargon_title,0,17:
-jargonunit,0,"17, 18, 20, 97"
-labelmap,0,17:
-namemap,0,17:
-otx_knot,0,17:
-otx_label,0,17:
-otx_name,0,17:
-otx_rope,0,17:
-otx_title,0,17:
-ropemap,0,17:
-titlemap,0,17:
-unknown_str,0,17:
+inx_knot,0,"17, 20, 22, 23, 24, 25, 30, 98"
+inx_label,0,"17, 20, 22, 23, 25, 30"
+inx_name,0,"17, 20, 22, 23, 25, 26, 30, 32"
+inx_rope,0,"17, 20, 22, 23, 24, 25, 30"
+inx_title,0,"17, 20, 22, 23, 25, 30"
+jargon,0,"17, 18, 20, 22, 23, 24, 25, 26, 30, 32, 97"
+jargon_core,0,"17, 22, 23, 25, 30, 32"
+jargon_label,0,"17, 18, 20, 22, 23, 25, 30, 97"
+jargon_name,0,"17, 18, 20, 22, 23, 25, 26, 30, 97"
+jargon_rope,0,"17, 18, 20, 22, 23, 24, 25, 30, 97"
+jargon_title,0,"17, 18, 20, 22, 23, 24, 25, 30, 97"
+jargonunit,0,"17, 20"
+labelmap,0,"17, 20"
+namemap,0,"17, 20"
+otx_knot,0,"17, 20, 22, 23, 24, 25, 30, 98"
+otx_label,0,"17, 20, 22, 23, 25, 30"
+otx_name,0,"17, 20, 22, 23, 25, 26, 30, 32"
+otx_rope,0,"17, 20, 22, 23, 24, 25, 30"
+otx_title,0,"17, 20, 22, 23, 25, 30"
+ropemap,0,"17, 20"
+titlemap,0,"17, 20"
+unknown_str,0,"17, 18, 20, 22, 23, 24, 25, 30, 98"
 Audie,0,"18, 41, 97"
-AudieTitle,0,18:
+AudieTitle,0,"18, 97"
 Flare,0,"18, 97"
-FlareInt,0,18:
+FlareInt,0,"18, 97"
 Speech,0,18
 Yap,0,18
 audie,0,"18, 20, 27, 30, 33, 39, 40, 41"
@@ -568,7 +564,7 @@ flare,0,"18, 20"
 flare_audie,0,"18, 20"
 flare_num,0,"18, 20"
 iux,0,"18, 20, 98"
-iux2aux,0,"18, 20, 98"
+iux2aux,0,"18, 98"
 iux_knot,0,"18, 20, 98"
 iux_label,0,"18, 20"
 iux_name,0,"18, 20"
@@ -577,36 +573,36 @@ iux_title,0,"18, 20"
 labelyap,0,18
 nameyap,0,18
 ropeyap,0,18
-speech,0,"18, 20, 22, 97"
-speech_core,0,"18, 20, 22"
-speech_label,0,"18, 20"
-speech_name,0,"18, 20"
-speech_rope,0,"18, 20"
-speech_title,0,"18, 20"
+speech,0,"18, 20, 97"
+speech_core,0,18
+speech_label,0,18
+speech_name,0,18
+speech_rope,0,18
+speech_title,0,18
 titleyap,0,18
 yap,0,18
 duck,0,19
 Border,0,"20, 39"
-Excel,0,20:
-SheetName,0,20:
-allowed_crud,0,20:
-attributes,0,"20, 23, 24, 26, 35, 39, 40, 97"
+Excel,0,"20, 22, 23, 24, 30, 32, 39, 41, 90, 97"
+SheetName,0,"20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 90, 96, 97"
+allowed_crud,0,"20, 23, 97"
+attributes,0,"20, 23, 24, 26, 39, 40, 97"
 awardee_title_ERASE_aux,0,20
 awardee_title_ERASE_inx,0,"20, 22"
 awardee_title_ERASE_iux,0,20
 awardee_title_ERASE_otx,0,"20, 22"
 awardee_title_aux,0,20
-awardee_title_inx,0,"20, 22, 97"
+awardee_title_inx,0,"20, 22"
 awardee_title_iux,0,20
-awardee_title_otx,0,"20, 22, 97"
-bk,0,20:
-border,0,"20, 35, 39, 41, 90"
-brick,0,20:
-brick_category,0,"20, 22, 23, 26, 97"
-brick_type,0,20:
+awardee_title_otx,0,"20, 22"
+bk,0,"20, 22, 23, 24, 25, 27, 30, 32, 90, 97, 98"
+border,0,"20, 39, 41, 90"
+brick,0,"20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 40, 90, 96, 97, 98"
+brick_category,0,"20, 22, 23, 26"
+brick_type,0,"20, 22, 23, 24, 25, 27, 97"
 bud_time_inx,0,"20, 22"
 bud_time_otx,0,"20, 22"
-build_order,0,20:
+build_order,0,"20, 23"
 contact_name_ERASE_aux,0,20
 contact_name_ERASE_inx,0,"20, 22"
 contact_name_ERASE_iux,0,20
@@ -615,34 +611,34 @@ contact_name_aux,0,20
 contact_name_inx,0,"20, 22"
 contact_name_iux,0,20
 contact_name_otx,0,"20, 22"
-delete_insert,0,20:
-delete_insert_update,0,20:
-delete_update,0,"20,23"
+delete_insert,0,"20, 23, 97"
+delete_insert_update,0,"20, 23, 97"
+delete_update,0,"20, 23"
 epoch_label_aux,0,20
-epoch_label_inx,0,"20, 22, 97"
+epoch_label_inx,0,"20, 22"
 epoch_label_iux,0,20
-epoch_label_otx,0,"20, 22, 97"
-error_message,0,20:
-excel,0,20:
+epoch_label_otx,0,"20, 22"
+error_message,0,"20, 22, 24, 25, 26, 27"
+excel,0,"20, 22, 23, 24, 30, 32, 39, 40, 90, 97, 98"
 fact_context_ERASE_aux,0,20
 fact_context_ERASE_inx,0,"20, 22"
 fact_context_ERASE_iux,0,20
 fact_context_ERASE_otx,0,"20, 22"
 fact_context_aux,0,20
-fact_context_inx,0,"20, 22, 97"
+fact_context_inx,0,"20, 22"
 fact_context_iux,0,20
-fact_context_otx,0,"20, 22, 97"
-fact_lower_inx,0,"20, 22, 26, 97"
-fact_lower_otx,0,"20, 22, 26, 97"
+fact_context_otx,0,"20, 22"
+fact_lower_inx,0,"20, 22, 26"
+fact_lower_otx,0,"20, 22, 26"
 fact_state_aux,0,20
-fact_state_inx,0,"20, 22, 97"
+fact_state_inx,0,"20, 22"
 fact_state_iux,0,20
-fact_state_otx,0,"20, 22, 97"
-fact_upper_inx,0,"20, 22, 26, 97"
-fact_upper_otx,0,"20, 22, 26, 97"
+fact_state_otx,0,"20, 22"
+fact_upper_inx,0,"20, 22, 26"
+fact_upper_otx,0,"20, 22, 26"
 flare_audie_aux,0,20
 flare_audie_iux,0,20
-fund_rank,0,20:
+fund_rank,0,"20, 31"
 group_title_ERASE_aux,0,20
 group_title_ERASE_inx,0,"20, 22"
 group_title_ERASE_iux,0,20
@@ -663,10 +659,10 @@ hour_label_aux,0,20
 hour_label_inx,0,"20, 22"
 hour_label_iux,0,20
 hour_label_otx,0,"20, 22"
-insert_multiple,0,20:
-insert_one_time,0,20:
-insert_update,0,20:
-jargon_spark_num,0,"20, 22, 97"
+insert_multiple,0,"20, 23, 97"
+insert_one_time,0,"20, 23, 97"
+insert_update,0,"20, 23, 97"
+jargon_spark_num,0,"20, 22"
 labor_title_ERASE_aux,0,20
 labor_title_ERASE_inx,0,"20, 22"
 labor_title_ERASE_iux,0,20
@@ -683,10 +679,10 @@ month_label_aux,0,20
 month_label_inx,0,"20, 22"
 month_label_iux,0,20
 month_label_otx,0,"20, 22"
-net_funds,0,20:
+net_funds,0,"20, 31"
 offi_time_inx,0,"20, 22, 26"
 offi_time_otx,0,"20, 22, 26"
-otx_key,0,20:
+otx_key,0,"20, 22, 23, 24"
 person_name_ERASE_aux,0,20
 person_name_ERASE_inx,0,"20, 22"
 person_name_ERASE_iux,0,20
@@ -694,7 +690,7 @@ person_name_ERASE_otx,0,"20, 22"
 person_name_aux,0,20
 person_name_inx,0,"20, 22, 25"
 person_name_iux,0,20
-person_name_otx,0,"20, 22, 25"
+person_name_otx,0,"20, 22"
 plan_rope_ERASE_aux,0,20
 plan_rope_ERASE_inx,0,"20, 22"
 plan_rope_ERASE_iux,0,20
@@ -703,45 +699,45 @@ plan_rope_aux,0,20
 plan_rope_inx,0,"20, 22"
 plan_rope_iux,0,20
 plan_rope_otx,0,"20, 22"
-pledges_count,0,20:
+pledges_count,0,"20, 31"
 reason_context_ERASE_aux,0,20
 reason_context_ERASE_inx,0,"20, 22"
 reason_context_ERASE_iux,0,20
 reason_context_ERASE_otx,0,"20, 22"
 reason_context_aux,0,20
-reason_context_inx,0,"20, 22, 97"
+reason_context_inx,0,"20, 22"
 reason_context_iux,0,20
-reason_context_otx,0,"20, 22, 97"
-reason_lower_inx,0,"20, 22, 26, 97"
-reason_lower_otx,0,"20, 22, 26, 97"
+reason_context_otx,0,"20, 22"
+reason_lower_inx,0,"20, 22, 26"
+reason_lower_otx,0,"20, 22, 26"
 reason_state_ERASE_aux,0,20
 reason_state_ERASE_inx,0,"20, 22"
 reason_state_ERASE_iux,0,20
 reason_state_ERASE_otx,0,"20, 22"
 reason_state_aux,0,20
-reason_state_inx,0,"20, 22, 97"
+reason_state_inx,0,"20, 22"
 reason_state_iux,0,20
-reason_state_otx,0,"20, 22, 97"
-reason_upper_inx,0,"20, 22, 26, 97"
-reason_upper_otx,0,"20, 22, 26, 97"
-sheet,0,20:
-source_dimen,0,20:
+reason_state_otx,0,"20, 22"
+reason_upper_inx,0,"20, 22, 26"
+reason_upper_otx,0,"20, 22, 26"
+sheet,0,"20, 22, 23, 24, 30, 32, 35, 40, 41, 90, 97"
+source_dimen,0,"20, 22, 25"
 spark_face_inx,0,"20, 22, 26"
-spark_face_otx,0,"20, 22, 26"
+spark_face_otx,0,"20, 22"
 tran_time_inx,0,"20, 22"
 tran_time_otx,0,"20, 22"
 weekday_label_aux,0,20
 weekday_label_inx,0,"20, 22"
 weekday_label_iux,0,20
 weekday_label_otx,0,"20, 22"
-world_name,0,20:
+world_name,0,"20, 30, 32, 33, 90"
 b_agg,0,"22, 24, 27, 32"
 b_raw,0,"22, 24, 32"
-b_src,0,"22, 23, 24, 27, 32, 90, 97"
+b_src,0,"22, 23, 24, 32, 90"
 b_vld,0,"22, 24, 32"
 brixk_agg,0,"22, 24, 32"
 brixk_raw,0,"22, 24, 32"
-brixk_src,0,"22, 24, 32"
+brixk_src,0,22
 brixk_vld,0,"22, 24, 32"
 h_agg,0,"22, 26, 32"
 h_raw,0,"22, 25, 26, 32"
@@ -749,13 +745,13 @@ h_vld,0,"22, 25, 26, 27, 32"
 heard_agg,0,"22, 25, 26, 32, 98"
 heard_raw,0,"22, 25, 26, 32, 97"
 heard_vld,0,"22, 26, 32"
-i_dst,0,22:
-i_src,0,22:
-idea,0,"22, 23, 27, 30, 32, 33, 40, 41, 54, 90, 97, 98"
-ideax_dst,0,22:
-ideax_src,0,22:
+i_dst,0,22
+i_src,0,"22, 23, 32, 90"
+idea,0,"22, 23, 27, 30, 32, 33, 40, 41, 54, 90, 98"
+ideax_dst,0,"22, 30"
+ideax_src,0,22
 k_vld,0,"22, 24, 32"
-lego,0,22:
+lego,0,"22, 26, 27, 30, 31, 32, 90, 97"
 legox_mst,0,22
 mmtbudd,0,"22, 26, 97"
 mmtceck,0,"22, 26, 97"
@@ -765,8 +761,7 @@ mmtoffi,0,"22, 26, 97"
 mmtunit,0,"22, 26, 97"
 mmtweek,0,"22, 26, 97"
 moment_ote1_agg,0,"22, 26, 27, 32, 97"
-nabtime,0,22:
-person_net_amount,0,22:
+nabtime,0,"22, 26"
 s_agg,0,"22, 24, 25, 32"
 s_raw,0,"22, 24, 25, 32"
 s_vld,0,"22, 24, 25, 26, 30, 32"
@@ -778,41 +773,42 @@ trllabe,0,"22, 25, 30, 97"
 trlname,0,"22, 25, 26, 30, 32, 97"
 trlrope,0,"22, 24, 25, 30, 97"
 trltitl,0,"22, 25, 30, 97"
-day_punch,0,23:
 fission,0,23
-idea_type,0,23:
-ii,0,23:
-moment_tranbook_nets,0,23:
+idea_type,0,23
+ii,0,"23, 30, 32, 39, 40, 41, 90"
 sparks_b_agg,0,"24, 32"
 sparks_b_vld,0,"24, 32"
-vow,0,30:
+moment_tranbook_nets,0,"27, 31, 32"
+person_net_amount,0,"27, 31"
 DayEvent,0,31
-Event,0,31:
-default_kpi_bundle,0,31:
-gcal,0,31:
-moment_kpi001_contact_nets,0,"31, 32, 97"
-moment_kpi002_person_pledges,0,"31, 97"
-WorldName,0,32:
-today,0,32:
-Deal,0,33:
-Gift,0,33:
-Peer,0,33:
-PitchID,0,33:
-PitchUnit,0,33:
+Event,0,"31, 40"
+day_punch,0,"31, 32, 90"
+default_kpi_bundle,0,31
+gcal,0,"31, 32"
+moment_kpi001_contact_nets,0,"31, 32"
+moment_kpi002_person_pledges,0,31
+WorldName,0,"32, 33, 34, 36, 90, 96, 97"
+today,0,"32, 39, 40, 41, 54, 90"
+Deal,0,"33, 41"
+Gift,0,33
+Peer,0,33
+PitchID,0,"33, 34, 36, 90, 96, 97"
+PitchUnit,0,"33, 34"
 Promise,0,33
-PromiseUnit,0,33:
-deal,0,33:
+PromiseUnit,0,33
+deal,0,"33, 39, 40, 41"
 gift,0,"33, 39, 40"
-offer,0,33:
-peer,0,33:
-pitch,0,33:
-pitch_id,0,33:
-pitcher_name,0,33:
-pitchs,0,33:
+offer,0,"33, 39, 40, 41"
+peer,0,"33, 39, 40"
+pitch,0,"33, 34, 36, 40, 41, 90, 96"
+pitch_id,0,33
+pitcher_name,0,33
+pitchs,0,33
 promise,0,"33, 39, 40, 41"
-request,0,33:
-finance,0,34:
-financial,0,34:
+request,0,"33, 41, 98"
+vow,0,"33, 39, 40"
+finance,0,"34, 36, 40, 41, 97"
+financial,0,"34, 36, 40"
 News,0,36
 news,0,"36, 39, 40"
 American,0,"39, 40, 41"
@@ -821,7 +817,6 @@ Infinity,0,"39, 41"
 Pillar,0,"39, 41"
 Totality,0,"39, 41"
 Water,0,"39, 40, 41"
-Wheel,0,"39, 41"
 bearing,0,"39, 41"
 god,0,"39, 40, 41, 54"
 gravity,0,39
@@ -838,7 +833,8 @@ Hayek,0,"40, 41"
 Hobbit,0,40
 Kronos,0,40
 Land,0,"40, 41"
-Monopoly,0,"40, 41, 90"
+Lord,0,40
+Loyal,0,40
 Ride,0,40
 Shill,0,40
 Soil,0,40
@@ -860,7 +856,7 @@ ride,0,"40, 41"
 rival,0,40
 shill,0,40
 soil,0,40
-tower,0,"40, 41"
+tower,0,40
 trash,0,40
 trooper,0,40
 winner,0,"40, 41"
@@ -870,13 +866,16 @@ Discipline,0,41
 Fall,0,41
 Honor,0,41
 KegWheel,0,41
+Kegology,0,"41, 96, 97"
 Losing,0,41
+Monopoly,0,"41, 90"
 Pay,0,41
 Prestige,0,41
 Rise,0,41
 Shot,0,41
 Stable,0,41
 Welcome,0,41
+Wheel,0,41
 Winning,0,41
 alien,0,41
 climb,0,41
@@ -887,6 +886,7 @@ fall,0,41
 heart,0,41
 honor,0,41
 jump,0,41
+kegology,0,"41, 97"
 kneeler,0,41
 lift,0,41
 linchpin,0,41
@@ -899,7 +899,7 @@ soldier,0,41
 stable,0,41
 valor,0,41
 wheel,0,"41, 98"
-wheelers,0,"41, 98"
+wheelers,0,41
 Purpil,0,54
 Puncher,0,90
 Team,0,90

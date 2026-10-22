@@ -49,6 +49,8 @@ def get_keyword_definition_questionunits() -> dict[str, QuestionUnit]:
             valid_chs = parse_valid_ch_str(ch_ints, kw_config.get("valid_ch"))
             init_ch = sorted(valid_chs)[0] if valid_chs else None
             questionunit.init_ch = init_ch
+            if keg_term == "ch99":
+                questionunit.init_ch = 99
         questionunit.question_tier = 0
         keg_questions[keg_term] = questionunit
     return keg_questions

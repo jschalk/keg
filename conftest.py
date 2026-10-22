@@ -43,6 +43,12 @@ def pytest_addoption(parser):
         help="Rebuild JSON files during the test run",
     )
     parser.addoption(
+        "--rebuild_keyword_src",
+        action="store_true",
+        default=False,
+        help="Rebuild keyword_src file during the test run",
+    )
+    parser.addoption(
         "--check_pip",
         action="store_true",
         default=False,
@@ -72,6 +78,12 @@ def check_pip(request):
 def rebuild_docs(request):
     """Fixture to access the flag value in tests"""
     return request.config.getoption("--rebuild_docs")
+
+
+@pytest.fixture
+def rebuild_keyword_src(request):
+    """Fixture to access the flag value in tests"""
+    return request.config.getoption("--rebuild_keyword_src")
 
 
 @pytest.fixture

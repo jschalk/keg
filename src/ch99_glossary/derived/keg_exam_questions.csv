@@ -110,11 +110,11 @@ Did you read that the keyword_definition of 'ch32' is 'Defines WorldDirs that ad
 Did you read that the keyword_definition of 'ch34' is 'Defines Finance Tools for '.
 Did you read that the keyword_definition of 'ch35' is 'Tools for Visualizing PersonUnits'.
 Did you read that the keyword_definition of 'ch36' is 'Defines News Tools'.
-Did you read that the keyword_definition of 'ch90' is 'ETL app to create day punches from excel files.'.
 Did you read that the keyword_definition of 'ch39' is 'Levinas Philosophy'.
 Did you read that the keyword_definition of 'ch40' is 'Essays pop_phil'.
 Did you read that the keyword_definition of 'ch41' is 'Essays pop_phil'.
 Did you read that the keyword_definition of 'ch54' is 'Short stories'.
+Did you read that the keyword_definition of 'ch90' is 'ETL app to create day punches from excel files.'.
 Did you read that the keyword_definition of 'ch96' is 'Exams that return KPIs of Kegology knowledge.'.
 Did you read that the keyword_definition of 'ch97' is 'Defines Tools that create documentation.'.
 Did you read that the keyword_definition of 'ch98' is 'Linter for repo.'.
@@ -175,16 +175,13 @@ Did you read that the keyword_definition of 'xio' is 'Example key with value 'Xi
 Did you read that the keyword_definition of 'yao' is 'Example key with value 'Yao' used for tests throughout codebase.'.
 Did you read that the keyword_definition of 'yield' is 'Used so often in Python that it cannot be a kegology keyword.'.
 Did you read that the keyword_definition of 'zia' is 'Example key with value 'Zia' used for tests throughout codebase.'.
-"Did you read that the keyword_definition of 'Kegology' is 'The Philosophy of Kings, Eyes, and God.'."
-Did you read that the keyword_definition of 'Keyword' is 'Reserved word that is supposed to have one meaning.'.
 Did you read that the keyword_definition of 'filename' is 'Should always include extension ala filebasename + '.' + extension'.
 Did you read that the keyword_definition of 'glossary' is 'Definition needed.'.
-"Did you read that the keyword_definition of 'kegology' is 'The Philosophy of Kings, Eyes, and God.'."
 Did you read that the keyword_definition of 'keyword' is 'Reserved word that is supposed to have one meaning.'.
-"Did you read that the keyword_definition of 'semantic_type' is 'A datatype that is fundamentally int, str, or float'."
-"Did you read that the keyword_definition of 'shop' is 'The factory method in programming is very important. However because I want 'fact' only to refer to the Keg concept I don't use the word 'factory', instead I use 'shop'.'."
 "Did you read that the keyword_definition of 'src' is 'Abbrevation for the word 'source', used in different ways. All chapters are in directory named 'src'.'."
+Did you read that the keyword_definition of 'Keyword' is 'Reserved word that is supposed to have one meaning.'.
 Did you read that the keyword_definition of 'question_tier' is 'Every Keyword has an question_tier. The highter the question_tier the more relatively important the keyword.'.
+"Did you read that the keyword_definition of 'semantic_type' is 'A datatype that is fundamentally int, str, or float'."
 Did you read that the keyword_definition of 'sort_ordinal' is 'Int that represents where the keyword is indexed in the general sorting order.'.
 "Did you read that the keyword_definition of 'valid_ch' is 'Describes which chapters a keyword is allowed to be in. Format is '0:' for all chapters, '5:' for all chapters after ch06, '3,7' for only 3 and 7. Empty string for not allowed in any chapter.'."
 Did you read that the keyword_definition of 'GrainNum' is 'float first used in ch02. GrainNum represents the smallest fraction allowed'.
@@ -199,8 +196,6 @@ Did you read that the keyword_definition of 'FundNum' is 'float first used in ch
 "Did you read that the keyword_definition of 'GroupMark' is 'str first used in ch03. GroupMark(s) exist in TitleTerms to indicate its a group, no GroupMark indicates it is a ContactName.'."
 Did you read that the keyword_definition of 'GroupTitle' is 'str first used in ch03. If contains SepartorTerms(s) it represents a group otherwise its a ContactName.'.
 Did you read that the keyword_definition of 'HealerName' is 'str first used in ch03. A NameTerm used to identify a Problem's Healer'.
-Did you read that the keyword_definition of 'Lord' is 'Definition needed.'.
-Did you read that the keyword_definition of 'Loyal' is 'Definition needed.'.
 Did you read that the keyword_definition of 'NameTerm' is 'str first used in ch03. All Name string classes should inherit from this class'.
 Did you read that the keyword_definition of 'RespectGrain' is 'float first used in ch03. Smallest Unit of score (RespectNum) ala 'the slightest bit of respect!''.
 Did you read that the keyword_definition of 'RespectNum' is 'float first used in ch03. RespectNum inherits from float class'.
@@ -225,41 +220,40 @@ Did you read that the keyword_definition of 'TitleTerm' is 'str first used in ch
 "Did you read that the keyword_definition of 'group_debt_mass' is ', Member seed.'."
 "Did you read that the keyword_definition of 'group_title' is ', Member seed.'."
 "Did you read that the keyword_definition of 'groupmark' is ', Contact thinkout, Member thinkout data.'."
-Did you read that the keyword_definition of 'groupunits' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'inallocable_contact_debt_mass' is ', Contact thinkout'."
 "Did you read that the keyword_definition of 'irrational_contact_debt_mass' is ', Contact thinkout'."
-"Did you read that the keyword_definition of 'labor_title' is ', Workforce seed.'."
-Did you read that the keyword_definition of 'labors' is 'Definition needed.'.
 Did you read that the keyword_definition of 'memberships' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'rational' is 'If a PersonUnit's agenda is deterministic (always the same after thinkout) then value is True, Person thinkout'."
 "Did you read that the keyword_definition of 'respect_grain' is ', Moment arg, Person seed.'."
-"Did you read that the keyword_definition of 'solo' is 'I can't figure out what this is for. Where in the codebase is it necessary for a LaborUnit to know if it the only LaborUnit in a WorkforceUnit, Workforce seed.'."
+"Did you read that the keyword_definition of 'shop' is 'The factory method in programming is very important. However because I want 'fact' only to refer to the Keg concept I don't use the word 'factory', instead I use 'shop'.'."
 "Did you read that the keyword_definition of 'take_force' is ', Workforce seed, Award seed'."
 Did you read that the keyword_definition of 'thinkout' is 'The process by which a PersonUnit creates all it's output metrics from file-stored data. Meant to invoke contemplation and computation. The PersonUnit contemplates what is important to them (their plans) and decides what they want to do. They compute their rules and create their agenda. If the PersonUnit plans are trusted with a currency quota they can be used as an Budget. Each Contact is assigned a FundNum. It may be negative.'.
 Did you read that the keyword_definition of 'LaborHeir' is 'Definition needed.'.
+Did you read that the keyword_definition of 'groupunits' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'labor_title' is ', Workforce seed.'."
 Did you read that the keyword_definition of 'laborheir' is 'Definition needed.'.
+Did you read that the keyword_definition of 'labors' is 'Definition needed.'.
 Did you read that the keyword_definition of 'parent_solo' is 'The parent PlanUnit's LaborUnit's solo value for that labor_title'.
 Did you read that the keyword_definition of 'person' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'person_name' is ', ceckbook arg, bud arg, Person seed, Plan seed, Reason seed, Case seed, Fact seed, Award seed, Workforce seed, Healer seed, Contact seed, Member seed.'."
 "Did you read that the keyword_definition of 'person_name_is_workforce' is ', Workforce thinkout'."
+"Did you read that the keyword_definition of 'solo' is 'I can't figure out what this is for. Where in the codebase is it necessary for a LaborUnit to know if it the only LaborUnit in a WorkforceUnit, Workforce seed.'."
 Did you read that the keyword_definition of 'workforceheir' is 'Definition needed.'.
 Did you read that the keyword_definition of 'workforceunit' is 'Definition needed.'.
-Did you read that the keyword_definition of 'FactNum' is 'float first used in ch05. A numeric value that may converted to other Semantic Types by an external process driven by context.'.
 Did you read that the keyword_definition of 'FirstLabel' is 'str first used in ch05. The first LabelTerm in a RopeTerm. FirstLabel cannot contain knot. Not called RootLabel to avoid confission.'.
 Did you read that the keyword_definition of 'KnotTerm' is 'str first used in ch05. A string to used as a delimiter in RopeTerms.'.
 Did you read that the keyword_definition of 'LabelTerm' is 'str first used in ch05. A string representation of a tree node. Nodes cannot contain RopeTerm knot'.
-Did you read that the keyword_definition of 'ManaGrain' is 'float first used in ch05. Smallest Unit of Mana.'.
-Did you read that the keyword_definition of 'ReasonNum' is 'float first used in ch05. A numeric value that may converted to other Semantic Types by an external process driven by context.'.
 Did you read that the keyword_definition of 'RopeTerm' is 'str first used in ch05. A string representation of a tree path. LabelTerms are seperated by knots.'.
-Did you read that the keyword_definition of 'fact' is 'Facts are very important concept in Kegology. I tried never to use these 4 letters anywhere that didn't refer exactly to that concept.'.
 "Did you read that the keyword_definition of 'knot' is ', Moment arg, Person seed, Plan seed, Reason seed, Case seed, Fact seed, Award seed, Workforce seed, Healer seed'."
-"Did you read that the keyword_definition of 'mana_grain' is ', Moment arg, used with Budget Cells, Person seed.'."
 Did you read that the keyword_definition of 'meaning' is 'A term specifically used to describe how defining Ropes creates meaning. Ropes with the same start and end points can have different meaning based on the Labels in between. Only referenced in ch05'.
 Did you read that the keyword_definition of 'parent_rope' is 'A parent_rope of rope is created by removing the last label. For PlanUnits the parent_rope is the key for their parent PlanUnit.'.
+Did you read that the keyword_definition of 'FactNum' is 'float first used in ch06. A numeric value that may converted to other Semantic Types by an external process driven by context.'.
+Did you read that the keyword_definition of 'ReasonNum' is 'float first used in ch06. A numeric value that may converted to other Semantic Types by an external process driven by context.'.
 "Did you read that the keyword_definition of 'active_requisite' is 'Represents the expected boolean of the PlanUnit with address reason_context. If None, no check. If False expected Active bool of reason_context PlanUnit is false. If True expected contest_plan.active is True, Reason seed'."
 "Did you read that the keyword_definition of 'case_active' is ', Case thinkout'."
 "Did you read that the keyword_definition of 'case_task' is ', Case thinkout'."
 Did you read that the keyword_definition of 'cases' is 'Definition needed.'.
+Did you read that the keyword_definition of 'fact' is 'Facts are very important concept in Kegology. I tried never to use these 4 letters anywhere that didn't refer exactly to that concept.'.
 "Did you read that the keyword_definition of 'fact_context' is 'All facts have a foundational context, Fact seed.'."
 "Did you read that the keyword_definition of 'fact_lower' is ', Fact seed, Nabuable arg.'."
 "Did you read that the keyword_definition of 'fact_state' is 'A fact can have a state different from its context, a different branch of the context where all other branches are not in fact, Fact seed.'."
@@ -317,6 +311,7 @@ Did you read that the keyword_definition of 'reasonheirs' is 'Definition needed.
 "Did you read that the keyword_definition of 'stop_want' is ', Plan seed'."
 "Did you read that the keyword_definition of 'tree_level' is ', Plan thinkout'."
 "Did you read that the keyword_definition of 'tree_traverse_count' is ', Person thinkout'."
+Did you read that the keyword_definition of 'ManaGrain' is 'float first used in ch08. Smallest Unit of Mana.'.
 Did you read that the keyword_definition of 'PersonName' is 'str first used in ch08. The LabelTerm used to identify a PersonUnit. Must be a LabelTerm/NameTerm because when identifying if a PlanUnit is an active pledge the PersonName will be compared against ContactNames. If they match the pledge will be active.'.
 Did you read that the keyword_definition of 'PersonUnit' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'ancestors' is ', used with Budget Cells'."
@@ -337,6 +332,7 @@ Did you read that the keyword_definition of 'keep_rope' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'keeps_buildable' is ', Person thinkout'."
 "Did you read that the keyword_definition of 'keeps_justified' is ', Person thinkout'."
 Did you read that the keyword_definition of 'last_lesson_id' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'mana_grain' is ', Moment arg, used with Budget Cells, Person seed.'."
 "Did you read that the keyword_definition of 'mandate' is ', used with Budget Cells'."
 "Did you read that the keyword_definition of 'max_tree_traverse' is ', Person seed.'."
 Did you read that the keyword_definition of 'obj_type' is 'Used idenify an attribute's object class. Usually in config files.'.
@@ -401,7 +397,6 @@ Did you read that the keyword_definition of 'spark_face' is 'Every spark has a s
 Did you read that the keyword_definition of 'job' is 'Definition needed.'.
 Did you read that the keyword_definition of 'listener' is 'Definition needed. Only referenced in ch11.'.
 Did you read that the keyword_definition of 'speaker' is 'Definition needed. Only referenced in ch11.'.
-Did you read that the keyword_definition of 'Epoch' is 'Definition needed.'.
 Did you read that the keyword_definition of 'SparkInt' is 'int first used in ch12. Each Spark is a int that describes the order of data ingestion'.
 Did you read that the keyword_definition of 'TimeNum' is 'int first used in ch12. An Integar that can represent a instant on the TimeNumLine'.
 "Did you read that the keyword_definition of 'amount' is ', ceckbook arg'."
@@ -411,7 +406,6 @@ Did you read that the keyword_definition of 'boss' is 'definition needed'.
 "Did you read that the keyword_definition of 'bud_person_name' is ', used with Budget Cells'."
 "Did you read that the keyword_definition of 'bud_time' is 'When a budget adds to the supply, bud arg, Nabuable arg'."
 "Did you read that the keyword_definition of 'celldepth' is ', used with Budget Cells, bud arg'."
-Did you read that the keyword_definition of 'epoch' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'found_facts' is ', used with Budget Cells'."
 Did you read that the keyword_definition of 'magnitude' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'offi_time' is ', offi_time arg, Nabuable arg'."
@@ -456,6 +450,7 @@ Did you read that the keyword_definition of 'Baileyday' is 'Second Day of 5 day 
 Did you read that the keyword_definition of 'Chiday' is 'Third Day of 5 day week of 'Five' Epoch'.
 Did you read that the keyword_definition of 'Danceday' is 'Fourth Day of 5 day week of 'Five' Epoch'.
 Did you read that the keyword_definition of 'Eastday' is 'Fifth Day of 5 day week of 'Five' Epoch'.
+Did you read that the keyword_definition of 'Epoch' is 'Definition needed.'.
 Did you read that the keyword_definition of 'EpochLabel' is 'str first used in ch14. EpochLabel is required for every EpochUnit. It is a LabelTerm that must not contain the knot.'.
 Did you read that the keyword_definition of 'TimeShoe' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'c100' is '100 years, sub part of c400_core'."
@@ -476,6 +471,7 @@ Did you read that the keyword_definition of 'days' is 'Definition needed.'.
 Did you read that the keyword_definition of 'days_lower_day' is 'Required fields for creating Epoch every_xdays cases.'.
 Did you read that the keyword_definition of 'days_upper_day' is 'Required fields for creating Epoch every_xdays cases.'.
 Did you read that the keyword_definition of 'duration' is 'Definition needed.'.
+Did you read that the keyword_definition of 'epoch' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'epoch_label' is 'Epoch config: Name of epoch. Persons may have multiple epochs, they are differentiated by this LabelTerm, Moment arg'."
 Did you read that the keyword_definition of 'epoch_length' is 'Total number of minutes in a Epoch. Calculated by number of minutes in C400_leap times Epoch's c400_number'.
 Did you read that the keyword_definition of 'epoch_min' is 'Definition needed.'.
@@ -772,7 +768,6 @@ Did you read that the keyword_definition of 'mmtunit' is 'abbv for momentunit'.
 Did you read that the keyword_definition of 'mmtweek' is 'abbv for moment_epoch_weekday'.
 Did you read that the keyword_definition of 'moment_ote1_agg' is 'Create Database Table that holds all spark_num to bud_time pairs. Include moment_rope and person_name'.
 Did you read that the keyword_definition of 'nabtime' is 'abbv for nabu_timenum'.
-Did you read that the keyword_definition of 'person_net_amount' is 'Definition needed.'.
 Did you read that the keyword_definition of 's_agg' is '5 character abbreviation of sound_agg. stage_type_order=8 Populated by aggregated Sound Raw dimen data (elimanate duplicates). Jargon Core data is validated then used to jargon non-Jargon dimen data'.
 Did you read that the keyword_definition of 's_raw' is '5 character abbreviation of sound_raw. stage_type_order=7 The Brick Valid data is seperated by column into dimen data such as person_planunit and moment_budunit'.
 Did you read that the keyword_definition of 's_vld' is '5 character abbreviation of sound_vld. stage_type_order=9 The Translated Sound Agg data is aggregated to elimanate duplicates into Sound Valid'.
@@ -784,16 +779,16 @@ Did you read that the keyword_definition of 'trllabe' is 'abbv for jargon_label'
 Did you read that the keyword_definition of 'trlname' is 'abbv for jargon_name'.
 Did you read that the keyword_definition of 'trlrope' is 'abbv for jargon_rope'.
 Did you read that the keyword_definition of 'trltitl' is 'abbv for jargon_title'.
-Did you read that the keyword_definition of 'day_punch' is 'A report that summarizes the tasks of a person for a day.'.
 Did you read that the keyword_definition of 'fission' is 'Any complicated step changing idea_type to brick_type. Each fission_step makes a single type of change. Can be simple (set value to X) or complicated (add missing rows with relative values). Only referenced in ch23'.
 Did you read that the keyword_definition of 'idea_type' is 'Definition needed.'.
 Did you read that the keyword_definition of 'ii' is 'Idea Format Identifier. Every idea_type format starts with 'ii' and then 5 numbers. Every brick_type has a mirrored idea_type. Multiple idea_types can map to single brick_type'.
-Did you read that the keyword_definition of 'moment_tranbook_nets' is 'Definition needed.'.
 Did you read that the keyword_definition of 'sparks_b_agg' is 'Definition needed.'.
 Did you read that the keyword_definition of 'sparks_b_vld' is 'Definition needed.'.
-Did you read that the keyword_definition of 'vow' is 'ideas created for audience'.
+Did you read that the keyword_definition of 'moment_tranbook_nets' is 'Definition needed.'.
+Did you read that the keyword_definition of 'person_net_amount' is 'Definition needed.'.
 Did you read that the keyword_definition of 'DayEvent' is 'Definition needed.'.
 Did you read that the keyword_definition of 'Event' is 'Definition needed.'.
+Did you read that the keyword_definition of 'day_punch' is 'A report that summarizes the tasks of a person for a day.'.
 Did you read that the keyword_definition of 'default_kpi_bundle' is 'Definition needed.'.
 Did you read that the keyword_definition of 'gcal' is 'Definition needed.'.
 Did you read that the keyword_definition of 'moment_kpi001_contact_nets' is 'Definition needed.'.
@@ -817,6 +812,7 @@ Did you read that the keyword_definition of 'pitcher_name' is 'Ch33 Definition n
 Did you read that the keyword_definition of 'pitchs' is 'Definition needed.'.
 Did you read that the keyword_definition of 'promise' is 'Definition needed.'.
 Did you read that the keyword_definition of 'request' is 'Ch33 Definition needed.'.
+Did you read that the keyword_definition of 'vow' is 'ideas created for audience'.
 Did you read that the keyword_definition of 'finance' is 'Definition needed.'.
 Did you read that the keyword_definition of 'financial' is 'Definition needed.'.
 Did you read that the keyword_definition of 'News' is 'Definition needed.'.
@@ -827,7 +823,6 @@ Did you read that the keyword_definition of 'Infinity' is 'As described in Total
 Did you read that the keyword_definition of 'Pillar' is 'A load-bearing support for a family with prestige. Built of non-prestige families.'.
 Did you read that the keyword_definition of 'Totality' is 'As described in Totality and Infinity.'.
 Did you read that the keyword_definition of 'Water' is 'Definition needed.'.
-Did you read that the keyword_definition of 'Wheel' is 'Refers to the KegWheel concept or Randolph C. Wheeler'.
 Did you read that the keyword_definition of 'bearing' is 'Concerns load bearing of a Wheel by families under the Wheel.'.
 Did you read that the keyword_definition of 'god' is 'Definition needed.'.
 Did you read that the keyword_definition of 'gravity' is 'In Wheel Theory gravity is the natural process of returning FamilyUnits to the Land. Levinas used the term.'.
@@ -844,7 +839,8 @@ Did you read that the keyword_definition of 'welcome' is 'For a FamilyUnit outsi
 Did you read that the keyword_definition of 'Hobbit' is 'Part of Kazani theory 'The Hobbit Theory of Man' that our grandparents accepted evil within us. Not so now.'.
 Did you read that the keyword_definition of 'Kronos' is 'Greek God of War and Time. Known for eating his children.'.
 "Did you read that the keyword_definition of 'Land' is 'When referenced in context of KegWheel, the root source of all wheel_size (Power).'."
-"Did you read that the keyword_definition of 'Monopoly' is 'One of the most popular boardgames ever created. Published 1935, based on The PropertyOwner's Game by Lizzie Magie.'."
+Did you read that the keyword_definition of 'Lord' is 'Definition needed.'.
+Did you read that the keyword_definition of 'Loyal' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'Ride' is 'The act of recognizing authority, leadership. 'Who do I ride with?''."
 Did you read that the keyword_definition of 'Shill' is 'A Rider for a bad person.'.
 Did you read that the keyword_definition of 'Soil' is 'Definition needed.'.
@@ -876,13 +872,16 @@ Did you read that the keyword_definition of 'Climb' is 'To connote the action a 
 Did you read that the keyword_definition of 'Fall' is 'When a FamilyUnit loses all Prestige and exits power.'.
 Did you read that the keyword_definition of 'Honor' is 'Definition Needed.'.
 Did you read that the keyword_definition of 'KegWheel' is 'Theory of Political Power learned from Kamil Kazani. The political world changing is represented as a wheel where some people are going up in Prestige and some are going down. The ones going down are incentized to cause chaos to try to get back up.'.
+"Did you read that the keyword_definition of 'Kegology' is 'The Philosophy of Kings, Eyes, and God.'."
 Did you read that the keyword_definition of 'Losing' is 'The act of a FamilyUnit getting less Prestige.'.
+"Did you read that the keyword_definition of 'Monopoly' is 'One of the most popular boardgames ever created. Published 1935, based on The PropertyOwner's Game by Lizzie Magie.'."
 Did you read that the keyword_definition of 'Pay' is 'If you want something you have to pay for it.'.
 Did you read that the keyword_definition of 'Prestige' is 'Within KegWheel Theory Prestige is the measure of the zero-sum game of power. Any Prestige gained is by definition someone else's lost. Within a MomentUnit.'.
 Did you read that the keyword_definition of 'Rise' is 'Defined by Busta Rhymes in 'My Shot''.
 Did you read that the keyword_definition of 'Shot' is 'I'm not throwing away my shot.'.
 Did you read that the keyword_definition of 'Stable' is 'FamilyUnit with prestige and not winning or losing.'.
 Did you read that the keyword_definition of 'Welcome' is 'For a FamilyUnit outside a wheel to get into the Wheel it must be invited.'.
+Did you read that the keyword_definition of 'Wheel' is 'Refers to the KegWheel concept or Randolph C. Wheeler'.
 Did you read that the keyword_definition of 'Winning' is 'The act of a FamilyUnit getting more Prestige.'.
 Did you read that the keyword_definition of 'alien' is 'A bordering Wheel.'.
 Did you read that the keyword_definition of 'climb' is 'To connote the action a FamilyUnit takes to gain Prestige.'.
@@ -893,6 +892,7 @@ Did you read that the keyword_definition of 'fall' is 'When a FamilyUnit loses a
 Did you read that the keyword_definition of 'heart' is 'Definition needed.'.
 Did you read that the keyword_definition of 'honor' is 'Definition Needed.'.
 Did you read that the keyword_definition of 'jump' is 'To use keg requires a human to jump and try. Not easy.'.
+"Did you read that the keyword_definition of 'kegology' is 'The Philosophy of Kings, Eyes, and God.'."
 Did you read that the keyword_definition of 'kneeler' is 'A FamilyUnit that sets all it's BossMass to one different FamilyUnit.'.
 Did you read that the keyword_definition of 'lift' is 'The act of a FamilyUnit lifting another FamilyUnit above them. Ala 'I believe you'll go far!''.
 Did you read that the keyword_definition of 'linchpin' is 'A required part of a pillar. If a linchpin stops supporting the pillar it is destoryed.'.
