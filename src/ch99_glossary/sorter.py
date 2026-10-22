@@ -19,6 +19,8 @@ def get_keg_elements_sort_order() -> list[str]:
         "spark_face",
         "spark_face_otx",
         "spark_face_inx",
+        'flare_num',
+        'flare_audie',
         'flare_audie_aux',
         'flare_audie_iux',
         "moment_rope",

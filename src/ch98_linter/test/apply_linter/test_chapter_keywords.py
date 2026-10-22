@@ -165,6 +165,7 @@ def is_py_file_allowed_any_imports(file_path: str) -> bool:
     return any(file in file_path for file in files_with_all_imports_allowed)
 
 
+# TODO create special test where when specific argument is passed with pytest the keywords_src_config file is updated
 def test_Chapters_KeywordsAppearWhereTheyShould():
     """Test that checks no str function is created before it is needed or after the term is used."""
 

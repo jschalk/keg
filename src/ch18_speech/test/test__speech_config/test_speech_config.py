@@ -45,7 +45,8 @@ def test_get_speech_config_dict_ReturnsObj():
         assert kw.iux in speech_description
 
         speech_iux = expected_speech_key.replace("speech_", "iux_")
-        assert {speech_iux} == set(speech_dict.get(kw.jkeys).keys())
+        expected_jkeys_keys = set(speech_dict.get(kw.jkeys).keys())
+        assert {kw.flare_audie, kw.flare_num, speech_iux} == expected_jkeys_keys
         speech_aux = expected_speech_key.replace("speech_", "aux_")
         expected_jvalues_keys = {kw.aux_knot, kw.iux_knot, speech_aux}
         print(f"{expected_jvalues_keys=}")
@@ -91,4 +92,4 @@ def test_get_speech_args_dimen_mapping_ReturnsObj():
     assert x_speech_args_dimen_mapping.get(kw.aux_knot)
     aux_knot_dimens = x_speech_args_dimen_mapping.get(kw.aux_knot)
     assert len(aux_knot_dimens) == 4
-    assert len(x_speech_args_dimen_mapping) == 10
+    assert len(x_speech_args_dimen_mapping) == 12

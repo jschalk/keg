@@ -16,6 +16,10 @@ def get_speech_config_dict() -> dict:
     return open_json(speech_config_path())
 
 
+def get_speech_dimens() -> set[str]:
+    return set(get_speech_config_dict().keys())
+
+
 def get_speech_column_ref() -> dict[str, set[str]]:
     """for each speech_config dimen contains the associated columns"""
     return {
@@ -24,24 +28,32 @@ def get_speech_column_ref() -> dict[str, set[str]]:
             "aux_title",
             "iux_knot",
             "aux_knot",
+            "flare_audie",
+            "flare_num",
         },
         "speech_name": {
             "iux_name",
             "aux_name",
             "iux_knot",
             "aux_knot",
+            "flare_audie",
+            "flare_num",
         },
         "speech_label": {
             "iux_label",
             "aux_label",
             "iux_knot",
             "aux_knot",
+            "flare_audie",
+            "flare_num",
         },
         "speech_rope": {
             "iux_rope",
             "aux_rope",
             "iux_knot",
             "aux_knot",
+            "flare_audie",
+            "flare_num",
         },
     }
 
@@ -140,12 +152,12 @@ def get_speechable_args() -> set:
 
 
 def set_speechable_iux_aux_args(args: set) -> set:
-    """Receives set of args, returns a set with all "Jargonable" args replaced with "_otx" and "_inx" """
-    all_jargonable = get_speechable_args()
-    all_jargonable.update(get_all_person_dimen_delete_keys())
+    """Receives set of args, returns a set with all "Speechable" args replaced with "_otx" and "_inx" """
+    all_speechable = get_speechable_args()
+    all_speechable.update(get_all_person_dimen_delete_keys())
     transformed_args = set()
     for arg in args:
-        if arg in all_jargonable:
+        if arg in all_speechable:
             transformed_args.add(f"{arg}_iux")
             transformed_args.add(f"{arg}_aux")
         else:

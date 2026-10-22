@@ -584,6 +584,7 @@ Did you read that the keyword_definition of 'iux_title' is 'Speech module. Defin
 "Did you read that the keyword_definition of 'nameyap' is 'Speech module, definition needed'."
 "Did you read that the keyword_definition of 'ropeyap' is 'Speech module, definition needed'."
 Did you read that the keyword_definition of 'speech' is 'Definition needed.'.
+Did you read that the keyword_definition of 'speech_core' is 'Definition needed.'.
 Did you read that the keyword_definition of 'speech_label' is 'Speech module. Definition needed.'.
 Did you read that the keyword_definition of 'speech_name' is 'Speech module. Definition needed.'.
 Did you read that the keyword_definition of 'speech_rope' is 'Speech module. Definition needed.'.
@@ -669,7 +670,7 @@ Did you read that the keyword_definition of 'hour_label_inx' is 'The 'hour_label
 Did you read that the keyword_definition of 'hour_label_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'hour_label_otx' is 'The 'hour_label' value after Jargon.'.
 "Did you read that the keyword_definition of 'insert_multiple' is 'Associated dimens: moment_budunit, moment_ceckbook, moment_timeoffi'."
-"Did you read that the keyword_definition of 'insert_one_time' is 'Associated dimens: jargon_label, jargon_name, jargon_rope, jargon_title, moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, momentunit, nabu_timenum'."
+"Did you read that the keyword_definition of 'insert_one_time' is 'Associated dimens: jargon_label, jargon_name, jargon_rope, jargon_title, moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, momentunit, nabu_timenum, speech_label, speech_name, speech_rope, speech_title' in 'Associated dimens: jargon_label, jargon_name, jargon_rope, jargon_title, moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, momentunit, nabu_timenum'."
 Did you read that the keyword_definition of 'insert_update' is 'Definition needed.'.
 Did you read that the keyword_definition of 'jargon_spark_num' is 'Definition needed.'.
 Did you read that the keyword_definition of 'labor_title_ERASE_aux' is 'Definition needed.'.

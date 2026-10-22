@@ -566,7 +566,7 @@ aux_rope,0,"18, 20"
 aux_title,0,"18, 20"
 flare,0,"18, 20"
 flare_audie,0,"18, 20"
-flare_num,0,18
+flare_num,0,"18, 20"
 iux,0,"18, 20, 98"
 iux2aux,0,"18, 20, 98"
 iux_knot,0,"18, 20, 98"
@@ -577,11 +577,12 @@ iux_title,0,"18, 20"
 labelyap,0,18
 nameyap,0,18
 ropeyap,0,18
-speech,0,"18, 20, 97"
-speech_label,0,18
-speech_name,0,18
-speech_rope,0,18
-speech_title,0,18
+speech,0,"18, 20, 22, 97"
+speech_core,0,"18, 20, 22"
+speech_label,0,"18, 20"
+speech_name,0,"18, 20"
+speech_rope,0,"18, 20"
+speech_title,0,"18, 20"
 titleyap,0,18
 yap,0,18
 duck,0,19
