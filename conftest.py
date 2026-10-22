@@ -1,6 +1,6 @@
 import pytest
 from platform import system
-from pytest import mark as pytest_mark
+from pytest import mark as pytest_mark, Parser, Config, Item
 from sqlite3 import Cursor, connect as sqlite3_connect
 from typing import Any, Generator
 from uuid import uuid4
@@ -14,14 +14,22 @@ def pytest_configure(config):
     _config = config
 
 
-def pytest_collection_modifyitems(items):
+def pytest_collection_modifyitems(config: Config, items: set[Item]):
     skip_linux = pytest_mark.skip(reason="conflict in file path str")
     for item in items:
         if "skip_on_linux" in item.keywords and system() == "Linux":
             item.add_marker(skip_linux)
+    if config.getoption("--build_tests"):
+        return
+
+    skip_build_tests = pytest.mark.skip(reason="Requires --build_tests")
+
+    for item in items:
+        if "build_tests" in item.keywords:
+            item.add_marker(skip_build_tests)
 
 
-def pytest_addoption(parser):
+def pytest_addoption(parser: Parser):
     parser.addoption("--graphics_bool", action="store", default=False)
     parser.addoption("--run_big_tests", action="store", default=False)
     parser.addoption(
@@ -53,6 +61,12 @@ def pytest_addoption(parser):
         action="store_true",
         default=False,
         help="Run tests that download packages from pip",
+    )
+    parser.addoption(
+        "--build_tests",
+        action="store_true",
+        default=False,
+        help="Run wheel build tests",
     )
 
 
