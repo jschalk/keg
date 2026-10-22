@@ -306,6 +306,12 @@ def test_Chapters_KeywordsAppearWhereTheyShould():
     assert len(expected_ch_config) == len(keywords_dict)
     assert len(expected_ch_config) > 860
     assertion_failure_str = "keyword_src.json has conflicts with generated keyword_src dict. To make file generated version rerun tests with 'rebuild_keyword_src'."
+    for keyword, kw_dict in keywords_dict.items():
+        curr_kw_valid_ch = kw_dict.get(kw.valid_ch)
+        expected_kw_valid_ch = expected_ch_config.get(keyword).get(kw.valid_ch)
+        if curr_kw_valid_ch != expected_kw_valid_ch:
+            print(f"{keyword:21}{curr_kw_valid_ch}")
+            print(f"calculated expected: {expected_kw_valid_ch}")
     assert keywords_dict == expected_ch_config, assertion_failure_str
 
 

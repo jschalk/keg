@@ -1,14 +1,14 @@
 # People cannot lie
 
-**Date:** 2026-10-13<br>
+**Date:** 2026-10-22<br>
 **Author:** Emmanuel Schalk<br>
 **Description:** Kazani wrote 'People cannot lie'. Was he lying? No, so what's the implication for political advancement?<br>
-**Note:** Article is incomplete: #TODO: Complete article<br>
+**Note:** Article probably is incomplete<br>
 
 
 *Who succeeds when lying is advantageous?*
 
----
+***
 
 Kamil Kazani wrote the article [People cannot lie](../ch40_pop_phil/kazani_people_cannot_lie.md) where he described a theory of lying where he claimed most people are incapable of lying about things they are truly attached to. 
 
@@ -25,3 +25,13 @@ Well it explains why certain people succeed in politics.
 If it is impossible to lie about things a person is attached to and politics rewards a person who lies about things, then politics will reward people who do is not attached to many things. For example if they are only interested in being relevant. Or if they are only interested in doing what the boss wants. 
 
 Kazani's "People cannot lie" explains why those in power seem to be lying liars yet they still are still successful. They are not lying liars about core things, there are just very few core things. 
+
+***
+
+Here's some speculation: People are not lying about core things. How do they decide what the core things are? Really hard to say. Generally though people believe that they more money they have the better those core things are served. 
+
+*I know what's important and more money makes those things better*
+
+If someone believes that, then they will consider getting money to be at the service of their core beliefs. Functionally getting money would be a core belief. 
+
+Money. It makes the world go round? 
