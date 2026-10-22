@@ -147,13 +147,3 @@ def test_get_count_keg_terms_by_chapters_CountsTerms_Scenario0_SrcDir():
         print(
             f"{x_keg_term:<20} {str(sorted(set(actual_ch_use.keys()))):<40} {allowed_ch_use[:20]=}"
         )
-
-    # src_keywords_src_path = create_src_keywords_src_path(kw.src)
-    # save_json(src_keywords_src_path, None, keywords_src_config)
-    # assert 1 == 2
-    # TODO keyword valid ch setting
-    # ### consider following ###
-    # finding all terms used twice and change keyword src.
-    # replacing all range with individual listed
-    # removing 'Only referenced in ch if not single entry
-    # creating pytest tripper that saves changes when activated, otherwise allows failed tests

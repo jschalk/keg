@@ -76,15 +76,15 @@ FORBIDDEN_MARKERS = {
 }
 
 
-# # TODO activate this test
-# def test_images_HaveNoMetadata_AllImagesInSrc():
-#     # GIVEN
-#     src_dir = Path(__file__).resolve().parents[3]
-#     # WHEN
-#     failures = get_all_images_with_metadata(src_dir)
-#     # THEN
-#     assertion_failure_str = "Images containing metadata were found:\n"
-#     assert not failures, assertion_failure_str + "\n".join(failures)
+def test_images_HaveNoMetadata_AllImagesInSrc():
+    # GIVEN
+    src_dir = Path(__file__).resolve().parents[3]
+    # WHEN
+    failures = get_all_images_with_metadata(src_dir)
+    # THEN
+    # I don't know know how effective this is.
+    assertion_failure_str = "Images containing metadata were found:\n"
+    assert not failures, assertion_failure_str + "\n".join(failures)
 
 
 def get_markdown_footnote_failures(src_dir: Path) -> list[str]:

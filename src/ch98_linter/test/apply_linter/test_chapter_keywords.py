@@ -271,7 +271,6 @@ def test_Chapters_KeywordsAppearWhereTheyShould():
         not_allowed_keywords = sorted(not_allowed_keywords.difference(excluded_strs))
         # print(f"{chapter_prefix} {len(not_allowed_keywords)=}")
 
-        # TODO confirm add .md and .txt and .json files to chapter files
         chapter_files = sorted(get_keyword_scope_files(chapter_dir))
         chapter_files.extend(list(get_json_files(chapter_dir)))
         chapter_files = sorted(chapter_files)
