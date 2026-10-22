@@ -13,7 +13,9 @@ Renoir (the painter) hated when teachers hit people on fingers with sticks. Not 
 
 Hilariously for me Renoir had no problem with hitting students with sticks, just not on the fingertips, they are too precious. 
 
-But even worse then hitting the fingertips was a teacher correcting the student with a logical argument. He considered it an act of unacceptable violence to be the authority and claim absolute knowledge. In the book he calls it *TODO: add quote*
+But even worse then hitting the fingertips was a teacher correcting the student with a logical argument. He considered it an act of unacceptable violence to be the authority and claim absolute knowledge. In the book he calls it *surrender on the part of the child*
+
+> Noth that he was against corporal punishment, for he considered it was less painful and less degrading than being reasoned with. The teacher who succeeds in convincing a pupil that it is wrong not to study his lessons has a false conception of democracy, for he backs up his arguments with the authority given him by his official position; his victory can only mean a surrender on the part of the child. (p42)
 
 This is super entertaining. I don't know if it's right but it's pretty awesome. Let's first look at some acceptable examples of what that means. Then so harder cases:
 
@@ -29,7 +31,9 @@ One little part of this book brings out so much
 
 ## Tubes
 
-Renoir (the father) declares that tubes are the reason Paris lost so much of it's personality. *TODO: add quote from book*
+Renoir (the father) declares that tubes are the reason Paris lost so much of it's personality.
+
+> ...he insisted that the bewildering increase in the speed of progress during our lifetime had begun with the invention of the tube. Water, gas, all sorts of liquids were now brought to us by means of pipes...Piping has brought us the locomotive and the bathroom. (p21)
 
 So before the tubes brought everything to the properties really nice places in Paris were nice because they were so limited. There were only 5 wells in Montmarte so only 5 wells of people could live there. But now everyone gets a large apartment, a house with a toliet and no effort required to get rid of poop. 
 

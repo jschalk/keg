@@ -225,9 +225,8 @@ def test_SpecialBuild_get_keywords_src_config(rebuild_keyword_src):
         return
     old_keywords_dict = get_keywords_src_config()
     expected_ch_config = get_expected_ch_config()
-    for keyword_str, keyword_chs in expected_ch_config.items():
-        if keyword_str.startswith("hon"):
-            print(f"{keyword_str}: '{keyword_chs}'")
+    # for keyword_str, keyword_chs in expected_ch_config.items():
+    #     print(f"{keyword_str}: '{keyword_chs}'")
     src_keywords_src_path = create_src_keywords_src_path("src")
     prev_and_curr_keyword_file_are_same = old_keywords_dict == expected_ch_config
     print(f"{prev_and_curr_keyword_file_are_same=}")

@@ -265,12 +265,11 @@ def speechunit_shop(
     )
 
 
-# TODO figure out why the pop functions are not required to pass tests
 def _get_rid_of_speech_core_keys(yap_dict: dict) -> dict:
-    # yap_dict.pop("flare_num")
-    # yap_dict.pop("flare_audie")
-    # yap_dict.pop("iux_knot")
-    # yap_dict.pop("aux_knot")
+    yap_dict.pop("flare_num")
+    yap_dict.pop("flare_audie")
+    yap_dict.pop("iux_knot")
+    yap_dict.pop("aux_knot")
     return yap_dict
 
 
@@ -346,7 +345,7 @@ class SpeechCoreAttrConflictError(Exception):
     pass
 
 
-# TODO find out why no tests trip without "Core attrs in conflict"
+# find out why no tests trip without "Core attrs in conflict"
 def inherit_speechunit(older: SpeechUnit, newer: SpeechUnit) -> SpeechUnit:
     # if (
     #     older.flare_audie != newer.flare_audie

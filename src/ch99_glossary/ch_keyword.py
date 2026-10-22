@@ -4220,7 +4220,6 @@ class Ch33Keywords(str, Enum):
     max_tree_traverse = "max_tree_traverse"
     moment = "moment"
     moment_mstr_dir = "moment_mstr_dir"
-    momentunit = "momentunit"
     monthday_index = "monthday_index"
     morph = "morph"
     numor = "numor"
