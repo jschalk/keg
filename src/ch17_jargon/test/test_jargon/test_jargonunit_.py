@@ -106,7 +106,7 @@ def test_get_jargon_args_obj_types_ReturnsObj():
     }
     assert atom_args.union(moment_args) != jargon_args
     assert atom_args.union(moment_args).union({kw.spark_face}) == jargon_args
-    assert check_obj_types_are_correct()
+    assert check_obj_types_are_correct(jargon_args_obj_types)
     # assert jargon_args_obj_types.keys() == get_atom_args_dimen_mapping().keys()
     # assert all_atom_args_obj_types_are_correct(x_obj_types)
 
@@ -115,8 +115,7 @@ def test_get_jargon_args_obj_types_ReturnsObj():
         assert not jargon_arg.endswith("_inx"), f"Error with '{jargon_arg}'"
 
 
-def check_obj_types_are_correct() -> bool:
-    jargon_args_obj_types = get_jargon_args_obj_types()
+def check_obj_types_are_correct(jargon_args_obj_types: dict[str, str]) -> bool:
     atom_args_obj_types = get_atom_args_obj_types()
     moment_args_obj_types = get_moment_args_obj_types()
     for jargon_arg, jargon_type in jargon_args_obj_types.items():

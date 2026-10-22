@@ -1,8 +1,8 @@
 # Farm Dream
 
-**Date:** 2026-08-27  
-**Author:** Emmanuel Schalk   
-**Source:** Dream, as best I can remember it   
+**Date:** 2026-08-27<br>
+**Author:** Emmanuel Schalk <br>
+**Source:** Dream, as best I can remember it<br>
 
 ---
 

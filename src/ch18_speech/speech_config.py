@@ -1,0 +1,232 @@
+from ch00_py.file_toolbox import create_path, open_json
+from ch00_py.dict_toolbox import get_from_nested_dict
+from ch09_person_atom.atom_config import get_all_person_dimen_delete_keys
+
+
+def get_speech_filename():
+    return "speech.json"
+
+
+def speech_config_path():
+    "Returns path: c18_speech/speech_config.json"
+    return create_path("src", "ch18_speech", "speech_config.json")
+
+
+def get_speech_config_dict() -> dict:
+    return open_json(speech_config_path())
+
+
+def get_speech_dimens() -> set[str]:
+    return set(get_speech_config_dict().keys())
+
+
+def get_speech_column_ref() -> dict[str, set[str]]:
+    """for each speech_config dimen contains the associated columns"""
+    return {
+        "speech_title": {
+            "iux_title",
+            "aux_title",
+            "iux_knot",
+            "aux_knot",
+            "flare_audie",
+            "flare_num",
+        },
+        "speech_name": {
+            "iux_name",
+            "aux_name",
+            "iux_knot",
+            "aux_knot",
+            "flare_audie",
+            "flare_num",
+        },
+        "speech_label": {
+            "iux_label",
+            "aux_label",
+            "iux_knot",
+            "aux_knot",
+            "flare_audie",
+            "flare_num",
+        },
+        "speech_rope": {
+            "iux_rope",
+            "aux_rope",
+            "iux_knot",
+            "aux_knot",
+            "flare_audie",
+            "flare_num",
+        },
+    }
+
+
+def get_speech_args_obj_types() -> dict[str, str]:
+    return {
+        "active_requisite": "bool",
+        "addin": "float",
+        "amount": "float",
+        "awardee_title": "TitleTerm",
+        "begin": "float",
+        "person_name": "NameTerm",
+        "bud_time": "TimeNum",
+        "c400_number": "int",
+        "celldepth": "int",
+        "close": "float",
+        "credor_respect": "float",
+        "cumulative_day": "int",
+        "cumulative_minute": "int",
+        "debtor_respect": "float",
+        "denom": "int",
+        "epoch_label": "LabelTerm",
+        "flare_audie": "TitleTerm",
+        "fact_context": "RopeTerm",
+        "fact_state": "RopeTerm",
+        "fact_upper": "FactNum",
+        "fact_lower": "FactNum",
+        "fund_grain": "float",
+        "fund_pool": "float",
+        "give_force": "float",
+        "gogo_want": "float",
+        "group_cred_mass": "float",
+        "group_debt_mass": "float",
+        "group_title": "TitleTerm",
+        "healer_name": "NameTerm",
+        "hour_label": "LabelTerm",
+        "job_listen_rotations": "int",
+        "knot": "str",
+        "mana_grain": "float",
+        "max_tree_traverse": "int",
+        "moment_rope": "RopeTerm",
+        "month_label": "LabelTerm",
+        "monthday_index": "int",
+        "morph": "bool",
+        "numor": "int",
+        "offi_time": "TimeNum",
+        "quota": "int",
+        "labor_title": "TitleTerm",
+        "plan_rope": "RopeTerm",
+        "pledge": "bool",
+        "problem_bool": "bool",
+        "reason_context": "RopeTerm",
+        "reason_divisor": "int",
+        "reason_lower": "ReasonNum",
+        "reason_upper": "ReasonNum",
+        "reason_state": "RopeTerm",
+        "poynt": "int",
+        "respect_grain": "float",
+        "solo": "int",
+        "stop_want": "float",
+        "take_force": "float",
+        "tran_time": "TimeNum",
+        "contact_name": "NameTerm",
+        "contact_cred_mass": "float",
+        "contact_debt_mass": "float",
+        "weekday_label": "LabelTerm",
+        "weekday_order": "int",
+        "yr1_jan1_offset": "int",
+    }
+
+
+def speechable_obj_types() -> set:
+    return {"NameTerm", "TitleTerm", "LabelTerm", "RopeTerm"}
+
+
+def get_speechable_args() -> set:
+    return {
+        "awardee_title",
+        "person_name",
+        "epoch_label",
+        "flare_audie",
+        "fact_context",
+        "fact_state",
+        "group_title",
+        "healer_name",
+        "hour_label",
+        "moment_rope",
+        "month_label",
+        "labor_title",
+        "plan_rope",
+        "reason_context",
+        "reason_state",
+        "contact_name",
+        "weekday_label",
+    }
+
+
+def set_speechable_iux_aux_args(args: set) -> set:
+    """Receives set of args, returns a set with all "Speechable" args replaced with "_otx" and "_inx" """
+    all_speechable = get_speechable_args()
+    all_speechable.update(get_all_person_dimen_delete_keys())
+    transformed_args = set()
+    for arg in args:
+        if arg in all_speechable:
+            transformed_args.add(f"{arg}_iux")
+            transformed_args.add(f"{arg}_aux")
+        else:
+            transformed_args.add(arg)
+    return transformed_args
+
+
+def get_speech_nameterm_args() -> set[str]:
+    return {
+        "contact_name",
+        "healer_name",
+        "person_name",
+    }
+
+
+def get_speech_titleterm_args() -> set[str]:
+    return {
+        "awardee_title",
+        "flare_audie",
+        "group_title",
+        "labor_title",
+    }
+
+
+def get_speech_labelterm_args() -> set[str]:
+    return {
+        "hour_label",
+        "month_label",
+        "epoch_label",
+        "weekday_label",
+    }
+
+
+def get_speech_ropeterm_args() -> set[str]:
+    return {
+        "moment_rope",
+        "fact_state",
+        "fact_context",
+        "plan_rope",
+        "reason_state",
+        "reason_context",
+    }
+
+
+def get_speech_config_jkeys(x_dimen: str) -> dict:
+    jkeys_key_list = [x_dimen, "jkeys"]
+    return get_from_nested_dict(get_speech_config_dict(), jkeys_key_list)
+
+
+def get_speech_config_jvalues(x_dimen: str) -> dict:
+    jvalues_key_list = [x_dimen, "jvalues"]
+    return get_from_nested_dict(get_speech_config_dict(), jvalues_key_list)
+
+
+def get_speech_config_args(x_dimen: str) -> dict[str, dict]:
+    args_dict = get_speech_config_jkeys(x_dimen)
+    args_dict.update(get_speech_config_jvalues(x_dimen))
+    return args_dict
+
+
+def get_speech_args_dimen_mapping() -> dict[str, str]:
+    x_dict = {}
+    for speech_dimen in get_speech_config_dict().keys():
+        args_set = set(get_speech_config_args(speech_dimen))
+        for x_arg in args_set:
+            if x_dict.get(x_arg) is None:
+                x_dict[x_arg] = {speech_dimen}
+            else:
+                x_dimen_set = x_dict.get(x_arg)
+                x_dimen_set.add(speech_dimen)
+                x_dict[x_arg] = x_dimen_set
+    return x_dict

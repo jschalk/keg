@@ -1,7 +1,7 @@
 # Rosa's Cantina
 
-**Date:** 2026-07-05  
-**Author:** Emmanuel Schalk
+**Date:** 2026-07-05<br>
+**Author:** Emmanuel Schalk<br>
 
 > I will be bad a writing and I'll get better
 
@@ -24,7 +24,7 @@ In one slide he showed a scan of old wrinkled graph paper with the crazy data th
 
 *We love each other so much. Can you learn my parents' language so that you can join the family more fully.* 
 
-***No.** I have things to do.*
+***No.** I have things to do.*<br>
 
 Pretty funny. And he was right. 
 

@@ -1,7 +1,7 @@
 # Monopoly Standard Rules
 
-**Date:** 2026-06-21  
-**Author:** chatgpt.com
+**Date:** 2026-06-21<br>
+**Author:** chatgpt.com<br>
 
 This document contains the standard rules for Monopoly as traditionally published.
 

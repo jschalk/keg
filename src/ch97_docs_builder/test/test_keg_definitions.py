@@ -55,6 +55,8 @@ from ch97_docs_builder._ref.ch97_semantic_types import (
     BossMass,
     TrustMass,
     WorldName,
+    FlareInt,
+    AudieTitle,
 )
 from ch97_docs_builder.glossary_definition import (
     get_chxx_prefix_path_dict,
@@ -346,12 +348,14 @@ def test_get_keywords_definitions_ReturnsObj_CheckJargon_dimen():
 
 def get_all_semantic_types_with_doc_strs() -> dict[str, str]:
     x_dict = {
+        AudieTitle.__name__: inspect_getdoc(AudieTitle("")),
         BreakTerm.__name__: inspect_getdoc(BreakTerm("")),
         CRUD_command.__name__: inspect_getdoc(CRUD_command("")),
         EpochLabel.__name__: inspect_getdoc(EpochLabel("")),
         FaceName.__name__: inspect_getdoc(FaceName("")),
         FactNum.__name__: inspect_getdoc(FactNum(0)),
         FirstLabel.__name__: inspect_getdoc(FirstLabel("")),
+        FlareInt.__name__: inspect_getdoc(FlareInt(0)),
         FundGrain.__name__: inspect_getdoc(FundGrain(0)),
         FundNum.__name__: inspect_getdoc(FundNum(0)),
         GrainNum.__name__: inspect_getdoc(GrainNum(0)),

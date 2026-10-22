@@ -15,6 +15,7 @@ Did you read that the keyword_definition of 'Drift' is 'To move from one Moment 
 "Did you read that the keyword_definition of 'Duck' is 'Definition needed. Maybe someone who can dive, swim, walk, knee, and fly. All the things.'."
 Did you read that the keyword_definition of 'Fealty' is 'Definition needed.'.
 Did you read that the keyword_definition of 'Gravity' is 'In Wheel Theory gravity is the natural process of returning FamilyUnits to the Land. Levinas used the term.'.
+Did you read that the keyword_definition of 'Herd' is 'Definition needed.'.
 Did you read that the keyword_definition of 'Hive' is 'A community of FamilyUnits unified by a purpose'.
 Did you read that the keyword_definition of 'Hose' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'Impression' is 'The motivation of any decisions. Example 'Governed by the impressions of French and English revolutions, they expected to be overthrown by a military putsch.' Can be synchronic or diachronic.'."
@@ -40,6 +41,7 @@ Did you read that the keyword_definition of 'Soldier' is 'As defined by Busta Rh
 Did you read that the keyword_definition of 'Stilt' is 'A ladder load-bearing support of a Wheel.'.
 Did you read that the keyword_definition of 'Target' is 'A FamilyUnit with prestige.'.
 Did you read that the keyword_definition of 'Tower' is 'Definition needed.'.
+Did you read that the keyword_definition of 'Trash' is 'Bad or useless or not worthy of consideration.'.
 Did you read that the keyword_definition of 'Trek' is 'To juggle from one Palm to a new Palm.'.
 Did you read that the keyword_definition of 'Trooper' is 'A professional member of the armed services of a Nation-State.'.
 "Did you read that the keyword_definition of 'Tsar' is 'I don't like this word, just use the word 'King'.'."
@@ -55,6 +57,7 @@ Did you read that the keyword_definition of 'dive' is 'To go from living on land
 Did you read that the keyword_definition of 'drift' is 'To move from one Moment to another Moment. Giving all concentration to the new moment.'.
 "Did you read that the keyword_definition of 'factory' is 'Not used in codebase. The factory method in programming is very important. However because I want 'fact' only to refer to the Keg concept I don't use the word 'factory', instead I use 'shop'.'."
 Did you read that the keyword_definition of 'fealty' is 'Definition needed.'.
+Did you read that the keyword_definition of 'herd' is 'Definition needed.'.
 Did you read that the keyword_definition of 'juggle' is 'To change moments from one Palm to another.'.
 Did you read that the keyword_definition of 'juggling' is 'To change moments from one Palm to another.'.
 "Did you read that the keyword_definition of 'keg_wheel' is 'A instance of KegWheel, within a single MomentUnit. Not used in codebase.'."
@@ -91,7 +94,7 @@ Did you read that the keyword_definition of 'ch14' is 'Defines how time is handl
 "Did you read that the keyword_definition of 'ch15' is 'Defines MomentUnits: common time tech, ledger, ContactNames, history of PersonUnits.'."
 Did you read that the keyword_definition of 'ch16' is 'Defines NabuUnit tools that interpret numeric values into inside accounting.'.
 Did you read that the keyword_definition of 'ch17' is 'Defines JargonUnit tools that jargon MomentUnits into inside language.'.
-Did you read that the keyword_definition of 'ch18' is 'Defines LingoUnit tools that jargon MomentUnits into audience language.'.
+Did you read that the keyword_definition of 'ch18' is 'Defines SpeechUnit tools that jargon MomentUnits into audience language.'.
 Did you read that the keyword_definition of 'ch19' is 'Creates helper tools for database admin.'.
 Did you read that the keyword_definition of 'ch20' is 'Defines how to build Bricks using Bricks. Moments and Persons are built by Bricks.'.
 Did you read that the keyword_definition of 'ch22' is 'Defines the tools that use Bricks to build MomentUnits.'.
@@ -554,33 +557,53 @@ Did you read that the keyword_definition of 'namemap' is 'Definition needed.'.
 Did you read that the keyword_definition of 'ropemap' is 'Definition needed.'.
 Did you read that the keyword_definition of 'titlemap' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'unknown_str' is ', JARGON_LABEL arg, JARGON_NAME arg, JARGON_ROPE arg, JARGON_TITLE arg'."
-Did you read that the keyword_definition of 'Lingo' is 'Definition needed.'.
-"Did you read that the keyword_definition of 'aux' is 'In Lingo context: iux is the internal concept, aux is the audience's concept'."
-Did you read that the keyword_definition of 'aux_knot' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'aux_label' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'aux_name' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'aux_rope' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'aux_title' is 'Lingo module. Definition needed.'.
-"Did you read that the keyword_definition of 'iux' is 'In Lingo context: iux is the internal concept, aux is the audience's concept'."
-Did you read that the keyword_definition of 'iux_knot' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'iux_label' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'iux_name' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'iux_rope' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'iux_title' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'lingo' is 'Definition needed.'.
-Did you read that the keyword_definition of 'lingo_label' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'lingo_name' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'lingo_rope' is 'Lingo module. Definition needed.'.
-Did you read that the keyword_definition of 'lingo_title' is 'Lingo module. Definition needed.'.
+"Did you read that the keyword_definition of 'Audie' is 'Short for Audience. TitleTerm, can be NameTerm or GroupTitle.'."
+Did you read that the keyword_definition of 'AudieTitle' is 'If a AudieTitle contains SepartorTerms(s) it represents a group otherwise its a single member group of an ContactName. str first used in ch18. All str separator classes are BreakTerms. Exists because of the necessity to break experience reality into things so they can be understood.'.
+Did you read that the keyword_definition of 'Flare' is 'The instance of giving ideas to an audience. Usually there is an intended audience.'.
+Did you read that the keyword_definition of 'FlareInt' is 'Integer for tracking Flares. int first used in ch18'.
+Did you read that the keyword_definition of 'Speech' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'Yap' is 'In the Jargon module there is 'map', in the Speech module there is 'yap'.'."
+"Did you read that the keyword_definition of 'audie' is 'Short for audience. TitleTerm, can be NameTerm or GroupTitle.'."
+"Did you read that the keyword_definition of 'aux' is 'In Speech context: iux is the internal concept, aux is the audience's concept'."
+Did you read that the keyword_definition of 'aux_knot' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'aux_label' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'aux_name' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'aux_rope' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'aux_title' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'flare' is 'The instance of giving ideas to an audience. Usually there is an intended audience.'.
+Did you read that the keyword_definition of 'flare_audie' is 'Speech Module. Defintion needed.'.
+Did you read that the keyword_definition of 'flare_num' is 'Speech Module. Defintion needed.'.
+"Did you read that the keyword_definition of 'iux' is 'In Speech context: iux is the internal concept, aux is the audience's concept'."
+Did you read that the keyword_definition of 'iux2aux' is 'Speech Module. Defintion needed.'.
+Did you read that the keyword_definition of 'iux_knot' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'iux_label' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'iux_name' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'iux_rope' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'iux_title' is 'Speech module. Definition needed.'.
+"Did you read that the keyword_definition of 'labelyap' is 'Speech module, definition needed'."
+"Did you read that the keyword_definition of 'nameyap' is 'Speech module, definition needed'."
+"Did you read that the keyword_definition of 'ropeyap' is 'Speech module, definition needed'."
+Did you read that the keyword_definition of 'speech' is 'Definition needed.'.
+Did you read that the keyword_definition of 'speech_core' is 'Definition needed.'.
+Did you read that the keyword_definition of 'speech_label' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'speech_name' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'speech_rope' is 'Speech module. Definition needed.'.
+Did you read that the keyword_definition of 'speech_title' is 'Speech module. Definition needed.'.
+"Did you read that the keyword_definition of 'titleyap' is 'Speech module, definition needed'."
+"Did you read that the keyword_definition of 'yap' is 'In the Jargon module there is 'map', in the Speech module there is 'yap'.'."
 "Did you read that the keyword_definition of 'duck' is 'Definition needed. Maybe someone who can dive, swim, walk, knee, and fly. All the things.'."
 Did you read that the keyword_definition of 'Border' is 'Defines line of influence between two Wheels. Also used by graphics and apps.'.
 Did you read that the keyword_definition of 'Excel' is 'A spreadsheet format.'.
 Did you read that the keyword_definition of 'SheetName' is 'A string used as SheetName for SpreadSheet files. str first used in ch20'.
 Did you read that the keyword_definition of 'allowed_crud' is 'Each brick config dimen has an allowed_crud that describes whether the data may be updated/deleted/inserted more than one.'.
 Did you read that the keyword_definition of 'attributes' is 'General term used to describe things about another thing'.
+Did you read that the keyword_definition of 'awardee_title_ERASE_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'awardee_title_ERASE_inx' is 'The 'awardee_title_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'awardee_title_ERASE_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'awardee_title_ERASE_otx' is 'The 'awardee_title_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'awardee_title_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'awardee_title_inx' is 'The 'awardee_title' value after Jargon.'.
+Did you read that the keyword_definition of 'awardee_title_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'awardee_title_otx' is 'The 'awardee_title' value after Jargon.'.
 Did you read that the keyword_definition of 'bk' is 'Brick Format Identifier. Every brick_type format starts with 'bk' and then 5 numbers.'.
 Did you read that the keyword_definition of 'border' is 'Defines line of influence between two Wheels. Also used by graphics and apps.'.
@@ -590,72 +613,120 @@ Did you read that the keyword_definition of 'brick_type' is 'Definition needed.'
 Did you read that the keyword_definition of 'bud_time_inx' is 'The 'bud_time' value after Jargon.'.
 Did you read that the keyword_definition of 'bud_time_otx' is 'The 'bud_time' value after Jargon.'.
 Did you read that the keyword_definition of 'build_order' is 'When building a world the order of dimen data implementation must be deterministic. build_order defines the order dimens are evaluated for a World.'.
+Did you read that the keyword_definition of 'contact_name_ERASE_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'contact_name_ERASE_inx' is 'The 'contact_name_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'contact_name_ERASE_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'contact_name_ERASE_otx' is 'The 'contact_name_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'contact_name_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'contact_name_inx' is 'The 'contact_name' value after Jargon.'.
+Did you read that the keyword_definition of 'contact_name_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'contact_name_otx' is 'The 'contact_name' value after Jargon.'.
 "Did you read that the keyword_definition of 'delete_insert' is 'Associated dimens: person_plan_healerunit, person_plan_laborunit'."
 "Did you read that the keyword_definition of 'delete_insert_update' is 'Associated dimens: person_contact_membership, person_contactunit, person_plan_awardunit, person_plan_factunit, person_plan_reason_caseunit, person_plan_reasonunit, person_planunit' in 'Associated dimens: person_planunit, person_contactunit, person_plan_reasonunit, person_plan_factunit, person_plan_awardunit, person_contact_membership, person_plan_reason_caseunit'."
 "Did you read that the keyword_definition of 'delete_update' is 'Associated dimens: person_plan_healerunit, person_plan_laborunit'."
+Did you read that the keyword_definition of 'epoch_label_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'epoch_label_inx' is 'The 'epoch_label' value after Jargon.'.
+Did you read that the keyword_definition of 'epoch_label_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'epoch_label_otx' is 'The 'epoch_label' value after Jargon.'.
 Did you read that the keyword_definition of 'error_message' is 'Definition needed.'.
 Did you read that the keyword_definition of 'excel' is 'A spreadsheet format.'.
+Did you read that the keyword_definition of 'fact_context_ERASE_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'fact_context_ERASE_inx' is 'The 'fact_context_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'fact_context_ERASE_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'fact_context_ERASE_otx' is 'The 'fact_context_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'fact_context_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'fact_context_inx' is 'The 'fact_context' value after Jargon.'.
+Did you read that the keyword_definition of 'fact_context_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'fact_context_otx' is 'The 'fact_context' value after Jargon.'.
 Did you read that the keyword_definition of 'fact_lower_inx' is 'The 'fact_lower' value after Jargon.'.
 Did you read that the keyword_definition of 'fact_lower_otx' is 'The 'fact_lower' value after Jargon.'.
+Did you read that the keyword_definition of 'fact_state_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'fact_state_inx' is 'The 'fact_state' value after Jargon.'.
+Did you read that the keyword_definition of 'fact_state_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'fact_state_otx' is 'The 'fact_state' value after Jargon.'.
 Did you read that the keyword_definition of 'fact_upper_inx' is 'The 'fact_upper' value after Jargon.'.
 Did you read that the keyword_definition of 'fact_upper_otx' is 'The 'fact_upper' value after Jargon.'.
+Did you read that the keyword_definition of 'flare_audie_aux' is 'Definition needed.'.
+Did you read that the keyword_definition of 'flare_audie_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'fund_rank' is 'Definition needed.'.
+Did you read that the keyword_definition of 'group_title_ERASE_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'group_title_ERASE_inx' is 'The 'group_title_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'group_title_ERASE_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'group_title_ERASE_otx' is 'The 'group_title_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'group_title_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'group_title_inx' is 'The 'group_title' value after Jargon.'.
+Did you read that the keyword_definition of 'group_title_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'group_title_otx' is 'The 'group_title' value after Jargon.'.
+Did you read that the keyword_definition of 'healer_name_ERASE_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'healer_name_ERASE_inx' is 'The 'healer_name_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'healer_name_ERASE_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'healer_name_ERASE_otx' is 'The 'healer_name_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'healer_name_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'healer_name_inx' is 'The 'healer_name' value after Jargon.'.
+Did you read that the keyword_definition of 'healer_name_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'healer_name_otx' is 'The 'healer_name' value after Jargon.'.
+Did you read that the keyword_definition of 'hour_label_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'hour_label_inx' is 'The 'hour_label' value after Jargon.'.
+Did you read that the keyword_definition of 'hour_label_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'hour_label_otx' is 'The 'hour_label' value after Jargon.'.
 "Did you read that the keyword_definition of 'insert_multiple' is 'Associated dimens: moment_budunit, moment_ceckbook, moment_timeoffi'."
-"Did you read that the keyword_definition of 'insert_one_time' is 'Associated dimens: jargon_label, jargon_name, jargon_rope, jargon_title, moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, momentunit, nabu_timenum'."
+"Did you read that the keyword_definition of 'insert_one_time' is 'Associated dimens: jargon_label, jargon_name, jargon_rope, jargon_title, moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, momentunit, nabu_timenum, speech_label, speech_name, speech_rope, speech_title' in 'Associated dimens: jargon_label, jargon_name, jargon_rope, jargon_title, moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, momentunit, nabu_timenum'."
 Did you read that the keyword_definition of 'insert_update' is 'Definition needed.'.
 Did you read that the keyword_definition of 'jargon_spark_num' is 'Definition needed.'.
+Did you read that the keyword_definition of 'labor_title_ERASE_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'labor_title_ERASE_inx' is 'The 'labor_title_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'labor_title_ERASE_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'labor_title_ERASE_otx' is 'The 'labor_title_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'labor_title_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'labor_title_inx' is 'The 'labor_title' value after Jargon.'.
+Did you read that the keyword_definition of 'labor_title_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'labor_title_otx' is 'The 'labor_title' value after Jargon.'.
+Did you read that the keyword_definition of 'moment_rope_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'moment_rope_inx' is 'The 'moment_rope' value after Jargon.'.
+Did you read that the keyword_definition of 'moment_rope_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'moment_rope_otx' is 'The 'moment_rope' value after Jargon.'.
+Did you read that the keyword_definition of 'month_label_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'month_label_inx' is 'The 'month_label' value after Jargon.'.
+Did you read that the keyword_definition of 'month_label_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'month_label_otx' is 'The 'month_label' value after Jargon.'.
 Did you read that the keyword_definition of 'net_funds' is 'Definition needed.'.
 Did you read that the keyword_definition of 'offi_time_inx' is 'The 'offi_time' value after Jargon.'.
 Did you read that the keyword_definition of 'offi_time_otx' is 'The 'offi_time' value after Jargon.'.
 Did you read that the keyword_definition of 'otx_key' is 'Definition needed.'.
+Did you read that the keyword_definition of 'person_name_ERASE_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'person_name_ERASE_inx' is 'The 'person_name_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'person_name_ERASE_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'person_name_ERASE_otx' is 'The 'person_name_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'person_name_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'person_name_inx' is 'The 'person_name' value after Jargon.'.
+Did you read that the keyword_definition of 'person_name_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'person_name_otx' is 'The 'person_name' value after Jargon.'.
+Did you read that the keyword_definition of 'plan_rope_ERASE_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'plan_rope_ERASE_inx' is 'The 'plan_rope_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'plan_rope_ERASE_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'plan_rope_ERASE_otx' is 'The 'plan_rope_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'plan_rope_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'plan_rope_inx' is 'The 'plan_rope' value after Jargon.'.
+Did you read that the keyword_definition of 'plan_rope_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'plan_rope_otx' is 'The 'plan_rope' value after Jargon.'.
 Did you read that the keyword_definition of 'pledges_count' is 'Definition needed.'.
+Did you read that the keyword_definition of 'reason_context_ERASE_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'reason_context_ERASE_inx' is 'The 'reason_context_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'reason_context_ERASE_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'reason_context_ERASE_otx' is 'The 'reason_context_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'reason_context_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'reason_context_inx' is 'The 'reason_context' value after Jargon.'.
+Did you read that the keyword_definition of 'reason_context_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'reason_context_otx' is 'The 'reason_context' value after Jargon.'.
 Did you read that the keyword_definition of 'reason_lower_inx' is 'The 'reason_lower' value after Jargon.'.
 Did you read that the keyword_definition of 'reason_lower_otx' is 'The 'reason_lower' value after Jargon.'.
+Did you read that the keyword_definition of 'reason_state_ERASE_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'reason_state_ERASE_inx' is 'The 'reason_state_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'reason_state_ERASE_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'reason_state_ERASE_otx' is 'The 'reason_state_ERASE' value after Jargon.'.
+Did you read that the keyword_definition of 'reason_state_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'reason_state_inx' is 'The 'reason_state' value after Jargon.'.
+Did you read that the keyword_definition of 'reason_state_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'reason_state_otx' is 'The 'reason_state' value after Jargon.'.
 Did you read that the keyword_definition of 'reason_upper_inx' is 'The 'reason_upper' value after Jargon.'.
 Did you read that the keyword_definition of 'reason_upper_otx' is 'The 'reason_upper' value after Jargon.'.
@@ -665,7 +736,9 @@ Did you read that the keyword_definition of 'spark_face_inx' is 'The 'spark_face
 Did you read that the keyword_definition of 'spark_face_otx' is 'The 'spark_face' value after Jargon.'.
 Did you read that the keyword_definition of 'tran_time_inx' is 'The 'tran_time' value after Jargon.'.
 Did you read that the keyword_definition of 'tran_time_otx' is 'The 'tran_time' value after Jargon.'.
+Did you read that the keyword_definition of 'weekday_label_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'weekday_label_inx' is 'The 'weekday_label' value after Jargon.'.
+Did you read that the keyword_definition of 'weekday_label_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'weekday_label_otx' is 'The 'weekday_label' value after Jargon.'.
 Did you read that the keyword_definition of 'world_name' is 'Definition needed.'.
 Did you read that the keyword_definition of 'b_agg' is '5 character abbreviation of brixk_agg. stage_type_order=4 Brick Agg: The Brick Raw tables are aggregated to elimanate duplicates.'.
@@ -794,6 +867,7 @@ Did you read that the keyword_definition of 'rival' is 'A different FamilyUnit w
 Did you read that the keyword_definition of 'shill' is 'A Rider for a bad person.'.
 Did you read that the keyword_definition of 'soil' is 'Definition needed.'.
 Did you read that the keyword_definition of 'tower' is 'Definition needed.'.
+Did you read that the keyword_definition of 'trash' is 'Bad or useless or not worthy of consideration.'.
 Did you read that the keyword_definition of 'trooper' is 'A professional member of the armed services of a Nation-State.'.
 Did you read that the keyword_definition of 'winner' is 'A FamilyUnit getting more Prestige.'.
 Did you read that the keyword_definition of 'winning' is 'The act of a FamilyUnit getting more Prestige.'.

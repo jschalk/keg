@@ -24,3 +24,15 @@ from ch10_person_lesson._ref.ch10_semantic_types import FaceName, MomentRope
 from ch12_bud._ref.ch12_semantic_types import SparkInt, TimeNum
 from ch13_keep._ref.ch13_semantic_types import ManaNum
 from ch14_time._ref.ch14_semantic_types import EpochLabel
+
+
+class AudieTitle(GroupTitle):
+    """If a AudieTitle contains SepartorTerms(s) it represents a group otherwise its a single member group of an ContactName."""
+
+    pass
+
+
+class FlareInt(int):
+    """Integer for tracking Flares."""
+
+    pass

@@ -1,10 +1,10 @@
 # King Dunlap can't decide who to Ride with.
 
-**Date:** 2025-07-14   
-**Author:** King Dunlap
-**Others on Podcast:**  Jalen Collins,  Alex Sweet 
-**Source:** [Raw Room Podcast Video Clip](https://www.youtube.com/watch?v=ZYU_9in6N-g&t=108s)  
-**Copied to Keg:** 2026-06-24 
+**Date:** 2025-07-14 <br>
+**Author:** King Dunlap<br>
+**Others on Podcast:**  Jalen Collins,  Alex Sweet<br>
+**Source:** [Raw Room Podcast Video Clip](https://www.youtube.com/watch?v=ZYU_9in6N-g&t=108s)<br>
+**Copied to Keg:** 2026-06-24<br>
 
 Summary: Mr. King Dunlap, American football player, told a story about two football mates of his getting into an argument and his inability to know what to do. 
 

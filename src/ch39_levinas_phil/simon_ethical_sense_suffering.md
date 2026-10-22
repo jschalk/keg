@@ -1,9 +1,9 @@
 # Making Ethical Sense of *Useless Suffering* with Levinas
 
-**Date:** 2009-01-27  
-**Author:** Jules Simon  
-**Source:** https://www.academia.edu/11066736/Making_Ethical_Sense_of_Useless_Suffering_with_Levinas  
-**Copied to Keg:** 2026-08-13 
+**Date:** 2009-01-27<br>
+**Author:** Jules Simon<br>
+**Source:** https://www.academia.edu/11066736/Making_Ethical_Sense_of_Useless_Suffering_with_Levinas<br>
+**Copied to Keg:** 2026-08-13<br>
 
 ---
 

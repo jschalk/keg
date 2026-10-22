@@ -1,10 +1,10 @@
 # Why honour matters
 
-**Date:** 2023-09-02  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/why-honour-matters  
-**Copied to Keg:** 2026-09-03  
-**Note:** Originally was 2022-03-01 thread on Twitter   
+**Date:** 2023-09-02<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/why-honour-matters<br>
+**Copied to Keg:** 2026-09-03<br>
+**Note:** Originally was 2022-03-01 thread on Twitter<br>
 
 ---
 

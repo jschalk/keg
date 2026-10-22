@@ -1,15 +1,15 @@
 # How Stalin came to power
 
-**Date:** 2025-03-22  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/how-stalin-came-to-power  
-**Copied to Keg:** 2026-06-09 
+**Date:** 2025-03-22<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/how-stalin-came-to-power<br>
+**Copied to Keg:** 2026-06-09<br>
 
 ---
 
 <div align="center"><img src="images/lenin_and_stalin.webp" alt="Lenin and Stalin." width="500"></div>
 
-**Short answer:**
+**Short answer:**<br>
 
 It was handed to him, by Vladimir Lenin
 
@@ -19,7 +19,7 @@ So, Lenin delegated him administrative control[^1] over the Party
 
 And then, Lenin died
 
-**Long answer:**
+**Long answer:**<br>
 
 We underestimate the degree to which Vladimir Lenin was one and only leader of the Bolsheviks. As long as he lived, Lenin led the party, personally and directed it, personally. Time after time, Lenin bound the party to his personal will, contrary to the wishes of majority, and even to the wishes of the rest of the party leadership.
 

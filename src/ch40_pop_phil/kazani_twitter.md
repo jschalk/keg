@@ -1,11 +1,11 @@
 # Notable @kamilkazai Tweets on x.com
 
-**Date:** 2025-08-02  
-**Author:** Kamil Kazani  
-**Source:** https://x.com/kamilkazani viewed from Emmanuel Schalk's twitter login.  
-**Copied to Keg:** 2026-06-09 
+**Date:** 2025-08-02<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://x.com/kamilkazani viewed from Emmanuel Schalk's twitter login.<br>
+**Copied to Keg:** 2026-06-09<br>
 
-**Jul 25, 2025**  
+**Jul 25, 2025**<br>
 In response to someone making fun of Economists for being divorced from reality. 
 > 1. Men can be only ruled by dogmatic affirmations
 > 2. Dogmatic affirmations do not reflect reality well
@@ -14,22 +14,22 @@ In response to someone making fun of Economists for being divorced from reality.
 > 
 > Over the time, the gap only grows, resulting in a collapse
 
-**Sep 3, 2025**  
+**Sep 3, 2025**<br>
 In response to an attack on a politican accusing him of having too many women in his leadership Kazani does not refute the accusation, he writes:
 > When the French royal family was debating whether a King's or a Queen's government is better, theoretically speaking, Louis XIV's daughter in law Marie Adelaide opinionated that a Queen's rule is obviously better:
 > 
 > "For a Queen is governed by men, and a King by women"
 
-**Oct 29, 2025**  
+**Oct 29, 2025**<br>
 In response to question about Ukraine being able to give Russia a symbolic vistory:
 > No. Status & prestige is a zero sum game, and the war - at this point - is being fought for status and prestige. The only thing Ukraine could do to *permanently* end the war is kneel. That includes accepting their fault for the war, and paying some reparations to Russia
 
-**Dec 20th, 2025**  
+**Dec 20th, 2025**<br>
 In response to a comment accusing Kamil of ignoring the political interests of Siberian natives
 > Siberian natives are a low status, low prestige and with a (partial) exception of Yakuts completely powerless minority with no leverage in any form at all. Either under Putin, or under the “democratic” (= majoritarian) system it is more or less irrelevant what they are thinking
 
-**June 15th, 2026**  
-In response to the following comment:  
+**June 15th, 2026**<br>
+In response to the following comment:
 *The most manipulative but effective thing I’ve ever done in my life was when I read an article about how children moderate their behavior to protect their self-identity, so if a child believes he’s smart, for example, he’ll intentionally study and try to do well to protect his image of himself.*
 
 *Anyway, I would pull children aside with behavioral issues at church and tell them, “David (obviously fake name), you’re such a kind person and so good at listening. I can see that in you. Thank you for always listening.” “Little Annie, thank you for taking such good care of the babies around you. You’re going to be such a good big sister. Can you be in charge of watching Sally?”*
@@ -54,14 +54,14 @@ What you can do, is suggest them another *positive* image of themselves. Which m
 Positive self-image (which they have) can be replaced by another one
 
 
-**June 28th, 2026 #1**  
+**June 28th, 2026 #1**<br>
 In response to another tweet mocking someone's personal experience.
 > The most important thing you must keep in mind is to never ever sneer. Never ever. In fact, if you register a sneer in someone’s comment, that means the comment is dumb & they are as wrong as they could be
 > 
 > Sneer -> dumb as hell
 
 
-**June 28th, 2026 #2**  
+**June 28th, 2026 #2**<br>
 In response to someone complimenting a Mandani's political skills 
 > 1. Lots of people don’t believe in anything
 > 2. Lots of people who believe in something find it necessary to act performatively repulsive
@@ -70,12 +70,12 @@ In response to someone complimenting a Mandani's political skills
 > (like unicorns)
 
 
-**June 28th, 2029**  
+**June 28th, 2029**<br>
 > The dumbest accusation of all is an accusation in hypocrisy
 >
 > True consistency requires - at the basic minimum - omniscience and omnipresence (+ also, probably omnipotence). Short of that, every life lived is full of hypocrisy and self-contradictions, in words and actions
 
-**June 30th, 2026 #1**  
+**June 30th, 2026 #1**<br>
 In response to someone who has observed a writer going through the effort of writing a paper with their own voice and then choosing to replace their voice with an AI voice.
 > That is because people are terrified to use their own voice. Like, scared to hell, expecting some sort of punishment
 > 
@@ -83,7 +83,7 @@ In response to someone who has observed a writer going through the effort of wri
 
 <div align="center"><img src="images/kazani_scared_of_voice_tweet.webp" alt="Kamil tweet 'terrified to use their own voice'" width="500"></div>
 
-**June 30th, 2026 #2**  
+**June 30th, 2026 #2**<br>
 Discussing the autobiography of Vasily Vasil'evich Nalimov (1910-1997), a prominent Russian mathematician and philosopher.
 > When in Gulag, V. Nalimov saw a large group of teenage girls, who escaped home from the forced labor, and were all gulaged
 > 
@@ -93,14 +93,14 @@ Discussing the autobiography of Vasily Vasil'evich Nalimov (1910-1997), a promin
 <div align="center"><img src="images/Nalimov_memoir_book.jpg" alt="Book cover of Memoir (In Russian)" width="300"></div>
 
 
-**July 2nd, 2026**  
+**July 2nd, 2026**<br>
 Kazani has, at least for me, interesting opinions about how people lie and how they are incapable of lieing when it is opposite their inner beliefs. On this day he tweets something cynical for me but probably standard for most political players.
 > 1. It is permissible to lie for a good cause
 > 2. Every cause is good
 > 3. Lie is always permissible
 
 
-**July 13th, 2026**  
+**July 13th, 2026**<br>
 Reposted a personal attack against a public figure.
 > Everyone, remember:
 > 
@@ -109,7 +109,7 @@ Reposted a personal attack against a public figure.
 > That is an ironclad BS marker> 1. It is permissible to lie for a good cause
 
 
-**July 15th, 2026**  
+**July 15th, 2026**<br>
 Reposted a twitter user's post describing Stalin as dumb because he didn't find philosophers interesting.
 > That is basically how he obtained power. Everyone thought this guy is dumb, so no one got alarmed until his power became absolute & total. And even *then*, many (like Trotsky) simply could not believe
 > 
@@ -120,7 +120,7 @@ Reposted a twitter user's post describing Stalin as dumb because he didn't find 
 > Occasionally, they get it wrong
 
 
-**July 18th, 2026**  
+**July 18th, 2026**<br>
 Responding to the following post "Might be superficial observation of mine but EastAsians don't seem to be given over to navel-gazing or inward reflection in the way Westerners are prone to"
 > No, I don't think this is true
 > 
@@ -132,7 +132,7 @@ Responding to the following post "Might be superficial observation of mine but E
 > People are not
 
 
-**July 18th, 2026**  
+**July 18th, 2026**<br>
 Responding to the following post: 
 "It’s become impossible to ignore the way that people online make fun of my opponent for things that have nothing to do with her policies or politics. It’s unkind and unhelpful. If you support me, please stop. 
 
@@ -149,7 +149,7 @@ THOSE are the issues. We don’t need to be unkind to be honest."
 > 
 > The most important thing is to never ever ever be overly accommodating. That is a guaranteed catastrophe, in 100% of cases. People may follow a fool, they may follow an asshole, but they will never ever follow a whimp
 
-**August 6th, 2026**
+**August 6th, 2026**<br>
 Responding to Branko Milanovic @BrankoMilan post *The irony of Russia is the best times for ordinary people in the past 120+ years were the boring years of Brezhnev's "stagnation" (zastoi).*
 > I would say that the best times in terms of material consumption were probably under early Putin. It was only in the 2010s, that the gov realized that the uncontrollable rise in living standards makes people *more* discontent and prone for turmoil, and not the other way around
 > 
@@ -174,7 +174,7 @@ Then Atlas shrugged, USA looked vulnerable, and he got big ideas.*
 > Which was conformant cuz after 2003 he started having lots of money to fund these imports
 
 
-**August 10, 2026**
+**August 10, 2026**<br>
 Responding to popular media figure asking why one politician is continually asked questions testing allegience whereas other politicians are not. 
 > A lil secret of trade
 >
@@ -188,7 +188,7 @@ Responding to popular media figure asking why one politician is continually aske
 > 
 > To be honest with you, I don’t watch Piker’s content because I don’t watch any streams at all. But based on the public reaction it is clear to me that he is turning into one of the top public intellectuals of modernity, and may very soon be *the* top one in terms of actual impact
 
-**August 12, 2026**
+**August 12, 2026**<br>
 > Free market is those regulations I support
 > 
 > Socialism is those regulations I am opposed to
@@ -205,7 +205,7 @@ Repsonding to Joe McReynolds @McReynoldsJoe<br>
 > 
 > (In this, and in other cases, people ascribe some profound eternal wisdom to what is basically just war propaganda)
 
-**September 27, 2026**
+**September 27, 2026**<br>
 Responding to this tweet: Zinoviev & Kamenev had a really insane arc. From very important figures in the early USSR to getting clipped then dumped in an unmarked grave and erased from history/forgotten.
 > I find the history of intra-party struggle in the 20s a very positive, optimistic story. Everyone got what they wanted
 > 
@@ -213,7 +213,7 @@ Responding to this tweet: Zinoviev & Kamenev had a really insane arc. From very 
 > 
 > Everyone’s wishes were fulfilled
 
-**September 30, 2026**
+**September 30, 2026**<br>
 > Marxism relies upon the labour theory of value
 > 
 > Neoliberalism is based on the suffering theory of value

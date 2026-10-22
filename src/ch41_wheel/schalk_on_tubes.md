@@ -1,7 +1,7 @@
 # On Tubes
 
-**Date:** 2026-09-29  
-**Author:** Emmanuel Schalk       
+**Date:** 2026-09-29<br>
+**Author:** Emmanuel Schalk<br>
 
 > *Connection and seperation*
 

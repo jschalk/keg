@@ -160,6 +160,36 @@ def get_casa_maison_jargonunit_set_by_label() -> JargonUnit:
     return sue_jargonunit
 
 
+def get_casa_maison_label_dt() -> DataFrame:
+    inx_amy87_str = "amy87"
+    casa_inx_str = "maison"
+    clean_inx_str = "propre"
+    sweep_inx_str = "sweep"
+    otx_amy45_str = "amy45"
+    casa_otx_str = "casa"
+    clean_otx_str = "clean"
+    sweep_otx_str = "sweep"
+    x_rd = default_knot_if_None()
+    uw = default_unknown_str_if_None()
+    e7 = 7
+
+    inx_dt = DataFrame(
+        columns=[
+            kw.spark_face,
+            kw.spark_num,
+            kw.otx_knot,
+            kw.inx_knot,
+            kw.unknown_str,
+            kw.otx_label,
+            kw.inx_label,
+        ]
+    )
+    inx_dt.loc[0] = ["Sue", e7, x_rd, x_rd, uw, otx_amy45_str, inx_amy87_str]
+    inx_dt.loc[1] = ["Sue", e7, x_rd, x_rd, uw, casa_otx_str, casa_inx_str]
+    inx_dt.loc[2] = ["Sue", e7, x_rd, x_rd, uw, clean_otx_str, clean_inx_str]
+    return inx_dt
+
+
 def get_casa_maison_rope_otx2inx_dt() -> DataFrame:
     inx_amy87_str = "amy87"
     inx_amy87_rope = to_rope(inx_amy87_str)
@@ -190,36 +220,6 @@ def get_casa_maison_rope_otx2inx_dt() -> DataFrame:
     inx_dt.loc[1] = ["Sue", e7, x_rd, x_rd, uw, casa_otx_rope, casa_inx_rope]
     inx_dt.loc[2] = ["Sue", e7, x_rd, x_rd, uw, clean_otx_rope, clean_inx_rope]
     inx_dt.loc[3] = ["Sue", e7, x_rd, x_rd, uw, sweep_otx_rope, sweep_inx_rope]
-    return inx_dt
-
-
-def get_casa_maison_label_dt() -> DataFrame:
-    inx_amy87_str = "amy87"
-    casa_inx_str = "maison"
-    clean_inx_str = "propre"
-    sweep_inx_str = "sweep"
-    otx_amy45_str = "amy45"
-    casa_otx_str = "casa"
-    clean_otx_str = "clean"
-    sweep_otx_str = "sweep"
-    x_rd = default_knot_if_None()
-    uw = default_unknown_str_if_None()
-    e7 = 7
-
-    inx_dt = DataFrame(
-        columns=[
-            kw.spark_face,
-            kw.spark_num,
-            kw.otx_knot,
-            kw.inx_knot,
-            kw.unknown_str,
-            kw.otx_label,
-            kw.inx_label,
-        ]
-    )
-    inx_dt.loc[0] = ["Sue", e7, x_rd, x_rd, uw, otx_amy45_str, inx_amy87_str]
-    inx_dt.loc[1] = ["Sue", e7, x_rd, x_rd, uw, casa_otx_str, casa_inx_str]
-    inx_dt.loc[2] = ["Sue", e7, x_rd, x_rd, uw, clean_otx_str, clean_inx_str]
     return inx_dt
 
 

@@ -1,10 +1,10 @@
 # What is Phenomenological Ethics?
 
-**Date:** 2014-5-9  
-**Author:** Jules Simon  
-**Source:** Handout distributed during Spring 2014 Levinas course at University Texas El Paso.  
-**Copied to Keg:** 2026-08-14   
-**Note:** This was a unpublished working document, very useful for seeing how great philosophical concepts are developed.
+**Date:** 2014-5-9<br>
+**Author:** Jules Simon<br>
+**Source:** Handout distributed during Spring 2014 Levinas course at University Texas El Paso.<br>
+**Copied to Keg:** 2026-08-14 <br>
+**Note:** This was a unpublished working document, very useful for seeing how great philosophical concepts are developed.<br>
 
 ---
 

@@ -1,9 +1,9 @@
 # On the art of not understanding things
 
-**Date:** 2024-09-27  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/on-the-art-of-not-understanding-things  
-**Copied to Keg:** 2026-06-17 
+**Date:** 2024-09-27<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/on-the-art-of-not-understanding-things<br>
+**Copied to Keg:** 2026-06-17<br>
 
 ---
 
@@ -36,7 +36,7 @@ Why?
 
 Let’s start with the beginnings
 
-America is highly polarised country, polarised - largely - into the two political tribes, of very different speech, value and culture codes. And, being a small minority in the university conservatives naturally want to find their own, to group with them.
+America is highly polarised country, polarised - largely - into the two political tribes, of very different language, value and culture codes. And, being a small minority in the university conservatives naturally want to find their own, to group with them.
 
 So, they approached my friend because they identified her as one of their own tribe, as one of the red
 
@@ -66,7 +66,7 @@ My answer: there is nothing inherently blue or red, progressive or conservative 
 
 They key factor: is being in power
 
-The Blue had been in power for so long, and had been used to hold power so deeply, that the Blue speech and the Blue talk and the Blue discourse have been completely landscaped by that formative experience - of being in power
+The Blue had been in power for so long, and had been used to hold power so deeply, that the Blue language and the Blue talk and the Blue discourse have been completely landscaped by that formative experience - of being in power
 
 (and vice versa, the Red discourse had been terraformed by the long, long experience of being in opposition)
 
@@ -92,7 +92,7 @@ Censorship? What censorship? There is no censorship! Only the university policy 
 
 *Censorship? What censorship?*
 
-That is the speech of someone who has been defining these very “policies” & “values” for very, very long. Which is a perfectly sensible thing to do. Not only do you not admit that you are practicing censorship, but you must be outraged, absolutely appalled and astonished when people suggest you do.
+That is the language of someone who has been defining these very “policies” & “values” for very, very long. Which is a perfectly sensible thing to do. Not only do you not admit that you are practicing censorship, but you must be outraged, absolutely appalled and astonished when people suggest you do.
 
 In other words, the No. 1 rule of power is denying that you have any power at all. Not only should you not admit that you have or exercise power, but you must be pretending to not understand what people are even talking about when they say you do. Pretending to not understand things, is what the dominant side, the hegemon does. Calling things by their names, that’s for the irrelvant, for the weaker
 
@@ -141,5 +141,5 @@ Loyalty to the regime, and loyalty to Stalin includes the art of not noticing an
 
 ## Footnotes
 
-[^1]: I don’t need to give you a specific list, for everyone knows what kind of speech is getting severely punished under the current circumstances.
+[^1]: I don’t need to give you a specific list, for everyone knows what kind of language is getting severely punished under the current circumstances.
 

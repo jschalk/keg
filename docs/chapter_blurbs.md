@@ -21,7 +21,7 @@ What does each one do?
 - **ch15_moment**: Defines MomentUnits: common time tech, ledger, ContactNames, history of PersonUnits.
 - **ch16_nabu**: Defines NabuUnit tools that interpret numeric values into inside accounting.
 - **ch17_jargon**: Defines JargonUnit tools that jargon MomentUnits into inside language.
-- **ch18_lingo**: Defines LingoUnit tools that jargon MomentUnits into audience language.
+- **ch18_speech**: Defines SpeechUnit tools that jargon MomentUnits into audience language.
 - **ch19_db_tool**: Creates helper tools for database admin.
 - **ch20_brick**: Defines how to build Bricks using Bricks. Moments and Persons are built by Bricks.
 - **ch22_etl_config**: Defines the tools that use Bricks to build MomentUnits.

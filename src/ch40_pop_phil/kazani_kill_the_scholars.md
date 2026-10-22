@@ -1,9 +1,9 @@
 # Kill the Scholars
 
-**Date:** 2025-08-02  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/kill-the-scholars  
-**Copied to Keg:** 2026-06-09 
+**Date:** 2025-08-02<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/kill-the-scholars<br>
+**Copied to Keg:** 2026-06-09<br>
 
 > First thing you must understand about the fabric of social reality is that intellectuals matter
 
@@ -57,7 +57,7 @@ If you look at the Keynes’ quote, you will see that his description is perfect
 
 And it is the last part, I disagree upon
 
-<div align="center"><img src="images/shepherd.webp" alt="Shepherd with flock" width="700"></div>
+<div align="center"><img src="images/drover.webp" alt="Drover with flock" width="700"></div>
 
 The idea of some lofty intellectual class, leading the flock-like-mankind from their tower of ivory is not quite true.
 

@@ -1,9 +1,9 @@
 # Wisdom of Lenin
 
-**Date:** 2026-06-05  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/the-wisdom-of-vladimir-lenin  
-**Copied to Keg:** 2026-06-09 
+**Date:** 2026-06-05<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/the-wisdom-of-vladimir-lenin<br>
+**Copied to Keg:** 2026-06-09<br>
 
 ---
 

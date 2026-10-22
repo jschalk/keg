@@ -1,9 +1,9 @@
 # The Old Regime and the Revolution
 
-**Date:** 2025-08-02  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/the-old-regime-and-the-revolution   
-**Copied to Keg:** 2025-10-11 
+**Date:** 2025-08-02<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/the-old-regime-and-the-revolution <br>
+**Copied to Keg:** 2025-10-11<br>
 
 
 ---
@@ -160,7 +160,7 @@ But how? Like how you do that, practically speaking? You have just said that the
 
 Well, Louis XIV’s decision was more cunning than that. He did not strip the noble governors from their offices, and he in fact kept appointing the noblemen to that particular position, maintaining its purely noble, aristocratic status. What he did was more interesting
 
-**Instead of abolishing the old office, he created a new one, and transferred all the real power, and all the real decision making there.** He kept the prestige, the status and the pomp with the old guy, but he gave all the real practical power to the new guy
+Instead of abolishing the old office, **he created a new one, and transferred all the real power, and all the real decision making there.** He kept the prestige, the status and the pomp with the old guy, but he gave all the real practical power to the new guy
 
 The old guy was called “governor”, the new guy was called “intendant”
 
@@ -241,7 +241,7 @@ Parliaments were medieval legal bodies seen as comparable in their pedigree and 
 
 In fact, we constantly see the king sending his laws to the parliament of Paris, and the parliament refusing to register them, and sending back its rebuttal, and then king sending them a new version, and them sending a new feedback and then again, and again, and again. Sometimes, the king could just back off. But if he did not, and if he was determined to execute his will, he could visit the parliament personally and order the judiciary to register it. That was the end of discussion, and they had to obey
 
-But they could still send angry remonstrances, protesting against the illegal actions of the king. In fact, they constantly did. That is one paradox of the old French monarchy: the extreme level of royal despotism, combined with just as extreme freedom of speech (within a certain context).
+But they could still send angry remonstrances, protesting against the illegal actions of the king. In fact, they constantly did. That is one paradox of the old French monarchy: the extreme level of royal despotism, combined with just as extreme freedom of expression (within a certain context).
 
 Parliaments commanded a massive respect amongst the populace. In this respect, they often became the foca of the popular protest. Indeed, the Civil War of mid-17th c - that became the formative life experience for young Louis XIV - all started from the inconsiderate royal minister attempting to arrest two officials of the Paris Parliament. This infringement of parliamentary authority triggered the mutiny in the capital, and loss of control, and the mutineers capturing Bastille, and the number of greatest nobles switching to the mutineers, and the king himself and the royal family becoming the captives for the mutineers in their own palace[^4].
 

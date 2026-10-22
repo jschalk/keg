@@ -1,8 +1,8 @@
 # Kegology Political Theory
 
-**Date:** 2026-06-28  
-**Author:** Emmanuel Schalk
-**Description:** A generalized theory of political mechanics
+**Date:** 2026-06-28<br>
+**Author:** Emmanuel Schalk<br>
+**Description:** A generalized theory of political mechanics<br>
 
 > TODO add tag line
 
@@ -28,8 +28,8 @@
 
 # Kegology Wheel theory of power
 
-**Date:** 2026-06-09  
-**Author:** Emmanuel Schalk
+**Date:** 2026-06-09<br>
+**Author:** Emmanuel Schalk<br>
 
 > If you kneel you can still turn the wheel.
 

@@ -1,10 +1,10 @@
 # The Psychology of Conservatism: Why Do People Keep Voting for Republicans?
 
-**Date:** 2026-09-13  
-**Author:** Dr. Ash?  
-**Source:** https://www.dailykos.com/stories/2026/9/13/800079546/community/the-psychology-of-conservatism-why-do-people-keep-voting-for-republicans/  
-**Copied to Keg:** 2026-09-14   
-**Notes:** I didn't read the whole thing but the parts I did read were interesting. I don't know if I agree but at least it wasn't trash. 
+**Date:** 2026-09-13<br>
+**Author:** Dr. Ash?<br>
+**Source:** https://www.dailykos.com/stories/2026/9/13/800079546/community/the-psychology-of-conservatism-why-do-people-keep-voting-for-republicans/<br>
+**Copied to Keg:** 2026-09-14 <br>
+**Notes:** I didn't read the whole thing but the parts I did read were interesting. I don't know if I agree but at least it wasn't trash.<br>
 
 
 ---
@@ -21,7 +21,7 @@ I imagine the first word that popped into your head was “racism”. And you’
 
 ### Social Dominance Orientation
 
-**Social dominance orientation**, or SDO, describes the degree to which a person prefers a world sorted into groups on top and groups underneath. Before you say, “that’s just a fancy way of saying racism”—no, it isn’t. Because the sorting criterion isn’t always race; it can be religious affiliation, caste, nationality, gender, or, honestly, any measure by which people can be separated into groups.
+**Social dominance orientation**, or SDO, describes the degree to which a person prefers a world sorted into groups on top and groups underneath. Before you say, “that’s just a fancy way of saying racism”—no, it isn’t. Because the sorting criterion isn’t always race; it can be religious affiliation, caste, nationality, gender, or, honestly, any measure by which people can be separated into groups.<br>
 
 The measure of SDO comes out of work by Felicia Pratto, Jim Sidanius and their colleagues in the 1990s (Pratto et al., 1994; Sidanius & Pratto, 1999). What it’s actually measuring is a belief about **structure**. Not a belief about Black people or immigrants or the poor (which is why so many will deny being bigots and genuinely believe it), but a belief that some arrangement of above-and-below is natural and necessary, and that flattening it produces disorder rather than justice. High-SDO people aren’t necessarily hostile to anyone in particular. They’re uneasy about social engineering efforts to promote equality in principle.
 
@@ -33,7 +33,7 @@ SDO is a value premise, and everyone sits somewhere on that spectrum. Given a st
 
 But hierarchy doesn’t tell the whole story. Because before you can worry about which groups should be above which other groups, you have to decide something even more fundamental:
 
-**Who are my people?**
+**Who are my people?**<br>
 
 ### Politics as Group Identity
 
@@ -111,13 +111,13 @@ Hetherington and Weiler (2009) found that perceived threat activates authoritari
 
 This helps explain something liberals often experience as bewildering hypocrisy. People who spent decades insisting on “limited government” can embrace aggressive uses of state power when that power is directed toward people, institutions or social changes they perceive as threatening.
 
-Years of outrage over “cancel culture” can coexist with support for an administration that has repeatedly used state power to suppress political speech.
+Years of outrage over “cancel culture” can coexist with support for an administration that has repeatedly used state power to suppress political expression.
 
 Likewise, decades of conservative warnings about government interference in private enterprise did not prevent the Trump administration from arranging for the federal government to acquire roughly a 10% equity stake in Intel in 2025.
 
 And if the deepest commitment were really government *should be small or federal spending should be restrained*, the Republican Congress would presumably have recoiled from spending tens of billions of dollars to dramatically expand ICE into a fascistic secret police.
 
-These positions look wildly inconsistent if the underlying principles are really *small government, fiscal restraint, free speech, and keeping government out of people’s lives.*
+These positions look wildly inconsistent if the underlying principles are really *small government, fiscal restraint, free speeech, and keeping government out of people’s lives.*
 
 They become considerably more coherent if the deeper principle is something else: **Government should defend the social order I value.**
 
@@ -131,7 +131,7 @@ And underneath that concern is often a zero-sum assumption: power gained by *the
 
 Authoritarianism helps explain why supposedly bedrock principles can become flexible when social order feels threatened. But that leaves another question:
 
-**How does someone make that switch without experiencing themselves as a hypocrite?**
+**How does someone make that switch without experiencing themselves as a hypocrite?**<br>
 
 This is where *motivated reasoning comes in.*
 
@@ -141,7 +141,7 @@ Charles Taber and Milton Lodge (2006) found that people judged arguments support
 
 And this isn’t uniquely conservative. Liberals do it, too. A meta-analysis by Peter Ditto and colleagues (2019) found roughly equivalent partisan bias on the left and right. The psychological vulnerability is bipartisan, my brothers and sisters. We need to remember that.
 
-**But the political environment in which that vulnerability operates isn’t symmetrical.**
+**But the political environment in which that vulnerability operates isn’t symmetrical.**<br>
 
 Yochai Benkler, Robert Faris and Hal Roberts (2018), analyzing millions of political stories and social-media posts, described a particularly insular right-wing media ecosystem in which partisan sources repeatedly reinforced one another while teaching audiences to distrust outside institutions that might correct false claims.
 
@@ -149,7 +149,7 @@ More recent work by Mohsen Mosleh and colleagues (2024) found the same behaviora
 
 So the problem isn’t that Republican brains possess some unique defect. It’s that a universal human weakness is operating inside an extremely effective reinforcement system. Motivated reasoning works particularly well when your preferred conclusion is repeated by your political leaders, affirmed by the media you trust, echoed by your social group, and contrary information can be dismissed as coming from corrupt or hostile institutions.
 
-That is how the principle stops determining the conclusion and the desired conclusion starts determining how the principle gets applied. When “*they*” expand federal power, it’s tyranny; when “*we*” do it, it’s patriotism. When “*they*” restrict speech, it’s censorship; when “*we*” do it, it’s pwning the libs. “*Their*” spending proves irresponsibility; “*ours*” was a common sense investment.
+That is how the principle stops determining the conclusion and the desired conclusion starts determining how the principle gets applied. When “*they*” expand federal power, it’s tyranny; when “*we*” do it, it’s patriotism. When “*they*” restrict speeech, it’s censorship; ewhen “*we*” do it, it’s pwning the libs. “*Their*” spending proves irresponsibility; “*ours*” was a common sense investment.
 
 That’s why exposing hypocrisy so rarely changes minds. We see a contradiction and assume the person must either abandon the behavior or abandon the principle. Motivated reasoning offers a third option: *Explain why this time is different.*
 
@@ -208,7 +208,7 @@ Pratto, F., Sidanius, J., Stallworth, L. M., & Malle, B. F. (1994). Social domin
 
 Reuters. (2025, August 22). Trump says Intel has agreed to deal for U.S. to take 10% equity stake. https://www.reuters.com/business/trump-says-intel-has-agreed-deal-us-take-10-equity-stake-2025-08-22/
 
-Reuters. (2026, August 4). Trump vowed to “bring free speech back.” Judges in 75 cases ruled that he has stifled it. https://www.reuters.com/legal/government/trump-vowed-bring-free-speech-back-judges-75-cases-ruled-that-he-has-stifled-it-2026-08-04/
+Reuters. (2026, August 4). Trump vowed to “bring free speeech back.” Judges in 75 cases ruled that he has stifled it. https://www.reuters.com/legal/government/trump-vowed-bring-free-speeech-back-judges-75-cases-ruled-that-he-has-stifled-it-2026-08-04/
 
 Sidanius, J., & Pratto, F. (1999). Social dominance: An intergroup theory of social hierarchy and oppression. Cambridge University Press.
 

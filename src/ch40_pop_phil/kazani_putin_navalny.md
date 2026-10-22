@@ -1,9 +1,9 @@
 # Why did Putin kill Navalny?
 
-**Date:** 2024-02-19  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/why-did-putin-kill-navalny  
-**Copied to Keg:** 2026-06-14 
+**Date:** 2024-02-19<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/why-did-putin-kill-navalny<br>
+**Copied to Keg:** 2026-06-14<br>
 
 
 ---
@@ -37,7 +37,7 @@ Staying in power requires eliminating competitors. Staying in power for long req
 
 This uncanny principle explains a seeming paradox. Which is:
 
-**Bloody tyrants rule longer**
+**Bloody tyrants rule longer**<br>
 
 The Russian history may demonstrate this better than any other. The very same rulers dismissed as bloody maniacs, as crazy, paranoid people have actually ruled longer than anyone. This indicates they must have been particularly good in keeping power.
 
@@ -57,7 +57,7 @@ So, were they that crazy after all?
 
 Let me introduce you one basic concept necessary for the further discussion
 
-**The Kronos Principle**
+**The Kronos Principle**<br>
 
 To keep the power you must eliminate competition. Best of all, you must eliminate competitors preventively, before they could ever challenge you. Just like the Good Ol’ Kronos did.
 

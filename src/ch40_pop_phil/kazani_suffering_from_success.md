@@ -1,9 +1,9 @@
 # Suffering from success
 
-**Date:** 2026-02-27  
-**Author:** Kamil Kazani  
-**Source:** https://kamilkazani.substack.com/p/suffering-from-success?utm_source=publication-search
-**Copied to Keg:** 2026-06-10 
+**Date:** 2026-02-27<br>
+**Author:** Kamil Kazani<br>
+**Source:** https://kamilkazani.substack.com/p/suffering-from-success<br>
+**Copied to Keg:** 2026-06-10<br>
 
 ---
 
@@ -43,7 +43,7 @@ That is how his friend, Felshtinsky describes his dialogue with Berezovsky, on t
 
 > **Felshtinsky**: Borya, why? All right, Abramovich bought himself a football club. But that doesn’t mean that you have to buy yourself a football club, what’s more in Brazil
 
-**Berezovsky**: Of course not… What’s the football club got to do with it? That provided access to the president. **They promised to give us the whole country**
+**Berezovsky**: Of course not… What’s the football club got to do with it? That provided access to the president. **They promised to give us the whole country**<br>
 
 Sounds mad. Absolutely crazy. Worse of all, it sounds just dumb
 
@@ -77,7 +77,7 @@ And now the thing is:
 
 For an individual, like Boris Berezovsky, a crazy, unlikely, impossible scheme has actually worked out. You get into the President’s room - by any means possible - and he gives you everything.
 
-**Now that is your lived experience**
+**Now that is your lived experience**<br>
 
 And - once it happened - it defines the rest of your life. For you won’t be able to do anything else, seeking to recreate this scheme that worked out once again, and again.
 

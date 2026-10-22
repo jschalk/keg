@@ -1,9 +1,9 @@
 # Ellery Stowell Schalk
 
-**Date:** 1997-10-01  
-**Author:** David Hackett  
-**Source:** https://www.historians.org/perspectives-article/in-memoriam-october-1997-october-1997/  
-**Copied to Keg:** 2026-06-30  
+**Date:** 1997-10-01<br>
+**Author:** David Hackett<br>
+**Source:** https://www.historians.org/perspectives-article/in-memoriam-october-1997-october-1997/<br>
+**Copied to Keg:** 2026-06-30<br>
 
 Ellery Stowell Schalk, professor of history at the University of Texas at El Paso and an authority on early modern France, died of cancer on February 1, 1997, at his home in El Paso. He was 58. He is survived by his wife, Ninon Peugeot Schalk, and four sons.
 

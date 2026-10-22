@@ -11,6 +11,7 @@ Drift,10,
 Duck,10,
 Fealty,10,
 Gravity,10,
+Herd,10,
 Hive,10,
 Hose,10,
 Impression,10,
@@ -36,6 +37,7 @@ Soldier,10,
 Stilt,10,
 Target,10,
 Tower,10,
+Trash,10,
 Trek,10,
 Trooper,10,
 Tsar,10,
@@ -51,6 +53,7 @@ dive,10,
 drift,10,
 factory,10,
 fealty,10,
+herd,10,
 juggle,10,
 juggling,10,
 keg_wheel,10,
@@ -370,7 +373,7 @@ contact_name_ERASE,0,"9, 20, 22"
 crud,0,"9, 10, 20, 22, 23, 24, 97"
 fact_context_ERASE,0,"9, 20, 22"
 group_title_ERASE,0,"9, 20, 22"
-healer_name_ERASE,0,"9, 17, 20, 22"
+healer_name_ERASE,0,"9, 17, 18, 20, 22"
 labor_title_ERASE,0,"9, 20, 22"
 nesting_order,0,"9, 10"
 normal_specs,0,9:
@@ -389,13 +392,13 @@ moment_mstr_dir,0,10:
 moment_rope,0,10:
 spark_face,0,10:
 spark_num,0,10:
-job,0,"11, 15, 17, 20, 22, 23, 26, 27, 30, 31, 32, 33, 39, 40"
+job,0,"11, 15, 17, 18, 20, 22, 23, 26, 27, 30, 31, 32, 33, 39, 40"
 listener,0,11
 speaker,0,11
 Epoch,0,12:
 SparkInt,0,12:
 TimeNum,0,12:
-amount,0,"12, 13, 15, 17, 20, 22, 23, 26, 27, 31, 32, 33, 35, 97"
+amount,0,"12, 13, 15, 17, 18, 20, 22, 23, 26, 27, 31, 32, 33, 35, 97"
 boss,0,"12, 15, 41, 54"
 boss_facts,0,"12, 15"
 bud_contact_nets,0,12:
@@ -537,7 +540,7 @@ jargon_label,0,17:
 jargon_name,0,17:
 jargon_rope,0,17:
 jargon_title,0,17:
-jargonunit,0,"17, 20, 97"
+jargonunit,0,"17, 18, 20, 97"
 labelmap,0,17:
 namemap,0,17:
 otx_knot,0,17:
@@ -548,33 +551,53 @@ otx_title,0,17:
 ropemap,0,17:
 titlemap,0,17:
 unknown_str,0,17:
-Lingo,0,18
-aux,0,18
-aux_knot,0,18
-aux_label,0,18
-aux_name,0,18
-aux_rope,0,18
-aux_title,0,18
-iux,0,18
-iux_knot,0,18
-iux_label,0,18
-iux_name,0,18
-iux_rope,0,18
-iux_title,0,18
-lingo,0,18
-lingo_label,0,18
-lingo_name,0,18
-lingo_rope,0,18
-lingo_title,0,18
+Audie,0,"18, 41, 97"
+AudieTitle,0,18:
+Flare,0,"18, 97"
+FlareInt,0,18:
+Speech,0,18
+Yap,0,18
+audie,0,"18, 20, 27, 30, 33, 39, 40, 41"
+aux,0,"18, 20, 98"
+aux_knot,0,"18, 20, 98"
+aux_label,0,"18, 20"
+aux_name,0,"18, 20"
+aux_rope,0,"18, 20"
+aux_title,0,"18, 20"
+flare,0,"18, 20"
+flare_audie,0,"18, 20"
+flare_num,0,"18, 20"
+iux,0,"18, 20, 98"
+iux2aux,0,"18, 20, 98"
+iux_knot,0,"18, 20, 98"
+iux_label,0,"18, 20"
+iux_name,0,"18, 20"
+iux_rope,0,"18, 20"
+iux_title,0,"18, 20"
+labelyap,0,18
+nameyap,0,18
+ropeyap,0,18
+speech,0,"18, 20, 22, 97"
+speech_core,0,"18, 20, 22"
+speech_label,0,"18, 20"
+speech_name,0,"18, 20"
+speech_rope,0,"18, 20"
+speech_title,0,"18, 20"
+titleyap,0,18
+yap,0,18
 duck,0,19
 Border,0,"20, 39"
 Excel,0,20:
 SheetName,0,20:
 allowed_crud,0,20:
 attributes,0,"20, 23, 24, 26, 35, 39, 40, 97"
+awardee_title_ERASE_aux,0,20
 awardee_title_ERASE_inx,0,"20, 22"
+awardee_title_ERASE_iux,0,20
 awardee_title_ERASE_otx,0,"20, 22"
+awardee_title_aux,0,20
 awardee_title_inx,0,"20, 22, 97"
+awardee_title_iux,0,20
 awardee_title_otx,0,"20, 22, 97"
 bk,0,20:
 border,0,"20, 35, 39, 41, 90"
@@ -584,72 +607,120 @@ brick_type,0,20:
 bud_time_inx,0,"20, 22"
 bud_time_otx,0,"20, 22"
 build_order,0,20:
+contact_name_ERASE_aux,0,20
 contact_name_ERASE_inx,0,"20, 22"
+contact_name_ERASE_iux,0,20
 contact_name_ERASE_otx,0,"20, 22"
+contact_name_aux,0,20
 contact_name_inx,0,"20, 22"
+contact_name_iux,0,20
 contact_name_otx,0,"20, 22"
 delete_insert,0,20:
 delete_insert_update,0,20:
 delete_update,0,"20,23"
+epoch_label_aux,0,20
 epoch_label_inx,0,"20, 22, 97"
+epoch_label_iux,0,20
 epoch_label_otx,0,"20, 22, 97"
 error_message,0,20:
 excel,0,20:
+fact_context_ERASE_aux,0,20
 fact_context_ERASE_inx,0,"20, 22"
+fact_context_ERASE_iux,0,20
 fact_context_ERASE_otx,0,"20, 22"
+fact_context_aux,0,20
 fact_context_inx,0,"20, 22, 97"
+fact_context_iux,0,20
 fact_context_otx,0,"20, 22, 97"
 fact_lower_inx,0,"20, 22, 26, 97"
 fact_lower_otx,0,"20, 22, 26, 97"
+fact_state_aux,0,20
 fact_state_inx,0,"20, 22, 97"
+fact_state_iux,0,20
 fact_state_otx,0,"20, 22, 97"
 fact_upper_inx,0,"20, 22, 26, 97"
 fact_upper_otx,0,"20, 22, 26, 97"
+flare_audie_aux,0,20
+flare_audie_iux,0,20
 fund_rank,0,20:
+group_title_ERASE_aux,0,20
 group_title_ERASE_inx,0,"20, 22"
+group_title_ERASE_iux,0,20
 group_title_ERASE_otx,0,"20, 22"
+group_title_aux,0,20
 group_title_inx,0,"20, 22"
+group_title_iux,0,20
 group_title_otx,0,"20, 22"
+healer_name_ERASE_aux,0,20
 healer_name_ERASE_inx,0,"20, 22"
+healer_name_ERASE_iux,0,20
 healer_name_ERASE_otx,0,"20, 22"
+healer_name_aux,0,20
 healer_name_inx,0,"20, 22"
+healer_name_iux,0,20
 healer_name_otx,0,"20, 22"
+hour_label_aux,0,20
 hour_label_inx,0,"20, 22"
+hour_label_iux,0,20
 hour_label_otx,0,"20, 22"
 insert_multiple,0,20:
 insert_one_time,0,20:
 insert_update,0,20:
 jargon_spark_num,0,"20, 22, 97"
+labor_title_ERASE_aux,0,20
 labor_title_ERASE_inx,0,"20, 22"
+labor_title_ERASE_iux,0,20
 labor_title_ERASE_otx,0,"20, 22"
+labor_title_aux,0,20
 labor_title_inx,0,"20, 22"
+labor_title_iux,0,20
 labor_title_otx,0,"20, 22"
+moment_rope_aux,0,20
 moment_rope_inx,0,"20, 22"
+moment_rope_iux,0,20
 moment_rope_otx,0,"20, 22"
+month_label_aux,0,20
 month_label_inx,0,"20, 22"
+month_label_iux,0,20
 month_label_otx,0,"20, 22"
 net_funds,0,20:
 offi_time_inx,0,"20, 22, 26"
 offi_time_otx,0,"20, 22, 26"
 otx_key,0,20:
+person_name_ERASE_aux,0,20
 person_name_ERASE_inx,0,"20, 22"
+person_name_ERASE_iux,0,20
 person_name_ERASE_otx,0,"20, 22"
+person_name_aux,0,20
 person_name_inx,0,"20, 22, 25"
+person_name_iux,0,20
 person_name_otx,0,"20, 22, 25"
+plan_rope_ERASE_aux,0,20
 plan_rope_ERASE_inx,0,"20, 22"
+plan_rope_ERASE_iux,0,20
 plan_rope_ERASE_otx,0,"20, 22"
+plan_rope_aux,0,20
 plan_rope_inx,0,"20, 22"
+plan_rope_iux,0,20
 plan_rope_otx,0,"20, 22"
 pledges_count,0,20:
+reason_context_ERASE_aux,0,20
 reason_context_ERASE_inx,0,"20, 22"
+reason_context_ERASE_iux,0,20
 reason_context_ERASE_otx,0,"20, 22"
+reason_context_aux,0,20
 reason_context_inx,0,"20, 22, 97"
+reason_context_iux,0,20
 reason_context_otx,0,"20, 22, 97"
 reason_lower_inx,0,"20, 22, 26, 97"
 reason_lower_otx,0,"20, 22, 26, 97"
+reason_state_ERASE_aux,0,20
 reason_state_ERASE_inx,0,"20, 22"
+reason_state_ERASE_iux,0,20
 reason_state_ERASE_otx,0,"20, 22"
+reason_state_aux,0,20
 reason_state_inx,0,"20, 22, 97"
+reason_state_iux,0,20
 reason_state_otx,0,"20, 22, 97"
 reason_upper_inx,0,"20, 22, 26, 97"
 reason_upper_otx,0,"20, 22, 26, 97"
@@ -659,7 +730,9 @@ spark_face_inx,0,"20, 22, 26"
 spark_face_otx,0,"20, 22, 26"
 tran_time_inx,0,"20, 22"
 tran_time_otx,0,"20, 22"
+weekday_label_aux,0,20
 weekday_label_inx,0,"20, 22"
+weekday_label_iux,0,20
 weekday_label_otx,0,"20, 22"
 world_name,0,20:
 b_agg,0,"22, 24, 27, 32"
@@ -788,6 +861,7 @@ rival,0,40
 shill,0,40
 soil,0,40
 tower,0,"40, 41"
+trash,0,40
 trooper,0,40
 winner,0,"40, 41"
 winning,0,"40, 41"
