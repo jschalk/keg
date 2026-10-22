@@ -126,4 +126,3 @@ def save_chapters_ai_summary(x_dir: str):
     dst_path = os_path_join(x_dir, "chapter_ai_summaries.md")
     with open(dst_path, "w", newline="", encoding="utf-8") as ai_sum_file:
         ai_sum_file.write(chapters_ai_summary)
-    # TODO make five_epoch_config weekday and month_labels keywords

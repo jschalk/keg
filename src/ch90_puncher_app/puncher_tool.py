@@ -332,7 +332,7 @@ def create_five_time_config_idea_csvs(
     return with_spark_face_csvs
 
 
-# TODO check this still works in gui
+# Consider creating check this still works in gui
 def create_elpaso_time_config_idea_csvs(
     me_name: PersonName, you_name: PersonName
 ) -> dict[str, str]:
@@ -354,7 +354,7 @@ def create_elpaso_time_config_idea_csvs(
 def create_emmanuel_idea_idea_csvs(
     me_name: PersonName, you_name: PersonName
 ) -> dict[str, str]:
-    # TODO dict[str, str]s and save to file
+    # Consider creating dict[str, str]s and save to file
     # prnt("create_emmanuel_idea_file...")
     pass
 
@@ -362,7 +362,7 @@ def create_emmanuel_idea_idea_csvs(
 def create_example_moment_ledger_idea_csvs(
     me_name: PersonName, you_name: PersonName
 ) -> dict[str, str]:
-    # TODO dict[str, str]s and save to file
+    # Consider creating dict[str, str]s and save to file
     # prnt("create_example_moment_ledger_file...")
     pass
 
@@ -370,7 +370,7 @@ def create_example_moment_ledger_idea_csvs(
 def create_example_moment_budget_idea_csvs(
     me_name: PersonName, you_name: PersonName
 ) -> dict[str, str]:
-    # TODO dict[str, str]s and save to file
+    # Consider creating dict[str, str]s and save to file
     # prnt("create_example_moment_budget_file...")
     pass
 
@@ -437,7 +437,7 @@ def create_elpaso_time_config_file(
 def create_emmanuel_idea_file(
     file_path: str, me_name: PersonName, you_name: PersonName
 ):
-    # TODO dict[str, str]s and save to file
+    # Consider creating dict[str, str]s and save to file
     # prnt("create_emmanuel_idea_file...")
     pass
 
@@ -445,7 +445,7 @@ def create_emmanuel_idea_file(
 def create_example_moment_ledger_file(
     file_path: str, me_name: PersonName, you_name: PersonName
 ):
-    # TODO dict[str, str]s and save to file
+    # Consider creating dict[str, str]s and save to file
     # prnt("create_example_moment_ledger_file...")
     pass
 
@@ -453,7 +453,7 @@ def create_example_moment_ledger_file(
 def create_example_moment_budget_file(
     file_path: str, me_name: PersonName, you_name: PersonName
 ):
-    # TODO dict[str, str]s and save to file
+    # Consider creating dict[str, str]s and save to file
     # prnt("create_example_moment_budget_file...")
     pass
 
@@ -461,7 +461,7 @@ def create_example_moment_budget_file(
 def create_monopoly_idea_file(
     file_path: str, me_name: PersonName, you_name: PersonName
 ):
-    # TODO dict[str, str]s and save to file
+    # Consider creating dict[str, str]s and save to file
     # prnt("create_example_moment_budget_file...")
     pass
 
