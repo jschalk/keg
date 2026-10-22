@@ -1,7 +1,7 @@
 # What intellectuals can and cannot do
 
-**Date:** 2024-07-31<br>
 **Author:** Kamil Kazani<br>
+**Date:** 2024-07-31<br>
 **Source:** https://kamilkazani.substack.com/p/what-intellectuals-can-and-cannot<br>
 **Copied to Keg:** 2026-07-31<br>
 

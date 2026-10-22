@@ -1,7 +1,7 @@
 # When I'm going to be done with Kegology.
 
-**Date:** 2026-06-09<br>
 **Author:** Emmanuel Schalk<br>
+**Date:** 2026-06-09<br>
 
 > Kegology has taken up all my free time. My children want me to play with them.
 

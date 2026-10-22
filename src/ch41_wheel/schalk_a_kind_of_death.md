@@ -1,7 +1,7 @@
 # A kind of death
 
-**Date:** 2026-10-05<br>
 **Author:** Emmanuel Schalk<br>
+**Date:** 2026-10-05<br>
 
 > getting what you want all the time
 

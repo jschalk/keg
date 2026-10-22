@@ -4555,7 +4555,9 @@ class Ch36Keywords(str, Enum):
 
 
 class Ch38Keywords(str, Enum):
+    ch00 = "ch00"
     ch38 = "ch38"
+    src = "src"
 
     def __str__(self):
         return self.value
@@ -4579,6 +4581,7 @@ class Ch39Keywords(str, Enum):
     begin = "begin"
     border = "border"
     cases = "cases"
+    ch38 = "ch38"
     ch39 = "ch39"
     close = "close"
     day = "day"
@@ -4612,6 +4615,7 @@ class Ch39Keywords(str, Enum):
     power = "power"
     promise = "promise"
     shop = "shop"
+    src = "src"
     time = "time"
     today = "today"
     totality = "totality"
@@ -4653,6 +4657,7 @@ class Ch40Keywords(str, Enum):
     begin = "begin"
     brick = "brick"
     cases = "cases"
+    ch38 = "ch38"
     ch40 = "ch40"
     close = "close"
     contacts = "contacts"
@@ -4683,7 +4688,6 @@ class Ch40Keywords(str, Enum):
     job = "job"
     keyword = "keyword"
     knee = "knee"
-    knot = "knot"
     kronosmax = "kronosmax"
     ladder = "ladder"
     land = "land"
@@ -4772,6 +4776,7 @@ class Ch41Keywords(str, Enum):
     border = "border"
     boss = "boss"
     cases = "cases"
+    ch38 = "ch38"
     ch40 = "ch40"
     ch41 = "ch41"
     ch99 = "ch99"

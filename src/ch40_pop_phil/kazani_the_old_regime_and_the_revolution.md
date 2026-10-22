@@ -1,7 +1,7 @@
 # The Old Regime and the Revolution
 
-**Date:** 2025-08-02<br>
 **Author:** Kamil Kazani<br>
+**Date:** 2025-08-02<br>
 **Source:** https://kamilkazani.substack.com/p/the-old-regime-and-the-revolution <br>
 **Copied to Keg:** 2025-10-11<br>
 

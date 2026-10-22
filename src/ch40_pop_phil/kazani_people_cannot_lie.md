@@ -1,7 +1,7 @@
 # People cannot lie
 
-**Date:** 2026-03-06<br>
 **Author:** Kamil Kazani<br>
+**Date:** 2026-03-06<br>
 **Source:** https://kamilkazani.substack.com/p/people-cannot-lie <br>
 **Copied to Keg:** 2026-10-13<br>
 

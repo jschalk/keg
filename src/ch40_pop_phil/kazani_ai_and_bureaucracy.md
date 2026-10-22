@@ -1,7 +1,7 @@
 # AI and Bureaucracy
 
-**Date:** 2025-06-12<br>
 **Author:** Kamil Kazani<br>
+**Date:** 2025-06-12<br>
 **Source:** https://kamilkazani.substack.com/p/ai-and-bureaucracy<br>
 **Copied to Keg:** 2026-06-12<br>
 

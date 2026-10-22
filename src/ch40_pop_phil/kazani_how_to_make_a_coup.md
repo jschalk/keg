@@ -1,7 +1,7 @@
 # How to make a coup
 
-**Date:** 2026-10-16<br>
 **Author:** Kamil Kazani<br>
+**Date:** 2026-10-16<br>
 **Source:** https://kamilkazani.substack.com/p/how-to-make-a-coup<br>
 **Copied to Keg:** 2026-10-16<br>
 

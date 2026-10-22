@@ -1,7 +1,7 @@
  # The Able Family
 
-**Date:** 2024-09-07<br>
 **Author:** Kamil Kazani<br>
+**Date:** 2024-09-07<br>
 **Source:** https://kamilkazani.substack.com/p/the-able-family<br>
 **Copied to Keg:** 2026-06-14<br>
 

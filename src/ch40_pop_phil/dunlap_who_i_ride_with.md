@@ -1,7 +1,7 @@
 # King Dunlap can't decide who to Ride with.
 
-**Date:** 2025-07-14 <br>
 **Author:** King Dunlap<br>
+**Date:** 2025-07-14 <br>
 **Others on Podcast:**  Jalen Collins,  Alex Sweet<br>
 **Source:** [Raw Room Podcast Video Clip](https://www.youtube.com/watch?v=ZYU_9in6N-g&t=108s)<br>
 **Copied to Keg:** 2026-06-24<br>

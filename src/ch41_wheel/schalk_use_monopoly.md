@@ -1,7 +1,7 @@
 # Monopoly the Game and Understanding Money Supply
 
-**Date:** 2026-06-21<br>
 **Author:** Emmanuel Schalk<br>
+**Date:** 2026-06-21<br>
 **Status:** Currently just a draft<br>
 **Date complete:**<br>
 

@@ -1,7 +1,7 @@
 # People cannot lie
 
-**Date:** 2026-10-22<br>
 **Author:** Emmanuel Schalk<br>
+**Date:** 2026-10-22<br>
 **Description:** Kazani wrote 'People cannot lie'. Was he lying? No, so what's the implication for political advancement?<br>
 **Note:** Article probably is incomplete<br>
 

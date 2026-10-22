@@ -1,7 +1,7 @@
 # Rosa's Cantina
 
-**Date:** 2026-07-05<br>
 **Author:** Emmanuel Schalk<br>
+**Date:** 2026-07-05<br>
 
 > I will be bad a writing and I'll get better
 

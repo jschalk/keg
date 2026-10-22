@@ -1,8 +1,8 @@
 # Ethics as First Philosophy 
 
-**Date:** 2014-5-9<br>
 **Author:** Emmanuel Levinas<br>
 **Translators:** Translated by Sean Hand and Michael Temple<br>
+**Date:** 2014-5-9<br>
 **Source:** Published in journal a long time ago: explanation below<br>
 **Copied to Keg:** 2026-08-14<br>
 

@@ -1,7 +1,7 @@
 # Wisdom of Lenin
 
-**Date:** 2026-06-05<br>
 **Author:** Kamil Kazani<br>
+**Date:** 2026-06-05<br>
 **Source:** https://kamilkazani.substack.com/p/the-wisdom-of-vladimir-lenin<br>
 **Copied to Keg:** 2026-06-09<br>
 

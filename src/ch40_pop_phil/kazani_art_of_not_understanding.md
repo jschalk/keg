@@ -1,7 +1,7 @@
 # On the art of not understanding things
 
-**Date:** 2024-09-27<br>
 **Author:** Kamil Kazani<br>
+**Date:** 2024-09-27<br>
 **Source:** https://kamilkazani.substack.com/p/on-the-art-of-not-understanding-things<br>
 **Copied to Keg:** 2026-06-17<br>
 

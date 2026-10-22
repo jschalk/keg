@@ -1,7 +1,7 @@
 # No seriously, I don't give a fuck.
 
-**Date:** 2010-09-08<br>
 **Author:** Emmanuel Schalk<br>
+**Date:** 2010-09-08<br>
 **Source:** Emmanuel Schalk personal files <br>
 **Copied to Keg:** 2026-08-15 <br>
 **Notes:**: This document was found in my personal files. It was written during the first month of my Philosophical career. I still feel this way.<br>

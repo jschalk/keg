@@ -1,7 +1,7 @@
 # Notable @kamilkazai Tweets on x.com
 
-**Date:** 2025-08-02<br>
 **Author:** Kamil Kazani<br>
+**Date:** 2025-08-02<br>
 **Source:** https://x.com/kamilkazani viewed from Emmanuel Schalk's twitter login.<br>
 **Copied to Keg:** 2026-06-09<br>
 

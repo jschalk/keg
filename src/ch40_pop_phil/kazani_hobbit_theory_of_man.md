@@ -1,7 +1,7 @@
 # The Hobbit Theory of Man
 
-**Date:** 2026-06-14<br>
 **Author:** Kamil Kazani<br>
+**Date:** 2026-06-14<br>
 **Source:** https://kamilkazani.substack.com/p/the-hobbit-theory-of-man<br>
 **Copied to Keg:** 2026-06-14<br>
 

@@ -1,7 +1,7 @@
 # Kegology Name Origin
 
-**Date:** 2026-07-06<br>
 **Author:** Emmanuel Schalk<br>
+**Date:** 2026-07-06<br>
 
 Words can mean new things
 

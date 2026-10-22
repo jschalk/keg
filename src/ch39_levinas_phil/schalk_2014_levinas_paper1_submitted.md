@@ -1,8 +1,8 @@
 # Jules Simon's Paper #2 submitted by Emmanuel Schalk
 
 
-**Date:** 2014-4-25<br>
 **Author:** Emmanuel Schalk<br>
+**Date:** 2014-4-25<br>
 **Source:** Emmanuel Schalk personal files <br>
 **Copied to Keg:** 2026-08-14 <br>
 **Note:** Primary purpose of including this paper in the repo is so that it's clear that incomplete, silly, or weird essays are a wonderful way to explore philosophy. The Great Philosophers are so talented we all want to write like them but the only way to get there is to write a lot of stuff, mostly bad, sometimes fun.<br>

@@ -1,7 +1,7 @@
 # Kill the Scholars
 
-**Date:** 2025-08-02<br>
 **Author:** Kamil Kazani<br>
+**Date:** 2025-08-02<br>
 **Source:** https://kamilkazani.substack.com/p/kill-the-scholars<br>
 **Copied to Keg:** 2026-06-09<br>
 

@@ -1,7 +1,7 @@
 # Why honor matters
 
-**Date:** 2023-09-02<br>
 **Author:** Kamil Kazani<br>
+**Date:** 2023-09-02<br>
 **Source:** https://kamilkazani.substack.com/p/why-honor-matters<br>
 **Copied to Keg:** 2026-09-03<br>
 **Note:** Originally was 2022-03-01 thread on Twitter<br>
