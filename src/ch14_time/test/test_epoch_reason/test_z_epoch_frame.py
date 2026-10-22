@@ -303,13 +303,13 @@ def test_add_frame_to_caseunit_SetsAttr_Scenario8_adds_epoch_frame_Wraps_every_x
 def test_add_frame_to_caseunit_SetsAttr_Scenario9_adds_epoch_frame_NoWrap_monthday():
     # ESTABLISH
     bob_person = get_bob_five_person()
-    geo_rope = bob_person.make_rope(wx.five_year_rope, wx.Geo)
+    geo_rope = bob_person.make_rope(wx.five_year_rope, kw.Geo)
     mop_monthday_args = {
         kw.plan_rope: wx.mop_rope,
         kw.epoch_label: wx.five_str,
         kw.reason_context: geo_rope,
         kw.reason_state: geo_rope,
-        kw.month_label: wx.Geo,
+        kw.month_label: kw.Geo,
         kw.year_monthday_lower: 5,
         kw.year_monthday_duration_days: 3,
     }
@@ -340,13 +340,13 @@ def test_add_frame_to_caseunit_SetsAttr_Scenario9_adds_epoch_frame_NoWrap_monthd
 def test_add_frame_to_caseunit_SetsAttr_Scenario10_adds_epoch_frame_Wraps_monthday():
     # ESTABLISH
     bob_person = get_bob_five_person()
-    geo_rope = bob_person.make_rope(wx.five_year_rope, wx.Geo)
+    geo_rope = bob_person.make_rope(wx.five_year_rope, kw.Geo)
     mop_monthday_args = {
         kw.plan_rope: wx.mop_rope,
         kw.epoch_label: wx.five_str,
         kw.reason_context: geo_rope,
         kw.reason_state: geo_rope,
-        kw.month_label: wx.Geo,
+        kw.month_label: kw.Geo,
         kw.year_monthday_lower: 5,
         kw.year_monthday_duration_days: 3,
     }
@@ -377,7 +377,7 @@ def test_add_frame_to_caseunit_SetsAttr_Scenario10_adds_epoch_frame_Wraps_monthd
 def test_add_frame_to_caseunit_SetsAttr_Scenario11_adds_epoch_frame_NoWrap_monthly():
     # ESTABLISH
     bob_person = get_bob_five_person()
-    geo_rope = bob_person.make_rope(wx.five_year_rope, wx.Geo)
+    geo_rope = bob_person.make_rope(wx.five_year_rope, kw.Geo)
     mop_monthly_args = {
         kw.plan_rope: wx.mop_rope,
         kw.epoch_label: wx.five_str,
@@ -415,7 +415,7 @@ def test_add_frame_to_caseunit_SetsAttr_Scenario11_adds_epoch_frame_NoWrap_month
 def test_add_frame_to_caseunit_SetsAttr_Scenario12_adds_epoch_frame_Wraps_monthly():
     # ESTABLISH
     bob_person = get_bob_five_person()
-    geo_rope = bob_person.make_rope(wx.five_year_rope, wx.Geo)
+    geo_rope = bob_person.make_rope(wx.five_year_rope, kw.Geo)
     mop_monthly_args = {
         kw.plan_rope: wx.mop_rope,
         kw.epoch_label: wx.five_str,

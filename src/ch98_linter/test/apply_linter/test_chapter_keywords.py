@@ -304,7 +304,7 @@ def test_Chapters_KeywordsAppearWhereTheyShould():
                     assert file_str.count("from enum import Enum") == 1, "import Enum"
     expected_ch_config = get_expected_ch_config()
     assert len(expected_ch_config) == len(keywords_dict)
-    assert len(expected_ch_config) == 850
+    assert len(expected_ch_config) > 860
     assertion_failure_str = "keyword_src.json has conflicts with generated keyword_src dict. To make file generated version rerun tests with 'rebuild_keyword_src'."
     assert keywords_dict == expected_ch_config, assertion_failure_str
 

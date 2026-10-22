@@ -309,13 +309,13 @@
 # def test_add_frame_to_caseunit_SetsAttr_Scenario9_adds__frame_NoWrap_mnthjour():
 #     # ESTABLISH
 #     bob_person = get_bob_two_person()
-#     geo_rope = bob_person.make_rope(wx.two_yr_rope, wx.Geo)
+#     geo_rope = bob_person.make_rope(wx.two_yr_rope, kw.placeholder)
 #     mop_mnthjour_args = {
 #         kw.plan_rope: wx.mop_rope,
 #         kw._label: wx.two_str,
 #         kw.reason_context: geo_rope,
 #         kw.reason_state: geo_rope,
-#         kw.mnth_label: wx.Geo,
+#         kw.mnth_label: kw.placeholder,
 #         kw.yr_mnthjour_lower: 5,
 #         kw.yr_mnthjour_length_jours: 3,
 #     }
@@ -350,13 +350,13 @@
 # def test_add_frame_to_caseunit_SetsAttr_Scenario10_adds__frame_Wraps_mnthjour():
 #     # ESTABLISH
 #     bob_person = get_bob_two_person()
-#     geo_rope = bob_person.make_rope(wx.two_yr_rope, wx.Geo)
+#     geo_rope = bob_person.make_rope(wx.two_yr_rope, kw.placeholder)
 #     mop_mnthjour_args = {
 #         kw.plan_rope: wx.mop_rope,
 #         kw._label: wx.two_str,
 #         kw.reason_context: geo_rope,
 #         kw.reason_state: geo_rope,
-#         kw.mnth_label: wx.Geo,
+#         kw.mnth_label: kw.placeholder,
 #         kw.yr_mnthjour_lower: 5,
 #         kw.yr_mnthjour_length_jours: 3,
 #     }
@@ -391,7 +391,7 @@
 # def test_add_frame_to_caseunit_SetsAttr_Scenario11_adds__frame_NoWrap_mnthly():
 #     # ESTABLISH
 #     bob_person = get_bob_two_person()
-#     geo_rope = bob_person.make_rope(wx.two_yr_rope, wx.Geo)
+#     geo_rope = bob_person.make_rope(wx.two_yr_rope, kw.placeholder)
 #     mop_mnthly_args = {
 #         kw.plan_rope: wx.mop_rope,
 #         kw._label: wx.two_str,
@@ -431,7 +431,7 @@
 # def test_add_frame_to_caseunit_SetsAttr_Scenario12_adds__frame_Wraps_mnthly():
 #     # ESTABLISH
 #     bob_person = get_bob_two_person()
-#     geo_rope = bob_person.make_rope(wx.two_yr_rope, wx.Geo)
+#     geo_rope = bob_person.make_rope(wx.two_yr_rope, kw.placeholder)
 #     mop_mnthly_args = {
 #         kw.plan_rope: wx.mop_rope,
 #         kw._label: wx.two_str,

@@ -50,7 +50,7 @@ def test_set_epoch_base_case_dayly_ChangesPersonUnit_agenda():
 def test_set_epoch_cases_for_yearly_monthday_ChangesPersonUnit_agenda():
     # ESTABLISH
     bob_person = get_bob_five_person()
-    month_geo_rope = bob_person.make_rope(wx.five_year_rope, wx.Geo)
+    month_geo_rope = bob_person.make_rope(wx.five_year_rope, kw.Geo)
     mop_monthday = 3
     mop_length_days = 4
     mop_dayly_lower_min = 600
@@ -65,7 +65,7 @@ def test_set_epoch_cases_for_yearly_monthday_ChangesPersonUnit_agenda():
         epoch_label=wx.five_str,
         dayly_lower_min=mop_dayly_lower_min,
         dayly_duration_min=mop_day_duration,
-        month_label=wx.Geo,
+        month_label=kw.Geo,
         monthday=mop_monthday,
         length_days=mop_length_days,
     )
