@@ -973,5 +973,5 @@ def test_get_insert_into_heard_raw_sqlstrs_ReturnsObj_Moment_Nabu_Dimens(
         assert insert_h_raw_sqlstrs.get(h_raw_tbl) == h_raw_insert_select
 
 
-# consider moving brixk_src to different chapter
-# brixk_vld
+# consider moving brick_src to different chapter
+# brick_vld

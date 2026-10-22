@@ -1,11 +1,11 @@
 from ch19_db_tool.db_toolbox import db_table_exists, get_row_count, get_table_columns
 from ch20_brick.brick_db_tool import create_brick_sorted_table
-from ch24_etl_brick.etl_brick_main import etl_brixk_raw_tables_to_brixk_agg_tables
+from ch24_etl_brick.etl_brick_main import etl_brick_raw_tables_to_brick_agg_tables
 from ch99_glossary.ch_keyword import Ch24Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 
 
-def test_etl_brixk_raw_tables_to_brixk_agg_tables_PopulatesAggTable_Scenario0_GroupByWorks_bk00103(
+def test_etl_brick_raw_tables_to_brick_agg_tables_PopulatesAggTable_Scenario0_GroupByWorks_bk00103(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -48,7 +48,7 @@ VALUES
     assert not db_table_exists(cursor0, agg_bk00103_tablename)
 
     # WHEN
-    etl_brixk_raw_tables_to_brixk_agg_tables(cursor0)
+    etl_brick_raw_tables_to_brick_agg_tables(cursor0)
 
     # THEN
     assert db_table_exists(cursor0, agg_bk00103_tablename)
@@ -80,7 +80,7 @@ ORDER BY {kw.spark_num}, {kw.cumulative_minute};"""
     assert rows[1] == row1
 
 
-def test_etl_brixk_raw_tables_to_brixk_agg_tables_PopulatesAggTable_Scenario1_GroupByOnlyNonConflictingRecords(
+def test_etl_brick_raw_tables_to_brick_agg_tables_PopulatesAggTable_Scenario1_GroupByOnlyNonConflictingRecords(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -125,7 +125,7 @@ VALUES
     assert not db_table_exists(cursor0, agg_bk00103_tablename)
 
     # WHEN
-    etl_brixk_raw_tables_to_brixk_agg_tables(cursor0)
+    etl_brick_raw_tables_to_brick_agg_tables(cursor0)
 
     # THEN
     assert db_table_exists(cursor0, agg_bk00103_tablename)
@@ -151,7 +151,7 @@ VALUES
     assert rows[0] == row0
 
 
-def test_etl_brixk_raw_tables_to_brixk_agg_tables_PopulatesAggTable_Scenario2_GroupByExcludesRowsWith_error_message(
+def test_etl_brick_raw_tables_to_brick_agg_tables_PopulatesAggTable_Scenario2_GroupByExcludesRowsWith_error_message(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -197,7 +197,7 @@ VALUES
     assert not db_table_exists(cursor0, agg_bk00103_tablename)
 
     # WHEN
-    etl_brixk_raw_tables_to_brixk_agg_tables(cursor0)
+    etl_brick_raw_tables_to_brick_agg_tables(cursor0)
 
     # THEN
     select_agg_sqlstr = f"""
@@ -216,7 +216,7 @@ ORDER BY {kw.spark_num}, {kw.cumulative_minute};"""
     assert rows[1] == row1
 
 
-def test_etl_brixk_raw_tables_to_brixk_agg_tables_PopulatesAggTable_Scenario3_TableDeleteBeforeLoad(
+def test_etl_brick_raw_tables_to_brick_agg_tables_PopulatesAggTable_Scenario3_TableDeleteBeforeLoad(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -254,7 +254,7 @@ VALUES
     agg_bk00105_tablename = f"bk00105_{kw.b_agg}"
     assert get_row_count(cursor0, raw_bk00105_tablename) == 4
     assert not db_table_exists(cursor0, agg_bk00105_tablename)
-    etl_brixk_raw_tables_to_brixk_agg_tables(cursor0)
+    etl_brick_raw_tables_to_brick_agg_tables(cursor0)
     assert get_row_count(cursor0, agg_bk00105_tablename) == 3
     values2_clause = f"""
 VALUES     
@@ -268,7 +268,7 @@ VALUES
     assert get_row_count(cursor0, agg_bk00105_tablename) == 3
 
     # WHEN
-    etl_brixk_raw_tables_to_brixk_agg_tables(cursor0)
+    etl_brick_raw_tables_to_brick_agg_tables(cursor0)
 
     # THEN
     select_agg_sqlstr = f"""

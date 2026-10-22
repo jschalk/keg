@@ -1,14 +1,14 @@
 from ch19_db_tool.db_toolbox import db_table_exists, get_row_count, get_table_columns
 from ch20_brick.brick_db_tool import create_brick_sorted_table
 from ch24_etl_brick.etl_brick_main import (
-    etl_brixk_agg_tables_to_brixk_vld_tables,
+    etl_brick_agg_tables_to_brick_vld_tables,
     get_create_sparks_b_vld_sqlstr,
 )
 from ch99_glossary.ch_keyword import Ch24Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 
 
-def test_etl_brixk_agg_tables_to_brixk_vld_tables_PopulatesVldTable_Scenario0_valid_spark_nums(
+def test_etl_brick_agg_tables_to_brick_vld_tables_PopulatesVldTable_Scenario0_valid_spark_nums(
     cursor0: Cursor,
 ):  # sourcery skip: extract-duplicate-method
     # ESTABLISH
@@ -17,7 +17,7 @@ def test_etl_brixk_agg_tables_to_brixk_vld_tables_PopulatesVldTable_Scenario0_va
     minute_420 = 420
     hour6am = "6am"
     hour7am = "7am"
-    # INSERT INTO brixk_agg table
+    # INSERT INTO brick_agg table
     agg_bk00103_tablename = f"bk00103_{kw.b_agg}"
     agg_bk00103_columns = [
         kw.spark_num,
@@ -58,7 +58,7 @@ VALUES ('{spark1}', '{exx.sue}')
     assert not db_table_exists(cursor0, vld_bk00103_tablename)
 
     # WHEN
-    etl_brixk_agg_tables_to_brixk_vld_tables(cursor0)
+    etl_brick_agg_tables_to_brick_vld_tables(cursor0)
 
     # THEN
     assert db_table_exists(cursor0, vld_bk00103_tablename)
@@ -90,7 +90,7 @@ ORDER BY {kw.spark_num}, {kw.cumulative_minute};"""
     assert rows[1] == row1
 
 
-def test_etl_brixk_agg_tables_to_brixk_vld_tables_PopulatesVldTable_Scenario1_NoDuplicates(
+def test_etl_brick_agg_tables_to_brick_vld_tables_PopulatesVldTable_Scenario1_NoDuplicates(
     cursor0: Cursor,
 ):  # sourcery skip: extract-duplicate-method
     # ESTABLISH
@@ -99,7 +99,7 @@ def test_etl_brixk_agg_tables_to_brixk_vld_tables_PopulatesVldTable_Scenario1_No
     minute_420 = 420
     hour6am = "6am"
     hour7am = "7am"
-    # INSERT INTO brixk_agg table
+    # INSERT INTO brick_agg table
     agg_bk00103_tablename = f"bk00103_{kw.b_agg}"
     agg_bk00103_columns = [
         kw.spark_num,
@@ -136,7 +136,7 @@ VALUES ('{spark1}', '{exx.sue}')
 """
     cursor0.execute(select_sparks_b_vld_sqlstr)
     vld_bk00103_tablename = f"bk00103_{kw.b_vld}"
-    etl_brixk_agg_tables_to_brixk_vld_tables(cursor0)
+    etl_brick_agg_tables_to_brick_vld_tables(cursor0)
     assert get_row_count(cursor0, vld_bk00103_tablename) == 2
     minute_480 = 480
     hour8am = "8am"
@@ -159,13 +159,13 @@ VALUES
     assert get_row_count(cursor0, vld_bk00103_tablename) == 2
 
     # WHEN
-    etl_brixk_agg_tables_to_brixk_vld_tables(cursor0)
+    etl_brick_agg_tables_to_brick_vld_tables(cursor0)
 
     # THEN
     assert get_row_count(cursor0, vld_bk00103_tablename) == 3
 
 
-# def test_etl_brixk_agg_tables_to_brixk_vld_tables_PopulatesVldTable_Scenario1_GroupByOnlyNonConflictingRecords(
+# def test_etl_brick_agg_tables_to_brick_vld_tables_PopulatesVldTable_Scenario1_GroupByOnlyNonConflictingRecords(
 #     cursor0: Cursor,
 # ):
 #     # ESTABLISH
@@ -210,7 +210,7 @@ VALUES
 #     assert not db_table_exists(cursor0, vld_bk00103_tablename)
 
 #     # WHEN
-#     etl_brixk_agg_tables_to_brixk_vld_tables(cursor0)
+#     etl_brick_agg_tables_to_brick_vld_tables(cursor0)
 
 #     # THEN
 #     assert db_table_exists(cursor0, vld_bk00103_tablename)
@@ -236,7 +236,7 @@ VALUES
 #     assert rows[0] == row0
 
 
-# def test_etl_brixk_agg_tables_to_brixk_vld_tables_PopulatesVldTable_Scenario2_GroupByExcludesRowsWith_error_message(
+# def test_etl_brick_agg_tables_to_brick_vld_tables_PopulatesVldTable_Scenario2_GroupByExcludesRowsWith_error_message(
 #     cursor0: Cursor,
 # ):
 #     # ESTABLISH
@@ -282,7 +282,7 @@ VALUES
 #     assert not db_table_exists(cursor0, vld_bk00103_tablename)
 
 #     # WHEN
-#     etl_brixk_agg_tables_to_brixk_vld_tables(cursor0)
+#     etl_brick_agg_tables_to_brick_vld_tables(cursor0)
 
 #     # THEN
 #     select_vld_sqlstr = f"""
@@ -301,7 +301,7 @@ VALUES
 #     assert rows[1] == row1
 
 
-# def test_etl_brixk_agg_tables_to_brixk_vld_tables_PopulatesVldTable_Scenario3_TableDeleteBeforeLoad(
+# def test_etl_brick_agg_tables_to_brick_vld_tables_PopulatesVldTable_Scenario3_TableDeleteBeforeLoad(
 #     cursor0: Cursor,
 # ):
 #     # ESTABLISH
@@ -339,7 +339,7 @@ VALUES
 #     vld_bk00105_tablename = f"bk00105_{kw.b_vld}"
 #     assert get_row_count(cursor0, agg_bk00105_tablename) == 4
 #     assert not db_table_exists(cursor0, vld_bk00105_tablename)
-#     etl_brixk_agg_tables_to_brixk_vld_tables(cursor0)
+#     etl_brick_agg_tables_to_brick_vld_tables(cursor0)
 #     assert get_row_count(cursor0, vld_bk00105_tablename) == 3
 #     values2_clause = f"""
 # VALUES
@@ -353,7 +353,7 @@ VALUES
 #     assert get_row_count(cursor0, vld_bk00105_tablename) == 3
 
 #     # WHEN
-#     etl_brixk_agg_tables_to_brixk_vld_tables(cursor0)
+#     etl_brick_agg_tables_to_brick_vld_tables(cursor0)
 
 #     # THEN
 #     select_vld_sqlstr = f"""

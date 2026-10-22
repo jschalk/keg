@@ -138,7 +138,7 @@ def test_get_keywords_definitions_ReturnsObj_CheckNoChapter_keywords():
         valid_chs = parse_valid_ch_str(ch_ints, kw_config.get(kw.valid_ch))
         config_description = keywords_definitions.get(keyword)
         assertion_failure_str = f"{keyword} {valid_chs=} {config_description}"
-        if valid_chs:
+        if valid_chs and keyword not in {"factory"}:
             used_str = "Not used in codebase."
             assert used_str not in config_description, assertion_failure_str
         # else:

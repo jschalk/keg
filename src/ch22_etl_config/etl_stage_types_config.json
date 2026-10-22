@@ -1,16 +1,16 @@
 {
   "b_agg": {
-    "abbv9": "brixk_agg", 
+    "abbv9": "brick_agg", 
     "description": "Brick Agg: The Brick Raw tables are aggregated to elimanate duplicates.", 
     "stage_type_order": 4
   }, 
   "b_raw": {
-    "abbv9": "brixk_raw", 
+    "abbv9": "brick_raw", 
     "description": "Brick Raw: The importable Excel Sheets entering the database", 
     "stage_type_order": 3
   }, 
   "b_src": {
-    "abbv9": "brixk_src", 
+    "abbv9": "brick_src", 
     "description": "Brick files. Brick formats with SparkNum.", 
     "stage_type_order": 2
   }, 
@@ -40,7 +40,7 @@
     "stage_type_order": 1
   }, 
   "k_vld": {
-    "abbv9": "brixk_vld", 
+    "abbv9": "brick_vld", 
     "description": "Brick Valid: The Brick Agg tables filtered to correct datatypes. ", 
     "stage_type_order": 6
   }, 

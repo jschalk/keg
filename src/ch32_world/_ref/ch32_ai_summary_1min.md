@@ -51,7 +51,7 @@ New semantic type: `WorldName` (a `str`) — identifies a world, the top-level c
 - `output_dir` — where output Excel files and CSVs are written.
 
 **`brick_sheets_to_lego_with_cursor(cursor, bricks_src_dir, moment_mstr_dir)`** — the complete ordered ETL pipeline as a single function. Called with an open SQLite cursor, it executes all ~20 ETL stage functions in sequence:
-1. `etl_brick_dfs_to_brixk_raw_tables` through `etl_brixk_vld_tables_to_sound_raw_tables` (ch24 — brick validation).
+1. `etl_brick_dfs_to_brick_raw_tables` through `etl_brick_vld_tables_to_sound_raw_tables` (ch24 — brick validation).
 2. `etl_sound_raw_tables_to_sound_agg_tables` through `etl_sound_vld_tables_to_heard_raw_tables` (ch25 — sound/translation).
 3. `etl_heard_raw_tables_to_heard_agg_tables` through `etl_heard_vld_to_lego_spark_person_csvs` (ch26 — heard/reconstruction).
 4. `etl_lego_spark_person_csvs_to_lesson_json` through `calc_moment_bud_contact_mandate_net_ledgers` (ch27 — lego/listening).
