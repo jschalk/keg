@@ -4554,6 +4554,13 @@ class Ch36Keywords(str, Enum):
         return self.value
 
 
+class Ch38Keywords(str, Enum):
+    ch38 = "ch38"
+
+    def __str__(self):
+        return self.value
+
+
 class Ch39Keywords(str, Enum):
     American = "American"
     Border = "Border"
