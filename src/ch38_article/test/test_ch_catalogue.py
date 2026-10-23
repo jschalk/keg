@@ -1,5 +1,5 @@
-from src.ch00_py.file_toolbox import save_file
-from src.ch38_article_tool.article_toolbox import (
+from ch00_py.file_toolbox import save_file
+from ch38_article.article_toolbox import (
     get_markdown_file_metadata,
     create_markdown_table_of_contents,
 )
@@ -173,7 +173,7 @@ def test_create_markdown_table_of_contents_ReturnsStr_Scenario1_OneArticle():
     # THEN
     expected_markdown = """# Table of Contents
 
-## Big Clause Little Clause
+## Big Clause
 
 *Hans Christen Anderson · 1844*
 

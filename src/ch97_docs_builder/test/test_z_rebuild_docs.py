@@ -30,3 +30,4 @@ def test_SpecialTestThatBuildsDocs(rebuild_docs):
     # 4% of stances resave all json files so that they are ordered alphabetically
     if random_random() < 0.04 or rebuild_docs:
         resave_chapter_and_keyword_json_files()
+    # TODO for each chapter primarily concerned with articles save_ch_article_catelogue

@@ -35,7 +35,7 @@
 - ch34_finance: ch34, finance, financial
 - ch35_person_viewer: ch35
 - ch36_news: News, ch36, news
-- ch38_article_tool: Article, article, ch38
+- ch38_article: Article, article, ch38
 - ch39_levinas_phil: American, God, Infinity, Pillar, Totality, Water, bearing, ch39, god, gravity, hose, infinity, invite, land, power, totality, water, welcome
 - ch40_pop_phil: Faction, Hayek, Hobbit, Kronos, Land, Lord, Loyal, Ride, Shill, Soil, ch40, cow, faction, hive, honor, impression, invitation, knee, kronosmax, ladder, lord, losing, loyal, oil, pay, prestige, ride, rival, shill, soil, tower, trash, trooper, winner, winning
 - ch41_wheel: Climb, Discipline, Fall, Honor, KegWheel, Kegology, Losing, Monopoly, Pay, Prestige, Rise, Shot, Stable, Welcome, Wheel, Winning, alien, ch41, climb, cling, discipline, drag, fall, heart, jump, kegology, kneeler, lift, linchpin, loser, pillar, pump, revenge, shot, soldier, stable, valor, wheel, wheelers

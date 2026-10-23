@@ -1,4 +1,4 @@
-from src.ch38_article_tool.article_toolbox import (
+from ch38_article.article_toolbox import (
     get_articleunit_from_file,
     get_default_article_snippets_order,
 )

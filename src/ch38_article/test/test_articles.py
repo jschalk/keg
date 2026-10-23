@@ -1,5 +1,5 @@
-from src.ch00_py.file_toolbox import save_file
-from src.ch38_article_tool.article_toolbox import (
+from ch00_py.file_toolbox import save_file
+from ch38_article.article_toolbox import (
     get_snippets_locations_dict,
     ArticleUnit,
     get_articleunit_from_file,
