@@ -2,31 +2,34 @@ from dataclasses import dataclass
 from pathlib import Path
 
 
-def set_str_index(
-    x_search_str: str, x_lines_list: list, x_matches_list: list, x_locations_dict: dict
+def set_snippet_indexs(
+    x_search_snippet: str,
+    x_lines_list: list,
+    x_matches_list: list,
+    x_locations_dict: dict,
 ) -> None:
-    if x_search_str:
-        for x_line_num, x_line_str in enumerate(x_lines_list, start=1):
+    if x_search_snippet:
+        for x_line_num, x_line_snippet in enumerate(x_lines_list, start=1):
             x_start_index = 0
             while True:
-                x_col_index = x_line_str.find(x_search_str, x_start_index)
+                x_col_index = x_line_snippet.find(x_search_snippet, x_start_index)
                 if x_col_index == -1:
                     break
                 x_matches_list.append((x_line_num, x_col_index + 1))
                 x_start_index = x_col_index + 1
 
-    x_locations_dict[x_search_str] = x_matches_list
+    x_locations_dict[x_search_snippet] = x_matches_list
 
 
-def get_string_locations_dict(
-    markdown_text: str, search_strings: list[str]
+def get_snippets_locations_dict(
+    markdown_text: str, search_snippets: set[str]
 ) -> dict[str, list[tuple[int, int]]]:
     """
     Locate each search string within a markdown document.
 
     Args:
         markdown_text: The full contents of the markdown file as a string.
-        search_strings: The list of substrings to search for.
+        search_snippets: The list of substrings to search for.
 
     Returns:
         A dict mapping each search string to a list of (line_number, column_number)
@@ -37,9 +40,11 @@ def get_string_locations_dict(
     x_locations_dict: dict[str, list[tuple[int, int]]] = {}
     x_lines_list = markdown_text.splitlines()
 
-    for x_search_str in search_strings:
+    for x_search_snippet in search_snippets:
         x_matches_list: list[tuple[int, int]] = []
-        set_str_index(x_search_str, x_lines_list, x_matches_list, x_locations_dict)
+        set_snippet_indexs(
+            x_search_snippet, x_lines_list, x_matches_list, x_locations_dict
+        )
     return x_locations_dict
 
 
@@ -58,40 +63,51 @@ def get_failing_index(numbers: list[int | None]) -> int | None:
     return None
 
 
+def get_default_article_snippets_order() -> list[str]:
+    return ["**Author:**", "**Date:**", "**Source:**", "**Copied to Keg:**"]
+
+
 @dataclass
 class ArticleUnit:
     md_file_path: str = None
-    ordered_required_strs: list[str] = None
-    required_line_nums: list[int] = None
+    required_snippets: list[str] = None
+    ordered_line_nums: list[int] = None
     missing_required: str = None
+    ordered_snippets: str = None
     out_of_order_req_index: list[int] = None
     out_of_order_req_str: str = None
 
 
-def get_articleunit_from_file(
-    file_path: Path, ordered_required_strs: list[str]
-) -> ArticleUnit:
-    file_str = Path(file_path).read_text(encoding="utf-8")
-    str_loc_dict = get_string_locations_dict(file_str, ordered_required_strs)
-    missing_required_lines = ""
+def get_ordered_line_nums(file_str: str, ordered_snippets: set[str]) -> list[int]:
+    str_loc_dict = get_snippets_locations_dict(file_str, ordered_snippets)
     ordered_line_nums = []
-    for required_str in ordered_required_strs:
-        if not str_loc_dict.get(required_str):
-            missing_required_lines += f", '{required_str}'"
+    for ordered_str in ordered_snippets:
+        if not str_loc_dict.get(ordered_str):
             ordered_line_nums.append(None)
         else:
-            ordered_line_nums.append(str_loc_dict.get(required_str)[0][0])
+            ordered_line_nums.append(str_loc_dict.get(ordered_str)[0][0])
+    return ordered_line_nums
+
+
+def get_articleunit_from_file(
+    file_path: Path, required_snippets: list[str], ordered_snippets: list[str]
+) -> ArticleUnit:
+    file_str = Path(file_path).read_text(encoding="utf-8")
+    missing_required_lines = "".join(
+        f", '{required_snippet}'"
+        for required_snippet in required_snippets
+        if required_snippet not in file_str
+    )
+    ordered_line_nums = get_ordered_line_nums(file_str, ordered_snippets)
     failing_index = get_failing_index(ordered_line_nums)
     out_of_order_req_str = ""
     if failing_index:
-        out_of_order_req_str = (
-            f"{ordered_required_strs[failing_index]} is out of order."
-        )
+        out_of_order_req_str = f"{ordered_snippets[failing_index]} is out of order."
 
     return ArticleUnit(
         md_file_path=file_path,
-        ordered_required_strs=ordered_required_strs,
-        required_line_nums=ordered_line_nums,
+        required_snippets=required_snippets,
+        ordered_line_nums=ordered_line_nums,
         missing_required=missing_required_lines,
         out_of_order_req_index=failing_index,
         out_of_order_req_str=out_of_order_req_str,
