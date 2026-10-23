@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 from pathlib import Path
+from re import IGNORECASE as re_IGNORECASE, search as re_search
+from pathlib import Path
 
 
 def set_snippet_indexs(
@@ -112,3 +114,54 @@ def get_articleunit_from_file(
         out_of_order_req_index=failing_index,
         out_of_order_req_str=out_of_order_req_str,
     )
+
+
+def get_markdown_file_metadata(directory: Path) -> dict[str, dict[str, str | None]]:
+    """Return author and date metadata from first-level Markdown files."""
+    result = {}
+
+    for file_path in directory.glob("*.md"):
+        if "catalogue" in file_path.stem:
+            continue
+
+        content = file_path.read_text(encoding="utf-8")
+
+        author_match = re_search(
+            r"\*\*Author:\*\*\s*(.*?)\s*(?:<br\s*/?>|\n)", content, re_IGNORECASE
+        )
+        date_match = re_search(
+            r"\*\*Date:\*\*\s*(.*?)\s*(?:<br\s*/?>|\n)", content, re_IGNORECASE
+        )
+
+        result[file_path.name] = {
+            "author": author_match.group(1).strip() if author_match else None,
+            "date": date_match.group(1).strip() if date_match else None,
+        }
+
+    return result
+
+
+def create_markdown_table_of_contents(
+    metadata: dict[str, dict[str, str | None]],
+) -> str:
+    """Return a Markdown table of contents."""
+    lines = ["# Table of Contents", ""]
+
+    for file_name, file_metadata in sorted(metadata.items()):
+        title = Path(file_name).stem.replace("_", " ").replace("-", " ").title()
+        author = file_metadata.get("author") or "Unknown author"
+        date = file_metadata.get("date") or "Undated"
+
+        lines.extend(
+            [
+                f"## {title}",
+                "",
+                f"*{author} · {date}*",
+                "",
+                f"[Read article](./{file_name})",
+                "",
+                "---",
+                "",
+            ]
+        )
+    return "\n".join(lines).rstrip() + "\n"

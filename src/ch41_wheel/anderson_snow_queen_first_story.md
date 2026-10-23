@@ -6,7 +6,7 @@
 **Copied to Keg:** 2026-10-02<br>
 **Note:** No translator credited.<br>
 
-*What happened to the mirrow fragments?*
+*What happened to the mirror fragments?*
 
 ---
 <div align="center">

@@ -4555,6 +4555,8 @@ class Ch36Keywords(str, Enum):
 
 
 class Ch38Keywords(str, Enum):
+    Article = "Article"
+    article = "article"
     ch00 = "ch00"
     ch38 = "ch38"
     src = "src"
@@ -4575,6 +4577,7 @@ class Ch39Keywords(str, Enum):
     Simon = "Simon"
     Totality = "Totality"
     Water = "Water"
+    article = "article"
     attributes = "attributes"
     audie = "audie"
     bearing = "bearing"
@@ -4632,6 +4635,7 @@ class Ch39Keywords(str, Enum):
 
 class Ch40Keywords(str, Enum):
     American = "American"
+    Article = "Article"
     Event = "Event"
     Faction = "Faction"
     Geo = "Geo"
@@ -4651,6 +4655,7 @@ class Ch40Keywords(str, Enum):
     Trump = "Trump"
     Water = "Water"
     addin = "addin"
+    article = "article"
     atom = "atom"
     attributes = "attributes"
     audie = "audie"
@@ -4735,6 +4740,7 @@ class Ch40Keywords(str, Enum):
 
 class Ch41Keywords(str, Enum):
     American = "American"
+    Article = "Article"
     Audie = "Audie"
     Boss = "Boss"
     Climb = "Climb"
@@ -4769,6 +4775,7 @@ class Ch41Keywords(str, Enum):
     Winning = "Winning"
     addin = "addin"
     alien = "alien"
+    article = "article"
     atom = "atom"
     audie = "audie"
     bearing = "bearing"
@@ -4833,7 +4840,6 @@ class Ch41Keywords(str, Enum):
     prestige = "prestige"
     promise = "promise"
     pump = "pump"
-    readable = "readable"
     request = "request"
     revenge = "revenge"
     ride = "ride"
@@ -5252,7 +5258,6 @@ class Ch98Keywords(str, Enum):
     plan = "plan"
     prncase = "prncase"
     puncher = "puncher"
-    readable = "readable"
     request = "request"
     semantic_type = "semantic_type"
     shop = "shop"

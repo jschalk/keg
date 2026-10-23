@@ -17,6 +17,8 @@
   "Apex": "The top of the Pyramid. From the perspective of the FamilyUnits in Power it is the Face of the Pyramid.", 
   "apex": "The top of the Pyramid. From the perspective of the FamilyUnits in Power it is the Face of the Pyramid.", 
   "April": "Example key with value 'April' used for tests throughout codebase.", 
+  "Article": "A document that is readable by a human.", 
+  "article": "A document that is readable by a human.", 
   "assert": "Used so often in Python that it cannot be a kegology keyword.", 
   "atom": "Smallest possible unit of a PersonUnit", 
   "attributes": "General term used to describe things about another thing", 
