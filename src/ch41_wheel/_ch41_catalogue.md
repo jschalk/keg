@@ -1,193 +1,97 @@
 # Table of Contents
 
-## Anderson Snow Queen First Story
-
-*Hans Christen Anderson · 1844*
-
-[Read article](./anderson_snow_queen_first_story.md)
+**[First Story of the Snow Queen](./anderson_snow_queen_first_story.md)** Hans Christen Anderson - 1844
 
 ---
 
-## Mix My Shot
-
-*Lin Manuel-Miranda, Busta Rhymes, Joell Ortiz & Nate Ruess · 2016*
-
-[Read article](./mix_my_shot.md)
+**[My Shot [Rise Up Remix]](./mix_my_shot.md)** Lin Manuel-Miranda, Busta Rhymes, Joell Ortiz & Nate Ruess - 2016
 
 ---
 
-## Monopoly Parts
-
-*Emmanuel Schalk · 2026-06-21*
-
-[Read article](./monopoly_parts.md)
+**[All the Monolopy Game required parts](./monopoly_parts.md)** Emmanuel Schalk - 2026-06-21
 
 ---
 
-## Monopoly Rules
-
-*Emmanuel Schalk · 2026-06-21*
-
-[Read article](./monopoly_rules.md)
+**[Monopoly Standard Rules](./monopoly_rules.md)** Emmanuel Schalk - 2026-06-21
 
 ---
 
-## Schalk 2010 Purpose
-
-*Emmanuel Schalk · 2010-09-08*
-
-[Read article](./schalk_2010_purpose.md)
+**[No seriously, I don't give a fuck.](./schalk_2010_purpose.md)** Emmanuel Schalk - 2010-09-08
 
 ---
 
-## Schalk A Kind Of Death
-
-*Emmanuel Schalk · 2026-10-05*
-
-[Read article](./schalk_a_kind_of_death.md)
+**[A kind of death](./schalk_a_kind_of_death.md)** Emmanuel Schalk - 2026-10-05
 
 ---
 
-## Schalk Baking Soda Good
-
-*Emmanuel Schalk · 2026-06-14*
-
-[Read article](./schalk_baking_soda_good.md)
+**[On Buying and Giving Baking Soda](./schalk_baking_soda_good.md)** Emmanuel Schalk - 2026-06-14
 
 ---
 
-## Schalk Farm Dream
-
-*Emmanuel Schalk · 2026-08-27*
-
-[Read article](./schalk_farm_dream.md)
+**[Farm Dream](./schalk_farm_dream.md)** Emmanuel Schalk - 2026-08-27
 
 ---
 
-## Schalk Keg Oamp Moment
-
-*Emmanuel Schalk · 2026-10-01*
-
-[Read article](./schalk_keg_oamp_moment.md)
+**[My multi-year oamp moment](./schalk_keg_oamp_moment.md)** Emmanuel Schalk - 2026-10-01
 
 ---
 
-## Schalk Kegology Name Origin
-
-*Emmanuel Schalk · 2026-07-06*
-
-[Read article](./schalk_kegology_name_origin.md)
+**[Kegology Name Origin](./schalk_kegology_name_origin.md)** Emmanuel Schalk - 2026-07-06
 
 ---
 
-## Schalk On Tubes
-
-*Emmanuel Schalk · 2026-09-29*
-
-[Read article](./schalk_on_tubes.md)
+**[On Tubes](./schalk_on_tubes.md)** Emmanuel Schalk - 2026-09-29
 
 ---
 
-## Schalk People Cannot Lie
-
-*Emmanuel Schalk · 2026-10-22*
-
-[Read article](./schalk_people_cannot_lie.md)
+**[People cannot lie](./schalk_people_cannot_lie.md)** Emmanuel Schalk - 2026-10-22
 
 ---
 
-## Schalk Philosophy Hill
-
-*Emmanuel Schalk · 2026-09-19*
-
-[Read article](./schalk_philosophy_hill.md)
+**[Different philosophical disciplines](./schalk_philosophy_hill.md)** Emmanuel Schalk - 2026-09-19
 
 ---
 
-## Schalk Postage To Phd
-
-*Emmanuel Schalk · 2026-06-14*
-
-[Read article](./schalk_postage_to_phd.md)
+**[On Writing Slogans or Lectures or Books](./schalk_postage_to_phd.md)** Emmanuel Schalk - 2026-06-14
 
 ---
 
-## Schalk Rosas Cantina
-
-*Emmanuel Schalk · 2026-07-05*
-
-[Read article](./schalk_rosas_cantina.md)
+**[Rosa's Cantina](./schalk_rosas_cantina.md)** Emmanuel Schalk - 2026-07-05
 
 ---
 
-## Schalk Sean Called
-
-*Emmanuel Schalk · 2026-09-25*
-
-[Read article](./schalk_sean_called.md)
+**[Sean called](./schalk_sean_called.md)** Emmanuel Schalk - 2026-09-25
 
 ---
 
-## Schalk Shaq Candy
-
-*Emmanuel Schalk · 2026-06-17*
-
-[Read article](./schalk_shaq_candy.md)
+**[Untitled](./schalk_shaq_candy.md)** Emmanuel Schalk - 2026-06-17
 
 ---
 
-## Schalk Use Monopoly
-
-*Emmanuel Schalk · 2026-06-21*
-
-[Read article](./schalk_use_monopoly.md)
+**[Monopoly the Game and Understanding Money Supply](./schalk_use_monopoly.md)** Emmanuel Schalk - 2026-06-21
 
 ---
 
-## Schalk Whats That Name
-
-*Emmanuel Schalk · 2026-07-05*
-
-[Read article](./schalk_whats_that_name.md)
+**[Whats that Name](./schalk_whats_that_name.md)** Emmanuel Schalk - 2026-07-05
 
 ---
 
-## Schalk Wheel0 Theory
-
-*Emmanuel Schalk · 2026-06-28*
-
-[Read article](./schalk_wheel0_theory.md)
+**[Kegology Political Theory](./schalk_wheel0_theory.md)** Emmanuel Schalk - 2026-06-28
 
 ---
 
-## Schalk Wheel1 Implications
-
-*Emmanuel Schalk · 2026-06-28*
-
-[Read article](./schalk_wheel1_implications.md)
+**[Kegology Political Theory](./schalk_wheel1_implications.md)** Emmanuel Schalk - 2026-06-28
 
 ---
 
-## Schalk Wheel2 Campaign
-
-*Emmanuel Schalk · 2026-06-28*
-
-[Read article](./schalk_wheel2_campaign.md)
+**[Kegology Political Theory](./schalk_wheel2_campaign.md)** Emmanuel Schalk - 2026-06-28
 
 ---
 
-## Schalk When I Am Done
-
-*Emmanuel Schalk · 2026-06-09*
-
-[Read article](./schalk_when_i_am_done.md)
+**[When I'm going to be done with Kegology.](./schalk_when_i_am_done.md)** Emmanuel Schalk - 2026-06-09
 
 ---
 
-## Steve Texts
-
-*Steve Hernandez and Emmanuel Schalk · 2026-08*
-
-[Read article](./steve_texts.md)
+**[Some selected Steve texts](./steve_texts.md)** Steve Hernandez and Emmanuel Schalk - 2026-08
 
 ---

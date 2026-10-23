@@ -1,73 +1,37 @@
 # Table of Contents
 
-## Levinas Ethics As First Philo
-
-*Emmanuel Levinas · 2014-5-9*
-
-[Read article](./levinas_ethics_as_first_philo.md)
+**[Ethics as First Philosophy](./levinas_ethics_as_first_philo.md)** Emmanuel Levinas - 2014-5-9
 
 ---
 
-## Schalk 2013 Appiah Language Paper
-
-*Emmanuel Schalk · 2013-5-26*
-
-[Read article](./schalk_2013_appiah_language_paper.md)
+**[Jules Simon's Paper #1 submitted by Emmanuel Schalk](./schalk_2013_appiah_language_paper.md)** Emmanuel Schalk - 2013-5-26
 
 ---
 
-## Schalk 2014 Levinas Paper1 Submitted
-
-*Emmanuel Schalk · 2014-4-25*
-
-[Read article](./schalk_2014_levinas_paper1_submitted.md)
+**[Jules Simon's Paper #2 submitted by Emmanuel Schalk](./schalk_2014_levinas_paper1_submitted.md)** Emmanuel Schalk - 2014-4-25
 
 ---
 
-## Simon 2014 Levinas Paper1 Instructions
-
-*Jules Simon · 2014-1*
-
-[Read article](./simon_2014_levinas_paper1_instructions.md)
+**[Jules Simon's Paper #1 instructions for Emmanuel Levinas Class](./simon_2014_levinas_paper1_instructions.md)** Jules Simon - 2014-1
 
 ---
 
-## Simon 2014 Levinas Protocol 0211
-
-*Unknown, Edited by Emmanuel · 2014-3-18*
-
-[Read article](./simon_2014_levinas_protocol_0211.md)
+**[Jules Simon's Emmanuel Levinas Class Protocol](./simon_2014_levinas_protocol_0211.md)** Unknown, Edited by Emmanuel - 2014-3-18
 
 ---
 
-## Simon 2014 Levinas Protocol 0314
-
-*Guillermo Estrada · 2014-3-18*
-
-[Read article](./simon_2014_levinas_protocol_0314.md)
+**[Jules Simon's Emmanuel Levinas Class Protocol](./simon_2014_levinas_protocol_0314.md)** Guillermo Estrada - 2014-3-18
 
 ---
 
-## Simon 2014 Levinas Syllabus
-
-*Jules Simon · 2014-1*
-
-[Read article](./simon_2014_levinas_syllabus.md)
+**[Jules Simon's Syllabus for course on Emmanuel Levinas](./simon_2014_levinas_syllabus.md)** Jules Simon - 2014-1
 
 ---
 
-## Simon Ethical Sense Suffering
-
-*Jules Simon · 2009-01-27*
-
-[Read article](./simon_ethical_sense_suffering.md)
+**[Making Ethical Sense of *Useless Suffering* with Levinas](./simon_ethical_sense_suffering.md)** Jules Simon - 2009-01-27
 
 ---
 
-## Simon Phenomenological Ethics
-
-*Jules Simon · 2014-5-9*
-
-[Read article](./simon_phenomenological_ethics.md)
+**[What is Phenomenological Ethics?](./simon_phenomenological_ethics.md)** Jules Simon - 2014-5-9
 
 ---

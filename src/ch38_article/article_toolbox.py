@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from pathlib import Path
-from re import IGNORECASE as re_IGNORECASE, search as re_search
+from re import IGNORECASE as re_IGNORECASE, search as re_search, match as re_match
 from pathlib import Path
 
 
@@ -125,6 +125,11 @@ def get_markdown_file_metadata(directory: Path) -> dict[str, dict[str, str | Non
             continue
 
         content = file_path.read_text(encoding="utf-8")
+        first_line = next(
+            (line.strip() for line in content.splitlines() if line.strip()),
+            "",
+        )
+        post_match = re_match(r"^#\s+(.+?)\s*#*$", first_line)
 
         author_match = re_search(
             r"\*\*Author:\*\*\s*(.*?)\s*(?:<br\s*/?>|\n)", content, re_IGNORECASE
@@ -136,6 +141,7 @@ def get_markdown_file_metadata(directory: Path) -> dict[str, dict[str, str | Non
         result[file_path.name] = {
             "author": author_match.group(1).strip() if author_match else None,
             "date": date_match.group(1).strip() if date_match else None,
+            "post": post_match.group(1).strip() if post_match else None,
         }
 
     return result
@@ -151,14 +157,11 @@ def create_markdown_table_of_contents(
         title = Path(file_name).stem.replace("_", " ").replace("-", " ").title()
         author = file_metadata.get("author") or "Unknown author"
         date = file_metadata.get("date") or "Undated"
+        post = file_metadata.get("post") or "Untitled"
 
         lines.extend(
             [
-                f"## {title}",
-                "",
-                f"*{author} · {date}*",
-                "",
-                f"[Read article](./{file_name})",
+                f"**[{post}](./{file_name})** {author} - {date}",
                 "",
                 "---",
                 "",

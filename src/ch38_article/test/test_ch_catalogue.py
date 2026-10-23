@@ -19,8 +19,7 @@ def test_get_markdown_file_metadata_ReturnsDict_Scenario0_EmptyDir(temp3_dir):
 def test_get_markdown_file_metadata_ReturnsDict_Scenario1_ValidMetadata(temp3_dir):
     # ESTABLISH
     temp_file_path = os_path_join(temp3_dir, "article.md")
-    temp_file_str = """
-# Big Clause Little Clause
+    temp_file_str = """# Big Clause Little Clause
 
 **Author:** Hans Christen Anderson<br>
 **Date:** 1844<br>
@@ -37,6 +36,7 @@ Article content.
         "article.md": {
             "author": "Hans Christen Anderson",
             "date": "1844",
+            "post": "Big Clause Little Clause",
         }
     }
     assert x_metadata == expected_metadata
@@ -47,7 +47,7 @@ def test_get_markdown_file_metadata_ReturnsDict_Scenario2_DifferentDateFormat(
 ):
     # ESTABLISH
     temp_file_path = os_path_join(temp3_dir, "article.md")
-    temp_file_str = """
+    temp_file_str = """# Big Clause Little Clause
 **Author:** Jane Smith<br>
 **Date:** October 23, 2026<br>
 """
@@ -61,6 +61,7 @@ def test_get_markdown_file_metadata_ReturnsDict_Scenario2_DifferentDateFormat(
         "article.md": {
             "author": "Jane Smith",
             "date": "October 23, 2026",
+            "post": "Big Clause Little Clause",
         }
     }
     assert x_metadata == expected_metadata
@@ -71,8 +72,7 @@ def test_get_markdown_file_metadata_ReturnsDict_Scenario3_MissingMetadata(
 ):
     # ESTABLISH
     temp_file_path = os_path_join(temp3_dir, "article.md")
-    temp_file_str = """
-# An Article
+    temp_file_str = """# An Article
 
 Article content without metadata.
 """
@@ -86,6 +86,7 @@ Article content without metadata.
         "article.md": {
             "author": None,
             "date": None,
+            "post": "An Article",
         }
     }
     assert x_metadata == expected_metadata
@@ -98,7 +99,8 @@ def test_get_markdown_file_metadata_ReturnsDict_Scenario4_ExcludesCatalogue(
     article_file_path = os_path_join(temp3_dir, "article.md")
     catalogue_file_path = os_path_join(temp3_dir, "article_catalogue.md")
 
-    temp_file_str = """
+    temp_file_str = """# Big Clause Little Clause
+
 **Author:** Jane Smith<br>
 **Date:** 2026-10-23<br>
 """
@@ -113,6 +115,7 @@ def test_get_markdown_file_metadata_ReturnsDict_Scenario4_ExcludesCatalogue(
         "article.md": {
             "author": "Jane Smith",
             "date": "2026-10-23",
+            "post": "Big Clause Little Clause",
         }
     }
     assert x_metadata == expected_metadata
@@ -127,7 +130,9 @@ def test_get_markdown_file_metadata_ReturnsDict_Scenario5_OnlyFirstLevelFiles(
     os_makedirs(subdirectory_path)
 
     nested_file_path = os_path_join(subdirectory_path, "nested.md")
-    temp_file_str = """
+    temp_file_str = """# Big Clause Little Clause
+
+
 **Author:** Jane Smith<br>
 **Date:** 2026<br>
 """
@@ -142,6 +147,7 @@ def test_get_markdown_file_metadata_ReturnsDict_Scenario5_OnlyFirstLevelFiles(
         "article.md": {
             "author": "Jane Smith",
             "date": "2026",
+            "post": "Big Clause Little Clause",
         }
     }
     assert x_metadata == expected_metadata
@@ -164,6 +170,7 @@ def test_create_markdown_table_of_contents_ReturnsStr_Scenario1_OneArticle():
         "big_clause.md": {
             "author": "Hans Christen Anderson",
             "date": "1844",
+            "post": "Big Clause Little Clause",
         }
     }
 
@@ -173,11 +180,7 @@ def test_create_markdown_table_of_contents_ReturnsStr_Scenario1_OneArticle():
     # THEN
     expected_markdown = """# Table of Contents
 
-## Big Clause
-
-*Hans Christen Anderson · 1844*
-
-[Read article](./big_clause.md)
+**[Big Clause Little Clause](./big_clause.md)** Hans Christen Anderson - 1844
 
 ---
 """
@@ -190,10 +193,12 @@ def test_create_markdown_table_of_contents_ReturnsStr_Scenario2_MultipleArticles
         "zebra_article.md": {
             "author": "Jane Smith",
             "date": "October 23, 2026",
+            "post": "Little Clause",
         },
         "apple_article.md": {
             "author": "John Doe",
             "date": "2025-01-15",
+            "post": "Big Clause",
         },
     }
 
@@ -203,19 +208,11 @@ def test_create_markdown_table_of_contents_ReturnsStr_Scenario2_MultipleArticles
     # THEN
     expected_markdown = """# Table of Contents
 
-## Apple Article
-
-*John Doe · 2025-01-15*
-
-[Read article](./apple_article.md)
+**[Big Clause](./apple_article.md)** John Doe - 2025-01-15
 
 ---
 
-## Zebra Article
-
-*Jane Smith · October 23, 2026*
-
-[Read article](./zebra_article.md)
+**[Little Clause](./zebra_article.md)** Jane Smith - October 23, 2026
 
 ---
 """
@@ -237,11 +234,7 @@ def test_create_markdown_table_of_contents_ReturnsStr_Scenario3_MissingMetadata(
     # THEN
     expected_markdown = """# Table of Contents
 
-## Untitled
-
-*Unknown author · Undated*
-
-[Read article](./untitled.md)
+**[Untitled](./untitled.md)** Unknown author - Undated
 
 ---
 """
@@ -263,11 +256,7 @@ def test_create_markdown_table_of_contents_ReturnsStr_Scenario4_FormatsFileName(
     # THEN
     expected_markdown = """# Table of Contents
 
-## My Interesting Article Name
-
-*Jane Smith · 2026*
-
-[Read article](./my-interesting_article-name.md)
+**[Untitled](./my-interesting_article-name.md)** Jane Smith - 2026
 
 ---
 """
@@ -284,11 +273,7 @@ def test_create_markdown_table_of_contents_ReturnsStr_Scenario5_MissingKeys():
     # THEN
     expected_markdown = """# Table of Contents
 
-## Article
-
-*Unknown author · Undated*
-
-[Read article](./article.md)
+**[Untitled](./article.md)** Unknown author - Undated
 
 ---
 """
