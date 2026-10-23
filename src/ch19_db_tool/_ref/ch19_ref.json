@@ -3,5 +3,6 @@
   "chapter_content": "Create some standard tools for creating sqlite sql statements. Some are complicated.", 
   "chapter_description": "ch19_db_tool", 
   "chapter_number": 19, 
+  "chapter_ref_catalogue": "n", 
   "ontology summary": "Beginning of a mapping from objects to relational databases."
 }

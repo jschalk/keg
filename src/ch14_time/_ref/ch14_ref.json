@@ -3,5 +3,6 @@
   "chapter_content": "Allows arbitrary calendars to be defined for each personunit with minimal configuration.", 
   "chapter_description": "ch14_time", 
   "chapter_number": 14, 
+  "chapter_ref_catalogue": "n", 
   "ontology summary": "Keg's ontological structure of time: absolute day minutes length, c400_cycle, variable months, weeks, hours"
 }

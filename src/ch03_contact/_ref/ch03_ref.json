@@ -3,5 +3,6 @@
   "chapter_content": "Defines a contact, and its group memberships. Groups will be produced from memberships.", 
   "chapter_description": "ch03_contact", 
   "chapter_number": 3, 
+  "chapter_ref_catalogue": "n", 
   "ontology summary": "Keg's first core philosophical definitions: Groups, Memberships, Awardees, Contacts. Membership, Awardees are types of Groups. Contacts can have memberships. "
 }

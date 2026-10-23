@@ -3,5 +3,6 @@
   "chapter_content": "A tool that interprets numbers from outside accounting to inside accounting.", 
   "chapter_description": "ch16_nabu", 
   "chapter_number": 16, 
+  "chapter_ref_catalogue": "n", 
   "ontology summary": "Numeric translation is different from word translation, it has to be done after the non-numeric translations."
 }
