@@ -161,7 +161,15 @@ def test_create_markdown_table_of_contents_ReturnsStr_Scenario0_Empty():
     x_markdown = create_markdown_table_of_contents(metadata)
 
     # THEN
-    assert x_markdown == "# Table of Contents\n"
+    expected_md = """# Table of Contents
+
+**Author:** Algorithm<br>
+**Date:** May not be up to date<br>
+**Source:** Generated automatically from chapter contents<br>
+**Copied to Keg:** N/A <br>
+"""
+    print(expected_md)
+    assert x_markdown == expected_md
 
 
 def test_create_markdown_table_of_contents_ReturnsStr_Scenario1_OneArticle():
@@ -180,10 +188,16 @@ def test_create_markdown_table_of_contents_ReturnsStr_Scenario1_OneArticle():
     # THEN
     expected_markdown = """# Table of Contents
 
-**[Big Clause Little Clause](./big_clause.md)** Hans Christen Anderson - 1844
+**[Big Clause Little Clause](./big_clause.md)** Hans Christen Anderson - 1844<br>
 
 ---
+
+**Author:** Algorithm<br>
+**Date:** May not be up to date<br>
+**Source:** Generated automatically from chapter contents<br>
+**Copied to Keg:** N/A <br>
 """
+    print(x_markdown)
     assert x_markdown == expected_markdown
 
 
@@ -208,13 +222,18 @@ def test_create_markdown_table_of_contents_ReturnsStr_Scenario2_MultipleArticles
     # THEN
     expected_markdown = """# Table of Contents
 
-**[Big Clause](./apple_article.md)** John Doe - 2025-01-15
+**[Big Clause](./apple_article.md)** John Doe - 2025-01-15<br>
 
 ---
 
-**[Little Clause](./zebra_article.md)** Jane Smith - October 23, 2026
+**[Little Clause](./zebra_article.md)** Jane Smith - October 23, 2026<br>
 
 ---
+
+**Author:** Algorithm<br>
+**Date:** May not be up to date<br>
+**Source:** Generated automatically from chapter contents<br>
+**Copied to Keg:** N/A <br>
 """
     assert x_markdown == expected_markdown
 
@@ -234,9 +253,14 @@ def test_create_markdown_table_of_contents_ReturnsStr_Scenario3_MissingMetadata(
     # THEN
     expected_markdown = """# Table of Contents
 
-**[Untitled](./untitled.md)** Unknown author - Undated
+**[Untitled](./untitled.md)** Unknown author - Undated<br>
 
 ---
+
+**Author:** Algorithm<br>
+**Date:** May not be up to date<br>
+**Source:** Generated automatically from chapter contents<br>
+**Copied to Keg:** N/A <br>
 """
     assert x_markdown == expected_markdown
 
@@ -256,9 +280,14 @@ def test_create_markdown_table_of_contents_ReturnsStr_Scenario4_FormatsFileName(
     # THEN
     expected_markdown = """# Table of Contents
 
-**[Untitled](./my-interesting_article-name.md)** Jane Smith - 2026
+**[Untitled](./my-interesting_article-name.md)** Jane Smith - 2026<br>
 
 ---
+
+**Author:** Algorithm<br>
+**Date:** May not be up to date<br>
+**Source:** Generated automatically from chapter contents<br>
+**Copied to Keg:** N/A <br>
 """
     assert x_markdown == expected_markdown
 
@@ -273,8 +302,13 @@ def test_create_markdown_table_of_contents_ReturnsStr_Scenario5_MissingKeys():
     # THEN
     expected_markdown = """# Table of Contents
 
-**[Untitled](./article.md)** Unknown author - Undated
+**[Untitled](./article.md)** Unknown author - Undated<br>
 
 ---
+
+**Author:** Algorithm<br>
+**Date:** May not be up to date<br>
+**Source:** Generated automatically from chapter contents<br>
+**Copied to Keg:** N/A <br>
 """
     assert x_markdown == expected_markdown

@@ -161,10 +161,17 @@ def create_markdown_table_of_contents(
 
         lines.extend(
             [
-                f"**[{post}](./{file_name})** {author} - {date}",
+                f"**[{post}](./{file_name})** {author} - {date}<br>",
                 "",
                 "---",
                 "",
             ]
         )
-    return "\n".join(lines).rstrip() + "\n"
+    md_body = "\n".join(lines).rstrip() + "\n"
+    md_trailer = """
+**Author:** Algorithm<br>
+**Date:** May not be up to date<br>
+**Source:** Generated automatically from chapter contents<br>
+**Copied to Keg:** N/A <br>
+"""
+    return f"{md_body}{md_trailer}"
