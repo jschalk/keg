@@ -10,6 +10,7 @@ Drag,10,
 Drift,10,
 Duck,10,
 Fealty,10,
+Grateful,10,
 Gravity,10,
 Herd,10,
 Hive,10,
@@ -67,6 +68,7 @@ scaffold,10,
 stilt,10,
 swim,10,
 target,10,
+tower,10,
 trek,10,
 tsar,10,
 vertical,10,
@@ -838,6 +840,7 @@ Totality,0,"39, 41"
 Water,0,"39, 40, 41"
 bearing,0,"39, 41"
 god,0,"39, 40, 41, 54"
+grateful,0,"39, 40, 54"
 gravity,0,39
 home,0,"39, 40, 41, 54, 90"
 hose,0,"39, 40, 41, 54"
@@ -877,7 +880,6 @@ ride,0,"40, 41"
 rival,0,40
 shill,0,40
 soil,0,40
-tower,0,40
 trash,0,40
 trooper,0,40
 winner,0,"40, 41"

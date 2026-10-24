@@ -72,7 +72,7 @@ In this context, I cannot help but to draw a comparison with Plato
 
 Plato was an impossibly good man of thought, perhaps, the single best one in the recorded history. His insights, are incredible, divine.
 
-But as a man of action, and as a practical politician, he was a child. Absolute toddler. In (political) action, Vladimir Lenin towered above Plato just as much as Plato towered above him in thought.
+But as a man of action, and as a practical politician, he was a child. Absolute toddler. In (political) action, Vladimir Lenin dominates Plato just as much as Plato dominates him in thought.
 
 Plato of course wanted power. Nearly all intellectuals do. But - wanting power - he was childishly naive and childishly delusional about how he will get it. For what was his strategy?
 

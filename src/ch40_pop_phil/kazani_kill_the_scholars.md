@@ -59,7 +59,7 @@ And it is the last part, I disagree upon
 
 <div align="center"><img src="images/drover.webp" alt="Drover with flock" width="700"></div>
 
-The idea of some lofty intellectual class, leading the flock-like-mankind from their tower of ivory is not quite true.
+The idea of some lofty intellectual class, leading the flock-like-mankind from their skyscraper of ivory is not quite true.
 
 Or rather, so imprecise, that it stops being true, just does not work as an anywhere accurate, and useful map of reality. Binary model with intellectuals preaching, and the flock obeying, obfuscates rather than explains.
 
