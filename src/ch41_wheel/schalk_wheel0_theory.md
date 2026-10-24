@@ -92,12 +92,12 @@ A understandable retort could be that for many people today, especially educated
 
 #### Boss/family reasons for doing anything
 
-| Reason                                         | Worker Kind    |
-|------------------------------------------------|----------------|
-| Helps **family** and helps **boss**            | motivated worker |
-| Helps **family** and does not help **boss**    | family helper    |
-| Does not help **family** and helps **boss**    | honest worker    |
-| Does not help **family** and does not help **boss** | charity worker |
+| Reason                                         | Worker Classification    |
+|------------------------------------------------|--------------------------|
+| Helps **family** and helps **boss**            | motivated worker         |
+| Helps **family** and does not help **boss**    | family helper            |
+| Does not help **family** and helps **boss**    | honest worker            |
+| Does not help **family** and does not help **boss** | charity worker      |
 
 Most people are not honest workers. If the boss tells them to do something that hurts their family they'll do everything they can not to do it. If the boss has lots of control then the worker is still not an "honest worker", they're just doing what is least painful for their family. 
 
@@ -309,25 +309,23 @@ Dr. Jules Simon, Professor of Philosophy at University of Texas at El Paso, reti
 (I haven't had a chance to show him Kegology, hopefully he can make some time for me.)
 
 #### Keywords List
-alien
-bearing
-Climb
-climb
-cling
-Losing
-losing
-kneeler
-loser
-Pay
-pay
-Prestige
-prestige
-Stable
-stable
-valor
-Welcome
-welcome
-wheelers
+alien<br>
+bearing<br>
+cling<br>
+Losing<br>
+losing<br>
+kneeler<br>
+loser<br>
+Pay<br>
+pay<br>
+Prestige<br>
+prestige<br>
+Stable<br>
+stable<br>
+valor<br>
+Welcome<br>
+welcome<br>
+wheelers<br>
 
 ######
 Home: Where I'm comfortable beling a philosopher-without and audience. Just playing with my toys.

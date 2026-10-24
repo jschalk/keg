@@ -190,7 +190,7 @@ class PlanUnit:
     Represents a planual unit within keg. Can represent a pledge, a plan_task, a different plan's
     reason or fact, a parent plan of other plans.
     Funds: Funds come from the parent plan and go to the child plans.
-    Awards: Desribes whom the funding comes from and whome it goes to.
+    Awards: Desribes who the funding comes from and who it goes to.
     Pledges: A plan can declare itself a pledge. It can be active or not active.
       Pledge Reason: A plan can require that all reasons be active to be active. (No reasons=active)
       Pledge Fact: Each reason checks facts to determine if it is active.

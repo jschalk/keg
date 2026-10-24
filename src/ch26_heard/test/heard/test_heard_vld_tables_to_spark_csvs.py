@@ -139,12 +139,12 @@ def test_etl_heard_vld_to_lego_spark_person_csvs_CreatesCSVs_Scenario2_person_pl
     # ESTABLISH
     spark3 = 3
     music_rope = f"{exx.a23}enjoy music;"
-    home_rope = f"{exx.a23}clean home;"
-    ask_rope = f"{exx.a23}clean home;ask neighbor to use baking soda;"
-    clothes_rope = f"{exx.a23}clean home;clean clothes with baking soda;"
-    dishes_rope = f"{exx.a23}clean home;clean dishes with baking soda;"
-    counters_rope = f"{exx.a23}clean home;clean kitchen counters with baking soda;"
-    neighbor_rope = f"{exx.a23}clean home;give neighbor any baking soda they want;"
+    casa_rope = f"{exx.a23}clean casa;"
+    ask_rope = f"{exx.a23}clean casa;ask neighbor to use baking soda;"
+    clothes_rope = f"{exx.a23}clean casa;clean clothes with baking soda;"
+    dishes_rope = f"{exx.a23}clean casa;clean dishes with baking soda;"
+    counters_rope = f"{exx.a23}clean casa;clean kitchen counters with baking soda;"
+    neighbor_rope = f"{exx.a23}clean casa;give neighbor any baking soda they want;"
 
     put_agg_tablename = create_prime_tablename(kw.prnplan, kw.h_vld, "put")
     put_agg_csv = f"{put_agg_tablename}.csv"
@@ -158,7 +158,7 @@ def test_etl_heard_vld_to_lego_spark_person_csvs_CreatesCSVs_Scenario2_person_pl
 INSERT INTO {put_agg_tablename} ({kw.spark_num},{kw.spark_face},{kw.person_name},{kw.plan_rope},{kw.poynt},{kw.pledge})
 VALUES
   ({spark3}, '{exx.sue}', '{exx.sue}', '{music_rope}', 10, 1)
-, ({spark3}, '{exx.sue}', '{exx.bob}', '{home_rope}', 1, 0)
+, ({spark3}, '{exx.sue}', '{exx.bob}', '{casa_rope}', 1, 0)
 , ({spark3}, '{exx.sue}', '{exx.bob}', '{ask_rope}', 3, 1)
 , ({spark3}, '{exx.sue}', '{exx.bob}', '{clothes_rope}', 12, 1)
 , ({spark3}, '{exx.sue}', '{exx.bob}', '{dishes_rope}', 10, 1)
@@ -182,7 +182,7 @@ VALUES
     # print(f"{e3_put_csv=}")
     print(f"{e3_put_csv=}")
     assert music_rope in e3_put_csv
-    assert home_rope in e3_put_csv
+    assert casa_rope in e3_put_csv
     assert ask_rope in e3_put_csv
     assert clothes_rope in e3_put_csv
     assert dishes_rope in e3_put_csv
@@ -191,12 +191,12 @@ VALUES
     assert music_rope in e3_put_csv
 
     expected_e3_put_csv = f"""{kw.spark_num},{kw.spark_face},{kw.person_name},{kw.plan_rope},{kw.begin},{kw.close},{kw.addin},{kw.numor},{kw.denom},{kw.morph},{kw.gogo_want},{kw.stop_want},{kw.poynt},{kw.pledge},{kw.problem_bool},{kw.knot}
-{spark3},{exx.sue},{exx.bob},;Amy23;clean home;,,,,,,,,,1,0,,
-{spark3},{exx.sue},{exx.bob},;Amy23;clean home;ask neighbor to use baking soda;,,,,,,,,,3,1,,
-{spark3},{exx.sue},{exx.bob},;Amy23;clean home;clean clothes with baking soda;,,,,,,,,,12,1,,
-{spark3},{exx.sue},{exx.bob},;Amy23;clean home;clean dishes with baking soda;,,,,,,,,,10,1,,
-{spark3},{exx.sue},{exx.bob},;Amy23;clean home;clean kitchen counters with baking soda;,,,,,,,,,5,1,,
-{spark3},{exx.sue},{exx.bob},;Amy23;clean home;give neighbor any baking soda they want;,,,,,,,,,20,1,,
+{spark3},{exx.sue},{exx.bob},;Amy23;clean casa;,,,,,,,,,1,0,,
+{spark3},{exx.sue},{exx.bob},;Amy23;clean casa;ask neighbor to use baking soda;,,,,,,,,,3,1,,
+{spark3},{exx.sue},{exx.bob},;Amy23;clean casa;clean clothes with baking soda;,,,,,,,,,12,1,,
+{spark3},{exx.sue},{exx.bob},;Amy23;clean casa;clean dishes with baking soda;,,,,,,,,,10,1,,
+{spark3},{exx.sue},{exx.bob},;Amy23;clean casa;clean kitchen counters with baking soda;,,,,,,,,,5,1,,
+{spark3},{exx.sue},{exx.bob},;Amy23;clean casa;give neighbor any baking soda they want;,,,,,,,,,20,1,,
 {spark3},{exx.sue},{exx.bob},;Amy23;enjoy music;,,,,,,,,,1,1,,
 """
     assert e3_put_csv == expected_e3_put_csv
