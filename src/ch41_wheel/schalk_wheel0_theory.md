@@ -17,9 +17,9 @@ BUT in his latest article [How to study politics](../ch40_pop_phil/kazani_how_to
 Ouch! My dad was a historian. A pretty good one[^1]. Wrote a book and everything. 
 
 
-<div align="center"><img src="../ch41_wheel/images/valor_to_pedigree.webp" alt="From Valor to Pedigree by Ellery Schalk book cover" width="300"></div>
+<div align="center"><img src="../ch41_wheel/images/valor_to_pedigree.webp" alt="From Valor to Pedigree by Ellery Schalk book cover" width="40%"></div>
 
-Kazani says my dad and his ilk can't theorize well. He using entertaining and hard words. Some very harsh. Hard to be entertaining and not harsh, it's what [second hand dealers](../ch40_pop_phil/kazani_kill_the_scholars.md) do. I shouldn't take it so personally. And yet I feel something very primal... 
+Kazani says my dad and his ilk can't theorize well. He using entertaining and harsh words. Some very harsh. Hard to be entertaining and not harsh, it's what [second hand dealers](../ch40_pop_phil/kazani_kill_the_scholars.md) do. I shouldn't take it so personally. And yet I feel something very primal... 
 
 <div align="center">
 
@@ -34,11 +34,11 @@ My copy of *From Valor to Pedigree* is far away so I'll present the political th
 
 Here's a footnote describing the philosophical foundations of Kegology[^2]. Read it if you want. The gist is Levinas (died 1995) had an awesome philosophy of the Face built from biblical traditions.
 
-The most important question in Kegology is "am i a good father?" Even if you are a woman and have given birth to children the question is still "Am I a good a Father?" The concept of Fatherhood holds contradictions: Fatherhood is and isn't about genetics. Until recently loving your children because of genetics was obvious for a Mother but required faith from the Father. 
+The most important question in Kegology is "am i a good father?" Even if you are a woman and have given birth to children the question is still "am i a good father?" The concept of Fatherhood holds a contradiction that isn't as clear with motherhood: Fatherhood is and isn't about genetics. Until recently loving your children because of genetics was obvious for a Mother but required faith from the Father. 
 
 For any Levanisian, for any Kegologist the first question is "am i a good father?" And where do we go to find out? The Face of the Other. The Face of my son. 
 
-<div align="center"><img src="images/wheel_fig0_0.svg" alt="wheel fig0.0" width="300"></div>
+<div align="center"><img src="images/wheel_fig0_0.svg" alt="wheel fig0.0" width="50%"></div>
 
 Notice that for this graphic the son's Face is in the shape of an infinity symbol ala &infin;. That's because in Levanis's Ethics the Face of the Other is infinite. There is no way to understand it, yet we try and that attempt turns into truth. 
 
@@ -52,37 +52,37 @@ The Face of the Other tells me it's suffering and I interpret what their needs a
 
 Naturally there are other Faces...
 
-<div align="center"><img src="images/wheel_fig0_1.svg" alt="wheel fig0.1" width="400"></div>
+<div align="center"><img src="images/wheel_fig0_1.svg" alt="wheel fig0.1" width="50%"></div>
 
 To be good to my son I need to also be good to people he takes care of. Since each Face is infinite it's a lot of infinities. The infinities are different, disjoint.
 
-<div align="center"><img src="images/wheel_fig0_2.svg" alt="wheel fig0.2" width="400"></div>
+<div align="center"><img src="images/wheel_fig0_2.svg" alt="wheel fig0.2" width="50%"></div>
 
 Here's the thing: You can only listen to one Face at a time. Everyone, anyone, that was previously listened to is no longer an infinite. Their suffering has been interpreted in a set of needs. Needs at are known, complete, the word used by Levinas is "totalizied". Here you see one infinite Face and three understood people. 
 
-<div align="center"><img src="images/wheel_fig0_3.svg" alt="wheel fig0.3" width="500"></div>
+<div align="center"><img src="images/wheel_fig0_3.svg" alt="wheel fig0.3" width="60%"></div>
 
 Notice that all needs are created in the past so it's possible to both have the past needs of the son and be engaged to the Face of the son. In the graphic below you'll see that the "son's needs" block and the Face infinity both exist at the same time. 
 
-<div align="center"><img src="images/wheel_fig0_4.svg" alt="wheel fig0.4" width="500"></div>
+<div align="center"><img src="images/wheel_fig0_4.svg" alt="wheel fig0.4" width="60%"></div>
 
-Listening to the Face is exhausting and anxiety inducing. Most of the time we're just with the needs that we've understood from the past. Confidence is required to make decisions and speak. The anxiety of listening is incompatible. So by definition when Being in the world is a Faceless experience. All we have is our knowledge of the needs of others from past encounters with the Face. 
+Listening to the Face is exhausting and anxiety inducing. Most of the time we're just with the needs that we've understood from the past. Confidence is required to make decisions and speak. The anxiety of listening is incompatible. So by definition Being in the world is a Faceless experience. All we have is our knowledge of the needs of others from past encounters with the Face. 
 
 If I am good to the needs of all the contacts below I'm a good father. 
 
-<div align="center"><img src="images/wheel_fig0_5.svg" alt="wheel fig0.5" width="500"></div>
+<div align="center"><img src="images/wheel_fig0_5.svg" alt="wheel fig0.5" width="60%"></div>
 
 Not so fast, what about others outside the family we encounter? Am I to be good to all their needs too? Its too much. If everyone is Family no one is Family. 
 
-<div align="center"><img src="images/wheel_fig0_6.svg" alt="wheel fig0.6" width="500"></div>
+<div align="center"><img src="images/wheel_fig0_6.svg" alt="wheel fig0.6" width="60%"></div>
 
 In the graphic below you'll see I've bubbled in all the contacts needs that are in my Family.
 
-<div align="center"><img src="images/wheel_fig0_7.svg" alt="wheel fig0.7" width="500"></div>
+<div align="center"><img src="images/wheel_fig0_7.svg" alt="wheel fig0.7" width="60%"></div>
 
 So by this grouping there are two kinds of needs to be considered when answering the question *am i a good father?*
 
-<div align="center"><img src="images/wheel_fig0_8.svg" alt="wheel fig0.8" width="500"></div>
+<div align="center"><img src="images/wheel_fig0_8.svg" alt="wheel fig0.8" width="60%"></div>
 
 *Did I take care of my Family's needs? Or everyone else's?*
 
@@ -102,8 +102,7 @@ A understandable retort could be that for many people today, especially educated
 Most people are not honest workers. If the boss tells them to do something that hurts their family they'll do everything they can not to do it. If the boss has lots of control then the worker is still not an "honest worker", they're just doing what is least painful for their family. 
 
 
-Question: Why I do stuff? 
-Answer: Me -> helps family -> Family
+Question: Why I do stuff?<br>**Answer: Me -> helps family -> Family**
 
 And what is Family?
 
@@ -124,35 +123,35 @@ Ok, we now know Families exist and where they come from: Individuals having deci
 
 In a low trust society model power purely from FamilyUnits and Land.
 
-<div align="center"><img src="images/wheel_fig1_00.svg" alt="wheel fig1_00" width="350"></div>   
-<div align="center"><img src="images/wheel_fig1_01.svg" alt="wheel fig1_01" width="350"></div>   
-<div align="center"><img src="images/wheel_fig1_02.svg" alt="wheel fig1_02" width="350"></div>   
-<div align="center"><img src="images/wheel_fig1_03.svg" alt="wheel fig1_03" width="350"></div>   
-<div align="center"><img src="images/wheel_fig1_04.svg" alt="wheel fig1_04" width="350"></div>   
-<div align="center"><img src="images/wheel_fig1_05.svg" alt="wheel fig1_05" width="350"></div>   
-<div align="center"><img src="images/wheel_fig1_06.svg" alt="wheel fig1_06" width="350"></div>   
-<div align="center"><img src="images/wheel_fig1_07.svg" alt="wheel fig1_07" width="350"></div>   
-<div align="center"><img src="images/wheel_fig1_08.svg" alt="wheel fig1_08" width="350"></div>   
-<div align="center"><img src="images/wheel_fig1_09.svg" alt="wheel fig1_09" width="350"></div>   
-<div align="center"><img src="images/wheel_fig1_10.svg" alt="wheel fig1_10" width="350"></div>   
+<div align="center"><img src="images/wheel_fig1_00.svg" alt="wheel fig1_00" width="60%"></div>   
+<div align="center"><img src="images/wheel_fig1_01.svg" alt="wheel fig1_01" width="60%"></div>   
+<div align="center"><img src="images/wheel_fig1_02.svg" alt="wheel fig1_02" width="60%"></div>   
+<div align="center"><img src="images/wheel_fig1_03.svg" alt="wheel fig1_03" width="60%"></div>   
+<div align="center"><img src="images/wheel_fig1_04.svg" alt="wheel fig1_04" width="60%"></div>   
+<div align="center"><img src="images/wheel_fig1_05.svg" alt="wheel fig1_05" width="60%"></div>   
+<div align="center"><img src="images/wheel_fig1_06.svg" alt="wheel fig1_06" width="60%"></div>   
+<div align="center"><img src="images/wheel_fig1_07.svg" alt="wheel fig1_07" width="60%"></div>   
+<div align="center"><img src="images/wheel_fig1_08.svg" alt="wheel fig1_08" width="60%"></div>   
+<div align="center"><img src="images/wheel_fig1_09.svg" alt="wheel fig1_09" width="60%"></div>   
+<div align="center"><img src="images/wheel_fig1_10.svg" alt="wheel fig1_10" width="60%"></div>   
 
 ### Oligarchy
 
-First let's establish Kazani's favorite political axiom: All governments are oligarchies. Kazani references a Historian that is brilliant.
+First let's establish Kazani's favorite political axiom: All governments are oligarchies. As Kazani wrote
 
 > Ronald Syne wrote ""In all ages, whatever the form and name of government, be it monarchy, republic, or democracy, an oligarchy lurks behind the façade."[^3]
 
-Ok but what are oligarchies made of? It can't just be the individuals that's too limited. It can't just be coalitions that believe in the same concepts. That's not limited enough. What about family? Kazani writes how family is the basic socialogical unit in [The Able Family](../ch40_pop_phil/kazani_the_able_family.md). And I'm not original at all with this. I grew up with lots of Mexicans and they always say 10 families control Mexico. So there we go:
+Ok but what are oligarchies made of? It can't just be the individuals that's too limited. It can't just be coalitions that believe in the same concepts. That's not limited enough. What about family? Kazani writes how family is the basic socialogical unit in [The Able Family](../ch40_pop_phil/kazani_the_able_family.md). And I'm not original at all with this. I grew up with lots of Mexicans and they always say 10 families control Mexico. So how do Oligarchies work?
 
 <div align="center">
 
 ### Every Oligarchy are made of Families
 </div>
 
-<div align="center"><img src="../ch40_pop_phil/images/yelstin_family.webp" alt="FamilyUnit Yelstin" width="300"></div>
+<div align="center"><img src="../ch40_pop_phil/images/yelstin_family.webp" alt="FamilyUnit Yelstin" width="50%"></div>
 
 
- The oligarchy can be best understand as a bunch of Families. A Family can have a dominate personality as letter but is better to think of families rather then personalities[^4] because the trusted family members of a leader can often have enourmous influence. Kamil Kazani claims that one of the people in the Yelstin family portrait above made Vladamir Putin king. It wasn't Boris Yelstin. Do you know which one it was? Do you know his name? I don't. Still I know the Family: The Yelstin Family. A Family that had **prestige** but then it fell from power.
+ The oligarchy can be best understand as a coalition of Families. A Family can have a dominate personality as leader but is better to think of families rather then personalities[^4] because the trusted family members of a leader can often have enourmous influence. Kamil Kazani claims that one of the people in the Yelstin family portrait above made Vladamir Putin king. It wasn't Boris Yelstin. Do you know which one it was? Do you know his name? I don't. Still I know the Family: The Yelstin Family. A Family that had **prestige** but then it fell from power.
 
 
 <div align="center">
@@ -163,7 +162,7 @@ Ok but what are oligarchies made of? It can't just be the individuals that's too
 
 Let's define the term *'prestige'* the way Kazani and others do. A Family with Prestige has status, influence, power. It is something a family either has or doesn't. It cannot be shared. 
 
-The Families in power have all the prestige. If they cooperate no other families will ever have prestige. The coalition will rule forever. However (most of the time) these families do not trust each other and are often in conflict. The conflict can be reasonable or unreasonable. Petty jealously, revenge or lust can motivate a conflict. To gain an upperhand a family can decide to get help from others outside of power. The non-prestigious family provides a service and the prestigious family invites the non-prestigious family into power. 
+The Families in power have all the prestige. If they cooperate no other families will ever have prestige. The coalition will rule forever. However most of the time0 these families do not trust each other and are often in conflict. The conflict can be reasonable or unreasonable. Petty jealously, revenge or lust can motivate a conflict. To gain an upperhand a family can decide to get help from others outside of power. The non-prestigious family provides a service and the prestigious family invites the non-prestigious family into power. 
 
 <div align="center">
 
@@ -175,11 +174,11 @@ Logically this invitation should only be extended when the prestigious family ha
 
 ### The Wheel
 
-<div align="center"><img src="images/wheel01_intro.webp" alt="Intro to KegWheel with Power, Families, Prestige going up and down." width="300"></div>
+<div align="center"><img src="images/wheel01_intro.webp" alt="Intro to KegWheel with Power, Families, Prestige going up and down." width="50%"></div>
 
 Any system of centralized power can be represented as a Wheel. A wheel that turns. Families go up in prestige, families go down in prestige. New famlies can enter power and gain maximum prestige and old families can exit power and lose all prestige. Most of the time the oligarchy is remarkable stable. The advantages of prestige are considerable. There is the endless multitude without prestige who will do absolutely any service for a chance of getting prestige[6]. And promises don't even have to be made, the implication is obvious.
 
-<div align="center"><img src="images/wheel02_falling.webp" alt="Wheel diagram with the Falling" width="300"></div>
+<div align="center"><img src="images/wheel02_falling.webp" alt="Wheel diagram with the Falling" width="50%"></div>
 
 As the Wheel spins there are families that are winning and families that are losing. On the other hand some families lose so much they fall out of power. There is also the "stable" section of the Wheel where families have prestige but their influence does not increase or decrease.  
 
@@ -196,19 +195,19 @@ Why do Families fall? Perhaps the most important member dies or becomes unpopula
 > 5. If the family cannot fulfil this bare minimum, it will be ousted out by a more single-focused family
 
 
-<div align="center"><img src="images/wheel03_invitation.webp" alt="Diagram invitation ladder" width="300"></div>
+<div align="center"><img src="images/wheel03_invitation.webp" alt="Diagram invitation ladder" width="50%"></div>
 
 Families only invite a Family out of power into power when they can provide a service. Something useful to them. That is represented here as a ladder. The family out of power must have a large ladder to even be considered for invitiation[^6]. The obvious example is money. Money is not equal to prestige. But if someone in power wants money then a ladder made of money can result in an invitation.
 
-<div align="center"><img src="images/wheel04_familyunits.webp" alt="17 FamilyUnits in a Wheel diagram" width="300"></div>
+<div align="center"><img src="images/wheel04_familyunits.webp" alt="17 FamilyUnits in a Wheel diagram" width="50%"></div>
 
 Here's a diagram showing what the Wheel could look like with distinct families in power, falling out of power, and totally outside of power.
 
-<div align="center"><img src="images/wheel05_alien.webp" alt="Graphic showing how alien Wheels are other Wheels in touch" width="300"></div>
+<div align="center"><img src="images/wheel05_alien.webp" alt="Graphic showing how alien Wheels are other Wheels in touch" width="50%"></div>
 
 Here's what it looks like when a Wheel touches another Wheel. Each system of power requires institutions, customs, language so precise to their circumstances that they can only be described as "alien" by a different Wheel. 
 
-<div align="center"><img src="images/wheel06_size.webp" alt="Graphic that shows what wheel_size is" width="300"></div>
+<div align="center"><img src="images/wheel06_size.webp" alt="Graphic that shows what wheel_size is" width="50%"></div>
 
 Let's introduce a few terms here. For every Wheel we can describe
 
@@ -216,19 +215,19 @@ Let's introduce a few terms here. For every Wheel we can describe
 2. Stable Size: The radius of the stable part of the Wheel. Represents how powerful the stable part of the wheel is.
 3. Moving Size: The width of the moving part of the Wheel. Represents how powerful the moving part of the wheel is. (Moving_Size = Wheel_Size - Stable_Size)
 
-<div align="center"><img src="images/wheel07_borders.webp" alt="A border between two wheels" width="300"></div>
+<div align="center"><img src="images/wheel07_borders.webp" alt="A border between two wheels" width="50%"></div>
 
 Between two Wheels that touch they can create a border. All systems of power want to have a border to define the alien and the non-alien.
 
-<div align="center"><img src="images/wheel08_many_wheels.webp" alt="Many wheels of different colors" width="300"></div>
+<div align="center"><img src="images/wheel08_many_wheels.webp" alt="Many wheels of different colors" width="50%"></div>
 
 Here's a scenario where many wheels of different color exist in touch. (Please excuse the circles that don't actually touch others, if they're really close they're meeant to touch.)
 
-<div align="center"><img src="images/wheel09_many_borders.webp" alt="Many borders of different colors" width="300"></div>
+<div align="center"><img src="images/wheel09_many_borders.webp" alt="Many borders of different colors" width="50%"></div>
 
 Here's the same scenario with many borders. Notice the space between borders. That's a feature that is important, because borders can become their own space that's weirdly part of both wheels and not.[^7] Wheels exist against each other. 
 
-<div align="center"><img src="images/wheel10_climb_cling.webp" alt="Climbing and clinging" width="300"></div>
+<div align="center"><img src="images/wheel10_climb_cling.webp" alt="Climbing and clinging" width="50%"></div>
 
 Going back to the Wheel: as the wheel turns there are winners and losers and the stable. The winners are climbing and the losers are clinging. What are they climbing and clinging to? Two things: each other and vassalage networks. 
 
@@ -245,7 +244,7 @@ A family with prestige will only consider inviting another family into power if 
 
 And it don't matter how load-bearing your ladder is, there's no guarentee of an invitation. 
 
-# TODO change ladder to pillar, pillars sometimes have a ladder on the side
+-- #TODO change ladder to pillar, pillars sometimes have a ladder on the side
 
 
 <!--Find: -->
@@ -309,25 +308,12 @@ Dr. Jules Simon, Professor of Philosophy at University of Texas at El Paso, reti
 (I haven't had a chance to show him Kegology, hopefully he can make some time for me.)
 
 #### Keywords List
-alien<br>
-bearing<br>
-cling<br>
-Losing<br>
-losing<br>
 kneeler<br>
-loser<br>
 Pay<br>
-pay<br>
-Prestige<br>
-prestige<br>
-Stable<br>
-stable<br>
-valor<br>
-Welcome<br>
-welcome<br>
 wheelers<br>
 
-######
+---
+
 Home: Where I'm comfortable beling a philosopher-without and audience. Just playing with my toys.
 
 Need: Kamil Kazani declares historians bad at Theory. They are terrible at it. I need to defend family honor. 

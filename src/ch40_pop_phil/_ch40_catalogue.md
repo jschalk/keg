@@ -80,6 +80,10 @@
 
 ---
 
+**[On the Virtue of Vladimir Putin](./kazani_on_putin_virtue.md)** Kamil Kazani - 2025-08-09<br>
+
+---
+
 **[On fascination by Tudors](./kazani_on_tudors.md)** Kamil Kazani - 2025-09-13<br>
 
 ---
