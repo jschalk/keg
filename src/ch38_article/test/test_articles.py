@@ -270,7 +270,6 @@ def test_get_articleunit_from_file_ReturnsObj_Scenario2_OutOfOrder(temp3_dir):
 
 
 def test_CurrentMarkDownFilesHaveRequiredStrings():
-    # TODO find out why lack of "Esta..." string isn't causing linter test to fail
     # check_all_test_functions_are_formatted(all_test_functions)
     # ESTABLISH
     current_ch_dir = Path(__file__).resolve().parent.parent
