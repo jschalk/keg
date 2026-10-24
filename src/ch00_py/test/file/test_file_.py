@@ -33,7 +33,7 @@ from unittest.mock import patch as mock_patch
 
 
 def test_create_path_ReturnsSrcPath_WhenSrcPathExists(tmp_path):
-    # GIVEN a path that exists on disk
+    # ESTABLISH a path that exists on disk
     existing_file = tmp_path / "obj.json"
     existing_file.touch()  # create the file
 
@@ -46,7 +46,7 @@ def test_create_path_ReturnsSrcPath_WhenSrcPathExists(tmp_path):
 
 
 def test_create_path_UsesBackup_WhenSrcPathDoesNotExist():
-    # GIVEN os_path_exists returns False (simulates pip install environment)
+    # ESTABLISH os_path_exists returns False (simulates pip install environment)
     with mock_patch("ch00_py.file_toolbox.os_path_exists", return_value=False):
 
         # WHEN create_path is called with a src/ path
@@ -58,7 +58,7 @@ def test_create_path_UsesBackup_WhenSrcPathDoesNotExist():
 
 
 def test_create_path_SkipsBackup_WhenNotSrcPath(temp3_dir):
-    # GIVEN a non-src path that does not exist
+    # ESTABLISH a non-src path that does not exist
     non_existent = os_path_join(temp3_dir, "ghost_dir")
 
     # WHEN create_path is called with a non-src path
@@ -69,7 +69,7 @@ def test_create_path_SkipsBackup_WhenNotSrcPath(temp3_dir):
 
 
 def test_create_path_BackupPathExists_WhenSrcUnavailable():
-    # GIVEN os_path_exists returns False (simulates pip install environment)
+    # ESTABLISH os_path_exists returns False (simulates pip install environment)
     this_filename = pathlib_Path(__file__).name
     with mock_patch("ch00_py.file_toolbox.os_path_exists", return_value=False):
 

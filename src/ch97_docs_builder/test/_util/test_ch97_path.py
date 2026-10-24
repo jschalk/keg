@@ -57,7 +57,7 @@ def test_create_chapter_ref_path_ReturnsObj(temp3_dir):
 
 @pytest_mark.skip_on_linux
 def test_create_chapter_ref_path_HasDocString():
-    # GIVEN the expected docstring with literal src/ path
+    # ESTABLISH the expected docstring with literal src/ path
     doc_str = "Returns path: src\\chapter_dir\\_ref\\chXX_ref.json"
 
     # WHEN / THEN
@@ -82,7 +82,7 @@ def test_create_chapter_catalogue_path_ReturnsObj(temp3_dir):
 
 @pytest_mark.skip_on_linux
 def test_create_chapter_catalogue_path_HasDocString():
-    # GIVEN the expected docstring with literal src/ path
+    # ESTABLISH the expected docstring with literal src/ path
     doc_str = "Returns path: src\\chapter_dir\\chXX_ref.md"
 
     # WHEN / THEN

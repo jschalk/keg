@@ -34,7 +34,7 @@ NARRATIVE_ARTICLES = {
 
 
 def test_NarrativeArticlesExist():
-    # GIVEN / WHEN
+    # ESTABLISH / WHEN
     narr_arts = NARRATIVE_ARTICLES
     # THEN
     current_ch_dir = Path(__file__).resolve().parent.parent
@@ -50,7 +50,7 @@ def test_NarrativeArticlesExist():
 
 
 def test_NarrativeArticlesContainCircleBeats():
-    # GIVEN
+    # ESTABLISH
     home_str = "<!--Home"
     need_str = "<!--Need"
     search_str = "<!--Search"

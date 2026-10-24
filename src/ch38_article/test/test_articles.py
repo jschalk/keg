@@ -205,7 +205,6 @@ empty file
     assert x_articleunit.out_of_order_req_str == ""
 
 
-# TODO change so required and order are independent. That why order can be observed even if elements don't exist in the file
 def test_get_articleunit_from_file_ReturnsObj_Scenario1_AllRequiredExist(temp3_dir):
     # ESTABLISH
     temp_file_path = os_path_join(temp3_dir, "temp_file.md")
@@ -273,7 +272,7 @@ def test_get_articleunit_from_file_ReturnsObj_Scenario2_OutOfOrder(temp3_dir):
 def test_CurrentMarkDownFilesHaveRequiredStrings():
     # TODO find out why lack of "Esta..." string isn't causing linter test to fail
     # check_all_test_functions_are_formatted(all_test_functions)
-    # GIVEN
+    # ESTABLISH
     current_ch_dir = Path(__file__).resolve().parent.parent
     author_str = "**Author:**"
     date_str = "**Date:**"

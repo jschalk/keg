@@ -754,7 +754,7 @@ def test_brick_config_path_ReturnsObj_Brick() -> str:
 
 
 def test_brick_config_UsesAliasedImport():
-    # GIVEN the ch20_brick.brick_config module
+    # ESTABLISH the ch20_brick.brick_config module
     from ch20_brick import brick_config as brick_config_module
 
     # WHEN we inspect the module's namespace
@@ -773,7 +773,7 @@ def test_brick_config_UsesAliasedImport():
 
 
 def test_brick_config_path_UsesModuleRelativePathWhenSrcUnavailable():
-    # GIVEN os_path_exists returns False (simulates pip install environment)
+    # ESTABLISH os_path_exists returns False (simulates pip install environment)
     with mock_patch("ch20_brick.brick_config.os_path_exists", return_value=False):
 
         # WHEN brick_config_path is called without src/ available

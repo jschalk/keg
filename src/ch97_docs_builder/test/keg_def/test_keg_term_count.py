@@ -8,7 +8,7 @@ from ch99_glossary.ch_keyword import Ch97Keywords as kw
 
 
 def test_get_count_strs_by_dirs_CountsTerms_Scenario0_SingleFile(tmp_path):
-    # GIVEN
+    # ESTABLISH
     ch01_dir = tmp_path / "ch01"
     ch01_dir.mkdir()
     (ch01_dir / "file1.txt").write_text(
@@ -25,7 +25,7 @@ def test_get_count_strs_by_dirs_CountsTerms_Scenario0_SingleFile(tmp_path):
 
 
 def test_get_count_strs_by_dirs_CountsAcrossFiles_Scenario1_MultipleFiles(tmp_path):
-    # GIVEN
+    # ESTABLISH
     ch01_dir = tmp_path / "ch01"
     ch01_dir.mkdir()
     (ch01_dir / "file1.txt").write_text("ContactName", encoding="utf-8")
@@ -43,7 +43,7 @@ def test_get_count_strs_by_dirs_CountsAcrossFiles_Scenario1_MultipleFiles(tmp_pa
 def test_get_count_strs_by_dirs_CountsByChapter_Scenario2_MultipleChapters(
     tmp_path,
 ):
-    # GIVEN
+    # ESTABLISH
     ch01_dir = tmp_path / "ch01"
     ch02_dir = tmp_path / "ch02"
     ch01_dir.mkdir()
@@ -63,7 +63,7 @@ def test_get_count_strs_by_dirs_CountsByChapter_Scenario2_MultipleChapters(
 def test_get_count_strs_by_dirs_ReturnsZero_Scenario3_TermMissing(
     tmp_path,
 ):
-    # GIVEN
+    # ESTABLISH
     ch01_dir = tmp_path / "ch01"
     ch01_dir.mkdir()
     (ch01_dir / "file.txt").write_text("SomethingElse", encoding="utf-8")
@@ -80,7 +80,7 @@ def test_get_count_strs_by_dirs_ReturnsZero_Scenario3_TermMissing(
 def test_get_count_strs_by_dirs_HandlesNestedFiles_Scenario4_Subdirectories(
     tmp_path,
 ):
-    # GIVEN
+    # ESTABLISH
     ch01_dir = tmp_path / "ch01"
     nested_dir = ch01_dir / "nested"
 
@@ -99,7 +99,7 @@ def test_get_count_strs_by_dirs_HandlesNestedFiles_Scenario4_Subdirectories(
 def test_get_count_strs_by_dirs_SkipsBinaryFiles_Scenario5_UnicodeDecodeError(
     tmp_path,
 ):
-    # GIVEN
+    # ESTABLISH
     ch01_dir = tmp_path / "ch01"
     ch01_dir.mkdir()
     (ch01_dir / "valid.txt").write_text("ContactName", encoding="utf-8")
@@ -117,7 +117,7 @@ def test_get_count_strs_by_dirs_SkipsBinaryFiles_Scenario5_UnicodeDecodeError(
 def test_get_count_strs_by_dirs_ReturnsEmpty_Scenario6_EmptyKegTerms(
     tmp_path,
 ):
-    # GIVEN
+    # ESTABLISH
     ch01_dir = tmp_path / "ch01"
     ch01_dir.mkdir()
     (ch01_dir / "file.txt").write_text("ContactName", encoding="utf-8")
@@ -132,7 +132,7 @@ def test_get_count_strs_by_dirs_ReturnsEmpty_Scenario6_EmptyKegTerms(
 
 
 def test_get_count_keg_terms_by_chapters_CountsTerms_Scenario0_SrcDir():
-    # GIVEN / WHEN
+    # ESTABLISH / WHEN
     keg_terms_by_chapters = get_count_keg_terms_by_chapters()
 
     # THEN

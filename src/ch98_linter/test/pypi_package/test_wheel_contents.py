@@ -39,7 +39,7 @@ def wheel_contents() -> list[str]:
     dist_dir = pathlib_Path("dist")
     dist_dir.mkdir(exist_ok=True)
 
-    # GIVEN a pyproject.toml exists in the current directory
+    # ESTABLISH a pyproject.toml exists in the current directory
     # WHEN we build the wheel
     result = subprocess_run(
         [
@@ -100,7 +100,7 @@ def test_ExactFileIsPresentIn_wheel(
 @pytest_mark.parametrize("pattern", REQUIRED_GLOB_PATTERNS)
 def test_GlobPatternHasAtLeastOneMatchIn_wheel(wheel_contents: list[str], pattern: str):
     # sourcery skip: no-conditionals-in-tests
-    # GIVEN a built wheel and a glob pattern
+    # ESTABLISH a built wheel and a glob pattern
     # WHEN we search all wheel entries for files matching the pattern
     matches = [
         entry
@@ -123,7 +123,7 @@ def test_GlobPatternHasAtLeastOneMatchIn_wheel(wheel_contents: list[str], patter
 @pytest_mark.local_only
 @pytest_mark.build_tests
 def test_DataFilesIn_wheelAreVisible(wheel_contents: list[str]):
-    # GIVEN a built wheel
+    # ESTABLISH a built wheel
     # WHEN we filter out .py files and dist-info metadata
     data_files = [
         f for f in wheel_contents if not f.endswith(".py") and ".dist-info/" not in f
