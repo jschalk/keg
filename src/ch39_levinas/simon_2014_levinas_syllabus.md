@@ -1,8 +1,8 @@
 # Jules Simon's Syllabus for course on Emmanuel Levinas
 
 
-**Date:** 2014-1<br>
 **Author:** Jules Simon<br>
+**Date:** 2014-1<br>
 **Source:** Handout distributed during Spring 2014 Levinas course at University Texas El Paso.<br>
 **Copied to Keg:** 2026-08-14<br>
 

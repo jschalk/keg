@@ -3,5 +3,6 @@
   "chapter_content": "These tools describe how one personunit listens to another", 
   "chapter_description": "ch11_person_listen", 
   "chapter_number": 11, 
+  "chapter_ref_catalogue": "n", 
   "ontology summary": "To truly listen one must consider the other's perspective. This chapter contains tools that do just that. The listener takes the speaker's PersonUnit, changes the person_name to their own and takes the agenda into their own PersonUnit."
 }

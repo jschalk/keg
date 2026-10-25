@@ -1,7 +1,7 @@
 # The Poverty of Realism
 
-**Date:** 2024-03-10<br>
 **Author:** Kamil Kazani<br>
+**Date:** 2024-03-10<br>
 **Source:** https://kamilkazani.substack.com/p/the-poverty-of-realism <br>
 **Copied to Keg:** 2026-06-26<br>
 

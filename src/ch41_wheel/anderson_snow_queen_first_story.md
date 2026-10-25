@@ -1,12 +1,12 @@
 # First Story of the Snow Queen
 
-**Date:** 1844<br>
 **Author:** Hans Christen Anderson<br>
+**Date:** 1844<br>
 **Source:** Stories from Hans Anderson, 1979 by Abaris Books<br>
 **Copied to Keg:** 2026-10-02<br>
 **Note:** No translator credited.<br>
 
-*What happened to the mirrow fragments?*
+*What happened to the mirror fragments?*
 
 ---
 <div align="center">

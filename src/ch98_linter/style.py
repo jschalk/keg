@@ -400,7 +400,8 @@ def check_all_test_functions_are_formatted(all_test_functions: dict[str, str]):
     print(f"check all {func_total_count} functions...")
     for function_count, function_name in enumerate(sorted_test_functions_names):
         test_function_str = all_test_functions.get(function_name)
-        assert necessary_comments_exist(function_name, test_function_str)
+        x_bool, a_str = necessary_comments_exist(function_name, test_function_str)
+        assert x_bool, a_str
         # check that no test creates it's own cursor in memory
         memory_cursor_fail_str = f"{function_name} init memory cursor"
         if (

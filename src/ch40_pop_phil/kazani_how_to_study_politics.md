@@ -1,7 +1,7 @@
 # How to study politics?
 
-**Date:** 2026-06-26<br>
 **Author:** Kamil Kazani<br>
+**Date:** 2026-06-26<br>
 **Source:** https://kamilkazani.substack.com/p/how-to-study-politics<br>
 **Copied to Keg:** 2026-06-28<br>
 

@@ -207,3 +207,6 @@ def test_get_ch_sorted_keywords_ReturnsObj_Scenario3_malformed_chapter_treated_l
     }
     # WHEN
     result = get_ch_sorted_keywords(data)
+    # THEN
+    # Tier first, then chapter (empty first within same tier)
+    assert result == ["C", "B", "A"]

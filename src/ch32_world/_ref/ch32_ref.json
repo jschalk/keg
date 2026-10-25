@@ -3,5 +3,6 @@
   "chapter_content": "WorldDirs create and admin MomentUnits", 
   "chapter_description": "ch32_world", 
   "chapter_number": 32, 
+  "chapter_ref_catalogue": "n", 
   "ontology summary": "WorldUnits can hold multiple disjoint MomentUnits, because every moment is independent."
 }

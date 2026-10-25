@@ -1,17 +1,17 @@
 from ch19_db_tool.db_toolbox import db_table_exists, get_row_count
 from ch20_brick.brick_db_tool import create_brick_sorted_table
 from ch22_etl_config.etl_sqlstr import create_prime_tablename
-from ch24_etl_brick.etl_brick_main import etl_brixk_vld_tables_to_sound_raw_tables
+from ch24_etl_brick.etl_brick_main import etl_brick_vld_tables_to_sound_raw_tables
 from ch99_glossary.ch_keyword import Ch24Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 
-# get examples from tests from etl_brixk_agg_dfs_to_jargon_title_raw
-# get examples from tests from etl_brixk_agg_dfs_to_jargon_rope_raw
-# get examples from tests from etl_brixk_agg_dfs_to_jargon__raw
-# get examples from tests from etl_brixk_agg_dfs_to_jargon_rope_raw
+# get examples from tests from etl_brick_agg_dfs_to_jargon_title_raw
+# get examples from tests from etl_brick_agg_dfs_to_jargon_rope_raw
+# get examples from tests from etl_brick_agg_dfs_to_jargon__raw
+# get examples from tests from etl_brick_agg_dfs_to_jargon_rope_raw
 
 
-def test_etl_brixk_vld_tables_to_sound_raw_tables_PopulatesTable_Scenario0_Only_valid_sparks(
+def test_etl_brick_vld_tables_to_sound_raw_tables_PopulatesTable_Scenario0_Only_valid_sparks(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -92,7 +92,7 @@ VALUES
     assert not db_table_exists(cursor0, prncont_put_s_raw_tblname)
 
     # WHEN
-    etl_brixk_vld_tables_to_sound_raw_tables(cursor0)
+    etl_brick_vld_tables_to_sound_raw_tables(cursor0)
 
     # THEN
     assert get_row_count(cursor0, trlrope_s_raw_tablename) == 5
@@ -129,7 +129,7 @@ VALUES
     assert rows == [ex_row_b0, ex_row_b1]
 
 
-def test_etl_brixk_vld_tables_to_sound_raw_tables_PopulatesTable_Scenario1_NoDuplicates(
+def test_etl_brick_vld_tables_to_sound_raw_tables_PopulatesTable_Scenario1_NoDuplicates(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -168,7 +168,7 @@ VALUES
     assert get_row_count(cursor0, bk00174_valid_tablename) == 2
     trlrope_s_raw_tablename = create_prime_tablename("TRLROPE", kw.s_raw)
     prncont_put_s_raw_tblname = create_prime_tablename("PRNCONT", kw.s_raw, "put")
-    etl_brixk_vld_tables_to_sound_raw_tables(cursor0)
+    etl_brick_vld_tables_to_sound_raw_tables(cursor0)
     spark2 = 2
     values2_clause = f"""
 VALUES
@@ -180,7 +180,7 @@ VALUES
     assert get_row_count(cursor0, prncont_put_s_raw_tblname) == 2
 
     # WHEN
-    etl_brixk_vld_tables_to_sound_raw_tables(cursor0)
+    etl_brick_vld_tables_to_sound_raw_tables(cursor0)
 
     # THEN
     assert get_row_count(cursor0, trlrope_s_raw_tablename) == 3

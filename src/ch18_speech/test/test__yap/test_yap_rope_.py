@@ -7,7 +7,7 @@ from ch18_speech.yap_term import (
     ropeyap_shop,
 )
 from pytest import raises as pytest_raises
-from src.ch99_glossary.ch_keyword import Ch18Keywords as kw, ExampleStrs as exx
+from ch99_glossary.ch_keyword import Ch18Keywords as kw, ExampleStrs as exx
 
 
 def test_RopeYap_Exists():

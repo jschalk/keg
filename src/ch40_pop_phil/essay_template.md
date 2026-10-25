@@ -1,7 +1,7 @@
 # Document Title
 
-**Date:** YYYY-MM-DD<br>
 **Author:** Author Name<br>
+**Date:** YYYY-MM-DD<br>
 **Source:** www.source_url.com<br>
 **Copied to Keg:** 2026-06-24<br>
 

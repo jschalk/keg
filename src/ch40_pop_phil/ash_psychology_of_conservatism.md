@@ -1,7 +1,7 @@
 # The Psychology of Conservatism: Why Do People Keep Voting for Republicans?
 
-**Date:** 2026-09-13<br>
 **Author:** Dr. Ash?<br>
+**Date:** 2026-09-13<br>
 **Source:** https://www.dailykos.com/stories/2026/9/13/800079546/community/the-psychology-of-conservatism-why-do-people-keep-voting-for-republicans/<br>
 **Copied to Keg:** 2026-09-14 <br>
 **Notes:** I didn't read the whole thing but the parts I did read were interesting. I don't know if I agree but at least it wasn't trash.<br>

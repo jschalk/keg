@@ -37,7 +37,8 @@ What does each one do?
 - **ch34_finance**: Defines Finance Tools for 
 - **ch35_person_viewer**: Tools for Visualizing PersonUnits
 - **ch36_news**: Defines News Tools
-- **ch39_levinas_phil**: Levinas Philosophy
+- **ch38_article**: Article formatting tools
+- **ch39_levinas**: Levinas Philosophy
 - **ch40_pop_phil**: Essays pop_phil
 - **ch41_wheel**: Essays pop_phil
 - **ch54_fable**: Short stories

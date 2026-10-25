@@ -1,7 +1,7 @@
 # Some selected Steve texts
 
-**Date:** 2026-08<br>
 **Author:** Steve Hernandez and Emmanuel Schalk<br>
+**Date:** 2026-08<br>
 **Note:** Between 2022 and Dec 2025<br>
 
 

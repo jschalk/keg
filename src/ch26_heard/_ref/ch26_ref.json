@@ -3,5 +3,6 @@
   "chapter_content": "Defines the 'Heard' process. Where valid 'Sound' data is aggregated into clean 'lego' data.", 
   "chapter_description": "ch26_heard", 
   "chapter_number": 26, 
+  "chapter_ref_catalogue": "n", 
   "ontology summary": "Sounds are turned into trusted concepts, Nabu interpreted (time conversion included) and produces Moment and Person objects."
 }

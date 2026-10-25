@@ -1,7 +1,7 @@
 # Against the internet Sept26
 
-**Date:** 2015<br>
 **Author:** David Lipsky<br>
+**Date:** 2015<br>
 **Source:** The End of the Tour movie script (2015)  <br>
 **Copied to Keg:** 2026-09-27 <br>
 **Notes:** The Interviewer, David Lipsky, wrote this dialogue from a conversation with David Foster Wallace in 1996. When the internet was just beginning.<br>

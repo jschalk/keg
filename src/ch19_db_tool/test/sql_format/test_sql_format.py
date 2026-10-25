@@ -439,6 +439,7 @@ def test_format_sql_ReturnsObj_Scenario0_FormatsSimpleSelect():
 
 
 def test_format_sql_ReturnsObj_Scenario1_FormatsWhereClause():
+    # ESTABLISH
     sql = "select * from people where age > 18"
 
     expected = """SELECT * FROM people WHERE age > 18"""
@@ -447,6 +448,7 @@ def test_format_sql_ReturnsObj_Scenario1_FormatsWhereClause():
 
 
 def test_format_sql_ReturnsObj_Scenario2_FormatsGroupByAndOrderBy():
+    # ESTABLISH
     sql = (
         "select alpha_extralong,beta_extralong,count(*) from people "
         "group by alpha_extralong,beta_extralong "

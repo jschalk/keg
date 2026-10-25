@@ -244,11 +244,11 @@ def create_plan_rect(
     show_red: bool = False,
 ):
     level_bump = level * 0.125
-    home_form_x0 = base_width + 0.1
-    home_form_x1 = 1 - base_width - 0.1
-    home_width = home_form_x1 - home_form_x0
-    shape_x0 = home_form_x0 + (home_width * level_width0)
-    shape_x1 = home_form_x0 + (home_width * level_width1)
+    x_form_x0 = base_width + 0.1
+    x_form_x1 = 1 - base_width - 0.1
+    x_width = x_form_x1 - x_form_x0
+    shape_x0 = x_form_x0 + (x_width * level_width0)
+    shape_x1 = x_form_x0 + (x_width * level_width1)
     shape_y0 = level_bump + base_h + 0.25
     shape_y1 = level_bump + base_h + 0.375
     x_color = "Red" if show_red else "RoyalBlue"
@@ -286,11 +286,11 @@ def add_group_rect(
     # shape_y1 = base_h + 0.25
 
     level_bump = level * 0.125
-    home_form_x0 = base_width
-    home_form_x1 = 1 - base_width
-    home_width = home_form_x1 - home_form_x0
-    shape_x0 = home_form_x0 + (home_width * level_width0)
-    shape_x1 = home_form_x0 + (home_width * level_width1)
+    x_form_x0 = base_width
+    x_form_x1 = 1 - base_width
+    x_width = x_form_x1 - x_form_x0
+    shape_x0 = x_form_x0 + (x_width * level_width0)
+    shape_x1 = x_form_x0 + (x_width * level_width1)
     shape_y0 = level_bump + base_h
     shape_y1 = level_bump + base_h + 0.125
 
@@ -320,11 +320,11 @@ def add_people_rect(
     display_str,
 ):
     level_bump = level * 0.125
-    home_form_x0 = base_width
-    home_form_x1 = 1 - base_width
-    home_width = home_form_x1 - home_form_x0
-    shape_x0 = home_form_x0 + (home_width * level_width0)
-    shape_x1 = home_form_x0 + (home_width * level_width1)
+    x_form_x0 = base_width
+    x_form_x1 = 1 - base_width
+    x_width = x_form_x1 - x_form_x0
+    shape_x0 = x_form_x0 + (x_width * level_width0)
+    shape_x1 = x_form_x0 + (x_width * level_width1)
     shape_y0 = level_bump + base_h
     shape_y1 = level_bump + base_h + 0.125
     fig.add_shape(

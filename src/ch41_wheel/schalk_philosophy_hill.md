@@ -1,7 +1,7 @@
 # Different philosophical disciplines
 
-**Date:** 2026-09-19<br>
 **Author:** Emmanuel Schalk<br>
+**Date:** 2026-09-19<br>
 **Description:** A look at one way to rank philosophy<br>
 
 *Where did I come from and where am I going?*

@@ -1,7 +1,7 @@
 # Mechanics of Revolution
 
-**Date:** 2025-10-24<br>
 **Author:** Kamil Kazani<br>
+**Date:** 2025-10-24<br>
 **Source:** https://kamilkazani.substack.com/p/mechanics-of-revolution<br>
 **Copied to Keg:** 2026-06-10<br>
 

@@ -71,21 +71,6 @@ class Ch14ExampleStrs(str, Enum):
     week_rope = FIVE_WEEK_ROPE
     weeks_rope = FIVE_WEEKS_ROPE
     five_year_rope = FIVE_YEAR_ROPE
-    Fredrick = "Fredrick"
-    Geo = "Geo"
-    Holocene = "Holocene"
-    Iguana = "Iguana"
-    Jesus = "Jesus"
-    Keel = "Keel"
-    LeBron = "LeBron"
-    Mikayla = "Mikayla"
-    Ninon = "Ninon"
-    Obama = "Obama"
-    Preston = "Preston"
-    Quorum = "Quorum"
-    Rio = "Rio"
-    Simon = "Simon"
-    Trump = "Trump"
 
     def __str__(self):
         return self.value

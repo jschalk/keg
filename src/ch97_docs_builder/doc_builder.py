@@ -13,25 +13,25 @@ from ch00_py.file_toolbox import (
     save_file,
     save_json,
 )
-from ch01_keyword.chapter_desc_main import (
-    get_chapter_desc_prefix,
-    get_chapter_descs,
-)
-from ch01_keyword.keyword_class_builder import (
-    create_src_example_strs_path,
-    create_src_keywords_src_path,
-    get_keywords_src_config,
-)
+from ch01_keyword.chapter_desc_main import get_chapter_desc_prefix, get_chapter_descs
+from ch01_keyword.keyword_class_builder import create_src_example_strs_path
 from ch05_rope._ref.ch05_doc_builder import get_ropeterm_description_md
 from ch20_brick._ref.ch20_doc_builder import get_brick_formats_md, get_brick_mds
-from ch97_docs_builder._ref.ch97_path import create_chapter_ref_path
+from ch38_article.article_toolbox import (
+    create_markdown_table_of_contents,
+    get_markdown_file_metadata,
+)
+from ch97_docs_builder._ref.ch97_path import (
+    create_chapter_ref_path,
+    create_chapter_catalogue_path,
+)
 from ch97_docs_builder.glossary_definition import rebuild_keywords_definitions_contents
 from ch97_docs_builder.glossary_ranking import (
     rebuild_keg_exam_questions,
     rebuild_keg_rank_csv,
 )
-from ch99_glossary.sorter import get_keg_elements_sort_order
 from os.path import join as os_path_join
+from pathlib import Path
 
 
 def get_func_names_and_class_bases_from_file(
@@ -55,6 +55,21 @@ def get_func_names_and_class_bases_from_file(
             bases = [b.id for b in n.bases if isinstance(b, ast_Name)]
             class_bases[n.name] = bases
     return file_funcs, class_bases
+
+
+def save_chapter_catalogues_md() -> list[str]:
+    catalogues_saved = []
+    for chapter_desc, ch_dir in get_chapter_descs().items():
+        ch_prefix = get_chapter_desc_prefix(chapter_desc)
+        chapter_ref_path = create_chapter_ref_path(ch_dir, ch_prefix)
+        chapter_ref_dict = open_json(chapter_ref_path)
+        if chapter_ref_dict.get("chapter_ref_catalogue") == "y":
+            ch_catalogue_path = create_chapter_catalogue_path(ch_dir, ch_prefix)
+            ch_metadata = get_markdown_file_metadata(Path(ch_dir))
+            ch_catalogue_md = create_markdown_table_of_contents(ch_metadata)
+            save_file(ch_catalogue_path, None, ch_catalogue_md)
+            catalogues_saved.append(chapter_ref_path)
+    return catalogues_saved
 
 
 def get_chapter_blurbs_md() -> str:
@@ -126,4 +141,3 @@ def save_chapters_ai_summary(x_dir: str):
     dst_path = os_path_join(x_dir, "chapter_ai_summaries.md")
     with open(dst_path, "w", newline="", encoding="utf-8") as ai_sum_file:
         ai_sum_file.write(chapters_ai_summary)
-    # TODO make five_epoch_config weekday and month_labels keywords

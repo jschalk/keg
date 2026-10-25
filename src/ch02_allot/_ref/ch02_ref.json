@@ -3,5 +3,6 @@
   "chapter_content": "Defines tools for allotment of a large number (called a pool) to a ledger (a list of things with a weighted value to represent their importance.", 
   "chapter_description": "ch02_allot", 
   "chapter_number": 2, 
+  "chapter_ref_catalogue": "n", 
   "ontology summary": "When things have to be divided, such as currency, this defines how but nothing philosophically interesting. "
 }

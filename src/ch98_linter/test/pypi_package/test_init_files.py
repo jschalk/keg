@@ -12,6 +12,7 @@ from ch00_py.file_toolbox import get_dir_filenames
 from ch01_keyword.chapter_desc_main import get_chapter_descs
 from os.path import join as os_path_join
 from pathlib import Path
+from shutil import rmtree as shutil_rmtree
 
 # def test_CheckAllNonTestDirectoriesHave__init__py():
 #     """Every non-test package directory must contain an __init__.py."""
@@ -66,10 +67,8 @@ Configure ROOT_DIRS below to match your project layout.
 from pathlib import Path
 from pytest import mark as pytest_mark
 
-# ── Configure these ────────────────────────────────────────────────────────────
-ROOT_DIRS = [
-    "src",
-]
+ROOT_DIR = Path("src")
+
 
 EXCLUDE_DIR_NAMES = {
     "_ref",
@@ -90,52 +89,41 @@ EXCLUDE_PREFIXES = ("test", "tests", "testing", ".")
 # ──────────────────────────────────────────────────────────────────────────────
 
 
-def _is_excluded(directory: Path) -> bool:
-    name = directory.name
-    return name in EXCLUDE_DIR_NAMES or name.startswith(EXCLUDE_PREFIXES)
+def test_RootDirExists():
+    # ESTABLISH / WHEN / THEN
+    """ROOT_DIR must exist so the linter is actually running."""
+    assertion_failure_str = (
+        f"ROOT_DIR not found: {ROOT_DIR}\n" "Run pytest from the project root."
+    )
+    assert ROOT_DIR.exists(), assertion_failure_str
 
 
-def _collect_dirs_missing_init(root: Path) -> list[Path]:
-    missing = []
-    for directory in sorted(root.rglob("*")):
+def test_LibraryHasAll_init_py_Files():
+    # ESTABLISH
+    egg_info_path = Path("src/keg2.egg-info")
+
+    if egg_info_path.exists():
+        shutil_rmtree(egg_info_path)
+    # Find all directories under src that should contain __init__.py
+
+    # WHEN
+    missing_directories = []
+
+    for directory in ROOT_DIR.rglob("*"):
         if not directory.is_dir():
             continue
-        if any(_is_excluded(part) for part in [directory, *directory.parents]):
+
+        if directory.name in EXCLUDE_DIR_NAMES:
             continue
+
+        if any("test" in part.lower() for part in directory.parts):
+            continue
+
         if not (directory / "__init__.py").exists():
-            missing.append(directory)
-    return missing
+            missing_directories.append(directory)
 
-
-def _all_missing() -> list[tuple[str, Path]]:
-    results = []
-    for root_str in ROOT_DIRS:
-        root = Path(root_str)
-        if not root.exists():
-            continue
-        results.extend(
-            (root_str, missing_dir) for missing_dir in _collect_dirs_missing_init(root)
-        )
-    return results
-
-
-@pytest_mark.parametrize(
-    "root,directory",
-    _all_missing(),
-    ids=lambda p: str(p) if isinstance(p, Path) else p,
-)
-def test_LibraryHasAll_init_py_Files(root: str, directory: Path):
-    """Every non-test, non-ref package directory must contain an __init__.py."""
-    assert (directory / "__init__.py").exists(), (
-        f"Missing __init__.py in '{directory}'\n"
-        f"  Fix: touch {directory / '__init__.py'}"
+    # THEN
+    assertion_failure_str = "Missing __init__.py files:\n" + "\n".join(
+        f"  touch {directory / '__init__.py'}" for directory in missing_directories
     )
-
-
-def test_RootDirsExist():
-    """All configured ROOT_DIRS must exist so the linter is actually running."""
-    missing_roots = [r for r in ROOT_DIRS if not Path(r).exists()]
-    assert not missing_roots, (
-        f"ROOT_DIRS configured in test_init_files.py not found on disk: "
-        f"{missing_roots}\nRun pytest from the project root."
-    )
+    assert not missing_directories, assertion_failure_str

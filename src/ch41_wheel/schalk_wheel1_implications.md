@@ -1,7 +1,7 @@
 # Kegology Political Theory
 
-**Date:** 2026-06-28<br>
 **Author:** Emmanuel Schalk<br>
+**Date:** 2026-06-28<br>
 **Description:** A generalized theory of political mechanics<br>
 
 > TODO add tag line

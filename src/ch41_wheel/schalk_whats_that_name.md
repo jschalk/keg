@@ -1,7 +1,7 @@
 # Whats that Name
 
-**Date:** 2026-07-05<br>
 **Author:** Emmanuel Schalk<br>
+**Date:** 2026-07-05<br>
 
 *Am I forgiven if I plan to become a celebrity?*
 

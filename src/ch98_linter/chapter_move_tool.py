@@ -150,7 +150,7 @@ def string_exists_in_directory(root_dir: str, search_text: str) -> bool:
                                 print(f"'{search_text}' exists in {filepath=}")
                                 return True
                 except Exception as e:
-                    # Skip unreadable files (permissions, binary, etc.)
+                    # Skip unopenable files (permissions, binary, etc.)
                     continue
     return False
 

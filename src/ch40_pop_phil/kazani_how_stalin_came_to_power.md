@@ -1,7 +1,7 @@
 # How Stalin came to power
 
-**Date:** 2025-03-22<br>
 **Author:** Kamil Kazani<br>
+**Date:** 2025-03-22<br>
 **Source:** https://kamilkazani.substack.com/p/how-stalin-came-to-power<br>
 **Copied to Keg:** 2026-06-09<br>
 

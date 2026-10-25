@@ -1,10 +1,18 @@
-from ch00_py.file_toolbox import create_path, open_file
+from ch00_py.file_toolbox import create_path, open_file, save_json, save_file
 from ch01_keyword.keyword_class_builder import (
     get_ch_int,
     get_chapter_keyword_classes,
     get_cumlative_keywords_src_dict,
     get_keywords_by_chapter,
     get_keywords_src_config,
+    create_src_keywords_src_path,
+)
+from ch01_keyword._ref.ch01_path import create_keywords_classes_file_path
+from ch01_keyword.keyword_class_builder import (
+    create_all_enum_keyword_classes_str,
+    create_src_keywords_src_path,
+    get_chapter_descs,
+    get_cumlative_keywords_src_dict,
 )
 from ch97_docs_builder.doc_builder import get_chapter_desc_prefix, get_chapter_descs
 from ch98_linter.style import (
@@ -165,7 +173,77 @@ def is_py_file_allowed_any_imports(file_path: str) -> bool:
     return any(file in file_path for file in files_with_all_imports_allowed)
 
 
-# TODO create special test where when specific argument is passed with pytest the keywords_src_config file is updated
+def get_keywords_in_ch_count(keywords_dict: dict) -> dict:
+    # new method references from keywords config file
+    all_keywords = set(keywords_dict.keys())
+    keywords_in_ch_count = {keyword: {} for keyword in keywords_dict}
+    filtered_chapter_descs = {
+        chapter_desc: x_value
+        for chapter_desc, x_value in get_chapter_descs().items()
+        if chapter_desc != "ch99_glossary"
+    }
+    # WHEN / THEN
+    # all_file_count = 0
+    for chapter_desc, chapter_dir in filtered_chapter_descs.items():
+        chapter_prefix = get_chapter_desc_prefix(chapter_desc)
+        chapter_files = sorted(get_keyword_scope_files(chapter_dir))
+        chapter_files.extend(list(get_json_files(chapter_dir)))
+        chapter_files = sorted(chapter_files)
+        for file_path in chapter_files:
+            file_str = open_file(file_path)
+            for keyword in all_keywords:
+                if keyword in file_str:
+                    add_ch_keyword_count(keywords_in_ch_count, keyword, chapter_prefix)
+
+    return keywords_in_ch_count
+
+
+def get_expected_ch_config() -> dict:
+    keywords_dict = get_keywords_src_config()
+    keywords_in_ch_count = get_keywords_in_ch_count(keywords_dict)
+    expected_ch_config = {}
+    for keyword, chapters_dict in keywords_in_ch_count.items():
+        expected_keyword_ch_set = {
+            int(ch_prefix[2:4]) for ch_prefix in sorted(chapters_dict.keys())
+        }
+        expected_keyword_ch_str = ""
+        expected_keyword_ch_str = ", ".join(map(str, sorted(expected_keyword_ch_set)))
+        #     chapter_count = chapters_dict.get(chapter_prefix)
+        # print(f"{keyword=} {expected_keyword_ch_str=} ")
+        expected_ch_config[keyword] = {"valid_ch": expected_keyword_ch_str}
+        if current_sort_ordinal := keywords_dict.get(keyword).get(kw.sort_ordinal):
+            expected_ch_config[keyword]["sort_ordinal"] = current_sort_ordinal
+        if current_semantic_type := keywords_dict.get(keyword).get(kw.semantic_type):
+            expected_ch_config[keyword]["semantic_type"] = current_semantic_type
+    return expected_ch_config
+
+
+def test_SpecialBuild_get_keywords_src_config(rebuild_keyword_src):
+    # ESTABLISH / WHEN / THEN
+    # sourcery skip: extract-method, no-conditionals-in-tests
+    if not rebuild_keyword_src:
+        return
+    old_keywords_dict = get_keywords_src_config()
+    expected_ch_config = get_expected_ch_config()
+    # for keyword_str, keyword_chs in expected_ch_config.items():
+    #     print(f"{keyword_str}: '{keyword_chs}'")
+    src_keywords_src_path = create_src_keywords_src_path("src")
+    prev_and_curr_keyword_file_are_same = old_keywords_dict == expected_ch_config
+    print(f"{prev_and_curr_keyword_file_are_same=}")
+    if not prev_and_curr_keyword_file_are_same:
+        print(
+            "Create and save keyword_src_config file, fail test if there are any changes so changes can apply to next test run. "
+        )
+        save_json(src_keywords_src_path, None, expected_ch_config)
+        keywords_classes_file_path = create_keywords_classes_file_path("src")
+        enum_classes_str = create_all_enum_keyword_classes_str()
+        save_file(keywords_classes_file_path, None, enum_classes_str)
+    assertion_failure_str = (
+        "Special case: keyword_src_config & ch_keyword.py were changed. Run test again."
+    )
+    assert prev_and_curr_keyword_file_are_same, assertion_failure_str
+
+
 def test_Chapters_KeywordsAppearWhereTheyShould():
     """Test that checks no str function is created before it is needed or after the term is used."""
 
@@ -177,7 +255,6 @@ def test_Chapters_KeywordsAppearWhereTheyShould():
     keywords_dict = get_keywords_src_config()
     keywords_by_chapter = get_keywords_by_chapter(keywords_dict)
     all_keywords_set = set(keywords_dict.keys())
-    keywords_in_ch_count = {keyword: {} for keyword in keywords_dict.keys()}
     cumlative_keywords_src_dict = get_cumlative_keywords_src_dict(keywords_by_chapter)
     filtered_chapter_descs = {
         chapter_desc: x_value
@@ -194,12 +271,16 @@ def test_Chapters_KeywordsAppearWhereTheyShould():
         not_allowed_keywords = sorted(not_allowed_keywords.difference(excluded_strs))
         # print(f"{chapter_prefix} {len(not_allowed_keywords)=}")
 
-        # TODO confirm add .md and .txt and .json files to chapter files
         chapter_files = sorted(get_keyword_scope_files(chapter_dir))
         chapter_files.extend(list(get_json_files(chapter_dir)))
         chapter_files = sorted(chapter_files)
         # chapter_file_count = 0
         for file_path in chapter_files:
+            for x_keyword in not_allowed_keywords:
+                if x_keyword not in {kw.semantic_type, kw.src, "crud"}:
+                    if x_keyword in file_path:
+                        print(f"{file_path=} {x_keyword=}")
+                    assert x_keyword not in file_path
             # print(f"{chapter_prefix} {file_path=}")
             # chapter_file_count += 1
             # all_file_count += 1
@@ -221,32 +302,17 @@ def test_Chapters_KeywordsAppearWhereTheyShould():
                     # print(f"{file_path=}")
                     assert file_str.count("keywords import") == 0, "No imports"
                     assert file_str.count("from enum import Enum") == 1, "import Enum"
-
-            for keyword in allowed_chapter_keywords:
-                if keyword in file_str:
-                    add_ch_keyword_count(keywords_in_ch_count, keyword, chapter_prefix)
-
-    # Check that keyword is not introduced before it is used.
-    for keyword, chapters_dict in keywords_in_ch_count.items():
-        # for chapter_prefix in sorted(chapters_dict.keys()):
-        #     chapter_count = chapters_dict.get(chapter_prefix)
-        # print(f"{keyword=} {chapter_prefix=} ")
-        never_used_assertion_fail_str = (
-            f"The Keyword '{keyword}' is never used in the chapters"
-        )
-        if keyword != "ch99" and not chapters_dict.keys():
-            valid_ch = keywords_dict[keyword][kw.valid_ch]
-            assert valid_ch == "", never_used_assertion_fail_str
-        # TODO reactivate this assert if useful
-        # TODO add comment about what this assert does
-        # elif keyword != "ch99":
-        #     min_chapter_prefix = min(chapters_dict.keys())
-        #     min_chapter_count = chapters_dict.get(min_chapter_prefix)
-        #     ch_count_fail_str = f"{keyword=} {min_chapter_prefix} {min_chapter_count=}"
-        #     # if min_chapter_count <= 2:
-        #     #     print()
-        #     if keyword not in {"semantic_type"}:
-        #         assert min_chapter_count != 1, ch_count_fail_str
+    expected_ch_config = get_expected_ch_config()
+    assert len(expected_ch_config) == len(keywords_dict)
+    assert len(expected_ch_config) > 860
+    assertion_failure_str = "keyword_src.json has conflicts with generated keyword_src dict. To make file generated version rerun tests with 'rebuild_keyword_src'."
+    for keyword, kw_dict in keywords_dict.items():
+        curr_kw_valid_ch = kw_dict.get(kw.valid_ch)
+        expected_kw_valid_ch = expected_ch_config.get(keyword).get(kw.valid_ch)
+        if curr_kw_valid_ch != expected_kw_valid_ch:
+            print(f"{keyword:21}{curr_kw_valid_ch}")
+            print(f"calculated expected: {expected_kw_valid_ch}")
+    assert keywords_dict == expected_ch_config, assertion_failure_str
 
 
 def does_not_allowed_from_src_import_exist(

@@ -60,9 +60,11 @@ class WheelUnit:
 
     def get_famu_status_familyunits(self, famu_status: str) -> list[FamilyUnit]:
         stable_familyunits = []
-        for familyunit in self.familyunits.values():
-            if familyunit.famu_status == famu_status:
-                stable_familyunits.append(familyunit)
+        stable_familyunits.extend(
+            familyunit
+            for familyunit in self.familyunits.values()
+            if familyunit.famu_status == famu_status
+        )
         return stable_familyunits
 
     def get_stable_familyunits(self) -> list[FamilyUnit]:

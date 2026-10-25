@@ -3,5 +3,6 @@
   "chapter_content": "Defines the 'Etl Bricks' process. Where valid 'Brick' data is translated into clean 'Sound' data.", 
   "chapter_description": "ch24_etl_brick", 
   "chapter_number": 24, 
+  "chapter_ref_catalogue": "n", 
   "ontology summary": "Bricks have data type validations and then are turned into Sound data."
 }

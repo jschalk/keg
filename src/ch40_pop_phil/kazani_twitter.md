@@ -1,7 +1,7 @@
 # Notable @kamilkazai Tweets on x.com
 
-**Date:** 2025-08-02<br>
 **Author:** Kamil Kazani<br>
+**Date:** 2025-08-02<br>
 **Source:** https://x.com/kamilkazani viewed from Emmanuel Schalk's twitter login.<br>
 **Copied to Keg:** 2026-06-09<br>
 
@@ -143,7 +143,7 @@ THOSE are the issues. We don’t need to be unkind to be honest."
 > 
 > For a politician, acting like an asshole is ten thousand times preferable to apologising. The former may be a downside, sometimes, a big downside. It depends. The latter is an immediate & guaranteed catastrophe
 > 
-> Best thing you can do, is to be firm & polite. Look at Zohran Mamdani, who towers over the pathetic American political landscape like the mountains of Uganda. Much to learn from
+> Best thing you can do, is to be firm & polite. Look at Zohran Mamdani, who is a stands over the pathetic American political landscape like the mountains of Uganda. Much to learn from
 > 
 > But. If you can’t be firm & polite, be just firm. That may suffice. Or not. Again, it depends
 > 

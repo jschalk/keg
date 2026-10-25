@@ -119,7 +119,7 @@ def test_idea_sheets_to_lego_mstr_Scenario0_CreatesDatabaseFile(
     db_conn.close()
 
 
-def create_brixk_agg_record(wdir: WorldDir, spark_num: int):
+def create_brick_agg_record(wdir: WorldDir, spark_num: int):
     minute_360 = 360
     hour6am = "6am"
     agg_bk00103_tablename = f"bk00103_{kw.b_agg}"
@@ -153,7 +153,7 @@ def test_idea_sheets_to_lego_mstr_Scenario1_DatabaseFileExists(
     fay_rope = create_rope("Fay34")
     fay_wdir = worlddir_shop(fay_rope, str(temp3_fs))
     spark5 = 5
-    create_brixk_agg_record(fay_wdir, spark5)
+    create_brick_agg_record(fay_wdir, spark5)
     # delete_dir(fay_wdir.worlds_dir)
     sue_inx = "Suzy"
     ex_filename = "idea_Faybob.xlsx"

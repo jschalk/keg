@@ -173,14 +173,14 @@ def create_simple_1m2p5pledges_idea_csvs(
     me_person.add_contactunit(you_name)
     you_person.add_contactunit(you_name)
     you_person.add_contactunit(me_name)
-    home_rope = you_person.make_l1_rope("clean home")
-    dishes_rope = you_person.make_rope(home_rope, "clean dishes with baking soda")
-    clothes_rope = you_person.make_rope(home_rope, "clean clothes with baking soda")
+    casa_rope = you_person.make_l1_rope("clean casa")
+    dishes_rope = you_person.make_rope(casa_rope, "clean dishes with baking soda")
+    clothes_rope = you_person.make_rope(casa_rope, "clean clothes with baking soda")
     counters_str = "clean kitchen counters with baking soda"
-    counters_rope = you_person.make_rope(home_rope, counters_str)
+    counters_rope = you_person.make_rope(casa_rope, counters_str)
     handout_str = "give neighbor any baking soda they want"
-    handout_rope = you_person.make_rope(home_rope, handout_str)
-    ask_rope = you_person.make_rope(home_rope, "ask neighbor to use baking soda")
+    handout_rope = you_person.make_rope(casa_rope, handout_str)
+    ask_rope = you_person.make_rope(casa_rope, "ask neighbor to use baking soda")
     music_rope = you_person.make_l1_rope("enjoy music")
     me_person.add_plan(music_rope, 1, True)
     me_person.add_plan(dishes_rope, 10, True)
@@ -208,14 +208,14 @@ def create_simple_2m2p5pledges_idea_csvs(
     m1_me_person.add_contactunit(you_name)
     m1_you_person.add_contactunit(you_name)
     m1_you_person.add_contactunit(me_name)
-    home_rope = m1_you_person.make_l1_rope("clean home")
-    dishes_rope = m1_you_person.make_rope(home_rope, "clean dishes with baking soda")
-    clothes_rope = m1_you_person.make_rope(home_rope, "clean clothes with baking soda")
+    casa_rope = m1_you_person.make_l1_rope("clean casa")
+    dishes_rope = m1_you_person.make_rope(casa_rope, "clean dishes with baking soda")
+    clothes_rope = m1_you_person.make_rope(casa_rope, "clean clothes with baking soda")
     counters_str = "clean kitchen counters with baking soda"
-    counters_rope = m1_you_person.make_rope(home_rope, counters_str)
+    counters_rope = m1_you_person.make_rope(casa_rope, counters_str)
     handout_str = "give neighbor any baking soda they want"
-    handout_rope = m1_you_person.make_rope(home_rope, handout_str)
-    ask_rope = m1_you_person.make_rope(home_rope, "ask neighbor to use baking soda")
+    handout_rope = m1_you_person.make_rope(casa_rope, handout_str)
+    ask_rope = m1_you_person.make_rope(casa_rope, "ask neighbor to use baking soda")
     music_rope = m1_you_person.make_l1_rope("enjoy music")
     m1_me_person.add_plan(music_rope, 1, True)
     m1_me_person.add_plan(dishes_rope, 10, True)
@@ -332,7 +332,7 @@ def create_five_time_config_idea_csvs(
     return with_spark_face_csvs
 
 
-# TODO check this still works in gui
+# Consider creating check this still works in gui
 def create_elpaso_time_config_idea_csvs(
     me_name: PersonName, you_name: PersonName
 ) -> dict[str, str]:
@@ -354,7 +354,7 @@ def create_elpaso_time_config_idea_csvs(
 def create_emmanuel_idea_idea_csvs(
     me_name: PersonName, you_name: PersonName
 ) -> dict[str, str]:
-    # TODO dict[str, str]s and save to file
+    # Consider creating dict[str, str]s and save to file
     # prnt("create_emmanuel_idea_file...")
     pass
 
@@ -362,7 +362,7 @@ def create_emmanuel_idea_idea_csvs(
 def create_example_moment_ledger_idea_csvs(
     me_name: PersonName, you_name: PersonName
 ) -> dict[str, str]:
-    # TODO dict[str, str]s and save to file
+    # Consider creating dict[str, str]s and save to file
     # prnt("create_example_moment_ledger_file...")
     pass
 
@@ -370,7 +370,7 @@ def create_example_moment_ledger_idea_csvs(
 def create_example_moment_budget_idea_csvs(
     me_name: PersonName, you_name: PersonName
 ) -> dict[str, str]:
-    # TODO dict[str, str]s and save to file
+    # Consider creating dict[str, str]s and save to file
     # prnt("create_example_moment_budget_file...")
     pass
 
@@ -437,7 +437,7 @@ def create_elpaso_time_config_file(
 def create_emmanuel_idea_file(
     file_path: str, me_name: PersonName, you_name: PersonName
 ):
-    # TODO dict[str, str]s and save to file
+    # Consider creating dict[str, str]s and save to file
     # prnt("create_emmanuel_idea_file...")
     pass
 
@@ -445,7 +445,7 @@ def create_emmanuel_idea_file(
 def create_example_moment_ledger_file(
     file_path: str, me_name: PersonName, you_name: PersonName
 ):
-    # TODO dict[str, str]s and save to file
+    # Consider creating dict[str, str]s and save to file
     # prnt("create_example_moment_ledger_file...")
     pass
 
@@ -453,7 +453,7 @@ def create_example_moment_ledger_file(
 def create_example_moment_budget_file(
     file_path: str, me_name: PersonName, you_name: PersonName
 ):
-    # TODO dict[str, str]s and save to file
+    # Consider creating dict[str, str]s and save to file
     # prnt("create_example_moment_budget_file...")
     pass
 
@@ -461,7 +461,7 @@ def create_example_moment_budget_file(
 def create_monopoly_idea_file(
     file_path: str, me_name: PersonName, you_name: PersonName
 ):
-    # TODO dict[str, str]s and save to file
+    # Consider creating dict[str, str]s and save to file
     # prnt("create_example_moment_budget_file...")
     pass
 

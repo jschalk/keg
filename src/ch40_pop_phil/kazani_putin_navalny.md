@@ -1,7 +1,7 @@
 # Why did Putin kill Navalny?
 
-**Date:** 2024-02-19<br>
 **Author:** Kamil Kazani<br>
+**Date:** 2024-02-19<br>
 **Source:** https://kamilkazani.substack.com/p/why-did-putin-kill-navalny<br>
 **Copied to Keg:** 2026-06-14<br>
 

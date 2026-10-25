@@ -1,7 +1,7 @@
 # Jules Simon's Emmanuel Levinas Class Protocol 
 
-**Date:** 2014-3-18<br>
 **Author:** Unknown, Edited by Emmanuel<br>
+**Date:** 2014-3-18<br>
 **Source:** Shared file from Guillermo<br>
 **Copied to Keg:** 2026-08-14<br>
 

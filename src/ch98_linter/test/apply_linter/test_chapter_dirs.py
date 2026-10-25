@@ -1,4 +1,4 @@
-from ch00_py.file_toolbox import create_path, get_level1_dirs, open_json
+from ch00_py.file_toolbox import create_path, get_level1_dirs, open_json, save_json
 from ch01_keyword.chapter_desc_main import get_chapter_desc_str_number
 from ch97_docs_builder.doc_builder import get_chapter_desc_prefix
 from ch98_linter.style import (
@@ -107,7 +107,10 @@ def test_Chapters_ReferenceDir_ref_ExistsForEveryChapter_Scenario0():
         assert os_path_exists(chapter_ref_path)
         assert os_path_exists(ch_ai_1min_path)
         assert os_path_exists(semantics_path)
+        catalogue_yn = "chapter_ref_catalogue"
         chapter_ref_dict = open_json(chapter_ref_path)
+        assert chapter_ref_dict.get(catalogue_yn) in {"n", "y"}, chapter_ref_path
+        # save_json(chapter_ref_path, None, chapter_ref_dict)
         # print(f"{chapter_ref_path} \t Items: {len(chapter_ref_dict)}")
         ref_keys = set(chapter_ref_dict.keys())
         chapter_description_str = "chapter_description"
@@ -122,6 +125,7 @@ def test_Chapters_ReferenceDir_ref_ExistsForEveryChapter_Scenario0():
             chapter_number_str,
             chapter_content_str,
             ontology_str,
+            catalogue_yn,
         }
         assert ref_keys == expected_ref_keys, keys_assertion_fail_str
         assert chapter_ref_dict.get(chapter_description_str) == chapter_desc

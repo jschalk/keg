@@ -223,7 +223,7 @@ def test_set_epoch_cases_for_weekly_SetsAttr_Scenario1_IncludeRange():
 def test_set_epoch_cases_for_yearly_monthday_SetsAttr_Scenario0_NoRange():
     # ESTABLISH
     bob_person = get_bob_five_person()
-    month_geo_rope = bob_person.make_rope(wx.five_year_rope, wx.Geo)
+    month_geo_rope = bob_person.make_rope(wx.five_year_rope, kw.Geo)
     mop_monthday_args = {
         kw.plan_rope: wx.mop_rope,
         kw.reason_context: month_geo_rope,
@@ -249,7 +249,7 @@ def test_set_epoch_cases_for_yearly_monthday_SetsAttr_Scenario0_NoRange():
         epoch_label=wx.five_str,
         dayly_lower_min=mop_dayly_lower_min,
         dayly_duration_min=mop_day_duration,
-        month_label=wx.Geo,
+        month_label=kw.Geo,
         monthday=mop_monthday,
         length_days=mop_length_days,
     )
@@ -262,7 +262,7 @@ def test_set_epoch_cases_for_yearly_monthday_SetsAttr_Scenario0_NoRange():
 def test_set_epoch_cases_for_yearly_monthday_SetsAttr_Scenario1_IncludesRange():
     # ESTABLISH
     bob_person = get_bob_five_person()
-    month_geo_rope = bob_person.make_rope(wx.five_year_rope, wx.Geo)
+    month_geo_rope = bob_person.make_rope(wx.five_year_rope, kw.Geo)
     mop_monthday_args = {
         kw.plan_rope: wx.mop_rope,
         kw.reason_context: month_geo_rope,
@@ -296,7 +296,7 @@ def test_set_epoch_cases_for_yearly_monthday_SetsAttr_Scenario1_IncludesRange():
         epoch_label=wx.five_str,
         dayly_lower_min=mop_dayly_lower_min,
         dayly_duration_min=mop_day_duration,
-        month_label=wx.Geo,
+        month_label=kw.Geo,
         monthday=mop_monthday,
         length_days=mop_length_days,
         range_lower_min=mop_range_lower_min,
@@ -341,8 +341,8 @@ def test_set_epoch_cases_for_monthly_SetsAttr_Scenario0_AllDays_within_month_ran
     year_reasonunit = person_plan_reasonunit_get_obj(bob_person, mop_year_args)
     year_cases = year_reasonunit.cases
     print(f"{year_cases.keys()=}")
-    month_geo_rope = bob_person.make_rope(wx.five_year_rope, wx.Geo)
-    month_trump_rope = bob_person.make_rope(wx.five_year_rope, wx.Trump)
+    month_geo_rope = bob_person.make_rope(wx.five_year_rope, kw.Geo)
+    month_trump_rope = bob_person.make_rope(wx.five_year_rope, kw.Trump)
     assert year_reasonunit.case_exists(month_geo_rope)
     assert year_reasonunit.case_exists(month_trump_rope)
     assert len(year_reasonunit.cases) == 15
@@ -382,8 +382,8 @@ def test_set_epoch_cases_for_monthly_SetsAttr_Scenario1_OneDayNot_within_month_r
     year_cases = year_reasonunit.cases
     for month_case in year_cases.values():
         print(f"{month_case.reason_state} {month_case.reason_upper=}")
-    month_geo_rope = bob_person.make_rope(wx.five_year_rope, wx.Geo)
-    month_trump_rope = bob_person.make_rope(wx.five_year_rope, wx.Trump)
+    month_geo_rope = bob_person.make_rope(wx.five_year_rope, kw.Geo)
+    month_trump_rope = bob_person.make_rope(wx.five_year_rope, kw.Trump)
     assert year_reasonunit.case_exists(month_geo_rope)
     assert not year_reasonunit.case_exists(month_trump_rope)
     assert len(year_reasonunit.cases) == 14
@@ -434,8 +434,8 @@ def test_set_epoch_cases_for_monthly_SetsAttr_Scenario2_Include_epoch_five_range
     year_cases = year_reasonunit.cases
     for month_case in year_cases.values():
         print(f"{month_case.reason_state} {month_case.reason_upper=}")
-    month_geo_rope = bob_person.make_rope(wx.five_year_rope, wx.Geo)
-    month_trump_rope = bob_person.make_rope(wx.five_year_rope, wx.Trump)
+    month_geo_rope = bob_person.make_rope(wx.five_year_rope, kw.Geo)
+    month_trump_rope = bob_person.make_rope(wx.five_year_rope, kw.Trump)
     assert year_reasonunit.case_exists(month_geo_rope)
     assert not year_reasonunit.case_exists(month_trump_rope)
     assert len(year_reasonunit.cases) == 14
@@ -561,7 +561,7 @@ def test_set_epoch_cases_by_args_dict_SetsAttr_Scenario1_weekly_AndIncludeRange(
 def test_set_epoch_cases_by_args_dict_SetsAttr_Scenario2_yearly_monthday_AndIncludeRange():
     # ESTABLISH
     bob_person = get_bob_five_person()
-    month_geo_rope = bob_person.make_rope(wx.five_year_rope, wx.Geo)
+    month_geo_rope = bob_person.make_rope(wx.five_year_rope, kw.Geo)
     mop_monthday_args = {
         kw.plan_rope: wx.mop_rope,
         kw.reason_context: month_geo_rope,
@@ -588,7 +588,7 @@ def test_set_epoch_cases_by_args_dict_SetsAttr_Scenario2_yearly_monthday_AndIncl
         kw.epoch_label: wx.five_str,
         kw.dayly_lower_min: mop_dayly_lower_min,
         kw.dayly_duration_min: mop_day_duration,
-        kw.month_label: wx.Geo,
+        kw.month_label: kw.Geo,
         kw.year_monthday_lower: mop_monthday,
         kw.year_monthday_duration_days: mop_length_days,
         kw.range_lower_min: mop_range_lower_min,
@@ -652,8 +652,8 @@ def test_set_epoch_cases_by_args_dict_SetsAttr_Scenario3_monthly_AndIncludeRange
     year_cases = year_reasonunit.cases
     for month_case in year_cases.values():
         print(f"{month_case.reason_state} {month_case.reason_upper=}")
-    month_geo_rope = bob_person.make_rope(wx.five_year_rope, wx.Geo)
-    month_trump_rope = bob_person.make_rope(wx.five_year_rope, wx.Trump)
+    month_geo_rope = bob_person.make_rope(wx.five_year_rope, kw.Geo)
+    month_trump_rope = bob_person.make_rope(wx.five_year_rope, kw.Trump)
     assert year_reasonunit.case_exists(month_geo_rope)
     assert not year_reasonunit.case_exists(month_trump_rope)
     assert len(year_reasonunit.cases) == 14

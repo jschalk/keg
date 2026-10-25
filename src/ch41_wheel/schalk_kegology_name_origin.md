@@ -1,7 +1,7 @@
 # Kegology Name Origin
 
-**Date:** 2026-07-06<br>
 **Author:** Emmanuel Schalk<br>
+**Date:** 2026-07-06<br>
 
 Words can mean new things
 
@@ -40,7 +40,7 @@ I was searching for synonyms for containers, which I do often because when progr
 
 These things need distinct names so I can understand what's going on. The shorter the name the better but also it is really helpful if the order of the letters in the name does not appear anywhere else in the code. This way doing a 'find and replace' later can avoid breaking the code. 
 
-For example 'sue' and 'issue' overlap so if I do find and replace of 'sue' with 'bob' it would make 'issue' into  'isbob' which is unreadable. 
+For example 'sue' and 'issue' overlap so if I do find and replace of 'sue' with 'bob' it would make 'issue' into  'isbob' which is hard to read. 
 
 Given all this I was searching for synonyms for containers and somehow 'keg' came up. I checked and 'keg' did not appear anywhere in the hundreds of files or tens of thousands of lines of code. That was pretty cool. 
 

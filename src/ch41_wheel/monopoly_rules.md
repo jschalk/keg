@@ -1,7 +1,8 @@
 # Monopoly Standard Rules
 
+**Author:** Emmanuel Schalk<br>
 **Date:** 2026-06-21<br>
-**Author:** chatgpt.com<br>
+**Source:** chatgpt.com<br>
 
 This document contains the standard rules for Monopoly as traditionally published.
 

@@ -3,7 +3,7 @@ from copy import deepcopy as copy_deepcopy
 
 
 def test_replace_valid_ch_ReplacesValue_Scenario0_ExactMatch():
-    # GIVEN
+    # ESTABLISH
     data = {
         "Example": {"valid_ch": "19"},
         "Other": {"valid_ch": "13:"},
@@ -18,7 +18,7 @@ def test_replace_valid_ch_ReplacesValue_Scenario0_ExactMatch():
 
 
 def test_replace_valid_ch_DoesNotReplace_Scenario1_PartialMatch():
-    # GIVEN
+    # ESTABLISH
     data = {
         "Example": {"valid_ch": "19:"},
     }
@@ -31,7 +31,7 @@ def test_replace_valid_ch_DoesNotReplace_Scenario1_PartialMatch():
 
 
 def test_replace_valid_ch_ReplacesMultiple_Scenario2_MultipleExactMatches():
-    # GIVEN
+    # ESTABLISH
     data = {
         "A": {"valid_ch": "19"},
         "B": {"valid_ch": "19"},
@@ -48,7 +48,7 @@ def test_replace_valid_ch_ReplacesMultiple_Scenario2_MultipleExactMatches():
 
 
 def test_replace_valid_ch_DoesNothing_Scenario3_NoMatches():
-    # GIVEN
+    # ESTABLISH
     data = {
         "A": {"valid_ch": "11"},
         "B": {"valid_ch": "12"},
@@ -64,7 +64,7 @@ def test_replace_valid_ch_DoesNothing_Scenario3_NoMatches():
 
 
 def test_replace_valid_ch_SkipsMissingValidCh_Scenario4_KeyMissing():
-    # GIVEN
+    # ESTABLISH
     data = {
         "A": {"semantic_type": "str"},
         "B": {"valid_ch": "19"},
@@ -79,7 +79,7 @@ def test_replace_valid_ch_SkipsMissingValidCh_Scenario4_KeyMissing():
 
 
 def test_replace_valid_ch_ReturnsSameObject_Scenario5_MutatesInput():
-    # GIVEN
+    # ESTABLISH
     data = {
         "A": {"valid_ch": "19"},
     }
@@ -94,7 +94,7 @@ def test_replace_valid_ch_ReturnsSameObject_Scenario5_MutatesInput():
 def test_replace_string_in_csv_ReplacesString_Scenario0_SingleMatch(
     tmp_path,
 ):
-    # GIVEN
+    # ESTABLISH
     csv_file_path = tmp_path / "test.csv"
     csv_file_path.write_text(
         "name,age\nSue,19\nBob,20\n",
@@ -113,7 +113,7 @@ def test_replace_string_in_csv_ReplacesString_Scenario0_SingleMatch(
 def test_replace_string_in_csv_ReplacesMultiple_Scenario1_MultipleMatches(
     tmp_path,
 ):
-    # GIVEN
+    # ESTABLISH
     csv_file_path = tmp_path / "test.csv"
     csv_file_path.write_text(
         "19,19,19\n",
@@ -132,7 +132,7 @@ def test_replace_string_in_csv_ReplacesMultiple_Scenario1_MultipleMatches(
 def test_replace_string_in_csv_DoesNothing_Scenario2_NoMatches(
     tmp_path,
 ):
-    # GIVEN
+    # ESTABLISH
     csv_file_path = tmp_path / "test.csv"
     original_text = "a,b,c\n1,2,3\n"
 
@@ -153,7 +153,7 @@ def test_replace_string_in_csv_DoesNothing_Scenario2_NoMatches(
 def test_replace_string_in_csv_ReplacesPartialText_Scenario3_SubstringMatch(
     tmp_path,
 ):
-    # GIVEN
+    # ESTABLISH
     csv_file_path = tmp_path / "test.csv"
     csv_file_path.write_text(
         "value19,test19\n",
@@ -172,7 +172,7 @@ def test_replace_string_in_csv_ReplacesPartialText_Scenario3_SubstringMatch(
 def test_replace_string_in_csv_HandlesEmptyFile_Scenario4_EmptyCsv(
     tmp_path,
 ):
-    # GIVEN
+    # ESTABLISH
     csv_file_path = tmp_path / "empty.csv"
     csv_file_path.write_text(
         "",

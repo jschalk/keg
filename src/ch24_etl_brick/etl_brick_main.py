@@ -35,7 +35,7 @@ from pandas import read_excel as pandas_read_excel
 from sqlite3 import Connection as sqlite3_Connection, Cursor as sqlite3_Cursor
 
 
-def etl_brick_dfs_to_brixk_raw_tables(cursor: sqlite3_Cursor, bricks_src_dir: str):
+def etl_brick_dfs_to_brick_raw_tables(cursor: sqlite3_Cursor, bricks_src_dir: str):
     brick_sqlite_types = get_brick_sqlite_types()
     brickfilerefs = get_all_brickfilerefs(bricks_src_dir)
     for ref in brickfilerefs:
@@ -58,7 +58,7 @@ def etl_brick_dfs_to_brixk_raw_tables(cursor: sqlite3_Cursor, bricks_src_dir: st
         cursor.execute(create_table_sqlstr)
 
         for idx, row in df.iterrows():
-            _insert_row_into_brixk_raw_table(
+            _insert_row_into_brick_raw_table(
                 cursor, x_tablename, column_names, row, brick_sqlite_types
             )
 
@@ -67,7 +67,7 @@ def etl_brick_dfs_to_brixk_raw_tables(cursor: sqlite3_Cursor, bricks_src_dir: st
         delete_all_duplicate_rows(cursor, x_tablename)
 
 
-def _insert_row_into_brixk_raw_table(
+def _insert_row_into_brick_raw_table(
     cursor: sqlite3_Cursor,
     x_tablename: str,
     column_names: list[str],
@@ -107,12 +107,12 @@ def get_existing_excel_brick_file_refs(x_dir: str) -> list[BrickFileRef]:
     return existing_excel_brick_filepaths
 
 
-def etl_brixk_raw_tables_to_brixk_agg_tables(conn_or_cursor: sqlite3_Connection):
-    brixk_raw_dict = {f"{brick}_b_raw": brick for brick in get_brick_types()}
-    brixk_raw_tables = set(brixk_raw_dict.keys())
+def etl_brick_raw_tables_to_brick_agg_tables(conn_or_cursor: sqlite3_Connection):
+    brick_raw_dict = {f"{brick}_b_raw": brick for brick in get_brick_types()}
+    brick_raw_tables = set(brick_raw_dict.keys())
     for x_tablename in get_db_tables(conn_or_cursor):
-        if x_tablename in brixk_raw_tables:
-            brick_type = brixk_raw_dict.get(x_tablename)
+        if x_tablename in brick_raw_tables:
+            brick_type = brick_raw_dict.get(x_tablename)
             brick_filename = get_brick_format_filename(brick_type)
             brickref = get_brickref_obj(brick_filename)
             key_columns_set = set(brickref.get_otx_keys_list())
@@ -144,13 +144,13 @@ def etl_brixk_raw_tables_to_brixk_agg_tables(conn_or_cursor: sqlite3_Connection)
             delete_all_duplicate_rows(conn_or_cursor, agg_tablename)
 
 
-def etl_brixk_agg_tables_to_brixk_vld_tables(conn_or_cursor: sqlite3_Connection):
+def etl_brick_agg_tables_to_brick_vld_tables(conn_or_cursor: sqlite3_Connection):
     brick_sqlite_types = get_brick_sqlite_types()
-    brixk_agg_dict = {f"{brick}_b_agg": brick for brick in get_brick_types()}
-    brixk_agg_tables = set(brixk_agg_dict.keys())
+    brick_agg_dict = {f"{brick}_b_agg": brick for brick in get_brick_types()}
+    brick_agg_tables = set(brick_agg_dict.keys())
     for x_tablename in get_db_tables(conn_or_cursor):
-        if x_tablename in brixk_agg_tables:
-            brick_type = brixk_agg_dict.get(x_tablename)
+        if x_tablename in brick_agg_tables:
+            brick_type = brick_agg_dict.get(x_tablename)
             valid_tablename = f"{brick_type}_b_vld"
             agg_columns = get_table_columns(conn_or_cursor, x_tablename)
             create_table_from_columns(
@@ -182,13 +182,13 @@ def get_create_sparks_b_agg_sqlstr() -> str:
     return "CREATE TABLE IF NOT EXISTS sparks_b_agg (brick_type TEXT, spark_num INTEGER, spark_face TEXT, error_message TEXT)"
 
 
-def etl_brixk_agg_tables_to_sparks_b_agg_table(conn_or_cursor: sqlite3_Cursor):
+def etl_brick_agg_tables_to_sparks_b_agg_table(conn_or_cursor: sqlite3_Cursor):
     conn_or_cursor.execute(get_create_sparks_b_agg_sqlstr())
     brick_sparks_tablename = "sparks_b_agg"
-    brixk_agg_tables = {f"{brick}_b_agg": brick for brick in get_brick_types()}
+    brick_agg_tables = {f"{brick}_b_agg": brick for brick in get_brick_types()}
     for agg_tablename in get_db_tables(conn_or_cursor):
-        if agg_tablename in brixk_agg_tables:
-            brick_type = brixk_agg_tables.get(agg_tablename)
+        if agg_tablename in brick_agg_tables:
+            brick_type = brick_agg_tables.get(agg_tablename)
             insert_from_select_sqlstr = f"""
 INSERT INTO {brick_sparks_tablename} (brick_type, spark_num, spark_face)
 SELECT '{brick_type}', spark_num, spark_face 
@@ -248,9 +248,9 @@ FROM sparks_b_vld
 
 
 def get_sound_raw_tablenames(
-    cursor: sqlite3_Cursor, dimens: list[str], brixk_vld_tablename: str
+    cursor: sqlite3_Cursor, dimens: list[str], brick_vld_tablename: str
 ) -> set[str]:
-    valid_columns = set(get_table_columns(cursor, brixk_vld_tablename))
+    valid_columns = set(get_table_columns(cursor, brick_vld_tablename))
     s_raw_tables = set()
     for dimen in dimens:
         if dimen.lower().startswith("person"):
@@ -266,17 +266,17 @@ def get_sound_raw_tablenames(
     return s_raw_tables
 
 
-def etl_brixk_vld_table_into_prime_table(
+def etl_brick_vld_table_into_prime_table(
     cursor: sqlite3_Cursor,
-    brixk_vld_table: str,
+    brick_vld_table: str,
     raw_tablename: str,
     brick_type: str,
 ):
     lab_columns = set(get_table_columns(cursor, raw_tablename))
-    valid_columns = set(get_table_columns(cursor, brixk_vld_table))
+    valid_columns = set(get_table_columns(cursor, brick_vld_table))
     common_cols = lab_columns & (valid_columns)
     common_cols = get_default_sorted_list(common_cols)
-    select_str = create_select_query(cursor, brixk_vld_table, common_cols)
+    select_str = create_select_query(cursor, brick_vld_table, common_cols)
     select_str = select_str.replace("SELECT", f"SELECT '{brick_type}',")
     common_cols = set(common_cols)
     common_cols.add("brick_type")
@@ -287,20 +287,20 @@ def etl_brixk_vld_table_into_prime_table(
     cursor.execute(insert_select_sqlstr)
 
 
-def etl_brixk_vld_tables_to_sound_raw_tables(cursor: sqlite3_Cursor):
+def etl_brick_vld_tables_to_sound_raw_tables(cursor: sqlite3_Cursor):
     all_touched_sound_raw_tables = set()
     create_sound_and_heard_tables(cursor)
-    brixk_vld_tablenames = get_db_tables(cursor, "_b_vld", "bk")
-    for brixk_vld_tablename in brixk_vld_tablenames:
-        brick_type = brixk_vld_tablename[:7]
+    brick_vld_tablenames = get_db_tables(cursor, "_b_vld", "bk")
+    for brick_vld_tablename in brick_vld_tablenames:
+        brick_type = brick_vld_tablename[:7]
         brickref_filename = get_brick_format_filename(brick_type)
         brickref = get_brickref_from_file(brickref_filename)
         dimens = brickref.get("dimens")
-        s_raw_tables = get_sound_raw_tablenames(cursor, dimens, brixk_vld_tablename)
+        s_raw_tables = get_sound_raw_tablenames(cursor, dimens, brick_vld_tablename)
         all_touched_sound_raw_tables.update(s_raw_tables)
         for sound_raw_table in s_raw_tables:
-            etl_brixk_vld_table_into_prime_table(
-                cursor, brixk_vld_tablename, sound_raw_table, brick_type
+            etl_brick_vld_table_into_prime_table(
+                cursor, brick_vld_tablename, sound_raw_table, brick_type
             )
 
     for x_sound_raw_table in all_touched_sound_raw_tables:

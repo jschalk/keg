@@ -3,5 +3,6 @@
   "chapter_content": "A tool that translates persons from outside language to inside language.", 
   "chapter_description": "ch17_jargon", 
   "chapter_number": 17, 
+  "chapter_ref_catalogue": "n", 
   "ontology summary": "Demonstrates Ontological structure of translation of LabelTerms, RopeTerms, NameTerms, GroupTerms"
 }

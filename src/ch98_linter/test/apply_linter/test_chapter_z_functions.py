@@ -60,10 +60,11 @@ def validate_py_file_imports(
     file_ast_tree = get_file_ast_tree(file_path)
     incorrect_imports = find_incorrect_imports(file_ast_tree, ch_int)
     filtered_incorrect_imports = []
-    for incorrect_import in incorrect_imports:
-        if not incorrect_import.startswith("from ch99_glossary."):
-            filtered_incorrect_imports.append(incorrect_import)
-
+    filtered_incorrect_imports.extend(
+        incorrect_import
+        for incorrect_import in incorrect_imports
+        if not incorrect_import.startswith("from ch99_glossary.")
+    )
     if len(incorrect_imports) == 1 and "_ch_keyword.py" in file_path:
         incorrect_imports = []
     assertion_fail_str = f"File #{all_file_count} ch{ch_int:02} file #{chapter_file_count} Imports: {len(incorrect_imports)} {file_path}"
@@ -142,7 +143,7 @@ def test_Chapters_path_FunctionStructureAndFormat():
             util_dir = create_path(test_dir, "_util")
             pytest_path_func_filename = f"test_{path_func_filename}"
             pytest_path_func_path = create_path(util_dir, pytest_path_func_filename)
-            print("src//ch01_keyword//_util//test_ch01_path.py")
+            # print("src//ch01_keyword//_util//test_ch01_path.py")
             assert os_path_exists(pytest_path_func_path), pytest_path_func_path
             test_path_func_names = set(
                 get_top_level_functions(pytest_path_func_path).keys()

@@ -1,13 +1,13 @@
 from ch00_py.file_toolbox import create_path
 from ch19_db_tool.db_toolbox import db_table_exists, get_row_count, get_table_columns
 from ch20_brick.brick_db_tool import save_sheet
-from ch24_etl_brick.etl_brick_main import etl_brick_dfs_to_brixk_raw_tables
+from ch24_etl_brick.etl_brick_main import etl_brick_dfs_to_brick_raw_tables
 from ch99_glossary.ch_keyword import Ch24Keywords as kw, ExampleStrs as exx
 from pandas import NA as pandas_NA, DataFrame
 from sqlite3 import Cursor
 
 
-def test_etl_brick_dfs_to_brixk_raw_tables_PopulatesTables_Scenario0(
+def test_etl_brick_dfs_to_brick_raw_tables_PopulatesTables_Scenario0(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -42,7 +42,7 @@ def test_etl_brick_dfs_to_brixk_raw_tables_PopulatesTables_Scenario0(
     assert not db_table_exists(cursor0, bk00103_tablename)
 
     # WHEN
-    etl_brick_dfs_to_brixk_raw_tables(cursor0, b_src_dir)
+    etl_brick_dfs_to_brick_raw_tables(cursor0, b_src_dir)
 
     # THEN
     assert db_table_exists(cursor0, bk00103_tablename)
@@ -87,7 +87,7 @@ ORDER BY sheet_name, {kw.spark_num}, {kw.cumulative_minute};"""
     assert rows[4] == row4
 
 
-def test_etl_brick_dfs_to_brixk_raw_tables_PopulatesTables_Scenario1(
+def test_etl_brick_dfs_to_brick_raw_tables_PopulatesTables_Scenario1(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -134,7 +134,7 @@ def test_etl_brick_dfs_to_brixk_raw_tables_PopulatesTables_Scenario1(
     assert not db_table_exists(cursor0, bk00103_tablename)
 
     # WHEN
-    etl_brick_dfs_to_brixk_raw_tables(cursor0, b_src_dir)
+    etl_brick_dfs_to_brick_raw_tables(cursor0, b_src_dir)
 
     # THEN
     assert db_table_exists(cursor0, bk00103_tablename)
@@ -177,7 +177,7 @@ ORDER BY sheet_name, {kw.spark_num}, {kw.cumulative_minute};"""
     assert rows[4] == row4
 
 
-def test_etl_brick_dfs_to_brixk_raw_tables_PopulatesTables_Scenario2_NanValuesConvertToNull(
+def test_etl_brick_dfs_to_brick_raw_tables_PopulatesTables_Scenario2_NanValuesConvertToNull(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -209,7 +209,7 @@ def test_etl_brick_dfs_to_brixk_raw_tables_PopulatesTables_Scenario2_NanValuesCo
     assert not db_table_exists(cursor0, bk00103_tablename)
 
     # WHEN
-    etl_brick_dfs_to_brixk_raw_tables(cursor0, b_src_dir)
+    etl_brick_dfs_to_brick_raw_tables(cursor0, b_src_dir)
 
     # THEN
     assert db_table_exists(cursor0, bk00103_tablename)
@@ -242,7 +242,7 @@ ORDER BY sheet_name, {kw.spark_num}, {kw.cumulative_minute};"""
     assert rows[2] == e_r2
 
 
-def test_etl_brick_dfs_to_brixk_raw_tables_PopulatesTables_Scenario3_DeletesTableBeforeLoad(
+def test_etl_brick_dfs_to_brick_raw_tables_PopulatesTables_Scenario3_DeletesTableBeforeLoad(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH
@@ -275,15 +275,15 @@ def test_etl_brick_dfs_to_brixk_raw_tables_PopulatesTables_Scenario3_DeletesTabl
     save_sheet(b_src_file_path, bk00103_ex1_str, df1)
     bk00103_tablename = f"bk00103_{kw.b_raw}"
     assert not db_table_exists(cursor0, bk00103_tablename)
-    etl_brick_dfs_to_brixk_raw_tables(cursor0, b_src_dir)
+    etl_brick_dfs_to_brick_raw_tables(cursor0, b_src_dir)
     assert get_row_count(cursor0, bk00103_tablename) == 5
     # WHEN
-    etl_brick_dfs_to_brixk_raw_tables(cursor0, b_src_dir)
+    etl_brick_dfs_to_brick_raw_tables(cursor0, b_src_dir)
     # THEN
     assert get_row_count(cursor0, bk00103_tablename) == 5
 
 
-def test_etl_brick_dfs_to_brixk_raw_tables_Excel_TRUE_FALSE_ConvertedToText(
+def test_etl_brick_dfs_to_brick_raw_tables_Excel_TRUE_FALSE_ConvertedToText(
     temp3_fs, cursor0: Cursor
 ):
     # ESTABLISH an Excel sheet containing formula-like boolean cells
@@ -310,7 +310,7 @@ def test_etl_brick_dfs_to_brixk_raw_tables_Excel_TRUE_FALSE_ConvertedToText(
     assert not db_table_exists(cursor0, table_name)
 
     # WHEN
-    etl_brick_dfs_to_brixk_raw_tables(cursor0, b_dir)
+    etl_brick_dfs_to_brick_raw_tables(cursor0, b_dir)
 
     # THEN
     cursor0.execute(f"SELECT * FROM {table_name} ORDER BY spark_num;")

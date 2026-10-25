@@ -3,5 +3,6 @@
   "chapter_content": "Tools for the creation and organization of lessons, which are collections of personunit atoms for building complex personunits.", 
   "chapter_description": "ch10_person_lesson", 
   "chapter_number": 10, 
+  "chapter_ref_catalogue": "n", 
   "ontology summary": "Any PersonUnit change implies something has been learned. The LessonUnit that was learned is made of AtomUnits."
 }

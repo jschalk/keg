@@ -52,7 +52,7 @@ def get_all_images_with_metadata(src_dir: Path) -> list[str]:
 
 @pytest_mark.skip_on_linux
 def test_MarkdownImageLinksFilesExist() -> None:
-    # GIVEN
+    # ESTABLISH
     # repo_root = Path("src").resolve().parents[1]
     src_dir = Path(__file__).resolve().parents[3]
 
@@ -76,15 +76,15 @@ FORBIDDEN_MARKERS = {
 }
 
 
-# # TODO activate this test
-# def test_images_HaveNoMetadata_AllImagesInSrc():
-#     # GIVEN
-#     src_dir = Path(__file__).resolve().parents[3]
-#     # WHEN
-#     failures = get_all_images_with_metadata(src_dir)
-#     # THEN
-#     assertion_failure_str = "Images containing metadata were found:\n"
-#     assert not failures, assertion_failure_str + "\n".join(failures)
+def test_images_HaveNoMetadata_AllImagesInSrc():
+    # ESTABLISH
+    src_dir = Path(__file__).resolve().parents[3]
+    # WHEN
+    failures = get_all_images_with_metadata(src_dir)
+    # THEN
+    # I don't know know how effective this is.
+    assertion_failure_str = "Images containing metadata were found:\n"
+    assert not failures, assertion_failure_str + "\n".join(failures)
 
 
 def get_markdown_footnote_failures(src_dir: Path) -> list[str]:
@@ -110,7 +110,7 @@ def get_markdown_footnote_failures(src_dir: Path) -> list[str]:
 
 
 def test_MarkdownFootnotesAreMirrored() -> None:
-    # GIVEN
+    # ESTABLISHLISH
     src_dir = Path(__file__).resolve().parents[3]
 
     # WHEN
@@ -141,7 +141,7 @@ def get_markdown_footnote_order_failures(src_dir: Path) -> list[str]:
 
 
 def test_MarkdownFootnotesAreInOrder() -> None:
-    # GIVEN
+    # ESTABLISH
     src_dir = Path(__file__).resolve().parents[3]
 
     # WHEN
@@ -191,7 +191,7 @@ def get_missing_markdown_file_links(src_dir: Path) -> list[str]:
 
 
 def test_MarkdownFileLinksFilesExist() -> None:
-    # GIVEN
+    # ESTABLISH
     src_dir = Path(__file__).resolve().parents[3]
 
     # WHEN
@@ -251,7 +251,7 @@ def get_unreferenced_images(src_dir: Path) -> list[str]:
 
 @pytest_mark.skip_on_linux
 def test_AllImagesAreReferencedInMarkdown() -> None:
-    # GIVEN
+    # ESTABLISH
     src_dir = Path(__file__).resolve().parents[3]
 
     # WHEN
@@ -281,7 +281,7 @@ def get_oversized_images(src_dir: Path, max_size_bytes: int = 100 * 1024) -> lis
 
 
 def test_AllImagesUnder100kb() -> None:
-    # GIVEN
+    # ESTABLISH
     src_dir = Path(__file__).resolve().parents[3]
 
     # WHEN
@@ -346,7 +346,7 @@ def get_markdown_bold_line_br_failures(src_dir: Path) -> list[str]:
 
 
 def test_MarkdownLinesStartingWithBoldEndWithBr() -> None:
-    # GIVEN
+    # ESTABLISH
     src_dir = Path(__file__).resolve().parents[3]
 
     # WHEN

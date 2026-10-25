@@ -6,6 +6,7 @@ from ch97_docs_builder.doc_builder import (
     save_chapter_blurbs_md,
     save_chapters_ai_summary,
     save_ropeterm_description_md,
+    save_chapter_catalogues_md,
 )
 from random import random as random_random
 
@@ -27,6 +28,10 @@ def test_SpecialTestThatBuildsDocs(rebuild_docs):
     save_ropeterm_description_md(destination_dir)
     save_keywords_by_chapter_md(destination_dir)  # docs\keywords_by_chapter.md
     save_chapters_ai_summary(destination_dir)  # docs\keywords_by_chapter.md
+    catalogues_saved = save_chapter_catalogues_md()
+    for catalogue_saved in catalogues_saved:
+        print(f"{catalogue_saved=}")
+
     # 4% of stances resave all json files so that they are ordered alphabetically
     if random_random() < 0.04 or rebuild_docs:
         resave_chapter_and_keyword_json_files()

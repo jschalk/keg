@@ -47,7 +47,7 @@ no_sections = true
 profile = "black"
 
 [tool.pytest.ini_options]
-markers = ["local_only: tests meant to run locally only, not in CI"]
+markers = ["build_tests: tests that run only when --build_tests is passed", "local_only: tests meant to run locally only, not in CI"]
 norecursedirs = [
   "_ref",
   "__pycache__",

@@ -1,7 +1,7 @@
 # How to get power
 
-**Date:** 2026-07-20<br>
 **Author:** Kamil Kazani<br>
+**Date:** 2026-07-20<br>
 **Source:** https://kamilkazani.substack.com/p/how-to-get-power <br>
 **Copied to Keg:** 2026-07-31<br>
 

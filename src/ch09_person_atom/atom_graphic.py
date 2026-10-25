@@ -67,11 +67,11 @@ def add_ch09rect(fig, x, y, text):
 
 def add_atom_rect(fig: plotly_Figure, atomplotyshape: AtomPlotlyShape):
     level_bump = atomplotyshape.tree_level * 0.05
-    home_form_x0 = atomplotyshape.base_width
-    home_form_x1 = 1 - atomplotyshape.base_width
-    home_width = home_form_x1 - home_form_x0
-    shape_x0 = home_form_x0 + (home_width * atomplotyshape.tree_level_width0)
-    shape_x1 = home_form_x0 + (home_width * atomplotyshape.tree_level_width1)
+    x_form_x0 = atomplotyshape.base_width
+    x_form_x1 = 1 - atomplotyshape.base_width
+    x_width = x_form_x1 - x_form_x0
+    shape_x0 = x_form_x0 + (x_width * atomplotyshape.tree_level_width0)
+    shape_x1 = x_form_x0 + (x_width * atomplotyshape.tree_level_width1)
     shape_y0 = level_bump + atomplotyshape.base_h
     shape_y1 = level_bump + atomplotyshape.base_h + 0.05
     x_color = "RoyalBlue" if atomplotyshape.color is None else atomplotyshape.color
@@ -95,11 +95,11 @@ def add_atom_rect(fig: plotly_Figure, atomplotyshape: AtomPlotlyShape):
 
 
 def add_groupunits_circle(fig: plotly_Figure):
-    home_form_x0 = 0.2
-    home_form_x1 = 1 - 0.2
-    home_width = home_form_x1 - home_form_x0
-    shape_x0 = home_form_x0 + (home_width * 0.425)
-    shape_x1 = home_form_x0 + (home_width * 0.575)
+    x_form_x0 = 0.2
+    x_form_x1 = 1 - 0.2
+    x_width = x_form_x1 - x_form_x0
+    shape_x0 = x_form_x0 + (x_width * 0.425)
+    shape_x1 = x_form_x0 + (x_width * 0.575)
     shape_y0 = 0.325
     shape_y1 = 0.425
     x_color = "Green"
@@ -123,11 +123,11 @@ def add_groupunits_circle(fig: plotly_Figure):
 
 
 def add_different_plans_circle(fig: plotly_Figure):
-    home_form_x0 = 0.2
-    home_form_x1 = 1 - 0.2
-    home_width = home_form_x1 - home_form_x0
-    shape_x0 = home_form_x0
-    shape_x1 = home_form_x0 + home_width
+    x_form_x0 = 0.2
+    x_form_x1 = 1 - 0.2
+    x_width = x_form_x1 - x_form_x0
+    shape_x0 = x_form_x0
+    shape_x1 = x_form_x0 + x_width
     shape_y0 = 0.54
     shape_y1 = 0.75
     x_color = "Grey"

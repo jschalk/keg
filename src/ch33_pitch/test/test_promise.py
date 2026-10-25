@@ -54,33 +54,6 @@ def test_PITCH_NUMERICAL_ARGS_Exists():
     assert x_pitch_numerical_args == expected_pitch_numerical_args
 
 
-# get a list of all prime tables
-# def test_IdeaPrime_Exists():
-#     # ESTABLISH / WHEN
-#     brick_sqlite_types = get_brick_sqlite_types()
-#     # TODO create tool that gets the difference between two momentunits?
-
-#     brick_config = get_brick_config_dict()
-#     for dimen, dimen_config in brick_config.items():
-#         # print(f"{dimen=}")
-#         dimen_config = brick_config.get(dimen)
-#         dimen_jkeys = dimen_config.get(kw.jkeys)
-#         dimen_jvals = dimen_config.get(kw.jvalues)
-#         dimen_args = set(dimen_jkeys.keys()).union(set(dimen_jvals.keys()))
-#         dimen_args = get_default_sorted_list(dimen_args)
-#         print(f'{dimen:27} {" ".join(dimen_args)}')
-#         for dimen_arg in dimen_args:
-#             dimen_type = brick_sqlite_types.get(dimen_arg)
-#             if dimen_type in {"INTEGER", "REAL"}:
-#                 print(f"{dimen_arg} {dimen_type}")
-
-#     # ideaprime = IdeaPrime()
-#     # THEN
-#     # assert not ideaprime
-#     # assert set(ideaprime.__dict__.keys()) == {f"{kw.}s"}
-#     assert 1 == 2
-
-
 def test_PromiseUnit_Exists():
     # ESTABLISH / WHEN
     promiseunit = PromiseUnit()

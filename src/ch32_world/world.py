@@ -4,11 +4,11 @@ from ch22_etl_config._ref.ch22_path import create_moment_mstr_path, create_world
 from ch22_etl_config.brick_collector import reorder_etl_db_sheets
 from ch23_idea_src.idea2brick import ideas_sheets_to_brick_sheets
 from ch24_etl_brick.etl_brick_main import (
-    etl_brick_dfs_to_brixk_raw_tables,
-    etl_brixk_agg_tables_to_brixk_vld_tables,
-    etl_brixk_agg_tables_to_sparks_b_agg_table,
-    etl_brixk_raw_tables_to_brixk_agg_tables,
-    etl_brixk_vld_tables_to_sound_raw_tables,
+    etl_brick_dfs_to_brick_raw_tables,
+    etl_brick_agg_tables_to_brick_vld_tables,
+    etl_brick_agg_tables_to_sparks_b_agg_table,
+    etl_brick_raw_tables_to_brick_agg_tables,
+    etl_brick_vld_tables_to_sound_raw_tables,
     etl_sparks_b_agg_table_to_sparks_b_vld_table,
 )
 from ch25_sound.sound import (
@@ -69,13 +69,13 @@ def brick_sheets_to_lego_with_cursor(
     delete_dir(moment_mstr_dir)
     set_dir(moment_mstr_dir)
     # collect excel file data into central location
-    etl_brick_dfs_to_brixk_raw_tables(cursor, bricks_src_dir)
+    etl_brick_dfs_to_brick_raw_tables(cursor, bricks_src_dir)
     # brick raw to sound raw, check by spark_nums
-    etl_brixk_raw_tables_to_brixk_agg_tables(cursor)
-    etl_brixk_agg_tables_to_sparks_b_agg_table(cursor)
+    etl_brick_raw_tables_to_brick_agg_tables(cursor)
+    etl_brick_agg_tables_to_sparks_b_agg_table(cursor)
     etl_sparks_b_agg_table_to_sparks_b_vld_table(cursor)
-    etl_brixk_agg_tables_to_brixk_vld_tables(cursor)
-    etl_brixk_vld_tables_to_sound_raw_tables(cursor)
+    etl_brick_agg_tables_to_brick_vld_tables(cursor)
+    etl_brick_vld_tables_to_sound_raw_tables(cursor)
     # sound raw to heard raw, filter through translates
     etl_sound_raw_tables_to_sound_agg_tables(cursor)
     etl_jargon_sound_agg_tables_to_jargon_sound_vld_tables(cursor)

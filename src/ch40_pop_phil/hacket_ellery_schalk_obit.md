@@ -1,7 +1,7 @@
 # Ellery Stowell Schalk
 
-**Date:** 1997-10-01<br>
 **Author:** David Hackett<br>
+**Date:** 1997-10-01<br>
 **Source:** https://www.historians.org/perspectives-article/in-memoriam-october-1997-october-1997/<br>
 **Copied to Keg:** 2026-06-30<br>
 

@@ -108,7 +108,7 @@ def index():
 
 @app.route("/api/personunit_view")
 def get_personunit_view():
-    """API endpoint to get the PersonUnit data with readable strings as JSON"""
+    """API endpoint to get the PersonUnit data with human understandable strings as JSON"""
     # return jsonify(root.to_dict())
     sue_person = get_sue_person_with_facts_and_reasons()
     add_epoch_planunit(sue_person, get_default_epoch_config_dict())

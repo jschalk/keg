@@ -1,7 +1,7 @@
 <!-- # Shaq Candy
 
-**Date:** 2026-06-17<br>
 **Author:** Emmanuel Schalk<br>
+**Date:** 2026-06-17<br>
 
 > The line has to be drawn somewhere.
 

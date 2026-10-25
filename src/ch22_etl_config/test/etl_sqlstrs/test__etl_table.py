@@ -87,8 +87,8 @@ def test_get_stages_order_general_ReturnsObj():
     # THEN
     assert stages_order_general
     assert stages_order_general == [
-        kw.brixk_raw,
-        kw.brixk_agg,
+        kw.brick_raw,
+        kw.brick_agg,
         kw.sound_raw,
         kw.sound_agg,
         kw.sound_vld,
@@ -100,8 +100,8 @@ def test_get_stages_order_general_ReturnsObj():
 
 def test_get_stage_abbv5_ReturnsObj():
     # ESTABLISH / WHEN / THEN
-    assert get_stage_abbv5(kw.brixk_raw) == kw.brixk_raw
-    assert get_stage_abbv5(kw.brixk_agg) == kw.brixk_agg
+    assert get_stage_abbv5(kw.brick_raw) == kw.brick_raw
+    assert get_stage_abbv5(kw.brick_agg) == kw.brick_agg
     assert get_stage_abbv5(kw.sound_raw) == kw.s_raw
     assert get_stage_abbv5(kw.sound_agg) == kw.s_agg
     assert get_stage_abbv5(kw.sound_vld) == kw.s_vld
@@ -240,12 +240,12 @@ def test_get_etl_stage_types_config_dict_ReturnsObj_Scenario0_IsFullyPopulated()
         kw.sound_agg,
         kw.sound_raw,
         kw.sound_vld,
-        kw.brixk_agg,
-        kw.brixk_raw,
-        kw.brixk_vld,
+        kw.brick_agg,
+        kw.brick_raw,
+        kw.brick_vld,
         kw.ideax_dst,
         kw.ideax_src,
-        kw.brixk_src,
+        kw.brick_src,
         kw.legox_mst,
     }
     track_stage_type_orders = {}
