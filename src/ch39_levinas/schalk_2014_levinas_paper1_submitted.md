@@ -9,7 +9,6 @@
 
 ---
 
-
 Hostageness is Joy!
 
 The concept of being held hostage to the Other’s suffering should be understood as a metaphysical fact that precedes absolutely any thematization of the Other-as-a-Sufferer so that the primordial source of the hostageness is the alterity of the Other. One implication of this view is that being-hostage-to-the-Other-who-is-suffering is no longer about identifying those who are suffering more against those who do not suffer but instead a metaphysical absoluteness that connects the fecundity of the I to ALL Others primordially. In such a framework the cutting of humans into thematized categories becomes even more obviously artificial horrible breaking of joy itself.
