@@ -9,7 +9,7 @@
 
 Here it is.
 
-<div align="center"><img src="images/ontology_of_assholes.webp" alt="Portrait of Kafka?" width="80%"></div>
+<div align="center"><img src="images/ontology_of_assholes.webp" alt="Ontology of Assholes chart" width="80%"></div>
 
 The key insights I wouldn't want lost from this:
 
