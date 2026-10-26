@@ -66,7 +66,7 @@ I think I know the answer. This (absurd, non-working) scheme is so popular becau
 
 Because, what would be the alternative? Plant your seeds patiently, laboriously, over the years and decades, to may be never even see the final fruit of your work? That sounds painfully realistic, and that is, indeed, how it usually works in reality.
 
-Diderot, Voltaire, Rousseau, and other top podcasters and twitch streamers of the 18th c, they surely made a massive impact [on the great revolution](../ch40_pop_phil/kazani_how_to_study_politics.md) that would enflame France in the end of the century. *That is all the fault of Voltaire, that is all the fault of Rousseau,* these usual royalist complaints may sound as a wild exaggeration, but they are actually not.
+Diderot, Voltaire, Rousseau, and other top podcasters and twitch streamers of the 18th c, they surely made a massive impact [on the great revolution](../ch40_kazani/kazani_how_to_study_politics.md) that would enflame France in the end of the century. *That is all the fault of Voltaire, that is all the fault of Rousseau,* these usual royalist complaints may sound as a wild exaggeration, but they are actually not.
 
 Political turmoils of the late 18th c France were not caused by the twitch streamers, of course, they were initiated by the dukes, and princes of blood. But - unless for the streamers, and for the accumulated effect of their streams, accumulated over the course of many decades - these aristocratic shenanigans would produce a more aristocratic form of government, at best. The apocalyptic crisis, that was to destroy them all, was neither envisioned, nor desired by the aristocracy. And the idea to destroy every single societal institution, and to reestablish it all anew, based on a single logical principle, was certainly not conceived by the aristocracy either. It was conceived by streamers, on Twitch, and from there - it materialised into reality.
 
@@ -82,6 +82,6 @@ Now that explains how and why do intellectuals get enamoured with such an obviou
 
 And the attractiveness of this idea, is that it seems to be offering quick results, within your own lifetime. Whereas, the objective reality seldom offers anything like that.
 
-That, however, does not mean that intellectuals are powerless. In fact, their cumulative influence can be enormous, mind blowing. But - and this is an important point - it can be exercised only **in the very long run**. Long, very long run. Over the long run, the effect of their work can be absolutely [terraforming](../ch40_pop_phil/kazani_how_to_study_politics.md).
+That, however, does not mean that intellectuals are powerless. In fact, their cumulative influence can be enormous, mind blowing. But - and this is an important point - it can be exercised only **in the very long run**. Long, very long run. Over the long run, the effect of their work can be absolutely [terraforming](../ch40_kazani/kazani_how_to_study_politics.md).
 
 But in the long run, we are all dead

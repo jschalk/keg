@@ -110,7 +110,7 @@ You don't have to be in power to get your agenda enacted, you just need Families
 
 ## Footnotes
 
-[^1]: [Wisdom of Lenin](../ch40_pop_phil/kazani_wisdom_of_lenin.md)  
+[^1]: [Wisdom of Lenin](../ch40_kazani/kazani_wisdom_of_lenin.md)  
 
 
 ## Biblography

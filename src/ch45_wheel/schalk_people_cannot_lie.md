@@ -10,7 +10,7 @@
 
 ***
 
-Kamil Kazani wrote the article [People cannot lie](../ch40_pop_phil/kazani_people_cannot_lie.md) where he described a theory of lying where he claimed most people are incapable of lying about things they are truly attached to. 
+Kamil Kazani wrote the article [People cannot lie](../ch40_kazani/kazani_people_cannot_lie.md) where he described a theory of lying where he claimed most people are incapable of lying about things they are truly attached to. 
 
 This is a tautology: if someone lies about someting that means they aren't really attached to it. And if someone tells the truth then they could be attached or not. The internal state of someone, whether they are lying or not is not a simple yes/no switch you can observe in someone's brain. Lie-detectors don't detect lies, they detect stress. 
 
