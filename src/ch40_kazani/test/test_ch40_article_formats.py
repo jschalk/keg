@@ -5,6 +5,9 @@ from ch38_article.article_toolbox import (
 from pathlib import Path
 
 
+# TODO move this test and all MarkDownFilesHaveRequiredStrings tests to a test in src\ch98_linter\test\apply_linter\test_chapter_markdowns.py
+# have test check  src\ch40_kazani\_ref\ch40_ref.json "chapter_ref_catalogue": "y", and then run test
+# TODO create a article_required_strs.json file to have the config
 def test_Ch40MarkDownFilesHaveRequiredStrings():
     # ESTABLISH
     current_ch_dir = Path(__file__).resolve().parent.parent
