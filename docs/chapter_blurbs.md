@@ -40,7 +40,7 @@ What does each one do?
 - **ch38_article**: Article formatting tools
 - **ch39_levinas**: Levinas Philosophy
 - **ch40_pop_phil**: Essays pop_phil
-- **ch41_wheel**: Essays pop_phil
+- **ch45_wheel**: Essays pop_phil
 - **ch54_fable**: Short stories
 - **ch90_puncher_app**: ETL app to create day punches from excel files.
 - **ch96_exam**: Exams that return KPIs of Kegology knowledge.

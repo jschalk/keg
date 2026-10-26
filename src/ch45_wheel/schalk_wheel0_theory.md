@@ -17,7 +17,7 @@ BUT in his latest article [How to study politics](../ch40_pop_phil/kazani_how_to
 Ouch! My dad was a historian. A pretty good one[^1]. Wrote a book and everything. 
 
 
-<div align="center"><img src="../ch41_wheel/images/valor_to_pedigree.webp" alt="From Valor to Pedigree by Ellery Schalk book cover" width="40%"></div>
+<div align="center"><img src="../ch45_wheel/images/valor_to_pedigree.webp" alt="From Valor to Pedigree by Ellery Schalk book cover" width="40%"></div>
 
 Kazani says my dad and his ilk can't theorize well. He using entertaining and harsh words. Some very harsh. Hard to be entertaining and not harsh, it's what [second hand dealers](../ch40_pop_phil/kazani_kill_the_scholars.md) do. I shouldn't take it so personally. And yet I feel something very primal... 
 
@@ -27,7 +27,7 @@ Kazani says my dad and his ilk can't theorize well. He using entertaining and ha
 </div>
 
 <!--Go: -->
-My copy of *From Valor to Pedigree* is far away so I'll present the political theory of [Kegology](../ch41_wheel/schalk_kegology_name_origin.md). My Dad was a better scholar than me so if I can create a political theory that is awesome then he would have had one that was even better.  
+My copy of *From Valor to Pedigree* is far away so I'll present the political theory of [Kegology](../ch45_wheel/schalk_kegology_name_origin.md). My Dad was a better scholar than me so if I can create a political theory that is awesome then he would have had one that was even better.  
 
 <!--Search: TODO. -->
 ## Kegology Political Theory

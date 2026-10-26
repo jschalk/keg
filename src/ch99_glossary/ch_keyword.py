@@ -4740,7 +4740,7 @@ class Ch40Keywords(str, Enum):
         return self.value
 
 
-class Ch41Keywords(str, Enum):
+class Ch45Keywords(str, Enum):
     American = "American"
     Article = "Article"
     Audie = "Audie"
@@ -4788,7 +4788,7 @@ class Ch41Keywords(str, Enum):
     cases = "cases"
     ch38 = "ch38"
     ch40 = "ch40"
-    ch41 = "ch41"
+    ch45 = "ch45"
     ch99 = "ch99"
     climb = "climb"
     cling = "cling"

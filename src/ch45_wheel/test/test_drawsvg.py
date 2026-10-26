@@ -1,4 +1,4 @@
-from ch41_wheel.wheel_builder import (
+from ch45_wheel.wheel_builder import (
     draw_trapezoid_shape,
     draw_trapezoid_stack,
     draw_contacts_row,

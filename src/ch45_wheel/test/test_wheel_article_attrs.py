@@ -7,7 +7,7 @@ from pathlib import Path
 from os.path import join as os_path_join, exists as os_path_exists
 
 
-def test_Ch41MarkDownFilesHaveRequiredsnippets():
+def test_Ch45MarkDownFilesHaveRequiredsnippets():
     # ESTABLISH
     current_ch_dir = Path(__file__).resolve().parent.parent
     author_str = "**Author:**"

@@ -1,4 +1,4 @@
-from ch41_wheel.wheel_logic import (
+from ch45_wheel.wheel_logic import (
     FamilyUnit,
     familyunit_shop,
     PillarUnit,
@@ -9,7 +9,7 @@ from ch41_wheel.wheel_logic import (
     LandUnit,
     landunit_shop,
 )
-from ch99_glossary.ch_keyword import Ch41Keywords as kw, ExampleStrs as exx
+from ch99_glossary.ch_keyword import Ch45Keywords as kw, ExampleStrs as exx
 from pytest import raises as pytest_raises
 
 # linchpin
