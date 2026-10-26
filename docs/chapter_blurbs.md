@@ -40,6 +40,7 @@ What does each one do?
 - **ch38_article**: Article formatting tools
 - **ch39_levinas**: Levinas Philosophy
 - **ch40_kazani**: Kazani articles.
+- **ch41_pop_phil**: Popular Philsophy
 - **ch45_wheel**: Essays pop_phil
 - **ch54_fable**: Short stories
 - **ch90_puncher_app**: ETL app to create day punches from excel files.

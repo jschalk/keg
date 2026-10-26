@@ -4042,6 +4042,19 @@ class Ch40Keywords(str, Enum):
         return self.value
 
 
+class Ch41Keywords(str, Enum):
+    article = "article"
+    ch38 = "ch38"
+    ch41 = "ch41"
+    deal = "deal"
+    god = "god"
+    power = "power"
+    src = "src"
+
+    def __str__(self):
+        return self.value
+
+
 class Ch45Keywords(str, Enum):
     American = "American"
     Article = "Article"
