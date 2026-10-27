@@ -14,7 +14,7 @@ I have a retirement account with 10 thousand dollars in it. A few months ago, pr
 ### This was completely wild to me
 </div>
 
-<div align="center"><img src="images/suprise_face_from_charles_bell_anatomy.webp" alt="look of surprise and fear" width="500"></div>
+<div align="center"><img src="images/suprise_face_from_charles_bell.webp" alt="look of surprise and fear" width="500"></div>
 
 How on earth was it worth Sean's time to talk to me? To pay his salary and overhead he needs to be going after retirement accounts with a ton more money. Never before had a finance person talked to me for so long.[^1] 
 

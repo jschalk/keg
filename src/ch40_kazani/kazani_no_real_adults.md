@@ -41,7 +41,7 @@ I have not actually read any of Queux works myself. But based on the abundant qu
 >
 >*‘Vengeance?’ [Jacox] gasped. ‘What vengeance?’*
 >
->*‘Well,’ replied the detective-inspector, ‘both these [crackers] contain powerful bombs, and had you pulled either of them you’d both have been blown to atoms. That was their dastardly intention.”*[^1]
+>*‘Well,’ replied the detective-inspector, ‘both these [crackers] contain powerful bombs, and had you pulled either of them you’d both have been blown to bits. That was their dastardly intention.”*[^1]
 
 <div align="center"><img src="images/mi5_spies_of_the_kaiser.webp" alt="Spies of the Kaiser book cover" width="500"></div>
 
