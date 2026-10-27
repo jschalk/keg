@@ -5,6 +5,13 @@
 **Source:** https://x.com/kamilkazani viewed from Emmanuel Schalk's twitter login.<br>
 **Copied to Keg:** 2026-06-09<br>
 
+**Mar 14, 2024**<br>
+> Of all the definitions of “colony” I love this one the most:
+>
+> “A colony is country's territory from the perspective of the international law, but it is a foreign territory from the perspective of the domestic law”
+>
+> (Carl Schmitt)
+
 **Jul 25, 2025**<br>
 In response to someone making fun of Economists for being divorced from reality. 
 > 1. Men can be only ruled by dogmatic affirmations

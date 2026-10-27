@@ -80,6 +80,10 @@
 
 ---
 
+**[On Geopolitics](./kazani_on_geopolitics.md)** Kamil Kazani - 2025-05-07<br>
+
+---
+
 **[On the Virtue of Vladimir Putin](./kazani_on_putin_virtue.md)** Kamil Kazani - 2025-08-09<br>
 
 ---
