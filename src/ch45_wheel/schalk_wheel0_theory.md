@@ -294,7 +294,7 @@ Why Plato's power behind the throne plan fails: [Wisdom of Lenin](../ch40_kazani
 Why and how thinkers matter: [Kill the Scholars](../ch40_kazani/kazani_kill_the_scholars.md)  
 Why domestic goals motivate the most: [The Poverty of Realism](../ch40_kazani/kazani_the_poverty_of_realism.md)  
 How tyranny protects power: [Why Putin killed Navalny](../ch40_kazani/kazani_putin_navalny.md)  
-Levinas and the Face intro: [I exist, I suffer. Please don't destroy me.](../ch40_kazani/thompson_i_exist_i_suffer.md).  
+Levinas and the Face intro: [I exist, I suffer. Please don't destroy me.](../ch41_pop_phil/thompson_i_exist_i_suffer.md).  
 
 
 #### Foundational Texts:

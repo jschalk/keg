@@ -148,10 +148,6 @@
 
 ---
 
-**[I exist, I suffer. Please don't destroy me.](./thompson_i_exist_i_suffer.md)** Johnny Thompson - 2026-04-17<br>
-
----
-
 **Author:** Algorithm<br>
 **Date:** May not be up to date<br>
 **Source:** Generated automatically from chapter contents<br>

@@ -13,9 +13,9 @@
 
 Hello everybody,
 
-Today we’re looking at the philosophy of the face.
+Right now we’re looking at the philosophy of the face.
 
-Paid members can hear my audio narration at the end of the newsletter.
+Paid members can hear my audio narration at the end of the nletter.
 
 ---
 
@@ -54,11 +54,11 @@ Of course, they’re my children. I’ve been around them near-constantly since 
 
 Unless you’re very well practiced, it’s really hard to lie convincingly to someone’s face. Because pausing the world to look into someone else’s eyes has a kind of intimacy. If eyes are the window to the soul, then eye contact is a form of union.
 
-Sometimes, this can be intense. It feels uncomfortably invasive. At other times, it’s great. In the soft, kind eyes of someone who loves you, you will find home.
+Sometimes, this can be intense. It feels uncomfortably invasive. At other times, it’s great. In the soft, kind eyes of someone who loves you, you will find safety.
 
 Philosophically, the face has an interesting role in ethics. Why is it easier to be cruel to somebody in the comments section rather than to their face? Why do we prefer to have hard conversations over the phone or via text message? Because interacting with someone’s face is qualitatively different from just speaking past them or from behind the curtain of a screen.
 
-The philosopher Emmanuel Levinas once argued that when you truly stare into somebody’s face, you open a part of your being that you cannot ignore. You see their vulnerability. You see their mortality. You see their aliveness. A person’s face, without any words, says, “I exist, I suffer. Please don’t destroy me.”
+The philosopher Emmanuel Levinas once argued that when you truly stare into somebody’s face, you open a part of your being that you cannot ignore. You see their vulnerability. You see their mortality. You see their aliveness. A human’s face, without any words, says, “I exist, I suffer. Please don’t destroy me.”
 
 In his book, The Drowned and the Saved, Primo Levi describes how the SS guard at Auschwitz almost never looked the prisoners in the eye, because to look was to recognize their humanity. Levi writes about how the guard would look through them, around them, anywhere but at their faces, because their faces were the one thing the system couldn’t destroy.
 

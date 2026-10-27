@@ -4040,6 +4040,7 @@ class Ch41Keywords(str, Enum):
     god = "god"
     power = "power"
     src = "src"
+    time = "time"
 
     def __str__(self):
         return self.value
@@ -4093,6 +4094,7 @@ class Ch45Keywords(str, Enum):
     cases = "cases"
     ch38 = "ch38"
     ch40 = "ch40"
+    ch41 = "ch41"
     ch45 = "ch45"
     ch99 = "ch99"
     climb = "climb"
