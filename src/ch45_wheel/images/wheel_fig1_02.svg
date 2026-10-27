@@ -24,4 +24,5 @@
 <text x="350.0" y="70" font-size="20" fill="black" font-weight="bold" text-anchor="middle" dominant-baseline="central">Fabelas lifts up the Gomezs and drags themselves down</text>
 <path d="M75,370 L675,370" stroke="black" stroke-width="4" />
 <text x="375.0" y="396" font-size="20" text-anchor="middle" dominant-baseline="central">Land</text>
+<text x="680" y="430" font-size="12" text-anchor="end" fill="black">fig1_02</text>
 </svg>

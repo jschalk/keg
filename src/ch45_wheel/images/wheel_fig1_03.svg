@@ -24,4 +24,5 @@
 <text x="400.0" y="70" font-size="20" fill="black" font-weight="bold" text-anchor="middle" dominant-baseline="central">Gomezs is lifted up because Fabelas thinks things will be better</text>
 <path d="M75,410 L725,410" stroke="black" stroke-width="4" />
 <text x="400.0" y="436" font-size="20" text-anchor="middle" dominant-baseline="central">Land</text>
+<text x="780" y="530" font-size="12" text-anchor="end" fill="black">fig1_03</text>
 </svg>

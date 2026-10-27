@@ -13,4 +13,5 @@
 <text x="300.0" y="40" font-size="30" fill="black" font-weight="bold" text-anchor="middle" dominant-baseline="central">Families on the Land</text>
 <path d="M75,180 L525,180" stroke="black" stroke-width="4" />
 <text x="300.0" y="206" font-size="20" text-anchor="middle" dominant-baseline="central">Land</text>
+<text x="580" y="230" font-size="12" text-anchor="end" fill="black">fig0_9</text>
 </svg>

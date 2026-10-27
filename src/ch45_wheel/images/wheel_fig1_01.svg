@@ -14,4 +14,5 @@
 <text x="300.0" y="66" font-size="16" fill="black" font-weight="bold" text-anchor="middle" dominant-baseline="central">The Smiths and the Duvals lift up the Gomezs</text>
 <path d="M75,270 L525,270" stroke="black" stroke-width="4" />
 <text x="300.0" y="296" font-size="20" text-anchor="middle" dominant-baseline="central">Land</text>
+<text x="580" y="330" font-size="12" text-anchor="end" fill="black">fig1_01</text>
 </svg>

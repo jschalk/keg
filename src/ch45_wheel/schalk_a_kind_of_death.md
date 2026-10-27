@@ -23,6 +23,10 @@ Intuitively it's clear to me that staring at a screen is not living. So that bei
 
 Let's work with this concept: A good philosopher should be able to hold a premise and work out what the author intended a little bit. David Foster Wallace was interested in the lived reality of people experiencing pleasure too easily. 
 
+# TODO complete this article
+
+concept#1: Let's define death as not doing anything new that matters to anyone else. If you are standing and looking at a wall for 10 hours before your death then you're pretty much already dead right?
+concept#2: If you become a dopamine addict, all you want is the next hit, you can't be good to people. You're too predictable. Meeting and connecting with others will be too hard. 
 
 
 ## Footnotes

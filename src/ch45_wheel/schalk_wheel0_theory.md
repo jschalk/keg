@@ -8,14 +8,11 @@
 
 ---
 <!--Home: -->
-Being a philosopher is great. Even if you have a very small audience of just your friends being a philosopher means, amoung other things, you're constantly interested in new things and figuring out how they work. You learn things and make theories from them. Of course the place to get the best new things are other thinkers. My favorite popular thinker is Kamil Kazani. <!--Need: -->
-
-BUT in his latest article [How to study politics](../ch40_kazani/kazani_how_to_study_politics.md) he writes that most historians can't generalise the interesting stuff they know into a good political theory. Most books authored by historians have dull and stupid theory even though they want to be insightful. Why, because...
+Being a philosopher is great. Always have interesting things to read and think about. Making theories for things is challenging and fun. It's also easier then being a historian. My Dad was an historian, reading primary sources and then figuring out how people thought a long time ago. Much harder then theory. Then my favorite writer argues that [historians are bad at theory-making](../ch40_kazani/kazani_how_to_study_politics.md)
 
 > ...historians fail to deliver, because they (most of them) are simply not brilliant enough.
-
+<!--Need: -->
 Ouch! My dad was a historian. A pretty good one[^1]. Wrote a book and everything. 
-
 
 <div align="center"><img src="../ch45_wheel/images/valor_to_pedigree.webp" alt="From Valor to Pedigree by Ellery Schalk book cover" width="40%"></div>
 
@@ -86,29 +83,9 @@ So by this grouping there are two kinds of needs to be considered when answering
 
 *Did I take care of my Family's needs? Or everyone else's?*
 
-## What about my Boss?
-
-A understandable retort could be that for many people today, especially educated people, most of what they do is for their boss. How can I be a good father if I mostly do stuff for my bosses and my bosses are not Family? The answer that is in a low-trust society we only work for our bosses insofar as it helps our family. Let's break this down...
-
-#### Boss/family reasons for doing anything
-
-| Reason                                         | Worker Classification    |
-|------------------------------------------------|--------------------------|
-| Helps **family** and helps **boss**            | motivated worker         |
-| Helps **family** and does not help **boss**    | family helper            |
-| Does not help **family** and helps **boss**    | honest worker            |
-| Does not help **family** and does not help **boss** | charity worker      |
-
-Most people are not honest workers. If the boss tells them to do something that hurts their family they'll do everything they can not to do it. If the boss has lots of control then the worker is still not an "honest worker", they're just doing what is least painful for their family. 
-
-
-Question: Why I do stuff?<br>**Answer: Me -> helps family -> Family**
-
-And what is Family?
-
 All humans deal with this question. Ask anyone what they think. Here's what I've picked up.
 
-- Pretty much everything I do is for family. 
+- Pretty much everything I do is for family.[^3] 
 - My family has changed over time.
 - There are lots of reasons families change.
 - Anyone can become a member of a Family.
@@ -139,7 +116,7 @@ In a low trust society model power purely from FamilyUnits and Land.
 
 First let's establish Kazani's favorite political axiom: All governments are oligarchies. As Kazani wrote
 
-> Ronald Syne wrote ""In all ages, whatever the form and name of government, be it monarchy, republic, or democracy, an oligarchy lurks behind the façade."[^3]
+> Ronald Syne wrote ""In all ages, whatever the form and name of government, be it monarchy, republic, or democracy, an oligarchy lurks behind the façade."[^4]
 
 Ok but what are oligarchies made of? It can't just be the individuals that's too limited. It can't just be coalitions that believe in the same concepts. That's not limited enough. What about family? Kazani writes how family is the basic socialogical unit in [The Able Family](../ch40_kazani/kazani_the_able_family.md). And I'm not original at all with this. I grew up with lots of Mexicans and they always say 10 families control Mexico. So how do Oligarchies work?
 
@@ -151,12 +128,12 @@ Ok but what are oligarchies made of? It can't just be the individuals that's too
 <div align="center"><img src="../ch40_kazani/images/yelstin_family.webp" alt="FamilyUnit Yelstin" width="50%"></div>
 
 
- The oligarchy can be best understand as a coalition of Families. A Family can have a dominate personality as leader but is better to think of families rather then personalities[^4] because the trusted family members of a leader can often have enourmous influence. Kamil Kazani claims that one of the people in the Yelstin family portrait above made Vladamir Putin king. It wasn't Boris Yelstin. Do you know which one it was? Do you know his name? I don't. Still I know the Family: The Yelstin Family. A Family that had **prestige** but then it fell from power.
+ The oligarchy can be best understand as a coalition of Families. A Family can have a dominate personality as leader but is better to think of families rather then personalities[^5] because the trusted family members of a leader can often have enourmous influence. Kamil Kazani claims that one of the people in the Yelstin family portrait above made Vladamir Putin king. It wasn't Boris Yelstin. Do you know which one it was? Do you know his name? I don't. Still I know the Family: The Yelstin Family. A Family that had **prestige** but then it fell from power.
 
 
 <div align="center">
 
-#### "...Status & prestige is a zero sum game..." Kamil Kazani on Twitter[^5]
+#### "...Status & prestige is a zero sum game..." Kamil Kazani on Twitter[^6]
 </div>
 
 
@@ -197,7 +174,7 @@ Why do Families fall? Perhaps the most important member dies or becomes unpopula
 
 <div align="center"><img src="images/wheel03_invitation.webp" alt="Diagram invitation ladder" width="50%"></div>
 
-Families only invite a Family out of power into power when they can provide a service. Something useful to them. That is represented here as a ladder. The family out of power must have a large ladder to even be considered for invitiation[^6]. The obvious example is money. Money is not equal to prestige. But if someone in power wants money then a ladder made of money can result in an invitation.
+Families only invite a Family out of power into power when they can provide a service. Something useful to them. That is represented here as a ladder. The family out of power must have a large ladder to even be considered for invitiation[^7]. The obvious example is money. Money is not equal to prestige. But if someone in power wants money then a ladder made of money can result in an invitation.
 
 <div align="center"><img src="images/wheel04_familyunits.webp" alt="17 FamilyUnits in a Wheel diagram" width="50%"></div>
 
@@ -225,7 +202,7 @@ Here's a scenario where many wheels of different color exist in touch. (Please e
 
 <div align="center"><img src="images/wheel09_many_borders.webp" alt="Many borders of different colors" width="50%"></div>
 
-Here's the same scenario with many borders. Notice the space between borders. That's a feature that is important, because borders can become their own space that's weirdly part of both wheels and not.[^7] Wheels exist against each other. 
+Here's the same scenario with many borders. Notice the space between borders. That's a feature that is important, because borders can become their own space that's weirdly part of both wheels and not.[^8] Wheels exist against each other. 
 
 <div align="center"><img src="images/wheel10_climb_cling.webp" alt="Climbing and clinging" width="50%"></div>
 
@@ -266,19 +243,39 @@ These are the mechanics of the the KegWheel. Next part will address what it's go
 
 [^2]: Reality is infinitely complex. Any model of reality will be wrong. But some models are better than others. KegWheel Theory is a model of understanding power and predicting how to affect change. 
 
+[^3]: **What about my Boss?**
+
+Question: Why I do stuff?<br>**Answer: Me -> helps family -> Family**
+
+And what is Family?
+
 The easiest introduction to the concepts of KegWheel is from the writings of Kamil Kazani. The quickest primer is Kazani's article on the [Mechanics of Revolution](../ch40_kazani/kazani_mechanics_of_revolution.md). 
 
 Fundamentally KegWheel is not motivated by Kazani's cynical worldview but by Emmanuel Levinas's MetaEthics. The source of all truth is the Face of the Other in front of me. It can get pretty complicated so leave it for later. I just wanted to declare this. It is important to me.
 
-[^3]: Ronald Syne (died 1989), Historian and Author of Books on Roman History. 
+A understandable retort could be that for many people today, especially educated people, most of what they do is for their boss. How can I be a good father if I mostly do stuff for my bosses and my bosses are not Family? The answer that is in a low-trust society we only work for our bosses insofar as it helps our family. Let's break this down...
 
-[^4]: Basically all leaders have family they trust. To understand how someone of prestige got that prestige see Kazani in [The Able Family](../ch40_kazani/kazani_the_able_family.md) 
+#### Boss/family reasons for doing anything
 
-[^5]: Taken from conversation about Ukraine [Kazani Twitter Posts](../ch40_kazani/kazani_twitter.md)
+| Reason                                         | Worker Classification    |
+|------------------------------------------------|--------------------------|
+| Helps **family** and helps **boss**            | motivated worker         |
+| Helps **family** and does not help **boss**    | family helper            |
+| Does not help **family** and helps **boss**    | honest worker            |
+| Does not help **family** and does not help **boss** | charity worker      |
 
-[^6]: [The Vassal Strategy](../ch40_kazani/skallas_the_vassal_strategy.md)  
+Most people are not honest workers. If the boss tells them to do something that hurts their family they'll do everything they can not to do it. If the boss has lots of control then the worker is still not an "honest worker", they're just doing what is least painful for their family. 
 
-[^7]: I grew up on a border so I have strong opinions about these things. 
+[^4]: Ronald Syne (died 1989), Historian and Author of Books on Roman History. 
+
+[^5]: Basically all leaders have family they trust. To understand how someone of prestige got that prestige see Kazani in [The Able Family](../ch40_kazani/kazani_the_able_family.md) 
+
+[^6]: Taken from conversation about Ukraine [Kazani Twitter Posts](../ch40_kazani/kazani_twitter.md)
+
+[^7]: [The Vassal Strategy](../ch40_kazani/skallas_the_vassal_strategy.md)  
+
+[^8]: I grew up on a border so I have strong opinions about these things. 
+
 
 
 ## Biblography
