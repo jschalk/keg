@@ -88,7 +88,7 @@ And this gives at least one reason why the crash hasn't come yet.
 
 [^1]: Let's be super conservative and assume Sean makes $125k and have $125k in overhead. So to his company he's costing 250K. I can't imagine it's anywhere near that low with bonuses and company retreats and managers but just roll with this *250k*.
 
-Assume 50 working weeks in the year: 250k / 50 = 5k, so $1k per working day.
+Assume 50 working wks in the year: 250k / 50 = 5k, so $1k per working day.
 Assume 10 hours working per day: 1k / 10 = $100 every hour. 
 
 Sean needs to bring an average of $100 per hour if he wants to be a low paid stock broker. 

@@ -13,7 +13,7 @@
 
 Hello everybody,
 
-This week we’re looking at the philosophy of the face.
+Today we’re looking at the philosophy of the face.
 
 Paid members can hear my audio narration at the end of the newsletter.
 
@@ -29,7 +29,7 @@ I don’t need to throw fuel on the eyebrow-scorching bonfire that is “social 
 
 I’ve always loved Orwell’s line: “At 50, everyone has the face he deserves.” I love the concept that every frown, smile, and deep, wistful thought is somewhere etched onto our faces. Of course, Orwell couldn’t have predicted the sheer technological achievement of the beauty industry, but I think the point is still true. Our autobiographies are etched onto our faces, and it takes three seconds to see if it’s the kind of autobiography we want to learn more about.
 
-So, our faces are important. This week, we look at just how much.
+So, our faces are important. Now, we look at just how much.
 
 Go well,
 Jonny

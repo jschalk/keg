@@ -31,7 +31,7 @@ Bureaucracy is based on transparency, it is based on objectivity, because otherw
 
 <div align="center"><img src="images/lamppost.webp" alt="Looking under the Lamppost Comic" width="600"></div>
 
-*Frame it this way, and you will realise how a great mighty industrial company from the US or Europe suddenly loses everything to a palaeolithic workshop from China. The great and mighty are strictly limited to what is under the lamppost. The shameful and deplorable can venture outside. In fact they must, because everything under the lamppost has been already devoured by the great and mighty. They HAVE TO venture outside, into the epistemological darkness*
+*Frame it this way, and you will realise how a great mighty industrial company from the US or Europe suddenly loses everything to a palaeolithic shed from China. The great and mighty are strictly limited to what is under the lamppost. The shameful and deplorable can venture outside. In fact they must, because everything under the lamppost has been already devoured by the great and mighty. They HAVE TO venture outside, into the epistemological darkness*
 
 Now one major preference of every bureaucracy in the world, is the preference for quantification, and for the decision making based on quantitative measurements.
 

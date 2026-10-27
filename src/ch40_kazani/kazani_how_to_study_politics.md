@@ -69,7 +69,7 @@ Tolstoy aimed to represent how the actual, historical princes and counts of the 
 
 All these princes and counts have been raised on the French culture, educated on it. They can speak Russian, of course, but whenever they need to say something smart, abstract, or, in any way sophisticated, they have to say it in French. French is the original, and the Russian high culture is a reverberation of it.
 
-So when you see the long untranslated quotes from the ancient Roman authors and politicians, you cannot help but draw the parallels with Tolstoy. It is Latin, of course, but Latin with huge number of Greeks insertions, and quotations. You cannot but contemplate how the elite education in late republican Rome was based on the Greek, and how the entire high culture was permeated by the Greek ideas, Greek stories, Greek narratives.
+So when you see the long untranslated quotes from the ancient Roman authors and politicians, you cannot help but draw the parallels with Tolstoy. It is Latin, of course, but Latin with huge number of Greeks insertions, and snippets. You cannot but contemplate how the elite education in late republican Rome was based on the Greek, and how the entire high culture was permeated by the Greek ideas, Greek stories, Greek narratives.
 
 <div align="center"><img src="images/trannicide_painting.webp" alt="Painting of the murder of Caesar in the Senate." width="600"></div>
 

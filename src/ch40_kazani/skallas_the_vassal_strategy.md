@@ -7,7 +7,7 @@
 
 ---
 
-I was reading last week that SpaceX, Musk’s private space company, is close to filing for an IPO. 
+I was reading last wk that SpaceX, Musk’s private space company, is close to filing for an IPO. 
 
 It immediately made me think of an ex-coworker of mine who put a large share of his savings into Tesla about eight years ago.
 

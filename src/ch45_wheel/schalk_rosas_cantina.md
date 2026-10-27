@@ -18,7 +18,7 @@ Anyway, this guy, probably [Dr. Anthony Leggett](https://en.wikipedia.org/wiki/A
 #### He was terrible and he didn't care.
 </div>
 
-He had a slide desk and he went through the slides and talked during each one. Individually they were interesting slides but put together there was a confusing mess. It really felt like he made the presentation 3 weeks after getting the Nobel and had never updated it in the years since. Never improving it. And there were interesting nuggets to work with. 
+He had a slide desk and he went through the slides and talked during each one. Individually they were interesting slides but put together there was a confusing mess. It really felt like he made the presentation 3 wks after getting the Nobel and had never updated it in the years since. Never improving it. And there were interesting nuggets to work with. 
 
 In one slide he showed a scan of old wrinkled graph paper with the crazy data that indicated that at super low temperature hydrogen liquid no longer has friction. That's what I understood, I'm sure I got that wrong. Later he told a fun little story about how he got these results at 2am while working obsessively on his research. He claimed that the only reason he was able to be so obsessive is that he refused distractions including his wife's request that he learn her native language. 
 

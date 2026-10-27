@@ -19,7 +19,7 @@ Given a subject a philosopher should be able to speak/write to an audience in an
 10 minutes to introduce research project to colleagues<br>
 30 seconds in pitch research proposal to a supervisor <br>
 50 minutes to introduce a philosopher's thought to a high school class<br>
-26 lectures of 50 minutes on subject to undergrads (13 week course) <br> 
+26 lectures of 50 minutes on subject to undergrads (13 wk course) <br> 
 
 ### Common Examples of Word Count/Subject/Audience
 

@@ -15,7 +15,7 @@ That is in fact the weakest spot of many (or most) conspiracy theories. They ten
 
 Now that is wrong, of course. Not because such rooms do not exist (they do), but because they are also filled by the men-children. Simple. Naive. Vainglorious. Absolutely pathetic in all sorts of ways. Because this is the only real type of the humans walking upon earth. Whereas existence of the ‘real adults’ is pure fiction, much like that of the Olympic Gods.
 
-Some weeks ago, I have been talking with a friend. I told him how one public figure has - on record - disclosed an *incredibly* sensitive & consequential piece of information. Like, it was mindblowing to know that this particular bit of information does even exist, and double mindblowing that he leaks it so easily, *purely to show off*.
+Some wks ago, I have been talking with a friend. I told him how one public figure has - on record - disclosed an *incredibly* sensitive & consequential piece of information. Like, it was mindblowing to know that this particular bit of information does even exist, and double mindblowing that he leaks it so easily, *purely to show off*.
 
 He leaks top classified information, purely to demonstrate his knowledge & importance.
 
@@ -33,7 +33,7 @@ He was a highly commercially successful author of the absolutely absurd, patheti
 
 Who was this mysterious Duuckworth Drew, who single-handedly carried the security of British Empire on his shoulders, protecting the merry England from the encroachment of continental powers? Well, it was a thinly veiled alter ego of Queux himself. Considering that Queux must be read as ‘Kew’, the hint could not be made more clear.
 
-I have not actually read any of Queux works myself. But based on the abundant quotations in the MI5 history, they seem to be almost surrealistically absurd. For example, in his Spies of the Kaiser (1909), a couple of British agents have successfully disclosed the entire system of German espionage in England. Naturally, the Germans would be plotting vengeance.
+I have not actually read any of Queux works myself. But based on the abundant texts in the MI5 history, they seem to be almost surrealistically absurd. For example, in his Spies of the Kaiser (1909), a couple of British agents have successfully disclosed the entire system of German espionage in England. Naturally, the Germans would be plotting vengeance.
 
 >In December 1908 they are presented with Christmas crackers by a group of apparently good-natured Germans, but are alerted just in time by a detective-inspector to the Germans’ real intentions:
 >

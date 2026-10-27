@@ -45,7 +45,7 @@ And. Here is the second part of our paradox. Despite all of their modern outfit,
 
 For a modern, or even for a 19th c. Englishmen - the tales from the Tudor era (divorced - beheaded - died - divorced - beheaded - survived) feel oddly foreign, like something happening in a far off, mythical land. It feels more like a story from the Arabian Nights, like something happening in the legendary Baghdad from the age of Harun al-Rashid, or an even wilder story brought from the unknown land by Sinbad the Sailor.
 
-For though Tudors, announced the birth of the modern world, they themselves belonged to the old one, and that makes the Tudor age to feel like the very last epoch when England was distinctly “oriental”, before it became a Western.
+For though Tudors, announced the birth of the modern world, they themselves belonged to the old one, and that makes the Tudor age to feel like the very last period when England was distinctly “oriental”, before it became a Western.
 
 ***
 
@@ -116,7 +116,7 @@ Well, this impression is correct. That is clearly how it works in the 16th centu
 
 ***
 
-Our image of the early Tudor England is very much contaminated by the memes and by the impressions made by the later epochs, way richer, and way more refined. In the 1500s c, England was just the European periphery, rud-ish, dumb-ish, poor-ish. Nothing like the centre of the world it would become later
+Our image of the early Tudor England is very much contaminated by the memes and by the impressions made by the later cultural periods, way richer, and way more refined. In the 1500s c, England was just the European periphery, rud-ish, dumb-ish, poor-ish. Nothing like the centre of the world it would become later
 
 First, Tudor England was rude, ignorant. And it was exactly this rough, and this ignorance that made the job of changing religion every 15 minutes easier, and not harder.
 

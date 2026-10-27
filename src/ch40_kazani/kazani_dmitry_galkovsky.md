@@ -194,7 +194,7 @@ Last but not least, Galkovsky made so much impact not because his Theory is so p
 
 If Westerners desire to see the crazy & very powerful Russian occultists and project their desire on whoever they can (like Dugin), what Russian public consciousness desires is a coherent & logical General Theory of Everything that will give them the key to understanding reality
 
-Consider that Marx was very surprised by the quick and immediate success of his writings in Russia. The first edition of Das Kapital in German could not be solved for years while in Russia it was all bought in a few weeks. Marx was puzzled
+Consider that Marx was very surprised by the quick and immediate success of his writings in Russia. The first edition of Das Kapital in German could not be solved for years while in Russia it was all bought in a few wks. Marx was puzzled
 
 <div align="center"><img src="images/marx_protrait.webp" alt="Protrait of Karl Marx" width="500"></div>
 

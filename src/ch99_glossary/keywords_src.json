@@ -434,7 +434,7 @@
   "duck": {"valid_ch": "19"}, 
   "duration": {"valid_ch": "14, 39"}, 
   "epoch": {
-    "valid_ch": "14, 15, 16, 17, 18, 20, 22, 23, 26, 27, 30, 31, 32, 35, 39, 40, 90, 97, 98"
+    "valid_ch": "14, 15, 16, 17, 18, 20, 22, 23, 26, 27, 30, 31, 32, 35, 39, 90, 97, 98"
   }, 
   "epoch_label": {"sort_ordinal": 11, "valid_ch": "14, 15, 17, 18, 20, 22, 23, 26, 31, 35"}, 
   "epoch_label_aux": {"valid_ch": "20"}, 
@@ -835,7 +835,7 @@
   "pitcher_name": {"valid_ch": "33"}, 
   "pitchs": {"valid_ch": "33"}, 
   "plan": {
-    "valid_ch": "7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 26, 27, 30, 31, 32, 33, 35, 39, 40, 45, 54, 90, 97, 98"
+    "valid_ch": "7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 26, 27, 30, 31, 32, 33, 35, 40, 45, 54, 90, 97, 98"
   }, 
   "plan_active": {"sort_ordinal": 161, "valid_ch": "7, 8, 14, 20, 22, 27, 31, 35"}, 
   "plan_active_hx": {"valid_ch": "7, 8, 35"}, 
@@ -859,7 +859,7 @@
   "planroot": {"valid_ch": "8, 9, 10, 11, 12, 14, 15, 20, 23, 27, 31, 35"}, 
   "pledge": {
     "sort_ordinal": 134, 
-    "valid_ch": "7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 26, 27, 31, 32, 33, 35, 40, 90"
+    "valid_ch": "7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 26, 27, 31, 32, 33, 35, 90"
   }, 
   "pledges_count": {"sort_ordinal": 197, "valid_ch": "20, 31"}, 
   "power": {"valid_ch": "39, 40, 41, 45"}, 
@@ -889,10 +889,7 @@
   "purpil": {"valid_ch": ""}, 
   "pyramid": {"valid_ch": ""}, 
   "question_tier": {"valid_ch": "1, 97"}, 
-  "quota": {
-    "sort_ordinal": 156, 
-    "valid_ch": "12, 15, 17, 18, 20, 22, 23, 26, 27, 32, 33, 40"
-  }, 
+  "quota": {"sort_ordinal": 156, "valid_ch": "12, 15, 17, 18, 20, 22, 23, 26, 27, 32, 33"}, 
   "range_duration": {"valid_ch": "14"}, 
   "range_evaluated": {"sort_ordinal": 183, "valid_ch": "7, 8, 20, 22, 27, 35"}, 
   "range_inheritors": {"valid_ch": "7, 8, 14"}, 
@@ -972,7 +969,7 @@
   "sheet": {"valid_ch": "20, 22, 23, 24, 30, 32, 35, 40, 45, 90, 97"}, 
   "shill": {"valid_ch": "40"}, 
   "shop": {
-    "valid_ch": "3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 26, 27, 30, 31, 32, 33, 35, 39, 40, 45, 90, 97, 98"
+    "valid_ch": "3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 26, 27, 30, 31, 32, 33, 35, 39, 45, 90, 97, 98"
   }, 
   "shot": {"valid_ch": "45"}, 
   "soil": {"valid_ch": "40"}, 
@@ -1054,7 +1051,7 @@
   "vertical": {"valid_ch": ""}, 
   "vow": {"valid_ch": "33, 39, 40"}, 
   "water": {"valid_ch": "39, 40, 45"}, 
-  "week": {"valid_ch": "14, 15, 17, 18, 20, 22, 23, 24, 26, 31, 33, 39, 40, 45, 97"}, 
+  "week": {"valid_ch": "14, 15, 17, 18, 20, 22, 23, 24, 26, 31, 33, 97"}, 
   "weekday_label": {"sort_ordinal": 29, "valid_ch": "15, 17, 18, 20, 22, 23, 24, 26"}, 
   "weekday_label_aux": {"valid_ch": "20"}, 
   "weekday_label_inx": {"sort_ordinal": 31, "valid_ch": "20, 22"}, 
@@ -1064,7 +1061,7 @@
   "weekdays_config": {"valid_ch": "14, 20, 23, 26"}, 
   "weekly_duration_min": {"valid_ch": "14"}, 
   "weekly_lower_min": {"valid_ch": "14"}, 
-  "weeks": {"valid_ch": "14, 26, 39, 40, 45"}, 
+  "weeks": {"valid_ch": "14, 26"}, 
   "weeks_lower_week": {"valid_ch": "14"}, 
   "weeks_upper_week": {"valid_ch": "14"}, 
   "welcome": {"valid_ch": "39, 45"}, 
@@ -1077,7 +1074,7 @@
   "world_name": {"valid_ch": "20, 30, 32, 33, 90"}, 
   "yap": {"valid_ch": "18"}, 
   "yard": {"valid_ch": ""}, 
-  "year": {"valid_ch": "14, 15, 16, 31, 39, 40, 45"}, 
+  "year": {"valid_ch": "14, 15, 16, 31, 40, 45"}, 
   "year_length": {"valid_ch": "14"}, 
   "year_monthday_duration_days": {"valid_ch": "14"}, 
   "year_monthday_lower": {"valid_ch": "14"}, 
