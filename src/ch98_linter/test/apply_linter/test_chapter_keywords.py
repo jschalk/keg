@@ -30,6 +30,8 @@ from ch99_glossary.ch_keyword import Ch98Keywords as kw
 from importlib import import_module as importlib_import_module
 from inspect import getsource as inspect_getsource
 from typing import Literal
+from re import fullmatch as re_fullmatch
+from pathlib import Path
 
 
 def get_semantic_types_dict() -> dict[str, str]:
@@ -165,6 +167,36 @@ def test_Chapters_Semantic_Types_AreAllIn_chXX_semantic_types_ref_files():
     assert ref_files_semantic_types == expected_types_set
 
 
+def semantic_types_path_bool(file_path: str | Path) -> bool:
+    return bool(
+        re_fullmatch(
+            r"src[\\/]+ch\d{2}_.+[\\/]+_ref[\\/]+ch\d{2}_semantic_types\.py",
+            str(file_path),
+        )
+    )
+
+
+def test_semantic_types_path_bool_ReturnsBool_ScenarioMultiplePaths():
+    # ESTABLISH / WHEN / THEN
+    assert semantic_types_path_bool(r"src\ch00_py\_ref\ch00_semantic_types.py") is True
+    assert (
+        semantic_types_path_bool(r"src\ch42_linter\_ref\ch42_semantic_types.py") is True
+    )
+    assert (
+        semantic_types_path_bool(r"src/ch99_anything/_ref/ch99_semantic_types.py")
+        is True
+    )
+    assert (
+        semantic_types_path_bool(r"src\ch100_py\_ref\ch100_semantic_types.py") is False
+    )
+    assert semantic_types_path_bool(r"src\ch42\_ref\ch42_semantic_types.py") is False
+    assert semantic_types_path_bool(r"src\ch42_py\_ref\ch42_ref.json") is False
+    assert semantic_types_path_bool(r"src\ch42_py\_ref\ch43_semantic_types.py") is True
+    assert (
+        semantic_types_path_bool(r"src\ch42_py\other\ch42_semantic_types.py") is False
+    )
+
+
 def is_py_file_allowed_any_imports(file_path: str) -> bool:
     files_with_all_imports_allowed = {
         "test_entry_presistence.py",
@@ -190,10 +222,13 @@ def get_keywords_in_ch_count(keywords_dict: dict) -> dict:
         chapter_files.extend(list(get_json_files(chapter_dir)))
         chapter_files = sorted(chapter_files)
         for file_path in chapter_files:
-            file_str = open_file(file_path)
-            for keyword in all_keywords:
-                if keyword in file_str:
-                    add_ch_keyword_count(keywords_in_ch_count, keyword, chapter_prefix)
+            if not semantic_types_path_bool(file_path):
+                file_str = open_file(file_path)
+                for keyword in all_keywords:
+                    if keyword in file_str:
+                        add_ch_keyword_count(
+                            keywords_in_ch_count, keyword, chapter_prefix
+                        )
 
     return keywords_in_ch_count
 
@@ -333,7 +368,7 @@ def check_not_allowed_keywords(
                 # Special case, doesn't provide perfect check but better than nothing
                 if keyword in file_str and "row_factory" not in file_str:
                     assert False, notallowed_keyword_failure_str
-            else:
+            elif not semantic_types_path_bool(file_path):
                 if keyword in file_str:
                     print(f"{keyword=}")
                     print(f"{file_path=}")

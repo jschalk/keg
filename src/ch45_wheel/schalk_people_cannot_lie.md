@@ -1,0 +1,37 @@
+# People cannot lie
+
+**Author:** Emmanuel Schalk<br>
+**Date:** 2026-10-22<br>
+**Description:** Kazani wrote 'People cannot lie'. Was he lying? No, so what's the implication for political advancement?<br>
+**Note:** Article probably is incomplete<br>
+
+
+*Who succeeds when lying is advantageous?*
+
+***
+
+Kamil Kazani wrote the article [People cannot lie](../ch40_kazani/kazani_people_cannot_lie.md) where he described a theory of lying where he claimed most people are incapable of lying about things they are truly attached to. 
+
+This is a tautology: if someone lies about someting that means they aren't really attached to it. And if someone tells the truth then they could be attached or not. The internal state of someone, whether they are lying or not is not a simple yes/no switch you can observe in someone's brain. Lie-detectors don't detect lies, they detect stress. 
+
+Still there is someone deeply interesting about Kazani's claim. I asked friends of mine for a response to this hug claim expecting responses that would be dismissive or clearly expose a failure in it's logic. I got no response. 
+
+So either my friends have more important things to do (likely) or/and they, like me, are intrigued by how simple this idea is and now difficult it is to refute it. 
+
+Every theory fails to represent reality because reality is infinitily complex. But theories can be useful. What is the use of 'People cannot lie'?
+
+Well it explains why certain people succeed in politics.
+
+If it is impossible to lie about things a person is attached to and politics rewards a person who lies about things, then politics will reward people who do is not attached to many things. For example if they are only interested in being relevant. Or if they are only interested in doing what the boss wants. 
+
+Kazani's "People cannot lie" explains why those in power seem to be lying liars yet they still are still successful. They are not lying liars about core things, there are just very few core things. 
+
+***
+
+Here's some speculation: People are not lying about core things. How do they decide what the core things are? Really hard to say. Generally though people believe that they more money they have the better those core things are served. 
+
+*I know what's important and more money makes those things better*
+
+If someone believes that, then they will consider getting money to be at the service of their core beliefs. Functionally getting money would be a core belief. 
+
+Money. It makes the world go round? 

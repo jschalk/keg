@@ -3,7 +3,7 @@
 **Author:** Emmanuel Levinas<br>
 **Translators:** Translated by Sean Hand and Michael Temple<br>
 **Date:** 2014-5-9<br>
-**Source:** Published in journal a long time ago: explanation below<br>
+**Source:** Published in journal a long time ago: clarification below<br>
 **Copied to Keg:** 2026-08-14<br>
 
 ### Abstract
@@ -12,7 +12,7 @@ Published for the first time in Justifications de l' erhique (Bruxelles: Edition
 
 ## Ethics as First Philosophy - I 
 
-The correlation between knowledge, understood as disinterested contemplation, and being, is, according to our philosophical tradition, the very site of intelligibility, the occurrence of meaning (sens). The comprehension of being - the semantics of this verb - would thus be the very possibility of or the occasion for wisdom and the wise and, as such, is first philosophy. The intellectual, and even spiritual life, of the West, through the priority it gives to knowledge identified with Spirit, demonstrates its fidelity to the first philosophy of Aristotle, whether one interprets the latter according to the ontology of book r of the Metaphysics or according to the theology or onto-theology of book A where the ultimate explanation of intelligibility in terms of the primary causality of God is a reference to a God defined by being qua being. 
+The correlation between knowledge, understood as disinterested contemplation, and being, is, according to our philosophical tradition, the very site of intelligibility, the occurrence of meaning (sens). The comprehension of being - the semantics of this verb - would thus be the very possibility of or the occasion for wisdom and the wise and, as such, is first philosophy. The intellectual, and even spiritual life, of the West, through the priority it gives to knowledge identified with Spirit, demonstrates its fidelity to the first philosophy of Aristotle, whether one interprets the latter according to the ontology of book r of the Metaphysics or according to the theology or onto-theology of book A where the ultimate elucidation of intelligibility in terms of the primary causality of God is a reference to a God defined by being qua being. 
 
 The correlation between knowledge and being, or the thematics of contemplation, indicates both a difference and a difference that is overcome in the true. Here the known is understood and so appropriated by knowledge, and as it were freed of its otherness. In the realm of truth, being, as the other of thought becomes the characteristic property of thought as knowledge. The benchmark of rationlity or of sense (sens) begins already to appear as the immanence of the real to reason; just as, in being, a privilege is granted to the present, which is presence to thought, of which the future and the past are modalities or modifications: representations. 
 

@@ -39,6 +39,7 @@ def test_Chapters_test_Tests_AreInCorrectDirStructure():
 
 def test_Chapters_NonTestFilesDoNotHavePrintStatments():
     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
+    # TODO consider replaceing "print" with not-allowed-strings and include " assert "
     # ESTABLISH
     print_str = "print"
     excluded_files = {
