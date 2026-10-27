@@ -51,7 +51,7 @@ Here's an important insight I gained from reading Kazani:
 ### If a family feels they are losing prestige they will sow chaos by bringing new families into power.
 </div>
 
-I'm unable to remember which article talks about this. But the concept is that if there is chaos then a family in power wants that chaos. Chaos means there a chance any family's prestige could decline or increase. No one knows the future and chaos makes the future more unknowable. Of course chaos may could make the family fall faster, in fact it's probably . But better to try then not. *Stay rich or die trying*
+I'm unable to remember which article talks about this. But the concept is that if there is chaos then a family in power wants that chaos. Chaos means there a chance any family's prestige could decline or increase. No one knows the future and chaos makes the future more unknowable. Of course chaos may could make the family fall faster, actually it's probably more likely. But better to try then not. *Stay rich or die trying*
 
 Kegology Term *'Fall'*: The opposite of a invitation, when a family loses prestige, usually because no other family with prestige wants to invite them.
 

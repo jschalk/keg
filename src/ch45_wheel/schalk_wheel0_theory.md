@@ -10,7 +10,7 @@
 <!--Home: -->
 Being a philosopher is great. Even if you have a very small audience of just your friends being a philosopher means, amoung other things, you're constantly interested in new things and figuring out how they work. You learn things and make theories from them. Of course the place to get the best new things are other thinkers. My favorite popular thinker is Kamil Kazani. <!--Need: -->
 
-BUT in his latest article [How to study politics](../ch40_kazani/kazani_how_to_study_politics.md) he writes that most historians can't generalise the interesting facts they know into a good political theory. Most books authored by historians have dull and stupid theory even though they want to be insightful. Why, because...
+BUT in his latest article [How to study politics](../ch40_kazani/kazani_how_to_study_politics.md) he writes that most historians can't generalise the interesting stuff they know into a good political theory. Most books authored by historians have dull and stupid theory even though they want to be insightful. Why, because...
 
 > ...historians fail to deliver, because they (most of them) are simply not brilliant enough.
 

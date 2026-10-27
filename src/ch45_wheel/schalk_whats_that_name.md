@@ -55,7 +55,7 @@ And I need to complete the Introduction to Kegology first. Which keeps me alone 
 
 ## Need to complete Intro and present it
 
-It also presents a terrible fact: 
+It also presents a terrible conclusion: 
 
 <div align="center">
 
@@ -64,7 +64,7 @@ It also presents a terrible fact:
 
 I'm going to be part of the very system I claim is hurting my family and friends.
 
-Instead of accepting that fact here's my promise: I will not promote other celebrities for they sake of their celebrity.
+Instead of accepting that implication here's my promise: I will not promote other celebrities for they sake of their celebrity.
 
 And I will plan that myself and others reduce the celebrities that we know. Get off the internet and touch grass. Gossip about celebrities all you want, just try to make it only the neighbors who know whats going on.
 
