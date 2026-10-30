@@ -4052,6 +4052,7 @@ class Ch44Keywords(str, Enum):
     Audie = "Audie"
     Deal = "Deal"
     God = "God"
+    Hayek = "Hayek"
     Home = "Home"
     Kegology = "Kegology"
     Land = "Land"
@@ -4085,8 +4086,10 @@ class Ch44Keywords(str, Enum):
     hose = "hose"
     hour = "hour"
     idea = "idea"
+    ii = "ii"
     invite = "invite"
     jump = "jump"
+    kegology = "kegology"
     knee = "knee"
     ladder = "ladder"
     land = "land"
@@ -4118,7 +4121,6 @@ class Ch44Keywords(str, Enum):
 
 
 class Ch45Keywords(str, Enum):
-    American = "American"
     Article = "Article"
     Boss = "Boss"
     Climb = "Climb"
@@ -4126,7 +4128,6 @@ class Ch45Keywords(str, Enum):
     Excel = "Excel"
     Fall = "Fall"
     Geo = "Geo"
-    Hayek = "Hayek"
     Home = "Home"
     Honor = "Honor"
     Infinity = "Infinity"
@@ -4179,7 +4180,6 @@ class Ch45Keywords(str, Enum):
     home = "home"
     honor = "honor"
     idea = "idea"
-    ii = "ii"
     infinity = "infinity"
     invitation = "invitation"
     invite = "invite"

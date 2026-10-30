@@ -1,6 +1,6 @@
 {
   "Alien": {"valid_ch": ""}, 
-  "American": {"valid_ch": "39, 40, 44, 45"}, 
+  "American": {"valid_ch": "39, 40, 44"}, 
   "Anaday": {"valid_ch": "14, 23"}, 
   "Apex": {"valid_ch": ""}, 
   "Article": {"valid_ch": "38, 40, 44, 45"}, 
@@ -55,7 +55,7 @@
   "Gravity": {"valid_ch": ""}, 
   "GroupMark": {"semantic_type": "str", "valid_ch": "3, 5, 97"}, 
   "GroupTitle": {"semantic_type": "str", "valid_ch": "3, 4, 5, 7, 8, 27, 31, 32, 97"}, 
-  "Hayek": {"valid_ch": "40, 45"}, 
+  "Hayek": {"valid_ch": "40, 44"}, 
   "HealerName": {"semantic_type": "str", "valid_ch": "3, 8, 97"}, 
   "Herd": {"valid_ch": ""}, 
   "Hive": {"valid_ch": ""}, 
@@ -596,7 +596,7 @@
   "idea_type": {"valid_ch": "23"}, 
   "ideax_dst": {"valid_ch": "22, 30"}, 
   "ideax_src": {"valid_ch": "22"}, 
-  "ii": {"valid_ch": "23, 30, 32, 39, 40, 45, 90"}, 
+  "ii": {"valid_ch": "23, 30, 32, 39, 40, 44, 90"}, 
   "impression": {"valid_ch": "40"}, 
   "inallocable_contact_debt_mass": {"sort_ordinal": 179, "valid_ch": "3, 8, 11, 15, 20, 22, 27, 35"}, 
   "infinity": {"valid_ch": "39, 45"}, 
@@ -644,7 +644,7 @@
   "keeps_justified": {"sort_ordinal": 187, "valid_ch": "8, 11, 20, 22, 27"}, 
   "keg_wheel": {"valid_ch": ""}, 
   "kegbox": {"valid_ch": ""}, 
-  "kegology": {"valid_ch": "45, 97"}, 
+  "kegology": {"valid_ch": "44, 45, 97"}, 
   "keyword": {
     "valid_ch": "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 45, 54, 90, 97, 98"
   }, 

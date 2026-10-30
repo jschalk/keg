@@ -24,7 +24,7 @@ Kazani says my dad and his ilk can't theorize well. He using entertaining and ha
 </div>
 
 <!--Go: -->
-My copy of *From Valor to Pedigree* is far away so I'll present the political theory of [Kegology](../ch45_wheel/schalk_kegology_name_origin.md). My Dad was a better scholar than me so if I can create a political theory that is awesome then he would have had one that was even better.  
+My copy of *From Valor to Pedigree* is far away so I'll present the political theory of [Kegology](../ch44_spring/schalk_kegology_name_origin.md). My Dad was a better scholar than me so if I can create a political theory that is awesome then he would have had one that was even better.  
 
 <!--Search: TODO. -->
 ## Kegology Political Theory

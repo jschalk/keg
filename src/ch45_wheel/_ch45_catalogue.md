@@ -8,10 +8,6 @@
 
 ---
 
-**[Kegology Name Origin](./schalk_kegology_name_origin.md)** Emmanuel Schalk - 2026-07-06<br>
-
----
-
 **[Monopoly the Game and Understanding Money Supply](./schalk_use_monopoly.md)** Emmanuel Schalk - 2026-06-21<br>
 
 ---
@@ -25,10 +21,6 @@
 ---
 
 **[Kegology Political Theory](./schalk_wheel2_campaign.md)** Emmanuel Schalk - 2026-06-28<br>
-
----
-
-**[When I'm going to be done with Kegology.](./schalk_when_i_am_done.md)** Emmanuel Schalk - 2026-06-09<br>
 
 ---
 

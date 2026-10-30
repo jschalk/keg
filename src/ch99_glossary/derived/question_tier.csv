@@ -795,7 +795,7 @@ trlrope,0,"22, 24, 25, 30, 97"
 trltitl,0,"22, 25, 30, 97"
 fission,0,23
 idea_type,0,23
-ii,0,"23, 30, 32, 39, 40, 45, 90"
+ii,0,"23, 30, 32, 39, 40, 44, 90"
 sparks_b_agg,0,"24, 32"
 sparks_b_vld,0,"24, 32"
 moment_tranbook_nets,0,"27, 31, 32"
@@ -833,7 +833,7 @@ News,0,36
 news,0,"36, 39, 40"
 Article,0,"38, 40, 44, 45"
 article,0,"38, 39, 40, 41, 44, 45, 97"
-American,0,"39, 40, 44, 45"
+American,0,"39, 40, 44"
 God,0,"39, 40, 44, 54"
 Home,0,"39, 44, 45"
 Infinity,0,"39, 45"
@@ -854,7 +854,7 @@ totality,0,39
 water,0,"39, 40, 44, 45"
 welcome,0,"39, 44, 45"
 Faction,0,40
-Hayek,0,"40, 45"
+Hayek,0,"40, 44"
 Hobbit,0,40
 Kronos,0,40
 Land,0,"40, 44, 45"
@@ -896,6 +896,7 @@ discipline,0,"44, 45"
 drag,0,"44, 45"
 heart,0,44
 jump,0,"44, 45"
+kegology,0,"44, 45, 97"
 pump,0,44
 revenge,0,"44, 45"
 shot,0,44
@@ -914,7 +915,6 @@ Wheel,0,45
 alien,0,45
 cling,0,45
 fall,0,45
-kegology,0,"45, 97"
 kneeler,0,45
 lift,0,45
 linchpin,0,45

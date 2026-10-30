@@ -28,6 +28,10 @@
 
 ---
 
+**[Kegology Name Origin](./schalk_kegology_name_origin.md)** Emmanuel Schalk - 2026-07-06<br>
+
+---
+
 **[On Tubes](./schalk_on_tubes.md)** Emmanuel Schalk - 2026-09-29<br>
 
 ---
@@ -57,6 +61,10 @@
 ---
 
 **[Whats that Name](./schalk_whats_that_name.md)** Emmanuel Schalk - 2026-07-05<br>
+
+---
+
+**[When I'm going to be done with Kegology.](./schalk_when_i_am_done.md)** Emmanuel Schalk - 2026-06-09<br>
 
 ---
 
