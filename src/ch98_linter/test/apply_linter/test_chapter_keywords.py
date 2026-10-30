@@ -85,6 +85,7 @@ def test_Chapters_CheckStringMetricsFromEveryFile():
         "find_replace_rope",  # used by ReasonUnit, CaseUnit, FactUnit classes
         "get_obj_key",
         "is_valid",
+        "main",
         "otx_exists",  # used in Nabu/Jargon
         "otx2inx_exists",  # used in Nabu/Jargon
         "reveal_inx",  # used in Nabu/Jargon
