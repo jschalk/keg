@@ -163,12 +163,15 @@ def test_create_markdown_table_of_contents_ReturnsStr_Scenario0_Empty():
     # THEN
     expected_md = """# Table of Contents
 
+---
+
 **Author:** Algorithm<br>
 **Date:** May not be up to date<br>
 **Source:** Generated automatically from chapter contents<br>
 **Copied to Keg:** N/A <br>
 """
     print(expected_md)
+    print(x_markdown)
     assert x_markdown == expected_md
 
 
@@ -197,6 +200,7 @@ def test_create_markdown_table_of_contents_ReturnsStr_Scenario1_OneArticle():
 **Source:** Generated automatically from chapter contents<br>
 **Copied to Keg:** N/A <br>
 """
+    # print(expected_markdown)
     print(x_markdown)
     assert x_markdown == expected_markdown
 
@@ -207,7 +211,7 @@ def test_create_markdown_table_of_contents_ReturnsStr_Scenario2_MultipleArticles
         "zebra_article.md": {
             "author": "Jane Smith",
             "date": "October 23, 2026",
-            "post": "Little Clause",
+            "post": "A Little Clause",
         },
         "apple_article.md": {
             "author": "John Doe",
@@ -222,11 +226,9 @@ def test_create_markdown_table_of_contents_ReturnsStr_Scenario2_MultipleArticles
     # THEN
     expected_markdown = """# Table of Contents
 
+**[A Little Clause](./zebra_article.md)** Jane Smith - October 23, 2026<br>
+
 **[Big Clause](./apple_article.md)** John Doe - 2025-01-15<br>
-
----
-
-**[Little Clause](./zebra_article.md)** Jane Smith - October 23, 2026<br>
 
 ---
 
@@ -235,6 +237,8 @@ def test_create_markdown_table_of_contents_ReturnsStr_Scenario2_MultipleArticles
 **Source:** Generated automatically from chapter contents<br>
 **Copied to Keg:** N/A <br>
 """
+    print(expected_markdown)
+    print(x_markdown)
     assert x_markdown == expected_markdown
 
 

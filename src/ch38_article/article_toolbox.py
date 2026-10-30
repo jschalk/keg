@@ -151,22 +151,29 @@ def create_markdown_table_of_contents(
     metadata: dict[str, dict[str, str | None]],
 ) -> str:
     """Return a Markdown table of contents."""
-    lines = ["# Table of Contents", ""]
 
-    for file_name, file_metadata in sorted(metadata.items()):
+    for file_metadata in metadata.values():
+        file_metadata["author"] = file_metadata.get("author") or "Unknown author"
+        file_metadata["date"] = file_metadata.get("date") or "Undated"
+        file_metadata["post"] = file_metadata.get("post") or "Untitled"
+
+    sorted_items = sorted(
+        metadata.items(),
+        key=lambda item: (
+            item[1].get("author", "").lower(),
+            item[1].get("post", "").lower(),
+        ),
+    )
+
+    lines = ["# Table of Contents", ""]
+    for file_name, file_metadata in sorted_items:
         title = Path(file_name).stem.replace("_", " ").replace("-", " ").title()
         author = file_metadata.get("author") or "Unknown author"
         date = file_metadata.get("date") or "Undated"
         post = file_metadata.get("post") or "Untitled"
 
-        lines.extend(
-            [
-                f"**[{post}](./{file_name})** {author} - {date}<br>",
-                "",
-                "---",
-                "",
-            ]
-        )
+        lines.extend([f"**[{post}](./{file_name})** {author} - {date}<br>", ""])
+    lines.extend(["---"])
     md_body = "\n".join(lines).rstrip() + "\n"
     md_trailer = """
 **Author:** Algorithm<br>
