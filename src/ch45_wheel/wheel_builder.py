@@ -1013,7 +1013,6 @@ def get_wheel_fig1_04(face_title_str: str) -> Drawing:
 
 
 def get_wheel_fig1_05(face_title_str: str) -> Drawing:
-    # TODO build fig
     fig_width = 600
     fig_height = 250
     fig_obj = get_standard_drawing(fig_width, fig_height)
@@ -1022,7 +1021,6 @@ def get_wheel_fig1_05(face_title_str: str) -> Drawing:
 
 
 def get_wheel_fig1_06(face_title_str: str) -> Drawing:
-    # TODO build fig
     fig_width = 600
     fig_height = 250
     fig_obj = get_standard_drawing(fig_width, fig_height)
@@ -1031,7 +1029,6 @@ def get_wheel_fig1_06(face_title_str: str) -> Drawing:
 
 
 def get_wheel_fig1_07(face_title_str: str) -> Drawing:
-    # TODO build fig
     fig_width = 600
     fig_height = 250
     fig_obj = get_standard_drawing(fig_width, fig_height)
@@ -1040,7 +1037,6 @@ def get_wheel_fig1_07(face_title_str: str) -> Drawing:
 
 
 def get_wheel_fig1_08(face_title_str: str) -> Drawing:
-    # TODO build fig
     fig_width = 600
     fig_height = 250
     fig_obj = get_standard_drawing(fig_width, fig_height)
@@ -1049,7 +1045,6 @@ def get_wheel_fig1_08(face_title_str: str) -> Drawing:
 
 
 def get_wheel_fig1_09(face_title_str: str) -> Drawing:
-    # TODO build fig
     fig_width = 600
     fig_height = 250
     fig_obj = get_standard_drawing(fig_width, fig_height)
@@ -1058,7 +1053,6 @@ def get_wheel_fig1_09(face_title_str: str) -> Drawing:
 
 
 def get_wheel_fig1_10(face_title_str: str) -> Drawing:
-    # TODO build fig
     fig_width = 600
     fig_height = 250
     fig_obj = get_standard_drawing(fig_width, fig_height)
