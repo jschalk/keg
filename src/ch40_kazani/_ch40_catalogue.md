@@ -60,6 +60,8 @@
 
 **[What intellectuals can and cannot do](./kazani_what_intellectuals_can_do.md)** Kamil Kazani - 2024-07-31<br>
 
+**[Why did not Russia become a democracy?](./kazani_why_russia_not_democracy.md)** Kamil Kazani - 2026-10-31<br>
+
 **[Why did Putin kill Navalny?](./kazani_putin_navalny.md)** Kamil Kazani - 2024-02-19<br>
 
 **[Why does Russia attack?](./kazani_why_does_russia_attack.md)** Kamil Kazani - 2026-02-08<br>
