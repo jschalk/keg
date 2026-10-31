@@ -30,6 +30,27 @@ def add_title_to_drawing(
     )
 
 
+def add_footer_to_drawing(
+    d: Drawing,
+    footer_txt: str,
+    footer_font_size: int,
+    total_width: int,
+    total_height: int,
+    margin: int,
+):
+    d.append(
+        drawsvg_Text(
+            footer_txt,
+            footer_font_size,
+            total_width - margin,
+            total_height - margin,
+            center=False,
+            text_anchor="end",
+            fill="black",
+        )
+    )
+
+
 def save_to_images_dir(d: Drawing, filebasename: str = "theory"):
     # Get the directory containing this script
     project_dir = Path(__file__).resolve().parent
@@ -707,6 +728,9 @@ def draw_trapezoid_stack(
 # d.append(draw.Text("System", 18, 610, 305, center=True))
 # d.append(draw.Text("Discourse", 18, 300, 450, center=True))
 
+XMX = 20
+XFX = 12
+
 
 def get_standard_drawing(width: int = 800, height: int = 600) -> Drawing:
     d = Drawing(width, height, origin='top-left')
@@ -715,34 +739,42 @@ def get_standard_drawing(width: int = 800, height: int = 600) -> Drawing:
 
 
 def get_wheel_fig0_0(face_title_str: str) -> Drawing:
-    fig = get_standard_drawing(370, 180)
+    fig_width = 370
+    fig_height = 180
+    fig = get_standard_drawing(fig_width, fig_height)
     draw_infinity_contact(fig, 120, 70, "son", "Face")
     add_title_to_drawing(fig, face_title_str, 18, 370, 20)
+    add_footer_to_drawing(fig, "fig0_0", 12, 370, 180, XMX)
     return fig
 
 
 def get_wheel_fig0_1(face_title_str: str) -> Drawing:
     fig_width = 600
-    fig_obj = get_standard_drawing(fig_width, 180)
+    fig_height = 180
+    fig_obj = get_standard_drawing(fig_width, fig_height)
     draw_infinity_contact(fig_obj, 70, 50, "son     ", "Face")
     draw_infinity_contact(fig_obj, 330, 50, "daughter", "Face")
     add_title_to_drawing(fig_obj, face_title_str, 18, fig_width, 10)
+    add_footer_to_drawing(fig_obj, "fig0_1", XFX, fig_width, 180, XMX)
     return fig_obj
 
 
 def get_wheel_fig0_2(face_title_str: str) -> Drawing:
     fig_width = 600
-    fig_obj = get_standard_drawing(fig_width, 300)
+    fig_height = 300
+    fig_obj = get_standard_drawing(fig_width, fig_height)
     draw_infinity_contact(fig_obj, 70, 50, "son     ", "Face")
     draw_infinity_contact(fig_obj, 330, 70, "daughter", "Face")
     draw_infinity_contact(fig_obj, 170, 180, "wife    ", "Face")
     add_title_to_drawing(fig_obj, face_title_str, 18, fig_width, 10)
+    add_footer_to_drawing(fig_obj, "fig0_2", XFX, fig_width, fig_height, XMX)
     return fig_obj
 
 
 def get_wheel_fig0_3(face_title_str: str) -> Drawing:
     fig_width = 700
-    fig_obj = get_standard_drawing(fig_width, 300)
+    fig_height = 300
+    fig_obj = get_standard_drawing(fig_width, fig_height)
     draw_infinity_contact(fig_obj, 70, 50, "son     ", "Face")
     rows = [
         [("daughter", 15)],
@@ -750,12 +782,14 @@ def get_wheel_fig0_3(face_title_str: str) -> Drawing:
     ]
     draw_contact_rows(fig_obj, rows, x0=300, y0=90)
     add_title_to_drawing(fig_obj, face_title_str, 18, fig_width, 10)
+    add_footer_to_drawing(fig_obj, "fig0_3", XFX, fig_width, fig_height, XMX)
     return fig_obj
 
 
 def get_wheel_fig0_4(face_title_str: str) -> Drawing:
     fig_width = 700
-    fig_obj = get_standard_drawing(fig_width, 300)
+    fig_height = 300
+    fig_obj = get_standard_drawing(fig_width, fig_height)
     draw_infinity_contact(fig_obj, 70, 50, "son     ", "Face")
     rows = [
         [("son", 8), ("daughter", 12)],
@@ -763,12 +797,14 @@ def get_wheel_fig0_4(face_title_str: str) -> Drawing:
     ]
     draw_contact_rows(fig_obj, rows, x0=300, y0=90)
     add_title_to_drawing(fig_obj, face_title_str, 18, fig_width, 10)
+    add_footer_to_drawing(fig_obj, "fig0_4", XFX, fig_width, fig_height, XMX)
     return fig_obj
 
 
 def get_wheel_fig0_5(face_title_str: str) -> Drawing:
     fig_width = 700
-    fig_obj = get_standard_drawing(fig_width, 300)
+    fig_height = 300
+    fig_obj = get_standard_drawing(fig_width, fig_height)
     rows = [
         [("son", 8), ("daughter", 12)],
         [("wife", 12, "needs"), ("brother", 2, "needs")],
@@ -776,12 +812,14 @@ def get_wheel_fig0_5(face_title_str: str) -> Drawing:
     ]
     draw_contact_rows(fig_obj, rows, x0=50, y0=50)
     add_title_to_drawing(fig_obj, face_title_str, 18, fig_width, 10)
+    add_footer_to_drawing(fig_obj, "fig0_5", XFX, fig_width, fig_height, XMX)
     return fig_obj
 
 
 def get_wheel_fig0_6(face_title_str: str) -> Drawing:
     fig_width = 700
-    fig_obj = get_standard_drawing(fig_width, 360)
+    fig_height = 360
+    fig_obj = get_standard_drawing(fig_width, fig_height)
     rows = [
         [("son", 8), ("daughter", 12), ("neighbor", 2), ("friend #2", 6)],
         [("wife", 12, "needs"), ("brother", 2, "needs"), ("friend #1", 6)],
@@ -800,12 +838,14 @@ def get_wheel_fig0_6(face_title_str: str) -> Drawing:
     ]
     draw_contact_rows(fig_obj, rows, x0=50, y0=50)
     add_title_to_drawing(fig_obj, face_title_str, 18, fig_width, 10)
+    add_footer_to_drawing(fig_obj, "fig0_6", XFX, fig_width, fig_height, XMX)
     return fig_obj
 
 
 def get_wheel_fig0_7(face_title_str: str) -> Drawing:
     fig_width = 700
-    fig_obj = get_standard_drawing(fig_width, 360)
+    fig_height = 360
+    fig_obj = get_standard_drawing(fig_width, fig_height)
     rows = [
         [("son", 8), ("daughter", 12), ("neighbor", 2), ("friend #2", 6)],
         [("wife", 12, "needs"), ("brother", 2, "needs"), ("friend #1", 6)],
@@ -831,23 +871,27 @@ def get_wheel_fig0_7(face_title_str: str) -> Drawing:
     draw_curved_dotted_line(fig_obj, 260, 260, 370, 230, 0.2)
     draw_curved_dotted_line(fig_obj, 260, 260, 200, 320, -0.2)
     draw_curved_dotted_line(fig_obj, 40, 320, 200, 320, 0.15)
+    add_footer_to_drawing(fig_obj, "fig0_7", XFX, fig_width, fig_height, XMX)
     return fig_obj
 
 
 def get_wheel_fig0_8(face_title_str: str) -> Drawing:
     fig_width = 700
-    fig_obj = get_standard_drawing(fig_width, 160)
+    fig_height = 160
+    fig_obj = get_standard_drawing(fig_width, fig_height)
     rows = [
         [("Family", 12), ("Everyone Else", 12)],
     ]
     draw_contact_rows(fig_obj, rows, x0=180, y0=60)
     add_title_to_drawing(fig_obj, face_title_str, 18, fig_width, 10)
+    add_footer_to_drawing(fig_obj, "fig0_8", XFX, fig_width, fig_height, XMX)
     return fig_obj
 
 
 def get_wheel_fig1_00(face_title_str: str) -> Drawing:
     fig_width = 600
-    fig_obj = get_standard_drawing(fig_width, 250)
+    fig_height = 250
+    fig_obj = get_standard_drawing(fig_width, fig_height)
     trapunits = [
         TrapeziodUnit(120, 100, 90, "Smiths"),
         TrapeziodUnit(220, 100, 90, "Duvals"),
@@ -856,6 +900,7 @@ def get_wheel_fig1_00(face_title_str: str) -> Drawing:
     draw_trapezoid_stack(fig_obj, trapunits)
     add_title_to_drawing(fig_obj, face_title_str, 30, fig_width, 10)
     draw_land(fig_obj, 75, 180, 450, "Land", stroke_width=4, font_size=20)
+    add_footer_to_drawing(fig_obj, "fig0_9", XFX, fig_width, fig_height, XMX)
     return fig_obj
 
 
@@ -864,7 +909,8 @@ def get_wheel_fig1_01(face_title_str: str) -> Drawing:
     duvals_str = "Duvals"
     gomezs_str = "Gomezs"
     fig_width = 600
-    fig_obj = get_standard_drawing(fig_width, 350)
+    fig_height = 350
+    fig_obj = get_standard_drawing(fig_width, fig_height)
     trapunits = [
         TrapeziodUnit(120, 190, 90, smiths_str),
         TrapeziodUnit(220, 190, 90, duvals_str, 72),
@@ -875,6 +921,7 @@ def get_wheel_fig1_01(face_title_str: str) -> Drawing:
     desc_str = f"""The {smiths_str} and the {duvals_str} lift up the {gomezs_str}"""
     add_title_to_drawing(fig_obj, desc_str, 16, fig_width, 50)
     draw_land(fig_obj, 75, 270, 450, "Land", stroke_width=4, font_size=20)
+    add_footer_to_drawing(fig_obj, "fig1_01", XFX, fig_width, fig_height, XMX)
     return fig_obj
 
 
@@ -884,7 +931,8 @@ def get_wheel_fig1_02(face_title_str: str) -> Drawing:
     gomezs_str = "Gomezs"
     flores_str = "Fabelas"
     fig_width = 700
-    fig_obj = get_standard_drawing(fig_width, 450)
+    fig_height = 450
+    fig_obj = get_standard_drawing(fig_width, fig_height)
     trapunits = [
         TrapeziodUnit(170, 130, 100, flores_str, 72),
         TrapeziodUnit(140, 210, 150, gomezs_str, 72),
@@ -900,6 +948,7 @@ def get_wheel_fig1_02(face_title_str: str) -> Drawing:
     desc_str = f"""{flores_str} lifts up the {gomezs_str} and drags themselves down"""
     add_title_to_drawing(fig_obj, desc_str, 20, fig_width, 50)
     draw_land(fig_obj, 75, 370, 600, "Land", stroke_width=4, font_size=20)
+    add_footer_to_drawing(fig_obj, "fig1_02", XFX, fig_width, fig_height, XMX)
     return fig_obj
 
 
@@ -909,7 +958,8 @@ def get_wheel_fig1_03(face_title_str: str) -> Drawing:
     gomezs_str = "Gomezs"
     flores_str = "Fabelas"
     fig_width = 800
-    fig_obj = get_standard_drawing(fig_width, 550)
+    fig_height = 550
+    fig_obj = get_standard_drawing(fig_width, fig_height)
     trapunits = [
         TrapeziodUnit(170, 160, 100, flores_str, 72),
         TrapeziodUnit(140, 240, 150, gomezs_str, 72),
@@ -925,6 +975,7 @@ def get_wheel_fig1_03(face_title_str: str) -> Drawing:
     desc_str = f"""{gomezs_str} is lifted up because {flores_str} thinks things will be better"""
     add_title_to_drawing(fig_obj, desc_str, 20, fig_width, 50)
     draw_land(fig_obj, 75, 410, 650, "Land", stroke_width=4, font_size=20)
+    add_footer_to_drawing(fig_obj, "fig1_03", XFX, fig_width, fig_height, XMX)
     return fig_obj
 
 
@@ -939,7 +990,8 @@ def get_wheel_fig1_04(face_title_str: str) -> Drawing:
     fam08 = "F8"
     fam09 = "F9"
     fig_width = 600
-    fig_obj = get_standard_drawing(fig_width, 400)
+    fig_height = 400
+    fig_obj = get_standard_drawing(fig_width, fig_height)
     trapunits = [
         TrapeziodUnit(230, 90, 100, fam01, 50),
         TrapeziodUnit(200, 150, 80, fam02, 50),
@@ -956,36 +1008,61 @@ def get_wheel_fig1_04(face_title_str: str) -> Drawing:
     desc_str = """F1 is lifted up by F2, F3. Doesn't know the rest."""
     add_title_to_drawing(fig_obj, desc_str, 20, fig_width, 50)
     draw_land(fig_obj, 75, 330, 410, "Land", stroke_width=4, font_size=20)
+    add_footer_to_drawing(fig_obj, "fig1_04", XFX, fig_width, fig_height, XMX)
     return fig_obj
 
 
 def get_wheel_fig1_05(face_title_str: str) -> Drawing:
     # TODO build fig
+    fig_width = 600
+    fig_height = 250
+    fig_obj = get_standard_drawing(fig_width, fig_height)
+    add_footer_to_drawing(fig_obj, "fig1_05", XFX, fig_width, fig_height, XMX)
     return get_standard_drawing(600, 250)
 
 
 def get_wheel_fig1_06(face_title_str: str) -> Drawing:
     # TODO build fig
+    fig_width = 600
+    fig_height = 250
+    fig_obj = get_standard_drawing(fig_width, fig_height)
+    add_footer_to_drawing(fig_obj, "fig1_06", XFX, fig_width, fig_height, XMX)
     return get_standard_drawing(600, 250)
 
 
 def get_wheel_fig1_07(face_title_str: str) -> Drawing:
     # TODO build fig
+    fig_width = 600
+    fig_height = 250
+    fig_obj = get_standard_drawing(fig_width, fig_height)
+    add_footer_to_drawing(fig_obj, "fig1_07", XFX, fig_width, fig_height, XMX)
     return get_standard_drawing(600, 250)
 
 
 def get_wheel_fig1_08(face_title_str: str) -> Drawing:
     # TODO build fig
+    fig_width = 600
+    fig_height = 250
+    fig_obj = get_standard_drawing(fig_width, fig_height)
+    add_footer_to_drawing(fig_obj, "fig1_08", XFX, fig_width, fig_height, XMX)
     return get_standard_drawing(600, 250)
 
 
 def get_wheel_fig1_09(face_title_str: str) -> Drawing:
     # TODO build fig
+    fig_width = 600
+    fig_height = 250
+    fig_obj = get_standard_drawing(fig_width, fig_height)
+    add_footer_to_drawing(fig_obj, "fig1_09", XFX, fig_width, fig_height, XMX)
     return get_standard_drawing(600, 250)
 
 
 def get_wheel_fig1_10(face_title_str: str) -> Drawing:
     # TODO build fig
+    fig_width = 600
+    fig_height = 250
+    fig_obj = get_standard_drawing(fig_width, fig_height)
+    add_footer_to_drawing(fig_obj, "fig1_10", XFX, fig_width, fig_height, XMX)
     return get_standard_drawing(600, 250)
 
 

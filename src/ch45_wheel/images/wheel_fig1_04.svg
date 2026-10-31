@@ -26,4 +26,5 @@
 <text x="300.0" y="70" font-size="20" fill="black" font-weight="bold" text-anchor="middle" dominant-baseline="central">F1 is lifted up by F2, F3. Doesn't know the rest.</text>
 <path d="M75,330 L485,330" stroke="black" stroke-width="4" />
 <text x="280.0" y="356" font-size="20" text-anchor="middle" dominant-baseline="central">Land</text>
+<text x="580" y="380" font-size="12" text-anchor="end" fill="black">fig1_04</text>
 </svg>

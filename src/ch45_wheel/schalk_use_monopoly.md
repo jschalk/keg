@@ -25,7 +25,7 @@ Using money is one thing most everyone knows how do. Creating/managing a money s
 #### Play a game of Monopoly
 </div>
 
-Play Monopoly and give attention to the money supply. The Game of Monopoly is great. It's clean simple fun. It shows how monopolies work. People have been playing for almost 100 years. Generations have played it. And it's a common accepted practice that household set their own rules their way. If you've played Monopoly before just do everything like you did before. If it's your first game just get the [game pieces](monopoly_parts.md) and follow the [rules](monopoly_rules.md) loosely and have fun. 
+Play Monopoly and give attention to the money supply. The Game of Monopoly is great. It's clean simple fun. It shows how monopolies work. People have been playing for almost 100 years. Generations have played it. And it's a common accepted practice that household set their own rules their way. If you've played Monopoly before just do everything like you did before. If it's your first game just get the [game pieces](../ch44_spring/monopoly_parts.md) and follow the [rules](../ch44_spring/monopoly_rules.md) loosely and have fun. 
 
 <div align="center">
 
