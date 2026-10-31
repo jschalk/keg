@@ -30,7 +30,7 @@ def create_chapter_files(chapter_dict: dict) -> None:
     ref_ai_summary_1min_path = ref_dir / f"ch{chapter_number:02}_ai_summary_1min.md"
     ref_ai_summary_1min_path.write_text("", encoding="utf-8")
     ref_ch_json_path = ref_dir / f"ch{chapter_number:02}_ref.json"
-    chapter_dict["chapter_description"] = f"ch{chapter_number}_{chapter_name}"
+    chapter_dict["chapter_description"] = f"ch{chapter_number:02}_{chapter_name}"
     chapter_dict.pop("src_dir")
     ref_ch_json_path.write_text(json_dumps(chapter_dict, indent=2), encoding="utf-8")
     ref_semantic_types_path = ref_dir / f"ch{chapter_number:02}_semantic_types.py"

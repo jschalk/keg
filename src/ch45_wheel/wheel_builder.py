@@ -900,7 +900,7 @@ def get_wheel_fig1_00(face_title_str: str) -> Drawing:
     draw_trapezoid_stack(fig_obj, trapunits)
     add_title_to_drawing(fig_obj, face_title_str, 30, fig_width, 10)
     draw_land(fig_obj, 75, 180, 450, "Land", stroke_width=4, font_size=20)
-    add_footer_to_drawing(fig_obj, "fig0_9", XFX, fig_width, fig_height, XMX)
+    add_footer_to_drawing(fig_obj, "fig1_00", XFX, fig_width, fig_height, XMX)
     return fig_obj
 
 
@@ -1018,7 +1018,7 @@ def get_wheel_fig1_05(face_title_str: str) -> Drawing:
     fig_height = 250
     fig_obj = get_standard_drawing(fig_width, fig_height)
     add_footer_to_drawing(fig_obj, "fig1_05", XFX, fig_width, fig_height, XMX)
-    return get_standard_drawing(600, 250)
+    return fig_obj
 
 
 def get_wheel_fig1_06(face_title_str: str) -> Drawing:
@@ -1027,7 +1027,7 @@ def get_wheel_fig1_06(face_title_str: str) -> Drawing:
     fig_height = 250
     fig_obj = get_standard_drawing(fig_width, fig_height)
     add_footer_to_drawing(fig_obj, "fig1_06", XFX, fig_width, fig_height, XMX)
-    return get_standard_drawing(600, 250)
+    return fig_obj
 
 
 def get_wheel_fig1_07(face_title_str: str) -> Drawing:
@@ -1036,7 +1036,7 @@ def get_wheel_fig1_07(face_title_str: str) -> Drawing:
     fig_height = 250
     fig_obj = get_standard_drawing(fig_width, fig_height)
     add_footer_to_drawing(fig_obj, "fig1_07", XFX, fig_width, fig_height, XMX)
-    return get_standard_drawing(600, 250)
+    return fig_obj
 
 
 def get_wheel_fig1_08(face_title_str: str) -> Drawing:
@@ -1045,7 +1045,7 @@ def get_wheel_fig1_08(face_title_str: str) -> Drawing:
     fig_height = 250
     fig_obj = get_standard_drawing(fig_width, fig_height)
     add_footer_to_drawing(fig_obj, "fig1_08", XFX, fig_width, fig_height, XMX)
-    return get_standard_drawing(600, 250)
+    return fig_obj
 
 
 def get_wheel_fig1_09(face_title_str: str) -> Drawing:
@@ -1054,7 +1054,7 @@ def get_wheel_fig1_09(face_title_str: str) -> Drawing:
     fig_height = 250
     fig_obj = get_standard_drawing(fig_width, fig_height)
     add_footer_to_drawing(fig_obj, "fig1_09", XFX, fig_width, fig_height, XMX)
-    return get_standard_drawing(600, 250)
+    return fig_obj
 
 
 def get_wheel_fig1_10(face_title_str: str) -> Drawing:
@@ -1063,7 +1063,7 @@ def get_wheel_fig1_10(face_title_str: str) -> Drawing:
     fig_height = 250
     fig_obj = get_standard_drawing(fig_width, fig_height)
     add_footer_to_drawing(fig_obj, "fig1_10", XFX, fig_width, fig_height, XMX)
-    return get_standard_drawing(600, 250)
+    return fig_obj
 
 
 def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
