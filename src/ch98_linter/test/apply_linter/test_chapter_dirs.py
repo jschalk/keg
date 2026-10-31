@@ -118,9 +118,10 @@ def test_Chapters_ReferenceDir_ref_ExistsForEveryChapter_Scenario0():
         chapter_blurb_str = "chapter_blurb"
         chapter_number_str = "chapter_number"
         chapter_content_str = "chapter_content"
+        chapter_md_required_str = "chapter_md_required"
         ontology_str = "ontology summary"
         keys_assertion_fail_str = f"ref json for {chapter_desc} missing required key(s)"
-        expected_ref_keys = {
+        required_ref_keys = {
             chapter_blurb_str,
             chapter_description_str,
             chapter_number_str,
@@ -128,7 +129,20 @@ def test_Chapters_ReferenceDir_ref_ExistsForEveryChapter_Scenario0():
             ontology_str,
             catalogue_yn,
         }
-        assert ref_keys == expected_ref_keys, keys_assertion_fail_str
+        # print(f"{required_ref_keys=}")
+        assert required_ref_keys.issubset(ref_keys), keys_assertion_fail_str
+        allowed_ref_keys = {
+            chapter_blurb_str,
+            chapter_description_str,
+            chapter_number_str,
+            chapter_content_str,
+            ontology_str,
+            catalogue_yn,
+            chapter_md_required_str,
+        }
+        # print(f"{required_ref_keys=}")
+        keys_assertion_fail2_str = f"{chapter_desc} ref has non-allowed keys"
+        assert ref_keys.issubset(allowed_ref_keys), keys_assertion_fail2_str
         assert chapter_ref_dict.get(chapter_description_str) == chapter_desc
         ref_chapter_blurb = chapter_ref_dict.get(chapter_blurb_str)
         MAX_CHAPTER_BLURB_LENGTH = 88  # arbitrarily choosen
@@ -139,7 +153,7 @@ def test_Chapters_ReferenceDir_ref_ExistsForEveryChapter_Scenario0():
             f"{chapter_desc} {ontology_str} str value is empty"
         )
         ontology_summary = chapter_ref_dict.get(ontology_str)
-        print(f"{ontology_summary=}")
+        # print(f"{ontology_summary=}")
         assert ontology_summary, ontology_assertion_fail_str
         ref_chapter_content = chapter_ref_dict.get(chapter_content_str)
         content_assertion_fail_str = f"{chapter_desc} {chapter_content_str} is invalid"

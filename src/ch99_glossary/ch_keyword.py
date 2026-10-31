@@ -4495,8 +4495,6 @@ class Ch98Keywords(str, Enum):
     ch23 = "ch23"
     ch32 = "ch32"
     ch38 = "ch38"
-    ch44 = "ch44"
-    ch45 = "ch45"
     ch54 = "ch54"
     ch97 = "ch97"
     ch98 = "ch98"
