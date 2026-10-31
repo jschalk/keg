@@ -261,6 +261,23 @@ def test_SpecialBuild_get_keywords_src_config(rebuild_keyword_src):
         return
     old_keywords_dict = get_keywords_src_config()
     expected_ch_config = get_expected_ch_config()
+    expected_valid_chs = sum(
+        len(item["valid_ch"].split(","))
+        for item in expected_ch_config.values()
+        if item.get("valid_ch")
+    )
+    old_valid_chs = sum(
+        len(item["valid_ch"].split(","))
+        for item in old_keywords_dict.values()
+        if item.get("valid_ch")
+    )
+    valid_chs_diff = expected_valid_chs - old_valid_chs
+    if valid_chs_diff > 0:
+        print(f"added {valid_chs_diff} valid_chs")
+    elif valid_chs_diff < 0:
+        print(f"valid_chs reduced by {valid_chs_diff}")
+    else:
+        print(f"no valid_chs change {expected_valid_chs} v {old_valid_chs}")
     # for keyword_str, keyword_chs in expected_ch_config.items():
     #     print(f"{keyword_str}: '{keyword_chs}'")
     src_keywords_src_path = create_src_keywords_src_path("src")

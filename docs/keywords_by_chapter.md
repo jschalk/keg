@@ -37,7 +37,7 @@
 - ch36_news: News, ch36, news
 - ch38_article: Article, article, ch38
 - ch39_levinas: American, God, Home, Infinity, Pillar, Totality, Water, bearing, ch39, god, grateful, gravity, home, hose, infinity, invite, land, power, totality, water, welcome
-- ch40_kazani: Faction, Hayek, Hobbit, Kronos, Land, Lord, Loyal, Ride, Shill, Soil, ch40, ch98, cow, faction, hive, honor, impression, invitation, knee, kronosmax, ladder, lord, losing, loyal, oil, pay, prestige, ride, rival, shill, soil, trash, trooper, winner, winning
+- ch40_kazani: Faction, Hayek, Hobbit, Kronos, Land, Lord, Loyal, Ride, Shill, Soil, ch40, cow, faction, hive, honor, impression, invitation, knee, kronosmax, ladder, lord, losing, loyal, oil, pay, prestige, ride, rival, shill, soil, trash, trooper, winner, winning
 - ch41_pop_phil: ch41
 - ch44_spring: Kegology, Monopoly, Rise, Shot, Winning, ch44, climb, discipline, drag, heart, jump, kegology, pump, revenge, shot, soldier
 - ch45_wheel: Climb, Discipline, Fall, Honor, KegWheel, Losing, Pay, Prestige, Stable, Welcome, Wheel, alien, ch45, cling, fall, kneeler, lift, linchpin, loser, pillar, stable, valor, wheel, wheelers
@@ -45,5 +45,5 @@
 - ch90_puncher_app: Puncher, Team, ch90, puncher, team
 - ch96_exam: ch96
 - ch97_docs_builder: ch97
-- ch98_linter: 
+- ch98_linter: ch98
 - ch99_glossary: 

@@ -267,33 +267,3 @@ def test_get_articleunit_from_file_ReturnsObj_Scenario2_OutOfOrder(temp3_dir):
     assert x_articleunit.missing_required == ""
     assert x_articleunit.out_of_order_req_index == 2
     assert x_articleunit.out_of_order_req_str == "**Source:** is out of order."
-
-
-def test_CurrentMarkDownFilesHaveRequiredStrings():
-    # check_all_test_functions_are_formatted(all_test_functions)
-    # ESTABLISH
-    current_ch_dir = Path(__file__).resolve().parent.parent
-    author_str = "**Author:**"
-    date_str = "**Date:**"
-    source_str = "**Source:**"
-    copied_str = "**Copied to Keg:**"
-    required_strings = [author_str, date_str, source_str, copied_str]
-
-    # WHEN / THEN
-    for md_file_path in sorted(current_ch_dir.glob("*.md")):
-        print(f"{md_file_path=}")
-        md_articleunit = get_articleunit_from_file(md_file_path, required_strings)
-        assert not md_articleunit.missing_required, md_file_path
-        assert not md_articleunit.out_of_order_req_str, md_file_path
-        # content_str = md_file_path.read_text(encoding="utf-8")
-        # str_loc_dict = get_snippets_locations_dict(content_str, required_strings)
-        # for required_str in required_strings:
-        #     assertion_failure_str = f"{md_file_path} is missing {required_str!r}"
-        #     assert str_loc_dict.get(required_str), assertion_failure_str
-        # author_line = str_loc_dict.get(author_str)[0][0]
-        # date_line = str_loc_dict.get(date_str)[0][0]
-        # source_line = str_loc_dict.get(source_str)[0][0]
-        # copied_line = str_loc_dict.get(copied_str)[0][0]
-        # assert author_line > date_line, md_file_path
-        # assert source_line > author_line, md_file_path
-        # assert copied_line > source_line, md_file_path

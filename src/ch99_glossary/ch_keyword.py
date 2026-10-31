@@ -3888,7 +3888,6 @@ class Ch39Keywords(str, Enum):
     begin = "begin"
     border = "border"
     cases = "cases"
-    ch38 = "ch38"
     ch39 = "ch39"
     close = "close"
     day = "day"
@@ -3961,9 +3960,7 @@ class Ch40Keywords(str, Enum):
     begin = "begin"
     brick = "brick"
     cases = "cases"
-    ch38 = "ch38"
     ch40 = "ch40"
-    ch98 = "ch98"
     close = "close"
     contacts = "contacts"
     cow = "cow"
@@ -4033,8 +4030,6 @@ class Ch40Keywords(str, Enum):
 
 
 class Ch41Keywords(str, Enum):
-    article = "article"
-    ch38 = "ch38"
     ch41 = "ch41"
     deal = "deal"
     god = "god"
@@ -4484,6 +4479,7 @@ class Ch97Keywords(str, Enum):
 class Ch98Keywords(str, Enum):
     Keyword = "Keyword"
     Nabu = "Nabu"
+    article = "article"
     aux = "aux"
     aux_knot = "aux_knot"
     bk = "bk"
@@ -4498,6 +4494,9 @@ class Ch98Keywords(str, Enum):
     ch22 = "ch22"
     ch23 = "ch23"
     ch32 = "ch32"
+    ch38 = "ch38"
+    ch44 = "ch44"
+    ch45 = "ch45"
     ch54 = "ch54"
     ch97 = "ch97"
     ch98 = "ch98"
