@@ -14,6 +14,8 @@
 
 **[No seriously, I don't give a fuck.](./schalk_2010_purpose.md)** Emmanuel Schalk - 2010-09-08<br>
 
+**[On Systems of Thought and Apocalypes](./schalk_on_systems_and_apocalypses.md)** Emmanuel Schalk - 2026-11-03<br>
+
 **[On Tubes](./schalk_on_tubes.md)** Emmanuel Schalk - 2026-09-29<br>
 
 **[On Writing Slogans or Lectures or Books](./schalk_postage_to_phd.md)** Emmanuel Schalk - 2026-06-14<br>
