@@ -1,4 +1,7 @@
-from ch98_linter.ch_move1 import replace_string_in_csv, replace_valid_ch
+from ch98_linter.ch_move_single_script import (
+    replace_string_in_csv,
+    replace_valid_ch,
+)
 from copy import deepcopy as copy_deepcopy
 
 

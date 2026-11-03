@@ -1,4 +1,4 @@
-from ch98_linter.ch_move1 import move_chapters_given_ints
+from ch98_linter.ch_move_single_script import move_chapters_given_ints
 from time import sleep as time_sleep
 
 # HOW TO USE:

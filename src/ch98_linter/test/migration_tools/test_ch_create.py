@@ -1,5 +1,5 @@
 from ch00_py.file_toolbox import open_json
-from ch98_linter.chapter_create_tool import create_chapter_files
+from ch98_linter.ch_create_script import create_chapter_files
 from os.path import exists as os_path_exists
 from pytest import raises as pytest_raises
 

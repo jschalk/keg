@@ -44,11 +44,11 @@ def test_Chapters_NonTestFilesDoNotHavePrintStatments():
     print_str = "print"
     excluded_files = {
         "puncher_app.py",
-        "chapter_move_tool.py",
-        "ch_move1.py",
-        "ch_move_many.py",
-        "create_notebook.py",
-        "src_paths_rename.py",
+        "ch_move_tool.py",
+        "ch_move_single_script.py",
+        "ch_move_many_script.py",
+        "create_notebook_script.py",
+        "src_paths_rename_script.py",
         "style.py",
     }
 

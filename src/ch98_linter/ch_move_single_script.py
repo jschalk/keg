@@ -4,7 +4,7 @@ from ch01_keyword.keyword_class_builder import (
     get_keywords_src_config,
 )
 from ch97_docs_builder.glossary_ranking import create_keg_exam_questions_path
-from ch98_linter.chapter_move_tool import (
+from ch98_linter.ch_move_tool import (
     delete_if_empty_or_pycache_only,
     first_level_dirs_with_prefix,
     rename_files_and_dirs_4times,
