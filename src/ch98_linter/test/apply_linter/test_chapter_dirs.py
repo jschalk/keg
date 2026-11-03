@@ -1,4 +1,4 @@
-from ch00_py.file_toolbox import create_path, get_level1_dirs, open_json, save_json
+from ch00_py.file_toolbox import create_path, get_level1_dirs, open_json
 from ch01_keyword.chapter_desc_main import get_chapter_desc_str_number
 from ch97_docs_builder.doc_builder import get_chapter_desc_prefix
 from ch98_linter.style import (
@@ -49,6 +49,7 @@ def test_Chapters_NonTestFilesDoNotHavePrintStatments():
         "ch_move_many_script.py",
         "create_notebook_script.py",
         "src_paths_rename_script.py",
+        "line_counter_script.py",
         "style.py",
     }
 
