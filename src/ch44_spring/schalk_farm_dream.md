@@ -17,7 +17,7 @@ Makes sense after what happened this morning. That'll end your childhood right q
 
 So you want to be a man? Ok then I won't have to ask you. 
 
-Today we're in this together. I'm leading right now but tomorrow it could be you. You need to learn everything and be willing to do it. And an army of a fever could take me over the winder and then it'll be you, your aunts and maybe William in case he decides to be a man. 
+Today we're in this together. I'm leading right now but tomorrow it could be you. You need to learn everything and be willing to do it. And an army or a fever could take me over the winter and then it'll be you, your aunts and maybe William in case he decides to be a man. 
 
 Water, Foot, Shelter. We're in a race now. Winter is coming and the armies are coming and when the armies are cold, hungry they forage. You know that word? A general sits in a warm tent drinking wine by a fine fire and hears "the men need supplies". The general says "Send out foraging parties" Then straving half naked bands of 20 men come to this farm to take everything they can. They eat the food, tear down the house for firewood, rape the women and the boys and us if it interests them. Take us away to be irregulars in their army. If we're lucky they'll take only me. 
 
@@ -37,7 +37,7 @@ The house will be gone and broken by the end of winter. We're going to make it l
 
 This will be a lot of work. And we need to do it on little food. You're not Casey anymore. You're Casefield. Don't let anyone call you your old name. 
 
-You'll need a wife. You're only 14 but you'll need a wife for all the trails ahead. Probably Iona, she's older than you and she's not a fool. We'll talk to her father. 
+You'll need a wife. You're only 14 but you'll need a wife for all the trials ahead. Probably Iona, she's older than you and she's not a fool. We'll talk to her father. 
 
 You'll need to get close to God. Ask Him for guidance and protection. I am a wise, logical, learned man. Wisdom has been my obsession my whole life. But we will make mistakes. Those we love will die. Without God we will not have strength. I'm going to give you everything I have. But you'll need God. If I can point you to him you will save this family. Even if I die. You will. 
 
