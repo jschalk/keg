@@ -42,6 +42,7 @@
 - ch44_spring: Kegology, Monopoly, Rise, Shot, Winning, ch44, climb, discipline, drag, heart, jump, kegology, pump, revenge, shot, soldier
 - ch45_wheel: Climb, Discipline, Fall, Honor, KegWheel, Losing, Pay, Prestige, Stable, Welcome, Wheel, alien, ch45, cling, fall, kneeler, lift, linchpin, loser, pillar, stable, valor, wheel, wheelers
 - ch46_mirth: ch46
+- ch47_gab: ch47
 - ch54_fable: Purpil, ch54
 - ch90_puncher_app: Puncher, Team, ch90, puncher, team
 - ch96_exam: ch96

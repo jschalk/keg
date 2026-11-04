@@ -4240,6 +4240,14 @@ class Ch46Keywords(str, Enum):
         return self.value
 
 
+class Ch47Keywords(str, Enum):
+    ch47 = "ch47"
+    hive = "hive"
+
+    def __str__(self):
+        return self.value
+
+
 class Ch54Keywords(str, Enum):
     God = "God"
     Purpil = "Purpil"
