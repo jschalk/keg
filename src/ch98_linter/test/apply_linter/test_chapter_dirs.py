@@ -37,11 +37,10 @@ def test_Chapters_test_Tests_AreInCorrectDirStructure():
                 assert level1_dir == test_str
 
 
-def test_Chapters_NonTestFilesDoNotHavePrintStatments():
+def test_Chapters_NonTestPythonFilesDoNotHavePrintOrAssertStrs():
     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
-    # TODO consider replaceing "print" with not-allowed-strings and include " assert "
     # ESTABLISH
-    print_str = "print"
+    not_allowed_strs = {"print", "assert"}
     excluded_files = {
         "puncher_app.py",
         "ch_create_script.py",
@@ -59,15 +58,18 @@ def test_Chapters_NonTestFilesDoNotHavePrintStatments():
         py_files = [f for f in os_listdir(chapter_dir) if f.endswith(".py")]
         for py_file in py_files:
             py_file_path = create_path(chapter_dir, py_file)
-            py_file_str = open(py_file_path, encoding="utf-8").read()
-            print_str_in_py_file_bool = print_str in py_file_str
-            for excluded_file in excluded_files:
-                if excluded_file in py_file_path:
-                    print_str_in_py_file_bool = False
-            assertion_fail_str = (
-                f"Chapter {chapter_desc} file {py_file_path} has print statement"
-            )
-            assert not print_str_in_py_file_bool, assertion_fail_str
+            is_excluded_file = any(file in py_file_path for file in excluded_files)
+            if not is_excluded_file:
+                py_file_str = open(py_file_path, encoding="utf-8").read()
+                print_str_in_py_file_bool = False
+                for not_allowed_str in not_allowed_strs:
+                    print_str_in_py_file_bool = not_allowed_str in py_file_str
+                if print_str_in_py_file_bool:
+                    print(f"{not_allowed_str=} {py_file=}")
+                assertion_fail_str = (
+                    f"Chapter {chapter_desc} file {py_file_path} has print statement"
+                )
+                assert not print_str_in_py_file_bool, assertion_fail_str
 
 
 def test_Chapters_NonTestFilesDoNotHaveStringFunctionsImports():
