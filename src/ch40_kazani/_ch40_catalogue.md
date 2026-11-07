@@ -1,7 +1,5 @@
 # Table of Contents
 
-**[Document Title](./essay_template.md)** Author Name - YYYY-MM-DD<br>
-
 **[Ellery Stowell Schalk](./hacket_ellery_schalk_obit.md)** David Hackett - 1997-10-01<br>
 
 **[Against the internet Sept26](./lipsky_against_the_internet.md)** David Lipsky - 2015<br>

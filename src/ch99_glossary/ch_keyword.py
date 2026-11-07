@@ -3863,6 +3863,7 @@ class Ch38Keywords(str, Enum):
     article = "article"
     ch00 = "ch00"
     ch38 = "ch38"
+    src = "src"
 
     def __str__(self):
         return self.value
