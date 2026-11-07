@@ -4059,6 +4059,7 @@ class Ch44Keywords(str, Enum):
     Simon = "Simon"
     Water = "Water"
     Winning = "Winning"
+    Winter = "Winter"
     article = "article"
     audie = "audie"
     begin = "begin"
@@ -4111,6 +4112,7 @@ class Ch44Keywords(str, Enum):
     water = "water"
     welcome = "welcome"
     winner = "winner"
+    winter = "winter"
     year = "year"
 
     def __str__(self):

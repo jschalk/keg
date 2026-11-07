@@ -893,6 +893,7 @@ Monopoly,0,"44, 45, 46, 90"
 Rise,0,44
 Shot,0,44
 Winning,0,"44, 45"
+Winter,0,44
 climb,0,"44, 45"
 discipline,0,"44, 46"
 drag,0,"44, 45"
@@ -903,6 +904,7 @@ pump,0,44
 revenge,0,"44, 45"
 shot,0,44
 soldier,0,44
+winter,0,44
 Climb,0,45
 Discipline,0,"45, 46"
 Fall,0,45
