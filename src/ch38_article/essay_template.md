@@ -11,13 +11,13 @@ One-line tagline
 
 First paragraph. 
 
-<div align="center"><img src="images/guillotine_mob.webp" alt="Description of image" width="300"></div>
+<div align="center"><img src="images/arrow.png" alt="Description of image" width="300"></div>
 
 Paragraph with footnote.[^1] Can continue paragraph
 
 Another paragraph.
 
-<div align="center"><img src="images/a_b_venn_diagram.webp" alt="A venn diagram of A and B" width="700"></div>
+<div align="center"><img src="images/miner_logo.jpg" alt="UTEP Mascot logo" width="700"></div>
 
 
 Another paragraph and then a longer quote.
