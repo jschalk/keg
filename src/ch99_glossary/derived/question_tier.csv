@@ -35,6 +35,7 @@ Rider,10,
 Rival,10,
 Scaffold,10,
 Soldier,10,
+Spring,10,
 Stilt,10,
 Target,10,
 Tower,10,
@@ -906,6 +907,7 @@ pump,0,44
 revenge,0,"44, 45"
 shot,0,44
 soldier,0,44
+spring,0,"44, 45, 46"
 winter,0,44
 Climb,0,45
 Discipline,0,"45, 46"
