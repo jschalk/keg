@@ -239,7 +239,7 @@ These are the mechanics of the the KegWheel. Next part will address what it's go
 
 ## Footnotes
 
-[^1]: [Historian Ellery Schalk Obituary](../ch40_kazani/hacket_ellery_schalk_obit.md)
+[^1]: [Historian Ellery Schalk Obituary](../ch44_spring/hacket_ellery_schalk_obit.md)
 
 [^2]: Reality is infinitely complex. Any model of reality will be wrong. But some models are better than others. KegWheel Theory is a model of understanding power and predicting how to affect change. 
 

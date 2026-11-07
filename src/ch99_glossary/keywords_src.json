@@ -116,7 +116,7 @@
     "valid_ch": "3, 5, 8, 9, 10, 15, 17, 18, 20, 22, 25, 26, 97"
   }, 
   "News": {"valid_ch": "36"}, 
-  "Ninon": {"valid_ch": "14, 23, 40"}, 
+  "Ninon": {"valid_ch": "14, 23, 44"}, 
   "Obama": {"valid_ch": "14, 23, 40, 44, 45"}, 
   "Oil": {"valid_ch": ""}, 
   "Palm": {"valid_ch": ""}, 
@@ -581,7 +581,7 @@
   "heard_vld": {"valid_ch": "22, 26, 32"}, 
   "heart": {"valid_ch": "44"}, 
   "herd": {"valid_ch": ""}, 
-  "hive": {"valid_ch": "40, 47"}, 
+  "hive": {"valid_ch": "40, 44, 47"}, 
   "home": {"valid_ch": "39, 40, 44, 45, 54, 90"}, 
   "honor": {"valid_ch": "40, 45"}, 
   "hose": {"valid_ch": "39, 40, 44, 54"}, 

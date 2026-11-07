@@ -1,7 +1,5 @@
 # Table of Contents
 
-**[Ellery Stowell Schalk](./hacket_ellery_schalk_obit.md)** David Hackett - 1997-10-01<br>
-
 **[Against the internet Sept26](./lipsky_against_the_internet.md)** David Lipsky - 2015<br>
 
 **[The Psychology of Conservatism: Why Do People Keep Voting for Republicans?](./ash_psychology_of_conservatism.md)** Dr. Ash? - 2026-09-13<br>

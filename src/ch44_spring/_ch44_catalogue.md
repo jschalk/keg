@@ -1,5 +1,7 @@
 # Table of Contents
 
+**[Ellery Stowell Schalk](./hacket_ellery_schalk_obit.md)** David Hackett - 1997-10-01<br>
+
 **[A kind of death](./schalk_a_kind_of_death.md)** Emmanuel Schalk - 2026-10-05<br>
 
 **[All the Monolopy Game required parts](./monopoly_parts.md)** Emmanuel Schalk - 2026-06-21<br>
