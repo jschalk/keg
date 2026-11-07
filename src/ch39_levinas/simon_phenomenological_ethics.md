@@ -2,7 +2,7 @@
 
 **Author:** Jules Simon<br>
 **Date:** 2014-5-9<br>
-**Source:** Handout distributed during Spring 2014 Levinas course at University Texas El Paso.<br>
+**Source:** Handout distributed during Spr 2014 Levinas course at University Texas El Paso.<br>
 **Copied to Keg:** 2026-08-14 <br>
 **Note:** This was a unpublished working document, very useful for seeing how great philosophical concepts are developed.<br>
 

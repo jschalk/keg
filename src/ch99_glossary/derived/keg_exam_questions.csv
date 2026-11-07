@@ -320,6 +320,7 @@ Did you read that the keyword_definition of 'reasonheirs' is 'Definition needed.
 Did you read that the keyword_definition of 'ManaGrain' is 'float first used in ch08. Smallest Unit of Mana.'.
 Did you read that the keyword_definition of 'PersonName' is 'str first used in ch08. The LabelTerm used to identify a PersonUnit. Must be a LabelTerm/NameTerm because when identifying if a PlanUnit is an active pledge the PersonName will be compared against ContactNames. If they match the pledge will be active.'.
 Did you read that the keyword_definition of 'PersonUnit' is 'Definition needed.'.
+Did you read that the keyword_definition of 'Summer' is 'The best of times. When we get to play.'.
 "Did you read that the keyword_definition of 'ancestors' is ', used with Budget Cells'."
 Did you read that the keyword_definition of 'calc_by_thinkout' is 'Describes when data is defined by thinkout process. Not required seed data.'.
 "Did you read that the keyword_definition of 'contact_mandate_ledger' is ', used with Budget Cells'."
@@ -370,6 +371,7 @@ Did you read that the keyword_definition of 'prnunit' is 'abbv for personunit'.
 "Did you read that the keyword_definition of 'reason_contexts' is ', used with Budget Cells'."
 Did you read that the keyword_definition of 'sqlite_datatype' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'sum_healerunit_plans_fund_total' is ', Person thinkout'."
+Did you read that the keyword_definition of 'summer' is 'The best of times. When we get to play.'.
 Did you read that the keyword_definition of 'CRUD_command' is 'str first used in ch09 that represents database CRUD commands'.
 Did you read that the keyword_definition of 'DELETE' is 'CRUD_COMMAND to delete records for a table'.
 Did you read that the keyword_definition of 'INSERT' is 'CRUD_COMMAND to delete records for a table'.

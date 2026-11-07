@@ -169,6 +169,7 @@
   "Speech": {"valid_ch": "18"}, 
   "Stable": {"valid_ch": "45"}, 
   "Stilt": {"valid_ch": ""}, 
+  "Summer": {"valid_ch": "8, 35"}, 
   "Target": {"valid_ch": ""}, 
   "Team": {"valid_ch": "90"}, 
   "TimeNum": {
@@ -1015,6 +1016,7 @@
     "valid_ch": "7, 8, 9, 10, 14, 17, 18, 20, 22, 23, 26, 27, 33, 35, 90"
   }, 
   "sum_healerunit_plans_fund_total": {"sort_ordinal": 191, "valid_ch": "8, 20, 22, 27"}, 
+  "summer": {"valid_ch": "8, 44"}, 
   "swim": {"valid_ch": ""}, 
   "take_force": {
     "sort_ordinal": 136, 
