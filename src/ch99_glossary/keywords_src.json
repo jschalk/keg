@@ -675,7 +675,7 @@
   "labor_title_otx": {"sort_ordinal": 78, "valid_ch": "20, 22"}, 
   "laborheir": {"valid_ch": "4, 27"}, 
   "labors": {"valid_ch": "4, 7, 8, 10, 23, 27, 35"}, 
-  "ladder": {"valid_ch": "40, 44, 45"}, 
+  "ladder": {"valid_ch": "40, 45"}, 
   "land": {"valid_ch": "39, 40, 44, 45"}, 
   "lasso": {"valid_ch": "10, 11, 12, 15, 22, 26, 27, 30, 31, 32"}, 
   "last_lesson_id": {"valid_ch": "8, 10, 11"}, 

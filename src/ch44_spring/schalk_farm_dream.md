@@ -23,7 +23,7 @@ Water, Foot, Shelter. We're in a race now. Winter is coming and the armies are c
 
 Here's what we're going to do - We're going to get the rest of the family through this. This winter and the next until the warring ends. Anna, think of Anna, she's already reading and she's only 5. We're going to get her through this and she will not only be alive, but thriving curious and happy. 
 
-Water - We've got two sources: the well next to the house and the stream. During war armies will throw dead animals or men into wells to poison them. We need to widen the house well so that one of us can go down and get any carcasses out. We'll need a rope ladder and strong bucket rope. We'll dig out a dry cave hole in the south side of little hill to store them in. It's pretty far from the well but it's only going to be used when carcasses need to be removed. 
+Water - We've got two sources: the well next to the house and the stream. During war armies will throw dead animals or men into wells to poison them. We need to widen the house well so that one of us can go down and get any carcasses out. We'll need a footrope and strong bucket rope. We'll dig out a dry cave hole in the south side of little hill to store them in. It's pretty far from the well but it's only going to be used when carcasses need to be removed. 
 
 Lastly we're going to have to build a secret well in Mary's forest. It's rocky but we'll find a spot near the meadow. Which we won't farm on anymore.
 

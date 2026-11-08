@@ -4092,7 +4092,6 @@ class Ch44Keywords(str, Enum):
     jump = "jump"
     kegology = "kegology"
     knee = "knee"
-    ladder = "ladder"
     land = "land"
     losing = "losing"
     moment = "moment"
