@@ -11,6 +11,8 @@ This article is not so much a logical argument as a rant. It is perfectly legiti
 
 ## Norman the Doorman
 
+<div align="center"><img src="../ch44_spring/images/norman_doorman.webp" alt="Screenshot of Norman the Doorman from an American TV show." width="50%"></div>
+
 A TV show in the United States once had a short comedy sketch where three people on a game show had to remember the names of celebrities and people in their life[^1]. The joke was that the contestants could easily remember 3rd and 4th tier celebrities but couldn't remember the people in their 'meatspace' lives. One of them even had a name that rhymed. 'Norman the Doorman'. 
 
 This sketch quickly and efficiently reminds me of one of my great shames: 
