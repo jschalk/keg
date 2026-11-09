@@ -32,6 +32,7 @@
   "Drift": {"valid_ch": ""}, 
   "Duck": {"valid_ch": ""}, 
   "Eastday": {"valid_ch": "14, 23"}, 
+  "Empire": {"valid_ch": "40"}, 
   "Epoch": {"valid_ch": "14, 15, 16, 31, 97"}, 
   "EpochLabel": {"semantic_type": "str", "valid_ch": "14, 16, 97"}, 
   "Event": {"valid_ch": "31, 40"}, 
@@ -143,6 +144,7 @@
   "Pyramid": {"valid_ch": ""}, 
   "Quorum": {"valid_ch": "14, 23"}, 
   "ReasonNum": {"semantic_type": "float", "valid_ch": "6, 7, 8, 9, 14, 16, 17, 18, 20, 97"}, 
+  "Republic": {"valid_ch": "40"}, 
   "RespectGrain": {"semantic_type": "float", "valid_ch": "3, 8, 15, 97"}, 
   "RespectNum": {"semantic_type": "float", "valid_ch": "3, 5, 8, 11, 13, 97"}, 
   "Revenge": {"valid_ch": ""}, 
@@ -439,6 +441,7 @@
   "drift": {"valid_ch": ""}, 
   "duck": {"valid_ch": "19"}, 
   "duration": {"valid_ch": "14, 39"}, 
+  "empire": {"valid_ch": "40"}, 
   "epoch": {
     "valid_ch": "14, 15, 16, 17, 18, 20, 22, 23, 26, 27, 30, 31, 32, 35, 39, 90, 97, 98"
   }, 
@@ -949,6 +952,7 @@
   "reason_upper_otx": {"sort_ordinal": 131, "valid_ch": "20, 22, 26"}, 
   "reasonheirs": {"valid_ch": "7, 8, 14, 27, 31, 35"}, 
   "reasonunits": {"valid_ch": "6, 7, 8, 10, 11, 14, 23, 35"}, 
+  "republic": {"valid_ch": "40, 45"}, 
   "request": {"valid_ch": "33, 44, 98"}, 
   "respect_grain": {
     "sort_ordinal": 139, 

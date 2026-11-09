@@ -858,6 +858,7 @@ power,0,"39, 40, 41, 44, 45"
 totality,0,39
 water,0,"39, 40, 44, 46"
 welcome,0,"39, 44, 45"
+Empire,0,40
 Faction,0,40
 Hayek,0,"40, 44"
 Hobbit,0,40
@@ -865,10 +866,12 @@ Kronos,0,40
 Land,0,"40, 44, 45"
 Lord,0,40
 Loyal,0,40
+Republic,0,40
 Ride,0,40
 Shill,0,40
 Soil,0,40
 cow,0,"40, 45"
+empire,0,40
 faction,0,40
 hive,0,"40, 44, 47"
 honor,0,"40, 45"
@@ -883,6 +886,7 @@ loyal,0,40
 oil,0,40
 pay,0,"40, 44, 45"
 prestige,0,"40, 45"
+republic,0,"40, 45"
 ride,0,"40, 44"
 rival,0,40
 shill,0,40
