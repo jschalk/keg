@@ -1,5 +1,5 @@
-from dataclasses import dataclass
 from ch00_py.file_toolbox import create_path, open_json
+from dataclasses import dataclass
 
 
 def get_promisebrick_filename() -> str:
