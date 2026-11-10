@@ -1,6 +1,6 @@
 import pytest
 from platform import system
-from pytest import mark as pytest_mark, Parser, Config, Item
+from pytest import Config, Item, Parser, mark as pytest_mark
 from sqlite3 import Cursor, connect as sqlite3_connect
 from typing import Any, Generator
 from uuid import uuid4

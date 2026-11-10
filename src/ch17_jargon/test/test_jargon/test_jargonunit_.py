@@ -4,12 +4,6 @@ from ch09_person_atom.atom_config import (
     get_atom_args_obj_types,
 )
 from ch15_moment.moment_config import get_moment_args_obj_types
-from ch17_jargon.map_term import (
-    labelmap_shop,
-    namemap_shop,
-    ropemap_shop,
-    titlemap_shop,
-)
 from ch17_jargon.jargon_config import (
     default_unknown_str_if_None,
     get_jargon_args_obj_types,
@@ -18,10 +12,16 @@ from ch17_jargon.jargon_config import (
     get_jargon_ropeterm_args,
     get_jargon_titleterm_args,
     get_jargonable_args,
-    set_jargonable_otx_inx_args,
     jargonable_obj_types,
+    set_jargonable_otx_inx_args,
 )
 from ch17_jargon.jargon_main import JargonUnit, jargonunit_shop
+from ch17_jargon.map_term import (
+    labelmap_shop,
+    namemap_shop,
+    ropemap_shop,
+    titlemap_shop,
+)
 from ch99_glossary.ch_keyword import Ch17Keywords as kw, ExampleStrs as exx
 
 

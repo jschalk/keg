@@ -1,12 +1,12 @@
 from ch00_py.file_toolbox import save_file
 from ch38_article.article_toolbox import (
-    get_snippets_locations_dict,
     ArticleUnit,
     get_articleunit_from_file,
     get_default_article_snippets_order,
+    get_snippets_locations_dict,
 )
-from pathlib import Path
 from os.path import join as os_path_join
+from pathlib import Path
 
 
 def test_get_snippets_locations_dict_ReturnsDict_Scenario01_SingleMatchSingleLine():

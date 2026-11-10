@@ -1,11 +1,11 @@
 from ch00_py.file_toolbox import create_path
 from ch17_jargon.jargon_config import get_jargon_config_dict
 from ch18_speech.speech_config import (
+    get_speech_args_dimen_mapping,
+    get_speech_column_ref,
+    get_speech_config_dict,
     get_speech_filename,
     speech_config_path,
-    get_speech_config_dict,
-    get_speech_column_ref,
-    get_speech_args_dimen_mapping,
 )
 from ch99_glossary.ch_keyword import Ch18Keywords as kw
 

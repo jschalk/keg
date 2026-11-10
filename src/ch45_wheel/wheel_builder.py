@@ -1,16 +1,15 @@
+from dataclasses import dataclass
 from drawsvg import (
-    Drawing,
-    Rectangle as drawsvg_Rectangle,
-    Lines as drawsvg_Lines,
-    Line as drawsvg_Line,
-    Text as drawsvg_Text,
-    Path as drawsvg_Path,
     Circle as drawsvg_Circle,
+    Drawing,
+    Line as drawsvg_Line,
+    Lines as drawsvg_Lines,
+    Path as drawsvg_Path,
+    Rectangle as drawsvg_Rectangle,
     Text as drawsvg_Text,
 )
-from math import cos as math_cos, sin as math_sin, pi as math_pi
+from math import cos as math_cos, pi as math_pi, sin as math_sin
 from pathlib import Path
-from dataclasses import dataclass
 
 
 def add_title_to_drawing(

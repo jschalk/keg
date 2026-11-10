@@ -1,4 +1,5 @@
 from ch03_contact._ref.ch03_semantic_types import (
+    BossMass,
     BreakTerm,
     ContactName,
     FundGrain,
@@ -10,7 +11,6 @@ from ch03_contact._ref.ch03_semantic_types import (
     RespectGrain,
     RespectNum,
     TitleTerm,
-    BossMass,
     TrustMass,
     default_groupmark_if_None,
 )

@@ -1,13 +1,13 @@
 from ch00_py.file_toolbox import create_path, get_dir_file_strs
+from ch17_jargon.jargon_main import jargonunit_shop
 from ch17_jargon.test._util.ch17_examples import (  # get_casa_maison_jargonunit_set_by_epoch,
-    get_casa_maison_label_dt,
-    get_casa_maison_rope_otx2inx_dt,
     get_casa_maison_jargonunit_set_by_label,
     get_casa_maison_jargonunit_set_by_otx2inx,
+    get_casa_maison_label_dt,
+    get_casa_maison_rope_otx2inx_dt,
     get_slash_namemap,
     get_sue_jargonunit,
 )
-from ch17_jargon.jargon_main import jargonunit_shop
 from ch20_brick.brick_db_tool import get_ordered_csv
 from ch20_brick.jargon_toolbox import (
     _load_labelmap_from_csv,

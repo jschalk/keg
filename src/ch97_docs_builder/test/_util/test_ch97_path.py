@@ -1,7 +1,7 @@
 from ch00_py.file_toolbox import create_path, get_json_filename
 from ch97_docs_builder._ref.ch97_path import (
-    create_chapter_ref_path,
     create_chapter_catalogue_path,
+    create_chapter_ref_path,
     create_keg_exam_questions_path,
     create_question_tier_path,
     create_src_keywords_definitions_path,

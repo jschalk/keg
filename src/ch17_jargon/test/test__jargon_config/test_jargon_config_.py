@@ -3,10 +3,10 @@ from ch17_jargon.jargon_config import (
     default_unknown_str,
     default_unknown_str_if_None,
     get_jargon_args_dimen_mapping,
+    get_jargon_column_ref,
     get_jargon_config_dict,
     get_jargon_dimens,
     get_jargon_filename,
-    get_jargon_column_ref,
     jargon_config_path,
 )
 from ch99_glossary.ch_keyword import Ch17Keywords as kw

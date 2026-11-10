@@ -1,5 +1,5 @@
-from ch17_jargon.map_term import ropemap_shop
 from ch17_jargon.jargon_main import jargonunit_shop
+from ch17_jargon.map_term import ropemap_shop
 from ch99_glossary.ch_keyword import ExampleStrs as exx
 from pytest import raises as pytest_raises
 

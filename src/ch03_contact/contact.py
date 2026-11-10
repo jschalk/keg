@@ -1,15 +1,15 @@
 from ch00_py.dict_toolbox import get_0_if_None, get_1_if_None
 from ch02_allot.allot import allot_scale, default_grain_num_if_None
 from ch03_contact._ref.ch03_semantic_types import (
+    BossMass,
     ContactName,
     FundNum,
     GroupMark,
     NameTerm,
     RespectGrain,
     RespectNum,
-    default_groupmark_if_None,
     TrustMass,
-    BossMass,
+    default_groupmark_if_None,
 )
 from ch03_contact.group import (
     GroupTitle,

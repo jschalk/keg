@@ -1,9 +1,9 @@
 from ch38_article.article_toolbox import (
-    get_snippets_locations_dict,
     get_articleunit_from_file,
+    get_snippets_locations_dict,
 )
+from os.path import exists as os_path_exists, join as os_path_join
 from pathlib import Path
-from os.path import join as os_path_join, exists as os_path_exists
 
 NARRATIVE_ARTICLES = {
     "schalk_wheel0_theory.md",

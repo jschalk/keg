@@ -8,12 +8,12 @@ from ch00_py.file_toolbox import (
     save_file,
     set_dir,
 )
-from ch17_jargon.map_term import MapCore
 from ch17_jargon.jargon_config import (
     get_jargon_args_obj_types,
     get_jargonable_args,
 )
 from ch17_jargon.jargon_main import JargonUnit, get_jargonunit_from_dict
+from ch17_jargon.map_term import MapCore
 from ch19_db_tool.db_toolbox import (
     create_table_from_columns,
     create_table_from_csv,

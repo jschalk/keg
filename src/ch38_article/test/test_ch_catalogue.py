@@ -1,10 +1,10 @@
 from ch00_py.file_toolbox import save_file
 from ch38_article.article_toolbox import (
-    get_markdown_file_metadata,
     create_markdown_table_of_contents,
+    get_markdown_file_metadata,
 )
-from os.path import join as os_path_join
 from os import makedirs as os_makedirs
+from os.path import join as os_path_join
 
 
 def test_get_markdown_file_metadata_ReturnsDict_Scenario0_EmptyDir(temp3_dir):

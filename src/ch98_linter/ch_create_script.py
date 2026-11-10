@@ -1,5 +1,3 @@
-from json import dumps as json_dumps
-from pathlib import Path
 from ch00_py.file_toolbox import open_file, save_file, save_json
 from ch01_keyword._ref.ch01_path import create_keywords_classes_file_path
 from ch01_keyword.keyword_class_builder import (
@@ -7,14 +5,12 @@ from ch01_keyword.keyword_class_builder import (
     create_src_keywords_src_path,
     get_keywords_src_config,
 )
-from ch01_keyword.keyword_class_builder import (
-    get_keywords_src_config,
-    create_src_keywords_src_path,
-)
 from ch97_docs_builder.glossary_definition import (
     get_keywords_definitions,
     save_keg_descriptions_json,
 )
+from json import dumps as json_dumps
+from pathlib import Path
 
 
 def create_chapter_files(chapter_dict: dict) -> None:

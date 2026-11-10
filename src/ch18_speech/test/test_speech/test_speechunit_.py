@@ -6,18 +6,12 @@ from ch09_person_atom.atom_config import (
 from ch15_moment.moment_config import get_moment_args_obj_types
 from ch17_jargon.jargon_config import (
     get_jargon_args_obj_types,
-    jargonable_obj_types,
-    get_jargonable_args,
     get_jargon_labelterm_args,
     get_jargon_nameterm_args,
     get_jargon_ropeterm_args,
     get_jargon_titleterm_args,
-)
-from ch18_speech.yap_term import (
-    labelyap_shop,
-    nameyap_shop,
-    ropeyap_shop,
-    titleyap_shop,
+    get_jargonable_args,
+    jargonable_obj_types,
 )
 from ch18_speech.speech_config import (
     get_speech_args_obj_types,
@@ -30,6 +24,12 @@ from ch18_speech.speech_config import (
     speechable_obj_types,
 )
 from ch18_speech.speech_main import SpeechUnit, speechunit_shop
+from ch18_speech.yap_term import (
+    labelyap_shop,
+    nameyap_shop,
+    ropeyap_shop,
+    titleyap_shop,
+)
 from ch99_glossary.ch_keyword import Ch18Keywords as kw, ExampleStrs as exx
 
 

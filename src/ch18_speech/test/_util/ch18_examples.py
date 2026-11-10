@@ -1,4 +1,5 @@
 from ch05_rope.rope import create_rope, default_knot_if_None, to_rope
+from ch18_speech.speech_main import SpeechUnit, speechunit_shop
 from ch18_speech.yap_term import (
     LabelYap,
     NameYap,
@@ -9,7 +10,6 @@ from ch18_speech.yap_term import (
     ropeyap_shop,
     titleyap_shop,
 )
-from ch18_speech.speech_main import SpeechUnit, speechunit_shop
 from ch99_glossary.ch_keyword import Ch18Keywords as kw, ExampleStrs as exx
 from pandas import DataFrame
 

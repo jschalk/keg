@@ -4,9 +4,9 @@ from ch97_docs_builder.doc_builder import (
     save_brick_formats_md,
     save_brick_mds,
     save_chapter_blurbs_md,
+    save_chapter_catalogues_md,
     save_chapters_ai_summary,
     save_ropeterm_description_md,
-    save_chapter_catalogues_md,
 )
 from random import random as random_random
 

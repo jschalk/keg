@@ -1,18 +1,14 @@
-from ch00_py.file_toolbox import create_path, open_file, save_json, save_file
-from ch01_keyword.keyword_class_builder import (
-    get_ch_int,
-    get_chapter_keyword_classes,
-    get_cumlative_keywords_src_dict,
-    get_keywords_by_chapter,
-    get_keywords_src_config,
-    create_src_keywords_src_path,
-)
+from ch00_py.file_toolbox import create_path, open_file, save_file, save_json
 from ch01_keyword._ref.ch01_path import create_keywords_classes_file_path
 from ch01_keyword.keyword_class_builder import (
     create_all_enum_keyword_classes_str,
     create_src_keywords_src_path,
+    get_ch_int,
     get_chapter_descs,
+    get_chapter_keyword_classes,
     get_cumlative_keywords_src_dict,
+    get_keywords_by_chapter,
+    get_keywords_src_config,
 )
 from ch97_docs_builder.doc_builder import get_chapter_desc_prefix, get_chapter_descs
 from ch98_linter.style import (
@@ -29,9 +25,9 @@ from ch98_linter.style import (
 from ch99_glossary.ch_keyword import Ch98Keywords as kw
 from importlib import import_module as importlib_import_module
 from inspect import getsource as inspect_getsource
-from typing import Literal
-from re import fullmatch as re_fullmatch
 from pathlib import Path
+from re import fullmatch as re_fullmatch
+from typing import Literal
 
 
 def get_semantic_types_dict() -> dict[str, str]:

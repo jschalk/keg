@@ -44,6 +44,7 @@ from ch07_plan.plan import (
     planunit_shop,
 )
 from ch08_person_logic._ref.ch08_semantic_types import (
+    BossMass,
     ContactName,
     FactNum,
     FundGrain,
@@ -58,7 +59,6 @@ from ch08_person_logic._ref.ch08_semantic_types import (
     RespectGrain,
     RespectNum,
     RopeTerm,
-    BossMass,
     TrustMass,
 )
 from ch08_person_logic.person_config import max_tree_traverse_default

@@ -1,5 +1,6 @@
 from ch02_allot._ref.ch02_semantic_types import GrainNum, PoolNum, WeightNum
 from ch03_contact._ref.ch03_semantic_types import (
+    BossMass,
     BreakTerm,
     ContactName,
     FundGrain,
@@ -11,7 +12,6 @@ from ch03_contact._ref.ch03_semantic_types import (
     RespectGrain,
     RespectNum,
     TitleTerm,
-    BossMass,
     TrustMass,
 )
 from ch05_rope._ref.ch05_semantic_types import (

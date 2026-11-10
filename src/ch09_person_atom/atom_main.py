@@ -7,13 +7,13 @@ from ch07_plan.plan import planunit_shop
 from ch08_person_logic.person_main import PersonUnit
 from ch08_person_logic.person_tool import person_attr_exists, person_get_obj
 from ch09_person_atom._ref.ch09_semantic_types import (
+    BossMass,
     ContactName,
     FactNum,
     LabelTerm,
     ReasonNum,
     RopeTerm,
     TitleTerm,
-    BossMass,
     TrustMass,
 )
 from ch09_person_atom.atom_config import (
