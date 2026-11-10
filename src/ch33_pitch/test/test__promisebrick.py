@@ -81,4 +81,5 @@ def test_get_promisebrick_config_dict_ReturnsObj():
     assert promisebrick_config == expected_config
 
 
+# TODO change the config from referencing brick source config to referencing ideas
 # TODO create tests for all PromiseBrick classes
