@@ -3,11 +3,11 @@ from ch00_py.file_toolbox import create_path, open_json
 
 
 def get_promisebrick_filename() -> str:
-    return "promisebr.json"
+    return "promisebr_config.json"
 
 
 def promisebrick_config_path() -> str:
-    "Returns path: ch33_pitch/promisebr.json"
+    "Returns path: ch33_pitch/promisebr_config.json"
     chapter_dir = create_path("src", "ch33_pitch")
     return create_path(chapter_dir, get_promisebrick_filename())
 

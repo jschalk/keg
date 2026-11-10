@@ -1,6 +1,10 @@
 from ch20_brick.brick_config import get_brick_sqlite_types, get_default_sorted_list
 from ch22_etl_config.etl_config import get_brick_config_dict
-from ch33_pitch.promise import PITCH_NUMERICAL_ARGS, PromiseUnit, promiseunit_shop
+from ch33_pitch.promisebrick_main import (
+    PITCH_NUMERICAL_ARGS,
+    PromiseUnit,
+    promiseunit_shop,
+)
 from ch99_glossary.ch_keyword import Ch23Keywords as kw, ExampleStrs as exx
 from ch99_glossary.sorter import get_keg_elements_sort_order
 

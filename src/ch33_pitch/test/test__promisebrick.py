@@ -12,7 +12,7 @@ from ch33_pitch.promisebrick_main import (
 
 def test_get_promisebrick_filename_ReturnsObj():
     # ESTABLISH / WHEN / THEN
-    assert get_promisebrick_filename() == "promisebr.json"
+    assert get_promisebrick_filename() == "promisebr_config.json"
 
 
 def test_promisebrick_config_path_ReturnsObj_Promisebrick() -> str:
