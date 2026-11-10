@@ -2,7 +2,7 @@ from ch00_py.dict_toolbox import get_0_if_None
 from ch10_person_lesson.lesson_main import LessonUnit
 from ch32_world.world import WorldName
 from ch33_pitch._ref.ch33_semantic_types import PersonName, SparkInt
-from ch33_pitch.promise import PromiseUnit
+from ch33_pitch.promisebrick_main import PromiseUnit
 from dataclasses import dataclass
 
 

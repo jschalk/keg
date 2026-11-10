@@ -10,7 +10,6 @@ from ch20_brick.brick_config import (
     get_default_sorted_list,
 )
 from copy import copy as copy_copy
-from os.path import join as os_path_join
 
 ALL_DIMEN_ABBV7 = {
     "MMTCECK",

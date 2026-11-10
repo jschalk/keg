@@ -10,7 +10,6 @@ from ch17_jargon.jargon_config import (
     jargon_config_path,
 )
 from ch99_glossary.ch_keyword import Ch17Keywords as kw
-from os.path import join as os_path_join
 
 
 def test_get_jargon_filename_ReturnsObj():

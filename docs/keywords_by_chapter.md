@@ -31,13 +31,13 @@
 - ch30_idea_dst: ch30
 - ch31_kpi: DayEvent, Event, ch31, day_punch, default_kpi_bundle, gcal, moment_kpi001_contact_nets, moment_kpi002_person_pledges
 - ch32_world: WorldName, ch32, today
-- ch33_pitch: Deal, Gift, Peer, PitchID, PitchUnit, Promise, PromiseUnit, ch33, deal, gift, offer, peer, pitch, pitch_id, pitcher_name, pitchs, promise, request, vow
+- ch33_pitch: Deal, Gift, Peer, PitchID, PitchUnit, Promise, PromiseUnit, ch33, deal, gift, offer, peer, pitch, pitch_id, pitcher_name, pitchs, promise, request, ride, vow
 - ch34_finance: ch34, finance, financial
 - ch35_person_viewer: ch35
 - ch36_news: News, ch36, news
 - ch38_article: Article, article, ch38
 - ch39_levinas: American, God, Home, Infinity, Pillar, Totality, Water, bearing, ch39, god, grateful, gravity, home, hose, infinity, invite, land, power, totality, water, welcome
-- ch40_kazani: Empire, Faction, Hayek, Hobbit, Kronos, Land, Lord, Loyal, Republic, Ride, Shill, Soil, ch40, cow, empire, faction, hive, honor, impression, invitation, knee, kronosmax, ladder, lord, losing, loyal, oil, pay, prestige, republic, ride, rival, shill, soil, trash, trooper, winner, winning
+- ch40_kazani: Empire, Faction, Hayek, Hobbit, Kronos, Land, Lord, Loyal, Republic, Ride, Shill, Soil, ch40, cow, empire, faction, hive, honor, impression, invitation, knee, kronosmax, ladder, lord, losing, loyal, oil, pay, prestige, republic, rival, shill, soil, trash, trooper, winner, winning
 - ch41_pop_phil: ch41
 - ch44_spring: Kegology, Monopoly, Rise, Shot, Winning, Winter, ch44, climb, discipline, drag, heart, jump, kegology, pump, revenge, shot, soldier, spring, winter
 - ch45_wheel: Climb, Discipline, Fall, Honor, KegWheel, Losing, Pay, Prestige, Stable, Welcome, Wheel, alien, ch45, cling, fall, kneeler, lift, linchpin, loser, pillar, stable, valor, wheel, wheelers

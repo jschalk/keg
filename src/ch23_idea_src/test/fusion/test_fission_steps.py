@@ -382,7 +382,7 @@ def test_fission_add_knot_from_rope_ReturnsDf_Scenario05_ReturnsUnchangedWhenKno
     assert result["knot"].iloc[0] == "!"
 
 
-def test_fission_add_knot_from_rope_ReturnsDf_Scenario06_SkipsNullMomentRopeGoesBackToPlanRope():
+def test_fission_add_knot_from_rope_ReturnsDf_Scenario06_SkipsNullMomentRope_GoesBackToPlanRope():
     # ESTABLISH
     df = make_df(moment_rope=[None], plan_rope=["|mmt01|sports|"])
     # WHEN
