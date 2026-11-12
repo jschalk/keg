@@ -56,3 +56,13 @@ def pitchunit_shop(
 # When a pitch is given the gift must automatically be bricked. The gift's spark_num
 # could be added to the PitchUnit. Then if the pitch is accepted
 # Deal deal needs to be added here so the word isn't used anywhere else.
+
+
+@dataclass
+class AtlaUnit:
+    atla_name: str = None
+    pitch_id: str = None
+    old_world_dir: str = None
+    gift_world_dir: str = None
+    new_world_dir: str = None
+    difference_report: str = None

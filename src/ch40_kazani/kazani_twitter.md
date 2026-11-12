@@ -169,7 +169,7 @@ Responding to Branko Milanovic @BrankoMilan post *The irony of Russia is the bes
 > The enlightened ruler keeps his people in poverty
 
 Post from anon account: *Early neoloberal Putin, I'd say until the 2008 financial crisis, was looking like a Chinese leader - leave politics to me, I'll let you live your lives and grow the economy.<br>
-Then Atlas shrugged, USA looked vulnerable, and he got big ideas.*
+Then Attlas shrugged, USA looked vulnerable, and he got big ideas.*
 
 > Actually, yes. I don’t really like these labels, neoliberal schmeoliberal because they usually obfuscate more than they clarify. But at this specific case, it is up to the point. Early Putin’s policies were indeed far more “neoliberal” than almost anyone realises
 > 

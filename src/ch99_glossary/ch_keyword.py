@@ -3591,6 +3591,7 @@ class Ch32Keywords(str, Enum):
 
 
 class Ch33Keywords(str, Enum):
+    Atla = "Atla"
     Deal = "Deal"
     Gift = "Gift"
     Keyword = "Keyword"
@@ -3606,6 +3607,7 @@ class Ch33Keywords(str, Enum):
     addin = "addin"
     allowed_crud = "allowed_crud"
     amount = "amount"
+    atla = "atla"
     audie = "audie"
     awardee_title = "awardee_title"
     begin = "begin"

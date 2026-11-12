@@ -20,6 +20,8 @@
   "Article": "A document that is readable by a human.", 
   "article": "A document that is readable by a human.", 
   "assert": "Used so often in Python that it cannot be a kegology keyword.", 
+  "Atla": "Short for Atlas, the holder of worlds.", 
+  "atla": "Short for Atlas, the holder of worlds.", 
   "atom": "Smallest possible unit of a PersonUnit", 
   "attributes": "General term used to describe things about another thing", 
   "Audie": "Short for Audience. TitleTerm, can be NameTerm or GroupTitle.", 

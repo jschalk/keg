@@ -814,6 +814,7 @@ moment_kpi001_contact_nets,0,"31, 32"
 moment_kpi002_person_pledges,0,31
 WorldName,0,"32, 33, 97"
 today,0,"32, 39, 40, 44, 45, 54, 90"
+Atla,0,33
 Deal,0,"33, 44"
 Gift,0,33
 Peer,0,33
@@ -821,6 +822,7 @@ PitchID,0,"33, 97"
 PitchUnit,0,"33, 34"
 Promise,0,33
 PromiseUnit,0,33
+atla,0,33
 deal,0,"33, 39, 40, 41, 45"
 gift,0,"33, 39, 40"
 offer,0,"33, 39, 40, 44"
