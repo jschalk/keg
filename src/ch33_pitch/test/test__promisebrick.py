@@ -30,19 +30,14 @@ def test_get_promisebrick_config_dict_ReturnsObj():
     promisebrick_config = get_promisebrick_config_dict()
 
     # THEN
+    idea_config_dict = get_idea_config_dict()
     brick_config_dict = get_brick_config_dict()
     expected_config = {}
     for bc_key, bc_value in brick_config_dict.items():
         x_abbv7 = get_dimen_abbv7(bc_key)
         x_allowed_crud = bc_value.get("allowed_crud")
-        # print(f"{bc_key=}")
-        expected_jkeys = {}
-        expected_jvalues = {}
-        for x_key in bc_value.get(kw.jkeys).keys():
-            expected_jkeys[x_key] = {}
-        for x_key in bc_value.get(kw.jvalues).keys():
-            expected_jvalues[x_key] = {}
-
+        expected_jkeys = {x_key: {} for x_key in bc_value.get(kw.jkeys).keys()}
+        expected_jvalues = {x_key: {} for x_key in bc_value.get(kw.jvalues).keys()}
         # print(f"{expected_jkeys=}")
         # print(f"{expected_jvalues=}")
         # print(f"{bc_value.get(brick_category_str)=}")
