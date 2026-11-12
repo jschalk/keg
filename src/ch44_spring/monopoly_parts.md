@@ -69,7 +69,7 @@ The Monopoly board contains 40 spaces arranged clockwise around the perimeter.
 | 23 | Indiana Avenue |
 | 24 | Illinois Avenue |
 | 25 | B&O Railroad |
-| 26 | Atlantic Avenue |
+| 26 | Attlantic Avenue |
 | 27 | Ventnor Avenue |
 | 28 | Water Works |
 | 29 | Marvin Gardens |
@@ -131,7 +131,7 @@ The Monopoly board contains 40 spaces arranged clockwise around the perimeter.
 
 | Property | Cost | Mortgage | House Cost |
 |-----------|------|------|------|
-| Atlantic Avenue | $260 | $130 | $150 |
+| Attlantic Avenue | $260 | $130 | $150 |
 | Ventnor Avenue | $260 | $130 | $150 |
 | Marvin Gardens | $280 | $140 | $150 |
 

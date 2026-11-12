@@ -158,7 +158,7 @@ Examples:
 | Pink | St. Charles, States, Virginia |
 | Orange | St. James, Tennessee, New York |
 | Red | Kentucky, Indiana, Illinois |
-| Yellow | Atlantic, Ventnor, Marvin Gardens |
+| Yellow | Attlantic, Ventnor, Marvin Gardens |
 | Green | Pacific, North Carolina, Pennsylvania |
 | Dark Blue | Park Place, Boardwalk |
 
