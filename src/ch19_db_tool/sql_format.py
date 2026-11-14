@@ -1,6 +1,6 @@
+from re import compile as re_compile
 from sqlglot import parse_one
 from sqlglot.errors import ParseError
-from re import compile as re_compile
 
 _SINGLE_LINE_CLAUSES = {
     "SELECT",

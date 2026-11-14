@@ -103,7 +103,7 @@ def test_PersonUnit_get_tree_metrics_Returns_pledge_PlanRopeTerm():
             "ACME",
             "ACME Employee Responsiblities",
             "Know Abuse Avoidance and Reporting guildlines",
-            "Accomplish Summer 2021 traaining",
+            "Accomplish Aug 2021 traaining",
         ]
     )
     assert yao_tree_metrics.last_evaluated_pledge_plan_rope == traain_rope

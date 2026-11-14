@@ -7,7 +7,7 @@ from ch99_glossary.ch_keyword import ExampleStrs as exx
 from pytest import raises as pytest_raises
 
 
-def test_PersonUnit_edit_plan_label_FailsWhenPlanDoesNotExist():
+def test_PersonUnit_edit_plan_label_FailsWhenPlan_DoesNotExist():
     # ESTABLISH
     yao_person = personunit_shop(exx.yao)
 

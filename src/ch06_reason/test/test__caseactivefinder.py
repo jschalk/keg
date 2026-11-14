@@ -6,7 +6,6 @@ from ch99_glossary.ch_keyword import Ch06Keywords as kw, ExampleStrs as exx
 from dataclasses import dataclass
 from plotly.graph_objects import Figure as plotly_figure, Scatter as plotly_Scatter
 from pytest import raises as pytest_raises
-from ch99_glossary.ch_keyword import Ch06Keywords as kw
 
 
 def test_CaseActiveFinder_Exists():

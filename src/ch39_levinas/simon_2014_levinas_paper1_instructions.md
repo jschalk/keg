@@ -3,14 +3,14 @@
 
 **Author:** Jules Simon<br>
 **Date:** 2014-1<br>
-**Source:** Handout distributed during Spring 2014 Levinas course at University Texas El Paso.<br>
+**Source:** Handout distributed during Spr 2014 Levinas course at University Texas El Paso.<br>
 **Copied to Keg:** 2026-08-14<br>
 
 ---
 
 Great Philosopher/World Historical Philosopher: Levinas
 
-UTEP Spring 2014
+UTEP Spr 2014
 
 Dr. Jules Simon
 

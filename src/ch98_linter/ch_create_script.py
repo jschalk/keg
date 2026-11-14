@@ -1,14 +1,16 @@
-from json import dumps as json_dumps
-from pathlib import Path
-from ch00_py.file_toolbox import save_json
+from ch00_py.file_toolbox import open_file, save_file, save_json
+from ch01_keyword._ref.ch01_path import create_keywords_classes_file_path
 from ch01_keyword.keyword_class_builder import (
-    get_keywords_src_config,
+    create_all_enum_keyword_classes_str,
     create_src_keywords_src_path,
+    get_keywords_src_config,
 )
 from ch97_docs_builder.glossary_definition import (
     get_keywords_definitions,
     save_keg_descriptions_json,
 )
+from json import dumps as json_dumps
+from pathlib import Path
 
 
 def create_chapter_files(chapter_dict: dict) -> None:
@@ -30,7 +32,7 @@ def create_chapter_files(chapter_dict: dict) -> None:
     ref_ai_summary_1min_path = ref_dir / f"ch{chapter_number:02}_ai_summary_1min.md"
     ref_ai_summary_1min_path.write_text("", encoding="utf-8")
     ref_ch_json_path = ref_dir / f"ch{chapter_number:02}_ref.json"
-    chapter_dict["chapter_description"] = f"ch{chapter_number}_{chapter_name}"
+    chapter_dict["chapter_description"] = f"ch{chapter_number:02}_{chapter_name}"
     chapter_dict.pop("src_dir")
     ref_ch_json_path.write_text(json_dumps(chapter_dict, indent=2), encoding="utf-8")
     ref_semantic_types_path = ref_dir / f"ch{chapter_number:02}_semantic_types.py"
@@ -58,19 +60,20 @@ def main():
     ontology_summary_str = "All chapters get checked for following style rules."
     chapter_dict = {
         "src_dir": input("Source directory [c:/dev/keg/src]: ") or "c:/dev/keg/src",
-        "chapter_blurb": input("Chapter blurb [Linter for repo.]: ")
-        or "Linter for repo.",
-        "chapter_content": input("Chapter content [Linter for repo.]: ")
-        or "Linter for repo.",
-        "chapter_description": input("Chapter description [linter]: ") or "linter",
-        "chapter_number": int(input("Chapter number [98]: ") or "98"),
+        "chapter_number": int(input("Chapter number [98]: ")),
+        "chapter_description": input("Chapter description chXX_[linter]: "),
+        "chapter_blurb": input("Chapter blurb [Linter for repo.]: "),
+        "chapter_content": input("Chapter content [All the linter tools and tests]: "),
         "chapter_ref_catalogue": input("Chapter ref catalogue [n]: ") or "n",
-        "ontology summary": input(f"Ontology summary [{ontology_summary_str}]: ")
-        or ontology_summary_str,
+        "ontology summary": input(f"Ontology summary [{ontology_summary_str}]: "),
     }
     create_chapter_files(chapter_dict)
     add_ch_to_keywords_src_config(chapter_dict)
     add_ch_to_keyword_definitions(chapter_dict)
+    print("Create and save Enum classes and keywords_src file")
+    enum_classes_str = create_all_enum_keyword_classes_str()
+    keywords_classes_file_path = create_keywords_classes_file_path("src")
+    save_file(keywords_classes_file_path, None, enum_classes_str)
 
 
 if __name__ == "__main__":

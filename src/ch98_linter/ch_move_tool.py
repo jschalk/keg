@@ -6,7 +6,6 @@ from os.path import (
     isdir as os_path_isdir,
     join as os_path_join,
 )
-from pathlib import Path
 from shutil import rmtree as shutil_rmtree
 from subprocess import (
     CalledProcessError as subprocess_CalledProcessError,

@@ -1,8 +1,3 @@
-from re import findall as re_findall, compile as re_compile, IGNORECASE as re_IGNORECASE
-from pathlib import Path
-from pytest import mark as pytest_mark
-from collections import defaultdict
-from pathlib import Path
 from ch00_py.file_toolbox import open_json
 from ch01_keyword.chapter_desc_main import get_chapter_desc_prefix, get_chapter_descs
 from ch38_article.article_toolbox import (
@@ -10,7 +5,11 @@ from ch38_article.article_toolbox import (
     get_default_article_snippets_order,
 )
 from ch97_docs_builder._ref.ch97_path import create_chapter_ref_path
+from ch99_glossary.ch_keyword import Ch98Keywords as kw
+from collections import defaultdict
 from pathlib import Path
+from pytest import mark as pytest_mark
+from re import IGNORECASE as re_IGNORECASE, compile as re_compile, findall as re_findall
 
 
 def get_image_paths_from_markdown(md_text: str) -> list[str]:
@@ -373,7 +372,6 @@ def test_CatalogueMarkDownFilesHaveRequiredStrings():
     source_str = "**Source:**"
     copied_str = "**Copied to Keg:**"
     default_required_strings = [author_str, date_str, source_str, copied_str]
-    ch_req_strs = {"ch44": [author_str, date_str], "ch45": [author_str, date_str]}
     ordered_snippets = get_default_article_snippets_order()
 
     for chapter_desc, ch_dir in get_chapter_descs().items():
@@ -382,7 +380,8 @@ def test_CatalogueMarkDownFilesHaveRequiredStrings():
         chapter_ref_dict = open_json(chapter_ref_path)
         if chapter_ref_dict.get("chapter_ref_catalogue") == "y":
             # WHEN / THEN
-            required_strings = ch_req_strs.get(ch_prefix) or default_required_strings
+            required_strings = chapter_ref_dict.get("chapter_md_required")
+            required_strings = required_strings or default_required_strings
             print(f"{ch_prefix=} {required_strings=}")
             ch_dir = Path(ch_dir)
             for md_file_path in sorted(ch_dir.glob("*.md")):

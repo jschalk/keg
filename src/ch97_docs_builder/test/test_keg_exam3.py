@@ -5,9 +5,10 @@ from ch01_keyword.keyword_class_builder import (
     get_keywords_src_config,
     parse_valid_ch_str,
 )
+from ch20_brick.brick_db_tool import open_csv
 from ch97_docs_builder._ref.ch97_path import (
-    create_question_tier_path,
     create_keg_exam_questions_path,
+    create_question_tier_path,
 )
 from ch97_docs_builder.glossary_ranking import (
     QuestionUnit,
@@ -18,11 +19,9 @@ from ch97_docs_builder.glossary_ranking import (
     rebuild_keg_exam_questions,
     rebuild_keg_rank_csv,
     set_did_you_read_orders,
-    rebuild_keg_exam_questions,
 )
 from ch99_glossary.ch_keyword import Ch97Keywords as kw
 from os.path import exists as os_path_exists
-from ch20_brick.brick_db_tool import open_csv
 
 
 def test_rebuild_keg_rank_csv_SavesFile_Scenario0_NoFileExists(temp3_fs):

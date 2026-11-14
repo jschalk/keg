@@ -110,7 +110,7 @@ Hence, stupid failures of great people. They try to re-create their past success
 In fact, highly successful people are more prone to madness than the normies, for the highly successful people are the ones that made a crazy bet and it worked out. Hence, they make a [WRONG] conclusion that it just works, objectively speaking, and keep making it again, and again, until they just get bust.
 
 
-<div align="center"><img src="images/napolean_in_winter.webp" alt="Napolean in retreat in the snow" width="500"></div>
+<div align="center"><img src="images/napolean_in_russia.webp" alt="Napolean in retreat in the snow" width="500"></div>
 
 *One more military campaign will absolutely do it.*
 

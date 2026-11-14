@@ -9,7 +9,11 @@ Words can mean new things
 
 ### My Philosophical Background
 
-My philosophical father is Jules Simon, I took many classes with him at UTEP. He introduced me to Levinas, Husserl, Heidegger, Arendt, Ricoeur and of course Simon (his work). Others too. Most of these Philosophers can be described as Phenomenologists. This comes from the Husserl being the big philosopher and using the word 'Phenomenology' to describe his work. Another famous philosopher named Hegel wrote a book many decades Husserl called a 'Phenomenology of Spirit" so the word has been around. 
+<div align="center"><img src="../ch44_spring/images/jules_simon1.webp" alt="Jules Simon on Philosophical Dialogues from La Frontera" width="50%"></div>
+
+*Jules Simon, Philosopher at the University of Texas at El Paso*
+
+My philosophical father is Jules Simon, I took many classes with him at UTEP. He introduced me to Levinas, Husserl, Heidegger, Arendt, Ricoeur and of course Simon (his work). Others too. Most of these Philosophers can be described as Phenomenologists. This comes from Husserl being the big philosopher and using the word 'Phenomenology' to describe his work. Another famous philosopher named Hegel wrote a book many decades Husserl called a 'Phenomenology of Spirit" so the word has been around. 
 
 Note: Unlike Dr. Simon I do not read German so I've only read english translations.
 

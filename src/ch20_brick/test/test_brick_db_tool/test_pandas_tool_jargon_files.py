@@ -1,11 +1,11 @@
 from ch00_py.file_toolbox import create_path, save_json
 from ch05_rope.rope import create_rope, to_rope
+from ch17_jargon.jargon_config import get_jargon_filename
+from ch17_jargon.jargon_main import jargonunit_shop
 from ch17_jargon.test._util.ch17_examples import (
     get_casa_maison_jargonunit_set_by_label,
     get_suita_namemap,
 )
-from ch17_jargon.jargon_config import get_jargon_filename
-from ch17_jargon.jargon_main import jargonunit_shop
 from ch20_brick.brick_db_tool import (
     move_otx_csvs_to_jargon_inx,
     open_csv,

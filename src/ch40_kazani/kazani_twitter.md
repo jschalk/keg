@@ -169,7 +169,7 @@ Responding to Branko Milanovic @BrankoMilan post *The irony of Russia is the bes
 > The enlightened ruler keeps his people in poverty
 
 Post from anon account: *Early neoloberal Putin, I'd say until the 2008 financial crisis, was looking like a Chinese leader - leave politics to me, I'll let you live your lives and grow the economy.<br>
-Then Atlas shrugged, USA looked vulnerable, and he got big ideas.*
+Then Attlas shrugged, USA looked vulnerable, and he got big ideas.*
 
 > Actually, yes. I don’t really like these labels, neoliberal schmeoliberal because they usually obfuscate more than they clarify. But at this specific case, it is up to the point. Early Putin’s policies were indeed far more “neoliberal” than almost anyone realises
 > 
@@ -232,3 +232,69 @@ Responding to this tweet: Zinoviev & Kamenev had a really insane arc. From very 
 > People suspect they may be secretly having good time in the university. *That* is unacceptable
 > 
 > In a corporation, they at least suffer, which makes the economy economier
+
+**October 27, 2026**<br>
+Responding to a tweet concerning a movie character being good and of the previous historial enemy: 
+> No one in the world hates another people because of “historical grievances”. That is a complete fake, now and always. The reasons for conflict are always current and contemporary.
+> 
+> If the reasons for disliking e.g. Germans are “historical”, that means they do not exist
+
+
+**October 28, 2026**<br>
+Responding to a tweet concerning political representation in a democracy: 
+> 1. Best you can have is being a citizen of a republic
+> 2. Worse, is being a subject of a prince
+> 3. Worst of the worst is being a subject of a republic
+> 
+> Everything is preferable to being a subject of a republic
+> 
+> (For context, consult Guicciardini "Counsels and Reflections")
+
+**October 30, 2026**<br>
+Responding to a tweet concerning how much opportunity a globally average person has: 
+> I am genuinely puzzled regarding what I would do, were I a 17 year old today
+> 
+> Many of the laders I've tried cliimbing simply do not exist anymore
+> 
+> Looks like the youth that is starting from the relatively below, without much resources on their hands, is fucked
+
+Responding to a tweet concerning whether Ukraine gained the right to secede 
+> Hard to swallow pill
+> 
+> 1. Soviet Union collapsed *exactly* according to the Soviet administrative boundaries
+> 2. It did not really matter how much separatist sentiment there was on the ground
+> 3. All Union republics received independence, no one of the lower status autonomies did
+
+**November 10, 2026**<br>
+Responding to a tweet concerning car centric vs walkable cities: 
+> No one needs walkability as much as small children
+>
+> Non walkable, car-centric environment is an absolutely psychotic, pathological landscape to grow up in
+> 
+> A child needs to roam, and he needs the freedom of roaming, the earlier, the better
+
+Responding to this tweet: Russia is that most troops are not from Moscow or St. Petersburg. This war acts as a wealth transfer from moscow to poor regions in the caucauses or east russia. A stimulus. With trooper salaries.
+> There is another (more important) aspect here
+> 
+> What everyone gets wrong about the political instability, is that people tend to huuuuuugely exaggerate the importance of peasants & what they think, or do
+> 
+> The real trouble does *not* come from the peasants but only from the nobles
+> Dangerous political instability does not come from peasants violently protesting but from the nobles engaging into the political entrepreneurship & recruiting peasants for their causes
+> 
+> Looting and protests per se are perfectly impotent and do not lead to anything
+
+Responding to this tweet: 100 people died in the Iran war and the Americans kicked out the Republicans. 500,000 people died in Russia and Putin is fine.
+> In the Civil War, the Union lost something like 360,000 men and it did not stop. For Putin, it is not Iran, nor even Vietnam. It is the Civil War, and he is not going to stop until the Confederacy is wiped out, for good
+
+USA was rapidly growing as population back then, the demography of Russia and the economical conditions now are completely different
+> Russia belongs to Eastern Europe. On the Eastern European mindset, I can tell you a joke:
+> 
+> God told a man. I will grant you your any wish, but beware, whatever you get, your neighbour will get double of that. The man considered it for a while and said:
+> 
+> Lord, poke me in one eye
+
+**November 12, 2026**<br>
+Responding to tweet about how racism against Polish people has mainly stopped in British society.
+> Racism is by and large only directed against the poor
+> 
+> Poland becomes less poor ->

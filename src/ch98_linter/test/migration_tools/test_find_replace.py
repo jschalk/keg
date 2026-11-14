@@ -1,4 +1,4 @@
-from ch98_linter.chapter_move_tool import (
+from ch98_linter.ch_move_tool import (
     replace_in_tracked_python_files,
     string_exists_in_directory,
     string_exists_in_filepaths,

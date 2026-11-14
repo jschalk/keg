@@ -1,10 +1,10 @@
-from pytest import mark as pytest_mark
 from ch19_db_tool.sql_format import (
-    format_sql,
-    _rewrite_select_leading_commas,
     _rewrite_group_by_leading_commas,
+    _rewrite_select_leading_commas,
     _rewrite_single_item_clauses,
+    format_sql,
 )
+from pytest import mark as pytest_mark
 
 
 def test_rewrite_single_item_clauses_ReturnsObj_Scenario1_MovesSingleSelectColumnOntoSelectLine() -> (

@@ -1,9 +1,7 @@
-from pytest import raises as pytest_raises
-from pandas import DataFrame
-from pandas import ExcelWriter as pandas_ExcelWriter
-from io import BytesIO as io_BytesIO
-
 from ch97_docs_builder.glossary_ranking import load_keg_knowledge as load_keg_knowledge
+from io import BytesIO as io_BytesIO
+from pandas import DataFrame, ExcelWriter as pandas_ExcelWriter
+from pytest import raises as pytest_raises
 
 # ---------------------------------------------------------------------------
 # Helpers

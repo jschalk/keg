@@ -1,9 +1,5 @@
 # Table of Contents
 
-**[Document Title](./essay_template.md)** Author Name - YYYY-MM-DD<br>
-
-**[Ellery Stowell Schalk](./hacket_ellery_schalk_obit.md)** David Hackett - 1997-10-01<br>
-
 **[Against the internet Sept26](./lipsky_against_the_internet.md)** David Lipsky - 2015<br>
 
 **[The Psychology of Conservatism: Why Do People Keep Voting for Republicans?](./ash_psychology_of_conservatism.md)** Dr. Ash? - 2026-09-13<br>
@@ -59,6 +55,8 @@
 **[The Procedurality](./kazani_the_procedurality.md)** Kamil Kazani - 2022-5-24<br>
 
 **[What intellectuals can and cannot do](./kazani_what_intellectuals_can_do.md)** Kamil Kazani - 2024-07-31<br>
+
+**[Why did not Russia become a democracy?](./kazani_why_russia_not_democracy.md)** Kamil Kazani - 2026-10-31<br>
 
 **[Why did Putin kill Navalny?](./kazani_putin_navalny.md)** Kamil Kazani - 2024-02-19<br>
 

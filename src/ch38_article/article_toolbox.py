@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from pathlib import Path
-from re import IGNORECASE as re_IGNORECASE, search as re_search, match as re_match
-from pathlib import Path
+from re import IGNORECASE as re_IGNORECASE, match as re_match, search as re_search
 
 
 def set_snippet_indexs(

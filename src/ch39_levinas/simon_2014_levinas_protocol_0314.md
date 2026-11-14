@@ -8,7 +8,7 @@
 ---
 
 
-Levinas Class Spring 2014 of UTEP
+Levinas Class Spr 2014 of UTEP
 Said: Protocol presented March 25th, 2014 by Guillermo Estrada and Emmanuel Schalk
 Saying: was on March 18th, 2014
 

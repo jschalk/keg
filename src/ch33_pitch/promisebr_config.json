@@ -1,0 +1,271 @@
+{
+  "PromMMTBUDD_Unit": {
+    "jkeys": {
+      "bud_time": {}, 
+      "moment_rope": {}, 
+      "person_name": {}, 
+      "spark_face": {}, 
+      "spark_num": {}
+    }, 
+    "jvalues": {"celldepth": {}, "knot": {}, "quota": {}}
+  }, 
+  "PromMMTCECK_Unit": {
+    "jkeys": {
+      "contact_name": {}, 
+      "moment_rope": {}, 
+      "person_name": {}, 
+      "spark_face": {}, 
+      "spark_num": {}, 
+      "tran_time": {}
+    }, 
+    "jvalues": {"amount": {}, "knot": {}}
+  }, 
+  "PromMMTHOUR_Unit": {
+    "jkeys": {"cumulative_minute": {}, "moment_rope": {}, "spark_face": {}, "spark_num": {}}, 
+    "jvalues": {"hour_label": {}, "knot": {}}
+  }, 
+  "PromMMTMONT_Unit": {
+    "jkeys": {"cumulative_day": {}, "moment_rope": {}, "spark_face": {}, "spark_num": {}}, 
+    "jvalues": {"knot": {}, "month_label": {}}
+  }, 
+  "PromMMTOFFI_Unit": {
+    "jkeys": {"moment_rope": {}, "offi_time": {}, "spark_face": {}, "spark_num": {}}, 
+    "jvalues": {"knot": {}}
+  }, 
+  "PromMMTUNIT_Unit": {
+    "jkeys": {"moment_rope": {}, "spark_face": {}, "spark_num": {}}, 
+    "jvalues": {
+      "c400_number": {}, 
+      "epoch_label": {}, 
+      "fund_grain": {}, 
+      "job_listen_rotations": {}, 
+      "knot": {}, 
+      "mana_grain": {}, 
+      "monthday_index": {}, 
+      "respect_grain": {}, 
+      "yr1_jan1_offset": {}
+    }
+  }, 
+  "PromMMTWEEK_Unit": {
+    "jkeys": {"moment_rope": {}, "spark_face": {}, "spark_num": {}, "weekday_order": {}}, 
+    "jvalues": {"knot": {}, "weekday_label": {}}
+  }, 
+  "PromNABTIME_Unit": {
+    "jkeys": {"moment_rope": {}, "otx_time": {}, "spark_face": {}, "spark_num": {}}, 
+    "jvalues": {"inx_time": {}}
+  }, 
+  "PromPRNAWAR_DelUnit": {
+    "jkeys": {
+      "awardee_title": {}, 
+      "person_name": {}, 
+      "plan_rope": {}, 
+      "spark_face": {}, 
+      "spark_num": {}
+    }, 
+    "jvalues": {}
+  }, 
+  "PromPRNAWAR_PutUnit": {
+    "jkeys": {
+      "awardee_title": {}, 
+      "person_name": {}, 
+      "plan_rope": {}, 
+      "spark_face": {}, 
+      "spark_num": {}
+    }, 
+    "jvalues": {"give_force": {}, "knot": {}, "take_force": {}}
+  }, 
+  "PromPRNCASE_DelUnit": {
+    "jkeys": {
+      "person_name": {}, 
+      "plan_rope": {}, 
+      "reason_context": {}, 
+      "reason_state": {}, 
+      "spark_face": {}, 
+      "spark_num": {}
+    }, 
+    "jvalues": {}
+  }, 
+  "PromPRNCASE_PutUnit": {
+    "jkeys": {
+      "person_name": {}, 
+      "plan_rope": {}, 
+      "reason_context": {}, 
+      "reason_state": {}, 
+      "spark_face": {}, 
+      "spark_num": {}
+    }, 
+    "jvalues": {"knot": {}, "reason_divisor": {}, "reason_lower": {}, "reason_upper": {}}
+  }, 
+  "PromPRNCONT_DelUnit": {
+    "jkeys": {
+      "contact_name": {}, 
+      "moment_rope": {}, 
+      "person_name": {}, 
+      "spark_face": {}, 
+      "spark_num": {}
+    }, 
+    "jvalues": {}
+  }, 
+  "PromPRNCONT_PutUnit": {
+    "jkeys": {
+      "contact_name": {}, 
+      "moment_rope": {}, 
+      "person_name": {}, 
+      "spark_face": {}, 
+      "spark_num": {}
+    }, 
+    "jvalues": {"contact_cred_mass": {}, "contact_debt_mass": {}, "knot": {}}
+  }, 
+  "PromPRNFACT_DelUnit": {
+    "jkeys": {
+      "fact_context": {}, 
+      "person_name": {}, 
+      "plan_rope": {}, 
+      "spark_face": {}, 
+      "spark_num": {}
+    }, 
+    "jvalues": {}
+  }, 
+  "PromPRNFACT_PutUnit": {
+    "jkeys": {
+      "fact_context": {}, 
+      "person_name": {}, 
+      "plan_rope": {}, 
+      "spark_face": {}, 
+      "spark_num": {}
+    }, 
+    "jvalues": {"fact_lower": {}, "fact_state": {}, "fact_upper": {}, "knot": {}}
+  }, 
+  "PromPRNHEAL_DelUnit": {
+    "jkeys": {
+      "healer_name": {}, 
+      "person_name": {}, 
+      "plan_rope": {}, 
+      "spark_face": {}, 
+      "spark_num": {}
+    }, 
+    "jvalues": {}
+  }, 
+  "PromPRNHEAL_PutUnit": {
+    "jkeys": {
+      "healer_name": {}, 
+      "person_name": {}, 
+      "plan_rope": {}, 
+      "spark_face": {}, 
+      "spark_num": {}
+    }, 
+    "jvalues": {"knot": {}}
+  }, 
+  "PromPRNLABO_DelUnit": {
+    "jkeys": {
+      "labor_title": {}, 
+      "person_name": {}, 
+      "plan_rope": {}, 
+      "spark_face": {}, 
+      "spark_num": {}
+    }, 
+    "jvalues": {}
+  }, 
+  "PromPRNLABO_PutUnit": {
+    "jkeys": {
+      "labor_title": {}, 
+      "person_name": {}, 
+      "plan_rope": {}, 
+      "spark_face": {}, 
+      "spark_num": {}
+    }, 
+    "jvalues": {"knot": {}, "solo": {}}
+  }, 
+  "PromPRNMEMB_DelUnit": {
+    "jkeys": {
+      "contact_name": {}, 
+      "group_title": {}, 
+      "moment_rope": {}, 
+      "person_name": {}, 
+      "spark_face": {}, 
+      "spark_num": {}
+    }, 
+    "jvalues": {}
+  }, 
+  "PromPRNMEMB_PutUnit": {
+    "jkeys": {
+      "contact_name": {}, 
+      "group_title": {}, 
+      "moment_rope": {}, 
+      "person_name": {}, 
+      "spark_face": {}, 
+      "spark_num": {}
+    }, 
+    "jvalues": {"group_cred_mass": {}, "group_debt_mass": {}, "knot": {}}
+  }, 
+  "PromPRNPLAN_DelUnit": {
+    "jkeys": {"person_name": {}, "plan_rope": {}, "spark_face": {}, "spark_num": {}}, 
+    "jvalues": {}
+  }, 
+  "PromPRNPLAN_PutUnit": {
+    "jkeys": {"person_name": {}, "plan_rope": {}, "spark_face": {}, "spark_num": {}}, 
+    "jvalues": {
+      "addin": {}, 
+      "begin": {}, 
+      "close": {}, 
+      "denom": {}, 
+      "gogo_want": {}, 
+      "knot": {}, 
+      "morph": {}, 
+      "numor": {}, 
+      "pledge": {}, 
+      "poynt": {}, 
+      "problem_bool": {}, 
+      "stop_want": {}
+    }
+  }, 
+  "PromPRNREAS_DelUnit": {
+    "jkeys": {
+      "person_name": {}, 
+      "plan_rope": {}, 
+      "reason_context": {}, 
+      "spark_face": {}, 
+      "spark_num": {}
+    }, 
+    "jvalues": {}
+  }, 
+  "PromPRNREAS_PutUnit": {
+    "jkeys": {
+      "person_name": {}, 
+      "plan_rope": {}, 
+      "reason_context": {}, 
+      "spark_face": {}, 
+      "spark_num": {}
+    }, 
+    "jvalues": {"active_requisite": {}, "knot": {}}
+  }, 
+  "PromPRNUNIT_Unit": {
+    "jkeys": {"moment_rope": {}, "person_name": {}, "spark_face": {}, "spark_num": {}}, 
+    "jvalues": {
+      "credor_respect": {}, 
+      "debtor_respect": {}, 
+      "fund_grain": {}, 
+      "fund_pool": {}, 
+      "knot": {}, 
+      "mana_grain": {}, 
+      "max_tree_traverse": {}, 
+      "respect_grain": {}
+    }
+  }, 
+  "PromTRLLABE_Unit": {
+    "jkeys": {"otx_label": {}, "spark_face": {}, "spark_num": {}}, 
+    "jvalues": {"inx_knot": {}, "inx_label": {}, "otx_knot": {}, "unknown_str": {}}
+  }, 
+  "PromTRLNAME_Unit": {
+    "jkeys": {"otx_name": {}, "spark_face": {}, "spark_num": {}}, 
+    "jvalues": {"inx_knot": {}, "inx_name": {}, "otx_knot": {}, "unknown_str": {}}
+  }, 
+  "PromTRLROPE_Unit": {
+    "jkeys": {"otx_rope": {}, "spark_face": {}, "spark_num": {}}, 
+    "jvalues": {"inx_knot": {}, "inx_rope": {}, "otx_knot": {}, "unknown_str": {}}
+  }, 
+  "PromTRLTITL_Unit": {
+    "jkeys": {"otx_title": {}, "spark_face": {}, "spark_num": {}}, 
+    "jvalues": {"inx_knot": {}, "inx_title": {}, "otx_knot": {}, "unknown_str": {}}
+  }
+}

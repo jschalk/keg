@@ -2,6 +2,8 @@
 
 **Author:** Emmanuel Schalk<br>
 **Date:** 2026-10-05<br>
+**Copied to Keg:** 2026-09-27 <br>
+**Notes:** The Interviewer, David Lipsky, wrote this dialogue from a conversation with David Foster Wallace in 1996. When the internet was just beginning.<br>
 
 > getting what you want all the time
 
@@ -21,7 +23,15 @@ David interupts
 
 Intuitively it's clear to me that staring at a screen is not living. So that being dead from 
 
-Let's work with this concept: A good philosopher should be able to hold a premise and work out what the author intended a little bit. David Foster Wallace was interested in the lived reality of people experiencing pleasure too easily. 
+Let's work with this concept: A good philosopher should be able to hold a premise and work out what the author intended a little bit into a structured system. 
+
+*here's what I got*
+
+### Ontology #0: Life is balance
+
+David Foster Wallace was interested in the lived reality of people experiencing pleasure too easily. Living here is only possible with balance: The effort and the reward should be propotional. The rock climber puts in the effort 
+
+### Ontology #1: Life is love
 
 # TODO complete this article
 
@@ -31,10 +41,5 @@ concept#2: If you become a dopamine addict, all you want is the next hit, you ca
 
 ## Footnotes
 
-[^1]: Film 
+[^1]: Film The End of the Tour movie script (2015)
 
-**Date:** 2015<br>
-**Author:** David Lipsky<br>
-**Source:** The End of the Tour movie script (2015)  <br>
-**Copied to Keg:** 2026-09-27 <br>
-**Notes:** The Interviewer, David Lipsky, wrote this dialogue from a conversation with David Foster Wallace in 1996. When the internet was just beginning.<br>

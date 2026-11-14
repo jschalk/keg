@@ -1,5 +1,7 @@
 # Table of Contents
 
+**[Ellery Stowell Schalk](./hacket_ellery_schalk_obit.md)** David Hackett - 1997-10-01<br>
+
 **[A kind of death](./schalk_a_kind_of_death.md)** Emmanuel Schalk - 2026-10-05<br>
 
 **[All the Monolopy Game required parts](./monopoly_parts.md)** Emmanuel Schalk - 2026-06-21<br>
@@ -13,6 +15,8 @@
 **[Monopoly Standard Rules](./monopoly_rules.md)** Emmanuel Schalk - 2026-06-21<br>
 
 **[No seriously, I don't give a fuck.](./schalk_2010_purpose.md)** Emmanuel Schalk - 2010-09-08<br>
+
+**[On Systems of Thought and Apocalypes](./schalk_on_systems_and_apocalypses.md)** Emmanuel Schalk - 2026-11-03<br>
 
 **[On Tubes](./schalk_on_tubes.md)** Emmanuel Schalk - 2026-09-29<br>
 

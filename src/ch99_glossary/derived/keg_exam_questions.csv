@@ -39,6 +39,7 @@ Did you read that the keyword_definition of 'Revenge' is 'Definition needed or m
 Did you read that the keyword_definition of 'Rival' is 'A different FamilyUnit within a Wheel that is in open competition.'.
 Did you read that the keyword_definition of 'Scaffold' is 'The only way to get to a wheel if not welcomed.'.
 Did you read that the keyword_definition of 'Soldier' is 'As defined by Busta Rhymes in song 'My Shot''.
+Did you read that the keyword_definition of 'Spring' is 'New things pop into being'.
 Did you read that the keyword_definition of 'Stilt' is 'A ladder load-bearing support of a Wheel.'.
 Did you read that the keyword_definition of 'Target' is 'A FamilyUnit with prestige.'.
 Did you read that the keyword_definition of 'Tower' is 'A Stack of FamilyUnits that result in a service being provided to a FamilyUnit in Power.'.
@@ -117,6 +118,8 @@ Did you read that the keyword_definition of 'ch40' is 'Kazani articles.'.
 Did you read that the keyword_definition of 'ch41' is 'Popular Philsophy'.
 Did you read that the keyword_definition of 'ch44' is 'spring for future'.
 Did you read that the keyword_definition of 'ch45' is 'Essays pop_phil'.
+Did you read that the keyword_definition of 'ch46' is 'Articles about the implications of KegWheel Theory'.
+Did you read that the keyword_definition of 'ch47' is 'Archive of Gab'.
 Did you read that the keyword_definition of 'ch54' is 'Short stories'.
 Did you read that the keyword_definition of 'ch90' is 'ETL app to create day punches from excel files.'.
 Did you read that the keyword_definition of 'ch96' is 'Exams that return KPIs of Kegology knowledge.'.
@@ -318,6 +321,7 @@ Did you read that the keyword_definition of 'reasonheirs' is 'Definition needed.
 Did you read that the keyword_definition of 'ManaGrain' is 'float first used in ch08. Smallest Unit of Mana.'.
 Did you read that the keyword_definition of 'PersonName' is 'str first used in ch08. The LabelTerm used to identify a PersonUnit. Must be a LabelTerm/NameTerm because when identifying if a PlanUnit is an active pledge the PersonName will be compared against ContactNames. If they match the pledge will be active.'.
 Did you read that the keyword_definition of 'PersonUnit' is 'Definition needed.'.
+Did you read that the keyword_definition of 'Summer' is 'The best of times. When we get to play.'.
 "Did you read that the keyword_definition of 'ancestors' is ', used with Budget Cells'."
 Did you read that the keyword_definition of 'calc_by_thinkout' is 'Describes when data is defined by thinkout process. Not required seed data.'.
 "Did you read that the keyword_definition of 'contact_mandate_ledger' is ', used with Budget Cells'."
@@ -368,6 +372,7 @@ Did you read that the keyword_definition of 'prnunit' is 'abbv for personunit'.
 "Did you read that the keyword_definition of 'reason_contexts' is ', used with Budget Cells'."
 Did you read that the keyword_definition of 'sqlite_datatype' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'sum_healerunit_plans_fund_total' is ', Person thinkout'."
+Did you read that the keyword_definition of 'summer' is 'The best of times. When we get to play.'.
 Did you read that the keyword_definition of 'CRUD_command' is 'str first used in ch09 that represents database CRUD commands'.
 Did you read that the keyword_definition of 'DELETE' is 'CRUD_COMMAND to delete records for a table'.
 Did you read that the keyword_definition of 'INSERT' is 'CRUD_COMMAND to delete records for a table'.
@@ -815,6 +820,7 @@ Did you read that the keyword_definition of 'moment_kpi001_contact_nets' is 'Def
 Did you read that the keyword_definition of 'moment_kpi002_person_pledges' is 'Definition needed.'.
 Did you read that the keyword_definition of 'WorldName' is 'str first used in ch32. Name of WorldDir'.
 "Did you read that the keyword_definition of 'today' is 'Refences the computer's current date, used to create a day_punch.'."
+"Did you read that the keyword_definition of 'Atla' is 'Short for Atlas, the holder of worlds.'."
 Did you read that the keyword_definition of 'Deal' is 'Definition needed. ch33'.
 Did you read that the keyword_definition of 'Gift' is 'Definition needed.'.
 Did you read that the keyword_definition of 'Peer' is 'Ch33 Definition needed.'.
@@ -822,6 +828,7 @@ Did you read that the keyword_definition of 'PitchID' is 'str first used in ch33
 Did you read that the keyword_definition of 'PitchUnit' is 'Ch33 Definition needed.'.
 Did you read that the keyword_definition of 'Promise' is 'Definition needed.'.
 Did you read that the keyword_definition of 'PromiseUnit' is 'Contains a set Ideas that can be converted into Atoms.'.
+"Did you read that the keyword_definition of 'atla' is 'Short for Atlas, the holder of worlds.'."
 Did you read that the keyword_definition of 'deal' is 'Definition needed. ch33'.
 Did you read that the keyword_definition of 'gift' is 'Definition needed.'.
 Did you read that the keyword_definition of 'offer' is 'Ch33 Definition needed.'.
@@ -832,6 +839,7 @@ Did you read that the keyword_definition of 'pitcher_name' is 'Ch33 Definition n
 Did you read that the keyword_definition of 'pitchs' is 'Definition needed.'.
 Did you read that the keyword_definition of 'promise' is 'Definition needed.'.
 Did you read that the keyword_definition of 'request' is 'Ch33 Definition needed.'.
+"Did you read that the keyword_definition of 'ride' is 'The act of recognizing authority, leadership. 'Who do I ride with?''."
 Did you read that the keyword_definition of 'vow' is 'ideas created for audience'.
 Did you read that the keyword_definition of 'finance' is 'Definition needed.'.
 Did you read that the keyword_definition of 'financial' is 'Definition needed.'.
@@ -859,6 +867,7 @@ Did you read that the keyword_definition of 'power' is 'Defintion needed.'.
 Did you read that the keyword_definition of 'totality' is 'As described in Totality and Infinity.'.
 Did you read that the keyword_definition of 'water' is 'Definition needed.'.
 Did you read that the keyword_definition of 'welcome' is 'For a FamilyUnit outside a wheel to get into the Wheel it must be invited.'.
+Did you read that the keyword_definition of 'Empire' is 'Empire is incompatible with Republic.'.
 "Did you read that the keyword_definition of 'Faction' is 'A community of FamilyUnits unified by a political loyality. Power is never exercised (or won) by individuals. It is always exercised (or won) by factions. Power is always collective, factional. In the centre of it, there is always a group of individuals, tied with strong informal connections with each other. I call it, a faction.'."
 "Did you read that the keyword_definition of 'Hayek' is 'Fredrich Hayek, philosopher. Often incorrectly interpreted and since he's dead he can't refute them.'."
 Did you read that the keyword_definition of 'Hobbit' is 'Part of Kazani theory 'The Hobbit Theory of Man' that our grandparents accepted evil within us. Not so now.'.
@@ -866,10 +875,12 @@ Did you read that the keyword_definition of 'Kronos' is 'Greek God of War and Ti
 "Did you read that the keyword_definition of 'Land' is 'When referenced in context of KegWheel, the root source of all wheel_size (Power).'."
 Did you read that the keyword_definition of 'Lord' is 'Definition needed.'.
 Did you read that the keyword_definition of 'Loyal' is 'Definition needed.'.
+Did you read that the keyword_definition of 'Republic' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'Ride' is 'The act of recognizing authority, leadership. 'Who do I ride with?''."
 Did you read that the keyword_definition of 'Shill' is 'A Rider for a bad person.'.
 Did you read that the keyword_definition of 'Soil' is 'Definition needed.'.
 Did you read that the keyword_definition of 'cow' is 'A FamilyUnit without Prestige. Consider whether it's a useful term.'.
+Did you read that the keyword_definition of 'empire' is 'Empire is incompatible with Republic.'.
 "Did you read that the keyword_definition of 'faction' is 'A community of FamilyUnits unified by a political loyality. Power is never exercised (or won) by individuals. It is always exercised (or won) by factions. Power is always collective, factional. In the centre of it, there is always a group of individuals, tied with strong informal connections with each other. I call it, a faction.'."
 Did you read that the keyword_definition of 'hive' is 'A community of FamilyUnits unified by a purpose'.
 Did you read that the keyword_definition of 'honor' is 'Definition Needed.'.
@@ -884,7 +895,7 @@ Did you read that the keyword_definition of 'loyal' is 'Definition needed.'.
 Did you read that the keyword_definition of 'oil' is 'Definition needed.'.
 Did you read that the keyword_definition of 'pay' is 'If you want something you have to pay for it.'.
 Did you read that the keyword_definition of 'prestige' is 'An instance of Prestige.'.
-"Did you read that the keyword_definition of 'ride' is 'The act of recognizing authority, leadership. 'Who do I ride with?''."
+Did you read that the keyword_definition of 'republic' is 'Definition needed.'.
 Did you read that the keyword_definition of 'rival' is 'A different FamilyUnit within a Wheel that is in open competition.'.
 Did you read that the keyword_definition of 'shill' is 'A Rider for a bad person.'.
 Did you read that the keyword_definition of 'soil' is 'Definition needed.'.
@@ -897,6 +908,7 @@ Did you read that the keyword_definition of 'winning' is 'The act of a FamilyUni
 Did you read that the keyword_definition of 'Rise' is 'Defined by Busta Rhymes in 'My Shot''.
 Did you read that the keyword_definition of 'Shot' is 'I'm not throwing away my shot.'.
 Did you read that the keyword_definition of 'Winning' is 'The act of a FamilyUnit getting more Prestige.'.
+Did you read that the keyword_definition of 'Winter' is 'The coldest time. The time that must be prepared for.'.
 Did you read that the keyword_definition of 'climb' is 'To connote the action a FamilyUnit takes to gain Prestige.'.
 Did you read that the keyword_definition of 'discipline' is 'A moment that has Discipline. Check 'Discipline' definition.'.
 Did you read that the keyword_definition of 'drag' is 'Opposite of Lift. When a FamilyUnit shuts off support to bring a FamilyUnit down.'.
@@ -907,6 +919,8 @@ Did you read that the keyword_definition of 'pump' is 'Definition needed.'.
 Did you read that the keyword_definition of 'revenge' is 'Definition needed or maybe not.'.
 Did you read that the keyword_definition of 'shot' is 'I'm not throwing away my shot.'.
 Did you read that the keyword_definition of 'soldier' is 'As defined by Busta Rhymes in song 'My Shot''.
+Did you read that the keyword_definition of 'spring' is 'New things pop into being'.
+Did you read that the keyword_definition of 'winter' is 'The coldest time. The time that must be prepared for.'.
 Did you read that the keyword_definition of 'Climb' is 'To connote the action a FamilyUnit takes to gain Prestige.'.
 "Did you read that the keyword_definition of 'Discipline' is 'Moments that have an active budget and ledger, and for which some people crawl has Discipline. A government that exists and is important.'."
 Did you read that the keyword_definition of 'Fall' is 'When a FamilyUnit loses all Prestige and exits power.'.

@@ -1,10 +1,10 @@
 from ch05_rope.rope import default_knot_if_None
 from ch17_jargon.jargon_config import (
+    get_jargon_column_ref,
     get_jargon_labelterm_args,
     get_jargon_nameterm_args,
     get_jargon_ropeterm_args,
     get_jargon_titleterm_args,
-    get_jargon_column_ref,
 )
 from ch17_jargon.jargon_main import default_unknown_str_if_None
 from ch19_db_tool.db_toolbox import (
@@ -15,9 +15,9 @@ from ch19_db_tool.db_toolbox import (
 from ch20_brick.brick_config import get_brick_dimen_ref
 from ch22_etl_config.etl_sqlstr import (
     create_insert_into_jargon_core_raw_sqlstr,
-    create_insert_missing_spark_face_into_jargon_core_vld_sqlstr,
     create_insert_jargon_core_agg_into_vld_sqlstr,
     create_insert_jargon_sound_vld_table_sqlstr,
+    create_insert_missing_spark_face_into_jargon_core_vld_sqlstr,
     create_knot_exists_in_label_error_update_sqlstr,
     create_knot_exists_in_name_error_update_sqlstr,
     create_prime_tablename,

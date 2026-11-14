@@ -10,7 +10,7 @@
 ---
 
 
-PHIL 5304 Ethics & Science, Dr. Simon, University of Texas at El Paso, Spring 2013<br>
+PHIL 5304 Ethics & Science, Dr. Simon, University of Texas at El Paso, Spr 2013<br>
 Paper #1 on Experiments in Ethics by Kwame Appiah <br>
 Emmanuel Schalk, Graduate Student
 

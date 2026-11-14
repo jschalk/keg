@@ -22,8 +22,8 @@ from ch38_article.article_toolbox import (
     get_markdown_file_metadata,
 )
 from ch97_docs_builder._ref.ch97_path import (
-    create_chapter_ref_path,
     create_chapter_catalogue_path,
+    create_chapter_ref_path,
 )
 from ch97_docs_builder.glossary_definition import rebuild_keywords_definitions_contents
 from ch97_docs_builder.glossary_ranking import (

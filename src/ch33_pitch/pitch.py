@@ -2,7 +2,7 @@ from ch00_py.dict_toolbox import get_0_if_None
 from ch10_person_lesson.lesson_main import LessonUnit
 from ch32_world.world import WorldName
 from ch33_pitch._ref.ch33_semantic_types import PersonName, SparkInt
-from ch33_pitch.promise import PromiseUnit
+from ch33_pitch.promisebrick_main import PromiseUnit
 from dataclasses import dataclass
 
 
@@ -56,3 +56,13 @@ def pitchunit_shop(
 # When a pitch is given the gift must automatically be bricked. The gift's spark_num
 # could be added to the PitchUnit. Then if the pitch is accepted
 # Deal deal needs to be added here so the word isn't used anywhere else.
+
+
+@dataclass
+class AtlaUnit:
+    atla_name: str = None
+    pitch_id: str = None
+    old_world_dir: str = None
+    gift_world_dir: str = None
+    new_world_dir: str = None
+    difference_report: str = None

@@ -23,9 +23,9 @@ from ch22_etl_config.etl_config import (
 )
 from ch22_etl_config.etl_sqlstr import (
     create_insert_into_jargon_core_raw_sqlstr,
-    create_insert_missing_spark_face_into_jargon_core_vld_sqlstr,
     create_insert_jargon_core_agg_into_vld_sqlstr,
     create_insert_jargon_sound_vld_table_sqlstr,
+    create_insert_missing_spark_face_into_jargon_core_vld_sqlstr,
     create_prime_db_table,
     create_prime_tablename as prime_tbl,
     create_sound_agg_insert_sqlstrs,

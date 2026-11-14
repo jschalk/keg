@@ -1,4 +1,20 @@
+from ch00_py.file_toolbox import create_path, open_json
 from dataclasses import dataclass
+
+
+def get_promisebrick_filename() -> str:
+    return "promisebr_config.json"
+
+
+def promisebrick_config_path() -> str:
+    "Returns path: ch33_pitch/promisebr_config.json"
+    chapter_dir = create_path("src", "ch33_pitch")
+    return create_path(chapter_dir, get_promisebrick_filename())
+
+
+def get_promisebrick_config_dict() -> dict:
+    return open_json(promisebrick_config_path())
+
 
 PITCH_NUMERICAL_ARGS = {
     'active_requisite': {'sqlite_datatype': 'INTEGER'},

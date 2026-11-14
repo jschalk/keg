@@ -1,5 +1,5 @@
-from ch18_speech.yap_term import nameyap_shop
 from ch18_speech.speech_main import speechunit_shop
+from ch18_speech.yap_term import nameyap_shop
 from ch99_glossary.ch_keyword import ExampleStrs as exx
 from pytest import raises as pytest_raises
 

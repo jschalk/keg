@@ -1,10 +1,10 @@
 from ch05_rope.rope import create_rope, to_rope
+from ch17_jargon.jargon_main import jargonunit_shop
 from ch17_jargon.map_term import namemap_shop
 from ch17_jargon.test._util.ch17_examples import (
     get_casa_maison_jargonunit_set_by_label,
     get_casa_maison_jargonunit_set_by_otx2inx,
 )
-from ch17_jargon.jargon_main import jargonunit_shop
 from ch20_brick.brick_db_tool import (
     get_dataframe_jargonable_columns,
     jargon_all_columns_dataframe,

@@ -5,10 +5,13 @@ from ch18_speech.yap_term import (
     inherit_nameyap,
     nameyap_shop,
 )
-from ch99_glossary.ch_keyword import Ch17Keywords as kw, ExampleStrs as exx
+from ch99_glossary.ch_keyword import (
+    Ch17Keywords as kw,
+    Ch18Keywords as kw,
+    ExampleStrs as exx,
+)
 from numpy import int64 as numpy_int64
 from pytest import raises as pytest_raises
-from ch99_glossary.ch_keyword import Ch18Keywords as kw
 
 
 def test_NameYap_Exists():

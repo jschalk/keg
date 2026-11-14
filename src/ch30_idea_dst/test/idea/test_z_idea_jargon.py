@@ -4,11 +4,11 @@ from ch22_etl_config.etl_sqlstr import (
 )
 from ch23_idea_src.idea_csv import create_init_idea_csv_strs
 from ch30_idea_dst.lego_db2df import (
+    add_jargon_rows_to_idea_csv_strs,
     add_to_ii00142_csv,
     add_to_ii00143_csv,
     add_to_ii00144_csv,
     add_to_ii00145_csv,
-    add_jargon_rows_to_idea_csv_strs,
 )
 from ch99_glossary.ch_keyword import Ch30Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor

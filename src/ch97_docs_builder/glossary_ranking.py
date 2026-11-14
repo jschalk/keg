@@ -15,9 +15,9 @@ from csv import writer as csv_writer
 from dataclasses import dataclass
 from json import dumps as json_dumps
 from os.path import join as os_path_join
+from pandas import DataFrame, read_excel as pandas_read_excel
 from pathlib import Path
 from re import search as re_search
-from pandas import read_excel as pandas_read_excel, DataFrame
 
 
 @dataclass

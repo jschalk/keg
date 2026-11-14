@@ -1,14 +1,14 @@
 from ch05_rope.rope import default_knot_if_None
+from ch18_speech.speech_main import (
+    _get_rid_of_speech_core_keys,
+    get_speechunit_from_dict,
+    speechunit_shop,
+)
 from ch18_speech.test._util.ch18_examples import (
     get_slash_labelyap,
     get_slash_nameyap,
     get_slash_ropeyap,
     get_slash_titleyap,
-)
-from ch18_speech.speech_main import (
-    _get_rid_of_speech_core_keys,
-    get_speechunit_from_dict,
-    speechunit_shop,
 )
 from ch99_glossary.ch_keyword import Ch18Keywords as kw, ExampleStrs as exx
 

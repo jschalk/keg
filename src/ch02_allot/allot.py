@@ -194,7 +194,6 @@ def _calc_final_allot(final_allots: dict[str, dict]) -> dict[str, PoolNum]:
         #     if len(x_element) > max_element_length:
         #         max_element_length = len(x_element)
         calc_allot_up_to_parent = final_allot_keys.pop(-1)
-        # assert len(calc_allot_up_to_parent) == max_element_length
         child_to_push = final_allots.get(calc_allot_up_to_parent)
         calc_allot_up_to_parent = list(calc_allot_up_to_parent)
 

@@ -3,12 +3,12 @@
 
 **Author:** Jules Simon<br>
 **Date:** 2014-1<br>
-**Source:** Handout distributed during Spring 2014 Levinas course at University Texas El Paso.<br>
+**Source:** Handout distributed during Spr 2014 Levinas course at University Texas El Paso.<br>
 **Copied to Keg:** 2026-08-14<br>
 
 ---
 
-#### Great Philosophers/World Historical Philosophers<br>PHIL 5351 // PHIL 4351 // MAIS 5350<br>UTEP: Spring Semester 2014: Tuesday 4:30-7:20pm
+#### Great Philosophers/World Historical Philosophers<br>PHIL 5351 // PHIL 4351 // MAIS 5350<br>UTEP: Spr Semester 2014: Tuesday 4:30-7:20pm
 
 Dr. Simon - Northwestern - center of phenomenology in the U.S. His dissertation: Rosenzweig and Heidegger, art. Levinas’s dissertation: Theory of Intuition in Husserl
 
@@ -47,7 +47,7 @@ February
 
 March
 <br>4 (6) TI, “The Ambiguity of Love” and “Phenomenology and Eros,” 251-266
-<br>10 Spring Break
+<br>10 Spr Break
 <br>18 (7) Otherwise Than Being (OTB) “Essence and Disinterest” 3-20; paper #1 due
 <br>25 (8) ”Intentionality and Sensing” 23-59
 

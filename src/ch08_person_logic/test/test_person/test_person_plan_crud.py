@@ -24,7 +24,7 @@ def test_PersonUnit_set_plan_ScenarioXX_RaisesErrorWhen_parent_rope_IsInvalid():
     assert str(excinfo.value) == exception_str
 
 
-def test_PersonUnit_set_plan_ScenarioXX_RaisesErrorWhen_parent_rope_PlanDoesNotExist():
+def test_PersonUnit_set_plan_ScenarioXX_RaisesErrorWhen_parent_rope_Plan_DoesNotExist():
     # ESTABLISH
     zia_person = personunit_shop("Zia")
     bowl_rope = zia_person.make_l1_rope("bowling")
@@ -646,7 +646,7 @@ def test_PersonUnit_set_plan_ScenarioXX_MustReorderKidsDictToBeAlphabetical():
     assert plan_list[1].plan_label == exx.casa
 
 
-def test_PersonUnit_set_plan_ScenarioXX_adoptee_RaisesErrorIfAdopteePlanDoesNotHaveParent():
+def test_PersonUnit_set_plan_ScenarioXX_adoptee_RaisesErrorIfAdopteePlan_DoesNotHaveParent():
     # ESTABLISH
     bob_person = personunit_shop("Bob")
     sports_str = "sports"

@@ -1,10 +1,10 @@
 from ch00_py.dict_toolbox import get_1_if_None
 from ch02_allot.allot import allot_scale, default_grain_num_if_None
 from ch03_contact._ref.ch03_semantic_types import (
+    BossMass,
     ContactName,
     FundGrain,
     GroupTitle,
-    BossMass,
     TrustMass,
 )
 from dataclasses import dataclass

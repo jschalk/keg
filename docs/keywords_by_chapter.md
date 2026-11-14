@@ -9,7 +9,7 @@
 - ch05_rope: FirstLabel, KnotTerm, LabelTerm, RopeTerm, ch05, knot, meaning, parent_rope
 - ch06_reason: FactNum, ReasonNum, active_requisite, case_active, case_task, cases, ch06, fact, fact_context, fact_lower, fact_state, fact_upper, factheirs, factunits, parent_heir_active, reason_active, reason_context, reason_divisor, reason_lower, reason_state, reason_task, reason_upper, reasonunits
 - ch07_plan: addin, all_contact_cred, all_contact_debt, awardheirs, awardlines, begin, ch07, denom, descendant_pledge_count, fund_cease, fund_onset, fund_pool, fund_ratio, gogo_calc, gogo_want, healer_name, healerunit, healerunit_ratio, is_expanded, kids, morph, numor, plan, plan_active, plan_active_hx, plan_fund_total, plan_label, plan_rope, plan_task, plan_uid, pledge, poynt, problem_bool, range_evaluated, range_inheritors, reasonheirs, stop_calc, stop_want, tree_level, tree_traverse_count
-- ch08_person_logic: ManaGrain, PersonName, PersonUnit, ancestors, calc_by_thinkout, ch08, contact_mandate_ledger, contact_pool, contacts, context_plan_close, context_plan_denom, context_plan_morph, credor_respect, debtor_respect, dimen, dimens, jkeys, jvalues, keep_rope, keeps_buildable, keeps_justified, last_lesson_id, mana_grain, mandate, max_tree_traverse, obj_type, offtrack_fund, offtrack_kids_poynt_set, person_contact_membership, person_contactunit, person_groupunit, person_plan_awardunit, person_plan_factunit, person_plan_healerunit, person_plan_laborunit, person_plan_reason_caseunit, person_plan_reasonunit, person_planunit, personunit, planroot, prnawar, prncase, prncont, prnfact, prngrou, prnheal, prnlabo, prnmemb, prnplan, prnreas, prnunit, reason_contexts, sqlite_datatype, sum_healerunit_plans_fund_total
+- ch08_person_logic: ManaGrain, PersonName, PersonUnit, Summer, ancestors, calc_by_thinkout, ch08, contact_mandate_ledger, contact_pool, contacts, context_plan_close, context_plan_denom, context_plan_morph, credor_respect, debtor_respect, dimen, dimens, jkeys, jvalues, keep_rope, keeps_buildable, keeps_justified, last_lesson_id, mana_grain, mandate, max_tree_traverse, obj_type, offtrack_fund, offtrack_kids_poynt_set, person_contact_membership, person_contactunit, person_groupunit, person_plan_awardunit, person_plan_factunit, person_plan_healerunit, person_plan_laborunit, person_plan_reason_caseunit, person_plan_reasonunit, person_planunit, personunit, planroot, prnawar, prncase, prncont, prnfact, prngrou, prnheal, prnlabo, prnmemb, prnplan, prnreas, prnunit, reason_contexts, sqlite_datatype, sum_healerunit_plans_fund_total, summer
 - ch09_person_atom: CRUD_command, DELETE, INSERT, UPDATE, atom, awardee_title_ERASE, ch09, column_ordinal, contact_name_ERASE, crud, fact_context_ERASE, group_title_ERASE, healer_name_ERASE, labor_title_ERASE, nesting_order, normal_specs, normal_table_name, person_name_ERASE, plan_rope_ERASE, reason_context_ERASE, reason_state_ERASE
 - ch10_person_lesson: FaceName, Lasso, MomentRope, ch10, gut, lasso, moment, moment_mstr_dir, moment_rope, spark_face, spark_num
 - ch11_person_listen: ch11, job, listener, speaker
@@ -31,16 +31,18 @@
 - ch30_idea_dst: ch30
 - ch31_kpi: DayEvent, Event, ch31, day_punch, default_kpi_bundle, gcal, moment_kpi001_contact_nets, moment_kpi002_person_pledges
 - ch32_world: WorldName, ch32, today
-- ch33_pitch: Deal, Gift, Peer, PitchID, PitchUnit, Promise, PromiseUnit, ch33, deal, gift, offer, peer, pitch, pitch_id, pitcher_name, pitchs, promise, request, vow
+- ch33_pitch: Atla, Deal, Gift, Peer, PitchID, PitchUnit, Promise, PromiseUnit, atla, ch33, deal, gift, offer, peer, pitch, pitch_id, pitcher_name, pitchs, promise, request, ride, vow
 - ch34_finance: ch34, finance, financial
 - ch35_person_viewer: ch35
 - ch36_news: News, ch36, news
 - ch38_article: Article, article, ch38
 - ch39_levinas: American, God, Home, Infinity, Pillar, Totality, Water, bearing, ch39, god, grateful, gravity, home, hose, infinity, invite, land, power, totality, water, welcome
-- ch40_kazani: Faction, Hayek, Hobbit, Kronos, Land, Lord, Loyal, Ride, Shill, Soil, ch40, cow, faction, hive, honor, impression, invitation, knee, kronosmax, ladder, lord, losing, loyal, oil, pay, prestige, ride, rival, shill, soil, trash, trooper, winner, winning
+- ch40_kazani: Empire, Faction, Hayek, Hobbit, Kronos, Land, Lord, Loyal, Republic, Ride, Shill, Soil, ch40, cow, empire, faction, hive, honor, impression, invitation, knee, kronosmax, ladder, lord, losing, loyal, oil, pay, prestige, republic, rival, shill, soil, trash, trooper, winner, winning
 - ch41_pop_phil: ch41
-- ch44_spring: Kegology, Monopoly, Rise, Shot, Winning, ch44, climb, discipline, drag, heart, jump, kegology, pump, revenge, shot, soldier
+- ch44_spring: Kegology, Monopoly, Rise, Shot, Winning, Winter, ch44, climb, discipline, drag, heart, jump, kegology, pump, revenge, shot, soldier, spring, winter
 - ch45_wheel: Climb, Discipline, Fall, Honor, KegWheel, Losing, Pay, Prestige, Stable, Welcome, Wheel, alien, ch45, cling, fall, kneeler, lift, linchpin, loser, pillar, stable, valor, wheel, wheelers
+- ch46_mirth: ch46
+- ch47_gab: ch47
 - ch54_fable: Purpil, ch54
 - ch90_puncher_app: Puncher, Team, ch90, puncher, team
 - ch96_exam: ch96

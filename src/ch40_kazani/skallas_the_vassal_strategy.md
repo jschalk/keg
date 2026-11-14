@@ -31,7 +31,7 @@ Besides, there are not many winners in life. A small number of people capture a 
 
 *link to tiktok of Peter Thiel talking about never betting against Elon Musk.*
 
-In finance, you see these cults spring up because coattail investing is a legitimate strategy. If some people really are much better than others at allocating capital, then following them is not insane. It is a shortcut.
+In finance, you see these cults pop up because coattail investing is a legitimate strategy. If some people really are much better than others at allocating capital, then following them is not insane. It is a shortcut.
 
 But now the internet has generalized that model across the whole economy. Marketing, sales, manufacturing, startups, politics. The pitch is always slightly different, but the underlying offer is the same, attach yourself to me and I will carry you into a world you cannot enter alone.
 

@@ -1,5 +1,5 @@
 from ch00_py.file_toolbox import create_path, get_dir_file_strs, save_file
-from ch98_linter.chapter_move_tool import (
+from ch98_linter.ch_move_tool import (
     delete_if_empty_or_pycache_only,
     first_level_dirs_with_prefix,
     rename_files_and_dirs,

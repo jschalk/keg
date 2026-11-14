@@ -1,8 +1,8 @@
 from ch97_docs_builder.glossary_definition import (
     get_count_keg_terms_by_chapters,
     get_count_strs_by_dirs,
-    get_keywords_definitions,
     get_focus_keyword_frequency,
+    get_keywords_definitions,
 )
 from ch99_glossary.ch_keyword import Ch97Keywords as kw
 

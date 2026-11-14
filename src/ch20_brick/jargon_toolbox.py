@@ -1,10 +1,10 @@
 from ch00_py.file_toolbox import create_path, get_dir_file_strs, save_file
 from ch17_jargon.jargon_main import (
+    JargonUnit,
     LabelMap,
     NameMap,
     RopeMap,
     TitleMap,
-    JargonUnit,
     jargonunit_shop,
 )
 from ch20_brick.brick_db_tool import get_ordered_csv, open_csv

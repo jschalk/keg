@@ -17,10 +17,10 @@ from ch05_rope.rope import (
 )
 from ch18_speech._ref.ch18_semantic_types import (
     AudieTitle,
+    FlareInt,
     KnotTerm,
     LabelTerm,
     RopeTerm,
-    FlareInt,
     default_knot_if_None,
 )
 from copy import copy as copy_copy

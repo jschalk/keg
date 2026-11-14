@@ -49,3 +49,10 @@ def count_code_and_pytest_lines(directory, extensions=None, ignore_hidden=True):
                 continue
 
     return {"total": total_lines, "pytest": pytest_lines}
+
+
+if __name__ == "__main__":
+    src_dir = input("src dir: ").strip()
+    x_dict = count_code_and_pytest_lines(src_dir)
+    for lines_key, lines_value in x_dict.items():
+        print(f"{lines_key} lines: {lines_value}")

@@ -1,4 +1,4 @@
-from ch00_py.file_toolbox import create_path, get_level1_dirs, open_json, save_json
+from ch00_py.file_toolbox import create_path, get_level1_dirs, open_json
 from ch01_keyword.chapter_desc_main import get_chapter_desc_str_number
 from ch97_docs_builder.doc_builder import get_chapter_desc_prefix
 from ch98_linter.style import (
@@ -37,18 +37,19 @@ def test_Chapters_test_Tests_AreInCorrectDirStructure():
                 assert level1_dir == test_str
 
 
-def test_Chapters_NonTestFilesDoNotHavePrintStatments():
+def test_Chapters_NonTestPythonFilesDoNotHavePrintOrAssertStrs():
     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
-    # TODO consider replaceing "print" with not-allowed-strings and include " assert "
     # ESTABLISH
-    print_str = "print"
+    not_allowed_strs = {"print", "assert"}
     excluded_files = {
         "puncher_app.py",
-        "chapter_move_tool.py",
-        "ch_move1.py",
-        "ch_move_many.py",
-        "create_notebook.py",
-        "src_paths_rename.py",
+        "ch_create_script.py",
+        "ch_move_tool.py",
+        "ch_move_single_script.py",
+        "ch_move_many_script.py",
+        "create_notebook_script.py",
+        "src_paths_rename_script.py",
+        "line_counter_script.py",
         "style.py",
     }
 
@@ -57,15 +58,18 @@ def test_Chapters_NonTestFilesDoNotHavePrintStatments():
         py_files = [f for f in os_listdir(chapter_dir) if f.endswith(".py")]
         for py_file in py_files:
             py_file_path = create_path(chapter_dir, py_file)
-            py_file_str = open(py_file_path, encoding="utf-8").read()
-            print_str_in_py_file_bool = print_str in py_file_str
-            for excluded_file in excluded_files:
-                if excluded_file in py_file_path:
-                    print_str_in_py_file_bool = False
-            assertion_fail_str = (
-                f"Chapter {chapter_desc} file {py_file_path} has print statement"
-            )
-            assert not print_str_in_py_file_bool, assertion_fail_str
+            is_excluded_file = any(file in py_file_path for file in excluded_files)
+            if not is_excluded_file:
+                py_file_str = open(py_file_path, encoding="utf-8").read()
+                print_str_in_py_file_bool = False
+                for not_allowed_str in not_allowed_strs:
+                    print_str_in_py_file_bool = not_allowed_str in py_file_str
+                if print_str_in_py_file_bool:
+                    print(f"{not_allowed_str=} {py_file=}")
+                assertion_fail_str = (
+                    f"Chapter {chapter_desc} file {py_file_path} has print statement"
+                )
+                assert not print_str_in_py_file_bool, assertion_fail_str
 
 
 def test_Chapters_NonTestFilesDoNotHaveStringFunctionsImports():
@@ -118,9 +122,10 @@ def test_Chapters_ReferenceDir_ref_ExistsForEveryChapter_Scenario0():
         chapter_blurb_str = "chapter_blurb"
         chapter_number_str = "chapter_number"
         chapter_content_str = "chapter_content"
+        chapter_md_required_str = "chapter_md_required"
         ontology_str = "ontology summary"
         keys_assertion_fail_str = f"ref json for {chapter_desc} missing required key(s)"
-        expected_ref_keys = {
+        required_ref_keys = {
             chapter_blurb_str,
             chapter_description_str,
             chapter_number_str,
@@ -128,7 +133,20 @@ def test_Chapters_ReferenceDir_ref_ExistsForEveryChapter_Scenario0():
             ontology_str,
             catalogue_yn,
         }
-        assert ref_keys == expected_ref_keys, keys_assertion_fail_str
+        # print(f"{required_ref_keys=}")
+        assert required_ref_keys.issubset(ref_keys), keys_assertion_fail_str
+        allowed_ref_keys = {
+            chapter_blurb_str,
+            chapter_description_str,
+            chapter_number_str,
+            chapter_content_str,
+            ontology_str,
+            catalogue_yn,
+            chapter_md_required_str,
+        }
+        # print(f"{required_ref_keys=}")
+        keys_assertion_fail2_str = f"{chapter_desc} ref has non-allowed keys"
+        assert ref_keys.issubset(allowed_ref_keys), keys_assertion_fail2_str
         assert chapter_ref_dict.get(chapter_description_str) == chapter_desc
         ref_chapter_blurb = chapter_ref_dict.get(chapter_blurb_str)
         MAX_CHAPTER_BLURB_LENGTH = 88  # arbitrarily choosen
@@ -139,7 +157,7 @@ def test_Chapters_ReferenceDir_ref_ExistsForEveryChapter_Scenario0():
             f"{chapter_desc} {ontology_str} str value is empty"
         )
         ontology_summary = chapter_ref_dict.get(ontology_str)
-        print(f"{ontology_summary=}")
+        # print(f"{ontology_summary=}")
         assert ontology_summary, ontology_assertion_fail_str
         ref_chapter_content = chapter_ref_dict.get(chapter_content_str)
         content_assertion_fail_str = f"{chapter_desc} {chapter_content_str} is invalid"

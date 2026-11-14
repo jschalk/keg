@@ -91,7 +91,7 @@ Don't take me wrong, I respect protesters. I just point out that *people can nev
 
 If you don't believe me, consult the recent footages from Levant.
 
-<div align="center"><img src="images/destoryed_city.webp" alt="Devastated city center, rubble." width="500"></div>
+<div align="center"><img src="images/destroyed_city1.webp" alt="Devastated city center, rubble." width="500"></div>
 
 
 Prigozhin, on the other hand, could not be kept alive for long. He harnessed a very dangerous energy: the discontent of Boots. What was scary about his revolt, is the very wide sympathy, non resistance or even active collaboration by much of the military, including the elite troops

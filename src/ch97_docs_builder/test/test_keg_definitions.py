@@ -21,6 +21,8 @@ from ch20_brick.brick_config import get_brick_config_dict
 from ch22_etl_config.etl_config import get_etl_stage_types_config_dict
 from ch26_heard.heard import etl_heard_raw_tables_to_lego_moment_ote1_agg
 from ch97_docs_builder._ref.ch97_semantic_types import (
+    AudieTitle,
+    BossMass,
     BreakTerm,
     ContactName,
     CRUD_command,
@@ -28,6 +30,7 @@ from ch97_docs_builder._ref.ch97_semantic_types import (
     FaceName,
     FactNum,
     FirstLabel,
+    FlareInt,
     FundGrain,
     FundNum,
     GrainNum,
@@ -51,12 +54,9 @@ from ch97_docs_builder._ref.ch97_semantic_types import (
     SparkInt,
     TimeNum,
     TitleTerm,
-    WeightNum,
-    BossMass,
     TrustMass,
+    WeightNum,
     WorldName,
-    FlareInt,
-    AudieTitle,
 )
 from ch97_docs_builder.glossary_definition import (
     get_chxx_prefix_path_dict,

@@ -3,7 +3,8 @@
   "American": {"valid_ch": "39, 40, 44"}, 
   "Anaday": {"valid_ch": "14, 23"}, 
   "Apex": {"valid_ch": ""}, 
-  "Article": {"valid_ch": "38, 40, 44, 45"}, 
+  "Article": {"valid_ch": "38, 40, 44, 45, 46"}, 
+  "Atla": {"valid_ch": "33"}, 
   "Audie": {"valid_ch": "18, 44, 97"}, 
   "AudieTitle": {"semantic_type": "str", "valid_ch": "18, 97"}, 
   "Axle": {"valid_ch": ""}, 
@@ -27,15 +28,16 @@
   "Danceday": {"valid_ch": "14, 23"}, 
   "DayEvent": {"valid_ch": "31"}, 
   "Deal": {"valid_ch": "33, 44"}, 
-  "Discipline": {"valid_ch": "45"}, 
+  "Discipline": {"valid_ch": "45, 46"}, 
   "Drag": {"valid_ch": ""}, 
   "Drift": {"valid_ch": ""}, 
   "Duck": {"valid_ch": ""}, 
   "Eastday": {"valid_ch": "14, 23"}, 
+  "Empire": {"valid_ch": "40"}, 
   "Epoch": {"valid_ch": "14, 15, 16, 31, 97"}, 
   "EpochLabel": {"semantic_type": "str", "valid_ch": "14, 16, 97"}, 
   "Event": {"valid_ch": "31, 40"}, 
-  "Excel": {"valid_ch": "20, 22, 23, 24, 30, 32, 39, 45, 90, 97"}, 
+  "Excel": {"valid_ch": "20, 22, 23, 24, 30, 32, 39, 46, 90, 97"}, 
   "FaceName": {"semantic_type": "str", "valid_ch": "10, 16, 17, 20, 23, 24, 27, 97"}, 
   "FactNum": {"semantic_type": "float", "valid_ch": "6, 8, 9, 14, 16, 17, 18, 20, 97"}, 
   "Faction": {"valid_ch": "40"}, 
@@ -75,8 +77,8 @@
   "Juggling": {"valid_ch": ""}, 
   "Jump": {"valid_ch": ""}, 
   "Keel": {"valid_ch": "14, 23"}, 
-  "KegWheel": {"valid_ch": "45"}, 
-  "Kegology": {"valid_ch": "44, 45, 96, 97"}, 
+  "KegWheel": {"valid_ch": "45, 46"}, 
+  "Kegology": {"valid_ch": "44, 45, 46, 96, 97"}, 
   "Keyword": {
     "valid_ch": "1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 45, 90, 97, 98"
   }, 
@@ -108,7 +110,7 @@
     "semantic_type": "str", 
     "valid_ch": "10, 11, 12, 13, 15, 16, 20, 23, 26, 27, 31, 97"
   }, 
-  "Monopoly": {"valid_ch": "44, 45, 90"}, 
+  "Monopoly": {"valid_ch": "44, 45, 46, 90"}, 
   "Nabu": {"valid_ch": "16, 22, 26, 97, 98"}, 
   "NabuTime": {"valid_ch": "16, 26"}, 
   "NameTerm": {
@@ -116,7 +118,7 @@
     "valid_ch": "3, 5, 8, 9, 10, 15, 17, 18, 20, 22, 25, 26, 97"
   }, 
   "News": {"valid_ch": "36"}, 
-  "Ninon": {"valid_ch": "14, 23, 40"}, 
+  "Ninon": {"valid_ch": "14, 23, 44"}, 
   "Obama": {"valid_ch": "14, 23, 40, 44, 45"}, 
   "Oil": {"valid_ch": ""}, 
   "Palm": {"valid_ch": ""}, 
@@ -143,6 +145,7 @@
   "Pyramid": {"valid_ch": ""}, 
   "Quorum": {"valid_ch": "14, 23"}, 
   "ReasonNum": {"semantic_type": "float", "valid_ch": "6, 7, 8, 9, 14, 16, 17, 18, 20, 97"}, 
+  "Republic": {"valid_ch": "40"}, 
   "RespectGrain": {"semantic_type": "float", "valid_ch": "3, 8, 15, 97"}, 
   "RespectNum": {"semantic_type": "float", "valid_ch": "3, 5, 8, 11, 13, 97"}, 
   "Revenge": {"valid_ch": ""}, 
@@ -167,8 +170,10 @@
     "valid_ch": "12, 13, 15, 16, 17, 18, 20, 24, 27, 33, 97"
   }, 
   "Speech": {"valid_ch": "18"}, 
+  "Spring": {"valid_ch": ""}, 
   "Stable": {"valid_ch": "45"}, 
   "Stilt": {"valid_ch": ""}, 
+  "Summer": {"valid_ch": "8, 35"}, 
   "Target": {"valid_ch": ""}, 
   "Team": {"valid_ch": "90"}, 
   "TimeNum": {
@@ -190,9 +195,10 @@
   "Water": {"valid_ch": "39, 40, 44"}, 
   "WeightNum": {"semantic_type": "float", "valid_ch": "2, 3, 5, 97"}, 
   "Welcome": {"valid_ch": "45"}, 
-  "Wheel": {"valid_ch": "45"}, 
+  "Wheel": {"valid_ch": "45, 46"}, 
   "Winner": {"valid_ch": ""}, 
   "Winning": {"valid_ch": "44, 45"}, 
+  "Winter": {"valid_ch": "44"}, 
   "WorldName": {"semantic_type": "str", "valid_ch": "32, 33, 97"}, 
   "Yap": {"valid_ch": "18"}, 
   "Yard": {"valid_ch": ""}, 
@@ -202,13 +208,13 @@
   }, 
   "addin": {
     "sort_ordinal": 104, 
-    "valid_ch": "7, 8, 9, 10, 14, 15, 17, 18, 20, 22, 23, 26, 27, 33, 35, 40, 45, 90"
+    "valid_ch": "7, 8, 9, 10, 14, 15, 17, 18, 20, 22, 23, 26, 27, 33, 35, 40, 45, 46, 90"
   }, 
   "alien": {"valid_ch": "45"}, 
   "all_contact_cred": {"sort_ordinal": 186, "valid_ch": "7, 8, 20, 22, 27, 35"}, 
   "all_contact_debt": {"sort_ordinal": 193, "valid_ch": "7, 8, 20, 22, 27, 35"}, 
   "all_tranbook": {"valid_ch": "15, 27"}, 
-  "allowed_crud": {"valid_ch": "20, 23, 97"}, 
+  "allowed_crud": {"valid_ch": "20, 23, 33, 97"}, 
   "amount": {
     "sort_ordinal": 140, 
     "valid_ch": "12, 13, 15, 17, 18, 20, 22, 23, 26, 27, 31, 32, 33, 35"
@@ -216,6 +222,7 @@
   "ancestors": {"valid_ch": "8, 9, 12, 15, 23"}, 
   "apex": {"valid_ch": ""}, 
   "article": {"valid_ch": "38, 39, 40, 44, 45, 97, 98"}, 
+  "atla": {"valid_ch": "33"}, 
   "atom": {"valid_ch": "9, 10, 12, 15, 16, 17, 18, 20, 22, 23, 27"}, 
   "attributes": {"valid_ch": "20, 23, 24, 26, 39, 40, 97"}, 
   "audie": {"valid_ch": "18, 20, 27, 30, 33, 39, 40, 44, 45"}, 
@@ -227,7 +234,7 @@
   "aux_title": {"valid_ch": "18, 20"}, 
   "awardee_title": {
     "sort_ordinal": 84, 
-    "valid_ch": "3, 7, 8, 9, 10, 14, 17, 18, 20, 22, 23, 27, 35"
+    "valid_ch": "3, 7, 8, 9, 10, 14, 17, 18, 20, 22, 23, 27, 33, 35"
   }, 
   "awardee_title_ERASE": {"sort_ordinal": 87, "valid_ch": "9, 20, 22"}, 
   "awardee_title_ERASE_aux": {"valid_ch": "20"}, 
@@ -258,7 +265,7 @@
   "boss_facts": {"valid_ch": "12, 15"}, 
   "brick": {"valid_ch": "20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 40, 90, 97, 98"}, 
   "brick_agg": {"valid_ch": "22, 24, 32"}, 
-  "brick_category": {"valid_ch": "20, 22, 23, 26"}, 
+  "brick_category": {"valid_ch": "20, 22, 23, 26, 33"}, 
   "brick_raw": {"valid_ch": "22, 24, 32"}, 
   "brick_src": {"valid_ch": "22"}, 
   "brick_type": {"sort_ordinal": 1, "valid_ch": "20, 22, 23, 24, 25, 27, 97"}, 
@@ -333,8 +340,10 @@
   "ch39": {"valid_ch": "39"}, 
   "ch40": {"valid_ch": "40, 44, 45"}, 
   "ch41": {"valid_ch": "41, 45"}, 
-  "ch44": {"valid_ch": "44, 45, 98"}, 
-  "ch45": {"valid_ch": "45, 98"}, 
+  "ch44": {"valid_ch": "44, 45, 46"}, 
+  "ch45": {"valid_ch": "45"}, 
+  "ch46": {"valid_ch": "46"}, 
+  "ch47": {"valid_ch": "47"}, 
   "ch54": {"valid_ch": "54, 98"}, 
   "ch90": {"valid_ch": "90"}, 
   "ch96": {"valid_ch": "96"}, 
@@ -363,7 +372,7 @@
   "contact_mandate_ledger": {"valid_ch": "8, 12, 15, 27, 32"}, 
   "contact_name": {
     "sort_ordinal": 38, 
-    "valid_ch": "3, 4, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 20, 22, 23, 24, 25, 26, 27, 31, 32, 35, 45"
+    "valid_ch": "3, 4, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 20, 22, 23, 24, 25, 26, 27, 31, 32, 33, 35, 45"
   }, 
   "contact_name_ERASE": {"sort_ordinal": 41, "valid_ch": "9, 20, 22"}, 
   "contact_name_ERASE_aux": {"valid_ch": "20"}, 
@@ -387,7 +396,7 @@
     "valid_ch": "8, 9, 10, 11, 15, 17, 18, 20, 22, 23, 27, 33"
   }, 
   "creg": {"valid_ch": "14, 15, 20, 23, 31, 32, 90"}, 
-  "crud": {"valid_ch": "9, 10, 20, 22, 23, 24, 97, 98"}, 
+  "crud": {"valid_ch": "9, 10, 20, 22, 23, 24, 33, 97, 98"}, 
   "cumulative_day": {"sort_ordinal": 20, "valid_ch": "14, 15, 17, 18, 20, 22, 23, 25, 26, 33"}, 
   "cumulative_minute": {"sort_ordinal": 24, "valid_ch": "15, 17, 18, 20, 22, 23, 24, 26, 27, 32, 33"}, 
   "cycle_carees_curr": {"valid_ch": "13"}, 
@@ -395,7 +404,7 @@
   "cycle_count": {"valid_ch": "13"}, 
   "cycle_max": {"valid_ch": "13"}, 
   "day": {
-    "valid_ch": "14, 15, 16, 17, 18, 20, 22, 23, 24, 25, 26, 31, 32, 33, 35, 39, 40, 44, 45, 54, 90, 97"
+    "valid_ch": "14, 15, 16, 17, 18, 20, 22, 23, 24, 25, 26, 31, 32, 33, 35, 39, 40, 44, 45, 46, 54, 90, 97"
   }, 
   "day_length": {"valid_ch": "14"}, 
   "day_punch": {"valid_ch": "31, 32, 90"}, 
@@ -411,8 +420,8 @@
     "valid_ch": "8, 9, 10, 11, 15, 17, 18, 20, 22, 23, 27, 33"
   }, 
   "default_kpi_bundle": {"valid_ch": "31"}, 
-  "delete_insert": {"valid_ch": "20, 23, 97"}, 
-  "delete_insert_update": {"valid_ch": "20, 23, 97"}, 
+  "delete_insert": {"valid_ch": "20, 23, 33, 97"}, 
+  "delete_insert_update": {"valid_ch": "20, 23, 33, 97"}, 
   "delete_update": {"valid_ch": "20, 23"}, 
   "denom": {
     "sort_ordinal": 106, 
@@ -425,7 +434,7 @@
   "dimens": {
     "valid_ch": "8, 9, 10, 12, 15, 16, 17, 18, 20, 22, 23, 24, 25, 26, 27, 39, 45, 97"
   }, 
-  "discipline": {"valid_ch": "44, 45"}, 
+  "discipline": {"valid_ch": "44, 46"}, 
   "dive": {"valid_ch": ""}, 
   "doctor_count": {"valid_ch": "13"}, 
   "doctor_rank_num": {"valid_ch": "13"}, 
@@ -434,10 +443,11 @@
   "drift": {"valid_ch": ""}, 
   "duck": {"valid_ch": "19"}, 
   "duration": {"valid_ch": "14, 39"}, 
+  "empire": {"valid_ch": "40"}, 
   "epoch": {
-    "valid_ch": "14, 15, 16, 17, 18, 20, 22, 23, 26, 27, 30, 31, 32, 35, 39, 90, 97, 98"
+    "valid_ch": "14, 15, 16, 17, 18, 20, 22, 23, 26, 27, 30, 31, 32, 33, 35, 39, 90, 97, 98"
   }, 
-  "epoch_label": {"sort_ordinal": 11, "valid_ch": "14, 15, 17, 18, 20, 22, 23, 26, 31, 35"}, 
+  "epoch_label": {"sort_ordinal": 11, "valid_ch": "14, 15, 17, 18, 20, 22, 23, 26, 31, 33, 35"}, 
   "epoch_label_aux": {"valid_ch": "20"}, 
   "epoch_label_inx": {"sort_ordinal": 13, "valid_ch": "20, 22"}, 
   "epoch_label_iux": {"valid_ch": "20"}, 
@@ -453,7 +463,7 @@
   }, 
   "fact_context": {
     "sort_ordinal": 62, 
-    "valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 26, 27, 35"
+    "valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 26, 27, 33, 35"
   }, 
   "fact_context_ERASE": {"sort_ordinal": 65, "valid_ch": "9, 20, 22"}, 
   "fact_context_ERASE_aux": {"valid_ch": "20"}, 
@@ -472,7 +482,7 @@
   "fact_lower_otx": {"sort_ordinal": 118, "valid_ch": "20, 22, 26"}, 
   "fact_state": {
     "sort_ordinal": 74, 
-    "valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 27, 35"
+    "valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 27, 33, 35"
   }, 
   "fact_state_aux": {"valid_ch": "20"}, 
   "fact_state_inx": {"sort_ordinal": 76, "valid_ch": "20, 22"}, 
@@ -491,7 +501,7 @@
   "fall": {"valid_ch": "45"}, 
   "fealty": {"valid_ch": ""}, 
   "filename": {
-    "valid_ch": "0, 1, 2, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 24, 27, 31, 32, 45, 90, 96, 97, 98"
+    "valid_ch": "0, 1, 2, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 24, 27, 31, 32, 33, 45, 90, 96, 97, 98"
   }, 
   "finance": {"valid_ch": "34, 36, 40, 44"}, 
   "financial": {"valid_ch": "34, 36, 40"}, 
@@ -542,7 +552,7 @@
   "group_debt_mass": {"sort_ordinal": 114, "valid_ch": "3, 8, 9, 10, 17, 18, 20, 22, 23, 27, 33, 35"}, 
   "group_title": {
     "sort_ordinal": 44, 
-    "valid_ch": "3, 4, 7, 8, 9, 10, 14, 17, 18, 20, 22, 23, 27, 31, 32, 35"
+    "valid_ch": "3, 4, 7, 8, 9, 10, 14, 17, 18, 20, 22, 23, 27, 31, 32, 33, 35"
   }, 
   "group_title_ERASE": {"sort_ordinal": 47, "valid_ch": "9, 20, 22"}, 
   "group_title_ERASE_aux": {"valid_ch": "20"}, 
@@ -561,7 +571,7 @@
   "h_vld": {"valid_ch": "22, 25, 26, 27, 32"}, 
   "healer_name": {
     "sort_ordinal": 90, 
-    "valid_ch": "7, 8, 9, 10, 11, 13, 15, 17, 18, 20, 22, 23, 27, 35"
+    "valid_ch": "7, 8, 9, 10, 11, 13, 15, 17, 18, 20, 22, 23, 27, 33, 35"
   }, 
   "healer_name_ERASE": {"sort_ordinal": 93, "valid_ch": "9, 17, 18, 20, 22"}, 
   "healer_name_ERASE_aux": {"valid_ch": "20"}, 
@@ -579,12 +589,17 @@
   "heard_vld": {"valid_ch": "22, 26, 32"}, 
   "heart": {"valid_ch": "44"}, 
   "herd": {"valid_ch": ""}, 
-  "hive": {"valid_ch": "40"}, 
+  "hive": {"valid_ch": "40, 44, 47"}, 
   "home": {"valid_ch": "39, 40, 44, 45, 54, 90"}, 
   "honor": {"valid_ch": "40, 45"}, 
   "hose": {"valid_ch": "39, 40, 44, 54"}, 
-  "hour": {"valid_ch": "14, 15, 17, 18, 20, 22, 23, 24, 26, 27, 31, 32, 39, 40, 44, 97"}, 
-  "hour_label": {"sort_ordinal": 25, "valid_ch": "14, 15, 17, 18, 20, 22, 23, 24, 26, 27, 32"}, 
+  "hour": {
+    "valid_ch": "14, 15, 17, 18, 20, 22, 23, 24, 26, 27, 31, 32, 33, 39, 40, 44, 97"
+  }, 
+  "hour_label": {
+    "sort_ordinal": 25, 
+    "valid_ch": "14, 15, 17, 18, 20, 22, 23, 24, 26, 27, 32, 33"
+  }, 
   "hour_label_aux": {"valid_ch": "20"}, 
   "hour_label_inx": {"sort_ordinal": 27, "valid_ch": "20, 22"}, 
   "hour_label_iux": {"valid_ch": "20"}, 
@@ -602,16 +617,16 @@
   "infinity": {"valid_ch": "39, 45"}, 
   "insert_multiple": {"valid_ch": "20, 23, 97"}, 
   "insert_one_time": {"valid_ch": "20, 23, 97"}, 
-  "insert_update": {"valid_ch": "20, 23, 97"}, 
+  "insert_update": {"valid_ch": "20, 23, 33, 97"}, 
   "invitation": {"valid_ch": "40, 45"}, 
   "invite": {"valid_ch": "39, 40, 44, 45"}, 
   "inx_epoch_diff": {"sort_ordinal": 201, "valid_ch": "16, 20, 22, 26, 98"}, 
-  "inx_knot": {"sort_ordinal": 150, "valid_ch": "17, 20, 22, 23, 24, 25, 30, 98"}, 
-  "inx_label": {"sort_ordinal": 142, "valid_ch": "17, 20, 22, 23, 25, 30"}, 
-  "inx_name": {"sort_ordinal": 146, "valid_ch": "17, 20, 22, 23, 25, 26, 30, 32"}, 
-  "inx_rope": {"sort_ordinal": 144, "valid_ch": "17, 20, 22, 23, 24, 25, 30"}, 
+  "inx_knot": {"sort_ordinal": 150, "valid_ch": "17, 20, 22, 23, 24, 25, 30, 33, 98"}, 
+  "inx_label": {"sort_ordinal": 142, "valid_ch": "17, 20, 22, 23, 25, 30, 33"}, 
+  "inx_name": {"sort_ordinal": 146, "valid_ch": "17, 20, 22, 23, 25, 26, 30, 32, 33"}, 
+  "inx_rope": {"sort_ordinal": 144, "valid_ch": "17, 20, 22, 23, 24, 25, 30, 33"}, 
   "inx_time": {"sort_ordinal": 152, "valid_ch": "16, 20, 22, 26, 32, 33"}, 
-  "inx_title": {"sort_ordinal": 148, "valid_ch": "17, 20, 22, 23, 25, 30"}, 
+  "inx_title": {"sort_ordinal": 148, "valid_ch": "17, 20, 22, 23, 25, 30, 33"}, 
   "irrational_contact_debt_mass": {"sort_ordinal": 190, "valid_ch": "3, 8, 11, 20, 22, 27, 35"}, 
   "is_expanded": {"valid_ch": "7, 8, 35"}, 
   "iux": {"valid_ch": "18, 20, 98"}, 
@@ -634,7 +649,7 @@
   "job_listen_rotations": {"sort_ordinal": 158, "valid_ch": "15, 17, 18, 20, 22, 23, 26, 33"}, 
   "juggle": {"valid_ch": ""}, 
   "juggling": {"valid_ch": ""}, 
-  "jump": {"valid_ch": "44, 45"}, 
+  "jump": {"valid_ch": "44, 46"}, 
   "jvalues": {"valid_ch": "8, 9, 10, 15, 16, 17, 18, 20, 22, 23, 27, 33, 97"}, 
   "k_vld": {"valid_ch": "22, 24, 32"}, 
   "keep_patientledgers": {"valid_ch": "13"}, 
@@ -653,12 +668,15 @@
   "kneeler": {"valid_ch": "45"}, 
   "knot": {
     "sort_ordinal": 153, 
-    "valid_ch": "5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 35, 90, 98"
+    "valid_ch": "5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 35, 90, 98"
   }, 
   "kronosmax": {"valid_ch": "40"}, 
   "labelmap": {"valid_ch": "17, 20"}, 
   "labelyap": {"valid_ch": "18"}, 
-  "labor_title": {"sort_ordinal": 77, "valid_ch": "4, 7, 8, 9, 10, 17, 18, 20, 22, 23, 27, 35"}, 
+  "labor_title": {
+    "sort_ordinal": 77, 
+    "valid_ch": "4, 7, 8, 9, 10, 17, 18, 20, 22, 23, 27, 33, 35"
+  }, 
   "labor_title_ERASE": {"sort_ordinal": 80, "valid_ch": "9, 20, 22"}, 
   "labor_title_ERASE_aux": {"valid_ch": "20"}, 
   "labor_title_ERASE_inx": {"sort_ordinal": 82, "valid_ch": "20, 22"}, 
@@ -670,7 +688,7 @@
   "labor_title_otx": {"sort_ordinal": 78, "valid_ch": "20, 22"}, 
   "laborheir": {"valid_ch": "4, 27"}, 
   "labors": {"valid_ch": "4, 7, 8, 10, 23, 27, 35"}, 
-  "ladder": {"valid_ch": "40, 44, 45"}, 
+  "ladder": {"valid_ch": "40, 45"}, 
   "land": {"valid_ch": "39, 40, 44, 45"}, 
   "lasso": {"valid_ch": "10, 11, 12, 15, 22, 26, 27, 30, 31, 32"}, 
   "last_lesson_id": {"valid_ch": "8, 10, 11"}, 
@@ -704,7 +722,7 @@
   "mmtunit": {"valid_ch": "22, 26, 97"}, 
   "mmtweek": {"valid_ch": "22, 26, 97"}, 
   "moment": {
-    "valid_ch": "10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 35, 39, 40, 44, 45, 90, 97"
+    "valid_ch": "10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 35, 39, 40, 44, 46, 90, 97"
   }, 
   "moment_budunit": {"valid_ch": "15, 20, 22, 23, 26, 97"}, 
   "moment_ceckbook": {"valid_ch": "15, 20, 22, 23, 26, 97"}, 
@@ -717,7 +735,7 @@
   "moment_ote1_agg": {"valid_ch": "22, 26, 27, 32, 97"}, 
   "moment_rope": {
     "sort_ordinal": 8, 
-    "valid_ch": "10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 35, 90"
+    "valid_ch": "10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 35, 90"
   }, 
   "moment_rope_aux": {"valid_ch": "20"}, 
   "moment_rope_inx": {"sort_ordinal": 10, "valid_ch": "20, 22"}, 
@@ -727,7 +745,7 @@
   "moment_timeoffi": {"valid_ch": "15, 20, 22, 23, 26, 97"}, 
   "moment_tranbook_nets": {"valid_ch": "27, 31, 32"}, 
   "momentunit": {"valid_ch": "15, 20, 22, 23, 26, 27, 30, 31, 32, 90, 97"}, 
-  "month_label": {"sort_ordinal": 21, "valid_ch": "14, 15, 17, 18, 20, 22, 23, 25, 26"}, 
+  "month_label": {"sort_ordinal": 21, "valid_ch": "14, 15, 17, 18, 20, 22, 23, 25, 26, 33"}, 
   "month_label_aux": {"valid_ch": "20"}, 
   "month_label_inx": {"sort_ordinal": 23, "valid_ch": "20, 22"}, 
   "month_label_iux": {"valid_ch": "20"}, 
@@ -779,12 +797,12 @@
   "otx2inx": {"valid_ch": "16, 17, 20, 23, 98"}, 
   "otx_epoch_length": {"valid_ch": "16"}, 
   "otx_key": {"valid_ch": "20, 22, 23, 24"}, 
-  "otx_knot": {"sort_ordinal": 149, "valid_ch": "17, 20, 22, 23, 24, 25, 30, 98"}, 
-  "otx_label": {"sort_ordinal": 141, "valid_ch": "17, 20, 22, 23, 25, 30"}, 
-  "otx_name": {"sort_ordinal": 145, "valid_ch": "17, 20, 22, 23, 25, 26, 30, 32"}, 
-  "otx_rope": {"sort_ordinal": 143, "valid_ch": "17, 20, 22, 23, 24, 25, 30"}, 
+  "otx_knot": {"sort_ordinal": 149, "valid_ch": "17, 20, 22, 23, 24, 25, 30, 33, 98"}, 
+  "otx_label": {"sort_ordinal": 141, "valid_ch": "17, 20, 22, 23, 25, 30, 33"}, 
+  "otx_name": {"sort_ordinal": 145, "valid_ch": "17, 20, 22, 23, 25, 26, 30, 32, 33"}, 
+  "otx_rope": {"sort_ordinal": 143, "valid_ch": "17, 20, 22, 23, 24, 25, 30, 33"}, 
   "otx_time": {"sort_ordinal": 151, "valid_ch": "16, 20, 22, 26, 32, 33"}, 
-  "otx_title": {"sort_ordinal": 147, "valid_ch": "17, 20, 22, 23, 25, 30"}, 
+  "otx_title": {"sort_ordinal": 147, "valid_ch": "17, 20, 22, 23, 25, 30, 33"}, 
   "palm": {"valid_ch": ""}, 
   "pandas_DataFrame": {"valid_ch": ""}, 
   "parent_heir_active": {"sort_ordinal": 189, "valid_ch": "6, 8, 20, 22, 27"}, 
@@ -796,7 +814,7 @@
   "pay": {"valid_ch": "40, 44, 45"}, 
   "peer": {"valid_ch": "33, 39, 40"}, 
   "person": {
-    "valid_ch": "4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 39, 40, 44, 45, 54, 90, 97"
+    "valid_ch": "4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 39, 40, 44, 45, 46, 54, 90, 97"
   }, 
   "person_contact_membership": {"valid_ch": "8, 9, 10, 20, 22, 23, 27, 97"}, 
   "person_contacts_net": {"valid_ch": "12"}, 
@@ -804,7 +822,7 @@
   "person_groupunit": {"valid_ch": "8, 9, 22, 27"}, 
   "person_name": {
     "sort_ordinal": 32, 
-    "valid_ch": "4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 35, 90"
+    "valid_ch": "4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 35, 90"
   }, 
   "person_name_ERASE": {"sort_ordinal": 35, "valid_ch": "9, 20, 22"}, 
   "person_name_ERASE_aux": {"valid_ch": "20"}, 
@@ -836,7 +854,7 @@
   "pitcher_name": {"valid_ch": "33"}, 
   "pitchs": {"valid_ch": "33"}, 
   "plan": {
-    "valid_ch": "7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 26, 27, 30, 31, 32, 33, 35, 40, 44, 45, 54, 90, 97, 98"
+    "valid_ch": "7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 26, 27, 30, 31, 32, 33, 35, 40, 44, 45, 46, 54, 90, 97, 98"
   }, 
   "plan_active": {"sort_ordinal": 161, "valid_ch": "7, 8, 14, 20, 22, 27, 31, 35"}, 
   "plan_active_hx": {"valid_ch": "7, 8, 35"}, 
@@ -844,7 +862,7 @@
   "plan_label": {"valid_ch": "7, 8, 9, 10, 14, 15, 17, 18, 20, 27, 31, 35"}, 
   "plan_rope": {
     "sort_ordinal": 50, 
-    "valid_ch": "7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 26, 27, 31, 32, 35"
+    "valid_ch": "7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 26, 27, 31, 32, 33, 35"
   }, 
   "plan_rope_ERASE": {"sort_ordinal": 53, "valid_ch": "9, 20, 22"}, 
   "plan_rope_ERASE_aux": {"valid_ch": "20"}, 
@@ -900,7 +918,7 @@
   "reason_active": {"sort_ordinal": 164, "valid_ch": "6, 7, 8, 14, 20, 22, 27"}, 
   "reason_context": {
     "sort_ordinal": 56, 
-    "valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 26, 27, 31, 35"
+    "valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 15, 17, 18, 20, 22, 23, 26, 27, 31, 33, 35"
   }, 
   "reason_context_ERASE": {"sort_ordinal": 59, "valid_ch": "9, 20, 22"}, 
   "reason_context_ERASE_aux": {"valid_ch": "20"}, 
@@ -924,7 +942,7 @@
   "reason_lower_otx": {"sort_ordinal": 128, "valid_ch": "20, 22, 26"}, 
   "reason_state": {
     "sort_ordinal": 68, 
-    "valid_ch": "6, 7, 8, 9, 10, 11, 14, 17, 18, 20, 22, 23, 27, 35"
+    "valid_ch": "6, 7, 8, 9, 10, 11, 14, 17, 18, 20, 22, 23, 27, 33, 35"
   }, 
   "reason_state_ERASE": {"sort_ordinal": 71, "valid_ch": "9, 20, 22"}, 
   "reason_state_ERASE_aux": {"valid_ch": "20"}, 
@@ -944,6 +962,7 @@
   "reason_upper_otx": {"sort_ordinal": 131, "valid_ch": "20, 22, 26"}, 
   "reasonheirs": {"valid_ch": "7, 8, 14, 27, 31, 35"}, 
   "reasonunits": {"valid_ch": "6, 7, 8, 10, 11, 14, 23, 35"}, 
+  "republic": {"valid_ch": "40, 45"}, 
   "request": {"valid_ch": "33, 44, 98"}, 
   "respect_grain": {
     "sort_ordinal": 139, 
@@ -952,7 +971,7 @@
   "revenge": {"valid_ch": "44, 45"}, 
   "rewards_count": {"valid_ch": "13"}, 
   "rewards_magnitude": {"valid_ch": "13"}, 
-  "ride": {"valid_ch": "40, 44"}, 
+  "ride": {"valid_ch": "33, 40, 44"}, 
   "rider": {"valid_ch": ""}, 
   "rival": {"valid_ch": "40"}, 
   "riverbooks": {"valid_ch": "13"}, 
@@ -967,7 +986,7 @@
   "semantic_type": {
     "valid_ch": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 35, 90, 97, 98"
   }, 
-  "sheet": {"valid_ch": "20, 22, 23, 24, 30, 32, 35, 40, 45, 90, 97"}, 
+  "sheet": {"valid_ch": "20, 22, 23, 24, 30, 32, 35, 40, 46, 90, 97"}, 
   "shill": {"valid_ch": "40"}, 
   "shop": {
     "valid_ch": "3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 26, 27, 30, 31, 32, 33, 35, 39, 45, 90, 97, 98"
@@ -983,7 +1002,7 @@
   "source_dimen": {"sort_ordinal": 2, "valid_ch": "20, 22, 25"}, 
   "spark_face": {
     "sort_ordinal": 5, 
-    "valid_ch": "10, 16, 17, 18, 20, 22, 23, 24, 25, 26, 27, 30, 32, 90"
+    "valid_ch": "10, 16, 17, 18, 20, 22, 23, 24, 25, 26, 27, 30, 32, 33, 90"
   }, 
   "spark_face_inx": {"sort_ordinal": 7, "valid_ch": "20, 22, 26"}, 
   "spark_face_otx": {"sort_ordinal": 6, "valid_ch": "20, 22"}, 
@@ -1000,9 +1019,10 @@
   "speech_name": {"valid_ch": "18"}, 
   "speech_rope": {"valid_ch": "18"}, 
   "speech_title": {"valid_ch": "18"}, 
+  "spring": {"valid_ch": "44, 45, 46"}, 
   "sqlite_datatype": {"valid_ch": "8, 9, 19, 20, 33"}, 
   "src": {
-    "valid_ch": "0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 27, 30, 32, 33, 34, 35, 40, 41, 44, 45, 90, 97, 98"
+    "valid_ch": "0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 27, 30, 32, 33, 34, 35, 38, 40, 41, 44, 45, 46, 90, 97, 98"
   }, 
   "stable": {"valid_ch": "45"}, 
   "stilt": {"valid_ch": ""}, 
@@ -1012,6 +1032,7 @@
     "valid_ch": "7, 8, 9, 10, 14, 17, 18, 20, 22, 23, 26, 27, 33, 35, 90"
   }, 
   "sum_healerunit_plans_fund_total": {"sort_ordinal": 191, "valid_ch": "8, 20, 22, 27"}, 
+  "summer": {"valid_ch": "8, 44"}, 
   "swim": {"valid_ch": ""}, 
   "take_force": {
     "sort_ordinal": 136, 
@@ -1021,7 +1042,7 @@
   "team": {"valid_ch": "90"}, 
   "thinkout": {"valid_ch": "3, 7, 8, 9, 10, 11, 12, 14, 15, 23, 27, 31, 35, 90, 97"}, 
   "time": {
-    "valid_ch": "12, 13, 14, 15, 16, 17, 18, 20, 22, 23, 26, 27, 30, 31, 32, 33, 35, 39, 40, 41, 44, 45, 54, 90, 97, 98"
+    "valid_ch": "12, 13, 14, 15, 16, 17, 18, 20, 22, 23, 26, 27, 30, 31, 32, 33, 35, 39, 40, 41, 44, 45, 46, 54, 90, 97, 98"
   }, 
   "timenabu": {"valid_ch": "16"}, 
   "titlemap": {"valid_ch": "17, 20"}, 
@@ -1046,14 +1067,14 @@
   "trltitl": {"valid_ch": "22, 25, 30, 97"}, 
   "trooper": {"valid_ch": "40"}, 
   "tsar": {"valid_ch": ""}, 
-  "unknown_str": {"sort_ordinal": 155, "valid_ch": "17, 18, 20, 22, 23, 24, 25, 30, 98"}, 
+  "unknown_str": {"sort_ordinal": 155, "valid_ch": "17, 18, 20, 22, 23, 24, 25, 30, 33, 98"}, 
   "valid_ch": {"valid_ch": "1, 97, 98"}, 
   "valor": {"valid_ch": "45"}, 
   "vertical": {"valid_ch": ""}, 
   "vow": {"valid_ch": "33, 39, 40"}, 
-  "water": {"valid_ch": "39, 40, 44, 45"}, 
+  "water": {"valid_ch": "39, 40, 44, 46"}, 
   "week": {"valid_ch": "14, 15, 17, 18, 20, 22, 23, 24, 26, 31, 33, 97"}, 
-  "weekday_label": {"sort_ordinal": 29, "valid_ch": "15, 17, 18, 20, 22, 23, 24, 26"}, 
+  "weekday_label": {"sort_ordinal": 29, "valid_ch": "15, 17, 18, 20, 22, 23, 24, 26, 33"}, 
   "weekday_label_aux": {"valid_ch": "20"}, 
   "weekday_label_inx": {"sort_ordinal": 31, "valid_ch": "20, 22"}, 
   "weekday_label_iux": {"valid_ch": "20"}, 
@@ -1068,14 +1089,15 @@
   "welcome": {"valid_ch": "39, 44, 45"}, 
   "wheel": {"valid_ch": "45, 98"}, 
   "wheelers": {"valid_ch": "45"}, 
-  "winner": {"valid_ch": "40, 44, 45"}, 
+  "winner": {"valid_ch": "40, 44, 45, 46"}, 
   "winning": {"valid_ch": "40, 45"}, 
+  "winter": {"valid_ch": "44"}, 
   "workforceheir": {"valid_ch": "4, 7, 8, 27, 35"}, 
   "workforceunit": {"valid_ch": "4, 7, 8, 9, 10, 11, 15, 23, 27, 35"}, 
   "world_name": {"valid_ch": "20, 30, 32, 33, 90"}, 
   "yap": {"valid_ch": "18"}, 
   "yard": {"valid_ch": ""}, 
-  "year": {"valid_ch": "14, 15, 16, 31, 40, 44, 45"}, 
+  "year": {"valid_ch": "14, 15, 16, 31, 40, 44, 45, 46"}, 
   "year_length": {"valid_ch": "14"}, 
   "year_monthday_duration_days": {"valid_ch": "14"}, 
   "year_monthday_lower": {"valid_ch": "14"}, 

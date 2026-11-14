@@ -1,21 +1,21 @@
 from ch45_wheel.wheel_builder import (
-    draw_trapezoid_shape,
-    draw_trapezoid_stack,
+    TrapeziodUnit,
+    draw_contact_rows,
     draw_contacts_row,
     draw_infinity_contact,
-    draw_contact_rows,
-    get_standard_drawing,
-    save_to_images_dir,
-    rebuild_markdown_wheel_theory_images,
-    get_markdown_wheel_theory_drawings,
-    TrapeziodUnit,
     draw_land,
+    draw_trapezoid_shape,
+    draw_trapezoid_stack,
+    get_markdown_wheel_theory_drawings,
+    get_standard_drawing,
+    rebuild_markdown_wheel_theory_images,
+    save_to_images_dir,
 )
-from drawsvg import Drawing
 from copy import deepcopy as copy_deepcopy
-from pathlib import Path
+from drawsvg import Drawing
 from os.path import exists as os_path_exists
-from re import compile as re_compile, Match as re_Match
+from pathlib import Path
+from re import Match as re_Match, compile as re_compile
 
 
 def _get_elements_count(d: Drawing) -> int:
