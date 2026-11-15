@@ -82,9 +82,9 @@ Don't do what Plato did. From "Wisdom of Lenin" by Kazani:
 >
 > The plan is incredibly common (countless intellectuals would try it in centuries after Plato), and incredibly naive. Because obviously no man in power needs a 'philosopher’ who would be telling him what to do. That is an absolute self delusion on behalf of a philosopher. A tyrant needs servants, he needs slavs, he - if he is mentally healthy - needs a jester. But philosopher? No, he does not really need one.
 
-<div align="center"><img src="images/plato_mustash.webp" alt="Plato head sculpture" width="200">
+<div align="center"><img src="images/plato_bust.webp" alt="Plato head sculpture" width="200">
 
-*Plato is a Top 5 philosopher, but don't let the mustash fool you, He was also a toddler.*
+*Plato is a Top 5 philosopher, but don't let the beard fool you, He was also a toddler.*
 </div>
 
 Instead, proposes Kazani, if you want prestige earn it. Start with a podcast.[^1] One day you may be useful enough that someone with prestige will invite you in. However...

@@ -1,3 +1,4 @@
+from ch32_world.world import worlddir_shop
 from ch33_pitch.pitch import AtlaUnit, PitchUnit, pitchunit_shop
 from ch99_glossary.ch_keyword import Ch33Keywords as kw, ExampleStrs as exx
 
