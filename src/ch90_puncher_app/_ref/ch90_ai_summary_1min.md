@@ -24,7 +24,7 @@ Ontology note:
 - **ch08_person_logic**: `personunit_shop` — used in `puncher_tool.py` to construct example `PersonUnit`s for the bundled starter idea files.
 - **ch14_time**: `get_creg_config`, `get_five_config`, `epochunit_shop` — the "El Paso" and "TeamFive" example templates use real epoch configurations.
 - **ch15_moment**: `momentunit_shop` — moment objects are built for example templates.
-- **ch20_brick**: `csv_dict_to_excel`, `prettify_excel_file`, `remove_empty_sheets`, `prettify_excel_files` — all Excel output formatting is delegated to ch20.
+- **ch21_brick**: `csv_dict_to_excel`, `prettify_excel_file`, `remove_empty_sheets`, `prettify_excel_files` — all Excel output formatting is delegated to ch21.
 - **ch23_idea_src**: `add_momentunits_to_idea_csv_strs`, `add_personunit_to_idea_csv_strs`, `create_init_idea_csv_strs` — example idea files are generated using the same CSV machinery as the ETL source layer.
 - **ch30_idea_dst**: `create_lego0002_file` — person-level idea export is triggered from the GUI.
 - **ch32_world**: `worlddir_shop`, `create_today_punchs` — the entire ETL pipeline is invoked via ch32's `WorldDir` entry point.

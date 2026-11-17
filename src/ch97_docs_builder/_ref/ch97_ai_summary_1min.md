@@ -24,7 +24,7 @@ Ontology note:
 - **ch00_py**: File I/O (`create_path`, `get_dir_filenames`, `open_json`, `save_file`, `save_json`) — documentation artifacts are written to disk via ch00 utilities.
 - **ch01_keyword**: `get_chapter_desc_prefix`, `get_chapter_descs`, `get_keywords_src_config`, `get_ch_int`, `parse_valid_ch_str`, `create_src_keywords_src_path`, `create_src_example_strs_path` — ch97 reads the full keyword glossary and chapter directory structure to build its documentation. The chapter is numbered 97 specifically because it needs access to the complete keyword set, which accumulates through all prior chapters.
 - **ch05_rope**: `get_ropeterm_description_md` — a chapter-specific doc-builder helper in `ch05_rope/_ref/ch05_doc_builder.py` that provides the markdown description of the `RopeTerm` concept.
-- **ch20_brick**: `get_brick_formats_md`, `get_brick_mds` — generates markdown documentation for all brick format schemas.
+- **ch21_brick**: `get_brick_formats_md`, `get_brick_mds` — generates markdown documentation for all brick format schemas.
 - **ch99_glossary**: `get_keg_elements_sort_order` — the canonical sort order is used when listing elements in generated docs.
 
 `ch97_semantic_types.py` re-exports through ch22 with no additions.

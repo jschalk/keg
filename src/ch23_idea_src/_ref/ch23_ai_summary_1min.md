@@ -23,11 +23,11 @@ Ontology note:
 
 - **ch00_py**: `delete_dir`, `set_dir` — idea output directories are wiped and recreated on each run.
 - **ch05_rope**: `default_knot_if_None` — used in `fission_add_ancestor_rope_rows` to parse rope paths and infer missing ancestor plan rows.
-- **ch20_brick**: `create_brick_df_from_file`, `save_sheet`, `_sort_dataframe` — bricks are read from and written to Excel via ch20 tooling.
+- **ch21_brick**: `create_brick_df_from_file`, `save_sheet`, `_sort_dataframe` — bricks are read from and written to Excel via ch21 tooling.
 - **ch22_etl_config**: `get_etl_stage_types_config_dict` — used to determine valid stage type names during idea processing.
 - **ch99_glossary**: `get_keg_elements_sort_order` — column sort order is enforced via the master glossary.
 
-`ch23_semantic_types.py` re-exports through ch20 with no additions.
+`ch23_semantic_types.py` re-exports through ch21 with no additions.
 
 ---
 

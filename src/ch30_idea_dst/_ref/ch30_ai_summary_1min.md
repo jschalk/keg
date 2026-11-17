@@ -26,7 +26,7 @@ Ontology note:
 - **ch10_person_lesson**: `create_moments_dir_path`, `lassounit_shop` — path navigation for the moment file system.
 - **ch12_bud**: `open_person_file` — gut and job `PersonUnit` JSON files are loaded for export.
 - **ch15_moment**: `open_moment_file` — `MomentUnit` objects are loaded for export.
-- **ch20_brick**: `csv_dict_to_excel`, `prettify_excel_file`, `remove_empty_sheets` — the final output is an Excel file with one sheet per brick/idea type.
+- **ch21_brick**: `csv_dict_to_excel`, `prettify_excel_file`, `remove_empty_sheets` — the final output is an Excel file with one sheet per brick/idea type.
 - **ch22_etl_config**: `create_moment_mstr_path`, `create_world_db_path`, `create_prime_tablename`, `create_sound_and_heard_tables` — path helpers and SQL table names for loading translation data.
 - **ch23_idea_src**: `add_momentunit_to_idea_csv_strs`, `add_personunit_to_idea_csv_strs`, `create_init_idea_csv_strs` — the idea CSV structure from the source chapter is reused for the destination output.
 

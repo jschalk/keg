@@ -161,7 +161,7 @@ def replace_in_tracked_python_files(find_text, replace_text):
     try:
         # Get list of tracked .py files
         result = subprocess_run(
-            ["git", "ls-files", "*.py", "*.json"],
+            ["git", "ls-files", "*.py", "*.json", "*.md"],
             capture_output=True,
             text=True,
             check=True,
