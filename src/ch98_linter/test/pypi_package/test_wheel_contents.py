@@ -19,8 +19,8 @@ from zipfile import ZipFile as zipfile_ZipFile
 # ── Configure: files that MUST exist inside the wheel ─────────────────────────
 # Use forward slashes — zip paths are always forward-slash separated.
 REQUIRED_FILES = [
-    "ch20_brick/brick_formats/bk00119_planunit_v0_0_0.json",
-    "ch20_brick/brick_formats/bk00136_problem_healer_v0_0_0.json",
+    "ch21_brick/brick_formats/bk00119_planunit_v0_0_0.json",
+    "ch21_brick/brick_formats/bk00136_problem_healer_v0_0_0.json",
     "ch23_idea_src/idea_config.json",
     # add more as you discover missing ones, e.g.:
 ]

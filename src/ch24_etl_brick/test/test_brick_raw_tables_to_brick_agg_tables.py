@@ -1,5 +1,5 @@
 from ch19_db_tool.db_toolbox import db_table_exists, get_row_count, get_table_columns
-from ch20_brick.brick_db_tool import create_brick_sorted_table
+from ch21_brick.brick_db_tool import create_brick_sorted_table
 from ch24_etl_brick.etl_brick_main import etl_brick_raw_tables_to_brick_agg_tables
 from ch99_glossary.ch_keyword import Ch24Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor

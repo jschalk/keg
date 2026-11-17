@@ -1,4 +1,4 @@
-from ch20_brick.brick_config import get_brick_sqlite_types, get_default_sorted_list
+from ch21_brick.brick_config import get_brick_sqlite_types, get_default_sorted_list
 from ch22_etl_config.etl_config import get_brick_config_dict
 from ch33_pitch.promisebrick_main import (
     PITCH_NUMERICAL_ARGS,

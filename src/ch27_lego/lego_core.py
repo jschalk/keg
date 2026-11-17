@@ -40,7 +40,7 @@ from ch15_moment.moment_cell import (
 )
 from ch15_moment.moment_main import open_moment_file
 from ch19_db_tool.db_toolbox import delete_all_duplicate_rows, get_db_tables
-from ch20_brick.brick_config import get_brick_sqlite_types
+from ch21_brick.brick_config import get_brick_sqlite_types
 from ch22_etl_config._ref.ch22_path import (
     create_last_run_metrics_path,
     create_moment_ote1_csv_path,

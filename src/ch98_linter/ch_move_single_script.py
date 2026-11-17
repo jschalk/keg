@@ -58,19 +58,19 @@ def move_chapters_given_ints(src_chxx_int, dst_chxx_int):
         return
 
     # file contents
-    # change_ref_json("src", src_chxx_prefix, x_prefix_dir, dst_chxx_int)
-    # replace_in_tracked_python_files(src_chxx_prefix, replace_text=dst_chxx_prefix)
-    # replace_in_tracked_python_files(src_uppercase_chxx, dst_uppercase_chxx)
+    change_ref_json("src", src_chxx_prefix, x_prefix_dir, dst_chxx_int)
+    replace_in_tracked_python_files(src_chxx_prefix, replace_text=dst_chxx_prefix)
+    replace_in_tracked_python_files(src_uppercase_chxx, dst_uppercase_chxx)
     change_ai_summary_md("src", src_chxx_int, dst_chxx_int)
     # move summary
     # replace Chapter XX and Chapter XX
     # replace chXX and chXX
-    # # change file paths
-    # rename_files_and_dirs_4times("src", src_chxx_prefix, dst_chxx_prefix)
-    # update_keywords_source_valid_ch(src_chxx_int, dst_chxx_int)
-    # update_keg_questions_csv(src_chxx_prefix, dst_chxx_prefix)
-    # update_keg_questions_csv(src_uppercase_chxx, dst_uppercase_chxx)
-    # print("✅ Replacement complete.")
+    # change file paths
+    rename_files_and_dirs_4times("src", src_chxx_prefix, dst_chxx_prefix)
+    update_keywords_source_valid_ch(src_chxx_int, dst_chxx_int)
+    update_keg_questions_csv(src_chxx_prefix, dst_chxx_prefix)
+    update_keg_questions_csv(src_uppercase_chxx, dst_uppercase_chxx)
+    print("✅ Replacement complete.")
 
 
 def change_ai_summary_md(src_dir, src_chxx_int: int, dst_chxx_int: int):
@@ -115,12 +115,27 @@ def replace_valid_ch(config_dict: dict, src_num: int | str, dst_num: int | str) 
     for config in config_dict.values():
         valid_ch = str(config.get("valid_ch"))
         src_with_colon = f"{src_num}:"
+        src_with_comma = f"""{src_num}, """
+        dst_with_comma = f"""{dst_num}, """
+        src_end_comma = f""", {src_num}"""
+        dst_end_comma = f""", {dst_num}"""
+        src_middle_comma = f""", {src_num},"""
+        dst_middle_comma = f""", {dst_num},"""
 
         if valid_ch == src_str:
             config["valid_ch"] = dst_str
         elif valid_ch.startswith(src_with_colon):
             dst_with_colon = f"{dst_num}:"
             new_v_ch = valid_ch.replace(src_with_colon, dst_with_colon)
+            config["valid_ch"] = new_v_ch
+        elif valid_ch.startswith(src_with_comma):
+            new_v_ch = valid_ch.replace(src_with_comma, dst_with_comma)
+            config["valid_ch"] = new_v_ch
+        elif valid_ch.endswith(src_end_comma):
+            new_v_ch = valid_ch.replace(src_end_comma, dst_end_comma)
+            config["valid_ch"] = new_v_ch
+        elif src_middle_comma in valid_ch:
+            new_v_ch = valid_ch.replace(src_middle_comma, dst_middle_comma)
             config["valid_ch"] = new_v_ch
 
     return config_dict

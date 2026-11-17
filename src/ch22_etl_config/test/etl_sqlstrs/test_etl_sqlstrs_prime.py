@@ -14,7 +14,7 @@ from ch19_db_tool.db_toolbox import (
     get_db_tables,
     get_table_columns,
 )
-from ch20_brick.brick_config import get_brick_config_dict, get_default_sorted_list
+from ch21_brick.brick_config import get_brick_config_dict, get_default_sorted_list
 from ch22_etl_config.etl_config import (
     create_prime_table_sqlstr,
     get_dimen_abbv7,

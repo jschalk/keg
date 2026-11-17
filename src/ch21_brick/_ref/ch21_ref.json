@@ -1,0 +1,8 @@
+{
+  "chapter_blurb": "Defines how to build Bricks using Bricks. Moments and Persons are built by Bricks.", 
+  "chapter_content": "Bricks are tables of data that build moment systems and the personunits within them.", 
+  "chapter_description": "ch21_brick", 
+  "chapter_number": 21, 
+  "chapter_ref_catalogue": "n", 
+  "ontology summary": "Bricks are a complicated mix of things that can change Persons or Moment attributes like ledger."
+}

@@ -24,7 +24,7 @@ from ch10_person_lesson._ref.ch10_semantic_types import FaceName, MomentRope
 from ch12_bud._ref.ch12_semantic_types import SparkInt, TimeNum
 from ch13_keep._ref.ch13_semantic_types import ManaNum
 from ch14_time._ref.ch14_semantic_types import EpochLabel
-from ch20_brick._ref.ch20_semantic_types import SheetName
+from ch21_brick._ref.ch21_semantic_types import SheetName
 
 
 class WorldName(str):

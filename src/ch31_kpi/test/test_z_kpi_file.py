@@ -1,5 +1,5 @@
 from ch00_py.file_toolbox import count_files, create_path, set_dir
-from ch20_brick.brick_db_tool import open_csv
+from ch21_brick.brick_db_tool import open_csv
 from ch31_kpi.kpi_mstr import create_kpi_csvs
 from ch99_glossary.ch_keyword import Ch31Keywords as kw
 from os.path import exists as os_path_exists

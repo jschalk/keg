@@ -23,7 +23,7 @@ What does each one do?
 - **ch17_jargon**: Defines JargonUnit tools that jargon MomentUnits into inside language.
 - **ch18_speech**: Defines SpeechUnit tools that jargon MomentUnits into audience language.
 - **ch19_db_tool**: Creates helper tools for database admin.
-- **ch20_brick**: Defines how to build Bricks using Bricks. Moments and Persons are built by Bricks.
+- **ch21_brick**: Defines how to build Bricks using Bricks. Moments and Persons are built by Bricks.
 - **ch22_etl_config**: Defines the tools that use Bricks to build MomentUnits.
 - **ch23_idea_src**: Defines the 'Idea Src' process. Data going to 'Bricks'.
 - **ch24_etl_brick**: Defines the 'Etl Bricks' process. From 'Source Ideas' to 'Sound'.

@@ -12,14 +12,14 @@ from ch19_db_tool.db_toolbox import (
     get_nonconvertible_columns,
     get_table_columns,
 )
-from ch20_brick.brick_config import (
+from ch21_brick.brick_config import (
     get_brick_format_filename,
     get_brick_sqlite_types,
     get_brick_types,
     get_brickref_from_file,
 )
-from ch20_brick.brick_dataframe import get_brickref_obj
-from ch20_brick.brick_db_tool import (
+from ch21_brick.brick_dataframe import get_brickref_obj
+from ch21_brick.brick_db_tool import (
     create_brick_df_from_file,
     create_brick_sorted_table,
     get_default_sorted_list,

@@ -1,5 +1,5 @@
 from ch00_py.file_toolbox import create_path
-from ch20_brick.brick_config import get_brick_config_dict
+from ch21_brick.brick_config import get_brick_config_dict
 from ch22_etl_config.etl_config import (
     ALL_DIMEN_ABBV2,
     ALL_DIMEN_ABBV7,

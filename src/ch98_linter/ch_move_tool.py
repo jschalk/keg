@@ -102,7 +102,7 @@ def rename_files_and_dirs(directory: str, old_string: str, new_string: str) -> N
             continue
 
         rename_directories(dirs, root, old_string, new_string)
-        file_extensions = [".txt", ".py", ".json", ".ui"]
+        file_extensions = [".txt", ".py", ".json", ".ui", ".md"]
         for filename in files:
             if not any(filename.endswith(ext) for ext in file_extensions):
                 continue

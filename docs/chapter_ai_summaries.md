@@ -902,20 +902,20 @@ This is a deliberate design: ch19 is a low-level database infrastructure chapter
 
 Ch19 is the "ch00 of persistence" — a deliberately dependency-free utility layer. It carries the full semantic type chain in its `_ref` file as preparation for the ETL chapters that will use both these database tools and the domain objects to build the full data pipeline.
 
-# ch20_brick — Chapter Summary
+# ch21_brick — Chapter Summary
 
 *This summary is authored by AI 5-26-2026.*
 
 ## 1. Title and Summary Declaration
 
-**Chapter 20 — `ch20_brick`**
+**Chapter 21 — `ch21_brick`**
 **"BrickUnit — a schema-defined tabular data format that carries PersonUnit and MomentUnit data for ETL ingestion"**
 
 ---
 
 ## 2. Prompt Used to Build This
 
-From `ch20_ref.json`:
+From `ch21_ref.json`:
 > "Bricks are tables of data that build moment systems and the personunits within them."
 
 Ontology note:
@@ -939,7 +939,7 @@ New semantic type: `SheetName` (a `str`) — identifies a named sheet within an 
 
 ## 4. Summary of What This Chapter Does
 
-`ch20_brick` defines the **external data format** for keg — the structure through which humans author data that gets loaded into the system.
+`ch21_brick` defines the **external data format** for keg — the structure through which humans author data that gets loaded into the system.
 
 **`BrickRef`** is the schema object for a single brick type. It holds:
 - `brick_name` — e.g. `"br00031"`.

@@ -4,8 +4,8 @@ from ch05_rope.rope import to_rope
 from ch08_person_logic.person_main import personunit_shop
 from ch10_person_lesson.delta import persondelta_shop
 from ch10_person_lesson.lesson_main import lessonunit_shop
-from ch20_brick.brick_dataframe import moment_build_from_df
-from ch20_brick.brick_db_tool import get_ordered_csv
+from ch21_brick.brick_dataframe import moment_build_from_df
+from ch21_brick.brick_db_tool import get_ordered_csv
 from ch23_idea_src.idea_csv import (
     add_momentunit_to_idea_csv_strs,
     add_momentunits_to_idea_csv_strs,

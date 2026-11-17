@@ -84,17 +84,48 @@ def test_replace_valid_ch_SkipsMissingValidCh_Scenario4_KeyMissing():
     assert result["B"]["valid_ch"] == "23"
 
 
-def test_replace_valid_ch_ReturnsSameObject_Scenario5_MutatesInput():
+def test_replace_valid_ch_ReturnsObj_Scenario5_MutatesInput():
     # ESTABLISH
-    data = {
-        "A": {"valid_ch": "19"},
-    }
+    data = {"A": {"valid_ch": "19"}}
 
     # WHEN
     result = replace_valid_ch(data, 19, 23)
 
     # THEN
-    assert result is data
+    assert result == {"A": {"valid_ch": "23"}}
+
+
+def test_replace_valid_ch_ReturnsObj_Scenario6_MutatesInput():
+    # ESTABLISH
+    data = {"A": {"valid_ch": "19, 24"}}
+
+    # WHEN
+    result = replace_valid_ch(data, 19, 23)
+
+    # THEN
+    assert result == {"A": {"valid_ch": "23, 24"}}
+
+
+def test_replace_valid_ch_ReturnsObj_Scenario7_MutatesInput():
+    # ESTABLISH
+    data = {"A": {"valid_ch": "19, 24"}}
+
+    # WHEN
+    result = replace_valid_ch(data, 24, 27)
+
+    # THEN
+    assert result == {"A": {"valid_ch": "19, 27"}}
+
+
+def test_replace_valid_ch_ReturnsObj_Scenario8_MutatesInput():
+    # ESTABLISH
+    data = {"A": {"valid_ch": "19, 24, 33"}}
+
+    # WHEN
+    result = replace_valid_ch(data, 24, 27)
+
+    # THEN
+    assert result == {"A": {"valid_ch": "19, 27, 33"}}
 
 
 def test_replace_string_in_csv_ReplacesString_Scenario0_SingleMatch(

@@ -12,7 +12,7 @@ from ch19_db_tool.db_toolbox import (
     delete_all_duplicate_rows,
     get_table_columns,
 )
-from ch20_brick.brick_config import get_brick_dimen_ref
+from ch21_brick.brick_config import get_brick_dimen_ref
 from ch22_etl_config.etl_sqlstr import (
     create_insert_into_jargon_core_raw_sqlstr,
     create_insert_jargon_core_agg_into_vld_sqlstr,

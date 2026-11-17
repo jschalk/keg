@@ -22,7 +22,7 @@ from ch19_db_tool.db_toolbox import (
     get_row_count,
 )
 from ch19_db_tool.test.tool_db.test_db_tool_ import print_table
-from ch20_brick.brick_db_tool import save_sheet
+from ch21_brick.brick_db_tool import save_sheet
 from ch22_etl_config._ref.ch22_path import (
     create_last_run_metrics_path,
     create_moment_ote1_csv_path,

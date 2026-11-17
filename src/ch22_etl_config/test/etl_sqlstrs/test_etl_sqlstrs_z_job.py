@@ -4,8 +4,8 @@ from ch19_db_tool.db_toolbox import (
     get_create_table_sqlstr,
     get_db_tables,
 )
-from ch20_brick.brick_config import get_brick_sqlite_types
-from ch20_brick.brick_db_tool import get_default_sorted_list
+from ch21_brick.brick_config import get_brick_sqlite_types
+from ch21_brick.brick_db_tool import get_default_sorted_list
 from ch22_etl_config.etl_sqlstr import (
     create_job_tables,
     create_prime_tablename as prime_table,

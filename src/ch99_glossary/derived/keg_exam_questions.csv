@@ -98,7 +98,7 @@ Did you read that the keyword_definition of 'ch16' is 'Defines NabuUnit tools th
 Did you read that the keyword_definition of 'ch17' is 'Defines JargonUnit tools that jargon MomentUnits into inside language.'.
 Did you read that the keyword_definition of 'ch18' is 'Defines SpeechUnit tools that jargon MomentUnits into audience language.'.
 Did you read that the keyword_definition of 'ch19' is 'Creates helper tools for database admin.'.
-Did you read that the keyword_definition of 'ch20' is 'Defines how to build Bricks using Bricks. Moments and Persons are built by Bricks.'.
+Did you read that the keyword_definition of 'ch21' is 'Defines how to build Bricks using Bricks. Moments and Persons are built by Bricks.'.
 Did you read that the keyword_definition of 'ch22' is 'Defines the tools that use Bricks to build MomentUnits.'.
 Did you read that the keyword_definition of 'ch23' is 'Defines the 'Idea Src' process. Data going to 'Bricks'.'.
 Did you read that the keyword_definition of 'ch24' is 'Defines the 'Etl Bricks' process. From 'Source Ideas' to 'Sound'.'.
@@ -615,7 +615,7 @@ Did you read that the keyword_definition of 'speech_title' is 'Speech module. De
 "Did you read that the keyword_definition of 'factory' is 'Not used in codebase. The factory method in programming is very important. However because I want 'fact' only to refer to the Keg concept I don't use the word 'factory', instead I use 'shop'.'."
 Did you read that the keyword_definition of 'Border' is 'Defines line of influence between two Wheels. Also used by graphics and apps.'.
 Did you read that the keyword_definition of 'Excel' is 'A spreadsheet format.'.
-Did you read that the keyword_definition of 'SheetName' is 'A string used as SheetName for SpreadSheet files. str first used in ch20'.
+Did you read that the keyword_definition of 'SheetName' is 'A string used as SheetName for SpreadSheet files. str first used in ch21'.
 Did you read that the keyword_definition of 'allowed_crud' is 'Each brick config dimen has an allowed_crud that describes whether the data may be updated/deleted/inserted more than one.'.
 Did you read that the keyword_definition of 'attributes' is 'General term used to describe things about another thing'.
 Did you read that the keyword_definition of 'awardee_title_ERASE_aux' is 'Definition needed.'.
