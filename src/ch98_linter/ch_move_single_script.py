@@ -66,6 +66,9 @@ def move_chapters_given_ints(src_chxx_int, dst_chxx_int):
     update_keg_questions_csv(src_chxx_prefix, dst_chxx_prefix)
     update_keg_questions_csv(src_uppercase_chxx, dst_uppercase_chxx)
     print("✅ Replacement complete.")
+    # move summary
+    # replace Chapter XX and Chapter XX
+    # replace chXX and chXX
 
 
 def change_ref_json(src_dir, src_chxx_prefix, prefix_dir: str, dst_chxx_int: int):
@@ -82,7 +85,9 @@ def change_ref_json(src_dir, src_chxx_prefix, prefix_dir: str, dst_chxx_int: int
 def update_keywords_source_valid_ch(src_chxx_int, dst_chxx_int):
     config_dict = get_keywords_src_config()
     config_dict = replace_valid_ch(config_dict, src_chxx_int, dst_chxx_int)
-    save_json(create_src_keywords_src_path("src"), None, config_dict)
+    src_keywords_src_path = create_src_keywords_src_path("src")
+    save_json(src_keywords_src_path, None, config_dict)
+    print(f"Save {src_keywords_src_path}")
 
 
 def replace_valid_ch(config_dict: dict, src_num: int | str, dst_num: int | str) -> dict:
