@@ -27,11 +27,11 @@ Water - We've got two sources: the well next to the house and the stream. During
 
 Lastly we're going to have to build a secret well in Mary's forest. It's rocky but we'll find a spot near the meadow. Which we won't farm on anymore.
 
-Food - We're going to make a much food as we can. We're going to stash it everywhere we can. We're going to hide that we have food by being really skinny. All of us. And very pale. No more sunburns. We work at night under moonlight whenever we can. 
+Food - We're going to make a much food as we can. We're going to cach it everywhere we can. We're going to hide that we have food by being really skinny. All of us. And very pale. No more sunburns. We work at night under moonlight whenever we can. 
 
 Men only still from the wealthy, we're going to look like poor drages living off cabbage and roots. Not worth their time. 
 
-The second well and it's food stashes will be hidden, that means no paths. We'll build a staircase to go up gilberts rocks aand we'll and we'll take it down when winter comes. After that we will climb the rocks every time. 
+The second well and it's food caches will be hidden, that means no paths. We'll build a staircase to go up gilberts rocks aand we'll and we'll take it down when winter comes. After that we will climb the rocks every time. 
 
 The house will be gone and broken by the end of winter. We're going to make it look like it's already been ransacked. It could have been this morning. We'll make hovels next to the house and live there with everyone. We'll have backup hovels in Mary's forest, we'll use wood from the house to build those. 
 
