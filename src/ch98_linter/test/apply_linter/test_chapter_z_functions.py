@@ -86,6 +86,7 @@ def test_Chapters_path_FunctionStructureAndFormat():
         "create_path",
         "create_directory_path",
         "rope_is_valid_dir_path",
+        "_summary_path",
     }
     for chapter_desc, chapter_dir in get_chapter_descs().items():
         filenames_set = get_dir_filenames(chapter_dir, include_extensions={"py"})

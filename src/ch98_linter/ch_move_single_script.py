@@ -1,8 +1,9 @@
-from ch00_py.file_toolbox import open_json, save_json
+from ch00_py.file_toolbox import open_file, open_json, save_file, save_json
 from ch01_keyword.keyword_class_builder import (
     create_src_keywords_src_path,
     get_keywords_src_config,
 )
+from ch97_docs_builder._ref.ch97_path import create_ai_summary_path
 from ch97_docs_builder.glossary_ranking import create_keg_exam_questions_path
 from ch98_linter.ch_move_tool import (
     delete_if_empty_or_pycache_only,
@@ -57,21 +58,38 @@ def move_chapters_given_ints(src_chxx_int, dst_chxx_int):
         return
 
     # file contents
-    change_ref_json("src", src_chxx_prefix, x_prefix_dir, dst_chxx_int)
-    replace_in_tracked_python_files(src_chxx_prefix, replace_text=dst_chxx_prefix)
-    replace_in_tracked_python_files(src_uppercase_chxx, dst_uppercase_chxx)
-    # change file paths
-    rename_files_and_dirs_4times("src", src_chxx_prefix, dst_chxx_prefix)
-    update_keywords_source_valid_ch(src_chxx_int, dst_chxx_int)
-    update_keg_questions_csv(src_chxx_prefix, dst_chxx_prefix)
-    update_keg_questions_csv(src_uppercase_chxx, dst_uppercase_chxx)
-    print("✅ Replacement complete.")
+    # change_ref_json("src", src_chxx_prefix, x_prefix_dir, dst_chxx_int)
+    # replace_in_tracked_python_files(src_chxx_prefix, replace_text=dst_chxx_prefix)
+    # replace_in_tracked_python_files(src_uppercase_chxx, dst_uppercase_chxx)
+    change_ai_summary_md("src", src_chxx_int, dst_chxx_int)
     # move summary
     # replace Chapter XX and Chapter XX
     # replace chXX and chXX
+    # # change file paths
+    # rename_files_and_dirs_4times("src", src_chxx_prefix, dst_chxx_prefix)
+    # update_keywords_source_valid_ch(src_chxx_int, dst_chxx_int)
+    # update_keg_questions_csv(src_chxx_prefix, dst_chxx_prefix)
+    # update_keg_questions_csv(src_uppercase_chxx, dst_uppercase_chxx)
+    # print("✅ Replacement complete.")
 
 
-def change_ref_json(src_dir, src_chxx_prefix, prefix_dir: str, dst_chxx_int: int):
+def change_ai_summary_md(src_dir, src_chxx_int: int, dst_chxx_int: int):
+    src_chxx_prefix = f"ch{src_chxx_int:02}"
+    dst_chxx_prefix = f"ch{dst_chxx_int:02}"
+    src_chxx_dir_prefix = os_path_join(src_dir, src_chxx_prefix)
+    for src_ch_desc_dir in first_level_dirs_with_prefix(src_chxx_dir_prefix):
+        ai_summary_path = create_ai_summary_path(src_ch_desc_dir, src_chxx_prefix)
+        ai_summary_md = open_file(ai_summary_path)
+        src_chapter_str = f"Chapter {src_chxx_int:02}"
+        dst_chapter_str = f"Chapter {dst_chxx_int:02}"
+        ai_summary_md = ai_summary_md.replace(src_chapter_str, dst_chapter_str)
+        ai_summary_md = ai_summary_md.replace(src_chxx_prefix, dst_chxx_prefix)
+
+        save_file(ai_summary_path, None, ai_summary_md)
+        print(f"Updated ai_summary_md '{ai_summary_path}'")
+
+
+def change_ref_json(src_dir, src_chxx_prefix: str, prefix_dir: str, dst_chxx_int: int):
     src_chxx_dir_prefix = os_path_join(src_dir, src_chxx_prefix)
     for src_ch_desc_dir in first_level_dirs_with_prefix(src_chxx_dir_prefix):
         ref_dir = os_path_join(src_ch_desc_dir, "_ref")
