@@ -13,7 +13,7 @@ from ch17_jargon.jargon_config import (
     get_jargonable_args,
     jargonable_obj_types,
 )
-from ch18_speech.speech_config import (
+from ch19_speech.speech_config import (
     get_speech_args_obj_types,
     get_speech_labelterm_args,
     get_speech_nameterm_args,
@@ -23,14 +23,14 @@ from ch18_speech.speech_config import (
     set_speechable_iux_aux_args,
     speechable_obj_types,
 )
-from ch18_speech.speech_main import SpeechUnit, speechunit_shop
-from ch18_speech.yap_term import (
+from ch19_speech.speech_main import SpeechUnit, speechunit_shop
+from ch19_speech.yap_term import (
     labelyap_shop,
     nameyap_shop,
     ropeyap_shop,
     titleyap_shop,
 )
-from ch99_glossary.ch_keyword import Ch18Keywords as kw, ExampleStrs as exx
+from ch99_glossary.ch_keyword import Ch19Keywords as kw, ExampleStrs as exx
 
 
 def test_get_speech_args_obj_types_ReturnsObj():

@@ -1,11 +1,11 @@
-from ch18_speech.speech_main import inherit_speechunit, speechunit_shop
-from ch18_speech.test._util.ch18_examples import (
+from ch19_speech.speech_main import inherit_speechunit, speechunit_shop
+from ch19_speech.test._util.ch19_examples import (
     get_bowl_titleyap,
     get_clean_labelyap,
     get_clean_ropeyap,
     get_suita_nameyap,
 )
-from ch99_glossary.ch_keyword import Ch18Keywords as kw, ExampleStrs as exx
+from ch99_glossary.ch_keyword import Ch19Keywords as kw, ExampleStrs as exx
 from pytest import raises as pytest_raises
 
 

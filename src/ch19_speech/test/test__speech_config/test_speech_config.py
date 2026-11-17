@@ -1,13 +1,13 @@
 from ch00_py.file_toolbox import create_path
 from ch17_jargon.jargon_config import get_jargon_config_dict
-from ch18_speech.speech_config import (
+from ch19_speech.speech_config import (
     get_speech_args_dimen_mapping,
     get_speech_column_ref,
     get_speech_config_dict,
     get_speech_filename,
     speech_config_path,
 )
-from ch99_glossary.ch_keyword import Ch18Keywords as kw
+from ch99_glossary.ch_keyword import Ch19Keywords as kw
 
 
 def test_get_speech_filename_ReturnsObj():
@@ -17,7 +17,7 @@ def test_get_speech_filename_ReturnsObj():
 
 def test_speech_config_path_ReturnsObj_Speech() -> str:
     # ESTABLISH
-    chapter_dir = create_path(kw.src, "ch18_speech")
+    chapter_dir = create_path(kw.src, "ch19_speech")
     print(f'{speech_config_path()=}')
     # WHEN / THEN
     assert speech_config_path() == create_path(chapter_dir, "speech_config.json")

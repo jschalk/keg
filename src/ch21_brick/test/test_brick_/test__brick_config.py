@@ -27,7 +27,7 @@ from ch17_jargon.jargon_config import (
     get_jargon_dimens,
     get_jargonable_args,
 )
-from ch18_speech.speech_config import (  # get_speech_args_dimen_mapping,; get_speech_dimens,
+from ch19_speech.speech_config import (  # get_speech_args_dimen_mapping,; get_speech_dimens,
     get_speech_args_dimen_mapping,
     get_speech_config_dict,
     get_speechable_args,

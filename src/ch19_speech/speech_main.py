@@ -1,11 +1,11 @@
 from ch00_py.dict_toolbox import get_0_if_None
-from ch18_speech._ref.ch18_semantic_types import (
+from ch19_speech._ref.ch19_semantic_types import (
     FlareInt,
     KnotTerm,
     PersonName,
     default_knot_if_None,
 )
-from ch18_speech.yap_term import (
+from ch19_speech.yap_term import (
     LabelYap,
     NameYap,
     RopeYap,

@@ -15,7 +15,7 @@ from ch05_rope.rope import (
     get_parent_rope,
     get_tail_label,
 )
-from ch18_speech._ref.ch18_semantic_types import (
+from ch19_speech._ref.ch19_semantic_types import (
     AudieTitle,
     FlareInt,
     KnotTerm,

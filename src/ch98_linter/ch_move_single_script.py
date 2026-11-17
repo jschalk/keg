@@ -62,9 +62,6 @@ def move_chapters_given_ints(src_chxx_int, dst_chxx_int):
     replace_in_tracked_python_files(src_chxx_prefix, replace_text=dst_chxx_prefix)
     replace_in_tracked_python_files(src_uppercase_chxx, dst_uppercase_chxx)
     change_ai_summary_md("src", src_chxx_int, dst_chxx_int)
-    # move summary
-    # replace Chapter XX and Chapter XX
-    # replace chXX and chXX
     # change file paths
     rename_files_and_dirs_4times("src", src_chxx_prefix, dst_chxx_prefix)
     update_keywords_source_valid_ch(src_chxx_int, dst_chxx_int)

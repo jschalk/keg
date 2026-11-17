@@ -9,7 +9,7 @@ def get_speech_filename():
 
 def speech_config_path():
     "Returns path: c18_speech/speech_config.json"
-    return create_path("src", "ch18_speech", "speech_config.json")
+    return create_path("src", "ch19_speech", "speech_config.json")
 
 
 def get_speech_config_dict() -> dict:

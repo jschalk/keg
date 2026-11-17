@@ -1611,7 +1611,7 @@ class Ch17Keywords(str, Enum):
         return self.value
 
 
-class Ch18Keywords(str, Enum):
+class Ch19Keywords(str, Enum):
     Audie = "Audie"
     AudieTitle = "AudieTitle"
     ContactName = "ContactName"
@@ -1651,7 +1651,7 @@ class Ch18Keywords(str, Enum):
     ch09 = "ch09"
     ch15 = "ch15"
     ch17 = "ch17"
-    ch18 = "ch18"
+    ch19 = "ch19"
     ch99 = "ch99"
     close = "close"
     contact_cred_mass = "contact_cred_mass"
@@ -1858,7 +1858,7 @@ class Ch21Keywords(str, Enum):
     ch15 = "ch15"
     ch16 = "ch16"
     ch17 = "ch17"
-    ch18 = "ch18"
+    ch19 = "ch19"
     ch20 = "ch20"
     ch21 = "ch21"
     ch99 = "ch99"

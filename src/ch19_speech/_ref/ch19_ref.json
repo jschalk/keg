@@ -1,8 +1,8 @@
 {
   "chapter_blurb": "Defines SpeechUnit tools that jargon MomentUnits into audience language.", 
   "chapter_content": "A tool that translates persons from inside language to audience language.", 
-  "chapter_description": "ch18_speech", 
-  "chapter_number": 18, 
+  "chapter_description": "ch19_speech", 
+  "chapter_number": 19, 
   "chapter_ref_catalogue": "n", 
   "ontology summary": "Uses the Ontological structure of translation to jargon to an   audience LabelTerms, RopeTerms, NameTerms, GroupTerms"
 }

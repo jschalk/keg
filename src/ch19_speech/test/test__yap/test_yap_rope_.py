@@ -1,12 +1,12 @@
 from ch05_rope.rope import create_rope, default_knot_if_None, to_rope
-from ch18_speech.yap_term import (
+from ch19_speech.yap_term import (
     RopeYap,
     get_ropeyap_from_dict,
     inherit_ropeyap,
     labelyap_shop,
     ropeyap_shop,
 )
-from ch99_glossary.ch_keyword import Ch18Keywords as kw, ExampleStrs as exx
+from ch99_glossary.ch_keyword import Ch19Keywords as kw, ExampleStrs as exx
 from pytest import raises as pytest_raises
 
 

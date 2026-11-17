@@ -1,5 +1,5 @@
-from ch18_speech.speech_main import speechunit_shop
-from ch18_speech.test._util.ch18_examples import (
+from ch19_speech.speech_main import speechunit_shop
+from ch19_speech.test._util.ch19_examples import (
     get_bowl_titleyap,
     get_clean_ropeyap,
     get_invalid_nameyap,
@@ -7,8 +7,8 @@ from ch18_speech.test._util.ch18_examples import (
     get_invalid_titleyap,
     get_suita_nameyap,
 )
-from ch18_speech.yap_term import nameyap_shop, ropeyap_shop
-from ch99_glossary.ch_keyword import Ch18Keywords as kw, ExampleStrs as exx
+from ch19_speech.yap_term import nameyap_shop, ropeyap_shop
+from ch99_glossary.ch_keyword import Ch19Keywords as kw, ExampleStrs as exx
 from pytest import raises as pytest_raises
 
 

@@ -1,5 +1,5 @@
 from ch05_rope.rope import default_knot_if_None
-from ch18_speech.yap_term import (
+from ch19_speech.yap_term import (
     TitleYap,
     get_titleyap_from_dict,
     inherit_titleyap,
@@ -7,7 +7,7 @@ from ch18_speech.yap_term import (
 )
 from ch99_glossary.ch_keyword import (
     Ch17Keywords as kw,
-    Ch18Keywords as kw,
+    Ch19Keywords as kw,
     ExampleStrs as exx,
 )
 from pytest import raises as pytest_raises
