@@ -27,7 +27,7 @@ from os.path import (
     exists as os_path_exists,
     join as os_path_join,
 )
-from pathlib import Path as pathlib_Path
+from pathlib import Path, Path as pathlib_Path
 from pytest import mark as pytest_mark, raises as pytest_raises
 from unittest.mock import patch as mock_patch
 
@@ -163,7 +163,7 @@ def test_save_file_SetsFile(temp3_fs, temp3_dir):
     assert os_path_exist(create_path(env_dir, x_filename))
 
 
-def test_open_file_OpensFilesWith_dest_dirAnd_filename(
+def test_open_file_Scenario0_OpensFilesWith_dest_dirAnd_filename(
     temp3_fs,
 ):
     # ESTABLISH
@@ -185,7 +185,7 @@ def test_open_file_OpensFilesWith_dest_dirAnd_filename(
     assert open_file(dest_dir=env_dir, filename=x2_filename) == x2_file_str
 
 
-def test_open_file_OpensFilesWithOnly_dest_dir(temp3_fs, temp3_dir):
+def test_open_file_Scenario1_OpensFilesWithOnly_dest_dir(temp3_fs, temp3_dir):
     # ESTABLISH
     env_dir = temp3_dir
     x1_name = "x1"
@@ -208,6 +208,51 @@ def test_open_file_OpensFilesWithOnly_dest_dir(temp3_fs, temp3_dir):
     assert open_file(dest_dir=x1_file_path, filename=None) == x1_file_str
     assert open_file(dest_dir=x2_file_path, filename=None) == x2_file_str
     assert open_file(dest_dir=x2_file_path) == x2_file_str
+
+
+from pathlib import Path
+
+
+def test_open_file_ReturnsObj_Scenario02_RoundTripsMarkdownWithNonStandardCharacters(
+    temp3_dir,
+):
+    # ESTABLISH
+    env_dir = temp3_dir
+    md_filename = "x1.md"
+    md_file_path = create_path(env_dir, md_filename)
+    md_file_str = (
+        "# Title \u2014 `example`**\n"
+        "- en dash \u2013 and em dash \u2014\n"
+        "- accents: caf\u00e9, na\u00efve\n"
+        "- quotes: \u201csmart\u201d and \u2018single\u2019\n"
+    )
+
+    # WHEN
+    save_file(dest_dir=env_dir, filename=md_filename, file_str=md_file_str)
+
+    # THEN
+    assert open_file(dest_dir=md_file_path, filename=None) == md_file_str
+    assert open_file(dest_dir=env_dir, filename=md_filename) == md_file_str
+
+
+def test_open_file_ReturnsObj_Scenario03_SavedMarkdownIsUtf8OnDisk(temp3_fs, temp3_dir):
+    # ESTABLISH
+    env_dir = temp3_dir
+    md_filename = "x1.md"
+    md_file_path = create_path(env_dir, md_filename)
+    single_line_strs = [
+        "Title \u2014 `example`**",
+        "caf\u00e9 \u2013 na\u00efve",
+        "\u201csmart quotes\u201d",
+    ]
+
+    for single_line_str in single_line_strs:
+        # WHEN
+        save_file(dest_dir=env_dir, filename=md_filename, file_str=single_line_str)
+
+        # THEN
+        assert Path(md_file_path).read_bytes() == single_line_str.encode("utf-8")
+        assert open_file(dest_dir=md_file_path, filename=None) == single_line_str
 
 
 def test_save_json_Scenario0_SetsFile(temp3_fs, temp3_dir):
@@ -290,7 +335,7 @@ def test_open_json_ReturnsObj(temp3_fs, temp3_dir):
     assert generated_dict == expected_dict
 
 
-def test_save_file_ReplacesFileAsDefault(temp3_fs, temp3_dir):
+def test_save_file_Scenario0_ReplacesFileAsDefault(temp3_fs, temp3_dir):
     # ESTABLISH
     env_dir = temp3_dir
     bowl2_str = "bowl"
@@ -314,7 +359,7 @@ def test_save_file_ReplacesFileAsDefault(temp3_fs, temp3_dir):
     assert open_file(dest_dir=env_dir, filename=bowl_filename) == bowl_new_file_str
 
 
-def test_save_file_DoesNotReplaceFile(temp3_fs, temp3_dir):
+def test_save_file_Scenario1_DoesNotReplaceFile(temp3_fs, temp3_dir):
     # ESTABLISH
     env_dir = temp3_dir
     bowl2_str = "bowl"
@@ -338,7 +383,7 @@ def test_save_file_DoesNotReplaceFile(temp3_fs, temp3_dir):
     assert open_file(env_dir, bowl_filename) == bowl_old_file_str
 
 
-def test_save_file_DoesNotRequireSeperateFilename(temp3_fs, temp3_dir):
+def test_save_file_Scenario2_DoesNotRequireSeperateFilename(temp3_fs, temp3_dir):
     # ESTABLISH
     env_dir = temp3_dir
     bowl2_str = "bowl"

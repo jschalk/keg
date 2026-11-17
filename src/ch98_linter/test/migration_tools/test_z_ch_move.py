@@ -309,3 +309,23 @@ def test_change_ai_summary_md_ReturnsNone_Scenario06_KeepsFileNameAndOtherText(
     assert [path.name for path in summary_path.parent.iterdir()] == [summary_path.name]
     expected_text = "# Title\nChapter 04 intro\nunrelated line\nch04 end\n"
     assert summary_path.read_text() == expected_text
+
+
+def test_change_ai_summary_md_ReturnsNone_Scenario07_PreservesNonStandardCharacters(
+    tmp_path,
+):
+    # ESTABLISH
+    src_dir = tmp_path
+    chapter_dir = src_dir / "ch01_desc"
+    chapter_dir.mkdir()
+    summary_path = _summary_path(chapter_dir, "ch01")
+    summary_path.parent.mkdir(parents=True, exist_ok=True)
+    original_text = "Chapter 01 \u2014 `ch01_example`**\n"
+    summary_path.write_bytes(original_text.encode("utf-8"))
+
+    # WHEN
+    change_ai_summary_md(str(src_dir), 1, 2)
+
+    # THEN
+    expected_text = "Chapter 02 \u2014 `ch02_example`**\n"
+    assert summary_path.read_bytes() == expected_text.encode("utf-8")
