@@ -43,18 +43,17 @@ def test_get_dimen_minimum_idea_types_ReturnsObj():
     # THEN
     expected_set = set()
     for x_dimen, x_brick_type in get_dimen_minimum_put_brick_names().items():
-        print(f"put {x_dimen} ii{str(x_brick_type)[2:7]}")
+        # print(f"put {x_dimen} ii{str(x_brick_type)[2:7]}")
         expected_set.add(f"ii{x_brick_type[2:7]}")
-    # TODO add del bricks
-    # for x_dimen, x_brick_type in get_dimen_minimum_del_brick_names().items():
-    #     # print(f"del {x_dimen} ii{str(x_brick_type)[2:7]}")
-    #     expected_set.add(f"ii{x_brick_type[2:7]}")
-    # for e_brick_type in expected_set:
-    #     print(f"ii{str(e_brick_type)[2:7]}")
+    for x_dimen, x_brick_type in get_dimen_minimum_del_brick_names().items():
+        # print(f"del {x_dimen} ii{str(x_brick_type)[2:7]}")
+        expected_set.add(f"ii{x_brick_type[2:7]}")
     # TODO get rid of these removes
     expected_set.remove("ii00106")
     expected_set.remove("ii00170")
     expected_list = sorted(expected_set, key=lambda s: int(s[2:]))
+    for e_brick_type in expected_list:
+        print(f""""ii{str(e_brick_type)[2:7]}",""")
     assert prime_idea_brick_types == expected_list
 
 
@@ -68,6 +67,8 @@ def test_create_init_idea_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
     x_ideas = create_init_idea_csv_strs()
 
     # THEN
+    for x_idea_type, x_header in x_ideas.items():
+        print(f""""{x_idea_type}": "{x_header.replace("\n", "")}\\n", """)
     expected_idea_csv_strs = {
         "ii00100": "moment_rope,epoch_label,c400_number,yr1_jan1_offset,monthday_index,fund_grain,mana_grain,respect_grain,knot,job_listen_rotations\n",
         "ii00101": "moment_rope,person_name,bud_time,knot,quota,celldepth\n",
@@ -90,6 +91,16 @@ def test_create_init_idea_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
         "ii00143": "otx_name,inx_name,otx_knot,inx_knot,unknown_str\n",
         "ii00144": "otx_label,inx_label,otx_knot,inx_knot,unknown_str\n",
         "ii00145": "otx_rope,inx_rope,otx_knot,inx_knot,unknown_str\n",
+        "ii00150": "spark_num,spark_face,moment_rope,person_name,contact_name,group_title_ERASE\n",
+        "ii00151": "spark_num,spark_face,moment_rope,person_name,contact_name_ERASE\n",
+        "ii00152": "spark_num,spark_face,person_name,plan_rope,awardee_title_ERASE\n",
+        "ii00153": "spark_num,spark_face,person_name,plan_rope,fact_context_ERASE\n",
+        "ii00154": "spark_num,spark_face,person_name,plan_rope,labor_title_ERASE\n",
+        "ii00155": "spark_num,spark_face,person_name,plan_rope,healer_name_ERASE\n",
+        "ii00156": "spark_num,spark_face,person_name,plan_rope,reason_context,reason_state_ERASE\n",
+        "ii00157": "spark_num,spark_face,person_name,plan_rope,reason_context_ERASE\n",
+        "ii00158": "spark_num,spark_face,person_name,plan_rope_ERASE\n",
+        "ii00159": "spark_num,spark_face,moment_rope,person_name_ERASE\n",
     }
     expected_ii00100_csv = expected_idea_csv_strs.get("ii00100")
     expected_ii00101_csv = expected_idea_csv_strs.get("ii00101")
@@ -112,7 +123,7 @@ def test_create_init_idea_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
     expected_ii00143_csv = expected_idea_csv_strs.get("ii00143")
     expected_ii00144_csv = expected_idea_csv_strs.get("ii00144")
     expected_ii00145_csv = expected_idea_csv_strs.get("ii00145")
-    print(f"{expected_ii00101_csv=}")
+    # print(f"{expected_ii00101_csv=}")
 
     face_spark_str = "spark_num,spark_face,"
     assert x_ideas.get("ii00100") == f"{face_spark_str}{expected_ii00100_csv}"
@@ -122,8 +133,8 @@ def test_create_init_idea_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
     assert x_ideas.get("ii00104") == f"{face_spark_str}{expected_ii00104_csv}"
     assert x_ideas.get("ii00105") == f"{face_spark_str}{expected_ii00105_csv}"
     # assert x_ideas.get("ii00106") == f"{face_spark_str}{expected_ii00106_csv}"
-    print(f"{expected_ii00120_csv=}")
-    print(x_ideas.get("ii00120"))
+    # print(f"{expected_ii00120_csv=}")
+    # print(x_ideas.get("ii00120"))
     assert x_ideas.get("ii00120") == f"{face_spark_str}{expected_ii00120_csv}"
     assert x_ideas.get("ii00121") == f"{face_spark_str}{expected_ii00121_csv}"
     assert x_ideas.get("ii00122") == f"{face_spark_str}{expected_ii00122_csv}"
@@ -138,7 +149,7 @@ def test_create_init_idea_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
     assert x_ideas.get("ii00143") == f"{face_spark_str}{expected_ii00143_csv}"
     assert x_ideas.get("ii00144") == f"{face_spark_str}{expected_ii00144_csv}"
     assert x_ideas.get("ii00145") == f"{face_spark_str}{expected_ii00145_csv}"
-    assert len(x_ideas) == 20
+    assert len(x_ideas) == 30
 
 
 def test_add_momentunit_to_idea_csv_strs_ReturnsObj_Scenario0_OneMomentUnit(
@@ -272,7 +283,7 @@ def test_add_momentunits_to_idea_csv_strs_ReturnsObj_Scenario1_TwoMomentUnits(
     expected_ii00104_csv = expected_ii00104_csv.replace(J45_ROPE, f",,{J45_ROPE}")
     expected_ii00105_csv = expected_ii00105_csv.replace(J45_ROPE, f",,{J45_ROPE}")
 
-    assert len(x_ideas) == 20
+    assert len(x_ideas) == 30
     generated_ii00100_csv = x_ideas.get("ii00100")
     generated_ii00101_csv = x_ideas.get("ii00101")
     generated_ii00102_csv = x_ideas.get("ii00102")
