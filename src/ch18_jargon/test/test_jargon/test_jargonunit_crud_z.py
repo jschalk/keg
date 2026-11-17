@@ -1,6 +1,6 @@
-from ch17_jargon.jargon_main import jargonunit_shop
-from ch17_jargon.map_term import namemap_shop, ropemap_shop
-from ch17_jargon.test._util.ch17_examples import (
+from ch18_jargon.jargon_main import jargonunit_shop
+from ch18_jargon.map_term import namemap_shop, ropemap_shop
+from ch18_jargon.test._util.ch18_examples import (
     get_bowl_titlemap,
     get_clean_ropemap,
     get_invalid_namemap,
@@ -8,7 +8,7 @@ from ch17_jargon.test._util.ch17_examples import (
     get_invalid_titlemap,
     get_suita_namemap,
 )
-from ch99_glossary.ch_keyword import Ch17Keywords as kw, ExampleStrs as exx
+from ch99_glossary.ch_keyword import Ch18Keywords as kw, ExampleStrs as exx
 from pytest import raises as pytest_raises
 
 

@@ -50,7 +50,7 @@ New semantic type: `SheetName` (a `str`) — identifies a named sheet within an 
 
 **`brick_db_tool.py`** handles Excel I/O: `get_all_excel_sheet_names` scans a directory for `.xlsx` files and returns all sheet names; `save_sheet` writes a DataFrame to a named sheet; `create_brick_df_from_file` reads a brick sheet back into a DataFrame.
 
-**`jargon_toolbox.py`** provides `add_otx_inx_columns` — given a brick DataFrame with `otx`-valued key columns, it appends matching `_otx` and `_inx` column pairs for use by the translation pipeline (ch17).
+**`jargon_toolbox.py`** provides `add_otx_inx_columns` — given a brick DataFrame with `otx`-valued key columns, it appends matching `_otx` and `_inx` column pairs for use by the translation pipeline (ch18).
 
 **`brick_formats/`** is a directory of per-brick JSON schema files (e.g. `br00031.json`), each specifying the `dimens` and `attributes` for that brick type. These are loaded by `get_brickref_from_file`.
 

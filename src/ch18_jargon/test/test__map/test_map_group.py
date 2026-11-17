@@ -1,12 +1,12 @@
 from ch05_rope.rope import default_knot_if_None
-from ch17_jargon.jargon_config import default_unknown_str_if_None
-from ch17_jargon.map_term import (
+from ch18_jargon.jargon_config import default_unknown_str_if_None
+from ch18_jargon.map_term import (
     TitleMap,
     get_titlemap_from_dict,
     inherit_titlemap,
     titlemap_shop,
 )
-from ch99_glossary.ch_keyword import Ch17Keywords as kw, ExampleStrs as exx
+from ch99_glossary.ch_keyword import Ch18Keywords as kw, ExampleStrs as exx
 from pytest import raises as pytest_raises
 
 

@@ -6,7 +6,7 @@ from os.path import join as os_path_join
 
 def jargon_config_path() -> str:
     "Returns path: c17_jargon/jargon_config.json"
-    return create_path("src", "ch17_jargon", "jargon_config.json")
+    return create_path("src", "ch18_jargon", "jargon_config.json")
 
 
 def get_jargon_filename() -> str:

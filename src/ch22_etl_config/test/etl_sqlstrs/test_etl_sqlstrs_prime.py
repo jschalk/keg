@@ -1,7 +1,7 @@
 from ch09_person_atom.atom_config import get_person_dimens
 from ch15_moment.moment_config import get_moment_dimens
 from ch16_nabu.nabu_config import get_nabu_dimens
-from ch17_jargon.jargon_config import (
+from ch18_jargon.jargon_config import (
     get_jargon_dimens,
     set_jargonable_otx_inx_args,
 )

@@ -15,7 +15,7 @@ from ch05_rope.rope import (
     get_parent_rope,
     get_tail_label,
 )
-from ch17_jargon._ref.ch17_semantic_types import (
+from ch18_jargon._ref.ch18_semantic_types import (
     FaceName,
     KnotTerm,
     LabelTerm,
@@ -23,7 +23,7 @@ from ch17_jargon._ref.ch17_semantic_types import (
     SparkInt,
     default_knot_if_None,
 )
-from ch17_jargon.jargon_config import default_unknown_str_if_None
+from ch18_jargon.jargon_config import default_unknown_str_if_None
 from copy import copy as copy_copy
 from dataclasses import dataclass
 

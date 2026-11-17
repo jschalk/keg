@@ -2,7 +2,7 @@ from ch00_py.dict_toolbox import get_empty_set_if_None, get_from_nested_dict
 from ch00_py.file_toolbox import create_path, open_json
 from ch09_person_atom.atom_config import get_delete_key_name
 from ch16_nabu.nabu_config import get_context_nabuable_args, set_nabuable_otx_inx_args
-from ch17_jargon.jargon_config import set_jargonable_otx_inx_args
+from ch18_jargon.jargon_config import set_jargonable_otx_inx_args
 from ch20_db_tool.db_toolbox import get_create_table_sqlstr
 from ch21_brick.brick_config import (
     get_brick_config_dict,

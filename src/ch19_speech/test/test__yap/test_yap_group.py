@@ -6,7 +6,7 @@ from ch19_speech.yap_term import (
     titleyap_shop,
 )
 from ch99_glossary.ch_keyword import (
-    Ch17Keywords as kw,
+    Ch18Keywords as kw,
     Ch19Keywords as kw,
     ExampleStrs as exx,
 )

@@ -1,5 +1,5 @@
 from ch05_rope.rope import create_rope, to_rope
-from ch17_jargon.map_term import ropemap_shop
+from ch18_jargon.map_term import ropemap_shop
 from ch99_glossary.ch_keyword import ExampleStrs as exx
 
 

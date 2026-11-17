@@ -1,17 +1,17 @@
-# ch17_jargon — Chapter Summary
+# ch18_jargon — Chapter Summary
 
 *This summary is authored by AI 5-26-2026.*
 
 ## 1. Title and Summary Declaration
 
-**Chapter 17 — `ch17_jargon`**
+**Chapter 18 — `ch18_jargon`**
 **"JargonUnit — string-level translation layer mapping external (otx) terms to internal (inx) terms across all string types"**
 
 ---
 
 ## 2. Prompt Used to Build This
 
-From `ch17_ref.json`:
+From `ch18_ref.json`:
 > "A tool that translates persons from outside language to inside language."
 
 Ontology note:
@@ -26,13 +26,13 @@ Ontology note:
 - **ch10_person_lesson**: `FaceName` — each map and `JargonUnit` is attributed to a specific face and `spark_num`, maintaining provenance.
 - **ch12_bud**: `SparkInt` — the ordering integer for inheritance resolution.
 
-`ch17_semantic_types.py` re-exports through ch12/ch10 with no new types. The chapter introduces one configuration constant: `unknown_str` (default `"UNKNOWN"`) — the sentinel value used when a translation mapping cannot be found.
+`ch18_semantic_types.py` re-exports through ch12/ch10 with no new types. The chapter introduces one configuration constant: `unknown_str` (default `"UNKNOWN"`) — the sentinel value used when a translation mapping cannot be found.
 
 ---
 
 ## 4. Summary of What This Chapter Does
 
-`ch17_jargon` implements the **string translation system** — the counterpart to ch16's numeric translation. Where ch16 converts external time numbers to internal `TimeNum` values, ch17 converts external string terms (names, labels, rope paths, group titles) to their internal equivalents.
+`ch18_jargon` implements the **string translation system** — the counterpart to ch16's numeric translation. Where ch16 converts external time numbers to internal `TimeNum` values, ch18 converts external string terms (names, labels, rope paths, group titles) to their internal equivalents.
 
 The "outside" (`otx`) / "inside" (`inx`) distinction is fundamental: an external face might use the name `"Bob"` for a contact that the internal system calls `"Robert_Smith"`, or use a rope path `";work;tasks;"` where the internal system uses `";job;pledges;"`. Translation enables data from any face to be correctly integrated.
 
@@ -52,4 +52,4 @@ The "outside" (`otx`) / "inside" (`inx`) distinction is fundamental: an external
 
 **`inherit_*` functions** (`inherit_labelmap`, `inherit_namemap`, etc.) merge an older map into a newer one — the same ordered-inheritance pattern used in ch10 lessons and ch16 nabu, ensuring that more recent translations from the same face supersede older ones.
 
-Together ch16 (numeric translation) and ch17 (string translation) form the complete "outside-to-inside" interface layer. All data arriving from external faces passes through these two chapters before being processed by the internal keg machinery.
+Together ch16 (numeric translation) and ch18 (string translation) form the complete "outside-to-inside" interface layer. All data arriving from external faces passes through these two chapters before being processed by the internal keg machinery.

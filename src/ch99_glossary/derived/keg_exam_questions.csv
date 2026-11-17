@@ -95,7 +95,7 @@ Did you read that the keyword_definition of 'ch13' is 'Builds a simulation that 
 Did you read that the keyword_definition of 'ch14' is 'Defines how time is handled by PersonUnits. Allows for arbitrary time structures.'.
 "Did you read that the keyword_definition of 'ch15' is 'Defines MomentUnits: common time tech, ledger, ContactNames, history of PersonUnits.'."
 Did you read that the keyword_definition of 'ch16' is 'Defines NabuUnit tools that interpret numeric values into inside accounting.'.
-Did you read that the keyword_definition of 'ch17' is 'Defines JargonUnit tools that jargon MomentUnits into inside language.'.
+Did you read that the keyword_definition of 'ch18' is 'Defines JargonUnit tools that jargon MomentUnits into inside language.'.
 Did you read that the keyword_definition of 'ch19' is 'Defines SpeechUnit tools that jargon MomentUnits into audience language.'.
 Did you read that the keyword_definition of 'ch20' is 'Creates helper tools for database admin.'.
 Did you read that the keyword_definition of 'ch21' is 'Defines how to build Bricks using Bricks. Moments and Persons are built by Bricks.'.

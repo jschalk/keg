@@ -4,7 +4,7 @@ from ch09_person_atom.atom_config import (
     get_atom_args_obj_types,
 )
 from ch15_moment.moment_config import get_moment_args_obj_types
-from ch17_jargon.jargon_config import (
+from ch18_jargon.jargon_config import (
     get_jargon_args_obj_types,
     get_jargon_labelterm_args,
     get_jargon_nameterm_args,

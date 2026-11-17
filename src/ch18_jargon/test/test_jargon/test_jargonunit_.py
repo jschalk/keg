@@ -4,7 +4,7 @@ from ch09_person_atom.atom_config import (
     get_atom_args_obj_types,
 )
 from ch15_moment.moment_config import get_moment_args_obj_types
-from ch17_jargon.jargon_config import (
+from ch18_jargon.jargon_config import (
     default_unknown_str_if_None,
     get_jargon_args_obj_types,
     get_jargon_labelterm_args,
@@ -15,14 +15,14 @@ from ch17_jargon.jargon_config import (
     jargonable_obj_types,
     set_jargonable_otx_inx_args,
 )
-from ch17_jargon.jargon_main import JargonUnit, jargonunit_shop
-from ch17_jargon.map_term import (
+from ch18_jargon.jargon_main import JargonUnit, jargonunit_shop
+from ch18_jargon.map_term import (
     labelmap_shop,
     namemap_shop,
     ropemap_shop,
     titlemap_shop,
 )
-from ch99_glossary.ch_keyword import Ch17Keywords as kw, ExampleStrs as exx
+from ch99_glossary.ch_keyword import Ch18Keywords as kw, ExampleStrs as exx
 
 
 def test_get_jargon_args_obj_types_ReturnsObj():

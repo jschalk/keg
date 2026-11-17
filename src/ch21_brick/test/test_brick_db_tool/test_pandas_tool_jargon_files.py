@@ -1,8 +1,8 @@
 from ch00_py.file_toolbox import create_path, save_json
 from ch05_rope.rope import create_rope, to_rope
-from ch17_jargon.jargon_config import get_jargon_filename
-from ch17_jargon.jargon_main import jargonunit_shop
-from ch17_jargon.test._util.ch17_examples import (
+from ch18_jargon.jargon_config import get_jargon_filename
+from ch18_jargon.jargon_main import jargonunit_shop
+from ch18_jargon.test._util.ch18_examples import (
     get_casa_maison_jargonunit_set_by_label,
     get_suita_namemap,
 )

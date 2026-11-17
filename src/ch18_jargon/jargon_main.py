@@ -1,12 +1,12 @@
 from ch00_py.dict_toolbox import get_0_if_None
-from ch17_jargon._ref.ch17_semantic_types import (
+from ch18_jargon._ref.ch18_semantic_types import (
     KnotTerm,
     PersonName,
     SparkInt,
     default_knot_if_None,
 )
-from ch17_jargon.jargon_config import default_unknown_str_if_None
-from ch17_jargon.map_term import (
+from ch18_jargon.jargon_config import default_unknown_str_if_None
+from ch18_jargon.map_term import (
     LabelMap,
     MapCore,
     NameMap,

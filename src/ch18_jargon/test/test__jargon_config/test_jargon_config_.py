@@ -1,5 +1,5 @@
 from ch00_py.file_toolbox import create_path
-from ch17_jargon.jargon_config import (
+from ch18_jargon.jargon_config import (
     default_unknown_str,
     default_unknown_str_if_None,
     get_jargon_args_dimen_mapping,
@@ -9,7 +9,7 @@ from ch17_jargon.jargon_config import (
     get_jargon_filename,
     jargon_config_path,
 )
-from ch99_glossary.ch_keyword import Ch17Keywords as kw
+from ch99_glossary.ch_keyword import Ch18Keywords as kw
 
 
 def test_get_jargon_filename_ReturnsObj():
@@ -19,7 +19,7 @@ def test_get_jargon_filename_ReturnsObj():
 
 def test_jargon_config_path_ReturnsObj_Jargon() -> str:
     # ESTABLISH / WHEN / THEN
-    chapter_dir = create_path(kw.src, "ch17_jargon")
+    chapter_dir = create_path(kw.src, "ch18_jargon")
     assert jargon_config_path() == create_path(chapter_dir, "jargon_config.json")
 
 

@@ -791,22 +791,22 @@ The config also defines the `nabu_timenum` dimension for atom-style CRUD operati
 
 **`inherit_timenabu(new, old)`** enforces that newer `NabuTime` objects (higher `spark_num`) from the same face supersede older ones — maintaining the same ordered-inheritance pattern established in ch10's lesson sequencing.
 
-Ch16 completes the "outside → inside" translation infrastructure. Ch17 handles word/string translation; ch16 handles number/time translation. Together they ensure that external data from any face can be faithfully and consistently interpreted in the internal coordinate system.
+Ch16 completes the "outside → inside" translation infrastructure. Ch18 handles word/string translation; ch16 handles number/time translation. Together they ensure that external data from any face can be faithfully and consistently interpreted in the internal coordinate system.
 
-# ch17_jargon — Chapter Summary
+# ch18_jargon — Chapter Summary
 
 *This summary is authored by AI 5-26-2026.*
 
 ## 1. Title and Summary Declaration
 
-**Chapter 17 — `ch17_jargon`**
+**Chapter 18 — `ch18_jargon`**
 **"JargonUnit — string-level translation layer mapping external (otx) terms to internal (inx) terms across all string types"**
 
 ---
 
 ## 2. Prompt Used to Build This
 
-From `ch17_ref.json`:
+From `ch18_ref.json`:
 > "A tool that translates persons from outside language to inside language."
 
 Ontology note:
@@ -821,13 +821,13 @@ Ontology note:
 - **ch10_person_lesson**: `FaceName` — each map and `JargonUnit` is attributed to a specific face and `spark_num`, maintaining provenance.
 - **ch12_bud**: `SparkInt` — the ordering integer for inheritance resolution.
 
-`ch17_semantic_types.py` re-exports through ch12/ch10 with no new types. The chapter introduces one configuration constant: `unknown_str` (default `"UNKNOWN"`) — the sentinel value used when a translation mapping cannot be found.
+`ch18_semantic_types.py` re-exports through ch12/ch10 with no new types. The chapter introduces one configuration constant: `unknown_str` (default `"UNKNOWN"`) — the sentinel value used when a translation mapping cannot be found.
 
 ---
 
 ## 4. Summary of What This Chapter Does
 
-`ch17_jargon` implements the **string translation system** — the counterpart to ch16's numeric translation. Where ch16 converts external time numbers to internal `TimeNum` values, ch17 converts external string terms (names, labels, rope paths, group titles) to their internal equivalents.
+`ch18_jargon` implements the **string translation system** — the counterpart to ch16's numeric translation. Where ch16 converts external time numbers to internal `TimeNum` values, ch18 converts external string terms (names, labels, rope paths, group titles) to their internal equivalents.
 
 The "outside" (`otx`) / "inside" (`inx`) distinction is fundamental: an external face might use the name `"Bob"` for a contact that the internal system calls `"Robert_Smith"`, or use a rope path `";work;tasks;"` where the internal system uses `";job;pledges;"`. Translation enables data from any face to be correctly integrated.
 
@@ -847,7 +847,7 @@ The "outside" (`otx`) / "inside" (`inx`) distinction is fundamental: an external
 
 **`inherit_*` functions** (`inherit_labelmap`, `inherit_namemap`, etc.) merge an older map into a newer one — the same ordered-inheritance pattern used in ch10 lessons and ch16 nabu, ensuring that more recent translations from the same face supersede older ones.
 
-Together ch16 (numeric translation) and ch17 (string translation) form the complete "outside-to-inside" interface layer. All data arriving from external faces passes through these two chapters before being processed by the internal keg machinery.
+Together ch16 (numeric translation) and ch18 (string translation) form the complete "outside-to-inside" interface layer. All data arriving from external faces passes through these two chapters before being processed by the internal keg machinery.
 
 
 # ch20_db_tool — Chapter Summary
@@ -954,7 +954,7 @@ New semantic type: `SheetName` (a `str`) — identifies a named sheet within an 
 
 **`brick_db_tool.py`** handles Excel I/O: `get_all_excel_sheet_names` scans a directory for `.xlsx` files and returns all sheet names; `save_sheet` writes a DataFrame to a named sheet; `create_brick_df_from_file` reads a brick sheet back into a DataFrame.
 
-**`jargon_toolbox.py`** provides `add_otx_inx_columns` — given a brick DataFrame with `otx`-valued key columns, it appends matching `_otx` and `_inx` column pairs for use by the translation pipeline (ch17).
+**`jargon_toolbox.py`** provides `add_otx_inx_columns` — given a brick DataFrame with `otx`-valued key columns, it appends matching `_otx` and `_inx` column pairs for use by the translation pipeline (ch18).
 
 **`brick_formats/`** is a directory of per-brick JSON schema files (e.g. `br00031.json`), each specifying the `dimens` and `attributes` for that brick type. These are loaded by `get_brickref_from_file`.
 
@@ -986,7 +986,7 @@ Ontology note:
 - **ch00_py**: `create_path`, `open_json` — config files are loaded via file toolbox.
 - **ch09_person_atom**: `get_delete_key_name` — used when constructing DELETE-type SQL stage queries to identify the correct key column.
 - **ch16_nabu**: `get_context_nabuable_args`, `set_nabuable_otx_inx_args` — ETL config expands nabuable columns into `_otx`/`_inx` pairs in SQL table definitions.
-- **ch17_jargon**: `set_jargonable_otx_inx_args` — same expansion for jargonable string columns.
+- **ch18_jargon**: `set_jargonable_otx_inx_args` — same expansion for jargonable string columns.
 - **ch20_db_tool**: `get_create_table_sqlstr` — used to generate CREATE TABLE statements for each pipeline stage.
 - **ch21_brick**: `get_brick_config_dict`, `get_brick_sqlite_types`, `get_default_sorted_list`, `get_brick_types`, `get_quick_bricks_column_ref` — all brick schema information flows through ch22.
 
@@ -1150,7 +1150,7 @@ Ontology note:
 ## 3. Summary of Previous Relevant Chapters
 
 - **ch05_rope**: `default_knot_if_None` — used when validating that label/name/rope columns in sound-agg tables do not contain the knot character.
-- **ch17_jargon**: `get_jargon_labelterm_args`, `get_jargon_nameterm_args`, `get_jargon_ropeterm_args`, `get_jargon_titleterm_args`, `get_jargon_column_ref`, `default_unknown_str_if_None` — the full translation type registry drives which sound-agg columns need knot-error checking and which need `otx → inx` resolution.
+- **ch18_jargon**: `get_jargon_labelterm_args`, `get_jargon_nameterm_args`, `get_jargon_ropeterm_args`, `get_jargon_titleterm_args`, `get_jargon_column_ref`, `default_unknown_str_if_None` — the full translation type registry drives which sound-agg columns need knot-error checking and which need `otx → inx` resolution.
 - **ch20_db_tool**: `create_update_inconsistency_error_query`, `delete_all_duplicate_rows`, `get_table_columns` — SQL-level data quality tools.
 - **ch21_brick**: `get_brick_dimen_ref` — the master brick dimension registry drives which `s_raw` and `s_agg` tables exist and need processing.
 - **ch22_etl_config**: `etl_sqlstr` — nearly all SQL strings used in ch25 are generated by ch22's SQL-string generation functions. Ch25 is the executor; ch22 is the generator.
@@ -1210,7 +1210,7 @@ Ontology note:
 - **ch05_rope**: `create_rope` — used when constructing `LassoUnit` objects to navigate moment directory paths.
 - **ch10_person_lesson**: `create_moment_json_path`, `create_moments_dir_path`, `LassoUnit`, `lassounit_shop` — the moment file system layout is defined in ch10 path helpers.
 - **ch12_bud**: `MomentRope` — scopes all heard table queries.
-- **ch17_jargon**: `get_jargon_args_obj_types`, `jargonable_obj_types` — drives which `h_raw` columns need `_inx` values populated via translation lookups.
+- **ch18_jargon**: `get_jargon_args_obj_types`, `jargonable_obj_types` — drives which `h_raw` columns need `_inx` values populated via translation lookups.
 - **ch20_db_tool**: `delete_all_duplicate_rows`, `get_row_count`, `get_table_columns` — SQL utilities.
 - **ch22_etl_config**: `etl_sqlstr` functions — `create_update_heard_raw_empty_inx_col_sqlstr`, `create_update_heard_raw_existing_inx_col_sqlstr`, `get_insert_heard_agg_sqlstrs`, `get_insert_heard_vld_sqlstrs`, `update_heard_agg_timenum_columns`, `get_moment_heard_select1_sqlstrs`, `get_person_heard_vld_tablenames`, `save_to_split_csvs` — all SQL generation delegated to ch22.
 
@@ -1221,7 +1221,7 @@ Ontology note:
 `ch26_heard` is the final ETL stage before data becomes usable `PersonUnit` and `MomentUnit` objects. It advances data through `h_raw → h_agg → h_vld` and then reconstructs structured files from the validated heard tables.
 
 **`etl_heard_raw_tables_to_heard_agg_tables(cursor)`** — three steps:
-1. `set_all_heard_raw_inx_columns` — for every `_otx`-suffixed column in every `h_raw` table, determines the translation type (`NameTerm`, `TitleTerm`, `LabelTerm`, or `RopeTerm`) from the ch17 jargon-args registry. If the column's base type is jargonable, runs an UPDATE query that JOINs against the validated `trl{type}_s_vld` table to fill in the `_inx` value. For rows where no translation mapping exists, goes back to copying the `_otx` value into `_inx` directly (pass-through for untranslated terms).
+1. `set_all_heard_raw_inx_columns` — for every `_otx`-suffixed column in every `h_raw` table, determines the translation type (`NameTerm`, `TitleTerm`, `LabelTerm`, or `RopeTerm`) from the ch18 jargon-args registry. If the column's base type is jargonable, runs an UPDATE query that JOINs against the validated `trl{type}_s_vld` table to fill in the `_inx` value. For rows where no translation mapping exists, goes back to copying the `_otx` value into `_inx` directly (pass-through for untranslated terms).
 2. INSERT into `h_agg` tables from `h_raw`, deduplicating while excluding `_inx` columns from duplicate comparison.
 3. `update_heard_agg_timenum_columns` — applies NabuTime conversion to all time-numeric columns (`bud_time`, `fact_lower`, `fact_upper`, `reason_lower`, `reason_upper`, `tran_time`, `offi_time`) in `h_agg` tables: reads the `_otx` value, applies the epoch-length modular offset from the validated nabu table, and writes the result to the `_inx` column. This is where ch16's numeric translation is finally executed against real data.
 

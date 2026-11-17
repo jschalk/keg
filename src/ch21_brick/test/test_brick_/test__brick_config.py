@@ -21,7 +21,7 @@ from ch16_nabu.nabu_config import (
     get_nabu_dimens,
     get_nabuable_args,
 )
-from ch17_jargon.jargon_config import (
+from ch18_jargon.jargon_config import (
     get_jargon_args_dimen_mapping,
     get_jargon_config_dict,
     get_jargon_dimens,

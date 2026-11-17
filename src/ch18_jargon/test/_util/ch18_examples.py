@@ -1,7 +1,7 @@
 from ch05_rope.rope import create_rope, default_knot_if_None, to_rope
-from ch17_jargon.jargon_config import default_unknown_str_if_None
-from ch17_jargon.jargon_main import JargonUnit, jargonunit_shop
-from ch17_jargon.map_term import (
+from ch18_jargon.jargon_config import default_unknown_str_if_None
+from ch18_jargon.jargon_main import JargonUnit, jargonunit_shop
+from ch18_jargon.map_term import (
     LabelMap,
     NameMap,
     RopeMap,
@@ -11,7 +11,7 @@ from ch17_jargon.map_term import (
     ropemap_shop,
     titlemap_shop,
 )
-from ch99_glossary.ch_keyword import Ch17Keywords as kw, ExampleStrs as exx
+from ch99_glossary.ch_keyword import Ch18Keywords as kw, ExampleStrs as exx
 from pandas import DataFrame
 
 

@@ -1,17 +1,17 @@
 from ch05_rope.rope import default_knot_if_None
-from ch17_jargon.jargon_config import default_unknown_str_if_None
-from ch17_jargon.jargon_main import (
+from ch18_jargon.jargon_config import default_unknown_str_if_None
+from ch18_jargon.jargon_main import (
     _get_rid_of_jargon_core_keys,
     get_jargonunit_from_dict,
     jargonunit_shop,
 )
-from ch17_jargon.test._util.ch17_examples import (
+from ch18_jargon.test._util.ch18_examples import (
     get_slash_labelmap,
     get_slash_namemap,
     get_slash_ropemap,
     get_slash_titlemap,
 )
-from ch99_glossary.ch_keyword import Ch17Keywords as kw, ExampleStrs as exx
+from ch99_glossary.ch_keyword import Ch18Keywords as kw, ExampleStrs as exx
 
 
 def test_JargonUnit_to_dict_ReturnsObj_Scenario0():

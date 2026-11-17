@@ -13,7 +13,7 @@ from ch12_bud.cell_main import cellunit_shop
 from ch14_time.epoch_main import get_c400_constants, get_default_epoch_config_dict
 from ch15_moment.moment_config import get_moment_config_args
 from ch16_nabu.nabu_config import get_nabu_args, get_nabuable_args
-from ch17_jargon.jargon_config import (
+from ch18_jargon.jargon_config import (
     get_jargon_config_args,
     get_jargon_config_dict,
 )

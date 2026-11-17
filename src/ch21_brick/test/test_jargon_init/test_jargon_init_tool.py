@@ -1,6 +1,6 @@
 from ch00_py.file_toolbox import create_path, get_dir_file_strs
-from ch17_jargon.jargon_main import jargonunit_shop
-from ch17_jargon.test._util.ch17_examples import (  # get_casa_maison_jargonunit_set_by_epoch,
+from ch18_jargon.jargon_main import jargonunit_shop
+from ch18_jargon.test._util.ch18_examples import (  # get_casa_maison_jargonunit_set_by_epoch,
     get_casa_maison_jargonunit_set_by_label,
     get_casa_maison_jargonunit_set_by_otx2inx,
     get_casa_maison_label_dt,

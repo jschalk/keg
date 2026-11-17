@@ -52,4 +52,4 @@ The config also defines the `nabu_timenum` dimension for atom-style CRUD operati
 
 **`inherit_timenabu(new, old)`** enforces that newer `NabuTime` objects (higher `spark_num`) from the same face supersede older ones — maintaining the same ordered-inheritance pattern established in ch10's lesson sequencing.
 
-Ch16 completes the "outside → inside" translation infrastructure. Ch17 handles word/string translation; ch16 handles number/time translation. Together they ensure that external data from any face can be faithfully and consistently interpreted in the internal coordinate system.
+Ch16 completes the "outside → inside" translation infrastructure. Ch18 handles word/string translation; ch16 handles number/time translation. Together they ensure that external data from any face can be faithfully and consistently interpreted in the internal coordinate system.

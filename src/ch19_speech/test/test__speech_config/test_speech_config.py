@@ -1,5 +1,5 @@
 from ch00_py.file_toolbox import create_path
-from ch17_jargon.jargon_config import get_jargon_config_dict
+from ch18_jargon.jargon_config import get_jargon_config_dict
 from ch19_speech.speech_config import (
     get_speech_args_dimen_mapping,
     get_speech_column_ref,

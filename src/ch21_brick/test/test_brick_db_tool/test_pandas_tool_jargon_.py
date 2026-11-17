@@ -1,7 +1,7 @@
 from ch05_rope.rope import create_rope, to_rope
-from ch17_jargon.jargon_main import jargonunit_shop
-from ch17_jargon.map_term import namemap_shop
-from ch17_jargon.test._util.ch17_examples import (
+from ch18_jargon.jargon_main import jargonunit_shop
+from ch18_jargon.map_term import namemap_shop
+from ch18_jargon.test._util.ch18_examples import (
     get_casa_maison_jargonunit_set_by_label,
     get_casa_maison_jargonunit_set_by_otx2inx,
 )

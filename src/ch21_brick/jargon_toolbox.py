@@ -1,5 +1,5 @@
 from ch00_py.file_toolbox import create_path, get_dir_file_strs, save_file
-from ch17_jargon.jargon_main import (
+from ch18_jargon.jargon_main import (
     JargonUnit,
     LabelMap,
     NameMap,
