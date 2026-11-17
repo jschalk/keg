@@ -5,7 +5,7 @@ from ch17_jargon.jargon_config import (
     get_jargon_dimens,
     set_jargonable_otx_inx_args,
 )
-from ch19_db_tool.db_toolbox import (
+from ch20_db_tool.db_toolbox import (
     create_insert_into_clause_str as get_insert_sql,
     create_select_query as get_select_sql,
     create_table2table_agg_insert_query,

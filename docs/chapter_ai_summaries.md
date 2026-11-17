@@ -850,20 +850,20 @@ The "outside" (`otx`) / "inside" (`inx`) distinction is fundamental: an external
 Together ch16 (numeric translation) and ch17 (string translation) form the complete "outside-to-inside" interface layer. All data arriving from external faces passes through these two chapters before being processed by the internal keg machinery.
 
 
-# ch19_db_tool — Chapter Summary
+# ch20_db_tool — Chapter Summary
 
 *This summary is authored by AI 5-26-2026.*
 
 ## 1. Title and Summary Declaration
 
-**Chapter 18 — `ch19_db_tool`**
+**Chapter 18 — `ch20_db_tool`**
 **"Database Toolbox — SQLite helper utilities for creating tables, inserting CSVs, and querying keg data from relational storage"**
 
 ---
 
 ## 2. Prompt Used to Build This
 
-From `ch19_ref.json`:
+From `ch20_ref.json`:
 > "Create some standard tools for creating sqlite sql statements. Some are complicated."
 
 Ontology note:
@@ -873,16 +873,16 @@ Ontology note:
 
 ## 3. Summary of Previous Relevant Chapters
 
-- **ch00_py**: `ch19_db_tool` is structurally parallel to ch00 — it is a pure utility chapter with no domain logic, just as ch00 provided Python/file toolboxes. The main difference is ch19 uses SQLite rather than the file system.
-- All prior semantic types are re-exported through `ch19_semantic_types.py` (the full chain through ch14) — but ch19's own code imports only from Python's `sqlite3`, `csv`, `pandas`, `re`, and `dataclasses` standard/third-party libraries. It does not import from any prior keg chapter in `db_toolbox.py` itself.
+- **ch00_py**: `ch20_db_tool` is structurally parallel to ch00 — it is a pure utility chapter with no domain logic, just as ch00 provided Python/file toolboxes. The main difference is ch20 uses SQLite rather than the file system.
+- All prior semantic types are re-exported through `ch20_semantic_types.py` (the full chain through ch14) — but ch20's own code imports only from Python's `sqlite3`, `csv`, `pandas`, `re`, and `dataclasses` standard/third-party libraries. It does not import from any prior keg chapter in `db_toolbox.py` itself.
 
-This is a deliberate design: ch19 is a low-level database infrastructure chapter — like ch00, it intentionally avoids domain dependencies so it can be used freely by all higher chapters.
+This is a deliberate design: ch20 is a low-level database infrastructure chapter — like ch00, it intentionally avoids domain dependencies so it can be used freely by all higher chapters.
 
 ---
 
 ## 4. Summary of What This Chapter Does
 
-`ch19_db_tool` provides two files of SQLite utility functions that later chapters use to persist and query keg data in relational databases.
+`ch20_db_tool` provides two files of SQLite utility functions that later chapters use to persist and query keg data in relational databases.
 
 **`db_toolbox.py`** — the main utility library:
 
@@ -900,7 +900,7 @@ This is a deliberate design: ch19 is a low-level database infrastructure chapter
 
 **`notebook_toolbox.py`** provides Jupyter-notebook-oriented utilities — helpers for displaying query results and database state in an interactive analysis context.
 
-Ch19 is the "ch00 of persistence" — a deliberately dependency-free utility layer. It carries the full semantic type chain in its `_ref` file as preparation for the ETL chapters that will use both these database tools and the domain objects to build the full data pipeline.
+Ch20 is the "ch00 of persistence" — a deliberately dependency-free utility layer. It carries the full semantic type chain in its `_ref` file as preparation for the ETL chapters that will use both these database tools and the domain objects to build the full data pipeline.
 
 # ch21_brick — Chapter Summary
 
@@ -931,7 +931,7 @@ Ontology note:
 - **ch10_person_lesson**: `PersonDelta`, `get_dimens_cruds_persondelta` — bricks can represent a full delta of changes.
 - **ch14_time**: `epochunit_shop` — epoch plans are a category of brick data.
 - **ch15_moment**: `MomentUnit`, `momentunit_shop` — bricks build both persons and moments.
-- **ch19_db_tool**: `get_sorted_cols_only_list` — used to enforce consistent column ordering across all brick DataFrames.
+- **ch20_db_tool**: `get_sorted_cols_only_list` — used to enforce consistent column ordering across all brick DataFrames.
 
 New semantic type: `SheetName` (a `str`) — identifies a named sheet within an Excel workbook, since bricks are primarily authored in `.xlsx` files.
 
@@ -987,8 +987,8 @@ Ontology note:
 - **ch09_person_atom**: `get_delete_key_name` — used when constructing DELETE-type SQL stage queries to identify the correct key column.
 - **ch16_nabu**: `get_context_nabuable_args`, `set_nabuable_otx_inx_args` — ETL config expands nabuable columns into `_otx`/`_inx` pairs in SQL table definitions.
 - **ch17_jargon**: `set_jargonable_otx_inx_args` — same expansion for jargonable string columns.
-- **ch19_db_tool**: `get_create_table_sqlstr` — used to generate CREATE TABLE statements for each pipeline stage.
-- **ch20_brick**: `get_brick_config_dict`, `get_brick_sqlite_types`, `get_default_sorted_list`, `get_brick_types`, `get_quick_bricks_column_ref` — all brick schema information flows through ch22.
+- **ch20_db_tool**: `get_create_table_sqlstr` — used to generate CREATE TABLE statements for each pipeline stage.
+- **ch21_brick**: `get_brick_config_dict`, `get_brick_sqlite_types`, `get_default_sorted_list`, `get_brick_types`, `get_quick_bricks_column_ref` — all brick schema information flows through ch22.
 
 ---
 
@@ -1016,7 +1016,7 @@ Ontology note:
 
 **`etl_csv.py`** provides CSV export utilities for pipeline stage tables.
 
-The chapter has no new semantic types of its own — `ch22_semantic_types.py` re-exports through ch20. Ch22's role is purely infrastructural: it defines the names, shapes, and ordering of every table in the ETL database before any data flows through it.
+The chapter has no new semantic types of its own — `ch22_semantic_types.py` re-exports through ch21. Ch22's role is purely infrastructural: it defines the names, shapes, and ordering of every table in the ETL database before any data flows through it.
 
 # ch23_idea_src — Chapter Summary
 
@@ -1043,11 +1043,11 @@ Ontology note:
 
 - **ch00_py**: `delete_dir`, `set_dir` — idea output directories are wiped and recreated on each run.
 - **ch05_rope**: `default_knot_if_None` — used in `fission_add_ancestor_rope_rows` to parse rope paths and infer missing ancestor plan rows.
-- **ch20_brick**: `create_brick_df_from_file`, `save_sheet`, `_sort_dataframe` — bricks are read from and written to Excel via ch20 tooling.
+- **ch21_brick**: `create_brick_df_from_file`, `save_sheet`, `_sort_dataframe` — bricks are read from and written to Excel via ch21 tooling.
 - **ch22_etl_config**: `get_etl_stage_types_config_dict` — used to determine valid stage type names during idea processing.
 - **ch99_glossary**: `get_keg_elements_sort_order` — column sort order is enforced via the master glossary.
 
-`ch23_semantic_types.py` re-exports through ch20 with no additions.
+`ch23_semantic_types.py` re-exports through ch21 with no additions.
 
 ---
 
@@ -1097,11 +1097,11 @@ Ontology note:
 ## 3. Summary of Previous Relevant Chapters
 
 - **ch00_py**: `create_path` for file path construction.
-- **ch19_db_tool**: `create_insert_into_clause_str`, `create_select_query`, `create_table_from_columns`, `create_type_reference_insert_sqlstr`, `db_table_exists`, `delete_all_duplicate_rows`, `get_create_table_sqlstr`, `get_db_tables`, `get_grouping_with_all_values_equal_sql_query`, `get_nonconvertible_columns`, `get_table_columns` — ch24 is the primary consumer of ch19's full SQL utility library.
-- **ch20_brick**: `get_brick_format_filename`, `get_brick_sqlite_types`, `get_brick_types`, `get_brickref_from_file`, `get_brickref_obj`, `create_brick_df_from_file`, `create_brick_sorted_table`, `get_default_sorted_list` — all brick schema operations.
+- **ch20_db_tool**: `create_insert_into_clause_str`, `create_select_query`, `create_table_from_columns`, `create_type_reference_insert_sqlstr`, `db_table_exists`, `delete_all_duplicate_rows`, `get_create_table_sqlstr`, `get_db_tables`, `get_grouping_with_all_values_equal_sql_query`, `get_nonconvertible_columns`, `get_table_columns` — ch24 is the primary consumer of ch20's full SQL utility library.
+- **ch21_brick**: `get_brick_format_filename`, `get_brick_sqlite_types`, `get_brick_types`, `get_brickref_from_file`, `get_brickref_obj`, `create_brick_df_from_file`, `create_brick_sorted_table`, `get_default_sorted_list` — all brick schema operations.
 - **ch22_etl_config**: `BrickFileRef`, `get_all_brickfilerefs`, `create_prime_tablename`, `create_sound_and_heard_tables`, `etl_sqlstr` — stage naming and table creation helper tools.
 
-`ch24_semantic_types.py` adds `SheetName` from ch20 to the full accumulated type chain.
+`ch24_semantic_types.py` adds `SheetName` from ch21 to the full accumulated type chain.
 
 ---
 
@@ -1113,7 +1113,7 @@ Ontology note:
 Discovers all brick Excel files in the source directory via `get_all_brickfilerefs`, reads each sheet into a DataFrame, sorts columns to the canonical order, prepends `file_dir`/`filename`/`sheet_name` provenance columns, creates a `{brick_type}_b_raw` SQLite table, and inserts each row. On insertion, `get_nonconvertible_columns` checks every cell against the expected SQLite type — any row with type errors has the offending columns nulled and an `error_message` written. Duplicate rows are deleted at the end.
 
 **Stage 2 — `etl_brick_raw_tables_to_brick_agg_tables(conn)`**
-For each `_b_raw` table, produces a `{brick_type}_b_agg` table. Uses `get_grouping_with_all_values_equal_sql_query` (from ch19) to GROUP BY the brick's key columns and filter to only rows where all value columns are consistent across duplicates — i.e. rows where the same key has conflicting values are excluded. Only rows with no `error_message` from stage 1 are considered. This is the **deduplication and consistency check** stage.
+For each `_b_raw` table, produces a `{brick_type}_b_agg` table. Uses `get_grouping_with_all_values_equal_sql_query` (from ch20) to GROUP BY the brick's key columns and filter to only rows where all value columns are consistent across duplicates — i.e. rows where the same key has conflicting values are excluded. Only rows with no `error_message` from stage 1 are considered. This is the **deduplication and consistency check** stage.
 
 **Stage 3 — Spark validation (`etl_brick_agg_tables_to_sparks_b_agg_table` + `etl_sparks_b_agg_table_to_sparks_b_vld_table`)**
 Aggregates all `spark_num`/`spark_face` pairs from every `_b_agg` table into a `sparks_b_agg` table. Flags any `spark_num` that maps to more than one `spark_face` as invalid (a spark number must belong to exactly one face). Valid sparks are written to `sparks_b_vld`. This enforces the provenance rule: a single spark event cannot be attributed to two different faces.
@@ -1151,11 +1151,11 @@ Ontology note:
 
 - **ch05_rope**: `default_knot_if_None` — used when validating that label/name/rope columns in sound-agg tables do not contain the knot character.
 - **ch17_jargon**: `get_jargon_labelterm_args`, `get_jargon_nameterm_args`, `get_jargon_ropeterm_args`, `get_jargon_titleterm_args`, `get_jargon_column_ref`, `default_unknown_str_if_None` — the full translation type registry drives which sound-agg columns need knot-error checking and which need `otx → inx` resolution.
-- **ch19_db_tool**: `create_update_inconsistency_error_query`, `delete_all_duplicate_rows`, `get_table_columns` — SQL-level data quality tools.
-- **ch20_brick**: `get_brick_dimen_ref` — the master brick dimension registry drives which `s_raw` and `s_agg` tables exist and need processing.
+- **ch20_db_tool**: `create_update_inconsistency_error_query`, `delete_all_duplicate_rows`, `get_table_columns` — SQL-level data quality tools.
+- **ch21_brick**: `get_brick_dimen_ref` — the master brick dimension registry drives which `s_raw` and `s_agg` tables exist and need processing.
 - **ch22_etl_config**: `etl_sqlstr` — nearly all SQL strings used in ch25 are generated by ch22's SQL-string generation functions. Ch25 is the executor; ch22 is the generator.
 
-`ch25_semantic_types.py` re-exports through ch20 with no additions.
+`ch25_semantic_types.py` re-exports through ch21 with no additions.
 
 ---
 
@@ -1211,7 +1211,7 @@ Ontology note:
 - **ch10_person_lesson**: `create_moment_json_path`, `create_moments_dir_path`, `LassoUnit`, `lassounit_shop` — the moment file system layout is defined in ch10 path helpers.
 - **ch12_bud**: `MomentRope` — scopes all heard table queries.
 - **ch17_jargon**: `get_jargon_args_obj_types`, `jargonable_obj_types` — drives which `h_raw` columns need `_inx` values populated via translation lookups.
-- **ch19_db_tool**: `delete_all_duplicate_rows`, `get_row_count`, `get_table_columns` — SQL utilities.
+- **ch20_db_tool**: `delete_all_duplicate_rows`, `get_row_count`, `get_table_columns` — SQL utilities.
 - **ch22_etl_config**: `etl_sqlstr` functions — `create_update_heard_raw_empty_inx_col_sqlstr`, `create_update_heard_raw_existing_inx_col_sqlstr`, `get_insert_heard_agg_sqlstrs`, `get_insert_heard_vld_sqlstrs`, `update_heard_agg_timenum_columns`, `get_moment_heard_select1_sqlstrs`, `get_person_heard_vld_tablenames`, `save_to_split_csvs` — all SQL generation delegated to ch22.
 
 ---
@@ -1268,8 +1268,8 @@ Ch27 is the final integration point of the entire ETL pipeline. It imports from 
 - **ch11_person_listen**: `open_job_file` — job files are loaded for DB insertion.
 - **ch12_bud**: Path helpers, `TranBook`, `collect_person_spark_dir_sets`, `get_persons_downhill_spark_nums`, `open_person_file`.
 - **ch15_moment**: `create_moment_persons_cell_trees`, `set_cell_tree_cell_mandates`, `set_cell_trees_decrees`, `set_cell_trees_found_facts`, `create_bud_mandate_ledgers`, `open_moment_file`.
-- **ch19_db_tool**: `delete_all_duplicate_rows`, `get_db_tables`.
-- **ch20_brick**: `get_brick_sqlite_types` for type-aware CSV parsing.
+- **ch20_db_tool**: `delete_all_duplicate_rows`, `get_db_tables`.
+- **ch21_brick**: `get_brick_sqlite_types` for type-aware CSV parsing.
 - **ch22_etl_config**: Path helpers, `create_job_tables`, `create_prime_tablename`, `save_to_split_csvs`.
 - **ch27_lego.lego_job2db**: `insert_job_obj` — inserts a fully evaluated job `PersonUnit` into all job-tracking SQLite tables.
 
@@ -1335,7 +1335,7 @@ Ontology note:
 - **ch10_person_lesson**: `create_moments_dir_path`, `lassounit_shop` — path navigation for the moment file system.
 - **ch12_bud**: `open_person_file` — gut and job `PersonUnit` JSON files are loaded for export.
 - **ch15_moment**: `open_moment_file` — `MomentUnit` objects are loaded for export.
-- **ch20_brick**: `csv_dict_to_excel`, `prettify_excel_file`, `remove_empty_sheets` — the final output is an Excel file with one sheet per brick/idea type.
+- **ch21_brick**: `csv_dict_to_excel`, `prettify_excel_file`, `remove_empty_sheets` — the final output is an Excel file with one sheet per brick/idea type.
 - **ch22_etl_config**: `create_moment_mstr_path`, `create_world_db_path`, `create_prime_tablename`, `create_sound_and_heard_tables` — path helpers and SQL table names for loading translation data.
 - **ch23_idea_src**: `add_momentunit_to_idea_csv_strs`, `add_personunit_to_idea_csv_strs`, `create_init_idea_csv_strs` — the idea CSV structure from the source chapter is reused for the destination output.
 
@@ -1397,8 +1397,8 @@ Ontology note:
 - **ch11_person_listen**: `open_job_file` — job files are the input for calendar and KPI computations.
 - **ch14_time**: `TimeShoe`, `add_epoch_planunit`, `get_default_epoch_config_dict`, `get_epoch_min_from_dt`, `get_epoch_rope`, `timeshoe_shop`, `set_epoch_fact` — the epoch system is used to evaluate which plans are active at a specific real-world datetime.
 - **ch15_moment**: `open_moment_file`, `get_moment_timeshoe` — the moment's epoch configuration drives the time coordinate system.
-- **ch19_db_tool**: `db_table_exists`, `get_db_tables` — KPI tables are checked before creation.
-- **ch20_brick**: `save_table_to_csv` — KPI tables are exported to CSV.
+- **ch20_db_tool**: `db_table_exists`, `get_db_tables` — KPI tables are checked before creation.
+- **ch21_brick**: `save_table_to_csv` — KPI tables are exported to CSV.
 - **ch22_etl_config**: `create_moment_mstr_path`, `create_world_db_path` — path helpers.
 
 New semantic types: none beyond the accumulated chain.
@@ -1459,7 +1459,7 @@ Ontology note:
 
 Ch32 imports from every ETL chapter (ch23–ch31) simultaneously — it is the conductor:
 
-- **ch20_brick**: `export_db_to_excel` — full database export to Excel.
+- **ch21_brick**: `export_db_to_excel` — full database export to Excel.
 - **ch22_etl_config**: `reorder_etl_db_sheets`, path helpers.
 - **ch23_idea_src**: `ideas_sheets_to_brick_sheets` — idea → brick conversion.
 - **ch24_etl_brick**: All six brick ETL stage functions.
@@ -1686,7 +1686,7 @@ Ontology note:
 - **ch08_person_logic**: `personunit_shop` — used in `puncher_tool.py` to construct example `PersonUnit`s for the bundled starter idea files.
 - **ch14_time**: `get_creg_config`, `get_five_config`, `epochunit_shop` — the "El Paso" and "TeamFive" example templates use real epoch configurations.
 - **ch15_moment**: `momentunit_shop` — moment objects are built for example templates.
-- **ch20_brick**: `csv_dict_to_excel`, `prettify_excel_file`, `remove_empty_sheets`, `prettify_excel_files` — all Excel output formatting is delegated to ch20.
+- **ch21_brick**: `csv_dict_to_excel`, `prettify_excel_file`, `remove_empty_sheets`, `prettify_excel_files` — all Excel output formatting is delegated to ch21.
 - **ch23_idea_src**: `add_momentunits_to_idea_csv_strs`, `add_personunit_to_idea_csv_strs`, `create_init_idea_csv_strs` — example idea files are generated using the same CSV machinery as the ETL source layer.
 - **ch30_idea_dst**: `create_lego0002_file` — person-level idea export is triggered from the GUI.
 - **ch32_world**: `worlddir_shop`, `create_today_punchs` — the entire ETL pipeline is invoked via ch32's `WorldDir` entry point.
@@ -1755,7 +1755,7 @@ Ontology note:
 - **ch00_py**: File I/O (`create_path`, `get_dir_filenames`, `open_json`, `save_file`, `save_json`) — documentation artifacts are written to disk via ch00 utilities.
 - **ch01_keyword**: `get_chapter_desc_prefix`, `get_chapter_descs`, `get_keywords_src_config`, `get_ch_int`, `parse_valid_ch_str`, `create_src_keywords_src_path`, `create_src_example_strs_path` — ch97 reads the full keyword glossary and chapter directory structure to build its documentation. The chapter is numbered 97 specifically because it needs access to the complete keyword set, which accumulates through all prior chapters.
 - **ch05_rope**: `get_ropeterm_description_md` — a chapter-specific doc-builder helper in `ch05_rope/_ref/ch05_doc_builder.py` that provides the markdown description of the `RopeTerm` concept.
-- **ch20_brick**: `get_brick_formats_md`, `get_brick_mds` — generates markdown documentation for all brick format schemas.
+- **ch21_brick**: `get_brick_formats_md`, `get_brick_mds` — generates markdown documentation for all brick format schemas.
 - **ch99_glossary**: `get_keg_elements_sort_order` — the canonical sort order is used when listing elements in generated docs.
 
 `ch97_semantic_types.py` re-exports through ch22 with no additions.

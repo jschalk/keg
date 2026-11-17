@@ -136,7 +136,7 @@ cython_debug/
 
 # local testing
 *.xlsx#
-src/ch19_idea_src/test/z_notebooks/__marimo__
+src/ch20_idea_src/test/z_notebooks/__marimo__
 src/ch32_world/test/test_world_examples/output
 src/ch32_world/test/test_world_examples/example.xlsx
 docs/essays/

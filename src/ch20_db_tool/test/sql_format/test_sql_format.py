@@ -1,4 +1,4 @@
-from ch19_db_tool.sql_format import (
+from ch20_db_tool.sql_format import (
     _rewrite_group_by_leading_commas,
     _rewrite_select_leading_commas,
     _rewrite_single_item_clauses,

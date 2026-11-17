@@ -7,7 +7,7 @@ from ch17_jargon.jargon_config import (
     get_jargon_titleterm_args,
 )
 from ch17_jargon.jargon_main import default_unknown_str_if_None
-from ch19_db_tool.db_toolbox import (
+from ch20_db_tool.db_toolbox import (
     create_update_inconsistency_error_query,
     delete_all_duplicate_rows,
     get_table_columns,

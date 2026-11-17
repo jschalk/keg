@@ -14,7 +14,7 @@ from ch17_jargon.jargon_config import (
 )
 from ch17_jargon.jargon_main import JargonUnit, get_jargonunit_from_dict
 from ch17_jargon.map_term import MapCore
-from ch19_db_tool.db_toolbox import (
+from ch20_db_tool.db_toolbox import (
     create_table_from_columns,
     create_table_from_csv,
     db_table_exists,
