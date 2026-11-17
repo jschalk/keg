@@ -2583,7 +2583,6 @@ class Ch23Keywords(str, Enum):
     ch03 = "ch03"
     ch05 = "ch05"
     ch08 = "ch08"
-    ch10 = "ch10"
     ch14 = "ch14"
     ch15 = "ch15"
     ch21 = "ch21"

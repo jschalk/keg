@@ -2,8 +2,10 @@ from ch00_py.file_toolbox import create_path
 from ch03_contact.group import awardunit_shop
 from ch05_rope.rope import to_rope
 from ch08_person_logic.person_main import personunit_shop
-from ch10_person_lesson.delta import persondelta_shop
-from ch10_person_lesson.lesson_main import lessonunit_shop
+from ch21_brick.brick_config import (
+    get_dimen_minimum_del_brick_names,
+    get_dimen_minimum_put_brick_names,
+)
 from ch21_brick.brick_dataframe import moment_build_from_df
 from ch21_brick.brick_db_tool import get_ordered_csv
 from ch23_idea_src.idea_csv import (
@@ -21,6 +23,7 @@ from ch23_idea_src.idea_csv import (
     add_person_to_ii00129_csv,
     add_personunit_to_idea_csv_strs,
     create_init_idea_csv_strs,
+    get_dimen_minimum_idea_types,
 )
 from ch23_idea_src.test._util.ch23_examples import (  # get_ex2_ii00106_df,
     J45_ROPE,
@@ -32,7 +35,27 @@ from ch23_idea_src.test._util.ch23_examples import (  # get_ex2_ii00106_df,
     get_ex2_ii00105_df,
 )
 from ch99_glossary.ch_keyword import ExampleStrs as exx
-from copy import deepcopy as copy_deepcopy
+
+
+def test_get_dimen_minimum_idea_types_ReturnsObj():
+    # ESTABLISH /  WHEN
+    prime_idea_brick_types = get_dimen_minimum_idea_types()
+    # THEN
+    expected_set = set()
+    for x_dimen, x_brick_type in get_dimen_minimum_put_brick_names().items():
+        print(f"put {x_dimen} ii{str(x_brick_type)[2:7]}")
+        expected_set.add(f"ii{x_brick_type[2:7]}")
+    # TODO add del bricks
+    # for x_dimen, x_brick_type in get_dimen_minimum_del_brick_names().items():
+    #     # print(f"del {x_dimen} ii{str(x_brick_type)[2:7]}")
+    #     expected_set.add(f"ii{x_brick_type[2:7]}")
+    # for e_brick_type in expected_set:
+    #     print(f"ii{str(e_brick_type)[2:7]}")
+    # TODO get rid of these removes
+    expected_set.remove("ii00106")
+    expected_set.remove("ii00170")
+    expected_list = sorted(expected_set, key=lambda s: int(s[2:]))
+    assert prime_idea_brick_types == expected_list
 
 
 def test_create_init_idea_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(

@@ -5,7 +5,7 @@ from ch21_brick.brick_config import get_brick_format_filename, get_brick_format_
 from ch23_idea_src._ref.ch23_semantic_types import FaceName, KnotTerm, MomentRope
 
 
-def get_prime_idea_brick_types() -> list:
+def get_dimen_minimum_idea_types() -> list:
     return [
         "ii00100",
         "ii00101",
@@ -33,15 +33,14 @@ def get_prime_idea_brick_types() -> list:
 
 def create_init_idea_csv_strs() -> dict[str, str]:
     """Returns strings of csv headers with comma delimiter"""
-    # TODO where is this defined? config things should not be in function
     brick_format_headers = get_brick_format_headers()
 
     moment_csv_strs = {}
-    for brick_type in get_prime_idea_brick_types():
-        brick_format_filename = get_brick_format_filename(brick_type)
+    for idea_type in get_dimen_minimum_idea_types():
+        brick_format_filename = get_brick_format_filename(idea_type)
         for brick_columns, brick_filename in brick_format_headers.items():
             if brick_filename == brick_format_filename:
-                moment_csv_strs[brick_type] = f"spark_num,spark_face,{brick_columns}\n"
+                moment_csv_strs[idea_type] = f"spark_num,spark_face,{brick_columns}\n"
     return moment_csv_strs
 
 
