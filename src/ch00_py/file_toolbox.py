@@ -124,7 +124,7 @@ def save_file(dest_dir: str, filename: str, file_str: str, replace: bool = True)
     file_path = create_path(dest_dir, filename) if filename else dest_dir
     file_path = os_path_abspath(file_path)
     if (os_path_exists(file_path) and replace) or os_path_exists(file_path) is False:
-        with open(file_path, "w") as f:
+        with open(file_path, "w", encoding="utf-8", newline="") as f:
             f.write(file_str)
 
 
@@ -137,7 +137,7 @@ def open_file(dest_dir: str, filename: str = None):
     file_path = create_path(dest_dir, filename)
     x_str = ""
     try:
-        with open(file_path, "r", encoding="utf-8") as f:
+        with open(file_path, "r", encoding="utf-8", newline="") as f:
             x_str = f.read()
     except (PermissionError, FileNotFoundError, OSError) as e:
         raise CouldNotOpenFileError(f"Could not load file {file_path} {e.args}") from e

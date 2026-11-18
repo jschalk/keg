@@ -16,13 +16,13 @@ from ch12_bud._ref.ch12_path import (
 from ch15_moment._ref.ch15_path import (
     create_bud_contact_mandate_ledger_path as bud_mandate,
 )
-from ch19_db_tool.db_toolbox import (
+from ch20_db_tool.db_toolbox import (
     db_table_exists,
     get_all_tables_with_duplicates,
     get_row_count,
 )
-from ch19_db_tool.test.tool_db.test_db_tool_ import print_table
-from ch20_brick.brick_db_tool import save_sheet
+from ch20_db_tool.test.tool_db.test_db_tool_ import print_table
+from ch21_brick.brick_db_tool import save_sheet
 from ch22_etl_config._ref.ch22_path import (
     create_last_run_metrics_path,
     create_moment_ote1_csv_path,

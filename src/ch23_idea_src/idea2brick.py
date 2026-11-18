@@ -1,6 +1,6 @@
 from ch00_py.dict_toolbox import get_0_if_None
 from ch00_py.file_toolbox import delete_dir, set_dir
-from ch20_brick.brick_db_tool import create_brick_df_from_file, save_sheet
+from ch21_brick.brick_db_tool import create_brick_df_from_file, save_sheet
 from ch23_idea_src._ref.ch23_semantic_types import SheetName
 from ch23_idea_src.fission_step import run_fission_steps
 from ch23_idea_src.idea_config import get_idea_config_dict, is_non_mirror

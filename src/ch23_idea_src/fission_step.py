@@ -1,5 +1,5 @@
 from ch05_rope.rope import default_knot_if_None
-from ch20_brick.brick_dataframe import _sort_dataframe
+from ch21_brick.brick_dataframe import _sort_dataframe
 from ch99_glossary.sorter import get_keg_elements_sort_order
 from pandas import DataFrame, concat as pandas_concat
 

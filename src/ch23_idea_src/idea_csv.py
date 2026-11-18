@@ -1,11 +1,11 @@
 from ch00_py.dict_toolbox import get_empty_str_if_None as if_none_str
 from ch08_person_logic.person_main import PersonUnit
 from ch15_moment.moment_main import MomentUnit
-from ch20_brick.brick_config import get_brick_format_filename, get_brick_format_headers
+from ch21_brick.brick_config import get_brick_format_filename, get_brick_format_headers
 from ch23_idea_src._ref.ch23_semantic_types import FaceName, KnotTerm, MomentRope
 
 
-def get_prime_idea_brick_types() -> list:
+def get_dimen_minimum_idea_types() -> list:
     return [
         "ii00100",
         "ii00101",
@@ -13,7 +13,7 @@ def get_prime_idea_brick_types() -> list:
         "ii00103",
         "ii00104",
         "ii00105",
-        # "ii00106",
+        "ii00106",
         "ii00120",
         "ii00121",
         "ii00122",
@@ -28,20 +28,30 @@ def get_prime_idea_brick_types() -> list:
         "ii00143",
         "ii00144",
         "ii00145",
+        "ii00150",
+        "ii00151",
+        "ii00152",
+        "ii00153",
+        "ii00154",
+        "ii00155",
+        "ii00156",
+        "ii00157",
+        "ii00158",
+        "ii00159",
+        "ii00170",
     ]
 
 
 def create_init_idea_csv_strs() -> dict[str, str]:
     """Returns strings of csv headers with comma delimiter"""
-    # TODO where is this defined? config things should not be in function
     brick_format_headers = get_brick_format_headers()
 
     moment_csv_strs = {}
-    for brick_type in get_prime_idea_brick_types():
-        brick_format_filename = get_brick_format_filename(brick_type)
+    for idea_type in get_dimen_minimum_idea_types():
+        brick_format_filename = get_brick_format_filename(idea_type)
         for brick_columns, brick_filename in brick_format_headers.items():
             if brick_filename == brick_format_filename:
-                moment_csv_strs[brick_type] = f"spark_num,spark_face,{brick_columns}\n"
+                moment_csv_strs[idea_type] = f"spark_num,spark_face,{brick_columns}\n"
     return moment_csv_strs
 
 

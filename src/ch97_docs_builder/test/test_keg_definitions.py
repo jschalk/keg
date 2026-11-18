@@ -13,11 +13,11 @@ from ch12_bud.cell_main import cellunit_shop
 from ch14_time.epoch_main import get_c400_constants, get_default_epoch_config_dict
 from ch15_moment.moment_config import get_moment_config_args
 from ch16_nabu.nabu_config import get_nabu_args, get_nabuable_args
-from ch17_jargon.jargon_config import (
+from ch18_jargon.jargon_config import (
     get_jargon_config_args,
     get_jargon_config_dict,
 )
-from ch20_brick.brick_config import get_brick_config_dict
+from ch21_brick.brick_config import get_brick_config_dict
 from ch22_etl_config.etl_config import get_etl_stage_types_config_dict
 from ch26_heard.heard import etl_heard_raw_tables_to_lego_moment_ote1_agg
 from ch97_docs_builder._ref.ch97_semantic_types import (

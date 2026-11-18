@@ -298,3 +298,11 @@ Responding to tweet about how racism against Polish people has mainly stopped in
 > Racism is by and large only directed against the poor
 > 
 > Poland becomes less poor ->
+
+**November 15, 2026**<br>
+Responding to tweet "If you truly believe people maximize utility (preference satisfaction) and firms maximize profits, you are making an ideological statement. But most economists are blind to that."
+> People maximise status, and firms also maximise status
+> 
+> With an important caveat:
+> 
+> Provided that they can

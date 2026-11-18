@@ -2842,9 +2842,9 @@
                   }
                 }
               }, 
-              "trim mustash": {
+              "trim facial hair": {
                 "awardunits": { ";Family": {"awardee_title": ";Family", "give_force": 1.0, "take_force": 1} }, 
-                "plan_label": "trim mustash", 
+                "plan_label": "trim facial hair", 
                 "plan_uid": 73, 
                 "pledge": true, 
                 "poynt": 1, 

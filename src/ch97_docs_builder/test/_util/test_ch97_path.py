@@ -1,5 +1,6 @@
 from ch00_py.file_toolbox import create_path, get_json_filename
 from ch97_docs_builder._ref.ch97_path import (
+    create_ai_summary_path,
     create_chapter_catalogue_path,
     create_chapter_ref_path,
     create_keg_exam_questions_path,
@@ -151,3 +152,28 @@ def test_create_question_tier_path_HasDocString():
     print(f"{doc_str=}")
     # WHEN / THEN
     assert inspect_getdoc(create_question_tier_path) == doc_str
+
+
+def test_create_ai_summary_path_ReturnsObj(temp3_dir):
+    # ESTABLISH
+    src_dir = temp3_dir
+    chapter_prefix = "ch05"
+
+    # WHEN
+    keywords_class_file_path = create_ai_summary_path(src_dir, chapter_prefix)
+
+    # THEN
+    assert keywords_class_file_path
+    # ref_dir = create_path(chapter_dir, "_ref")
+    ref_dir = create_path(temp3_dir, "_ref")
+    expected_file_path = create_path(ref_dir, f"{chapter_prefix}_ai_summary_1min.md")
+    assert keywords_class_file_path == expected_file_path
+
+
+@pytest_mark.skip_on_linux
+def test_create_ai_summary_path_HasDocString():
+    # ESTABLISH the expected docstring with literal src/ path
+    doc_str = "Returns path: src\\chapter_dir\\_ref\\chXX_ai_summary_1min.md" ""
+
+    # WHEN / THEN
+    assert inspect_getdoc(create_ai_summary_path) == doc_str

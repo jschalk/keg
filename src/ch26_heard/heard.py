@@ -7,11 +7,11 @@ from ch10_person_lesson._ref.ch10_path import (
 )
 from ch10_person_lesson.lasso import LassoUnit, lassounit_shop
 from ch12_bud.bud_main import MomentRope
-from ch17_jargon.jargon_config import (
+from ch18_jargon.jargon_config import (
     get_jargon_args_obj_types,
     jargonable_obj_types,
 )
-from ch19_db_tool.db_toolbox import (
+from ch20_db_tool.db_toolbox import (
     delete_all_duplicate_rows,
     get_row_count,
     get_table_columns,

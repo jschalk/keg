@@ -64,6 +64,8 @@
 
 **[Why honor matters](./kazani_why_honor_matters.md)** Kamil Kazani - 2023-09-02<br>
 
+**[Why sanctions produce the opposite effect to what they had intended](./kazani_sanctions_effect.md)** Kamil Kazani - 2026-11-13<br>
+
 **[Wisdom of Lenin](./kazani_wisdom_of_lenin.md)** Kamil Kazani - 2026-06-05<br>
 
 **[King Dunlap can't decide who to Ride with.](./dunlap_who_i_ride_with.md)** King Dunlap - 2025-07-14<br>

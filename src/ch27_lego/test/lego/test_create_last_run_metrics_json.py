@@ -1,5 +1,5 @@
 from ch00_py.file_toolbox import open_json
-from ch20_brick.brick_db_tool import create_brick_sorted_table
+from ch21_brick.brick_db_tool import create_brick_sorted_table
 from ch22_etl_config._ref.ch22_path import create_last_run_metrics_path
 from ch22_etl_config.etl_sqlstr import create_sound_and_heard_tables
 from ch27_lego.lego_core import create_last_run_metrics_json

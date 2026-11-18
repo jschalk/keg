@@ -2,7 +2,7 @@ from ch00_py.file_toolbox import create_path, open_file
 from ch05_rope.rope import create_rope
 from ch10_person_lesson.lasso import lassounit_shop
 from ch12_bud._ref.ch12_path import create_person_spark_dir_path
-from ch19_db_tool.db_toolbox import get_table_columns
+from ch20_db_tool.db_toolbox import get_table_columns
 from ch22_etl_config.etl_sqlstr import (
     create_prime_tablename,
     create_sound_and_heard_tables,
@@ -59,12 +59,12 @@ VALUES
     e7_put_csv = open_file(a23_e7_prncont_put_path)
     print(f"{e3_put_csv=}")
     print(f"{e7_put_csv=}")
-    expected_e3_put_csv = f"""spark_num,spark_face,moment_rope,person_name,contact_name,contact_cred_mass,contact_debt_mass,knot
-3,Suzy,{exx.a23_dash},Bobby,Bobby,5.0,,{exx.dash}
+    expected_e3_put_csv = f"""spark_num,spark_face,moment_rope,person_name,contact_name,contact_cred_mass,contact_debt_mass,knot\r
+3,Suzy,{exx.a23_dash},Bobby,Bobby,5.0,,{exx.dash}\r
 """
-    expected_e7_put_csv = f"""spark_num,spark_face,moment_rope,person_name,contact_name,contact_cred_mass,contact_debt_mass,knot
-7,Suzy,{exx.a23_dash},Bobby,Bobby,5.0,,{exx.dash}
-7,Suzy,{exx.a23_dash},Bobby,Suzy,7.0,,{exx.dash}
+    expected_e7_put_csv = f"""spark_num,spark_face,moment_rope,person_name,contact_name,contact_cred_mass,contact_debt_mass,knot\r
+7,Suzy,{exx.a23_dash},Bobby,Bobby,5.0,,{exx.dash}\r
+7,Suzy,{exx.a23_dash},Bobby,Suzy,7.0,,{exx.dash}\r
 """
     assert e3_put_csv == expected_e3_put_csv
     assert e7_put_csv == expected_e7_put_csv
@@ -121,12 +121,12 @@ VALUES
     e7_put_csv = open_file(a23_e7_prncont_put_path)
     # print(f"{e3_put_csv=}")
     print(f"{e7_put_csv=}")
-    expected_e3_put_csv = f"""{kw.spark_num},{kw.spark_face},{kw.person_name},{kw.plan_rope},{kw.reason_context},{kw.active_requisite},{kw.knot}
-3,Suzy,{bob_inx},{mop_rope},{dirty_rope},,;
+    expected_e3_put_csv = f"""{kw.spark_num},{kw.spark_face},{kw.person_name},{kw.plan_rope},{kw.reason_context},{kw.active_requisite},{kw.knot}\r
+3,Suzy,{bob_inx},{mop_rope},{dirty_rope},,;\r
 """
-    expected_e7_put_csv = f"""{kw.spark_num},{kw.spark_face},{kw.person_name},{kw.plan_rope},{kw.reason_context},{kw.active_requisite},{kw.knot}
-7,Suzy,{bob_inx},{mop_rope},{dirty_rope},,;
-7,Suzy,{bob_inx},{mop_rope},{dirty_rope},,;
+    expected_e7_put_csv = f"""{kw.spark_num},{kw.spark_face},{kw.person_name},{kw.plan_rope},{kw.reason_context},{kw.active_requisite},{kw.knot}\r
+7,Suzy,{bob_inx},{mop_rope},{dirty_rope},,;\r
+7,Suzy,{bob_inx},{mop_rope},{dirty_rope},,;\r
 """
     assert e3_put_csv == expected_e3_put_csv
     assert e7_put_csv == expected_e7_put_csv
@@ -190,13 +190,13 @@ VALUES
     assert neighbor_rope in e3_put_csv
     assert music_rope in e3_put_csv
 
-    expected_e3_put_csv = f"""{kw.spark_num},{kw.spark_face},{kw.person_name},{kw.plan_rope},{kw.begin},{kw.close},{kw.addin},{kw.numor},{kw.denom},{kw.morph},{kw.gogo_want},{kw.stop_want},{kw.poynt},{kw.pledge},{kw.problem_bool},{kw.knot}
-{spark3},{exx.sue},{exx.bob},;Amy23;clean casa;,,,,,,,,,1,0,,
-{spark3},{exx.sue},{exx.bob},;Amy23;clean casa;ask neighbor to use baking soda;,,,,,,,,,3,1,,
-{spark3},{exx.sue},{exx.bob},;Amy23;clean casa;clean clothes with baking soda;,,,,,,,,,12,1,,
-{spark3},{exx.sue},{exx.bob},;Amy23;clean casa;clean dishes with baking soda;,,,,,,,,,10,1,,
-{spark3},{exx.sue},{exx.bob},;Amy23;clean casa;clean kitchen counters with baking soda;,,,,,,,,,5,1,,
-{spark3},{exx.sue},{exx.bob},;Amy23;clean casa;give neighbor any baking soda they want;,,,,,,,,,20,1,,
-{spark3},{exx.sue},{exx.bob},;Amy23;enjoy music;,,,,,,,,,1,1,,
+    expected_e3_put_csv = f"""{kw.spark_num},{kw.spark_face},{kw.person_name},{kw.plan_rope},{kw.begin},{kw.close},{kw.addin},{kw.numor},{kw.denom},{kw.morph},{kw.gogo_want},{kw.stop_want},{kw.poynt},{kw.pledge},{kw.problem_bool},{kw.knot}\r
+{spark3},{exx.sue},{exx.bob},;Amy23;clean casa;,,,,,,,,,1,0,,\r
+{spark3},{exx.sue},{exx.bob},;Amy23;clean casa;ask neighbor to use baking soda;,,,,,,,,,3,1,,\r
+{spark3},{exx.sue},{exx.bob},;Amy23;clean casa;clean clothes with baking soda;,,,,,,,,,12,1,,\r
+{spark3},{exx.sue},{exx.bob},;Amy23;clean casa;clean dishes with baking soda;,,,,,,,,,10,1,,\r
+{spark3},{exx.sue},{exx.bob},;Amy23;clean casa;clean kitchen counters with baking soda;,,,,,,,,,5,1,,\r
+{spark3},{exx.sue},{exx.bob},;Amy23;clean casa;give neighbor any baking soda they want;,,,,,,,,,20,1,,\r
+{spark3},{exx.sue},{exx.bob},;Amy23;enjoy music;,,,,,,,,,1,1,,\r
 """
     assert e3_put_csv == expected_e3_put_csv

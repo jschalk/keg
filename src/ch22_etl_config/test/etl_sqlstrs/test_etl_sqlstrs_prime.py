@@ -1,11 +1,11 @@
 from ch09_person_atom.atom_config import get_person_dimens
 from ch15_moment.moment_config import get_moment_dimens
 from ch16_nabu.nabu_config import get_nabu_dimens
-from ch17_jargon.jargon_config import (
+from ch18_jargon.jargon_config import (
     get_jargon_dimens,
     set_jargonable_otx_inx_args,
 )
-from ch19_db_tool.db_toolbox import (
+from ch20_db_tool.db_toolbox import (
     create_insert_into_clause_str as get_insert_sql,
     create_select_query as get_select_sql,
     create_table2table_agg_insert_query,
@@ -14,7 +14,7 @@ from ch19_db_tool.db_toolbox import (
     get_db_tables,
     get_table_columns,
 )
-from ch20_brick.brick_config import get_brick_config_dict, get_default_sorted_list
+from ch21_brick.brick_config import get_brick_config_dict, get_default_sorted_list
 from ch22_etl_config.etl_config import (
     create_prime_table_sqlstr,
     get_dimen_abbv7,

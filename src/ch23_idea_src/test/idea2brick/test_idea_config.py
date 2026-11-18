@@ -1,5 +1,5 @@
 from ch00_py.file_toolbox import create_path
-from ch20_brick.brick_config import get_brick_types
+from ch21_brick.brick_config import get_brick_types
 from ch23_idea_src.fission_step import get_all_fission_steps
 from ch23_idea_src.idea_config import (
     get_idea_config_dict,

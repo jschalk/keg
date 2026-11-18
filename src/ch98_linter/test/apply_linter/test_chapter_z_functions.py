@@ -3,7 +3,7 @@ from ch01_keyword.chapter_desc_main import (
     get_chapter_desc_prefix,
     get_chapter_desc_str_number,
 )
-from ch19_db_tool.notebook_toolbox import get_top_level_functions
+from ch20_db_tool.notebook_toolbox import get_top_level_functions
 from ch97_docs_builder.doc_builder import get_chapter_descs
 from ch98_linter.style import (
     check_all_test_functions_are_formatted,
@@ -86,6 +86,7 @@ def test_Chapters_path_FunctionStructureAndFormat():
         "create_path",
         "create_directory_path",
         "rope_is_valid_dir_path",
+        "_summary_path",
     }
     for chapter_desc, chapter_dir in get_chapter_descs().items():
         filenames_set = get_dir_filenames(chapter_dir, include_extensions={"py"})

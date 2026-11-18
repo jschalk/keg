@@ -35,3 +35,10 @@ def create_chapter_catalogue_path(chapter_dir: str, chapter_prefix: str) -> str:
     """Returns path: src\\chapter_dir\\chXX_ref.md"""
 
     return create_path(chapter_dir, f"_{chapter_prefix}_catalogue.md")
+
+
+def create_ai_summary_path(chapter_dir: str, chapter_prefix: str) -> str:
+    """Returns path: src\\chapter_dir\\_ref\\chXX_ai_summary_1min.md"""
+
+    ref_dir = create_path(chapter_dir, "_ref")
+    return create_path(ref_dir, f"{chapter_prefix}_ai_summary_1min.md")

@@ -1,18 +1,18 @@
 from ch05_rope.rope import default_knot_if_None
-from ch17_jargon.jargon_config import (
+from ch18_jargon.jargon_config import (
     get_jargon_column_ref,
     get_jargon_labelterm_args,
     get_jargon_nameterm_args,
     get_jargon_ropeterm_args,
     get_jargon_titleterm_args,
 )
-from ch17_jargon.jargon_main import default_unknown_str_if_None
-from ch19_db_tool.db_toolbox import (
+from ch18_jargon.jargon_main import default_unknown_str_if_None
+from ch20_db_tool.db_toolbox import (
     create_update_inconsistency_error_query,
     delete_all_duplicate_rows,
     get_table_columns,
 )
-from ch20_brick.brick_config import get_brick_dimen_ref
+from ch21_brick.brick_config import get_brick_dimen_ref
 from ch22_etl_config.etl_sqlstr import (
     create_insert_into_jargon_core_raw_sqlstr,
     create_insert_jargon_core_agg_into_vld_sqlstr,

@@ -102,7 +102,7 @@ def rename_files_and_dirs(directory: str, old_string: str, new_string: str) -> N
             continue
 
         rename_directories(dirs, root, old_string, new_string)
-        file_extensions = [".txt", ".py", ".json", ".ui"]
+        file_extensions = [".txt", ".py", ".json", ".ui", ".md"]
         for filename in files:
             if not any(filename.endswith(ext) for ext in file_extensions):
                 continue
@@ -161,7 +161,7 @@ def replace_in_tracked_python_files(find_text, replace_text):
     try:
         # Get list of tracked .py files
         result = subprocess_run(
-            ["git", "ls-files", "*.py", "*.json"],
+            ["git", "ls-files", "*.py", "*.json", "*.md"],
             capture_output=True,
             text=True,
             check=True,

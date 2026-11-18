@@ -1,9 +1,9 @@
-from ch19_db_tool.db_toolbox import (
+from ch20_db_tool.db_toolbox import (
     create_table2table_agg_insert_query,
     create_update_inconsistency_error_query,
 )
-from ch20_brick.brick_config import get_brick_config_dict, get_quick_bricks_column_ref
-from ch20_brick.brick_db_tool import create_brick_sorted_table, get_default_sorted_list
+from ch21_brick.brick_config import get_brick_config_dict, get_quick_bricks_column_ref
+from ch21_brick.brick_db_tool import create_brick_sorted_table, get_default_sorted_list
 from ch22_etl_config._ref.ch22_semantic_types import KnotTerm
 from ch22_etl_config.etl_config import create_prime_tablename
 from sqlite3 import Connection as sqlite3_Connection

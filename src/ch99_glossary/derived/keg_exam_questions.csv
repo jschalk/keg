@@ -95,10 +95,10 @@ Did you read that the keyword_definition of 'ch13' is 'Builds a simulation that 
 Did you read that the keyword_definition of 'ch14' is 'Defines how time is handled by PersonUnits. Allows for arbitrary time structures.'.
 "Did you read that the keyword_definition of 'ch15' is 'Defines MomentUnits: common time tech, ledger, ContactNames, history of PersonUnits.'."
 Did you read that the keyword_definition of 'ch16' is 'Defines NabuUnit tools that interpret numeric values into inside accounting.'.
-Did you read that the keyword_definition of 'ch17' is 'Defines JargonUnit tools that jargon MomentUnits into inside language.'.
-Did you read that the keyword_definition of 'ch18' is 'Defines SpeechUnit tools that jargon MomentUnits into audience language.'.
-Did you read that the keyword_definition of 'ch19' is 'Creates helper tools for database admin.'.
-Did you read that the keyword_definition of 'ch20' is 'Defines how to build Bricks using Bricks. Moments and Persons are built by Bricks.'.
+Did you read that the keyword_definition of 'ch18' is 'Defines JargonUnit tools that jargon MomentUnits into inside language.'.
+Did you read that the keyword_definition of 'ch19' is 'Defines SpeechUnit tools that jargon MomentUnits into audience language.'.
+Did you read that the keyword_definition of 'ch20' is 'Creates helper tools for database admin.'.
+Did you read that the keyword_definition of 'ch21' is 'Defines how to build Bricks using Bricks. Moments and Persons are built by Bricks.'.
 Did you read that the keyword_definition of 'ch22' is 'Defines the tools that use Bricks to build MomentUnits.'.
 Did you read that the keyword_definition of 'ch23' is 'Defines the 'Idea Src' process. Data going to 'Bricks'.'.
 Did you read that the keyword_definition of 'ch24' is 'Defines the 'Etl Bricks' process. From 'Source Ideas' to 'Sound'.'.
@@ -578,9 +578,9 @@ Did you read that the keyword_definition of 'ropemap' is 'Definition needed.'.
 Did you read that the keyword_definition of 'titlemap' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'unknown_str' is ', JARGON_LABEL arg, JARGON_NAME arg, JARGON_ROPE arg, JARGON_TITLE arg'."
 "Did you read that the keyword_definition of 'Audie' is 'Short for Audience. TitleTerm, can be NameTerm or GroupTitle.'."
-Did you read that the keyword_definition of 'AudieTitle' is 'If a AudieTitle contains SepartorTerms(s) it represents a group otherwise its a single member group of an ContactName. str first used in ch18. All str separator classes are BreakTerms. Exists because of the necessity to break experience reality into things so they can be understood.'.
+Did you read that the keyword_definition of 'AudieTitle' is 'If a AudieTitle contains SepartorTerms(s) it represents a group otherwise its a single member group of an ContactName. str first used in ch19. All str separator classes are BreakTerms. Exists because of the necessity to break experience reality into things so they can be understood.'.
 Did you read that the keyword_definition of 'Flare' is 'The instance of giving ideas to an audience. Usually there is an intended audience.'.
-Did you read that the keyword_definition of 'FlareInt' is 'Integer for tracking Flares. int first used in ch18'.
+Did you read that the keyword_definition of 'FlareInt' is 'Integer for tracking Flares. int first used in ch19'.
 Did you read that the keyword_definition of 'Speech' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'Yap' is 'In the Jargon module there is 'map', in the Speech module there is 'yap'.'."
 "Did you read that the keyword_definition of 'audie' is 'Short for audience. TitleTerm, can be NameTerm or GroupTitle.'."
@@ -615,7 +615,7 @@ Did you read that the keyword_definition of 'speech_title' is 'Speech module. De
 "Did you read that the keyword_definition of 'factory' is 'Not used in codebase. The factory method in programming is very important. However because I want 'fact' only to refer to the Keg concept I don't use the word 'factory', instead I use 'shop'.'."
 Did you read that the keyword_definition of 'Border' is 'Defines line of influence between two Wheels. Also used by graphics and apps.'.
 Did you read that the keyword_definition of 'Excel' is 'A spreadsheet format.'.
-Did you read that the keyword_definition of 'SheetName' is 'A string used as SheetName for SpreadSheet files. str first used in ch20'.
+Did you read that the keyword_definition of 'SheetName' is 'A string used as SheetName for SpreadSheet files. str first used in ch21'.
 Did you read that the keyword_definition of 'allowed_crud' is 'Each brick config dimen has an allowed_crud that describes whether the data may be updated/deleted/inserted more than one.'.
 Did you read that the keyword_definition of 'attributes' is 'General term used to describe things about another thing'.
 Did you read that the keyword_definition of 'awardee_title_ERASE_aux' is 'Definition needed.'.

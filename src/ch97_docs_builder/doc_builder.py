@@ -16,7 +16,7 @@ from ch00_py.file_toolbox import (
 from ch01_keyword.chapter_desc_main import get_chapter_desc_prefix, get_chapter_descs
 from ch01_keyword.keyword_class_builder import create_src_example_strs_path
 from ch05_rope._ref.ch05_doc_builder import get_ropeterm_description_md
-from ch20_brick._ref.ch20_doc_builder import get_brick_formats_md, get_brick_mds
+from ch21_brick._ref.ch21_doc_builder import get_brick_formats_md, get_brick_mds
 from ch38_article.article_toolbox import (
     create_markdown_table_of_contents,
     get_markdown_file_metadata,
@@ -98,7 +98,7 @@ def save_ropeterm_description_md(x_dir: str):
 
 def save_brick_mds(dest_dir: str):
     brick_mds = get_brick_mds()
-    dest_dir = create_path(dest_dir, "ch20_brick_formats")
+    dest_dir = create_path(dest_dir, "ch21_brick_formats")
 
     for brick_type, brick_md in brick_mds.items():
         save_file(dest_dir, f"{brick_type}.md", brick_md)

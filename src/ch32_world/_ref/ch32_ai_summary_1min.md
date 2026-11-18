@@ -23,7 +23,7 @@ Ontology note:
 
 Ch32 imports from every ETL chapter (ch23–ch31) simultaneously — it is the conductor:
 
-- **ch20_brick**: `export_db_to_excel` — full database export to Excel.
+- **ch21_brick**: `export_db_to_excel` — full database export to Excel.
 - **ch22_etl_config**: `reorder_etl_db_sheets`, path helpers.
 - **ch23_idea_src**: `ideas_sheets_to_brick_sheets` — idea → brick conversion.
 - **ch24_etl_brick**: All six brick ETL stage functions.

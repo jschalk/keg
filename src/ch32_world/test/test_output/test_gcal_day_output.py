@@ -4,7 +4,7 @@ from ch10_person_lesson._ref.ch10_path import create_moment_json_path
 from ch10_person_lesson.lasso import lassounit_shop
 from ch11_person_listen._ref.ch11_path import create_job_path
 from ch11_person_listen.keep_tool import open_job_file
-from ch20_brick.brick_db_tool import save_sheet
+from ch21_brick.brick_db_tool import save_sheet
 from ch31_kpi._ref.ch31_path import (
     create_day_punch_txt_path as day_punch_path,
     create_dst_person_punch_path,

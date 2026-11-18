@@ -1,5 +1,5 @@
 from ch00_py.file_toolbox import create_path, save_json
-from ch20_brick.brick_config import get_brick_config_dict
+from ch21_brick.brick_config import get_brick_config_dict
 from ch22_etl_config.etl_config import get_dimen_abbv7, get_etl_category_stages_dict
 from ch23_idea_src.idea_config import get_idea_config_dict
 from ch33_pitch.promisebrick_main import (

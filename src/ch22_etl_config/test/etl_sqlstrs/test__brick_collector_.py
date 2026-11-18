@@ -1,5 +1,5 @@
 from ch00_py.file_toolbox import create_path
-from ch20_brick.brick_db_tool import save_sheet
+from ch21_brick.brick_db_tool import save_sheet
 from ch22_etl_config.brick_collector import (
     BrickFileRef,
     get_all_brickfilerefs,
