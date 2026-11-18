@@ -568,6 +568,8 @@
   "mop": "Example key with value 'mop' used for tests throughout codebase.", 
   "morph": "bool that describes how to change parent range in calculations, Plan seed", 
   "nabtime": "abbv for tash_timenum", 
+  "Nabu": "Definition needed.", 
+  "nabu": "Definition needed.", 
   "namemap": "Definition needed.", 
   "NameTerm": "str first used in ch03. All Name string classes should inherit from this class", 
   "nameyap": "Speech module, definition needed", 

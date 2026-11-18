@@ -1468,7 +1468,12 @@ class Ch16Keywords(str, Enum):
 
 
 class Ch17Keywords(str, Enum):
+    Nabu = "Nabu"
     ch17 = "ch17"
+    dimen = "dimen"
+    dimens = "dimens"
+    nabu = "nabu"
+    tash = "tash"
 
     def __str__(self):
         return self.value
