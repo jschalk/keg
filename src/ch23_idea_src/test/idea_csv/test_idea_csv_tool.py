@@ -67,8 +67,8 @@ def test_create_init_idea_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
     x_ideas = create_init_idea_csv_strs()
 
     # THEN
-    for x_idea_type, x_header in x_ideas.items():
-        print(f""""{x_idea_type}": "{x_header.replace("\n", "")}\\n", """)
+    # for x_idea_type, x_header in x_ideas.items():
+    #     print(f""""{x_idea_type}": "{x_header.replace("\n", "")}\\n", """)
     expected_idea_csv_strs = {
         "ii00100": "moment_rope,epoch_label,c400_number,yr1_jan1_offset,monthday_index,fund_grain,mana_grain,respect_grain,knot,job_listen_rotations\n",
         "ii00101": "moment_rope,person_name,bud_time,knot,quota,celldepth\n",
