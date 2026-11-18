@@ -7,5 +7,5 @@
     "spark_num"  : { "otx_key": true  }
   }, 
   "brick_type": "bk00170", 
-  "dimens": ["nabu_timenum", "momentunit"]
+  "dimens": ["tash_timenum", "momentunit"]
 }

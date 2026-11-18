@@ -2,24 +2,24 @@ from ch00_py.file_toolbox import create_path, open_json
 from os.path import join as os_path_join
 
 
-def nabu_config_path():
-    "Returns path: c15_nabu/nabu_config.json"
-    return create_path("src", "ch16_nabu", "nabu_config.json")
+def tash_config_path():
+    "Returns path: c15_tash/tash_config.json"
+    return create_path("src", "ch16_tash", "tash_config.json")
 
 
-def get_nabu_config_dict():
-    return open_json(nabu_config_path())
+def get_tash_config_dict():
+    return open_json(tash_config_path())
 
 
-def get_nabu_dimens() -> set:
-    return {"nabu_timenum"}
+def get_tash_dimens() -> set:
+    return {"tash_timenum"}
 
 
-def get_nabu_args() -> set:
+def get_tash_args() -> set:
     return {"otx_time", "inx_time", "moment_rope"}
 
 
-def get_nabuable_args() -> set:
+def get_tashable_args() -> set:
     return {
         "bud_time",
         "fact_lower",
@@ -31,7 +31,7 @@ def get_nabuable_args() -> set:
     }
 
 
-def get_context_nabuable_args() -> set:
+def get_context_tashable_args() -> set:
     return {
         "fact_lower",
         "fact_upper",
@@ -40,12 +40,12 @@ def get_context_nabuable_args() -> set:
     }
 
 
-def set_nabuable_otx_inx_args(args: set) -> set:
-    """Receives set of args, returns a set with all "Nabuable" args replaced with "_otx" and "_inx" """
-    all_nabuable = get_nabuable_args()
+def set_tashable_otx_inx_args(args: set) -> set:
+    """Receives set of args, returns a set with all "Tashable" args replaced with "_otx" and "_inx" """
+    all_tashable = get_tashable_args()
     transformed_args = set()
     for arg in args:
-        if arg in all_nabuable:
+        if arg in all_tashable:
             transformed_args.add(f"{arg}_otx")
             transformed_args.add(f"{arg}_inx")
         else:

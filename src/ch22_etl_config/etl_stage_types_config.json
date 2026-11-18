@@ -16,7 +16,7 @@
   }, 
   "h_agg": {
     "abbv9": "heard_agg", 
-    "description": "Populated by aggregated Heard Raw tables. Nabu number conversions take place here.", 
+    "description": "Populated by aggregated Heard Raw tables. Tash number conversions take place here.", 
     "stage_type_order": 11
   }, 
   "h_raw": {
@@ -26,7 +26,7 @@
   }, 
   "h_vld": {
     "abbv9": "heard_vld", 
-    "description": "Populated by aggregated and Nabu changed Heard Agg tables", 
+    "description": "Populated by aggregated and Tash changed Heard Agg tables", 
     "stage_type_order": 12
   }, 
   "i_dst": {

@@ -12,7 +12,7 @@ from ch08_person_logic.person_config import (
 from ch12_bud.cell_main import cellunit_shop
 from ch14_time.epoch_main import get_c400_constants, get_default_epoch_config_dict
 from ch15_moment.moment_config import get_moment_config_args
-from ch16_nabu.nabu_config import get_nabu_args, get_nabuable_args
+from ch16_tash.tash_config import get_tash_args, get_tashable_args
 from ch18_jargon.jargon_config import (
     get_jargon_config_args,
     get_jargon_config_dict,
@@ -287,8 +287,8 @@ def test_get_keywords_definitions_ReturnsObj_CheckConfigArgs():
     mmtceck_args = get_moment_config_args(kw.moment_ceckbook)
     mmtoffi_args = get_moment_config_args(kw.moment_timeoffi)
     mmtunit_args = get_moment_config_args(kw.momentunit)
-    nabu_args = get_nabu_args()
-    nabuable_args = get_nabuable_args()
+    tash_args = get_tash_args()
+    tashable_args = get_tashable_args()
     for keyword, desc in keywords_definitions.items():
         check_person_desc_str(person_args, keyword, desc, "Person")
         check_person_desc_str(plan_args, keyword, desc, "Plan")
@@ -311,8 +311,8 @@ def test_get_keywords_definitions_ReturnsObj_CheckConfigArgs():
         check_mmtunit_desc_str(mmtceck_args, keyword, desc, kw.ceckbook)
         check_mmtunit_desc_str(mmtoffi_args, keyword, desc, kw.offi_time)
         check_mmtunit_desc_str(mmtunit_args, keyword, desc, "Moment")
-        check_mmtunit_desc_str(nabu_args, keyword, desc, kw.nabu)
-        check_mmtunit_desc_str(nabuable_args, keyword, desc, "Nabuable")
+        check_mmtunit_desc_str(tash_args, keyword, desc, kw.tash)
+        check_mmtunit_desc_str(tashable_args, keyword, desc, "Tashable")
 
 
 def test_get_keywords_definitions_ReturnsObj_CheckJargon_dimen():

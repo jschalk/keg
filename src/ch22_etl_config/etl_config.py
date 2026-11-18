@@ -1,7 +1,7 @@
 from ch00_py.dict_toolbox import get_empty_set_if_None, get_from_nested_dict
 from ch00_py.file_toolbox import create_path, open_json
 from ch09_person_atom.atom_config import get_delete_key_name
-from ch16_nabu.nabu_config import get_context_nabuable_args, set_nabuable_otx_inx_args
+from ch16_tash.tash_config import get_context_tashable_args, set_tashable_otx_inx_args
 from ch18_jargon.jargon_config import set_jargonable_otx_inx_args
 from ch20_db_tool.db_toolbox import get_create_table_sqlstr
 from ch21_brick.brick_config import (
@@ -82,7 +82,7 @@ def get_dimen_abbv7(dimen: str) -> str:
         "person_plan_laborunit": "PRNLABO",
         "person_planunit": "PRNPLAN",
         "personunit": "PRNUNIT",
-        "nabu_timenum": "NABTIME",
+        "tash_timenum": "NABTIME",
         "jargon_title": "TRLTITL",
         "jargon_name": "TRLNAME",
         "jargon_rope": "TRLROPE",
@@ -110,7 +110,7 @@ def get_dimen_abbv2(dimen: str) -> str:
         "person_plan_laborunit": "PL",
         "person_planunit": "PP",
         "personunit": "PU",
-        "nabu_timenum": "NT",
+        "tash_timenum": "NT",
         "jargon_title": "TT",
         "jargon_name": "TN",
         "jargon_rope": "TR",
@@ -152,7 +152,7 @@ def create_prime_tablename(
         "prnlabo": "person_plan_laborunit",
         "prnplan": "person_planunit",
         "prnunit": "personunit",
-        "nabtime": "nabu_timenum",
+        "nabtime": "tash_timenum",
         "trltitl": "jargon_title",
         "trlname": "jargon_name",
         "trlrope": "jargon_rope",
@@ -267,11 +267,11 @@ def get_etl_category_stages_dict() -> dict:
         "moment_s_agg": {"brick_category": "moment", "stage_type": "s_agg"},
         "moment_s_raw": {"brick_category": "moment", "stage_type": "s_raw"},
         "moment_s_vld": {"brick_category": "moment", "stage_type": "s_vld"},
-        "nabu_h_agg": {"brick_category": "nabu", "stage_type": "h_agg"},
-        "nabu_h_raw": {"brick_category": "nabu", "stage_type": "h_raw"},
-        "nabu_s_agg": {"brick_category": "nabu", "stage_type": "s_agg"},
-        "nabu_s_raw": {"brick_category": "nabu", "stage_type": "s_raw"},
-        "nabu_s_vld": {"brick_category": "nabu", "stage_type": "s_vld"},
+        "tash_h_agg": {"brick_category": "tash", "stage_type": "h_agg"},
+        "tash_h_raw": {"brick_category": "tash", "stage_type": "h_raw"},
+        "tash_s_agg": {"brick_category": "tash", "stage_type": "s_agg"},
+        "tash_s_raw": {"brick_category": "tash", "stage_type": "s_raw"},
+        "tash_s_vld": {"brick_category": "tash", "stage_type": "s_vld"},
         "jargon_s_agg": {
             "brick_category": "jargon",
             "stage_type": "s_agg",
@@ -382,8 +382,8 @@ def get_prime_columns(
         brick_category = "jargon_core"
     elif x_dimen.find("jargon") == 0:
         brick_category = "jargon"
-    elif x_dimen.find("nabu") == 0:
-        brick_category = "nabu"
+    elif x_dimen.find("tash") == 0:
+        brick_category = "tash"
     elif x_dimen.find("moment") == 0:
         brick_category = "moment"
     elif x_dimen.find("person") == 0:
@@ -395,15 +395,15 @@ def get_prime_columns(
     if get_from_nested_dict(etl_brick_category_config, otx_keylist, True):
         columns = set_jargonable_otx_inx_args(columns)
 
-    nabuable_keylist = copy_copy(config_keylist)
-    nabuable_keylist.append("set_nabuable_otx_inx_args")
-    if get_from_nested_dict(etl_brick_category_config, nabuable_keylist, True):
-        context_nabuable_args = get_context_nabuable_args()
+    tashable_keylist = copy_copy(config_keylist)
+    tashable_keylist.append("set_tashable_otx_inx_args")
+    if get_from_nested_dict(etl_brick_category_config, tashable_keylist, True):
+        context_tashable_args = get_context_tashable_args()
 
-        if any(c_arg in columns for c_arg in context_nabuable_args):
+        if any(c_arg in columns for c_arg in context_tashable_args):
             columns.update(get_temp_staging_columns())
 
-        columns = set_nabuable_otx_inx_args(columns)
+        columns = set_tashable_otx_inx_args(columns)
 
     update_keylist = copy_copy(config_keylist)
     update_keylist.append("add")

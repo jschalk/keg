@@ -49,8 +49,8 @@ Each dimension has a specific focus but is treated identically in terms of ETL l
 | ------------------ | --------------------------------------------------------------------- |
 | **jargon**      | Raw translation data used to update translatable content.             |
 | **jargon_core** | Verified translation subset extracted from `jargon`.               |
-| **nabu**           | Core content or base entities that receive translated text.           |
-| **moment**         | Iterative temporal data derived from `nabu` content.                  |
+| **tash**           | Core content or base entities that receive translated text.           |
+| **moment**         | Iterative temporal data derived from `tash` content.                  |
 | **person**         | Higher-level interpretive or logical data derived from `moment` data. |
 
 Each dimension advances through a fixed set of stages (Sound and Heard) with clearly defined insert/update rules.
@@ -75,7 +75,7 @@ Each dimension advances through a fixed set of stages (Sound and Heard) with cle
 | ------------------ | ---------------------------------------------------------------------------- | ----------------------------------------------------------- |
 | **jargon**      | `Sound Raw`, `Sound Agg`, `Sound Vld`                                        | Base translation data.                                      |
 | **jargon_core** | `Sound Raw`, `Sound Agg`, `Sound Vld`                                        | Extracted and verified subset of `jargon`.               |
-| **nabu**           | `Sound Raw`, `Sound Agg`, `Sound Vld`, `Heard Raw`, `Heard Agg`              | Text and translation applied here.                          |
+| **tash**           | `Sound Raw`, `Sound Agg`, `Sound Vld`, `Heard Raw`, `Heard Agg`              | Text and translation applied here.                          |
 | **moment**         | `Sound Raw`, `Sound Agg`, `Sound Vld`, `Heard Raw`, `Heard Agg`, `Heard Vld` | Includes both translation and numeric/time transformations. |
 | **person**         | `Sound Raw`, `Sound Agg`, `Sound Vld`, `Heard Raw`, `Heard Agg`, `Heard Vld` | Logical or interpretive data based on `moment`.             |
 
@@ -93,7 +93,7 @@ Each dimension advances through a fixed set of stages (Sound and Heard) with cle
 
 * Converts `bricks` outputs into structured, interpretable data.
 * Applies translation and text-based transformations.
-* Uses `jargon` and `jargon_core` data to update all **nabu**, **moment**, and **person** tables that require translatable content.
+* Uses `jargon` and `jargon_core` data to update all **tash**, **moment**, and **person** tables that require translatable content.
 
 ### **Heard Section**
 
@@ -121,6 +121,6 @@ Each dimension advances through a fixed set of stages (Sound and Heard) with cle
 | **Core Processing Zones** | Sound and Heard                                 |
 | **Auditable by**          | Any user with Excel/SQL skills                  |
 | **ETL Constraints**       | 1 insert + 1 update per table per run           |
-| **Primary Dimensions**    | jargon, jargon_core, nabu, moment, person |
+| **Primary Dimensions**    | jargon, jargon_core, tash, moment, person |
 
 ---

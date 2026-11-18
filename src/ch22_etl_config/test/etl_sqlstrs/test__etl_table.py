@@ -166,7 +166,7 @@ def test_create_prime_tablename_ReturnsObj_Scenario0_ExpectedReturns():
     assert mmtmont_s_agg_table == f"{kw.moment_epoch_month}_{kw.s_agg}"
     assert mmtweek_s_agg_table == f"{kw.moment_epoch_weekday}_{kw.s_agg}"
     assert mmtoffi_s_agg_table == f"{kw.moment_timeoffi}_{kw.s_agg}"
-    assert nabtime_s_agg_table == f"{kw.nabu_timenum}_{kw.s_agg}"
+    assert nabtime_s_agg_table == f"{kw.tash_timenum}_{kw.s_agg}"
     assert trlname_s_agg_table == f"{kw.jargon_name}_{kw.s_agg}"
     assert trllabe_s_agg_table == f"{kw.jargon_label}_{kw.s_agg}"
     assert trlrope_s_agg_table == f"{kw.jargon_rope}_{kw.s_agg}"
@@ -314,7 +314,7 @@ def test_get_etl_brick_category_config_dict_ReturnsObj_Scenario0_IsFullyPopulate
     assert kw.jargon_core in etl_brick_category_config_dimens
     assert kw.jargon in etl_brick_category_config_dimens
     assert kw.person in etl_brick_category_config_dimens
-    assert kw.nabu in etl_brick_category_config_dimens
+    assert kw.tash in etl_brick_category_config_dimens
     assert len(etl_brick_category_config_dimens) == 5
 
     etl_stage_types = set(get_etl_stage_types_config_dict().keys())
@@ -426,7 +426,7 @@ def test_get_prime_columns_ReturnsObj_Scenario3_h_raw_set_jargonable_otx_inx_arg
     }
 
 
-def test_get_prime_columns_ReturnsObj_Scenario4_h_agg_set_nabuable_otx_inx_args():
+def test_get_prime_columns_ReturnsObj_Scenario4_h_agg_set_tashable_otx_inx_args():
     # ESTABLISH
     x_dimen = kw.moment_timeoffi
     table_keylist = [kw.h_agg]
@@ -447,7 +447,7 @@ def test_get_prime_columns_ReturnsObj_Scenario4_h_agg_set_nabuable_otx_inx_args(
     }
 
 
-def test_get_prime_columns_ReturnsObj_Scenario5_h_agg_set_nabuable_otx_inx_args_ContextNabuableArgs():
+def test_get_prime_columns_ReturnsObj_Scenario5_h_agg_set_tashable_otx_inx_args_ContextTashableArgs():
     # ESTABLISH
     x_dimen = kw.person_plan_reason_caseunit
     table_keylist = [kw.h_agg, "put"]

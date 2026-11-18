@@ -1,6 +1,6 @@
 from ch09_person_atom.atom_config import get_person_dimens
 from ch15_moment.moment_config import get_moment_dimens
-from ch16_nabu.nabu_config import get_nabu_dimens
+from ch16_tash.tash_config import get_tash_dimens
 from ch18_jargon.jargon_config import (
     get_jargon_dimens,
     set_jargonable_otx_inx_args,
@@ -154,16 +154,16 @@ def test_get_prime_create_table_sqlstrs_ReturnsObj_HasAllKeys():
     # THEN
     assert create_table_sqlstrs
     jargon_dimens_count = len(get_jargon_dimens()) * 3
-    nabu_dimens_count = len(get_nabu_dimens()) * 5
+    tash_dimens_count = len(get_tash_dimens()) * 5
     moment_dimens_count = len(get_moment_dimens()) * 6
     person_dimens_count = len(get_person_dimens()) * 12
     print(f"{jargon_dimens_count=}")
-    print(f"{nabu_dimens_count=}")
+    print(f"{tash_dimens_count=}")
     print(f"{moment_dimens_count=}")
     print(f"{person_dimens_count=}")
     all_dimens_count = (
         jargon_dimens_count
-        + nabu_dimens_count
+        + tash_dimens_count
         + moment_dimens_count
         + person_dimens_count
     )
@@ -183,8 +183,8 @@ def test_get_moment_person_sound_agg_tablenames_ReturnsObj():
     for person_dimen in get_person_dimens():
         expected_sound_agg_tablenames.add(prime_tbl(person_dimen, "s_agg", "put"))
         expected_sound_agg_tablenames.add(prime_tbl(person_dimen, "s_agg", "del"))
-    for nabu_dimen in get_nabu_dimens():
-        expected_sound_agg_tablenames.add(prime_tbl(nabu_dimen, "s_agg"))
+    for tash_dimen in get_tash_dimens():
+        expected_sound_agg_tablenames.add(prime_tbl(tash_dimen, "s_agg"))
     for moment_dimen in get_moment_dimens():
         expected_sound_agg_tablenames.add(prime_tbl(moment_dimen, "s_agg"))
     print(sorted(list(expected_sound_agg_tablenames)))
@@ -388,11 +388,11 @@ WHERE inconsistency_rows.moment_rope = moment_epoch_hour_s_raw.moment_rope
     assert update_sqlstr == static_example_sqlstr
 
 
-def test_create_sound_raw_update_inconsist_error_message_sqlstr_ReturnsObj_Scenario2_NabuDimen(
+def test_create_sound_raw_update_inconsist_error_message_sqlstr_ReturnsObj_Scenario2_TashDimen(
     cursor0: Cursor,
 ):
     # ESTABLISH
-    dimen = kw.nabu_timenum
+    dimen = kw.tash_timenum
     create_sound_and_heard_tables(cursor0)
 
     # WHEN
@@ -423,15 +423,15 @@ def test_create_sound_raw_update_inconsist_error_message_sqlstr_ReturnsObj_Scena
 
     static_example_sqlstr = """WITH inconsistency_rows AS (
 SELECT moment_rope, otx_time
-FROM nabu_timenum_s_raw
+FROM tash_timenum_s_raw
 GROUP BY moment_rope, otx_time
 HAVING MIN(inx_time) != MAX(inx_time)
 )
-UPDATE nabu_timenum_s_raw
+UPDATE tash_timenum_s_raw
 SET error_message = 'Inconsistent data'
 FROM inconsistency_rows
-WHERE inconsistency_rows.moment_rope = nabu_timenum_s_raw.moment_rope
-    AND inconsistency_rows.otx_time = nabu_timenum_s_raw.otx_time
+WHERE inconsistency_rows.moment_rope = tash_timenum_s_raw.moment_rope
+    AND inconsistency_rows.otx_time = tash_timenum_s_raw.otx_time
 ;
 """
     # print(update_sqlstr)
@@ -566,11 +566,11 @@ GROUP BY spark_num, spark_face, moment_rope, cumulative_minute
     assert update_sqlstrs[0] == static_example_sqlstr
 
 
-def test_create_sound_agg_insert_sqlstrs_ReturnsObj_Scenario2_NabuDimen(
+def test_create_sound_agg_insert_sqlstrs_ReturnsObj_Scenario2_TashDimen(
     cursor0: Cursor,
 ):
     # ESTABLISH
-    dimen = kw.nabu_timenum
+    dimen = kw.tash_timenum
     create_sound_and_heard_tables(cursor0)
 
     # WHEN
@@ -595,9 +595,9 @@ def test_create_sound_agg_insert_sqlstrs_ReturnsObj_Scenario2_NabuDimen(
     print(expected_insert_sqlstr)
     assert update_sqlstrs[0] == expected_insert_sqlstr
 
-    static_example_sqlstr = """INSERT INTO nabu_timenum_s_agg (spark_num, spark_face, moment_rope, otx_time, inx_time)
+    static_example_sqlstr = """INSERT INTO tash_timenum_s_agg (spark_num, spark_face, moment_rope, otx_time, inx_time)
 SELECT spark_num, spark_face, moment_rope, otx_time, MAX(inx_time)
-FROM nabu_timenum_s_raw
+FROM tash_timenum_s_raw
 WHERE error_message IS NULL
 GROUP BY spark_num, spark_face, moment_rope, otx_time
 ;
@@ -844,12 +844,12 @@ def test_get_insert_into_sound_vld_sqlstrs_ReturnsObj_PersonDimens(cursor0: Curs
         assert insert_s_vld_sqlstrs.get(del_s_vld_tbl) == del_s_vld_insert_select
 
 
-def test_get_insert_into_sound_vld_sqlstrs_ReturnsObj_Moment_Nabu_Dimens(
+def test_get_insert_into_sound_vld_sqlstrs_ReturnsObj_Moment_Tash_Dimens(
     cursor0: Cursor,
 ):
     # sourcery skip: no-loop-in-tests
     # ESTABLISH
-    moment_dimens_config = get_brick_config_dict({kw.moment, kw.nabu})
+    moment_dimens_config = get_brick_config_dict({kw.moment, kw.tash})
     print(f"{moment_dimens_config.keys()=}")
 
     # WHEN
@@ -938,12 +938,12 @@ def test_get_insert_into_heard_raw_sqlstrs_ReturnsObj_PersonDimens(cursor0: Curs
         assert insert_h_raw_sqlstrs.get(del_h_raw_tbl) == del_h_raw_insert_select
 
 
-def test_get_insert_into_heard_raw_sqlstrs_ReturnsObj_Moment_Nabu_Dimens(
+def test_get_insert_into_heard_raw_sqlstrs_ReturnsObj_Moment_Tash_Dimens(
     cursor0: Cursor,
 ):
     # sourcery skip: no-loop-in-tests
     # ESTABLISH
-    moment_dimens_config = get_brick_config_dict({kw.moment, kw.nabu})
+    moment_dimens_config = get_brick_config_dict({kw.moment, kw.tash})
 
     # WHEN
     insert_h_raw_sqlstrs = get_insert_into_heard_raw_sqlstrs()

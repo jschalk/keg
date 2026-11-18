@@ -1,0 +1,20 @@
+{
+  "tash_timenum": {
+    "affected_semantic_types": {
+      "FactNum": {
+        "note": "otx_time is the only required input, inx_time and moment_rope can be provided. ", 
+        "tashable_values": {"fact_lower": {}, "fact_upper": {}}
+      }, 
+      "ReasonNum": {
+        "note": "otx_time is the only required input, inx_time and moment_rope can be provided. ", 
+        "tashable_values": {"reason_lower": {}, "reason_upper": {}}
+      }, 
+      "TimeNum": {
+        "note": "otx_time is the only required input, inx_time and moment_rope can be provided. moment_rope is used to provide epoch_length and then modular math calculates changes to all tashable_values", 
+        "tashable_values": {"bud_time": {}, "offi_time": {}, "tran_time": {}}
+      }
+    }, 
+    "jkeys": {"moment_rope": {}, "otx_time": {}}, 
+    "jvalues": {"inx_time": {}}
+  }
+}

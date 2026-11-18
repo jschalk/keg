@@ -1,6 +1,6 @@
 from ch14_time.epoch_main import DEFAULT_EPOCH_LENGTH, get_c400_constants
 from ch14_time.test._util.ch14_examples import Ch14ExampleStrs as wx
-from ch16_nabu.nabu_config import get_nabu_config_dict
+from ch16_tash.tash_config import get_tash_config_dict
 from ch20_db_tool.db_toolbox import create_type_reference_insert_sqlstr, get_row_count
 from ch21_brick.brick_config import get_dimens_with_brick_element
 from ch22_etl_config.etl_config import create_prime_tablename
@@ -265,10 +265,10 @@ def test_get_update_heard_agg_moment_timenum_sqlstrs_ReturnsObj():
     # THEN
     assert gen_update_sqlstrs
     expected_update_sqlstrs = {}
-    nabu_timenum_dict = get_nabu_config_dict().get(kw.nabu_timenum)
-    TimeNum_dict = nabu_timenum_dict.get("affected_semantic_types").get("TimeNum")
-    nabuable_dict = TimeNum_dict.get("nabuable_values")
-    for timenum_arg in nabuable_dict:
+    tash_timenum_dict = get_tash_config_dict().get(kw.tash_timenum)
+    TimeNum_dict = tash_timenum_dict.get("affected_semantic_types").get("TimeNum")
+    tashable_dict = TimeNum_dict.get("tashable_values")
+    for timenum_arg in tashable_dict:
         arg_dimens = get_dimens_with_brick_element(timenum_arg)
         print(f"{timenum_arg=} {arg_dimens=}")
         for arg_dimen in arg_dimens:
@@ -288,7 +288,7 @@ def test_get_update_heard_agg_moment_timenum_sqlstrs_ReturnsObj():
 def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario1_MMTCECK():
     # ESTABLISH
     mmtunit_h_agg_tablename = prime_tbl(kw.momentunit, kw.h_agg)
-    nabtime_h_agg_tablename = prime_tbl(kw.nabu_timenum, kw.h_agg)
+    nabtime_h_agg_tablename = prime_tbl(kw.tash_timenum, kw.h_agg)
     mmtceck_h_agg_tablename = prime_tbl(kw.moment_ceckbook, kw.h_agg)
     c400_leap_length = get_c400_constants().c400_leap_length
 
@@ -337,7 +337,7 @@ WHERE enriched.{kw.spark_num} = dst_table.{kw.spark_num}
 def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario0_MMTOFFI():
     # ESTABLISH
     mmtunit_h_agg_tablename = prime_tbl(kw.momentunit, kw.h_agg)
-    nabtime_h_agg_tablename = prime_tbl(kw.nabu_timenum, kw.h_agg)
+    nabtime_h_agg_tablename = prime_tbl(kw.tash_timenum, kw.h_agg)
     mmtoffi_h_agg_tablename = prime_tbl(kw.moment_timeoffi, kw.h_agg)
     c400_leap_length = get_c400_constants().c400_leap_length
 

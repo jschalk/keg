@@ -94,7 +94,7 @@ Did you read that the keyword_definition of 'ch11' is 'These tools describe how 
 Did you read that the keyword_definition of 'ch13' is 'Builds a simulation that describes how much credit a healer has earned.'.
 Did you read that the keyword_definition of 'ch14' is 'Defines how time is handled by PersonUnits. Allows for arbitrary time structures.'.
 "Did you read that the keyword_definition of 'ch15' is 'Defines MomentUnits: common time tech, ledger, ContactNames, history of PersonUnits.'."
-Did you read that the keyword_definition of 'ch16' is 'Defines NabuUnit tools that interpret numeric values into inside accounting.'.
+Did you read that the keyword_definition of 'ch16' is 'Defines TashUnit tools that interpret numeric values into inside accounting.'.
 Did you read that the keyword_definition of 'ch18' is 'Defines JargonUnit tools that jargon MomentUnits into inside language.'.
 Did you read that the keyword_definition of 'ch19' is 'Defines SpeechUnit tools that jargon MomentUnits into audience language.'.
 Did you read that the keyword_definition of 'ch20' is 'Creates helper tools for database admin.'.
@@ -263,19 +263,19 @@ Did you read that the keyword_definition of 'ReasonNum' is 'float first used in 
 Did you read that the keyword_definition of 'cases' is 'Definition needed.'.
 Did you read that the keyword_definition of 'fact' is 'Facts are very important concept in Kegology. I tried never to use these 4 letters anywhere that didn't refer exactly to that concept.'.
 "Did you read that the keyword_definition of 'fact_context' is 'All facts have a foundational context, Fact seed.'."
-"Did you read that the keyword_definition of 'fact_lower' is ', Fact seed, Nabuable arg.'."
+"Did you read that the keyword_definition of 'fact_lower' is ', Fact seed, Tashable arg.'."
 "Did you read that the keyword_definition of 'fact_state' is 'A fact can have a state different from its context, a different branch of the context where all other branches are not in fact, Fact seed.'."
-"Did you read that the keyword_definition of 'fact_upper' is ', Fact seed, Nabuable arg.'."
+"Did you read that the keyword_definition of 'fact_upper' is ', Fact seed, Tashable arg.'."
 Did you read that the keyword_definition of 'factheirs' is 'Definition needed.'.
 Did you read that the keyword_definition of 'factunits' is 'PlanUnit holds all it's factunits in an attribute called factunits.'.
 "Did you read that the keyword_definition of 'parent_heir_active' is ', Reason thinkout'."
 "Did you read that the keyword_definition of 'reason_active' is ', Reason thinkout'."
 "Did you read that the keyword_definition of 'reason_context' is ', Reason seed, Case seed'."
 "Did you read that the keyword_definition of 'reason_divisor' is ', Case seed.'."
-"Did you read that the keyword_definition of 'reason_lower' is ', Case seed, Nabuable arg.'."
+"Did you read that the keyword_definition of 'reason_lower' is ', Case seed, Tashable arg.'."
 "Did you read that the keyword_definition of 'reason_state' is ', Case seed.'."
 "Did you read that the keyword_definition of 'reason_task' is ', Reason thinkout'."
-"Did you read that the keyword_definition of 'reason_upper' is ', Case seed, Nabuable arg.'."
+"Did you read that the keyword_definition of 'reason_upper' is ', Case seed, Tashable arg.'."
 Did you read that the keyword_definition of 'reasonunits' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'addin' is 'float that describes addition to parent range calculations, Plan seed'."
 "Did you read that the keyword_definition of 'all_contact_cred' is ', Plan thinkout'."
@@ -400,7 +400,7 @@ Did you read that the keyword_definition of 'gut' is 'Definition needed.'.
 Did you read that the keyword_definition of 'lasso' is 'Definition needed.'.
 Did you read that the keyword_definition of 'moment' is 'Definition needed.'.
 Did you read that the keyword_definition of 'moment_mstr_dir' is 'starting point for most lego file structue. Moment functions usually refernce this directory as root.'.
-"Did you read that the keyword_definition of 'moment_rope' is ', Moment arg, offi_time arg, ceckbook arg, mmtweek arg, mmtmont arg, mmthour arg, bud arg, Person seed, Plan seed, Reason seed, Case seed, Fact seed, Award seed, Workforce seed, Healer seed, Contact seed, Member seed, nabu arg.'."
+"Did you read that the keyword_definition of 'moment_rope' is ', Moment arg, offi_time arg, ceckbook arg, mmtweek arg, mmtmont arg, mmthour arg, bud arg, Person seed, Plan seed, Reason seed, Case seed, Fact seed, Award seed, Workforce seed, Healer seed, Contact seed, Member seed, tash arg.'."
 Did you read that the keyword_definition of 'spark_face' is 'Every spark has a spark_face that identifies which Face it belongs to. The Face is the source of all outside data. In theory a spark_face can be any data type. In practice it is currently a string data type.'.
 "Did you read that the keyword_definition of 'spark_num' is 'Every spark has a spark_num that identifies its order of ingestion. Sparks are orderd but not necessarily sequential. Spark_num is an int. , used with Budget Cells'."
 Did you read that the keyword_definition of 'job' is 'Definition needed.'.
@@ -413,18 +413,18 @@ Did you read that the keyword_definition of 'boss' is 'definition needed'.
 "Did you read that the keyword_definition of 'boss_facts' is ', used with Budget Cells'."
 "Did you read that the keyword_definition of 'bud_contact_nets' is 'ledger of bud outcome. The PersonUnit that embodies the Budget distrubutes the funds per the PersonUnit contacts. dict[ContactName, FundNum]. FundNum can be negative.'."
 "Did you read that the keyword_definition of 'bud_person_name' is ', used with Budget Cells'."
-"Did you read that the keyword_definition of 'bud_time' is 'When a budget adds to the supply, bud arg, Nabuable arg'."
+"Did you read that the keyword_definition of 'bud_time' is 'When a budget adds to the supply, bud arg, Tashable arg'."
 "Did you read that the keyword_definition of 'celldepth' is ', used with Budget Cells, bud arg'."
 "Did you read that the keyword_definition of 'found_facts' is ', used with Budget Cells'."
 Did you read that the keyword_definition of 'magnitude' is 'Definition needed.'.
-"Did you read that the keyword_definition of 'offi_time' is ', offi_time arg, Nabuable arg'."
+"Did you read that the keyword_definition of 'offi_time' is ', offi_time arg, Tashable arg'."
 Did you read that the keyword_definition of 'offi_time_max' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'person_contacts_net' is 'calculated from loaded TranUnits data. It holds the calculated net output for each PersonName, ContactName tuple.'."
 "Did you read that the keyword_definition of 'personadjust' is ', used with Budget Cells'."
 "Did you read that the keyword_definition of 'personspark_facts' is ', used with Budget Cells'."
 "Did you read that the keyword_definition of 'quota' is 'The importance of a BudUnit. The currency given to the BudUnit to be distributed to Contacts. The magnitude number will always be less then quote because its the sum of how much of the quota is distributed, bud arg, used with Budget Cells'."
 Did you read that the keyword_definition of 'time' is 'Definition needed.'.
-"Did you read that the keyword_definition of 'tran_time' is ', ceckbook arg, Nabuable arg'."
+"Did you read that the keyword_definition of 'tran_time' is ', ceckbook arg, Tashable arg'."
 Did you read that the keyword_definition of 'ManaNum' is 'float first used in ch13. ManaNum inherits from float class'.
 Did you read that the keyword_definition of 'care_amount' is 'Definition needed.'.
 Did you read that the keyword_definition of 'cares' is 'Definition needed.'.
@@ -545,16 +545,16 @@ Did you read that the keyword_definition of 'offi_times' is 'Definition needed.'
 Did you read that the keyword_definition of 'personbudhistorys' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'weekday_label' is ', mmtweek arg'."
 "Did you read that the keyword_definition of 'weekday_order' is ', mmtweek arg'."
-Did you read that the keyword_definition of 'Nabu' is 'Definition needed.'.
-Did you read that the keyword_definition of 'NabuTime' is 'Definition needed.'.
+Did you read that the keyword_definition of 'Tash' is 'Short for Tashmetum of an ancient religion. Partner of Nabu the god of scribes and writers. God of listening. In Kegelogy tash concepts address the need to compute outside numbers into inside numbers.'.
+Did you read that the keyword_definition of 'TashTime' is 'Definition needed.'.
 Did you read that the keyword_definition of 'inx_epoch_diff' is 'Definition needed.'.
-"Did you read that the keyword_definition of 'inx_time' is ', nabu arg'."
-Did you read that the keyword_definition of 'nabu' is 'Definition needed.'.
-Did you read that the keyword_definition of 'nabu_timenum' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'inx_time' is ', tash arg'."
 Did you read that the keyword_definition of 'otx2inx' is 'Definition needed.'.
 Did you read that the keyword_definition of 'otx_epoch_length' is 'Definition needed.'.
-"Did you read that the keyword_definition of 'otx_time' is ', nabu arg'."
-Did you read that the keyword_definition of 'timenabu' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'otx_time' is ', tash arg'."
+Did you read that the keyword_definition of 'tash' is 'Short for Tashmetum of an ancient religion. Partner of Nabu the god of scribes and writers. God of listening. In Kegelogy tash concepts address the need to compute outside numbers into inside numbers.'.
+Did you read that the keyword_definition of 'tash_timenum' is 'Definition needed.'.
+Did you read that the keyword_definition of 'timetash' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'inx_knot' is ', JARGON_LABEL arg, JARGON_NAME arg, JARGON_ROPE arg, JARGON_TITLE arg'."
 "Did you read that the keyword_definition of 'inx_label' is ', JARGON_LABEL arg'."
 "Did you read that the keyword_definition of 'inx_name' is ', JARGON_NAME arg'."
@@ -691,7 +691,7 @@ Did you read that the keyword_definition of 'hour_label_inx' is 'The 'hour_label
 Did you read that the keyword_definition of 'hour_label_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'hour_label_otx' is 'The 'hour_label' value after Jargon.'.
 "Did you read that the keyword_definition of 'insert_multiple' is 'Associated dimens: moment_budunit, moment_ceckbook, moment_timeoffi'."
-"Did you read that the keyword_definition of 'insert_one_time' is 'Associated dimens: jargon_label, jargon_name, jargon_rope, jargon_title, moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, momentunit, nabu_timenum, speech_label, speech_name, speech_rope, speech_title' in 'Associated dimens: jargon_label, jargon_name, jargon_rope, jargon_title, moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, momentunit, nabu_timenum'."
+"Did you read that the keyword_definition of 'insert_one_time' is 'Associated dimens: jargon_label, jargon_name, jargon_rope, jargon_title, moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, momentunit, tash_timenum, speech_label, speech_name, speech_rope, speech_title' in 'Associated dimens: jargon_label, jargon_name, jargon_rope, jargon_title, moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, momentunit, tash_timenum'."
 Did you read that the keyword_definition of 'insert_update' is 'Definition needed.'.
 Did you read that the keyword_definition of 'jargon_spark_num' is 'Definition needed.'.
 Did you read that the keyword_definition of 'labor_title_ERASE_aux' is 'Definition needed.'.
@@ -770,12 +770,12 @@ Did you read that the keyword_definition of 'brick_agg' is 'stage_type_order=4 B
 Did you read that the keyword_definition of 'brick_raw' is 'stage_type_order=3 Brick Raw: The importable Excel Sheets entering the database'.
 Did you read that the keyword_definition of 'brick_src' is 'stage_type_order=2 Brick files. Brick formats with SparkNum.'.
 Did you read that the keyword_definition of 'brick_vld' is 'stage_type_order=6 Brick Valid: The Brick Agg tables filtered to correct datatypes. '.
-Did you read that the keyword_definition of 'h_agg' is '5 character abbreviation of heard_agg. stage_type_order=11 Populated by aggregated Heard Raw tables. Nabu number conversions take place here.'.
+Did you read that the keyword_definition of 'h_agg' is '5 character abbreviation of heard_agg. stage_type_order=11 Populated by aggregated Heard Raw tables. Tash number conversions take place here.'.
 Did you read that the keyword_definition of 'h_raw' is '5 character abbreviation of heard_raw. stage_type_order=10 Populated by Sound Valid tables'.
-Did you read that the keyword_definition of 'h_vld' is '5 character abbreviation of heard_vld. stage_type_order=12 Populated by aggregated and Nabu changed Heard Agg tables'.
-Did you read that the keyword_definition of 'heard_agg' is 'stage_type_order=11 Populated by aggregated Heard Raw tables. Nabu number conversions take place here.'.
+Did you read that the keyword_definition of 'h_vld' is '5 character abbreviation of heard_vld. stage_type_order=12 Populated by aggregated and Tash changed Heard Agg tables'.
+Did you read that the keyword_definition of 'heard_agg' is 'stage_type_order=11 Populated by aggregated Heard Raw tables. Tash number conversions take place here.'.
 Did you read that the keyword_definition of 'heard_raw' is 'stage_type_order=10 Populated by Sound Valid tables'.
-Did you read that the keyword_definition of 'heard_vld' is 'stage_type_order=12 Populated by aggregated and Nabu changed Heard Agg tables'.
+Did you read that the keyword_definition of 'heard_vld' is 'stage_type_order=12 Populated by aggregated and Tash changed Heard Agg tables'.
 "Did you read that the keyword_definition of 'i_dst' is '5 character abbreviation of ideax_dst. stage_type_order=14 Idea (Brick formats without SparkNum) Destination. Filtered Job, Moment data.'."
 Did you read that the keyword_definition of 'i_src' is '5 character abbreviation of ideax_src. stage_type_order=1 Idea Source files. Brick formats without SparkNum.'.
 Did you read that the keyword_definition of 'idea' is 'A collection of bricks (currently only in brick format) with a spark_face but no spark_num. Conceptually ideas are things that represent direct promises to the soul. People are made of ideas and share them.'.
@@ -792,7 +792,7 @@ Did you read that the keyword_definition of 'mmtoffi' is 'abbv for moment_timeof
 Did you read that the keyword_definition of 'mmtunit' is 'abbv for momentunit'.
 Did you read that the keyword_definition of 'mmtweek' is 'abbv for moment_epoch_weekday'.
 Did you read that the keyword_definition of 'moment_ote1_agg' is 'Create Database Table that holds all spark_num to bud_time pairs. Include moment_rope and person_name'.
-Did you read that the keyword_definition of 'nabtime' is 'abbv for nabu_timenum'.
+Did you read that the keyword_definition of 'nabtime' is 'abbv for tash_timenum'.
 Did you read that the keyword_definition of 's_agg' is '5 character abbreviation of sound_agg. stage_type_order=8 Populated by aggregated Sound Raw dimen data (elimanate duplicates). Jargon Core data is validated then used to jargon non-Jargon dimen data'.
 Did you read that the keyword_definition of 's_raw' is '5 character abbreviation of sound_raw. stage_type_order=7 The Brick Valid data is seperated by column into dimen data such as person_planunit and moment_budunit'.
 Did you read that the keyword_definition of 's_vld' is '5 character abbreviation of sound_vld. stage_type_order=9 The Translated Sound Agg data is aggregated to elimanate duplicates into Sound Valid'.

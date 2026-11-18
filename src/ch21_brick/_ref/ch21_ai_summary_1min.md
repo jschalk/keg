@@ -44,7 +44,7 @@ New semantic type: `SheetName` (a `str`) — identifies a named sheet within an 
 
 `get_otx_keys_list()` and `get_otx_values_list()` split attributes into the key columns (used for deduplication and joining) and value columns.
 
-**`brick_config.json`** is the master schema registry — a dictionary of all brick types, each with their `brick_category`, `dimens`, and column definitions. Categories include `"person"`, `"moment"`, `"jargon"`, `"nabu"`, and `"spark"`.
+**`brick_config.json`** is the master schema registry — a dictionary of all brick types, each with their `brick_category`, `dimens`, and column definitions. Categories include `"person"`, `"moment"`, `"jargon"`, `"tash"`, and `"spark"`.
 
 **`brick_dataframe.py`** provides `create_brick_df(person, brick_name)` — which introspects a `PersonUnit` and extracts a pandas `DataFrame` matching the brick schema. Each row corresponds to one atom-level record (a plan, a contact, a reason, etc.) in the person's current state.
 

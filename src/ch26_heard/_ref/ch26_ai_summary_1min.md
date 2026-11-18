@@ -15,7 +15,7 @@ From `ch26_ref.json`:
 > "Defines the 'Heard' process. Where valid 'Sound' data is aggregated into clean 'lego' data."
 
 Ontology note:
-> "Sounds are turned into trusted concepts, Nabu interpreted (time conversion included) and produces Moment and Person objects."
+> "Sounds are turned into trusted concepts, Tash interpreted (time conversion included) and produces Moment and Person objects."
 
 ---
 
@@ -38,7 +38,7 @@ Ontology note:
 **`etl_heard_raw_tables_to_heard_agg_tables(cursor)`** — three steps:
 1. `set_all_heard_raw_inx_columns` — for every `_otx`-suffixed column in every `h_raw` table, determines the translation type (`NameTerm`, `TitleTerm`, `LabelTerm`, or `RopeTerm`) from the ch18 jargon-args registry. If the column's base type is jargonable, runs an UPDATE query that JOINs against the validated `trl{type}_s_vld` table to fill in the `_inx` value. For rows where no translation mapping exists, goes back to copying the `_otx` value into `_inx` directly (pass-through for untranslated terms).
 2. INSERT into `h_agg` tables from `h_raw`, deduplicating while excluding `_inx` columns from duplicate comparison.
-3. `update_heard_agg_timenum_columns` — applies NabuTime conversion to all time-numeric columns (`bud_time`, `fact_lower`, `fact_upper`, `reason_lower`, `reason_upper`, `tran_time`, `offi_time`) in `h_agg` tables: reads the `_otx` value, applies the epoch-length modular offset from the validated nabu table, and writes the result to the `_inx` column. This is where ch16's numeric translation is finally executed against real data.
+3. `update_heard_agg_timenum_columns` — applies TashTime conversion to all time-numeric columns (`bud_time`, `fact_lower`, `fact_upper`, `reason_lower`, `reason_upper`, `tran_time`, `offi_time`) in `h_agg` tables: reads the `_otx` value, applies the epoch-length modular offset from the validated tash table, and writes the result to the `_inx` column. This is where ch16's numeric translation is finally executed against real data.
 
 **`etl_heard_agg_tables_to_heard_vld_tables(cursor)`** — promotes `h_agg` rows to `h_vld` via pre-generated INSERT/SELECT queries, deduplicating.
 

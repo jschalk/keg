@@ -40,7 +40,7 @@ The "outside" (`otx`) / "inside" (`inx`) distinction is fundamental: an external
 - `otx2inx` — a dictionary from external string to internal string.
 - `unknown_str` — the sentinel returned when no mapping exists (prevents silent failures by making untranslated terms visible).
 - `otx_knot` / `inx_knot` — the delimiter characters used in external vs internal rope paths (may differ).
-- `spark_face` / `spark_num` — provenance, matching the lesson/nabu model.
+- `spark_face` / `spark_num` — provenance, matching the lesson/tash model.
 
 **Four specialized map classes** cover all string types:
 - `NameMap` — translates `NameTerm`s (contact names, person names). Direct `otx → inx` lookup.
@@ -50,6 +50,6 @@ The "outside" (`otx`) / "inside" (`inx`) distinction is fundamental: an external
 
 **`JargonUnit`** composes all four maps into a single per-face translation object. It exposes unified methods (`set_titleterm`, `set_nameterm`, `set_labelterm`, `set_ropeterm`) and a `get_mapunit(obj_type)` dispatcher. It also holds top-level `otx_knot`/`inx_knot` and `unknown_str` settings that are propagated to all child maps via `_check_all_core_attrs_match`.
 
-**`inherit_*` functions** (`inherit_labelmap`, `inherit_namemap`, etc.) merge an older map into a newer one — the same ordered-inheritance pattern used in ch10 lessons and ch16 nabu, ensuring that more recent translations from the same face supersede older ones.
+**`inherit_*` functions** (`inherit_labelmap`, `inherit_namemap`, etc.) merge an older map into a newer one — the same ordered-inheritance pattern used in ch10 lessons and ch16 tash, ensuring that more recent translations from the same face supersede older ones.
 
 Together ch16 (numeric translation) and ch18 (string translation) form the complete "outside-to-inside" interface layer. All data arriving from external faces passes through these two chapters before being processed by the internal keg machinery.

@@ -326,7 +326,7 @@ VALUES
     assert get_row_count(cursor0, prncont_h_agg_put_tablename) == 4
 
 
-def test_etl_heard_raw_tables_to_heard_agg_tables_PopulatesTable_Scenario3_NoDuplicates_NabuableColumns(
+def test_etl_heard_raw_tables_to_heard_agg_tables_PopulatesTable_Scenario3_NoDuplicates_TashableColumns(
     cursor0: Cursor,
 ):
     # ESTABLISH

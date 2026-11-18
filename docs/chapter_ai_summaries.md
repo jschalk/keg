@@ -737,14 +737,14 @@ Ch15 is the first true integration chapter — it imports from every prior chapt
 
 `MomentUnit` is the highest-level object in keg's operational stack — it is where individual belief systems (ch08), change tracking (ch09–ch10), listening (ch11), fund flows (ch12–ch13), and time (ch14) all come together into a running community simulation.
 
-# ch16_nabu — Chapter Summary
+# ch16_tash — Chapter Summary
 
 *This summary is authored by AI 5-26-2026.*
 
 ## 1. Title and Summary Declaration
 
-**Chapter 16 — `ch16_nabu`**
-**"NabuUnit — numeric translation layer that converts external time values into the internal TimeNum coordinate system"**
+**Chapter 16 — `ch16_tash`**
+**"TashUnit — numeric translation layer that converts external time values into the internal TimeNum coordinate system"**
 
 ---
 
@@ -761,8 +761,8 @@ Ontology note:
 ## 3. Summary of Previous Relevant Chapters
 
 - **ch00_py**: `set_modular_dict_values` from `dict_toolbox` — applies modular arithmetic to the `otx2inx` mapping, enforcing that epoch differences wrap correctly within the cycle length.
-- **ch10_person_lesson**: `FaceName`, `MomentRope` — a `NabuTime` is attributed to a specific face and spark number, matching the lesson provenance model from ch10.
-- **ch12_bud**: `TimeNum`, `SparkInt` — the numeric types being converted. The "nabuable" args (`bud_time`, `fact_lower`, `fact_upper`, `reason_lower`, `reason_upper`, `tran_time`, `offi_time`) are all time-related numeric fields from ch12 and ch06.
+- **ch10_person_lesson**: `FaceName`, `MomentRope` — a `TashTime` is attributed to a specific face and spark number, matching the lesson provenance model from ch10.
+- **ch12_bud**: `TimeNum`, `SparkInt` — the numeric types being converted. The "tashable" args (`bud_time`, `fact_lower`, `fact_upper`, `reason_lower`, `reason_upper`, `tran_time`, `offi_time`) are all time-related numeric fields from ch12 and ch06.
 - **ch14_time**: `EpochLabel` — epoch cycle lengths are the denominators used in the modular translation arithmetic.
 
 `ch16_semantic_types.py` re-exports the full chain through ch14 with no new additions. The chapter introduces no new semantic types of its own.
@@ -771,11 +771,11 @@ Ontology note:
 
 ## 4. Summary of What This Chapter Does
 
-`ch16_nabu` addresses a problem that arises in any multi-party system: different participants may use different time reference points. An external face might report times relative to their own epoch (e.g. "day 5 of my calendar") while the internal system tracks absolute `TimeNum` minutes. Nabu is the translation bridge.
+`ch16_tash` addresses a problem that arises in any multi-party system: different participants may use different time reference points. An external face might report times relative to their own epoch (e.g. "day 5 of my calendar") while the internal system tracks absolute `TimeNum` minutes. Tash is the translation bridge.
 
-The name "Nabu" is the ancient Mesopotamian diety of writing and wisdom — an appropriate name for a chapter that interprets and transcribes numeric values across reference frames.
+The name "Tash" is the ancient Mesopotamian diety of writing and wisdom — an appropriate name for a chapter that interprets and transcribes numeric values across reference frames.
 
-**`NabuTime`** is the core object, keyed by `(spark_face, spark_num)` — the same provenance identifiers used in lessons. It holds an `otx2inx` dictionary mapping:
+**`TashTime`** is the core object, keyed by `(spark_face, spark_num)` — the same provenance identifiers used in lessons. It holds an `otx2inx` dictionary mapping:
 - Key: `otx_epoch_length` — the cycle length of the external time system (e.g. 525,600 minutes = 1 year).
 - Value: `inx_epoch_diff` — the offset (in minutes) to add when converting from external to internal time.
 
@@ -783,13 +783,13 @@ The mapping is stored modularly: `set_modular_dict_values` applies `value % key`
 
 **`reveal_inx(otx_epoch_length, otx_value)`** is the translation function: it adds the stored `inx_epoch_diff` to the external value, then takes it modulo the epoch length — producing the correct internal `TimeNum` position within the cycle.
 
-**`nabu_config.py`** defines which argument fields are "nabuable" — they carry raw external time values that need translation before being used internally:
+**`tash_config.py`** defines which argument fields are "tashable" — they carry raw external time values that need translation before being used internally:
 - `bud_time`, `tran_time`, `offi_time` — scheduling and transaction times.
 - `fact_lower`, `fact_upper`, `reason_lower`, `reason_upper` — the numeric bounds in fact and reason conditions.
 
-The config also defines the `nabu_timenum` dimension for atom-style CRUD operations, and `set_nabuable_otx_inx_args` which expands nabuable field names into their `_otx` / `_inx` variants — used downstream when storing both the external and converted versions of a value side by side.
+The config also defines the `tash_timenum` dimension for atom-style CRUD operations, and `set_tashable_otx_inx_args` which expands tashable field names into their `_otx` / `_inx` variants — used downstream when storing both the external and converted versions of a value side by side.
 
-**`inherit_timenabu(new, old)`** enforces that newer `NabuTime` objects (higher `spark_num`) from the same face supersede older ones — maintaining the same ordered-inheritance pattern established in ch10's lesson sequencing.
+**`inherit_timetash(new, old)`** enforces that newer `TashTime` objects (higher `spark_num`) from the same face supersede older ones — maintaining the same ordered-inheritance pattern established in ch10's lesson sequencing.
 
 Ch16 completes the "outside → inside" translation infrastructure. Ch18 handles word/string translation; ch16 handles number/time translation. Together they ensure that external data from any face can be faithfully and consistently interpreted in the internal coordinate system.
 
@@ -835,7 +835,7 @@ The "outside" (`otx`) / "inside" (`inx`) distinction is fundamental: an external
 - `otx2inx` — a dictionary from external string to internal string.
 - `unknown_str` — the sentinel returned when no mapping exists (prevents silent failures by making untranslated terms visible).
 - `otx_knot` / `inx_knot` — the delimiter characters used in external vs internal rope paths (may differ).
-- `spark_face` / `spark_num` — provenance, matching the lesson/nabu model.
+- `spark_face` / `spark_num` — provenance, matching the lesson/tash model.
 
 **Four specialized map classes** cover all string types:
 - `NameMap` — translates `NameTerm`s (contact names, person names). Direct `otx → inx` lookup.
@@ -845,7 +845,7 @@ The "outside" (`otx`) / "inside" (`inx`) distinction is fundamental: an external
 
 **`JargonUnit`** composes all four maps into a single per-face translation object. It exposes unified methods (`set_titleterm`, `set_nameterm`, `set_labelterm`, `set_ropeterm`) and a `get_mapunit(obj_type)` dispatcher. It also holds top-level `otx_knot`/`inx_knot` and `unknown_str` settings that are propagated to all child maps via `_check_all_core_attrs_match`.
 
-**`inherit_*` functions** (`inherit_labelmap`, `inherit_namemap`, etc.) merge an older map into a newer one — the same ordered-inheritance pattern used in ch10 lessons and ch16 nabu, ensuring that more recent translations from the same face supersede older ones.
+**`inherit_*` functions** (`inherit_labelmap`, `inherit_namemap`, etc.) merge an older map into a newer one — the same ordered-inheritance pattern used in ch10 lessons and ch16 tash, ensuring that more recent translations from the same face supersede older ones.
 
 Together ch16 (numeric translation) and ch18 (string translation) form the complete "outside-to-inside" interface layer. All data arriving from external faces passes through these two chapters before being processed by the internal keg machinery.
 
@@ -948,7 +948,7 @@ New semantic type: `SheetName` (a `str`) — identifies a named sheet within an 
 
 `get_otx_keys_list()` and `get_otx_values_list()` split attributes into the key columns (used for deduplication and joining) and value columns.
 
-**`brick_config.json`** is the master schema registry — a dictionary of all brick types, each with their `brick_category`, `dimens`, and column definitions. Categories include `"person"`, `"moment"`, `"jargon"`, `"nabu"`, and `"spark"`.
+**`brick_config.json`** is the master schema registry — a dictionary of all brick types, each with their `brick_category`, `dimens`, and column definitions. Categories include `"person"`, `"moment"`, `"jargon"`, `"tash"`, and `"spark"`.
 
 **`brick_dataframe.py`** provides `create_brick_df(person, brick_name)` — which introspects a `PersonUnit` and extracts a pandas `DataFrame` matching the brick schema. Each row corresponds to one atom-level record (a plan, a contact, a reason, etc.) in the person's current state.
 
@@ -985,7 +985,7 @@ Ontology note:
 
 - **ch00_py**: `create_path`, `open_json` — config files are loaded via file toolbox.
 - **ch09_person_atom**: `get_delete_key_name` — used when constructing DELETE-type SQL stage queries to identify the correct key column.
-- **ch16_nabu**: `get_context_nabuable_args`, `set_nabuable_otx_inx_args` — ETL config expands nabuable columns into `_otx`/`_inx` pairs in SQL table definitions.
+- **ch16_tash**: `get_context_tashable_args`, `set_tashable_otx_inx_args` — ETL config expands tashable columns into `_otx`/`_inx` pairs in SQL table definitions.
 - **ch18_jargon**: `set_jargonable_otx_inx_args` — same expansion for jargonable string columns.
 - **ch20_db_tool**: `get_create_table_sqlstr` — used to generate CREATE TABLE statements for each pipeline stage.
 - **ch21_brick**: `get_brick_config_dict`, `get_brick_sqlite_types`, `get_default_sorted_list`, `get_brick_types`, `get_quick_bricks_column_ref` — all brick schema information flows through ch22.
@@ -1001,7 +1001,7 @@ Ontology note:
 - `ALL_DIMEN_ABBV7` and `ALL_DIMEN_ABBV2` — two abbreviation sets for all 23 dimension types (e.g. `"moment_ceckbook"` → `"MMTCECK"` / `"MP"`). These abbreviated names are used as table name prefixes throughout the SQLite ETL database.
 - `get_dimen_abbv7(dimen)` and `get_dimen_abbv2(dimen)` — dispatch functions mapping full dimension names to abbreviations.
 - `get_etl_stage_types_config_dict()` — loads `etl_stage_types_config.json`, which defines the ordered sequence of ETL stages (e.g. `b_raw` → `b_agg` → `b_vld` → `s_raw` → `s_agg` → `s_vld` → `h_raw` → ...). Each stage has a `stage_type_order` integer determining its position in the pipeline.
-- `get_stage_create_table_sqlstr(dimen, stage_type)` — generates the `CREATE TABLE` SQL for a specific dimension at a specific pipeline stage, incorporating `_otx`/`_inx` column expansions for translated and nabu fields.
+- `get_stage_create_table_sqlstr(dimen, stage_type)` — generates the `CREATE TABLE` SQL for a specific dimension at a specific pipeline stage, incorporating `_otx`/`_inx` column expansions for translated and tash fields.
 
 **`brick_collector.py`** — Excel discovery and sheet reordering:
 
@@ -1200,7 +1200,7 @@ From `ch26_ref.json`:
 > "Defines the 'Heard' process. Where valid 'Sound' data is aggregated into clean 'lego' data."
 
 Ontology note:
-> "Sounds are turned into trusted concepts, Nabu interpreted (time conversion included) and produces Moment and Person objects."
+> "Sounds are turned into trusted concepts, Tash interpreted (time conversion included) and produces Moment and Person objects."
 
 ---
 
@@ -1223,7 +1223,7 @@ Ontology note:
 **`etl_heard_raw_tables_to_heard_agg_tables(cursor)`** — three steps:
 1. `set_all_heard_raw_inx_columns` — for every `_otx`-suffixed column in every `h_raw` table, determines the translation type (`NameTerm`, `TitleTerm`, `LabelTerm`, or `RopeTerm`) from the ch18 jargon-args registry. If the column's base type is jargonable, runs an UPDATE query that JOINs against the validated `trl{type}_s_vld` table to fill in the `_inx` value. For rows where no translation mapping exists, goes back to copying the `_otx` value into `_inx` directly (pass-through for untranslated terms).
 2. INSERT into `h_agg` tables from `h_raw`, deduplicating while excluding `_inx` columns from duplicate comparison.
-3. `update_heard_agg_timenum_columns` — applies NabuTime conversion to all time-numeric columns (`bud_time`, `fact_lower`, `fact_upper`, `reason_lower`, `reason_upper`, `tran_time`, `offi_time`) in `h_agg` tables: reads the `_otx` value, applies the epoch-length modular offset from the validated nabu table, and writes the result to the `_inx` column. This is where ch16's numeric translation is finally executed against real data.
+3. `update_heard_agg_timenum_columns` — applies TashTime conversion to all time-numeric columns (`bud_time`, `fact_lower`, `fact_upper`, `reason_lower`, `reason_upper`, `tran_time`, `offi_time`) in `h_agg` tables: reads the `_otx` value, applies the epoch-length modular offset from the validated tash table, and writes the result to the `_inx` column. This is where ch16's numeric translation is finally executed against real data.
 
 **`etl_heard_agg_tables_to_heard_vld_tables(cursor)`** — promotes `h_agg` rows to `h_vld` via pre-generated INSERT/SELECT queries, deduplicating.
 

@@ -63,6 +63,12 @@ def test_get_idea_config_dict_ReturnsObj_Scenario1_NonMirrored_idea_type_Format(
         assert fission_steps.issubset(all_fission_steps), fission_steps
 
 
+# TODO create ii00020 daily pledges clay idea type than converts incomplete planunit with daily reason, missing pledge, to daily tasks with pledge.
+# TODO create ii00021 weekly pledges clay idea type than converts incomplete planunit with daily reason, missing pledge, to weekly tasks with pledge.
+# TODO create ii00022 montly pledges clay idea type than converts incomplete planunit with daily reason, missing pledge, to monthly tasks with pledge.
+# TODO add ii00502 etl app example
+
+
 def test_get_idea_types_ReturnsObj():
     # ESTABLISH / WHEN
     idea_types = get_idea_types()
@@ -96,14 +102,14 @@ def test_is_non_mirror_ReturnsObj():
 
 
 # def get_brick_categorys():
-#     return {kw.person, kw.moment, kw.jargon, kw.nabu}
+#     return {kw.person, kw.moment, kw.jargon, kw.tash}
 
 
 # def _validate_brick_config(x_brick_config: dict):
 #     # sourcery skip: low-code-quality
 #     atom_config_dict = get_atom_config_dict()
 #     moment_config_dict = get_moment_config_dict()
-#     nabu_config_dict = get_nabu_config_dict()
+#     tash_config_dict = get_tash_config_dict()
 #     jargon_config_dict = get_jargon_config_dict()
 #     # for every brick_format file there exists a unique brick_type with leading zeros to make 5 digits
 #     for brick_dimen, brick_dict in x_brick_config.items():
@@ -120,8 +126,8 @@ def test_is_non_mirror_ReturnsObj():
 #             sub_dimen = atom_config_dict.get(brick_dimen)
 #         elif brick_dict.get(kw.brick_category) == kw.moment:
 #             sub_dimen = moment_config_dict.get(brick_dimen)
-#         elif brick_dict.get(kw.brick_category) == kw.nabu:
-#             sub_dimen = nabu_config_dict.get(brick_dimen)
+#         elif brick_dict.get(kw.brick_category) == kw.tash:
+#             sub_dimen = tash_config_dict.get(brick_dimen)
 #         elif brick_dict.get(kw.brick_category) == kw.jargon:
 #             sub_dimen = jargon_config_dict.get(brick_dimen)
 
@@ -140,7 +146,7 @@ def test_is_non_mirror_ReturnsObj():
 #             kw.moment_epoch_weekday,
 #             kw.momentunit,
 #             "map_otx2inx",
-#             kw.nabu_timenum,
+#             kw.tash_timenum,
 #             kw.jargon_title,
 #             kw.jargon_name,
 #             kw.jargon_label,
@@ -238,7 +244,7 @@ def test_is_non_mirror_ReturnsObj():
 #     valid_brick_dimens = set()
 #     valid_brick_dimens.update(get_person_dimens())
 #     valid_brick_dimens.update(get_moment_dimens())
-#     valid_brick_dimens.update(get_nabu_dimens())
+#     valid_brick_dimens.update(get_tash_dimens())
 #     valid_brick_dimens.update(get_jargon_dimens())
 #     print("get_brick_config_dict")
 #     config_dict = get_brick_config_dict()
@@ -373,7 +379,7 @@ def test_is_non_mirror_ReturnsObj():
 #     assert x_brick_config.get(kw.jargon_title).get(bo) == 1
 #     assert x_brick_config.get(kw.jargon_label).get(bo) == 2
 #     assert x_brick_config.get(kw.jargon_rope).get(bo) == 3
-#     assert x_brick_config.get(kw.nabu_timenum).get(bo) == 4
+#     assert x_brick_config.get(kw.tash_timenum).get(bo) == 4
 #     assert x_brick_config.get(kw.momentunit).get(bo) == 5
 #     assert x_brick_config.get(kw.moment_epoch_hour).get(bo) == 6
 #     assert x_brick_config.get(kw.moment_epoch_month).get(bo) == 7
@@ -412,7 +418,7 @@ def test_is_non_mirror_ReturnsObj():
 #     assert not person_brick_config.get(kw.jargon_title)
 #     assert not person_brick_config.get(kw.jargon_label)
 #     assert not person_brick_config.get(kw.jargon_rope)
-#     assert not person_brick_config.get(kw.nabu_timenum)
+#     assert not person_brick_config.get(kw.tash_timenum)
 #     assert not person_brick_config.get(kw.momentunit)
 #     assert not person_brick_config.get(kw.moment_epoch_hour)
 #     assert not person_brick_config.get(kw.moment_epoch_month)
@@ -436,9 +442,9 @@ def test_is_non_mirror_ReturnsObj():
 #     # ESTABLISH / WHEN / THEN
 #     assert len(get_brick_config_dict(brick_categorys={kw.person})) == 10
 #     assert len(get_brick_config_dict(brick_categorys={kw.moment})) == 7
-#     assert len(get_brick_config_dict(brick_categorys={kw.nabu})) == 1
+#     assert len(get_brick_config_dict(brick_categorys={kw.tash})) == 1
 #     assert len(get_brick_config_dict(brick_categorys={kw.jargon})) == 4
-#     assert len(get_brick_config_dict({kw.nabu, kw.jargon})) == 5
+#     assert len(get_brick_config_dict({kw.tash, kw.jargon})) == 5
 
 
 # def test_get_quick_bricks_column_ref_ReturnsObj():
