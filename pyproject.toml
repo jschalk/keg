@@ -6,7 +6,7 @@ requires = ["setuptools", "wheel"]
 authors = [{name = "Emmanuel Schalk", email = "emmanuelschalk@gmail.com"}]
 dependencies = [
   "compact_json",
-  "drawsvg==2.3.0",
+  "drawsvg==2.2.0",
   "flask",
   "flask_cors",
   "pandas",
