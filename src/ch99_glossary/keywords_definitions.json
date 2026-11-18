@@ -116,6 +116,7 @@
   "ch14": "Defines how time is handled by PersonUnits. Allows for arbitrary time structures.", 
   "ch15": "Defines MomentUnits: common time tech, ledger, ContactNames, history of PersonUnits.", 
   "ch16": "Defines TashUnit tools that interpret numeric values into inside accounting.", 
+  "ch17": "Nabu module converts inside numbers to outside numbers.", 
   "ch18": "Defines JargonUnit tools that jargon MomentUnits into inside language.", 
   "ch19": "Defines SpeechUnit tools that jargon MomentUnits into audience language.", 
   "ch20": "Creates helper tools for database admin.", 

@@ -793,6 +793,7 @@ The config also defines the `tash_timenum` dimension for atom-style CRUD operati
 
 Ch16 completes the "outside → inside" translation infrastructure. Ch18 handles word/string translation; ch16 handles number/time translation. Together they ensure that external data from any face can be faithfully and consistently interpreted in the internal coordinate system.
 
+
 # ch18_jargon — Chapter Summary
 
 *This summary is authored by AI 5-26-2026.*

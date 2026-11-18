@@ -1467,6 +1467,13 @@ class Ch16Keywords(str, Enum):
         return self.value
 
 
+class Ch17Keywords(str, Enum):
+    ch17 = "ch17"
+
+    def __str__(self):
+        return self.value
+
+
 class Ch18Keywords(str, Enum):
     DELETE = "DELETE"
     FaceName = "FaceName"
