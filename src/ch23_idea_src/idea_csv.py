@@ -13,7 +13,7 @@ def get_dimen_minimum_idea_types() -> list:
         "ii00103",
         "ii00104",
         "ii00105",
-        # "ii00106",
+        "ii00106",
         "ii00120",
         "ii00121",
         "ii00122",
@@ -38,6 +38,7 @@ def get_dimen_minimum_idea_types() -> list:
         "ii00157",
         "ii00158",
         "ii00159",
+        "ii00170",
     ]
 
 

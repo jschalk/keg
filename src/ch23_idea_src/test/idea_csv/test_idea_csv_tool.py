@@ -43,17 +43,17 @@ def test_get_dimen_minimum_idea_types_ReturnsObj():
     # THEN
     expected_set = set()
     for x_dimen, x_brick_type in get_dimen_minimum_put_brick_names().items():
-        # print(f"put {x_dimen} ii{str(x_brick_type)[2:7]}")
+        print(f"put {x_dimen} ii{str(x_brick_type)[2:7]}")
         expected_set.add(f"ii{x_brick_type[2:7]}")
     for x_dimen, x_brick_type in get_dimen_minimum_del_brick_names().items():
-        # print(f"del {x_dimen} ii{str(x_brick_type)[2:7]}")
+        print(f"del {x_dimen} ii{str(x_brick_type)[2:7]}")
         expected_set.add(f"ii{x_brick_type[2:7]}")
     # TODO get rid of these removes
-    expected_set.remove("ii00106")
-    expected_set.remove("ii00170")
+    # expected_set.remove("ii00106")
+    # expected_set.remove("ii00170")
     expected_list = sorted(expected_set, key=lambda s: int(s[2:]))
-    for e_brick_type in expected_list:
-        print(f""""ii{str(e_brick_type)[2:7]}",""")
+    # for e_brick_type in expected_list:
+    #     print(f""""ii{str(e_brick_type)[2:7]}",""")
     assert prime_idea_brick_types == expected_list
 
 
@@ -76,7 +76,7 @@ def test_create_init_idea_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
         "ii00103": "moment_rope,cumulative_minute,hour_label,knot\n",
         "ii00104": "moment_rope,cumulative_day,month_label,knot\n",
         "ii00105": "moment_rope,weekday_order,weekday_label,knot\n",
-        # "ii00106": "moment_rope,offi_time,_offi_time_max\n",
+        "ii00106": "moment_rope,offi_time,_offi_time_max\n",
         "ii00120": "moment_rope,person_name,contact_name,group_title,group_cred_mass,group_debt_mass,knot\n",
         "ii00121": "moment_rope,person_name,contact_name,contact_cred_mass,contact_debt_mass,knot\n",
         "ii00122": "person_name,plan_rope,awardee_title,give_force,take_force,knot\n",
@@ -101,6 +101,7 @@ def test_create_init_idea_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
         "ii00157": "spark_num,spark_face,person_name,plan_rope,reason_context_ERASE\n",
         "ii00158": "spark_num,spark_face,person_name,plan_rope_ERASE\n",
         "ii00159": "spark_num,spark_face,moment_rope,person_name_ERASE\n",
+        "ii00170": "spark_num,spark_face,moment_rope,otx_time,inx_time\n",
     }
     expected_ii00100_csv = expected_idea_csv_strs.get("ii00100")
     expected_ii00101_csv = expected_idea_csv_strs.get("ii00101")
@@ -149,7 +150,7 @@ def test_create_init_idea_csv_strs_ReturnsObj_Scenario0_EmptyMomentUnit(
     assert x_ideas.get("ii00143") == f"{face_spark_str}{expected_ii00143_csv}"
     assert x_ideas.get("ii00144") == f"{face_spark_str}{expected_ii00144_csv}"
     assert x_ideas.get("ii00145") == f"{face_spark_str}{expected_ii00145_csv}"
-    assert len(x_ideas) == 30
+    assert len(x_ideas) == 32
 
 
 def test_add_momentunit_to_idea_csv_strs_ReturnsObj_Scenario0_OneMomentUnit(
@@ -283,7 +284,7 @@ def test_add_momentunits_to_idea_csv_strs_ReturnsObj_Scenario1_TwoMomentUnits(
     expected_ii00104_csv = expected_ii00104_csv.replace(J45_ROPE, f",,{J45_ROPE}")
     expected_ii00105_csv = expected_ii00105_csv.replace(J45_ROPE, f",,{J45_ROPE}")
 
-    assert len(x_ideas) == 30
+    assert len(x_ideas) == 32
     generated_ii00100_csv = x_ideas.get("ii00100")
     generated_ii00101_csv = x_ideas.get("ii00101")
     generated_ii00102_csv = x_ideas.get("ii00102")
