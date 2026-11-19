@@ -14,7 +14,7 @@
         "tashable_values": {"bud_time": {}, "offi_time": {}, "tran_time": {}}
       }
     }, 
-    "jkeys": {"iux_time": {}, "moment_rope": {}}, 
+    "jkeys": {"iux_time": {}, "moment_rope": {}, "song_audie": {}}, 
     "jvalues": {"aux_time": {}}
   }
 }

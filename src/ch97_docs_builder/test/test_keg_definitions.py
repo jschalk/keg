@@ -124,6 +124,7 @@ def test_get_keywords_definitions_ReturnsObj_Check_moment_ote1_agg():
 
 
 def test_get_keywords_definitions_ReturnsObj_CheckNoChapter_keywords():
+    # TODO change this so that if the keyword does not exist in keg_definitions it is added
     # sourcery skip: no-conditionals-in-tests
     # ESTABLISH / WHEN
     keywords_definitions = get_keywords_definitions()

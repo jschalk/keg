@@ -59,7 +59,12 @@ def _validate_nabu_config(nabu_config: dict):
     x_possible_args = {}
     # for every tash_format file there exists a unique tash_number with leading zeros to make 5 digits
     for x_dimen, nabu_dimen_dict in nabu_config.items():
+        # check dimen_dict
         assert nabu_dimen_dict.get(kw.jkeys) is not None
+        nabu_dimen_jkeys = set(nabu_dimen_dict.get(kw.jkeys).keys())
+        print(f"{nabu_dimen_jkeys=}")
+        assert nabu_dimen_jkeys == {kw.iux_time, kw.moment_rope, kw.song_audie}
+
         assert nabu_dimen_dict.get(kw.jvalues) is not None
         assert nabu_dimen_dict.get("affected_semantic_types") is not None
         tash_dimen = x_dimen.replace(kw.nabu, kw.tash)

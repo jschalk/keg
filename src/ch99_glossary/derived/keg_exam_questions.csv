@@ -559,10 +559,14 @@ Did you read that the keyword_definition of 'tash' is 'Short for Tashmetum of an
 Did you read that the keyword_definition of 'tash_timenum' is 'Definition needed.'.
 Did you read that the keyword_definition of 'timetash' is 'Definition needed.'.
 Did you read that the keyword_definition of 'Nabu' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'audie' is 'Short for audience. TitleTerm, can be NameTerm or GroupTitle.'."
 "Did you read that the keyword_definition of 'aux' is 'In Speech context: iux is the internal concept, aux is the audience's concept'."
 "Did you read that the keyword_definition of 'iux' is 'In Speech context: iux is the internal concept, aux is the audience's concept'."
+Did you read that the keyword_definition of 'iux_time' is 'Definition needed.'.
 Did you read that the keyword_definition of 'nabu' is 'Definition needed.'.
 Did you read that the keyword_definition of 'nabu_timenum' is 'Definition needed.'.
+Did you read that the keyword_definition of 'song' is 'The instance of giving ideas to an audience. Usually there is an intended audience.'.
+Did you read that the keyword_definition of 'song_audie' is 'Speech Module. Defintion needed.'.
 "Did you read that the keyword_definition of 'inx_knot' is ', JARGON_LABEL arg, JARGON_NAME arg, JARGON_ROPE arg, JARGON_TITLE arg'."
 "Did you read that the keyword_definition of 'inx_label' is ', JARGON_LABEL arg'."
 "Did you read that the keyword_definition of 'inx_name' is ', JARGON_NAME arg'."
@@ -591,7 +595,6 @@ Did you read that the keyword_definition of 'Song' is 'The instance of giving id
 Did you read that the keyword_definition of 'SongInt' is 'Integer for tracking Songs. int first used in ch19'.
 Did you read that the keyword_definition of 'Speech' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'Yap' is 'In the Jargon module there is 'map', in the Speech module there is 'yap'.'."
-"Did you read that the keyword_definition of 'audie' is 'Short for audience. TitleTerm, can be NameTerm or GroupTitle.'."
 Did you read that the keyword_definition of 'aux_knot' is 'Speech module. Definition needed.'.
 Did you read that the keyword_definition of 'aux_label' is 'Speech module. Definition needed.'.
 Did you read that the keyword_definition of 'aux_name' is 'Speech module. Definition needed.'.
@@ -606,8 +609,6 @@ Did you read that the keyword_definition of 'iux_title' is 'Speech module. Defin
 "Did you read that the keyword_definition of 'labelyap' is 'Speech module, definition needed'."
 "Did you read that the keyword_definition of 'nameyap' is 'Speech module, definition needed'."
 "Did you read that the keyword_definition of 'ropeyap' is 'Speech module, definition needed'."
-Did you read that the keyword_definition of 'song' is 'The instance of giving ideas to an audience. Usually there is an intended audience.'.
-Did you read that the keyword_definition of 'song_audie' is 'Speech Module. Defintion needed.'.
 Did you read that the keyword_definition of 'song_num' is 'Speech Module. Defintion needed.'.
 Did you read that the keyword_definition of 'speech' is 'Definition needed.'.
 Did you read that the keyword_definition of 'speech_core' is 'Definition needed.'.
