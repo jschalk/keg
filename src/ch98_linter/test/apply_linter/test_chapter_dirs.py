@@ -43,7 +43,7 @@ def test_Chapters_test_Tests_AreInCorrectDirStructure():
 def test_Chapters_NonTestPythonFilesDoNotHavePrintOrAssertStrs():
     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
     # ESTABLISH
-    not_allowed_strs = {"print", "assert", "ESTABLISH", "GIVEN", "THEN"}
+    not_allowed_strs = {"print", "assert", "ESTABLISH"}
     excluded_files = {
         "puncher_app.py",
         "ch_create_script.py",

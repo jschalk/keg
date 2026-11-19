@@ -1503,6 +1503,7 @@ class Ch17Keywords(str, Enum):
     semantic_type = "semantic_type"
     shop = "shop"
     src = "src"
+    tash = "tash"
     time = "time"
     tran_time = "tran_time"
 

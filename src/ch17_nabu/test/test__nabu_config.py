@@ -1,4 +1,5 @@
 from ch00_py.file_toolbox import create_path
+from ch16_tash.tash_config import get_tash_args, get_tash_config_dict, get_tash_dimens
 from ch17_nabu._ref.ch17_semantic_types import TimeNum
 from ch17_nabu.nabu_config import create_nabu_config_path, get_nabu_config_filename
 from ch99_glossary.ch_keyword import Ch17Keywords as kw
@@ -11,7 +12,7 @@ def test_get_nabu_config_filename_ReturnsObj():
     assert nabu_config_filename == "nabu_config.json"
 
 
-def test_create_nabu_config_path_ReturnsObj_Nabu() -> str:
+def test_create_nabu_config_path_ReturnsObj() -> str:
     # ESTABLISH / WHEN
     chapter_dir = create_path(kw.src, "ch17_nabu")
     # THEN
