@@ -15,24 +15,24 @@ def get_nabu_config_dict():
     return open_json(create_nabu_config_path())
 
 
-# def get_nabu_dimens() -> set:
-#     return {"nabu_timenum"}
+def get_nabu_dimens() -> set:
+    return {"nabu_timenum"}
 
 
-# def get_nabu_args() -> set:
-#     return {"otx_time", "inx_time", "moment_rope"}
+def get_nabu_args() -> set:
+    return {"iux_time", "aux_time", "moment_rope", "song_audie"}
 
 
-# def get_nabuable_args() -> set:
-#     return {
-#         "bud_time",
-#         "fact_lower",
-#         "fact_upper",
-#         "offi_time",
-#         "reason_lower",
-#         "reason_upper",
-#         "tran_time",
-#     }
+def get_nabuable_args() -> set:
+    return {
+        "bud_time",
+        "fact_lower",
+        "fact_upper",
+        "offi_time",
+        "reason_lower",
+        "reason_upper",
+        "tran_time",
+    }
 
 
 # def get_context_nabuable_args() -> set:
@@ -44,14 +44,14 @@ def get_nabu_config_dict():
 #     }
 
 
-# def set_nabuable_otx_inx_args(args: set) -> set:
-#     """Receives set of args, returns a set with all "Nabuable" args replaced with "_otx" and "_inx" """
+# def set_nabuable_iux_aux_args(args: set) -> set:
+#     """Receives set of args, returns a set with all "Nabuable" args replaced with "_iux" and "_aux" """
 #     all_nabuable = get_nabuable_args()
 #     transformed_args = set()
 #     for arg in args:
 #         if arg in all_nabuable:
-#             transformed_args.add(f"{arg}_otx")
-#             transformed_args.add(f"{arg}_inx")
+#             transformed_args.add(f"{arg}_iux")
+#             transformed_args.add(f"{arg}_aux")
 #         else:
 #             transformed_args.add(arg)
 #     return transformed_args

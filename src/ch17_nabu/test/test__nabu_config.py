@@ -3,8 +3,11 @@ from ch16_tash.tash_config import get_tash_args, get_tash_config_dict, get_tash_
 from ch17_nabu._ref.ch17_semantic_types import TimeNum
 from ch17_nabu.nabu_config import (
     create_nabu_config_path,
+    get_nabu_args,
     get_nabu_config_dict,
     get_nabu_config_filename,
+    get_nabu_dimens,
+    get_nabuable_args,
 )
 from ch99_glossary.ch_keyword import Ch17Keywords as kw
 from inspect import getdoc as inspect_getdoc
@@ -80,17 +83,17 @@ def _validate_nabu_config(nabu_config: dict):
             if attr_key == "affected_semantic_types":
                 if kw.TimeNum in set(attrs_dict.keys()):
                     TimeNum_dict = attrs_dict.get(kw.TimeNum)
-                    TimeNum_args = TimeNum_dict.get("tashable_values")
+                    TimeNum_args = TimeNum_dict.get("nabuable_values")
                     expected_TimeNum_args = {kw.tran_time, kw.offi_time, kw.bud_time}
                     assert set(TimeNum_args.keys()) == expected_TimeNum_args
                 if kw.ReasonNum in set(attrs_dict.keys()):
                     ReasonNum_dict = attrs_dict.get(kw.ReasonNum)
-                    ReasonNum_args = ReasonNum_dict.get("tashable_values")
+                    ReasonNum_args = ReasonNum_dict.get("nabuable_values")
                     expected_ReasonNum_args = {kw.reason_lower, kw.reason_upper}
                     assert set(ReasonNum_args.keys()) == expected_ReasonNum_args
                 if kw.FactNum in set(attrs_dict.keys()):
                     FactNum_dict = attrs_dict.get(kw.FactNum)
-                    FactNum_args = FactNum_dict.get("tashable_values")
+                    FactNum_args = FactNum_dict.get("nabuable_values")
                     expected_FactNum_args = {kw.fact_lower, kw.fact_upper}
                     assert set(FactNum_args.keys()) == expected_FactNum_args
             # print(f"{x_dimen=} {attrs_dict=}")
@@ -115,110 +118,110 @@ def _validate_nabu_config(nabu_config: dict):
 # #             assert jvalue_key in x_possible_args
 
 
-# def test_get_tash_dimens_ReturnsObj():
-#     # ESTABLISH / WHEN
-#     tash_config_dimens = get_tash_dimens()
+def test_get_nabu_dimens_ReturnsObj():
+    # ESTABLISH / WHEN
+    nabu_config_dimens = get_nabu_dimens()
 
-#     # THEN
-#     assert kw.tash_timenum in tash_config_dimens
-#     assert len(tash_config_dimens) == 1
-#     gen_tash_dimens = set(get_tash_config_dict().keys())
-#     assert gen_tash_dimens == get_tash_dimens()
-
-
-# def test_get_tash_args_ReturnsObj():
-#     # ESTABLISH / WHEN
-#     tash_args = get_tash_args()
-
-#     # THEN
-#     expected_tash_args = set()
-#     for dimen_dict in get_tash_config_dict().values():
-#         expected_tash_args.update(set(dimen_dict.get(kw.jkeys).keys()))
-#         expected_tash_args.update(set(dimen_dict.get(kw.jvalues).keys()))
-#     print(f"{expected_tash_args=}")
-#     assert tash_args
-#     assert tash_args == expected_tash_args
+    # THEN
+    assert kw.nabu_timenum in nabu_config_dimens
+    assert len(nabu_config_dimens) == 1
+    gen_nabu_dimens = set(get_nabu_config_dict().keys())
+    assert gen_nabu_dimens == get_nabu_dimens()
 
 
-# def test_get_tashable_args_ReturnsObj():
-#     # ESTABLISH / WHEN
-#     gen_tashable_args = get_tashable_args()
+def test_get_nabu_args_ReturnsObj():
+    # ESTABLISH / WHEN
+    nabu_args = get_nabu_args()
 
-#     # THEN
-#     expected_tashable_args = set()
-#     assert gen_tashable_args
-#     for category, category_dict in get_tash_config_dict().items():
-#         affected_semantic_types = category_dict.get("affected_semantic_types")
-#         for x_key, tash_convertion_type_dict in affected_semantic_types.items():
-#             tashable_values_dict = tash_convertion_type_dict.get("tashable_values")
-#             assert tashable_values_dict
-#             type_tashable_args = set(tashable_values_dict.keys())
-#             print(f"{type_tashable_args=}")
-#             print(f"{gen_tashable_args=}")
-#             assert type_tashable_args.issubset(gen_tashable_args)
-#             print(f"{category=} {x_key=} {tashable_values_dict=}")
-#             expected_tashable_args.update(type_tashable_args)
-
-#     assert expected_tashable_args == gen_tashable_args
+    # THEN
+    expected_nabu_args = set()
+    for dimen_dict in get_nabu_config_dict().values():
+        expected_nabu_args.update(set(dimen_dict.get(kw.jkeys).keys()))
+        expected_nabu_args.update(set(dimen_dict.get(kw.jvalues).keys()))
+    print(f"{expected_nabu_args=}")
+    assert nabu_args
+    assert nabu_args == expected_nabu_args
 
 
-# def test_set_tashable_otx_inx_args_ReturnsObj_Scenario0_All_tashable_args():
+def test_get_nabuable_args_ReturnsObj():
+    # ESTABLISH / WHEN
+    gen_nabuable_args = get_nabuable_args()
+
+    # THEN
+    expected_nabuable_args = set()
+    assert gen_nabuable_args
+    for category, category_dict in get_nabu_config_dict().items():
+        affected_semantic_types = category_dict.get("affected_semantic_types")
+        for x_key, nabu_convertion_type_dict in affected_semantic_types.items():
+            nabuable_values_dict = nabu_convertion_type_dict.get("nabuable_values")
+            assert nabuable_values_dict
+            type_nabuable_args = set(nabuable_values_dict.keys())
+            print(f"{type_nabuable_args=}")
+            print(f"{gen_nabuable_args=}")
+            assert type_nabuable_args.issubset(gen_nabuable_args)
+            print(f"{category=} {x_key=} {nabuable_values_dict=}")
+            expected_nabuable_args.update(type_nabuable_args)
+
+    assert expected_nabuable_args == gen_nabuable_args
+
+
+# def test_set_nabuable_iux_aux_args_ReturnsObj_Scenario0_All_nabuable_args():
 #     # sourcery skip: no-loop-in-tests
 #     # ESTABLISH
-#     tashable_args = get_tashable_args()
+#     nabuable_args = get_nabuable_args()
 
 #     # WHEN
-#     otx_inx_args = set_tashable_otx_inx_args(tashable_args)
+#     iux_aux_args = set_nabuable_iux_aux_args(nabuable_args)
 
 #     # THEN
-#     expected_otx_inx_args = set()
-#     for tashable_arg in tashable_args:
-#         expected_otx_inx_args.add(f"{tashable_arg}_otx")
-#         expected_otx_inx_args.add(f"{tashable_arg}_inx")
-#     print(f"{otx_inx_args=}")
-#     assert otx_inx_args == expected_otx_inx_args
+#     expected_iux_aux_args = set()
+#     for nabuable_arg in nabuable_args:
+#         expected_iux_aux_args.add(f"{nabuable_arg}_iux")
+#         expected_iux_aux_args.add(f"{nabuable_arg}_aux")
+#     print(f"{iux_aux_args=}")
+#     assert iux_aux_args == expected_iux_aux_args
 
 
-# def test_set_tashable_otx_inx_args_ReturnsObj_Scenario1_OtherArgsAreUntouched():
+# def test_set_nabuable_iux_aux_args_ReturnsObj_Scenario1_OtherArgsAreUntouched():
 #     # sourcery skip: no-loop-in-tests
 #     # ESTABLISH
 #     run_str = "run"
-#     x_tashable_args = get_tashable_args()
-#     x_tashable_args.add(run_str)
+#     x_nabuable_args = get_nabuable_args()
+#     x_nabuable_args.add(run_str)
 
 #     # WHEN
-#     otx_inx_args = set_tashable_otx_inx_args(x_tashable_args)
+#     iux_aux_args = set_nabuable_iux_aux_args(x_nabuable_args)
 
 #     # THEN
-#     expected_otx_inx_args = set()
-#     for tashable_arg in get_tashable_args():
-#         expected_otx_inx_args.add(f"{tashable_arg}_otx")
-#         expected_otx_inx_args.add(f"{tashable_arg}_inx")
-#     expected_otx_inx_args.add(run_str)
-#     print(f"{otx_inx_args=}")
-#     assert otx_inx_args == expected_otx_inx_args
+#     expected_iux_aux_args = set()
+#     for nabuable_arg in get_nabuable_args():
+#         expected_iux_aux_args.add(f"{nabuable_arg}_iux")
+#         expected_iux_aux_args.add(f"{nabuable_arg}_aux")
+#     expected_iux_aux_args.add(run_str)
+#     print(f"{iux_aux_args=}")
+#     assert iux_aux_args == expected_iux_aux_args
 
 
-# def test_get_context_tashable_args_ReturnsObj():
+# def test_get_context_nabuable_args_ReturnsObj():
 #     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
 #     # ESTABLISH / WHEN
-#     context_args = get_context_tashable_args()
+#     context_args = get_context_nabuable_args()
 
 #     # THEN
 #     expected_context_args = set()
 #     assert context_args
-#     for category, category_dict in get_tash_config_dict().items():
+#     for category, category_dict in get_nabu_config_dict().items():
 #         affected_semantic_types = category_dict.get("affected_semantic_types")
 #         for semantic_type in affected_semantic_types.keys():
 #             if semantic_type in {kw.ReasonNum, kw.FactNum}:
-#                 tash_convertion_type_dict = affected_semantic_types.get(semantic_type)
-#                 tashable_values_dict = tash_convertion_type_dict.get("tashable_values")
-#                 assert tashable_values_dict
-#                 type_tashable_args = set(tashable_values_dict.keys())
-#                 print(f"{type_tashable_args=}")
+#                 nabu_convertion_type_dict = affected_semantic_types.get(semantic_type)
+#                 nabuable_values_dict = nabu_convertion_type_dict.get("nabuable_values")
+#                 assert nabuable_values_dict
+#                 type_nabuable_args = set(nabuable_values_dict.keys())
+#                 print(f"{type_nabuable_args=}")
 #                 print(f"{context_args=}")
-#                 assert type_tashable_args.issubset(context_args)
-#                 print(f"{category=} {semantic_type=} {tashable_values_dict=}")
-#                 expected_context_args.update(type_tashable_args)
+#                 assert type_nabuable_args.issubset(context_args)
+#                 print(f"{category=} {semantic_type=} {nabuable_values_dict=}")
+#                 expected_context_args.update(type_nabuable_args)
 
 #     assert expected_context_args == context_args
