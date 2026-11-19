@@ -2,16 +2,16 @@
   "nabu_timenum": {
     "affected_semantic_types": {
       "FactNum": {
-        "note": "iux_time is the only required input, aux_time and moment_rope can be provided. ", 
-        "nabuable_values": {"fact_lower": {}, "fact_upper": {}}
+        "nabuable_values": {"fact_lower": {}, "fact_upper": {}}, 
+        "note": "iux_time is the only required input, aux_time and moment_rope can be provided. "
       }, 
       "ReasonNum": {
-        "note": "iux_time is the only required input, aux_time and moment_rope can be provided. ", 
-        "nabuable_values": {"reason_lower": {}, "reason_upper": {}}
+        "nabuable_values": {"reason_lower": {}, "reason_upper": {}}, 
+        "note": "iux_time is the only required input, aux_time and moment_rope can be provided. "
       }, 
       "TimeNum": {
-        "note": "iux_time is the only required input, aux_time and moment_rope can be provided. moment_rope is used to provide epoch_length and then modular math calculates changes to all nabuable_values", 
-        "nabuable_values": {"bud_time": {}, "offi_time": {}, "tran_time": {}}
+        "nabuable_values": {"bud_time": {}, "offi_time": {}, "tran_time": {}}, 
+        "note": "iux_time is the only required input, aux_time and moment_rope can be provided. moment_rope is used to provide epoch_length and then modular math calculates changes to all nabuable_values"
       }
     }, 
     "jkeys": {"iux_time": {}, "moment_rope": {}, "song_audie": {}}, 

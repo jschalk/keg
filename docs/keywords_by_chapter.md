@@ -35,7 +35,7 @@
 - ch33_pitch: Atla, Deal, Gift, Peer, PitchID, PitchUnit, Promise, PromiseUnit, atla, ch33, deal, gift, offer, peer, pitch, pitch_id, pitcher_name, pitchs, promise, request, ride, vow
 - ch34_finance: ch34, finance, financial
 - ch35_person_viewer: ch35
-- ch36_news: News, ch36, news
+- ch36_newz: Newz, ch36, newz
 - ch38_article: Article, article, ch38
 - ch39_levinas: American, God, Home, Infinity, Pillar, Totality, Water, bearing, ch39, god, grateful, gravity, home, hose, infinity, invite, land, power, totality, water, welcome
 - ch40_kazani: Empire, Faction, Hayek, Hobbit, Kronos, Land, Lord, Loyal, Republic, Ride, Shill, Soil, ch40, cow, empire, faction, hive, honor, impression, invitation, knee, kronosmax, ladder, lord, losing, loyal, oil, pay, prestige, republic, rival, shill, soil, trash, trooper, winner, winning

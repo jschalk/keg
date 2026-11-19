@@ -97,6 +97,8 @@ def test_SpecialUpdate_keywords_definitions_file():
     save_keg_descriptions_json(kw.src, keywords_definitions)
     # WHEN / THEN
     assert not chapter_changes_needed
+    # def test_get_keywords_definitions_ReturnsObj_CheckNoChapter_keywords():
+    # TODO change this so that if the keyword does not exist in keg_definitions it is added
 
 
 def test_get_keywords_definitions_ReturnsObj_Check_python_keywords():

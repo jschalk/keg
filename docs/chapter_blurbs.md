@@ -37,7 +37,7 @@ What does each one do?
 - **ch33_pitch**: Defines Pitch Tools for gifts, World Scenarios.
 - **ch34_finance**: Defines Finance Tools for 
 - **ch35_person_viewer**: Tools for Visualizing PersonUnits
-- **ch36_news**: Defines News Tools
+- **ch36_newz**: Defines Newz Tools
 - **ch38_article**: Article formatting tools
 - **ch39_levinas**: Levinas Philosophy
 - **ch40_kazani**: Kazani articles.

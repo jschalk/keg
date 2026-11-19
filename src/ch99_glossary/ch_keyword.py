@@ -1495,7 +1495,6 @@ class Ch17Keywords(str, Enum):
     fact_upper = "fact_upper"
     filename = "filename"
     glossary = "glossary"
-    inx_time = "inx_time"
     iux = "iux"
     iux_time = "iux_time"
     jkeys = "jkeys"
@@ -1510,7 +1509,6 @@ class Ch17Keywords(str, Enum):
     nabu_timenum = "nabu_timenum"
     normal_specs = "normal_specs"
     offi_time = "offi_time"
-    otx_time = "otx_time"
     person = "person"
     person_name = "person_name"
     reason_lower = "reason_lower"
@@ -1520,7 +1518,6 @@ class Ch17Keywords(str, Enum):
     song_audie = "song_audie"
     src = "src"
     tash = "tash"
-    tash_timenum = "tash_timenum"
     time = "time"
     tran_time = "tran_time"
 
@@ -3959,7 +3956,7 @@ class Ch35Keywords(str, Enum):
 
 class Ch36Keywords(str, Enum):
     Keyword = "Keyword"
-    News = "News"
+    Newz = "Newz"
     ch00 = "ch00"
     ch34 = "ch34"
     ch36 = "ch36"
@@ -3968,7 +3965,7 @@ class Ch36Keywords(str, Enum):
     financial = "financial"
     glossary = "glossary"
     keyword = "keyword"
-    news = "news"
+    newz = "newz"
 
     def __str__(self):
         return self.value
@@ -4032,7 +4029,6 @@ class Ch39Keywords(str, Enum):
     mandate = "mandate"
     meaning = "meaning"
     moment = "moment"
-    news = "news"
     offer = "offer"
     peer = "peer"
     person = "person"
@@ -4117,7 +4113,6 @@ class Ch40Keywords(str, Enum):
     loyal = "loyal"
     magnitude = "magnitude"
     moment = "moment"
-    news = "news"
     offer = "offer"
     oil = "oil"
     pay = "pay"
