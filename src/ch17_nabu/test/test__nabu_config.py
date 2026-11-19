@@ -3,11 +3,13 @@ from ch16_tash.tash_config import get_tash_args, get_tash_config_dict, get_tash_
 from ch17_nabu._ref.ch17_semantic_types import TimeNum
 from ch17_nabu.nabu_config import (
     create_nabu_config_path,
+    get_context_nabuable_args,
     get_nabu_args,
     get_nabu_config_dict,
     get_nabu_config_filename,
     get_nabu_dimens,
     get_nabuable_args,
+    set_nabuable_iux_aux_args,
 )
 from ch99_glossary.ch_keyword import Ch17Keywords as kw
 from inspect import getdoc as inspect_getdoc
@@ -165,63 +167,63 @@ def test_get_nabuable_args_ReturnsObj():
     assert expected_nabuable_args == gen_nabuable_args
 
 
-# def test_set_nabuable_iux_aux_args_ReturnsObj_Scenario0_All_nabuable_args():
-#     # sourcery skip: no-loop-in-tests
-#     # ESTABLISH
-#     nabuable_args = get_nabuable_args()
+def test_set_nabuable_iux_aux_args_ReturnsObj_Scenario0_All_nabuable_args():
+    # sourcery skip: no-loop-in-tests
+    # ESTABLISH
+    nabuable_args = get_nabuable_args()
 
-#     # WHEN
-#     iux_aux_args = set_nabuable_iux_aux_args(nabuable_args)
+    # WHEN
+    iux_aux_args = set_nabuable_iux_aux_args(nabuable_args)
 
-#     # THEN
-#     expected_iux_aux_args = set()
-#     for nabuable_arg in nabuable_args:
-#         expected_iux_aux_args.add(f"{nabuable_arg}_iux")
-#         expected_iux_aux_args.add(f"{nabuable_arg}_aux")
-#     print(f"{iux_aux_args=}")
-#     assert iux_aux_args == expected_iux_aux_args
-
-
-# def test_set_nabuable_iux_aux_args_ReturnsObj_Scenario1_OtherArgsAreUntouched():
-#     # sourcery skip: no-loop-in-tests
-#     # ESTABLISH
-#     run_str = "run"
-#     x_nabuable_args = get_nabuable_args()
-#     x_nabuable_args.add(run_str)
-
-#     # WHEN
-#     iux_aux_args = set_nabuable_iux_aux_args(x_nabuable_args)
-
-#     # THEN
-#     expected_iux_aux_args = set()
-#     for nabuable_arg in get_nabuable_args():
-#         expected_iux_aux_args.add(f"{nabuable_arg}_iux")
-#         expected_iux_aux_args.add(f"{nabuable_arg}_aux")
-#     expected_iux_aux_args.add(run_str)
-#     print(f"{iux_aux_args=}")
-#     assert iux_aux_args == expected_iux_aux_args
+    # THEN
+    expected_iux_aux_args = set()
+    for nabuable_arg in nabuable_args:
+        expected_iux_aux_args.add(f"{nabuable_arg}_iux")
+        expected_iux_aux_args.add(f"{nabuable_arg}_aux")
+    print(f"{iux_aux_args=}")
+    assert iux_aux_args == expected_iux_aux_args
 
 
-# def test_get_context_nabuable_args_ReturnsObj():
-#     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
-#     # ESTABLISH / WHEN
-#     context_args = get_context_nabuable_args()
+def test_set_nabuable_iux_aux_args_ReturnsObj_Scenario1_OtherArgsAreUntouched():
+    # sourcery skip: no-loop-in-tests
+    # ESTABLISH
+    run_str = "run"
+    x_nabuable_args = get_nabuable_args()
+    x_nabuable_args.add(run_str)
 
-#     # THEN
-#     expected_context_args = set()
-#     assert context_args
-#     for category, category_dict in get_nabu_config_dict().items():
-#         affected_semantic_types = category_dict.get("affected_semantic_types")
-#         for semantic_type in affected_semantic_types.keys():
-#             if semantic_type in {kw.ReasonNum, kw.FactNum}:
-#                 nabu_convertion_type_dict = affected_semantic_types.get(semantic_type)
-#                 nabuable_values_dict = nabu_convertion_type_dict.get("nabuable_values")
-#                 assert nabuable_values_dict
-#                 type_nabuable_args = set(nabuable_values_dict.keys())
-#                 print(f"{type_nabuable_args=}")
-#                 print(f"{context_args=}")
-#                 assert type_nabuable_args.issubset(context_args)
-#                 print(f"{category=} {semantic_type=} {nabuable_values_dict=}")
-#                 expected_context_args.update(type_nabuable_args)
+    # WHEN
+    iux_aux_args = set_nabuable_iux_aux_args(x_nabuable_args)
 
-#     assert expected_context_args == context_args
+    # THEN
+    expected_iux_aux_args = set()
+    for nabuable_arg in get_nabuable_args():
+        expected_iux_aux_args.add(f"{nabuable_arg}_iux")
+        expected_iux_aux_args.add(f"{nabuable_arg}_aux")
+    expected_iux_aux_args.add(run_str)
+    print(f"{iux_aux_args=}")
+    assert iux_aux_args == expected_iux_aux_args
+
+
+def test_get_context_nabuable_args_ReturnsObj():
+    # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
+    # ESTABLISH / WHEN
+    context_args = get_context_nabuable_args()
+
+    # THEN
+    expected_context_args = set()
+    assert context_args
+    for category, category_dict in get_nabu_config_dict().items():
+        affected_semantic_types = category_dict.get("affected_semantic_types")
+        for semantic_type in affected_semantic_types.keys():
+            if semantic_type in {kw.ReasonNum, kw.FactNum}:
+                nabu_convertion_type_dict = affected_semantic_types.get(semantic_type)
+                nabuable_values_dict = nabu_convertion_type_dict.get("nabuable_values")
+                assert nabuable_values_dict
+                type_nabuable_args = set(nabuable_values_dict.keys())
+                print(f"{type_nabuable_args=}")
+                print(f"{context_args=}")
+                assert type_nabuable_args.issubset(context_args)
+                print(f"{category=} {semantic_type=} {nabuable_values_dict=}")
+                expected_context_args.update(type_nabuable_args)
+
+    assert expected_context_args == context_args

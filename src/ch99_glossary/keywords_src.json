@@ -96,7 +96,7 @@
   "LaborHeir": {"valid_ch": "4, 35"}, 
   "Ladder": {"valid_ch": ""}, 
   "Land": {"valid_ch": "40, 44, 45"}, 
-  "Lasso": {"valid_ch": "10, 11, 12, 15, 17, 22, 26, 27, 31"}, 
+  "Lasso": {"valid_ch": "10, 11, 12, 15, 22, 26, 27, 31"}, 
   "LeBron": {"valid_ch": "14, 23"}, 
   "Lift": {"valid_ch": ""}, 
   "Linchpin": {"valid_ch": ""}, 
@@ -126,7 +126,7 @@
   "Peer": {"valid_ch": "33"}, 
   "PersonName": {
     "semantic_type": "str", 
-    "valid_ch": "8, 10, 11, 12, 13, 15, 17, 18, 19, 21, 22, 27, 30, 31, 32, 33, 90, 97"
+    "valid_ch": "8, 10, 11, 12, 13, 15, 18, 19, 21, 22, 27, 30, 31, 32, 33, 90, 97"
   }, 
   "PersonUnit": {
     "valid_ch": "8, 9, 10, 11, 12, 13, 14, 15, 21, 22, 23, 24, 26, 27, 30, 31, 32, 35, 45, 90"
@@ -372,7 +372,7 @@
     "sort_ordinal": 112, 
     "valid_ch": "3, 8, 9, 10, 11, 13, 15, 18, 19, 21, 22, 23, 25, 26, 27, 33, 35"
   }, 
-  "contact_mandate_ledger": {"valid_ch": "8, 12, 15, 17, 27, 32"}, 
+  "contact_mandate_ledger": {"valid_ch": "8, 12, 15, 27, 32"}, 
   "contact_name": {
     "sort_ordinal": 38, 
     "valid_ch": "3, 4, 8, 9, 10, 11, 12, 13, 15, 16, 18, 19, 21, 22, 23, 24, 25, 26, 27, 31, 32, 33, 35, 45"
@@ -690,7 +690,7 @@
   "labors": {"valid_ch": "4, 7, 8, 10, 23, 27, 35"}, 
   "ladder": {"valid_ch": "40, 45"}, 
   "land": {"valid_ch": "39, 40, 44, 45"}, 
-  "lasso": {"valid_ch": "10, 11, 12, 15, 17, 22, 26, 27, 30, 31, 32"}, 
+  "lasso": {"valid_ch": "10, 11, 12, 15, 22, 26, 27, 30, 31, 32"}, 
   "last_lesson_id": {"valid_ch": "8, 10, 11"}, 
   "lego": {"valid_ch": "22, 26, 27, 30, 31, 32, 90, 97"}, 
   "legox_mst": {"valid_ch": "22"}, 
@@ -707,7 +707,7 @@
     "sort_ordinal": 138, 
     "valid_ch": "8, 9, 10, 11, 12, 13, 15, 18, 19, 21, 22, 23, 26, 27, 33, 35"
   }, 
-  "mandate": {"valid_ch": "8, 12, 15, 17, 27, 32, 39"}, 
+  "mandate": {"valid_ch": "8, 12, 15, 27, 32, 39"}, 
   "max_tree_traverse": {
     "sort_ordinal": 126, 
     "valid_ch": "8, 9, 10, 11, 18, 19, 21, 22, 23, 27, 33, 35"
@@ -731,7 +731,7 @@
   "moment_epoch_weekday": {"valid_ch": "15, 21, 22, 23, 26, 97"}, 
   "moment_kpi001_contact_nets": {"valid_ch": "31, 32"}, 
   "moment_kpi002_person_pledges": {"valid_ch": "31"}, 
-  "moment_mstr_dir": {"valid_ch": "10, 11, 12, 13, 15, 17, 21, 22, 23, 26, 27, 30, 31, 32, 33"}, 
+  "moment_mstr_dir": {"valid_ch": "10, 11, 12, 13, 15, 21, 22, 23, 26, 27, 30, 31, 32, 33"}, 
   "moment_ote1_agg": {"valid_ch": "22, 26, 27, 32, 97"}, 
   "moment_rope": {
     "sort_ordinal": 8, 
@@ -814,7 +814,7 @@
   "pay": {"valid_ch": "40, 44, 45"}, 
   "peer": {"valid_ch": "33, 39, 40"}, 
   "person": {
-    "valid_ch": "4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 39, 40, 44, 45, 46, 54, 90, 97"
+    "valid_ch": "4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 39, 40, 44, 45, 46, 54, 90, 97"
   }, 
   "person_contact_membership": {"valid_ch": "8, 9, 10, 21, 22, 23, 27, 97"}, 
   "person_contacts_net": {"valid_ch": "12"}, 
@@ -822,7 +822,7 @@
   "person_groupunit": {"valid_ch": "8, 9, 22, 27"}, 
   "person_name": {
     "sort_ordinal": 32, 
-    "valid_ch": "4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 35, 90"
+    "valid_ch": "4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 19, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 35, 90"
   }, 
   "person_name_ERASE": {"sort_ordinal": 35, "valid_ch": "9, 21, 22, 23"}, 
   "person_name_ERASE_aux": {"valid_ch": "21"}, 
