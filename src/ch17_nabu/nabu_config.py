@@ -55,3 +55,9 @@ def set_nabuable_iux_aux_args(args: set) -> set:
         else:
             transformed_args.add(arg)
     return transformed_args
+
+
+# TODO create nabu_main.py where the math of how a internal time is turned into an
+# external time is described.
+# There needs to be iux_time: "Time as understood internally for the moment"
+# There needs to be aux_time: "Time as understand externally for the audience of that moment"

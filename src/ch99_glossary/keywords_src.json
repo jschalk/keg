@@ -235,6 +235,7 @@
   "aux_label": {"valid_ch": "19, 21"}, 
   "aux_name": {"valid_ch": "19, 21"}, 
   "aux_rope": {"valid_ch": "19, 21"}, 
+  "aux_time": {"valid_ch": "17"}, 
   "aux_title": {"valid_ch": "19, 21"}, 
   "awardee_title": {
     "sort_ordinal": 84, 

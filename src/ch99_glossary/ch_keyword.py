@@ -1478,6 +1478,7 @@ class Ch17Keywords(str, Enum):
     UPDATE = "UPDATE"
     audie = "audie"
     aux = "aux"
+    aux_time = "aux_time"
     bud_time = "bud_time"
     ch00 = "ch00"
     ch16 = "ch16"
