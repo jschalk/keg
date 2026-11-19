@@ -6,13 +6,13 @@ def get_nabu_config_filename() -> str:
 
 
 def create_nabu_config_path():
-    "Returns path: src/c15_nabu/nabu_config.json"
+    "Returns path: src\\ch17_nabu\\nabu_config.json"
     chapter_dir = create_path("src", "ch17_nabu")
     return create_path(chapter_dir, "nabu_config.json")
 
 
-# def get_nabu_config_dict():
-#     return open_json(create_nabu_config_path())
+def get_nabu_config_dict():
+    return open_json(create_nabu_config_path())
 
 
 # def get_nabu_dimens() -> set:

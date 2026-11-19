@@ -570,6 +570,7 @@
   "nabtime": "abbv for tash_timenum", 
   "Nabu": "Definition needed.", 
   "nabu": "Definition needed.", 
+  "nabu_timenum": "Definition needed.", 
   "namemap": "Definition needed.", 
   "NameTerm": "str first used in ch03. All Name string classes should inherit from this class", 
   "nameyap": "Speech module, definition needed", 
