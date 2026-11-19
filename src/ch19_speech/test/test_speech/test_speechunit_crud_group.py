@@ -7,7 +7,7 @@ from pytest import raises as pytest_raises
 def test_SpeechUnit_set_titleyap_SetsAttr():
     # ESTABLISH
     sue_speechunit = speechunit_shop(exx.sue)
-    x_titleyap = titleyap_shop(flare_audie=exx.sue)
+    x_titleyap = titleyap_shop(song_audie=exx.sue)
     x_titleyap.set_iux2aux("Bob", "Bob of Salem")
     assert sue_speechunit.titleyap != x_titleyap
 
@@ -22,7 +22,7 @@ def test_SpeechUnit_set_titleyap_RaisesErrorIf_titleyap_iux_knot_IsNotSame():
     # ESTABLISH
     sue_speechunit = speechunit_shop(exx.sue)
     slash_iux_knot = "/"
-    x_titleyap = titleyap_shop(iux_knot=slash_iux_knot, flare_audie=exx.sue)
+    x_titleyap = titleyap_shop(iux_knot=slash_iux_knot, song_audie=exx.sue)
     assert sue_speechunit.iux_knot != x_titleyap.iux_knot
     assert sue_speechunit.titleyap != x_titleyap
 
@@ -37,7 +37,7 @@ def test_SpeechUnit_set_titleyap_RaisesErrorIf_titleyap_aux_knot_IsNotSame():
     # ESTABLISH
     sue_speechunit = speechunit_shop(exx.sue)
     slash_aux_knot = "/"
-    x_titleyap = titleyap_shop(aux_knot=slash_aux_knot, flare_audie=exx.sue)
+    x_titleyap = titleyap_shop(aux_knot=slash_aux_knot, song_audie=exx.sue)
     assert sue_speechunit.aux_knot != x_titleyap.aux_knot
     assert sue_speechunit.titleyap != x_titleyap
 
@@ -48,24 +48,24 @@ def test_SpeechUnit_set_titleyap_RaisesErrorIf_titleyap_aux_knot_IsNotSame():
     assert str(excinfo.value) == exception_str
 
 
-def test_SpeechUnit_set_titleyap_RaisesErrorIf_titleyap_flare_audie_IsNotSame():
+def test_SpeechUnit_set_titleyap_RaisesErrorIf_titleyap_song_audie_IsNotSame():
     # ESTABLISH
     sue_speechunit = speechunit_shop(exx.sue)
-    x_titleyap = titleyap_shop(flare_audie=exx.yao)
-    assert sue_speechunit.flare_audie != x_titleyap.flare_audie
+    x_titleyap = titleyap_shop(song_audie=exx.yao)
+    assert sue_speechunit.song_audie != x_titleyap.song_audie
     assert sue_speechunit.titleyap != x_titleyap
 
     # WHEN / THEN
     with pytest_raises(Exception) as excinfo:
         sue_speechunit.set_titleyap(x_titleyap)
-    exception_str = f"set_yapcore Error: SpeechUnit flare_audie is '{sue_speechunit.flare_audie}', YapCore is '{exx.yao}'."
+    exception_str = f"set_yapcore Error: SpeechUnit song_audie is '{sue_speechunit.song_audie}', YapCore is '{exx.yao}'."
     assert str(excinfo.value) == exception_str
 
 
 def test_SpeechUnit_get_titleyap_ReturnsObj():
     # ESTABLISH
     sue_speechunit = speechunit_shop(exx.sue)
-    static_x_titleyap = titleyap_shop(flare_audie=exx.sue)
+    static_x_titleyap = titleyap_shop(song_audie=exx.sue)
     static_x_titleyap.set_iux2aux("Bob", "Bob of Salem")
     sue_speechunit.set_titleyap(static_x_titleyap)
 

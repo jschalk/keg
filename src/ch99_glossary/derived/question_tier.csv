@@ -579,8 +579,8 @@ titlemap,0,"18, 21"
 unknown_str,0,"18, 19, 21, 22, 23, 24, 25, 30, 33, 98"
 Audie,0,"19, 44, 97"
 AudieTitle,0,"19, 97"
-Flare,0,"19, 97"
-FlareInt,0,"19, 97"
+Song,0,"19, 97"
+SongInt,0,"19, 97"
 Speech,0,19
 Yap,0,19
 audie,0,"19, 21, 27, 30, 33, 39, 40, 44, 45"
@@ -589,9 +589,6 @@ aux_label,0,"19, 21"
 aux_name,0,"19, 21"
 aux_rope,0,"19, 21"
 aux_title,0,"19, 21"
-flare,0,"19, 21"
-flare_audie,0,"19, 21"
-flare_num,0,"19, 21"
 iux2aux,0,"19, 98"
 iux_knot,0,"19, 21, 98"
 iux_label,0,"19, 21"
@@ -601,6 +598,9 @@ iux_title,0,"19, 21"
 labelyap,0,19
 nameyap,0,19
 ropeyap,0,19
+song,0,"19, 21"
+song_audie,0,"19, 21"
+song_num,0,"19, 21"
 speech,0,"19, 21"
 speech_core,0,19
 speech_label,0,19
@@ -665,8 +665,6 @@ fact_state_iux,0,21
 fact_state_otx,0,"21, 22"
 fact_upper_inx,0,"21, 22, 26"
 fact_upper_otx,0,"21, 22, 26"
-flare_audie_aux,0,21
-flare_audie_iux,0,21
 fund_rank,0,"21, 31"
 group_title_ERASE_aux,0,21
 group_title_ERASE_inx,0,"21, 22"
@@ -750,6 +748,8 @@ reason_state_otx,0,"21, 22"
 reason_upper_inx,0,"21, 22, 26"
 reason_upper_otx,0,"21, 22, 26"
 sheet,0,"21, 22, 23, 24, 30, 32, 35, 40, 46, 90, 97"
+song_audie_aux,0,21
+song_audie_iux,0,21
 source_dimen,0,"21, 22, 25"
 spark_face_inx,0,"21, 22, 26"
 spark_face_otx,0,"21, 22"

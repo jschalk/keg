@@ -15,15 +15,15 @@ def test_RopeYap_Exists():
     x_ropeyap = RopeYap()
 
     # WHEN / THEN
-    assert not x_ropeyap.flare_audie
-    assert not x_ropeyap.flare_num
+    assert not x_ropeyap.song_audie
+    assert not x_ropeyap.song_num
     assert not x_ropeyap.iux2aux
     assert not x_ropeyap.iux_knot
     assert not x_ropeyap.aux_knot
     assert not x_ropeyap.labelyap
     assert set(x_ropeyap.__dict__.keys()) == {
-        kw.flare_audie,
-        kw.flare_num,
+        kw.song_audie,
+        kw.song_num,
         kw.iux2aux,
         kw.iux_knot,
         kw.aux_knot,
@@ -40,22 +40,22 @@ def test_ropeyap_shop_ReturnsObj_Scenario0():
 
     # WHEN
     e7_ropeyap = ropeyap_shop(
-        flare_audie=exx.bob,
-        flare_num=spark7,
+        song_audie=exx.bob,
+        song_num=spark7,
         iux2aux=iux2aux,
         iux_knot=slash_iux_knot,
         aux_knot=colon_aux_knot,
     )
 
     # THEN
-    assert e7_ropeyap.flare_audie == exx.bob
-    assert e7_ropeyap.flare_num == spark7
+    assert e7_ropeyap.song_audie == exx.bob
+    assert e7_ropeyap.song_num == spark7
     assert e7_ropeyap.iux2aux == iux2aux
     assert e7_ropeyap.iux_knot == slash_iux_knot
     assert e7_ropeyap.aux_knot == colon_aux_knot
     assert e7_ropeyap.labelyap == labelyap_shop(
-        flare_audie=exx.bob,
-        flare_num=spark7,
+        song_audie=exx.bob,
+        song_num=spark7,
         iux_knot=slash_iux_knot,
         aux_knot=colon_aux_knot,
     )
@@ -69,10 +69,10 @@ def test_ropeyap_shop_ReturnsObj_Scenario2():
     assert x_ropeyap.iux2aux == {}
     assert x_ropeyap.iux_knot == default_knot_if_None()
     assert x_ropeyap.aux_knot == default_knot_if_None()
-    assert x_ropeyap.flare_audie is None
-    assert x_ropeyap.flare_num == 0
+    assert x_ropeyap.song_audie is None
+    assert x_ropeyap.song_num == 0
     assert x_ropeyap.labelyap == labelyap_shop(
-        flare_num=0,
+        song_num=0,
         iux_knot=default_knot_if_None(),
         aux_knot=default_knot_if_None(),
     )
@@ -86,16 +86,16 @@ def test_ropeyap_shop_ReturnsObj_Scenario3_SpeechCoreAttrAreDefaultWhenGiven_flo
 
     # WHEN
     x_ropeyap = ropeyap_shop(
-        flare_audie=exx.bob,
-        flare_num=spark7,
+        song_audie=exx.bob,
+        song_num=spark7,
         iux2aux=iux2aux,
         iux_knot=x_nan,
         aux_knot=x_nan,
     )
 
     # THEN
-    assert x_ropeyap.flare_audie == exx.bob
-    assert x_ropeyap.flare_num == spark7
+    assert x_ropeyap.song_audie == exx.bob
+    assert x_ropeyap.song_num == spark7
     assert x_ropeyap.iux2aux == iux2aux
     assert x_ropeyap.iux_knot == default_knot_if_None()
     assert x_ropeyap.aux_knot == default_knot_if_None()
@@ -359,8 +359,8 @@ def test_RopeYap_to_dict_ReturnsObj():
     slash_iux_knot = "/"
     x_ropeyap = ropeyap_shop(exx.sue, iux_knot=slash_iux_knot)
     x1_rope_yap_dict = {
-        kw.flare_num: 0,
-        kw.flare_audie: exx.sue,
+        kw.song_num: 0,
+        kw.song_audie: exx.sue,
         kw.aux_knot: x_ropeyap.aux_knot,
         kw.iux2aux: {},
         kw.iux_knot: x_ropeyap.iux_knot,
@@ -371,11 +371,11 @@ def test_RopeYap_to_dict_ReturnsObj():
     # WHEN
     spark7 = 7
     x_ropeyap.set_iux2aux(clean_iux, clean_aux)
-    x_ropeyap.flare_num = spark7
+    x_ropeyap.song_num = spark7
     # THEN
     x2_rope_yap_dict = {
-        kw.flare_num: spark7,
-        kw.flare_audie: exx.sue,
+        kw.song_num: spark7,
+        kw.song_audie: exx.sue,
         kw.aux_knot: x_ropeyap.aux_knot,
         kw.iux2aux: {clean_iux: clean_aux},
         kw.iux_knot: x_ropeyap.iux_knot,
@@ -399,10 +399,10 @@ def test_get_ropeyap_from_dict_ReturnsObj():
     gen_ropeyap = get_ropeyap_from_dict(x_ropeyap.to_dict())
 
     # THEN
-    assert gen_ropeyap.flare_audie == x_ropeyap.flare_audie
-    assert gen_ropeyap.flare_num == x_ropeyap.flare_num
-    assert gen_ropeyap.flare_num == spark7
-    assert gen_ropeyap.labelyap.flare_audie == x_ropeyap.labelyap.flare_audie
+    assert gen_ropeyap.song_audie == x_ropeyap.song_audie
+    assert gen_ropeyap.song_num == x_ropeyap.song_num
+    assert gen_ropeyap.song_num == spark7
+    assert gen_ropeyap.labelyap.song_audie == x_ropeyap.labelyap.song_audie
     assert gen_ropeyap.labelyap.iux2aux != x_ropeyap.labelyap.iux2aux
     assert gen_ropeyap.labelyap != x_ropeyap.labelyap
     assert gen_ropeyap.iux2aux == x_ropeyap.iux2aux
@@ -554,7 +554,7 @@ def test_inherit_ropeyap_ReturnsObj_Scenario2_RaiseErrorWhenDifferent_aux_knot()
     assert str(excinfo.value) == "Core attrs in conflict"
 
 
-def test_inherit_ropeyap_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_flare_audie():
+def test_inherit_ropeyap_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_song_audie():
     # ESTABLISH
     old_ropeyap = ropeyap_shop(exx.sue, 0)
     new_ropeyap = ropeyap_shop(exx.bob, 1)

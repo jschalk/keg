@@ -136,10 +136,10 @@ def test_get_keg_elements_sort_order_ReturnsObj():
     assert table_sorting_priority[5] == kw.spark_face
     assert table_sorting_priority[6] == f"{kw.spark_face}_otx"
     assert table_sorting_priority[7] == f"{kw.spark_face}_inx"
-    assert table_sorting_priority[8] == kw.flare_num
-    assert table_sorting_priority[9] == kw.flare_audie
-    assert table_sorting_priority[10] == f'{kw.flare_audie}_aux'
-    assert table_sorting_priority[11] == f'{kw.flare_audie}_iux'
+    assert table_sorting_priority[8] == kw.song_num
+    assert table_sorting_priority[9] == kw.song_audie
+    assert table_sorting_priority[10] == f'{kw.song_audie}_aux'
+    assert table_sorting_priority[11] == f'{kw.song_audie}_iux'
     assert table_sorting_priority[12] == kw.moment_rope
     assert table_sorting_priority[13] == f"{kw.moment_rope}_otx"
     assert table_sorting_priority[14] == f"{kw.moment_rope}_inx"
@@ -535,8 +535,8 @@ def test_get_brick_sqlite_types_ReturnsObj():
     assert sqlite_types.get(kw.fact_upper) == "REAL"
     assert sqlite_types.get(kw.fact_upper_inx) == "REAL"
     assert sqlite_types.get(kw.fact_upper_otx) == "REAL"
-    assert sqlite_types.get(kw.flare_audie_aux) == "TEXT"
-    assert sqlite_types.get(kw.flare_audie_iux) == "TEXT"
+    assert sqlite_types.get(kw.song_audie_aux) == "TEXT"
+    assert sqlite_types.get(kw.song_audie_iux) == "TEXT"
     assert sqlite_types.get(kw.fund_agenda_give) == "REAL"
     assert sqlite_types.get(kw.fund_agenda_ratio_give) == "REAL"
     assert sqlite_types.get(kw.fund_agenda_ratio_take) == "REAL"

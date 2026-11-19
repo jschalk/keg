@@ -19,7 +19,7 @@ def get_clean_labelyap() -> LabelYap:
     clean_aux = "propre"
     casa_iux = "casa1"
     casa_aux = "casa2"
-    labelyap = labelyap_shop(flare_audie="Sue")
+    labelyap = labelyap_shop(song_audie="Sue")
     labelyap.set_iux2aux(clean_iux, clean_aux)
     labelyap.set_iux2aux(casa_iux, casa_aux)
     return labelyap
@@ -35,7 +35,7 @@ def get_clean_ropeyap() -> RopeYap:
     knot = default_knot_if_None()
     clean_iux_rope = create_rope(iux_amy45_str, clean_iux_str, knot)
     # clean_iux_rope = f"{knot}{iux_amy45_str}{knot}{clean_iux_str}{knot}"
-    rope_yapunit = ropeyap_shop(flare_audie="Sue")
+    rope_yapunit = ropeyap_shop(song_audie="Sue")
     rope_yapunit.set_label(clean_iux_str, clean_aux_str)
     rope_yapunit.set_iux2aux(iux_amy45_rope, aux_amy87_rope)
     print(f"{rope_yapunit.iux2aux.keys()=}")
@@ -48,7 +48,7 @@ def get_bowl_titleyap() -> TitleYap:
     bowl_iux = f"bowl{knot}"
     bowl_aux = f"nage{knot}"
     boulder_iux = f"boulder{knot}"
-    x_titleyap = titleyap_shop(flare_audie="Sue")
+    x_titleyap = titleyap_shop(song_audie="Sue")
     x_titleyap.set_iux2aux(bowl_iux, bowl_aux)
     x_titleyap.set_iux2aux(boulder_iux, boulder_iux)
     return x_titleyap
@@ -62,7 +62,7 @@ def get_suita_nameyap() -> NameYap:
     xio_aux = "Xioita"
     sue_aux = "Suita"
     bob_aux = "Bobita"
-    contact_name_yapunit = nameyap_shop(flare_audie="Sue")
+    contact_name_yapunit = nameyap_shop(song_audie="Sue")
     contact_name_yapunit.set_iux2aux(xio_iux, xio_aux)
     contact_name_yapunit.set_iux2aux(sue_iux, sue_aux)
     contact_name_yapunit.set_iux2aux(bob_iux, bob_aux)
@@ -74,7 +74,7 @@ def get_suita_nameyap() -> NameYap:
 #     sue_aux = "Sue"
 #     zia_iux = "Zia"
 #     zia_aux = "Zia"
-#     x_titleyap = yapunit_shop(kw.NameTerm, flare_audie="Sue")
+#     x_titleyap = yapunit_shop(kw.NameTerm, song_audie="Sue")
 #     x_titleyap.set_iux2aux(sue_iux, sue_aux)
 #     x_titleyap.set_iux2aux(zia_iux, zia_aux)
 #     return x_titleyap
@@ -85,7 +85,7 @@ def get_suita_nameyap() -> NameYap:
 #     sue_aux = f"Sue{default_knot_if_None()}"
 #     zia_iux = "Zia"
 #     zia_aux = f"Zia{default_knot_if_None()}"
-#     x_titleyap = yapunit_shop(kw.TitleTerm, flare_audie="Sue")
+#     x_titleyap = yapunit_shop(kw.TitleTerm, song_audie="Sue")
 #     x_titleyap.set_iux2aux(sue_iux, sue_aux)
 #     x_titleyap.set_iux2aux(zia_iux, zia_aux)
 #     return x_titleyap
@@ -95,7 +95,7 @@ def get_suita_nameyap() -> NameYap:
 #     clean_aux = "propre"
 #     casa_iux = f"casa{default_knot_if_None()}"
 #     casa_aux = "casa"
-#     labelyap = yapunit_shop(kw.LabelTerm, flare_audie="Sue")
+#     labelyap = yapunit_shop(kw.LabelTerm, song_audie="Sue")
 #     labelyap.set_iux2aux(exx.clean, clean_aux)
 #     labelyap.set_iux2aux(casa_iux, casa_aux)
 #     return labelyap
@@ -175,8 +175,8 @@ def get_casa_maison_rope_iux2aux_dt() -> DataFrame:
 
     aux_dt = DataFrame(
         columns=[
-            kw.flare_audie,
-            kw.flare_num,
+            kw.song_audie,
+            kw.song_num,
             kw.iux_knot,
             kw.aux_knot,
             kw.iux_rope,
@@ -195,7 +195,7 @@ def get_invalid_nameyap() -> NameYap:
     sue_aux = "Sue"
     zia_iux = "Zia"
     zia_aux = "Zia"
-    nameyap = nameyap_shop(flare_audie="Sue")
+    nameyap = nameyap_shop(song_audie="Sue")
     nameyap.set_iux2aux(sue_iux, sue_aux)
     nameyap.set_iux2aux(zia_iux, zia_aux)
     return nameyap
@@ -206,7 +206,7 @@ def get_invalid_titleyap() -> TitleYap:
     sue_aux = f"Sue{default_knot_if_None()}"
     zia_iux = "Zia"
     zia_aux = f"Zia{default_knot_if_None()}"
-    x_titleyap = titleyap_shop(flare_audie="Sue")
+    x_titleyap = titleyap_shop(song_audie="Sue")
     x_titleyap.set_iux2aux(sue_iux, sue_aux)
     x_titleyap.set_iux2aux(zia_iux, zia_aux)
     return x_titleyap
@@ -217,7 +217,7 @@ def get_invalid_ropeyap() -> RopeYap:
     casa_aux = create_rope(exx.casa)
     clean_str = create_rope(casa_iux, "clean")
     clean_aux = create_rope(casa_aux, "propre")
-    ropeyap = ropeyap_shop(flare_audie="Sue")
+    ropeyap = ropeyap_shop(song_audie="Sue")
     ropeyap.set_iux2aux(clean_str, clean_aux)
     # ropeyap.set_iux2aux(casa_iux, casa_aux)
     return ropeyap
@@ -233,8 +233,8 @@ def get_slash_labelyap() -> LabelYap:
     x_labelyap = labelyap_shop(
         iux_knot=slash_iux_knot,
         aux_knot=colon_aux_knot,
-        flare_audie="Sue",
-        flare_num=7,
+        song_audie="Sue",
+        song_num=7,
     )
     x_labelyap.set_iux2aux(iux_amy45_str, aux_amy87_str)
     x_labelyap.set_iux2aux(clean_iux_str, clean_aux_str)
@@ -256,8 +256,8 @@ def get_slash_ropeyap() -> RopeYap:
     x_ropeyap = ropeyap_shop(
         iux_knot=slash_iux_knot,
         aux_knot=colon_aux_knot,
-        flare_audie="Sue",
-        flare_num=7,
+        song_audie="Sue",
+        song_num=7,
         x_labelyap=get_slash_labelyap(),
     )
     x_ropeyap.set_label(clean_iux_str, clean_aux_str)
@@ -276,8 +276,8 @@ def get_slash_titleyap() -> TitleYap:
     x_titleyap = titleyap_shop(
         iux_knot=slash_iux_knot,
         aux_knot=colon_aux_knot,
-        flare_audie="Sue",
-        flare_num=7,
+        song_audie="Sue",
+        song_num=7,
     )
     x_titleyap.set_iux2aux(bowl_iux, bowl_aux)
     x_titleyap.set_iux2aux(boulder_iux, boulder_aux)
@@ -297,8 +297,8 @@ def get_slash_nameyap() -> NameYap:
     x_nameyap = nameyap_shop(
         iux_knot=slash_iux_knot,
         aux_knot=colon_aux_knot,
-        flare_audie="Sue",
-        flare_num=7,
+        song_audie="Sue",
+        song_num=7,
     )
     x_nameyap.set_iux2aux(xio_iux, xio_aux)
     x_nameyap.set_iux2aux(sue_iux, sue_aux)
@@ -315,8 +315,8 @@ def get_speech_core_attrs_are_none_nameyap() -> NameYap:
     bob_aux = "Bobita"
     x_nan = float("nan")
     x_nameyap = nameyap_shop(
-        flare_audie="Sue",
-        flare_num=7,
+        song_audie="Sue",
+        song_num=7,
         iux_knot=x_nan,
         aux_knot=x_nan,
     )

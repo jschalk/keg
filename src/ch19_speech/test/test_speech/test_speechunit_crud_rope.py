@@ -7,7 +7,7 @@ from pytest import raises as pytest_raises
 def test_SpeechUnit_set_ropeyap_SetsAttr():
     # ESTABLISH
     sue_speechunit = speechunit_shop(exx.sue)
-    x_ropeyap = ropeyap_shop(flare_audie=exx.sue)
+    x_ropeyap = ropeyap_shop(song_audie=exx.sue)
     x_ropeyap.set_iux2aux("Bob", "Bob of Salem")
     assert sue_speechunit.ropeyap != x_ropeyap
 
@@ -22,7 +22,7 @@ def test_SpeechUnit_set_ropeyap_RaisesErrorIf_ropeyap_iux_knot_IsNotSame():
     # ESTABLISH
     sue_speechunit = speechunit_shop(exx.sue)
     slash_iux_knot = "/"
-    x_ropeyap = ropeyap_shop(iux_knot=slash_iux_knot, flare_audie=exx.sue)
+    x_ropeyap = ropeyap_shop(iux_knot=slash_iux_knot, song_audie=exx.sue)
     assert sue_speechunit.iux_knot != x_ropeyap.iux_knot
     assert sue_speechunit.ropeyap != x_ropeyap
 
@@ -37,7 +37,7 @@ def test_SpeechUnit_set_ropeyap_RaisesErrorIf_ropeyap_aux_knot_IsNotSame():
     # ESTABLISH
     sue_speechunit = speechunit_shop(exx.sue)
     slash_aux_knot = "/"
-    x_ropeyap = ropeyap_shop(aux_knot=slash_aux_knot, flare_audie=exx.sue)
+    x_ropeyap = ropeyap_shop(aux_knot=slash_aux_knot, song_audie=exx.sue)
     assert sue_speechunit.aux_knot != x_ropeyap.aux_knot
     assert sue_speechunit.ropeyap != x_ropeyap
 
@@ -48,24 +48,24 @@ def test_SpeechUnit_set_ropeyap_RaisesErrorIf_ropeyap_aux_knot_IsNotSame():
     assert str(excinfo.value) == exception_str
 
 
-def test_SpeechUnit_set_ropeyap_RaisesErrorIf_ropeyap_flare_audie_IsNotSame():
+def test_SpeechUnit_set_ropeyap_RaisesErrorIf_ropeyap_song_audie_IsNotSame():
     # ESTABLISH
     sue_speechunit = speechunit_shop(exx.sue)
-    x_ropeyap = ropeyap_shop(flare_audie=exx.yao)
-    assert sue_speechunit.flare_audie != x_ropeyap.flare_audie
+    x_ropeyap = ropeyap_shop(song_audie=exx.yao)
+    assert sue_speechunit.song_audie != x_ropeyap.song_audie
     assert sue_speechunit.ropeyap != x_ropeyap
 
     # WHEN / THEN
     with pytest_raises(Exception) as excinfo:
         sue_speechunit.set_ropeyap(x_ropeyap)
-    exception_str = f"set_yapcore Error: SpeechUnit flare_audie is '{sue_speechunit.flare_audie}', YapCore is '{exx.yao}'."
+    exception_str = f"set_yapcore Error: SpeechUnit song_audie is '{sue_speechunit.song_audie}', YapCore is '{exx.yao}'."
     assert str(excinfo.value) == exception_str
 
 
 def test_SpeechUnit_get_ropeyap_ReturnsObj():
     # ESTABLISH
     sue_speechunit = speechunit_shop(exx.sue)
-    static_x_ropeyap = ropeyap_shop(flare_audie=exx.sue)
+    static_x_ropeyap = ropeyap_shop(song_audie=exx.sue)
     static_x_ropeyap.set_iux2aux("Bob", "Bob of Salem")
     sue_speechunit.set_ropeyap(static_x_ropeyap)
 

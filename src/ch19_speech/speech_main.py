@@ -1,8 +1,8 @@
 from ch00_py.dict_toolbox import get_0_if_None
 from ch19_speech._ref.ch19_semantic_types import (
-    FlareInt,
     KnotTerm,
     PersonName,
+    SongInt,
     default_knot_if_None,
 )
 from ch19_speech.yap_term import (
@@ -39,8 +39,8 @@ class SpeechUnit:
     Contains a yapunit for each translatable type: RopeTerm, NameTerm, TitleTerm...
     """
 
-    flare_num: FlareInt = None
-    flare_audie: PersonName = None
+    song_num: SongInt = None
+    song_audie: PersonName = None
     titleyap: TitleYap = None
     nameyap: NameYap = None
     labelyap: LabelYap = None
@@ -56,7 +56,7 @@ class SpeechUnit:
             raise CheckSpeechAttrError(exception_str)
 
     def _check_speech_core_attrs_match(self, x_yapcore: YapCore):
-        self._check_speech_attr_match("flare_audie", x_yapcore)
+        self._check_speech_attr_match("song_audie", x_yapcore)
         self._check_speech_attr_match("iux_knot", x_yapcore)
         self._check_speech_attr_match("aux_knot", x_yapcore)
 
@@ -206,8 +206,8 @@ class SpeechUnit:
         x_ropeyap = _get_rid_of_speech_core_keys(self.ropeyap.to_dict())
 
         return {
-            "flare_audie": self.flare_audie,
-            "flare_num": self.flare_num,
+            "song_audie": self.song_audie,
+            "song_num": self.song_num,
             "iux_knot": self.iux_knot,
             "aux_knot": self.aux_knot,
             "nameyap": x_nameyap,
@@ -218,8 +218,8 @@ class SpeechUnit:
 
 
 def speechunit_shop(
-    flare_audie: PersonName,
-    flare_num: FlareInt = None,
+    song_audie: PersonName,
+    song_num: SongInt = None,
     iux_knot: KnotTerm = None,
     aux_knot: KnotTerm = None,
 ) -> SpeechUnit:
@@ -227,34 +227,34 @@ def speechunit_shop(
     aux_knot = default_knot_if_None(aux_knot)
 
     x_nameyap = nameyap_shop(
-        flare_audie=flare_audie,
-        flare_num=flare_num,
+        song_audie=song_audie,
+        song_num=song_num,
         iux_knot=iux_knot,
         aux_knot=aux_knot,
     )
     x_titleyap = titleyap_shop(
-        flare_audie=flare_audie,
-        flare_num=flare_num,
+        song_audie=song_audie,
+        song_num=song_num,
         iux_knot=iux_knot,
         aux_knot=aux_knot,
     )
     x_labelyap = labelyap_shop(
-        flare_audie=flare_audie,
-        flare_num=flare_num,
+        song_audie=song_audie,
+        song_num=song_num,
         iux_knot=iux_knot,
         aux_knot=aux_knot,
     )
     x_ropeyap = ropeyap_shop(
-        flare_audie=flare_audie,
-        flare_num=flare_num,
+        song_audie=song_audie,
+        song_num=song_num,
         iux_knot=iux_knot,
         aux_knot=aux_knot,
         x_labelyap=x_labelyap,
     )
 
     return SpeechUnit(
-        flare_audie=flare_audie,
-        flare_num=get_0_if_None(flare_num),
+        song_audie=song_audie,
+        song_num=get_0_if_None(song_num),
         iux_knot=iux_knot,
         aux_knot=aux_knot,
         nameyap=x_nameyap,
@@ -265,8 +265,8 @@ def speechunit_shop(
 
 
 def _get_rid_of_speech_core_keys(yap_dict: dict) -> dict:
-    yap_dict.pop("flare_num")
-    yap_dict.pop("flare_audie")
+    yap_dict.pop("song_num")
+    yap_dict.pop("song_audie")
     yap_dict.pop("iux_knot")
     yap_dict.pop("aux_knot")
     return yap_dict
@@ -274,21 +274,21 @@ def _get_rid_of_speech_core_keys(yap_dict: dict) -> dict:
 
 def _add_speech_core_keys(
     yap_dict: dict,
-    flare_num: int,
-    flare_audie: str,
+    song_num: int,
+    song_audie: str,
     iux_knot: KnotTerm,
     aux_knot: KnotTerm,
 ) -> dict:
-    yap_dict["flare_num"] = flare_num
-    yap_dict["flare_audie"] = flare_audie
+    yap_dict["song_num"] = song_num
+    yap_dict["song_audie"] = song_audie
     yap_dict["iux_knot"] = iux_knot
     yap_dict["aux_knot"] = aux_knot
     return yap_dict
 
 
 def get_speechunit_from_dict(x_dict: dict) -> SpeechUnit:
-    x_flare_num = x_dict.get("flare_num")
-    x_flare_audie = x_dict.get("flare_audie")
+    x_song_num = x_dict.get("song_num")
+    x_song_audie = x_dict.get("song_audie")
     x_iux_knot = x_dict.get("iux_knot")
     x_aux_knot = x_dict.get("aux_knot")
     nameyap_dict = x_dict.get("nameyap")
@@ -297,29 +297,29 @@ def get_speechunit_from_dict(x_dict: dict) -> SpeechUnit:
     ropeyap_dict = x_dict.get("ropeyap")
     nameyap_dict = _add_speech_core_keys(
         nameyap_dict,
-        x_flare_num,
-        x_flare_audie,
+        x_song_num,
+        x_song_audie,
         x_iux_knot,
         x_aux_knot,
     )
     titleyap_dict = _add_speech_core_keys(
         titleyap_dict,
-        x_flare_num,
-        x_flare_audie,
+        x_song_num,
+        x_song_audie,
         x_iux_knot,
         x_aux_knot,
     )
     labelyap_dict = _add_speech_core_keys(
         labelyap_dict,
-        x_flare_num,
-        x_flare_audie,
+        x_song_num,
+        x_song_audie,
         x_iux_knot,
         x_aux_knot,
     )
     ropeyap_dict = _add_speech_core_keys(
         ropeyap_dict,
-        x_flare_num,
-        x_flare_audie,
+        x_song_num,
+        x_song_audie,
         x_iux_knot,
         x_aux_knot,
     )
@@ -329,8 +329,8 @@ def get_speechunit_from_dict(x_dict: dict) -> SpeechUnit:
     x_ropeyap = get_ropeyap_from_dict(ropeyap_dict)
     x_ropeyap.labelyap = x_labelyap
     return SpeechUnit(
-        flare_audie=x_flare_audie,
-        flare_num=x_flare_num,
+        song_audie=x_song_audie,
+        song_num=x_song_num,
         iux_knot=x_iux_knot,
         aux_knot=x_aux_knot,
         nameyap=x_nameyap,
@@ -347,12 +347,12 @@ class SpeechCoreAttrConflictError(Exception):
 # find out why no tests trip without "Core attrs in conflict"
 def inherit_speechunit(older: SpeechUnit, newer: SpeechUnit) -> SpeechUnit:
     # if (
-    #     older.flare_audie != newer.flare_audie
+    #     older.song_audie != newer.song_audie
     #     or older.iux_knot != newer.iux_knot
     #     or older.aux_knot != newer.aux_knot
     # ):
     #     raise SpeechCoreAttrConflictError("Core attrs in conflict")
-    if older.flare_num >= newer.flare_num:
+    if older.song_num >= newer.song_num:
         raise SpeechCoreAttrConflictError("older speechunit is not older")
     newer.set_nameyap(inherit_nameyap(newer.nameyap, older.nameyap))
     newer.set_titleyap(inherit_titleyap(newer.titleyap, older.titleyap))

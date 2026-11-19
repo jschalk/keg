@@ -1,4 +1,4 @@
-from ch19_speech._ref.ch19_semantic_types import AudieTitle, FlareInt
+from ch19_speech._ref.ch19_semantic_types import AudieTitle, SongInt
 from ch99_glossary.ch_keyword import Ch03Keywords as kw, ExampleStrs as exx
 from inspect import getdoc as inspect_getdoc
 
@@ -13,11 +13,11 @@ def test_AudieTitle_Exists():
     assert inspect_getdoc(bob_audietitle) == doc_str
 
 
-def test_FlareInt_Exists():
+def test_SongInt_Exists():
     # ESTABLISH
     # WHEN
-    two_flareint = FlareInt(2)
+    two_songint = SongInt(2)
     # THEN
-    assert two_flareint == 2
-    doc_str = """Integer for tracking Flares."""
-    assert inspect_getdoc(two_flareint) == doc_str
+    assert two_songint == 2
+    doc_str = """Integer for tracking Songs."""
+    assert inspect_getdoc(two_songint) == doc_str

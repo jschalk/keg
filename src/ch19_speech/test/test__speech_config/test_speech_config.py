@@ -46,7 +46,7 @@ def test_get_speech_config_dict_ReturnsObj():
 
         speech_iux = expected_speech_key.replace("speech_", "iux_")
         expected_jkeys_keys = set(speech_dict.get(kw.jkeys).keys())
-        assert {kw.flare_audie, kw.flare_num, speech_iux} == expected_jkeys_keys
+        assert {kw.song_audie, kw.song_num, speech_iux} == expected_jkeys_keys
         speech_aux = expected_speech_key.replace("speech_", "aux_")
         expected_jvalues_keys = {kw.aux_knot, kw.iux_knot, speech_aux}
         print(f"{expected_jvalues_keys=}")

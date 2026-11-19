@@ -32,7 +32,7 @@ class AudieTitle(GroupTitle):
     pass
 
 
-class FlareInt(int):
-    """Integer for tracking Flares."""
+class SongInt(int):
+    """Integer for tracking Songs."""
 
     pass
