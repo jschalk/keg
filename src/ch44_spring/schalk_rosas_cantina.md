@@ -9,7 +9,7 @@
 
 ## Down in the West Texas Town of El Paso
 
-I grew up in El Paso, went to UTEP and became friends with the Physics people. They told me that a Nobel Prize recipient was coming to El Paso and was going to give a talk. I went to go see him and he said he liked the Marty Robins song "Rosa's Cantina" and wanted to go to Rosa's Cantina himself. Rosa's Cantina is still around, I've eaten there once and had a very very good chile relleno. I do recommend. 
+I grew up in El Paso, went to UTEP and became friends with the Physics people. They told me that a Nobel Prize recipient was coming to El Paso and was going to give a talk. I went to go see him and he said he liked the Marty Robin's "Rosa's Cantina" and wanted to go to Rosa's Cantina himself. Rosa's Cantina is still around, I've eaten there once and had a very very good chile relleno. I do recommend. 
 
 <div align="center"><img src="../ch44_spring/images/rosas_cantina.webp" alt="Rosa's Cantina restaurant" width="50%"></div>
 
