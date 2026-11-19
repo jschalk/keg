@@ -1,14 +1,13 @@
 from ch00_py.file_toolbox import create_path, open_json
-from os.path import join as os_path_join
 
 
-def tash_config_path():
-    "Returns path: c15_tash/tash_config.json"
+def create_tash_config_path():
+    "Returns path: c16_tash/tash_config.json"
     return create_path("src", "ch16_tash", "tash_config.json")
 
 
 def get_tash_config_dict():
-    return open_json(tash_config_path())
+    return open_json(create_tash_config_path())
 
 
 def get_tash_dimens() -> set:

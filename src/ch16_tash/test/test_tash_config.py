@@ -1,21 +1,22 @@
 from ch00_py.file_toolbox import create_path
 from ch16_tash._ref.ch16_semantic_types import TimeNum
 from ch16_tash.tash_config import (
+    create_tash_config_path,
     get_context_tashable_args,
     get_tash_args,
     get_tash_config_dict,
     get_tash_dimens,
     get_tashable_args,
     set_tashable_otx_inx_args,
-    tash_config_path,
 )
 from ch99_glossary.ch_keyword import Ch16Keywords as kw
 
 
-def test_tash_config_path_ReturnsObj_Tash() -> str:
-    # ESTABLISH / WHEN / THEN
+def test_create_tash_config_path_ReturnsObj_Tash() -> str:
+    # ESTABLISH / WHEN
     chapter_dir = create_path(kw.src, "ch16_tash")
-    assert tash_config_path() == create_path(chapter_dir, "tash_config.json")
+    # THEN
+    assert create_tash_config_path() == create_path(chapter_dir, "tash_config.json")
 
 
 def test_get_tash_config_dict_ReturnsObj():
