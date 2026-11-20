@@ -1,4 +1,6 @@
 from ch00_py.file_toolbox import create_path
+from ch08_person_logic.person_config import get_person_calc_args_type_dict
+from ch15_moment.moment_config import get_moment_args_obj_types
 from ch16_tash._ref.ch16_semantic_types import TimeNum
 from ch16_tash.tash_config import (
     create_tash_config_path,
@@ -27,6 +29,7 @@ def test_get_tash_config_dict_ReturnsObj():
     assert tash_config
     tash_config_dimens = set(tash_config.keys())
     assert kw.tash_timenum in tash_config_dimens
+    # assert "tash_fundnum" in tash_config_dimens
     assert len(tash_config) == 1
 
     _validate_tash_config(tash_config)
@@ -41,50 +44,29 @@ def test_get_tash_config_dict_ReturnsObj():
 
 
 def _validate_tash_config(tash_config: dict):
-    x_possible_args = {}
+    moment_args_obj_types = get_moment_args_obj_types()
+    person_args_obj_types = get_person_calc_args_type_dict()
 
     # for every tash_format file there exists a unique tash_number with leading zeros to make 5 digits
     for dimen_dict in tash_config.values():
         assert dimen_dict.get(kw.jkeys)
         assert dimen_dict.get(kw.jvalues) is not None
         assert dimen_dict.get("affected_semantic_types") is not None
-        for attr_key, attrs_dict in dimen_dict.items():
-            if attr_key == "affected_semantic_types":
-                if kw.TimeNum in set(attrs_dict.keys()):
-                    TimeNum_dict = attrs_dict.get(kw.TimeNum)
-                    TimeNum_args = TimeNum_dict.get("tashable_values")
-                    expected_TimeNum_args = {kw.tran_time, kw.offi_time, kw.bud_time}
-                    assert set(TimeNum_args.keys()) == expected_TimeNum_args
-                if kw.ReasonNum in set(attrs_dict.keys()):
-                    ReasonNum_dict = attrs_dict.get(kw.ReasonNum)
-                    ReasonNum_args = ReasonNum_dict.get("tashable_values")
-                    expected_ReasonNum_args = {kw.reason_lower, kw.reason_upper}
-                    assert set(ReasonNum_args.keys()) == expected_ReasonNum_args
-                if kw.FactNum in set(attrs_dict.keys()):
-                    FactNum_dict = attrs_dict.get(kw.FactNum)
-                    FactNum_args = FactNum_dict.get("tashable_values")
-                    expected_FactNum_args = {kw.fact_lower, kw.fact_upper}
-                    assert set(FactNum_args.keys()) == expected_FactNum_args
-            # print(f"{x_dimen=} {attrs_dict=}")
-
-
-#         print(f"_validate_tash_config {tash_dimens=}")
-#         assert dimen_dict.get(kw.jkeys)
-#         assert dimen_dict.get(kw.jvalues)
-#         assert dimen_dict.get(kw.UPDATE) is None
-#         assert dimen_dict.get(kw.INSERT) is None
-#         assert dimen_dict.get(kw.DELETE) is None
-#         assert dimen_dict.get(kw.normal_specs) is None
-#         assert len(dimen_dict) == 2
-
-#         tash_jkeys_keys = set(dimen_dict.get(kw.jkeys).keys())
-#         for jkey_key in tash_jkeys_keys:
-#             print(f"_validate_tash_config {tash_dimens=} {jkey_key=} ")
-#             assert jkey_key in x_possible_args
-#         tash_jvalues_keys = set(dimen_dict.get(kw.jvalues).keys())
-#         for jvalue_key in tash_jvalues_keys:
-#             print(f"_validate_tash_config {tash_dimens=} {jvalue_key=} ")
-#             assert jvalue_key in x_possible_args
+        sem_attrs_dict = dimen_dict.get("affected_semantic_types")
+        for semantic_type, type_dict in sem_attrs_dict.items():
+            print(f"{semantic_type=}")
+            tashable_args = set(type_dict.get('tashable_values').keys())
+            print(f"{tashable_args=}")
+            expected_type_args = set()
+            for x_arg, arg_type in moment_args_obj_types.items():
+                if arg_type == semantic_type:
+                    print(f"{x_arg=}")
+                    expected_type_args.add(x_arg)
+            for x_arg, arg_type in person_args_obj_types.items():
+                if arg_type == semantic_type:
+                    print(f"{x_arg=}")
+                    expected_type_args.add(x_arg)
+            assert tashable_args == expected_type_args
 
 
 def test_get_tash_dimens_ReturnsObj():
