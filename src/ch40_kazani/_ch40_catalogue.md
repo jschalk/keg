@@ -40,6 +40,8 @@
 
 **[People cannot lie](./kazani_people_cannot_lie.md)** Kamil Kazani - 2026-03-06<br>
 
+**[Power and Glory](./kazani_power_glory.md)** Kamil Kazani - 2026-11-20<br>
+
 **[Suffering from success](./kazani_suffering_from_success.md)** Kamil Kazani - 2026-02-27<br>
 
 **[The Able Family](./kazani_the_able_family.md)** Kamil Kazani - 2024-09-07<br>
