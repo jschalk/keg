@@ -75,6 +75,7 @@ def _validate_moment_config(moment_config: dict):
     accepted_obj_typees = get_allowed_obj_types()
     accepted_obj_typees.add("str")
     accepted_obj_typees.add(kw.TimeNum)
+    accepted_obj_typees.add(kw.FundNum)
 
     # for every moment_format file there exists a unique moment_number with leading zeros to make 5 digits
     for moment_dimen, dimen_dict in moment_config.items():

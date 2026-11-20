@@ -635,16 +635,17 @@ def test_get_obj_type_ReturnsObj():
 def test_get_allowed_obj_types_ReturnsObj():
     # ESTABLISH
     x_allowed_obj_types = {
-        "int",
-        kw.ReasonNum,
-        kw.FactNum,
-        kw.NameTerm,
-        kw.TitleTerm,
-        kw.LabelTerm,
-        kw.RopeTerm,
-        kw.KnotTerm,
-        "float",
         "bool",
+        kw.FactNum,
+        "float",
+        kw.FundNum,
+        kw.NameTerm,
+        "int",
+        kw.LabelTerm,
+        kw.KnotTerm,
+        kw.ReasonNum,
+        kw.RopeTerm,
+        kw.TitleTerm,
     }
 
     # WHEN / THEN

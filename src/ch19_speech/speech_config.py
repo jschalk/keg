@@ -62,7 +62,7 @@ def get_speech_args_obj_types() -> dict[str, str]:
     return {
         "active_requisite": "bool",
         "addin": "float",
-        "amount": "float",
+        "amount": "FundNum",
         "awardee_title": "TitleTerm",
         "begin": "float",
         "person_name": "NameTerm",
@@ -100,7 +100,7 @@ def get_speech_args_obj_types() -> dict[str, str]:
         "morph": "bool",
         "numor": "int",
         "offi_time": "TimeNum",
-        "quota": "int",
+        "quota": "FundNum",
         "labor_title": "TitleTerm",
         "plan_rope": "RopeTerm",
         "pledge": "bool",

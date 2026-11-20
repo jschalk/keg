@@ -30,67 +30,67 @@ def test_get_jargon_args_obj_types_ReturnsObj():
     jargon_args_obj_types = get_jargon_args_obj_types()
 
     # THEN
-    assert jargon_args_obj_types.get(kw.contact_name) == kw.NameTerm
     assert jargon_args_obj_types.get(kw.addin) == "float"
-    assert jargon_args_obj_types.get(kw.amount) == "float"
+    assert jargon_args_obj_types.get(kw.amount) == kw.FundNum
     assert jargon_args_obj_types.get(kw.awardee_title) == kw.TitleTerm
-    assert jargon_args_obj_types.get(kw.reason_context) == kw.RopeTerm
     assert jargon_args_obj_types.get(kw.active_requisite) == "bool"
     assert jargon_args_obj_types.get(kw.begin) == "float"
+    assert jargon_args_obj_types.get(kw.bud_time) == kw.TimeNum
     assert jargon_args_obj_types.get(kw.c400_number) == "int"
+    assert jargon_args_obj_types.get(kw.celldepth) == "int"
     assert jargon_args_obj_types.get(kw.close) == "float"
     assert jargon_args_obj_types.get(kw.contact_cred_mass) == "float"
-    assert jargon_args_obj_types.get(kw.group_cred_mass) == "float"
+    assert jargon_args_obj_types.get(kw.contact_debt_mass) == "float"
+    assert jargon_args_obj_types.get(kw.contact_name) == kw.NameTerm
     assert jargon_args_obj_types.get(kw.credor_respect) == "float"
     assert jargon_args_obj_types.get(kw.cumulative_day) == "int"
     assert jargon_args_obj_types.get(kw.cumulative_minute) == "int"
-    assert jargon_args_obj_types.get(kw.contact_debt_mass) == "float"
-    assert jargon_args_obj_types.get(kw.group_debt_mass) == "float"
     assert jargon_args_obj_types.get(kw.debtor_respect) == "float"
     assert jargon_args_obj_types.get(kw.denom) == "int"
-    assert jargon_args_obj_types.get(kw.reason_divisor) == "int"
-    assert jargon_args_obj_types.get(kw.spark_face) == kw.NameTerm
+    assert jargon_args_obj_types.get(kw.epoch_label) == kw.LabelTerm
     assert jargon_args_obj_types.get(kw.fact_context) == kw.RopeTerm
-    assert jargon_args_obj_types.get(kw.moment_rope) == kw.RopeTerm
-    assert jargon_args_obj_types.get(kw.fact_upper) == kw.FactNum
-    assert jargon_args_obj_types.get(kw.fact_lower) == kw.FactNum
     assert jargon_args_obj_types.get(kw.fund_grain) == "float"
+    assert jargon_args_obj_types.get(kw.fact_lower) == kw.FactNum
+    assert jargon_args_obj_types.get(kw.fact_state) == kw.RopeTerm
+    assert jargon_args_obj_types.get(kw.fact_upper) == kw.FactNum
     assert jargon_args_obj_types.get(kw.fund_pool) == "float"
     assert jargon_args_obj_types.get(kw.give_force) == "float"
     assert jargon_args_obj_types.get(kw.gogo_want) == "float"
+    assert jargon_args_obj_types.get(kw.group_cred_mass) == "float"
+    assert jargon_args_obj_types.get(kw.group_debt_mass) == "float"
     assert jargon_args_obj_types.get(kw.group_title) == kw.TitleTerm
     assert jargon_args_obj_types.get(kw.healer_name) == kw.NameTerm
     assert jargon_args_obj_types.get(kw.hour_label) == kw.LabelTerm
-    assert jargon_args_obj_types.get(kw.poynt) == "int"
+    assert jargon_args_obj_types.get(kw.knot) == "str"
+    assert jargon_args_obj_types.get(kw.labor_title) == kw.TitleTerm
+    assert jargon_args_obj_types.get(kw.mana_grain) == "float"
     assert jargon_args_obj_types.get(kw.max_tree_traverse) == "int"
+    assert jargon_args_obj_types.get(kw.moment_rope) == kw.RopeTerm
     assert jargon_args_obj_types.get(kw.month_label) == kw.LabelTerm
     assert jargon_args_obj_types.get(kw.monthday_index) == "int"
     assert jargon_args_obj_types.get(kw.morph) == "bool"
+    assert jargon_args_obj_types.get(kw.numor) == "int"
+    assert jargon_args_obj_types.get(kw.person_name) == kw.NameTerm
+    assert jargon_args_obj_types.get(kw.plan_rope) == kw.RopeTerm
+    assert jargon_args_obj_types.get(kw.pledge) == "bool"
+    assert jargon_args_obj_types.get(kw.poynt) == "int"
+    assert jargon_args_obj_types.get(kw.problem_bool) == "bool"
+    assert jargon_args_obj_types.get(kw.offi_time) == kw.TimeNum
+    assert jargon_args_obj_types.get(kw.quota) == kw.FundNum
+    assert jargon_args_obj_types.get(kw.reason_context) == kw.RopeTerm
+    assert jargon_args_obj_types.get(kw.reason_divisor) == "int"
+    assert jargon_args_obj_types.get(kw.reason_lower) == kw.ReasonNum
     assert jargon_args_obj_types.get(kw.reason_state) == kw.RopeTerm
     assert jargon_args_obj_types.get(kw.reason_upper) == kw.ReasonNum
-    assert jargon_args_obj_types.get(kw.numor) == "int"
-    assert jargon_args_obj_types.get(kw.offi_time) == kw.TimeNum
-    assert jargon_args_obj_types.get(kw.person_name) == kw.NameTerm
-    assert jargon_args_obj_types.get(kw.reason_lower) == kw.ReasonNum
-    assert jargon_args_obj_types.get(kw.mana_grain) == "float"
-    assert jargon_args_obj_types.get(kw.fact_state) == kw.RopeTerm
-    assert jargon_args_obj_types.get(kw.pledge) == "bool"
-    assert jargon_args_obj_types.get(kw.problem_bool) == "bool"
-    assert jargon_args_obj_types.get(kw.quota) == "int"
     assert jargon_args_obj_types.get(kw.respect_grain) == "float"
-    assert jargon_args_obj_types.get(kw.plan_rope) == kw.RopeTerm
-    assert jargon_args_obj_types.get(kw.celldepth) == "int"
+    assert jargon_args_obj_types.get(kw.spark_face) == kw.NameTerm
+    assert jargon_args_obj_types.get(kw.solo) == "int"
     assert jargon_args_obj_types.get(kw.stop_want) == "float"
     assert jargon_args_obj_types.get(kw.take_force) == "float"
-    assert jargon_args_obj_types.get(kw.labor_title) == kw.TitleTerm
-    assert jargon_args_obj_types.get(kw.bud_time) == kw.TimeNum
     assert jargon_args_obj_types.get(kw.tran_time) == kw.TimeNum
-    assert jargon_args_obj_types.get(kw.epoch_label) == kw.LabelTerm
     assert jargon_args_obj_types.get(kw.weekday_label) == kw.LabelTerm
     assert jargon_args_obj_types.get(kw.weekday_order) == "int"
-    assert jargon_args_obj_types.get(kw.knot) == "str"
     assert jargon_args_obj_types.get(kw.yr1_jan1_offset) == "int"
-    assert jargon_args_obj_types.get(kw.solo) == "int"
 
     # make sure it jargon_arg_obj_types has all moment and all atom args
     jargon_args = set(jargon_args_obj_types.keys())

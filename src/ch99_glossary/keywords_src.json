@@ -47,7 +47,10 @@
   "Flare": {"valid_ch": ""}, 
   "Fredrick": {"valid_ch": "14, 23"}, 
   "FundGrain": {"semantic_type": "float", "valid_ch": "3, 7, 8, 15, 97"}, 
-  "FundNum": {"semantic_type": "float", "valid_ch": "3, 5, 7, 8, 12, 13, 15, 16, 31, 97"}, 
+  "FundNum": {
+    "semantic_type": "float", 
+    "valid_ch": "3, 5, 7, 8, 9, 12, 13, 15, 16, 18, 19, 31, 97"
+  }, 
   "Geo": {"valid_ch": "14, 23, 39, 40, 45"}, 
   "Gift": {"valid_ch": "33"}, 
   "God": {"valid_ch": "39, 40, 44, 54"}, 

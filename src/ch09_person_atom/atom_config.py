@@ -55,6 +55,7 @@ def get_allowed_obj_types() -> set[str]:
         "KnotTerm",
         "ReasonNum",
         "FactNum",
+        "FundNum",
     }
 
 
