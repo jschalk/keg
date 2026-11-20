@@ -50,10 +50,6 @@
     "jkeys": {"moment_rope": {}, "spark_face": {}, "spark_num": {}, "weekday_order": {}}, 
     "jvalues": {"knot": {}, "weekday_label": {}}
   }, 
-  "PromNABTIME_Unit": {
-    "jkeys": {"moment_rope": {}, "otx_time": {}, "spark_face": {}, "spark_num": {}}, 
-    "jvalues": {"inx_time": {}}
-  }, 
   "PromPRNAWAR_DelUnit": {
     "jkeys": {
       "awardee_title": {}, 
@@ -267,5 +263,9 @@
   "PromTRLTITL_Unit": {
     "jkeys": {"otx_title": {}, "spark_face": {}, "spark_num": {}}, 
     "jvalues": {"inx_knot": {}, "inx_title": {}, "otx_knot": {}, "unknown_str": {}}
+  }, 
+  "PromTSHTIME_Unit": {
+    "jkeys": {"moment_rope": {}, "otx_time": {}, "spark_face": {}, "spark_num": {}}, 
+    "jvalues": {"inx_time": {}}
   }
 }

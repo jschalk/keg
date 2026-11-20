@@ -38,7 +38,6 @@ Scaffold,10,
 Soldier,10,
 Spring,10,
 Stilt,10,
-TSH,10,
 Target,10,
 Tower,10,
 Trash,10,
@@ -773,6 +772,7 @@ weekday_label_inx,0,"21, 22"
 weekday_label_iux,0,21
 weekday_label_otx,0,"21, 22"
 world_name,0,"21, 30, 32, 33, 90"
+TSH,0,"22, 33"
 b_agg,0,"22, 24, 27, 32"
 b_raw,0,"22, 24, 32"
 b_src,0,"22, 23, 24, 32, 90"
@@ -803,7 +803,6 @@ mmtoffi,0,"22, 26, 97"
 mmtunit,0,"22, 26, 97"
 mmtweek,0,"22, 26, 97"
 moment_ote1_agg,0,"22, 26, 27, 32, 97"
-nabtime,0,"22, 26"
 s_agg,0,"22, 24, 25, 32"
 s_raw,0,"22, 24, 25, 32"
 s_vld,0,"22, 24, 25, 26, 30, 32"
@@ -815,6 +814,8 @@ trllabe,0,"22, 25, 30, 97"
 trlname,0,"22, 25, 26, 30, 32, 97"
 trlrope,0,"22, 24, 25, 30, 97"
 trltitl,0,"22, 25, 30, 97"
+tsh,0,"22, 26, 40"
+tshtime,0,"22, 26"
 fission,0,23
 idea_type,0,23
 ii,0,"23, 30, 32, 39, 40, 44, 90"
@@ -912,7 +913,6 @@ shill,0,40
 soil,0,40
 trash,0,40
 trooper,0,40
-tsh,0,40
 winner,0,"40, 44, 45, 46"
 winning,0,"40, 45"
 Kegology,0,"44, 45, 46, 96, 97"

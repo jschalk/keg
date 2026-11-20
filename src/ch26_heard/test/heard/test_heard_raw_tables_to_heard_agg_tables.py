@@ -18,9 +18,9 @@ from ch22_etl_config.etl_sqlstr import (
 )
 from ch26_heard.heard import etl_heard_raw_tables_to_heard_agg_tables
 from ch26_heard.test.heard.test_heard_agg__update_factnum_pfhapx import (
-    pfhapx_insert_nabtime,
     pfhapx_insert_prnfact,
     pfhapx_insert_prnplan,
+    pfhapx_insert_tshtime,
     pfhapx_select_prnfact,
 )
 from ch99_glossary.ch_keyword import Ch26Keywords as kw, ExampleStrs as exx
@@ -245,7 +245,7 @@ def test_etl_heard_raw_tables_to_heard_agg_tables_SQLTEST_Scenario1_FactUnit_Tim
     time_otx, time_inx = (300, 200)
     fact_lower_otx, fact_upper_otx = (7777, 8000)
     plan_close = 5259492000
-    nabtime_val = [spark7, wx.root_rope, time_otx, time_inx]
+    tshtime_val = [spark7, wx.root_rope, time_otx, time_inx]
     prnplan_val = [spark7, wx.Bob, wx.mop_rope, plan_close]
     prnfact_val = [
         spark7,
@@ -256,7 +256,7 @@ def test_etl_heard_raw_tables_to_heard_agg_tables_SQLTEST_Scenario1_FactUnit_Tim
         fact_upper_otx,
     ]
 
-    insert_nabtime_sql = pfhapx_insert_nabtime(cursor0, [nabtime_val])
+    insert_tshtime_sql = pfhapx_insert_tshtime(cursor0, [tshtime_val])
     insert_prnplan_sql = pfhapx_insert_prnplan(cursor0, [prnplan_val])
     insert_prnfact_sql = pfhapx_insert_prnfact(cursor0, [prnfact_val])
 

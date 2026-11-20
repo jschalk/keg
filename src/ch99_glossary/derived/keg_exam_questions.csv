@@ -42,7 +42,6 @@ Did you read that the keyword_definition of 'Scaffold' is 'The only way to get t
 Did you read that the keyword_definition of 'Soldier' is 'As defined by Busta Rhymes in song 'My Shot''.
 Did you read that the keyword_definition of 'Spring' is 'New things pop into being'.
 Did you read that the keyword_definition of 'Stilt' is 'A ladder load-bearing support of a Wheel.'.
-Did you read that the keyword_definition of 'TSH' is 'Short for Tash'.
 Did you read that the keyword_definition of 'Target' is 'A FamilyUnit with prestige.'.
 Did you read that the keyword_definition of 'Tower' is 'A Stack of FamilyUnits that result in a service being provided to a FamilyUnit in Power.'.
 Did you read that the keyword_definition of 'Trash' is 'Bad or useless or not worthy of consideration.'.
@@ -779,6 +778,7 @@ Did you read that the keyword_definition of 'weekday_label_inx' is 'The 'weekday
 Did you read that the keyword_definition of 'weekday_label_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'weekday_label_otx' is 'The 'weekday_label' value after Jargon.'.
 Did you read that the keyword_definition of 'world_name' is 'Definition needed.'.
+Did you read that the keyword_definition of 'TSH' is 'Short for Tash'.
 Did you read that the keyword_definition of 'b_agg' is '5 character abbreviation of brick_agg. stage_type_order=4 Brick Agg: The Brick Raw tables are aggregated to elimanate duplicates.'.
 Did you read that the keyword_definition of 'b_raw' is '5 character abbreviation of brick_raw. stage_type_order=3 Brick Raw: The importable Excel Sheets entering the database'.
 Did you read that the keyword_definition of 'b_src' is '5 character abbreviation of brick_src. stage_type_order=2 Brick files. Brick formats with SparkNum.'.
@@ -809,7 +809,6 @@ Did you read that the keyword_definition of 'mmtoffi' is 'abbv for moment_timeof
 Did you read that the keyword_definition of 'mmtunit' is 'abbv for momentunit'.
 Did you read that the keyword_definition of 'mmtweek' is 'abbv for moment_epoch_weekday'.
 Did you read that the keyword_definition of 'moment_ote1_agg' is 'Create Database Table that holds all spark_num to bud_time pairs. Include moment_rope and person_name'.
-Did you read that the keyword_definition of 'nabtime' is 'abbv for tash_timenum'.
 Did you read that the keyword_definition of 's_agg' is '5 character abbreviation of sound_agg. stage_type_order=8 Populated by aggregated Sound Raw dimen data (elimanate duplicates). Jargon Core data is validated then used to jargon non-Jargon dimen data'.
 Did you read that the keyword_definition of 's_raw' is '5 character abbreviation of sound_raw. stage_type_order=7 The Brick Valid data is seperated by column into dimen data such as person_planunit and moment_budunit'.
 Did you read that the keyword_definition of 's_vld' is '5 character abbreviation of sound_vld. stage_type_order=9 The Translated Sound Agg data is aggregated to elimanate duplicates into Sound Valid'.
@@ -821,6 +820,8 @@ Did you read that the keyword_definition of 'trllabe' is 'abbv for jargon_label'
 Did you read that the keyword_definition of 'trlname' is 'abbv for jargon_name'.
 Did you read that the keyword_definition of 'trlrope' is 'abbv for jargon_rope'.
 Did you read that the keyword_definition of 'trltitl' is 'abbv for jargon_title'.
+Did you read that the keyword_definition of 'tsh' is 'Short for Tash'.
+Did you read that the keyword_definition of 'tshtime' is 'abbv for tash_timenum'.
 Did you read that the keyword_definition of 'fission' is 'Any complicated step changing idea_type to brick_type. Each fission_step makes a single type of change. Can be simple (set value to X) or complicated (add missing rows with relative values). Only referenced in ch23'.
 Did you read that the keyword_definition of 'idea_type' is 'Definition needed.'.
 Did you read that the keyword_definition of 'ii' is 'Idea Format Identifier. Every idea_type format starts with 'ii' and then 5 numbers. Every brick_type has a mirrored idea_type. Multiple idea_types can map to single brick_type'.
@@ -918,7 +919,6 @@ Did you read that the keyword_definition of 'shill' is 'A Rider for a bad person
 Did you read that the keyword_definition of 'soil' is 'Definition needed.'.
 Did you read that the keyword_definition of 'trash' is 'Bad or useless or not worthy of consideration.'.
 Did you read that the keyword_definition of 'trooper' is 'A professional member of the armed services of a Nation-State.'.
-Did you read that the keyword_definition of 'tsh' is 'Short for Tash'.
 Did you read that the keyword_definition of 'winner' is 'A FamilyUnit getting more Prestige.'.
 Did you read that the keyword_definition of 'winning' is 'The act of a FamilyUnit getting more Prestige.'.
 "Did you read that the keyword_definition of 'Kegology' is 'The Philosophy of Kings, Eyes, and God.'."

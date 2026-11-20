@@ -134,7 +134,7 @@ def test_create_prime_tablename_ReturnsObj_Scenario0_ExpectedReturns():
     mmtmont_s_agg_table = create_prime_tablename(kw.mmtmont, kw.s_agg)
     mmtweek_s_agg_table = create_prime_tablename(kw.mmtweek, kw.s_agg)
     mmtoffi_s_agg_table = create_prime_tablename(kw.mmtoffi, kw.s_agg)
-    nabtime_s_agg_table = create_prime_tablename(kw.nabtime, kw.s_agg)
+    tshtime_s_agg_table = create_prime_tablename(kw.tshtime, kw.s_agg)
     trlname_s_agg_table = create_prime_tablename(kw.trlname, kw.s_agg)
     trllabe_s_agg_table = create_prime_tablename(kw.trllabe, kw.s_agg)
     trlrope_s_agg_table = create_prime_tablename(kw.trlrope, kw.s_agg)
@@ -166,7 +166,7 @@ def test_create_prime_tablename_ReturnsObj_Scenario0_ExpectedReturns():
     assert mmtmont_s_agg_table == f"{kw.moment_epoch_month}_{kw.s_agg}"
     assert mmtweek_s_agg_table == f"{kw.moment_epoch_weekday}_{kw.s_agg}"
     assert mmtoffi_s_agg_table == f"{kw.moment_timeoffi}_{kw.s_agg}"
-    assert nabtime_s_agg_table == f"{kw.tash_timenum}_{kw.s_agg}"
+    assert tshtime_s_agg_table == f"{kw.tash_timenum}_{kw.s_agg}"
     assert trlname_s_agg_table == f"{kw.jargon_name}_{kw.s_agg}"
     assert trllabe_s_agg_table == f"{kw.jargon_label}_{kw.s_agg}"
     assert trlrope_s_agg_table == f"{kw.jargon_rope}_{kw.s_agg}"

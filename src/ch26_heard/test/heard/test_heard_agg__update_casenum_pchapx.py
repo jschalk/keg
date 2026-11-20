@@ -9,7 +9,7 @@ from ch99_glossary.ch_keyword import Ch26Keywords as kw
 from sqlite3 import Cursor
 
 
-def pchapx_insert_nabtime(cursor0: Cursor, x_values: list[list]) -> str:
+def pchapx_insert_tshtime(cursor0: Cursor, x_values: list[list]) -> str:
     """x_cols = [kw.spark_num, kw.moment_rope, kw.otx_time, kw.inx_time]"""
 
     x_cols = [kw.spark_num, kw.moment_rope, kw.otx_time, kw.inx_time]
@@ -70,7 +70,7 @@ def test_update_caseunit_heard_agg_timenum_columns_SQLTEST_Scenario0_NoWarp_rang
     time_otx, time_inx = (300, 200)
     reason_lower_otx, reason_upper_otx = (600, 690)
     plan_denom, plan_morph = (1440, True)
-    nabtime_val = [spark7, wx.root_rope, time_otx, time_inx]
+    tshtime_val = [spark7, wx.root_rope, time_otx, time_inx]
     prnplan_val = [spark7, wx.Bob, wx.mop_rope, plan_denom, plan_morph]
     prncase_val = [
         spark7,
@@ -81,7 +81,7 @@ def test_update_caseunit_heard_agg_timenum_columns_SQLTEST_Scenario0_NoWarp_rang
         reason_upper_otx,
     ]
 
-    insert_nabtime_sql = pchapx_insert_nabtime(cursor0, [nabtime_val])
+    insert_tshtime_sql = pchapx_insert_tshtime(cursor0, [tshtime_val])
     insert_prnplan_sql = pchapx_insert_prnplan(cursor0, [prnplan_val])
     insert_prncase_sql = pchapx_insert_prncase(cursor0, [prncase_val])
 
