@@ -1,6 +1,7 @@
 from ch00_py.file_toolbox import create_path, open_json
 
 
+# TODO consider Nabu converion for FundNum
 def get_nabu_config_filename() -> str:
     return "nabu_config.json"
 

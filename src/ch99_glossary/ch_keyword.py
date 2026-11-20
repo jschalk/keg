@@ -1470,6 +1470,7 @@ class Ch16Keywords(str, Enum):
 class Ch17Keywords(str, Enum):
     DELETE = "DELETE"
     FactNum = "FactNum"
+    FundNum = "FundNum"
     INSERT = "INSERT"
     Keyword = "Keyword"
     Nabu = "Nabu"

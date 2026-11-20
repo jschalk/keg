@@ -278,7 +278,6 @@ def test_SpecialBuild_get_keywords_src_config(rebuild_keyword_src):
     #     print(f"{keyword_str}: '{keyword_chs}'")
     src_keywords_src_path = create_src_keywords_src_path("src")
     prev_and_curr_keyword_file_are_same = old_keywords_dict == expected_ch_config
-    print(f"{prev_and_curr_keyword_file_are_same=}")
     if not prev_and_curr_keyword_file_are_same:
         print(
             "Create and save keyword_src_config file, fail test if there are any changes so changes can apply to next test run. "

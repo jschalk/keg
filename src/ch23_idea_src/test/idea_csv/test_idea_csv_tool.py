@@ -48,9 +48,6 @@ def test_get_dimen_minimum_idea_types_ReturnsObj():
     for x_dimen, x_brick_type in get_dimen_minimum_del_brick_names().items():
         print(f"del {x_dimen} ii{str(x_brick_type)[2:7]}")
         expected_set.add(f"ii{x_brick_type[2:7]}")
-    # TODO get rid of these removes
-    # expected_set.remove("ii00106")
-    # expected_set.remove("ii00170")
     expected_list = sorted(expected_set, key=lambda s: int(s[2:]))
     # for e_brick_type in expected_list:
     #     print(f""""ii{str(e_brick_type)[2:7]}",""")

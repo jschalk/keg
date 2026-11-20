@@ -21,7 +21,7 @@ def path_contains_subpath(full_path: str, sub_path: str):
         return False
 
 
-def test_Chapters_test_Tests_AreInCorrectDirStructure():
+def test_Chapters_test_TestsInCorrectDirStructure():
     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
     # ESTABLISH / WHEN / THEN
     for chapter_desc, chapter_dir in get_chapter_descs().items():
@@ -169,6 +169,7 @@ def test_Chapters_ReferenceDir_ref_ExistsForEveryChapter_Scenario0():
         assert chapter_ref_ch_int == chapter_desc_ch_int, assertion_fail_str
 
 
+# TODO create special test that on --rebuild_docs deletes empty chapters
 def test_Chapters_DoNotHaveEmptyDirectories():
     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
     # ESTABLISH
