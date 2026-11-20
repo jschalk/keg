@@ -23,7 +23,7 @@ from pandas.testing import assert_frame_equal as pandas_testing_assert_frame_equ
 
 def test_csv_dict_to_excel_SavesFile(temp3_fs):
     # ESTABLISH
-    test_data = {"TestSheet": "A,B\n5,6\n7,8"}
+    test_data = {"Test_Sheet": "A,B\n5,6\n7,8"}
     x_dir = str(temp3_fs)
     x_filename = "test_data.xlsx"
     file_path = create_path(x_dir, x_filename)
@@ -35,7 +35,7 @@ def test_csv_dict_to_excel_SavesFile(temp3_fs):
     # THEN
     assert os_path_exists(file_path)
     # Load the created Excel file to verify its contents
-    df = pandas_read_excel(file_path, sheet_name="TestSheet")
+    df = pandas_read_excel(file_path, sheet_name="Test_Sheet")
     expected_df = DataFrame({"A": [5, 7], "B": [6, 8]})
 
     pandas_testing_assert_frame_equal(df, expected_df)

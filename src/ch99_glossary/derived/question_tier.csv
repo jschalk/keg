@@ -38,6 +38,7 @@ Scaffold,10,
 Soldier,10,
 Spring,10,
 Stilt,10,
+TSH,10,
 Target,10,
 Tower,10,
 Trash,10,
@@ -911,6 +912,7 @@ shill,0,40
 soil,0,40
 trash,0,40
 trooper,0,40
+tsh,0,40
 winner,0,"40, 44, 45, 46"
 winning,0,"40, 45"
 Kegology,0,"44, 45, 46, 96, 97"

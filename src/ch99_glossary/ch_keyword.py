@@ -4131,6 +4131,7 @@ class Ch40Keywords(str, Enum):
     today = "today"
     trash = "trash"
     trooper = "trooper"
+    tsh = "tsh"
     vow = "vow"
     water = "water"
     winner = "winner"

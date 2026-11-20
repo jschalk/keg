@@ -900,6 +900,8 @@
   "TrustMass": "Number that represents how much a Person is loyal to a ContactUnit, how much a ContactUnit is loyal to a GroupTitle, TrustMass inherits from float class float first used in ch03.", 
   "Tsar": "I don't like this word, just use the word 'King'.", 
   "tsar": "I don't like this word, just use the word 'king'.", 
+  "TSH": "Short for Tash", 
+  "tsh": "Short for Tash", 
   "Tuesday": "Example key with value 'Tuesday' used for tests throughout codebase.", 
   "unknown_str": ", JARGON_LABEL arg, JARGON_NAME arg, JARGON_ROPE arg, JARGON_TITLE arg", 
   "UPDATE": "CRUD_COMMAND to update records for a table. 'Associated dimens: personunit' in 'CRUD_COMMAND to update records for a table'", 
