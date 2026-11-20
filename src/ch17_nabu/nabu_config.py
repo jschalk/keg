@@ -1,18 +1,17 @@
 from ch00_py.file_toolbox import create_path, open_json
 
 
-# TODO consider Nabu converion for FundNum
 def get_nabu_config_filename() -> str:
     return "nabu_config.json"
 
 
-def create_nabu_config_path():
+def create_nabu_config_path() -> str:
     "Returns path: src\\ch17_nabu\\nabu_config.json"
     chapter_dir = create_path("src", "ch17_nabu")
     return create_path(chapter_dir, "nabu_config.json")
 
 
-def get_nabu_config_dict():
+def get_nabu_config_dict() -> dict[str,]:
     return open_json(create_nabu_config_path())
 
 

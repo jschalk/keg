@@ -1,6 +1,7 @@
 from ch00_py.file_toolbox import create_path, open_json
 
 
+# TODO consider Tash converion for FundNum
 def create_tash_config_path():
     "Returns path: c16_tash/tash_config.json"
     return create_path("src", "ch16_tash", "tash_config.json")
