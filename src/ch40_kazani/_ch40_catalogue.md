@@ -22,6 +22,8 @@
 
 **[Kill the Scholars](./kazani_kill_the_scholars.md)** Kamil Kazani - 2025-08-02<br>
 
+**[Kurt, Walter, and Horst](./kazani_kurt,walter_horst.md)** Kamil Kazani - 2026-11-16<br>
+
 **[Mechanics of Revolution](./kazani_mechanics_of_revolution.md)** Kamil Kazani - 2025-10-24<br>
 
 **[No real adults](./kazani_no_real_adults.md)** Kamil Kazani - 2026-09-18<br>
