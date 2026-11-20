@@ -51,7 +51,10 @@ Did you read that the keyword_definition of 'Trooper' is 'A professional member 
 "Did you read that the keyword_definition of 'Vertical' is 'The height of a Pillar, Ladder, Stilt, or Scaffold. Is it enough to reach?'."
 Did you read that the keyword_definition of 'Winner' is 'A FamilyUnit getting more Prestige.'.
 Did you read that the keyword_definition of 'Yard' is 'Definition needed.'.
+Did you read that the keyword_definition of 'amount_inx' is 'The 'amount' value after Jargon.'.
+Did you read that the keyword_definition of 'amount_otx' is 'The 'amount' value after Jargon.'.
 Did you read that the keyword_definition of 'apex' is 'The top of the Pyramid. From the perspective of the FamilyUnits in Power it is the Face of the Pyramid.'.
+"Did you read that the keyword_definition of 'aux_fund' is 'Nabu module. Definition needed., tash arg'."
 Did you read that the keyword_definition of 'axle' is 'The part of the Wheel that load-bears the most. Only Pillars.'.
 Did you read that the keyword_definition of 'booster' is 'A Rider for a good person.'.
 Did you read that the keyword_definition of 'closer' is 'Do not use this term so there is no confusion with 'loser'.'.
@@ -61,15 +64,20 @@ Did you read that the keyword_definition of 'drift' is 'To move from one Moment 
 Did you read that the keyword_definition of 'fealty' is 'Definition needed.'.
 Did you read that the keyword_definition of 'flare' is 'Defintion needed.'.
 Did you read that the keyword_definition of 'herd' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'inx_fund' is 'Definition needed, tash arg'."
+Did you read that the keyword_definition of 'iux_fund' is 'Nabu module. Definition needed.'.
 Did you read that the keyword_definition of 'juggle' is 'To change moments from one Palm to another.'.
 Did you read that the keyword_definition of 'juggling' is 'To change moments from one Palm to another.'.
 "Did you read that the keyword_definition of 'keg_wheel' is 'A instance of KegWheel, within a single MomentUnit. Not used in codebase.'."
 Did you read that the keyword_definition of 'kegbox' is 'Anything that holds Keg worlds. Usually a computer thought it's possible to work with paper.'.
 Did you read that the keyword_definition of 'lumen' is 'To be defined later'.
+"Did you read that the keyword_definition of 'otx_fund' is 'Definition needed, tash arg'."
 "Did you read that the keyword_definition of 'palm' is 'A way of holding Moment in your mind. If you can only see the world one way, one palm. If you have see the world 5 ways, 5 palms.'."
 Did you read that the keyword_definition of 'pandas_DataFrame' is 'Not used in codebase. Added as keyword it is confirmed never to appear.'.
 Did you read that the keyword_definition of 'purpil' is 'Fable term: the medium where moments are shared'.
 Did you read that the keyword_definition of 'pyramid' is 'The load bearing support for any FamilyUnit in Power'.
+Did you read that the keyword_definition of 'quota_inx' is 'The 'quota' value after Jargon.'.
+Did you read that the keyword_definition of 'quota_otx' is 'The 'quota' value after Jargon.'.
 "Did you read that the keyword_definition of 'rider' is 'Synonmous with Vassal as a neutral term. Someone who recognizes authority, leadership. 'I ride with that person.''."
 Did you read that the keyword_definition of 'scaffold' is 'The only way to get to a wheel if not welcomed.'.
 Did you read that the keyword_definition of 'stilt' is 'A ladder load-bearing support of a Wheel.'.
@@ -411,7 +419,7 @@ Did you read that the keyword_definition of 'listener' is 'Definition needed. On
 Did you read that the keyword_definition of 'speaker' is 'Definition needed. Only referenced in ch11.'.
 Did you read that the keyword_definition of 'SparkInt' is 'int first used in ch12. Each Spark is a int that describes the order of data ingestion'.
 Did you read that the keyword_definition of 'TimeNum' is 'int first used in ch12. An Integar that can represent a instant on the TimeNumLine'.
-"Did you read that the keyword_definition of 'amount' is ', ceckbook arg'."
+"Did you read that the keyword_definition of 'amount' is ', ceckbook arg, Tashable arg'."
 Did you read that the keyword_definition of 'boss' is 'definition needed'.
 "Did you read that the keyword_definition of 'boss_facts' is ', used with Budget Cells'."
 "Did you read that the keyword_definition of 'bud_contact_nets' is 'ledger of bud outcome. The PersonUnit that embodies the Budget distrubutes the funds per the PersonUnit contacts. dict[ContactName, FundNum]. FundNum can be negative.'."

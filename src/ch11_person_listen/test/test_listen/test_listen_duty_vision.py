@@ -146,8 +146,8 @@ def get_ohio_str() -> LabelTerm:
     return "Ohio"
 
 
-def get_utah_str() -> LabelTerm:
-    return "Utah"
+def get_idaho_str() -> LabelTerm:
+    return "Idaho"
 
 
 def get_location_str() -> LabelTerm:
@@ -170,8 +170,8 @@ def get_ohio_rope() -> RopeTerm:
     return create_rope(get_usa_rope(), get_ohio_str())
 
 
-def get_utah_rope() -> RopeTerm:
-    return create_rope(get_usa_rope(), get_utah_str())
+def get_idaho_rope() -> RopeTerm:
+    return create_rope(get_usa_rope(), get_idaho_str())
 
 
 def get_bowl_rope() -> RopeTerm:
@@ -208,7 +208,7 @@ def get_yao_iowa_lessonfilehandler(moment_mstr_dir) -> LessonFileHandler:
     )
 
 
-def get_zia_utah_lessonfilehandler(moment_mstr_dir) -> LessonFileHandler:
+def get_zia_idaho_lessonfilehandler(moment_mstr_dir) -> LessonFileHandler:
     yao_person = get_example_yao_person()
     return lessonfilehandler_shop(
         moment_mstr_dir=moment_mstr_dir,
@@ -222,13 +222,15 @@ def get_example_yao_gut_with_3_healers(moment_mstr_dir) -> PersonUnit:
     yao_gut = get_example_yao_person()
     iowa_plan = planunit_shop(get_iowa_str(), problem_bool=True)
     ohio_plan = planunit_shop(get_ohio_str(), problem_bool=True)
-    utah_plan = planunit_shop(get_utah_str(), problem_bool=True)
+    idaho_plan = planunit_shop(get_idaho_str(), problem_bool=True)
     iowa_plan.healerunit.set_healer_name(get_yao_iowa_lessonfilehandler(d).person_name)
     ohio_plan.healerunit.set_healer_name(get_yao_ohio_lessonfilehandler(d).person_name)
-    utah_plan.healerunit.set_healer_name(get_zia_utah_lessonfilehandler(d).person_name)
+    idaho_plan.healerunit.set_healer_name(
+        get_zia_idaho_lessonfilehandler(d).person_name
+    )
     yao_gut.set_plan_obj(iowa_plan, get_usa_rope())
     yao_gut.set_plan_obj(ohio_plan, get_usa_rope())
-    yao_gut.set_plan_obj(utah_plan, get_usa_rope())
+    yao_gut.set_plan_obj(idaho_plan, get_usa_rope())
 
     return yao_gut
 
@@ -255,7 +257,7 @@ def test_listen_to_person_visions_Pipeline_Scenario1_yao_gut_CanOnlyReferenceIts
     yao_gut0.del_plan_obj(run_rope())
     assert yao_gut0._keep_dict.get(get_iowa_rope())
     assert yao_gut0._keep_dict.get(get_ohio_rope())
-    assert yao_gut0._keep_dict.get(get_utah_rope())
+    assert yao_gut0._keep_dict.get(get_idaho_rope())
     yao_gut0.thinkout()
     assert len(yao_gut0._keep_dict) == 3
     # print(f"{yao_gut0._plan_dict.keys()=}")
@@ -265,7 +267,7 @@ def test_listen_to_person_visions_Pipeline_Scenario1_yao_gut_CanOnlyReferenceIts
     yao_vision3 = get_example_yao_vision3_speaker()
     yao_iowa_lessonfilehandler = get_yao_iowa_lessonfilehandler(str(temp3_fs))
     yao_ohio_lessonfilehandler = get_yao_ohio_lessonfilehandler(str(temp3_fs))
-    zia_utah_lessonfilehandler = get_zia_utah_lessonfilehandler(str(temp3_fs))
+    zia_idaho_lessonfilehandler = get_zia_idaho_lessonfilehandler(str(temp3_fs))
     # delete_dir(yao_iowa_lessonfilehandler.persons_dir())
     moment_lasso = lassounit_shop(moment_rope)
     assert gut_file_exists(moment_mstr_dir, moment_lasso, exx.yao) is False
@@ -294,11 +296,11 @@ def test_listen_to_person_visions_Pipeline_Scenario1_yao_gut_CanOnlyReferenceIts
     )
     assert (
         vision_file_exists(
-            zia_utah_lessonfilehandler.moment_mstr_dir,
-            zia_utah_lessonfilehandler.person_name,
-            zia_utah_lessonfilehandler.moment_lasso.moment_rope,
-            get_utah_rope(),
-            zia_utah_lessonfilehandler.moment_lasso.knot,
+            zia_idaho_lessonfilehandler.moment_mstr_dir,
+            zia_idaho_lessonfilehandler.person_name,
+            zia_idaho_lessonfilehandler.moment_lasso.moment_rope,
+            get_idaho_rope(),
+            zia_idaho_lessonfilehandler.moment_lasso.knot,
             exx.yao,
         )
         is False
@@ -331,11 +333,11 @@ def test_listen_to_person_visions_Pipeline_Scenario1_yao_gut_CanOnlyReferenceIts
     )
     assert (
         vision_file_exists(
-            zia_utah_lessonfilehandler.moment_mstr_dir,
-            zia_utah_lessonfilehandler.person_name,
-            zia_utah_lessonfilehandler.moment_lasso.moment_rope,
-            get_utah_rope(),
-            zia_utah_lessonfilehandler.moment_lasso.knot,
+            zia_idaho_lessonfilehandler.moment_mstr_dir,
+            zia_idaho_lessonfilehandler.person_name,
+            zia_idaho_lessonfilehandler.moment_lasso.moment_rope,
+            get_idaho_rope(),
+            zia_idaho_lessonfilehandler.moment_lasso.knot,
             exx.yao,
         )
         is False

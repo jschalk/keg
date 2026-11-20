@@ -73,7 +73,7 @@ def test_get_keg_elements_sort_order_ReturnsObj():
     # print(f"missing {all_person_dimen_delete_keys.difference(table_sorting_priority)}")
     assert all_person_dimen_delete_keys.issubset(table_sorting_priority)
 
-    # nabo args
+    # tash args
     tash_args = get_tash_args()
     assert tash_args.issubset(set(table_sorting_priority))
     tashable_otx_cols = {f"{tash_arg}_otx" for tash_arg in get_tashable_args()}
