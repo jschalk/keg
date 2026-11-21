@@ -4016,8 +4016,8 @@ class Ch40Keywords(str, Enum):
         return self.value
 
 
-class Ch41Keywords(str, Enum):
-    ch41 = "ch41"
+class Ch43Keywords(str, Enum):
+    ch43 = "ch43"
     deal = "deal"
     god = "god"
     power = "power"
@@ -4144,7 +4144,7 @@ class Ch45Keywords(str, Enum):
     boss = "boss"
     ch38 = "ch38"
     ch40 = "ch40"
-    ch41 = "ch41"
+    ch43 = "ch43"
     ch44 = "ch44"
     ch45 = "ch45"
     ch99 = "ch99"

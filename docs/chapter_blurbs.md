@@ -40,7 +40,7 @@ What does each one do?
 - **ch38_article**: Article formatting tools
 - **ch39_levinas**: Levinas Philosophy
 - **ch40_kazani**: Kazani articles.
-- **ch41_pop_phil**: Popular Philsophy
+- **ch43_pop_phil**: Popular Philsophy
 - **ch44_spring**: spring for future
 - **ch45_wheel**: Essays pop_phil
 - **ch46_mirth**: Articles about the implications of KegWheel Theory
