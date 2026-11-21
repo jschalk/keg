@@ -1,3 +1,10 @@
+## [0.86.18](https://github.com/jschalk/keg/compare/v0.86.17...v0.86.18) (2026-11-21)
+
+
+### Bug Fixes
+
+* drawsvg fix ([376b8d1](https://github.com/jschalk/keg/commit/376b8d1b6b840987e1693616a4e32b309d0be1c4))
+
 ## [0.86.17](https://github.com/jschalk/keg/compare/v0.86.16...v0.86.17) (2026-07-03)
 
 
