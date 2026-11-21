@@ -34,7 +34,6 @@
 - ch32_world: WorldName, ch32, today
 - ch33_pitch: Atla, Deal, Gift, Peer, PitchID, PitchUnit, Promise, PromiseUnit, atla, ch33, deal, gift, offer, peer, pitch, pitch_id, pitcher_name, pitchs, promise, request, ride, vow
 - ch34_finance: ch34, finance, financial
-- ch35_person_viewer: ch35
 - ch36_newz: Newz, ch36, newz
 - ch38_article: Article, article, ch38
 - ch39_levinas: American, God, Home, Infinity, Pillar, Totality, Water, bearing, ch39, god, grateful, gravity, home, hose, infinity, invite, land, power, totality, water, welcome
@@ -45,6 +44,7 @@
 - ch46_mirth: ch46
 - ch47_gab: ch47
 - ch54_fable: Purpil, ch54
+- ch63_person_viewer: ch63
 - ch90_puncher_app: Puncher, Team, ch90, puncher, team
 - ch96_exam: ch96
 - ch97_docs_builder: ch97

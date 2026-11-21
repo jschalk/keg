@@ -1,10 +1,10 @@
 from ch14_time.epoch_main import add_epoch_planunit, get_default_epoch_config_dict
-from ch35_person_viewer.person_viewer_example import (
+from ch63_person_viewer.person_viewer_example import (
     get_personunit_irrational_example,
     get_sue_person_with_facts_and_reasons,
     get_sue_personunit,
 )
-from ch35_person_viewer.person_viewer_tool import get_person_view_dict
+from ch63_person_viewer.person_viewer_tool import get_person_view_dict
 from flask import Flask, jsonify, render_template_string
 
 app = Flask(__name__)

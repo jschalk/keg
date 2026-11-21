@@ -82,7 +82,7 @@
   "KegWheel": {"valid_ch": "45, 46"}, 
   "Kegology": {"valid_ch": "44, 45, 46, 96, 97"}, 
   "Keyword": {
-    "valid_ch": "1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 45, 90, 97, 98"
+    "valid_ch": "1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 45, 63, 90, 97, 98"
   }, 
   "Knee": {"valid_ch": ""}, 
   "KnotTerm": {
@@ -94,7 +94,7 @@
     "semantic_type": "str", 
     "valid_ch": "5, 7, 8, 9, 10, 11, 13, 14, 15, 18, 19, 21, 22, 25, 26, 31, 97"
   }, 
-  "LaborHeir": {"valid_ch": "4, 35"}, 
+  "LaborHeir": {"valid_ch": "4, 63"}, 
   "Ladder": {"valid_ch": ""}, 
   "Land": {"valid_ch": "40, 44, 45"}, 
   "Lasso": {"valid_ch": "10, 11, 12, 15, 22, 26, 27, 31"}, 
@@ -107,7 +107,7 @@
   "Loyal": {"valid_ch": "40"}, 
   "ManaGrain": {"semantic_type": "float", "valid_ch": "8, 12, 13, 15, 97"}, 
   "ManaNum": {"semantic_type": "float", "valid_ch": "13, 14, 97"}, 
-  "Mikayla": {"valid_ch": "14, 23, 35"}, 
+  "Mikayla": {"valid_ch": "14, 23, 63"}, 
   "MomentRope": {
     "semantic_type": "str", 
     "valid_ch": "10, 11, 12, 13, 15, 16, 21, 23, 26, 27, 31, 97"
@@ -130,7 +130,7 @@
     "valid_ch": "8, 10, 11, 12, 13, 15, 18, 19, 21, 22, 27, 30, 31, 32, 33, 90, 97"
   }, 
   "PersonUnit": {
-    "valid_ch": "8, 9, 10, 11, 12, 13, 14, 15, 21, 22, 23, 24, 26, 27, 30, 31, 32, 35, 45, 90"
+    "valid_ch": "8, 9, 10, 11, 12, 13, 14, 15, 21, 22, 23, 24, 26, 27, 30, 31, 32, 45, 63, 90"
   }, 
   "Pillar": {"valid_ch": "39, 45"}, 
   "PitchID": {"semantic_type": "str", "valid_ch": "33, 97"}, 
@@ -176,7 +176,7 @@
   "Spring": {"valid_ch": ""}, 
   "Stable": {"valid_ch": "45"}, 
   "Stilt": {"valid_ch": ""}, 
-  "Summer": {"valid_ch": "8, 35"}, 
+  "Summer": {"valid_ch": "8, 63"}, 
   "TSH": {"valid_ch": "22, 33"}, 
   "Target": {"valid_ch": ""}, 
   "Tash": {"valid_ch": "16, 22, 26, 97, 98"}, 
@@ -184,7 +184,7 @@
   "Team": {"valid_ch": "90"}, 
   "TimeNum": {
     "semantic_type": "int", 
-    "valid_ch": "12, 13, 14, 15, 16, 17, 18, 19, 26, 31, 35, 97"
+    "valid_ch": "12, 13, 14, 15, 16, 17, 18, 19, 26, 31, 63, 97"
   }, 
   "TimeShoe": {"valid_ch": "14, 15, 31"}, 
   "TitleTerm": {"semantic_type": "str", "valid_ch": "3, 8, 9, 10, 18, 19, 21, 26, 97"}, 
@@ -214,16 +214,16 @@
   }, 
   "addin": {
     "sort_ordinal": 104, 
-    "valid_ch": "7, 8, 9, 10, 14, 15, 18, 19, 21, 22, 23, 26, 27, 33, 35, 40, 45, 46, 90"
+    "valid_ch": "7, 8, 9, 10, 14, 15, 18, 19, 21, 22, 23, 26, 27, 33, 40, 45, 46, 63, 90"
   }, 
   "alien": {"valid_ch": "45"}, 
-  "all_contact_cred": {"sort_ordinal": 186, "valid_ch": "7, 8, 21, 22, 27, 35"}, 
-  "all_contact_debt": {"sort_ordinal": 193, "valid_ch": "7, 8, 21, 22, 27, 35"}, 
+  "all_contact_cred": {"sort_ordinal": 186, "valid_ch": "7, 8, 21, 22, 27, 63"}, 
+  "all_contact_debt": {"sort_ordinal": 193, "valid_ch": "7, 8, 21, 22, 27, 63"}, 
   "all_tranbook": {"valid_ch": "15, 27"}, 
   "allowed_crud": {"valid_ch": "21, 23, 33, 97"}, 
   "amount": {
     "sort_ordinal": 140, 
-    "valid_ch": "12, 13, 15, 18, 19, 21, 22, 23, 26, 27, 31, 32, 33, 35"
+    "valid_ch": "12, 13, 15, 18, 19, 21, 22, 23, 26, 27, 31, 32, 33, 63"
   }, 
   "amount_inx": {"valid_ch": ""}, 
   "amount_otx": {"valid_ch": ""}, 
@@ -244,7 +244,7 @@
   "aux_title": {"valid_ch": "19, 21"}, 
   "awardee_title": {
     "sort_ordinal": 84, 
-    "valid_ch": "3, 7, 8, 9, 10, 14, 18, 19, 21, 22, 23, 27, 33, 35"
+    "valid_ch": "3, 7, 8, 9, 10, 14, 18, 19, 21, 22, 23, 27, 33, 63"
   }, 
   "awardee_title_ERASE": {"sort_ordinal": 87, "valid_ch": "9, 21, 22, 23"}, 
   "awardee_title_ERASE_aux": {"valid_ch": "21"}, 
@@ -255,9 +255,9 @@
   "awardee_title_inx": {"sort_ordinal": 86, "valid_ch": "21, 22"}, 
   "awardee_title_iux": {"valid_ch": "21"}, 
   "awardee_title_otx": {"sort_ordinal": 85, "valid_ch": "21, 22"}, 
-  "awardheirs": {"valid_ch": "7, 8, 27, 35"}, 
-  "awardlines": {"valid_ch": "7, 8, 35"}, 
-  "awardunits": {"valid_ch": "3, 7, 8, 9, 10, 23, 35"}, 
+  "awardheirs": {"valid_ch": "7, 8, 27, 63"}, 
+  "awardlines": {"valid_ch": "7, 8, 63"}, 
+  "awardunits": {"valid_ch": "3, 7, 8, 9, 10, 23, 63"}, 
   "axle": {"valid_ch": ""}, 
   "b_agg": {"valid_ch": "22, 24, 27, 32"}, 
   "b_raw": {"valid_ch": "22, 24, 32"}, 
@@ -266,7 +266,7 @@
   "bearing": {"valid_ch": "39, 45"}, 
   "begin": {
     "sort_ordinal": 102, 
-    "valid_ch": "7, 8, 9, 10, 14, 15, 18, 19, 21, 22, 23, 26, 27, 33, 35, 39, 40, 44, 90"
+    "valid_ch": "7, 8, 9, 10, 14, 15, 18, 19, 21, 22, 23, 26, 27, 33, 39, 40, 44, 63, 90"
   }, 
   "bk": {"valid_ch": "21, 22, 23, 24, 25, 27, 30, 32, 90, 97, 98"}, 
   "booster": {"valid_ch": ""}, 
@@ -300,31 +300,31 @@
   "care_amount": {"valid_ch": "13"}, 
   "cares": {"valid_ch": "13"}, 
   "case_active": {"sort_ordinal": 166, "valid_ch": "6, 7, 8, 14, 21, 22, 27"}, 
-  "case_task": {"sort_ordinal": 163, "valid_ch": "6, 8, 11, 21, 22, 27, 35"}, 
-  "cases": {"valid_ch": "6, 7, 8, 10, 14, 16, 23, 27, 35, 39, 40, 44"}, 
+  "case_task": {"sort_ordinal": 163, "valid_ch": "6, 8, 11, 21, 22, 27, 63"}, 
+  "cases": {"valid_ch": "6, 7, 8, 10, 14, 16, 23, 27, 39, 40, 44, 63"}, 
   "ceckbook": {"valid_ch": "15, 21, 22, 23, 26, 30, 97"}, 
   "celldepth": {"sort_ordinal": 157, "valid_ch": "12, 15, 18, 19, 21, 22, 23, 26, 27, 32, 33"}, 
   "ch00": {
-    "valid_ch": "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 38, 90, 97, 98"
+    "valid_ch": "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 38, 63, 90, 97, 98"
   }, 
   "ch01": {"valid_ch": "1, 2, 97, 98"}, 
   "ch02": {"valid_ch": "2, 3, 5, 6, 7, 8, 10, 11, 12, 13, 15, 97, 98"}, 
-  "ch03": {"valid_ch": "3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 23, 27, 31, 35, 97, 98"}, 
-  "ch04": {"valid_ch": "4, 7, 8, 27, 35, 98"}, 
+  "ch03": {"valid_ch": "3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 23, 27, 31, 63, 97, 98"}, 
+  "ch04": {"valid_ch": "4, 7, 8, 27, 63, 98"}, 
   "ch05": {
     "valid_ch": "5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 19, 21, 22, 23, 25, 26, 27, 30, 31, 32, 90, 97, 98"
   }, 
-  "ch06": {"valid_ch": "6, 7, 8, 9, 10, 12, 14, 15, 16, 27, 31, 35"}, 
-  "ch07": {"valid_ch": "7, 8, 9, 10, 11, 14, 15, 21, 27, 31, 35, 98"}, 
+  "ch06": {"valid_ch": "6, 7, 8, 9, 10, 12, 14, 15, 16, 27, 31, 63"}, 
+  "ch07": {"valid_ch": "7, 8, 9, 10, 11, 14, 15, 21, 27, 31, 63, 98"}, 
   "ch08": {
-    "valid_ch": "8, 9, 10, 11, 12, 13, 14, 15, 16, 21, 22, 23, 27, 30, 31, 32, 35, 90, 97"
+    "valid_ch": "8, 9, 10, 11, 12, 13, 14, 15, 16, 21, 22, 23, 27, 30, 31, 32, 63, 90, 97"
   }, 
   "ch09": {"valid_ch": "9, 10, 15, 18, 19, 21, 22, 27, 98"}, 
   "ch10": {"valid_ch": "10, 11, 12, 15, 16, 18, 21, 22, 26, 27, 30, 31, 32, 33, 97, 98"}, 
   "ch11": {"valid_ch": "11, 13, 15, 27, 30, 31, 32, 98"}, 
   "ch12": {"valid_ch": "12, 13, 14, 15, 16, 18, 26, 27, 30, 32, 97"}, 
   "ch13": {"valid_ch": "13, 14, 15"}, 
-  "ch14": {"valid_ch": "14, 15, 16, 20, 21, 23, 26, 27, 31, 32, 35, 90, 97"}, 
+  "ch14": {"valid_ch": "14, 15, 16, 20, 21, 23, 26, 27, 31, 32, 63, 90, 97"}, 
   "ch15": {"valid_ch": "15, 16, 18, 19, 21, 22, 23, 26, 27, 30, 31, 32, 90, 97"}, 
   "ch16": {"valid_ch": "16, 17, 18, 21, 22, 26, 97"}, 
   "ch17": {"valid_ch": "17"}, 
@@ -332,7 +332,7 @@
   "ch19": {"valid_ch": "19, 21"}, 
   "ch20": {"valid_ch": "20, 21, 22, 24, 25, 26, 27, 31, 32, 98"}, 
   "ch21": {"valid_ch": "21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 90, 97, 98"}, 
-  "ch22": {"valid_ch": "22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 35, 90, 97, 98"}, 
+  "ch22": {"valid_ch": "22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 63, 90, 97, 98"}, 
   "ch23": {"valid_ch": "23, 27, 30, 32, 33, 90, 98"}, 
   "ch24": {"valid_ch": "24, 25, 26, 32"}, 
   "ch25": {"valid_ch": "25, 32"}, 
@@ -343,7 +343,6 @@
   "ch32": {"valid_ch": "32, 33, 90, 98"}, 
   "ch33": {"valid_ch": "33, 34"}, 
   "ch34": {"valid_ch": "34, 36"}, 
-  "ch35": {"valid_ch": "35"}, 
   "ch36": {"valid_ch": "36"}, 
   "ch38": {"valid_ch": "38, 45, 97, 98"}, 
   "ch39": {"valid_ch": "39"}, 
@@ -354,34 +353,35 @@
   "ch46": {"valid_ch": "46"}, 
   "ch47": {"valid_ch": "47"}, 
   "ch54": {"valid_ch": "54, 98"}, 
+  "ch63": {"valid_ch": "63"}, 
   "ch90": {"valid_ch": "90"}, 
   "ch96": {"valid_ch": "96"}, 
   "ch97": {"valid_ch": "97, 98"}, 
   "ch98": {"valid_ch": "98"}, 
   "ch99": {
-    "valid_ch": "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 45, 90, 97, 98"
+    "valid_ch": "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 45, 63, 90, 97, 98"
   }, 
   "climb": {"valid_ch": "44, 45"}, 
   "cling": {"valid_ch": "45"}, 
   "clock": {"valid_ch": "14, 31, 44"}, 
   "close": {
     "sort_ordinal": 103, 
-    "valid_ch": "0, 7, 8, 9, 10, 11, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 30, 31, 32, 33, 34, 35, 39, 40, 44, 45, 54, 90, 98"
+    "valid_ch": "0, 7, 8, 9, 10, 11, 14, 15, 18, 19, 20, 21, 22, 23, 26, 27, 30, 31, 32, 33, 34, 39, 40, 44, 45, 54, 63, 90, 98"
   }, 
   "closer": {"valid_ch": ""}, 
   "column_ordinal": {"valid_ch": "9"}, 
   "contact_cred_mass": {
     "sort_ordinal": 111, 
-    "valid_ch": "3, 8, 9, 10, 11, 12, 13, 15, 18, 19, 21, 22, 23, 25, 26, 27, 33, 35"
+    "valid_ch": "3, 8, 9, 10, 11, 12, 13, 15, 18, 19, 21, 22, 23, 25, 26, 27, 33, 63"
   }, 
   "contact_debt_mass": {
     "sort_ordinal": 112, 
-    "valid_ch": "3, 8, 9, 10, 11, 13, 15, 18, 19, 21, 22, 23, 25, 26, 27, 33, 35"
+    "valid_ch": "3, 8, 9, 10, 11, 13, 15, 18, 19, 21, 22, 23, 25, 26, 27, 33, 63"
   }, 
   "contact_mandate_ledger": {"valid_ch": "8, 12, 15, 27, 32"}, 
   "contact_name": {
     "sort_ordinal": 38, 
-    "valid_ch": "3, 4, 8, 9, 10, 11, 12, 13, 15, 16, 18, 19, 21, 22, 23, 24, 25, 26, 27, 31, 32, 33, 35, 45"
+    "valid_ch": "3, 4, 8, 9, 10, 11, 12, 13, 15, 16, 18, 19, 21, 22, 23, 24, 25, 26, 27, 31, 32, 33, 45, 63"
   }, 
   "contact_name_ERASE": {"sort_ordinal": 41, "valid_ch": "9, 21, 22, 23"}, 
   "contact_name_ERASE_aux": {"valid_ch": "21"}, 
@@ -393,13 +393,13 @@
   "contact_name_iux": {"valid_ch": "21"}, 
   "contact_name_otx": {"sort_ordinal": 39, "valid_ch": "21, 22"}, 
   "contact_pool": {"valid_ch": "8, 10, 11"}, 
-  "contacts": {"valid_ch": "8, 9, 10, 11, 12, 13, 14, 15, 23, 27, 30, 31, 35, 40, 45"}, 
+  "contacts": {"valid_ch": "8, 9, 10, 11, 12, 13, 14, 15, 23, 27, 30, 31, 40, 45, 63"}, 
   "context_plan_close": {"sort_ordinal": 198, "valid_ch": "8, 14, 21, 22, 26"}, 
   "context_plan_denom": {"sort_ordinal": 199, "valid_ch": "8, 21, 22, 26"}, 
   "context_plan_morph": {"sort_ordinal": 200, "valid_ch": "8, 21, 22, 26"}, 
   "cow": {"valid_ch": "40, 45"}, 
   "crawl": {"valid_ch": ""}, 
-  "credor_pool": {"sort_ordinal": 167, "valid_ch": "3, 8, 11, 21, 22, 27, 35"}, 
+  "credor_pool": {"sort_ordinal": 167, "valid_ch": "3, 8, 11, 21, 22, 27, 63"}, 
   "credor_respect": {
     "sort_ordinal": 115, 
     "valid_ch": "8, 9, 10, 11, 15, 18, 19, 21, 22, 23, 27, 33"
@@ -413,7 +413,7 @@
   "cycle_count": {"valid_ch": "13"}, 
   "cycle_max": {"valid_ch": "13"}, 
   "day": {
-    "valid_ch": "14, 15, 16, 18, 19, 21, 22, 23, 24, 25, 26, 31, 32, 33, 35, 39, 40, 44, 45, 46, 54, 90, 97"
+    "valid_ch": "14, 15, 16, 18, 19, 21, 22, 23, 24, 25, 26, 31, 32, 33, 39, 40, 44, 45, 46, 54, 63, 90, 97"
   }, 
   "day_length": {"valid_ch": "14"}, 
   "day_punch": {"valid_ch": "31, 32, 90"}, 
@@ -423,7 +423,7 @@
   "days_lower_day": {"valid_ch": "14"}, 
   "days_upper_day": {"valid_ch": "14"}, 
   "deal": {"valid_ch": "33, 39, 40, 41, 45"}, 
-  "debtor_pool": {"sort_ordinal": 168, "valid_ch": "3, 8, 10, 11, 21, 22, 27, 35"}, 
+  "debtor_pool": {"sort_ordinal": 168, "valid_ch": "3, 8, 10, 11, 21, 22, 27, 63"}, 
   "debtor_respect": {
     "sort_ordinal": 116, 
     "valid_ch": "8, 9, 10, 11, 15, 18, 19, 21, 22, 23, 27, 33"
@@ -434,9 +434,9 @@
   "delete_update": {"valid_ch": "21, 23"}, 
   "denom": {
     "sort_ordinal": 106, 
-    "valid_ch": "7, 8, 9, 10, 14, 15, 16, 18, 19, 21, 22, 23, 26, 27, 33, 35, 39, 90"
+    "valid_ch": "7, 8, 9, 10, 14, 15, 16, 18, 19, 21, 22, 23, 26, 27, 33, 39, 63, 90"
   }, 
-  "descendant_pledge_count": {"sort_ordinal": 184, "valid_ch": "7, 8, 21, 22, 27, 35"}, 
+  "descendant_pledge_count": {"sort_ordinal": 184, "valid_ch": "7, 8, 21, 22, 27, 63"}, 
   "dimen": {
     "valid_ch": "8, 9, 10, 12, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 30, 33, 39, 40, 45, 97"
   }, 
@@ -454,9 +454,9 @@
   "duration": {"valid_ch": "14, 39"}, 
   "empire": {"valid_ch": "40"}, 
   "epoch": {
-    "valid_ch": "14, 15, 16, 17, 18, 19, 21, 22, 23, 26, 27, 30, 31, 32, 33, 35, 39, 90, 97, 98"
+    "valid_ch": "14, 15, 16, 17, 18, 19, 21, 22, 23, 26, 27, 30, 31, 32, 33, 39, 63, 90, 97, 98"
   }, 
-  "epoch_label": {"sort_ordinal": 11, "valid_ch": "14, 15, 18, 19, 21, 22, 23, 26, 31, 33, 35"}, 
+  "epoch_label": {"sort_ordinal": 11, "valid_ch": "14, 15, 18, 19, 21, 22, 23, 26, 31, 33, 63"}, 
   "epoch_label_aux": {"valid_ch": "21"}, 
   "epoch_label_inx": {"sort_ordinal": 13, "valid_ch": "21, 22"}, 
   "epoch_label_iux": {"valid_ch": "21"}, 
@@ -468,11 +468,11 @@
   "every_xweeks": {"valid_ch": "14, 26"}, 
   "excel": {"valid_ch": "21, 22, 23, 24, 30, 32, 39, 40, 90, 97, 98"}, 
   "fact": {
-    "valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 30, 31, 33, 35, 39, 40, 97, 98"
+    "valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 26, 27, 30, 31, 33, 39, 40, 63, 97, 98"
   }, 
   "fact_context": {
     "sort_ordinal": 62, 
-    "valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 15, 18, 19, 21, 22, 23, 26, 27, 33, 35"
+    "valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 15, 18, 19, 21, 22, 23, 26, 27, 33, 63"
   }, 
   "fact_context_ERASE": {"sort_ordinal": 65, "valid_ch": "9, 21, 22, 23"}, 
   "fact_context_ERASE_aux": {"valid_ch": "21"}, 
@@ -485,13 +485,13 @@
   "fact_context_otx": {"sort_ordinal": 63, "valid_ch": "21, 22"}, 
   "fact_lower": {
     "sort_ordinal": 117, 
-    "valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 16, 17, 18, 19, 21, 22, 23, 26, 27, 33, 35"
+    "valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 16, 17, 18, 19, 21, 22, 23, 26, 27, 33, 63"
   }, 
   "fact_lower_inx": {"sort_ordinal": 119, "valid_ch": "21, 22, 26"}, 
   "fact_lower_otx": {"sort_ordinal": 118, "valid_ch": "21, 22, 26"}, 
   "fact_state": {
     "sort_ordinal": 74, 
-    "valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 15, 18, 19, 21, 22, 23, 27, 33, 35"
+    "valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 15, 18, 19, 21, 22, 23, 27, 33, 63"
   }, 
   "fact_state_aux": {"valid_ch": "21"}, 
   "fact_state_inx": {"sort_ordinal": 76, "valid_ch": "21, 22"}, 
@@ -499,14 +499,14 @@
   "fact_state_otx": {"sort_ordinal": 75, "valid_ch": "21, 22"}, 
   "fact_upper": {
     "sort_ordinal": 120, 
-    "valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 16, 17, 18, 19, 21, 22, 23, 26, 27, 33, 35"
+    "valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 16, 17, 18, 19, 21, 22, 23, 26, 27, 33, 63"
   }, 
   "fact_upper_inx": {"sort_ordinal": 122, "valid_ch": "21, 22, 26"}, 
   "fact_upper_otx": {"sort_ordinal": 121, "valid_ch": "21, 22, 26"}, 
-  "factheirs": {"valid_ch": "6, 7, 8, 14, 27, 35"}, 
+  "factheirs": {"valid_ch": "6, 7, 8, 14, 27, 63"}, 
   "faction": {"valid_ch": "40"}, 
   "factory": {"valid_ch": "20, 97, 98"}, 
-  "factunits": {"valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 15, 23, 35"}, 
+  "factunits": {"valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 15, 23, 63"}, 
   "fall": {"valid_ch": "45"}, 
   "fealty": {"valid_ch": ""}, 
   "filename": {
@@ -518,46 +518,46 @@
   "five": {"valid_ch": "14, 15, 18, 19, 21, 23, 27, 32, 39, 40, 44, 90"}, 
   "flare": {"valid_ch": ""}, 
   "found_facts": {"valid_ch": "12, 15, 27"}, 
-  "fund_agenda_give": {"sort_ordinal": 175, "valid_ch": "3, 8, 15, 21, 22, 27, 35"}, 
-  "fund_agenda_ratio_give": {"sort_ordinal": 177, "valid_ch": "3, 8, 15, 21, 22, 27, 31, 35"}, 
-  "fund_agenda_ratio_take": {"sort_ordinal": 178, "valid_ch": "3, 8, 15, 21, 22, 27, 31, 35"}, 
-  "fund_agenda_take": {"sort_ordinal": 176, "valid_ch": "3, 8, 15, 21, 22, 27, 35"}, 
-  "fund_cease": {"sort_ordinal": 173, "valid_ch": "7, 8, 12, 21, 22, 27, 35"}, 
-  "fund_give": {"sort_ordinal": 170, "valid_ch": "3, 7, 8, 15, 21, 22, 27, 35"}, 
+  "fund_agenda_give": {"sort_ordinal": 175, "valid_ch": "3, 8, 15, 21, 22, 27, 63"}, 
+  "fund_agenda_ratio_give": {"sort_ordinal": 177, "valid_ch": "3, 8, 15, 21, 22, 27, 31, 63"}, 
+  "fund_agenda_ratio_take": {"sort_ordinal": 178, "valid_ch": "3, 8, 15, 21, 22, 27, 31, 63"}, 
+  "fund_agenda_take": {"sort_ordinal": 176, "valid_ch": "3, 8, 15, 21, 22, 27, 63"}, 
+  "fund_cease": {"sort_ordinal": 173, "valid_ch": "7, 8, 12, 21, 22, 27, 63"}, 
+  "fund_give": {"sort_ordinal": 170, "valid_ch": "3, 7, 8, 15, 21, 22, 27, 63"}, 
   "fund_grain": {
     "sort_ordinal": 137, 
-    "valid_ch": "3, 7, 8, 9, 10, 11, 15, 18, 19, 21, 22, 23, 26, 27, 33, 35"
+    "valid_ch": "3, 7, 8, 9, 10, 11, 15, 18, 19, 21, 22, 23, 26, 27, 33, 63"
   }, 
-  "fund_onset": {"sort_ordinal": 172, "valid_ch": "7, 8, 12, 21, 22, 27, 35"}, 
+  "fund_onset": {"sort_ordinal": 172, "valid_ch": "7, 8, 12, 21, 22, 27, 63"}, 
   "fund_pool": {
     "sort_ordinal": 123, 
     "valid_ch": "7, 8, 9, 10, 11, 12, 18, 19, 21, 22, 23, 27, 33"
   }, 
   "fund_rank": {"sort_ordinal": 196, "valid_ch": "21, 31"}, 
-  "fund_ratio": {"sort_ordinal": 174, "valid_ch": "7, 8, 15, 21, 22, 27, 31, 35"}, 
-  "fund_take": {"sort_ordinal": 171, "valid_ch": "3, 7, 8, 15, 21, 22, 27, 35"}, 
+  "fund_ratio": {"sort_ordinal": 174, "valid_ch": "7, 8, 15, 21, 22, 27, 31, 63"}, 
+  "fund_take": {"sort_ordinal": 171, "valid_ch": "3, 7, 8, 15, 21, 22, 27, 63"}, 
   "gcal": {"valid_ch": "31, 32"}, 
   "gift": {"valid_ch": "33, 39, 40"}, 
   "give_force": {
     "sort_ordinal": 124, 
-    "valid_ch": "3, 7, 8, 9, 10, 18, 19, 21, 22, 23, 27, 33, 35"
+    "valid_ch": "3, 7, 8, 9, 10, 18, 19, 21, 22, 23, 27, 33, 63"
   }, 
   "glossary": {
-    "valid_ch": "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 45, 90, 97, 98"
+    "valid_ch": "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 45, 63, 90, 97, 98"
   }, 
   "god": {"valid_ch": "39, 40, 41, 44, 54"}, 
-  "gogo_calc": {"sort_ordinal": 180, "valid_ch": "7, 8, 14, 21, 22, 27, 35"}, 
+  "gogo_calc": {"sort_ordinal": 180, "valid_ch": "7, 8, 14, 21, 22, 27, 63"}, 
   "gogo_want": {
     "sort_ordinal": 108, 
-    "valid_ch": "7, 8, 9, 10, 14, 18, 19, 21, 22, 23, 26, 27, 33, 35, 90"
+    "valid_ch": "7, 8, 9, 10, 14, 18, 19, 21, 22, 23, 26, 27, 33, 63, 90"
   }, 
   "grateful": {"valid_ch": "39, 40, 54"}, 
   "gravity": {"valid_ch": "39"}, 
-  "group_cred_mass": {"sort_ordinal": 113, "valid_ch": "3, 8, 9, 10, 18, 19, 21, 22, 23, 27, 33, 35"}, 
-  "group_debt_mass": {"sort_ordinal": 114, "valid_ch": "3, 8, 9, 10, 18, 19, 21, 22, 23, 27, 33, 35"}, 
+  "group_cred_mass": {"sort_ordinal": 113, "valid_ch": "3, 8, 9, 10, 18, 19, 21, 22, 23, 27, 33, 63"}, 
+  "group_debt_mass": {"sort_ordinal": 114, "valid_ch": "3, 8, 9, 10, 18, 19, 21, 22, 23, 27, 33, 63"}, 
   "group_title": {
     "sort_ordinal": 44, 
-    "valid_ch": "3, 4, 7, 8, 9, 10, 14, 18, 19, 21, 22, 23, 27, 31, 32, 33, 35"
+    "valid_ch": "3, 4, 7, 8, 9, 10, 14, 18, 19, 21, 22, 23, 27, 31, 32, 33, 63"
   }, 
   "group_title_ERASE": {"sort_ordinal": 47, "valid_ch": "9, 21, 22, 23"}, 
   "group_title_ERASE_aux": {"valid_ch": "21"}, 
@@ -569,14 +569,14 @@
   "group_title_iux": {"valid_ch": "21"}, 
   "group_title_otx": {"sort_ordinal": 45, "valid_ch": "21, 22"}, 
   "groupmark": {"sort_ordinal": 154, "valid_ch": "3, 8, 21, 22, 27"}, 
-  "groupunits": {"valid_ch": "4, 7, 8, 9, 27, 35"}, 
+  "groupunits": {"valid_ch": "4, 7, 8, 9, 27, 63"}, 
   "gut": {"valid_ch": "10, 11, 13, 15, 27, 30, 32, 40, 44"}, 
   "h_agg": {"valid_ch": "22, 26, 32"}, 
   "h_raw": {"valid_ch": "22, 25, 26, 32"}, 
   "h_vld": {"valid_ch": "22, 25, 26, 27, 32"}, 
   "healer_name": {
     "sort_ordinal": 90, 
-    "valid_ch": "7, 8, 9, 10, 11, 13, 15, 18, 19, 21, 22, 23, 27, 33, 35"
+    "valid_ch": "7, 8, 9, 10, 11, 13, 15, 18, 19, 21, 22, 23, 27, 33, 63"
   }, 
   "healer_name_ERASE": {"sort_ordinal": 93, "valid_ch": "9, 18, 19, 21, 22, 23"}, 
   "healer_name_ERASE_aux": {"valid_ch": "21"}, 
@@ -587,8 +587,8 @@
   "healer_name_inx": {"sort_ordinal": 92, "valid_ch": "21, 22"}, 
   "healer_name_iux": {"valid_ch": "21"}, 
   "healer_name_otx": {"sort_ordinal": 91, "valid_ch": "21, 22"}, 
-  "healerunit": {"valid_ch": "7, 8, 9, 10, 11, 15, 21, 22, 23, 27, 35, 97"}, 
-  "healerunit_ratio": {"sort_ordinal": 185, "valid_ch": "7, 8, 21, 22, 27, 35"}, 
+  "healerunit": {"valid_ch": "7, 8, 9, 10, 11, 15, 21, 22, 23, 27, 63, 97"}, 
+  "healerunit_ratio": {"sort_ordinal": 185, "valid_ch": "7, 8, 21, 22, 27, 63"}, 
   "heard_agg": {"valid_ch": "22, 25, 26, 32, 98"}, 
   "heard_raw": {"valid_ch": "22, 25, 26, 32, 97"}, 
   "heard_vld": {"valid_ch": "22, 26, 32"}, 
@@ -618,7 +618,7 @@
   "ideax_src": {"valid_ch": "22"}, 
   "ii": {"valid_ch": "23, 30, 32, 39, 40, 44, 90"}, 
   "impression": {"valid_ch": "40"}, 
-  "inallocable_contact_debt_mass": {"sort_ordinal": 179, "valid_ch": "3, 8, 11, 15, 21, 22, 27, 35"}, 
+  "inallocable_contact_debt_mass": {"sort_ordinal": 179, "valid_ch": "3, 8, 11, 15, 21, 22, 27, 63"}, 
   "infinity": {"valid_ch": "39, 45"}, 
   "insert_multiple": {"valid_ch": "21, 23, 97"}, 
   "insert_one_time": {"valid_ch": "21, 23, 97"}, 
@@ -633,8 +633,8 @@
   "inx_rope": {"sort_ordinal": 144, "valid_ch": "18, 21, 22, 23, 24, 25, 30, 33"}, 
   "inx_time": {"sort_ordinal": 152, "valid_ch": "16, 21, 22, 23, 26, 32, 33"}, 
   "inx_title": {"sort_ordinal": 148, "valid_ch": "18, 21, 22, 23, 25, 30, 33"}, 
-  "irrational_contact_debt_mass": {"sort_ordinal": 190, "valid_ch": "3, 8, 11, 21, 22, 27, 35"}, 
-  "is_expanded": {"valid_ch": "7, 8, 35"}, 
+  "irrational_contact_debt_mass": {"sort_ordinal": 190, "valid_ch": "3, 8, 11, 21, 22, 27, 63"}, 
+  "is_expanded": {"valid_ch": "7, 8, 63"}, 
   "iux": {"valid_ch": "17, 19, 21, 98"}, 
   "iux2aux": {"valid_ch": "19, 98"}, 
   "iux_fund": {"valid_ch": ""}, 
@@ -652,7 +652,7 @@
   "jargon_spark_num": {"sort_ordinal": 3, "valid_ch": "21, 22"}, 
   "jargon_title": {"valid_ch": "18, 19, 21, 22, 23, 24, 25, 30, 97"}, 
   "jargonunit": {"valid_ch": "18, 21"}, 
-  "jkeys": {"valid_ch": "8, 9, 10, 15, 16, 17, 18, 19, 21, 22, 23, 27, 33, 35, 97"}, 
+  "jkeys": {"valid_ch": "8, 9, 10, 15, 16, 17, 18, 19, 21, 22, 23, 27, 33, 63, 97"}, 
   "job": {"valid_ch": "11, 15, 18, 19, 21, 22, 23, 26, 27, 30, 31, 32, 33, 40"}, 
   "job_listen_rotations": {"sort_ordinal": 158, "valid_ch": "15, 18, 19, 21, 22, 23, 26, 33"}, 
   "juggle": {"valid_ch": ""}, 
@@ -669,21 +669,21 @@
   "kegbox": {"valid_ch": ""}, 
   "kegology": {"valid_ch": "44, 45, 97"}, 
   "keyword": {
-    "valid_ch": "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 36, 45, 54, 90, 97, 98"
+    "valid_ch": "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 36, 45, 54, 63, 90, 97, 98"
   }, 
-  "kids": {"valid_ch": "7, 8, 14, 35"}, 
+  "kids": {"valid_ch": "7, 8, 14, 63"}, 
   "knee": {"valid_ch": "40, 44, 45"}, 
   "kneeler": {"valid_ch": "45"}, 
   "knot": {
     "sort_ordinal": 153, 
-    "valid_ch": "5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 19, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 35, 90, 98"
+    "valid_ch": "5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 19, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 63, 90, 98"
   }, 
   "kronosmax": {"valid_ch": "40"}, 
   "labelmap": {"valid_ch": "18, 21"}, 
   "labelyap": {"valid_ch": "19"}, 
   "labor_title": {
     "sort_ordinal": 77, 
-    "valid_ch": "4, 7, 8, 9, 10, 18, 19, 21, 22, 23, 27, 33, 35"
+    "valid_ch": "4, 7, 8, 9, 10, 18, 19, 21, 22, 23, 27, 33, 63"
   }, 
   "labor_title_ERASE": {"sort_ordinal": 80, "valid_ch": "9, 21, 22, 23"}, 
   "labor_title_ERASE_aux": {"valid_ch": "21"}, 
@@ -695,7 +695,7 @@
   "labor_title_iux": {"valid_ch": "21"}, 
   "labor_title_otx": {"sort_ordinal": 78, "valid_ch": "21, 22"}, 
   "laborheir": {"valid_ch": "4, 27"}, 
-  "labors": {"valid_ch": "4, 7, 8, 10, 23, 27, 35"}, 
+  "labors": {"valid_ch": "4, 7, 8, 10, 23, 27, 63"}, 
   "ladder": {"valid_ch": "40, 45"}, 
   "land": {"valid_ch": "39, 40, 44, 45"}, 
   "lasso": {"valid_ch": "10, 11, 12, 15, 22, 26, 27, 30, 31, 32"}, 
@@ -713,15 +713,15 @@
   "magnitude": {"valid_ch": "12, 13, 40"}, 
   "mana_grain": {
     "sort_ordinal": 138, 
-    "valid_ch": "8, 9, 10, 11, 12, 13, 15, 18, 19, 21, 22, 23, 26, 27, 33, 35"
+    "valid_ch": "8, 9, 10, 11, 12, 13, 15, 18, 19, 21, 22, 23, 26, 27, 33, 63"
   }, 
   "mandate": {"valid_ch": "8, 12, 15, 27, 32, 39"}, 
   "max_tree_traverse": {
     "sort_ordinal": 126, 
-    "valid_ch": "8, 9, 10, 11, 18, 19, 21, 22, 23, 27, 33, 35"
+    "valid_ch": "8, 9, 10, 11, 18, 19, 21, 22, 23, 27, 33, 63"
   }, 
   "meaning": {"valid_ch": "5, 39"}, 
-  "memberships": {"valid_ch": "3, 4, 8, 9, 10, 15, 23, 27, 31, 35"}, 
+  "memberships": {"valid_ch": "3, 4, 8, 9, 10, 15, 23, 27, 31, 63"}, 
   "mmtbudd": {"valid_ch": "22, 26, 97"}, 
   "mmtceck": {"valid_ch": "22, 26, 97"}, 
   "mmthour": {"valid_ch": "22, 26, 97"}, 
@@ -730,7 +730,7 @@
   "mmtunit": {"valid_ch": "22, 26, 97"}, 
   "mmtweek": {"valid_ch": "22, 26, 97"}, 
   "moment": {
-    "valid_ch": "10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 35, 39, 40, 44, 46, 90, 97"
+    "valid_ch": "10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 39, 40, 44, 46, 63, 90, 97"
   }, 
   "moment_budunit": {"valid_ch": "15, 21, 22, 23, 26, 97"}, 
   "moment_ceckbook": {"valid_ch": "15, 21, 22, 23, 26, 97"}, 
@@ -743,7 +743,7 @@
   "moment_ote1_agg": {"valid_ch": "22, 26, 27, 32, 97"}, 
   "moment_rope": {
     "sort_ordinal": 8, 
-    "valid_ch": "10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 35, 90"
+    "valid_ch": "10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 63, 90"
   }, 
   "moment_rope_aux": {"valid_ch": "21"}, 
   "moment_rope_inx": {"sort_ordinal": 10, "valid_ch": "21, 22"}, 
@@ -764,7 +764,7 @@
   "months_config": {"valid_ch": "14, 21, 23, 26"}, 
   "morph": {
     "sort_ordinal": 107, 
-    "valid_ch": "7, 8, 9, 10, 14, 15, 18, 19, 21, 22, 23, 26, 27, 33, 35, 90"
+    "valid_ch": "7, 8, 9, 10, 14, 15, 18, 19, 21, 22, 23, 26, 27, 33, 63, 90"
   }, 
   "nabu": {"valid_ch": "17"}, 
   "nabu_timenum": {"valid_ch": "17"}, 
@@ -786,7 +786,7 @@
   "normal_table_name": {"valid_ch": "9"}, 
   "numor": {
     "sort_ordinal": 105, 
-    "valid_ch": "7, 8, 9, 10, 15, 18, 19, 21, 22, 23, 26, 27, 33, 35, 90"
+    "valid_ch": "7, 8, 9, 10, 15, 18, 19, 21, 22, 23, 26, 27, 33, 63, 90"
   }, 
   "obj_type": {"valid_ch": "8, 9, 15, 16, 18, 19, 21, 26"}, 
   "offer": {"valid_ch": "33, 39, 40, 44"}, 
@@ -814,7 +814,7 @@
   "palm": {"valid_ch": ""}, 
   "pandas_DataFrame": {"valid_ch": ""}, 
   "parent_heir_active": {"sort_ordinal": 189, "valid_ch": "6, 8, 21, 22, 27"}, 
-  "parent_rope": {"valid_ch": "5, 7, 8, 9, 10, 11, 14, 15, 18, 19, 27, 35"}, 
+  "parent_rope": {"valid_ch": "5, 7, 8, 9, 10, 11, 14, 15, 18, 19, 27, 63"}, 
   "parent_solo": {"valid_ch": "4"}, 
   "patient_count": {"valid_ch": "13"}, 
   "patient_rank_num": {"valid_ch": "13"}, 
@@ -822,7 +822,7 @@
   "pay": {"valid_ch": "40, 44, 45"}, 
   "peer": {"valid_ch": "33, 39, 40"}, 
   "person": {
-    "valid_ch": "4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 35, 39, 40, 44, 45, 46, 54, 90, 97"
+    "valid_ch": "4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 34, 39, 40, 44, 45, 46, 54, 63, 90, 97"
   }, 
   "person_contact_membership": {"valid_ch": "8, 9, 10, 21, 22, 23, 27, 97"}, 
   "person_contacts_net": {"valid_ch": "12"}, 
@@ -830,7 +830,7 @@
   "person_groupunit": {"valid_ch": "8, 9, 22, 27"}, 
   "person_name": {
     "sort_ordinal": 32, 
-    "valid_ch": "4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 19, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 35, 90"
+    "valid_ch": "4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 19, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 63, 90"
   }, 
   "person_name_ERASE": {"sort_ordinal": 35, "valid_ch": "9, 21, 22, 23"}, 
   "person_name_ERASE_aux": {"valid_ch": "21"}, 
@@ -847,14 +847,14 @@
   "person_plan_factunit": {"valid_ch": "8, 9, 10, 14, 21, 22, 23, 26, 27, 97"}, 
   "person_plan_healerunit": {"valid_ch": "8, 9, 10, 21, 22, 23, 27, 97"}, 
   "person_plan_laborunit": {"valid_ch": "8, 9, 10, 21, 22, 23, 27, 97"}, 
-  "person_plan_reason_caseunit": {"valid_ch": "8, 9, 10, 14, 21, 22, 23, 26, 27, 35, 97"}, 
+  "person_plan_reason_caseunit": {"valid_ch": "8, 9, 10, 14, 21, 22, 23, 26, 27, 63, 97"}, 
   "person_plan_reasonunit": {"valid_ch": "8, 9, 10, 14, 21, 22, 23, 26, 27, 97"}, 
   "person_planunit": {"valid_ch": "8, 9, 10, 14, 21, 22, 23, 26, 27, 31, 97"}, 
   "personadjust": {"valid_ch": "12, 15"}, 
   "personbudhistorys": {"valid_ch": "15, 23, 26"}, 
   "personspark_facts": {"valid_ch": "12, 15"}, 
   "personunit": {
-    "valid_ch": "8, 9, 10, 11, 12, 13, 14, 15, 21, 22, 23, 27, 30, 31, 32, 35, 90, 97"
+    "valid_ch": "8, 9, 10, 11, 12, 13, 14, 15, 21, 22, 23, 27, 30, 31, 32, 63, 90, 97"
   }, 
   "pillar": {"valid_ch": "45"}, 
   "pitch": {"valid_ch": "33, 40, 44"}, 
@@ -862,15 +862,15 @@
   "pitcher_name": {"valid_ch": "33"}, 
   "pitchs": {"valid_ch": "33"}, 
   "plan": {
-    "valid_ch": "7, 8, 9, 10, 11, 12, 14, 15, 18, 19, 21, 22, 23, 26, 27, 30, 31, 32, 33, 35, 40, 44, 45, 46, 54, 90, 97, 98"
+    "valid_ch": "7, 8, 9, 10, 11, 12, 14, 15, 18, 19, 21, 22, 23, 26, 27, 30, 31, 32, 33, 40, 44, 45, 46, 54, 63, 90, 97, 98"
   }, 
-  "plan_active": {"sort_ordinal": 161, "valid_ch": "7, 8, 14, 21, 22, 27, 31, 35"}, 
-  "plan_active_hx": {"valid_ch": "7, 8, 35"}, 
-  "plan_fund_total": {"valid_ch": "7, 8, 35"}, 
-  "plan_label": {"valid_ch": "7, 8, 9, 10, 14, 15, 18, 19, 21, 27, 31, 35"}, 
+  "plan_active": {"sort_ordinal": 161, "valid_ch": "7, 8, 14, 21, 22, 27, 31, 63"}, 
+  "plan_active_hx": {"valid_ch": "7, 8, 63"}, 
+  "plan_fund_total": {"valid_ch": "7, 8, 63"}, 
+  "plan_label": {"valid_ch": "7, 8, 9, 10, 14, 15, 18, 19, 21, 27, 31, 63"}, 
   "plan_rope": {
     "sort_ordinal": 50, 
-    "valid_ch": "7, 8, 9, 10, 11, 12, 14, 15, 18, 19, 21, 22, 23, 26, 27, 31, 32, 33, 35"
+    "valid_ch": "7, 8, 9, 10, 11, 12, 14, 15, 18, 19, 21, 22, 23, 26, 27, 31, 32, 33, 63"
   }, 
   "plan_rope_ERASE": {"sort_ordinal": 53, "valid_ch": "9, 21, 22, 23"}, 
   "plan_rope_ERASE_aux": {"valid_ch": "21"}, 
@@ -881,18 +881,18 @@
   "plan_rope_inx": {"sort_ordinal": 52, "valid_ch": "21, 22"}, 
   "plan_rope_iux": {"valid_ch": "21"}, 
   "plan_rope_otx": {"sort_ordinal": 51, "valid_ch": "21, 22"}, 
-  "plan_task": {"sort_ordinal": 162, "valid_ch": "7, 8, 21, 22, 27, 31, 35"}, 
-  "plan_uid": {"valid_ch": "7, 8, 9, 35"}, 
-  "planroot": {"valid_ch": "8, 9, 10, 11, 12, 14, 15, 21, 23, 27, 31, 35"}, 
+  "plan_task": {"sort_ordinal": 162, "valid_ch": "7, 8, 21, 22, 27, 31, 63"}, 
+  "plan_uid": {"valid_ch": "7, 8, 9, 63"}, 
+  "planroot": {"valid_ch": "8, 9, 10, 11, 12, 14, 15, 21, 23, 27, 31, 63"}, 
   "pledge": {
     "sort_ordinal": 134, 
-    "valid_ch": "7, 8, 9, 10, 11, 12, 14, 15, 18, 19, 21, 22, 23, 26, 27, 31, 32, 33, 35, 90"
+    "valid_ch": "7, 8, 9, 10, 11, 12, 14, 15, 18, 19, 21, 22, 23, 26, 27, 31, 32, 33, 63, 90"
   }, 
   "pledges_count": {"sort_ordinal": 197, "valid_ch": "21, 31"}, 
   "power": {"valid_ch": "39, 40, 41, 44, 45"}, 
   "poynt": {
     "sort_ordinal": 125, 
-    "valid_ch": "7, 8, 9, 10, 11, 14, 18, 19, 21, 22, 23, 26, 27, 31, 32, 33, 35, 45, 97"
+    "valid_ch": "7, 8, 9, 10, 11, 14, 18, 19, 21, 22, 23, 26, 27, 31, 32, 33, 45, 63, 97"
   }, 
   "prestige": {"valid_ch": "40, 45"}, 
   "prnawar": {"valid_ch": "8, 9, 22, 25, 26, 27"}, 
@@ -908,7 +908,7 @@
   "prnunit": {"valid_ch": "8, 9, 22, 27, 32"}, 
   "problem_bool": {
     "sort_ordinal": 135, 
-    "valid_ch": "7, 8, 9, 10, 11, 15, 18, 19, 21, 22, 23, 26, 27, 33, 35, 90"
+    "valid_ch": "7, 8, 9, 10, 11, 15, 18, 19, 21, 22, 23, 26, 27, 33, 63, 90"
   }, 
   "promise": {"valid_ch": "33, 39, 40, 44, 45"}, 
   "pump": {"valid_ch": "44"}, 
@@ -920,15 +920,15 @@
   "quota_inx": {"valid_ch": ""}, 
   "quota_otx": {"valid_ch": ""}, 
   "range_duration": {"valid_ch": "14"}, 
-  "range_evaluated": {"sort_ordinal": 183, "valid_ch": "7, 8, 21, 22, 27, 35"}, 
+  "range_evaluated": {"sort_ordinal": 183, "valid_ch": "7, 8, 21, 22, 27, 63"}, 
   "range_inheritors": {"valid_ch": "7, 8, 14"}, 
   "range_lower_min": {"valid_ch": "14"}, 
-  "rational": {"sort_ordinal": 169, "valid_ch": "3, 6, 8, 11, 12, 13, 15, 21, 22, 27, 31, 35"}, 
-  "readable": {"valid_ch": "14, 31, 35"}, 
+  "rational": {"sort_ordinal": 169, "valid_ch": "3, 6, 8, 11, 12, 13, 15, 21, 22, 27, 31, 63"}, 
+  "readable": {"valid_ch": "14, 31, 63"}, 
   "reason_active": {"sort_ordinal": 164, "valid_ch": "6, 7, 8, 14, 21, 22, 27"}, 
   "reason_context": {
     "sort_ordinal": 56, 
-    "valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 15, 18, 19, 21, 22, 23, 26, 27, 31, 33, 35"
+    "valid_ch": "6, 7, 8, 9, 10, 11, 12, 14, 15, 18, 19, 21, 22, 23, 26, 27, 31, 33, 63"
   }, 
   "reason_context_ERASE": {"sort_ordinal": 59, "valid_ch": "9, 21, 22, 23"}, 
   "reason_context_ERASE_aux": {"valid_ch": "21"}, 
@@ -942,17 +942,17 @@
   "reason_contexts": {"valid_ch": "8, 10, 11, 12"}, 
   "reason_divisor": {
     "sort_ordinal": 133, 
-    "valid_ch": "6, 7, 8, 9, 10, 14, 18, 19, 21, 22, 23, 26, 27, 31, 33, 35"
+    "valid_ch": "6, 7, 8, 9, 10, 14, 18, 19, 21, 22, 23, 26, 27, 31, 33, 63"
   }, 
   "reason_lower": {
     "sort_ordinal": 127, 
-    "valid_ch": "6, 7, 8, 9, 10, 11, 14, 16, 17, 18, 19, 21, 22, 23, 26, 27, 31, 33, 35"
+    "valid_ch": "6, 7, 8, 9, 10, 11, 14, 16, 17, 18, 19, 21, 22, 23, 26, 27, 31, 33, 63"
   }, 
   "reason_lower_inx": {"sort_ordinal": 129, "valid_ch": "21, 22, 26"}, 
   "reason_lower_otx": {"sort_ordinal": 128, "valid_ch": "21, 22, 26"}, 
   "reason_state": {
     "sort_ordinal": 68, 
-    "valid_ch": "6, 7, 8, 9, 10, 11, 14, 18, 19, 21, 22, 23, 27, 33, 35"
+    "valid_ch": "6, 7, 8, 9, 10, 11, 14, 18, 19, 21, 22, 23, 27, 33, 63"
   }, 
   "reason_state_ERASE": {"sort_ordinal": 71, "valid_ch": "9, 21, 22, 23"}, 
   "reason_state_ERASE_aux": {"valid_ch": "21"}, 
@@ -966,17 +966,17 @@
   "reason_task": {"sort_ordinal": 165, "valid_ch": "6, 7, 8, 21, 22, 27"}, 
   "reason_upper": {
     "sort_ordinal": 130, 
-    "valid_ch": "6, 7, 8, 9, 10, 14, 16, 17, 18, 19, 21, 22, 23, 26, 27, 31, 33, 35"
+    "valid_ch": "6, 7, 8, 9, 10, 14, 16, 17, 18, 19, 21, 22, 23, 26, 27, 31, 33, 63"
   }, 
   "reason_upper_inx": {"sort_ordinal": 132, "valid_ch": "21, 22, 26"}, 
   "reason_upper_otx": {"sort_ordinal": 131, "valid_ch": "21, 22, 26"}, 
-  "reasonheirs": {"valid_ch": "7, 8, 14, 27, 31, 35"}, 
-  "reasonunits": {"valid_ch": "6, 7, 8, 10, 11, 14, 23, 35"}, 
+  "reasonheirs": {"valid_ch": "7, 8, 14, 27, 31, 63"}, 
+  "reasonunits": {"valid_ch": "6, 7, 8, 10, 11, 14, 23, 63"}, 
   "republic": {"valid_ch": "40, 45"}, 
   "request": {"valid_ch": "33, 44, 98"}, 
   "respect_grain": {
     "sort_ordinal": 139, 
-    "valid_ch": "3, 8, 9, 10, 11, 15, 18, 19, 21, 22, 23, 26, 27, 33, 35"
+    "valid_ch": "3, 8, 9, 10, 11, 15, 18, 19, 21, 22, 23, 26, 27, 33, 63"
   }, 
   "revenge": {"valid_ch": "44, 45"}, 
   "rewards_count": {"valid_ch": "13"}, 
@@ -994,17 +994,17 @@
   "s_vld": {"valid_ch": "22, 24, 25, 26, 30, 32"}, 
   "scaffold": {"valid_ch": ""}, 
   "semantic_type": {
-    "valid_ch": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 35, 90, 97, 98"
+    "valid_ch": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 30, 31, 32, 33, 63, 90, 97, 98"
   }, 
-  "sheet": {"valid_ch": "21, 22, 23, 24, 30, 32, 35, 40, 46, 90, 97"}, 
+  "sheet": {"valid_ch": "21, 22, 23, 24, 30, 32, 40, 46, 63, 90, 97"}, 
   "shill": {"valid_ch": "40"}, 
   "shop": {
-    "valid_ch": "3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 26, 27, 30, 31, 32, 33, 35, 39, 45, 90, 97, 98"
+    "valid_ch": "3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 26, 27, 30, 31, 32, 33, 39, 45, 63, 90, 97, 98"
   }, 
   "shot": {"valid_ch": "44"}, 
   "soil": {"valid_ch": "40"}, 
   "soldier": {"valid_ch": "44"}, 
-  "solo": {"sort_ordinal": 83, "valid_ch": "4, 8, 9, 18, 19, 21, 22, 23, 27, 33, 35"}, 
+  "solo": {"sort_ordinal": 83, "valid_ch": "4, 8, 9, 18, 19, 21, 22, 23, 27, 33, 63"}, 
   "song": {"valid_ch": "17, 19, 21"}, 
   "song_audie": {"valid_ch": "17, 19, 21"}, 
   "song_audie_aux": {"valid_ch": "21"}, 
@@ -1037,29 +1037,29 @@
   "spring": {"valid_ch": "44, 45, 46"}, 
   "sqlite_datatype": {"valid_ch": "8, 9, 20, 21, 33"}, 
   "src": {
-    "valid_ch": "0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 27, 30, 32, 33, 34, 35, 38, 40, 41, 44, 45, 46, 90, 97, 98"
+    "valid_ch": "0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 27, 30, 32, 33, 34, 38, 40, 41, 44, 45, 46, 63, 90, 97, 98"
   }, 
   "stable": {"valid_ch": "45"}, 
   "stilt": {"valid_ch": ""}, 
-  "stop_calc": {"sort_ordinal": 181, "valid_ch": "7, 8, 14, 21, 22, 27, 35"}, 
+  "stop_calc": {"sort_ordinal": 181, "valid_ch": "7, 8, 14, 21, 22, 27, 63"}, 
   "stop_want": {
     "sort_ordinal": 109, 
-    "valid_ch": "7, 8, 9, 10, 14, 18, 19, 21, 22, 23, 26, 27, 33, 35, 90"
+    "valid_ch": "7, 8, 9, 10, 14, 18, 19, 21, 22, 23, 26, 27, 33, 63, 90"
   }, 
   "sum_healerunit_plans_fund_total": {"sort_ordinal": 191, "valid_ch": "8, 21, 22, 27"}, 
   "summer": {"valid_ch": "8, 44"}, 
   "swim": {"valid_ch": ""}, 
   "take_force": {
     "sort_ordinal": 136, 
-    "valid_ch": "3, 7, 8, 9, 10, 18, 19, 21, 22, 23, 27, 33, 35"
+    "valid_ch": "3, 7, 8, 9, 10, 18, 19, 21, 22, 23, 27, 33, 63"
   }, 
   "target": {"valid_ch": ""}, 
   "tash": {"valid_ch": "16, 17, 18, 21, 22, 23, 26, 40, 97"}, 
   "tash_timenum": {"valid_ch": "16, 21, 22, 23, 26"}, 
   "team": {"valid_ch": "90"}, 
-  "thinkout": {"valid_ch": "3, 7, 8, 9, 10, 11, 12, 14, 15, 23, 27, 31, 35, 90, 97"}, 
+  "thinkout": {"valid_ch": "3, 7, 8, 9, 10, 11, 12, 14, 15, 23, 27, 31, 63, 90, 97"}, 
   "time": {
-    "valid_ch": "12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 26, 27, 30, 31, 32, 33, 35, 39, 40, 41, 44, 45, 46, 54, 90, 97, 98"
+    "valid_ch": "12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 26, 27, 30, 31, 32, 33, 39, 40, 41, 44, 45, 46, 54, 63, 90, 97, 98"
   }, 
   "timetash": {"valid_ch": "16"}, 
   "titlemap": {"valid_ch": "18, 21"}, 
@@ -1074,7 +1074,7 @@
   "tran_time_inx": {"sort_ordinal": 101, "valid_ch": "21, 22"}, 
   "tran_time_otx": {"sort_ordinal": 100, "valid_ch": "21, 22"}, 
   "trash": {"valid_ch": "40"}, 
-  "tree_level": {"sort_ordinal": 182, "valid_ch": "7, 8, 9, 21, 22, 27, 35"}, 
+  "tree_level": {"sort_ordinal": 182, "valid_ch": "7, 8, 9, 21, 22, 27, 63"}, 
   "tree_traverse_count": {"sort_ordinal": 194, "valid_ch": "7, 8, 21, 22, 27"}, 
   "trek": {"valid_ch": ""}, 
   "trlcore": {"valid_ch": "22, 25, 30, 32, 97"}, 
@@ -1111,8 +1111,8 @@
   "winner": {"valid_ch": "40, 44, 45, 46"}, 
   "winning": {"valid_ch": "40, 45"}, 
   "winter": {"valid_ch": "44"}, 
-  "workforceheir": {"valid_ch": "4, 7, 8, 27, 35"}, 
-  "workforceunit": {"valid_ch": "4, 7, 8, 9, 10, 11, 15, 23, 27, 35"}, 
+  "workforceheir": {"valid_ch": "4, 7, 8, 27, 63"}, 
+  "workforceunit": {"valid_ch": "4, 7, 8, 9, 10, 11, 15, 23, 27, 63"}, 
   "world_name": {"valid_ch": "21, 30, 32, 33, 90"}, 
   "yap": {"valid_ch": "19"}, 
   "yard": {"valid_ch": ""}, 

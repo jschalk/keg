@@ -1,6 +1,6 @@
 from ch08_person_logic.person_main import personunit_shop
-from ch35_person_viewer.person_viewer_tool import add_small_dot, get_contacts_view_dict
-from ch99_glossary.ch_keyword import Ch35Keywords as kw, ExampleStrs as exx
+from ch63_person_viewer.person_viewer_tool import add_small_dot, get_contacts_view_dict
+from ch99_glossary.ch_keyword import Ch63Keywords as kw, ExampleStrs as exx
 
 
 def test_get_contacts_view_dict_ReturnsObj_Scenario0_Empty():

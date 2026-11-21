@@ -1,5 +1,5 @@
-from ch35_person_viewer.person_viewer_app import get_person_viewer_template
-from ch99_glossary.ch_keyword import Ch35Keywords as kw
+from ch63_person_viewer.person_viewer_app import get_person_viewer_template
+from ch99_glossary.ch_keyword import Ch63Keywords as kw
 
 
 def test_get_person_viewer_template_ReturnsObj():
