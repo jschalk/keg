@@ -3824,12 +3824,12 @@ class Ch34Keywords(str, Enum):
         return self.value
 
 
-class Ch36Keywords(str, Enum):
+class Ch35Keywords(str, Enum):
     Keyword = "Keyword"
     Newz = "Newz"
     ch00 = "ch00"
     ch34 = "ch34"
-    ch36 = "ch36"
+    ch35 = "ch35"
     ch99 = "ch99"
     finance = "finance"
     financial = "financial"
