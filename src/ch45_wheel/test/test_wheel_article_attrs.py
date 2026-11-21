@@ -1,4 +1,4 @@
-from ch38_article.article_toolbox import (
+from ch40_article.article_toolbox import (
     get_articleunit_from_file,
     get_snippets_locations_dict,
 )

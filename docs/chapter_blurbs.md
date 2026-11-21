@@ -37,9 +37,9 @@ What does each one do?
 - **ch33_pitch**: Defines Pitch Tools for gifts, World Scenarios.
 - **ch34_finance**: Defines Finance Tools for 
 - **ch35_newz**: Defines Newz Tools
-- **ch38_article**: Article formatting tools
-- **ch39_levinas**: Levinas Philosophy
-- **ch40_kazani**: Kazani articles.
+- **ch40_article**: Article formatting tools
+- **ch41_levinas**: Levinas Philosophy
+- **ch42_kazani**: Kazani articles.
 - **ch43_pop_phil**: Popular Philsophy
 - **ch44_spring**: spring for future
 - **ch45_wheel**: Essays pop_phil

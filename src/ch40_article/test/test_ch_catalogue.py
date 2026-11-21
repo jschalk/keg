@@ -1,5 +1,5 @@
 from ch00_py.file_toolbox import save_file
-from ch38_article.article_toolbox import (
+from ch40_article.article_toolbox import (
     create_markdown_table_of_contents,
     get_markdown_file_metadata,
 )

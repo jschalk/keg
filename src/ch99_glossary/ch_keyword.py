@@ -3841,18 +3841,18 @@ class Ch35Keywords(str, Enum):
         return self.value
 
 
-class Ch38Keywords(str, Enum):
+class Ch40Keywords(str, Enum):
     Article = "Article"
     article = "article"
     ch00 = "ch00"
-    ch38 = "ch38"
+    ch40 = "ch40"
     src = "src"
 
     def __str__(self):
         return self.value
 
 
-class Ch39Keywords(str, Enum):
+class Ch41Keywords(str, Enum):
     American = "American"
     Border = "Border"
     Excel = "Excel"
@@ -3872,7 +3872,7 @@ class Ch39Keywords(str, Enum):
     begin = "begin"
     border = "border"
     cases = "cases"
-    ch39 = "ch39"
+    ch41 = "ch41"
     close = "close"
     day = "day"
     days = "days"
@@ -3916,7 +3916,7 @@ class Ch39Keywords(str, Enum):
         return self.value
 
 
-class Ch40Keywords(str, Enum):
+class Ch42Keywords(str, Enum):
     American = "American"
     Article = "Article"
     Empire = "Empire"
@@ -3944,7 +3944,7 @@ class Ch40Keywords(str, Enum):
     begin = "begin"
     brick = "brick"
     cases = "cases"
-    ch40 = "ch40"
+    ch42 = "ch42"
     close = "close"
     contacts = "contacts"
     cow = "cow"
@@ -4052,7 +4052,7 @@ class Ch44Keywords(str, Enum):
     begin = "begin"
     boss = "boss"
     cases = "cases"
-    ch40 = "ch40"
+    ch42 = "ch42"
     ch44 = "ch44"
     climb = "climb"
     clock = "clock"
@@ -4142,8 +4142,8 @@ class Ch45Keywords(str, Enum):
     bearing = "bearing"
     border = "border"
     boss = "boss"
-    ch38 = "ch38"
     ch40 = "ch40"
+    ch42 = "ch42"
     ch43 = "ch43"
     ch44 = "ch44"
     ch45 = "ch45"
@@ -4549,7 +4549,7 @@ class Ch97Keywords(str, Enum):
     ch21 = "ch21"
     ch22 = "ch22"
     ch26 = "ch26"
-    ch38 = "ch38"
+    ch40 = "ch40"
     ch97 = "ch97"
     ch99 = "ch99"
     crud = "crud"
@@ -4654,7 +4654,7 @@ class Ch98Keywords(str, Enum):
     ch22 = "ch22"
     ch23 = "ch23"
     ch32 = "ch32"
-    ch38 = "ch38"
+    ch40 = "ch40"
     ch54 = "ch54"
     ch97 = "ch97"
     ch98 = "ch98"

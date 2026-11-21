@@ -1,5 +1,5 @@
 from ch00_py.file_toolbox import save_file
-from ch38_article.article_toolbox import (
+from ch40_article.article_toolbox import (
     ArticleUnit,
     get_articleunit_from_file,
     get_default_article_snippets_order,

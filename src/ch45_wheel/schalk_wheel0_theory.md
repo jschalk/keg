@@ -8,7 +8,7 @@
 
 ---
 <!--Home: -->
-Being a philosopher is great. Always have interesting things to read and think about. Making theories for things is challenging and fun. It's also easier then being a historian. My Dad was an historian, reading primary sources and then figuring out how people thought a long time ago. Much harder then theory. Then my favorite writer argues that [historians are bad at theory-making](../ch40_kazani/kazani_how_to_study_politics.md)
+Being a philosopher is great. Always have interesting things to read and think about. Making theories for things is challenging and fun. It's also easier then being a historian. My Dad was an historian, reading primary sources and then figuring out how people thought a long time ago. Much harder then theory. Then my favorite writer argues that [historians are bad at theory-making](../ch42_kazani/kazani_how_to_study_politics.md)
 
 > ...historians fail to deliver, because they (most of them) are simply not brilliant enough.
 <!--Need: -->
@@ -16,7 +16,7 @@ Ouch! My dad was a historian. A pretty good one[^1]. Wrote a book and everything
 
 <div align="center"><img src="../ch45_wheel/images/valor_to_pedigree.webp" alt="From Valor to Pedigree by Ellery Schalk book cover" width="40%"></div>
 
-Kazani says my dad and his ilk can't theorize well. He using entertaining and harsh words. Some very harsh. Hard to be entertaining and not harsh, it's what [second hand dealers](../ch40_kazani/kazani_kill_the_scholars.md) do. I shouldn't take it so personally. And yet I feel something very primal... 
+Kazani says my dad and his ilk can't theorize well. He using entertaining and harsh words. Some very harsh. Hard to be entertaining and not harsh, it's what [second hand dealers](../ch42_kazani/kazani_kill_the_scholars.md) do. I shouldn't take it so personally. And yet I feel something very primal... 
 
 <div align="center">
 
@@ -122,14 +122,14 @@ First let's establish Kazani's favorite political axiom: All governments are oli
 
 > Ronald Syne wrote ""In all ages, whatever the form and name of government, be it monarchy, republic, or democracy, an oligarchy lurks behind the façade."[^4]
 
-Ok but what are oligarchies made of? It can't just be the individuals that's too limited. It can't just be coalitions that believe in the same concepts. That's not limited enough. What about family? Kazani writes how family is the basic socialogical unit in [The Able Family](../ch40_kazani/kazani_the_able_family.md). And I'm not original at all with this. I grew up with lots of Mexicans and they always say 10 families control Mexico. So how do Oligarchies work?
+Ok but what are oligarchies made of? It can't just be the individuals that's too limited. It can't just be coalitions that believe in the same concepts. That's not limited enough. What about family? Kazani writes how family is the basic socialogical unit in [The Able Family](../ch42_kazani/kazani_the_able_family.md). And I'm not original at all with this. I grew up with lots of Mexicans and they always say 10 families control Mexico. So how do Oligarchies work?
 
 <div align="center">
 
 ### Every Oligarchy are made of Families
 </div>
 
-<div align="center"><img src="../ch40_kazani/images/yelstin_family.webp" alt="FamilyUnit Yelstin" width="50%"></div>
+<div align="center"><img src="../ch42_kazani/images/yelstin_family.webp" alt="FamilyUnit Yelstin" width="50%"></div>
 
 
  The oligarchy can be best understand as a coalition of Families. A Family can have a dominate personality as leader but is better to think of families rather then personalities[^5] because the trusted family members of a leader can often have enourmous influence. Kamil Kazani claims that one of the people in the Yelstin family portrait above made Vladamir Putin king. It wasn't Boris Yelstin. Do you know which one it was? Do you know his name? I don't. Still I know the Family: The Yelstin Family. A Family that had **prestige** but then it fell from power.
@@ -163,7 +163,7 @@ Any system of centralized power can be represented as a Wheel. A wheel that turn
 
 As the Wheel spins there are families that are winning and families that are losing. On the other hand some families lose so much they fall out of power. There is also the "stable" section of the Wheel where families have prestige but their influence does not increase or decrease.  
 
-Why do Families fall? Perhaps the most important member dies or becomes unpopular. There are many reasons why it can happen, in [The Poverty of Realism](../ch40_kazani/kazani_the_poverty_of_realism.md) Kazani lays out how the powerful stop from falling. Here are the rules edited to explicitly refer to families. 
+Why do Families fall? Perhaps the most important member dies or becomes unpopular. There are many reasons why it can happen, in [The Poverty of Realism](../ch42_kazani/kazani_the_poverty_of_realism.md) Kazani lays out how the powerful stop from falling. Here are the rules edited to explicitly refer to families. 
 
 > 1. No family becomes powerful by accident
 > 
@@ -253,7 +253,7 @@ Question: Why I do stuff?<br>**Answer: Me -> helps family -> Family**
 
 And what is Family?
 
-The easiest introduction to the concepts of KegWheel is from the writings of Kamil Kazani. The quickest primer is Kazani's article on the [Mechanics of Revolution](../ch40_kazani/kazani_mechanics_of_revolution.md). 
+The easiest introduction to the concepts of KegWheel is from the writings of Kamil Kazani. The quickest primer is Kazani's article on the [Mechanics of Revolution](../ch42_kazani/kazani_mechanics_of_revolution.md). 
 
 Fundamentally KegWheel is not motivated by Kazani's cynical worldview but by Emmanuel Levinas's MetaEthics. The source of all truth is the Face of the Other in front of me. It can get pretty complicated so leave it for later. I just wanted to declare this. It is important to me.
 
@@ -272,11 +272,11 @@ Most people are not honest workers. If the boss tells them to do something that 
 
 [^4]: Ronald Syne (died 1989), Historian and Author of Books on Roman History. 
 
-[^5]: Basically all leaders have family they trust. To understand how someone of prestige got that prestige see Kazani in [The Able Family](../ch40_kazani/kazani_the_able_family.md) 
+[^5]: Basically all leaders have family they trust. To understand how someone of prestige got that prestige see Kazani in [The Able Family](../ch42_kazani/kazani_the_able_family.md) 
 
-[^6]: Taken from conversation about Ukraine [Kazani Twitter Posts](../ch40_kazani/kazani_twitter.md)
+[^6]: Taken from conversation about Ukraine [Kazani Twitter Posts](../ch42_kazani/kazani_twitter.md)
 
-[^7]: [The Vassal Strategy](../ch40_kazani/skallas_the_vassal_strategy.md)  
+[^7]: [The Vassal Strategy](../ch42_kazani/skallas_the_vassal_strategy.md)  
 
 [^8]: I grew up on a border so I have strong opinions about these things. 
 
@@ -286,15 +286,15 @@ Most people are not honest workers. If the boss tells them to do something that 
 
 #### Easy reads:
 
-How power is structured: [Mechanics of Revolution](../ch40_kazani/kazani_mechanics_of_revolution.md)  
-The real work of leadership: [How Stalin Came to Power](../ch40_kazani/kazani_how_stalin_came_to_power.md)  
-How slavish devotion is perfectly reasonable1: [Suffering from Success](../ch40_kazani/kazani_suffering_from_success.md)  
-How slavish devotion is perfectly reasonable2: [The Vassal Strategy](../ch40_kazani/skallas_the_vassal_strategy.md)  
-How a history of Rome best teaches how politics works: [How to study politics](../ch40_kazani/kazani_how_to_study_politics.md)  
-Why Plato's power behind the throne plan fails: [Wisdom of Lenin](../ch40_kazani/kazani_wisdom_of_lenin.md)  
-Why and how thinkers matter: [Kill the Scholars](../ch40_kazani/kazani_kill_the_scholars.md)  
-Why domestic goals motivate the most: [The Poverty of Realism](../ch40_kazani/kazani_the_poverty_of_realism.md)  
-How tyranny protects power: [Why Putin killed Navalny](../ch40_kazani/kazani_putin_navalny.md)  
+How power is structured: [Mechanics of Revolution](../ch42_kazani/kazani_mechanics_of_revolution.md)  
+The real work of leadership: [How Stalin Came to Power](../ch42_kazani/kazani_how_stalin_came_to_power.md)  
+How slavish devotion is perfectly reasonable1: [Suffering from Success](../ch42_kazani/kazani_suffering_from_success.md)  
+How slavish devotion is perfectly reasonable2: [The Vassal Strategy](../ch42_kazani/skallas_the_vassal_strategy.md)  
+How a history of Rome best teaches how politics works: [How to study politics](../ch42_kazani/kazani_how_to_study_politics.md)  
+Why Plato's power behind the throne plan fails: [Wisdom of Lenin](../ch42_kazani/kazani_wisdom_of_lenin.md)  
+Why and how thinkers matter: [Kill the Scholars](../ch42_kazani/kazani_kill_the_scholars.md)  
+Why domestic goals motivate the most: [The Poverty of Realism](../ch42_kazani/kazani_the_poverty_of_realism.md)  
+How tyranny protects power: [Why Putin killed Navalny](../ch42_kazani/kazani_putin_navalny.md)  
 Levinas and the Face intro: [I exist, I suffer. Please don't destroy me.](../ch43_pop_phil/thompson_i_exist_i_suffer.md).  
 
 
