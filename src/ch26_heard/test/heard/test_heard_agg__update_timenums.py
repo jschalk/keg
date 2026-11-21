@@ -5,21 +5,21 @@ from ch22_etl_config.etl_sqlstr import (
     update_heard_agg_timenum_columns,
 )
 from ch26_heard.test.heard.test_heard_agg__update_casenum_pchapx import (
-    pchapx_insert_nabtime,
     pchapx_insert_prncase,
     pchapx_insert_prnplan,
+    pchapx_insert_tshtime,
     pchapx_select_prncase,
 )
 from ch26_heard.test.heard.test_heard_agg__update_factnum_pfhapx import (
-    pfhapx_insert_nabtime,
     pfhapx_insert_prnfact,
     pfhapx_insert_prnplan,
+    pfhapx_insert_tshtime,
     pfhapx_select_prnfact,
 )
 from ch26_heard.test.heard.test_heard_agg__update_moment_time_mxhap0 import (
     mxhap0_insert_mmtoffi,
     mxhap0_insert_mmtunit,
-    mxhap0_insert_nabtime,
+    mxhap0_insert_tshtime,
     mxhap0_select_mmtoffi,
 )
 from ch99_glossary.ch_keyword import Ch26Keywords as kw, ExampleStrs as exx
@@ -43,11 +43,11 @@ def test_update_heard_agg_timenum_columns_SQLTEST_Scenario0_TwoRecordsAndDoesMod
 
     mmtunit_vals = [[spark1, exx.a23, a23_c400_number]]
     mxhap0_insert_mmtunit(cursor0, mmtunit_vals)
-    nabtime_vals = [
+    tshtime_vals = [
         [spark1, exx.a23, s1_otx_time, s1_inx_time],
         [spark3, exx.a23, s3_otx_time, s3_inx_time],
     ]
-    mxhap0_insert_nabtime(cursor0, nabtime_vals)
+    mxhap0_insert_tshtime(cursor0, tshtime_vals)
     mmtoffi_vals = [
         [spark1, exx.a23, s1_offi_time_otx],
         [spark3, exx.a23, s3_offi_time_otx],
@@ -88,7 +88,7 @@ def test_update_heard_agg_timenum_columns_SQLTEST_Scenario1_CaseUnit_TimeNums(
     time_otx, time_inx = (300, 200)
     reason_lower_otx, reason_upper_otx = (600, 690)
     plan_denom, plan_morph = (1440, True)
-    nabtime_val = [spark7, wx.root_rope, time_otx, time_inx]
+    tshtime_val = [spark7, wx.root_rope, time_otx, time_inx]
     prnplan_val = [spark7, wx.Bob, wx.mop_rope, plan_denom, plan_morph]
     prncase_val = [
         spark7,
@@ -99,7 +99,7 @@ def test_update_heard_agg_timenum_columns_SQLTEST_Scenario1_CaseUnit_TimeNums(
         reason_upper_otx,
     ]
 
-    insert_nabtime_sql = pchapx_insert_nabtime(cursor0, [nabtime_val])
+    insert_tshtime_sql = pchapx_insert_tshtime(cursor0, [tshtime_val])
     insert_prnplan_sql = pchapx_insert_prnplan(cursor0, [prnplan_val])
     insert_prncase_sql = pchapx_insert_prncase(cursor0, [prncase_val])
 
@@ -131,7 +131,7 @@ def test_update_heard_agg_timenum_columns_SQLTEST_Scenario2_FactUnit_TimeNums(
     time_otx, time_inx = (300, 200)
     fact_lower_otx, fact_upper_otx = (7777, 8000)
     plan_close = 5259492000
-    nabtime_val = [spark7, wx.root_rope, time_otx, time_inx]
+    tshtime_val = [spark7, wx.root_rope, time_otx, time_inx]
     prnplan_val = [spark7, wx.Bob, wx.mop_rope, plan_close]
     prnfact_val = [
         spark7,
@@ -142,7 +142,7 @@ def test_update_heard_agg_timenum_columns_SQLTEST_Scenario2_FactUnit_TimeNums(
         fact_upper_otx,
     ]
 
-    insert_nabtime_sql = pfhapx_insert_nabtime(cursor0, [nabtime_val])
+    insert_tshtime_sql = pfhapx_insert_tshtime(cursor0, [tshtime_val])
     insert_prnplan_sql = pfhapx_insert_prnplan(cursor0, [prnplan_val])
     insert_prnfact_sql = pfhapx_insert_prnfact(cursor0, [prnfact_val])
 

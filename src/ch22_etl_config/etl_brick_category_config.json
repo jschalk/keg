@@ -19,19 +19,10 @@
       "h_agg": {
         "exclude_from_insert": ["error_message"], 
         "exclude_otx_from_insert": true, 
-        "set_nabuable_otx_inx_args": true
+        "set_tashable_otx_inx_args": true
       }, 
       "h_raw": { "add": ["error_message"], "set_jargonable_otx_inx_args": true }, 
       "h_vld": { "remove": ["spark_num", "spark_face"] }, 
-      "s_agg": { "add": ["error_message"] }, 
-      "s_raw": { "add": ["brick_type", "error_message"] }, 
-      "s_vld": {}
-    }
-  }, 
-  "nabu": {
-    "stages": {
-      "h_agg": { "exclude_from_insert": ["error_message"], "exclude_otx_from_insert": true }, 
-      "h_raw": { "add": ["error_message"], "set_jargonable_otx_inx_args": true }, 
       "s_agg": { "add": ["error_message"] }, 
       "s_raw": { "add": ["brick_type", "error_message"] }, 
       "s_vld": {}
@@ -47,7 +38,7 @@
         "put": {
           "exclude_from_insert": ["jargon_spark_num", "error_message"], 
           "exclude_otx_from_insert": true, 
-          "set_nabuable_otx_inx_args": true
+          "set_tashable_otx_inx_args": true
         }
       }, 
       "h_raw": {
@@ -61,6 +52,15 @@
         "put": { "add": ["brick_type", "error_message"] }
       }, 
       "s_vld": {"del": {}, "put": {}}
+    }
+  }, 
+  "tash": {
+    "stages": {
+      "h_agg": { "exclude_from_insert": ["error_message"], "exclude_otx_from_insert": true }, 
+      "h_raw": { "add": ["error_message"], "set_jargonable_otx_inx_args": true }, 
+      "s_agg": { "add": ["error_message"] }, 
+      "s_raw": { "add": ["brick_type", "error_message"] }, 
+      "s_vld": {}
     }
   }
 }

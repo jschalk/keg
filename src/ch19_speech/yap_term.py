@@ -17,10 +17,10 @@ from ch05_rope.rope import (
 )
 from ch19_speech._ref.ch19_semantic_types import (
     AudieTitle,
-    FlareInt,
     KnotTerm,
     LabelTerm,
     RopeTerm,
+    SongInt,
     default_knot_if_None,
 )
 from copy import copy as copy_copy
@@ -34,8 +34,8 @@ class SetLabelError(Exception):
 @dataclass
 class YapCore:
     pass
-    flare_audie: AudieTitle = None
-    flare_num: FlareInt = None
+    song_audie: AudieTitle = None
+    song_num: SongInt = None
     iux2aux: dict[str, str] = None
     iux_knot: KnotTerm = None
     aux_knot: KnotTerm = None
@@ -49,8 +49,8 @@ class YapCore:
         """Returns dict that is serializable to JSON."""
 
         return {
-            "flare_audie": self.flare_audie,
-            "flare_num": self.flare_num,
+            "song_audie": self.song_audie,
+            "song_num": self.song_num,
             "iux_knot": self.iux_knot,
             "aux_knot": self.aux_knot,
             "iux2aux": self.iux2aux,
@@ -99,8 +99,8 @@ class NameYap(YapCore):
 
 
 def nameyap_shop(
-    flare_audie: AudieTitle = None,
-    flare_num: FlareInt = None,
+    song_audie: AudieTitle = None,
+    song_num: SongInt = None,
     iux_knot: KnotTerm = None,
     aux_knot: KnotTerm = None,
     iux2aux: dict = None,
@@ -109,8 +109,8 @@ def nameyap_shop(
     aux_knot = default_knot_if_None(aux_knot)
 
     return NameYap(
-        flare_audie=flare_audie,
-        flare_num=get_0_if_None(flare_num),
+        song_audie=song_audie,
+        song_num=get_0_if_None(song_num),
         iux_knot=iux_knot,
         aux_knot=aux_knot,
         iux2aux=get_empty_dict_if_None(iux2aux),
@@ -119,8 +119,8 @@ def nameyap_shop(
 
 def get_nameyap_from_dict(x_dict: dict) -> NameYap:
     return nameyap_shop(
-        flare_audie=x_dict.get("flare_audie"),
-        flare_num=x_dict.get("flare_num"),
+        song_audie=x_dict.get("song_audie"),
+        song_num=x_dict.get("song_num"),
         iux_knot=x_dict.get("iux_knot"),
         aux_knot=x_dict.get("aux_knot"),
         iux2aux=x_dict.get("iux2aux"),
@@ -169,8 +169,8 @@ class TitleYap(YapCore):
 
 
 def titleyap_shop(
-    flare_audie: AudieTitle = None,
-    flare_num: FlareInt = None,
+    song_audie: AudieTitle = None,
+    song_num: SongInt = None,
     iux_knot: KnotTerm = None,
     aux_knot: KnotTerm = None,
     iux2aux: dict = None,
@@ -179,8 +179,8 @@ def titleyap_shop(
     aux_knot = default_knot_if_None(aux_knot)
 
     return TitleYap(
-        flare_audie=flare_audie,
-        flare_num=get_0_if_None(flare_num),
+        song_audie=song_audie,
+        song_num=get_0_if_None(song_num),
         iux_knot=iux_knot,
         aux_knot=aux_knot,
         iux2aux=get_empty_dict_if_None(iux2aux),
@@ -189,8 +189,8 @@ def titleyap_shop(
 
 def get_titleyap_from_dict(x_dict: dict) -> TitleYap:
     return titleyap_shop(
-        flare_audie=x_dict.get("flare_audie"),
-        flare_num=x_dict.get("flare_num"),
+        song_audie=x_dict.get("song_audie"),
+        song_num=x_dict.get("song_num"),
         iux_knot=x_dict.get("iux_knot"),
         aux_knot=x_dict.get("aux_knot"),
         iux2aux=x_dict.get("iux2aux"),
@@ -239,8 +239,8 @@ class LabelYap(YapCore):
 
 
 def labelyap_shop(
-    flare_audie: AudieTitle = None,
-    flare_num: FlareInt = None,
+    song_audie: AudieTitle = None,
+    song_num: SongInt = None,
     iux_knot: KnotTerm = None,
     aux_knot: KnotTerm = None,
     iux2aux: dict = None,
@@ -249,8 +249,8 @@ def labelyap_shop(
     aux_knot = default_knot_if_None(aux_knot)
 
     return LabelYap(
-        flare_audie=flare_audie,
-        flare_num=get_0_if_None(flare_num),
+        song_audie=song_audie,
+        song_num=get_0_if_None(song_num),
         iux_knot=iux_knot,
         aux_knot=aux_knot,
         iux2aux=get_empty_dict_if_None(iux2aux),
@@ -259,8 +259,8 @@ def labelyap_shop(
 
 def get_labelyap_from_dict(x_dict: dict) -> LabelYap:
     return labelyap_shop(
-        flare_audie=x_dict.get("flare_audie"),
-        flare_num=x_dict.get("flare_num"),
+        song_audie=x_dict.get("song_audie"),
+        song_num=x_dict.get("song_num"),
         iux_knot=x_dict.get("iux_knot"),
         aux_knot=x_dict.get("aux_knot"),
         iux2aux=x_dict.get("iux2aux"),
@@ -269,8 +269,8 @@ def get_labelyap_from_dict(x_dict: dict) -> LabelYap:
 
 @dataclass
 class RopeYap:
-    flare_audie: AudieTitle = None
-    flare_num: FlareInt = None
+    song_audie: AudieTitle = None
+    song_num: SongInt = None
     iux2aux: dict = None
     iux_knot: KnotTerm = None
     aux_knot: KnotTerm = None
@@ -362,8 +362,8 @@ class RopeYap:
         """Returns dict that is serializable to JSON."""
 
         return {
-            "flare_audie": self.flare_audie,
-            "flare_num": self.flare_num,
+            "song_audie": self.song_audie,
+            "song_num": self.song_num,
             "iux_knot": self.iux_knot,
             "aux_knot": self.aux_knot,
             "iux2aux": self.iux2aux,
@@ -371,8 +371,8 @@ class RopeYap:
 
 
 def ropeyap_shop(
-    flare_audie: AudieTitle = None,
-    flare_num: FlareInt = None,
+    song_audie: AudieTitle = None,
+    song_num: SongInt = None,
     iux_knot: KnotTerm = None,
     aux_knot: KnotTerm = None,
     x_labelyap: LabelYap = None,
@@ -385,8 +385,8 @@ def ropeyap_shop(
         x_labelyap = labelyap_shop(
             iux_knot=iux_knot,
             aux_knot=aux_knot,
-            flare_audie=flare_audie,
-            flare_num=flare_num,
+            song_audie=song_audie,
+            song_num=song_num,
         )
 
     return RopeYap(
@@ -394,15 +394,15 @@ def ropeyap_shop(
         iux_knot=iux_knot,
         aux_knot=aux_knot,
         labelyap=x_labelyap,
-        flare_audie=flare_audie,
-        flare_num=get_0_if_None(flare_num),
+        song_audie=song_audie,
+        song_num=get_0_if_None(song_num),
     )
 
 
 def get_ropeyap_from_dict(x_dict: dict) -> RopeYap:
     return ropeyap_shop(
-        flare_audie=x_dict.get("flare_audie"),
-        flare_num=x_dict.get("flare_num"),
+        song_audie=x_dict.get("song_audie"),
+        song_num=x_dict.get("song_num"),
         iux_knot=x_dict.get("iux_knot"),
         aux_knot=x_dict.get("aux_knot"),
         iux2aux=x_dict.get("iux2aux"),
@@ -415,12 +415,12 @@ class YapCoreAttrConflictError(Exception):
 
 def _check_core_attrs_match(new_obj: YapCore, old_obj: YapCore):
     if (
-        old_obj.flare_audie != new_obj.flare_audie
+        old_obj.song_audie != new_obj.song_audie
         or old_obj.iux_knot != new_obj.iux_knot
         or old_obj.aux_knot != new_obj.aux_knot
     ):
         raise YapCoreAttrConflictError("Core attrs in conflict")
-    if old_obj.flare_num >= new_obj.flare_num:
+    if old_obj.song_num >= new_obj.song_num:
         raise YapCoreAttrConflictError("older yapunit is not older")
 
 

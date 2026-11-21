@@ -619,7 +619,7 @@ def test_delete_sheet_DeletesAttr_Scenario0_DeletesSheet(tmp_path):
     assert not sheet_exists(file_path, x2_sheetname)
 
 
-def test_delete_sheet_DeletesAttr_Scenario1_NonexistentSheet(tmp_path):
+def test_delete_sheet_DeletesAttr_Scenario1_Nonexistent_Sheet(tmp_path):
     # ESTABLISH
     file_path = tmp_path / "test.xlsx"
 

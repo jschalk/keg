@@ -19,7 +19,8 @@ What does each one do?
 - **ch13_keep**: Builds a simulation that describes how much credit a healer has earned.
 - **ch14_time**: Defines how time is handled by PersonUnits. Allows for arbitrary time structures.
 - **ch15_moment**: Defines MomentUnits: common time tech, ledger, ContactNames, history of PersonUnits.
-- **ch16_nabu**: Defines NabuUnit tools that interpret numeric values into inside accounting.
+- **ch16_tash**: Defines TashUnit tools that interpret numeric values into inside accounting.
+- **ch17_nabu**: Nabu module converts inside numbers to outside numbers.
 - **ch18_jargon**: Defines JargonUnit tools that jargon MomentUnits into inside language.
 - **ch19_speech**: Defines SpeechUnit tools that jargon MomentUnits into audience language.
 - **ch20_db_tool**: Creates helper tools for database admin.
@@ -36,7 +37,7 @@ What does each one do?
 - **ch33_pitch**: Defines Pitch Tools for gifts, World Scenarios.
 - **ch34_finance**: Defines Finance Tools for 
 - **ch35_person_viewer**: Tools for Visualizing PersonUnits
-- **ch36_news**: Defines News Tools
+- **ch36_newz**: Defines Newz Tools
 - **ch38_article**: Article formatting tools
 - **ch39_levinas**: Levinas Philosophy
 - **ch40_kazani**: Kazani articles.

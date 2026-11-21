@@ -18,14 +18,14 @@ def test_LabelYap_Exists():
     x_labelyap = LabelYap()
 
     # WHEN / THEN
-    assert not x_labelyap.flare_audie
-    assert not x_labelyap.flare_num
+    assert not x_labelyap.song_audie
+    assert not x_labelyap.song_num
     assert not x_labelyap.iux2aux
     assert not x_labelyap.iux_knot
     assert not x_labelyap.aux_knot
     assert set(x_labelyap.__dict__.keys()) == {
-        kw.flare_audie,
-        kw.flare_num,
+        kw.song_audie,
+        kw.song_num,
         kw.iux2aux,
         kw.iux_knot,
         kw.aux_knot,
@@ -37,8 +37,8 @@ def test_labelyap_shop_ReturnsObj_Scenario0_WithoutParameters():
     x_labelyap = labelyap_shop()
 
     # THEN
-    assert not x_labelyap.flare_audie
-    assert x_labelyap.flare_num == 0
+    assert not x_labelyap.song_audie
+    assert x_labelyap.song_num == 0
     assert x_labelyap.iux2aux == {}
     assert x_labelyap.iux_knot == default_knot_if_None()
     assert x_labelyap.aux_knot == default_knot_if_None()
@@ -53,16 +53,16 @@ def test_labelyap_shop_ReturnsObj_Scenario1_WithParameters():
 
     # WHEN
     x_labelyap = labelyap_shop(
-        flare_audie=exx.bob,
-        flare_num=spark7,
+        song_audie=exx.bob,
+        song_num=spark7,
         iux2aux=iux2aux,
         iux_knot=slash_iux_knot,
         aux_knot=colon_aux_knot,
     )
 
     # THEN
-    assert x_labelyap.flare_audie == exx.bob
-    assert x_labelyap.flare_num == spark7
+    assert x_labelyap.song_audie == exx.bob
+    assert x_labelyap.song_num == spark7
     assert x_labelyap.iux2aux == iux2aux
     assert x_labelyap.iux_knot == slash_iux_knot
     assert x_labelyap.aux_knot == colon_aux_knot
@@ -76,16 +76,16 @@ def test_labelyap_shop_ReturnsObj_Scenario2_SpeechCoreAttrAreDefaultWhenGiven_fl
 
     # WHEN
     x_labelyap = labelyap_shop(
-        flare_audie=exx.bob,
-        flare_num=spark7,
+        song_audie=exx.bob,
+        song_num=spark7,
         iux2aux=iux2aux,
         iux_knot=x_nan,
         aux_knot=x_nan,
     )
 
     # THEN
-    assert x_labelyap.flare_audie == exx.bob
-    assert x_labelyap.flare_num == spark7
+    assert x_labelyap.song_audie == exx.bob
+    assert x_labelyap.song_num == spark7
     assert x_labelyap.iux2aux == iux2aux
     assert x_labelyap.iux_knot == default_knot_if_None()
     assert x_labelyap.aux_knot == default_knot_if_None()
@@ -250,21 +250,21 @@ def test_LabelYap_to_dict_ReturnsObj():
         kw.iux_knot: x_labelyap.iux_knot,
         kw.aux_knot: x_labelyap.aux_knot,
         kw.iux2aux: {},
-        kw.flare_audie: x_labelyap.flare_audie,
-        kw.flare_num: x_labelyap.flare_num,
+        kw.song_audie: x_labelyap.song_audie,
+        kw.song_num: x_labelyap.song_num,
     }
     assert x_labelyap.to_dict() == x1_rope_yap_dict
 
     # WHEN
     x_labelyap.set_iux2aux(clean_iux, clean_aux)
-    x_labelyap.flare_num = spark7
+    x_labelyap.song_num = spark7
     # THEN
     x2_rope_yap_dict = {
         kw.iux_knot: x_labelyap.iux_knot,
         kw.aux_knot: x_labelyap.aux_knot,
         kw.iux2aux: {clean_iux: clean_aux},
-        kw.flare_audie: exx.sue,
-        kw.flare_num: spark7,
+        kw.song_audie: exx.sue,
+        kw.song_num: spark7,
     }
     assert x_labelyap.to_dict() == x2_rope_yap_dict
 
@@ -282,9 +282,9 @@ def test_get_labelyap_from_dict_ReturnsObj():
     gen_labelyap = get_labelyap_from_dict(x_labelyap.to_dict())
 
     # THEN
-    assert gen_labelyap.flare_audie == x_labelyap.flare_audie
-    assert gen_labelyap.flare_num == x_labelyap.flare_num
-    assert gen_labelyap.flare_num == spark7
+    assert gen_labelyap.song_audie == x_labelyap.song_audie
+    assert gen_labelyap.song_num == x_labelyap.song_num
+    assert gen_labelyap.song_num == spark7
     assert gen_labelyap == x_labelyap
 
 
@@ -397,7 +397,7 @@ def test_inherit_labelyap_ReturnsObj_Scenario2_RaiseErrorWhenDifferent_aux_knot(
     assert str(excinfo.value) == "Core attrs in conflict"
 
 
-def test_inherit_labelyap_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_flare_audie():
+def test_inherit_labelyap_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_song_audie():
     # ESTABLISH
     old_labelyap = labelyap_shop(exx.sue, 0)
     new_labelyap = labelyap_shop(exx.bob, 1)

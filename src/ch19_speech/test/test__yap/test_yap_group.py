@@ -18,14 +18,14 @@ def test_TitleYap_Exists():
     x_titleyap = TitleYap()
 
     # WHEN / THEN
-    assert not x_titleyap.flare_audie
-    assert not x_titleyap.flare_num
+    assert not x_titleyap.song_audie
+    assert not x_titleyap.song_num
     assert not x_titleyap.iux2aux
     assert not x_titleyap.iux_knot
     assert not x_titleyap.aux_knot
     assert set(x_titleyap.__dict__.keys()) == {
-        kw.flare_audie,
-        kw.flare_num,
+        kw.song_audie,
+        kw.song_num,
         kw.iux2aux,
         kw.iux_knot,
         kw.aux_knot,
@@ -37,8 +37,8 @@ def test_titleyap_shop_ReturnsObj_Scenario0_NoParameters():
     x_titleyap = titleyap_shop()
 
     # THEN
-    assert not x_titleyap.flare_audie
-    assert x_titleyap.flare_num == 0
+    assert not x_titleyap.song_audie
+    assert x_titleyap.song_num == 0
     assert x_titleyap.iux2aux == {}
     assert x_titleyap.iux_knot == default_knot_if_None()
     assert x_titleyap.aux_knot == default_knot_if_None()
@@ -53,16 +53,16 @@ def test_titleyap_shop_ReturnsObj_Scenario1_WithParameters():
 
     # WHEN
     x_titleyap = titleyap_shop(
-        flare_audie=exx.bob,
-        flare_num=spark7,
+        song_audie=exx.bob,
+        song_num=spark7,
         iux2aux=iux2aux,
         iux_knot=slash_iux_knot,
         aux_knot=colon_aux_knot,
     )
 
     # THEN
-    assert x_titleyap.flare_audie == exx.bob
-    assert x_titleyap.flare_num == spark7
+    assert x_titleyap.song_audie == exx.bob
+    assert x_titleyap.song_num == spark7
     assert x_titleyap.iux2aux == iux2aux
     assert x_titleyap.iux_knot == slash_iux_knot
     assert x_titleyap.aux_knot == colon_aux_knot
@@ -76,16 +76,16 @@ def test_titleyap_shop_ReturnsObj_Scenario2_speechCoreAttrAreDefaultWhenGiven_fl
 
     # WHEN
     x_titleyap = titleyap_shop(
-        flare_audie=exx.bob,
-        flare_num=spark7,
+        song_audie=exx.bob,
+        song_num=spark7,
         iux2aux=iux2aux,
         iux_knot=x_nan,
         aux_knot=x_nan,
     )
 
     # THEN
-    assert x_titleyap.flare_audie == exx.bob
-    assert x_titleyap.flare_num == spark7
+    assert x_titleyap.song_audie == exx.bob
+    assert x_titleyap.song_num == spark7
     assert x_titleyap.iux2aux == iux2aux
     assert x_titleyap.iux_knot == default_knot_if_None()
     assert x_titleyap.aux_knot == default_knot_if_None()
@@ -230,14 +230,14 @@ def test_TitleYap_to_dict_ReturnsObj():
     x_titleyap = titleyap_shop(
         iux_knot=slash_iux_knot,
         aux_knot=colon_aux_knot,
-        flare_audie=exx.sue,
+        song_audie=exx.sue,
     )
     x1_rope_yap_dict = {
         kw.iux_knot: x_titleyap.iux_knot,
         kw.aux_knot: x_titleyap.aux_knot,
         kw.iux2aux: {},
-        kw.flare_num: x_titleyap.flare_num,
-        kw.flare_audie: x_titleyap.flare_audie,
+        kw.song_num: x_titleyap.song_num,
+        kw.song_audie: x_titleyap.song_audie,
     }
     assert x_titleyap.to_dict() == x1_rope_yap_dict
 
@@ -248,8 +248,8 @@ def test_TitleYap_to_dict_ReturnsObj():
         kw.iux_knot: x_titleyap.iux_knot,
         kw.aux_knot: x_titleyap.aux_knot,
         kw.iux2aux: {clean_iux: clean_aux},
-        kw.flare_num: x_titleyap.flare_num,
-        kw.flare_audie: exx.sue,
+        kw.song_num: x_titleyap.song_num,
+        kw.song_audie: exx.sue,
     }
     assert x_titleyap.to_dict() == x2_rope_yap_dict
 
@@ -267,9 +267,9 @@ def test_get_titleyap_from_dict_ReturnsObj():
     gen_titleyap = get_titleyap_from_dict(x_titleyap.to_dict())
 
     # THEN
-    assert gen_titleyap.flare_audie == x_titleyap.flare_audie
-    assert gen_titleyap.flare_num == x_titleyap.flare_num
-    assert gen_titleyap.flare_num == spark7
+    assert gen_titleyap.song_audie == x_titleyap.song_audie
+    assert gen_titleyap.song_num == x_titleyap.song_num
+    assert gen_titleyap.song_num == spark7
     assert gen_titleyap == x_titleyap
 
 
@@ -373,7 +373,7 @@ def test_inherit_titleyap_ReturnsObj_Scenario2_RaiseErrorWhenDifferent_aux_knot(
     assert str(excinfo.value) == "Core attrs in conflict"
 
 
-def test_inherit_titleyap_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_flare_audie():
+def test_inherit_titleyap_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_song_audie():
     # ESTABLISH
     old_titleyap = titleyap_shop(exx.sue, 0)
     new_titleyap = titleyap_shop(exx.bob, 1)

@@ -1,6 +1,6 @@
 from ch14_time.epoch_main import DEFAULT_EPOCH_LENGTH, get_c400_constants
 from ch14_time.test._util.ch14_examples import Ch14ExampleStrs as wx
-from ch16_nabu.nabu_config import get_nabu_config_dict
+from ch16_tash.tash_config import get_tash_config_dict
 from ch20_db_tool.db_toolbox import create_type_reference_insert_sqlstr, get_row_count
 from ch21_brick.brick_config import get_dimens_with_brick_element
 from ch22_etl_config.etl_config import create_prime_tablename
@@ -24,11 +24,11 @@ def mxhap0_insert_mmtunit(cursor0: Cursor, x_values: list[list]) -> str:
     return insert_sql
 
 
-def mxhap0_insert_nabtime(cursor0: Cursor, x_values: list[list]) -> str:
+def mxhap0_insert_tshtime(cursor0: Cursor, x_values: list[list]) -> str:
     """x_cols = [kw.spark_num, kw.moment_rope, kw.otx_time, kw.inx_time]"""
 
     x_cols = [kw.spark_num, kw.moment_rope, kw.otx_time, kw.inx_time]
-    tablename = create_prime_db_table(cursor0, kw.nabtime, kw.h_agg)
+    tablename = create_prime_db_table(cursor0, kw.tshtime, kw.h_agg)
     insert_sql = create_type_reference_insert_sqlstr(tablename, x_cols, x_values)
     cursor0.execute(insert_sql)
     return insert_sql
@@ -70,8 +70,8 @@ def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario0_PopulatesTableWit
     s7_otx_time = 44
     s7_inx_time = 55
     s7_offi_time_otx = 200
-    nabtime_vals = [[spark7, exx.a23, s7_otx_time, s7_inx_time]]
-    mxhap0_insert_nabtime(cursor0, nabtime_vals)
+    tshtime_vals = [[spark7, exx.a23, s7_otx_time, s7_inx_time]]
+    mxhap0_insert_tshtime(cursor0, tshtime_vals)
     mmtoffi_vals = [[spark7, exx.a23, s7_offi_time_otx]]
     mxhap0_insert_mmtoffi(cursor0, mmtoffi_vals)
 
@@ -93,7 +93,7 @@ def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario0_PopulatesTableWit
     assert mxhap0_select_mmtoffi(cursor0) == [(7, exx.a23, 200, 189)]
 
 
-def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario1_PopulatesTableWhen_nabtime_RowDoesNotExist(
+def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario1_PopulatesTableWhen_tshtime_RowDoesNotExist(
     cursor0: Cursor,
 ):
     # ESTABLISH
@@ -103,7 +103,7 @@ def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario1_PopulatesTableWhe
     mxhap0_insert_mmtunit(cursor0, mmtunit_vals)
     s7_offi_time_otx = 200
     mmtoffi_vals = [[spark7, exx.a23, s7_offi_time_otx]]
-    create_prime_db_table(cursor0, kw.nabtime, kw.h_agg)
+    create_prime_db_table(cursor0, kw.tshtime, kw.h_agg)
     mxhap0_insert_mmtoffi(cursor0, mmtoffi_vals)
 
     # BEFORE
@@ -132,11 +132,11 @@ def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario3_PopulatesTableWit
     s1_offi_time_otx = 200
     s3_offi_time_otx = 2000
 
-    nabtime_vals = [
+    tshtime_vals = [
         [spark1, exx.a23, s1_otx_time, s1_inx_time],
         [spark3, exx.a23, s3_otx_time, s3_inx_time],
     ]
-    mxhap0_insert_nabtime(cursor0, nabtime_vals)
+    mxhap0_insert_tshtime(cursor0, tshtime_vals)
     mmtoffi_vals = [
         [spark1, exx.a23, s1_offi_time_otx],
         [spark3, exx.a23, s3_offi_time_otx],
@@ -186,11 +186,11 @@ def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario4_PopulatesTableWit
 
     mmtunit_vals = [[spark1, exx.a23, a23_c400_number]]
     mxhap0_insert_mmtunit(cursor0, mmtunit_vals)
-    nabtime_vals = [
+    tshtime_vals = [
         [spark1, exx.a23, s1_otx_time, s1_inx_time],
         [spark3, exx.a23, s3_otx_time, s3_inx_time],
     ]
-    mxhap0_insert_nabtime(cursor0, nabtime_vals)
+    mxhap0_insert_tshtime(cursor0, tshtime_vals)
     mmtoffi_vals = [
         [spark1, exx.a23, s1_offi_time_otx],
         [spark3, exx.a23, s3_offi_time_otx],
@@ -231,8 +231,8 @@ def test_get_update_heard_agg_timenum_sqlstr_SQLTEST_Scenario5_CanDstTableCanJoi
     # ESTABLISH
     spark3 = 3
     s7_otx_time, s7_inx_time = (44, 55)
-    nabtime_vals = [[spark3, exx.a23, s7_otx_time, s7_inx_time]]
-    mxhap0_insert_nabtime(cursor0, nabtime_vals)
+    tshtime_vals = [[spark3, exx.a23, s7_otx_time, s7_inx_time]]
+    mxhap0_insert_tshtime(cursor0, tshtime_vals)
     spark7 = 7
     s7_offi_time_otx = 200
     mmtoffi_vals = [[spark7, exx.a23, s7_offi_time_otx]]
@@ -265,10 +265,10 @@ def test_get_update_heard_agg_moment_timenum_sqlstrs_ReturnsObj():
     # THEN
     assert gen_update_sqlstrs
     expected_update_sqlstrs = {}
-    nabu_timenum_dict = get_nabu_config_dict().get(kw.nabu_timenum)
-    TimeNum_dict = nabu_timenum_dict.get("affected_semantic_types").get("TimeNum")
-    nabuable_dict = TimeNum_dict.get("nabuable_values")
-    for timenum_arg in nabuable_dict:
+    tash_timenum_dict = get_tash_config_dict().get(kw.tash_timenum)
+    TimeNum_dict = tash_timenum_dict.get("affected_semantic_types").get("TimeNum")
+    tashable_dict = TimeNum_dict.get("tashable_values")
+    for timenum_arg in tashable_dict:
         arg_dimens = get_dimens_with_brick_element(timenum_arg)
         print(f"{timenum_arg=} {arg_dimens=}")
         for arg_dimen in arg_dimens:
@@ -288,7 +288,7 @@ def test_get_update_heard_agg_moment_timenum_sqlstrs_ReturnsObj():
 def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario1_MMTCECK():
     # ESTABLISH
     mmtunit_h_agg_tablename = prime_tbl(kw.momentunit, kw.h_agg)
-    nabtime_h_agg_tablename = prime_tbl(kw.nabu_timenum, kw.h_agg)
+    tshtime_h_agg_tablename = prime_tbl(kw.tash_timenum, kw.h_agg)
     mmtceck_h_agg_tablename = prime_tbl(kw.moment_ceckbook, kw.h_agg)
     c400_leap_length = get_c400_constants().c400_leap_length
 
@@ -308,18 +308,18 @@ enriched AS (
     SELECT
         dst2_table.{kw.spark_num},
         dst2_table.{kw.moment_rope},
-        {kw.nabtime}.{kw.otx_time} - {kw.nabtime}.{kw.inx_time} AS {kw.inx_epoch_diff},
+        {kw.tshtime}.{kw.otx_time} - {kw.tshtime}.{kw.inx_time} AS {kw.inx_epoch_diff},
         {kw.mmtunit}.{kw.c400_number}
     FROM {mmtceck_h_agg_tablename} as dst2_table
-    LEFT JOIN {nabtime_h_agg_tablename} as {kw.nabtime}
-        ON {kw.nabtime}.{kw.spark_num} = (
+    LEFT JOIN {tshtime_h_agg_tablename} as {kw.tshtime}
+        ON {kw.tshtime}.{kw.spark_num} = (
             SELECT MAX(n2.{kw.spark_num})
-            FROM {nabtime_h_agg_tablename} as n2
+            FROM {tshtime_h_agg_tablename} as n2
             WHERE n2.{kw.spark_num} <= dst2_table.{kw.spark_num}
                 AND dst2_table.{kw.moment_rope} LIKE n2.{kw.moment_rope} || '%'
         )
     LEFT JOIN {kw.mmtunit}
-        ON {kw.mmtunit}.{kw.moment_rope} = {kw.nabtime}.{kw.moment_rope}
+        ON {kw.mmtunit}.{kw.moment_rope} = {kw.tshtime}.{kw.moment_rope}
 )
 UPDATE {mmtceck_h_agg_tablename} as dst_table
 SET {kw.tran_time}_inx = mod(
@@ -337,7 +337,7 @@ WHERE enriched.{kw.spark_num} = dst_table.{kw.spark_num}
 def test_get_update_heard_agg_timenum_sqlstr_ReturnsObj_Scenario0_MMTOFFI():
     # ESTABLISH
     mmtunit_h_agg_tablename = prime_tbl(kw.momentunit, kw.h_agg)
-    nabtime_h_agg_tablename = prime_tbl(kw.nabu_timenum, kw.h_agg)
+    tshtime_h_agg_tablename = prime_tbl(kw.tash_timenum, kw.h_agg)
     mmtoffi_h_agg_tablename = prime_tbl(kw.moment_timeoffi, kw.h_agg)
     c400_leap_length = get_c400_constants().c400_leap_length
 
@@ -357,18 +357,18 @@ enriched AS (
     SELECT
         dst2_table.{kw.spark_num},
         dst2_table.{kw.moment_rope},
-        {kw.nabtime}.{kw.otx_time} - {kw.nabtime}.{kw.inx_time} AS {kw.inx_epoch_diff},
+        {kw.tshtime}.{kw.otx_time} - {kw.tshtime}.{kw.inx_time} AS {kw.inx_epoch_diff},
         {kw.mmtunit}.{kw.c400_number}
     FROM {mmtoffi_h_agg_tablename} as dst2_table
-    LEFT JOIN {nabtime_h_agg_tablename} as {kw.nabtime}
-        ON {kw.nabtime}.{kw.spark_num} = (
+    LEFT JOIN {tshtime_h_agg_tablename} as {kw.tshtime}
+        ON {kw.tshtime}.{kw.spark_num} = (
             SELECT MAX(n2.{kw.spark_num})
-            FROM {nabtime_h_agg_tablename} as n2
+            FROM {tshtime_h_agg_tablename} as n2
             WHERE n2.{kw.spark_num} <= dst2_table.{kw.spark_num}
                 AND dst2_table.{kw.moment_rope} LIKE n2.{kw.moment_rope} || '%'
         )
     LEFT JOIN {kw.mmtunit}
-        ON {kw.mmtunit}.{kw.moment_rope} = {kw.nabtime}.{kw.moment_rope}
+        ON {kw.mmtunit}.{kw.moment_rope} = {kw.tshtime}.{kw.moment_rope}
 )
 UPDATE {mmtoffi_h_agg_tablename} as dst_table
 SET {kw.offi_time}_inx = mod(

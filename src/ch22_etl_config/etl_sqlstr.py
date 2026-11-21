@@ -50,11 +50,11 @@ CREATE_MMTWEEK_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_wee
 CREATE_MMTWEEK_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_weekday_s_agg (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, weekday_order INTEGER, weekday_label TEXT, knot TEXT, error_message TEXT)"""
 CREATE_MMTWEEK_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_weekday_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, moment_rope TEXT, weekday_order INTEGER, weekday_label TEXT, knot TEXT, error_message TEXT)"""
 CREATE_MMTWEEK_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS moment_epoch_weekday_s_vld (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, weekday_order INTEGER, weekday_label TEXT, knot TEXT)"""
-CREATE_NABTIME_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS nabu_timenum_h_agg (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, otx_time INTEGER, inx_time INTEGER)"""
-CREATE_NABTIME_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS nabu_timenum_h_raw (spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, otx_time INTEGER, inx_time INTEGER, error_message TEXT)"""
-CREATE_NABTIME_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS nabu_timenum_s_agg (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, otx_time INTEGER, inx_time INTEGER, error_message TEXT)"""
-CREATE_NABTIME_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS nabu_timenum_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, moment_rope TEXT, otx_time INTEGER, inx_time INTEGER, error_message TEXT)"""
-CREATE_NABTIME_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS nabu_timenum_s_vld (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, otx_time INTEGER, inx_time INTEGER)"""
+CREATE_TSHTIME_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS tash_timenum_h_agg (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, otx_time INTEGER, inx_time INTEGER)"""
+CREATE_TSHTIME_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS tash_timenum_h_raw (spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, moment_rope_otx TEXT, moment_rope_inx TEXT, otx_time INTEGER, inx_time INTEGER, error_message TEXT)"""
+CREATE_TSHTIME_SOUND_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS tash_timenum_s_agg (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, otx_time INTEGER, inx_time INTEGER, error_message TEXT)"""
+CREATE_TSHTIME_SOUND_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS tash_timenum_s_raw (brick_type TEXT, spark_num INTEGER, spark_face TEXT, moment_rope TEXT, otx_time INTEGER, inx_time INTEGER, error_message TEXT)"""
+CREATE_TSHTIME_SOUND_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS tash_timenum_s_vld (spark_num INTEGER, spark_face TEXT, moment_rope TEXT, otx_time INTEGER, inx_time INTEGER)"""
 CREATE_PRNAWAR_DEL_HEARD_AGG_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_del_h_agg (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, awardee_title_ERASE TEXT)"""
 CREATE_PRNAWAR_DEL_HEARD_RAW_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_del_h_raw (jargon_spark_num INTEGER, spark_num INTEGER, spark_face_otx TEXT, spark_face_inx TEXT, person_name_otx TEXT, person_name_inx TEXT, plan_rope_otx TEXT, plan_rope_inx TEXT, awardee_title_ERASE_otx TEXT, awardee_title_ERASE_inx TEXT)"""
 CREATE_PRNAWAR_DEL_HEARD_VLD_SQLSTR = """CREATE TABLE IF NOT EXISTS person_plan_awardunit_del_h_vld (spark_num INTEGER, spark_face TEXT, person_name TEXT, plan_rope TEXT, awardee_title_ERASE TEXT)"""
@@ -356,11 +356,11 @@ def get_prime_create_table_sqlstrs() -> dict[str, str]:
         "momentunit_s_agg": CREATE_MMTUNIT_SOUND_AGG_SQLSTR,
         "momentunit_s_raw": CREATE_MMTUNIT_SOUND_RAW_SQLSTR,
         "momentunit_s_vld": CREATE_MMTUNIT_SOUND_VLD_SQLSTR,
-        "nabu_timenum_h_agg": CREATE_NABTIME_HEARD_AGG_SQLSTR,
-        "nabu_timenum_h_raw": CREATE_NABTIME_HEARD_RAW_SQLSTR,
-        "nabu_timenum_s_agg": CREATE_NABTIME_SOUND_AGG_SQLSTR,
-        "nabu_timenum_s_raw": CREATE_NABTIME_SOUND_RAW_SQLSTR,
-        "nabu_timenum_s_vld": CREATE_NABTIME_SOUND_VLD_SQLSTR,
+        "tash_timenum_h_agg": CREATE_TSHTIME_HEARD_AGG_SQLSTR,
+        "tash_timenum_h_raw": CREATE_TSHTIME_HEARD_RAW_SQLSTR,
+        "tash_timenum_s_agg": CREATE_TSHTIME_SOUND_AGG_SQLSTR,
+        "tash_timenum_s_raw": CREATE_TSHTIME_SOUND_RAW_SQLSTR,
+        "tash_timenum_s_vld": CREATE_TSHTIME_SOUND_VLD_SQLSTR,
         "jargon_core_s_agg": CREATE_TRLCORE_SOUND_AGG_SQLSTR,
         "jargon_core_s_raw": CREATE_TRLCORE_SOUND_RAW_SQLSTR,
         "jargon_core_s_vld": CREATE_TRLCORE_SOUND_VLD_SQLSTR,
@@ -408,7 +408,7 @@ def get_moment_person_sound_agg_tablenames():
         "moment_epoch_weekday_s_agg",
         "moment_timeoffi_s_agg",
         "momentunit_s_agg",
-        "nabu_timenum_s_agg",
+        "tash_timenum_s_agg",
     }
 
 
@@ -456,7 +456,7 @@ def create_all_brick_tables(conn_or_cursor: sqlite3_Connection):
 def create_sound_raw_update_inconsist_error_message_sqlstr(
     conn_or_cursor: sqlite3_Connection, dimen: str
 ) -> str:
-    if dimen.lower().startswith("moment") or dimen.lower().startswith("nabu"):
+    if dimen.lower().startswith("moment") or dimen.lower().startswith("tash"):
         exclude_cols = {"brick_type", "spark_num", "spark_face", "error_message"}
     else:
         exclude_cols = {"brick_type", "error_message"}
@@ -725,7 +725,7 @@ INSERT_MMTCECK_SOUND_VLD_SQLSTR = "INSERT INTO moment_ceckbook_s_vld (spark_num,
 INSERT_MMTOFFI_SOUND_VLD_SQLSTR = "INSERT INTO moment_timeoffi_s_vld (spark_num, spark_face, moment_rope, offi_time, knot) SELECT spark_num, spark_face, moment_rope, offi_time, knot FROM moment_timeoffi_s_agg WHERE error_message IS NULL"
 INSERT_MMTUNIT_SOUND_VLD_SQLSTR = "INSERT INTO momentunit_s_vld (spark_num, spark_face, moment_rope, epoch_label, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations) SELECT spark_num, spark_face, moment_rope, epoch_label, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations FROM momentunit_s_agg WHERE error_message IS NULL"
 
-INSERT_NABTIME_SOUND_VLD_SQLSTR = "INSERT INTO nabu_timenum_s_vld (spark_num, spark_face, moment_rope, otx_time, inx_time) SELECT spark_num, spark_face, moment_rope, otx_time, inx_time FROM nabu_timenum_s_agg WHERE error_message IS NULL"
+INSERT_TSHTIME_SOUND_VLD_SQLSTR = "INSERT INTO tash_timenum_s_vld (spark_num, spark_face, moment_rope, otx_time, inx_time) SELECT spark_num, spark_face, moment_rope, otx_time, inx_time FROM tash_timenum_s_agg WHERE error_message IS NULL"
 
 
 def get_insert_into_sound_vld_sqlstrs() -> dict[str, str]:
@@ -757,7 +757,7 @@ def get_insert_into_sound_vld_sqlstrs() -> dict[str, str]:
         "moment_epoch_weekday_s_vld": INSERT_MMTWEEK_SOUND_VLD_SQLSTR,
         "moment_timeoffi_s_vld": INSERT_MMTOFFI_SOUND_VLD_SQLSTR,
         "momentunit_s_vld": INSERT_MMTUNIT_SOUND_VLD_SQLSTR,
-        "nabu_timenum_s_vld": INSERT_NABTIME_SOUND_VLD_SQLSTR,
+        "tash_timenum_s_vld": INSERT_TSHTIME_SOUND_VLD_SQLSTR,
     }
 
 
@@ -768,7 +768,7 @@ INSERT_MMTWEEK_HEARD_RAW_SQLSTR = "INSERT INTO moment_epoch_weekday_h_raw (spark
 INSERT_MMTCECK_HEARD_RAW_SQLSTR = "INSERT INTO moment_ceckbook_h_raw (spark_num, spark_face_otx, moment_rope_otx, person_name_otx, contact_name_otx, tran_time, amount, knot) SELECT spark_num, spark_face, moment_rope, person_name, contact_name, tran_time, amount, knot FROM moment_ceckbook_s_vld "
 INSERT_MMTOFFI_HEARD_RAW_SQLSTR = "INSERT INTO moment_timeoffi_h_raw (spark_num, spark_face_otx, moment_rope_otx, offi_time, knot) SELECT spark_num, spark_face, moment_rope, offi_time, knot FROM moment_timeoffi_s_vld "
 INSERT_MMTUNIT_HEARD_RAW_SQLSTR = "INSERT INTO momentunit_h_raw (spark_num, spark_face_otx, moment_rope_otx, epoch_label_otx, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations) SELECT spark_num, spark_face, moment_rope, epoch_label, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations FROM momentunit_s_vld "
-INSERT_NABTIME_HEARD_RAW_SQLSTR = "INSERT INTO nabu_timenum_h_raw (spark_num, spark_face_otx, moment_rope_otx, otx_time, inx_time) SELECT spark_num, spark_face, moment_rope, otx_time, inx_time FROM nabu_timenum_s_vld "
+INSERT_TSHTIME_HEARD_RAW_SQLSTR = "INSERT INTO tash_timenum_h_raw (spark_num, spark_face_otx, moment_rope_otx, otx_time, inx_time) SELECT spark_num, spark_face, moment_rope, otx_time, inx_time FROM tash_timenum_s_vld "
 
 INSERT_PRNMEMB_HEARD_RAW_PUT_SQLSTR = "INSERT INTO person_contact_membership_put_h_raw (spark_num, spark_face_otx, moment_rope_otx, person_name_otx, contact_name_otx, group_title_otx, group_cred_mass, group_debt_mass, knot) SELECT spark_num, spark_face, moment_rope, person_name, contact_name, group_title, group_cred_mass, group_debt_mass, knot FROM person_contact_membership_put_s_vld "
 INSERT_PRNMEMB_HEARD_RAW_DEL_SQLSTR = "INSERT INTO person_contact_membership_del_h_raw (spark_num, spark_face_otx, moment_rope_otx, person_name_otx, contact_name_otx, group_title_ERASE_otx) SELECT spark_num, spark_face, moment_rope, person_name, contact_name, group_title_ERASE FROM person_contact_membership_del_s_vld "
@@ -791,12 +791,12 @@ INSERT_PRNPLAN_HEARD_RAW_DEL_SQLSTR = "INSERT INTO person_planunit_del_h_raw (sp
 INSERT_PRNUNIT_HEARD_RAW_PUT_SQLSTR = "INSERT INTO personunit_put_h_raw (spark_num, spark_face_otx, moment_rope_otx, person_name_otx, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain, knot) SELECT spark_num, spark_face, moment_rope, person_name, credor_respect, debtor_respect, fund_pool, max_tree_traverse, fund_grain, mana_grain, respect_grain, knot FROM personunit_put_s_vld "
 INSERT_PRNUNIT_HEARD_RAW_DEL_SQLSTR = "INSERT INTO personunit_del_h_raw (spark_num, spark_face_otx, moment_rope_otx, person_name_ERASE_otx) SELECT spark_num, spark_face, moment_rope, person_name_ERASE FROM personunit_del_s_vld "
 
-INSERT_NABTIME_HEARD_RAW_SQLSTR = "INSERT INTO nabu_timenum_h_raw (spark_num, spark_face_otx, moment_rope_otx, otx_time, inx_time) SELECT spark_num, spark_face, moment_rope, otx_time, inx_time FROM nabu_timenum_s_vld "
+INSERT_TSHTIME_HEARD_RAW_SQLSTR = "INSERT INTO tash_timenum_h_raw (spark_num, spark_face_otx, moment_rope_otx, otx_time, inx_time) SELECT spark_num, spark_face, moment_rope, otx_time, inx_time FROM tash_timenum_s_vld "
 
 
 def get_insert_into_heard_raw_sqlstrs() -> dict[str, str]:
     return {
-        "nabu_timenum_h_raw": INSERT_NABTIME_HEARD_RAW_SQLSTR,
+        "tash_timenum_h_raw": INSERT_TSHTIME_HEARD_RAW_SQLSTR,
         "moment_ceckbook_h_raw": INSERT_MMTCECK_HEARD_RAW_SQLSTR,
         "moment_budunit_h_raw": INSERT_MMTBUDD_HEARD_RAW_SQLSTR,
         "moment_epoch_hour_h_raw": INSERT_MMTHOUR_HEARD_RAW_SQLSTR,
@@ -1038,10 +1038,10 @@ SELECT spark_num, spark_face_inx, moment_rope_inx, epoch_label_inx, c400_number,
 FROM momentunit_h_raw
 GROUP BY spark_num, spark_face_inx, moment_rope_inx, epoch_label_inx, c400_number, yr1_jan1_offset, monthday_index, fund_grain, mana_grain, respect_grain, knot, job_listen_rotations
 """
-NABTIME_HEARD_AGG_INSERT_SQLSTR = """
-INSERT INTO nabu_timenum_h_agg (spark_num, spark_face, moment_rope, otx_time, inx_time)
+TSHTIME_HEARD_AGG_INSERT_SQLSTR = """
+INSERT INTO tash_timenum_h_agg (spark_num, spark_face, moment_rope, otx_time, inx_time)
 SELECT spark_num, spark_face_inx, moment_rope_inx, otx_time, inx_time
-FROM nabu_timenum_h_raw
+FROM tash_timenum_h_raw
 GROUP BY spark_num, spark_face_inx, moment_rope_inx, otx_time, inx_time
 """
 
@@ -1075,7 +1075,7 @@ def get_insert_heard_agg_sqlstrs() -> dict[str, str]:
         "moment_ceckbook_h_agg": MMTCECK_HEARD_AGG_INSERT_SQLSTR,
         "moment_timeoffi_h_agg": MMTOFFI_HEARD_AGG_INSERT_SQLSTR,
         "momentunit_h_agg": MMTUNIT_HEARD_AGG_INSERT_SQLSTR,
-        "nabu_timenum_h_agg": NABTIME_HEARD_AGG_INSERT_SQLSTR,
+        "tash_timenum_h_agg": TSHTIME_HEARD_AGG_INSERT_SQLSTR,
     }
 
 
@@ -1094,18 +1094,18 @@ enriched AS (
     SELECT
         dst2_table.spark_num,
         dst2_table.moment_rope,
-        nabtime.otx_time - nabtime.inx_time AS inx_epoch_diff,
+        tshtime.otx_time - tshtime.inx_time AS inx_epoch_diff,
         mmtunit.c400_number
     FROM {dst_tablename} as dst2_table
-    LEFT JOIN nabu_timenum_h_agg as nabtime
-        ON nabtime.spark_num = (
+    LEFT JOIN tash_timenum_h_agg as tshtime
+        ON tshtime.spark_num = (
             SELECT MAX(n2.spark_num)
-            FROM nabu_timenum_h_agg as n2
+            FROM tash_timenum_h_agg as n2
             WHERE n2.spark_num <= dst2_table.spark_num
                 AND dst2_table.moment_rope LIKE n2.moment_rope || '%'
         )
     LEFT JOIN mmtunit
-        ON mmtunit.moment_rope = nabtime.moment_rope
+        ON mmtunit.moment_rope = tshtime.moment_rope
 )
 UPDATE {dst_tablename} as dst_table
 SET {focus_column}_inx = mod(
@@ -1134,43 +1134,43 @@ def get_update_heard_agg_moment_timenum_sqlstrs() -> dict[str]:
 
 
 def get_update_prncase_inx_epoch_diff_sqlstr() -> str:
-    """Returns update statement that sets put_h_agg.inx_epoch_diff column from nabtime values
+    """Returns update statement that sets put_h_agg.inx_epoch_diff column from tshtime values
     reference key: pchap0
     """
 
     return """
 UPDATE person_plan_reason_caseunit_put_h_agg as prncase
 SET inx_epoch_diff = otx_time - inx_time
-FROM nabu_timenum_h_agg as nabtime
+FROM tash_timenum_h_agg as tshtime
 WHERE 
-    nabtime.spark_num = (
+    tshtime.spark_num = (
         SELECT MAX(n2.spark_num)
-        FROM nabu_timenum_h_agg as n2
+        FROM tash_timenum_h_agg as n2
         WHERE n2.spark_num <= prncase.spark_num
             AND prncase.plan_rope LIKE n2.moment_rope || '%'
         )
-    AND prncase.plan_rope LIKE nabtime.moment_rope || '%'
+    AND prncase.plan_rope LIKE tshtime.moment_rope || '%'
 ;
 """
 
 
 def get_update_prnfact_inx_epoch_diff_sqlstr() -> str:
-    """Returns update statement that sets put_h_agg.inx_epoch_diff column from nabtime values
+    """Returns update statement that sets put_h_agg.inx_epoch_diff column from tshtime values
     reference key: pfhap0
     """
 
     return """
 UPDATE person_plan_factunit_put_h_agg as prnfact
 SET inx_epoch_diff = otx_time - inx_time
-FROM nabu_timenum_h_agg as nabtime
+FROM tash_timenum_h_agg as tshtime
 WHERE
-    nabtime.spark_num = (
+    tshtime.spark_num = (
         SELECT MAX(n2.spark_num)
-        FROM nabu_timenum_h_agg as n2
+        FROM tash_timenum_h_agg as n2
         WHERE n2.spark_num <= prnfact.spark_num
             AND prnfact.plan_rope LIKE n2.moment_rope || '%'
         )
-    AND prnfact.plan_rope LIKE nabtime.moment_rope || '%'
+    AND prnfact.plan_rope LIKE tshtime.moment_rope || '%'
 ;
 """
 
@@ -1633,7 +1633,7 @@ def get_brick_stageble_put_dimens() -> dict[str, list[str]]:
         "bk00157": ["person_planunit", "personunit", "momentunit"],
         "bk00158": ["personunit", "momentunit"],
         "bk00159": ["momentunit"],
-        "bk00170": ["momentunit", "nabu_timenum"],
+        "bk00170": ["momentunit", "tash_timenum"],
         "bk00171": ["person_contactunit", "personunit", "momentunit"],
         "bk00172": ["person_contactunit", "personunit", "momentunit"],
         "bk00173": ["person_contactunit", "personunit", "momentunit"],

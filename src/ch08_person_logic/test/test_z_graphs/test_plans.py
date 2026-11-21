@@ -14,7 +14,7 @@ from ch08_person_logic.test._util.ch08_examples import (
 from ch99_glossary.ch_keyword import Ch08Keywords as kw
 
 
-def test_personunit_graph_Showsgraph0PersonGraph(graphics_bool):
+def test_personunit_graph_Showsgraph0Person_Graph(graphics_bool):
     # ESTABLISH / WHEN / THEN
     display_plantree(get_personunit_with_4_levels(), graphics_bool)
     display_plantree(

@@ -9,11 +9,11 @@ from ch99_glossary.ch_keyword import Ch26Keywords as kw
 from sqlite3 import Cursor
 
 
-def pfhapx_insert_nabtime(cursor0: Cursor, x_values: list[list]) -> str:
+def pfhapx_insert_tshtime(cursor0: Cursor, x_values: list[list]) -> str:
     """x_cols = [kw.spark_num, kw.moment_rope, kw.otx_time, kw.inx_time]"""
 
     x_cols = [kw.spark_num, kw.moment_rope, kw.otx_time, kw.inx_time]
-    tablename = create_prime_db_table(cursor0, kw.nabu_timenum, kw.h_agg)
+    tablename = create_prime_db_table(cursor0, kw.tash_timenum, kw.h_agg)
     insert_sql = create_type_reference_insert_sqlstr(tablename, x_cols, x_values)
     cursor0.execute(insert_sql)
     return insert_sql
@@ -70,7 +70,7 @@ def test_update_factunit_heard_agg_timenum_columns_SQLTEST_Scenario0_NoWarp_rang
     time_otx, time_inx = (300, 200)
     fact_lower_otx, fact_upper_otx = (7777, 8000)
     plan_close = 5259492000
-    nabtime_val = [spark7, wx.root_rope, time_otx, time_inx]
+    tshtime_val = [spark7, wx.root_rope, time_otx, time_inx]
     prnplan_val = [spark7, wx.Bob, wx.mop_rope, plan_close]
     prnfact_val = [
         spark7,
@@ -81,7 +81,7 @@ def test_update_factunit_heard_agg_timenum_columns_SQLTEST_Scenario0_NoWarp_rang
         fact_upper_otx,
     ]
 
-    insert_nabtime_sql = pfhapx_insert_nabtime(cursor0, [nabtime_val])
+    insert_tshtime_sql = pfhapx_insert_tshtime(cursor0, [tshtime_val])
     insert_prnplan_sql = pfhapx_insert_prnplan(cursor0, [prnplan_val])
     insert_prnfact_sql = pfhapx_insert_prnfact(cursor0, [prnfact_val])
 

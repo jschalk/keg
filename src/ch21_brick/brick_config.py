@@ -135,8 +135,8 @@ def get_brick_sqlite_types() -> dict[str, str]:
         "fact_upper": "REAL",
         "fact_upper_inx": "REAL",
         "fact_upper_otx": "REAL",
-        "flare_audie_aux": "TEXT",
-        "flare_audie_iux": "TEXT",
+        "song_audie_aux": "TEXT",
+        "song_audie_iux": "TEXT",
         "fund_agenda_give": "REAL",
         "fund_agenda_ratio_give": "REAL",
         "fund_agenda_ratio_take": "REAL",
@@ -384,7 +384,7 @@ class BrickFormatsEnum(str, Enum):
     )
     bk00158_delete_person_planunit_v0_0_0 = "bk00158_delete_person_planunit_v0_0_0"
     bk00159_delete_personunit_v0_0_0 = "bk00159_delete_personunit_v0_0_0"
-    bk00170_nabu_time_v0_0_0 = "bk00170_nabu_time_v0_0_0"
+    bk00170_tash_time_v0_0_0 = "bk00170_tash_time_v0_0_0"
     bk00171_contact_map1_v0_0_0 = "bk00171_contact_map1_v0_0_0"
     bk00172_group_map1_v0_0_0 = "bk00172_group_map1_v0_0_0"
     bk00173_label_map1_v0_0_0 = "bk00173_label_map1_v0_0_0"
@@ -435,7 +435,7 @@ def get_brick_format_filenames() -> set[str]:
         ifx.bk00157_delete_person_plan_reasonunit_v0_0_0,
         ifx.bk00158_delete_person_planunit_v0_0_0,
         ifx.bk00159_delete_personunit_v0_0_0,
-        ifx.bk00170_nabu_time_v0_0_0,
+        ifx.bk00170_tash_time_v0_0_0,
         ifx.bk00171_contact_map1_v0_0_0,
         ifx.bk00172_group_map1_v0_0_0,
         ifx.bk00173_label_map1_v0_0_0,
@@ -539,7 +539,7 @@ def get_brick_format_headers() -> dict[str, list[str]]:
         "person_name,plan_rope,reason_context_ERASE": ifx.bk00157_delete_person_plan_reasonunit_v0_0_0,
         "person_name,plan_rope_ERASE": ifx.bk00158_delete_person_planunit_v0_0_0,
         "moment_rope,person_name_ERASE": ifx.bk00159_delete_personunit_v0_0_0,
-        "moment_rope,otx_time,inx_time": ifx.bk00170_nabu_time_v0_0_0,
+        "moment_rope,otx_time,inx_time": ifx.bk00170_tash_time_v0_0_0,
         "moment_rope,person_name,contact_name,otx_name,inx_name": ifx.bk00171_contact_map1_v0_0_0,
         "moment_rope,person_name,contact_name,otx_title,inx_title": ifx.bk00172_group_map1_v0_0_0,
         "moment_rope,person_name,contact_name,otx_label,inx_label": ifx.bk00173_label_map1_v0_0_0,
@@ -598,7 +598,7 @@ def get_brick_dimen_ref() -> dict[str, set[str]]:
             "bk00173",
             "bk00174",
         },
-        "nabu_timenum": {"bk00170"},
+        "tash_timenum": {"bk00170"},
         "person_contact_membership": {"bk00112", "bk00120", "bk00150"},
         "person_contactunit": {
             "bk00001",
@@ -695,7 +695,7 @@ def get_dimen_minimum_put_brick_names() -> dict[str, str]:
         "moment_ceckbook": ifx.bk00102_moment_ceckbook_v0_0_0,
         "moment_timeoffi": ifx.bk00106_moment_timeoffi_v0_0_0,
         "momentunit": ifx.bk00100_momentunit_v0_0_0,
-        "nabu_timenum": ifx.bk00170_nabu_time_v0_0_0,
+        "tash_timenum": ifx.bk00170_tash_time_v0_0_0,
         "person_contact_membership": ifx.bk00120_person_contact_membership_v0_0_0,
         "person_contactunit": ifx.bk00121_person_contactunit_v0_0_0,
         "person_plan_awardunit": ifx.bk00122_person_plan_awardunit_v0_0_0,

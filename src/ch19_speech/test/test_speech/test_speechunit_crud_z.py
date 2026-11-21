@@ -15,7 +15,7 @@ from pytest import raises as pytest_raises
 def test_SpeechUnit_set_yapunit_SetsAttr():
     # ESTABLISH
     sue_speechunit = speechunit_shop(exx.sue)
-    nameyap = nameyap_shop(flare_audie=exx.sue)
+    nameyap = nameyap_shop(song_audie=exx.sue)
     nameyap.set_iux2aux("Bob", "Bob of Salem")
     assert sue_speechunit.nameyap != nameyap
     # WHEN
@@ -28,7 +28,7 @@ def test_SpeechUnit_set_yapunit_SetsAttr():
 def test_SpeechUnit_set_yapunit_SetsAttr_SpecialSituation_RopeTerm():
     # ESTABLISH
     sue_speechunit = speechunit_shop(exx.sue)
-    ropeyap = ropeyap_shop(flare_audie=exx.sue)
+    ropeyap = ropeyap_shop(song_audie=exx.sue)
     ropeyap.set_iux2aux("Bob", "Bob of Salem")
     assert sue_speechunit.ropeyap != ropeyap
 
@@ -43,7 +43,7 @@ def test_SpeechUnit_set_yapunit_RaisesErrorIf_yapunit_iux_knot_IsNotSame():
     # ESTABLISH
     sue_speechunit = speechunit_shop(exx.sue)
     slash_iux_knot = "/"
-    nameyap = nameyap_shop(iux_knot=slash_iux_knot, flare_audie=exx.sue)
+    nameyap = nameyap_shop(iux_knot=slash_iux_knot, song_audie=exx.sue)
     assert sue_speechunit.iux_knot != nameyap.iux_knot
     assert sue_speechunit.nameyap != nameyap
 
@@ -58,7 +58,7 @@ def test_SpeechUnit_set_yapunit_RaisesErrorIf_yapunit_aux_knot_IsNotSame():
     # ESTABLISH
     sue_speechunit = speechunit_shop(exx.sue)
     slash_aux_knot = "/"
-    nameyap = nameyap_shop(aux_knot=slash_aux_knot, flare_audie=exx.sue)
+    nameyap = nameyap_shop(aux_knot=slash_aux_knot, song_audie=exx.sue)
     assert sue_speechunit.aux_knot != nameyap.aux_knot
     assert sue_speechunit.nameyap != nameyap
 
@@ -69,24 +69,24 @@ def test_SpeechUnit_set_yapunit_RaisesErrorIf_yapunit_aux_knot_IsNotSame():
     assert str(excinfo.value) == exception_str
 
 
-def test_SpeechUnit_set_yapunit_RaisesErrorIf_yapunit_flare_audie_IsNotSame():
+def test_SpeechUnit_set_yapunit_RaisesErrorIf_yapunit_song_audie_IsNotSame():
     # ESTABLISH
     sue_speechunit = speechunit_shop(exx.sue)
-    nameyap = nameyap_shop(flare_audie=exx.yao)
-    assert sue_speechunit.flare_audie != nameyap.flare_audie
+    nameyap = nameyap_shop(song_audie=exx.yao)
+    assert sue_speechunit.song_audie != nameyap.song_audie
     assert sue_speechunit.nameyap != nameyap
 
     # WHEN / THEN
     with pytest_raises(Exception) as excinfo:
         sue_speechunit.set_nameyap(nameyap)
-    exception_str = f"set_yapcore Error: SpeechUnit flare_audie is '{sue_speechunit.flare_audie}', YapCore is '{exx.yao}'."
+    exception_str = f"set_yapcore Error: SpeechUnit song_audie is '{sue_speechunit.song_audie}', YapCore is '{exx.yao}'."
     assert str(excinfo.value) == exception_str
 
 
 def test_SpeechUnit_get_yapunit_ReturnsObj():
     # ESTABLISH
     sue_pu = speechunit_shop(exx.sue)
-    static_nameyap = nameyap_shop(flare_audie=exx.sue)
+    static_nameyap = nameyap_shop(song_audie=exx.sue)
     static_nameyap.set_iux2aux("Bob", "Bob of Salem")
     sue_pu.set_nameyap(static_nameyap)
 

@@ -72,22 +72,22 @@ def test_Chapters_CheckStringMetricsFromEveryFile():
         "_is_aux_knot_inclusion_correct",
         "_is_iux_knot_inclusion_correct",
         "del_label",
-        "get_inx_value",  # used in Nabu/Jargon
-        "_is_inx_knot_inclusion_correct",  # used in Nabu/Jargon
-        "_is_otx_knot_inclusion_correct",  # used in Nabu/Jargon
+        "get_inx_value",  # used in Tash/Jargon
+        "_is_inx_knot_inclusion_correct",  # used in Tash/Jargon
+        "_is_otx_knot_inclusion_correct",  # used in Tash/Jargon
         "_check_core_attrs_match",
         "unknown_str_in_otx2inx",  # RopeMap replaces the inherited MapCore implementation
-        "del_otx2inx",  # used in Nabu/Jargon
+        "del_otx2inx",  # used in Tash/Jargon
         "find_replace_rope",  # used by ReasonUnit, CaseUnit, FactUnit classes
         "get_obj_key",
         "is_valid",
         "main",
-        "otx_exists",  # used in Nabu/Jargon
-        "otx2inx_exists",  # used in Nabu/Jargon
-        "reveal_inx",  # used in Nabu/Jargon
+        "otx_exists",  # used in Tash/Jargon
+        "otx2inx_exists",  # used in Tash/Jargon
+        "reveal_inx",  # used in Tash/Jargon
         "set_all_otx2inx",  # RopeMap replaces the inherited MapCore implementation
         "set_knot",
-        "set_otx2inx",  # used in Nabu/Jargon
+        "set_otx2inx",  # used in Tash/Jargon
         "to_dict",  # used to return class custom dictionary, usually for json file storage
         # "_run",  # exists in etl app and used in pip install tests
         '_state_path',  # exists in etl app and must be recreated in tests
@@ -278,7 +278,6 @@ def test_SpecialBuild_get_keywords_src_config(rebuild_keyword_src):
     #     print(f"{keyword_str}: '{keyword_chs}'")
     src_keywords_src_path = create_src_keywords_src_path("src")
     prev_and_curr_keyword_file_are_same = old_keywords_dict == expected_ch_config
-    print(f"{prev_and_curr_keyword_file_are_same=}")
     if not prev_and_curr_keyword_file_are_same:
         print(
             "Create and save keyword_src_config file, fail test if there are any changes so changes can apply to next test run. "

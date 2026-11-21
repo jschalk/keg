@@ -3,12 +3,12 @@ from ch00_py.dict_toolbox import (
     get_empty_dict_if_None,
     set_modular_dict_values,
 )
-from ch16_nabu._ref.ch16_semantic_types import FaceName, SparkInt, TimeNum
+from ch16_tash._ref.ch16_semantic_types import FaceName, SparkInt, TimeNum
 from dataclasses import dataclass
 
 
 @dataclass
-class NabuTime:
+class TashTime:
     spark_face: FaceName = None
     spark_num: SparkInt = None
     # otx2inx dict key 'otx_epoch_length', key can be None is only inx_epoch_diff is given
@@ -49,35 +49,35 @@ class NabuTime:
         }
 
 
-def timenabu_shop(
+def timetash_shop(
     spark_face: FaceName,
     spark_num: SparkInt = None,
     otx2inx: dict[TimeNum, TimeNum] = None,
 ):
-    x_timenabu = NabuTime(spark_face=spark_face, spark_num=get_0_if_None(spark_num))
-    x_timenabu.set_all_otx2inx(otx2inx)
-    return x_timenabu
+    x_timetash = TashTime(spark_face=spark_face, spark_num=get_0_if_None(spark_num))
+    x_timetash.set_all_otx2inx(otx2inx)
+    return x_timetash
 
 
-def get_timenabu_from_dict(x_dict: dict) -> NabuTime:
-    return timenabu_shop(
+def get_timetash_from_dict(x_dict: dict) -> TashTime:
+    return timetash_shop(
         spark_face=x_dict.get("spark_face"),
         spark_num=x_dict.get("spark_num"),
         otx2inx=x_dict.get("otx2inx"),
     )
 
 
-class InheritTimeNabuError(Exception):
+class InheritTimeTashError(Exception):
     pass
 
 
-def inherit_timenabu(new: NabuTime, old: NabuTime):
+def inherit_timetash(new: TashTime, old: TashTime):
     if new.spark_face != old.spark_face:
         exception_str = "Core attrs in conflict"
-        raise InheritTimeNabuError(exception_str)
+        raise InheritTimeTashError(exception_str)
     if new.spark_num <= old.spark_num:
-        exception_str = "older NabuTime is not older"
-        raise InheritTimeNabuError(exception_str)
+        exception_str = "older TashTime is not older"
+        raise InheritTimeTashError(exception_str)
     for otx_epoch_length, inx_epoch_diff in old.otx2inx.items():
         if not new.otx_exists(otx_epoch_length):
             new.set_otx2inx(otx_epoch_length, inx_epoch_diff)

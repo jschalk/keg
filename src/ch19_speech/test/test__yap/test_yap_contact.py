@@ -19,14 +19,14 @@ def test_NameYap_Exists():
     x_nameyap = NameYap()
 
     # WHEN / THEN
-    assert not x_nameyap.flare_audie
-    assert not x_nameyap.flare_num
+    assert not x_nameyap.song_audie
+    assert not x_nameyap.song_num
     assert not x_nameyap.iux2aux
     assert not x_nameyap.iux_knot
     assert not x_nameyap.aux_knot
     assert set(x_nameyap.__dict__.keys()) == {
-        kw.flare_audie,
-        kw.flare_num,
+        kw.song_audie,
+        kw.song_num,
         kw.iux2aux,
         kw.iux_knot,
         kw.aux_knot,
@@ -38,8 +38,8 @@ def test_nameyap_shop_ReturnsObj_Scenario0():
     x_nameyap = nameyap_shop()
 
     # THEN
-    assert not x_nameyap.flare_audie
-    assert x_nameyap.flare_num == 0
+    assert not x_nameyap.song_audie
+    assert x_nameyap.song_num == 0
     assert x_nameyap.iux2aux == {}
     assert x_nameyap.iux_knot == default_knot_if_None()
     assert x_nameyap.aux_knot == default_knot_if_None()
@@ -47,23 +47,23 @@ def test_nameyap_shop_ReturnsObj_Scenario0():
 
 def test_nameyap_shop_ReturnsObj_Scenario1_WithParameters():
     # ESTABLISH
-    flare7 = 7
+    song7 = 7
     iux2aux = {exx.xio: exx.sue}
     slash_iux_knot = "/"
     colon_aux_knot = ":"
 
     # WHEN
     x_nameyap = nameyap_shop(
-        flare_audie=exx.bob,
-        flare_num=flare7,
+        song_audie=exx.bob,
+        song_num=song7,
         iux2aux=iux2aux,
         iux_knot=slash_iux_knot,
         aux_knot=colon_aux_knot,
     )
 
     # THEN
-    assert x_nameyap.flare_audie == exx.bob
-    assert x_nameyap.flare_num == flare7
+    assert x_nameyap.song_audie == exx.bob
+    assert x_nameyap.song_num == song7
     assert x_nameyap.iux2aux == iux2aux
     assert x_nameyap.iux_knot == slash_iux_knot
     assert x_nameyap.aux_knot == colon_aux_knot
@@ -71,24 +71,24 @@ def test_nameyap_shop_ReturnsObj_Scenario1_WithParameters():
 
 def test_nameyap_shop_ReturnsObj_Scenario2_SpeechCoreAttrAreDefaultWhenGiven_float_nan():
     # ESTABLISH
-    flare7 = numpy_int64(7)
+    song7 = numpy_int64(7)
     iux2aux = {exx.xio: exx.sue}
     x_nan = float("nan")
 
     # WHEN
     x_nameyap = nameyap_shop(
-        flare_audie=exx.bob,
-        flare_num=numpy_int64(flare7),
+        song_audie=exx.bob,
+        song_num=numpy_int64(song7),
         iux2aux=iux2aux,
         iux_knot=x_nan,
         aux_knot=x_nan,
     )
 
     # THEN
-    assert x_nameyap.flare_audie == exx.bob
-    assert x_nameyap.flare_num == flare7
-    assert str(type(x_nameyap.flare_num)) != "<class 'numpy.int64'>"
-    assert str(type(x_nameyap.flare_num)) == "<class 'int'>"
+    assert x_nameyap.song_audie == exx.bob
+    assert x_nameyap.song_num == song7
+    assert str(type(x_nameyap.song_num)) != "<class 'numpy.int64'>"
+    assert str(type(x_nameyap.song_num)) == "<class 'int'>"
     assert x_nameyap.iux2aux == iux2aux
     assert x_nameyap.iux_knot == default_knot_if_None()
     assert x_nameyap.aux_knot == default_knot_if_None()
@@ -242,21 +242,21 @@ def test_NameYap_to_dict_ReturnsObj():
     # ESTABLISH
     clean_iux = "clean"
     clean_aux = "propre"
-    flare7 = 7
+    song7 = 7
     slash_iux_knot = "/"
     colon_aux_knot = ":"
     x_nameyap = nameyap_shop(
         iux_knot=slash_iux_knot,
         aux_knot=colon_aux_knot,
-        flare_audie=exx.sue,
-        flare_num=flare7,
+        song_audie=exx.sue,
+        song_num=song7,
     )
     x1_rope_yap_dict = {
         kw.iux_knot: x_nameyap.iux_knot,
         kw.aux_knot: x_nameyap.aux_knot,
         kw.iux2aux: {},
-        kw.flare_audie: x_nameyap.flare_audie,
-        kw.flare_num: x_nameyap.flare_num,
+        kw.song_audie: x_nameyap.song_audie,
+        kw.song_num: x_nameyap.song_num,
     }
     assert x_nameyap.to_dict() == x1_rope_yap_dict
 
@@ -267,8 +267,8 @@ def test_NameYap_to_dict_ReturnsObj():
         kw.iux_knot: x_nameyap.iux_knot,
         kw.aux_knot: x_nameyap.aux_knot,
         kw.iux2aux: {clean_iux: clean_aux},
-        kw.flare_audie: exx.sue,
-        kw.flare_num: flare7,
+        kw.song_audie: exx.sue,
+        kw.song_num: song7,
     }
     assert x_nameyap.to_dict() == x2_rope_yap_dict
 
@@ -278,17 +278,17 @@ def test_get_nameyap_from_dict_ReturnsObj():
     clean_iux = "clean"
     clean_aux = "propre"
     slash_iux_knot = "/"
-    flare7 = 7
-    x_nameyap = nameyap_shop(exx.sue, flare7, iux_knot=slash_iux_knot)
+    song7 = 7
+    x_nameyap = nameyap_shop(exx.sue, song7, iux_knot=slash_iux_knot)
     x_nameyap.set_iux2aux(clean_iux, clean_aux)
 
     # WHEN
     gen_nameyap = get_nameyap_from_dict(x_nameyap.to_dict())
 
     # THEN
-    assert gen_nameyap.flare_audie == x_nameyap.flare_audie
-    assert gen_nameyap.flare_num == x_nameyap.flare_num
-    assert gen_nameyap.flare_num == flare7
+    assert gen_nameyap.song_audie == x_nameyap.song_audie
+    assert gen_nameyap.song_num == x_nameyap.song_num
+    assert gen_nameyap.song_num == song7
     assert gen_nameyap == x_nameyap
 
 
@@ -400,7 +400,7 @@ def test_inherit_nameyap_ReturnsObj_Scenario2_RaiseErrorWhenDifferent_aux_knot()
     assert str(excinfo.value) == "Core attrs in conflict"
 
 
-def test_inherit_nameyap_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_flare_audie():
+def test_inherit_nameyap_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_song_audie():
     # ESTABLISH
     old_nameyap = nameyap_shop(exx.sue, 0)
     new_nameyap = nameyap_shop(exx.bob, 1)
@@ -413,7 +413,7 @@ def test_inherit_nameyap_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_flare_au
     assert str(excinfo.value) == "Core attrs in conflict"
 
 
-def test_inherit_nameyap_ReturnsObj_Scenario5_RaiseErrorWhenFlareIntsOutOfOrder():
+def test_inherit_nameyap_ReturnsObj_Scenario5_RaiseErrorWhenSongIntsOutOfOrder():
     # ESTABLISH
     old_nameyap = nameyap_shop(exx.sue, 5)
     new_nameyap = nameyap_shop(exx.sue, 1)

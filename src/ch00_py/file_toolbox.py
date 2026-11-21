@@ -42,7 +42,7 @@ def _get_caller_dir() -> pathlib_Path:
 
 def create_path(*args) -> str:
     """Create a path by joining all parameters, all converted to strings."""
-    # ESTABLISH no args or all empty
+    # no args or all empty
     if not args:
         return ""
     cleaned = [str(a) for a in args if a is not None and a != ""]

@@ -237,8 +237,6 @@ def personatom_periodic_table0() -> plotly_Figure:
     # person_planunit_delete = get_delete_rect(kw.person_planunit)
     # personunit_update = get_update_rect(kw.personunit)
 
-    # WHEN / THEN
-
     # Add shapes
     add_atom_rect(fig, person_contactunit_insert)
     add_atom_rect(fig, person_contact_membership_insert)

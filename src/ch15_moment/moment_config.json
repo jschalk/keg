@@ -5,7 +5,7 @@
       "moment_rope": { "obj_type": "RopeTerm" }, 
       "person_name": { "obj_type": "NameTerm" }
     }, 
-    "jvalues": { "celldepth": {"obj_type": "int"}, "quota": {"obj_type": "int"} }, 
+    "jvalues": { "celldepth": {"obj_type": "int"}, "quota": {"obj_type": "FundNum"} }, 
     "moment_static": "True"
   }, 
   "moment_ceckbook": {
@@ -15,7 +15,7 @@
       "person_name" : { "obj_type": "NameTerm" }, 
       "tran_time"   : { "obj_type": "TimeNum"  }
     }, 
-    "jvalues": { "amount": {"obj_type": "float"} }, 
+    "jvalues": { "amount": {"obj_type": "FundNum"} }, 
     "moment_static": "True"
   }, 
   "moment_epoch_hour": {

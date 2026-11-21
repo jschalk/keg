@@ -99,13 +99,6 @@
       "yr1_jan1_offset": {}
     }
   }, 
-  "nabu_timenum": {
-    "allowed_crud": "insert_one_time", 
-    "brick_category": "nabu", 
-    "build_order": 4, 
-    "jkeys": {"moment_rope": {}, "otx_time": {}, "spark_face": {}, "spark_num": {}}, 
-    "jvalues": {"inx_time": {}}
-  }, 
   "person_contact_membership": {
     "allowed_crud": "delete_insert_update", 
     "brick_category": "person", 
@@ -247,5 +240,12 @@
       "max_tree_traverse": {}, 
       "respect_grain": {}
     }
+  }, 
+  "tash_timenum": {
+    "allowed_crud": "insert_one_time", 
+    "brick_category": "tash", 
+    "build_order": 4, 
+    "jkeys": {"moment_rope": {}, "otx_time": {}, "spark_face": {}, "spark_num": {}}, 
+    "jvalues": {"inx_time": {}}
   }
 }

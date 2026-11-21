@@ -171,7 +171,7 @@ def test__print_punch_text_Scenario5_EmptyTextDoesNotOpenBrowser():
     mock_wb.assert_not_called()
 
 
-def test__print_punch_text_Scenario6_EmptyTextShowsInfoPopup():
+def test__print_punch_text_Scenario6_EmptyText_ShowsInfoPopup():
     # ESTABLISH
     app = _make_stub(punch_text="   \n")
 

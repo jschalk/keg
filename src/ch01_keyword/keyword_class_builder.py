@@ -10,7 +10,30 @@ from ch01_keyword.chapter_desc_main import (
 )
 from copy import copy as copy_copy
 from enum import Enum
+from os import scandir as os_scandir
 from typing import Any, List, Set, Tuple
+
+
+def get_first_level_dirs_without_files(parent_dir: str) -> list[str]:
+    """Return paths of immediate subdirectories of parent_dir that contain no files.
+
+    Subdirectories inside directories are ignored, so a directory that
+    holds only other directories is still returned.
+    """
+    empty_of_files = []
+    with os_scandir(parent_dir) as parent_entries:
+        for entry in parent_entries:
+            if not entry.is_dir(follow_symlinks=False):
+                continue
+            has_file = False
+            with os_scandir(entry.path) as child_entries:
+                for child in child_entries:
+                    if not child.is_dir(follow_symlinks=False):
+                        has_file = True
+                        break
+            if not has_file:
+                empty_of_files.append(entry.path)
+    return empty_of_files
 
 
 def get_example_strs_config() -> dict[str, dict]:

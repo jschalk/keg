@@ -12,7 +12,7 @@ from ch08_person_logic.person_config import (
 from ch12_bud.cell_main import cellunit_shop
 from ch14_time.epoch_main import get_c400_constants, get_default_epoch_config_dict
 from ch15_moment.moment_config import get_moment_config_args
-from ch16_nabu.nabu_config import get_nabu_args, get_nabuable_args
+from ch16_tash.tash_config import get_tash_args, get_tashable_args
 from ch18_jargon.jargon_config import (
     get_jargon_config_args,
     get_jargon_config_dict,
@@ -30,7 +30,6 @@ from ch97_docs_builder._ref.ch97_semantic_types import (
     FaceName,
     FactNum,
     FirstLabel,
-    FlareInt,
     FundGrain,
     FundNum,
     GrainNum,
@@ -51,6 +50,7 @@ from ch97_docs_builder._ref.ch97_semantic_types import (
     RespectNum,
     RopeTerm,
     SheetName,
+    SongInt,
     SparkInt,
     TimeNum,
     TitleTerm,
@@ -97,6 +97,8 @@ def test_SpecialUpdate_keywords_definitions_file():
     save_keg_descriptions_json(kw.src, keywords_definitions)
     # WHEN / THEN
     assert not chapter_changes_needed
+    # def test_get_keywords_definitions_ReturnsObj_CheckNoChapter_keywords():
+    # TODO change this so that if the keyword does not exist in keg_definitions it is added
 
 
 def test_get_keywords_definitions_ReturnsObj_Check_python_keywords():
@@ -124,6 +126,7 @@ def test_get_keywords_definitions_ReturnsObj_Check_moment_ote1_agg():
 
 
 def test_get_keywords_definitions_ReturnsObj_CheckNoChapter_keywords():
+    # TODO change this so that if the keyword does not exist in keg_definitions it is added
     # sourcery skip: no-conditionals-in-tests
     # ESTABLISH / WHEN
     keywords_definitions = get_keywords_definitions()
@@ -287,8 +290,8 @@ def test_get_keywords_definitions_ReturnsObj_CheckConfigArgs():
     mmtceck_args = get_moment_config_args(kw.moment_ceckbook)
     mmtoffi_args = get_moment_config_args(kw.moment_timeoffi)
     mmtunit_args = get_moment_config_args(kw.momentunit)
-    nabu_args = get_nabu_args()
-    nabuable_args = get_nabuable_args()
+    tash_args = get_tash_args()
+    tashable_args = get_tashable_args()
     for keyword, desc in keywords_definitions.items():
         check_person_desc_str(person_args, keyword, desc, "Person")
         check_person_desc_str(plan_args, keyword, desc, "Plan")
@@ -311,8 +314,8 @@ def test_get_keywords_definitions_ReturnsObj_CheckConfigArgs():
         check_mmtunit_desc_str(mmtceck_args, keyword, desc, kw.ceckbook)
         check_mmtunit_desc_str(mmtoffi_args, keyword, desc, kw.offi_time)
         check_mmtunit_desc_str(mmtunit_args, keyword, desc, "Moment")
-        check_mmtunit_desc_str(nabu_args, keyword, desc, kw.nabu)
-        check_mmtunit_desc_str(nabuable_args, keyword, desc, "Nabuable")
+        check_mmtunit_desc_str(tash_args, keyword, desc, kw.tash)
+        check_mmtunit_desc_str(tashable_args, keyword, desc, "Tashable")
 
 
 def test_get_keywords_definitions_ReturnsObj_CheckJargon_dimen():
@@ -335,7 +338,7 @@ def get_all_semantic_types_with_doc_strs() -> dict[str, str]:
         FaceName.__name__: inspect_getdoc(FaceName("")),
         FactNum.__name__: inspect_getdoc(FactNum(0)),
         FirstLabel.__name__: inspect_getdoc(FirstLabel("")),
-        FlareInt.__name__: inspect_getdoc(FlareInt(0)),
+        SongInt.__name__: inspect_getdoc(SongInt(0)),
         FundGrain.__name__: inspect_getdoc(FundGrain(0)),
         FundNum.__name__: inspect_getdoc(FundNum(0)),
         GrainNum.__name__: inspect_getdoc(GrainNum(0)),

@@ -1,4 +1,4 @@
-from ch00_py.file_toolbox import open_file, save_file, save_json
+from ch00_py.file_toolbox import create_path, open_file, save_file
 from ch01_keyword._ref.ch01_path import create_keywords_classes_file_path
 from ch01_keyword.chapter_desc_main import (
     get_ch_int,
@@ -11,10 +11,10 @@ from ch01_keyword.keyword_class_builder import (
     create_all_enum_keyword_classes_str,
     create_examplestrs_class_str,
     create_keywords_enum_class_file_str,
-    create_src_keywords_src_path,
     get_chapter_descs,
     get_cumlative_keywords_src_dict,
     get_example_strs_config,
+    get_first_level_dirs_without_files,
     get_keywords_by_chapter,
     get_keywords_src_config,
     get_possible_keyword_config_keys,
@@ -22,7 +22,9 @@ from ch01_keyword.keyword_class_builder import (
 )
 from ch99_glossary.ch_keyword import Ch01Keywords as kw
 from ch99_glossary.sorter import get_keg_elements_sort_order
+from os.path import exists as os_path_exists
 from pytest import raises as pytest_raises
+from shutil import rmtree as shutil_rmtree
 
 
 def test_get_chapter_desc_prefix_ReturnsObj():
@@ -271,8 +273,86 @@ class Ch00Key"""
     assert classes_str.find(two_line_spacing_str) == 0
 
 
-def test_SpecialTestThatBuildsKeywordEnumClasses():
+from os import makedirs
+
+
+def test_get_first_level_dirs_without_files_ReturnsObj_Scenario0_EmptyDirIsReturned(
+    temp3_dir,
+):
     # ESTABLISH
+    env_dir = temp3_dir
+    bob_dir = create_path(env_dir, "Bob")
+    yao_dir = create_path(env_dir, "Yao")
+    makedirs(bob_dir)
+    makedirs(yao_dir)
+    assert os_path_exists(bob_dir)
+    assert os_path_exists(yao_dir)
+
+    # WHEN
+    x_dirs = get_first_level_dirs_without_files(env_dir)
+
+    # THEN
+    assert sorted(x_dirs) == sorted([bob_dir, yao_dir])
+
+
+def test_get_first_level_dirs_without_files_ReturnsObj_Scenario1_DirWithFileIsExcluded(
+    temp3_dir,
+):
+    # ESTABLISH
+    env_dir = temp3_dir
+    bob_dir = create_path(env_dir, "Bob")
+    yao_dir = create_path(env_dir, "Yao")
+    makedirs(bob_dir)
+    makedirs(yao_dir)
+    yao_file_path = create_path(yao_dir, "yao.txt")
+    with open(yao_file_path, "w") as yao_file:
+        yao_file.write("hello")
+    assert os_path_exists(yao_file_path)
+
+    # WHEN
+    x_dirs = get_first_level_dirs_without_files(env_dir)
+
+    # THEN
+    assert x_dirs == [bob_dir]
+
+
+def test_get_first_level_dirs_without_files_ReturnsObj_Scenario2_SubDirsAreIgnored(
+    temp3_dir,
+):
+    # ESTABLISH
+    env_dir = temp3_dir
+    bob_dir = create_path(env_dir, "Bob")
+    bob_sub_dir = create_path(bob_dir, "Bob_sub")
+    makedirs(bob_sub_dir)
+    bob_sub_file_path = create_path(bob_sub_dir, "bob_sub.txt")
+    with open(bob_sub_file_path, "w") as bob_sub_file:
+        bob_sub_file.write("hello")
+    env_file_path = create_path(env_dir, "env.txt")
+    with open(env_file_path, "w") as env_file:
+        env_file.write("hello")
+    assert os_path_exists(bob_sub_file_path)
+    assert os_path_exists(env_file_path)
+
+    # WHEN
+    x_dirs = get_first_level_dirs_without_files(env_dir)
+
+    # THEN
+    assert x_dirs == [bob_dir]
+
+
+def test_SpecialTestThatBuildsKeywordEnumClasses(rebuild_docs):
+    # sourcery skip: no-conditionals-in-tests
+    # ESTABLISH
+    # delete any chapters that are empty
+    first_level_dirs_without_files = get_first_level_dirs_without_files("src")
+    if rebuild_docs:
+        print(
+            f"Delete empty dirs {first_level_dirs_without_files}, fail test. Rerun test."
+        )
+        for first_level_dirs_without_file in first_level_dirs_without_files:
+            shutil_rmtree(first_level_dirs_without_file)
+    assert not first_level_dirs_without_files, "Pass --rebuild_docs to delete."
+    # continue with special test
     chapter_descs = get_chapter_descs()
     assert valid_chapter_numbers(chapter_descs), chapter_descs.keys()
     # save file for all Enum class references

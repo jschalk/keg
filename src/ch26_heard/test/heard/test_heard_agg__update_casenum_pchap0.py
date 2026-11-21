@@ -10,11 +10,11 @@ from ch99_glossary.ch_keyword import Ch26Keywords as kw, ExampleStrs as exx
 from sqlite3 import Cursor
 
 
-def pchap0_insert_nabtime(cursor0: Cursor, x_values: list[list]) -> str:
+def pchap0_insert_tshtime(cursor0: Cursor, x_values: list[list]) -> str:
     """x_cols = [kw.spark_num, kw.moment_rope, kw.otx_time, kw.inx_time]"""
 
     x_cols = [kw.spark_num, kw.moment_rope, kw.otx_time, kw.inx_time]
-    tablename = create_prime_db_table(cursor0, kw.nabu_timenum, kw.h_agg)
+    tablename = create_prime_db_table(cursor0, kw.tash_timenum, kw.h_agg)
     insert_sql = create_type_reference_insert_sqlstr(tablename, x_cols, x_values)
     cursor0.execute(insert_sql)
     return insert_sql
@@ -52,8 +52,8 @@ def test_get_update_prncase_inx_epoch_diff_sqlstr_SQLTEST_One_row(
     spark7 = 7
     otx_time = 199
     inx_time = 13
-    nabtime_vals = [[spark7, wx.root_rope, otx_time, inx_time]]
-    pchap0_insert_nabtime(cursor0, nabtime_vals)
+    tshtime_vals = [[spark7, wx.root_rope, otx_time, inx_time]]
+    pchap0_insert_tshtime(cursor0, tshtime_vals)
     prncase_vals = [[spark7, wx.clean_rope]]
     prncase_insert_sql = pchap0_insert_prncase(cursor0, prncase_vals)
     print(prncase_insert_sql)
@@ -78,11 +78,11 @@ def test_get_update_prncase_inx_epoch_diff_sqlstr_SQLTEST_Two_rows(
     spark7, spark9 = (7, 9)
     otx_time7, inx_time7 = (199, 13)
     otx_time9, inx_time9 = (1000, 2)
-    nabtime_vals = [
+    tshtime_vals = [
         [spark7, wx.root_rope, otx_time7, inx_time7],
         [spark9, wx.root_rope, otx_time9, inx_time9],
     ]
-    pchap0_insert_nabtime(cursor0, nabtime_vals)
+    pchap0_insert_tshtime(cursor0, tshtime_vals)
     prncase_vals = [[spark7, wx.clean_rope], [spark9, wx.clean_rope]]
     pchap0_insert_prncase(cursor0, prncase_vals)
 
@@ -114,13 +114,13 @@ def test_get_update_prncase_inx_epoch_diff_sqlstr_SQLTEST_Three_rows_Two_person_
     otx_time7, inx_time7 = (199, 13)
     yao_otx_time9, yao_inx_time9 = (1000, 2)
     zia_otx_time9, zia_inx_time9 = (37, 43)
-    nabtime_vals = [
+    tshtime_vals = [
         [spark7, wx.root_rope, otx_time7, inx_time7],
         [spark9, wx.root_rope, yao_otx_time9, yao_inx_time9],
         [spark9, exx.a23_dash, zia_otx_time9, zia_inx_time9],
     ]
     assert wx.root_rope != exx.a23_dash
-    pchap0_insert_nabtime(cursor0, nabtime_vals)
+    pchap0_insert_tshtime(cursor0, tshtime_vals)
     prncase_vals = [
         [spark7, wx.clean_rope],
         [spark9, wx.clean_rope],
@@ -162,8 +162,8 @@ def test_get_update_prncase_inx_epoch_diff_sqlstr_SQLTEST_Populates_inx_epoch_di
     # ESTABLISH
     spark3 = 3
     otx_time, inx_time = (199, 13)
-    nabtime_vals = [[spark3, wx.root_rope, otx_time, inx_time]]
-    pchap0_insert_nabtime(cursor0, nabtime_vals)
+    tshtime_vals = [[spark3, wx.root_rope, otx_time, inx_time]]
+    pchap0_insert_tshtime(cursor0, tshtime_vals)
     spark7 = 7
     prncase_vals = [[spark7, wx.clean_rope]]
     prncase_insert_sql = pchap0_insert_prncase(cursor0, prncase_vals)
@@ -185,7 +185,7 @@ def test_get_update_prncase_inx_epoch_diff_sqlstr_SQLTEST_Populates_inx_epoch_di
 def test_get_update_prncase_inx_epoch_diff_sqlstr_ReturnsObj():
     # ESTABLISH
     prncase_tablename = prime_tbl(kw.prncase, kw.h_agg, "put")
-    nabtime_tablename = prime_tbl(kw.nabtime, kw.h_agg)
+    tshtime_tablename = prime_tbl(kw.tshtime, kw.h_agg)
 
     # WHEN
     update_sqlstr = get_update_prncase_inx_epoch_diff_sqlstr()
@@ -195,15 +195,15 @@ def test_get_update_prncase_inx_epoch_diff_sqlstr_ReturnsObj():
     expected_update_sqlstr = f"""
 UPDATE {prncase_tablename} as {kw.prncase}
 SET {kw.inx_epoch_diff} = {kw.otx_time} - {kw.inx_time}
-FROM {nabtime_tablename} as {kw.nabtime}
+FROM {tshtime_tablename} as {kw.tshtime}
 WHERE 
-    {kw.nabtime}.{kw.spark_num} = (
+    {kw.tshtime}.{kw.spark_num} = (
         SELECT MAX(n2.{kw.spark_num})
-        FROM {nabtime_tablename} as n2
+        FROM {tshtime_tablename} as n2
         WHERE n2.{kw.spark_num} <= {kw.prncase}.{kw.spark_num}
             AND {kw.prncase}.{kw.plan_rope} LIKE n2.{kw.moment_rope} || '%'
         )
-    AND {kw.prncase}.{kw.plan_rope} LIKE {kw.nabtime}.{kw.moment_rope} || '%'
+    AND {kw.prncase}.{kw.plan_rope} LIKE {kw.tshtime}.{kw.moment_rope} || '%'
 ;
 """
     print(expected_update_sqlstr)

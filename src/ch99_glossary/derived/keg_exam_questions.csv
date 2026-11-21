@@ -14,6 +14,7 @@ Did you read that the keyword_definition of 'Drag' is 'Opposite of Lift. When a 
 Did you read that the keyword_definition of 'Drift' is 'To move from one Moment to another Moment. Giving all concentration to the new moment.'.
 "Did you read that the keyword_definition of 'Duck' is 'Definition needed. Maybe someone who can dive, swim, walk, knee, and fly. All the things.'."
 Did you read that the keyword_definition of 'Fealty' is 'Definition needed.'.
+Did you read that the keyword_definition of 'Flare' is 'Defintion needed.'.
 Did you read that the keyword_definition of 'Grateful' is 'The most important political skill. Families will lift up other Families that are grateful.'.
 Did you read that the keyword_definition of 'Gravity' is 'In Wheel Theory gravity is the natural process of returning FamilyUnits to the Land. Levinas used the term.'.
 Did you read that the keyword_definition of 'Herd' is 'Definition needed.'.
@@ -50,7 +51,10 @@ Did you read that the keyword_definition of 'Trooper' is 'A professional member 
 "Did you read that the keyword_definition of 'Vertical' is 'The height of a Pillar, Ladder, Stilt, or Scaffold. Is it enough to reach?'."
 Did you read that the keyword_definition of 'Winner' is 'A FamilyUnit getting more Prestige.'.
 Did you read that the keyword_definition of 'Yard' is 'Definition needed.'.
+Did you read that the keyword_definition of 'amount_inx' is 'The 'amount' value after Jargon.'.
+Did you read that the keyword_definition of 'amount_otx' is 'The 'amount' value after Jargon.'.
 Did you read that the keyword_definition of 'apex' is 'The top of the Pyramid. From the perspective of the FamilyUnits in Power it is the Face of the Pyramid.'.
+"Did you read that the keyword_definition of 'aux_fund' is 'Nabu module. Definition needed., tash arg'."
 Did you read that the keyword_definition of 'axle' is 'The part of the Wheel that load-bears the most. Only Pillars.'.
 Did you read that the keyword_definition of 'booster' is 'A Rider for a good person.'.
 Did you read that the keyword_definition of 'closer' is 'Do not use this term so there is no confusion with 'loser'.'.
@@ -58,16 +62,22 @@ Did you read that the keyword_definition of 'crawl' is 'The opposite of 'swim'. 
 Did you read that the keyword_definition of 'dive' is 'To go from living on land to swimming with fearlessness. Not used in codebase.'.
 Did you read that the keyword_definition of 'drift' is 'To move from one Moment to another Moment. Giving all concentration to the new moment.'.
 Did you read that the keyword_definition of 'fealty' is 'Definition needed.'.
+Did you read that the keyword_definition of 'flare' is 'Defintion needed.'.
 Did you read that the keyword_definition of 'herd' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'inx_fund' is 'Definition needed, tash arg'."
+Did you read that the keyword_definition of 'iux_fund' is 'Nabu module. Definition needed.'.
 Did you read that the keyword_definition of 'juggle' is 'To change moments from one Palm to another.'.
 Did you read that the keyword_definition of 'juggling' is 'To change moments from one Palm to another.'.
 "Did you read that the keyword_definition of 'keg_wheel' is 'A instance of KegWheel, within a single MomentUnit. Not used in codebase.'."
 Did you read that the keyword_definition of 'kegbox' is 'Anything that holds Keg worlds. Usually a computer thought it's possible to work with paper.'.
 Did you read that the keyword_definition of 'lumen' is 'To be defined later'.
+"Did you read that the keyword_definition of 'otx_fund' is 'Definition needed, tash arg'."
 "Did you read that the keyword_definition of 'palm' is 'A way of holding Moment in your mind. If you can only see the world one way, one palm. If you have see the world 5 ways, 5 palms.'."
 Did you read that the keyword_definition of 'pandas_DataFrame' is 'Not used in codebase. Added as keyword it is confirmed never to appear.'.
 Did you read that the keyword_definition of 'purpil' is 'Fable term: the medium where moments are shared'.
 Did you read that the keyword_definition of 'pyramid' is 'The load bearing support for any FamilyUnit in Power'.
+Did you read that the keyword_definition of 'quota_inx' is 'The 'quota' value after Jargon.'.
+Did you read that the keyword_definition of 'quota_otx' is 'The 'quota' value after Jargon.'.
 "Did you read that the keyword_definition of 'rider' is 'Synonmous with Vassal as a neutral term. Someone who recognizes authority, leadership. 'I ride with that person.''."
 Did you read that the keyword_definition of 'scaffold' is 'The only way to get to a wheel if not welcomed.'.
 Did you read that the keyword_definition of 'stilt' is 'A ladder load-bearing support of a Wheel.'.
@@ -94,7 +104,8 @@ Did you read that the keyword_definition of 'ch11' is 'These tools describe how 
 Did you read that the keyword_definition of 'ch13' is 'Builds a simulation that describes how much credit a healer has earned.'.
 Did you read that the keyword_definition of 'ch14' is 'Defines how time is handled by PersonUnits. Allows for arbitrary time structures.'.
 "Did you read that the keyword_definition of 'ch15' is 'Defines MomentUnits: common time tech, ledger, ContactNames, history of PersonUnits.'."
-Did you read that the keyword_definition of 'ch16' is 'Defines NabuUnit tools that interpret numeric values into inside accounting.'.
+Did you read that the keyword_definition of 'ch16' is 'Defines TashUnit tools that interpret numeric values into inside accounting.'.
+Did you read that the keyword_definition of 'ch17' is 'Nabu module converts inside numbers to outside numbers.'.
 Did you read that the keyword_definition of 'ch18' is 'Defines JargonUnit tools that jargon MomentUnits into inside language.'.
 Did you read that the keyword_definition of 'ch19' is 'Defines SpeechUnit tools that jargon MomentUnits into audience language.'.
 Did you read that the keyword_definition of 'ch20' is 'Creates helper tools for database admin.'.
@@ -111,7 +122,7 @@ Did you read that the keyword_definition of 'ch32' is 'Defines WorldDirs that ad
 "Did you read that the keyword_definition of 'ch33' is 'Defines Pitch Tools for gifts, World Scenarios.'."
 Did you read that the keyword_definition of 'ch34' is 'Defines Finance Tools for '.
 Did you read that the keyword_definition of 'ch35' is 'Tools for Visualizing PersonUnits'.
-Did you read that the keyword_definition of 'ch36' is 'Defines News Tools'.
+Did you read that the keyword_definition of 'ch36' is 'Defines Newz Tools'.
 Did you read that the keyword_definition of 'ch38' is 'Article formatting tools'.
 Did you read that the keyword_definition of 'ch39' is 'Levinas Philosophy'.
 Did you read that the keyword_definition of 'ch40' is 'Kazani articles.'.
@@ -263,19 +274,19 @@ Did you read that the keyword_definition of 'ReasonNum' is 'float first used in 
 Did you read that the keyword_definition of 'cases' is 'Definition needed.'.
 Did you read that the keyword_definition of 'fact' is 'Facts are very important concept in Kegology. I tried never to use these 4 letters anywhere that didn't refer exactly to that concept.'.
 "Did you read that the keyword_definition of 'fact_context' is 'All facts have a foundational context, Fact seed.'."
-"Did you read that the keyword_definition of 'fact_lower' is ', Fact seed, Nabuable arg.'."
+"Did you read that the keyword_definition of 'fact_lower' is ', Fact seed, Tashable arg.'."
 "Did you read that the keyword_definition of 'fact_state' is 'A fact can have a state different from its context, a different branch of the context where all other branches are not in fact, Fact seed.'."
-"Did you read that the keyword_definition of 'fact_upper' is ', Fact seed, Nabuable arg.'."
+"Did you read that the keyword_definition of 'fact_upper' is ', Fact seed, Tashable arg.'."
 Did you read that the keyword_definition of 'factheirs' is 'Definition needed.'.
 Did you read that the keyword_definition of 'factunits' is 'PlanUnit holds all it's factunits in an attribute called factunits.'.
 "Did you read that the keyword_definition of 'parent_heir_active' is ', Reason thinkout'."
 "Did you read that the keyword_definition of 'reason_active' is ', Reason thinkout'."
 "Did you read that the keyword_definition of 'reason_context' is ', Reason seed, Case seed'."
 "Did you read that the keyword_definition of 'reason_divisor' is ', Case seed.'."
-"Did you read that the keyword_definition of 'reason_lower' is ', Case seed, Nabuable arg.'."
+"Did you read that the keyword_definition of 'reason_lower' is ', Case seed, Tashable arg.'."
 "Did you read that the keyword_definition of 'reason_state' is ', Case seed.'."
 "Did you read that the keyword_definition of 'reason_task' is ', Reason thinkout'."
-"Did you read that the keyword_definition of 'reason_upper' is ', Case seed, Nabuable arg.'."
+"Did you read that the keyword_definition of 'reason_upper' is ', Case seed, Tashable arg.'."
 Did you read that the keyword_definition of 'reasonunits' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'addin' is 'float that describes addition to parent range calculations, Plan seed'."
 "Did you read that the keyword_definition of 'all_contact_cred' is ', Plan thinkout'."
@@ -400,7 +411,7 @@ Did you read that the keyword_definition of 'gut' is 'Definition needed.'.
 Did you read that the keyword_definition of 'lasso' is 'Definition needed.'.
 Did you read that the keyword_definition of 'moment' is 'Definition needed.'.
 Did you read that the keyword_definition of 'moment_mstr_dir' is 'starting point for most lego file structue. Moment functions usually refernce this directory as root.'.
-"Did you read that the keyword_definition of 'moment_rope' is ', Moment arg, offi_time arg, ceckbook arg, mmtweek arg, mmtmont arg, mmthour arg, bud arg, Person seed, Plan seed, Reason seed, Case seed, Fact seed, Award seed, Workforce seed, Healer seed, Contact seed, Member seed, nabu arg.'."
+"Did you read that the keyword_definition of 'moment_rope' is ', Moment arg, offi_time arg, ceckbook arg, mmtweek arg, mmtmont arg, mmthour arg, bud arg, Person seed, Plan seed, Reason seed, Case seed, Fact seed, Award seed, Workforce seed, Healer seed, Contact seed, Member seed, tash arg.'."
 Did you read that the keyword_definition of 'spark_face' is 'Every spark has a spark_face that identifies which Face it belongs to. The Face is the source of all outside data. In theory a spark_face can be any data type. In practice it is currently a string data type.'.
 "Did you read that the keyword_definition of 'spark_num' is 'Every spark has a spark_num that identifies its order of ingestion. Sparks are orderd but not necessarily sequential. Spark_num is an int. , used with Budget Cells'."
 Did you read that the keyword_definition of 'job' is 'Definition needed.'.
@@ -408,23 +419,23 @@ Did you read that the keyword_definition of 'listener' is 'Definition needed. On
 Did you read that the keyword_definition of 'speaker' is 'Definition needed. Only referenced in ch11.'.
 Did you read that the keyword_definition of 'SparkInt' is 'int first used in ch12. Each Spark is a int that describes the order of data ingestion'.
 Did you read that the keyword_definition of 'TimeNum' is 'int first used in ch12. An Integar that can represent a instant on the TimeNumLine'.
-"Did you read that the keyword_definition of 'amount' is ', ceckbook arg'."
+"Did you read that the keyword_definition of 'amount' is ', ceckbook arg, Tashable arg'."
 Did you read that the keyword_definition of 'boss' is 'definition needed'.
 "Did you read that the keyword_definition of 'boss_facts' is ', used with Budget Cells'."
 "Did you read that the keyword_definition of 'bud_contact_nets' is 'ledger of bud outcome. The PersonUnit that embodies the Budget distrubutes the funds per the PersonUnit contacts. dict[ContactName, FundNum]. FundNum can be negative.'."
 "Did you read that the keyword_definition of 'bud_person_name' is ', used with Budget Cells'."
-"Did you read that the keyword_definition of 'bud_time' is 'When a budget adds to the supply, bud arg, Nabuable arg'."
+"Did you read that the keyword_definition of 'bud_time' is 'When a budget adds to the supply, bud arg, Tashable arg'."
 "Did you read that the keyword_definition of 'celldepth' is ', used with Budget Cells, bud arg'."
 "Did you read that the keyword_definition of 'found_facts' is ', used with Budget Cells'."
 Did you read that the keyword_definition of 'magnitude' is 'Definition needed.'.
-"Did you read that the keyword_definition of 'offi_time' is ', offi_time arg, Nabuable arg'."
+"Did you read that the keyword_definition of 'offi_time' is ', offi_time arg, Tashable arg'."
 Did you read that the keyword_definition of 'offi_time_max' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'person_contacts_net' is 'calculated from loaded TranUnits data. It holds the calculated net output for each PersonName, ContactName tuple.'."
 "Did you read that the keyword_definition of 'personadjust' is ', used with Budget Cells'."
 "Did you read that the keyword_definition of 'personspark_facts' is ', used with Budget Cells'."
 "Did you read that the keyword_definition of 'quota' is 'The importance of a BudUnit. The currency given to the BudUnit to be distributed to Contacts. The magnitude number will always be less then quote because its the sum of how much of the quota is distributed, bud arg, used with Budget Cells'."
 Did you read that the keyword_definition of 'time' is 'Definition needed.'.
-"Did you read that the keyword_definition of 'tran_time' is ', ceckbook arg, Nabuable arg'."
+"Did you read that the keyword_definition of 'tran_time' is ', ceckbook arg, Tashable arg'."
 Did you read that the keyword_definition of 'ManaNum' is 'float first used in ch13. ManaNum inherits from float class'.
 Did you read that the keyword_definition of 'care_amount' is 'Definition needed.'.
 Did you read that the keyword_definition of 'cares' is 'Definition needed.'.
@@ -545,16 +556,26 @@ Did you read that the keyword_definition of 'offi_times' is 'Definition needed.'
 Did you read that the keyword_definition of 'personbudhistorys' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'weekday_label' is ', mmtweek arg'."
 "Did you read that the keyword_definition of 'weekday_order' is ', mmtweek arg'."
-Did you read that the keyword_definition of 'Nabu' is 'Definition needed.'.
-Did you read that the keyword_definition of 'NabuTime' is 'Definition needed.'.
+Did you read that the keyword_definition of 'Tash' is 'Short for Tashmetum of an ancient religion. Partner of Nabu the god of scribes and writers. God of listening. In Kegelogy tash concepts address the need to compute outside numbers into inside numbers.'.
+Did you read that the keyword_definition of 'TashTime' is 'Definition needed.'.
 Did you read that the keyword_definition of 'inx_epoch_diff' is 'Definition needed.'.
-"Did you read that the keyword_definition of 'inx_time' is ', nabu arg'."
-Did you read that the keyword_definition of 'nabu' is 'Definition needed.'.
-Did you read that the keyword_definition of 'nabu_timenum' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'inx_time' is ', tash arg'."
 Did you read that the keyword_definition of 'otx2inx' is 'Definition needed.'.
 Did you read that the keyword_definition of 'otx_epoch_length' is 'Definition needed.'.
-"Did you read that the keyword_definition of 'otx_time' is ', nabu arg'."
-Did you read that the keyword_definition of 'timenabu' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'otx_time' is ', tash arg'."
+Did you read that the keyword_definition of 'tash' is 'Short for Tashmetum of an ancient religion. Partner of Nabu the god of scribes and writers. God of listening. In Kegelogy tash concepts address the need to compute outside numbers into inside numbers.'.
+Did you read that the keyword_definition of 'tash_timenum' is 'Definition needed.'.
+Did you read that the keyword_definition of 'timetash' is 'Definition needed.'.
+Did you read that the keyword_definition of 'Nabu' is 'Definition needed.'.
+"Did you read that the keyword_definition of 'audie' is 'Short for audience. TitleTerm, can be NameTerm or GroupTitle.'."
+"Did you read that the keyword_definition of 'aux' is 'In Speech context: iux is the internal concept, aux is the audience's concept'."
+Did you read that the keyword_definition of 'aux_time' is 'Time as understand externally for the audience of that moment'.
+"Did you read that the keyword_definition of 'iux' is 'In Speech context: iux is the internal concept, aux is the audience's concept'."
+Did you read that the keyword_definition of 'iux_time' is 'Time as understood internally for the moment'.
+Did you read that the keyword_definition of 'nabu' is 'Definition needed.'.
+Did you read that the keyword_definition of 'nabu_timenum' is 'Definition needed.'.
+Did you read that the keyword_definition of 'song' is 'The instance of giving ideas to an audience. Usually there is an intended audience.'.
+Did you read that the keyword_definition of 'song_audie' is 'Speech Module. Defintion needed.'.
 "Did you read that the keyword_definition of 'inx_knot' is ', JARGON_LABEL arg, JARGON_NAME arg, JARGON_ROPE arg, JARGON_TITLE arg'."
 "Did you read that the keyword_definition of 'inx_label' is ', JARGON_LABEL arg'."
 "Did you read that the keyword_definition of 'inx_name' is ', JARGON_NAME arg'."
@@ -579,21 +600,15 @@ Did you read that the keyword_definition of 'titlemap' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'unknown_str' is ', JARGON_LABEL arg, JARGON_NAME arg, JARGON_ROPE arg, JARGON_TITLE arg'."
 "Did you read that the keyword_definition of 'Audie' is 'Short for Audience. TitleTerm, can be NameTerm or GroupTitle.'."
 Did you read that the keyword_definition of 'AudieTitle' is 'If a AudieTitle contains SepartorTerms(s) it represents a group otherwise its a single member group of an ContactName. str first used in ch19. All str separator classes are BreakTerms. Exists because of the necessity to break experience reality into things so they can be understood.'.
-Did you read that the keyword_definition of 'Flare' is 'The instance of giving ideas to an audience. Usually there is an intended audience.'.
-Did you read that the keyword_definition of 'FlareInt' is 'Integer for tracking Flares. int first used in ch19'.
+Did you read that the keyword_definition of 'Song' is 'The instance of giving ideas to an audience. Usually there is an intended audience.'.
+Did you read that the keyword_definition of 'SongInt' is 'Integer for tracking Songs. int first used in ch19'.
 Did you read that the keyword_definition of 'Speech' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'Yap' is 'In the Jargon module there is 'map', in the Speech module there is 'yap'.'."
-"Did you read that the keyword_definition of 'audie' is 'Short for audience. TitleTerm, can be NameTerm or GroupTitle.'."
-"Did you read that the keyword_definition of 'aux' is 'In Speech context: iux is the internal concept, aux is the audience's concept'."
 Did you read that the keyword_definition of 'aux_knot' is 'Speech module. Definition needed.'.
 Did you read that the keyword_definition of 'aux_label' is 'Speech module. Definition needed.'.
 Did you read that the keyword_definition of 'aux_name' is 'Speech module. Definition needed.'.
 Did you read that the keyword_definition of 'aux_rope' is 'Speech module. Definition needed.'.
 Did you read that the keyword_definition of 'aux_title' is 'Speech module. Definition needed.'.
-Did you read that the keyword_definition of 'flare' is 'The instance of giving ideas to an audience. Usually there is an intended audience.'.
-Did you read that the keyword_definition of 'flare_audie' is 'Speech Module. Defintion needed.'.
-Did you read that the keyword_definition of 'flare_num' is 'Speech Module. Defintion needed.'.
-"Did you read that the keyword_definition of 'iux' is 'In Speech context: iux is the internal concept, aux is the audience's concept'."
 Did you read that the keyword_definition of 'iux2aux' is 'Speech Module. Defintion needed.'.
 Did you read that the keyword_definition of 'iux_knot' is 'Speech module. Definition needed.'.
 Did you read that the keyword_definition of 'iux_label' is 'Speech module. Definition needed.'.
@@ -603,6 +618,7 @@ Did you read that the keyword_definition of 'iux_title' is 'Speech module. Defin
 "Did you read that the keyword_definition of 'labelyap' is 'Speech module, definition needed'."
 "Did you read that the keyword_definition of 'nameyap' is 'Speech module, definition needed'."
 "Did you read that the keyword_definition of 'ropeyap' is 'Speech module, definition needed'."
+Did you read that the keyword_definition of 'song_num' is 'Speech Module. Defintion needed.'.
 Did you read that the keyword_definition of 'speech' is 'Definition needed.'.
 Did you read that the keyword_definition of 'speech_core' is 'Definition needed.'.
 Did you read that the keyword_definition of 'speech_label' is 'Speech module. Definition needed.'.
@@ -667,8 +683,6 @@ Did you read that the keyword_definition of 'fact_state_iux' is 'Definition need
 Did you read that the keyword_definition of 'fact_state_otx' is 'The 'fact_state' value after Jargon.'.
 Did you read that the keyword_definition of 'fact_upper_inx' is 'The 'fact_upper' value after Jargon.'.
 Did you read that the keyword_definition of 'fact_upper_otx' is 'The 'fact_upper' value after Jargon.'.
-Did you read that the keyword_definition of 'flare_audie_aux' is 'Definition needed.'.
-Did you read that the keyword_definition of 'flare_audie_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'fund_rank' is 'Definition needed.'.
 Did you read that the keyword_definition of 'group_title_ERASE_aux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'group_title_ERASE_inx' is 'The 'group_title_ERASE' value after Jargon.'.
@@ -691,7 +705,7 @@ Did you read that the keyword_definition of 'hour_label_inx' is 'The 'hour_label
 Did you read that the keyword_definition of 'hour_label_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'hour_label_otx' is 'The 'hour_label' value after Jargon.'.
 "Did you read that the keyword_definition of 'insert_multiple' is 'Associated dimens: moment_budunit, moment_ceckbook, moment_timeoffi'."
-"Did you read that the keyword_definition of 'insert_one_time' is 'Associated dimens: jargon_label, jargon_name, jargon_rope, jargon_title, moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, momentunit, nabu_timenum, speech_label, speech_name, speech_rope, speech_title' in 'Associated dimens: jargon_label, jargon_name, jargon_rope, jargon_title, moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, momentunit, nabu_timenum'."
+"Did you read that the keyword_definition of 'insert_one_time' is 'Associated dimens: jargon_label, jargon_name, jargon_rope, jargon_title, moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, momentunit, tash_timenum, speech_label, speech_name, speech_rope, speech_title' in 'Associated dimens: jargon_label, jargon_name, jargon_rope, jargon_title, moment_epoch_hour, moment_epoch_month, moment_epoch_weekday, momentunit, tash_timenum'."
 Did you read that the keyword_definition of 'insert_update' is 'Definition needed.'.
 Did you read that the keyword_definition of 'jargon_spark_num' is 'Definition needed.'.
 Did you read that the keyword_definition of 'labor_title_ERASE_aux' is 'Definition needed.'.
@@ -752,6 +766,8 @@ Did you read that the keyword_definition of 'reason_state_otx' is 'The 'reason_s
 Did you read that the keyword_definition of 'reason_upper_inx' is 'The 'reason_upper' value after Jargon.'.
 Did you read that the keyword_definition of 'reason_upper_otx' is 'The 'reason_upper' value after Jargon.'.
 "Did you read that the keyword_definition of 'sheet' is 'Object that represents a spreadsheet. It has attributes like filename, table_name, and data.'."
+Did you read that the keyword_definition of 'song_audie_aux' is 'Definition needed.'.
+Did you read that the keyword_definition of 'song_audie_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'source_dimen' is 'Definition needed.'.
 Did you read that the keyword_definition of 'spark_face_inx' is 'The 'spark_face' value after Jargon.'.
 Did you read that the keyword_definition of 'spark_face_otx' is 'The 'spark_face' value after Jargon.'.
@@ -762,6 +778,7 @@ Did you read that the keyword_definition of 'weekday_label_inx' is 'The 'weekday
 Did you read that the keyword_definition of 'weekday_label_iux' is 'Definition needed.'.
 Did you read that the keyword_definition of 'weekday_label_otx' is 'The 'weekday_label' value after Jargon.'.
 Did you read that the keyword_definition of 'world_name' is 'Definition needed.'.
+Did you read that the keyword_definition of 'TSH' is 'Short for Tash'.
 Did you read that the keyword_definition of 'b_agg' is '5 character abbreviation of brick_agg. stage_type_order=4 Brick Agg: The Brick Raw tables are aggregated to elimanate duplicates.'.
 Did you read that the keyword_definition of 'b_raw' is '5 character abbreviation of brick_raw. stage_type_order=3 Brick Raw: The importable Excel Sheets entering the database'.
 Did you read that the keyword_definition of 'b_src' is '5 character abbreviation of brick_src. stage_type_order=2 Brick files. Brick formats with SparkNum.'.
@@ -770,12 +787,12 @@ Did you read that the keyword_definition of 'brick_agg' is 'stage_type_order=4 B
 Did you read that the keyword_definition of 'brick_raw' is 'stage_type_order=3 Brick Raw: The importable Excel Sheets entering the database'.
 Did you read that the keyword_definition of 'brick_src' is 'stage_type_order=2 Brick files. Brick formats with SparkNum.'.
 Did you read that the keyword_definition of 'brick_vld' is 'stage_type_order=6 Brick Valid: The Brick Agg tables filtered to correct datatypes. '.
-Did you read that the keyword_definition of 'h_agg' is '5 character abbreviation of heard_agg. stage_type_order=11 Populated by aggregated Heard Raw tables. Nabu number conversions take place here.'.
+Did you read that the keyword_definition of 'h_agg' is '5 character abbreviation of heard_agg. stage_type_order=11 Populated by aggregated Heard Raw tables. Tash number conversions take place here.'.
 Did you read that the keyword_definition of 'h_raw' is '5 character abbreviation of heard_raw. stage_type_order=10 Populated by Sound Valid tables'.
-Did you read that the keyword_definition of 'h_vld' is '5 character abbreviation of heard_vld. stage_type_order=12 Populated by aggregated and Nabu changed Heard Agg tables'.
-Did you read that the keyword_definition of 'heard_agg' is 'stage_type_order=11 Populated by aggregated Heard Raw tables. Nabu number conversions take place here.'.
+Did you read that the keyword_definition of 'h_vld' is '5 character abbreviation of heard_vld. stage_type_order=12 Populated by aggregated and Tash changed Heard Agg tables'.
+Did you read that the keyword_definition of 'heard_agg' is 'stage_type_order=11 Populated by aggregated Heard Raw tables. Tash number conversions take place here.'.
 Did you read that the keyword_definition of 'heard_raw' is 'stage_type_order=10 Populated by Sound Valid tables'.
-Did you read that the keyword_definition of 'heard_vld' is 'stage_type_order=12 Populated by aggregated and Nabu changed Heard Agg tables'.
+Did you read that the keyword_definition of 'heard_vld' is 'stage_type_order=12 Populated by aggregated and Tash changed Heard Agg tables'.
 "Did you read that the keyword_definition of 'i_dst' is '5 character abbreviation of ideax_dst. stage_type_order=14 Idea (Brick formats without SparkNum) Destination. Filtered Job, Moment data.'."
 Did you read that the keyword_definition of 'i_src' is '5 character abbreviation of ideax_src. stage_type_order=1 Idea Source files. Brick formats without SparkNum.'.
 Did you read that the keyword_definition of 'idea' is 'A collection of bricks (currently only in brick format) with a spark_face but no spark_num. Conceptually ideas are things that represent direct promises to the soul. People are made of ideas and share them.'.
@@ -792,7 +809,6 @@ Did you read that the keyword_definition of 'mmtoffi' is 'abbv for moment_timeof
 Did you read that the keyword_definition of 'mmtunit' is 'abbv for momentunit'.
 Did you read that the keyword_definition of 'mmtweek' is 'abbv for moment_epoch_weekday'.
 Did you read that the keyword_definition of 'moment_ote1_agg' is 'Create Database Table that holds all spark_num to bud_time pairs. Include moment_rope and person_name'.
-Did you read that the keyword_definition of 'nabtime' is 'abbv for nabu_timenum'.
 Did you read that the keyword_definition of 's_agg' is '5 character abbreviation of sound_agg. stage_type_order=8 Populated by aggregated Sound Raw dimen data (elimanate duplicates). Jargon Core data is validated then used to jargon non-Jargon dimen data'.
 Did you read that the keyword_definition of 's_raw' is '5 character abbreviation of sound_raw. stage_type_order=7 The Brick Valid data is seperated by column into dimen data such as person_planunit and moment_budunit'.
 Did you read that the keyword_definition of 's_vld' is '5 character abbreviation of sound_vld. stage_type_order=9 The Translated Sound Agg data is aggregated to elimanate duplicates into Sound Valid'.
@@ -804,6 +820,8 @@ Did you read that the keyword_definition of 'trllabe' is 'abbv for jargon_label'
 Did you read that the keyword_definition of 'trlname' is 'abbv for jargon_name'.
 Did you read that the keyword_definition of 'trlrope' is 'abbv for jargon_rope'.
 Did you read that the keyword_definition of 'trltitl' is 'abbv for jargon_title'.
+Did you read that the keyword_definition of 'tsh' is 'Short for Tash'.
+Did you read that the keyword_definition of 'tshtime' is 'abbv for tash_timenum'.
 Did you read that the keyword_definition of 'fission' is 'Any complicated step changing idea_type to brick_type. Each fission_step makes a single type of change. Can be simple (set value to X) or complicated (add missing rows with relative values). Only referenced in ch23'.
 Did you read that the keyword_definition of 'idea_type' is 'Definition needed.'.
 Did you read that the keyword_definition of 'ii' is 'Idea Format Identifier. Every idea_type format starts with 'ii' and then 5 numbers. Every brick_type has a mirrored idea_type. Multiple idea_types can map to single brick_type'.
@@ -843,8 +861,8 @@ Did you read that the keyword_definition of 'request' is 'Ch33 Definition needed
 Did you read that the keyword_definition of 'vow' is 'ideas created for audience'.
 Did you read that the keyword_definition of 'finance' is 'Definition needed.'.
 Did you read that the keyword_definition of 'financial' is 'Definition needed.'.
-Did you read that the keyword_definition of 'News' is 'Definition needed.'.
-Did you read that the keyword_definition of 'news' is 'Definition needed.'.
+Did you read that the keyword_definition of 'Newz' is 'Definition needed.'.
+Did you read that the keyword_definition of 'newz' is 'Definition needed.'.
 Did you read that the keyword_definition of 'Article' is 'A document that is readable by a human.'.
 Did you read that the keyword_definition of 'article' is 'A document that is readable by a human.'.
 "Did you read that the keyword_definition of 'American' is 'Defined by Joell Ortiz 'Be American, express yourself and take the credit' Notice also what he says about 'you join 'em'. Also relating to the lands, peoples, societies, and governments of the Americas'."

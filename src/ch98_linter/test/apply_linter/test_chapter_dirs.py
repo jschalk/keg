@@ -21,7 +21,7 @@ def path_contains_subpath(full_path: str, sub_path: str):
         return False
 
 
-def test_Chapters_test_Tests_AreInCorrectDirStructure():
+def test_Chapters_test_TestsInCorrectDirStructure():
     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
     # ESTABLISH / WHEN / THEN
     for chapter_desc, chapter_dir in get_chapter_descs().items():
@@ -37,10 +37,13 @@ def test_Chapters_test_Tests_AreInCorrectDirStructure():
                 assert level1_dir == test_str
 
 
+# TODO add code test that no file has "from src."
+
+
 def test_Chapters_NonTestPythonFilesDoNotHavePrintOrAssertStrs():
     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
     # ESTABLISH
-    not_allowed_strs = {"print", "assert"}
+    not_allowed_strs = {"print", "assert", "ESTABLISH"}
     excluded_files = {
         "puncher_app.py",
         "ch_create_script.py",
@@ -66,9 +69,7 @@ def test_Chapters_NonTestPythonFilesDoNotHavePrintOrAssertStrs():
                     print_str_in_py_file_bool = not_allowed_str in py_file_str
                 if print_str_in_py_file_bool:
                     print(f"{not_allowed_str=} {py_file=}")
-                assertion_fail_str = (
-                    f"Chapter {chapter_desc} file {py_file_path} has print statement"
-                )
+                assertion_fail_str = f"Chapter {chapter_desc} file {py_file_path} has not_allowed_strs str"
                 assert not print_str_in_py_file_bool, assertion_fail_str
 
 
@@ -168,6 +169,7 @@ def test_Chapters_ReferenceDir_ref_ExistsForEveryChapter_Scenario0():
         assert chapter_ref_ch_int == chapter_desc_ch_int, assertion_fail_str
 
 
+# TODO create special test that on --rebuild_docs deletes empty chapters
 def test_Chapters_DoNotHaveEmptyDirectories():
     # sourcery skip: no-loop-in-tests, no-conditionals-in-tests
     # ESTABLISH

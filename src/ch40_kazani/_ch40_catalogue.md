@@ -22,6 +22,8 @@
 
 **[Kill the Scholars](./kazani_kill_the_scholars.md)** Kamil Kazani - 2025-08-02<br>
 
+**[Kurt, Walter, and Horst](./kazani_kurt,walter_horst.md)** Kamil Kazani - 2026-11-16<br>
+
 **[Mechanics of Revolution](./kazani_mechanics_of_revolution.md)** Kamil Kazani - 2025-10-24<br>
 
 **[No real adults](./kazani_no_real_adults.md)** Kamil Kazani - 2026-09-18<br>
@@ -39,6 +41,8 @@
 **[On the Virtue of Vladimir Putin](./kazani_on_putin_virtue.md)** Kamil Kazani - 2025-08-09<br>
 
 **[People cannot lie](./kazani_people_cannot_lie.md)** Kamil Kazani - 2026-03-06<br>
+
+**[Power and Glory](./kazani_power_glory.md)** Kamil Kazani - 2026-11-20<br>
 
 **[Suffering from success](./kazani_suffering_from_success.md)** Kamil Kazani - 2026-02-27<br>
 

@@ -50,7 +50,7 @@ def test_SpeechUnit_inherit_speechunit_ReturnsObj_Scenario2_RaiseErrorWhenDiffer
     assert str(excinfo.value) == "Core attrs in conflict"
 
 
-def test_SpeechUnit_inherit_speechunit_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_flare_audie():
+def test_SpeechUnit_inherit_speechunit_ReturnsObj_Scenario4_RaiseErrorWhenDifferent_x_song_audie():
     # ESTABLISH
     old_speechunit = speechunit_shop(exx.sue, 0)
     new_speechunit = speechunit_shop(exx.bob, 1)
@@ -93,16 +93,16 @@ def test_SpeechUnit_inherit_speechunit_ReturnsObj_Scenario6_nameyap_Inherited():
     # THEN
     assert merged_speechunit
     merged_contactbridge = get_suita_nameyap()
-    merged_contactbridge.flare_num = spark1
+    merged_contactbridge.song_num = spark1
     assert merged_speechunit.nameyap == merged_contactbridge
     merged_groupbridge = get_bowl_titleyap()
-    merged_groupbridge.flare_num = spark1
+    merged_groupbridge.song_num = spark1
     assert merged_speechunit.titleyap == merged_groupbridge
     merged_labelbridge = get_clean_labelyap()
-    merged_labelbridge.flare_num = spark1
+    merged_labelbridge.song_num = spark1
     assert merged_speechunit.labelyap == merged_labelbridge
     merged_ropebridge = get_clean_ropeyap()
-    merged_ropebridge.flare_num = spark1
+    merged_ropebridge.song_num = spark1
     merged_ropebridge.labelyap = merged_labelbridge
     assert merged_speechunit.ropeyap == merged_ropebridge
 
@@ -127,9 +127,9 @@ def test_SpeechUnit_inherit_speechunit_ReturnsObj_Scenario7_nameyap_Inherited():
     assert merged_speechunit
     assert new_speechunit.nameterm_speech_exists(bob_iux, bob_aux)
     merged_contactbridge = get_suita_nameyap()
-    merged_contactbridge.flare_num = spark1
+    merged_contactbridge.song_num = spark1
     merged_contactbridge.set_iux2aux(bob_iux, bob_aux)
     assert merged_speechunit.nameyap == merged_contactbridge
     merged_groupbridge = get_bowl_titleyap()
-    merged_groupbridge.flare_num = spark1
+    merged_groupbridge.song_num = spark1
     assert merged_speechunit.titleyap == merged_groupbridge

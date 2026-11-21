@@ -23,8 +23,8 @@ def test_SpeechUnit_to_dict_ReturnsObj_Scenario0():
     # THEN
     print(sue_dict)
     assert sue_dict
-    assert sue_dict.get(kw.flare_audie) == exx.sue
-    assert sue_dict.get(kw.flare_num) == sue_speechunit.flare_num
+    assert sue_dict.get(kw.song_audie) == exx.sue
+    assert sue_dict.get(kw.song_num) == sue_speechunit.song_num
     assert sue_dict.get(kw.iux_knot) == default_knot_if_None()
     assert sue_dict.get(kw.aux_knot) == default_knot_if_None()
     sue_nameyap = sue_speechunit.nameyap.to_dict()
@@ -52,7 +52,7 @@ def test_SpeechUnit_to_dict_ReturnsObj_Scenario1():
     sue_dict = sue_speechunit.to_dict()
 
     # THEN
-    assert sue_dict.get(kw.flare_audie) == exx.sue
+    assert sue_dict.get(kw.song_audie) == exx.sue
     assert sue_dict.get(kw.iux_knot) == slash_iux_knot
     assert sue_dict.get(kw.aux_knot) == colon_aux_knot
     sue_nameyap = sue_speechunit.nameyap.to_dict()
@@ -67,12 +67,12 @@ def test_SpeechUnit_to_dict_ReturnsObj_Scenario1():
 
 def test_get_speechunit_from_dict_ReturnsObj():
     # ESTABLISH
-    sue_flare_num = 7
+    sue_song_num = 7
     slash_iux_knot = "/"
     colon_aux_knot = ":"
     sue_speechunit = speechunit_shop(
         exx.sue,
-        sue_flare_num,
+        sue_song_num,
         slash_iux_knot,
         colon_aux_knot,
     )
@@ -86,8 +86,8 @@ def test_get_speechunit_from_dict_ReturnsObj():
 
     # THEN
     assert gen_speechunit
-    assert gen_speechunit.flare_audie == exx.sue
-    assert gen_speechunit.flare_num == sue_flare_num
+    assert gen_speechunit.song_audie == exx.sue
+    assert gen_speechunit.song_num == sue_song_num
     assert gen_speechunit.iux_knot == slash_iux_knot
     assert gen_speechunit.aux_knot == colon_aux_knot
     assert gen_speechunit.nameyap == get_slash_nameyap()
