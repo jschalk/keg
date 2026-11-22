@@ -306,3 +306,27 @@ Responding to tweet "If you truly believe people maximize utility (preference sa
 > With an important caveat:
 > 
 > Provided that they can
+
+
+**November 21, 2026**<br>
+> There is nothing dumber than an accusation in hypocrisy. Not because it is wrong, but because it always true. "How come, now Hank is doing one thing, but 50 years ago he was doing another!"
+> 
+> But of course. Times were different. Conditions were different. Hank was different
+
+@mutawasiti1 responded:
+*There may be a Platonic hope of sorts of people to be consistent and fair like an ideal judge.*
+
+> But that is absurd
+> 
+> In early 1917 Trotsky is bashing Lenin with confidence
+> 
+> In late 1917, he is bashing Lenin’s enemies with confidence
+> 
+> Nothing special about it
+
+James Hudson @Philonous responded:
+*Behaving contrary to the ideals you professed fifty years ago is not hypocrisy. Behaving contrary to ideals at the same time you are professing them is hypocrisy.*
+
+> Every society, every culture, every institution is always based on a schizophrenic blend of mutually incompatible principles
+> 
+> Following them all, is a logical impossibility

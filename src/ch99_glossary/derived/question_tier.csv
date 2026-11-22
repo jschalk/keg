@@ -845,7 +845,7 @@ deal,0,"33, 41, 42, 43, 45"
 gift,0,"33, 41, 42"
 offer,0,"33, 41, 42, 44"
 peer,0,"33, 41, 42"
-pitch,0,"33, 42, 44"
+pitch,0,33
 pitch_id,0,33
 pitcher_name,0,33
 pitchs,0,33
