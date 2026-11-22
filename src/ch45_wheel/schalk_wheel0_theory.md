@@ -8,7 +8,7 @@
 
 ---
 <!--Home: -->
-Being a philosopher is great. Always have interesting things to read and think about. Making theories for things is challenging and fun. It's also easier then being a historian. My Dad was an historian, reading primary sources and then figuring out how people thought a long time ago. Much harder then theory. Then my favorite writer argues that [historians are bad at theory-making](../ch42_kazani/kazani_how_to_study_politics.md)
+Being a philosopher is great. Always have interesting things to read and think about. Making theories for things is challenging and fun. It's also easier then being a historian. My Dad was an historian, reading primary sources and then figuring out how people thought a long time ago. Much harder than theory. But then I read my favorite writer Kamil Kazani and he says that [historians are bad at theory-making](../ch42_kazani/kazani_how_to_study_politics.md)
 
 > ...historians fail to deliver, because they (most of them) are simply not brilliant enough.
 <!--Need: -->
@@ -24,16 +24,12 @@ Kazani says my dad and his ilk can't theorize well. He using entertaining and ha
 </div>
 
 <!--Go: -->
-My copy of *From Valor to Pedigree* is far away so I'll present the political theory of [Kegology](../ch44_spring/schalk_kegology_name_origin.md). My Dad was a better scholar than me so if I can create a political theory that is awesome then he would have had one that was even better.  
-
-
-I think it's very clear they're doing things...to enrich their families.
-Calley Means, Joe Rogan Podcast #2578
+I'll present the political theory of [Kegology](../ch44_spring/schalk_kegology_name_origin.md). My Dad was a better scholar than me so if I can create a political theory that is good then he would have had one that was even better.  
 
 <!--Search: TODO. -->
 ## Kegology Political Theory
 
-Here's a footnote describing the philosophical foundations of Kegology[^2]. Read it if you want. The gist is Levinas (died 1995) had an awesome philosophy of the Face built from biblical traditions.
+Here's a footnote describing the philosophical foundations of Kegology[^2]. Read it if you want. The gist is Levinas (died 1995) had an awesome philosophy of the Face built from biblical traditions. And by 
 
 The most important question in Kegology is "am i a good father?" Even if you are a woman and have given birth to children the question is still "am i a good father?" The concept of Fatherhood holds a contradiction that isn't as clear with motherhood: Fatherhood is and isn't about genetics. Until recently loving your children because of genetics was obvious for a Mother but required faith from the Father. 
 
@@ -126,7 +122,7 @@ Ok but what are oligarchies made of? It can't just be the individuals that's too
 
 <div align="center">
 
-### Every Oligarchy are made of Families
+### Every Oligarchy is made of Families
 </div>
 
 <div align="center"><img src="../ch42_kazani/images/yelstin_family.webp" alt="FamilyUnit Yelstin" width="50%"></div>
@@ -140,6 +136,9 @@ Ok but what are oligarchies made of? It can't just be the individuals that's too
 #### "...Status & prestige is a zero sum game..." Kamil Kazani on Twitter[^6]
 </div>
 
+> I think it's very clear they're doing things...to enrich their families.
+
+*Calley Means, Joe Rogan Podcast #2578*
 
 Let's define the term *'prestige'* the way Kazani and others do. A Family with Prestige has status, influence, power. It is something a family either has or doesn't. It cannot be shared. 
 

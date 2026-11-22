@@ -33,7 +33,7 @@ Besides, there are not many winners in life. A small number of people capture a 
 
 In finance, you see these cults pop up because coattail investing is a legitimate strategy. If some people really are much better than others at allocating capital, then following them is not insane. It is a shortcut.
 
-But now the internet has generalized that model across the whole economy. Marketing, sales, manufacturing, startups, politics. The pitch is always slightly different, but the underlying offer is the same, attach yourself to me and I will carry you into a world you cannot enter alone.
+But now the internet has generalized that model across the whole economy. Marketing, sales, manufacturing, startups, politics. The offer is always slightly different, but the underlying offer type is the same, attach yourself to me and I will carry you into a world you cannot enter alone.
 
 *link to tiktok of Influencer talking about following Warren Buffet.*
 

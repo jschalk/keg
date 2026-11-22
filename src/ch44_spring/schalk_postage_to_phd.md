@@ -17,7 +17,7 @@ Given a subject a philosopher should be able to speak/write to an audience in an
 
 15 minutes to talk about ethics to engineers at construction company<br>
 10 minutes to introduce research project to colleagues<br>
-30 seconds in pitch research proposal to a supervisor <br>
+30 seconds in explain research proposal to a supervisor <br>
 50 minutes to introduce a philosopher's thought to a high school class<br>
 26 lectures of 50 minutes on subject to undergrads (13 wk course) <br> 
 
@@ -37,7 +37,7 @@ Generally, as a philosopher you must be able to connect your audience with your 
 | ----------------- | ---------------------- |
 | Slogan            | <5 words               |
 | Sentence          | <10 words              |
-| Elevator pitch    | <40 words              |
+| Elevator talk     | <40 words              |
 | 5-minute talk     | <100 words             |
 | 30-minute talk    | <1,000 words           |
 | 1.5-hour lecture  | <3,000 words           |

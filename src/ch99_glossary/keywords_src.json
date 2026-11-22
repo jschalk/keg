@@ -857,7 +857,7 @@
     "valid_ch": "8, 9, 10, 11, 12, 13, 14, 15, 21, 22, 23, 27, 30, 31, 32, 63, 90, 97"
   }, 
   "pillar": {"valid_ch": "45"}, 
-  "pitch": {"valid_ch": "33, 42, 44"}, 
+  "pitch": {"valid_ch": "33"}, 
   "pitch_id": {"valid_ch": "33"}, 
   "pitcher_name": {"valid_ch": "33"}, 
   "pitchs": {"valid_ch": "33"}, 
