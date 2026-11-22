@@ -17,7 +17,7 @@ from ch01_keyword.chapter_desc_main import get_chapter_desc_prefix, get_chapter_
 from ch01_keyword.keyword_class_builder import create_src_example_strs_path
 from ch05_rope._ref.ch05_doc_builder import get_ropeterm_description_md
 from ch21_brick._ref.ch21_doc_builder import get_brick_formats_md, get_brick_mds
-from ch38_article.article_toolbox import (
+from ch40_article.article_toolbox import (
     create_markdown_table_of_contents,
     get_markdown_file_metadata,
 )

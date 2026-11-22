@@ -1596,20 +1596,30 @@ The ref file and ontology note indicate the intended purpose: financial modeling
 
 As of the cloned repository state on 5-26-2026, this chapter has not been implemented. It is a reserved chapter number in the inductive chain, positioned after the negotiation chapter (ch33) and before the person viewer web app in future chapters.
 
-# ch35_person_viewer — Chapter Summary
+
+
+
+
+
+
+
+
+
+
+# ch63_person_viewer — Chapter Summary
 
 *This summary is authored by AI 5-26-2026.*
 
 ## 1. Title and Summary Declaration
 
-**Chapter 35 — `ch35_person_viewer`**
+**Chapter 63 — `ch63_person_viewer`**
 **"Person Viewer — a Flask web app that renders a PersonUnit's plan tree and contacts as an interactive, checkbox-driven HTML visualization"**
 
 ---
 
 ## 2. Prompt Used to Build This
 
-From `ch35_ref.json`:
+From `ch63_ref.json`:
 > "Tools for Visualizing PersonUnits."
 
 Ontology note:
@@ -1626,13 +1636,13 @@ Ontology note:
 - **ch08_person_logic**: `PersonUnit` — the root object visualized.
 - **ch14_time**: `get_fact_state_readable_str`, `get_reason_case_readable_str` — convert numeric time-based fact/reason values into human-understandable calendar strings (e.g. "Monday 8am–10am" rather than raw `TimeNum` integers).
 
-`ch35_semantic_types.py` re-exports through ch22 with no additions.
+`ch63_semantic_types.py` re-exports through ch22 with no additions.
 
 ---
 
 ## 4. Summary of What This Chapter Does
 
-`ch35_person_viewer` provides two outputs: a Python dict representation of a `PersonUnit` suitable for JSON serialization (`person_viewer_tool.py`) and a Flask web application that renders that dict as an interactive HTML page (`person_viewer_app.py`).
+`ch63_person_viewer` provides two outputs: a Python dict representation of a `PersonUnit` suitable for JSON serialization (`person_viewer_tool.py`) and a Flask web application that renders that dict as an interactive HTML page (`person_viewer_app.py`).
 
 **`person_objs_asdict(obj, current_person, current_reason)`** — the core recursive serialization function in `person_viewer_tool.py`. It walks any keg dataclass using Python's `dataclasses.fields` introspection and converts the full object graph to a nested dict. For each recognized type it appends a `"readable"` key with a human-friendly HTML snippet:
 - `PlanUnit` → `set_readable_plan_values` adds fund percentages (`fund_give`/`fund_take` as `readable_percent`), active status, pledge flag, and descendant pledge count.
@@ -1650,16 +1660,6 @@ Ontology note:
 The HTML template is extensive — it renders ~30 checkbox controls for toggling visibility of individual contact fields (`fund_give`, `fund_agenda_ratio_take`, `irrational_contact_debt_mass`, membership details, etc.) and ~20 plan-level fields (`pledge`, `plan_active`, `plan_task`, `descendant_pledge_count`, reason/fact/award/workforce subtrees). A `static/style.css` file handles layout.
 
 This chapter is a debugging and demonstration tool — it makes the complexity of a post-`thinkout()` `PersonUnit` inspectable by a human without reading raw JSON. The calendar-readable strings from ch14 are what make it genuinely useful: instead of seeing `fact_lower=525600`, a user sees "Monday 8:00 AM".
-
-
-
-
-
-
-
-
-
-
 
 # ch90_puncher_app — Chapter Summary
 

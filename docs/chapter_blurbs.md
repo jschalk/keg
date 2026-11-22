@@ -36,17 +36,17 @@ What does each one do?
 - **ch32_world**: Defines WorldDirs that admin MomentUnits input data and outcomes
 - **ch33_pitch**: Defines Pitch Tools for gifts, World Scenarios.
 - **ch34_finance**: Defines Finance Tools for 
-- **ch35_person_viewer**: Tools for Visualizing PersonUnits
-- **ch36_newz**: Defines Newz Tools
-- **ch38_article**: Article formatting tools
-- **ch39_levinas**: Levinas Philosophy
-- **ch40_kazani**: Kazani articles.
-- **ch41_pop_phil**: Popular Philsophy
+- **ch35_newz**: Defines Newz Tools
+- **ch40_article**: Article formatting tools
+- **ch41_levinas**: Levinas Philosophy
+- **ch42_kazani**: Kazani articles.
+- **ch43_pop_phil**: Popular Philsophy
 - **ch44_spring**: spring for future
 - **ch45_wheel**: Essays pop_phil
 - **ch46_mirth**: Articles about the implications of KegWheel Theory
 - **ch47_gab**: Archive of Gab
 - **ch54_fable**: Short stories
+- **ch63_person_viewer**: Tools for Visualizing PersonUnits
 - **ch90_puncher_app**: ETL app to create day punches from excel files.
 - **ch96_exam**: Exams that return KPIs of Kegology knowledge.
 - **ch97_docs_builder**: Defines Tools that create documentation.

@@ -177,7 +177,7 @@ def test_semantic_types_path_bool_ReturnsBool_ScenarioMultiplePaths():
     # ESTABLISH / WHEN / THEN
     assert semantic_types_path_bool(r"src\ch00_py\_ref\ch00_semantic_types.py") is True
     assert (
-        semantic_types_path_bool(r"src\ch42_linter\_ref\ch42_semantic_types.py") is True
+        semantic_types_path_bool(r"src\ch22_linter\_ref\ch22_semantic_types.py") is True
     )
     assert (
         semantic_types_path_bool(r"src/ch99_anything/_ref/ch99_semantic_types.py")
@@ -186,11 +186,11 @@ def test_semantic_types_path_bool_ReturnsBool_ScenarioMultiplePaths():
     assert (
         semantic_types_path_bool(r"src\ch100_py\_ref\ch100_semantic_types.py") is False
     )
-    assert semantic_types_path_bool(r"src\ch42\_ref\ch42_semantic_types.py") is False
-    assert semantic_types_path_bool(r"src\ch42_py\_ref\ch42_ref.json") is False
-    assert semantic_types_path_bool(r"src\ch42_py\_ref\ch43_semantic_types.py") is True
+    assert semantic_types_path_bool(r"src\ch22\_ref\ch22_semantic_types.py") is False
+    assert semantic_types_path_bool(r"src\ch22_py\_ref\ch22_ref.json") is False
+    assert semantic_types_path_bool(r"src\ch22_py\_ref\ch23_semantic_types.py") is True
     assert (
-        semantic_types_path_bool(r"src\ch42_py\other\ch42_semantic_types.py") is False
+        semantic_types_path_bool(r"src\ch22_py\other\ch22_semantic_types.py") is False
     )
 
 

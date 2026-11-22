@@ -1,6 +1,6 @@
 from ch00_py.file_toolbox import open_json
 from ch01_keyword.chapter_desc_main import get_chapter_desc_prefix, get_chapter_descs
-from ch38_article.article_toolbox import (
+from ch40_article.article_toolbox import (
     get_articleunit_from_file,
     get_default_article_snippets_order,
 )

@@ -34,17 +34,17 @@
 - ch32_world: WorldName, ch32, today
 - ch33_pitch: Atla, Deal, Gift, Peer, PitchID, PitchUnit, Promise, PromiseUnit, atla, ch33, deal, gift, offer, peer, pitch, pitch_id, pitcher_name, pitchs, promise, request, ride, vow
 - ch34_finance: ch34, finance, financial
-- ch35_person_viewer: ch35
-- ch36_newz: Newz, ch36, newz
-- ch38_article: Article, article, ch38
-- ch39_levinas: American, God, Home, Infinity, Pillar, Totality, Water, bearing, ch39, god, grateful, gravity, home, hose, infinity, invite, land, power, totality, water, welcome
-- ch40_kazani: Empire, Faction, Hayek, Hobbit, Kronos, Land, Lord, Loyal, Republic, Ride, Shill, Soil, ch40, cow, empire, faction, hive, honor, impression, invitation, knee, kronosmax, ladder, lord, losing, loyal, oil, pay, prestige, republic, rival, shill, soil, trash, trooper, winner, winning
-- ch41_pop_phil: ch41
+- ch35_newz: Newz, ch35, newz
+- ch40_article: Article, article, ch40
+- ch41_levinas: American, God, Home, Infinity, Pillar, Totality, Water, bearing, ch41, god, grateful, gravity, home, hose, infinity, invite, land, power, totality, water, welcome
+- ch42_kazani: Empire, Faction, Hayek, Hobbit, Kronos, Land, Lord, Loyal, Republic, Ride, Shill, Soil, ch42, cow, empire, faction, hive, honor, impression, invitation, knee, kronosmax, ladder, lord, losing, loyal, oil, pay, prestige, republic, rival, shill, soil, trash, trooper, winner, winning
+- ch43_pop_phil: ch43
 - ch44_spring: Kegology, Monopoly, Rise, Shot, Winning, Winter, ch44, climb, discipline, drag, heart, jump, kegology, pump, revenge, shot, soldier, spring, winter
 - ch45_wheel: Climb, Discipline, Fall, Honor, KegWheel, Losing, Pay, Prestige, Stable, Welcome, Wheel, alien, ch45, cling, fall, kneeler, lift, linchpin, loser, pillar, stable, valor, wheel, wheelers
 - ch46_mirth: ch46
 - ch47_gab: ch47
 - ch54_fable: Purpil, ch54
+- ch63_person_viewer: ch63
 - ch90_puncher_app: Puncher, Team, ch90, puncher, team
 - ch96_exam: ch96
 - ch97_docs_builder: ch97

@@ -1,0 +1,200 @@
+
+
+# TODO add dimen to Tash
+
+
+
+add to tash_config.json
+  "tash_fundnum": {
+    "affected_semantic_types": { "FundNum": { "tashable_values": {"amount": {}, "quota": {}} } }, 
+    "jkeys": {"moment_rope": {}, "otx_fund": {}}, 
+    "jvalues": {"inx_fund": {}}
+  }, 
+
+add to sorter list
+        'aux_knot',
+        "iux_time",
+        "aux_time",
+        "otx_fund",
+        "inx_fund",
+        "iux_fund",
+        "aux_fund",
+        'quota_otx',
+        'amount_otx',
+        'amount_inx',
+        'quota_inx',
+
+
+
+    # tash args
+    tash_args = get_tash_args()
+    assert tash_args.issubset(set(table_sorting_priority))
+    tashable_otx_cols = {f"{tash_arg}_otx" for tash_arg in get_tashable_args()}
+    tashable_inx_cols = {f"{tash_arg}_inx" for tash_arg in get_tashable_args()}
+    # print(f"missing {tashable_otx_cols.difference(table_sorting_priority)}")
+    # print(f"missing {tashable_inx_cols.difference(table_sorting_priority)}")
+    assert tashable_otx_cols.issubset(table_sorting_priority)
+    assert tashable_inx_cols.issubset(table_sorting_priority)
+
+    # nabu args
+    nabu_args = get_nabu_args()
+    print(f"{nabu_args=}")
+    assert nabu_args.issubset(set(table_sorting_priority))
+    nabuable_otx_cols = {f"{nabu_arg}_otx" for nabu_arg in get_nabuable_args()}
+    nabuable_inx_cols = {f"{nabu_arg}_inx" for nabu_arg in get_nabuable_args()}
+    print(f"missing {nabuable_otx_cols.difference(table_sorting_priority)}")
+    print(f"missing {nabuable_inx_cols.difference(table_sorting_priority)}")
+    assert nabuable_otx_cols.issubset(table_sorting_priority)
+    assert nabuable_inx_cols.issubset(table_sorting_priority)
+
+
+
+
+
+    assert table_sorting_priority[206] == kw.inx_knot
+    assert table_sorting_priority[207] == kw.otx_time
+    assert table_sorting_priority[208] == kw.inx_time
+    assert table_sorting_priority[209] == kw.iux_name
+    assert table_sorting_priority[210] == kw.aux_name
+    assert table_sorting_priority[211] == kw.iux_title
+    assert table_sorting_priority[212] == kw.aux_title
+    assert table_sorting_priority[213] == kw.iux_label
+    assert table_sorting_priority[214] == kw.aux_label
+    assert table_sorting_priority[215] == kw.iux_rope
+    assert table_sorting_priority[216] == kw.aux_rope
+    assert table_sorting_priority[217] == kw.iux_knot
+    assert table_sorting_priority[218] == kw.aux_knot
+    assert table_sorting_priority[219] == "iux_time"
+    assert table_sorting_priority[220] == "aux_time"
+    assert table_sorting_priority[221] == "otx_fund"
+    assert table_sorting_priority[222] == "inx_fund"
+    assert table_sorting_priority[223] == "iux_fund"
+    assert table_sorting_priority[224] == "aux_fund"
+    assert table_sorting_priority[225] == "quota_otx"
+    assert table_sorting_priority[226] == "amount_otx"
+    assert table_sorting_priority[227] == "amount_inx"
+    assert table_sorting_priority[228] == "quota_inx"
+    assert table_sorting_priority[229] == kw.knot
+    assert table_sorting_priority[230] == kw.groupmark
+    assert table_sorting_priority[231] == kw.unknown_str
+    assert table_sorting_priority[232] == kw.quota
+    assert table_sorting_priority[233] == kw.celldepth
+    assert table_sorting_priority[234] == kw.job_listen_rotations
+    assert table_sorting_priority[235] == kw.error_message
+    assert table_sorting_priority[236] == kw.person_name_is_workforce
+    assert table_sorting_priority[237] == kw.plan_active
+    assert table_sorting_priority[238] == kw.plan_task
+    assert table_sorting_priority[239] == kw.case_task
+    assert table_sorting_priority[240] == kw.reason_active
+    assert table_sorting_priority[241] == kw.reason_task
+    assert table_sorting_priority[242] == kw.case_active
+    assert table_sorting_priority[243] == kw.credor_pool
+    assert table_sorting_priority[244] == kw.debtor_pool
+    assert table_sorting_priority[245] == kw.rational
+    assert table_sorting_priority[246] == kw.fund_give
+    assert table_sorting_priority[247] == kw.fund_take
+    assert table_sorting_priority[248] == kw.fund_onset
+    assert table_sorting_priority[249] == kw.fund_cease
+    assert table_sorting_priority[250] == kw.fund_ratio
+    assert table_sorting_priority[251] == kw.fund_agenda_give
+    assert table_sorting_priority[252] == kw.fund_agenda_take
+    assert table_sorting_priority[253] == kw.fund_agenda_ratio_give
+    assert table_sorting_priority[254] == kw.fund_agenda_ratio_take
+    assert table_sorting_priority[255] == kw.inallocable_contact_debt_mass
+    assert table_sorting_priority[256] == kw.gogo_calc
+    assert table_sorting_priority[257] == kw.stop_calc
+    assert table_sorting_priority[258] == kw.tree_level
+    assert table_sorting_priority[259] == kw.range_evaluated
+    assert table_sorting_priority[260] == kw.descendant_pledge_count
+    assert table_sorting_priority[261] == kw.healerunit_ratio
+    assert table_sorting_priority[262] == kw.all_contact_cred
+    assert table_sorting_priority[263] == kw.keeps_justified
+    assert table_sorting_priority[264] == kw.offtrack_fund
+    assert table_sorting_priority[265] == kw.parent_heir_active
+    assert table_sorting_priority[266] == kw.irrational_contact_debt_mass
+    assert table_sorting_priority[267] == kw.sum_healerunit_plans_fund_total
+    assert table_sorting_priority[268] == kw.keeps_buildable
+    assert table_sorting_priority[269] == kw.all_contact_debt
+    assert table_sorting_priority[270] == kw.tree_traverse_count
+    assert table_sorting_priority[271] == kw.net_funds
+    assert table_sorting_priority[272] == kw.fund_rank
+    assert table_sorting_priority[273] == kw.pledges_count
+    assert table_sorting_priority[274] == f"context_plan_{kw.close}"
+    assert table_sorting_priority[275] == f"context_plan_{kw.denom}"
+    assert table_sorting_priority[276] == f"context_plan_{kw.morph}"
+    assert table_sorting_priority[277] == kw.inx_epoch_diff
+
+    assert len(table_sorting_priority) == 278
+    all_args = copy_copy(atom_args)
+    all_args.update(all_person_dimen_delete_keys)
+    all_args.update(moment_args)
+    all_args.update(person_calc_args)
+    all_args.update(tash_args)
+    all_args.update(nabu_args)
+    all_args.update(jargon_args)
+    all_args.update(jargonable_otx_cols)
+    all_args.update(jargonable_inx_cols)
+    all_args.update(jargonable_delete_otx_cols)
+    all_args.update(jargonable_delete_inx_cols)
+    all_args.update(speech_args)
+    all_args.update(speechable_iux_cols)
+    all_args.update(speechable_aux_cols)
+    all_args.update(speechable_delete_iux_cols)
+    all_args.update(speechable_delete_aux_cols)
+    all_args.update(tashable_otx_cols)
+    all_args.update(tashable_inx_cols)
+    all_args.update(nabuable_otx_cols)
+    all_args.update(nabuable_inx_cols)
+    all_args.add(kw.brick_type)
+    all_args.add(kw.spark_num)
+    all_args.add(kw.spark_face)
+    all_args.add(kw.source_dimen)
+    all_args.add(kw.jargon_spark_num)
+    all_args.add(kw.error_message)
+    all_args.add(kw.world_name)
+    all_args.add(kw.net_funds)  # kpi columns
+    all_args.add(kw.fund_rank)  # kpi columns
+    all_args.add(kw.pledges_count)  # kpi columns
+    all_args.add(f"context_plan_{kw.close}")  # tash ReasonNum FactNum staging columns
+    all_args.add(f"context_plan_{kw.denom}")  # tash ReasonNum FactNum staging columns
+    all_args.add(f"context_plan_{kw.morph}")  # tash ReasonNum FactNum staging columns
+    all_args.add(kw.inx_epoch_diff)  # tash ReasonNum FactNum staging columns
+    assert all_args == set(table_sorting_priority)
+
+
+
+
+    # THEN
+    assert x_brick_config.get(kw.jargon_name).get(bo) == 0
+    assert x_brick_config.get(kw.jargon_title).get(bo) == 1
+    assert x_brick_config.get(kw.jargon_label).get(bo) == 2
+    assert x_brick_config.get(kw.jargon_rope).get(bo) == 3
+    assert x_brick_config.get(kw.tash_timenum).get(bo) == 4
+    assert x_brick_config.get("tash_fundnum").get(bo) == 5
+    assert x_brick_config.get(kw.momentunit).get(bo) == 6
+    assert x_brick_config.get(kw.moment_epoch_hour).get(bo) == 7
+    assert x_brick_config.get(kw.moment_epoch_month).get(bo) == 8
+    assert x_brick_config.get(kw.moment_epoch_weekday).get(bo) == 9
+    assert x_brick_config.get(kw.person_contact_membership).get(bo) == 10
+    assert x_brick_config.get(kw.person_contactunit).get(bo) == 11
+    assert x_brick_config.get(kw.person_plan_awardunit).get(bo) == 12
+    assert x_brick_config.get(kw.person_plan_factunit).get(bo) == 13
+    assert x_brick_config.get(kw.person_plan_laborunit).get(bo) == 15
+    assert x_brick_config.get(kw.person_plan_healerunit).get(bo) == 16
+    assert x_brick_config.get(kw.person_plan_reason_caseunit).get(bo) == 17
+    assert x_brick_config.get(kw.person_plan_reasonunit).get(bo) == 18
+    assert x_brick_config.get(kw.person_planunit).get(bo) == 19
+    assert x_brick_config.get(kw.personunit).get(bo) == 20
+    assert x_brick_config.get(kw.moment_budunit).get(bo) == 21
+    assert x_brick_config.get(kw.moment_ceckbook).get(bo) == 22
+    assert x_brick_config.get(kw.moment_timeoffi).get(bo) == 23
+    builder_order_dict = {}
+    for dimen_key, dimen_dict in x_brick_config.items():
+        dimen_builder_order = dimen_dict.get(bo)
+        assert dimen_builder_order is not None
+        print(
+            f"{dimen_key:30} build order: {dimen_builder_order:2} {sorted(builder_order_dict.keys())=}"
+        )
+        assert not builder_order_dict.get(dimen_builder_order)
+        builder_order_dict[dimen_builder_order] = dimen_key
+    print(f"{sorted(builder_order_dict.keys())=}")
