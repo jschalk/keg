@@ -299,6 +299,8 @@
   "five": "An Epoch. A structure for time often used in the codebase. Starts about 5000 years ago, has 16 months, 15 of which are 25 days. Week is 5 days long.", 
   "Flare": "Defintion needed.", 
   "flare": "Defintion needed.", 
+  "Floor": "A FamilyUnit in a Tower is supported by a Floor, all the familyunits that supprt that FamilyUnit.", 
+  "floor": "A FamilyUnit in a Tower is supported by a Floor, all the familyunits that supprt that FamilyUnit.", 
   "found_facts": ", used with Budget Cells", 
   "Fredrick": "A month in the Five Epoch", 
   "Friday": "Example key with value 'Friday' used for tests throughout codebase.", 

@@ -250,19 +250,19 @@ def test_get_contact_mandate_ledger_ReturnsObj_Scenario5_Zero_fund_agenda_give()
     sue_person = personunit_shop("Sue")
     sue_fund_pool = 800
     sue_person.set_fund_pool(sue_fund_pool)
-    floor_str = "floor situation"
+    patio_str = "patio situation"
     dirty_str = "dirty"
     casa_rope = sue_person.make_l1_rope(exx.casa)
-    floor_rope = sue_person.make_rope(casa_rope, floor_str)
-    clean_rope = sue_person.make_rope(floor_rope, exx.clean)
-    dirty_rope = sue_person.make_rope(floor_rope, dirty_str)
+    patio_rope = sue_person.make_rope(casa_rope, patio_str)
+    clean_rope = sue_person.make_rope(patio_rope, exx.clean)
+    dirty_rope = sue_person.make_rope(patio_rope, dirty_str)
     mop_rope = sue_person.make_rope(casa_rope, exx.mop)
-    sue_person.add_plan(floor_rope)
+    sue_person.add_plan(patio_rope)
     sue_person.add_plan(clean_rope)
     sue_person.add_plan(dirty_rope)
     sue_person.add_plan(mop_rope, pledge=True)
     sue_person.edit_plan_attr(
-        mop_rope, reason_context=floor_rope, reason_case=clean_rope
+        mop_rope, reason_context=patio_rope, reason_case=clean_rope
     )
     sue_person.add_contactunit(exx.yao, 13, 5)
 

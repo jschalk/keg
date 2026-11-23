@@ -60,10 +60,10 @@ def test_PersonUnit_get_relevant_ropes_ReturnsSimpleReasonUnitreason_context():
     # ESTABLISH
     sue_person = personunit_shop(person_name="Sue")
     casa_rope = sue_person.make_l1_rope(exx.casa)
-    floor_str = "mop floor"
-    floor_rope = sue_person.make_rope(casa_rope, floor_str)
-    floor_plan = planunit_shop(floor_str)
-    sue_person.set_plan_obj(floor_plan, parent_rope=casa_rope)
+    patio_str = "mop patio"
+    patio_rope = sue_person.make_rope(casa_rope, patio_str)
+    patio_plan = planunit_shop(patio_str)
+    sue_person.set_plan_obj(patio_plan, parent_rope=casa_rope)
 
     unim_str = "unimportant"
     unim_rope = sue_person.make_l1_rope(unim_str)
@@ -74,19 +74,19 @@ def test_PersonUnit_get_relevant_ropes_ReturnsSimpleReasonUnitreason_context():
     situation_rope = sue_person.make_rope(casa_rope, situation_str)
     situation_plan = planunit_shop(situation_str)
     sue_person.set_plan_obj(situation_plan, parent_rope=casa_rope)
-    floor_reason = reasonunit_shop(reason_context=situation_rope)
-    floor_reason.set_case(case=situation_rope)
-    sue_person.edit_plan_attr(floor_rope, reason=floor_reason)
+    patio_reason = reasonunit_shop(reason_context=situation_rope)
+    patio_reason.set_case(case=situation_rope)
+    sue_person.edit_plan_attr(patio_rope, reason=patio_reason)
 
     # WHEN
-    floor_dict = {floor_rope}
-    relevant_ropes = sue_person._get_relevant_ropes(floor_dict)
+    patio_dict = {patio_rope}
+    relevant_ropes = sue_person._get_relevant_ropes(patio_dict)
 
     # THEN
     print(f"{relevant_ropes=}")
     assert len(relevant_ropes) == 4
     root_rope = sue_person.planroot.get_plan_rope()
-    assert relevant_ropes == {root_rope, casa_rope, situation_rope, floor_rope}
+    assert relevant_ropes == {root_rope, casa_rope, situation_rope, patio_rope}
     assert unim_rope not in relevant_ropes
 
 
@@ -95,8 +95,8 @@ def test_PersonUnit_get_relevant_ropes_ReturnsReasonUnitreason_contextAndDescend
     x_person = get_mop_with_reason_personunit_example1()
     root_rope = x_person.planroot.get_plan_rope()
     casa_rope = x_person.make_l1_rope(exx.casa)
-    floor_str = "mop floor"
-    floor_rope = x_person.make_rope(casa_rope, floor_str)
+    patio_str = "mop patio"
+    patio_rope = x_person.make_rope(casa_rope, patio_str)
 
     unim_str = "unimportant"
     unim_rope = x_person.make_l1_rope(unim_str)
@@ -116,8 +116,8 @@ def test_PersonUnit_get_relevant_ropes_ReturnsReasonUnitreason_contextAndDescend
     dirty_rope = x_person.make_rope(situation_rope, dirty_str)
 
     # WHEN
-    floor_dict = {floor_rope}
-    relevant_ropes = x_person._get_relevant_ropes(floor_dict)
+    patio_dict = {patio_rope}
+    relevant_ropes = x_person._get_relevant_ropes(patio_dict)
 
     # THEN
     print(f"{relevant_ropes=}")
@@ -130,7 +130,7 @@ def test_PersonUnit_get_relevant_ropes_ReturnsReasonUnitreason_contextAndDescend
         root_rope,
         casa_rope,
         situation_rope,
-        floor_rope,
+        patio_rope,
         clean_rope,
         dirty_rope,
         very_much_rope,

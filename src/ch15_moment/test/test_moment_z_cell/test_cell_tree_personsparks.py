@@ -3,7 +3,7 @@ from ch10_person_lesson.lasso import lassounit_shop
 from ch12_bud._ref.ch12_path import create_cell_json_path, create_personspark_path
 from ch12_bud.bud_filehandler import cellunit_add_json_file, save_arbitrary_personspark
 from ch15_moment.moment_cell import load_cells_personspark
-from ch15_moment.test._util.ch15_examples import example_casa_floor_clean_factunit
+from ch15_moment.test._util.ch15_examples import example_casa_patio_clean_factunit
 from ch99_glossary.ch_keyword import Ch15Keywords as kw, ExampleStrs as exx
 from os.path import exists as os_path_exists
 
@@ -41,7 +41,7 @@ def test_load_cells_personspark_SetsFiles_Scenario1_WithFacts(
     a23_lasso = lassounit_shop(exx.a23)
     spark300 = 300
     time5 = 5
-    clean_fact = example_casa_floor_clean_factunit()
+    clean_fact = example_casa_patio_clean_factunit()
     x_facts = [clean_fact.get_tuple()]
     save_arbitrary_personspark(
         moment_mstr_dir, a23_lasso, exx.bob, spark300, facts=x_facts
@@ -73,7 +73,7 @@ def test_load_cells_personspark_SetsFiles_Scenario2_WithFacts_NotAtRoot(
     a23_lasso = lassounit_shop(exx.a23)
     spark300 = 300
     time5 = 5
-    clean_fact = example_casa_floor_clean_factunit()
+    clean_fact = example_casa_patio_clean_factunit()
     x_facts = [(clean_fact.fact_context, clean_fact.fact_state, None, None)]
     save_arbitrary_personspark(
         moment_mstr_dir, a23_lasso, exx.bob, spark300, facts=x_facts

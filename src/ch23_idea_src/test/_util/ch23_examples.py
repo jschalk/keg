@@ -299,18 +299,18 @@ def get_ex2_ii00105_df() -> DataFrame:
 
 def get_bob_mop_reason_personunit_example() -> PersonUnit:
     bob_person = _example_empty_bob_personunit()
-    floor_str = "floor situation"
+    patio_str = "patio situation"
     dirty_str = "dirty"
     casa_rope = bob_person.make_l1_rope(exx.casa)
-    floor_rope = bob_person.make_rope(casa_rope, floor_str)
-    clean_rope = bob_person.make_rope(floor_rope, exx.clean)
-    dirty_rope = bob_person.make_rope(floor_rope, dirty_str)
+    patio_rope = bob_person.make_rope(casa_rope, patio_str)
+    clean_rope = bob_person.make_rope(patio_rope, exx.clean)
+    dirty_rope = bob_person.make_rope(patio_rope, dirty_str)
     mop_rope = bob_person.make_rope(casa_rope, exx.mop)
-    bob_person.add_plan(floor_rope)
+    bob_person.add_plan(patio_rope)
     bob_person.add_plan(clean_rope)
     bob_person.add_plan(dirty_rope)
     bob_person.add_plan(mop_rope, pledge=True)
     bob_person.edit_plan_attr(
-        mop_rope, reason_context=floor_rope, reason_case=clean_rope
+        mop_rope, reason_context=patio_rope, reason_case=clean_rope
     )
     return bob_person

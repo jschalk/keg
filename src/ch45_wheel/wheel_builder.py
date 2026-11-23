@@ -1012,18 +1012,40 @@ def get_wheel_fig1_04(face_title_str: str) -> Drawing:
 
 
 def get_wheel_fig1_05(face_title_str: str) -> Drawing:
+    fam01 = "F1"
+    fam02 = "Lifting F1"
     fig_width = 600
-    fig_height = 250
+    fig_height = 400
     fig_obj = get_standard_drawing(fig_width, fig_height)
-    add_footer_to_drawing(fig_obj, "fig1_05", XFX, fig_width, fig_height, XMX)
+    trapunits = [
+        TrapeziodUnit(230, 90, 100, fam01, 50),
+        TrapeziodUnit(190, 150, 180, fam02, 170),
+    ]
+    draw_trapezoid_stack(fig_obj, trapunits)
+    add_title_to_drawing(fig_obj, face_title_str, 30, fig_width, 10)
+    desc_str = """F1 is lifted up by F2, F3. Doesn't know the rest."""
+    add_title_to_drawing(fig_obj, desc_str, 20, fig_width, 50)
+    draw_land(fig_obj, 75, 330, 410, "Land", stroke_width=4, font_size=20)
+    add_footer_to_drawing(fig_obj, "fig1_04", XFX, fig_width, fig_height, XMX)
     return fig_obj
 
 
 def get_wheel_fig1_06(face_title_str: str) -> Drawing:
+    fam01 = "F1"
+    fam02 = "Tower"
     fig_width = 600
-    fig_height = 250
+    fig_height = 400
     fig_obj = get_standard_drawing(fig_width, fig_height)
-    add_footer_to_drawing(fig_obj, "fig1_06", XFX, fig_width, fig_height, XMX)
+    trapunits = [
+        TrapeziodUnit(230, 90, 100, fam01, 50),
+        TrapeziodUnit(190, 150, 180, fam02, 170),
+    ]
+    draw_trapezoid_stack(fig_obj, trapunits)
+    add_title_to_drawing(fig_obj, face_title_str, 30, fig_width, 10)
+    desc_str = """F1 is lifted up by the Tower under it. Doesn't know the rest."""
+    add_title_to_drawing(fig_obj, desc_str, 20, fig_width, 50)
+    draw_land(fig_obj, 75, 330, 410, "Land", stroke_width=4, font_size=20)
+    add_footer_to_drawing(fig_obj, "fig1_04", XFX, fig_width, fig_height, XMX)
     return fig_obj
 
 

@@ -10,7 +10,7 @@ from ch15_moment._ref.ch15_path import (
     create_bud_contact_mandate_ledger_path as bud_mandate_path,
 )
 from ch15_moment.moment_main import get_momentunit_from_dict, momentunit_shop
-from ch15_moment.test._util.ch15_examples import example_casa_floor_clean_factunit
+from ch15_moment.test._util.ch15_examples import example_casa_patio_clean_factunit
 from ch22_etl_config._ref.ch22_path import (
     create_moment_mstr_path,
     create_moment_ote1_json_path,
@@ -102,7 +102,7 @@ def test_calc_moment_bud_contact_mandate_net_ledgers_Scenaro2_BudExists(
     yao44_personspark = get_bob_mop_reason_personunit_example()
     yao44_personspark.set_person_name(exx.yao)
     yao44_personspark.add_contactunit(exx.zia, 1)
-    clean_fact = example_casa_floor_clean_factunit()
+    clean_fact = example_casa_patio_clean_factunit()
     yao44_personspark.add_fact(clean_fact.fact_context, clean_fact.fact_state)
     zia33_personspark = get_bob_mop_reason_personunit_example()
     zia33_personspark.set_person_name(exx.zia)

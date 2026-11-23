@@ -1170,8 +1170,8 @@
                             "reasonunits": {
                               ";amy45;Nation-States;": {
                                 "cases": {
-                                  ";amy45;Nation-States;USA;Salem; OR;Downtown;Northfield Apt;10th floor gaarden;": {
-                                    "reason_state": ";amy45;Nation-States;USA;Salem; OR;Downtown;Northfield Apt;10th floor gaarden;"
+                                  ";amy45;Nation-States;USA;Salem; OR;Downtown;Northfield Apt;10th level gaarden;": {
+                                    "reason_state": ";amy45;Nation-States;USA;Salem; OR;Downtown;Northfield Apt;10th level gaarden;"
                                   }
                                 }, 
                                 "reason_context": ";amy45;Nation-States;"
@@ -1667,7 +1667,7 @@
                     "kids": {
                       "Northfield Apt": {
                         "kids": {
-                          "10th floor gaarden": { "plan_label": "10th floor gaarden", "plan_uid": 246, "poynt": 1 }, 
+                          "10th level gaarden": { "plan_label": "10th level gaarden", "plan_uid": 246, "poynt": 1 }, 
                           "Apt X4XX"          : { "plan_label": "Apt X4XX"          , "plan_uid": 247, "poynt": 1 }, 
                           "Gym"               : { "plan_label": "Gym"               , "plan_uid": 248, "poynt": 1 }, 
                           "workspace"         : { "plan_label": "workspace"         , "plan_uid": 249, "poynt": 1 }

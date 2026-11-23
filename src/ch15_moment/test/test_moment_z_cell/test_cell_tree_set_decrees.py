@@ -12,8 +12,8 @@ from ch12_bud.bud_filehandler import (
 from ch12_bud.cell_main import cellunit_shop
 from ch15_moment.moment_cell import DecreeUnit, set_cell_trees_decrees
 from ch15_moment.test._util.ch15_examples import (
-    example_casa_floor_clean_factunit,
-    example_casa_floor_dirty_factunit,
+    example_casa_patio_clean_factunit,
+    example_casa_patio_dirty_factunit,
     get_bob_mop_with_reason_personunit_example,
     get_bob_mop_without_reason_personunit_example,
 )
@@ -85,7 +85,7 @@ def test_set_cell_trees_decrees_SetsRootAttr_Scenario1_Depth0AndOne_personspark_
     spark7 = 7
     bob_personadjust = get_bob_mop_with_reason_personunit_example()
     # create cell file
-    clean_fact = example_casa_floor_clean_factunit()
+    clean_fact = example_casa_patio_clean_factunit()
     clean_facts = {clean_fact.fact_context: clean_fact}
     bob_cell = cellunit_shop(
         exx.bob,
@@ -117,7 +117,7 @@ def test_set_cell_trees_decrees_SetsRootAttr_Scenario2_Depth0AndOne_found_fact(
     spark7 = 7
     bob_personadjust = get_bob_mop_with_reason_personunit_example()
     # create cell file
-    clean_fact = example_casa_floor_clean_factunit()
+    clean_fact = example_casa_patio_clean_factunit()
     clean_facts = {clean_fact.fact_context: clean_fact}
     bob_cell = cellunit_shop(
         exx.bob,
@@ -192,7 +192,7 @@ def test_set_cell_trees_decrees_SetsChildCells_Scenario3_Depth1And_boss_facts(
     bob_sue_personadjust = get_bob_mop_with_reason_personunit_example()
     bob_sue_personadjust.set_person_name(exx.sue)
     # create cell file
-    dirty_fact = example_casa_floor_dirty_factunit()
+    dirty_fact = example_casa_patio_dirty_factunit()
     dirty_facts = {dirty_fact.fact_context: dirty_fact}
     bob_cell = cellunit_shop(
         exx.bob,
@@ -247,7 +247,7 @@ def test_set_cell_trees_decrees_SetsChildCells_Scenario4_Depth3And_boss_facts(
     bsy_zia_ba = get_bob_mop_with_reason_personunit_example()
     bsy_zia_ba.set_person_name(exx.zia)
     # create cell file
-    dirty_fact = example_casa_floor_dirty_factunit()
+    dirty_fact = example_casa_patio_dirty_factunit()
     dirty_facts = {dirty_fact.fact_context: dirty_fact}
     bob_cell = cellunit_shop(
         exx.bob,
@@ -306,7 +306,7 @@ def test_set_cell_trees_decrees_SetsChildCells_Scenario5_Depth2And_boss_facts(
     bsy_zia_ba = get_bob_mop_with_reason_personunit_example()
     bsy_zia_ba.set_person_name(exx.zia)
     # create cell file
-    dirty_fact = example_casa_floor_dirty_factunit()
+    dirty_fact = example_casa_patio_dirty_factunit()
     dirty_facts = {dirty_fact.fact_context: dirty_fact}
     bob_cell = cellunit_shop(
         exx.bob,
@@ -362,12 +362,12 @@ def test_set_cell_trees_decrees_SetsChildCells_Scenario6_boss_facts_ResetAtEachC
     bs_yao_ba = get_bob_mop_with_reason_personunit_example()
     bs_yao_ba.set_person_name(exx.yao)
     bs_yao_ba.add_contactunit(exx.zia, 1)
-    clean_fact = example_casa_floor_clean_factunit()
+    clean_fact = example_casa_patio_clean_factunit()
     bs_yao_ba.add_fact(clean_fact.fact_context, clean_fact.fact_state)
     bsy_zia_ba = get_bob_mop_with_reason_personunit_example()
     bsy_zia_ba.set_person_name(exx.zia)
     # create cell file
-    dirty_fact = example_casa_floor_dirty_factunit()
+    dirty_fact = example_casa_patio_dirty_factunit()
     dirty_facts = {dirty_fact.fact_context: dirty_fact}
     bob_cell = cellunit_shop(
         exx.bob,
@@ -428,7 +428,7 @@ def test_set_cell_trees_decrees_SetsChildCells_Scenario7_NoCell_GetPersonSpark(
     bsy_zia_ba = get_bob_mop_with_reason_personunit_example()
     bsy_zia_ba.set_person_name(exx.zia)
     # create cell file
-    dirty_fact = example_casa_floor_dirty_factunit()
+    dirty_fact = example_casa_patio_dirty_factunit()
     dirty_facts = {dirty_fact.fact_context: dirty_fact}
     bob_cell = cellunit_shop(
         exx.bob,

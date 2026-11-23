@@ -16,20 +16,20 @@ def test_get_reason_case_readable_str_ReturnsObj_Scenario0_Level1():
     situation_casa_str = "situation casa"
     situation_casa_rope = create_rope(casa_rope, situation_casa_str)
     situation_casa_reason = reasonunit_shop(situation_casa_rope)
-    dirty_floors_str = "dirty floors"
-    dirty_floors_rope = create_rope(situation_casa_rope, dirty_floors_str)
-    situation_casa_reason.set_case(dirty_floors_rope)
-    dirty_floors_case = situation_casa_reason.get_case(dirty_floors_rope)
+    dirty_patios_str = "dirty patios"
+    dirty_patios_rope = create_rope(situation_casa_rope, dirty_patios_str)
+    situation_casa_reason.set_case(dirty_patios_rope)
+    dirty_patios_case = situation_casa_reason.get_case(dirty_patios_rope)
 
     # WHEN
-    dirty_floors_state_str = get_reason_case_readable_str(
-        situation_casa_rope, caseunit=dirty_floors_case
+    dirty_patios_state_str = get_reason_case_readable_str(
+        situation_casa_rope, caseunit=dirty_patios_case
     )
 
     # THEN
-    assert dirty_floors_state_str
-    expected_str = f"case: {dirty_floors_str}{default_knot_if_None()}"
-    assert dirty_floors_state_str == expected_str
+    assert dirty_patios_state_str
+    expected_str = f"case: {dirty_patios_str}{default_knot_if_None()}"
+    assert dirty_patios_state_str == expected_str
 
 
 def test_get_reason_case_readable_str_ReturnsObj_Scenario1_TwoLevel_state():
@@ -40,23 +40,23 @@ def test_get_reason_case_readable_str_ReturnsObj_Scenario1_TwoLevel_state():
     situation_casa_reason = reasonunit_shop(situation_casa_rope)
     non_furniture_str = "non_furniture"
     non_furniture_rope = create_rope(situation_casa_rope, non_furniture_str)
-    dirty_floors_str = "dirty floors"
-    dirty_floors_rope = create_rope(non_furniture_rope, dirty_floors_str)
-    situation_casa_reason.set_case(dirty_floors_rope)
-    dirty_floors_case = situation_casa_reason.get_case(dirty_floors_rope)
+    dirty_patios_str = "dirty patios"
+    dirty_patios_rope = create_rope(non_furniture_rope, dirty_patios_str)
+    situation_casa_reason.set_case(dirty_patios_rope)
+    dirty_patios_case = situation_casa_reason.get_case(dirty_patios_rope)
 
     # WHEN
-    dirty_floors_state_str = get_reason_case_readable_str(
-        reason_context=situation_casa_rope, caseunit=dirty_floors_case
+    dirty_patios_state_str = get_reason_case_readable_str(
+        reason_context=situation_casa_rope, caseunit=dirty_patios_case
     )
 
     # THEN
-    assert dirty_floors_state_str
+    assert dirty_patios_state_str
     default_knot = default_knot_if_None()
     expected_str = (
-        f"case: {non_furniture_str}{default_knot}{dirty_floors_str}{default_knot}"
+        f"case: {non_furniture_str}{default_knot}{dirty_patios_str}{default_knot}"
     )
-    assert dirty_floors_state_str == expected_str
+    assert dirty_patios_state_str == expected_str
 
 
 def test_get_reason_case_readable_str_ReturnsObj_Scenario2_CaseRange():
@@ -67,27 +67,27 @@ def test_get_reason_case_readable_str_ReturnsObj_Scenario2_CaseRange():
     situation_casa_reason = reasonunit_shop(situation_casa_rope)
     non_furniture_str = "non_furniture"
     non_furniture_rope = create_rope(situation_casa_rope, non_furniture_str)
-    dirty_floors_str = "dirty floors"
-    dirty_floors_rope = create_rope(non_furniture_rope, dirty_floors_str)
+    dirty_patios_str = "dirty patios"
+    dirty_patios_rope = create_rope(non_furniture_rope, dirty_patios_str)
     dirtiness_lower_int = 4
     dirtiness_upper_int = 8
     situation_casa_reason.set_case(
-        dirty_floors_rope,
+        dirty_patios_rope,
         reason_lower=dirtiness_lower_int,
         reason_upper=dirtiness_upper_int,
     )
-    dirty_floors_case = situation_casa_reason.get_case(dirty_floors_rope)
+    dirty_patios_case = situation_casa_reason.get_case(dirty_patios_rope)
 
     # WHEN
-    dirty_floors_state_str = get_reason_case_readable_str(
-        reason_context=situation_casa_rope, caseunit=dirty_floors_case
+    dirty_patios_state_str = get_reason_case_readable_str(
+        reason_context=situation_casa_rope, caseunit=dirty_patios_case
     )
 
     # THEN
-    assert dirty_floors_state_str
+    assert dirty_patios_state_str
     x1 = default_knot_if_None()
-    expected_str = f"case: {non_furniture_str}{x1}{dirty_floors_str}{x1} from {dirtiness_lower_int} to {dirtiness_upper_int}"
-    assert dirty_floors_state_str == expected_str
+    expected_str = f"case: {non_furniture_str}{x1}{dirty_patios_str}{x1} from {dirtiness_lower_int} to {dirtiness_upper_int}"
+    assert dirty_patios_state_str == expected_str
 
 
 def test_get_reason_case_readable_str_ReturnsObj_Scenario3_CaseRangeAnd_reason_divisor():
@@ -98,29 +98,29 @@ def test_get_reason_case_readable_str_ReturnsObj_Scenario3_CaseRangeAnd_reason_d
     situation_casa_reason = reasonunit_shop(situation_casa_rope)
     non_furniture_str = "non_furniture"
     non_furniture_rope = create_rope(situation_casa_rope, non_furniture_str)
-    dirty_floors_str = "dirty floors"
-    dirty_floors_rope = create_rope(non_furniture_rope, dirty_floors_str)
+    dirty_patios_str = "dirty patios"
+    dirty_patios_rope = create_rope(non_furniture_rope, dirty_patios_str)
     dirtiness_lower_int = 4
     dirtiness_upper_int = 8
     dirtiness_divisor_int = 2
     situation_casa_reason.set_case(
-        dirty_floors_rope,
+        dirty_patios_rope,
         reason_lower=dirtiness_lower_int,
         reason_upper=dirtiness_upper_int,
         reason_divisor=dirtiness_divisor_int,
     )
-    dirty_floors_case = situation_casa_reason.get_case(dirty_floors_rope)
+    dirty_patios_case = situation_casa_reason.get_case(dirty_patios_rope)
 
     # WHEN
-    dirty_floors_state_str = get_reason_case_readable_str(
-        situation_casa_rope, dirty_floors_case
+    dirty_patios_state_str = get_reason_case_readable_str(
+        situation_casa_rope, dirty_patios_case
     )
 
     # THEN
-    assert dirty_floors_state_str
+    assert dirty_patios_state_str
     x1 = default_knot_if_None()
-    expected_str = f"case: {non_furniture_str}{x1}{dirty_floors_str}{x1} divided by {dirtiness_divisor_int} then from {dirtiness_lower_int} to {dirtiness_upper_int}"
-    assert dirty_floors_state_str == expected_str
+    expected_str = f"case: {non_furniture_str}{x1}{dirty_patios_str}{x1} divided by {dirtiness_divisor_int} then from {dirtiness_lower_int} to {dirtiness_upper_int}"
+    assert dirty_patios_state_str == expected_str
 
 
 def test_get_reason_case_readable_str_ReturnsObj_Scenario4_creg_config():
@@ -163,7 +163,7 @@ def test_get_fact_state_readable_str_ReturnsObj_Scenario0_Level1():
     casa_rope = create_rope(exx.a23, exx.casa)
     situation_casa_str = "situation casa"
     situation_casa_rope = create_rope(casa_rope, situation_casa_str)
-    dirty_str = "dirty floors"
+    dirty_str = "dirty patios"
     dirty_rope = create_rope(situation_casa_rope, dirty_str)
     situation_casa_fact = factunit_shop(situation_casa_rope, dirty_rope)
 
@@ -185,7 +185,7 @@ def test_get_fact_state_readable_str_ReturnsObj_Scenario1_TwoLevel_state():
     situation_casa_reason = reasonunit_shop(situation_casa_rope)
     non_furniture_str = "non_furniture"
     non_furniture_rope = create_rope(situation_casa_rope, non_furniture_str)
-    dirty_str = "dirty floors"
+    dirty_str = "dirty patios"
     dirty_rope = create_rope(non_furniture_rope, dirty_str)
     situation_casa_reason.set_case(dirty_rope)
     situation_casa_fact = factunit_shop(situation_casa_rope, dirty_rope)
@@ -207,7 +207,7 @@ def test_get_fact_state_readable_str_ReturnsObj_Scenario2_CaseRange():
     situation_casa_rope = create_rope(casa_rope, situation_casa_str)
     non_furniture_str = "non_furniture"
     non_furniture_rope = create_rope(situation_casa_rope, non_furniture_str)
-    dirty_str = "dirty floors"
+    dirty_str = "dirty patios"
     dirty_rope = create_rope(non_furniture_rope, dirty_str)
     dirtiness_lower_int = 4
     dirtiness_upper_int = 8

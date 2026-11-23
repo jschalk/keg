@@ -164,18 +164,18 @@ def create_example_moment4(x_moment_mstr_dir) -> MomentUnit:
     return amy_moment
 
 
-def example_casa_floor_clean_factunit() -> FactUnit:
+def example_casa_patio_clean_factunit() -> FactUnit:
     casa_rope = create_rope(exx.a23, "casa")
-    floor_rope = create_rope(casa_rope, "floor situation")
-    clean_rope = create_rope(floor_rope, "clean")
-    return factunit_shop(floor_rope, clean_rope)
+    patio_rope = create_rope(casa_rope, "patio situation")
+    clean_rope = create_rope(patio_rope, "clean")
+    return factunit_shop(patio_rope, clean_rope)
 
 
-def example_casa_floor_dirty_factunit() -> FactUnit:
+def example_casa_patio_dirty_factunit() -> FactUnit:
     casa_rope = create_rope(exx.a23, "casa")
-    floor_rope = create_rope(casa_rope, "floor situation")
-    dirty_rope = create_rope(floor_rope, "dirty")
-    return factunit_shop(floor_rope, dirty_rope)
+    patio_rope = create_rope(casa_rope, "patio situation")
+    dirty_rope = create_rope(patio_rope, "dirty")
+    return factunit_shop(patio_rope, dirty_rope)
 
 
 def _example_empty_bob_personunit() -> PersonUnit:
@@ -184,15 +184,15 @@ def _example_empty_bob_personunit() -> PersonUnit:
 
 def get_bob_mop_without_reason_personunit_example() -> PersonUnit:
     bob_person = _example_empty_bob_personunit()
-    floor_str = "floor situation"
+    patio_str = "patio situation"
     dirty_str = "dirty"
     casa_rope = bob_person.make_l1_rope(exx.casa)
-    floor_rope = bob_person.make_rope(casa_rope, floor_str)
-    clean_rope = bob_person.make_rope(floor_rope, exx.clean)
-    dirty_rope = bob_person.make_rope(floor_rope, dirty_str)
+    patio_rope = bob_person.make_rope(casa_rope, patio_str)
+    clean_rope = bob_person.make_rope(patio_rope, exx.clean)
+    dirty_rope = bob_person.make_rope(patio_rope, dirty_str)
     mop_rope = bob_person.make_rope(casa_rope, exx.mop)
     bob_person.add_plan(casa_rope, 1)
-    bob_person.add_plan(floor_rope, 1)
+    bob_person.add_plan(patio_rope, 1)
     bob_person.add_plan(clean_rope, 1)
     bob_person.add_plan(dirty_rope, 1)
     bob_person.add_plan(mop_rope, 1, pledge=True)
@@ -202,14 +202,14 @@ def get_bob_mop_without_reason_personunit_example() -> PersonUnit:
 def get_bob_mop_with_reason_personunit_example() -> PersonUnit:
     """person_name: bob, moment_rope: amy23"""
     bob_person = get_bob_mop_without_reason_personunit_example()
-    floor_str = "floor situation"
+    patio_str = "patio situation"
     dirty_str = "dirty"
     casa_rope = bob_person.make_l1_rope(exx.casa)
-    floor_rope = bob_person.make_rope(casa_rope, floor_str)
-    dirty_rope = bob_person.make_rope(floor_rope, dirty_str)
+    patio_rope = bob_person.make_rope(casa_rope, patio_str)
+    dirty_rope = bob_person.make_rope(patio_rope, dirty_str)
     mop_rope = bob_person.make_rope(casa_rope, exx.mop)
     bob_person.edit_plan_attr(
-        mop_rope, reason_context=floor_rope, reason_case=dirty_rope
+        mop_rope, reason_context=patio_rope, reason_case=dirty_rope
     )
     return bob_person
 
@@ -218,9 +218,9 @@ def get_bob_mop_fact_clean_personunit_example() -> PersonUnit:
     bob_person = get_bob_mop_with_reason_personunit_example()
     bob_person.add_contactunit("Bob")
     casa_rope = bob_person.make_l1_rope("casa")
-    floor_rope = bob_person.make_rope(casa_rope, "floor situation")
-    clean_rope = bob_person.make_rope(floor_rope, "clean")
-    bob_person.add_fact(floor_rope, clean_rope)
+    patio_rope = bob_person.make_rope(casa_rope, "patio situation")
+    clean_rope = bob_person.make_rope(patio_rope, "clean")
+    bob_person.add_fact(patio_rope, clean_rope)
     return bob_person
 
 

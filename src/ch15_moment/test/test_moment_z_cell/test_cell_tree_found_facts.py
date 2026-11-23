@@ -4,7 +4,7 @@ from ch12_bud._ref.ch12_path import create_cell_dir_path as cell_dir
 from ch12_bud.bud_filehandler import cellunit_get_from_dir, cellunit_save_to_dir
 from ch12_bud.cell_main import cellunit_shop
 from ch15_moment.moment_cell import set_cell_trees_found_facts
-from ch15_moment.test._util.ch15_examples import example_casa_floor_clean_factunit
+from ch15_moment.test._util.ch15_examples import example_casa_patio_clean_factunit
 from ch99_glossary.ch_keyword import ExampleStrs as exx
 
 
@@ -64,7 +64,7 @@ def test_set_cell_trees_found_facts_Scenario2_ChildNodeWithOneFactIsAssignedToAn
     mstr_dir = str(temp3_fs)
     a23_lasso = lassounit_shop(exx.a23)
     time5 = 5
-    clean_fact = example_casa_floor_clean_factunit()
+    clean_fact = example_casa_patio_clean_factunit()
     das = []
     das_y = [exx.yao]
     das_ys = [exx.yao, exx.sue]

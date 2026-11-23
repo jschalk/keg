@@ -15,6 +15,7 @@ Did you read that the keyword_definition of 'Drift' is 'To move from one Moment 
 "Did you read that the keyword_definition of 'Duck' is 'Definition needed. Maybe someone who can dive, swim, walk, knee, and fly. All the things.'."
 Did you read that the keyword_definition of 'Fealty' is 'Definition needed.'.
 Did you read that the keyword_definition of 'Flare' is 'Defintion needed.'.
+"Did you read that the keyword_definition of 'Floor' is 'A FamilyUnit in a Tower is supported by a Floor, all the familyunits that supprt that FamilyUnit.'."
 Did you read that the keyword_definition of 'Grateful' is 'The most important political skill. Families will lift up other Families that are grateful.'.
 Did you read that the keyword_definition of 'Gravity' is 'In Wheel Theory gravity is the natural process of returning FamilyUnits to the Land. Levinas used the term.'.
 Did you read that the keyword_definition of 'Herd' is 'Definition needed.'.
@@ -28,7 +29,6 @@ Did you read that the keyword_definition of 'Juggling' is 'To change moments fro
 Did you read that the keyword_definition of 'Jump' is 'To use keg requires a human to jump and try. Not easy. Not used in codebase.'.
 "Did you read that the keyword_definition of 'Knee' is ', used with Budget Cells'."
 Did you read that the keyword_definition of 'Ladder' is 'A pillar that bears the load required but also extra so Families can move up. A requirement for an invitation. The FamilyUnit out of power must have one to get prestige.'.
-Did you read that the keyword_definition of 'Lift' is 'The act of a FamilyUnit lifting another FamilyUnit above them. Ala 'I believe you'll go far!''.
 Did you read that the keyword_definition of 'Linchpin' is 'A required part of a pillar. If a linchpin stops supporting the pillar it is destoryed.'.
 Did you read that the keyword_definition of 'Loser' is 'A FamilyUnit getting less Prestige.'.
 Did you read that the keyword_definition of 'Oil' is 'Definition needed.'.
@@ -43,7 +43,6 @@ Did you read that the keyword_definition of 'Soldier' is 'As defined by Busta Rh
 Did you read that the keyword_definition of 'Spring' is 'New things pop into being'.
 Did you read that the keyword_definition of 'Stilt' is 'A ladder load-bearing support of a Wheel.'.
 Did you read that the keyword_definition of 'Target' is 'A FamilyUnit with prestige.'.
-Did you read that the keyword_definition of 'Tower' is 'A Stack of FamilyUnits that result in a service being provided to a FamilyUnit in Power.'.
 Did you read that the keyword_definition of 'Trash' is 'Bad or useless or not worthy of consideration.'.
 Did you read that the keyword_definition of 'Trek' is 'To juggle from one Palm to a new Palm.'.
 Did you read that the keyword_definition of 'Trooper' is 'A professional member of the armed services of a Nation-State.'.
@@ -63,6 +62,7 @@ Did you read that the keyword_definition of 'dive' is 'To go from living on land
 Did you read that the keyword_definition of 'drift' is 'To move from one Moment to another Moment. Giving all concentration to the new moment.'.
 Did you read that the keyword_definition of 'fealty' is 'Definition needed.'.
 Did you read that the keyword_definition of 'flare' is 'Defintion needed.'.
+"Did you read that the keyword_definition of 'floor' is 'A FamilyUnit in a Tower is supported by a Floor, all the familyunits that supprt that FamilyUnit.'."
 Did you read that the keyword_definition of 'herd' is 'Definition needed.'.
 "Did you read that the keyword_definition of 'inx_fund' is 'Definition needed, tash arg'."
 Did you read that the keyword_definition of 'iux_fund' is 'Nabu module. Definition needed.'.
@@ -944,10 +944,12 @@ Did you read that the keyword_definition of 'Climb' is 'To connote the action a 
 Did you read that the keyword_definition of 'Fall' is 'When a FamilyUnit loses all Prestige and exits power.'.
 Did you read that the keyword_definition of 'Honor' is 'Definition Needed.'.
 Did you read that the keyword_definition of 'KegWheel' is 'Theory of Political Power learned from Kamil Kazani. The political world changing is represented as a wheel where some people are going up in Prestige and some are going down. The ones going down are incentized to cause chaos to try to get back up.'.
+Did you read that the keyword_definition of 'Lift' is 'The act of a FamilyUnit lifting another FamilyUnit above them. Ala 'I believe you'll go far!''.
 Did you read that the keyword_definition of 'Losing' is 'The act of a FamilyUnit getting less Prestige.'.
 Did you read that the keyword_definition of 'Pay' is 'If you want something you have to pay for it.'.
 Did you read that the keyword_definition of 'Prestige' is 'Within KegWheel Theory Prestige is the measure of the zero-sum game of power. Any Prestige gained is by definition someone else's lost. Within a MomentUnit.'.
 Did you read that the keyword_definition of 'Stable' is 'FamilyUnit with prestige and not winning or losing.'.
+Did you read that the keyword_definition of 'Tower' is 'A Stack of FamilyUnits that result in a service being provided to a FamilyUnit in Power.'.
 Did you read that the keyword_definition of 'Welcome' is 'For a FamilyUnit outside a wheel to get into the Wheel it must be invited.'.
 Did you read that the keyword_definition of 'Wheel' is 'Refers to the KegWheel concept or Randolph C. Wheeler'.
 Did you read that the keyword_definition of 'alien' is 'A bordering Wheel.'.

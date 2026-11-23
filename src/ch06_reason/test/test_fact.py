@@ -66,38 +66,38 @@ def test_FactUnit_set_range_null_SetsAttr_1():
 
 def test_FactUnit_set_fact_state_to_fact_context_SetsAttr_1():
     # ESTABLISH
-    floor_str = "floor"
-    floor_rope = create_rope(exx.a23, floor_str)
+    patio_str = "patio"
+    patio_rope = create_rope(exx.a23, patio_str)
     dirty_str = "dirty"
     dirty_rope = create_rope(exx.a23, dirty_str)
-    floor_fact = factunit_shop(floor_rope, dirty_rope)
-    assert floor_fact.fact_context == floor_rope
-    assert floor_fact.fact_state == dirty_rope
+    patio_fact = factunit_shop(patio_rope, dirty_rope)
+    assert patio_fact.fact_context == patio_rope
+    assert patio_fact.fact_state == dirty_rope
 
     # WHEN
-    floor_fact.set_fact_state_to_fact_context()
+    patio_fact.set_fact_state_to_fact_context()
 
     # THEN
-    assert floor_fact.fact_context == floor_rope
-    assert floor_fact.fact_state == floor_rope
+    assert patio_fact.fact_context == patio_rope
+    assert patio_fact.fact_state == patio_rope
 
 
 def test_FactUnit_set_fact_state_to_fact_context_SetsAttr_2():
     # ESTABLISH
-    floor_str = "floor"
-    floor_rope = create_rope(exx.a23, floor_str)
+    patio_str = "patio"
+    patio_rope = create_rope(exx.a23, patio_str)
     dirty_str = "dirty"
     dirty_rope = create_rope(exx.a23, dirty_str)
-    floor_fact = factunit_shop(floor_rope, dirty_rope, 1, 6)
-    assert floor_fact.fact_lower is not None
-    assert floor_fact.fact_upper is not None
+    patio_fact = factunit_shop(patio_rope, dirty_rope, 1, 6)
+    assert patio_fact.fact_lower is not None
+    assert patio_fact.fact_upper is not None
 
     # WHEN
-    floor_fact.set_fact_state_to_fact_context()
+    patio_fact.set_fact_state_to_fact_context()
 
     # THEN
-    assert floor_fact.fact_lower is None
-    assert floor_fact.fact_upper is None
+    assert patio_fact.fact_lower is None
+    assert patio_fact.fact_upper is None
 
 
 def test_FactUnit_set_attr_SetsAttr_2():

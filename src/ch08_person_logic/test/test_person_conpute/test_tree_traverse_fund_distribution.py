@@ -185,10 +185,10 @@ def test_PersonUnit_thinkout_Sets_fund_ratio_WithSomePlansOfZero_poyntScenario0(
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     casa_rope = sue_person.make_l1_rope(exx.casa)
-    floor_str = "mop floor"
-    floor_rope = sue_person.make_rope(casa_rope, floor_str)
-    floor_plan = planunit_shop(floor_str, pledge=True)
-    sue_person.set_plan_obj(floor_plan, casa_rope)
+    patio_str = "mop patio"
+    patio_rope = sue_person.make_rope(casa_rope, patio_str)
+    patio_plan = planunit_shop(patio_str, pledge=True)
+    sue_person.set_plan_obj(patio_plan, casa_rope)
     sue_person.set_l1_plan(planunit_shop("unimportant"))
 
     situation_str = "cleaniness situation"
@@ -204,7 +204,7 @@ def test_PersonUnit_thinkout_Sets_fund_ratio_WithSomePlansOfZero_poyntScenario0(
 
     assert sue_person.planroot.fund_ratio is None
     assert sue_person.get_plan_obj(casa_rope).fund_ratio is None
-    assert sue_person.get_plan_obj(floor_rope).fund_ratio is None
+    assert sue_person.get_plan_obj(patio_rope).fund_ratio is None
     assert sue_person.get_plan_obj(situation_rope).fund_ratio is None
     assert sue_person.get_plan_obj(non_rope).fund_ratio is None
     assert sue_person.get_plan_obj(yes_rope).fund_ratio is None
@@ -216,7 +216,7 @@ def test_PersonUnit_thinkout_Sets_fund_ratio_WithSomePlansOfZero_poyntScenario0(
     print(f"{sue_person.fund_pool=}")
     assert sue_person.planroot.fund_ratio == 1
     assert sue_person.get_plan_obj(casa_rope).fund_ratio == 0.5
-    assert sue_person.get_plan_obj(floor_rope).fund_ratio == 0.5
+    assert sue_person.get_plan_obj(patio_rope).fund_ratio == 0.5
     assert sue_person.get_plan_obj(situation_rope).fund_ratio == 0.0
     assert sue_person.get_plan_obj(non_rope).fund_ratio == 0.0
     assert sue_person.get_plan_obj(yes_rope).fund_ratio == 0.0
@@ -226,10 +226,10 @@ def test_PersonUnit_thinkout_Sets_fund_ratio_WithSomePlansOfZero_poyntScenario1(
     # ESTABLISH
     sue_person = personunit_shop("Sue")
     casa_rope = sue_person.make_l1_rope(exx.casa)
-    floor_str = "mop floor"
-    floor_rope = sue_person.make_rope(casa_rope, floor_str)
-    floor_plan = planunit_shop(floor_str, pledge=True)
-    sue_person.set_plan_obj(floor_plan, casa_rope)
+    patio_str = "mop patio"
+    patio_rope = sue_person.make_rope(casa_rope, patio_str)
+    patio_plan = planunit_shop(patio_str, pledge=True)
+    sue_person.set_plan_obj(patio_plan, casa_rope)
     sue_person.set_l1_plan(planunit_shop("unimportant"))
 
     situation_str = "cleaniness situation"
@@ -254,7 +254,7 @@ def test_PersonUnit_thinkout_Sets_fund_ratio_WithSomePlansOfZero_poyntScenario1(
     mod_rope = sue_person.make_rope(clean_rope, mod_str)
     dirty_rope = sue_person.make_rope(clean_rope, dirty_str)
     assert sue_person.get_plan_obj(casa_rope).fund_ratio is None
-    assert sue_person.get_plan_obj(floor_rope).fund_ratio is None
+    assert sue_person.get_plan_obj(patio_rope).fund_ratio is None
     assert sue_person.get_plan_obj(situation_rope).fund_ratio is None
     assert sue_person.get_plan_obj(clean_rope).fund_ratio is None
     assert sue_person.get_plan_obj(very_rope).fund_ratio is None
@@ -267,7 +267,7 @@ def test_PersonUnit_thinkout_Sets_fund_ratio_WithSomePlansOfZero_poyntScenario1(
     # THEN
     print(f"{sue_person.fund_pool=}")
     assert sue_person.get_plan_obj(casa_rope).fund_ratio == 0.5
-    assert sue_person.get_plan_obj(floor_rope).fund_ratio == 0.25
+    assert sue_person.get_plan_obj(patio_rope).fund_ratio == 0.25
     assert sue_person.get_plan_obj(situation_rope).fund_ratio == 0.25
     assert sue_person.get_plan_obj(clean_rope).fund_ratio == 0
     assert sue_person.get_plan_obj(very_rope).fund_ratio == 0

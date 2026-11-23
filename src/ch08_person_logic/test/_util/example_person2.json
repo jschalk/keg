@@ -1087,8 +1087,8 @@
                             "reasonunits": {
                               "A;Nation-States;": {
                                 "cases": {
-                                  "A;Nation-States;USA;Salem OR;Downtown;Flats;10th floor gaarden;": {
-                                    "reason_state": ";A;Nation-States;USA;Salem OR;Downtown;Flats;10th floor gaarden;"
+                                  "A;Nation-States;USA;Salem OR;Downtown;Flats;10th level gaarden;": {
+                                    "reason_state": ";A;Nation-States;USA;Salem OR;Downtown;Flats;10th level gaarden;"
                                   }
                                 }, 
                                 "reason_context": ";A;Nation-States;"
@@ -1582,7 +1582,7 @@
                     "kids": {
                       "Flats": {
                         "kids": {
-                          "10th floor gaarden": { "plan_label": "10th floor gaarden", "plan_uid": 246, "poynt": 1 }, 
+                          "10th level gaarden": { "plan_label": "10th level gaarden", "plan_uid": 246, "poynt": 1 }, 
                           "Apt 450"           : { "plan_label": "Apt 450"           , "plan_uid": 247, "poynt": 1 }, 
                           "Gym"               : { "plan_label": "Gym"               , "plan_uid": 248, "poynt": 1 }, 
                           "workspace"         : { "plan_label": "workspace"         , "plan_uid": 249, "poynt": 1 }

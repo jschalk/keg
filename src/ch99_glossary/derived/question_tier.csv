@@ -11,6 +11,7 @@ Drift,10,
 Duck,10,
 Fealty,10,
 Flare,10,
+Floor,10,
 Grateful,10,
 Gravity,10,
 Herd,10,
@@ -24,7 +25,6 @@ Juggling,10,
 Jump,10,
 Knee,10,
 Ladder,10,
-Lift,10,
 Linchpin,10,
 Loser,10,
 Oil,10,
@@ -39,7 +39,6 @@ Soldier,10,
 Spring,10,
 Stilt,10,
 Target,10,
-Tower,10,
 Trash,10,
 Trek,10,
 Trooper,10,
@@ -59,6 +58,7 @@ dive,10,
 drift,10,
 fealty,10,
 flare,10,
+floor,10,
 herd,10,
 inx_fund,10,
 iux_fund,10,
@@ -938,10 +938,12 @@ Discipline,0,"45, 46"
 Fall,0,45
 Honor,0,45
 KegWheel,0,"45, 46"
+Lift,0,45
 Losing,0,45
 Pay,0,45
 Prestige,0,45
 Stable,0,45
+Tower,0,45
 Welcome,0,45
 Wheel,0,"45, 46"
 alien,0,45

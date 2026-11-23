@@ -311,10 +311,10 @@ def get_personunit_irrational_example() -> PersonUnit:
 def get_mop_with_reason_personunit_example1():
     sue_person = personunit_shop("Sue")
     casa_rope = sue_person.make_l1_rope(exx.casa)
-    floor_str = "mop floor"
-    floor_rope = sue_person.make_rope(casa_rope, floor_str)
-    floor_plan = planunit_shop(floor_str, pledge=True)
-    sue_person.set_plan_obj(floor_plan, casa_rope)
+    patio_str = "mop patio"
+    patio_rope = sue_person.make_rope(casa_rope, patio_str)
+    patio_plan = planunit_shop(patio_str, pledge=True)
+    sue_person.set_plan_obj(patio_plan, casa_rope)
     sue_person.set_l1_plan(planunit_shop("unimportant"))
 
     situation_str = "cleaniness situation"
@@ -327,9 +327,9 @@ def get_mop_with_reason_personunit_example1():
     sue_person.set_plan_obj(planunit_shop("moderately"), clean_rope)
     sue_person.set_plan_obj(planunit_shop("dirty"), situation_rope)
 
-    floor_reason = reasonunit_shop(situation_rope)
-    floor_reason.set_case(case=situation_rope)
-    sue_person.edit_plan_attr(floor_rope, reason=floor_reason)
+    patio_reason = reasonunit_shop(situation_rope)
+    patio_reason.set_case(case=situation_rope)
+    sue_person.edit_plan_attr(patio_rope, reason=patio_reason)
     return sue_person
 
 
