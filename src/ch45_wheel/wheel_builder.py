@@ -737,154 +737,40 @@ def get_standard_drawing(width: int = 800, height: int = 600) -> Drawing:
     return d
 
 
-def get_wheel_fig0_0(face_title_str: str) -> Drawing:
-    fig_width = 370
-    fig_height = 180
+def get_wheel_fig(fig_dict: dict[str,]) -> Drawing:
+    fig_width = fig_dict.get("fig_width")
+    fig_height = fig_dict.get("fig_height")
+    tx_str = fig_dict.get("fig_title_str")
+    tx_font_size = fig_dict.get("fig_title_font_size")
+    tx_margin = fig_dict.get("fig_title_margin")
+    foot_str = fig_dict.get("footer_str")
+    foot_font_size = fig_dict.get("footer_font_size")
+
     fig = get_standard_drawing(fig_width, fig_height)
-    draw_infinity_contact(fig, 120, 70, "son", "Face")
-    add_title_to_drawing(fig, face_title_str, 18, 370, 20)
-    add_footer_to_drawing(fig, "fig0_0", 12, 370, 180, XMX)
+    if fig_dict.get("infinity_contacts"):
+        for infinity_contact_dict in fig_dict.get("infinity_contacts").values():
+            i_x0 = infinity_contact_dict.get("x0")
+            i_y0 = infinity_contact_dict.get("y0")
+            i_name = infinity_contact_dict.get("contact_name")
+            i_status = infinity_contact_dict.get("face_status")
+            draw_infinity_contact(fig, i_x0, i_y0, i_name, i_status)
+    if fig_dict.get("contact_rows_objs"):
+        c_rows_x0 = fig_dict.get("contact_rows_x0")
+        c_rows_y0 = fig_dict.get("contact_rows_y0")
+        c_rows_objs = fig_dict.get("contact_rows_objs")
+        draw_contact_rows(fig, c_rows_objs, x0=c_rows_x0, y0=c_rows_y0)
+    if fig_dict.get("curved_lines"):
+        for curved_line_dict in fig_dict.get("curved_lines"):
+            cur_x1 = curved_line_dict.get("x1")
+            cur_y1 = curved_line_dict.get("y1")
+            cur_x2 = curved_line_dict.get("x2")
+            cur_y2 = curved_line_dict.get("y2")
+            curvature = curved_line_dict.get("curvature")
+            draw_curved_dotted_line(fig, cur_x1, cur_y1, cur_x2, cur_y2, curvature)
+
+    add_title_to_drawing(fig, tx_str, tx_font_size, fig_width, tx_margin)
+    add_footer_to_drawing(fig, foot_str, foot_font_size, fig_width, fig_height, XMX)
     return fig
-
-
-def get_wheel_fig0_1(face_title_str: str) -> Drawing:
-    fig_width = 600
-    fig_height = 180
-    fig_obj = get_standard_drawing(fig_width, fig_height)
-    draw_infinity_contact(fig_obj, 70, 50, "son     ", "Face")
-    draw_infinity_contact(fig_obj, 330, 50, "daughter", "Face")
-    add_title_to_drawing(fig_obj, face_title_str, 18, fig_width, 10)
-    add_footer_to_drawing(fig_obj, "fig0_1", XFX, fig_width, 180, XMX)
-    return fig_obj
-
-
-def get_wheel_fig0_2(face_title_str: str) -> Drawing:
-    fig_width = 600
-    fig_height = 300
-    fig_obj = get_standard_drawing(fig_width, fig_height)
-    draw_infinity_contact(fig_obj, 70, 50, "son     ", "Face")
-    draw_infinity_contact(fig_obj, 330, 70, "daughter", "Face")
-    draw_infinity_contact(fig_obj, 170, 180, "wife    ", "Face")
-    add_title_to_drawing(fig_obj, face_title_str, 18, fig_width, 10)
-    add_footer_to_drawing(fig_obj, "fig0_2", XFX, fig_width, fig_height, XMX)
-    return fig_obj
-
-
-def get_wheel_fig0_3(face_title_str: str) -> Drawing:
-    fig_width = 700
-    fig_height = 300
-    fig_obj = get_standard_drawing(fig_width, fig_height)
-    draw_infinity_contact(fig_obj, 70, 50, "son     ", "Face")
-    rows = [
-        [("daughter", 15)],
-        [("wife", 12, "needs"), ("brother", 2, "needs")],
-    ]
-    draw_contact_rows(fig_obj, rows, x0=300, y0=90)
-    add_title_to_drawing(fig_obj, face_title_str, 18, fig_width, 10)
-    add_footer_to_drawing(fig_obj, "fig0_3", XFX, fig_width, fig_height, XMX)
-    return fig_obj
-
-
-def get_wheel_fig0_4(face_title_str: str) -> Drawing:
-    fig_width = 700
-    fig_height = 300
-    fig_obj = get_standard_drawing(fig_width, fig_height)
-    draw_infinity_contact(fig_obj, 70, 50, "son     ", "Face")
-    rows = [
-        [("son", 8), ("daughter", 12)],
-        [("wife", 12, "needs"), ("brother", 2, "needs")],
-    ]
-    draw_contact_rows(fig_obj, rows, x0=300, y0=90)
-    add_title_to_drawing(fig_obj, face_title_str, 18, fig_width, 10)
-    add_footer_to_drawing(fig_obj, "fig0_4", XFX, fig_width, fig_height, XMX)
-    return fig_obj
-
-
-def get_wheel_fig0_5(face_title_str: str) -> Drawing:
-    fig_width = 700
-    fig_height = 300
-    fig_obj = get_standard_drawing(fig_width, fig_height)
-    rows = [
-        [("son", 8), ("daughter", 12)],
-        [("wife", 12, "needs"), ("brother", 2, "needs")],
-        [("cousin", 5, "needs"), ("brother #2", 6, "needs"), ("uncle", 6, "needs")],
-    ]
-    draw_contact_rows(fig_obj, rows, x0=50, y0=50)
-    add_title_to_drawing(fig_obj, face_title_str, 18, fig_width, 10)
-    add_footer_to_drawing(fig_obj, "fig0_5", XFX, fig_width, fig_height, XMX)
-    return fig_obj
-
-
-def get_wheel_fig0_6(face_title_str: str) -> Drawing:
-    fig_width = 700
-    fig_height = 360
-    fig_obj = get_standard_drawing(fig_width, fig_height)
-    rows = [
-        [("son", 8), ("daughter", 12), ("neighbor", 2), ("friend #2", 6)],
-        [("wife", 12, "needs"), ("brother", 2, "needs"), ("friend #1", 6)],
-        [
-            ("cousin", 5, "needs"),
-            ("brother #2", 6, "needs"),
-            ("uncle", 6, "needs"),
-            ("friend #5", 4),
-        ],
-        [
-            ("kid friend B1 dad", 5, "needs"),
-            ("kid friend B2 mom", 6, "needs"),
-            ("co-worker #2", 6, "needs"),
-            ("supervisor #1", 10),
-        ],
-    ]
-    draw_contact_rows(fig_obj, rows, x0=50, y0=50)
-    add_title_to_drawing(fig_obj, face_title_str, 18, fig_width, 10)
-    add_footer_to_drawing(fig_obj, "fig0_6", XFX, fig_width, fig_height, XMX)
-    return fig_obj
-
-
-def get_wheel_fig0_7(face_title_str: str) -> Drawing:
-    fig_width = 700
-    fig_height = 360
-    fig_obj = get_standard_drawing(fig_width, fig_height)
-    rows = [
-        [("son", 8), ("daughter", 12), ("neighbor", 2), ("friend #2", 6)],
-        [("wife", 12, "needs"), ("brother", 2, "needs"), ("friend #1", 6)],
-        [
-            ("cousin", 5, "needs"),
-            ("brother #2", 6, "needs"),
-            ("uncle", 6, "needs"),
-            ("friend #5", 4),
-        ],
-        [
-            ("kid friend B1 dad", 5, "needs"),
-            ("kid friend B2 mom", 6, "needs"),
-            ("co-worker #2", 6, "needs"),
-            ("supervisor #1", 10),
-        ],
-    ]
-    draw_contact_rows(fig_obj, rows, x0=50, y0=50)
-    add_title_to_drawing(fig_obj, face_title_str, 18, fig_width, 10)
-    draw_curved_dotted_line(fig_obj, 40, 40, 40, 320, 0.1)
-    draw_curved_dotted_line(fig_obj, 40, 40, 350, 40, -0.1)
-    draw_curved_dotted_line(fig_obj, 320, 140, 350, 40, 0.3)
-    draw_curved_dotted_line(fig_obj, 320, 140, 370, 230, -0.3)
-    draw_curved_dotted_line(fig_obj, 260, 260, 370, 230, 0.2)
-    draw_curved_dotted_line(fig_obj, 260, 260, 200, 320, -0.2)
-    draw_curved_dotted_line(fig_obj, 40, 320, 200, 320, 0.15)
-    add_footer_to_drawing(fig_obj, "fig0_7", XFX, fig_width, fig_height, XMX)
-    return fig_obj
-
-
-def get_wheel_fig0_8(face_title_str: str) -> Drawing:
-    fig_width = 700
-    fig_height = 160
-    fig_obj = get_standard_drawing(fig_width, fig_height)
-    rows = [
-        [("Family", 12), ("Everyone Else", 12)],
-    ]
-    draw_contact_rows(fig_obj, rows, x0=180, y0=60)
-    add_title_to_drawing(fig_obj, face_title_str, 18, fig_width, 10)
-    add_footer_to_drawing(fig_obj, "fig0_8", XFX, fig_width, fig_height, XMX)
-    return fig_obj
 
 
 def get_wheel_fig1_00(face_title_str: str) -> Drawing:
@@ -1084,16 +970,188 @@ def get_wheel_fig1_10(face_title_str: str) -> Drawing:
 def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
     t_str = "am i a good father?"
     low_trust_str = "Families on the Land"
+    fig0_0_dict = {
+        "fig_title_str": t_str,
+        "fig_title_font_size": 18,
+        "fig_title_margin": 20,
+        "footer_str": "fig0_0",
+        "footer_font_size": 12,
+        "fig_width": 370,
+        "fig_height": 180,
+        "infinity_contacts": {
+            0: {"x0": 120, "y0": 70, "contact_name": "son", "face_status": "Face"}
+        },
+    }
+    fig0_1_dict = {
+        "fig_title_str": t_str,
+        "fig_title_font_size": 18,
+        "fig_title_margin": 10,
+        "footer_str": "fig0_1",
+        "footer_font_size": 12,
+        "fig_width": 600,
+        "fig_height": 180,
+        "infinity_contacts": {
+            0: {"x0": 70, "y0": 50, "contact_name": "son     ", "face_status": "Face"},
+            1: {"x0": 330, "y0": 50, "contact_name": "daughter", "face_status": "Face"},
+        },
+    }
+    fig0_2_dict = {
+        "fig_title_str": t_str,
+        "fig_title_font_size": 18,
+        "fig_title_margin": 10,
+        "footer_str": "fig0_2",
+        "footer_font_size": 12,
+        "fig_width": 600,
+        "fig_height": 300,
+        "infinity_contacts": {
+            0: {"x0": 70, "y0": 50, "contact_name": "son     ", "face_status": "Face"},
+            1: {"x0": 330, "y0": 70, "contact_name": "daughter", "face_status": "Face"},
+            2: {
+                "x0": 170,
+                "y0": 180,
+                "contact_name": "wife    ",
+                "face_status": "Face",
+            },
+        },
+    }
+    fig0_3_dict = {
+        "fig_title_str": t_str,
+        "fig_title_font_size": 18,
+        "fig_title_margin": 10,
+        "footer_str": "fig0_3",
+        "footer_font_size": 12,
+        "fig_width": 700,
+        "fig_height": 300,
+        "infinity_contacts": {
+            0: {"x0": 70, "y0": 50, "contact_name": "son     ", "face_status": "Face"},
+        },
+        "contact_rows_x0": 300,
+        "contact_rows_y0": 90,
+        "contact_rows_objs": [
+            [("daughter", 15)],
+            [("wife", 12, "needs"), ("brother", 2, "needs")],
+        ],
+    }
+    fig0_4_dict = {
+        "fig_title_str": t_str,
+        "fig_title_font_size": 18,
+        "fig_title_margin": 10,
+        "footer_str": "fig0_4",
+        "footer_font_size": 12,
+        "fig_width": 700,
+        "fig_height": 300,
+        "infinity_contacts": {
+            0: {"x0": 70, "y0": 50, "contact_name": "son     ", "face_status": "Face"},
+        },
+        "contact_rows_x0": 300,
+        "contact_rows_y0": 90,
+        "contact_rows_objs": [
+            [("son", 8), ("daughter", 12)],
+            [("wife", 12, "needs"), ("brother", 2, "needs")],
+        ],
+    }
+    fig0_5_dict = {
+        "fig_title_str": t_str,
+        "fig_title_font_size": 18,
+        "fig_title_margin": 10,
+        "footer_str": "fig0_5",
+        "footer_font_size": 12,
+        "fig_width": 700,
+        "fig_height": 300,
+        "contact_rows_x0": 50,
+        "contact_rows_y0": 50,
+        "contact_rows_objs": [
+            [("son", 8), ("daughter", 12)],
+            [("wife", 12, "needs"), ("brother", 2, "needs")],
+            [("cousin", 5, "needs"), ("brother #2", 6, "needs"), ("uncle", 6, "needs")],
+        ],
+    }
+    fig0_6_dict = {
+        "fig_title_str": t_str,
+        "fig_title_font_size": 18,
+        "fig_title_margin": 10,
+        "footer_str": "fig0_6",
+        "footer_font_size": 12,
+        "fig_width": 700,
+        "fig_height": 360,
+        "contact_rows_x0": 50,
+        "contact_rows_y0": 50,
+        "contact_rows_objs": [
+            [("son", 8), ("daughter", 12), ("neighbor", 2), ("friend #2", 6)],
+            [("wife", 12, "needs"), ("brother", 2, "needs"), ("friend #1", 6)],
+            [
+                ("cousin", 5, "needs"),
+                ("brother #2", 6, "needs"),
+                ("uncle", 6, "needs"),
+                ("friend #5", 4),
+            ],
+            [
+                ("kid friend B1 dad", 5, "needs"),
+                ("kid friend B2 mom", 6, "needs"),
+                ("co-worker #2", 6, "needs"),
+                ("supervisor #1", 10),
+            ],
+        ],
+    }
+    fig0_7_dict = {
+        "curved_lines": [
+            {"x1": 40, "y1": 40, "x2": 40, "y2": 320, "curvature": 0.1},
+            {"x1": 40, "y1": 40, "x2": 350, "y2": 40, "curvature": -0.1},
+            {"x1": 320, "y1": 140, "x2": 350, "y2": 40, "curvature": 0.3},
+            {"x1": 320, "y1": 140, "x2": 370, "y2": 230, "curvature": -0.3},
+            {"x1": 260, "y1": 260, "x2": 370, "y2": 230, "curvature": 0.2},
+            {"x1": 260, "y1": 260, "x2": 200, "y2": 320, "curvature": -0.2},
+            {"x1": 40, "y1": 320, "x2": 200, "y2": 320, "curvature": 0.15},
+        ],
+        "fig_title_str": t_str,
+        "fig_title_font_size": 18,
+        "fig_title_margin": 10,
+        "footer_str": "fig0_7",
+        "footer_font_size": 12,
+        "fig_width": 700,
+        "fig_height": 360,
+        "contact_rows_x0": 50,
+        "contact_rows_y0": 50,
+        "contact_rows_objs": [
+            [("son", 8), ("daughter", 12), ("neighbor", 2), ("friend #2", 6)],
+            [("wife", 12, "needs"), ("brother", 2, "needs"), ("friend #1", 6)],
+            [
+                ("cousin", 5, "needs"),
+                ("brother #2", 6, "needs"),
+                ("uncle", 6, "needs"),
+                ("friend #5", 4),
+            ],
+            [
+                ("kid friend B1 dad", 5, "needs"),
+                ("kid friend B2 mom", 6, "needs"),
+                ("co-worker #2", 6, "needs"),
+                ("supervisor #1", 10),
+            ],
+        ],
+    }
+    fig0_8_dict = {
+        "fig_title_str": t_str,
+        "fig_title_font_size": 18,
+        "fig_title_margin": 10,
+        "footer_str": "fig0_8",
+        "footer_font_size": 12,
+        "fig_width": 700,
+        "fig_height": 160,
+        "contact_rows_x0": 180,
+        "contact_rows_y0": 60,
+        "contact_rows_objs": [[("Family", 12), ("Everyone Else", 12)]],
+    }
+
     return {
-        "wheel_fig0_0": get_wheel_fig0_0(t_str),
-        "wheel_fig0_1": get_wheel_fig0_1(t_str),
-        "wheel_fig0_2": get_wheel_fig0_2(t_str),
-        "wheel_fig0_3": get_wheel_fig0_3(t_str),
-        "wheel_fig0_4": get_wheel_fig0_4(t_str),
-        "wheel_fig0_5": get_wheel_fig0_5(t_str),
-        "wheel_fig0_6": get_wheel_fig0_6(t_str),
-        "wheel_fig0_7": get_wheel_fig0_7(t_str),
-        "wheel_fig0_8": get_wheel_fig0_8(t_str),
+        "wheel_fig0_0": get_wheel_fig(fig0_0_dict),
+        "wheel_fig0_1": get_wheel_fig(fig0_1_dict),
+        "wheel_fig0_2": get_wheel_fig(fig0_2_dict),
+        "wheel_fig0_3": get_wheel_fig(fig0_3_dict),
+        "wheel_fig0_4": get_wheel_fig(fig0_4_dict),
+        "wheel_fig0_5": get_wheel_fig(fig0_5_dict),
+        "wheel_fig0_6": get_wheel_fig(fig0_6_dict),
+        "wheel_fig0_7": get_wheel_fig(fig0_7_dict),
+        "wheel_fig0_8": get_wheel_fig(fig0_8_dict),
         "wheel_fig1_00": get_wheel_fig1_00(low_trust_str),
         "wheel_fig1_01": get_wheel_fig1_01(low_trust_str),
         "wheel_fig1_02": get_wheel_fig1_02(low_trust_str),
