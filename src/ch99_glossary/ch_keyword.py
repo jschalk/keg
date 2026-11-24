@@ -4194,6 +4194,7 @@ class Ch45Keywords(str, Enum):
     stable = "stable"
     time = "time"
     today = "today"
+    tower = "tower"
     valor = "valor"
     welcome = "welcome"
     wheel = "wheel"

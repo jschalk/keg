@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-     width="600" height="250" viewBox="0 0 600 250">
+     width="600" height="400" viewBox="0 0 600 400">
 <defs>
 </defs>
 <rect x="0" y="0" width="800" height="600" fill="white" />
-<text x="580" y="230" font-size="12" text-anchor="end" fill="black">fig1_07</text>
+<path d="M188.0,90 L412.0,90 L440.0,140 L160.0,140 Z" fill="#D9F2D9" stroke="black" stroke-width="2" />
+<text x="300.0" y="122.2" font-size="18" fill="black" text-anchor="middle" dominant-baseline="central">Family1</text>
+<path d="M146.0,150 L274.0,150 L290.0,320 L130.0,320 Z" fill="#D9F2D9" stroke="black" stroke-width="2" />
+<text x="210.0" y="242.2" font-size="18" fill="black" text-anchor="middle" dominant-baseline="central">Tower1</text>
+<path d="M326.0,150 L454.0,150 L470.0,320 L310.0,320 Z" fill="#D9F2D9" stroke="black" stroke-width="2" />
+<text x="390.0" y="242.2" font-size="18" fill="black" text-anchor="middle" dominant-baseline="central">Tower2</text>
+<path d="M60.0,330 L540.0,330" stroke="black" stroke-width="4" />
+<text x="300.0" y="356" font-size="20" text-anchor="middle" dominant-baseline="central">Land</text>
+<text x="300.0" y="40" font-size="30" fill="black" font-weight="bold" text-anchor="middle" dominant-baseline="central">Families on the Land</text>
+<text x="300.0" y="70" font-size="20" fill="black" font-weight="bold" text-anchor="middle" dominant-baseline="central">F1 is lifted up by the Towers under it. Doesn't know the rest.</text>
+<text x="580" y="380" font-size="12" text-anchor="end" fill="black">fig1_07</text>
 </svg>

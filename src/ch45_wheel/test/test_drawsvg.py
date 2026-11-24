@@ -1,4 +1,4 @@
-from ch45_wheel.wheel_builder import (
+from ch45_wheel.wheel_fig import (
     TrapeziodUnit,
     draw_contact_rows,
     draw_contacts_row,

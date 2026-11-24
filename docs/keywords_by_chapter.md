@@ -40,7 +40,7 @@
 - ch42_kazani: Empire, Faction, Hayek, Hobbit, Kronos, Land, Lord, Loyal, Republic, Ride, Shill, Soil, ch42, cow, empire, faction, hive, honor, impression, invitation, knee, kronosmax, ladder, lord, losing, loyal, oil, pay, prestige, republic, rival, shill, soil, trash, trooper, winner, winning
 - ch43_pop_phil: ch43
 - ch44_spring: Kegology, Monopoly, Rise, Shot, Winning, Winter, ch44, climb, discipline, drag, heart, jump, kegology, pump, revenge, shot, soldier, spring, winter
-- ch45_wheel: Climb, Discipline, Fall, Honor, KegWheel, Lift, Losing, Pay, Prestige, Stable, Tower, Welcome, Wheel, alien, ch45, cling, fall, kneeler, lift, linchpin, loser, pillar, stable, valor, wheel, wheelers
+- ch45_wheel: Climb, Discipline, Fall, Honor, KegWheel, Lift, Losing, Pay, Prestige, Stable, Tower, Welcome, Wheel, alien, ch45, cling, fall, kneeler, lift, linchpin, loser, pillar, stable, tower, valor, wheel, wheelers
 - ch46_mirth: ch46
 - ch47_gab: ch47
 - ch54_fable: Purpil, ch54

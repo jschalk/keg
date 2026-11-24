@@ -638,6 +638,38 @@ def draw_land(
     }
 
 
+def draw_tower_land(
+    fig_obj: Drawing, fig_width: int, tower0_y0: int, tower_height: int, desc_str: str
+):
+    l_width = fig_width * 0.8
+    l_x0 = (fig_width - l_width) / 2
+    l_y0 = tower0_y0 + tower_height + 10
+    draw_land(fig_obj, l_x0, l_y0, l_width, "Land", stroke_width=4, font_size=20)
+
+
+def draw_tower_fig(fig_obj: Drawing, family_desc: str, t_descs: list[str]):
+    towers_count = len(t_descs)
+    family_y0 = 90
+    family_height = 50
+    tower_height = 170
+    fig_width = fig_obj.width
+
+    tower_width = (fig_width / 3) - 40
+    family_width = (tower_width * towers_count) - 40
+    family_x0 = (fig_width - family_width) / 2
+    tower0_x0 = (fig_width / 2) - tower_width - 10
+    tower1_x0 = (fig_width / 2) + 10
+    tower0_y0 = family_y0 + family_height + 10
+    tower1_y0 = family_y0 + family_height + 10
+    trapunits = [
+        TrapeziodUnit(family_x0, family_y0, family_width, family_desc, family_height),
+        TrapeziodUnit(tower0_x0, tower0_y0, tower_width, t_descs[0], tower_height),
+        TrapeziodUnit(tower1_x0, tower1_y0, tower_width, t_descs[1], tower_height),
+    ]
+    draw_trapezoid_stack(fig_obj, trapunits)
+    draw_tower_land(fig_obj, fig_width, tower0_y0, tower_height, "Land")
+
+
 @dataclass
 class TrapeziodUnit:
     x0: int = None
@@ -767,26 +799,53 @@ def get_wheel_fig(fig_dict: dict[str,]) -> Drawing:
             cur_y2 = curved_line_dict.get("y2")
             curvature = curved_line_dict.get("curvature")
             draw_curved_dotted_line(fig, cur_x1, cur_y1, cur_x2, cur_y2, curvature)
-
+    if fig_dict.get("trapunits"):
+        draw_trapezoid_stack(fig, fig_dict.get("trapunits"))
+    if fig_dict.get("land_attrs"):
+        add_land_attrs_line_to_fig(fig_dict, fig)
     add_title_to_drawing(fig, tx_str, tx_font_size, fig_width, tx_margin)
     add_footer_to_drawing(fig, foot_str, foot_font_size, fig_width, fig_height, XMX)
     return fig
 
 
-def get_wheel_fig1_00(face_title_str: str) -> Drawing:
-    fig_width = 600
-    fig_height = 250
-    fig_obj = get_standard_drawing(fig_width, fig_height)
-    trapunits = [
-        TrapeziodUnit(120, 100, 90, "Smiths"),
-        TrapeziodUnit(220, 100, 90, "Duvals"),
-        TrapeziodUnit(340, 100, 150, "Gomezs", 72),
-    ]
-    draw_trapezoid_stack(fig_obj, trapunits)
-    add_title_to_drawing(fig_obj, face_title_str, 30, fig_width, 10)
-    draw_land(fig_obj, 75, 180, 450, "Land", stroke_width=4, font_size=20)
-    add_footer_to_drawing(fig_obj, "fig1_00", XFX, fig_width, fig_height, XMX)
-    return fig_obj
+def add_land_attrs_line_to_fig(fig_dict, fig):
+    land_attrs_dict = fig_dict.get("land_attrs")
+    l_x0 = land_attrs_dict.get("x0")
+    l_y0 = land_attrs_dict.get("y0")
+    l_length = land_attrs_dict.get("length")
+    l_width = land_attrs_dict.get("stroke_width")
+    l_f_size = land_attrs_dict.get("font_size")
+    draw_land(
+        fig, l_x0, l_y0, l_length, "Land", stroke_width=l_width, font_size=l_f_size
+    )
+
+
+# def get_wheel_fig1_01(face_title_str: str) -> Drawing:
+#     smiths_str = "Smiths"
+#     duvals_str = "Duvals"
+#     gomezs_str = "Gomezs"
+#     fig1_0_dict = {
+#         "fig_title_str": f"""The {smiths_str} and the {duvals_str} lift up the {gomezs_str}""",
+#         "fig_title_font_size": 16,
+#         "fig_title_margin": 50,
+#         "footer_str": "fig1_01",
+#         "footer_font_size": XFX,
+#         "fig_width": 600,
+#         "fig_height": 350,
+#         "trapunits": [
+#             TrapeziodUnit(120, 190, 90, smiths_str),
+#             TrapeziodUnit(220, 190, 90, duvals_str, 72),
+#             TrapeziodUnit(170, 110, 110, gomezs_str, 72),
+#         ],
+#         "land_attrs": {
+#             "x0": 75,
+#             "y0": 270,
+#             "length": 450,
+#             "stroke_width": 4,
+#             "font_size": 20,
+#         },
+#     }
+#     return get_wheel_fig(fig1_0_dict)
 
 
 def get_wheel_fig1_01(face_title_str: str) -> Drawing:
@@ -912,7 +971,7 @@ def get_wheel_fig1_05(face_title_str: str) -> Drawing:
     desc_str = """F1 is lifted up by F2, F3. Doesn't know the rest."""
     add_title_to_drawing(fig_obj, desc_str, 20, fig_width, 50)
     draw_land(fig_obj, 75, 330, 410, "Land", stroke_width=4, font_size=20)
-    add_footer_to_drawing(fig_obj, "fig1_04", XFX, fig_width, fig_height, XMX)
+    add_footer_to_drawing(fig_obj, "fig1_05", XFX, fig_width, fig_height, XMX)
     return fig_obj
 
 
@@ -931,14 +990,22 @@ def get_wheel_fig1_06(face_title_str: str) -> Drawing:
     desc_str = """F1 is lifted up by the Tower under it. Doesn't know the rest."""
     add_title_to_drawing(fig_obj, desc_str, 20, fig_width, 50)
     draw_land(fig_obj, 75, 330, 410, "Land", stroke_width=4, font_size=20)
-    add_footer_to_drawing(fig_obj, "fig1_04", XFX, fig_width, fig_height, XMX)
+    add_footer_to_drawing(fig_obj, "fig1_06", XFX, fig_width, fig_height, XMX)
     return fig_obj
 
 
 def get_wheel_fig1_07(face_title_str: str) -> Drawing:
+    # sourcery skip: extract-duplicate-method, move-assign-in-block
+    # Tower Fig
+    family_desc = "Family1"
     fig_width = 600
-    fig_height = 250
+    fig_height = 400
     fig_obj = get_standard_drawing(fig_width, fig_height)
+    t_descs = ["Tower1", "Tower2"]
+    draw_tower_fig(fig_obj, family_desc, t_descs)
+    add_title_to_drawing(fig_obj, face_title_str, 30, fig_width, 10)
+    desc_str = """F1 is lifted up by the Towers under it. Doesn't know the rest."""
+    add_title_to_drawing(fig_obj, desc_str, 20, fig_width, 50)
     add_footer_to_drawing(fig_obj, "fig1_07", XFX, fig_width, fig_height, XMX)
     return fig_obj
 
@@ -1141,6 +1208,27 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
         "contact_rows_y0": 60,
         "contact_rows_objs": [[("Family", 12), ("Everyone Else", 12)]],
     }
+    fig1_0_dict = {
+        "fig_title_str": low_trust_str,
+        "fig_title_font_size": 30,
+        "fig_title_margin": 10,
+        "footer_str": "fig1_00",
+        "footer_font_size": XFX,
+        "fig_width": 600,
+        "fig_height": 250,
+        "trapunits": [
+            TrapeziodUnit(120, 100, 90, "Smiths"),
+            TrapeziodUnit(220, 100, 90, "Duvals"),
+            TrapeziodUnit(340, 100, 150, "Gomezs", 72),
+        ],
+        "land_attrs": {
+            "x0": 75,
+            "y0": 180,
+            "length": 450,
+            "stroke_width": 4,
+            "font_size": 20,
+        },
+    }
 
     return {
         "wheel_fig0_0": get_wheel_fig(fig0_0_dict),
@@ -1152,7 +1240,7 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
         "wheel_fig0_6": get_wheel_fig(fig0_6_dict),
         "wheel_fig0_7": get_wheel_fig(fig0_7_dict),
         "wheel_fig0_8": get_wheel_fig(fig0_8_dict),
-        "wheel_fig1_00": get_wheel_fig1_00(low_trust_str),
+        "wheel_fig1_00": get_wheel_fig(fig1_0_dict),
         "wheel_fig1_01": get_wheel_fig1_01(low_trust_str),
         "wheel_fig1_02": get_wheel_fig1_02(low_trust_str),
         "wheel_fig1_03": get_wheel_fig1_03(low_trust_str),

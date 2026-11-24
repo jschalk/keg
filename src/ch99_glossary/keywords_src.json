@@ -1068,7 +1068,7 @@
   "titleyap": {"valid_ch": "19"}, 
   "today": {"valid_ch": "32, 41, 42, 44, 45, 54, 90"}, 
   "totality": {"valid_ch": "41"}, 
-  "tower": {"valid_ch": ""}, 
+  "tower": {"valid_ch": "45"}, 
   "tran_time": {
     "sort_ordinal": 99, 
     "valid_ch": "12, 15, 16, 17, 18, 19, 21, 22, 23, 26, 27, 31, 32, 33"
