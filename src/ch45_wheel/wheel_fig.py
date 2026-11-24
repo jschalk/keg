@@ -733,55 +733,13 @@ def get_wheel_fig(fig_dict: dict[str,]) -> Drawing:
     if fig_dict.get("land_y0"):
         land_y0 = fig_dict.get("land_y0")
         draw_land(fig, land_y0, "Land", stroke_width=4, font_size=20)
+    if fig_dict.get("sub_title_str"):
+        sub_title_str = fig_dict.get("sub_title_str")
+        sub_title_margin = fig_dict.get("sub_title_margin")
+        add_title_to_drawing(fig, sub_title_str, 16, sub_title_margin)
     add_title_to_drawing(fig, tx_str, tx_font_size, tx_margin)
     add_footer_to_drawing(fig, foot_str, XMX)
     return fig
-
-
-# TODO use this
-# def get_wheel_fig1_01(face_title_str: str) -> Drawing:
-
-#     fig1_0_dict = {
-#         "fig_title_str": face_title_str,
-#         "fig_title_font_size": 30,
-#         "fig_title_margin": 10,
-#         "sub_title_str": "The Smiths and the Duvals lift up the Gomezs",
-#         "footer_str": "fig1_01",
-#         "fig_width": 600,
-#         "fig_height": 350,
-#         "trapunits": [
-#             TrapeziodUnit(120, 190, 90, "Smiths"),
-#             TrapeziodUnit(220, 190, 90, "Duvals", 72),
-#             TrapeziodUnit(170, 110, 110, "Gomezs", 72),
-#         ],
-#         "land_y0": 270,
-#     }
-#     fig_obj = get_wheel_fig(fig1_0_dict)
-#     desc_str = f"""The Smiths and the Duvals lift up the Gomezs"""
-#     add_title_to_drawing(fig_obj, desc_str, 16, 50)
-
-#     return fig_obj
-
-
-def get_wheel_fig1_01(face_title_str: str) -> Drawing:
-    smiths_str = "Smiths"
-    duvals_str = "Duvals"
-    gomezs_str = "Gomezs"
-    fig_width = 600
-    fig_height = 350
-    fig_obj = get_standard_drawing(fig_width, fig_height)
-    trapunits = [
-        TrapeziodUnit(120, 190, 90, smiths_str),
-        TrapeziodUnit(220, 190, 90, duvals_str, 72),
-        TrapeziodUnit(170, 110, 110, gomezs_str, 72),
-    ]
-    draw_trapezoid_stack(fig_obj, trapunits)
-    add_title_to_drawing(fig_obj, face_title_str, 30, 10)
-    desc_str = f"""The {smiths_str} and the {duvals_str} lift up the {gomezs_str}"""
-    add_title_to_drawing(fig_obj, desc_str, 16, 50)
-    draw_land(fig_obj, 270, "Land", stroke_width=4, font_size=20)
-    add_footer_to_drawing(fig_obj, "fig1_01", XMX)
-    return fig_obj
 
 
 def get_wheel_fig1_02(face_title_str: str) -> Drawing:
@@ -1114,7 +1072,7 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
         "contact_rows_y0": 60,
         "contact_rows_objs": [[("Family", 12), ("Everyone Else", 12)]],
     }
-    fig1_0_dict = {
+    fig1_00_dict = {
         "fig_title_str": low_trust_str,
         "fig_title_font_size": 30,
         "fig_title_margin": 10,
@@ -1128,6 +1086,22 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
         ],
         "land_y0": 180,
     }
+    fig1_01_dict = {
+        "fig_title_str": low_trust_str,
+        "fig_title_font_size": 30,
+        "fig_title_margin": 10,
+        "sub_title_str": "The Smiths and the Duvals lift up the Gomezs",
+        "sub_title_margin": 50,
+        "footer_str": "fig1_01",
+        "fig_width": 600,
+        "fig_height": 350,
+        "trapunits": [
+            TrapeziodUnit(120, 190, 90, "Smiths"),
+            TrapeziodUnit(220, 190, 90, "Duvals", 72),
+            TrapeziodUnit(170, 110, 110, "Gomezs", 72),
+        ],
+        "land_y0": 270,
+    }
 
     return {
         "wheel_fig0_0": get_wheel_fig(fig0_0_dict),
@@ -1139,8 +1113,8 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
         "wheel_fig0_6": get_wheel_fig(fig0_6_dict),
         "wheel_fig0_7": get_wheel_fig(fig0_7_dict),
         "wheel_fig0_8": get_wheel_fig(fig0_8_dict),
-        "wheel_fig1_00": get_wheel_fig(fig1_0_dict),
-        "wheel_fig1_01": get_wheel_fig1_01(low_trust_str),
+        "wheel_fig1_00": get_wheel_fig(fig1_00_dict),
+        "wheel_fig1_01": get_wheel_fig(fig1_01_dict),
         "wheel_fig1_02": get_wheel_fig1_02(low_trust_str),
         "wheel_fig1_03": get_wheel_fig1_03(low_trust_str),
         "wheel_fig1_04": get_wheel_fig1_04(low_trust_str),
