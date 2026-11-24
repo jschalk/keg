@@ -32,7 +32,6 @@ def add_title_to_drawing(
 def add_footer_to_drawing(
     d: Drawing,
     footer_txt: str,
-    footer_font_size: int,
     total_width: int,
     total_height: int,
     margin: int,
@@ -40,7 +39,7 @@ def add_footer_to_drawing(
     d.append(
         drawsvg_Text(
             footer_txt,
-            footer_font_size,
+            12,
             total_width - margin,
             total_height - margin,
             center=False,
@@ -591,9 +590,7 @@ def draw_trapezoid_shape(
 
 def draw_land(
     d: Drawing,
-    x: float,
     y: float,
-    length: float,
     label: str = "Land",
     stroke: str = "black",
     stroke_width: float = 2,
@@ -605,6 +602,8 @@ def draw_land(
 
     (x, y) is the left endpoint of the line.
     """
+    length = d.width * 0.8
+    x = (d.width - length) / 2
 
     # Draw the line.
     d.append(
@@ -638,13 +637,9 @@ def draw_land(
     }
 
 
-def draw_tower_land(
-    fig_obj: Drawing, fig_width: int, tower0_y0: int, tower_height: int, desc_str: str
-):
-    l_width = fig_width * 0.8
-    l_x0 = (fig_width - l_width) / 2
+def draw_tower_land(fig_obj: Drawing, tower0_y0: int, tower_height: int, desc_str: str):
     l_y0 = tower0_y0 + tower_height + 10
-    draw_land(fig_obj, l_x0, l_y0, l_width, "Land", stroke_width=4, font_size=20)
+    draw_land(fig_obj, l_y0, "Land", stroke_width=4, font_size=20)
 
 
 def draw_tower_fig(fig_obj: Drawing, family_desc: str, t_descs: list[str]):
@@ -667,7 +662,7 @@ def draw_tower_fig(fig_obj: Drawing, family_desc: str, t_descs: list[str]):
         TrapeziodUnit(tower1_x0, tower1_y0, tower_width, t_descs[1], tower_height),
     ]
     draw_trapezoid_stack(fig_obj, trapunits)
-    draw_tower_land(fig_obj, fig_width, tower0_y0, tower_height, "Land")
+    draw_tower_land(fig_obj, tower0_y0, tower_height, "Land")
 
 
 @dataclass
@@ -702,63 +697,6 @@ def draw_trapezoid_stack(
         )
 
 
-# d = Drawing(800, 600, origin='top-left')
-
-# # # Background
-# d.append(drawsvg_Rectangle(0, 0, 800, 600, fill='white'))
-
-# # # Circle (Actor)
-# # d.append(draw.Circle(150, 300, 60, fill='#FFE680', stroke='black', stroke_width=2))
-
-
-# # Trapezoid (Institution)
-# trap0 = draw_trapezoid_shape(d, x=100, y=50, bottom_length=100, label="huh\nhuh2")
-# trap1 = draw_trapezoid_shape(d, x=200, y=50, bottom_length=100, label="what\nwhat")
-
-# d.append(trap0)
-# d.append(trap1)
-
-# # Annular sector ("pie slice without center")
-# cx = 300
-# cy = 450
-
-# inner = 40
-# outer = 90
-
-# a1 = math_radians(20)
-# a2 = math_radians(130)
-
-# x1 = cx + outer * math_cos(a1)
-# y1 = cy + outer * math_sin(a1)
-
-# x2 = cx + outer * math_cos(a2)
-# y2 = cy + outer * math_sin(a2)
-
-# x3 = cx + inner * math_cos(a2)
-# y3 = cy + inner * math_sin(a2)
-
-# x4 = cx + inner * math_cos(a1)
-# y4 = cy + inner * math_sin(a1)
-
-# path = drawsvg_Path(fill="#FFD0D0", stroke="black", stroke_width=2)
-
-# path.M(x1, y1)
-# path.A(outer, outer, 0, 0, 1, x2, y2)
-# path.L(x3, y3)
-# path.A(inner, inner, 0, 0, 0, x4, y4)
-# path.Z()
-
-# d.append(path)
-
-# Connecting line
-# d.append(draw.Line(210, 300, 310, 230, stroke='black', stroke_width=2))
-
-# Labels
-# d.append(draw.Text("Actor", 18, 150, 305, center=True))
-# d.append(draw.Text("Institution", 18, 350, 230, center=True))
-# d.append(draw.Text("System", 18, 610, 305, center=True))
-# d.append(draw.Text("Discourse", 18, 300, 450, center=True))
-
 XMX = 20
 XFX = 12
 
@@ -776,7 +714,6 @@ def get_wheel_fig(fig_dict: dict[str,]) -> Drawing:
     tx_font_size = fig_dict.get("fig_title_font_size")
     tx_margin = fig_dict.get("fig_title_margin")
     foot_str = fig_dict.get("footer_str")
-    foot_font_size = fig_dict.get("footer_font_size")
 
     fig = get_standard_drawing(fig_width, fig_height)
     if fig_dict.get("infinity_contacts"):
@@ -801,51 +738,12 @@ def get_wheel_fig(fig_dict: dict[str,]) -> Drawing:
             draw_curved_dotted_line(fig, cur_x1, cur_y1, cur_x2, cur_y2, curvature)
     if fig_dict.get("trapunits"):
         draw_trapezoid_stack(fig, fig_dict.get("trapunits"))
-    if fig_dict.get("land_attrs"):
-        add_land_attrs_line_to_fig(fig_dict, fig)
+    if fig_dict.get("land_y0"):
+        land_y0 = fig_dict.get("land_y0")
+        draw_land(fig, land_y0, "Land", stroke_width=4, font_size=20)
     add_title_to_drawing(fig, tx_str, tx_font_size, fig_width, tx_margin)
-    add_footer_to_drawing(fig, foot_str, foot_font_size, fig_width, fig_height, XMX)
+    add_footer_to_drawing(fig, foot_str, fig_width, fig_height, XMX)
     return fig
-
-
-def add_land_attrs_line_to_fig(fig_dict, fig):
-    land_attrs_dict = fig_dict.get("land_attrs")
-    l_x0 = land_attrs_dict.get("x0")
-    l_y0 = land_attrs_dict.get("y0")
-    l_length = land_attrs_dict.get("length")
-    l_width = land_attrs_dict.get("stroke_width")
-    l_f_size = land_attrs_dict.get("font_size")
-    draw_land(
-        fig, l_x0, l_y0, l_length, "Land", stroke_width=l_width, font_size=l_f_size
-    )
-
-
-# def get_wheel_fig1_01(face_title_str: str) -> Drawing:
-#     smiths_str = "Smiths"
-#     duvals_str = "Duvals"
-#     gomezs_str = "Gomezs"
-#     fig1_0_dict = {
-#         "fig_title_str": f"""The {smiths_str} and the {duvals_str} lift up the {gomezs_str}""",
-#         "fig_title_font_size": 16,
-#         "fig_title_margin": 50,
-#         "footer_str": "fig1_01",
-#         "footer_font_size": XFX,
-#         "fig_width": 600,
-#         "fig_height": 350,
-#         "trapunits": [
-#             TrapeziodUnit(120, 190, 90, smiths_str),
-#             TrapeziodUnit(220, 190, 90, duvals_str, 72),
-#             TrapeziodUnit(170, 110, 110, gomezs_str, 72),
-#         ],
-#         "land_attrs": {
-#             "x0": 75,
-#             "y0": 270,
-#             "length": 450,
-#             "stroke_width": 4,
-#             "font_size": 20,
-#         },
-#     }
-#     return get_wheel_fig(fig1_0_dict)
 
 
 def get_wheel_fig1_01(face_title_str: str) -> Drawing:
@@ -864,8 +762,8 @@ def get_wheel_fig1_01(face_title_str: str) -> Drawing:
     add_title_to_drawing(fig_obj, face_title_str, 30, fig_width, 10)
     desc_str = f"""The {smiths_str} and the {duvals_str} lift up the {gomezs_str}"""
     add_title_to_drawing(fig_obj, desc_str, 16, fig_width, 50)
-    draw_land(fig_obj, 75, 270, 450, "Land", stroke_width=4, font_size=20)
-    add_footer_to_drawing(fig_obj, "fig1_01", XFX, fig_width, fig_height, XMX)
+    draw_land(fig_obj, 270, "Land", stroke_width=4, font_size=20)
+    add_footer_to_drawing(fig_obj, "fig1_01", fig_width, fig_height, XMX)
     return fig_obj
 
 
@@ -891,8 +789,8 @@ def get_wheel_fig1_02(face_title_str: str) -> Drawing:
     add_title_to_drawing(fig_obj, face_title_str, 30, fig_width, 10)
     desc_str = f"""{flores_str} lifts up the {gomezs_str} and drags themselves down"""
     add_title_to_drawing(fig_obj, desc_str, 20, fig_width, 50)
-    draw_land(fig_obj, 75, 370, 600, "Land", stroke_width=4, font_size=20)
-    add_footer_to_drawing(fig_obj, "fig1_02", XFX, fig_width, fig_height, XMX)
+    draw_land(fig_obj, 370, "Land", stroke_width=4, font_size=20)
+    add_footer_to_drawing(fig_obj, "fig1_02", fig_width, fig_height, XMX)
     return fig_obj
 
 
@@ -918,8 +816,8 @@ def get_wheel_fig1_03(face_title_str: str) -> Drawing:
     add_title_to_drawing(fig_obj, face_title_str, 30, fig_width, 10)
     desc_str = f"""{gomezs_str} is lifted up because {flores_str} thinks things will be better"""
     add_title_to_drawing(fig_obj, desc_str, 20, fig_width, 50)
-    draw_land(fig_obj, 75, 410, 650, "Land", stroke_width=4, font_size=20)
-    add_footer_to_drawing(fig_obj, "fig1_03", XFX, fig_width, fig_height, XMX)
+    draw_land(fig_obj, 410, "Land", stroke_width=4, font_size=20)
+    add_footer_to_drawing(fig_obj, "fig1_03", fig_width, fig_height, XMX)
     return fig_obj
 
 
@@ -951,8 +849,8 @@ def get_wheel_fig1_04(face_title_str: str) -> Drawing:
     add_title_to_drawing(fig_obj, face_title_str, 30, fig_width, 10)
     desc_str = """F1 is lifted up by F2, F3. Doesn't know the rest."""
     add_title_to_drawing(fig_obj, desc_str, 20, fig_width, 50)
-    draw_land(fig_obj, 75, 330, 410, "Land", stroke_width=4, font_size=20)
-    add_footer_to_drawing(fig_obj, "fig1_04", XFX, fig_width, fig_height, XMX)
+    draw_land(fig_obj, 330, "Land", stroke_width=4, font_size=20)
+    add_footer_to_drawing(fig_obj, "fig1_04", fig_width, fig_height, XMX)
     return fig_obj
 
 
@@ -970,8 +868,8 @@ def get_wheel_fig1_05(face_title_str: str) -> Drawing:
     add_title_to_drawing(fig_obj, face_title_str, 30, fig_width, 10)
     desc_str = """F1 is lifted up by F2, F3. Doesn't know the rest."""
     add_title_to_drawing(fig_obj, desc_str, 20, fig_width, 50)
-    draw_land(fig_obj, 75, 330, 410, "Land", stroke_width=4, font_size=20)
-    add_footer_to_drawing(fig_obj, "fig1_05", XFX, fig_width, fig_height, XMX)
+    draw_land(fig_obj, 330, "Land", stroke_width=4, font_size=20)
+    add_footer_to_drawing(fig_obj, "fig1_05", fig_width, fig_height, XMX)
     return fig_obj
 
 
@@ -989,8 +887,8 @@ def get_wheel_fig1_06(face_title_str: str) -> Drawing:
     add_title_to_drawing(fig_obj, face_title_str, 30, fig_width, 10)
     desc_str = """F1 is lifted up by the Tower under it. Doesn't know the rest."""
     add_title_to_drawing(fig_obj, desc_str, 20, fig_width, 50)
-    draw_land(fig_obj, 75, 330, 410, "Land", stroke_width=4, font_size=20)
-    add_footer_to_drawing(fig_obj, "fig1_06", XFX, fig_width, fig_height, XMX)
+    draw_land(fig_obj, 330, "Land", stroke_width=4, font_size=20)
+    add_footer_to_drawing(fig_obj, "fig1_06", fig_width, fig_height, XMX)
     return fig_obj
 
 
@@ -1006,7 +904,7 @@ def get_wheel_fig1_07(face_title_str: str) -> Drawing:
     add_title_to_drawing(fig_obj, face_title_str, 30, fig_width, 10)
     desc_str = """F1 is lifted up by the Towers under it. Doesn't know the rest."""
     add_title_to_drawing(fig_obj, desc_str, 20, fig_width, 50)
-    add_footer_to_drawing(fig_obj, "fig1_07", XFX, fig_width, fig_height, XMX)
+    add_footer_to_drawing(fig_obj, "fig1_07", fig_width, fig_height, XMX)
     return fig_obj
 
 
@@ -1014,7 +912,7 @@ def get_wheel_fig1_08(face_title_str: str) -> Drawing:
     fig_width = 600
     fig_height = 250
     fig_obj = get_standard_drawing(fig_width, fig_height)
-    add_footer_to_drawing(fig_obj, "fig1_08", XFX, fig_width, fig_height, XMX)
+    add_footer_to_drawing(fig_obj, "fig1_08", fig_width, fig_height, XMX)
     return fig_obj
 
 
@@ -1022,7 +920,7 @@ def get_wheel_fig1_09(face_title_str: str) -> Drawing:
     fig_width = 600
     fig_height = 250
     fig_obj = get_standard_drawing(fig_width, fig_height)
-    add_footer_to_drawing(fig_obj, "fig1_09", XFX, fig_width, fig_height, XMX)
+    add_footer_to_drawing(fig_obj, "fig1_09", fig_width, fig_height, XMX)
     return fig_obj
 
 
@@ -1030,7 +928,7 @@ def get_wheel_fig1_10(face_title_str: str) -> Drawing:
     fig_width = 600
     fig_height = 250
     fig_obj = get_standard_drawing(fig_width, fig_height)
-    add_footer_to_drawing(fig_obj, "fig1_10", XFX, fig_width, fig_height, XMX)
+    add_footer_to_drawing(fig_obj, "fig1_10", fig_width, fig_height, XMX)
     return fig_obj
 
 
@@ -1042,7 +940,6 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
         "fig_title_font_size": 18,
         "fig_title_margin": 20,
         "footer_str": "fig0_0",
-        "footer_font_size": 12,
         "fig_width": 370,
         "fig_height": 180,
         "infinity_contacts": {
@@ -1054,7 +951,6 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
         "fig_title_font_size": 18,
         "fig_title_margin": 10,
         "footer_str": "fig0_1",
-        "footer_font_size": 12,
         "fig_width": 600,
         "fig_height": 180,
         "infinity_contacts": {
@@ -1067,7 +963,6 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
         "fig_title_font_size": 18,
         "fig_title_margin": 10,
         "footer_str": "fig0_2",
-        "footer_font_size": 12,
         "fig_width": 600,
         "fig_height": 300,
         "infinity_contacts": {
@@ -1086,7 +981,6 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
         "fig_title_font_size": 18,
         "fig_title_margin": 10,
         "footer_str": "fig0_3",
-        "footer_font_size": 12,
         "fig_width": 700,
         "fig_height": 300,
         "infinity_contacts": {
@@ -1104,7 +998,6 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
         "fig_title_font_size": 18,
         "fig_title_margin": 10,
         "footer_str": "fig0_4",
-        "footer_font_size": 12,
         "fig_width": 700,
         "fig_height": 300,
         "infinity_contacts": {
@@ -1122,7 +1015,6 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
         "fig_title_font_size": 18,
         "fig_title_margin": 10,
         "footer_str": "fig0_5",
-        "footer_font_size": 12,
         "fig_width": 700,
         "fig_height": 300,
         "contact_rows_x0": 50,
@@ -1138,7 +1030,6 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
         "fig_title_font_size": 18,
         "fig_title_margin": 10,
         "footer_str": "fig0_6",
-        "footer_font_size": 12,
         "fig_width": 700,
         "fig_height": 360,
         "contact_rows_x0": 50,
@@ -1174,7 +1065,6 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
         "fig_title_font_size": 18,
         "fig_title_margin": 10,
         "footer_str": "fig0_7",
-        "footer_font_size": 12,
         "fig_width": 700,
         "fig_height": 360,
         "contact_rows_x0": 50,
@@ -1201,7 +1091,6 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
         "fig_title_font_size": 18,
         "fig_title_margin": 10,
         "footer_str": "fig0_8",
-        "footer_font_size": 12,
         "fig_width": 700,
         "fig_height": 160,
         "contact_rows_x0": 180,
@@ -1213,7 +1102,6 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
         "fig_title_font_size": 30,
         "fig_title_margin": 10,
         "footer_str": "fig1_00",
-        "footer_font_size": XFX,
         "fig_width": 600,
         "fig_height": 250,
         "trapunits": [
@@ -1221,13 +1109,7 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
             TrapeziodUnit(220, 100, 90, "Duvals"),
             TrapeziodUnit(340, 100, 150, "Gomezs", 72),
         ],
-        "land_attrs": {
-            "x0": 75,
-            "y0": 180,
-            "length": 450,
-            "stroke_width": 4,
-            "font_size": 20,
-        },
+        "land_y0": 180,
     }
 
     return {

@@ -210,7 +210,7 @@ def test_draw_trapezoid_stack_SetsAttr_Scenario1_7Elements():
     # print(f"{d0_old.__dict__.get(elements_str)=}")
     # print(f"    {d0.__dict__.get(elements_str)=}")
     assert _get_elements_count(d0) != _get_elements_count(d0_old)
-    draw_land(d0, 10, 350, 370, "Land", stroke_width=6)
+    draw_land(d0, 350, "Land", stroke_width=6)
     # save_example_image(d0)
 
 
