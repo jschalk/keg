@@ -10,12 +10,12 @@
 ---
 
 
-<!-- <div align="center"><img src="images/wheel_fig1_00.svg" alt="wheel fig1_00_test" width="60%"></div>   
+<div align="center"><img src="images/wheel_fig1_00.svg" alt="wheel fig1_00_test" width="60%"></div>   
 <div align="center"><img src="images/wheel_fig1_01.svg" alt="wheel fig1_01_test" width="60%"></div>   
 <div align="center"><img src="images/wheel_fig1_02.svg" alt="wheel fig1_02_test" width="60%"></div>   
 <div align="center"><img src="images/wheel_fig1_03.svg" alt="wheel fig1_03_test" width="60%"></div>   
 <div align="center"><img src="images/wheel_fig1_04.svg" alt="wheel fig1_04_test" width="60%"></div>   
-<div align="center"><img src="images/wheel_fig1_05.svg" alt="wheel fig1_05_test" width="60%"></div>    -->
+<div align="center"><img src="images/wheel_fig1_05.svg" alt="wheel fig1_05_test" width="60%"></div>   
 <div align="center"><img src="images/wheel_fig1_06.svg" alt="wheel fig1_06 test" width="60%"></div>   
 <div align="center"><img src="images/wheel_fig1_07.svg" alt="wheel fig1_07 test" width="60%"></div>   
 <div align="center"><img src="images/wheel_fig1_08.svg" alt="wheel fig1_08 test" width="60%"></div>   

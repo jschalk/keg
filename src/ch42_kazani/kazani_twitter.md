@@ -330,3 +330,19 @@ James Hudson @Philonous responded:
 > Every society, every culture, every institution is always based on a schizophrenic blend of mutually incompatible principles
 > 
 > Following them all, is a logical impossibility
+
+**November 24, 2026**<br>
+In response to @BrankoMilan<br>
+*Kallas' remarks on Ireland are typical of East European self-centrism. I was for years struck how little many E Europeans know about the world.  For Kaja, as for many others, the world consists only of Russia, "Europe", and their country. I believe that many E Europeans do not know anything about colonialism, East India company, Indonesian village administrations  , Congo, Bengal famine, opium wars, "Irish troubles"... And the top of the irony is that Kallas' own father was a highly placed Soviet official, part of the red bourgeoise that has never read Marx but liked to amass capital and profit both under communism & capitalism.*
+
+> For an Eastern European, the whole universe consists only of me & my pain
+> 
+> Nothing else exists ever, including other humans (not real), their problems (also not real), and their pains (laughable & ridiculous)
+> 
+> That is the primary reason why Eastern Europeans can't do diplomacy
+> PS The only occasion when an Eastern European can even *notice* existence of the outer world, is when he needs to establish a moral high ground over someone (very important) and evokes a long list of his crimes & wrongdoings -> feel superior
+
+Krzysztof Paluszek @KrzysztofPalus4 responded<br>
+*Doesn't it apply to every other region of the world? The closest surrounding is what you usually care of. Regardless where you are located around the world.*
+
+> No, genuinely expecting unlimited empathy from everyone in the world while showing exactly zero to anyone else but yourself seems to be more or less endemically Eastern European, Russia included
