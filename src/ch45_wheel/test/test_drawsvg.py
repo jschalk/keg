@@ -241,7 +241,6 @@ def test_rebuild_markdown_wheel_theory_images_SpecialCreateImages(rebuild_docs):
         for svg_image_path in svg_image_paths:
             print(f"Saved {svg_image_path}")
         # assert False, f"Special Images Rebuilt {len(svg_image_paths)} images built."
-    assert 1 == 2
 
 
 _NUMBER_RE = re_compile(r"-?\d+\.\d+")

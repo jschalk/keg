@@ -773,14 +773,7 @@ def get_wheel_fig(fig_dict: dict[str,]) -> Drawing:
         land_y0 = fig_dict.get("land_y0")
         draw_land(fig, land_y0, "Land", stroke_width=4, font_size=20)
     if fig_dict.get("sub_title_str"):
-        sub_title_str = fig_dict.get("sub_title_str")
-        sub_title_margin = fig_dict.get("sub_title_margin")
-        if sub_title_margin is None:
-            sub_title_margin = 50
-        font_size = fig_dict.get("sub_title_font_size")
-        if font_size is None:
-            font_size = 16
-        add_title_to_drawing(fig, sub_title_str, font_size, sub_title_margin)
+        add_sub_title_to_drawing(fig_dict, fig)
     if fig_dict.get("tower_attrs"):
         tower_attrs_dict = fig_dict.get("tower_attrs")
         family_desc = tower_attrs_dict.get("family_desc")
@@ -789,6 +782,17 @@ def get_wheel_fig(fig_dict: dict[str,]) -> Drawing:
     add_title_to_drawing(fig, tx_str, tx_font_size, tx_margin)
     add_footer_to_drawing(fig, foot_str, XMX)
     return fig
+
+
+def add_sub_title_to_drawing(fig_dict, fig):
+    sub_title_str = fig_dict.get("sub_title_str")
+    sub_title_margin = fig_dict.get("sub_title_margin")
+    if sub_title_margin is None:
+        sub_title_margin = 50
+    font_size = fig_dict.get("sub_title_font_size")
+    if font_size is None:
+        font_size = 16
+    add_title_to_drawing(fig, sub_title_str, font_size, sub_title_margin)
 
 
 def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
