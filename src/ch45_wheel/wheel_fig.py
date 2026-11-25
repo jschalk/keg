@@ -634,27 +634,57 @@ def draw_tower_land(fig_obj: Drawing, tower0_y0: int, tower_height: int, desc_st
     draw_land(fig_obj, l_y0, "Land", stroke_width=4, font_size=20)
 
 
+def get_tower_x_positions(
+    drawing_width: float,
+    tower_width: float,
+    count: int,
+    margin: float = 50,
+    spacing: float = 10,
+) -> list[float]:
+    """Return the left x coordinate of each trapezoid, centered in the drawing."""
+    row_width = count * tower_width + (count - 1) * spacing
+    available_width = drawing_width - 2 * margin
+    start_x = margin + (available_width - row_width) / 2
+    step = tower_width + spacing
+    return [start_x + i * step for i in range(count)]
+
+
 def draw_tower_fig(fig_obj: Drawing, family_desc: str, t_descs: list[str]):
     towers_count = len(t_descs)
+    tower_width = (fig_obj.width / (towers_count + 1)) - (towers_count * 20)
+
     family_y0 = 90
     family_height = 50
-    tower_height = 170
-    fig_width = fig_obj.width
-
-    tower_width = (fig_width / 3) - 40
-    family_width = (tower_width * towers_count) - 40
-    family_x0 = (fig_width - family_width) / 2
-    tower0_x0 = (fig_width / 2) - tower_width - 10
-    tower1_x0 = (fig_width / 2) + 10
-    tower0_y0 = family_y0 + family_height + 10
-    tower1_y0 = family_y0 + family_height + 10
+    family_width = tower_width * towers_count
+    family_x0 = (fig_obj.width - family_width) / 2
     trapunits = [
-        TrapeziodUnit(family_x0, family_y0, family_width, family_desc, family_height),
-        TrapeziodUnit(tower0_x0, tower0_y0, tower_width, t_descs[0], tower_height),
-        TrapeziodUnit(tower1_x0, tower1_y0, tower_width, t_descs[1], tower_height),
+        TrapeziodUnit(family_x0, family_y0, family_width, family_desc, family_height)
     ]
+    tower_height = 170
+    tower_y0 = family_y0 + family_height + 10
+    if towers_count == 2:
+        tower0_x0 = (fig_obj.width / 2) - tower_width - 10
+        tower1_x0 = (fig_obj.width / 2) + 10
+        trapunits.append(
+            TrapeziodUnit(tower0_x0, tower_y0, tower_width, t_descs[0], tower_height)
+        )
+        trapunits.append(
+            TrapeziodUnit(tower1_x0, tower_y0, tower_width, t_descs[1], tower_height)
+        )
+    elif towers_count == 3:
+        tower_x0s = get_tower_x_positions(fig_obj.width, tower_width, 3)
+        trapunits.append(
+            TrapeziodUnit(tower_x0s[0], tower_y0, tower_width, t_descs[0], tower_height)
+        )
+        trapunits.append(
+            TrapeziodUnit(tower_x0s[1], tower_y0, tower_width, t_descs[1], tower_height)
+        )
+        trapunits.append(
+            TrapeziodUnit(tower_x0s[2], tower_y0, tower_width, t_descs[2], tower_height)
+        )
+
     draw_trapezoid_stack(fig_obj, trapunits)
-    draw_tower_land(fig_obj, tower0_y0, tower_height, "Land")
+    draw_tower_land(fig_obj, tower_y0, tower_height, "Land")
 
 
 @dataclass
@@ -745,6 +775,8 @@ def get_wheel_fig(fig_dict: dict[str,]) -> Drawing:
     if fig_dict.get("sub_title_str"):
         sub_title_str = fig_dict.get("sub_title_str")
         sub_title_margin = fig_dict.get("sub_title_margin")
+        if sub_title_margin is None:
+            sub_title_margin = 50
         font_size = fig_dict.get("sub_title_font_size")
         if font_size is None:
             font_size = 16
@@ -928,7 +960,6 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
     fig1_01_dict = {
         "fig_title_str": low_trust_str,
         "sub_title_str": "The Smiths and the Duvals lift up the Gomezs",
-        "sub_title_margin": 50,
         "footer_str": "fig1_01",
         "fig_height": 350,
         "trapunits": [
@@ -945,7 +976,6 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
     fig1_02_dict = {
         "fig_title_str": low_trust_str,
         "sub_title_str": "Flores lifts up the Gomezs and drags themselves down",
-        "sub_title_margin": 50,
         "sub_title_font_size": 20,
         "footer_str": "fig1_02",
         "fig_width": 700,
@@ -965,7 +995,6 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
     fig1_03_dict = {
         "fig_title_str": low_trust_str,
         "sub_title_str": f"""{gomezs_str} is lifted up because {flores_str} thinks things will be better""",
-        "sub_title_margin": 50,
         "sub_title_font_size": 20,
         "footer_str": "fig1_03",
         "fig_width": 800,
@@ -994,7 +1023,6 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
     fig1_04_dict = {
         "fig_title_str": low_trust_str,
         "sub_title_str": """F1 is lifted up by F2, F3. Doesn't know the rest.""",
-        "sub_title_margin": 50,
         "sub_title_font_size": 20,
         "footer_str": "fig1_04",
         "trapunits": [
@@ -1013,7 +1041,6 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
     fig1_05_dict = {
         "fig_title_str": low_trust_str,
         "sub_title_str": """F1 is lifted up by F2, F3. Doesn't know the rest.""",
-        "sub_title_margin": 50,
         "sub_title_font_size": 20,
         "footer_str": "fig1_05",
         "trapunits": [
@@ -1025,7 +1052,6 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
     fig1_06_dict = {
         "fig_title_str": low_trust_str,
         "sub_title_str": """F1 is lifted up by the Tower under it. Doesn't know the rest.""",
-        "sub_title_margin": 50,
         "sub_title_font_size": 20,
         "footer_str": "fig1_06",
         "trapunits": [
@@ -1037,22 +1063,39 @@ def get_markdown_wheel_theory_drawings() -> dict[str, Drawing]:
     fig1_07_dict = {
         "fig_title_str": low_trust_str,
         "sub_title_str": "F1 is lifted up by the Towers under it. Doesn't know the rest.",
-        "sub_title_margin": 50,
         "sub_title_font_size": 20,
         "footer_str": "fig1_07",
         "tower_attrs": {"family_desc": "Family1", "tower_descs": ["Tower0", "Tower1"]},
     }
     fig1_08_dict = {
         "fig_title_str": low_trust_str,
+        "sub_title_str": "The King is supported by the Nobles and the Clergy.",
+        "sub_title_font_size": 20,
         "footer_str": "fig1_08",
+        "tower_attrs": {
+            "family_desc": "KingFamily",
+            "tower_descs": ["Nobles", "Clergy"],
+        },
     }
     fig1_09_dict = {
         "fig_title_str": low_trust_str,
-        "footer_str": "fig1_08",
+        "sub_title_str": "The King is supported by the Clergy and Mercenaries.",
+        "sub_title_font_size": 20,
+        "footer_str": "fig1_09",
+        "tower_attrs": {
+            "family_desc": "KingFamily",
+            "tower_descs": ["Clergy", "Mercenaries"],
+        },
     }
     fig1_10_dict = {
         "fig_title_str": low_trust_str,
-        "footer_str": "fig1_08",
+        "sub_title_str": "The King is supported by the Clergy, Nobles, and Mercenaries.",
+        "sub_title_font_size": 20,
+        "footer_str": "fig1_10",
+        "tower_attrs": {
+            "family_desc": "KingFamily",
+            "tower_descs": ["Clergy", "Nobles", "Mercenaries"],
+        },
     }
     return {
         "wheel_fig0_0": get_wheel_fig(fig0_0_dict),

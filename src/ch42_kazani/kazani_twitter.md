@@ -346,3 +346,15 @@ Krzysztof Paluszek @KrzysztofPalus4 responded<br>
 *Doesn't it apply to every other region of the world? The closest surrounding is what you usually care of. Regardless where you are located around the world.*
 
 > No, genuinely expecting unlimited empathy from everyone in the world while showing exactly zero to anyone else but yourself seems to be more or less endemically Eastern European, Russia included
+
+A different response from @elivagar_11:<br>
+*I like the implication that doing diplomacy well involves empathising with other people’s pain. Lol. Lmao*
+> Yes, of course it does. Doing diplomacy well involves:
+> 1. Understanding what people think & what they feel. What their interests are
+> 2. Counting with their feelings and interests
+> Now the thing is: post-Soviets see (2) as a matter of great dishonor
+
+To which @elivagar_11 responded with a picture of Henry Kissinger
+> Bad example. As a superpower you can get away with almost anything, and very rarely receive any *immediate* blowback. Ergo, there is no reason to expect that a superpower will have a particularly skilful diplomacy
+> 
+>Managing foreign relations of a superpower is not a hard job
